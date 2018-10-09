@@ -1,21 +1,21 @@
 ---
-title: 在 LUIS 应用中添加实体 | Microsoft Docs
-titleSuffix: Azure
+title: 在 LUIS 应用中添加实体
+titleSuffix: Azure Cognitive Services
 description: 在语言理解 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e82955da24e127e5536c2e40ad2cccf07c5fa173
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224120"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031996"
 ---
 # <a name="manage-entities"></a>管理实体
 确定应用的[意向](luis-concept-intent.md)后，需要使用[实体](luis-concept-entity-types.md)[标记示例话语](luis-concept-utterance.md)。 实体是命令或问题的重要部分，对于你的客户端应用执行其任务而言可能是不可或缺的。 
@@ -31,8 +31,6 @@ ms.locfileid: "39224120"
  
 2. 在“实体”页上，选择“管理预构建实体”。
 
-    ![在“实体”页上添加预生成实体的屏幕截图](./media/add-entities/manage-prebuilt-entities-button.png)
-
 3. 在“添加或删除预生成实体”对话框中，选择 number 和 datetimeV2 预生成实体。 然后选择“完成”。
 
     ![“添加预生成实体”对话框屏幕截图](./media/add-entities/list-of-prebuilt-entities.png)
@@ -43,8 +41,6 @@ ms.locfileid: "39224120"
 简单实体是描述单个概念的一般实体。 
 
 1. 在应用中，从“生成”部分，然后单击左侧面板中的“实体”，然后选择“创建新实体”。
-
-    ![“实体”页的屏幕截图，其中已突出显示“创建新实体”按钮](./media/add-entities/create-new-entity-button.png)
 
 2. 在弹出对话框中，在“实体名称”框中键入 `Airline`，从“实体类型”列表选择“简单”，然后选择“完成”。
 
@@ -57,7 +53,7 @@ ms.locfileid: "39224120"
 
 1. 在应用中，从左侧导航栏选择“实体”，然后选择“创建新实体”。
 
-2. 在弹出对话框中，在“实体名称”框中键入 `AirFrance Flight`，从“实体类型”列表选择“正则表达式”，输入正则表达式 `AFR[0-9]{3,4}`，然后选择“完成”。 
+2. 在弹出对话框中，在“实体名称”框中输入 `AirFrance Flight`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `AFR[0-9]{3,4}`，然后选择“完成”。 
 
     此 AirFrance Flight 正则表达式需要三个字符（根据字面意思为 `AFR`），后跟 3 或 4 个数字。 数字可以是介于 0 到 9 之间的任何数字。 正则表达式与 AirFrance 航班号相匹配，例如："AFR101"、"ARF1302" 和 "AFR5006"。 请参阅[数据提取](luis-concept-data-extraction.md)，了解有关从终结点 JSON 查询响应中提取实体的详细信息。
 

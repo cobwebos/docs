@@ -1,20 +1,21 @@
 ---
-title: 适用于 Microsoft QnA Maker API (V4) 的 Node.js 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
+title: 快速入门：适用于 QnA Maker API (V4) 的 Node.js
+titleSuffix: Azure Cognitive Services
+description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6da1ec00e04ea993923a97c4641880a5f31d18fa
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 05a15ddf8d7668896052c38afc549bc7b3cb056a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868168"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434324"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>将 Microsoft QnA Maker API 与 Node.js 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -36,6 +37,8 @@ ms.locfileid: "37868168"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
@@ -49,8 +52,8 @@ ms.locfileid: "37868168"
 以下代码使用 [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 方法创建新的知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -106,7 +109,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -207,7 +210,7 @@ create_kb (path, content, function (result) {
 
 **创建知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -245,8 +248,8 @@ create_kb (path, content, function (result) {
 以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -305,7 +308,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -407,7 +410,7 @@ update_kb (path, content, function (result) {
 
 **更新知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -446,8 +449,8 @@ Press any key to continue.
 以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -506,7 +509,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -541,7 +544,7 @@ publish_kb (path, '', function (result) {
 
 **发布知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -558,8 +561,8 @@ publish_kb (path, '', function (result) {
 以下代码使用 [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) 方法来替换指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -618,7 +621,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -674,7 +677,7 @@ replace_kb (path, content, function (result) {
 
 **替换知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -691,8 +694,8 @@ replace_kb (path, content, function (result) {
 以下代码使用 [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) 方法来下载指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -780,7 +783,7 @@ get_qna (path, function (result) {
 
 **下载知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -894,7 +897,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Authorization' : 'EndpointKey ' + endpoint_key,
         }
     };
@@ -924,7 +927,7 @@ get_answers (method, content, function (result) {
 
 **获取答案响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -953,8 +956,8 @@ get_answers (method, content, function (result) {
 以下代码使用 [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 方法获取有关指定知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1039,7 +1042,7 @@ get_kb (path, function (result) {
 
 **获取知识库详细信息响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1068,8 +1071,8 @@ get_kb (path, function (result) {
 以下代码使用 [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) 方法获取有关指定用户的所有知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1151,7 +1154,7 @@ get_kbs (path, function (result) {
 
 **获取用户响应的知识库**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1196,8 +1199,8 @@ Press any key to continue.
 以下代码使用 [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) 方法来删除指定知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1256,7 +1259,7 @@ let http_delete = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1291,7 +1294,7 @@ delete_kb (path, '', function (result) {
 
 **删除知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1308,8 +1311,8 @@ delete_kb (path, '', function (result) {
 以下代码使用 [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) 方法获取当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1391,7 +1394,7 @@ get_keys (path, function (result) {
 
 **获取终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1409,8 +1412,8 @@ get_keys (path, function (result) {
 以下代码使用 [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) 方法重新生成当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1469,7 +1472,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1517,7 +1520,7 @@ refresh_keys (path, content, function (result) {
 
 **刷新终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1535,8 +1538,8 @@ refresh_keys (path, content, function (result) {
 以下代码使用 [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) 方法获取当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1618,7 +1621,7 @@ get_alterations (path, function (result) {
 
 **获取字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1642,8 +1645,8 @@ get_alterations (path, function (result) {
 以下代码使用 [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) 方法替换当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 Node.js 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```nodejs
@@ -1699,7 +1702,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1747,7 +1750,7 @@ put_alterations (path, content, function (result) {
 
 **替换字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {

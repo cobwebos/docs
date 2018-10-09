@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1aa4cf5d0cae728392f09626293de0506c81757f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e455845a145e07bc59378818b95e23e572cb577
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976969"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227089"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
 本快速入门介绍如何在 Windows 开发计算机上创建和运行设备模拟器。 你将配置此模拟设备，以使用对称密钥对设备预配服务实例进行身份验证，并将此模拟设备分配到 IoT 中心。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的示例代码来模拟启动预配的设备的启动序列。 将根据预配服务实例的单个注册来识别该设备，然后将其分配到 IoT 中心。
 
-虽然本文演示了使用单个注册进行预配，但你也可以对注册组使用相同的过程。 唯一的区别在于，你必须使用具有设备唯一注册 ID 的派生设备密钥。 对于注册组，不直接使用注册对称密钥和注册 ID。 虽然不仅限于旧设备，但[如何使用对称密钥证明预配旧设备](how-to-legacy-device-symm-key.md)提供了一个示例。 有关详细信息，请参阅[对称密钥证明的组注册](concepts-symmetric-key-attestation.md#group-enrollments)。
+虽然本文演示了使用单个注册进行预配，但你也可以对注册组使用相同的过程。 唯一的区别在于，你必须使用具有设备唯一注册 ID 的派生设备密钥。 对于注册组，不直接使用注册中的对称密钥。 虽然对称密钥注册组不限于旧设备，但[如何使用对称密钥证明预配旧设备](how-to-legacy-device-symm-key.md)提供了注册组示例。 有关详细信息，请参阅[对称密钥证明的组注册](concepts-symmetric-key-attestation.md#group-enrollments)。
 
-有关对称密钥证明更详细的概念信息，请参阅[对称密钥证明](concepts-symmetric-key-attestation.md)。 如果你不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 
+如果你不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 
 
 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 本快速入门需要你已创建设备预配服务实例。
 

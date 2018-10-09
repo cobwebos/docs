@@ -1,21 +1,21 @@
 ---
-title: 必应图像搜索单页 Web 应用 | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应图像搜索 API。
+title: 教程：生成单页 Web 应用 - 必应视觉搜索
+titleSuffix: Azure Cognitive Services
+description: 介绍如何在单页 Web 应用程序中使用必应视觉搜索 API。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-brapel
-ms.openlocfilehash: 303d7745167d2ea25fda083ed99881ac4e0a7ec7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e3cd36d799256406b3ae12f35303bd2406468b3c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366313"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227174"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>教程：视觉搜索单页 Web 应用
 

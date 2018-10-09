@@ -1,22 +1,23 @@
 ---
-title: 适用于 Azure 认知服务中的必应视频搜索 API 的 Node.js 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应视频搜索 API。
+title: 快速入门：必应视频搜索 API、Node.js
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，有助于快速开始使用必应视频搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: be9cbd56a1db1f9df78ec6f1c378d803c0a37151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a4ee4b0c0f4ce46110cebf95cdf927f8df3567d0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366445"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220365"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-nodejs"></a>将必应视频搜索 API 与 Node.js 配合使用快速入门
+# <a name="quickstart-bing-video-search-api-with-nodejs"></a>快速入门：必应视频搜索 API 与 Node.js
 
 本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应视频搜索 API。 虽然本文采用的是 Node.js，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "35366445"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-video-search"></a>必应视频搜索
 
@@ -34,7 +35,7 @@ ms.locfileid: "35366445"
 
 1. 在你喜欢使用的 IDE 或编辑器中新建一个 Node.js 项目。
 2. 添加下面提供的代码。
-3. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 运行该程序。
 
 ```javascript

@@ -1,26 +1,24 @@
 ---
-title: 结合使用语音 C# SDK 和 LUIS - Azure | Microsoft Docs
-titleSuffix: Azure
-description: 使用语音 C# SDK 示例对麦克风讲话，然后获取所返回的 LUIS 意向和实体预测。
+title: 将语音 C# SDK 与 LUIS 配合使用
+titleSuffix: Azure Cognitive Services
+description: 借助语音服务，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 NuGet 包（该包已作为参考包含在内）。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124390"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042068"
 ---
 # <a name="integrate-speech-service"></a>语音服务集成
-借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。
-
-本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
+借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
 
 本文需要一个免费的 [LUIS][LUIS] 网站帐户才能导入应用程序。
 
@@ -32,12 +30,13 @@ ms.locfileid: "43124390"
 
 此应用具有与人力资源域相关的意向、实体和话语。 话语示例包括：
 
-```
-Who is John Smith's manager?
-Who does John Smith manage?
-Where is Form 123456?
-Do I have any paid time off?
-```
+|示例陈述|
+|--|
+|John Smith 的经理是谁？|
+|John Smith 管理谁？|
+|窗体 123456 在哪里？|
+|我有带薪假吗？|
+
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>添加 KeyPhrase 预构建的实体
 导入应用后，依次选择“实体”和“管理预构建的实体”。 添加 KeyPhrase 实体。 KeyPhrase 实体从话语中提取关键主题。
@@ -45,19 +44,18 @@ Do I have any paid time off?
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
 1. 在右上方的导航栏中，选择“训练”按钮来训练 LUIS 应用。
 
-2. 选择“发布”以转到“发布”页面。 
+2. 选择右上方栏中的“管理”，然后在左侧导航栏中选择“密钥和终结点”。 
 
-3. 在“发布”页面底部，添加在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥。
+3. 在“密钥和终结点”页上，分配在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥。
 
-4. 通过选择“发布”槽右侧的“发布”按钮发布 LUIS 应用。 
-
-  在“发布”页面上，收集[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥的应用 ID、发布区域和订阅 ID。 需要修改代码，然后才能在文本的稍后位置使用这些值。 
-
-  对于所创建的密钥，这些值均包含在“发布”页面底部的终结点 URL 中。 
+  在此页上，收集在[创建 LUIS 终结点密钥](#create-luis-endpoint-key)部分中创建的 LUIS 密钥的应用 ID、发布区域和订阅 ID。 需要修改代码，然后才能在文本的稍后位置使用这些值。 
   
   请勿使用免费的初学者密钥进行此练习。 只能使用在 Azure 门户中创建的语言理解密钥进行此练习。 
 
   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
+
+
+4. 通过选择右上方栏中的“发布”按钮发布 LUIS 应用。 
 
 ## <a name="audio-device"></a>音频设备
 本文使用计算机上的音频设备。 它可以是带麦克风的耳机，也可以是内置音频设备。 请检查音频输入电平，确认要使音频设备检测到你说的话，是否要比平时说话的声音大。 

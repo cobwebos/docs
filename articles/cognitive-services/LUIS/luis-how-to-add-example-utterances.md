@@ -1,21 +1,21 @@
 ---
-title: 在 LUIS 应用中添加示例表述 | Microsoft Docs
-titleSuffix: Azure
+title: 在 LUIS 应用中添加示例话语
+titleSuffix: Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 应用程序中添加表述。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: cf6fc131a1ae2ba0a77bdbeda942c9f85aadd189
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226281"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036484"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>添加示例表述并通过实体进行标记
 

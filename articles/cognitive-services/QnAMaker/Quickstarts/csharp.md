@@ -1,20 +1,21 @@
 ---
-title: Microsoft QnA Maker API (V4) 的 C# 快速入门 - Azure 认知服务 | Microsoft Docs
+title: 快速入门：适用于 QnA Maker API (V4) 的 C#
+titleSuffix: Azure Cognitive Services
 description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 4bcc52547b5610bcb8dfa9b0cc56b2afc40e3c32
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 7c79a5c1b65391be1a100efa9e0dcf4e4a0d12ae
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866077"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040273"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>使用 C# 的 Microsoft QnA Maker API 快速入门 
 <a name="HOLTop"></a>
@@ -35,6 +36,8 @@ ms.locfileid: "37866077"
 - [重新生成当前终结点密钥。](#PutKeys)
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -1,22 +1,23 @@
 ---
-title: 通过机器学习进行电子商务目录审查和使用 Azure 内容审查器实现 AI | Microsoft Docs
-description: 通过机器学习和 AI 自动审查电子商务目录
+title: 教程：电子商务目录审查 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 通过机器学习和 AI 自动审查电子商务目录。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095745"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227344"
 ---
-# <a name="ecommerce-catalog-moderation-with-machine-learning"></a>通过机器学习进行电子商务目录审查
+# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>教程：通过机器学习进行电子商务目录审查
 
 在本教程中，我们学习如何通过将计算机辅助 AI 技术与人工审查相结合实现基于机器学习的智能电子商务目录审查以提供智能目录系统。
 

@@ -1,25 +1,26 @@
 ---
-title: 在多租户应用中管理 Azure SQL 数据库架构 | Microsoft Docs
-description: 在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
-keywords: sql 数据库教程
+title: 在单租户应用中管理 Azure SQL 数据库架构 | Microsoft Docs
+description: 在使用 Azure SQL 数据库的单租户应用中管理多个租户的架构
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 2e4af3e3e1ef1d9da7c66b929885e3ec749b462f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646266"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054840"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>通过将“租户各有数据库”模式与 Azure SQL 数据库配合使用，在 SaaS 应用程序中管理架构
-
+ 
 随着数据库应用程序的发展，不可避免地需要对数据库架构或引用数据进行更改。  此外，也需要定期执行数据库维护任务。 管理使用“租户各有数据库”模式的应用程序时，需要对一系列租户数据库应用这些更改或维护任务。
 
 本教程探讨两个方案 - 为所有租户部署引用数据更新，以及重新生成包含引用数据的表的索引。 可以使用[弹性作业](sql-database-elastic-jobs-overview.md)功能，在所有租户数据库上以及用于创建新租户数据库的模板数据库上执行这些操作。

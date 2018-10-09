@@ -5,15 +5,15 @@ services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c6e57d5094f455983b8b474b6930f628d654e457
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371018"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47435106"
 ---
 在第一个方案中，我们将新的遥测类型添加到 Contoso 的现有“冷却器”设备类型。
 
@@ -73,6 +73,7 @@ ms.locfileid: "43371018"
 
 * Visual Studio Code。 可以[下载适用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
+* [适用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../articles/iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * 使用 SQL API 且配置为[强一致性](../articles/cosmos-db/manage-account.md)的 Cosmos DB 数据库。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
@@ -89,13 +90,13 @@ ms.locfileid: "43371018"
 
 ### <a name="download-the-microservices"></a>下载微服务
 
-从 GitHub 下载[存储适配器微服务](https://github.com/Azure/pcs-storage-adapter-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。
+从 GitHub 下载[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **remote-monitoring-services-dotnet-master**。
 
-从 GitHub 下载[设备模拟微服务](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。
+从 GitHub 下载[设备模拟微服务](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **device-simulation-dotnet-master**。
 
 ### <a name="run-the-storage-adapter-microservice"></a>运行存储适配器微服务
 
-在 Visual Studio Code 中打开 pcs-storage-adapter-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
+在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
 打开 .vscode/launch.json 文件，并将 Cosmos DB 连接字符串分配给 PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING 环境变量。
 
@@ -117,20 +118,14 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
     | Source | 目标 |
     | ------ | ----------- |
-    | Services\Data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
-    | Services\Data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
-    | Services\Data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
-    | Services\Data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
-    | Services\Data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
-    | Services\Data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
 1. 打开 C:\temp\devicemodels\chiller-01.json 文件。
-
-1. 如下所示更新 **SchemaVersion** 值：
-
-    ```json
-    "SchemaVersion": "1.0.0",
-    ```
 
 1. 在 InitialState 部分中，添加以下两个定义：
 
@@ -422,7 +417,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
-打开 .vscode/launch.json 文件，将 IoT 中心连接字符串分配给 PCS_IOTHUB_CONNSTRING 环境变量。
+打开 .vscode/launch.json 文件，将 IoT 中心连接字符串分配给 PCS_IOTHUB_CONNSTRING 环境变量。 在同一文件中，添加 **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 环境变量，并为 Cosmos DB 数据库分配连接字符串。
 
 打开 WebService/Properties/launchSettings.json 文件，将 IoT 中心连接字符串分配给 PCS_IOTHUB_CONNSTRING 环境变量。
 
@@ -466,7 +461,7 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 单击“文件”>“导入”。 然后单击“选择文件”。
 
-1. 导航到 device-simulation-dotnet/docs/postman 文件夹。 选择“Azure IoT 设备模拟解决方案 accelerator.postman_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman_environment”，然后单击“打开”。
+1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹。 选择“Azure IoT 设备模拟解决方案 accelerator.postman_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman_environment”，然后单击“打开”。
 
 1. 将“Azure IoT 设备模拟解决方案加速器”展开到可以发送的请求。
 

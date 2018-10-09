@@ -1,27 +1,28 @@
 ---
-title: Azure 内容审查器入门 | Microsoft Docs
-description: 如何开始使用 Azure 内容审查器。
+title: 内容审查器入门
+titlesuffix: Azure Cognitive Services
+description: 如何开始使用内容审查器。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae4333047ebd95733c7baaed0323a0c2c477d323
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c2ac0ccd89b5f1436a151e3d69c5d7423090f244
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365789"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225288"
 ---
 # <a name="get-started-with-content-moderator"></a>内容审查器入门
 
-可以通过以下方式开始使用内容审查器 API 和评审工具：
+可以通过以下方式开始使用内容审查器：
 
-- [从评审工具开始](#start-with-the-review-tool)，创建 API 密钥和评审团队。 浏览评审工具并了解如何使用内容审查器 API 进行集成。
-- 在 Azure 门户中，[订阅内容审查器](#start-with-the-apis)。 仍需要联机注册才能创建评审团队。
+- [从评审工具开始](#start-with-the-review-tool)，获取 API 密钥并创建评审团队。 这样做的好处是，可以使用 API 密钥调用审查 API 来扫描内容，并调用评审 API 来生成评审，而无需执行其他步骤。
+- 在 Azure 中[订阅内容审查器](#start-with-the-apis)可获得 API 密钥。 请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。 仍需要联机注册才能创建评审团队。
 - [使用 Flow 连接器和模板](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/)，通过易于使用的设计器检查各种集成。
 
 无论你选择哪个选项，请参阅[管理凭据](review-tool-user-guide/credentials.md)一文以查找 API 凭据。
@@ -55,9 +56,9 @@ ms.locfileid: "35365789"
 
 ### <a name="use-the-apis"></a>使用 API
 
-现在，你已探索了内容审核和评审工具体验，请学习如何将内容审查器与业务应用程序集成。 使用以下部分了解更多信息，并快速跟踪你对 SDK 和示例的理解。
+了解如何将内容审查器与商务应用程序进行集成。 请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。
 
-## <a name="start-with-the-apis"></a>从 API 开始
+## <a name="subscribe-in-the-azure-portal"></a>在 Azure 门户中订阅
 
 在 Azure 门户中，[订阅内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。 从以下 API 之一开始：
 
@@ -85,4 +86,4 @@ ms.locfileid: "35365789"
 
 ## <a name="next-steps"></a>后续步骤
 
-从[图像审核 API](image-moderation-api.md) 开始，详细了解内容审核。
+请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。 快速开始与 [.NET SDK 示例](sdk-and-samples.md#net-sdk-samples)、[C# 中的 REST API 示例](https://github.com/sanjeev3/azure-docs-pr/blob/master/articles/cognitive-services/Content-Moderator/sdk-and-samples.md#rest-api-samples-in-c)和[教程](sdk-and-samples.md#tutorials)集成。

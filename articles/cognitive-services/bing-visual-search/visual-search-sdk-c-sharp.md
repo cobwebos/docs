@@ -1,23 +1,23 @@
 ---
-title: 视觉搜索 SDK C# 快速入门 | Microsoft Docs
-description: 设置视觉搜索 SDK C# 控制台应用程序。
+title: 快速入门：使用必应视觉搜索 SDK、C#
 titleSuffix: Azure Cognitive Services
+description: 设置视觉搜索 SDK C# 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: e9b93c46cf0702dc58398e247fef79c3f31bb50c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 938768ad366611b8651adc3d554c44c16a3830ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213099"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224522"
 ---
-# <a name="visual-search-sdk-c-quickstart"></a>视觉搜索 SDK C# 快速入门
+# <a name="quickstart-bing-visual-search-sdk-c"></a>快速入门：必应视觉搜索 SDK C#
 
 必应视觉搜索 SDK 将 REST API 功能用于 Web 请求和分析结果。
 Git Hub 上提供了 [C# 必应视觉搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)。
@@ -32,9 +32,9 @@ Git Hub 上提供了 [C# 必应视觉搜索 SDK 示例的源代码](https://gith
 
 ## <a name="prerequisites"></a>先决条件
 
-* Visual Studio 2017。 如有必要，可从此处下载免费的社区版本：https://www.visualstudio.com/vs/community/。
+* Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： https://www.visualstudio.com/vs/community/。
 * 必须有认知服务 API 密钥，才能验证 SDK 调用。 可以注册申请[免费试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，请[购买访问密钥](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 另请参阅[定价信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)。
-* 运行 .NET core SDK、.net core 1.1 应用的能力。 可从以下位置获取 CORE、Framework 和运行时：https://www.microsoft.com/net/download/。
+* 运行 .NET core SDK、.net core 1.1 应用的能力。 可从以下位置获取 CORE、Framework 和运行时： https://www.microsoft.com/net/download/。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
 

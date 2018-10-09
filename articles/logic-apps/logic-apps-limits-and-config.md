@@ -3,19 +3,18 @@ title: 限制和配置 - Azure 逻辑应用 | Microsoft Docs
 description: Azure 逻辑应用的服务限制和配置值
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 49b8efe6b5d56c3edaf8b311ff3c6667a8952536
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.topic: article
+ms.date: 09/26/2018
+ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141238"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452440"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -305,8 +304,13 @@ ms.locfileid: "42141238"
 若要支持[连接器](../connectors/apis-list.md)进行的调用，请根据你的逻辑应用所在的区域设置你的防火墙配置，以使其包含这些出站 IP 地址。
 
 > [!IMPORTANT]
->
 > 如果你有现有配置，请于 2018 年 9 月 1 日前尽快对其更新，以使其包含并匹配此列表中针对你的逻辑应用所在的位置对应的 IP 地址。 
+> 
+> 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项： 
+>
+> * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。 
+> 
+> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](http://aka.ms/aisarch)。
 
 | 逻辑应用区域 | 出站 IP | 
 |-------------------|-------------|  

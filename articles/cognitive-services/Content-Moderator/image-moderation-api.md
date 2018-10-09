@@ -1,20 +1,21 @@
 ---
-title: Azure 内容审查器 - 图像审查 | Microsoft Docs
+title: 图像审查 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 使用图像审查来调整不适当的图像
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: c7cbc343c6e9113642d0ac79f4a4d60a404e8171
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366626"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219645"
 ---
 # <a name="image-moderation"></a>图像审查
 
@@ -143,7 +144,7 @@ ms.locfileid: "35366626"
 
 对于更微妙的情况，请使用内容审查器[评审工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在人工审查方的评审中显示审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
 
-![供人工审查方评审的图像](images/moderation-reviews-quickstart-dotnet.PNG)
+![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 

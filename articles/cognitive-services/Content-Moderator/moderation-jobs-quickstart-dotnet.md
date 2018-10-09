@@ -1,36 +1,49 @@
 ---
-title: Azure 内容审查器 - 使用 .NET 启动审核工作 | Microsoft Docs
-description: 如何使用适用于 .NET 的 Azure 内容审查器 SDK 启动审核工作
+title: 快速入门：使用 .NET 启动审查作业 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 如何使用适用于 .NET 的 Azure 内容审查器 SDK 启动审查作业。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
-ms.date: 01/06/2018
+ms.topic: quickstart
+ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: a103875607355993e216ce1ddea02009fc8fa1c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365498"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227414"
 ---
-# <a name="start-moderation-jobs-using-net"></a>使用 .NET 启动审核工作
+# <a name="quickstart-start-moderation-jobs-using-net"></a>快速入门：使用 .NET 启动审查作业
 
-本文提供了信息和代码示例，帮助你开始使用适用于 .NET 的内容审查器 SDK 来执行以下操作：
+本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
  
 - 启动审核工作以扫描和创建人工审查器评审
 - 获取待处理的评审状态
 - 跟踪和获取评审的最终状态
 - 将结果提交至回调 Url
 
-本文假定你已熟悉 Visual Studio 和 C#。
+若要更好地理解本文，需要已熟悉如何使用 Visual Studio 和 C#。
 
-## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
+## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-在可以通过 REST API 或 SDK 使用内容审查器服务之前，需要一个订阅密钥。
-请参考[快速入门](quick-start.md)了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
+请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
+
+如果从 Azure 门户获得了内容审查器，还需要[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
+
+完成上述步骤后，如果从 Azure 门户着手，最终可能会得到两个内容审查器密钥。 
+
+如果计划在 SDK 示例中使用 Azure 提供的 API 密钥，请按照[将 Azure 密钥与评审 API 配合使用](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)部分中提到的步骤操作，以允许应用程序调用评审 API 并创建评审。
+
+如果使用评审工具生成的免费试用密钥，则评审工具帐户已经知道密钥，因此无需其他步骤。
 
 ## <a name="define-a-custom-moderation-workflow"></a>定义自定义审核工作流
 
@@ -41,13 +54,11 @@ ms.locfileid: "35365498"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的控制台应用 (.NET Framework) 项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
-   在示例代码中，将项目命名为“CreateReviews”。
+   在示例代码中，将此项目命名为“CreateReviews”。
 
-1. 选择此项目作为解决方案的单个启动项目。
-
-1. 向在[内容审查器客户端帮助程序快速入门](content-moderator-helper-quickstart-dotnet.md)中创建的“ModeratorHelper”项目程序集添加一个引用。
+1. 将此项目选为解决方案的单一启动项目。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
@@ -61,16 +72,66 @@ ms.locfileid: "35365498"
 
 修改程序的 using 语句。
 
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
 
-### <a name="initialize-application-specific-settings"></a>初始化特定于应用程序的设置
+### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
+
+添加以下代码来为订阅创建内容审查器客户端。
+
+> [!IMPORTANT]
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.Endpoint = AzureBaseURL;
+            return client;
+        }
+    }
+
+### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
 向 Program.cs 中的 Program 类添加以下常数和静态字段。
 
@@ -78,7 +139,7 @@ ms.locfileid: "35365498"
 > 将 TeamName 常数设置为创建内容审查器订阅时使用的名称。 从[内容审查器网站](https://westus.contentmoderator.cognitive.microsoft.com/)检索 TeamName。
 > 登录后，从“设置”（齿轮）菜单中选择“凭据”。
 >
-> 团队名称是“API”部分中“ID”字段的值。
+> 团队名称是“API”部分中的“ID”字段值。
 
 
     /// <summary>
@@ -92,7 +153,7 @@ ms.locfileid: "35365498"
     /// </summary>
     /// <remarks>This must be the team name you used to create your 
     /// Content Moderator account. You can retrieve your team name from
-    /// the Conent Moderator web site. Your team name is the Id associated 
+    /// the Content Moderator web site. Your team name is the Id associated 
     /// with your subscription.</remarks>
     private const string TeamName = "***";
 
@@ -105,7 +166,7 @@ ms.locfileid: "35365498"
     /// <summary>
     /// The name of the log file to create.
     /// </summary>
-    /// <remarks>Relative paths are ralative the execution directory.</remarks>
+    /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private const string OutputFile = "OutputLog.txt";
 
     /// <summary>
@@ -117,7 +178,7 @@ ms.locfileid: "35365498"
     /// <summary>
     /// The callback endpoint for completed reviews.
     /// </summary>
-    /// <remarks>Revies show up for reviewers on your team. 
+    /// <remarks>Reviews show up for reviewers on your team. 
     /// As reviewers complete reviews, results are sent to the
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "";
@@ -136,7 +197,7 @@ ms.locfileid: "35365498"
             writer.WriteLine("Create review job for an image.");
             var content = new Content(ImageUrl);
         
-            // The WorkflowName contains the nameof the workflow defined in the online review tool.
+            // The WorkflowName contains the name of the workflow defined in the online review tool.
             // See the quickstart article to learn more.
             var jobResult = client.Reviews.CreateJobWithHttpMessagesAsync(
                     TeamName, "image", "contentID", WorkflowName, "application/json", content, CallbackEndpoint);
@@ -181,7 +242,7 @@ ms.locfileid: "35365498"
     }
 
 > [!NOTE]
-> 内容审查器服务密钥有一个每秒请求数 (RPS) 速率限制。 如果超过了该限制，SDK 会引发随附 429 错误代码的异常。 
+> 内容审查器服务密钥有一个每秒请求数 (RPS) 速率限制。 如果超过该限制，SDK 会引发错误代码为 429 的异常。 
 >
 > 免费层密钥有一个 RPS 速率限制。
 
@@ -260,4 +321,4 @@ ms.locfileid: "35365498"
 
 ## <a name="next-steps"></a>后续步骤
 
-针对适用于 .NET 的此内容审查器以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+为适用于 .NET 的此内容审查器快速入门和其他内容审查器快速入门获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。

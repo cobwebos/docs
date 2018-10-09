@@ -1,22 +1,23 @@
 ---
-title: 了解 LUIS 最佳做法- Azure | Microsoft Docs
+title: 使用 LUIS 生成应用的最佳做法 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: 学习 LUIS 最佳做法以获取最佳结果。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 81a2523f37cac926d9f498953a831c2d877a7528
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 511e6c732613cc577644365e38b271135659f2d3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224001"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042238"
 ---
-# <a name="best-practices"></a>最佳实践
+# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
 
 * 生成语言模型

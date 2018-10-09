@@ -2,19 +2,21 @@
 title: 高级威胁防护 - Azure SQL 数据库 | Microsoft Docs
 description: 了解有关发现敏感数据并分类、管理数据库漏洞以及检测可能对 Azure SQL 数据库造成威胁的异常活动的功能。
 services: sql-database
-author: ronitr
-manager: craigg
 ms.service: sql-database
+ms.subservice: security
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 5/17/2018
+author: ronitr
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.reviewer: vanto
+manager: craigg
+ms.date: 05/17/2018
+ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146295"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159545"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 

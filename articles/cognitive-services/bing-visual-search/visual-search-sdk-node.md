@@ -1,25 +1,25 @@
 ---
-title: 视觉搜索 SDK Node 快速入门 | Microsoft Docs
-description: 设置视觉搜索 SDK Node 控制台应用程序。
+title: 快速入门：必应视觉搜索 SDK、Node
 titleSuffix: Azure Cognitive Services
+description: 设置视觉搜索 SDK Node 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: afccbc66da94d5c2d276a05a47ffe60dfbae2261
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782434"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219696"
 ---
-# <a name="visual-search-sdk-node-quickstart"></a>视觉搜索 SDK Node 快速入门
+# <a name="quickstart-bing-visual-search-sdk-node"></a>快速入门：必应视觉搜索 SDK Node 
 
-必应视觉搜索 SDK 使用 REST API 的功能，进行 Web 请求和分析结果。
+必应视觉搜索 SDK 将 REST API 功能用于 Web 请求和分析结果。
 Git Hub 上提供 [Node 视觉搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js)。
 
 代码方案记录在下列标题之下：

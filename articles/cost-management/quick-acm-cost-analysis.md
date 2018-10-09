@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2018
+ms.date: 09/21/2018s
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0e94392b882d111d925c864feb9aaeb54bae4e2a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980400"
+ms.locfileid: "47041534"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -32,11 +32,15 @@ ms.locfileid: "46980400"
 
 ## <a name="prerequisites"></a>先决条件
 
-所有企业协议 (EA) 客户均可使用成本分析。 必须至少具有下列某一作用域的读权限，才可查看成本数据。
+所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
 
-- Azure EA 计费帐户（注册）
-- Azure EA 订阅
-- Azure EA 订阅资源组
+- 计费帐户
+- 部门
+- 注册帐户
+- 管理组
+- 订阅
+- 资源组
+
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -44,7 +48,11 @@ ms.locfileid: "46980400"
 
 ## <a name="review-costs-in-cost-analysis"></a>通过成本分析查看成本
 
-要通过成本分析查看你的成本，请打开 Azure 门户，然后导航到“成本管理 + 计费”&gt;“计费帐户”，选择“EA 计费帐户”，再在“成本管理”下选择“成本分析”。
+若要通过成本分析查看成本，请在 Azure 门户中导航至“成本管理 + 计费”&gt;“成本管理”&gt;“更改范围”，选择范围，然后单击“选择”。
+
+所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应选择一个其他范围汇总到的较大范围，然后筛选到所需的范围。 理解这一点很重要，因为有些人不应该访问子范围汇总到的父范围。
+
+单击“打开成本分析”。
 
 初始成本分析视图包括以下方面：
 

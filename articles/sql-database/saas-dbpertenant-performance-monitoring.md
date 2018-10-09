@@ -1,21 +1,23 @@
 ---
 title: 在多租户 SaaS 应用中监视多个 Azure SQL 数据库的性能 | Microsoft Docs
 description: 在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
-keywords: sql 数据库教程
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: e774394eeb95fbc8d80e181a614a7e30258a100e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752265"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056764"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -49,9 +51,9 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 ### <a name="performance-management-strategies"></a>性能管理策略
 
 * 如不希望手动监视性能，最有效的方式是设置警报，在数据库或池的性能不在正常范围内时触发该警报。
-* **池 eDTU 级别可以上下缩放**，以应对池聚合性能级别的短期波动。 如果该波动定期发生或者发生时间可以预见，**则可让池按计划自动缩放**。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
+* **池 eDTU 级别可以上下缩放**，以应对池聚合计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，**则可让池按计划自动缩放**。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
 * 要应对较长期的波动，或者应对数据库数目的变化，**可将单个数据库移至其他池**。
-* 若要应对单个数据库负载的短期增加，可将单个数据库移出池，为其分配单独的性能级别。 一旦负载降低，则可让该数据库返回池中。 如果预先知道这种情况，则可提前移动数据库，确保数据库的资源始终满足需求，同时避免对池中的其他数据库造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
+* 若要应对单个数据库负载的短期增加，可将单个数据库移出池，为其分配单独的计算大小。 一旦负载降低，则可让该数据库返回池中。 如果预先知道这种情况，则可提前移动数据库，确保数据库的资源始终满足需求，同时避免对池中的其他数据库造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库来说，监视和警报功能可以在数据库和池上使用。 这种内置的监视和警报功能是特定于资源的，因此对于少量资源使用方便，但在处理大量资源时就不是很方便。
 
@@ -207,7 +209,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 2. 检查“弹性数据库监视”屏幕，其中会显示过去一小时内最繁忙的数据库。 据屏幕显示，contosoconcerthall 数据库很快就会成为最繁忙的 5 个数据库之一。
 3. 单击“弹性数据库监视”图表将打开“数据库资源利用率”页面，可在其中监视任何数据库。 这样即可隔离 contosoconcerthall 数据库的屏幕。
 4. 在数据库列表中，单击 contosoconcerthall。
-5. 单击“定价层 (缩放 DTU)”打开“配置性能”页，可在其中设置数据库的独立性能级别。
+5. 单击“定价层(缩放 DTU)”打开“配置性能”页，可在其中设置数据库的独立计算大小。
 6. 单击“标准”选项卡打开标准层中的缩放选项。
 7. 将 DTU 滑块滑至右侧，选择 100 DTU。 请注意，这对应于服务目标 S3。
 8. 单击“应用”将数据库移出池，使之成为标准 S3 数据库。

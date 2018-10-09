@@ -1,21 +1,21 @@
 ---
-title: 集成 QnA Maker 和 LUIS - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 有关集成 QnA Maker 和 LUIS 的分步教程
+title: LUIS 和 QnAMaker - 机器人集成
+titleSuffix: Azure Cognitive Services
+description: 有关在机器人中集成 QnA Maker 和 LUIS 的分步教程。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 53e46fa84bcd7b96403dcb0ec70b45b800bc4acb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781741"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042000"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>集成 QnA Maker 和 LUIS 以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。
@@ -29,14 +29,14 @@ ms.locfileid: "43781741"
 在上面的方案中，QnA Maker 首先从 LUIS 模型获取传入问题的意向，然后使用该意向将问题路由到正确的 QnA Maker 知识库。
 
 ## <a name="prerequisites"></a>先决条件
-- 登录 [LUIS](https://www.luis.ai/) 门户并[创建应用](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app)。
-- 根据方案[添加意向](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents)。
-- [训练](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train)并[发布](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) LUIS 应用。
+- 登录 [LUIS](https://www.luis.ai/) 门户并[创建应用](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
+- 根据方案[添加意向](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)。
+- [训练](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)并[发布](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) LUIS 应用。
 - 登录 [QnA Maker](https://qnamaker.ai)，并根据方案[创建知识库](https://www.qnamaker.ai/Create)。
 - 测试并发布知识库。
 
 ## <a name="qna-maker--luis-bot"></a>QnA Maker + LUIS 机器人
-1. 首先使用 LUIS 模板创建 Web 应用机器人，将其与前面创建的 LUIS 应用链接，然后修改意向。 请参阅[此处](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample)的详细步骤。
+1. 首先使用 LUIS 模板创建 Web 应用机器人，将其与前面创建的 LUIS 应用链接，然后修改意向。 请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample)的详细步骤。
 
 2. 将依赖项添加到文件顶部，与其他依赖项在一起：
 

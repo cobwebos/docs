@@ -1,90 +1,104 @@
 ---
-title: 使用 LUIS 创建新应用 | Microsoft Docs
+title: 使用 LUIS 创建新应用
 description: 在语言理解 (LUIS) 网页上创建和管理应用程序。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3adeecd4a4e2040a92689b7c92be9630c9a0d93b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 401c4fb8942aee73c036ae2b248a030eaea4917a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225408"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031248"
 ---
 # <a name="create-an-app"></a>创建应用
-可通过不同的方式创建新应用： 
+可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
+
+## <a name="using-the-luis-portal"></a>使用 LUIS 门户
+可以通过以下几种方式在 LUIS 门户中创建新应用：
 
 * [首先](#create-new-app)创建一个空应用，然后创建意向、表述和实体。
 * [首先](#create-new-app)创建一个空应用，然后添加[预生成域](luis-how-to-use-prebuilt-domains.md)。
 * 从已包含意向、表述和实体的 JSON 文件[导入 LUIS 应用](#import-new-app)。
 
-## <a name="what-is-an-app"></a>什么是应用
-应用包含模型的[版本](luis-how-to-manage-versions.md)和该应用的任何[协作者](luis-how-to-collaborate.md)。 创建应用时，请选择区域性（[语言](luis-supported-languages.md)），此选项以后无法更改。 
+## <a name="using-the-authoring-apis"></a>使用创作 API
+可以通过以下几种方式使用创作 API 创建新应用：
 
-新应用的默认版本为“0.1”。 
+* [首先](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)创建一个空应用，然后创建意向、表述和实体。
+* 从预生成域[开始](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5)。  
 
-可在“我的应用”页创建和管理应用程序。 始终可以通过选择 [LUIS](luis-reference-regions.md) 网站顶部导航栏上的“我的应用”来访问此页。 
 
-[![](media/luis-create-new-app/apps-list.png "应用列表的屏幕截图")](media/luis-create-new-app/apps-list.png#lightbox)
+<a name="export-app"></a>
+<a name="import-new-app"></a>
+<a name="delete-app"></a>
+ 
 
-## <a name="create-new-app"></a>创建新应用
+## <a name="create-new-app-in-luis"></a>在 LUIS 中创建新应用
 
 1. 在“我的应用”页，选择“创建新应用”。
+
+    ![LUIS 应用列表](./media/luis-create-new-app/apps-list.png)
+
+
 2. 在对话框中，将应用程序命名为“TravelAgent”。
 
     ![“创建新应用”对话框](./media/luis-create-new-app/create-app.png)
 
 3. 选择应用程序区域性（对于 TravelAgent 应用，请选择英语），然后选择“完成”。 
 
-    >[!NOTE]
-    >创建应用程序后将无法更改区域性。 
+    > [!NOTE]
+    > 创建应用程序后将无法更改区域性。 
 
-## <a name="import-new-app"></a>导入新应用
-在 JSON 文件中，可以设置名称（最多 50 个字符）、版本（最多 10 个字符）和应用说明。 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight) 提供示例应用程序 JSON 文件。
+    
 
-1. 在“我的应用”页，选择“导入新应用”。
-2. 在“导入新应用”对话框中，选择定义 LUIS 应用的 JSON 文件。
+<!--
 
-    ![“导入新应用”对话框](./media/luis-create-new-app/import-app.png)
+## Import new app
+You can set the name (50 char max), version (10 char max), and description of an app in the JSON file. Examples of application JSON files are available at [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
 
-## <a name="export-app"></a>导出应用
-1. 在“我的应用”页，选中应用所在行末尾的省略号 (...)。
+1. On **My Apps** page, select **Import new app**.
+2. In the **Import new app** dialog, select the JSON file defining the LUIS app.
 
-    [![](media/luis-create-new-app/apps-list.png "每个应用操作的弹出对话框屏幕截图")](media/luis-create-new-app/three-dots.png#lightbox)
+    ![Import a new app dialog](./media/luis-create-new-app/import-app.png)
 
-2. 从菜单中选择“导出应用”。 
+## Export app
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row.
 
-## <a name="rename-app"></a>重命名应用
+    [![](media/luis-create-new-app/apps-list.png "Screenshot of pop-up dialog of per-app actions")](media/luis-create-new-app/three-dots.png#lightbox)
 
-1. 在“我的应用”页，选中应用所在行末尾的省略号 (...)。 
-2. 从菜单中选择“重命名”。
-3. 输入应用的新名称，然后选择“完成”。
+2. Select **Export app** from the menu. 
 
-## <a name="delete-app"></a>删除应用
+## Rename app
+
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Rename** from the menu.
+3. Enter the new name of the app and select **Done**.
+
+## Delete app
 
 > [!CAUTION]
-> 此操作将删除所有协作者和所有者的该应用。 请在删除应用前将其[导出](#export-app)。 
+> You are deleting the app for all collaborators and the owner. [Export](#export-app) the app before deleting it. 
 
-1. 在“我的应用”页，选中应用所在行末尾的省略号 (...)。 
-2. 从菜单中选择“删除”。
-3. 在确认消息窗口中，选择“确定”。
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Delete** from the menu.
+3. Select **Ok** in the confirmation window.
 
-## <a name="export-endpoint-logs"></a>导出终结点日志
-日志中包含查询、UTC 时间和 LUIS JSON 响应。
+## Export endpoint logs
+The logs contain the Query, UTC time, and LUIS JSON response.
 
-1. 在“我的应用”页，选中应用所在行末尾的省略号 (...)。 
-2. 从菜单中选择“导出终结点日志”。
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Export endpoint logs** from the menu.
 
 ```
 Query,UTC DateTime,Response
 text i'm driving and will be 30 minutes late to the meeting,02/13/2018 15:18:43,"{""query"":""text I'm driving and will be 30 minutes late to the meeting"",""intents"":[{""intent"":""None"",""score"":0.111048922},{""intent"":""SendMessage"",""score"":0.987501}],""entities"":[{""entity"":""i ' m driving and will be 30 minutes late to the meeting"",""type"":""Message"",""startIndex"":5,""endIndex"":58,""score"":0.162995353}]}"
 ```
-
+-->
 ## <a name="next-steps"></a>后续步骤
 
 应用中的第一个任务是[添加意向](luis-how-to-add-intents.md)。

@@ -1,22 +1,23 @@
 ---
-title: 测试 LUIS 应用 - Azure | Microsoft Docs
-description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
+title: 测试 LUIS 应用
+titleSuffix: Azure Cognitive Services
+description: 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。 可以交互方式测试 LUIS，一次提供一条话语，或提供一批话语。 通过测试，可比较当前活动模型与已发布的模型。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d231eaf98358e3f8237a820e59433558d293872f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7999f25d9c8bd9a8e44bd858d2860d94be16a62f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033220"
 ---
-# <a name="testing-in-luis"></a>在 LUIS 中进行测试
+# <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 
 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。 
 
@@ -25,6 +26,7 @@ ms.locfileid: "39224341"
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
+
 ## <a name="what-is-a-score-in-testing"></a>测试中的分数是什么？
 请参阅[预测分数](luis-concept-prediction-score.md)概念，详细了解预测分数。
 

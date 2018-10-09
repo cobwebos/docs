@@ -1,24 +1,25 @@
 ---
-title: 说话人辨识 API | Microsoft Docs
-description: 将用于说话人验证和说话人识别的先进算法与认知服务中的说话人辨识 API 结合使用。
+title: 什么是说话人识别？
+titlesuffix: Azure Cognitive Services
+description: 将用于说话人验证和说话人识别的先进算法与说话人识别 API 结合使用。
 services: cognitive-services
 author: dwlin
-manager: zhang
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speaker-recognition
-ms.topic: article
+ms.topic: overview
 ms.date: 03/20/2016
 ms.author: dwlin
-ms.openlocfilehash: 6d5e4e4bbe0cb5e57d2556f680ffcf8d16ee1818
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 13a95aff8b2b0d5dad0574e6107958a20576702a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365656"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227327"
 ---
 # <a name="speaker-recognition-api"></a>说话人识别 API
 
-欢迎使用 Microsoft 说话人辨识 API。 说话人辨识 API 是基于云的 API，提供用于说话人验证和说话人识别的最先进算法。 说话人辨识可以分为两类：说话人验证和说话人识别。
+欢迎使用说话人识别 API。 说话人辨识 API 是基于云的 API，提供用于说话人验证和说话人识别的最先进算法。 说话人辨识可以分为两类：说话人验证和说话人识别。
 
 
 ## <a name="speaker-verification"></a>说话人验证

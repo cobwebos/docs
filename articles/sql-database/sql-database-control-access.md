@@ -1,26 +1,29 @@
 ---
-title: 授予对 Azure SQL 数据库的访问权限 | Microsoft 文档
-description: 了解如何授予对 Microsoft Azure SQL 数据库的访问权限。
+title: 授予对 Azure SQL 数据库和 SQL 数据仓库的访问权限 | Microsoft Docs
+description: 了解如何授予对 Microsoft Azure SQL 数据库和 SQL 数据仓库的访问权限。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 2ab2f047839763239358e61f61f0fc962c17d729
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 06/13/2018
+ms.openlocfilehash: a39e65d5a3aff6158c189f392e2db8bd8273ad1b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647429"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063758"
 ---
-# <a name="azure-sql-database-access-control"></a>Azure SQL 数据库访问控制
-为了提供安全性，SQL 数据库会使用按 IP 限制连接的防火墙规则、要求用户证明其身份的身份验证机制，以及只允许用户执行特定操作和访问特定数据的授权机制，来控制访问。 
+# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL 数据库和 SQL 数据仓库访问控制
+为了提供安全性，Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)会使用按 IP 地址限制连接的防火墙规则、要求用户证明其身份的身份验证机制，以及只允许用户执行特定操作和访问特定数据的授权机制，来控制访问。 
 
 > [!IMPORTANT]
-> 有关 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
+> 有关 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。 有关 SQL 数据仓库安全功能的概述，请参阅 [SQL 数据仓库安全概述](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
 
 ## <a name="firewall-and-firewall-rules"></a>防火墙和防火墙规则
 Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护数据，在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则概述](sql-database-firewall-configure.md)。

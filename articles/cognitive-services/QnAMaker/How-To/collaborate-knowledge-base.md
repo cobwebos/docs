@@ -1,25 +1,25 @@
 ---
-title: 针对知识库展开协作 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何针对 QnA Maker 知识库展开协作
+title: 针对知识库展开协作 - Qna Maker
+titleSuffix: Azure Cognitive Services
+description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure 基于角色的访问控制提供。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: e18d656236276595fc5186a6656349bf28974ead
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035226"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>针对知识库展开协作
 
-通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure [基于角色的访问控制](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)提供。 
+通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure [基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)提供。 
 
 执行以下步骤，与他人共享 QnA Maker 服务：
 

@@ -1,7 +1,7 @@
 ---
-title: 创建 Ruby 应用并将其部署到 Linux 应用服务 | Microsoft Docs
-description: 了解如何使用 Linux 应用服务创建 Ruby 应用。
-keywords: azure app service, linux, oss, ruby
+title: 创建 Ruby on Rails 应用并将其部署到 Linux 应用服务 | Microsoft Docs
+description: 了解如何使用 Linux 应用服务创建 Ruby on Rails 应用。
+keywords: azure 应用服务, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
 author: SyntaxC4
@@ -16,16 +16,19 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 729ed8ac4568f5f39fd62fadbc8d4d0e4595f7b8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04025998f78843b1cc69acd663681b9563a531bc
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885283"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431219"
 ---
-# <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
+# <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 Ruby on Rails 应用
 
 [Linux 上的 Azure 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门介绍如何创建一个基本的 [Ruby on Rails](https://rubyonrails.org/) 应用程序并将其部署到 Azure 上，以作为 Linux 上的 Web 应用。
+
+> [!NOTE]
+> Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），请参阅有关[用于容器的 Web 应用](https://docs.microsoft.com/azure/app-service/containers/)的快速入门。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -48,9 +51,16 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，转到 `hello-world` 目录，然后使用 `rails server` 命令启动该服务器。
 
+第一步是安装必需的 gem。 示例中包含 `Gemfile`，因此无需指定要安装的 gem。 为此，我们将使用捆绑程序：
+
+```
+bundle install
+```
+
+安装 gem 后，我们将使用捆绑程序启动应用：
+
 ```bash
-cd hello-world\bin
-rails server
+bundle exec rails server
 ```
 
 使用 Web 浏览器导航到 `http://localhost:3000` 以在本地测试该应用。

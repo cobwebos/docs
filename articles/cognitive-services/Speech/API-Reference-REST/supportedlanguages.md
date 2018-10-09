@@ -1,26 +1,28 @@
 ---
-title: Microsoft 语音服务支持的语言 | Microsoft Docs
-description: Microsoft 语音服务支持的语言列表。
+title: 语言支持 - 语音 API
+titleSuffix: Azure Cognitive Services
+description: 语音 API 支持的自然语言列表。
 services: cognitive-services
 author: zhouwangzw
-manager: wolfma
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/25/2018
 ms.author: zhouwang
-ms.openlocfilehash: c7007ba39df3c608fa0d1fe4cb79a3966d8c05a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeb0f475193a43ab8b0b0ca562364cbdef8a21d2
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365665"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433134"
 ---
-# <a name="supported-languages"></a>支持的语言
+# <a name="language-and-region-support-for-speech-api"></a>语音 API 的语言和区域支持
 
 ## <a name="interactive-and-dictation-mode"></a>交互和听写模式
 
-Microsoft 语音识别 API 在 `interactive` 和 `dictation` 模式下支持以下语言。 
+Microsoft 语音识别 API 在 `interactive` 和 `dictation` 模式下支持以下语言。
 
 |代码 | 语言 | 代码 | 语言 |
 |-----|-----|-----|-----|
@@ -38,11 +40,12 @@ Microsoft 语音识别 API 在 `interactive` 和 `dictation` 模式下支持以�
 | es-MX | 西班牙语(墨西哥) |zh-CN | 中文(普通话，简体)  |
 | fi-FI | 芬兰语(芬兰) |zh-HK | 中文(香港特别行政区) |
 | fr-CA | 法语(加拿大) | zh-TW | 中文(普通话，台湾地区)|
-| fr-FR | 法语(法国) | ||
+| fr-FR | 法语(法国) | gu-IN | 古吉拉特语(印度) |
+| ta-IN |泰米尔语(印度) | te-IN | 泰卢固语(印度) |
 
 ## <a name="conversation-mode"></a>对话模式
 
-Microsoft 语音识别 API 在 `conversation` 模式下支持以下语言。 
+Microsoft 语音识别 API 在 `conversation` 模式下支持以下语言。
 
 | 代码 | 语言 | 代码 | 语言 |
 |-----|-----|-----|-----|

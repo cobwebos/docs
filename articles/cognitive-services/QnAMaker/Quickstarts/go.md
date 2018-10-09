@@ -1,20 +1,21 @@
 ---
-title: 适用于 Microsoft QnA Maker API (V4) 的 Go 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
+title: 快速入门：适用于 QnA Maker API (V4) 的 Go
+titleSuffix: Azure Cognitive Services
+description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: d68ff91d74a6c43c6d492aa07e916a842b50e96f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 320eb7b643d785899482a00bfc0bda1d89e61b3b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867583"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042374"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>将 Microsoft QnA Maker API 与 Go 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -50,7 +51,7 @@ ms.locfileid: "37867583"
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -189,7 +190,7 @@ func main() {
 
 **创建知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -228,7 +229,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -372,7 +373,7 @@ func main() {
 
 **更新知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -412,7 +413,7 @@ Press any key to continue.
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -484,7 +485,7 @@ func main() {
 
 **发布知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -502,7 +503,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -592,7 +593,7 @@ func main() {
 
 **替换知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -610,7 +611,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -676,7 +677,7 @@ func main() {
 
 **下载知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -790,7 +791,7 @@ func main() {
 
 **获取答案响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -820,7 +821,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -882,7 +883,7 @@ func main() {
 
 **获取知识库详细信息响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -912,7 +913,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -971,7 +972,7 @@ func main() {
 
 **获取用户响应的知识库**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1017,7 +1018,7 @@ Press any key to continue.
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -1085,7 +1086,7 @@ func main() {
 
 **删除知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1103,7 +1104,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -1162,7 +1163,7 @@ func main() {
 
 **获取终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1181,7 +1182,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -1248,7 +1249,7 @@ func main() {
 
 **刷新终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1267,7 +1268,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -1326,7 +1327,7 @@ func main() {
 
 **获取字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1351,7 +1352,7 @@ func main() {
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```go
@@ -1430,7 +1431,7 @@ func main() {
 
 **替换字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {

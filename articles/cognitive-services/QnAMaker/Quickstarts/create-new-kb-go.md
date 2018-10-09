@@ -1,20 +1,21 @@
 ---
-title: 新建知识库 - 适用于 Microsoft QnA Maker API (v4) 的 Go 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 在 Go 中创建知识库以保存常见问题解答或产品手册，以便可以开始使用 QnA Maker。
+title: 快速入门：API Go - 创建知识库 - QnA Maker
+titlesuffix: Azure Cognitive Services
+description: 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: fe763dada6d40822148423443be12df7c1626687
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 17d4a03966b1d6e3f278d5a507e46f9f6fcafa05
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43768662"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034053"
 ---
 # <a name="create-a-new-knowledge-base-in-go"></a>在 Go 中新建知识库
 

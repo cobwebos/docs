@@ -2,19 +2,22 @@
 title: Azure SQL 数据库文件空间管理 | Microsoft Docs
 description: 本页介绍如何管理 Azure SQL 数据库的文件空间，并提供代码示例来演示如何确定是否需要收缩数据库，以及如何执行数据库收缩操作。
 services: sql-database
-author: oslake
-manager: craigg
 ms.service: sql-database
-ms.custom: how-to
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/15/2018
+author: oslake
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142255"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159935"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>管理 Azure SQL 数据库中的文件空间
 本文介绍 Azure SQL 数据库中不同类型的存储空间，以及当需要显式管理分配给数据库和弹性池的文件空间时可以执行的步骤。
@@ -27,7 +30,7 @@ ms.locfileid: "42142255"
 - T-SQL：[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL：[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-存在工作负载模式，其中数据库基础数据文件的分配可能会大于已使用数据页的数量。  如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。  这是因为分配的文件空间不会自动回收。  在这种情况下，数据库或池的已分配空间可能会超出支持的限制并阻止数据增长或性能层更改，并且需要收缩数据文件以进行缓解。
+存在工作负载模式，其中数据库基础数据文件的分配可能会大于已使用数据页的数量。  如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。  这是因为分配的文件空间不会自动回收。  在这种情况下，数据库或池的已分配空间可能会超出支持的限制并阻止数据增长或阻止服务层和计算大小更改，并且需要收缩数据文件以进行缓解。
 
 SQL DB 服务不会自动收缩数据文件来回收未使用的分配空间，因为这可能会影响数据库的性能。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。 
 

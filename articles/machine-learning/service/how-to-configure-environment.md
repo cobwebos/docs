@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 7796accffb7041e567c5e18857d09e105b5268ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961563"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220289"
 ---
-# <a name="how-to-configure-a-development-environment-for-the-azure-machine-learning-service"></a>如何配置 Azure 机器学习服务的开发环境
+# <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>配置 Azure 机器学习服务的开发环境
 
 了解如何使用 Azure 机器学习服务来配置开发环境。 你将了解如何创建将环境与 Azure 机器学习工作区相关联的配置文件。 另外，还将学习如何配置以下开发环境：
 
@@ -39,17 +39,31 @@ ms.locfileid: "46961563"
 
 工作区配置文件由 SDK 用于与 Azure 机器学习服务工作区通信。  可通过两种方式获取此文件：
 
-* 完成[快速入门](quickstart-get-started.md)后，将为你在 Azure Notebooks 中创建 `config.json` 文件。  此文件含包含工作区的配置信息。  将其下载到与引用它的脚本或笔记本所在目录相同的目录中。
+* 完成[快速入门](quickstart-get-started.md)以创建工作区和配置文件。 在 Azure Notebook 中为你创建了文件 `config.json`。  此文件含包含工作区的配置信息。  将其下载或复制到引用它的脚本或 Notebook 所在的目录中。
+
 
 * 使用以下步骤自行创建配置文件：
 
     1. 在 [Azure 门户](https://portal.azure.com)中打开你的工作区。 复制“工作区名称”、“资源组”和“订阅 ID”。 这些值用于创建配置文件。
 
-       门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
-    
         ![Azure 门户](./media/how-to-configure-environment/configure.png) 
     
-    3. 在文本编辑器中，创建一个名为 config.json 的文件。  将以下内容添加到该文件，从门户中插入你的值：
+    1. 使用此 Python 代码创建文件。 在引用工作区的脚本或 Notebook 所在的目录中运行代码：
+        ```
+        from azureml.core import Workspace
+
+        subscription_id ='<subscription-id>'
+        resource_group ='<resource-group>'
+        workspace_name = '<workspace-name>'
+        
+        try:
+           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+           ws.write_config()
+           print('Library configuration succeeded')
+        except:
+           print('Workspace not found')
+        ```
+        它将写入以下 `aml_config/config.json` 文件： 
     
         ```json
         {
@@ -58,12 +72,11 @@ ms.locfileid: "46961563"
         "workspace_name": "<workspace-name>"
         }
         ```
-    
-        >[!NOTE] 
-        >稍后在代码中，你将读取含有 `ws = Workspace.from_config()` 的此文件
-    
-    4. 请确保将 config.json 保存到与引用它的脚本或笔记本相同的目录中。
-    
+        可以将 `aml_config` 目录或仅仅 `config.json` 文件复制到引用工作区的任何其他目录中。
+
+>[!NOTE] 
+>同一目录或以下目录中的其他脚本或 Notebook 将使用 `ws=Workspace.from_config()` 加载工作区
+
 ## <a name="azure-notebooks-and-data-science-virtual-machine"></a>Azure Notebooks 和 Data Science Virtual Machine
 
 对 Azure Notebooks 和 Azure Data Science Virtual Machine (DSVM) 进行了预配，以使用 Azure 机器学习服务。 在这些环境上预安装了所需的组件（如 Azure 机器学习 SDK）。
@@ -98,7 +111,7 @@ Azure Notebooks 是 Azure 云中的 Jupyter Notebook 服务。 Data Science Virt
 3. 若要使用笔记本额外项安装 Azure 机器学习 SDK，请使用以下命令：
 
      ```shell
-    pip install --upgrade azureml-sdk[notebooks,automl,contrib]
+    pip install --upgrade azureml-sdk[notebooks,automl]
     ```
 
     安装 SDK 可能耗时几分钟。
@@ -155,7 +168,7 @@ Azure Notebooks 是 Azure 云中的 Jupyter Notebook 服务。 Data Science Virt
 2. 若要安装 Azure 机器学习 SDK，请使用以下命令：
  
     ```shell
-    pip install --upgrade azureml-sdk[automl,contrib]
+    pip install --upgrade azureml-sdk[automl]
     ```
 
 4. 若要安装用于 AI 的 Visual Studio 代码工具，请参阅[用于 AI 的工具](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)的 Visual Studio 市场条目。 

@@ -2,22 +2,22 @@
 title: 迁移后管理 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
-author: joesackmsft
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/20/2018
+author: joesackmsft
 ms.author: josack
-ms.suite: sql
-ms.prod_service: sql-database
-ms.component: data-movement
-ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 6dd4aacddfbce3e06c1ea9a356a559cc8cd8049c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379446"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166480"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -36,9 +36,9 @@ ms.locfileid: "44379446"
 借助业务连续性和灾难恢复功能，发生灾难时仍可像往常一样继续运行业务。 灾难可能是数据库级别的事件（例如，有人错误地删除了关键表格）或数据中心级别的事件（例如，海啸等区域性灾难）。 
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>如何在 SQL 数据库中创建和管理备份？
-无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选性能层而有所不同。  凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
+无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层而有所不同。 凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
 
-|性能层|保留天数|
+|服务层|保留天数|
 |---|:---:|
 |基本|7|
 |标准|35|
@@ -73,12 +73,12 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 - [Azure Active Directory 身份验证](sql-database-aad-authentication.md)
 - SQL 身份验证。 
 
-不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/connect/active-directory-aadconnect-get-started-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定逻辑服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
+不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定逻辑服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
 |**如果你...**|**SQL 数据库/SQL 数据仓库**|
 |---|---|
 |不想在 Azure 中使用 Azure Active Directory (AD)|使用 [SQL 身份验证](sql-database-security-overview.md)|
-|在本地 SQL Server 上使用 AD|[将 AD 与 Azure AD 联合](../active-directory/connect/active-directory-aadconnect.md)，并使用 Azure AD 身份验证。 借此，你可以使用单一登录。|
+|在本地 SQL Server 上使用 AD|[将 AD 与 Azure AD 联合](../active-directory/hybrid/whatis-hybrid-identity.md)，并使用 Azure AD 身份验证。 借此，你可以使用单一登录。|
 |需要实施多重身份验证 (MFA)|需要 MFA 作为 [Microsoft 条件性访问](sql-database-conditional-access.md)的策略 ，并使用[支持 MFA 的 Azure AD 通用身份验证](sql-database-ssms-mfa-authentication.md)。|
 |有来自 Microsoft 帐户（live.com、outlook.com）或其他域 (gmail.com) 的来宾帐户|在利用 [Azure AD B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)的 SQL 数据库/数据仓库中使用 [Azure AD 通用身份验证](sql-database-ssms-mfa-authentication.md)。|
 |使用来自联合域的 Azure AD 凭据登录到 Windows|使用 [Azure AD 集成身份验证](sql-database-aad-authentication-configure.md)。|
@@ -98,7 +98,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 可以创建服务器级或数据库级的防火墙规则。 可通过门户或 SSMS 创建服务器级防火墙规则。 有关如何设置服务器和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建防火墙规则](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)。
 
 #### <a name="service-endpoints"></a>服务终结点
-默认情况下，SQL 数据库配置为“允许所有 Azure 服务” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但如果不想让任何 Azure IP 访问数据库，则可禁用“允许所有 Azure 服务”。 此外，还可配置[VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
+默认情况下，SQL 数据库配置为“允许 Azure 服务访问服务器” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置[VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
 
 通过服务终结点 (SE) 可以仅向自己在 Azure 中的专用虚拟网络公开关键 Azure 资源。 以此从根本上阻止了对资源的公共访问。 虚拟网络与 Azure 间的流量位于 Azure 主干网络上。 无 SE 时，可获得强制隧道数据包路由。 虚拟网络强制组织的 Internet 流量和 Azure 服务流量通过相同的路由。 借助服务终结点，可优化这进程，因为数据包直接从虚拟网络流向 Azure 主干网络上的服务。
 
@@ -170,7 +170,7 @@ Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。
 - [工作流](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的合规性有什么帮助？
-SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符合性，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings)，并深入了解对你组织而言至关重要的符合性，以了解 SQL 数据库是否包含在符合的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符合性，请访问 [Microsoft 信任中心](https://microsoft.com/trustcenter/compliance/complianceofferings)，并深入了解对你组织而言至关重要的符合性，以了解 SQL 数据库是否包含在符合的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 
@@ -202,14 +202,14 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 
    ![监视图表 2](./media/sql-database-manage-after-migration/chart.png)
 
-在此图表中，还可以按资源配置警报。 这些警报允许使用电子邮件响应资源条件，写入 HTTPS/HTTP 端点或执行操作。 有关详细说明，请参阅[监视 SQL 数据库中的数据库性能](sql-database-single-database-monitor.md)。
+在此图表中，还可以按资源配置警报。 这些警报允许使用电子邮件响应资源条件，写入 HTTPS/HTTP 端点或执行操作。 有关详细信息，请参阅[创建警报](sql-database-insights-alerts-portal.md)。
 
 - 动态管理视图：可以查询 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 动态管理视图，以返回最近一个小时的资源使用统计信息历史记录，也可以查询 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 系统目录视图，返回过去 14 天的历史记录。
 - 查询性能见解：可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
    ![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- Log Analytics 中的 Azure SQL Analytics（预览版）：[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) 允许收集和可视化关键的 Azure SQL Azure 性能指标，对于每个工作区，最多支持 150,000 个 SQL 数据库和 5,000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+- **Log Analytics 中的 Azure SQL Analytics（预览版）**：[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) 允许收集和可视化关键的 Azure SQL Azure 性能指标，对于每个工作区，最多支持 150,000 个 SQL 数据库和 5,000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同？
 用于诊断查询和数据库性能问题的疑难解答技术的主要部分还是一样的。 毕竟支持云的 SQL Server 引擎是一样的。 但是 Azure SQL DB 平台却内置了“智能”功能。 它可帮助你更轻松地诊断和解决性能问题。 还可代表你执行某些纠正操作，在某些情况下，可自动执行主动修复措施。 
@@ -218,21 +218,21 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 
 进行性能故障排除时，请务必确定是应用程序，还是支持它的数据库影响了应用程序的性能。 性能问题往往存在于应用程序层。 问题可能出现在体系结构或是数据访问模式上。 例如，假设你有一个对网络延迟敏感的聊天应用程序。 在这种情况下，应用程序会受到影响，因为在应用程序和服务器间往返出现了许多短请求（“聊天”），在网络拥塞时，这些往返请求会快速增加。 要在这种情况下提高性能，可使用[批量查询](sql-database-performance-guidance.md#batch-queries)。 批量查询会为你带来极大的帮助，因为此时会对请求进行批处理，帮助你减少往返请求的延迟，提高应用程序的性能。 
 
-此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能需要根据工作负载需求增加和减少情况来更改性能级别和/或服务层。 
+此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层。 
 
 有关优化性能问题的全套建议，请参阅：[优化数据库](sql-database-performance-guidance.md#tune-your-database)。
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-performance-level"></a>如何确保我使用的是适当的服务层和性能级别？
-SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服务层，均可获得与服务级别相关的有保障且可预测的性能。 根据工作负荷情况，活动可能激增，资源利用率可能会达到当前所处性能等级的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍旧存在限制问题，请考虑转移到更高的性能级别或服务级别。 
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>如何确保我使用的是适当的服务层和计算大小？
+SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服务层，将获得与该服务层对应的有保障且可预测的性能。 根据工作负荷情况，活动可能会激增，资源利用率可能会达到当前所处计算大小的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍然存在限制问题，请考虑转移到更高的服务层或计算大小。 
 
-|**服务级别**|**常见用例方案**|
+|**服务层**|**常见用例方案**|
 |---|---|
 |**基本**|用户较少，数据库不具有高并发性、扩展性和性能要求的应用程序。 |
 |**标准**|具有相当高的并发性、扩展性和性能要求以及低到中等 IO 要求的应用程序。 |
 |**高级**|具有大量并发用户、高 CPU/内存和高 IO 需求的应用程序。 高并发性、高吞吐量和对延迟敏感的应用可利用高级等级。 |
 |||
 
-为确保处于正确的性能级别，可通过“如何监视 SQL 数据库中的性能和资源利用率”中所述的某种方式来监视查询和数据库资源消耗。 如果发现查询/数据库一直在 CPU/内存等上快速运行，则可考虑升级为更高的性能等级。 同样，如果注意到，即使在繁忙时间，似乎也没有使用多少资源，则可考虑下调当前性能等级。 
+为确保处于正确的计算大小，可通过“如何监视 SQL 数据库中的性能和资源利用率”中所述的某种方式来监视查询和数据库资源消耗。 如果发现查询/数据库一直在过度消耗 CPU/内存等，则可考虑纵向扩展到更高的计算大小。 同样，如果你发现，即使在繁忙时间，似乎也没有使用多少资源，则可考虑下调当前计算大小。 
 
 如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。 
 

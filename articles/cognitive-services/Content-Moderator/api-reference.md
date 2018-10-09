@@ -1,20 +1,21 @@
 ---
-title: Azure 内容审查器 API 参考 | Microsoft Docs
+title: API 参考 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 了解内容审查器的内容审核和评审 API。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 94de9b91cc242e8b7e5479cacab8380adac551f6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f065310e3afeaf95af602e513421da6770c9583f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365455"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222398"
 ---
 # <a name="content-moderator-api-reference"></a>内容审查器 API 参考
 
@@ -27,7 +28,7 @@ ms.locfileid: "35365455"
 
 可以使用以下内容审查器 API 设置审查后工作流。
 
-| 说明 | 引用 |
+| Description | 引用 |
 | -------------------- |-------------|
 | **图像审查 API**<br /><br />通过使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和不雅内容。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。 <br /><br />| [图像审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "图像审查 API 参考")   |
 | **文本审查 API**<br /><br />扫描文本内容。 返回不雅用语和个人身份信息 (PII)。 <br /><br />使用此信息发布、拒绝或查看审查后工作流中的内容。<br /><br /> | [文本审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "文本审查 API 参考")   |
@@ -38,7 +39,7 @@ ms.locfileid: "35365455"
 
 评审 API 包括以下组件：
 
-| 说明 | 引用 |
+| Description | 引用 |
 | -------------------- |-------------|
 | **作业**<br /><br /> 为图像和文本内容启动扫描并评审审查工作流。 审查作业通过使用图像审查 API 和文本审查 API 扫描你的内容。 审查作业使用已定义和默认的工作流来生成评审。 <br /><br />在人工审查器审查了自动分配的标记和预测数据并提交了内容审核决定后，评审 API 会将所有信息提交到 API 终结点。<br /><br /> | [作业参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "作业参考")   |
 | **评审**<br /><br />使用“评审”工具可直接为人工审查器创建图像或文本评审。<br /><br /> 在人工审查器审查了自动分配的标记和预测数据并提交了内容审核决定后，评审 API 会将所有信息提交到 API 终结点。<br /><br /> | [评审参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "评审参考")   |

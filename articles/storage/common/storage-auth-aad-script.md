@@ -5,28 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 6354d89ff5a23ccb51b85737b3a842c08534683e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248159"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223604"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）
 
-Azure 存储为 Azure CLI 和 PowerShell 提供预览扩展，使用户可登录并在 Azure Active Directory (Azure AD) 标识下运行脚本命令。 Azure AD 标识可以为用户、组或应用程序服务主体，或者可为[托管服务标识](../../active-directory/managed-service-identity/overview.md)。 可通过基于角色的访问控制 (RBAC) 向 Azure AD 标识分配访问存储资源的权限。 有关 Azure 存储中 RBAC 角色的详细信息，请参阅[通过 RBAC 管理 Azure 存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
+Azure 存储为 Azure CLI 和 PowerShell 提供预览扩展，使用户可登录并在 Azure Active Directory (Azure AD) 标识下运行脚本命令。 Azure AD 标识可以为用户、组或应用程序服务主体，或者可为[托管服务标识](../../active-directory/managed-identities-azure-resources/overview.md)。 可通过基于角色的访问控制 (RBAC) 向 Azure AD 标识分配访问存储资源的权限。 有关 Azure 存储中 RBAC 角色的详细信息，请参阅[通过 RBAC 管理 Azure 存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
 
 使用 Azure AD 标识登录 Azure CLI 或 PowerShell 时，会返回一个用于访问该标识下 Azure 存储的访问令牌。 CLI 或 PowerShell 之后自动使用该令牌针对 Azure 存储进行操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
-> [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
->
-> 预览期间，RBAC 角色分配可能需要最多五分钟的时间进行传播。
->
-> Azure AD 与 Azure 存储集成要求用户使用 HTTPS 进行 Azure 存储操作。
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="supported-operations"></a>支持的操作
 
@@ -61,40 +56,50 @@ az storage blob download --account-name storagesamples --container sample-contai
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>通过 Azure AD 标识调用 PowerShell 命令
 
+Azure PowerShell 仅支持通过以下预览模块之一使用 Azure AD 标识登录： 
+
+- 4.4.0-preview 
+- 4.4.1-preview 
+
 使用 Azure PowerShell 通过 Azure AD 标识登录：
 
-1. 确保已安装 PowerShellGet 最新版本。 运行以下命令安装最新版本：
+1. 卸载以前安装的所有 Azure PowerShell：
+
+    - 使用“设置”下的“应用和功能”设置从 Windows 中删除以前安装的所有 Azure PowerShell。
+    - 从 `%Program Files%\WindowsPowerShell\Modules` 中删除所有 **Azure*** 模块。
+
+1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
  
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview"
+    Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. 安装 PowerShellGet 后关闭并重新打开 PowerShell 窗口。 
 
-2. 卸载以前的所有 Azure PowerShell 安装。
-3. 安装 AzureRM：
+1. 安装最新版本的 Azure PowerShell：
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. 安装预览模块：
+1. 安装一个支持 Azure AD 的 Azure 存储预览模块：
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. 关闭并重新打开 PowerShell 窗口。
+1. 调用 [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
+1. 若要使用 Azure AD 标识调用 cmdlet，请将新创建的上下文传递给 cmdlet。
 
-5. 调用 [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
-6. 若要通过 Azure AD 标识调用 cmdlet，将上下文传递到 cmdlet。
-
-以下示例演示如何使用 Azure AD 标识从 Azure PowerShell 中列出容器中的 blob： 
+以下示例演示如何使用 Azure AD 标识通过 Azure PowerShell 列出容器中的 blob。 请务必将占位符帐户名称和容器名称替换为自己的值： 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
-- 若要了解如何将托管服务标识用于 Azure 存储，请参阅[使用 Azure AD 通过 Azure 托管服务标识进行身份验证（预览）](storage-auth-aad-msi.md)。
-- 若要了解如何从存储应用程序内向容器和队列授予访问权限，请参阅[将 Azure AD 用于存储应用程序](storage-auth-aad-app.md)。
+- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure 托管标识（预览）验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。
+- 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
 - 有关适用于 Azure Blob 和队列的 Azure AD 集成的详细信息，请参阅 Azure 存储团队博客文章[适用于 Azure 存储的 Azure AD 身份验证预览版发布公告](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)。

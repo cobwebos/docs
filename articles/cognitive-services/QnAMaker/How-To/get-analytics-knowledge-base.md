@@ -1,21 +1,21 @@
 ---
-title: 如何获取有关知识库的分析 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何获取有关知识库的分析
+title: 有关知识库的分析
+titleSuffix: Azure Cognitive Services
+description: 如果你在创建 QnA Maker 服务期间已启用了 App Insights，则 QnA Maker 会存储所有聊天日志和其他遥测数据。 运行示例查询来从 App Insights 获取聊天日志。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 1588d0c5a8eaf4e161b5319c9f33a772dc56b247
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim88
+ms.openlocfilehash: dc363a3ba0d809a3307a6803993bdf500da45f1b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366267"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035402"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
@@ -27,7 +27,7 @@ ms.locfileid: "35366267"
 
 2. 选择“分析”。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
 
-    ![选择“分析”](../media/qnamaker-how-to-analytics-kb/analytics.png)
+    ![选择 Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
 
 3. 粘贴以下查询并运行它。
 

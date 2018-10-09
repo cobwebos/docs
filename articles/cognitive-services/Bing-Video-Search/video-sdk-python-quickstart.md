@@ -1,23 +1,23 @@
 ---
-title: 视频搜索 SDK Python 快速入门 | Microsoft Docs
+title: 快速入门：视频搜索 SDK、Python
+titleSuffix: Azure Cognitive Services
 description: 设置视频搜索 SDK 控制台应用程序。
-titleSuffix: Azure Video Search SDK Python quickstart
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1c4769a6ca3391fa595cc078651beff330bbfd60
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366694"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225644"
 ---
-# <a name="video-search-sdk-python-quickstart"></a>视频搜索 SDK Python 快速入门
+# <a name="quickstart-bing-video-search-sdk-with-python"></a>快速入门：必应视频搜索 SDK 与 Python
 
 必应图像搜索 SDK 包含用于 Web 查询以及对结果进行分析的 REST API 功能。
 

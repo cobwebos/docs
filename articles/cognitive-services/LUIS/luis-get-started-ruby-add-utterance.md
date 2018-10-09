@@ -1,20 +1,21 @@
 ---
-title: 快速入门 - 使用 Ruby 更改模型并训练 LUIS 应用 - Azure 认知服务 | Microsoft Docs
+title: Ruby 快速入门 - 更改模型并训练 LUIS 应用
+titleSuffix: Azure Cognitive Services
 description: 此 Ruby 快速入门将示例话语添加到家庭自动化应用并训练该应用。 示例话语是映射到意向的对话式用户文本。 通过提供意向的示例话语，可以教 LUIS 用户提供的文本类型属于哪种意向。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 537ebe2d008e313d2fb29d05143804c3478567e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2d4633592742bd81cc6972884a0c4f5141aa9943
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159446"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030892"
 ---
 # <a name="quickstart-change-model-using-ruby"></a>快速入门：使用 Ruby 更改模型
 

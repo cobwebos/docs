@@ -1,26 +1,29 @@
 ---
-title: 发布知识库 - Node.js 快速入门 - Azure 认知服务 | Microsoft Docs
+title: 快速入门：Node.js 发布知识库 - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 如何在 Node.js 中为 QnA Maker 发布知识库。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: fad3857774f2726e3db595ee6bc72d52a8ac46d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 00642661995e16bda9ad995e69545b28468779c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "43768776"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040932"
 ---
 # <a name="publish-a-knowledge-base-in-nodejs"></a>在 Node.js 中发布知识库
 
 以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
 
-如果还没有知识库，可以创建一个示例知识库用于此快速入门：[创建新的知识库](create-new-kb-nodejs.md)。
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+
+如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-nodejs.md)。
 
 1. 在喜欢使用的 IDE 中新建一个 Node 项目。
 1. 添加以下提供的代码。

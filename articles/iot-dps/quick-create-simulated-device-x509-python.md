@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c058d991d2655985d24b66cc1c6f30da3ddb7785
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: b2346276def178461a04eed008cc21fb22dc8464
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023484"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040544"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -57,26 +57,38 @@ ms.locfileid: "42023484"
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
 
-在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
+在本部分中，将使用自签名的 X.509 证书。 请务必记住以下几点：
 
 * 自签名证书仅用于测试，不应在生产环境中使用。
-* 自签名证书的默认过期日期为 1 年。
+* 自签名证书的默认过期日期为一年。
 
 你将使用来自 Azure IoT C SDK 的示例代码创建要与模拟设备的个人注册条目一起使用的证书。
 
 1. 打开在 cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
 
-2. 右键单击 **Provision\_Tools** 文件夹中的 **dice\_device\_enrollment** 项目，然后选择“设置为启动项目”。 运行解决方案。 在输出窗口中，当系统提示时输入 `i` 进行单独注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 将输出（从 *-----BEGIN CERTIFICATE-----* 开始，到 *-----END CERTIFICATE-----* 结束）复制到剪贴板，确保将这两行也包括进去。 
+2. 右键单击 **Provision\_Tools** 文件夹中的 **dice\_device\_enrollment** 项目，然后选择“设置为启动项目”。 运行解决方案。 
+
+3. 在输出窗口中，当系统提示时输入 `i` 进行单独注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 
+    
+    将第一个证书复制到剪贴板。 从第一次出现以下项开始：
+    
+        -----BEGIN CERTIFICATE----- 
+        
+    在第一次出现以下项后复制结束：
+    
+        -----END CERTIFICATE-----
+        
+    请确保也包含这两行。 
 
     ![Dice 设备注册应用程序](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  
-3. 在 Windows 计算机上创建名为 **_X509testcertificate.pem_** 的文件，在所选编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存文件。 
+4. 在 Windows 计算机上创建名为 **_X509testcertificate.pem_** 的文件，在所选编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存文件。 
 
-4. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开预配服务。
+5. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开预配服务。
 
-5. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 
+6. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
-6. 在“添加注册”面板下，输入以下信息：
+7. 在“添加注册”面板下，输入以下信息：
     - 选择“X.509”作为标识证明机制。
     - 在“主要证书 .pem 或 .cer 文件”下，单击“选择文件”选择在前述步骤中创建的证书文件 X509testcertificate.pem。
     - （可选）可以提供以下信息：
@@ -85,7 +97,7 @@ ms.locfileid: "42023484"
       - 使用设备所需的初始配置更新“初始设备孪生状态”。
     - 完成后，单击“保存”按钮。 
 
-    [![在门户中为 X.509 证明添加单个注册](./media/python-quick-create-simulated-device-x509/individual-enrollment.png)](./media/python-quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
+    [![在门户中为 X.509 证明添加单个注册](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
    成功注册以后，X.509 设备会在“单个注册”选项卡的“注册 ID”列下显示为 **riot-device-cert**。 
 
@@ -132,7 +144,7 @@ ms.locfileid: "42023484"
 
 8. 在门户中导航到已链接到预配服务的 IoT 中心，然后打开“Device Explorer”边栏选项卡。 将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“Device Explorer”边栏选项卡上，“状态”为“已启用”。 如果在运行示例设备应用程序之前已打开边栏选项卡，则可能需要单击顶部的“刷新”按钮。 
 
-    ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device-x509/hub-registration.png) 
+    ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device-x509/registration.png) 
 
 > [!NOTE]
 > 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。

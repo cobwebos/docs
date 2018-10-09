@@ -1,21 +1,21 @@
 ---
-title: 必应视觉搜索 API 概述 | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: 介绍如何获取与图像相关的详细信息或见解，如类似图像或购物源。
+title: 什么是必应视觉搜索？
+titleSuffix: Azure Cognitive Services
+description: 必应视觉搜索提供与图像相关的详细信息或见解，如类似图像或购物源。
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aa563d89b1834f5be952f13c31a2451d809709b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2ab73281eb050a52b596504ea9cc0e478144ff24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006523"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226752"
 ---
 # <a name="what-is-bing-visual-search-api"></a>什么是必应视觉搜索 API？
 

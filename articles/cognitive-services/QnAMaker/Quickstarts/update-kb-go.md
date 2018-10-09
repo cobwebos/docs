@@ -1,20 +1,21 @@
 ---
-title: 更新知识库 - Go 快速入门 - Azure 认知服务 | Microsoft Docs
+title: 快速入门：Go 更新知识库 - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 如何在 Go 中为 QnA Maker 更新知识库。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 613bcd67f766497c9dca49f2ac2dd7a9f7b1cacf
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 03287a2c7a79f0a19d12d7246b2aba679f4ae1a9
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43768661"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040153"
 ---
 # <a name="update-a-knowledge-base"></a>更新知识库
 

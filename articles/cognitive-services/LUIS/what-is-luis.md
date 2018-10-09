@@ -3,18 +3,18 @@ title: 什么是语言理解 (LUIS) - Azure 认知服务 | Microsoft Docs
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。 LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能够以自然语言与用户通信并完成任务即可。 这些客户端应用程序包括社交媒体应用、聊天机器人以及支持语音的桌面应用程序。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
 ms.date: 08/15/2018
 ms.author: diberry
-ms.openlocfilehash: e74abb30709f186d3c1139793cf34d3e033ff967
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a8e9deb7c677d04634b223045adc2d31fa74ba6e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191629"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033033"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -78,10 +78,10 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 
 * **自定义实体** LUIS 提供多种方式来自行标识自定义的意向和实体，比如机器学习到的实体、特定实体或文本实体，以及机器学习到的实体和文本实体的组合。
 
-## <a name="build-the-luis-model"></a>生成 LUIS 模型
-通过[创作](https://aka.ms/luis-authoring-apis) API 或 LUIS 门户生成模型。
+## <a name="build-the-luis-model"></a>构建 LUIS 模型
+使用[创作](https://aka.ms/luis-authoring-apis) API 或 LUIS 门户构建模型。
 
-LUIS 模型从名为**[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户**[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过**[实体](luis-concept-entity-types.md)** 来提取。 
+LUIS 模型从称为**[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户**[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过**[实体](luis-concept-entity-types.md)** 来提取。 
 
 |示例用户话语|意向|实体|
 |-----------|-----------|-----------|
@@ -126,7 +126,7 @@ An example [utterance](luis-how-to-add-example-utterances.md) is text input from
 -->
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
-在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://aka.ms/luis-endpoint-apis) API。 API 将模型应用到需分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
+在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://aka.ms/luis-endpoint-apis) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
 
 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。 
 
@@ -171,19 +171,19 @@ Patterns allow you to simplify an intent's utterance collection into common [tem
 Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
 -->
 
-## <a name="integrating-with-luis"></a>集成 LUIS
+## <a name="integrating-with-luis"></a>与 LUIS 进行集成
 作为 REST API，LUIS 可以与任何发送 HTTP 请求的产品、服务或框架配合使用。 以下列表包含与 LUIS 配合使用的顶级 Microsoft 产品和服务。
 
 适用于LUIS 的 Microsoft 客户端应用程序包括：
 * [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) 或 [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - 通过此 [Mixed Reality 课程](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303)了解与 LUIS 集成的详细信息。 
+* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - 通过此 [Mixed Reality 课程](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303)了解与 LUIS 进行集成的详细信息。 
 
 可以将 LUIS 与机器人配合使用的 Microsoft 工具：
-* 启用[调度](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch)时，可以使用调度程序模型通过父应用使用多个 LUIS 和 QnA Maker 应用。
+* 启用[调度](https://aka.ms/dispatch-tool)时，可以使用调度程序模型通过父应用使用多个 LUIS 和 QnA Maker 应用。
 * 可以使用[聊天学习器](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview)，通过 LUIS 更快速地生成机器人聊天内容。
 * [项目个性聊天](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview)，用于处理机器人小型谈话。
 
-其他与 LUIS 配合使用的认知服务：
+与 LUIS 配合使用的其他认知服务：
 * [QnA Maker][qnamaker] 可将多种类型的文本组合到一个问题答案知识库中。
 * [必应拼写检查 API](../bing-spell-check/proof-text.md) 提供预测前的文本更正功能。 
 * [语音服务](../Speech-Service/overview.md)可将口述语言请求转化成文本。 
@@ -192,7 +192,7 @@ Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or fro
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询预测终结点](luis-get-started-cs-get-intent.md)（属于公共 IoT 应用）。
+使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询公用 IoT 应用的预测终结点](luis-get-started-cs-get-intent.md)。
 
 <!-- Reference-style links -->
 [bot-framework]: https://docs.microsoft.com/bot-framework/

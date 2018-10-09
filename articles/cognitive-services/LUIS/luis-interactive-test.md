@@ -1,24 +1,25 @@
 ---
-title: 训练和测试 LUIS 应用 - Azure | Microsoft Docs
-description: 使用语言理解智能服务 (LUIS) 持续优化应用程序并改进其语言理解能力。
+title: 在 LUIS 门户中测试 LUIS 应用
+titleSuffix: Azure Cognitive Services
+description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 925b96b61de876d40105c89556fd6dcb600d1b1a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 6bb03975e36e93c2496eb4c6013be21ebc891ed1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223644"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039695"
 ---
 # <a name="test-your-luis-app"></a>测试 LUIS 应用
 对应用进行<a name="train-your-app"></a>
-[训练](luis-how-to-train.md)和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
+[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>

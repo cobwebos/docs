@@ -2,21 +2,29 @@
 title: 安装弹性数据库作业 | Microsoft 文档
 description: 演练如何安装弹性作业功能。
 services: sql-database
-manager: craigg
-author: ddove
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 37052c86736a05012b9bb996f07bbf2568d7c879
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645606"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163150"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+
 可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](sql-database-elastic-jobs-overview.md)。只有安装了 PowerShell 程序包，才能获取使用 PowerShell API 创建和管理作业的权限。 此外，PowerShell API 目前提供的功能明显多于门户。
 
 如果从现有的“弹性池”通过门户安装了“弹性数据库作业”，最新的 Powershell 预览包含用于升级现有安装的脚本。 强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
@@ -88,7 +96,7 @@ ms.locfileid: "34645606"
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>提供标准版的服务级别目标。 此参数默认为 S0。 接受参数值 S0/S1/S2/S3/S4/S6/S9/S12，这会导致 Azure SQL 数据库使用各自的 SLO。 有关 SQL 数据库 SLO 的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
+    <td>为标准版提供计算大小。 此参数默认为 S0。 接受参数值 S0/S1/S2/S3/S4/S6/S9/S12，这会导致 Azure SQL 数据库使用各自的计算大小。 有关 SQL 数据库计算大小的详细信息，请参阅[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview.md#components-and-pricing)。</td>
 </tr>
 
 </tr>

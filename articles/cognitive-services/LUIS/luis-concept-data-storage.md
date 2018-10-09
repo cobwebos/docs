@@ -1,22 +1,23 @@
 ---
-title: 了解 LUIS 中的数据存储 - Azure | Microsoft Docs
-description: 了解语言理解 (LUIS) 中的数据存储方式
+title: LUIS 中的数据存储 - 语言理解
+titleSuffix: Azure Cognitive Services
+description: 了解语言理解 (LUIS) 中的数据存储方式。 LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e4e289db0803a127bdbff5122095ae2125cdbb38
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 6d42246b3078e0f4684dfe29bca720e8f8d779cd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226186"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034699"
 ---
-# <a name="data-storage-and-removal"></a>数据存储和删除
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
 LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。 此数据将存储 30 天。 
 
 ## <a name="export-and-delete-app"></a>导出和删除应用

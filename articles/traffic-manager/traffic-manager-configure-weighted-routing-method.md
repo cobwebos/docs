@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 7aa4c9120d44ff1b3e59a57090ea04e3f8021fc4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6637132481ee33d43ec2b747ba89a56983205ff2
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111005"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432437"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>在流量管理器中配置加权流量路由方法
 
 一种常见的流量路由方法模式是提供一组相同的终结点（包括云服务和网站），并以循环方式向每个终结点发送流量。 以下步骤概述如何配置这种类型的流量路由方法。
 
 > [!NOTE]
-> Azure 网站已针对数据中心（也称为区域）内的网站提供了轮询机制负载均衡功能。 可以使用流量管理器为不同数据中心内的网站指定轮询机制流量路由方法。
+> Azure Web 应用已经为 Azure 区域内的网站（包含多个数据中心）提供了循环负载均衡功能。 可以使用流量管理器为不同数据中心内的网站指定轮询机制流量路由方法。
 
 ## <a name="to-configure-the-weighted-traffic-routing-method"></a>配置加权流量路由方法
 

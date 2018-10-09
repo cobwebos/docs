@@ -1,21 +1,23 @@
 ---
 title: 租户各有数据库 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档
 description: 部署并探究一个 Wingtip Tickets SaaS 多租户应用程序，该应用程序使用 Azure SQL 数据库演示了“每租户一个数据库”模式和其他 SaaS 模式。
-keywords: sql 数据库教程
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 77e3cdcbd18a4a5313160b947ce278a75f3e3de3
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056380"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
@@ -67,7 +69,7 @@ ms.locfileid: "39423529"
 
 1. 部署应用程序。
 
-    a. 选择“我同意上述条款和条件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我同意上述条款和条件”。
 
     b. 选择“购买”。
 
@@ -242,7 +244,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 - 第一个图表标记为“资源利用率”，显示池 eDTU 利用率。
 - 第二个图表显示池中最活跃的前五个数据库的 eDTU 利用率。
 
-这两个图表说明了弹性池和 SQL 数据库非常适合用于不可预测的 SaaS 应用程序工作负载。 这些图表表明，四个数据库中的每个数据库都激增到高达 40 eDTU，但所有数据库均可由一个 50 eDTU 池轻松提供支持。 50-eDTU 池甚至还可支持更大的工作负载。 如果将这些数据库预配为独立数据库，则每一个都需要是 S2 (50 DTU) 才能支持激增情况。 四个独立 S2 数据库的成本几乎是池价格的三倍。 在实际情况下，SQL 数据库客户在 200 eDTU 的池中最多可运行 500 个数据库。 有关详细信息，请参阅[性能监视教程](saas-dbpertenant-performance-monitoring.md)。
+这两个图表说明了弹性池和 SQL 数据库非常适合用于不可预测的 SaaS 应用程序工作负载。 这些图表表明，四个数据库中的每个数据库都激增到高达 40 eDTU，但所有数据库均可由一个 50 eDTU 池轻松提供支持。 50-eDTU 池甚至还可支持更大的工作负载。 如果将这些数据库预配为单一数据库，则每一个数据库都需要是 S2 (50 DTU) 才能支持激增情况。 四个独立 S2 数据库的成本几乎是池价格的三倍。 在实际情况下，SQL 数据库客户在 200 eDTU 的池中最多可运行 500 个数据库。 有关详细信息，请参阅[性能监视教程](saas-dbpertenant-performance-monitoring.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

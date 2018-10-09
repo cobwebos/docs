@@ -1,20 +1,21 @@
 ---
-title: 在 Azure 中的 LUIS 应用中使用预生成域 | Microsoft Docs
-description: 了解如何在语言理解智能服务 (LUIS) 应用程序中使用预生成域。
+title: 使用预生成域在 LUIS 应用中更快地构建应用
+titleSuffix: Azure Cognitive Services
+description: 语言理解 (LUIS) 提供预生成域，这些域是预生成的意向和实体集，这些意向和实体集可以为域或常见类别的客户端应用程序协同工作。 预生成域经过预培训，可直接添加到 LUIS 应用中。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: df57f9adf5bf7f5f652a77ddeafe950463c6a9fc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224171"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037365"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>在 LUIS 应用中使用预生成域  
 

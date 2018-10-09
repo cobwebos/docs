@@ -1,58 +1,106 @@
 ---
-title: 快速入门：在 Node.js 中使用 SDK 请求和筛选图像
-description: 本快速入门将使用 Node.js 请求和筛选必应图像搜索返回的图像。
-titleSuffix: Azure cognitive services
+title: 快速入门：通过适用于 Node.js 的必应图像搜索 SDK 搜索图像
+description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 Node.js 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 2fa3a221d42a522f19b00a4cb5596d93039a85ac
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929764"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220188"
 ---
-# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>快速入门：使用 SDK 和 Node.js 请求和筛选图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>快速入门：通过必应图像搜索 SDK 和 Node.js 搜索图像
 
-必应图像搜索 SDK 包含用于图像查询以及对结果进行分析的 REST API 功能。 
+在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 JavaScript 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 
-Git Hub 上提供了 [Node 必应图像搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js)。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) 上提供了此示例的源代码以及附加的错误处理和注释。
 
-## <a name="application-dependencies"></a>应用程序依赖项
+## <a name="prerequisites"></a>先决条件
 
-若要使用必应图像搜索 SDK 设置控制台应用程序，请在开发环境中运行 `npm install azure-cognitiveservices-imagesearch`。
+* [适用于 Node.js 的认知服务图像搜索 SDK](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
+    * 使用 `npm install azure-cognitiveservices-imagesearch` 进行安装
+* [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) 模块
+    * 使用 `npm install ms-rest-azure` 进行安装
 
-## <a name="image-search-client"></a>图像搜索客户端
-在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。 创建 `CognitiveServicesCredentials` 的实例：
-```
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-然后对该客户端进行实例化：
-```
-const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
-let client = new ImageSearchAPIClient(credentials);
-```
-使用客户端通过查询文本进行搜索，在本例中查询文本为“El Capitan”：
-```
-client.imagesOperations.search('El Capitan', function (err, result, request, response) {
-    if (err) throw err;
-    console.log(result.value);
-});
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-```
-<!-- Need to sanitize result
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'ImageObjectElementType'
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-![Imageresults](media/node-sdk-quickstart-image-results.png)
--->
+1. 在你喜欢使用的 IDE 或编辑器中创建一个新的 JavaScript 文件，设置严格性、https 和其他要求。
+
+    ```javascript
+    'use strict';
+    https = require('https');
+    const Search = require('azure-cognitiveservices-imagesearch');
+    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    ```
+
+2. 在项目的主方法中，创建你的有效订阅密钥的变量，必应要返回的图像结果，以及搜索词。 然后，使用密钥实例化图像搜索客户端。
+
+    ```javascript
+    //replace this value with your valid subscription key.
+    let serviceKey = "ENTER YOUR KEY HERE";
+
+    //the search term for the request
+    let searchTerm = "canadian rockies";
+
+    //instantiate the image search client 
+    let credentials = new CognitiveServicesCredentials(serviceKey);
+    let imageSearchApiClient = new Search.ImageSearchAPIClient(credentials);
+
+    ```
+
+## <a name="create-an-asynchronous-helper-function"></a>创建异步帮助程序函数
+
+1. 创建一个以异步方式调用客户端的函数，并从必应图像搜索服务返回响应。  
+    ```javascript
+    //a helper function to perform an async call to the Bing Image Search API
+    const sendQuery = async () => {
+        return await imageSearchApiClient.imagesOperations.search(searchTerm);
+    };
+    ```
+## <a name="send-a-query-and-handle-the-response"></a>发送查询并处理响应
+
+1. 调用帮助程序函数并处理其 `promise` 来分析响应中返回的图像结果。
+
+    如果响应中包含搜索结果，则存储第一个结果并输出其详细信息，例如缩略图 URL、原始 URL 以及返回的图像的总数。  
+    ```javascript
+    sendQuery().then(imageResults => {
+        if (imageResults == null) {
+        console.log("No image results were found.");
+        }
+        else {
+            console.log(`Total number of images returned: ${imageResults.value.length}`);
+            let firstImageResult = imageResults.value[0];
+            //display the details for the first image result. After running the application,
+            //you can copy the resulting URLs from the console into your browser to view the image.
+            console.log(`Total number of images found: ${imageResults.value.length}`);
+            console.log(`Copy these URLs to view the first image returned:`);
+            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+            console.log(`First image content url: ${firstImageResult.contentUrl}`);
+        }
+      })
+      .catch(err => console.error(err))
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 
-[认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+> [必应图像搜索单页应用教程](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+
+## <a name="see-also"></a>另请参阅
+
+* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Azure 认知服务 SDK 的 Node.js 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

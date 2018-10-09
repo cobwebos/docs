@@ -4,16 +4,16 @@ description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/27/2017
+ms.date: 09/21/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e085d6c2962ec2a2324bfc134b0e201df04a336
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: e1825bcdd8dbb06ef027919416b2d0532a7df9c2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028959"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422824"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -22,7 +22,7 @@ IoT 解决方案中的网关用途特是定于解决方案的，并将设备连�
 ## <a name="patterns"></a>模式
 将 IoT Edge 设备用作网关有三种模式：透明、协议转换和标识转换：
 * 透明 – 理论上可以连接到 IoT 中心的设备可以改为连接到网关设备。 这意味着下游设备有其自己的 IoT 中心标识，并将使用任一 MQTT、AMQP 或 HTTP 协议。 网关只是在设备与 IoT 中心之间传递通信。 这些设备不会意识到它们正通过网关与云进行通信，而与 loT 中心设备交互的用户也不会觉察到中间网关设备。 因此，网关是透明的。 请参阅[创建透明网关][lnk-iot-edge-as-transparent-gateway]操作指南，了解有关将 IoT Edge 设备用作透明网关的详细信息。
-* **协议转换** – 不支持 MQTT、AMQP 或 HTTP 的设备使用网关设备将数据发送到 IoT 中心。 网关非常智能，它能够理解下游设备使用的协议；然而，它是唯一一个在 loT 中心拥有标识的设备。 所有信息好像都来自一台设备，即网关。 这意味着，如果云应用程序想要根据设备推理数据，则下游设备就必须在其消息中嵌入额外的标识信息。 此外，IoT 中心基元（如克隆和方法）仅适用于网关设备，而不适用于下游设备。
+* **协议转换** - 也称为不透明网关模式，不支持 MQTT、AMQP 或 HTTP 的设备使用网关设备将数据发送到 IoT 中心。 网关非常智能，它能够理解下游设备使用的协议；然而，它是唯一一个在 loT 中心拥有标识的设备。 所有信息好像都来自一台设备，即网关。 这意味着，如果云应用程序想要根据设备推理数据，则下游设备就必须在其消息中嵌入额外的标识信息。 此外，IoT 中心基元（如克隆和方法）仅适用于网关设备，而不适用于下游设备。
 * 标识转换 - 无法连接到 IoT 中心的设备会连接到网关设备，以此代表下游设备提供 IoT 中心标识和协议转换。 网关非常智能，它能够理解下游设备使用的协议，为其提供标识，并转换 IoT 中心基元。 下游设备作为一流设备出现在 IoT 中心，随附克隆和方法。 用户可以与 IoT 中心的设备进行交互，但并觉察不到中间网关设备。
 
 ![网关模式关系图][1]
@@ -40,7 +40,7 @@ IoT 解决方案中的网关用途特是定于解决方案的，并将设备连�
 实现标识转换的网关提供了协议转换的好处，并且还允许从云完全管理下游设备。 IoT 解决方案中的所有设备都将出现在 IoT 中心，而不管它们的协议是什么。
 
 ## <a name="cheat-sheet"></a>备忘单
-下面一个速查表，它可以在使用透明、不透明和代理网关时比较 loT 中心基元。
+下面一个速查表，用于在使用透明、不透明（协议）和代理网关时比较 loT 中心基元。
 
 | &nbsp; | 透明网关 | 协议转换 | 标识转换 |
 |--------|-------------|--------|--------|

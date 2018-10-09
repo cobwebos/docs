@@ -1,21 +1,21 @@
 ---
-title: 人脸 API C# 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本教程创建一个 Windows 应用，以便使用认知服务人脸服务来检测和定格图像中的人脸。
+title: 教程：检测和定格图像中的人脸 - 人脸 API、C#
+titleSuffix: Azure Cognitive Services
+description: 本教程创建一个 Windows 应用，以便使用人脸 API 来检测和定格图像中的人脸。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: nolachar
-ms.openlocfilehash: e4f2192c40f0b650b31ed59642dee89e42eca703
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125912"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162605"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 WPF 应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "39125912"
 
 - 需要一个订阅密钥来运行此示例。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。 如果使用 Visual Studio 2017，则 .NET 桌面应用程序开发工作负荷是必需的。 本教程使用 Visual Studio 2017 Community Edition。
-- [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
+- [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
 
 ## <a name="create-the-visual-studio-solution"></a>创建 Visual Studio 解决方案
 
@@ -54,7 +54,7 @@ ms.locfileid: "39125912"
 1. 在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”。
 1. 在“包管理器控制台”中粘贴以下内容，然后按 **Enter**。
 
-    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.0.0-preview`
+    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.2.0-preview`
 
 ## <a name="add-the-initial-code"></a>添加初始代码
 
@@ -122,8 +122,8 @@ namespace FaceTutorial
         // NOTE: Free trial subscription keys are generated in the westcentralus
         // region, so if you are using a free trial subscription key, you should
         // not need to change this region.
-        private const string baseUri =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+        private const string faceEndpoint =
+            "https://westcentralus.api.cognitive.microsoft.com";
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -137,13 +137,13 @@ namespace FaceTutorial
         {
             InitializeComponent();
 
-            if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(faceEndpoint, UriKind.Absolute))
             {
-                faceClient.BaseUri = new Uri(baseUri);
+                faceClient.Endpoint = faceEndpoint;
             }
             else
             {
-                MessageBox.Show(baseUri,
+                MessageBox.Show(faceEndpoint,
                     "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
@@ -197,8 +197,8 @@ namespace FaceTutorial
 - 在 *MainWindow.xaml.cs* 中找到以下行，然后替换或验证与订阅密钥关联的 Azure 区域：
 
     ```csharp
-    private const string baseUri =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+    private const string Endpoint =
+        "https://westcentralus.api.cognitive.microsoft.com";
     ```
 
     确保位置与获取订阅密钥时所处的位置一致。 例如，如果是从 **westus** 区域获取的订阅密钥，则将 `Westcentralus` 替换为 `Westus`。

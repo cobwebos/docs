@@ -1,25 +1,27 @@
 ---
 title: 威胁检测 - Azure SQL 数据库托管实例 | Microsoft Docs
-description: 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。
+description: 威胁检测会检测异常的数据库活动，指出存在对托管实例中数据库的潜在安全威胁。
 services: sql-database
-author: rmatchoro
-manager: craigg
 ms.service: sql-database
-ms.custom: security, managed instance
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: rmatchoro
 ms.author: ronmat
-ms.reviewer: carlrab
-ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 7f05bd6c96a8e22b1e039c3edcec491b7c079d54
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650071"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162403"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL 数据库托管实例威胁检测
 
-SQL 威胁检测可检测异常活动，这些活动指示对 Azure SQL 数据库托管实例（预览版）的异常和可能有害的访问或利用企图。
+SQL 威胁检测可检测异常活动，这些活动指示对 Azure SQL 数据库托管实例中数据库的异常和可能有害的访问或利用企图。
 
 ## <a name="overview"></a>概述
 

@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 512f251a91a035d3d48566c414076b1a5b6d8805
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 961f82cd4970abfdd11a30b2847a14f8ff1880b0
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37907094"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454453"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
-Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。  
+Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。  Ls 系列 VM 十分适合需要低延迟、高吞吐量和大量本地磁盘存储的应用程序。 
+
+示例用例包括 NoSQL 数据库（如 Cassandra、MongoDB、Cloudera 和 Redis）、数据仓库和大型事务数据库。
+
+> [!NOTE]
+> Ls 系列已针对附加到 VM 计算机的临时磁盘的使用（而不是持久数据磁盘的使用）进行了优化。 临时磁盘的高吞吐量和 IOPS 使得 Ls 系列非常适用于 NoSQL 存储（例如 Apache Cassandra 和 MongoDB），这些存储跨多个 VM 复制数据，以便在单个 VM 发生故障时实现持久性。 Ls 系列不支持创建本地缓存以增加持久数据磁盘可实现的 IOPS。
 
 ## <a name="ls-series"></a>Ls 系列
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108800"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227276"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -49,26 +49,27 @@ ssh-keygen -t rsa -b 2048
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
-2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”，然后选择“创建”。
+1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”，然后选择“创建”。
 
-3. 提供 VM 名称，例如 *myVM*，将磁盘类型保留为 *SSD*，然后提供用户名，例如 *azureuser*。
+1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后在“资源组”下选择“新建”。 在弹出窗口中，键入 *myResourceGroup* 作为资源组的名称，然后选择“确定”。 
 
-4. 对于“身份验证类型”，选择“SSH 公钥”，然后将你的公钥粘贴到文本框中。 请务必删除公钥中的所有前导或尾随空格。
+    ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-    ![在门户边栏选项卡中输入 VM 的基本信息](./media/quick-create-portal/create-vm-portal-basic-blade.png)
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“区域”选择“美国东部”。 保留其他默认值。
 
-5. 选择“新建”资源组，然后提供一个名称，例如 *myResourceGroup*。 选择所需**位置**，然后选择“确定”。
+    ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-4. 为 VM 选择大小。 例如，可以按*计算类型*或*磁盘类型*进行筛选。 建议的 VM 大小是 *D2s_v3*。
+1. 在“管理员帐户”下，选择“SSH 公钥”，键入用户名，然后将公钥粘贴到文本框中。 删除公钥中的所有前导或尾随空格。
 
-    ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
+    ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
-5. 在“设置”页上的“网络” > “网络安全组” > “选择公共入站端口”中，选择“HTTP”和“SSH (22)”。 将剩余的字段保留默认设置，然后选择“确定”。
+1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
 
-6. 在“摘要”页上，选择“创建”以启动 VM 部署。
+    ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
-7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
+    
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
 创建与 VM 的 SSH 连接。

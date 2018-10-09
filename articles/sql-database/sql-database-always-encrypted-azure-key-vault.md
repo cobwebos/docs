@@ -3,19 +3,22 @@ title: 始终加密：SQL 数据库 - Azure Key Vault | Microsoft 文档
 description: 本文演示如何使用 SQL Server Management Studio 中的始终加密向导，通过数据加密来保护 SQL 数据库中的敏感数据。
 keywords: 数据加密, 加密密钥, 云加密
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: ''
+manager: craigg
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 19a033b79879f1b51626a14510fc4cc71c43426c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d944ead01da81e2fec49d256a4da939067bcceee
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644053"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064401"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -134,7 +137,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 加密每位患者的“SSN”和“出生日期”信息。 SSN 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 BirthDate 列将使用随机加密，该加密不支持操作。
 
-将 SSN 列的“加密类型”设置为“确定”，并将 BirthDate 列设置为“随机”。 单击“资源组名称” 的 Azure 数据工厂。
+将 SSN 列的“加密类型”设置为“确定”，并将 BirthDate 列设置为“随机”。 单击“下一步”。
 
 ![加密列](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -145,7 +148,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 1. 选择“Azure 密钥保管库”。
 2. 从下拉列表中选择所需密钥保管库。
-3. 单击“资源组名称” 的 Azure 数据工厂。
+3. 单击“下一步”。
 
 ![主密钥配置](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
@@ -595,7 +598,9 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
    ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-要使用 SSMS 来访问明文数据，可将 *Column Encryption Setting=enabled* 参数添加到连接中。
+若要使用 SSMS 访问纯文本数据，首先需要确保用户具有 Azure Key Vault 的适当权限：get、unwrapKey 和 verify。 有关详细信息，请参阅[创建和存储列主密钥 (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017)。
+
+然后在连接期间添加 *Column Encryption Setting=enabled* 参数。
 
 1. 在 SSMS 中，右键单击“对象资源管理器”中的服务器，并选择“断开连接”。
 2. 单击“连接” > “数据库引擎”打开“连接到服务器”窗口，并单击“选项”。

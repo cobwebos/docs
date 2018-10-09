@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128739"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410147"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -60,7 +60,7 @@ ms.locfileid: "43128739"
    |----------|-------------|
    | **批处理模式** | - **内联**：用于在批处理触发器中定义发布条件 <br>- **集成帐户**：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
    | **批名称** | 批的名称（在本示例中为“TestBatch”），仅适用于“内联”批处理模式 |  
-   | **发布条件** | 仅适用于“内联”批处理模式，指定在处理每个批之前所要满足的条件： <p>- **基于消息计数**：要在批中收集的消息数，例如 10 个消息 <br>- **基于大小**：以字节为单位的最大批大小，例如 100 MB <br>- **基于计划**：发布批的间隔时间和频率，例如 10 分钟。 还可以指定开始日期和时间。 <br>- **全选**：使用所有指定的条件。 | 
+   | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件： <p>- **基于消息计数**：要在批中收集的消息数，例如 10 个消息 <br>- **基于大小**：以字节为单位的最大批大小，例如 100 MB <br>- **基于计划**：发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟值有效地向上舍入到 1 分钟。 若要指定开始日期和时间，请选择“显示高级选项”。 <br>- **全选**：使用所有指定的条件。 | 
    ||| 
    
    本示例选择所有条件：
@@ -107,9 +107,7 @@ ms.locfileid: "43128739"
 
    * 在“正文”框中，当“动态内容”列表出现时，请选择“消息 ID”字段。 
 
-     逻辑应用设计器围绕“发送电子邮件”操作自动添加一个“For each”循环，因为该操作接受数组作为输入。 
-     此循环针对批中的每个消息发送电子邮件。 
-     因此，如果将批处理触发器设置为 10 个消息，则每次激发该触发器，都会收到 10 封电子邮件。
+     逻辑应用设计器会自动在发送电子邮件操作周围添加“For each”循环，因为该操作会将上一个操作的输出视为集合而不是批。 
 
      ![对于“正文”，选择“消息 ID”](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -216,6 +214,7 @@ ms.locfileid: "43128739"
 
 ## <a name="next-steps"></a>后续步骤
 
+* [批处理和发送 EDI 消息](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [使用 JSON 构建逻辑应用定义](../logic-apps/logic-apps-author-definitions.md)
 * [使用 Azure 逻辑应用和 Azure Functions 在 Visual Studio 中构建无服务器应用](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [逻辑应用的异常处理和错误日志记录](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

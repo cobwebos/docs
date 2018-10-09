@@ -1,23 +1,23 @@
 ---
 title: Azure SQL 数据库托管实例连接体系结构 | Microsoft Docs
 description: 本文简要介绍了 Azure SQL 数据库托管实例通信，讲解了连接体系结构，还阐述了不同的组件函数如何将流量定向到托管实例。
-keywords: ''
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.subservice: managed instance
+ms.subservice: managed-instance
 ms.custom: ''
-ms.date: 08/16/2018
+ms.devlang: ''
+ms.topic: conceptual
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+manager: craigg
+ms.date: 08/16/2018
+ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177444"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161584"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL 数据库托管实例连接体系结构 
 
@@ -73,7 +73,7 @@ Microsoft 管理和部署服务在虚拟网络外部运行，因此托管实例�
 - 相关概述，请参阅 [什么是托管实例](sql-database-managed-instance.md) 
 - 有关 VNet 配置的详细信息，请参阅 [托管实例 VNet 配置](sql-database-managed-instance-vnet-configuration.md)。 
 - 查看快速入门，了解如何使用以下项创建托管实例： 
-  - 通过 [Azure 门户](sql-database-managed-instance-create-tutorial-portal.md) 
+  - 通过 [Azure 门户](sql-database-managed-instance-get-started.md) 
   - 使用 [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) 
   - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/) 
   - 使用 [Azure 资源管理器模板（包含 SSMS 的 jumpbox）](https://portal.azure.com/) 

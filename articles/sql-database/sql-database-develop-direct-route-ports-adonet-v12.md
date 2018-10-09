@@ -2,19 +2,22 @@
 title: 用于 SQL 数据库的非 1433 端口 | Microsoft 文档
 description: 从 ADO.NET 到 Azure SQL 数据库的客户端连接可以绕过代理直接通过 1433 以外的端口与数据库交互。
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: MightyPen
+ms.author: genemi
+ms.reviewer: sstein
+manager: craigg
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: a8c9eef968465ecf9c8a29df471955b89f3585a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 560d96b188a02f8df0d41b040c90db9b813e3c0a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645083"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063245"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 本主题介绍使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为。 
@@ -54,13 +57,25 @@ ms.locfileid: "34645083"
 * ADO.NET 4.0 支持 TDS 7.3 协议，但不支持 7.4。
 * ADO.NET 4.5 和更高版本支持 TDS 7.4 协议。
 
+#### <a name="odbc"></a>ODBC
+* Microsoft SQL Server ODBC 11 或更高版本
+
+#### <a name="jdbc"></a>JDBC
+* Microsoft SQL Server JDBC 4.2 或更高版本（JDBC 4.0 实际上支持 TDS 7.4，但未实现“重定向”）
+
+
 ## <a name="related-links"></a>相关链接
 * ADO.NET 4.6 已于 2015 年 7 月 20 日发布。 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)访问 .NET 团队的博客通告。
-* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。
-  
+* ADO.NET 4.5 已于 2012 年 8 月 15 日发布。 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)访问 .NET 团队的博客通告。 
   * 可以在[这里](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)访问有关 ADO.NET 4.5.1 的博客文章。
+
+* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/en-us/download/details.aspx?id=56567
+
+* 通过重定向连接到 Azure SQL 数据库 V12 https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/
+
 * [TDS 协议版本列表](http://www.freetds.org/userguide/tdshistory.htm)
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)
+
 

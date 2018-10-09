@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9aa61e95eb808c38646fa9b8cefd4004f5477ee6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974657"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181436"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>为 Azure 流分析 Edge 作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -31,7 +31,7 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 ## <a name="package-path"></a>包路径
 
-任何 UDF 包的格式都具有路径 `/UserCustomCode/CLR/*`。 动态链接库 (DLL) 和资源被复制到 `/UserCustomCode/CLR/*` 文件夹下，有助于将系统中的用户 DLL 与 Azure 流分析 DLL 隔离开来。
+任何 UDF 包的格式都具有路径 `/UserCustomCode/CLR/*`。 动态链接库 (DLL) 和资源被复制到 `/UserCustomCode/CLR/*` 文件夹下，有助于将系统中的用户 DLL 与 Azure 流分析 DLL 隔离开来。 无论使用何种方法来利用这些函数，此包路径都用于所有函数。
 
 ## <a name="supported-types-and-mapping"></a>支持的类型和映射
 
@@ -59,10 +59,10 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 1. 在解决方案中创建一个新的类库。
 2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共。 
-3. 生成项目。
+3. 生成项目。 工具会将 bin 文件夹中的所有项目打包为 zip 文件，并将该 zip 文件上传到存储帐户。 对于外部引用，请使用程序集引用而不是 NuGet 包。
 4. 引用 Azure 流分析项目中的新类。
 5. 在 Azure 流分析项目中添加一个新的函数。
-6. 在作业配置文件 `EdgeJobConfig.json` 中配置程序集路径。
+6. 在作业配置文件 `JobConfig.json` 中配置程序集路径。 将程序集路径设置为“本地项目引用或 CodeBehind”。
 7. 重新生成函数项目和 Azure 流分析项目。  
 
 ### <a name="example"></a>示例
@@ -109,19 +109,19 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 将程序集 zip 包上传到 Azure 存储帐户后，便可使用 Azure 流分析查询中的函数。 你只需将存储信息包含到流分析 Edge 作业配置中即可。 无法使用此选项在本地测试该函数，因为 Visual Studio 工具不会下载你的包。 包路径直接解析至服务。 
 
-在作业配置文件“EdgeJobConfig.json”中配置程序集路径：
+若要在作业配置文件 `JobConfig.json` 中配置程序集路径，请执行以下操作：
 
 展开“用户定义的代码配置”部分，并使用以下建议值填写配置：
 
  |**设置**  |建议的值  |
  |---------|---------|
- |程序集源  |  本地项目引用或 CodeBehind   |
+ |程序集源  | 云中的现有程序集包    |
  |资源  |  选择当前帐户中的数据   |
  |订阅  |  选择订阅。   |
  |存储帐户  |  选择存储帐户。   |
  |容器  |  选择在存储帐户中创建的容器。   |
 
-    ![Azure Stream Analytics Edge job configuration in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Visual Studio 中的 Azure 流分析 Edge 作业配置](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>限制
 UDF 预览目前有以下限制：

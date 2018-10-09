@@ -1,24 +1,24 @@
 ---
 title: 教程：使用 Azure 机器学习定型图像分类模型
-description: 了解如何使用 Python Jupyter Notebook 定型 scikit-learn 图像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
-author: hning86
-ms.author: haining
-ms.topic: conceptual
+description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
+ms.topic: tutorial
+author: hning86
+ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: bed4abcce3019607715416b5194a2ddecc89b76a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966605"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181392"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>教程 #1：使用 Azure 机器学习定型图像分类模型
 
-在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook中使用 Azure 机器学习服务的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
+在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习服务（预览）的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
 本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](http://scikit-learn.org) 与 Azure 机器学习配合使用来定型简单的逻辑回归。  MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28x28 像素的手写数字，代表一个从 0 到 9 的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "46966605"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 Jupyter Notebook 的形式提供。 使用以下任一方法运行 `tutorials/01.train-models.ipynb` Notebook：
+为方便起见，本教程以 Jupyter Notebook 的形式提供。 使用以下两种方法之一克隆[机器学习示例 Notebook GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks)并运行 `tutorials/01.train-models.ipynb` Notebook：
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -79,7 +79,7 @@ print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
 
 ### <a name="create-experiment"></a>创建试验
 
-创建一个试验来跟踪工作区中的所有运行。  
+创建一个试验来跟踪工作区中的运行。 一个工作区可有多个试验。 
 
 ```python
 experiment_name = 'sklearn-mnist'
@@ -105,7 +105,7 @@ batchai_cluster_name = "traincluster"
 try:
     # look for the existing cluster by name
     compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if compute_target is BatchAiCompute:
+    if type(compute_target) is BatchAiCompute:
         print('found compute target {}, just use it.'.format(batchai_cluster_name))
     else:
         print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
@@ -157,7 +157,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>显示一些示例图像
 
-将压缩文件加载到 `numpy` 数组。 然后，使用 `matplotlib` 从数据集随意绘制 30 张图像，并在上方附加标签。
+将压缩文件加载到 `numpy` 数组。 然后，使用 `matplotlib` 从数据集随意绘制 30 张图像，并在上方附加标签。 请注意，此步骤需要 `util.py` 文件中包含的 `load_data` 函数。 此文件包含在示例文件夹中。 请确保它与此 Notebook 放在同一文件夹中。 `load_data` 函数将压缩文件解析为 numpy 数组。
 
 
 
@@ -194,7 +194,7 @@ plt.show()
 
 ### <a name="upload-data-to-the-cloud"></a>将数据上传到云
 
-现在，通过将数据从本地计算机上传到云，使数据可以远程访问，以便远程定型时可以访问这些数据。 数据存储是与你的工作区相关联的方便构造，用于上传/下载数据，并与远程计算目标交互。 
+现在，通过将数据从本地计算机上传到 Azure，使该数据可以远程访问，以便远程定型时可以访问这些数据。 数据存储是与你的工作区相关联的方便构造，用于上传/下载数据，并与远程计算目标交互。 它由 Azure blob 存储帐户提供支持。
 
 MNIST 文件被上传到数据存储根目录下一个名为 `mnist` 的目录。
 
@@ -365,7 +365,7 @@ run = exp.submit(config=est)
 run
 ```
 
-由于调用是异步形式，启动作业时它将返回“正在运行”状态。
+由于调用是异步的，因此一旦作业启动，它就会返回“正在准备”或“正在运行”状态。
 
 ## <a name="monitor-a-remote-run"></a>监视远程运行
 
@@ -377,7 +377,7 @@ run
 
   此阶段针对每个 Python 环境发生一次，因为容器已缓存用于后续运行。  映像创建期间，日志流式传输到运行历史记录。 可以使用这些日志监视映像创建进度。
 
-- 缩放：如果远程群集需要比当前可用的节点更多的节点，则会自动添加其他节点。 缩放通常需要大约 5 分钟。
+- 缩放：如果远程群集需要比当前可用的节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约 5 分钟。
 
 - 运行：在此阶段，将所需的脚本和文件发送到计算目标，装载/复制数据存储，然后运行 entry_script。 运行作业时，stdout 和 ./logs 目录将流式传输到运行历史记录。 可以使用这些日志监视运行进度。
 

@@ -1,24 +1,27 @@
 ---
-title: 新建知识库 - 适用于 Microsoft QnA Maker API (V4) 的 Python 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 以 Python 创建知识库来保存常见问题解答或产品手册，以便可以开始使用 QnA Maker。
+title: 快速入门：API Python - 创建知识库 - QnA Maker
+titlesuffix: Azure Cognitive Services
+description: 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: a8e3ae73c76c13d44267f221d37a07eea721a608
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 9a3b801058a2614b9b484a3ebf414a9225c5371e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43768744"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033288"
 ---
 # <a name="create-a-new-knowledge-base-in-python"></a>以 Python 新建知识库
 
 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 下面给出了两个示例常见问题解答 URL（在 **req** 字典项“urls”中）。 QnA Maker 从半结构化内容（例如常见问题解答）中自动提取问答，详见此[数据源](../Concepts/data-sources-supported.md)文档。 在本快速入门中，你也可以使用自己的常见问题解答 URL。
 

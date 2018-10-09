@@ -4,16 +4,16 @@ description: 了解有关 Azure IoT Edge 模块以及如何进行配置的信息
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995360"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423385"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -79,6 +79,7 @@ Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 现在，这些
 公共预览版中提供了其他脱机功。能。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>后续步骤
+ - [了解开发 IoT Edge 模块的要求和工具][lnk-mod-dev]
  - [了解 Azure IoT Edge 运行时及其体系结构][lnk-runtime]
 
 <!-- Images -->
@@ -89,3 +90,4 @@ Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 现在，这些
 [lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-runtime]: iot-edge-runtime.md
+[lnk-mod-dev]: module-development.md

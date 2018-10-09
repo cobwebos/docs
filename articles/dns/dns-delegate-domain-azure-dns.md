@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 44f5bf9a28d56e85bae1d50136c50868ec96eb4e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ea0dc257d691326bc073b4cbff37e847a6990f02
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205435"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452287"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教程：在 Azure DNS 中托管域
 
@@ -22,7 +22,7 @@ ms.locfileid: "39205435"
 例如，假设你从某个域名注册机构购买了域 contoso.net，然后在 Azure DNS 中创建了名为 contoso.net 的区域。 由于你是域的所有者，因此，注册机构将为你提供选项来配置域的名称服务器 (NS) 记录。 注册机构将这些 NS 记录存储在 .net 父区域中。 然后，世界各地的 Internet 用户在尝试解析 contoso.net 中的 DNS 记录时，会被定向到 Azure DNS 区域中的域。
 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 DNS 区域
@@ -44,8 +44,8 @@ ms.locfileid: "39205435"
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
-   |**名称**|[你的域名] |你购买的域名。 本教程使用 contoso.net 作为示例。|
-   |**订阅**|[你的订阅]|选择要在其中创建区域的订阅。|
+   |**Name**|[你的域名] |你购买的域名。 本教程使用 contoso.net 作为示例。|
+   |**订阅**|[订阅]|选择要在其中创建区域的订阅。|
    |**资源组**|**新建：** contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。 |
    |**位置**|美国东部||
 
@@ -70,6 +70,9 @@ Azure DNS 自动在你的区域中为所分配的名称服务器创建权威 NS 
 创建 DNS 区域且有了名称服务器以后，需使用 Azure DNS 名称服务器更新父域。 每个注册机构都有自身的 DNS 管理工具，可以更改域的名称服务器记录。 在注册机构的 DNS 管理页中，编辑 NS 记录并将 NS 记录替换为 Azure DNS 名称服务器。
 
 将域委托给 Azure DNS 时，必须使用 Azure DNS 提供的名称服务器。 建议使用所有 4 个名称服务器，不管域名是什么。 域委托不需要名称服务器即可使用相同的顶级域作为域。
+
+> [!NOTE]
+> 复制每个名称服务器地址时，请确保复制地址末尾的尾随句点。 尾随句点表示完全限定域名的结束。 如果 NS 名称末尾没有句点，一些注册机构可能会追加句点。 但是为了符合 DNS RFC，应包括尾随句点，因为不能假定每个注册机构都为你追加句点。
 
 Azure DNS 目前不支持使用你自己区域中的名称服务器的委托（有时称为“虚构名称服务器”）。
 

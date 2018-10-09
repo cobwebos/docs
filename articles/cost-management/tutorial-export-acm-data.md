@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/13/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1c7323dc108f5ee7a8bf6075abfe2a3e2fb9810
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953134"
+ms.locfileid: "47030840"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -31,8 +31,15 @@ ms.locfileid: "46953134"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure EA 帐户
-- 为 blob 或文件存储配置的 Azure 存储帐户
+所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用数据导出。 每个订阅支持以下 Azure 权限，以便用户和组导出数据：
+
+- 所有者 - 可以为订阅创建、修改或删除计划导出。
+- 参与者 - 可以创建、修改或删除自己的计划导出。 可以修改其他人创建的计划导出的名称。
+- 读者 - 可以计划他们有权访问的导出。
+
+对于 Azure 存储帐户：
+- 无论导出权限如何，更改配置的存储帐户都需要写入权限。
+- 必须为 Blob 或文件存储配置 Azure 存储帐户。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。

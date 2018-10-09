@@ -2,23 +2,31 @@
 title: 条件性访问 - Azure SQL 数据库和数据仓库 | Microsoft Docs
 description: 了解如何配置 Azure SQL 数据库和数据仓库的条件性访问。
 services: sql-database
-author: GithubMirek
-manager: johammer
-ms.custom: security
 ms.service: sql-database
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: GithubMirek
 ms.author: mireks
-ms.openlocfilehash: 83762136659756204aab5da367b905f66e770087
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647453"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063075"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的条件性访问 (MFA)  
 
-SQL 数据库和 SQL 数据仓库均支持 Microsoft 条件性访问。 下列步骤演示如何配置 SQL 数据库以强制实施条件性访问策略。  
+Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)均支持 Microsoft 条件访问。 
+
+> [!NOTE]
+> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+
+下列步骤演示如何配置 SQL 数据库以强制实施条件性访问策略。  
 
 ## <a name="prerequisites"></a>先决条件  
 - 若要支持 Azure Active Directory 身份验证，必须配置 SQL 数据库或 SQL 数据仓库。 有关具体步骤，请参阅[使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)。  

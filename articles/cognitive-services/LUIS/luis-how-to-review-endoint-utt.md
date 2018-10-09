@@ -1,22 +1,23 @@
 ---
-title: 使用 LUIS 标记建议的陈述 | Microsoft Docs
-description: 使用语言理解 (LUIS) 标记建议的陈述并帮助推动主动机器学习。
+title: 查看语言理解 (LUIS) 的终结点话语
+titleSuffix: Azure Cognitive Services
+description: 主动学习概念是 LUIS 的突破性特征。 一旦 LUIS 具有终结点查询，主动学习就会通过选择不确定的话语来提高结果的质量。 如果标记这些陈述并进行训练和发布，则 LUIS 将可以更准确地识别陈述。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224545"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030789"
 ---
-# <a name="review-endpoint-utterances"></a>评审终结点陈述
+# <a name="review-endpoint-utterances"></a>查看终结点话语
 
 主动学习[概念](luis-concept-review-endpoint-utterances.md)是 LUIS 的突破性特征。 一旦 LUIS 有了终结点查询，LUIS 便可使用主动学习提升结果质量。 在主动学习过程中，LUIS 会检查所有终结点陈述，并选择不确定的陈述。 如果标记这些陈述并进行训练和发布，则 LUIS 将可以更准确地识别陈述。 
 
@@ -24,8 +25,6 @@ ms.locfileid: "39224545"
 1. 通过在“我的应用”页上选择应用名称来打开应用（例如 TravelAgent），然后选择顶栏中的“生成”。
 
 2. 在“提升应用性能”下，选择“评审终结点陈述”。
-
-    ![评审陈述](./media/label-suggested-utterances/review.png)
 
 3. 在“评审终结点陈述”页，在“按意向或实体筛选列表”文本框中进行选择。 此下拉列表的“意向”下包含所有意向，“实体”下包含所有实体。
 

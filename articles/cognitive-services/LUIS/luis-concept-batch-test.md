@@ -1,20 +1,21 @@
 ---
-title: 批处理测试 LUIS 应用 - Azure | Microsoft Docs
+title: 对 LUIS 应用进行批处理测试 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 414862d7ba1956f9449fde3ba063906fae6ef01b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222647"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041602"
 ---
 # <a name="batch-testing-in-luis"></a>LUIS 中的批处理测试
 

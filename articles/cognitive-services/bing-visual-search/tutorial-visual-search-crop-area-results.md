@@ -1,20 +1,20 @@
 ---
-title: 必应视觉搜索 SDK 裁剪区域结果教程 | Microsoft Docs
+title: 教程：图像裁剪区域和结果 - 必应视觉搜索
 description: 如何使用必应视觉搜索 SDK 获取类似于上传图像裁剪区域的图像的 URL。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574482"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226904"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>教程：必应视觉搜索 SDK 图像剪切区域和结果
 视觉搜索 SDK 提供一个选项用于选择图像的区域，以及在线查找类似于大型图像裁剪区域的图像。  本示例指定的裁剪区域显示包含多个人像的某张图像中的一个人像。  代码将发送大型图像的裁剪区域和 URL，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。

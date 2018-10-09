@@ -2,19 +2,22 @@
 title: 使用 DMA 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库。
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050198"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162844"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>使用 DMA 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -246,11 +249,11 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
 ## <a name="change-database-properties"></a>更改数据库属性
 
-可以使用 SQL Server Management Studio 更改服务层、性能级别和兼容级别。 在导入阶段中，建议你导入到更高性能层数据库，以便获得最佳性能。但在导入后，可降低级别以节省资金，直到准备好积极使用导入的数据库为止。 更改兼容性级别可能有助于提高性能和访问 Azure SQL 数据库服务的最新功能。 迁移较旧的数据库时，其数据库兼容性级别将保持在与要导入的数据库兼容的最低支持级别。 有关详细信息，请参阅[在 Azure SQL 数据库中使用兼容性级别 130 改进查询性能](sql-database-compatibility-level-query-performance-130.md)。
+可以使用 SQL Server Management Studio 更改服务层、计算大小和兼容级别。 在导入阶段中，建议你导入到更高服务层或计算大小，以便获得最佳性能。但在导入完成后，可向下缩放以节省资金，直到准备好积极使用导入的数据库为止。 更改兼容性级别可能有助于提高性能和访问 Azure SQL 数据库服务的最新功能。 迁移较旧的数据库时，其数据库兼容性级别将保持在与要导入的数据库兼容的最低支持级别。 有关详细信息，请参阅[在 Azure SQL 数据库中使用兼容性级别 130 改进查询性能](sql-database-compatibility-level-query-performance-130.md)。
 
 1. 在“对象资源管理器”中，右键单击“mySampleDatabase”，然后单击“新建查询”。 此时会打开一个连接到数据库的查询窗口。
 
-2. 执行以下命令将服务层设置为“标准”，将性能级别设置为“S1”。
+2. 执行以下命令将服务层设置为“标准”，将计算大小设置为“S1”。
 
     ```sql
     ALTER DATABASE mySampleDatabase 

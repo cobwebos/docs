@@ -1,21 +1,21 @@
 ---
-title: 如何翻页浏览可用视频 | Microsoft Docs
+title: 如何翻页浏览可用视频 - 必应视频搜索
+titlesuffix: Azure Cognitive Services
 description: 演示如何翻页浏览必应可以返回的所有视频。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 910A485F-BCF3-42B9-958D-DD48BDEDA965
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00476825eb3fc1008c3f2172b591d8b7a2f35884
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365411"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225559"
 ---
 # <a name="paging-videos"></a>分页视频
 
@@ -34,7 +34,7 @@ ms.locfileid: "35365411"
   
 若要翻页浏览可用视频，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) 查询参数。  
   
-`count` 参数指定响应中要返回的结果数。 可以在响应中请求的最大结果数为 105。 默认值为 35。 交付的实际数量可能小于请求的数量。
+`count` 参数指定响应中要返回的结果数。 可以在响应中请求的最大结果数为 105。 默认值为 35。 提供的实际结果数可能小于请求获取的结果数。
 
 `offset` 参数指定要跳过的结果数。 `offset` 从零开始且应小于 (`totalEstimatedMatches` - `count`)。  
   

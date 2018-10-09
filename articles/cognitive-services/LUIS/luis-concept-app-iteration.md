@@ -1,20 +1,21 @@
 ---
-title: 了解 LUIS 迭代应用设计 - Azure | Microsoft Docs
-description: 为获得最佳数据提取，LUIS 应用需要设计迭代来训练 LUIS。
+title: 语言理解 (LUIS) 中的迭代应用设计
+titleSuffix: Azure Cognitive Services
+description: LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。  为获得最佳数据提取，LUIS 应用需要设计迭代来训练 LUIS。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 05f5ceb5a0f3529d7635f7aae0c3c41c19f0b1ad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225435"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031945"
 ---
 # <a name="authoring-cycle"></a>创作周期
 LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 
@@ -32,15 +33,12 @@ LUIS 在反复的模型变更、陈述示例、发布以及从终结点查询收
 LUIS 需要意向的示例陈述。 这些示例需要有足够的字词选择和字词顺序方面的变化，才能确定陈述的意向。 每个示例陈述都需要将任何所需的数据标记为实体。 
 
 通过将陈述分配到 None 意向，指示 LUIS 忽略与应用域不相关的陈述。 任何不需要从陈述中提取出来的字词或短语都不需要进行标记。 要忽略的字词或短语均无标记。 
-<!--
-## Not just yet
-Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
--->
+
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
-每个意向具有 10 到 15 个不同的陈述并且所需实体被标记后，训练 LUIS，然后发布以获取终结点。 确保创建应用并发布应用，以便它在需要的[终结点区域](luis-reference-regions.md)中可用。 
+每个意向具有 10 到 15 个不同的话语并且所需实体被标记后，就可以进行训练并发布。 使用发布成功通知中的链接获取终结点。 确保创建应用并发布应用，以便它在需要的[终结点区域](luis-reference-regions.md)中可用。 
 
 ## <a name="https-endpoint-testing"></a>HTTPS 终结点测试
-可以从[发布](luis-how-to-publish-app.md)页面上列出的 HTTPS 终结点测试 LUIS 应用。 从该终结点测试可使 LUIS 选择对可信度低的表述进行评审。  
+可以从 HTTPS 终结点测试 LUIS 应用。 从该终结点测试可使 LUIS 选择对可信度低的表述进行评审。  
 
 ## <a name="recycle"></a>再循环
 结束一个创作周期后可以重新开始。 从评审被 LUIS 标为低可信度的终结点陈述开始。 检查这些陈述的意向和实体。 评审陈述后，评审列表应为空。  

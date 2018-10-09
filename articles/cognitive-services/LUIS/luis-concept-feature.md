@@ -1,20 +1,21 @@
 ---
-title: 了解 Azure 中 LUIS 应用的特征 | Microsoft Docs
-description: 了解有助于提升 LUIS 应用性能的特征。 特征包括用于识别正则表达式的短语列表和模式。
+title: Azure 认知服务中 LUIS 应用的功能
+titleSuffix: Azure Cognitive Services
+description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。 特征可帮助 LUIS 识别意向和实体。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8d3f006f27d1d728f89458deba27e1c1a63b6de5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 015679b6020e9d2a4d702f9d6e723ecd9499d8dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224922"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034461"
 ---
 # <a name="phrase-list-features-in-luis"></a>LUIS 中的短语列表特征
 

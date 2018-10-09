@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042585"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433352"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -96,7 +96,7 @@ ms.locfileid: "43042585"
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作： 
 
-   a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
    b. 在“生成工具”列表中，根据需要选择以下选项之一：
 
@@ -119,7 +119,7 @@ ms.locfileid: "43042585"
 
     ![选择 Spark SDK](./media/apache-spark-intellij-tool-plugin/hdi-new-project.png)
 
-   a. 输入项目名称和位置。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入项目名称和位置。
 
    b. 在“项目 SDK”下拉列表中，选择适用于 Spark 2.x 群集的“Java 1.8”，或选择适用于 Spark 1.x 群集的“Java 1.7”。
 
@@ -129,7 +129,7 @@ ms.locfileid: "43042585"
 
 1. Spark 项目会自动创建一个项目。 若要查看项目，请执行以下操作：
 
-   a. 在“文件”菜单中，选择“项目结构”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“文件”菜单中，选择“项目结构”。
 
    b. 在“项目结构”对话框中，选择“项目”查看创建的默认项目。 也可以选择加号 (**+**) 图标创建自己的项目。
 
@@ -137,7 +137,7 @@ ms.locfileid: "43042585"
       
 1. 执行以下操作来添加应用程序源代码：
 
-   a. 在“项目资源管理器”中，右键单击“src”，指向“新建”，并选择“Scala 类”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“项目资源管理器”中，右键单击“src”，指向“新建”，并选择“Scala 类”。
       
       ![项目资源管理器中用于创建 Scala 类的命令](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "43042585"
 
 1. 执行以下操作，在 HDInsight Spark 群集中运行该应用程序：
 
-   a. 在“项目资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“项目资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
       
       ![“将 Spark 应用程序提交到 HDInsight”命令](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
@@ -181,8 +181,12 @@ ms.locfileid: "43042585"
 
         ![“选择 Main 类”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * 由于本示例中的应用程序代码不需要命令行参数，也不需要引用 JAR 或文件，可将其余的框留空。 提供所有信息后，对话框应如下图所示。
+      * 你可以提供所需的信息。 有关**作业配置**，我们使用默认值。 可以参考 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) 以获取有关密钥的更多信息。 **命令行参数**、**引用的 JAR** 和**引用的文件**应如下图所示。 有关**引用的 JAR** 和**引用的文件**的更多信息，请参阅 [Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。 要使**引用的 JAR** 和**引用的文件**正常工作，应该将资源上传到你首先提交的群集。 请参阅[如何将资源上传到群集](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。提交对话框应类似于下图。
         
+        ![Spark 提交对话框作业配置含义](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![Spark 提交对话框 jar 文件含义](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. 窗口底部的“Spark 提交”选项卡应开始显示进度。 也可以通过选择“Spark 提交”窗口中的红色按钮停止应用程序。

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97bf33cb882d5a121b9811a8e36a1d26f9a954f8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715363"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033985"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>使用 RBAC 和 Azure 门户管理访问权限
 
@@ -89,7 +89,7 @@ ms.locfileid: "39715363"
 
     ![订阅的“访问控制(IAM)”边栏选项卡](./media/role-assignments-portal/subscription-access-control.png)
 
-    经典订阅管理员和协同管理员被视为 RBAC 模型中订阅的所有者。
+    经典订阅管理员和共同管理员被视为 RBAC 模型中订阅的所有者。
 
 ### <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
@@ -109,9 +109,9 @@ ms.locfileid: "39715363"
 
 ## <a name="grant-access"></a>授予访问权限
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 通过以下步骤在不同的范围授予访问权限。
+在 RBAC 中，若要授予访问权限，请分配角色。 通过以下步骤在不同的范围授予访问权限。
 
-### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>创建资源组范围的角色分配
+### <a name="assign-a-role-at-a-resource-group-scope"></a>在资源组范围内分配角色
 
 1. 在导航列表中，选择“资源组”。
 
@@ -131,11 +131,11 @@ ms.locfileid: "39715363"
 
 1. 在“选择”列表中，选择用户、组或应用程序。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
-1. 选择“保存”，创建角色分配。
+1. 选择“保存”以分配角色。
 
    片刻之后，会在资源组范围为安全主体分配角色。
 
-### <a name="create-a-role-assignment-at-a-subscription-scope"></a>创建订阅范围的角色分配
+### <a name="assign-a-role-at-a-subscription-scope"></a>在订阅范围内分配角色
 
 1. 在 Azure 门户中选择“所有服务”，然后选择“订阅”。
 
@@ -155,11 +155,37 @@ ms.locfileid: "39715363"
 
 1. 在“选择”列表中，选择用户、组或应用程序。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
-1. 选择“保存”，创建角色分配。
+1. 选择“保存”以分配角色。
 
    片刻之后，会在订阅范围为安全主体分配角色。
 
-### <a name="create-a-role-assignment-at-a-management-group-scope"></a>创建管理组范围的角色分配
+### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>将用户分配为订阅的管理员
+
+要使用户成为 Azure 订阅的管理员，请在订阅范围为其分配[所有者](built-in-roles.md#owner)角色。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
+
+1. 在 Azure 门户中选择“所有服务”，然后选择“订阅”。
+
+1. 选择订阅。
+
+1. 选择“访问控制(IAM)”，在订阅范围查看角色分配的当前列表。
+
+   ![订阅的“访问控制(IAM)”边栏选项卡](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. 选择“添加”，打开“添加权限”窗格。
+
+   如果无权分配角色，则不会看到“添加”选项。
+
+   ![“添加权限”窗格](./media/role-assignments-portal/add-permissions.png)
+
+1. 在“角色”下拉列表中，选择“所有者”角色。
+
+1. 在“选择”列表中，选择用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。
+
+1. 选择“保存”以分配角色。
+
+   片刻之后，会在订阅范围内为该用户分配“所有者”角色。
+
+### <a name="assign-a-role-at-a-management-group-scope"></a>在管理组范围内分配角色
 
 1. 在 Azure 门户中选择“所有服务”，然后选择“管理组”。
 
@@ -181,11 +207,11 @@ ms.locfileid: "39715363"
 
 1. 在“角色”下拉列表中选择一个角色，例如“管理组参与者”。
 
-    若要了解可以对不同角色的管理组执行哪些受支持的操作，请参阅[使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md#management-group-access)。
+    若要了解可以对不同角色的管理组执行哪些受支持的操作，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/index.md#management-group-access)。
 
 1. 在“选择”列表中，选择用户、组或应用程序。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
-1. 选择“保存”，创建角色分配。
+1. 选择“保存”以分配角色。
 
    片刻之后，会在管理组范围为安全主体分配角色。
 

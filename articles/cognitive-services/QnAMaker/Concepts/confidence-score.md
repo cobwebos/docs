@@ -1,21 +1,21 @@
 ---
-title: 置信度分数 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 说明置信度分数
+title: 置信度分数 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 置信度分数指示用户问题与返回的响应之间的匹配程度。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: c97bdb7e57275ebd1893bc28248c4ecc6b35c153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 33da5cf5724b8314ce813f12eb077d9a15ec1b2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366287"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041517"
 ---
 # <a name="confidence-score"></a>置信度分数
 

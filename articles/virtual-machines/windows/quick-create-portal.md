@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f5a92d421bbf7bfe485252c148d5f64ae2fb8e23
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 692d8c0a1a427fa65a94d474f78792b1a071de46
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916109"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219713"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -37,23 +37,28 @@ ms.locfileid: "37916109"
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
-2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”。
+1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”。
 
-3. 提供 VM 名称，例如 *myVM*，将磁盘类型保留为 *SSD*，然后提供用户名，例如 *azureuser*。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
+1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称，请键入 *myResourceGroup*。 
 
-    ![在门户边栏选项卡中输入 VM 的基本信息](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)
+    ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-5. 选择“新建”资源组，然后提供一个名称，例如 *myResourceGroup*。 选择**位置**，然后选择“确定”。
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“位置”选择“美国东部”。 保留其他默认值。
 
-4. 为 VM 选择大小。 例如，可以按*计算类型*或*磁盘类型*进行筛选。 建议的 VM 大小是 *D2s_v3*。 选择大小后，单击“选择”。
+    ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-    ![显示 VM 大小的屏幕截图](./media/quick-create-portal/create-windows-vm-portal-sizes.png)
+1. 在“管理员帐户”下，提供用户名（例如 *azureuser*）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
-5. 在“设置”页上的“网络” > “网络安全组” > “选择公共入站端口”中，从下拉列表中选择“HTTP”和“RDP (3389)”。 将剩余的字段保留默认设置，然后选择“确定”。
+    ![输入用户名和密码](./media/quick-create-portal/administrator-account.png)
 
-6. 在“摘要”页上，选择“创建”以启动 VM 部署。
+1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP”。
 
-7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
+    ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
+
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
+
+    ![查看并创建](./media/quick-create-portal/review-create.png)
+
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
@@ -61,7 +66,7 @@ ms.locfileid: "37916109"
 
 1. 单击虚拟机属性页上的“连接”按钮。 
 
-    ![从门户连接到 Azure VM](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png)
+    ![从门户连接到 Azure VM](./media/quick-create-portal/portal-quick-start-9.png)
     
 2. 在“连接到虚拟机”页面中，保留默认选项，以使用 DNS 名称通过端口 3389 进行连接，然后单击“下载 RDP 文件”。
 

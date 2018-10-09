@@ -1,24 +1,25 @@
 ---
-title: 通过 Azure 内容审查器中的自定义图像列表进行审查 | Microsoft Docs
-description: 如何通过自定义图像列表使用适用于 .NET 的 Azure 内容审查器进行审查。
+title: 快速入门：使用自定义图像列表进行审查 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 如何通过适用于 .NET 的内容审查器 SDK 使用自定义图像列表进行审查。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
-ms.date: 01/04/2018
+ms.topic: quickstart
+ms.date: 09/14/2018
 ms.author: sajagtap
-ms.openlocfilehash: c953df88f878b4f05c9a9f3099aea77f3ff48a92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 094542bad7ea8e9283d9a07fe620e363be1d0c2e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365552"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226440"
 ---
-# <a name="moderate-with-custom-image-lists-in-net"></a>在 .NET 中通过自定义图像列表进行审查
+# <a name="quickstart-moderate-with-custom-image-lists-in-net"></a>快速入门：在 .NET 中使用自定义图像列表进行审查
 
-本文提供了信息和代码示例，帮助你开始使用适用于 .NET 的内容审查器 SDK 执行以下操作：
+本文中的信息和代码示例可帮助你开始使用[用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)，执行下列操作：
 - 创建自定义图像列表
 - 添加和从列表中删除图像
 - 获取列表中所有图像的 ID
@@ -38,8 +39,8 @@ ms.locfileid: "35365552"
 
 ## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
 
-需要有订阅密钥才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
+请参阅[快速入门](quick-start.md)，了解如何获取密钥。
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -47,9 +48,7 @@ ms.locfileid: "35365552"
 
    在示例代码中，将项目命名为“ImageLists”。
 
-1. 选择此项目作为解决方案的单个启动项目。
-
-1. 向在[内容审查器客户端帮助程序快速入门](content-moderator-helper-quickstart-dotnet.md)中创建的“ModeratorHelper”项目添加一个引用。
+1. 将此项目选为解决方案的单一启动项目。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
@@ -63,17 +62,67 @@ ms.locfileid: "35365552"
 
 修改程序的 using 语句。
 
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
 
+### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-### <a name="initialize-application-specific-settings"></a>初始化特定于应用程序的设置
+添加以下代码以为订阅创建内容审查器客户端。
+
+> [!IMPORTANT]
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.Endpoint = AzureBaseURL;
+            return client;
+        }
+    }
+
+
+### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
 向 Program.cs 中的 Program 类添加以下类和静态字段。
 
@@ -85,7 +134,7 @@ ms.locfileid: "35365552"
 
     /// <summary>
     /// The number of minutes to delay after updating the search index before
-    /// performing image match operations against a the list.
+    /// performing image match operations against the list.
     /// </summary>
     private const double latencyDelay = 0.5;
 
@@ -180,7 +229,7 @@ ms.locfileid: "35365552"
     /// <summary>
     /// The name of the file to contain the output from the list management operations.
     /// </summary>
-    /// <remarks>Relative paths are ralative the execution directory.</remarks>
+    /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private static string OutputFile = "ListOutput.log";
 
     /// <summary>
@@ -202,7 +251,7 @@ ms.locfileid: "35365552"
 > 免费层密钥有一个 RPS 速率限制。
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>创建一个方法来将消息写入日志文件
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>创建用于将消息写入日志文件的方法
 
 将以下方法添加到 **Program** 类。 
 
@@ -1021,4 +1070,4 @@ ms.locfileid: "35365552"
 
 ## <a name="next-steps"></a>后续步骤
 
-为适用于 .NET 的此内容审查器快速入门以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+获取适用于 .NET 的此内容审查器和其他内容审查器快速入门的[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。

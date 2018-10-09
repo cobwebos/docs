@@ -1,25 +1,27 @@
 ---
 title: 快速入门：分析图像 - SDK、C# - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用计算机视觉 Windows C# 客户端库分析图像。
+description: 在本快速入门中，你将使用计算机视觉 Windows C# 客户端库分析图像。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: ad0b6bfc1c576e54c819937d0af4ff6cc4b38b06
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.date: 09/14/2018
+ms.author: nolachar
+ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841482"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056064"
 ---
-# <a name="quickstart-analyze-an-image---sdk-c35---computer-vision"></a>快速入门：分析图像 - SDK、C&#35; - 计算机视觉
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 分析图像
 
 在本快速入门中，你将使用计算机视觉 Windows 客户端库分析本地和远程图像来提取视觉特征。
+
+该示例的源代码可在 [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +50,7 @@ ms.locfileid: "43841482"
     1. 选择显示的 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**，单击项目名称旁边的复选框，然后单击“安装”。
 1. 将 `Program.cs` 替换为以下代码。
 1. 将 `<Subscription Key>` 替换为有效订阅密钥。
-1. 如有必要，请将 `computerVision.AzureRegion = AzureRegions.Westcentralus` 更改为获得订阅密钥的位置。
+1. 如有必要，将 `computerVision.Endpoint` 更改为与订阅密钥关联的 Azure 区域。
 1. 将 `<LocalImage>` 替换为本地图像的路径和文件名。
 1. （可选）将 `remoteImageUrl` 设置为另一图像。
 1. 运行该程序。
@@ -86,33 +88,33 @@ namespace ImageAnalyze
 
         static void Main(string[] args)
         {
-            ComputerVisionAPI computerVision = new ComputerVisionAPI(
-                new ApiKeyServiceClientCredentials(subscriptionKey), 
+            ComputerVisionClient computerVision = new ComputerVisionClient(
+                new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
 
             // You must use the same region as you used to get your subscription
             // keys. For example, if you got your subscription keys from westus,
-            // replace "Westcentralus" with "Westus".
+            // replace "westcentralus" with "westus".
             //
             // Free trial subscription keys are generated in the westcentralus
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 
             // Specify the Azure region
-            computerVision.AzureRegion = AzureRegions.Westcentralus;
+            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
 
             Console.WriteLine("Images being analyzed ...");
             var t1 = AnalyzeRemoteAsync(computerVision, remoteImageUrl);
             var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
             Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
+            Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
         }
 
         // Analyze a remote image
         private static async Task AnalyzeRemoteAsync(
-            ComputerVisionAPI computerVision, string imageUrl)
+            ComputerVisionClient computerVision, string imageUrl)
         {
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
@@ -128,7 +130,7 @@ namespace ImageAnalyze
 
         // Analyze a local image
         private static async Task AnalyzeLocalAsync(
-            ComputerVisionAPI computerVision, string imagePath)
+            ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
             {
@@ -159,9 +161,9 @@ namespace ImageAnalyze
 
 成功的响应会显示每个图像的最相关的描述文字。
 
-有关原始 JSON 输出的示例，请参阅 [API 快速入门：使用 C# 分析本地图像](../QuickStarts/CSharp-analyze.md#analyze-image-response)。
+有关原始 JSON 输出的示例，请参阅 [API 快速入门：使用 C# 分析本地图像](../QuickStarts/CSharp-analyze.md#examine-the-response)。
 
-```cmd
+```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```

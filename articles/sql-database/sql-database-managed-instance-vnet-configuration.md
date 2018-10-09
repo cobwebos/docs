@@ -2,24 +2,26 @@
 title: Azure SQL 数据库托管实例 VNet 配置 | Microsoft Docs
 description: 本主题介绍使用 Azure SQL 数据库托管实例的虚拟网络 (VNet) 的配置选项。
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 748489785241c0eab6022e3585164974f330d6f9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 9d3f867dad40017e8e97ec4f5e370533b018263c
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049667"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181156"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置 VNet
 
-Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 中部署。 此部署支持以下方案： 
+Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 中。 此部署支持以下方案： 
 - 直接从本地网络连接到托管实例 
 - 将托管实例连接到链接服务器或其他本地数据存储 
 - 将托管实例连接到 Azure 资源  
@@ -34,35 +36,35 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 
    如果打算使用现有的虚拟网络，则需要修改该网络的配置，以适应托管实例。 有关详细信息，请参阅[根据托管实例修改现有的虚拟网络](#modify-an-existing-virtual-network-for-managed-instances)。 
 
-   如果打算创建新的虚拟网络，请参阅[为托管实例创建新的虚拟网络](#create-a-new-virtual-network-for-managed-instances)。
+   如果打算创建新的虚拟网络，请参阅[为托管实例创建新的虚拟网络](#create-a-new-virtual-network-for-a-managed-instance)。
 
 ## <a name="requirements"></a>要求
 
-若要创建托管实例，需要专门使用 VNet 中符合以下要求的一个子网：
-- **专用子网**：该子网不能包含任何关联的其他云服务，并且不能是网关子网。 无法在包含除托管实例以外的资源的子网中创建托管实例，并且以后无法在子网中添加其他资源。
-- **无 NSG**：该子网不能有关联的网络安全组。 
-- **具有特定的路由表**：该子网必须有一个用户路由表 (UDR)，并且向该路由表分配了 0.0.0.0/0 下一跃点 Internet 作为唯一路由。 有关详细信息，请参阅[创建并关联所需的路由表](#create-the-required-route-table-and-associate-it)
-3. **可选的自定义 DNS**：如果在 VNet 中指定了自定义 DNS，则必须将 Azure 的递归解析程序 IP 地址（例如 168.63.129.16）添加到列表。 有关详细信息，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。
-4. **无服务终结点**：该子网不能有关联的服务终结点。 创建 VNet 时，请务必禁用“服务终结点”选项。
-5. **足够的 IP 地址**：该子网必须最少具有 16 个 IP 地址（建议的最小值是 32 个 IP 地址）。 有关详细信息，请参阅[确定托管实例的子网大小](#determine-the-size-of-subnet-for-managed-instances)
+若要创建托管实例，请在虚拟网络内创建一个符合以下要求的专用子网（托管实例子网）：
+- **专用子网**：托管实例子网不能包含与它关联的任何其他云服务，并且不能是网关子网。 无法在包含除托管实例以外的资源的子网中创建托管实例，并且以后无法在子网中添加其他资源。
+- **兼容的网络安全组 (NSG)**：与托管实例子网关联的 NSG 必须将下表中显示的规则（强制性入站安全规则和强制性出站安全规则）置于任何其他规则之前。 可以使用某个 NSG 通过筛选端口 1433 上的流量来完全控制对托管实例数据终结点的访问。 
+- **兼容的用户定义路由表 (UDR)**：托管实例子网必须有一个用户路由表，此表中 **0.0.0.0/0 Next Hop Internet** 已作为强制 UDR 分配给该子网。 此外，还可以添加 UDR，用以通过虚拟网络网关或虚拟网络设备 (NVA) 来路由以本地专用 IP 范围为目的地的流量。 
+- **可选的自定义 DNS**：如果在虚拟网络中指定了自定义 DNS，则必须将 Azure 的递归解析程序 IP 地址（例如 168.63.129.16）添加到列表。 有关详细信息，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。 自定义 DNS 服务器必须能够解析下列域及其子域中的主机名：*microsoft.com*、*windows.net*、*windows.com*、*msocsp.com*、*digicert.com*、*live.com*、*microsoftonline.com* 和 *microsoftonline-p.com*。 
+- **没有服务终结点**：托管实例子网不能有关联的服务终结点。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- **足够的 IP 地址**：托管实例子网必须最少具有 16 个 IP 地址（建议的最小值是 32 个 IP 地址）。 有关详细信息，请参阅[确定托管实例的子网大小](#determine-the-size-of-subnet-for-managed-instances)
 
 > [!IMPORTANT]
-> 如果目标子网不符合上述所有要求，则无法部署新的托管实例。 目标 Vnet 和子网必须符合这些托管实例要求（部署之前和之后），因为任何违规都可能导致实例进入错误状态并变得不可用。 从该状态恢复需要使用符合要求的网络策略在 VNet 中创建新实例、重新创建实例级数据并还原数据库。 这会造成应用程序长时间关闭。
+> 如果目标子网不符合上述所有要求，则无法部署新的托管实例。 创建托管实例时，会在子网上应用一个“网络意向策略”，以防止对网络配置进行不符合标准的更改。 从子网中删除最后一个实例后，“网络意向策略”也将被删除
 
-引入“网络意向策略”后，在创建托管实例后，你可以在托管实例子网上添加网络安全组 (NSG)。
-
-现在，你可以使用 NSG 通过筛选发往端口 1433 的网络流量来缩小应用程序和用户可以从中查询和管理数据的 IP 范围。 
-
-> [!IMPORTANT]
-> 在配置将限定对端口 1433 的访问的 NSG 规则时，还需要插入下表中显示的最高优先级入站规则。 否则，网络意向策略将因为更改不合规而阻止更改。
+### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则 
 
 | 名称       |端口                        |协议|来源           |目的地|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|任意     |任意              |任意        |允许 |
+|管理  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |允许 |
 |health_probe|任意                         |任意     |AzureLoadBalancer|任意        |允许 |
 
-路由体验已改进，除了 0.0.0.0/0 下一跃点类型的 Internet 路由之外，现在还可以添加 UDR 来将流量通过虚拟网络网关或虚拟网络设备 (NVA) 路由到本地专用 IP 范围。
+### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则 
+
+| 名称       |端口          |协议|来源           |目的地|操作|
+|------------|--------------|--------|-----------------|-----------|------|
+|管理  |80、443、12000|TCP     |任意              |任意        |允许 |
+|mi_subnet   |任意           |任意     |任意              |MI SUBNET  |允许 |
 
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>确定托管实例的子网大小
 
@@ -84,7 +86,7 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 > [!IMPORTANT]
 > 上方显示的计算将随着进一步改进而变得过时。 
 
-## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>使用 Azure 资源管理器部署为托管实例创建新的虚拟网络
+## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>为托管实例创建新的虚拟网络
 
 创建和配置虚拟网络的最简单方法是使用 Azure 资源管理器部署模板。
 
@@ -101,7 +103,7 @@ Azure SQL 数据库托管实例（预览版）必须在 Azure [虚拟网络 (VNe
 
 3. 配置网络环境。 在以下窗体上，可以配置网络环境的参数：
 
-![配置 Azure 网络](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+![配置 Azure 网络](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
 可以更改 VNet 和子网的名称并调整与网络资源关联的 IP 范围。 按下“购买”按钮后，此窗体将创建并配置你的环境。 如果不需要两个子网，可以删除默认子网。 
 
@@ -143,8 +145,6 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 **是否配置了自定义 DNS 服务器？** 
 
 如果是，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。 
-
-- 创建并关联所需的路由表：请参阅[创建并关联所需的路由表](#create-the-required-route-table-and-associate-it)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,23 +1,23 @@
 ---
-title: 适用于必应视觉搜索 API 的 Java 快速入门 | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: 展示了如何将图像上传到必应视觉搜索 API 并获取有关该图像的见解。
+title: 快速入门：创建视觉搜索查询 (Java) - 必应视觉搜索
+titleSuffix: Azure Cognitive Services
+description: 如何将图像上传到必应视觉搜索 API 并取回有关该图像的见解。
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 41e0855b126ca6e54d0a487a88fe59a0be6f72f6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 56e1b943f03128fa6703a7b15bd0d6ade09089d6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071989"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222618"
 ---
-# <a name="your-first-bing-visual-search-query-in-java"></a>你的第一个采用 Java 的必应视觉搜索查询
+# <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>快速入门：使用 Java 编写的第一个必应视觉搜索查询
 
 必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](../overview.md) 本文演示了如何上传图像。 上传图像在移动方案中非常有用，在这类方案中，你可以拍摄知名地标的照片并获取有关它的信息。 例如，见解可能包括有关地标的花边消息。 
 

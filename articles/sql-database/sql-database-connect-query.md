@@ -2,20 +2,22 @@
 title: Azure SQL 数据库连接和查询快速入门 | Microsoft Docs
 description: 演示如何连接和查询 Azure SQL 数据库的 Azure SQL 数据库快速入门。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc
+ms.subservice: operations
+ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-ms.date: 04/24/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: ec39c5ad0771c2bc78655e52c58949db6e9b3353
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/24/2018
+ms.openlocfilehash: 576e0adca21f5cd3313893035ff66bd83a0a0164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186005"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063517"
 ---
 # <a name="azure-sql-database-connect-and-query-quickstarts"></a>Azure SQL 数据库连接和查询快速入门
 
@@ -26,7 +28,7 @@ ms.locfileid: "32186005"
 | |  |
 |---|---|
 |[SQL Server Management Studio](sql-database-connect-query-ssms.md)|本快速入门演示了如何使用 SSMS 连接到 Azure SQL 数据库，并使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。|
-|[SQL Operations Studio ](https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|此快速入门演示如何使用 SQL Operations Studio（预览版）连接到 Azure SQL 数据库，然后使用 Transact-SQL (T-SQL) 语句创建要在 SQL Operations Studio（预览版）教程中使用的 TutorialDB。|
+|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|此快速入门演示如何使用 Azure Data Studio 连接到 Azure SQL 数据库，然后使用 Transact-SQL (T-SQL) 语句创建在 Azure Data Studio 教程中使用的 TutorialDB。|
 |[Azure 门户](sql-database-connect-query-portal.md)|本快速入门演示了如何使用查询编辑器连接到 SQL 数据库，然后使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。|
 |[Visual Studio Code](sql-database-connect-query-vscode.md)|本快速入门演示了如何使用 Visual Studio Code 连接到 Azure SQL 数据库，并使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。|
 |[将 .NET 与 Visual Studio 配合使用](sql-database-connect-query-dotnet-visual-studio.md)|此快速入门演示如何使用 .NET framework 与 Visual Studio 来创建连接到 Azure SQL 数据库的 C# 程序，并使用 Transact-SQL 语句来查询数据。|

@@ -1,23 +1,24 @@
 ---
-title: 评审终结点陈述以在语言理解 (LUIS) 中使用主动学习 - Azure | Microsoft Docs
-description: 使用名为“评审终结点陈述”的主动学习功能加快性能预测。
+title: 评审终结点话语以在语言理解 (LUIS) 中使用主动学习
+titleSuffix: Azure Cognitive Services
+description: 主动学习是提高预测准确性的三个策略之一，也是最易于实现的策略。 评审终结点话语通过主动学习获取正确的意向和实体。 LUIS 选择它不确定的终结点话语。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 05b3404d318359c6966df44bfab9baff3ded980f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 78cc2a8a2b9295654d0c6264cbf4a4d634b16544
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222607"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038164"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>通过评审终结点陈述启用主动学习
-主动学习是提高预测准确性的三个策略之一，也是最易于实现的策略。 
+主动学习是提高预测准确性的三个策略之一，也是最易于实现的策略。 评审终结点话语通过主动学习获取正确的意向和实体。 LUIS 选择它不确定的终结点话语。
 
 ## <a name="what-is-active-learning"></a>什么是主动学习
 主动学习是一个两步过程。 首先，LUIS 选择其在应用终结点收到的需要验证的陈述。 第二步由应用所有者或协作者执行：验证要[评审](luis-how-to-review-endoint-utt.md)的所选陈述包含正确意向及该意向中的所有实体。 评审陈述后，再次训练并发布应用。 

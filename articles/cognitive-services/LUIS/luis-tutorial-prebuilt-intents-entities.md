@@ -1,47 +1,56 @@
 ---
-title: 添加预生成的意向和实体以提取语言理解中的常见数据 - Azure | Microsoft Docs
-description: 了解如何使用预生成的意向和实体以提取不同类型的实体数据。
+title: 教程 2：预生成的意向和实体 - 使用预生成的常用话语 - 在 LUIS 中提取常用数据
+titleSuffix: Azure Cognitive Services
+description: 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 0e45b659508c71a9f1220ef5e76b9a95438fa1e6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162234"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034427"
 ---
-# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>教程：2。 添加预构建的意向和实体
-将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>教程 2：确定常见意向和实体
+在本教程中，修改“人力资源”应用。 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语，因为会自动检测实体。
 
-本教程介绍如何执行下列操作：
+常见主题域和数据类型的预生成模型可帮助你快速生成模型，并提供模型外观的示例。 
+
+**本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
-* 添加预生成意向 
-* 添加预生成实体 datetimeV2 和数量
-* 训练并发布
-* 查询 LUIS 并接收预测响应
+> * 使用现有的教程应用
+> * 添加预生成意向 
+> * 添加预生成的实体 
+> * 训练 
+> * 发布 
+> * 从终结点获取意向和实体
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>开始之前
-如果尚未获得前一教程中所述的[人力资源](luis-quickstart-intents-only.md)应用，请将 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) Github 存储库中的 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。
+## <a name="use-existing-app"></a>使用现有应用
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `prebuilts`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
+如果没有上一个教程中的 HumanResources 应用，请使用以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `prebuilts`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含 URL 中无效的任何字符。 
 
 ## <a name="add-prebuilt-intents"></a>添加预生成意向
 LUIS 提供几个预生成意向，以便提供常见用户意向。  
 
-1. 确保应用在 LUIS 的“生成”部分。 在右上方的菜单栏中选择“生成”可切换到此部分。 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 选择“添加预生成域意向”。 
-
-    [![“意向”页的屏幕截图，其中已突出显示“添加预生成域意向”按钮](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png)](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png#lightbox)
+2. 选择“添加预生成的意向”。 
 
 3. 搜索 `Utilities`。 
 
@@ -61,33 +70,27 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 在左侧导航菜单中选择“实体”。
 
-    [ ![“意向”列表的屏幕截图，在左侧导航中突出显示了“实体”](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png)](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png#lightbox)
-
 2. 选择“管理预生成的实体”按钮。
-
-    [ ![“实体”列表的屏幕截图，已突出显示“管理预生成的实体”](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png#lightbox)
 
 3. 从预生成的实体的列表中选择“数字”和“datetimeV2”，然后选择“完成”。
 
     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-## <a name="train-and-publish-the-app"></a>训练并发布应用
+## <a name="train"></a>训练
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>将应用发布到终结点
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-endpoint-with-an-utterance"></a>使用陈述查询终结点
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
+2. 将光标定位到浏览器地址栏中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
 
-    结果预测了 Utilities.Cancel 意向并提取了 3 月 3 日的日期和数字 3。 
-
-    ```
+    ```JSON
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {
@@ -162,15 +165,17 @@ LUIS 为常见数据提取提供多个预生成的实体。
     }
     ```
 
-    “3 月 3 日”有两个值，因为表述没有指出“3 月 3 日”是过去的还是未来的。 将由 LUIS 调用应用程序自行决定是做一个假设，还是通过提问进行澄清（如果需要）。 
+    结果预测了 Utilities.Cancel 意向并提取了 3 月 3 日的日期和数字 3。 
 
-    通过轻松快速地添加预生成的意向和实体，客户端应用程序可以添加会话管理和提取常见数据类型。 
+    “3 月 3 日”有两个值，因为表述没有指出“3 月 3 日”是过去的还是未来的。 将由客户端应用程序负责决定是做一个假设，还是要求澄清（如果需要）。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+通过添加预生成的意向和实体，客户端应用程序可以确定常见的用户意向并提取常见的数据类型。 
 
 > [!div class="nextstepaction"]
 > [向应用添加正则表达式实体](luis-quickstart-intents-regex-entity.md)

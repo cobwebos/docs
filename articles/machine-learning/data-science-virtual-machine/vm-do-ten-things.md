@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502804"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395723"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -47,7 +47,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 **先决条件**
 
 * 需要一个 Azure 订阅。 可以在[此处](https://azure.microsoft.com/free/)注册免费试用版。
-* 有关在 Azure 门户上配置数据科研虚拟机的说明，请参阅[创建虚拟机](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)。
+* 有关在 Azure 门户上配置数据科研虚拟机的说明，请参阅[创建虚拟机](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)。
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.使用 Microsoft ML Server 或 Python 探索数据和开发模型
 使用 R 和 Python 之类的语言即可在 DSVM 上执行数据分析。
@@ -56,7 +56,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 对于 Python，可以使用已预安装针对 Visual Studio 的 Python 工具 (PTVS) 扩展的 Visual Studio Community Edition 之类的 IDE。 默认情况下，PTVS 上仅配置基本的 conda 环境 Python 3.6。 若要启用 Anaconda Python 2.7，需要执行以下步骤：
 
-* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio 2015 Community Edition 中，导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”
+* 按以下方法操作为每个版本创建自定义环境：在 Visual Studio Community Edition 中，导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”
 * 提供描述并将环境前缀路径设置为 c:\anaconda\envs\python2（适用于 Anaconda Python 2.7）
 * 单击“自动检测”，并单击“应用”以保存环境。
 
@@ -66,7 +66,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](http://aka.ms/ptvsdocs)。
 
-现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Anaconda 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](http://aka.ms/ptvsdocs)。
+现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](http://aka.ms/ptvsdocs)。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.借助 Jupyter Notebook，可使用 Python 或 R 探索数据并建模
 Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供基于浏览器的“IDE”。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
@@ -816,7 +816,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.使用 Power BI Desktop 生成报表和仪表板
 可以在 Power BI 中可视化从上述 Cosmos DB 示例中看到的 Volcano JSON 文件，以获取对数据的视觉洞察。 [Power BI 文章](../../cosmos-db/powerbi-visualize.md)中提供了详细步骤。 下面是概要步骤：
 
-1. 打开 Power BI Desktop 并执行“获取数据”。 将 URL 指定为：https://cahandson.blob.core.windows.net/samples/volcano.json
+1. 打开 Power BI Desktop 并执行“获取数据”。 将 URL 指定为： https://cahandson.blob.core.windows.net/samples/volcano.json
 2. 应该将导入的 JSON 记录看作列表
 3. 将列表转换为表，以便 Power BI 可以处理该表
 4. 通过单击展开图标（在列右侧有“左箭头和右箭头”图标的展开图标）展开列

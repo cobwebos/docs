@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 69ead9e6dae400ce16cb2442c7b1c13e348d1572
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 92422a254bcfd5b31731dda6d1790cc85f467860
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355247"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094974"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -30,7 +30,7 @@ ms.locfileid: "34355247"
 在 Azure 门户中创建 ASE 时，可同时创建自己的 VNet 或选择要部署到的预先存在的 VNet。 基于模板创建 ASE 时，必须首先具有： 
 
 * 一个资源管理器 VNet。
-* 该 VNet 中的子网。 建议使用带 128 位地址的大小为 `/25` 的 ASE 子网，以适应将来的增长需求。 创建 ASE 后，就无法更改其大小。
+* 该 VNet 中的子网。 建议使用带 256 个地址的大小为 `/24` 的 ASE 子网，以适应将来的增长和缩放需求。 创建 ASE 后，就无法更改其大小。
 * 来自 VNet 的资源 ID。 此信息位于 Azure 门户下的虚拟网络属性中。
 * 要部署到的订阅。
 * 要部署到的位置。
@@ -70,7 +70,7 @@ SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默
 可通过三种方式获取有效的 SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
 * 使用者：此属性必须设置为 *.your-root-domain-here.com。
-* 使用者可选名称：此属性必须同时包含 *.your-root-domain-here.com 和 *scm.your-root-domain-here.com。使用 your-app-name.scm.your-root-domain-here.com 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
+* 使用者可选名称：此属性必须同时包含 *.your-root-domain-here.com 和 *scm.your-root-domain-here.com。 使用 your-app-name.scm.your-root-domain-here.com 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
 
 备妥有效的 SSL 证书还需要两个额外的准备步骤。 将 SSL 证书转换/保存为 .pfx 文件。 请记住，.pfx 文件必须包括所有的中间和根证书。 使用密码进行保护。
 
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-
 
 每个 ASE 前端约耗时 40 分钟才能应用此更改。 例如，有一个默认大小的 ASE 使用两个前端，则模板需要大约 1 小时 20 分钟才能完成。 运行模板时无法缩放 ASE。  
 
-模板运行完成后，即可通过 HTTPS 访问 ILB ASE 上的应用。 使用默认 SSL 证书来保护连接安全。 如果 ILB ASE 上的应用使用应用程序名称与默认主机名的组合来寻址，则会使用默认 SSL 证书。 例如，https://mycustomapp.internal-contoso.com 使用 *.internal-contoso.com 的默认 SSL 证书。
+模板运行完成后，即可通过 HTTPS 访问 ILB ASE 上的应用。 使用默认 SSL 证书来保护连接安全。 如果 ILB ASE 上的应用使用应用程序名称与默认主机名的组合来寻址，则会使用默认 SSL 证书。 例如， https://mycustomapp.internal-contoso.com 使用 *.internal-contoso.com 的默认 SSL 证书。
 
 但是，就像公共多租户服务上运行的应用一样，开发者可为单个应用配置自定义主机名。 还可为单个应用配置唯一的 SNI SSL 证书绑定。
 

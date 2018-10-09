@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702123"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452388"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -50,6 +50,24 @@ ms.locfileid: "43702123"
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* 为多区域请求暂时性故障添加了更多复原能力。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* 添加了多区域写入支持。
+* 使用 TOP 和 MaxBufferedItemCount 改进跨分区查询性能。
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* 添加了请求取消支持。
+* 将 SetCurrentLocation 添加到 ConnectionPolicy，它会根据区域自动填充首选位置。
+* 修复了具有 Min/Max 以及在单个分区上没有文档匹配的筛选的跨分区查询中的 Bug。
+* DocumentClient 方法现在与 IDocumentClient 具有奇偶校验。
+* 更新了直接 TCP 传输堆栈以减少建立的连接数。
+* 为非 Windows 客户端添加了对 Direct Mode TCP 的支持。
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * 添加了请求取消支持。
@@ -309,8 +327,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |2018 年 7 月 26 日 |--- |
-| [2.0.0-preview](#2.0.0-preview) |2018 年 5 月 11 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
 | [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
 | [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
 | [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |

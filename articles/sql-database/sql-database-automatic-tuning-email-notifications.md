@@ -1,21 +1,23 @@
 ---
 title: 自动优化电子邮件通知操作指南 - Azure SQL 数据库 | Microsoft Docs
-description: Azure SQL 数据库可分析 SQL 查询并自动适应用户工作负荷。
+description: 为 Azure SQL 数据库自动查询优化启用电子邮件通知。
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/05/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644325"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064095"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -205,12 +207,12 @@ Write-Output $table
 1. 创建操作以执行检索优化建议的 PowerShell 脚本
 - 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
 - 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 创建作业”
-- 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#Create_job)。
+- 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#create-job)。
 - 单击“保存流”完成创建此操作
 
 2. 创建从已执行的 PowerShell 脚本检索输出的操作
 - 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
-- 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 获取作业输出” 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output)。
+- 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 获取作业输出” 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)。
 - 填充所需字段（类似于创建上一个作业）- 填充 Azure 订阅 ID、资源组和自动化帐户（与“自动化帐户”窗格中输入的内容一样）
 - 单击“作业 ID”字段内部，以便显示“动态内容”菜单。 从此菜单中选择“作业 ID”选项。
 - 单击“保存流”完成创建此操作

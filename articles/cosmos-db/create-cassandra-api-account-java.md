@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: af25c52d1300a2daed3542c5cb1db080c505f715
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b412042d0a872443c0b30c774dfd4926555a5a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953117"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221636"
 ---
 # <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>使用 Java 应用程序创建 Azure Cosmos DB Cassandra API 帐户、数据库和表
 
-本教程介绍如何使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户、添加数据库（也称为键空间）以及添加表。 Java 应用程序使用 [Datastax Java 驱动程序](https://github.com/datastax/java-driver)来创建包含用户 ID、用户名、用户城市等详细信息的用户数据库。  
+本教程介绍如何使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户、添加数据库（也称为键空间）以及添加表。 Java 应用程序使用 [Java 驱动程序](https://github.com/datastax/java-driver)来创建包含用户 ID、用户名、用户城市等详细信息的用户数据库。  
 
 本教程涵盖以下任务：
 
@@ -91,7 +91,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. 找到 `cassandra-demo` 文件夹。 使用文本编辑器打开已生成的 `pom.xml` 文件。 
 
-   添加 Cassandra datastax 依赖项和生成项目所需的插件，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) 文件中所示。  
+   添加 Cassandra 依赖项并生成项目所需的插件，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) 文件中所示。  
 
 3. 在 `cassandra-demo\src\main` 文件夹下，创建名为 `resources` 的新文件夹。  在资源文件夹下，添加 config.properties 和 log4j.properties 文件：
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/12/2018
+ms.date: 09/21/2018
 ms.topic: overview
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 10fef55ef09e4be427fbd36c730528a993dd64e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 470802c1119c1c367dcd72f782dfc1036f75f6db
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960850"
+ms.locfileid: "47035940"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
@@ -23,7 +23,7 @@ ms.locfileid: "46960850"
 
 虽然与计费相关，但计费不等同于成本管理。 计费是为客户开具商品或服务的发票及管理商业关系的过程。  采购团队和财务团队通常负责执行计费任务。
 
-成本管理会借助高级分析显示组织的成本和使用模式。 成本管理中的报表将显示 Azure 成本、使用情况、预留实例和 Azure 混合权益使用情况。 总的来说，这些报表显示了内部和外部成本。 报表可以帮助用户了解支出和资源使用情况，并帮助查找支出异常情况。 另外，还可以进行预测分析。 成本管理使用 Azure 管理组、预算和建议来清楚地显示费用规划情况，以及如何能够降低成本。
+成本管理会借助高级分析显示组织的成本和使用模式。 成本管理中的报表将显示 Azure 成本、使用情况、预留实例和 Azure 混合权益使用情况。 总的来说，这些报表显示了内部和外部使用成本以及 Azure 市场费用。 报告中尚未显示其他费用，例如预订购买费用、支持费用和税费。 报表可以帮助用户了解支出和资源使用情况，并帮助查找支出异常情况。 另外，还可以进行预测分析。 成本管理使用 Azure 管理组、预算和建议来清楚地显示费用规划情况，以及如何能够降低成本。
 
 你可以使用 Azure 门户或各种 API 执行自动导出，从而将成本数据与外部系统和过程进行整合。 另外，还可自动导出计费数据和计划的报表。
 

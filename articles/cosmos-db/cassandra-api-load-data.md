@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d659004e94c51f173bc1e9ae42fd9c62ae45912f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 662d4b8812ca4b92c1130b9c2c38771e7ec30a06
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972532"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393978"
 ---
 # <a name="load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>将示例数据加载到 Azure Cosmos DB Cassandra API 表
 
-本教程介绍如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB Cassandra API 帐户中的表。 Java 应用程序使用 [Datastax Java 驱动程序](https://github.com/datastax/java-driver)并加载用户 ID、用户名、用户城市等用户数据。 
+本教程介绍如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB Cassandra API 帐户中的表。 Java 应用程序使用 [Java 驱动程序](https://github.com/datastax/java-driver)并加载用户 ID、用户名、用户城市等用户数据。 
 
 本教程涵盖以下任务：
 

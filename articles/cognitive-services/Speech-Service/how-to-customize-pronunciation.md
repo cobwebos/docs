@@ -1,6 +1,6 @@
 ---
-title: Azure 认知服务语音服务
-description: 了解如何使用语音服务认知服务自定义发音。
+title: 使用 Azure 认知服务中的语音服务自定义发音
+description: 了解如何使用 Azure 认知服务中的语音服务自定义发音。
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745345"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423198"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 借助自定义发音，你可以定义语音形式和字词或术语显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需使用发音文件（简单的 .txt 文件）即可。
@@ -33,13 +33,13 @@ Display form <Tab> Spoken form <Newline>
 | CNTK | see n tea k|
 
 ## <a name="requirements-for-the-spoken-form"></a>口头形式要求
-口头形式必须为小写，可以在导入过程中强制实施。 此外，还必须在数据导入工具中执行检查。 禁止在口头形式或显示形式中使用制表位。 不过，禁止在显示形式中使用的字符可能更多（例如，~ 和 ^）。
+口头形式必须为小写，可以在导入过程中强制实施。 此外，还需要在数据导入工具中提供检查。 禁止在口头形式或显示形式中使用制表位。 不过，禁止在显示形式中使用的字符可能更多（例如，~ 和 ^）。
 
 每个 .txt 文件都可以有多个条目，如下图所示：
 
 ![首字母缩略词发音的示例](media/stt/custom-speech-pronunciation-file.png)
 
-口头形式是显示形式的语音序列。 它由字母、字词或音节组成。 暂无其他任何有助于规划口头形式的指南或一系列标准。 
+口头形式是显示形式的语音序列。 它由字母、字词或音节组成。 目前，没有进一步的指南或标准集来帮助你规划口头形式。 
 
 ## <a name="supported-pronunciation-characters"></a>支持的发音字符
 目前，英语 (en-US) 和德语 (de-de) 支持自定义发音。 下表列出了可用于（在自定义发音文件中）表示术语的口头形式的字符集： 
@@ -47,7 +47,7 @@ Display form <Tab> Spoken form <Newline>
 | 语言 | 字符 |
 |---------- |----------|
 | 英语 (en-US) | a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
-| 德语 (de-de) | ä、ö、ü、ẞ、a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
+| 德语 (de-de) | ä、ö、ü、?、a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
 
 > [!NOTE]
 > （发音文件中的）术语显示形式应与语言顺应数据集中的编写方式相同。

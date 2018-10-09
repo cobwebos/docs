@@ -4,16 +4,16 @@ description: 查看 edgeAgent 和 edgeHub 模块孪生的特定属性及其值
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030557"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423131"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge 代理和 Edge 中心模块孪生的属性
 
@@ -66,7 +66,7 @@ Edge 代理报告属性包括三个主要信息：
 
 下表不包括从所需属性中复制的信息。
 
-| 属性 | 说明 |
+| 属性 | Description |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 Edge 代理处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此为状态代码，指的是 Edge 代理所看到的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`412` 架构版本无效、`417` 所需属性为空、`500` 失败 |
@@ -96,7 +96,7 @@ Edge 代理报告属性包括三个主要信息：
 
 Edge 中心的模块孪生被称为 `$edgeHub`，用于协调设备与 IoT 中心上运行的 Edge 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。 
 
-| 属性 | 说明 | 部署清单中的必备项 |
+| 属性 | Description | 部署清单中的必备项 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | routes.{routeName} | 表示 Edge 中心路由的字符串。 | `routes` 元素可以存在但为空。 |
@@ -104,14 +104,14 @@ Edge 中心的模块孪生被称为 `$edgeHub`，用于协调设备与 IoT 中�
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub 报告属性
 
-| 属性 | 说明 |
+| 属性 | Description |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 Edge 中心处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此为状态代码，指的是 Edge 中心所看到的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`500` 失败 |
 | lastDesiredStatus.description | 状态的文本说明 |
-| clients.{device or module identity}.status | 此设备或模块的连接状态。 可能值：{"connected" \| "disconnected"}。 仅模块标识可以处于断开连接状态。 仅在连接时才会显示连接到 Edge 中心的下游设备。 |
-| clients.{device or module identity}.lastConnectTime | 设备或模块的上次连接时间 |
-| clients.{device or module identity}.lastDisconnectTime | 设备或模块上次断开连接的时间 |
+| clients.{device or moduleId}.status | 此设备或模块的连接状态。 可能值：{"connected" \| "disconnected"}。 仅模块标识可以处于断开连接状态。 仅在连接时才会显示连接到 Edge 中心的下游设备。 |
+| clients.{device or moduleId}.lastConnectTime | 设备或模块的上次连接时间 |
+| clients.{device or moduleId}.lastDisconnectTime | 设备或模块上次断开连接的时间 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,23 +1,23 @@
 ---
-title: 必应视觉搜索 API 的 JavaScript 快速入门 | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: 演示如何将图像上传到必应视觉搜索 API 并取回有关该图像的见解。
+title: 快速入门：创建视觉搜索查询 (Node.js) - 必应视觉搜索
+titleSuffix: Azure Cognitive Services
+description: 如何将图像上传到必应视觉搜索 API 并取回有关该图像的见解。
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 60b1dc9b8ea9eda258e9776b8967df38c97d964e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: b13738c5bfd8fc75224bf934ae8be56e7c2edd69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071696"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225491"
 ---
-# <a name="your-first-bing-visual-search-query-in-javascript"></a>用 JavaScript 编写的第一个必应视觉搜索查询
+# <a name="quickstart-your-first-bing-visual-search-query-in-javascript"></a>快速入门：使用 JavaScript 编写的第一个必应视觉搜索查询
 
 必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](../overview.md) 本文演示了如何上传图像。 上传图像在移动方案中非常有用，在这类方案中，你可以拍摄知名地标的照片并获取有关它的信息。 例如，见解可能包括有关地标的花边消息。 
 

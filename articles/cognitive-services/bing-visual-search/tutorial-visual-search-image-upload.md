@@ -1,21 +1,21 @@
 ---
-title: 必应视觉搜索上传图像教程 | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
+title: 教程：如何上传图像 - 必应视觉搜索
+titleSuffix: Azure Cognitive Services
 description: 细分将图像上传到必应的过程，以获得相关见解，然后分析并显示响应。
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: a5bc5197ecd1f35b4d0026caa076a844c9d57c40
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068662"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221310"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>教程：必应视觉搜索上传操作的细分步骤
 

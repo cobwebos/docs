@@ -1,21 +1,21 @@
 ---
-title: 语言理解 (LUIS) 边界 | Microsoft Docs
-titleSuffix: Azure
-description: 本文包含 LUIS 的已知限制。
+title: 语言理解 (LUIS) 的边界和限制
+titleSuffix: Azure Cognitive Services
+description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 具有多个边界区域。 模型边界可控制 LUIS 中的意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0a75c113f619aa70ba6c504f07afc8dc8a35b694
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b7a2d1554d668b4000b87b210a69b290def9b19e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399825"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035430"
 ---
 # <a name="luis-boundaries"></a>LUIS 边界
 LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 边界的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。 
@@ -30,7 +30,7 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 | **[复合](./luis-concept-entity-types.md)|100 个实体，最多 10 个子级 |
 | 显式列表 | 每个应用程序 50 个实体|
 | **[分层](./luis-concept-entity-types.md) |100 个实体，最多 10 个子级 |
-| [意向][intents]|每个应用程序 500 个<br>[基于调度](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) 的应用程序相应的有 500 个调度源|
+| [意向][intents]|每个应用程序 500 个<br>[基于调度](https://aka.ms/dispatch-tool) 的应用程序相应的有 500 个调度源|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 项，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
 | [Pattern.any](./luis-concept-entity-types.md)|每个应用程序 100 个，每个模式 3 个 pattern.any 实体 |

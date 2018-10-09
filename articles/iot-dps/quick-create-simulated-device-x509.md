@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d6d149d07f55784e8428eb0faa943814195a47
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9eb80b085f979208999b6764d6e4014cdbcfd2a0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023195"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159119"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -39,12 +39,20 @@ ms.locfileid: "42023195"
 
 在本部分，你将准备一个开发环境，用于生成包含 X.509 启动序列示例代码的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
-1. 下载最新版本的 [CMake 生成系统](https://cmake.org/download/)。 在同一站点中，查找所选二进制分发版本的加密哈希。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 分发版本 3.11.4 的加密哈希：
+1. 下载 [CMake 生成系统](https://cmake.org/download/)的版本 3.11.4。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 分发版本 3.11.4 的加密哈希：
 
     ```PowerShell
-    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
     True
+    ```
+    
+    在撰写本文时，在 CMake 站点上列出了版本 3.11.4 的以下哈希值：
+
+    ```
+    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
+    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
+    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
     ```
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
@@ -95,10 +103,10 @@ ms.locfileid: "42023195"
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>创建自签名的 X.509 设备证书
 
-在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
+本部分将使用自签名的 X.509 证书，请务必记住以下几点：
 
 * 自签名证书仅用于测试，不应在生产环境中使用。
-* 自签名证书的默认过期日期为 1 年。
+* 自签名证书的默认过期日期为一年。
 
 你将使用来自 Azure IoT C SDK 的示例代码创建要与模拟设备的个人注册条目一起使用的证书。
 
@@ -110,7 +118,7 @@ ms.locfileid: "42023195"
 
 4. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在输出窗口中，当系统提示时输入 **i** 完成单个注册。 
 
-    输出窗口会显示在本地为模拟设备生成的自签名 X.509 证书。 将输出复制到剪贴板，从 **-----BEGIN CERTIFICATE-----** 开始，到第一个 **-----END CERTIFICATE-----** 结束，确保将这两行也包括进去。 请注意，只需要输出窗口中的第一个证书。
+    输出窗口会显示在本地为模拟设备生成的自签名 X.509 证书。 将输出复制到剪贴板，从 **-----BEGIN CERTIFICATE-----** 开始，到第一个 **-----END CERTIFICATE-----** 结束，确保将这两行也包括进去。 只需要输出窗口中的第一个证书。
  
 5. 使用文本编辑器将证书保存到名为 **_X509testcert.pem_** 的新文件中。 
 
@@ -127,7 +135,7 @@ ms.locfileid: "42023195"
     - **主要证书 .pem 或 .cer 文件：** 单击“选择文件”，选择前面创建的证书文件 X509testcert.pem。
     - **IoT 中心设备 ID：** 输入 **test-docs-cert-device** 作为设备的 ID。
 
-    [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
+    [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
     成功注册以后，X.509 设备会在“单独注册”选项卡的“注册 ID”列下显示为 **riot-device-cert**。 
 
@@ -180,7 +188,7 @@ ms.locfileid: "42023195"
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. 在门户中导航到已链接到预配服务的 IoT 中心，然后单击“IoT 设备”选项卡。将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”。 请注意，可能需要单击顶部的“刷新”按钮。 
+7. 在门户中导航到已链接到预配服务的 IoT 中心，然后单击“IoT 设备”选项卡。将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”。 你可能需要单击顶部的“刷新”按钮。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 

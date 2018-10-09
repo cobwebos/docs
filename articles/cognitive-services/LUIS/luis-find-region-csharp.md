@@ -1,22 +1,23 @@
 ---
-title: 在语言理解 (LUIS) 边界中使用 C# 查找 LUIS 区域 | Microsoft Docs
+title: 在 LUIS 中使用 C# 查找终结点区域
+titleSuffix: Azure Cognitive Services
 description: 以编程方式查找具有 LUIS 终结点密钥和应用程序 ID 的发布区域。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6f2688e492dbba718dc55825de164c189a9b46c9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53c3d1abb24ae0d5b33a2a100dda07fd20ae92d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225102"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039626"
 ---
-# <a name="region-can-be-determined-from-api-call"></a>可通过 API 调用确定区域 
+# <a name="find-endpoint-region-with-c"></a>使用 C# 查找终结点区域 
 如果具有 LUIS 应用 ID 和 LUIS 订阅 ID，则可查找要用于终结点查询的区域。
 
 > [!NOTE] 

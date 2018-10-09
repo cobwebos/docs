@@ -1,26 +1,29 @@
 ---
-title: 新建知识库 - 适用于 Microsoft QnA Maker API (V4) 的 C# 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 在 C# 中创建知识库以保存常见问题解答或产品手册，这样就可以开始使用 QnA Maker。
+title: 快速入门：API C# - 创建知识库 - QnA Maker
+titlesuffix: Azure Cognitive Services
+description: 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 16d17a335bb84212497010b3eeb930582fa86dc4
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8a0840a96f21f76f3a742d973c86dd02929b8e30
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "43768728"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039439"
 ---
 # <a name="create-a-new-knowledge-base-in-c"></a>在 C# 中新建知识库
 
 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 
-下面提供了两个示例性的常见问题解答 URL（字符串 kb 中的“urls”）。 QnA Maker 从半结构化内容（例如常见问题解答）中自动提取问答，详见此[数据源](../Concepts/data-sources-supported.md)文档。 也可在本快速入门中使用自己的常见问题解答 URL。
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+
+下面提供了两个示例性的常见问题解答 URL（字符串 kb 中的“urls”）。 QnA Maker 从半结构化内容（例如常见问题解答）中自动提取问答，详见此[数据源](../Concepts/data-sources-supported.md)文档。 在本快速入门中，你也可以使用自己的常见问题解答 URL。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -295,7 +298,7 @@ namespace QnAMaker
 
 ## <a name="understand-what-qna-maker-returns"></a>了解 QnA Maker 所返回的内容
 
-在 JSON 中返回成功的响应，如以下示例所示。 结果可能稍有不同。 如果最终调用返回“已成功”状态，则知识库创建成功。 若要进行故障排除，请参阅 QnA Maker API 的 [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)（获取操作详细信息）。
+成功的响应以 JSON 格式返回，如以下示例所示。 结果可能稍有不同。 如果最终调用返回“已成功”状态，则知识库创建成功。 若要进行故障排除，请参阅 QnA Maker API 的 [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)（获取操作详细信息）。
 
 ```json
 Calling https://westus.api.cognitive.microsoft.com/qnamaker/v4.0/knowledgebases/create.

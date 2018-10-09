@@ -1,23 +1,30 @@
 ---
 title: 管理扩展云仪表板 | Microsoft 文档
 description: 使用弹性数据库作业服务跨一组数据库执行脚本。
-metakeywords: azure sql database elastic databases
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 649a76fad8f54339a6b1e429b3966945410573f7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646079"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166786"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+**弹性数据库作业**是一个由客户托管的 Azure 云服务，可让你执行临时和计划的管理任务，称为“作业”。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
+
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：
 
 * 自定义的数据库集合（下面会介绍）
@@ -30,7 +37,7 @@ ms.locfileid: "34646079"
 * [使用 Powershell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。
 * [创建和管理扩大的 Azure SQL 数据库](sql-database-elastic-jobs-getting-started.md)
 
-**弹性数据库作业**目前是一个由客户托管的 Azure 云服务，可让你执行临时和计划的管理任务，称为“作业”。 使用作业可以通过运行 Transact-SQL 脚本来执行管理操作，从而轻松可靠地管理大型 Azure SQL 数据库组。 
+
 
 ![弹性数据库作业服务][1]
 

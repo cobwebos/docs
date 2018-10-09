@@ -1,26 +1,28 @@
 ---
-title: 使用 C# 将 LUIS 数据添加到 Application Insights | Microsoft Docs
-titleSuffix: Azure
+title: 使用 C# 从 LUIS 获取 Application Insights 数据
+titleSuffix: Azure Cognitive Services
 description: 使用 C# 构建一个集成有 LUIS 应用程序和 Application Insights 的机器人。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237785"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038946"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>通过 Web 应用机器人将 LUIS 结果添加到 Application Insights
-本教程介绍如何将 LUIS 响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 拥有该数据后，可使用 Kusto 语言对其进行查询，或使用 Power BI 对表述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
+# <a name="add-luis-results-to-application-insights"></a>将 LUIS 结果添加到 Application Insights
+本教程介绍如何将 LUIS 响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 拥有该数据后，可使用 Kusto 语言对其进行查询，或使用 Power BI 对表述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。 
 
-本教程介绍如何执行以下操作：
+该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
+
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 * 将 Application Insights 添加到 Web 应用机器人
@@ -231,7 +233,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
     ![自定义分析报表](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-详细了解 [Kusto 查询语言](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
+详细了解 [Kusto 查询语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)或[将数据导出到 Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)。 
 
 
 ## <a name="learn-more-about-bot-framework"></a>详细了解 Bot Framework

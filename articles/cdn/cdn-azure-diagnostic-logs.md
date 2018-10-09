@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: v-deasim
-ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0baa43977099af9c6c0d9c2e4c03abc121ec279d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261298"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47097000"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -117,17 +117,15 @@ ms.locfileid: "35261298"
 
 9. 选择“确定”以完成配置。
 
-    ![门户 - 诊断日志](./media/cdn-diagnostics-log/08_Workspace-resource.png)
-
 10. 创建工作区后，会返回到“诊断日志”页面。 确认新 Log Analytics 工作区的名称。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
 11. 选择“CoreAnalytics”，然后选择“保存”。
 
-12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页面选择“Core analytics”。
+12. 若要查看新的 Log Analytics 工作区，请从 CDN 终结点页选择“核心分析”。
 
-    ![门户 - 诊断日志](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
+    ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
     Log Analytics 工作区现在已经可以用来记录数据日志。 为了使用该数据，必须使用本文下文中提供的 [Log Analytics 解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
 
@@ -168,21 +166,20 @@ ms.locfileid: "35261298"
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
-5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅下面的 *Blob 路径格式*注释。
+5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
 7.  有关此 JSON 文件的内容架构，请参阅核心分析日志的“架构”部分。
 
 
-> [!NOTE]
-> Blob 路径格式
-> 
-> 核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 由于“存储资源管理器”工具将“/”解释为目录分隔符并显示层次结构，Azure Blob 的路径看起来像是采用了分层结构并表示 Blob 名称。 Blob 的名称遵循以下命名约定： 
-    
-    resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json
+#### <a name="blob-path-format"></a>Blob 路径格式
+
+核心分析日志每隔一小时生成一次，数据以 JSON 有效负载的形式收集并存储在单个 Azure Blob 中。 由于“存储资源管理器”工具将“/”解释为目录分隔符并显示层次结构，Azure Blob 的路径看起来像是采用了分层结构并表示 Blob 名称。 Blob 的名称遵循以下命名约定：   
+
+```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
 字段说明：
 
-|值|说明|
+|值|Description|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -316,7 +313,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 下表显示了 **Microsoft 推出的 Azure CDN 标准版**、**Akamai 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 标准/高级版**的核心分析日志中提供的一系列指标。 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 说明 | Microsoft | Verizon | Akamai |
+|指标                     | Description | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |

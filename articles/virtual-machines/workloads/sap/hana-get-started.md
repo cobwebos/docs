@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112133"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032067"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>快速入门：在 Azure VM 上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>介绍
@@ -45,7 +45,9 @@ ms.locfileid: "43112133"
    * 有关如何提高 Azure 上 ASCS/SCS 多 SID 安装的利用效率的详细信息。 请参阅[创建 SAP NetWeaver 多 SID 配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid)。 
    * 在 Azure 中运行 SAP NetWeaver（基于 Linux 驱动的 VM）的原则。 请参阅[在 Microsoft Azure SUSE Linux VM 上运行 SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)。 本指南介绍 Azure VM 中适用于 Linux 的具体设置，还将详细介绍如何正确地将 Azure 存储磁盘附加到 Linux VM。
 
-目前，Azure VM 只通过了 SAP 的 SAP HANA 纵向扩展配置的认证。 暂时不支持包含 SAP HANA 工作负荷的横向扩展配置。 对于纵向扩展配置中的 SAP HANA 高可用性，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)。
+[IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中列出了可用于生产方案的 Azure VM 类型。 对于非生产方案，可使用更广泛的本机 Azure VM 类型。
+有关 VM 配置和操作的更多详细信息，请参阅文档 [Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
+有关 SAP HANA 高可用性，请参阅 [Azure 虚拟机的 SAP HANA 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)。
 
 如果希望快速部署 SAP HANA 实例、S/4HANA 或 BW/4HANA 系统，则应考虑使用 [SAP Cloud Appliance Library](http://cal.sap.com)。 可在[本指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)中找到部署的相关文档，例如如何在 Azure 中通过 SAP CAL 部署 S/4HANA 系统。 只需具有 Azure 订阅，以及可通过 SAP Cloud Appliance Library 注册的 SAP 用户，即可完成操作。
 
@@ -91,6 +93,11 @@ Azure VM 类型和配合 SAP HANA 使用的 SAP 支持的工作负荷方案记�
 >SAP-Linux-Azure 集成仅在 Azure 资源管理器部署模型上受支持，在经典部署模型上不受支持。 
 
 ## <a name="manual-installation-of-sap-hana"></a>手动安装 SAP HANA
+
+> [!IMPORTANT]
+> 请确保你选择的 OS 已经过 SAP 针对你使用的特定 VM 类型上的 SAP HANA 进行的认证。 可以在[经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中查找获得 SAP HANA 认证的 VM 类型和这些 VM 类型的 OS 版本列表。 请确保单击进入列出的 VM 类型的详细信息，以获取特定 VM 类型的 OS 版本支持的 SAP HANA 完整列表。 请注意，在本文档的示例中，我们使用了 SAP 不支持对 M 系列 VM 上的 SAP HANA 使用的 SLES OS 版本。
+>
+
 本指南介绍了在 Azure VM 上手动安装 SAP HANA 的两种不同方法：
 
 * 在“安装数据库实例”步骤中将 SAP Software Provisioning Manager (SWPM) 用作分布式 NetWeaver 安装的一部分

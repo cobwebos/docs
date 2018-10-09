@@ -1,24 +1,25 @@
 ---
-title: 适用于 Azure 认知服务、必应视频搜索 API 的 Java 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助你快速开始使用 Azure 上 Microsoft 认知服务中的必应视频搜索 API。
+title: 快速入门：必应视频搜索 API、Java
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，有助于快速开始使用必应视频搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: db9bc353c86565956881c90ce3a3b6275e1b8771
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ec5aa9e832a24fcd3b029727217bffb3b4d94e0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366447"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223230"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-java"></a>必应视频搜索 API 与 Java 快速入门
+# <a name="quickstart-bing-video-search-api-with-java"></a>快速入门：必应视频搜索 API 与 Java
 
-本文介绍如何使用 Azure 上 Microsoft 认知服务中包含的必应搜索 API。 虽然本文是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应搜索 API。 虽然本文是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
 编写的示例代码作为控制台应用程序在 Java 7 下运行。
 
@@ -26,15 +27,15 @@ ms.locfileid: "35366447"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-video-search"></a>必应视频搜索
 
 [必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) 从必应搜索引擎返回结果。
 
 1. 下载或安装 [gson 库](https://github.com/google/gson)。
-2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
-3. 添加以下提供的代码。
+2. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 项目。
+3. 添加下面提供的代码。
 4. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 5. 运行该程序。
 
@@ -259,9 +260,9 @@ class SearchResults{
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [分页视频](paging-videos.md)
-> [调整大小和裁剪缩略图](resize-and-crop-thumbnails.md)
+> [对视频进行分页](paging-videos.md)
+> [对图像进行大小调整和裁剪](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>另请参阅 
 
- [搜索 Web 视频](search-the-web.md) [试用](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [在网上搜索视频](search-the-web.md) [试试看](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

@@ -1,20 +1,21 @@
 ---
-title: 通过在 Azure 内容审查器中使用自定义列表来审查图像 | Microsoft Docs
+title: 通过 API 控制台使用自定义列表来审查图像 - 内容审查器
+titlesuffix: Azure Content Moderator
 description: 在内容审查器 API 控制台中测试运行自定义图像列表。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: 2d714f017be16d978ffbb877a2b7e78e1caf9169
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5e573262879b6a16e3cd530757900b86228ae299
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365542"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219951"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>借助 API 控制台中的自定义列表进行审查
 
@@ -32,10 +33,10 @@ ms.locfileid: "35365542"
 - 从列表中删除图像。
 - 删除列表。
 - 编辑列表信息。
-- 刷新索引，以便新的扫描中包括对列表的更改。
+- 筛选索引，使新的扫描中包含列表更改项。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
-需要提供订阅密钥才能在联机控制台中测试运行 API。 密钥位于“设置”选项卡的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="refresh-search-index"></a>刷新搜索索引
 

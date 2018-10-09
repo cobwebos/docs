@@ -1,26 +1,28 @@
 ---
-title: 有关个性聊天的常见问题解答 - Azure 认知服务 | Microsoft Docs
+title: 常见问题解答 - 个性化聊天
+titlesuffix: Azure Cognitive Services
 description: 有关个性聊天的常见问题解答
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
+ms.component: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 5304b25672f9951e004876dfd19af75ea7d86502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 274b232f321b3ad739d18a8580b4a178dbde633e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366809"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219815"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
 ## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>为什么它不像其他聊天机器人一样回答我提出的每一个问题？
 
-项目个性聊天将增强机器人进行常见闲聊的能力，以展示个性并创造更完整的用户体验。 它的设计初衷并不是要就与机器人的主要功能无关的话题进行长时间的对话。 虽然它可以对所有对话做出响应，但在 beta 版本中，它被限制在常见的闲聊领域。
+项目个性聊天将增强机器人进行常见闲聊的能力，以展示个性并创造更完整的用户体验。 它的设计初衷并不是要就与机器人的主要功能无关的话题进行长时间的对话。 虽然它可以对所有聊天做出响应，但在 beta 版本中，它被限制在常见的闲聊领域。
 
 ## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>如何根据自己的品牌自定义个性？
 

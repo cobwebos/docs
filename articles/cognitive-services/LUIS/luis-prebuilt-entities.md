@@ -1,24 +1,25 @@
 ---
-title: LUIS 中的预构建实体 | Microsoft Docs
-description: 本文包含了语言理解智能服务 (LUIS) 中包括的预构建实体的列表。
+title: 用于语言理解 (LUIS) 的预生成实体
+titleSuffix: Azure Cognitive Services
+description: LUIS 包括一组预构建实体，用于识别常见类型的信息，如日期、时间、数字、度量和货币。 预构建实体支持因 LUIS 应用的区域性而异。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e3bd203c9ab1d6daaae04866cf195b3ca28c3078
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248231"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041551"
 ---
-# <a name="prebuilt-entities"></a>预构建实体
+# <a name="prebuilt-entities-to-recognize-common-data-types"></a>用于识别常见数据类型的预生成实体
 
-LUIS 包括一组预构建实体，用于识别常见类型的信息，如日期、时间、数字、度量和货币。 预构建实体支持因 LUIS 应用的区域性而异。 有关 LUIS 支持的预构建实体的完整列表，包括区域性支持，请参阅[预构建实体参考](./luis-reference-prebuilt-entities.md)。
+LUIS 包括一组预生成实体，用于识别常见类型的信息，如日期、时间、数字、度量和货币。 预构建实体支持因 LUIS 应用的区域性而异。 有关 LUIS 支持的预构建实体的完整列表，包括区域性支持，请参阅[预构建实体参考](./luis-reference-prebuilt-entities.md)。
 
 > [!NOTE]
 > **builtin.datetime** 已弃用。 它由 [**builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md) 取代，后者提供日期和时间范围的识别，并改进了对模糊日期和时间的识别。
@@ -28,7 +29,6 @@ LUIS 包括一组预构建实体，用于识别常见类型的信息，如日期
 1. 单击“我的应用”页上的应用名称打开应用，然后单击左侧的“实体”。 
 2. 在“实体”页上，单击“管理预构建实体”。
 
-    ![“实体”页 - 管理预构建实体](./media/luis-use-prebuilt-entity/add-prebuilt-entity-button.png)
 3. 在“添加预构建实体”对话框中，单击要添加的预构建实体（例如，“datetimeV2”）。 然后单击“保存”。
 
     ![“添加预构建实体”对话框](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
@@ -67,7 +67,7 @@ LUIS 可以智能识别非标准形式的数字。 在陈述中尝试不同的�
 }
 ```
 ## <a name="use-a-prebuilt-datetimev2-entity"></a>使用预构建的 datetimeV2 实体
-**datetimeV2** 预构建实体可识别日期、时间、日期范围和持续时间。 请按照以下步骤了解 `datetimeV2` 预构建实体的工作原理：
+**datetimeV2** 预生成实体可识别日期、时间、日期范围和持续时间。 请按照以下步骤了解 `datetimeV2` 预构建实体的工作原理：
 
 1. 在应用中添加 **datetimeV2** 实体，然后[训练](luis-interactive-test.md)并[发布](luis-how-to-publish-app.md)该应用。
 2. 单击“发布应用”页中的终结点 URL，在 Web 浏览器中打开 LUIS 终结点。 

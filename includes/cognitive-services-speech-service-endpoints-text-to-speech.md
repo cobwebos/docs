@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/08/2018
 ms.author: wolfma
-ms.openlocfilehash: dcb65e365fdd51a56afc65814a153593e2f7d0f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6a77303bc1810d72001f119223b7490299ed497a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "47019735"
+ms.locfileid: "47060386"
 ---
 区域| 文本转语音终结点
 -|-
@@ -23,4 +23,4 @@ ms.locfileid: "47019735"
 西欧|    `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1`
 
 > [!NOTE]
-> 如果已经创建了自定义语音字体，请使用为它创建的终结点而不是上面提及的终结点。
+> 如果已经创建了自定义语音字体，请使用为它创建的终结点而不是此处的终结点。

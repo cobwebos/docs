@@ -1,20 +1,21 @@
 ---
-title: 配合使用知识库中的元数据与 GenerateAnswer API | Microsoft Docs
-description: 将元数据与 GenerateAnswer API 配合使用
+title: 将元数据与 GenerateAnswer API 配合使用 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 通过 QnA Maker，可将键值对形式的元数据添加到问/答集。 此信息可用于筛选用户查询的结果，以及存储可用于后续对话的其他信息。
 services: cognitive-services
-author: pchoudhari
-manager: rsrikan
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/18/2018
-ms.author: pchoudh
-ms.openlocfilehash: e1b7c82e6998705bdc7e1c1a5d279bda7793667a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.date: 09/12/2018
+ms.author: tulasim88
+ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305193"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031078"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>配合使用元数据与 GenerateAnswer API
 

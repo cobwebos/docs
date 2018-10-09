@@ -1,21 +1,21 @@
 ---
-title: 密钥管理 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何管理 QnA Maker 密钥
+title: 资源和密钥管理 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: QnA Maker 服务处理两种密钥：订阅密钥和终结点密钥。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: b402187f4949dac34fa476648c81b980ba3efc96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: f48b4b7da4990de0efb9b7de5d97731d748f0e7f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366293"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040442"
 ---
 # <a name="key-management"></a>密钥管理
 

@@ -1,51 +1,27 @@
 ---
-title: 使用批处理测试来改进 LUIS 预测 | Microsoft Docs
-titleSuffix: Azure
-description: 负载批处理测试、查看结果、并通过更改提高 LUIS 预测。
+title: '教程 2：使用一组 1000 条话语进行批处理测试 '
+titleSuffix: Azure Cognitive Services
+description: 本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158239"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162526"
 ---
-# <a name="improve-app-with-batch-test"></a>使用批处理测试改进应用
+# <a name="tutorial-2-batch-test-data-sets"></a>教程 2：对数据集进行批处理测试
 
-本教程演示如何使用批处理测试发现陈述预测问题。  
-
-本教程介绍如何执行下列操作：
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* 创建批处理测试文件 
-* 运行批处理测试
-* 查看测试结果
-* 修复错误 
-* 重新测试批处理
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>开始之前
-
-如果尚未获得[查看终结点话语](luis-tutorial-review-endpoint-utterances.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) Github 存储库中。
-
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `batchtest`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
-
-将应用定型。
-
-## <a name="purpose-of-batch-testing"></a>批处理测试的目的
+本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。  
 
 批测试允许使用一组已知的已标记话语和实体来验证活动的定型模型的状态。 在 JSON 格式的批处理文件中，添加话语并设置要在话语中预测的所需实体标签。 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> 使用本教程以外的应用时，请确保不使用已经添加到意向的示例话语。 若要验证针对示例话语的批处理测试话语，请[导出](luis-how-to-start-new-app.md#export-app)应用。 比较应用示例话语和批处理测试话语。 
 
 批处理测试的要求：
 
@@ -53,13 +29,42 @@ ms.locfileid: "44158239"
 * 没有重复项。 
 * 允许的实体类型：仅简单、层次（仅父级）和复合的机器学习实体。 批处理测试仅适用于机器学习意向和实体。
 
-## <a name="create-a-batch-file-with-utterances"></a>使用话语创建批处理文件
+使用本教程以外的应用时，请不要使用已经添加到意向的示例话语。 
 
-1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-jobs-batch.json`。 
+**本教程介绍如何执行下列操作：**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 使用现有的教程应用
+> * 创建批处理测试文件 
+> * 运行批处理测试
+> * 查看测试结果
+> * 修复错误 
+> * 重新测试批处理
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>使用现有应用
+
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
+
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `batchtest`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
+
+4. 将应用定型。
+
+## <a name="batch-file"></a>批处理文件
+
+1. 在文本编辑器中创建 `HumanResources-jobs-batch.json` 或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)它。 
 
 2. 在 JSON 格式的批处理文件中，使用想要在测试中预测的意向添加话语。 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>运行批处理
 
@@ -73,13 +78,13 @@ ms.locfileid: "44158239"
 
     [![LUIS 应用的屏幕截图，其中突出显示了“导入数据集”](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. 选择 `HumanResources-jobs-batch.json` 文件的文件系统位置。
+4. 选择 `HumanResources-jobs-batch.json` 文件的文件位置。
 
 5. 命名数据集 `intents only`，然后选择“完成”。
 
     ![选择文件](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. 选择“运行”按钮。 请等待测试完成。
+6. 选择“运行”按钮。 
 
 7. 选择“查看结果”。
 
@@ -109,7 +114,7 @@ ms.locfileid: "44158239"
 
 对应于“误报”部分中顶点的话语为 `Can I apply for any database jobs with this resume?` 和 `Can I apply for any database jobs with this resume?`。 对于第一个话语，单词 `resume` 仅在 ApplyForJob 中使用过。 对于第二个话语，单词 `apply` 仅在 ApplyForJob 意向中使用过。
 
-## <a name="fix-the-app-based-on-batch-results"></a>基于批处理结果修复应用
+## <a name="fix-the-app"></a>修复应用
 
 本部分的目标是通过修复应用，正确预测 GetJobInformation 的所有话语。 
 
@@ -119,7 +124,7 @@ ms.locfileid: "44158239"
 
 第一个解决方法是向 GetJobInformation 添加更多话语。 第二个解决方法是减少针对 ApplyForJob 意向的单词（如 `resume` 和 `apply`）的权重。 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>向 GetJobInformation 添加更多话语
+### <a name="add-more-utterances"></a>添加更多话语
 
 1. 选择顶部导航面板中的“测试”按钮，关闭批处理测试面板。 
 
@@ -149,7 +154,7 @@ ms.locfileid: "44158239"
 
 4. 通过选择右上角导航中的“定型”来定型应用。
 
-## <a name="verify-the-fix-worked"></a>验证解决方法是否起作用
+## <a name="verify-the-new-model"></a>验证新模型
 
 为了验证批处理测试中的话语是否被正确地预测，请再次运行批处理测试。
 
@@ -171,12 +176,12 @@ ms.locfileid: "44158239"
 
 测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作。
 
-1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`。 或从 LUIS-Samples Github 存储库中下载[此文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json)。
+1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`，或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)它。
 
 
 2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>使用实体运行批处理
@@ -222,15 +227,13 @@ ms.locfileid: "44158239"
 
 在正确预测实体之前添加[模式](luis-concept-patterns.md)不会解决该问题。 这是因为在检测到模式中的所有实体之前，该模式将不会匹配。 
 
-## <a name="what-has-this-tutorial-accomplished"></a>本教程实现了哪些目的？
-
-通过查找批处理中的错误并更正模型，增加了应用预测准确性。 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+本教程使用了批处理测试来查找当前模型存在的问题。 修复了模型并使用批处理文件重新测试以验证更改是否正确。
 
 > [!div class="nextstepaction"]
 > [了解模式](luis-tutorial-pattern.md)

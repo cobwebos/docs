@@ -1,36 +1,37 @@
 ---
 title: 将 SQL Server 实例迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
 description: 了解如何将 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
-keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
+ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: bonova
+ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.service: sql-database
-ms.custom: managed instance
-ms.topic: conceptual
-ms.date: 07/24/2018
-ms.author: bonova
-ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 09/26/2018
+ms.openlocfilehash: 7653ce7b0823b4e91685e77701a307370261f7e6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145283"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394045"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
-本文介绍了将 SQL Server 2005 或更高版本的实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)（预览版）的方法。
+本文介绍了将 SQL Server 2005 或更高版本的实例迁移到 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)的方法。
 
 概括而言，数据库迁移过程如下所示：
 
 ![迁移过程](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [评估托管实例兼容性](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [选择应用连接选项](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [部署到具有最佳大小的托管实例](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
-- [选择迁移方法，然后迁移](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
-- [监视应用程序](sql-database-managed-instance-migrate.md#monitor-applications)
+- [评估托管实例兼容性](#assess-managed-instance-compatibility)
+- [选择应用连接选项](sql-database-managed-instance-connect-app.md)
+- [部署到具有最佳大小的托管实例](#deploy-to-an-optimally-sized-managed-instance)
+- [选择迁移方法，然后迁移](#select-migration-method-and-migrate)
+- [监视应用程序](#monitor-applications)
 
 > [!NOTE]
 > 若要将单个数据库迁移到单个数据库或弹性池，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
@@ -39,9 +40,9 @@ ms.locfileid: "42145283"
 
 首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例旨在方便即时迁移大多数使用本地 SQL Server 或虚拟机中 SQL Server 的现有应用程序。 但是，我们有时可能需要用到一些目前尚不支持的功能，而实施某种解决方法的成本过高。 
 
-使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 请参阅 [Azure SQL 数据库单一实例和托管实例之间的差异](sql-database-features.md)，检查是否报告了一些不是托管实例中阻止程序导致的拦截问题，因为大多数阻止迁移到 Azure SQL 数据库的拦截问题已通过托管实例删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。 
+使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 请参阅 [Azure SQL 数据库功能](sql-database-features.md)，检查是否报告了一些不是托管实例中阻止程序导致的拦截问题，因为大多数阻止迁移到 Azure SQL 数据库的拦截问题已通过托管实例删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。 
 
-如果某些报告的拦截问题未在 Azure SQL 托管实例中删除，则可能需要考虑其他选项，例如 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
+如果某些报告的拦截问题未在 Azure SQL 数据库托管实例中删除，则可能需要考虑其他选项，例如 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
 
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。
@@ -81,7 +82,7 @@ ms.locfileid: "42145283"
 
 [Azure 数据库迁移服务 (DMS)](../dms/dms-overview.md) 是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。 此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure 虚拟机中的 SQL Server。 DMS 是迁移企业工作负荷的建议方法。 
 
-如果在本地 SQL Server 上使用 SQL Server Integration Services (SSIS)，虽然 DMS 尚不支持迁移存储 SSIS 包的 SSIS 目录 (SSISDB)，但可在 Azure 数据工厂 (ADF) 中预配 Azure-SSIS 集成运行时，这将在 Azure SQL 数据库/托管实例中新建一个 SSISDB，随后即可将包重新部署到这个 SSISDB，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)。
+如果在本地 SQL Server 上使用 SQL Server Integration Services (SSIS)，虽然 DMS 尚不支持迁移存储 SSIS 包的 SSIS 目录 (SSISDB)，但可在 Azure 数据工厂 (ADF) 中预配 Azure-SSIS 集成运行时，这将在 Azure SQL 数据库/托管实例中新建一个 SSISDB，随后即可将包重新部署到这个 SSISDB，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
 
 若要详细了解此方案和 DMS 的配置步骤，请参阅[使用 DMS 将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。  
 
@@ -100,13 +101,15 @@ ms.locfileid: "42145283"
 |将备份放入 Azure 存储|低于 SQL 2012 SP1 CU2|将 .bak 文件直接上传到 Azure 存储|
 ||2012 SP1 CU2 - 2016|使用已弃用的 [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) 语法直接备份|
 ||2016 和更高版本|使用 [WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) 直接备份|
-|从 Azure 存储还原到托管实例|[使用 SAS CREDENTIAL 执行 RESTORE FROM URL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
+|从 Azure 存储还原到托管实例|[使用 SAS CREDENTIAL 执行 RESTORE FROM URL](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - 使用本机还原选项将[透明数据加密](transparent-data-encryption-azure-sql.md)保护的数据库迁移到 Azure SQL 托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](sql-database-managed-instance-migrate-tde-certificate.md)
+> - 使用本机还原选项将[透明数据加密](transparent-data-encryption-azure-sql.md)保护的数据库迁移到 Azure SQL 数据库托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](sql-database-managed-instance-migrate-tde-certificate.md)
 > - 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
 
-有关如何使用 SAS 凭据将数据库备份还原到托管实例的完整教程，请参阅[从备份还原到托管实例](sql-database-managed-instance-restore-from-backup-tutorial.md)。
+有关介绍如何使用 SAS 凭据将数据库备份还原到托管实例的快速入门，请参阅[从备份还原到托管实例](sql-database-managed-instance-get-started-restore.md)。
+
+> [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 ## <a name="monitor-applications"></a>监视应用程序
 

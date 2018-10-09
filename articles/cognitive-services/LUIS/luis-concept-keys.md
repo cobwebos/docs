@@ -1,20 +1,21 @@
 ---
-title: 了解 LUIS 密钥 - Azure | Microsoft Docs
-description: 使用语言理解 (LUIS) 密钥来创作应用并查询终结点。
+title: 了解 LUIS 密钥
+titleSuffix: Azure Cognitive Services
+description: LUIS 使用两种密钥：创作密钥和终结点密钥。 在创建 LUIS 帐户时会自动创建创作密钥。 准备好发布 LUIS 应用时，需要创建终结点密钥、将终结点密钥分配到 LUIS 应用并将其用于终结点查询。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b40ca74999be1821ffa329224ff419646591960e
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225170"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034920"
 ---
 # <a name="keys-in-luis"></a>LUIS 中的密钥
 LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpoint-key)密钥。 在创建 LUIS 帐户时会自动创建创作密钥。 准备好发布 LUIS 应用时，需要[创建终结点密钥](luis-how-to-azure-subscription.md#create-luis-endpoint-key)、将[终结点密钥分配](luis-how-to-manage-keys.md#assign-endpoint-key)到 LUIS 应用并[将其与终结点查询配合使用](#use-endpoint-key-in-query)。 
@@ -43,7 +44,7 @@ LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpo
 ## <a name="endpoint-key"></a>终结点密钥
  如果需要进行生产终结点查询，请在 Azure 门户中创建 [LUIS 密钥](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)。 请记住用于创建密钥的名称，在将密钥添加到应用时需要该名称。
 
-完成 LUIS 订阅流程后，[将密钥添加](luis-how-to-manage-keys.md#assign-endpoint-key)到“发布”页面上的应用。 
+LUIS 订阅流程完成后，[将密钥分配](luis-how-to-manage-keys.md#assign-endpoint-key)给应用。 
 
 终结点密钥支持的终结点命中次数配额取决于创建密钥时所指定的使用计划。 请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)了解定价信息。
 
@@ -73,6 +74,10 @@ LUIS API 使用标头 `Ocp-Apim-Subscription-Key`。 标头名称不会基于所
 
 ## <a name="key-limit-errors"></a>密钥限制错误
 如果超过了每秒配额，则会遇到 HTTP 429 错误。 如果超过了每月配额，则会遇到 HTTP 403 错误。 若要修复这些错误，请获取一个 LUIS [终结点](#endpoint-key)密钥，将该密钥[分配](luis-how-to-manage-keys.md#assign-endpoint-key)到 [LUIS](luis-reference-regions.md#luis-website) 网站“发布”页面上的应用。
+
+## <a name="automating-assignment-of-the-endpoint-key"></a>自动执行终结点密钥分配
+
+要将终结点密钥分配给 LUIS 应用，必须使用 LUIS 网站正确地创作和发布[区域](luis-reference-regions.md)。 无论是使用 Azure 资源管理器脚本、Azure CLI、编程 SDK 还是 API 等机制，都**没有**自动执行此操作的方法。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,24 +2,26 @@
 title: Azure SQL 数据库数据发现和分类 | Microsoft Docs
 description: Azure SQL 数据库数据发现和分类
 services: sql-database
-author: giladmit
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/10/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140217"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064169"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL 数据库数据发现和分类
 数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
-发现最敏感的数据（业务、财务、医疗保健、 PII 等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 * 帮助满足数据隐私标准和法规符合性要求。
 * 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 * 控制对包含高度敏感数据的数据库的访问并强化其安全性。
@@ -42,6 +44,17 @@ ms.locfileid: "42140217"
 分类包含两个元数据属性：
 * 标签 - 主要分类属性，用于定义列中存储数据的敏感度级别。  
 * 信息类型 - 为列中存储数据的类型提供其他粒度。
+
+## <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
+
+SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
+
+分类的定义和自定义是在一个中心位置针对你的整个 Azure 租户进行的。 该位置在 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)内，是你的安全策略的一部分。 只有对租户根管理组具有管理权限的人员可以执行此任务。
+
+作为信息保护策略管理的一部分，你可以定义自定义标签，对其进行分级，并将其与选定的一组信息类型相关联。 你还可以添加自己的自定义信息类型，并为其配置字符串模式，这些模式将添加到发现逻辑以用于识别数据库中此类型的数据。
+可以在[信息保护策略操作指南](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)中详细了解如何自定义和管理策略。
+
+在定义租户级策略后，可以继续使用自定义的策略对各个数据库进行分类。
 
 ## <a name="classify-your-sql-database"></a>对 SQL 数据库进行分类
 
@@ -104,9 +117,9 @@ ms.locfileid: "42140217"
 > [!NOTE]
 > 如果使用 T-SQL 管理标签，则不会验证组织信息保护策略中是否存在添加到列的标签（门户建议中显示的标签集）。 因此，是否要验证这一点完全由你决定。
 
-* 添加/更新一列或多列分类：[添加敏感度分类](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+* 添加/更新一列或多列分类：[添加敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 * [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签

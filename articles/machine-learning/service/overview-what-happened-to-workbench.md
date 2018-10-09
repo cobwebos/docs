@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 56a8da6d39e39ab68b2b854c6899b88a3618d223
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997720"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159978"
 ---
 # <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的 Workbench 有何遭遇？
 
@@ -42,7 +42,7 @@ ms.locfileid: "46997720"
 
 ## <a name="support-timeline"></a>支持时间线
 
-在 2018 年 9 月后的一段时间内，可继续使用试验和模型管理帐户以及 Workbench 应用程序。 在此版本发布后的 3-4 个月内，对以下资源的支持将逐渐停止提供。 有关旧功能的文档，仍可访问[目录](../desktop-workbench/tutorial-classifying-iris-part-1.md)底部的“资源”部分。
+在 2018 年 9 月后的一段时间内，可继续使用试验和模型管理帐户以及 Workbench 应用程序。 在此版本发布后的 3-4 个月内，对以下资源的支持将逐渐停止提供。 有关旧功能的文档，仍可访问目录底部的[“资源”部分](../desktop-workbench/tutorial-classifying-iris-part-1.md)。
 
 |阶段|早期功能的支持详细信息|
 |:---:|----------------|
@@ -67,9 +67,9 @@ ms.locfileid: "46997720"
 
 已有的数据准备文件不可移植到最新版本中，因为 Workbench 已遭弃用。 不过，仍可以准备数据用于建模。  
 
-使用较小的数据集，可以在建模前使用 [Azure 机器学习数据准备 SDK](https://docs.microsoft.com/python/api/azureml_dataprep/?view=azure-dataprep-py) 快速准备数据。 
+使用较小的数据集，可以在建模前使用 <a href="http://aka.ms/aml-sdk" target="_blank">Azure 机器学习数据准备 SDK</a> 快速准备数据。 
 
-可以对较大数据集使用这一相同 SDK，也可以使用 Azure Databricks 准备大型数据集。 [了解如何获取数据准备 SDK](how-to-data-prep.md)。 
+可以对较大数据集使用这一相同 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>，也可以使用 Azure Databricks 准备大数据集。 
 
 ## <a name="will-projects-persist"></a>项目是否继续存在？
 
@@ -77,13 +77,13 @@ ms.locfileid: "46997720"
 
 由于很多项目内容已存在于本地计算机上，因此只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 [了解如何迁移现有项目](how-to-migrate.md#projects)。
 
-了解如何开始使用 [Python SDK](quickstart-get-started.md)。
+了解如何开始[在 Python 中使用主 SDK](quickstart-get-started.md)。
 
 ## <a name="what-about-my-registers-models-and-images"></a>我注册的模型和映像又如何？
  
 若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 为此，请在新工作区中[下载模型并重新注册它们](how-to-migrate.md)。 
 
-若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 为此，请按照[创建 docker 映像](how-to-deploy-to-aci.md)部分中的说明操作。 
+若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 为此，请按照[创建 docker 映像](how-to-deploy-to-aci.md#configure-an-image)部分中的说明操作。 
 
 ## <a name="what-about-deployed-web-services"></a>已部署 Web 服务又如何？
 

@@ -1,28 +1,29 @@
 ---
-title: 必应视觉搜索 SDK ImageInsightsToken 教程 | Microsoft Docs
+title: 教程：ImageInsightsToken - 必应视觉搜索
+titlesuffix: Azure Cognitive Services
 description: 如何使用必应视觉搜索 SDK 获取由 ImageInsightsToken 指定的图像的 URL。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 8f6e7f7e88ae78fe7e8a9be4adefd689dd26d0f9
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: bda4bdeea019d8cf3ae677d5eaf81e631ca38d16
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41944429"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222567"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>教程：必应视觉搜索 SDK ImageInsightsToken 和结果
 视觉搜索 SDK 包括从以前返回 `ImageInsightsToken` 的搜索中查找联机图像的选项。  此示例获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。  该代码将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
 
 ## <a name="prerequisites"></a>先决条件
-Visual Studio 2017。 如有必要，可从此处下载免费的社区版本：https://www.visualstudio.com/vs/community/。
+Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： https://www.visualstudio.com/vs/community/。
 验证 SDK 调用需要认知服务 API 密钥。 注册免费试用密钥。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，请购买访问密钥。 另请参阅定价信息。
-运行 .NET core SDK、.net core 1.1 应用的功能。 可从以下位置获取 CORE、Framework 和运行时：https://www.microsoft.com/net/download/。
+运行 .NET core SDK、.net core 1.1 应用的功能。 可从以下位置获取 CORE、Framework 和运行时： https://www.microsoft.com/net/download/。
 
 ##<a name="application-dependencies"></a>应用程序依赖项
 若要使用必应 Web 搜索 SDK 设置控制台应用程序，请浏览到 Visual Studio 中的解决方案资源管理器中的“管理 NuGet 程序包”选项。 添加：

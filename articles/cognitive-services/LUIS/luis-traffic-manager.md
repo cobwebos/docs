@@ -1,20 +1,21 @@
 ---
-title: 使用 Microsoft Azure 流量管理器增加语言理解 (LUIS) 中的终结点配额 - Azure | Microsoft Docs
-description: 使用 Microsoft Azure 流量管理器将终结点配额分布在语言理解 ( LUIS ) 的多个订阅中，以便增加终结点配额
+title: 使用 Microsoft Azure 流量管理器增加语言理解 (LUIS) 中的终结点配额
+titleSuffix: Azure Cognitive Services
+description: 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248622"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042170"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![luis-traffic-manager 资源组中带有两个 LUIS 密钥的 Azure 门户的屏幕截图](./media/traffic-manager/luis-keys.png)
 
-2. 在 [LUIS][LUIS] 网站中的“发布”页上，将密钥添加到应用中，然后重新发布该应用。 
-
-    ![“发布”页上有两个 LUIS 密钥的 LUIS 门户的屏幕截图](./media/traffic-manager/luis-keys-in-luis.png)
+2. 在 [LUIS][LUIS] 网站的“密钥和终结点”页上的“管理”部分中，为应用分配密钥，然后通过选择右上方菜单中的“发布”按钮重新发布应用。 
 
     “终结点”列中的示例 URL 使用具有终结点密钥的 GET 请求作为查询参数。 复制这两个新密钥的终结点 URL。 本文后面的流量管理器配置中会用到它们。
 
@@ -54,7 +53,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 流量管理器为终结点创建新的 DNS 访问点。 它并不充当网关或代理，而是严格处于 DNS 级别。 此示例不会更改任何 DNS 记录。 它使用 DNS 库与流量管理器进行通信，以获取该特定请求的正确终结点。 针对 LUIS 的每个请求首先需要流量管理器请求来确定使用哪个 LUIS 终结点。 
 
 ### <a name="polling-uses-luis-endpoint"></a>轮询会使用 LUIS 终结点
-流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
+流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用一次配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
 
 由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles)体系结构。 一个父配置文件指向子配置文件，并管理它们之间的流量。
 
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 具有 LUIS 终结点的成功响应是：
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 

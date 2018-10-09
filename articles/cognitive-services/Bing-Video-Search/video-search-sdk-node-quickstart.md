@@ -1,23 +1,23 @@
 ---
-title: 视频搜索 SDK Node 快速入门 | Microsoft Docs
-description: 设置视频搜索 SDK 控制台应用程序。
-titleSuffix: Azure cognitive services
+title: 快速入门：必应视频搜索 SDK、Node
+titleSuffix: Azure Cognitive Services
+description: 设置必应视频搜索 SDK 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: 5718c750288e0a5605db3296d2911cca5e03375c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: rosh
+ms.openlocfilehash: 4dcc9220d4d38bfe34514edd6a3ad47c7a7d4ba8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366850"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225610"
 ---
-# <a name="video-search-sdk-node-quickstart"></a>视频搜索 SDK Node 快速入门
+# <a name="quickstart-bing-video-search-sdk-with-node"></a>快速入门：必应视频搜索 SDK 与 Node
 
 必应视频搜索 SDK 包含 REST API 的功能，可用于视频查询和分析结果。 
 

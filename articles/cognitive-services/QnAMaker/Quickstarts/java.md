@@ -1,20 +1,21 @@
 ---
-title: Microsoft QnA Maker API (v4) 的 Java 快速入门 - Azure 认知服务 | Microsoft Docs
+title: 快速入门：适用于 QnA Maker API (v4) 的 Java
+titleSuffix: Azure Cognitive Services
 description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: d8df77d43441331bdda38814e4bddfb29d1576c1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8cf9df5130f11fd07dbf468ad0ad93dff4584b21
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868392"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031471"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>使用 Java 的 Microsoft QnA Maker API 快速入门 
 <a name="HOLTop"></a>
@@ -35,6 +36,8 @@ ms.locfileid: "37868392"
 - [重新生成当前终结点密钥。](#PutKeys)
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

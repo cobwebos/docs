@@ -2,19 +2,22 @@
 title: 实现地理分散的 Azure SQL 数据库解决方案 | Microsoft Docs
 description: 了解如何配置 Azure SQL 数据库和应用程序以便故障转移到复制的数据库，以及如何测试故障转移。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416613"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166229"
 ---
 # <a name="implement-a-geo-distributed-database"></a>实现地理分散的数据库
 
@@ -38,8 +41,8 @@ ms.locfileid: "31416613"
 - 安装 Azure SQL 数据库。 本教程使用以下任一快速入门中名为“mySampleDatabase”的 AdventureWorksLT 示例数据库：
 
    - [创建 DB - 门户](sql-database-get-started-portal.md)
-   - [创建 DB - CLI](sql-database-get-started-cli.md)
-   - [创建 DB - PowerShell](sql-database-get-started-powershell.md)
+   - [创建 DB - CLI](sql-database-cli-samples.md)
+   - [创建 DB - PowerShell](sql-database-powershell-samples.md)
 
 - 已确定了对数据库执行 SQL 脚本的一种方法，可以使用以下查询工具之一：
    - [Azure 门户](https://portal.azure.com)中的查询编辑器。 有关在 Azure 门户中使用查询编辑器的详细信息，请参阅[使用查询编辑器进行连接和查询](sql-database-get-started-portal.md#query-the-sql-database)。
@@ -54,7 +57,7 @@ ms.locfileid: "31416613"
 - SQL Server Management Studio
 - Visual Studio Code
 
-这些用户帐号将自动复制到辅助服务器（并保持同步）。 如果进行连接的客户端所在的 IP 地址尚未配置防火墙，若要使用 SQL Server Management Studio 或 Visual Studio Code，则需要配置防火墙规则。 有关详细步骤，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+这些用户帐号将自动复制到辅助服务器（并保持同步）。 如果进行连接的客户端所在的 IP 地址尚未配置防火墙，若要使用 SQL Server Management Studio 或 Visual Studio Code，则需要配置防火墙规则。 有关详细步骤，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
 
 - 在查询窗口中，执行以下查询以在数据库中创建两个用户帐户。 此脚本向“app_admin”帐户授予“db_owner”权限，并向“app_user”帐户授予“选择”和“更新”权限。 
 
@@ -70,7 +73,7 @@ ms.locfileid: "31416613"
 
 ## <a name="create-database-level-firewall"></a>创建数据库级防火墙
 
-为 SQL 数据库创建一个[数据库级防火墙规则](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。 此数据库级防火墙规则将自动复制到本教程中创建的辅助服务器。 为简单起见（在本教程中），请使用本教程中执行步骤的计算机的公共 IP 地址。 若要确定用于当前计算机的服务器级防火墙规则的 IP 地址，请参阅[创建服务器级防火墙](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。  
+为 SQL 数据库创建一个[数据库级防火墙规则](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。 此数据库级防火墙规则将自动复制到本教程中创建的辅助服务器。 为简单起见（在本教程中），请使用本教程中执行步骤的计算机的公共 IP 地址。 若要确定用于当前计算机的服务器级防火墙规则的 IP 地址，请参阅[创建服务器级防火墙](sql-database-get-started-portal-firewall.md)。  
 
 - 在打开的查询窗口中，将之前的查询替换为以下查询，将 IP 地址替换为环境中相应的 IP 地址。  
 
@@ -390,8 +393,8 @@ sudo apt-get install maven
 > * 创建并编译 Java 应用程序以查询 Azure SQL 数据库
 > * 执行灾难恢复演练
 
-转到下一教程，了解如何创建托管实例。
+转到下一教程，了解如何使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例。
 
 > [!div class="nextstepaction"]
->[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
+>[使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例](../dms/tutorial-sql-server-to-managed-instance.md)
 

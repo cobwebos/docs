@@ -1,20 +1,21 @@
 ---
-title: 了解 LUIS 应用协作 - Azure | Microsoft Docs
+title: LUIS 应用协作 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: LUIS 应用需要一个所有者和多个可选协作者。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 38fc33a6fb823e0435a9c96979c5a9a4539cd6ba
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399565"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038760"
 ---
 # <a name="collaborating"></a>协作
 
@@ -30,6 +31,11 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 ## <a name="luis-app-owner"></a>LUIS 应用所有者
 创建应用的帐户是所有者。 每个应用都有一个所有者。 应用[“设置”](luis-how-to-collaborate.md)上列出了所有者。 使用此帐户可删除应用。 此外，若终结点配额达到每月限额的 75%，则还会向此帐户发送电子邮件。 
 
+## <a name="authorization-roles"></a>授权角色
+LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所有者是唯一可以删除应用的帐户。
+
+如果你对控制对模型的访问感兴趣，请考虑将模型切割为较小的 LUIS 应用，其中每个较小的应用都有一组更有限的协作者。 使用 [Dispatch](https://aka.ms/dispatch-tool) 允许父 LUIS 应用管理父应用和子应用之间的协调。
+
 ## <a name="transfer-ownership"></a>转让所有权
 无法通过 LUIS 进行所有权转让，但协作者可导出应用，然后通过导入来创建该应用。 请注意，新应用的应用 ID 不同。 需训练、发布新应用，并使用新的终结点。
 
@@ -41,7 +47,7 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 ## <a name="managing-multiple-authors"></a>管理多个创建者
 [LUIS](luis-reference-regions.md#luis-website) 网站目前不支持事务级的创作。 可允许创建者基于基础版创建独立版本。 将在下面各节中介绍两种不同的方法。
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
+## <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
 首先，每个创建者基于基础版进行[克隆](luis-how-to-manage-versions.md#clone-a-version)。 
 
 每个创建者对自己的应用版本进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
@@ -50,7 +56,7 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 
 通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可在交互式测试窗格中比较三个版本的结果。
 
-### <a name="manage-multiple-versions-as-apps"></a>将各版本作为应用进行管理
+## <a name="manage-multiple-versions-as-apps"></a>将各版本作为应用进行管理
 [导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。 
 
 导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。

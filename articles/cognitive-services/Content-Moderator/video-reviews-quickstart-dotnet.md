@@ -1,26 +1,27 @@
 ---
-title: Azure 内容审查器 - 使用 .NET 创建视频审查 | Microsoft Docs
-description: 如何使用适用于 .NET 的 Azure 内容审查器 SDK 创建视频审查
+title: 使用 .NET 创建视频评审 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 如何使用适用于 .NET 的内容审查器 SDK 创建视频评审
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929812"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219034"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
-本文提供了信息和代码示例，帮助你快速开始使用带 C# 的内容审查器 SDK 来执行以下操作：
+本文提供了信息和代码示例，帮助你快速开始结合使用[内容审查器 SDK 和 C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来执行以下操作：
 
-- 为人工审查器创建视频审查
+- 为人工审查器创建视频评论
 - 将帧添加到审查
 - 获取帧以供审查 
 - 获取审查状态和详细信息
@@ -32,11 +33,22 @@ ms.locfileid: "41929812"
 
 本文还假定你已熟悉 Visual Studio 和 C#。
 
-### <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
+## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-需要有订阅密钥才能通过 REST API 或 SDK 使用内容审查器服务。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
+请参阅[快速入门](quick-start.md)，了解如何获取密钥。
 
-在内容审查器仪表板中，可以在“设置” > “凭据” > “API” > “试用 Ocp-Apim-Subscription-Key”中查找订阅密钥。 有关详细信息，请参阅[概述](overview.md)。
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
+
+如果从 Azure 门户获得了内容审查器，还[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
+
+完成上述步骤后，如果从 Azure 门户着手，最终可能会得到两个内容审查器密钥。 
+
+如果计划在 SDK 示例中使用 Azure 提供的 API 密钥，请按照[将 Azure 密钥与评审 API 配合使用](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)部分中提到的步骤操作，以允许应用程序调用评审 API 并创建评审。
+
+如果使用评审工具生成的免费试用密钥，则评审工具帐户已经知道密钥，因此无需其他步骤。
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>准备视频和视频帧以供审查
 
@@ -118,9 +130,9 @@ ms.locfileid: "41929812"
             /// </summary>
             /// <remarks>This must be the team name you used to create your 
             /// Content Moderator account. You can retrieve your team name from
-            /// the Conent Moderator web site. Your team name is the Id associated 
+            /// the Content Moderator web site. Your team name is the Id associated 
             /// with your subscription.</remarks>
-            public static readonly string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
+            private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
             /// <summary>
             /// The base URL fragment for Content Moderator calls.
@@ -150,7 +162,7 @@ ms.locfileid: "41929812"
     {
         return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
         {
-            BaseUrl = AzureBaseURL
+            Endpoint = AzureBaseURL
         };
     }
 
@@ -391,7 +403,7 @@ ms.locfileid: "41929812"
 
             Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
             Console.WriteLine("Press any key to close the application.");
-            Console.Read();
+            Console.ReadKey();
         }
     }
 
@@ -536,8 +548,8 @@ ms.locfileid: "41929812"
 
 ## <a name="next-steps"></a>后续步骤
 
+为适用于 .NET 的此内容审查器快速入门以及其他内容审查器快速入门获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。
+
 了解如何将[脚本审查](video-transcript-moderation-review-tutorial-dotnet.md)添加到视频审查。 
 
 查看有关如何开发[完整视频审查解决方案](video-transcript-moderation-review-tutorial-dotnet.md)的详细教程。
-
-为适用于 .NET 的此内容审查器快速入门以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。

@@ -1,22 +1,23 @@
 ---
-title: 使用 C# 在语言理解 (LUIS) 中分析自然语言文本 - Azure 认知服务 | Microsoft Docs
+title: C# 快速入门 - 预测意向 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 使用 C# 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b6ddd48fc6bfa5c099e42f3717a2113f871b4f9a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163254"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035838"
 ---
-# <a name="quickstart-analyze-text-using-c"></a>快速入门：使用 C# 分析文本
+# <a name="quickstart-get-intent-using-c"></a>快速入门：使用 C# 获取意向
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44163254"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>使用浏览器分析文本
+## <a name="get-intent-with-browser"></a>使用浏览器获取意向
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-c"></a>使用 C# 分析文本 
+## <a name="get-intent-programmatically"></a>以编程方式获取意向
 
 使用 C# 来查询预测终结点 GET [API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) 以获取与在前面部分中在浏览器窗口看到的结果相同的结果。 
 

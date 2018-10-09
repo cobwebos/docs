@@ -4,16 +4,16 @@ description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT 
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/13/2018
+ms.date: 09/24/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf8f6197c65b0169e2bc61f46ab4a22f212512a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996717"
+ms.locfileid: "47037450"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -21,9 +21,25 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 将 IoT Edge 设备配置为使用代理服务器的基本步骤如下： 
 
-1. 将设备上的 Docker 守护程序和 IoT Edge 守护程序配置为使用代理服务器。
-2. 配置设备上 config.yaml 文件中的 edgeAgent 属性。
-3. 为部署清单中的 IoT Edge 运行时和其他 IoT Edge 模块设置环境变量。 
+1. 在设备上安装 IoT Edge 运行时。 
+2. 将设备上的 Docker 守护程序和 IoT Edge 守护程序配置为使用代理服务器。
+3. 配置设备上 config.yaml 文件中的 edgeAgent 属性。
+4. 为部署清单中的 IoT Edge 运行时和其他 IoT Edge 模块设置环境变量。 
+
+## <a name="install-the-runtime"></a>安装运行时
+
+若要在 Linux 设备上安装 IoT Edge 运行时，请将包管理器配置为通过代理服务器访问安装包。 例如，[设置 apt-get 以使用 http-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)。 配置包管理器后，请按照[在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)或[在 Linux (x64) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)中的说明照常进行操作。 
+
+若要在 Windows 设备上安装 IoT Edge 运行时，需要通过代理服务器访问安装包。 可以在 Windows 设置中配置代理信息，或直接在安装脚本中包含代理信息。 以下 powershell 脚本是使用 `-proxy` 参数安装 Windows 的示例：
+
+```powershell
+. {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
+Install-SecurityDaemon -Manual -ContainerOs Windows
+```
+
+有关更多信息和安装选项，请参阅[在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用](how-to-install-iot-edge-windows-with-windows.md)或[在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Linux 容器一起使用](how-to-install-iot-edge-windows-with-linux.md)。
+
+安装 IoT Edge 运行时后，请使用以下部分为其配置代理信息。 
 
 ## <a name="configure-the-daemons"></a>配置守护程序
 

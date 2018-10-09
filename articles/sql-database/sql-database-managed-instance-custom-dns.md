@@ -2,20 +2,22 @@
 title: Azure SQL 数据库托管实例自定义 DNS | Microsoft Docs
 description: 本主题介绍使用 Azure SQL 数据库托管实例的自定义 DNS 的配置选项。
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/23/2018
+ms.openlocfilehash: f26ea763d48d03fe7e981b7abbbe64e573ec0b3a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949479"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224267"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 
@@ -36,7 +38,7 @@ Azure SQL 数据库托管实例必须在 Azure [虚拟网络 (VNet)](../virtual-
    ![自定义 DNS 选项](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > 如果没有在 DNS 列表中设置 Azure 的递归解析程序，会导致托管实例进入错误状态。 从该状态恢复可能需要使用符合要求的网络策略在 VNet 中创建新实例、创建实例级数据并还原数据库。 请参阅 [VNet 配置](sql-database-managed-instance-vnet-configuration.md)。
+   > 如果自定义 DNS 服务器由于某种原因不可用，则不在 DNS 列表中设置 Azure 的递归解析程序会导致托管实例进入故障状态。 从该状态恢复可能需要使用符合要求的网络策略在 VNet 中创建新实例、创建实例级数据并还原数据库。 将 Azure 的递归解析程序设置为 DNS 列表中的最后一个条目可确保即使所有自定义 DNS 服务器都失败，仍可以解析公共名称。 请参阅 [VNet 配置](sql-database-managed-instance-vnet-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005869"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161635"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
 
@@ -229,9 +229,11 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。
 - 了解[运行状况探测](load-balancer-custom-probe-overview.md)。
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
-- 了解[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)。
+- 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
 - 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。
 - 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
+- 了解[出站规则](load-balancer-outbound-rules-overview.md)。
+- 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
 - 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)。
 - 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。

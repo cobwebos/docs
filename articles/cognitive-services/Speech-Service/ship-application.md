@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 65ff0e47cf7a53d519bfd0c50ea4c3ebd09a5766
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4bfede8df88c64e795e33620650efb579f43ebba
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929863"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404302"
 ---
-# <a name="shipping-an-application"></a>交付应用程序
+# <a name="ship-an-application"></a>交付应用程序
 
-分发认知服务语音 SDK 时，阅读[语音 SDK 许可](license.md)和[第三方软件通知](third-party-notices.md)。 此外，请查看 [Microsoft 隐私声明](https://aka.ms/csspeech/privacy)。
+分发 Azure 认知服务语音 SDK 时，阅读[语音 SDK 许可](https://aka.ms/csspeech/license201809)和[第三方软件通知](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html)。 此外，请查看 [Microsoft 隐私声明](https://aka.ms/csspeech/privacy)。
 
 不同平台存在不同的依赖项来执行应用程序。
 
@@ -33,20 +33,20 @@ ms.locfileid: "41929863"
 
 如果应用程序使用托管代码，则目标计算机上需要 `.NET Framework 4.6.1` 或更高版本。
 
-对于麦克风输入，需要安装媒体基础库。 这些库包含在 Windows 10 和 Windows Server 2016 中。 只要未将麦克风用作音频输入设备，则可在没有这些库的情况下使用语音 SDK。
+对于麦克风输入，必须安装媒体基础库。 这些库包含在 Windows 10 和 Windows Server 2016 中。 只要未将麦克风用作音频输入设备，则可在没有这些库的情况下使用语音 SDK。
 
-所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序相匹配的正确版本 (Win32/x64)。
+所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序匹配的正确版本 (Win32/x64)。
 
 | 名称 | 函数
 |:-----|:----|
-| `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，需用于本机和托管部署
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | 需用于托管部署
-| `Microsoft.CognitiveServices.Speech.csharp.dll` | 需用于托管部署
+| `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，对于本机和托管部署是必需的
+| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | 对于托管部署是必需的
+| `Microsoft.CognitiveServices.Speech.csharp.dll` | 对于托管部署是必需的
 
 ## <a name="linux"></a>Linux
 
 对于本机应用程序，需要交付语音 SDK 库 `libMicrosoft.CognitiveServices.Speech.core.so`。
-请确保选择与应用程序相匹配的版本（x86、x64）。 根据 Linux 版本，可能还需要包括以下依赖项：
+请确保选择与应用程序匹配的版本（x86、x64）。 根据 Linux 版本，可能还需要包括以下依赖项：
 
 * GNU C 库的共享库（包括 POSIX 线程编程库 `libpthreads`）
 * OpenSSL 库 (`libssl.so.1.0.0`)

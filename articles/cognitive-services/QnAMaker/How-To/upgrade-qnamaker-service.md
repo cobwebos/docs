@@ -1,21 +1,21 @@
 ---
-title: 升级 QnA Maker 服务 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何升级 QnA Maker 服务
+title: 升级 QnA Maker 服务 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 你可以选择在初始创建后升级 QnA Maker 堆栈的各个组件。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: e8d3713d6729c4e30da9a64a382e9d5a647dfefd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 8542b1f6dfe031de58ea6eeb931027ee03bd81f2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030959"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>升级 QnA Maker 服务
 你可以选择在初始创建后升级 QnA Maker 堆栈的各个组件。 有关从属组件和 SKU 选择的详细信息，请参阅[此处](https://aka.ms/qnamaker-docs-capacity)。

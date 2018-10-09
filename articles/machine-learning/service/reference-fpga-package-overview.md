@@ -1,21 +1,26 @@
 ---
 title: 适用于 Azure 机器学习的硬件加速 FPGA 包
 description: 了解适用于 Azure 机器学习用户的 Python 包。
+services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: cb1abdce3bbd7349695ece70ff336c7e513c0918
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42145765"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162179"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure 机器学习硬件加速包
+
+>[!Note]
+>这篇文章已弃用。 此 FPGA 包已弃用。 Azure ML SDK 中添加了对此功能的支持。 对此包的支持将逐步结束。 [查看支持时间线](overview-what-happened-to-workbench.md#timeline)。 了解已更新的 [FPGA 支持](concept-accelerate-with-fpgas.md)。
 
 Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip 可安装扩展，方便数据科学家和 AI 开发人员快速执行以下操作：
 
@@ -29,7 +34,7 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
 
 1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-1. 必须创建 Azure 机器学习模型管理帐户。 有关如何创建帐户的详细信息，请参阅 [Azure 机器学习快速入门和 Workbench 安装](../service/quickstart-installation.md)文档。 
+1. Azure 机器学习模型管理帐户。 有关如何创建帐户的详细信息，请参阅 [Azure 机器学习快速入门和 Workbench 安装](../desktop-workbench/quickstart-installation.md)文档。 
 
 1. 必须安装此包。 
 

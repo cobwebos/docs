@@ -1,23 +1,24 @@
 ---
-title: 了解 LUIS 中的数据更改概念 - Azure | Microsoft Docs
+title: LUIS 中的数据更改概念 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aad540086764b1e2315d3b3e195c55ba5931e07
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223977"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036043"
 ---
 # <a name="data-alterations"></a>数据更改
-LUIS 提供在预测之前或预测期间操作陈述的方法。 
+LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法包括修复拼写，以及修复预生成 datetimeV2 的时区问题。 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>更正陈述中的拼写错误
 LUIS 使用[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 来更正陈述中的拼写错误。 LUIS 需要与该服务关联的密钥。 创建密钥，然后将密钥添加为[终结点](https://aka.ms/luis-endpoint-apis)的 querystring 参数。 
@@ -47,6 +48,9 @@ LUIS 使用[必应拼写检查 API V7](https://azure.microsoft.com/services/cogn
 }
 ```
  
+### <a name="whitelist-words"></a>将字词加入允许列表
+LUIS 中使用的必应拼写检查 API 不支持在拼写检查更改期间要忽略的字词允许列表。 如果需要将字词或首字母缩略词加入允许列表，请在将话语发送到 LUIS 进行意向预测之前，使用允许列表处理客户端应用程序中的话语。
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>更改预生成 datetimeV2 实体的时区
 LUIS 应用使用预生成的 datetimeV2 实体时，可以在预测响应中返回日期/时间值。 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。 
 

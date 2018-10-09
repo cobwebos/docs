@@ -1,20 +1,20 @@
 ---
-title: Azure 内容审查器 - 文本审查 | Microsoft Docs
+title: 文本审查 - 内容审查器
 description: 对可能不需要的文本、PII 和自定义字词列表使用文本审查。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085753"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226562"
 ---
 # <a name="text-moderation"></a>文本审查
 
@@ -46,7 +46,7 @@ ms.locfileid: "37085753"
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于**亵渎字词**检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或将其留空。
+> 对于不雅用语检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 ## <a name="classification"></a>分类
 
@@ -72,7 +72,7 @@ ms.locfileid: "37085753"
 - `Category1` 表示可能存在某些情况下被视为色情或成人性质的语言。
 - `Category2` 表示可能存在某些情况下被视为性暗示或过于成熟的语言。
 - `Category3` 表示可能存在某些情况下被视为具攻击性的语言。
-- `Score` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
+- `Score` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此功能依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
 - `ReviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
 ## <a name="personally-identifiable-information-pii"></a>个人身份信息 (PII)
@@ -149,7 +149,7 @@ PII 功能检测可能存在以下信息：
 尽管在默认情况下，全局字词列表能够很好地满足大部分需要，但你可能想要根据自己的具体业务需求筛选字词。 例如，你可能想要从用户的发布内容中，筛选出所有竞争品牌名称。
 
 > [!NOTE]
-> 最大限制为“5 个字词列表”，每个列表“不超过 10,000 个字词”。
+> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
 >
 
 以下示例显示匹配的列表 ID：

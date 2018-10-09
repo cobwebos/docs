@@ -1,22 +1,23 @@
 ---
-title: 适用于 .NET 的 Azure 内容审查器 SDK 帮助程序方法 | Microsoft Docs
+title: 快速入门：适用于 .NET 的内容审查器 SDK 帮助程序方法
+titlesuffix: Azure Cognitive Services
 description: 如何使用适用于 .NET 的 Azure 内容审查器 SDK 返回内容审查器客户端
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 36f2124708731f78f34849d8210ed39ea8f59140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365423"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223253"
 ---
-# <a name="helper-code-to-return-a-content-moderator-client"></a>帮助程序代码返回内容审查器客户端
+# <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>快速入门：用于返回内容审查器客户端的帮助程序代码
 
 本文提供了信息和代码示例，帮助你开始使用适用于 .NET 的内容审查器 SDK 来为订阅创建内容审查器。
 
@@ -30,8 +31,8 @@ ms.locfileid: "35365423"
 
 ## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
 
-在可以通过 REST API 或 SDK 使用内容审查器服务之前，需要一个订阅密钥。
-请参考[快速入门](quick-start.md)了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
+请参阅[快速入门](quick-start.md)，了解如何获取密钥。
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -108,4 +109,4 @@ ms.locfileid: "35365423"
 
 ## <a name="next-steps"></a>后续步骤
 
-针对适用于 .NET 的此内容审查器以及其他内容审查器快速入门[下载 Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+下载本教程以及其他 .NET 内容审查器快速入门的 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。

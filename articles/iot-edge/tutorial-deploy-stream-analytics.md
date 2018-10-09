@@ -4,17 +4,17 @@ description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT E
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/10/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66d55c07493a540e36a08d48d6abbdc3d082b9b9
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41917655"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422739"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块（预览版）进行部署
 
@@ -50,7 +50,7 @@ Azure IoT Edge 设备：
 
 云资源：
 
-* Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure 中的免费层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>创建 Azure 流分析作业
@@ -63,7 +63,7 @@ Azure IoT Edge 设备：
 
 1. 在 Azure 门户中，转到“创建资源” > “存储” > “存储帐户 - Blob、文件、表、队列”。 
 
-1. 提供以下值，以便创建存储帐户：
+1. 提供以下值来创建存储帐户：
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -72,13 +72,13 @@ Azure IoT Edge 设备：
    | 订阅 | 选择与 IoT 中心相同的订阅。 |
    | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
 
-1. 其他字段保留默认值，然后选择“创建”。 
+1. 将其他字段保留默认值，然后选择“创建”。 
 
 ### <a name="create-a-new-job"></a>创建新的作业
 
 1. 在 Azure 门户中，转到“创建资源” > “物联网” > “流分析作业”。
 
-1. 提供以下值，以便创建作业：
+1. 提供以下值来创建作业：
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -106,17 +106,17 @@ Azure IoT Edge 设备：
 
 1. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。 
 
-1. 其他字段保留默认值，然后选择“保存”。
+1. 将其他字段保留默认值，然后选择“保存”。
 
 1. 在“作业拓扑”下打开“输出”，然后选择“添加”。
 
    ![Azure 流分析输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-1. 从下拉列表中选择“Edge 中心”。
+1. 从下拉列表中选择“边缘中心”。
 
 1. 在“新建输出”窗格中，输入 **alert** 作为输出别名。 
 
-1. 其他字段保留默认值，然后选择“保存”。
+1. 将其他字段保留默认值，然后选择“保存”。
 
 1. 在“作业拓扑”下选择“查询”。
 

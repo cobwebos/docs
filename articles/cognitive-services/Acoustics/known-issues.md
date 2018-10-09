@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181159"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431964"
 ---
 # <a name="known-issues"></a>已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。
@@ -27,7 +27,7 @@ ms.locfileid: "40181159"
 
 该路径应默认为相对路径，以便更轻松地在协作者之间共享项目。 解决方法是将路径更改为项目目录的相对路径。
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>运行时 voxel 的大小不同于设计时 voxel
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>运行时体素的大小与场景预览体素的大小不同
 
 如果在“探测”选项卡上执行计算并查看 voxel，然后在运行时对相同场景进行制作并查看 voxel，则两个 voxel 大小不同。 制作前显示的 voxel 是用于模拟中的 voxel。 在运行时显示的 voxel 用于探测点之间的内插。 这可能会导致不一致，其中门户在运行时显示已打开，而实际上未打开。
 

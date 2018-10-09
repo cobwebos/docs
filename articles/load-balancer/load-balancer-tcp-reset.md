@@ -1,5 +1,5 @@
 ---
-title: 负载均衡器空闲超时情况下的 TCP 重置 | Microsoft 文档
+title: 负载均衡器空闲情况下的 TCP 重置 | Microsoft Docs
 description: 具有空闲超时情况下发送双向 TCP RST 数据包功能的负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/16/2018
+ms.date: 09/26/2018
 ms.author: kumud
-ms.openlocfilehash: 6ec8754e9a6e1afb9dcb400215570d08ebd4342b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b533a48e94db880f23d42decc5c3fb39a27e5ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973721"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395638"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-timeout-public-preview"></a>负载均衡器空闲超时情况下的 TCP 重置（公共预览版）
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>负载均衡器空闲情况下的 TCP 重置（公共预览版）
 
 对于每个可配置的空闲超时，你可以使用[标准负载均衡器](load-balancer-standard-overview.md)为具有双向 TCP 重置（TCP RST 数据包）的方案创建可控性更强的应用程序行为。  负载均衡器的默认行为是当达到流的空闲超时的情况下，以静默方式删除流。
+
+![负载均衡器 TCP 重置](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
 >具有空闲超时情况下的 TCP 重置功能的负载均衡器目前提供公共预览版，并且可在一组有限的[区域](#regions)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -73,6 +75,8 @@ ms.locfileid: "46973721"
 
 | 区域 |
 |---|
+| 亚洲东南部 |
+| 西欧 |
 | 美国东部 2 |
 | 英国北部 |
 | 美国西部 |
@@ -87,4 +91,4 @@ ms.locfileid: "46973721"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[标准负载均衡器](load-balancer-standard-overview.md)。
-- 了解[出站规则](https://aka.ms/lboutboundrules)。
+- 了解[出站规则](load-balancer-outbound-rules-overview.md)。

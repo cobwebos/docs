@@ -1,21 +1,23 @@
 ---
 title: 使用 Azure SQL 数据库异地复制实现 SaaS 应用的灾难恢复 | Microsoft Docs
 description: 了解在发生中断时，如何使用 Azure SQL 数据库异地复制来恢复多租户 SaaS 应用
-keywords: sql 数据库教程
 services: sql-database
-author: AyoOlubeko
-manager: craigg
 ms.service: sql-database
-ms.custom: saas apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2018
+author: AyoOlubeko
 ms.author: ayolubek
-ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/09/2018
+ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34645787"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056329"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用数据库异地复制实现多租户 SaaS 应用程序的灾难恢复
 
@@ -51,9 +53,9 @@ ms.locfileid: "34645787"
 必须仔细考虑所有组成部分，尤其是大规模操作时。 在总体上，该计划必须实现多个目标：
 
 * 设置
-    * 在恢复区域中建立和维护镜像映像环境。 在此恢复环境中创建弹性池和复制任何独立数据库可以在恢复区域中预留容量。 维护此环境的工作包括预配新租户数据库时复制这些数据库。  
+    * 在恢复区域中建立和维护镜像映像环境。 在此恢复环境中创建弹性池和复制任何单一数据库可以在恢复区域中保留容量。 维护此环境的工作包括预配新租户数据库时复制这些数据库。  
 * 恢复
-    * 必须使用缩减的恢复环境来尽量降到日常成本，则必须扩展池和独立数据库，以便在恢复区域中获得完整的操作容量
+    * 如果使用缩减的恢复环境来最大限度地降低日常成本，则必须扩大池和单一数据库以在恢复区域中获得完全运转能力
     * 尽快在恢复区域中启用新租户预配  
     * 按优先顺序对租户还原进行优化
     * 优化为在可行的情况下同时执行多个步骤，以尽快让租户联机
@@ -88,7 +90,7 @@ ms.locfileid: "34645787"
 ## <a name="review-the-healthy-state-of-the-application"></a>查看应用程序的正常状态
 
 启动恢复进程前，请查看应用程序的健康状态。
-1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
+1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
     * 滚动到页面底部，注意页脚中的目录服务器名称和位置。 该位置是部署应用的区域。
     *提示：将鼠标悬停在位置上可以放大显示内容。*
     ![原始区域中的事件中心正常状态](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -158,7 +160,7 @@ ms.locfileid: "34645787"
 
 1. 将恢复目录中的所有现有租户标记为脱机，以防止在故障转移租户数据库之前对其进行访问。
 
-1. 在恢复区域中更新所有弹性池和复制的独立数据库的配置，以便在原始区域中镜像其配置。 （仅当在正常操作期间缩减了恢复环境中的池或复制的数据库以降低成本时，才需要执行此任务）。
+1. 在恢复区域中更新所有弹性池和复制的单一数据库的配置，以便在原始区域中镜像其配置。 （仅当在正常操作期间缩减了恢复环境中的池或复制的数据库以降低成本时，才需要执行此任务）。
 
 1. 为恢复区域中的 Web 应用启用流量管理器终结点。 启用此终结点可让应用程序预配新租户。 在此阶段，现有的租户仍处于脱机状态。
 
@@ -251,7 +253,7 @@ ms.locfileid: "34645787"
 2. 在 *PowerShell ISE* 中的 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 脚本内设置以下值：
     * **$DemoScenario = 5**：从恢复区域中的某个租户删除事件
 3. 按 **F5** 执行脚本
-4. 刷新 Contoso Concert Hall 事件页（http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt;user&gt; 替换为部署的用户值），注意最后一个事件已删除。
+4. 刷新 Contoso Concert Hall 事件页（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt;user&gt; 替换为部署的用户值），注意最后一个事件已删除。
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>将应用程序遣返到其原始生产区域
 

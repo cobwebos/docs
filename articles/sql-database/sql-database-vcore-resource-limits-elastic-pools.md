@@ -2,19 +2,22 @@
 title: Azure SQL 数据库基于 vCore 的资源限制 - 弹性池 | Microsoft Docs
 description: 本页介绍 Azure SQL 数据库中弹性池的一些常见基于 vCore 的资源限制。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 068ecf8283b92873542a7cb9ab2202212fd2ad2c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+author: oslake
+ms.author: moslake
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495503"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161556"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
@@ -25,17 +28,17 @@ ms.locfileid: "39495503"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>弹性池：存储大小和性能级别
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
 
-对于 SQL 数据库弹性池，下表显示了在每个服务层和性能级别可用的资源。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层、性能级别和存储量。
+对于 SQL 数据库弹性池，下表显示了每个服务层可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层、计算大小和存储量。
 
 > [!NOTE]
-> 弹性池中各个数据库的资源限制通常与池外部具有相同性能级别的各个数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
+> 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
 
 ### <a name="general-purpose-service-tier"></a>常规用途服务层
 
 #### <a name="generation-4-compute-platform"></a>第 4 代计算平台
-|性能级别|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|计算大小|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
 |vCore 数|1|2|4|8|16|24|
@@ -50,8 +53,8 @@ ms.locfileid: "39495503"
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
 |最大并发工作线程数（请求数）|210|420|840|1680|3360|5040|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|
-|最大池密度|100|200|500|500|500|500|
-|最小/最大弹性池点击停止次数|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
+|每个池的最大数据库数|100|200|500|500|500|500|
+|每个数据库的最小/最大弹性池 vcore 选项|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
 |副本数|1|1|1|1|1|1|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|
@@ -59,7 +62,7 @@ ms.locfileid: "39495503"
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 代计算平台
-|性能级别|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|计算大小|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|
 |vCore 数|2|4|8|16|24|32|40|80|
@@ -74,8 +77,8 @@ ms.locfileid: "39495503"
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
 |最大并发工作线程数（请求数）|210|420|840|1680|2520|3360|4200|8400
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|30000|
-|最大池密度|100|200|500|500|500|500|500|500|
-|最小/最大弹性池点击停止次数|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|每个池的最大数据库数|100|200|500|500|500|500|500|500|
+|每个数据库的最小/最大弹性池 vcore 选项|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |副本数|1|1|1|1|1|1|1|1|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
@@ -85,7 +88,7 @@ ms.locfileid: "39495503"
 ### <a name="business-critical-service-tier"></a>“业务关键”服务层
 
 #### <a name="generation-4-compute-platform"></a>第 4 代计算平台
-|性能级别|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
 |vCore 数|1|2|4|8|16|24|
@@ -100,8 +103,8 @@ ms.locfileid: "39495503"
 |IO 延迟（近似）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|
 |最大并发工作线程数（请求数）|210|420|840|1680|3360|5040|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|
-|最大池密度|不适用|50|100|100|100|100|
-|最小/最大弹性池点击停止次数|不适用|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
+|每个池的最大数据库数|此计算大小仅支持单个 DB|50|100|100|100|100|
+|每个数据库的最小/最大弹性池 vcore 选项|不适用|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
 |副本数|3|3|3|3|3|3|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|是|是|是|是|是|是|
@@ -109,7 +112,7 @@ ms.locfileid: "39495503"
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 代计算平台
-|性能级别|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|计算大小|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|
 |vCore 数|2|4|8|16|24|32|40|80|
@@ -124,8 +127,8 @@ ms.locfileid: "39495503"
 |目标 IOPS (64 KB)|5000|10000|20000|40000|60000|80000|100000|200000
 |最大并发工作线程数（请求数）|210|420|840|1680|2520|3360|5040|8400|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|30000|
-|最大池密度|不适用|50|100|100|100|100|100|100|
-|最小/最大弹性池点击停止次数|不适用|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|每个池的最大数据库数|不适用|50|100|100|100|100|100|100|
+|每个数据库的最小/最大弹性池 vcore 选项|不适用|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |副本数|3|3|3|3|3|3|3|3|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|是|是|是|是|是|是|是|是|

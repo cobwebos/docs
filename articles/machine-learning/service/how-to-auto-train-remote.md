@@ -1,6 +1,6 @@
 ---
-title: 在云中使用自动化机器学习定型模型 - Azure 机器学习
-description: 本文介绍了如何创建远程计算资源来自动定型机器学习模型。
+title: 为远程计算目标设置自动化机器学习 - Azure 机器学习服务
+description: 本文介绍了如何使用 Azure 机器学习服务在 Data Science Virtual machine (DSVM) 远程目标上使用自动机器学习构建模型
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -10,26 +10,26 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 00d34fd0fe5f62e4da4be7d80afceb29753251bc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946963"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163471"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud-with-azure-machine-learning"></a>通过 Azure 机器学习在云中使用自动化机器学习定型模型
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
 在 Azure 机器学习中，你可以在所管理的不同类型的计算资源上定型模型。 计算目标可以是本地计算机，也可以是云中的计算机。
 
 可以通过添加基于 Ubuntu 的 Data Science Virtual Machine (DSVM) 或 Azure Batch AI 等附加计算目标，轻松地纵向扩展或横向扩展机器学习实验。 DSVM 是在 Microsoft Azure 云上专为研究数据科学而生成的自定义 VM 映像。 它预先安装和预配置了许多热门的数据科学和其他工具。  
 
-在本文中，你将了解如何在 DSVM 上使用自动化机器学习来构建模型。  
+在本文中，你将了解如何在 DSVM 上使用自动化机器学习来构建模型。 可以在 [GitHub 中的这些示例 notebook](https://aka.ms/aml-notebooks) 中找到使用 Azure Batch AI 的示例。  
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-教程“[使用自动化机器学习定型分类模型](tutorial-auto-train-models.md)”，将指导你如何使用本地计算机通过自动化机器学习来定型模型。  本地培训的工作流同样适用于远程目标。 使用远程计算，能够以异步方式执行自动化机器学习实验迭代。 这可使你取消特定迭代，观察执行状态，继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程培训，首先要创建一个远程计算目标（如 Azure DSVM），对其进行配置，并在那里提交代码。
+教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。  本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 这允许你取消特定迭代，观察执行状态，或继续在 Jupyter Notebook 的其他单元格上处理。 若要进行远程训练，首先要创建一个远程计算目标，例如 Azure DSVM。  然后，配置远程资源，并在那里提交代码。
 
-本文展示了在远程 DSVM 上运行自动化机器学习实验所需的额外步骤。  本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
+本文展示了在远程 DSVM 上运行自动化机器学习试验所需的额外步骤。  本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 
 ```python
 ws = Workspace.from_config()
@@ -50,6 +50,7 @@ try:
     print('found existing dsvm.')
 except:
     print('creating new dsvm.')
+    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
     dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
     dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
     dsvm_compute.wait_for_completion(show_output = True)
@@ -69,24 +70,12 @@ DSVM 名称限制包括：
 >    1. 在没有实际创建 VM 的情况下退出
 >    1. 重新运行创建代码
 
+此代码没有为预配的 DSVM 创建用户名或密码。 如果希望直接连接到 VM，请转到 [Azure 门户](https://portal.azure.com)来预配凭据。  
 
-## <a name="create-a-runconfiguration-with-dsvm-name"></a>使用 DSVM 名称创建 RunConfiguration
-在此告知 runconfiguration 你 dsvm 的名称
 
-```python
+## <a name="access-data-using-getdata-file"></a>使用 get_data 文件访问数据
 
-# create the run configuration to use for remote training
-from azureml.core.runconfig import RunConfiguration
-run_config = RunConfiguration() 
-# set the target to dsvm_compute created above
-run_config.target = dsvm_compute 
-```
-
-现在，可以使用 `run_config` 对象作为自动化机器学习的目标。 
-
-## <a name="access-data-using-get-data-file"></a>使用获取数据文件来访问数据
-
-提供对定型数据的远程资源访问权限。 对于在远程计算上运行的自动化机器学习实验，需要使用 `get_data()` 函数来提取数据。  
+提供对定型数据的远程资源访问权限。 对于在远程计算上运行的自动化机器学习experiment，需要使用 `get_data()` 函数来提取数据。  
 
 若要提供访问权限，必须：
 + 创建一个包含 `get_data()` 函数的 get_data.py 文件 
@@ -95,10 +84,15 @@ run_config.target = dsvm_compute
 你可以封装代码，以从 blob 存储或 get_data.py 文件中的本地磁盘读取数据。 在下面的代码示例中，数据来自 sklearn 包。
 
 >[!Warning]
->如果使用的是远程计算，则必须使用 `get_data()` 来执行数据转换。
+>如果使用的是远程计算，则必须使用 `get_data()`，其中将执行数据转换。 如果需要为 get_data() 中的数据转换安装额外的库，则应当接着执行额外的步骤。 有关详细信息，请参阅 [auto-ml-dataprep sample notebook](https://aka.ms/aml-auto-ml-data-prep )。
 
 
 ```python
+# Create a project_folder if it doesn't exist
+if not os.path.exists(project_folder):
+    os.makedirs(project_folder)
+
+#Write the get_data file.
 %%writefile $project_folder/get_data.py
 
 from sklearn import datasets
@@ -114,7 +108,7 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
-## <a name="configure-automated-machine-learning-experiment"></a>配置自动化机器学习实验
+## <a name="configure-experiment"></a>配置试验
 
 为 `AutoMLConfig` 指定设置。  （请参阅[完整参数列表]()及其可能值。）
 
@@ -139,13 +133,13 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             run_configuration=run_config,
-                             data_script=project_folder + "./get_data.py",
+                             compute_target = dsvm_compute,
+                             data_script=project_folder + "/get_data.py",
                              **automl_settings
                             )
 ```
 
-## <a name="submit-automated-machine-learning-training-experiment"></a>提交自动化机器学习训练实验
+## <a name="submit-training-experiment"></a>提交训练试验
 
 现在，请提交配置，以自动选择算法、超参数并定型模型。 （了解有关 `submit` 方法[设置的详细信息]()。）
 
@@ -215,4 +209,4 @@ RunDetails(remote_run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何为自动培训配置设置]()。
+了解[如何为自动培训配置设置](how-to-configure-auto-train.md)。

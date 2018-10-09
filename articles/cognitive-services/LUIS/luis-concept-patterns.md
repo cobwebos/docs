@@ -1,24 +1,24 @@
 ---
-title: 了解模式如何提高预测的准确性 | Microsoft Docs
-titleSuffix: Azure
-description: 了解设计模式如何提高意向预测得分和找到实体。
+title: 了解模式如何提高预测的准确性
+titleSuffix: Azure Cognitive Services
+description: 模式旨在多条话语非常类似的情况下提升准确性。 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5ade15b3f80d725af4ece31a36ea0b670f5f5147
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225211"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031537"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
-模式旨在多条话语非常类似的情况下提升准确性。 通过提供话语模式，LUIS 可具有极高的预测置信度。 
+模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>模式解决了意向置信度低的问题
 设想一个人力资源应用，它在组织结构图上报告某员工的相关信息。 如果具有员工的姓名和组织关系，LUIS 就能反馈所涉及的员工。 设想员工叫做孔西明，经理叫做柏隼，下属员工有翁捷生、康霓和尹锋。
@@ -60,25 +60,25 @@ ms.locfileid: "39225211"
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>用于向模式模板添加实体的语法
 要向模式模板添加实体，需用花括号将实体名称括起，比如 `Who does {Employee} manage?`。 
 
-```
-Who does {Employee} manage?
-```
+|模式与实体|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>用于向模式模板添加实体和角色的语法
 实体角色表示为 `{entity:role}`其中实体名称后接一个冒号，再接角色名称。 要向模式模板添加带角色的实体，需用花括号将实体名称和角色名称括起，比如 `Book a ticket from {Location:Origin} to {Location:Destination}`。 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|模式与实体角色|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
 Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照模式模板操作，pattern.any 即可为任意长度。 
 
 要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`。  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|模式与 Pattern.any 实体|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |模式中的书名|
 |--|
@@ -107,9 +107,9 @@ How much does {Booktitle} cost and what format is it available in?
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
 使用正则表达式方括号语法 `[]` 标出话语中的可选文本。 最多能对两个括号使用方括号嵌套可选文本。
 
-```
-[find] email about {subject} [from {person}]
-```
+|模式与可选的文本|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 可使用方括号忽略 `.``!` 和 `?` 等标点符号。 要忽略这些标记，必须将每个标记包含在单独的模式中。 可选语法目前不支持在多个项目的列表中忽略一个项目。
 

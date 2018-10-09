@@ -1,26 +1,27 @@
 ---
 title: 迁移 TDE 证书 - Azure SQL 数据库托管实例 | Microsoft Docs
-description: 将用于通过透明数据加密保护数据库加密密钥的证书迁移到 Azure SQL 托管实例
-keywords: sql 数据库教程, sql 数据库托管实例, 迁移 TDE 证书
+description: 将用于通过透明数据加密保护数据库加密密钥的证书迁移到 Azure SQL 数据库托管实例
 services: sql-database
-author: MladjoA
-ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
-ms.custom: managed instance
-ms.topic: tutorial
-ms.date: 08/09/2018
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MladjoA
 ms.author: mlandzic
+ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 08/09/2018
+ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050605"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161771"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 托管实例
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 数据库托管实例
 
-使用本机还原选项将[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)保护的数据库迁移到 Azure SQL 托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 本文引导你完成将证书手动迁移到 Azure SQL 数据库托管实例的过程：
+使用本机还原选项将[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)保护的数据库迁移到 Azure SQL 数据库托管实例时，需在还原数据库之前迁移本地或 IaaS SQL Server 中的相应证书。 本文引导你完成将证书手动迁移到 Azure SQL 数据库托管实例的过程：
 
 > [!div class="checklist"]
 > * 将证书导出到个人信息交换 (.pfx) 文件
@@ -30,7 +31,7 @@ ms.locfileid: "44050605"
 有关使用完全托管服务无缝迁移 TDE 保护的数据库和相应证书的替代选项，请参阅[如何使用 Azure 数据库迁移服务将本地数据库迁移到托管实例](../dms/tutorial-sql-server-to-managed-instance.md)。
 
 > [!IMPORTANT]
-> Azure SQL 托管实例的透明数据加密在服务托管模式下工作。 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的系统托管证书。
+> Azure SQL 数据库托管实例的透明数据加密在服务托管模式下工作。 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的系统托管证书。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -109,7 +110,7 @@ ms.locfileid: "44050605"
 
 4. 遵照向导将证书和私钥导出为个人信息交换格式
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell cmdlet 将证书上传到 Azure SQL 托管实例
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell cmdlet 将证书上传到 Azure SQL 数据库托管实例
 
 1. 在 PowerShell 中开始准备步骤：
 
@@ -139,6 +140,6 @@ ms.locfileid: "44050605"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何将用于通过透明数据加密保护数据库加密密钥的证书从本地或 IaaS SQL Server 迁移到 Azure SQL 托管实例。
+本文介绍了如何将用于通过透明数据加密保护数据库加密密钥的证书从本地或 IaaS SQL Server 迁移到 Azure SQL 数据库托管实例。
 
 请参阅[将数据库备份还原到 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started-restore.md)，了解如何将数据库备份还原到 Azure SQL 数据库托管实例。

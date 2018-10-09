@@ -3,10 +3,8 @@ title: 机器学习 Web 服务的 Excel 外接程序 | Microsoft Docs
 description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
-editor: cgronlun
+author: marthalc
+ms.author: marthalc
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
 ms.component: studio
@@ -15,26 +13,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 68e2f72dfd8cc58d42263f4b6378d89304aaaa4d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834186"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095802"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-web-services"></a>适用于 Azure 机器学习 Web 服务的 Excel 外接程序
+# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>适用于 Azure 机器学习工作室 Web 服务的 Excel 加载项
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>在工作簿中使用现有 Web 服务的步骤
 
-1. 打开“[示例 Excel 文件](http://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。
+1. 打开“[示例 Excel 文件](http://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。 
+ 
+> [!NOTE]
+> 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
+
 2. 通过单击来选择 Web 服务，在此示例中为“Titanic 存活者预测器（Excel 外接程序示例）[分数]”。
    
     ![选择 Web 服务][01]
 3. 系统转到“预测”部分。  此工作簿已包含示例数据，但如果是空白工作簿，可以在 Excel 中选择一个单元格，并单击“**使用示例数据**”。
 4. 选择具有标头的数据，并单击输入数据范围图标。  请确保选中“我的数据带有标题”框。
 5. 在“输出”下方，输入你想要输出所在的单元格号，例如此处的 "H1"。
-6. 单击“**预测**”。
+6. 单击“**预测**”。 如果选中“自动预测”复选框，则所选区域（指定为输入的区域）中的任何更改都将触发请求并更新输出单元格，而无需按下预测按钮。
    
     ![预测部分][02]
 

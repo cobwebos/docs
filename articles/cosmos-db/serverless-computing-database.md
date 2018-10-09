@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696813"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064440"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -110,15 +110,12 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 ## <a name="tooling"></a>工具
 
 在 Azure 门户和 Visual Studio 2017 中可以本机集成 Azure Cosmos DB 和 Azure Functions。
-* 在 Azure Functions 门户中，可以创建 Azure Cosmos DB 触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)和![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
-* 在 Azure Functions 门户中，还可以将 Azure Cosmos DB 输入绑定和输出绑定添加到其他类型的触发器。 有关快速入门说明，请参阅[使用 Azure Functions 和 Cosmos DB 存储非结构化数据](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)。
-    ![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/function-portal-input-binding.png)
-*   在 Azure Cosmos DB 门户中，可以将 Azure Cosmos DB 触发器添加到同一资源组中的现有 Azure Function 应用。
-    ![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/cosmos-db-portal.png)
-* 在 Visual Studio 2017 中，可以使用集成模板创建 Azure Cosmos DB 触发器：
+
+* 在 Azure Functions 门户中，可以创建 Azure Cosmos DB 触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)。
+* 在 Azure Cosmos DB 门户中，可以将 Azure Cosmos DB 触发器添加到同一资源组中的现有 Azure Function 应用。
+* 在 Visual Studio 2017 中，可以使用[用于 Visual Studio 2017 的 Azure Functions 工具](../azure-functions/functions-develop-vs.md)创建 Azure Cosmos DB 触发器：
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
-
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>为什么为无服务器计算选择 Azure Functions 集成？
 
@@ -152,7 +149,6 @@ Azure Functions 的优点：
 
 * [在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)
 * [使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器](https://aka.ms/cosmosdbinputbind)
-* [使用 Azure Functions 和 Cosmos DB 存储非结构化数据](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
 * [Azure Cosmos DB 绑定和触发器](../azure-functions/functions-bindings-cosmosdb.md)
 
 

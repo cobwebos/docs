@@ -1,20 +1,21 @@
 ---
-title: 必应单页视频搜索应用 | Microsoft Docs
+title: 教程：生成单页必应视频搜索应用
+titlesuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应视频搜索 API。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: 55f662721e007e03c8f43f19d8b905e755cfe1d8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366473"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226596"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
@@ -99,7 +100,7 @@ HTML `<form>` 标记 `onsubmit` 可调用 `bingWebSearch` 函数以返回搜索�
 
 HTML 表单包括具有以下名称的元素：
 
-|元素|说明|
+|元素|Description|
 |-|-|
 | `where` | 用于选择市场（位置和语言）进行搜索的下拉菜单。 |
 | `query` | 用于输入搜索条件的文本字段。 |
@@ -307,7 +308,7 @@ function renderSearchResults(results) {
 
 必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
 
-|关系|说明|
+|关系|Description|
 |-|-|
 |`pivotSuggestions`|将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。|
 |`queryExpansions`|通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
@@ -331,7 +332,7 @@ searchItemRenderers = {
 ```
 呈现器函数可以接受以下参数：
 
-|参数|说明|
+|参数|Description|
 |-|-|
 |`item`| 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`| 结果项集合中的结果项的索引。|
@@ -402,7 +403,7 @@ searchItemRenderers = {
 
     cors-proxy-server
 
-在使用教程应用期间，请让命令窗口保持打开状态；关闭此窗口会阻止代理。 在搜索结果下的可展开 HTTP 标头部分中，现在可以看到 `X-MSEdge-ClientID` 标头（以及其他标头），并可验证每个请求的该标头是否都相同。
+使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

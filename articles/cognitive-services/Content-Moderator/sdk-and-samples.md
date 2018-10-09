@@ -1,20 +1,21 @@
 ---
-title: Azue 内容审查器的内容审核 SDK 和示例 | Microsoft Docs
+title: SDK 和示例 - 内容审查器、Python、Java、Node.js 和 .NET
+titlesuffix: Azure Cognitive Services
 description: 获取内容审查器 SDK 和示例
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: sample
 ms.date: 02/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: 40b8fc0f63383e837f0813f876f20806e6e8c6eb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a57f6a312b00d7ec3d927c6fda319f1de8663c9c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365513"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220442"
 ---
 # <a name="content-moderator-sdks-and-samples"></a>内容审查器 SDK 和示例
 

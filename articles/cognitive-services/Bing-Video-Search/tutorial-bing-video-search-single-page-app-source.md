@@ -1,22 +1,23 @@
 ---
-title: 必应视频搜索单页 Web 应用（源代码）| Microsoft Docs
+title: 教程：生成单页 Web 应用 - 必应视频搜索
+titlesuffix: Azure Cognitive Services
 description: 介绍了如何在单页 Web 应用中使用必应视频搜索 API 的教程的源代码。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: rosh
+ms.openlocfilehash: b0856be88382e1bb7a4cc65f5fd05910b814e152
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112454"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223281"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
+# <a name="tutorial-single-page-bing-video-search-app"></a>教程：单页必应视频搜索应用
 
 这是必应视频搜索的[单页应用教程](tutorial-bing-video-search-single-page-app.md)的完整源代码。 若要运行应用，请将源代码复制到记事本或其他文本编辑器中，并将它另存为“`bing.html`”。 然后，在 Microsoft Edge 或其他常用浏览器中打开已保存的文件。
 

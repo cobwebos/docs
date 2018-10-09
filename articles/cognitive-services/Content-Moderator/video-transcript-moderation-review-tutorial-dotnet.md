@@ -1,22 +1,23 @@
 ---
-title: Azure 内容审查器 - 在 .NET 中审查视频和脚本 | Microsoft Docs
+title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 如何在 .NET 中使用内容审查器来审查视频和脚本。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0f851c030a05880d79a998ed4b4a941082c057b9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 12f03352373bebecb74b9dd8d31470ac337f5e71
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865465"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227565"
 ---
-# <a name="video-and-transcript-moderation-tutorial"></a>视频和脚本审查教程
+# <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
 可使用内容审查器的视频 API 审查视频并在人工评论工具中创建视频评论。 
 
@@ -50,7 +51,7 @@ ms.locfileid: "37865465"
 
 1. 编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
 
-|密钥|说明|
+|密钥|Description|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
 |`ClientSecret`|Azure 媒体服务的订阅密钥|
@@ -66,7 +67,7 @@ ms.locfileid: "37865465"
 
 ### <a name="methods-of-class-program"></a>Program 类的方法
 
-|方法|说明|
+|方法|Description|
 |-|-|
 |`Main`|分析命令行、收集用户输入并开始进行处理。|
 |`ProcessVideo`|压缩、上传、审查和创建视频评论。|
@@ -131,7 +132,7 @@ ms.locfileid: "37865465"
 
 无论程序的选项来自命令行还是来自交互式用户输入，`Main()` 接下来都会调用 `Initialize()` 创建以下实例：
 
-|类|说明|
+|类|Description|
 |-|-|
 |`AMSComponent`|在提交视频文件进行审查之前先对其进行压缩。|
 |`AMSconfigurations`|与在 `App.config` 中找到的应用程序配置数据交互。|

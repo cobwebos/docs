@@ -1,20 +1,21 @@
 ---
-title: Azure 的 LUIS 应用中的陈述 | Microsoft Docs
-description: 在语言理解智能服务 (LUIS) 应用程序中添加陈述。
+title: LUIS 应用中的话语
+titleSuffix: Azure Cognitive Services
+description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224409"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038929"
 ---
 # <a name="utterances-in-luis"></a>LUIS 中的陈述
 
@@ -35,12 +36,14 @@ ms.locfileid: "39224409"
 你会发现，即使你努力创造不同的句型，你仍然会重复一些词汇。
 
 以这些示例陈述为例：
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|示例陈述|
+|--|
+|如何买计算机？|
+|在哪里买计算机？|
+|我想要一台计算机，我该怎么做？|
+|我什么时候能有一台计算机？| 
+
 这里的核心术语“computer”没有变化。 他们可以说“台式电脑”、“笔记本电脑”、“工作站”，甚至就说“机器”。 LUIS 会智能地从上下文中推断同义词，但当你为训练创建陈述时，最好还是改变它们。
 
 ## <a name="example-utterances-in-each-intent"></a>每个意向的示例陈述

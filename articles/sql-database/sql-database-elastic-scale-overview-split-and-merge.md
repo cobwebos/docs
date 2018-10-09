@@ -2,19 +2,22 @@
 title: 在扩展云数据库之间移动数据 | Microsoft 文档
 description: 介绍如何使用弹性数据库 API 通过自托管服务来操作分片和移动数据。
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 3c68b18a96ae79cd32cd3059eab837e6051847dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 518d7659df603ed0fcab4aebf5f35c3b92e75ccf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647412"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162622"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 如果是软件即服务开发人员，应用程序突然遇到巨大需求，那么需要适应该需求增长。 因此，添加了更多数据库（分片）。 如何在不破坏数据完整性的情况下将数据重新分配到新数据库？ 使用**拆分 / 合并工具**将数据从受约束的数据库移到新的数据库。  
@@ -65,7 +68,7 @@ ms.locfileid: "34647412"
 
 **一致的 shardlet 连接**
 
-为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 将再次被标记为联机状态，并且源数据将从源分片中删除。 该服务将针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
+为了避免不一致，当一批新的 shardlet 开始进行数据移动时，将断开到存储 shardlet 的分片的所有分片映射提供的数据依赖型路由连接；当数据移动正在进行时，将阻止从分片映射 API 到这些 shardlet 的后续连接。 到同一分片上其他 shardlet 的连接也会断开，但是重试时会立即再次成功连接。 移动此批后，目标分片的 shardlet 将再次被标记为联机状态，并且源数据将从源分片中删除。 该服务将针对每一批执行以上步骤，直到所有 shardlet 都已移动。 在完成拆分/合并/移动操作过程中，这会导致几个连接中断操作。  
 
 **管理 shardlet 可用性**
 

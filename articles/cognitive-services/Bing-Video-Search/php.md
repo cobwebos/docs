@@ -1,22 +1,23 @@
 ---
-title: 适用于 Azure 认知服务中的必应视频搜索 API 的 PHP 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应视频搜索 API。
+title: 快速入门：必应视频搜索、PHP
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，有助于快速开始使用必应视频搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 2e7dc1fc82f143b51461595f9c92294a359bdc62
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4e64771802564da1e1cb9efccef1ef63b38c2b80
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366443"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224709"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-php"></a>将必应视频搜索 API 与 PHP 配合使用快速入门
+# <a name="quickstart-bing-video-search-api-with-php"></a>快速入门：必应视频搜索 API 与 PHP
 
 本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应视频搜索 API。 虽然本文采用的是 PHP，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "35366443"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-video-search"></a>必应视频搜索
 
@@ -35,7 +36,7 @@ ms.locfileid: "35366443"
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
 2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
 3. 添加下面提供的代码。
-4. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 5. 运行该程序。
 
 ```php

@@ -1,20 +1,21 @@
 ---
-title: LUIS 应用的企业概念- Azure | Microsoft Docs
+title: LUIS 应用的企业概念 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: 了解大型 LUIS 应用的设计概念。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fda4a089866950688d88f9f47988c1540abe1cc0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3782874ac69b299e24cf1555b290a9d2d86b6285
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038334"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
 查看企业应用的设计策略。
@@ -50,9 +51,7 @@ ms.locfileid: "39224854"
 
 ![调度体系结构的概念图](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-父域在 LUIS 中记录为“V Dispatch”应用。 
-
-![带有由调度工具创建的 LUIS 应用的 LUIS 应用列表的屏幕截图](./media/luis-concept-enterprise/dispatch.png)
+在 LUIS 中使用应用列表中名为 `Dispatch` 的版本记录父域。 
 
 聊天机器人接收陈述，然后发送至父 LUIS 应用进行预测。 父应用中的最高预测意向决定下一个要调用的子 LUIS 应用。 聊天机器人将该陈述发送至子应用进行更具体的预测。
 
@@ -66,4 +65,4 @@ ms.locfileid: "39224854"
 * 了解如何[测试批处理](luis-how-to-batch-test.md)
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
-[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[dispatch-tool]: https://aka.ms/dispatch-tool

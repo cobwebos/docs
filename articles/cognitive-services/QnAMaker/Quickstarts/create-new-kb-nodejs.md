@@ -1,24 +1,26 @@
 ---
-title: 新建知识库 - 适用于 Microsoft QnA Maker API (V4) 的 Node.js 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 以 Node.js 创建知识库来保存常见问题解答或产品手册，以便可以开始使用 QnA Maker。
+title: 快速入门：API Node.js - 创建知识库 - QnA Maker
+description: 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: cbf89aa3a10012ea2d99972c6a83dd351739c5a6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 435c937e64d0befc5a3bf30f9d58ccd303247b9e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43768746"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037297"
 ---
 # <a name="create-a-new-knowledge-base-in-nodejs"></a>以 Node.js 新建知识库
 
 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 下面给出了将提供内容的两个示例常见问题解答 URL（在 **req={}** 的“urls”中）。 QnA Maker 从此半结构化内容中自动提取问答，如此[数据源](../Concepts/data-sources-supported.md)文档中所述。 在本快速入门中，你也可以使用自己的常见问题解答 URL。
 

@@ -3,18 +3,18 @@ title: 在 Azure 虚拟网络中设置 HBase 群集复制
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
 services: hdinsight,virtual-network
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.author: jasonh
-ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/15/2018
+ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047477"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224369"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 HBase 群集复制
 
@@ -109,6 +109,7 @@ ms.locfileid: "43047477"
 2. 打开 DNS 虚拟机，方法是选择“资源组”> [资源组名称] > [vnet1DNS]。  资源组名称是在上一过程中创建的。 默认的 DNS 虚拟机名称为 *vnet1DNS* 和 *vnet2NDS*。
 3. 选择“属性”，打开虚拟网络的属性页。
 4. 记下“公共 IP 地址”，并验证“专用 IP 地址”。  vnet1DNS 的专用 IP 地址应该是 **10.1.0.4**，vnet2DNS 的专用 IP 地址应该是 **10.2.0.4**。  
+5. 将两个虚拟网络的 DNS 服务器更改为使用默认（Azure 提供的）DNS 服务器以允许对下载包进行入站和出站访问，从而可以按以下步骤安装 Bind。
 
 若要安装 Bind，请执行以下过程：
 
@@ -135,7 +136,7 @@ ms.locfileid: "43047477"
     sudo apt-get install bind9 -y
     ```
 
-3. 若要配置 Bind 将名称解析请求转发至本地 DNS 服务器，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+3. 配置 Bind 以将名称解析请求转发到本地 DNS 服务器。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
     ```
     acl goodclients {
@@ -151,7 +152,7 @@ ms.locfileid: "43047477"
         allow-query { goodclients; };
 
         forwarders {
-            168.63.129.16 #This is the Azure DNS server
+            168.63.129.16; #This is the Azure DNS server
         };
 
         dnssec-validation auto;
@@ -217,7 +218,7 @@ ms.locfileid: "43047477"
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
     > [!IMPORTANT]
@@ -277,7 +278,7 @@ sudo service bind9 status
 
 ## <a name="enable-replication"></a>启用复制
 
-以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 命令行工具 (Azure CLI) 运行脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
+以下步骤说明如何从 Azure 门户调用脚本操作脚本。 有关使用 Azure PowerShell 和 Azure 经典 CLI 运行脚本操作的信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
 
 **从 Azure 门户启用 HBase 复制**
 

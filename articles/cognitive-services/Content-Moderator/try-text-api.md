@@ -1,20 +1,21 @@
 ---
-title: 通过使用 Azure 内容审查器中的文本审查 API 来审查文本 | Microsoft Docs
+title: 使用文本审查 API 来审查文本 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 通过使用联机控制台中的文本审查 API 体验文本审查。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: ed696c31a886626819414c45eb7995edaf161fff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95fd5507287a9294f4fca6af9cc5f01f0ea9fe1c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365841"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219781"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
 
@@ -22,7 +23,7 @@ ms.locfileid: "35365841"
 
 
 ## <a name="get-your-api-key"></a>获取 API 密钥
-可以在联机控制台中体验 API 之前，需要提供订阅密钥。 密钥位于“设置”选项卡的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
+可以在联机控制台中体验 API 之前，需要提供订阅密钥。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="navigate-to-the-api-reference"></a>导航到 API 参考
 转到[文本审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。 
@@ -67,15 +68,15 @@ ms.locfileid: "35365841"
 
 ### <a name="text-classification-feature"></a>文本分类功能
 
-在下面的示例中，你将看到内容审查器的计算机辅助文本分类响应。 它可帮助检测可能不需要的内容。 标记的内容可能会被视为不适合，具体取决于上下文。 除了传达每个类别的可能性，它可能会建议对内容进行人工评审。 该功能使用定型模型来标识可能辱骂、贬损或歧视性语言。 要检查的内容包括俚语、缩写词、冒犯性言语，以及有意拼写错误的单词。 
+在下面的示例中，你将看到内容审查器的计算机辅助文本分类响应。 它可帮助检测可能不需要的内容。 标记的内容可能会被视为不适合，具体取决于上下文。 除了传达每个类别的可能性，它可能会建议对内容进行人工评审。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
 
 #### <a name="explanation"></a>说明
 
 - `Category1` 表示可能存在某些情况下可能被视为色情或成人性质的语言。
 - `Category2` 表示可能存在某些情况下可能被视为性暗示或过于成熟的语言。
 - `Category3` 表示可能存在某些情况下可能被视为具攻击性的语言。
-- `Score` 介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议对你自己的内容进行测试，以确定每个类别是否满足你的需求。
-- `ReviewRecommended` 为 true 或 false，具体情况取决于内部分数阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
+- `Score` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
+- `ReviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
 ### <a name="analyze-the-response"></a>分析响应
 下面的响应显示来自 API 的各种见解。 它包含潜在不雅内容、PII、分类（预览）和自动更正版本。

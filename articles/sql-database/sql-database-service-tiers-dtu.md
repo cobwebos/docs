@@ -1,24 +1,27 @@
 ---
 title: Azure SQL 数据库服务层 - DTU | Microsoft Docs
-description: 了解单一数据库和池数据库的服务层以提供性能级别和存储大小。
+description: 了解单一数据库和池数据库的服务层以提供计算大小和存储大小。
 services: sql-database
-author: sachinpMSFT
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
 manager: craigg
-ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 09/14/2018
+ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142332"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162366"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>选择基于 DTU 的服务层、性能级别和存储资源 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>选择基于 DTU 的服务层、计算大小和存储资源 
 
-服务层根据一系列具有固定随附存储量、固定备份保留期和固定价格的性能级别进行区分。 所有服务层允许灵活更改性能级别，而不会造成停机。 单一数据库和弹性池根据服务层和性能级别按小时计费。
+服务层根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 所有服务层允许灵活更改计算大小，而不会造成停机。 单一数据库和弹性池根据服务层和计算大小按小时计费。
 
 > [!IMPORTANT]
 > SQL 数据库托管实例（目前以公共预览版提供）不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。 
@@ -40,7 +43,7 @@ ms.locfileid: "42142332"
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
-单一数据库的性能级别以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU 和 eDTU？](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)
+单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU 和 eDTU？](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +76,7 @@ ms.locfileid: "42142332"
 使用模拟真实数据库工作负荷的基准检验校准与每个 DTU 度量值相关的物理特性（CPU、内存、IO）。
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>将基准检验结果与实际数据库性能进行关联
-请务必了解，所有基准检验只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调性能级别时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式扩展。
+请务必了解，所有基准检验只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调计算大小时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式扩展。
 
 基准检验及其方法会在下面更详细地说明。
 
@@ -155,5 +158,5 @@ ASDB 将度量联机事务处理 (OLTP) 工作负荷中最常发生的基本数�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关适用于单一数据库的特定性能级别和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)。
-- 有关适用于弹性池的特定性能级别和存储大小选项的详细信息，请参阅 [SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels)。
+- 有关适用于单一数据库的特定计算大小和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)。
+- 有关适用于弹性池的特定计算大小和存储大小选项的详细信息，请参阅 [SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)。

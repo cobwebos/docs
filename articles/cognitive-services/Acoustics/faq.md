@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181144"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431782"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
-## <a name="what-is-project-acoustics"></a>什么是 Project Acoustics？
+## <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 
-Project Acoustics Unity 插件是一个在运行时之前计算声波行为的音效系统，类似于静态照明。 在设计时，云可以执行繁重的声波物理学计算，因此运行时 CPU 成本较低。  
+Project Acoustics Unity 插件是一个在运行时之前计算声波行为的音效系统，类似于静态照明。 云可以执行繁重的声波物理学计算，因此运行时 CPU 成本较低。  
 
 ## <a name="where-can-i-download-the-plugin"></a>在何处可以下载此插件？
 
@@ -28,7 +28,7 @@ Project Acoustics Unity 插件是一个在运行时之前计算声波行为的�
 
 ## <a name="is-azure-used-at-runtime"></a>是否在运行时使用 Azure？
 
-不，仅在设计时的预计算阶段使用云集成。
+不，云集成仅在预计算阶段使用，作为场景设置的一部分。
  
 ## <a name="what-is-simulation-input"></a>什么是模拟输入？ 
 

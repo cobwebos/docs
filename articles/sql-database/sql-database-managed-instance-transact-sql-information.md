@@ -2,24 +2,26 @@
 title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
 description: 本文讨论 Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异。
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab, bonova
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 0813/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab, bonova
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 08/13/2018
+ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051232"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166497"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
-Azure SQL 数据库托管实例（预览版）与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。 由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。
+Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。 由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。
  - [T-SQL 差异和不支持的功能](#Differences)
  - [在托管实例中具有不同行为的功能](#Changes)
  - [暂时的限制和已知问题](#Issues)
@@ -267,7 +269,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 ### <a name="replication"></a>复制 
  
-托管实例上支持复制。 有关复制的信息，请参阅 [SQL Server 复制](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
+复制功能在托管实例上当前为公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
  
 ### <a name="restore-statement"></a>RESTORE 语句 
  
@@ -335,23 +337,24 @@ WITH PRIVATE KEY ( <private_key_options> )
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 - 不支持 `sp_renamedb`。 请参阅 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql)。
 
-### <a name="sql-server-agent"></a>SQL Server 代理 
- 
+### <a name="sql-server-agent"></a>SQL Server 代理
+
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。  
-- 作业 - 目前仅支持 T-SQL 作业步骤（在公共预览期将添加更多步骤）。
- - 尚不支持 SSIS。 
- - 尚不支持复制  
-  - 尚不支持事务日志读取器。  
-  - 尚不支持快照。  
-  - 尚不支持分发服务器。  
-  - 不支持合并。  
+- 作业 - 目前支持 T-SQL 作业步骤
+- 目前不支持其他类型的作业步骤（在公共预览版中将添加更多步骤类型）。
+  - 不支持的复制作业包括：
+    - 事务日志读取器。  
+    - 快照。
+    - 分发服务器。  
+    - 合并。  
+  - 尚不支持 SSIS。 
   - 不支持队列读取器。  
- - 尚不支持命令外壳。 
+  - 尚不支持命令外壳。 
   - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
- - 尚不支持 PowerShell。
- - 不支持 Analysis Services。  
+  - 尚不支持 PowerShell。
+  - 不支持 Analysis Services。  
 - 部分支持通知。
- - 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
+- 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
  - 不支持寻呼机。  
  - 不支持 NetSend。 
  - 尚不支持警报。
@@ -414,15 +417,58 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 访问托管实例时，SQL Server Management Studio 和 SQL Server Data Tools 可能会出现一些问题。 将发布正式版之前，我们将解决所有工具问题。
 
-### <a name="incorrect-database-names"></a>错误的数据库名称
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>在某些视图、日志和消息中，数据库名称不正确
 
-托管实例在还原期间或者在某些错误消息中可能会显示 GUID 值，而不是数据库名称。 将发布正式版之前，我们将解决这些问题。
+多个系统视图、性能计数器、错误消息、XEvent 和错误日志条目显示了 GUID 数据库标识符而非实际的数据库名称。 不要依赖这些 GUID 标识符，因为它们在将来会被替换为实际的数据库名称。
 
 ### <a name="database-mail-profile"></a>数据库邮件配置文件
 只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。 很快将会去除此暂时性限制。
+
+### <a name="error-logs-are-not-persisted"></a>错误日志不会持久保留
+托管实例中可用的错误日志不会持久保留，并且它们的大小不包括在最大存储限制中。 在发生故障转移时可能会自动清除错误日志。
+
+### <a name="error-logs-are-verbose"></a>错误日志是详细的
+托管实例在错误日志中放置了详细信息，并且其中的许多是不相关的。 将来，错误日志中的信息量将减少。
+
+**解决方法**：使用自定义过程来读取错误日志，以便过滤掉某些不相关的条目。 有关详细信息，请参阅 [Azure SQL DB 托管实例 – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)。
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
+如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .Net 中的 `TransactionScope` 类不会工作。
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+虽然此代码处理同一实例内的数据，但它需要 MSDTC。
+
+**解决方法**：使用 [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而非使用两个连接。
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
+放置在托管实例中的 CLR 模块和链接的服务器/分布式查询如果引用了当前实例，则它们有时候无法解析本地实例的 IP。 这是暂时性错误。
+
+**解决方法**：如果可能，请在 CLR 模块中使用上下文连接。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关托管实例的详细信息，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
-- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
+- 有关演示了如何新建托管实例的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。

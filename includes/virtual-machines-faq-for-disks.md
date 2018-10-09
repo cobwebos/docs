@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7208eb112b5f4a5b458c0374541dff113906aa0c
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060333"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47186180"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -144,6 +144,9 @@ Azure 标准 SSD 盘是什么？
 
 <a id="standard-ssds-azure-regions"></a>**当前支持标准 SSD 盘的区域有哪些？**
 所有 Azure 区域现在都支持标准 SSD 盘。
+
+**使用标准 SSD 时是否可以使用 Azure 备份？**
+否，Azure 备份尚不可用。
 
 如何创建标准 SSD 盘？
 可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：

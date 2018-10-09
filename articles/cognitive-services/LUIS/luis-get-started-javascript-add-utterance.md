@@ -1,20 +1,21 @@
 ---
-title: 快速入门：了解如何使用 JavaScript 将话语添加到 LUIS 应用 - Azure 认知服务 | Microsoft Docs
+title: JavaScript 快速入门 - 更改模型并训练 LUIS 应用
+titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 JavaScript 调用 LUIS 应用。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0920a194d3e9c93883b88b7131f7e81dc8fb3302
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 38e25b0634b53f4fcc0507091e78ab49b29c8d38
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159684"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033390"
 ---
 # <a name="quickstart-change-model-using-javascript"></a>快速入门：使用 JavaScript 更改模型
 

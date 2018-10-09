@@ -1,20 +1,21 @@
 ---
-title: 适用于 Microsoft QnA Maker API (V4) 的 Python 快速入门 - Azure 认知服务 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
+title: 快速入门：适用于 QnA Maker API (v4) 的 Python
+titleSuffix: Azure Cognitive Services
+description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: c0d02a0f586857f6dd303fc98407da71b2addb9b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 5e95bf768cc00935067edd3365cc3d101be6a00a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869113"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034735"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>将 Microsoft QnA Maker API 与 Python 配合使用快速入门 
 <a name="HOLTop"></a>
@@ -36,6 +37,8 @@ ms.locfileid: "37869113"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
@@ -49,8 +52,8 @@ ms.locfileid: "37869113"
 以下代码使用 [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 方法创建新的知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -146,7 +149,7 @@ while False == done:
 
 **创建知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -184,8 +187,8 @@ while False == done:
 以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -286,7 +289,7 @@ while False == done:
 
 **更新知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -325,8 +328,8 @@ Press any key to continue.
 以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -375,7 +378,7 @@ print (pretty_print(result))
 
 **发布知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -392,8 +395,8 @@ print (pretty_print(result))
 以下代码使用 [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) 方法来替换指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -463,7 +466,7 @@ print (pretty_print(result))
 
 **替换知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -480,8 +483,8 @@ print (pretty_print(result))
 以下代码使用 [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) 方法来下载指定知识库的内容。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -527,7 +530,7 @@ print (pretty_print(result))
 
 **下载知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -628,7 +631,7 @@ print (pretty_print(result))
 
 **获取答案响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -657,8 +660,8 @@ print (pretty_print(result))
 以下代码使用 [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 方法获取有关指定知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -701,7 +704,7 @@ print (pretty_print(result))
 
 **获取知识库详细信息响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -730,8 +733,8 @@ print (pretty_print(result))
 以下代码使用 [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) 方法获取有关指定用户的所有知识库的信息。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -771,7 +774,7 @@ print (pretty_print(result))
 
 **获取用户响应的知识库**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -816,8 +819,8 @@ Press any key to continue.
 以下代码使用 [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) 方法来删除指定知识库。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -866,7 +869,7 @@ print (pretty_print(result))
 
 **删除知识库响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -883,8 +886,8 @@ print (pretty_print(result))
 以下代码使用 [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) 方法获取当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -924,7 +927,7 @@ print (pretty_print(result))
 
 **获取终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -942,8 +945,8 @@ print (pretty_print(result))
 以下代码使用 [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) 方法重新生成当前终结点密钥。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -992,7 +995,7 @@ print (pretty_print(result))
 
 **刷新终结点密钥响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1010,8 +1013,8 @@ print (pretty_print(result))
 以下代码使用 [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) 方法获取当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -1051,7 +1054,7 @@ print (pretty_print(result))
 
 **获取字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {
@@ -1075,8 +1078,8 @@ print (pretty_print(result))
 以下代码使用 [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) 方法替换当前字变更。
 
 1. 在你喜欢使用的 IDE 中新建一个 Python 项目。
-2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+2. 添加下方提供的代码。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```python
@@ -1135,7 +1138,7 @@ print (pretty_print(result))
 
 **替换字变更响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示： 
+在 JSON 中返回成功的响应，如以下示例所示： 
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 73b7604e3072e76c69383481259e1cd8990f4df4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4729ce996ca918f43df1777a1962d4cd225a38e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44168629"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47061028"
 ---
 ## <a name="extended-iot-scenarios"></a>扩展的 IoT 方案
 
@@ -22,7 +22,7 @@ ms.locfileid: "44168629"
 | 场景                                                   | Azure 服务或工具              |
 |----------------------------------------------------------- |------------------------------------|
 | [管理 IoT 中心消息][Mg_IoT_Toolkit]                  | VS Code Azure IoT 工具包扩展|
-| [管理 IoT 设备][Mg_IoT_Dv]                        | Azure CLI 2.0 和 IoT 扩展|
+| [管理 IoT 设备][Mg_IoT_Dv]                        | Azure CLI 和 IoT 扩展    |
 | [管理 IoT 设备][Mg_IoT_Dv_Toolkit]                | VS Code Azure IoT 工具包扩展|
 | [将 IoT 中心消息保存到 Azure 存储][Sv_IoT_Msg_Stor]  | Azure 表存储                |
 | [直观显示传感器数据][Vis_Data_PBI]                      | Microsoft Power BI                 |

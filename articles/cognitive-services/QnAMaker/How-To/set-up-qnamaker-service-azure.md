@@ -1,21 +1,21 @@
 ---
-title: 如何设置 QnA Maker 服务 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何设置 QnA Maker 服务
+title: 设置 QnA Maker 服务 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: ce452dd686529e017b4eae4717eadb044b389409
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 87bcd23983c1d973f7e90caf806092c909b7b9e4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032540"
 ---
 # <a name="create-a-qna-maker-service"></a>创建 QnA Maker 服务
 

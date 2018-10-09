@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 46c25e19fbf8882779e7334da69f74ef0fa79272
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c65df33fae3f65de8b9b09fbee5e5c06c01109a4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42024222"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040663"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -74,9 +74,9 @@ ms.locfileid: "42024222"
 
 1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
 
-1. 在设备预配服务摘要边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 
+1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
 
-1. 在“添加注册列表项”下，输入以下信息：
+1. 在“添加注册”下，输入以下信息：
     - 选择“TPM”作为标识证明*机制*。
     - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
     - 选择与预配服务链接的 IoT 中心。
@@ -84,7 +84,7 @@ ms.locfileid: "42024222"
     - 使用设备所需的初始配置更新“初始设备孪生状态”。
     - 完成后，单击“保存”按钮。 
 
-    ![在门户边栏选项卡中输入设备注册信息](./media/python-quick-create-simulated-device/enter-device-enrollment.png)  
+    ![在门户边栏选项卡中输入设备注册信息](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
    成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
 
@@ -131,7 +131,7 @@ ms.locfileid: "42024222"
 
 1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。
 
-    ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device/hub-registration.png) 
+    ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device/hubregistration.png) 
 
     如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
 

@@ -1,80 +1,70 @@
 ---
-title: 使用模式角色改进 LUIS 预测的教程 - Azure | Microsoft Docs
-titleSuffix: Cognitive Services
-description: 本教程介绍如何使用与上下文相关的实体的模式角色来改进 LUIS 预测。
+title: 教程 4：上下文相关数据的模式角色
+titleSuffix: Azure Cognitive Services
+description: 使用模式从格式正确的模板话语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2c3705d28d6496c3d20999231de98572bc26e3be
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161928"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160241"
 ---
-# <a name="tutorial-improve-app-with-pattern-roles"></a>教程：使用模式角色来改进应用
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
 
-本教程介绍如何使用含与模式合并的角色的简单实体来改进意向和实体预测。  当使用模式时，意向需要较少的示例话语。
+在本教程中，使用模式从格式正确的模板话语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。  当使用模式时，意向需要较少的示例话语。
 
-> [!div class="checklist"]
-* 理解模式角色
-* 使用含角色的简单实体 
-* 使用含角色的简单实体为话语创建模式
-* 如何验证模式预测改进
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>开始之前
-如果还没有[模式](luis-tutorial-pattern.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的一个新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) GitHub 存储库中。
-
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `roles`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 
-
-## <a name="the-purpose-of-roles"></a>角色的用途
 角色的用途是在话语中提取与上下文相关的实体。 在 `Move new employee Robert Williams from Sacramento and San Francisco` 话语中，原城市和目的地城市值彼此相关，并使用公共语言来表示每个位置。 
 
-当使用模式时，必须在模式匹配话语之前，先在该模式中检测到任何实体。 
 
-创建模式的第一步是选择模式的意向。 通过选择意向，如果模式匹配，则常常返回具有较高分数（通常为 99-100%）的正确意向。 
-
-### <a name="compare-hierarchical-entity-to-simple-entity-with-roles"></a>比较分层实体与包含角色的简单实体
-
-在[分层教程](luis-quickstart-intent-and-hier-entity.md)中，“MoveEmployee”意向检测到将现有员工从一栋建筑物或办公楼搬到另一栋的时机。 示例话语具有原位置和目的地，但未使用角色。 相反，原位置和目的地是分层实体的子级。 
-
-在本教程中，人力资源应用会检测有关将新员工从一个城市调到另一个城市的话语。 这两种类型的话语很相似，但通过不同的 LUIS 功能来解决。
-
-|教程|示例陈述|原位置和目的地|
-|--|--|--|
-|[分层（无角色）](luis-quickstart-intent-and-hier-entity.md)|将 Jill Jones 从“a-2349”调到“b-1298”|a-2349、b-1298|
-|本教程（含角色）|将 Billy Patterson 从“Yuma”调到“Denver”。|Yuma、Denver|
-
-无法在模式中使用分层实体，因为在模式中只使用分层父级。 若要返回命名的原位置和目的地，必须使用模式。
-
-### <a name="simple-entity-for-new-employee-name"></a>新员工名称的简单实体
 新员工 Billy Patterson 的名称还不是“员工”列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”列表实体。
 
-“员工”列表已在[列表教程](luis-quickstart-intent-and-list-entity.md)中创建。
-
-“NewEmployee”实体是不具有任何角色的简单实体。 
-
-### <a name="simple-entity-with-roles-for-relocation-cities"></a>适用于调职城市且含角色的简单实体
 需要将新员工和家人从现有城市调到虚构公司所在的城市。 由于新员工可以来自于任何城市，因此需要发现此位置。 诸如列表实体等的集合列表可能不起作用，因为只会提取列表中的城市。
 
-与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 “NewEmployeeRelocation”实体是包含两个角色（“NewEmployeeReloOrigin”和“NewEmployeeReloDestination”）的简单实体。
+与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 “NewEmployeeRelocation”实体是包含两个角色（“NewEmployeeReloOrigin”和“NewEmployeeReloDestination”）的简单实体。 Relo 是 relocation 的缩写。
 
-### <a name="simple-entities-need-enough-examples-to-be-detected"></a>简单实体需要足够的示例才能被检测到
 由于示例话语 `Move new employee Robert Williams from Sacramento and San Francisco` 仅具有机器学习的实体，因此，向意向提供足够的示例话语至关重要，以便检测到这些实体。  
 
 **尽管模式允许提供较少的示例话语，但如果未检测到实体，则该模式将不匹配。**
 
 如果由于简单实体是城市等名称而难以检测到该实体，请考虑添加类似值的短语列表。 这通过为 LUIS 提供有关该类型的字或短语的其他信号，帮助检测城市名称。 短语列表只能通过帮助模式匹配所必需的实体检测来为模式提供帮助。 
 
+**本教程介绍如何执行下列操作：**
+
+> [!div class="checklist"]
+> * 使用现有的教程应用
+> * 创建新实体
+> * 创建新意向
+> * 训练
+> * 发布
+> * 从终结点获取意向和实体
+> * 使用角色创建模式
+> * 创建城市的短语列表
+> * 从终结点获取意向和实体
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>使用现有应用
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
+
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `roles`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+
 ## <a name="create-new-entities"></a>创建新实体
-1. 选择顶部菜单中的“生成”。
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在左侧导航栏中选择“实体”。 
 
@@ -124,15 +114,15 @@ ms.locfileid: "44161928"
 
     如果删除了 keyPhrase 实体，请立即将其添加回应用。
 
-## <a name="train-the-luis-app"></a>训练 LUIS 应用
+## <a name="train"></a>训练
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-without-pattern"></a>查询不含模式的终结点
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -224,9 +214,12 @@ ms.locfileid: "44161928"
 
 意向预测得分大约只有 50%。 如果客户端应用程序需要较大的数字，则需要修改此项目。 此外，也未预测到任何实体。
 
+提取了其中的一个位置，但未提取另一个位置。 
+
 模式有助于预测得分，但是，必须在模式匹配话语之前正确预测实体。 
 
-## <a name="add-a-pattern-that-uses-roles"></a>添加使用角色的模式
+## <a name="pattern-with-roles"></a>包含角色的模式
+
 1. 选择顶部导航栏中的“生成”。
 
 2. 选择左侧导航栏中的“模式”。
@@ -237,8 +230,8 @@ ms.locfileid: "44161928"
 
     如果定型、发布和查询终结点，则可能会因看到找不到实体而感到失望，因此，该模式不会进行匹配，因而预测也得不到改进。 这是没有足够的含带标签的实体的示例话语的结果。 要修复此问题，请添加短语列表，而不是添加更多示例。
 
-## <a name="create-a-phrase-list-for-cities"></a>创建适用于城市的短语列表
-城市就像人名一样很棘手，因为它们可以是字和标点符号的任意组合。 但区域和全球的城市都是已知的，因此，LUIS 需要城市的短语列表才能开始学习。 
+## <a name="cities-phrase-list"></a>城市短语列表
+城市就像人名一样很棘手，因为它们可以是字和标点符号的任意组合。 区域和全球的城市都是已知的，因此，LUIS 需要城市的短语列表才能开始学习。 
 
 1. 从左侧菜单的“提高应用性能”部分中，选择“短语列表”。 
 
@@ -255,16 +248,13 @@ ms.locfileid: "44161928"
     |迈阿密|
     |达拉斯|
 
-    请勿添加世界上的每个城市，也不要添加区域中的每个城市。 LUIS 需要能够从列表中推断出城市的概况。 
-
-    确保“这些值可互换”处于选中状态。 此设置意味着列表上的字被视为同义词。 这正是它们应在模式中的处理方式。
-
-    请记住，[最后一次](luis-quickstart-primary-and-secondary-data.md)创建短语列表的教程系列，也有助于促进简单实体的实体检测。  
+    请勿添加世界上的每个城市，也不要添加区域中的每个城市。 LUIS 需要能够从列表中推断出城市的概况。 确保“这些值可互换”处于选中状态。 此设置意味着列表上的字被视为同义词。 
 
 3. 定型并发布应用。
 
-## <a name="query-endpoint-for-pattern"></a>适用于模式的查询终结点
-1. 在“发布”页的底部，选择“终结点”链接。 此操作会打开另一个浏览器窗口，其地址栏中包含终结点 URL。 
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move wayne berry from miami to mount vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
@@ -380,11 +370,24 @@ ms.locfileid: "44161928"
 
 意向得分现在会高出许多，并且角色名称为实体响应的一部分。
 
+## <a name="hierarchical-entities-versus-roles"></a>分层实体与角色
+
+在[分层教程](luis-quickstart-intent-and-hier-entity.md)中，“MoveEmployee”意向检测到将现有员工从一栋建筑物或办公楼搬到另一栋的时机。 示例话语具有源位置和目标位置，但未使用角色。 相反，源位置和目标位置是分层实体的子级。 
+
+在本教程中，人力资源应用会检测有关将新员工从一个城市调到另一个城市的话语。 这两种类型的话语相同，但通过不同的 LUIS 功能来解析。
+
+|教程|示例陈述|源位置和目标位置|
+|--|--|--|
+|[分层（无角色）](luis-quickstart-intent-and-hier-entity.md)|将 Jill Jones 从“a-2349”调到“b-1298”|a-2349、b-1298|
+|本教程（含角色）|将 Billy Patterson 从“Yuma”调到“Denver”。|Yuma、Denver|
+
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+本教程已添加了包含角色的实体以及带有示例话语的意向。 使用该实体的第一个终结点预测正确预测了意向，但可信度分数较低。 仅检测到了两个实体中的一个。 接下来，本教程添加了一个模式，该模式使用了实体角色和短语列表来改进话语中的城市名称的值。 第二个终结点预测返回了较高的可信度分数，并且找到了全部两个实体角色。 
 
 > [!div class="nextstepaction"]
 > [了解 LUIS 应用的最佳做法](luis-concept-best-practices.md)

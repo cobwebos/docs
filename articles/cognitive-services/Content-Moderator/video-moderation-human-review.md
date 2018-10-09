@@ -1,26 +1,27 @@
 ---
-title: Azure 内容审查器 - 视频审查 | Microsoft Docs
+title: 通过人工评审审查视频 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 使用计算机辅助视频审查和人工审阅工具来审查是否有不当内容
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: fb26c9af55381c80a3f520b1a0068d8f72c91061
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35365444"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222074"
 ---
-# <a name="video-moderation"></a>视频审查
+# <a name="video-moderation-with-human-review"></a>通过人工评审审查视频
 
 使用内容审查器的计算机辅助[视频审查](video-moderation-api.md)和[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，审查视频和脚本是否有成人（明示）和挑逗性（暗示）内容，让业务取得最佳业绩。
 
-## <a name="video-trained-classifier"></a>视频定型分类器
+## <a name="video-trained-classifier-preview"></a>视频定型分类器（预览）
 
 计算机辅助视频分类是通过图像定型模型或视频定型模型实现。 与图像定型视频分类器不同，Microsoft 的成人和挑逗性视频分类器是通过视频进行定型。 这种方法提高了匹配质量。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842249"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036984"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -69,7 +69,7 @@ Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](#arm)时�
 
 SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的。 它们是可能会耗尽的有限资源。 因此了解它们的[使用](#pat)方式很重要。 请查看[管理 SNAT 耗尽](#snatexhaust)，了解如何根据需要进行设计和缓解。
 
-如果[多个（公共）IP 地址与一个负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是[出站流的候选项，并且会选择其中的一个](#multivipsnat)。  
+如果[多个公共 IP 地址与一个负载均衡器基本版相关联](load-balancer-multivip-overview.md)，则所有这些公共 IP 地址都是[出站流的候选项](#multivipsnat)，并且会随机选择其中一个。  
 
 若要监视负载均衡器基本版的出站连接运行状况，可以使用[用于负载均衡器的 Log Analytics](load-balancer-monitor-log.md) 和用于监视 SNAT 端口耗尽消息的[警报事件日志](load-balancer-monitor-log.md#alert-event-log)。
 

@@ -1,26 +1,27 @@
 ---
-title: Azure 内容审查器 - 视频审查 | Microsoft Docs
+title: 视频审查 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 使用视频审查扫描可能的成人和不雅内容。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: sajagtap
-ms.openlocfilehash: ef58f5990d4a0a19ab2b8c61b42ab2a0754dc6fa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b6240ef0883e1a523c50c9b641065deb2669d53
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366633"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226529"
 ---
 # <a name="video-moderation"></a>视频审查
 
 现在，联机查看器可跨热门和区域的社交媒体网站生成数十亿个视频视图，并且在不断增加。 通过应用基于机器学习的服务来预测可能的成人和不雅内容，可降低审查工作的成本。
 
-## <a name="sign-up-for-the-content-moderator-media-processor-public-preview"></a>注册内容审查器媒体处理器（公共预览版）
+## <a name="sign-up-for-the-content-moderator-media-processor-preview"></a>注册内容审查器媒体处理器（预览版）
 
 ### <a name="create-a-free-azure-account"></a>创建免费 Azure 帐户
 
@@ -54,7 +55,7 @@ ms.locfileid: "35366633"
 
    在示例代码中，将项目命名为“VideoModeration”。
 
-1. 选择此项目作为解决方案的单个启动项目。
+1. 将此项目选为解决方案的单一启动项目。
 
 ### <a name="install-required-packages"></a>安装所需程序包
 
@@ -79,7 +80,7 @@ ms.locfileid: "35366633"
     using System.Collections.Generic;
 
 
-### <a name="initialize-application-specific-settings"></a>初始化特定于应用程序的设置
+### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
 向 Program.cs 中的 Program 类添加以下静态字段。
 
@@ -368,8 +369,8 @@ main 方法会依次创建 Azure 媒体上下文和 Azure 存储上下文，以�
 
 > - `adultScore` 表示可能存在某些情况下可能被视为色情或成人性质的内容以及预测分数。
 > - `racyScore` 表示可能存在某些情况下可能被视为性暗示或过于成熟的内容以及预测分数。
-> - `adultScore` 和 `racyScore` 介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议对你自己的内容进行测试，以确定每个类别是否满足你的需求。
-> - `reviewRecommended` 为 true 或 false，具体情况取决于内部分数阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
+> - `adultScore` 和 `racyScore` 介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
+> - `reviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 >
 
     {

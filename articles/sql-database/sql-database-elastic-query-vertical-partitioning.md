@@ -2,19 +2,22 @@
 title: 在具有不同架构的云数据库中进行查询 | Microsoft 文档
 description: 如何在垂直分区上设置跨数据库查询
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: 6b4dd9017c336c2034bac81ba92d219b511a38a4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 3d94a52aaafca91d45d7f1a6406d3f998fbffe9f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645749"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161754"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]
@@ -45,7 +48,7 @@ ms.locfileid: "34645749"
     [;]
 
 > [!NOTE]
-> 确保 `<username>` 不包含任何“@servername”后缀。 
+> 确保 `<username>` 不包含任何“\@servername”后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源

@@ -1,30 +1,30 @@
 ---
-title: 视觉搜索 SDK Python 快速入门 | Microsoft Docs
-description: 设置视觉搜索 SDK Python 控制台应用程序。
+title: 快速入门：必应视觉搜索 SDK、Python
 titleSuffix: Azure Cognitive Services
+description: 设置视觉搜索 SDK Python 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: f7a1f275f9059abdceaef577fb5ca722c9951366
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939384"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222635"
 ---
-# <a name="visual-search-sdk-python-quickstart"></a>视觉搜索 SDK Python 快速入门
+# <a name="quickstart-bing-visual-search-sdk-python"></a>快速入门：必应视觉搜索 SDK Python
 
 必应视觉搜索 SDK 将 REST API 功能用于 Web 请求和分析结果。
 [Python 必应视觉搜索 SDK 示例源代码](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py)位于 GitHub 上。
 
 下面的标题下记录了代码方案：
 * [视觉搜索客户端](#client)
-* [完成控制台应用程序](#complete-console)
+* [完整的控制台应用程序](#complete-console)
 * [在发布请求中发送图像二进制文件和 cropArea](#binary-crop)
 * [KnowledgeRequest 参数](#knowledge-req)
 * [标记、操作和 actionType](#tags-actions)

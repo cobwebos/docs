@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952400"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452288"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>选择并使用用于定型模型的计算目标
 
@@ -23,7 +23,7 @@ ms.locfileid: "46952400"
 
 计算目标是一种资源，用于运行定型脚本，或托管已部署为 Web 服务的模型。 可使用 Azure 机器学习 SDK 或 CLI 创建和管理计算目标。 若有其他进程（例如，Azure 门户或 Azure CLI）创建的计算目标，使用方法为将这些计算目标附加到 Azure 机器学习服务工作区。
 
-可以先从计算机上的本地定型运行任务入手，再纵向和横向扩展到其他环境，如使用 GPU 的远程 Data Science Virtual Machine 或 Azure Batch AI。 
+可以先从计算机上的本地运行任务入手，再纵向和横向扩展到其他环境，如使用 GPU 的远程 Data Science Virtual Machine 或 Azure Batch AI。 
 
 ## <a name="supported-compute-targets"></a>受支持的计算目标
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+有关在用户管理环境中演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb)。
   
 ### <a name="system-managed-environment"></a>系统管理的环境
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+有关在系统管理环境中演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb)。
+
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
 本地计算机可能没有定型模型所需的计算资源或 GPU 资源。 在这种情况下，可添加其他计算目标（如 Data Science Virtual Machine (DSVM)），纵向或横向扩展定型流程。
@@ -138,7 +143,7 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
             dsvm_compute = DsvmCompute.create(ws, name = compute_target_name, provisioning_configuration = dsvm_config)
             dsvm_compute.wait_for_completion(show_output = True)
         ```
-    * 若要附加现有虚拟机作为计算目标，必须提供虚拟机的完全限定的域名、登录名和密码。  在下面的示例中，将 ```<fqdn>``` 替换为 VM 的公共完全限定的域名或公共 IP 地址。 将 ```<username>``` 和 ```<password>``` 分别替换为 VM 的 SSH 用户名和密码：
+    * 若要附加现有虚拟机作为计算目标，必须提供虚拟机的完全限定域名、登录名和密码。  在下面的示例中，将 ```<fqdn>``` 替换为 VM 的公共完全限定的域名或公共 IP 地址。 将 ```<username>``` 和 ```<password>``` 分别替换为 VM 的 SSH 用户名和密码：
 
         ```python
         from azureml.core.compute import RemoteCompute
@@ -190,6 +195,8 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
     dsvm_compute.delete()
     ```
 
+有关在 Data Science Virtual Machine 上演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb)。
+
 ## <a id="batch"></a>Azure Batch AI
 
 如果模型定型耗时很长，可使用 Azure Batch AI 跨云中的计算资源群集分配定型。 还可以将 Batch AI 配置为启用 GPU 资源。
@@ -232,14 +239,14 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-必须提供 Azure 资源 ID，才能附加现有 Batch AI 群集作为计算目标。若要从 Azure 门户获取资源 ID，必须执行以下操作：
+必须提供 Azure 资源 ID，才能附加现有 Batch AI 群集作为计算目标。 若要从 Azure 门户获取资源 ID，请使用以下步骤：
 1. 在“所有服务”下搜索“`Batch AI`”服务
 1. 单击群集所属的工作区名称
 1. 选择群集
 1. 单击“属性”
-1. 复制“ID”
+1. 复制 **ID**
 
-下面的示例使用 SDK 将群集附加到工作区。 在下面的示例中，将 `<name>` 替换为任何计算名称。 此名称不必与群集名称一致。 将 `<resource-id>` 替换为上面详述的 Azure 资源 ID：
+下面的示例使用 SDK 将群集附加到工作区。 在下面的示例中，将 `<name>` 替换为任何计算名称。 此名称不必与群集名称匹配。 将 `<resource-id>` 替换为上面详述的 Azure 资源 ID：
 
 ```python
 from azureml.core.compute import BatchAiCompute
@@ -253,7 +260,9 @@ BatchAiCompute.attach(workspace=ws,
 - 检查群集状态。 可通过运行 `az batchai cluster list` 查看正在运行的节点数。
 - 检查作业状态。 可通过运行 `az batchai job list` 查看正在运行的作业数。
 
-创建 Batch AI 群集大约需要 5 分钟
+创建 Batch AI 群集大约需要 5 分钟。
+
+有关在 Batch AI 群集中演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb)。
 
 ## <a name='aci'></a>Azure 容器实例 (ACI)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 创建 ACI 计算目标可能需要几秒钟到几分钟。
+
+有关在 Azure 容器实例中演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb)。
 
 ## <a id="hdinsight"></a>附加 HDInsight 群集 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+有关使用 Spark on HDInsight 演示训练的 Jupyter Notebook，请参阅 [https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb)。
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>使用 Azure 门户查看和设置计算目标
 
 可以在 Azure 门户中查看与工作区关联的计算目标。 若要转到列表，请按以下步骤操作：
@@ -403,6 +416,7 @@ run.wait_for_completion(show_output = True)
 下面的笔记本展示了本文中的概念：
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

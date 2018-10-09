@@ -2,19 +2,22 @@
 title: Azure SQL 数据库中的临时表入门 | Microsoft 文档
 description: 了解如何开始使用 Azure SQL 数据库中的临时表。
 services: sql-database
-author: bonova
-ms.date: 03/21/2018
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 140d2c9f6c334cec7d2761d05d7b20eb7106b9fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 03/21/2018
+ms.openlocfilehash: d18630f9b4cea28bd19b2ac24e7b8c3d1822e17c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649034"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166412"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
 时态表是 Azure SQL 数据库中新的可编程功能，可让你跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
@@ -41,7 +44,7 @@ ms.locfileid: "34649034"
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
-在 SSDT 中将新项添加到数据库项目时，请选择“临时表(版本由系统控制)”模板。 此时会打开表设计器，让你轻松指定表布局：
+在 SSDT 中将新项添加到数据库项目时，请选择“时态表(版本由系统控制)”模板。 此时会打开表设计器，让你轻松指定表布局：
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 

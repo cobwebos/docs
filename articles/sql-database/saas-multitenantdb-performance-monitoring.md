@@ -1,21 +1,23 @@
 ---
 title: 在多租户 SaaS 应用中监视分片多租户 Azure SQL 数据库的性能 | Microsoft 文档
 description: 在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
-keywords: sql 数据库教程
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 873660f362d2ad0002f512f911d4149519092787
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753434"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055939"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -44,9 +46,9 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 ### <a name="performance-management-strategies"></a>性能管理策略
 
 * 若不希望手动监视性能，那么最有效的方式就是设置警报，在数据库的性能不在正常范围内时触发该警报。
-* 可以上下缩放 DTU 级别，以应对数据库性能级别的短期波动。 如果该波动定期发生或者发生时间可以预见，则可让数据库按计划自动缩放。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
+* 可以上下缩放 DTU 级别，以应对数据库计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，则可让数据库按计划自动缩放。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
 * 若要应对较长期的波动，或者应对租户中的变化，可将单个租户移至其他数据库。
-* 若要应对单个租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的性能级别。 一旦负载降低，则可让该租户返回多租户数据库中。 如果预先知道这种情况，则可提前移动租户，以确保数据库的资源始终可满足需求，同时避免对多租户数据库中的其他租户造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
+* 若要应对单个租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的计算大小。 一旦负载降低，则可让该租户返回多租户数据库中。 如果预先知道这种情况，则可提前移动租户，以确保数据库的资源始终可满足需求，同时避免对多租户数据库中的其他租户造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 

@@ -1,21 +1,21 @@
 ---
-title: 如何发布知识库 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
-description: 如何发布知识库
+title: 发布知识库 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 发布知识库是将知识库作为问答终结点提供的最后一步。 发布知识库时，知识库的 QnA 内容将从测试索引转移到 Azure 搜索中的生产索引。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: e9dbeacfb0df98c6b8f084c263690c05fe966cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: eceb0554d35935f1aee77c4c054cb7e65b327845
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366252"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033407"
 ---
 # <a name="publish-a-knowledge-base"></a>发布知识库
 

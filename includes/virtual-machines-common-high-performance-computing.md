@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5a6c5498b4607719199363b5f6d93d3b42ccec0d
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 77da95ce0d37e8d0b35125f0cc8dc33376a52259
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967750"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47401648"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -39,8 +39,7 @@ ms.locfileid: "37967750"
     * 使用 [Azure Batch](#azure-batch) 与相关的 [Azure 服务](#related-azure-services)开发自定义的大型计算解决方案和工作流。
     * 运行 [Altair](http://www.altair.com/)、[Rescale](https://www.rescale.com/azure/) 和 [Cycle Computing](https://cyclecomputing.com/)（现已[与 Microsoft 合并](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)）等供应商提供的支持 Azure 的工程与仿真解决方案。
     * 使用 [Cray supercomputer](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) 作为 Azure 中托管的服务。
-* 
-  **市场解决方案**
+* **市场解决方案**
     * 使用 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/)中提供的大量 [HPC 应用程序](#hpc-applications)和[解决方案](#marketplace-solutions)。 
     
 
@@ -163,7 +162,7 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 ### <a name="data-and-analytics"></a>数据和分析
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
-* [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
+* [Data Lake Storage Gen1](../articles/data-lake-store/data-lake-store-overview.md)
 * [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL 数据库](../articles/sql-database/sql-database-technical-overview.md)
 

@@ -1,56 +1,69 @@
 ---
-title: 如何创建知识库 - QnA Maker - Azure 认知服务 | Microsoft Docs
-description: 如何创建知识库
+title: 创建知识库 - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 向机器人中添加聊天内容可使其更健谈而有趣。 使用 QnA Maker，可以轻松将预填充的一组最常用的聊天内容添加到知识库中。 这可以用作你的机器人的聊天内容的起点，并节省从头开始编写它们的时间和成本。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 93b64948ecc52feeb0f862f2b76ea898dce2333a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 274c2289c75f44c5a1c8dd3799612a23f46a6d67
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366912"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037688"
 ---
 # <a name="create-a-knowledge-base"></a>创建知识库
 
-使用 QnA Maker 可以轻松地载入现有数据源来创建知识库。 可以从常见问题解答页面、产品手册或结构化文档新建 QnA Maker 知识库，或者通过编辑方式添加它们。
+使用 QnA Maker，在创建知识库时可以轻松添加现有数据源。 可以基于以下文档类型创建新的 QnA Maker 知识库：
+
+<!-- added for scanability -->
+* 常见问题解答页面
+* 产品手册
+* 结构化文档
 
 ## <a name="steps"></a>步骤
 
-1. 要开始操作，请使用 Azure 凭据登录至 [QnA Maker 门户](https://qnamaker.ai)并单击“新建服务”。
+1. 使用 Azure 凭据登录到 [QnA Maker 门户](https://qnamaker.ai)，选择“新建服务”。
 
     ![创建知识库 ](../media/qnamaker-how-to-create-kb/create-new-service.png)
 
-2. 如果尚未创建 QnA Maker 服务，请选择“创建 QnA Maker 服务”。 否则，从步骤 2 中的下拉列表选择一个 QnA Maker 服务。 选择要托管该知识库的 QnA Maker 服务。
+2. 如果尚未创建 QnA Maker 服务，请选择“创建 QnA Maker 服务”。 
+
+3. 在 QnA Maker 门户中，从**步骤 2** 中的列表中选择你的 Azure 租户、Azure 订阅名称以及与 QnA Maker 服务关联的 Azure 资源名称。 选择将托管知识库的 Azure QnA Maker 服务。
 
     ![设置 QnA 服务](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
-3. 若创建知识库，请输入以下信息。
+4. 输入你的知识库的名称和新知识库的数据源。
 
     ![设置数据源](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - 为服务提供一个“名称”。 支持重复的名称，也可以使用特殊字符。
-    - 粘贴要从中提取内容的 URL。 若要详细了解支持的源类型，请查看[此处](../Concepts/data-sources-supported.md)。
-    - 也可以上传从中提取数据的文件。 若要了解能添加的文档数量，请参阅[定价信息](https://aka.ms/qnamaker-pricing
-)。
-    - 若想手动添加 QnA，可以跳过链接文件。
+    - 为服务提供一个“名称”。 支持重复的名称，也支持特殊字符。
+    - 添加你希望提取的数据的 URL。 若要详细了解支持的源类型，请查看[此处](../Concepts/data-sources-supported.md)。
+    - 上传你希望提取的数据的文件。 若要了解能添加的文档数量，请参阅[定价信息](https://aka.ms/qnamaker-pricing)。
+    - 如果希望手动添加 QnA，则可以跳过上图中显示的**步骤 4**。
 
-4. 选择**创建**。
+5. 向知识库中添加**聊天内容**。 通过选择 3 个预定义的性格之一，选择为你的机器人添加聊天内容支持。 
+
+    <!-- TBD: add back in when chit chat how-to is merged
+    ![Add chit-chat to KB ](../media/qnamaker-how-to-chitchat/create-kb-chit-chat.png)
+    -->
+
+6. 选择“创建知识库”。
 
     ![创建知识库](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-5. 提取数据需要几分钟时间。
+7. 提取数据需要几分钟时间。
 
     ![提取](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-6. 如果成功创建了数据库，将重定向至“知识库”页面。
+8. 成功创建知识库后，将重定向至“知识库”页面。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [导入知识库](../Tutorials/migrate-knowledge-base.md)
+> [添加个人聊天内容](./chit-chat-knowledge-base.md)

@@ -1,20 +1,21 @@
 ---
-title: Azure 内容审查器 - 审查作业和人机回环审阅 | Microsoft Docs
+title: 审查作业和人在回路评审 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 为了获得最佳结果，请在计算机辅助审查中引入人工监督。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 35b3cdaa410712c3fd08d3df4ebe4c83e3955d50
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365523"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223247"
 ---
 # <a name="moderation-jobs-and-reviews"></a>审查作业和审阅
 

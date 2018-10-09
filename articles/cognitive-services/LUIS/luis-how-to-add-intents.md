@@ -1,25 +1,26 @@
 ---
-title: 在 LUIS 应用程序中添加意向 | Microsoft Docs
-description: 使用语言理解 (LUIS) 添加意向，帮助了解用户请求并做出合理回应。
+title: 在 LUIS 应用程序中添加意向
+titleSuffix: Azure Cognitive Services
+description: 向 LUIS 应用添加意向，识别具有相同意向的问题或命令组。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225880"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036076"
 ---
 # <a name="manage-intents"></a>管理意向 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
 
-单击 LUIS 左侧面板中的“意向”可打开“意向”页，可在其中添加和管理意向。 
+意向通过顶部工具栏中的“生成”部分进行管理。 可以从左侧面板中打开“意向”页添加和管理意向。 
 
 以下过程演示如何在 TravelAgent 应用中添加“Bookflight”意向。
 
@@ -28,7 +29,6 @@ ms.locfileid: "39225880"
 1. 通过单击“我的应用”页中的应用名称来打开应用（如 TravelAgent），然后单击左侧面板中的“意向”。 
 2. 在“意向”页上，单击“创建新意向”。
 
-    ![意向列表](./media/luis-how-to-add-intents/IntentsList.png)
 3. 在“创建新意向”对话框中，键入意向名称“BookFlight”，然后单击“完成”。
 
     ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ ms.locfileid: "39225880"
 2. 在“删除表述?”弹出对话框中，选择“完成”。
 
 ## <a name="search-in-utterances-on-intent-page"></a>在意向页搜索表述
-在意向中，可以搜索包含文本（字词或短语）的表述。 例如，你可能会发现涉及某个特定字词的错误，并且希望找出包含该特定字词的所有示例。 
+可以在意向的话语列表中搜索包含文本（字词或短语）的话语。 例如，你可能会发现涉及某个特定字词的错误，并且希望找出包含该特定字词的所有示例。 
 
 1. 选择工具栏中的放大镜图标。
 

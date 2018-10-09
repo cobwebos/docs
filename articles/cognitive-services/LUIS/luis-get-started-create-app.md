@@ -1,20 +1,21 @@
 ---
-title: 在 10 分钟内创建第一个语言理解 (LUIS) 应用 - 认知服务 LUIS | Microsoft Docs
-description: 在本快速入门中，请使用预生成的域 `HomeAutomation` 来创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
+title: 10 分钟创建第一个 LUIS 应用
+titleSuffix: Azure Cognitive Services
+description: 使用预生成的域 `HomeAutomation` 创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 457f23936dec0cf85e9aebbf3e54bba37c2f3ca3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "43768781"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037467"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预生成的家庭自动化应用
 
@@ -54,11 +55,7 @@ ms.locfileid: "43768781"
 
 ## <a name="intents-and-entities"></a>意向和实体
 
-在左侧导航窗格中选择“意向”，以便查看 HomeAutomation 域意向。 
-
-[![](media/luis-quickstart-new-app/home-automation-intents.png "“意向”列表的屏幕截图，突出显示了表中的意向名称")](media/luis-quickstart-new-app/home-automation-intents.png)
-
-每个意向都有示例话语。
+在左侧导航窗格中选择“意向”，以便查看 HomeAutomation 域意向。 每个意向都有示例话语。
 
 > [!NOTE]
 > “无”是由所有 LUIS 应用提供的意向。 可以使用它来处理与应用提供的功能无法对应的话语。 
@@ -67,11 +64,9 @@ ms.locfileid: "43768781"
 
 [![](media/luis-quickstart-new-app/home-automation-turnon.png "HomeAutomation.TurnOff 意向的屏幕截图")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
-## <a name="train-your-app"></a>训练用户
+## <a name="train-the-luis-app"></a>训练 LUIS 应用
 
-选择顶部导航栏中的“训练”。
-
-[![](media/luis-quickstart-new-app/trained.png "HomeAutomation.TurnOff 意向的屏幕截图，其中包含绿色的成功通知")](media/luis-quickstart-new-app/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>测试应用
 训练完应用以后，即可测试它。 选择顶部导航栏中的“测试”。 在“交互式测试”窗格中键入“关灯”之类的测试话语，然后按 Enter。 
@@ -89,29 +84,23 @@ Turn off the lights
 
 再次选择“测试”，折叠测试窗格。 
 
-## <a name="publish-your-app"></a>发布应用
-在顶部导航栏中，选择“发布”。 
+<a name="publish-your-app"></a>
 
-[![](media/luis-quickstart-new-app/publish.png "应用的屏幕截图，其中突出显示了发布按钮")](media/luis-quickstart-new-app/publish.png)
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
 
-选择“生产”槽和“发布”按钮。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-顶部的绿色通知栏指示应用已成功发布。
+## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
 
-[![](media/luis-quickstart-new-app/published.png "已成功发布的应用的屏幕截图")](media/luis-quickstart-new-app/published.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-成功发布以后，即可使用显示在“发布应用”页中的终结点 URL。
+2. 将光标定位到地址中 URL 的末尾并输入 `turn off the living room light`，然后按 Enter。 浏览器会显示 HTTP 终结点的 JSON 响应。
 
-[![](media/luis-quickstart-new-app/endpoint.png "发布页的屏幕截图，其中已突出显示终结点 URL")](media/luis-quickstart-new-app/endpoint.png)
-
-## <a name="use-your-app"></a>使用应用
-可以使用生成的 URL 在浏览器中测试已发布的终结点。 在浏览器中打开此 URL，将 URL 参数“&q”设置为测试查询。 例如，将 `turn off the living room light` 添加到 URL 末尾，然后按 Enter。 浏览器会显示 HTTP 终结点的 JSON 响应。
-
-
-[![](media/luis-quickstart-new-app/turn-off-living-room.png "浏览器的屏幕截图，其中的 JSON 结果检测到意向 TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
-
+    [![](media/luis-quickstart-new-app/turn-off-living-room.png "浏览器的屏幕截图，其中的 JSON 结果检测到意向 TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    
 ## <a name="clean-up-resources"></a>清理资源
-不再需要 LUIS 应用时，请将其删除。 为此，请在应用列表中选择应用名称右侧的省略号 (...) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

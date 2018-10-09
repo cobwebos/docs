@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 70b2c3252380440a491e6d21a8b8a96a2390525b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 636b0d9ef42ad1e87d891329be7b7c11c4efcb4a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986262"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220136"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -28,7 +28,7 @@ Azure Cosmos DB Cassandra API 与 CQL 版本 v4 兼容。 下面列出了支持�
 
 ## <a name="cassandra-driver"></a>Cassandra 驱动程序
 
-Azure Cosmos DB Cassandra API 支持以下版本的 Cassandra datastax 驱动程序：
+Azure Cosmos DB Cassandra API 支持以下版本的 Cassandra 驱动程序：
 
 * [Java 3.5+](https://github.com/datastax/java-driver)  
 * [C# 3.5+](https://github.com/datastax/csharp-driver)  

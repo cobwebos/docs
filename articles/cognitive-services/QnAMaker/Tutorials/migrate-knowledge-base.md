@@ -1,21 +1,21 @@
 ---
-title: 如何导入知识库 - Microsoft 认知服务 | Microsoft Docs
-titleSuffix: Azure
+title: 迁移预览知识库 - Qna Maker
+titleSuffix: Azure Cognitive Services
 description: 如何导入知识库
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: ce8f98f9bdb37d5f326e942fe5b5e815e5272c56
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031622"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
 QnA Maker 于 2018 年 5 月 7 日的 \\\build\ 大会上推出了正式版。 QnA Maker 正式版在 Azure 上构建了新的体系结构。 使用 QnA Maker 免费预览版创建的知识库需要迁移到 QnA Maker 正式版。 QnA Maker 预览版将于 2018 年 11 月弃用。 有关 QnA Maker 正式版中的更改的详细信息，请参阅 QnA Maker 正式版公告[博客文章](https://aka.ms/qnamakerga-blog)。
@@ -24,7 +24,7 @@ QnA Maker 现在具有[定价模型](https://azure.microsoft.com/en-us/pricing/d
 
 先决条件
 > [!div class="checklist"]
-> * 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 > * 设置新的 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker-preview-portal"></a>从 QnA Maker 预览版门户迁移知识库

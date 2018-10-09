@@ -2,19 +2,22 @@
 title: 如何使用批处理来改善 Azure SQL 数据库应用程序的性能
 description: 本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL Server 数据库，但本文将重点放在 Azure 上。
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: c0e1ff3cf018e185ae2dfb329e2aa56766cc247c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649775"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160802"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 对 Azure SQL 数据库执行批处理操作可以大幅改善应用程序的性能和缩放性。 为了帮助你了解优点，本文的第一部分包含一些示例测试结果用于比较对 SQL 数据库发出的顺序请求和分批请求。 本文的余下部分介绍了帮助你在 Azure 应用程序中成功使用批处理的方法、方案和注意事项。
@@ -104,9 +107,7 @@ ms.locfileid: "34649775"
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
-> 
-> 
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 
 根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Microsoft Azure 数据中心内时，性能差异也更明显。 从 SQL 数据库数据中心外部使用 Microsoft Azure 增加的延迟时间将超过使用事务带来的性能提高。
 
@@ -186,7 +187,7 @@ ms.locfileid: "34649775"
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 > 
 > 
 
@@ -223,7 +224,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 > 
 > 
 
@@ -264,7 +265,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
 | 100 |33 |51 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 > 
 > 
 
@@ -306,7 +307,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
 | 50 |20 |630 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 > 
 > 
 
@@ -327,7 +328,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> 结果并非基准。 请参阅[有关本主题中计时结果的注意事项](#note-about-timing-results-in-this-topic)。
+> 结果并非基准。 请参阅[有关本文中计时结果的注意事项](#note-about-timing-results-in-this-article)。
 > 
 > 
 

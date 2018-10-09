@@ -32,13 +32,13 @@ Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure �
 
 可以使用操作系统上的标准工具创建一个 SSH RSA 公钥和私钥对，以便针对群集的 Linux 虚拟机进行身份验证。 有关步骤，请参阅 [OS X 和 Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) 或 [Windows](../articles/virtual-machines/linux/ssh-from-windows.md) 指南。 
 
-如果使用 [Azure CLI 2.0 命令](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)部署容器服务群集，则可为群集自动生成 SSH 密钥。
+如果使用 [Azure CLI 命令](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)部署容器服务群集，则可为群集自动生成 SSH 密钥。
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>如何为 Kubernetes 群集创建服务主体？
 
 若要在 Azure 容器服务中创建 Kubernetes 群集，还需要 Azure Active Directory 服务主体 ID 和密码。 有关详细信息，请参阅[关于 Kubernetes 群集的服务主体](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md)。
 
-如果使用 [Azure CLI 2.0命令](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)部署 Kubernetes 群集，则可为群集自动生成服务主体凭据。
+如果使用 [Azure CLI 命令](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)部署 Kubernetes 群集，则可为群集自动生成服务主体凭据。
 
 ### <a name="how-large-a-cluster-can-i-create"></a>可以创建多大的群集？
 可以创建包含 1、3 或 5 个主节点的群集。 最多可以选择 100 个代理节点。
@@ -105,4 +105,4 @@ Windows 上存在一些已知的 DNS 问题，其修补程序仍在被积极地�
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) Azure 容器服务。
-* 使用[门户](../articles/container-service/dcos-swarm/container-service-deployment.md)或 [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) 部署容器服务群集。
+* 使用[门户](../articles/container-service/dcos-swarm/container-service-deployment.md)或 [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) 部署容器服务群集。

@@ -11,16 +11,18 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7daa3bdf9fb51fee6b0e190625f07e0d14c3d1f4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8c5b20bf837491e8b15f7bc8baa018ead584616b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995136"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159170"
 ---
 # <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>在机器学习中导出或删除试验或模型管理数据
 
-[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+>[!Note]
+>这篇文章已弃用。 将会逐渐减少对此服务早期版本的支持。 [查看支持时间线](../service/overview-what-happened-to-workbench.md#timeline)。 阅读有关此主题的[最新文章](../service/how-to-export-delete-data.md)。
+
 
 在 Azure 机器学习中，你可以使用经过身份验证的 REST API 导出或删除与试验或模型管理相关的帐户数据。 本文介绍了相关实现方法。
 

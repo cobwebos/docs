@@ -1,20 +1,21 @@
 ---
-title: 了解 Azure 中 LUIS 应用中的实体类型 | Microsoft Docs
+title: LUIS 应用中的实体类型 - 语言理解
+titleSuffix: Azure Cognitive Services
 description: 在语言理解智能服务 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282273"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042442"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -45,10 +46,10 @@ ms.locfileid: "39282273"
 
 以下话语中，`fair` 一词为同形异义词。 该词虽拼写相同但含义不同：
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|话语|
+|--|
+|今年夏天西雅图地区会举办什么样的乡村集市？|
+|西雅图评审的当前评级公平吗？|
 
 如果希望事件实体查找所有事件数据，请标记第一个话语中的 `fair` 一词，而不是第二个话语。
 

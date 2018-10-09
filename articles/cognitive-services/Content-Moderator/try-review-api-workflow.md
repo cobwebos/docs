@@ -1,20 +1,21 @@
 ---
-title: Azure 内容审查器 - API 控制台中的内容审查工作流 | Microsoft Docs
+title: API 控制台中的内容审查工作流 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 了解如何使用 API 控制台中的内容审查工作流。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: sajagtap
-ms.openlocfilehash: 700b2bea5e902141659266a94d61ceb810c1b802
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365525"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223844"
 ---
 # <a name="workflows-from-the-api-console"></a>API 控制台中的工作流
 
@@ -80,8 +81,8 @@ ms.locfileid: "35365525"
 输入“team”、“workflowname”和“Ocp-Apim-Subscription-Key”（订阅密钥）的值：
 
 - **team**：设置[“审阅”工具帐户](https://contentmoderator.cognitive.microsoft.com/)时创建的团队 ID。 
-- **workflowname**：工作流名称。 使用 `default`。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡上。有关详细信息，请参阅[概述](overview.md)。
+- **workflowname**：工作流的名称。 使用 `default`。
+- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡。有关详细信息，请参阅[概述](overview.md)。
 
   ![“获取”查询参数和请求头](images/workflow-get-default.PNG)
 

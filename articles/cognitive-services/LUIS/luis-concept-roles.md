@@ -1,20 +1,21 @@
 ---
-title: 了解如何在基于模式的实体中使用角色 - Azure | Microsoft Docs
-description: 了解如何在基于模式的实体中使用角色，为上下文的实体子类型提供名称。
+title: 了解如何在基于模式的实体中使用角色
+titleSuffix: Azure Cognitive Services
+description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在购买从纽约到伦敦的车票的话语中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035192"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>“模式”中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。
@@ -31,9 +32,10 @@ ms.locfileid: "39222697"
 ## <a name="how-are-roles-used-in-patterns"></a>如何在模式中使用角色？
 在模式的模板表述中，角色在表述内使用： 
 
-```
-buy a ticket from {Location:origin} to {Location:destination}
-```
+|模式与实体角色|
+|--|
+|`buy a ticket from {Location:origin} to {Location:destination}`|
+
 
 ## <a name="role-syntax-in-patterns"></a>模式中的角色语法
 实体和角色在括号 `{}` 内。 实体和角色由冒号分隔。 

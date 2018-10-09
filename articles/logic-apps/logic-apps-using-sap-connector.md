@@ -1,40 +1,44 @@
 ---
 title: 连接到 SAP 系统 - Azure 逻辑应用 | Microsoft Docs
 description: 如何使用 Azure 逻辑应用将工作流自动化，以访问和管理 SAP 资源
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/31/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, divswa, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: divswa, LADocs
+ms.topic: article
+ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 3837896911b92361e0a6d0a7166a1b17651d6fe3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056499"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
-本文介绍如何使用 SAP 应用程序服务器和 SAP 消息服务器连接器，从逻辑应用内部访问 SAP 资源。 这样，便可以通过创建逻辑应用来自动执行任务、过程和工作流，以管理 SAP 数据和资源。
+本文介绍如何使用 SAP ERP Central Component (ECC) 连接器在逻辑应用内部访问本地 SAP 资源。 SAP ECC 连接器支持通过中间文档 (IDoc)、业务应用程序编程接口 (BAPI) 或远程函数调用 (RFC) 来与基于 SAP Netweaver 的系统相互进行消息或数据集成。
 
-本示例使用可通过 HTTP 请求触发的逻辑应用。 该逻辑应用将一个中间文档 (IDoc) 发送到 SAP 服务器，并向调用逻辑应用的请求方返回响应。
-当前的 SAP 连接器包含操作，但不包含触发器，因此，本示例使用 [HTTP 请求触发器](../connectors/connectors-native-reqres.md)作为逻辑应用工作流中的第一个步骤。 有关特定于 SAP 连接器的技术信息，请参阅以下参考文章： 
+SAP ECC 连接器使用 <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP .Net 连接器 (NCo) 库</a>，并提供以下操作：
 
-* <a href="https://docs.microsoft.com/connectors/sapapplicationserver/" target="blank">SAP 应用程序服务器连接器</a>
-* <a href="https://docs.microsoft.com/connectors/sapmessageserver/" target="blank">SAP 消息服务器连接器</a>
+- **发送到 SAP**：在 SAP 系统中通过 tRFC 发送 IDoc 或调用 BAPI 函数。
+- **从 SAP 接收**：通过 tRFC 从 SAP 系统接收 IDoc 或 BAPI 函数调用。
+- **生成架构**：为 IDoc、BAPI 或 RFC 生成 SAP 项目的架构。
 
-如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)与本地 SAP 系统集成。 例如，在“发送”方案中，如果将消息从逻辑应用发送到 SAP 系统，则数据网关将充当 RFC 客户端，将从逻辑应用收到的请求转发到 SAP。
+同理，在“接收”方案中，数据网关充当 RFC 服务器，从 SAP 接收请求并将其转发到逻辑应用。 
+
+本文介绍如何创建与 SAP 集成的示例逻辑应用，并阐述以前已介绍过的集成方案。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要遵循本文中的步骤，需准备好以下各项：
 
-* 要从中访问 SAP 系统的逻辑应用，以及用于启动逻辑应用工作流的触发器。 SAP 连接器目前仅提供操作。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+
+* 要从中访问 SAP 系统的逻辑应用，以及用于启动逻辑应用工作流的触发器。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP 应用程序服务器</a>或 <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP 消息服务器</a>
 
@@ -55,13 +59,17 @@ ms.locfileid: "37112854"
 
 <a name="add-trigger"></a>
 
-## <a name="add-http-request-trigger"></a>添加 HTTP 请求触发器
+## <a name="send-to-sap"></a>发送到 SAP
+
+本示例使用可通过 HTTP 请求触发的逻辑应用。 该逻辑应用将一个中间文档 (IDoc) 发送到 SAP 服务器，并向调用逻辑应用的请求方返回响应。 
+
+### <a name="add-http-request-trigger"></a>添加 HTTP 请求触发器
 
 在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行应用的工作流。
 
 本示例创建一个包含 Azure 中的终结点的逻辑应用，以便可将 *HTTP POST 请求*发送到逻辑应用。 当逻辑应用程序收到这些 HTTP 请求时，触发器将会触发，并运行工作流中的下一个步骤。
 
-1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
+1. 在 [Azure 门户](https://portal.azure.com)中创建一个空白的逻辑应用。此时会打开逻辑应用设计器。 
 
 2. 在搜索框中，输入“http 请求”作为筛选器。 在触发器列表中选择此触发器：“请求 - 当收到 HTTP 请求时”
 
@@ -76,7 +84,7 @@ ms.locfileid: "37112854"
 
 <a name="add-action"></a>
 
-## <a name="add-sap-action"></a>添加 SAP 操作
+### <a name="add-sap-action"></a>添加 SAP 操作
 
 在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 如果尚未将触发器添加到逻辑应用并想要遵循本示例，请[添加此部分所述的触发器](#add-trigger)。
 
@@ -84,42 +92,40 @@ ms.locfileid: "37112854"
 
    ![添加操作](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. 在搜索框中，输入“sap 服务器”作为筛选器。 在操作列表中选择 SAP 服务器的操作： 
+2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：“将消息发送到 SAP”
+  
+   ![选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   * **SAP 应用程序服务器 - 发送到 SAP**
-   * **SAP 消息服务器 - 发送到 SAP**
+   如果不执行搜索，可以选择“企业”选项卡，然后选择 SAP 操作。
 
-   本示例使用此操作：“SAP 应用程序服务器 - 发送到 SAP”
-
-   ![选择“SAP 应用程序服务器”或“SAP 消息服务器”](media/logic-apps-using-sap-connector/select-sap-action.png)
+   ![在“企业”选项卡中选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
 3. 如果系统提示输入连接详细信息，请立即创建 SAP 连接。 如果连接已存在，请继续下一步，以便可以设置 SAP 操作。 
 
    **创建本地 SAP 连接**
 
-   1. 对于“网关”，请选择“通过本地数据网关连接”，以显示本地连接属性。
+   1. 提供 SAP 服务器的连接信息。 
+   对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。
 
-   2. 提供 SAP 服务器的连接信息。 
-   对于“网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关，例如：
+      如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
 
-      **SAP 应用程序服务器**
+      ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png) 
 
-      ![创建 SAP 应用程序服务器连接](./media/logic-apps-using-sap-connector/create-SAP-app-server-connection.png)  
-
-      **SAP 消息服务器**
+      如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）： 
 
       ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
 
-   2. 完成后，选择“创建”。
-
+   2. 完成后，选择“创建”。 
+   
       逻辑应用会设置并测试连接，确保连接正常工作。
 
 4. 现在，请找到并选择 SAP 服务器中的某个操作。 
 
    1. 在“SAP 操作”框中，选择文件夹图标。 
-   在文件夹列表中，找到并选择要使用的操作。 
+   在文件列表中，找到并选择要使用的 SAP 消息。 
+   使用箭头可在列表中导航。
 
-      本示例选择了 IDoc 操作的 **IDOC** 类别。 
+      此示例选择了类型为“订单”的 IDoc。 
 
       ![找到并选择 IDoc 操作](./media/logic-apps-using-sap-connector/SAP-app-server-find-action.png)
 
@@ -127,10 +133,13 @@ ms.locfileid: "37112854"
 
       ![手动提供 IDoc 操作的路径](./media/logic-apps-using-sap-connector/SAP-app-server-manually-enter-action.png)
 
-      有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
+      > [!TIP]
+      > 通过表达式编辑器提供 SAP 操作的值。 这样，便可以对不同的消息类型使用相同的操作。
+
+      有关 IDoc 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
    2. 在“输入消息”框中单击，以显示动态内容列表。 
-   在该列表中的“当收到 HTTP 请求时”下面，选择“正文”字段。 
+   在该列表中的“收到 HTTP 请求时”下面，选择“正文”字段。 
 
       此步骤包含来自 HTTP 请求触发器的正文内容，并将该输出发送到 SAP 服务器。
 
@@ -140,11 +149,11 @@ ms.locfileid: "37112854"
 
       ![完成 SAP 操作](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-6. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 <a name="add-response"></a>
 
-## <a name="add-http-response-action"></a>添加 HTTP 响应操作
+### <a name="add-http-response-action"></a>添加 HTTP 响应操作
 
 现在，请将响应操作添加到逻辑应用的工作流，并包含来自 SAP 操作的输出。 这样，逻辑应用便可将来自 SAP 服务器的结果返回到原始请求方。 
 
@@ -158,7 +167,7 @@ ms.locfileid: "37112854"
 
 4. 保存逻辑应用。 
 
-## <a name="test-your-logic-app"></a>测试逻辑应用
+### <a name="test-your-logic-app"></a>测试逻辑应用
 
 1. 如果尚未启用逻辑应用，请在逻辑应用菜单中选择“概述”。 在工具栏上选择“启用”。 
 
@@ -170,7 +179,7 @@ ms.locfileid: "37112854"
 
    ``` xml
    <?xml version="1.0" encoding="UTF-8" ?>
-   <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//620/Send">
+   <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/2/ORDERS05//720/Send">
       <idocData>
          <...>
       </idocData>
@@ -179,17 +188,210 @@ ms.locfileid: "37112854"
 
 4. 发送 HTTP 请求之后，等待逻辑应用返回响应。
 
-> [!NOTE]
-> 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为帮助诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)。
+   > [!NOTE]
+   > 如果未在[请求超时限制](./logic-apps-limits-and-config.md)所规定的时间内完成响应所需的所有步骤，逻辑应用可能会超时。 如果发生这种情况，请求可能会被阻止。 为帮助诊断问题，请了解如何[检查和监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)。
 
 祝贺你，现已创建一个可与 SAP 服务器通信的逻辑应用。 为逻辑应用设置 SAP 连接后，可以探索其他可用的 SAP 操作，例如 BAPI 和 RFC。
 
-## <a name="connector-reference"></a>连接器参考
+## <a name="receive-from-sap"></a>从 SAP 接收
 
-有关连接器 Swagger 文件描述的连接器技术详细信息，请参阅以下参考文章： 
+此示例使用从 SAP 系统收到消息时触发的逻辑应用。 
 
-* [SAP 应用程序服务器](/connectors/sapapplicationserver/)
-* [SAP 消息服务器](/connectors/sapmessageserver/)
+### <a name="add-sap-trigger"></a>添加 SAP 触发器
+
+1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
+
+2. 在搜索框中，输入“sap”作为筛选器。 在触发器列表中选择此触发器：“从 SAP 收到消息时”
+
+   ![添加 SAP 触发器](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+
+   或者，可以转到“企业”选项卡并选择触发器
+
+   ![在“企业”选项卡中添加 SAP 触发器](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
+
+3. 如果系统提示输入连接详细信息，请立即创建 SAP 连接。 如果连接已存在，请继续下一步，以便可以设置 SAP 操作。 
+
+   **创建本地 SAP 连接**
+
+   1. 提供 SAP 服务器的连接信息。 
+   对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。
+
+      如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
+
+      ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png) 
+
+      如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：
+
+      ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+
+4. 根据 SAP 系统配置提供所需的参数。 
+
+   可以选择性地提供一个或多个 SAP 操作。 
+   此操作列表指定触发器通过数据网关从 SAP 服务器接收的消息。 
+   空列表指定触发器接收所有消息。 
+   如果列表中不包含多条消息，则触发器只会接收列表中指定的消息。 网关会拒绝从 SAP 服务器发送的其他任何消息。
+
+   可以通过文件选取器选择 SAP 操作：
+
+   ![选择 SAP 操作](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
+
+   或者，可以手动指定操作：
+
+   ![手动输入 SAP 操作](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+
+   以下示例演示将触发器设置为接收多个消息时操作的显示方式。
+
+   ![触发器示例](media/logic-apps-using-sap-connector/example-trigger.png)  
+
+   有关 SAP 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
+
+5. 现在请保存逻辑应用，以便可以开始从 SAP 系统接收消息。
+在设计器工具栏上，选择“保存”。 
+
+现在，逻辑应用已准备好从 SAP 系统接收消息。 
+
+> [!NOTE]
+> SAP 触发器不是轮询触发器，而是基于 Webhook 的触发器。 仅当存在消息时，才会从网关调用触发器，因此无需轮询。 
+
+### <a name="test-your-logic-app"></a>测试逻辑应用
+
+1. 若要触发逻辑应用，请从 SAP 系统发送一条消息。
+
+2. 在逻辑应用菜单中选择“概述”，然后查看逻辑应用的任何新运行的“运行历史记录”。 
+
+3. 打开最近的运行，触发器输出部分会显示从 SAP 系统发送的消息。
+
+## <a name="generate-schemas-for-artifacts-in-sap"></a>为 SAP 中的项目生成架构
+
+本示例使用可通过 HTTP 请求触发的逻辑应用。 SAP 操作将请求发送到 SAP 系统，以便为指定的中间文档 (IDoc) 和 BAPI 生成架构。 使用 Azure 资源管理器连接器将响应中返回的架构上传到集成帐户。
+
+### <a name="add-http-request-trigger"></a>添加 HTTP 请求触发器
+
+1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
+
+2. 在搜索框中，输入“http 请求”作为筛选器。 在触发器列表中选择此触发器：“请求 - 当收到 HTTP 请求时”
+
+   ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-trigger.png)
+
+3. 现在请保存逻辑应用，以便可为逻辑应用生成终结点 URL。
+在设计器工具栏上，选择“保存”。 
+
+   终结点 URL 现在会显示在触发器中，例如：
+
+   ![生成终结点的 URL](./media/logic-apps-using-sap-connector/generate-http-endpoint-url.png)
+
+### <a name="add-sap-action-to-generate-schemas"></a>添加 SAP 操作以生成架构
+
+1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。
+
+   ![添加操作](./media/logic-apps-using-sap-connector/add-action.png) 
+
+2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：“生成架构”
+  
+   ![选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
+
+   或者，也可以选择“企业”选项卡，然后选择 SAP 操作。
+
+   ![在“企业”选项卡中选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
+
+3. 如果系统提示输入连接详细信息，请立即创建 SAP 连接。 如果连接已存在，请继续下一步，以便可以设置 SAP 操作。 
+
+   **创建本地 SAP 连接**
+
+   1. 提供 SAP 服务器的连接信息。 
+   对于“数据网关”属性，请选择在 Azure 门户中为网关安装创建的数据网关。
+
+      如果“登录类型”属性设置为“应用程序服务器”，则必须指定以下属性（通常显示为可选）：
+
+      ![创建 SAP 应用程序服务器连接](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png) 
+
+      如果“登录类型”属性设置为“组”，则必须指定以下属性（通常显示为可选）：
+   
+      ![创建 SAP 消息服务器连接](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
+
+   2. 完成后，选择“创建”。 逻辑应用会设置并测试连接，确保连接正常工作。
+
+4. 提供要为其生成架构的项目的路径。
+
+   可以通过文件选取器选择 SAP 操作：
+
+   ![选择 SAP 操作](media/logic-apps-using-sap-connector/select-SAP-action-schema-generator.png)  
+
+   或者，可以手动输入操作：
+
+   ![手动输入 SAP 操作](media/logic-apps-using-sap-connector/manual-enter-SAP-action-schema-generator.png) 
+
+   若要为多个项目生成架构，请提供每个项目的 SAP 操作详细信息，例如：
+
+   ![选择“添加新项”](media/logic-apps-using-sap-connector/schema-generator-array-pick.png) 
+
+   ![显示两个项](media/logic-apps-using-sap-connector/schema-generator-example.png) 
+
+   有关 SAP 操作的详细信息，请参阅 [IDOC 操作的消息架构](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
+
+5. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+
+### <a name="test-your-logic-app"></a>测试逻辑应用
+
+1. 在设计器工具栏上，选择“运行”以触发逻辑应用的运行。
+
+2. 打开该运行，并检查“生成架构”操作的输出。 
+
+   输出中会显示针对指定的消息列表生成的架构。
+
+### <a name="upload-schemas-to-integration-account"></a>将架构上传到集成帐户
+
+（可选）可以下载生成的架构，或将其存储在 Blob、存储或集成帐户等存储库中。 集成帐户为其他 XML 操作提供一流的体验。本示例演示如何使用 Azure 资源管理器连接器将架构上传到同一逻辑应用的集成帐户。
+
+1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。 在搜索框中，输入“资源管理器”作为筛选器。 选择此操作：“创建或更新资源”
+
+   ![选择 Azure 资源管理器操作](media/logic-apps-using-sap-connector/select-arm-action.png) 
+
+2. 输入详细信息，包括 Azure 订阅、Azure 资源组和集成帐户。 按以下示例所示输入其他字段。
+
+   ![输入 Azure 资源管理器操作的详细信息](media/logic-apps-using-sap-connector/arm-action.png)
+
+   SAP 的“生成架构”操作会生成集合形式的架构，因此，设计器会自动将一个 **For each** 循环添加到该操作。 
+   以下示例演示此操作的显示方式：
+
+   ![包含“for each”循环的 Azure 资源管理器操作](media/logic-apps-using-sap-connector/arm-action-foreach.png)  
+
+   > [!NOTE]
+   > 架构使用 base64 编码格式。 若要将架构上传到集成帐户，必须使用 `base64ToString()` 函数将其解码。 以下示例演示了 `"properties"` 元素的代码：
+   >
+   > ```json
+   > "properties": {
+   >    "Content": "@base64ToString(items('For_each')?['Content'])",
+   >    "ContentType": "application/xml",
+   >    "SchemaType": "Xml"
+   > }
+   > ```
+
+3. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
+
+### <a name="test-your-logic-app"></a>测试逻辑应用
+
+1. 在设计器工具栏上，选择“运行”以手动触发逻辑应用。
+
+2. 成功运行后，转到集成帐户，并检查生成的架构是否存在。
+
+## <a name="known-issues-and-limitations"></a>已知问题和限制
+
+下面是 SAP 连接器目前存在的已知问题和限制：
+
+* SAP 触发器不支持从 SAP 接收批处理 IDOC。 此操作可能导致 SAP 系统与数据网关之间的 RFC 连接失败。
+
+* SAP 触发器不支持数据网关群集。 在某些故障转移案例中，与 SAP 系统通信的数据网关节点可能不同于主动节点，从而导致意外的行为。 对于“发送”方案，支持使用数据网关群集。
+
+* 在“接收”方案中，不支持返回非 null 响应。 包含触发器和响应操作的逻辑应用会导致意外行为。 
+
+* tRFC 仅支持发出单个“发送到 SAP”调用或消息。 不支持业务应用程序编程接口 (BAPI) 提交模式，例如，在同一会话中发出多个 tRFC 调用。
+
+* “发送到 SAP”和“生成架构”操作都不支持包含附件的 RFC。
+
+* SAP 连接器目前不支持 SAP 路由器字符串。 本地数据网关必须位于要连接的 SAP 系统所在的同一 LAN 中。
+
+* 将来对本地数据网关进行更新后，DATS 以及 TIMS SAP 字段的缺失 (null) 值、空值、最小值和最大值的转换方式可能会发生变化。
 
 ## <a name="get-support"></a>获取支持
 

@@ -1,24 +1,26 @@
 ---
-title: 更新知识库 - Python 快速入门 - Azure 认知服务 | Microsoft Docs
+title: 快速入门：Python 更新知识库 - QnA Maker
 description: 如何使用 Python 为 QnA Maker 更新知识库。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 79b2af150558aa5da8e060e1b5117b91ffd34387
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "43768774"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031928"
 ---
 # <a name="update-a-knowledge-base-in-python"></a>使用 Python 更新知识库
 
 以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-python.md)。
 

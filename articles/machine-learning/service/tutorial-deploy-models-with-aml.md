@@ -1,20 +1,20 @@
 ---
-title: 教程：在 Azure 容器实例 (ACI) 中部署映像分类模型 - Azure 机器学习
-description: 了解如何使用 Python Jupyter Notebook 部署 scikit-learn 映像分类模型。  本教程是由两个部分构成的系列教程的第二部分。
-author: hning86
-ms.author: haining
+title: 教程：在 Azure 容器实例 (ACI) 中使用 Azure 机器学习服务部署映像分类模型
+description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 部署映像分类模型。  本教程是由两个部分构成的系列教程的第二部分。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: tutorial
+author: hning86
+ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e79df258701fa1d269e45e00a92b0961306ffbe3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eda4a1dabd20eee73cfbfa4dc0dd2b0eaa56788e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968622"
+ms.locfileid: "47031231"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>教程 #2：在 Azure 容器实例 (ACI) 中部署映像分类模型
 

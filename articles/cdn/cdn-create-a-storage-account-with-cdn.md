@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608495"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096235"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 在此快速入门中，你将启用 [Azure 内容分发网络 (CDN)](cdn-overview.md) 来缓存 Azure 存储中的内容。 Azure CDN 为开发人员提供了一个用于交付高带宽内容的全局解决方案。 它可以在遍布美国、欧洲、亚洲、澳大利亚和南美洲的众多物理节点上缓存 blob 和计算实例的静态内容。
@@ -84,7 +84,7 @@ ms.locfileid: "34608495"
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>为存储帐户启用 Azure CDN
 
-可以直接从存储帐户中为存储帐户启用 Azure CDN。 如果要为 CDN 终结点指定高级配置设置（例如优化类型），可以使用 [Azure CDN 扩展](cdn-create-new-endpoint.md)来创建 CDN 配置文件或 CDN 终结点。
+可以直接从存储帐户中为存储帐户启用 Azure CDN。 若要为 CDN 终结点指定高级配置设置（例如[大文件下载优化](cdn-optimization-overview.md#large-file-download)），可以改用 [Azure CDN 扩展](cdn-create-new-endpoint.md)来创建 CDN 配置文件和终结点。
 
 1. 从仪表板中选择一个存储帐户，然后从左窗格中选择“Azure CDN”。 如果未立即显示“Azure CDN”按钮，可在左窗格的“搜索”框中输入 CDN 来查找它。
     
@@ -109,6 +109,9 @@ ms.locfileid: "34608495"
 在存储帐户的“Azure CDN”页面中，从列表中选择 CDN 终结点以打开 CDN 终结点配置页面。 从此页面中，可以为交付内容启用其他 CDN 功能，例如[压缩](cdn-improve-performance.md)、[查询字符串缓存](cdn-query-string.md)和[地区筛选](cdn-restrict-access-by-country.md)。 
     
 ![存储 CDN 终结点配置](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>启用 SAS
+如果希望授予受限制的私有存储容器访问权限，可以使用 Azure 存储帐户的共享访问签名 (SAS) 功能。 SAS 是授予对 Azure 存储资源进行有限访问权限的 URI，而无需公开你的帐户密钥。 有关详细信息，请参阅[将 Azure CDN 与 SAS 一起使用](cdn-sas-storage-support.md)。
 
 ## <a name="access-cdn-content"></a>访问 CDN 内容
 若要访问 CDN 上的缓存内容，请使用门户中提供的 CDN URL。 缓存 blob 的地址采用以下格式：
@@ -139,8 +142,8 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 3. 若要删除存储帐户，请从仪表板中选择它，然后从顶部的菜单中选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何向 CDN 终结点添加自定义域，请参阅以下教程：
+若要了解如何在 CDN 终结点上添加自定义域和启用 HTTPS，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
+> [教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 blob](cdn-storage-custom-domain-https.md)
 

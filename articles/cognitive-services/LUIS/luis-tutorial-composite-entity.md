@@ -1,62 +1,103 @@
 ---
-title: 教程：创建复合实体提取复杂数据 - Azure | Microsoft Docs
-description: 了解如何在 LUIS 应用中创建复合实体来提取不同类型的实体数据。
+title: 教程 6：使用 LUIS 复合实体提取复合数据
+titleSuffix: Azure Cognitive Services
+description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 17a8110624975d8053ad69c5bf30477e6d715ee8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159820"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035175"
 ---
-# <a name="tutorial-6-add-composite-entity"></a>教程：6. 添加复合实体 
-在本教程中，添加复合实体以将提取的数据捆绑到包含的实体中。
+# <a name="tutorial-6-group-and-extract-related-data"></a>教程 6：对相关的数据进行分组和提取
+在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 
-本教程介绍如何执行下列操作：
+复合实体的目的是将相关实体分组为父类别实体。 在创建复合实体之前，这些现有信息都是单独的实体。 它类似于分层实体，但可以包含各种类型的实体。 
+
+复合实体非常适合此类数据，因为此类数据：
+
+* 彼此相关。 
+* 使用各种实体类型。
+* 需要由客户端应用作为一个信息单元进行分组和处理。
+
+**本教程介绍如何执行下列操作：**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 了解复合实体 
-> * 添加复合实体提取数据
-> * 训练并发布应用
-> * 查询应用终结点以查看 LUIS JSON 响应
+> * 使用现有的教程应用
+> * 添加复合实体 
+> * 训练
+> * 发布
+> * 从终结点获取意向和实体
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>开始之前
-如果尚未获得[分层实体](luis-quickstart-intent-and-hier-entity.md)教程中所述的人力资源应用，请将 JSON [导入](luis-how-to-start-new-app.md#import-new-app)到 [LUIS](luis-reference-regions.md#luis-website) 网站上的新应用中。 要导入的应用位于 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) Github 存储库中。
+## <a name="use-existing-app"></a>使用现有应用
+继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-若要保留原始人力资源应用，请在[设置](luis-how-to-manage-versions.md#clone-a-version)页上克隆版本，并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。  
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
 
-## <a name="composite-entity-is-a-logical-grouping"></a>复合实体一种逻辑分组 
-复合实体的目的是将相关实体分组为父类别实体。 在创建复合实体之前，这些现有信息都是单独的实体。 它类似于分层实体，但可以包含更多类型的实体。 
+1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json)。
 
- 如果可按逻辑对单独的实体分组，且这种逻辑分组可帮助客户端应用程序，请创建一个复合实体。 
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `composite`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+
+
+## <a name="composite-entity"></a>复合实体
+如果可按逻辑对单独的实体分组，且这种逻辑分组可帮助客户端应用程序，请创建一个复合实体。 
 
 在此应用中，员工姓名在“员工”列表实体中定义，包括姓名、电子邮件地址、公司电话分机号、移动电话号码和美国联邦纳税人标识号的同义词。 
 
-“MoveEmployee”意向具有示例话语，用于请求员工从一个建筑物和办公室移动到另一个建筑物和办公室。 建筑物名称用字母表示：“A”、“B”等，而办公室用数字表示：“1234”、“13245”。 
+“MoveEmployee”意向具有示例话语，用于请求员工从一个建筑物和办公室搬迁到另一个建筑物和办公室。 建筑物名称用字母表示：“A”、“B”等，而办公室用数字表示：“1234”、“13245”。 
 
 “MoveEmployee”意向中的示例话语包括：
 
 |示例陈述|
 |--|
-|将 John W . Smith 调动到 a-2345|
+|请 John W . Smith 搬迁到 a-2345|
 |明天将 x12345 换到 h-1234|
  
-调动请求应至少包括员工（使用任何同义词），以及最终的建筑物和办公室位置。 请求还可以包括原始的办公室以及应该执行调动的日期。 
+搬迁请求应包括员工（使用任何同义词），以及最终的建筑物和办公室位置。 请求还可以包括原始的办公室以及应该执行搬迁的日期。 
 
-从终结点提取的数据应包含此信息，并在 `RequestEmployeeMove` 复合实体中返回。 
+从终结点提取的数据应包含此信息，并在 `RequestEmployeeMove` 复合实体中将其返回：
 
-## <a name="create-composite-entity"></a>创建复合实体
-1. LUIS 的“生成”部分包含你的人力资源应用。 在右上方的菜单栏中选择“生成”可切换到此部分。 
+```JSON
+"compositeEntities": [
+  {
+    "parentType": "RequestEmployeeMove",
+    "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+    "children": [
+      {
+        "type": "builtin.datetimeV2.datetime",
+        "value": "march 3 2 p.m"
+      },
+      {
+        "type": "Locations::Destination",
+        "value": "z - 2345"
+      },
+      {
+        "type": "Employee",
+        "value": "jill jones"
+      },
+      {
+        "type": "Locations::Origin",
+        "value": "a - 1234"
+      }
+    ]
+  }
+]
+```
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在“意向”页上，选择“MoveEmployee”意向。 
 
@@ -75,17 +116,23 @@ ms.locfileid: "44159820"
     [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
-6. 然后立即选择最后一个实体，话语中的 `datetimeV2`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `RequestEmployeeMove` 然后在弹出菜单上选择“新建复合”。 
+6. 然后立即选择最后一个实体，话语中的 `datetimeV2`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `RequestEmployeeMove`，然后选择 Enter。 
 
     [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体和创建实体")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. 在“想要创建哪种类型的实体?”中，列表中包含几乎所有所需字段。 仅缺失原始位置。 选择“添加子实体”，从现有实体列表中选择“位置::原始”，然后选择“完成”。 
 
+    请注意，预构建的实体、编号已添加到复合实体。 如果可能有预构建实体出现在复合实体的开始标记和结束标记之间，则复合实体必须包含那些预构建实体。 如果未包括预构建实体，则不能正确预测复合实体，但可以正确预测每个个体元素。
+
     ![“MoveEmployee”意向上的 LUIS 屏幕截图，在弹出窗口中添加其他实体](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
 8. 选择工具栏上的放大镜以删除筛选器。 
 
+9. 从筛选器中删除单词 `tomorrow`，以便可以重新看到所有示例话语。 
+
 ## <a name="label-example-utterances-with-composite-entity"></a>使用复合实体标记示例话语
+
+
 1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”.
 
     [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
@@ -98,15 +145,15 @@ ms.locfileid: "44159820"
 
     [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
-## <a name="train-the-luis-app"></a>训练 LUIS 应用
+## <a name="train"></a>训练
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
+## <a name="publish"></a>发布
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint"></a>查询终结点 
+## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -247,7 +294,7 @@ ms.locfileid: "44159820"
         },
         {
           "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-          "type": "requestemployeemove",
+          "type": "RequestEmployeeMove",
           "startIndex": 5,
           "endIndex": 54,
           "score": 0.4027723
@@ -255,7 +302,7 @@ ms.locfileid: "44159820"
       ],
       "compositeEntities": [
         {
-          "parentType": "requestemployeemove",
+          "parentType": "RequestEmployeeMove",
           "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
           "children": [
             {
@@ -276,28 +323,19 @@ ms.locfileid: "44159820"
             }
           ]
         }
-      ],
-      "sentimentAnalysis": {
-        "label": "neutral",
-        "score": 0.5
-      }
+      ]
     }
     ```
 
   此话语返回复合实体数组。 每个实体都有类型和值。 若要查找每个子实体的更高精度，请使用复合数组项中的类型和值的组合来查找实体数组中的相应项。  
-
-## <a name="what-has-this-luis-app-accomplished"></a>此 LUIS 应用实现了哪些目的？
-此应用识别了自然语言查询意向，并将提取的数据作为命名组返回。 
-
-现在，聊天机器人已获得足够的信息，可以确定主要操作和话语中的相关详细信息。 
-
-## <a name="where-is-this-luis-data-used"></a>在何处使用此 LUIS 数据？ 
-LUIS 已完成此请求。 调用方应用程序（例如聊天机器人）可以提取 topScoringIntent 结果和实体中的数据，以执行下一步骤。 LUIS 不会针对机器人或调用方应用程序执行编程工作。 LUIS 只确定用户的意向是什么。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+本教程创建了一个复合实体来封装现有实体。 这使得客户端应用程序能够发现一组不同数据类型的相关数据以便继续进行对话。 此人力资源应用的客户端应用程序可能会询问需要在哪一天的什么时间开始和结束搬迁。 它还可能会询问有关本次搬迁的其他后勤信息，例如实际电话。 
+
 > [!div class="nextstepaction"] 
 > [了解如何使用短语列表添加简单实体](luis-quickstart-primary-and-secondary-data.md)  

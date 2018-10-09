@@ -1,22 +1,23 @@
 ---
-title: 从 Azure Cloud Shell 查看 LUIS 使用情况 | Microsoft Docs
+title: LUIS 的 Azure Cloud Shell 使用情况数据
+titleSuffix: Azure Cognitive Services
 description: 了解如何在 Azure Cloud Shell 中获取 LUIS 的使用情况信息。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: f9d3a489328263bd300d60935bfde2f0dfc0245c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b0a02d2e5e0a1f1765098e1b1e258424b6443878
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224035"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039564"
 ---
-# <a name="manage-luis-service-from-azure-cloud-shell"></a>从 Azure Cloud Shell 管理 LUIS 服务
+# <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>从 Azure Cloud Shell 获取 LUIS 服务的使用情况数据
 通过 Azure 门户可使用 PowerShell cmdlet 处理 LUIS 资源。 
 
 使用这些 cmdlet 可以[创建](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS 订阅、获取有关订阅的信息（包括[使用情况](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)）和[删除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)订阅。 
