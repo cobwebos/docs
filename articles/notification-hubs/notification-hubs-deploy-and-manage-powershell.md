@@ -155,8 +155,7 @@ else
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
 [购买选项]: http://azure.microsoft.com/pricing/purchase-options/
-
-  [会员套餐]: http://azure.microsoft.com/pricing/member-offers/
+[会员套餐]: http://azure.microsoft.com/pricing/member-offers/
 [免费试用]: http://azure.microsoft.com/pricing/free-trial/
 [安装和配置 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中心的 .NET API]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
