@@ -38,8 +38,8 @@ ms.locfileid: "46990699"
 1. 选择“Ubuntu 16.04 LTS”，然后单击“创建” 
 1. 提供一个 VM 名称，例如  *MyTelegrafVM*。  
 1. 将磁盘类型保留为 **SSD**，然后提供**用户名**，例如  *azureuser*。 
-1. 选择“密码”作为“身份验证类型”，然后键入一个密码，以后需使用该密码通过 SSH 登录到此 VM。 ** **** 
-1. 选择“新建资源组” ****，然后提供一个名称，例如  *myResourceGroup*。  选择所需“位置”，然后选择“确定”。 **** 
+1. 选择 **密码**作为 *身份验证类型*，然后键入一个密码，以后需使用该密码通过 SSH 登录到此 VM。 
+1. 选择 **新建资源组**，然后提供一个名称，例如  *myResourceGroup*。  选择所需“位置”，然后选择 **确定**。 
 
      ![创建 Ubuntu VM](./media/metrics-store-custom-linux-telegraf/create-vm.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "46990699"
 
      ![虚拟机大小 Telegraph 代理概述](./media/metrics-store-custom-linux-telegraf/vm-size.png)
 
-1. 在“设置”页上的“网络”>“网络安全组”>“选择公共入站端口”中，选择“HTTP”和“SSH (22)”。 **** **** **** **** ** **       将剩余的字段保留默认设置，然后选择“确定”。 **** 
+1. 在 **设置页上**的 **网络**>  **网络安全组** > **选择公共入站端口**中，选择 *HTTP* 和 *SSH (22)*。 将剩余的字段保留默认设置，然后选择 **确定**。 
 
 1. 在摘要页上，选择“创建”以启动 VM 部署。 
 
@@ -108,7 +108,7 @@ sudo systemctl start telegraf
 
 1. 打开 [Azure 门户](https://portal.azure.com) 
 
-1. 导航到新的“监视”选项卡，然后选择“指标”。 ****  
+1. 导航到新的“监视”选项卡，然后选择 **指标**。  
      ![fillin](./media/metrics-store-custom-linux-telegraf/metrics.png)
 
 1. 在资源选择器中选择 VM
