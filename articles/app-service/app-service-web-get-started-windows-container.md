@@ -11,21 +11,80 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/07/2018
+ms.date: 09/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e8f357347e39c2e8ff071e8f4af8e69dcce3940e
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e2d058cfe6d6a31f557708277902063e51f54bc5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39640171"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971359"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure 中运行自定义 Windows 容器（预览版）
 
-[Azure 应用服务](app-service-web-overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](web-sites-available-operating-system-functionality.md)）。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。 本快速入门介绍如何通过 [Docker 中心](https://hub.docker.com/)将自定义 IIS 映像部署到 Azure 应用服务。
+[Azure 应用服务](app-service-web-overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](web-sites-available-operating-system-functionality.md)）。 如果应用程序需要的访问权限超出了预配置环境的允许，则可改为部署自定义 Windows 容器。 本快速入门介绍如何将 Windows 映像中的 ASP.NET 应用从 Visual Studio 部署到 [Docker 中心](https://hub.docker.com/)以及在 Azure 应用服务中的自定义容器中运行它。
 
-![](media/app-service-web-get-started-windows-container/app-running.png)
+![](media/app-service-web-get-started-windows-container/app-running-vs.png)
+
+## <a name="prerequisites"></a>先决条件
+
+完成本教程：
+
+- <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
+- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
+- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2017</a>，其中包含 ASP.NET 和 web 开发以及 Azure 开发工作负载。 如果已安装 Visual Studio 2017：
+    - 通过单击“帮助” > “检查更新”，在 Visual Studio 中安装最新的更新。
+    - 在 Visual Studio 中，通过单击“工具” > “获取工具和功能”，添加工作负载。
+
+## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
+
+在 Visual Studio 中，通过依次选择“文件”>“新建”>“项目”创建项目。 
+
+在“新建项目”对话框中，选择“Visual C#”>“Web”>“ASP.NET Web 应用程序 (.NET Framework)”。
+
+将应用程序命名为 _myFirstAzureWebApp_，然后选择“确定”。
+   
+![“新建项目”对话框](./media/app-service-web-get-started-windows-container/new-project.png)
+
+可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。
+
+选择“启用 Docker Compose 支持(_E)”。
+
+选择“确定”。
+
+![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-windows-container/select-mvc-template.png)
+
+如果 _Dockerfile_ 文件未自动打开，则从解决方案资源管理器中打开。
+
+需要使用[受支持的父映像](#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
+
+```Dockerfile
+FROM microsoft/aspnet:4.7.1
+```
+
+在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
+
+![在本地运行应用](./media/app-service-web-get-started-windows-container/local-web-app.png)
+
+## <a name="publish-to-docker-hub"></a>发布到 Docker 中心
+
+在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
+
+![从解决方案资源管理器发布](./media/app-service-web-get-started-windows-container/solution-explorer-publish.png)
+
+发布向导是自动启动的。 选择“容器注册表” > “Docker 中心” > “发布”。
+
+![从项目概述页发布](./media/app-service-web-get-started-windows-container/publish-to-docker.png)
+
+提供 Docker 中心帐户凭据，然后单击“保存”。 
+
+等待部署完成。 “发布”页现会显示以后要在应用服务中使用的存储库名称。
+
+![从项目概述页发布](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
+
+复制此存储库名称待以后使用。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -37,7 +96,7 @@ ms.locfileid: "39640171"
 
 2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“容器的 Web 应用”。
 
-3. 提供应用名称（例如 *mywebapp*），接受创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览版)”。
+3. 提供应用名称（例如 win-container-demo），接受创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览版)”。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
@@ -45,11 +104,11 @@ ms.locfileid: "39640171"
 
     ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
 
-5. 单击“配置容器”，在“映像和可选标记”中键入 _microsoft/iis:latest_，然后单击“确定”。
+5. 单击“配置容器”。 在“映像和可选标记”  中，使用在 [发布到 Docker 中心](#publish-to-docker-hub) 中复制的存储库名称，然后单击“确定”。
 
-    ![](media/app-service-web-get-started-windows-container/portal-configure-container.png)
+    ![](media/app-service-web-get-started-windows-container/portal-configure-container-vs.png)
 
-    在本文中，请使用公共的 [microsoft/iis:latest](https://hub.docker.com/r/microsoft/iis/) Docker 中心映像。 如果用于 Web 应用程序的自定义映像位于其他位置，例如位于 [Azure 容器注册表](/azure/container-registry/)中或任何其他的专用存储库中，则可在这里对其进行配置。
+    如果用于 Web 应用程序的自定义映像位于其他位置，例如位于 [Azure 容器注册表](/azure/container-registry/)中或任何其他的专用存储库中，则可在这里对其进行配置。
 
 6. 单击“创建”，等待 Azure 创建所需的资源。
 
@@ -67,9 +126,9 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-get-started-windows-container/app-starting.png)
 
-等待数分钟，然后再次尝试，直到出现 IIS 欢迎页面：
+等待数分钟，然后再次尝试，直到显示默认 ASP.NET 主页：
 
-![](media/app-service-web-get-started-windows-container/app-running.png)
+![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
 **祝贺你！** 你现在是在 Azure 应用服务中运行第一个自定义 Windows 容器。
 
@@ -90,7 +149,32 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 27/07/2018 12:05:05.020 INFO - Site: win-container-demo - Container started successfully
 ```
 
-## <a name="use-a-different-docker-image"></a>使用其他 Docker 映像
+## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
+
+在“解决方案资源管理器”中打开“Views\Home\Index.cshtml”。
+
+在顶部附近找到 `<div class="jumbotron">` HTML 标记，将整个元素替换为以下代码：
+
+```HTML
+<div class="jumbotron">
+    <h1>ASP.NET in Azure!</h1>
+    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+</div>
+```
+
+若要重新部署到 Azure，请在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
+
+在发布页上，选择“发布”并等待发布完成。
+
+若要指示应用服务从 Docker 中心拉取新映像，请重启应用。 返回门户中的应用页，单击“重启” > “是”。
+
+![在 Azure 中重新启动 Web 应用](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
+
+再次[浏览到容器应用](#browse-to-the-container-app)。 刷新网页时，应用应会先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
+
+![已在 Azure 中更新的 Web 应用](./media/app-service-web-get-started-windows-container/azure-web-app-updated.png)
+
+## <a name="use-a-different-parent-image"></a>使用其他父映像
 
 可以使用其他自定义的 Docker 映像来运行应用。 但是，必须为所需框架选择适当的[父映像](https://docs.docker.com/develop/develop-images/baseimages/)： 
 
@@ -104,3 +188,8 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 - [microsoft/aspnet](https://hub.docker.com/r/microsoft/aspnet/):4.7.2-windowsservercore-ltsc2016，4.7.2，最新
 - [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/):2.1-aspnetcore-runtime
 - [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/):2.1-sdk
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [迁移到 Azure 中的 Windows 容器](app-service-web-tutorial-windows-containers-custom-fonts.md)

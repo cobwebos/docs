@@ -1,20 +1,22 @@
 ---
-title: 开始使用 JavaScript 中的 Microsoft 语音识别 API | Microsoft Docs
-description: 使用认知服务中的 Microsoft 语音识别 API 开发将语音音频持续转换为文本的应用程序。
+title: 开始使用 JavaScript 中的必应语音识别 API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: 使用认知服务中的必应语音识别 API 开发将语音音频持续转换为文本的应用程序。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 12/21/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ROBOTS: NOINDEX
+ms.openlocfilehash: c4fb331076f88d4f14f56201aa31a00160f395aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040532"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995340"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
 
@@ -38,7 +40,7 @@ ms.locfileid: "39040532"
 
 ### <a name="open-the-sample-directly"></a>直接打开示例
 
-获取订阅密钥，如上所述。 然后打开[示例链接](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)。 该操作将在默认浏览器中加载页面（使用 [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) 呈现）。
+获取订阅密钥，如上所述。 然后打开[示例链接](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)。 该操作将在默认浏览器中加载页面（使用 [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) 呈现）。
 
 ### <a name="open-the-sample-from-a-local-copy"></a>从本地副本打开示例
 
