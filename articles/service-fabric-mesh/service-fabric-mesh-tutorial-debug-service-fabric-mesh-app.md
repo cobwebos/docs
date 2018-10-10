@@ -1,5 +1,5 @@
 ---
-title: 教程 - 调试 Azure Service Fabric 网格 Web 应用程序 | Microsoft Docs
+title: 教程 - 调试在本地开发群集中运行的 Azure Service Fabric 网格 Web 应用 | Microsoft Docs
 description: 本教程介绍如何调试本地群集上运行的 Azure Service Fabric 网格应用程序。
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918433"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997006"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>教程：调试 Service Fabric 网格 Web 应用程序
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教程：调试在本地开发群集中运行的 Service Fabric 网格应用程序
 
-本教程是系列教程的第二部分，介绍如何调试本地开发群集上的 Azure Service Fabric 网格应用程序。
+本教程是系列教程的第二部分，介绍如何生成并调试本地开发群集上的 Azure Service Fabric 网格应用。
 
 本教程的内容：
 
@@ -34,9 +34,11 @@ ms.locfileid: "41918433"
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
-> * [生成 Service Fabric 网格应用程序](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * 在本地调试应用
-> * [将应用发布到 Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [在 Visual Studio 中创建 Service Fabric 网格应用](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * 调试在本地开发群集中运行的 Service Fabric 网格应用
+> * [部署 Service Fabric 网格应用](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
+> * [清理 Service Fabric 网格资源](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 转到下一教程：
 > [!div class="nextstepaction"]
-> [发布 Service Fabric 网格 Web 应用程序](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [部署 Service Fabric 网格应用](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

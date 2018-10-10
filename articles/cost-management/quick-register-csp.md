@@ -1,25 +1,25 @@
 ---
-title: 使用 CSP 合作伙伴信息注册 Azure 成本管理 | Microsoft Docs
-description: 使用 CSP 合作伙伴信息注册到 Azure 成本管理。
+title: 在 Azure 中使用 CSP 合作伙伴信息注册 Cloudyn| Microsoft Docs
+description: 使用 CSP 合作伙伴信息注册 Cloudyn。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/06/2018
+ms.date: 09/18/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 698ddab4f5bca5aacf79cb952a51c385a67eee32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578052"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985416"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
-作为 CSP 合作伙伴，你可以注册到 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
+作为 CSP 合作伙伴，你可以注册 Cloudyn。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
 
 
 >[!NOTE]
@@ -35,12 +35,12 @@ ms.locfileid: "39578052"
 
 - 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## <a name="register-with-azure-cost-management"></a>向 Azure 成本管理注册
+## <a name="register-with-cloudyn"></a>注册 Cloudyn
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
-2. 在“概览”下，单击“成本管理”  
-    ![成本管理页](./media/quick-register-csp/cost-mgt-billing-service.png)
-3. 在“成本管理”页上，单击“转到成本管理”，在新窗口中打开“Cloudyn 注册”页。
+2. 在“概览”下，单击“Cloudyn”  
+    ![Cloudyn 页面](./media/quick-register-csp/cost-mgt-billing-service.png)
+3. 在“Cloudyn”页上，单击“转到 Cloudyn”，在新窗口中打开 Cloudyn 注册页。
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，选择“Microsoft CSP 合作伙伴计划管理员”，然后单击“下一步”。  
 5. 输入 **应用程序 ID**、**商务 ID**、**应用程序密钥**，然后选择“默认定价计划”。 如果手边没有相关信息，请使用主管理员帐户登录到合作伙伴中心门户 ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) 并执行以下步骤：
   1. 转到“仪表板”，依次单击**设置**符号、“合作伙伴设置”、“应用管理”。
@@ -62,7 +62,7 @@ ms.locfileid: "39578052"
 若要为间接 CSP 客户或合作伙伴启用访问权限，请按照[创建试用注册](#create-a-trial-registration)中的步骤设置试用注册。 接下来，请完成以下步骤，以使用 Cloudyn 实体组将间接 CSP 数据分段。 然后，向实体组分配适当的用户权限。
 
 1. 使用[创建实体](tutorial-user-access.md#create-and-manage-entities)上的信息创建实体组。
-2. 按照[将订阅分配到费用实体](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)上的步骤操作。 将间接 CSP 客户的帐户及其 Azure 订阅与之前创建的实体关联。
+2. 按照[将订阅分配到费用实体](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)上的步骤操作。 将间接 CSP 客户的帐户及其 Azure 订阅与之前创建的实体关联。
 3. 按照[创建具有管理员权限的用户](tutorial-user-access.md#create-a-user-with-admin-access)上的步骤创建具有管理员权限的用户帐户。 然后，确保该用户帐户拥有之前为间接帐户创建的特定实体的管理员权限。
 
 间接 CSP 合作伙伴使用为他们创建的帐户登录到 Cloudyn 门户。
@@ -72,7 +72,7 @@ ms.locfileid: "39578052"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，使用 CSP 信息注册了成本管理。 此外，还会登录到 Cloudyn 门户并开始查看成本数据。 若要详细了解 Azure 成本管理，请继续学习成本管理教程。
+在本快速入门中，你使用 CSP 信息注册了 Cloudyn。 此外，还会登录到 Cloudyn 门户并开始查看成本数据。 若要了解有关 Cloudyn 的详细信息，请继续学习 Cloudyn 的教程。
 
 > [!div class="nextstepaction"]
 > [查看使用情况和成本](./tutorial-review-usage.md)

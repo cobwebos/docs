@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047019"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950704"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
@@ -57,12 +57,13 @@ Azure 门户可以提供此信息：
 
 ![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-也可以使用 Azure CLI：
+也可以使用 Azure 经典 CLI：
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 另一个选项是使用 PowerShell。 有关详细信息，请参阅[使用 Azure PowerShell 在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-powershell.md)。
 
@@ -100,7 +101,7 @@ HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟
 
 #### <a name="restart-your-cluster-services"></a>重启群集服务
 
-如果群集出现速度变慢，请考虑通过 Ambari UI 或 Azure CLI 重启服务。 群集可能遇到暂时性的错误，而重启是稳定环境并可能提高性能的最快捷方法。
+如果群集速度变慢，请考虑通过 Ambari UI 或 Azure 经典 CLI 重启服务。 群集可能遇到暂时性的错误，而重启是稳定环境并可能提高性能的最快捷方法。
 
 ## <a name="step-3-view-your-clusters-health"></a>步骤 3：查看群集的运行状况
 

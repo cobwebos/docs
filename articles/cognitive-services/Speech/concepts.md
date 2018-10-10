@@ -1,5 +1,6 @@
 ---
-title: 概念 | Microsoft Docs
+title: 必应语音概念 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: Microsoft 语音服务中使用的基本概念。
 services: cognitive-services
 author: zhouwangzw
@@ -7,14 +8,15 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bc23f4fb7dfc045a0f8cc87155c31875c4de8450
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08790d73dd4fd182d8129c755a291fd99b6136a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365703"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954103"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -73,13 +75,13 @@ ms.locfileid: "35365703"
 Microsoft 语音识别服务为开发者提供了两种向其应用添加语音的方法。
 
 - [REST API](GetStarted/GetStartedREST.md)：开发者可使用从其应用到服务的 HTTP 调用来进行语音识别。
-- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发者可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库支持使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）。
+- [客户端库](GetStarted/GetStartedClientLibraries.md)：对于高级功能，开发人员可下载 Microsoft 语音客户端库，并链接到其应用。  客户端库在使用不同语言（C#、Java、JavaScript、ObjectiveC）的多种平台（Windows、Android、iOS）上可用。
 
 | 用例 | [REST API](GetStarted/GetStartedREST.md) | [客户端库](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| 转换短语音音频，例如无中间结果的命令（音频长度 < 15 s） | 是 | 是 |
-| 转换长音频 (> 15 s) | 否 | 是 |
-| 流式传输含所需中间结果的音频 | 否 | 是 |
+| 转换短语音音频，例如无中间结果的命令（音频长度 < 15 秒） | 是 | 是 |
+| 转换长音频（> 15 秒） | 否 | 是 |
+| 流式传输具有所需中间结果的音频 | 否 | 是 |
 | 了解使用 LUIS 从音频转换的文本 | 否 | 是 |
 
  如果你的语言或平台还没有 SDK，可基于[协议文档](API-Reference-REST/websocketprotocol.md)创建自己的实现。
@@ -186,7 +188,7 @@ Microsoft 语音服务可在听录响应中返回各种有效负载格式。 所
 
 可通过指定 `format` URL 查询参数来控制短语结果格式。 默认情况下，该服务返回 `simple` 结果。
 
-| 格式 | 说明 |
+| 格式 | Description |
 |-----|-----|
 | `simple` | 简化的短语结果，包含识别状态和已识别文本的显示形式。 |
 | `detailed` | 短语结果的识别状态和 N-best 列表，其中每个短语结果包含所有四种识别形式和置信度分数。 |
@@ -303,7 +305,7 @@ ITN 形式最适合用于要处理已识别文本的应用程序。 例如，应
 
 Microsoft 语音服务识别所有形式的人类话语，包括许多人归类为“不当”的字词和短语。 可使用不当字词查询参数控制服务处理不当字词的方式。 默认情况下，该服务会屏蔽 speech.phrase 结果中的不当字词，并且不会返回包含不当字词的 speech.hypothesis 消息。
 
-| 不当字词值 | 说明 |
+| 不当字词值 | Description |
 | - | - |
 | `masked` | 用星号屏蔽不当字词。 此选项为默认行为。 | 
 | `removed` | 删除所有结果中的不当字词。 |

@@ -1,25 +1,26 @@
 ---
-title: Microsoft 语音翻译 API 语言方法 | Microsoft Docs
-titleSuffix: Cognitive Services
-description: 使用 Microsoft 语音翻译 API 语言方法。
+title: 语音翻译 API 语言方法
+titleSuffix: Azure Cognitive Services
+description: 使用语音翻译 API 语言方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 5396e3be17345c3c36197a9b6cbace86e1f574c1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9fbbba7ed5e81cae1d30c5a480b9f7f7a13342c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366834"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986415"
 ---
-# <a name="speech-api-languages"></a>语音 API：语言
+# <a name="translator-speech-api-languages"></a>语音翻译 API：语言
 
-Microsoft Translator 不断扩展其服务支持的语言列表。 使用此 API 可以发现当前可用于语音翻译服务的语言集。
+语音翻译不断扩展其服务支持的语言列表。 使用此 API 可以发现当前可用于语音翻译服务的语言集。
 
 可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 API 获取可用语言的代码示例。
 
@@ -129,15 +130,15 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>标头
 
-|标头|说明|Type|
+|标头|Description|Type|
 :--|:--|:--|
 X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|字符串|
 
 ### <a name="parameters"></a>parameters
 
-|参数|说明|参数类型|数据类型|
+|参数|Description|参数类型|数据类型|
 |:--|:--|:--|:--|
-|api-version    |客户端请求的 API 版本。 允许值包括：`1.0`。|query|字符串|
+|api-version    |客户端所请求的 API 的版本。 允许值包括：`1.0`。|query|字符串|
 |作用域  |要返回给客户端的受支持语言或语音集。 此参数指定为以逗号分隔的关键字列表。 以下关键字可用：<ul><li>`speech`：提供支持转录语音的语言集。</li><li>`tts`：提供支持文本-语音转换的语音集。</li><li>`text`：提供支持翻译文本的语言集。</li></ul>如果未指定值，则 `scope` 的值默认为 `text`。|query|字符串|
 |X-ClientTraceId    |客户端生成的 GUID，用于跟踪请求。 为了便于对问题进行故障排除，客户端应为每个请求提供新值并记录该值。|标头的值开始缓存响应|字符串|
 |Accept-Language    |响应中的某些字段是语言或区域的名称。 使用此参数可以定义要以哪种语言返回名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 从与 `text` 范围一起返回的语言标识符列表中选择一个标记。 对于不受支持的语言，名称以英语提供。<br/>例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。|标头的值开始缓存响应|字符串|
@@ -146,7 +147,7 @@ X-RequestId|服务器生成的值，用于标识请求并用于故障排除目�
 
 |HTTP 状态代码|原因|
 |:--|:--|
-|400|错误的请求。 请检查输入参数以确保它们有效。 响应对象包括错误的更详细描述。|
+|400|请求错误。 请检查输入参数以确保它们有效。 响应对象包括错误的更详细描述。|
 |429|请求过多。|
 |500|出现错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|
 |503|服务器暂不可用。 请重试请求。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|

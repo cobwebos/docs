@@ -1,25 +1,27 @@
 ---
-title: 适用于 Azure 认知服务中的 Microsoft 语音翻译 API 的 C# 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，有助于快速开始使用 Azure 上 Microsoft 认知服务中的 Microsoft 语音翻译 API。
+title: 快速入门：语音翻译 API C#
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，有助于快速开始使用语音翻译 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995034"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>将 Microsoft 语音翻译 API 与 C# 配合使用的快速入门 
+# <a name="quickstart-translator-speech-api-with-c"></a>快速入门：将语音翻译 API 与 C# 配合使用 
 <a name="HOLTop"></a>
 
-本文演示如何使用 Microsoft 语音翻译 API 翻译 .wav 文件中的口述内容。
+本文演示如何使用语音翻译 API 翻译 .wav 文件中的口述内容。
 
 ## <a name="prerequisites"></a>先决条件
 

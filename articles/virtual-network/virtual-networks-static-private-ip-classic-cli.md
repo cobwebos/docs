@@ -1,6 +1,6 @@
 ---
-title: 为 VM（经典）配置专用 IP 地址 - Azure CLI 1.0 | Microsoft 文档
-description: 了解如何使用 Azure 命令行接口 (CLI) 1.0 为虚拟机（经典）配置专用 IP 地址。
+title: 为 VM（经典）配置专用 IP 地址 - Azure 经典 CLI | Microsoft Docs
+description: 了解如何使用 Azure 经典命令行接口 (CLI) 为虚拟机（经典）配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a18877167d04fdb039070d5315390a846925fd29
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791801"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971138"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 为虚拟机（经典）配置专用 IP 地址
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 为虚拟机（经典）配置专用 IP 地址
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
@@ -33,12 +33,12 @@ ms.locfileid: "31791801"
 
 本文介绍经典部署模型。 还可以[在 Resource Manager 部署模型中管理静态专用 IP 地址](virtual-networks-static-private-ip-arm-cli.md)。
 
-下面的示例 Azure CLI 命令需要已创建简单的环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](virtual-networks-create-vnet-classic-cli.md) 中所述的测试环境。
+后面的示例 Azure 经典 CLI 命令需要一个已创建的简单环境。 若要运行本文档中所显示的命令，请首先构建[创建 VNet](virtual-networks-create-vnet-classic-cli.md) 中所述的测试环境。
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>如何在创建 VM 时指定静态专用 IP 地址
 若要根据上述方案在名为 *TestService* 的新云服务中创建名为 *DNS01* 的新 VM，请按照以下步骤进行操作：
 
-1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/cli/azure/install-cli-version-1.0)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure service create** 命令以创建云服务。
    
         azure service create TestService --location uscentral
@@ -124,4 +124,3 @@ ms.locfileid: "31791801"
 * 了解[保留公共 IP](virtual-networks-reserved-public-ip.md) 地址。
 * 了解[实例层级公共 IP (ILPIP) 地址](virtual-networks-instance-level-public-ip.md)。
 * 查阅[保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-

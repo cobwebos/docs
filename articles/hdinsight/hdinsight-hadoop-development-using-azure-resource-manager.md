@@ -9,28 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1988593fa7cb0d84baffc4264147d350962bb6bc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d036922d68116689d1c54c2c3e89be5accedb533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093061"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983476"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
 
-HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用 Azure 资源管理器的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于资源管理器的新方法的指导。 本文档将重点介绍适用于 HDInsight 的 ASM 与资源管理器方法之间的差异（如果适用）。
+HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure 经典 CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用 Azure 资源管理器的 PowerShell、CLI 和 .NET SDK 版本。 本文章提供有关如何迁移到基于资源管理器的新方法的指导。 本文档将重点介绍适用于 HDInsight 的 ASM 与资源管理器方法之间的差异（如果适用）。
 
 > [!IMPORTANT]
 > **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持会终止。
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>将 Azure CLI 迁移到 Azure 资源管理器
+## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>将 Azure 经典 CLI 迁移到 Azure 资源管理器
 
 > [!IMPORTANT]
-> Azure CLI 2.0 未提供针对使用 HDInsight 群集的支持。 因此，仍可通过 Azure CLI 1.0 来使用 HDInsight，但是 Azure CLI 1.0 已弃用。
+> Azure CLI 未提供针对使用 HDInsight 群集的支持。 因此，仍可通过 Azure 经典 CLI 来使用 HDInsight，但是 Azure 经典 CLI 已弃用。
 
-以下是通过 Azure CLI 1.0 使用 HDInsight 的基本命令：
+以下是通过 Azure 经典 CLI 使用 HDInsight 的基本命令：
 
 * `azure hdinsight cluster create` - 创建新的 HDInsight 群集
 * `azure hdinsight cluster delete` - 删除现有的 HDInsight 群集

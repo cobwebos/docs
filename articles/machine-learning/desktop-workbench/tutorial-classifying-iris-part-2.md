@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919878"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997299"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>教程 2：鸢尾花分类 - 生成模型
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure 机器学习服务（预览版）是一个集成式的数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本教程是**由三个部分构成的系列教程的第二部分**。 在教程的此部分，请使用 Azure 机器学习服务执行以下操作：
@@ -39,7 +43,7 @@ Azure 机器学习服务（预览版）是一个集成式的数据科学和高�
 
 要完成本教程，需要：
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已创建一个试验帐户，并已根据此[快速入门](../service/quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
+- 已创建一个试验帐户，并已根据此[快速入门](quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
 - [教程第 1 部分](tutorial-classifying-iris-part-1.md)提供的项目和准备好的 Iris 数据
 - 在本地安装和运行的 Docker 引擎。 Docker 的 Community Edition 已足够。 若要了解如何安装 Docker，请参阅： https://docs.docker.com/engine/installation/。
 

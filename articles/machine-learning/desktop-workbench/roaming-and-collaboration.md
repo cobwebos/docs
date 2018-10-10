@@ -7,27 +7,33 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: b587f5dcc9558ec52b85e4b53dae0e31ad475a4e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983712"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 中的漫游和协作
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 本文介绍如何使用 Azure Machine Learning Workbench 在计算机之间设置漫游项目及与团队成员进行协作。 
 
 创建包含远程 Git 存储库链接的 Azure 机器学习项目时，该项目元数据和快照将存储在云中。 使用云链接以从不同的计算机访问该项目（漫游）。 还可以通过向团队成员授予该项目的访问权限，来与其进行协作。 
 
 ## <a name="prerequisites"></a>先决条件
-1. 安装 Machine Learning Workbench 应用。 确保有权访问 Azure 机器学习试验帐户。 有关详细信息，请参阅[安装指南](../service/quickstart-installation.md)。
+1. 安装 Machine Learning Workbench 应用。 确保有权访问 Azure 机器学习试验帐户。 有关详细信息，请参阅[安装指南](quickstart-installation.md)。
 
-2. 访问 [Visual Studio Team Services](https://www.visualstudio.com) (Team Services)，然后创建要将项目链接到的存储库。 有关详细信息，请参阅[将 Git 存储库与 Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
+2. 访问 [Azure DevOps](https://www.visualstudio.com)，然后创建要将项目链接到的存储库。 有关详细信息，请参阅[将 Git 存储库与 Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
 
 ## <a name="create-a-new-machine-learning-project"></a>创建一个新的机器学习项目
-打开 Machine Learning Workbench，然后创建新项目（例如名为 iris 的项目）。 在“Visualstudio.com GIT 存储库 URL”框中，输入 Team Services Git 存储库的有效 URL。 
+打开 Machine Learning Workbench，然后创建新项目（例如名为 iris 的项目）。 在“Visualstudio.com GIT 存储库 URL”框中，输入 Azure DevOps Git 存储库的有效 URL。 
 
 > [!IMPORTANT]
 > 如果选择空白项目模板，选择使用的 Git 存储库可能已有主分支。 机器学习只需在本地克隆此主分支即可。 这会将 aml_config 文件夹和其他项目元数据文件添加到本地项目文件夹。 
@@ -60,7 +66,7 @@ $ git push origin master
 <a name="roaming"></a>
 
 ### <a name="open-machine-learning-workbench-on-a-second-computer"></a>在另一台计算机上打开 Machine Learning Workbench
-将 Team Services Git 存储库链接到项目后，可以从装有 Machine Learning Workbench 的任何计算机访问 iris 项目。 
+将 Azure DevOps Git 存储库链接到项目后，可以从安装有 Machine Learning Workbench 的任何计算机访问 iris 项目。 
 
 若要在另一台计算机上访问 iris 项目，必须使用创建项目时所用的相同凭据登录到应用。 还需要在同一个机器学习试验帐户和工作区中。 iris 项目连同其他项目按字母顺序列在工作区中。 
 
@@ -82,11 +88,11 @@ $ git push origin master
 
 
 ### <a name="work-on-the-downloaded-project"></a>处理下载的项目 
-新下载的项目反映最后一次在项目中运行时的项目状态。 每次提交运行时，项目状态的快照会自动提交到 Team Services Git 存储库中的运行历史记录分支。 与最新运行相关联的快照用于实例化第二台计算机上的项目。 
+新下载的项目反映最后一次在项目中运行时的项目状态。 每次提交运行时，项目状态的快照会自动提交到 Azure DevOps Git 存储库中的运行历史记录分支。 与最新运行相关联的快照用于实例化第二台计算机上的项目。 
  
 
 ## <a name="collaboration"></a>协作
-可以与团队成员协作处理链接到 Team Services Git 存储库的项目。 可将机器学习试验帐户、工作区和项目的权限分配给用户。 现在，可以使用 Azure CLI 执行 Azure 资源管理器命令。 还可以使用 [Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[使用 Azure 门户添加用户](#portal)。    
+可以与团队成员协作处理链接到 Azure DevOps Git 存储库的项目。 可将机器学习试验帐户、工作区和项目的权限分配给用户。 现在，可以使用 Azure CLI 执行 Azure 资源管理器命令。 还可以使用 [Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[使用 Azure 门户添加用户](#portal)。    
 
 ### <a name="use-the-command-line-to-add-users"></a>使用命令行添加用户
 例如，Alice 是 iris 项目的所有者。 Alice 想要与 Bob 共享项目的访问权限。 
@@ -127,16 +133,16 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
 ## <a name="sample-collaboration-workflow"></a>协作工作流示例
 我们将演示一个示例，以说明协作流。 Contoso 员工 Alice 和 Bob 想要使用 Machine Learning Workbench 来协作完成一个数据科学项目。 他们的标识属于同一个 Contoso Azure Active Directory (Azure AD) 租户。 下面是 Alice 和 Bob 采取的步骤：
 
-1. 首先，Alice 在 Team Services 项目中创建了一个空的 Git 存储库。 Team Services 项目应位于在 Contoso Azure AD 租户下创建的 Azure 订阅中。 
+1. Alice 在 Azure DevOps 项目中创建了一个空的 Git 存储库。 Azure DevOps 项目应位于在 Contoso Azure AD 租户下创建的 Azure 订阅中。 
 
-2. Alice 在自己的计算机上创建了一个机器学习试验帐户、一个工作区和一个 Machine Learning Workbench 项目。 创建项目时，她输入了 Team Services Git 存储库 URL。
+2. Alice 在自己的计算机上创建了一个机器学习试验帐户、一个工作区和一个 Machine Learning Workbench 项目。 创建项目时，她输入了 Azure DevOps Git 存储库 URL。
 
-3. Alice 开始处理此项目。 她创建了一些脚本，并执行了一些运行。 对于每个运行，整个项目文件夹的快照都会作为提交内容自动推送到 Machine Learning Workbench 创建的 Team Services Git 存储库的运行历史记录分支中。
+3. Alice 开始处理此项目。 她创建了一些脚本，并执行了一些运行。 对于每个运行，整个项目文件夹的快照都会作为提交内容自动推送到 Machine Learning Workbench 创建的 Azure DevOps Git 存储库的运行历史记录分支中。
 
-4. 现在 Alice 对目前的工作很满意。 她希望将更改提交到本地分支中，并将其推送到 Team Services Git 存储库主分支。 打开项目后，Alice 在 Machine Learning Workbench 中打开命令提示符窗口，然后输入以下命令：
+4. 现在 Alice 对目前的工作很满意。 她希望将更改提交到本地主分支中，然后将其推送到 Azure DevOps Git 存储库主分支。 打开项目后，Alice 在 Machine Learning Workbench 中打开命令提示符窗口，然后输入以下命令：
     
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
@@ -148,11 +154,11 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
     # Commit changes with a comment.
     $ git commit -m "this is a good milestone"
 
-    # Push the commit to the master branch of the remote Git repo in Team Services.
+    # Push the commit to the master branch of the remote Git repo in Azure DevOps.
     $ git push
     ```
 
-5. 然后 Alice 将 Bob 作为参与者添加到工作区中。 这一步可以在 Azure 门户中完成，也可如先前所述使用 `az role assignment` 命令完成。 Alice 还授予 Bob Team Services Git 存储库的读取/写入权限。
+5. 然后 Alice 将 Bob 作为参与者添加到工作区中。 这一步可以在 Azure 门户中完成，也可如先前所述使用 `az role assignment` 命令完成。 Alice 还授予 Bob 对 Azure DevOps Git 存储库的读取/写入权限。
 
 6. Bob 在自己的计算机上登录到 Machine Learning Workbench。 他可以看到 Alice 共享给他的工作区。 他可以看到 iris 项目在该工作区下列出。 
 
@@ -165,13 +171,13 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
 9. Bob 希望获取 Alice 推送的最新更改，然后在其他分支中开始工作。 Bob 在 Machine Learning Workbench 中打开命令提示符窗口，并执行以下命令：
 
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
     $ git branch
 
-    # Get the latest commit in the Team Services Git master branch and overwrite current files.
+    # Get the latest commit in the Azure DevOps Git master branch and overwrite current files.
     $ git pull --force
 
     # Create a new local branch named "bob" so that Bob's work is done in the "bob" branch
@@ -192,7 +198,7 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
     # Commit the changes with a comment.
     $ git commit -m "I found a cool new trick."
 
-    # Create a new branch on the remote Team Services Git repo, and then push the changes.
+    # Create a new branch on the remote Azure DevOps Git repo, and then push the changes.
     $ git push origin bob
     ```
 

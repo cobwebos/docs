@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35631911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995085"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 图像分类方法可用于解决大量的计算机视觉问题。
 其中包括构建模型，用于回答诸如以下问题：“图像中是否存在对象？”，其中对象可能是（例如）狗、汽车或船。 或者，回答更为复杂的问题，例如“此患者的视网膜扫描显示眼疾严重程度属于哪一级别？”。
@@ -51,7 +56,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 运行此示例的先决条件如下所示：
 
 1. [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
-2. [Azure 机器学习 Workbench](../service/overview-what-is-azure-ml.md) 遵循[安装指南快速入门](../service/quickstart-installation.md)来安装程序并创建工作区。  
+2. [Azure 机器学习 Workbench](../service/overview-what-is-azure-ml.md) 遵循[安装指南快速入门](quickstart-installation.md)来安装程序并创建工作区。  
 3. Windows 计算机。 必须使用 Windows 操作系统，因为 Workbench 仅支持 Windows 和 MacOS，而 Microsoft 认知工具包（我们用作深度学习库）仅支持 Windows 和 Linux。
 4. 在第 1 部分中，执行 SVM 训练不需要专用的 GPU，但第 2 部分所述的优化 DNN 将需要使用。 如果你没有强大的 GPU，又希望在多个 GPU 上进行训练，又或者没有 Windows 计算机，请考虑使用具有 Windows 操作系统的 Azure 深度学习虚拟机。 有关“一键式”部署指南，请参阅[此处](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)。 部署完成后，请通过远程桌面连接来连接 VM，在其中安装 Workbench，然后从 VM 本地执行代码。
 5. 需要安装 OpenCV 等多种 Python 库。 在 Workbench 上的“文件”菜单中单击“打开命令提示符”，运行以下命令安装这些依赖项：  
@@ -95,7 +100,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 ## <a name="data-description"></a>数据说明
 
-本教程使用包含多达 428 个图像组成的上衣纹理数据集作为运行示例。 每个图像将批注为三种不同的纹理（圆点、条纹、豹纹）之一。 我们使用了较少数量的图像，以便本教程可以快速执行。 但是，此代码已经过良好测试，可用于成千上万或更多个图像。 所有图像均使用必应图像搜索进行抓取，并已按[第 3 部分](#using-a-custom-dataset)的说明进行了手动批注。 带有各自属性的图像 URL 列在 /resources/fashionTextureUrls.tsv 文件中。
+本教程使用包含多达 428 个图像组成的上衣纹理数据集作为运行示例。 每个图像将批注为三种不同的纹理（圆点、条纹、豹纹）之一。 我们使用了较少数量的图像，以便本教程可以快速执行。 但是，此代码已经过良好测试，可用于成千上万或更多个图像。 所有图像均按[第 3 部分](#using-a-custom-dataset)的说明进行了手动批注。 带有各自属性的图像 URL 列在 /resources/fashionTextureUrls.tsv 文件中。
 
 脚本 `0_downloadData.py` 将所有图像下载到 DATA_DIR/images/fashionTexture/ 目录。 这 428 个 URL 中可能有部分已断开。 这并不是问题，只是意味着我们用于培训和测试的图像数量略有减少。 此示例中所提供的全部脚本均需在本地执行，而不适用于 Docker 远程环境等场合。
 
@@ -263,11 +268,11 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 
 ## <a name="part-3---custom-dataset"></a>第 3 部分 - 自定义数据集
 
-在第 1 和第 2 部分，我们使用提供的上衣纹理图像训练并计算了图像分类模型。 现在，我们将介绍如何改用自定义用户提供的数据集。 或者，如果这一方法不可用，如何使用必应图像搜索生成并批注这类数据集。
+在第 1 和第 2 部分，我们使用提供的上衣纹理图像训练并计算了图像分类模型。 现在，我们将介绍如何改用自定义用户提供的数据集。 
 
 ### <a name="using-a-custom-dataset"></a>使用自定义数据集
 
-首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 DATA_DIR/images/fashionTexture/ 中是如何划分到不同子文件夹“圆点”、“\*豹纹”和“条纹”中。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
+首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 *DATA_DIR/images/fashionTexture/* 中是如何划分到不同子文件夹*圆点*、*豹纹*和*条纹*中的。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +285,23 @@ datasetName = "fashionTexture"
 
 ### <a name="image-scraping-and-annotation"></a>图像抓取和批注
 
-为训练和测试收集足够数量的带批注图像可能很困难。 解决此问题的一种方法是从 Internet 抓取图像。 例如，查询“条纹 T 恤”的必应图像搜索结果将如下所示。 正如所料，大部分图像确实为条纹 T 恤。 可以轻松识别并删除少数不正确或不明确的图像（例如，第 1 列第 1 行或第 3 列第 2 行）。
+为训练和测试收集足够数量的带批注图像可能很困难。 解决此问题的一种方法是从 Internet 抓取图像。
+
+> [!IMPORTANT] 
+> 对于所使用的任何图像，请确保没有违反该图像的版权和许可。 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 若要生成大型多样化数据集，应使用多个查询。 例如，可以使用服装 {blouse, hoodie, pullover, sweater, shirt, t-shirt, vest} 和属性 {striped, dotted, leopard} 的所有组合自动合成 7\*3 = 21 个查询。 每个查询下载前 50 个图像，将会得到最多 21*50=1050 个图像。
 
-与从必应图像搜索手动下载图像相比，改用[认知服务必应图像搜索 API](https://www.microsoft.com/cognitive-services/bing-image-search-api) 要方便得多，该 API 可使用给定的查询字符串返回一组图像 URL。
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 部分下载的图像会完全或几乎重复（例如，只有图像分辨率或 jpg 伪影不同）。 应删除这些重复项，以便训练和测试拆分不包含相同的图像。 可以使用基于哈希的方法删除重复的图像，此方法包括两个步骤：(i) 首先，计算所有图像的哈希字符串；(ii) 第二次将鼠标悬停在图像上时，只保留哈希字符串从未见过的图像。 放弃所有其他图像。 我们在 Python 库 `imagehash` 中发现了 `dhash` 方法，并在此[博客](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html)中进行了介绍，在将参数 `hash_size` 设置为 16 时此方法效果较好。 错误地删除某些非重复图像也没有关系，只要删除了大部分真正的重复项即可。
 

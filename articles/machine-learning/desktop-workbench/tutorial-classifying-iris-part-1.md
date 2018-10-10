@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722977"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990155"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>教程 1：鸢尾花分类 - 准备数据
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
@@ -32,6 +35,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 本教程使用了历久弥新的[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 
 
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -40,11 +45,11 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 - 一个 Azure 机器学习试验帐户
 - 已安装 Azure Machine Learning Workbench
 
-如果尚不具备这两个先决条件，请按[快速入门：安装和启动](../service/quickstart-installation.md)一文中的步骤设置帐户并安装 Azure Machine Learning Workbench 应用程序。 
+如果尚不具备这两个先决条件，请按[快速入门：安装和启动](quickstart-installation.md)一文中的步骤设置帐户并安装 Azure Machine Learning Workbench 应用程序。 
 
 ## <a name="create-a-new-project-in-workbench"></a>在 Workbench 中创建新项目
 
-如果已按[快速入门：安装和启动](../service/quickstart-installation.md)一文中的步骤操作，则应该已经有了该项目，可以跳到下一部分。
+如果已按[快速入门：安装和启动](quickstart-installation.md)一文中的步骤操作，则应该已经有了该项目，可以跳到下一部分。
 
 1. 打开 Azure Machine Learning Workbench 应用，并根据需要登录。 
    
@@ -57,12 +62,12 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 1. 填充各窗体字段，然后选择“创建”按钮在 Workbench 中创建新项目。
 
-   字段|针对教程建议的值|说明
+   字段|针对教程建议的值|Description
    ---|---|---
    项目名称 | myIris |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    项目目录 | c:\Temp\ | 指定在其中创建项目的目录。
    项目说明 | 留空 | 用于描述项目的可选字段。
-   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 可以在 Visual Studio Team Services 中将项目与 Git 存储库关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
+   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 可以将项目与 Azure DevOps 上的 Git 存储库进行关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
    所选工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
    项目模板 | 鸢尾花分类 | 模板包含的脚本和数据可以用来探索产品的功能。 此模板包含的脚本和数据是本快速入门以及此文档站点中的其他教程所需要的。 
 
@@ -161,7 +166,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 1. 注意“步骤”窗格中详述的各个数据准备步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整其设置、为步骤重新排序，以及删除步骤。
 
-   ![步骤](media/tutorial-classifying-iris/steps.png)
+   ![Steps](media/tutorial-classifying-iris/steps.png)
 
 1. 关闭数据准备编辑器。 选择带图标的“iris-1”选项卡上的 x 图标，将该选项卡关闭。工作会自动保存到“数据准备”标题下显示的 iris-1.dprep 文件中。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1ac965896dc3356f33e6461cf390e4345663c3d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068621"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982080"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>处理 Linux 虚拟机的计划内维护通知
 
@@ -108,7 +108,7 @@ az vm perform-maintenance -g rgName -n vmName
 
 ## <a name="classic-deployments"></a>经典部署
 
-如果你仍在使用由经典部署模型部署的旧 VM，则可以使用 CLI 1.0 查询 VM，并启动维护。
+如果你仍有通过使用经典部署模型部署的旧 VM，则可以使用 Azure 经典 CLI 查询 VM，并启动维护。
 
 通过键入以下内容确保在正确模式下使用经典 VM：
 
@@ -177,9 +177,9 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **答：** 在多种用例下，在已完成维护性的重新部署后，会看到 VM 已计划进行维护：
 1.  我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。
-2.  由于硬件故障，已在另一个节点上对 VM 进行*服务修复*。
+2.  由于硬件故障，已在另一个节点上对 VM 进行服务修复。
 3.  选择了停止（解除分配）VM 并将其重启。
-4.  已经为 VM 启用了**自动关闭**。
+4.  已经为 VM 启用了自动关闭。
 
 
 ## <a name="next-steps"></a>后续步骤

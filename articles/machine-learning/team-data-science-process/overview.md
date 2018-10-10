@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125753"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996445"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -71,7 +71,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 ## <a name="standardized-project-structure"></a>标准化项目结构
 
-让所有项目共享一个目录结构并对项目文档使用模板可以方便团队成员查找有关其项目的信息。 所有代码和文档存储在 Git、TFS 或 Subversion 等版本控制系统 (VCS) 中，以实现团队协作。 在 Jira、Rally、Visual Studio Team Services 等敏捷项目跟踪系统中跟踪任务和功能可以更密切地跟踪各项功能的代码。 此类跟踪还可让团队获得更准确的成本估算。 TDSP 建议在 VCS 中为每个项目创建一个独立的存储库，以实现版本控制、信息安全和协作。 为所有项目建立标准化结构有助于在整个组织中积累系统性的认知。
+让所有项目共享一个目录结构并对项目文档使用模板可以方便团队成员查找有关其项目的信息。 所有代码和文档存储在 Git、TFS 或 Subversion 等版本控制系统 (VCS) 中，以实现团队协作。 在 Jira、Rally 和 Azure DevOps 等敏捷项目跟踪系统中跟踪任务和功能可以更密切地跟踪各项功能的代码。 此类跟踪还可让团队获得更准确的成本估算。 TDSP 建议在 VCS 中为每个项目创建一个独立的存储库，以实现版本控制、信息安全和协作。 为所有项目建立标准化结构有助于在整个组织中积累系统性的认知。
 
 我们在标准位置为文件夹结构和所需的文档提供模板。 此文件夹结构可以组织包含用于数据探索和特征提取以及记录模型迭代的代码的文件。 这些模板可让团队成员更轻松地了解其他人完成的工作，以及将新成员添加到团队。 可以使用标记格式轻松查看和更新文档模板。 使用模板提供包含每个项目关键问题的检查列表，以确保完善定义问题，以及交付件满足预期的质量。 示例包括：
 

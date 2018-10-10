@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445205"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996836"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>为 Azure Active Directory 中的全局管理员提升访问权限
 
@@ -37,7 +37,9 @@ ms.locfileid: "37445205"
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>使用 Azure 门户为全局管理员提升访问权限
+## <a name="azure-portal"></a>Azure 门户
+
+请按照这些步骤，使用 Azure 门户为全局管理员提升访问权限。
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
@@ -59,7 +61,9 @@ ms.locfileid: "37445205"
 
 1. 在提升访问权限下执行需要完成的任务。 完成后，将开关重新设置为“否”。
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>使用 PowerShell 列出根范围 (/) 内的角色分配
+## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="list-role-assignment-at-the-root-scope-"></a>列出根范围 (/) 处的角色分配
 
 若要列出用户在根范围 (`/`) 内的用户访问管理员角色分配，请使用 [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) 命令。
 
@@ -79,7 +83,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>使用 PowerShell 在根范围 (/) 删除角色分配
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>删除根范围 (/) 处的角色分配
 
 若要在根范围 (`/`) 删除用户的用户访问管理员角色分配，请运行 [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) 命令。
 
@@ -88,7 +92,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>使用 REST API 为全局管理员提升访问权限
+## <a name="rest-api"></a>REST API
+
+### <a name="elevate-access-for-a-global-administrator"></a>为局管理员提升访问权限
 
 使用以下基本步骤，通过 REST API 为全局管理员提升访问权限。
 
@@ -117,7 +123,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
 
 1. 撤销用户访问管理员特权一直到再次需要时。
 
-## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>使用 REST API 在根范围 (/) 列出角色分配
+### <a name="list-role-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的角色分配
 
 可以在根范围 (`/`) 列出用户的所有角色分配。
 
@@ -127,7 +133,17 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-## <a name="remove-elevated-access-using-the-rest-api"></a>使用 REST API 撤销提升的访问权限
+### <a name="list-deny-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的拒绝分配
+
+可以在根范围 (`/`) 列出用户的所有拒绝分配。
+
+- 调用 GET denyAssignments，其中 `{objectIdOfUser}` 是要检索其拒绝分配的用户的对象 ID。
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
+   ```
+
+### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
 调用 `elevateAccess` 即为自己创建角色分配，因此若要撤销这些特权，需要删除分配。
 

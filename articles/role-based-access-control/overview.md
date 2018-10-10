@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714445"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956498"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>什么是基于角色的访问控制 (RBAC)？
 
@@ -89,7 +89,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 - 如果在订阅范围向某个组分配了[读取者](built-in-roles.md#reader)角色，则该组的成员可以查看订阅中的每个资源组和资源。
 - 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组资源。
 
-### <a name="role-assignment"></a>角色分配
+### <a name="role-assignments"></a>角色分配
 
 角色分配是出于授予访问权限的目的，在特定的范围将角色定义绑定到用户、组或服务主体的过程。 通过创建角色分配来授予访问权限，通过删除角色分配来撤销访问权限。
 
@@ -98,6 +98,32 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 ![用于控制访问权限的角色分配](./media/overview/rbac-overview.png)
 
 可以使用 Azure 门户、Azure CLI、Azure PowerShell、Azure SDK 或 REST API 创建角色分配。 每个订阅中最多可以包含 2000 个角色分配。 若要创建和删除角色分配，必须拥有 `Microsoft.Authorization/roleAssignments/*` 权限。 此权限是通过[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)角色授予的。
+
+## <a name="deny-assignments"></a>拒绝分配
+
+以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作绑定到特定范围内的用户、组或服务主体，以便拒绝访问。 角色分配定义了一组*允许*的操作，而拒绝分配定义了一组*不允许*的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。
+
+当前，拒绝分配为“只读”，且只能由 Azure 设置。 即使无法自行创建拒绝分配，也可列出拒绝分配，因为它们可能会影响你的有效权限。 若要获取有关拒绝分配的信息，必须具有 `Microsoft.Authorization/denyAssignments/read` 权限，大部分[内置角色](built-in-roles.md#owner)都包含该权限。 有关详细信息，请参阅[了解拒绝分配](deny-assignments.md)。
+
+## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>RBAC 如何确定用户是否有权访问资源
+
+以下是 RBAC 用于确定你是否可以访问管理平面上的资源的高级步骤。 如果正在尝试对访问问题进行故障排除，这有助于了解问题。
+
+1. 用户（或服务主体）获取 Azure 资源管理器的令牌。
+
+    令牌包含用户的组成员身份（包括可传递的组成员身份）。
+
+1. 用户使用附加的令牌对 Azure 资源管理器发出 REST API 调用。
+
+1. Azure 资源管理器检索适用于对其执行操作的资源的所有角色分配和拒绝分配。
+
+1. Azure 资源管理器缩小适用于此用户或其组的角色分配范围，并确定用户针对此资源拥有的角色。
+
+1. Azure 资源管理器确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。
+
+1. 如果用户在请求的范围内没有具有该操作的角色，则不授予访问权限。 否则，Azure 资源管理器会检查是否适用拒绝分配。
+
+1. 如果拒绝分配适用，则阻止访问。 否则授予访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

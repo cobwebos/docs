@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 Azure CLI 2.0 自动缩放规模集 | Microsoft Docs
-description: 了解如何使用 Azure CLI 2.0 随 CPU 需求的增减自动缩放虚拟机规模集
+title: 教程 - 使用 Azure CLI 自动缩放规模集 | Microsoft Docs
+description: 了解如何使用 Azure CLI 随 CPU 需求的增减自动缩放虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4dedf4a84d5eaa47018fe0cd1cb6fd9a92d8ef7e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c3d536cd4fb99d6d83b973989279d289e8434a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630146"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995358"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>教程：使用 Azure CLI 2.0 自动缩放虚拟机规模集
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 自动缩放虚拟机规模集
 
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
 
@@ -37,7 +37,7 @@ ms.locfileid: "38630146"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Azure CLI 2.0 自动进行规模集的横向缩减或扩展：
+本教程介绍了如何使用 Azure CLI 自动进行规模集的横向缩减或扩展：
 
 > [!div class="checklist"]
 > * 对规模集使用自动缩放
@@ -224,7 +224,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 对 VM 实例进行压力测试并触发自动缩放规则
 > * 在需求下降时自动横向缩减
 
-如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 2.0 示例脚本：
+如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 示例脚本：
 
 > [!div class="nextstepaction"]
-> [适用于 Azure CLI 2.0 的规模集脚本示例](cli-samples.md)
+> [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)

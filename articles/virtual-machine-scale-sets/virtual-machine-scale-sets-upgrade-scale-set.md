@@ -1,6 +1,6 @@
 ---
 title: 修改 Azure 虚拟机规模集 | Microsoft Docs
-description: 了解如何使用 REST API、Azure PowerShell 和 Azure CLI 2.0 修改和更新 Azure 虚拟机规模集
+description: 了解如何使用 REST API、Azure PowerShell 和 Azure CLI 修改和更新 Azure 虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: gatneil
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194040"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996649"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
-在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 2.0 修改现有规模集。
+在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 修改现有规模集。
 
 ## <a name="fundamental-concepts"></a>基本概念
 
@@ -42,7 +42,7 @@ ms.locfileid: "32194040"
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss show](/cli/azure/vmss#az_vmss_show)：
+- 通过 Azure CLI 使用 [az vmss show](/cli/azure/vmss#az_vmss_show)：
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -50,7 +50,7 @@ ms.locfileid: "32194040"
 
 - 还可以使用 [resources.azure.com](https://resources.azure.com) 或特定于语言的 [Azure SDK](https://azure.microsoft.com/downloads/)。
 
-输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 2.0 的精简版示例输出：
+输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -86,7 +86,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
     Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)：
+- 通过 Azure CLI 使用 [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)：
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -94,7 +94,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 - 还可以使用 [resources.azure.com](https://resources.azure.com) 或特定于语言的 [Azure SDK](https://azure.microsoft.com/downloads/)
 
-输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 2.0 的精简版示例输出：
+输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
@@ -140,7 +140,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss show](/cli/azure/vmss#az_vmss_show)：
+- 通过 Azure CLI 使用 [az vmss show](/cli/azure/vmss#az_vmss_show)：
 
     ```azurecli
     az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -148,7 +148,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
 
 - 还可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/)。
 
-输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 2.0 的精简版示例输出：
+输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
 ```azurecli
 $ az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -180,7 +180,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
     Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)
+- 通过 Azure CLI 使用 [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -188,7 +188,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 - 还可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/)
 
-输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 2.0 的精简版示例输出：
+输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
 ```azurecli
 $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -259,7 +259,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss update](/cli/azure/vmss#az_vmss_update)：
+- 通过 Azure CLI 使用 [az vmss update](/cli/azure/vmss#az_vmss_update)：
     - 修改属性：
 
         ```azurecli
@@ -306,7 +306,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances)：
+- 通过 Azure CLI 使用 [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances)
 
     ```azurecli
     az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
@@ -331,7 +331,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage)：
+- 通过 Azure CLI 使用 [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage)：
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -392,7 +392,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
     ```
 
-- 通过 Azure CLI 2.0 使用 [az vmss update](/cli/azure/vmss#az_vmss_update_instances)：
+- 通过 Azure CLI 使用 [az vmss update](/cli/azure/vmss#az_vmss_update_instances)：
 
     ```azurecli
     az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
@@ -418,7 +418,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
     ```
 
-- Azure CLI 2.0：
+- Azure CLI：
 
     ```azurecli
     # Remove the load balancer backend pool from the scale set model
@@ -436,4 +436,4 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 
 ## <a name="next-steps"></a>后续步骤
-还可以使用 [Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) 对规模集执行常见管理任务。
+还可以使用 [Azure CLI](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) 对规模集执行常见的管理任务。

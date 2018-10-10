@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977564"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
 
 ## <a name="prerequisites"></a>先决条件
-本主题假设用户已有一个有效的 Azure 订阅（[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)），并已在 Azure 订阅中预配 VM。 请确保已安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 订阅，并[创建 VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+本主题假设用户已有一个有效的 Azure 订阅（[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)），并已在 Azure 订阅中预配 VM。 在[创建 VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 之前，请确保已安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 订阅。
 
 ## <a name="azure-os-disk"></a>Azure OS 磁盘
 在 Azure 中创建 Linux VM 后，它将具有两个与之关联的磁盘。 **/dev/sda** 是 OS 磁盘，**/dev/sdb** 是临时磁盘。  请勿将主要 OS 磁盘 (**/dev/sda**) 用于操作系统以外的用途，因为它已针对快速启动 VM 进行优化，无法为工作负荷提供良好的性能。 要获得持久且经过优化的数据存储，可以将一个或多个磁盘附加到 VM。 
@@ -42,7 +42,7 @@ ms.locfileid: "33944529"
 * 如果使用的是 **XFS**，请使用装入选项 `nobarrier` 禁用屏障（若要启用屏障，请使用 `barrier`）
 
 ## <a name="unmanaged-storage-account-considerations"></a>非托管存储帐户注意事项
-使用 Azure CLI 2.0 创建 VM 时的默认操作是使用 Azure 托管磁盘。  这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。  非托管磁盘需要存储帐户，且需要进行更多的性能考虑。  有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md)。  以下部分概述的性能注意事项仅适用于用户使用非托管磁盘的情况。  同样，默认的和建议的存储解决方案是使用托管磁盘。
+使用 Azure CLI 创建 VM 时的默认操作是使用 Azure 托管磁盘。  这些磁盘由 Azure 平台处理，无需任何准备或位置来存储它们。  非托管磁盘需要存储帐户，且需要进行更多的性能考虑。  有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../windows/managed-disks-overview.md)。  以下部分概述的性能注意事项仅适用于用户使用非托管磁盘的情况。  同样，默认的和建议的存储解决方案是使用托管磁盘。
 
 如果使用非托管磁盘创建 VM，请务必从区域与 VM 相同的存储帐户附加磁盘，以确保高度邻近性并降低网络延迟。  每个标准存储帐户最多有 20k IOps 和 500 TB 大小的容量。  此限制大约相当于 40 个重度使用的磁盘，包括 OS 磁盘和用户创建的任何数据磁盘。 高级存储帐户没有 IOps 上限，但有 32 TB 的大小限制。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "33944529"
 
 在 Ubuntu 云映像上，必须使用 cloud-init 配置交换分区。 有关详细信息，请参阅 [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
-对于不带 cloud-init 支持的映像，从 Azure Marketplace 部署的 VM 映像具有与 OS 集成的 VM Linux 代理。 此代理使 VM 可以与各种 Azure 服务进行交互。 假设已从 Azure Marketplace 部署标准映像，则需执行以下操作来正确配置 Linux 交换文件设置：
+对于不带 cloud-init 支持的映像，从 Azure 市场部署的 VM 映像具有与 OS 集成的 VM Linux 代理。 此代理使 VM 可以与各种 Azure 服务进行交互。 假设已从 Azure 市场部署标准映像，则需执行以下操作来正确配置 Linux 交换文件设置：
 
 找出并修改 **/etc/waagent.conf** 文件中的两个条目。 这些条目控制专用交换文件的存在状态和交换文件的大小。 要修改的参数是 `ResourceDisk.EnableSwap=N` 和 `ResourceDisk.SwapSizeMB=0` 
 
@@ -118,7 +118,7 @@ Found memtest86+ image: /memtest86+.bin
 done
 ```
 
-对于 Redhat 分发系列，只需以下命令：   
+对于 Red Hat 分发系列，只需运行以下命令：   
 
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local

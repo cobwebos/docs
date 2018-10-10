@@ -1,22 +1,24 @@
 ---
-title: 在 iOS 上的 Objective-C 中开始使用 Microsoft 语音识别 API | Microsoft Docs
-description: 使用 Microsoft 语音识别 API 开发用于将语音转换为文本的 iOS 应用程序。
+title: 在 iOS 上的 Objective-C 中开始使用必应语音识别 API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: 使用必应语音识别 API 开发用于将语音转换为文本的 iOS 应用程序。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bbb8d3975cdab537135b97ca9bbf6e845aa3fa0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: a12c9b5325898afe508398f67939c39e591eb1cc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365680"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954494"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-objective-c-on-ios"></a>在 iOS 上的 Objective-C 中开始使用语音识别 API
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>快速入门：在 iOS 上的 Objective-C 中使用必应语音识别 API
 
 通过语音识别 API，可以开发使用基于云的语音服务将语音转换为文本的 iOS 应用程序。 API 支持实时流式处理，因此应用程序可以在将音频发送到服务的同时以同步和异步方式接收部分识别结果。
 
@@ -34,7 +36,7 @@ ms.locfileid: "35365680"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API 并获取免费试用的订阅密钥
 
-语音 API 是认知服务（之前称为 Project Oxford）的一部分。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
 
 如果想使用“意向识别”，还需要注册[语言理解智能服务 (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)。
 
@@ -122,7 +124,7 @@ ms.locfileid: "35365680"
 
 使用 `SpeechRecognitionServiceFactory` 创建客户端时，还需要指定 `SpeechRecognitionMode`：
 
-* `SpeechRecognitionMode_ShortPhrase`：最长 15 秒的语音。 当将数据发送到服务时，客户端接收多个部分结果和一个具有多个 n-best 选择的最终结果。
+* `SpeechRecognitionMode_ShortPhrase`：最长 15 秒的语音。 将数据发送到服务时，客户端接收到多个部分结果和一个具有多个 n-best 选择的最终结果。
 * `SpeechRecognitionMode_LongDictation`：长达两分钟的语音。 当将数据发送到服务时，基于服务器标识的语句停顿位置，客户端会接收到多个部分结果和多个最终结果。
 
 ### <a name="attach-event-handlers"></a>附加事件处理程序
@@ -131,11 +133,11 @@ ms.locfileid: "35365680"
 
 * **部分结果事件**：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。
 * **错误事件**：服务检测到错误时调用。
-* **意向事件**：在最终识别结果被解析为结构化 JSON 意向后，在“WithIntent”客户端（仅限 ShortPhrase 模式）进行调用。
+* 意向事件：在最终识别结果被解析为结构化 JSON 意向后，在“WithIntent”客户端（仅限 ShortPhrase 模式）进行调用。
 * **结果事件**：
   * 在 `SpeechRecognitionMode_ShortPhrase` 模式下，在你说完后调用此事件并返回 n-best 结果。
   * 在 `SpeechRecognitionMode_LongDictation` 模式下，基于服务指示的语句停顿位置，多次调用事件处理程序。
-  * 对于每一个 n-best 选择，都将返回一个可信度值和一些不同窗体的识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
+  * 对于每个最优选择，返回置信度值和几种不同形式的已识别文本。 有关详细信息，请参阅[输出格式](../Concepts.md#output-format)。
 
 ## <a name="related-topics"></a>相关主题
 

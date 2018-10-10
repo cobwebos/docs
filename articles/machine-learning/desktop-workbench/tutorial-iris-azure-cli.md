@@ -10,14 +10,18 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 10fe861682da6c1d1ac701a565cef11f9b44cd1e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41917659"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967891"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本教程介绍如何使用 Azure 机器学习预览版功能中的命令行接口 (CLI) 工具来执行以下操作： 
@@ -34,7 +38,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
   
   如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 根据[快速入门：安装和启动 Azure 机器学习服务](../service/quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 应用程序。 
+- 根据[快速入门：安装和启动 Azure 机器学习服务](quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 应用程序。 
 
   >[!IMPORTANT]
   >请勿创建 Azure 机器学习服务帐户，因为你将在本文中使用 CLI 来创建该帐户。
@@ -139,16 +143,16 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>创建与云 Git 存储库关联的新项目
-可以创建与 VSTS (Visual Studio Team Service) Git 存储库关联的新项目。 每次提交试验时，都会将整个项目文件夹的快照提交到远程 Git 存储库。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
+可以创建与 Azure DevOps Git 存储库关联的新项目。 每次提交试验时，都会将整个项目文件夹的快照提交到远程 Git 存储库。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
 
 > [!NOTE]
-> Azure 机器学习仅支持在 VSTS 中创建的空 Git 存储库。
+> Azure 机器学习仅支持在 Azure DevOps 中创建的空 Git 存储库。
 
 ```azure-cli
 $ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
 ```
 > [!TIP]
-> 如果收到错误“存储库 URL 可能无效，或者用户可能没有访问权限”，可以在 VSTS 中创建安全令牌（“安全性”下的“添加个人访问令牌”菜单），并在创建项目时使用 `--vststoken` 参数。 
+> 如果收到错误“存储库 URL 可能无效，或者用户可能没有访问权限”，可以在 Azure DevOps 中创建安全令牌（“安全性”下的“添加个人访问令牌”菜单），并在创建项目时使用 `--vststoken` 参数。 
 
 ### <a name="sample_create"></a>从示例创建新项目
 此示例将示例项目用作模板来创建新项目。

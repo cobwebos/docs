@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 在开发测试实验室中创建和管理虚拟机 | Microsoft Docs
-description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 2.0 创建和管理虚拟机
+description: 了解如何通过 Azure 开发测试实验室，使用 Azure CLI 创建和管理虚拟机
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434673"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995937"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>使用 Azure CLI 通过开发测试实验室创建和管理虚拟机
 本快速入门将指导用户在实验室中进行创建、启动、连接、更新和清理开发计算机等操作。 
@@ -27,7 +27,7 @@ ms.locfileid: "39434673"
 
 * 如果尚未创建实验室，[此处](devtest-lab-create-lab.md)提供相关说明。
 
-* [安装 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 若要开始，请运行 az login，创建与 Azure 的连接。 
+* [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 若要开始，请运行 az login，创建与 Azure 的连接。 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>创建并验证虚拟机 
 使用 ssh 身份验证从市场映像创建 VM。

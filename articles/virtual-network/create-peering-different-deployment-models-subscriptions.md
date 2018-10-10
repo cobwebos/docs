@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 4883791a32a65746a72afb63755ecf608dc840d9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503819"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971716"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -97,18 +97,17 @@ ms.locfileid: "39503819"
 
 ## <a name="cli"></a>创建对等互连 - Azure CLI
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 
+本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 使用 Azure 经典 CLI 和 Azure CLI 完成以下步骤。 可在 Azure Cloud Shell 中完成这些步骤，只需在以下任一步骤中选择“试用”按钮，或者安装[经典 CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 并在本地计算机上运行命令。
 
-1. [安装](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 1.0，创建虚拟网络（经典）。
-2. 使用 `azure login` 命令打开 CLI 并以用户 B 的身份登录到 Azure。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
-3. 输入 `azure config mode asm` 命令，在服务管理模式下运行 CLI 命令。
-4. 输入以下命令创建虚拟网络（经典）：
- 
+1. 如果使用 Cloud Shell，请跳到步骤 2，因为 Cloud Shell 会自动登录到 Azure。 使用 `azure login` 命令打开命令会话并登录 Azure。
+2. 输入 `azure config mode asm` 命令，在服务管理模式下运行经典 CLI。
+3. 输入下述经典 CLI 命令以创建虚拟网络（经典）：
+
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. 必须通过[安装的](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 2.0.4 或更高版本使用 bash shell 或使用 Azure Cloud Shell 来完成其余步骤。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 单击下面脚本中的“试用”按钮，此时会打开一个可登录到 Azure 帐户的 Cloud Shell。 有关在 Windows 客户端上运行 bash CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。 
-6. 将以下脚本复制到计算机上的文本编辑器。 将 `<SubscriptionB-Id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。复制修改后的脚本，将其粘贴到 CLI 2.0 会话中，然后按 `Enter`。 
+4. 必须使用 bash shell 和 Azure CLI（非经典 CLI）完成其余步骤。
+5. 将以下脚本复制到计算机上的文本编辑器。 将 `<SubscriptionB-Id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。复制修改后的脚本，将其粘贴到 CLI 会话中，然后按 `Enter`。
 
     ```azurecli-interactive
     az role assignment create \
@@ -118,8 +117,8 @@ ms.locfileid: "39503819"
     ```
 
     在步骤 4 中创建虚拟网络（经典）后，Azure 在 Default-Networking 资源组中创建了虚拟网络。
-7. 以用户 B 的身份注销 Azure，并以用户 A 的身份在 CLI 2.0 中登录。
-8. 创建资源组和虚拟网络 (Resource Manager)。 复制以下脚本，将其粘贴到 CLI 会话中，然后按 `Enter`。 
+6. 以用户 B 的身份注销 Azure，再以用户 A 的身份在 CLI 中登录。
+7. 创建资源组和虚拟网络 (Resource Manager)。 复制以下脚本，将其粘贴到 CLI 会话中，然后按 `Enter`。
 
     ```azurecli-interactive
     #!/bin/bash
@@ -153,7 +152,7 @@ ms.locfileid: "39503819"
       --scope $vNetAId
     ```
 
-9. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<SubscriptionB-id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 Default-Networking 的资源组中创建的虚拟网络。 将修改后的脚本粘贴到 CLI 会话中，然后按 `Enter`。
+8. 在通过不同部署模型创建的两个虚拟网络之间创建虚拟网络对等互连。 将以下脚本复制到计算机上的文本编辑器。 将 `<SubscriptionB-id>` 替换为订阅 ID。如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 Default-Networking 的资源组中创建的虚拟网络。 将修改后的脚本粘贴到 CLI 会话中，然后按 `Enter`。
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -165,7 +164,7 @@ ms.locfileid: "39503819"
       --allow-vnet-access
     ```
 
-10. 执行该脚本后，请检查虚拟网络 (Resource Manager) 的对等互连。 复制以下脚本，将其粘贴到 CLI 会话中：
+9. 执行该脚本后，请检查虚拟网络 (Resource Manager) 的对等互连。 复制以下脚本，将其粘贴到 CLI 会话中：
 
     ```azurecli-interactive
     az network vnet peering list \
@@ -177,8 +176,8 @@ ms.locfileid: "39503819"
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-11. **可选**：尽管本教程未介绍如何创建虚拟机，但你可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-12. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
+10. **可选**：尽管本教程未介绍如何创建虚拟机，但你可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+11. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
 
 ## <a name="powershell"></a>创建对等互连 - PowerShell
 
@@ -284,45 +283,45 @@ ms.locfileid: "39503819"
 
 ### <a name="delete-cli"></a>Azure CLI
 
-1. 使用 CLI 2.0 登录 Azure，通过以下命令删除虚拟网络 (Resource Manager)：
+1. 使用 CLI 登录 Azure，通过以下命令删除虚拟网络（资源管理器）：
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupA --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupA --yes
+   ```
 
-2. 使用 Azure CLI 1.0 登录 Azure，通过以下命令删除虚拟网络（经典）：
+2. 使用经典 CLI 登录 Azure，通过以下命令删除虚拟网络（经典）：
 
-    ```azurecli
-    azure config mode asm 
+   ```azurecli-interactive
+   azure config mode asm
 
-    azure network vnet delete --vnet myVnetB --quiet
-    ```
+   azure network vnet delete --vnet myVnetB --quiet
+   ```
 
 ### <a name="delete-powershell"></a>PowerShell
 
 1. 在 PowerShell 命令提示符处，输入以下命令，删除虚拟网络 (Resource Manager)：
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
-    ```
+   ```powershell
+   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   ```
 
 2. 若要通过 PowerShell 删除虚拟网络（经典），必须修改现有网络配置文件。 了解如何[导出、更新和导入网络配置文件](virtual-networks-using-network-configuration-file.md)。 删除本教程中使用的虚拟网络的以下 VirtualNetworkSite 元素：
 
-    ```xml
-    <VirtualNetworkSite name="myVnetB" Location="East US">
-      <AddressSpace>
-        <AddressPrefix>10.1.0.0/16</AddressPrefix>
-      </AddressSpace>
-      <Subnets>
-        <Subnet name="default">
-          <AddressPrefix>10.1.0.0/24</AddressPrefix>
-        </Subnet>
-      </Subnets>
-    </VirtualNetworkSite>
-    ```
+   ```xml
+   <VirtualNetworkSite name="myVnetB" Location="East US">
+     <AddressSpace>
+       <AddressPrefix>10.1.0.0/16</AddressPrefix>
+     </AddressSpace>
+     <Subnets>
+       <Subnet name="default">
+         <AddressPrefix>10.1.0.0/24</AddressPrefix>
+       </Subnet>
+     </Subnets>
+   </VirtualNetworkSite>
+   ```
 
-    > [!WARNING]
-    > 导入更改的网络配置文件会导致订阅中现有虚拟网络（经典）发生变化。 请确保只删除之前的虚拟网络，且不会从订阅中更改或删除任何其他现有虚拟网络。 
+   > [!WARNING]
+   > 导入更改的网络配置文件会导致订阅中现有虚拟网络（经典）发生变化。 请确保只删除之前的虚拟网络，且不会从订阅中更改或删除任何其他现有虚拟网络。 
 
 ## <a name="next-steps"></a>后续步骤
 

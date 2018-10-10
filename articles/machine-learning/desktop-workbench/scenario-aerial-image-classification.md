@@ -7,18 +7,23 @@ manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: d34f25fd75816f0ae840b3cbb2e0e88cbc2bfd91
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967599"
 ---
 # <a name="aerial-image-classification"></a>航拍图像分类
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 本示例演示了如何使用 Azure Machine Learning Workbench 来协调图像分类模型的分布式定型和实施。 训练方式有两种：(i) 通过 [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) GPU 群集细化深层神经网络；(ii) 通过 [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) 软件包，使用预先训练的 CNTK 模型对图像进行特征化，并使用派生的功能训练分类器。 再使用 [Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) 群集，以并行方式将已训练的模型应用于云中较大的图像集，如此，便可通过添加或删除辅助角色节点来调整训练和实施的速度。
 
@@ -61,21 +66,21 @@ ms.locfileid: "34832401"
        - 如果可用的内核较少，你可以修改 HDInsight 群集模板以减少所配备的工作节点数量。 这个说明显示在“创建 HDInsight Spark 群集”部分下。
     - 此示例使用两个 NC6（1 GPU 和 6 vCPU）VM 创建一个 Batch AI 训练群集。 通过查看 Azure 门户中订阅的“使用情况 + 配额”选项卡，确保帐户在美国东部拥有足够的可用内核。
 - [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)
-    - 请按照[安装和创建快速入门](../service/quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 并创建试验和模型管理帐户。
-- [Batch AI](https://github.com/Azure/BatchAI) Python SDK 和 Azure CLI 2.0
+    - 请按照[安装和创建快速入门](../desktop-workbench/quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 并创建试验和模型管理帐户。
+- [Batch AI](https://github.com/Azure/BatchAI) Python SDK 和 Azure CLI
     - 完成 [Batch AI 工作程序自述文件](https://github.com/Azure/BatchAI/tree/master/recipes)中的以下部分：
         - “先决条件”
         - “创建并获取 Azure Active Directory (AAD) 应用程序”
-        - “注册 BatchAI 资源提供程序”（在“使用 Azure CLI 2.0 运行工作程序”下）
+        - “注册 BatchAI 资源提供程序”（在“使用 Azure CLI 运行工作程序”下）
         - “安装 Azure Batch AI 管理客户端”
         - “安装 Azure Python SDK”
     - 记录客户端 ID、机密以及按引导创建的 Azure Active Directory 应用程序的租户 ID。 本教程的后面部分会用到这些凭据。
-    - 在本文中，Azure Machine Learning Workbench 和 Azure Batch AI 使用 Azure CLI 2.0 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI 2.0”。
+    - 在本文中，Azure Machine Learning Workbench 和 Azure Batch AI 使用 Azure CLI 的单独分支。 为清楚起见，我们将该 Workbench 的 CLI 版本称为“从 Azure Machine Learning Workbench 启动的 CLI”，将常规发布版本（包括 Batch AI）称为“Azure CLI”。
 - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)，一种用于协调 Azure 存储帐户之间的文件传输的免费实用工具
     - 确保包含 AzCopy 可执行文件的文件夹位于系统的 PATH 环境变量中。 （有关修改环境变量的说明，可在[此处](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp)获取。）
 - 一个 SSH 客户端，建议使用 [PuTTY](http://www.putty.org/)。
 
-在 Windows 10 电脑上测试了此示例；你应该可以从任何 Windows 计算机（包括 Azure 数据科学虚拟机）运行它。 Azure CLI 2.0 是按[以下说明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)从 MSI 安装的。 在 macOS 上运行此示例时可能需要进行细微的修改（例如更改文件路径）。
+在 Windows 10 电脑上测试了此示例；你应该可以从任何 Windows 计算机（包括 Azure 数据科学虚拟机）运行它。 按[以下说明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)从 MSI 安装 Azure CLI。 在 macOS 上运行此示例时可能需要进行细微的修改（例如更改文件路径）。
 
 ### <a name="set-up-azure-resources"></a>设置 Azure 资源
 
@@ -181,7 +186,7 @@ ms.locfileid: "34832401"
 
 ### <a name="set-up-batch-ai-resources"></a>设置 Batch AI 资源
 
-在等待存储帐户文件传输和 Spark 群集部署完成时，可以准备 Batch AI 网络文件服务器 (NFS) 和 GPU 群集。 打开 Azure CLI 2.0 命令提示符并运行以下命令：
+在等待存储帐户文件传输和 Spark 群集部署完成时，可以准备 Batch AI 网络文件服务器 (NFS) 和 GPU 群集。 打开 Azure CLI 命令提示符并运行以下命令：
 
 ```
 az --version 

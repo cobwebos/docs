@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 加密 Azure 规模集磁盘 | Microsoft Docs
-description: 了解如何使用 Azure CLI 2.0 加密 Linux 虚拟机规模集中的 VM 实例和附加磁盘
+description: 了解如何使用 Azure CLI 加密 Linux 虚拟机规模集中的 VM 实例和附加磁盘
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fecf7e121b1c0404f1ec67d46cc88008250b9d68
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704549"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981053"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>使用 Azure CLI 2.0（预览版）对虚拟机规模集中的 OS 和附加数据磁盘进行加密
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>使用 Azure CLI（预览版）对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
 虚拟机规模集支持 Azure 磁盘加密 (ADE)，可让用户使用行业标准的加密技术来保护静态数据。 可为 Linux 和 Windows 虚拟机规模集启用加密。 有关详细信息，请参阅[适用于 Linux 和 Windows 的 Azure 磁盘加密](../security/azure-security-disk-encryption.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "38704549"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="register-for-disk-encryption-preview"></a>注册磁盘加密预览版
 
@@ -180,6 +180,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，已使用 Azure CLI 2.0 加密虚拟机规模集。 也可以使用 [Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md)，或适用于 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) 或 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) 的模板。
+在本文中，已使用 Azure CLI 加密虚拟机规模集。 也可以使用 [Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md)，或适用于 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) 或 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) 的模板。
 
 可查看[此处](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)，了解针对 Linux 规模集数据磁盘加密的端到端批处理文件示例。 此示例创建一个资源组（Linux 规模集），装载一个 5 GB 的数据磁盘，并对虚拟机规模集进行加密。

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 05/24/2018
 ms.author: glenga
-ms.openlocfilehash: e3f2cc24a3ff765a33d27bbe5a43ca9d5a229e1b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092949"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969421"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -160,7 +160,7 @@ function generateRandomId() {
 |使用 Visual Studio 2017 的 C# 类库|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|[使用 NuGet 工具](#c-class-library-with-visual-studio-2017)|
 |使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#c-class-library-with-visual-studio-code)|
 
-以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP、计时器和 Azure 存储（blob、队列和表）。 
+以下绑定类型例外，它们不需要显式注册，因为它们会在所有版本和环境中自动注册：HTTP 和计时器。
 
 ### <a name="azure-portal-development"></a>使用 Azure 门户进行开发
 

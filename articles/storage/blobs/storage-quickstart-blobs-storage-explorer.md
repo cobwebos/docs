@@ -1,29 +1,31 @@
 ---
-title: Azure 快速入门 - 使用 Azure 存储资源管理器在对象存储中创建 blob | Microsoft Docs
-description: 本快速入门将在对象 (Blob) 存储中使用 Azure 存储资源管理器。 然后，使用该存储资源管理器将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: 快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob
+description: 本快速入门介绍如何使用 Azure 存储资源管理器创建容器和 blob。 接下来，将了解如何将 blob 下载到本地计算机，以及如何在容器中查看所有 blob。 此外，还将了解如何创建 blob 快照、管理容器访问策略以及创建共享访问签名。
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399630"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996122"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>快速入门：使用 Azure 存储资源管理器上传、下载和列出 Blob
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob
 
-[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)是一个多平台用户界面，用于管理存储帐户的内容。 本指南详细介绍如何使用 Azure 存储资源管理器在本地磁盘和 Azure Blob 存储之间转移文件。
+本快速入门介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)创建容器和 blob。 接下来，将了解如何将 blob 下载到本地计算机，以及如何在容器中查看所有 blob。 此外，还将了解如何创建 blob 快照、管理容器访问策略以及创建共享访问签名。
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本快速入门要求安装 Azure 存储资源管理器。 如需安装该管理器，请访问 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，下载 Windows、Macintosh 或 Linux 版的管理器。
+本快速入门要求安装 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="log-in-to-storage-explorer"></a>登录到存储资源管理器
 

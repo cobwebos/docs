@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092761"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966837"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -298,7 +298,7 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
 
 ## <a name="configure-sampling"></a>配置采样
 
-Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当遥测项的数目超过指定的速率时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 host.json 中配置采样。  下面是一个示例：
+Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当传入遥测的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 host.json 中配置采样。  下面是一个示例：
 
 ```json
 {
@@ -457,11 +457,6 @@ namespace functionapp0915
                 };
             UpdateTelemetryContext(dependency.Context, context, name);
             telemetryClient.TrackDependency(dependency);
-            
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, 
-                    "Please pass a name on the query string or in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
         
         // This correllates all telemetry with the current Function invocation
@@ -499,18 +494,6 @@ module.exports = function (context, req) {
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:{"ai.operation.id": context.invocationId}});
     client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:{"ai.operation.id": context.invocationId}});
 
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
     context.done();
 };
 ```
@@ -547,9 +530,9 @@ module.exports = function (context, req) {
 
 ### <a name="real-time-monitoring"></a>实时监视
 
-可在本地工作站上使用 [Azure 命令行接口 (CLI) 2.0](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 将日志文件流式传输到命令行会话。  
+可在本地工作站上使用 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 将日志文件流式传输到命令行会话。  
 
-对于 Azure CLI 2.0，使用以下命令登录，选择订阅并流式传输日志文件：
+对于 Azure CLI，使用以下命令登录，选择订阅并流式传输日志文件：
 
 ```
 az login

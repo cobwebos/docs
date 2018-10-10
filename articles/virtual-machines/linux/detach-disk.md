@@ -1,6 +1,6 @@
 ---
 title: 从 Linux VM 中分离数据磁盘 - Azure | Microsoft Docs
-description: 了解如何使用 CLI 2.0 或 Azure 门户从 Azure 虚拟机中分离数据磁盘。
+description: 了解如何使用 Azure CLI 或 Azure 门户从 Azure 虚拟机中分离数据磁盘。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144068"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968335"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 
@@ -99,7 +99,7 @@ sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-cli-20"></a>使用 CLI 2.0 分离数据磁盘
+## <a name="detach-a-data-disk-using-azure-cli"></a>使用 Azure CLI 分离数据磁盘 
 
 此示例将 *myDataDisk* 磁盘与 *myResourceGroup* 中名为 *myVM* 的 VM 分离。
 

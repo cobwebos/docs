@@ -1,24 +1,26 @@
 ---
-title: 支持 | Microsoft Docs
-description: 支持 Microsoft 语音服务。
+title: 必应语音支持 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: 必应语音支持。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 09/08/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1cca2008b879e51434f3d3bde839e9ab68f796d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: cbeaa8f1c0a950bf3941de775a2d62584e5f5dfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365655"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986398"
 ---
 # <a name="support"></a>支持
 
-如果你有关于语音服务的问题、反馈或建议，可以通过 GitHub 与我们联系。 
+如果你有关于必应语音的问题、反馈或建议，可以通过 GitHub 与我们联系。 
  - [REST API 相关问题](https://github.com/Azure-Samples/SpeechToText-REST/issues)
  - [JavaScript 库](https://github.com/Azure-Samples/Cognitive-Speech-STT-JavaScript/issues)
  - [C# 桌面库相关问题](https://github.com/Azure-Samples/Cognitive-Speech-STT-Windows/issues)

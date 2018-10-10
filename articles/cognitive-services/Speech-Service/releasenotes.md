@@ -4,30 +4,41 @@ description: 发行说明 - 最新版本中的内容更改
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047793"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963077"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>认知服务语音 SDK 1.0.0：2018 年 9 月版本
+
+**新功能**
+
+* 支持 iOS 中的 Objective-C。 请查看[适用于 iOS 的 Objective-C 快速入门](quickstart-objectivec-ios.md)。
+* 支持浏览器中的 JavaScript。 请查看 [JavaScript 快速入门](quickstart-js-browser.md)。
+
+**重大更改**
+
+* 该版本中推出了大量重大更改。
+  有关详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>认知服务语音 SDK 0.6.0：2018 年 8 月版本
 
 **新功能**
 
 * 使用语音 SDK 生成的 UWP 应用现在可以通过 Windows 应用认证工具包 (WACK)。
-  查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
+  请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
 * 在 Linux (Ubuntu 16.04 x64) 上支持 .NET Standard 2.0。
 * 实验性：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
-  请查看 [Java 运行时环境快速入门](quickstart-java-jre.md)
+  请查看 [Java 运行时环境快速入门](quickstart-java-jre.md)。
 
 **功能性更改**
 
@@ -49,25 +60,23 @@ ms.locfileid: "43047793"
 
 **新功能**
 
-* 支持 Android 平台（API 23：Android 6.0 Marshmallow 或更高版本）。
-  查看 [Android 快速入门](quickstart-java-android.md)。
-* 在 Windows 上支持 .NET Standard 2.0。
-  查看 [.NET Core 快速入门](quickstart-csharp-dotnetcore-windows.md)。
-* 实验：在 Windows 上支持 UWP（版本 1709 或更高版本）
-  * 查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
+* 支持 Android 平台（API 23：Android 6.0 Marshmallow 或更高版本）。 查看 [Android 快速入门](quickstart-java-android.md)。
+* 在 Windows 上支持 .NET Standard 2.0。 查看 [.NET Core 快速入门](quickstart-csharp-dotnetcore-windows.md)。
+* 实验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
+  * 请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
   * 注意：使用语音 SDK 生成的 UWP 应用尚未通过 Windows 应用认证工具包 (WACK)。
 * 通过自动重新连接支持识别功能长时间运行。
 
 **功能性更改**
 
-* `StartContinuousRecognitionAsync()` 支持识别功能长时间运行
-* 识别结果包含更多字段：识别文本的音频开始和持续时间（时钟周期数）的偏移量、表示识别状态的其他值（例如 `InitialSilenceTimeout`、`InitialBabbleTimeout`）。
+* `StartContinuousRecognitionAsync()` 支持识别功能长时间运行。
+* 识别结果包含更多字段。 这些字段是识别文本的音频开始和持续时间（时钟周期数）的偏移量和表示识别状态的其他值（例如 `InitialSilenceTimeout`、`InitialBabbleTimeout`）。
 * 支持 AuthorizationToken 用于创建工厂实例。
 
 **重大更改**
 
-* 识别事件：NoMatch 事件类型合并到 Error 事件中。
-* C# 中的 SpeechOutputFormat 重命名为 OutputFormat 以与 C++ 保持一致。
+* 识别事件：NoMatch 事件类型已合并到 Error 事件中。
+* C# 中的 SpeechOutputFormat 已重命名为 OutputFormat 以与 C++ 保持一致。
 * `AudioInputStream` 接口的某些方法的返回类型略有更改：
    * 在 Java 中，`read` 方法现返回 `long` 而不是 `int`。
    * 在 C# 中，`Read` 方法现返回 `uint` 而不是 `int`。
@@ -77,13 +86,12 @@ ms.locfileid: "43047793"
 **Bug 修复**
 
 * 修复了 `RecognizeAsync()` 超时时结果中的错误返回值。
-* 删除了 Windows 上媒体基础库的依赖项。 SDK 现使用 Core Audio API。
+* 删除了 Windows 上媒体基础库的依赖项。 SDK 现在使用 Core Audio API。
 * 文档修复：添加了一个[区域](regions.md)页来描述支持的区域。
 
 **已知问题**
 
-* 适用于 Android 的语音 SDK 不报告用于翻译的语音合成结果。
-  此问题将在下一版本中修复。
+* 适用于 Android 的语音 SDK 不报告用于翻译的语音合成结果。 此问题将在下一版本中修复。
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>认知服务语音 SDK 0.4.0：2018 年 6 月版本
 
@@ -103,7 +111,7 @@ ms.locfileid: "43047793"
 
 **Bug 修复**
 
-- 修复关闭期间 USP 层中可能出现的回叫问题。
+- 修复了关闭期间 USP 层中可能出现的回叫问题。
 
 - 如果识别器使用了音频输入文件，则它在文件句柄上停留的时间将超过必要时间。
 
@@ -123,4 +131,4 @@ ms.locfileid: "43047793"
 
 ## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>认知服务语音 SDK 0.2.12733：2018 年 5 月版本
 
-认知服务语音 SDK 的第一个公共预览版本。
+此版本是认知服务语音 SDK 的第一个公共预览版本。

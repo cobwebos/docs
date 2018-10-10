@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421927"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964439"
 ---
 # <a name="deploy-docker-ce-cluster"></a>部署 Docker CE 群集
 
@@ -24,7 +24,7 @@ Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -169,7 +169,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 在本快速入门中，你部署了 Docker Swarm 群集，并向该群集部署了多容器应用程序。
 
-若要了解如何将 Docker Swarm 与 Visual Studio Team Services 集成，请继续学习“将 CI/CD 用于 Docker Swarm 和 VSTS”。
+若要了解如何将 Docker Swarm 与 Azure DevOps 集成，请继续学习“将 CI/CD 与 Docker Swarm 和 Azure DevOps 配合使用”。
 
 > [!div class="nextstepaction"]
-> [将 CI/CD 用于 Docker Swarm 和 VSTS](./container-service-docker-swarm-setup-ci-cd.md)
+> [将 CI/CD 与 Docker Swarm 和 Azure DevOps 配合使用](./container-service-docker-swarm-setup-ci-cd.md)

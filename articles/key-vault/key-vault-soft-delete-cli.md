@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bryanla
-ms.openlocfilehash: 0554e2e184ce3f3140d3b9e90eb33c20774ed789
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 73ece43c26c3957a1b7dba02a673099f7d35e8d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302998"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951774"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -25,9 +25,9 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure CLI 2.0 - 如果环境没有此设置，请参阅[使用 CLI 2.0 管理 Key Vault](key-vault-manage-with-cli2.md)。
+- Azure CLI - 如果环境没有此设置，请参阅[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
-有关 CLI Key Vault 的特定参考信息，请参阅 [Azure CLI 2.0 Key Vault 参考](https://docs.microsoft.com/cli/azure/keyvault)。
+有关 CLI Key Vault 的特定参考信息，请参阅 [Azure CLI Key Vault 参考](https://docs.microsoft.com/cli/azure/keyvault)。
 
 ## <a name="required-permissions"></a>所需的权限
 

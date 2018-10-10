@@ -1,25 +1,25 @@
 ---
-title: 教程 - 使用 Azure 成本管理预测支出 | Microsoft Docs
+title: 教程 - 使用 Azure 中的 Cloudyn 预测支出情况 | Microsoft Docs
 description: 本教程介绍如何根据历史使用情况和支出数据预测支出。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 411b4797510b26dec43ea7f2232457199808c857
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162188"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953678"
 ---
 # <a name="tutorial-forecast-future-spending"></a>教程：预测将来的支出
 
-可以使用 Azure 成本管理，根据历史使用情况和支出数据预测将来的支出。 可以使用 Cloudyn 报表查看所有成本预测数据。 本教程中的示例将引导你完成使用报表查看成本预测的过程。 本教程介绍如何执行下列操作：
+Cloudyn 可帮助你根据历史使用情况和支出数据预测将来的支出。 可以使用 Cloudyn 报表查看所有成本预测数据。 本教程中的示例将引导你完成使用报表查看成本预测的过程。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 预测将来的支出
@@ -29,7 +29,7 @@ ms.locfileid: "32162188"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
-- 必须有 Azure 成本管理的试用注册版或付费订阅版。
+- 必须有 Cloudyn 的试用注册版或付费订阅版。
 
 ## <a name="forecast-future-spending"></a>预测将来的支出
 

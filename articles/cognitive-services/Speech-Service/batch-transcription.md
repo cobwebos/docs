@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: b6fb39ef5941157cfe0d18324deeb9d836d7ab09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377615"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981366"
 ---
 # <a name="batch-transcription"></a>批量听录
 
@@ -59,36 +59,38 @@ wav |  立体声  |
 
 ## <a name="authorization-token"></a>授权令牌
 
-与统一语音服务的其他所有功能一样，需要通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 此外，可以从语音门户获取 API 密钥： 
+与统一语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 如果计划从基线模型获取听录，则需要进行此操作。 
+
+如果计划自定义和使用自定义模型，则需要将此订阅密钥添加到自定义语音门户，如下所示：
 
 1. 登录到[自定义语音](https://customspeech.ai)。
 
 2. 选择 **订阅**。
 
-3. 选择“生成 API 密钥”。
+3. 选择“连接现有订阅”。
+
+4. 在弹出的视图中添加订阅密钥和别名
 
     ![自定义语音订阅页的屏幕截图](media/stt/Subscriptions.jpg)
 
-4. 将该密钥复制并粘贴到以下示例的客户端代码中。
+5. 将该密钥复制并粘贴到以下示例的客户端代码中。
 
 > [!NOTE]
-> 如果打算使用自定义模型，则还需要该模型的 ID。 请注意，这不是“终结点详细信息”视图中显示的部署 ID 或终结点 ID。 它是在选择该模型的详细信息时可以检索的模型 ID。
+> 如果打算使用自定义模型，则还需要该模型的 ID。 请注意，这不是“终结点详细信息”视图中显示的终结点 ID。 它是在选择该模型的详细信息时可以检索的模型 ID。
 
 ## <a name="sample-code"></a>代码示例
 
 使用订阅密钥和 API 密钥自定义以下示例代码。 这样，便可以获取持有者令牌。
 
 ```cs
-    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+     public static CrisClient CreateApiV2Client(string key, string hostName, int port)
+
         {
             var client = new HttpClient();
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
-
-            var tokenProviderPath = "/oauth/ctoken";
-            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
-
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+         
             return new CrisClient(client);
         }
 ```
@@ -98,8 +100,8 @@ wav |  立体声  |
 ```cs
    static async Task TranscribeAsync()
         { 
-            private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
-            private const string HostName = "cris.ai";
+            private const string SubscriptionKey = "<your Speech subscription key>";
+            private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
             // Creating a Batch transcription API Client
@@ -167,7 +169,7 @@ wav |  立体声  |
 ```
 
 > [!NOTE]
-> 在上述代码中，订阅密钥取自在 Azure 门户上创建的 Speech(Preview) 资源。 从自定义语音服务资源获取的密钥不起作用。
+> 在上述代码中，订阅密钥取自在 Azure 门户上创建的语音资源。 从自定义语音服务资源获取的密钥不起作用。
 
 请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是 NET HTTP 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收结果。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
 

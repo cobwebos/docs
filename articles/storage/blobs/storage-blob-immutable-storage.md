@@ -1,29 +1,29 @@
 ---
-title: Azure Blob 存储的不可变存储（预览版）| Microsoft Docs
+title: Azure 存储 Blob 的不可变存储 | Microsoft Docs
 description: Azure 存储提供对 Blob 对象存储的 WORM（一次写入，多次读取）支持，可让用户根据指定的时间间隔，以不可擦除、不可修改的状态存储数据。
 services: storage
-author: sangsinh
+author: MichaelHauss
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
-ms.author: sangsinh
+ms.date: 09/18/2018
+ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: cfc25906e926e8dd6687eeccd311a38653772c4d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 14b5dfb0a12df6c5251ee9f9e6b35a7ce527a1d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398992"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961971"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>在 Azure Blob 存储中存储业务关键型数据（预览版）
+# <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
 Azure Blob（对象）存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 在保留时间间隔期间，可以创建和读取，但不能修改或删除 Blob。
 
 ## <a name="overview"></a>概述
 
-不可变存储可以帮助金融机构和相关行业（尤其是经纪人-经销商组织）安全存储数据。
+不可变存储可以帮助金融机构和相关行业（尤其是经纪人-经销商组织）安全存储数据。 它还可以在任何场景中用于保护关键数据不被删除。  
 
-典型的应用场合包括：
+典型的应用程序包含：
 
 - **法规遵从**：Azure Blob 存储的不可变存储可帮助组织达到 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法规要求。
 
@@ -37,9 +37,9 @@ Azure Blob（对象）存储的不可变存储可让用户以 WORM（一次写�
 
 - **法定保留策略支持：** 在保留时间间隔未知的情况下，用户可以设置法定保留，以不变的方式存储数据，直至法定保留清除。  设置法定保留时，Blob 可以创建和读取，但不能修改或删除。 每个法定保留都与一个用户定义的用作标识符字符串（例如案例 ID）的字母数字标记相关联。
 
-- **支持所有 Blob 层：** WORM 策略独立于 Azure Blob 存储层，将应用到所有层：热层、冷层和存档层。 用户可将工作负荷的数据存储在最具成本效益的层，同时保持数据的不可变性。
+- **支持所有 Blob 层：** WORM 策略独立于 Azure Blob 存储层，将应用到所有层：热层、冷层和存档层。 用户可将工作负荷的数据转换为最具成本效益的层，同时保持数据的不可变性。
 
-- **容器级配置：** 用户可在容器级别配置基于时间的保留策略和法定保留标记。 使用简单的容器级设置，用户可以创建并锁定基于时间的保留策略、扩展保留时间间隔、设置并清除法定保留，等等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
+- **容器级配置：** 用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级设置，用户可以创建并锁定基于时间的保留策略、扩展保留时间间隔、设置并清除法定保留，等等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
 
 - **审核日志记录支持**：每个容器包括一个审核日志。 该日志显示针对锁定的基于时间的保留策略执行的最多五个基于时间的保留命令，最多可以延长三个日志的保留时间间隔。 对于基于时间的保留，日志包含用户 ID、命令类型、时间戳和保留时间间隔。 对于法定保留，日志包含用户 ID、命令类型、时间戳和法定保留标记。 根据 SEC 17a-4(f) 法规准则，此日志的保留时间就是容器的生存时间。 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)显示所有控制平面活动的更全面日志。 由用户负责根据法规要求或其他要求永久存储这些日志。
 
@@ -54,13 +54,13 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 > [!IMPORTANT]
 > 根据 SEC 17a-4(f) 和其他法规符合性要求，基于时间的保留策略必须处于锁定状态才能确保 Blob 不可变（不可写入和删除）。 我们建议将策略锁定合理的时间，通常为 24 小时内。 除非是短时功能试用，否则我们不建议使用非锁定状态。
 
-在容器上应用基于时间的保留策略时，容器中的所有 Blob 都会保持在不可变的状态，其持续时间就是有效保留期。 现有 Blob 的有效保持期就是 Blob 创建时间和用户指定的保留时间间隔之间的差异。 
+在容器上应用基于时间的保留策略时，容器中的所有 Blob 都会保持在不可变的状态，其持续时间就是有效保留期。 现有 Blob 的有效保持期就是 Blob 创建时间和用户指定的保留时间间隔之间的差异。
 
-就新 Blob 来说，有效保持期为用户指定的保留时间间隔。 用于用户可以更改保留时间间隔，因此不可变存储使用用户指定的保留时间间隔的最新值来计算有效保留期。
+就新 Blob 来说，有效保持期为用户指定的保留时间间隔。 由于用户可以延长保留时间间隔，因此不可变存储使用用户指定的保留时间间隔的最新值来计算有效保留期。
 
 > [!TIP]
 > 示例：
-> 
+>
 > 用户创建了一个基于时间的保留策略，将保留时间间隔设置为五年。
 >
 > 一年前，我们在该容器中创建了一个现有的 Blob (testblob1)。 testblob1 的有效保留期为四年。
@@ -77,35 +77,30 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 |场景  |Blob 状态  |不允许 Blob 操作  |
 |---------|---------|---------|
-|Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         |删除容器、删除 Blob、放置 Blob1、放置块、放置块列表、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
-|Blob 的有效保留时间间隔尚未到期     |仅仅不可写入（允许删除操作）         |放置 Blob、放置块、放置块列表、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
+|Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         |删除容器、删除 Blob、放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
+|Blob 的有效保留时间间隔尚未到期     |仅仅不可写入（允许删除操作）         |放置 Blob<sup>1</sup>、放置块<sup>1</sup>、放置块列表<sup>1</sup>、设置 Blob 元数据、放置页、设置 Blob 属性、快照 Blob、增量复制 Blob、追加块         |
 |清除了所有法定保留，未在容器上设置任何基于时间的保留策略     |可变         |无         |
 |未创建任何 WORM 策略（基于时间的保留或法定保留）     |可变         |无         |
 
+<sup>1</sup> 应用程序可以调用一次此操作来创建 Blob。 不允许对 Blob 执行所有后续操作。
+
 > [!NOTE]
-> 在上表的前两个方案中，允许创建 Blob 所需的第一个“放置 Blob”、“放置块列表”和“放置块”操作。 所有后续操作都不允许。
 >
-> 不可变存储仅在 GPv2 和 Blob 存储帐户中可用。 必须通过 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)创建不可变存储。
+> 不可变存储仅在常规用途 V2 和 Blob 存储帐户中可用。 必须通过 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)创建帐户。
 
 ## <a name="pricing"></a>定价
 
-使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-### <a name="restrictions"></a>限制
-
-在公共预览期间，适用以下限制：
-
-- 请勿存储生产或业务关键型数据。
-- 所有预览和 NDA 限制均适用。
 
 ## <a name="getting-started"></a>入门
 
-最新版本的 [Azure 门户](http://portal.azure.com)、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) 支持 Azure Blob 存储的不可变存储。
+最新版本的 [Azure 门户](http://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和预览版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) 支持 Azure Blob 存储的不可变存储。
 
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。
- 容器必须位于 GPv2 存储帐户中。
+ 容器必须位于 GPv2 或 Blob 存储帐户中。
 2. 在容器设置中选择“访问策略”。 然后选择“不可变 Blob 存储”下的“+ 添加策略”。
 
     ![门户中的容器设置](media/storage-blob-immutable-storage/portal-image-1.png)
@@ -134,11 +129,9 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
     ![策略类型下面的“标记名称”框](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+8. 若要清除法定保留，只需删除标记。
 
-使用 `az extension add -n storage-preview` 安装 [Azure CLI 扩展](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-
-如果已安装该扩展，请使用以下命令启用不可变存储：`az extension update -n storage-preview`。
+### <a name="azure-cli"></a>Azure CLI
 
 以下命令组包含该功能：`az storage container immutability-policy` 和 `az storage container legal-hold`。 对这些命令运行 `-h` 可查看命令。
 
@@ -160,7 +153,8 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 - [.NET 客户端库 7.2.0-preview 和更高版本](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
 - [Node.js 客户端库 4.0.0 和更高版本](https://www.npmjs.com/package/azure-arm-storage)
-- [Python 客户端库 2.0.0 候选发布版 2 和更高版本](https://pypi.org/project/azure-mgmt-storage/2.0.0rc1/)
+- [Python 客户端库 2.0.0 候选发布版 2 和更高版本](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
+- [Java 客户端库](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
 ## <a name="supported-values"></a>支持的值
 
@@ -176,15 +170,15 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **此功能是只适用于块 Blob，还是也适用于页 Blob 和追加 Blob？**
 
-不可变存储适用于任何 Blob 类型。  但我们建议主要将其用于块 Blob。 与块 Blob 不同，页 Blob 和追加 Blob 需先在 WORM 容器外部创建，然后复制到容器中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。
+不可变存储可以用于任何 Blob 类型，但我们建议主要将其用于块 Blob。 与块 Blob 不同，页 Blob 和追加 Blob 需先在 WORM 容器外部创建，然后复制到容器中。 将这些 Blob 复制到 WORM 容器中后，就不再允许对追加 Blob 执行追加操作，也不允许对页 Blob 进行更改。
 
 **是否始终需要创建新的存储帐户才能使用此功能？**
 
-可以在任何现有的 GPv2 帐户上使用不可变存储，也可在帐户类型为 GPv2 的新存储帐户上使用此功能。 此功能仅适用于 Blob 存储。
+可将不可变存储与任何现有或新创建的常规用途 V2 或 Blob 存储帐户配合使用。 此功能仅适用于 Blob 存储。
 
 **如果尝试删除某个容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
-如果至少有一个 Blob 使用锁定的基于时间的保留策略或法定保留，则“删除容器”操作会失败。 即使数据已[软删除](storage-blob-soft-delete.md)，也是如此。 如果没有 Blob 存在活动的保留时间间隔，也没有法定保留，则“删除容器”操作会成功。 必须先删除 Blob，然后才能删除容器。 
+如果至少存在一个 Blob 使用锁定的基于时间的保留策略或法定保留，则“删除容器”操作会失败。 仅当没有 Blob 存在活动的保留时间间隔，也没有法定保留时，“删除容器”操作才会成功。 必须先删除 Blob，然后才能删除容器。
 
 **如果尝试删除的存储帐户有一个 WORM 容器，而该容器使用锁定的基于时间的保留策略或法定保留，会发生什么情况？**
 
@@ -192,7 +186,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **当 Blob 处于不可变状态时，是否可以跨不同的 Blob 层（热、凉、冷）来移动数据？**
 
-是的，可以在数据处于不可变状态时使用“设置 Blob 层”命令跨 Blob 层移动数据。 热、凉、冷 Blob 层均支持不可变存储。
+是的，可以在数据处于不可变状态时使用“设置 Blob 层”命令跨 Blob 层移动数据。 热、冷和存档 Blob 层均支持不可变存储。
 
 **如果我无法付款，但我的保留时间间隔尚未到期，会发生什么情况？**
 
@@ -209,6 +203,8 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 ## <a name="sample-powershell-code"></a>示例 PowerShell 代码
 
 以下示例 PowerShell 脚本仅供参考。 此脚本创建新的存储帐户和容器。 然后，它演示如何设置和清除法定保留、创建和锁定基于时间的保留策略（也称为不可变策略），并延长保留时间间隔。
+
+设置并测试 Azure 存储帐户：
 
 ```powershell
 $ResourceGroup = "<Enter your resource group>”
@@ -258,115 +254,128 @@ Remove-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 # Remove a container with a container object
 $containerObject2 = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 Remove-AzureRmStorageContainer -InputObject $containerObject2
+```
 
+设置并清除法定保留：
+
+```powershell
 # Set a legal hold
 Add-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag tag1,tag2
+    -StorageAccountName $StorageAccount -Name $container -Tag <tag1>,<tag2>,...
 
-# Set a legal hold with an account object
-Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3
+# with an account object
+Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
 
-# Set a legal hold with a container object
-Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4,tag5
+# with a container object
+Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
 
 # Clear a legal hold
 Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag tag2
+    -StorageAccountName $StorageAccount -Name $container -Tag <tag2>
 
-# Clear a legal hold with an account object
-Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3,tag5
+# with an account object
+Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
 
-# Clear a legal hold with a container object
-Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4
+# with a container object
+Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>
+```
 
-# Create or update an immutability policy
-## with an account name or container name
-
+创建或更新不可变策略：
+```powershell
+# with an account name or container name
 Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
 
-## with an account object
+# with an account object
 Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
 
-## with a container object
+# with a container object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 7
 
-## with an immutability policy object
+# with an immutability policy object
 Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
+```
 
+检索不可变策略：
+```powershell
 # Get an immutability policy
 Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container
 
-# Get an immutability policy with an account object
+# with an account object
 Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container
 
-# Get an immutability policy with a container object
+# with a container object
 Get-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject
+```
 
-# Lock an immutability policy (add -Force to dismiss the prompt)
-## with an immutability policy object
-
+锁定不可变策略（添加 -Force 以关闭提示）：
+```powershell
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
 
-## with an account name or container name
+# with an account name or container name
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
-## with an account object
+# with an account object
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -Etag $policy.Etag
 
-## with a container object
+# with a container object
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -Etag $policy.Etag -force
+```
 
-# Extend an immutability policy
-## with an immutability policy object
+扩展不可变策略：
+```powershell
 
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 
-## with an account name or container name
+# with an account name or container name
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
 
-## with an account object
+# with an account object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
     $policy.Etag -ExtendPolicy
 
-## with a container object
+# with a container object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
+```
 
-# Remove an immutability policy (add -Force to dismiss the prompt)
-## with an immutability policy object
+删除不可变策略（添加 -Force 以关闭提示）：
+```powershell
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
-## with an account name or container name
+# with an account name or container name
 Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
-## with an account object
+# with an account object
 Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -Etag $policy.Etag
 
-## with a container object
+# with a container object
 Remove-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject `
     -Etag $policy.Etag
-    
+
 ```

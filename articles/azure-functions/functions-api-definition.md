@@ -2,27 +2,26 @@
 title: Azure Functions 中的 OpenAPI 元数据 | Microsoft Docs
 description: Azure Functions 中的 OpenAPI 支持概述
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "22991672"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950363"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
 Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一项预览版功能，可用于在 Function App 中编写 OpenAPI 2.0 定义。 随后可使用 Function App 托管该文件。
+
+> [!IMPORTANT]
+> OpenAPI 预览功能目前仅在 1.x 运行时可用。 若要了解如何创建 1.x 函数应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
 
 通过 [OpenAPI 元数据](http://swagger.io/)，大量其他软件可使用托管 REST API 的函数。 此软件包括 Microsoft 产品/服务（如 PowerApps 和 [Azure 应用服务的 API 应用功能](../app-service/app-service-web-overview.md)）、第三方开发人员工具（如 [Postman](https://www.getpostman.com/docs/importing_swagger)，以及[更多大量的程序包](http://swagger.io/tools/)。
 
@@ -34,6 +33,9 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 ## <a name="enable"></a>启用 OpenAPI 定义支持
 可在函数应用的“平台功能”的“API 定义”页中配置所有 OpenAPI 设置。
 
+> [!NOTE]
+> beta 版本运行时当前不支持函数 API 定义功能。
+
 要生成托管的 OpenAPI 定义和快速入门定义，请将“API 定义源”设置为“函数(预览版)”。 外部 URL 允许函数使用托管在其他位置的 OpenAPI 定义。
 
 ## <a name="generate-definition"></a>通过函数元数据生成 Swagger 框架
@@ -43,7 +45,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="templates"></a>可用模板
 
-|名称| 说明 |
+|名称| Description |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 

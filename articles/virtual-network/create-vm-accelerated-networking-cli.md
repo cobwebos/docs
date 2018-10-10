@@ -1,6 +1,6 @@
 ---
 title: 创建具有加速网络的 Azure 虚拟机 | Microsoft Docs
-description: 了解如何创建具有加速网络的 Linux 虚拟机。
+description: 了解如何创建启用加速网络的 Linux 虚拟机。
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414566"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990954"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -75,7 +75,7 @@ ms.locfileid: "39414566"
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
+安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
 
 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
 
@@ -223,7 +223,7 @@ vf_tx_dropped: 0
 * VM 必须是受支持的 Azure 库映像（以及适用于 Linux 的内核版本）
 * 在任何 NIC 上启用加速网络前，必须停止/解除分配可用性集或 VMSS 中的所有 VM
 
-### <a name="individual-vms--vms-in-an-availability-set"></a>可用性集中的单个 VM 和多个 VM
+### <a name="individual-vms--vms-in-an-availability-set"></a>单个 VM 与可用性集中的 VM
 首先停止/解除分配 VM，或集合中的所有 VM（如果是可用性集）：
 
 ```azurecli

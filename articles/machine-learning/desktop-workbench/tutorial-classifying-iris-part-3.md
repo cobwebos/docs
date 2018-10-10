@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946606"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>教程 3：鸢尾花分类：部署模型
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
 
 本教程是**由三个部分构成的系列教程的第三部分**。 在本教程的此部分，请使用机器学习（预览版）来执行以下操作：
@@ -38,7 +42,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 要完成本教程，需要：
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已创建一个试验帐户，并已根据此[快速入门](../service/quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
+- 已创建一个试验帐户，并已根据此[快速入门](quickstart-installation.md)中所述安装了 Azure Machine Learning Workbench
 - [教程第 2 部分](tutorial-classifying-iris-part-2.md)中所述的分类模型
 - 在本地安装和运行的 Docker 引擎
 
@@ -66,7 +70,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    
    运行 **iris_sklearn.py** 脚本时，模型文件已写入名为 **model.pkl** 的 **outputs** 文件夹。 此文件夹驻留在选择用于运行脚本的执行环境中，而不是驻留在本地项目文件夹中。 
    
-   a. 若要找到该文件，请选择左窗格中的“运行”按钮（时钟图标），打开“所有运行”列表。 
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要找到该文件，请选择左窗格中的“运行”按钮（时钟图标），打开“所有运行”列表。 
 
    b. 此时会打开“所有运行”选项卡。 在运行表中，选择一个目标为 local 且脚本名称为 iris_sklearn.py 的最近运行。 
 
@@ -224,9 +228,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 1. 若要创建实时 Web 服务，请使用以下命令：
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   此命令生成稍后可用的 Web 服务 ID。
+   此命令生成稍后可用的 Web 服务 ID。 如果在笔记本中，则省略输出目录。
 
    可将以下开关与 **az ml service create realtime** 命令结合使用：
 
@@ -276,9 +280,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    若要创建清单，请使用以下命令并提供前一步骤生成的模型 ID 输出：
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   此命令生成清单 ID。
+   此命令生成清单 ID。  如果在笔记本中，则省略输出目录。
 
 1. 创建 Docker 图像。
 

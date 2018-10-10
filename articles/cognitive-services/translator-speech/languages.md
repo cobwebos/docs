@@ -1,22 +1,24 @@
 ---
-title: Microsoft 语音翻译 API 中支持的语言 | Microsoft Docs
-description: 查看 Microsoft 语音翻译 API 支持的语言。
+title: 支持的语言 - 语音翻译 API
+titlesuffix: Azure Cognitive Services
+description: 查看语音翻译 API 支持的语言。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0d33033442a012290baa78d80f1b8bde0499b3f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366820"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950176"
 ---
-# <a name="languages-supported-by-the-microsoft-translator-speech-api"></a>Microsoft 语音翻译 API 支持的语言
+# <a name="languages-supported-by-the-translator-speech-api"></a>语音翻译 API 支持的语言
 语音翻译支持以下语言。 如果两种语言都支持语音翻译，则语音到语音翻译和语音到文本翻译都可用。 如果目标语言不支持语音转换，则只有语音到文本翻译可用。 
 
 | 语音语言    |
@@ -32,7 +34,7 @@ ms.locfileid: "35366820"
 | 俄语      |
 | 西班牙语      | 
 
-Microsoft 语音翻译 API 支持以下列语言作为目标语言进行语音到文本翻译。 
+语音翻译 API 支持以下列语言作为目标语言进行语音到文本翻译。 
 
 | 文本语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -102,7 +104,7 @@ Microsoft 语音翻译 API 支持以下列语言作为目标语言进行语音�
 
 ## <a name="access-the-list-programmatically"></a>以编程方式访问列表
 
-可以使用语言资源以编程方式访问支持的语言列表。 此列表提供了语言代码以及以英语或任何其他受支持语言显示的语言名称。 当有新语言可用时，Microsoft Translator 服务会自动更新此列表。
+可以使用语言资源以编程方式访问支持的语言列表。 此列表提供了语言代码以及以英语或任何其他受支持语言显示的语言名称。 当有新语言可用时，语音翻译服务会自动更新此列表。
 
 语言资源返回支持进行语音、文本以及文本到语音翻译的语言列表。 语言资源不要求进行身份验证。
 

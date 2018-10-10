@@ -1,22 +1,24 @@
 ---
-title: 通过使用 C# 桌面库开始使用 Microsoft 语音识别 API | Microsoft Docs
-description: 开发使用 Microsoft 语音识别 API 的基本 Windows 应用程序，将语音转换为文本。
+title: 通过使用 C# 桌面库开始使用必应语音识别 API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: 开发使用必应语音识别 API 的基本 Windows 应用程序，将语音转换为文本。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e59b0e25401fb5182edd52f82985ffed9052286d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5b85a548d692b06a6da009432678d9c02242cb50
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365682"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996819"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-c35-for-net-on-windows"></a>开始使用 Windows 上 .NET 适用的 C# 中的语音识别 API
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>快速入门：使用 Windows 上 .NET 适用的 C# 中的必应语音识别 API
 
 此页面显示如何开发使用语音识别 API 的基本 Windows 应用程序，将语音转换为文本。 使用客户端库允许实时流式处理，这表示当客户端应用程序向服务发送音频时，它同时并异步地接收返回的部分识别结果。
 
@@ -36,7 +38,7 @@ ms.locfileid: "35365682"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得订阅密钥免费试用
 
-语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和备用密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
+语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 > * 获取订阅密钥。 在使用语音客户端库之前，你必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)。

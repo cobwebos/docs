@@ -1,45 +1,46 @@
 ---
-title: Microsoft 语音翻译 API 参考 | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Microsoft 语音翻译 API 的参考文档。
+title: 语音翻译 API 参考
+titleSuffix: Azure Cognitive Services
+description: 语音翻译 API 参考文档。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: be8faddf56158de3399713c41638c0b913b4627e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366814"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978703"
 ---
-# <a name="microsoft-translator-speech-api"></a>Microsoft 语音翻译 API
+# <a name="translator-speech-api"></a>语音翻译 API
 
-此服务提供一个流式处理 API，用于将对话语音从一种语言转录为另一种语言的文本。 此 API 还集成了文本转语音功能，可以将翻译的文本再次转换成语音。 Microsoft 语音翻译 API 可以实现实时翻译对话这样的场景，就像在 Skype 翻译中看到的那样。
+此服务提供一个流式处理 API，用于将对话语音从一种语言转录为另一种语言的文本。 此 API 还集成了文本转语音功能，可以将翻译的文本再次转换成语音。 语音翻译 API 可以实现实时翻译对话这样的场景，就像在 Skype 翻译中看到的那样。
 
-借助 Microsoft 语音翻译 API，客户端应用程序可将语音音频流式传输到服务和接收基于文本的结果，包括在源语言中识别的文本及其目标语言翻译。 通过将深度神经网络支持的自动语音识别 (ASR) 应用到音频流，来生成文本结果。 名为 TrueText 的新技术会进一步改善原始 ASR 输出，以更准确地反映用户意向。 例如，TrueText 会删除不流畅的语流（“嗯”和咳嗽声），并还原正确的标点和大小写。 此外，还包括屏蔽或排除亵渎字词的功能。 识别和翻译引擎经过专门的训练，可以处理对话语音。 语音翻译服务使用寂静检测技术来确定表述的末尾。 在语音活动停顿后，服务会流式传回已完成的表述的最终结果。 服务还能发回部分结果，对进行中的表述执行中间识别和翻译。 对于最终结果，服务可提供从目标语言中的讲述文本合成语音的功能（文本转语音）。 文本转语音音频以客户端指定的格式创建。 可以使用 WAV 和 MP3 格式。
+借助语音翻译 API，客户端应用程序可将语音音频流式传输到服务和接收基于文本的结果，包括在源语言中识别的文本及其目标语言翻译。 通过将深度神经网络支持的自动语音识别 (ASR) 应用到音频流，来生成文本结果。 名为 TrueText 的新技术会进一步改善原始 ASR 输出，以更准确地反映用户意向。 例如，TrueText 会删除不流畅的语流（“嗯”和咳嗽声），并还原正确的标点和大小写。 此外，还包括屏蔽或排除亵渎字词的功能。 识别和翻译引擎经过专门的训练，可以处理对话语音。 语音翻译服务使用寂静检测技术来确定陈述的末尾。 在语音活动停顿后，服务会流式传回已完成的陈述的最终结果。 服务还能发回部分结果，对进行中的表述执行中间识别和翻译。 对于最终结果，服务可提供从目标语言中的讲述文本合成语音的功能（文本转语音）。 文本转语音音频以客户端指定的格式创建。 可以使用 WAV 和 MP3 格式。
 
-Microsoft 语音翻译 API 利用 WebSocket 协议在客户端和服务器之间提供全双工信道。 应用程序会要求通过以下步骤来使用此服务：
+语音翻译 API 利用 WebSocket 协议在客户端和服务器之间提供全双工信道。 应用程序会要求通过以下步骤来使用此服务：
 
 ## <a name="1-getting-started"></a>1.入门
-若要访问 Microsoft 文本翻译 API，需[注册 Microsoft Azure](translator-speech-how-to-signup.md)。
+若要访问文本翻译 API，需[注册 Microsoft Azure](translator-speech-how-to-signup.md)。
 
 ## <a name="2-authentication"></a>2.身份验证
 
-使用订阅密钥进行身份验证。 Microsoft 语音翻译 API 支持两种身份验证模式：
+使用订阅密钥进行身份验证。 语音翻译 API 支持两种身份验证模式：
 
-* **使用访问令牌：** 在应用程序中，从令牌服务获取访问令牌。 使用 Microsoft 语音翻译 API 订阅密钥，从认知服务身份验证服务获取访问令牌。 访问令牌的有效期为 10 分钟。 每 10 分钟获取一次新的访问令牌，在这 10 分钟内，始终对重复的请求使用同一访问令牌。
+* **使用访问令牌：** 在应用程序中，从令牌服务获取访问令牌。 使用语音翻译 API 订阅密钥可从 Azure 认知服务身份验证服务获取访问令牌。 访问令牌的有效期为 10 分钟。 每 10 分钟获取一次新的访问令牌，在这 10 分钟内，始终对重复的请求使用同一访问令牌。
 
 * **直接使用订阅密钥：** 在应用程序中，在 `Ocp-Apim-Subscription-Key` 标头中以值的形式传递订阅密钥。
 
 将订阅密钥和访问令牌视为不应允许查看的机密。
 
 ## <a name="3-query-languages"></a>3.查询语言
-**查询语言资源中是否存在最新的受支持语言组合。** [语言资源](languages-reference.md)公开一组适用于语音识别、文本翻译和文本转语音操作的语言和语音。 每种语言或语音都获得一个标识符，供 Microsoft 语音翻译 API 用来标识同一语言或语音。
+**查询语言资源中是否存在最新的受支持语言组合。** [语言资源](languages-reference.md)公开一组适用于语音识别、文本翻译和文本转语音操作的语言和语音。 每种语言或语音都获得一个标识符，供语音翻译 API 用来标识同一语言或语音。
 
 ## <a name="4-stream-audio"></a>4.对音频进行流式传输
 **打开一个连接，开始将音频流式传输到服务。** 服务 URL 为 `wss://dev.microsofttranslator.com/speech/translate`。 服务预期的参数和音频格式介绍如下，位于 `/speech/translate` 操作中。 其中一个参数用于传递上面的步骤 2 中的访问令牌。
@@ -47,7 +48,7 @@ Microsoft 语音翻译 API 利用 WebSocket 协议在客户端和服务器之间
 ## <a name="5-process-the-results"></a>5.处理结果
 **处理从服务流式传输回来的结果。** 部分结果、最终结果和文本转语音音频片段的格式在下面的 `/speech/translate` 操作的文档中介绍。
 
-可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 Microsoft 语音翻译 API 的代码示例。
+可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用语音翻译 API 的代码示例。
 
 ## <a name="implementation-notes"></a>实现说明
 
@@ -160,7 +161,7 @@ GET /speech/translate 建立用于语音翻译的会话
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:---|:---|:---|:---|:---|
 |api-version|1.0|客户端所请求的 API 的版本。 允许值包括：`1.0`。|query   |字符串|
 |from|(empty)   |指定传入语音的语言。 值为一种语言标识符，来自语言 API 的响应中的 `speech` 范围。|query|字符串|

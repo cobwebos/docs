@@ -8,14 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591875"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972175"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 了解如何通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)使用 HDInsight。 使用 Azure 虚拟网络支持以下方案：
 
@@ -70,7 +72,7 @@ ms.locfileid: "39591875"
 
     HDInsight 托管多个服务，这些服务使用不同的端口。 请勿阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅[安全](#security)一节。
 
-    若要查找你现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
+    若要查找现有的安全配置，请使用以下 Azure PowerShell 或 Azure 经典 CLI 命令：
 
     * 网络安全组
 
@@ -107,7 +109,7 @@ ms.locfileid: "39591875"
 
     * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md)（使用 Azure 门户创建 HDInsight）
     * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)（使用 Azure PowerShell 创建 HDInsight）
-    * [使用 Azure CLI 1.0 创建 HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [使用 Azure 经典 CLI 创建 HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [使用 Azure 资源管理器模板创建 HDInsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -441,7 +443,7 @@ $vnet | Set-AzureRmVirtualNetwork
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-classic-cli"></a>Azure 经典 CLI
 
 使用以下步骤创建可限制入站流量的虚拟网络，但允许来自 HDInsight 所需的 IP 地址的流量。
 
@@ -510,7 +512,7 @@ $vnet | Set-AzureRmVirtualNetwork
 
 在虚拟网络中的自定义 DNS 服务器上：
 
-1. 使用 Azure PowerShell 或 Azure CLI 来查找虚拟网络的 DNS 后缀：
+1. 使用 Azure PowerShell 或 Azure 经典 CLI 来查找虚拟网络的 DNS 后缀：
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -592,7 +594,7 @@ $vnet | Set-AzureRmVirtualNetwork
 
 * 自定义 DNS 服务器上安装了 [Bind](https://www.isc.org/downloads/bind/)。
 
-1. 使用 Azure PowerShell 或 Azure CLI 来查找两个虚拟网络的 DNS 后缀：
+1. 使用 Azure PowerShell 或 Azure 经典 CLI 来查找虚拟网络的 DNS 后缀：
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"

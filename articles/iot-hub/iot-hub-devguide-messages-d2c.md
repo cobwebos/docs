@@ -1,89 +1,93 @@
 ---
-title: 了解 Azure IoT 中心设备到云的消息传送 | Microsoft Docs
-description: 开发人员指南 - 如何使用 IoT 中心进行设备到云的消息传送。 包含有关发送遥测和非遥测数据以及使用路由传递消息的信息。
-author: dominicbetts
-manager: timlt
+title: 了解 Azure IoT 中心消息路由 | Microsoft Docs
+description: 开发人员指南 - 如何使用消息路由发送设备到云的消息。 包含有关发送遥测和非遥测数据的信息。
+author: ash2017
+manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.date: 08/13/2018
+ms.author: asrastog
+ms.openlocfilehash: 7c36ab2f0d4d3e5c772f8ef62c13161a2649362f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126436"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966735"
 ---
-# <a name="send-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
+# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用消息路由将设备到云的消息发送到不同的终结点
 
-若要将时间序列遥测和警报从设备发送到解决方案后端，请将设备到云的消息从设备发送到 IoT 中心。 有关 IoT 中心支持的设备到云的其他选项的讨论，请参阅[设备到云的通信指南][lnk-d2c-guidance]。
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送从设备到云的消息。 路由规则随后将消息路由到 IoT 中心内面向服务的终结点之一。 路由规则使用设备到云消息的标头和正文来确定将消息路由到的位置。 默认情况下，消息将路由到与[事件中心][lnk-event-hubs]兼容的面向服务的内置终结点 (messages/events) 中。 因此，可以在解决方案后端中使用标准[事件中心集成和 SDK][lnk-compatible-endpoint] 接受从设备到云的消息。
+消息路由使你能够以自动、可缩放以及可靠的方式将消息从设备发送到云服务。 消息路由可用于： 
 
-IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心][lnk-event-hubs]*事件*和[服务总线][lnk-servicebus]*消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
+* **发送设备遥测消息以及事件**（即设备生命周期事件和设备孪生更改事件）到内置终结点和自定义终结点。 了解有关[路由终结点](##routing-endpoints)。
 
-使用 IoT 中心进行的设备到云消息传递具有以下特征：
+* **在将数据路由到各个终结点之前对数据进行筛选**，筛选方法是通过应用丰富的查询。 消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 深入了解如何使用[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
 
-* 设备到云的消息可持久保留在 IoT 中心的默认 messages/events 终结点长达七天。
-* 设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
-* 如[控制对 IoT 中心的访问][lnk-devguide-security]部分所述，IoT 中心允许基于设备的身份验证和访问控制。
-* IoT 中心最多允许创建 10 个自定义终结点。 基于 IoT 中心上配置的路由，将消息传递到终结点。 有关详细信息，请参阅[路由规则](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)。
-* IoT 中心启动数百万同时连接的设备（请参阅[配额和限制][lnk-quotas]）。
-* IoT 中心不允许任意分区。 从设备到云的消息根据其源于的 **deviceId** 进行分区。
+IoT 中心需要这些服务终结点的写入权限，以便使用消息路由。 如果通过 Azure 门户配置终结点，则将添加必要权限。 请确保将服务配置为支持预期吞吐量。 在首次配置 IoT 解决方案时，可能需要监视附加终结点，并针对实际负载进行任意的必要调整。
 
-有关 IoT 中心和事件中心差异的详细信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较][lnk-comparison]。
+IoT 中心为所有设备到云消息传递定义[通用格式](../iot-hub/iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 如果某条消息与多个路由匹配，而这些路由指向同一终结点，则 IoT 中心仅向该终结点传递一次消息。 因此无需在服务总线队列或主题中配置重复数据删除。 在分区队列中，分区相关性可保障消息排序。 使用本教程以了解如何[配置消息路由](https://docs.microsoft.com/azure/iot-hub/tutorial-routing))。
 
-## <a name="send-non-telemetry-traffic"></a>发送非遥测流量
+## <a name="routing-endpoints"></a>路由终结点
 
-通常，除了遥测数据以外，设备还会发送消息和需要在解决方案后端中单独执行和处理的请求。 例如，关键警报必须在后端触发特定操作。 可以编写[路由规则][lnk-devguide-custom]，根据消息的标头或消息正文中的值，将这些类型的消息发送到专用于处理这些消息的终结点。
+IoT 中心有一个默认的内置终结点（消息/事件），此终结点与事件中心兼容。 可以通过将订阅中的其他服务链接到中心来创建要将消息路由到的[自定义终结点](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints)。 IoT 中心目前支持将以下服务作为自定义终结点：
 
-有关此类消息的最佳处理方式的详细信息，请参阅[教程：如何处理 IoT 中心从设备到云的消息][lnk-d2c-tutorial]教程。
+### <a name="built-in-endpoint"></a>内置终结点
+可以使用标准[事件中心集成和 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) 接收来自内置终结点（消息/事件）的设备到云的消息。 请注意，在创建一个路由后，数据将停止流向内置终结点，除非已向该终结点创建了一个路由。
 
-## <a name="route-device-to-cloud-messages"></a>路由设备到云的消息
+### <a name="azure-blob-storage"></a>Azure Blob 存储
+IoT 中心仅支持将数据以 [Apache Avro](http://avro.apache.org/) 格式写入 Azure Blob 存储。 IoT 中心将在消息达到特定大小或在经过一定的事件后，对消息进行批处理并将数据写入 Blob。
 
-有两个选项可用于将设备到云的消息路由到后端应用：
-
-* 使用内置的[与事件中心兼容的终结点][lnk-compatible-endpoint]，使后端应用能够读取中心收到的设备到云消息。 若要了解内置的与事件中心兼容的终结点，请参阅[通过内置终结点读取设备到云的消息][lnk-devguide-builtin]。
-* 使用路由规则将消息发送到 IoT 中心的自定义终结点。 自定义终结点使后端应用可以通过事件中心、服务总线队列或者服务总线主题读取设备到云信息。 若要了解路由和自定义终结点，请参阅[对设备到云的消息使用自定义终结点和路由规则][lnk-devguide-custom]。
-
-## <a name="anti-spoofing-properties"></a>反欺骗属性
-
-为了避免设备到云的消息中出现设备欺骗，IoT 中心使用以下属性在所有消息上加上戳记：
-
-* **ConnectionDeviceId**
-* **ConnectionDeviceGenerationId**
-* **ConnectionAuthMethod**
-
-根据[设备标识属性][lnk-device-properties]，前两个属性包含源设备的 **deviceId** 和 **generationId**。
-
-**ConnectionAuthMethod** 属性包含具有以下属性的 JSON 序列化对象：
-
-```json
-{
-  "scope": "{ hub | device }",
-  "type": "{ symkey | sas | x509 }",
-  "issuer": "iothub"
-}
+IoT 中心默认为以下文件命名约定：
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
+你可以使用任何文件命名约定，但必须使用所有列出的令牌。 如果没有要写入的数据，IoT 中心会写入到一个空 blob。
+
+### <a name="service-bus-queues-and-service-bus-topics"></a>服务总线队列和服务总线主题
+用作 IoT 中心终结点的服务总线队列和主题不得启用**会话**或**重复检测**选项。 如果启用了其中任一选项，该终结点会在 Azure 门户中显示为**无法访问**。
+
+### <a name="event-hubs"></a>事件中心
+除了与事件中心兼容的内置终结点外，还可以将数据路由到事件中心类型的自定义终结点。 
+
+使用路由和自定义终结点时，如果消息不与任何规则匹配，则只会将其传送到内置终结点。 若要将消息传送到内置终结点和自定义终结点，请添加一个将消息发送到事件终结点的路由。
+
+## <a name="reading-data-that-has-been-routed"></a>读取已路由的数据
+可以按照此[教程](https://docs.microsoft.com/azure/iot-hub/tutorial-routing)配置一个路由。
+
+使用以下教程了解如何从终结点读取消息。
+
+* 从[内置终结点](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)进行读取
+* 从 [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart)进行读取
+* 从[事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)进行读取
+* 从[服务总线队列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)进行读取
+* 从[服务总线主题](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)进行读取
+
+## <a name="fallback-route"></a>回退路由
+回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](https://docs.microsoft.com/azure/event-hubs/)兼容的内置事件中心（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 请注意，在创建一个路由后，数据将停止流向内置终结点，除非已向该终结点创建了一个路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。 
+
+可以在 Azure 门户->“消息路由”边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
+
+## <a name="non-telemetry-events"></a>非遥测事件
+除了设备遥测外，消息路由也能够发送设备孪生更改事件和设备生命周期事件。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果使用数据源创建一个设置为到**设备生命周期事件**的路由，IoT 中心将一条消息，此消息指示是否已删除或创建了设备。 
+[IoT中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
+
+## <a name="testing-routes"></a>测试路由
+在创建新路由或编辑现有路由时，应通过示例消息来测试路由查询。 可以测试单个路由或一次测试所有路由，并且在测试期间，不会有消息被路由到终结点。 可以使用 Azure 门户、Azure 资源管理器、Azure PowerShell 和 Azure CLI 来进行测试。 测试结果有助于确定示例消息是否与查询相匹配，或者测试是否因为示例消息或查询语法错误而无法运行。 若要了解详细信息，请参阅[测试路由](https://docs.microsoft.com/rest/api/iothub/iothubresource/testroute)和[测试所有路由](https://docs.microsoft.com/rest/api/iothub/iothubresource/testallroutes)。
+
+## <a name="latency"></a>Latency
+使用内置终结点路由设备到云遥测消息时，在创建第一个路由后，端到端延迟略微增大。
+
+在大多数情况下，延迟的平均增大量小于 500 毫秒。 可以使用路由：消息/事件的消息延迟或 d2c.endpoints.latency.builtIn.events IoT 中心指标来监视延迟。 在创建第一个路由后创建或删除任何路由不会影响端到端延迟。
+
+## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
+IoT 中心提供了多个与路由和终结点相关的指标，使你能够大致了解你的中心的运行状况和已发送的消息数。 你可以组合来自多项指标的信息来确定问题的根本原因。 例如，使用指标路由：已删除的遥测消息数或 d2c.telemetry.egress.dropped 来确定当消息与任何路由上的查询不匹配并且已禁用回退路由时已删除的消息数。 [IoT 中心指标](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics)列出了默认为 IoT 中心启用的所有指标。
+
+通过使用 Azure Monitor [诊断设置](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health)中的路由诊断日志，可以跟踪发生在路由查询和终结点运行状况的评估期间、由 IoT 中心所察觉到的错误，例如某个终结点已失效。 可以将这些诊断日志发送到 Log Analytics、事件中心或 Azure 存储进行自定义处理。
+
 ## <a name="next-steps"></a>后续步骤
-
-有关可以用来发送设备到云消息的 SDK 的详细信息，请参阅 [Azure IoT SDK][lnk-sdks]。
-
-[快速入门][lnk-get-started] 介绍如何从模拟设备发送设备到云的消息。 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息][lnk-d2c-tutorial]教程。
-
-[lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
-[lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-comparison]: iot-hub-compare-event-hubs.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: quickstart-send-telemetry-node.md
-
-[lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
-[lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: tutorial-routing.md
+* 若要了解如何创建消息路由，请参阅[使用路由处理 IoT 中心的设备到云消息](../iot-hub/tutorial-routing.md)教程。
+* [快速入门](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)介绍如何从模拟设备发送设备到云的消息。
+* 有关可以用来发送设备到云消息的 SDK 的详细信息，请参阅 [Azure IoT SDK](../iot-hub/iot-hub-devguide-sdks.md)。

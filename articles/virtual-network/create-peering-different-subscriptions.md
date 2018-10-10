@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: b67b13f30538d21f1a4db9675ee7c13d999f842a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cb8644ea4d949e81e4fb68bf572956bfe3444c0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997890"
 ---
-# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅 
+# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
-本教程介绍如何在通过 Resource Manager 创建的虚拟网络间创建虚拟网络对等互连。 虚拟网络位于不同订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。 
+本教程介绍如何在通过 Resource Manager 创建的虚拟网络间创建虚拟网络对等互连。 虚拟网络位于不同订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。
 
 创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 选择下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
 
@@ -42,7 +42,9 @@ ms.locfileid: "34726272"
 
 ## <a name="portal"></a>创建对等互连 - Azure 门户
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。
+如果要对等互连的虚拟网络位于与其他 Azure Active Directory 租户相关联的订阅中，请按照本文的“CLI 和 PowerShell”部分中的步骤操作。 如果虚拟网络属于其他 Active Directory 租户中的订阅，则门户不支持它的对等互连。
+
+下述步骤对每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。
 
 1. 以用户 A 的身份登录到 [Azure 门户](https://portal.azure.com)。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 2. 选择“+ 创建资源”，然后依次选择“网络”和“虚拟网络”。
@@ -58,7 +60,7 @@ ms.locfileid: "34726272"
 5. 从左侧的垂直选项列表中选择“访问控制(IAM)”。
 6. 在“myVnetA - 访问控制(IAM)”下，选择“+ 添加”。
 7. 在“角色”框中选择“网络参与者”。
-8. 在“选择”框中，选择 *UserB*，或者键入 UserB 的电子邮件地址来搜索该用户。 显示的用户列表来自要为其设置对等互连的虚拟网络所在的同一个 Azure Active Directory 租户。 如果未看到用户 B，则可能是因为用户 B 与用户 A 位于不同的 Active Directory 租户中。 如果想要连接位于不同 Active Directory 租户中的虚拟网络，可以通过 [Azure VPN 网关](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)而非虚拟网络对等互连来连接它们。
+8. 在“选择”框中，选择 *UserB*，或者键入 UserB 的电子邮件地址来搜索该用户。
 9. 选择“保存”。
 10. 在“myVnetA - 访问控制 (IAM)”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA。
 11. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
@@ -98,12 +100,14 @@ ms.locfileid: "34726272"
 
 ## <a name="cli"></a>创建对等互连 - Azure CLI
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 要对等互连的两个虚拟网络必须都位于与同一 Azure Active Directory 租户关联的订阅中。  如果想要连接位于不同 Active Directory 租户中的虚拟网络，可以通过 [Azure VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)而非虚拟网络对等互连来连接它们。
+本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 如果虚拟网络位于其他订阅中，且这些订阅与其他 Azure Active Directory 租户相关联，请在继续操作之前完成下述步骤：
+ - 将每个 Active Directory 租户中的用户添加作为所对立的 Azure Active Directory 租户中的[宾客用户](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
+ - 每位用户都必须接受来自对立的 Azure Active Directory 租户的宾客用户邀请。
 
 以下脚本：
 
-- 需要 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 在 Bash shell 中操作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。 
+- 需要 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 在 Bash shell 中操作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。
 
 除安装 CLI 及其依赖项外，还可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择下面脚本中的“试用”按钮，调用一个可用于登录 Azure 帐户的 Cloud Shell。 
 
@@ -134,14 +138,14 @@ ms.locfileid: "34726272"
 4. 创建 myVnetB。 将步骤 2 中的脚本内容复制到电脑的文本编辑器。 将 `<SubscriptionA-Id>` 替换为订阅 B 的 ID。 将 10.0.0.0/16 更改为 10.1.0.0/16，将所有 A 更改为 B，并将所有 B 更改为 A。复制修改后的脚本，将其粘贴到 CLI 会话，然后按 `Enter`。 
 5. 注销用户 B 的 Azure 登录，然后以用户 A 的身份登录 Azure。
 6. 创建从 myVnetA 到 myVnetB 的虚拟网络对等互连。 将以下脚本内容复制到计算机上的文本编辑器。 将 `<SubscriptionB-Id>` 替换为订阅 B 的 ID。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 CLI 会话，然后按 Enter。
- 
+
     ```azurecli-interactive
         # Get the id for myVnetA.
         vnetAId=$(az network vnet show \
           --resource-group myResourceGroupA \
           --name myVnetA \
           --query id --out tsv)
-    
+
         # Peer myVNetA to myVNetB.
         az network vnet peering create \
           --name myVnetAToMyVnetB \
@@ -176,9 +180,11 @@ ms.locfileid: "34726272"
  
 ## <a name="powershell"></a>创建对等互连 - PowerShell
 
-本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 要对等互连的两个虚拟网络必须都位于与同一 Azure Active Directory 租户关联的订阅中。  如果想要连接位于不同 Active Directory 租户中的虚拟网络，可以通过 [Azure VPN 网关](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)而非虚拟网络对等互连来连接它们。
+本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，可跳过注销 Azure 的步骤，并删除创建用户角色分配的脚本行。 将以下所有脚本中的 UserA@azure.com 和 UserB@azure.com 替换为用户 A 和用户 B 使用的用户名。 如果虚拟网络位于其他订阅中，且这些订阅与其他 Azure Active Directory 租户相关联，请在继续操作之前完成下述步骤：
+ - 将每个 Active Directory 租户中的用户添加作为所对立的 Azure Active Directory 租户中的[宾客用户](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
+ - 每位用户都必须接受来自对立的 Active Directory 租户的宾客用户邀请。
 
-1. 安装最新版本的 PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+1. 确认你具有版本 6.5.0 或更高版本。 为此，可运行 `Get-Module -Name AzureRm`我们推荐安装最新版本的 PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) 模块。 如果不熟悉 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)。 
 2. 启动 PowerShell 会话。
 3. 在 PowerShell 中，输入 `Connect-AzureRmAccount` 命令以用户 A 的身份登录 Azure。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 4. 创建资源组和虚拟网络 A。将以下脚本复制到电脑的文本编辑器。 将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID。 如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
@@ -242,6 +248,10 @@ ms.locfileid: "34726272"
 
 ## <a name="template"></a>创建对等互连 - 资源管理器模板
 
+如果虚拟网络位于其他订阅中，且这些订阅与其他 Azure Active Directory 租户相关联，请在继续操作之前完成下述步骤：
+ - 将每个 Active Directory 租户中的用户添加作为所对立的 Azure Active Directory 租户中的[宾客用户](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
+ - 每位用户都必须接受来自对立的 Active Directory 租户的宾客用户邀请。
+ 
 1. 若要创建虚拟网络并分配合适的[权限](virtual-network-manage-peering.md#permissions)，请完成本文中[门户](#portal)、[Azure CLI](#cli) 或 [PowerShell](#powershell) 部分中所述的步骤。
 2. 将下面的文本保存到本地计算机上的某个文件中。 将 `<subscription ID>` 替换为用户 A 的订阅 ID。 例如，可能会将文件另存为 vnetpeeringA.json。
 

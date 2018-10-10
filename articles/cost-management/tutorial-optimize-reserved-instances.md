@@ -1,30 +1,30 @@
 ---
-title: 教程 - 使用 Azure 成本管理优化预订实例成本 | Microsoft Docs
+title: 教程 - 在 Azure 中使用 Cloudyn 优化预留实例成本 | Microsoft Docs
 description: 本教程介绍如何优化 Azure 和 Amazon Web Services (AWS) 的预订实例成本。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987743"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
 # <a name="tutorial-optimize-reserved-instances"></a>教程：优化预订实例
 
-本教程介绍如何通过成本管理来优化 Azure 和 Amazon Web Services (AWS) 的预订实例成本和使用率。 云服务提供商提供的预订实例是一种长期合同承诺。在该合同中，你对将来使用 VM 的情况进行先期承诺。 与标准的即用即付 VM 定价模型相比，它可以节省大量的资金。 仅当完全使用预订实例的容量时，潜在的节省才会实现。
+本教程介绍如何通过 Cloudyn 来优化 Azure 和 Amazon Web Services (AWS) 的预留实例成本和使用率。 云服务提供商提供的预订实例是一种长期合同承诺。在该合同中，你对将来使用 VM 的情况进行先期承诺。 与标准的即用即付 VM 定价模型相比，它可以节省大量的资金。 仅当完全使用预订实例的容量时，潜在的节省才会实现。
 
-本教程介绍如何通过成本管理对 Azure 和 AWS 预订实例 (RI) 提供支持， 同时还介绍如何优化预订实例成本。 主要介绍如何确保你充分利用预订。 在本教程中，将：
+本教程介绍如何通过 Cloudyn 对 Azure 和 AWS 预留实例 (RI) 提供支持。 同时还介绍如何优化预订实例成本。 主要介绍如何确保你充分利用预订。 在本教程中，将：
 
 > [!div class="checklist"]
 > * 了解 Azure RI 成本
@@ -41,21 +41,21 @@ ms.locfileid: "32177317"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
-- 必须有 Azure 成本管理的试用注册版或付费订阅版。
+- 必须有 Cloudyn 的试用注册版或付费订阅版。
 - 必须已购买 Azure 或 AWS 中的 RI。
 
 ## <a name="understand-azure-ri-costs"></a>了解 Azure RI 成本
 
-购买 Azure 预订 VM 实例时，需通过先期支付的方式购买未来的使用量。 先期支付涵盖的是未来使用下述 VM 的成本：
+购买 Azure 虚拟机预留实例时，需通过先期支付的方式购买未来的使用量。 先期支付涵盖的是未来使用下述 VM 的成本：
 
 - 特定类型的 VM
 - 特定区域的 VM
 - 一到三年期限的 VM
 - 达到某个购买数量的 VM。
 
-可以在 Azure 门户的[预订](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中查看购买的 Azure 预订 VM 实例。
+可以在 Azure 门户的[预留](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中查看购买的 Azure 虚拟机预留实例。
 
-术语“Azure 预订 VM 实例”仅适用于定价模型。 它根本不会更改正在运行的 VM。 此术语特定于 Azure，更多情况下是称为“预订实例”或“预订”。 已购买的预订实例不适用于特定 VM，而是适用于任何匹配的 VM。 例如，某个 VM 类型的预订，该类型在你为购买的预订选择的区域中运行。
+术语“Azure 虚拟机预留实例”仅适用于定价模型。 它根本不会更改正在运行的 VM。 此术语特定于 Azure，更多情况下是称为“预订实例”或“预订”。 已购买的预订实例不适用于特定 VM，而是适用于任何匹配的 VM。 例如，某个 VM 类型的预订，该类型在你为购买的预订选择的区域中运行。
 
 购买的预订实例仅适用于基本硬件， 不涵盖 VM 的软件许可证。 例如，你可能预订了一个实例，同时你有一个运行 Windows 的匹配 VM。 预订实例仅涵盖 VM 的基础成本。 在此示例中，你需要支付任何必需 Windows 许可证的全价。 若要获取操作系统或其他在 VM 上运行的软件的折扣，应考虑使用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)。 混合权益为软件许可证提供的折扣类型类似于预订实例为基础 VM 提供的折扣类型。
 
@@ -85,7 +85,7 @@ ms.locfileid: "32177317"
 
 ## <a name="optimize-azure-ri-costs"></a>优化 Azure RI 成本
 
-Azure 成本管理通过以下方式支持预订实例和混合权益：
+Cloudyn 通过以下方式支持预留实例和混合权益：
 
 - 显示与定价模型相关联的成本
 - 跟踪 RI 使用情况
@@ -116,7 +116,7 @@ Azure 成本管理通过以下方式支持预订实例和混合权益：
 
 ## <a name="view-ri-costs"></a>查看 RI 成本
 
-购买预订时，需一次性付款。 可以在成本管理中通过两种方式来查看付款：
+购买预订时，需一次性付款。 可以在 Cloudyn 中通过两种方式来查看付款：
 
 - 实际成本
 - 摊销成本

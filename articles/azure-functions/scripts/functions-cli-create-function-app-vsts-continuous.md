@@ -1,41 +1,41 @@
 ---
-title: 在 Azure 中创建从 Visual Studio Team Services 部署的函数 | Microsoft Docs
-description: 创建 Function App 并从 Visual Studio Team Services 部署函数代码
+title: 在 Azure 中创建从 Azure DevOps 部署的函数 | Microsoft Docs
+description: 创建 Function App 并从 Azure DevOps 部署函数代码
 services: functions
 keywords: ''
-author: syntaxc4
+author: ggailey777
 ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
-ms.service: functions
+ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 1b54cfebd3ae36fc8025aeb4ea9c91d336bc5343
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fdc2f50be035c3fe4039c48c09436215d2f5bcc3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988946"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956602"
 ---
-# <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>创建函数应用，然后从 Visual Studio Team Services 部署函数代码
+# <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>创建函数应用并从 Azure DevOps 部署函数代码
 
-本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用。 从 Visual Studio Team Services (VSTS) 存储库连续部署函数应用（即函数的容器）。 
+本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用。 从 Azure DevOps 存储库连续部署函数应用（即函数的容器）。 
 
 [!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 若要完成本主题，必须具备以下条件：
 
-* 包含函数应用项目的 VSTS 存储库，并且你对其具有管理权限。
-* [个人访问令牌 (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate)，用于访问 VSTS 存储库。
+* 包含函数应用项目的 Azure DevOps 存储库，并且你对其具有管理权限。
+* [个人访问令牌 (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)，用于访问 Azure DevOps 存储库。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果想要在本地使用 Azure CLI，必须安装和使用版本 2.0 或更高版本。 若要确定 Azure CLI 版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+如果想要在本地使用 Azure CLI，必须安装和使用版本 2.0 或更高版本。 若要确定 Azure CLI 版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
-此示例创建 Azure Function app 并从 Visual Studio Team Services 部署函数代码。
+此示例创建 Azure 函数应用并从 Azure DevOps 部署函数代码。
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-vsts/deploy-function-app-with-function-vsts.sh?highlight=3-4 "Azure Service")]
 

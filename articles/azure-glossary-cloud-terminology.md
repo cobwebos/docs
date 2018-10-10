@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 84766ba4cf9e844184752bc44d2e0a471b97db27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159122"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963588"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -31,7 +31,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="account"></a>帐户
 用于访问和管理 Azure 订阅的帐户。 它通常被称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户，或 Office 365 用户名和密码。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
-请参阅[使用 Office 365 帐户注册 Azure 订阅](billing/billing-use-existing-office-365-account-azure-subscription.md)和[可用于登录的帐户](active-directory/active-directory-how-subscriptions-associated-directory.md)。
+请参阅[使用 Office 365 帐户注册 Azure 订阅](billing/billing-use-existing-office-365-account-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 应用
 又叫[应用服务应用](#app-service-app)。
@@ -47,7 +47,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
 
 ## <a name="cli"></a>Azure 命令行接口 (CLI)
-一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI 2.0](/cli/azure)
+一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
 一个命令行接口，可用于从 Windows 电脑通过命令行管理 Azure 服务。 某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。
@@ -74,7 +74,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅[使用 PowerShell 或 CLI 在 Azure 中导航和选择 Windows 虚拟机映像](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="limits"></a>限制
-可以创建的资源数目或可实现的性能基准。 限制通常与订阅、服务和产品相关联。  
+可以创建的资源数目或可实现的性能基准。 限制通常与订阅、服务和产品关联。  
 请参阅 [Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>负载均衡器
@@ -126,8 +126,8 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅[关于 Azure 存储帐户](storage/common/storage-create-storage-account.md)
 
 ## <a name="subscription"></a>订阅
-客户与 Microsoft 之间的协议，可让客户获取 Azure 服务。 订阅定价和相关条款受为订阅选择的产品/服务约束。
-请参阅 [Microsoft 在线订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)和 [Azure 订阅与 Azure Active Directory 的关联方式](active-directory/active-directory-how-subscriptions-associated-directory.md)
+客户与 Microsoft 之间的协议，可让客户获取 Azure 服务。 订阅的定价和相关条款由为订阅选择的套餐控制。
+请参阅 [Microsoft 在线订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)和 [Azure 订阅与 Azure Active Directory 的关联方式](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 ## <a name="tag"></a>标记
 一个索引编制术语，让你根据管理或计费要求为资源分类。 如果有一系列复杂的资源，则可以使用标记以最有利的方式可视化这些资产。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。  

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715057"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949700"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -49,7 +49,7 @@ ms.locfileid: "39715057"
 
 **问：** 如何使用自定义映像创建规模集？
 
-**答：** 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI 2.0](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+**答：** 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **问：** 如果我将规模集容量从 20 减少到 15，将删除哪些 VM？
 
@@ -129,7 +129,7 @@ ms.locfileid: "39715057"
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 对虚拟机规模集设置自动缩放？
 
-若要使用 PowerShell 对虚拟机规模集设置自动缩放，请参阅[自动缩放虚拟机规模集](tutorial-autoscale-powershell.md)。 你还可以使用 [Azure CLI 2.0](tutorial-autoscale-cli.md) 和 [Azure 模板](tutorial-autoscale-template.md)配置自动缩放
+若要使用 PowerShell 对虚拟机规模集设置自动缩放，请参阅[自动缩放虚拟机规模集](tutorial-autoscale-powershell.md)。 你还可以使用 [Azure CLI](tutorial-autoscale-cli.md) 和 [Azure 模板](tutorial-autoscale-template.md)配置自动缩放
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？

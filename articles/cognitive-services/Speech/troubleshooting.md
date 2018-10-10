@@ -1,22 +1,24 @@
 ---
-title: 故障排除 | Microsoft 文档
-description: 如何解决使用 Microsoft 语音服务时出现的问题。
+title: 必应语音故障排除 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: 如何解决使用必应语音服务时出现的问题。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04f3da19939d523d201d357b2b0293db1508431d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 532916106f62e0236b8dd53cf7988a648355aef4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365662"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991855"
 ---
-# <a name="troubleshooting"></a>故障排除
+# <a name="troubleshooting-bing-speech"></a>必应语音故障排除
 
 ## <a name="error-http-403-forbidden"></a>错误 `HTTP 403 Forbidden`
 

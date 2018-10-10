@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中上传 Hadoop 作业的数据
-description: 了解如何使用 Azure CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Hadoop 作业的数据。
+description: 了解如何使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Hadoop 作业的数据。
 keywords: etl hadoop, 将数据引入 hadoop, hadoop 加载数据
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051818"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985973"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Hadoop 作业的数据
 
@@ -38,22 +38,22 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 
 | 工具 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure 命令行接口][azurecli] |✔ |✔ |✔ |
+| [Azure 经典 CLI][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop 命令](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> 尽管 Azure CLI、Azure PowerShell 和 AzCopy 都可从 Azure 外部使用，但是 Hadoop 命令只能在 HDInsight 群集上使用。 使用该命令只能将数据从本地文件系统载入 Azure 存储。
+> 尽管 Azure 经典 CLI、Azure PowerShell 和 AzCopy 都可从 Azure 外部使用，但是 Hadoop 命令只能在 HDInsight 群集上使用。 使用该命令只能将数据从本地文件系统载入 Azure 存储。
 >
 >
 
-#### <a id="xplatcli"></a>Azure CLI
-Azure CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以下步骤将数据上传到 Azure 存储：
+#### <a id="xplatcli"></a>Azure 经典 CLI
+Azure 经典 CLI 是一个跨平台工具，可用于管理 Azure 服务。 使用以下步骤将数据上传到 Azure 存储：
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [安装和配置适用于 Mac、Linux 和 Windows 的 Azure CLI](../cli-install-nodejs.md)。
+1. [安装和配置适用于 Mac、Linux 和 Windows 的 Azure 经典 CLI](../cli-install-nodejs.md)。
 2. 打开命令提示符、bash 或其他 shell，并使用以下方法对 Azure 订阅进行身份验证。
 
     ```cli

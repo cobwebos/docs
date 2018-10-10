@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972549"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
 
 > [!IMPORTANT]
-> 启用存储帐户的防火墙规则将阻止访问传入的数据请求，包括来自其他 Azure 服务的数据。  这包括使用门户、写入日志等。对于参与的服务，可通过以下的[异常](#Exceptions)部分重新启用功能。  若要访问门户，需要从已设置的可信边界（IP 或 VNet）内的计算机进行访问。
+> 启用存储帐户的防火墙规则将阻止访问传入的数据请求，包括来自其他 Azure 服务的数据。  这包括使用门户、写入日志等。对于参与的服务，可通过以下的[异常](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)部分重新启用功能。  若要访问门户，需要从已设置的可信边界（IP 或 VNet）内的计算机进行访问。
 >
 
 ## <a name="scenarios"></a>方案
@@ -35,7 +35,7 @@ Azure 存储提供一种分层安全模型，用于保护存储帐户，使其�
 
 经典存储帐户**不**支持防火墙和虚拟网络。
 
-如本文[例外情况](/storage/common/storage-network-security#exceptions)部分所述，通过创建例外内容，可在应用网络规则的存储帐户中使用非托管磁盘备份和还原虚拟机。  防火墙例外不适用于托管磁盘，因为它们已由 Azure 托管。
+如本文[例外情况](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)部分所述，通过创建例外内容，可在应用网络规则的存储帐户中使用非托管磁盘备份和还原虚拟机。  防火墙例外不适用于托管磁盘，因为它们已由 Azure 托管。
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 默认情况下，存储帐户接受来自任何网络上客户端的连接。  若要限制为仅允许选定网络访问，必须先更改默认操作。
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLIv2
-1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 显示存储帐户默认规则的状态。
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 列出虚拟网络规则
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -208,7 +208,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。  IP 规则不允许�
 2. 单击名为“防火墙和虚拟网络”的设置菜单。
 3. 确保已选择允许从“所选网络”进行访问。
 4. 若要向 Internet IP 范围授予访问权限，请在“防火墙”的“地址范围”下输入 IP 地址或地址范围（采用 CIDR 格式）。
-5. 若要删除 IP 网络规则，请单击“...”打开该规则的上下文菜单，单击“删除”。
+5. 若要删除某个 IP 网络规则，请单击该网络规则旁边的垃圾桶图标。
 6. 单击“保存”应用所做的更改。
 
 #### <a name="powershell"></a>PowerShell
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 列出 IP 网络规则
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
-||||
+|Azure Monitor|Microsoft.Insights| 允许将监视数据写入安全存储帐户[了解详细信息](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 在某些情况下，需要从网络边界外访问读取诊断日志和指标。  可以允许网络规则例外读取访问存储帐户日志文件和/或指标表。 [详细了解如何使用存储分析。](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
+1. [安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录](/cli/azure/authenticate-azure-cli)。
 2. 显示存储帐户的网络规则例外。
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass

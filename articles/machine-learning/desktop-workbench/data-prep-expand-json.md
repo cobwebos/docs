@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dbda4b7b6d82e8cf1e89dc78ce82efbac08b9933
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0a5cbca114b220686d656f93edb00a199e3cbeeb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35633927"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989815"
 ---
 # <a name="expand-json-transformation"></a>“展开 JSON”转换
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 通过“展开 JSON” 转换，用户可以将包含有效 JSON 文本的现有列展开为多列。
 
 ## <a name="how-to-perform-this-transformation"></a>如何执行此转换
@@ -35,7 +40,7 @@ ms.locfileid: "35633927"
 
 源列 *Customer* 展开为两列：*Customer.Name* 和 *Customer.Phone*。
 
-| Customer                                                | Customer.Name   | Customer.Phone |
+| 客户                                                | Customer.Name   | Customer.Phone |
 |---------------------------------------------------------|-----------------|----------------|
 | { "Name" : "Carrie Dodson", "Phone" : "123-4567-890"}   | Carrie Dodson   | 123-4567-890   |
 | { "Name" : "Leonard Robledo", "Phone" : "456-7890-123"} | Leonard Robledo | 456-7890-123   |

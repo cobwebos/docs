@@ -1,22 +1,24 @@
 ---
 title: 通过使用 C# 服务库开始使用 Microsoft 语音识别 API | Microsoft Docs
-description: 使用 Microsoft 语音识别服务库将口语转换为文本。
+titlesuffix: Azure Cognitive Services
+description: 使用必应语音识别服务库将口语转换为文本。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0320f41658a7ac4d6bf9e88ed998c853b665d485
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5716f7a0af16bd3e40dea4468e2fae884f911718
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365693"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967551"
 ---
-# <a name="get-started-with-the-speech-recognition-service-library-in-c35-for-net-windows"></a>开始使用 C# for .NET Windows 中的语音识别服务库
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：使用 C# for .NET Windows 中的必应语音识别服务库
 
 服务库适用于拥有自己的云服务并希望通过其服务调用语音服务的开发人员。 若要从设备绑定应用调用语音识别服务，请勿使用此 SDK。 （请使用其他客户端库或 REST API。）
 
@@ -36,7 +38,7 @@ ms.locfileid: "35365693"
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务（之前称为 Project Oxford）的一部分。 可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务（之前的项目 Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 > * 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
@@ -116,7 +118,7 @@ SpeechInput 对象包含两个字段：
 
 ：每次语音服务预测你可能会说的内容时，甚至在你说完（如果使用 `MicrophoneRecognitionClient`）或完成发送数据（如果使用 `DataRecognitionClient`）之前，都会调用此事件。 可使用 `SpeechClient.SubscribeToPartialResult()` 订阅该事件。 或者可使用通用事件订阅方法 `SpeechClient.SubscribeTo<RecognitionPartialResult>()`。
 
-**返回格式** | 说明 |
+**返回格式** | Description |
 ------|------
 **LexicalForm** | 此形式最适合需要原始、未处理的语音识别结果的应用程序使用。
 **DisplayText** | 应用了反向文本规范化、大写、标点符号和不当字词屏蔽的已识别短语。 在不当字词的初始字符后用星号进行了屏蔽，例如“d***”。 该形式最适合需要向用户显示语音识别结果的应用程序使用。
@@ -127,7 +129,7 @@ SpeechInput 对象包含两个字段：
 #### <a name="result-event"></a>结果事件
 （在 `ShortPhrase` 模式下）完成说话后，将调用此事件。 针对结果提供了 n-best 选项。 在 `LongDictation` 模式下，可根据服务指示的语句停顿位置多次调用该事件。 可使用 `SpeechClient.SubscribeToRecognitionResult()` 订阅该事件。 或者可使用通用事件订阅方法 `SpeechClient.SubscribeTo<RecognitionResult>()`。
 
-**返回格式** | 说明 |
+**返回格式** | Description |
 ------|------|
 **RecognitionStatus** | 有关识别生成方式的状态。 例如，它是由于成功识别还是由于取消连接等原因而产生的。
 **Phrases** | 具有识别置信度的 n-best 识别短语集。

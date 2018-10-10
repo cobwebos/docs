@@ -13,17 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 2e3d86d776f44c47a33bf075cf7f2140a3940e5e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928448"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962838"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
+
 使用安全外壳 (SSH) 密钥对，可以在 Azure 上创建使用 SSH 密钥进行身份验证的虚拟机 (VM)，从而无需密码即可登录。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 可使用 Azure Cloud Shell、macOS 或 Linux 主机或者适用于 Linux 的 Windows 子系统以及其他支持 OpenSSH 的工具完成这些步骤。 
+
+> [!NOTE]
+> 使用 SSH 密钥创建的 VM 默认配置为已禁用密码，这将大大增加暴力猜测攻击的难度。 
 
 有关详细背景和示例，请参阅[创建 SSH 密钥对的详细步骤](create-ssh-keys-detailed.md)。
 
@@ -32,48 +36,61 @@ ms.locfileid: "37928448"
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
-使用 `ssh-keygen` 命令生成 `~/.ssh` 目录中默认创建的 SSH 公钥和私钥文件。 系统提示时，可指定不同的位置和其他通行短语（用于访问私钥文件的密码）。 如果当前位置存在 SSH 密钥对，这些文件将被覆盖。
+
+使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 ~/.ssh 目录中创建。 可以指定其他位置，以及访问私钥文件的密码 (passphrase)。 如果给定位置存在具有相同名称的 SSH 密钥对，则这些文件将被覆盖。
+
+以下命令使用 RSA 加密和 2048 位长度创建 SSH 密钥对：
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-如果使用 [Azure CLI 2.0](/cli/azure) 创建 VM，则可以选择通过运行具有 `--generate-ssh-keys` 选项的 [az vm create](/cli/azure/vm#az_vm_create) 命令生成 SSH 公钥和私钥文件。 密钥存储在 ~/.ssh 目录中。 请注意，如果该位置已存在密钥，此命令选项不会覆盖这些密钥。
+如果通过 [Azure CLI](/cli/azure) 使用 [az vm create](/cli/azure/vm#az-vm-create) 命令创建 VM，可以使用 `--generate-ssh-keys` 选项生成 SSH 公钥和私钥文件。 密钥文件存储在 ~/.ssh 目录中，除非 `--ssh-dest-key-path` 选项另有规定。 `--generate-ssh-keys` 选项不会覆盖现有密钥文件，而是会返回错误。 在以下命令中，将 VMname 和 RGname 替换为你自己的值：
 
-## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>部署 VM 时提供 SSH 公钥
-若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、CLI、资源管理器模板或其他方法创建 VM 时指定 SSH 公钥：
+```azurecli
+az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+```
+
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>在部署 VM 时提供 SSH 公钥
+
+若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、Azure CLI、Azure 资源管理器模板或其他方法创建 VM 时指定 SSH 公钥：
 
 * [使用 Azure 门户创建 Linux 虚拟机](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure CLI 创建 Linux 虚拟机](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 Azure 模板创建 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-如果不熟悉 SSH 公钥的格式，则可通过运行 `cat` 来查看公钥（如下所示），注意需将 `~/.ssh/id_rsa.pub` 替换成自己的公钥文件位置：
+如果不熟悉 SSH 公钥的格式，可以使用以下 `cat` 命令显示公钥，将 `~/.ssh/id_rsa.pub` 替换为你自己的公钥文件的路径和文件名（如有必要）：
 
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-如果复制和粘贴要在 Azure 门户或 Resource Manager 模板中使用的公钥文件的内容，请确保不复制额外的空格。 例如，如果使用 macOS，则可将公钥文件（默认为 `~/.ssh/id_rsa.pub`）通过管道传送到 pbcopy，以便复制内容（也可通过其他 Linux 程序执行此类操作，例如 xclip）。
+典型公钥值如下所示：
 
-放置在 Azure 中 Linux VM 上的公钥默认存储在 `~/.ssh/id_rsa.pub` 中，除非在创建密钥时更改了位置。 如果借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过运行具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm#az_vm_create) 命令来指定此公钥的值或位置。 
+```
+ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
+```
 
-## <a name="ssh-to-your-vm"></a>通过 SSH 连接到 VM
-凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址）：
+如果复制和粘贴要在 Azure 门户或 Resource Manager 模板中使用的公钥文件的内容，请确保不复制尾随空格。 要在 macOS 中复制公钥，可以通过管道将公钥文件传递到 pbcopy。 与此类似，要在 Linux 中复制公钥，可以将公钥文件通过管道传递到 xclip 等程序。
+
+放置在 Azure 中 Linux VM 上的公钥默认存储在 ~/.ssh/id_rsa.pub，除非在创建密钥对时指定了其他位置。 要借助现有公钥使用 [Azure CLI 2.0](/cli/azure) 创建 VM，请通过使用具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm#az-vm-create) 命令来指定此公钥的值或位置。 在以下命令中，将 VMname、RGname 和 keyFile 替换为你自己的值：
+
+```azurecli
+az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile
+```
+
+## <a name="ssh-into-your-vm"></a>通过 SSH 连接到 VM
+
+凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 在以下命令中，将 azureuser 和 myvm.westus.cloudapp.azure.com 替换为管理员用户名和完全限定的域名（或 IP 地址）：
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-如果在创建密钥对时提供的是通行短语，则在登录过程中遇到提示时，请输入该通行短语。 （服务器添加到 `~/.ssh/known_hosts` 文件夹。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 `~/.ssh/known_hosts` 中删除了服务器名称。）
-
-使用 SSH 密钥创建的 VM 默认配置为禁用密码，使得强力猜测尝试代价相当高昂，因此也更为困难。 
+如果创建密钥对时指定了通行短语，则在登录过程中遇到提示时，请输入该通行短语。 VM 已添加到 ~/.ssh/known_hosts 文件，系统不会要求再次连接，除非 Azure VM 上的公钥发生更改或服务器名称从 ~/.ssh/known_hosts 删除。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何创建一个简单的、可以快速使用的 SSH 密钥对。 
-
-* 如果需要使用 SSH 密钥对的详细帮助，请参阅[创建和管理 SSH 密钥对的详细步骤](create-ssh-keys-detailed.md)。
+* 有关使用 SSH 密钥对的详细信息，请参阅[创建和管理 SSH 密钥对的详细步骤](create-ssh-keys-detailed.md)。
 
 * 如果使用 SSH 连接 Azure VM 时遇到问题，请参阅[排除使用 SSH 连接 Azure Linux VM 的故障](troubleshoot-ssh-connection.md)。
-
-

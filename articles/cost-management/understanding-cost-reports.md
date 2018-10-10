@@ -1,23 +1,23 @@
 ---
-title: 了解 Azure 成本管理中的成本管理报表 | Microsoft Docs
+title: 了解 Azure 中的 Cloudyn 成本管理报表 | Microsoft Docs
 description: 本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064293"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998706"
 ---
-# <a name="understanding-cost-management-reports"></a>了解成本管理报表
+# <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
 本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。 大多数 Cloudyn 报表都较为直观，具有统一的外观。 阅读本文后，即可使用所有成本管理报表。 许多标准功能在各种报表中都可用，使你能够轻松导航报表。 报表是可自定义的，你可以从多个选项中进行选择以计算和显示结果。
 
@@ -203,5 +203,5 @@ ms.locfileid: "37064293"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[使用成本管理报表](use-reports.md)处了解 Cloudyn 中包括的报表。
+- 在[使用 Cloudyn 报表](use-reports.md)处了解 Cloudyn 中包括的报表。
 - 了解如何使用报表创建[仪表板](dashboards.md)。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237836"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993844"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>使用 Log Analytics 设置性能监视
 
@@ -30,7 +30,7 @@ ms.locfileid: "39237836"
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>通过 Azure CLI 添加代理扩展
 
-将 Log Analytics 代理添加到群集的最佳方法是使用 Azure CLI 提供的虚拟机规模集 API。 如果尚未设置 Azure CLI，请转至 Azure 门户并打开 [Cloud Shell](../cloud-shell/overview.md) 实例，或[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+将 Log Analytics 代理添加到群集的最佳方法是使用 Azure CLI 提供的虚拟机规模集 API。 如果尚未设置 Azure CLI，请转至 Azure 门户并打开 [Cloud Shell](../cloud-shell/overview.md) 实例，或[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 1. 请求 Cloud Shell 之后，请确保在资源所在的订阅中工作。 请使用 `az account show` 进行检查，并确保“名称”值与群集订阅的值匹配。
 

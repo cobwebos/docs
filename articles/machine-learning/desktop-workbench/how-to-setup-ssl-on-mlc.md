@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 982a6807ccaf393c3aea42f39f7e60bb7e0d3ac3
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2a7733468ec082c8954f623f3ebe2cea1fbad561
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35631860"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976211"
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>在 Azure 机器学习计算 (MLC) 群集上启用 SSL 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 
 这些说明可帮助你在机器学习计算 (MLC) 群集上针对评分调用设置 SSL。 
 
@@ -51,7 +55,7 @@ az ml env create -c -g <resource group name> -n <cluster name> --cert-cname <CNA
 
 如果针对的是未使用 SSL 的情况下创建的群集，则可以使用 Azure PowerShell cmdlet 添加证书。
 
-需要提供密钥和原始 PEM 格式的证书。 可以将密钥和证书读取到 PowerShell 变量：
+必须提供密钥和原始 PEM 格式的证书。 可以将密钥和证书读取到 PowerShell 变量：
 
 ```
 $keyValueInPemFormat = [IO.File]::ReadAllText('<path to key.pem file>')

@@ -1,5 +1,6 @@
 ---
 title: Microsoft 必应语音服务 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: 使用 Microsoft 语音 API 向应用添加语音驱动的操作，包括与用户进行实时交互。
 services: cognitive-services
 author: zhouwangzw
@@ -7,16 +8,17 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b4ab55f4bd8bbd66f2edc8c262524169c79d7f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097389"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975626"
 ---
-# <a name="microsoft-bing-speech-api-overview"></a>Microsoft 必应语音 API 概述
+# <a name="what-is-bing-speech"></a>必应语音是什么？
 
 使用基于云的 Microsoft 必应语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音聊天的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换。
 

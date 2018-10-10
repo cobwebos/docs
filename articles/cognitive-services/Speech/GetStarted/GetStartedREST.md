@@ -1,5 +1,6 @@
 ---
-title: 通过 REST 开始使用 Microsoft 语音识别 API | Microsoft Docs
+title: 通过 REST 开始使用必应语音识别 API | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: 使用 REST 访问 Microsoft 认知服务中的语音识别 API，将语音转换为文本。
 services: cognitive-services
 author: zhouwangzw
@@ -7,24 +8,25 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 53785cdfd75c23910802f2be20e6305817b3b097
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0f98182a73cebdd4df9f7849b2306f89c620f24b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365690"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973943"
 ---
-# <a name="get-started-with-speech-recognition-by-using-the-rest-api"></a>通过使用 REST API 开始使用语音识别
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>快速入门：使用必应语音识别 REST API
 
-通过基于云的语音服务，可以使用 REST API 将语音转换为文本以开发应用程序。
+通过基于云的必应语音服务，可以使用 REST API 将语音转换为文本以开发应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>订阅语音 API，并获得免费试用的订阅密钥
 
-语音 API 是认知服务（之前称为 Project Oxford）的一部分。 可从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取免费试用的订阅密钥。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此可以使用任一密钥。
+语音 API 是认知服务（之前称为 Project Oxford）的一部分。 你可以从[认知服务订阅](https://azure.microsoft.com/try/cognitive-services/)页面获取订阅密钥免费试用。 选择语音 API 后，选择“获取 API 密钥”以获取密钥。 它将返回主密钥和辅助密钥。 两个密钥都绑定到相同的配额，因此你可以使用任一密钥。
 
 > [!IMPORTANT]
 >* 获取订阅密钥。 必须具有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能访问 REST API。
@@ -67,7 +69,7 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 | `dictation` | fr-FR | 简单 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
-> 仅在应用程序使用 REST API 调用语音识别服务时才需要服务 URI。 如果使用的是这些[客户端库](GetStartedClientLibraries.md)之一，则通常不需要知道使用的 URI。 客户端库可能使用不同的服务 URI，它们仅适用于特定客户端库。 有关详细信息，请参见你选择的客户端库。
+> 仅在应用程序使用 REST API 调用语音识别服务时才需要服务 URI。 如果使用的是这些[客户端库](GetStartedClientLibraries.md)之一，则通常不需要知道使用的 URI。 客户端库可能使用不同的服务 URI，它们仅适用于特定客户端库。 有关详细信息，请参阅选定客户端库。
 
 ### <a name="request-headers"></a>请求标头
 

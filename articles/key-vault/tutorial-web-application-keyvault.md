@@ -9,32 +9,32 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 91e2047998d6e743691821c631e15c94cd63cf15
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41917528"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948877"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>教程：将 Azure Web 应用程序配置为从 Key Vault 读取机密
 
-本教程演练将 Azure Web 应用程序配置为使用托管服务标识从 Key Vault 读取信息所要执行的步骤。 学习如何：
+本教程演练将 Azure Web 应用程序配置为使用 Azure 资源托管标识从 Key Vault 读取信息所要执行的步骤。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Key Vault。
 > * 在 Key Vault 中存储机密。
 > * 创建 Azure Web 应用程序。
-> * 启用托管服务标识
+> * 为 Web 应用程序启用托管标识。
 > * 授予所需的权限，让应用程序从 Key Vault 读取数据。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 若要使用 CLI 登录到 Azure，可以键入：
 
@@ -218,9 +218,9 @@ az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 >[!IMPORTANT]
 > 此时会打开一个浏览器窗口，其中显示了“502.5 - 进程失败”消息。 这是正常情况。 需要向应用程序标识授予从 Key Vault 读取机密的权限。
 
-## <a name="enable-managed-service-identity"></a>启用托管服务标识
+## <a name="enable-a-managed-identity-for-the-web-app"></a>为 Web 应用启用托管标识
 
-虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 托管服务标识 (MSI) 为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
+虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
 1. 返回 Azure CLI
 2. 运行 assign-identity 命令，为此应用程序创建标识：
@@ -230,7 +230,7 @@ az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResource
 ```
 
 >[!NOTE]
->此命令等同于转到门户并在 Web 应用程序属性中将“托管服务标识”切换为“打开”。
+>此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
 
 ## <a name="grant-rights-to-the-application-identity"></a>向应用程序标识授予权限
 

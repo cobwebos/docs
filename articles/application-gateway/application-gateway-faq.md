@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038091"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986670"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -211,8 +211,8 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 | 平均后端页面响应大小 | 小型 | 中型 | 大型 |
 | --- | --- | --- | --- |
-| 6KB |7.5 Mbps |13 Mbps |50 Mbps |
-| 100KB |35 Mbps |100 Mbps |200 Mbps |
+| 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
 
 > [!NOTE]
 > 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
@@ -333,7 +333,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：WAF 是否也支持 DDoS 防护？**
 
-否，WAF 不提供 DDoS 防护。
+是的。 可以在部署应用程序网关的 VNet 上启用 DDos 防护。 这可确保还使用 Azure DDos 防护服务保护应用程序网关 VIP。
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
@@ -360,6 +360,12 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 **问：是否可以使用应用程序网关设置警报？**
 
 可以，应用程序网关确实支持警报。可以基于指标设置警报。 应用程序网关目前提供“吞吐量”指标，可以使用它来配置警报。 若要了解有关警报的详细信息，请访问 [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）。
+
+**问：如何分析应用程序网关的流量统计信息？**
+
+可以通过一系列机制（例如 Azure Log Analytics、Excel、Power BI 等）查看和分析访问日志。
+
+我们还发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
 
 **问：后端运行状况返回未知状态，什么原因导致此状态？**
 

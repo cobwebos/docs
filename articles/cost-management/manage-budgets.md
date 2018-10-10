@@ -1,31 +1,33 @@
 ---
-title: 在 Azure 成本管理中管理预算 | Microsoft Docs
-description: 本文介绍了如何在成本管理中创建和管理预算。
+title: 在 Azure 中管理 Cloudyn 预算 | Microsoft Docs
+description: 本文介绍如何在 Cloudyn 中创建和管理预算。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578457"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963419"
 ---
 # <a name="manage-budgets"></a>管理预算
 
-创建预算和基于预算的警报有助于改进云治理和问责制。 本文介绍了如何在成本管理中快速创建并开始管理预算。
+创建预算和基于预算的警报有助于改进云治理和问责制。 本文介绍了如何在 Cloudyn 中快速创建和管理预算。
 
 如果拥有企业或 MSP 帐户，可以使用分层成本实体结构将每月预算配额分配给不同的业务单位、部门或其他任何成本实体。 如果拥有高级帐户，可以使用预算管理功能，然后将它应用于整个云支出。 所有预算都是手动分配的。
 
 根据分配的预算，可设置以预算消耗百分比为依据的阈值警报，并定义每个阈值的严重性。
 
 预算报告显示所分配的预算。 用户可以查看自己的支出在一段时间内何时超过、低于或等于消费能力。 如果选择预算报告顶部的“显示/隐藏字段”，可以查看成本、预算、累计成本或总预算。
+
+Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是一个本机 Azure 成本管理解决方案。 借助它，可以分析成本、创建和管理预算、导出数据，并能查看和采纳优化建议，从而节省资金。 有关成本管理中的预算的详细信息，请参阅[创建和管理预算](tutorial-acm-create-budgets.md)。
 
 ## <a name="create-budgets"></a>创建预算
 
@@ -83,5 +85,5 @@ ms.locfileid: "45578457"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果尚未完成首个成本管理教程，请阅读[查看使用情况和成本](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage)。
-- 详细了解[成本管理中的可用报告](use-reports.md)。
+- 如果尚未完成首个 Cloudyn 教程，请阅读[查看使用情况和成本](tutorial-review-usage.md)。
+- 详细了解 [Cloudyn 中的可用报告](use-reports.md)。

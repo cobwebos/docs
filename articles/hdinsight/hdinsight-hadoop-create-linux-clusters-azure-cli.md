@@ -1,6 +1,6 @@
 ---
-title: 使用命令行创建 Hadoop 群集 - Azure HDInsight
-description: 了解如何使用跨平台 Azure CLI 1.0 创建 HDInsight 群集。
+title: 使用 Azure 经典 CLI 创建 Hadoop 群集 - Azure HDInsight
+description: 了解如何使用跨平台 Azure 经典 CLI 创建 HDInsight 群集。
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,23 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090968"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992807"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 HDInsight 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本文介绍了使用 Azure CLI 1.0 创建 HDInsight 3.5 群集的相关步骤。
+本文介绍了使用 Azure 经典 CLI 创建 HDInsight 3.5 群集的相关步骤。
 
-> [!IMPORTANT]
-> 本主题介绍如何使用 Azure CLI 1.0 创建 HDInsight 群集。 此版本的 CLI 已弃用，并且对创建 HDInsight 群集的支持尚未添加到 Azure CLI 2.0。
->
-> 也可以使用 Azure PowerShell 来创建和管理 HDInsight 群集。 有关详细信息，请参阅[使用 Azure PowerShell 创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)文档。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,14 +30,11 @@ ms.locfileid: "43090968"
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* **Azure CLI**。 本文档中的步骤最近已使用 Azure CLI 版本 0.10.14 进行测试。
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 已弃用，并且对创建 HDInsight 群集的支持尚未添加到 Azure CLI 2.0。
+* **Azure 经典 CLI**。 本文档中的步骤最近已使用 Azure 经典 CLI 版本 0.10.14 进行测试。
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
-按照 [从 Azure 命令行接口 (Azure CLI) 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli) 中所述的步骤，使用 **登录** 方法连接到订阅。
+按照 [从 Azure 命令行接口连接到 Azure 订阅](/cli/azure/authenticate-azure-cli) 中所述的步骤，使用“登录”方法连接到订阅。
 
 ## <a name="create-a-cluster"></a>创建群集
 
@@ -50,7 +44,7 @@ ms.locfileid: "43090968"
 
         azure login
 
-    系统会提示提供用户名和密码。 如果有多个 Azure 订阅，可以使用 `azure account set <subscriptionname>` 来设置 Azure CLI 命令使用的订阅。
+    系统会提示提供用户名和密码。 如果有多个 Azure 订阅，可以使用 `azure account set <subscriptionname>` 来设置经典 CLI 命令使用的订阅。
 
 2. 使用以下命令切换到 Azure 资源管理器模式：
 
@@ -124,7 +118,7 @@ ms.locfileid: "43090968"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure CLI 成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集：
+使用经典 CLI 成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集：
 
 ### <a name="hadoop-clusters"></a>Hadoop 群集
 

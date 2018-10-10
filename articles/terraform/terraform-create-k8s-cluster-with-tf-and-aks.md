@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/06/2018
-ms.openlocfilehash: cd1219fda7821fdc99e334de58826317113415d4
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 09/08/2018
+ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960237"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
@@ -32,7 +32,7 @@ ms.locfileid: "44053635"
 
 - **配置 Terraform**：遵循[配置 Terraform 以及对 Azure 的访问](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
-- **Azure 服务主体**：遵循[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)一文的“创建服务主体”部分中的指导。 记下 appId、displayName、password 和 tenant 的值。
+- **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal)一文的“创建服务主体”部分中的指导。 记下 appId、displayName、password 和 tenant 的值。
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
 首先，创建包含 Terraform 配置文件的目录用于练习。
@@ -295,7 +295,14 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform init”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. 运行 `terraform plan` 命令，以创建定义基础结构元素的 Terraform 计划。 该命令将请求两个值：**var.client_id** 和 **var.client_secret**。 对于 **var.client_id** 变量，请输入与服务主体关联的 **appId** 值。 对于 **var.client_secret** 变量，请输入与服务主体关联的 **password** 值。
+1. 导出服务主体凭据。 将 &lt;your-client-id> 和 &lt;your-client-secret> 占位符分别替换为与服务主体关联的 **appId** 和 **password** 值。
+
+    ```bash
+    export TF_VAR_client_id=<your-client-id>
+    export TF_VAR_client_secret=<your-client-secret>
+    ```
+
+1. 运行 `terraform plan` 命令，以创建定义基础结构元素的 Terraform 计划。 
 
     ```bash
     terraform plan -out out.plan

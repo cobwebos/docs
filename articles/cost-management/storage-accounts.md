@@ -1,27 +1,27 @@
 ---
-title: 配置 Azure 成本管理的存储帐户 | Microsoft Docs
-description: 本文介绍如何为 Azure 成本管理配置 Azure 存储帐户和 AWS 存储 Bucket。
+title: 在 Azure 中为 Cloudyn 配置存储帐户 | Microsoft Docs
+description: 本文介绍如何为 Cloudyn 配置 Azure 存储帐户和 AWS 存储 Bucket。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143984"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990648"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>为成本管理配置存储帐户
+# <a name="configure-storage-accounts-for-cloudyn"></a>为 Cloudyn 配置存储帐户
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-可以将成本管理报表保存在 Cloudyn 门户、Azure 存储或 AWS 存储 Bucket 中。 将报表保存到 Cloudyn 门户的操作免费。 但是，将报表保存到云服务提供商的存储为可选操作，需要额外付费。 本文介绍如何配置用于存储报表的 Azure 存储帐户和 Amazon Web Services (AWS) 存储 Bucket。
+可以将 Cloudyn 报表保存在 Cloudyn 门户、Azure 存储或 AWS 存储 Bucket 中。 将报表保存到 Cloudyn 门户的操作免费。 但是，将报表保存到云服务提供商的存储为可选操作，需要额外付费。 本文介绍如何配置用于存储报表的 Azure 存储帐户和 Amazon Web Services (AWS) 存储 Bucket。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "42143984"
 
 ## <a name="configure-your-azure-storage-account"></a>配置 Azure 存储帐户
 
-配置可供成本管理使用的 Azure 存储很简单。 收集存储帐户的详细信息，并在 Cloudyn 门户中复制这些信息。
+配置可供 Cloudyn 使用的 Azure 存储很简单。 收集存储帐户的详细信息，并在 Cloudyn 门户中复制这些信息。
 
 1. 通过 http://portal.azure.com 登录到 Azure 门户。
 2. 单击“所有服务”，选择“存储帐户”，滚动到要使用的存储帐户，然后选择该帐户。
@@ -163,4 +163,4 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[了解成本管理报表](understanding-cost-reports.md)，了解成本管理报表的基本结构和功能。
+- 查看[了解 Cloudyn 报表](understanding-cost-reports.md)，了解 Cloudyn 报表的基本结构和功能。

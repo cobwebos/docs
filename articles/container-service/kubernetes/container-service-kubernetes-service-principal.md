@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974861"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -23,7 +23,7 @@ ms.locfileid: "39576913"
 在 Azure 容器服务中，Kubernetes 群集需要 [Azure Active Directory 服务主体](../../active-directory/develop/app-objects-and-service-principals.md)才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)。
 
 
-本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI 2.0](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs#az-acs-create) 命令，以便同时创建 Kubernetes 群集和服务主体。
+本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs#az_acs_create) 命令，以便同时创建 Kubernetes 群集和服务主体。
 
 
 ## <a name="requirements-for-the-service-principal"></a>服务主体的的要求
@@ -44,7 +44,7 @@ ms.locfileid: "39576913"
 
 如需在部署 Kubernetes 群集之前创建 Azure AD 服务主体，可以使用 Azure 提供的多种方法。
 
-以下示例命令演示如何通过 [Azure CLI 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) 执行此操作。 也可使用 [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md)、[门户](../../azure-resource-manager/resource-group-create-service-principal-portal.md)等方法创建服务主体。
+以下示例命令演示如何通过 [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) 执行此操作。 也可使用 [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md)、[门户](../../azure-resource-manager/resource-group-create-service-principal-portal.md)等方法创建服务主体。
 
 ```azurecli
 az login
@@ -67,13 +67,13 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 创建 Kubernetes 群集时，提供现有服务主体的“客户端 ID”（也称为 `appId`，即应用程序 ID）和“客户端机密”(`password`) 作为参数。 请确保服务主体满足本文开头的要求。
 
-可以在使用 [Azure 命令行界面 (CLI) 2.0](container-service-kubernetes-walkthrough.md)、[Azure 门户](../dcos-swarm/container-service-deployment.md)等方法部署 Kubernetes 群集时指定这些参数。
+可以在使用 [Azure 命令行接口 (CLI)](container-service-kubernetes-walkthrough.md)、[Azure 门户](../dcos-swarm/container-service-deployment.md)等方法部署 Kubernetes 群集时指定这些参数。
 
 >[!TIP]
 >指定“客户端 ID”时，请确保使用服务主体的 `appId` 而不是 `ObjectId`。
 >
 
-以下示例说明了一种通过 Azure CLI 2.0 传递参数的方法。 此示例使用 [Kubernetes 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)。
+以下示例说明了一种通过 Azure CLI 传递参数的方法。 此示例使用 [Kubernetes 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)。
 
 1. 从 GitHub [下载](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)模板参数文件 `azuredeploy.parameters.json`。
 

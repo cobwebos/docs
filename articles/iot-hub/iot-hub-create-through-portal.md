@@ -1,161 +1,159 @@
 ---
 title: 使用 Azure 门户创建 IoT 中心 | Microsoft Docs
 description: 如何通过 Azure 门户创建、管理和删除 Azure IoT 中心。 包括有关定价层、缩放、安全性和消息传递配置的信息。
-author: dominicbetts
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: dobett
-ms.openlocfilehash: 0b03ae434e93dbab45235fe67c499497e1257064
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.date: 09/06/2018
+ms.author: robinsh
+ms.openlocfilehash: 8f08141f5c14a734f89ba91045767e2a36a44fd2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140432"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985599"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-本文介绍：
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)创建和管理 IoT 中心。
 
-* 如何在 Azure 门户中查找 IoT 中心服务。
-* 如何创建和管理 IoT 中心。
-
-## <a name="where-to-find-the-iot-hub-service"></a>在何处可以找到 IoT 中心服务
-
-可以在门户中的以下位置找到 IoT 中心服务：
-
-* 选择“+ 新建”，然后选择“物联网”。
-* 在市场中选择“物联网”。
+需要一个 Azure 订阅才能完成此教程中的步骤。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-可以使用以下方法创建 IoT 中心：
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-* “+ 新建”选项可以打开下方屏幕截图中显示的边栏选项卡。 通过此方法和通过市场创建 IoT 中心的步骤完全相同。
+2. 选择+“创建资源”，然后选择“物联网”。
 
-* 在市场中选择“创建”可打开下方屏幕截图中显示的边栏选项卡。
+3. 在右侧列表中单击“Iot 中心”。 随即显示 IoT 中心创建过程的第一个屏幕。
 
-以下各部分介绍了创建 IoT 中心所需的几个步骤。
+   ![显示了在 Azure 门户中创建中心的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-create-screen-basics.png)
 
-### <a name="choose-the-name-of-the-iot-hub"></a>选择 IoT 中心的名称
+   填充字段。
 
-若要创建 IoT 中心，必须为 IoT 中心命名。 此名称在所有 IoT 中心中必须唯一。
+   **订阅**：请选择要用于 IoT 中心的订阅。
 
-[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
+   **资源组**：可创建新的资源组或使用现有资源组。 若要新建一个，请单击“新建”，并填写要使用的名称。 若要使用现有资源组，请单击“使用现有资源组”并从下拉列表中选择该组。
 
-### <a name="choose-the-pricing-tier"></a>选择定价层
+   **区域**：从下拉列表中选择要在其中设置中心的区域。
 
-可以根据你需要的功能数以及每天通过解决方案发送的消息数从多个层中进行选择。 免费层适用于测试和评估。 它允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。 每个 Azure 订阅可以在免费层中创建一个 IoT 中心。 
+   **IoT 中心名称**：输入 IoT 中心的名称。 该名称必须全局唯一。 
 
-有关其他层选项的详细信息，请参阅[选择合适的 IoT 中心层](iot-hub-scaling.md)。
+   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-### <a name="iot-hub-units"></a>IoT 中心单位
+4. 单击“下一步：大小和缩放”，转到下一个屏幕。
 
-每日每单位允许的消息数取决于中心的定价层。 例如，如果希望 IoT 中心支持 700,000 条消息输入，则选择两个 S1 层单位。
+   ![屏幕截图显示使用 Azure 门户为新的 IoT 中心设置大小和缩放级别](./media/iot-hub-create-through-portal/iot-hub-create-screen-size-scale.png)
 
-### <a name="device-to-cloud-partitions-and-resource-group"></a>设备到云分区和资源组
+   在此屏幕上，可以采用默认值，只需在底部单击“查看+创建”即可。 也可以根据需要填充字段。
 
-可以更改 IoT 中心的分区数目。 默认分区数目为 4，但可以从下拉列表中选择一个不同的数目。
+   **定价和缩放层级**：可以根据需要的功能数以及每天通过解决方案发送的消息数从多个层中进行选择。 免费层适用于测试和评估。 它允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。 每个 Azure 订阅可以在免费层中创建一个 IoT 中心。 
 
-不需要显式创建空资源组。 在创建资源时，可以选择创建新的资源组，也可以使用现有的资源组。
+   **IoT 中心单位**：每日每单位允许的消息数取决于中心的定价层。 例如，如果希望 IoT 中心支持 700,000 条消息输入，则选择两个 S1 层单位。
 
-![显示了在 Azure 门户中创建中心的屏幕截图](./media/iot-hub-create-through-portal/location1.png)
+   有关其他层选项的详细信息，请参阅[选择合适的 IoT 中心层](iot-hub-scaling.md)。
 
-### <a name="choose-subscription"></a>选择订阅
+   **高级/设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数 IoT 中心只需要 4 个分区。 
 
-Azure IoT 中心自动列出用户帐户所链接的 Azure 订阅。 可以选择与 IoT 中心关联的 Azure 订阅。
+5. 单击“查看+创建”可查看选择。 会显示类似于以下的屏幕。
 
-### <a name="choose-the-location"></a>选择位置
+   ![屏幕截图显示用于创建新 IoT 中心的信息](./media/iot-hub-create-through-portal/iot-hub-create-review.png)
 
-位置选项提供可在其中使用 IoT 中心的区域列表。
-
-### <a name="create-the-iot-hub"></a>创建 IoT 中心
-
-完成上述所有步骤后，便可以创建 IoT 中心。 单击“创建”启动后端进程，使用所选择的选项创建和部署 IoT 中心。
-
-创建 IoT 中心可能需要几分钟时间，因为在适当的位置服务器中运行后端部署需要花费时间。
+5. 单击“创建”以创建新的 IoT 中心。 创建中心需要几分钟时间。
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>更改 IoT 中心的设置
-<!--robinsh these screenshots are out of date -->
 
-可以在通过“IoT 中心”边栏选项卡创建 IoT 中心后更改现有 IoT 中心的设置。
+通过“IoT 中心”窗格创建 IoT 中心后可以更改其设置。
 
-![显示了 IoT 中心设置的屏幕截图](./media/iot-hub-create-through-portal/portal-settings.png)
+![显示了 IoT 中心设置的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-**共享访问策略**：这些策略定义设备与服务连接到 IoT 中心所需的权限。 可以单击“常规”下面的“共享访问策略”来访问这些策略。 在此边栏选项卡中，可以修改现有的策略或添加新策略。
+下面是一些可以为 IoT 中心设置的属性：
 
-### <a name="create-a-policy"></a>创建策略
+**定价和缩放**：可使用此属性迁移到其他层或设置 IoT 中心单元数量。 
 
-* 单击“**添加**”打开边栏选项卡。 可在此处输入新的策略名称以及想要与此策略关联的权限，如下图所示：
+**操作监视**：打开或关闭不同的监视类别，如与设备到云的消息或云到设备的消息相关的事件的日志记录。
 
-    有许多权限可与这些共享策略相关联。 “注册表读取”和“注册表写入”策略用于向标识注册表授予读取和写入访问权限。 选择写入选项会自动选择读取选项。
+**IP 筛选器**：可指定 IoT 中心会接受或拒绝的 IP 地址的范围。
 
-    “服务连接”策略授予访问服务终结点的权限，例如“接收设备到云”。 “设备连接”策略授予使用 IoT 中心的设备端终结点发送和接收消息的权限。
+**属性**：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
 
-* 单击“**创建**”将此新建策略添加到现有列表。
+### <a name="shared-access-policies"></a>共享访问策略
 
-   ![显示了添加共享访问策略的屏幕截图](./media/iot-hub-create-through-portal/shared-access-policies.png)
+还可查看或修改共享的访问策略的列表，方法是单击“设置”部分中的“共享访问策略”。 这些策略定义设备与服务连接到 IoT 中心所需的权限。 
 
-## <a name="endpoints"></a>终结点
+单击“添加”以打开“添加共享访问策略”边栏选项卡。  可输入新的策略名称以及想要与此策略关联的权限，如下图所示：
 
-单击“终结点”可显示要修改的 IoT 中心的终结点列表。 有两种类型的终结点：内置到 IoT 中心的终结点，以及创建后添加到 IoT 中心的终结点。
+![显示了添加共享访问策略的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-![显示了添加终结点的屏幕截图](./media/iot-hub-create-through-portal/messaging-settings.png)
+* “注册表读取”和“注册表写入”策略用于向标识注册表授予读取和写入访问权限。 选择写入选项会自动选择读取选项。
 
-### <a name="built-in-endpoints"></a>内置终结点
+* “服务连接”策略授予访问服务终结点的权限，例如“接收设备到云”。 
 
-有两个内置终结点：**云到设备反馈**和**事件**。
+* “设备连接”策略授予使用 IoT 中心的设备端终结点发送和接收消息的权限。
 
-* **云到设备反馈**设置：此设置有两项子设置：消息的**云到设备 TTL**（生存时间）和**保留时间**（以小时为单位）。 首次创建 IoT 中心时，这两个设置的默认值均为一小时。 若要调整这些设置，请使用滑块或键入值。
+单击“**创建**”将此新建策略添加到现有列表。
 
-* **事件**设置：此设置有多个子设置，其中一些为只读。 以下列表对这些设置进行了说明：
+## <a name="message-routing-for-an-iot-hub"></a>IoT 中心的消息路由
 
-  * **分区**：创建 IoT 中心时，会设置一个默认值。 可以通过此设置更改分区数目。
+单击“消息传送”下的“消息路由”，查看消息路由窗格，可在其中定义中心的路由和自定义终结点。 通过[消息路由](iot-hub-devguide-messages-d2c.md)，可以管理数据从设备发送到终结点的方式。 第一步是添加新路由。 然后可以将现有的终结点添加到路由，或新建一个类型受支持的路由，例如 blob 存储类型。 
 
-  * **与事件中心兼容的名称和终结点**：创建 IoT 中心时，会在内部创建事件中心，供用户在特定情况下根据需要访问。 不能自定义与事件中心兼容的名称和终结点值，但可以单击“复制”来复制它们。
+![“消息路由”窗格](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
-  * **保留时间**：默认设置为一天，但可以使用下拉列表对其进行更改。 对于设备到云的设置，此值以天为单位。
+### <a name="routes"></a>路由
 
-  * 使用者组：通过使用者组，多个读者可以从 IoT 中心独立读取消息。 创建的每个 IoT 中心都包含一个默认使用者组。 但是，可以使用此设置在 IoT 中心添加或删除使用者组。
+路由是“消息路由”窗格上的第一个选项卡。 若要添加新路由，请单击“+”（添加）。 随即显示以下屏幕。 
 
-  > [!NOTE]
-  > 无法编辑或删除默认使用者组。
+![显示了添加新路由的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+
+为中心命名。 该名称在该中心的路由列表中必须是唯一的。 
+
+对于“终结点”，可从下拉列表中选择一个或新添加一个。 在此示例中，已有存储帐户和容器。 若要将其添加为终结点，请单击终结点下拉列表旁的“+”（添加）并选择“Blob 存储”。 以下屏幕显示指定存储帐户和容器的位置。
+
+![屏幕截图显示为路由规则添加存储终结点。](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+
+单击“选取容器”以选择存储帐户和容器。 如果已选择这些字段，会返回终结点窗格。 其余字段均采用默认值，并单击“创建”创建存储帐户的终结点并将其添加到路由规则。
+
+**数据源**选择“设备遥测消息”。 
+
+接下来，添加一个路由查询。 在此示例中，具有名为 `level` 的应用程序属性且其值等于 `critical` 的消息被路由到存储帐户。
+
+![屏幕截图显示保存新路由规则这一操作](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+
+单击“保存”以保存路由规则。 随即返回消息路由窗格，并显示新的路由规则。
 
 ### <a name="custom-endpoints"></a>自定义终结点
 
-可通过门户将自定义终结点添加到 IoT 中心。 在“终结点”边栏选项卡中，单击顶部的“添加”，打开“添加终结点”边栏选项卡。 输入所需的信息，并单击“确定”。 自定义终结点现在会在主“终结点”边栏选项卡中列出。
+单击“自定义终结点”选项卡。会显示所有已创建的自定义终结点。 在此处，可添加新的终结点或删除现有终结点。 
 
-![显示了创建自定义终结点的屏幕截图](./media/iot-hub-create-through-portal/endpoint-creation.png)
+> [!NOTE]
+> 如果删除一个路由，不会删除分配到该路由的终结点。 若要删除终结点，单击“自定义终结点”选项卡，选择要删除的终结点并单击“删除”。
+>
 
-有关自定义终结点的详细信息，请阅读[参考 - IoT 中心终结点]( iot-hub-devguide-endpoints.md)。
+有关自定义终结点的详细信息，请阅读[参考 - IoT 中心终结点](iot-hub-devguide-endpoints.md)。
 
-## <a name="routes"></a>路由
+可为一个 IoT 中心定义最多 10 个自定义终结点。 
 
-单击“路由”，管理 IoT 中心发送设备到云消息的方式。
+若要查看如何结合使用自定义终结点和路由的完整示例，请参阅[IoT 中心消息路由](tutorial-routing.md)。
 
-![显示了添加新路由的屏幕截图](./media/iot-hub-create-through-portal/routes-list.png)
+## <a name="find-a-specific-iot-hub"></a>查找特定 IoT 中心
 
-单击“路由”边栏选项卡顶部的“添加”，输入所需信息，然后单击“确定”，即可将路由添加到 IoT 中心。 然后路由就会在主“路由”边栏选项卡中列出。 在路由列表中单击路由即可对其进行编辑。 要启用路由，请在路由列表中单击它，然后将“启用”切换按钮设置为“关”。 若要保存更改，单击边栏选项卡底部的“确定”。
+下面是两种在订阅中查找特定 IoT 中心的方法：
 
-![显示了编辑新路由规则的屏幕截图](./media/iot-hub-create-through-portal/route-edit.png)
+1. 如果知道 IoT 中心所属的资源组，单击“资源组”，然后从列表中选择资源组。 资源组屏幕会显示组中的所有资源，包括 IoT 中心。 单击所查找的中心。
+
+2. 单击“所有资源”。 在“所有资源”窗格上，有一个下拉列表，默认为 `All types`。 单击该下拉列表，取消选中 `Select all`。 查找 `IoT Hub` 并选中。 单击下拉列表框将其关闭，系统将筛选所含条目，并仅显示所选的 IoT 中心。
 
 ## <a name="delete-the-iot-hub"></a>删除 IoT 中心
 
-可以浏览到想要删除的 IoT 中心，方法是单击“**浏览**”，然后选择要删除的相应中心。 若要删除 IoT 中心，单击 IoT 中心名称下面的“删除”按钮。
+若要删除 IoT 中心，查找要删除的 IoT 中心，然后单击该 IoT 中心名称下的“删除”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
-* [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
+* [IoT 中心消息路由](tutorial-routing.md)
 * [IoT 中心指标](iot-hub-metrics.md)
 * [操作监视](iot-hub-operations-monitoring.md)
-
-若要进一步探索 IoT 中心的功能，请参阅：
-
-* [IoT 中心开发人员指南](iot-hub-devguide.md)
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备](../iot-edge/tutorial-simulate-device-linux.md)
-* [从根本上保护 IoT 解决方案](../iot-fundamentals/iot-security-ground-up.md)

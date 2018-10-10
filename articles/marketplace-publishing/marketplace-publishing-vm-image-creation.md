@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246453"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989866"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure 市场。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -29,8 +29,8 @@ ms.locfileid: "40246453"
 
 产品/服务是其所有 SKU 的“父级”。 用户可以拥有多个产品/服务。 用户决定如何构造套餐。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。 请仔细考虑 SKU 标识符，因为它们会显示在 URL 中：
 
-* Azure.com：http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Azure 预览门户：https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
+* Azure.com： http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
+* Azure 预览门户： https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁盘以及零个或更多数据磁盘。 它本质上是虚拟机的完整存储配置文件。 每个磁盘都需要一个 VHD。 即使空白数据磁盘也需要创建 VHD。
 
@@ -101,7 +101,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
     ![绘制][img-portal-vm-size]
 5. 设置属性：
 
-    a.    为进行快速部署，可以为“可选配置”和“资源组”下的属性保留默认值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    为进行快速部署，可以为“可选配置”和“资源组”下的属性保留默认值。
 
     b.    在“存储帐户”下，可以选择存储操作系统 VHD 的存储帐户。
 
@@ -189,9 +189,9 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 * [VM 映像 PowerShell 方法](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [关于 Azure 中的 VM 映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>设置所需工具、PowerShell 和 Azure CLI
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>设置所需工具、PowerShell 和 Azure 经典 CLI
 * [如何设置 PowerShell](/powershell/azure/overview)
-* [如何设置 Azure CLI](../cli-install-nodejs.md)
+* [如何设置 Azure 经典 CLI](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 创建用户 VM 映像
 #### <a name="capture-vm"></a>捕获 VM
@@ -347,7 +347,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a. **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
     b. **允许访问结束日期**：选择“允许访问开始日期”后至少 3 周的日期。
 
@@ -427,11 +427,13 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 11. 对 SKU 中的每个 VHD 重复这些步骤。
 
-**Azure CLI（推荐用于非 Windows 和持续集成）**
+**Azure 经典 CLI（推荐用于非 Windows 和持续集成）**
 
-下面是使用 Azure CLI 生成 SAS URL 的步骤
+下面是使用 Azure 经典 CLI 生成 SAS URL 的步骤
 
-1.  从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
+
+1.  从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Azure 经典 CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
 
 2.  下载后，请安装
 
@@ -447,9 +449,9 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     b. `<Storage Account Key>`：指定存储帐户密钥
 
-    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
+    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0 或更高版本，请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
 
-    d. `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 值应为 11/02/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：11-02-2016T00:00:00Z。
+    d. `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 值应为 11/02/2016。 如果使用 Azure CLI 2.0 或更高版本，请提供开始日期和结束日期的日期和时间，例如：11-02-2016T00:00:00Z。
 
     以下是更新适当参数后的代码示例
 
@@ -520,14 +522,13 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 |复制映像时失败 - "sp = rl" 不在 SAS url 中|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob|使用设置为“读取”和“列出”的权限更新 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像时失败 - SAS url 的 vhd 名称中包含空格|失败：复制映像。 无法使用所提供的 SAS Uri 下载 blob。|将 SAS Url 更新为不包含空格|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |复制映像时失败 - SAS Url 授权错误|失败：复制映像。 由于授权错误，无法下载 blob|重新生成 SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0（az 命令）时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0 或更高版本时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤
 填写完 SKU 详细信息后，可前进到 [Azure Marketplace 市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，并执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure Marketplace，使公众都可以看到和购买。  
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
 [img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055009"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984035"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -26,7 +26,7 @@ ms.locfileid: "44055009"
 
 IoT 中心还支持用户管理内置设备到云接收终结点上的使用者组。
 
-默认情况下，不显式匹配消息路由规则的所有消息都将写入到内置终结点。 如果禁用此回退路由，将删除不显式匹配任何消息路由规则的消息。
+如果使用[消息路由](iot-hub-devguide-messages-d2c.md)，并启用了[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)，则与任何路由上的查询不匹配的所有消息都会写入内置终结点。 如果禁用此回退路由，将删除与任何查询都不匹配的消息。
 
 可以使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式修改保留期时间，或通过 [Azure 门户][lnk-management-portal]进行修改。
 
@@ -39,9 +39,8 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 使用无法识别 IoT 中心的 SDK（或产品集成）时，必须检索与事件中心兼容的终结点和与事件中心兼容的名称：
 
 1. 登录 [Azure 门户][lnk-management-portal]，并导航到 IoT 中心。
-1. 单击“终结点” 。
-1. 在“内置终结点”部分，单击“事件”。 
-1. 属性页将打开，包含以下值：“与事件中心兼容的终结点”、“与事件中心兼容的名称”、“分区”、“保留时间”和“使用者组”。
+1. 单击“内置终结点”。
+1. “事件”部分包含以下值：“与事件中心兼容的终结点”、“与事件中心兼容的名称”、“分区”、“保留时间”和“使用者组”。
 
     ![设备到云的设置][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ IoT 中心 SDK 需要 IoT 中心终结点名称，即“终结点”下所示的
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 IoT 中心终结点的详细信息，请参阅 [IoT 中心终结点][lnk-endpoints]。
-
-[快速入门][lnk-get-started]教程介绍如何从模拟设备发送设备到云的消息以及如何从内置终结点读取消息。 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息][lnk-d2c-tutorial]教程。
-
-如果想要将设备到云的消息路由到自定义终结点，请参阅[对设备到云的消息使用消息路由和自定义终结点][lnk-custom]。
+* 有关 IoT 中心终结点的详细信息，请参阅 [IoT 中心终结点][lnk-endpoints]。
+* [快速入门][lnk-get-started]教程介绍如何从模拟设备发送设备到云的消息以及如何从内置终结点读取消息。 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息][lnk-d2c-tutorial]教程。
+* 如果想要将设备到云的消息路由到自定义终结点，请参阅[对设备到云的消息使用消息路由和自定义终结点][lnk-custom]。
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

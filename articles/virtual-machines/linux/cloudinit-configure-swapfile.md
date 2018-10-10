@@ -1,6 +1,6 @@
 ---
 title: 在 Linux VM 上使用 cloud-init 配置交换文件 | Microsoft Docs
-description: 如何通过 Azure CLI 2.0 使用 cloud-init 在创建期间在 Linux VM 中配置交换文件
+description: 如何在通过 Azure CLI 进行创建时使用 cloud-init 在 Linux VM 中配置交换文件
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 88a141922f113caf7ad67c89de48f84a821f7ba3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2a5a878b7c8c3b6126d90b978241fbcb237d8db7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952592"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946300"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>在 Linux VM 上使用 cloud-init 配置交换文件
 本文介绍如何使用 [cloud-init](https://cloudinit.readthedocs.io) 在各种 Linux 分发版中配置交换文件。 在传统上，交换文件由 Linux 代理 (WALA) 根据分发版的需要进行配置。  本文档概述在预配期间，使用 cloud-init 按需生成交换文件的过程。  有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -27,7 +27,7 @@ ms.locfileid: "29952592"
 ## <a name="create-swapfile-for-ubuntu-based-images"></a>为基于 Ubuntu 的映像创建交换文件
 在 Azure 上，Ubuntu 库映像默认不会创建交换文件。 若要在预配 VM 期间使用 cloud-init 启用交换文件配置，请参阅 Ubuntu wiki 中的 [AzureSwapPartitions 文档](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
-## <a name="create-swapfile-for-redhat-and-centos-based-images"></a>为基于 RedHat 和 CentOS 的映像创建交换文件
+## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>为基于 Red Hat 和 CentOS 的映像创建交换文件
 
 在当前 shell 中，创建名为 *cloud_init_swapfile.txt* 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_swapfile.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 

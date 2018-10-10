@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 614375c95f4af3a5fbeeb4368ff8c577372e6381
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933949"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993555"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -35,7 +35,7 @@ ms.locfileid: "37933949"
   - 减少对本地管理员帐户的依赖以后，就不需要担心凭据丢失/失窃、用户配置的凭据过弱，等等。
   - 针对 Azure AD 目录配置的密码复杂性和密码生存期策略也有助于维护 Linux VM 安全性。
   - 若要进一步确保 Azure 虚拟机的登录安全性，可以配置多重身份验证。
-  - 使用 Azure Active Directory 登录 Linux VM 这一功能也适用于使用[联合身份验证服务](../../active-directory/connect/active-directory-aadconnectfed-whatis.md)的客户。
+  - 使用 Azure Active Directory 登录 Linux VM 这一功能也适用于使用[联合身份验证服务](../../active-directory/hybrid/how-to-connect-fed-whatis.md)的客户。
 
 - **无缝协作：** 可以使用基于角色的访问控制 (RBAC)，指定能够以常规用户或管理员特权用户身份登录到给定 VM 的人员。 当用户加入或离开你的团队时，你可以更新 VM 的 RBAC 策略，根据需要授予访问权限。 与必须通过清理 VM 来删除不必要的 SSH 公钥相比，这种体验要简单得多。 员工在离开你的组织时，其用户帐户会被禁用或从 Azure AD 中删除，然后他们就再也不能访问你的资源。
 
@@ -59,7 +59,7 @@ ms.locfileid: "37933949"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-linux-virtual-machine"></a>创建 Linux 虚拟机
 
@@ -117,7 +117,7 @@ az role assignment create \
 > [!NOTE]
 > 如果 AAD 域和登录用户名域不匹配，则必须使用 *--assignee-object-id* 指定用户帐户的对象 ID，而不是仅指定 *--assignee* 的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
-若要详细了解如何使用 RBAC 来管理对 Azure 订阅资源的访问权限，请参阅 [Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md)、[Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) 的使用指南。
+若要详细了解如何使用 RBAC 来管理对 Azure 订阅资源的访问权限，请参阅 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) 的使用指南。
 
 也可对 Azure AD 进行配置，要求特定的用户通过多重身份验证登录到 Linux 虚拟机。 有关详细信息，请参阅[云中的 Azure 多重身份验证入门](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)。
 
@@ -179,4 +179,4 @@ Access denied
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 和 [Azure Active Directory 入门方式](../../active-directory/fundamentals/get-started-azure-ad.md)
+有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

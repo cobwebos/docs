@@ -1,26 +1,26 @@
 ---
-title: 在已加入域的 HDInsight 中配置 Hive 策略 - Azure
-description: 了解如何在已加入域的 Azure HDInsight 服务中为 Hive 配置 Apache Ranger 策略。
+title: 在具有企业安全性套餐的 HDInsight 中配置 Hive 策略 - Azure
+description: 了解如何为具有企业安全性套餐的 Azure HDInsight 服务中的 Hive 配置 Apache Ranger 策略。
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 55abb5331da24c3914075c21579e5082853b3c1f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: bdad0bac0d320b641359df4093ae10c9505b7de2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042074"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993419"
 ---
-# <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>在已加入域的 HDInsight 中配置 Hive 策略
+# <a name="configure-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Hive 策略
 了解如何为 Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
 
 ## <a name="prerequisites"></a>先决条件
-* 已加入域的 HDInsight 群集。 请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
+* 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
 * 装有 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>连接到 Apache Ranger 管理 UI
@@ -34,15 +34,15 @@ ms.locfileid: "43042074"
    >
 2. 使用群集管理员域用户名和密码登录：
 
-    ![已加入域的 HDInsight Ranger 主页](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    ![HDInsight ESP Ranger 主页](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     目前，Ranger 只能处理 Yarn 和 Hive。
 
 ## <a name="create-domain-users"></a>创建域用户
-请参阅[创建已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)，了解如何创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
+请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)教程中创建的。 在下一部分，会在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分，会在 Excel 中测试两个策略。
 
 **创建 Ranger 策略**
 
@@ -57,7 +57,7 @@ ms.locfileid: "43042074"
    * 选择用户：hiveuser1
    * 权限：select
 
-     ![已加入域的 HDInsight Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)。
+     ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
@@ -131,9 +131,9 @@ ms.locfileid: "43042074"
     完成后，应会看到导入的两个数据列。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要配置已加入域的 HDInsight 群集，请参阅 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md)（配置已加入域的 HDInsight 群集）。
-* 若要管理已加入域的 HDInsight 群集，请参阅[管理已加入域的 HDInsight 群集](apache-domain-joined-manage.md)。
-* 有关在已加入域的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
+* 有关管理具有 ESP 的 HDInsight 群集的信息，请参阅[管理具有 ESP 的 HDInsight 群集](apache-domain-joined-manage.md)。
+* 有关在具有 ESP 的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）
 * 要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop with the Microsoft Hive ODBC drive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Hadoop）
 * 要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Hadoop by using Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Hadoop）

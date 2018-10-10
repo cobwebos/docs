@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141039"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976748"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -41,7 +41,7 @@ ms.locfileid: "42141039"
 
 如果证书是从第三方获取的，则必须深入了解第三方如何滚动更新其证书。 可以咨询第三方来制定滚动更新流程，或者单独使用他们提供的流程。 
 
-若要管理自己的设备证书，必须构建更新证书的管道。 确保新旧叶证书具有相同的公用名 (CN)。 如果 CN 相同，设备就可以重新预配自身，而无需创建重复的注册记录。
+若要管理自己的设备证书，必须构建更新证书的管道。 确保新旧叶证书具有相同的公用名 (CN)。 如果 CN 相同，设备就可以重新预配自身，而无需创建重复的注册记录。 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>在 IoT 中心滚动更新证书
@@ -78,10 +78,13 @@ ms.locfileid: "42141039"
 
     ![管理单独注册](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. 从预配服务中删除已泄露的证书后，请导航到 IoT 中心，并删除与已泄露证书相关联的设备注册。     
+3. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
+
+    第一种方法是手动导航到 IoT 中心并立即删除与已泄露的证书相关联的设备注册。 此后，设备再次使用更新的证书进行配置时，将创建新的设备注册。     
 
     ![删除 IoT 中心设备注册](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    第二种方法是使用重新预配支持将设备重新预配到同一个 IoT 中心。 此方法可用于替换 IoT 中心上设备注册的证书。 有关更多信息，请参见[如何重新预配设备](how-to-reprovision.md)。
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>单独注册和证书过期
 
@@ -118,9 +121,14 @@ ms.locfileid: "42141039"
 
     ![选择新的根 CA 证书](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. 从预配服务中删除已泄露的证书后，请导航到包含已泄露设备注册的链接 IoT 中心，并删除与已泄露证书相关联的注册。
+6. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
+
+    第一种方法是手动导航到 IoT 中心并立即删除与已泄露的证书相关联的设备注册。 此后，当设备再次使用更新的证书进行预配时，将为每个证书创建新的设备注册。     
 
     ![删除 IoT 中心设备注册](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    第二种方法是使用重新预配支持将设备重新预配到同一个 IoT 中心。 此方法可用于替换 IoT 中心上设备注册的证书。 有关更多信息，请参见[如何重新预配设备](how-to-reprovision.md)。
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>更新已泄露的中间证书
@@ -134,9 +142,13 @@ ms.locfileid: "42141039"
     ![管理单独注册](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. 从预配服务中删除已泄露的证书后，请导航到包含设备注册的链接 IoT 中心，并删除与已泄露证书相关联的注册。
+3. 从配置服务中删除已泄露的证书后，只要其设备注册依然存在，该证书便仍可用于建立与 IoT 中心的设备连接。 可通过两种方法来解决这一问题： 
+
+    第一种方法是手动导航到 IoT 中心并立即删除与已泄露的证书相关联的设备注册。 此后，当设备再次使用更新的证书进行预配时，将为每个证书创建新的设备注册。     
 
     ![删除 IoT 中心设备注册](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    第二种方法是使用重新预配支持将设备重新预配到同一个 IoT 中心。 此方法可用于替换 IoT 中心上设备注册的证书。 有关更多信息，请参见[如何重新预配设备](how-to-reprovision.md)。
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>注册组和证书过期

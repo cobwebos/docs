@@ -1,5 +1,5 @@
 ---
-title: 教程：创建、调试多服务 Web 应用程序并将其部署到 Service Fabric 网格 | Microsoft Docs
+title: 教程：创建、调试、监视多服务应用程序并将其部署到 Service Fabric 网格 | Microsoft Docs
 description: 在本教程中，我们将创建一个多服务 Azure Service Fabric 网格应用程序（由可与后端 Web 服务通信的 ASP.NET Core 网站组成）、在本地调试该应用程序，然后将其发布到 Azure。
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920516"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979187"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>教程：创建、调试多服务 Web 应用程序并将其部署到 Service Fabric 网格
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教程：创建、调试、部署和升级多服务 Service Fabric 网格应用
 
-本教程是一个系列中的第一部分。 其中介绍了如何创建一个包含 ASP.NET Web 前端服务和 ASP.NET Core Web API 后端服务的 Azure Service Fabric 网格应用程序。 然后，在本地开发群集上调试该应用，并将应用发布到 Azure。 完成本教程后，我们将获得一个简单的待办事项应用，它演示了 Azure Service Fabric 网格中运行的 Service Fabric 网格应用程序的服务到服务调用。
+本教程是一个系列中的第一部分。 介绍了如何使用 Visual Studio 创建具有 ASP.NET web 前端和 ASP.NET Core Web API 后端服务的 Azure Service Fabric 网格应用。 然后，可在本地开发群集上调试应用。 还可将该应用发布到 Azure，然后进行配置和代码更改，并升级应用。 最后，可清理未使用的 Azure 资源，避免为没有使用的资源付费。
+
+完成本教程后，可了解应用生命周期管理的大多数阶段，并生成了一个应用，该应用演示了 Service Fabric 网格应用中的服务到服务调用。
 
 如果你不希望手动创建该待办事项应用程序，可以[下载已完成应用程序的源代码](https://github.com/azure-samples/service-fabric-mesh)，并跳到[在本地调试应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)。
 
 在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
-> * 创建由 ASP.NET Web 前端组成的 Service Fabric 网格应用程序。
+> * 使用 Visual Studio 创建包含 ASP.NET Web 前端的 Service Fabric 网格应用。
 > * 创建一个用于表示待办事项的模型。
 > * 创建后端服务并从中检索数据。
 > * 将控制器和 DataContext 添加为后端服务的该模型视图控制器模式的一部分。
@@ -40,9 +42,11 @@ ms.locfileid: "41920516"
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
-> * 生成 Service Fabric 网格应用程序
-> * [在本地调试应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [将应用发布到 Azure](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * 在 Visual Studio 中创建 Service Fabric 网格应用
+> * [调试在本地开发群集中运行的 Service Fabric 网格应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [部署 Service Fabric 网格应用](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
+> * [清理 Service Fabric 网格资源](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,9 +58,7 @@ ms.locfileid: "41920516"
 
 * 请确保已[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)，包括安装 Service Fabric 运行时、SDK、Docker 和 Visual Studio 2017。
 
-* 目前，本教程的应用必须使用英语区域设置构建。
-
-## <a name="create-a-service-fabric-mesh-project"></a>创建 Service Fabric 网格项目
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>在 Visual Studio 中创建 Service Fabric 网格项目
 
 运行 Visual Studio，并选择“文件” > “新建” > “项目...”。
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -368,6 +367,7 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 > [!IMPORTANT]
 > 必须使用空格而不是制表符来缩进 service.yaml 文件中的变量，否则该文件无法编译。 当你创建环境变量时，Visual Studio 可能会插入制表符。 请将所有制表符替换为空格。 尽管**生成**调试输出中出现错误，但应用仍会启动。 但是，在将制表符转换为空格之前，该应用无法正常工作。 为确保 service.yaml 文件中不包含制表符，可以在 Visual Studio 编辑器中使用“编辑”  > “高级”  > “查看空白”来显示空白字符。
+> 请注意，service.yaml 文件是使用英语区域设置进行处理的。  例如，如果需要使用小数分隔符，请使用句点而不是逗号。
 
 **WebFrontEnd** 项目的 **service.yaml** 文件应大致如下所示，不过，你的 `ApiHostPort` 值可能与此不同：
 
@@ -380,7 +380,7 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 本教程的此部分介绍了如何：
 
 > [!div class="checklist"]
-> * 创建由 ASP.NET Web 前端组成的 Service Fabric 网格应用程序。
+> * 创建包含 ASP.NET Web 前端的 Service Fabric 网格应用。
 > * 创建一个用于表示待办事项的模型。
 > * 创建后端服务并从中检索数据。
 > * 将控制器和 DataContext 添加为后端服务的该模型视图控制器模式的一部分。
@@ -389,4 +389,4 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 转到下一教程：
 > [!div class="nextstepaction"]
-> [调试本地运行的 Service Fabric 网格应用程序](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> [调试在本地开发群集中运行的 Service Fabric 网格应用程序](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

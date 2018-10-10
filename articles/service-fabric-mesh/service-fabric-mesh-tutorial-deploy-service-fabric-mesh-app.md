@@ -1,6 +1,6 @@
 ---
-title: 教程 - 将 Service Fabric 网格应用程序部署到 Service Fabric 网格 | Microsoft Docs
-description: 了解如何发布 Azure Service Fabric 网格应用程序，该应用程序包括一个可与后端 Web 服务通信的 ASP.NET Core 网站。
+title: 教程 - 部署 Service Fabric 网格应用程序 | Microsoft Docs
+description: 了解如何使用 Visual Studio 发布 Azure Service Fabric 网格应用程序，该应用程序包括一个可与后端 Web 服务通信的 ASP.NET Core 网站。
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,35 +12,35 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/26/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284721"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963315"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>教程：部署 Service Fabric 网格 Web 应用程序
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
 本教程是一个系列的第三部分，介绍如何直接从 Visual Studio 发布 Azure Service Fabric 网格 Web 应用程序。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 将应用发布到 Azure。
+> * 使用 Visual Studio 将应用发布到 Azure。
 > * 检查应用程序部署状态
 > * 查看当前已部署到订阅中的所有应用程序
-> * 查看应用程序日志
-> * 清理应用使用的资源。
 
-此教程系列介绍了如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
-> * [生成 Service Fabric 网格 Web 应用程序](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [在本地调试应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * 将应用发布到 Azure
+> * [在 Visual Studio 中创建 Service Fabric 网格应用](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [调试在本地开发群集中运行的 Service Fabric 网格应用](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * 部署 Service Fabric 网格应用
+> * [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
+> * [清理 Service Fabric 网格资源](service-fabric-mesh-tutorial-cleanup-resources.md)
 
-本教程将介绍如何创建一个包含 ASP.NET Web 前端服务和 ASP.NET Core Web API 后端服务的 Azure Service Fabric 网格应用。 然后，在本地开发群集上调试该应用，并将应用发布到 Azure。 完成本教程后，我们将获得一个简单的待办事项应用，它演示如何在 Azure Service Fabric 网格 Web 应用程序中发出服务到服务调用。
+[!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“ServiceFabricMeshApp”并选择“发布...”
+若要将 Service Fabric 网格项目发布到 Azure，请在 Visual Studio 中右键单击“todolistapp”并选择“发布...”
 
 接下来，查看“发布 Service Fabric 应用程序”对话框。
 
@@ -74,11 +74,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称。 指定一个**位置**（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的**资源组**，例如 **sfmeshTutorial1RG**。 将“SKU”设置为“基本”，然后按“创建”返回发布对话框。
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称。 指定一个**位置**（本教程使用“美国东部”）。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。
 
-![Visual Studio - Service Fabric 网格 - 新建资源组对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
+![Visual Studio - Service Fabric 网格 - 新建容器注册表对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
-如果有错误指出尚未为订阅注册资源提供程序，现在可以注册资源提供程序。 首先，查看该资源提供程序是否适用于你的订阅：
+如果有错误指出尚未为订阅注册资源提供程序，现在可以注册。 首先，查看该资源提供程序是否适用于你的订阅：
 
 ```Powershell
 Get-AzureRmResourceProvider -ListAvailable
@@ -109,7 +109,6 @@ The application was deployed successfully and it can be accessed at http://10.00
 ## <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI 
 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 来完成剩余的步骤。 根据这些[说明](service-fabric-mesh-howto-setup-cli.md)安装 Azure Service Fabric 网格 CLI 扩展模块。
 
-
 ## <a name="check-application-deployment-status"></a>检查应用程序部署状态
 
 应用程序现已部署。 可以使用 `app show` 命令检查其状态。 
@@ -124,46 +123,20 @@ az mesh app show --resource-group $rg --name ServiceMeshApp
 
 可以使用“app list”命令获取订阅中部署的应用程序的列表。
 
-```cli
+```azurecli-interactive
 az mesh app list --output table
 ```
 
-## <a name="see-the-application-logs"></a>查看应用程序日志
-
-检查部署的应用程序的日志：
-
-```azurecli-interactive
-az mesh code-package-log get --resource-group $rg --application-name ServiceMeshApp --service-name todoservice --replica-name 0 --code-package-name ServiceMeshApp
-```
-
-## <a name="clean-up-resources"></a>清理资源
-
-如果不再需要，请删除创建的所有资源。 由于我们已创建一个新资源组来托管 ACR 和 Service Fabric 网格服务资源，因此可以安全删除此资源组，这会删除所有关联的资源。
-
-```azurecli
-az group delete --resource-group sfmeshTutorial1RG
-```
-
-```powershell
-Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
-```
-
-或者，可以[从门户](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources)删除资源组。 
-
 ## <a name="next-steps"></a>后续步骤
 
-本教程的此部分介绍了：
+本教程的此部分介绍了如何：
 > [!div class="checklist"]
 > * 将应用发布到 Azure。
 > * 检查应用程序部署状态
 > * 查看当前已部署到订阅中的所有应用程序
-> * 查看应用程序日志
-> * 清理应用使用的资源。
 
-将 Service Fabric 网格应用程序发布到 Azure 后，请尝试学习以下教程：
-
-* 浏览[投票应用示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)，查看有关服务到服务通信的另一个示例。
-* 阅读 [Service Fabric 资源](service-fabric-mesh-service-fabric-resources.md)
-* 了解 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
+转到下一教程：
+> [!div class="nextstepaction"]
+> [升级 Service Fabric 网格应用](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

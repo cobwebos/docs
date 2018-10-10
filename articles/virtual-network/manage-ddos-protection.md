@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: dd094f2b9cdb9b5eb164dda2925d094cafa7cd89
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 59cfcc72abee100b95cf17033083827fbb30f9f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895606"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986687"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -28,7 +28,7 @@ ms.locfileid: "33895606"
 
 在完成本教程中的任何步骤之前，使用分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的帐户登录到 Azure 门户 https://portal.azure.com。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 防护计划
 
@@ -46,7 +46,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
     |名称           | myDdosProtectionPlan                              |
     |订阅   | 选择订阅。                         |
     |资源组 | 选择“新建”，并输入 myResourceGroup |
-    |Location       | 美国东部                                           |
+    |位置       | 美国东部                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>为新的虚拟网络启用 DDoS
 
@@ -59,7 +59,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
     | 名称            | myVirtualNetwork                                             |
     | 订阅    | 选择订阅。                                    |
     | 资源组  | 选择“使用现有资源组”，然后选择“myResourceGroup” |
-    | Location        | 美国东部                                                      |
+    | 位置        | 美国东部                                                      |
     | DDoS 防护 | 选择“标准”，然后在“DDoS 防护”下，选择“myDdosProtectionPlan”。 所选计划可位于与虚拟网络相同或不同的订阅中，但这两个订阅必须与同一 Azure Active Directory 租户相关联。|
 
 如果已为虚拟网络启用 DDoS 防护，无法将虚拟网络移到其他资源组或订阅。 如果需要移动已启用 DDoS 标准的虚拟网络，请先禁用该标准并移动虚拟网络，然后启用 DDoS 标准。 移动后，适用于虚拟网络所有受保护的公共 IP 地址的自动优化策略阈值都将重置。
@@ -116,22 +116,7 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 还可以了解有关为创建警报而[配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和[逻辑应用](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的详细信息。
 
-## <a name="configure-logging-for-ddos-protection-metrics"></a>配置针对 DDoS 防护指标的日志记录
-
-1. 在门户左上角选择“所有服务”。
-2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
-3. 选择“设置”下的“诊断设置”。
-4. 选择包含要记录的公共 IP 地址的订阅和资源组。
-5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
-6. 选择“启用诊断以收集以下数据”，然后根据需要选择任意多个以下选项：
-
-    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-    - **发送到 Log Analytics**：将日志写入到 Azure OMS Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-
-若要模拟 DDoS 攻击来验证日志记录，请参阅[验证 DDoS 检测](#validate-ddos-detection)。
-
-## <a name="use-ddos-protection-telemetry"></a>使用 DDoS 保护遥测
+## <a name="use-ddos-protection-telemetry"></a>使用 DDoS 防护遥测
 
 对攻击的遥测是通过 Azure Monitor 实时提供的。 遥测仅在公用 IP 地址处于风险缓解期间可用。 在攻击缓解之前或之后，都不会看到遥测。
 
@@ -158,6 +143,56 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 策略阈值是通过基于 Azure 机器学习的网络流量探查自动配置的。 仅当超过策略阈值时，才会对受攻击的 IP 地址进行 DDoS 缓解。
 
+## <a name="configure-ddos-attack-analytics"></a>配置 DDoS 攻击分析
+Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可视化效果。 保护其虚拟网络免受 DDoS 攻击的客户可通过攻击缓解报告和缓解流日志详细查看攻击流量以及缓解攻击的操作。 
+
+## <a name="configure-ddos-attack-mitigation-reports"></a>配置 DDoS 攻击缓解报告
+攻击缓解报告使用 Netflow 协议数据，这些数据聚合在一起，提供有关资源所受攻击的详细信息。 只要公共 IP 资源受到攻击，就会在缓解措施启动时开始生成报告。 每 5 分钟生成一份增量报告，整个缓解过程结束后，生成一份缓解后报告。 这是为了确保在 DDoS 攻击持续时间较长时，能够每隔 5 分钟查看一次最新的缓解报告快照，并在攻击缓解结束时查看完整总结。 
+
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“设置”下的“诊断设置”。
+4. 选择包含要记录的公共 IP 地址的订阅和资源组。
+5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
+6. 选择“启用诊断以收集 DDoSMitigationReports 日志”，然后根据需要选择任意多个以下选项：
+
+    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入到 Azure OMS Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+
+增量缓解报告和攻击后缓解报告都包括以下字段
+- 攻击途径
+- 流量统计信息
+- 丢弃数据包的原因
+- 所涉及的协议
+- 前 10 个源国家或地区
+- 前 10 个源 ASN
+
+## <a name="configure-ddos-attack-mitigation-flow-logs"></a>配置 DDoS 攻击缓解流日志
+通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃流量、转发流量和其他相关数据点。 可通过事件中心将此数据的恒定流引入 SIEM 系统，以实现近实时监视，还可采取可能的措施，解决防御运营需求。 
+
+1. 在门户左上角选择“所有服务”。
+2. 在“筛选器”框中输入 Monitor。 当“Monitor”出现在结果中时，将其选中。
+3. 选择“设置”下的“诊断设置”。
+4. 选择包含要记录的公共 IP 地址的订阅和资源组。
+5. 为“资源类型”选择“公共 IP 地址”，然后选择要为其记录指标的特定公共 IP 地址。
+6. 选择“启用诊断以收集 DDoSMitigationFlowLogs 日志”，然后根据需要选择任意多个以下选项：
+
+    - **存档到存储帐户**：将数据写入 Azure 存储帐户。 若要了解有关此选项的详细信息，请参阅[存档诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **流式传输到事件中心**：允许日志接收器使用 Azure 事件中心选取日志。 事件中心将启用与 Splunk 或其他 SIEM 系统的集成。 若要了解有关此选项的详细信息，请参阅[将诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - **发送到 Log Analytics**：将日志写入到 Azure OMS Log Analytics 服务。 若要了解有关此选项的详细信息，请参阅[收集用于 Log Analytics 的诊断日志](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+7. 若要在 Azure 分析仪表板中查看流日志数据，可从 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip 导入示例仪表板
+
+流日志具有以下字段： 
+- Source IP
+- Destination IP
+- Source Port 
+- Destination Port 
+- 协议类型 
+- 在缓解期间执行的操作
+
+
+
 ## <a name="validate-ddos-detection"></a>验证 DDoS 检测
 
 Mircosoft 已与 [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) 合作构建接口，用户可在其中针对已启用 DDoS 保护的公共 IP 地址生成用于模拟的流量。 借助 BreakPoint Cloud 模拟，你可以：
@@ -182,4 +217,4 @@ Mircosoft 已与 [BreakingPoint Cloud](https://www.ixiacom.com/products/breaking
 
 ## <a name="next-steps"></a>后续步骤
 
-- 为虚拟网络创建并应用 [Azure 策略](policy-samples.md)
+- 为虚拟网络创建并应用 [Azure Policy](policy-samples.md)

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d2b05c83f77a58e224760d90d111b270d71a6514
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092421"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980298"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -55,43 +55,35 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 | `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
-函数应用由一个或多个经 Azure 应用服务共同管理的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 由多种语言编写的函数可共享相同的函数应用。 将函数应用视为组织和共同管理函数的一种方法。 
+函数应用在 Azure 中提供用于运行函数的执行上下文。 函数应用由一个或多个经 Azure 应用服务共同管理的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 
 
-## <a name="runtime-script-host-and-web-host"></a>运行时（脚本宿主和 web 主机）
-运行时或脚本宿主是基础 WebJobs SDK 主机，可侦听事件、收集和发送数据，并最终运行代码。 
+> [!NOTE]
+> 从 Azure Functions 运行时的[版本 2.x](functions-versions.md) 开始，函数应用中的所有函数都必须使用相同的语言创作。
 
-为加快 HTTP 触发器，在生产方案中的脚本宿主前还设有 Web 主机。 拥有两个主机有助于将脚本宿主与由 Web 主机管理的前端通信隔离开来。
+## <a name="runtime"></a>运行时
+Azure Functions 运行时或脚本宿主是基础主机，可侦听事件、收集和发送数据，并最终运行代码。 WebJobs SDK 使用此相同的主机。
+
+还有一个 Web 主机处理运行时的 HTTP 触发器请求。 拥有两个主机有助于将运行时与由 Web 主机管理的前端通信隔离开来。
 
 ## <a name="folder-structure"></a>文件夹结构
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-设置用于将函数部署到 Azure 应用服务中的函数应用的项目时，可以将此文件夹结构视为站点代码。 可使用现有工具（如持续集成和部署或自定义部署脚本），完成时间包安装部署或代码转换部署。
+设置用于将函数部署到 Azure 中的函数应用的项目时，可以将此文件夹结构视为站点代码。 我们建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 也可以使用现有工具，比如[持续集成和部署](functions-continuous-deployment.md)以及 Azure DevOps。
 
 > [!NOTE]
-> 确保将 `host.json` 文件和函数文件夹直接部署到 `wwwroot` 文件夹。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。 
-> 
-> 
+> 确保将 `host.json` 文件和函数文件夹直接部署到 `wwwroot` 文件夹。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
 
 ## <a id="fileupdate"></a> 如何更新函数应用文件
 通过 Azure 门户中内置函数编辑器可更新 function.json 文件和函数代码文件。 要上传或更新其他文件，例如 package.json 或 project.json 或是依赖项，必须使用其他部署方法。
 
 Function App 都建立在应用服务之上，因此所有[可用于标准 Web 应用的部署选项](../app-service/app-service-deploy-local-git.md)也均可用于 Function App。 以下为可用的上传或更新函数应用文件的一些方法。 
 
-#### <a name="to-use-app-service-editor"></a>使用应用服务编辑器
-1. 在 Azure Functions 门户中，单击“平台功能”。
-2. 在“开发工具”部分中，单击“应用服务编辑器”。   
-   加载“应用服务编辑器”后，wwwroot 下将出现 host.json 文件和函数文件夹。 
-5. 打开进行编辑，或者从开发计算机拖放文件进行上传。
-
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>使用函数应用的 SCM (Kudu) 终结点
-1. 导航到：`https://<function_app_name>.scm.azurewebsites.net`。
-2. 单击“调试控制台”> CMD。
-3. 导航到 `D:\home\site\wwwroot\` 更新 host.json 或导航到 `D:\home\site\wwwroot\<function_name>` 更新函数文件。
-4. 将想要上传的文件拖放到文件网格中相应的文件夹。 文件网格中有两个区域可放置文件。 对于 .zip 文件，会出现一个带标签的框，其中显示“将文件拖到此处进行上传并解压缩”。 对于其他文件类型，将文件拖放到“解压缩”框以外的文件网格中。
+#### <a name="use-local-tools-and-publishing"></a>使用本地工具和发布
+可以使用各种工具创作和发布函数应用，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 和 [Azure Functions Core Tools](./functions-develop-local.md)。 有关详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)。
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-#### <a name="to-use-continuous-deployment"></a>使用连续部署
+#### <a name="continuous-deployment"></a>连续部署
 按照本主题中的说明 [Azure Functions 连续部署](functions-continuous-deployment.md) 进行操作。
 
 ## <a name="parallel-execution"></a>并行执行
@@ -99,7 +91,7 @@ Function App 都建立在应用服务之上，因此所有[可用于标准 Web �
 
 ## <a name="functions-runtime-versioning"></a>Functions 运行时版本控制
 
-可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如：值“~1”表示 Function App 将使用 1 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
+可使用 `FUNCTIONS_EXTENSION_VERSION` 应用设置配置 Functions 运行时的版本。 例如，值“~2”表示 Function App 将使用 2.x 作为其主版本。 Function Apps 在发布后，将升级到各自新的次要版本。 有关详细信息（包括如何查看函数应用的确切版本），请参阅[如何针对 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ## <a name="repositories"></a>存储库
 Azure Functions 代码为开放源，位于 GitHub 存储库：

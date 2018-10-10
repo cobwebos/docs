@@ -1,26 +1,26 @@
 ---
-title: 语音翻译教程 (C#) | Microsoft Docs
-titleSuffix: Cognitive Services
-description: 了解如何使用语音翻译服务实时翻译文本。
+title: 教程：语音翻译 API C#
+titleSuffix: Azure Cognitive Services
+description: 使用语音翻译 API 实时翻译文本。
 services: cognitive-services
 author: v-jerkin
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.devlang: csharp
-ms.topic: article
+ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41929893"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993861"
 ---
-# <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>教程：C# 中的 Microsoft Translator WPF 应用程序
+# <a name="tutorial-translator-speech-application-in-c"></a>教程：以 C# 编写的语音翻译应用程序
 
-本教程介绍使用 Microsoft 语音翻译服务的交互式语音翻译工具，该服务是 Azure 中 Microsoft 认知服务的一部分。 学习如何：
+本教程介绍使用 Azure 认知服务中的语音翻译 API 的交互式语音翻译工具。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 请求服务支持的语言列表
@@ -42,7 +42,7 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 ## <a name="trying-the-translation-app"></a>试用翻译应用
 
-在 Visual STudio 中打开 Microsoft 语音翻译工具解决方案 (`SpeechTranslator.sln`) 后，按 F5 生成并启动该应用程序。  程序的主窗口随即显示。
+在 Visual Studio 中打开语音翻译工具解决方案 (`SpeechTranslator.sln`) 后，按 F5 生成并启动该应用程序。  程序的主窗口随即显示。
 
 ![[语音翻译工具主窗口]](media/speech-translator-main-window.png)
 
@@ -50,7 +50,7 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 ![[语音翻译工具主窗口]](media/speech-translator-settings-window.png)
 
-将 Microsoft 语音翻译订阅密钥粘贴到此窗口中，然后单击“保存”。 在多次运行间，密钥得以保存。
+将语音翻译订阅密钥粘贴到此窗口中，然后单击“保存”。 在多次运行间，密钥得以保存。
 
 返回主窗口，选择要使用的音频输入和输出设备以及源语言和目标语言。 如果需要听翻译的音频，请确保选中“TTS”（文本转语音）选项。 如果需要在说话时看到部分推测性翻译，请启用“部分结果”选项。
 
@@ -58,7 +58,7 @@ Visual Studio 解决方案还会生成应用程序安装程序。 需要 [WiX �
 
 ## <a name="obtaining-supported-languages"></a>获取支持的语言
 
-在撰写本文时，Microsoft Translator 服务支持六十多种语言进行文本翻译。 语音翻译支持的语言数量较少。 这些语言要求同时支持听录（语音识别）和合成（用于文本转语音输出）。
+在撰写本文时，语音翻译服务支持六十多种语言进行文本翻译。 语音翻译支持的语言数量较少。 这些语言要求同时支持听录（语音识别）和合成（用于文本转语音输出）。
 
 换言之，对于语音翻译，源语言必须是支持听录的语言。 假设需要文本结果，则输出语言可以是支持文本翻译的任意语言。 如需语音输出，则只能翻译成支持文本转语音的语言。
 
