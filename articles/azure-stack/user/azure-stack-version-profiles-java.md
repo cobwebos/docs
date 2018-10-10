@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452507"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886818"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>通过 Java 在 Azure Stack 中使用 API 版本配置文件
 
@@ -40,7 +40,7 @@ Java SDK 为 Azure Stack 资源管理器提供了工具来帮助你构建和管�
     
       - 这是为了指定 Pom.xml 文件中为依赖项，会自动加载模块是否您选择的正确类从下拉列表中根据需要使用.NET。
         
-          - 每个模块的顶部显示，如下所示：         
+      - 每个模块的顶部显示，如下所示：         
            `Import com.microsoft.azure.management.resources.v2018_03_01.ResourceGroup`
              
 
@@ -93,11 +93,11 @@ Java SDK 为 Azure Stack 资源管理器提供了工具来帮助你构建和管�
 
 | 值                     | 环境变量 | 说明                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 租户 ID                 | TENANT_ID            | Azure Stack 的值[<span class="underline">租户 ID</span>](../azure-stack-identity-overview.md)。                                                          |
-| 客户端 ID                 | CLIENT_ID             | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。                                                                                              |
-| 订阅 ID           | SUBSCRIPTION_ID      | [<span class="underline">订阅 ID</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions)是如何访问产品/服务在 Azure Stack 中。                |
-| 客户端机密             | CLIENT_SECRET        | 创建服务主体时保存的服务主体应用程序机密。                                                                                                                                   |
-| 资源管理器终结点 | 终结点              | 请参阅[ <span class="underline">Azure Stack 资源管理器终结点</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)。 |
+| 租户 ID                 | AZURE_TENANT_ID            | Azure Stack 的值[<span class="underline">租户 ID</span>](../azure-stack-identity-overview.md)。                                                          |
+| 客户端 ID                 | AZURE_CLIENT_ID             | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。                                                                                              |
+| 订阅 ID           | AZURE_SUBSCRIPTION_ID      | [<span class="underline">订阅 ID</span> ](../azure-stack-plan-offer-quota-overview.md#subscriptions)是如何访问产品/服务在 Azure Stack 中。                |
+| 客户端机密             | AZURE_CLIENT_SECRET        | 创建服务主体时保存的服务主体应用程序机密。                                                                                                                                   |
+| 资源管理器终结点 | ARM_ENDPOINT              | 请参阅[ <span class="underline">Azure Stack 资源管理器终结点</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)。 |
 | 位置                  | RESOURCE_LOCATION    | 本地 Azure stack                                                                                                                                                                                                |
 
 若要查找在 Azure Stack 的租户 ID，请按照的说明执行操作[此处](../azure-stack-csp-ref-operations.md)。 若要设置环境变量，请执行以下操作：
@@ -107,7 +107,7 @@ Java SDK 为 Azure Stack 资源管理器提供了工具来帮助你构建和管�
 若要在 Windows 命令提示符中设置环境变量，请使用以下格式：
 
 ```shell
-Set Azure_Tenant_ID=<Your_Tenant_ID>
+Set AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="macos-linux-and-unix-based-systems"></a>macOS、 Linux 和基于 Unix 的系统
@@ -115,7 +115,7 @@ Set Azure_Tenant_ID=<Your_Tenant_ID>
 在基于 Unix 的系统，可以使用以下命令：
 
 ```shell
-Export Azure_Tenant_ID=<Your_Tenant_ID>
+Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack 资源管理器终结点
@@ -162,7 +162,8 @@ Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
                     .withDefaultSubscriptionId(subscriptionId);
-            Azure azureStack = Azure.configure().withLogLevel(com.microsoft.rest.LogLevel.BASIC)
+Azure azureStack = Azure.configure()
+                    .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
                     .authenticate(credentials, credentials.defaultSubscriptionId());
 ```
 
@@ -182,7 +183,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("activeDirectoryResourceId", settings.get("audience"));
                     put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
-                    put("keyVaultDnsSuffix", ".adminvault" + armEndpoint.substring(armEndpoint.indexOf('.')));
+                    put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
             });
 ```
@@ -205,8 +206,7 @@ HttpGet getRequest = new
 HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
 armEndpoint));
 
-// Add additional header to getRequest which accepts application/xml
-data
+// Add additional header to getRequest which accepts application/xml data
 getRequest.addHeader("accept", "application/xml");
 
 // Execute request and catch response
@@ -217,37 +217,37 @@ HttpResponse response = httpClient.execute(getRequest);
 
 可以使用.NET 和 Azure Stack API 配置文件创建解决方案以引用方式使用以下 GitHub 示例：
 
-  - [管理资源组](https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid)
+  - [管理资源组](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
-  - [管理存储帐户](https://github.com/viananth/storage-java-manage-storage-accounts/tree/stack/Hybrid)
+  - [管理存储帐户](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-  - [管理虚拟机](https://github.com/viananth/compute-java-manage-vm/tree/stack/Hybrid)
+  - [管理虚拟机](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm)
 
 ### <a name="sample-unit-test-project"></a>示例单元测试项目 
 
 1.  克隆存储库使用以下命令：
     
-    `git clone https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid`
+    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
 2.  创建 Azure 服务主体并分配角色以访问订阅。 有关如何创建服务主体的说明，请参阅[使用 Azure PowerShell 创建具有证书的服务主体](../azure-stack-create-service-principals.md)。
 
 3.  检索以下必需的环境变量值：
     
-   1.  TENANT_ID
-   2.  CLIENT_ID
-   3.  CLIENT_SECRET
-   4.  SUBSCRIPTION_ID
-   5.  ARM_ENDPOINT
-   6.  RESOURCE_LOCATION
+    -  AZURE_TENANT_ID
+    -  AZURE_CLIENT_ID
+    -  AZURE_CLIENT_SECRET
+    -  AZURE_SUBSCRIPTION_ID
+    -  ARM_ENDPOINT
+    -  RESOURCE_LOCATION
 
 4.  设置以下环境变量使用检索到使用命令提示符创建从服务主体中的信息：
     
-   1. 导出 TENANT_ID = {你的租户 id}
-   2. 导出 CLIENT_ID = {你的客户端 id}
-   3. 导出 CLIENT_SECRET = {你的客户端密码}
-   4. 导出 SUBSCRIPTION_ID = {你的订阅 id}
-   5. 导出 ARM_ENDPOINT = {Azure Stack 资源管理器 URL}
-   6. 导出 RESOURCE_LOCATION = {的 Azure Stack 位置}
+    - export AZURE_TENANT_ID={你的租户 ID}
+    - export AZURE_CLIENT_ID={你的客户端 ID}
+    - export AZURE_CLIENT_SECRET={你的客户端机密}
+    - export AZURE_SUBSCRIPTION_ID={你的订阅 ID}
+    - 导出 ARM_ENDPOINT = {Azure Stack 资源管理器 URL}
+    - 导出 RESOURCE_LOCATION = {的 Azure Stack 位置}
 
    在 Windows 中，使用**设置**而不是**导出**。
 
