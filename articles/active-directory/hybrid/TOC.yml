@@ -79,6 +79,8 @@ items:
       href: plan-connect-design-concepts.md
     - name: Azure AD Connect 的拓扑
       href: plan-connect-topologies.md
+    - name: 影响 Azure AD Connect 性能的因素
+      href: plan-connect-performance-factors.md
     - name: 用户将如何登录
       href: plan-connect-user-signin.md
     - name: 有关实例的特殊注意事项
@@ -283,9 +285,9 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Azure AD 联合身份验证兼容性列表
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: ae07126e564e90e3f37a64159783c65dde963229
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 40726c5a7213ad9018db5fd4bc491dfca0731afb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452576"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884993"
