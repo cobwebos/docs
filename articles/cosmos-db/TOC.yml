@@ -185,6 +185,8 @@ items:
         href: sql-api-sql-query-metrics.md
       - name: 存储过程、触发器和 UDF
         href: programming.md
+      - name: SQL 数据分区
+        href: sql-api-partition-data.md
       - name: 数据类型
         items:
         - name: DateTime
@@ -281,6 +283,8 @@ items:
       items:
       - name: 导入关系图数据
         href: bulk-executor-graph-dotnet.md
+      - name: 关系图数据分区
+        href: graph-partitioning.md
   - name: Cassandra API 文档
     items:
     - name: 介绍
@@ -418,8 +422,6 @@ items:
         href: performance-testing.md
     - name: 以经济高效的方式读取和写入
       href: key-value-store-cost.md
-    - name: SQL 数据分区
-      href: sql-api-partition-data.md
   - name: 与其他 Azure 服务集成
     items:
     - name: 更改源电子商务解决方案
@@ -490,9 +492,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 8111949d7069066b63c12a851324d21feda8bac2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dac79ee7d4a8810cce0a2e77e8dcd8d06842454c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868586"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888011"

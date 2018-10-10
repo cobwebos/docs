@@ -25,7 +25,7 @@
 # 如何
 ## 规划和设计
 ### [了解 Azure AD 体系结构](fundamentals/active-directory-architecture.md)
-### [Azure Active Directory 中的声明映射](active-directory-claims-mapping.md)
+### [Azure Active Directory 中的声明映射](develop/active-directory-claims-mapping.md)
 ### [部署混合标识解决方案](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### 确定要求
 ##### [标识](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -200,7 +200,7 @@
 #### [租户限制](manage-apps/tenant-restrictions.md)
 #### [使用 SCIM 预配用户](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [了解 Azure AD 应用程序许可体验](application-consent-experience.md)
+### [了解 Azure AD 应用程序许可体验](develop/application-consent-experience.md)
 
 ### 故障排除
 
@@ -323,7 +323,7 @@
 
 ### [使用 Azure AD Connect 集成本地标识](hybrid/whatis-hybrid-identity.md)
 
-### [配置令牌生存期](active-directory-configurable-token-lifetimes.md)
+### [配置令牌生存期](develop/active-directory-configurable-token-lifetimes.md)
 
 ## 保护标识
 
@@ -362,5 +362,5 @@
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
