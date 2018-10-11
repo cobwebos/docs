@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: na
-ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131712"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042422"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -188,11 +188,11 @@ ServiceDeskWorkItemType_s="Incident"
 - 创建者
 - 解决者
 - 关闭者
-- Source
+- 源
 - 分配给
 - 类别
 - 标题
-- 说明
+- Description
 - 创建日期
 - 关闭日期
 - 解决日期
@@ -209,7 +209,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 服务台 ID
 - 创建者
 - 关闭者
-- Source
+- 源
 - 分配给
 - 标题
 - Type
@@ -230,7 +230,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 计划结束日期
 - 工作开始日期
 - 工作结束日期
-- 说明
+- Description
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
@@ -277,7 +277,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   计划结束日期 |
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
-| Description_s | 说明 |
+| Description_s | Description |
 | Computer  | 配置项 |
 
 

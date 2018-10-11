@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: richrund; bwren
-ms.component: na
-ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: magoedte
+ms.component: ''
+ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127435"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042855"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -63,7 +63,7 @@ ms.locfileid: "37127435"
 
    ![创建事件中心对话框的插图](media/log-analytics-activity-logs-subscriptions/create-event-hub1.png)
 
-4. 选择新资源的定价层（“基本”或“标准”）、Azure 订阅、资源组和位置。  单击“创建”  创建命名空间。 可能需要等待几分钟让系统完全预配资源。
+4. 选择新资源的定价层（“基本”或“标准”）、Azure 订阅、资源组和位置。  单击“创建”以创建命名空间。 可能需要等待几分钟让系统完全预配资源。
 6. 在列表中单击刚刚创建的命名空间。
 7. 选择“共享访问策略”，然后单击“RootManageSharedAccessKey”。
 
@@ -128,7 +128,7 @@ ms.locfileid: "37127435"
 
     ![创建逻辑应用](media/log-analytics-activity-logs-subscriptions/create-logic-app.png)
 
-   |设置 | 说明  |
+   |设置 | Description  |
    |:---|:---|
    | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
@@ -303,7 +303,7 @@ ms.locfileid: "37127435"
 
     ![配置发送数据操作](media/log-analytics-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |设置        | 值           | 说明  |
+   |设置        | 值           | Description  |
    |---------------|---------------------------|--------------|
    |JSON 请求正文  | **撰写**操作提供的**输出** | 从“撰写”操作的正文中检索记录。 |
    | 自定义日志名称 | AzureActivity | 在 Log Analytics 中创建的、用于保存导入数据中的自定义日志表的名称。 |

@@ -8,12 +8,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 54bf38bf5a5858a2d7ac7237f58fc4db386dbac1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 01a386d37841c78e4aae96111e4671ec33b87e00
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423317"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017545"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>教程：创建自定义语言模型
 
@@ -63,7 +63,7 @@ ms.locfileid: "47423317"
 
 ## <a name="language-support"></a>语言支持
 
-查看自定义**语音转文本**语言模型的完整[受支持语言](supported-languages.md)列表。
+查看自定义**语音转文本**语言模型的完整[受支持语言](language-support.md#text-to-speech)列表。
 
 
 

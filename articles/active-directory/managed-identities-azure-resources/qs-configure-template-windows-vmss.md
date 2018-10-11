@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220913"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017510"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上配置 Azure 资源托管标识
 
@@ -146,7 +146,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    如果 apiVersion 为 `2018-06-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及 userAssignedIdentities 字典值。
 
-   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01 及早期版本**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
 
    如果 apiVersion 为 `2017-12-01` 并且虚拟机规模集同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned`，并保留 `UserAssigned` 以及用户分配托管标识的 `identityIds` 数组。 
    
@@ -279,7 +279,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines API 版本 2017-12-01 和早期版本**
+   **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    ```json
    "resources": [
