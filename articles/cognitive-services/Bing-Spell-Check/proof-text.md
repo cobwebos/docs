@@ -1,21 +1,21 @@
 ---
-title: 必应拼写检查 API 概述 - Azure 认知服务 | Microsoft Docs
+title: 什么是必应拼写检查 API？
+titlesuffix: Azure Cognitive Services
 description: 必应拼写检查 API 使用机器学习和统计性的机器翻译进行上下文拼写检查。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
-ms.assetid: 64ABDFD4-0118-4B6C-A592-68E5EDDB8491
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 15c5f7eeb7d94d7e80533ee1fd12e33fa3bcd134
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43114290"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802587"
 ---
 # <a name="what-is-bing-spell-check-api"></a>什么是必应拼写检查 API？
 

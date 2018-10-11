@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 60a6061d6ac0998064897462c0e82db811bdc187
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435275"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237732"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -31,16 +31,16 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  ca-ES | 加泰罗尼亚语(西班牙) | 否 | 否 | 否
  da-DK | 丹麦语(丹麦) | 否 | 否 | 否
  de-DE | 德语(德国) | 是 | 是 | 否
- en-AU | 英语(澳大利亚) | 是 | 是 | 是
- en-CA | 英语(加拿大) | 是 | 是 | 是
- en-GB | 英语(英国) | 是 | 是 | 是
- en-IN | 英语(印度) | 否 | 是 | 是
- en-NZ | 英语(新西兰) | 是 | 是 | 是  
+ en-AU | 英语(澳大利亚) | 否 | 是 | 是
+ en-CA | 英语(加拿大) | 否 | 是 | 是
+ en-GB | 英语(英国) | 否 | 是 | 是
+ en-IN | 英语(印度) | 是 | 是 | 是
+ en-NZ | 英语(新西兰) | 否 | 是 | 是  
  en-US | 英语(美国) | 是 | 是 | 是
- es-ES | 西班牙语(西班牙) | 是 | 是 | 否
- es-MX | 西班牙语(墨西哥) | 是 | 是 | 否
+ es-ES | 西班牙语(西班牙) | 否 | 是 | 否
+ es-MX | 西班牙语(墨西哥) | 否 | 是 | 否
  fi-FI | 芬兰语(芬兰) | 否 | 否 | 否
- fr-CA | 法语(加拿大) | 是 | 是 | 否
+ fr-CA | 法语(加拿大) | 否 | 是 | 否
  fr-FR | 法语(法国) | 是 | 是 | 否
  hi-IN | 印地语(印度) | 否 | 是 | 否
  it-IT | 意大利语(意大利) | 是 | 是 | 否
@@ -51,7 +51,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  pl-PL | 波兰语(波兰) | 否 | 否 | 否
  pt-BR | 葡萄牙语(巴西) | 否 | 是 | 否
  pt-PT | 葡萄牙语(葡萄牙) | 否 | 是 | 否
- ru-RU | 俄语(俄罗斯) | 否 | 是 | 否
+ ru-RU | 俄语(俄罗斯) | 是 | 是 | 否
  sv-SE | 瑞典语(瑞典) | 否 | 否 | 否
  zh-CN | 中文(普通话，简体) | 是 | 是 | 否
  zh-HK | 中文(普通话，繁体) | 否 | 是 | 否
@@ -161,8 +161,6 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 ## <a name="speech-translation"></a>语音翻译
 
 **语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自以下“语音语言”表。 可用的目标语言取决于翻译目标是语音还是文本。
-
-可采用编程方式使用 REST API 的“语言”终结点获取语言列表。 此列表提供了每个语言代码，并以英语或其他任何受支持语言提供语言名称。 每当支持新的语言时，Microsoft Translator 服务都会更新此列表。
 
 ### <a name="speech-languages"></a>语音语言
 

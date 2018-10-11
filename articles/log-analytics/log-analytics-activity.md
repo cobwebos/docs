@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 0b05dc17fc7ba567bf633c25a080fbf56903935c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130320"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044376"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
@@ -52,7 +52,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 与大多数其他的 Log Analytics 解决方案不同，代理不会为活动日志收集数据。 该解决方案使用的全部数据都直接来自于 Azure。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | [Windows 代理](log-analytics-windows-agent.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
@@ -90,7 +90,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 活动日志数据仅在配置活动日志以转到解决方案*后*才显示，所以在此之前无法查看数据。
 
-| 边栏选项卡 | 说明 |
+| 边栏选项卡 | Description |
 | --- | --- |
 | Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图可针对 <code>AzureActivity</code> 运行日志搜索。 单击某个调用方项，运行日志搜索，从而为该项返回所有活动日志条目。 |
 | 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图。 此外还显示前十个状态记录的列表。 单击该图表可针对 <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code> 运行日志搜索。 单击某个状态项，运行日志搜索，从而为该状态记录返回所有活动日志条目。 |

@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4989d221ccc21b2dd454339f8d83245f1556c109
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f24f25a4eb4db9e9f3e0b4569874dab94ef11b5
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971342"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900952"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 
 ## <a name="related-content"></a>相关内容
 * 请参阅 Azure AD Graph [策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)和[策略实体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)以了解有关通过 Azure AD Graph API 管理令牌生存期策略的详细信息。
-* 有关通过 PowerShell cmdlet 管理策略的详细信息和示例，请参阅 [Azure AD 中的可配置令牌生存期](../active-directory-configurable-token-lifetimes.md)。 
+* 有关通过 PowerShell cmdlet 管理策略的详细信息和示例，请参阅 [Azure AD 中的可配置令牌生存期](active-directory-configurable-token-lifetimes.md)。 
 * 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
 * 使用[带 SAML 的单一登录 (SSO)](single-sign-on-saml-protocol.md)。
 * 使用 [Azure 单一注销 SAML 协议](single-sign-out-saml-protocol.md)

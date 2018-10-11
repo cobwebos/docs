@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036044"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867538"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
 
@@ -299,7 +299,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "“创建新的短语列表”弹出对话框的屏幕截图，在短语列表值框中已填充了词汇")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. 再次[训练](#train-the-luis-app)并[发布](#publish-the-app-to-get-the-endpoint-URL)应用，以便使用短语列表。
+5. 再次[训练](#train)并[发布](#publish)应用，以便使用短语列表。
 
 6. 使用同一陈述（`This is the lead welder paperwork.`）在终结点反复查询
 

@@ -1,22 +1,23 @@
 ---
-title: 必应新闻搜索终结点 | Microsoft Docs
+title: 必应新闻搜索终结点
+titlesuffix: Azure Cognitive Services
 description: 新闻搜索 API 终结点摘要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433678"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800539"
 ---
-# <a name="news-search-endpoints"></a>新闻搜索终结点
+# <a name="bing-news-search-endpoints"></a>必应新闻搜索终结点
 “新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
 ## <a name="endpoints"></a>终结点
 若要使用必应 API 获取新闻搜索结果，请向以下某个终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。

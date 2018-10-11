@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: df7326cb8e671d0f71924e813a1354dfef1e20c7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a1cda1cea2089363331ae437cb7ad802429779f4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366034"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888690"
 ---
 返回的数据具有预期值和默认上限和下限。 在实践中，可定义 [sensitivity] 参数，然后使用 (ExpectedValue + sensitivity * UpperMargin) 作为上限，(ExpectedValue - sensitivity * LowerMargin) 作为自行调整异常点的下限。 [sensitivity] 的值应大于 1。 下面是一些调整图。
 

@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: include
 ms.date: 08/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2174ae44f8e78763c1939aee5e6b86c95a0924ce
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a76f0205a34b106cf04b61938b1b576db9325c40
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39514086"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858037"
 ---
 ## <a name="create-a-service-principal"></a>创建服务主体
 

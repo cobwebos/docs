@@ -2,17 +2,17 @@
 title: Azure 容器注册表中的内容信任
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取签名的映像。
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
-ms.author: marsma
-ms.openlocfilehash: 5dd8bc4227fda4c5d4def4b59bd7ff9a707f47f9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.author: danlep
+ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234000"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857663"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -34,7 +34,7 @@ ms.locfileid: "40234000"
 内容信任通过一组加密签名密钥来管理。 这些密钥与注册表中的特定存储库相关联。 Docker 客户端和你的注册表使用多种类型的签名密钥来管理存储库中标记的信任。 启用内容信任并将其集成到容器发布和使用管道中时，必须小心管理这些密钥。 有关详细信息，请参阅本文后面的[密钥管理](#key-management)以及 Docker 文档中的[管理内容信任的密钥][docker-manage-keys]。
 
 > [!TIP]
-> 这是对 Docker 的内容信任模型的概述，概况性很强。 若要深入探讨内容信任，请参阅 [Docker 中的内容信任][docker-content-trust]。
+> 这是对 Docker 的内容信任模型的简要概述。 若要深入探讨内容信任，请参阅 [Docker 中的内容信任][docker-content-trust]。
 
 ## <a name="enable-registry-content-trust"></a>启用注册表内容信任
 

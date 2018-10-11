@@ -10,12 +10,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: cb1abdce3bbd7349695ece70ff336c7e513c0918
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 344423ea9943e04dc5f02ebee0903d179be90bbd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162179"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887575"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure 机器学习硬件加速包
 
@@ -148,7 +148,7 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
 
 ## <a name="reporting-issues"></a>报告问题
 
-请通过[论坛](https://aka.ms/aml-forum)报告在使用包时遇到的问题。
+请通过[论坛](https://aka.ms/aml-forum-service)报告在使用包时遇到的问题。
 
 ## <a name="next-steps"></a>后续步骤
 

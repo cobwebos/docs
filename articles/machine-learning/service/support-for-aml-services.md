@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971393"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268473"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>获取 Azure 机器学习服务的支持和培训
 
@@ -35,7 +35,7 @@ ms.locfileid: "46971393"
 
 + 技术支持：访问 [Azure 技术支持](https://azure.microsoft.com/support/options/)，然后选择“机器学习”。 
 
-+ 用户论坛：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)中提出问题、回答问题并与其他用户交流。
++ 用户论坛：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://aka.ms/aml-forum-service)中提出问题、回答问题并与其他用户交流。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127345"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044563"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
 本文提供了有关对[用于 Linux 的 OMS 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  
@@ -49,7 +49,7 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 
 下表描述了身份验证文件中的条目。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--|:--|
 | 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | Bind-Address| 当前 MySQL 绑定地址。 |
@@ -62,7 +62,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了示例实例设置 
 
-| 说明 | 文件 |
+| Description | 文件 |
 |:--|:--|
 | 默认实例和端口为 3308 的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 默认实例和端口为 3308 且采用不同用户名和密码的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -78,7 +78,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| Operation | 示例 | 说明
+| Operation | 示例 | Description
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |

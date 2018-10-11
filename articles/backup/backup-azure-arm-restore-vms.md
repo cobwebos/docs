@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380159"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804610"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
@@ -37,6 +37,7 @@ ms.locfileid: "44380159"
 * 选择还原类型，新建 VM 或还原磁盘，并指定所需参数。 
 
 ## <a name="select-a-restore-point-for-restore"></a>选择用于还原的还原点
+
 1. 登录到 [Azure 门户](http://portal.azure.com/)。
 
 1. 在 Azure 菜单中，选择“浏览”。 在服务列表中，键入“恢复服务”。 服务列表会根据键入的内容调整。 出现“**恢复服务保管库**”时，请选择它。
@@ -102,9 +103,9 @@ ms.locfileid: "44380159"
 门户为已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘。 使用 PowerShell 命令将其附加到所选 VM 配置。 或者可以使用附带了已还原磁盘的模板来自定义已还原的 VM。 有关如何还原具有多个 NIC 或采用负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restore-vms-with-special-network-configurations)。 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘并使用本文中所指定的 PowerShell/模板来创建 VM。 确保在创建 VM 时将“许可证类型”指定为“Windows_Server”以利用还原的 VM 上的 HUB 优势。 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>从还原点创建新的 VM
-1. 如果尚未执行此操作，请[选择一个还原点](#restore-a vm-with-special-network-configurations)，然后开始从还原点创建新的 VM。 选择还原点后，请在“还原配置”边栏选项卡中，输入或选择以下每个字段的值：
+1. 如果尚未执行此操作，请[选择一个还原点](#select-a-restore-point-for-restore)，然后开始从还原点创建新的 VM。 选择还原点后，请在“还原配置”边栏选项卡中，输入或选择以下每个字段的值：
 
-    a. 还原类型。 创建虚拟机。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 还原类型。 创建虚拟机。
 
     b. 虚拟机名称。 为 VM 提供一个名称。 此名称对于资源组（对于Azure 资源管理器部署型 VM）或云服务（对于经典 VM）必须是唯一的。 如果 VM 已存在于订阅中，则不能替换它。
 
@@ -235,13 +236,13 @@ ms.locfileid: "44380159"
 
 1. 使用 PowerShell cmdlet 创建负载均衡器/多个 NIC/多个保留 IP 所需的 VM 配置。 使用该配置来创建采用所需配置的 VM：
 
-   a. 使用[内部负载均衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用[内部负载均衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM。
 
    b. 创建 VM 以连接到[面向 Internet 的负载均衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)。
 
-   c. 创建具有[多个 NIC 的 VM](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)。
+   c. 创建具有[多个 NIC 的 VM](../virtual-machines/windows/multiple-nics.md)。
 
-   d. 创建具有[多个保留 IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) 的 VM。
+   d. 创建具有[多个保留 IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md) 的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 既然可以还原 VM，接下来请参阅故障排除文章中有关 VM 常见错误的信息。 另请参阅有关在 VM 中管理任务的文章。
