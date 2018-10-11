@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4712c0b40209cd6d40703176f95a80f491d0364c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ffd134bd4e47f92264f8b299f8fd4bdb76f6c9f
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979094"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870310"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>快速入门：使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用
 
@@ -112,13 +112,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ```Python
     insert_data = session.prepare("INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)")
-    batch = BatchStatement()
-    batch.add(insert_data, (1, 'LyubovK', 'Dubai'))
-    batch.add(insert_data, (2, 'JiriK', 'Toronto'))
-    batch.add(insert_data, (3, 'IvanH', 'Mumbai'))
-    batch.add(insert_data, (4, 'YuliaT', 'Seattle'))
+    session.execute(insert_data, [1,'Lybkov','Seattle'])
+    session.execute(insert_data, [2,'Doniv','Dubai'])
+    session.execute(insert_data, [3,'Keviv','Chennai'])
+    session.execute(insert_data, [4,'Ehtevs','Pune'])
+    session.execute(insert_data, [5,'Dnivog','Belgaum'])
     ....
-    session.execute(batch)
+    
     ```
 
 * 用于获取所有键值的查询。

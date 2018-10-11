@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116157"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044648"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -544,6 +544,6 @@ Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理�
 还可以使用 Squirrel SQL 查询。 按照类似于 PostgreSQL 的步骤，使用 Microsoft MSSQL Server JDBC 驱动程序（可在 ***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** 中找到该驱动程序）。
 
 ## <a name="next-steps"></a>后续步骤
-获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](http://aka.ms/datascienceprocess)。
+获取主题概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)。
 
 有关针对特定方案，演示团队数据科学过程中的步骤的其他端到端演练的说明，请参阅[团队数据科学过程演练](../team-data-science-process/walkthroughs.md)。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。

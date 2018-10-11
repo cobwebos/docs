@@ -2,18 +2,17 @@
 title: 使用重启策略在 Azure 容器实例中运行容器化任务
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 07/26/2018
-ms.author: marsma
-ms.openlocfilehash: f4d30a9902261c0e785a1af36a7c1c7a8a0fec46
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444939"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853874"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 

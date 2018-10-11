@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 6ec59c8af290a9ff7b7d9640b2253a0f91886256
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b905feef4d3a5445ba27b92637448443c3bbb4a3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394346"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855606"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -352,7 +352,6 @@ ms.locfileid: "47394346"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：  
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列入门][sbacomqhowto]
 * [服务总线服务页][sbacom]  
 

@@ -8,14 +8,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 1080bb0ad1d901a8b9a5ace4993d4e0d46924a03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366048"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246836"
 ---
 # <a name="what-is-anomaly-finder"></a>什么是异常查找器？
+
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 通过异常查找器可随时间推移监视数据，并使用机器学习检测异常，机器学习会自动应用正确的统计模型来适应特定数据（不受行业、方案或数据量的影响）。 异常查找器 API 将时间序列作为输入，返回指示数据点是否异常的结果，确定预期值以及可视化的上限和下限。 异常查找器是预生成的 AI 服务，除需了解如何使用 RESTful API 外，无需任何机器学习专业知识。 它可处理任何时序数据，还可构建到流数据系统中，让开发变得灵活便捷。 异常查找器涵盖了各方面的用例，例如，用于管理欺诈、盗窃、市场变化和潜在商业事件的金融工具，或以匿名方式监视 IoT 设备流量。 此解决方案还可货币化为某服务的一部分，便于最终客户了解数据、支出、投资回报或用户活动的变化。
 试用异常查找器 AP，深入了解数据。 

@@ -2,19 +2,18 @@
 title: Azure 容器注册表教程 - 将已更新的映像推送到区域部署
 description: 将修改后的 Docker 映像推送到异地复制的 Azure 容器注册表，然后查看已自动部署到多个区域中运行的 Web 应用的更改。 由三个部分构成的教程系列的第三部分。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1a18b6f627a28b912baeda6f180297dc703e665e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031197"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855504"
 ---
 # <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>教程：将已更新的映像推送到区域部署
 

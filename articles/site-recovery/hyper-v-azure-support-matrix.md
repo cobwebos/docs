@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42143968"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079202"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>用于 Hyper-V 到 Azure 的复制的支持矩阵
 
@@ -59,16 +59,16 @@ VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirem
 
 组件 | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
-主机网络：NIC 组合 | 是
-主机网络：VLAN | 是
-主机网络：IPv4 | 是
-主机网络：IPv6 | 否
-来宾 VM 网络：NIC 组合 | 否
-来宾 VM 网络：IPv4 | 是
-来宾 VM 网络：IPv6 | 否
-来宾 VM 网络：静态 IP (Windows) | 是
-来宾 VM 网络：静态 IP (Linux) | 否
-来宾 VM 网络：多 NIC | 是
+主机网络：NIC 组合 | 是 | 是
+主机网络：VLAN | 是 | 是
+主机网络：IPv4 | 是 | 是
+主机网络：IPv6 | 否 | 否
+来宾 VM 网络：NIC 组合 | 否 | 否
+来宾 VM 网络：IPv4 | 是 | 是
+来宾 VM 网络：IPv6 | 否 | 是
+来宾 VM 网络：静态 IP (Windows) | 是 | 是
+来宾 VM 网络：静态 IP (Linux) | 否 | 否
+来宾 VM 网络：多 NIC | 是 | 是
 
 
 

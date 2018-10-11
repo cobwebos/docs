@@ -2,21 +2,21 @@
 title: 使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑 | Microsoft Docs
 description: 了解数据库迁移服务的源和目标配置。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 9fcee103854209016d73e29b598c9f33d35c4b6c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.date: 10/10/2018
+ms.openlocfilehash: 39bcea36f3599530413aa9fc4dbb308ee2fb1681
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316861"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066847"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑
 本文介绍 Azure SQL 数据库迁移服务可使用的各种网络拓扑，以提供从本地 SQL Server 到 Azure SQL 数据库托管实例的全面迁移体验。
@@ -33,7 +33,7 @@ ms.locfileid: "36316861"
 ## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Azure SQL 数据库托管实例与本地网络隔离
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 - Azure SQL 数据库托管实例与本地连接分离，但是 Azure 数据库迁移服务实例与本地网络连接。
-- 如果基于角色的访问控制 (RBAC) 策略已到位，你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
+- 如果基于角色的访问控制 (RBAC) 策略已到位，而且你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
 - 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 VNET 在不同的订阅中。
 
 ![托管实例的网络拓扑与本地网络分离](media\resource-network-topologies\mi-isolated-workload.png)
@@ -56,7 +56,7 @@ ms.locfileid: "36316861"
 
 如果环境要求以下的一种或多种方案，则使用此网络拓扑：
 - Azure SQL 数据库托管实例所在的 VNET 是独立的。
-- 如果基于角色的访问控制 (RBAC) 策略已到位，你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
+- 如果基于角色的访问控制 (RBAC) 策略已到位，而且你需要限制用户对托管 Azure SQL 数据库托管实例的同一订阅的访问权限。
 - 用于 Azure SQL 数据库托管实例和 Azure 数据库迁移服务的 VNET 在不同的订阅中。
 
 ![独立 VNET 的云到云迁移的网络拓扑](media\resource-network-topologies\cloud-to-cloud-isolated.png)

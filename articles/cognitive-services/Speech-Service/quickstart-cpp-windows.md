@@ -5,22 +5,22 @@ description: 了解如何使用认知服务语音 SDK 在 Windows 桌面上的 C
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: e6f8b8f2a3bcdf78de28bddc73502872e851da12
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 12faf7ae7e45e6f6ede739b24d9ead28ff26313e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434290"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886323"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，请创建适用于 Windows 的 C++ 控制台应用程序。 请使用认知服务[语音 SDK](speech-sdk.md)，通过电脑的麦克风实时将语音转录为文本。 该应用程序使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）生成。
+在本文中，请创建适用于 Windows 的 C++ 控制台应用程序。 请使用认知服务[语音 SDK](speech-sdk.md)，通过电脑的麦克风实时将语音转录为文本。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）构建的。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +73,7 @@ ms.locfileid: "47434290"
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-windows/helloworld/helloworld.cpp#code)]
 
-1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为订阅密钥。
+1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 

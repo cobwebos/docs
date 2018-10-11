@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
-ms.comopnent: na
-ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.comopnent: ''
+ms.openlocfilehash: 7b44c0712c4d88ec0bbb7a94f574c2a12faf3550
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133275"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040670"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  
@@ -43,7 +43,7 @@ Log Analytics 不会收集 NCSA 或 IIS 本机格式的日志。
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
 IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
@@ -70,7 +70,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-searches-with-iis-logs"></a>使用 IIS 日志进行日志搜索
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| 查询 | 说明 |
+| 查询 | Description |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 66d375022d200cc916c77c059fa64eb6dbbc17e2
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308140"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900319"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -109,4 +109,4 @@ Azure 应用服务支持通过“主动”模式和“被动”模式进行连�
 
 ## <a name="more-resources"></a>更多资源
 
-* [Azure 应用服务部署凭据](app-service-deploy-ftp.md)
+* [Azure 应用服务部署凭据](app-service-deployment-credentials.md)

@@ -2,21 +2,21 @@
 title: 有关联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制的文章 | Microsoft Docs
 description: 了解在联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/11/2018
-ms.openlocfilehash: e61e975a07dd643652ca4847025499e3e77f42be
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 10/09/2018
+ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377065"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883816"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.component: na
-ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: ''
+ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309333"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043529"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
@@ -103,7 +103,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日志](../key-vault/key-vault-logging.md)收集的类型为 **KeyVaults** 的记录。  这些记录的属性如下表中所列：  
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Type |AzureDiagnostics |
 | SourceSystem |*Azure* |

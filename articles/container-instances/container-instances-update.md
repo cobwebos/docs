@@ -2,18 +2,17 @@
 title: 更新 Azure 容器实例中的容器
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432610"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854535"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
@@ -23,7 +22,7 @@ ms.locfileid: "39432610"
 
 通过使用至少一个已修改的属性重新部署现有组，来更新容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器会就地重启。
 
-通过发出 create 命令（或使用 Azure 门户）并指定现有组的名称，来重新部署现有的容器组。 发出 create 命令时修改组的至少一个有效属性，以触发重新部署。 并非所有容器组属性都可用于重新部署。 有关不支持的属性列表，请参阅[需要删除操作的属性](#properties-that-require-delete)。
+通过发出 create 命令（或使用 Azure 门户）并指定现有组的名称，来重新部署现有的容器组。 发出 create 命令时修改组的至少一个有效属性，以触发重新部署。 并非所有容器组属性都可用于重新部署。 有关不支持的属性列表，请参阅[需要删除操作的属性](#properties-that-require-container-delete)。
 
 以下 Azure CLI 示例更新具有新 DNS 名称标签的容器组。 由于已修改该组的 DNS 名称标签属性，因此会重新部署容器组，并重启其容器。
 

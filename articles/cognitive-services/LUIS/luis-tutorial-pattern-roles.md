@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2c3705d28d6496c3d20999231de98572bc26e3be
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160241"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886154"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
 
@@ -372,11 +372,11 @@ ms.locfileid: "47160241"
 
 ## <a name="hierarchical-entities-versus-roles"></a>分层实体与角色
 
-在[分层教程](luis-quickstart-intent-and-hier-entity.md)中，“MoveEmployee”意向检测到将现有员工从一栋建筑物或办公楼搬到另一栋的时机。 示例话语具有源位置和目标位置，但未使用角色。 相反，源位置和目标位置是分层实体的子级。 
+在[分层教程](luis-quickstart-intent-and-hier-entity.md)中，“MoveEmployee”意向检测到将现有员工从一栋建筑物或办公楼搬到另一栋的时机。 示例话语具有原位置和目的地，但未使用角色。 相反，源位置和目标位置是分层实体的子级。 
 
 在本教程中，人力资源应用会检测有关将新员工从一个城市调到另一个城市的话语。 这两种类型的话语相同，但通过不同的 LUIS 功能来解析。
 
-|教程|示例陈述|源位置和目标位置|
+|教程|示例陈述|原位置和目的地|
 |--|--|--|
 |[分层（无角色）](luis-quickstart-intent-and-hier-entity.md)|将 Jill Jones 从“a-2349”调到“b-1298”|a-2349、b-1298|
 |本教程（含角色）|将 Billy Patterson 从“Yuma”调到“Denver”。|Yuma、Denver|

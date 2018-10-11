@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768203"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870332"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -36,8 +36,8 @@ Contoso 在美国、加拿大和欧洲各地运行着一个公开展示网站。
 使用异地复制功能之前，Contoso 已在美国西部拥有基于美国的注册表，在西欧拥有其他注册表。 为了向这些不同的区域提供服务，开发团队必须将映像推送到两个不同的注册表。
 
 ```bash
-docker push contoso.azurecr.io/pubic/products/web:1.2
-docker push contosowesteu.azurecr.io/pubic/products/web:1.2
+docker push contoso.azurecr.io/public/products/web:1.2
+docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
 ![从多个注册表拉取](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*从多个注册表拉取*
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 969f8cdf7b8cc406cd98bb5a4f30b5c395b0e8fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d77353b510dbeb18e96e2d8313e9010c04e25a7
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989356"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077927"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -84,7 +84,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
     |---------|---------|
     |名称     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
     |资源组     |   使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
-    |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。        |
+    |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。        |
     |存储帐户     | 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。        |
     
 7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 单击“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 单击“下一步”。

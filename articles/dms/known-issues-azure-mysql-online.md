@@ -3,20 +3,20 @@ title: 有关联机迁移到 Azure Database for MySQL 时存在的已知问题/�
 description: 了解在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制。
 services: database-migration
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: d1d1483edd31702b1b9f14eaf4aba1a3f38ed142
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 10/09/2018
+ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889048"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884504"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>联机迁移到 Azure DB for MySQL 时存在的已知问题/迁移限制
 

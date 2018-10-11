@@ -1,21 +1,21 @@
 ---
-title: 什么是必应自动建议？ | Microsoft Docs
+title: 什么是必应自动建议？
+titlesuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 6F4AFEDA-71A7-48C1-B3E2-D0D430428CDC
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
 ms.topic: overview
 ms.date: 09/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 76e509289f495e09c367af926fd26e0581b6e7c6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 18658af90bd1ff71e84a5b2332db7e30bc23f69a
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091100"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829386"
 ---
 # <a name="what-is-bing-autosuggest"></a>什么是必应自动建议？
 

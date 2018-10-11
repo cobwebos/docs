@@ -2,16 +2,17 @@
 title: 使用 Azure Site Recovery 执行物理服务器到 Azure 的复制的体系结构 | Microsoft Docs
 description: 本文概述了使用 Azure Site Recovery 服务将本地物理服务器复制到 Azure 所需使用的组件和体系结构
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: d4c0b3b8ef778a01c365d34734019d2fa11a2343
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 15e8e9ce7b12585f7ea89a0440fdb93cfb171feb
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920928"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077033"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理服务器到 Azure 复制体系结构
 

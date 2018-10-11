@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d72f1b986671bfab1d79772ac50935918da7e681
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8177808fd4d666ea04b1bc097f261c7643931704
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963264"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885029"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -25,7 +25,7 @@ ms.locfileid: "46963264"
 与支持团队沟通时，请务必提供 Workbench 应用的版本号。 在 Windows 上，可以通过单击“帮助”菜单并选择“关于 Azure ML Workbench”找到版本号。 在 macOS 上，可以单击 **Azure ML Workbench** 菜单，然后选择“关于 Azure ML Workbench”。
 
 ## <a name="machine-learning-msdn-forum"></a>机器学习 MSDN 论坛
-我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 是 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。 
+我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 是 [https://aka.ms/aml-forum-service](https://aka.ms/aml-forum-service)。 
 
 ## <a name="gather-diagnostics-information"></a>收集诊断信息
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：

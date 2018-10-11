@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 7cb78647b8ae17e066f05acc32668d5c0c8b4ff5
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.component: ''
+ms.openlocfilehash: 6bd195b8be558cfcfda10a750fbfe91079c6b094
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127671"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043530"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -195,7 +195,7 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a. 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
     b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 

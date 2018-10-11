@@ -5,16 +5,16 @@ description: 了解如何使用认知服务语音 SDK 在浏览器的 JavaScript
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b925a382a32f320c5d6906bc3fa23f046d260cb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997431"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883646"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>快速入门：使用认知服务语音 SDK 在浏览器的 JavaScript 中识别语音
 
@@ -36,6 +36,8 @@ ms.locfileid: "46997431"
 新建空文件夹。 如果要在 web 服务器上承载示例，请确保 web 服务器可访问文件夹。
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>将 JavaScript 的语音 SDK 解压缩到文件夹
+
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 将语音 SDK 作为 [.zip 包](https://aka.ms/csspeech/jsbrowserpackage)下载，并将其解压缩到新建文件夹。 这应该会解压缩两个文件，即 `microsoft.cognitiveservices.speech.sdk.bundle.js` 和 `microsoft.cognitiveservices.speech.sdk.bundle.js.map`。
 后一个文件是可选的，可用于调试到 SDK 代码（如有必要）。

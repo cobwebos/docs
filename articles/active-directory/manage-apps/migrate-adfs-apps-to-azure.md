@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296459"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903022"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -151,7 +151,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 - 名。
 - 姓。
 - 充当 SAML **NameID** 的备用属性，包括 Azure AD 邮件属性、邮件前缀、雇员 ID、扩展属性 1-15，或者本地 **SamAccountName** 属性。 有关详细信息，请参阅[编辑 NameIdentifier 声明](../develop/active-directory-saml-claims-customization.md)。
-- 自定义声明。 有关受支持的声明映射的信息，请参阅 [Azure Active Directory 中的声明映射](../active-directory-claims-mapping.md)和[在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
+- 自定义声明。 有关受支持的声明映射的信息，请参阅 [Azure Active Directory 中的声明映射](../develop/active-directory-claims-mapping.md)和[在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
 
 除了自定义声明和 **NameID** 元素，在迁移过程中需要在 Azure AD 中执行其他配置步骤的配置包括：
 - AD FS 中的自定义授权或多重身份验证规则。 可以使用 [Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)功能配置它们。
@@ -171,7 +171,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 - 令牌功能中的声明：
     - 以声明的方式颁发本地组名称。
     - 除 Azure AD 之外的存储中的声明。
-    - 复杂的声明颁发转换规则。 有关受支持的声明映射的信息，请参阅 [Azure Active Directory 中的声明映射](../active-directory-claims-mapping.md)和[在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
+    - 复杂的声明颁发转换规则。 有关受支持的声明映射的信息，请参阅 [Azure Active Directory 中的声明映射](../develop/active-directory-claims-mapping.md)和[在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
     - 以声明方式颁发目录扩展。
     - **NameID** 格式的自定义规范。
     - 颁发多值属性。

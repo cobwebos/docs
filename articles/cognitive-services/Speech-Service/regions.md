@@ -4,16 +4,16 @@ description: 语音服务区域的参考。
 services: cognitive-services
 author: mahilleb-msft
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 8485caeff3a7c96ed8f7403befac0026fae16e90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 01c76d80d6b2fd64165b126df01c391d7e18292f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987554"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887541"
 ---
 # <a name="regions-of-the-speech-service"></a>语音服务区域
 

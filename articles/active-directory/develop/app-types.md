@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 3ac97ac5e9ae0a7059d9c74c5918212f1ce02790
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959948"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816338"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 了解可以开发两类与 Azure AD 集成的应用程序时，设置工作将变得更为清晰：
 
 * **单租户应用程序** - 单租户应用程序预定在单个组织中使用。 它们通常是由企业开发人员编写的业务线 (LoB) 应用程序。 单租户应用程序只需要供单个目录中的用户进行访问，因此，只需要将其设置在单个目录中。 这些应用程序通常由组织中的开发人员进行注册。
-* **多租户应用程序** - 多租户应用程序预定在许多组织中使用，而不仅是在单个组织中使用。 它们通常是由独立软件供应商 (ISV) 编写的软件即服务 (SaaS) 应用程序。 多租户应用程序需要设置在将使用它们的每个目录中，需要经过用户或管理员许可才能注册它们。 当在目录中注册应用程序并向其授予对 Graph API 或者另一可能的 Web API 的访问权限时，此许可过程即已开始。 当其他组织的用户或管理员注册使用应用程序时，会向他们显示一个对话框，其中显示了应用程序要求的权限。 然后，用户或管理员可以许可应用程序的要求，这会向应用程序授予对指定数据的访问权限，并最终在其目录中注册该应用程序。 有关详细信息，请参阅[许可框架概述](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework)。
+* **多租户应用程序** - 多租户应用程序预定在许多组织中使用，而不仅是在单个组织中使用。 它们通常是由独立软件供应商 (ISV) 编写的软件即服务 (SaaS) 应用程序。 多租户应用程序需要设置在将使用它们的每个目录中，需要经过用户或管理员许可才能注册它们。 当在目录中注册应用程序并向其授予对 Graph API 或者另一可能的 Web API 的访问权限时，此许可过程即已开始。 当其他组织的用户或管理员注册使用应用程序时，会向他们显示一个对话框，其中显示了应用程序要求的权限。 然后，用户或管理员可以许可应用程序的要求，这会向应用程序授予对指定数据的访问权限，并最终在其目录中注册该应用程序。 有关详细信息，请参阅[许可框架概述](consent-framework.md)。
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>开发单租户应用或多租户应用时的其他注意事项
 

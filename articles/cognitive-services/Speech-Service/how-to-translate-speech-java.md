@@ -5,16 +5,16 @@ description: 展示了如何使用适用于 Java 的语音 SDK 转换语音。
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: b08d9df3e0af82476582e342e42f98c41cff9dd3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 098410f94d4218bed5718e77feb3c4d82b96b3cb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974334"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887626"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-java"></a>使用适用于 Java 的认知服务语音 SDK 翻译语音
 
