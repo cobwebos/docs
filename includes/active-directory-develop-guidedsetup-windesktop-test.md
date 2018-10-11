@@ -1,3 +1,26 @@
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843340"
+---
 ## <a name="test-your-code"></a>测试代码
 
 要在 Visual Studio 中运行项目，请选择 **F5**. 随即显示应用程序 MainWindow，如下所示：
@@ -16,7 +39,7 @@
 ### <a name="view-application-results"></a>查看应用程序结果
 在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenAsync` 或 `AcquireTokenSilentAsync` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
 
-|属性  |格式  |说明 |
+|属性  |格式  |Description |
 |---------|---------|---------|
 |**Name** |用户全名 |用户的名字和姓氏。|
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|

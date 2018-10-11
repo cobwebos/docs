@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 3c1d791b8c0478715b4ffa93cd7dfa43f9be4586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 31049e24687192b1ea1030a7180299f57bc76771
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366039"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246324"
 ---
 # <a name="use-the-anomaly-finder-api-with-curl"></a>将异常查找器 API 与 cURL 配合使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常查找器 API 与 cURL 配合使用，从而获取时序数据异常结果。
 

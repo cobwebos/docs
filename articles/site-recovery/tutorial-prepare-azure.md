@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915963"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078981"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -23,7 +23,7 @@ ms.locfileid: "37915963"
 
 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 
 
-本文介绍如何在要将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行以下操作：
+本文介绍如何在要将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 验证 Azure 帐户是否具有复制权限。

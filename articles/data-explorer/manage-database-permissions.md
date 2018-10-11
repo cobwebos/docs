@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954007"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868269"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>管理 Azure 数据资源管理器数据库权限
 
@@ -31,7 +31,6 @@ Azure 数据资源管理器具有以下角色：
 |数据库用户              |可以读取数据库中的所有数据和元数据。 此外，他们可以创建表（成为该表的表管理员）和数据库中的函数。|
 |数据库查看器            |可以读取数据库中的所有数据和元数据。|
 |数据库引入器          |可以将数据提取到数据库中的所有现有表中，但不能查询数据。|
-|数据库无限制查看器|可以查询启用了“RestrictedViewAccess”策略的表。 无法查询其他表。|
 |数据库监视器           |可以在数据库及其子实体的上下文中执行“.show ...”命令。|
 |表管理员                |可以在特定表的范围内执行任何操作。 |
 |表引入器             |可以在特定表的范围内引入数据，但不能查询数据。|

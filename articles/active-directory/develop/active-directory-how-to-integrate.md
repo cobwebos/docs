@@ -17,14 +17,15 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cde2706db255746293ddc29c6d5bdd31d970e535
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495333"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901543"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
+
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Azure Active Directory 为组织的云应用程序提供企业级标识管理。 Azure AD 集成可以简化用户登录体验，并帮助应用程序符合 IT 策略。

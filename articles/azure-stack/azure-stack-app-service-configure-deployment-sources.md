@@ -3,7 +3,7 @@ title: 为 Azure Stack 上的应用服务配置部署源 | Microsoft 文档
 description: 服务管理员如何为 Azure Stack 上的应用服务配置部署源（Git、GitHub、BitBucket、DropBox 和 OneDrive）
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 4945ab0b8da961fc5739388d83f7c645f40e510d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fdb91f8989bced3d148c858f131e7d78f1d9f51c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093055"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077131"
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*

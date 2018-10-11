@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 7e4ef6fd9dff0da061eb526e87973ba9616da22a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbcea97918d377a6d40b95fe61592f7a79e8f5f4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981172"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883782"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-c"></a>使用适用于 C++ 的语音 SDK 从语音中识别意向
 

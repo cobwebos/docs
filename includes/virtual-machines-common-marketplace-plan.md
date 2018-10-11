@@ -5,15 +5,15 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 02/28/2018
+ms.date: 09/28/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: a3c5290eb0179fe5842c495c2e08f22580d02bda
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f9974aae1e5996ffeaa6cde690a5e10ccba4cc32
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38940820"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48019006"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>部署具有市场条款的映像
 

@@ -3,7 +3,7 @@ title: 如何更新 Azure Stack 套餐和计划 | Microsoft Docs
 description: 本文介绍如何查看和修改现有的 Azure Stack 套餐和计划。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.custom: mvc
 ms.date: 07/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: a35ba993e6fd1162fa4a18bc0d6bc9351fe7dfa2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358246"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076784"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack 附加计划
 
-Azure Stack 操作员创建加载项计划来修改[*基本计划*](azure-stack-create-plan.md)当你想要提供其他服务或扩展*计算机*，*存储*，或*网络*超出基本计划初始产品/服务的配额。 加载项计划修改基本计划，用户可以选择要订阅的可选扩展。 
+当希望提供附加服务或将“计算机”、“存储”或“网络”配额的范围扩展到基本计划初始套餐之外时，Azure Stack 操作员可以创建附加计划来修改[*基本计划*](azure-stack-create-plan.md)。 附加计划对基本计划进行修改，是用户可以选择订阅的可选扩展。 
 
-有些的时候是最佳的所有内容组合在单个计划。 其他情况下您可能想先制定一个基本计划，然后使用附加计划提供的其他服务。 例如，可以通过基本计划提供 IaaS 服务，通过附加计划提供所有 PaaS 服务。
+有些情况下，将所有内容组合到单个计划中是最好的。 另一些情况下，你可能希望使用基本计划，然后通过使用附加计划来提供附加服务。 例如，可以通过基本计划提供 IaaS 服务，通过附加计划提供所有 PaaS 服务。
 
-若要使用加载项计划的另一个原因是帮助用户留意其资源使用情况。 若要执行此操作，无法开始包含相对较小的配额 （具体取决于所需的服务） 的基本计划。 然后，在用户达到容量，它们将会向你发出警报，它们已使用基于其计划分配给资源的分配。 在这里，用户然后可以选择提供了其他资源的加载项计划。
+使用附加计划的另一个原因是帮助用户记住其资源使用情况。 若要执行此操作，可以从一个包括相对较小的配额（取决于所需的服务）的基本计划开始。 然后，当用户达到容量时，将会向用户发送通知，指出他们已消耗完了根据其已分配计划分配的资源。 从那里，用户可以选择一个提供了附加资源的附加计划。
 
 > [!NOTE]
 > 如果不希望使用加载项计划来扩展配额，你还可以选择[编辑原始配置的配额](azure-stack-quota-types.md#to-edit-a-quota)。 
@@ -49,7 +49,7 @@ Azure Stack 操作员创建加载项计划来修改[*基本计划*](azure-stack-
    
     ![](media/create-add-on-plan/2.PNG)
 
-5. 选择要添加的计划（ 在此示例中，该计划称为**密钥保管库计划**。 选择计划之后, 单击**选择**将计划添加到产品/服务。 系统会发送通知，告知你计划已成功添加到套餐中。
+5. 选择要添加的计划（ 在此示例中，计划名为“密钥保管库计划”。 选择计划后，单击“选择”将计划添加到套餐。 系统会发送通知，告知你计划已成功添加到套餐中。
    
     ![](media/create-add-on-plan/3.PNG)
 
@@ -58,5 +58,4 @@ Azure Stack 操作员创建加载项计划来修改[*基本计划*](azure-stack-
     ![](media/create-add-on-plan/4.PNG)
 
 ## <a name="next-steps"></a>后续步骤
-
-  [创建产品/服务](azure-stack-create-offer.md)
+[创建产品/服务](azure-stack-create-offer.md)

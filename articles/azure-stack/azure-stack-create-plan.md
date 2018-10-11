@@ -3,7 +3,7 @@ title: 在 Azure Stack 中创建计划 | Microsoft Docs
 description: 作为云管理员，创建一个让订阅方预配虚拟机的计划。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0795c3d833133e2881f3c1ba0ae56584a229a31f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721239"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077556"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>在 Azure Stack 中创建计划
 

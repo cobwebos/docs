@@ -4,17 +4,16 @@ description: 使用 Azure 门户创建和管理 Azure Database for PostgreSQL VN
 services: postgresql
 author: mbolz
 ms.author: mbolz
-manager: kfile
-editor: jasonwhowell
-ms.service: postgresql-database
-ms.topic: article
+ms.reviewer: jasonwhowell
+ms.service: postgresql
+ms.topic: conceptual
 ms.date: 08/15/2018
-ms.openlocfilehash: af5df507bd7a825ddfaaa7518691cb5fbec34d47
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3884b594c903c234ce83c0752f92ddc34b24cd5a
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145492"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239313"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for PostgreSQL VNet 服务终结点和 VNet 规则
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到你的 Azure Database for PostgreSQL 服务器。 有关 Azure Database for PostgreSQL VNet 服务终结点（包括限制）的概述，请参阅 [Azure Database for PostgreSQL Server VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for PostgreSQL 的所有支持区域中，VNet 服务终结点均可用。

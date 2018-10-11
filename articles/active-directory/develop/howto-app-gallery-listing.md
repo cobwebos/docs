@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980264"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815201"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出应用程序
 
@@ -39,7 +39,7 @@ ms.locfileid: "46980264"
 
 - 对于联合应用程序（Open ID 和 SAML/WS-Fed），应用程序必须支持 SaaS 模型才能在 Azure AD 库中列出。 企业库应用程序应支持多个客户配置，而不是任何特定客户。
 
-- 对于 Open ID Connect，应用程序应该是多租户的，并且应为应用程序正确实现 [Azure AD 许可框架](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework)。 用户可以将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
+- 对于 Open ID Connect，应用程序应该是多租户的，并且应为应用程序正确实现 [Azure AD 许可框架](consent-framework.md)。 用户可以将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
 
 - 对于 SAML 2.0/WS-Fed，应用程序需要能够以 SP 或 IDP 模式执行 SAML/WS-Fed SSO 集成。 请确保此功能在提交请求之前工作正常。
 

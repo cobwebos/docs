@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130669"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044291"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -29,7 +29,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 ## <a name="creating-a-computer-group"></a>创建计算机组
 可以使用下表中的任一方法在 Log Analytics 中创建计算机组。  在以下各节中提供了每个方法的详细信息。 
 
-| 方法 | 说明 |
+| 方法 | Description |
 |:--- |:--- |
 | 日志搜索 |创建将返回计算机列表的日志搜索。 |
 | 日志搜索 API |使用日志搜索 API 基于日志搜索结果以编程方式创建计算机组。 |
@@ -46,7 +46,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 下表介绍了用于定义计算机组的属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:---|:---|
 | 显示名称   | 要在门户中显示的搜索的名称。 |
 | 类别       | 在门户中对搜索进行组织的类别。 |
@@ -123,7 +123,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 ## <a name="computer-group-records"></a>计算机组记录
 会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 Log Analytics 工作区中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志搜索为计算机组创建记录。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |

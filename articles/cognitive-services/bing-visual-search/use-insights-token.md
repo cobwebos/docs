@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2843097d8fa0deafe7dda13fab63856009a17836
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227582"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887339"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
 

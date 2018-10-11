@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965273"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784769"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -211,7 +211,7 @@ ms.locfileid: "46965273"
    ![“添加操作组”页](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. 若要创建操作组，请选择“确定”。
 
-可以在创建的[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)和[准实时警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal)中使用此操作组。
+可以在创建的[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)和[准实时警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)中使用此操作组。
 
 ## <a name="classic-alert"></a>经典警报
 
@@ -231,4 +231,4 @@ ms.locfileid: "46965273"
 * 有关使用 Webhook 启动自动化 Runbook 的详细信息，请参阅[从 Webhook 启动 Runbook](automation-webhooks.md)。
 * 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
 * 若要了解如何创建活动日志警报，请参阅[创建活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)。
-* 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal)。
+* 若要了解如何创建准实时警报，请参阅[在 Azure 门户中创建警报规则](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json)。

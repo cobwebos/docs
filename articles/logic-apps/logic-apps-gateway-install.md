@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842441"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855419"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -101,7 +101,7 @@ ms.locfileid: "43842441"
 
 ## <a name="install-data-gateway"></a>安装数据网关
 
-1. [在本地计算机上下载、保存并运行网关安装程序](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1. [在本地计算机上下载、保存并运行网关安装程序](https://aka.ms/on-premises-data-gateway-installer)。
 
 2. 接受默认安装路径，或者在计算机上指定网关的安装位置。
 
@@ -182,7 +182,7 @@ ms.locfileid: "43842441"
 
 1. 在计算机上的“控制面板”中，转到“程序和功能”。 在程序列表中，依次选择“本地数据网关”、“卸载”。
 
-2. [重新安装本地数据网关](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+2. [重新安装本地数据网关](https://aka.ms/on-premises-data-gateway-installer)。
 
 3. 安装程序打开后，使用之前用于安装网关的工作或学校帐户登录。
 
@@ -211,7 +211,7 @@ ms.locfileid: "43842441"
 > [!NOTE]
 > 该命令只测试网络连接以及与 Azure 服务总线之间的连接。 该命令不会针对网关或者加密和存储凭据的网关云服务执行任何操作。 
 >
-> 此外，该命令仅适用于 Windows Server 2012 R2 或更高版本，以及 Windows 8.1 或更高版本。 在早期的 OS 版本上，可以使用 Telnet 来测试连接。 详细了解 [Azure 服务总线和混合解决方案](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)。
+> 此外，该命令仅适用于 Windows Server 2012 R2 或更高版本，以及 Windows 8.1 或更高版本。 在早期的 OS 版本上，可以使用 Telnet 来测试连接。 详细了解 [Azure 服务总线和混合解决方案](../service-bus-messaging/service-bus-messaging-overview.md)。
 
 结果应类似于此示例，其中的 **TcpTestSucceeded** 设置为 **True**：
 
@@ -232,7 +232,7 @@ TcpTestSucceeded       : True
 
 ## <a name="configure-ports"></a>配置端口
 
-网关与 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)建立出站连接，并在出站端口上通信：TCP 443（默认值）、5671、5672、9350 到 9354。 网关不需要入站端口。 详细了解 [Azure 服务总线和混合解决方案](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)。
+网关与 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)建立出站连接，并在出站端口上通信：TCP 443（默认值）、5671、5672、9350 到 9354。 网关不需要入站端口。 详细了解 [Azure 服务总线和混合解决方案](../service-bus-messaging/service-bus-messaging-overview.md)。
 
 网关使用以下完全限定的域名：
 

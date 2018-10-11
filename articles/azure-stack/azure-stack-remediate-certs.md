@@ -3,7 +3,7 @@ title: 修复 Azure Stack 的证书问题 | Microsoft Docs
 description: 使用 Azure Stack 就绪性检查器查看和修复证书问题。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 6bc7839e7db0022beaa9b31c390655f31d1d52c0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053459"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078624"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>修复 Azure Stack PKI 证书的常见问题
 可以通过本文中的信息来了解并解决 Azure Stack PKI 证书的常见问题。 可以使用 Azure Stack 就绪性检查器工具来[验证 Azure Stack PKI 证书](azure-stack-validate-pki-certs.md)，以便发现问题。 此工具检查的目的是确保证书满足有关 Azure Stack 部署和 Azure Stack 机密轮换的 PKI 要求，结果记录在 [report.json 文件](azure-stack-validation-report.md)中。  

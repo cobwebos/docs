@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 820caf1ef1b5a92ccea066ef1b5fc8e20737ef21
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283565"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870413"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
 
@@ -47,7 +47,7 @@ Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRou
 
 1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
-  ```powershel
+  ```powershell
   Connect-AzureRmAccount
   ```
 2. 检查该帐户的订阅。

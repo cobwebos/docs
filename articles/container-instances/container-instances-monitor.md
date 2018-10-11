@@ -2,18 +2,17 @@
 title: 监视 Azure 容器实例中的容器
 description: 详细介绍了如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2018
-ms.author: marsma
-ms.openlocfilehash: 6107aee0a4d7497e90186e0ea4bda6cd2712820d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: danlep
+ms.openlocfilehash: ef9a710694c21dde934d1ce1454ea355d7034d72
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979601"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853873"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
 

@@ -2,21 +2,21 @@
 title: 使用 Azure 数据库迁移服务将 SQL Server 联机迁移到 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 SQL Server 到 Azure SQL 数据库的联机迁移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: b4cbc7fc7e031fcbd25229792488dbb4002ea23e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 10/10/2018
+ms.openlocfilehash: cbc30d1a70d7a333f56df6f0a796d3a8e6532fe8
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340205"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068717"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-online-using-dms"></a>使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: b0a02d2e5e0a1f1765098e1b1e258424b6443878
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039564"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870173"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>从 Azure Cloud Shell 获取 LUIS 服务的使用情况数据
 通过 Azure 门户可使用 PowerShell cmdlet 处理 LUIS 资源。 
@@ -23,7 +23,7 @@ ms.locfileid: "47039564"
 使用这些 cmdlet 可以[创建](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS 订阅、获取有关订阅的信息（包括[使用情况](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)）和[删除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)订阅。 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell 存储帐户和身份验证
-若要在 Azure 门户 [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) 中使用 PowerShell，需要具有 Azure 存储帐户。 如果没有[存储帐户](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share)，系统将提示你创建一个。 存储帐户允许你在 Cloud Shell 中保存PowerShell 脚本。  
+若要在 Azure 门户 [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) 中使用 PowerShell，需要具有 Azure 存储帐户。 如果没有[存储帐户](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)，系统将提示你创建一个。 存储帐户允许你在 Cloud Shell 中保存PowerShell 脚本。  
 
 你还需要在 cloud shell 中向 Azure 进行身份验证才能访问任何资源。 
 

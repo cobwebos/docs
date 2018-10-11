@@ -1,21 +1,21 @@
 ---
-title: 什么是必应实体搜索？ | Microsoft Docs
+title: 什么是必应实体搜索？
+titlesuffix: Azure Cognitive Services
 description: 了解如何使用必应实体搜索 API 搜索 Web 中的实体和场所。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 0B54E747-61BF-42AA-8788-E25D63F625FC
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 275430bc6ee8f935978243e61f68713974648189
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008104"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813594"
 ---
 # <a name="what-is-bing-entity-search"></a>什么是必应实体搜索？
 

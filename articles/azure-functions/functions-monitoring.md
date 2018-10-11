@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966837"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902699"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -317,9 +317,9 @@ Application Insights 具有[采样](../application-insights/app-insights-samplin
 
 ### <a name="ilogger"></a>ILogger
 
-在函数中使用 [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 通过使用 `TraceWriter` 创建的日志会转到 Application Insights，但借助 `ILogger` 可执行[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+在函数中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 通过使用 `TraceWriter` 创建的日志会转到 Application Insights，但借助 `ILogger` 可执行[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-使用 `ILogger` 对象，可以调用 `Log<level>` [ILogger 上的扩展方法](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loggerextensions#Methods_)来创建日志。 例如，下面的代码编写类别为“Function”的 `Information` 日志。
+使用 `ILogger` 对象，可以调用 `Log<level>` [ILogger 上的扩展方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 例如，下面的代码编写类别为“Function”的 `Information` 日志。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)

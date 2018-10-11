@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577180"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902920"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -162,10 +162,10 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 >[!NOTE]
 >若要使用自定义声明，还必须定义自定义策略并将其分配给应用程序。  此策略应包括所有必需的自定义属性。
 >
->可以通过 PowerShell、Azure AD Graph Explorer 或 MS Graph 来完成策略定义和分配。  如果在 PowerShell 中执行此操作，可能需要先使用 `New-AzureADPolicy ` 新建策略，然后使用 `Set-AzureADServicePrincipalPolicy` 将其分配给应用程序。  有关详细信息，请参阅 [Azure AD 策略文档](../active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+>可以通过 PowerShell、Azure AD Graph Explorer 或 MS Graph 来完成策略定义和分配。  如果在 PowerShell 中执行此操作，可能需要先使用 `New-AzureADPolicy ` 新建策略，然后使用 `Set-AzureADServicePrincipalPolicy` 将其分配给应用程序。  有关详细信息，请参阅 [Azure AD 策略文档](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
 ### <a name="optional---use-a-custom-claim"></a>可选 - 使用自定义声明
-若要生成应用程序，请使用自定义声明并包括其他字段，请确保还[创建了自定义声明映射策略并将其分配给应用程序](../active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+若要生成应用程序，请使用自定义声明并包括其他字段，请确保还[创建了自定义声明映射策略并将其分配给应用程序](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>下载 PingAccess 并配置应用
 

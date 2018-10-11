@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198224"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240133"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
 自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 不支持基本 SKU。
@@ -76,7 +76,7 @@ SA 生存期是本地规范，不需匹配。
 | 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |
-| 20                        | ECP384                   | ECP284       | 384 位 ECP    |
+| 20                        | ECP384                   | ECP384       | 384 位 ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048 位 MODP  |
 |                           |                          |              |                |
 

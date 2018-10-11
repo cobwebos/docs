@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: 92a5a90424de56b5cef97b790c6f8b3685fa833f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9c88ea7433232b62c006c908cd2768d318d36d43
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410164"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854042"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 
@@ -58,7 +58,6 @@ ms.locfileid: "47410164"
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

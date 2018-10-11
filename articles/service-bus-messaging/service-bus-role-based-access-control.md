@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: spelluru
-ms.openlocfilehash: 5f8c35be2a4d9605fff7c4c0f6d547ad28723b7b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0da4fdf5afc0cbe76e19260b486aa9112d0d74c8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407240"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854314"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -80,7 +80,6 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题。
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

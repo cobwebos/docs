@@ -3,7 +3,7 @@ title: 差异和注意事项的 Azure Stack 中的托管磁盘 |Microsoft Docs
 description: 使用 Azure Stack 中的托管磁盘时，了解有关差异和注意事项。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 26f8880d01da00780317ee2a6f66ee5007576a50
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2870bf8911c48ac4cbb442278f172b37a474152b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347658"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078047"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
 本文汇总了 Azure Stack 托管磁盘和 azure 托管磁盘的已知的差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。

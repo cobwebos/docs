@@ -3,7 +3,7 @@ title: 使用 ExpressRoute 将 Azure Stack 连接到 Azure
 description: 了解如何使用 ExpressRoute 将 Azure Stack 中的虚拟网络连接到 Azure 中的虚拟网络。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720491"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078692"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack 连接到 Azure
 
@@ -345,7 +345,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 若要将 ExpressRoute 线路链接到中心 VNet，请遵循[将虚拟网络连接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)中的步骤。
 
-### <a name="peer-the-vnets"></a>在 VNet 之间建立对等互连
+### <a name="peer-the-vnets"></a>将 VNet 对等互连
 
 根据[使用 Azure 门户创建虚拟网络对等互连](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md)中的步骤，在中心与分支 VNet 之间建立对等互连。 配置 VNet 对等互连时，请务必使用以下选项：
 

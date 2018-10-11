@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216253"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867031"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -58,11 +58,11 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>将触发器属性映射至管道参数
 
-当事件触发器为特定 blob 触发时，事件会将该 blob 的文件夹路径和文件名捕获至属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline.parameters.parameterName` 表达式访问由触发器捕获的值。
+当事件触发器为特定 blob 触发时，事件会将该 blob 的文件夹路径和文件名捕获至属性 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 中。 若要在管道中使用这些属性的值，必须将这些属性映射至管道参数。 将这些属性映射至参数后，可以通过管道中的 `@pipeline().parameters.parameterName` 表达式访问由触发器捕获的值。
 
 ![将属性映射至管道参数](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-例如，在前面的屏幕截图中。 如果在存储帐户中创建了以 `.csv` 结尾的 blob 路径，则会触发该触发器。 所以，无论在存储帐户的任何位置创建了扩展名为 `.csv` 的 blob，`folderPath` 和 `fileName` 属性都会捕获这个新建的 blob 的位置。 例如，`@triggerBody().folderPath` 的值类似于 `/containername/foldername/nestedfoldername`，`@triggerBody().fileName` 的值类似于 `filename.csv`。 该示例将这些值映射至管道参数 `sourceFolder` 和 `sourceFile`。 它们可以分别作为 `@pipeline.parameters.sourceFolder` 和 `@pipeline.parameters.sourceFile` 用于整个管道。
+例如，在前面的屏幕截图中。 如果在存储帐户中创建了以 `.csv` 结尾的 blob 路径，则会触发该触发器。 所以，无论在存储帐户的任何位置创建了扩展名为 `.csv` 的 blob，`folderPath` 和 `fileName` 属性都会捕获这个新建的 blob 的位置。 例如，`@triggerBody().folderPath` 的值类似于 `/containername/foldername/nestedfoldername`，`@triggerBody().fileName` 的值类似于 `filename.csv`。 该示例将这些值映射至管道参数 `sourceFolder` 和 `sourceFile`。 它们可以分别作为 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile` 用于整个管道。
 
 ## <a name="json-schema"></a>JSON 架构
 

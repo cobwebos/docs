@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b09ebbb358b909c98df4eb05154c29b4b3cb7ee9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166395"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888248"
 ---
 # <a name="tutorial-3-add-common-utterance-formats"></a>教程 3：添加常见话语格式
 

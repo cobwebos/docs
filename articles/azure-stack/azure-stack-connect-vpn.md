@@ -3,7 +3,7 @@ title: 使用 VPN 将 Azure Stack 连接到 Azure
 description: 如何使用 VPN 将 Azure Stack 中的虚拟网络连接到 Azure 中的虚拟网络。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bd36f423fe2c7acb05b805154da8f6e6c35f9455
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: dcbe222d8dd3d3c658e5778fdc4bc1cc01b5c12d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718128"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078879"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>使用 VPN 将 Azure Stack 连接到 Azure
 

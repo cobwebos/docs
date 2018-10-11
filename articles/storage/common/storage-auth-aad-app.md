@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577698"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816372"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>从 Azure 存储应用程序使用 Azure Active Directory 验证身份（预览版）
 
@@ -25,10 +25,7 @@ ms.locfileid: "39577698"
 
 有关 OAuth 2.0 代码授权流的概述，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v1-protocols-oauth-code.md)。
 
-> [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
->
-> 预览期间，RBAC 角色分配可能需要长达五分钟的时间进行传播。
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
@@ -36,7 +33,7 @@ ms.locfileid: "39577698"
 
 注册应用程序时，需要向 Azure AD 提供关于应用程序的信息。 Azure AD 随后会提供客户端 ID（也称为*应用程序 ID*）。在运行时，可以使用该 ID 将应用程序与 Azure AD 关联。 若要详细了解客户端 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)。
 
-若要注册 Azure 存储应用程序，请遵循[将应用程序与 Azure Active Directory 集成](../../active-directory/active-directory-integrating-applications.md)的[添加应用程序](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application)部分中的步骤。 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 该值不需要是真实的终结点。
+若要注册 Azure 存储应用程序，请遵循[将应用程序与 Azure Active Directory 集成](../../active-directory/active-directory-integrating-applications.md)的[添加应用程序](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)部分中的步骤。 如果将应用程序注册为本机应用程序，可以为**重定向 URI** 指定任何有效的 URI。 该值不需要是真实的终结点。
 
 ![显示如何向 Azure AD 注册存储应用程序的屏幕截图](./media/storage-auth-aad-app/app-registration.png)
 
@@ -176,7 +173,7 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[通过 RBAC 管理存储数据访问权限（预览）](storage-auth-aad-rbac.md)。
-- 若要了解如何配合使用托管服务标识和 Azure 存储，请参阅[使用 Azure AD 通过 Azure 托管服务标识进行身份验证（预览版）](storage-auth-aad-msi.md)。
+- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure 托管标识（预览）验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。
 - 若要了解如何使用 Azure AD 标识登录 Azure CLI 和 PowerShell，请参阅[使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）](storage-auth-aad-script.md)。
 - 有关适用于 Azure Blob 和队列的 Azure AD 集成的其他信息，请参阅 Azure 存储团队博客文章[宣布推出适用于 Azure 存储的 Azure AD 身份验证预览版](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)。
 

@@ -1,20 +1,21 @@
 ---
-title: 项目答案搜索概述 - Microsoft 认知服务 | Microsoft Docs
+title: 什么是项目答案搜索？
+titlesuffix: Azure Cognitive Services
 description: 项目答案搜索简介。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: overview
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d87cf1390970d2c815b94bcaee7e07c19bc03cce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366306"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883714"
 ---
 # <a name="what-is-project-answer-search"></a>什么是项目答案搜索？
 项目答案搜索 API 使用 Bing v7 终结点获取疑问式询问的答案。 “地球的周长是多少？”此类问题 返回带有事实信息的答案。  对人员、地点或事物的查询则返回与查询识别的实体相关的信息。 这些方案在对话机器人、消息应用、读取器等应用程序中十分有用。  
@@ -251,7 +252,7 @@ JSON Response:
 
 项目答案搜索响应包含第三方拥有的信息。 有责任确保使用适当，例如通过遵守用户体验可能依据的任何 Creative Commons 许可证要求。  
   
-如果答案或结果包括 `contractualRules`、`attributions` 或 `provider` 字段，则必须对数据进行归属。 如果答案不包含这些字段中的任意一个，则无需进行归属。 如果答案包括 `contractualRules` 字段以及 `attributions` 和/或 `provider` 字段，则必须使用合同规则对数据进行归属。  
+如果答案或结果包含 `contractualRules`、`attributions` 或 `provider` 字段，则必须对数据归类。 如果答案不包含这些字段中的任意一个，则无需进行归属。 如果答案包括 `contractualRules` 字段以及 `attributions` 和/或 `provider` 字段，则必须使用合同规则对数据进行归属。  
   
 以下示例显示了包括 MediaAttribution 合同规则的实体和包括 `provider` 字段的图像。 MediaAttribution 规则将图像识别为规则的目标，因此将忽略图像的 `provider` 字段，改用 MediaAttribution 规则提供属性。  
   
@@ -285,7 +286,7 @@ JSON Response:
 如果合同规则包括 `targetPropertyName` 字段，则该规则仅适用于目标字段。 否则，该规则适用于包含 `contractualRules` 字段的父对象。  
   
   
-在以下示例中，`LinkAttribution` 规则包括 `targetPropertyName` 字段，因此该规则适用于 `description` 字段。 对于适用于特定字段的规则，必须包括紧接目标数据的一行，其中目标数据包含指向提供程序网站的超链接。 例如，要对描述进行归属，请包括紧接描述文本的一行，其中描述文本包含指向提供程序网站上数据的超链接，在这种情况下创建指向 en.wikipedia.org 的链接。  
+在以下示例中，`LinkAttribution` 规则包含 `targetPropertyName` 字段，因此该规则适用于 `description` 字段。 对于适用于特定字段的规则，必须包括紧接目标数据的一行，其中目标数据包含指向提供程序网站的超链接。 例如，要对描述进行归属，请包括紧接描述文本的一行，其中描述文本包含指向提供程序网站上数据的超链接，在这种情况下创建指向 en.wikipedia.org 的链接。  
   
 ```  
 "entities" : {  

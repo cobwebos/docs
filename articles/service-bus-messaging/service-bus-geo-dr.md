@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 8cf21b283053760077ca2903349f0dc5e4cbb9e2
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0436248dac2812c447d25de16a4ac6b45bd7248f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392476"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855166"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -121,7 +121,6 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下文章：
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

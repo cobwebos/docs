@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8a880e5924ec6bfbabb5ae4d71742f2a29bdea7f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665016"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246923"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>将异常查找器 API 与 Javascript 配合使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常情况监测 API 与 Javascript 配合使用，从而获取时序数据的异常情况检测结果。
 

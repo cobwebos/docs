@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c14916b0644edab613b298d6e71f8bbb9a6bb804
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366037"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247345"
 ---
 # <a name="use-the-anomaly-finder-api-with-python"></a>将异常查找器 API 与 Python 配合使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常查找器 API 与 Python 配合使用，从而获取时序数据异常结果。
 
@@ -65,7 +67,7 @@ print(result)
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回了成功的响应。 示例响应如下。
+JSON 中返回成功响应。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤

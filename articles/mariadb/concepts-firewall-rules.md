@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 58ccc328281bb70e00294ccef054232108212ccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 930e561c1777ccfcb8046c824853ebb12367cee5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997652"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248094"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -46,7 +46,9 @@ ms.locfileid: "46997652"
 ![在门户中配置“允许访问 Azure 服务”](./media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>以编程方式管理防火墙规则
-除了 Azure 门户外，还可使用 Azure CLI 通过编程方式管理防火墙规则。 <!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+除了 Azure 门户外，还可使用 Azure CLI 通过编程方式管理防火墙规则。 
+
+<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
 
 ## <a name="troubleshooting-the-database-firewall"></a>数据库防火墙故障排除
 对 Microsoft Azure Database for MariaDB 服务器服务的访问与预期不符时，请考虑以下几点：

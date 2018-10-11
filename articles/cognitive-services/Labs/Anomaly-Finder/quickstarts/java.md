@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 8152c23e6c5332d243d851be56bab1e4085dbe5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366049"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249173"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>将异常查找器 API 与 Java 配合使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常情况检测 API 与 Java 配合使用，从而获取时序数据的异常情况检测结果。
 
@@ -113,7 +115,7 @@ public class Main {
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回了成功的响应。 示例响应如下。
+JSON 中返回成功响应。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤

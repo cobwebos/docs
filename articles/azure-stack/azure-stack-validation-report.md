@@ -3,7 +3,7 @@ title: 针对 Azure Stack 的验证报表 | Microsoft Docs
 description: 使用 Azure Stack 就绪性检查器报表查看验证结果。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 06b5660a9428e98d2e99b5d447a05700968ec884
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381907"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079440"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 验证报表
 使用 Azure Stack 就绪性检查器工具运行支持的部署和维护的 Azure Stack 环境的验证。 该工具将结果写入到.json 报表文件。 此报表显示有关状态的 Azure Stack 部署先决条件的详细和汇总数据。 报表还显示有关机密轮换为现有的 Azure Stack 部署的信息。  

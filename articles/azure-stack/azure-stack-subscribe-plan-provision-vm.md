@@ -3,7 +3,7 @@ title: 在 Azure Stack 中订阅套餐 | Microsoft Docs
 description: 在 Azure Stack 中创建套餐的订阅
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 7f3f8683-ef09-4838-92ed-41f2fddbbbed
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/05/2018
-ms.author: brenduns
-ms.openlocfilehash: b35e75d7cfcaa46da46d2edcb80fe37c112a66a3
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: sethm
+ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025565"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079236"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>在 Azure Stack 中创建套餐的订阅
 

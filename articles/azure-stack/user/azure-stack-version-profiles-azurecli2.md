@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972804"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067697"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>使用 Azure CLI 在 Azure Stack 中使用 API 版本配置文件
 
@@ -76,7 +76,7 @@ sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-#### <a name="windows"></a>窗口
+#### <a name="windows"></a>Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -168,7 +168,8 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 1. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)的形式登录到 Azure Stack 环境。 
 
-   * 以用户身份登录：可以直接在 `az login` 命令中指定用户名和密码，或使用浏览器进行身份验证。 如果帐户已启用多重身份验证，则必须采用后一种方法。
+    * AAD 环境
+      * 以用户身份登录：可以直接在 `az login` 命令中指定用户名和密码，或使用浏览器进行身份验证。 如果帐户已启用多重身份验证，则必须采用后一种方法。
 
       ```azurecli
       az login \
@@ -179,7 +180,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
       > [!NOTE]
       > 如果用户帐户已启用多重身份验证，则可以使用不带 `-u` 参数的 `az login command` 命令。 运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
    
-   * 以服务主体的形式登录：在登录之前，请通过 [Azure 门户](azure-stack-create-service-principals.md)或 CLI 创建一个服务主体，并为其分配角色。 接下来，使用以下命令登录：
+      * 以服务主体的形式登录：在登录之前，请通过 [Azure 门户](azure-stack-create-service-principals.md)或 CLI 创建一个服务主体，并为其分配角色。 接下来，使用以下命令登录：
 
       ```azurecli
       az login \
@@ -188,6 +189,22 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         -u <Application Id of the Service Principal> \
         -p <Key generated for the Service Principal>
       ```
+    * AD FS 环境
+
+        * 以身份登录*服务主体*: 
+          1.    准备要用于服务主体登录名的.pem 文件。
+                * 在客户端计算机主体的创建，服务主体证书导出为 pfx 使用私钥 (位于 cert: \CurrentUser\My; 的证书名称已与主体相同的名称)。
+
+                *   将 pfx 转换为 pem （使用 OpenSSL 实用程序）。
+
+          1.    登录到 CLI。 :
+                ```azurecli
+                az login --service-principal \
+                 -u <Client ID from the Service Principal details> \
+                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
+                 --tenant <Tenant ID> \
+                 --debug 
+                ```
 
 ## <a name="test-the-connectivity"></a>测试连接
 

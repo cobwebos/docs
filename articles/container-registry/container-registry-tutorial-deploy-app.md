@@ -2,19 +2,18 @@
 title: Azure 容器注册表教程 - 从 Azure 容器注册表部署 Web 应用
 description: 使用异地复制的 Azure 容器注册表中的容器映像部署基于 Linux 的 Web 应用。 由三个部分构成的教程系列的第二部分。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d1924d730f2c2a64063496d4be759194cef99175
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918436"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853855"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>快速入门：从 Azure 容器注册表部署 Web 应用
 

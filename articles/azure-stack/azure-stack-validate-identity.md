@@ -1,9 +1,9 @@
 ---
-title: 验证 Azure 标识 Azure 堆栈 |Microsoft 文档
-description: 使用 Azure 堆栈准备情况检查程序来验证 Azure 标识。
+title: 为 Azure Stack 验证 Azure 标识 | Microsoft Docs
+description: 使用 Azure Stack 就绪性检查器来验证 Azure 标识。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,104 +13,104 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: fe5e7281cbe01ad11f667729df344f91ef1327d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9c7ac89d1f12e8ec033b201f2c2dd845c11486e2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937825"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077811"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
-使用 Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 来验证 Azure Active Directory (Azure AD) 是可以用于 Azure 堆栈。 在开始 Azure 堆栈部署之前，请验证您的 Azure 标识解决方案。  
+使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure Active Directory (Azure AD) 是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证 Azure 标识解决方案。  
 
-准备情况检查程序会验证：
- - Azure Active Directory (Azure AD) 为 Azure 堆栈的标识提供程序。
- - 你打算使用的 Azure AD 帐户可以以 Azure Active Directory 的全局管理员身份登录。 
+就绪性检查器会验证下列项：
+ - Azure Active Directory (Azure AD) 用作 Azure Stack 的标识提供程序。
+ - 你打算使用的 Azure AD 帐户能够以 Azure Active Directory 的全局管理员身份登录。 
 
-验证可确保你的环境准备好进行 Azure 堆栈，以在你的 Azure AD 中存储有关用户、 应用程序、 组和从 Azure 堆栈的服务主体的信息。
+验证可以确保你的环境已针对 Azure Stack 做好了准备，可以在 Azure AD 中存储 Azure Stack 中的用户、应用程序、组和服务主体的相关信息。
 
-## <a name="get-the-readiness-checker-tool"></a>获取准备情况检查程序工具
-从下载最新版本的 Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) [PSGallery](https://aka.ms/AzsReadinessChecker)。  
+## <a name="get-the-readiness-checker-tool"></a>获取就绪性检查器工具
+请从 [PSGallery](https://aka.ms/AzsReadinessChecker) 下载 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 的最新版本。  
 
 ## <a name="prerequisites"></a>必备组件
-以下先决条件必须到位。
+必须满足以下先决条件。
 
 **运行该工具的计算机：**
- - Windows 10 或 Windows Server 2016 中，在具有 internet 连接。
- - PowerShell 5.1 或更高版本。 若要检查你的版本，运行以下 PowerShell cmd，然后查看*主要*版本和*次要*版本：  
+ - Windows 10 或 Windows Server 2016，具有 Internet 连接。
+ - PowerShell 5.1 或更高版本。 若要检查版本，请运行以下 PowerShell cmd，然后查看 *Major* 版本和 *Minor* 版本：  
 
    > `$PSVersionTable.PSVersion`
- - 配置[PowerShell for Azure 堆栈](azure-stack-powershell-install.md)。 
- - 最新版本[Microsoft Azure 堆栈准备情况检查程序](https://aka.ms/AzsReadinessChecker)工具。
+ - 配置[适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。 
+ - 最新版[Microsoft Azure Stack 就绪性检查器](https://aka.ms/AzsReadinessChecker)工具。
 
 **Azure Active Directory 环境：**
- - 标识 Azure AD 帐户将用于 Azure 堆栈并确保其为 Azure Active Directory 全局管理员。
- - 标识你的 Azure AD 租户名称。 租户名称必须是*主*Azure Active Directory 域名。 例如， *contoso.onmicrosoft.com*。 
- - 确定你将使用 AzureEnvironement: *AzureCloud*， *AzureGermanCloud*，或*AzureChinaCloud*。
+ - 标识将用于 Azure Stack 的 Azure AD 帐户并确保它是 Azure Active Directory 全局管理员。
+ - 标识 Azure AD 租户名称。 该租户名称必须是你的 Azure Active Directory 的“主”域名。 例如， *contoso.onmicrosoft.com*。 
+ - 标识将使用的 AzureEnvironement：*AzureCloud*、*AzureGermanCloud* 或 *AzureChinaCloud*。
 
 ## <a name="validate-azure-identity"></a>验证 Azure 标识 
-1. 满足的先决条件的计算机，打开的管理的 PowerShell 提示符，然后运行以下命令以安装 AzsReadinessChecker:  
+1. 在满足先决条件的计算机上，打开一个管理 PowerShell 提示符，然后运行以下命令来安装 AzsReadinessChecker：  
 
    > `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-2. 从 PowerShell 提示符下，运行以下命令以设置 *$serviceAdminCredential*作为服务管理员为你的 Azure AD 租户。  替换*serviceadmin@contoso.onmicrosoft.com*与你的帐户和租户。 
+2. 从 PowerShell 提示符下，运行以下命令将 *$serviceAdminCredential* 设置为你的 Azure AD 租户的服务管理员。  将 *serviceadmin@contoso.onmicrosoft.com* 替换为你的帐户和租户。 
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
-3. 在 PowerShell 提示符下，运行以下命令以启动你的 Azure AD 的验证。 
-   - 指定作为 AzureEnvironment 值*AzureCloud*， *AzureGermanCloud*，或*AzureChinaCloud*。  
-   - 指定你 Azure Active Directory 租户的名称以替换*contoso.onmicrosoft.com*。 
+3. 从 PowerShell 提示符下，运行以下命令来启动对 Azure AD 的验证。 
+   - 将 AzureEnvironment 的值指定为 *AzureCloud*、*AzureGermanCloud* 或 *AzureChinaCloud*。  
+   - 指定 Azure Active Directory 租户名称替换*contoso.onmicrosoft.com*。 
 
    > `Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
-4. 运行该工具后，请查看输出。 确认状态是**确定**用于登录和安装要求。 成功验证显示如下图所示： 
+4. 运行该工具后，查看输出。 对于登录名和安装要求，确认状态都为 **OK**。 成功的验证如下图所示： 
  
 ![运行验证](./media/azure-stack-validate-identity/validation.png)
 
 
-## <a name="report-and-log-file"></a>报告和日志文件
-每个时间验证运行时，它会记录到结果**AzsReadinessChecker.log**和**AzsReadinessCheckerReport.json**。 使用 PowerShell 中的验证结果显示这些文件的位置。
+## <a name="report-and-log-file"></a>报表和日志文件
+每次运行验证时，它都会将结果记录到 **AzsReadinessChecker.log** 和 **AzsReadinessCheckerReport.json** 中。 这些文件的位置会随验证结果一起显示在 PowerShell 中。
 
-这些文件可以帮助你在部署 Azure 堆栈或调查验证问题之前共享验证状态。  这两个文件保留每个后续的验证检查的结果。 该报表提供您的标识配置的部署团队确认信息。 日志文件可帮助你调查验证问题的部署或支持团队。 
+这些文件可以帮助你在部署 Azure Stack 之前共享验证状态，或者调查验证问题。  这两个文件都会持久保留每个后续验证检查的结果。 报表向你的部署团队提供标识配置确认。 日志文件可以帮助你的部署或支持团队调查验证问题。 
 
-默认情况下，这两个文件写入到*C:\Users\<用户名 > \AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json*。  
- - 使用 **-OutputPath** ***&lt;路径&gt;*** 运行的命令行，以指定不同的报表位置结尾的参数。   
- - 使用 **-CleanReport**参数运行的命令以清除信息从末尾*AzsReadinessCheckerReport.json*。  有关以前运行的工具。 
+默认情况下，这两个文件都写入到 *C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json*。  
+ - 可以在运行命令行的末尾使用 **-OutputPath** ***&lt;path&gt;*** 参数指定一个不同的报表位置。   
+ - 可以在运行命令的末尾使用 **-CleanReport** 参数从 *AzsReadinessCheckerReport.json* 中清除  有关该工具的以前运行的信息。 
 
-有关详细信息， [Azure 堆栈验证报告](azure-stack-validation-report.md)。
+有关详细信息，请参阅 [Azure Stack 验证报表](azure-stack-validation-report.md)。
 
 ## <a name="validation-failures"></a>验证失败
-如果验证检查失败，在 PowerShell 窗口中显示有关失败的详细信息。 该工具还将信息记录到 AzsReadinessChecker.log。
+如果验证检查失败，则有关失败的详细信息将显示在 PowerShell 窗口中。 该工具还会将信息记录到 AzsReadinessChecker.log 中。
 
-下面的示例提供有关常见的验证失败的指导。
+下面的示例针对常见的验证失败提供了指导。
 
 ### <a name="expired-or-temporary-password"></a>过期的或临时密码 
  
 ![过期密码](./media/azure-stack-validate-identity/expired-password.png)
-**原因**-帐户无法登录，因为密码已过期或是临时。     
+**原因** - 因为密码已过期或者是临时的，所以帐户无法登录。     
 
-**解析**-PowerShell 中运行以下命令，，然后按照提示操作以重置密码。  
+**解决方法** - 在 PowerShell 中，运行以下命令，然后根据提示来重置密码。  
 > `Login-AzureRMAccount`
 
-或者，登录到https://portal.azure.com如会强制更改密码的帐户和用户。
-### <a name="unknown-user-type"></a>未知的用户类型 
+或者，以帐户身份登录到 https://portal.azure.com，将会强制用户更改密码。
+### <a name="unknown-user-type"></a>未知用户类型 
  
-![未知的用户](./media/azure-stack-validate-identity/unknown-user.png)
-**原因**-帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在此示例中， *AzureChinaCloud*指定为*AzureEnvironment*。
+![未知用户](./media/azure-stack-validate-identity/unknown-user.png)
+**原因** - 帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。
 
-**解析**-确认该帐户是有效指定的 Azure 环境。 在 PowerShell 中，运行以下命令以验证该帐户是有效的特定的环境： Login-azurermaccount – EnvironmentName AzureChinaCloud 
-### <a name="account-is-not-an-administrator"></a>不是管理员帐户。 
+**解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中运行以下命令以验证该帐户是否对特定环境有效： Login-azurermaccount-EnvironmentName AzureChinaCloud 
+### <a name="account-is-not-an-administrator"></a>帐户不是管理员 
  
 ![不是管理员](./media/azure-stack-validate-identity/not-admin.png)
 
-**可能的原因**-尽管可以成功地登录帐户，该帐户不是 Azure Active Directory (AADDirectoryTenantName) 的管理员。  
+**原因** - 虽然帐户可以成功登录，但帐户不是 Azure Active Directory (AADDirectoryTenantName) 的管理员。  
 
-**解析**-登录到https://portal.azure.com作为帐户，请转到**Azure Active Directory** > **用户** > *选择用户*  > **目录角色**，并确保用户为**全局管理员**。  如果该帐户是用户，请转到**Azure Active Directory** > **自定义域**命名，并确认，您提供的名称为*AADDirectoryTenantName*是标记为此目录的主域名。  在此示例中，这是*contoso.onmicrosoft.com*。 
+**解决方法** - 以帐户身份登录到 https://portal.azure.com，转到“Azure Active Directory” > “用户” > “选择用户” > “目录角色”，然后确保该用户为**全局管理员**。  如果帐户是“用户”，请转到“Azure Active Directory” > “自定义域”名称，并确认你为“AADDirectoryTenantName”提供的名称已标记为此目录的主域名。  在此示例中，这是*contoso.onmicrosoft.com*。 
 
-Azure 堆栈要求的域名的主域名。
+Azure Stack 要求域名是主域名。
 
 ## <a name="next-steps"></a>后续步骤
 [验证 Azure 注册](azure-stack-validate-registration.md)  
-[查看准备情况报表](azure-stack-validation-report.md)  
-[常规 Azure 堆栈集成注意事项](azure-stack-datacenter-integration.md)  
+[查看就绪性报表](azure-stack-validation-report.md)  
+[有关 Azure Stack 集成的一般注意事项](azure-stack-datacenter-integration.md)  
 

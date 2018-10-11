@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 29e894b0666b37d32f36b016603fda408e9d2746
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 982bcbb9060a3f29000de2a0487b61dc58e24f6e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161028"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855453"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -26,7 +26,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 |源类型|内容类型| 示例|
 |--|--|--|
 |代码|常见问题解答（平面，包含节或主题主页）|[普通的常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、[带链接的常见问题解答](https://www.microsoft.com/software-download/faq)、[带主题主页的常见问题解答](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF / DOC|常见问题解答、产品手册、小册子、论文、海报策略、支持指南、结构化 QnA，等等。|[Structured QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx)、[Sample Product Manual.pdf](http://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)、[Sample semi-structured.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)、[Sample white paper.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
+|PDF / DOC|常见问题解答、产品手册、小册子、论文、海报策略、支持指南、结构化 QnA，等等。|[Structured QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx)、[Sample Product Manual.pdf](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)、[Sample semi-structured.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)、[Sample white paper.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
 |Excel|结构化 QnA 文件（包括 RTF、 HTML 支持）|[Sample QnA FAQ.xls](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://raw.githubusercontent.com/Microsoft/BotBuilder-PersonalityChat/master/CSharp/Datasets/Queries_Responses_Friendly_QnAMaker.tsv)|
 
@@ -69,7 +69,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 ### <a name="product-manuals"></a>产品手册
 
-手册通常是产品附带的指导材料。 它可以帮助用户设置、使用、维护产品和排除产品故障。 当 QnA Maker 处理手册时，它会将标题和副标题作为问题提取，将后续内容作为答案提取。 请参阅[此处](http://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)的示例。
+手册通常是产品附带的指导材料。 它可以帮助用户设置、使用、维护产品和排除产品故障。 当 QnA Maker 处理手册时，它会将标题和副标题作为问题提取，将后续内容作为答案提取。 请参阅[此处](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)的示例。
 
 下面是一个手册示例，其中包含索引页和分层内容。
 
@@ -123,7 +123,7 @@ Answer2
 
 导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
 
-| 问题  | Answer  | Source| 元数据                |
+| 问题  | Answer  | 源| 元数据                |
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |

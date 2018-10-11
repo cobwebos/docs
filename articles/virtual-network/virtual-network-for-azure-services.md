@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 06af3351f5669f5cd9aeeb9c4cb2168666476b52
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 163a8f318608ba980d98209277371fb4d148c4ff
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994626"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902767"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure 服务的虚拟网络集成
 
@@ -47,9 +47,6 @@ ms.locfileid: "46994626"
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>可部署到虚拟网络中的服务
 
-对于必须允许进出子网的路由和流量类型，直接部署到虚拟网络中的每项服务都有特定要求。 可部署到虚拟网络中的各种服务分类如下。 选择表中的特定服务，了解有关该服务的更多信息以及将其与虚拟网络集成的方法。 
-
-
 |类别|服务|
 |-|-|
 | 计算 | 虚拟机：[Windows](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[云服务](https://msdn.microsoft.com/library/azure/jj156091)：仅限虚拟网络（经典）<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)  |
@@ -58,12 +55,8 @@ ms.locfileid: "46994626"
 分析 | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | 标识 | [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | 容器 | [Azure Kubernetes 服务 (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure 容器实例 (ACI)](http://www.aka.ms/acivnet)<br/>带有 Azure 虚拟网络 CNI [插件](https://github.com/Azure/acs-engine/tree/master/examples/vnet)的 [Azure 容器服务引擎](https://github.com/Azure/acs-engine)||
-| Web | [API 管理](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[应用服务环境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[WebApps](http://www.aka.ms/WebAppsVNet)
-| 已承载*| [Azure NetApp 文件 (ANF)](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure 专用硬件安全模块](http://www.aka.ms/azurededicatedhsm)
-| | |
+| Web | [API 管理](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[应用服务环境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>
 <br/>
-*通常在专用硬件上运行的专项服务。
-
 
 
 ## <a name="service-endpoints-for-azure-services"></a>Azure 服务的服务终结点

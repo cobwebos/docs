@@ -3,7 +3,7 @@ title: Azure Stack 中的配额类型 | Microsoft Docs
 description: 查看可用于 Azure Stack 中的服务和资源的不同配额类型。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 2e884164347239838d08fbbc1616ed54ffc4ff24
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358729"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077589"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -58,26 +58,25 @@ ms.locfileid: "39358729"
 | 网络安全组的数目上限 |50 |订阅可以在此位置创建的网络安全组数目上限。 |
 
 ## <a name="view-an-existing-quota"></a>查看现有配额
-1. 在管理门户的默认仪表板中，找到**资源提供程序**磁贴。
-2. 选择与想要查看，如配额的服务**计算**或**存储**。
+1. 在管理门户的默认仪表板上，找到“资源提供程序”磁贴。
+2. 选择要查看其配额的服务，例如“计算”或“存储”。
 3. 选择“配额”，然后选择要查看的配额。
 
 
 ## <a name="edit-a-quota"></a>编辑配额  
-您可以选择编辑原始配置，而不是配额[使用的加载项计划](create-add-on-plan.md)。 编辑配额时，新的配置会自动将全局应用于所有使用该配额的计划和使用这些计划的所有现有订阅。 编辑配额是不同于当您使用附加计划提供用户选择要订阅的已修改的配额。 
+可以选择编辑配额的原始配置，而不[使用附加计划](create-add-on-plan.md)。 编辑配额时，新配置会自动全局应用到使用该配额的所有计划，以及使用这些计划的所有现有订阅。 编辑配额的效果不同于使用用户选择订阅的附加计划来提供修改的配额。 
 
-### <a name="to-edit-a-quota"></a>若要编辑配额  
-1. 在管理门户的默认仪表板中，找到**资源提供程序**磁贴。
-2. 选择与你想要修改，如配额的服务**计算**，**网络**，或**存储**。
-3. 接下来，选择**配额**，然后选择你想要更改的配额。
-4. 上**设置配额**窗格中，需要编辑这些值，然后选择**保存**。 
+### <a name="to-edit-a-quota"></a>编辑配额  
+1. 在管理门户的默认仪表板上，找到“资源提供程序”磁贴。
+2. 选择要修改其配额的服务，例如“计算”、“网络”或“存储”。
+3. 接下来选择“配额”，然后选择要更改的配额。
+4. 在“设置配额”窗格中编辑值，然后选择“保存”。 
 
-Quota 的新值全局应用于所有使用修改后的配额的计划和使用这些计划的所有现有订阅。 
+该配额的新值将全局应用到使用已修改配额的所有计划，以及使用这些计划的所有现有订阅。 
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 
-  [详细了解计划、套餐和配额。](azure-stack-plan-offer-quota-overview.md)
+- [详细了解计划、套餐和配额。](azure-stack-plan-offer-quota-overview.md)
 - [创建计划时创建配额。](azure-stack-create-plan.md)

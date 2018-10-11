@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: sngun
 ms.custom: ''
-ms.openlocfilehash: 9d55394f273069cd3497cde334814b91a7123de8
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2e22bfb30cdf4decdc8a6fba612b75233c9c0971
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798230"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901186"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "34798230"
 |   |   |
 |---|---|
 |**SDK 下载**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API 文档**|[Python API 参考文档](https://azure.github.io/azure-cosmosdb-python/)|
+|**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 或 [Python 3.3、3.4、3.5 或 3.6] (https://www.python.org/downloads/)|
@@ -60,7 +60,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

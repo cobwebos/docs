@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128637"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855368"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>包含队列和事件的企业集成体系结构
 
@@ -81,7 +81,7 @@ ms.locfileid: "43128637"
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>使用服务总线消息时使用 PeekLock
 
-创建逻辑应用来使用服务总线消息时，请让逻辑应用使用 [PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) 来访问一组消息。 使用 PeekLock 时，逻辑应用可以执行步骤来验证每条消息，然后完成或放弃该消息。 此方法可以防范意外的消息丢失。
+创建逻辑应用来使用服务总线消息时，请让逻辑应用使用 [PeekLock](../service-bus-messaging/service-bus-messaging-overview.md#queues) 来访问一组消息。 使用 PeekLock 时，逻辑应用可以执行步骤来验证每条消息，然后完成或放弃该消息。 此方法可以防范意外的消息丢失。
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>事件网格触发器触发时检查多个对象
 

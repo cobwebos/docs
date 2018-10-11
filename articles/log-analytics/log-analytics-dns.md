@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: ''
+ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436720"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043535"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -171,7 +171,7 @@ DNS Analytics 可帮助：
 
     ![DnsEvents 日志搜索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
-    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
     b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 

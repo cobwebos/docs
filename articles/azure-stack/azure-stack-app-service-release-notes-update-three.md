@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 上的应用服务 update 3 发行说明 |Microsoft Docs
-description: 了解有关新增功能更新中三个用于 Azure Stack 上的应用服务、 已知的问题和下载更新的位置。
+description: 了解基于 Azure Stack 的应用服务 Update 3 的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.reviewer: brenduns
-ms.openlocfilehash: f825a2a343d9b5ad8f9802042b7aca2ba1544dfb
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.reviewer: sethm
+ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917396"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079525"
 ---
-# <a name="app-service-on-azure-stack-update-3-release-notes"></a>应用服务在 Azure Stack update 3 发行说明
+# <a name="app-service-on-azure-stack-update-3-release-notes"></a>基于 Azure Stack 的应用服务 Update 3 发行说明
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明介绍了改进和修补程序在 Azure 应用服务中的 Azure Stack Update 3 和任何已知的问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
+这些发行说明介绍了基于 Azure Stack 的 Azure 应用服务 Update 3 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 适用于 Azure Stack 集成系统的 1807年更新或部署 Azure 应用服务 1.3 之前部署最新的 Azure Stack 开发工具包。
+> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.3。
 >
 >
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 更新 3 生成号上的应用服务是**74.0.13698.31**
+基于 Azure Stack 的应用服务 Update 3 的内部版本号为 **74.0.13698.31**
 
 ### <a name="prerequisites"></a>必备组件
 
 在开始部署之前，请参阅[准备工作文档](azure-stack-app-service-before-you-get-started.md)。
 
-在开始将 Azure Stack 上的 Azure 应用服务升级到 1.3 之前，请确保所有角色都都已准备 Azure Stack 管理员门户中的 Azure 应用服务管理
+在开始将基于 Azure Stack 的 Azure 应用服务升级到 1.3 之前，请在 Azure Stack 管理门户中的“Azure 应用服务管理”中确保所有角色都已准备就绪。
 
 ![应用服务角色状态](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序：
+基于 Azure Stack 的 Azure 应用服务 Update 3 包含以下改进和修复：
 
-- 针对 Azure 应用服务资源提供程序数据库的 SQL Server Always On 的使用的支持。
+- 支持对 Azure 应用服务资源提供程序数据库使用 SQL Server Always On。
 
-- 新环境参数添加到创建 AADIdentityApp 帮助程序脚本，以帮助目标不同的 AAD 区域。
+- 为 Create-AADIdentityApp 帮助程序脚本添加了新的 Environment 参数来帮助确定作为目标的不同 AAD 区域。
 
 - 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
 
 - 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
 - **针对以下应用程序框架和工具的更新**：
-  - 添加了的 ASP.Net Core 2.1.2
-  - 添加了的 NodeJS 10.0.0
+  - 添加了 ASP.Net Core 2.1.2
+  - 添加了 NodeJS 10.0.0
   - 添加了 Zulu OpenJDK 8.30.0.1
-  - 添加了的 Tomcat 8.5.31 和 9.0.8
-  - 添加了的 PHP 版本：
+  - 添加了 Tomcat 8.5.31 和 9.0.8
+  - 添加了 PHP 版本：
     - 5.6.36
     - 7.0.30
     - 7.1.17
     - 7.2.5
-  - 添加了的 Wincache 2.0.0.8
-  - 更新的 Git 的 Windows 到 v 2.17.1.2
-  - 已更新到 74.10611.3437 Kudu
+  - 添加了 Wincache 2.0.0.8
+  - 已将适用于 Windows 的 Git 更新到 v 2.17.1.2
+  - 已将 Kudu 更新到 74.10611.3437
   
-- **对所有角色的基础操作系统更新**:
-  - [对于基于 x64 的系统 (KB4132216) 的 Windows Server 2016 的服务堆栈更新](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
-  - [2018-07 适用于 Windows Server 2016 的基于 x64 的系统 (KB4338822) 的累积更新](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
+- **对所有角色的基础操作系统的更新**：
+  - [适用于基于 x64 的系统的 Windows Server 2016 的服务堆栈更新 (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [适用于基于 x64 的系统的 Windows Server 2016 的 2018-07 累积更新 (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
-### <a name="post-update-steps-optional"></a>发布更新步骤 （可选）
+### <a name="post-update-steps-optional"></a>更新后步骤（可选）
 
-对于希望在 Azure Stack 部署的现有 Azure App service 迁移为包含的数据库的客户，Azure 应用服务在 Azure Stack 1.3 更新完成后执行这些步骤：
+对于希望为基于 Azure Stack 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack 的 Azure 应用服务 1.3 更新后执行以下步骤：
 
 > [!IMPORTANT]
-> 此过程大约需要 5 到 10 分钟。  此过程涉及到终止现有的数据库登录会话。  规划的停机时间和验证 Azure 应用服务上迁移 Azure Stack 后的迁移
+> 此过程大约需要花费 5-10 分钟。  此过程涉及终止现有的数据库登录会话。  计划停机时间来进行迁移，并在迁移后验证基于 Azure Stack 的 Azure 应用服务
 >
 >
 
 1. 添加[AppService 数据库 （appservice_hosting 和 appservice_metering） 到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
-1. 启用包含数据库
+1. 启用包含的数据库
     ```sql
 
         sp_configure 'contained database authentication', 1;
@@ -95,7 +95,7 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
             GO
     ```
 
-1. 将转换为部分包含的数据库。  此步骤将产生停机时间，因为需要终止所有活动会话
+1. 将数据库转换为“部分包含的”。  此步骤将导致停机，因为需要终止所有活动会话
 
     ```sql
         /******** [appservice_metering] Migration Start********/
@@ -168,7 +168,7 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
 
 验证
 
-1. 检查 SQL Server 是否启用包含
+1. 检查 SQL Server 是否启用了包含
 
     ```sql
         sp_configure  @configname='contained database authentication'
@@ -196,7 +196,7 @@ Azure Stack 更新 3 上的 azure 应用服务包括以下改进和修补程序�
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 
-中的文档，请参阅[Azure Stack 1807 发行说明](azure-stack-update-1807.md)
+请参阅 [Azure Stack 1807 发行说明](azure-stack-update-1807.md)中的文档
 
 ## <a name="next-steps"></a>后续步骤
 

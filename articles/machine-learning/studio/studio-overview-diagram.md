@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: f1364435d2f7b50c642d1bb5b41708ec52bda533
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946198"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902070"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure 机器学习工作室功能的概要示意图
 **Microsoft Azure 机器学习工作室功能概述** 示意图高度概括了如何使用机器学习工作室开发预测分析模型并在 Azure 云中加以实施。
@@ -47,7 +47,7 @@ ms.locfileid: "46946198"
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>有关机器学习工作室的更多帮助
-* 有关 Microsoft Azure 机器学习的概述，请参阅 [Microsoft Azure 机器学习简介](what-is-machine-learning.md)
+* 有关 Microsoft Azure 机器学习的概述，请参阅 [Microsoft Azure 机器学习简介](../service/overview-what-is-azure-ml.md)
 * 有关机器学习工作室的概述，请参阅 [什么是机器学习工作室？](what-is-ml-studio.md)。
 * 有关机器学习工作室中可用机器学习算法的详细讨论，请参阅 [如何选择 Microsoft Azure 机器学习算法](algorithm-choice.md)。
 

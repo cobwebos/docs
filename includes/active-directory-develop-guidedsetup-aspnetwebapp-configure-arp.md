@@ -1,4 +1,26 @@
-
+---
+title: include 文件
+description: include 文件
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: b18b6e2fd5bb2071f57033dbe74ef87da028720b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843400"
+---
 ## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>使用应用程序的注册信息配置 ASP.NET Web 应用
 
 此步将配置项目以使用 SSL，并使用 SSL URL 配置应用程序的注册信息。 此后通过 web.config 将应用程序注册信息添加到解决方案。

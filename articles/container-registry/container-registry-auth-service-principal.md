@@ -2,18 +2,17 @@
 title: 使用服务主体的 Azure 容器注册表身份验证
 description: 了解如何使用 Azure Active Directory 服务主体访问专用容器注册表中的映像。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: marsma
-ms.openlocfilehash: ffdf8af805ce7e5068ceef9a4b265ea00d36fc79
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448003"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854469"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 

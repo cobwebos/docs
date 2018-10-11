@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 Azure 门户在 HDInsight 中创建 Spark 群集
 description: 本快速入门介绍如何使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集，以及如何运行 Spark SQL。
-services: azure-hdinsight
+services: hdinsight
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
-ms.service: azure-hdinsight
+ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: jasonh
 ms.custom: mvc
-ms.openlocfilehash: 15190258fcc8800bdfec3796ebd8b4b0487d05e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 912cbf77c4e2beb32238708a704405fad1582705
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041921"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785693"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 HDInsight 中创建 Spark 群集
 了解如何在 Azure HDInsight 中创建 Apache Spark 群集，以及如何对 Hive 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。

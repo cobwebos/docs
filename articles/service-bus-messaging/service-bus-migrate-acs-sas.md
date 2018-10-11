@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 784709f29772f10968cabc3f3763cc7be7c8b383
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7045172fcd3c64cb0d979f5e3e8381c49579f1d2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393343"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855249"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 
@@ -66,5 +66,4 @@ SAS 规则并不是帐户，而是与权限相关联的命名签名密钥。 因
 
 * [服务总线身份验证和授权](service-bus-authentication-and-authorization.md)
 * [附有共享访问签名的服务总线身份验证](service-bus-sas.md)
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423640"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785365"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -373,7 +373,7 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 ## <a name="running-on-docker"></a>在 Docker 上运行
 
-可以在用于 Windows 的 Docker 上运行 Azure Cosmos DB 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
+可以在 Docker for Windows 上运行 Azure Cosmos DB 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
 
 安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”切换到 Windows 容器。
 
@@ -467,61 +467,13 @@ cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
 3. 在应用列表中，滚动到“Azure Cosmos DB 模拟器”并将其选中，单击“卸载”，然后确认并再次单击“卸载”。
 4. 卸载应用后，导航到 `C:\Users\<user>\AppData\Local\CosmosDBEmulator` 并删除该文件夹。 
 
-## <a name="change-list"></a>更改列表
-
-可以通过右键单击任务栏上的本地模拟器图标并单击“关于”菜单项来查看版本号。
-
-### <a name="1220-released-on-april-20-2018"></a>1.22.0。 2018 年 4 月 20 日发布
-
-除了更新与 Cosmos DB 云服务配套的模拟器服务之外，我们还在其中包括了改进的 PowerShell 文档和其他一些 bug 修复。
-
-### <a name="12106-released-on-march-27-2018"></a>2018 年 3 月 27 日发布的 1.21.0.6 版
-
-除了更新与 Cosmos DB 云服务配套的模拟器服务之外，我们还在此版本中包括了一项新功能和两个 bug 修复。
-
-#### <a name="features"></a>功能
-
-1. Start-CosmosDbEmulator 命令现在包括了启动选项。
-
-#### <a name="bug-fixes"></a>Bug 修复
-
-1. Microsoft.Azure.CosmosDB.Emulator PowerShell 模块现在会确保加载 `ServiceControllerStatus` 枚举。
-
-2. Microsoft.Azure.CosmosDB.Emulator PowerShell 模块现在包括了一个清单；第一个版本中遗漏了此清单。
-
-### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 在 2018 年 2 月 14 日发布
-
-此版本有一项新功能，并有两个 Bug 修复。 感谢帮我们找到并修复这些问题的客户。
-
-#### <a name="bug-fixes"></a>Bug 修复
-
-1. 模拟器现在适用于带 1 个或 2 个核心（或虚拟 CPU）的计算机
-
-   Cosmos DB 分配的任务可执行各种服务。 分配的任务数是主机上核心数的倍数。 默认的倍数适用于核心数很大的生产环境。 但在配置了 1 个或 2 个处理器的计算机上，应用该倍数时，并不会分配用于执行这些服务的任务。
-
-   我们通过向模拟器添加替代配置纠正了此问题。 我们现在应用的倍数为 1。 现在，分配用来执行各项服务的任务数等于主机上的核心数。
-
-   要不是因为我们为此版本做了其他事情，就会已解决此问题。 我们发现，许多开发/测试环境托管的模拟器有 1 到 2 个核心。
-
-2. 模拟器不再要求安装 Microsoft Visual C++ 2015 Redistributable。
-
-   我们发现，Windows（台式机版本和服务器版本）的全新安装不包括这个可再发行软件包。 因此，我们现在将这个可再发行二进制文件与模拟器捆绑在一起。
-
-#### <a name="features"></a>功能
-
-与我们沟通过的许多客户都说：如果模拟器是可编脚本的就好了。 因此，在此版本中，我们添加了一些脚本功能。 模拟器现在包括一个用于自行启动、停止、获取状态和卸载的 PowerShell 模块：`Microsoft.Azure.CosmosDB.Emulator`。 
-
-### <a name="120911-released-on-january-26-2018"></a>2018 年 1 月 26 日发布 1.20.91.1 版
-
-* 默认情况下启用了 MongoDB 聚合管道。
-
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
 > * 安装本地模拟器
-> * 在用于 Windows 的 Docker 上运行模拟器
+> * 在 Docker for Windows 上运行模拟器
 > * 对请求进行身份验证
 > * 在模拟器中使用数据资源管理器
 > * 导出 SSL 证书

@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 27ea73862f834a834b1622d0e51d0076c9afbe71
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 71c3343db592162bcfa7ec46a29e0d680ca83079
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523098"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900700"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
@@ -26,7 +26,7 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 如果希望寻址的支持 Data Lake Storage Gen2 的帐户在帐户创建期间**未**设为默认文件系统，则简写 URI 语法为：
 
-<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.widows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
+<pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
 1. **方案标识符**：`abfs` 协议用作方案标识符。 可以选择是否使用安全套接字层 (SSL) 连接进行连接。 使用 `abfss` 通过安全套接字层连接进行连接。
 

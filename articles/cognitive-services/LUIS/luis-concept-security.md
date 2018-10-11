@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a7ecac3776d767160b07f550251c54793926056
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8fbfd37be0bc6f05f30b71fdae2e7cc88601d628
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033186"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785539"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>创作和终结点用户访问权限
 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，任何具有 LUIS 帐户和公共应用 ID 的人员均具有终结点访问权限。 
@@ -85,7 +85,7 @@ If the Microsoft user account is part of an Azure Active Directory (AAD), and th
 
 ## <a name="security-compliance"></a>安全性和符合性
  
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

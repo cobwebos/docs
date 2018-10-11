@@ -3,7 +3,7 @@ title: 在本教程中，你学习 璹綷 Azure 堆栈优惠 |Microsoft 文档
 description: 本教程介绍如何创建 Azure Stack 服务的新订阅，并通过创建测试虚拟机来测试套餐。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0e2fa9b01d27d68c1eab9097a20b6e350ba47f99
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028793"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076094"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>教程：创建和测试订阅
 本教程介绍如何创建包含套餐的订阅，然后对其进行测试。 测试时，需要以云管理员身份登录到 Azure Stack 用户门户，订阅套餐，然后创建虚拟机。

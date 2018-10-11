@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 312d92994e4932e854ec77681da2d4dbd14da2aa
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 87a6ccf61e10a6a8c7feeccad3690cdcb9b63641
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391995"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857850"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -115,7 +115,6 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 * [Azure 服务总线高级版简介（博客文章）](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure 服务总线高级版简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [服务总线概述](service-bus-messaging-overview.md)
-* [Azure 服务总线体系结构概述](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md

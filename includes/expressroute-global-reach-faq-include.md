@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 343bd2bc4f0e875c84ddb69ea064e30f3f7671c4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060919"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874058"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>什么是 ExpressRoute Global Reach？
 
@@ -35,13 +35,13 @@ ExpressRoute 可在本地网络与 Microsoft 云服务之间建立连接。 Expr
 
 目前，以下国家/地区支持 ExpressRoute Global Reach。 必须在上述国家/地区的对等位置创建 ExpressRoute 线路。
 
-* 美国
-* 英国
+* 澳大利亚
 * 香港特别行政区
 * 爱尔兰
-* 荷兰
 * 日本
-
+* 荷兰
+* 英国
+* 美国
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>我有两个以上的本地网络，每个网络连接到 ExpressRoute 线路。 是否可以启用 ExpressRoute Global Reach，以将所有本地网络连接到一起？
 

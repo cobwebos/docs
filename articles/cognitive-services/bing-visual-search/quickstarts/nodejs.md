@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: b13738c5bfd8fc75224bf934ae8be56e7c2edd69
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3490f7722ca0c1331ccea26cd18398cff1317aee
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225491"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887406"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-javascript"></a>快速入门：使用 JavaScript 编写的第一个必应视觉搜索查询
 
