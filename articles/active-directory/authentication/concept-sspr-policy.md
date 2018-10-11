@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ee30ee4fa89ce47e8441845b088919b26ce32b31
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a4ea483104a28e436ac35b50b962d3a153483789
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434258"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804168"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -119,27 +119,27 @@ Microsoft 云服务的全局管理员可使用用于 Windows PowerShell 的 Micr
 1. 使用公司管理员凭据连接到 Windows PowerShell。
 2. 执行以下命令之一：
 
-   * 若要查看单个用户的密码是否已设置为永不过期，请使用要查看的用户的 UPN（例如 *aprilr@contoso.onmicrosoft.com*）或用户 ID 运行以下 cmdlet：`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
-   * 若要查看所有用户的“密码永不过期”设置，请运行以下 cmdlet：`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+   * 若要查看单个用户的密码是否已设置为永不过期，请使用要查看的用户的 UPN（例如 *aprilr@contoso.onmicrosoft.com*）或用户 ID 运行以下 cmdlet：`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * 若要查看所有用户的“密码永不过期”设置，请运行以下 cmdlet：`Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>设置密码过期
 
 1. 使用公司管理员凭据连接到 Windows PowerShell。
 2. 执行以下命令之一：
 
-   * 若要设置某一用户的密码使其过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
-   * 要将组织中所有用户的密码设置为过期，请使用以下 cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+   * 若要设置某一用户的密码使其过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
+   * 要将组织中所有用户的密码设置为过期，请使用以下 cmdlet：`Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
 
 ### <a name="set-a-password-to-never-expire"></a>将密码设置为永不过期
 
 1. 使用公司管理员凭据连接到 Windows PowerShell。
 2. 执行以下命令之一：
 
-   * 若要将某一用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
-   * 要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+   * 若要将某一用户的密码设置为永不过期，请使用该用户的 UPN 或用户 ID 运行以下 cmdlet：`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
+   * 要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：`Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`
 
    > [!WARNING]
-   > 设置为 `-PasswordNeverExpires $true` 的密码仍会基于 `pwdLastSet` 属性过时。 如果将用户密码设置为永不过期，则 90 多天过后密码过期。 基于 `pwdLastSet` 属性，如果将过期更改为 `-PasswordNeverExpires $false`，则所有 `pwdLastSet` 早于 90 天的密码将需要用户在下一次登录时更改它们。 此更改可能会影响很多用户。 
+   > 设置为 `-PasswordPolicies DisablePasswordExpiration` 的密码仍会基于 `pwdLastSet` 属性过时。 如果将用户密码设置为永不过期，则 90 多天过后密码过期。 基于 `pwdLastSet` 属性，如果将过期更改为 `-PasswordPolicies None`，则所有 `pwdLastSet` 早于 90 天的密码将需要用户在下一次登录时更改它们。 此更改可能会影响很多用户。 
 
 ## <a name="next-steps"></a>后续步骤
 

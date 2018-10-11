@@ -1,21 +1,21 @@
 ---
-title: 什么是必应新闻搜索？ | Microsoft Docs
+title: 什么是必应新闻搜索？
+titlesuffix: Azure Cognitive Services
 description: 介绍如何使用必应新闻搜索 API 搜索 Web 中的新闻。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 4B35B035-34FB-403A-9F52-6470AF726FB6
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 977b2e10c8a2ceccc5a6ffb3f396e6721afe1816
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 787fdea047f9e7d77ca0a156f1c41fa50fd2fa48
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096983"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801465"
 ---
 # <a name="what-is-bing-news-search"></a>什么是必应新闻搜索？
 
