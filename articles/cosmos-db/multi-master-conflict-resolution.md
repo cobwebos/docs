@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393921"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041181"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Azure Cosmos DB 中的多主数据库冲突解决 
 
@@ -157,7 +157,7 @@ function myUdpStoredProcedure(incomingDocument, existingDocument, isDeleteConfli
 
 * **conflictingDocuments：** 指定数据库中与 ID 列上的 incomingDocument 相冲突或者与其他任何唯一索引字段相冲突的所有文档的已提交版本集合。 与 incomingDocument 相比较时，这些文档具有不同的“rid”值。
 
-用户定义的过程对 Cosmos DB 分区键拥有完全访问权限，可以执行任何存储操作来解决冲突。 如果用户定义的过程未提交冲突版本，则系统将删除冲突，而 existingDocument 将保持已提交状态。 如果用户定义的过程失败或不存在，则 Azure Cosmos DB 会将冲突添加到只读的冲突源，在其中可以异步处理冲突，如[异步冲突解决模式]()中所述。 
+用户定义的过程对 Cosmos DB 分区键拥有完全访问权限，可以执行任何存储操作来解决冲突。 如果用户定义的过程未提交冲突版本，则系统将删除冲突，而 existingDocument 将保持已提交状态。 如果用户定义的过程失败或不存在，则 Azure Cosmos DB 会将冲突添加到只读的冲突源，在其中可以异步处理冲突，如[异步冲突解决模式](#custom--asynchronous)中所述。 
 
 ### <a name="custom--asynchronous"></a>自定义 - 异步  
 

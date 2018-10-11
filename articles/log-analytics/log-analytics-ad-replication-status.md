@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128718"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041894"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
 

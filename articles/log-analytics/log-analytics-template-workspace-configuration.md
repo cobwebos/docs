@@ -14,13 +14,13 @@ ms.devlang: json
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 314b3b5ae331d562b13ba593d5f9b35b87786003
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.component: ''
+ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225542"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041368"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：

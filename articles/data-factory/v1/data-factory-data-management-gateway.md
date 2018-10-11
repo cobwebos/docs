@@ -510,7 +510,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**。 运行与本地变量 **$Key** 关联的 **RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

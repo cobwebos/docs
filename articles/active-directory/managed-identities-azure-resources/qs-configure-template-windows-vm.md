@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223412"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018479"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -188,7 +188,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    如果 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及 `userAssignedIdentities` 字典值。
 
-   **Microsoft.Compute/virtualMachines API 版本 2018-06-01 和早期版本**
+   **Microsoft.Compute/virtualMachines API 版本 2018-06-01**
    
    如果 `apiVersion` 为 `2017-12-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及用户分配的托管标识的 `identityIds` 数组。  
    
@@ -235,7 +235,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```
    
-   **Microsoft.Compute/virtualMachines API 版本 2017-12-01 和早期版本**
+   **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
     
    如果 `apiVersion` 为 `2017-12-01`，则用户分配的托管标识存储在 `identityIds` 数组中，并且 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在模板的 `variables` 节中定义的某个变量中。
     
@@ -316,7 +316,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines API 版本 2017-12-01 和早期版本**
+   **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
    
    ```JSON
    "resources": [
@@ -375,7 +375,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     }
    ```
    
-   **Microsoft.Compute/virtualMachines API 版本 2018-06-01 和早期版本**
+   **Microsoft.Compute/virtualMachines API 版本 2018-06-01**
     
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `useraAssignedIdentities` 字典中删除。
 

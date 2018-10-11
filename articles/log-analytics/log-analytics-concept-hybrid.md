@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.component: ''
+ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495350"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041997"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集混合环境中的数据
 
@@ -102,7 +102,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS �
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可根据要求使用不同的方法将本地计算机与 Log Analytics 直接连接。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|Source | 方法 | Description|
+|源 | 方法 | Description|
 |-------|-------------|-------------|
 | Windows 计算机|- [手动安装](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 
 |Linux 计算机| [手动安装](log-analytics-quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 700d6b2c3bcd39aed38bf75556bcdcb59d1ab78b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 9fd06a8680a52ac0002f20da88d563ad1cbdb79a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128803"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041333"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 扩展故障排除
 本文可帮助排查使用 Microsoft Azure 上运行的 Windows 和 Linux 虚拟机的 Log Analytics VM 扩展时可能遇到的错误，并建议解决这些问题可能的解决方案。

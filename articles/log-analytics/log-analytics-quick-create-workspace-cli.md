@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptal
-ms.date: 09/19/2018
+ms.date: 10/02/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 47e2db42e21be6b540882a9c316517cfb4fb82e7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.component: ''
+ms.openlocfilehash: 19334bd7a6c2d451e51237cc16462bae2cfffb0a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054428"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041316"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -118,7 +118,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令：
 
     ```azurecli
-    azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+    azure group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息，如下所示：

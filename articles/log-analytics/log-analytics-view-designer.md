@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 362d19c489dfa0eda33036052ac9626414ef0933
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.component: ''
+ms.openlocfilehash: 9a981b80921b8fea60941a994595b19933b61a21
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340730"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042370"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>在 Log Analytics 中使用视图设计器创建自定义视图
 在 [Azure Log Analytics](log-analytics-overview.md) 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。

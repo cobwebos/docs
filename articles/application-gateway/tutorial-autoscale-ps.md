@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 9/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c54706f45653c43e6b41d0adb3132583079e6b6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167518"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016928"
 ---
 # <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建具有预留虚拟 IP 地址的自动缩放区域冗余应用程序网关
 
@@ -119,7 +119,7 @@ $rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleTyp
 - **固定容量模式**。 在此模式下，应用程序网关不自动缩放，而是在固定缩放单元容量下运行。
 
    ```azurepowershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 - **自动缩放模式**。 在此模式下，应用程序网关根据应用程序流量模式自动缩放。
 

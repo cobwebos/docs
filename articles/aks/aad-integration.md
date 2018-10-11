@@ -5,17 +5,16 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 8/9/2018
+ms.date: 08/09/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 5a93cb7b2abbf0eaa25304f61a8a422edf209959
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091163"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042115"
 ---
-# <a name="integrate-azure-active-directory-with-aks"></a>将 Azure Active Directory 与 AKS 应用相集成
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，你可以使用自己的 Azure Active Directory 身份验证令牌登录到 AKS 群集。 此外，群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
@@ -120,13 +119,16 @@ ms.locfileid: "44091163"
 使用 [az group create][az-group-create] 命令为 AKS 群集创建资源组。
 
 ```azurecli
-az group create --name myAKSCluster --location eastus
+az group create --name myResourceGroup --location eastus
 ```
 
 使用 [az aks create][az-aks-create] 命令部署群集。 请将以下示例命令中的值替换为创建 Azure AD 应用程序时收集的值。
 
 ```azurecli
-az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-keys --enable-rbac \
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --generate-ssh-keys \
   --aad-server-app-id b1536b67-29ab-4b63-b60f-9444d0c15df1 \
   --aad-server-app-secret wHYomLe2i1mHR2B3/d4sFrooHwADZccKwfoQwK2QHg= \
   --aad-client-app-id 8aaf8bd5-1bdd-4822-99ad-02bfaa63eea7 \
@@ -140,7 +142,7 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 首先，使用管理员访问权限，结合 `--admin` 参数运行 [az aks get-credentials][az-aks-get-credentials] 命令登录到群集。
 
 ```azurecli
-az aks get-credentials --resource-group myAKSCluster --name myAKSCluster --admin
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
 接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 将用户名更新为 Azure AD 租户中的某个用户名。 此示例向该帐户授予对群集所有命名空间的完全访问权限：
@@ -184,7 +186,7 @@ subjects:
 接下来，使用 [az aks get-credentials][az-aks-get-credentials] 命令提取非管理员用户的上下文。
 
 ```azurecli
-az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 运行任何 kubectl 命令后，系统会提示在 Azure 上进行身份验证。 请遵照屏幕说明操作。
@@ -195,18 +197,18 @@ $ kubectl get nodes
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BUJHWDGNL to authenticate.
 
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-42032720-0   Ready     agent     1h        v1.9.6
-aks-nodepool1-42032720-1   Ready     agent     1h        v1.9.6
-aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
+aks-nodepool1-79590246-0   Ready     agent     1h        v1.9.9
+aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.9
+aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 ```
 
 完成后，身份验证令牌将会缓存。 仅当令牌已过期或者重新创建了 Kubernetes 配置文件时，系统才会再次提示。
 
 如果在成功登录后看到授权错误消息，请确认你在 Azure AD 中不是以来宾用户的身份登录（在使用来自不同目录中的联合登录时，通常会出现此情况）。
+
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 
