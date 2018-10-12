@@ -5,16 +5,16 @@ description: 了解如何使用认知服务语音 SDK 在 Android 上的 Java �
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 0a52889ef879aeb8a5a1ed59b74619dc3337e1e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6428dbaabfe176e8d741818ee338bbc2a6bc70bb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432767"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883867"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
 
@@ -112,7 +112,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 打开源文件 `MainActivity.java`。 将 `package` 语句后的所有代码替换为以下内容。
+1. 打开源文件 `MainActivity.java`。 将此文件中的所有代码替换为以下内容。
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
@@ -122,7 +122,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为订阅密钥。
 
-1. 另请将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
+1. 另外，请将字符串 `YourServiceRegion` 替换为与你的订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 

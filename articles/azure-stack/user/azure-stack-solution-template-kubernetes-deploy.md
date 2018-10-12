@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 10/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71fdf609badd6c8a9f4db5a5a1d2aa70c8c2e5f5
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 62eb28c6cdb2dd6c1ddff1487826c01ef3bf6e3e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887466"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091583"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
@@ -39,6 +39,8 @@ ms.locfileid: "48887466"
 - 开发可以大规模伸缩、升级并可快速部署的应用程序。 
 - 通过不同的 Helm 应用程序简化应用程序的设计并改进其可靠性。 [Helm](https://github.com/kubernetes/helm) 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。
 - 轻松监视和诊断具有缩放和升级功能的应用程序的运行状况。
+
+您只能将收取所需的支持你的群集节点的计算使用情况。 有关详细信息，请参阅[使用情况和计费在 Azure Stack 中的](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)。
 
 ## <a name="prerequisites"></a>必备组件 
 
