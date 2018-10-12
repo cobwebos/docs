@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079706"
+documentType: LandingData
+title: Azure 门户自定义文档
+metadata:
+  description: 了解如何自定义 Azure 门户。
+  services: azure portal
+  documentationcenter: ''
+  author: cwatson-cat
+  manager: dougeby
+  editor: ''
+  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  ms.service: azure-portal
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 10/08/2018
+  ms.author: cwatson
+abstract:
+  description: Azure 门户是一个基于 Web 的统一控制台，用于生成、管理和监视从简单 Web 应用到复杂云应用程序的一切内容。 它包括可自定义仪表板和可访问性选项。
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/azure-preview-portal-supported-browsers-devices
+      html: <p>在所有最新的台式机、平板设备和浏览器上运行 Azure 门户。</p>
+      title: 支持的浏览器和设备
+    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+      html: <p>在 Azure 门户中更改对比度或颜色主题。</p>
+      title: 启用高对比度
+    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+      html: <p>了解整个 Azure 门户中使用的键盘快捷方式。</p>
+      title: 键盘快捷方式
+    - href: /azure/azure-portal/azure-portal-dashboards
+      html: <p>创建多个仪表板，并与对 Azure 订阅有访问权限的其他用户共享。</p>
+      title: 创建并共享 Azure 仪表板
+    - href: /azure/azure-portal/azure-portal-dashboard-share-access
+      html: <p>发布仪表板并与组织中的其他用户进行共享。</p>
+      title: 通过使用 RBAC 共享仪表板
+    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+      html: <p>以编程方式为组织创建和发布仪表板</p>
+      title: 以编程方式创建 Azure 仪表板
