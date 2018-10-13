@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902274"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310447"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -45,7 +45,7 @@ ms.locfileid: "48902274"
 
 将 Azure Stack 注册到 Azure 之前，必须准备好：
 
-- Azure 订阅的订阅 ID。 EA、 CSP 或 CSP 共享的服务注册为支持订阅。 Csp 需要决定是否[使用 CSP 或 CSPSS 订阅](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription)。<br><br>若要获取的 ID，登录到 Azure 中，单击**所有服务**。 然后，在**常规**类别中，选择**订阅**，单击所需的订阅并在**Essentials**可以找到订阅 id。
+- Azure 订阅的订阅 ID。 EA、 CSP 或 CSP 共享的服务注册为支持订阅。 Csp 需要决定是否[使用的 CSP 或 APSS 订阅](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)。<br><br>若要获取的 ID，登录到 Azure 中，单击**所有服务**。 然后，在**常规**类别中，选择**订阅**，单击所需的订阅并在**Essentials**可以找到订阅 id。
 
   > [!Note]  
   > 当前不支持德国云订阅。

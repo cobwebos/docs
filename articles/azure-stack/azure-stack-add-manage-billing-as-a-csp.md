@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b8c00795c7777e5485f4725e1da63fc764973f43
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628924"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166537"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>管理充当云服务提供商的 Azure Stack 的使用情况和计费 
 
@@ -35,7 +35,7 @@ ms.locfileid: "45628924"
 
 ![以云服务提供商身份启用使用情况跟踪和管理功能的过程。](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>创建 CSP 或 CSPSS 订阅
+## <a name="create-a-csp-or-apss-subscription"></a>创建 CSP 或 APSS 订阅
 
 ### <a name="cloud-service-provider-subscription-types"></a>云服务提供商订阅类型
 
@@ -44,13 +44,13 @@ ms.locfileid: "45628924"
  - 云服务提供商 
  - 合作伙伴共享服务订阅 
 
-#### <a name="csp-shared-services"></a>CSP 共享服务
+#### <a name="azure-partner-shared-services"></a>Azure 合作伙伴共享服务
 
-在直接 CSP 或 CSP 分销商运营 Azure Stack 的情况下，应首选云服务提供商共享服务 (CSPSS) 订阅进行注册。
+Azure 合作伙伴共享服务 (APSS) 订阅的首选注册时直接 CSP 或 CSP 分销商运营 Azure Stack。
 
-CSPSS 订阅与共享服务租户相关联。 注册 Azure Stack 时，需提供帐户的凭据，该帐户是订阅的所有者。 用于注册 Azure Stack 的帐户可以不同于用于部署的管理员帐户。 而且，这两个帐户不需要属于同一个域。 换言之，可以使用已经使用过的租户进行部署。 例如，可以使用 ContosoCSP.onmicrosoft.com 进行部署，然后使用另一租户（例如 IURContosoCSP.onmicrosoft.com）进行注册。 需要记住在一天。 为此 Azure Stack 管理时，使用 ContosoCSP.onmicrosoft.com 登录。 需要执行注册操作时，则使用 IURContosoCSP.onmicrosoft.com 登录到 Azure。
+APSS 订阅是与共享服务租户相关联。 注册 Azure Stack 时，需提供帐户的凭据，该帐户是订阅的所有者。 用于注册 Azure Stack 的帐户可以不同于用于部署的管理员帐户。 而且，这两个帐户不需要属于同一个域。 换言之，可以使用已经使用过的租户进行部署。 例如，可以使用 ContosoCSP.onmicrosoft.com 进行部署，然后使用另一租户（例如 IURContosoCSP.onmicrosoft.com）进行注册。 需要记住在一天。 为此 Azure Stack 管理时，使用 ContosoCSP.onmicrosoft.com 登录。 需要执行注册操作时，则使用 IURContosoCSP.onmicrosoft.com 登录到 Azure。
 
-请参阅下文，以便获取 CSPSS 订阅的说明以及如何创建订阅的指导：[添加 Azure 合作伙伴共享服务](https://msdn.microsoft.com/partner-center/shared-services)。
+请参阅以下有关 APSS 订阅和说明的说明如何创建订阅[添加 Azure 合作伙伴共享服务](https://msdn.microsoft.com/partner-center/shared-services)。
 
 #### <a name="csp-subscriptions"></a>CSP 订阅
 
@@ -58,7 +58,7 @@ CSPSS 订阅与共享服务租户相关联。 注册 Azure Stack 时，需提供
 
 ## <a name="register-azure-stack"></a>注册 Azure Stack
 
-按照前面部分中的信息创建的 CSPSS 订阅用于 Azure Stack 注册到 Azure。 有关详细信息，请参阅[与你的 Azure 订阅注册 Azure Stack](azure-stack-registration.md)。
+按照前面部分中的信息创建的 APSS 订阅用于 Azure Stack 注册到 Azure。 有关详细信息，请参阅[与你的 Azure 订阅注册 Azure Stack](azure-stack-registration.md)。
 
 ## <a name="add-end-customer"></a>添加最终客户
 
@@ -72,7 +72,7 @@ Azure Stack 可以通过注册执行以下操作：
  - 将 Azure Stack 使用情况数据转发到 Azure Commerce，并对 Azure 订阅计费。
  - 使用多租户 Azure Stack 部署时，在另一订阅上报告每个客户的使用情况。 使用多租户时，Azure Stack 可以在同一 Azure Stack 实例上支持不同的组织。
 
-每个 Azure Stack 都有一个默认的订阅和许多租户订阅。 默认订阅是当没有特定于租户的订阅时对其进行收费的一个 Azure 订阅。 它必须是所注册的第一个订阅。 若要使用多租户使用情况报告，订阅必须是 CSP 或 CSPSS 订阅。
+每个 Azure Stack 都有一个默认的订阅和许多租户订阅。 默认订阅是当没有特定于租户的订阅时对其进行收费的一个 Azure 订阅。 它必须是所注册的第一个订阅。 有关多租户使用情况报告来工作，订阅必须是 CSP 或 APSS 订阅。
 
 然后，对于每个将要使用 Azure Stack 的租户，使用 Azure 订阅对注册进行更新。 租户订阅必须是 CSP 类型，并且必须汇总到拥有默认订阅的合作伙伴处。 换言之，无法注册其他人的客户。
 

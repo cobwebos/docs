@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 16d775b15c9e4ec8898d5c7e498299288f1c37c2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 19206163a07964b564300bbed1fed45973c8fc74
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113425"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311059"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -68,7 +68,7 @@ $ExecutionContext.SessionState.LanguageMode
     -PrivilegedEndpoint AzS-ERCS01 `
     -BillingModel Development `
     -RegistrationName $RegistrationName `
-    -EnableUsageReporting:$UsageReporting
+    -UsageReportingEnabled:$UsageReporting
     ```
 3. 该脚本完成后，会显示以下消息：“现已使用提供的参数注册并激活环境”。
 

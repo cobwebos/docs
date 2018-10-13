@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a870ba238239a20af154f611f88e7c2fdb95f9f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870915"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310892"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -40,7 +40,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 此更新包含对 Azure Stack 的以下改进。
 
 <!--  2682594   | IS  --> 
-- **所有 Azure Stack 环境现在都使用协调世界时 (UTC) 时间区域格式。**  所有日志数据和相关的信息现在以 UTC 格式显示。 如果从以前的版本不使用 UTC 安装更新，将更新你的环境以使用 UTC。 
+- **所有 Azure Stack 环境现在都使用协调世界时 (UTC) 时间区域格式。**  以 UTC 格式显示所有日志数据和现在的相关的信息。 如果从以前的版本不使用 UTC 安装更新，将更新你的环境以使用 UTC。 
 
 <!-- 2437250  | IS  ASDK --> 
 - **支持托管的磁盘。** 现在可以在 Azure Stack 虚拟机和虚拟机规模集使用托管磁盘。 有关详细信息，请参阅[Azure Stack 托管磁盘： 差异和注意事项](/azure/azure-stack/user/azure-stack-managed-disk-considerations)。
@@ -52,7 +52,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - **准备扩展主机**。 扩展主机可用于通过减少所需的 TCP/IP 端口的数量来帮助保护 Azure Stack。 1808年更新后，可以准备，使 Azure Stack 可供扩展主机。 有关详细信息，请参阅[准备适用于 Azure Stack 扩展主机](/azure/azure-stack/azure-stack-extension-host-prepare)。
 
 <!-- IS --> 
-- **虚拟机规模集的库项现在是内置的**。 虚拟机规模集库项现在可在用户和管理员门户而无需下载它。  如果升级到 1808年是在升级完成时提供。  
+- **虚拟机规模集的库项现在内置的**。 虚拟机规模集库项现在可在用户和管理员门户而无需下载它。  如果升级到 1808年是在升级完成时提供。  
 
 <!-- IS, ASDK --> 
 - **虚拟机规模集缩放**。 可以使用门户，转到[缩放虚拟机规模集](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set)(VMSS)。    
@@ -61,10 +61,10 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - **对自定义 IPSec/IKE 策略配置的支持**有关[在 Azure Stack 中的 VPN 网关](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways)。
 
 <!-- | IS ASDK--> 
-- **Kubernetes marketplace 项**。 现在，你可以部署使用的 Kubernetes 群集[Kubernetes Marketplace 项](azure-stack-solution-template-kubernetes-cluster-add.md)。 用户可以选择 Kubernetes 项，并填写要部署到 Azure Stack 的 Kubernetes 群集的几个参数。 模板的目的是使用户在几个步骤中设置开发/测试 Kubernetes 部署更简单。
+- **Kubernetes marketplace 项**。 现在，你可以部署使用的 Kubernetes 群集[Kubernetes Marketplace 项](azure-stack-solution-template-kubernetes-cluster-add.md)。 用户可以选择 Kubernetes 项，并填写要部署到 Azure Stack 的 Kubernetes 群集的几个参数。 模板的目的是使用户能够设置几个步骤中的开发/测试 Kubernetes 部署更简单。
 
 <!-- | IS ASDK--> 
-- **区块链模板**。 现在可以执行[以太坊联盟部署](azure-stack-ethereum.md)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户在几个步骤中的安装程序开发/测试区块链部署更简单。
+- **区块链模板**。 现在可以执行[以太坊联盟部署](azure-stack-ethereum.md)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户能够设置几个步骤中的开发/测试区块链部署更简单。
 
 <!-- | IS ASDK--> 
 - **API 版本配置文件 2017年-03-09-配置文件已更新为 2018年-03-01-混合**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中的管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
@@ -144,6 +144,13 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
   ```   
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
+
+<!-- TBD - IS -->
+- 可能会看到重复出现，然后就消失在 Azure Stack 系统上的以下警报：
+   - *基础结构角色实例不可用*
+   - *缩放单位节点处于脱机状态*
+   
+  请运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
 
 - 在运行时[Test-azurestack](azure-stack-diagnostic-test.md) 1808年更新后，将显示警告消息从基板管理控制器 (BMC)。 您可以放心地忽略此警告。
 
@@ -226,7 +233,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 
 <!-- 2812138 | IS --> 
-- 可能会看到一个警报，以便**存储**组件具有下列详细信息：
+- 可能会看到一个警报，以便**存储**组件，它包含以下详细信息：
 
    - 名称: 存储服务内部通信错误  
    - 严重性：严重  

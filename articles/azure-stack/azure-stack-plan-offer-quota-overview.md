@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077110"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309189"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>计划、套餐、配额和订阅概述
 
@@ -40,7 +40,7 @@ ms.locfileid: "49077110"
 2. 创建包含一个或多个服务的计划。 创建计划时，需选择或创建配额，用于定义计划中每个服务的资源限制。
 3. 创建包含一个或多个计划的套餐。 套餐可以包含基本计划和可选的附加计划。
 
-创建套餐之后，用户可以订阅该套餐，以访问它提供的服务和资源。 用户可以根据需要订阅任意数量的产品/服务。 下图显示了某个用户订阅两个产品/服务的简单示例。 每个套餐包含一个或两个计划，每个计划可让用户访问服务。
+创建套餐之后，用户可以订阅该套餐，以访问它提供的服务和资源。 用户可以根据需要订阅任意数量的产品/服务。 下图显示了两个产品/服务订阅的用户的一个简单的示例。 每个套餐包含一个或两个计划，每个计划可让用户访问服务。
 
 ![包含套餐和计划的租户订阅](media/azure-stack-key-features/image4.png)
 
@@ -50,9 +50,9 @@ ms.locfileid: "49077110"
 
 ### <a name="quotas"></a>配额
 
-为了帮助管理云容量，可以使用预配置的配额，或者为计划中的每个服务创建新配额。 配额定义用户订阅可以部署或使用的资源上限。 例如，配额可能允许用户最多创建五个虚拟机 (VM)。 可在虚拟机上设置其他配额，例如 RAM 和 CPU 核心。
+若要帮助你管理你的云容量，可以使用预配置*配额*，或在计划中创建新的配额为每个服务。 配额定义用户订阅可以部署或使用的资源上限。 例如，配额可能允许用户最多创建五个虚拟机 (VM)。
 
-可按区域配置配额。 例如，为区域 A 提供计算服务的计划的配额可以是具有 4-GB RAM 和 8 个 CPU 核心的两个 VM。
+可按区域配置配额。 例如，提供了区域 A 的计算服务的计划可能与 4 GB RAM 和 8 个 CPU 内核的两个 Vm 的配额。
 
 >[!NOTE]
 >在 Azure Stack 开发工具包中，只有一个区域（名为 *local*）可用。
@@ -75,14 +75,14 @@ ms.locfileid: "49077110"
 
 ## <a name="subscriptions"></a>订阅
 
-订阅是用户访问套餐的方式。 如果你是服务提供商的 Azure Stack 操作员，则用户（租户）可通过订阅你的套餐来购买你的服务。 如果你是组织的 Azure Stack 操作员，则用户（员工）可以订阅你提供的服务，而无需付费。
+订阅是用户访问套餐的方式。 如果你是服务提供商的 Azure Stack 操作员，则用户 （租户） 通过订阅到产品/服务购买你的服务。 如果你是组织的 Azure Stack 操作员，你的用户 （员工） 可以订阅产品/服务而无需付费的服务。
 
 用户与套餐的每种组合都是一个唯一的订阅。 一个用户可订阅多个套餐，但每个订阅只适用于一个套餐。 计划、 产品/服务和配额仅适用于一个唯一的订阅 – 它们不能在订阅之间共享。 用户创建的每个资源都与一个订阅相关联。
 
 ### <a name="default-provider-subscription"></a>默认提供商订阅
 
-部署 Azure Stack 开发工具包时，系统会自动创建默认提供商订阅。 此订阅可用于管理 Azure Stack、部署其他资源提供程序，以及为用户创建计划和套餐。 出于安全和许可的原因，不应使用此订阅来运行客户工作负荷和应用程序。
+部署 Azure Stack 开发工具包时，会自动创建默认提供程序订阅。 此订阅可用于管理 Azure Stack、部署其他资源提供程序，以及为用户创建计划和套餐。 出于安全和许可的原因，不应使用此订阅来运行客户工作负荷和应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建计划](azure-stack-create-plan.md)
+有关计划和产品/服务详细信息，请参阅[创建一个计划](azure-stack-create-plan.md)。
