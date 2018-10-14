@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097879"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419519"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>教程：创建用于部署已加密存储帐户的 Azure 资源管理器模板
 
@@ -112,9 +112,14 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 本教程的目标是定义一个模板，以便创建加密的存储帐户。  示例模板仅创建基本的非加密型存储帐户。 若要查找与加密相关的配置，可以使用 Azure 存储帐户的模板参考。
 
 1. 浏览到 [Azure 模板](https://docs.microsoft.com/azure/templates/)。
-2. 在左侧的 TOC 中，选择“参考”->“存储”->“存储帐户”。 也可在“按标题筛选”字段中输入“存储”。  此页包含的架构用于定义存储帐户信息。
-3. 了解与加密相关的信息。  
-4. 在存储帐户资源定义的 properties 元素中，添加以下 json：
+2. 在“按标题筛选”中，输入“存储帐户”。
+3. 选择“参考/模板参考/存储/存储帐户”，如以下屏幕截图中所示：
+
+    ![资源管理器模板参考存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    资源管理器模板-资源参考-存储帐户
+1. 了解与加密相关的信息。  
+1. 在存储帐户资源定义的 properties 元素中，添加以下 json：
 
     ```json
     "encryption": {
@@ -151,7 +156,7 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用模板参考来自定义现有的模板。 本教程中使用的模板仅包含一个 Azure 资源。  在下一篇教程中，我们将开发包含多个资源的模板。 某些资源具有依赖的资源。
+本教程介绍了如何使用模板参考来自定义现有的模板。 若要了解如何创建多个存储帐户实例，请参阅：
 
 > [!div class="nextstepaction"]
-> [创建多个资源](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [创建多个实例](./resource-manager-tutorial-create-multiple-instances.md)

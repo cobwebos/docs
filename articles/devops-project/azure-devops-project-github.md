@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道 | VSTS 教程
+title: 使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道 | Azure DevOps Services 教程
 description: 可以通过 DevOps 项目轻松地在 Azure 上开始操作。 有了它，就可以使用自己的代码和 GitHub 存储库快速启动所选 Azure 服务上的应用。
 services: vsts
 documentationcenter: vs-devops-build
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205555"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407291"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道
 
@@ -33,9 +33,9 @@ Azure DevOps 项目提供简化的体验，既可使用现有的代码和 Git �
 > [!div class="checklist"]
 > * 创建 Azure DevOps 项目
 > * 配置到 GitHub 存储库的访问权限并选择一个框架
-> * 配置 VSTS 和 Azure 订阅 
+> * 配置 Azure DevOps Services 和 Azure 订阅 
 > * 提交对 GitHub 所做的更改并将其自动部署到 Azure
-> * 检查 VSTS CI/CD 管道
+> * 检查 Azure DevOps Services CI/CD 管道
 > * 配置 Azure Application Insights 监视
 
 ## <a name="prerequisites"></a>先决条件
@@ -45,7 +45,7 @@ Azure DevOps 项目提供简化的体验，既可使用现有的代码和 Git �
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-Azure DevOps 项目在 VSTS 中创建 CI/CD 管道。  可以创建**新 VSTS** 帐户，也可以使用**现有帐户**。  Azure DevOps 项目也在所选的 **Azure 订阅**中创建 **Azure 资源**。
+Azure DevOps 项目在 Azure DevOps Services 中创建 CI/CD 管道。  可以创建**新的 Azure DevOps Services** 组织，也可以使用**现有的组织**。  Azure DevOps 项目也在所选的 **Azure 订阅**中创建 **Azure 资源**。
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 
@@ -65,13 +65,11 @@ Azure DevOps 项目在 VSTS 中创建 CI/CD 管道。  可以创建**新 VSTS** 
 
 1. 在前述步骤中选择的应用程序框架规定了此处提供的 Azure 服务部署目标的类型。  选择所要的**目标服务**。  完成后，选择“下一步”。
 
-## <a name="configure-vsts-and-an-azure-subscription"></a>配置 VSTS 和 Azure 订阅 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>配置 Azure DevOps Services 和 Azure 订阅 
 
-1. 创建**新的** VSTS 帐户，或者选择**现有的**帐户。  为 VSTS 项目选择一个**名称**。  选择 **Azure 订阅**、**位置**，然后为应用程序选择一个**名称**。  完成后，选择“完成”。
+1. 创建**新的** Azure DevOps Services 组织，或者选择**现有的**组织。  为 Azure DevOps 项目选择一个**名称**。  选择 **Azure 订阅**、**位置**，然后为应用程序选择一个**名称**。  完成后，选择“完成”。
 
-    ![输入 VSTS 信息](_img/azure-devops-project-github/vstsazureinfo.png)
-
-1. **项目仪表板**会在数分钟内加载到 Azure 门户中。  首先会在 VSTS 帐户的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。  可以通过此仪表板查看 GitHub **代码存储库**、**VSTS CI/CD 管道**以及 **Azure 中的应用程序**。  在仪表板的右侧，选择“浏览”即可查看正在运行的应用程序。
+1. 数分钟后，**Azure DevOps 项目仪表板**会加载到 Azure 门户中。  首先会在 Azure DevOps Services 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。  可以通过此仪表板查看 GitHub **代码存储库**、**Azure DevOps Services CI/CD 管道**以及 **Azure 中的应用程序**。  在仪表板的右侧，选择“浏览”即可查看正在运行的应用程序。
 
     ![仪表板视图](_img/azure-devops-project-github/dashboardnopreview.png) 
     
@@ -79,41 +77,41 @@ Azure DevOps 项目会自动配置 CI 生成和发布触发器。  代码保留�
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>提交对 GitHub 所做的更改并将其自动部署到 Azure 
 
-现在可以与应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。  每次对 GitHub 存储库进行更改都会在 VSTS 中启动一个生成，而 VSTS Release Management 定义则执行到 Azure 的部署。
+现在可以与应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。  每次对 GitHub 存储库进行更改都会在 Azure DevOps 中启动一个生成，而 Azure DevOps CD 管道则执行到 Azure 的部署。
 
 1.  对应用程序进行更改，并将更改**提交**到 GitHub 存储库。
-2.  片刻之后，系统会在 VSTS 中启动生成。  可以使用 VSTS 帐户通过 DevOps 项目仪表板或浏览器监视生成状态。
+2.  片刻之后，系统会在 Azure DevOps Services 中启动生成。  可以使用 Azure DevOps Services 组织通过 Azure DevOps 项目仪表板或浏览器监视生成状态。
 3.  生成完成以后，请在浏览器中**刷新应用程序**，验证是否能够看到所做的更改。
 
-## <a name="examine-the-vsts-cicd-pipeline"></a>检查 VSTS CI/CD 管道
+## <a name="examine-the-azure-devops-services-cicd-pipeline"></a>检查 Azure DevOps Services CI/CD 管道
 
-Azure DevOps 项目已自动在 VSTS 帐户中配置完整的 VSTS CI/CD 管道。  根据需要浏览和自定义管道。  请执行以下步骤，自行熟悉 VSTS 生成和发布定义。
+Azure DevOps 项目已自动在 Azure DevOps Services 组织中配置 Azure DevOps Services CI/CD 管道。  根据需要浏览和自定义管道。  请执行以下步骤，自行熟悉 Azure DevOps Services 生成和发布管道。
 
-1. 在 Azure DevOps 项目仪表板**顶部**选择“生成管道”。  此链接会打开一个浏览器标签页，并打开新项目的 VSTS 生成定义。
+1. 在 Azure DevOps 项目仪表板**顶部**选择“生成管道”。  此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps Services 生成管道。
 
-1. 将鼠标光标移到“状态”字段旁边的生成定义的右侧。 选择显示的**省略号**。  此操作会打开一个菜单，可以在其中启动多项活动，例如将新生成排队、暂停某个生成、编辑生成定义。
+1. 将鼠标光标移到“状态”字段旁边的生成管道的右侧。 选择显示的**省略号**。  此操作会打开一个菜单，可以在其中启动多项活动，例如将新生成排队、暂停某个生成、编辑生成管道。
 
 1. 选择“编辑”。
 
-1. 在此视图中，针对生成定义**检查各种任务**。  此生成会执行各种任务，例如从 Git 存储库提取源、还原依赖项、发布用于部署的输出。
+1. 在此视图中，请针对生成管道**检查各种任务**。  此生成会执行各种任务，例如从 Git 存储库提取源、还原依赖项、发布用于部署的输出。
 
-1. 在生成定义的顶部，选择“生成定义名称”。
+1. 在生成管道的顶部，选择“生成管道名称”。
 
-1. 将生成定义的**名称**更改为更具说明性的名称。  选择“保存和排队”，然后选择“保存”。
+1. 将生成管道的**名称**更改为更具说明性的名称。  选择“保存和排队”，然后选择“保存”。
 
-1. 在生成定义名称下，选择“历史记录”。  此时会看到最近针对生成所做的更改的审核线索。  VSTS 会记录对生成定义所做的任何更改，并可用于版本比较。
+1. 在生成管道名称下，选择“历史记录”。  此时会看到最近针对生成所做的更改的审核线索。  Azure DevOps Services 会记录对生成管道所做的任何更改，并可用于版本比较。
 
 1. 选择“触发器”。  Azure DevOps 项目已自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
 
 1. 选择“保留期”。  可以根据方案指定策略，以便保留或删除特定数目的生成。
 
-1. 选择“生成和发布”，然后选择“发布”。  Azure DevOps 项目创建的 VSTS 发布定义可以用于管理到 Azure 的部署。
+1. 选择“生成和发布”，然后选择“发布”。  Azure DevOps 项目创建的 Azure DevOps Services 发布管道可以用于管理到 Azure 的部署。
 
-1. 在浏览器左侧，选择发布定义旁边的**省略号**，然后选择“编辑”。
+1. 在浏览器左侧，选择发布管道旁边的**省略号**，然后选择“编辑”。
 
-1. 发布定义包含一个**管道**，用于定义发布过程。  在“项目”下选择“删除”。  在前述步骤中检查过的生成定义生成用于项目的输出。 
+1. 发布管道包含一个**管道**，用于定义发布过程。  在“项目”下选择“删除”。  在前述步骤中检查过的生成管道生成用于项目的输出。 
 
-1. 在“删除”图标右侧，选择“持续部署触发器”。  此发布定义有一个启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。  也可选择禁用此触发器，这样一来，部署就需要手动执行。 
+1. 在“删除”图标右侧，选择“持续部署触发器”。  此发布管道有一个启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。  也可选择禁用此触发器，这样一来，部署就需要手动执行。 
 
 1. 在浏览器左侧选择“任务”。  这些任务是部署过程执行的活动。  在此示例中，已创建了一个用于将项目部署到 **Azure 应用服务**的任务。
 
@@ -159,17 +157,17 @@ Azure DevOps 项目已自动在 VSTS 帐户中配置完整的 VSTS CI/CD 管道�
 
 ## <a name="next-steps"></a>后续步骤
 
-当你在本教程中配置 CI/CD 过程时，系统会在 VSTS 项目中自动创建生成和发布定义。 可以根据所在团队的需求修改这些生成和发布定义。 你已了解如何：
+当你在本教程中配置 CI/CD 过程时，系统会在 Azure DevOps 项目中自动创建生成和发布管道。 可以根据所在团队的需求修改这些生成和发布管道。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Azure DevOps 项目
 > * 配置到 GitHub 存储库的访问权限并选择一个框架
-> * 配置 VSTS 和 Azure 订阅 
+> * 配置 Azure DevOps Services 和 Azure 订阅 
 > * 提交对 GitHub 所做的更改并将其自动部署到 Azure
-> * 检查 VSTS CI/CD 管道
+> * 检查 Azure DevOps Services CI/CD 管道
 > * 配置 Azure Application Insights 监视
 
-若要详细了解 VSTS 管道，请参阅以下教程：
+若要详细了解 Azure DevOps Services CI/CD 管道，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](https://docs.microsoft.com/vsts/pipelines/release/define-multistage-release-process?view=vsts)
+> [自定义 CD 过程](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

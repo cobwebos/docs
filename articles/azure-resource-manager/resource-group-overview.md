@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969285"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220879"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不作为独立的实体出现，而是作为单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。 
@@ -155,6 +155,12 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 * [使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)
 * [使用 Resource Manager 模板和 Resource Manager REST API 部署资源](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>安全部署实践
+
+将复杂服务部署到 Azure 时，你可能需要将服务部署到多个区域，并且在继续执行下一步骤前需要检查其运行状况。 可以使用 [Azure 部署管理器](deployment-manager-overview.md)来协调服务的分阶段推出。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要这些预防措施，则执行上一部分中的部署操作是更好的选择。
+
+部署管理器当前为公共预览版。
+
 ## <a name="tags"></a>标记
 资源管理器提供了标记功能，可根据管理或计费要求为资源分类。 如果有一系列复杂的资源组和资源，并想要以最有利的方式可视化这些资产，则可以使用标记。 例如，可以标记组织中充当类似角色或者属于同一部门的资源。 如果不使用标记，组织中的用户可以创建多个资源，这可能会使将来的标识和管理变得十分困难。 例如，你可能想要删除某个特定项目的所有资源。 如果没有为项目标记这些资源，则必须手动查找它们。 标记是降低不必要的订阅成本的重要方法。 
 
@@ -176,20 +182,6 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
   }
 ]
 ```
-
-若要检索带有某标记值的所有资源，请使用以下 PowerShell cmdlet：
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-或者运行以下 Azure CLI 命令：
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-也可通过 Azure 门户查看标记的资源。
 
 订阅的[使用情况报告](../billing/billing-understand-your-bill.md)包括标记名称和值，可用于按标记对成本进行细分。 有关标记的详细信息，请参阅 [使用标记来组织 Azure 资源](resource-group-using-tags.md)。
 
@@ -228,29 +220,8 @@ Azure 还提供多个特定于资源的角色。 常见的此类角色有：
 
 可以显式锁定关键资源，以防止用户删除或修改这些资源。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 
-## <a name="activity-logs"></a>活动日志
-Resource Manager 将记录创建、修改或删除资源的所有操作。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。 可按多个值筛选日志，包括启动操作的用户。 有关使用活动日志的信息，请参阅[查看活动日志以管理 Azure 资源](resource-group-audit.md)。
-
 ## <a name="customized-policies"></a>自定义策略
 资源管理器可创建自定义策略来管理资源。 创建的策略的类型可以包括各种应用场景。 可以对资源实施命名约定，限制可以部署的资源类型和实例，或限制可以托管某个类型资源的区域。 可以获取资源的标记值以按部门组织帐单。 可以通过创建策略来降低成本并在订阅中保持一致性。 
-
-使用 JSON 定义策略，并在订阅或资源组中应用这些策略。 策略不同于基于角色的访问控制，因为策略应用于资源类型。
-
-以下示例演示，策略通过指定所有资源都包括 costCenter 标记，确保标记的一致性。
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 可创建许多其他类型的策略。 有关详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)。
 

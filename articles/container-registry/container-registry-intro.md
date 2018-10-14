@@ -3,18 +3,17 @@ title: Azure 中的专用 Docker 容器注册表
 description: 介绍 Azure 容器注册表服务，该服务提供基于云的托管专用 Docker 注册表。
 services: container-registry
 author: stevelas
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/08/2018
+ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: f282d7d6950278d0c270009256cf054a0d630e60
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120629"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031317"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -28,12 +27,12 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 将 Azure 容器注册表中的映像提取到各种部署目标：
 
-* 用于跨主机群集管理容器化应用程序的**可缩放协调系统**，包括 [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) 和 [Kubernetes](http://kubernetes.io/docs/)。
+* **可缩放业务流程系统**，用于跨主机群集管理容器化应用程序，包括 [Kubernetes](http://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/) 和 [Docker Swarm](https://docs.docker.com/swarm/)。
 * 支持大规模生成和运行应用程序的 **Azure 服务**，包括 [Azure Kubernetes 服务 (AKS)](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/) 和其他服务。
 
-开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过连续集成和部署工具（如 [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) 或 [Jenkins](https://jenkins.io/)）将目标设置为容器注册表。
+开发人员还可以在执行容器开发工作流的过程中将内容推送到容器注册表。 例如，通过连续集成和部署工具（例如 [Azure DevOps Services](https://www.visualstudio.com/docs/overview) 或 [Jenkins](https://jenkins.io/)）将目标设置为容器注册表。
 
-配置 [ACR Build](#azure-container-registry-build) 生成任务以使其在应用程序映像的基础映像发生更新时自动重新生成应用程序映像。 可以使用 ACR Build 在团队向 Git 存储库提交代码时自动执行映像生成。 *ACR Build 当前为预览版。*
+配置 [ACR 任务](#azure-container-registry-build)以在应用程序映像的基础映像发生更新时自动重新生成应用程序映像。 可以使用 ACR 任务在团队向 Git 存储库提交代码时自动执行映像生成。
 
 ## <a name="key-concepts"></a>关键概念
 
@@ -51,14 +50,14 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 * **容器** - 容器定义软件应用程序及其在完整文件系统中包装的依赖项，包括代码、运行时、系统工具和库。 可以基于从容器注册表提取的 Windows 或 Linux 映像运行 Docker 容器。 在一台计算机上运行的容器共享操作系统内核。 Docker 容器完全可移植到所有主要 Linux 发行版、macOS 和 Windows。
 
-## <a name="azure-container-registry-build-preview"></a>Azure 容器注册表生成（预览版）
+## <a name="azure-container-registry-tasks"></a>Azure 容器注册表任务
 
-[Azure 容器注册表生成](container-registry-build-overview.md) (ACR Build) 是 Azure 容器注册表中的一个功能套件，用于在 Azure 中提供简化且高效的 Docker 容器映像生成功能。 使用 ACR Build 可以通过将 `docker build` 操作卸载到 Azure 来将开发内部循环扩展到云。 配置生成任务以使其自动执行容器 OS 和框架修补管道，并使其在团队将代码提交到源代码管理时自动生成映像。
+[Azure 容器注册表任务](container-registry-tasks-overview.md)（ACR 任务）是 Azure 容器注册表中的一个功能套件，用于在 Azure 中提供简化且高效的 Docker 容器映像生成功能。 使用 ACR 任务可以通过将 `docker build` 操作卸载到 Azure 来将开发内部循环扩展到云。 配置生成任务以使其自动执行容器 OS 和框架修补管道，并使其在团队将代码提交到源代码管理时自动生成映像。
 
-[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
+[多步骤任务](container-registry-tasks-overview.md#multi-step-tasks-preview)（ACR 任务的一项预览版功能），提供用于在云中构建、测试和修补容器映像的基于步骤的任务定义和执行。 任务步骤定义各个容器映像构建和推送操作。 它们还可以定义一个或多个容器的执行，每个步骤都使用容器作为其执行环境。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure 门户创建容器注册表](container-registry-get-started-portal.md)
 * [使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)
-* [使用 ACR Build（预览版）自动执行 OS 和框架修补](container-registry-build-overview.md)
+* [使用 ACR 任务自动执行 OS 和框架修补](container-registry-tasks-overview.md)

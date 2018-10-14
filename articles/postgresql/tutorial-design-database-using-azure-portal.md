@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186302"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406376"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL
 
@@ -32,7 +32,7 @@ ms.locfileid: "30186302"
 > * 还原数据
 
 ## <a name="prerequisites"></a>先决条件
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。
@@ -54,7 +54,7 @@ ms.locfileid: "30186302"
     - 订阅：如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。
     - 资源组：**myresourcegroup**
     - 选择的服务器管理员登录名和密码
-    - Location
+    - 位置
     - PostgreSQL 版本
 
    > [!IMPORTANT]
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL 服务在服务器级别使用防火墙。 默认�
 
 2.  在服务器页中，选择“连接安全性”。 
 
-3.  单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 本教程中允许所有 IP，方法是键入“规则名称 = AllowAllIps”，“起始 IP = 0.0.0.0”，“结束 IP = 255.255.255.255”，并单击“保存”。 可以设置涵盖较小 IP 范围的特定防火墙规则，以便通过网络进行连接。
+3.  单击“规则名称”下的文本框，添加新的防火墙规则，将连接的 IP 范围加入允许列表。 输入 IP 范围。 单击“ **保存**”。
 
    ![用于 PostgreSQL 的 Azure 数据库 - 创建防火墙规则](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 

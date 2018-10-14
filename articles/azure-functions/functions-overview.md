@@ -4,25 +4,21 @@ description: 了解如何使用 Azure Functions 以分钟为单位优化异步�
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d60c898225b944801504f38d536262134a31e021
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: bf3ebbf0c607bd87254ad7b9f8fae0a99ca66278
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24877895"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392731"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
 Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Java 或 PHP。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。 使用 Azure Functions，可在 Microsoft Azure 上开发[无服务器](https://azure.microsoft.com/overview/serverless-computing/)应用程序。
@@ -37,7 +33,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 * **引入自己的依赖项** - Functions 支持 NuGet 和 NPM，因此用户可以使用自己的常用库。  
 * **集成安全性** - 使用 OAuth 提供程序（如 Azure Active Directory、Facebook、Google、Twitter 和 Microsoft 帐户）保护 HTTP 触发的函数。  
 * **简化集成** - 轻松利用 Azure 服务和软件即服务 (SaaS) 产品/服务。 有关一些示例，请参阅[集成部分](#integrations)。  
-* **灵活开发** - 直接在门户中编写函数代码，或者通过 [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md)、[Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) 和其他[受支持的开发工具](../app-service/app-service-deploy-local-git.md)设置持续集成和部署代码。  
+* **灵活开发** - 直接在门户中编写函数代码，或者通过 [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md)、[Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) 和其他[受支持的开发工具](../app-service/app-service-deploy-local-git.md)设置持续集成和部署代码。  
 * **开放源代码** - Functions 运行时是一个开放源代码， [可在 GitHub 上找到](https://github.com/azure/azure-webjobs-sdk-script)。  
 
 ## <a name="what-can-i-do-with-functions"></a>使用 Functions 可以做什么？
@@ -47,11 +43,10 @@ Functions 提供模板，以帮助用户从主要方案开始，包括以下模�
 
 * **HTTPTrigger** - 使用 HTTP 请求触发执行代码。 有关示例，请参阅[创建第一个函数](functions-create-first-azure-function.md)。
 * **TimerTrigger** - 按预定义的计划执行清除或其他批处理任务。 有关示例，请参阅[创建由计时器触发的函数](functions-create-scheduled-function.md)。
-* **GitHub webhook** - 响应 GitHub 存储库中发生的事件。 有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-github-webhook-triggered-function.md)。
-* **Generic webhook** - 处理来自支持 webhook 的任何服务的 webhook HTTP 请求。 有关示例，请参阅[创建由通用 webhook 触发的函数](functions-create-generic-webhook-triggered-function.md)。
-* **CosmosDBTrigger** - 在 NoSQL 数据库中以集合形式添加或更新 Azure Cosmos DB 文档时，对这些文档进行处理。 有关示例，请参阅[创建由 Azure Cosmos DB 触发的函数](functions-create-cosmos-db-triggered-function.md)。
+* **CosmosDBTrigger** - 在 NoSQL 数据库中以集合形式添加或更新 Azure Cosmos DB 文档时，对这些文档进行处理。 有关详细信息，请参阅 [Azure Cosmos DB 绑定](functions-bindings-cosmosdb-v2.md)。
 * **BlobTrigger** - Azure 存储 blob 添加到容器时，处理这些 blob。 可以使用此函数调整图像大小。 有关详细信息，请参阅 [Blob 存储帐户绑定](functions-bindings-storage-blob.md)。
-* **QueueTrigger** - 当消息到达 Azure 存储队列时，响应这些消息。 有关示例，请参阅[创建由 Azure 队列存储触发的函数](functions-create-storage-queue-triggered-function.md)。
+* **QueueTrigger** - 当消息到达 Azure 存储队列时，响应这些消息。 有关详细信息，请参阅 [Azure 队列存储绑定](functions-bindings-storage-queue.md)。
+* **EventGridTrigger** - 响应传递到 Azure 事件网格中的订阅的事件。 支持使用基于订阅的模型（包括筛选）来接收事件。 它是用于构建基于事件的体系结构的良好解决方案。 有关示例，请参阅[使用事件网格自动调整上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
 * **EventHubTrigger** - 响应传送到 Azure 事件中心的事件。 在应用程序检测、用户体验或工作流处理以及物联网 (IoT) 方案中特别有用。 有关详细信息，请参阅[事件中心绑定](functions-bindings-event-hubs.md)。
 * **ServiceBusQueueTrigger** - 通过侦听消息队列将代码连接到其他 Azure 服务或本地服务。 有关详细信息，请参阅[服务总线绑定](functions-bindings-service-bus.md)。
 * **ServiceBusTopicTrigger** - 通过订阅主题将代码连接到其他 Azure 服务或本地服务。 有关详细信息，请参阅[服务总线绑定](functions-bindings-service-bus.md)。
@@ -62,13 +57,11 @@ Azure Functions 支持 *触发器*（用于启动代码执行）和*绑定*（�
 Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可以触发函数开始执行，或者可用作代码的输入和输出。 Azure Functions 支持以下服务集成：
 
 * Azure Cosmos DB
-* Azure 事件中心 
+* Azure 事件中心
 * Azure 事件网格
-* Azure 移动应用（表）
 * Azure 通知中心
 * Azure 服务总线（队列和主题）
-* Azure 存储（blob、队列和表） 
-* GitHub (webhook)
+* Azure 存储（blob、队列和表）
 * 本地（使用服务总线）
 * Twilio（短信）
 
@@ -76,7 +69,7 @@ Azure Functions 可与各种 Azure 和第三方服务集成。 这些服务可�
 Azure Functions 有两种定价计划。 请选择最适合自己的那种： 
 
 * **使用计划** - 用户的函数运行时，Azure 提供所有所需的计算资源。 用户不必担心资源管理，只需为自己的代码运行的时间付费。 
-* **应用服务计划** - 运行函数的方式就像运行 web 应用、移动应用和 API 应用一样。 如果已对其他应用程序使用应用服务，可以按相同的计划运行自己的函数，而不用另外付费。 
+* **应用服务计划** - 将函数像 Web 应用一样运行。 如果已对其他应用程序使用应用服务，可以按相同的计划运行自己的函数，而不用另外付费。 
 
 有关托管计划的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。 完整的定价详细信息可在 [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)中找到。
 

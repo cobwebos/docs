@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d32fb6e1a85865d89a2f8ee1483eb8fd599b4bb6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050221"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408906"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器
 
@@ -50,7 +50,7 @@ ms.locfileid: "43050221"
     服务器管理员登录名 |*myadmin*| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 该密码必须含以下字符类别中的三类：英文大写字母、英文小写字母、数字（0 到 9）及非字母数字字符（!、$、#、% 等）。
     位置|离用户最近的区域| 最靠近用户的位置。
-    版本|最新版本| 除非另有特定的要求，否则为最新 PostgreSQL 版本。
+    版本|最新主版本| 除非另有特定的要求，否则为最新 PostgreSQL 主版本。
     定价层 | **常规用途**、**第 4 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。*第 4 代*、*2 个 vCore*、*5 GB*和 *7 天*分别是**计算的代**、**vCore**、**存储**和**备份保留期**的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
 
     > [!IMPORTANT]
@@ -78,17 +78,10 @@ ms.locfileid: "43050221"
 
 3. 在“防火墙规则”下的“规则名称”列中选择空白文本框，开始创建防火墙规则。 
 
-    本快速入门允许所有 IP 地址连接到服务器。 在每个列的文本框中填充以下值：
+   在文本框中填写将访问服务器的客户端的名称，以及起始和结束 IP 范围。 如果它是单个 IP，请为起始 IP 和结束 IP 使用相同的值。
 
-    规则名称 | 起始 IP | 结束 IP 
-    ---|---|---
-    AllowAllIps | 0.0.0.0 | 255.255.255.255
-
-     ![设置防火墙规则](./media/quickstart-create-database-portal/5-firewall-2.png)
+   ![设置防火墙规则](./media/quickstart-create-database-portal/5-firewall-2.png)
      
-      > [!NOTE]
-      > 对于生产实例，只能将防火墙规则设置为接受已知 IP 地址的传入请求。  这些设置仅作示例用。
-      >
 
 4. 在“连接安全性”页的上部工具栏中，选择“保存”。 等到指示连接安全性更新已成功完成的通知出现后，再继续操作。
 

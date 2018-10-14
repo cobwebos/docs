@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 8ed6df3a0aee500192e401f1089925bf6e2d84d8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0bca8948e4afe156d468801f795c68c2143267f5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38472621"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225139"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>创建新的 Azure API 管理服务实例
 
@@ -46,7 +46,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location WestUS
 
 ## <a name="create-an-api-management-service"></a>创建 API 管理服务
 
-这是长时间运行的操作，可能需要长达 15 分钟。
+这是一个长时间运行的操作，可能需要长达 15 分钟。
 
 ```azurepowershell-interactive
 New-AzureRmApiManagement -ResourceGroupName "myResourceGroup" -Location "West US" -Name "apim-name" -Organization "myOrganization" -AdminEmail "myEmail" -Sku "Developer"

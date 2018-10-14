@@ -4,7 +4,7 @@ description: 本文提供媒体服务的高级概述和包含详细信息的相�
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure 媒体服务, 流, 广播, 实时, 脱机
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 07/14/2018
+ms.date: 09/25/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325925"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221922"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -55,7 +55,7 @@ v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管�
 该版本提供以下功能：  
 
 * “转换”有助于定义媒体处理或分析任务的简单工作流。 “转换”是处理视频和音频文件的一种方法。 可以通过将作业提交到“转换”，重复应用“转换”来处理内容库中的所有文件。
-* “作业”用于处理（编码或分析）视频。 可以使用 HTTP(s)、URL、SAS URL 或位于 Azure Blob 存储中的文件路径，在作业上指定输入内容。 
+* “作业”用于处理（编码或分析）视频。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径，在作业上指定输入内容。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
 * “通知”用于监视作业进度或状态，或实时频道启动/停止和错误事件。 “通知”与 Azure 事件网格通知系统集成。 在 Azure 媒体服务中可以轻松订阅多个资源的事件。 
 * Azure 资源管理模板可用于创建和部署转换、流式处理终结点、频道等等。
 * 可在资源级别设置基于角色的访问控制，从而锁定对特定资源（如转换、频道）的访问。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185845"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038283"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>教程：自定义 Azure IoT Central 操作员的视图
 
@@ -50,9 +50,9 @@ ms.locfileid: "43185845"
 
     ![选择连接的空调设备](media/tutorial-customize-operator/selectdevice.png)
 
-    对某个设备（例如“连接的空调 - 1”）进行更改时，会对基础模板进行更改。 有关详细信息，请参阅[创建新设备模板版本](howto-version-devicetemplate.md)。
+    当处于某个设备（例如“连接的空调 - 1”）中时，可以选择“编辑模板”来更改基础模板。 有关详细信息，请参阅[创建新设备模板版本](howto-version-devicetemplate.md)。
 
-3. 若要编辑仪表板，请选择“仪表板”：
+3. 若要编辑仪表板，请选择“仪表板”，然后选择“编辑模板”：
 
     ![设备模板仪表板页](media/tutorial-customize-operator/dashboard.png)
 
@@ -77,11 +77,13 @@ ms.locfileid: "43185845"
 
     ![编辑仪表板布局](media/tutorial-customize-operator/dashboardlayout.png)
 
+7. 完成更改后，单击“完成”。
+
 ## <a name="configure-your-settings-layout"></a>配置设置布局
 
 构建人员还可以配置设备设置的操作员视图。 操作员使用设备设置页来配置设备。 例如，操作员可以使用设置页来设置冷冻机的目标温度。
 
-1. 若要编辑连接的空调的设置布局，请选择“设置”：
+1. 若要编辑连接的空调的设置布局，请选择“设置”，然后选择“编辑模板”：
 
     ![“设置”页](media/tutorial-customize-operator/settings.png)
 
@@ -89,14 +91,16 @@ ms.locfileid: "43185845"
 
     ![编辑设置布局](media/tutorial-customize-operator/settingslayout.png)
 
+3. 完成更改后，单击“完成”。
+
 > [!NOTE]
-> 在“设计模式”下，无法编辑设置值。
+> 在“编辑模板”模式下，无法编辑设置值。
 
 ## <a name="configure-your-properties-layout"></a>配置属性布局
 
 除了仪表板和设置以外，还可以配置设备属性的操作员视图。 操作员使用设备属性页来管理设备元数据。 例如，操作员可以使用属性页来查看设备序列号，或更新制造商的联系详细信息。
 
-1. 若要编辑连接的空调的属性布局，请选择“属性”：
+1. 若要编辑连接的空调的属性布局，请选择“属性”，然后选择“编辑模板”：
 
     ![“属性”页](media/tutorial-customize-operator/properties.png)
 
@@ -104,16 +108,18 @@ ms.locfileid: "43185845"
 
     ![编辑属性布局](media/tutorial-customize-operator/propertieslayout.png)
 
+3. 完成更改后，单击“完成”。
+
 > [!NOTE]
-> 在“设计模式”下，无法编辑属性值。
+> 在“编辑模板”模式下，无法编辑属性值。
 
 ## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>以操作员身份预览连接的空调设备
 
-在“设计模式”下，可以自定义操作员的仪表板、设置和属性页。 如果关闭“设计模式”，则可以用操作员的身份查看应用程序。
+在“编辑模板”模式下，可以自定义操作员的仪表板、设置和属性页。 如果未处于“编辑模板”模式，则可以作为操作员查看应用程序。
 
-1. 若要以操作员的身份查看连接的空调设备，需要关闭“设计模式”。 若要关闭“设计模式”，请在页面右上角将“设计模式”切换到关闭状态。
+1. 若要以操作员身份查看连接的空调设备，需要单击“完成”以停止编辑模板。 这会使你返回到设备的操作员视图。
 
-2. 若要更新此设备的序列号，请编辑序列号磁贴中的值，并选择“保存”：
+2. 若要更新此设备的位置，请编辑位置磁贴中的值，并选择“保存”：
 
     ![编辑属性值](media/tutorial-customize-operator/editproperty.png)
 
@@ -131,7 +137,7 @@ ms.locfileid: "43185845"
 
 构建人员或操作员在登录到 Azure IoT Central 应用程序时，会看到主页。 构建人员可以配置此主页的内容，以包含对操作员最有用且最相关的内容。
 
-1. 若要自定义默认主页，请导航到“主页”页，并在页面右上角打开“设计模式”。 启用“设计模式”后，一个面板将从右侧滑出，其中包含可添加到主页的对象列表。
+1. 若要自定义默认主页，请导航到**主页**，并在页面右上角选择“编辑”。 选择“编辑”后，一个面板将从右侧滑出，其中包含可添加到主页的对象列表。
 
     ![应用程序构建人员页](media/tutorial-customize-operator/builderhome.png)
 
@@ -150,7 +156,7 @@ ms.locfileid: "43185845"
 
 ## <a name="preview-the-default-home-page-as-an-operator"></a>以操作员身份预览默认主页
 
-若要以操作员身份预览主页，请在页面右上角关闭“设计模式”：
+若要以操作员身份预览主页并且不再编辑，请在页面右上角选择“完成”
 
 ![切换设计模式](media/tutorial-customize-operator/operatorviewhome.png)
 

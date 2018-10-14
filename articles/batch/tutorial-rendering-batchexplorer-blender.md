@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036309"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392545"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教程：使用 Batch Explorer 渲染 Blender 场景
 
@@ -24,11 +24,11 @@ ms.locfileid: "40036309"
 > * 渲染多个帧
 > * 查看并下载渲染的帧文件
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
 ## <a name="prerequisites"></a>先决条件
 
-Azure Batch 帐户和关联的存储帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](https://docs.microsoft.com/azure/batch/quick-create-cli)），了解如何创建 Batch 帐户。
+要以按用户付款模式使用 Batch 中的渲染应用程序，需要有一个即用即付订阅或其他 Azure 购买选项。 如果使用的是提供货币额度的免费 Azure 套餐，则不支持按使用付费的许可。
+
+需要有一个具有关联的存储帐户的 Azure Batch 帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](https://docs.microsoft.com/azure/batch/quick-create-cli)），了解如何创建 Batch 帐户。
 
 就本教程中指定的 VM 大小和 VM 数目来说，需要至少包含 50 个核心的低优先级核心配额；可以使用默认配额，但必须使用较小的 VM 大小，这意味着图像渲染的时间会变长。 请求提高核心配额的过程详见[此文](https://docs.microsoft.com/azure/batch/batch-quota-limit)。
 
