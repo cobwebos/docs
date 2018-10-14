@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7eb17138f42cdada10edd5ef08873eb2afee91fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452609"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068972"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
 
@@ -74,7 +74,7 @@ ms.locfileid: "47452609"
     
     |参数/选项  |Description |
     |--------------------|------------|
-    |Source            | 指定源目录的路径。        |
+    |源            | 指定源目录的路径。        |
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
@@ -163,7 +163,75 @@ ms.locfileid: "47452609"
 > -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。 
 > - 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 
-## <a name="verify-data"></a>验证数据 
+### <a name="split-and-copy-data-to-disks"></a>拆分数据并将其复制到磁盘
+
+如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，则可以使用此可选过程。 借助 Data Box 拆分复制工具可以在 Windows 计算机上拆分和复制数据。
+
+1. 在 Windows 计算机上，请确保将 Data Box 拆分复制工具下载并提取到某个本地文件夹中。 下载适用于 Windows 的 Data Box Disk 工具集时已下载此工具。
+2. 打开文件资源管理器。 记下分配给 Data Box Disk 的数据源驱动器和驱动器号。 
+
+     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+ 
+3. 标识要复制的源数据。 例如，在本例中：
+    - 标识了以下块 Blob 数据。
+
+         ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+
+    - 标识了以下页 Blob 数据。
+
+         ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+ 
+4. 转到该软件已提取到的文件夹。 在该文件夹中找到 SampleConfig.json 文件。 这是一个可以修改和保存的只读文件。
+
+   ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+ 
+5. 修改 SampleConfig.json 文件。
+ 
+    - 提供作业名称。 这会在 Data Box Disk 中创建一个文件夹，该文件夹最终将成为与这些磁盘关联的 Azure 存储帐户中的容器。 作业名称必须遵循 Azure 容器命名约定。 
+    - 在 SampleConfigFile.json 中提供源路径并记下路径格式。 
+    - 输入对应于目标磁盘的驱动器号。 数据取自源路径，并在多个磁盘之间复制。
+    - 提供日志文件的路径。 默认情况下，日志将发送到 .exe 所在的当前目录中。
+
+     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+
+6. 若要验证文件格式，请转到 JSONlint。 将文件保存为 ConfigFile.json。 
+
+     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+ 
+7. 打开命令提示符窗口。 
+
+8. 运行 DataBoxDiskSplitCopy.exe。 Type
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
+
+     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+ 
+9. 按 Enter 继续运行脚本。
+
+    ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+  
+10. 拆分并复制数据集后，会显示拆分复制工具的复制会话摘要。 下面显示了示例输出。
+
+    ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+ 
+11. 验证是否在目标磁盘之间拆分了数据。 
+ 
+    ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+     
+    如果进一步检查 n: 驱动器的内容，将会看到已创建了对应于块 Blob 和页 Blob 格式数据的两个子文件夹。
+    
+     ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+
+12. 如果复制会话失败，可使用以下命令予以恢复：
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
+
+
+数据复制完成后，下一步是验证数据。 
+
+
+## <a name="validate-data"></a>验证数据 
 
 若要验证数据，请执行以下步骤。
 

@@ -1,26 +1,25 @@
 ---
-title: 快速入门 - 使用 PowerShell 创建首个 Azure 容器实例容器
-description: 在本快速入门中，我们将使用 Azure PowerShell 在 Azure 容器实例中部署一个 Windows 容器
+title: 快速入门 - 在 Azure 容器实例中运行应用程序
+description: 本快速入门介绍如何使用 Azure PowerShell 将 Docker 容器中运行的应用程序部署到 Azure 容器实例
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4a1d338304dbd5e2845768b7bf0273eed23af0ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453560"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854637"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中运行应用程序
 
-使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在本快速入门中，我们将在 Azure 中创建一个 Windows 容器，并使用完全限定的域名 (FQDN) 向 Internet 公开此容器。 此操作通过单个命令完成。 就在几分钟之内，便可在浏览器中看到正在运行的应用程序：
+使用 Azure 容器实例在 Azure 中快速方便地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，我们将使用 Azure 门户在 Azure 中创建一个 Windows 容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在运行的应用程序：
 
-![在浏览器中显示的使用 Azure 容器实例部署的应用][qs-powershell-01]
+![在浏览器中显示的已部署到 Azure 容器实例的应用][qs-powershell-01]
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -30,7 +29,9 @@ ms.locfileid: "38453560"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup][New-AzureRmResourceGroup] 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
+
+首先，使用以下 [New-AzureRmResourceGroup][New-AzureRmResourceGroup] 命令在 *eastus* 位置创建名为 *myResourceGroup* 的资源组。
 
  ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
@@ -38,15 +39,15 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>创建容器
 
-在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中提供名称、Docker 映像和 Azure 资源组可创建容器。 可以选择性地使用 DNS 名称标签向 Internet 公开容器。
+创建资源组后，可在 Azure 中运行容器。 若要使用 Azure PowerShell 创建容器实例，请在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中 提供资源组名称、容器实例名称和 Docker 容器映像。 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开容器。 在本快速入门中，我们将部署一个带有 DNS 名称标签的、用于托管 Nano Server 中运行的 Internet Information Services (IIS) 的容器。
 
-执行以下命令，启动运行 Internet Information Services (IIS) 的 Nano Server 容器。 `-DnsNameLabel` 值必须在创建实例时所在的 Azure 区域中唯一，因此可能需要对此值进行修改，以确保唯一性。
+执行以下命令以启动容器实例。 在创建实例的 Azure 区域中，`-DnsNameLabel` 值必须是唯一的。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
  ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-在数秒内应该就会收到请求的响应。 容器一开始处于“正在创建”状态，但会在一两分钟内启动。 可以使用 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] cmdlet 检查部署状态：
+在几秒钟内，应会收到来自 Azure 的响应。 容器的 `ProvisioningState` 最初为 **Creating**，但在一到两分钟内，应会改为 **Succeeded**。 使用 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] cmdlet 检查部署状态：
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -78,7 +79,7 @@ State                    : Pending
 Events                   : {}
 ```
 
-容器的 **ProvisioningState** 变成 `Succeeded` 后，请在浏览器中导航到容器的 `Fqdn`：
+容器的 `ProvisioningState` 变为 **Succeeded** 后，请在浏览器中导航到其 `Fqdn`。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
 ![在浏览器中显示的使用 Azure 容器实例部署的 IIS][qs-powershell-01]
 
@@ -92,7 +93,7 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已基于公共 Docker 中心注册表中的映像创建了 Azure 容器实例。 若要亲自基于专用 Azure 容器注册表生成容器映像并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
+在本快速入门中，你已基于公共 Docker 中心注册表中的映像创建了 Azure 容器实例。 若要基于专用 Azure 容器注册表生成容器映像并部署它，请继续学习 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](./container-instances-tutorial-prepare-app.md)

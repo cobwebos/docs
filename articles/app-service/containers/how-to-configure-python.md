@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 应用服务中配置内置的 Python 映像
-description: 本教程介绍了使用内置 Python 映像在 Azure 应用服务上创作和配置 Python 应用程序的选项。
+title: 为 Linux 上的 Azure 应用服务配置 Python 应用
+description: 本教程介绍为 Linux 上的 Azure 应用服务创作和配置 Python 应用时可用的选项。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,70 +12,103 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2018
-ms.author: astay;cephalin
+ms.date: 10/09/2018
+ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9316805993b81e4d2511e833e0cc8f240807a1f9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228540"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901612"
 ---
-# <a name="configure-built-in-python-image-in-azure-app-service-preview"></a>在 Azure 应用服务中配置内置的 Python 映像（预览版）
+# <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>为 Linux 上的 Azure 应用服务配置 Python 应用
 
-本文介绍了如何在 [Linux 上的应用服务](app-service-linux-intro.md)中配置 Python 内置映像来运行 Python 应用程序。
+本文介绍 [Linux 上的 Azure 应用服务](app-service-linux-intro.md)如何运行 Python 应用，以及如何按需自定义应用服务的行为。
 
-## <a name="python-version"></a>Python 版本
+## <a name="container-characteristics"></a>容器特征
 
-Linux 上的应用服务中的 Python 运行时使用版本 `python-3.7.0`。
+部署到 Linux 上的应用服务的 Python 应用在 GitHub 存储库 [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0) 中定义的 Docker 容器内运行。
 
-## <a name="supported-frameworks"></a>支持的框架
+此容器具有以下特征：
 
-与 `python-3.7` 运行时兼容的符合 Web 服务器网关接口 (WSGI) 标准的 Web 框架的所有版本都受支持。
+- 基础容器映像为 `python-3.7.0-slim-stretch`，这意味着，应用是配合 Python 3.7 运行的。 如果需要其他版本的 Python，必须改为生成并部署自己的容器映像。 有关详细信息，请参阅[如何对用于容器的 Web 应用使用自定义 Docker 映像](tutorial-custom-docker-image.md)。
 
-## <a name="package-management"></a>包管理
+- 应用是结合附加参数 `--bind=0.0.0.0 --timeout 600`，使用 [Gunicorn WSGI HTTP Server](http://gunicorn.org/) 运行的。
 
-在 Git 发布期间，Kudu 引擎会在存储库根目录中查找 [requirements.txt](https://pip.pypa.io/en/stable/user_guide/#requirements-files) 并使用 `pip` 自动在 Azure 中安装程序包。
+- 默认情况下，基础映像包含 Flask Web 框架，但容器支持符合 WSGI 规范并与 Python 3.7 兼容的其他框架，例如 Django。
 
-若要在发布前生成此文件，请导航到存储库根目录并在你的 Python 环境中运行以下命令：
+- 若要安装其他包（例如 Django），请使用 `pip freeze > requirements.txt` 在项目的根目录中创建 [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) 文件。 然后，使用 Git 部署将项目发布到应用服务，这会在容器中自动运行 `pip install -r requirements.txt` 来安装应用的依赖项。
 
-```bash
-pip freeze > requirements.txt
-```
+## <a name="container-startup-process-and-customizations"></a>容器启动过程和自定义项
 
-## <a name="configure-your-python-app"></a>配置 Python 应用
+在启动期间，Linux 上的应用服务容器将运行以下步骤：
 
-Azure 应用服务中的内置 Python 映像使用 [Gunicorn](http://gunicorn.org/) 服务器运行 Python 应用程序。 Gunicorn 是适用于 UNIX 的 Python WSGI HTTP 服务器。 应用服务自动为 Django 和 Flask 项目配置 Gunicorn。
+1. 检查并应用自定义启动命令（如果已提供）。
+1. 检查是否存在 Django 应用的 *wsgi.py* 文件，如果存在，则使用该文件启动 Gunicorn。
+1. 检查名为 *application.py* 的文件，如果找到，则使用 `application:app`（采用某个 Flask 应用）启动 Gunicorn。
+1. 如果未找到其他任何应用，则启动容器中内置的默认应用。
+
+以下部分提供了每个选项的更多详细信息。
 
 ### <a name="django-app"></a>Django 应用
 
-如果发布包含 `wsgi.py` 模块的 Django 项目，则 Azure 会使用以下命令自动调用 Gunicorn：
+对于 Django 应用，应用服务将在应用代码中查找名为 `wsgi.py` 的文件，然后使用以下命令运行 Gunicorn：
 
 ```bash
-gunicorn <path_to_wsgi>
+# <module> is the path to the folder containing wsgi.py
+gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
+
+若要更精细地控制启动命令，请使用[自定义启动命令](#custom-startup-command)，并将 `<module>` 替换为包含 *wsgi.py* 的模块名称。
 
 ### <a name="flask-app"></a>Flask 应用
 
-如果要发布 Flask 应用，并且入口点在 `application.py` 或 `app.py` 模块中，则 Azure 会分别使用下列命令之一自动调用 Gunicorn：
+对于 Flask，应用服务将查找名为 *application.py* 的文件并启动 Gunicorn，如下所示：
 
 ```bash
-gunicorn application:app
+gunicorn --bind=0.0.0.0 --timeout 600 application:app
 ```
 
-或 
+如果主应用模块包含在不同的文件中，请对应用对象使用不同的名称；若要为 Gunicorn 提供附加的参数，请使用[自定义启动命令](#custom-startup-command)。 该部分提供在 *hello.py* 中使用入口代码的 Flask 示例，以及名为 `myapp` 的示例 Flask 应用对象。
+
+### <a name="custom-startup-command"></a>自定义启动命令
+
+可以通过提供自定义 Gunicorn 启动命令来控制容器的启动行为。 例如，如果 Flask 应用的主模块是 *hello.py*，而 Flask 应用对象名为 `myapp`，则命令如下所示：
 
 ```bash
-gunicorn app:app
+gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 ```
 
-### <a name="customize-start-up"></a>自定义启动
+还可以将 Gunicorn 的任何附加参数添加到该命令，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-若要为应用定义自定义入口点，请首先创建一个包含自定义 Gunicorn 命令的 _.txt_ 文件并将其放置在你的项目的根目录中。 例如，若要使用模块 _helloworld.py_ 和变量 `app` 启动服务器，请创建具有以下内容的 _startup.txt_：
+若要提供自定义命令，请执行以下步骤：
 
-```bash
-gunicorn helloworld:app
-```
+1. 在 Azure 门户中导航到[应用程序设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)页。
 
-在[应用程序设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)页面上，选择 **Python|3.7** 作为**运行时堆栈**，并提供上一步中的**启动文件**的名称。 例如 _startup.txt_。
+1. 在“运行时”设置中，将“堆栈”选项设置为“Python 3.7”，并直接在“启动文件”字段中输入命令。
+
+    或者，可以使用类似于 *startup.txt*（或任何所需名称）的名称，将命令保存到项目根目录中的某个文本文件中。 然后，将该文件部署到应用服务，并改为在“启动文件”字段中指定该文件名。 使用此选项可以在源代码存储库中管理命令，而无需通过 Azure 门户进行管理。
+
+1. 选择“保存”。 应用服务将自动重启，几秒钟后，应会看到已应用自定义启动命令。
+
+> [!Note]
+> 应用服务将忽略处理自定义命令文件时出现的任何错误，然后通过查找 Django 和 Flask 应用来继续执行其启动过程。 如果未看到预期的行为，请检查启动文件是否已部署到应用服务且不包含任何错误。
+
+### <a name="default-behavior"></a>默认行为
+
+如果应用服务找不到自定义命令、Django 应用或 Flask 应用，则它会运行位于 _opt/defaultsite_ 文件夹中的默认只读应用。 默认应用如下所示：
+
+![Linux 上的默认应用服务网页](media/how-to-configure-python/default-python-app.png)
+
+## <a name="troubleshooting"></a>故障排除
+
+- **部署自己的应用代码后看到默认应用。**  之所以出现默认应用，是因为你实际上并未将应用代码部署到应用服务，或应用服务未找到你的应用代码，因此运行了默认应用。
+  - 请重启应用服务，等待 15 到 20 秒，然后再次检查应用。
+  - 使用 SSH 或 Kudu 控制台直接连接到应用服务，并检查文件是否存在于 *site/wwwroot* 下。 如果这些文件不存在，请检查部署过程并重新部署应用。
+  - 如果这些文件存在，则表示应用服务无法识别特定的启动文件。 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。
+
+- **浏览器中显示“服务不可用”消息。** 浏览器在等待应用服务的响应时超时，这表示应用服务已启动 Gunicorn 服务器，但指定应用代码的参数不正确。
+  - 刷新浏览器，尤其是在应用服务计划中使用最低定价层的情况下。 例如，使用免费层时，应用可能需要较长时间才能启动，并在刷新浏览器后才会做出响应。
+  - 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。
+  - 使用 SSH 或 Kudu 控制台连接到应用服务，然后检查 *LogFiles* 文件夹中存储的诊断日志。 有关日志记录的详细信息，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](../web-sites-enable-diagnostic-log.md)。
