@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018s
+ms.date: 10/10/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041534"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079100"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -34,13 +34,21 @@ ms.locfileid: "47041534"
 
 所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
 
-- 计费帐户
-- 部门
-- 注册帐户
-- 管理组
-- 订阅
-- 资源组
+- “计费帐户”范围是在 https://ea.azure.com 定义的，并且需要“企业管理”访问权限。 不需要任何先决条件 EA 设置。 成本分析中的计费信息是针对企业协议中的所有订阅合并得出的。 计费帐户通常称为“企业协议”或“注册”。
 
+- “部门”范围是在 https://ea.azure.com 定义的，并且需要“部门管理”访问权限。 需要在 EA 门户中启用“DA 视图费用”设置。 成本分析中的计费信息是针对链接到该部门的注册帐户拥有的所有订阅合并得出的。
+
+- “注册帐户”范围是在 https://ea.azure.com 定义的，并且需要“帐户所有者”访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该注册帐户拥有的所有订阅合并得出的。 注册帐户通常称为“帐户所有者”。
+
+- “管理组”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该管理组下的所有订阅合并得出的。
+
+- “订阅”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该订阅中的所有资源和资源组合并得出的。
+
+- “资源组”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该资源组中的所有资源合并得出的。
+
+
+
+有关配置 **DA 视图费用**和 **AO 视图费用**设置的详细信息，请参阅[启用对成本的访问权限](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -94,6 +102,11 @@ ms.locfileid: "47041534"
 ![当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
 
 上图显示了资源组名称。 资源的查看标记不适用于任何成本分析视图、筛选或分组。
+
+当按特定的属性对成本进行分组时，将按从最高到最低的顺序显示排名前十的成本贡献因素。 如果有十个以上的组，则会显示排名前九的组和一个“其他”组，该组包括了剩余的所有组。
+
+“经典”（Azure 服务管理，简称 ASM）虚拟机、网络和存储资源不共享详细的计费数据。 当对成本进行分组时，它们合并为**经典服务**。
+
 
 ## <a name="download-cost-analysis-data"></a>下载成本分析数据
 

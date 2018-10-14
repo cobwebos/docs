@@ -8,14 +8,14 @@ ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 5/15/2018
+ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 045443637c06745472458dd9e33670875a33352b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193061"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068088"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -27,7 +27,38 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 
 这种类型的路由称为应用程序层（OSI 层 7）负载均衡。 Azure 应用程序网关可以执行基于 URL 的路由等操作。 
 
-以下功能是 Azure 应用程序网关附带的： 
+以下功能是 Azure 应用程序网关附带的：
+
+## <a name="autoscaling-public-preview"></a>自动缩放（公共预览版）
+
+除了本文中介绍的功能之外，应用程序网关还提供了新 SKU [Standard_V2] 的公共预览版，它提供了自动缩放功能和其他重要的性能增强。
+
+- **自动缩放** - 凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 
+
+- **区域冗余** - 应用程序网关或 WAF 部署可跨多个可用性区域，因此不需使用流量管理器在每个区域预配和固定单独的应用程序网关实例。
+
+- **静态 VIP** - 应用程序网关 VIP 现在支持独占形式的静态 VIP 类型。 这样可确保与应用程序网关关联的 VIP 即便在重启后也不会更改。
+
+- 与已正式发布的 SKU 相比，**部署和更新更快**。 
+
+- 与已正式发布的 SKU 相比，**SSL 卸载性能提高 5 倍**。
+
+若要详细了解应用程序网关公共预览版功能，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md)。
+
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes 服务 (AKS) 入口控制器预览版 
+
+应用程序网关入口控制器作为 pod 在 AKS 群集中运行，并允许应用程序网关充当 AKS 群集的入口。 
+
+有关详细信息，请参阅 [Azure 应用程序网关入口控制器](https://azure.github.io/application-gateway-kubernetes-ingress/)。
+
+## <a name="connection-draining"></a>连接清空
+
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有已取消注册实例不再收到任何新请求，同时允许现有请求在所配置的时间限制内完成。 这适用于通过 API 调用显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。
+
+## <a name="custom-error-pages"></a>自定义错误页
+应用程序网关允许你创建自定义错误页而非显示默认错误页。 你可以在自定义错误页上使用自己的品牌和布局。
+
+有关详细信息，请参阅[创建应用程序网关自定义错误页](custom-error.md)。
 
 ## <a name="secure-sockets-layer-ssl-termination"></a>安全套接字层 (SSL) 终止
 

@@ -9,18 +9,19 @@ ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: c12cd754d9979683fac4b819739d53e78ab9259c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990189"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857986"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
-语音服务合并了此前通过[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/speech/home)、[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/)、[自定义语音](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home)和[自定义声音](http://customvoice.ai/)服务提供的 Azure 语音功能。 现在，可以通过一个订阅来访问所有这些功能。
 
-与其他 Azure 语音服务一样，此语音服务由在 Cortana 和 Microsoft Office 之类的产品中使用的语音技术提供支持。 结果质量和云平台的可靠性是值得依赖的。
+与其他 Azure 语音服务一样，此语音服务由在 Cortana 和 Microsoft Office 之类的产品中使用的语音技术提供支持。
+
+语音服务合并了此前通过[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/speech/home)、[语音翻译](https://docs.microsoft.com/azure/cognitive-services/translator-speech/)、[自定义语音](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home)和[自定义声音](http://customvoice.ai/)服务提供的 Azure 语音功能。 现在，可以通过一个订阅来访问所有这些功能。
 
 ## <a name="main-speech-service-functions"></a>主要语音服务功能
 
@@ -28,7 +29,7 @@ ms.locfileid: "46990189"
 
 |函数|功能|
 |-|-|
-|[语音转文本](speech-to-text.md)| <ul><li>将连续的实时语音转换为文本。<li>可以从音频录音对语音进行批量转换。 <li>为交互、聊天和听写用例提供识别模式。<li>支持中间结果、语音结束检测、自动设置文本格式以及不雅内容屏蔽。 <li>可以通过调用[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS)，从转换的语音获取用户意向。\*|
+|[语音转文本](speech-to-text.md)| <ul><li>将连续的实时语音转换为文本。<li>可以从音频录音对语音进行批量转换。 <li>支持中间结果、语音结束检测、自动设置文本格式以及不雅内容屏蔽。 <li>可以通过调用[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS)，从转换的语音获取用户意向。\*|
 |[文本到语音转换](text-to-speech.md)| <ul><li>将文本转换为自然发音的语音。 <li>为许多支持的语言提供多种性别和/或方言。 <li>支持纯文本输入或语音合成标记语言 (SSML)。 |
 |[语音翻译](speech-translation.md)| <ul><li>以近实时方式翻译流式传输音频。<li> 也可处理记录的语音。<li>以文本或合成语音的方式提供结果。 |
 
@@ -49,7 +50,7 @@ ms.locfileid: "46990189"
 
 ## <a name="use-the-speech-service"></a>使用语音服务
 
-为了简化支持语音的应用程序的开发，Microsoft 提供了可以与新的语音服务配合使用的[语音 SDK](speech-sdk.md)。 语音 SDK 提供一致的本机语音转文本和语音翻译 API，适用于 C#、C++ 和 Java。 如果使用这其中的某种语言进行开发，你会发现语音 SDK 有助于开发，因为它可以为你处理网络详细信息。
+为了简化支持语音的应用程序的开发，Microsoft 提供了可以与[语音服务](speech-sdk.md)配合使用的语音 SDK。 语音 SDK 提供一致的本机语音转文本和语音翻译 API，适用于 C#、C++ 和 Java。 如果使用这其中的某种语言进行开发，你会发现语音 SDK 有助于开发，因为它可以为你处理网络详细信息。
 
 语音服务还有一个 [REST API](rest-apis.md)，此 API 适用于任何能够发出 HTTP 请求的编程语言。 此 REST 接口不提供 SDK 的流式处理实时功能。
 
@@ -67,6 +68,42 @@ ms.locfileid: "46990189"
 ### <a name="speech-devices-sdk"></a>语音设备 SDK
 
 [语音设备 SDK](speech-devices-sdk.md) 是一种集成式硬件和软件平台，适用于支持语音的设备的开发人员。 我们的硬件合作伙伴提供参考设计和开发单元。 Microsoft 提供设备优化的 SDK，该 SDK 可以充分利用硬件的功能。
+
+## <a name="why-move-to-the-speech-service"></a>为何迁移到语音服务？
+
+除了必应搜索 API 的全部功能之外，语音服务还提供了更多功能以及三个其他 Azure 语音服务：自定义语音、自定义声音，以及语音翻译。 我们鼓励这些服务的用户迁移到语音服务。
+
+语音服务包含了这些其他服务的许多升级，包括：
+
+* 更高的语音识别准确性。 我们定期改进该服务中使用的模型。
+
+* 可伸缩性更强。 该服务能够更好地处理多个同时进行的请求，降低了延迟。
+
+* 语音服务使用基于时间的定价模型。 有关详细信息，请参阅[语音服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+
+* [多个区域](regions.md)中提供了语音服务以满足世界各地客户的需求。 对于你的应用程序使用的每个区域，你都需要有一个 [Azure 订阅](https://docs.microsoft.com/azure/cognitive-services/welcome)。
+
+* 单个语音服务订阅密钥授予对以下功能的访问权限。 每个功能单独计量，以便仅针对你使用的功能收费。
+
+    * [语音转文本](speech-to-text.md)
+    * [自定义语音转文本](https://cris.ai/CustomSpeech)
+    * [文本转语音](text-to-speech.md)
+    * [自定义文本转语音声音](https://cris.ai/CustomVoice)
+    * [语音翻译](speech-translation.md)（不包括[文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)）
+
+* 语音服务语音转文本功能集成了[语言理解服务](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 来识别说话人意向。 LUIS 终结点密钥也可以与语音服务配合使用。 有关详细信息，请参阅[意向识别教程](how-to-recognize-intents-from-speech-csharp.md)。
+
+* 语音转文本不再需要你指定识别模式。
+
+* 语音服务支持使用 24-KHz 声音进行文本转语音，改进了音频质量。 在撰写本文时，有两个这样的声音（仅适用于美国英语）：`Jessa24kRUS` 和 `Guy24kRUS`。
+
+* 语音服务的[批量听录](batch-transcription.md)允许将大量的已录制语音（例如呼叫中心录音）高效地转写为文本，以便它们更容易分析和搜索。
+
+* 使用语音 SDK 时，对于流式语音转文本听录没有时间限制。
+
+* [语音 SDK](speech-sdk.md) 在多种编程语言和执行环境（包括 Windows 10、UWP 和 .NET Core）中为语音服务提供了一致的 API，这使得开发更为容易，尤其是在多个平台上。
+
+* 语音服务与其他 Azure 语音服务使用的 REST API 和 WebSockets 协议兼容，这使得可以轻松将现有客户端应用程序迁移到语音服务。
 
 ## <a name="speech-scenarios"></a>语音方案
 

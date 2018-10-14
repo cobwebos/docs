@@ -1,135 +1,97 @@
 ---
-title: 快速入门：Node.js 发布知识库 - QnA Maker
+title: 快速入门：发布知识库 - REST、Node.js - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 如何在 Node.js 中为 QnA Maker 发布知识库。
+description: 本快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/02/2018
 ms.author: diberry
-ms.openlocfilehash: 00642661995e16bda9ad995e69545b28468779c5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c70b90a6e465c72193f63afd7ab9106579e2c634
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040932"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886604"
 ---
-# <a name="publish-a-knowledge-base-in-nodejs"></a>在 Node.js 中发布知识库
+# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-nodejs"></a>快速入门：通过 Node.js 发布 QnA Maker 知识库
 
-以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
+本快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+本快速入门调用了 QnA Maker API：
+* [发布](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - 此 API 不需要请求正文中的任何信息。
+
+## <a name="prerequisites"></a>先决条件
+
+* [Node.js 6+](https://nodejs.org/en/download/)
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID。
+
+    ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
 如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-nodejs.md)。
 
-1. 在喜欢使用的 IDE 中新建一个 Node 项目。
-1. 添加以下提供的代码。
-1. 将 `subscriptionKey` 值替换为有效订阅密钥。
-1. 将 `kb` 值替换为有效的知识库 ID。 通过转到 [QnA Maker 知识库](https://www.qnamaker.ai/Home/MyServices)之一来查找此值。 选择要发布的知识库。 进入该页后，在 URL 中找到“kdid=”，如下所示。 将其值用于代码示例。
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
-    ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
-1. 运行该程序。
+## <a name="create-a-knowledge-base-nodejs-file"></a>创建知识库 Node.js 文件
 
-``` Node.js
-'use strict';
+创建名为 `publish-knowledge-base.js` 的文件。
 
-let fs = require ('fs');
-let https = require ('https');
+## <a name="add-required-dependencies"></a>添加必需的依赖项
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+在 `publish-knowledge-base.js` 的顶部，添加以下行来向项目添加必需的依赖项：
 
-// Replace this with a valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=1-4 "Add the dependencies")]
 
-// NOTE: Replace this with a valid knowledge base ID.
-let kb = 'ENTER ID HERE';
+## <a name="add-required-constants"></a>添加必需的常量
 
-let host = 'westus.api.cognitive.microsoft.com';
-let service = '/qnamaker/v4.0';
-let method = '/knowledgebases/';
+在上述必需的依赖项后，添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。 
 
-let pretty_print = function (s) {
-    return JSON.stringify(JSON.parse(s), null, 4);
-}
+[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=10-17 "Add required constants")]
 
-// callback is the function to call when we have the entire response.
-let response_handler = function (callback, response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-// Call the callback function with the status code, headers, and body of the response.
-        callback ({ status : response.statusCode, headers : response.headers, body : body });
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+## <a name="add-knowledge-base-id"></a>添加知识库 ID
 
-// Get an HTTP response handler that calls the specified callback function when we have the entire response.
-let get_response_handler = function (callback) {
-// Return a function that takes an HTTP response, and is closed over the specified callback.
-// This function signature is required by https.request, hence the need for the closure.
-    return function (response) {
-        response_handler (callback, response);
-    }
-}
+在前面的常量后，添加知识库 ID 并将其添加到路径：
 
-// callback is the function to call when we have the entire response from the POST request.
-let post = function (path, content, callback) {
-    let request_params = {
-        method : 'POST',
-        hostname : host,
-        path : path,
-        headers : {
-            'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+[!code-nodejs[Add knowledge base ID](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=19-23 "Add knowledge base ID")]
 
-// Pass the callback function to the response handler.
-    let req = https.request (request_params, get_response_handler (callback));
-    req.write (content);
-    req.end ();
-}
+## <a name="add-supporting-functions"></a>添加支持函数
 
-// callback is the function to call when we have the response from the /knowledgebases POST method.
-let publish_kb = function (path, req, callback) {
-    console.log ('Calling ' + host + path + '.');
-// Send the POST request.
-    post (path, req, function (response) {
-// Extract the data we want from the POST response and pass it to the callback function.
-        if (response.status == '204') {
-            let result = {'result':'Success'};
-            callback (JSON.stringify(result));
-        }
-        else {
-            callback (response.body);
-        }
-    });
-}
+接下来，添加以下支持函数。
 
-var path = service + method + kb;
-publish_kb (path, '', function (result) {
-    console.log (pretty_print(result));
-});
-```
+1. 添加以下函数，用于以可读格式输出 JSON：
 
-## <a name="understand-what-qna-maker-returns"></a>了解 QnA Maker 所返回的内容
+   [!code-nodejs[Add supporting functions, step 1](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=25-28 "Add supporting functions, step 1")]
 
-在 JSON 中返回成功的响应，如以下示例所示：
+2. 添加以下函数来管理 HTTP 响应以获取创建操作状态：
 
-```json
-{
-  "result": "Success."
-}
+   [!code-nodejs[Add supporting functions, step 2](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=30-52 "Add supporting functions, step 2")]
+
+## <a name="add-the-publishkb-function-and-main-function"></a>添加 publish_kb 函数和 main 函数
+
+以下代码向 QnA Maker API 发出 HTTPS 请求来发布知识库并接收响应：
+
+[!code-nodejs[Add POST request to publish KB](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=54-71 "Add POST request to publish KB")]
+
+[!code-nodejs[Add the publish_kb function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=73-91 "Add the publish_kb function and main function")]
+
+## <a name="add-the-main-function"></a>添加 main 函数
+
+添加以下函数来管理请求和响应：
+
+[!code-nodejs[Add the main function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=94-97 "Add the main function")]
+
+## <a name="run-the-program"></a>运行程序
+
+生成并运行程序。 它将自动向 QnA Maker API 发送发布知识库的请求，然后，响应将输出到控制台窗口。
+
+发布知识库后，可以使用客户端应用程序或聊天机器人从终结点对其进行查询。 
+
+```bash
+node publish-knowledge-base.js
 ```
 
 ## <a name="next-steps"></a>后续步骤

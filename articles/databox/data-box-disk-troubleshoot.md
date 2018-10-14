@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/03/2018
+ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e1a5cb33bb473daf5b9e45e7c64bcb297eca7733
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9b2c03c13cf687af7cdebc9c4d2624a6a7c5907f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595539"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069193"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>排查 Azure Data Box 磁盘（预览版）中的问题
 
@@ -85,6 +85,20 @@ ms.locfileid: "39595539"
 | 已解锁并验证以下卷。 <br>卷驱动器号: E:<br>无法使用以下支持密钥解锁任何卷: werwerqomnf、qwerwerqwdfda <br><br>工具解锁了一些驱动器，并列出了成功和失败的驱动器号。| 部分成功。 使用提供的支持密钥无法解锁某些驱动器。 联系 Microsoft 支持部门了解后续步骤。 |
 | 找不到锁定的卷。 验证从 Microsoft 收到的磁盘是否已正确连接并处于锁定状态。          | 工具找不到任何已锁定的驱动器。 驱动器已解锁，或检测不到。 确保驱动器已连接并已锁定。                                                           |
 | 严重错误: 参数无效<br>参数名称: invalid_arg<br>用法:<br>DataBoxDiskUnlock /PassKeys:<passkey_list_separated_by_semicolon><br><br>示例: DataBoxDiskUnlock /PassKeys:passkey1;passkey2;passkey3<br>示例: DataBoxDiskUnlock /SystemCheck<br>示例: DataBoxDiskUnlock /Help<br><br>/PassKeys:       从 Azure DataBox 磁盘订单中获取此支持密钥。 该支持密钥用于解锁磁盘。<br>/Help:           此选项提供有关 cmdlet 用法和示例的帮助。<br>/SystemCheck:    此选项检查你的系统是否满足运行该工具的要求。<br><br>按任意键退出。 | 输入了无效的参数。 只允许参数 /SystemCheck、/PassKey 和 /Help。                                                                            |
+
+## <a name="data-box-disk-split-copy-tool-errors"></a>Data Box 磁盘拆分复制工具错误
+
+|错误消息/警告  |建议 |
+|---------|---------|
+|[信息] 正在检索卷 m: 的 bitlocker 密码 <br>[错误] 检索卷 m: 的 bitlocker 密钥时捕获到异常<br> 序列未包含任何元素。|如果目标 Data Box 磁盘处于脱机状态，则会引发此错误。 <br> 使用 `diskmgmt.msc` 工具将磁盘联机。|
+|[错误] 引发异常：WMI 操作失败：<br> Method=UnlockWithNumericalPassword，ReturnValue=2150694965， <br>Win32Message=所提供的恢复密码的格式无效。 <br>BitLocker 恢复密码有 48 位。 <br>请验证恢复密码的格式是否正确，然后重试。|使用 Data Box 磁盘解锁工具首先解锁磁盘，然后重试该命令。 有关详细信息，请转到 <li> [为 Windows 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) </li><li> [为 Linux 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client) </li>|
+|[错误] 引发了异常：目标驱动器上存在 DriveManifest.xml 文件。 <br> 这表明可能已使用不同的日志文件准备了目标驱动器。 <br>若要向同一驱动器添加更多数据，请使用之前的日志文件。 若要删除现有数据并将目标驱动器重复用于新的导入作业，请删除驱动器上的 DriveManifest.xml。 使用新的日志文件重新运行此命令。| 当尝试将同一组驱动器用于多个导入会话时会收到此错误。 <br> 将一组驱动器仅用于一个拆分和复制会话。|
+|[错误] 引发了异常：CopySessionId importdata-sept-test-1 引用了以前的复制会话，无法将其重复用于新的复制会话。|当尝试为新作业使用与以前成功完成的作业相同的名称时，会报告此错误。<br> 为新作业分配唯一的名称。|
+|[信息] 目标文件或目录名称超出了 NTFS 长度限制。 |当目标文件因为文件路径太长而被重命名时，会报告此消息。<br> 修改 `config.json` 文件中的 disposition 选项来控制此行为。|
+|[错误] 引发了异常：JSON 转义序列不正确。 |当 Config.json 具有无效格式时，会报告此消息。 <br> 在保存文件之前使用 [JSONlint](https://jsonlint.com/) 验证 `config.json`。|
+
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[通过 Azure 门户管理 Data Box 磁盘](data-box-portal-ui-admin.md)。

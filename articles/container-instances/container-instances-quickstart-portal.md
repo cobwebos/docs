@@ -1,26 +1,25 @@
 ---
-title: 快速入门 - 使用 Azure 门户创建首个 Azure 容器实例容器
-description: 在本快速入门中，我们将使用 Azure 门户在 Azure 容器实例中部署一个容器
+title: 快速入门 - 在 Azure 容器实例中运行应用程序
+description: 在本快速入门中，将使用 Azure 门户将在 Docker 容器中运行的应用程序部署到 Azure 容器实例
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6aa6fb27b2aa7c8b9614e5812fadc629b1e185f8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076232"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857714"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中运行应用程序
 
-使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在本快速入门中，将使用 Azure 门户在 Azure 中创建容器，再通过完全限定的域名 (FQDN) 向 Internet 公开该容器。 配置一些设置后，你将在浏览器中看到以下内容：
+使用 Azure 容器实例在 Azure 中简单快速地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，将使用 Azure 门户在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在配置一些设置并部署容器后，你可以浏览到正在运行的应用程序：
 
-![在浏览器中显示的使用 Azure 容器实例部署的应用][aci-portal-07]
+![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -38,7 +37,7 @@ ms.locfileid: "34076232"
 
 * 容器名称：`mycontainer`
 * 容器映像：`microsoft/aci-helloworld`
-* 资源组：`myResourceGroup`
+* 资源组：**新建** > `myResourceGroup`
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 
@@ -54,11 +53,11 @@ ms.locfileid: "34076232"
 
 ![Azure 门户中新的容器实例的设置摘要][aci-portal-05]
 
-当部署启动时，会在门户仪表板上显示一个磁贴，指明部署正在进行。 在部署后，该磁贴将显示新的容器实例。
+当部署启动时，会显示一个通知，指明部署正在进行。 部署了容器组后，会显示另一个通知。
 
 ![Azure 门户中新的容器实例的创建进度][aci-portal-08]
 
-选择“mycontainer”容器实例来显示其属性。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
+通过导航到“资源组” > “myResourceGroup” > “mycontainer”打开容器组的概述。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
 
 ![Azure 门户中的容器组概述][aci-portal-06]
 
@@ -88,7 +87,7 @@ ms.locfileid: "34076232"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已基于公共 Docker 中心注册表中的映像创建了 Azure 容器实例。 若要亲自基于专用 Azure 容器注册表生成容器映像并将其部署到 Azure 容器实例，请继续阅读 Azure 容器实例教程。
+在本快速入门中，你已基于公共 Docker 中心注册表中的映像创建了 Azure 容器实例。 若要基于专用 Azure 容器注册表生成容器映像并部署它，请继续学习 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](./container-instances-tutorial-prepare-app.md)

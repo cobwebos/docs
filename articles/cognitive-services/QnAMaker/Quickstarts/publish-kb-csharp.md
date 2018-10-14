@@ -1,114 +1,128 @@
 ---
-title: 快速入门：C# 发布知识库 - Qna Maker
+title: 快速入门：发布知识库 - REST、C# - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 如何在 C# 中为 QnA Maker 发布知识库。
+description: 本快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: 232b8a31ccfd8fad580af1f71b6816f93342faea
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f2aa73dacdffaebcddbf91b2f5c7c3db4a331431
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033050"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883578"
 ---
-# <a name="publish-a-knowledge-base-in-c"></a>在 C# 中发布知识库
+# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-c"></a>快速入门：通过 C# 发布 QnA Maker 知识库
 
-以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
+本快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
+
+本快速入门调用了 QnA Maker API：
+* [发布](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - 此 API 不需要请求正文中的任何信息。
+
+## <a name="prerequisites"></a>先决条件
+
+* 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID。
+
+    ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
+
+如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
-1. 在最喜爱的 IDE 中新建 C# 项目。
-2. 添加下方提供的代码。
-3. 使用对订阅有效的访问密钥替换 `key` 值。
-4. 运行该程序。
+## <a name="create-knowledge-base-project"></a>创建知识库项目
+
+[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+
+## <a name="add-required-dependencies"></a>添加必需的依赖项
+
+[!INCLUDE [Add required dependencies to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)] 
+
+## <a name="add-required-constants"></a>添加必需的常量
+
+[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)]  
+
+## <a name="add-knowledge-base-id"></a>添加知识库 ID
+
+[!INCLUDE [Add knowledge base ID as constant](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-kb-id.md)] 
+
+## <a name="add-supporting-functions-and-structures"></a>添加支持函数和结构
+
+在 Program 类中添加以下代码块：
 
 ```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-// NOTE: Install the Newtonsoft.Json NuGet package.
-using Newtonsoft.Json;
-
-namespace QnAMaker
+static string PrettyPrint(string s)
 {
-    class Program
+    return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
+}
+```
+
+## <a name="add-post-request-to-publish-kb"></a>添加 POST 请求来发布知识库
+
+以下代码向 QnA Maker API 发出 HTTPS 请求来发布知识库并接收响应：
+
+```csharp
+async static void PublishKB()
+{
+    string responseText;
+
+    var uri = host + service + method + kb;
+    Console.WriteLine("Calling " + uri + ".");
+    using (var client = new HttpClient())
+    using (var request = new HttpRequestMessage())
     {
-        static string host = "https://westus.api.cognitive.microsoft.com";
-        static string service = "/qnamaker/v4.0";
-        static string method = "/knowledgebases/";
+        request.Method = HttpMethod.Post;
+        request.RequestUri = new Uri(uri);
+        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
-        // NOTE: Replace this with a valid subscription key.
-        static string key = "ENTER KEY HERE";
+        var response = await client.SendAsync(request);
 
-        // NOTE: Replace this with a valid knowledge base ID.
-        static string kb = "ENTER ID HERE";
-
-        static string PrettyPrint(string s)
+        // successful status doesn't return an JSON so create one
+        if (response.IsSuccessStatusCode)
         {
-            return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
+            responseText = "{'result' : 'Success.'}";
         }
-
-        async static Task<string> Post(string uri)
+        else
         {
-            using (var client = new HttpClient())
-            using (var request = new HttpRequestMessage())
-            {
-                request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
-                request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-                var response = await client.SendAsync(request);
-                if (response.IsSuccessStatusCode)
-                {
-                    return "{'result' : 'Success.'}";
-                }
-                else
-                {
-                    return await response.Content.ReadAsStringAsync();
-                }
-            }
-        }
-
-        async static void PublishKB()
-        {
-            var uri = host + service + method + kb;
-            Console.WriteLine("Calling " + uri + ".");
-            var response = await Post(uri);
-            Console.WriteLine(PrettyPrint(response));
-            Console.WriteLine("Press any key to continue.");
-        }
-
-        static void Main(string[] args)
-        {
-            PublishKB();
-            Console.ReadLine();
+            responseText =  await response.Content.ReadAsStringAsync();
         }
     }
+    Console.WriteLine(PrettyPrint(responseText));
+    Console.WriteLine("Press any key to continue.");
 }
-
 ```
 
-## <a name="the-publish-a-knowledge-base-response"></a>发布知识库响应
+对于成功的发布，该 API 调用会返回一个 204 状态，并且响应正文中没有任何内容。 该代码为 204 响应添加了内容。
 
-在 JSON 中返回成功的响应，如以下示例所示： 
+对于任何其他响应，该响应将原样返回，不做任何更改。
+ 
+## <a name="add-the-publishkb-method-to-main"></a>将 PublishKB 方法添加到 Main
 
-```json
+更改 Main 方法来调用 CreateKB 方法：
+
+```csharp
+static void Main(string[] args)
 {
-  "result": "Success."
+
+    // Call the PublishKB() method to publish a knowledge base.
+    PublishKB();
+
+    // The console waits for a key to be pressed before closing.
+    Console.ReadLine();
 }
 ```
+
+## <a name="build-and-run-the-program"></a>生成并运行程序
+
+生成并运行程序。 它将自动向 QnA Maker API 发送发布知识库的请求，然后，响应将输出到控制台窗口。
+
+发布知识库后，可以使用客户端应用程序或聊天机器人从终结点对其进行查询。 
 
 ## <a name="next-steps"></a>后续步骤
 

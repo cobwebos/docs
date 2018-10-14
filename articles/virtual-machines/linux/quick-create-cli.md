@@ -13,25 +13,29 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 87a36e027515319c4bdfeaa559f55fd6e5a1c75b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: beb70b03198589808c20ab17498902367a1c6a3d
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958520"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067479"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍了如何使用 Azure CLI 在 Azure 中部署运行 Ubuntu 的 Linux 虚拟机 (VM)。 若要查看运行中的 VM，可以通过 SSH 登录到该 VM 并安装 NGINX Web 服务器。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍了如何使用 Azure CLI 在 Azure 中部署 Linux 虚拟机 (VM)。 在本教程中，我们将安装 Ubuntu 160.04 LTS。 为了显示运转中的 VM，我们将使用 SSH 连接到它并安装 NGINX Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
+
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器选项卡中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+
+如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -45,7 +49,7 @@ az group create --name myResourceGroup --location eastus
 
 使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。
 
-下面的示例创建名为 *myVM* 的 VM，添加名为 *azureuser* 的用户帐户，并生成 SSH 密钥（如果这些密钥尚未存在于默认密钥位置 (*~/.ssh*) 中）。 若要使用一组特定密钥，请使用 `--ssh-key-value` 选项：
+以下示例创建一个名为 *myVM* 的 VM 并添加一个名为 *azureuser* 的用户帐户。 `--generate-ssh-keys` 参数用来自动生成一个 SSH 密钥，并将其放置在默认密钥位置 (*~/.ssh*) 中。 若要改为使用一组特定的密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -58,7 +62,7 @@ az vm create \
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -91,27 +95,24 @@ ssh azureuser@publicIpAddress
 
 ## <a name="install-web-server"></a>安装 Web 服务器
 
-若要查看运行中的 VM，请安装 NGINX Web 服务器。 若要更新包源并安装最新的 NGINX 包，请从 SSH 会话运行以下命令：
+若要查看运行中的 VM，请安装 NGINX Web 服务器。 更新程序包来源，然后安装最新的 NGINX 程序包。
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-完成后，`exit` SSH 会话。
+完成后，键入 `exit` 以离开 SSH 会话。
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例演示了默认 NGINX 网站：
+使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用你的 VM 的公用 IP 地址作为 Web 地址。 以下示例演示了默认 NGINX 网站：
 
 ![NGINX 默认站点](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。 请确保已退出与 VM 的 SSH 会话，然后删除资源，如下所示：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
