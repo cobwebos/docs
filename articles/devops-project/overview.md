@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: eef71aabaab71f908f950a4467da918dca1787fa
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 39dffad597b8382dea4df6fa1b0726d9582d67d1
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492538"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293620"
 ---
 # <a name="overview-of-azure-devops-project"></a>Azure DevOps 项目的概述
 
@@ -35,13 +35,13 @@ Azure DevOps 项目可完成初始配置 DevOps 管道的所有工作，包括�
 使用 Azure DevOps 项目，可以：
 
 * 快速将应用程序部署到 Azure
-* 自动设置 VSTS CI/CD 管道
-* 将 DevOps 项目用作模板，查看并了解如何通过 VSTS 正确地将 CI/CD 设置到 Azure
+* 自动设置 Azure CI/CD 管道
+* 将 DevOps 项目用作模板，查看并了解如何通过 Azure DevOps 正确地设置到 Azure 的 CI/CD。
 * 开始使用指向 Azure 的 CI/CD 管道，然后进一步地根据特定方案自定义发布管道
 
 ## <a name="how-do-i-use-the-azure-devops-project"></a>如何使用 Azure DevOps 项目？
 
-可从 Azure 门户获取 Azure DevOps 项目。  创建 Azure DevOps 项目资源的方式与在门户中创建任何其他 Azure 资源相同。  DevOps 项目为各种配置选项提供分步的向导式体验。  
+可从 Azure 门户获取 Azure DevOps 项目。  创建 Azure DevOps 项目资源的方式与在门户中创建任何其他 Azure 资源相同。  DevOps 项目为各种配置选项提供了分步的向导式体验。  
 
 在初始设置过程中，选择多个配置选项。  这些选项包括：
 
@@ -49,16 +49,16 @@ Azure DevOps 项目可完成初始配置 DevOps 管道的所有工作，包括�
 * 选择应用语言
 * 根据基于语言的应用框架
 * 选择 Azure 服务（部署目标）
-* VSTS 账户（新建或现有）
-* 选择 Azure 订阅
+* Azure DevOps 组织（新的或现有的）
+* 选择自己的 Azure 订阅
 * 选择 Azure 服务的位置
 * 从 Azure 服务的各种定价层中进行选择
 
 在使用 Azure DevOps 项目后，还可以从 Azure 门户上 Azure DevOps 项目仪表板的单个位置删除所有资源。
 
-## <a name="azure-devops-project-and-vsts-integration"></a>Azure DevOps 项目和 VSTS 集成
+## <a name="azure-devops-project-and-azure-devops-integration"></a>Azure DevOps 项目和 Azure DevOps 集成
 
-DevOps 项目由 VSTS 提供支持。  DevOps 项目自动执行 VSTS 将 CI/CD 设置到 Azure 所需的所有工作。  在新建或现有的 VSTS 帐户中创建 Git 存储库。  DevOps 项目将示例应用程序或现有代码提交到新的 Git 存储库。  自动执行还为生成建立 CI 触发器，使每个新的代码提交都启动生成。  DevOps 项目还创建了 CD 触发器并将每个新的成功的生成部署到所选的 Azure 服务。  可以为其他方案自定义生成和发布定义。  还可以克隆生成和发布定义，用于其他项目。
+DevOps 项目由 Azure DevOps 提供支持。  DevOps 项目自动在 Azure DevOps 中执行设置到 Azure 的 CI/CD 所需的全部工作。  将在新的或现有的 Azure DevOps 组织中创建一个 Git 存储库。  DevOps 项目将示例应用程序或现有代码提交到新的 Git 存储库。  自动执行还为生成建立 CI 触发器，使每个新的代码提交都启动生成。  DevOps 项目还创建一个 CD 触发器并将每个新的成功的生成部署到所选的 Azure 服务。  可以为其他方案自定义生成和发布管道。  还可以克隆生成和发布管道，用于其他项目。
 
 创建 DevOps 项目后，可以：
 

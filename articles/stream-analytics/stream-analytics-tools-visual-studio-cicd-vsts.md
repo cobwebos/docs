@@ -1,6 +1,6 @@
 ---
-title: 有关使用 VSTS 通过 CI/CD 部署 Azure 流分析作业的教程
-description: 本文介绍如何使用 VSTS 通过 CI/CD 部署流分析作业。
+title: 教程：使用 Azure DevOps Services 通过 CI/CD 部署 Azure 流分析作业
+description: 本文介绍了如何使用 Azure DevOps Services 通过 CI/CD 部署流分析作业。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,22 +9,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: adacbaf718c5ef293b4ee3fa833083704aa41f5c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919366"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297927"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>教程：使用 VSTS 通过 CI/CD 部署 Azure 流分析作业
-本教程介绍如何使用 Visual Studio Team Services 为 Azure 流分析作业设置持续集成和部署。 
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure DevOps Services 通过 CI/CD 部署 Azure 流分析作业
+本教程介绍了如何使用 Azure 管道为 Azure 流分析作业设置持续集成和部署。 
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
-> * 在 Team Services 中创建生成定义
-> * 在 Team Services 中创建发布定义
+> * 在 Azure 管道中创建生成管道
+> * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
 ## <a name="prerequisites"></a>先决条件
@@ -33,7 +33,7 @@ ms.locfileid: "41919366"
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安装 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 以及“Azure 开发”或“数据存储和处理”工作负荷。
 * [在 Visual Studio 中创建流分析项目](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs)。
-* 创建 [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/) 帐户。
+* 创建一个 [Azure DevOps](https://visualstudio.microsoft.com/team-services/) 组织。
 
 ## <a name="configure-nuget-package-dependency"></a>配置 NuGet 包依赖项
 若要在任意计算机上执行自动生成和自动部署，需要使用 NuGet 包 `Microsoft.Azure.StreamAnalytics.CICD`。 它提供了 MSBuild、本地运行和部署工具，用于支持流分析 Visual Studio 项目的持续集成和部署进程。 有关详细信息，请参阅[流分析 CI/CD 工具](stream-analytics-tools-for-visual-studio-cicd.md)。
@@ -47,34 +47,35 @@ ms.locfileid: "41919366"
 </packages>
 ```
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>将 Visual Studio 解决方案共享到一个新的 Team Services Git 存储库
-将应用程序源文件共享到 Team Services 中的一个团队项目，以便可以生成内部版本。  
+## <a name="share-your-visual-studio-solution-to-a-new-azure-repos-git-repo"></a>将你的 Visual Studio 解决方案共享到一个新的 Azure Repos Git 存储库
+
+将你的应用程序源文件共享到 Azure DevOps 中的一个项目，以便可以生成内部版本。  
 
 1. 通过在 Visual Studio 的右下角的状态栏中依次选择“添加到源代码管理”和“Git”，为项目创建一个新的本地 Git 存储库。 
 
-2. 在“团队资源管理器”中的“同步”视图中，在“推送到 Visual Studio Team Services”下选择“发布 Git 存储库”按钮。
+2. 在“团队资源管理器”中的“同步”视图中，在“推送到 Azure DevOps Services”下选择“发布 Git 存储库”按钮。
 
    ![推送 Git 存储库](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
 
-3. 验证你的电子邮件地址并在“Team Services 域”下拉列表中选择你的帐户。 输入你的存储库名称并选择“发布存储库”。
+3. 验证你的电子邮件地址并在“Azure DevOps Services 域”下拉列表中选择你的组织。 输入你的存储库名称并选择“发布存储库”。
 
    ![推送 Git 存储库](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
 
-    发布存储库会在你的帐户中创建一个与本地存储库同名的新团队项目。 若要在现有团队项目中创建存储库，请单击“存储库名称”旁边的“高级”并选择一个团队项目。 可以通过选择“在 Web 上查看”，在浏览器中查看代码。
+    发布存储库会在你的组织中创建一个与本地存储库同名的新项目。 若要在现有项目中创建存储库，请单击“存储库名称”旁边的“高级”并选择一个项目。 可以通过选择“在 Web 上查看”，在浏览器中查看代码。
  
-## <a name="configure-continuous-delivery-with-vsts"></a>配置使用 VSTS 的持续交付
-Team Services 生成定义所描述的工作流由一些按顺序执行的生成步骤组成。 详细了解 [Team Services 生成定义](https://www.visualstudio.com/docs/build/define/create)。 
+## <a name="configure-continuous-delivery-with-azure-devops"></a>配置使用 Azure DevOps 的持续交付
+Azure Pipelines 生成管道描述了由按顺序执行的生成步骤组成的工作流。 请详细了解 [Azure Pipelines 生成管道](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)。 
 
-Team Services 发布定义描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成定义和发布定义将执行从开始到结束的整个工作流，即一开始只有源文件，结束时群集中会有一个运行的应用程序。 详细了解 Team Services [发布定义](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)。
+Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成管道和发布管道将执行从开始到结束的整个工作流，即一开始只有源文件，结束时群集中会有一个运行的应用程序。 请详细了解 Azure Pipelines [发布管道](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)。
 
-### <a name="create-a-build-definition"></a>创建生成定义
-打开 Web 浏览器并导航到刚刚在 [Visual Studio Team Services](https://app.vsaex.visualstudio.com/) 中创建的团队项目。 
+### <a name="create-a-build-pipeline"></a>创建生成管道
+打开 Web 浏览器并导航到刚刚在 [Azure DevOps](https://app.vsaex.visualstudio.com/) 中创建的项目。 
 
-1. 在“生成和发布”选项卡下，依次选择“生成”、“+新建”。  依次选择“VSTS Git”、“继续”。
+1. 在“生成和发布”选项卡下，依次选择“生成”、“+新建”。  依次选择“Azure DevOps Services Git”和“继续”。
     
     ![选择源](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
 
-2. 在“选择模板”中单击“空进程”，从空定义开始。
+2. 在“选择模板”中单击“空流程”，从空管道开始。
     
     ![选择“生成模板”](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
 
@@ -82,7 +83,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
     
     ![触发器状态](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
 
-4. 推送或签入时也会触发生成。 若要检查生成进度，请切换到“生成”选项卡。在验证生成成功执行后，必须定义用于将应用程序部署到群集的发布定义。 右键单击生成定义旁边的省略号，并选择“编辑”。
+4. 推送或签入时也会触发生成。 若要检查生成进度，请切换到“生成”选项卡。在验证生成成功执行后，必须定义用于将应用程序部署到群集的发布管道。 右键单击生成管道旁边的省略号，并选择“编辑”。
 
 5.  在“任务”中，输入“Hosted”作为**代理队列**。
     
@@ -125,17 +126,17 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
     
     ![设置属性](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
 
-12. 单击“保存和排队”以测试生成定义。
+12. 单击“保存和排队”以测试生成管道。
     
     ![设置重写参数](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
 
 ### <a name="failed-build-process"></a>失败的生成过程
-如果在生成定义的“Azure 资源组部署”任务中未重写模板参数，可能会收到 null 部署参数的错误。 请返回生成定义，重写 null 参数来解决错误。
+如果在生成管道的“Azure 资源组部署”任务中未重写模板参数，可能会收到 null 部署参数的错误。 请返回到生成管道，重写 null 参数来解决错误。
 
    ![生成过程失败](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>提交并推送更改以触发发布
-通过将一些代码更改签入到 Team Services 来验证持续集成管道是否正常工作。    
+通过将一些代码更改签入到 Azure DevOps 来验证持续集成管道是否正常工作。    
 
 在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标，将更改提交到本地 Git 存储库。
 
@@ -143,11 +144,11 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
     ![提交和推送更改](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
 
-2. 在“团队资源管理器”中选择“未发布的更改”状态栏图标或“同步”视图。 选择“推送”以更新 Team Services/TFS 中的代码。
+2. 在“团队资源管理器”中选择“未发布的更改”状态栏图标或“同步”视图。 选择“推送”以更新 Azure DevOps 中的代码。
 
     ![提交和推送更改](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
 
-将更改推送到 Team Services 会自动触发生成。  当生成定义成功完成时，会自动创建一个发布，并开始更新群集上的作业。
+将更改推送到 Azure DevOps Services 会自动触发生成。  当生成管道成功完成时，会自动创建一个发布，并开始更新群集上的作业。
 
 ## <a name="clean-up-resources"></a>清理资源
 
