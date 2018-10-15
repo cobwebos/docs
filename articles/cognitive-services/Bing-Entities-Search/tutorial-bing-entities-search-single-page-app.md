@@ -1,20 +1,21 @@
 ---
-title: 必应实体搜索单页 Web 应用 | Microsoft Docs
+title: 教程：必应实体搜索单页 Web 应用
+titlesuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 91c60913cd806baf100e5511cbf59299bf9a84f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366574"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815539"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
@@ -528,7 +529,7 @@ searchItemRenderers = {
 
 进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
 
-安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，请[安装 Node.js](https://nodejs.org/en/download/)（如果尚未安装）。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
     npm install -g cors-proxy-server
 
@@ -540,7 +541,7 @@ searchItemRenderers = {
 
     cors-proxy-server
 
-在使用教程应用期间，请让命令窗口保持打开状态；关闭此窗口会阻止代理。 在搜索结果下的可展开 HTTP 标头部分中，现在可以看到 `X-MSEdge-ClientID` 标头（以及其他标头），并可验证每个请求的该标头是否都相同。
+使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 
 ## <a name="next-steps"></a>后续步骤
 

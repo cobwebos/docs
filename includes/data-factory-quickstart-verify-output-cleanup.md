@@ -17,6 +17,8 @@
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+请注意：删除资源组可能需要一些时间。 请耐心等待此过程完成
+
 如果只需删除数据工厂，不需删除整个资源组，请运行以下命令： 
 
 ```powershell

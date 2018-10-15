@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/19/2018
+ms.date: 10/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160444"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802094"
 ---
 # <a name="azure-container-instances"></a>Azure 容器实例
 
@@ -24,7 +24,7 @@ ms.locfileid: "39160444"
 
 ## <a name="fast-startup-times"></a>启动时间短
 
-与虚拟机相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
+与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
 
 ## <a name="public-ip-connectivity-and-dns-name"></a>公共 IP 连接和 DNS 名称
 
@@ -54,9 +54,19 @@ Azure 容器实例支持基于长期服务频道 (LTSC) 版本的 Windows 映像
 
 Azure 容器实例支持对共享主机、本地网络、存储和生命周期的[多容器组](container-instances-container-groups.md)进行计划。 这样即可将主要应用程序容器与其他配角容器（例如日志记录分支）结合使用。
 
+## <a name="virtual-network-deployment-preview"></a>虚拟网络部署（预览版）
+
+目前以预览版提供，Azure 容器实例的此功能允许[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
+
+> [!IMPORTANT]
+> 容器组到虚拟网络的部署目前处于预览状态，并且某些[限制适用](container-instances-vnet.md#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+
 ## <a name="next-steps"></a>后续步骤
 
 尝试按照快速入门指南，使用单个命令将容器部署到 Azure：
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例快速入门](container-instances-quickstart.md)
+
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 05/23/2018
-ms.openlocfilehash: c8ec39c6962c4044810d0ae65d2736043bdd4d72
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 82979adb3dd640c238bd4e5fcd1bc4d645f018fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620206"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069482"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>快速入门：创建 Kafka on HDInsight 群集
 
@@ -69,7 +69,7 @@ Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为�
     | 设置 | 值 |
     | --- | --- |
     | 群集类型 | Kafka |
-    | 版本 | Kafka 1.0.0 (HDI 3.6) |
+    | 版本 | Kafka 1.1.0 (HDI 3.6) |
 
     使用“选择”按钮保存群集类型设置，然后返回“基本信息”。
 

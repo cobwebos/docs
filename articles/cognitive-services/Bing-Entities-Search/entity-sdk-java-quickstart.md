@@ -1,23 +1,23 @@
 ---
-title: 必应实体搜索 SDK Java 快速入门 | Microsoft Docs
+title: 快速入门：必应实体搜索 SDK、Java
+titlesuffix: Azure Cognitive Services
 description: 设置必应实体搜索 SDK 控制台应用程序。
-titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: ebfabc00b5dc031ac4e5284450a9d639c383e78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366680"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814485"
 ---
-# <a name="bing-entity-search-sdk-java-quickstart"></a>必应实体搜索 SDK Java 快速入门
+# <a name="quickstart-bing-entity-search-sdk-with-java"></a>快速入门：通过 Java 使用必应实体搜索 SDK
 
 必应实体搜索 SDK 提供了用于实体查询以及对结果进行分析的 REST API 功能。 
 

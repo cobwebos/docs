@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161924"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078835"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>教程：将数据复制到 Azure Data Box 
 
@@ -88,11 +88,11 @@ ms.locfileid: "47161924"
     The command completed successfully.
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”。 此时会打开文件资源管理器。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”。 此时会打开文件资源管理器。 此时应能看到文件夹形式的共享。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. 此时应能看到文件夹形式的共享。 为要复制的文件创建一个文件夹（在本例中为 templates）。 有时，文件夹可能显示一个灰色的叉形符号。 此符号不代表出错。 应用程序通过标记文件夹来跟踪状态。
+5.  **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 有时，文件夹可能显示一个灰色的叉形符号。 此符号不代表出错。 应用程序通过标记文件夹来跟踪状态。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +239,14 @@ ms.locfileid: "47161924"
 
  - 根据 Linux 客户端所用的文件系统，安装 **CIFS Utils** 或 **NFS Utils** 包。
 
-    `sudo apt-get install cifs-utils` `sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  安装 **Rsync** 和 **Parallel**（根据 Linux 分发版而异）。
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - 创建装入点。

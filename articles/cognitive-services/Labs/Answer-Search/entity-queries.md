@@ -1,22 +1,23 @@
 ---
-title: 项目答案搜索实体查询 - Microsoft 认知服务 | Microsoft Docs
+title: 快速入门：项目答案搜索实体查询
+titlesuffix: Azure Cognitive Services
 description: 使用项目答案搜索查询实体
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 0845f491772b905599bb60e8ec555d14b6d6b15f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366260"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883595"
 ---
-# <a name="query-for-entities"></a>查询实体
+# <a name="quickstart-query-for-entities"></a>快速入门：查询实体
 
 如果查询请求有关人员、地点或事件的信息，则响应可以包含 `entities` 答案。  查询始终返回网页，且[事实](fact-queries.md)和/或[实体](entity-queries.md)依赖于查询。
 
@@ -222,5 +223,5 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)
 - [Java 快速入门](java-quickstart.md)
-- [节点快速入门](node-quickstart.md)
+- [Node 快速入门](node-quickstart.md)
 - [Python 快速入门](python-quickstart.md)

@@ -1,23 +1,23 @@
 ---
-title: 必应新闻搜索 C# 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 从 ASP.NET Core Web 应用程序连接到认知服务必应新闻搜索。
+title: 教程：必应新闻搜索、C#
+titleSuffix: Azure Cognitive Services
+description: 从 ASP.NET Core Web 应用程序连接到必应新闻搜索。
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 5cfa82067d28b05f32bd87e0e83d55a03da8d508
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095423"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804338"
 ---
-# <a name="connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中的连接服务连接到必应新闻搜索 API
+# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中的连接服务连接到必应新闻搜索 API
 
 通过使用必应新闻搜索，可使应用和服务能够利用作用于 Web 的无广告搜索引擎的强大功能。 必应新闻搜索是认知服务提供的搜索服务之一。
 

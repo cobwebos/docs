@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 6e7e95d3b5f747e320e0fea0cea44194f9da1dd6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5c22c3069740692ddf25bae7a3d65740cc81220d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473826"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267279"
 ---
 # <a name="create-an-api-management-service"></a>创建 API 管理服务
 
@@ -44,4 +44,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
-可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure Powershell 示例。
+可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure PowerShell 示例。

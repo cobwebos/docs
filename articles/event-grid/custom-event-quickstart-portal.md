@@ -5,19 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022806"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040620"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure 门户创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 将事件发送到记录事件数据的 Azure 函数。 完成后，可以看到事件数据已发送到某个终结点并已记录。
+Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 Azure 门户创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 通常，你将事件发送到用于处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+
+完成后即可看到事件数据已发送到 Web 应用。
+
+![查看结果](./media/custom-event-quickstart-portal/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -61,77 +65,61 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
    ![名称冲突](./media/custom-event-quickstart-portal/name-conflict.png)
 
-## <a name="create-an-azure-function"></a>创建 Azure 函数
+## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 在本文中，我们使用 Azure Functions 为终结点创建函数应用。
+在订阅自定义主题之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 若要创建函数，请选择“创建资源”。
+1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   ![创建资源](./media/custom-event-quickstart-portal/create-resource-small.png)
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-1. 选择“计算”和“函数应用”。
+1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
-   ![创建函数](./media/custom-event-quickstart-portal/create-function.png)
+1. 查看站点，但是尚未有事件发布到它。
 
-1. 为 Azure 函数提供唯一名称。 请不要使用图中所示的名称。 选择在本文中创建的资源组。 对于托管计划，请使用“消耗计划”。 使用建议的新存储帐户。 可以关闭 Application Insights。 提供值后，选择“创建”。
+   ![查看新站点](./media/custom-event-quickstart-portal/view-site.png)
 
-   ![提供函数值](./media/custom-event-quickstart-portal/provide-function-values.png)
+## <a name="subscribe-to-custom-topic"></a>订阅自定义主题
 
-1. 部署完成后，选择“转到资源”。
+订阅事件网格主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
 
-   ![转到资源](./media/custom-event-quickstart-portal/go-to-resource.png)
+1. 在门户中，选择自定义主题。
 
-1. 在“函数”旁边，选择 **+**。
+   ![选择自定义主题](./media/custom-event-quickstart-portal/select-custom-topic.png)
 
-   ![添加函数](./media/custom-event-quickstart-portal/add-function.png)
+1. 选择“+ 事件订阅”。
 
-1. 在可用的选项中，选择“自定义函数”。
+   ![添加事件订阅](./media/custom-event-quickstart-portal/new-event-subscription.png)
 
-   ![自定义函数](./media/custom-event-quickstart-portal/select-custom-function.png)
+1. 选择“Web 挂钩”作为终结点类型。 提供事件订阅的名称。
 
-1. 向下滚动，直到出现“事件网格触发器”。 选择“C#”。
+   ![提供事件订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-   ![选择事件网格触发器](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+1. 选择“选择终结点”。 
 
-1. 接受默认值，选择“创建”。
+1. 对于 Webhook 终结点，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 选择“确认所选内容”。
 
-   ![新建函数](./media/custom-event-quickstart-portal/new-function.png)
+   ![提供终结点 URL](./media/custom-event-quickstart-portal/provide-endpoint.png)
 
-现在，创建的函数可以接收事件。
+1. 完成提供事件订阅值后，选择“创建”。
 
-## <a name="subscribe-to-a-topic"></a>订阅主题
+再次查看 Web 应用，并注意订阅验证事件已发送给它。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
-订阅主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
-
-1. 在 Azure 函数中，选择“添加事件网格订阅”。
-
-   ![添加事件网格订阅](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
-
-1. 提供订阅的值。 选择“事件网格主题”作为主题类型。 对于订阅和资源组，请选择在其中创建了自定义主题的订阅和资源组。 例如，选择自定义主题的名称。 订阅服务器终结点中已预填充函数的 URL。
-
-   ![输入订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
-
-1. 在触发事件之前，请打开函数的日志，以便在发送事件数据时可以查看这些数据。 在 Azure 函数的底部，选择“日志”。
-
-   ![选择日志](./media/custom-event-quickstart-portal/select-logs.png)
-
-现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 本文为简便起见，使用 Cloud Shell 将示例事件数据发送到自定义主题。 通常情况下，应用程序或 Azure 服务会发送事件数据。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+![查看订阅事件](./media/custom-event-quickstart-portal/view-subscription-event.png)
 
 ## <a name="send-an-event-to-your-topic"></a>向主题发送事件
 
-使用 Azure CLI 或 PowerShell 向自定义主题发送测试性事件。
+现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 使用 Azure CLI 或 PowerShell 向自定义主题发送测试性事件。 通常情况下，应用程序或 Azure 服务会发送事件数据。
 
-第一个示例使用 Azure CLI。 它获取主题的 URL 和密钥，以及示例性的事件数据。 使用你的主题名称来替换 `<topic_name>`。 若要查看完整事件，请使用 `echo "$body"`。 JSON 的 `data` 元素是事件的有效负载。 可以将任何格式正确的 JSON 置于此字段中。 也可将主题字段用于高级路由和筛选。 CURL 是发送 HTTP 请求的实用工具。
+第一个示例使用 Azure CLI。 它获取自定义主题的 URL 和密钥，以及示例事件数据。 将自定义主题名称用于 `<topic_name>`。 它将创建示例事件数据。 JSON 的 `data` 元素是事件的有效负载。 可以将任何格式正确的 JSON 置于此字段中。 也可将主题字段用于高级路由和筛选。 CURL 是发送 HTTP 请求的实用工具。
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 第二个示例使用 PowerShell，执行的步骤类似。
@@ -165,9 +153,25 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 请在日志中查看事件数据。
+现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
 
-![查看日志](./media/custom-event-quickstart-portal/view-log-entry.png)
+```json
+[{
+  "id": "1807",
+  "eventType": "recordInserted",
+  "subject": "myapp/vehicles/motorcycles",
+  "eventTime": "2017-08-10T21:03:07+00:00",
+  "data": {
+    "make": "Ducati",
+    "model": "Monster"
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
+}]
+```
+
+
 
 ## <a name="clean-up-resources"></a>清理资源
 

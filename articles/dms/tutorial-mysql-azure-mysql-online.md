@@ -3,20 +3,20 @@ title: 使用 Azure 数据库迁移服务将 MySQL 联机迁移到 Azure Databas
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 10/06/2018
+ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714915"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829845"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 MySQL 实例迁移到 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL。
@@ -50,13 +50,23 @@ ms.locfileid: "44714915"
 - Azure Database for MySQL 仅支持 InnoDB 表。 若要将 MyISAM 表转换为 InnoDB，请参阅 [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)（将表从 MyISAM 转换为 InnoDB）一文 
 
 - 通过以下配置在源数据库的 my.ini (Windows) 或 my.cnf (Unix) 文件中启用二进制日志记录。
+
+    - **server_id** = 1 或更高版本（仅适用于 MySQL 5.6）
+    - **log-bin** =<path>（仅适用于 MySQL 5.6）
+
+        例如：log-bin = E:\MySQL_logs\BinLog
+    - **binlog_format** = row
+    - **Expire_logs_days** = 5（建议不要使用零；仅适用于 MySQL 5.6）
+    - **Binlog_row_image** = full（仅适用于 MySQL 5.6）
+    - **log_slave_updates** = 1
+ 
 - 用户必须具有 ReplicationAdmin 角色的以下权限：
     - **复制客户端** - 仅仅是“更改处理”任务所需的。 换句话说，“仅完整加载”任务不需要此权限。
     - **复制副本** - 仅仅是“更改处理”任务所需的。 换句话说，“仅完整加载”任务不需要此权限。
     - **超级** - 仅在 MySQL 5.6.6 之前的版本中需要。
 
 ## <a name="migrate-the-sample-schema"></a>迁移示例架构
-若要完成所有数据库对象（例如表架构、索引和存储过程），需从源数据库提取架构并将其应用到此数据库。 若要提取架构，可以将 mysqldump 与 - - no-data 参数配合使用。
+若要完成所有数据库对象（例如表架构、索引和存储过程），需从源数据库提取架构并将其应用到此数据库。 若要提取架构，可以将 mysqldump 与 `--no-data` 参数配合使用。
  
 假设本地系统中有 MySQL employees 示例数据库，则使用 mysqldump 进行架构迁移时所需的命令如下：
 ```

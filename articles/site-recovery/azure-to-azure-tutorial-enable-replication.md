@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154775"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069091"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -71,7 +71,7 @@ ms.locfileid: "42154775"
 | ------- | ----------- |
 | * .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
-| * .hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
+| *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
 | * .servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
@@ -169,6 +169,19 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 你可�
 
 > [!IMPORTANT]
   如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 请确保没有防火墙设备阻止 VM 之间通过端口 20004 进行的内部通信。 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
+
+### <a name="configure-encryption-settings"></a>配置加密设置
+
+如果源虚拟机启用了 Azure 磁盘加密 (ADE)，则会显示以下加密设置部分。
+
+- **磁盘加密密钥保管库**：默认情况下，Azure Site Recovery 会在目标区域中创建新的密钥保管库，其名称具有基于源 VM 磁盘加密密钥的“asr”后缀。 如果 Azure Site recovery 创建的密钥保管库已存在，则会重复使用。
+- **密钥加密密钥保管库**：默认情况下，Azure Site Recovery 会在目标区域中创建新的密钥保管库，其名称具有基于源 VM 密钥加密密钥的“asr”后缀。 如果 Azure Site recovery 创建的密钥保管库已存在，则会重复使用。
+
+单击加密设置旁边的“自定义”可替代默认值并选择自定义密钥保管库。
+
+>[!NOTE]
+>Azure Site Recovery 目前仅支持运行 Windows OS 且[已使用 Azure AD 应用启用加密](https://aka.ms/ade-aad-app)的 Azure VM。
+>
 
 ### <a name="track-replication-status"></a>跟踪复制状态
 

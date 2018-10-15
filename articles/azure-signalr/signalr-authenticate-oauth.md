@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974317"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268506"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>教程：Azure SignalR 服务身份验证
 
@@ -29,7 +29,7 @@ ms.locfileid: "46974317"
 
 对于实际方案而言，最初在快速入门聊天室应用程序中使用的身份验证太过简单。 应用程序允许每个客户端声明自己的身份，服务器只需接受即可。 此方法在实际应用程序中用处不大，因为恶意用户可通过模拟其他人访问敏感数据。 
 
-[GitHub](https://github.com/) 提供基于常用行业标准协议（名为 [OAuth](https://oauth.net/)）的身份验证 API。 这些 API 允许第三方应用程序对 GitHub 帐户进行身份验证。 在本教程中，将使用这些 API 通过 Github 帐户实现身份验证后，才允许客户端登录到聊天室应用程序。 对 GitHub 帐户进行身份验证后，帐户信息将添加为 Web 客户端用来进行身份验证的 cookie。
+[GitHub](https://github.com/) 提供基于常用行业标准协议（名为 [OAuth](https://oauth.net/)）的身份验证 API。 这些 API 允许第三方应用程序对 GitHub 帐户进行身份验证。 在本教程中，将使用这些 API 通过 GitHub 帐户实现身份验证后，然后才允许客户端登录到聊天室应用程序。 对 GitHub 帐户进行身份验证后，帐户信息将添加为 Web 客户端用来进行身份验证的 cookie。
 
 若要深入了解通过 GitHub 提供的 OAuth 身份验证 API，请参阅 [Basics of Authentication](https://developer.github.com/v3/guides/basics-of-authentication/)（身份验证基础知识）。
 

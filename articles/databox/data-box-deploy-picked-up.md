@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: d649095a6b1b9f692a6795e96c9f15631d36e3e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974504"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785454"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box 并验证上传到 Azure 的数据
 
@@ -39,7 +39,10 @@ ms.locfileid: "46974504"
 ## <a name="ship-data-box-back"></a>寄回 Data Box
 
 1. 确保设备已关闭电源且拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。
-2. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失或未显示在电子墨水显示屏上，请从 Azure 门户下载发货标签，并将其粘贴在设备上。 转到“概况”>“下载发货标签”。
+2. 如果设备在美国发货，请确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失或未显示在电子墨水显示屏上，请从 Azure 门户下载发货标签，并将其粘贴在设备上。 转到“概况”>“下载发货标签”。 
+
+    如果设备在欧洲发货，则电子墨水显示屏不会显示发货标签。 而是，退件发货标签包含在转寄发货标签下的透明袋中。 移除旧的发货标签，并确保发货标签清晰可见。
+    
 3. 如果在美国境内退回设备，请安排 UPS 提货。 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。 
 
     指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。

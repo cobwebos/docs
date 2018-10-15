@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617599"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843355"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -21,18 +21,26 @@ ms.locfileid: "42617599"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ### <a name="azure-roles"></a>Azure 角色
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。 在 Azure 门户中，选择右上角的用户名，然后选择“权限”查看你在订阅中拥有的权限。 如果可以访问多个订阅，请选择相应的订阅。 有关将用户添加到角色的示例说明，请参阅[添加角色](../articles/billing/billing-add-change-azure-subscription-administrator.md)一文。
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。 若要查看你在订阅中拥有的权限，请在 Azure 门户中，选择右上角的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 
 
-若要通过 Azure 门户中的“创作和监视”UI为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），你必须属于“数据工厂参与者”角色。 若要使用 Powershell 或 SDK 创建和管理子资源，“参与者”角色已足够。
+若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
+- 若要在 Azure 门户中创建和管理子资源，你必须属于资源组级别或更高级别的**数据工厂参与者**角色。
+- 若要使用 PowerShell 或 SDK 创建和管理子资源，资源级别或更高级别的**参与者**角色已足够。
+
+有关如何将用户添加到角色的示例说明，请参阅[添加角色](../articles/billing/billing-add-change-azure-subscription-administrator.md)一文。
+
+有关详细信息，请参阅以下文章：
+- [数据工厂参与者角色](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
+- [Azure 数据工厂的角色和权限](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
 在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。 如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-quickstart-create-account.md)创建一个。 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>获取存储帐户名称和帐户密钥
-在本快速入门中，请使用 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥： 
+在本快速入门中，将需要 Azure 存储帐户的名称和密钥。 以下过程提供的步骤用于获取存储帐户的名称和密钥： 
 
 1. 在 Web 浏览器中转到 [Azure 门户](https://portal.azure.com)。 使用 Azure 用户名和密码登录。 
-2. 在左侧菜单中选择“更多服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
+2. 在左侧菜单中选择“所有服务”，使用“存储”关键字进行筛选，然后选择“存储帐户”。
 
    ![搜索存储帐户](media/data-factory-quickstart-prerequisites/search-storage-account.png)
 3. 在存储帐户列表中，通过筛选找出你的存储帐户（如果需要），然后选择你的存储帐户。 
@@ -56,7 +64,7 @@ ms.locfileid: "42617599"
 4. 在容器列表中选择“adftutorial”。 
 
    ![选择容器](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
-1. 在“容器”页中，选择工具栏上的“上传”。  
+5. 在“容器”页中，选择工具栏上的“上传”。  
 
    ![“上传”按钮](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
 6. 在“上传 Blob”页中，选择“高级”。

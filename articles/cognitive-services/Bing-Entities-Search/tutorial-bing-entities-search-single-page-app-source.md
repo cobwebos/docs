@@ -1,24 +1,25 @@
 ---
-title: 必应图像搜索单页 Web 应用（源代码）| Microsoft Docs
-description: 介绍了如何在单页 Web 应用中使用必应图像搜索 API 的教程的源代码。
+title: 教程：必应实体搜索单页 Web 应用（源代码）
+titlesuffix: Azure Cognitive Services
+description: 介绍了如何在单页 Web 应用中使用必应实体搜索 API 的教程的源代码。
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 988d4c809fdfb528c9cef2b3cdbefa00c274d33e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365467"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815046"
 ---
 # <a name="tutorial-single-page-web-app-source"></a>教程：单页 Web 应用（源代码）
 
-这是必应图像搜索的[单页应用教程](tutorial-bing-entities-search-single-page-app.md)的完整源代码。 若要运行应用，请将源代码复制到记事本或其他文本编辑器中，并将它另存为“`bing.html`”。 然后，在 Microsoft Edge 或其他常用浏览器中打开已保存的文件。
+这是必应实体搜索的[单页应用教程](tutorial-bing-entities-search-single-page-app.md)中所述的完整源代码。 若要运行应用，请将源代码复制到记事本或其他文本编辑器中，并将它另存为“`bing.html`”。 然后，在 Microsoft Edge 或其他常用浏览器中打开已保存的文件。
 
 ```html
 <!DOCTYPE html>

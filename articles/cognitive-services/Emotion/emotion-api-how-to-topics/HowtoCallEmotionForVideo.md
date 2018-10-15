@@ -1,32 +1,34 @@
 ---
-title: 调用用于视频的情感 API | Microsoft Docs
+title: 示例：对视频调用情感 API
+titlesuffix: Azure Cognitive Services
 description: 了解如何在认知服务中调用用于视频的情感 API。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 0875013b2061a84e3e23ae90c1106382672fdca6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365749"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238601"
 ---
-# <a name="how-to-call-emotion-api-for-video"></a>如何调用用于视频的情感 API
+# <a name="example-call-emotion-api-for-video"></a>示例：对视频调用情感 API
 
 > [!IMPORTANT]
-> 视频 API 预览将于 2017 年 10 月 30 日结束。 请试用新的[视频索引器 API 预览](https://azure.microsoft.com/services/cognitive-services/video-indexer/)，通过检测口语、人脸、字符和情感，轻松地从视频中提取见解，增强内容发现体验，例如搜索结果。 [了解详细信息](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> 情感 API 将于 2019 年 2 月 15 日弃用。 情感识别功能现在已作为[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/) 的一部分正式发布。 
 
 本指南演示如何调用用于视频的情感 API。 这些示例是使用用于视频的情感 API 客户端库以 C# 编写的。
 
-### <a name="Prep">准备工作</a> 
+### <a name="Prep">准备工作</a>
 若要使用用于视频的情感 API，你需要一个包含人物的视频，最好是人们面向摄像头的视频。
 
-### <a name="Step1">步骤 1：授权 API 调用</a> 
+### <a name="Step1">步骤 1：授权 API 调用</a>
 每次调用用于视频的情感 API 都需要提供订阅密钥。 此密钥需要通过查询字符串参数传递，或者在请求头中指定。 若要通过查询字符串传递订阅密钥，请参阅用于视频的情感 API 的以下请求 URL 作为示例：
 
 ```
@@ -44,7 +46,7 @@ ocp-apim-subscription-key: <Your subscription key>
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-若要获取订阅密钥，请参阅[订阅] (https://azure.microsoft.com/try/cognitive-services/)。 
+若要获取订阅密钥，请参阅[订阅] (https://azure.microsoft.com/try/cognitive-services/)。
 
 ### <a name="Step2">步骤 2：将视频上传到服务并检查状态</a>
 在执行任何用于视频的情感 API 调用时，最基本的方法是直接上传视频。 此操作通过发送内容类型为 application/octet-stream 且包含从视频文件中读取的数据的“POST”请求完成。 视频的最大大小为 100MB。
@@ -71,7 +73,7 @@ Operation videoOperation = await videoServiceClient.CreateOperationAsync(videoUr
 
 ```
 
-对于所有用于视频的情感 API 调用，此上传方法都一样。 
+对于所有用于视频的情感 API 调用，此上传方法都一样。
 
 上传视频后，你要执行的下一个操作是检查其状态。 由于视频文件通常比其他文件更大且更多样化，因此用户在这一步可能需要很长的处理时间。 具体时间取决于文件的大小和长度。
 
@@ -113,7 +115,7 @@ var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateReco
 
 人脸检测和跟踪 JSON 包括以下属性：
 
-属性 | 说明
+属性 | Description
 -------------|-------------
 版本 | 指用于视频的情感 API 的 JSON 版本。
 时间刻度 | 视频的每秒“刻度”数。

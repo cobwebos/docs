@@ -1,21 +1,23 @@
 ---
-title: 机器学习 - Azure 认知服务 | Microsoft Docs
-description: 此教程介绍了 Azure 自定义 AI 决策服务（一种用于上下文决策的基于云的 API）中的机器学习。
+title: 教程：特征化和特征规范 - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
+description: 自定义决策服务中的机器学习特征化和特征规范教程。
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh
-ms.openlocfilehash: 50814d67ee39c6657954610358462d877843416e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366466"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869579"
 ---
-# <a name="machine-learning"></a>机器学习
+# <a name="tutorial-featurization-and-feature-specification"></a>教程：特征化和特征规范
 
 此教程解决了自定义 AI 决策服务中的高级机器学习功能。 此教程包含两部分：[特征化](#featurization-concepts-and-implementation)和[特征规范](#feature-specification-format-and-apis)。 特征化指将数据表示为机器学习的“特征”。 特征规范涵盖用于指定特征的 JSON 格式和辅助 API。
 

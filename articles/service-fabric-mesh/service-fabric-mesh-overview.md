@@ -5,20 +5,23 @@ services: service-fabric-mesh
 keywords: ''
 author: rwike77
 ms.author: ryanwi
-ms.date: 06/27/2018
+ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 65a9b1afcc0e1e6d4fcbb60a38ab0764e6fe2f18
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 361e742b3d9b7a5d2d12aafd15233077c967b825
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226438"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888179"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什么是 Service Fabric 网格？
 
-Azure Service Fabric 网格是一个完全托管的服务，可让开发人员部署微服务应用程序，而无需管理虚拟机、存储或网络。 无需考虑赋能基础结构，就能省心地运行和缩放 Service Fabric 网格上托管的应用程序。  Service Fabric 网格包含由数千台计算机组成的群集。  开发人员察觉不到所有的群集操作。 只需上传代码，并指定所需的资源、可用性要求和资源限制即可。  Service Fabric 网格会自动分配应用程序部署请求的基础结构，同时还能处理基础结构故障，确保应用程序高度可用。 你只需关心应用程序的运行状况和响应能力，而不必考虑基础结构。  
+此视频提供了 Service Fabric 网格的快速概述。
+> [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]
+
+Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 无需考虑赋能基础结构，就能省心地运行和缩放 Service Fabric 网格上托管的应用程序。  Service Fabric 网格包含由数千台计算机组成的群集。  开发人员察觉不到所有的群集操作。 只需上传代码，并指定所需的资源、可用性要求和资源限制即可。  Service Fabric 网格会自动分配基础结构，并处理基础结构故障，从而确保应用程序高度可用。 你只需关心应用程序的运行状况和响应能力，而不必考虑基础结构。  
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -30,7 +33,7 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 
 使用 Service Fabric 网格可以：
 
-- 将现有的应用程序“直接迁移”到容器中，以大规模地现代化和运行当前应用程序。 
+- 将现有的应用程序“直接迁移”到容器中，以大规模地现代化和运行当前应用程序。
 - 在 Azure 中大规模构建和部署新的微服务应用程序。  与其他 Azure 服务或者容器中运行的现有应用程序集成。 每个微服务是网络隔离的安全应用程序的一部分，其中定义了有关 CPU 核心、内存、磁盘空间等资源的调控策略。
 - 无需对现有的应用程序进行更改，就能集成和扩展这些应用程序。 使用自己的虚拟网络将现有应用程序连接到新应用程序。  
 - 通过迁移到 Service Fabric 网格，来现代化现有的云服务应用程序。  
@@ -43,13 +46,10 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 
 - 无需显式预配和管理基础结构，即可部署和管理应用程序。  Service Fabric 网格会自动预配、升级、修补和维护底层基础结构。
 - 使用集成式工具设置持续集成，以轻松打包和部署应用程序。
-- 可以利用 Azure 资源管理器资源的所有功能（例如，审核线索和[基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)），因为部署到 Azure 中 SF 网格服务的所有资源（例如应用程序、服务、机密等）都是 Azure 资源管理器资源。 
+- 利用 Azure 资源管理器资源的所有功能（例如，审核线索和[基于角色的访问控制](/azure/role-based-access-control/overview)），因为你部署到 Azure 中 Service Fabric 网格服务的所有资源（如应用程序、服务、机密等）都是 Azure 资源管理器资源。
 - 使用 [Azure 门户](https://portal.azure.com)、资源管理器模板或 Azure CLI/PowerShell 库部署和管理资源。
-- 使用 [Application Insights](/azure/application-insights/)（或所选工具）设置操作监视和警报，以从平台捕获操作和诊断跟踪。 
+- 使用 [Application Insights](/azure/application-insights/)（或所选工具）设置操作监视和警报，以从平台捕获操作和诊断跟踪。
 - 使用 [Application Insights](/azure/application-insights/) 或所选工具访问应用程序模型发出的应用程序诊断信息。
-- 通过为应用程序定义中的服务指定自动缩放规则来优化资源使用率。  （即将支持）
-- 为应用程序创建网络隔离和安全边界，与 Hyper-V 容器结合使用时，此功能非常强大。 使用每个服务的多个 IP 以及每个应用程序的隔离虚拟网络，来隔离传入和传出服务的网络流量。  （即将支持） 
-
 
 ## <a name="mission-critical-platform-capabilities"></a>任务关键型平台功能
 

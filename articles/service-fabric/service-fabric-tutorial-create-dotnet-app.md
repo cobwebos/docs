@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346182"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078488"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "37346182"
 > * 构建 .NET Service Fabric 应用程序
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [向 ASP.NET Core 前端服务添加 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>先决条件
@@ -455,6 +455,9 @@ namespace VotingData.Controllers
 在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。 在单个应用程序中，可能有能够通过 TCP 访问的服务。 其他服务也许可以通过 HTTP REST API 访问，并且仍可通过 Web 套接字访问。 有关可用选项和相关权衡取舍的背景信息，请参阅[与服务通信](service-fabric-connect-and-communicate-with-services.md)。
 
 本教程使用 [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) 和 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，以便 VotingWeb 前端 Web 服务能够与后端 VotingData 服务通信。 反向代理默认配置为使用端口 19081，应适用于本教程。 在用于设置群集的 ARM 模板中设置端口。 若要确定使用了哪个端口，请查看 **Microsoft.ServiceFabric/clusters** 资源中的群集模板，或者查看群集清单中的 HttpApplicationGatewayEndpoint 元素。
+
+> [!NOTE]
+> 仅在运行 Windows 8 及更高版本或 Windows Server 2012 及更高版本的群集上支持反向代理。
 
 <u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort 资源</u>
 

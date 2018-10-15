@@ -1,23 +1,25 @@
 ---
-title: 适用于项目 URL 预览的 C# 快速入门 - Microsoft 认知服务 | Microsoft Docs
-description: 开始使用 Azure 上的 Microsoft 认知服务中的项目 URL 预览。
+title: 快速入门：项目 URL 预览、C#
+titlesuffix: Azure Cognitive Services
+description: 通过 C# 开始使用项目 URL 预览。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 17d44bd0c23d0a1e67da5a0e91248700d3166c1a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 8d31d3a83f9873ce550b9c78626eea0d96ac39bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366276"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867436"
 ---
-# <a name="url-preview-query-in-c"></a>采用 C# 的 URL 预览查询
+# <a name="quickstart-url-preview-query-in-c"></a>快速入门：使用 C# 实现 URL 预览查询
 
-以下 C# 示例创建 SwiftKey 网站的 URL 预览：https://swiftkey.com/en。
+以下 C# 示例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,12 +29,12 @@ ms.locfileid: "35366276"
 
 ## <a name="code-scenario"></a>代码方案
 
-以下 C# 代码创建 SwiftKey 网站的 URL 预览：https://swiftkey.com/en。 
+以下 C# 代码创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。 
 
 它是通过以下步骤实现的：
-1. 声明变量来指定终结点和要预览的查询 URL。  
+1. 声明变量，用于指定终结点和要预览的查询 URL。  
 2. 创建请求。
-3. 添加 *Ocp-Apim-Subscription-Key* 标头。 
+3. 添加 Ocp-Apim-Subscription-Key 标头。 
 4. 以异步方式运行 Web 请求。 
 5. 读取响应。
 6. 将标头和 JSON 结果输出到控制台。
@@ -153,11 +155,11 @@ namespace UrlPrevCshp
 ```
 ## <a name="running-the-application"></a>运行应用程序
 
-若要运行应用程序，请执行以下操作：
+运行应用程序：
 
 1. 在 Visual Studio 中创建一个新的控制台解决方案。
 2. 将 `Program.cs` 替换为所提供的代码。
-3. 将 `YOUR-ACCESS-KEY` 值替换为你的订阅的有效访问密钥。
+3. 将 `YOUR-ACCESS-KEY` 值替换为订阅的有效访问密钥。
 4. 运行该程序。
 
 ## <a name="next-steps"></a>后续步骤

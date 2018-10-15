@@ -1,20 +1,21 @@
 ---
-title: Microsoft Academic Graph 的学术知识 API | Microsoft Docs
-description: 学术知识 API 可用于解释用户查询，并从 Microsoft 认知服务的学术图谱中检索大量信息。
+title: 什么是学术知识 API？
+titlesuffix: Azure Cognitive Services
+description: 学术知识 API 可用于解释用户查询，并从学术图谱中检索大量信息。
 services: cognitive-services
 author: mvorvoreanu
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: overview
 ms.date: 03/27/2017
 ms.author: mivorvor
-ms.openlocfilehash: e241f9a87cd58b62eafd754bd3cb4283aa0a1e92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365715"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901204"
 ---
 # <a name="academic-knowledge-api"></a>学术知识 API
 

@@ -1,23 +1,23 @@
 ---
-title: 必应新闻搜索 SDK Java 快速入门 | Microsoft Docs
-description: 如何设置必应新闻搜索 SDK 控制台应用程序。
+title: 快速入门：必应新闻搜索 SDK、Java
 titleSuffix: Azure Cognitive Services
+description: 如何设置必应新闻搜索 SDK 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a6d4baf307fa3edcc0886d32204f2872fe310ce2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366689"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802471"
 ---
-# <a name="bing-news-search-sdk-java-quickstart"></a>必应新闻搜索 SDK Java 快速入门
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>快速入门：通过 Java 使用必应新闻搜索 SDK
 
 必应新闻搜索 SDK 提供了用于新闻查询以及对结果进行分析的 REST API 功能。 
 

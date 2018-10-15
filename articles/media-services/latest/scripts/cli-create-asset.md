@@ -4,7 +4,7 @@ description: 本主题中的 Azure CLI 脚本演示如何创建媒体服务资�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/15/2018
+ms.date: 10/09/2018
 ms.author: juliako
-ms.openlocfilehash: 89120daf971586e8c2e360e9b6b064b10b14f707
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: d2fe1718999bcdc33fcde6891fa891373a9ea5cb
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093140"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069346"
 ---
-# <a name="cli-example-create-an-azure-media-services-account"></a>CLI 示例：创建 Azure 媒体服务帐户
+# <a name="cli-example-create-an-asset"></a>CLI 示例：创建资产
 
 本文中的 Azure CLI 脚本演示如何创建媒体服务资产供上传内容使用。
 

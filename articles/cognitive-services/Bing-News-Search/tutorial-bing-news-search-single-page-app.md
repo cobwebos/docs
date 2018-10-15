@@ -1,20 +1,21 @@
 ---
-title: 必应单页新闻搜索应用 | Microsoft Docs
+title: 教程：必应新闻搜索单页应用
+titlesuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应新闻搜索 API。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: fb8cd24dfdfb03500cc86ee1b1f0126ec044a873
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366569"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803641"
 ---
 # <a name="tutorial-single-page-news-search-app"></a>教程：单页新闻搜索应用
 通过必应新闻搜索 API 可以搜索 Web 并获取与搜索查询相关的新闻类型结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应新闻搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
@@ -37,7 +38,7 @@ ms.locfileid: "35366569"
 
 教程页是完全独立的；它不使用任何外部框架、样式表或图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
 
-在本教程中，我们讨论源代码的选定部分。 提供了完整的[源代码](tutorial-bing-news-search-single-page-app-source.md)。 若要运行该示例，请将源代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
+本教程将讨论源代码的选定部分。 提供了完整的[源代码](tutorial-bing-news-search-single-page-app-source.md)。 若要运行该示例，请将源代码复制并粘贴到文本编辑器中，并将其另存为 `bing.html`。
 
 ## <a name="app-components"></a>应用组件
 与任何单页 Web 应用一样，本教程应用程序包含以下三个部分：
@@ -100,14 +101,14 @@ HTML `<form>` 标记 `onsubmit` 可调用 `bingWebSearch` 函数以返回搜索�
 
 HTML 表单包括具有以下名称的元素：
 
-|元素|说明|
+|元素|Description|
 |-|-|
 | `where` | 用于选择市场（位置和语言）进行搜索的下拉菜单。 |
 | `query` | 用于输入搜索条件的文本字段。 |
 | `category` | 用于提升特定结果类型的复选框。 提升运行状况，例如，提升运行状况新闻的排名。 |
 | `when` | 用于视需要将搜索限制为最近一天、最近一周或最近一个月的下拉菜单。 |
 | `safe` | 指示是否使用必应安全搜索功能筛选出“成人”结果的复选框。 |
-| `count` | 隐藏的字段。 要在每个请求后返回的搜索结果数。 更改为每页显示更少或更多结果。 |
+| `count` | 隐藏的字段。 将在每个请求后返回的搜索结果数。 更改为每页显示更少或更多结果。 |
 | `offset`|  隐藏的字段。 请求中第一个搜索结果的偏移；用于分页。 在新请求中将重置为 `0`。 |
 
 > [!NOTE]
@@ -268,7 +269,7 @@ function handleBingResponse() {
 > [!IMPORTANT]
 > 成功的 HTTP 请求不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
-上面两个函数中的多个代码专用于错误处理。 以下阶段可能会出现错误：
+上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
 |阶段|可能的错误|处理方式|
 |-|-|-|
@@ -276,7 +277,7 @@ function handleBingResponse() {
 |发出请求|网络错误，已中止连接|`error` 和 `abort` 事件处理程序|
 |执行搜索|无效的请求、无效的 JSON、速率限制|`load` 事件处理程序中的测试|
 
-通过调用带有已知错误的任何详细信息的 `renderErrorMessage()` 来处理错误。 如果响应通过错误测试的完整挑战，我们将调用 `renderSearchResults()` 以显示页面中的搜索结果。
+处理错误时，会调用 `renderErrorMessage()`，获取有关该错误的任何已知详细信息。 如果响应通过全部错误测试，则会调用 `renderSearchResults()`，在页面中显示搜索结果。
 
 ## <a name="displaying-search-results"></a>显示搜索结果
 用于显示搜索结果的主函数是 `renderSearchResults()`。 此函数将获取必应新闻搜索服务返回的 JSON 并显示新闻结果和相关搜索（如果有）。
@@ -314,12 +315,12 @@ function renderResults(items) {
 ```
 必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
 
-|关系|说明|
+|关系|Description|
 |-|-|
 |`pivotSuggestions`|将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。|
-|`queryExpansions`|通过添加更多条件缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
-|`relatedSearches`|已由输入了原始搜索的用户输入的查询。 例如，如果搜索“Mount Rainier”，相关搜索可能为“Mt. Saint Helens”。|
-|`similarTerms`|与原始搜索含义类似的查询。 例如，如果搜索“schools”，类似术语可能为“education”。|
+|`queryExpansions`|通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
+|`relatedSearches`|由输入了原始搜索的用户输入的查询。 例如，如果搜索“Mount Rainier”，相关搜索可能为“Mt. Saint Helens”。|
+|`similarTerms`|与原始搜索含义类似的查询。 例如，如果搜索“schools”，类似字词可能为“education”。|
 
 如之前在 `renderSearchResults()` 中所示，我们仅呈现 `relatedItems` 建议并将生成的链接放在页面的侧栏中。
 
@@ -337,13 +338,13 @@ searchItemRenderers = {
 ```
 呈现器函数可以接受以下参数：
 
-|参数|说明|
+|参数|Description|
 |-|-|
 |`item`| 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`| 结果项集合中的结果项的索引。|
 |`count`| 搜索结果项集合中的项数。|
 
-`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符等等。 如果呈现器不需要此功能，则不需要接受这两个参数。
+`index` 和 `count` 参数可用于计算结果数、为集合的开头或末尾生成特殊的 HTML、在一定数量的项后插入换行符，等等。 如果呈现器不需要此功能，则不需要接受这两个参数。
 
 `news` 呈现器显示在以下 javascript 摘录中：
 ```javascript
@@ -377,7 +378,7 @@ searchItemRenderers = {
 > * 可创建段落标记，将其分配给 `news` 类，并将其推到 html 数组。
 > * 可计算图像缩略图大小（宽度固定为 60 像素，高度按比例计算）。
 > * 可生成 HTML `<img>` 标记以显示图像缩略图。 
-> * 可生成链接到图像及所在页面的 HTML `<a>` 标记。
+> * 生成链接到图像及所在页面的 HTML `<a>` 标记。
 > * 可生成显示有关图像及所在站点的信息的说明。
 
 `<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
@@ -385,20 +386,20 @@ searchItemRenderers = {
 ## <a name="persisting-client-id"></a>保留客户端 ID
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
 
-提供 `X-MSEdge-ClientID` 标头允许必应 API 关联用户的所有搜索，其中有两个重要的好处。
+提供 `X-MSEdge-ClientID` 标头可以让必应 API 关联用户的所有搜索，这有两个主要好处。
 
-首先，它允许必应搜索引擎将过去的上下文应用于搜索来查找更好地满足用户的结果。 如果用户以前已搜索与航海相关的术语，则稍后搜索“节”可能会优先返回有关航海中使用的节的信息。
+首先，它允许必应搜索引擎将过去的上下文应用于搜索来查找更好地满足用户的结果。 例如，如果用户以前搜索过与航海相关的词汇，则稍后搜索“节”时，系统可能会优先返回在航海中使用的节的信息。
 
 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同客户端 ID 可确保看到该功能的用户可以始终看到。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略 (CORS) 可能会阻止 `X-MSEdge-ClientID` 标头提供给 JavaScript。 搜索响应具有与发出请求的页面不同的来源时会出现此限制。 在生产环境中，应通过托管可在与网页相同的域上执行 API 调用的服务器端脚本来满足此策略。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
+浏览器安全策略 (CORS) 可能会阻止将 `X-MSEdge-ClientID` 标头提供给 JavaScript。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
-> 在生产 Web 应用程序中，应执行请求服务器端。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 需对 API 订阅密钥的所有使用，甚至未经授权的用户发出的请求支付费用，因此最好不要公开你的密钥。
+> 在生产 Web 应用程序中，应执行请求服务器端。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-出于开发目的，你可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入白名单，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
 
-安装 CORS 代理非常容易，允许我们的教程应用程序访问客户端 ID 标头。 首先，如果尚未安装 Node.js，则先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
+安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 
     npm install -g cors-proxy-server
 
@@ -410,7 +411,7 @@ searchItemRenderers = {
 
     cors-proxy-server
 
-在使用教程应用程序期间，请将命令窗口打开；关闭窗口会阻止代理。 在搜索结果下的可展开 HTTP 标头部分，现在可以看到 `X-MSEdge-ClientID` 标头（以及其他标头），并验证是否对于每个请求该标头都相同。
+使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

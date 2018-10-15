@@ -1,25 +1,27 @@
 ---
-title: 情感 API JavaScript 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助用户通过认知服务中的 JavaScript 快速开始使用情感 API。
+title: 快速入门：识别图像中人脸的情感 - 情感 API、JavaScript
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你通过 JavaScript 快速开始使用情感 API。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeaf2ea080d8c0b604b9831532028e31b8306169
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072086"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239483"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>情感 API JavaScript 快速入门
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>快速入门：构建应用以识别图像中人脸的情感。
 
 > [!IMPORTANT]
-> 视频 API 预览将于 2017 年 10 月 30 日结束。 请试用全新的[视频索引器 API（预览版）](https://azure.microsoft.com/services/cognitive-services/video-indexer/)。它可以检测口语、人脸、字符和情感，不仅便于从视频中轻松提取见解，还能增强内容发现体验（如搜索结果）。 [了解详细信息](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> 情感 API 将于 2019 年 2 月 15 日弃用。 情感识别功能现在已作为[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/) 的一部分正式发布。 
 
 本文提供了信息和代码示例，以帮助用户用 JavaScript 识别图像中一人或多人的情感，从而快速开始使用[情感 API 识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。
 
@@ -30,7 +32,7 @@ ms.locfileid: "39072086"
 
 ## <a name="recognize-emotions-javascript-example-request"></a>识别情感 JavaScript 示例请求
 
-复制以下内容并将其保存到文件，如 `test.html`。 更改请求 `url`，以使用获取订阅密钥的位置，并将“Ocp-Apim-Subscription-Key”值替换为有效的订阅密钥。 可以分别在 Azure 门户的情感 API 资源的“概述”和“密钥”部分找到这些信息。 
+复制以下内容并将其保存到文件，如 `test.html`。 更改请求 `url`，以使用获取订阅密钥的位置，并将“Ocp-Apim-Subscription-Key”值替换为有效的订阅密钥。 可以分别在 Azure 门户的情感 API 资源的“概述”和“密钥”部分找到这些信息。
 
 ![API 终结点](../Images/api-url.png)
 
@@ -62,10 +64,10 @@ ms.locfileid: "39072086"
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-      
+
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -87,7 +89,7 @@ ms.locfileid: "39072086"
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-            
+
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores');
@@ -108,10 +110,10 @@ ms.locfileid: "39072086"
 ## <a name="recognize-emotions-sample-response"></a>识别情感示例响应
 成功的调用将返回一组按人脸矩形大小降序排列的人脸条目及其相关表情评分。 空响应指示未检测到任何人脸。 表情条目包含以下字段：
 * faceRectangle - 图像中人脸的矩形位置。
-* scores - 图像中每张人脸的表情得分。 
+* scores - 图像中每张人脸的表情得分。
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

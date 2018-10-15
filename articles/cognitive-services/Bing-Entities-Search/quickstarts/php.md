@@ -1,23 +1,23 @@
 ---
-title: 适用于 Azure 认知服务中的必应实体搜索 API 的 PHP 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应实体搜索 API。
+title: 快速入门：必应实体搜索 API、PHP
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 448064de764775c497de467b235837d66ef7093b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 30cfa98fc38f92d834e908b6d77306bed1d2b5cb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366548"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815522"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-php"></a>将 Microsoft 必应实体搜索 API 与 PHP 配合使用快速入门 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-php"></a>通过 PHP 使用必应实体搜索 API 快速入门
 
 本文展示了如何将[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 PHP 配合使用。
 
@@ -33,7 +33,7 @@ ms.locfileid: "35366548"
 
 1. 在你喜欢使用的 IDE 中新建一个 PHP 项目。
 2. 添加下面提供的代码。
-3. 将 `key` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```php

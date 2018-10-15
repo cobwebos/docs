@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: f8350d46fecff726dd9f591fe3df0272f556b3e7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce5b704a7ac251621698352608ea3eefa4629aea
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168104"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886511"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>教程：使用 C# 的 LUIS 机器人
 使用 C#，可以构建集成了语言理解 (LUIS) 的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
@@ -77,7 +77,7 @@ ms.locfileid: "47168104"
 |取消|`stop`|
 |Greeting|`hello`|
 |帮助|`help`|
-|None|应用域以外的任何内容。|
+|无|应用域以外的任何内容。|
 
 将预生成的 HomeAutomation 应用添加到模型以处理类似于 `Turn off the living room lights` 的话语
 
@@ -286,20 +286,20 @@ ms.locfileid: "47168104"
 
     ```JSON
     TurnOn intent found, JSON response: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```    ```
+    ```    
 
-## Learn more about Bot Framework
-Azure Bot service uses the Bot Framework SDK. Learn more about the SDK and bot framework:
+## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
+Azure 机器人服务使用 Bot Framework SDK。 详细了解该 SDK 和机器人框架：
 
-* [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 documentation
-* [Bot Builder Samples](https://github.com/Microsoft/botbuilder-samples)
+* [Azure 机器人服务](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 文档
+* [Bot Builder 示例](https://github.com/Microsoft/botbuilder-samples)
 * [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
-* [Bot Builder tools](https://github.com/Microsoft/botbuilder-tools):
+* [Bot Builder 工具](https://github.com/Microsoft/botbuilder-tools)：
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-You created an Azure bot service, copied the bot secret and `.bot` file path, downloaded the zip file of the code. You added the prebuilt HomeAutomation domain to the LUIS app created as part of the new Azure bot service, then trained and published the app again. You extracted the code project, created an environment file (`.env`), and set the bot secret and the `.bot` file path. In the bot.js file, you added code to handle the two new intents. Then you tested the bot in the bot emulator to see the LUIS response for an utterance of one of the new intents. 
+我们创建了一个 Azure 机器人服务，复制了机器人机密和 `.bot` 文件路径，并下载了代码的 zip 文件。 我们已将预生成的 HomeAutomation 域添加到在创建新 Azure 机器人服务过程中创建的 LUIS 应用，然后重新训练和并发布了该应用。 我们提取了代码项目，创建了环境文件 (`.env`)，并设置了机器人机密和 `.bot` 文件路径。 在 bot.js 文件中，我们添加了用于处理两个新意向的代码。 然后，我们在模拟器中测试了机器人，以查看针对某个新意向的话语做出的 LUIS 响应。 
 
 
 > [!div class="nextstepaction"]
-> [Build a custom domain in LUIS](luis-quickstart-intents-only.md)
+> [在 LUIS 中生成自定义域](luis-quickstart-intents-only.md)

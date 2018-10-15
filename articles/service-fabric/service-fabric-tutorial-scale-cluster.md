@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408504"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238759"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
 
@@ -116,12 +116,12 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 
 缩小和扩大相同，只是使用的是更低的容量值。 缩小规模集时，将从规模集中移除虚拟机实例。 通常情况下，Service Fabric 不能识别发生了什么，并且它认为节点已丢失。 然后 Service Fabric 将报告群集的不正常状态。 为防止错误状态，必须通知 Service Fabric 你希望节点消失。
 
-### <a name="remove-the-service-fabric-node"></a>移除 Service Fabric 节点
+### <a name="remove-the-service-fabric-node"></a>删除 Service Fabric 节点
 
 > [!NOTE]
 > 此部分仅应用于 Bronze 持续性层。 有关持续性的详细信息，请参阅 [Service Fabric 群集容量规划][durability]。
 
-缩小虚拟机规模集时，规模集（大多情况下）会移除上次创建的虚拟机实例。 因此，需要找到上次创建的相应 Service Fabric 节点。 可以通过检查 Service Fabric 节点上最大 `NodeInstanceId` 属性值找到最近的节点。 下面的代码示例按节点实例排序并返回有最大 ID 值的实例的详细信息。
+为了使群集节点均匀地分布在升级域和容错域中，从而使它们的利用均匀，应该首先删除最近创建的节点。 换句话说，应该按照创建节点的相反顺序删除节点。 最近创建的节点是具有最大 `virtual machine scale set InstanceId` 属性值的节点。 下面的代码示例返回最近创建的节点。
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -131,7 +131,7 @@ Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastInde
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
-Service Fabric 群集需要了解此节点将被移除。 需要执行以下三个步骤：
+Service Fabric 群集需要了解此节点将被删除。 需要执行以下三个步骤：
 
 1. 禁用节点，使其不再是数据复制。  
 PowerShell：`Disable-ServiceFabricNode`  
@@ -232,7 +232,7 @@ sfctl node remove-state --node-name _nt1vm_5
 
 ### <a name="scale-in-the-scale-set"></a>缩小规模集
 
-将 Service Fabric 节点从群集中移除后，即可缩小虚拟机规模集。 在下面的示例中，规模集容量缩小了 1。
+将 Service Fabric 节点从群集中删除后，即可缩小虚拟机规模集。 在下面的示例中，规模集容量缩小了 1。
 
 ```powershell
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm

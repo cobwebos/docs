@@ -1,25 +1,25 @@
 ---
-title: 新闻搜索 API 快速入门 | Microsoft Docs
+title: 快速入门：必应新闻搜索 API
+titlesuffix: Azure Cognitive Services
 description: 展示了如何开始使用必应新闻搜索 API。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034325"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802519"
 ---
-# <a name="your-first-news-search-query"></a>你的第一个新闻搜索查询
+# <a name="quickstart-your-first-news-search-query"></a>快速入门：第一个新闻搜索查询
 
-在进行第一次调用之前，需要获取认知服务订阅密钥。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。
+必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。
 
 若要获取纯新闻搜索结果，请向以下终结点发送 GET 请求：
 

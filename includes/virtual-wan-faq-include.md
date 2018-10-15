@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de744a4a23b246223ed0f42f3d079b1ac2e5521a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008815"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874142"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 虚拟网络网关（VPN 网关）与 Azure 虚拟 WAN vpngateway 之间有什么差别？
 
@@ -21,7 +21,11 @@ ms.locfileid: "47008815"
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>推出时支持哪些设备提供商（虚拟 WAN 合作伙伴）？ 
 
-目前，Citrix 和 Riverbed 支持完全自动化的虚拟 WAN 体验。 有关详细信息，请参阅[虚拟 WAN 合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)。
+目前，许多合作伙伴都支持全自动虚拟 WAN 体验。 有关详细信息，请参阅[虚拟 WAN 合作伙伴](https://go.microsoft.com/fwlink/p/?linkid=2019615)。 
+
+### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>虚拟 WAN 合作伙伴自动化步骤有哪些？
+
+有关合作伙伴自动化步骤，请参阅[虚拟 WAN 合作伙伴自动化](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)。
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>是否需要使用首选的合作伙伴设备？
 
@@ -41,7 +45,7 @@ ms.locfileid: "47008815"
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>允许多少 VPN 设备连接到单个中心？
 
-每个虚拟中心最多支持 100 个连接。 每个连接包括采用主动-主动配置的两个隧道。 隧道在 Azure 虚拟中心 vpngateway 中终止。
+每个虚拟中心最多支持 1000 个连接。 每个连接包括采用主动-主动配置的两个隧道。 隧道在 Azure 虚拟中心 vpngateway 中终止。
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>本地 VPN 设备是否可以连接到多个中心？
 
@@ -66,7 +70,6 @@ ms.locfileid: "47008815"
 ### <a name="is-there-support-for-bgp"></a>是否支持 BGP？
 
 是的，支持 BGP。 为了确保来自 NVA VNet 的路由适当播发，如果分支已连接到 NVA VNet，而后者又连接到虚拟中心，则分支必须禁用 BGP。 此外，请将辐射 VNet 连接到虚拟中心以确保辐射 VNet 路由传播到本地系统。
-是否可以在虚拟中心使用 UDR 定向流量？
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>是否可以在虚拟中心使用 UDR 定向流量？
 
@@ -94,7 +97,7 @@ ms.locfileid: "47008815"
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>虚拟 WAN 与现有 Azure 虚拟网络网关有何不同？
 
-虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 在中心内，可以连接到最多 100 个 2 Gbps 的分支连接。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 100 多个分支。
+虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 对于除中西部区域之外的所有区域，你可以以 2 Gbps 的速率最多连接到 1000 个分支。 对于中西部区域，可以提供 20 Gbps 的速率。 我们将来会向其他区域推出 20 Gbps 的速率。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1000 多个分支。
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>此虚拟 WAN 是否要求每个站点中都有 ExpressRoute？
 
@@ -102,7 +105,7 @@ ms.locfileid: "47008815"
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>使用 Azure 虚拟 WAN 时是否存在网络吞吐量限制？
 
-分支数限制为每个中心/区域 100 个连接，中心内总带宽为 2 G。
+分支数限制为每个中心/区域 1000 个连接，中心内总带宽为 2 G。 唯一的例外是美国中西部，它总共提供 20 Gbps。 我们将来会向其他区域推出 20 Gbps 的速率。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虚拟 WAN 是否允许本地设备并行利用多个 ISP？亦或它始终为单个 VPN 隧道？
 
@@ -110,7 +113,7 @@ ms.locfileid: "47008815"
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>流量在 Azure 主干网上是如何路由的？
 
-流量遵循以下模式：分支设备-> ISP-> Microsoft Edge-> Microsoft DC-> Microsoft Edge-> ISP-> 分支设备。
+流量遵循以下模式：分支设备->ISP->Microsoft Edge->Microsoft DC->Microsoft Edge->ISP->分支设备
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>在此模型中，需要在每个站点执行什么操作？ 只需要创建 Internet 连接？
 

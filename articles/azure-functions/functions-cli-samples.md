@@ -4,24 +4,19 @@ description: Azure CLI 示例 - Azure Functions
 services: functions
 documentationcenter: functions
 author: syntaxc4
-manager: cfowler
-editor: ggailey777
-tags: azure-service-management
+manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: functions
-ms.devlang: na
+ms.service: azure-functions
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: functions
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ebeec7a9e88cd1c654128da2c197589aaf7c1b5e
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 99ea221dcd236d3e8c42aec25d651b5fda2ae1d1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27740095"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887420"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -29,7 +24,7 @@ ms.locfileid: "27740095"
 
 | | |
 |-|-|
-|**创建应用**||
+|<a name="create"></a>**创建应用**||
 | [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建 Function App。  |
 | [在应用服务计划中创建 Function App](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
 | | |
@@ -39,7 +34,7 @@ ms.locfileid: "27740095"
 | | |
 |**连续部署**||
 | [从 GitHub 进行部署](scripts/functions-cli-create-function-app-github-continuous.md) | 创建从 GitHub 存储库部署的 Function App。  |
-| [从 VSTS 进行部署](scripts/functions-cli-create-function-app-vsts-continuous.md) | 创建从 Visual Studio Team Services (VSTS) 存储库部署的 Function App。  |
+| [从 Azure DevOps 部署](scripts/functions-cli-create-function-app-vsts-continuous.md) | 创建从 Azure DevOps 存储库部署的函数应用。  |
 | | |
 |**配置应用**||
 | [将自定义域映射到 Function App](scripts/functions-cli-configure-custom-domain.md) | 定义函数的自定义域。  |

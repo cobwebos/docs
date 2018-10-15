@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986502"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311042"
 documentType: LandingData
-title: 用于脱机传输的 Azure Data Box
+title: Azure Data Box 文档 - 脱机传输
 metadata:
-  title: 用于脱机传输的 Azure Data Box 文档
-  description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure 中。 受到时间、网络或成本限制时，请使用 Data Box 设备进行脱机数据传输。
+  title: Azure Data Box 文档 - 脱机传输
+  description: 受到时间、网络或成本限制时，请使用 Azure Data Box 设备进行脱机数据传输。
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure。 受到时间、网络或成本限制时，请使用 Data Box 设备进行脱机数据传输。<p>请根据数据大小从 Data Box Disk、Data Box<SUP>预览</SUP>或 Data Box Heavy<SUP>预览</SUP>中进行选择。 每个设备都可以通过 4 个简单的步骤将数据传输到 Azure - 订购，接收，将数据复制到设备，将设备返回到 Azure。 在 Azure 数据中心，数据会在上传后清除。</p><p>阅读快速入门和教程，了解如何利用 Data Box 进行脱机数据传输。</p>

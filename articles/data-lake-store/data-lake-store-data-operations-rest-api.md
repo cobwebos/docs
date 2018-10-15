@@ -1,25 +1,24 @@
 ---
-title: "REST API：Azure Data Lake Store 中的文件系统操作 | Microsoft Docs"
-description: "使用 WebHDFS REST API 对 Data Lake Store 执行文件系统操作"
+title: REST API：对 Azure Data Lake Storage Gen1 进行的文件系统操作 | Microsoft Docs
+description: 使用 WebHDFS REST API 对 Azure Data Lake Storage Gen1 执行文件系统操作
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a850b3fdff956abe41ac9a4af10a96dc119a75f4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 62ecf3b1983853629f6bc5fd594231188aa67bcd
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391600"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>使用 REST API 在 Azure Data Lake Store 上进行的文件系统操作
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 对 Azure Data Lake Storage Gen1 进行的文件系统操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,30 +27,30 @@ ms.lasthandoff: 01/10/2018
 >
 > 
 
-本文介绍如何使用 WebHDFS REST API 和 Data Lake Store REST API 对 Azure Data Lake Store 执行文件系统操作。 若要了解如何使用 REST API 在 Data Lake Store 上执行帐户管理操作，请参阅[在 Data Lake Store 上使用 REST API 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)。
+本文介绍如何使用 WebHDFS REST API 和 Data Lake Storage Gen1 REST API 对 Azure Data Lake Storage Gen1 执行文件系统操作。 若要了解如何使用 REST API 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **Azure Data Lake Store 帐户**。 遵照[通过 Azure 门户使用 Azure Data Lake Store](data-lake-store-get-started-portal.md) 中的说明。
+* **Azure Data Lake Storage Gen1 帐户**。 遵照[通过 Azure 门户使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明。
 
-* **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Store 帐户进行 REST API 调用。
+* **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>如何使用 Azure Active Directory 进行身份验证？
 可以通过两种方法使用 Azure Active Directory 进行身份验证。
 
-* 有关应用程序的最终用户身份验证（交互式），请参阅[使用 .NET SDK 通过 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)。
-* 有关应用程序的服务到服务身份验证（非交互式），请参阅[使用 .NET SDK 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
+* 有关应用程序的最终用户身份验证（交互式），请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)。
+* 有关应用程序的服务到服务身份验证（非交互式），请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
 
 ## <a name="create-folders"></a>创建文件夹
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory)定义的 WebHDFS REST API 调用。
 
-使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
-在上述命令中，将 \<`REDACTED`\> 替换为前面检索的授权令牌。 此命令在 Data Lake Store 帐户的根文件夹下创建名为 **mytempdir** 的目录。
+在上述命令中，将 \<`REDACTED`\> 替换为前面检索的授权令牌。 此命令在 Data Lake Storage Gen1 帐户的根文件夹下创建名为 **mytempdir** 的目录。
 
 如果操作成功完成，则会看到类似于以下代码片段的响应：
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="list-folders"></a>列出文件夹
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)定义的 WebHDFS REST API 调用。
 
-使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="upload-data"></a>上传数据
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)定义的 WebHDFS REST API 调用。
 
-使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+使用以下 cURL 命令。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
@@ -110,12 +109,12 @@ ms.lasthandoff: 01/10/2018
 ## <a name="read-data"></a>读取数据
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)定义的 WebHDFS REST API 调用。
 
-从 Data Lake Store 帐户中读取数据的过程由两个步骤组成。
+从 Data Lake Storage Gen1 帐户中读取数据的过程由两个步骤组成。
 
 * 首先，针对终结点 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`提交 GET 请求。 此调用返回要将下一个 GET 请求提交到的位置。
 * 然后，针对终结点 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` 提交 GET 请求。 此调用显示文件的内容。
 
-但是，由于第一和第二个步骤之间的输入参数没有任何差异，因此可以使用 `-L` 参数来提交第一个请求。 `-L` 选项本质上是将两个请求合并成一个，让 cURL 对新位置重做请求。 最后会显示所有请求调用的输出，如以下代码片段所示。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+但是，由于第一和第二个步骤之间的输入参数没有任何差异，因此可以使用 `-L` 参数来提交第一个请求。 `-L` 选项本质上是将两个请求合并成一个，让 cURL 对新位置重做请求。 最后会显示所有请求调用的输出，如以下代码片段所示。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -134,7 +133,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="rename-a-file"></a>重命名文件
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)定义的 WebHDFS REST API 调用。
 
-使用以下 cURL 命令重命名文件。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+使用以下 cURL 命令重命名文件。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
@@ -148,7 +147,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="delete-a-file"></a>删除文件
 此操作基于 [此处](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)定义的 WebHDFS REST API 调用。
 
-使用以下 cURL 命令删除文件。 将 **\<yourstorename>** 替换为 Data Lake Store 名称。
+使用以下 cURL 命令删除文件。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 
@@ -160,9 +159,9 @@ ms.lasthandoff: 01/10/2018
     {"boolean":true}
 
 ## <a name="next-steps"></a>后续步骤
-* [Data Lake Store 上的帐户管理操作（使用 REST API）](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)。
 
 ## <a name="see-also"></a>另请参阅
-* [Azure Data Lake Store REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Open Source Big Data applications compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
+* [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)
 

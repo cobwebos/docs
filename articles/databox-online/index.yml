@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 467d4d982d76f4defe8ed887ebcc3f99100af313
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068989"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309070"
 documentType: LandingData
-title: 用于联机传输的 Azure Data Box 文档
+title: Azure Data Box 文档 - 联机传输
 metadata:
-  title: 用于联机传输的 Azure Data Box 文档
-  description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure 中。 使用 Data Box 设备进行网络高性能数据传输。
-  services: databox-edge-gateway
+  title: Azure Data Box 文档 - 联机传输
+  description: 使用 Data Box 设备，以一种快速、廉价且可靠的方式通过网络向 Azure 进行高性能数据传输。
+  services: databox
   author: alkohli
   manager: twooley
-  ms.service: databox-edge-gateway
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: databox
+  ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 09/26/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: 使用 Azure Data Box 系列能够以快速、廉价且可靠的方式将数百 TB 的数据传输到 Azure。 使用 Data Box 设备进行网络高性能数据传输。<p>选择 Data Box Gateway<SUP>预览版</SUP>发送数据，以便进行云存档、灾难恢复或处理云规模的数据。  使用 Data Box Edge<SUP>预览版</SUP>在将数据移动到 Azure 过程中对其进行筛选、分析和转换。</p><p>通过我们的教程，了解如何利用 Data Box Gateway 和 Data Box Edge 实现基于网络的传输。</p>
@@ -30,13 +29,17 @@ sections:
     style: ordered
     items:
     - html: <a href="data-box-gateway-deploy-prep">准备部署 Azure Data Box Gateway</a>
-    - html: <a href="/azure/databox/data-box-deploy-provision-hyperv">在 Hyper-V 中预配 Azure Data Box Gateway</a>
+    - html: <a href="data-box-gateway-deploy-provision-hyperv">在 Hyper-V 中预配 Azure Data Box Gateway</a>
     - html: <a href="data-box-gateway-deploy-provision-vmware">在 VMware 中预配 Azure Data Box Gateway</a>
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">连接、设置、激活 Azure Data Box Gateway</a>
-    - html: <a href=data-box-gateway-deploy-add-shares">使用 Azure Data Box Gateway 传输数据</a>
+    - html: <a href="data-box-gateway-deploy-add-shares">使用 Azure Data Box Gateway 传输数据</a>
   - type: paragraph
     text: <b>注册 Data Box Edge<SUP>预览版</SUP></b>
   - type: list
     style: ordered
     items:
-    - html: <a href="data-box-edge-overview#sign-up">注册！</a>
+    - html: <a href="data-box-edge-deploy-prep">准备部署 Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-install">安装 Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-connect-setup-activate">连接、设置、激活 Azure Data Box Edge</a>
+    - html: <a href="data-box-edge-deploy-add-shares">使用 Azure Data Box Edge 传输数据</a>
+    - html: <a href="data-box-edge-deploy-configure-compute">使用 Azure Data Box Edge 转换数据</a>

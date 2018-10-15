@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 机器学习定型图像分类模型
+title: 教程：使用 Azure 机器学习服务定型图像分类模型
 description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
@@ -9,18 +9,18 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181392"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785132"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>教程 #1：使用 Azure 机器学习定型图像分类模型
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程 #1：使用 Azure 机器学习服务定型图像分类模型
 
 在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习服务（预览）的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
-本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](http://scikit-learn.org) 与 Azure 机器学习配合使用来定型简单的逻辑回归。  MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28x28 像素的手写数字，代表一个从 0 到 9 的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
+本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](http://scikit-learn.org) 与 Azure 机器学习服务配合使用来定型简单的逻辑回归。  MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28x28 像素的手写数字，代表一个从 0 到 9 的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
 
 了解如何：
 
@@ -37,7 +37,7 @@ ms.locfileid: "47181392"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 Jupyter Notebook 的形式提供。 使用以下两种方法之一克隆[机器学习示例 Notebook GitHub 存储库](https://github.com/Azure/MachineLearningNotebooks)并运行 `tutorials/01.train-models.ipynb` Notebook：
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `01.train-models.ipynb` Notebook。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -454,7 +454,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-在本 Azure 机器学习教程中，已使用 Python 执行以下操作：
+在本 Azure 机器学习服务教程中，已使用 Python 执行以下操作：
 
 > [!div class="checklist"]
 > * 设置开发环境

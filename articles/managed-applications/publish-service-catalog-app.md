@@ -3,21 +3,20 @@ title: 创建和发布 Azure 服务目录托管应用程序 | Microsoft Docs
 description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/08/2018
+ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a2e6e78268f97136533b4f72ce28373642b6c394
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095834"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801261"
 ---
-# <a name="publish-a-managed-application-for-internal-consumption"></a>发布托管应用程序供内部使用
+# <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
 
 可以创建和发布适用于组织中成员的 Azure [托管应用程序](overview.md)。 例如，IT 部门可发布符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
@@ -215,80 +214,7 @@ New-AzureRmManagedApplicationDefinition `
 
 你可以访问托管应用程序定义，但你希望确保组织中的其他用户可以访问它。 至少授予他们对定义的读者角色。 他们可能已从订阅或资源组继承了此级别的访问权限。 若要查看谁可以访问定义并添加用户或组，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
-## <a name="create-the-managed-application"></a>创建托管应用程序
-
-可以通过门户、PowerShell 或 Azure CLI 部署托管应用程序。
-
-### <a name="powershell"></a>PowerShell
-
-首先，让我们使用 PowerShell 部署托管应用程序。
-
-```powershell
-# Create resource group
-New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
-
-# Get ID of managed application definition
-$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
-
-# Create the managed application
-New-AzureRmManagedApplication `
-  -Name storageApp `
-  -Location westcentralus `
-  -Kind ServiceCatalog `
-  -ResourceGroupName applicationGroup `
-  -ManagedApplicationDefinitionId $appid `
-  -ManagedResourceGroupName "InfrastructureGroup" `
-  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
-```
-
-托管应用程序和托管基础结构现已存在于订阅中。
-
-### <a name="portal"></a>门户
-
-现在，让我们使用门户部署托管应用程序。 可看到包中创建的用户界面。
-
-1. 转到 Azure 门户。 选择“+ 创建资源”并搜索“服务目录”。
-
-   ![搜索“服务目录”](./media/publish-service-catalog-app/create-new.png)
-
-1. 选择“服务目录托管应用程序”。
-
-   ![选择“服务目录”](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
-
-1. 选择**创建**。
-
-   ![选择“创建”](./media/publish-service-catalog-app/select-create.png)
-
-1. 从可用解决方案列表中查找要创建的托管应用程序并选择它。 选择**创建**。
-
-   ![查找托管应用程序](./media/publish-service-catalog-app/find-application.png)
-
-   如果无法通过门户查看托管应用程序定义，则可能需要更改门户设置。 选择“目录和订阅筛选器”。
-
-   ![选择订阅筛选器](./media/publish-service-catalog-app/select-filter.png)
-
-   检查全局订阅筛选器是否包括包含托管应用程序定义的订阅。
-
-   ![检查订阅筛选器](./media/publish-service-catalog-app/check-global-filter.png)
-
-   选择订阅后，重新开始创建服务目录托管应用程序。 你现在应该看到该定义。
-
-1. 提供托管应用程序所需的基本信息。 指定订阅和要包含托管应用程序的新资源组。 对于位置，选择“美国中西部”。 完成后，选择“确定”。
-
-   ![提供托管应用程序参数](./media/publish-service-catalog-app/add-basics.png)
-
-1. 提供特定于托管应用程序中的资源的值。 完成后，选择“确定”。
-
-   ![提供资源参数](./media/publish-service-catalog-app/add-storage-settings.png)
-
-1. 模板会验证你提供的值。 如果验证成功，请选择“确定”启动部署。
-
-   ![验证托管应用程序](./media/publish-service-catalog-app/view-summary.png)
-
-部署完成后，托管应用程序将存在于名为 applicationGroup 的资源组中。 存储帐户将存在于名为 applicationGroup 加上哈希字符串值的资源组中。
-
 ## <a name="next-steps"></a>后续步骤
 
-* 有关托管应用程序的简介，请参阅[托管应用程序概述](overview.md)。
-* 有关示例项目，请参阅 [Azure 托管应用程序的示例项目](sample-projects.md)。
-* 若要了解如何为托管应用程序创建 UI 定义文件，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
+* 若要将托管应用程序发布到 Azure 市场，请参阅[市场中的 Azure 托管应用程序](publish-marketplace-app.md)。
+* 若要部署托管应用程序实例，请参阅[通过 Azure 门户部署服务目录应用](deploy-service-catalog-quickstart.md)。

@@ -1,23 +1,25 @@
 ---
-title: 适用于项目 URL 预览的 Python 快速入门 - Microsoft 认知服务 | Microsoft Docs
-description: 快速开始使用 Azure 上的 Microsoft 认知服务中的项目 URL 预览的脚本示例。
+title: 快速入门：项目 URL 预览、Python
+titlesuffix: Azure Cognitive Services
+description: 通过 Python 快速开始使用项目 URL 预览的脚本示例。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 78b2d83b02aa9ea32509029c7456e04e420b8572
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: c4af701188c6453bd3c067b838519c32862af13d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366272"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867266"
 ---
-# <a name="url-preview-python-quickstart"></a>URL 预览 Python 快速入门
+# <a name="quickstart-url-preview-with-python"></a>快速入门：通过 Python 使用 URL 预览
 
-以下 Python 示例创建 SwiftKey 网站的 URL 预览：https://swiftkey.com/en。
+以下 Python 示例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,11 +31,11 @@ ms.locfileid: "35366272"
 
 下面的代码创建一个 URL 预览。
 它是通过以下步骤实现的：
-1. 声明变量来通过主机和路径指定终结点。
+1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 设置查询参数。
-4. 定义搜索函数，用以创建请求并添加 *Ocp-Apim-Subscription-Key* 标头。
-5. 设置 *Ocp-Apim-Subscription-Key* 标头。 
+4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
+5. 设置 Ocp-Apim-Subscription-Key 标头。 
 6. 建立连接，并发送请求。
 7. 输出 JSON 结果。
 

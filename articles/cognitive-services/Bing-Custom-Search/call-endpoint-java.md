@@ -1,22 +1,23 @@
 ---
-title: 使用 Java 调用终结点 - 必应自定义搜索 - Microsoft 认知服务
+title: 快速入门：使用 Java 调用终结点 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
 description: 本快速入门演示如何通过使用 Java 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951808"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814100"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>调用必应自定义搜索终结点 (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>快速入门：调用必应自定义搜索终结点 (Java)
 
 这篇快速入门演示了如何通过 Java 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "46951808"
 
 - 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
 - 安装 [Java](https://www.java.com)。
-- 订阅密钥。 可在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
+- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
 
 ## <a name="run-the-code"></a>运行代码
 
@@ -34,7 +35,7 @@ ms.locfileid: "46951808"
 
 1. 使用所选的 Java IDE 创建一个包。  
   
-2. 在包中创建一个名为 CustomSrchJava.java 的文件，并向其复制以下代码。 将 YOUR-SUBSCRIPTION-KEY 和 YOUR-CUSTOM-CONFIG-ID 替换为订阅密钥和配置 ID。  
+2. 在包中创建一个名为 CustomSrchJava.java 的文件，并向其复制以下代码。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。  
   
     ```java
     import java.io.InputStream;

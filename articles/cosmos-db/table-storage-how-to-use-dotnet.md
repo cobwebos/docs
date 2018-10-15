@@ -1,5 +1,5 @@
 ---
-title: 通过 .NET 开始使用 Azure 表存储和 Azure Cosmos DB 表 API | Microsoft Docs
+title: 通过 .NET 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 description: 使用 Azure 表存储或 Azure Cosmos DB 表 API 将结构化数据存储在云中。
 services: cosmos-db
 author: SnehaGunda
@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 00bc950493e7b4eaad4a2165779f5c8151070aee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919108"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042564"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>通过 .NET 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -105,7 +105,7 @@ ms.locfileid: "41919108"
 * 可针对云中的 Azure Cosmos DB 帐户运行代码。
 * 可针对 Azure 存储模拟器运行代码。 存储模拟器是模拟云中 Azure 存储帐户的本地环境。 应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。 模拟器使用已知帐户和密钥。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
 
-如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅 [查看和复制存储访问密钥](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
+如果以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。 有关详细信息，请参阅[存储帐户访问密钥](../storage/common/storage-account-manage.md#access-keys)。
 
 > [!NOTE]
 > 可以指向存储模拟器以避免引发与 Azure 存储有关的任何费用。 但是，如果确实选择针对云中的 Azure 存储帐户，则执行此示例的费用会忽略不计。
@@ -121,7 +121,6 @@ ms.locfileid: "41919108"
 
 > [!NOTE]
 > 帐户密钥类似于存储帐户的 root 密码。 始终要小心保护存储帐户密钥。 避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。 如果认为密钥可能已泄漏，请使用 Azure 门户重新生成密钥。
-> 
 > 
 
 若要配置连接字符串，请从 Visual Studio 中的解决方案资源管理器打开 `app.config` 文件。 添加 `<appSettings>` 元素的内容，如下所示。 请将 `account-name` 替换为帐户名称，将 `account-key` 替换为帐户访问密钥。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c6817fa20d4177efd3e38f1454f3142f6d40a07d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1cc1b728a91c22f9b4b2062ed5c423314e561c8
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108612"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017578"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -34,6 +34,10 @@ ms.locfileid: "43108612"
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 存储帐户**。 创建 Python 脚本和输入文件，并将其上传到 Azure 存储。 Spark 程序的输出存储在此存储帐户中。 按需 Spark 群集使用相同的存储帐户作为其主存储。  
+
+> [!NOTE]
+> HdInsight 仅支持标准层的常规用途存储帐户。 请确保该帐户不是高级或仅 blob 存储帐户。
+
 * **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
 
 
@@ -99,11 +103,9 @@ ms.locfileid: "43108612"
 1. 对于“位置”，请选择数据工厂所在的位置。 
 
    要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
-1. 选择“固定到仪表板”。     
-1. 选择“创建”。
-1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
-   ![“正在部署数据工厂”磁贴](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
+1. 选择**创建**。
+
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
 
     ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
@@ -157,11 +159,11 @@ ms.locfileid: "43108612"
    
    h. 展开“OS 类型”。
    
-   i. 输入群集用户的名称。 
+   i. 输入名称作为**群集用户名**。 
    
-   j. 输入该用户的密码。 
+   j. 输入该用户的**群集密码**。 
    
-   k. 选择“保存”。 
+   k. 选择“完成”。 
 
    ![HDInsight 链接服务设置](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 

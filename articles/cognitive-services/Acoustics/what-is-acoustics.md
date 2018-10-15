@@ -1,20 +1,21 @@
 ---
-title: 音响效果简介 - 认知服务
+title: 什么是项目音响效果？
+titlesuffix: Azure Cognitive Services
 description: 项目音响效果 Unity 插件为以 VR 和传统屏幕为对象的项目提供阻挡、混响和空间化效果。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 08c6d8b8e229aabcc05fdfde2d8ffadf3a6346c2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180973"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901018"
 ---
 # <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 项目音响效果 Unity 插件为以 VR 和传统屏幕为对象的项目提供阻挡、混响和空间化效果。 可以通过它来设计游戏音响效果，将设计者意向分层堆积在基于物理的波动模拟上。
@@ -56,7 +57,7 @@ ms.locfileid: "40180973"
 * Android（x86 和 ARM64）
 
 ## <a name="download"></a>下载
-如果对评估此音响效果插件感兴趣，请在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)注册以获取设计人员预览版。
+如果有兴趣评估此音效插件，请在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)注册以获取设计器预览版。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[设计过程](design-process.md)

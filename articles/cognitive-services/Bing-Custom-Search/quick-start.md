@@ -1,22 +1,23 @@
 ---
-title: 创建首个必应自定义搜索实例 - Microsoft 认知服务
+title: 快速入门：创建第一个必应自定义搜索实例
+titlesuffix: Azure Cognitive Services
 description: 若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 该实例包含指定必应要搜索的公共域、子网站和网页的设置以及各种排名调整。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: v-brapel
-ms.openlocfilehash: 25d622772fe47ffad001834d476e612f8c606904
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981640"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816201"
 ---
-# <a name="create-your-first-bing-custom-search-instance"></a>创建首个必应自定义搜索实例
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建第一个必应自定义搜索实例
 若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 该实例包含指定必应要搜索的公共域、网站和网页的设置以及各种排名调整。 若要创建实例，请使用必应自定义搜索[门户](https://customsearch.ai)。 
 
 ## <a name="create-a-custom-search-instance"></a>创建自定义搜索实例

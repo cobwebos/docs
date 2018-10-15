@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042119"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831018"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>教程 5：提取与上下文相关的数据
 在本教程中，基于上下文查找相关的数据片段。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。 若要生成工作订单，可能同时需要这两个数据片段，并且它们彼此相关。  
@@ -52,7 +52,7 @@ ms.locfileid: "47042119"
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分中，在“版本”选项卡上，克隆版本并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>从应用中删除预生成的数字实体
 若要查看整个陈述并标记分层子级，请暂时删除预生成的数字实体。
@@ -61,7 +61,7 @@ ms.locfileid: "47042119"
 
 2. 在左侧菜单中选择“实体”。
 
-3. 选择列表中数字实体右侧的省略号 ***(...)*** 按钮。 选择“删除”。 
+3. 选中列表中数字实体左侧的复选框。 选择“删除”。 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>将表述添加到 MoveEmployee 意向
 

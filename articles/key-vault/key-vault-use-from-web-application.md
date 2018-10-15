@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171317"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079457"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>教程：从 Web 应用程序使用 Azure Key Vault
 
@@ -40,10 +40,9 @@ ms.locfileid: "39171317"
 * 已在 Azure Active Directory 中注册的、有权访问 Key Vault 的 Web 应用程序的客户端 ID 和客户端机密
 * Web 应用程序。 本教程演示适用于在 Azure 中部署为 Web 应用的 ASP.NET MVC 应用程序的步骤。
 
-完成 [Azure Key Vault 入门](key-vault-get-started.md)中的步骤，以获取机密 URI、客户端 ID 和客户端机密，并注册应用程序。 该 Web 应用程序将访问保管库，并需要在 Azure Active Directory 中注册。 它还需要有权访问 Key Vault。 如果它没有此访问权限，请返回入门教程中的“注册应用程序”，并重复列出的步骤。 有关创建 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service/app-service-web-overview.md)。
+完成 [Azure Key Vault 入门](key-vault-get-started.md)中的步骤，以获取机密 URI、客户端 ID 和客户端机密，并注册应用程序。 该 Web 应用程序将访问保管库，并必须在 Azure Active Directory 中注册。 它还需要有权访问 Key Vault。 如果它没有此访问权限，请返回入门教程中的“注册应用程序”，并重复列出的步骤。 有关创建 Azure Web 应用的详细信息，请参阅 [Web 应用概述](../app-service/app-service-web-overview.md)。
 
-此示例依赖于手动预配 Azure Active Directory 标识。 但是应当改用[托管服务标识 (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview)。 MSI 可以自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) 中的示例，以及相关的 [MSI 和应用服务与函数教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 还可以查看特定于密钥保管库的 [MSI 教程](tutorial-web-application-keyvault.md)
-
+此示例依赖于手动预配 Azure Active Directory 标识。 但是，你应该改用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)，后者自动预配 Azure AD 标识。 有关详细信息，请参阅 [GitHub 中的示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/)，以及相关的[应用服务和 Functions 教程](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)。 还可以查看 Key Vault 特定的[“将 Azure Web 应用程序配置为从 Key Vault 读取机密”教程](tutorial-web-application-keyvault.md)。
 
 ## <a id="packages"></a>添加 NuGet 包
 
@@ -145,14 +144,19 @@ Utils.EncryptSecret = sec.Value;
 
 ```powershell
 #Create self-signed certificate and export pfx and cer files 
-$PfxFilePath = "c:\data\KVWebApp.pfx" 
-$CerFilePath = "c:\data\KVWebApp.cer" 
-$DNSName = "MyComputer.Contoso.com" 
-$Password ="MyPassword" 
+$PfxFilePath = 'KVWebApp.pfx'
+$CerFilePath = 'KVWebApp.cer'
+$DNSName = 'MyComputer.Contoso.com'
+$Password = 'MyPassword"'
+
+$StoreLocation = 'CurrentUser' #be aware that LocalMachine requires elevated privileges
+$CertBeginDate = Get-Date
+$CertExpiryDate = $CertBeginDate.AddYears(1)
+
 $SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
-$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
-Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
-Export-Certificate -cert $cert -FilePath $CerFilePath 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\$StoreLocation\My" -NotBefore $CertBeginDate -NotAfter $CertExpiryDate -KeySpec Signature
+Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
 记下 .pfx 的结束日期和密码（在本示例中为：May 15, 2019 和 MyPassword）。 需要在以下脚本中使用这些信息。 
@@ -172,7 +176,7 @@ $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwe
 $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge -ResourceGroupName 'contosorg'
 
 # get the thumbprint to use in your app settings
 $x509.Thumbprint

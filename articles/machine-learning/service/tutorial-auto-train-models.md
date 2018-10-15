@@ -9,18 +9,18 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 1db13ee31ea826833d2b13f20b3b0a2be8ef4444
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220862"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802349"
 ---
-# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning"></a>教程：在 Azure 机器学习中使用自动化机器学习训练分类模型
+# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务中的自动化机器学习训练分类模型
 
-本教程介绍如何使用自动化机器学习（自动化 ML）生成机器学习模型。  Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，可以按照[部署模型](tutorial-deploy-models-with-aml.md)教程中的工作流来部署最终模型。
+本教程介绍如何使用自动化机器学习（自动化 ML）生成机器学习模型。  Azure 机器学习服务可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，可以按照[部署模型](tutorial-deploy-models-with-aml.md)教程中的工作流来部署最终模型。
 
-[ ![流程图](./media/tutorial-auto-train-models/flow2.png) ](./media/tutorial-auto-train-models/flow2.png#lightbox)
+![流程图](./media/tutorial-auto-train-models/flow2.png)
 
 与[训练模型教程](tutorial-train-models-with-aml.md)类似，本教程会将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集中的手绘数字图形 (0-9) 进行分类。 但这一次不指定算法，也不优化超参数。 自动化 ML 技术会对算法和超参数的多种组合进行迭代访问，知道找到符合要求的最佳模型。
 
@@ -38,7 +38,8 @@ ms.locfileid: "47220862"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 Jupyter 笔记本的形式提供。 使用以下任一方法运行 `tutorials/03.auto-train-models.ipynb` 笔记本：
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `03.auto-train-models.ipynb` Notebook。
+
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -104,13 +105,9 @@ from sklearn import datasets
 
 digits = datasets.load_digits()
 
-# only take the first 100 rows if you want the training steps to run faster
-X_digits = digits.data[:100,:]
-y_digits = digits.target[:100]
-
-# use full dataset
-#X_digits = digits.data
-#y_digits = digits.target
+# Exclude the first 100 rows from training so that they can be used for test.
+X_train = digits.data[100:,:]
+y_train = digits.target[100:]
 ```
 
 ### <a name="display-some-sample-images"></a>显示一些示例图像
@@ -121,13 +118,13 @@ y_digits = digits.target[:100]
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
-for i in np.random.permutation(X_digits.shape[0])[:sample_size]:
+for i in np.random.permutation(X_train.shape[0])[:sample_size]:
     count = count + 1
     plt.subplot(1, sample_size, count)
     plt.axhline('')
     plt.axvline('')
-    plt.text(x = 2, y = -2, s = y_digits[i], fontsize = 18)
-    plt.imshow(X_digits[i].reshape(8, 8), cmap = plt.cm.Greys)
+    plt.text(x = 2, y = -2, s = y_train[i], fontsize = 18)
+    plt.imshow(X_train[i].reshape(8, 8), cmap = plt.cm.Greys)
 plt.show()
 ```
 随机图像示例显示：
@@ -153,7 +150,7 @@ plt.show()
 |**迭代**|20|迭代次数。 在每个迭代中，模型通过特定管道使用数据进行训练。|
 |**n_cross_validations**|3|交叉验证拆分数|
 |**preprocess**|False| *True/False*：允许试验基于输入执行预处理。  预处理会处理缺失的数据，并执行一些常见的特征提取操作|
-|**exit_score**|0.995|*double* 值，指示 *primary_metric* 的目标。 超过目标运行就会终止|
+|**exit_score**|0.9985|*double* 值，指示 *primary_metric* 的目标。 超过目标运行就会终止|
 |**blacklist_algos**|['kNN','LinearSVM']|字符串的数组，指示要忽略的算法。
 |
 
@@ -167,10 +164,10 @@ Automl_config = AutoMLConfig(task = 'classification',
                              iterations = 20,
                              n_cross_validations = 3,
                              preprocess = False,
-                             exit_score = 0.995,
+                             exit_score = 0.9985,
                              blacklist_algos = ['kNN','LinearSVM'],
-                             X = X_digits,
-                             y = y_digits,
+                             X = X_train,
+                             y = y_train,
                              path=project_folder)
 ```
 
@@ -497,8 +494,10 @@ local_run.model_id # Use this id to deploy the model as a web service in Azure
 ```python
 # find 30 random samples from test set
 n = 30
-sample_indices = np.random.permutation(X_digits.shape[0])[0:n]
-test_samples = X_digits[sample_indices]
+X_test = digits.data[:100, :]
+y_test = digits.target[:100]
+sample_indices = np.random.permutation(X_test.shape[0])[0:n]
+test_samples = X_test[sample_indices]
 
 
 # predict using the  model
@@ -514,11 +513,11 @@ for s in sample_indices:
     plt.axvline('')
     
     # use different color for misclassified sample
-    font_color = 'red' if y_digits[s] != result[i] else 'black'
-    clr_map = plt.cm.gray if y_digits[s] != result[i] else plt.cm.Greys
+    font_color = 'red' if y_test[s] != result[i] else 'black'
+    clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
     
     plt.text(x = 2, y = -2, s = result[i], fontsize = 18, color = font_color)
-    plt.imshow(X_digits[s].reshape(8, 8), cmap = clr_map)
+    plt.imshow(X_test[s].reshape(8, 8), cmap = clr_map)
     
     i = i + 1
 plt.show()
@@ -534,7 +533,7 @@ plt.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-在本 Azure 机器学习教程中，已使用 Python 执行以下操作：
+在本 Azure 机器学习服务教程中，已使用 Python 执行以下操作：
 
 > [!div class="checklist"]
 > * 设置开发环境

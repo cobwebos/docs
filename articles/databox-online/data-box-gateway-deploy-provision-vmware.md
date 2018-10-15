@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a96aa2ee8b474bcc4e3e9362d6b1ba755e3fdbc3
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419536"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017442"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>教程：在 VMware（预览版）中预配 Azure Data Box Gateway
 
@@ -96,7 +96,7 @@ ms.locfileid: "47419536"
 
 1. 复制系统中的虚拟设备映像。 已通过 Azure 门户下载该虚拟映像（两个文件）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
 
-2. 使用 vSphere 客户端登录到 ESXi 服务器。 需要有管理员权限才能创建虚拟机。
+2. 使用 vSphere Web 客户端登录到 ESXi 服务器。 需要有管理员权限才能创建虚拟机。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -104,7 +104,10 @@ ms.locfileid: "47419536"
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. 在右窗格的“数据存储”下，选择要将 VMDK 上传到其中的数据存储。 数据存储必须为 VMFS 5 类型。 数据存储还必须为 OS 和数据磁盘留有足够的可用空间。
+4. 在右窗格的“数据存储”下，选择要将 VMDK 上传到其中的数据存储。 
+
+    - 数据存储必须为 VMFS5 类型。 
+    - 数据存储还必须为 OS 和数据磁盘留有足够的可用空间。
    
 5. 右键单击，并选择“浏览数据存储”。
 
@@ -145,11 +148,11 @@ ms.locfileid: "47419536"
 15. 在“选择存储”页上，选择要用于预配 VM 的数据存储。 单击“下一步”。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为 8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**的类型。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。
+16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为 8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    在同一页上单击“添加硬盘”，然后选择“现有硬盘”。 这样会添加一个 OS 磁盘。 
+    在同一页上单击“添加硬盘”，然后选择“现有硬盘”。 在数据存储中选择 VMDK 文件。 这将添加 OS 磁盘。 
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 

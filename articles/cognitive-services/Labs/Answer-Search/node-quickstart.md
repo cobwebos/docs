@@ -1,21 +1,22 @@
 ---
-title: Microsoft 认知服务项目应答搜索节点快速入门 | Microsoft Docs
-description: 开始使用 Azure 上的 Microsoft 认知服务项目应答搜索。
+title: 快速入门：项目答案答搜索、Node
+description: 通过 Node 开始使用项目答案搜索。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366258"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867419"
 ---
-# <a name="project-answer-search-node-quickstart"></a>项目应答搜索节点快速入门
+# <a name="quickstart-project-answer-search-with-node"></a>快速入门：通过 Node 使用项目答案搜索
 
 以下节点示例创建有关约塞米蒂国家公园信息的查询。
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700117"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585418"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -129,9 +129,9 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 2. 在左窗格中，选择“事件网格”。 
 3. 选择“事件订阅”。  
 
-   下图显示了包含一些事件网格订阅的命名空间：
+   下图显示了包含事件网格订阅的命名空间：
 
-   ![20][]
+   ![事件网格订阅](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    下图演示了如何在不使用任何特定筛选器的情况下订阅函数或 Webhook：
 
@@ -176,7 +176,7 @@ New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBS
 ## <a name="next-steps"></a>后续步骤
 
 * 获取服务总线和事件网格的[示例](service-bus-to-event-grid-integration-example.md)。
-* 详细了解[事件网格](https://docs.microsoft.com/azure/azure-functions/)。
+* 详细了解[事件网格](https://docs.microsoft.com/azure/event-grid/)。
 * 详细了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
 * 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/)的详细信息。
 * 详细了解[服务总线](https://docs.microsoft.com/azure/azure-functions/)。

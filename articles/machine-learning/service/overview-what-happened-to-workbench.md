@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning Workbench 有何遭遇？ | Microsoft Docs
-description: 了解 Workbench 应用程序有何遭遇、Azure 机器学习有何变化，以及支持时间线是什么。
+title: Azure Machine Learning workbench 发生了什么情况？ | Microsoft Docs
+description: 了解 Workbench 应用程序发生的情况、Azure 机器学习有何变化，以及支持时间线是什么。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,28 +9,28 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159978"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239247"
 ---
-# <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的 Workbench 有何遭遇？
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的 Workbench 发生了什么情况？
 
-为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用了 Workbench 应用程序和其他一些早期功能。 此版本包含许多重大更新，这些更新是由有助于改善体验的客户反馈促成。 核心功能（从试验运行到模型部署）并无变化，但现在可以使用可靠的 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [CLI](reference-azure-machine-learning-cli.md) 完成机器学习任务和管道。  
+为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本替换了 Workbench 应用程序和其他一些早期功能。 此版本包含许多重大更新，这些更新是由有助于改善体验的客户反馈促成。 核心功能（从试验运行到模型部署）并无变化，但现在可以使用可靠的 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [CLI](reference-azure-machine-learning-cli.md) 完成机器学习任务和管道。  
 
 本文介绍了具体变化及其对使用 Azure 机器学习服务构建的已有内容的影响。
 
 ## <a name="what-changed"></a>有何变化？
 
-最新版 Azure 机器学习包括：
+最新版 Azure 机器学习服务包括：
 + [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)
 + [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标
 + 更全面的全新 Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习
 
-出于易用性考虑，[体系结构](concept-azure-machine-learning-architecture.md)已经过重新设计。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习工作区](concept-azure-machine-learning-architecture.md#workspace)即可。  可以在 [Azure 门户](quickstart-get-started.md)中快速创建工作区。  多个用户可使用工作区，以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
+出于易用性考虑，[体系结构](concept-azure-machine-learning-architecture.md)已经过重新设计。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)即可。  可以在 [Azure 门户](quickstart-get-started.md)中快速创建工作区。  多个用户可使用工作区，以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
 当前版本推出了改进后的全新 CLI 和 SDK 客户端，但桌面 Workbench 应用程序本身已遭弃用。 现在可以在 [Azure Web 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)中监视试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
@@ -73,7 +73,7 @@ ms.locfileid: "47159978"
 
 ## <a name="will-projects-persist"></a>项目是否继续存在？
 
-不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习工作区。 [请参阅最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
+不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习服务工作区。 [请参阅最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
 
 由于很多项目内容已存在于本地计算机上，因此只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 [了解如何迁移现有项目](how-to-migrate.md#projects)。
 

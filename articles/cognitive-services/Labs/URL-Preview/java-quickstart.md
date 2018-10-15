@@ -1,23 +1,25 @@
 ---
-title: 项目 URL 预览的 Java 快速入门 - Microsoft 认知服务 | Microsoft Docs
-description: 开始使用 Azure 上的 Microsoft 认知服务中的项目 URL 预览的脚本示例。
+title: 快速入门：项目 URL 预览、Java
+titlesuffix: Azure Cognitive Services
+description: 通过 Java 开始使用项目 URL 预览的脚本示例。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366277"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867098"
 ---
-# <a name="url-preview-java-quickstart"></a>URL 预览 Java 快速入门
+# <a name="quickstart-url-preview-with-java"></a>快速入门：通过 Java 使用 URL 预览
 
-以下 Java 实例创建 SwiftKey 网站的 URL 预览：https://swiftkey.com/en。
+以下 Java 实例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,7 +54,7 @@ ms.locfileid: "35366277"
 必应应答搜索 API 从必应搜索引擎返回结果。
 1. 下载或安装 gson 库。
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
-3. 添加以下提供的代码。
+3. 添加下方提供的代码。
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
 

@@ -1,20 +1,21 @@
 ---
-title: Project Acoustics 示例演练 - 认知服务
+title: 示例：项目音响效果
+titlesuffix: Azure Cognitive Services
 description: 本演练介绍 Project Acoustics 的 Unity 示例场景，包括到桌面和 VR 的部署。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434086"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901152"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity 示例演练
 这是有关 Project Acoustics 示例的演练。 有关什么是 Project Acoustics 的详细信息，请参阅 [Project Acoustics 简介](what-is-acoustics.md)。 有关将 Project Acoustics 包添加到现有 Unity 项目的帮助，请使用[入门指南](getting-started.md)。

@@ -1,21 +1,23 @@
 ---
-title: Microsoft 认知服务项目应答搜索的 Python 快速入门 | Microsoft Docs
-description: Python 示例开始使用 Azure 上的 Microsoft 认知服务项目应答搜索。
+title: 快速入门：项目答案搜索、Python
+titlesuffix: Azure Cognitive Services
+description: 开始使用项目答案搜索的 Python 示例。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366244"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869822"
 ---
-# <a name="project-answer-search-python-quickstart"></a>项目应答搜索 Python 快速入门
+# <a name="quickstart-project-answer-search-with-python"></a>快速入门：通过 Python 使用项目答案搜索
 
 下面的 Python 示例创建并发送“直布罗陀巨岩”相关信息的请求。
 
@@ -29,7 +31,7 @@ ms.locfileid: "35366244"
 
 下面的代码创建一个 URL 预览。
 它是通过以下步骤实现的：
-1. 声明变量来通过主机和路径指定终结点。
+1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 设置查询参数。
 4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。

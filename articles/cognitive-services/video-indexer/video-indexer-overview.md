@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983008"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077912"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -38,8 +38,8 @@ Azure 视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务�
 - **品牌提取**：从语音和视觉文本中提取品牌。
 - **人脸检测**：检测和分组视频中显示的人脸。
 - **人脸缩略图提取（“最佳人脸”）**：在每组人脸中自动识别捕获的最佳人脸（基于质量、大小和正面位置），并将其提取为图像资产。
-- **名人识别**：基于 100 万个名人的数据库识别视频中的名人。 信息来源于 IMDB、维基百科和 Linkedin 中最有影响力的人物。
-- **自定义人脸识别**：基于针对特定帐户训练的自定义模型识别视频中的人脸。
+- **名人识别**：视频索引器自动识别超过 100 万名名人，如世界各国领导人、男演员和女演员、运动员、研究人员、商业和科技领袖。 有关这些名人的数据也可以在各种著名网站上找到，例如 IMDB 和维基百科。
+- **基于帐户的人脸识别**：视频索引器针对特定帐户训练模型。 然后，它会根据专门为该帐户中的视频训练的模型识别视频中的人脸。
 - **文本内容审核**：在音频脚本中检测确切的文本。
 - **镜头检测**：确定视频中的场景何时发生了更改。
 - **黑帧检测**：识别视频中的黑帧。

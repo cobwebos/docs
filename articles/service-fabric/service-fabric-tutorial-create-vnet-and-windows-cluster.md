@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410011"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831563"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>教程：将 Service Fabric Windows 群集部署到 Azure 虚拟网络
 
@@ -88,7 +88,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 群集
 
-部署具有以下特征的 Windows 群集：
+在 **Microsoft.ServiceFabric/clusters** 资源中，配置了具有以下特征的 Windows 群集：
 
 * 单节点类型
 * 主节点类型包含五个节点（可在模板参数中配置）
@@ -103,7 +103,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-已部署负载均衡器，并针对以下端口设置了探测和规则：
+在 **Microsoft.Network/loadBalancers** 资源中，配置了负载均衡器，并为以下端口设置了探测和规则：
 
 * 连接终结点:19000
 * HTTP 网关终结点：19080
@@ -111,16 +111,16 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 * 应用程序端口：443
 * Service Fabric 反向代理：19081
 
-如需其他任何应用程序端口，则需要调整 microsoft.network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他任何应用程序端口，则需要调整 **Microsoft.Network/loadBalancers** 资源和 **Microsoft.Network/networkSecurityGroups** 资源，以允许传入流量。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>虚拟网络、子网和网络安全组
 
-虚拟网络、子网和网络安全组的名称已在模板参数中声明。  虚拟网络和子网的地址空间也已在模板参数中声明：
+虚拟网络、子网和网络安全组的名称已在模板参数中声明。  虚拟网络和子网的地址空间也在模板参数中声明，并在 **Microsoft.Network/virtualNetworks** 资源中配置：
 
 * 虚拟网络地址空间：172.16.0.0/20
 * Service Fabric 子网地址空间：172.16.2.0/23
 
-网络安全组中已启用以下入站流量规则。 可以通过更改模板变量来更改端口值。
+在 **Microsoft.Network/networkSecurityGroups** 资源中启用以下入站流量规则。 可以通过更改模板变量来更改端口值。
 
 * ClientConnectionEndpoint (TCP)：19000
 * HttpGatewayEndpoint (HTTP/TCP)：19080
@@ -131,7 +131,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 * 应用程序端口范围 – 49152 到 65534（用于服务间的通信，但未在负载均衡器上打开）
 * 阻止其他所有端口
 
-如需其他任何应用程序端口，则需要调整 microsoft.network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量。
+如需其他任何应用程序端口，则需要调整 **Microsoft.Network/loadBalancers** 资源和 **Microsoft.Network/networkSecurityGroups** 资源，以允许传入流量。
 
 ## <a name="set-template-parameters"></a>设置模板参数
 

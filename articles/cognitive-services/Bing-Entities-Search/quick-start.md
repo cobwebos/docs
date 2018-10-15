@@ -1,25 +1,24 @@
 ---
-title: 实体搜索 API 快速入门 | Microsoft Docs
+title: 快速入门：必应实体搜索 API
 description: 介绍了如何开始使用必应实体搜索 API。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365442"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813951"
 ---
-# <a name="making-your-first-entities-request"></a>发出首个实体请求
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>快速入门：发出第一个必应实体搜索请求
 
-实体搜索 API 向必应发送搜索查询，并获取包含实体和位置的结果。 位置结果包括餐馆、酒店或其他当地企业。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。 
+必应实体搜索 API 向必应发送搜索查询，然后获得包含实体和场所的结果。 位置结果包括餐馆、酒店或其他当地企业。 对于位置，查询可以指定当地企业名称，也可以请求获取列表（例如，我附近的餐馆）。 实体结果包括人员、位置或事物。 在此上下文中，位置是旅游景点、省/自治区/直辖市、国家/地区等。 
 
 ## <a name="first-steps"></a>前几个步骤
 

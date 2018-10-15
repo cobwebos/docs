@@ -77,6 +77,7 @@
 #### [使用共享磁盘在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [使用 SOFS 文件共享在 Windows 上为 (A)SCS 实例提供 HA](sap-high-availability-guide-wsfc-file-share.md)
 #### [在 SUSE Linux 上为 (A)SCS 实例提供 HA](high-availability-guide-suse.md)
+#### [在 Red Hat Enterprise Linux 上为 (A)SCS 实例提供 HA](high-availability-guide-rhel.md)
 ### Azure 基础结构准备
 #### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-high-availability-infrastructure-wsfc-file-share.md)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ff2a161cbc39cdb4cf35cad2b8bd403ef2d3260c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222161"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855946"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
 
@@ -68,7 +68,7 @@ ms.locfileid: "47222161"
 - https://device.login.microsoftonline.com
 - https://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
 
-自 Windows 10 1709 起，如果组织需要通过出站代理访问 Internet，可使用组策略对象 (GPO) 在计算机上配置代理设置。 如果计算机运行的版本比 Windows 10 1709 低，必须实现 Web 代理自动发现 (WPAD)，让 Windows 10 能够向 Azure AD 注册设备。 
+自 Windows 10 1709 起，如果组织需要通过出站代理访问 Internet，可[使用组策略对象 (GPO) 在计算机上配置代理设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 如果计算机运行的版本比 Windows 10 1709 低，必须实现 Web 代理自动发现 (WPAD)，让 Windows 10 能够向 Azure AD 注册设备。 
 
 如果组织需要通过经身份验证的出站代理访问 Internet，则必须确保 Windows 10 计算机能够成功验证出站代理的身份。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此必须使用计算机上下文配置出站代理身份验证。 根据配置要求使用相应的出站代理提供程序。 
 

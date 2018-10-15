@@ -1,38 +1,38 @@
 ---
-title: 适用于 Azure 认知服务、必应实体搜索 API 的 Java 快速入门 | Microsoft Docs
-description: 获取信息和示例代码，帮助用户在 Azure 上的 Microsoft 认知服务中快速开始使用必应实体搜索 API。
+title: 快速入门：必应实体搜索 API、Java
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 9b11471e08360cb5fe92f1506516bf88dd5ee72a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0cf1103b37572b43585e4a977dc4d034e7a50e2f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366543"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814468"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-java"></a>Microsoft 必应实体搜索 API 与 Java 快速入门 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-java"></a>通过 Java 使用必应实体搜索 API 快速入门 
 
 本文介绍如何结合使用[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 Java。
 
 ## <a name="prerequisites"></a>先决条件
 
-将需要 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译并运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+需要使用 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
 
-必须创建一个具有必应实体搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+必须创建一个具有必应实体搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="search-entities"></a>搜索实体
 
 要运行此应用程序，请执行以下步骤。
 
 1. 在最喜爱的 IDE 中新建 Java 项目。
-2. 添加以下提供的代码。
+2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 

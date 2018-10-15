@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162251"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902087"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -33,12 +33,12 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 | 语言 | 支持的版本 |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1 |
 | Java * | 8.0 |
 | PHP | 5.6, 7.0, 7.2 |
+| Python（预览版） | 3.7 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-| Go | 1.0 |
 | Apache Tomcat | 8.5, 9.0 |
 
 如需更多详细信息，请参阅[在基于 Linux 的应用服务中创建 Java Web 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)。
@@ -91,15 +91,25 @@ Linux 上的应用服务仅支持[基本、标准和高级](https://azure.micros
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下链接，开始使用 Linux 应用服务。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
+以下文章将通过使用各种语言编写的 Web 应用让你开始使用 Linux 上的应用服务：
 
-* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-docker-go.md)
-* [在 Linux 上的 Azure 应用服务中使用 .NET Core](quickstart-dotnetcore.md)
-* [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
-* [用于容器的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)
-* [对 Linux 上的 Azure 应用服务的 SSH 支持](app-service-linux-ssh-support.md)
-* [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [使用用于容器的 Web 应用进行 Docker 中心持续部署](./app-service-linux-ci-cd.md)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-dotnetcore.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [多容器应用](quickstart-multi-container.md)
+
+有关 Linux 上的应用服务的更多详细信息，请参阅以下文章：
+
+* [适用于 Linux 的应用服务常见问题解答](app-service-linux-faq.md)
+* [对 Linux 上的应用服务的 SSH 支持](app-service-linux-ssh-support.md)
+* [设置应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Docker 中心持续部署](app-service-linux-ci-cd.md)
+
+如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

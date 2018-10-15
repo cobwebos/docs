@@ -1,27 +1,28 @@
 ---
 title: Azure 物联网 (IoT) 技术和解决方案
 description: 提供适用于生成 Azure IoT 解决方案的 PaaS/SaaS 技术和解决方案的集合。
-author: BryanLa
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 05/18/2018
-ms.author: bryanla
-ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 6a44c36b5dd87c28db3de34a6858e29fb5730117
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631405"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067328"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT 技术和解决方案：PaaS 和 SaaS
 
 Microsoft 构建的项目组合支持所有客户的需求，让所有人都能够获得数字化转型带来的好处。 Azure IoT 产品组合概述了可用的 PaaS/SaaS 技术和解决方案。 它提供两种适用于生成你自己的解决方案的途径：
+
 - 平台即服务 (PaaS)：使用 [Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/)开发应用程序，该加速器集合了企业级的预配置解决方案，可以加速自定义 IoT 解决方案的开发。
+
 - 软件即服务 (SaaS)：通过 [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) 这种新的 SaaS 解决方案进行快速入门，以便开发 IoT 应用程序，不需接触复杂的 IoT 解决方案。 如果因组织缺少相关的资源而无法生成你自己的 IoT 解决方案，则可使用 Azure IoT Central 这种无代码的 IoT 解决方案，在数分钟内创建设备模型、仪表板和规则。
 
-![Azure IoT 技术和解决方案][img-paas-saas-technologies-solutions]
+![Azure IoT 技术和解决方案](./media/iot-comparison/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>解决方案
 
@@ -77,9 +78,9 @@ Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有�
 
 使用哪种产品来生成 IoT 解决方案最终取决于：
 
-* 业务需求。
+* 业务需求
 * 要生成的解决方案的类型。
-* 组织生成解决方案并进行长期维护所需的技能组合。
+* 组织生成解决方案并对其进行长期维护所需的技能组合
 
 ## <a name="technologies-paas"></a>技术 (PaaS)
 
@@ -96,20 +97,12 @@ Azure IoT Central 是完全托管的 SaaS 解决方案，可以让你在没有�
 ### <a name="edge"></a>Microsoft Edge
 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 是一种物联网 (IoT) 服务。 此服务供想要在设备上 （即“边缘设备上”）分析数据的客户使用。 将部分工作负荷移到边缘设备可以降低延迟，并且可以选择使用脱机方案。
 
-
 ### <a name="data-and-analytics"></a>数据和分析
 充分利用 IoT 解决方案中的一系列 Azure 数据和分析 PaaS 产品/服务，包括使用 Azure 机器学习将云智能引入边缘设备、使用 Azure Data Lake 以经济高效的方式存储 IoT 设备数据，以及使用 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)可视化 IoT 设备的海量数据。
 
 ### <a name="visualization-and-integration"></a>可视化和集成
 Microsoft Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务集合，通过行业领先的承诺确保数据的安全和隐私。 详细了解 [Microsoft Azure](https://azure.microsoft.com/)。
 
-
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
-查看[入门](/azure/iot-hub/iot-hub-get-started)部分，轻松快速地体验 IoT 功能。 或者尝试[教程](/azure/iot-edge/tutorial-simulate-device-windows)之一，进行更深入的实践体验。
-
-[img-paas-saas-technologies-solutions]: media/iot-comparison/paas-saas-technologies-solutions.png
-
+查看 [IoT 中心文档的“入门”部分](/azure/iot-hub/iot-hub-get-started)，轻松快速地体验 IoT 功能。 或者，为了获得更深入的实践经验，请尝试使用 [IoT Edge 教程](/azure/iot-edge/tutorial-simulate-device-windows)之一。

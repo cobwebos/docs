@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 8e3bdd402cbd16469fb333cc470471629f85538c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045381"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883969"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -45,15 +45,14 @@ ms.locfileid: "47045381"
 
 在完成本教程中的步骤之前，必须先创建一个 Front Door 并至少载入一个自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Front Door](front-door-custom-domain.md)。
 
----
-
 ## <a name="ssl-certificates"></a>SSL 证书数
+
 若要启用 HTTPS 协议以在 Front Door 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure Front Door 服务托管的证书还是使用自己的证书。
 
 
-# <a name="option-1-default-enable-https-with-an-afd-managed-certificatetaboption-1-default-enable-https-with-an-afd-managed-certificate"></a>[选项 1（默认）：使用 AFD 托管的证书启用 HTTPS](#tab/option-1-default-enable-https-with-an-afd-managed-certificate)
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>选项 1（默认）：使用 Front Door 托管的证书
 
-使用 AFD 托管的证书时，只需单击几下即可启用 HTTPS 功能。 Azure Front Door 服务可以处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 Front Door 的默认前端主机 (`{hostname}.azurefd.net`)，则不需要进一步操作。 Front Door 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
+使用 Azure Front Door 服务托管的证书时，只需单击几下即可打开 HTTPS 功能。 Azure Front Door 服务可以处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 Front Door 的默认前端主机 (`{hostname}.azurefd.net`)，则不需要进一步操作。 Front Door 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
@@ -68,11 +67,11 @@ ms.locfileid: "47045381"
 5. 继续[验证域](#validate-the-domain)。
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[选项 2：使用自己的证书启用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
+### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
 可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 服务使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 服务上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
 
-### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
+#### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Front Door 所在的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
  
@@ -83,7 +82,7 @@ ms.locfileid: "47045381"
 > </br> - Azure Front Door 服务目前仅支持“机密”部分下存储的 Key Vault 证书。 如果将证书存储在“证书”部分而不是“机密”部分，则证书导入将会失败。
 > </br> - Azure Front Door 服务目前仅支持使用**不带**密码的 PFX 上传证书。
 
-### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务
+#### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务
 
 通过 PowerShell 将 Azure Front Door 服务的服务主体注册为 Azure Active Directory 中的应用。
 
@@ -93,7 +92,7 @@ ms.locfileid: "47045381"
 
      `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授予 Azure Front Door 服务对 Key Vault 的访问权限
+#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授予 Azure Front Door 服务对 Key Vault 的访问权限
  
 在 Azure Key Vault 帐户中为 Azure Front Door 服务授予对“机密”下的证书的访问权限。
 
@@ -108,7 +107,7 @@ ms.locfileid: "47045381"
 
     Azure Front Door 服务现在可以访问此 Key Vault 和存储在其中的证书（机密）。
  
-### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>选择要部署的 Azure Front Door 服务的证书
+#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>选择要部署的 Azure Front Door 服务的证书
  
 1. 在门户中返回到 Front Door。 
 
@@ -126,8 +125,6 @@ ms.locfileid: "47045381"
     - 可用证书版本。 
  
 5. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
-
----
 
 ## <a name="validate-the-domain"></a>验证域
 

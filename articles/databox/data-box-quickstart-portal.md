@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 514b2a026ea34f4bd82f13ebc73c09f71637ce30
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978346"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784631"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box
 
@@ -35,12 +35,13 @@ ms.locfileid: "46978346"
     - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
     - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
     - 使用 - 即用即付。 有关 Azure [即用即付订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)的详细信息。
+    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/)。 
 
 - 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
 - 查看 [Data Box 的安全指南](data-box-safety.md)。
 - 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
-    - 连接到高速网络。 强烈建议你至少使用一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。 
+    - 连接到高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。 
 - 必须找到一个可以放置 Data Box 的平面。 如需将设备置于标准的机架上，则需要数据中心机架中的一个 7U 槽。 可以将设备平放或直放在机架中。
 - 你已经采购了以下电缆，用于将 Data Box 连接到主机。
     - 两根 10 GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）

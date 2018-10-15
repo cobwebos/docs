@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: a8e9deb7c677d04634b223045adc2d31fa74ba6e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033033"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867633"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -151,7 +151,7 @@ JSON 终结点响应至少包含查询话语和得分最高的意向。 它还�
 
 ## <a name="improve-model-prediction"></a>改进模型预测
 
-在 LUIS 模型发布和接收实时用户话语之后，LUIS 提供了多种方式来提升预测的准确性：针对终结点话语的[主动学习](#active-learning)、针对专业领域字词内容的[短语列表](#phrase-lists)，以及用于减少所需话语数的[模式](#patterns)。
+在 LUIS 模型发布和接收实时用户话语之后，LUIS 提供了多种方式来提升预测的准确性：针对终结点话语的[主动学习](luis-concept-review-endpoint-utterances.md)、针对专业领域字词内容的[短语列表](luis-concept-feature.md)，以及用于减少所需话语数的[模式](luis-concept-patterns.md)。
 <!--
 ### Active learning
 
@@ -171,25 +171,37 @@ Patterns allow you to simplify an intent's utterance collection into common [tem
 Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
 -->
 
-## <a name="integrating-with-luis"></a>与 LUIS 进行集成
+## <a name="development-lifecycle"></a>开发生命周期
+LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便在客户端应用程序和语言模型级别集成到完整的开发生命周期。 
+
+## <a name="implementing-luis"></a>实现 LUIS
 作为 REST API，LUIS 可以与任何发送 HTTP 请求的产品、服务或框架配合使用。 以下列表包含与 LUIS 配合使用的顶级 Microsoft 产品和服务。
 
-适用于LUIS 的 Microsoft 客户端应用程序包括：
+LUIS 的顶级客户端应用程序是：
 * [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) 或 [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - 通过此 [Mixed Reality 课程](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303)了解与 LUIS 进行集成的详细信息。 
 
-可以将 LUIS 与机器人配合使用的 Microsoft 工具：
+通过机器人快速轻松地使用 LUIS 的工具：
+* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS)：NPM 包以独立命令行工具或导入的形式提供创作和预测。 
+* [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen)：LUISGen 是一个用于从导出的 LUIS 模型生成强类型 C# 和 typescript 源代码的工具。
 * 启用[调度](https://aka.ms/dispatch-tool)时，可以使用调度程序模型通过父应用使用多个 LUIS 和 QnA Maker 应用。
-* 可以使用[聊天学习器](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview)，通过 LUIS 更快速地生成机器人聊天内容。
-* [项目个性聊天](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview)，用于处理机器人小型谈话。
+* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown)：LUDown 是一个命令行工具，可帮助你管理机器人的语言模型。
 
 与 LUIS 配合使用的其他认知服务：
 * [QnA Maker][qnamaker] 可将多种类型的文本组合到一个问题答案知识库中。
 * [必应拼写检查 API](../bing-spell-check/proof-text.md) 提供预测前的文本更正功能。 
 * [语音服务](../Speech-Service/overview.md)可将口述语言请求转化成文本。 
+* 可以使用[聊天学习器](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview)，通过 LUIS 更快速地生成机器人聊天内容。
+* [项目个性聊天](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview)，用于处理机器人小型谈话。
+<!--
+## Other ways of implementing LUIS
+
+A client application for LUIS is:
+* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
 
 
+Labs: 
 
+-->
 ## <a name="next-steps"></a>后续步骤
 
 使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询公用 IoT 应用的预测终结点](luis-get-started-cs-get-intent.md)。

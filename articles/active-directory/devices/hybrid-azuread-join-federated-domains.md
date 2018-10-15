@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391792"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855165"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
 
@@ -78,7 +78,9 @@ ms.locfileid: "47391792"
 - 组织的 STS（联盟域）
 - https://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
 
-自 Windows 10 1709 起，如果组织需要通过出站代理访问 Internet，可使用组策略对象 (GPO) 在计算机上配置代理设置。 如果计算机运行的版本比 Windows 10 1709 低，必须实现 Web 代理自动发现 (WPAD)，让 Windows 10 能够向 Azure AD 注册设备。 
+从 Windows 10 1803 开始，如果 AD FS 等联合域的即时混合 Azure AD 加入失败，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。
+
+从 Windows 10 1709 开始，如果组织需要通过出站代理访问 Internet，可[使用组策略对象 (GPO) 在计算机上配置代理设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 如果计算机运行的版本比 Windows 10 1709 低，必须实现 Web 代理自动发现 (WPAD)，让 Windows 10 计算机能够向 Azure AD 注册设备。 
 
 如果组织需要通过经身份验证的出站代理访问 Internet，则必须确保 Windows 10 计算机能够成功验证出站代理的身份。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此必须使用计算机上下文配置出站代理身份验证。 根据配置要求使用相应的出站代理提供程序。 
 

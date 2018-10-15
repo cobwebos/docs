@@ -1,23 +1,23 @@
 ---
-title: 使用必应自动推荐 API（Azure 认知服务）获取自动建议结果 | Microsoft Docs
+title: 教程：使用必应自动建议 API 获取自动建议结果
+titlesuffix: Azure Cognitive Services
 description: 演示如何使用必应自动建议。
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
-ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: f66af61ed06f4c6a7fe36cd44aa7781b71bb18ea
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b93ab8ebb4bb50723ec6ebae617fe9d95c6c7a47
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366462"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831426"
 ---
-# <a name="build-a-web-page-autosuggest-client"></a>生成网页自动建议客户端
+# <a name="tutorial-build-a-web-page-autosuggest-client"></a>教程：生成网页自动建议客户端
 
 本教程介绍如何构建使用户能够查询必应自动推荐 API 的网页。
 

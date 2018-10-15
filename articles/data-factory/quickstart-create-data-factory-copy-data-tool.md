@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107582"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017801"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>使用“复制数据”工具复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -52,13 +52,9 @@ ms.locfileid: "43107582"
 1. 对于“版本”，选择“V2”。
 1. 对于“位置”，请选择数据工厂所在的位置。 
 
-   此列表仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置/区域。
+   该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 请注意，数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-1. 选择“固定到仪表板”。     
-1. 选择“创建”。
-1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
-
-    ![“正在部署数据工厂”磁贴](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
+1. 选择**创建**。
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
@@ -74,7 +70,7 @@ ms.locfileid: "43107582"
    ![“属性”页](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”，添加一个连接。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”，添加一个连接。
 
     ![“源数据存储”页](./media/quickstart-create-data-factory-copy-data-tool/new-source-linked-service.png)
 
@@ -93,7 +89,7 @@ ms.locfileid: "43107582"
 
 1. 在“选择输入文件或文件夹”页中完成以下步骤：
 
-   a. 单击“浏览”导航到 **adftutorial/input** 文件夹，选择 **emp.txt** 文件，然后单击“选择”。 
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“浏览”导航到 **adftutorial/input** 文件夹，选择 **emp.txt** 文件，然后单击“选择”。 
 
    ![“选择输入文件或文件夹”页](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
 

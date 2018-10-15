@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b120f3d2731601652d46f71206637bacdda023cc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 26c3bef832e4f1ab4450b18cbc2e2736514e7169
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239841"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267641"
 ---
 # <a name="set-up-custom-domain"></a>设置自定义域
 
@@ -46,4 +46,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
-可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure Powershell 示例。
+可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure PowerShell 示例。

@@ -1,20 +1,21 @@
 ---
-title: 什么是必应自定义搜索？ | Microsoft Docs
-description: 提供必应自定义搜索的高级概述
+title: 什么是必应自定义搜索？
+titlesuffix: Azure Cognitive Services
+description: 提供必应自定义搜索的高级概述。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948071"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814298"
 ---
 # <a name="what-is-bing-custom-search"></a>什么是必应自定义搜索？
 

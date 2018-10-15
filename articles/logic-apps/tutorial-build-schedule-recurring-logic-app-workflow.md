@@ -10,14 +10,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 70d7adc9ea8c65a7e6a21165864b7e6d661c6f8c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124012"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042285"
 ---
-# <a name="check-traffic-with-a-schedule-based-logic-app"></a>使用基于计划的逻辑应用检查流量
+# <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>使用 Azure 逻辑应用按计划检查流量
 
 可以通过 Azure 逻辑应用自动完成按计划运行的工作流。 本教程介绍如何通过计划程序触发器生成[逻辑应用](../logic-apps/logic-apps-overview.md)。该触发器每个工作日早晨运行，用于检查两个地点之间的行程时间，包括交通情况。 如果该时间超过特定的限制，逻辑应用会发送一封电子邮件，其中包括到达目的地所需的行程时间和额外时间。
 

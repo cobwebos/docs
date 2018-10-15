@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042068"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883918"
 ---
 # <a name="integrate-speech-service"></a>语音服务集成
 借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
@@ -26,7 +26,7 @@ ms.locfileid: "47042068"
 在 Azure 门户中，[创建](luis-how-to-azure-subscription.md#create-luis-endpoint-key)语言理解 (LUIS) 密钥。 
 
 ## <a name="import-human-resources-luis-app"></a>导入人力资源 LUIS 应用
-意向和本文中的话语来自人力资源 LUIS 应用（可在 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github 存储库中获取）。 下载 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) 文件，以 *.json 扩展名保存该文件，并将其[导入](luis-how-to-start-new-app.md#import-new-app)到 LUIS。 
+意向和本文中的话语来自人力资源 LUIS 应用（可在 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github 存储库中获取）。 下载 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) 文件，以 `.json` 扩展名保存该文件，并将其[导入](luis-how-to-start-new-app.md#import-new-app)到 LUIS。 
 
 此应用具有与人力资源域相关的意向、实体和话语。 话语示例包括：
 
@@ -68,57 +68,29 @@ ms.locfileid: "47042068"
 [![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Visual Studio 2017 显示 Microsoft.CognitiveServices.Speech NuGet 包的屏幕截图")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>修改 C# 代码
-打开 LUIS_samples.cs 文件并更改以下变量：
+打开 `Program.cs` 文件并更改以下变量：
 
 |变量名称|目的|
 |--|--|
-|luisSubscriptionKey|与“发布”页面中终结点 URL 的 subscription-key 值相对应|
-|luisRegion|与终结点 URL 的第一个子域相对应|
-|luisAppId|与 apps/ 后面的终结点 URL 的路由相对应|
+|LUIS_assigned_endpoint_key|与“发布”页中终结点 URL 分配的 subscription-key 值相对应|
+|LUIS_endpoint_key_region|与终结点 URL 的第一个子域相对应，例如 `westus`|
+|LUIS_app_ID|与 apps/ 后面的终结点 URL 的路由相对应|
 
-[![](./media/luis-tutorial-speech-to-intent/change-variables.png "Visual Studio 2017 显示 LUIS_samples.cs 变量的屏幕截图")](./media/luis-tutorial-speech-to-intent/change-variables.png#lightbox)
-
-该文件已映射人力资源意向。
-
-[![](./media/luis-tutorial-speech-to-intent/intents.png "Visual Studio 2017 显示 LUIS_samples.cs 意向的屏幕截图")](./media/luis-tutorial-speech-to-intent/intents.png#lightbox)
+`Program.cs` 文件已映射人力资源意向。
 
 构建并运行应用程序。 
 
 ## <a name="test-code-with-utterance"></a>使用意向测试代码
-选择 1，并对着麦克风说“贾勇的经理是谁”。
+对着麦克风说：“在雷德蒙德，谁是已批准的牙医？”。
 
-```cmd
-1. Speech recognition of LUIS intent.
-0. Stop.
-Your choice: 1
-LUIS...
-Say something...
-ResultId:cc83cebc9d6040d5956880bcdc5f5a98 Status:Recognized IntentId:<GetEmployeeOrgChart> Recognized text:<Who is the manager of John Smith?> Recognized Json:{"DisplayText":"Who is the manager of John Smith?","Duration":25700000,"Offset":9200000,"RecognitionStatus":"Success"}. LanguageUnderstandingJson:{
-  "query": "Who is the manager of John Smith?",
-  "topScoringIntent": {
-    "intent": "GetEmployeeOrgChart",
-    "score": 0.617331
-  },
-  "entities": [
-    {
-      "entity": "manager of john smith",
-      "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 31
-    }
-  ]
-}
+[!code-console[Command line response from spoken utterance](~/samples-luis/documentation-samples/tutorial-speech-intent-recognition/console-output.txt "Command line response from spoken utterance")]
 
-Recognition done. Your Choice:
-
-```
-
-找到正确的意向（即“获取员工组织结构图”），其置信度为 61%。 返回 keyPhrase 实体。 
+找到正确的意向（即“GetEmployeeBenefits”），其置信度为 85%。 返回 keyPhrase 实体。 
 
 语音 SDK 返回整个 LUIS 响应。 
 
 ## <a name="clean-up-resources"></a>清理资源
-不再需要时，请删除 LUIS 人力资源应用。 为此，请在应用列表中选择应用名称右侧的省略号 (...) 按钮，然后选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
+不再需要时，请删除 LUIS 人力资源应用。 为此，请选择应用，然后在列表上方的上下文工具栏中选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
 请记住在使用完示例代码后删除“LUIS 示例”目录。
 

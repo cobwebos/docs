@@ -1,20 +1,21 @@
 ---
-title: 适用于 Azure 认知服务中的必应新闻搜索 API 的 Ruby 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应新闻搜索 API。
+title: 快速入门：必应新闻搜索 API、Ruby
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 2c4074a5bf63a2b4d6301e81608c0cfafd9de8e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c6c004469b86e443dc1fcc04106d0c7b8b749334
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366547"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803811"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-ruby"></a>将必应新闻搜索 API 与 Ruby 配合使用快速入门
 
@@ -26,7 +27,7 @@ ms.locfileid: "35366547"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-news-search"></a>必应新闻搜索
 
@@ -34,7 +35,7 @@ ms.locfileid: "35366547"
 
 1. 在你喜欢使用的 IDE 或编辑器中新建一个 Ruby 项目。
 2. 添加下面提供的代码。
-3. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 运行该程序。
 
 ```ruby

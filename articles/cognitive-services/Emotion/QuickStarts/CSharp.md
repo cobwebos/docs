@@ -1,27 +1,29 @@
 ---
-title: 情感 API C# 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助你通过认知服务中的 C# 快速开始使用情感 API。
+title: 快速入门：识别图像中人脸的情感 - 情感 API、C#
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你通过 C# 快速开始使用情感 API。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016559"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239364"
 ---
-# <a name="emotion-api-c-quick-start"></a>情感 API C# 快速入门
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>快速入门：构建应用以识别图像中人脸的情感。
 
 > [!IMPORTANT]
-> 视频 API 预览版于 2017 年 10 月 30 日停用。 若要从视频中轻松提取见解，请尝试新的[视频索引器 API 预览版](https://azure.microsoft.com/services/cognitive-services/video-indexer/)。 还可使用它来检测口语、人脸、字符和情感，从而增强搜索结果等内容发现体验。 若要了解详细信息，请参阅[视频索引器预览版](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)概述。
+> 情感 API 将于 2019 年 2 月 15 日弃用。 情感识别功能现在已作为[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/) 的一部分正式发布。
 
-本文提供了信息和代码示例，以帮助你通过 C# 快速开始使用[情感 API识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。 可用它识别图像中一人或多人表达的情感。 
+本文提供了信息和代码示例，以帮助你通过 C# 快速开始使用[情感 API识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。 可用它识别图像中一人或多人表达的情感。
 
 ## <a name="prerequisites"></a>先决条件
 * 获取的认知服务 [情感 API Windows SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/)。
@@ -71,10 +73,10 @@ namespace CSHttpClientSample
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); // 
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); //
 
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URI below with "westcentralus".
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
             HttpResponseMessage response;
@@ -124,10 +126,10 @@ namespace CSHttpClientSample
 成功的调用将返回一组人脸条目及其关联表情评分。 按人脸矩形大小降序排列。 空响应指示未检测到任何人脸。 表情条目包含以下字段：
 
 * faceRectangle：图像中人脸的矩形位置
-* scores：图像中每张人脸的表情得分 
+* scores：图像中每张人脸的表情得分
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

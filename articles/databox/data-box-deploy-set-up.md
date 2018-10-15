@@ -1,6 +1,6 @@
 ---
 title: 设置 Azure Data Box| Microsoft Docs
-description: 了解 Azure Data Box 的软件和网络要求
+description: 了解如何为 Azure Data Box 连接电缆并连接到它
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 6623744a26d79ccbc8b68ba84baf3a37024e0ed7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952301"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785625"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -36,15 +36,15 @@ ms.locfileid: "46952301"
 在开始之前，请确保：
 
 1. 已完成[教程：订购 Azure Data Box](data-box-deploy-ordered.md)。
-2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 
+2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 透明袋中有一个发货标签贴在当前标签下的设备上。 请确保此标签安全，因为将使用它退回货物。
 3. 已看完 [Data Box 安全准则](data-box-safety.md)。
-4. 已收到用于你的 100 TB 存储设备的一条接地电源线。
+4. 你已收到一根接地电源线，可以将该线用于 100 TB 存储设备。
 5. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
-    - 连接到高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。 
+    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
 6. 必须找到一个可以放置 Data Box 的平面。 如需将设备置于标准的机架上，则需要数据中心机架中的一个 7U 槽。 可以将设备平放或直放在机架中。
 7. 你已经采购了以下电缆，用于将 Data Box 连接到主机。
-    - 两根 10 GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）
+    - 两根 10-GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）
     - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
     - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
@@ -61,8 +61,8 @@ ms.locfileid: "46952301"
     1. 将电源线连接到所标示的电源输入位置。 电源线的另一端应当连接到配电装置。
     2. 将 RJ-45 CAT 6 电缆的一端连接到 MGMT 端口，将另一端连接到笔记本电脑。            
     3. 将 RJ-45 CAT 6A 电缆的一端连接到 DATA 3 端口。 如果通过 RJ-45 CAT 6A 电缆进行连接，则 DATA 3 配置为 10 GbE，如果通过 RJ-45 CAT 6 电缆进行连接，则它配置为 1 GbE。
-    4. 分别使用 10 GbE SFP + 双绞线铜缆连接 DATA 1 和 DATA 2 端口。 
-    5. 数据端口上的电缆的另一端通过一台 10 GbE 交换机连接到主计算机。
+    4. 分别使用 10-GbE SFP + 双绞线铜缆连接 DATA 1 和 DATA 2 端口。 
+    5. 数据端口上的电缆的另一端通过一台 10-GbE 交换机连接到主计算机。
 
 4. 在设备的前操作面板上找到电源按钮。 打开设备。
 

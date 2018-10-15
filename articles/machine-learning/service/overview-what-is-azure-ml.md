@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433406"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238498"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
 
@@ -48,7 +48,7 @@ Azure 机器学习服务完全支持开放源代码技术，因此，你可以�
 Azure 机器学习服务可以自动生成模型并为你自动优化模型。
 有关示例，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)。
 
-或者，使用适用于 Python 的 Azure 机器学习 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，你可以在 Azure 机器学习工作区中自行生成和培训高度准确的机器学习和深度学习模型。
+或者，可以使用适用于 Python 的 Azure 机器学习 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，在 Azure 机器学习服务工作区中自行生成和训练高度准确的机器学习和深度学习模型。
 可以从开放源代码 Python 包中提供的许多机器学习组件中进行选择，例如：
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -80,7 +80,7 @@ Azure 机器学习工作室是一个协作式拖放可视化工作区，无需�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅文章[使用 Azure 门户入门](quickstart-get-started.md)来创建机器学习工作区
+- 按照文章[使用 Azure 门户入门](quickstart-get-started.md)创建机器学习服务工作区
  
 - 按照完整教程[使用 Azure 机器学习定型图像分类模型](tutorial-train-models-with-aml.md)，了解如何使用 Azure 机器学习服务训练和部署模型
 

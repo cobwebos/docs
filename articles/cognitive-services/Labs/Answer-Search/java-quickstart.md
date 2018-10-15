@@ -1,22 +1,23 @@
 ---
-title: 项目应答搜索 Java 快速入门 - Microsoft 认知服务 | Microsoft Docs
+title: 快速入门：项目答案搜索、Java
+titlesuffix: Azure Cognitive Services
 description: 开始在 Java 中使用项目应答搜索。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 4e1f606e1564981589e638e0e51a8b42633ca7b0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 1e10ecf685aaf5b60b94a5e9e0d8e118f45e5168
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366247"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867014"
 ---
-# <a name="project-answer-search-query-in-java"></a>Java 中的项目答应搜索查询
+# <a name="quickstart-project-answer-search-query-in-java"></a>快速入门：使用 Java 实现项目答案搜索查询
 本文使用 Java 来演示 Azure 上 Microsoft 认知服务中包含的必应搜索 API。 该 API 是一种 REST Web 服务，与任何可以发出 HTTP 请求和分析 JSON 的编程语言兼容。
  
 示例代码使用 Java 和最小数量的外部依赖项。  也可在使用 Mono 的 Linux 或 Mac OS X 上运行它。
@@ -51,7 +52,7 @@ ms.locfileid: "35366247"
 
 必应应答搜索 API 从必应搜索引擎返回结果。
 1. 下载或安装 gson 库。
-2. 在最喜爱的 IDE 或编辑器中新建 Java 项目。
+2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 添加下方提供的代码。
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
@@ -152,4 +153,4 @@ public class KnowledgeSrch {
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)
 - [Java 快速入门](java-quickstart.md)
-- [Node 快速入门](node-quickstart.md)
+- [节点快速入门](node-quickstart.md)

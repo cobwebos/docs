@@ -3,18 +3,18 @@ title: 使用 Azure Maps 查找路线 | Microsoft Docs
 description: 使用 Azure Maps 查找前往兴趣点的路线
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578931"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816712"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>使用 Azure Maps 查找前往兴趣点的路线
 
@@ -126,14 +126,16 @@ ms.locfileid: "45578931"
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    map.setCameraBounds 根据起点和终点的坐标调整地图窗口。 API **map.addPins** 将这些点作为可视组件添加到地图控件中。
+    map.setCameraBounds 根据起点和终点的坐标调整地图窗口。 **map.addEventListener** 可确保在完全加载地图后加载添加到地图的所有地图函数。 事件侦听器中的 API **map.addPins** 将这些点作为视觉组件添加到地图控件中。
 
 3. 保存“MapRoute.html”文件并刷新浏览器。 现在，地图的中心为西雅图，可以看到标记起点的圆形蓝色图钉和标记终点的蓝色图钉。
 
@@ -143,7 +145,7 @@ ms.locfileid: "45578931"
 
 ## <a name="get-directions"></a>获取方向
 
-本部分介绍如何使用 Maps 路线服务 API 查找从给定起点到目的地的路线。 路线服务提供多个 API，规划两个地点之间最快、最短、环保或令人兴奋的路线。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。
+本部分介绍如何使用 Maps 路线服务 API 查找从给定起点到目的地的路线。 路线服务提供多个 API，规划两个地点之间最快、最短、环保或令人兴奋的路线。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map load eventListener 中**添加以下所有功能，以确保它们在地图完全加载之后加载。
 
 1. 首先，在地图上添加一个新层以显示路线路径或 linestring。 将以下 JavaScript 代码添加到 *script* 块。
 
@@ -204,6 +206,10 @@ ms.locfileid: "45578931"
 > * 使用 Map Control API 创建新网页
 > * 设置地址坐标
 > * 在路线服务中查询兴趣点的方向
+
+可以在此处访问本教程的代码示例：
+
+> [使用 Azure Maps 查找路线](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 下一教程演示如何在有限制的情况下（例如出行模式或货物类型）创建路线查询，以及如何在同一地图上显示多条路线。
 

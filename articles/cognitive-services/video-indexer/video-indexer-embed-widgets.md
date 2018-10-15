@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3d9e00a97355c03da5360846d4cd9f27a8540ed6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985575"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017427"
 ---
 # <a name="example-embed-video-indexer-widgets-into-your-applications"></a>示例：将视频索引器小组件嵌入应用程序
 
@@ -47,15 +47,16 @@ ms.locfileid: "45985575"
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
-2. 单击显示在视频下面的“嵌入”按钮。
+2. 单击要使用的视频。
+3. 单击显示在视频下面的“嵌入”按钮。
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     单击按钮以后，一个嵌入模式会显示在屏幕上，你可以在其中选择要嵌入到应用程序中的具体小组件。
     选择一个小组件（**播放器**或**认知见解**），生成可以粘贴在应用程序中的嵌入式代码。
  
-3. 选择所需小组件的类型（**认知见解**或**播放器**）。
-4. 复制嵌入代码并将其添加到应用程序。 
+4. 选择所需小组件的类型（**认知见解**或**播放器**）。
+5. 复制嵌入代码并将其添加到应用程序。 
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 

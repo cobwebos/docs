@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建机器学习工作区 - Azure
-description: 使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。
+title: 快速入门：在 Azure 门户中创建机器学习服务工作区 - Azure 机器学习
+description: 使用 Azure 门户创建 Azure 机器学习服务工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,26 +9,26 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: c1610291e06255e2c724268f63d740f7e4debea4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959982"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831324"
 ---
-# <a name="quickstart-get-started-with-azure-machine-learning-service"></a>快速入门：Azure 机器学习服务入门
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习服务
 
-在本快速入门中，你将使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。 
+在本快速入门中，将使用 Azure 门户创建 Azure 机器学习服务工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。 
 
-在本教程中，你将执行以下操作：
+在本教程中，将：
 
 * 在 Azure 订阅中创建工作区
 * 在 Azure Notebook 中搭配 Python 使用，并记录多个迭代中的值
 * 在工作区中查看所记录的值
 
-为方便起见，如果区域支持，下述资源将自动添加到你的工作区：[容器注册表](https://azure.microsoft.com/services/container-registry/)[存储](https://azure.microsoft.com/services/storage/)、[应用程序见解](https://azure.microsoft.com/services/application-insights/)和[密钥保险库](https://azure.microsoft.com/services/key-vault/)。
+为方便起见，如果区域支持，下述资源将自动添加到你的工作区：[容器注册表](https://azure.microsoft.com/services/container-registry/)、[存储](https://azure.microsoft.com/services/storage/)、[应用程序见解](https://azure.microsoft.com/services/application-insights/)和 [Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
-所创建的资源可用作其他 Azure 机器学习教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与 Azure 机器学习服务相关联的某些资源存在限制（例如， BatchAI 群集大小）。 要了解默认限制以及申请更多配额的方法，请阅读[此](how-to-manage-quotas.md)文章。
+所创建的资源可以用作其他 Azure 机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与 Azure 机器学习服务相关联的某些资源存在限制（例如， BatchAI 群集大小）。 要了解默认限制以及申请更多配额的方法，请阅读[此](how-to-manage-quotas.md)文章。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "46959982"
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-在工作区页面上，单击 `Explore your Azure Machine Learning Workspace`
+在工作区页面上，单击 `Explore your Azure Machine Learning service workspace`
 
  ![浏览工作区](./media/quickstart-get-started/explore_aml.png)
 
@@ -60,7 +60,7 @@ Azure Notebooks 为 Jupyter 笔记本提供了一个免费的云平台，它预�
 
  ![启动 Azure Notebook](./media/quickstart-get-started/explore_ws.png)
 
-登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。  单击 `Clone`
+登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。  单击`Clone`
 
 
 ### <a name="run-the-notebook"></a>运行笔记本
@@ -69,9 +69,9 @@ Azure Notebooks 为 Jupyter 笔记本提供了一个免费的云平台，它预�
 
 单击 `01.run-experiment.ipynb` 打开笔记本。
 
-可使用 `Shift`+`Enter` 一次运行一个单元。  或者，使用菜单 `Cells` > `Run All` 运行整个笔记本。
+可使用 `Shift`+`Enter` 一次运行一个单元。  或者，使用菜单 `Cells` > `Run All` 运行整个笔记本。  当你在单元旁边看到 [*] 时，它正在运行。  该单元的代码完成后，将显示一个数字。
 
-系统可能会提示你登录。  复制消息中的代码，然后单击链接并将代码粘贴到新窗口中。  请确保不要复制代码前后的空格。
+系统可能会提示你登录。  复制消息中的代码，然后单击链接并将代码粘贴到新窗口中。  请确保不要复制代码前后的空格。  使用在 Azure 门户中使用的同一帐户登录。
 
  ![登录](./media/quickstart-get-started/login.png)
 

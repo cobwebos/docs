@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 05dd53fdfda5446cf848a7b8503a09bc5e5c2d20
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433457"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067511"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -46,10 +46,15 @@ ms.locfileid: "47433457"
 
 从 [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) 下载示例 Node.js 项目并提取 ZIP 存档。
 
-在终端窗口中，导航到示例性 Node.js 项目的根目录（包含 _index.js_ 的目录）。
+打开 _index.js_ 并找到以下行：
 
-> [!NOTE]
-> 不需要使用我们的示例应用，你可以根据需要使用自己的 Node 代码。 但请注意，应用程序的 PORT 将由 Azure 在运行时设置，并以 `process.env.PORT` 的形式提供。 如果使用的是 express，必须确保在启动 (`app.listen`) 时检查是否 `process.env.PORT || 3000`。 如果你不这样做并且端口与 Azure 在运行时设置的端口不匹配，将显示 `Service Unavailable` 消息。 
+```javascript
+var port = process.env.PORT || 1337;
+```
+
+应用服务会将 process.env.PORT 注入应用程序，因此代码将使用该变量来获知要侦听的端口。 
+
+在终端窗口中，导航到示例性 Node.js 项目的根目录（包含 _index.js_ 的目录）。
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
@@ -68,7 +73,7 @@ npm start
 在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
 > [!NOTE]
-> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/tjanczuk/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config)中。
+> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 

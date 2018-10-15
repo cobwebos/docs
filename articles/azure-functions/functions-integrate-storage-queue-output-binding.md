@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094988"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854518"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
@@ -25,7 +25,7 @@ ms.locfileid: "44094988"
 
 ![存储资源管理器中显示的队列消息](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 完成本快速入门教程：
 
@@ -39,15 +39,19 @@ ms.locfileid: "44094988"
 
 1. 在 Azure 门户中，打开在[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中创建的函数应用的函数应用页。 为此，请选择“所有服务”>“Function App”，然后选择你的函数应用。
 
-2. 选择在此前的那个快速入门中创建的函数。
+1. 选择在此前的那个快速入门中创建的函数。
 
 1. 选择“集成”>“新建输出”>“Azure 队列存储”。
 
 1. 单击“选择”。
-    
+
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. 在“Azure 队列存储输出”下，使用在此屏幕截图下的表中指定的设置： 
+1. 如果收到“扩展未安装”消息，请选择“安装”以在函数应用中安装存储绑定扩展。 这可能需要一到两分钟。
+
+    ![安装存储绑定扩展](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. 在“Azure 队列存储输出”下，使用在此屏幕截图下的表中指定的设置： 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ ms.locfileid: "44094988"
     | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
     | **队列名称**   | outqueue    | 要连接到存储帐户中的队列的名称。 |
 
-4. 单击“保存”添加绑定。
- 
+1. 单击“保存”添加绑定。
+
 现在，已定义输出绑定，需要更新代码以使用绑定将消息添加到队列。  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
 
 在此部分，请添加将消息写入输出队列的代码。 该消息包括在查询字符串中传递到 HTTP 触发器的值。 例如，如果查询字符串包含 `name=Azure`，则队列消息将是“传递给函数的名称: Azure”。
 
-1. 选择函数以在编辑器中显示函数代码。 
+1. 选择函数以在编辑器中显示函数代码。
 
-2. 对于 C# 函数，请为绑定添加一个方法参数，然后编写使用它的代码：
+1. 根据函数语言更新函数代码：
 
-   向方法签名添加 **outputQueueItem** 参数，如以下示例所示。 参数名称就是创建绑定时输入的**消息参数名称**。
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    向方法签名添加 **outputQueueItem** 参数，如以下示例所示。
 
-   在 C# 函数正文中刚好在 `return` 语句之前，添加可以使用该参数创建队列消息的代码。
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    在 `return` 语句之前的函数体中，添加使用参数创建队列消息的代码。
 
-3. 对于 JavaScript 函数，请添加可以在 `context.bindings` 对象上使用输出绑定来创建队列消息的代码。 请在`context.done` 语句之前添加此代码。
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. 选择“保存”以保存更改。
- 
-## <a name="test-the-function"></a>测试函数 
+    添加使用 `context.bindings` 对象上的输出绑定创建队列消息的代码。 请在`context.done` 语句之前添加此代码。
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. 选择“保存”以保存更改。
+
+## <a name="test-the-function"></a>测试函数
 
 1. 保存代码更改后，选择“运行”。 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   请注意，**请求正文**包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
-
-   如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。 此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
+    请注意，**请求正文**包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
+    
+    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。 此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
 
 2. 检查日志以确保该函数成功。 
 

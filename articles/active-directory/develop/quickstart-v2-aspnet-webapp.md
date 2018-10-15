@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7196cd6c18680583494a485c136081d90960464d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991277"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831494"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -45,9 +45,9 @@ ms.locfileid: "46991277"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要添加答复 URL `https://localhost:44368/`。
+> 要使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 `https://localhost:44368/`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [为我执行此更改]()
+> > [执行此更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-aspnet-webapp/green-check.png) 应用程序已使用此属性进行配置
@@ -58,7 +58,7 @@ ms.locfileid: "46991277"
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
 
-1. 将 zip 文件提取到本地文件夹（例如，C:\Azure-Samples）
+1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 1. 在 Visual Studio 中打开解决方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. 编辑 **Web.config**，用刚刚注册的应用程序中的应用程序 ID 替换 `Enter_the_Application_Id_here`：
 

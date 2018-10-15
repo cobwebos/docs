@@ -1,25 +1,25 @@
 ---
-title: 必应拼写检查 API 快速入门 | Microsoft Docs
+title: 快速入门：必应拼写检查 API
+titlesuffix: Azure Cognitive Services
 description: 展示了如何开始使用必应拼写检查 API。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: AF8EB1F0-386D-4555-9354-735611435F04
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: quickstart
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: cae8353e5be6e70eca90e5995b29b6774fc7d6a9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 29ee7cb4ee648d20b425939553ba31cd9ac150f0
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365434"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804185"
 ---
-# <a name="your-first-spell-check-request"></a>首个拼写检查请求
+# <a name="quickstart-your-first-spell-check-request"></a>快速入门：第一个拼写检查请求
 
-在第一次执行调用之前，需要获得认知服务订阅密钥。 若要获取密钥，请参阅[尝试认知服务](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
+必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[尝试认知服务](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
 
 要检查文本字符串是否存在拼写和语法错误，你需要向以下终结点发送 GET 请求：  
   
@@ -36,11 +36,11 @@ https://api.cognitive.microsoft.com/bing/v5.0/spellcheck
   
 请求必须使用 HTTPS 协议。
 
-我们建议所有请求都源自一个服务器。 作为客户端应用程序的一部分分发密钥使恶意第三方有更多机会来访问它。 另外，从服务器发出调用可以为未来版本的 API 提供一个单一升级点。
+我们建议所有请求都源自一个服务器。 将密钥作为客户端应用程序的一部分进行分发会为恶意第三方提供更多访问它的机会。 另外，从服务器发出调用可以为未来版本的 API 提供一个单一升级点。
 
 请求必须指定 [text](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#text) 查询参数，其中包含要检查的文本字符串。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#mkt) 查询参数，它确定你希望结果源自其中的市场。 对于诸如 `mode` 这样的可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。  
   
-请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#subscriptionkey) 标头。 尽管是可选的，但还是建议指定以下标头：  
+请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference#clientid)  
@@ -75,7 +75,7 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com  
 > ```  
 
-以下显示了对之前请求的响应。 该示例还展示了特定于必应的响应头。
+以下显示了对之前请求的响应。 此示例还展示了必应专用响应头。
 
 ```
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

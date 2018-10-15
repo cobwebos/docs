@@ -28,6 +28,7 @@
 ### [访问控制](data-lake-store-access-control.md)
 ### [保护存储的数据](data-lake-store-secure-data.md)
 ### [加密](data-lake-store-encryption.md)
+### [虚拟网络集成（预览版）](data-lake-store-network-security.md)
 
 ## 使用 Data Lake Storage Gen1 进行身份验证
 ### [身份验证选项](data-lakes-store-authentication-using-azure-active-directory.md)

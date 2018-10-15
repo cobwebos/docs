@@ -8,18 +8,18 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958095"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831121"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>快速入门：使用 Azure 门户将 Azure DNS 配置为进行名称解析
 
- 可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构处购买了 contoso.com 域名，则可将 Azure DNS 配置为托管 contoso.com 域，并将 www.contoso.com 解析为 Web 服务器或 Web 应用的 IP 地址。
+ 可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.com 域名，则可将 Azure DNS 配置为托管 contoso.com 域，并将 www.contoso.com 解析为 Web 服务器或 Web 应用的 IP 地址。
 
-在本快速入门中，请先创建一个测试域，然后创建一个名为“www”的可解析为 IP 地址 10.10.10.10 的地址记录。
+在本快速入门中，将先创建一个测试域，然后创建一个名为“www”的可解析为 IP 地址 10.10.10.10 的地址记录。
 
 请注意，本快速入门中使用的所有名称和 IP 地址都只是示例，不代表实际方案。 但在适用情况下，也会讨论实际方案。
 
@@ -34,7 +34,7 @@ DNS 区域用来包含某个特定域的 DNS 条目。 若要开始在 Azure DNS
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
 1. 登录到 Azure 门户。
-2. 在左上角单击“+ 创建资源”>“网络”，然后单击“DNS 区域”以打开“创建 DNS 区域”页。
+2. 在左上角依次单击“+ 创建资源”、“网络”、“DNS 区域”以打开“创建 DNS 区域”页。
 
     ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
 
@@ -43,7 +43,7 @@ DNS 区域用来包含某个特定域的 DNS 条目。 若要开始在 Azure DNS
 
    | **设置** | **值** | **详细信息** |
    |---|---|---|
-   |**Name**|contoso.xyz|此示例的 DNS 区域的名称。 可以在本快速入门中使用所需的任何值，只要其尚未在 Azure DNS 服务器上配置即可。 实际值可以是从域名注册机构购买的域。|
+   |**Name**|contoso.xyz|此示例的 DNS 区域名称可以是本快速入门所需的任何值，只要它尚未在 Azure DNS 服务器上配置即可。 实际值可以是从域名注册机构购买的域。|
    |**订阅**|[订阅]|选择要在其中创建 DNS 区域的订阅。|
    |**资源组**|**新建：** dns-test|创建资源组。 资源组名称必须在所选订阅中唯一。 |
    |**位置**|美国东部||
@@ -52,7 +52,7 @@ DNS 区域用来包含某个特定域的 DNS 条目。 若要开始在 Azure DNS
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-现在请创建新的地址记录（“A”记录）。 “A”记录用于将主机名称解析为 IP v4 地址。
+现在请创建新的地址记录（“A”记录）。 “A”记录用于将主机名解析为 IPv4 地址。
 
 1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击“contoso.xyz”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.xyz”， 轻松访问 DNS 区域。
 

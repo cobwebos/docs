@@ -1,23 +1,25 @@
 ---
-title: 适用于项目 URL 预览的 Node.js 快速入门 - Microsoft 认知服务 | Microsoft Docs
+title: 快速入门：项目 URL 预览、Node.js
+titlesuffix: Azure Cognitive Services
 description: 开始使用 Azure 上的 Microsoft 认知服务中的 URL 预览。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366271"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883561"
 ---
-# <a name="url-preview-node-quickstart"></a>URL 预览 Node 快速入门
+# <a name="quickstart-url-preview-with-nodejs"></a>快速入门：通过 Node.js 使用 URL 预览 
 
-以下 Node 示例创建 SwiftKey 网站的 URL 预览：https://swiftkey.com/en。
+以下 Node 示例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,10 +29,10 @@ ms.locfileid: "35366271"
 
 下面的代码获取 URL 预览数据。
 它是通过以下步骤实现的：
-1. 声明变量来通过主机和路径指定终结点。
+1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 为响应创建处理程序函数。
-4. 定义搜索函数，用以创建请求并添加 *Ocp-Apim-Subscription-Key* 标头。
+4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
 5. 运行“搜索”函数。 
 
 本演示的完整代码如下：

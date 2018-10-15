@@ -1,22 +1,23 @@
 ---
-title: 必应自定义搜索：创建自定义搜索网页 | Microsoft Docs
-description: 介绍如何配置自定义搜索实例并将其集成到网页
+title: 教程：创建自定义搜索网页 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
+description: 介绍如何配置自定义搜索实例并将其集成到网页。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979989"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815369"
 ---
-# <a name="build-a-custom-search-web-page"></a>构建自定义搜索网页
+# <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
 借助必应自定义搜索，可以为关注的主题创建定制的搜索体验。 例如，如果拥有提供搜索体验的武术网站，则可以指定供必应搜索的域、子网站和网页。 用户会看到根据他们关注的内容定制的搜索结果，而不必浏览可能会包含不相关内容的常规搜索结果。 
 

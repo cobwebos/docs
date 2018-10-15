@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: cshoe
-ms.openlocfilehash: a325029ded60a1cd8274743a88f7a4d410466dea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e23e888a1c90e1c6c7eecf25491f048e9077f11
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987571"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857884"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>快速入门：使用 Azure Storage v10 SDK for JavaScript 上载、下载、列出和删除 blob（预览版）
 
@@ -128,7 +128,7 @@ const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
-该 API 发出的请求可以设置为在给定时间间隔后超时。 *Aborter* 类负责管理请求超时的方式，而以下常量用于定义此示例中所使用的超时。
+该 API 发出的请求可以设置为在给定时间间隔后超时。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) 类负责管理请求超时的方式，而以下常量用于定义此示例中所使用的超时。
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
@@ -163,13 +163,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 ```
 此代码块中使用以下类：
 
-- *SharedKeyCredential* 类负责包装存储帐户凭据，以将其提供给请求管道。
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) 类负责包装存储帐户凭据，以将其提供给请求管道。
 
-- *StorageURL* 类负责创建新管道。
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-preview) 类负责创建新管道。
 
-- *ServiceURL* 对 REST API 中使用的 URL 建模。 此类的实例允许执行列出容器等操作，并提供上下文信息以生成容器 URL。
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-preview) 对 REST API 中使用的 URL 建模。 此类的实例允许执行列出容器等操作，并提供上下文信息以生成容器 URL。
 
-*ServiceURL* 的实例与 *ContainerURL* 和 *BlockBlobURL* 实例一起用于管理存储帐户中的容器和 blob。
+*ServiceURL* 的实例与 [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-preview) 和 [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-preview) 实例一起用于管理存储帐户中的容器和 blob。
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -202,7 +202,7 @@ Aborter 允许通过以下方式控制请求：
 - 指定为一批请求给定的时间量
 - 指定单个请求必须在批处理中执行多长时间
 - 允许取消请求
-- 使用 *Aborter.None* 静态成员来阻止所有请求一起超时
+- 使用 *Aborter.none* 静态成员来阻止所有请求一起超时
 
 ### <a name="show-container-names"></a>显示容器名称
 帐户可以存储大量容器。 以下代码演示如何以分段方式列出容器，以便你循环遍历大量容器。 *showContainerNames* 函数是 *ServiceURL* 和 *Aborter* 的传递实例。
@@ -341,7 +341,7 @@ await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
 ## <a name="clean-up-resources"></a>清理资源
-写入存储帐户的所有数据都将在代码示例结束时自动删除。 
+写入存储帐户的所有数据都会在代码示例结束时自动删除。 
 
 ## <a name="next-steps"></a>后续步骤
 

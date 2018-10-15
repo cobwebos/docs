@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452626"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888052"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
@@ -154,14 +154,21 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 在成熟的生产部署中，往往很难维护单个要同步所有对象的组。 在这种情况下，应该使用[配置筛选](how-to-connect-sync-configure-filtering.md)中所述的方法之一。
 
 ### <a name="optional-features"></a>可选功能
-此屏幕用于针对特定方案选择可选功能。
+此屏幕可让你针对特定方案选择可选功能。
+
+>[!WARNING]
+>Azure AD Connect 版本 **1.0.8641.0** 及更早版本依赖于 Azure 访问控制服务进行密码写回。  该服务将于 **2018 年 11 月 7 日**停用。  如果你使用上述任一版本的 Azure AD Connect 并启用了密码写回，则一旦服务停用，用户可能无法更改或重置其密码。 将不支持使用这些版本的 Azure AD Connect 进行密码写回。
+>
+>有关 Azure 访问控制服务的详细信息，请参阅[如何：从 Azure 访问控制服务迁移](../develop/active-directory-acs-migration.md)
+>
+>若要下载最新版本的 Azure AD Connect，请单击[此处](https://www.microsoft.com/en-us/download/details.aspx?id=47594)。
 
 ![可选功能](./media/how-to-connect-install-custom/optional2.png)
 
 > [!WARNING]
 > 如果当前启用了 DirSync 或 Azure AD Sync，请勿激活 Azure AD Connect 中的任何写回功能。
->
->
+
+
 
 | 可选功能 | Description |
 | --- | --- |
@@ -190,6 +197,9 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 
 ### <a name="directory-extension-attribute-sync"></a>目录扩展属性同步
 可以使用组织添加的自定义属性或 Active Directory 中的其他属性，在 Azure AD 中扩展架构。 若要使用这项功能，请在“可选功能”页上选择“目录扩展属性同步”。 可以在此页上选择要同步的其他属性。
+
+>[!NOTE]
+>“可用属性”框区分大小写。
 
 ![目录扩展](./media/how-to-connect-install-custom/extension2.png)
 

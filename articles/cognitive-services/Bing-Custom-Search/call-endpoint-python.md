@@ -1,22 +1,23 @@
 ---
-title: 使用 Python 调用终结点 - 必应自定义搜索 - Microsoft 认知服务
+title: 快速入门：使用 Python 调用终结点 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
 description: 本快速入门演示如何通过使用 Python 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d16b7354b0ef727ba3c670b97105e1bd6f99034e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967585"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815454"
 ---
-# <a name="call-bing-custom-search-endpoint-python"></a>调用必应自定义搜索终结点 (Python)
+# <a name="quickstart-call-bing-custom-search-endpoint-python"></a>快速入门：调用必应自定义搜索终结点 (Python)
 
 本快速入门演示如何使用 Python 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
 

@@ -1,22 +1,25 @@
 ---
-title: 异常情况检测 C# 应用 - Microsoft 认知服务 | Microsoft Docs
-description: 介绍使用 Microsoft 认知服务中的异常情况检测 API 的 C# 应用。 将原始数据点发送到 API 并获得预期值和异常点。
+title: 教程：异常情况检测、C#
+titlesuffix: Azure Cognitive Services
+description: 探索使用异常情况检测 API 的 C# 应用。 将原始数据点发送到 API 并获得预期值和异常点。
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41944426"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887643"
 ---
-# <a name="anomaly-detection-c-application"></a>异常情况检测 C# 应用程序
+# <a name="tutorial-anomaly-detection-with-c-application"></a>教程：使用 C# 应用程序进行异常情况检测
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 探索一个使用异常情况检测 API 来检测输入异常的基本 Windows 应用程序。 该示例使用订阅密钥将时序数据提交到异常情况检测 API，然后从 API 获取每个数据点的所有异常点和预期值。
 

@@ -1,25 +1,25 @@
 ---
-title: 自动建议 API 快速入门 | Microsoft Docs
+title: 快速入门：必应自动建议 API
+titlesuffix: Azure Cognitive Services
 description: 说明如何开始使用必应自动建议 API。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1482E781-7352-4A3F-B1D5-B896381348C4
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a7b54a1fb0b7c76eb72097357a6b51aa02e6e2fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366460"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830747"
 ---
-# <a name="making-your-first-autosuggest-query"></a>进行第一次自动建议查询
+# <a name="quickstart-making-your-first-autosuggest-query"></a>快速入门：进行第一次自动建议查询
 
-在进行第一次调用之前，需要获取认知服务订阅密钥。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
+必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
 
 若要获得 Web 搜索结果，请向以下终结点发送 GET 请求：
 
@@ -40,16 +40,16 @@ https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 
 请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查询参数，该参数包含用户的部分搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查询参数，该参数确定你希望结果来自的市场。 有关可选查询参数的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查询参数值都必须进行 URL 编码。
 
-请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 标头。 尽管是可选的，但还是建议指定以下标头：
+请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 标头。 尽管可视需要添加，但仍建议还指定以下请求头：
 
 - [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
 - [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-客户端 IP 和位置标头对于返回位置感知内容非常重要。
+客户端 IP 和位置请求头对返回位置感知内容非常重要。
 
-有关所有请求和响应标头列表，请参阅[标头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
+有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
 
 ## <a name="the-request"></a>请求
 

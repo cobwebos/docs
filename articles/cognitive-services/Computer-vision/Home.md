@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433593"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869340"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -61,7 +61,7 @@ ms.locfileid: "47433593"
 - 图像必须以 JPEG、PNG、GIF 或 BMP 格式显示
 - 图像的文件大小必须不到 4 兆字节 (MB)
 - 图像的尺寸必须大于 50 x 50 像素  
-  对于 OCR，图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间，并且不得大于 10 兆像素。
+  对于 OCR，图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间
 
 ## <a name="next-steps"></a>后续步骤
 

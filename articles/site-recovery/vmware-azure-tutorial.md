@@ -6,22 +6,22 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 93626e6a8f199841b285fb8a6e302e6c3054db0d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b1b903b945a60cebe2001a1ae41201b9b665c556
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918027"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078811"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 
-本教程介绍如何使用 Azure Site Recovery 设置并启用从 VMware VM 到 Azure 的复制。 教程旨在演示如何使用基本设置来部署 Site Recovery。 这些教程使用最简单的路径，且未显示所有选项。 本教程介绍如何执行以下操作：
+本教程介绍如何使用 Azure Site Recovery 设置并启用从 VMware VM 到 Azure 的复制。 教程旨在演示如何使用基本设置来部署 Site Recovery。 这些教程使用最简单的路径，且未显示所有选项。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 输入复制源和目标。
@@ -132,7 +132,7 @@ ms.locfileid: "37918027"
 4. 选择“安装 VMware PowerCLI”。 执行此操作之前，请确保所有浏览器窗口已关闭。 然后选择“继续”。
 5. 在“验证设备配置”中验证先决条件，然后继续。
 6. 在“配置 vCenter Server/vSphere ESXi 服务器”中，输入要复制的 VM 所在的 vCenter Server 或 vSphere 主机的 FQDN 或 IP 地址。 输入服务器侦听的端口。 为保管库中的 VMware 服务器输入一个可用的友好名称。
-7. 输入配置服务器用来连接到 VMware 服务器的凭据。 Site Recovery 将使用这些凭据自动发现可复制的 VMware VM。 选择“添加”，然后选择“继续”。
+7. 输入配置服务器用来连接到 VMware 服务器的用户凭据。 确保用户名和密码正确无误，并且属于要保护的虚拟机的 Administrators 组。 Site Recovery 将使用这些凭据自动发现可复制的 VMware VM。 选择“添加”，然后选择“继续”。
 8. 在“配置虚拟机凭据”中，输入将用于在 VM 上自动安装移动服务的用户名和密码（如果已启用复制）。
     - 对于 Windows 计算机，该帐户在要复制的计算机上需有本地管理员特权。
     - 对于 Linux，请提供根帐户的详细信息。

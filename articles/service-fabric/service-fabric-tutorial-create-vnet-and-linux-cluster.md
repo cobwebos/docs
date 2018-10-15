@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405813"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831477"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>教程：将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -85,7 +85,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 群集
 
-部署具有以下特征的 Linux 群集：
+在 **Microsoft.ServiceFabric/clusters** 资源中，部署了具有以下特征的 Linux 群集：
 
 * 单节点类型
 * 主节点类型包含五个节点（可在模板参数中配置）
@@ -99,7 +99,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-已部署负载均衡器，并针对以下端口设置了探测和规则：
+在 **Microsoft.Network/loadBalancers** 资源中，配置了负载均衡器，并为以下端口设置了探测和规则：
 
 * 连接终结点:19000
 * HTTP 网关终结点：19080
@@ -108,7 +108,7 @@ Azure Key Vault 用于管理 Azure 中 Service Fabric 群集的证书。  在 Az
 
 ### <a name="virtual-network-and-subnet"></a>虚拟网络和子网
 
-虚拟网络和子网的名称在模板参数中声明。  虚拟网络和子网的地址空间也已在模板参数中声明：
+虚拟网络和子网的名称在模板参数中声明。  虚拟网络和子网的地址空间也在模板参数中声明，并在 **Microsoft.Network/virtualNetworks** 资源中配置：
 
 * 虚拟网络地址空间：10.0.0.0/16
 * Service Fabric 子网地址空间：10.0.2.0/24

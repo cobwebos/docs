@@ -1,25 +1,25 @@
 ---
-title: 将必应自动推荐 API 与 Ruby 配合使用快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应自动推荐 API。
+title: 快速入门：必应自动建议 API、Ruby
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应自动建议 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 30bb2986b90bc20efa96dba6f490948dce3e4ade
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366519"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831171"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>将必应自动推荐 API 与 Ruby 配合使用快速入门 
-<a name="HOLTop"></a>
 
-本文展示了如何将[必应自动推荐 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 Ruby 配合使用。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文展示了如何发送请求，以针对 *sail* 返回建议的查询字符串。
+本文展示了如何将[必应自动推荐 API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) 与 Ruby 配合使用。 必应自动推荐 API 根据用户在搜索框中输入的部分查询字符串返回建议查询的列表。 通常情况下，每当用户在搜索框中键入新字符时均会调用此 API，然后搜索框的下拉列表中会显示建议。 本文介绍如何发送请求，以针对 sail 返回建议的查询字符串。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,8 +30,8 @@ ms.locfileid: "35366519"
 ## <a name="get-autosuggest-results"></a>获取自动建议结果
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
-2. 添加下面提供的代码。
-3. 将 `subscriptionKey` 值替换为对你的订阅有效的访问密钥。
+2. 添加以下提供的代码。
+3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 运行该程序。
 
 ```ruby

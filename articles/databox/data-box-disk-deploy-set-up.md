@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e4a913aaeb6eeb3c58b70dbcd714f1360875594f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1e647c6aee251bebd257db5e4e631deba0be3fa
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161517"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068802"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box 磁盘
 
@@ -76,12 +76,14 @@ ms.locfileid: "47161517"
 执行以下步骤，以连接并解锁磁盘。
      
 1. 在 Azure 门户中，转到“常规”>“设备详细信息”。 
-2. 下载对应于 Windows 客户端的 Data Box Disk 工具集。 
+2. 下载对应于 Windows 客户端的 Data Box Disk 工具集。 此工具集包含 3 个工具：Data Box Disk 解锁工具、Data Box Disk 验证工具和 Data Box Disk 拆分复制工具。 
+
+    在此过程中，将仅使用 Data Box Disk 解锁工具。 其他两个工具将在以后使用。
 
     > [!div class="nextstepaction"]
     > [下载适用于 Windows 的 Data Box Disk 工具集](http://aka.ms/databoxdisktoolswin)         
 
-3. 在同一台计算机上提取用于复制数据的工具。
+3. 在将用于复制数据的同一台计算机上提取工具集。 
 4. 打开命令提示符窗口，或者在同一台计算机上以管理员身份运行 Windows PowerShell。
 5. （可选）若要验证用于解锁磁盘的计算机是否满足操作系统要求，请运行系统检查命令。 下面显示了示例输出。 
 

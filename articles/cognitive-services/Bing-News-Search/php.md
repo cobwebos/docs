@@ -1,20 +1,21 @@
 ---
-title: 适用于 Azure 认知服务中的必应新闻搜索 API 的 PHP 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应新闻搜索 API。
+title: 快速入门：必应新闻搜索 API、PHP
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: a1e62a63ec926b77bca290767ee453cde83de3df
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8f70352a8f9f07b94b53fae0aac286bc65e3f0dc
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366549"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801738"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-php"></a>将必应新闻搜索 API 与 PHP 配合使用快速入门
 
@@ -26,7 +27,7 @@ ms.locfileid: "35366549"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-news-search"></a>必应新闻搜索
 
@@ -35,7 +36,7 @@ ms.locfileid: "35366549"
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
 2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。
 3. 添加下面提供的代码。
-4. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+4. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 5. 运行该程序。
 
 ```php

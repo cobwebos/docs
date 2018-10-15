@@ -1,22 +1,25 @@
 ---
-title: 异常情况检测 Java 应用 - Microsoft 认知服务 | Microsoft Docs
-description: 介绍使用 Microsoft 认知服务中的异常情况检测 API 的 Java 应用。 将原始数据点发送到 API 并获得预期值和异常点。
+title: 教程：异常情况检测、Java
+titlesuffix: Azure Cognitive Services
+description: 探索使用异常情况检测 API 的 Java 应用。 将原始数据点发送到 API 并获得预期值和异常点。
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 228d440da358eba1322e2228c54f21e925e36ecd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4b544e2e59a40cebf75042c4040b84bceebcecf7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597942"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887694"
 ---
-# <a name="anomaly-detection-java-application"></a>异常情况检测 Java 应用程序
+# <a name="tutorial-anomaly-detection-with-java-application"></a>教程：使用 Java 应用程序进行异常情况检测
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文演示如何使用简单的 Java 应用程序来调用异常情况检测 API。  
 该示例使用订阅密钥将时序数据提交到异常情况检测 API，然后从 API 获取每个数据点的所有异常点和预期值。

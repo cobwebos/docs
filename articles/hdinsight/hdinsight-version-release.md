@@ -6,13 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: 152a145601dcf4282ec0a3a3b6ebcf37bd11848b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/04/2018
+ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992960"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801808"
 ---
 # <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 概述（预览版）
 
@@ -93,6 +93,12 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 * HDI 4.0 不支持 MapReduce。 请改用 Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 
 * HDI 4.0 中不再提供 Hive 视图。 
+
+* Spark 和交互式查询群集不支持 Apache Zeppelin 中的 Shell 解释器。
+
+* 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
+
+* Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Juypter Notebook。
 
 ## <a name="next-steps"></a>后续步骤
 

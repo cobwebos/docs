@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434732"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249360"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
@@ -101,7 +101,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ### <a name="disable-devices"></a>禁用设备
 
-不建议立即删除看似陈旧的设备，因为如果误删，将无法撤消操作。 最佳做法是，先禁用设备，过了一个宽限期之后再将其删除。 在策略中，定义在删除设备之前禁用策略的时间范围。
+不建议立即删除看似陈旧的设备，因为如果误删，将无法撤消操作。 最佳做法是，先禁用设备，过了一个宽限期之后再将其删除。 在策略中，定义在删除设备之前禁用设备的时间范围。
 
 
 ### <a name="mdm-controlled-devices"></a>MDM 控制的设备
@@ -111,7 +111,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ### <a name="system-managed-devices"></a>系统管理的设备
 
-不要删除系统管理的设备。 这些设备通常用于自动试运行等目的。 删除后无法重新预配这些设备。 默认情况下，新的 Get-MmsolDevice cmdlet 可以排除系统管理的设备。 
+不要删除系统管理的设备。 这些设备通常用于自动试运行等目的。 删除后无法重新预配这些设备。 默认情况下，新的 `get-msoldevice` cmdlet 可以排除系统管理的设备。 
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
@@ -137,7 +137,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>在 Azure 门户中清理陈旧的设备  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>在 Azure 门户中清理陈旧的设备  
 
 可以在 Azure 门户中清理陈旧的设备，但使用 PowerShell 脚本可以更高效地处理此过程。 在最新的 PowerShell V1 模块中可以使用时间戳筛选器，并可以筛选出系统管理的设备，例如自动试运行设备。 目前不建议使用 PowerShell V2。
 
@@ -150,7 +150,9 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 3. 使用 [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet 禁用设备。 
 
-4. 使用 [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet 删除设备。
+4. 在删除设备之前，将等待所选天数的宽限期。
+
+5. 使用 [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet 删除设备。
 
 ### <a name="get-the-list-of-devices"></a>获取设备列表
 

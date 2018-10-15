@@ -1,22 +1,23 @@
 ---
-title: 项目答案搜索事实查询 - Microsoft 认知服务 | Microsoft Docs
+title: 快速入门：项目答案搜索事实查询
+titlesuffix: Azure Cognitive Services
 description: 使用项目答案搜索查询事实
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 0a9d1925d5ae26f40824676fbebdcb0ffc450c53
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: ae8a42b95df70cff9cb845d4d553fbbb33cbdec9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366253"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868322"
 ---
-# <a name="query-for-facts"></a>查询事实
+# <a name="quickstart-query-for-facts"></a>快速入门：查询事实
 
 如果查询针对诸如日期或可识别知识等事实，则响应可以包含 `facts` 答案。 事实答案包含从 Web 文档的段落中提取的相关结果。  这些查询始终返回网页，且[事实](fact-queries.md)和/或[实体](entity-queries.md)依赖于查询。
 
@@ -200,5 +201,5 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)
 - [Java 快速入门](java-quickstart.md)
-- [节点快速入门](node-quickstart.md)
+- [Node 快速入门](node-quickstart.md)
 - [Python 快速入门](python-quickstart.md)

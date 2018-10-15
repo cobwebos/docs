@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: e133dde4defdec51d33fda70c0ac6d6fbeff18fe
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189379"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248512"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>将数据迁移到 Azure Cosmos DB MongoDB API 帐户
 
@@ -38,9 +38,11 @@ ms.locfileid: "43189379"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 增加吞吐量：数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.com)中增加吞吐量的详细信息，请参阅 [Azure Cosmos DB 中的性能级别和定价层](performance-levels.md)。
+* **增加吞吐量：** 数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 [Azure 门户](https://portal.azure.com)中增加吞吐量的详细信息，请参阅 [Azure Cosmos DB 中的性能级别和定价层](performance-levels.md)。
 
 * 启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。 本文的其余部分介绍了如何为 mongoimport 和 mongorestore 启用 SSL。
+
+* **创建 Azure Cosmos DB 资源：** 在开始迁移数据之前，从 Azure 门户预先创建所有集合。 如果要迁移到具有数据库级别吞吐量的 Azure Cosmos DB 帐户，请确保在创建 Azure Cosmos DB 集合时提供分区键。
 
 ## <a name="get-your-connection-string"></a>获取连接字符串 
 
@@ -112,7 +114,7 @@ ms.locfileid: "43189379"
 
 1. 计算单文档写入的近似 RU 费用：
 
-   a. 通过 MongoDB Shell 连接到 Azure Cosmos DB MongoDB API 帐户。 有关说明，可以参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 通过 MongoDB Shell 连接到 Azure Cosmos DB MongoDB API 帐户。 有关说明，可以参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)。
     
    b. 通过 MongoDB Shell 使用示例文档之一运行示例插入命令：
    

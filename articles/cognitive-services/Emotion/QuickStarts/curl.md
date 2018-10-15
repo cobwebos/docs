@@ -1,30 +1,32 @@
 ---
-title: 情感 API cURL 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，帮助你通过认知服务中的 cURL 快速开始使用情感 API。
+title: 快速入门：识别图像中人脸的情感 - 情感 API、cURL
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你通过 cURL 快速开始使用情感 API。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: dfdaa89c9d29e419539f385f601dc7f264bf838e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021092"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237069"
 ---
-# <a name="emotion-api-curl-quick-start"></a>情感 API cURL 快速入门
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>快速入门：构建应用以识别图像中人脸的情感。
 
 > [!IMPORTANT]
-> 视频 API 预览将于 2017 年 10 月 30 日结束。 请试用新的[视频索引器 API 预览](https://azure.microsoft.com/services/cognitive-services/video-indexer/)，通过检测口语、人脸、字符和情感，轻松从视频提取见解，增强搜索结果等内容发现体验。 [了解详细信息](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> 情感 API 将于 2019 年 2 月 15 日弃用。 情感识别功能现在已作为[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/) 的一部分正式发布。
 
-本文提供了信息和代码示例，以帮助你用 cURL 识别图像中一人或多人的情感，从而快速开始使用[表情 API 识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。 
+本文提供了信息和代码示例，以帮助你用 cURL 识别图像中一人或多人的情感，从而快速开始使用[表情 API 识别方法](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa)。
 
 ## <a name="prerequisite"></a>先决条件
-* 在[此处](https://azure.microsoft.com/try/cognitive-services/)获取免费订阅密钥
+* 单击[此处](https://azure.microsoft.com/try/cognitive-services/)获取免费订阅密钥
 
 ## <a name="recognize-emotions-curl-example-request"></a>识别情感 cURL 示例请求
 
@@ -38,16 +40,16 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recogni
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
 ## <a name="recognize-emotions-sample-response"></a>识别情感示例响应
 成功的调用将返回一组按人脸矩形大小降序排列的人脸条目及其相关表情评分。 空响应指示未检测到任何人脸。 表情条目包含以下字段：
 * faceRectangle - 图像中人脸的矩形位置。
-* scores - 图像中每张人脸的表情得分。 
+* scores - 图像中每张人脸的表情得分。
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -68,4 +70,3 @@ application/json
     }
   }
 ]
-

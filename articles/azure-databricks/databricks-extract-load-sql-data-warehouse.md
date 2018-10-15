@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: 11046089bd25e1ca9e117d5d8908471858450e6d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: c416937f98f6bcb49f86fce18213ca4ed349c513
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308790"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902053"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -47,7 +47,7 @@ ms.locfileid: "39308790"
 在开始学习本教程之前，请确保满足以下要求：
 - 创建 Azure SQL 数据仓库、创建服务器级防火墙规则并以服务器管理员身份连接到服务器。按[快速入门：创建 Azure SQL 数据仓库](../sql-data-warehouse/create-data-warehouse-portal.md)中的说明操作
 - 为 Azure SQL 数据仓库创建数据库主密钥。 按[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)中的说明操作。
-- 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 按[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。
+- 创建 Azure Blob 存储帐户并在其中创建容器。 另外，请检索用于访问该存储帐户的访问密钥。 按照[快速入门：创建 Azure Blob 存储帐户](../storage/blobs/storage-quickstart-blobs-portal.md)中的说明操作。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 

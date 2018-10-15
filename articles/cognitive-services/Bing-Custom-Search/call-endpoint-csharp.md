@@ -1,33 +1,33 @@
 ---
-title: 使用 C# 调用终结点 - 必应自定义搜索 - Microsoft 认知服务
-description: 本快速入门演示如何通过使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
+title: 快速入门：使用 Node.js 调用终结点 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
+description: 本快速入门演示如何通过使用 Node.js 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: af77b4c06b61cda4fd18d19ac3578129004c4914
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956366"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816695"
 ---
-# <a name="call-bing-custom-search-endpoint-c"></a>调用必应自定义搜索终结点 (C#)
+# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>快速入门：调用必应自定义搜索终结点 (Node.js)
 
-本快速入门演示如何使用 C# 调用必应自定义搜索终结点来从自定义搜索实例中请求搜索结果。 
+本快速入门介绍了如何使用 Node.js 调用必应自定义搜索终结点，以请求从自定义搜索实例中获取搜索结果。 
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，你需要：
 
 - 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
-- 已安装 [.Net Core](https://www.microsoft.com/net/download/core)。
+- 安装 [Node.js](https://www.nodejs.org/)。
 - 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
-
 
 ## <a name="run-the-code"></a>运行代码
 
@@ -37,99 +37,48 @@ ms.locfileid: "46956366"
   
 2. 从命令提示符或终端导航至刚刚创建的文件夹。  
   
-3. 运行以下命令：
-    ```
-    dotnet new console -o BingCustomSearch
-    cd BingCustomSearch
-    dotnet add package Newtonsoft.Json
-    dotnet restore
-    ```
+3. 安装 request 节点模块：
+    <pre>
+    npm install request
+    </pre>  
+    
+4. 在创建的文件夹中创建 BingCustomSearch.js 文件，并将以下代码复制到其中。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。  
   
-4. 将以下代码复制到 Program.cs。 将“YOUR-SUBSCRIPTION-KEY”和“YOUR-CUSTOM-CONFIG-ID”分别替换为订阅密钥和配置 ID。
-
-    ```csharp
-    using System;
-    using System.Net.Http;
-    using System.Web;
-    using Newtonsoft.Json;
+    ``` javascript
+    var request = require("request");
     
-    namespace bing_custom_search_example_dotnet
-    {
-        class Program
-        {
-            static void Main(string[] args)
-            {
-                var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
-                var customConfigId = "YOUR-CUSTOM-CONFIG-ID";
-                var searchTerm = args.Length > 0 ? args[0]: "microsoft";            
+    var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
+    var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
+    var searchTerm = 'microsoft';
     
-                var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
-                    "q=" + searchTerm +
-                    "&customconfig=" + customConfigId;
-    
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                var httpResponseMessage = client.GetAsync(url).Result;
-                var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
-                BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
-                
-                for(int i = 0; i < response.webPages.value.Length; i++)
-                {                
-                    var webPage = response.webPages.value[i];
-                    
-                    Console.WriteLine("name: " + webPage.name);
-                    Console.WriteLine("url: " + webPage.url);                
-                    Console.WriteLine("displayUrl: " + webPage.displayUrl);
-                    Console.WriteLine("snippet: " + webPage.snippet);
-                    Console.WriteLine("dateLastCrawled: " + webPage.dateLastCrawled);
-                    Console.WriteLine();
-                }            
-            }
-        }
-    
-        public class BingCustomSearchResponse
-        {        
-            public string _type{ get; set; }            
-            public WebPages webPages { get; set; }
-        }
-    
-        public class WebPages
-        {
-            public string webSearchUrl { get; set; }
-            public int totalEstimatedMatches { get; set; }
-            public WebPage[] value { get; set; }        
-        }
-    
-        public class WebPage
-        {
-            public string name { get; set; }
-            public string url { get; set; }
-            public string displayUrl { get; set; }
-            public string snippet { get; set; }
-            public DateTime dateLastCrawled { get; set; }
-            public string cachedPageUrl { get; set; }
-            public OpenGraphImage openGraphImage { get; set; }        
-        }
-        
-        public class OpenGraphImage
-        {
-            public string contentUrl { get; set; }
-            public int width { get; set; }
-            public int height { get; set; }
+    var options = {
+        url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
+          'q=' + searchTerm + 
+          '&customconfig=' + customConfigId,
+        headers: {
+            'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    ```
-6. 使用以下命令来生成应用程序。 请注意由命令输出引用的 DLL 路径。
-
-    <pre>
-    dotnet build 
-    </pre>
     
-7. 使用下面的命令来运行应用程序，将 PATH TO OUTPUT 替换为步骤 6 中引用的 DLL 路径。
-
-    <pre>    
-    dotnet **PATH TO OUTPUT**
-    </pre>
+    request(options, function(error, response, body){
+        var searchResponse = JSON.parse(body);
+        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+            var webPage = searchResponse.webPages.value[i];
+            console.log('name: ' + webPage.name);
+            console.log('url: ' + webPage.url);
+            console.log('displayUrl: ' + webPage.displayUrl);
+            console.log('snippet: ' + webPage.snippet);
+            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+            console.log();
+        }
+    })
+    ```  
+  
+6. 使用以下命令运行代码：  
+  
+    ```    
+    node BingCustomSearch.js
+    ``` 
 
 ## <a name="next-steps"></a>后续步骤
 - [配置托管 UI 体验](./hosted-ui.md)

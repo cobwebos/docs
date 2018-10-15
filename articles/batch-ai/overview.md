@@ -1,5 +1,5 @@
 ---
-title: Azure Batch AI 服务概述 | Microsoft Docs
+title: Azure Batch AI 服务 - AI 训练 | Microsoft Docs
 description: 了解如何使用托管 Azure Batch AI 服务在 GPU 和 CPU 群集上训练人工智能 (AI) 和其他机器学习模型。
 services: batch-ai
 documentationcenter: ''
@@ -12,86 +12,63 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/13/2017
-ms.author: asutton
-ms.custom: ''
-ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 08/01/2018
+ms.author: danlep
+ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627196"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052693"
 ---
-# <a name="what-is-batch-ai-in-azure"></a>Azure 中的 Batch AI 是什么？
-Batch AI 是一项托管的服务，可以让数据科学家和 AI 研究人员在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练 AI 和其他机器学习模型。 你只需描述作业要求，在何处查找输入和存储输出，其余的由 Batch AI 处理。  
- 
-## <a name="why-batch-ai"></a>为何使用 Batch AI？ 
-开发强大的 AI 算法是计算密集型迭代过程。 数据科学家和 AI 研究人员需要处理的数据集正变得越来越大。 他们开发的模型所使用的层越来越多，而针对超参数优化进行网络设计时，所需要的试验也越来越多。 若要高效地这样做，需要每个模型使用多个 CPU 或 GPU、并行运行试验，以及使用共享存储来训练数据、日志和模型输出。   
- 
-![Batch AI 流程](media/overview/batchai-context.png)
+# <a name="what-is-azure-batch-ai"></a>什么是 Azure Batch AI？
 
-数据科学家和 AI 研究人员是各自领域的专家，但在大规模管理基础结构方面却可能是外行。 大规模开发 AI 需要执行许多基础结构任务：预配 VM 群集、安装软件和容器、将工作排队、确定作业优先级并对作业进行计划、处理故障、分配数据、共享结果、缩放管理成本所需的资源，以及与工具和工作流集成。 Batch AI 负责处理这些任务。 
- 
-## <a name="what-is-batch-ai"></a>什么是 Batch AI？ 
+Azure Batch AI 是一种托管服务，用于帮助数据科学家和 AI 研究人员在 Azure 中大规模训练和测试机器学习与 AI 模型而无需管理复杂的基础设施。 你只需描述计算资源、要运行的作业、在何处存储模型输入和输出，其余的由 Batch AI 处理。
 
-Batch AI 提供专用于 AI 训练和测试的资源管理和作业计划功能。 关键功能包括： 
+可以单独使用 Batch AI，也可以在更大型的开发工作流中进行模型训练：
 
-* 进行长时间运行的批处理作业、迭代试验和交互式训练 
-* 自动或手动缩放使用 GPU 或 CPU 的 VM 群集 
-* 配置 VM 之间的以及适用于远程访问的 SSH 通信 
-* 支持任何深度学习或机器学习框架，并优化适用于常用工具包（例如 [Microsoft 认知工具包](https://github.com/Microsoft/CNTK) (CNTK)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)）的配置 
-* 基于优先级的作业队列，可以共享群集并利用低优先级 VM 和 Azure 预订  
-* 灵活的存储选项，包括 Azure 文件和托管 NFS 服务器 
-* 将远程文件共享装载到 VM 和可选容器中 
-* 提供作业状态，并在 VM 故障时重启 
-* 访问输出日志、stdout、stderr 和模型，包括从 Azure 存储流式传输的内容 
-* Azure [命令行界面](/cli/azure) (CLI)，用于 [Python](https://github.com/Azure/azure-sdk-for-python)、[C#](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI/1.0.0-preview) 和 Java 的 SDK，在 Azure 门户中进行监视，以及与 Microsoft AI 工具集成 
+* 使用 Batch AI 本身在 [GPU](../virtual-machines/linux/sizes-gpu.md) 或 CPU 群集上训练、测试机器学习和 AI 模型并对其进行批量评分。 
 
-Batch AI SDK 支持编写多种脚本或应用程序，用于管理训练管道以及与工具集成。 此 SDK 目前提供 Python、C#、Java 和 REST API。  
- 
+* 在工作流中使用 [Azure 机器学习](../machine-learning/service/overview-what-is-azure-ml.md)或其他 [Azure AI 平台工具](https://azure.microsoft.com/overview/ai-platform/)以 Batch AI 群集为目标进行操作。 Azure ML 提供数据准备、试验和作业历史记录方面的丰富体验。 Azure ML 也可将训练过的模型打包到容器中并部署用于推理的模型，或者将其部署到 IoT 设备。  
 
-Batch AI 使用 Azure 资源管理器进行控制平面操作（创建、列出、获取、删除）。 Azure Active Directory 用于身份验证和基于角色的访问控制。  
- 
-## <a name="how-to-use-batch-ai"></a>如何使用 Batch AI 
+## <a name="train-machine-learning-and-ai-models"></a>训练机器学习和 AI 模型
 
-若要使用 Batch AI，请定义并管理群集和作业。 
+使用 Batch AI 训练机器学习模型以及深层神经网络（深度学习）和其他 AI 方法。 Batch AI 提供的内置支持适用于常用开源 AI 库和框架，其中包括 [TensorFlow](https://github.com/tensorflow/tensorflow)、[PyTorch](https://github.com/pytorch/pytorch)、[Chainer](https://github.com/chainer/chainer) 和 [Microsoft Cognitive Toolkit (CNTK)](https://github.com/Microsoft/CNTK)。
 
- 
-**群集**描述计算要求： 
-* 需要在其中运行的 Azure 区域 
-* 要使用的 VM 的系列和大小 - 例如，包含 4 个 NVIDIA K80 GPU 的 NC24 VM 
-* VM 的数目，或者进行自动缩放所需的最小和最大数目 
-* VM 映像 - 例如，Ubuntu 16.04 LTS 或 [Microsoft 深度学习虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
-* 任何需要装载的远程文件共享卷 - 例如，来自 Azure 文件的卷或者 Batch AI 托管的 NFS 服务器的卷 
-* 可以在 VM 上配置的用户名和 SSH 密钥或密码，用于进行调试所需的交互式登录  
- 
+在确定问题区域并准备数据以后，请通过交互方式使用 Batch AI 来测试模型理念。 然后，在做好大规模试验的准备以后，请通过 MPI 或其他通信库跨多个 GPU 启动作业，并以并行方式运行更多的试验。
 
-**作业**描述： 
-* 要使用的群集和区域 
-* 多少 VM 用于作业 
-* 需要在启动时传递到作业的输入和输出目录， 通常使用在群集设置过程中装载的共享文件系统 
-* 一个可选容器，用于运行软件或运行安装脚本 
-* 特定于 AI 框架的配置或命令行和参数，用于启动作业 
- 
+Batch AI 可以通过多种方式大规模训练模型。 例如： 
 
-请通过 [Azure CLI](/cli/azure) 以及适用于群集和作业的配置文件开始使用 Batch AI。 可以使用此方法根据需要快速创建群集，并通过运行作业来试验网络设计或超参数。  
- 
+|  |  |
+|---------|---------|
+| **分布式训练**<br/>![分布式训练](./media/overview/distributed-training.png)  | 将单个作业的训练纵向扩展到许多通过网络连接的 GPU，以便通过大量数据训练更大型的网络。|
+| **试验**<br/>![试验](./media/overview/experimentation.png) | 使用多个作业横向扩展训练。 通过运行参数扫描来测试新理念，或者通过优化超参数来提高准确性和性能。 |
+| **并行执行**![并行执行](./media/overview/parallel-execution.png) | 一次训练多个模型或对其评分，跨多个服务器并行运行以加快作业完成速度。|
 
-有了 Batch AI，就可以轻松地通过多个 GPU 来并行工作。 需要跨多个 GPU 来缩放作业时，可以通过 Batch AI 在 VM 之间设置安全的网络连接。 使用 InfiniBand 时，Batch AI 会配置驱动程序并跨作业的多个节点启动 MPI。  
+训练某个模型以后，请使用 Batch AI 来测试该模型（如果此操作不包含在训练脚本中），或者进行批量评分。
 
-## <a name="data-management"></a>数据管理
-Batch AI 为训练脚本、数据和输出提供灵活的选项：
-  
-* “本地磁盘”用于早期试验以及规模较小的数据集。 就这种情况来说，可能需要通过 SSH 连接到虚拟机，以便编辑脚本和读取日志。 
+## <a name="how-it-works"></a>工作原理
 
-* 使用“Azure 文件”可以跨多个作业共享训练数据，并将输出日志和模型存储在单个位置。 
+使用 Batch AI SDK、命令行脚本或 Azure 门户来管理计算资源并计划作业，以便进行 AI 训练和测试： 
 
-* 设置 **NFS 服务器**可以支持更大规模的训练用数据和 VM。 Batch AI 可以设置一个 NFS 服务器，用作特殊的群集类型，其磁盘在 Azure 存储中受支持。 
- 
-* 可以通过**并行文件系统**提高数据的可伸缩性并实现并行训练。 虽然 Batch AI 不管理并行文件系统，但示例部署模板仍适用于 Lustre、Gluster 和 BeeGFS。  
+* **预配和缩放 VM 群集** - 选择节点 (VM) 数目，然后选择支持 GPU 的 VM 大小或其他符合训练需求的 VM 大小。 自动或手动进行节点数目的纵向缩放，确保只根据需要来使用资源。 
+
+* **管理依赖项和容器** - 默认情况下，Batch AI 群集运行的 Linux VM 映像已预先安装依赖项，因此可以在 GPU 或 CPU 上运行基于容器的训练框架。 若要进行其他配置，请使用自定义映像或运行启动脚本。
+
+* **分配数据** - 若要管理输入数据和脚本以及作业输出，请选择一个或多个存储选项：Azure 文件、Azure Blob 存储或托管型 NFS 服务器。 Batch AI 还支持自定义存储解决方案，包括高性能并行文件系统。 请使用简单的配置文件将存储文件系统装载到群集节点和作业容器。
+
+* **计划作业** - 将作业提交到基于优先级的作业队列，以便共享群集资源并利用低优先级 VM 和预订实例。
+
+* **处理故障** - 在作业运行时间可能很长的情况下监视作业状态，在出现 VM 故障时重启作业。
+
+* **收集结果** - 轻松访问输出日志、Stdout、Stderr 和已训练的模型。 请配置 Batch AI 作业，以便将输出直接推送到装载的存储。
+
+作为 Azure 服务，Batch AI 支持常用的工具，例如基于角色的访问控制 (RBAC) 和 Azure 虚拟网络，目的是确保安全性。  
 
 ## <a name="next-steps"></a>后续步骤
 
-* 开始使用 [Azure CLI](quickstart-cli.md) 或 [Python](quickstart-python.md) 创建第一个 Batch AI 训练作业。
-* 查看适用于不同框架的示例[训练诀窍](https://github.com/Azure/BatchAI)。
+* 详细了解 [Batch AI 资源](resource-concepts.md)，以便训练机器学习或 AI 模型。
 
+* 从使用 Batch AI [训练示例性的深度学习模型](quickstart-tensorflow-training-cli.md)着手。
+
+* 查看适用于常用 AI 框架的示例[训练方案](https://github.com/Azure/BatchAI/blob/master/recipes)。

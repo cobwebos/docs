@@ -6,17 +6,17 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: f7af86687a8a61fb7aed028d2868752faaa8045a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 85b4630492d5f5b3fb71d563b0947d8a72ae4e1d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030248"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886460"
 ---
-# <a name="create-train-and-publish-your-knowledge-base"></a>创建、训练和发布知识库
+# <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>快速入门：创建、训练和发布知识库
 
 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 此示例中的 QnA Maker KB 根据一个简单的常见问题解答网页创建，该网页解答有关 BitLocker 密钥恢复的问题。
 

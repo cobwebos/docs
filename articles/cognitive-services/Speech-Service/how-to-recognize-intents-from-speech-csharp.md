@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 16424c44003be14e3ba04f6b5cce0ce518a0d7e8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9210aaf2ddfa917ff480f4126c02137f46788dc3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063024"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884319"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
 
@@ -123,7 +123,7 @@ static async Task RecognizeIntentAsync()
 在语音中识别意向的第一步是从 LUIS 终结点密钥和区域创建语音配置。 语音配置可用于创建语音 SDK 的各种功能的识别器。 语音配置提供多种方式用于指定所要使用的订阅；此处我们使用了采用订阅密钥和区域的 `FromSubscription`。
 
 > [!NOTE]
-> 请使用 LUIS 订阅而不是语音订阅的密钥和区域。
+> 请使用 LUIS 订阅而不是语音服务订阅的密钥和区域。
 
 接下来，使用 `new IntentRecognizer(config)` 创建意向识别器。 由于配置已知道要使用哪个订阅，因此，在创建识别器时无需再次指定订阅密钥和终结点。
 
@@ -166,7 +166,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 ## <a name="specify-recognition-language"></a>指定识别语言
 
-默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，创建识别器之前在教程应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 可以识别德语中的意向。 请参阅[支持的语言](supported-languages.md#speech-to-text)。
+默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，创建识别器之前在教程应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 可以识别德语中的意向。 请参阅[支持的语言](language-support.md#speech-to-text)。
 
 ## <a name="continuous-recognition-from-a-file"></a>从文件中连续识别
 

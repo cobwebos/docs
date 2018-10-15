@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟机概述 | Microsoft 文档
+title: Windows 虚拟机概述 - Azure | Microsoft Docs
 description: 了解如何在 Azure 中创建和管理 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919859"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816831"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
@@ -83,9 +83,9 @@ Azure 提供许多[市场映像](https://azure.microsoft.com/marketplace/virtual
 | 方法 | Description |
 | --- | --- |
 | Azure 门户 |选择要使用的映像时，系统会自动指定值。 |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *location*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "location"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "location" --publisher "publisherName"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "location" --publisher "publisherName" --offer "offerName"|
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *location* --publisher *publisherName* --offer *offerName*|
 
 可以选择[上传并使用自己的映像](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)，在这种情况下，无需使用发布者名称、产品和 SKU。
 
@@ -124,7 +124,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | REST API |[创建或更新 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure CLI |[使用 Azure CLI 创建 VM](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-问题偶尔会不期而至。 如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（排查在 Azure 中创建 Windows 虚拟机时遇到的 Resource Manager 部署问题）。
+问题偶尔会不期而至。 如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的 Resource Manager 部署问题）。
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>如何管理创建的 VM？
 可以使用基于浏览器的门户、支持脚本的命令行工具或直接通过 API 管理 VM。 可能要执行的一些常见管理任务包括获取有关 VM 的信息、登录到 VM、管理可用性以及执行备份。
@@ -141,10 +141,10 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | Azure CLI |有关使用 Azure CLI 管理 VM 的信息，请参阅 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/vm)。 |
 
 ### <a name="log-on-to-the-vm"></a>登录到 VM
-使用 Azure 门户中的“连接”按钮[启动远程桌面 (RDP) 会话](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 尝试使用远程连接时，有时可能会出错。 如果遇到这种情况，请查看 [Troubleshoot Remote Desktop connections to an Azure virtual machine running Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（对运行 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除）中的帮助信息。
+使用 Azure 门户中的“连接”按钮[启动远程桌面 (RDP) 会话](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 尝试使用远程连接时，有时可能会出错。 如果遇到这种情况，请查看 [Troubleshoot Remote Desktop connections to an Azure virtual machine running Windows](../troubleshooting/troubleshoot-rdp-connection.md)（对运行 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除）中的帮助信息。
 
 ### <a name="manage-availability"></a>管理可用性
-必须知道如何[确保应用程序的高可用性](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 此配置涉及到创建多个 VM，确保至少有一个 VM 在运行。
+必须知道如何[确保应用程序的高可用性](manage-availability.md)。 此配置涉及到创建多个 VM，确保至少有一个 VM 在运行。
 
 为了使部署符合 VM 运行时间达到 99.95% 的服务级别协议，必须在[可用性集](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中部署两个或更多个运行工作负荷的 VM。 此配置可确保 VM 分布到多个容错域，并使用不同的维护时段部署到主机上。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
@@ -152,5 +152,5 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 [恢复服务保管库](../../backup/backup-introduction-to-azure-backup.md)用于保护 Azure 备份和 Azure Site Recovery 服务中的数据与资产。 可以使用恢复服务保管库，[通过 PowerShell 来部署和管理采用 Resource Manager 部署模型的 VM 的备份](../../backup/backup-azure-vms-automation.md)。 
 
 ## <a name="next-steps"></a>后续步骤
-* 如果有意使用 Linux VM，请查看 [Azure and Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 和 Linux）。
-* 在 [Example Azure infrastructure walkthrough](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（示例 Azure 基础结构演练）中查看有关设置基础结构的指导。
+* 如果有意使用 Linux VM，请查看 [Azure and Linux](../linux/overview.md)（Azure 和 Linux）。
+* 在 [Example Azure infrastructure walkthrough](infrastructure-example.md)（示例 Azure 基础结构演练）中查看有关设置基础结构的指导。

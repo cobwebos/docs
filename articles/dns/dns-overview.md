@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f68281f71ed525798410fb80b0d0175d38050c40
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967619"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829913"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -24,11 +24,11 @@ Azure DNS 附带了以下功能：
 
 ## <a name="reliability-and-performance"></a>可靠性和性能
 
-Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 Azure DNS 使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答。 这为域提供更快的性能和高可用性。
+Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 Azure DNS 使用任意广播网络，以便每个 DNS 查询由最近的可用 DNS 服务器来应答，从而为你的域提供快速性能和高可用性。
 
 ## <a name="security"></a>安全
 
-Azure DNS 服务基于 Azure 资源管理器。 因此，你会获得下列资源管理器功能：
+Azure DNS 服务基于 Azure 资源管理器，提供以下功能：
 
 * [基于角色的访问控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) - 控制谁有权访问针对组织的特定操作。
 
@@ -43,7 +43,7 @@ Azure DNS 服务基于 Azure 资源管理器。 因此，你会获得下列资�
 
 Azure DNS 服务可以管理 Azure 服务的 DNS 记录，还可以为外部资源提供 DNS。 Azure DNS 集成在 Azure 门户中，与其他 Azure 服务使用相同的凭据、支持合同和计费功能。 
 
-DNS 基于 Azure 中托管的 DNS 区域数并按 DNS 查询数进行计费。 若要深入了解定价，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+DNS 基于在 Azure 中托管的 DNS 区域数和接收的 DNS 查询数进行计费。 若要深入了解定价，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 
 可以通过 Azure 门户、Azure PowerShell cmdlet 和跨平台 Azure CLI 对域和记录进行管理。 需要自动 DNS 管理的应用程序可通过 REST API 和 SDK 与服务进行集成。
 

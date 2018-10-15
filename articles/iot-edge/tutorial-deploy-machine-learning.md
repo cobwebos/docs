@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c9350704943bebada217338488e51b97acc550ca
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 188e3c0e8b9a9d421b40e142e534aca2741fee56
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423606"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248869"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
 
@@ -46,11 +46,8 @@ Azure IoT Edge 设备：
 云资源：
 
 * Azure 中的免费层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
-* 一个 Azure 机器学习帐户。 按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/desktop-workbench/quickstart-installation.md) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
+* Azure 机器学习工作区。 按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)中的说明创建一个。
 
-开发资源：
-
-* Azure ML 的模型管理。 若要设置环境并创建帐户，请按照[模型管理设置](../machine-learning/desktop-workbench/deployment-setup-configuration.md)中的说明进行操作。 在设置部署期间，建议尽可能选择本地步骤而非群集。
 
 ### <a name="disable-process-identification"></a>禁用进程标识
 
@@ -94,18 +91,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>创建 Azure ML 容器
 在本部分中，你将下载已训练的模型文件并将它们转换为 Azure ML 容器。
 
-在运行“Azure ML 模型管理”的计算机上，从 GitHub 上的 Azure ML IoT Toolkit 下载并保存 [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) 和 [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl)。 这些文件定义了将部署到 Iot Edge 设备的已训练的机器学习模型。
-
-使用已训练的模型创建可以部署到 IoT Edge 设备的容器。 使用以下命令：
-
-   * 注册模型。
-   * 创建清单。
-   * 创建名为 *machinelearningmodule* 的 Docker 容器映像。
-   * 将映像部署到 Azure Kubernetes 服务 (AKS) 群集。
-
-```cmd
-az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
-```
+按照[准备好在 IoT Edge 上部署模型](../machine-learning/service/how-to-deploy-to-iot.md)文档中的说明，使用机器学习模型创建 Docker 容器。  Docker 映像所需的所有组件都在 [Azure IoT Edge Git 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)中。
 
 ### <a name="view-the-container-repository"></a>查看容器存储库
 

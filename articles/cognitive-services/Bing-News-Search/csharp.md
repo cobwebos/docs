@@ -1,22 +1,23 @@
 ---
-title: 适用于 Azure 认知服务中的必应新闻搜索 API 的 C# 快速入门 | Microsoft Docs
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应新闻搜索 API。
+title: 快速入门：必应新闻搜索 API、C#
+titlesuffix: Azure Cognitive Services
+description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0364d5754539c0e83318d595fd00b3e7b7e79c08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 48c6bf413ab2b5a45b5daa54ad31afe2c0fdf8f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366552"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804260"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-c"></a>将必应新闻搜索 API 与 C# 配合使用快速入门
+# <a name="quickstart-bing-news-search-api-with-c"></a>快速入门：通过 C# 使用必应新闻搜索 API
 
 本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应搜索 API。 虽然本文采用的是 C#，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "35366552"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含**必应搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
 
 ## <a name="bing-news-search"></a>必应新闻搜索
 
@@ -34,7 +35,7 @@ ms.locfileid: "35366552"
 
 1. 在 Visual Studio 中（用社区版就可以）创建一个新的控制台解决方案。
 1. 将 Program.cs 替换为下面提供的代码。
-1. 将 `accessKey` 值替换为对你的订阅有效的访问密钥。
+1. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 1. 运行该程序。
 
 ```csharp
@@ -190,7 +191,7 @@ namespace BingNewsSearchCSharpCore
 
 **响应**
 
-采用 JSON 返回了成功的响应，如以下示例所示：
+在 JSON 中返回成功的响应，如以下示例所示：
 
 ```json
 {

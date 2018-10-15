@@ -8,15 +8,15 @@ ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722807"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815505"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -37,7 +37,7 @@ ms.locfileid: "38722807"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs)。 
+* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017](https://www.visualstudio.com/vs) 或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
 
 * Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
@@ -46,7 +46,6 @@ ms.locfileid: "38722807"
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-
 
 ## <a name="add-an-application-package"></a>添加应用程序包
 
@@ -85,13 +84,18 @@ private const string StorageAccountName = "mystorageaccount";
 private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ==";
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 另请确保解决方案中 ffmpeg 应用程序包的 ID 和版本与上传到 Batch 帐户的 ffmpeg 包相同。
 
 ```csharp
 const string appPackageId = "ffmpeg";
 const string appPackageVersion = "3.4";
 ```
+
 ### <a name="build-and-run-the-sample-project"></a>生成并运行示例项目
+
+在 Visual Studio 中构建并运行应用程序，或在命令行中使用 `dotnet build` 和 `dotnet run` 命令。 运行应用程序后，请查看代码，了解应用程序的每个部分的作用。 例如，在 Visual Studio 中：
 
 * 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
 
@@ -134,7 +138,7 @@ Elapsed time: 00:09:14.3418742
 
 ## <a name="review-the-code"></a>查看代码
 
-以下部分将示例应用程序细分为多个执行步骤，用于处理 Batch 服务中的工作负荷。 在阅读本文的余下部分时请参考 Visual Studio 中打开的解决方案，因为我们并不会讨论示例中的每一行代码。
+以下部分将示例应用程序细分为多个执行步骤，用于处理 Batch 服务中的工作负荷。 在阅读本文的其余内容时，请参考解决方案中的文件 `Program.cs`，因为我们并没有讨论示例中的每行代码。
 
 ### <a name="authenticate-blob-and-batch-clients"></a>对 Blob 和 Batch 客户端进行身份验证
 
@@ -143,7 +147,7 @@ Elapsed time: 00:09:14.3418742
 ```csharp
 // Construct the Storage account connection string
 string storageConnectionString = String.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-StorageAccountName, StorageAccountKey);
+                                StorageAccountName, StorageAccountKey);
 
 // Retrieve the storage account
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
@@ -162,41 +166,43 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 
 ### <a name="upload-input-files"></a>上传输入文件
 
-应用将 `blobClient` 对象传递至 `CreateContainerIfNotExist` 方法，以便为输入文件（MP4 格式）创建一个存储容器，并为任务输出创建一个容器。
+应用将 `blobClient` 对象传递至 `CreateContainerIfNotExistAsync` 方法，以便为输入文件（MP4 格式）创建一个存储容器，并为任务输出创建一个容器。
 
 ```csharp
-  CreateContainerIfNotExist(blobClient, inputContainerName;
-  CreateContainerIfNotExist(blobClient, outputContainerName);
+CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
 然后，文件从本地 `InputFiles` 文件夹上传到输入容器。 存储中的文件定义为 Batch [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) 对象，Batch 随后可以将这些对象下载到计算节点。 
 
 上传文件时，涉及到 `Program.cs` 中的两个方法：
 
-* `UploadResourceFilesToContainer`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainer` 以上传在 `filePaths` 参数中传递的每个文件。
-* `UploadResourceFileToContainer`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。 
+* `UploadResourceFilesToContainerAsync`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
+* `UploadResourceFileToContainerAsync`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。 
 
 ```csharp
-  List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(@"..\..\InputFiles", "*.mp4",
-      SearchOption.TopDirectoryOnly));
+string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 
-  List<ResourceFile> inputFiles = UploadResourceFilesToContainer(
-    blobClient,
-    inputContainerName,
-    inputFilePaths);
+List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
+    SearchOption.TopDirectoryOnly));
+
+List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+  blobClient,
+  inputContainerName,
+  inputFilePaths);
 ```
 
-若要详细了解如何使用 .NET 将文件作为 Blob 上传到存储帐户，请参阅 [Azure Blob 存储入门（使用 .NET）](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。
+若要详细了解如何使用 .NET 将文件作为 Blob 上传到存储帐户，请参阅[使用 .NET 上传、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-然后，该示例会调用 `CreatePoolIfNotExist` 以在 Batch 帐户中创建计算节点池。 这个定义的方法使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Windows Server 映像的 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
+然后，该示例会调用 `CreatePoolIfNotExistAsync` 以在 Batch 帐户中创建计算节点池。 这个定义的方法使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Windows Server 映像的 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
 
 节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。 
 
 ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。 
 
-[Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 方法将池提交到 Batch 服务。
+[CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 方法将池提交到 Batch 服务。
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -223,30 +229,30 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
     ApplicationId = appPackageId,
     Version = appPackageVersion}};
 
-pool.Commit();  
+await pool.CommitAsync();  
 ```
 
 ### <a name="create-a-job"></a>创建作业
 
-Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `CreateJobIfNotExist` 创建一个作业。 这个定义的方法使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。 
+Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `CreateJobAsync` 创建一个作业。 这个定义的方法使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。 
 
-[Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) 方法将作业提交到 Batch 服务。 作业一开始没有任务。
+[CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) 方法将作业提交到 Batch 服务。 作业一开始没有任务。
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob();
-    job.Id = JobId;
-    job.PoolInformation = new PoolInformation { PoolId = PoolId };
+job.Id = JobId;
+job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-job.Commit();        
+await job.CommitAsync();
 ```
 
 ### <a name="create-tasks"></a>创建任务
 
-此示例通过调用 `AddTasks` 方法来创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表，从而在作业中创建任务。 每个 `CloudTask` 都运行 ffmpeg，使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性处理输入 `ResourceFile` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
+此示例通过调用 `AddTasksAsync` 方法来创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表，从而在作业中创建任务。 每个 `CloudTask` 都运行 ffmpeg，使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性处理输入 `ResourceFile` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) 属性上传到关联的存储帐户中的一个容器。
 
-然后，示例使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，示例使用 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -264,7 +270,6 @@ for (int i = 0; i < inputFiles.Count; i++)
     // Create a cloud task (with the task ID and command line) 
     CloudTask task = new CloudTask(taskId, taskCommandLine);
     task.ResourceFiles = new List<ResourceFile> { inputFiles[i] };
-   
 
     // Task output file
     List<OutputFile> outputFileList = new List<OutputFile>();
@@ -278,7 +283,8 @@ for (int i = 0; i < inputFiles.Count; i++)
 }
 
 // Add tasks as a collection
-batchClient.JobOperations.AddTask(jobId, tasks);
+await batchClient.JobOperations.AddTaskAsync(jobId, tasks);
+return tasks
 ```
 
 ### <a name="monitor-tasks"></a>监视任务
@@ -291,21 +297,23 @@ Batch 将任务添加到作业时，该服务自动对任务排队并进行计�
 TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();
 try
 {
-    batchClient.Utilities.CreateTaskStateMonitor().WaitAll(addedTasks, TaskState.Completed, timeout);
+    await taskStateMonitor.WhenAll(addedTasks, TaskState.Completed, timeout);
 }
 catch (TimeoutException)
 {
-    batchClient.JobOperations.TerminateJob(jobId, failureMessage);
-    Console.WriteLine(failureMessage);
+    batchClient.JobOperations.TerminateJob(jobId);
+    Console.WriteLine(incompleteMessage);
+    return false;
 }
-batchClient.JobOperations.TerminateJob(jobId, successMessage);
+batchClient.JobOperations.TerminateJob(jobId);
+ Console.WriteLine(completeMessage);
 ...
 
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) 和 [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) 类都有相应的删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输入和输出文件保留在存储帐户中。
+运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) 和 [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) 类都有相应的删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输出文件保留在存储帐户中。
 
 若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
 
@@ -325,4 +333,4 @@ batchClient.JobOperations.TerminateJob(jobId, successMessage);
 如需更多示例，以便了解如何使用 .NET API 来计划和处理 Batch 工作负荷，请参阅 GitHub 上的示例。
 
 > [!div class="nextstepaction"]
-> [Batch C# 示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp)
+> [Batch C# 示例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

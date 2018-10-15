@@ -1,20 +1,21 @@
 ---
-title: 使用必应拼写检查 API（Azure 上的 Microsoft 认知服务）获取拼写检查结果 | Microsoft Docs
+title: 教程：使用必应拼写检查 API 获取拼写检查结果
+titlesuffix: Azure Cognitive Services
 description: 演示如何在单页 Web 应用程序中使用必应拼写检查 API 的教程的源代码。
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 1f2f75a51324bb05e1b95dc3a3c4e438f3aa593c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: baa618929b1f7b401c619681dce4e085b16543e7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365392"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800955"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用程序
 

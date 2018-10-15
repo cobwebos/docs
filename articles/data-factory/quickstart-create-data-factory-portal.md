@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0638aaa9165bcf760dabca330f6ee396807e4597
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087948"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018241"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](quickstart-create-data-factory-portal.md)
 
-本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。 
+本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 有关如何使用 Azure 数据工厂转换数据的教程，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
 
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
@@ -38,7 +38,7 @@ ms.locfileid: "43087948"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 转到 [Azure 门户](https://portal.azure.com)。 
-1. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
+1. 在左侧菜单中选择“创建资源”，然后依次选择“分析”、“数据工厂”。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 1. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
@@ -58,12 +58,10 @@ ms.locfileid: "43087948"
 1. 对于“版本”，选择“V2”。
 1. 对于“位置”，请选择数据工厂所在的位置。
 
-   列表仅显示数据工厂支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置。
-1. 选择“固定到仪表板”。     
-1. 选择“创建”。
-1. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
+   该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 请注意，数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-   ![“正在部署数据工厂”磁贴](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
+1. 选择**创建**。
+
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
    ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
@@ -82,13 +80,13 @@ ms.locfileid: "43087948"
    ![选择“Azure Blob 存储”磁贴](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 1. 完成以下步骤： 
 
-   a. 至于“名称”，请输入 **AzureStorageLinkedService**。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 至于“名称”，请输入 **AzureStorageLinkedService**。
 
    b. 至于“存储帐户名称”，请选择 Azure 存储帐户的名称。
 
    c. 选择“测试连接”，确认数据工厂服务可以连接到存储帐户。 
 
-   d. 选择“保存”保存链接服务。 
+   d. 选择“完成”以保存链接服务。 
 
    ![Azure 存储链接服务设置](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
@@ -111,7 +109,7 @@ ms.locfileid: "43087948"
 
 1. 切换到“连接”选项卡，然后完成以下步骤： 
 
-    a. 至于“链接服务”，请选择“AzureStorageLinkedService”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 至于“链接服务”，请选择“AzureStorageLinkedService”。
 
     b. 对于“文件路径”，请选择“浏览”按钮。
 
@@ -122,13 +120,13 @@ ms.locfileid: "43087948"
    d. （可选）选择“预览数据”，预览 emp.txt 文件中的数据。     
 1. 重复创建输出数据集的步骤：  
 
-   a. 选择“+ (加)”按钮，然后选择“数据集”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“+ (加)”按钮，然后选择“数据集”。
 
    b. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“完成”。
 
    c. 在“常规”表中，指定 **OutputDataset** 作为名称。
 
-   d. 在“连接”选项卡中，选择 **AzureStorageLinkedService** 作为链接服务，然后输入 **adftutorial/output** 作为文件夹。 如果 **output** 文件夹不存在，复制活动会在运行时创建它。
+   d. 在“连接”选项卡中，选择 **AzureStorageLinkedService** 作为链接服务，然后在“目录”字段中输入 **adftutorial/output** 作为文件夹。 如果 **output** 文件夹不存在，复制活动会在运行时创建它。
 
 ## <a name="create-a-pipeline"></a>创建管道 
 此过程创建和验证一个管道，其中包含的复制活动可使用输入和输出数据集。 复制活动将数据从输入数据集设置中指定的文件复制到输出数据集设置中指定的文件。 如果输入数据集只指定了一个文件夹（不是文件名），则复制活动会将源文件夹中的所有文件复制到目标。 
@@ -138,7 +136,7 @@ ms.locfileid: "43087948"
    ![用于创建新管道的菜单](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
 1. 在“常规”选项卡中指定 **CopyPipeline** 作为**名称**。 
 
-1. 在“活动”工具箱中，展开“数据流”。 将“复制”活动从“活动”工具箱拖到管道设计器图面。 也可在“活动”工具箱中搜索活动。 指定 **CopyFromBlobToBlob** 作为**名称**。
+1. 在“活动”工具箱中，展开“移动和转换”。 将“复制”活动从“活动”工具箱拖到管道设计器图面。 也可在“活动”工具箱中搜索活动。 指定 **CopyFromBlobToBlob** 作为**名称**。
 
    ![复制活动常规设置](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 1. 切换到复制活动设置中的“源”选项卡，选择 **InputDataset** 作为**源数据集**。
@@ -205,7 +203,7 @@ ms.locfileid: "43087948"
    请注意“触发因素”列中的值。 手动触发器运行是在此前执行的步骤（“立即触发”）中完成的。 
 
    ![已触发运行的列表](./media/quickstart-create-data-factory-portal/monitor-triggered-runs.png)
-1. 选择“管道运行”旁边的向下箭头，切换到“触发器运行”视图。 
+1. 切换到“触发器运行”视图。 
 
    ![切换到“触发器运行”视图](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. 确认每次管道运行时，在 **output** 文件夹中都创建了输出文件，直至指定的结束日期和时间为止。 

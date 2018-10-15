@@ -1,20 +1,20 @@
 ---
-title: 快速入门：通过 Java 识别语音（Windows 或 Linux）
+title: 快速入门：识别 Java 中的语音（Windows 或 Linux）
 titleSuffix: Microsoft Cognitive Services
-description: 了解如何通过 Java 识别语音（Windows 或 Linux）
+description: 了解如何识别 Java 中的语音（Windows 或 Linux）
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 00603c467ec96e52fc2b7745263153a68d20f584
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: c0963fa8453dd51dfb05af20a5468e1eed1fc7cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053956"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885200"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音 SDK 通过 Java 识别语音
 
@@ -69,11 +69,11 @@ ms.locfileid: "47053956"
 
 1. 打开 **pom.xml** 文件并对其进行编辑。
 
-   * 在文件末尾，在右标记 `</project>` 前面，创建一个 repositories 节，使其中包含对语音 SDK 的 Maven 存储库的引用，如下所示：
+   * 在文件末尾，在右标记 `</project>` 前面，创建一个 `repositories` 元素，使其中包含对语音 SDK 的 Maven 存储库的引用，如下所示：
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * 另外，在其后面接着添加一个 dependencies 节，其中包含语音 SDK 1.0.0 作为依赖项：
+  * 还添加一个 `dependencies` 元素，使用语音 SDK 1.0.0 版本作为依赖项：
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 
