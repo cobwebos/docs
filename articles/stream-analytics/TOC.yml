@@ -147,18 +147,14 @@ items:
       href: stream-analytics-edge-csharp-udf-methods.md
   - name: 故障排除
     items:
-    - name: 疑难解答步骤
-      href: stream-analytics-troubleshooting-guide.md
-    - name: 常见问题
-      href: stream-analytics-common-troubleshooting-issues.md
-    - name: 作业关系图
-      href: stream-analytics-job-diagram-with-metrics.md
+    - name: 输入连接
+      href: stream-analytics-troubleshoot-input.md
+    - name: 输出连接
+      href: stream-analytics-troubleshoot-output.md
+    - name: 查询逻辑
+      href: stream-analytics-troubleshoot-query.md
     - name: 诊断日志
       href: stream-analytics-job-diagnostic-logs.md
-    - name: SELECT INTO 语句
-      href: stream-analytics-select-into.md
-    - name: 事件中心接收方
-      href: stream-analytics-event-hub-consumer-groups.md
   - name: 与机器学习集成
     items:
     - name: 使用 ML 模型进行情绪分析
@@ -167,6 +163,8 @@ items:
       href: stream-analytics-machine-learning-anomaly-detection.md
     - name: 使用 REST API
       href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+  - name: 使用作业关系图进行调试
+    href: stream-analytics-job-diagram-with-metrics.md
 - name: 引用
   items:
   - name: Azure PowerShell
@@ -203,9 +201,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 85e4a1bdc05f48a842a183bfa6db80d0bd3f946f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f032292835e01b86fdc9ca0b8a3dd00f8a45cd29
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854756"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340862"

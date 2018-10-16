@@ -56,11 +56,35 @@ items:
       href: troubleshoot-database-table.md
 - name: 引用
   items:
-  - name: 语言参考
-    href: https://aka.ms/kustolangref
-ms.openlocfilehash: 9a14c56c049bae31f2a741e7ddab1d01df1209fb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+  - name: 查询语言
+    href: /azure/kusto/query/
+  - name: 管理命令
+    href: /azure/kusto/management/
+  - name: API
+    href: /azure/kusto/api/
+- name: 资源
+  items:
+  - name: 论坛
+    items:
+    - name: 堆栈溢出
+      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
+    - name: Microsoft 技术社区
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+    - name: MSDN 论坛
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+  - name: 产品反馈
+    href: https://feedback.azure.com/forums/335175-kusto
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/data-explorer/
+  - name: 定价计算器
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Azure 路线图
+    href: https://azure.microsoft.com/updates/
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=data-explorer
+ms.openlocfilehash: 0252701d48b289f7041e34b6ac17fe230028912a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031180"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340964"

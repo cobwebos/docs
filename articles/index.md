@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 424e3ba5c630a626b6d8d07967fb7c24b8169c61
-ms.sourcegitcommit: 04bd54e97ec580224ffe2e18d72c58dc2221d42b
+ms.openlocfilehash: b6204867e46ce289d8da2d3bc65f05f448c06e5b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447244"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345367"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,7 @@ ms.locfileid: "47447244"
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">适用于 Azure 的免费 Pluralsight 视频培训</span>
+                                    <span class="likeAnH3">来自 Pluralsight 的免费 Azure 课程</span>
                                 </div>
                             </div>
                         </div>
@@ -1324,6 +1324,12 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/iot-central/">
+                                                <img src="media/index/iot-central.svg" alt="" />
+                                                <p>IoT Central</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
                                                 <p>IoT 中心</p>
@@ -1336,27 +1342,27 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/iot-central/">
-                                                <img src="media/index/iot-central.svg" alt="" />
-                                                <p>IoT Central</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="/azure/iot-suite/">
                                                 <img src="media/index/iot-solution-accelerators.svg" alt="" />
                                                 <p>IoT 解决方案加速器</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/time-series-insights/">
-                                                <img src="media/index/time-series-insights.svg" alt="" />
-                                                <p>时序见解</p>
+                                            <a href="/azure/digital-twins/">
+                                                <img src="media/index/digital_twin.svg" alt="" />
+                                                <p>Azure 数字孪生</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-dps/">
                                                 <img src="media/index/dps.svg" alt="" />
                                                 <p>IoT 中心设备预配服务</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/time-series-insights/">
+                                                <img src="media/index/time-series-insights.svg" alt="" />
+                                                <p>时序见解</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3911,6 +3917,25 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/iot-central/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/iot-central.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT Central</h3>
+                                                    <p>无需云专业知识即可进行适用于 IoT 的 SaaS 体验</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/iot-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3949,25 +3974,6 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/iot-central/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/iot-central.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>IoT Central</h3>
-                                                    <p>无需云专业知识即可进行适用于 IoT 的 SaaS 体验</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/azure/iot-suite/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3987,18 +3993,18 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/time-series-insights/">
+                                <a href="/azure/digital-twins/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/time-series-insights.svg" alt="" />
+                                                        <img src="media/index/digital_twin.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>时序见解</h3>
-                                                    <p>即时探索和分析时序数据</p>
+                                                    <h3>Azure 数字孪生</h3>
+                                                    <p>创建空间和基础结构的数字副本</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4018,6 +4024,25 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>IoT 中心设备预配服务</h3>
                                                     <p>Azure IoT 中心的零接触实时预配</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/time-series-insights/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/time-series-insights.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>时序见解</h3>
+                                                    <p>即时探索和分析时序数据</p>
                                                 </div>
                                             </div>
                                         </div>

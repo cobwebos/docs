@@ -229,9 +229,9 @@ items:
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
       - name: 故障排除
         items:
-        - name: 排查日志 VM 扩展问题
+        - name: Log Analytics VM 扩展
           href: ../log-analytics/log-analytics-azure-vmext-troubleshoot.md?toc=/azure/azure-monitor/toc.json
-        - name: 排查日志 Linux 代理问题
+        - name: Log Analytics Linux 代理
           href: ../log-analytics/log-analytics-agent-linux-support.md?toc=/azure/azure-monitor/toc.json
     - name: 代理数据源
       items:
@@ -405,9 +405,9 @@ items:
         href: ../application-insights/app-insights-custom-data-correlation.md?toc=/azure/azure-monitor/toc.json
     - name: 收集自定义数据
       items:
-      - name: 日志存储数据收集器 API
+      - name: Log Analytics 数据收集器 API
         href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
-      - name: 日志存储数据收集器 API 管道示例
+      - name: Log Analytics 数据收集器 API 管道示例
         href: ../log-analytics/log-analytics-create-pipeline-datacollector-api.md?toc=/azure/azure-monitor/toc.json
       - name: 应用程序数据
         href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
@@ -976,9 +976,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 5b7956ee962c7f7bde31646617b86c55aaf32234
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 81c83444280a3641ca210d9014d12e989249f4cd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311025"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318914"
