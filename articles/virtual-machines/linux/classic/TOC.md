@@ -33,7 +33,6 @@
 ### [Ruby on Rails Web 应用程序](ruby-rails-web-app.md)
 ### [Cassandra 和 Node.js 客户端](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [用于运行 MPI 应用程序的 RDMA 群集](rdma-cluster.md)
 ### HPC Pack
 #### [创建用于 Linux 工作负荷的群集](hpcpack-cluster-powershell-script.md)
 #### [管理包含 Linux 节点的群集](hpcpack-cluster.md)
