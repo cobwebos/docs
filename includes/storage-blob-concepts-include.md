@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 63593ff5f02f5e37fc25c988c4cef071a03a00b4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066027"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45739192"
 ---
 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据，例如文本或二进制数据。
+
+高度可缩放的非结构化数据对象存储
 
 Blob 存储最适合用于：
 
@@ -36,7 +38,7 @@ Blob 存储公开了三种资源：存储帐户、帐户中的容器，以及容
 
 ### <a name="storage-account"></a>存储帐户
 
-对 Azure 存储中所有数据对象的访问都是通过存储帐户进行的。 有关详细信息，请参阅[关于 Azure 存储帐户](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+对 Azure 存储中所有数据对象的访问都是通过存储帐户进行的。 有关详细信息，请参阅 [Azure 存储帐户概述](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ### <a name="container"></a>容器
 

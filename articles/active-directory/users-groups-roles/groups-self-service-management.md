@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8254f6c72141f7a9babfc5af3c319e7e66f30bbf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448657"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294231"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>为自助服务组管理设置 Azure Active Directory
 用户可以在 Azure Active Directory (Azure AD) 中创建和管理其自己的安全组或 Office 365 组。 用户也可以请求安全组或 Office 365 组成员身份，组所有者可以批准或拒绝成员身份。 可以将组成员身份的日常控制委托给了解该成员身份的业务上下文的人员。 自助组管理功能仅适用于安全组和 Office 365 组，而不适用于已启用邮件的安全组或通讯组列表。
@@ -46,6 +46,6 @@ ms.locfileid: "37448657"
 
 * [使用 Azure Active Directory 组管理对资源的访问权限](../fundamentals/active-directory-manage-groups.md)
 * [用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
+* [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
 * [什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)

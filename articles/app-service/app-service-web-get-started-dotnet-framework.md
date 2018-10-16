@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/29/2018
+ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f6f443dfe637e68b0e1e13f7c3b9e718ae48a85d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: cce14d91509fe051beef87acdaeac9a92d998ef6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191308"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053772"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -32,11 +32,12 @@ ms.locfileid: "43191308"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程，请安装支持 **ASP.NET 和 Web 开发**工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
 
-安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
+如果已安装 Visual Studio 2017：
 
-如果已安装 Visual Studio，请单击“工具” > **Get Tools and Features**“获取工具和功能”，以便在 Visual Studio 中添加工作负荷。
+- 通过单击“帮助” > “检查更新”，在 Visual Studio 中安装最新的更新。
+- 通过单击“工具” > “获取工具和功能”，添加工作负荷。
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 
@@ -58,17 +59,15 @@ ms.locfileid: "43191308"
 
 ![在本地运行应用](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## <a name="publish-to-azure"></a>发布到 Azure
+## <a name="launch-the-publish-wizard"></a>启动发布向导
 
 在“解决方案资源管理器”中右键单击“myFirstAzureWebApp”项目，然后选择“发布”。
 
 ![从解决方案资源管理器发布](./media/app-service-web-get-started-dotnet-framework/solution-explorer-publish.png)
 
-确保已选择“Microsoft Azure 应用服务”，然后选择“发布”。
+发布向导是自动启动的。 选择“应用服务” > “发布”以打开“创建应用服务”对话框。
 
 ![从项目概述页发布](./media/app-service-web-get-started-dotnet-framework/publish-to-app-service.png)
-
-此时将打开“创建应用服务”对话框，它可帮助你创建在 Azure 中运行 ASP.NET Web 应用所需的所有 Azure 资源。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -93,9 +92,9 @@ ms.locfileid: "43191308"
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-在“应用服务计划”旁边，选择“新建”。 
+在“托管计划”旁边，选择“新建”。 
 
-在“配置应用服务计划”对话框中，使用位于屏幕截图后的表中的设置。
+在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
@@ -109,17 +108,17 @@ ms.locfileid: "43191308"
 
 ## <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
-在“Web 应用名称”中，键入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是 Web 应用名称。
+在“应用名称”中，键入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。 Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
 
 选择“创建”开始创建 Azure 资源。
 
-![配置 Web 应用名称](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+![配置应用名称](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
 
 向导完成后，它会将 ASP.NET Web 应用发布到 Azure，然后在默认浏览器中启动该应用。
 
 ![已在 Azure 中发布的 ASP.NET Web 应用](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-在[创建和发布步骤](#create-and-publish-the-web-app)中指定的 Web 应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
+在[创建和发布步骤](#create-and-publish-the-web-app)中指定的应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
 
 恭喜，你的 ASP.NET Web 应用已在 Azure 应用服务中实时运行！
 

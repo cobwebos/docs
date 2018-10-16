@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 82a5c57ce874e77a7912945a6fca07acee339197
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444481"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46293960"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>组的动态成员身份疑难解答
 
@@ -42,6 +42,6 @@ ms.locfileid: "39444481"
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
+* [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
 * [什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)

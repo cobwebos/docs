@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448537"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719998"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 ## <a name="overview"></a>概述
@@ -71,7 +71,7 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](users-groups-roles/groups-self-service-management.md)“组管理”来委派有关谁有权访问应用程序的管理权。
 
 ## <a name="related-articles"></a>相关文章
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+* [Azure Active Directory 中的应用程序管理](manage-apps/what-is-application-management.md)
 * [使用条件性访问保护应用](active-directory-conditional-access-azure-portal.md)
 * [自助服务组管理/SSAA](users-groups-roles/groups-self-service-management.md)
 

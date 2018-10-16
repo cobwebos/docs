@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 50e4b9b8b8f9433ec725aaa982e969cec7afb91c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265779"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124263"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器日志
 在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。 
@@ -29,9 +29,9 @@ ms.locfileid: "35265779"
 有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-in-cli.md)。
 
 ## <a name="log-retention"></a>日志保留期
-日志从其创建时开始算起，最多可保留七天。 如果可用日志的总大小超过了 7.5 GB，则会删除最旧的文件，直到有空间可用。 
+日志从其创建时开始算起，最多可保留七天。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。 
 
-日志每 24 小时或每 7.5 GB 轮换一次（以先达到的条件为准）。
+日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 
 
 ## <a name="configure-logging"></a>配置日志记录 

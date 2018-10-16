@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2017
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: 7bae891bd16ecd3fbbad88022fbbffd32ff41eae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577543"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719573"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
@@ -86,6 +86,6 @@ Azure AD 将在 SAML 证书到期前的 60 天、30 天和 7 天发送电子邮�
 
 ## <a name="related-articles"></a>相关文章
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
+* [Azure Active Directory 中的应用程序管理](what-is-application-management.md)
 * [Azure Active Directory 的应用程序访问与单一登录](what-is-single-sign-on.md)
 * [排查基于 SAML 的单一登录的问题](../develop/howto-v1-debug-saml-sso-issues.md)
