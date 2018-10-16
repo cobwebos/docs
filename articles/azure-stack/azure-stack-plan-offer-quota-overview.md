@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: ee336fb5a60998aaac1518a85b8b92f63d9d4b64
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309189"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318123"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>计划、套餐、配额和订阅概述
 
@@ -52,7 +52,7 @@ ms.locfileid: "49309189"
 
 若要帮助你管理你的云容量，可以使用预配置*配额*，或在计划中创建新的配额为每个服务。 配额定义用户订阅可以部署或使用的资源上限。 例如，配额可能允许用户最多创建五个虚拟机 (VM)。
 
-可按区域配置配额。 例如，提供了区域 A 的计算服务的计划可能与 4 GB RAM 和 8 个 CPU 内核的两个 Vm 的配额。
+可按区域配置配额。 例如，提供了区域 A 的计算服务的计划可能两个 Vm 的配额。
 
 >[!NOTE]
 >在 Azure Stack 开发工具包中，只有一个区域（名为 *local*）可用。

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849502"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344662"
 ---
 # <a name="asdk-administration-basics"></a>ASDK 管理基础知识 
 如果你不熟悉 Azure Stack 开发工具包 (ASDK) 的管理，请参考本文。 本指南概述评估环境中 Azure Stack 操作员的角色，以及如何确保测试用户快速提高工作效率。
@@ -46,10 +46,10 @@ ms.locfileid: "34849502"
 Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组织机制。 若要管理 Azure Stack 并帮助支持用户，应了解 Azure 资源管理器。 有关详细信息，请参阅 [Azure 资源管理器入门白皮书](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)。
 
 ## <a name="your-typical-responsibilities"></a>典型责任
-用户需要使用服务， 从其角度来看，你的主要角色是向他们提供这些服务。 可以使用 ASDK 来了解需要提供哪些服务，以及如何通过[创建计划、产品/服务和配额](asdk-offer-services.md)来提供这些服务。 此外，需要将项（例如虚拟机映像）添加到 Marketplace。 最简单的方法是[将 Marketplace 项从 Azure 下载到 Azure Stack](asdk-marketplace-item.md)。
+用户需要使用服务， 从其角度来看，你的主要角色是向他们提供这些服务。 可以使用 ASDK 来了解需要提供哪些服务，以及如何通过[创建计划、套餐和配额](asdk-offer-services.md)来提供这些服务。 此外，需要将项（例如虚拟机映像）添加到市场。 最简单的方法是[将市场项从 Azure 下载到 Azure Stack](asdk-marketplace-item.md)。
 
 > [!NOTE]
-> 如需测试计划、产品/服务和服务，应使用[用户门户](https://portal.local.azurestack.external)而不是[管理员门户](https://adminportal.local.azurestack.external)。
+> 如需测试计划、套餐和服务，应使用[用户门户](https://portal.local.azurestack.external)而不是[管理员门户](https://adminportal.local.azurestack.external)。
 
 除了提供服务以外，还必须执行 Azure Stack 操作员的所有常规任务，使保持 ASDK 保持正常运行。 这些任务包括：
 - 添加用于 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 部署的用户帐户。
@@ -59,11 +59,11 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 - 更换有故障的开发工具包主机硬件 
 
 ## <a name="where-to-get-support"></a>从何处获取支持
-对于开发工具包中，唯一支持的选项是支持相关在中提问[Microsoft Azure 堆栈论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)。 单击管理员门户右上角的“帮助和支持”图标（问号），然后单击“新建支持请求”，则会直接打开论坛网站。 我们会定期关注这些论坛。 
+对于开发工具包，唯一的支持选项是提出的在技术支持相关的问题[Microsoft Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)。 单击管理员门户右上角的“帮助和支持”图标（问号），然后单击“新建支持请求”，则会直接打开论坛网站。 我们会定期关注这些论坛。 
 
 > [!IMPORTANT]
 > 由于 ASDK 是一个评估环境，因此我们不会通过 Microsoft 客户支持服务 (CSS) 提供官方支持。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 [部署 ASDK](asdk-install.md)
 

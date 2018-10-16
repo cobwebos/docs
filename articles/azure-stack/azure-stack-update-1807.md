@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868813"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345265"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -232,6 +232,14 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 
 
 ### <a name="health-and-monitoring"></a>运行状况和监视
+
+<!-- TBD - IS -->
+- 可能会看到重复出现，然后就消失在 Azure Stack 系统上的以下警报：
+   - *基础结构角色实例不可用*
+   - *缩放单位节点处于脱机状态*
+   
+  请运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+
 <!-- 1264761 - IS ASDK -->  
 - 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  
 

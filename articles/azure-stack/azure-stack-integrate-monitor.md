@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: d7c8520602132722fd0c7138de4a276b9ac2208a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 66cd20eaa401261bcb18bedbbc16f5bcf40ee192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807333"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342977"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "34807333"
 
 ## <a name="integrate-with-operations-manager"></a>与 Operations Manager 集成
 
-可将 Operations Manager 用于 Azure Stack 的外部监视。 用于 Microsoft Azure 堆栈的 System Center 管理包可监视多个 Azure 堆栈部署与单个的 Operations Manager 实例。 该管理包使用运行状况资源提供程序和更新资源提供程序 REST API 来与 Azure Stack 通信。 如果打算绕过硬件生命周期主机上运行的 OEM 监视软件，则可以安装供应商管理包来监视物理服务器。 还可以使用 Operations Manager 网络设备发现来监视网络交换机。
+可将 Operations Manager 用于 Azure Stack 的外部监视。 Microsoft Azure Stack 的 System Center 管理包可监视多个 Azure Stack 部署与单个操作管理器实例。 该管理包使用运行状况资源提供程序和更新资源提供程序 REST API 来与 Azure Stack 通信。 如果打算绕过硬件生命周期主机上运行的 OEM 监视软件，则可以安装供应商管理包来监视物理服务器。 还可以使用 Operations Manager 网络设备发现来监视网络交换机。
 
 适用于 Azure Stack 的管理包提供以下功能：
 
@@ -55,7 +55,7 @@ ms.locfileid: "34807333"
 - 可将自定义信息添加到区域
 - 支持通知和报告
 
-你可以下载 System Center 管理包为 Microsoft Azure 堆栈和关联[用户指南](https://www.microsoft.com/en-us/download/details.aspx?id=55184)，或直接从 Operations Manager。
+您可以下载 System Center 管理包的 Microsoft Azure Stack 和相关联[用户指南](https://www.microsoft.com/en-us/download/details.aspx?id=55184)，或直接从 Operations Manager。
 
 对于票证解决方案，可将 Operations Manager 与 System Center Service Manager 集成。 集成的产品连接器支持双向通信，可让你在解决 Service Manager 中的服务请求之后关闭 Azure Stack 和 Operations Manager 中的警报。
 
@@ -65,7 +65,7 @@ ms.locfileid: "34807333"
 
 ## <a name="integrate-with-nagios"></a>与 Nagios 集成
 
-监视插件 Nagios 开发以及合作伙伴 Cloudbase 解决方案，这是宽松免费软件许可证 – 麻省理工学院 (Massachusetts Institute of Technology) 下可用。
+Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免费软件许可 – MIT （麻省理工学院） 提供了。
 
 该插件以 Python 编写，利用运行状况资源提供程序 REST API。 它提供在 Azure Stack 中检索和关闭警报的基本功能。 与 System Center 管理包一样，它可以让你添加多个 Azure Stack 部署以及发送通知。
 

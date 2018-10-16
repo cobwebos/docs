@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604210"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343635"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack 防火墙集成
 建议使用防火墙设备来帮助保护 Azure Stack。 虽然防火墙可以发挥很多作用，例如抵御分布式拒绝服务 (DDOS) 工具、执行入侵检测和内容检查，但是它们也可能会成为 Azure 存储服务（例如 blob、表和队列）的吞吐量瓶颈。
@@ -34,7 +34,7 @@ Azure 资源管理器（管理员）、管理员门户和 Key Vault（管理员�
 ### <a name="network-address-translation"></a>网络地址转换
 网络地址转换 (NAT) 是建议采用的方法，它允许部署虚拟机 (DVM) 在部署期间访问外部资源和 Internet，以及在注册和故障排除期间访问 Emergency Recovery Console (ERCS) VM 或 Privileged End Point (PEP)。
 
-还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 可采用的两个选项是一对一 NAT（这仍然要求池中的每个用户 IP 有一个公共 IP）和多对一 NAT（这需要采用按用户 VIP 的 NAT 规则，使其包含与用户可以使用的所有端口的关联）。
+还可以使用 NAT 作为外部网络上的公共 IP 地址或公共 VIP 的替代方法。 但是，不建议这样做，因为它限制了租户用户体验并增加了复杂性。 两个选项将是 1 对 1 NAT，仍需要每个用户 IP 池的一个公共 IP 或多个： 1 要求每个用户包含到的所有端口关联的 VIP 用户的 NAT 规则的 NAT 可能会使用。
 
 下面是对公共 VIP 使用 NAT 的一些缺点：
 - NAT 增加了管理防火墙规则时的开销，因为用户在软件定义的网络 (SDN) 堆栈中控制其自己的终结点和其自己的发布规则。 用户必须联系 Azure Stack 操作员才能发布其 VIP 以及更新端口列表。

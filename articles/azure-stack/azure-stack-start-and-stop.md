@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930284"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344007"
 ---
 # <a name="start-and-stop-azure-stack"></a>启动和停止 Azure Stack
-应该遵循本文中的过程正确关闭再重启 Azure Stack 服务。 关闭以物理方式将关闭整个 Azure Stack 环境。 启动基础结构的所有角色上提供支持，并返回到它们在关闭之前所处的电源状态的租户资源。
+应该遵循本文中的过程正确关闭再重启 Azure Stack 服务。 关闭将物理关闭整个 Azure Stack 环境的电源。 启动会启动所有基础结构角色，并将租户资源返回到关闭之前的电源状态。
 
 ## <a name="stop-azure-stack"></a>停止 Azure Stack 
 
 使用以下步骤关闭 Azure Stack：
 
-1. 准备即将关闭 Azure Stack 环境的租户资源上运行的所有工作负荷。 
+1. 针对即将进行的关闭准备在 Azure Stack 环境的租户资源上运行的所有工作负荷。 
 
 2. 从可以通过网络访问 Azure Stack ERCS VM 的计算机打开特权终结点会话 (PEP)。 有关说明，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "37930284"
 
 2. 等待直到 Azure Stack 基础结构服务启动。 Azure Stack 基础结构服务完成启动过程可能需要两个小时。 可以使用 [**Get-ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack) 确认 Azure Stack 的启动状态。
 
-3. 请确保你的租户资源的所有已返回到它们在关闭之前所处的状态。 租户资源上运行的工作负荷可能需要重新配置在启动后的工作负荷管理器。
+3. 确保所有租户资源都已恢复到关闭之前的状态。 在工作负荷管理器启动后，可能需要重新配置在租户资源上运行的工作负荷。
 
 ## <a name="get-the-startup-status-for-azure-stack"></a>获取 Azure Stack 的启动状态
 
@@ -90,4 +90,4 @@ ms.locfileid: "37930284"
 
 ## <a name="next-steps"></a>后续步骤 
 
-若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。
+详细了解[Azure Stack 诊断工具](azure-stack-diagnostics.md)

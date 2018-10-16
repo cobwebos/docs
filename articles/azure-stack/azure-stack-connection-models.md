@@ -1,6 +1,6 @@
 ---
-title: Azure 堆栈集成系统连接模型 |Microsoft 文档
-description: 确定部署规划多节点 Azure 堆栈的决策。
+title: Azure Stack 集成系统连接模型 | Microsoft Docs
+description: 确定多节点 Azure Stack 的部署规划决策。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,42 +12,42 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e6c94ef1172ea6380a94d5907c24069ed8c48ff5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7509d00815f56dc46bd276ffc67c4c607c54070a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118782"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338890"
 ---
-# <a name="azure-stack-integrated-systems-connection-models"></a>Azure 集成的堆栈系统连接模型
-如果你感兴趣的集成的 Azure 堆栈系统，你将需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)Azure 堆栈部署，以确定系统将如何适应你的数据中心。 此外，你将需要决定完全你将如何集成 Azure 堆栈到混合云环境。 本文概述了这些主要决定包括 Azure 连接，标识存储和计费模型的决策。
+# <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack 集成系统连接模型
+如果你对 Azure Stack 集成系统感兴趣，则需要了解[几个数据中心集成注意事项](azure-stack-datacenter-integration.md)，以便 Azure Stack 部署确定系统将如何适应数据中心。 此外，还需要准确确定如何将 Azure Stack 集成到混合云环境。 本文概述了这些主要决策，包括 Azure 连接决策、标识存储决策和计费模型决策。
 
-如果你决定购买一个集成的系统，原始设备制造商 (OEM) 硬件供应商可帮助指导你完成大部分详细的规划过程。 它们将执行实际的部署。
+如果你决定购买一个集成系统，原始设备制造商 (OEM) 硬件供应商可帮助更详细地指导你完成大部分规划过程。 他们还将执行实际部署。
 
-## <a name="choose-an-azure-stack-deployment-connection-model"></a>选择 Azure 堆栈部署连接模型
-你可以选择部署 Azure 堆栈连接到 internet （和 Azure） 或断开连接。 若要从 Azure 堆栈，包括 Azure 堆栈和 Azure 之间的混合方案中获取最大益处你想要部署连接到 Azure。 选择此选项时定义了用于标识应用商店 （Azure Active Directory 或 Active Directory 联合身份验证服务） 和计费模型可用的选项 (当你使用基于付费计费或基于容量的计费) 下面的图和表中进行了总结： 
+## <a name="choose-an-azure-stack-deployment-connection-model"></a>选择 Azure Stack 部署连接模型
+可以选择在连接到 Internet（和 Azure）时还是断开连接时部署 Azure Stack。 若要从 Azure Stack（包括 Azure Stack 和 Azure 之间的混合方案）获得最大效益，建议在连接到 Azure 时进行部署。 此选项定义了哪些选项可用于标识存储（Azure Active Directory 或 Active Directory 联合身份验证服务）和计费模型（基于“使用才支付”计费或基于容量计费），如以下图和表中所总结： 
 
-![Azure 堆栈部署和计费方案](media/azure-stack-connection-models/azure-stack-scenarios.png)  
+![Azure Stack 部署和计费方案](media/azure-stack-connection-models/azure-stack-scenarios.png)  
   
 > [!IMPORTANT]
-> 这是一个关键决策点 ！ 选择 Active Directory 联合身份验证服务 (AD FS) 或 Azure Active Directory (Azure AD) 是在部署时必须进行一次性决策。 你不能以后更改无需重新部署整个系统。  
+> 这是关键决策点！ 选择 Active Directory 联合身份验证服务 (AD FS) 还是 Azure Active Directory (Azure AD) 是在部署时必须进行的一次性决策。 以后，除非重新部署整个系统，否则将无法更改此设置。  
 
 
-|选项|连接到 Azure|从 Azure 断开连接|
+|选项|已连接到 Azure|已与 Azure 断开连接|
 |-----|-----|-----|
 |Azure AD|![支持](media/azure-stack-connection-models/check.png)| |
 |AD FS|![支持](media/azure-stack-connection-models/check.png)|![支持](media/azure-stack-connection-models/check.png)|
-|基于消费的计费|![支持](media/azure-stack-connection-models/check.png)| |
+|基于使用的计费|![支持](media/azure-stack-connection-models/check.png)| |
 |基于容量的计费|![支持](media/azure-stack-connection-models/check.png)|![支持](media/azure-stack-connection-models/check.png)|
-|直接向 Azure 堆栈下载更新包|![支持](media/azure-stack-connection-models/check.png)|  |
+|将更新包直接下载到 Azure Stack|![支持](media/azure-stack-connection-models/check.png)|  |
 
-您已决定在 Azure 的连接模型上要用于 Azure 堆栈部署后，必须标识应用商店应用和计费方法进行其他、 连接相关的决策。 
+选定 Azure Stack 部署要使用的 Azure 连接模型后，必须对标识存储和计费方法做出其他与连接相关的决策。 
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 连接的 Azure 堆栈部署决策](azure-stack-connected-deployment.md)
+[已连接 Azure 的 Azure Stack 部署决策](azure-stack-connected-deployment.md)
 
-[Azure 断开连接的 Azure 堆栈部署决策](azure-stack-disconnected-deployment.md)
+[与 Azure 断开连接的 Azure Stack 部署决策](azure-stack-disconnected-deployment.md)

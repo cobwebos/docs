@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 堆栈疑难解答 |Microsoft 文档
-description: Azure 堆栈开发工具包 (ASDK) 疑难解答信息。
+title: Microsoft Azure Stack 故障排除 |Microsoft Docs
+description: Azure Stack 开发工具包 (ASDK) 故障排除信息。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,26 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338567"
 ---
-# <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure 堆栈开发工具包 (ASDK) 疑难解答
-本文档提供 ASDK 的常见故障排除信息。 如果遇到未记录的问题，请务必检查[Azure 堆栈 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)需进一步的帮助和信息。  
+# <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack 开发工具包 (ASDK) 故障排除
+本文档提供 ASDK 的一般故障排除信息。 如果本文未阐述你所遇到的问题，请务必查看 [Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)以获取更多帮助和信息。  
 
 > [!IMPORTANT]
-> 由于 ASDK 是评估环境，没有提供通过 Microsoft 客户支持服务 (CSS) 正式支持。
+> 由于 ASDK 是一个评估环境，因此我们不会通过 Microsoft 客户支持服务 (CSS) 提供官方支持。
 
-本部分针对故障排除问题提供的建议派生自多个来源，不保证能够解决具体的问题。 "按原样"提供了代码示例，不能保证预期的结果。 随着产品的不断改进，本部分的内容可能会频繁更新。
+本部分针对故障排除问题提供的建议派生自多个来源，不保证能够解决具体的问题。 代码示例按原样提供，不保证生成预期的结果。 随着产品的不断改进，本部分的内容可能会频繁更新。
 
 ## <a name="deployment"></a>部署
 ### <a name="deployment-failure"></a>部署失败
-如果在安装过程中遇到失败，你可以通过使用来重新启动失败的步骤中的部署-重新运行的选项的部署脚本，如以下示例所示：
+如果安装期间发生失败，可以使用部署脚本的 -rerun 选项从失败的步骤重新开始部署，如以下示例所示：
 
   ```powershell
   cd C:\CloudDeployment\Setup
@@ -39,14 +40,14 @@ ms.lasthandoff: 03/23/2018
   ```
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>部署结束时，PowerShell 会话仍保持打开状态，但不显示任何输出
-此行为可能是选择 PowerShell 命令窗口后的默认行为。 开发工具包部署已成功完成，但选择窗口时，该脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。 按 ESC 键取消选择窗口，然后即会显示完成消息。
+此行为可能是选择 PowerShell 命令窗口后的默认行为。 开发工具包部署成功，但选择窗口时，脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。 按 ESC 键取消选择窗口，然后即会显示完成消息。
 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="default-image-and-gallery-item"></a>默认映像和库项
 在 Azure Stack 中部署 VM 之前，必须先添加 Windows Server 映像和库项。
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>重启 Azure Stack 主机之后，某些 VM 可能不会自动启动。
-将重新启动主机之后，可能会发现，Azure Stack 服务并非立即可用。 这是因为 Azure 堆栈[基础结构 Vm](asdk-architecture.md#virtual-machine-roles)并 RPs 采取一些时间来检查一致性，但最终将自动启动。
+将重新启动主机之后，可能会发现，Azure Stack 服务并非立即可用。 这是因为 Azure Stack [基础结构 VM](asdk-architecture.md#virtual-machine-roles) 与 RP 需要花费一段时间来检查一致性，但最终会自动启动。
 
 另外还可能发现，在重新启动 Azure Stack 开发工具包主机之后，租户 VM 不会自动启动。 这是一个已知问题，只需执行几个手动步骤就能让它们联机：
 
@@ -67,8 +68,8 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="storage"></a>存储
 ### <a name="storage-reclamation"></a>存储回收
-可能需要最多 14 小时才会显示在门户中的回收容量。 空间回收取决于多种因素，包括块 Blob 存储中内部容器文件的用量百分比。 因此，根据删除的数据量，我们无法保证运行垃圾收集器时可回收的空间量。
+回收的容量最长可能需要在 14 小时后才显示在门户中。 空间回收取决于多种因素，包括块 Blob 存储中内部容器文件的用量百分比。 因此，我们无法保证运行垃圾收集器时可回收的空间量，这取决于删除的数据量。
 
 ## <a name="next-steps"></a>后续步骤
-[请访问 Azure 堆栈支持论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
+[访问 Azure Stack 支持论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
 

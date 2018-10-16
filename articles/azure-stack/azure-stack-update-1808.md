@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310892"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321812"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -145,13 +145,6 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
-<!-- TBD - IS -->
-- 可能会看到重复出现，然后就消失在 Azure Stack 系统上的以下警报：
-   - *基础结构角色实例不可用*
-   - *缩放单位节点处于脱机状态*
-   
-  请运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
-
 - 在运行时[Test-azurestack](azure-stack-diagnostic-test.md) 1808年更新后，将显示警告消息从基板管理控制器 (BMC)。 您可以放心地忽略此警告。
 
 <!-- 2468613 - IS --> 
@@ -174,7 +167,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 ### <a name="portal"></a>门户
 
-- Azure Stack 技术文档重点介绍最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。 
+- Azure Stack 技术文档重点介绍 Azure Stack 的最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。 
 
 <!-- TBD - IS ASDK --> 
 - 可能会在门户中看到空白的仪表板。 若要恢复仪表板，单击**编辑仪表板**，然后右键单击并选择**重置为默认状态**。
@@ -214,6 +207,14 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 
 ### <a name="health-and-monitoring"></a>运行状况和监视
+
+<!-- TBD - IS -->
+- 可能会看到重复出现，然后就消失在 Azure Stack 系统上的以下警报：
+   - *基础结构角色实例不可用*
+   - *缩放单位节点处于脱机状态*
+   
+  请运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+
 <!-- 1264761 - IS ASDK --> 
 - 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  
 

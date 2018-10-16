@@ -1,6 +1,6 @@
 ---
-title: 启动和停止 Azure 堆栈开发工具包 (ASDK) |Microsoft 文档
-description: 了解如何启动和关闭向下 Azure 堆栈开发工具包 (ASDK)。
+title: 启动和停止 Azure Stack 开发工具包 (ASDK) | Microsoft Docs
+description: 了解如何启动和关闭 Azure Stack 开发工具包 (ASDK)。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,81 +12,81 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dfb565803746ecdda9b36a4e12a3c3f2b4d9e0d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31427333"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340913"
 ---
-# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>启动和停止 Azure 堆栈开发工具包 (ASDK)
-建议不要只需重新启动 ASDK 主机计算机。 相反，你应该按照本文章来正确关闭并重新启动 ASDK 服务中的过程。 
+# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>启动和停止 Azure Stack 开发工具包 (ASDK)
+建议不要仅仅重启 ASDK 主机。 而是应该遵循本文中的过程正确关闭再重启 ASDK 服务。 
 
 ## <a name="stop-azure-stack"></a>停止 Azure Stack 
-若要正确关闭 Azure 堆栈服务和 ASDK 主机计算机，请使用以下 PowerShell 命令：
+若要正常关闭 Azure Stack 服务和 ASDK 主机，请使用以下 PowerShell 命令：
 
 1. 以 AzureStack\CloudAdmin 身份登录到 ASDK 主机。
 2. 以管理员身份打开 PowerShell（非 PowerShell ISE）。
-3. 运行以下命令以建立特权终结点 (PEP) 会话： 
+3. 运行以下命令建立特权终结点 (PEP) 会话： 
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. 接下来，在 PEP 会话中，使用**停止 AzureStack** cmdlet 可停止 Azure 堆栈服务并关闭 ASDK 主机计算机：
+4. 接下来，在 PEP 会话中，使用 **Stop-AzureStack** cmdlet 停止 Azure Stack 服务并关闭 ASDK 主机：
 
    ```powershell
    Stop-AzureStack
    ```
-5. 查看 PowerShell 输出，以确保 Azure 堆栈的所有服务都已成功关闭之前 ASDK 主机计算机关机。 关闭过程需要几分钟。
+5. 查看 PowerShell 输出，确保在关闭 ASDK 主机之前已正常关闭所有 Azure Stack 服务。 关机过程需要花费几分钟时间。
 
 ## <a name="start-azure-stack"></a>启动 Azure Stack 
-主机计算机启动时，ASDK 服务应自动启动。 但是，ASDK 基础结构服务启动时间异 ASDK 主机计算机的硬件配置的性能。 可能需要几个小时，为所有服务在某些情况下成功重新启动。
+启动主机时，ASDK 服务应会自动启动。 但是，ASDK 基础结构服务的启动时间根据 ASDK 主机硬件配置的性能而异。 在某些情况下，所有服务可能需要花费好几个小时才能成功重启。
 
-无论 ASDK 已关闭，你应使用以下步骤以验证所有 Azure 堆栈服务都已启动并在完全可操作主机计算机已开机后： 
+不管 ASDK 是否已关闭，都应该使用以下步骤来验证打开主机后，所有 Azure Stack 服务是否都已启动并完全正常运行： 
 
-1. ASDK 主计算机上的电源。 
+1. 打开 ASDK 主机。 
 2. 以 AzureStack\CloudAdmin 身份登录到 ASDK 主机。
 3. 以管理员身份打开 PowerShell（非 PowerShell ISE）。
-4. 运行以下命令以建立特权终结点 (PEP) 会话：
+4. 运行以下命令建立特权终结点 (PEP) 会话：
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-5. 接下来，在 PEP 会话中，运行以下命令以检查 Azure 堆栈服务的启动状态：
+5. 接下来，在 PEP 会话中，运行以下命令检查 Azure Stack 服务的启动状态：
 
    ```powershell
    Get-ActionStatus Start-AzureStack
    ```
-6. 检查输出，以确保 Azure 堆栈服务已经成功重新启动。
+6. 查看输出，确保 Azure Stack 服务已成功重启。
 
-若要了解有关正确关闭和重新启动 Azure 堆栈服务的建议过程的详细信息，请参阅[启动和停止 Azure 堆栈](.\.\azure-stack-start-and-stop.md)。 
+若要详细了解正常关闭和重启 Azure Stack 服务的建议过程，请参阅[启动和停止 Azure Stack](.\.\azure-stack-start-and-stop.md)。 
 
-## <a name="troubleshoot-startup-and-shutdown"></a>解决启动和关闭 
-如果 Azure 堆栈服务不成功启动后 power ASDK 主机计算机上的两个小时内，请执行以下步骤：
+## <a name="troubleshoot-startup-and-shutdown"></a>排查启动和关机问题 
+如果在打开 ASDK 主机后的两个小时内 Azure Stack 服务未成功启动，请执行以下步骤：
 
 1. 以 AzureStack\CloudAdmin 身份登录到 ASDK 主机。
 2. 以管理员身份打开 PowerShell（非 PowerShell ISE）。
-3. 运行以下命令以建立特权终结点 (PEP) 会话：
+3. 运行以下命令建立特权终结点 (PEP) 会话：
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. 接下来，在 PEP 会话中，运行以下命令以检查 Azure 堆栈服务的启动状态：
+4. 接下来，在 PEP 会话中，运行以下命令检查 Azure Stack 服务的启动状态：
 
    ```powershell
    Test-AzureStack
    ```
-5. 审阅输出并解决任何错误。 有关详细信息，请参阅[运行 Azure Stack 的验证测试](.\.\azure-stack-diagnostic-test.md)。
-6. 在 PEP 会话内重新启动 Azure 堆栈服务，通过运行**开始 AzureStack** cmdlet:
+5. 查看输出并解决所有错误。 有关详细信息，请参阅[运行 Azure Stack 的验证测试](.\.\azure-stack-diagnostic-test.md)。
+6. 在 PEP 会话中运行 **Start-AzureStack** cmdlet，以重启 Azure Stack 服务：
 
    ```powershell
    Start-AzureStack
    ```
 
-如果运行**开始 AzureStack**导致失败，请访问[Azure 堆栈支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)获取 ASDK 故障诊断支持。 
+如果运行 **Start-AzureStack** 导致失败，请访问 [Azure Stack 支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)获取 ASDK 故障排除支持。 
 
 ## <a name="next-steps"></a>后续步骤 
-了解有关 Azure 堆栈诊断工具的详细信息和发出日志记录，请参阅[Azure 堆栈诊断工具](.\.\azure-stack-diagnostics.md)。
+若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](.\.\azure-stack-diagnostics.md)。

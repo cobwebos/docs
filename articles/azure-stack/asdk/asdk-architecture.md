@@ -1,6 +1,6 @@
 ---
-title: Azure 堆栈开发工具包体系结构 |Microsoft 文档
-description: 介绍 Azure 堆栈开发工具包 (ASDK) 体系结构。
+title: Azure Stack 开发工具包体系结构 | Microsoft Docs
+description: 介绍 Azure Stack 开发工具包 (ASDK) 的体系结构。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,26 +12,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 68da3ac0eb135f5956dfea76e186d9c57beea79c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29976409"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338618"
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure 堆栈开发工具包体系结构
-Azure 堆栈开发工具包 (ASDK) 是单节点部署的 Azure 堆栈。 所有组件安装在单主机计算机上运行的虚拟机中。 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack 开发工具包体系结构
+Azure Stack 开发工具包 (ASDK) 是 Azure Stack 的单节点部署。 所有组件安装在单主机计算机上运行的虚拟机中。 
 
 ## <a name="logical-architecture-diagram"></a>逻辑体系结构示意图
-下图说明了 ASDK 及其组件的逻辑体系结构。
+下图演示了 ASDK 及其组件的逻辑体系结构。
 
 ![ASDK 体系结构](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>虚拟机角色
-ASDK 提供服务使用以下开发工具包主机计算机上承载的 Vm:
+ASDK 提供的服务使用托管在开发工具包主机上的以下 VM：
 
 | 名称 | 说明 |
 | ----- | ----- |
@@ -51,4 +51,4 @@ ASDK 提供服务使用以下开发工具包主机计算机上承载的 Vm:
 
 
 ## <a name="next-steps"></a>后续步骤
-[了解基本 ASDK 管理任务](asdk-admin-basics.md)
+[了解基本的 ASDK 管理任务](asdk-admin-basics.md)
