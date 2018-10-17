@@ -1,33 +1,33 @@
 ---
-title: 文本翻译使用 Python 查找备用翻译 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用文本翻译 API 和 Python 查找上下文中术语的备用翻译和示例。
+title: 快速入门：查找备用翻译 - 文本翻译，Python
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Python 查找字词的备用翻译和示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 4f7c91bfa6fe82f19e84e13b4b7442b59b126cb9
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768674"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122716"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>快速入门：使用 Python 查找备用翻译和使用情况
 
-本快速入门使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
+在该快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Python 3.x](https://www.python.org/downloads/) 运行此代码。
+需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="dictionary-lookup-request"></a>Dictionary Lookup 请求
+## <a name="dictionary-lookup-request"></a>字典查找请求
 
 以下内容使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
 
@@ -82,9 +82,9 @@ output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
 print (output)
 ```
 
-## <a name="dictionary-lookup-response"></a>Dictionary Lookup 响应
+## <a name="dictionary-lookup-response"></a>字典查找响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [
@@ -142,7 +142,7 @@ print (output)
 ]
 ```
 
-## <a name="dictionary-examples-request"></a>Dictionary Examples 请求
+## <a name="dictionary-examples-request"></a>字典示例请求
 
 下面使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
 
@@ -199,9 +199,9 @@ output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
 print (output)
 ```
 
-## <a name="dictionary-examples-response"></a>Dictionary Examples 响应
+## <a name="dictionary-examples-response"></a>字典示例响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

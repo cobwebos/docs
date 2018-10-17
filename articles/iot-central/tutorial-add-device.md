@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236080"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983208"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "35236080"
 
    ![开始添加新的真实连接空调设备](media/tutorial-add-device/newreal.png)
 
-3. （可选）可以重命名新设备，只需选择设备名称并编辑值即可：
+3. 输入设备 ID（须小写）或使用所建议的设备 ID。也可输入新设备的名称。  
 
    ![重命名设备](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ ms.locfileid: "35236080"
 
     ![设置显示正在同步](media/tutorial-add-device/settingssyncing.png)
 
-2. 在新的真实连接空调设备的“属性”页上，将“序列号”设置为 **rcac0010**，将“固件版本”设置为 9.75。 然后选择“保存”：
+2. 在新的真实连接空调设备的“属性”页上，将“序列号”设置为 10001，将“固件版本”设置为 9.75。 然后选择“保存”：
 
     ![设置真实设备的属性](media/tutorial-add-device/setproperties.png)
 
 3. 构建人员可以查看真实设备的“度量”、“规则”和“仪表板”页。
 
-## <a name="get-connection-string-for-real-device-from-application"></a>从应用程序获取真实设备的连接字符串
+## <a name="get-connection-details-for-real-device-from-application"></a>从应用程序获取真实设备的连接详细信息
 
-设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。 该连接字符串可让设备安全连接到 Azure IoT Central 应用程序。 每个设备实例都有一个唯一的连接字符串。 以下步骤说明如何查找应用程序中设备实例的连接字符串：
+设备开发人员需在设备上运行的代码中嵌入真实设备的设备连接详细信息。 该连接字符串可让设备安全连接到 Azure IoT Central 应用程序。 以下步骤说明如何查找应用程序中设备实例的连接字符串：
 
 1. 在真实的连接空调设备的“设备”屏幕上，选择“连接此设备”：
 
     ![显示“查看连接信息”链接的“设备”页](media/tutorial-add-device/connectionlink.png)
 
-2. 在“连接”页上，复制并保存“主连接字符串”。 在本教程的后半部分将要使用此值。 设备开发人员将在设备上运行的客户端应用程序中使用此值：
+2. 在“连接”页面上，复制“范围 ID、设备 ID 和主密钥”，并将其保存。
 
-    ![连接字符串值](media/tutorial-add-device/connectionstring.png)
+   ![连接详细信息](media/tutorial-add-device/device-connect.PNG)
+
+   使用下述命令行工具获取设备连接字符串  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **使用情况**
+    
+    为创建连接字符串，请在 bin/ 文件夹下找到二进制文件
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    在[此处](https://www.npmjs.com/package/dps-keygen)详细了解命令行工具。
 
 ## <a name="prepare-the-client-code"></a>准备客户端代码
 
@@ -130,14 +143,17 @@ ms.locfileid: "35236080"
 
 8. 将以下变量声明添加到该文件：
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > 在稍后的步骤中，需要更新占位符 `{your device connection string}`。
+   > 在稍后的步骤中，需要更新占位符 `{your device connection string}`。 
 
 9. 保存到目前为止所做的更改，但请将文件保持打开状态。
 
@@ -248,8 +264,7 @@ ms.locfileid: "35236080"
 
 ## <a name="configure-client-code-for-the-real-device"></a>配置真实设备的客户端代码
 
-<!-- Add the connection string to the sample code, build, and run -->
-若要配置客户端代码以连接到 Azure IoT Central 应用程序，需要添加本教程前面记下的真实设备连接字符串。
+<!-- Add the connection string to the sample code, build, and run -->要配置客户端代码以连接到 Azure IoT Central 应用程序，需要添加本教程前面记下的真实设备连接字符串。
 
 1. 在 **ConnectedAirConditioner.js** 文件中找到以下代码行：
 

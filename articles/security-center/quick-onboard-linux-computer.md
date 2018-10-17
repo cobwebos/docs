@@ -3,7 +3,7 @@ title: Azure 安全中心快速入门 - 将 Linux 计算机载入到安全中心
 description: 本快速入门展示了如何将 Linux 计算机载入到安全中心。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630088"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025387"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
@@ -39,13 +39,12 @@ ms.locfileid: "38630088"
 
  ![安全中心概述][2]
 
-3. 在“安全中心”主菜单下，选择“载入高级安全”。
-4. 针对“要添加非 Azure 计算机吗?”做出选择。
-   ![载入到高级安全][3]
+3. 在“安全中心”主菜单下，选择“入门”。
+4. 选择“入门”选项卡。![入门][3]
 
-5. 在“添加新的非 Azure 计算机”上，将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
+5. 单击“添加新的非 Azure 计算机”下的“配置”，将显示 Log Analytics 工作区列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
-    ![添加非 Azure 计算机][4]
+    ![添加非 Azure 计算机](./media/quick-onboard-linux-computer/non-azure.png)
 
 6.  在“直接代理”页面上，在“下载和板载 Agent for Linux”下，选择“复制”按钮以复制 *wget* 命令。
 
@@ -91,7 +90,7 @@ ms.locfileid: "38630088"
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png
 [2]: ./media/quick-onboard-linux-computer/overview.png
-[3]: ./media/quick-onboard-linux-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-linux-computer/get-started.png
 [4]: ./media/quick-onboard-linux-computer/add-computer.png
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png

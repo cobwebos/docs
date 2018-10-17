@@ -1,33 +1,33 @@
 ---
-title: 文本翻译使用Python 获取支持的语言 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及在认知服务中将文本翻译 API 与 Java 配合使用的示例。
+title: 快速入门：获取受支持的语言 - 文本翻译 API，Python
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Java 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 3ae3c6be814f79541e39eddd3be137b71cc1a494
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a68a1b31cb844a4873bf34c6a292beeb2a4b61c0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768690"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121730"
 ---
 # <a name="quickstart-get-supported-languages-with-python"></a>快速入门：使用 Python 获取支持的语言
 
-在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及使用文本翻译 API 的示例。
+在本快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Python 3.x](https://www.python.org/downloads/) 运行此代码。
+需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="languages-request"></a>Languages 请求
+## <a name="languages-request"></a>语言请求
 
 以下代码使用 [Languages](./reference/v3-0-languages.md) 方法获取翻译、音译、查询字典支持的语言列表和示例。
 
@@ -74,9 +74,9 @@ f.write (json)
 f.close
 ```
 
-## <a name="languages-response"></a>Languages 响应
+## <a name="languages-response"></a>语言响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 {

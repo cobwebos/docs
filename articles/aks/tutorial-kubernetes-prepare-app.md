@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104993"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297054"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "43104993"
 
 本教程假定你基本了解核心 Docker 概念，如容器、容器映像和 `docker` 命令。 有关容器的入门基础知识，请参阅 [Docker 入门][docker-get-started]。
 
-若要完成本教程，需要本地 Docker 开发环境。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
+若要完成本教程，需要运行 Linux 容器的本地 Docker 开发环境。 Docker 提供的包可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系统上配置 Docker。
 
 Azure Cloud Shell 不包含完成这些教程的每个步骤所需的 Docker 组件。 因此，我们建议使用完整的 Docker 开发环境。
 

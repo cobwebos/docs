@@ -5,22 +5,22 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070671"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714983"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
 除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 管理本地计算机到 Azure 的迁移。
 
 
-本教程演示如何将本地 VM 和物理服务器迁移到 Azure。 本教程介绍如何执行以下操作：
+本教程演示如何将本地 VM 和物理服务器迁移到 Azure。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 选择复制目标
@@ -40,10 +40,7 @@ ms.locfileid: "39070671"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 不支持半虚拟化驱动程序导出的设备。
- 
-> [!WARNING]
-> 可以通过将 VM 视为物理服务器，迁移诸如 XenServer 的其他虚拟化平台（VMware、Hyper-V 除外）上的 VM。 但是，此方法未经 Microsoft 测试和验证，可能起作用，也可能不起作用。 例如，在 XenServer 平台上运行的 VM 无法在 Azure 中运行，除非在开始迁移之前从 VM 中卸载了 XenServer 工具和半虚拟化的存储和网络驱动程序。
+不支持半虚拟化驱动程序导出的设备。
 
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
@@ -124,10 +121,43 @@ ms.locfileid: "39070671"
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到物理服务器、VMware Linux 计算机、未启用 DHCP 服务的 VMware VM 和未安装以下启动驱动程序：storvsc、vmbus、storflt、intelide、atapi 的 VMware VM 需要更长的测试故障转移时间。
 
+## <a name="after-migration"></a>迁移之后
+
+计算机迁移到 Azure 后，有多个应完成的步骤。
+
+在迁移过程中，某些步骤可以使用[恢复计划]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)中的内置自动化脚本功能自动完成   
+
+
+### <a name="post-migration-steps-in-azure"></a>Azure 中的迁移后步骤
+
+- 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。 
+- 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
+- [Azure VM 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)可管理 VM 与 Azure 结构控制器之间的交互。 某些 Azure 服务（例如 Azure 备份、Site Recovery 和 Azure 安全）需要 Azure VM 代理。
+    - 如果要迁移 VMware 机和物理服务器，移动服务安装程序会在 Windows 计算机上安装可用的 Azure VM 代理。 在 Linux VM 上，我们建议在故障转移后安装代理。 a
+    - 如果要将 Azure VM 迁移到次要区域，则在迁移之前必须在 VM 上预配 Azure VM 代理。
+    - 如果要将 Hyper-V VM 迁移到 Azure，请在迁移后在 Azure VM 上安装 Azure VM 代理。
+- 从 VM 中手动删除任何 Site Recovery 提供程序/代理。 如果要迁移 VMware VM 或物理服务器，请从 Azure VM 中[卸载移动服务][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer]。
+- 为提高恢复能力，请执行以下操作：
+    - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
+    - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](azure-to-azure-quickstart.md)。
+- 为提高安全性，请执行以下操作：
+    - 使用 Azure 安全中心的[恰时管理]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time)锁定和限制入站流量访问
+    - 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)限制流入管理终结点的网络流量。
+    - 部署[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
+    - 详细了解[保护 IaaS 资源的安全]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ )，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/ )。
+- 为了便于监视和管理，请执行以下操作：
+    - 考虑部署[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)以监视资源使用率和支出。
+
+### <a name="post-migration-steps-on-premises"></a>本地的迁移后步骤
+
+- 将应用流量转移到在已迁移的 Azure VM 实例上运行的应用。
+- 从本地 VM 清单中删除本地 VM。
+- 从本地备份中删除本地 VM。
+- 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将本地 VM 迁移到 Azure VM。 现在，你已成功迁移了VM：
-- 为迁移的 VM [设置灾难恢复](azure-to-azure-replicate-after-migration.md)。
-- 利用 Azure 的[安全且妥善管理的云](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)功能管理 Azure 中的 VM。
+在本教程中，已将本地 VM 迁移到 Azure VM。 现在可以为 Azure 区域设置到辅助 Azure 区域的[灾难恢复](azure-to-azure-replicate-after-migration.md)。
+
   

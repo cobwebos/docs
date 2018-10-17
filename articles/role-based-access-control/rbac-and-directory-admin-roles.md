@@ -1,5 +1,5 @@
 ---
-title: 经典订阅管理员角色、Azure RBAC 角色与Azure AD 管理员角色 | Microsoft Docs
+title: 经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色 | Microsoft Docs
 description: 介绍 Azure 中的不同角色 - 经典订阅管理员角色、Azure 基于角色的访问控制 (RBAC) 角色和 Azure Active Directory (Azure AD) 管理员角色
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8c00476078d4e16b649296be42795b92ebbfd9c4
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 401c9a3df4cb132769e05cb0487a763f4080dd23
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714088"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304051"
 ---
-# <a name="classic-subscription-administrator-roles-vs-azure-rbac-roles-vs-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色与Azure AD 管理员角色
+# <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
 如果你不熟悉 Azure，可能会发现，要理解 Azure 中的所有不同角色存在一定的难度。 本文将帮助解释以下角色，以及应在何时使用其中的每种角色：
 - 经典订阅管理员角色
@@ -44,15 +44,15 @@ ms.locfileid: "39714088"
 
 | 经典订阅管理员 | 限制 | 权限 | 说明 |
 | --- | --- | --- | --- |
-| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>访问 [Azure 帐户中心](https://account.azure.com/Subscriptions)</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。|
-| 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
+| 帐户管理员 | 每个 Azure 帐户有 1 个 | <ul><li>访问 [Azure 帐户中心](https://account.azure.com/Subscriptions)</li><li>管理帐户中的所有订阅</li><li>创建新订阅</li><li>取消订阅</li><li>更改订阅的计费</li><li>更改服务管理员</li></ul> | 在概念上是订阅的计费所有者。<br>帐户管理员无权访问 Azure 门户。 |
+| 服务管理员 | 每个 Azure 订阅有 1 个 | <ul><li>在 [Azure 门户](https://portal.azure.com)中管理服务</li><li>将用户分配到共同管理员角色</li></ul> | 默认情况下，新订阅的帐户管理员也是服务管理员。<br>服务管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。<br>服务管理员具有 Azure 门户的完全访问权限。 |
 | 共同管理员 | 每个订阅有 200 个 | <ul><li>与服务管理员的访问特权相同，但无法更改订阅与 Azure 目录之间的关联。</li><li>将用户分配到共同管理员角色，但无法更改服务管理员</li></ul> | 共同管理员拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 |
 
 在 Azure 门户中，可以通过查看订阅的属性，来查看已将谁分配为帐户管理员和服务管理员。
 
 ![Azure 门户中的帐户管理员和服务管理员](./media/rbac-and-directory-admin-roles/account-admin-service-admin.png)
 
-有关如何添加或更改订阅管理员的信息，请参阅 Azure 计费文档中的[添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
+有关如何添加或更改经典订阅管理员的信息，请参阅 Azure 计费文档中的[添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
 
 ### <a name="azure-account-and-azure-subscriptions"></a>Azure 帐户和 Azure 订阅
 

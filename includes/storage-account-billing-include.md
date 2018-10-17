@@ -1,11 +1,31 @@
-我们会根据存储帐户，针对 Azure 存储使用情况收费。 存储成本取决于以下几个因素：区域/位置、帐户类型、存储容量、复制方案、存储交易和数据流出量。
+---
+title: include 文件
+description: include 文件
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/11/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f47146cef5a81476e76ee5bde3990fac1323148c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740582"
+---
+我们会根据存储帐户的使用情况，对 Azure 存储进行计费。 存储帐户中的所有对象会作为组共同计费。 
 
-* 区域是指帐户所在的地理区域。
-* 帐户类型是指是使用通用存储帐户还是 Blob 存储帐户。 如果使用的是 Blob 存储帐户，则访问层还可以确定该帐户的计费模型。
-* 存储容量指的是存储帐户中用来存储数据的配额。
-* 复制可以确定一次保留的数据副本的数量以及保留位置。
-* 事务指的是对 Azure 存储的所有读取和写入操作。
-* 数据流出量指的是传出某个 Azure 区域的数据。 当不在同一区域中的应用程序访问存储帐户中的数据时，需要为数据流出量付费。 （对于 Azure 服务，可以采取措施将数据和服务通过分组分到相同的数据中心内，从而降低或避免数据流出量费用。）
+存储成本根据以下几个因素计算：区域/位置、帐户类型、访问层、存储容量、复制方案、存储事务和数据流出量。
+
+* **区域**指的是帐户所在的地理区域。
+* **帐户类型**指的是正在使用的存储帐户类型。 
+* **访问层**指的是为常规用途 v2 或 Blob 存储帐户指定的数据使用模式。
+* 存储**容量**指的是存储帐户中用来存储数据的配额。
+* **复制**可以确定一次保留的数据副本的数量以及保留位置。
+* **事务**指的是对 Azure 存储进行的所有读取和写入操作。
+* **数据流出量**指的是传出某个 Azure 区域的数据。 当不在同一区域中的应用程序访问存储帐户中的数据时，需要为数据流出量付费。 有关使用资源组对同一区域内的数据和服务进行分组以限制数据流出费用的信息，请参阅[什么是 Azure 资源组？](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group)。 
 
 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/) 页提供基于帐户类型、存储容量、复制和交易的详细定价信息。 [数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/) 提供了针对数据流出量的详细定价信息。 可以使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) 来帮助估算成本。
 

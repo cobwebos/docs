@@ -1,26 +1,27 @@
 ---
-title: Microsoft 文本翻译 API 概述 - Azure 认知服务 | Microsoft Docs
-description: 将 Microsoft 文本翻译 API 集成到应用程序、网站、工具和其他解决方案中，提供多语言用户体验。
+title: 什么是文本翻译 API？
+titlesuffix: Azure Cognitive Services
+description: 将文本翻译 API 集成到应用程序、网站、工具和其他解决方案中，提供多语言用户体验。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: bfbb316ac41045add7f424b5d478581aa226fc19
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42889330"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124654"
 ---
-# <a name="what-is-microsoft-translator"></a>什么是 Microsoft Translator？
+# <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 
-Microsoft 文本翻译 API 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供 [60 多种语言](languages.md)的多语言用户体验。 它可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行文本到文本语言翻译。
+文本翻译 API 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供 [60 多种语言](languages.md)的多语言用户体验。 它可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行文本到文本语言翻译。
 
-Microsoft 文本翻译 API 属于云中机器学习和 AI 算法的 Microsoft [认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合，随时可在开发项目中使用。
+文本翻译 API 是云中机器学习和 AI 算法的 Azure [认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合的一部分，可随时在开发项目中使用。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 

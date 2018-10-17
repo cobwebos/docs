@@ -1,25 +1,27 @@
 ---
-title: 文本翻译使用 C# 获取句子长度 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 C# 找到文本中句子的长度。
+title: 快速入门：获取句子长度 - 文本翻译 API，C#
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 C# 查明文本中句子的长度。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b3e7f1099b1a7584435646fe3fae237cd458967f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4569a580dfdad3a71201e607ae5b7895d0d01099
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43768641"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364340"
 ---
 # <a name="quickstart-get-sentence-lengths-with-c35"></a>快速入门：使用 C&#35; 获取句子长度
 
-本快速入门使用文本翻译 API 找到文本中句子的长度。
+在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
+
+该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +29,7 @@ ms.locfileid: "43768641"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="breaksentence-request"></a>BreakSentence 请求
+## <a name="breaksentence-request"></a>断句请求
 
 以下代码使用 [BreakSentence](./reference/v3-0-break-sentence.md) 方法将源文本分解为句子。
 
@@ -88,9 +90,9 @@ namespace TranslatorTextQuickStart
 }
 ```
 
-## <a name="breaksentence-response"></a>BreakSentence 响应
+## <a name="breaksentence-response"></a>断句响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

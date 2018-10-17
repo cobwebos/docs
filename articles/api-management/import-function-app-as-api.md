@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: ea6078088417099045006f81dcaf1f769bbd64d7
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246809"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129754"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -71,9 +71,11 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
     > [!NOTE]
     > 可以只导入基于 HTTP 触发器的 Functions，并将授权级别设置设为“匿名”或“函数”。
 
-7. 根据需要编辑预先填充的字段。 单击“创建”。
+7. 切换到“完整”视图并将“产品”分配到新 API。 如果需要，请编辑预先填充的字段。
 
     ![从 Function App 添加](./media/import-function-app-as-api/add-06.png)
+
+8. 单击“创建”。
 
 ## <a name="append-azure-function-app-to-api"></a> 将 Azure Function App 追加到现有 API
 

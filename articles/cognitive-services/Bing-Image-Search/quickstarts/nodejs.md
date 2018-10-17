@@ -1,191 +1,150 @@
 ---
-title: 快速入门：使用 Node.js 向必应图像搜索 API 发送搜索查询（使用 REST API）
-description: 本快速入门将使用 Node.js 向必应搜索 API 发送搜索查询，以获取相关图像的列表。
+title: 快速入门：使用 Node.js 执行图像搜索 - 必应图像搜索 API
+titleSuffix: Azure Cognitive Services
+description: 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
 services: cognitive-services
 documentationcenter: ''
-author: v-jerkin
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 975275bea61a5903c06da394b762b1aceb18023f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 8/20/2018
+ms.author: aahi
+ms.openlocfilehash: 1584b3e0a1e1c560d42b5f8320d0e15ad6242918
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929910"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294588"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-nodejs"></a>快速入门：使用 REST API 和 Node.js 发送搜索查询
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>快速入门：使用必应图像搜索 REST API 和 Node.js 发送搜索查询
 
-必应图像搜索 API 通过允许向必应发送用户搜索查询并获取相关图像的列表，提供与 Bing.com/图像相似的体验。
+使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
 
-本文包括一个简单的控制台应用程序，它执行必应图像搜索 API 查询并显示返回的原始搜索结果，这些结果采用 JSON 格式。 虽然此应用程序是用 JavaScript 编写的并且在 Node.js 下运行，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并解析 JSON 的编程语言兼容。 
+虽然此应用程序采用 JavaScript 编写且在 Node.js 中运行，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
+
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) 上提供了此示例的源代码以及附加的错误处理和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
+* 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 
+* [JavaScript 请求库](https://github.com/request/request)
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="running-the-application"></a>运行应用程序
+## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-要运行此应用程序，请执行以下步骤。
+1. 在最喜爱的 IDE 或编辑器中创建新的 JavaScript 文件，并设置严格性和 https 要求。
 
-1. 在你喜欢使用的 IDE 或编辑器中新建一个 Node.js 项目。
-2. 添加提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 运行该程序。
+    ```javascript
+    'use strict';
+    let https = require('https');
+    ```
 
-```javascript
-'use strict';
+2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。
+    ```javascript
+    let subscriptionKey = 'enter key here';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/images/search';
+    let term = 'tropical ocean';
+    ```
 
-let https = require('https');
+## <a name="construct-the-search-request-and-query"></a>构造搜索请求和查询。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词发送到 API 之前，必须进行 URL 编码。
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'enter key here';
-
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this host against
-// the endpoint for your Bing Search instance in your Azure dashboard.
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/images/search';
-
-let term = 'puppies';
-
-let response_handler = function (response) {
-    let body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // header keys are lower-cased by Node.js
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
-
-let bing_image_search = function (search) {
-  console.log('Searching images for: ' + term);
-  let request_params = {
+    ```javascript
+    let request_params = {
         method : 'GET',
         hostname : host,
         path : path + '?q=' + encodeURIComponent(search),
         headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
+        'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
+    ```
 
+2. 使用请求库将查询发送到 API。 `response_handler` 将在下节中定义。
+    ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
-}
+    ```
 
-if (subscriptionKey.length === 32) {
-    bing_image_search(term);
-} else {
-    console.log('Invalid Bing Search API subscription key!');
-    console.log('Please paste yours into the source code.');
-}
-```
+## <a name="handle-and-parse-the-response"></a>处理和分析响应
+
+1. 定义名为 `response_handler` 的函数，它将 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
+
+    1. 定义一个包含 JSON 响应的正文的变量。  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
+
+    2. 在调用数据标志时存储响应的正文
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
+
+    3. 当触发结束标志信号时，便可处理 JSON 并且可以打印图像的 URL，以及所返回图像的总数。
+
+        ```javascript
+        response.on('end', function () {
+            let firstImageResult = imageResults.value[0];
+            console.log(`Image result count: ${imageResults.value.length}`);
+            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+            console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
+         });
+        ```
 
 ## <a name="json-response"></a>JSON 响应
 
-示例响应如下。 为了限制 JSON 的长度，系统仅显示一个结果，并截断了响应的其他部分。 
+来自必应图像搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
 ```json
 {
-  "_type": "Images",
-  "instrumentation": {},
-  "readLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=puppies",
-  "webSearchUrl": "https://www.bing.com/images/search?q=puppies&FORM=OIIARP",
-  "totalEstimatedMatches": 955,
-  "nextOffset": 1,
-  "value": [
+"_type":"Images",
+"instrumentation":{
+    "_type":"ResponseInstrumentation"
+},
+"readLink":"images\/search?q=tropical ocean",
+"webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=tropical ocean&FORM=OIIARP",
+"totalEstimatedMatches":842,
+"nextOffset":47,
+"value":[
     {
-      "webSearchUrl": "https://www.bing.com/images/search?view=detailv...",
-      "name": "So cute - Puppies Wallpaper",
-      "thumbnailUrl": "https://tse3.mm.bing.net/th?id=OIP.jHrihoDNkXGS1t...",
-      "datePublished": "2014-02-01T21:55:00.0000000Z",
-      "contentUrl": "http://images4.contoso.com/image/photos/14700000/So-cute-puppies...",
-      "hostPageUrl": "http://www.contoso.com/clubs/puppies/images/14749028/...",
-      "contentSize": "394455 B",
-      "encodingFormat": "jpeg",
-      "hostPageDisplayUrl": "www.contoso.com/clubs/puppies/images/14749...",
-      "width": 1600,
-      "height": 1200,
-      "thumbnail": {
-        "width": 300,
-        "height": 225
-      },
-      "imageInsightsToken": "ccid_jHrihoDN*mid_F68CC526226E163FD1EA659747AD...",
-      "insightsMetadata": {
-        "recipeSourcesCount": 0
-      },
-      "imageId": "F68CC526226E163FD1EA659747ADCB8F9FA36",
-      "accentColor": "8D613E"
+        "webSearchUrl":"https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=tropical+ocean&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&simid=608027248313960152",
+        "name":"My Life in the Ocean | The greatest WordPress.com site in ...",
+        "thumbnailUrl":"https:\/\/tse3.mm.bing.net\/th?id=OIP.fmwSKKmKpmZtJiBDps1kLAHaEo&pid=Api",
+        "datePublished":"2017-11-03T08:51:00.0000000Z",
+        "contentUrl":"https:\/\/mylifeintheocean.files.wordpress.com\/2012\/11\/tropical-ocean-wallpaper-1920x12003.jpg",
+        "hostPageUrl":"https:\/\/mylifeintheocean.wordpress.com\/",
+        "contentSize":"897388 B",
+        "encodingFormat":"jpeg",
+        "hostPageDisplayUrl":"https:\/\/mylifeintheocean.wordpress.com",
+        "width":1920,
+        "height":1200,
+        "thumbnail":{
+        "width":474,
+        "height":296
+        },
+        "imageInsightsToken":"ccid_fmwSKKmK*mid_8607ACDACB243BDEA7E1EF78127DA931E680E3A5*simid_608027248313960152*thid_OIP.fmwSKKmKpmZtJiBDps1kLAHaEo",
+        "insightsMetadata":{
+        "recipeSourcesCount":0,
+        "bestRepresentativeQuery":{
+            "text":"Tropical Beaches Desktop Wallpaper",
+            "displayText":"Tropical Beaches Desktop Wallpaper",
+            "webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=Tropical+Beaches+Desktop+Wallpaper&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&FORM=IDBQDM"
+        },
+        "pagesIncludingCount":115,
+        "availableSizesCount":44
+        },
+        "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
+        "accentColor":"0050B2"
     }
-  ],
-  "queryExpansions": [
-    {
-      "text": "Shih Tzu Puppies",
-      "displayText": "Shih Tzu",
-      "webSearchUrl": "https://www.bing.com/images/search?q=Shih+Tzu+Puppies...",
-      "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=Shih...",
-      "thumbnail": {
-        "thumbnailUrl": "https://tse2.mm.bing.net/th?q=Shih+Tzu+Puppies&pid=Api..."
-      }
-    }
-  ],
-  "pivotSuggestions": [
-    {
-      "pivot": "puppies",
-      "suggestions": [
-        {
-          "text": "Dog",
-          "displayText": "Dog",
-          "webSearchUrl": "https://www.bing.com/images/search?q=Dog&tq=%7b%22pq%...",
-          "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=Dog...",
-          "thumbnail": {
-            "thumbnailUrl": "https://tse1.mm.bing.net/th?q=Dog&pid=Api&mkt=en-US..."
-          }
-        }
-      ]
-    }
-  ],
-  "similarTerms": [
-    {
-      "text": "cute",
-      "displayText": "cute",
-      "webSearchUrl": "https://www.bing.com/images/search?q=cute&FORM=...",
-      "thumbnail": {
-        "url": "https://tse2.mm.bing.net/th?q=cute&pid=Api&mkt=en-US..."
-      }
-    }
-  ],
-  "relatedSearches": [
-    {
-      "text": "Cute Puppies",
-      "displayText": "Cute Puppies",
-      "webSearchUrl": "https://www.bing.com/images/search?q=Cute+Puppies",
-      "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/sear...",
-      "thumbnail": {
-        "thumbnailUrl": "https://tse4.mm.bing.net/th?q=Cute+Puppies&pid=..."
-      }
-    }
-  ]
 }
 ```
 
@@ -194,9 +153,10 @@ if (subscriptionKey.length === 32) {
 > [!div class="nextstepaction"]
 > [必应图像搜索单页应用教程](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>另请参阅
 
-[必应图像搜索概述](../overview.md)  
-[试用](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

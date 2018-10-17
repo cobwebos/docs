@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 Go 查找备用翻译 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用文本翻译 API 和 Go 查找上下文中术语的备用翻译和示例。
+title: 快速入门：查找备用翻译 - 文本翻译，Go
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Go 查找字词的备用翻译和示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: a076418dbf969a61107c28f191457fc336a8b907
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 4ea21673c993c6dd9478f42bfee790b62317946f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43768731"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128870"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-go"></a>快速入门：使用 Go 查找备用翻译和使用情况
 
@@ -23,13 +23,13 @@ ms.locfileid: "43768731"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用**核心**库，因此不需要外部依赖项。
+需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此不需要外部依赖项。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
 ## <a name="dictionary-lookup-request"></a>字典查找请求
 
-以下示例使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
+以下内容使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 2. 添加以下提供的代码。
@@ -169,7 +169,7 @@ func main() {
 
 ## <a name="dictionary-examples-request"></a>字典示例请求
 
-以下示例使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
+下面使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
 
 1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 2. 添加以下提供的代码。

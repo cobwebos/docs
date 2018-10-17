@@ -1,34 +1,34 @@
 ---
-title: 使用人脸 API 中的大规模功能 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 使用认知服务人脸 API 中的大规模功能。
+title: 示例：使用大规模功能 - 人脸 API
+titleSuffix: Azure Cognitive Services
+description: 使用人脸 API 中的大规模功能。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: f7b3ac57cf6b24c8a90b4ea59757d3a2cfafd781
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365554"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123073"
 ---
-# <a name="how-to-use-the-large-scale-feature"></a>如何使用大规模功能
+# <a name="example-how-to-use-the-large-scale-feature"></a>示例：如何使用大规模功能
 
 本指南是有关迁移代码以从现有 PersonGroup 和 FaceList 分别纵向扩展到 LargePersonGroup 和 LargeFaceList 的高级文章。
 本指南演示迁移过程，同时假定读者了解 PersonGroup 和 FaceList 的基本用法。
 如需熟悉基本操作，请参阅其他教程，如[如何识别图像中的人脸](HowtoIdentifyFacesinImage.md)。
 
-Microsoft 人脸 API 最近发布了两个功能，用于启用大规模方案 LargePersonGroup 和 LargeFaceList，它们统称为大规模操作。
+人脸 API 最近发布了两个功能，用于启用大规模方案 LargePersonGroup 和 LargeFaceList，它们统称为大规模操作。
 LargePersonGroup 最多可以包含 1,000,000 人，每人最多 248 张面部图，而 LargeFaceList 最多可以保存 1,000,000 张面部图。
 
 大规模操作类似于传统的 PersonGroup 和 FaceList，但因采用新体系结构而具有一些明显差异。
 本指南演示迁移过程，同时假定读者了解 PersonGroup 和 FaceList 的基本用法。
-示例是使用人脸 API 客户端库以 C# 编写的。
+示例在 C# 中使用人脸 API 客户端库编写。
 
 若要面向大规模启用人脸搜索性能以进行 Identification 和 FindSimilar ，则需要引入“定型”操作，以预处理 LargeFaceList 和 LargePersonGroup。
 定型时间从几秒到约半小时不等，具体取决于实际容量。
@@ -45,7 +45,7 @@ LargePersonGroup 最多可以包含 1,000,000 人，每人最多 248 张面部�
 - Identification：从 PersonGroup 或 LargePersonGroup 中识别一张或多张人脸。
 - FindSimilar：从 FaceList 或 LargeFaceList 中搜索相似的人脸。
 
-## <a name="initialization"></a>步骤 1：授权 API 调用
+## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
 
 使用人脸 API 客户端库时，订阅密钥和订阅终结点将通过 FaceServiceClient 类的构造函数传入。 例如：
 
@@ -59,14 +59,14 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 可从 Azure 门户的“商城”页获取具有对应终结点的订阅密钥。
 请参阅[订阅](https://azure.microsoft.com/services/cognitive-services/directory/vision/)。
 
-## <a name="migrate"></a>步骤 2：执行代码迁移
+## <a name="step-2-code-migration-in-action"></a>步骤 2：执行代码迁移
 
 本部分仅介绍如何将 PersonGroup/FaceList 实现迁移到 LargePersonGroup/LargeFaceList。
 虽然 LargePersonGroup/LargeFaceList 与 PersonGroup/FaceList 在设计和内部实现方面存在差异，但用于后向兼容的 API 接口是类似的。
 
 不支持数据迁移，必须改为重新创建 LargePersonGroup/LargeFaceList。
 
-## <a name="largepersongroup"></a>步骤 2.1：将 PersonGroup 迁移到 LargePersonGroup
+## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>步骤 2.1：将 PersonGroup 迁移到 LargePersonGroup
 
 从 PersonGroup 迁移到 LargePersonGroup 较为容易，因为它们采用完全相同的组级别操作。
 
@@ -74,16 +74,16 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 
 有关数据迁移，请参阅[如何添加人脸](how-to-add-faces.md)作为参考。
 
-## <a name="largefacelist"></a>步骤 2.2：将 FaceList 迁移到 LargeFaceList
+## <a name="step-22-migrate-facelist-to-largefacelist"></a>步骤 2.2：将 FaceList 迁移到 LargeFaceList
 
 | FaceList API | LargeFaceList API |
 |:---:|:---:|
 | 创建 | 创建 |
 | 删除 | 删除 |
-| Get | Get |
+| 获取 | 获取 |
 | 列出 | 列出 |
 | 更新 | 更新 |
-| - | 训练 |
+| - | 定型 |
 | - | 获取定型状态 |
 
 上表对 FaceList 和 LargeFaceList 的列级操作进行了对比。
@@ -212,7 +212,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 如上所示，数据管理和 FindSimilar 部分几乎一样。
 唯一的例外是，全新的预处理定型操作必须在 LargeFaceList 中完成，然后 FindSimilar 才能正常工作。
 
-## <a name="train"></a>步骤 3：定型建议
+## <a name="step-3-train-suggestions"></a>步骤 3：定型建议
 
 尽管定型操作可加快 [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 和 [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)，但定型时间非常煎熬，尤其是涉及大规模操作时。
 下表列出了不同规模的估计定型时间：
@@ -226,7 +226,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 
 为了更好地利用大规模功能，建议考虑采用某些策略。
 
-## <a name="interval"></a>步骤 3.1：自定义时间间隔
+## <a name="step-31-customize-time-interval"></a>步骤 3.1：自定义时间间隔
 
 如 `TrainLargeFaceList()` 中所示，可通过 `timeIntervalInMilliseconds` 延迟无限定型状态检查过程。
 对于包含更多人脸的 LargeFaceList，使用较大间隔可减少调用计数和成本。
@@ -235,7 +235,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 同样的策略也适用于 LargePersonGroup。
 例如，当定型包含 1,000,000 人的 LargePersonGroup 时，`timeIntervalInMilliseconds` 可能为 60000（也称为 一分钟间隔）。
 
-## <a name="buffer"></a>步骤 3.2：小规模缓冲区
+## <a name="step-32-small-scale-buffer"></a>步骤 3.2：小规模缓冲区
 
 LargePersonGroup/LargeFaceList 中的人员/人脸仅在定型后才可搜索。
 在动态方案中，新人员/人脸会不断增加，并且需要立即可供搜索，但定型时间可能超过所需时间。
@@ -251,14 +251,15 @@ LargePersonGroup/LargeFaceList 中的人员/人脸仅在定型后才可搜索。
 1. 当缓冲区集合大小增加到阈值或在系统空闲时，创建新的缓冲区集合并触发对主集合的定型。
 1. 完成对主集合的定型后，删除旧的缓冲区集合。
 
-## <a name="standalone"></a>Step 3.3：独立定型
+## <a name="step-33-standalone-training"></a>Step 3.3：独立定型
 
 如果可以介绍相对较长的时间延迟，则不需要在添加新数据后立即触发定型操作。
 相反，可从主逻辑中拆分定型操作并定期触发该操作。
 此策略适用于具有可接受延迟的动态方案；还可应用于静态方案，用于进一步降低定型频率。
 
 假定存在类似于 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函数。
-通过调用 `System.Timers` 中的 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) 类，LargePersonGroup 上的独立定型的典型实现应为：
+通过调用 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) 类
+（位于 `System.Timers` 中），LargePersonGroup 上的独立定型的典型实现应为：
 
 ```CSharp
 private static void Main()
@@ -288,14 +289,14 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 有关数据管理和识别相关实现的详细信息，请参阅[如何添加人脸](how-to-add-faces.md)和[如何识别图像中的人脸](HowtoIdentifyFacesinImage.md)。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本指南介绍了如何将现有 PersonGroup/FaceList 代码（不是数据）迁移到 LargePersonGroup/LargeFaceList 中：
 
 - LargePersonGroup 和 LargeFaceList 的工作原理类似于 PersonGroup/FaceList，但 LargeFaceList 需要使用定型操作。
 - 采取适当的定型策略，以对大规模数据集执行动态数据更新。
 
-## <a name="related"></a>相关主题
+## <a name="related-topics"></a>相关主题
 
 - [如何识别图像中的人脸](HowtoIdentifyFacesinImage.md)
 - [如何添加人脸](how-to-add-faces.md)

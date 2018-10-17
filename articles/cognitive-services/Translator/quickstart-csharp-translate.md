@@ -1,25 +1,27 @@
 ---
-title: 文本翻译使用 C# 翻译文本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 C# 将文本从一种语言翻译成另一种语言。
+title: 快速入门：翻译文本 - 文本翻译，C#
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 C# 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 7923cf3249beaf713b91ba0e5ea4f70f34841b3c
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e60b2a9ea7c56352a1b4dfb65537ba6dc57fcb68
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43768642"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365955"
 ---
 # <a name="quickstart-translate-text-with-c35"></a>快速入门：使用 C&#35; 翻译文本
 
-本快速入门使用文本翻译 API 将文本从一种语言翻译成另一种语言。
+在该快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
+
+该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +29,7 @@ ms.locfileid: "43768642"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="translate-request"></a>Translate 请求
+## <a name="translate-request"></a>翻译请求
 
 以下代码使用 [Translate](./reference/v3-0-translate.md) 方法将源文本从一种语言翻译为另一种语言。
 
@@ -90,9 +92,9 @@ namespace TranslatorTextQuickStart
 }
 ```
 
-## <a name="translate-response"></a>Translate 响应
+## <a name="translate-response"></a>翻译响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

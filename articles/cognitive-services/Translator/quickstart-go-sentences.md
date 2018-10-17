@@ -1,37 +1,37 @@
 ---
-title: 文本翻译使用 Go 获取句子长度 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Go 找到文本中句子的长度。
+title: 快速入门：获取句子长度 - 文本翻译，Go
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Go 查明文本中句子的长度。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 441f7c9ced91899896b63f4925f1ec204a9f52fb
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 34b30179d674a42f6c9c2c358c0feb6e083089f6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43768733"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129448"
 ---
 # <a name="quickstart-get-sentence-lengths-with-go"></a>快速入门：使用 Go 获取句子长度
 
-本快速入门使用文本翻译 API 找到文本中句子的长度。
+在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此没有外部依赖关系。
+需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用**核心**库，因此不需要外部依赖项。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="breaksentence-request"></a>BreakSentence 请求
+## <a name="breaksentence-request"></a>断句请求
 
 以下代码使用 [BreakSentence](./reference/v3-0-break-sentence.md) 方法将源文本分解为句子。
 
-1. 在喜欢使用的代码编辑器中新建一个 Go 项目。
+1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 使用“.go”扩展名保存文件。
@@ -106,7 +106,7 @@ func main() {
 
 ## <a name="breaksentence-response"></a>BreakSentence 响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [
@@ -126,7 +126,7 @@ func main() {
 
 ## <a name="next-steps"></a>后续步骤
 
-从 GitHub 上的 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) 中浏览认知服务 API 的 Go 包。
+从 GitHub 上的 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) 中浏览认知服务 API 的 Go 程序包。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Go 包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+> [浏览 GitHub 上的 Go 程序包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)

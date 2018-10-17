@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Node.js 获取支持的语言 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及在认知服务中将文本翻译 API 与 Node.js 配合使用的示例。
+title: 快速入门：获取受支持的语言 - 文本翻译，Node.js
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Node.js 获取翻译、音译和字典查找支持的语言列表及示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: dd37aab3707c6f06b8cc2e942366e19746694252
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a3b9dde8983b87a63858b3eb1381f7c74545cb1a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768673"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122852"
 ---
 # <a name="quickstart-get-supported-languages-with-nodejs"></a>快速入门：使用 Node.js 获取支持的语言
 
-在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及使用文本翻译 API 的示例。
+在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "43768673"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="languages-request"></a>Languages 请求
+## <a name="languages-request"></a>语言请求
 
 以下代码使用 [Languages](./reference/v3-0-languages.md) 方法获取翻译、音译、查询字典支持的语言列表和示例。
 
@@ -89,9 +89,9 @@ let GetLanguages = function () {
 GetLanguages ();
 ```
 
-## <a name="languages-response"></a>Languages 响应
+## <a name="languages-response"></a>语言响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 {

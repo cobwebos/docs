@@ -22,7 +22,7 @@
 #### [IoT Edge 模块](./iot-edge-module.md) 
 #### [咨询服务](./consulting-services.md)  
 #### [Office 365、Dynamics 365 和 Power BI 发布指南](./appsource-offer-publishing-guide.md)
-#### [使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表](./enable-appsource-marketplace-using-azure-ad.md)
+#### [使用 Azure Active Directory 启用 AppSource 和市场列表](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 #### [首选解决方案](./preferred-solutions.md) 
@@ -115,7 +115,7 @@
 ## [管理用户](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [GDPR 符合性](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
-## 见解
+## 洞察力
 ### [入门](./cloud-partner-portal-orig/si-getting-started.md)
 ### [新增功能](./cloud-partner-portal-orig/si-changes.md)
 ### [Web Analytics](./cloud-partner-portal-orig/web-analytics.md)

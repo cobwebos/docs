@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917034"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391362"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>对复制到 Azure 的 VMware VM 和物理服务器进行故障转移和故障回复
 
-本教程介绍如何将 VMware VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 本教程介绍如何执行以下操作：
+本教程介绍如何将 VMware VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 验证 VMware VM 属性以检查是否符合 Azure 要求
@@ -67,7 +67,7 @@ ms.locfileid: "37917034"
 1. 在“设置” > “复制的项”中，单击“VM”>“故障转移”。
 
 2. 在“故障转移”中，选择要故障转移到的“恢复点”。 可以使用以下选项之一：
-   - **最新**（默认选项）：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
+   - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将 VM 故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
    - **最新的应用一致**：此选项将 VM 故障转移到由 Site Recovery 处理的最新应用一致恢复点。
    - 自定义：指定恢复点。
@@ -82,11 +82,14 @@ ms.locfileid: "37917034"
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>连接到 Azure 中已故障转移的虚拟机
 
-1. 故障转移后，请转到虚拟机，并通过[连接](../virtual-machines/windows/connect-logon.md)到它来进行验证。
-2. 验证后，请单击“提交”，以完成故障转移后虚拟机的恢复点。 提交后，系统会删除所有其他的可用恢复点。 这样就完成了故障转移活动。
+1. 如果想要在故障转移后使用 RDP/SSH 连接到 Azure VM，请遵照[此处](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)表格中汇总的要求。
+2. 故障转移后，请转到虚拟机，并通过[连接](../virtual-machines/windows/connect-logon.md)到它来进行验证。
+3. 验证后，请单击“提交”，以完成故障转移后虚拟机的恢复点。 提交后，系统会删除所有其他的可用恢复点。 这样就完成了故障转移活动。
 
 >[!TIP]
 > 使用“更改恢复点”，可以在不满意已进行故障转移的虚拟机的情况下，在故障转移后选择另一恢复点。 **提交**后，此选项将不再可用。
+
+按照[此处](site-recovery-failover-to-azure-troubleshoot.md)所述步骤对故障转移后的任何连接问题进行故障排除。
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>准备对 Azure VM 进行重新保护
 

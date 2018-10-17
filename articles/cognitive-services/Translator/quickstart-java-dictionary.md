@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Java 查找备用翻译 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用文本翻译 API 和 Java 查找上下文中术语的备用翻译和示例。
+title: 快速入门：查找备用翻译 - 文本翻译，Java
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Java 查找字词的备用翻译和示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 0abb9c1a39b8183730bacde285eff05607754191
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c0e7fc3d51772df40bd5da7c762c15c40ad5744f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768708"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127068"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-java"></a>快速入门：使用 Java 查找备用翻译和使用情况
 
-在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
+在该快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 
 ## <a name="prerequisites"></a>先决条件
 

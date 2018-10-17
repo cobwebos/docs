@@ -1,49 +1,49 @@
 ---
 title: 快速入门：提取印刷文本 (OCR) - REST、Python - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用计算机视觉和 Python 从图像中提取打印的文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 Python 从图像中提取印刷体文本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: f14f58113ae7709fd7f88f7663dfe7aee50416cd
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b02a3f382dd0049b635ca2ca99c2e102d364a1f6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840131"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629357"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-python---computer-vision"></a>快速入门：提取印刷文本 (OCR) - REST、Python - 计算机视觉
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Python 提取印刷体文本 (OCR)
 
-在本快速入门中，你将使用计算机视觉从图像中提取打印的文本，也称为光学字符识别 (OCR)。
+在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
 可以在 [MyBinder](https://mybinder.org) 上使用 Jupyter 笔记本以分步方式运行此快速入门。 若要启动活页夹，请选择以下按钮：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
+
 ## <a name="prerequisites"></a>先决条件
 
-若要使用计算机视觉，需要一个订阅密钥；请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 如果想在本地运行此示例，必须安装 [Python](https://www.python.org/downloads/)。
+- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
 
-## <a name="extract-printed-text"></a>提取打印的文本
+## <a name="create-and-run-the-sample"></a>创建并运行示例
 
-使用 [OCR 方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)，可以检测图像中的打印文本，并将识别的字符提取到计算机可用的字符流中。
+要创建和运行示例，请执行以下步骤：
 
-若要运行此示例，请执行以下步骤：
-
-1. 将以下代码复制到新的 Python 脚本文件。
-1. 将 `<Subscription Key>` 替换为有效订阅密钥。
-1. 如有必要，将 `vision_base_url` 值更改为你获得订阅密钥的位置。
-1. （可选）将 `image_url` 值更改为另一个图像。
-1. 运行该脚本。
-
-以下代码使用 Python `requests` 库调用计算机视觉分析图像 API。 它将结果作为 JSON 对象返回。 API 密钥是通过 `headers` 字典传入的。
-
-## <a name="ocr-request"></a>OCR 请求
+1. 将以下代码复制到文本编辑器中。
+1. 必要时在代码中进行如下更改：
+    1. 将 `subscription_key` 的值替换为你的订阅密钥。
+    1. 如有必要，请将 `vision_base_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的计算机视觉资源的终结点 URL。
+    1. （可选）将 `image_url` 的值替换为要从中提取印刷体文本的另一图像的 URL。
+1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-printed-text.py`。
+1. 打开“命令提示符”窗口。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-printed-text.py`。
 
 ```python
 import requests
@@ -104,9 +104,9 @@ for word in word_infos:
 plt.axis("off")
 ```
 
-## <a name="ocr-response"></a>OCR 响应
+## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回，例如：
+JSON 中返回成功响应。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -207,9 +207,13 @@ plt.axis("off")
 }
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要该文件时，请将其删除。
+
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 Python 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 若要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+浏览一款 Python 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API Python 教程](../Tutorials/PythonTutorial.md)

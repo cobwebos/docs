@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086820"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718077"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ ms.locfileid: "43086820"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. 允许 Azure 服务访问 SQL Server。 验证是否为运行 SQL Server 的服务器启用“允许访问 Azure 服务”设置。 此设置允许数据工厂将数据写入到 SQL Server 实例。 若要验证并启用此设置，请执行以下步骤：
-
-    a. 在左侧选择“更多服务”，然后选择“SQL Server”。
-
-    b. 选择服务器，然后选择“设置” > “防火墙”。
-
-    c. 在“防火墙设置”页中，将“允许访问 Azure 服务”选项设置为“打开”。
+2. 允许 Azure 服务访问 SQL Server。 验证是否已为运行 SQL 数据库的服务器启用“允许访问 Azure 服务”。 通过此设置，数据工厂可将数据写入数据库实例。 要验证并启用此设置，请转到 Azure SQL server >“安全性”>“防火墙和虚拟网络”，然后将“允许访问 Azure 服务”选项设置为“开” > 。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -125,7 +119,7 @@ ms.locfileid: "43086820"
     ![“属性”页](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”来添加连接
 
     ![新建源链接服务](./media/tutorial-copy-data-tool/new-source-linked-service.png)
 
@@ -154,7 +148,7 @@ ms.locfileid: "43086820"
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. 在“目标数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”来添加连接
 
     ![新建接收器链接服务](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 

@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 Ruby 查找备用翻译 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用文本翻译 API 和 Ruby 查找上下文中术语的备用翻译和示例。
+title: 快速入门：查找备用翻译 - 文本翻译，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Ruby 查找字词的备用翻译和示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 6462a48c2f15c8ac4a6b9bce49d23ea3d38dcbd5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768699"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122801"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>快速入门：使用 Ruby 查找备用翻译和使用情况
 

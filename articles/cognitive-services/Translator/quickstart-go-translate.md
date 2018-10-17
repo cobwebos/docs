@@ -1,37 +1,37 @@
 ---
-title: 文本翻译使用 Go 翻译文本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Go 将文本从一种语言翻译成另一种语言。
+title: 快速入门：翻译文本 - 文本翻译，Go
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Go 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 72d4a3bc7563d6427335f1536f787eab6d7a0de4
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: df8b938c9541a4f57a337065af0ab02fe6815c6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43768734"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126694"
 ---
 # <a name="quickstart-translate-text-with-go"></a>快速入门：使用 Go 翻译文本
 
-本快速入门使用文本翻译 API 将文本从一种语言翻译成另一种语言。
+在本快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此没有外部依赖关系。
+需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此不需要外部依赖项。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="translate-request"></a>Translate 请求
+## <a name="translate-request"></a>翻译请求
 
 以下代码使用 [Translate](./reference/v3-0-translate.md) 方法将源文本从一种语言翻译为另一种语言。
 
-1. 在喜欢使用的代码编辑器中新建一个 Go 项目。
+1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
 2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 使用“.go”扩展名保存文件。
@@ -107,9 +107,9 @@ func main() {
 }
 ```
 
-## <a name="translate-response"></a>Translate 响应
+## <a name="translate-response"></a>翻译响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [
@@ -134,7 +134,7 @@ func main() {
 
 ## <a name="next-steps"></a>后续步骤
 
-从 GitHub 上的 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) 中浏览认知服务 API 的 Go 包。
+从 GitHub 上的 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) 中浏览认知服务 API 的 Go 程序包。
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Go 包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+> [浏览 GitHub 上的 Go 程序包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)

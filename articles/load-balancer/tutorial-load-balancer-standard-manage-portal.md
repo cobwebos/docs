@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: be80c637a250e8a86727ce34f86832fef10426b7
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616389"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380036"
 ---
 # <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建和管理标准负载均衡器
 
@@ -87,12 +87,12 @@ ms.locfileid: "42616389"
 4. 为 VM 设置输入以下值：
     1. 请确保选择 *myVNet* 作为虚拟网络，并选择 *myBackendSubnet* 作为子网。
     2. 对于**公共 IP 地址**，请在“创建公共 IP 地址”窗格中，选择“标准”，然后选择“确定”。
-    3. 对于**网络安全组**，请选择“高级”，然后执行以下操作：
+    3. 对于**网络安全组**，选择“高级”，然后执行以下操作：
         1. 选择“网络安全组(防火墙)”，然后在“选择网络安全组”页上，选择“新建”。 
         2. 在“选择网络安全组”页中，对于**名称**，请输入 *myNetworkSecurityGroup* 作为新网络安全组的名称，然后选择“确定”。
 5. 单击“禁用”以禁用启动诊断。
 6. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
-7. 通过步骤 1-6 创建名为 *VM2* 和 *VM3* 的另外两台 VM，将 *myVnet* 作为其虚拟网络，将 *myBackendSubnet* 作为其子网，将 *myNetworkSecurityGroup* 作为其网络安全组。 
+7. 通过步骤 1-6 创建名为 *VM2* 和 *VM3* 的另外两个 VM，将 *myVnet* 作为其虚拟网络，将 *myBackendSubnet* 作为其子网，将 *myNetworkSecurityGroup* 作为其网络安全组。 
 
 ### <a name="create-network-security-group-rule"></a>创建网络安全组规则
 
@@ -147,9 +147,9 @@ ms.locfileid: "42616389"
 2. 在“设置”下单击“后端池”，然后单击“添加”。
 3. 在“添加后端池”页上执行以下操作：
    - 对于“名称”，请键入 *myBackendPool* 作为后端池的名称。
-   - 对于**虚拟网络**，请选择 *myVNet*。
+   - 对于**虚拟网络**，选择 *myVNet*。
    - 在“虚拟机”下添加 *myVM1*、*myVM2*、*my VM3* 及其对应的 IP 地址，然后选择“添加”。
-4. 确保负载均衡器后端池设置显示所有 VM - *myVM1*、*myVM2* 和 *myVM3*，然后单击“确定”。
+4. 检查以确保负载均衡器后端池设置显示所有 VM - *myVM1*、*myVM2* 和 *myVM3*，然后单击“确定”。
 
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
 
@@ -196,7 +196,7 @@ ms.locfileid: "42616389"
 
 1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
 2. 在“设置”下，单击“后端池”，然后在后端池列表中单击 **myBackendPool**。
-3. 在 **myBackendPool** 页面上，在“目标网络 IP 配置”下，若要从后端中删除 *VM1*，请单击“虚拟机:myVM1”旁边的删除图标。
+3. 在 **myBackendPool** 页面上，在“目标网络 IP 配置”下，若要从后端中删除 *VM1*，请单击“虚拟机:myVM1”旁边的删除图标
 
 当 *myVM1* 不再位于后端地址池中时，可以对 *myVM1* 执行任何维护任务，例如安装软件更新。 在没有 *VM1** 的情况下，负载目前在 *myVM2* 和 *myVM3* 之间进行均衡。 
 
@@ -208,7 +208,7 @@ ms.locfileid: "42616389"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个标准负载均衡器，向其附加了 VM，配置了负载均衡器流量规则、运行状况探测，然后测试了负载均衡器。 你还从负载均衡集合中删除了一台 VM，然后又将该 VM 添加回后端地址池。 若要了解有关 Azure 负载均衡器的详细信息，请继续学习 Azure 负载均衡器教程。
+在本快速入门中，你创建了一个标准负载均衡器，向其附加了 VM，配置了负载均衡器流量规则、运行状况探测，然后测试了负载均衡器。 你还从负载均衡集中删除了一个 VM，然后又将该 VM 添加回后端地址池。 若要了解有关 Azure 负载均衡器的详细信息，请继续学习 Azure 负载均衡器教程。
 
 > [!div class="nextstepaction"]
 > [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

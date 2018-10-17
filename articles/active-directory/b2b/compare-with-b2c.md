@@ -4,22 +4,28 @@ description: Azure Active Directory B2B 协作和 Azure AD B2C 之间的区别�
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: overview
 ms.date: 03/15/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 42fbb8b08a2dc24ced436c4a6104f03ae3bca1e9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347627"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982804"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>在 Azure Active Directory 中比较 B2B 协作和 B2C
 
 Azure Active Directory (Azure AD) B2B 协作和 Azure AD B2C 都允许在 Azure AD 中与外部用户协作。 但它们有何区别？
+
+Azure AD B2B 面向的是希望与外部用户安全共享文件和资源，使其能够进行协作的企业。 Azure 管理员在 Azure 门户中设置 B2B，而由 Azure AD 负责企业与外部合作伙伴之间的联合身份验证。 用户使用其工作/学校帐户或任何电子邮件帐户通过简单的邀请和兑换过程登录到共享资源。
+ 
+Azure AD B2C 主要用于创建面向客户的应用的企业和开发人员。 借助 Azure AD B2C，开发人员可将 Azure AD 作为其应用程序的全功能标识系统，而让客户使用其已建立的标识（例如 Facebook 或 Gmail）进行登录。
+
+下表详细列出了比较结果。
 
 
 B2B 协作功能 |     Azure AD B2C 独立产品/服务

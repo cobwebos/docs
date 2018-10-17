@@ -1,22 +1,23 @@
 ---
-title: 使用 Python 和自定义视觉 API 进行对象检测 - Azure 认知服务 | Microsoft Docs
-description: 探究一个使用 Microsoft 认知服务中的自定义视觉 API 的基本 Windows 应用。 创建项目、添加标记、上传图像、训练项目并使用默认终结点进行预测。
+title: 教程：创建对象检测项目 - 自定义视觉 API，Python
+titlesuffix: Azure Cognitive Services
+description: 创建项目、添加标记、上载图像、定型你的项目并使用默认终结点进行预测。
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: 37bdb9ebf7c74586c728e171a9897903b8ad2ee8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213575"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363694"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-python"></a>通过 Python 使用自定义视觉 API 构建对象检测项目
+# <a name="tutorial-build-an-object-detection-project-with-python"></a>教程：使用 Python 构建对象检测项目
 
 探索一个使用计算机视觉 API 创建对象检测项目的基本 Python 脚本。 创建该项目后，可以添加标记的区域、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 将此开源示例用作通过使用自定义视觉 API 构建自己的应用的模板。
 

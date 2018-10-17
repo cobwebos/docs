@@ -1,44 +1,46 @@
 ---
 title: 快速入门：生成缩略图 - REST、Go - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本快速入门将在认知服务中使用计算机视觉和 Go 从图像生成缩略图。
+description: 在该快速入门中，你将使用计算机视觉 API 和 Go 基于图像生成缩略图。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 4b9e8fb97b5d389e9113a549152eceaa49b60811
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: e49c664fc17750d427d33fbb49b3af9ea10002ad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840730"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629537"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-go---computer-vision"></a>快速入门：生成缩略图 - REST、Go - 计算机视觉
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Go 生成缩略图
 
-本快速入门使用计算机视觉从图像生成缩略图。
+在本快速入门中，你将使用计算机视觉的 REST API 基于图像生成缩略图。 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用计算机视觉，需要订阅密钥；请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 必须安装有 [Go](https://golang.org/dl/)。
+- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
 
-## <a name="get-thumbnail-request"></a>Get Thumbnail 请求
+## <a name="create-and-run-the-sample"></a>创建并运行示例
 
-使用 [Get Thumbnail 方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)，可以生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
+要创建和运行示例，请执行以下步骤：
 
-若要运行此示例，请执行以下步骤：
-
-1. 将以下代码复制到编辑器中。
-1. 将 `<Subscription Key>` 替换为有效订阅密钥。
-1. 如有必要，将 `uriBase` 值更改为你获得订阅密钥的位置。
-1. （可选）将 `imageUrl` 值更改为要分析的图像。
-1. 使用 `.go` 扩展名保存文件。
-1. 在安装了 Go 的计算机上打开命令提示符。
-1. 生成文件，例如：`go build get-thumbnail.go`。
-1. 运行文件，例如：`get-thumbnail`。
+1. 将以下代码复制到文本编辑器中。
+1. 必要时在代码中进行如下更改：
+    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
+    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
+    1. （可选）将 `imageUrl` 的值替换为生成缩略图时所依据的另一图像的 URL。
+1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`get-thumbnail.go`。
+1. 打开“命令提示符”窗口。
+1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build get-thumbnail.go`。
+1. 在提示符处，运行所编译的包。 例如，`get-thumbnail`。
 
 ```go
 package main
@@ -53,12 +55,17 @@ import (
 )
 
 func main() {
-    // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+    // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "<Subscription Key>"
 
-    // You must use the same location in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URL below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail"
     const imageUrl =
@@ -70,12 +77,12 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
-    // Create the Http client
+    // Create the HTTP client
     client := &http.Client{
         Timeout: time.Second * 2,
     }
 
-    // Create the Post request, passing the image URL in the request body
+    // Create the POST request, passing the image URL in the request body
     req, err := http.NewRequest("POST", uri, reader)
     if err != nil {
         panic(err)
@@ -100,23 +107,27 @@ func main() {
         panic(err)
     }
 
-    // Parse the Json data
+    // Parse the JSON data
     var f interface{}
     json.Unmarshal(data, &f)
 
-    // Format and display the Json result
+    // Format and display the JSON result
     jsonFormatted, _ := json.MarshalIndent(f, "", "  ")
     fmt.Println(string(jsonFormatted))
 }
 ```
 
-## <a name="get-thumbnail-response"></a>Get Thumbnail 响应
+## <a name="examine-the-response"></a>检查响应
 
-成功的响应包含缩略图二进制文件。 如果请求失败，则响应包含错误代码和消息，以帮助确定出错的地方。
+成功的响应包含缩略图二进制数据。 如果请求失败，则响应包含错误代码和消息，以帮助确定出错的地方。
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除所编译的包以及编译此包所基于的文件，然后关闭命令提示符窗口和文本编辑器。
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和地标，创建缩略图以及提取打印文本和手写文本的计算机视觉 API。 若要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+了解计算机视觉 API，它用于分析图像、检测名人和地标、创建缩略图，并提取印刷体文本和手写文本。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

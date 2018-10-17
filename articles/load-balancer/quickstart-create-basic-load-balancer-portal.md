@@ -17,18 +17,18 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304872"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378425"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共基本负载均衡器
 
 负载均衡将传入请求分布到多个虚拟机 (VM)，从而提供更高级别的可用性和可伸缩性。 可以使用 Azure 门户创建负载均衡器，以便对虚拟机进行负载均衡。 本快速入门介绍如何创建网络资源、后端服务器，以及“基本”定价层的负载均衡器。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -36,7 +36,7 @@ ms.locfileid: "34304872"
 
 ## <a name="create-a-basic-load-balancer"></a>创建基本负载均衡器
 
-在本部分，我们将使用门户创建公共基本负载均衡器。 使用门户创建公共 IP 和负载均衡器资源时，会将公共 IP 地址配置为负载均衡器的前端。 前端的名称为 **LoadBalancerFrontend**。
+在本部分，我们将使用门户创建公共基本负载均衡器。 使用门户创建公共 IP 和负载均衡器资源时，会将公共 IP 地址配置为负载均衡器的前端。 前端的名称为 **myLoadBalancer**。
 
 1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。
 2. 在“创建负载均衡器”窗格中输入以下值：

@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 PHP 翻译文本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用文本翻译 API 和 PHP 将文本从一种语言翻译成另一种语言。
+title: 快速入门：翻译文本 - 文本翻译，PHP
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 PHP 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: e7d86e36c6137980ba379371548de6f5e6721302
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7b9716ba3d2ec793dc9591d5487acc4ced3276fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768717"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125130"
 ---
 # <a name="quickstart-translate-text-with-php"></a>快速入门：使用 PHP 翻译文本
 
@@ -23,7 +23,7 @@ ms.locfileid: "43768717"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+需要 [PHP 5.6.x](http://php.net/downloads.php) 运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

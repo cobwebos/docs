@@ -8,18 +8,18 @@ ms.date: 08/23/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6910386fbc98a2a951fa78ccd99204d19046d637
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744132"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735075"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>使用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>利用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。
 
-通常，你将事件发送到用于处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
 完成本文所述步骤后，即可看到事件数据已发送到 Web 应用。
 
@@ -30,9 +30,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文需要运行最新版的 Azure CLI（2.0.24 或更高版本）。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本文需要运行最新版的 Azure CLI（2.0.24 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-如果不使用云 Shell，则必须先使用 `az login` 登录。
+如果不使用 Cloud Shell，必须先使用 `az login` 进行登录。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -40,7 +40,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 
 
-以下示例在 westcentralus 位置创建名为 `<resource_group_name>` 的资源组。  用资源组的唯一名称替换 `<resource_group_name>`。
+下面的示例在 westcentralus 位置创建了一个名为 `<resource_group_name>` 的资源组。  将 `<resource_group_name>` 替换为资源组的唯一名称。
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westcentralus
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-要使用 Blob 存储事件，需要 [Blob 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)或[常规用途 v2 存储帐户](../common/storage-account-options.md#general-purpose-v2-accounts)。 常规用途 v2 (GPv2) 是支持所有存储服务（包括 Blob、文件、队列和表）的所有功能的存储帐户。 Blob 存储帐户是将非结构化数据作为 Blob（对象）存储在 Azure 存储的专用存储帐户。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 对于仅需要块 blob 或追加 blob 存储的应用程序，我们建议使用 Blob 存储帐户。 
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 将 `<storage_account_name>` 替换为存储帐户的唯一名称，将 `<resource_group_name>` 替换为此前创建的资源组。
 
@@ -64,7 +64,7 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
+在订阅主题之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
 将 `<your-site-name>` 替换为 Web 应用的唯一名称。 Web 应用名称必须唯一，因为它是 DNS 条目的一部分。
 
@@ -79,13 +79,13 @@ az group deployment create \
 
 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
-应该看到当前未显示任何消息的站点。
+应会看到站点上当前未显示任何消息。
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../../includes/event-grid-register-provider-cli.md)]
 
 ## <a name="subscribe-to-your-storage-account"></a>订阅存储帐户
 
-订阅主题，以告知事件网格要跟踪哪些事件，以及要将这些事件发送到何处。 以下示例订阅所创建的存储帐户，并将 Web 应用中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为事件订阅的名称。 对于 `<resource_group_name>` 和 `<storage_account_name>`，请使用此前创建的值。
+订阅主题，以告知事件网格要跟踪哪些事件以及要将这些事件发送到哪个位置。 以下示例订阅所创建的存储帐户，并将 Web 应用中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为事件订阅的名称。 对于 `<resource_group_name>` 和 `<storage_account_name>`，请使用此前创建的值。
 
 Web 应用的终结点必须包括后缀 `/api/updates/`。
 
@@ -99,13 +99,13 @@ az eventgrid event-subscription create \
   --endpoint $endpoint
 ```
 
-再次查看 Web 应用，并注意订阅验证事件已发送给它。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
+再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
 ![查看订阅事件](./media/storage-blob-event-quickstart/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>触发 Blob 存储中的事件
 
-现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 首先配置存储帐户的名称和密钥，然后创建容器，再创建并上传文件。 同样，对于 `<storage_account_name>` 和 `<resource_group_name>`，请使用此前创建的值。
+现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 首先，我们来配置存储帐户的名称和密钥，再创建一个容器，然后创建和上传文件。 同样，对于 `<storage_account_name>` 和 `<resource_group_name>`，请使用此前创建的值。
 
 ```azurecli-interactive
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
@@ -148,7 +148,7 @@ az storage blob upload --file testfile.txt --container-name testcontainer --name
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
-如果打算继续使用此存储帐户和事件订阅，请勿清除本文中创建的资源。 如果不打算继续学习，请使用以下命令删除本文中创建的资源。
+如果计划继续使用此存储帐户和事件订阅，请不要清理在本文中创建的资源。 如果不打算继续学习，请使用以下命令删除本文中创建的资源。
 
 将 `<resource_group_name>` 替换为上面创建的资源组。
 
@@ -160,5 +160,5 @@ az group delete --name <resource_group_name>
 
 了解如何创建主题和事件订阅以后，即可进一步学习 Blob 存储事件以及事件网格的功能：
 
-- [对 Blob 存储事件作出反应](storage-blob-event-overview.md)
+- [响应 Blob 存储事件](storage-blob-event-overview.md)
 - [关于事件网格](../../event-grid/overview.md)

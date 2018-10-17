@@ -1,59 +1,92 @@
 ---
-title: 在 Azure AD 中创建用户的组 |Microsoft Docs
-description: 如何在 Azure Active Directory 中创建组并向该组添加成员
+title: 如何使用 Azure Active Directory 创建基本组并添成员 |Microsoft Docs
+description: 了解如何使用 Azure Active Directory 创建基本组。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: quickstart
-ms.date: 08/04/2017
+ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857715"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574906"
 ---
-# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>在 Azure Active Directory 中创建组并添加成员
-> [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-groups-create-azure-portal.md)
-> * [PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
+# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>如何使用 Azure Active Directory 创建基本组并添成员
 
-本文介绍如何在 Azure Active Directory 中创建和填充新组。 使用组来执行管理任务，例如一次向多个用户或设备分配许可证或权限。
+使用 Azure Active Directory (Azure AD) 门户可以创建基本组。 为了更好地阐述本文，资源所有者（管理员）将基本组添加到单个资源，基本组中包含了需要访问该资源的特定成员（员工）。 有关更复杂的方案（包括动态成员身份和规则创建），请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
 
-## <a name="how-do-i-create-a-group"></a>如何创建组？
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，在文本框中输入“用户和组”，并选择 **Enter**。
+## <a name="create-a-basic-group-and-add-members"></a>创建基本组并添加成员
+创建基本组和添加成员可以同时进行。
 
-   ![打开“用户管理”](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. 在“用户和组”边栏选项卡中，选择“所有组”。
+### <a name="to-create-a-basic-group-and-add-members"></a>创建基本组并添加成员
+1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-   ![打开“组”边栏选项卡](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. 在“用户和组 - 所有组”边栏选项卡中，选择“添加”命令。
+2. 依次选择“Azure Active Directory”、“组”、“新建组”。
 
-   ![选择“添加”命令](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. 在“组”边栏选项卡中，为组添加名称和描述。
-6. 要选择要添加到组的成员，请在“成员身份类型”框中选择“已分配”，并选择“成员”。 有关如何动态管理组的成员身份的详细信息，请参阅[使用属性创建组成员身份的高级规则](../users-groups-roles/groups-dynamic-membership.md)。
+    ![显示组的 Azure AD](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-   ![选择要添加的成员](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. 在“成员”边栏选项卡中，选择一个或多个要添加到组的用户或设备，然后选择边栏选项卡底部的“选择”按钮以将它们添加到组。 “用户”框会通过将输入内容与用户或设备名称的任何部分进行匹配来筛选显示内容。 该框中不允许使用任何通配符。
-8. 完成向组添加成员后，请在“组”边栏选项卡中选择“创建”。    
+3. 在“组”页面中，填写必填信息。
 
-   ![创建组确认](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
+    ![已填写示例信息的“新建组”页](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
+    - **组类型（必填）。** 选择预定义的组类型。 这包括：
+        
+        - **安全性**。 用于管理成员和一组用户对共享资源的计算机访问权限。 例如，可以为某一特定安全策略创建一个安全组。 以此方式可以一次性为所有成员赋予一组权限，而不必单独地向每个成员添加权限。 有关管理对资源的访问权限的详细信息，请参阅[使用 Azure Active Directory 组管理对资源的访问权限](active-directory-manage-groups.md)。
+        
+        - **Office 365**。 通过向成员赋予对共享邮箱、日历、文件、SharePoint 站点等的访问权限，提供协作机会。 你也可以通过此选项向组织外部的人员赋予对组的访问权限。 有关 Office 365 组的详细信息，请参阅[了解 Office 365 组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)。
+
+    - **组名称（必填）。** 添加组名称，可以使用容易记住以及具有某种意义的名称作为组名称。
+
+    - **组描述。** 向组添加说明（可选操作）。
+
+    - **成员身份类型（必填）。** 选择预定义的成员身份类型。 这包括：
+
+        - **已分配。** 允许添加特定用户成为该组成员并获得独特权限。 为了更好地阐述本文，我们使用此选项。
+
+        - **动态用户。** 允许使用动态组规则自动添加和删除成员。 如果成员的属性改变，系统会查看该目录的动态组规则，了解该成员是满足规则要求（添加），还是不再满足规则要求（删除）。
+
+        - **动态设备。** 允许使用动态组规则自动添加和删除设备。 如果设备的属性改变，系统会查看该目录的动态组规则，了解该设备是满足规则要求（添加），还是不再满足规则要求（删除）。
+
+        >[!Important]
+        >可以分别创建设备或用户的动态组，不能同时创建。 也不能根据设备所有者的属性创建设备组。 设备成员资格只能引用设备属性。 有关为用户和设备创建动态组的详细信息，请参阅[创建动态组并检查状态](../users-groups-roles/groups-create-rule.md)。
+
+4. 选择**创建**。
+
+    随即将创建组，该组已准备就绪，可供添加成员。
+
+5. 从“组”页面选择“成员”区域，然后从“选择成员”页面中开始搜索要添加到组的成员。
+
+    ![在组创建过程中选择你的组成员](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
+
+6. 完成添加成员后，选择“选择”。
+
+    “组概述”页已更新，可显示当前添加到组的成员数。
+
+    ![突出显示成员数的“组概述”页](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
 ## <a name="next-steps"></a>后续步骤
-这些文章提供了有关 Azure Active Directory 的更多信息。
+现在已添加一个组和至少一个用户，你可以：
 
-* [查看现有组](active-directory-groups-view-azure-portal.md)
-* [管理组的设置](active-directory-groups-settings-azure-portal.md)
-* [管理组的成员](active-directory-groups-members-azure-portal.md)
-* [管理组的成员身份](active-directory-groups-membership-azure-portal.md)
-* [管理组中用户的动态规则](../users-groups-roles/groups-dynamic-membership.md)
+- [查看组和成员](active-directory-groups-view-azure-portal.md)
+
+- [管理组成员身份](active-directory-groups-membership-azure-portal.md)
+
+- [管理组中用户的动态规则](../users-groups-roles/groups-create-rule.md)
+
+- [编辑组设置](active-directory-groups-settings-azure-portal.md)
+
+- [使用组管理对资源的访问权限](active-directory-manage-groups.md)
+
+- [使用组管理对 SaaS 应用程序的访问权限](../users-groups-roles/groups-saasapps.md)
+
+- [使用 PowerShell 命令管理组](../users-groups-roles/groups-settings-v2-cmdlets.md)
+
+- [将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

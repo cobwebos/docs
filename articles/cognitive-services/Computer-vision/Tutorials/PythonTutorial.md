@@ -1,22 +1,23 @@
 ---
-title: 计算机视觉 API Python 教程 | Microsoft Docs
-description: 了解如何通过使用 Microsoft 认知服务中的 Jupyter Notebook，借助 Python 使用计算机视觉 API。 使用常用库直观显示结果。
+title: 教程：计算机视觉 API Python
+titlesuffix: Azure Cognitive Services
+description: 通过 Jupyter Notebook 了解如何使用 Python 中的计算机视觉 API。 使用常用库直观显示结果。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: a093c2d066e70a8daf1fe1cd33ccf794ecb196af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365726"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981705"
 ---
-# <a name="computer-vision-api-python-tutorial"></a>计算机视觉 API Python 教程
+# <a name="tutorial-computer-vision-api-python"></a>教程：计算机视觉 API Python
 
 本教程介绍如何使用 Python 中的计算机视觉 API 以及如何使用某些常用库直观显示结果。 使用 Jupyter 运行本教程。 若要了解如何开始使用交互式 Jupyter Notebook，请参阅 [Jupyter 文档](http://jupyter.readthedocs.io/en/latest/index.html)。 
 

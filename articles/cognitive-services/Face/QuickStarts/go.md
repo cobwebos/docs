@@ -1,21 +1,21 @@
 ---
-title: 人脸 API Go 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用人脸 API 和 Go 从图像中检测人脸。
+title: 快速入门：检测图像中的人脸 - 人脸 API，Go
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，使用人脸 API 和 Go 检测图像中的人脸。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: nolachar
-ms.openlocfilehash: e4d7f3f605b110f51488d9a7f483fc2832a149b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0c8a70153ac9a54f3e46e5fb1a2ee3404a960dd3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "43768723"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125419"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-go"></a>快速入门：使用 Go 检测图像中的人脸
 
@@ -117,7 +117,7 @@ func main() {
 
 ## <a name="face---detect-response"></a>人脸 - 检测响应
 
-JSON 中返回了成功的响应，例如：
+成功的响应以 JSON 格式返回，例如：
 
 ```json
 [

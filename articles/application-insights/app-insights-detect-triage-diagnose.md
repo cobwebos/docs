@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23660592"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050232"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
@@ -50,7 +50,7 @@ ms.locfileid: "23660592"
 ## <a name="detect-poor-availability"></a>检测不良可用性
 Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能。 她设置了几项[可用性测试](app-insights-monitor-web-app-availability.md)：
 
-* 应用主登录页面的单一 URL 测试，http://fabrikambank.com/onlinebanking/。 她设定了 HTTP 代码 200 和文本“Welcome!”的条件。 如果此测试失败，则是网络或服务器出现了严重问题，或者可能是部署问题所致。 （或者是有人在她不知道的情况下更改了页面上的 Welcome! 消息。）
+* 应用主登陆页的单一 URL 测试， http://fabrikambank.com/onlinebanking/。 她设定了 HTTP 代码 200 和文本“Welcome!”的条件。 如果此测试失败，则是网络或服务器出现了严重问题，或者可能是部署问题所致。 （或者是有人在她不知道的情况下更改了页面上的 Welcome! 消息。）
 * 更深入的多步骤测试可记录并获取当前帐户列表，并以此查看每个页面上的一些关键详细信息。 此测试验证指向帐户数据库的链接是否在正常运行。 她使用虚构的客户 ID：保留了其中一些，用作测试。
 
 设置了这些测试后，Marcela 相信团队可快速知道任何中断。  
@@ -64,7 +64,7 @@ Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能�
 ## <a name="monitor-performance"></a>监视性能
 在 Application Insights 的“概述”页上，有一张表格显示各种[关键指标](app-insights-web-monitor-performance.md)。
 
-![各种指标](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![概述性能 KPI 图的屏幕截图](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 浏览器页面加载时间派生自直接从网页发送的遥测。 服务器响应时间、服务器请求计数和失败的请求计数均在 Web 服务器中测量，并从此处发送到 Application Insights。
 
@@ -72,7 +72,7 @@ Marcela 有点担忧服务器响应图表。 该图显示服务器从用户浏�
 
 她打开“服务器”表格：
 
-![各种指标](./media/app-insights-detect-triage-diagnose/06.png)
+![各种指标](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 看起来没有任何资源限制的迹象，因此服务器响应图表中的凸起形状可能就是一个巧合。
 
@@ -154,7 +154,7 @@ TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent �
 ## <a name="monitor-proactively"></a>主动监视
 Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看 [响应时间](app-insights-web-monitor-performance.md)，观察整体数字和最慢请求表以及异常计数。  
 
-![响应时间图和服务器响应时间网格。](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![响应时间图和服务器响应时间网格。](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 她可以评估每个部署的性能影响，通常是将每周的情况与上一周情况进行比较。 如果情况突然恶化，她就向相关开发人员提出异常。
 
@@ -168,8 +168,6 @@ Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会�
 有用的会审策略是自行尝试。 如果遇到相同的问题，就知道这确实一个问题。
 
 哪一部分用户会受影响？ 要得到粗略答案，请会失败率除以会话计数。
-
-![失败的请求和会话图](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 缓慢响应时，将最慢响应请求表与每页的使用频率进行比较。
 
@@ -203,7 +201,6 @@ Fabrikam Bank 开发团队采用比在使用 Application Insights 之前更结�
 * 他们在 Application Insights“概述”页中根据特定度量值设置性能目标。
 * 他们从开始就设计将性能度量值插入应用程序，例如测量用户通过“漏斗”的指标。  
 
-
 ## <a name="monitor-user-activity"></a>监视用户活动
 如果响应时间始终良好且极少出现异常，则开发团队可转为处理可用性。 他们就可考虑如何提升用户体验，以及如何鼓励更多用户实现所需目标。
 
@@ -211,7 +208,7 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 
 例如，用户的典型网站浏览过程反映在清晰的“漏斗图”上。 很多客户要查找不同类型贷款的费率。 其中部分客户要填写报价单。 在获得报价的客户当中，少部分人要进行贷款。
 
-![页面视图计数](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![页面视图计数](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 通过思考在哪里失去了最多客户，企业可以了解如何使更多用户继续前进到漏斗底部。 在某些情况下可能会出现用户体验 (UX) 失败，例如“下一步”按钮很难找到或说明不明显。 更有可能的是，客户减少是有更重要的业务原因：可能是贷款利率过高。
 

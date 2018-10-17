@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e99d6e917df1bf3bbb4658524f1b3e249a01da72
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ff3659bd0f4001424ce27484f08a645f364c2ef6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433878"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054632"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
-在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本教程介绍如何使用 WordPress 和 MySQL 创建多容器应用。 你将在 Cloud Shell 中完成本教程，但是也可以使用 [Cloud Shell](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。
+在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本教程介绍如何使用 WordPress 和 MySQL 创建多容器应用。 你将在 Cloud Shell 中完成本教程，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 命令行工具（2.0.32 或更高版本）在本地运行这些命令。
 
 本教程介绍以下操作：
 > [!div class="checklist"]
@@ -588,6 +588,30 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql_server_
 }
 ```
 
+### <a name="create-a-multi-container-app-kubernetes"></a>创建多容器应用 (Kubernetes)
+
+在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myResourceGroup` 资源组和 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
+
+```bash
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml
+```
+
+创建 Web 应用后，Cloud Shell 会显示类似于以下示例的输出：
+
+```json
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "<app_name>.azurewebsites.net",
+  "enabled": true,
+  < JSON data removed for brevity. >
+}
+```
+
 ### <a name="configure-database-variables-in-wordpress"></a>在 WordPress 中配置数据库变量
 
 若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量。 若要进行此项更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 应用设置区分大小写，用空格分开。
@@ -645,30 +669,6 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
     "value": "TRUE"
   }
 ]
-```
-
-### <a name="create-a-multi-container-app-kubernetes"></a>创建多容器应用 (Kubernetes)
-
-在 Cloud Shell 中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myResourceGroup` 资源组和 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称。
-
-```bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml
-```
-
-创建 Web 应用后，Cloud Shell 会显示类似于以下示例的输出：
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
 ```
 
 ### <a name="browse-to-the-app"></a>浏览到应用

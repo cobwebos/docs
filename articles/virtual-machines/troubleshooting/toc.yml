@@ -7,8 +7,6 @@ items:
     href: allocation-failure.md
   - name: 经典部署分配失败
     href: allocation-failure-classic.md
-- name: 启动诊断
-  href: boot-diagnostics.md
 - name: RDP
   items:
   - name: 重置 RDP
@@ -105,6 +103,8 @@ items:
 - name: 启动错误
   href: boot-error-troubleshoot.md
   items:
+  - name: 启动诊断
+    href: boot-diagnostics.md
   - name: BitLocker 错误
     href: troubleshoot-bitlocker-boot-error.md
   - name: 检查文件系统错误
@@ -115,15 +115,17 @@ items:
     href: troubleshoot-vm-boot-configure-update.md
   - name: 关键服务失败
     href: troubleshoot-critical-service-failed-boot-error.md
+  - name: 在更新 Windows 时停滞
+    href: troubleshoot-stuck-updating-boot-error.md
 - name: 限制错误
   href: troubleshooting-throttling-errors.md
 - name: 使用嵌套虚拟化
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 了解系统重启
   href: understand-vm-reboot.md
-ms.openlocfilehash: a2ef58c999d2d438a23fb9e3fd214c6bf677de00
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 95c1a53d1c271bf5a274ba8dbb27401e9b785dad
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067378"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354081"

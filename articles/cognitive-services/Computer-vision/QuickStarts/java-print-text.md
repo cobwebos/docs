@@ -1,65 +1,65 @@
 ---
-title: 快速入门：提取打印的文本 (OCR) - REST、Java - 计算机视觉
+title: 快速入门：提取印刷体文本 (OCR) - REST、Java - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本快速入门将在认知服务中使用计算机视觉和 Java 从图像中提取打印的文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 Java 从图像中提取印刷体文本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 4fcdf6254fc3623f89dd44b3c5537e78255b6a33
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: a0b5967e8796f494e14dde3728c785191c2882d5
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840176"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632494"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-java---computer-vision"></a>快速入门：提取打印的文本 (OCR) - REST、Java - 计算机视觉
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Java 提取印刷体文本 (OCR)
 
-本快速入门使用计算机视觉从图像中提取打印的文本，也称为光学字符识别 (OCR)。
+在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用计算机视觉，需要订阅密钥；请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 必须已安装 [Java&trade; Platform 标准版开发工具包 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)（JDK 7 或 8）。
+- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
 
-## <a name="ocr-request"></a>OCR 请求
+## <a name="create-and-run-the-sample-application"></a>创建和运行示例应用程序
 
-使用 [OCR 方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)，可以检测图像中的打印文本，并将识别的字符提取到计算机可用的字符流中。
+要创建和运行示例，请执行以下步骤：
 
-若要运行此示例，请执行以下步骤：
+1. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。 如果此选项可用，请从命令行应用程序模板创建 Java 项目。
+1. 将以下库导入到你的 Java 项目中。 如果使用 Maven，则为每个库提供 Maven 坐标。
+   - [Apache HTTP 客户端](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
+   - [Apache HTTP 核心](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [JSON 库](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+1. 将以下 `import` 语句添加到包含你的项目的 `Main` 公共类的文件。  
 
-1. 创建新的命令行应用。
-1. 将 Main 类替换为以下代码（保留任何 `package` 语句）。
-1. 将 `<Subscription Key>` 替换为有效订阅密钥。
-1. 如有必要，将 `uriBase` 值更改为你获得订阅密钥的位置。
-1. （可选）将 `imageToAnalyze` 值更改为另一个图像。
-1. 将这些库从 Maven 存储库下载到项目中的 `lib` 目录：
-   * `org.apache.httpcomponents:httpclient:4.5.5`
-   * `org.apache.httpcomponents:httpcore:4.4.9`
-   * `org.json:json:20180130`
-1. 运行“Main”。
+   ```java
+   import java.net.URI;
+   import org.apache.http.HttpEntity;
+   import org.apache.http.HttpResponse;
+   import org.apache.http.client.methods.HttpPost;
+   import org.apache.http.entity.StringEntity;
+   import org.apache.http.client.utils.URIBuilder;
+   import org.apache.http.impl.client.CloseableHttpClient;
+   import org.apache.http.impl.client.HttpClientBuilder;
+   import org.apache.http.util.EntityUtils;
+   import org.json.JSONObject;
+   ```
+
+1. 将 `Main` 公共类替换为以下代码，然后根据需要在代码中进行以下更改：
+   1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
+   1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
+   1. （可选）将 `imageToAnalyze` 的值替换为要从中提取印刷体文本的另一图像的 URL。
+1. 保存，然后生成 Java 项目。
+1. 如果使用的是 IDE，请运行 `Main`。 否则，请打开一个命令提示窗口，然后使用 `java` 命令运行已编译的类。 例如，`java Main`。
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
-
-import java.net.URI;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-
 public class Main {
     // **********************************************
     // *** Update or verify the following values. ***
@@ -68,12 +68,14 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // You must use the same region in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URI below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
     //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     private static final String uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
 
@@ -103,7 +105,7 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Make the REST API call and get the response entity.
+            // Call the REST API method and get the response entity.
             HttpResponse response = httpClient.execute(request);
             HttpEntity entity = response.getEntity();
 
@@ -122,11 +124,9 @@ public class Main {
 }
 ```
 
-## <a name="ocr-response"></a>OCR 响应
+## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 OCR 结果包括检测到的文本以及区域、行和字词的边界框。
-
-程序生成的输出应类似于以下 JSON：
+JSON 中返回成功响应。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
 
 ```json
 REST Response:
@@ -217,9 +217,13 @@ REST Response:
 }
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要 Java 项目（包括已编译的类和所导入的库）时，请将其删除。
+
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 Java Swing 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 若要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+浏览一款 Java Swing 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API Java 教程](../Tutorials/java-tutorial.md)

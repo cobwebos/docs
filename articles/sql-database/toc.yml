@@ -97,6 +97,8 @@ items:
         href: sql-database-service-tiers-general-purpose-business-critical.md
       - name: 超大规模
         href: sql-database-service-tier-hyperscale.md
+      - name: 超大规模常见问题解答
+        href: sql-database-service-tier-hyperscale-faq.md
     - name: DTU 服务层
       href: sql-database-service-tiers-dtu.md
     - name: 为预留容量预付费
@@ -161,6 +163,8 @@ items:
       href: sql-database-business-continuity.md
     - name: 高可用性
       href: sql-database-high-availability.md
+    - name: 加速的数据库恢复
+      href: sql-database-accelerated-database-recovery.md
     - name: 数据库备份
       href: sql-database-automated-backups.md
     - name: 长期备份保留
@@ -179,13 +183,13 @@ items:
         href: sql-database-geo-replication-portal.md
       - name: 为副本配置安全性
         href: sql-database-geo-replication-security-config.md
-    - name: 数据库恢复
+    - name: 数据库恢复选项
       items:
-      - name: 数据库恢复
+      - name: 使用备份进行恢复
         href: sql-database-recovery-using-backups.md
-      - name: 从中断中恢复
+      - name: 中断恢复指南
         href: sql-database-disaster-recovery.md
-      - name: 执行恢复演练
+      - name: 恢复练习
         href: sql-database-disaster-recovery-drills.md
     - name: 应用设计
       items:
@@ -319,7 +323,7 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: SQL 功能比较
     href: sql-database-features.md
-  - name: 性能和优化
+  - name: 性能和监视
     items:
     - name: 智能性能
       items:
@@ -630,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: abafd9d9022b306ce090b618ecc9477cd95c714e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e39e94ccbf1da42b10cd8c618cd27c2a7eb214de
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869238"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353504"

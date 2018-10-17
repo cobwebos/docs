@@ -1,22 +1,23 @@
 ---
-title: 如何在文本分析 REST API（Azure 上的 Microsoft 认知服务）中进行语言检测 | Microsoft Docs
-description: 在本演练教程中，了解如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 检测语言。
+title: 示例：使用文本分析 REST API 检测语言
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用文本分析 REST API 检测语言。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: f8e2d9a36533c298addcf42d3cb2061e9c2d1ac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365677"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604546"
 ---
-# <a name="how-to-detect-language-in-text-analytics"></a>如何在文本分析中检测语言
+# <a name="example-how-to-detect-language-in-text-analytics"></a>示例：如何在文本分析中检测语言
 
 [语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) 评估每个文档的文本输入，并返回带有指示分析强度分数的语言标识符。 文本分析可识别多达 120 种语言。
 
@@ -68,7 +69,7 @@ ms.locfileid: "35365677"
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)中的 **API 测试控制台**来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 

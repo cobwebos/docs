@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 31a3a0618330b74c611afcdf70560ce47eeb85e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023051"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390939"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
@@ -36,6 +36,8 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 如果某个终结点不可访问，连接故障排除机制会告知原因。 原因可能在于 DNS 名称解析问题、CPU、内存、VM 操作系统中的防火墙、自定义路由的跃点类型、VM 的安全规则，或出站连接的子网。 详细了解 Azure 中的[安全规则](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules)和[路由跃点类型](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 连接监视器还提供在不同时间段观察到的最小、平均和最大延迟。 了解连接的延迟后，你可能会发现，将 Azure 资源移到不同的 Azure 区域能够降低延迟。 详细了解如何确定 [Azure 区域与 Internet 服务提供商之间的相对延迟](#determine-relative-latencies-between-azure-regions-and-internet-service-providers)，以及如何使用[连接监视器](connection-monitor.md)监视 VM 与终结点之间的通信。 若要测试某个时间点的连接，而不是监视各时间段的连接（像使用连接监视器所做的那样），请使用[连接故障排除](#connection-troubleshoot)功能。
+
+网络性能监视器是一项基于云的混合网络监视解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到服务和应用程序终结点的网络连接，以及 Azure ExpressRoute 的性能。 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 详细了解[网络性能监视器](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>查看虚拟网络中的资源及其关系
 

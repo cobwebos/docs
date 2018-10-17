@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 报告 | Microsoft Docs
-description: 概述 Azure Active Directory 报告。
+title: 什么是 Azure Active Directory 报表？ | Microsoft Docs
+description: 简要介绍 Azure Active Directory 报表。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -9,23 +9,23 @@ editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 96faeaefc6c58f03328a85b626528267396121a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 220f27ccf2d3eaefd8347e1d52824be2d601d9c9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141211"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364368"
 ---
-# <a name="azure-active-directory-reporting"></a>Azure Active Directory 报告
+# <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
-可以通过 Azure Active Directory 报告了解环境情况。  
+借助 Azure Active Directory 报表，可深入了解环境当前的情况。  
 可以将提供的数据用于：
 
 - 确定用户如何使用你的应用和服务
@@ -50,6 +50,7 @@ Azure Active Directory 中有两种类型的安全报表：
 - 风险登录 - 可以通过[风险登录安全报表](concept-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
 
 访问安全报表需要什么 Azure AD 许可证？  
+
 所有版本的 Azure Active Directory 都提供标记为存在风险的用户的报表和风险登录报表。  
 但是，各版本的报表粒度级别有所不同： 
 
@@ -69,9 +70,7 @@ Azure Active Directory 中有两种类型的活动报表：
 - 登录 -  可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志报表所报告的任务。
 
 
-
-审核日志报表提供系统活动记录以确保符合性。
-可以通过提供的数据和其他内容来解决常见方案的问题，例如：
+审核日志报表提供系统活动记录以确保符合性。 可通过此数据处理常见方案，例如：
 
 - 我的租户中有人获得了访问管理员组的权限。 谁给予他们访问权限？ 
 
@@ -81,10 +80,10 @@ Azure Active Directory 中有两种类型的活动报表：
 
 
 访问审核日志报表需要什么 Azure AD 许可证？  
+
 审核日志报表适用于你有许可证的功能。 如果有特定功能的许可证，则还可以访问其审核日志信息。
 
 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)中的“比较免费版、基本版和高级版中正式推出的功能”。   
-
 
 
 可以通过“登录活动报告”找到如下所示问题的答案：
@@ -95,8 +94,8 @@ Azure Active Directory 中有两种类型的活动报表：
 
 
 访问登录活动报表需要什么 Azure AD 许可证？  
-若要访问登录活动报表，租户必须具有与之关联的 Azure AD Premium 许可证。
 
+若要访问登录活动报表，租户必须具有与之关联的 Azure AD Premium 许可证。
 
 ## <a name="programmatic-access"></a>以编程方式访问
 
@@ -105,17 +104,6 @@ Azure Active Directory 中有两种类型的活动报表：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Active Directory 中的各种报表类型，请参阅：
-
-- [标记为存在风险的用户的报表](concept-user-at-risk.md)
 - [风险登录报表](concept-risky-sign-ins.md)
 - [审核日志报表](concept-audit-logs.md)
 - [登录日志报表](concept-sign-ins.md)
-
-若要详细了解如何使用报告 API 来访问报告数据，请参阅： 
-
-- [Azure Active Directory 报告 API 入门](concept-reporting-api.md)
-
-
-<!--Image references-->
-[1]: ./media/active-directory-reporting-azure-portal/ic195031.png

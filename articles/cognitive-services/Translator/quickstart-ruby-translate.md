@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Ruby 翻译文本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Ruby 将文本从一种语言翻译成另一种语言。
+title: 快速入门：翻译文本 - 文本翻译，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Ruby 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b4d2e04d67fea140148e626ee94b46fdfcd6bac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 38b4ee3a2122e0151490ef1a29ee02d498a06b7d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768718"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126541"
 ---
 # <a name="quickstart-translate-text-with-ruby"></a>快速入门：使用 Ruby 翻译文本
 
-本快速入门使用文本翻译 API 将文本从一种语言翻译成另一种语言。
+在本快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,11 +27,11 @@ ms.locfileid: "43768718"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="translate-request"></a>Translate 请求
+## <a name="translate-request"></a>翻译请求
 
 以下代码使用 [Translate](./reference/v3-0-translate.md) 方法将源文本从一种语言翻译为另一种语言。
 
-1. 在喜欢使用的代码编辑器中新建一个 Ruby 项目。
+1. 在你喜欢使用的代码编辑器中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
@@ -79,9 +79,9 @@ json = JSON.pretty_generate(JSON.parse(result))
 puts json
 ```
 
-## <a name="translate-response"></a>Translate 响应
+## <a name="translate-response"></a>翻译响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

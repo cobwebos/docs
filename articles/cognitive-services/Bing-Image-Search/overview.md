@@ -1,6 +1,7 @@
 ---
-title: 什么是必应图像搜索？ | Microsoft Docs
-description: 了解如何使用必应图像搜索 API 搜索 Web 中的图像。
+title: 什么是必应图像搜索？
+titleSuffix: Azure Cognitive Services
+description: 必应图像搜索 API 允许你在应用程序中使用必应的认知图像搜索功能。 使用此 API 发送用户搜索查询时，可以获取并显示与必应图像类似的相关高质量图像。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
-ms.openlocfilehash: ebf8c28b843768a9081a0086b10e4adf04572ea1
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5d5d69eea3a064679cbc5ddc41891a73e77e55ea
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42889328"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295353"
 ---
 # <a name="what-is-bing-image-search"></a>什么是必应图像搜索？
 
@@ -28,9 +29,9 @@ ms.locfileid: "42889328"
 虽然必应图像搜索主要通过搜索查询来查找并返回相关图像，但此服务也提供多项其他功能，可以在 Web 上进行智能且集中化的图像检索。
 
 
-| 功能                                                                                                                                                                                 | Description                                                                                                                                                            |
+| 功能                                                                                                                                                                                 | 说明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [以实时方式建议搜索词](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries#using-and-suggesting-search-terms) | 改进应用体验，方法是在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词。 |
+| [实时建议搜索词](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries#using-and-suggesting-search-terms) | 在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词改善应用体验。 |
 | [筛选和限制图像结果](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#filtering-images)                       | 通过编辑查询参数筛选必应返回的图像。                                                                                                       |
 | [缩略图的裁剪、重设大小和显示](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | 编辑和显示必应图像搜索返回的图像的缩略图预览。                                                                                      |
 | [用户搜索查询的分段和扩展](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries#pivoting-the-query)               | 通过包括和显示必应建议的查询搜索词，扩展搜索功能。                                                                    |
@@ -40,9 +41,9 @@ ms.locfileid: "42889328"
 
 必应图像搜索 API 是一项 RESTful Web 服务，可以轻松地通过任何编程语言调用，只要该语言能够发出 HTTP 请求和分析 JSON 即可。 可以通过 [REST API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?) 或 [SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) 使用此服务。
 
-1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。 
+1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 2. 使用有效的[搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)向 API 发送请求。
-3. 通过分析返回的 JSON 消息处理 API 响应。 
+3. 通过分析返回的 JSON 消息处理 API 响应。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -64,4 +65,4 @@ ms.locfileid: "42889328"
 
 * [使用必应图像搜索 API 从 Web 获取图像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)主题介绍了如何在 Web 中搜索和获取图像。
 
-* [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)主题介绍了如何完成搜索查询的发出、自定义和分段。 
+* [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)主题介绍了如何完成搜索查询的发出、自定义和分段。

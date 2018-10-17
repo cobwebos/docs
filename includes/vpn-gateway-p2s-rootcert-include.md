@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b2a96aad793d956b3ea3de06fba74bcf68e50786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: afee9450bc1485f781eb0d70b5d4dd2f50424573
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197017"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44343166"
 ---
 可以使用通过企业解决方案生成的根证书（推荐），也可以生成自签名证书。 创建根证书以后，请将公共证书数据（不是密钥）作为 Base-64 编码的 X.509 .cer 文件导出，然后将公共证书数据上传到 Azure。
 
@@ -22,3 +22,4 @@ ms.locfileid: "30197017"
 
   * [Windows 10 PowerShell 指令](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md)：这些指令需要 Windows 10 和 PowerShell 才能生成证书。 从根证书生成的客户端证书可以安装在任何受支持的 P2S 客户端上。
   * [MakeCert 指令](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)：使用 MakeCert 的前提是，无法接触用于生成证书的 Windows 10 计算机。 MakeCert 已弃用，但仍可使用 MakeCert 生成证书。 从根证书生成的客户端证书可以安装在任何受支持的 P2S 客户端上。
+  * [Linux 说明](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)

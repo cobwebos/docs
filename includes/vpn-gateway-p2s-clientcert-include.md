@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/06/2018
 ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 8a49653b4083cbfd17656d701225dcb14f91f637
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 01a62fe7abb8a79f9afc08c0ff707cdfbb97ddac
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197021"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44343200"
 ---
 在使用点到站点连接连接到 VNet 的每台客户端计算机上，必须安装客户端证书。 客户端证书从根证书生成，安装在每个客户端计算机上。 如果未安装有效的客户端证书，而客户端尝试连接到 VNet，则身份验证会失败。
 
@@ -30,5 +29,6 @@ ms.locfileid: "30197021"
 
   * [Windows 10 PowerShell 指令](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientcert)：这些指令需要 Windows 10 和 PowerShell 才能生成证书。 生成的证书可以安装在任何受支持的 P2S 客户端上。
   * [MakeCert 指令](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)：使用 MakeCert 的前提是，无法接触用于生成证书的 Windows 10 计算机。 MakeCert 已弃用，但仍可使用 MakeCert 生成证书。 生成的证书可以安装在任何受支持的 P2S 客户端上。
+  * [Linux 说明](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
   根据上述说明从自签名根证书生成客户端证书时，该证书会自动安装在用于生成该证书的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，则需以 .pfx 格式导出该证书以及整个证书链。 这样会创建一个 .pfx 文件，其中包含的根证书信息是客户端成功进行身份验证所必需的。 有关证书导出步骤，请参阅[证书 - 导出客户端证书](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport)。

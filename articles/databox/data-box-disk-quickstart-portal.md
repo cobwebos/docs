@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143417"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378340"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户部署 Azure Data Box 磁盘（预览版）
 
@@ -68,12 +68,12 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
 此步骤大约需要 5 分钟。
 
-1. 使用随附的数据线将磁盘连接到运行受支持版本的 Windows 计算机。 有关支持的 OS 版本的详细信息，请转到 [Azure Data Box 磁盘系统要求](data-box-disk-system-requirements.md)。 
+1. 使用随附的电缆将磁盘连接到运行受支持版本的 Windows/Linux 计算机。 有关支持的 OS 版本的详细信息，请转到 [Azure Data Box 磁盘系统要求](data-box-disk-system-requirements.md)。 
 2. 解锁磁盘：
 
     1. 在 Azure 门户中，转到“常规”>“设备详细信息”并获取支持密钥。
-    2. 在计算机上下载并提取用于将数据复制到磁盘的 Data Box 磁盘解锁工具。 
-    3. 运行 *DataBoxDiskUnlock.exe* 并提供支持密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 
+    2. 在计算机上下载并提取用于将数据复制到磁盘的特定于操作系统的 Data Box Disk 解锁工具。 
+    3. 运行 Data Box Disk 解锁工具并提供密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 有关如何解锁磁盘的更多信息，请转至[在 Windows 客户端上解锁磁盘]()或[在 Linux 客户端上解锁磁盘]()。
     4. 工具会显示分配给磁盘的驱动器号。 请记下磁盘驱动器号， 后续步骤中需要用到。
 
 ## <a name="copy-data-and-verify"></a>复制数据和验证
@@ -86,9 +86,9 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
     > [!NOTE] 
     > - 所有容器和 Blob 应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
-    > - 确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB。
+    > - 确保块 Blob 的文件不超过大约 4.75 TiB，页 Blob 的文件不超过大约 8 TiB。
 
-2. （可选）复制完成后，我们建议运行 *AzureImportExport* 文件夹中提供的 `AzureExpressDiskService.cmd` 来生成校验和，以用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
+2. （可选）复制完成后，我们建议运行 *AzureImportExport* 文件夹中提供的 `DataBoxDiskValidation.cmd` 来生成校验和，以用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
 3. 拔下驱动器。 
 
 

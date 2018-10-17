@@ -1,24 +1,22 @@
 ---
-title: 快速入门：使用 FASTQ 文件输入提交工作流 | Microsoft Docs
+title: 快速入门：使用 FASTQ 文件输入提交工作流 - Microsoft 基因组学
 titleSuffix: Azure
 description: 本快速入门假定你已安装 msgen 客户端并已通过服务成功运行示例数据。
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: f093397803f21c023a2c32e42709ecfcd0e3aec7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684477"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735843"
 ---
-# <a name="submit-a-workflow-using-fastq-file-inputs"></a>使用 FASTQ 文件输入提交工作流
+# <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>使用 Microsoft 基因组学中的 FASTQ 文件输入提交工作流
 
 本快速入门演示了在输入文件为一对 FASTQ 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 本主题假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果你已成功使用提供的示例数据提交工作流，则可开始学习本教程。 
 

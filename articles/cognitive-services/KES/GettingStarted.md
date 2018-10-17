@@ -1,29 +1,30 @@
 ---
-title: 知识探索服务入门 | Microsoft Docs
-description: 使用知识探索服务 (KES) 在 Microsoft 认知服务的学术出版物中创建交互式搜索体验引擎。
+title: 示例：入门 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 使用知识探索服务 (KES) API 创建一个面向学术出版物中交互式搜索体验的引擎。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 02dc9368eef02d6fa507335ef3171e923412acca
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365771"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124008"
 ---
-<a name="getting-started"></a>
 # <a name="get-started-with-the-knowledge-exploration-service"></a>知识探索服务入门
+
 在本演练中，使用知识探索服务 (KES) 来创建针对学术出版物的交互式搜索体验引擎。 可以安装命令行工具 [`kes.exe`](CommandLine.md) 以及来自[知识探索服务 SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488) 的所有示例文件。
 
 学术出版物示例包含 Microsoft 研究人员发表的 1000 篇学术论文样本。  每篇论文都与标题、出版年份、作者以及关键词相关联。 每个作者在发布时都通过 ID、姓名和附属关系进行表示。 每个关键字可能与一组同义词相关联（例如，关键字“支持向量机”可能与同义词“svm”相关联）。
 
-<a name="defining-schema"></a>
 ## <a name="define-the-schema"></a>定义架构
+
 架构描述域中对象的属性结构。 它指定每个属性 JSON 文件格式的名称和数据类型。 以下示例是 Academic.schema 文件的内容。
 
 ```json
@@ -61,8 +62,8 @@ ms.locfileid: "35365771"
 
 有关架构定义的其他信息，请参阅[架构格式](SchemaFormat.md)。
 
-<a name="generating-data"></a>
 ## <a name="generate-data"></a>生成数据
+
 数据文件描述要索引的出版物列表，每一行都以 [JSON 格式](http://json.org/)指定论文的属性值。  下面的示例是来自数据文件 Academic.data 的单行，其格式设置具备可读性：
 
 ```
@@ -93,16 +94,16 @@ ms.locfileid: "35365771"
 
 有关详细信息，请参阅[数据格式](DataFormat.md)。
 
-<a name="building-index"></a>
 ## <a name="build-a-compressed-binary-index"></a>生成压缩的二进制索引
+
 获得架构文件和数据文件后，可以通过使用 [`kes.exe build_index`](CommandLine.md#build_index-command) 构建数据对象的压缩二进制索引。 在此示例中，从输入架构文件 Academic.schema 和数据文件 Academic.data 生成索引文件 Academic.index。 请使用以下命令：
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
 对于 Azure 之外的快速原型制作，[`kes.exe build_index`](CommandLine.md#build_index-command) 可以从包含多达 10,000 个对象的数据文件构建本地小型索引。 对于更大的数据文件，可以在 [Azure 中的 Windows VM](../../../articles/virtual-machines/windows/quick-create-portal.md) 中运行命令，也可以在 Azure 中执行远程生成。 有关详细信息，请参阅[向上扩展](#scaling-up)。
 
-<a name="authoring-grammar"></a>
 ## <a name="use-an-xml-grammar-specification"></a>使用 XML 语法规范
+
 语法指定服务可以解释的自然语言查询集，以及这些自然语言查询如何转换为语义查询表达式。 在此示例中，将使用 academic.xml 中指定的语法：
 
 ```xml
@@ -198,14 +199,14 @@ ms.locfileid: "35365771"
 
 有关语法规范语法的详细信息，请参阅[语法格式](GrammarFormat.md)。
 
-<a name="compiling-grammar"></a>
 ## <a name="compile-the-grammar"></a>编译语法
+
 在获得 XML 语法规范后，可以通过使用 [`kes.exe build_grammar`](CommandLine.md#build_grammar-command) 将其编译为二进制语法。 注意，如果语法导入一个架构，那么该架构文件需要位于与语法 XML 相同的路径中。 在此示例中，从输入 XML 语法文件 Academic.xml 中生成二进制语法文件 Academic.grammar。 请使用以下命令：
 
 `kes.exe build_grammar Academic.xml Academic.grammar`
 
-<a name="hosting-index"></a>
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>在 Web 服务中承载语法和索引
+
 对于快速原型制作，可以使用 [`kes.exe host_service`](CommandLine.md#host_service-command) 在本地计算机的 Web 服务中承载语法和索引。 然后，可以通过 [Web API](WebAPI.md) 来访问服务以验证数据的正确性以及语法设计。 在此示例中，将语法文件 Academic.grammar 和索引文件 Academic.index 承载在 http://localhost:8000/ 中。 请使用以下命令：
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
@@ -221,8 +222,8 @@ ms.locfileid: "35365771"
 
 在 Azure 外部，[`kes.exe host_service`](CommandLine.md#host_service-command) 限制为最多索引 10,000 个对象。 其他限制包括每秒 10 个请求的 API 速率，和在进程自动终止之前的总共 1000 个请求。 若要绕过这些限制，请从 [Azure 中的 Windows VM](../../../articles/virtual-machines/windows/quick-create-portal.md) 运行命令，或通过使用 [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) 命令部署到 Azure 云服务。 有关详细信息，请参阅[部署服务](#deploying-service)。
 
-<a name="scaling-up"></a>
 ## <a name="scale-up-to-host-larger-indices"></a>向上扩展以承载更大索引
+
 在 Azure 外部运行 `kes.exe` 时，索引限制为 10,000 个对象。 可以通过使用 Azure 生成和承载更大索引。 注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 或者，如果是 Visual Studio 或 MSDN 订户，则可以[激活订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 每月都将提供一些 Azure 额度。
 
 若要允许 `kes.exe` 访问 Azure 帐户，请从 Azure 门户[下载 Azure 发布设置文件](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 如果出现系统提示，则登录到所需的 Azure 帐户。 在 `kes.exe` 运行的工作目录中，将文件另存为 AzurePublishSettings.xml。
@@ -233,7 +234,7 @@ ms.locfileid: "35365771"
 
 此远程 Azure 生成功能允许在任何环境中运行 [`kes.exe build_index`](CommandLine.md#build_index-command)。 在执行远程生成时，输入架构和数据参数可以是本地文件路径，也可以是 [Azure blob存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) URL。 输出索引参数必须是 blob 存储 URL。 若要创建 Azure 存储帐户，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。 若要有效地将文件复制到 blob 存储和从中复制文件，请使用 [AzCopy](../../storage/common/storage-use-azcopy.md) 实用工具。
 
-在本例中，可以假设已经创建了以下 blob 存储容器：http://*account&lt;*&gt;.blob.core.windows.net/&lt;container&gt;/。 它包含架构 Academic.schema、引用的同义词文件 Keywords.syn 和全面的数据文件 Academic.full.data。 可以通过以下命令远程生成完整索引：
+在本例中，可以假设已经创建了以下 blob 存储容器： http://*account&lt;*&gt;.blob.core.windows.net/&lt;container&gt;/。 它包含架构 Academic.schema、引用的同义词文件 Keywords.syn 和全面的数据文件 Academic.full.data。 可以通过以下命令远程生成完整索引：
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
@@ -243,8 +244,8 @@ ms.locfileid: "35365771"
 
 分页会减慢生成过程。 为了避免分页，请使用一个 VM，其大小为 RAM 的三倍，作为生成索引的输入数据文件大小。 使用 RAM 比承载的索引大小大 1 GB 的 VM。 对于可用的 VM 大小列表，请参阅[虚拟机大小](../../../articles/virtual-machines/virtual-machines-windows-sizes.md)。
 
-<a name="deploying-service"></a>
 ## <a name="deploy-the-service"></a>部署服务
+
 在拥有语法和索引之后，便可将这项服务部署到 Azure 云服务了。 若要创建一个新的 Azure 云服务，请参阅[如何创建和部署云服务](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)。 此时不要指定部署包。  
 
 在创建云服务后，可以使用 [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) 来部署此项服务。 Azure 云服务有两个部署槽位：生产槽和过渡槽。 对于接收实时用户流量的服务，应首先部署到过渡槽。 等待服务启动并初始化服务本身。 然后，可以发送一些请求来验证部署，并验证它是否通过了基本测试。
@@ -255,12 +256,12 @@ ms.locfileid: "35365771"
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 
-对于可用的 VM 大小列表，请参阅[虚拟机大小](../../../articles/virtual-machines/virtual-machines-windows-sizes.md)。
+有关可用的 VM 大小列表，请参阅[虚拟机大小](../../../articles/virtual-machines/virtual-machines-windows-sizes.md)。
 
 在部署服务后，可以调用各种 [Web API](WebAPI.md) 来测试自然语言解释、查询完成情况、结构化的查询评估和直方图计算。  
 
-<a name="testing-service"></a>
 ## <a name="test-the-service"></a>测试服务
+
 要调试实时服务，请从 Web 浏览器浏览主机。 对于通过 [host_service](#hosting-service) 部署的本地服务，请访问 `http://localhost:<port>/`。  对于通过 [deploy_service](#deploying-service) 部署的 Azure 云服务，请访问 `http://<serviceName>.cloudapp.net/`。
 
 该页面包含一个关于基本 API 调用统计信息的链接，以及在该服务中承载的语法和索引。 该页面还包含一个交互式搜索界面，演示了 Web API 的使用。 在搜索框中输入查询，以查看[解释](interpretMethod.md)、[评估](evaluateMethod.md)和 [calchistogram](calchistogramMethod.md) API 调用的结果。 该页面的基础 HTML 源代码也可以作为一个示例，说明如何将 Web API 集成到一个应用中，从而创建丰富的、交互式搜索体验。

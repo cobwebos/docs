@@ -1,21 +1,21 @@
 ---
-title: 人脸 API Node.js 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 快速入门：检测图像中的人脸 - 人脸 API，Node.js
+titleSuffix: Azure Cognitive Services
 description: 本快速入门在认知服务中使用人脸 API 和 Node.js 从图像中检测人脸。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 15e6db9c9d92e60f18bf2d7708403fd8b0b7a990
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 53d5ed6c13c2f2822374134d8b403493079e1956
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "43768635"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123991"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-nodejs"></a>快速入门：使用 Node.js 检测图像中的人脸
 
@@ -27,11 +27,11 @@ ms.locfileid: "43768635"
 
 ## <a name="face---detect-request"></a>人脸 - 检测请求
 
-使用[人脸 - 检测 ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)方法检测图像中的人脸并返回人脸属性，包括：
+使用[人脸 - 检测](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)方法检测图像中的人脸并返回人脸属性，包括：
 
 * 人脸 ID：多个人脸 API 方案中使用的唯一 ID。
 * 人脸矩形：左侧、顶部、宽度和高度，指示人脸在图像中的位置。
-* 地标：一系列 27 点人脸地标，这些地标指向人脸组件的重要位置。
+* 特征点：一系列（27 个点）人脸特征点，这些特征点指向人脸组件的重要位置。
 * 人脸属性包括年龄、性别、笑容程度、头部姿态和面部毛发。
 
 若要运行此示例，请执行以下步骤：
@@ -90,7 +90,7 @@ request.post(options, (error, response, body) => {
 
 ## <a name="face---detect-response"></a>人脸 - 检测响应
 
-JSON 中返回了成功的响应，例如：
+成功的响应以 JSON 格式返回，例如：
 
 ```json
 [

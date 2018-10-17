@@ -1,27 +1,27 @@
 ---
-title: 使用人脸 API 标识图像中的人脸 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 使用认知服务中的人脸 API 标识图像中的人脸。
+title: 示例：标识图像中的人脸 - 人脸 API
+titleSuffix: Azure Cognitive Services
+description: 使用人脸 API 标识图像中的人脸。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 3f75db176055d9f784ec978497d7cae077ff629f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366730"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129065"
 ---
-# <a name="how-to-identify-faces-in-images"></a>如何标识图像中的人脸
+# <a name="example-how-to-identify-faces-in-images"></a>示例：如何标识图像中的人脸
 
-本指南演示如何使用事先根据已知人员创建的 PersonGroup 来标识未知人脸。 示例是利用人脸 API 客户端库采用 C# 编写的。
+本指南演示如何使用事先根据已知人员创建的 PersonGroup 来标识未知人脸。 示例是使用人脸 API 客户端库以 C# 编写的。
 
-## <a name="concepts"></a> 概念
+## <a name="concepts"></a>概念
 
 如果不熟悉本指南中的以下概念，请随时搜索[术语表](../Glossary.md)中的定义：
 
@@ -29,7 +29,7 @@ ms.locfileid: "35366730"
 - 人脸 - 标识
 - PersonGroup
 
-## <a name="preparation"></a> 准备
+## <a name="preparation"></a>准备工作
 
 本示例演示以下操作：
 
@@ -41,7 +41,7 @@ ms.locfileid: "35366730"
 - 一些包含人脸的照片。 [单击此处下载示例照片](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)（分别为 Anna、Bill 和 Clare 的照片）。
 - 一系列测试照片，可能包含或不包含 Anna、Bill 或 Clare 的人脸，用于测试身份。 也可从前面的链接选择一些示例图片。
 
-## <a name="step1"></a> 步骤 1：授权 API 调用
+## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
 
 每次调用人脸 API 都需要订阅密钥。 此密钥可以通过查询字符串参数传递，或在请求头中指定。 若要通过查询字符串传递订阅密钥，请参阅充当示例的[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)的请求 URL：
 ```
@@ -55,15 +55,15 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
  
-可从 Azure 门户的“市场”页中获取订阅密钥。 请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。
+可以从 Azure 门户的“市场”页获取订阅密钥。 请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。
 
-## <a name="step2"></a> 步骤 2：创建 PersonGroup
+## <a name="step-2-create-the-persongroup"></a>步骤 2：创建 PersonGroup
 
 在此步骤中，我们创建了名为“MyFriends”的 PersonGroup，其中包含三个人：Anna、Bill 和 Clare。 每个人都注册了多个人脸。 需在图片中检测这些人脸。 执行所有这些步骤以后，就有了一个 PersonGroup，如下图所示：
 
 ![HowToIdentify1](../Images/group.image.1.jpg)
 
-### <a name="step2-1"></a> 2.1 定义 PersonGroup 的人
+### <a name="21-define-people-for-the-persongroup"></a>2.1 定义 PersonGroup 的人
 人是标识的基本单元。 一个人可以注册一个或多个已知人脸。 不过，PersonGroup 是人的集合，每个人都是在特定的 PersonGroup 中定义的。 标识是针对 PersonGroup 进行的。 因此，任务就是先创建一个 PersonGroup，然后在其中创建人，例如 Anna、Bill、Clare。
 
 首先，需创建新的 PersonGroup。 请使用 [PersonGroup - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 来执行此操作。 相应的客户端库 API 是 FaceServiceClient 类的 CreatePersonGroupAsync 方法。 指定用于创建组的组 ID 对每个订阅来说都是唯一的 - 也可使用其他 PersonGroup API 来获取、更新或删除 PersonGroup。 定义组之后，即可使用 [PersonGroup 人 - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 在组中定义人。 客户端库方法是 CreatePersonAsync。 可以在创建每个人之后向其添加人脸。
@@ -105,7 +105,8 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 // Do the same for Bill and Clare
 ``` 
 请注意，如果图像包含多个人脸，则只添加最大的人脸。 若要向该人添加其他人脸，可以将“targetFace = left, top, width, height”格式的字符串传递给 [PersonGroup 人 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 的 targetFace 查询参数，也可以使用 AddPersonFaceAsync 方法的 targetFace 可选参数。 添加到该人的每个人脸都会获得唯一的持久人脸 ID，该 ID 可以在 [PersonGroup 人 - 删除人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e)和[人脸 - 标识](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)中使用。
-## <a name="step3"></a> 步骤 3：训练 PersonGroup
+
+## <a name="step-3-train-the-persongroup"></a>步骤 3：训练 PersonGroup
 
 必须先训练 PersonGroup，然后才能使用它来进行标识。 另外，如果添加或删除了任何人，或者任何人编辑了其注册的人脸，则必须重新训练 PersonGroup。 训练由 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 完成。 使用客户端库时，只需调用 TrainPersonGroupAsync 方法：
  
@@ -130,12 +131,14 @@ while(true)
 } 
 ``` 
 
-## <a name="step4"></a> 步骤 4：根据定义的 PersonGroup 标识人脸
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>步骤 4：根据定义的 PersonGroup 标识人脸
+
 进行标识时，人脸 API 可以计算某个测试人脸与组中所有人脸的相似度，然后返回与该测试人脸最有可比性的人。 这是通过[人脸 - 标识](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 或客户端库的 IdentifyAsync 方法完成的。
 
 测试人脸需使用前面的步骤进行测试，然后需将人脸 ID 作为另一个参数传递给标识 API。 可以立刻标识多个人脸 ID，结果会包含所有标识结果。 默认情况下，标识 API 仅返回与测试人脸最匹配的一个人。 可以根据需要指定可选参数 maxNumOfCandidatesReturned，让标识 API 返回更多候选者。
 
 以下代码演示标识过程：
+
 ```CSharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
 
@@ -167,12 +170,12 @@ using (Stream s = File.OpenRead(testImageFile))
 
 ![HowToIdentify2](../Images/identificationResult.1.jpg )
 
-## <a name="step5"></a> 步骤 5：请求大规模标识
+## <a name="step-5-request-for-large-scale"></a>步骤 5：请求大规模标识
 
 众所周知，由于以前的设计的限制，一个 PersonGroup 最多只能包含 10,000 个人。
 若要详细了解高达百万人规模的方案，请参阅[如何使用大规模功能](how-to-use-large-scale.md)。
 
-## <a name="summary"></a> 摘要
+## <a name="summary"></a>摘要
 
 本指南介绍了如何创建 PersonGroup 并标识某个人。 以下是前面解释和演示的功能的快速提醒：
 
@@ -182,7 +185,7 @@ using (Stream s = File.OpenRead(testImageFile))
 - 使用 [PersonGroup - 训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API 训练 PersonGroup
 - 使用[人脸 - 标识](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API 根据 PersonGroup 标识未知人脸
 
-## <a name="related"></a> 相关主题
+## <a name="related-topics"></a>相关主题
 
 - [如何检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [如何添加人脸](how-to-add-faces.md)

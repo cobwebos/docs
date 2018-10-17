@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 PHP 获取支持的语言 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将在认知服务中将文本翻译 API 与 PHP 配合使用来获得翻译、音译和字典查找支持的语言列表以及示例。
+title: 快速入门：获取受支持的语言 - 文本翻译 API，PHP
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 PHP 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 95b48f15ffe8cea14f9ffb7612193b819e03f5f3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2924a61a31037fcf52986d250007b906ffb40b98
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768700"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128701"
 ---
 # <a name="quickstart-get-supported-languages-with-php"></a>快速入门：使用 PHP 获取支持的语言
 

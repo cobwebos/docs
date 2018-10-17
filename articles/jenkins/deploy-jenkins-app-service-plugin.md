@@ -8,22 +8,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095761"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391159"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
 要将 Java Web 应用部署到 Azure，可在 [Jenkins 管道](/azure/jenkins/execute-cli-jenkins-pipeline)中使用 Azure CLI，也可使用 [Azure App Service Jenkins 插件](https://plugins.jenkins.io/azure-app-service)。 1.0 版 Jenkins 插件支持通过以下方式使用 Azure App Service 的 Web 应用功能进行持续部署：
-* Git 或 FTP。
+* 文件上传。
 * 适用于 Linux 版 Web 应用的 Docker。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 配置 Jenkins 以通过 Git 或 FTP 部署 Web 应用。
+> * 配置 Jenkins 以通过文件上传部署 Web 应用。
 > * 配置 Jenkins 以部署用于容器的 Web 应用。
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>创建和配置 Jenkins 实例
@@ -37,7 +37,7 @@ ms.locfileid: "43095761"
 
 Jenkins 插件可用于通过 Web 应用支持的所有语言（例如 C#、PHP、Java 和 Node.js）部署 Web 应用。 本教程使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)。 要将存储库分叉到自己的 GitHub 帐户，请选择 GitHub 界面右上角的“分叉”按钮。  
 > [!NOTE]
-> Java JDK 和 Maven 为生成 Java 项目所必需。 在 Jenkins Master 上安装这些组件，或若将代理用于持续集成，则在 VM 代理中安装组件。 
+> Java JDK 和 Maven 为生成 Java 项目所必需。 在 Jenkins Master 上安装这些组件，或若将代理用于持续集成，则在 VM 代理中安装组件。 若要部署 Java SE 应用程序，生成服务器上也需要 ZIP。
 
 若要安装组件，请使用 SSH 登录到 Jenkins 实例，并运行以下命令：
 
@@ -60,7 +60,11 @@ sudo apt-get install -y maven
 
 ## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>配置 Jenkins 以通过上传文件部署 Web 应用
 
-要将项目部署到 Web 应用，可使用 Git 或 FTP 上传生成项目（例如，采用 Java 的 WAR 文件）。
+若要将项目部署到 Web 应用，可以通过文件上传上传生成项目。 Azure 应用服务支持多个部署选项。 使用 Azure 应用服务 Jenkins 插件可以轻松完成任务并根据文件类型获得部署选项。 
+
+* 对于 Java EE 应用程序，使用 [WAR 部署](/azure/app-service/app-service-deploy-zip#deploy-war-file)。
+* 对于 Java SE 应用程序，使用 [ZIP 部署](/azure/app-service/app-service-deploy-zip#deploy-zip-file)。
+* 对于其他语言，使用 [Git 部署](/azure/app-service/app-service-deploy-local-git)。
 
 在 Jenkins 中设置作业前，需要 Azure 应用服务计划和 Web 应用以运行 Java 应用。
 
@@ -127,7 +131,7 @@ Azure App Service Jenkins 插件中管道已就绪。 可参考 GitHub 存储库
 
 Linux 版 Web 应用支持使用 Docker 进行部署。 要使用 Docker 部署 Web 应用，需提供 Dockerfile，以便使用服务运行时将 Web 应用打包到 Docker 映像。 随后，Jenkins 插件生成映像、将其推送到 Docker 注册表，并将映像部署到 Web 应用。
 
-Linux 版 Web 应用还支持 Git 和 FTP 等传统部署方法，但仅限内置语言（.NET Core、Node.js、PHP 和 Ruby）。 对于其他语言，需将应用程序代码和服务运行时一并打包到 Docker 映像并使用 Docker 进行部署。
+Linux 上的 Web 应用还支持 Git 和文件上传等传统部署方法，但仅限内置语言（.NET Core、Node.js、PHP 和 Ruby）。 对于其他语言，需将应用程序代码和服务运行时一并打包到 Docker 映像并使用 Docker 进行部署。
 
 在 Jenkins 中设置作业前，首先需要 Linux 版 Web 应用。 还需容器注册表来存储和管理专用 Docker 容器映像。 可使用 DockerHub 创建容器注册表。 本示例使用 Azure 容器注册表。
 
@@ -232,5 +236,5 @@ Linux 版 Web 应用还支持 Git 和 FTP 等传统部署方法，但仅限内�
 你已了解如何：
 
 > [!div class="checklist"]
-> * 配置 Jenkins 以通过 FTP 部署 Azure 应用服务 
+> * 配置 Jenkins 以通过文件上传部署 Azure 应用服务 
 > * 配置 Jenkins 以部署到用于容器的 Web 应用 

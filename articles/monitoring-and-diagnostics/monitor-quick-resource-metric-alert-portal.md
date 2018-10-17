@@ -9,12 +9,12 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 01955ba7a61b3eb46be6bad72c7243c4918add12
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8f3be2b1eb9c12aab212fb198283dce9ee3d3912
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263042"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982855"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>当指标值满足条件时接收通知
 
@@ -22,7 +22,7 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 有关指标和指标警报的详细信息，请参阅 [Azure Monitor 指标概述](./monitoring-overview-metrics.md)和 [Azure Monitor 警报概述](./monitoring-overview-alerts.md)。 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -47,7 +47,7 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 6. 按下图所示设置值。
 
-    ![在门户面板中配置逻辑应用触发器](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png)。 
+    ![在门户面板中配置逻辑应用触发器](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png) 
 
 7. 在设计器中，选择“重复”触发器。
 

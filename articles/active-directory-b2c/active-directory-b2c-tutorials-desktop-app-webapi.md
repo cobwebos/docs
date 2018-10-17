@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 98c86f5613116dce5423aa9ca6a2ff43e5414592
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594774"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603186"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -110,7 +110,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 5. 单击“确定”。
 
-这将注册**我的示例 WPF 应用**，以便调用受保护的**我的示例 Node.js Web API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/developer-glossary.md#authentication)，以便使用 WPF 桌面应用。 桌面应用从 Azure AD B2C 获取[授权](../active-directory/develop/developer-glossary.md#authorization-grant)，以便访问受保护的 Web API。
+这将注册**我的示例 WPF 应用**，以便调用受保护的**我的示例 Node.js Web API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/developer-glossary.md#authentication)，以使用 WPF 桌面应用程序。 桌面应用程序从 Azure AD B2C 获取[授权](../active-directory/develop/developer-glossary.md#authorization-grant)，以访问受保护的 Web API。
 
 ## <a name="update-web-api-code"></a>更新 Web API 代码
 

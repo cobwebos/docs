@@ -1,21 +1,21 @@
 ---
-title: Java for Android 人脸 API 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本教程创建一个简单的 Android 应用，以便使用认知服务人脸服务来检测和定格图像中的人脸。
+title: 教程：检测和定格图像中的人脸 - 人脸 API、Java for Android
+titleSuffix: Azure Cognitive Services
+description: 在本教程中，你将创建一个简单的 Android 应用，它使用人脸 API 来检测和定格图像中的人脸。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: nolachar
-ms.openlocfilehash: ad7b85b378db9e9687b5f8081bc9832e91e9ee5e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 50185588b77f01bced9462d5fd1ad67bb5de6e08
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125630"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129720"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 Android 应用
 

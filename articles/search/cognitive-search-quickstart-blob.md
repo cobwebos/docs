@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003690"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729986"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -32,6 +32,9 @@ ms.locfileid: "39003690"
 * 西欧
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+> [!NOTE]
+> 认知搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,12 +59,12 @@ ms.locfileid: "39003690"
 
 1. 对于“位置”，请选择“美国中南部”或“西欧”。 预览版目前只能在这些区域使用。
 
-1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 若要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
+1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
 
-  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 若要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
+  “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
   > [!NOTE]
-  > 认知搜索目前为公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
+  > 认知搜索目前提供公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 我们日后会公布此功能的定价。
 
 1. 将服务固定到仪表板，以快速访问服务信息。
 
@@ -114,9 +117,9 @@ ms.locfileid: "39003690"
 
 在本快速入门中，向导能够很好地设置合理的默认值： 
 
-+ 每个索引必须有一个名称。 对于此数据源类型，默认名称为 *azureblob-index*。
++ 每个索引必须有一个名称。 对于此数据源类型，默认名称为 azureblob-index。
 
-+ 每个文档必须有一个键。 向导会选择具有唯一值的字段。 在本快速入门中，键为 *metadata_storage_path*。
++ 每个文档必须有一个键。 向导会选择具有唯一值的字段。 在本快速入门中，键为 metadata_storage_path。
 
 + 每个字段集合必须包含字段，字段中的数据类型描述集合的值；每个字段应包含索引特性，用于描述如何在搜索方案中使用该字段。 
 

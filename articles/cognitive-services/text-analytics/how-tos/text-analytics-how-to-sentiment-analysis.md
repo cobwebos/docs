@@ -1,38 +1,39 @@
 ---
-title: 如何在文本分析 REST API（Azure 上的 Microsoft 认知服务）中进行情绪分析 | Microsoft Docs
-description: 在本演练教程中，了解如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 检测情绪。
+title: 示例：使用文本分析 REST API 分析情绪
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用文本分析 REST API 检测情绪。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 7ffd8bbe47409b459fdd308cd8d670d32f56649b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365679"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605889"
 ---
-# <a name="how-to-detect-sentiment-in-text-analytics"></a>如何在文本分析中检测情绪
+# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>示例：如何在文本分析中检测情绪
 
 [情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) 评估每个文档的文本输入并返回情绪分数，分数范围从 0（消极）到 1（积极）。
 
-此功能对于检测社交媒体、客户评论和论坛中的积极和消极情绪非常有用。 用户提供内容；服务提供模型和培训数据。
+此功能对于检测社交媒体、客户评论和论坛中的积极和消极情绪非常有用。 用户提供内容；服务提供模型和定型数据。
 
 目前，情绪分析支持英语、德语、西班牙语和法语。 其他语言以预览版提供。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
 
 ## <a name="concepts"></a>概念
 
-文本分析使用机器学习分类算法生成介于 0 到 1 之间的情绪分数。 接近 1 的评分表示积极情绪，接近 0 的评分表示消极情绪。 该模型通过大量含有情感关联的文本进行了预先训练。 目前，不支持提供用户自己的培训数据。 该模型在文本分析过程中使用了多种技术，包括文本处理、词性分析、词序和字词关联。 有关该算法的详细信息，请参阅[文本分析简介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)。
+文本分析使用机器学习分类算法生成介于 0 到 1 之间的情绪分数。 接近 1 的评分表示积极情绪，接近 0 的评分表示消极情绪。 该模型通过大量含有情绪关联的文本进行了预先定型。 目前，不支持提供用户自己的定型数据。 该模型在文本分析过程中使用了多种技术，包括文本处理、词性分析、词序和字词关联。 有关该算法的详细信息，请参阅[文本分析简介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/)。
 
-对整个文档执行情绪分析，而不是提取文本中特定实体的情绪。 实际上，当文档只包含一个或两个句子而不是大段文本时，评分准确性有提高的趋势。 在客观性评估阶段，模型会确定整个文档是客观内容还是包含情感。 客观内容占主导的文档将不会进入情绪检测阶段，将获得 .50 分数，不会进行进一步处理。 对于继续处理的文档，下一阶段会得出高于或低于 .50 的分数，具体取决于文档中检测到的情绪程度。
+对整个文档执行情绪分析，而不是提取文本中特定实体的情绪。 实际上，当文档只包含一个或两个句子而不是大段文本时，评分准确性有提高的趋势。 在客观性评估阶段，模型会确定整个文档是客观内容还是包含情感。 客观内容占主导的文档将不会进入情绪检测阶段，将获得 0.50 分数，不会进行进一步处理。 对于继续处理的文档，下一阶段会得出高于或低于 0.50 的分数，具体取决于文档中检测到的情绪程度。
 
 ## <a name="preparation"></a>准备工作
 
-当为情绪分析提供较小的文本块时，会得到更高质量的结果。 这与关键短语提取相反，关键短语提取在处理较大的文本块时表现更好。 若要从两个操作获取最佳结果，请考虑相应地重建输入。
+当为情绪分析提供较小的文本块时，会得到更高质量的结果。 这与关键短语提取相反，关键短语提取在处理较大的文本块时表现更好。 要从两个操作获取最佳结果，请考虑相应地重建输入。
 
 必须拥有以下格式的 JSON 文档：ID、文本、语言
 

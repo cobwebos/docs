@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Ruby 获取支持的语言 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及在认知服务中将文本翻译 API 与 Ruby 配合使用的示例。
+title: 快速入门：获取受支持的语言 - 文本翻译 API，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Ruby 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 1080d79f6dddfd57816989b7d1c4f95348493ad6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768696"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121832"
 ---
 # <a name="quickstart-get-supported-languages-with-ruby"></a>快速入门：使用 Ruby 获取支持的语言
 
-在本快速入门中，你将获得翻译、音译和查询字典支持的语言列表以及使用文本翻译 API 的示例。
+在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,11 +27,11 @@ ms.locfileid: "43768696"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="languages-request"></a>Languages 请求
+## <a name="languages-request"></a>语言请求
 
 以下代码使用 [Languages](./reference/v3-0-languages.md) 方法获取翻译、音译、查询字典支持的语言列表和示例。
 
-1. 在喜欢使用的代码编辑器中新建一个 Ruby 项目。
+1. 在你喜欢使用的代码编辑器中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
@@ -72,9 +72,9 @@ File.open(output_path, 'w' ) do |output|
 end
 ```
 
-## <a name="languages-response"></a>Languages 响应
+## <a name="languages-response"></a>语言响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 {

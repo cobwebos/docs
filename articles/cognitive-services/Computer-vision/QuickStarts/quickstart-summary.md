@@ -1,21 +1,21 @@
 ---
-title: 计算机视觉快速入门摘要 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在这些快速入门中，你使用认知服务中的计算机视觉来分析图像、创建缩略图并提取印刷的和手写的文本。
+title: 计算机视觉快速入门摘要
+titleSuffix: Azure Cognitive Services
+description: 在这些快速入门中，你使用计算机视觉 API 来分析图像、创建缩略图并提取印刷体和手写文本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89502fe49f5eb4b9692d7ee4233c7c46d645b3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769331"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576878"
 ---
 # <a name="quickstart-summary"></a>快速入门：摘要
 
@@ -31,7 +31,7 @@ ms.locfileid: "43769331"
 * 分析本地图像
 * 检测名人和特征点（域模型）
 * 智能生成缩略图
-* 从图像中检测并提取印刷文本 (OCR)
+* 从图像中检测并提取印刷体文本 (OCR)
 * 检测图像并从中提取手写文本
 
 每个示例中的代码类似。 但是，它们突出显示的计算机视觉功能不同，用于交换数据和服务的技术也不同，例如：
@@ -48,12 +48,12 @@ ms.locfileid: "43769331"
 | 分析本地图像    | data=image_data (byte array)                | JSON 字符串       |
 | 检测名人       | model=celebrities                           | JSON 字符串       |
 | 生成缩略图     | width=200&height=150&smartCropping=true     | Byte Array        |
-| 提取打印的文本     | language=unk&detectOrientation=true         | JSON 字符串       |
+| 提取印刷体文本     | language=unk&detectOrientation=true         | JSON 字符串       |
 | 提取手写的文本 | handwriting=true                            | URL、JSON 字符串  |
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和特征点，创建缩略图以及提取打印文本和手写文本的计算机视觉 API。
+探索用于分析图像、检测名人和地标，创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

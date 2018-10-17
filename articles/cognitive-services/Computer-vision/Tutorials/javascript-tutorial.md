@@ -1,24 +1,25 @@
 ---
-title: 计算机视觉 API JavaScript 教程 | Microsoft Docs
-description: 介绍一款使用 Microsoft 认知服务计算机视觉 API 的基本 JavaScript 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
+title: 教程：计算机视觉 API JavaScript
+titlesuffix: Azure Cognitive Services
+description: 介绍一款使用 Azure 认知服务计算机视觉 API 的基本 JavaScript 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: 89bdc0524e07c1cb6a1473e0a52791fe20271e06
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6dc6eec729fc1be3f0a859834597bf2d5785d9bc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365571"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984918"
 ---
-# <a name="computer-vision-api-javascript-tutorial"></a>计算机视觉 API JavaScript 教程
+# <a name="tutorial-computer-vision-api-javascript"></a>教程：计算机视觉 API JavaScript
 
-本教程展示 Microsoft 认知服务计算机视觉 REST API 的功能。
+本教程展示 Azure 认知服务计算机视觉 REST API 的功能。
 
 介绍一款 JavaScript 应用程序，它使用计算机视觉 REST API 执行光学符号识别 (OCR)、创建智能裁剪的缩略图，还检测、分类、标记和描述图像中的人脸等视觉特征。 在本例中，你提交一个图像 URL 进行分析和处理。 你可使用此开源示例作为模板，在 JavaScript 中自行构建使用计算机视觉 REST API 的应用。
 
@@ -32,7 +33,7 @@ JavaScript 表单应用程序已编写完毕，但不具有计算机视觉功能
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>订阅计算机视觉 API 并获得订阅密钥 
 
-创建示例前，必须先订阅 Microsoft 认知服务中随附的计算机视觉 API。 有关订阅和密钥管理的详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 主密钥和辅助密钥均适用于本教程。 
+创建示例之前，必须先订阅 Azure 认知服务中随附的计算机视觉 API。 有关订阅和密钥管理的详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 主密钥和辅助密钥均适用于本教程。 
 
 ## <a name="download-the-tutorial-project"></a>下载教程项目
 
@@ -485,9 +486,9 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 
 保存 thumbnail.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“生成缩略图”按钮以分析图像并查看结果。
 
-## <a name="read-printed-text-ocr"></a>读取打印文本 (OCR)
+## <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
 
-计算机视觉的光学字符识别 (OCR) 功能可分析图像中的打印文本。 分析完成后，OCR 返回一个 JSON 对象，它包含图像中的文本及其位置。
+计算机视觉的光学字符识别 (OCR) 功能可分析图像中的印刷体文本。 分析完成后，OCR 返回一个 JSON 对象，它包含图像中的文本及其位置。
 
 要完成教程应用程序的 OCR 功能，请执行以下步骤：
 

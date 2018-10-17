@@ -1,22 +1,23 @@
 ---
-title: 从 C# 应用程序使用自定义影像服务 - Azure 认知服务 | Microsoft Docs
-description: 介绍一款使用 Microsoft 认知服务中的自定义影像 API 的基本 C# 应用。 创建项目、添加标记、上传图像、定型项目并使用默认终结点进行预测。
+title: 教程：使用 C# 为自定义影像服务构建 Windows 应用
+titlesuffix: Azure Cognitive Services
+description: 创建项目、添加标记、上传图像、训练项目并使用默认终结点进行预测。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617428"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366635"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>从 C# 应用程序使用自定义影像服务
+# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>教程：从 C# 应用程序使用自定义影像服务
 
 了解如何从 C# 应用程序使用自定义影像服务。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 将此开源示例用作通过使用自定义影像服务 API 构建自己的 Windows 应用的模板。
 

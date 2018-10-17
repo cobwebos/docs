@@ -1,33 +1,33 @@
 ---
-title: 文本翻译使用 Python 转换文本脚本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Python 将一种语言的文本从一个脚本转换为另一个脚本。
+title: 快速入门：转换文本脚本 - 文本翻译，Python
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Python 将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 41fb0f72c5974a1ab034680a820dca6aa7bbdc6d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 24fe0dc23703bdca4ce74ba1a527990a70ac2ffc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768675"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122105"
 ---
 # <a name="quickstart-transliterate-text-with-python"></a>快速入门：使用 Python 音译文本
 
-本快速入门将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
+在该快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Python 3.x](https://www.python.org/downloads/) 运行此代码。
+需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="transliterate-request"></a>Transliterate 请求
+## <a name="transliterate-request"></a>音译请求
 
 下面使用 [Transliterate](./reference/v3-0-transliterate.md) 方法将一种语言的文本从一个脚本转换为另一个脚本。
 
@@ -84,9 +84,9 @@ output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
 print (output)
 ```
 
-## <a name="transliterate-response"></a>Transliterate 响应
+## <a name="transliterate-response"></a>音译响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

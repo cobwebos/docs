@@ -1,19 +1,21 @@
 ---
-title: 快速入门：使用 Ruby 调用必应 Web 搜索 API
+title: 快速入门：使用 Ruby 执行搜索 - 必应 Web 搜索 API
+titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍了如何使用 Ruby 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: a60bf0ef12272be3b224fdbf9f9819057fe4aa55
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e1819be51c339b302dbc1181e2a8f998170b2413
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888699"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127051"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>快速入门：使用 Ruby 调用必应 Web 搜索 API  
 

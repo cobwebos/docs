@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 54ddafbf0e4fe02bfc1445aad23ac3e20b42acb0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339380"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605753"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>教程：从单页应用使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
@@ -46,9 +46,9 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. 从 Azure 门户的服务列表中选择“Azure AD B2C”。
+1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。 现在应该使用在前一个教程中创建的租户。
 
-2. 在 B2C 设置中，单击“应用程序”，然后单击“添加”。
+2. 选择“应用程序”，然后选择“添加”。
 
     若要在租户中注册示例 Web API，请使用以下设置。
     
@@ -59,7 +59,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     | **Name** | Hello Core API | 输入一个**名称**，描述面向开发人员的 Web API。 |
     | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |
     | 允许隐式流 | 是 | 选择“是”，因为 API 使用 [OpenID Connect 登录](active-directory-b2c-reference-oidc.md)。 |
-    | 回复 URL | `http://localhost:44332` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回 API 请求的任何令牌。 在本教程中，示例 Web API 在本地 (localhost) 运行，并在端口 5000 上进行侦听。 |
+    | 回复 URL | `http://localhost:5000` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回 API 请求的任何令牌。 在本教程中，示例 Web API 在本地 (localhost) 运行，并在端口 5000 上进行侦听（在本教程中配置为“稍后”之后）。 |
     | 应用 ID URI | HelloCoreAPI | 此 URI 可唯一标识租户中的 API。 这样即可每个租户注册多个 API。 [作用域](../active-directory/develop/developer-glossary.md#scopes)控制对受保护 API 资源的访问，是按 App ID URI 来定义的。 |
     | 本机客户端 | 否 | 由于这是 Web API，不是本机客户端，因此请选择“否”。 |
     
@@ -111,7 +111,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 5. 单击“确定”。
 
-这将注册“我的示例单页应用”，以便调用受保护的 **Hello Core API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/developer-glossary.md#authentication)，以便使用 WPF 桌面应用。 桌面应用从 Azure AD B2C 获取[授权](../active-directory/develop/developer-glossary.md#authorization-grant)，以便访问受保护的 Web API。
+这将注册“我的示例单页应用”，以便调用受保护的 **Hello Core API**。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/developer-glossary.md#authentication)，以便使用单页应用。 单页应用从 Azure AD B2C 获取[授权](../active-directory/develop/developer-glossary.md#authorization-grant)，以便访问受保护的 Web API。
 
 ## <a name="update-code"></a>更新代码
 
@@ -158,7 +158,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-3. 在“属性”下打开 **launchSettings.json** 文件，找到 *applicationURL* 设置，然后记录在下一部分使用的值。
+3. 打开“属性”下的 launchSettings.json 文件，找到 iisSettings applicationURL 设置，然后将端口号设置为已向 API 回复 URL `http://localhost:5000` 注册的一个数字。
 
 ### <a name="configure-the-single-page-app"></a>配置单页应用
 
@@ -174,7 +174,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://<your-tenant-name>.b2clogin.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:64791/api/values',
+        webApi: 'http://localhost:5000/api/values',
     };
     ```
 

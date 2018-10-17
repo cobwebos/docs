@@ -1,23 +1,23 @@
 ---
-title: 人脸 API Python 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 了解如何在认知服务中使用人脸 API 和 Python SDK 检测图像中的人脸。
+title: 教程：检测和定格图像中的人脸 - 人脸 API、Python
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用人脸 API 和 Python SDK 检测图像中的人脸。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049105"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127731"
 ---
-# <a name="getting-started-with-face-api-in-python-tutorial"></a>面向 Python 的人脸 API 入门教程
+# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>教程：使用人脸 API 和 Python 检测和定格人脸 
 
 本教程介绍如何通过 Python SDK 调用人脸 API 来检测图像中的人脸。
 
@@ -35,7 +35,7 @@ pip install cognitive_face
 
 - 获取 Microsoft 认知服务的[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)。 在本教程中，可使用主密钥或辅助密钥。 （请注意，必须具备有效的订阅密钥才能使用人脸 API。）
 
-## <a name="sdk-example"></a>检测图像中的人脸
+## <a name="detect-a-face-in-an-image"></a>检测图像中的人脸
 
 ```python
 import cognitive_face as CF
@@ -93,7 +93,7 @@ for face in faces:
 img.show()
 ```
 
-## <a name='further'></a>深入了解
+## <a name="further-exploration"></a>深入了解
 
 为帮助你深入了解人脸 API，本教程提供了 GUI 示例。 要运行该示例，请先安装 [wxPython](https://wxpython.org/pages/downloads/)，然后运行以下命令。
 
@@ -107,7 +107,7 @@ python sample
 
 本教程介绍了通过调用 Python SDK 使用人脸 API 的基本流程。 要深入了解 API 的详细信息，请参阅操作说明和 [API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
 
-## <a name="related"></a>相关主题
+## <a name="related-topics"></a>相关主题
 
 - [面向 CSharp 的人脸 API 入门](FaceAPIinCSharpTutorial.md)
 - [面向 Java for Android 的人脸 API 入门](FaceAPIinJavaForAndroidTutorial.md)

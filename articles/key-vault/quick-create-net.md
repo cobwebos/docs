@@ -6,26 +6,26 @@ author: prashanthyv
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 07/24/2018
+ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a9ae1fb3243c31eb92231320c5ced93d80301a0d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917428"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604172"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
-本快速入门演练将 Azure Web 应用程序配置为使用托管服务标识从 Azure Key Vault 读取信息所要执行的步骤。 学习如何：
+本快速入门演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 学习如何：
 
 > [!div class="checklist"]
 > * 创建密钥保管库。
 > * 在密钥保管库中存储机密。
 > * 从密钥保管库检索机密。
 > * 创建 Azure Web 应用程序。
-> * [启用托管服务标识](../active-directory/managed-service-identity/overview.md)。
+> * 为 Web 应用启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 > * 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
 
 在我们进一步讨论之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)。
@@ -33,7 +33,7 @@ ms.locfileid: "42917428"
 >[!NOTE]
 >Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序和用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密需要定期轮换。 
 >
->使用[托管服务标识](../active-directory/managed-service-identity/overview.md)时，在 Azure 中运行的应用程序将获得由 Azure 自动管理的标识。 这有助于解决*机密采用问题*，这样用户和应用程序就可以遵循最佳做法，而不必担心轮换第一个机密。
+>使用 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)，在 Azure 中运行的应用程序将获得由 Azure 自动管理的标识。 这有助于解决*机密采用问题*，这样用户和应用程序就可以遵循最佳做法，而不必担心轮换第一个机密。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -139,9 +139,9 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 
-## <a name="enable-managed-service-identities"></a>启用托管服务标识
+## <a name="enable-a-managed-identity-for-the-web-app"></a>为 Web 应用启用托管标识
 
-虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Azure Key Vault 的身份验证才能检索它们。 托管服务标识为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
+虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 [Azure 资源的托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
 1. 返回 Azure CLI。
 2. 运行 assign-identity 命令，为此应用程序创建标识：
@@ -151,7 +151,7 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
    ```
 
 >[!NOTE]
->此过程中的命令等同于转到门户并在 Web 应用程序属性中将“托管服务标识”切换为“打开”。
+>此过程中的命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
 
 ## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
 
@@ -167,11 +167,11 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 
 ```azurecli
 
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
+az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
 
 ```
 
-现在运行应用程序时，会看到检索到的机密值。
+现在运行应用程序时，会看到检索到的机密值。 上面的命令中向应用服务的标识 (MSI) 提供了在 Key Vault 上执行“get”和“list”操作的权限
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Node.js 查找备用翻译 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用文本翻译 API 和 Node.js 查找上下文中术语的备用翻译和示例。
+title: 快速入门：查找备用翻译 - 文本翻译 API，Node.js
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Node.js 查找字词的备用翻译和示例。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: aeb97e1c4e7c4e8df852bea55383e857f7d5a690
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5361dce567743e239e0499352affa179b7d40382
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768701"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127221"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-nodejs"></a>快速入门：使用 Node.js 查找备用翻译和使用情况
 
-本快速入门使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
+在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "43768701"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="dictionary-lookup-request"></a>Dictionary Lookup 请求
+## <a name="dictionary-lookup-request"></a>字典查找请求
 
 以下内容使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
 
@@ -99,9 +99,9 @@ let content = JSON.stringify ([{'Text' : text}]);
 DictionaryLookup (content);
 ```
 
-## <a name="dictionary-lookup-response"></a>Dictionary Lookup 响应
+## <a name="dictionary-lookup-response"></a>字典查找响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [
@@ -159,7 +159,7 @@ DictionaryLookup (content);
 ]
 ```
 
-## <a name="dictionary-examples-request"></a>Dictionary Examples 请求
+## <a name="dictionary-examples-request"></a>字典示例请求
 
 下面使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
 
@@ -232,9 +232,9 @@ let content = JSON.stringify ([{'Text' : text, 'Translation' : translation}]);
 DictionaryExamples (content);
 ```
 
-## <a name="dictionary-examples-response"></a>Dictionary Examples 响应
+## <a name="dictionary-examples-response"></a>字典示例响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

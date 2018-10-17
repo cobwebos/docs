@@ -10,12 +10,12 @@ keywords: azure 自动化, DSC, powershell, desired state configuration, 更新�
 ms.date: 03/15/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: ce30a9eb11cd951ca7d8197c15c3becba333f5a9
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e09a1b1c1a849e9957c2969da2b8e4c1d00347ff
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053770"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297683"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
 
@@ -65,7 +65,7 @@ Azure 自动化包含一组共享资源，方便用户大规模地完成环境�
 
 Azure 自动化可以在基础结构和应用程序的整个生命周期中进行管理。 可以将有关组织如何交付和维护工作负荷的知识传输到系统中； 可以使用 PowerShell、Desired State Configuration、Python、图形 Runbook 等常用语言进行创作； 可以获取已部署资源的完整清单，以便进行针对性操作、完成相关报告并了解符合性情况； 确定哪些更改可能导致配置错误，哪些更改可以改进操作符合性。
 
-* **生成/部署资源** - 使用 Runbook 和 Azure 资源管理器模板在混合环境中部署 VM。 可以集成到 Jenkins 和 Visual Studio Team Services 之类的开发工具中。
+* **生成/部署资源** - 使用 Runbook 和 Azure 资源管理器模板在混合环境中部署 VM。 可以集成到 Jenkins 和 Azure DevOps 之类的开发工具中。
 * **配置 VM** - 使用基础结构和应用程序所需的配置评估和配置 Windows 和 Linux 计算机。
 * **监视** - 确定计算机上那些导致问题的更改，进行相应的补救，或者将其升级到管理系统。
 * **保护** - 在已引发安全警报的情况下隔离 VM。 设置来宾内要求。

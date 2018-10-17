@@ -3,25 +3,24 @@ title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 启动演示交互式地图搜索
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 002d9820cb4414d8f33cdd362e28f31e7e8b6273
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cf39ad460d163a996bd2e0aa522d634cf485d83a
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989548"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541545"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>使用 Azure Maps 启动交互式搜索地图
 
-本文演示 Azure Maps 功能如何创建地图，为用户提供交互式搜索体验。 本文逐步讲解了自行创建 Maps 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
+本文演示 Azure Maps 功能如何创建地图，为用户提供交互式搜索体验。 本文逐步讲解了自行创建 Maps 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -31,36 +30,34 @@ ms.locfileid: "38989548"
 
 1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
 2. 在“在市场中搜索”框中，键入“Maps”。
-3. 从“结果”中，选择“Maps”。 单击地图下面显示的“创建”按钮。 
+3. 从“结果”中，选择“Maps”。 单击地图下面显示的“创建”按钮。
 4. 在“创建 Maps 帐户”页上，输入以下值：
-    - 新帐户的名称。 
+    - 新帐户的名称。
     - 要用于此帐户的订阅。
     - 此帐户的资源组。 可以选择新建或使用现有的资源组。
     - 选择“资源组位置”。
-    - 阅读许可证和隐私声明，并选择复选框接受这些条款。 
+    - 阅读许可证和隐私声明，并选择复选框接受这些条款。
     - 最后，单击“创建”按钮。
 
     ![在门户中创建 Maps 帐户](./media/quick-demo-map-app/create-account.png)
 
-5. 帐户成功创建后，将其打开，查找帐户菜单的设置部分。 单击“密钥”查看 Azure Maps 帐户的主要密钥和辅助密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。 
+5. 帐户成功创建后，将其打开，查找帐户菜单的设置部分。 单击“密钥”查看 Azure Maps 帐户的主要密钥和辅助密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。
 
 ## <a name="download-the-application"></a>下载应用程序
 
 1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) 文件的内容。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**，并在文本编辑器中将其打开。
-3. 搜索字符串 `<insert-key>`，并将其替换为在上一部分中获取的**主密钥**值。 
-
+3. 搜索字符串 `<insert-key>`，并将其替换为在上一部分中获取的**主密钥**值。
 
 ## <a name="launch-the-application"></a>启动应用程序
 
 1. 在所选的浏览器中打开文件 **AzureMapDemo.html**。
 2. 观察显示的洛杉矶市地图。 进行缩放，查看地图如何自动根据缩放级别呈现更多或更少信息。 
-3. 更改地图的默认中心。 在“AzureMapDemo.html”文件中，搜索名为“center”的变量。 将此变量的经度、纬度对值替换为新值“[-74.0060, 40.7128]”。 保存文件并刷新浏览器。 
-3. 尝试交互式搜索体验。 在演示 web 应用程序左上角的搜索框中，搜索“餐厅”。 
-4. 将鼠标移到搜索框下面显示的地址/位置列表上，可以看到，地图上的相应图钉会弹出有关该位置的信息。 为保护私营企业的隐私，地图中显示的名称和地址都是虚构的。 
+3. 更改地图的默认中心。 在“AzureMapDemo.html”文件中，搜索名为“center”的变量。 将此变量的经度、纬度对值替换为新值“[-74.0060, 40.7128]”。 保存文件并刷新浏览器。
+4. 尝试交互式搜索体验。 在演示 web 应用程序左上角的搜索框中，搜索“餐厅”。
+5. 将鼠标移到搜索框下面显示的地址/位置列表上，可以看到，地图上的相应图钉会弹出有关该位置的信息。 为保护私营企业的隐私，地图中显示的名称和地址都是虚构的。
 
     ![Web 应用程序交互式搜索](./media/quick-demo-map-app/interactive-search.png)
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

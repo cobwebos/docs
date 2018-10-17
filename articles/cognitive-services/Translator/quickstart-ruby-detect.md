@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 Ruby 识别文本的语言 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Ruby 识别源文本的语言。
+title: 快速入门：识别文本中的语言 - 文本翻译，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Ruby 识别源文本的语言。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b692b66454cc86e6d81aec9c3139b39a905d0d66
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2b138b5c28047487da2ca7a72169a10a125eaf5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768697"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121697"
 ---
 # <a name="quickstart-identify-language-from-text-with-ruby"></a>快速入门：使用 Ruby 识别文本的语言
 

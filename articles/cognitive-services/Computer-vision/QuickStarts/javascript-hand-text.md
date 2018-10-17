@@ -1,43 +1,48 @@
 ---
 title: 快速入门：提取手写文本 - REST、JavaScript - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用计算机视觉和 JavaScript 从图像中提取手写文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 JavaScript 从图像中提取手写文本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 2771e4c0540692cec71340a27fd8d606e3ec3994
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840311"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634661"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript---computer-vision"></a>快速入门：提取手写文本 - REST、JavaScript - 计算机视觉
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 JavaScript 提取手写文本
 
-在本快速入门中，你将使用计算机视觉从图像中提取手写文本。
+在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+
+> [!IMPORTANT]
+> 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，识别文本方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，同时检查状态并返回识别文本方法调用的结果。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用计算机视觉，需要一个订阅密钥；请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
 
-## <a name="recognize-text-request"></a>识别文本请求
+## <a name="create-and-run-the-sample"></a>创建并运行示例
 
-使用[识别文本](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果方法](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+要创建和运行示例，请执行以下步骤：
 
-若要运行此示例，请执行以下步骤：
-
-1. 复制以下内容并将其保存到文件，如 `handwriting.html`。
-1. 将 `<Subscription Key>` 替换为有效订阅密钥。
-1. 如有必要，将 `uriBase` 值更改为你获得订阅密钥的位置。
-1. 将文件拖放到浏览器中。
-1. 单击“`Read image`”按钮。
-
-本示例使用 jQuery 1.9.0。 对于使用不带 jQuery 的 JavaScript 的示例，请参阅[智能生成缩略图](javascript-thumb.md)。
+1. 将以下代码复制到文本编辑器中。
+1. 必要时在代码中进行如下更改：
+    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
+    1. 如有必要，将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法的终结点 URL。
+    1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取手写文本的另一图像的 URL。
+1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-handwriting.html`。
+1. 打开一个浏览器窗口。
+1. 在浏览器中，将文件拖放到浏览器窗口。
+1. 在浏览器中显示网页时，选择“读取图像”按钮。
 
 ```html
 <!DOCTYPE html>
@@ -57,19 +62,18 @@ ms.locfileid: "43840311"
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
         // Request parameter.
-        // Note: The request parameter changed for APIv2.
-        // For APIv1, it is "handwriting": "true".
         var params = {
             "mode": "Handwritten",
         };
@@ -186,11 +190,9 @@ Image to read:
 </html>
 ```
 
-## <a name="recognize-text-response"></a>识别文本响应
+## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 返回的手写结果包括文本以及区域、行和字词的边界框。
-
-程序生成的输出类似于以下 JSON：
+JSON 中返回成功响应。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -468,9 +470,13 @@ JSON 中返回成功响应。 返回的手写结果包括文本以及区域、�
 }
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要该文件时，请将其删除。
+
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款 JavaScript 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 若要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+浏览一款 JavaScript 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
 
 > [!div class="nextstepaction"]
 > [计算机视觉 API JavaScript 教程](../Tutorials/javascript-tutorial.md)

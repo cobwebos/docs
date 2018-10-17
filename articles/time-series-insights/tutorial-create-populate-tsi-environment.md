@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 7faec1608845d218a738c70f147f79248a549dde
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626766"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365683"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -26,11 +26,17 @@ ms.locfileid: "39626766"
 > * 运行设备模拟以将数据流式传输到 TSI 环境
 > * 验证模拟的遥测数据
 
+## <a name="video"></a>视频： 
+
+### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>本视频中，我们将演示如何使用 Azure IoT 解决方案加速器生成可用于开始使用时序见解的数据。</br>
+
+> [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
+
 ## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
 
-所用的 Azure 登录帐户还需是订阅“所有者”角色的成员。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](/azure/billing/billing-add-change-azure-subscription-administrator)
+所用的 Azure 登录帐户还需是订阅“所有者”角色的成员。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](/azure/role-based-access-control/role-assignments-portal)
 
 ## <a name="overview"></a>概述
 

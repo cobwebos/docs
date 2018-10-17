@@ -1,21 +1,21 @@
 ---
-title: 文本翻译使用 PHP 获取句子长度 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 在本快速入门中，你将在认知服务中使用文本翻译 API 和 PHP 查明文本中句子的长度。
+title: 快速入门：获取句子长度 - 文本翻译，PHP
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 PHP 查明文本中句子的长度。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: e93a8e3fa900933bc3a169f4527f898e8431a194
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 63c2822e7b61eb437a43fb394cfa3cc8172d9af3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768715"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124739"
 ---
 # <a name="quickstart-get-sentence-lengths-with-php"></a>快速入门：使用 PHP 获取句子长度
 

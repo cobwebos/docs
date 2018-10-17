@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f45cb6a47756fae7b75d8c3df80a0bc754742063
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815107"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298992"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -101,6 +101,15 @@ Application Insights 收集的所有数据都存储在 Azure Log Analytics 中�
     ![代码](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. 单击“分析影响”，打开 Application Insights Analytics。  它使用多个提供失败请求详细信息（比如受影响的用户、浏览器和区域）的查询填充。<br><br>![分析](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
+
+## <a name="add-work-item"></a>添加工作项
+如果将 Application Insights 连接到跟踪系统（比如 Azure DevOps 或 GitHub），可直接通过 Application Insights 创建工作项。
+
+1. 返回 Application Insights 中的“异常属性”面板。
+2. 单击“新建工作项”。
+3. “新建工作项”面板将打开，其中已填充有关异常的详细信息。  可在保存前添加任何其他信息。
+
+    ![新建工作项](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已学会如何确定运行时异常，请继续完成下一教程，学习如何确定和诊断性能问题。

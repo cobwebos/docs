@@ -13,16 +13,16 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186205"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465854"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
-使用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视组织内的访问。 这包括访问 Azure AD、Azure 资源（预览版）和其他 Microsoft Online Services（例如 Office 365 或 Microsoft Intune）中的资源。
+Azure Active Directory (Azure AD) Privileged Identity Management 可用于管理、控制和监视组织内的访问。 这包括访问 Azure AD、Azure 资源和其他 Microsoft Online Services（例如 Office 365 或 Microsoft Intune）中的资源。
 
 > [!NOTE]
 > 为租户启用特权身份管理时，每位与该服务交互或从中受益的用户都需要有效的 Azure AD Premium P2 或企业移动性 + 安全性 E5 付费版或试用版许可证。 示例包括用户/一个组中的用户，即：
@@ -39,11 +39,11 @@ ms.locfileid: "43186205"
 
 Azure AD Privileged Identity Management 可帮助组织实现以下目的：
 
-- 查看为哪些用户分配了可管理 Azure 资源（预览版）的特权角色，以及为哪些用户分配了 Azure AD 中的管理角色
-- 启用针对 Microsoft Online Services（例如 Office 365 和 Intune）、订阅和资源组 Azure 资源（预览版）以及单个资源（例如虚拟机）的按需“实时”管理访问权限 
--   查看管理员激活历史记录，包括管理员对 Azure 资源（预览版）所做的更改
+- 查看向哪些用户分配了可管理 Azure 资源的特权角色，以及向哪些用户分配了 Azure AD 中的管理角色
+- 启用针对 Microsoft Online Services（例如 Office 365 和 Intune）、订阅和资源组 Azure 资源以及单个资源（例如虚拟机）的按需“实时”管理访问权限 
+- 查看管理员激活历史记录，包括管理员对 Azure 资源所做的更改
 - 获取有关管理员分配发生更改的警报
-- 要求对激活 Azure AD 特权管理员角色（预览版）进行审批 
+- 要求对激活 Azure AD 特权管理员角色进行审批
 - 评审管理角色的成员身份，并要求用户提供持续需要成员身份的理由
 
 在 Azure AD 中，Azure AD Privileged Identity Management 可以管理分配到内置 Azure AD 组织角色的用户，例如全局管理员。 在 Azure 中，Azure AD Privileged Identity Management 可以管理通过 Azure RBAC 角色分配的用户和组，包括所有者或参与者。
@@ -100,17 +100,17 @@ Privileged Identity Management 支持以下方案：
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management 概述（入口点）
 
-Azure AD Privileged Identity Management 支持管理 Azure AD 目录角色，以及 Azure 资源（预览版）的角色。 Azure 资源角色的功能与 Azure AD 中的管理角色不同。 Azure 资源角色针对位于分配级别的资源以及资源层次结构中的所有附属资源（称为继承）提供粒度权限。 [详细了解 RBAC、资源层次结构和继承](../../role-based-access-control/role-assignments-portal.md)。 可以通过访问“PIM 概述”入口点左侧导航菜单的“管理”部分下的相应链接，管理 Azure AD 目录角色和 Azure 资源（预览版）的 PIM。
+Azure AD Privileged Identity Management 支持管理 Azure AD 目录角色和 Azure 资源的角色。 Azure 资源角色的功能与 Azure AD 中的管理角色不同。 Azure 资源角色针对位于分配级别的资源以及资源层次结构中的所有附属资源（称为继承）提供粒度权限。 [详细了解 RBAC、资源层次结构和继承](../../role-based-access-control/role-assignments-portal.md)。 可通过访问“PIM 概述”入口点左侧导航菜单的“管理”部分下的相应链接，管理 Azure AD 目录角色和 Azure 资源的 PIM。
 
 PIM 提供便捷的访问方式，让我们通过左侧导航菜单中的“任务”部分激活角色，以及查看等待做出答复的激活/请求、审批（适用于 Azure AD 目录角色）和评审。
 
-从“概述”入口点访问任何“任务”菜单项时，生成的视图包含 Azure AD 目录角色和 Azure 资源角色（预览版）的结果。
+从“概述”入口点访问任何“任务”菜单项时，生成的视图包含 Azure AD 目录角色和 Azure 资源角色的结果。
 
 ![快速入门](./media/pim-configure/quick-start.png)
 
-“我的角色”包含活动角色分配，以及 Azure AD 目录角色和 Azure 资源角色（预览版）的有资格角色分配。 [详细了解如何激活有资格的角色分配](pim-how-to-activate-role.md)。
+“我的角色”包含活动角色分配，以及 Azure AD 目录角色和 Azure 资源角色的合格角色分配。 [详细了解如何激活有资格的角色分配](pim-how-to-activate-role.md)。
 
-Azure 资源（预览版）的激活角色功能引入了新的体验，可让有资格的角色成员计划在将来的某个日期/时间进行激活，并在管理员允许的最大时间范围内选择特定的激活持续时间。
+Azure 资源的激活角色功能引入了新的体验，让合格的角色成员能够计划在将来的某个日期/时间进行激活，并在管理员允许的最大时间范围内选择特定的激活持续时间。
 
 ![](./media/pim-configure/activations.png)
 
@@ -126,15 +126,15 @@ Azure AD Privileged Identity Manager 提供一个管理员仪表板，其中显�
 * 分配给每个特权角色的用户数  
 * 有资格的管理员和永久管理员的数目
 * 目录中的特权角色激活图
-*   Azure 资源角色（预览版）的实时、时限和永久分配数目
-*   在过去 30 天获得新角色分配的用户和组数目（Azure 资源角色）
+* 针对 Azure 资源角色的实时、时限和永久分配的数量
+* 过去 30 天中获得新角色分配的用户和组（Azure 资源角色）
 
 
 ![PIM 仪表板 — 屏幕截图](./media/pim-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>特权角色管理
 
-使用 Azure AD Privileged Identity Management，可以通过添加或删除每个 Azure AD 目录角色的永久或有资格的管理员，来管理管理员。 借助适用于 Azure 资源（预览版）的 PIM，能够管理租户中订阅的所有者、用户访问管理员和全局管理员可将用户或组分配到 Azure 资源角色，并指定他们有访问资格（实时访问权限）、在开始和结束日期/时间范围内拥有时限（不需要激活）访问权限，或永久性（如果已在角色设置中启用）访问权限。
+使用 Azure AD Privileged Identity Management，可以通过添加或删除每个 Azure AD 目录角色的永久或有资格的管理员，来管理管理员。 借助适用于 Azure 资源的 PIM，能够管理租户中订阅的所有者、用户访问管理员和全局管理员可将用户或组分配到 Azure 资源角色，并指定他们有访问资格（实时访问权限）、在开始和结束日期/时间范围内拥有时限（不需要激活）访问权限，或永久性（如果已在角色设置中启用）访问权限。
 
 ![PIM 添加/删除管理员 — 屏幕截图](./media/pim-configure/PIM_AddRemove.png)
 
@@ -146,13 +146,13 @@ Azure AD Privileged Identity Manager 提供一个管理员仪表板，其中显�
 * 角色激活通知
 * 用户在角色激活过程中需要提供的信息
 * 服务票证或者事件编号
-* [审批工作流要求 - 预览](./azure-ad-pim-approval-workflow.md)
+* [审批工作流要求](./azure-ad-pim-approval-workflow.md)
 
 ![PIM 设置 — 管理员激活 — 屏幕截图](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
 
 请注意，图中“多重身份验证”的按钮处于禁用状态。 对于某些特权级别高的角色，我们需要 MFA 以便加强保护。
 
-Azure 资源角色（预览版）的角色设置可让管理员配置“实时”和“直接”分配设置，包括：
+通过 Azure 资源角色的角色设置，管理员可配置“实时”和“直接”分配设置，包括：
 
 - 可将用户或组分配到角色且不附带结束日期/时间（永久分配）
 - 分配的默认持续时间（如果不是永久性的）
@@ -173,7 +173,7 @@ Azure 资源角色（预览版）的角色设置可让管理员配置“实时�
 
 ## <a name="review-role-activity"></a>查看角色活动
 
-可通过两种方法跟踪员工和管理员使用特权角色的方式。 第一个选项是使用[目录角色审核历史记录](pim-how-to-use-audit-log.md)。 审核历史记录日志会跟踪特权角色分配发生的更改、角色激活历史记录，以及 Azure 资源角色（预览版）设置发生的更改。 
+可通过两种方法跟踪员工和管理员使用特权角色的方式。 第一个选项是使用[目录角色审核历史记录](pim-how-to-use-audit-log.md)。 审核历史记录日志会跟踪特权角色分配发生的更改、角色激活历史记录，以及 Azure 资源角色设置发生的更改。 
 
 ![PIM 激活历史记录 — 屏幕截图](./media/pim-configure/PIM_ActivationHistory.png)
 

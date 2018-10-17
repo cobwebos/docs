@@ -1,20 +1,21 @@
 ---
-title: 使用自定义影像服务预测终结点 - Azure 认知服务 | Microsoft Docs
+title: 示例：使用分类器和预测终结点以编程的方式测试图像 - 自定义视觉
+titlesuffix: Azure Cognitive Services
 description: 了解如何借助自定义影像服务分类器使用 API 以编程方式测试图像。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341787"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363643"
 ---
 # <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>借助自定义影像服务分类器使用预测终结点以编程方式测试图像
 
@@ -122,4 +123,4 @@ ms.locfileid: "43341787"
 
 ## <a name="next-steps"></a>后续步骤
 
-[导出模型，供移动使用](export-your-model.md)
+[导出模型供移动设备使用](export-your-model.md)

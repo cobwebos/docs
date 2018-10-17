@@ -1,24 +1,25 @@
 ---
-title: 实体链接智能服务 API | Microsoft Docs
-description: 了解如何使用认知服务中的实体链接智能服务 API 执行实体链接任务。
+title: 实体链接智能服务 API 是什么？
+titlesuffix: Azure Cognitive Services
+description: 了解如何使用实体链接智能服务 API 执行实体链接任务。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: overview
 ms.date: 03/28/2016
 ms.author: davl
-ms.openlocfilehash: 662295c42a421fe76892e6e5aac7b7e7178d6155
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0f839e8f33e9ff48d2ad526621167a89e3b9be8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365461"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366176"
 ---
-# <a name="entity-linking-intelligence-service-api"></a>实体链接智能服务 API
+# <a name="what-is-the-entity-linking-intelligence-service-api"></a>实体链接智能服务 API 是什么？
 
-欢迎使用 Microsoft 实体链接智能服务，这是一项有助于开发人员完成实体链接相关任务的 Web 服务。
+欢迎使用实体链接智能服务，这是一项有助于开发人员完成实体链接相关任务的 Web 服务。
 
 ## <a name="entity-linking"></a>实体链接
 

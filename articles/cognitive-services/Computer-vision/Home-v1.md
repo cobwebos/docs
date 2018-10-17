@@ -1,20 +1,21 @@
 ---
-title: Microsoft 认知服务的计算机视觉 API | Microsoft Docs
-description: 使用计算机视觉 API 中的高级算法可帮助你处理图像并返回 Microsoft 认知服务中的信息。
+title: 什么是计算机视觉 API？
+titlesuffix: Azure Cognitive Services
+description: 使用计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 86e0441c600162e479c678d3cb1dbeaad423ddb5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366515"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982067"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>什么是计算机视觉 API 版本 1.0？
 
@@ -30,7 +31,7 @@ ms.locfileid: "35366515"
 * [检测人脸并返回其坐标。](#Faces)
 * [识别特定于域的内容。](#Domain-Specific)
 * [生成内容说明。](#Descriptions)
-* [使用光学字符识别标识图像中找到的打印文本。](#OCR)
+* [使用光学字符识别标识图像中找到的印刷体文本。](#OCR)
 * [识别手写的文本。](#RecognizeText)
 * [区分配色方案。](#Color)
 * [标志成人内容。](#Adult)
@@ -48,7 +49,7 @@ ms.locfileid: "35366515"
 上载图像或指定图像 URL 后，计算机视觉 API 算法在对象、生物和图像中标识的操作的基础上输出标记。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、工厂、动物、附件、小工具等。
 
 ### <a name="example"></a>示例
-![House_Yard](./Images/house_yard.jpg) '
+![House_Yard](./Images/house_yard.png) '
 
 ```json
 Returned Json
@@ -95,15 +96,15 @@ Returned Json
 ### <a name="the-86-category-concept"></a>86 类别概念
 根据下图中所示的包含 86 个概念的列表，可以将图像中找到的视觉功能从广泛到具体进行分类。 有关文本格式的完整分类，请参阅[类别分类](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)。
 
-![分析类别](./Images/analyze_categories.jpg)
+![分析类别](./Images/analyze_categories.png)
 
 映像                                                  | 响应
 ------------------------------------------------------ | ----------------
-![女士屋顶](./Images/woman_roof.jpg)                 | people
-![系列照片](./Images/family_photo.jpg)             | people_crowd
-![可爱的小狗](./Images/cute_dog.jpg)                     | animal_dog
-![户外山脉](./Images/mountain_vista.jpg)       | outdoor_mountain
-![视觉分析食物面包](./Images/bread.jpg)       | food_bread
+![女士屋顶](./Images/woman_roof.png)                 | people
+![系列照片](./Images/family_photo.png)             | people_crowd
+![可爱的小狗](./Images/cute_dog.png)                     | animal_dog
+![户外山脉](./Images/mountain_vista.png)       | outdoor_mountain
+![视觉分析食物面包](./Images/bread.png)       | food_bread
 
 ## <a name="identifying-image-types"></a>标识图像类型
 有多种方法可对图像进行分类。 计算机视觉 API 可以设置布尔标志以指示图像是黑白的还是彩色的。 还可以设置一个标志以指示图像是否为线条图。 还可以指示图像是否为剪贴画，并在 0-3 的范围内指示其自身质量。
@@ -120,16 +121,16 @@ Returned Json
 
 映像|响应
 ----|----
-![视觉分析奶酪剪贴画](./Images/cheese_clipart.jpg)|3 良好剪贴画
-![视觉分析住宅庭院](./Images/house_yard.jpg)|0 非剪贴画
+![视觉分析奶酪剪贴画](./Images/cheese_clipart.png)|3 良好剪贴画
+![视觉分析住宅庭院](./Images/house_yard.png)|0 非剪贴画
 
 ### <a name="line-drawing-type"></a>线条图类型
 检测图像是否为线条图。
 
 映像|响应
 ----|----
-![视觉分析狮子图](./Images/lion_drawing.jpg)|True
-![视觉分析花](./Images/flower.jpg)|False
+![视觉分析狮子图](./Images/lion_drawing.png)|True
+![视觉分析花](./Images/flower.png)|False
 
 ### <a name="faces"></a>人脸
 检测图片内的人脸并生成人脸坐标、人脸边框、性别和年龄。 这些视觉功能是为人脸生成的元数据子集。 要获取为人脸（人脸识别、姿势检测等）生成的更为广泛的元数据，请使用人脸 API。  
@@ -159,7 +160,7 @@ Returned Json
 计算机视觉 API 算法可分析图像中的内容。 此分析构成在完整句子中显示为用户可读语言的“说明”的基础。 该说明概述了图像中找到的内容。 计算机视觉 API 算法可根据图像中标识的对象生成各种说明。 分别对这些说明进行评估并生成置信度分数。 然后将返回置信度分数从高到低的列表。 可以在[此处](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption)找到使用此技术生成图像标题的机器人示例。  
 
 ### <a name="example-description-generation"></a>说明生成示例
-![黑白建筑](./Images/bw_buildings.jpg) '
+![黑白建筑](./Images/bw_buildings.png) '
 ```json
  Returned Json
 
@@ -202,18 +203,18 @@ Returned Json
 
 映像                                                       | 前景 |背景| 颜色
 ----------------------------------------------------------- | --------- | ------- | ------
-![户外山脉](./Images/mountain_vista.jpg)            | 黑色     | 黑色   | 白色
-![视觉分析花](./Images/flower.jpg)               | 黑色     | 白色   | 白色、黑色、绿色
-![视觉分析火车站](./Images/train_station.jpg) | 黑色     | 黑色   | 黑色
+![户外山脉](./Images/mountain_vista.png)            | 黑色     | 黑色   | 白色
+![视觉分析花](./Images/flower.png)               | 黑色     | 白色   | 白色、黑色、绿色
+![视觉分析火车站](./Images/train_station.png) | 黑色     | 黑色   | 黑色
 
 ### <a name="accent-color"></a>主题色
 从图像中提取的颜色，设计为通过主色和饱和度的混合向用户呈现最令人大开眼界的颜色。
 
 映像                                                       | 响应
 ----------------------------------------------------------- | ----
-![户外山脉](./Images/mountain_vista.jpg)            | #BC6F0F
-![视觉分析花](./Images/flower.jpg)               | #CAA501
-![视觉分析火车站](./Images/train_station.jpg) | #484B83
+![户外山脉](./Images/mountain_vista.png)            | #BC6F0F
+![视觉分析花](./Images/flower.png)               | #CAA501
+![视觉分析火车站](./Images/train_station.png) | #484B83
 
 
 ### <a name="black--white"></a>黑白
@@ -221,8 +222,8 @@ Returned Json
 
 映像                                                      | 响应
 ---------------------------------------------------------- | ----
-![视觉分析建筑](./Images/bw_buildings.jpg)      | True
-![视觉分析住宅庭院](./Images/house_yard.jpg)      | False
+![视觉分析建筑](./Images/bw_buildings.png)      | True
+![视觉分析住宅庭院](./Images/house_yard.png)      | False
 
 ## <a name="flagging-adult-content"></a>标志成人内容
 各种视觉类别中包含成人和不雅内容，可以检测成人材料检测并限制显示包含性内容的图像。 可以在滑尺上设置成人和不雅内容检测的筛选器以满足用户偏好。

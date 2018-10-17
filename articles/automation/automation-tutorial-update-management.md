@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247362"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498515"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -158,6 +158,8 @@ UpdateRunProgress
 
 * **操作系统**：选择更新部署的目标 OS。
 
+* **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
+
 * **要更新的计算机**：选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
 
 * **更新分类**：选择更新部署包含在部署中的软件类型。 对于本教程，请保留所有选定的类型。
@@ -171,10 +173,13 @@ UpdateRunProgress
 
    有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。
 
+* **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的其他信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior)
+
 * **计划设置**：“计划设置”窗格会打开。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
 
    还可以指定部署是否只发生一次，或者设置一个定期计划。 在“重复”下选择“一次”。 保留默认值“1 天”，然后选择“确定”。 这样会设置定期计划。
 
+* **前脚本 + 后脚本**：选择要在部署前和部署后运行的脚本。 若要了解详细信息，请参阅[管理前脚本和后脚本](pre-post-scripts.md)。
 * **维护时段(分钟)**：保留默认值。 可以设置要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
 * **重启选项**：此设置决定应如何处理重启。 可用选项包括：

@@ -1,32 +1,32 @@
 ---
-title: 文本分析 C# 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 教程：使用 C# 进行文本分析
+titleSuffix: Azure Cognitive Services
 description: 从 ASP.NET Core Web 应用程序连接到文本分析。
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: conceptual
-ms.date: 06/01/2018
+ms.topic: tutorial
+ms.date: 09/12/2018
 ms.author: ghogen
-ms.openlocfilehash: eb9730f785b01a620e36a265216488c401eac63a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 95de174087fb2a73ad6c75a2e96caf872c351854
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068482"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605226"
 ---
-# <a name="connect-to-the-text-analytics-service-by-using-connected-services-in-visual-studio"></a>使用 Visual Studio 中连接服务连接到文本分析服务
+# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中的连接服务功能连接到文本分析认知服务
 
 通过文本分析服务，可提取丰富的信息对可视数据进行分类和处理，并执行计算机辅助的图像审核以帮助策展服务。
 
-本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。 可在安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中使用此功能。
+本文及其同类文章详细介绍了如何使用文本分析服务的 Visual Studio 连接服务功能。 安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中均提供此功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- Visual Studio 2017 版本 15.7（安装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 

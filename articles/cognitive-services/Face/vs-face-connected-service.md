@@ -1,21 +1,21 @@
 ---
-title: 人脸 API C# 教程 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 教程：人脸 API C#
+titleSuffix: Azure Cognitive Services
 description: 创建一个简单的 Windows 应用，该应用使用认知服务人脸 API 检测图像中人脸的特征。
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: b51760f889db27aa25e54582070ee7d3adcf66f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 70414674e563cf3703d2cf3ebc57f09afcdf2691
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38663885"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129516"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用连接服务连接到认知服务人脸 API
 
@@ -25,8 +25,8 @@ ms.locfileid: "38663885"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2017 版本 15.7**（装有 **Web 开发**工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -237,7 +237,7 @@ ms.locfileid: "38663885"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除认知服务和相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 1. 选择“删除资源组”。

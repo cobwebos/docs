@@ -1,33 +1,33 @@
 ---
-title: 文本翻译使用 Python 获取句子长度 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Python 找到文本中句子的长度。
+title: 快速入门：获取句子长度 - 文本翻译，Python
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用文本翻译 API 和 Python 查明文本中句子的长度。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 7b822dfa2db1b9d106d6d569fb26d9f6e8109c83
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 2b014f5b52249cf316889e5637e76ee7b7d23e91
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43768688"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125691"
 ---
 # <a name="quickstart-get-sentence-lengths-with-python"></a>快速入门：使用 Python 获取句子长度
 
-本快速入门使用文本翻译 API 找到文本中句子的长度。
+在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Python 3.x](https://www.python.org/downloads/) 运行此代码。
+需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="breaksentence-request"></a>BreakSentence 请求
+## <a name="breaksentence-request"></a>断句请求
 
 以下代码使用 [BreakSentence](./reference/v3-0-break-sentence.md) 方法将源文本分解为句子。
 
@@ -82,9 +82,9 @@ output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
 print (output)
 ```
 
-## <a name="breaksentence-response"></a>BreakSentence 响应
+## <a name="breaksentence-response"></a>断句响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

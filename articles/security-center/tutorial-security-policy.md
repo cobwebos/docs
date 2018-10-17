@@ -3,7 +3,7 @@ title: Azure 安全中心教程 - 定义和评估安全策略 | Microsoft Docs
 description: Azure 安全中心教程 - 定义和评估安全策略
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358602"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027055"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>教程：定义和评估安全策略
 可以通过安全中心使用安全策略来定义工作负荷的所需配置，确保用户遵守公司或法规方面的安全要求。 为 Azure 订阅定义策略并根据工作负荷类型或数据敏感性对其进行调整以后，即可通过安全中心获取计算、应用程序、网络、数据和存储以及标识和访问资源方面的安全建议。 在本教程中，将了解如何：
@@ -42,8 +42,7 @@ ms.locfileid: "39358602"
 
   ![安全策略](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. 在“策略组件”下选择“安全策略”
-4. 对于每个要监视的安全配置，请选择“启用”。 安全中心会持续评估环境的配置。如果存在漏洞，安全中心会生成安全建议。 如果不建议启用该安全配置，或者该安全配置不相关，请选择“关闭”。 例如，开发/测试环境中需要的安全级别可能不同于生产环境。 选择适用于环境的策略以后，请单击“保存”。
+3. 在“计算和应用”、“网络”和“数据”下，将要监视的每个安全配置设置为“开”。 安全中心会持续评估环境的配置。如果存在漏洞，安全中心会生成安全建议。 如果不建议启用该安全配置，或者该安全配置不相关，请选择“关闭”。 例如，开发/测试环境中需要的安全级别可能不同于生产环境。 选择适用于环境的策略以后，请单击“保存”。
 
   ![安全配置](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

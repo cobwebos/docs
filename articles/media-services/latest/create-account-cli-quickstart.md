@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767096"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735996"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>快速入门：创建 Azure 媒体服务帐户
 
@@ -36,7 +36,7 @@ ms.locfileid: "38767096"
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="set-the-azure-subscription"></a>设置 Azure 订阅
 
@@ -58,7 +58,7 @@ az group create -n <myresourcegroup> -l westus2
 
 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的 ID。 指定存储帐户会附加到媒体服务帐户。 
 
-必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户。 不允许将仅限 Blob **的帐户作为主帐户**。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户选项](../../storage/common/storage-account-options.md)。 
+必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户。 媒体服务支持常规用途 v2 或常规用途 v1 帐户。 Blob 存储帐户不可作为主帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。 
 
 以下命令创建将与媒体服务帐户（主要）相关联的存储帐户。 在以下脚本中，替换“storageaccountforams”占位符。 “account_name”的长度必须小于 24。
 

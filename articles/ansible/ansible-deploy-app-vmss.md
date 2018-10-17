@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/24/2018
-ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 09/11/2018
+ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918080"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391464"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 将应用程序部署到 Azure。 本文介绍如何将 Java 应用程序部署到 Azure 虚拟机规模集 (VMSS)。  
@@ -31,7 +31,7 @@ ms.locfileid: "42918080"
 
 ## <a name="get-host-information"></a>获取主机信息
 
-本部分说明如何使用 Ansible 检索一组 Azure 虚拟机的主机信息。 下面是示例 Ansible playbook。 该代码获取指定资源组中的公共 IP 地址和负载均衡器，并在清单中创建名为 **saclesethosts** 的主机组。 
+本部分说明如何使用 Ansible 检索一组 Azure 虚拟机的主机信息。 下面是示例 Ansible playbook。 该代码获取指定资源组中的公共 IP 地址和负载均衡器，并在清单中创建名为 **scalesethosts** 的主机组。 
 
 将以下示例 playbook 保存为 `get-hosts-tasks.yml`： 
 

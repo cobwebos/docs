@@ -1,21 +1,21 @@
 ---
-title: 人脸 API Ruby 快速入门 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门在认知服务中使用人脸 API 和 Ruby 从图像中检测人脸。
+title: 快速入门：检测图像中的人脸 - 人脸 API，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用人脸 API 和 Ruby 检测图像中的人脸。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: nolachar
-ms.openlocfilehash: b7fc23259475b7d165171ce42f1d0dff90d1069c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a76be6d6afa198762448cea7125b5c49e7fc1009
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "43768631"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124790"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-ruby"></a>快速入门：使用 Ruby 检测图像中的人脸
 
@@ -27,11 +27,11 @@ ms.locfileid: "43768631"
 
 ## <a name="face---detect-request"></a>人脸 - 检测请求
 
-使用[人脸 - 检测 ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)方法检测图像中的人脸并返回人脸属性，包括：
+使用[人脸 - 检测](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)方法检测图像中的人脸并返回人脸属性，包括：
 
 * 人脸 ID：多个人脸 API 方案中使用的唯一 ID。
 * 人脸矩形：左侧、顶部、宽度和高度，指示人脸在图像中的位置。
-* 地标：一系列 27 点人脸地标，这些地标指向人脸组件的重要位置。
+* 特征点：一系列（27 个点）人脸特征点，这些特征点指向人脸组件的重要位置。
 * 人脸属性包括年龄、性别、笑容程度、头部姿态和面部毛发。
 
 若要运行此示例，请执行以下步骤：
@@ -77,7 +77,7 @@ puts response.body
 
 ## <a name="face---detect-response"></a>人脸 - 检测响应
 
-JSON 中返回了成功的响应，例如：
+成功的响应以 JSON 格式返回，例如：
 
 ```json
 [

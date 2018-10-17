@@ -1,21 +1,23 @@
 ---
-title: 文章个性化 - Azure 认知服务 | Microsoft Docs
-description: 此教程介绍了 Azure 自定义 AI 决策服务（一种用于上下文决策的基于云的 API）的文章个性化。
+title: 教程：文章个性化 - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
+description: 有关帮助作出上下文决策的文章个性化的教程。
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 35d0567f81a23d4726461059eb6fd31e04228697
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366463"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366329"
 ---
-# <a name="article-personalization"></a>文章个性化
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>教程：帮助作出上下文决策的文章个性化
 
 此教程重点介绍如何在网页首页中个性化文章选择。 例如，自定义 AI 决策服务会影响首页中的“多个”文章列表。 页面可能是仅涵盖政治和体育的新闻网站。 它将显示排名前三的文章列表：政治、体育和最新。
 
@@ -137,4 +139,4 @@ function callback(data) {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 [API 参考](custom-decision-service-api-reference.md)详细了解提供的功能。
+* 参阅 [API 参考](custom-decision-service-api-reference.md)来详细了解所提供的功能。

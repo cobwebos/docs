@@ -1,6 +1,6 @@
-## <a name="create-a-project-zip-file"></a>创建一个项目 ZIP 文件
+## <a name="create-a-project-zip-file"></a>创建一个项目 zip 文件
 
-创建一个包含项目中的所有内容的 ZIP 存档。 以下命令使用终端中的默认工具：
+请确保仍处于示例项目的根目录中。 创建一个包含项目中的所有内容的 zip 存档。 以下命令使用终端中的默认工具：
 
 ```
 # Bash

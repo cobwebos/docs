@@ -1,19 +1,21 @@
 ---
-title: 快速入门：使用 Java 调用必应 Web 搜索 API
+title: 快速入门：使用 Java 执行搜索 - 必应 Web 搜索 API
+titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Java 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e0c1a038a0d63bcae8620c89462bdecfd88d8227
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888218"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121968"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>快速入门：使用 Java 调用必应 Web 搜索 API  
 
@@ -58,7 +60,7 @@ import com.google.gson.JsonParser;
 
 ## <a name="declare-the-bingwebsearch-class"></a>声明 BingWebSearch 类
 
-声明 `BingWebSearch` 类。 它将包括我们在本快速入门中查看的大多数代码，包括 `main` 方法。  
+声明 `BingWebSearch` 类。 它将包括我们在该快速入门中查看的大多数代码，包括 `main` 方法。  
 
 ```java
 public class BingWebSearch {

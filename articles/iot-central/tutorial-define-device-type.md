@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702538"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984299"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
@@ -295,7 +295,7 @@ ms.locfileid: "43702538"
     | 显示名称         | 位置             |
     | 字段名称           | location             |
     | 初始值        | 华盛顿州西雅图          |
-    | 说明          | 设备位置      |
+    | Description          | 设备位置      |
 
     在其他字段中保留默认值。
 
@@ -312,7 +312,7 @@ ms.locfileid: "43702538"
     | 显示名称         | 最后维修日期       |
     | 字段名称           | serviceDate             |
     | 初始值        | 2018/1/1                |
-    | 说明          | 最后维修日期           |
+    | Description          | 最后维修日期           |
 
     ![配置设备属性](./media/tutorial-define-device-type/configureproperties2.png)
 
@@ -427,7 +427,7 @@ ms.locfileid: "43702538"
     | 标题                   | 序列号 |
     | 设置和属性 | 序列号 |
 
-    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings1.png)
+    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings3.png)
 
     然后选择“保存”。
 
@@ -442,7 +442,7 @@ ms.locfileid: "43702538"
     | 标题                   | 固件版本 |
     | 设置和属性 | 固件版本 |
 
-    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings2.png)
+    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings3.png)
 
     然后选择“保存”。
 

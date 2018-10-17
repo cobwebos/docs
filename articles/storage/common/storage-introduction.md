@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 59e6f4126e8a39ab695015fae2a2013529383418
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 693ba07e46900ba6f3e025d97cb34aad9e244ace
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919368"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027038"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -93,7 +93,7 @@ Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关�
 
 |存储帐户的类型|通用标准|通用高级|Blob 存储（热访问层和冷访问层）|
 |-----|-----|-----|-----|
-|支持的服务| Blob 服务、文件服务、队列服务 | Blob 服务 | Blob 服务|
+|支持的服务| Blob 服务、文件服务、队列服务和表服务 | Blob 服务 | Blob 服务|
 |支持的 Blob 类型|块 Blob、页 Blob 和追加 Blob | 页 Blob | 块 Blob 和追加 Blob|
 
 ### <a name="general-purpose-storage-accounts"></a>通用存储帐户

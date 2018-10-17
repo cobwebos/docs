@@ -1,28 +1,29 @@
 ---
-title: 如何使用文本分析 REST API（Azure 上的 Microsoft 认知服务）进行关键短语提取 | Microsoft Docs
-description: 本演练教程介绍了如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 提取关键短语。
+title: 示例：如何提取文本分析中的关键短语
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用文本分析 REST API 提取关键短语。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 78b100e737242fa9f56e50275ef2038d8895349e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365678"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605481"
 ---
-# <a name="how-to-extract-key-phrases-in-text-analytics"></a>如何使用文本分析提取关键短语
+# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>示例：如何提取文本分析中的关键短语
 
 [关键短语提取 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) 用于计算非结构化的文本，并针对每个 JSON 文档返回关键短语列表。 
 
 如果需要快速确定文档集中的要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回谈话要点：“food”和“wonderful staff”。
 
-目前，关键短语提取支持英语、德语、西班牙语和日语。 其他语言为预览版。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
+目前，关键短语提取支持英语、德语、西班牙语和日语。 其他语言以预览版提供。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
 
 ## <a name="preparation"></a>准备工作
 

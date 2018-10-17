@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629365"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498260"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -37,9 +37,9 @@ ms.locfileid: "34629365"
 
 使用左侧导航菜单来访问应用程序的不同区域：
 
-| 菜单 | 说明 |
+| 菜单 | Description |
 | ---- | ----------- |
-| ![左侧导航菜单](media/overview-iot-central-tour/navigationbar.png) | <ul><li>“主页”按钮显示应用程序的主页。 构建者可以为操作员自定义此主页。</li><li>“Device Explorer”按钮列出在应用程序中定义的设备模板，以及与每个设备模板关联的模拟和真实设备。 操作员可以使用“Device Explorer”来管理已连接的设备。</li><li>“设备集”按钮可以用来查看和创建设备集。 操作员可以将设备集创建为由查询指定的设备的逻辑集合。</li><li>“分析”按钮显示从设备和设备集的设备遥测数据得出的分析。 操作员可以基于设备数据创建自定义视图来从应用程序获得见解。</li><li>“应用程序构建者”按钮显示构建者使用的工具，例如“创建设备模板”工具。</li><li>“管理”按钮显示应用程序管理页面，管理员可以在其中管理应用程序设置、用户和角色。</li></ul> |
+| ![左侧导航菜单](media/overview-iot-central-tour/navigationbar.png) | <ul><li>“主页”按钮显示应用程序的主页。 构建者可以为操作员自定义此主页。</li><li>“Device Explorer”按钮列出在应用程序中定义的设备模板，以及与每个设备模板关联的模拟和真实设备。 操作员可以使用“Device Explorer”来管理已连接的设备。</li><li>“设备集”按钮可以用来查看和创建设备集。 操作员可以将设备集创建为由查询指定的设备的逻辑集合。</li><li>“分析”按钮显示从设备和设备集的设备遥测数据得出的分析。 操作员可以基于设备数据创建自定义视图来从应用程序获得见解。</li><li>“作业”按钮通过让你创建和运行作业来执行大规模更新，从而实现批量设备管理。</li><li>“应用程序构建者”按钮显示构建者使用的工具，例如“创建设备模板”工具。</li><li>“管理”按钮显示应用程序管理页面，管理员可以在其中管理应用程序设置、用户和角色。</li></ul> |
 
 ## <a name="search-help-and-support"></a>搜索、帮助和支持
 
@@ -82,7 +82,13 @@ Explorer 页面显示 Azure IoT Central 应用程序中的“设备模板”和�
 
 分析页面上会显示图表，可以借助这些图表来了解连接到应用程序的设备的行为方式。 操作员使用此页面来监视和调查已连接的设备的问题。 构建者可以定义显示在此页面上的图表。 若要了解详细信息，请参阅[为 Azure IoT Central 应用程序创建自定义分析](howto-create-analytics.md)一文。
 
-## <a name="application-builder"></a>应用程序构建者
+## <a name="jobs"></a>作业
+
+![“作业”页](media/overview-iot-central-tour/jobs.png)
+
+“作业”页可让你对设备执行批量设备管理操作。 构建者使用此页面来更新设备属性、设置和命令。 若要了解详细信息，请参阅[运行作业](howto-run-a-job.md)文章。
+
+## <a name="application-builder"></a>应用程序构建人员
 
 ![“应用程序构建者”页面](media/overview-iot-central-tour/applicationbuilder.png)
 

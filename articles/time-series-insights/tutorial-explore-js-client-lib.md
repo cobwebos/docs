@@ -8,12 +8,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 445584ef8f9a2534d7f183a4452df19ee87d0025
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 85d6ac0084343dc821a4eaf91c8053c9885ccfeb
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626988"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366040"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -27,6 +27,12 @@ ms.locfileid: "39626988"
 > * TSI 示例应用程序。
 > * TSI JavaScript 客户端库。
 > * 示例应用程序如何使用该库来可视化 TSI 数据。
+
+## <a name="video"></a>视频： 
+
+### <a name="in-this-video-we-introduce-the-open-source-time-series-insights-javascript-sdkbr"></a>本视频中，我们将介绍开源时序见解 JavaScript SDK。</br>
+
+> [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
 ## <a name="prerequisites"></a>先决条件
 

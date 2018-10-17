@@ -1,24 +1,24 @@
 ---
-title: 人脸 API 服务概述 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 什么是人脸 API 服务？
+titleSuffix: Azure Cognitive Services
 description: 术语表解释了使用人脸 API 时可能遇到的术语。
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: overview
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 15de899be5ab85e9fe84ba1b6284bc9419fcf8a1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048663"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123464"
 ---
-# <a name="what-is-face-api"></a>什么是人脸 API？
+# <a name="what-is-the-face-api-service"></a>什么是人脸 API 服务？
 
-欢迎使用 Microsoft 人脸 API，它是基于云的服务，提供非常先进的人脸算法。 人脸 API 都有两个主要功能：带属性的人脸检测和人脸识别。
+欢迎使用人脸 API 服务，它是基于云的服务，提供非常先进的人脸算法。 人脸 API 都有两个主要功能：带属性的人脸检测和人脸识别。
 
 ## <a name="face-detection"></a>人脸检测
 

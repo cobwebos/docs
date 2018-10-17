@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436686"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378272"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -56,7 +56,7 @@ ms.locfileid: "39436686"
 
 若要创建 ILB ASE，请执行以下操作：
 
-1. 在 Azure 门户中选择“创建资源” > “Web + 移动” > “应用服务环境”。
+1. 在 Azure 门户中选择“创建资源” > “Web” > “应用服务环境”。
 
 1. 选择订阅。
 
@@ -209,7 +209,7 @@ SCM 站点名称能将用户带到 Kudu 控制台，在 Azure 门户中称为**�
 
 在多租户应用服务和外部 ASE 中，Azure 门户和 Kudu 控制台之间有单一登录。 然而，对于 ILB ASE，需要使用发布凭据登录到 Kudu 控制台。
 
-如果生成代理可访问 Internet 并与 ILB ASE 在同一网络上，则基于 Internet 的 CI 系统（例如 GitHub 和 Visual Studio Team Services）仍将使用 ILB ASE。 因此，如果在 ILB ASE 所在的 VNET 上（不同的子网属正常情况）创建生成代理，Visual Studio Team Services 将能从 VSTS git 中拉取代码并部署到 ILB ASE。 如果不想创建自己的生成代理，则需要使用利用拉取模型的 CI 系统，如 Dropbox。
+如果生成代理可访问 Internet 并与 ILB ASE 在同一网络上，则基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）仍将使用 ILB ASE。 因此，如果在 ILB ASE 所在的 VNET 上（不同的子网属正常情况）创建生成代理，Azure DevOps 将能从 Azure DevOps git 中拉取代码并部署到 ILB ASE。 如果不想创建自己的生成代理，则需要使用利用拉取模型的 CI 系统，如 Dropbox。
 
 ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此域显示在应用的发布配置文件和应用的门户边栏选项卡中（“概述” > “软件包”以及“属性”）。 如果 ILB ASE 的子域为 *contoso.net*，应用名称为 *mytest*，则对 FTP 使用 *mytest.contoso.net*，对 Web 部署使用 *mytest.scm.contoso.net*。
 

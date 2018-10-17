@@ -1,20 +1,21 @@
 ---
-title: 结合使用自定义影像服务 ONNX 模型和 Windows ML - 认知服务 | Microsoft Docs
-description: 了解如何创建使用从认知服务导出的 ONNX 模型的 Windows UWP 应用。
+title: 教程：结合使用 ONNX 模型和 Windows ML - 自定义影像服务
+titlesuffix: Azure Cognitive Services
+description: 了解如何创建使用从 Azure 认知服务导出的 ONNX 模型的 Windows UWP 应用。
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 06/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 0b128ba1800e74c20c09a9c5711c8473f1dd00d0
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3a9e9bc92ce38c4bb8d6d83c8017fa223342e7d2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939387"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365598"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义影像服务 ONNX 模型和 Windows ML（预览版）
 
@@ -41,7 +42,7 @@ ms.locfileid: "36939387"
 * （可选）从自定义影像服务导出的 ONNX 文件。 有关详细信息，请参阅[导出模型以用于移动设备](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)文档。
 
     > [!NOTE]
-    > 若要使用自己的模型，请按照[使用自己的模型](#use-your-own-model)部分中的步骤操作。
+    > 要使用自己的模型，请按照[使用自己的模型](#use-your-own-model)部分中的步骤操作。
 
 ## <a name="about-the-example-app"></a>关于示例应用
 
@@ -57,7 +58,7 @@ ms.locfileid: "36939387"
 
 ### <a name="the-model"></a>模型
 
-此示例随附的模型 (`cat-or-dog.onnx`) 是使用认知服务自定义影像服务创建并定型。 定型模型随后导出为 ONNX 模型。 若要详细了解如何使用此服务，请参阅[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)和[导出模型以用于移动设备](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)文档。
+此示例随附的模型 (`cat-or-dog.onnx`) 是使用认知服务自定义影像服务创建并定型。 定型模型随后导出为 ONNX 模型。 有关使用此服务的详细信息，请参阅[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)和[导出模型以用于移动设备](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)文档。
 
 > [!IMPORTANT]
 > 此示例随附的模型是使用一小部分狗图像和猫图像进行定型。 所以在识别狗和猫方面它可能不是世界上做得最好的。
@@ -76,7 +77,7 @@ ms.locfileid: "36939387"
 
 ### <a name="camera-access"></a>摄像头访问
 
-`Package.appxmanifest` 文件中的“功能”选项卡配置为，允许访问摄像头和麦克风。
+`Package.appxmanifest` 文件中的“功能”选项卡配置为允许访问摄像头和麦克风。
 
 > [!NOTE]
 > 尽管此示例不使用音频，但我不得不先启用麦克风，然后才能访问设备上的摄像头。
@@ -89,7 +90,7 @@ ms.locfileid: "36939387"
 
 ## <a name="run-the-example"></a>运行示例
 
-1. 按 `F5` 键，以通过 Visual Studio 启动应用。 系统可能会提示启用“开发人员模式”。 有关详细信息，请参阅[启用设备以用于开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)文档。
+1. 按 `F5` 键，通过 Visual Studio 启动应用。 系统可能会提示启用“开发人员模式”。 有关详细信息，请参阅[启用设备以用于开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)文档。
 
 2. 当出现提示时，允许应用访问设备上的摄像头和麦克风。
 
@@ -100,23 +101,23 @@ ms.locfileid: "36939387"
 
 ## <a name="use-your-own-model"></a>使用自己的模型
 
-若要使用自己的模型，请按照以下步骤操作：
+要使用自己的模型，请按照以下步骤操作：
 
 > [!IMPORTANT]
 > 本部分介绍了如何重命名当前模型 (cat-or-dog.cs)，并重构新模型的类名和方法名称。 这是为了避免与示例模型发生命名冲突。
 
-1. 使用自定义影像服务定型模型。 若要了解如何定型模型，请参阅[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)。
+1. 使用自定义影像服务定型模型。 要了解如何定型模型，请参阅[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)。
 
-2. 将定型模型导出为 ONNX 模型。 若要了解如何导出模型，请参阅[导出模型以用于移动设备](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)文档。
+2. 将定型模型导出为 ONNX 模型。 要了解如何导出模型，请参阅[导出模型以用于移动设备](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)文档。
 
 3. 在解决方案资源管理器中，右键单击“cat-or-dog.cs”，并将它重命名为“cat-or-dog.txt”。 重命名可防止与新模型发生命名冲突。
 
     > [!TIP]
     > 还可以在新模型中使用不同的类名，而重用现有名称则更简单。
 
-4. 在解决方案资源管理器中，右键单击“VisionApp”条目，再依次选择“添加” > “现有项...”。
+4. 在解决方案资源管理器中，右键单击“VisionApp”条目，再依次选择“添加”“现有项...” > 。
 
-5. 若要为模型生成类，请依次选择要导入的 ONNX 文件和“添加”按钮。 此时，在解决方案资源管理器中添加了与 ONNX 文件同名（但扩展名为 `.cs`）的新类。
+5. 要为模型生成类，请依次选择要导入的 ONNX 文件和“添加”按钮。 此时，在解决方案资源管理器中添加了与 ONNX 文件同名（但扩展名为 `.cs`）的新类。
 
 6. 打开生成的 .cs 文件，找到以下项的名称：
 
@@ -130,9 +131,9 @@ ms.locfileid: "36939387"
 
 7. 在解决方案资源管理器中，将 `.onnx` 文件移到“资产”文件夹中。 
 
-8. 若要在应用包中添加 ONNX 文件，请选择“`.onnx`”文件，并在属性中将“生成操作”设置为“内容”。
+8. 要在应用包中添加 ONNX 文件，请选择“`.onnx`”文件，并在属性中将“生成操作”设置为“内容”。
 
-9. 打开“MainPage.xaml.cs”文件。 找到以下代码行，并将文件名更改为新的 `.onnx` 文件：
+9. 打开 MainPage.xaml.cs 文件。 找到以下代码行，并将文件名更改为新的 `.onnx` 文件：
 
     ```csharp
     var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/cat-or-dog.onnx"));
@@ -140,15 +141,15 @@ ms.locfileid: "36939387"
 
     此更改会在运行时加载新模型。
 
-10. 构建并运行应用程序。 它现在使用新模型来评分图像。
+10. 生成并运行应用。 它现在使用新模型来评分图像。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解导出和使用自定义影像服务模型的其他方法，请参阅以下文档：
+要了解导出和使用自定义影像服务模型的其他方法，请参阅以下文档：
 
 * [导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)
-* [在 Android 应用中使用导出的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
+* [在 Android 应用程序中使用导出的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [在 Swift iOS 应用中使用导出的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)
-* [在 iOS 应用中结合使用导出的 CoreML 模型和 Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
+* [在带 Xamarin 的 iOS 应用程序中使用导出的 CoreML 模型](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-若要详细了解如何结合使用 ONNX 模型和 Windows ML，请参阅[使用 Windows ML 将模型集成到应用](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model)文档。
+有关结合使用 ONNX 模型和 Windows ML 的详细信息，请参阅[使用 Windows ML 将模型集成到应用](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model)文档。

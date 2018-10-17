@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aecb9a1819060e0da6338e8e16bf681fad42dd22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309739"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161911"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -33,16 +33,10 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 - 从 [Azure 示例](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)下载代码示例 
 - 最新版本的 [XCode](https://developer.apple.com/xcode/)，运行最新版本的 iOS SDK。 本快速入门已使用 XCode 9.3 和 iOS 11.3 测试过。
 - 最新版 [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
-- iothub-explorer CLI 实用程序，用于从 IoT 中心读取遥测数据。 若要进行安装，请先安装 [Node.js](https://nodejs.org) v4.x.x 或更高版本，然后运行以下命令： 
-
-   ```sh
-   sudo npm install -g iothub-explorer
-   ```
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 [!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
-
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -64,14 +58,6 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
    ```
 
    记下看起来类似于 `Hostname=...=` 的设备连接字符串。 本文稍后会用到此值。
-
-1. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索设备到云的消息。 以下命令检索 IoT 中心的服务连接字符串：
-
-   ```azurecli-interactive
-   az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-   ```
-
-   记下看起来类似于 `Hostname=...=` 的服务连接字符串。 本文稍后会用到此值。
 
 ## <a name="send-simulated-telemetry"></a>发送模拟遥测数据
 
@@ -119,19 +105,19 @@ pod install
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在 XCode 模拟器上运行过的示例应用显示从设备发送的消息的相关数据。 也可通过 IoT 中心查看接收的数据。 `iothub-explorer` CLI 实用程序连接到 IoT 中心的服务端“事件”终结点。 
+在 XCode 模拟器上运行过的示例应用显示从设备发送的消息的相关数据。 也可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 该扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
-打开新的终端窗口。 运行以下命令，将 {your hub service connection string} 替换为在本文开头检索到的服务连接字符串：
+运行以下 Azure CLI 命令，并将 `{YourIoTHubName}` 替换为 IoT 中心的名称：
 
-```sh
-iothub-explorer monitor-events myiOSdevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
+
+以下屏幕截图显示了在扩展接收模拟设备发送到 IoT 中心的遥测数据后的输出：
 
 以下屏幕截图显示在终端窗口中看到的遥测数据的类型：
 
 ![查看遥测数据](media/quickstart-send-telemetry-ios/view-telemetry.png)
-
-如果在运行 iothub-explorer 命令时遇到错误，请仔细检查，确保使用的是 IoT 中心的服务连接字符串，而不是 IoT 设备的设备连接字符串。 两种连接字符串都以 **Hostname={iothubname}** 开头，但服务连接字符串包含 **SharedAccessKeyName** 属性，而设备连接字符串包含 **DeviceID**。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

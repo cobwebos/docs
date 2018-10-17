@@ -1,25 +1,25 @@
 ---
-title: 文本翻译使用 Ruby 转换文本脚本 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 本快速入门将在认知服务中使用文本翻译 API 和 Ruby 将一种语言的文本从一个脚本转换为另一个脚本。
+title: 快速入门：转换文本脚本 - 文本翻译，Ruby
+titleSuffix: Azure Cognitive Services
+description: 在该快速入门中，你将使用文本翻译 API 和 Ruby 将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 56872ed6b6d7168fb1bf2c45de8104a592af34e3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6595e486a93811fdded21050c39e99d4f7e5a760
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43768713"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121747"
 ---
 # <a name="quickstart-transliterate-text-with-ruby"></a>快速入门：使用 Ruby 音译文本
 
-本快速入门将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
+在该快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,11 +27,11 @@ ms.locfileid: "43768713"
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
-## <a name="transliterate-request"></a>Transliterate 请求
+## <a name="transliterate-request"></a>音译请求
 
 下面使用 [Transliterate](./reference/v3-0-transliterate.md) 方法将一种语言的文本从一个脚本转换为另一个脚本。
 
-1. 在喜欢使用的代码编辑器中新建一个 Ruby 项目。
+1. 在你喜欢使用的代码编辑器中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
@@ -80,9 +80,9 @@ json = JSON.pretty_generate(JSON.parse(result))
 puts json
 ```
 
-## <a name="transliterate-response"></a>Transliterate 响应
+## <a name="transliterate-response"></a>音译响应
 
-在 JSON 中返回成功的响应，如以下示例所示：
+成功的响应以 JSON 格式返回，如以下示例所示：
 
 ```json
 [

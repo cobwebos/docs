@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a47beb3e4299c62ec4b7959b4834d0440fee06f7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 17fba267e85c7b1421e632930c8bea2bfaf6ff5f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744579"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736489"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由 Blob 存储事件
 
@@ -37,7 +37,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
    ![选择“存储”](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. 对于事件，必须创建 [Blob 存储帐户](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)或[常规用途 v2 存储帐户](../storage/common/storage-account-options.md#general-purpose-v2-accounts)。 对于仅需要块 blob 或追加 blob 存储的应用程序，我们建议使用 Blob 存储帐户。 为 Blob 或 StorageV2 帐户提供值。 为帐户提供唯一名称。 提供值后，选择“创建”。
+1. 要订阅事件，请创建常规用途 v2 存储帐户或 Blob 存储帐户。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
    ![开始执行步骤](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609083"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604333"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP.NET Web API 的访问权限
 
@@ -40,19 +40,13 @@ ms.locfileid: "39609083"
 
 Web API 资源需要先在租户中注册，然后才能接受并响应通过 Azure Active Directory 提供[访问令牌](../active-directory/develop/developer-glossary.md#access-token)的[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)所提出的[受保护资源请求](../active-directory/develop/developer-glossary.md#resource-server)。 注册时，会在租户中构建[应用程序和服务主体对象](../active-directory/develop/developer-glossary.md#application-object)。 
 
-1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
+以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 通过在 Azure 门户的右上角切换到包含 Azure AD B2C 租户的目录，确保你正在使用该目录。 选择订阅信息，然后选择“切换目录”。
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-    ![切换目录](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
+1. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。 现在应该使用在前一个教程中创建的租户。
 
-3. 选择包含租户的目录。
-
-    ![选择目录](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
-
-4. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。 现在应该使用在前一个教程中创建的租户。
-
-5. 选择“应用程序”，然后选择“添加”。
+2. 选择“应用程序”，然后选择“添加”。
 
     若要在租户中注册示例 Web API，请使用以下设置。
     
@@ -67,7 +61,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     | 应用 ID URI | myAPISample | 此 URI 可唯一标识租户中的 API。 这样即可每个租户注册多个 API。 [作用域](../active-directory/develop/developer-glossary.md#scopes)控制对受保护 API 资源的访问，是按 App ID URI 来定义的。 |
     | 本机客户端 | 否 | 由于这是 Web API，不是本机客户端，因此请选择“否”。 |
     
-6. 单击“创建”以注册 API。
+3. 单击“创建”以注册 API。
 
 注册的 API 显示在 Azure AD B2C 租户的应用程序列表中。 从列表中选择 Web API。 此时会显示 Web API 的属性窗格。
 

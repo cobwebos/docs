@@ -1,22 +1,23 @@
 ---
-title: 实体链接 API 入门 | Microsoft Docs
-description: 通过使用认知服务中的实体链接 API，可以分析文本，并将命名实体链接到知识库中的相关实体。
+title: 教程：构建实体链接应用 - C#
+titlesuffix: Azure Cognitive Services
+description: 通过实体链接 API，可分析文本，并将命名实体链接到知识库中的相关实体。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 54c4a3bbb3637c248bd7705ed291633368b542c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365524"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365632"
 ---
-# <a name="get-started-with-entity-linking-api-in-c35"></a>C&#35; 中的实体链接 API 入门
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>教程：使用 C# 构建实体链接应用
 
 Microsoft 实体链接是一款自然语言处理工具，可用于分析文本，并将命名实体链接到知识库中的相关实体。 
 
