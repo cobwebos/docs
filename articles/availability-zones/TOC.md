@@ -38,7 +38,7 @@
 ### [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL 数据库
-#### [将可用性区域与 SQL 数据库配合使用](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [将可用性区域与 SQL 数据库配合使用](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### 存储
 #### [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
