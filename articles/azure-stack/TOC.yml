@@ -26,6 +26,10 @@ items:
     href: azure-stack-tutorial-tenant-vm.md
   - name: 提供 SQL 数据库
     href: azure-stack-tutorial-sql-server.md
+  - name: 提供高度可用的 SQL 数据库
+    href: azure-stack-tutorial-sql.md
+  - name: 提供高可用性的 MyQL 数据库
+    href: azure-stack-tutorial-mysql.md
   - name: 提供 Web 应用
     href: azure-stack-tutorial-app-service.md
   - name: 部署 Ethereum
@@ -283,7 +287,7 @@ items:
       href: azure-stack-app-service-add-worker-roles.md
     - name: 配置部署源
       href: azure-stack-app-service-configure-deployment-sources.md
-    - name: 应用服务的 Azure Stack 发行说明
+    - name: 基于 Azure Stack 的应用服务发行说明
       items:
       - name: 基于 Azure Stack 的应用服务 Update 1 发行说明
         href: azure-stack-app-service-release-notes-update-one.md
@@ -380,9 +384,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 7bb089d4a10f6c30318befc5ccca71ac5bdb9017
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6fc6652110dbc8b459e7961632b3b6e654773a5c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249547"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362494"

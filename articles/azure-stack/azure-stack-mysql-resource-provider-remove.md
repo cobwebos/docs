@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: cd0195796189158650c9c2655062950b71130ad7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: quying
+ms.openlocfilehash: dcd1c40717cb35fe4daa9ab9e2c66f334ffff5fe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578474"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361492"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>删除 MySQL 资源提供程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "45578474"
 5. 使用以下参数运行 DeployMySqlProvider.ps1 脚本：
     - **Uninstall**。 删除资源提供程序和所有关联的资源。
     - **PrivilegedEndpoint**。 特权终结点的 IP 地址或 DNS 名称。
-    - **AzureEnvironment**。 使用部署 Azure Stack 的 Azure 环境。 仅对 Azure AD 部署必需。
+    - **AzureEnvironment**。 用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
     - **CloudAdminCredential**。 访问特权终结点时所需的云管理员凭据。
     - **DirectoryTenantID**
     - **AzCredential**。 Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。

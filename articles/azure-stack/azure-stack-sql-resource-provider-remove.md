@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 42d8a5a8073d2650b9e023305472f28d4f1c738f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: quying
+ms.openlocfilehash: f5aa67ad0588e3f42e68056c8ffca97767975e8b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580093"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361475"
 ---
 # <a name="remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
 
@@ -52,7 +52,7 @@ ms.locfileid: "45580093"
 
     * **Uninstall**。 删除资源提供程序和所有关联的资源。
     * **PrivilegedEndpoint**。 特权终结点的 IP 地址或 DNS 名称。
-    * **AzureEnvironment**。 使用部署 Azure Stack 的 Azure 环境。 仅对 Azure AD 部署必需。
+    * **AzureEnvironment**。 用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。
     * **CloudAdminCredential**。 访问特权终结点时所需的云管理员凭据。
     * **AzCredential**。 Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。
 

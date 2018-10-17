@@ -1,6 +1,6 @@
 ---
-title: 使用提供的 Azure Stack 上的 SQL 适配器资源提供程序数据库 |Microsoft Docs
-description: 如何创建和管理 SQL 数据库使用 SQL 适配器资源提供程序设置
+title: 在 Azure Stack 上使用 SQL Adapter 资源提供程序提供的数据库 | Microsoft Docs
+description: 如何创建和管理使用 SQL 适配器资源提供程序预配的 SQL 数据库
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,70 +11,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.reviewer: quying
+ms.openlocfilehash: 604e96d03d66cfde049316a1e6e99f07fee5032a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968820"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362371"
 ---
 # <a name="create-sql-databases"></a>创建 SQL 数据库
 
-您可以创建和管理自助服务用户门户中的数据库。 Azure Stack 用户需要具有包含 SQL 数据库服务的产品/服务的订阅。
+可以在用户门户中创建和管理自助服务数据库。 Azure Stack 用户需要一个包含套餐的订阅，该套餐应包含 SQL 数据库服务。
 
-1. 登录到[Azure Stack](azure-stack-poc.md)用户门户。
+1. 登录到 [Azure Stack](azure-stack-poc.md) 用户门户。
 
-2. 选择 **+ 新建** &gt;**数据 + 存储** &gt; **SQL Server 数据库** &gt; **添加**。
+2. 选择“+ 新建”&gt;“数据 + 存储”&gt;“SQL Server 数据库”&gt;“添加”。
 
-3. 下**Create Database**，输入所需的信息，如**数据库名称**并**最大大小 （mb）**。
+3. 在“创建数据库”下输入所需信息，例如“数据库名称”和“最大大小(MB)”。
 
    >[!NOTE]
-   >数据库大小必须至少 64 MB，这可以提高部署数据库后。
+   >数据库大小必须至少为 64 MB，此数字在部署数据库后可以提高。
 
-   根据需要为您的环境中配置其他设置。
+   根据需要为环境配置其他设置。
 
-4. 下**Create Database**，选择**SKU**。 下**选择 SKU**，选择你的数据库的 SKU。
+4. 在“创建数据库”下，选择“SKU”。 在“选择 SKU”下，为数据库选择 SKU。
 
    ![创建数据库](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >宿主服务器添加到 Azure Stack，它们分配 SKU。 托管 SKU 中的服务器的池中创建数据库。
+   >向 Azure Stack 添加宿主服务器时，系统会为它们分配 SKU。 将在 SKU 的宿主服务器池中创建数据库。
 
-5. 选择**登录名**。
-6. 下**选择一个登录名**中，选择现有登录名，或选择 **+ 创建新的登录名**。
-7. 下**新的登录名**，输入的名称**数据库登录名**和一个**密码**。
+5. 选择“登录名”。
+6. 在“选择登录名”下选择现有登录名，或者选择“+ 创建新登录名”。
+7. 在“新建登录名”下，输入一个名称作为**数据库登录名**，然后输入一个**密码**。
 
    >[!NOTE]
-   >这些设置是为您对此数据库只能访问权限创建的 SQL 身份验证凭据。 登录用户名必须全局唯一。 可以重复使用其他使用相同的 SKU 的数据库的登录名的设置。
+   >这些设置是仅为访问此数据库创建的 SQL 身份验证凭据。 登录用户名必须全局唯一。 可以对使用同一 SKU 的其他数据库重用登录设置。
 
    ![新建数据库用户名](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
-8. 选择**确定**完成将数据库部署。
+8. 选择“确定”，完成数据库的部署。
 
-下**Essentials**，所显示部署数据库后，记下**连接字符串**。 任何应用程序需要访问 SQL Server 数据库中，可以使用此字符串。
+在“概要”（在数据库部署后显示）下，记下“连接字符串”。 可以将此字符串用于任何需要访问 SQL Server 数据库的应用程序。
 
 ![检索连接字符串](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
 ## <a name="sql-always-on-databases"></a>SQL Always On 数据库
 
-根据设计，Always On 数据库被处理方式不同于独立服务器环境。 有关详细信息，请参阅[引入了 SQL Server Always On 可用性组在 Azure 虚拟机上的](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。
+根据设计，Always On 数据库的处理方式不同于在单独的服务器环境中的情况。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server Always On 可用性组简介](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。
 
 ### <a name="verify-sql-always-on-databases"></a>验证 SQL Always On 数据库
 
-以下屏幕截图显示了如何使用 SQL Server Management Studio 查看在 SQL Always On 的数据库状态。
+以下屏幕捕获显示了如何使用 SQL Server Management Studio 在 SQL Always On 中查看数据库状态。
 
 ![AlwaysOn 数据库状态](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Always On 数据库应显示为 Synchronized 且适用于所有 SQL 实例，并出现在可用性组。 在上一屏幕截图中，数据库示例是 newdb1 且其状态为**newdb1 （同步）**。
+AlwaysOn 数据库应显示为已进行同步，在所有 SQL 实例中可用并显示在“可用性组”中。 在上一屏幕捕获中，数据库示例为 newdb1，其状态为“newdb1 (已同步)”。
 
-### <a name="delete-an-alwayson-database"></a>删除了 AlwaysOn 的数据库
+### <a name="delete-an-alwayson-database"></a>删除 AlwaysOn 数据库
 
-当从资源提供程序中删除 SQL AlwaysOn 数据库时，SQL 从主副本和可用性组删除数据库。
+从资源提供程序中删除 SQL AlwaysOn 数据库时，SQL 会从主副本和可用性组中删除数据库。
 
-然后，SQL 将数据库置于 Restoring 状态放在其他副本上，并不会删除该数据库，除非触发。 如果不删除数据库，辅助副本进入未同步状态。
+然后，SQL 会将该数据库置于另一副本中并让其处于“正在还原”状态，在受到触发之前并不删除该数据库。 如果未删除数据库，次要副本将转为“未进行同步”状态。
 
 ## <a name="next-steps"></a>后续步骤
 

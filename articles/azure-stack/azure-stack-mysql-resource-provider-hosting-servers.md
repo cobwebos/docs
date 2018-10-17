@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 72824e5afb9f8d77c2f7d3bd01e6ff2035e95a95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 833d8e7960bfb7ee3c135df57e6d4dfec97af037
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237258"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364653"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
@@ -36,7 +36,7 @@ ms.locfileid: "48237258"
 
 1. 以服务管理员的身份登录到 Azure Stack 操作员门户。
 2. 选择“所有服务”。
-3. 下**管理资源**类别中，选择**MySQL 宿主服务器** > **+ 添加**。 此时会打开“添加 MySQL 宿主服务器”对话框，如以下屏幕捕获所示。
+3. 在“管理资源”类别中，选择“MySQL 宿主服务器” > “+添加”。 此时会打开“添加 MySQL 宿主服务器”对话框，如以下屏幕捕获所示。
 
    ![配置宿主服务器](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
@@ -75,6 +75,24 @@ ms.locfileid: "48237258"
 ## <a name="increase-backend-database-capacity"></a>提高后端数据库容量
 
 可以在 Azure Stack 门户中部署更多的 MySQL 服务器，以便提高后端数据库容量。 将这些服务器添加到新的或现有的 SKU。 如果向现有的 SKU 添加服务器，请确保该服务器的特征与 SKU 中其他服务器的特征相同。
+
+## <a name="sku-notes"></a>SKU 说明
+使用描述中的 SKU，例如容量和性能的服务器的功能的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。 例如，可以使用 SKU 名称来区分服务产品/服务通过以下特征：
+  
+* 高容量
+* 高性能
+* 高可用性
+
+最佳做法是使 SKU 中的所有宿主服务器具有相同的资源和性能特征。
+
+Sku 不能分配给特定用户或组。
+
+SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
+
+若要编辑一个 SKU，请转到**所有服务** > **MySQL 适配器** > **Sku**。 选择的 SKU，若要修改、 进行任何必要的更改，然后单击**保存**以保存更改。 若要删除不再需要的 SKU，请转到**所有服务** > **MySQL 适配器** > **Sku**。 右键单击 SKU 名称，然后选择**删除**将其删除。
+
+> [!TIP]
+> 你可以编辑或删除 MySQL 资源提供程序在同一位置中的配额。
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>将 MySQL 数据库服务器提供给用户使用
 

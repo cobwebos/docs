@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410198"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353699"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -210,7 +210,7 @@ ms.locfileid: "47410198"
 
     d.  有关**诊断存储帐户**，选择前面创建的存储帐户。
 
-    e.  注意： 使用 AAD 启用并配置 Azure 订阅，托管服务标识可以启用也。
+    e.  注意： 使用 AAD 启用并配置 Azure 订阅，为 Azure 资源管理的标识可以启用也。
 
 2.  选择“确定”。
 
@@ -357,8 +357,8 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     |-------------------------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 项目名称 | myIris | 输入用于标识帐户的唯一名称。 使用部门或项目最好地标识试验的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 |
     | 项目目录 | c:\Temp\ | 指定在其中创建项目的目录。 |
-    | 项目说明 | 将保留为空 | 用于描述项目的可选字段。 |
-    | Visualstudio.com GIT 存储库 URL | 将保留为空 | 可选字段。 将项目与源代码管理和协作的 Visual Studio Team Services 上的 Git 存储库相关联。 [了解如何设置存储库](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project)。 |
+    | 项目说明 | 留空 | 用于描述项目的可选字段。 |
+    | Visualstudio.com GIT 存储库 URL | 留空 | 可选字段。 将项目与源代码管理和协作的 Visual Studio Team Services 上的 Git 存储库相关联。 [了解如何设置存储库](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project)。 |
     | 所选工作区 | IrisGarden（如果存在） | 选择在 Azure 门户中的试验帐户创建一个工作区。 <br>使用快速入门，列出了此工作区的 IrisGarden 的名称。 否则，使用工作区具有试验帐户的名称或首选的帐户名称。 |
     | 项目模板 | 鸢尾花分类 | 模板包含脚本和用于浏览产品数据。 此模板包含脚本和此文档站点中，对于本快速入门和其他教程所需数据。 |
 

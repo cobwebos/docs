@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 650fead700afcc1f6d1d18c7356324074fb9365b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: quying
+ms.openlocfilehash: 78c4e7c6cdc8cf118a351d9030416318e51c69af
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716427"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365095"
 ---
 # <a name="create-mysql-databases"></a>创建 MySQL 数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "44716427"
 ## <a name="test-your-deployment-by-creating-a-mysql-database"></a>创建 MySQL 数据库以测试部署
 
 1. 登录到 Azure Stack 用户门户。
-2. 选择 **+ 创建资源** > **数据 + 存储** > **MySQL 数据库** > **添加**。
+2. 选择“+ 创建资源” > “数据 + 存储” > “MySQL 数据库” > “添加”。
 3. 在“创建 MySQL 数据库”下输入“数据库名称”，并根据需要为环境配置其他设置。
 
     ![创建 MySQL 测试数据库](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)

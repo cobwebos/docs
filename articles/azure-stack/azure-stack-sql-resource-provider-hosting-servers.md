@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 57033de3224b5966b2dfa80dd1cb45fafd83b26b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238709"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362052"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
@@ -41,7 +41,7 @@ ms.locfileid: "48238709"
 
 * 专门指定资源提供程序和用户工作负荷使用的 SQL 实例。 不能使用其他任何使用者正在使用的 SQL 实例。 此限制同样适用于应用服务。
 * 为资源提供程序配置具有相应特权级别的帐户（如下所述）。
-* 你负责管理 SQL 实例和其主机。  例如，资源提供程序不会应用更新、处理备份或处理凭据轮换。
+* 你要负责管理 SQL 实例及其主机。  例如，资源提供程序不会应用更新、处理备份或处理凭据轮换。
 
 ### <a name="sql-server-virtual-machine-images"></a>SQL Server 虚拟机映像
 
@@ -50,7 +50,7 @@ ms.locfileid: "48238709"
 在使用市场项部署 SQL VM 之前，请确保始终下载最新版本的 **SQL IaaS 扩展**。 IaaS 扩展和相应的门户增强功能可提供自动修补和备份等附加功能。 有关此扩展的详细信息，请参阅[使用 SQL Server 代理扩展在 Azure 虚拟机上自动完成管理任务](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)。
 
 > [!NOTE]
-> SQL IaaS 扩展_需_对于 marketplace; 中的 Windows 映像上的所有 SQL VM 将无法部署如果你未下载扩展。 与基于 Linux 的 SQL 虚拟机映像不使用它。
+> 对于市场上 Windows 映像中的所有 SQL，SQL IaaS 扩展都是_必需_的；如果没有下载该扩展，则 VM 将无法部署。 该扩展不用于基于 Linux 的 SQL 虚拟机映像。
 
 可以使用其他选项部署 SQL VM，包括 [Azure Stack 快速入门库](https://github.com/Azure/AzureStack-QuickStart-Templates)中的模板。
 
@@ -84,15 +84,15 @@ ms.locfileid: "48238709"
 
 1. 以服务管理员的身份登录到 Azure Stack 操作员门户。
 
-2. 选择**所有服务** &gt; **管理资源** &gt; **SQL 宿主服务器**。
+2. 选择“所有服务”&gt;“管理资源”&gt;“SQL 宿主服务器”。
 
    ![SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   下**SQL 宿主服务器**，可以将 SQL 资源提供程序连接到将充当资源提供程序的后端的 SQL Server 的实例。
+   在“SQL 宿主服务器”下，可将 SQL 资源提供程序连接到将充当资源提供程序后端的 SQL Server 实例。
 
    ![SQL 适配器仪表板](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
-3. 单击**外**并提供连接详细信息的 SQL Server 实例上**添加 SQL 宿主服务器**边栏选项卡。
+3. 单击“添加”，然后在“添加 SQL 宿主服务器”边栏选项卡上提供 SQL Server 实例的连接详细信息。
 
    ![添加 SQL 宿主服务器](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
@@ -173,23 +173,24 @@ ms.locfileid: "48238709"
    > 不能在同一 SKU 中混合使用独立服务器与 Always On 实例。 尝试在添加第一个托管服务器后混合类型会导致错误。
 
 ## <a name="sku-notes"></a>SKU 说明
-
-可以使用 SKU 来区分服务套餐。 例如，可以使用具有以下特征的 SQL Enterprise 实例：
+使用描述中的 SKU，例如容量和性能的服务器的功能的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。 例如，可以使用 SKU 名称来区分服务产品/服务通过以下特征：
   
 * 高容量
 * 高性能
 * 高可用性
 
-在此版本中，无法将 SKU 分配到特定的用户或组。
-
- SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
-
->[!TIP]
->使用可以反映和描述 SKU 中服务器容量（例如容量和性能）的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。
-
 最佳做法是使 SKU 中的所有宿主服务器具有相同的资源和性能特征。
 
-## <a name="make-the-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户使用
+Sku 不能分配给特定用户或组。
+
+SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
+
+若要编辑一个 SKU，请转到**所有服务** > **SQL 适配器** > **Sku**。 选择的 SKU，若要修改、 进行任何必要的更改，然后单击**保存**以保存更改。 若要删除不再需要的 SKU，请转到**所有服务** > **SQL 适配器** > **Sku**。 右键单击 SKU 名称，然后选择**删除**将其删除。
+
+> [!TIP]
+> 你可以编辑或删除 SQL 资源提供程序在同一位置中的配额。
+
+## <a name="make-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户
 
 创建计划和套餐，使用户能够使用 SQL 数据库。 将 **Microsoft.SqlAdapter** 服务添加到计划，并创建新配额。
 

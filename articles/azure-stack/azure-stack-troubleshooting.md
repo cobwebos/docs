@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 53bb89daee47d5f380786246070cf5cddb69b731
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: c463599190c5bfaac47a70dbca7b8a67dc830f3a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929541"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363465"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack 故障排除
 
 本文档提供 Azure Stack 的常见故障排除信息。 
 
 > [!NOTE]
-> Azure Stack 技术开发工具包 (ASDK) 中作为一个评估环境，因为没有官方支持从 Microsoft 客户支持服务。 如果遇到问题，请务必检查[Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)有关进一步的帮助和信息。  
+> 由于 Azure Stack 技术开发工具包 (ASDK) 以评估环境的形式提供，因此 Microsoft 客户支持服务不会提供官方支持。 如果遇到问题，请务必查看 [Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)以获取更多帮助和信息。  
 
 本部分针对故障排除问题提供的建议派生自多个来源，不保证能够解决具体的问题。 代码示例按原样提供，不保证生成预期的结果。 随着产品的不断改进，本部分的内容可能会频繁更新。
 
@@ -35,7 +35,7 @@ ms.locfileid: "37929541"
 ### <a name="deployment-failure"></a>部署失败
 如果安装期间发生失败，可以使用部署脚本的 -rerun 选项从失败的步骤重新开始部署。  
 
-### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>在 ASDK 部署结束时，PowerShell 会话仍处于打开状态，并不显示任何输出。
+### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK 部署结束时，PowerShell 会话仍保持打开状态，但不显示任何输出。
 此行为可能是选择 PowerShell 命令窗口后的默认行为。 开发工具包部署成功，但选择窗口时，脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。  按 ESC 键取消选择窗口，然后即会显示完成消息。
 
 ## <a name="virtual-machines"></a>虚拟机
@@ -43,7 +43,7 @@ ms.locfileid: "37929541"
 在 Azure Stack 中部署 VM 之前，必须先添加 Windows Server 映像和库项。
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>重启 Azure Stack 主机之后，某些 VM 可能不会自动启动。
-将重新启动主机之后，可能会发现，Azure Stack 服务并非立即可用。  这是因为 Azure Stack[基础结构 Vm](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles)和资源提供程序需要一些时间来检查一致性，但最终会自动启动。
+将重新启动主机之后，可能会发现，Azure Stack 服务并非立即可用。  这是因为 Azure Stack [基础结构 VM](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) 与资源提供程序需要花费一些时间来检查一致性，但最终会自动启动。
 
 另外还可能发现，在重新启动 Azure Stack 开发工具包主机之后，租户 VM 不会自动启动。 这是一个已知问题，只需执行几个手动步骤就能让它们联机：
 
@@ -53,7 +53,7 @@ ms.locfileid: "37929541"
 4.  租户 VM 显示为“已保存”状态。 所有基础结构 VM 运行后，右键单击租户 VM，并选择“启动”以恢复该 VM。
 
 ### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>我已删除某些虚拟机，但仍在磁盘上看到 VHD 文件。 这是预期行为吗？
-是的这是预期的行为。 设计此行为的原因如下：
+是的，这是预期的行为。 设计此行为的原因如下：
 
 * 删除 VM 时，不会删除 VHD。 磁盘是资源组中的独立资源。
 * 删除存储帐户后，Azure 资源管理器会立即反映删除结果，但其中的磁盘仍保留在存储中，直到运行垃圾收集为止。
