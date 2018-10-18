@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c1fbc99702e077e600f01959224f3321e7543e59
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8ef231982cfdc9a2c4387ee47e651fdf1af0baaf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044393"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388419"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
  必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
@@ -82,7 +82,7 @@ Azure 存储、SQL 数据库和网站等服务是通过公共 IP 地址提供的
 ## <a name="expressroute-health"></a>ExpressRoute 运行状况
 可以使用[网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 监视 ExpressRoute 线路的可用性、与 VNet 的连接性和带宽利用率。
 
-NPM 监视 Azure 专用对等互连和 Microsoft 对等互连的运行状况。  有关详细信息，请查看我们的[帖子](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)。
+NPM 监视 Azure 专用对等互连和 Microsoft 对等互连的运行状况。  有关详细信息，请查看我们的[帖子](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/)。
 
 ## <a name="next-steps"></a>后续步骤
 * 查找服务提供商。 请参阅 [ExpressRoute 服务提供商和位置](expressroute-locations.md)。

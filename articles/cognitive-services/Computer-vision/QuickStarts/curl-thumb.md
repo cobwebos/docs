@@ -3,19 +3,19 @@ title: 快速入门：生成缩略图 - REST、cURL - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 cURL 基于图像生成缩略图。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: afe9aad1981c53d2ce0e06d68a4b36401272e333
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 51c6a8e5693602cdc839de80f268891c247c63a9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634653"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344058"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 cURL 生成缩略图
 
@@ -59,7 +59,7 @@ ms.locfileid: "45634653"
     1. 将 `<thumbnailFile>` 的值替换为要保存缩略图的文件的路径和名称。
     1. 如有必要，请将请求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail`) 替换为获取的订阅密钥所在的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
     1. （可选）将请求正文 (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) 中的图像 URL 更改为要从中生成缩略图的其他图像的 URL。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 将文本编辑器中的命令粘贴到命令提示符窗口，然后运行命令。
 
 ```console

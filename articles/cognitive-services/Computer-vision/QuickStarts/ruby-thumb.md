@@ -3,19 +3,19 @@ title: 快速入门：生成缩略图 - REST、Ruby - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 Ruby 基于图像生成缩略图。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 117e1fcc49aea5b3cef3e8d3b299a1eec90527db
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 16cfadb1b1dec90324739427656a6587ba6314cc
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632936"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343038"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Ruby 生成缩略图
 
@@ -38,7 +38,7 @@ ms.locfileid: "45632936"
     1. 必要时，请将 `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze` 替换为你在其中获取了订阅密钥的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
     1. （可选）将 `https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\` 替换为你要为其生成缩略图的另一图像的 URL。
 1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`get-thumbnail.rb`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-thumbnail.rb`。
 
 ```ruby

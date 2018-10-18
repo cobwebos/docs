@@ -3,19 +3,19 @@ title: 快速入门：提取手写文本 - REST、Python - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Python 从图像中提取手写文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 91cff6205af70968b6397af9756a5385ddb0c989
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 58860fa1f65f90cdd314eb2c8cb7e1f54faa2344
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631355"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341746"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Python 提取手写文本
 
@@ -24,7 +24,7 @@ ms.locfileid: "45631355"
 > [!IMPORTANT]
 > 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，识别文本方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)方法，同时检查状态并返回识别文本方法调用的结果。
 
-可以在 [MyBinder](https://mybinder.org) 上使用 Jupyter 笔记本以分步方式运行此快速入门。 若要启动活页夹，请选择以下按钮：
+可以在 [MyBinder](https://mybinder.org) 上使用 Jupyter 笔记本以分步方式运行此快速入门。 要启动活页夹，请选择以下按钮：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
@@ -45,7 +45,7 @@ ms.locfileid: "45631355"
     1. 如有必要，请将 `vision_base_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的计算机视觉资源的终结点 URL。
     1. （可选）将 `image_url` 的值替换为要从中提取手写文本的另一图像的 URL。
 1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-handwritten-text.py`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-handwritten-text.py`。
 
 ```python
@@ -127,7 +127,7 @@ _ = plt.axis("off")
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

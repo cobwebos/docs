@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 693ba07e46900ba6f3e025d97cb34aad9e244ace
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f03872a125e4e4d2f1e0b458a31d67a07802f2c8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027038"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387441"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -85,7 +85,7 @@ Azure 表存储现在是 Azure Cosmos DB 的一部分。 若要查看 Azure 表�
 
 ## <a name="disk-storage"></a>磁盘存储
 
-Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute)。
+Azure 存储还包括虚拟机使用的托管和非托管磁盘功能。 有关这些功能的详细信息，请参阅[计算服务文档](https://docs.microsoft.com/azure/#pivot=products&panel=Compute)。
 
 ## <a name="types-of-storage-accounts"></a>存储帐户的类型
 

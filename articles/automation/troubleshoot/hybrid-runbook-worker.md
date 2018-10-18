@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cae7253a4bfcb4f83baf003a4d9d3c367d8f014
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 6c8dc240172451118fd75b042ba267740999882d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064218"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321761"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "37064218"
 
 混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理为 Microsoft Monitoring Agent。 对于 Linux，此代理为适用于 Linux 的 OMS 代理。
 
-###<a name="runbook-execution-fails"></a>方案：Runbook 执行失败
+### <a name="runbook-execution-fails"></a>方案：Runbook 执行失败
 
 #### <a name="issue"></a>问题
 
@@ -62,7 +62,7 @@ runbook 在尝试执行三次后立刻暂停。 存在可能会阻止 runbook �
 
 Linux 混合 Runbook 辅助角色依靠适用于 Linux 的 OMS 代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-###<a name="oms-agent-not-running"></a>方案：适用于 Linux 的 OMS 代理未运行
+### <a name="oms-agent-not-running"></a>方案：适用于 Linux 的 OMS 代理未运行
 
 如果适用于 Linux 的 OMS 代理未运行，这会导致 Linux 混合 Runbook 辅助角色无法与 Azure 自动化通信。 输入以下命令，验证代理是否正在运行：`ps -ef | grep python`。 你应该看到类似如下的输出，即使用 **nxautomation** 用户帐户的 python 进程。 如果未启用更新管理或 Azure 自动化解决方案，则以下任何进程都不会运行。
 
@@ -82,7 +82,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 如果适用于 Linux 的 OMS 代理未运行，请运行以下命令启动该服务：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
-###<a name="class-does-not-exist"></a>方案：指定的类不存在
+### <a name="class-does-not-exist"></a>方案：指定的类不存在
 
 如果看到错误“指定的类不存在。” （在 `/var/opt/microsoft/omsconfig/omsconfig.log` 中），则需要更新适用于 Linux 的 OMS 代理。 运行以下命令重新安装 OMS 代理：
 
@@ -94,7 +94,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Windows 混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-###<a name="mma-not-running"></a>方案：Microsoft Monitoring Agent 未运行
+### <a name="mma-not-running"></a>方案：Microsoft Monitoring Agent 未运行
 
 #### <a name="issue"></a>问题
 
@@ -108,7 +108,7 @@ Windows 混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动�
 
 在 PowerShell 中输入以下命令，验证代理是否正在运行：`Get-Service healthservice`。 如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`Start-Service healthservice`。
 
-###<a name="event-4502"></a> Operations Manager 日志中的事件 4502
+### <a name="event-4502"></a> Operations Manager 日志中的事件 4502
 
 #### <a name="issue"></a>问题
 
@@ -126,8 +126,8 @@ Windows 混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未看到问题或者不能解决问题，请访问以下通道获取更多支持：
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如果需要更多帮助，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

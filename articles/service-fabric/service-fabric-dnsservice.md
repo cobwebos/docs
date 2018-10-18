@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: a420033d96a1366a79f5f2032693c38d7eca4ac3
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 70ea33f2c3e3a79d1754b72d12e8fc27689e38ea
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830967"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387932"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
 DNS 服务是可选的系统服务，可以在群集中启用，用于发现使用 DNS 协议的其他服务。 
@@ -132,7 +132,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 ![服务终结点](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-以下示例将有状态服务的 DNS 名称设置为 `statefulsvc.app`。 该服务使用命名分区方案。 请注意分区名称均为小写。 这是在 DNS 查询中用作目标的分区的一项要求；有关详细信息，请参阅[针对有状态服务分区发出 DNS 查询](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)。
+以下示例将有状态服务的 DNS 名称设置为 `statefulsvc.app`。 该服务使用命名分区方案。 请注意分区名称均为小写。 这是在 DNS 查询中用作目标的分区的一项要求；有关详细信息，请参阅[针对有状态服务分区发出 DNS 查询](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)。
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />

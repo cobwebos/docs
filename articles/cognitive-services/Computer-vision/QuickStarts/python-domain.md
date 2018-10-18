@@ -3,19 +3,19 @@ title: 快速入门：使用域模型 - REST、Python - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将通过计算机视觉 API 和 Python 使用域模型来识别图像中的名人和地标。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 93027e2f9cd3a9b0e9c6ef261b8af876022632a4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: f8ba4709f8263119dd5134040797f085ee8239ff
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632443"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339457"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：通过计算机视觉中的 REST API 和 Python 使用域模型
 

@@ -1,26 +1,19 @@
 ---
 title: 在 Azure Data Box Gateway 中管理用户 | Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box Gateway 上的用户。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 3bd368cf19edf1370aaeef54d3ba0e4fd26ac239
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8adec2986a286e55ee71f0fddca695d1800b5317
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070314"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167182"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的用户 
 

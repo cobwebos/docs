@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: dac5425f72ff57e412be664e1bc0c84aee3dec1f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 99d723eee6bd5b60289af5490e4b1cd6a855cabb
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140832"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319143"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>使用 Windows PowerShell 脚本发布到开发和测试环境
 
@@ -52,6 +52,7 @@ Visual Studio 将生成名为 **PublishScripts** 的解决方案级文件夹，�
 Visual Studio 生成的 Windows PowerShell 模块包含发布脚本使用的函数。 不应修改这些 Azure PowerShell 函数。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="json-configuration-file"></a>JSON 配置文件
+
 JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配置数据用于确切指定要将哪些资源部署到 Azure。 Visual Studio 生成的文件的名称为 project-name-WAWS-dev.json（如果创建的是网站），或 project name-VM-dev.json（如果创建的是虚拟机）。 以下是创建网站时生成的 JSON 配置文件的示例。 大多数值的含义都一目了然。 网站名称由 Azure 生成，因此，它可能与项目名称不匹配。
 
 ```json
@@ -159,29 +160,29 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
 有关详细信息，请参阅[如何：在 Visual Studio 中创建 Web 部署包](https://msdn.microsoft.com/library/dd465323.aspx)。 此外，还可以自动创建 Web 部署包，如[自定义和扩展发布脚本[(#customizing-and-extending-publish-scripts)]中所述。
 
 1. 在“解决方案资源管理器”中打开脚本的上下文菜单，并选择“使用 PowerShell ISE 打开”。
-2. 如果首次在此计算机上运行 Windows PowerShell 脚本，请使用管理员权限打开命令提示窗口并键入以下命令：
+1. 如果首次在此计算机上运行 Windows PowerShell 脚本，请使用管理员权限打开命令提示窗口并键入以下命令：
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned
     ```
 
-3. 使用以下命令登录到 Azure。
+1. 使用以下命令登录到 Azure。
 
     ```powershell
     Add-AzureAccount
     ```
 
-    出现提示时，请提供用户名和密码。
+出现提示时，请提供用户名和密码。
 
-    请注意，当自动编写脚本时，这一提供 Azure 凭据的方法不起作用， 而是应使用 `.publishsettings` 文件来提供凭据。 仅限一次使用 **Get-AzurePublishSettingsFile** 命令从 Azure 下载文件，此后则使用 **Import-AzurePublishSettingsFile** 导入该文件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+请注意，当自动编写脚本时，这一提供 Azure 凭据的方法不起作用， 而是应使用 `.publishsettings` 文件来提供凭据。 仅限一次使用 **Get-AzurePublishSettingsFile** 命令从 Azure 下载文件，此后则使用 **Import-AzurePublishSettingsFile** 导入该文件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-4. （可选）如果希望创建虚拟机、数据库和网站等 Azure 资源，而不发布 Web 应用程序，请使用 **Publish-WebApplication.ps1** 命令以及设置为 JSON 配置文件的 **-Configuration** 参数。 此命令行使用 JSON 配置文件来确定要创建的资源。 由于它的其他命令行参数使用默认设置，因此它会创建资源，但不发布 Web 应用程序。 -Verbose 选项可提供有关运行情况的更多信息。
+1. （可选）如果希望创建虚拟机、数据库和网站等 Azure 资源，而不发布 Web 应用程序，请使用 **Publish-WebApplication.ps1** 命令以及设置为 JSON 配置文件的 **-Configuration** 参数。 此命令行使用 JSON 配置文件来确定要创建的资源。 由于它的其他命令行参数使用默认设置，因此它会创建资源，但不发布 Web 应用程序。 -Verbose 选项可提供有关运行情况的更多信息。
 
     ```powershell
     Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json
     ```
 
-5. 如以下示例之一所示，使用 **Publish-WebApplication.ps1** 命令可调用脚本并发布 Web 应用程序。 如果需要覆盖任何其他参数（例如订阅名称、发布包名称、虚拟机凭据或数据库服务器凭据）的默认设置，可以指定这些参数。 使用 **–Verbose** 选项可以查看有关发布进度的详细信息。
+1. 如以下示例之一所示，使用 **Publish-WebApplication.ps1** 命令可调用脚本并发布 Web 应用程序。 如果需要覆盖任何其他参数（例如订阅名称、发布包名称、虚拟机凭据或数据库服务器凭据）的默认设置，可以指定这些参数。 使用 **–Verbose** 选项可以查看有关发布进度的详细信息。
 
     ```powershell
     Publish-WebApplication.ps1 –Configuration C:\Path\WebProject-WAWS-dev-json `
@@ -191,27 +192,29 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
     -Verbose
     ```
 
-    如果要创建虚拟机，则命令类似于以下形式： 此示例还显示了如何为多个数据库指定凭据。 对于这些脚本创建的虚拟机，SSL 证书不是来自受信任的根证书颁发机构。 因此，需要使用 **–AllowUntrusted** 选项。
+如果要创建虚拟机，则命令类似于以下形式： 此示例还显示了如何为多个数据库指定凭据。 对于这些脚本创建的虚拟机，SSL 证书不是来自受信任的根证书颁发机构。 因此，需要使用 **–AllowUntrusted** 选项。
 
-    ```powershell
-    Publish-WebApplication.ps1 `
-    -Configuration C:\Path\ADVM-VM-test.json `
-    -SubscriptionName Contoso `
-    -WebDeployPackage C:\Path\ADVM.zip `
-    -AllowUntrusted `
-    -VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
-    -DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
-    -Verbose
-    ```
+```powershell
+Publish-WebApplication.ps1 `
+-Configuration C:\Path\ADVM-VM-test.json `
+-SubscriptionName Contoso `
+-WebDeployPackage C:\Path\ADVM.zip `
+-AllowUntrusted `
+-VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
+-DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
+-Verbose
+```
 
-    脚本可以创建数据库，但不会创建数据库服务器。 如果想要创建数据库服务器，可以使用 Azure 模块中的 **New-AzureSqlDatabaseServer** 函数。
+脚本可以创建数据库，但不会创建数据库服务器。 如果想要创建数据库服务器，可以使用 Azure 模块中的 **New-AzureSqlDatabaseServer** 函数。
 
 ## <a name="customizing-and-extending-the-publish-scripts"></a>自定义和扩展发布脚本
+
 可以自定义发布脚本和 JSON 配置文件。 不应修改 Windows PowerShell 模块 **AzureWebAppPublishModule.psm1** 中的函数。 如果只是想要指定一个不同的数据库或更改虚拟机的某些属性，可以编辑 JSON 配置文件。 如果想要扩展脚本的功能以自动生成和测试项目，可以在 **Publish-WebApplication.ps1** 中实现函数存根。
 
 若要自动生成项目，请按照以下代码示例中所示，添加对 `New-WebDeployPackage` 调用 MSBuild 的代码。 MSBuild 命令的路径各不相同，具体取决于安装的 Visual Studio 版本。 若要获取正确的路径，可以使用 **Get-MSBuildCmd** 函数，如本示例中所示。
 
 ### <a name="to-automate-building-your-project"></a>自动生成项目
+
 1. 在 global param 节中添加 `$ProjectFile` 参数。
 
     ```powershell
@@ -221,7 +224,7 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
     $ProjectFile,
     ```
 
-2. 将函数 `Get-MSBuildCmd` 复制到脚本文件。
+1. 将函数 `Get-MSBuildCmd` 复制到脚本文件。
 
     ```powershell
     function Get-MSBuildCmd
@@ -242,7 +245,7 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
     }
     ```
 
-3. 将 `New-WebDeployPackage` 替换为以下代码，并替换构造 `$msbuildCmd` 的行中的占位符。 此代码适用于 Visual Studio 2017。 如果使用的是 Visual Studio 2015，请将 **VisualStudioVersion** 属性更改为 `14.0`（`12.0` 适用于 Visual Studio 2013）。
+1. 将 `New-WebDeployPackage` 替换为以下代码，并替换构造 `$msbuildCmd` 的行中的占位符。 此代码适用于 Visual Studio 2017。 如果使用的是 Visual Studio 2015，请将 **VisualStudioVersion** 属性更改为 `14.0`（`12.0` 适用于 Visual Studio 2013）。
 
     ```powershell
     function New-WebDeployPackage
@@ -250,15 +253,15 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
         #Write a function to build and package your web application
     ```
 
-    若要生成 Web 应用程序，请使用 MsBuild.exe。 有关帮助，请参阅位于以下页面的 MSBuild 命令行参考：[http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+若要生成 Web 应用程序，请使用 MsBuild.exe。 有关帮助，请参阅位于以下页面的 MSBuild 命令行参考：[http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
-    ```powershell
-    Write-VerboseWithTime 'Build-WebDeployPackage: Start'
+```powershell
+Write-VerboseWithTime 'Build-WebDeployPackage: Start'
 
-    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
+$msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
 
-    Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
-    ```
+Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
+```
 
 ### <a name="start-execution-of-the-build-command"></a>开始执行生成命令
 
@@ -293,7 +296,7 @@ return $WebDeployPackage
     }
     ```
 
-2. 从命令行通过传递 `$Project` 参数调用自定义脚本，如下例所示：
+1. 从命令行通过传递 `$Project` 参数调用自定义脚本，如下例所示：
 
     ```powershell
     .\Publish-WebApplicationVM.ps1 -Configuration .\Configurations\WebApplication5-VM-dev.json `
@@ -303,9 +306,10 @@ return $WebDeployPackage
     -Verbose
     ```
 
-    若要自动测试应用程序，请向 `Test-WebApplication` 添加代码。 请务必取消注释 **Publish-WebApplication.ps1** 中调用这些函数的行。 如果不提供实现，则可以使用 Visual Studio 手动生成项目，并运行发布脚本来发布到 Azure。
+若要自动测试应用程序，请向 `Test-WebApplication` 添加代码。 请务必取消注释 **Publish-WebApplication.ps1** 中调用这些函数的行。 如果不提供实现，则可以使用 Visual Studio 手动生成项目，并运行发布脚本来发布到 Azure。
 
 ## <a name="publishing-function-summary"></a>发布函数摘要
+
 若要获取可在 Windows PowerShell 命令提示符处使用的函数的相关帮助，请使用 `Get-Help function-name` 命令。 帮助中包含参数帮助和示例。 脚本源文件 AzureWebAppPublishModule.psm1 和 Publish-WebApplication.ps1 中也提供了相同的帮助文本。 脚本和帮助已使用 Visual Studio 语言本地化。
 
 **AzureWebAppPublishModule**

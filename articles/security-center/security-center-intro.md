@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: bd0e517845b9cfcbe6090dff8d656edcca782c83
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1b0a6c6d6daa686404021afb2e10b25bb9f54191
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126286"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319374"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 有了安全中心，即可对各种工作负荷应用安全策略、减少受到的威胁，以及检测和响应攻击。
@@ -34,7 +34,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级�
 - **高级云防御** -通过对管理端口的及时访问，加上 VM 上运行的自适应应用程序控制措施，使威胁得到缓解。
 - **集成式安全解决方案** - 收集、搜索并分析来自各种来源（包括已连接的合作伙伴解决方案）的安全数据。
 
-“安全中心 - 概述”简要介绍了 Azure 和非 Azure 工作负载的安全状态，让你能够了解并查看工作负载的安全性并确定和缓解风险。 可通过内置的仪表板快速了解需要关注的安全警报和漏洞。
+**安全中心 - 概述**概述了 Azure 和非 Azure 工作负荷的安全状态，介绍了如何发现并评估工作负荷的安全性，以及如何发现和缓解风险。 可以通过内置的仪表板快速了解那些需要关注的安全警报和漏洞。
 
 ![概述][1]
 

@@ -4,19 +4,19 @@ description: 使用媒体服务时，需要创建一个转换来描述处理视�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: b755e0573098d3dbed1bea18a40af634be609f76
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 214d4d3d11255e417f3df1e5f6e648b2a30225ea
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272074"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377302"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
 
@@ -32,7 +32,7 @@ Azure 媒体服务 REST API (v3) 的最新版本引入了用于对视频进行�
 
 下表显示了转换的属性并给出了它们的定义。
 
-|名称|Type|说明|
+|名称|Type|Description|
 |---|---|---|
 |ID|字符串|资源的完全限定的资源 ID。|
 |名称|字符串|资源的名称。|
@@ -48,7 +48,7 @@ Azure 媒体服务 REST API (v3) 的最新版本引入了用于对视频进行�
 
 下表显示了作业的属性并给出了它们的定义。
 
-|名称|Type|说明|
+|名称|Type|Description|
 |---|---|---|
 |ID|字符串|资源的完全限定的资源 ID。|
 |名称|字符串|资源的名称。|
@@ -56,7 +56,7 @@ Azure 媒体服务 REST API (v3) 的最新版本引入了用于对视频进行�
 |properties.description |字符串|作业的可选详细说明。|
 |properties.lastModified |字符串|上次更新转换的 UTC 日期和时间，格式为“YYYY-MM-DDThh:mm:ssZ”。|
 |properties.outputs |JobOutput[]:JobOutputAsset[] |作业的输出。|
-|properties.priority |Priority |处理作业的优先级。 较高优先级的作业在较低优先级的作业之前处理。 如果未设置，则默认为正常。
+|properties.priority |优先度 |处理作业的优先级。 较高优先级的作业在较低优先级的作业之前处理。 如果未设置，则默认为正常。
 |properties.state |JobState |作业的当前状态。
 |type|字符串|资源的类型。|
 
@@ -78,5 +78,4 @@ Azure 媒体服务 REST API (v3) 的最新版本引入了用于对视频进行�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [流式处理视频文件](stream-files-dotnet-quickstart.md)
+[流式处理视频文件](stream-files-dotnet-quickstart.md)

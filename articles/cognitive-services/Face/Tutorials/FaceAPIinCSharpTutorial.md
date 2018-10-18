@@ -3,19 +3,19 @@ title: 教程：检测和定格图像中的人脸 - 人脸 API、C#
 titleSuffix: Azure Cognitive Services
 description: 本教程创建一个 Windows 应用，以便使用人脸 API 来检测和定格图像中的人脸。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: nolachar
-ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: pafarley
+ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162605"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340947"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 WPF 应用
 

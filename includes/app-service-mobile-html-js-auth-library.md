@@ -19,7 +19,7 @@ client.login("facebook").done(function (results) {
 
 在这种情况下，Azure 应用服务将管理 OAuth 2.0 身份验证流。  它显示所选提供者的登录页，并在使用标识提供者成功登录后生成应用服务身份验证令牌。 login 函数在完成时会返回一个 JSON 对象，该对象分别在 userId 和 authenticationToken 字段中公开用户 ID 和应用服务身份验证令牌。 可以缓存此令牌，并在它过期之前重复使用。
 
-###<a name="client-auth"></a>如何：使用提供程序（客户端流）进行身份验证
+### <a name="client-auth"></a>如何：使用提供程序（客户端流）进行身份验证
 
 你的应用还能够独立联系标识提供者，并将返回的令牌提供给应用服务以进行身份验证。 使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
 
@@ -61,7 +61,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 这个示例将从 Live Connect 获取一个令牌，并通过调用 login 函数将该令牌提供给应用服务。
 
-###<a name="auth-getinfo"></a>如何：获取已经过身份验证的用户相关信息
+### <a name="auth-getinfo"></a>如何：获取已经过身份验证的用户相关信息
 
 可以结合任何 AJAX 库使用 HTTP 调用，从 `/.auth/me` 终结点检索身份验证信息。  确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。  身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。  例如，若要使用提取 API：
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607107"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393977"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
@@ -242,4 +242,4 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Active Directory 中条件访问的最佳做法](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [Azure Active Directory 中条件访问的最佳做法](../../active-directory/conditional-access/best-practices.md)

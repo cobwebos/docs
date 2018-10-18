@@ -3,8 +3,8 @@ title: 使用查询字符串控制 Azure CDN 缓存行为 - 高级层 | Microsof
 description: Azure CDN 的查询字符串缓存可以控制 Web 请求在包含查询字符串时被缓存的方式。 本指南介绍 Verizon Azure CDN 高级版产品中的查询字符串缓存。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: 3777689af72f580645826a1ca4e31ca84bd65dab
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.author: magattus
+ms.openlocfilehash: 2f0a361d53489e22ccc8e41406e5b86b423ea2f6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260828"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091396"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级层
 > [!div class="op_single_selector"]

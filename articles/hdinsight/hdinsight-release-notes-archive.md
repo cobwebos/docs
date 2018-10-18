@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 1dd0e33b3ec6cc5521d5087d48e9e5467911c2b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3be4b5e74c0c5cac9acd281b86e55c96b011763
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109757"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363786"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明存档
 
@@ -24,7 +24,7 @@ ms.locfileid: "43109757"
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>2018/06/27 说明 - 在 HDInsight 3.6 上发布新的开源版本 ADLS Gen2 等
-2018 年 6 月发布的 HDInsight 是一次重要的发布，为我们的客户提供了大量新更新和新功能。 有关详细信息，请阅读此[文章](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/)。
+2018 年 6 月发布的 HDInsight 是一次重要的发布，为我们的客户提供了大量新更新和新功能。 有关详细信息，请阅读此[文章](https://azure.microsoft.com/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/)。
 
 以下是重点内容。 有关详细的发行说明、修复的 bug、已知问题等内容，请阅读 [Azure HDInsight 发行说明](hdinsight-release-notes.md)。
 

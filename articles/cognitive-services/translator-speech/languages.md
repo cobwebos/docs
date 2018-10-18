@@ -10,15 +10,17 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd1c60a2c2ad88abf686e89972d29768ef600e4e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950176"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344551"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>语音翻译 API 支持的语言
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 语音翻译支持以下语言。 如果两种语言都支持语音翻译，则语音到语音翻译和语音到文本翻译都可用。 如果目标语言不支持语音转换，则只有语音到文本翻译可用。 
 
 | 语音语言    |

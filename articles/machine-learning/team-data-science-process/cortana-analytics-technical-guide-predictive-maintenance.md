@@ -4,9 +4,10 @@ description: 在航天工业、实用工具和运输业中用于预见性维护�
 services: machine-learning
 documentationcenter: ''
 author: fboylu
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
+ms.service: machine-learning
 ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 985010457413c15622f85e8ce8c6955a64ae40e9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 04e0a694d3e8d978a21417e728feabf32f85299f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985892"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394589"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 

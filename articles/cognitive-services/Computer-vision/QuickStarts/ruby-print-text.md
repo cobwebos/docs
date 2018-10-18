@@ -1,21 +1,21 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、Ruby - 计算机视觉
+title: 快速入门：提取打印的文本 (OCR) - REST、Ruby - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 Ruby 从图像中提取印刷体文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: d222615e3c6a884fa77f34dd1f87c3211f631c39
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 0fdeee5964c2fe7eccafe61f8d2d17548d4492f2
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629520"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339825"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Ruby 提取印刷体文本 (OCR)
 
@@ -38,7 +38,7 @@ ms.locfileid: "45629520"
     1. 必要时，请将 `https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr` 替换为向你提供了订阅密钥的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
     1. （可选）将 `https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\` 替换为要从中提取印刷体文本的另一图像的 URL。
 1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`get-printed-text.rb`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby get-printed-text.rb`。
 
 ```ruby
@@ -74,7 +74,7 @@ puts response.body
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

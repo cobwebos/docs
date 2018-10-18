@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989866"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388188"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure 市场。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -92,7 +92,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
     ![绘制][img-portal-vm-create]
 4. 选择要部署的 VM 大小：
 
-    a.    如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    如果计划在本地开发 VHD，大小则无关紧要。 请考虑使用一个较小的 VM。
 
     b.    如果计划在 Azure 中开发映像，请考虑对所选映像使用一个建议的 VM 大小。
 
@@ -108,7 +108,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
     c.    在“资源组”下，可以选择放置 VM 的逻辑组。
 6. 选择部署的“位置”：
 
-    a.    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
 
     b.    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这会加快 VHD 复制过程，Microsoft 会在提交映像进行认证时代表你执行该过程。
 
@@ -395,7 +395,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
     b.  **到期时间**：选择至少为“开始时间”后 3 周的日期。
 
@@ -433,7 +433,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  从[此处](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)下载 Azure 经典 CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
+1.  从[此处](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)下载 Azure 经典 CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
 
 2.  下载后，请安装
 
@@ -445,7 +445,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     更新上述代码中的以下参数
 
-    a. `<StorageAccountName>`：指定存储帐户名称
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 `<StorageAccountName>`：指定存储帐户名称
 
     b. `<Storage Account Key>`：指定存储帐户密钥
 

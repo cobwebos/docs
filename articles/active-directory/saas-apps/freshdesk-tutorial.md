@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: ce302db74f831e67b576e4c0001f21473fd7f2e0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3f640d729d002e89c4968442e8d8ab761f78d090
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037518"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教程：Azure Active Directory 与 FreshDesk 集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "47037518"
 
 在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 FreshDesk 的 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 FreshDesk 用户。 换句话说，需要在 Azure AD 用户与 FreshDesk 中相关用户之间建立链接关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 FreshDesk 用户。 换句话说，需要建立 Azure AD 用户与 FreshDesk 中相关用户之间的关联关系。
 
 可以通过将 Azure AD 中“用户名”的值分配为 FreshDesk 中“用户名”的值来建立此链接关系。
 
@@ -113,7 +113,7 @@ ms.locfileid: "47037518"
 
     ![配置单一登录](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.freshdesk.com`，或者键入 Freshdesk 建议的其他值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.freshdesk.com`，或者键入 Freshdesk 建议的其他值。
 
     > [!NOTE]
     > 请注意，这不是实际值。 必须使用实际登录 URL 更新此值。 若要获取此值，请与 [FreshDesk 客户端支持团队](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)联系。
@@ -137,7 +137,7 @@ ms.locfileid: "47037518"
 
 8. 打开**命令提示符**并运行以下命令：
 
-    a. 在命令提示符中输入 `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` 值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在命令提示符中输入 `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` 值。
 
     > [!NOTE]
     > 此处，**FreshDesk.cer** 是从 Azure 门户下载的证书。
@@ -159,7 +159,7 @@ ms.locfileid: "47037518"
 
     ![单一登录](./media/freshdesk-tutorial/IC776770.png "单一登录")
   
-    a. 对于“单一登录(SSO)”，请选择“启用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“单一登录(SSO)”，请选择“启用”。
 
     b. 选择“SAML SSO”。
 
@@ -195,7 +195,7 @@ ms.locfileid: "47037518"
 
     ![创建 Azure AD 测试用户](./media/freshdesk-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -228,7 +228,7 @@ ms.locfileid: "47037518"
 
    ![代理信息](./media/freshdesk-tutorial/IC776775.png "Agent Information")
 
-   a. 在“电子邮件”文本框中，键入要预配的 Azure AD 帐户的 Azure AD 电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入要预配的 Azure AD 帐户的 Azure AD 电子邮件地址。
 
    b. 在“完整名称”文本框中，键入要预配的 Azure AD 帐户的名称。
 

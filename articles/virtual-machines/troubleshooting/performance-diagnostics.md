@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411300"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387374"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
@@ -103,7 +103,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>查看见解和性能诊断报告
-每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关收集的所有诊断数据的完整列表，请参阅 [PerfInsights 收集哪类信息？](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
+每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关收集的所有诊断数据的完整列表，请参阅 [PerfInsights 收集哪类信息？](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
 
 ### <a name="select-a-performance-diagnostics-report"></a>选择性能诊断报告
 可以使用诊断报告列表来查找所有已运行的诊断报告。 该列表包含有关使用的分析、发现的见解及其影响级别的详细信息。 选择一行可查看更多详细信息。
@@ -123,7 +123,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 ![性能诊断见解详细信息的屏幕截图](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下载并查看完整的性能诊断报告
-可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[查看诊断报告](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)。
+可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[查看诊断报告](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理性能诊断报告
 可以使用“删除报告”按钮删除一个或多个性能诊断报告。

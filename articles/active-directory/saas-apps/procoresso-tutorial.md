@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 871fde799f064f52b11b75e190b9b7c8a73a843d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ffc1e0d66761700cb0da1f998c2639afc5abb2c4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445194"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
 
@@ -134,7 +134,7 @@ ms.locfileid: "39445194"
 
     ![配置单一登录](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a. 在“单一登录颁发者 URL”中，粘贴从 Azure 门户复制的 SAML 实体 ID。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“单一登录颁发者 URL”中，粘贴从 Azure 门户复制的 SAML 实体 ID。
 
     b. 在“SAML 单一登录目标 URL”中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL。
 
@@ -180,7 +180,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
  
     ![创建 Azure AD 测试用户](./media/procoresso-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -202,7 +202,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. 在“名字”文本框中，输入用户的名字（如 **Britta**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，输入用户的名字（如 **Britta**）。
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如 **Simon**）。
 

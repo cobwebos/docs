@@ -2,18 +2,18 @@
 title: 快速入门：在 Azure 数据资源管理器中查询数据
 description: 在本快速入门中，将了解如何在 Azure 数据资源管理器中查询和共享数据。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ab29152dde4d567e8552295b3dff4f4088bdf5b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977649"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394351"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>快速入门：在 Azure 数据资源管理器中查询数据
 

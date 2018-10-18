@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146198"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386631"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 
@@ -35,7 +35,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>应用程序清单中引用的证书
 
-应用程序清单中指定的证书（例如，通过 [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 或 [**EndpointCertificate**](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 元素指定）必须位于 */var/lib/sfcerts* 目录中。 用于在应用程序清单中指定证书的元素不采用路径属性，因此证书必须位于默认目录中。 这些元素采用可选的 **X509StoreName** 属性。 默认值为“My”，指向 Linux 节点上的 */var/lib/sfcerts* 目录。 其他任何值未在 Linux 群集上定义。 对于 Linux 群集上运行的应用，我们建议省略 **X509StoreName** 属性。 
+应用程序清单中指定的证书（例如，通过 [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 或 [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 元素指定）必须位于 */var/lib/sfcerts* 目录中。 用于在应用程序清单中指定证书的元素不采用路径属性，因此证书必须位于默认目录中。 这些元素采用可选的 **X509StoreName** 属性。 默认值为“My”，指向 Linux 节点上的 */var/lib/sfcerts* 目录。 其他任何值未在 Linux 群集上定义。 对于 Linux 群集上运行的应用，我们建议省略 **X509StoreName** 属性。 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>配置包 (Settings.xml) 中引用的证书
 

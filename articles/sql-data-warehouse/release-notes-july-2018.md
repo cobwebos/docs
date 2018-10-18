@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287998"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318826"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 7 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 7 月发行的版本中所引入的新功能和所做的更改。
@@ -30,7 +30,7 @@ Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 7 月发行
 ![Azure SQL 数据仓库比 Amazon Redshift 更快、更便宜](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>资料来源：[Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>（Gigaom 调查分析师报告：符合云基准的数据仓库）
 
-###<a name="query-concurrency"></a>查询并发性
+### <a name="query-concurrency"></a>查询并发性
 SQL 数据仓库还确保可跨组织访问数据。 Microsoft 增强了该服务以支持 128 个并发查询，使更多的用户可以查询同一个数据库，而不会受到其他请求的阻止。 相比之下，Amazon Redshift 将最大并发查询数限制为 50 个，因此限制了组织内部的数据访问。
 
 SQL 数据仓库在不提高价格的情况下提供这些查询性能和查询并发性改善，其独特的体系结构建立在分离式存储和计算资源的基础之上。

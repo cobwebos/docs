@@ -3,19 +3,19 @@ title: 使用 OCR 提取文本 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 通过光学字符识别 (OCR) 提取文本相关的概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: 8cfc654e881c7477e430515e62f8c78cfd0a2b84
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.author: pafarley
+ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238582"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341661"
 ---
 # <a name="extracting-text-with-ocr"></a>使用 OCR 提取文本
 

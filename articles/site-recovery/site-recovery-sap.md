@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922735"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318684"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>使用 Site Recovery 保护多层 SAP NetWeaver 应用程序部署
 
@@ -71,10 +71,10 @@ ms.locfileid: "37922735"
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>运行 SAP Web 调度程序池的 VM 
 Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负载均衡器。 为了实现 Web 调度程序组件的高可用性，在轮循机制配置中使用了 Azure 负载均衡器来实施并行 Web 调度程序设置，以便在均衡器池中的可用 Web 调度程序之间分配 HTTP(S) 流量。 这将会使用 Azure Site Recovery(ASR) 进行复制，并且自动化脚本将用于在灾难恢复区域上配置负载均衡器。 
 
-####<a name="vms-running-application-servers-pool"></a>运行应用程序服务器池的 VM
+#### <a name="vms-running-application-servers-pool"></a>运行应用程序服务器池的 VM
 若要管理 ABAP 应用程序服务器的登录组，需使用 SMLG 事务。 该事务使用 Central Services 的消息服务器中的负载均衡功能，在 SAPGUI 的 SAP 应用程序服务器池之间分配工作负荷，以及分配 RFC 流量。 这将会使用 Azure Site Recovery 进行复制 
 
-####<a name="vms-running-sap-central-services-cluster"></a>运行 SAP Central Services 群集的 VM
+#### <a name="vms-running-sap-central-services-cluster"></a>运行 SAP Central Services 群集的 VM
 此参考体系结构在应用层中的 VM 上运行 Central Services。 如果将 Central Services 部署到单个 VM（高可用性不是一项要求时，通常采用这种部署方式），则它可能会成为潜在的单一故障点 (SPOF)。<br>
 
 若要实现高可用性解决方案，可以使用共享磁盘群集或文件共享群集。若要为共享磁盘群集配置 VM，请使用 Windows Server 故障转移群集。 建议将云见证用作仲裁见证。 
@@ -110,7 +110,7 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 **Active Directory 虚拟机** |  Active Directory 复制 
 **SQL 数据库服务器** |  SQL Always On 复制
 
-##<a name="replicate-virtual-machines"></a>复制虚拟机
+## <a name="replicate-virtual-machines"></a>复制虚拟机
 
 若要开始将所有 SAP 应用程序虚拟机复制到 Azure 灾难恢复数据中心，请遵照[将虚拟机复制到 Azure](azure-to-azure-walkthrough-enable-replication.md) 中的指导。
 

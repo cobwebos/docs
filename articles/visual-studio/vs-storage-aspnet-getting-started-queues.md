@@ -12,14 +12,15 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 26f303318320eb8b039503666841e518f75348e4
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42140499"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321846"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)
+
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
@@ -28,7 +29,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 本教程介绍如何针对 Azure 队列存储实体的一些常见使用方案编写 ASP.NET 代码。 这些方案包括一些常见任务，如创建 Azure 队列，添加、修改、读取和删除队列消息。
 
-##<a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)
@@ -452,7 +453,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     queue.FetchAttributes();
     ```
 
-6. 访问 **CloudQueue.ApproximateMessageCount** 属性以获取队列的长度。
+1. 访问 **CloudQueue.ApproximateMessageCount** 属性以获取队列的长度。
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;

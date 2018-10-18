@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: cfe67fbed61b4af9b4a4f5b490397ca1a6e1d752
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299485"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388472"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -26,7 +26,7 @@ ms.locfileid: "44299485"
 
 在本教程中，将使用 Jenkins 生成 Node.js Web 应用。 然后，使用 Azure DevOps 将其部署到
 
-包含 Linux 虚拟机 (VM) 的[部署组](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups/index?view=vsts)。 学习如何：
+包含 Linux 虚拟机 (VM) 的[部署组](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts)。 学习如何：
 
 > [!div class="checklist"]
 > * 获取示例应用。

@@ -4,7 +4,7 @@ description: 本文介绍了 Azure 媒体服务 v3 中引入的更改，并说�
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure 媒体服务, 流, 广播, 实时, 脱机
@@ -13,19 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/12/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292042"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376356"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>从媒体服务 v2 迁移到 v3
-
-> [!NOTE]
-> Azure 媒体服务的最新版本目前处于预览状态，可能称为 v3 版本。
 
 本文介绍了 Azure 媒体服务 (AMS) v3 中引入的更改，并说明了两个版本之间的差异。
 

@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 224a0ab83720bb9605f2dad9c2612630e90fea2a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995034"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341729"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>快速入门：将语音翻译 API 与 C# 配合使用 
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 本文演示如何使用语音翻译 API 翻译 .wav 文件中的口述内容。
 
@@ -36,7 +37,7 @@ ms.locfileid: "46995034"
 下面的代码将语音从一种语言翻译为另一种语言。
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -67,11 +68,12 @@ namespace TranslateSpeechQuickStart
 
             /* Make sure the audio file is followed by silence.
              * This lets the service know that the audio input is finished. */
-            var silence = new byte[3200000];
+            var silence = new byte[32000];
             var silence_buffer = new ArraySegment<byte>(silence);
             await client.SendAsync(silence_buffer, WebSocketMessageType.Binary, true, CancellationToken.None);
 
             Console.WriteLine("Done sending.");
+            System.Threading.Thread.Sleep(3000);
             await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "", CancellationToken.None);
         }
 

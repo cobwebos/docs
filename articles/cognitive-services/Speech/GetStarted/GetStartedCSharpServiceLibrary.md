@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 5716f7a0af16bd3e40dea4468e2fae884f911718
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967551"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343685"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：使用 C# for .NET Windows 中的必应语音识别服务库
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 服务库适用于拥有自己的云服务并希望通过其服务调用语音服务的开发人员。 若要从设备绑定应用调用语音识别服务，请勿使用此 SDK。 （请使用其他客户端库或 REST API。）
 

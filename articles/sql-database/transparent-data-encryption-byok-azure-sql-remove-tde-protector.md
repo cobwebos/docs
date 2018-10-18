@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: becczhang
-ms.author: rebeccaz
+author: aliceku
+ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 08/07/2017
-ms.openlocfilehash: f965a008ed5973a544dba686e54e041ca6ef7673
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6675a68222e09be9a092ad21ee318a53a0a39ca5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165987"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311297"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 ## <a name="prerequisites"></a>先决条件

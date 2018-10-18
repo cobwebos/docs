@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: ce5b704a7ac251621698352608ea3eefa4629aea
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3ccec4fbd0fd69539e29e2f15f71115444bf0a48
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886511"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389286"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>教程：使用 C# 的 LUIS 机器人
 使用 C#，可以构建集成了语言理解 (LUIS) 的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
@@ -291,9 +291,9 @@ ms.locfileid: "48886511"
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 Azure 机器人服务使用 Bot Framework SDK。 详细了解该 SDK 和机器人框架：
 
-* [Azure 机器人服务](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 文档
+* [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 文档
 * [Bot Builder 示例](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Bot Builder SDK](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Bot Builder 工具](https://github.com/Microsoft/botbuilder-tools)：
 
 ## <a name="next-steps"></a>后续步骤

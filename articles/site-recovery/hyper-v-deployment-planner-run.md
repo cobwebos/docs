@@ -4,15 +4,15 @@ description: 本文介绍如何运行 Site Recovery 部署规划器，以实现 
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 432e1164e56c6afadfc76ec980de99837c106dc5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919978"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094184"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>运行适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器
 
@@ -34,7 +34,7 @@ ms.locfileid: "37919978"
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
-| 参数名称 | 说明 |
+| 参数名称 | Description |
 |---|---|
 | -Operation | GetVMList |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
@@ -83,7 +83,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
-| 参数名称 | 说明 |
+| 参数名称 | Description |
 |---|---|
 | -Operation | StartProfiling |
 | -User | 连接到 Hyper-V 主机或 Hyper-V 群集所需的用户名。 用户需要有管理访问权限。|
@@ -164,7 +164,7 @@ Azure Site Recovery 不支持使用 iSCSI 和传递磁盘的 VM。 该工具无�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
-| 参数名称 | 说明 |
+| 参数名称 | Description |
 |---|---|
 | -Operation | GenerateReport |
 |-VMListFile | 一个文件，其中包含一系列需为其生成报表的已分析 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br><br>**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -271,7 +271,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
- 参数名称 | 说明 |
+ 参数名称 | Description |
 |---|---|
 | -Operation | GetThroughput |
 |-Virtualization|虚拟化类型（VMware 或 Hyper-V）。|

@@ -10,23 +10,21 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3b4ab55f4bd8bbd66f2edc8c262524169c79d7f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975626"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340352"
 ---
 # <a name="what-is-bing-speech"></a>必应语音是什么？
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 使用基于云的 Microsoft 必应语音 API，开发人员可以轻松地在其应用程序中创建支持语音的强大功能，例如语音命令控制、使用自然语音聊天的用户对话以及语音听录和听写。 Microsoft 语音 API 支持“语音转文本”和“文本转语音”转换。
 
 - 语音转文本 API 将人类语音转换为可用作控制应用程序的输入或命令的文本。
 - 文本转语音 API 将文本转换为可向应用程序用户播放的音频流。
-
-> [!NOTE] 
-> 在 2018 年 5 月，我们以公共预览版形式发布了新的[语音服务](../speech-service/overview.md)。 我们建议你[免费试用](../speech-service/get-started.md)。
 
 ## <a name="speech-to-text-speech-recognition"></a>语音转文本（语音识别）
 

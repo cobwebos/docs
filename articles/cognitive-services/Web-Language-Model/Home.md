@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: f6cfaa05a6107d3e1ef689103da43960ea4df366
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 79b126fc33175b7cd6df96ab07cd7b726d6065a7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48039985"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389932"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
 > [!IMPORTANT]
-> Web 语言模型预览版于 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
+> Web 语言模型预览版于 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 Microsoft Web 语言模型 API 是一种基于 REST 的云服务，它提供了用于自然语言处理的最先进工具。 使用此 API，通过基于必应在美国市场收集的网络级语料库训练的语言模型，你的应用程序可以利用大数据的力量。
 

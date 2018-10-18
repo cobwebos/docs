@@ -1,26 +1,19 @@
 ---
 title: 管理 Azure Data Box Gateway 共享 | Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box Gateway 上的共享。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 71e47e271d802503ecf72e7f63f1e2e5f294b5f7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070239"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165653"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 

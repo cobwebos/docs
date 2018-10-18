@@ -6,15 +6,15 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a91217e35ae7a32714478171dcebc002e384fcb
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423668"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093578"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>适用于 Hyper-V 到 Azure 部署的 Site Recovery 部署规划器
 
@@ -98,7 +98,7 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 
 1.  每个需要分析的 Hyper-V 主机都应：
 
-    a. 有一个 VM，以便其上的此工具能够在其 TrustedHosts 列表中运行。 从 Hyper-V 主机上权限提升的 PowerShell 运行以下命令。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 有一个 VM，以便其上的此工具能够在其 TrustedHosts 列表中运行。 从 Hyper-V 主机上权限提升的 PowerShell 运行以下命令。
 
             set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 

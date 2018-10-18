@@ -3,8 +3,8 @@ title: 教程 - 将自定义域添加到 Azure CDN 终结点 | Microsoft Docs
 description: 在本教程中，请将 Azure CDN 终结点内容映射到自定义域。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.service: cdn
 ms.workload: media
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/11/2018
-ms.author: v-deasim
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 30dbe6590cc1d70dfc026330a09645c86be24288
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 67621cb95cbf5072ab7b72770f43c0b68785c78e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036881"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092094"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
 
 在配置文件中创建 CDN 终结点以后，终结点名称（azureedge.net 的子域）就会默认包括在用于交付 CDN 内容的 URL（例如 https:\//contoso.azureedge.net/photo.png）中。 为方便起见，Azure CDN 提供了用于将自定义域与 CDN 终结点相关联的选项。 使用此选项时，请在 URL 中使用自定义域而不是终结点名称来交付内容（例如，https:\//www.contoso.com/photo.png）。 
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 > [!div class="checklist"]
 > - 创建 CNAME DNS 记录。
 > - 将自定义域与 CDN 终结点相关联。
@@ -64,7 +64,7 @@ ms.locfileid: "39036881"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | Source                    | Type  | 目标                     |
+    | 源                    | Type  | 目标                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
@@ -158,7 +158,7 @@ ms.locfileid: "39036881"
 
 3. 为自定义域创建一个 CNAME 记录条目并完成各个字段，如下表所示（字段名称可能有所不同）：
 
-    | Source          | Type  | 目标           |
+    | 源          | Type  | 目标           |
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azureedge.net |
 

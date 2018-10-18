@@ -2,24 +2,18 @@
 title: 寄回 Microsoft Azure Data Box | Microsoft Docs
 description: 了解如何将 Azure Data Box 寄送到 Microsoft
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 7676360d71dab4da58693221645517c69b56dff8
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785454"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090682"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box 并验证上传到 Azure 的数据
 

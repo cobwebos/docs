@@ -3,19 +3,19 @@ title: 快速入门：检测图像中的人脸 - 人脸 API，Java
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用人脸 API 和 Java 检测图像中的人脸。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: c43db84bc04dd8fb17f9b3f6e37deba9daced598
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: 42a8b13b87623b92ee0fe92db4e6a0caff5c3a1b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122784"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339109"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-java"></a>快速入门：使用 Java 检测图像中的人脸
 
@@ -143,7 +143,7 @@ public class Main
 
 ### <a name="face---detect-response"></a>人脸 - 检测响应
 
-JSON 中返回成功响应。
+成功的响应以 JSON 格式返回。
 
 ```json
 [{

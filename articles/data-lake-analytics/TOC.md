@@ -71,7 +71,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
-## [Python](https://docs.microsoft.com/en-us/python/api/overview/azure/data-lake-analytics?view=azure-python)
+## [Python](https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [CLI](https://docs.microsoft.com/cli/azure/dla)
 
@@ -83,6 +83,6 @@
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [视频](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

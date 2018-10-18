@@ -2,24 +2,18 @@
 title: Microsoft Azure Data Box 快速入门 | Microsoft Docs
 description: 了解如何在 Azure 门户中快速部署 Azure Data Box
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784631"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385829"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Data Box
 
@@ -35,7 +29,7 @@ ms.locfileid: "48784631"
     - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
     - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
     - 使用 - 即用即付。 有关 Azure [即用即付订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)的详细信息。
-    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/)。 
+    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。 
 
 - 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
 - 查看 [Data Box 的安全指南](data-box-safety.md)。

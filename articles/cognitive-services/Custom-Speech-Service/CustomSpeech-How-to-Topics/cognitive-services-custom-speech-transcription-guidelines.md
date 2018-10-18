@@ -1,24 +1,25 @@
 ---
-title: 听录准则 - 自定义语音服务
-titlesuffix: Azure Cognitive Services
-description: 了解如何为自定义语音服务准备数据。
+title: Azure 上的自定义语音服务中的听录准则 | Microsoft Docs
+description: 了解如何为认知服务中的自定义语音服务准备数据。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220612"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342460"
 ---
 # <a name="transcription-guidelines"></a>听录准则
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 为确保最大限度地使用文本数据进行声学和语言模型自定义，应遵循下列听录准则。 这些准则是特定于语言的。
 
 ## <a name="text-normalization"></a>文本规范化

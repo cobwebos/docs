@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 789b572a1d3b049bcfd9a739182c49c4da27fc96
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e449703dd8d012037af9540397ecd3b7bc0c7e7f
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817001"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114628"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>比较流、逻辑应用、函数和 WebJobs
 
@@ -84,7 +84,7 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 
 |  | 函数 | 带 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
-|使用[自动缩放](functions-scale.md#how-the-consumption-plan-works)的[无服务器应用模型](https://azure.microsoft.com/overview/serverless-computing/)|✔||
+|使用[自动缩放](functions-scale.md#how-the-consumption-plan-works)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[在浏览器中进行开发和测试](functions-create-first-azure-function.md) |✔||
 |[按使用付费定价](functions-scale.md#consumption-plan)|✔||
 |[集成逻辑应用](functions-twitter-email.md)|✔||

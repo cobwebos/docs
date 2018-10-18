@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575401"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387627"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -155,23 +155,23 @@ ms.locfileid: "45575401"
 
 为解决这些数据备份要求，将创建备份策略 BP_1 到 BP_5 并启用备份，如下所述。
 1. MyApp_A
-    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用应用程序备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 为应用程序 _MyApp_A_ 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
+    1. 创建备份策略 _BP_1_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API 为应用程序 _MyApp_A_ 启用此策略. 此操作为属于应用程序 _MyApp_A_ 的“可靠有状态服务”和 _Reliable Actors_ 的所有分区启用使用备份策略 _BP_1_ 的数据备份。
 
-    2. 创建备份策略 _BP_2_，使其采用基于频率的备份计划且将频率设置为 1 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcA3_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_2_ 为服务 _SvcA3_ 的所有分区替代传播的策略 _BP_1_，从而导致使用备份策略 _BP_2_ 为这些分区执行数据备份。
+    2. 创建备份策略 _BP_2_，使其采用基于频率的备份计划且将频率设置为 1 小时。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcA3_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_2_ 为服务 _SvcA3_ 的所有分区替代传播的策略 _BP_1_，从而导致使用备份策略 _BP_2_ 为这些分区执行数据备份。
 
-    3. 创建备份策略 _BP_3_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore2_。 使用[启用分区备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcA1_P2_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_3_ 为分区 _SvcA1_P2_ 替代传播的策略 _BP_1_。
+    3. 创建备份策略 _BP_3_，使其采用基于频率的备份计划且将频率设置为 24 小时。 将备份存储配置为使用存储位置 _BackupStore2_。 使用[启用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcA1_P2_ 启用此策略。 此操作将使用显式启用的备份策略 _BP_3_ 为分区 _SvcA1_P2_ 替代传播的策略 _BP_1_。
 
 2. MyApp_B
-    1. 创建备份策略 _BP_4_，使其采用基于时间的备份计划，将计划频率类型设置为每周，将运行日设置为星期日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcB1_ 启用此策略。 此操作为服务 _SvcB1_ 的所有分区启用使用备份策略 _BP_4_ 的数据备份。
+    1. 创建备份策略 _BP_4_，使其采用基于时间的备份计划，将计划频率类型设置为每周，将运行日设置为星期日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API 为服务 _SvcB1_ 启用此策略。 此操作为服务 _SvcB1_ 的所有分区启用使用备份策略 _BP_4_ 的数据备份。
 
-    2. 创建备份策略 _BP_5_，使其采用基于时间的备份计划，将计划频率类型设置为每日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用分区备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcB2_P1_ 启用此策略。 此操作为分区 _SvcB2_P1_ 启用使用备份策略 _BP_5_ 的数据备份。
+    2. 创建备份策略 _BP_5_，使其采用基于时间的备份计划，将计划频率类型设置为每日，将运行时间设置为早上 8:00。 将备份存储配置为使用存储位置 _BackupStore1_。 使用[启用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API 为分区 _SvcB2_P1_ 启用此策略。 此操作为分区 _SvcB2_P1_ 启用使用备份策略 _BP_5_ 的数据备份。
 
 下图描绘了显式启用的备份策略和传播的备份策略。
 
 ![Service Fabric 应用程序层次结构][0]
 
 ## <a name="disable-backup"></a>禁用备份
-不需要对数据进行备份时，可以禁用备份策略。 在“应用程序”上启用的备份策略只能在同一“应用程序”上使用[禁用应用程序备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API 进行禁用，在“服务”上启用的备份策略可以在同一“服务”上使用[禁用服务备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableservicebackup) API 进行禁用，在“分区”上启用的备份策略可以在同一“分区”上使用[禁用分区备份](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 进行禁用。
+不需要对数据进行备份时，可以禁用备份策略。 在“应用程序”上启用的备份策略只能在同一“应用程序”上使用[禁用应用程序备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API 进行禁用，在“服务”上启用的备份策略可以在同一“服务”上使用[禁用服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API 进行禁用，在“分区”上启用的备份策略可以在同一“分区”上使用[禁用分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API 进行禁用。
 
 * 为“应用程序”禁用备份策略将停止因为传播到可靠有状态分区或 Reliable Actors 分区的备份策略而发生的所有定期数据备份。
 

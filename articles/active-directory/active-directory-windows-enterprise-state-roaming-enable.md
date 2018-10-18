@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 71d8bfa116fd4d0e824d80da26df7271121a595c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434936"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311365"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 企业状态漫游可供任何拥有Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。
@@ -32,9 +32,9 @@ ms.locfileid: "47434936"
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 
-2. 选择“Azure Active Directory”&gt;“设备”&gt;“企业状态漫游”。
+1. 选择“Azure Active Directory”&gt;“设备”&gt;“企业状态漫游”。
 
-3. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
+1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
   
   ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
@@ -57,15 +57,15 @@ ms.locfileid: "47434936"
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 
-2. 选择“Azure Active Directory”&gt;“用户”&gt;“所有用户”。
+1. 选择“Azure Active Directory”&gt;“用户”&gt;“所有用户”。
 
-3. 选择用户，再选择“设备”。
+1. 选择用户，再选择“设备”。
 
-4. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
+1. 在“显示”下，选择“同步设置和应用数据的设备”显示同步状态。
   
   ![设备同步数据设置图像](./media/active-directory-windows-enterprise-state-roaming-enable/sync-status.png)
   
-5. 如果存在同步此用户的数据的设备，此处会显示该设备。
+1. 如果存在同步此用户的数据的设备，此处会显示该设备。
   
   ![设备同步纵栏表数据图像](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 

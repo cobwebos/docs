@@ -4,7 +4,7 @@ description: 演练如何在 Azure Data Lake 中使用 U-SQL 进行预测分析�
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: c2779fd99c0cce6eb4e8a9d0c3b8b2c886ac99e1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6625a2b1e02801a3adea08fc0e301c56d8db3f1b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838606"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392416"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>使用 U-SQL 的 Azure Data Lake 数据科学演练
 

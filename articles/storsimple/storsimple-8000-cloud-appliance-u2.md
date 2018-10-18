@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664999"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387678"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
 
@@ -265,7 +265,7 @@ DR 的先决条件如下：
 ## <a name="troubleshoot-internet-connectivity-errors"></a>对 Internet 连接错误进行故障排除
 创建云设备时，如果没有 Internet 连接，则创建步骤会失败。 若要排查 Internet 连接故障，请在 Azure 门户中执行以下步骤：
 
-1. [在 Azure 门户中创建 Windows 虚拟机](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)。 此虚拟机应使用与云设备相同的存储帐户、VNet 和子网。 如果 Azure 中存在使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以使用它来排除 Internet 连接故障。
+1. [在 Azure 门户中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 此虚拟机应使用与云设备相同的存储帐户、VNet 和子网。 如果 Azure 中存在使用相同存储帐户、VNet 和子网的现有 Windows Server 主机，也可以使用它来排除 Internet 连接故障。
 2. 远程登录到上一步中创建的虚拟机。
 3. 打开虚拟机内的命令窗口（Win + R，并键入 `cmd`）。
 4. 在提示符处运行以下 cmd。

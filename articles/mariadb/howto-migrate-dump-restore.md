@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9b22890bceba6205c995a01105cdf11a08a9c10b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998740"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309529"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
 本文介绍了在 Azure Database for MariaDB 中备份和还原数据库的两种常见方式
@@ -30,7 +30,9 @@ ms.locfileid: "46998740"
 使用常见的实用程序和工具（例如 MySQL Workbench、mysqldump、Toad 或 Navicat）进行远程连接，并将数据还原到 Azure Database for MariaDB 中。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MariaDB。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MariaDB 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MariaDB 时，无需将转储文件移到任何特殊的云位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>转储和还原的常见用途
-在几个常见方案中，可使用 mysqldump、mysqlpump 等 MySQL 实用程序以将数据库转储和加载到 Azure Database for MariaDB 服务器。 <!--In other scenarios, you may use the [Import and Export](concepts-migrate-import-export.md) approach instead.-->
+在几个常见方案中，可使用 mysqldump、mysqlpump 等 MySQL 实用程序以将数据库转储和加载到 Azure Database for MariaDB 服务器。 
+
+<!--In other scenarios, you may use the [Import and Export](howto-migrate-import-export.md) approach instead.-->
 
 - 迁移整个数据库时请使用数据库转储。 此建议适用于移动大量数据，或者要最小化实时站点或应用程序的服务中断的情况。 
 -  将数据加载到 Azure Database for MariaDB 时，请确保数据库中的所有表都使用 InnoDB 存储引擎。 Azure Database for MariaDB 仅支持 InnoDB 存储引擎，因此不支持备选存储引擎。 如果表配置了其他存储引擎，请确保先将它们转换为 InnoDB 引擎格式，再迁移到 Azure Database for MariaDB。

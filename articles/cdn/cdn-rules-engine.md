@@ -3,8 +3,8 @@ title: 使用 Azure CDN 规则引擎重写 HTTP 行为 | Microsoft Docs
 description: 规则引擎允许自定义 Azure CDN 如何处理 HTTP 请求，例如，阻止交付某些类型的内容、定义缓存策略以及修改 HTTP 标头。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 625a912b-91f2-485d-8991-128cc194ee71
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: df8114aaf5b4672ea51482978abde6f0ce724528
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.author: magattus
+ms.openlocfilehash: 2ac43b472758f3403bc87bf3d64321eb97109f53
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261043"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092378"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>使用 Azure CDN 规则引擎重写 HTTP 行为
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]

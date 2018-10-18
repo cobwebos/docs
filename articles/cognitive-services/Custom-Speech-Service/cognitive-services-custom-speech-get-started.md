@@ -1,24 +1,24 @@
 ---
-title: 自定义语音服务入门
-titlesuffix: Azure Cognitive Services
+title: Azure 上的自定义语音服务入门 | Microsoft Docs
 description: 订阅自定义语音服务，并将服务活动与 Azure 订阅相关联，以定型模型和执行部署。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225236"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339927"
 ---
 # <a name="get-started-with-custom-speech-service"></a>自定义语音服务入门
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 探索自定义语音服务的主要功能，并了解如何生成、部署和使用声学模型和语言模型来满足应用需求。 在自定义语音服务门户上注册后，可以查看更丰富的文档和分步说明。
 
@@ -52,7 +52,7 @@ ms.locfileid: "47225236"
 可以单击[此处](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md)，详细了解如何创建自定义语音转文本终结点。
 
 ## <a name="using-a-custom-speech-endpoint"></a>使用自定义语音终结点
-可以以向默认的 Azure 认知服务语音终结点发送请求非常类似的方式向 CRIS 语音转文本终结点发送请求。 请注意，这些终结点的功能与语音 API 的默认终结点完全相同。 因此，通过语音 API 的客户端库或 REST API 可使用的功能也同样适用于自定义终结点。
+向 CRIS 语音转文本终结点和 Microsoft 认知服务语音终结点发送请求的方式非常类似。 请注意，这些终结点的功能与语音 API 的默认终结点完全相同。 因此，通过语音 API 的客户端库或 REST API 可使用的功能也同样适用于自定义终结点。
 
 可以单击[此处](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md)，详细了解如何使用自定义语音转文本终结点。
 

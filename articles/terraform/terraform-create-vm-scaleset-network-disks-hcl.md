@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 06/04/2018
-ms.openlocfilehash: 9b6a7187827622443c3cb29566dfb5eef840d595
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7ae97274b03dda4dcf5150c8faacc7d406dad9fd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666189"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389609"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
@@ -38,7 +38,7 @@ ms.locfileid: "43666189"
 
 - **安装 Terraform**：遵循 [Terraform 以及配置对 Azure 的访问](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
-- **创建 SSH 密钥对**：如果没有 SSH 密钥对，请遵照[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)一文中的说明操作。
+- **创建 SSH 密钥对**：如果没有 SSH 密钥对，请遵照[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)一文中的说明操作。
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
 

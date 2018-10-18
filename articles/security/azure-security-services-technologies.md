@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093420"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384881"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -48,7 +48,7 @@ ms.locfileid: "47093420"
 | [Azure 存储共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|共享访问签名对存储帐户中的资源提供委托访问。  |
 |[Azure 存储帐户密钥](../storage/common/storage-create-storage-account.md)| 一种适用于 Azure 存储的访问控制方法，用于在访问存储帐户时进行身份验证。 |
 |[带有 SMB 3.0 加密的 Azure 文件共享](../storage/files/storage-files-introduction.md)|一项网络安全技术，它为服务器消息块 (SMB) 文件共享协议启用自动网络加密。 |
-|[Azure 存储分析](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| 一项记录和指标生成技术，适用于存储帐户中的数据。 |
+|[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| 一项记录和指标生成技术，适用于存储帐户中的数据。 |
 
 <!------>
 
@@ -58,8 +58,8 @@ ms.locfileid: "47093420"
 | [Azure&nbsp;SQL&nbsp;防火墙](../sql-database/sql-database-firewall-configure.md)|一项网络访问控制功能，对针对数据库的网络攻击进行防护。 |
 |[Azure&nbsp;SQL&nbsp;单元格&nbsp;级别加密](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 一种提供粒度级别加密的数据库安全技术。  |
 | [Azure&nbsp;SQL&nbsp;连接加密](../sql-database/sql-database-control-access.md)|为了提供安全性，SQL 数据库会使用按 IP 限制连接的防火墙规则、要求用户证明其身份的身份验证机制，以及只允许用户执行特定操作和访问特定数据的授权机制，来控制访问。 |
-| [Azure SQL 始终加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|保护 Azure SQL 数据库或 SQL Server 数据库中存储的敏感数据，如信用卡号或国民身份证号（例如，美国社会安全号码）。  |
-| [Azure&nbsp;SQL&nbsp;透明数据加密](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| 一种加密整个数据库存储的数据库安全功能。 |
+| [Azure SQL 始终加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|保护 Azure SQL 数据库或 SQL Server 数据库中存储的敏感数据，如信用卡号或国民身份证号（例如，美国社会安全号码）。  |
+| [Azure&nbsp;SQL&nbsp;透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| 一种加密整个数据库存储的数据库安全功能。 |
 | [Azure SQL 数据库审核](../sql-database/sql-database-auditing.md)|一种跟踪数据库事件并将事件写入 Azure 存储帐户中的审核日志的数据库审核功能。  |
 
 

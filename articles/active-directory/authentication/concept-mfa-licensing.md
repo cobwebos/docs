@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 372670a482ec984fcc9bd9c28ca3a8625e959a77
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669040"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320639"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -23,6 +23,7 @@ ms.locfileid: "43669040"
 
 > [!IMPORTANT]
 > 本文旨在指导用户如何以不同的方式购买 Azure 多重身份验证。 有关定价和计费的具体详细信息，请始终参阅[多重身份验证定价页](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)。
+>
 
 ## <a name="available-versions-of-azure-multi-factor-authentication"></a>可用的 Azure 多重身份验证版本
 
@@ -43,6 +44,7 @@ ms.locfileid: "43669040"
 
 > [!NOTE]
 > 此比较表讨论了每个版本的多重身份验证的部分功能。 如果拥有完整的 Azure 多重身份验证服务，某些功能可能不可用，具体取决于是否在云中使用 [MFA 或本地 MFA](concept-mfa-whichversion.md)。
+>
 
 | 功能 | 适用于 Office 365 的多重身份验证 | 面向 Azure AD 管理员的多重身份验证 | Azure 多重身份验证 |
 | --- |:---:|:---:|:---:|
@@ -93,11 +95,13 @@ Azure AD 租户中被分配了全局管理员角色的用户可以免费为其 A
   > 计费示例 1：今天你为 5,000 个用户启用了 MFA。 MFA 系统将该数字除以 31，报告当日有 161.29 个用户产生了费用。 明天要为另外 15 个用户启用 MFA，到时 MFA 系统将报告该日期有 161.77 个用户产生费用。 在计费周期结束时，根据 Azure 订阅计费的用户总数累计为大约 5,000。
   >
   > 计费示例 2：某些用户持有许可证，而有些用户则没有，因此，使用了按用户计费的 Azure MFA 提供程序来区分这些用户。 租户中有 4,500 个企业移动性 + 安全性许可证，但有 5,000 个用户启用了 MFA。 在这种情况下，将按比例针对 500 个用户计收 Azure 订阅费用，每日报告 16.13 个用户的费用。
+  >
 
-2. **按身份验证** - 适用于想要为不定期需要身份验证的大量用户启用双重验证的企业。 费用会根据双重验证请求数计算，不管这些验证是成功还是被拒绝。 此笔费用以 10 次身份验证为一组显示在 Azure 用量结算单中，并且每日报告。
+1. **按身份验证** - 适用于想要为不定期需要身份验证的大量用户启用双重验证的企业。 费用会根据双重验证请求数计算，不管这些验证是成功还是被拒绝。 此笔费用以 10 次身份验证为一组显示在 Azure 用量结算单中，并且每日报告。
 
   > [!NOTE]
   > 计费示例 3：Azure MFA 服务今天收到了 3,105 个双重验证请求。 将按 310.5 次身份验证计收 Azure 订阅费用。
+  >
 
 请务必注意，即使有许可证，也仍要基于使用量支付配置费用。 如果设置了按身份验证计费的 Azure MFA 提供程序，需要支付每次双重验证请求的费用，即使这些请求是持有许可证的用户发出的。 如果在未链接到 Azure AD 租户的域中设置了按用户计费的 Azure MFA 提供程序，则需要为每个启用 MFA 的用户付费，即使这些用户在 Azure AD 中持有许可证。
 

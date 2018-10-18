@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505105"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388291"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
 
-本文介绍了政府机构如何使用 Microsoft Azure 政府帮助实现受信任 Internet 连接 (TIC) 计划的符合性。 本文介绍如何在 Azure 服务架构 (IaaS) 和 Azure 平台即服务 (PaaS) 产品/服务中使用 Azure 政府。
+本文介绍了政府机构如何使用 Microsoft Azure 政府帮助实现受信任 Internet 连接 (TIC) 计划的符合性。 本文介绍如何在 Azure 基础结构即服务 (IaaS) 和 Azure 平台即服务 (PaaS) 产品中使用 Azure 政府。
 
 ## <a name="trusted-internet-connections-overview"></a>受信任 Internet 连接概述
 
@@ -55,7 +55,7 @@ Office 365 符合 TIC 2.0 附录 H，该附录使用启用了 [Microsoft 对等�
 
 ![Microsoft 受信任 Internet 连接 (TIC)](media/tic-diagram-a.png)
 
-## <a name="azure-infrastructure-as-a-service-offerings"></a>Azure 服务架构产品/服务
+## <a name="azure-infrastructure-as-a-service-offerings"></a>Azure 基础结构即服务产品
 
 使用 Azure IaaS 遵守 TIC 策略相对简单，因为 Azure 客户管理其自己的虚拟网络路由。
 
@@ -223,7 +223,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 
 ### <a name="network-watcher-traffic-analytics"></a>网络观察程序流量分析
 
-网络观察程序[流量分析](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)使用流日志数据和其他日志来提供网络流量的高级概述。 此数据对审核 TIC 符合性并确定故障点非常有用。 可使用高级仪表板快速筛选正在与 Internet 通信的虚拟机，并获取 TIC 路由的重点列表。
+网络观察程序[流量分析](https://azure.microsoft.com/blog/traffic-analytics-in-preview/)使用流日志数据和其他日志来提供网络流量的高级概述。 此数据对审核 TIC 符合性并确定故障点非常有用。 可使用高级仪表板快速筛选正在与 Internet 通信的虚拟机，并获取 TIC 路由的重点列表。
 
 ![流量分析](media/tic-traffic-analytics-1.png)
 

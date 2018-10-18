@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 10/10/2018
+ms.openlocfilehash: aab867e5c58ba9de17b3c68c8e507fca5354eb90
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423538"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093435"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -46,8 +46,8 @@ ms.locfileid: "47423538"
 
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|
-| 美国中部 | X | X |
-| 美国东部 | X | X |
+| 美国中部 |  | X |
+| 美国东部 |  | X |
 | 美国东部 2 | X | X |
 | 美国中北部 | X | X |
 | 美国中南部 | X | X |

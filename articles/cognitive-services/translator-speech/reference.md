@@ -10,15 +10,16 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978703"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340437"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 此服务提供一个流式处理 API，用于将对话语音从一种语言转录为另一种语言的文本。 此 API 还集成了文本转语音功能，可以将翻译的文本再次转换成语音。 语音翻译 API 可以实现实时翻译对话这样的场景，就像在 Skype 翻译中看到的那样。
 

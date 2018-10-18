@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 1449dc365d318baff3084385b78b60533ac2c71a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 22e72d454626941b932cef2750cba008da20a214
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440885"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>教程：Azure Active Directory 与 ServiceChannel 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39440885"
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a. 在“标识符”文本框中，键入 `http://adfs.<domain>.com/adfs/service/trust` 值
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 `http://adfs.<domain>.com/adfs/service/trust` 值
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<customer domain>.servicechannel.com/saml/acs`
 
@@ -134,7 +134,7 @@ ms.locfileid: "39440885"
     | --- | --- |    
     | 角色| user.assignedroles |
 
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "39440885"
  
     ![创建 Azure AD 测试用户](./media/servicechannel-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

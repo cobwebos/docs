@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: cb143998ac46f7f86b2dbf47b69cee7843418f5d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191401"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385032"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -29,7 +29,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
     * Azure 磁盘的自定义 `StorageClass` 对象需从 `unmanaged` 更改为 `managed`
     * 任何 `PersistentVolumes` 都需要使用 `kind: Managed`
 * AKS 目前仅支持一个代理池
-* 基于 Windows Server 的节点目前以[个人预览版](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)提供。
+* 基于 Windows Server 的节点目前以[个人预览版](https://azure.microsoft.com/blog/kubernetes-on-azure/)提供。
 * 查看 AKS [支持的区域](https://docs.microsoft.com/azure/aks/container-service-quotas)列表
 * AKS 是带有托管 Kubernetes 控制平面的托管服务。 如果以前修改了 ACS 主节点的配置，则现在可能需要修改应用程序
 
@@ -53,7 +53,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
 
-由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可以查看 [Azure 订阅和服务限制](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)来了解详细信息。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择 `Usage + quotas`。
+由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可以查看 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)来了解详细信息。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择 `Usage + quotas`。
 
 ### <a name="networking"></a>网络
 
@@ -86,7 +86,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 2. 创建磁盘快照
 3. 从快照创建新的托管磁盘
 4. 在 AKS 中创建永久性卷
-5. 将 Pod 规范更新为[使用现有卷](https://docs.microsoft.com/en-us/azure/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）
+5. 将 Pod 规范更新为[使用现有卷](https://docs.microsoft.com/azure/aks/azure-disk-volume)而不是 PersistentVolumeClaims（静态预配）
 6. 将应用程序部署到 AKS
 7. 验证
 8. 将流量指向 AKS 群集
@@ -112,7 +112,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 4. 验证
 5. 将流量指向 AKS 群集
 
-若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](https://docs.microsoft.com/en-us/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
+若要从空共享开始，然后创建源数据的副本，可以使用 [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) 命令迁移数据。
 
 ### <a name="deployment-strategy"></a>部署策略
 
@@ -134,7 +134,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 ### <a name="1-create-an-aks-cluster"></a>1.创建 AKS 群集
 
-可以参考文档通过 Azure 门户、Azure CLI 或资源管理器模板[创建 AKS 群集](https://docs.microsoft.com/en-us/azure/aks/create-cluster)。
+可以参考文档通过 Azure 门户、Azure CLI 或资源管理器模板[创建 AKS 群集](https://docs.microsoft.com/azure/aks/create-cluster)。
 
 > 在 GitHub 上的 [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) 存储库中，可以找到 AKS 的示例 Azure 资源管理器模板
 

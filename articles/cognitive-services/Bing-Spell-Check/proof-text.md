@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802587"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361705"
 ---
 # <a name="what-is-bing-spell-check-api"></a>什么是必应拼写检查 API？
 
@@ -36,7 +36,7 @@ ms.locfileid: "48802587"
 
 ## <a name="spell-check-modes"></a>拼写检查模式
 
-此 API 支持两种检查模式：`Proof` 和 `Spell`。  请尝试[此处](https://azure.microsoft.com/en-us/services/cognitive-services/spell-check/)的示例。
+此 API 支持两种检查模式：`Proof` 和 `Spell`。  请尝试[此处](https://azure.microsoft.com/services/cognitive-services/spell-check/)的示例。
 ### <a name="proof---for-documents-scenario"></a>Proof - 适用于文档方案
 默认模式为`Proof`。 `Proof` 拼写模式提供最广泛的检查，可以添加大写、基本标点符号和其他功能，帮助用户创建文档。 但是，它仅在 en-US（英语-美国）、es-ES（西班牙语）、pt-BR（葡萄牙语）市场推出（注意：西班牙语和葡萄牙语仅提供 Beta 版本）。 对于所有其他市场，请将 mode 查询参数设置为 Spell。 
 <br /><br/>**注意：** 如果查询文本长度超出 4096，系统会将其截断，仅保留 4096 个字符，然后对其进行处理。 

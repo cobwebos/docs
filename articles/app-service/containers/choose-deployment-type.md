@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
-ms.openlocfilehash: 012f78fc07f237e8ed532246c81a3c86bb6ab4ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c619ae164f8f8b6e94d9061c4346de58bd6cb795
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764336"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319432"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>自定义映像、多容器还是内置平台映像？
 
@@ -30,7 +30,7 @@ ms.locfileid: "33764336"
 - **多容器部署**：使用 Docker Compose 或 Kubernetes 配置文件在多个容器中“停靠”应用。 有关详细信息，请参阅[多容器应用](#multi-container-apps-supportability)。
 - **使用内置平台映像的应用部署**：我们的内置平台映像包含常见 Web 应用运行时和依赖项，如 Node 和 PHP。 使用任意一种 [Azure App Service 部署方法](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)将应用部署到 Web 应用的存储，然后使用内置平台映像运行应用。
 
-##<a name="which-method-is-right-for-your-app"></a>你的应用适合哪种方法？ 
+## <a name="which-method-is-right-for-your-app"></a>你的应用适合哪种方法？ 
 
 要考虑的主要因素包括：
 
@@ -48,8 +48,8 @@ ms.locfileid: "33764336"
 ### <a name="supported-docker-compose-configuration-options"></a>支持的 Docker Compose 配置选项
 - command
 - entrypoint
-- environment
-- image
+- 环境
+- 图像
 - ports
 - restart
 - services
@@ -69,8 +69,8 @@ ms.locfileid: "33764336"
 - args
 - command
 - containers
-- image
-- name
+- 图像
+- 名称
 - ports
 - spec
 

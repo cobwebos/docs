@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box 常见问题解答 | 关于数据的 Microsoft Docs
 description: 包含有关 Azure Data Box（用于将大量数据传输到 Azure 的云解决方案）的常见问题和解答。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422858"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092604"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
