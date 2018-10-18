@@ -1,21 +1,21 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、C# - 计算机视觉
+title: 快速入门：提取打印的文本 (OCR) - REST、C# - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 C# 从图像中提取印刷体文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: d3074b9c5b62ea41aa0ee4c577a18b9f582dc80a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 83abf15e638ab8caf867126361d81198aa3ad7e2
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631525"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340216"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 C&#35; 提取印刷体文本 (OCR)
 
@@ -36,7 +36,7 @@ ms.locfileid: "45631525"
 1. 安装 Newtonsoft.Json NuGet 包。
     1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
     1. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json”。
-    1. 选择显示的 **Newtonsoft.Json**，单击项目名称旁边的复选框，然后单击“安装”。
+    1. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装”。
 1. 将 `Program.cs` 中的代码替换为以下代码，然后根据需要在代码中进行以下更改：
     1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
@@ -169,7 +169,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -253,7 +253,7 @@ JSON 中返回成功响应。 示例应用程序会在控制台窗口中分析�
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 若要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
+浏览一款基本 Windows 应用程序，该应用程序使用计算机视觉执行光学字符识别 (OCR)、创建智能裁剪缩略图，并对图像中的视觉特征（包括人脸）进行检测、分类、标记和描述。 要快速体验计算机视觉 API，请尝试使用 [Open API 测试控制台](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)。
 
 > [!div class="nextstepaction"]
-> [计算机视觉 API C# 教程](../Tutorials/CSharpTutorial.md)
+> [计算机视觉 API C&#35; 教程](../Tutorials/CSharpTutorial.md)

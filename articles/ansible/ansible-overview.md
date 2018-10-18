@@ -6,14 +6,14 @@ keywords: ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序�
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: e710770131c844598762feebe09ba50dc120de0c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 977fef390c0efecd47ec5e19b1a82c05e2ecfd0f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106894"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160739"
 ---
 # <a name="ansible-with-azure"></a>Ansible 与 Azure
 
@@ -44,6 +44,10 @@ Ansible 通过其[动态清单](http://docs.ansible.com/ansible/intro_dynamic_in
 
 ## <a name="additional-azure-marketplace-options"></a>其他 Azure 市场选项
 [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) 是 Red Hat 提供的 Azure 市场映像，可帮助组织缩放 IT 自动化，以及跨物理、虚拟和云基础结构管理复杂部署。 Ansible Tower 包括的功能提供当今的企业所需的附加可见性、控制、安全性和效率级别。 Ansible Tower 对 Azure 和 SSH 密钥等凭据进行加密，以便你可以将作业委派给经验较少的员工，而不会有泄露凭据的风险。
+
+## <a name="ansible-module-and-version-matrix-for-azure"></a>适用于 Azure 的 Ansible 模块和版本矩阵
+Ansible 配备了多个模块，这些模块可远程主机上直接执行或通过 Playbook 执行。
+[Ansible 模块和版本矩阵](./ansible-matrix.md)列出了适用于 Azure 的可以预配 Azure 云资源（如虚拟机、网络和容器服务）的 Ansible 模块。 
 
 ## <a name="next-steps"></a>后续步骤
 - [配置 Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)

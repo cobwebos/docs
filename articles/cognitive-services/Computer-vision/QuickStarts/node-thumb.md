@@ -3,19 +3,19 @@ title: 快速入门：生成缩略图 - REST、Node.js - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Node.js 基于图像生成缩略图。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 9029806119f6ee308ba9f0a5c2d45bfce38b5b54
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 940d5f87e8e411d520c3d30f3e9f08e982162748
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633261"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338584"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-nodejs-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Node.js 生成缩略图
 
@@ -34,7 +34,7 @@ ms.locfileid: "45633261"
 要创建和运行示例，请执行以下步骤：
 
 1. 安装 npm [`request`](https://www.npmjs.com/package/request) 包。
-   1. 以管理员身份打开“命令提示符”窗口。
+   1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 
       ```console
@@ -49,7 +49,7 @@ ms.locfileid: "45633261"
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)方法的终结点 URL。
     1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`get-thumbnail.js`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处，使用 `node` 命令运行文件。 例如，`node get-thumbnail.js`。
 
 ```nodejs

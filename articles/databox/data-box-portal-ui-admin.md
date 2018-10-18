@@ -2,25 +2,18 @@
 title: Azure Data Box 磁盘门户管理员指南 | Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 7bf88a4e9d7af1033f014939d95783f9430dd84a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b98653ea0896e617a666147d243f24cb55483a28
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124957"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091670"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>使用 Azure 门户管理 Data Box 磁盘（预览版）
 

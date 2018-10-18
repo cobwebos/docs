@@ -3,8 +3,8 @@ title: 按缩写列出的 Azure CDN POP 位置 | Microsoft Docs
 description: 本文列出了 Verizon 的 Azure CDN 的 Azure CDN POP 位置（按 POP 缩写排序）。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
-ms.author: mazha
-ms.openlocfilehash: 373095d1783a8e6e52d43e80377c01b448706fbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: magattus
+ms.openlocfilehash: cc866691aac884def72030345bb4dfcbe87ea689
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057098"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092263"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>按缩写列出的 Azure CDN POP 位置
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "34057098"
 
 本文列出了 Verizon 的 Azure CDN 的 POP 位置（按 POP 缩写排序）。
 
-缩写 | Location | 区域
+缩写 | 位置 | 区域
 | --- | --- | --- |
 AGA | 美国佐治亚州亚特兰大市 | 北美：美国东海岸。
 AGB | 美国佐治亚州亚特兰大市 | 北美：美国东海岸。

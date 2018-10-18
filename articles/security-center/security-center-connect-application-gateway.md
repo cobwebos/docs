@@ -3,23 +3,23 @@ title: 将 Microsoft Azure 应用程序网关连接到 Azure 安全中心 | Micr
 description: 了解如何将应用程序网关与 Azure 安全中心集成，以增强资源的总体安全性。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
-ms.topic: article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/07/2018
-ms.author: terrylan
-ms.openlocfilehash: 7c15e5a86df7ff2a374aa9b62d2775b1eb035fc6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854279"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299060"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>将 Microsoft Azure 应用程序网关连接到 Azure 安全中心
 本文档可帮助你配置与应用程序网关 Web 应用程序防火墙 (WAF) 和安全中心的集成。
@@ -37,9 +37,9 @@ ms.locfileid: "29854279"
 
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 
-2. 在 **Microsoft Azure 菜单**上选择“安全中心”。 此时会打开“安全中心 - 概览”。
+2. 在 **Microsoft Azure 菜单**上选择“安全中心”。
 
-3. 在“概述”下，选择“安全解决方案”。
+3. 在“资源安全机制”下，选择“安全解决方案”。
 
   ![安全中心概述](./media/security-center-connect-application-gateway/overview.png)
 

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667851"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094249"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
-通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](/billing/billing-understand-your-bill.md)。
+通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。
 
 ## <a name="download-your-usage-details"></a>下载使用情况详细信息
 首先，[下载使用情况详细信息](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)。 下表提供了通过 Azure 资源管理器部署的虚拟机的定义和使用情况示例值。 本文档不包含通过经典模型部署的 VM 的详细信息。
@@ -128,7 +128,7 @@ VM 本身、在 VM 上运行的任何高级软件、与虚拟机相关的存储�
 ### <a name="why-is-the-vmname-blank-in-the-additional-info"></a>为什么其他信息字段中的 VMName 为空白？
 仅规模集 VM 的其他信息字段中才会填充 VMName。 InstanceID 字段包含非规模集 VM 的 VM 名称。
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>ComputeHR 在其他信息的 UsageType 字段中意味着什么？
-ComputeHR 代表计算小时数，表示基本基础架构成本的使用情况事件。 如果 UsageType 为 ComputeHR\_SW，则使用情况事件表示 VM 的高级软件费用。
+ComputeHR 代表计算小时数，表示底层基础结构成本的使用情况事件。 如果 UsageType 为 ComputeHR\_SW，则使用情况事件表示 VM 的高级软件费用。
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>如何知道高级软件是否计费？
 请务必访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)，寻找最符合自己需求的 VM 映像。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>在使用的服务中，Microsoft.ClassicCompute 和 Microsoft.Compute 有何区别？
@@ -143,5 +143,6 @@ Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源
 支持高级存储的 VM 与不支持高级存储的 VM 采用相同的费率计费。 仅存储成本不同。 请参阅[存储定价页](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解使用情况详细信息，请参阅[了解 Microsoft Azure 帐单](/billing/billing-understand-your-bill.md)
+若要详细了解使用情况详细信息，请参阅[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+)
 

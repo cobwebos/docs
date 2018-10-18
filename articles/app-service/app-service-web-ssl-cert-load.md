@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047598"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051470"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>在 Azure 应用服务的应用程序代码中使用 SSL 证书
 
@@ -51,7 +51,7 @@ ms.locfileid: "26047598"
 
 在左侧导航窗格中，单击“应用程序设置”。
 
-添加名为 `WEBSITE_LOAD_CERTIFICATES` 的应用设置，并将其值设置为证书的指纹。 若要使多个证书可访问，请使用逗号分隔的指纹值。 若要使所有证书可访问，请将值设置为 `*`。 
+添加名为 `WEBSITE_LOAD_CERTIFICATES` 的应用设置，并将其值设置为证书的指纹。 若要使多个证书可访问，请使用逗号分隔的指纹值。 若要使所有证书可访问，请将值设置为 `*`。 请注意，这会将证书放入 `CurrentUser\My` 存储。
 
 ![配置应用设置](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 

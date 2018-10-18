@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0f053c0293488f19adcd058f1ba8304d8d238738
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128300"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296187"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中 Web 应用性能缓慢的问题
 本文将帮助排查 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中 Web 应用性能缓慢的问题。
@@ -88,7 +88,7 @@ ms.locfileid: "43128300"
 
 每个应用服务 Web 应用都提供了一个可扩展的管理终结点，通过此终结点可使用一组作为站点扩展部署的功能强大的工具。 扩展包括： 
 
-- 源代码编辑器，如 [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)。 
+- 源代码编辑器，如 [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)。 
 - 连接的资源（如连接到 Web 应用的 MySQL 数据库）的管理工具。
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../application-insights/app-insights-web-monitor-performance.md)。
@@ -158,7 +158,7 @@ Kudu 提供的一些信息和功能包括：
 
 Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可以使用 Kudu 和 SysInternals 工具 Procdump 创建内存转储。 这些内存转储是进程的快照，通常可帮助排查较复杂的 Web 应用问题。
 
-有关 Kudu 提供的功能的详细信息，请参阅 [Azure Websites Team Services tools you should know about](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)（应该了解的 Azure Websites Team Services 工具）。
+有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
 <a name="mitigate" />
 

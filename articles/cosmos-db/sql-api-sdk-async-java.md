@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142268"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023556"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 添加了对代理的支持。
+* 添加了对资源令牌授权的支持。
+* 修复了处理大分区键时的 bug ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63))。
+* 改进了文档。
+* SDK 重构为更细粒度的模块。
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * 修复了非英语区域设置的 bug ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51))。
@@ -103,6 +110,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2018 年 9 月 5 日|--- |
 | [2.0.1](#2.0.1) |2018 年 8 月 16 日|--- |
 | [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |
 | [1.0.2](#1.0.2) |2018 年 5 月 18日|--- |

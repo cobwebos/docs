@@ -1,21 +1,21 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、Node.js - 计算机视觉
+title: 快速入门：提取打印的文本 (OCR) - REST、Node.js - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Node.js 从图像中提取印刷体文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: af22b17d52b654438ae52c1eb85e523dbaf638fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 02ff205f2408fed19d7831e7a1344eac2bc6f261
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628907"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344262"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Node.js 提取印刷体文本 (OCR)
 
@@ -34,7 +34,7 @@ ms.locfileid: "45628907"
 要创建和运行示例，请执行以下步骤：
 
 1. 安装 npm [`request`](https://www.npmjs.com/package/request) 包。
-   1. 以管理员身份打开“命令提示符”窗口。
+   1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 
       ```console
@@ -49,7 +49,7 @@ ms.locfileid: "45628907"
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
     1. （可选）将 `imageUrl` 的值替换为要从中提取印刷体文本的另一图像的 URL。
 1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`get-printed-text.js`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处，使用 `node` 命令运行文件。 例如，`node get-printed-text.js`。
 
 ```nodejs
@@ -98,7 +98,7 @@ request.post(options, (error, response, body) => {
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -203,7 +203,7 @@ JSON 中返回成功响应。 示例会在命令提示符窗口中分析和显�
 
 不再需要文件时，请将其删除，然后卸载 npm `request` 包。 要卸载包，请执行以下步骤：
 
-1. 以管理员身份打开“命令提示符”窗口。
+1. 以管理员身份打开命令提示符窗口。
 2. 运行以下命令：
 
    ```console

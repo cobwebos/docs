@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145506"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054666"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
 
@@ -57,7 +57,7 @@ ms.locfileid: "42145506"
 通过重写 Azure Cosmos DB 集合的默认索引策略，可以在存储、写入/查询性能和查询一致性之间进行权衡。 可配置以下几个方面：
 
 * **包括或排除索引的文档和路径**。 插入或替换集合中的文档时，可在索引中排除或包括特定的文档。 还可包括或排除特定的 JSON 属性（也称为路径），以便在包括在索引中的文档中建立索引。 路径包括通配符模式。
-* **配置各种索引类型**。 对于每个包含的路径，可指定路径针对集合而要求的索引类型。 可根据路径的数据、预期的查询工作负荷和数字/字符串“精准度”来指定索引的类型。
+* **配置各种索引类型**。 对于每个包含的路径，可指定路径针对集合而要求的索引类型。 可根据路径的数据、预期的查询工作负荷和数字/字符串“精度”来指定索引的类型。
 * **配置索引更新模式**。 Azure Cosmos DB 支持三种索引模式：一致、延迟和无。 可通过 Azure Cosmos DB 集合上的索引策略来配置索引模式。 
 
 以下 Microsoft .NET 代码片段演示了如何在创建集合时设置自定义索引策略。 在此示例中，我们以最大精度为字符串和数字设置范围索引策略。 可使用此策略对字符串执行 ORDER BY 查询。

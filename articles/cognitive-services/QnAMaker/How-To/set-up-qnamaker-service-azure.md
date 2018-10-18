@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 87bcd23983c1d973f7e90caf806092c909b7b9e4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032540"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389711"
 ---
 # <a name="create-a-qna-maker-service"></a>创建 QnA Maker 服务
 
@@ -41,10 +41,10 @@ ms.locfileid: "47032540"
     * 选择将部署 QnA Maker 资源的**订阅**。
     * 为 QnA Maker 管理服务（门户和管理 API）选择**管理定价层**。 有关 SKU 定价的详细信息，请参见[此处](https://aka.ms/qnamaker-pricing)。
     * 创建新的**资源组**（推荐）或使用现有的资源组来在其中部署此 QnA Maker 资源。
-    * 选择 Azure 搜索服务的**搜索定价层**。 如果看到“免费层”选项显示为灰色，则表示你已在订阅中部署了免费 Azure 搜索层。 在这种情况下，将需要从基本 Azure 搜索层开始。 在[此处](https://azure.microsoft.com/en-us/pricing/details/search/)查看 Azure 搜索定价的详细信息。
+    * 选择 Azure 搜索服务的**搜索定价层**。 如果看到“免费层”选项显示为灰色，则表示你已在订阅中部署了免费 Azure 搜索层。 在这种情况下，将需要从基本 Azure 搜索层开始。 在[此处](https://azure.microsoft.com/pricing/details/search/)查看 Azure 搜索定价的详细信息。
     * 选择要部署 Azure 搜索数据的**搜索位置**。 必须存储客户数据的限制将通知你为 Azure 搜索选择的位置。
     * 在**应用名称**中为应用服务命名。
-    * 默认情况下，应用服务默认为标准 (S1) 层。 可以在创建后更改该计划。 请在[此处](https://azure.microsoft.com/en-in/pricing/details/app-service/)查看应用服务定价的详细信息。
+    * 默认情况下，应用服务默认为标准 (S1) 层。 可以在创建后更改该计划。 请在[此处](https://azure.microsoft.com/pricing/details/app-service/)查看应用服务定价的详细信息。
     * 选择将部署应用服务的**网站位置**。
 
         > [!NOTE]

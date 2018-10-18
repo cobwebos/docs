@@ -2,25 +2,18 @@
 title: Azure Data Box 门户管理员指南 | Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4a76d59349c37a3dcc120e64f692881b461f58fb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49c2258100e99742bcb2e22fbce7f05b69c70ef6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993453"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090716"
 ---
 # <a name="use-the-azure-portal-to-administer-your-data-box"></a>使用 Azure 门户管理 Data Box
 
@@ -120,14 +113,14 @@ ms.locfileid: "46993453"
 
 当设备状态在门户中发生更改时，你会通过电子邮件收到通知。
 
-|订单状态 |说明 |
+|订单状态 |Description |
 |---------|---------|
 |已订购     | 已成功下单。 <br>如果设备有货，Microsoft 会确定要发货的设备，并准备设备。 <br> 如果不是可以立即提供设备，则将在有设备可用时处理订单。 订单可能需要花费几天到几个月的时间来进行处理。 如果不能在 90 天内履行订单，则订单将取消并且会向你发送通知。         |
 |已处理     | 订单处理已完成。 根据你的订单，在数据中心内做好了设备的发货准备工作。         |
 |已发运     | 订单已发货。 可以使用门户中你的订单上显示的跟踪 ID 来跟踪货物。        |
 |已交货     | 货物已交付到订单中指定的地址。        |
 |已提货     |承运人已提取并扫描了你的回寄设备。         |
-|已收到     | 已收到你的设备并在 Azure 数据中心对其进行了扫描。 <br> 在检查发运的设备后，将启动设备上传。      |
+|Received     | 已收到你的设备并在 Azure 数据中心对其进行了扫描。 <br> 在检查发运的设备后，将启动设备上传。      |
 |数据复制     | 正在复制数据。 可以在 Azure 门户中跟踪订单的复制进度。 <br> 请等待数据复制完成。 |
 |已完成       |已成功完成订单。<br> 从服务器中删除本地数据之前，请验证数据是否已在 Azure 中。         |
 |已完成但出错| 数据复制已完成，但在复制期间发生错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。   |

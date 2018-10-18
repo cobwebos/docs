@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 5092bf377f6ab213a2db52e01fb7b89ff0c218ce
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127464"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295864"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -45,7 +45,7 @@ ms.locfileid: "39127464"
 15. 为服务建立恢复点目标 (RPO)，设置[灾难恢复流程](service-fabric-disaster-recovery.md)并进行测试。
 16. 手动或以编程方式计划群集的[缩放](service-fabric-cluster-scaling.md)。
 17. 计划群集节点的[修补](service-fabric-patch-orchestration-application.md)。 
-18. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [VSTS](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+18. 建立一个 CI/CD 管道，以便不断测试最新的更改。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 19. 使用[故障分析服务](service-fabric-testability-overview.md)测试负载下的开发和暂存集群，并引入受控[混沌测试](service-fabric-controlled-chaos.md)。 
 20. 计划应用程序的[缩放](service-fabric-concepts-scalability.md)。 
 

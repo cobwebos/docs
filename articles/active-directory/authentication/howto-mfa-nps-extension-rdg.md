@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294265"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318599"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -47,12 +47,12 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 当 Azure 的 NPS 扩展与 NPS 和远程桌面网关集成时，成功的身份验证流如下：
 
 1. 远程桌面网关服务器从远程桌面用户接收身份验证请求，用于连接到资源，如远程桌面会话。 作为 RADIUS 客户端，远程桌面网关服务器将请求转换为 RADIUS 访问请求消息，并将此消息发送到安装了 NPS 扩展的 RADIUS (NPS) 服务器。 
-2. 用户名和密码组合在 Active Directory 中进行验证，同时进行用户身份验证。
-3. 如果满足 NPS 连接请求和网络策略中指定的所有条件（例如，时间或组成员资格限制），NPS 扩展将触发对 Azure MFA 进行辅助身份验证的请求。 
-4. Azure MFA 与 Azure AD 通信，检索用户的详细信息并使用用户配置的方法（文本消息、移动应用等）执行辅助身份验证。 
-5. 在 MFA 质询成功之后，Azure MFA 将结果传递给 NPS 扩展。
-6. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
-7. 通过 RD 网关授予用户访问所请求的网络资源的权限。
+1. 用户名和密码组合在 Active Directory 中进行验证，同时进行用户身份验证。
+1. 如果满足 NPS 连接请求和网络策略中指定的所有条件（例如，时间或组成员资格限制），NPS 扩展将触发对 Azure MFA 进行辅助身份验证的请求。 
+1. Azure MFA 与 Azure AD 通信，检索用户的详细信息并使用用户配置的方法（文本消息、移动应用等）执行辅助身份验证。 
+1. 在 MFA 质询成功之后，Azure MFA 将结果传递给 NPS 扩展。
+1. 安装此扩展的 NPS 服务器向远程桌面网关服务器发送 RD CAP 策略的 RADIUS 访问接受消息。
+1. 通过 RD 网关授予用户访问所请求的网络资源的权限。
 
 ## <a name="prerequisites"></a>先决条件
 本部分将详细介绍将 Azure MFA 与远程桌面网关集成之前的必备条件。 开始集成之前，必须具备以下先决条件：  
@@ -105,9 +105,9 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 作为 NPS 扩展配置的一部分，你需要为 Azure AD 租户提供管理员凭据和 Azure AD ID。 以下步骤演示如何获取租户 ID。
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧导航栏中，选择“Azure Active Directory”图标。
-3. 选择“属性”。
-4. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”图标，如下所示，将 ID 复制到剪贴板。
+1. 在左侧导航栏中，选择“Azure Active Directory”图标。
+1. 选择“属性”。
+1. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”图标，如下所示，将 ID 复制到剪贴板。
 
  ![属性](./media/howto-mfa-nps-extension-rdg/image1.png)
 
@@ -119,13 +119,13 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 > 
 
 1. 下载 [NPS 扩展](https://aka.ms/npsmfa)。 
-2. 将安装程序可执行文件 (NpsExtnForAzureMfaInstaller.exe) 复制到 NPS 服务器。
-3. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”。 系统提示后，单击“运行”。
-4. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，查看软件许可条款，勾选“我同意许可条款和条件”，然后单击“安装”。
+1. 将安装程序可执行文件 (NpsExtnForAzureMfaInstaller.exe) 复制到 NPS 服务器。
+1. 在 NPS 服务器上，双击“NpsExtnForAzureMfaInstaller.exe”。 系统提示后，单击“运行”。
+1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，查看软件许可条款，勾选“我同意许可条款和条件”，然后单击“安装”。
  
   ![Azure MFA 设置](./media/howto-mfa-nps-extension-rdg/image2.png)
 
-5. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，单击“关闭”。 
+1. 在“适用于 Azure MFA 设置的 NPS 扩展”对话框中，单击“关闭”。 
 
   ![适用于 Azure MFA 的 NPS 扩展](./media/howto-mfa-nps-extension-rdg/image3.png)
 
@@ -145,20 +145,20 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 要使用该脚本，请提供 Azure AD 管理员凭据和之前复制的 Azure AD 租户 ID 的扩展。 在安装 NPS 扩展的每个 NPS 服务器上运行脚本。 然后执行以下操作：
 
 1. 打开管理 Windows PowerShell 提示符。
-2. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER。
-3. 键入 `.\AzureMfsNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+1. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER。
+1. 键入 `.\AzureMfsNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
-4. 脚本验证 PowerShell 模块的安装情况后，它将显示 Azure Active Directory PowerShell 模块对话框。 在对话框中，输入 Azure AD 管理员凭据和密码，然后单击“登录”。
+1. 脚本验证 PowerShell 模块的安装情况后，它将显示 Azure Active Directory PowerShell 模块对话框。 在对话框中，输入 Azure AD 管理员凭据和密码，然后单击“登录”。
 
   ![打开 PowerShell 帐户](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-5. 出现提示时，粘贴之前复制到剪贴板的租户 ID，然后按 ENTER。
+1. 出现提示时，粘贴之前复制到剪贴板的租户 ID，然后按 ENTER。
 
   ![输入租户 ID](./media/howto-mfa-nps-extension-rdg/image6.png)
 
-6. 此脚本创建一个自签名证书并执行其他配置更改。 输出应如下图所示。
+1. 此脚本创建一个自签名证书并执行其他配置更改。 输出应如下图所示。
 
   ![自签名证书](./media/howto-mfa-nps-extension-rdg/image7.png)
 
@@ -171,22 +171,22 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 远程桌面连接授权策略 (RD CAP) 指定连接到远程桌面网关服务器的要求。 可以本地存储 RD CAP（默认），也可以存储在运行 NPS 的中央 RD CAP 存储中。 要配置 Azure MFA 与 RDS 的集成，需要指定使用中央存储。
 
 1. 在 RD 网关服务器上，打开“服务器管理器”。 
-2. 在此菜单上，单击“工具”，指向“远程桌面服务”，然后单击“远程桌面网关管理器”。
+1. 在此菜单上，单击“工具”，指向“远程桌面服务”，然后单击“远程桌面网关管理器”。
 
   ![远程桌面服务](./media/howto-mfa-nps-extension-rdg/image8.png)
 
-3. 在 RD 网关管理器中，右键单击**\[\]**“服务器名称(本地)”，然后单击“属性”。
+1. 在 RD 网关管理器中，右键单击**\[\]**“服务器名称(本地)”，然后单击“属性”。
 
   ![服务器名称](./media/howto-mfa-nps-extension-rdg/image9.png)
 
-4. 在“属性”对话框中，选择“RD CAP 存储”选项卡。
-5. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”。 
-6. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
+1. 在“属性”对话框中，选择“RD CAP 存储”选项卡。
+1. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”。 
+1. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
 
   ![键入名称或 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-7. 单击 **“添加”**。
-8. 在“共享密钥”对话框中，输入一个共享密钥，然后单击“确定”。 确保记录此共享密钥并安全地存储该记录。
+1. 单击 **“添加”**。
+1. 在“共享密钥”对话框中，输入一个共享密钥，然后单击“确定”。 确保记录此共享密钥并安全地存储该记录。
 
  >[!NOTE]
  >共享密钥用于在 RADIUS 服务器和客户端之间建立信任关系。 创建长且复杂的密码。
@@ -194,45 +194,45 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
  ![共享密钥](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-9. 单击“确定”以关闭该对话框。
+1. 单击“确定”以关闭该对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 为确保有时间验证用户凭据、执行双重验证、接收响应和响应 RADIUS 消息，必须调整 RADIUS 超时值。
 
 1. 在 RD 网关服务器上，打开“服务器管理器”。 在菜单中，单击“工具”，然后单击“网络策略服务器”。 
-2. 在“NPS (本地)”控制台中，展开“RADIUS 客户端和服务器”，然后选择“远程 RADIUS 服务器”。
+1. 在“NPS (本地)”控制台中，展开“RADIUS 客户端和服务器”，然后选择“远程 RADIUS 服务器”。
 
  ![远程 RADIUS 服务器](./media/howto-mfa-nps-extension-rdg/image12.png)
 
-3. 在详细信息窗格中，双击“TS 网关服务器组”。
+1. 在详细信息窗格中，双击“TS 网关服务器组”。
 
  >[!NOTE]
  >当为 NPS 策略配置中央服务器时，创建了此 RADIUS 服务器组。 RD 网关将 RADIUS 消息转发到该服务器或服务器组（如果组中有多台服务器）。
  >
 
-4. 在“TS 网关服务器组属性”对话框中，选择配置为存储 RD CAP 的 NPS 服务器的 IP 地址或名称，然后单击“编辑”。 
+1. 在“TS 网关服务器组属性”对话框中，选择配置为存储 RD CAP 的 NPS 服务器的 IP 地址或名称，然后单击“编辑”。 
 
  ![TS 网关服务器组](./media/howto-mfa-nps-extension-rdg/image13.png)
 
-5. 在“编辑 RADIUS 服务器”对话框中，选择“负载平衡”选项卡。
-6. 在“负载平衡”选项卡的“考虑放弃请求之前的不响应秒数”字段中，将默认值从 3 更改为 30 到 60 秒之间的值。
-7. 在“将服务器标识为不可用时请求之间的秒数”字段中，将默认值 30 秒更改为等于或大于上一步中指定的值。
+1. 在“编辑 RADIUS 服务器”对话框中，选择“负载平衡”选项卡。
+1. 在“负载平衡”选项卡的“考虑放弃请求之前的不响应秒数”字段中，将默认值从 3 更改为 30 到 60 秒之间的值。
+1. 在“将服务器标识为不可用时请求之间的秒数”字段中，将默认值 30 秒更改为等于或大于上一步中指定的值。
 
  ![编辑 RADIUS 服务器](./media/howto-mfa-nps-extension-rdg/image14.png)
 
-8.  单击“确定”两次，以关闭该对话框。
+1.  单击“确定”两次，以关闭该对话框。
 
 ### <a name="verify-connection-request-policies"></a>验证连接请求策略 
 默认情况下，当将 RD 网关配置为使用中央策略存储进行授权策略连接时，RD 网关配置为将 CAP 请求转发到 NPS 服务器。 安装了 Azure MFA 扩展的 NPS 服务器处理 RADIUS 访问请求。 以下步骤显示如何验证默认连接请求策略。 
 
 1. 在 RD 网关的“NPS (本地)”控制台中，展开“策略”，然后选择“连接请求策略”。
-2. 双击“TS 网关授权策略”。
-3. 在“TS 网关授权策略”属性对话框中，单击“设置”选项卡。
-4. 在“设置”选项卡的“转发连接请求”下，单击“身份验证”。 RADIUS 客户端配置为转发请求进行身份验证。
+1. 双击“TS 网关授权策略”。
+1. 在“TS 网关授权策略”属性对话框中，单击“设置”选项卡。
+1. 在“设置”选项卡的“转发连接请求”下，单击“身份验证”。 RADIUS 客户端配置为转发请求进行身份验证。
 
  ![身份验证设置](./media/howto-mfa-nps-extension-rdg/image15.png)
  
-5. 单击“取消”。 
+1. 单击“取消”。 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>在安装了 NPS 扩展的服务器上配置 NPS
 安装了 NPS 扩展的 NPS 服务器需要能够与远程桌面网关上的 NPS 服务器交换 RADIUS 消息。 要启用此消息交换，需要在安装了 NPS 扩展服务的服务器上配置 NPS 组件。 
@@ -241,13 +241,13 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 要在这种情况下正常工作，需要在 Active Directory 中注册 NPS 服务器。
 
 1. 在 NPS 服务器上，打开“服务器管理器”。
-2. 在“服务器管理器”中，单击“工具”，然后单击“网络策略服务器”。 
-3. 在“网络策略服务器”控制台中，右键单击“NPS(本地)”，然后单击“在 Active Directory 中注册服务器”。 
-4. 单击“确定”两次。
+1. 在“服务器管理器”中，单击“工具”，然后单击“网络策略服务器”。 
+1. 在“网络策略服务器”控制台中，右键单击“NPS(本地)”，然后单击“在 Active Directory 中注册服务器”。 
+1. 单击“确定”两次。
 
  ![在 AD 中注册服务器](./media/howto-mfa-nps-extension-rdg/image16.png)
 
-5. 使控制台保持打开状态以进行下一个过程。
+1. 使控制台保持打开状态以进行下一个过程。
 
 ### <a name="create-and-configure-radius-client"></a>创建和配置 RADIUS 客户端 
 远程桌面网关需要配置为 NPS 服务器的 RADIUS 客户端。 
@@ -256,39 +256,39 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
  ![新建 RADIUS 客户端](./media/howto-mfa-nps-extension-rdg/image17.png)
 
-2. 在“新建 RADIUS 客户端”对话框中，提供一个友好名称，如“网关”，以及远程桌面网关服务器的 IP 地址或 DNS 名称。 
-3. 在“共享密钥”和“确认共享密钥”字段中，输入与之前使用的相同的密码。
+1. 在“新建 RADIUS 客户端”对话框中，提供一个友好名称，如“网关”，以及远程桌面网关服务器的 IP 地址或 DNS 名称。 
+1. 在“共享密钥”和“确认共享密钥”字段中，输入与之前使用的相同的密码。
 
  ![名称和地址](./media/howto-mfa-nps-extension-rdg/image18.png)
 
-4. 单击“确定”，以关闭“新建 RADIUS 客户端”对话框。
+1. 单击“确定”，以关闭“新建 RADIUS 客户端”对话框。
 
 ### <a name="configure-network-policy"></a>配置网络策略
 撤回 NPS 服务器与 Azure MFA 扩展是连接授权策略 (CAP) 的指定中央策略存储。 因此，需要在 NPS 服务器上实现 CAP，以授权有效的连接请求。  
 
 1. 在 NPS 服务器上，打开“NPS (本地)”控制台，展开“策略”，然后单击“网络策略”。
-2. 右键单击“到其他访问服务器的连接”，然后单击“重复策略”。 
+1. 右键单击“到其他访问服务器的连接”，然后单击“重复策略”。 
 
  ![重复策略](./media/howto-mfa-nps-extension-rdg/image19.png)
 
-3. 右键单击“复制到其他访问服务器的连接”，然后单击“属性”。
+1. 右键单击“复制到其他访问服务器的连接”，然后单击“属性”。
 
  ![网络属性](./media/howto-mfa-nps-extension-rdg/image20.png)
 
-4. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”。 勾选“策略已启用”，然后选择“授权访问”。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”。
+1. 在“复制到其他访问服务器的连接”对话框中，在“策略名称”中输入合适的名称，如“RDG_CAP”。 勾选“策略已启用”，然后选择“授权访问”。 （可选）在“网络访问服务器类型”中，选择“远程桌面网关”，也可以将其保留为“未指定”。
 
  ![复制连接](./media/howto-mfa-nps-extension-rdg/image21.png)
 
-5.  单击“约束”选项卡，然后选中“允许客户端连接时不必协商身份验证方法”。
+1.  单击“约束”选项卡，然后选中“允许客户端连接时不必协商身份验证方法”。
 
  ![允许客户端进行连接](./media/howto-mfa-nps-extension-rdg/image22.png)
 
-6. （可选）单击“条件”选项卡，并添加授权连接必须满足的条件，例如特定 Windows 组中的成员资格。
+1. （可选）单击“条件”选项卡，并添加授权连接必须满足的条件，例如特定 Windows 组中的成员资格。
 
  ![条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-7. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
-8. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
+1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”。
+1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
  ![网络策略](./media/howto-mfa-nps-extension-rdg/image24.png)
 

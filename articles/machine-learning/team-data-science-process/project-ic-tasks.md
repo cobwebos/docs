@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: e431d89e5d74f5712f6f109075201c95dc233bd3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f21098381d75a4843e9300beaae687adc6ec107d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838545"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303755"
 ---
 # <a name="individual-contributor-tasks"></a>单个参与者的任务
 
@@ -34,14 +34,14 @@ ms.locfileid: "34838545"
 
 有关如何在 TDSP 下执行数据科学项目的说明，请参阅[执行数据科学项目](project-execution.md)。 
 
->[AZURE.NOTE] 下列说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
+>[AZURE.NOTE] 我们在以下说明中概述了使用 Azure DevOps 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 
 ## <a name="repositories-and-directories"></a>存储库和目录
 
-本教程使用存储库和目录的缩写名称。 这些名称可便于掌握存储库和目录之间的操作。 以下部分使用了此表示法（R 表示 Git 存储库，D 表示 DSVM 上的本地目录）：
+本教程使用存储库和目录的缩写名称。 这些名称可便于掌握存储库和目录之间的操作。 以下部分使用了此表示法（**R** 表示 Git 存储库，**D** 表示 DSVM 上的本地目录）：
 
-- R2：你的组管理员在 VSTS 组服务器上设置的 Git 上的 GroupUtilities 存储库。
+- R2：你的组管理员已在 Azure DevOps 组服务器上设置的 Git 上的 GroupUtilities 存储库。
 - R4：你的团队主管设置的 Git 上的 TeamUtilities 存储库。
 - R5：项目主管设置的 Git 项目存储库。
 - D2：从 R2 克隆的本地目录。
@@ -61,7 +61,7 @@ ms.locfileid: "34838545"
 
 - 你的计算机必须已安装 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
 - 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
-- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”部分。 
+- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
 - 如果你的团队和/或项目主管已创建了一些 Azure 文件存储，并且你需要将它们装载到你的 DSVM，则你应通过他们获得这些 Azure 文件存储信息。 
 
 ## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>步骤 1-3：将组、团队和项目存储库克隆到本地计算机

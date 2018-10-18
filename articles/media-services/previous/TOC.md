@@ -64,6 +64,7 @@
 ##### [自定义 Media Encoder Standard 预设](media-services-custom-mes-presets-with-dotnet.md)
 ##### [如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)
+##### [生成缩略图子画面](generate-thumbnail-sprite.md)
 #### MES 架构
 ##### [Media Encoder Standard 架构](media-services-mes-schema.md)
 ##### [输入元数据](media-services-input-metadata-schema.md)

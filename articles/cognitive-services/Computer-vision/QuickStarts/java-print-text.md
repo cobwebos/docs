@@ -1,21 +1,21 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、Java - 计算机视觉
+title: 快速入门：提取打印的文本 (OCR) - REST、Java - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Java 从图像中提取印刷体文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: a0b5967e8796f494e14dde3728c785191c2882d5
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 83675a146d6d43ce5bc25b24809924d7be1331dd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632494"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339961"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Java 提取印刷体文本 (OCR)
 
@@ -126,7 +126,7 @@ public class Main {
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
 
 ```json
 REST Response:
@@ -219,7 +219,7 @@ REST Response:
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要 Java 项目（包括已编译的类和所导入的库）时，请将其删除。
+当不再需要时，可以删除 Java 项目，包括已编辑的类和导入的库。
 
 ## <a name="next-steps"></a>后续步骤
 

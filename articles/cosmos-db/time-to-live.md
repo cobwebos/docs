@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2cae74224a9d59939175ac7e43d4d6b183ca3933
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140016"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050727"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>利用生存时间使 Azure Cosmos DB 集合中的数据自动过期
 应用程序可以生成和存储大量数据。 其中的某些数据（如计算机生成的事件数据、日志和用户会话信息）仅在有限的一段时间内才有用。 当数据变得多余，应用程序不再需要时，可以安全地清除这些数据并减少应用程序的存储需求。
@@ -31,7 +31,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
    
    * 如果缺失（或设置为 NULL），则文档不会自动删除。
    * 如果存在且值设为“-1”= 无限期 - 则默认情况下，文档不过期
-   * 如果存在且值设为某个数字（“n”）- 则文档在上次修改“n”秒后过期
+   * 如果存在且值设为某个数字 ("n") - 则文档在上次修改“n”秒后过期
 2. 文档的 TTL： 
    
    * 属性仅在对父集合设置 DefaultTTL 时适用。
@@ -56,7 +56,7 @@ TTL 功能在两个级别受 TTL 属性控制 - 集合级别和文档级别。 �
 
    **关** - 文档不会自动删除。  
    **开(无默认设置)** - 此选项可将 TTL 值设置为“-1”（无限期），这意味着默认情况下文档不会过期。  
-   **开** - 最后一次修改后，文档过期“n”秒。  
+   **开** - 文档在上次修改“n”秒后过期。  
 
    ![设置生存时间](./media/time-to-live/set-ttl-in-portal.png)
 
@@ -176,7 +176,7 @@ TTL 启动后，文档将立即过期，并且无法通过 CRUD 或查询 API �
 
 **TTL 功能是否仅应用于整个文档，或者是否可以使单个文档的属性值过期？**
 
-TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，然后对被提取的文档使用 TTL。
+TTL 应用于整个文档。 如果只是想要使文档的一部分过期，则建议将该部分从主文档中提取到一个单独的“链接”文档，然后对提取的文档使用 TTL。
 
 **TTL 功能是否具有特定的索引编制要求？**
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391159"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319347"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -36,8 +36,10 @@ ms.locfileid: "44391159"
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) 版本 0.1
 
 Jenkins 插件可用于通过 Web 应用支持的所有语言（例如 C#、PHP、Java 和 Node.js）部署 Web 应用。 本教程使用[适用于 Azure 的简单 Java Web 应用](https://github.com/azure-devops/javawebappsample)。 要将存储库分叉到自己的 GitHub 帐户，请选择 GitHub 界面右上角的“分叉”按钮。  
+
 > [!NOTE]
 > Java JDK 和 Maven 为生成 Java 项目所必需。 在 Jenkins Master 上安装这些组件，或若将代理用于持续集成，则在 VM 代理中安装组件。 若要部署 Java SE 应用程序，生成服务器上也需要 ZIP。
+>
 
 若要安装组件，请使用 SSH 登录到 Jenkins 实例，并运行以下命令：
 
@@ -48,7 +50,7 @@ sudo apt-get install -y maven
 
 要部署到用于容器的 Web 应用，请在 Jenkins Master 或用于生成的 VM 代理上安装 Docker。 如需说明，请参阅[在 Ubuntu 上安装 Docker](https://docs.docker.com/engine/installation/linux/ubuntu/)。
 
-##<a name="service-principal"></a>将 Azure 服务主体添加到 Jenkins 凭据
+## <a name="service-principal"></a>将 Azure 服务主体添加到 Jenkins 凭据
 
 部署到 Azure 需要 Azure 服务主体。 
 

@@ -3,8 +3,8 @@ title: 管理 Azure CDN 中 Web 内容的过期问题 | Microsoft Docs
 description: 了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。
 services: cdn
 documentationcenter: .NET
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: mazha
-ms.openlocfilehash: fc74d7fdd082cf497b7cabf30d96509ebe8b6b68
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: magattus
+ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426011"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092467"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ ms.locfileid: "39426011"
 
 1. 在“自定义缓存规则”下，创建两个匹配条件：
 
-     a. 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
 
      b. 对于第二个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/file1.txt`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 2。
 

@@ -4,26 +4,22 @@ description: 使用 Azure 应用服务连续部署功能来发布 Azure Function
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735697"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301542"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
-使用 Azure Functions，可轻松使用应用服务持续集成部署 Function App。 Functions 可与 BitBucket、Dropbox、GitHub 和 Visual Studio Team Services (VSTS) 集成。 这样，通过使用其中一项集成服务实现的函数代码更新所在的工作流将触发到 Azure 的部署。 如果不熟悉 Azure Functions，请从[Azure Functions 概述](functions-overview.md)开始。
+使用 Azure Functions，可轻松使用应用服务持续集成部署 Function App。 Functions 可与 BitBucket、Dropbox、GitHub 和 Azure DevOps 集成。 这样，通过使用其中一项集成服务实现的函数代码更新所在的工作流将触发到 Azure 的部署。 如果不熟悉 Azure Functions，请从[Azure Functions 概述](functions-overview.md)开始。
 
 连续部署选项非常适合用于频繁集成多个分发内容的项目。 它还允许保持对函数代码的源控件。 目前支持以下部署源：
 
@@ -33,7 +29,7 @@ ms.locfileid: "34735697"
 * [Git 本地存储库](../app-service/app-service-deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
 
 在每个 Function App 基础上配置部署。 启用连续部署后，将门户中的函数代码访问设置为*只读*。
 
@@ -43,10 +39,10 @@ ms.locfileid: "34735697"
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-为了能够从 VSTS 进行部署，必须先将 VSTS 帐户与 Azure 订阅关联起来。 有关详细信息，请参阅[为 VSTS 帐户设置计费](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal)。
+为了能够从 Azure DevOps 进行部署，必须先将 Azure DevOps 组织与 Azure 订阅关联起来。 有关详细信息，请参阅[为 Azure DevOps 组织设置计费](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal)。
 
 ## <a name="set-up-continuous-deployment"></a>设置连续部署
-使用此过程来配置现有 Function App 的连续部署。 这些步骤演示了与 GitHub 存储库的集成，但类似的步骤适用于 Visual Studio Team Services 或其他部署服务。
+使用此过程来配置现有 Function App 的连续部署。 这些步骤演示了与 GitHub 存储库的集成，但类似的步骤适用于 Azure DevOps 或其他部署服务。
 
 1. 在 [Azure 门户](https://portal.azure.com) 的 Function App 中，单击“平台功能”和“部署选项”。 
    

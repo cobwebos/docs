@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: cad5ec059c88290b94919c58ff6bd1071a2b8fdf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d593930705c7455d03e20af2affd2de3c418d4a5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972092"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389062"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-an-azure-stream-analytics-edge-job-in-visual-studio-preview"></a>教程：在 Visual Studio 中为 Azure 流分析 Edge 作业编写 C# 用户定义函数（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "46972092"
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>在 Azure 存储帐户中创建容器
 
-创建的容器将用于存储已编译的 C# 包并将其部署到 IoT Edge 设备。 对每个流分析作业使用专用容器。 不支持对多个流分析 Edge 作业重复使用相同的容器。 如果存储帐户已具有现有的容器，则可以使用这些容器。 如果没有，则需要[新建容器](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal)。 
+创建的容器将用于存储已编译的 C# 包并将其部署到 IoT Edge 设备。 对每个流分析作业使用专用容器。 不支持对多个流分析 Edge 作业重复使用相同的容器。 如果存储帐户已具有现有的容器，则可以使用这些容器。 如果没有，则需要[新建容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 
 
 ## <a name="create-a-stream-analytics-edge-project-in-visual-studio"></a>在 Visual Studio 中创建流分析 Edge 项目
 
@@ -59,7 +59,7 @@ ms.locfileid: "46972092"
 
 3. 展开“用户定义的代码配置”部分，并使用以下建议值填写配置：
 
-    |**设置**  |建议的值  |
+    |**设置**  |**建议的值**  |
     |---------|---------|
     |程序集源  |  本地项目引用或 CodeBehind   |
     |资源  |  选择当前帐户中的数据   |
@@ -146,7 +146,7 @@ CodeBehind 文件是与单个 ASA Edge 查询脚本关联的 C# 文件。 Visual
 ![将流分析 Edge 作业从 Visual Studio 中提交到 Azure](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>部署到 IoT Edge 设备
-现已准备好将流分析作业部署为 IoT Edge 模块。 请按照 [IoT Edge 快速入门](https://docs.microsoft.com/en-us/azure/iot-edge/quickstart)创建 IoT 中心、注册 IoT Edge 设备并在设备上安装和启动 IoT Edge 运行时。 然后按照[部署作业](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)教程进行操作，将流分析作业部署为 IoT Edge 模块。 
+现已准备好将流分析作业部署为 IoT Edge 模块。 请按照 [IoT Edge 快速入门](https://docs.microsoft.com/azure/iot-edge/quickstart)创建 IoT 中心、注册 IoT Edge 设备并在设备上安装和启动 IoT Edge 运行时。 然后按照[部署作业](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)教程进行操作，将流分析作业部署为 IoT Edge 模块。 
 
 ## <a name="next-steps"></a>后续步骤
 

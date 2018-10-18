@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: genli
-ms.openlocfilehash: 59a9011edef49494288716ab16f30e28e440293b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dd87c75638c3d084226becaace5c9454660c907
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195176"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303670"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>排查 Azure Web 应用中的域和 SSL 证书问题
 
@@ -80,7 +80,7 @@ ms.locfileid: "34195176"
 
     **解决方法**：将有效的信用卡添加到订阅。 
 
-- 订阅产品/服务不支持购买“Microsoft 学生”等应用服务证书。  
+- 该订阅套餐不支持购买“Microsoft 学生”等应用服务证书。  
 
     **解决方法**：升级订阅。 
 
@@ -167,7 +167,7 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 
 - 你不是订阅所有者，因此无权购买域。
 
-    **解决方法**：[将“所有者”角色添加](../billing/billing-add-change-azure-subscription-administrator.md)到自己的帐户。 或者联系订阅管理员获取购买域的权限。
+    **解决方法**：[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
 - 已达到订阅中可购买域数的限制。 当前限制为 20 个。
 
     **解决方法**：若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

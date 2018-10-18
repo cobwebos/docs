@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fd3b48648ca0b8f7ce1d134bc7a40a7b1f5ed348
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 0f249cfc604a31a29f6b2e3c0380e6591ec8b4e6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35759193"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378818"
 documentType: LandingData
 title: Azure 媒体服务文档
 metadata:
@@ -13,73 +13,82 @@ metadata:
   meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
   services: media-services
   author: juliako
-  manager: cfowler
+  manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04-21-2018
+  ms.date: 09-24-2018
   ms.author: juliako
 abstract:
-  description: Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。
+  description: Azure 媒体服务 (AMS) 是一个基于云的平台，可用于生成解决方案，以便实现观众可在大多数受欢迎的设备上体验的高清晰度视频编码和广播品质视频流。 借助 AMS v3，还可使用视频索引器通过 AMS v3 分析器预设从视频和音频文件中提取见解。 如果需要更详细的见解，请直接使用视频索引器。<br/> 如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
 sections:
 - items:
   - type: list
     style: cards
     className: cardsM
-    columns: 2
+    columns: 3
     items:
     - href: /azure/media-services/latest/
       html: <p>了解如何使用媒体服务 v3 对视频进行编码、按需流式处理、实时直播和分析。</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
-      title: Azure 媒体服务 v3（预览）
+      title: Azure 媒体服务 v3
     - href: /azure/media-services/previous/
       html: <p>了解如何使用媒体服务 v2 对视频进行编码、按需流式处理和实时直播。</p>
       image:
         src: media/index/AMSIcons-media_servicesV2.svg
-      title: Azure 媒体服务 v2 (GA)
+      title: Azure 媒体服务 v2（旧版）
+    - href: /azure/media-services/video-indexer/
+      html: <p>了解如何使用视频索引器从视频和音频文件中提取见解。</p>
+      image:
+        src: media/index/AMSIcons-media_analytics.svg
+      title: 视频索引器
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何利用媒体服务进行编码和流式传输：
-  - type: table
-    style: dataMatrix
-    columns:
+    text: 了解如何利用媒体服务 v3 进行编码和流式传输：
+  - type: list
+    style: icon48
+    items:
     - image:
         src: media/index/AMSIcons-encoding.svg
-      title: 对文件进行流式处理
-    rows:
-    - title: 媒体服务 v3
-      values:
-      - href: /azure/media-services/latest/stream-files-dotnet-quickstart
-    - title: 媒体服务 v2
-      values:
-      - href: /azure/media-services/previous/media-services-portal-vod-get-started
+      text: 对文件进行流式处理
+      href: /azure/media-services/latest/stream-files-dotnet-quickstart
+  - type: paragraph
+    text: 了解如何使用视频索引器从视频中提取见解：
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: 提取见解
+      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用媒体服务进行文件流式处理和视频分析：
-  - type: table
-    style: dataMatrix
-    columns:
+    text: 了解如何使用媒体服务 v3 进行文件按需流式处理、实时广播和视频分析：
+  - type: list
+    style: icon48
+    items:
     - image:
         src: media/index/AMSIcons-encoding.svg
-      title: 编码和流式处理
+      text: 对视频进行上传、编码和流式处理
+      href: /azure/media-services/latest/stream-files-tutorial-with-api
     - image:
         src: media/index/AMSIcons-live.svg
-      title: 实时流式处理
+      text: 实时广播
+      href: /azure/media-services/latest/stream-live-tutorial-with-api
     - image:
         src: media/index/AMSIcons-media_analytics.svg
-      title: 分析视频
-    rows:
-    - title: 媒体服务 v3
-      values:
-      - href: /azure/media-services/latest/stream-files-tutorial-with-api
-      - href: /azure/media-services/latest/stream-live-tutorial-with-api
-      - href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-    - title: 媒体服务 v2
-      values:
-      - href: /azure/media-services/previous/media-services-dotnet-get-started
-      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
-      - href: 
+      text: 分析视频
+      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+  - type: paragraph
+    text: 了解如何使用视频索引器 API 从视频中提取见解：
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: 提取见解
+      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json

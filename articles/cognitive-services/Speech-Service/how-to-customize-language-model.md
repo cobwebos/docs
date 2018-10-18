@@ -8,12 +8,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 01a386d37841c78e4aae96111e4671ec33b87e00
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d74a5ded7d86969b3ca2cc20a59ddc20af7dc932
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017545"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364109"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>教程：创建自定义语言模型
 
@@ -98,8 +98,6 @@ ms.locfileid: "48017545"
 在“创建语言模型”页上输入“名称”和“说明”，以便跟踪此模型的相关信息，例如所使用的数据集。 接下来，从下拉菜单中选择“基础语言模型”。 可以从此模型着手进行自定义。 
 
 有两个基础语言模型可供选择。 搜索和听写模型适用于在应用程序中发出的语音，例如命令、搜索查询或听写。 “聊天”模型适用于识别以聊天形式说出的语音。 此类语音通常是面对另一个人在呼叫中心或会议中发出。 
-
-在“创建语言模型”页上输入“名称”和“说明”，以便跟踪此模型的相关信息，例如所使用的数据集。 接下来，从下拉菜单中选择“基础语言模型”。 可以从此模型着手进行自定义。 有两个基础语言模型可供选择。 
 
 搜索和听写模型适用于在应用程序中发出的语音，例如命令、搜索查询或听写。 “聊天”模型适用于识别以聊天形式说出的语音。 此类语音通常是面对另一个人在呼叫中心或会议中发出。 名为“通用”的新模型也已推出正式版。 “通用”模型旨在满足所有方案，最终会取代“搜索”、“听写”和“对话”模型。
 

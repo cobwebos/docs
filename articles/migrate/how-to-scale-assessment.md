@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 1f049b3e05ac17e416379762a0bced8340ae25d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666537"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325016"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -22,8 +22,7 @@ Azure Migrate 具有每个项目 1500 台计算机的限制，本文介绍了如
 - **VMware**：计划迁移的 VM 必须由版本 5.5、6.0 或 6.5 的 vCenter Server 托管。 此外，需要一个运行 5.0 或更高版本的 ESXi 主机来部署收集器 VM。
 - **vCenter 帐户**：需要只读帐户来访问 vCenter Server。 Azure Migrate 使用此帐户发现本地 VM。
 - **权限**：在 vCenter Server 中，需要有通过导入 .OVA 格式的文件来创建 VM 的权限。
-- **统计信息设置**：开始部署之前，应将 vCenter Server 的统计信息设置指定为级别 3。 对于每天、每周和每月的收集间隔，统计级别将设置为 3。 如果三个收集间隔中的任何一个的级别低于 3，则可以正常评估，但不会收集存储和网络的性能数据。 然后，大小建议将基于 CPU 和内存的性能数据以及磁盘和网络适配器的配置数据。
-
+- **统计信息设置**：此要求仅适用于[一次性发现模型](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)。 对于一次性发现模型，应在开始部署之前，将 vCenter Server 的统计信息设置指定为级别 3。 对于每天、每周和每月的收集间隔，统计级别将设置为 3。 如果三个收集间隔中的任何一个的级别低于 3，则可以正常评估，但不会收集存储和网络的性能数据。 然后，大小建议将基于 CPU 和内存的性能数据以及磁盘和网络适配器的配置数据。
 
 ### <a name="set-up-permissions"></a>设置权限
 
@@ -37,21 +36,23 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 如果要在租户环境中进行部署，以下是对此进行设置的一种方法：
 
 1.  每个租户创建一个用户并使用 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)，分配对属于特定租户的所有 VM 的只读权限。 然后，使用这些凭据进行发现。 RBAC 确保相应的 vCenter 用户将仅具有特定于租户的 VM 的访问权限。
-2. 将为不同的租户用户设置 RBAC，如以下示例中所述的 User#1 和 User#2：
+2. 将为不同的租户用户设置 RBAC，如以下示例中所述的用户 #1 和用户 #2：
 
     - 在“用户名称”和“密码”中，指定收集器用来在其中发现 VM 的只读帐户凭据
-    - Datacenter1 - 向 User#1 和 User#2 授予只读权限。 不要将这些权限传播到所有子对象，因为你将对单个 VM 的子对象设置权限。
+    - Datacenter1 - 向用户 #1 和用户 #2 授予只读权限。 不要将这些权限传播到所有子对象，因为你将对单个 VM 的子对象设置权限。
 
-      - VM1 (Tenant#1)（授予 User#1 只读权限）
-      - VM2 (Tenant#1)（授予 User#1 只读权限）
-      - VM3 (Tenant#2)（授予 User#2 只读权限）
-      - VM4 (Tenant#2)（授予 User#2 只读权限）
+      - VM1（租户 #1）（授予用户 #1 只读权限）
+      - VM2（租户 #1）（授予用户 #1 只读权限）
+      - VM3（租户 #2）（授予用户 #2 只读权限）
+      - VM4（租户 #2）（授予用户 #2 只读权限）
 
-   - 如果使用 User#1 凭据执行发现，则仅能发现 VM1 和 VM2。
+   - 如果使用用户 #1 凭据执行发现，则仅能发现 VM1 和 VM2。
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>规划迁移项目和发现
 
-单个 Azure Migrate 收集器支持从多台 vCenter Server（逐台）执行发现，并且还支持将发现置于多个迁移项目中（逐个）。 收集器在“发后不理”模型下工作，完成发现后，可以使用同一收集器从不同的 vCenter Server 收集数据，或者将其发送到不同的迁移项目。
+单个 Azure Migrate 收集器支持从多台 vCenter Server（逐台）执行发现，并且还支持将发现置于多个迁移项目中（逐个）。
+
+（执行一次性发现时）收集器在“发后不理”模型下工作，完成发现后，可以使用同一收集器从不同的 vCenter Server 收集数据，或者将其发送到不同的迁移项目。 如果执行持续发现，则一个设备只能连接到一个项目，因此无法使用同一个收集器来触发第二个发现。
 
 基于以下限制计划发现和评估：
 
@@ -70,20 +71,31 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 根据你的方案，你可以如下所述对发现进行拆分：
 
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>VM 数少于 1500 的多台 vCenter Server
+如果环境中有多个 vCenter Server，并且虚拟机总数少于 1500，则可以根据场景使用以下方法：
 
-如果你的环境中有多台vCenter Server，并且虚拟机的总数少于 1500，则可以使用单个收集器和单个迁移项目来发现所有 vCenter Server 中的所有虚拟机。 因为收集器一次发现一台 vCenter Server，因此你可以对所有 vCenter Server 逐台运行同一收集器，并将收集器指向同一迁移项目。 完成所有发现后，可以为计算机创建评估。
+**一次性发现：** 可以使用一个收集器和一个迁移项目来发现所有 vCenter Server 上的所有虚拟机。 由于一次性发现收集器一次发现一台 vCenter Server，因此你可以对所有 vCenter Server 逐台运行同一收集器，并将收集器指向同一迁移项目。 完成所有发现后，可以为计算机创建评估。
+
+**持续发现：** 执行持续发现时，一个设备只能连接到一个项目。 因此，需要为每个 vCenter Server 部署一个设备，然后为每个设备创建一个项目并相应地触发发现。
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>VM 数多于 1500 的多台 vCenter Server
 
-如果你有多个 vCenter Server，每个 vCenter Server 中的虚拟机数少于 1500，但所有 vCenter Server 中的 VM 总数多于 1500，则需要创建多个迁移项目（一个迁移项目只能容纳 1500 个 VM）。 可以通过为每台 vCenter Server 创建迁移项目并对发现进行拆分来实现此目的。 可以使用单个收集器来发现每台 vCenter Server（逐台）。 如果希望同时启动发现，则还可以部署多台设备并且并行运行发现。
+如果你有多个 vCenter Server，每个 vCenter Server 中的虚拟机数少于 1500，但所有 vCenter Server 中的 VM 总数多于 1500，则需要创建多个迁移项目（一个迁移项目只能容纳 1500 个 VM）。 可以通过为每台 vCenter Server 创建迁移项目并对发现进行拆分来实现此目的。
+
+**一次性发现：** 可以使用一个收集器来发现每个 vCenter Server（逐个发现）。 如果希望同时启动发现，则还可以部署多台设备并且并行运行发现。
+
+**持续发现：** 需要创建多个收集器设备（为每个 vCenter Server 各创建一个），将每个设备连接到项目并相应地触发发现。
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>单台 vCenter Server 中的虚拟机数超过 1500
 
-如果单台 vCenter Server 中的虚拟机数超过 1500，则需要将发现拆分为多个迁移项目。 若要拆分发现，可以利用设备中的“范围”字段并指定要发现的主机、群集、文件夹或数据中心。 例如，如果 vCenter Server 中有两个文件夹，一个 (Folder1) 包含 1000 台 VM，另一个 (Folder2) 包含 800 台 VM，则可以使用单个收集器并执行两个发现。 在第一个发现中，可以将 Folder1 指定为范围并将其指向第一个迁移项目，在第一个发现完成后，可以使用同一收集器，将其范围更改为 Folder2，将迁移项目详细信息更改为第二个迁移项目并执行第二个发现。
+如果单台 vCenter Server 中的虚拟机数超过 1500，则需要将发现拆分为多个迁移项目。 若要拆分发现，可以利用设备中的“范围”字段并指定要发现的主机、群集、文件夹或数据中心。 例如，如果 vCenter Server 中有两个文件夹，其中一个文件夹 (Folder1) 包含 1000 个 VM，另一个文件夹 (Folder2) 包含 800 个 VM，则你可以使用范围字段在这些文件夹之间拆分发现。
+
+**一次性发现：** 可以使用同一个收集器来触发两个发现。 在第一个发现中，可以将 Folder1 指定为范围并将其指向第一个迁移项目，在第一个发现完成后，可以使用同一收集器，将其范围更改为 Folder2，将迁移项目详细信息更改为第二个迁移项目并执行第二个发现。
+
+**持续发现：** 在这种情况下，需要创建两个收集器设备，对于第一个收集器，需将范围指定为 Folder1 并将其连接到第一个迁移项目。 可以使用第二个收集器设备并行启动 Folder2的发现，并将其连接到第二个迁移项目。
 
 ### <a name="multi-tenant-environment"></a>多租户环境
 
-如果你有在租户之间共享的环境并且不希望在一个租户的订阅中发现另一个租户的 VM，则可以使用收集器设备中的“范围”字段来设置发现范围。 如果各个租户共享主机，请创建一个仅对属于特定租户的 VM 具有只读访问权限的凭据，然后在收集器设备中使用此凭据并将范围指定为主机来执行发现。 另外，也可以在 vCenter Server 中创建文件夹（例如，用于 tenant1 的 folder1 和用于 tenant2 的 folder2），在共享的主机下，将 tenant1 的 VM 移动到 folder1 中，将 tenant2 的 VM 移动到 folder2 中，然后通过指定合适的文件夹相应地在收集器中设置发现范围。
+如果你有在租户之间共享的环境并且不希望在一个租户的订阅中发现另一个租户的 VM，则可以使用收集器设备中的“范围”字段来设置发现范围。 如果各个租户共享主机，请创建一个仅对属于特定租户的 VM 具有只读访问权限的凭据，然后在收集器设备中使用此凭据并将范围指定为主机来执行发现。
 
 ## <a name="discover-on-premises-environment"></a>在本地环境中发现
 
@@ -107,8 +119,16 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 如果有多个项目，只需将收集器设备下载到 vCenter 服务器一次。 下载和设置设备后，为每个项目运行该设备，并指定唯一项目 ID 和密钥。
 
-1. 在 Azure Migrate 项目中，选择“开始” > “发现和评估” > “发现计算机”。
-2. 在“发现计算机”中，选择“下载”以下载 .OVA 文件。
+1. 在 Azure Migrate 项目中，单击“开始” > “发现和评估” > “发现计算机”。
+2. 在“发现计算机”中，有两个适用于设备的选项。请单击“下载”，以便根据首选项下载适当的设备。
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **一次性发现：** 此模型的应用设备与 vCenter Server 通信，以便收集有关 VM 的元数据。 至于 VM 的性能数据收集，它依赖于存储在 vCenter Server 中的历史性能数据，会收集上一个月的性能历史记录。 在此模型中，Azure Migrate 针对每个指标收集平均计数器（不同于峰值计数器）[了解详情] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)。 由于它是一次性发现，因此在发现完成后，将不再反映本地环境中的更改。 如果希望反映所做的更改，则需对同一项目的同一环境执行重新发现操作。
+
+    b. **持续发现：** 此模型的设备持续分析本地环境，以便收集每个 VM 的实时利用率数据。 在此模型中，将会针对每个指标（CPU 利用率、内存利用率等）收集峰值计数器。 进行性能数据收集时，此模型不依赖于 vCenter Server 的统计信息设置。 可以随时停止设备提供的持续分析。
+
+    > [!NOTE]
+    > 持续发现功能为预览版。
+
 3. 在“复制项目凭据”中，请复制项目的 ID 和密钥。 在配置收集器时要使用这些信息。
 
 
@@ -126,53 +146,49 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 3. 确保生成的哈希与以下设置匹配。
 
-    适用于 OVA 版本 1.0.9.14
+#### <a name="one-time-discovery"></a>一次性发现
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
-    
-    适用于 OVA 版本 1.0.9.12
+适用于 OVA 版本 1.0.9.14
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | d0363e5d1b377a8eb08843cf034ac28a
-    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
-    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
+**算法** | **哈希值**
+--- | ---
+MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
+SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
+SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
 
-    适用于 OVA 版本 1.0.9.8
+适用于 OVA 版本 1.0.9.12
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | b5d9f0caf15ca357ac0563468c2e6251
-    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
-    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+**算法** | **哈希值**
+--- | ---
+MD5 | d0363e5d1b377a8eb08843cf034ac28a
+SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
+SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
 
-    适用于 OVA 版本 1.0.9.7
+适用于 OVA 版本 1.0.9.8
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+**算法** | **哈希值**
+--- | ---
+MD5 | b5d9f0caf15ca357ac0563468c2e6251
+SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
 
-    适用于 OVA 版本 1.0.9.5
+适用于 OVA 版本 1.0.9.7
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | fb11ca234ed1f779a61fbb8439d82969
-    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
-    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
+**算法** | **哈希值**
+--- | ---
+MD5 | d5b6a03701203ff556fa78694d6d7c35
+SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-    适用于 OVA 版本 1.0.9.2
+#### <a name="continuous-discovery"></a>持续发现
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 7326020e3b83f225b794920b7cb421fc
-    SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
-    SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
+适用于 OVA 版本 1.0.10.4
+
+**算法** | **哈希值**
+--- | ---
+MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 
 ### <a name="create-the-collector-vm"></a>创建收集器 VM
 
@@ -199,25 +215,35 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     ![复制项目凭据](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ### <a name="set-the-vcenter-statistics-level"></a>设置 vCenter 统计信息级别
-下面是发现期间收集的性能计数器的列表。 这些计数器在 vCenter Server 中的各种级别默认可用。
 
-建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。
+收集器设备发现与所选虚拟机相关的以下静态元数据。
 
-下表还列出了不收集特定计数器时将受到影响的评估结果。
+1. VM 显示名称（在 vCenter 上）
+2. VM 的清单路径（vCenter 中的主机/文件夹）
+3. IP 地址
+4. MAC 地址
+5. 操作系统
+5. 核心数、磁盘数、NIC 数
+6. 内存大小、磁盘大小
+7. VM、磁盘和网络的性能计数器，如下表中所列出的那样。
 
-| 计数器                                 | 级别 | 设备级别 | 评估影响                    |
-| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| cpu.usage.average                       | 1     | NA               | 建议的 VM 大小和成本         |
-| mem.usage.average                       | 1     | NA               | 建议的 VM 大小和成本         |
-| virtualDisk.read.average                | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
-| virtualDisk.write.average               | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
-| virtualDisk.numberReadAveraged.average  | 1     | 3                | 磁盘大小、存储成本和 VM 大小 |
-| virtualDisk.numberWriteAveraged.average | 1     | 3                | 磁盘大小、存储成本和 VM 大小 |
-| net.received.average                    | 2     | 3                | VM 大小和网络成本             |
-| net.transmitted.average                 | 2     | 3                | VM 大小和网络成本             |
+对于一次性发现，下表列出了确切收集的性能计数器，并列出了在未收集特定计数器的情况下受影响的评估结果。
+
+对于持续发现，将实时（20 秒间隔）收集相同的计数器，因此，对 vCenter 统计信息级别没有依赖。 然后，设备将从 20 秒样本中选择峰值并将其发送到 Azure，以便汇总 20 秒样本，每隔 15 分钟创建单个数据点。
+
+|计数器                                  |级别    |设备级别  |评估影响                               |
+|-----------------------------------------|---------|------------------|------------------------------------------------|
+|cpu.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
+|mem.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
+|virtualDisk.read.average                 | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
+|virtualDisk.write.average                | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
+|virtualDisk.numberReadAveraged.average   | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
+|virtualDisk.numberWriteAveraged.average  | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
+|net.received.average                     | 2       |3                 |VM 大小和网络成本                        |
+|net.transmitted.average                  | 2       |3                 |VM 大小和网络成本                        |
 
 > [!WARNING]
-> 如果刚设置了更高的统计信息级别，将需要最多一天的时间来生成性能计数器。 因此，建议在一天后运行发现。
+> 对于一次性发现，如果刚设置了更高的统计信息级别，将需要最多一天的时间来生成性能计数器。 因此，建议在一天后运行发现。 对于持续发现模型，开始发现后需要至少等待一天让设备分析环境，然后创建评估。
 
 ### <a name="run-the-collector-to-discover-vms"></a>运行收集器以发现 VM。
 
@@ -249,9 +275,11 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 #### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM
 
-发现所需的时间取决于所发现的 VM 数。 一般情况下，发现 100 台 VM 的进程会在收集器完成运行后约一小时内完成。
+进行一次性发现时，发现所需的时间取决于所发现的 VM 数。 通常情况下，对于 100 个 VM，在收集器完成运行后，需要大约一小时才能收集完配置和性能数据。 可以在发现完成后立即创建评估（基于性能的评估和本地评估）。
 
-1. 在 Migration Planner 项目中，选择“管理” > “计算机”。
+对于持续发现（预览版），收集器会持续分析本地环境，并且始终会每隔一小时发送一次性能数据。 启动发现操作一小时后，即可在门户中查看计算机的情况。 强烈建议在为 VM 创建任何基于性能的评估之前，先等待至少一天。
+
+1. 在迁移项目中，单击“管理” > “计算机”。
 2. 检查想要发现的 VM 是否出现在门户中。
 
 

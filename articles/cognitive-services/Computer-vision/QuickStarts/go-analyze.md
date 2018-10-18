@@ -3,19 +3,19 @@ title: 快速入门：分析远程图像 - REST、Go - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Go 分析图像。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: ccdd8922993fb1ea3e723a68f28f95f7b6ffe93b
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 57c8309af47e71226f41df8cce255e73f33b27c5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632222"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341032"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Go 分析远程图像
 
@@ -38,7 +38,7 @@ ms.locfileid: "45632222"
     1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
     1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`analyze-image.go`。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build analyze-image.go`。
 1. 在提示符处，运行所编译的包。 例如，`analyze-image`。
 
@@ -119,7 +119,7 @@ func main() {
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

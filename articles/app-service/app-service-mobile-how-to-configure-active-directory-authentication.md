@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 2530cb55cb054c02df5d55ccb86e959a061e2499
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0c2ae7e4cf0b19ab9e1c276504892a2a8aaa8dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155290"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297377"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>将应用服务应用配置为使用 Azure Active Directory 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "32155290"
 7. 现在，单击“答复 URL”，编辑“答复 URL”，粘贴应用程序 URL（来自于步骤 1），修改协议，确保具有 https:// 协议（非 http:// ），然后在 URL 末尾追加 /.auth/login/aad/callback（例如 `https://contoso.azurewebsites.net/.auth/login/aad/callback`）。 单击“ **保存**”。   
 8.  此时，复制应用的“应用程序 ID”。 保留此 ID 供将来使用。 需要使用它来配置应用服务应用。
 9. 关闭“已注册应用”页。 在“应用注册”页中，单击顶部的“终结点”按钮，然后复制“联合元数据文档”URL。 
-10. 通过粘贴并浏览到 XML 页，打开一个新的浏览器窗口并导航到 URL。 文档顶部是一个“EntityDescriptor”元素，应该有一个格式为 `https://sts.windows.net/` 的“entityID”属性，其后接特定于租户的 GUID（称为“租户 ID”）。 复制此值 - 它可作为证书颁发者 URL。 稍后配置应用程序时要用到此信息。
+10. 通过粘贴并浏览到 XML 页，打开一个新的浏览器窗口并导航到 URL。 文档顶部是 **EntityDescriptor** 元素。 找到 **entityID** 属性，并复制其值。 它用作**颁发者 URL**。 稍后配置应用程序时要用到此信息。
 
 ### <a name="secrets"> </a>将 Azure Active Directory 信息添加到应用服务应用
 1. 返回 [Azure 门户]，导航到应用服务应用。 单击“身份验证/授权”。 如果“身份验证/授权”功能未启用，请切换为“打开”。 单击验证提供程序下的“Azure Active Directory”，配置应用。 （可选）默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。 将“请求未经身份验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 此选项会要求对所有请求进行身份验证，所有未经身份验证的请求都重定向到 Azure Active Directory 进行身份验证。

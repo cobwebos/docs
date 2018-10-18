@@ -3,32 +3,34 @@ title: 在 Azure 安全中心设置安全策略 | Microsoft Docs
 description: 本文介绍了如何在 Azure 安全中心配置安全策略。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756985"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161282"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>在 Azure 安全中心设置安全策略
 本文介绍了如何在安全中心配置安全策略。
+
+有关如何使用 PowerShell 设置策略的说明，请参阅[快速入门：使用 Azure RM PowerShell 模块创建策略分配以识别不合规资源](../azure-policy/assign-policy-definition-ps.md)。
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
 安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心编辑该策略并监视策略遵循情况。
 
 > [!NOTE]
-> 现在可以使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)来扩展安全中心策略。 有关详细信息，请参阅[集成安全中心安全策略与 Azure 策略](security-center-azure-policy.md)。
+> 现在可以使用 [Azure Policy](../azure-policy/azure-policy-introduction.md) 来扩展安全中心策略。 有关详细信息，请参阅[集成安全中心安全策略与Azure Policy](security-center-azure-policy.md)。
 
 开发或测试用资源的安全要求可能不同于生产应用型资源。 使用管控数据（例如个人身份信息）的应用程序可能需要更高级别的安全性。 在 Azure 安全中心启用的安全策略可以通过安全建议和监视帮助用户确定可能的漏洞并缓解威胁造成的危害。 若要详细了解如何确定适当的选项，请参阅 [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)。
 
@@ -37,13 +39,12 @@ ms.locfileid: "34756985"
 
 1. 登录到 Azure 门户。
 
-2. 在“安全中心”仪表板的“通用”下选择“安全策略”。
+2. 在“安全中心”仪表板上，在“策略和符合性”下选择“安全策略”。
 
 3. 选择要为其启用安全策略的订阅。
 
-4. 在“策略组件”部分选择“安全策略”。  
-    这是安全中心分配的默认策略。 可以打开或关闭可用的安全建议。
-
+4. 打开要为订阅启用的策略。 你将根据所选的每条策略获得建议。 
+  ![策略列表](./media/security-center-policies/policies.png)
 5. 编辑完后，选择“保存”。
 
 ## <a name="available-security-policy-definitions"></a>可用的安全策略定义
@@ -76,4 +77,4 @@ ms.locfileid: "34756985"
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
 
-若要了解有关 Azure 策略的详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)
+若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)

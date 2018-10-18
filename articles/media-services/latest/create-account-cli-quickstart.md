@@ -4,25 +4,22 @@ description: 按照本快速入门的步骤，创建 Azure 媒体服务帐户。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: de54571308b737b9160a39ee4ba5d4b2d9f15775
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735996"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376527"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>快速入门：创建 Azure 媒体服务帐户
-
-> [!NOTE]
-> Azure 媒体服务 (2018-03-30) 的最新版本为预览版。 此版本也称为 v3。 
 
 无论是开发人员还是媒体内容创建者，若要在 Azure 中存储、加密、编码、管理和流式传输媒体内容，都需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的 ID。 指定存储帐户会附加到媒体服务帐户。 此存储帐户资源必须位于媒体服务帐户所在的地理区域内。  
 

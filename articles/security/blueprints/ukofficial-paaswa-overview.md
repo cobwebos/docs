@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617243"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297549"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与符合性蓝图：适用于英国官方工作负载的 PaaS Web 应用程序托管
 
@@ -27,7 +27,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 英国国家网络安全中心 (NCSC) 对此蓝图进行了审查，并与 NCSC 14 云安全原则保持一致。
 
-该体系结构使用 Azure [平台即服务](https://azure.microsoft.com/overview/what-is-paas/)组件来提供一个环境，使客户能够避免购买软件许可证、管理基础的应用程序体系结构和中间件或开发工具以及其他资源的费用和复杂性。 客户管理他们开发的应用程序和服务，专注于提供业务价值，而 Microsoft Azure 管理其他 Azure 资源（例如虚拟机、存储和网络），将架构管理的[更多责任分工](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)放到 Azure 平台上。 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)提供自动缩放和高可用性，支持 Windows 和 Linux，并允许将 GitHub、Visual Studio Team Servicess 或任何 Git 存储库作为默认服务进行自动部署。 通过使用应用服务，开发人员可以专注于创造商业价值，而无需管理基础结构的开销。 可以构建新的 Java、 PHP、 Node.js、 Python、 HTML 或 C# web 应用程序领域，也可以将现有的云或本地 Web 应用程序迁移到 Azure 应用服务 （尽管需要进行彻底的尽职调查和测试以确认性能）。
+该体系结构使用 Azure [平台即服务](https://azure.microsoft.com/overview/what-is-paas/)组件来提供一个环境，使客户能够避免购买软件许可证、管理基础的应用程序体系结构和中间件或开发工具以及其他资源的费用和复杂性。 客户管理他们开发的应用程序和服务，专注于提供业务价值，而 Microsoft Azure 管理其他 Azure 资源（例如虚拟机、存储和网络），将架构管理的[更多责任分工](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)放到 Azure 平台上。 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 GitHub、Azure DevOps 或任何 Git 存储库作为默认服务进行自动部署。 通过使用应用服务，开发人员可以专注于创造商业价值，而无需管理基础结构的开销。 可以构建新的 Java、 PHP、 Node.js、 Python、 HTML 或 C# web 应用程序领域，也可以将现有的云或本地 Web 应用程序迁移到 Azure 应用服务 （尽管需要进行彻底的尽职调查和测试以确认性能）。
 
 此蓝图侧重于提供安全基础，[平台即服务](https://azure.microsoft.com/overview/what-is-paas/)基于 Web 的界面，适用于公共和后台用户。 此蓝图设计方案会考虑使用 Azure 托管的基于 Web 的服务，公共用户可以安全地提交、查看和管理敏感数据；后台或政府运营商也可以安全地处理公共用户提交的敏感数据。 此方案的用例可能包括：
 
@@ -103,7 +103,7 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="azure-app-service"></a>Azure 应用服务
 
-Azure Web 应用为使用 Java、PHP、Node.js Python、HTML和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构 它提供自动缩放和高可用性、支持 Windows 和 Linux，并允许从[Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
+Azure Web 应用为使用 Java、PHP、Node.js Python、HTML和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
 
 应用服务符合 [ISO、SOC、和 PCI 标准](https://www.microsoft.com/TrustCenter/)，可以使用[ Azure Active Directory ](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)或者通过社交登录（[Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication) 和 [Microsoft 身份验证](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)）对用户进行身份验证。
 

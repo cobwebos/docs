@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617212"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348562"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -51,7 +51,7 @@ ms.locfileid: "42617212"
 
 Service Fabric 群集可以包含不止一个节点类型。 在这种情况下，群集包含一个主节点类型以及一个或多个非主节点类型。
 
-单个节点类型不能超过每个虚拟机规模集 100 个节点这一限制。 可能需要添加虚拟机规模集以实现目标规模，自动缩放不能自动添加虚拟机规模集。 就地将虚拟机规模集添加到实时群集是一项有挑战性的任务，通常这会导致用户使用创建时预配的相应节点类型预配新的群集。 
+对于 SF 应用程序，单节点类型无法可靠地扩展到每个虚拟机规模集超过 100 个节点；要可靠地实现超过 100 个节点，需要添加其他虚拟机规模集。
 
 ### <a name="primary-node-type"></a>主节点类型
 

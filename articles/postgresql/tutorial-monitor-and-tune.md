@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393581"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379138"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>教程：在 Azure Database for PostgreSQL 中进行监视和优化
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL 提供有助于了解和改进服务器性能的�
 需要一个使用 PostgreSQL 版本 9.6 或 10 的 Azure Database for PostgreSQL 服务器。 可以按照[创建教程](tutorial-design-database-using-azure-portal.md)中的步骤创建服务器。
 
 > [!IMPORTANT]
-> **查询存储**、**查询性能见解**和**性能建议**当前为公共预览版，且仅在有限的几个区域中提供。
+> 查询存储、Query Performance Insight和性能建议均在公共预览版中提供。
 
 ## <a name="enabling-data-collection"></a>允许收集数据
 [查询存储](concepts-query-store.md)捕获服务器上的查询和等待统计信息的历史记录，并将其存储在服务器上的 azure_sys 数据库中。 这是一个可选的功能。 若要启用此功能，请执行以下操作：

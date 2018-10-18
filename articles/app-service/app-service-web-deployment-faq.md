@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068064"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302582"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -62,7 +62,7 @@ ms.locfileid: "34068064"
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 
-可以从多个资源（包括 Visual Studio Team Services、OneDrive、GitHub、Bitbucket、Dropbox 和其他 Git 存储库）设置持续部署。 这些选项可在门户中使用。 [持续部署到应用服务](app-service-continuous-deployment.md)是很有帮助的教程，其中说明了如何设置持续部署。
+可以从多个资源（包括 Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox 和其他 Git 存储库）设置持续部署。 这些选项可在门户中使用。 [持续部署到应用服务](app-service-continuous-deployment.md)是很有帮助的教程，其中说明了如何设置持续部署。
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>如何对从 GitHub 和 Bitbucket 进行持续部署的问题进行故障排除？
 
@@ -85,9 +85,9 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 
 若要了解应用程序部署可能会导致重新启动的情况，请参阅[部署与运行时问题](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")。 如文章中所述，应用服务会将文件部署到 wwwroot 文件夹。 它绝不会直接重新启动应用。
 
-## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a>如何将 Visual Studio Team Services 代码与应用服务集成？
+## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>如何将 Azure DevOps 代码与应用服务集成？
 
-有两个选项可用于将持续部署与 Visual Studio Team Services 一起使用：
+使用 Azure DevOps 进行持续部署有两种方法：
 
 *   使用 Git 项目。 使用该存储库的部署选项，通过应用服务进行连接。
 *   使用 Team Foundation 版本控制 (TFVC) 项目。 通过对应用服务使用生成代理来进行部署。
@@ -95,7 +95,7 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 这两个选项的持续代码部署都依赖于现有开发人员工作流和签入过程。 有关详细信息，请参阅以下文章： 
 
 *   [实现应用到 Azure 网站的持续部署](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [设置 Visual Studio Team Services 帐户，以便它可以部署到 Web 应用](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+*   [设置 Azure DevOps 组织，以便它可以部署到 Web 应用](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>如何使用 FTP 或 FTPS 将应用部署到应用服务？
 

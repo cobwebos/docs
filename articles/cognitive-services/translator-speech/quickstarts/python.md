@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: 601e8473482cf6d90151b221309aef4d48d368d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f6386fbb54ab78def289f5eee9f957bb7a11ff65
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979009"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341204"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>快速入门：将语音翻译 API 与 Python 配合使用
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 本文演示如何使用语音翻译 API 翻译 .wav 文件中的口述内容。
 

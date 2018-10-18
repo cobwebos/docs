@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0c5d045cb949f5393bb2d9da54715b2b84229c36
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036282"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319840"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
+
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager - PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [经典 - PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
->
 
 本文介绍如何在经典部署模型中使用 PowerShell 删除 VPN 网关。 删除虚拟网络网关后，修改网络配置文件以删除不再使用的元素。
 
-##<a name="connect"></a>步骤 1：连接到 Azure
+## <a name="connect"></a>步骤 1：连接到 Azure
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.安装最新的 PowerShell cmdlet。
 
@@ -101,7 +101,7 @@ Status : Successful
  </Gateway>
 ```
 
-###<a name="lns"></a>本地网络站点
+### <a name="lns"></a>本地网络站点
 
 删除不再使用的所有本地站点。 根据已创建的配置，可能没有列出 **LocalNetworkSite**。
 

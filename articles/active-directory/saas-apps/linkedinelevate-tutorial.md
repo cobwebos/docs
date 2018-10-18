@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f8f12263ca71b8e88033484bc03fc4cff9e25bc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435207"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 与 LinkedIn Elevate 的集成
 
@@ -119,7 +119,7 @@ ms.locfileid: "39435207"
 
     ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -141,7 +141,7 @@ ms.locfileid: "39435207"
 
       ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/userattribute.png)
 
-      a. 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
+      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
 
       ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/adduserattribute.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "39435207"
 
     ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

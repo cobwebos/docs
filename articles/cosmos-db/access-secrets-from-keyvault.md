@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42751575"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053078"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>使用 Key Vault 存储和访问 Azure Cosmos DB 密钥
 
@@ -56,7 +56,7 @@ ms.locfileid: "42751575"
 
 ## <a name="create-an-azure-web-application"></a>创建 Azure Web 应用程序
 
-1. 创建 Azure Web 应用程序，或者从 [GitHub 存储库](https://github.com/rsarosh/CosmosDB-KeyVault)下载应用。 它是一个简单的 MVC 应用程序。  
+1. 创建 Azure Web 应用程序，或者从 [GitHub 存储库](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)下载应用。 它是一个简单的 MVC 应用程序。  
 
 2. 解压缩已下载的应用程序，并打开 **HomeController.cs** 文件。 更新以下行中的机密 ID：
 
@@ -87,11 +87,9 @@ ms.locfileid: "42751575"
 
 ![使用机密部署的应用](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-同样，可以添加一个用户来访问 Key Vault。 需要通过单击“访问策略”将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的全部权限。 从桌面运行此应用程序时，它会采用你的标识。
+同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的所有权限。 从桌面运行此应用程序时，它会采用你的标识。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)一文。
 * 若要配置虚拟网络服务终结点，请参阅[使用 VNet 服务终结点保护访问](vnet-service-endpoint.md)一文。
-
-

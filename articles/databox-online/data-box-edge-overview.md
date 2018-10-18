@@ -1,26 +1,19 @@
 ---
 title: Microsoft Azure Data Box Edge 概述 | Microsoft Docs
 description: 介绍 Azure Data Box Edge - 一种使用物理设备通过网络将数据传输到 Azure 的存储解决方案。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: edge
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b64489912725872db971c19965ac58c84cb2fc2e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6422482a31ad8022b795cb357c37ad8560781767
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993521"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166587"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>什么是 Azure Data Box Edge（预览版）？ 
 
@@ -116,14 +109,14 @@ Data Box Edge 解决方案包括 Data Box Edge 资源、Data Box Edge 物理设�
 
 将数据传输到的 Data Box Edge 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
 
-- **资源可用性** - 对于此版本，Data Box Edge 资源已在以下区域提供：
+- **资源可用性** - 对于此版本，Data Box Edge 资源可以在以下区域获得：
     - **美国** - 美国西部 2 区和美国东部
     - **欧盟** - 西欧
     - **亚太** - 东南亚
 
-- **目标存储帐户** - 所有 Azure 区域都提供了用于存储数据的存储帐户。 
+- **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 
 
-    存储帐户存储 Data Box 数据的区域应该靠近设备所在位置，以获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。 
+    存储帐户存储 Data Box 数据的区域应靠近设备所在位置，以获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。 
 
 
 ## <a name="sign-up"></a>注册

@@ -1,33 +1,29 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略管理 SSO 会话 | Microsoft Docs
+title: 在 Azure Active Directory B2C 中使用自定义策略管理单一登录会话 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 中的自定义策略管理 SSO 会话。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 10/20/2017
+ms.topic: reference
+ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 351b48f2e2766b4974a5a41b5e95acfbd63dbfc9
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: bd41ce5ba0cc738c1fd0d61d080e63753706f975
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443216"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377406"
 ---
-# <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C：单一登录 (SSO) 会话管理
+# <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在用户已完成身份验证后，Azure AD B2C 可让管理员控制 Azure AD B2C 与用户交互的方式。 这是通过 SSO 会话管理实现的。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
-
-## <a name="overview"></a>概述
+使用 Azure Active Directory (Azure AD) B2C 中的单一登录 (SSO) 会话管理，管理员可在用户已通过身份验证之后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
 
 SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方（例如 Facebook）之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 通过 Azure AD B2C 转到外部参与方的路由将被“记住”，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
-
-## <a name="how-does-it-work"></a>工作原理
 
 SSO 会话管理使用的语义，与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
 
@@ -40,16 +36,13 @@ Azure AD B2C 定义了大量可用的 SSO 会话提供程序：
 
 SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManagement ReferenceId=“{ID}" />` 元素指定的。
 
-### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
+## <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
 顾名思义，此提供程序不执行任何操作。 此提供程序可用于抑制特定技术配置文件的 SSO 行为。
 
-### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
+## <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地帐户的技术配置文件中引用。 
-
-> [!NOTE]
-> 使用 DefaultSSOSessionProvider 在会话中存储声明时，需要确保需要返回给应用程序或由后续步骤的前提条件使用的任何声明都存储在会话中或通过读取目录中的用户配置文件进行扩充。 这可确保缺少声明时，身份验证旅程不会失败。
+此提供程序可以用于在会话中存储声明。 此提供程序通常在用于管理本地帐户的技术配置文件中引用。 使用 DefaultSSOSessionProvider 在会话中存储声明时，需要确保需要返回给应用程序或由后续步骤的前提条件使用的任何声明都存储在会话中或通过读取目录中的用户配置文件进行扩充。 这可确保缺少声明时，身份验证旅程不会失败。
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -68,7 +61,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 若要在会话中添加声明，可使用技术配置文件的 `<PersistedClaims>` 元素。 使用提供程序重新填充会话时，持久保存的声明会添加到声明包。 `<OutputClaims>` 用于从会话检索声明。
 
-### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
+## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
 此提供程序用于抑制“选择标识提供者”屏幕。 它通常在针对外部标识提供者（例如 Facebook）配置的技术配置文件中引用。 
 
@@ -79,7 +72,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 </TechnicalProfile>
 ```
 
-### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
+## <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
 此提供程序用于管理应用与外部 SAML 标识提供者之间的 Azure AD B2C SAML 会话。
 
@@ -96,17 +89,10 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 技术配置文件中有两个元数据项：
 
-| Item | 默认值 | 可能的值 | 说明
+| Item | 默认值 | 可能的值 | Description
 | --- | --- | --- | --- |
 | IncludeSessionIndex | 是 | true/false | 向提供程序指出应存储会话索引。 |
 | RegisterServiceProviders | 是 | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |
 
-使用提供程序存储 SAML 标识提供者会话时，上述项应该均为 false。 使用提供程序存储 B2C SAML 会话时，上述项应为 true 或被省略，因为默认值为 true。
-
->[!NOTE]
-> 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
-
-## <a name="next-steps"></a>后续步骤
-
-我们期望获得反馈和建议！ 如果在本主题中遇到任何困难，请使用标记[“azure-ad-b2c”](https://stackoverflow.com/questions/tagged/azure-ad-b2c)在 Stack Overflow 上提问。 另外，请在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)中为功能请求投票。
+使用提供程序存储 SAML 标识提供者会话时，上述项应该均为 false。 使用提供程序存储 B2C SAML 会话时，上述项应为 true 或被省略，因为默认值为 true。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 

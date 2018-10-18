@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/06/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fdd574adf3587f11984bee2a2549d9bcd0c4c0d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: aaa4e4bb24ca42adb9d283e6286dbef879bcb1ea
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125999"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299842"
 ---
 # <a name="azure-data-box-disk-system-requirements-preview"></a>Azure Data Box 磁盘系统要求（预览版）
 
@@ -35,17 +35,29 @@ ms.locfileid: "43125999"
 
 下面是通过连接到 Data Box 磁盘的客户端进行磁盘解锁和数据复制操作所支持的操作系统列表。
 
-| **操作系统/平台** | **版本** |
+| **操作系统** | **测试的版本** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
 | Windows |7, 8, 10 |
-| Windows PowerShell |4.0 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04、16.04、18.04 <br> 8.11、9 <br> 7.0 <br> 6.5、6.9、7.0、7.5 |  
+
+## <a name="other-required-software-for-windows-clients"></a>Windows 客户端所需的其他软件
+
+对于 Windows 客户端，还应安装以下软件。
+
+| **软件**| **版本** |
+| --- | --- |
+| Windows PowerShell |5.0 |
 | .NET framework |4.5.1 |
-| Windows Management Framework |4.0|
+| Windows Management Framework |5.0|
+| BitLocker| - |
 
-> [!NOTE] 
-> 需要在运行磁盘解锁工具并用于复制数据的客户端上启用 BitLocker。
+## <a name="other-required-software-for-linux-clients"></a>Linux 客户端所需的其他软件
 
+对于 Linux 客户端，Data Box Disk 工具集安装以下必需软件：
+
+- dislocker
+- OpenSSL
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 

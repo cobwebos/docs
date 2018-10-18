@@ -1,24 +1,25 @@
 ---
-title: 获取订阅密钥 - 自定义语音服务
-titlesuffix: Azure Cognitive Services
-description: 了解如何获取调用自定义语音服务所需的订阅密钥。
+title: 获取 Azure 上自定义语音服务的订阅密钥 | Microsoft Docs
+description: 了解如何获取调用认知服务中自定义语音服务所需的订阅密钥。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 84ef657af2cc3dc4a7168a815b5e51d6f4f33fd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224749"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338363"
 ---
 # <a name="obtain-subscription-keys"></a>获取订阅密钥
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 若要开始使用 Azure 自定义语音服务，首先需要将用户帐户关联到 Azure 订阅。 订阅适用于免费层和付费层。 若要了解层，请参阅[定价页](https://www.microsoft.com/cognitive-services/en-us/pricing)。
 
 ## <a name="get-a-subscription-key"></a>获取订阅密钥

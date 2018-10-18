@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box 安全性概述 | Microsoft Docs
 description: 介绍了驻留在 Data Box 上的设备、服务和数据中的 Azure Data Box 安全功能
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 26f9cd589a754914a5c7b7ee700f9cefb1421d51
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994985"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092119"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -88,7 +81,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
     - 街道地址
     - 城市
     - 邮政编码
-    - 省/直辖市/自治区
+    - 状态
     - 国家/地区/省/区域
     - 承运商帐号
     - 运输跟踪号
@@ -104,7 +97,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 Data Box 中实现了以下安全准则： 
 
-|准则   |说明   |
+|准则   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](http://www.iec.ch/)    | 防水防尘保护         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |

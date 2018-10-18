@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972285"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302463"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -54,19 +54,17 @@ Pivotal Cloud Foundry 包括与 OSS 分发相同的核心平台，以及一套�
 
 ## <a name="azure-service-broker"></a>Azure 服务中转站
 
-Cloud Foundry 鼓励采用[“十二因素应用”](https://12factor.net/)方法论，因为它可以促进无状态应用程序进程和有状态支持服务的清晰分离。 
-  [服务中转站](https://docs.cloudfoundry.org/services/api.html) 提供向应用程序预配和绑定后台服务一致方法。 [Azure 服务中转站](https://github.com/Azure/meta-azure-service-broker)通过此渠道提供了部分关键 Azure 服务，包括 Azure 存储和 Azure SQL。
+Cloud Foundry 鼓励采用[“十二因素应用”](https://12factor.net/)方法论，因为它可以促进无状态应用程序进程和有状态支持服务的清晰分离。 [服务中转站](https://docs.cloudfoundry.org/services/api.html) 提供向应用程序预配和绑定后台服务一致方法。 [Azure 服务中转站](https://github.com/Azure/meta-azure-service-broker)通过此渠道提供了部分关键 Azure 服务，包括 Azure 存储和 Azure SQL。
 
 如果使用的是 Pivotal Cloud Foundry，也可作从 Pivotal 网络[以磁贴的形式提供](https://docs.pivotal.io/azure-sb/installing.html)服务中转站。
 
 ## <a name="related-resources"></a>相关资源
 
-### <a name="visual-studio-team-services-plugin"></a>Visual Studio Team Services 插件
+### <a name="azure-devops-services-plugin"></a>Azure DevOps Services 插件
 
-Cloud Foundry 非常适合用于开发敏捷软件，其中包括使用持续集成 (CI) 和持续交付 (CD)。 如果使用 Visual Studio Team Services（VSTS）来管理项目，并且希望设置一个面向 Cloud Foundry 的 CI/CD 管道，则可使用 [VSTS Cloud Foundry 生成扩展](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)。 无论是在 Azure 还是在另一环境中运行，都可以通过该插件轻松配置和自动化 Cloud Foundry 的部署。
+Cloud Foundry 非常适合用于开发敏捷软件，其中包括使用持续集成 (CI) 和持续交付 (CD)。 如果使用 Azure DevOps Services 来管理项目，并且希望设置一个面向 Cloud Foundry 的 CI/CD 管道，则可使用 [Azure DevOps Services Cloud Foundry 生成扩展](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)。 无论是在 Azure 还是在另一环境中运行，都可以通过该插件轻松配置和自动化 Cloud Foundry 的部署。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 
-  [部署来自 Azure 市场的 Pivotal Cloud Foundry](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [部署来自 Azure 市场的 Pivotal Cloud Foundry](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [将应用部署到 Azure 中的 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

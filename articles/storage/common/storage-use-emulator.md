@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888077"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052537"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -68,7 +68,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
   也可以使用以下命令，该命令指示模拟器使用默认 SQL Server 实例：
 
-  `AzureStorageEmulator.exe init /server .\\`
+  `AzureStorageEmulator.exe init /server .`
 
   或者，可以使用以下命令将数据库重新初始化为默认的 LocalDB 实例：
 
@@ -93,10 +93,10 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 还可使用 Azure PowerShell 来生成 SAS 令牌。 以下示例会生成可完全访问 blob 容器的 SAS 令牌：
 
 1. 若尚未安装 Azure PowerShell，请进行安装（建议使用最新版 Azure PowerShell cmdlet 安装）。 有关安装说明，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。
-2. 打开 Azure PowerShell 并运行以下命令，将 `ACCOUNT_NAME` 和 `ACCOUNT_KEY==` 替换成自己的凭据，将 `CONTAINER_NAME` 替换为所选名称：
+2. 打开 Azure PowerShell 并运行以下命令，将 `CONTAINER_NAME` 替换为所选名称：
 
 ```powershell
-$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+$context = New-AzureStorageContext -Local
 
 New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
@@ -108,7 +108,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 得到的新容器的共享访问签名 URI 应类似于以下内容：
 
 ```
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
+http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
 此示例中创建的共享访问签名的有效期为一天。 该签名将授予对容器内 Blob 的完整访问权限（读取、写入、删除和列出）。

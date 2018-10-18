@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: a69c129d5ae1405462e3a54a24cd2edbad2a86a7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126771"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297462"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 
@@ -122,7 +122,7 @@ ms.locfileid: "43126771"
 
 ## <a name="deploy-functions-from-visual-studio"></a>从 Visual Studio 部署函数
 
-部署模板将从 `azuredeploy.json` 文件中的变量指定的 Git 存储库，部署解决方案中的所有 Azure 函数。 如果在解决方案中创建和创作了 Functions 项目，可将该项目签入到 Git 源代码管理（例如 GitHub 或 Visual Studio Team Services），然后更新 `repo` 变量，让该模板部署 Azure 函数。
+部署模板将从 `azuredeploy.json` 文件中的变量指定的 Git 存储库，部署解决方案中的所有 Azure 函数。 如果在解决方案中创建和创作了 Functions 项目，可将该项目签入到 Git 源代码管理（例如 GitHub 或 Azure DevOps），然后更新 `repo` 变量，让该模板部署 Azure 函数。
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>管理逻辑应用和查看运行历史记录
 

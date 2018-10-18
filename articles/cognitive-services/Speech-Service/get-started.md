@@ -3,18 +3,18 @@ title: 免费试用语音服务
 description: 了解可以如何免费试用语音服务。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 1615e3a492cd91fb998680094f131db454945303
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.author: erhopf
+ms.openlocfilehash: 7ca423a4953dbe05af119d6b6eb12976c722e374
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182563"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393263"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
@@ -67,7 +67,7 @@ ms.locfileid: "47182563"
 
 若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下步骤：
 
-1. 使用 Microsoft 帐户登录 [Azure 门户](https://ms.portal.azure.com/)。
+1. 使用 Microsoft 帐户登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择门户左上角的“创建资源”。
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Linux 上使用 C# 创建第一个 Azure 微服务应用 | Microsoft 文档
-description: 使用 C# 创建和部署 Service Fabric 应用程序
+title: 在 Linux 上使用 C# 创建第一个 Azure Service Fabric 应用 | Microsoft Docs
+description: 了解如何使用 C# 和 .NET Core 2.0 创建和部署 Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 7427af3e814752801c4738675f7cd2263843f9b8
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e917119e2d0f9b7b5cfa9ea145cc6e540486ac66
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617080"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052590"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]

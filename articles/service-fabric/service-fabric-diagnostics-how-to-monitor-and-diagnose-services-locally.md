@@ -1,5 +1,5 @@
 ---
-title: 调试 Windows 中的 Azure 微服务 | Microsoft Docs
+title: 在 Windows 中调试 Azure Service Fabric 应用 | Microsoft Docs
 description: 了解如何监视和诊断本地开发计算机上使用 Microsoft Azure Service Fabric 编写的服务。
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93cf4985e94c0af480d9f4e2e38b792cffe4df6e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206175"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054161"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]

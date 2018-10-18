@@ -3,19 +3,19 @@ title: 快速入门：分析远程图像 - REST、cURL - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 cURL 分析远程图像。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 51122da84e3845bba4919e4f2b2e46d513bbb3f4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 04ad5ff2e148a5f5469cd13ce6106e6466d645b3
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633480"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344024"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 cURL 分析远程图像
 
@@ -38,7 +38,7 @@ ms.locfileid: "45633480"
     1. 如有必要，请将请求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) 替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
     1. （可选）更改请求 URL (`language=en`) 的语言参数以使用其他支持的语言。
     1. （可选）将请求正文中的图像 URL (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) 更改为要分析的其他图像的 URL。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 将文本编辑器中的命令粘贴到命令提示符窗口，然后运行命令。
 
 ```console
@@ -47,7 +47,7 @@ curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: applica
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

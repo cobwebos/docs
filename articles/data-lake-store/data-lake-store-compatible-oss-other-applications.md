@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4a0b3272bc0e4711c555bec17411960aad5a3f16
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029632"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391194"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的开源大数据应用程序
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-本文列出了用于 Azure Data Lake Store 的开放源代码大数据应用程序。 对于下表中的应用程序，仅支持所列分配可用的版本。 有关 HDInsight 可用的应用程序版本，请参阅 [HDInsight 组件版本](../hdinsight/hdinsight-component-versioning.md)。
+本文列出了用于 Azure Data Lake Storage Gen1 的开放源代码大数据应用程序。 对于下表中的应用程序，仅支持所列分配可用的版本。 有关 HDInsight 可用的应用程序版本，请参阅 [HDInsight 组件版本](../hdinsight/hdinsight-component-versioning.md)。
 
 | 开放源代码软件 | 分发 |
 | --- | --- |

@@ -2,24 +2,20 @@
 title: Azure Functions 的外部文件绑定（实验性）
 description: 在 Azure Functions 中使用外部文件绑定
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 4e9c2c336df465d7488de84bd2a02cc5d9e42f30
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27607915"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093764"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions 外部文件绑定（实验性）
 本文演示如何在 Azure Functions 中通过不同 SaaS 提供程序（例如 Dropbox 或 Google Drive）处理文件。 Azure Functions 支持外部文件的触发器、输入和输出绑定。 这些绑定会创建与 SaaS 提供程序的 API 连接，或使用 Function App 的资源组中的现有 API 连接。
@@ -59,7 +55,7 @@ ms.locfileid: "27607915"
 
 以下示例演示 *function.json* 文件中的一个外部文件触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数记录添加到受监视文件夹中每个文件的内容。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -89,7 +85,7 @@ public static void Run(string myFile, TraceWriter log)
 
 以下示例演示 *function.json* 文件中的一个外部文件触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数记录添加到受监视文件夹中每个文件的内容。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -117,13 +113,13 @@ module.exports = function(context) {
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。
 
-|function.json 属性 | 说明|
+|function.json 属性 | Description|
 |---------|---------|----------------------|
-|**类型** | 必须设置为 `apiHubFileTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 在函数代码中表示事件项的变量的名称。 | 
+|type | 必须设置为 `apiHubFileTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name | 在函数代码中表示事件项的变量的名称。 | 
 |**连接**| 标识存储连接字符串的应用设置。 在 Azure 门户的集成 UI 中添加连接时，会自动创建应用设置。|
 |**路径** | 要监视的文件夹和（可选）名称模式。|
 
@@ -131,7 +127,7 @@ module.exports = function(context) {
 
 可以在 `path` 属性中指定文件名模式。 所引用的文件夹必须位于 SaaS 提供程序中。
 
-示例:
+示例：
 
 ```json
 "path": "input/original-{name}",
@@ -162,7 +158,7 @@ module.exports = function(context) {
 "path": "images/{{20140101}}-{name}",
 ```
 
-此路径将在 images 文件夹中查找名为 {20140101}-soundfile.mp3 的文件，函数代码中的 `name` 变量值将为 soundfile.mp3。
+此路径会在“images”文件夹中查找名为“{20140101}-soundfile.mp3”的文件，函数代码中的 `name` 变量值将为“soundfile.mp3”。
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
@@ -225,7 +221,7 @@ Azure 外部文件输入绑定允许在函数中使用外部文件夹中的文�
 
 以下示例演示 *function.json* 文件中的外部文件输入和输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将一个输入文件复制到输出文件。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -270,7 +266,7 @@ public static void Run(string myQueueItem, string myInputFile, out string myOutp
 
 以下示例演示 *function.json* 文件中的外部文件输入和输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将一个输入文件复制到输出文件。
 
-下面是 *function.json* 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -313,13 +309,13 @@ module.exports = function(context) {
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。
 
-|function.json 属性 | 说明|
+|function.json 属性 | Description|
 |---------|---------|----------------------|
-|**类型** | 必须设置为 `apiHubFile`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 在函数代码中表示事件项的变量的名称。 | 
+|type | 必须设置为 `apiHubFile`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name | 在函数代码中表示事件项的变量的名称。 | 
 |**连接**| 标识存储连接字符串的应用设置。 在 Azure 门户的集成 UI 中添加连接时，会自动创建应用设置。|
 |**路径** | 必须包含文件夹名称和文件名。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 文件夹中的一个文件，其名称与触发器消息中指定的文件名相匹配。   
 
@@ -351,13 +347,13 @@ Azure 外部文件输出绑定使你能够在函数中将文件写入外部文�
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 *function.json* 文件中设置的绑定配置属性。
+下表解释了在 function.json 文件中设置的绑定配置属性。
 
-|function.json 属性 | 说明|
+|function.json 属性 | Description|
 |---------|---------|----------------------|
-|**类型** | 必须设置为 `apiHubFile`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 在函数代码中表示事件项的变量的名称。 | 
+|type | 必须设置为 `apiHubFile`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name | 在函数代码中表示事件项的变量的名称。 | 
 |**连接**| 标识存储连接字符串的应用设置。 在 Azure 门户的集成 UI 中添加连接时，会自动创建应用设置。|
 |**路径** | 必须包含文件夹名称和文件名。 例如，如果函数中有[队列触发器](functions-bindings-storage-queue.md)，可以使用 `"path": "samples-workitems/{queueTrigger}"` 指向 `samples-workitems` 文件夹中的一个文件，其名称与触发器消息中指定的文件名相匹配。   
 

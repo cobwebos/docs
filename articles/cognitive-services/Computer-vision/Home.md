@@ -3,19 +3,19 @@ title: 什么是计算机视觉 API？
 titlesuffix: Azure Cognitive Services
 description: 使用计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
-ms.author: v-deken
-ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.author: pafarley
+ms.openlocfilehash: 03cf2fab1200cd617f456a6fcfb9067673d01a19
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869340"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340896"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 

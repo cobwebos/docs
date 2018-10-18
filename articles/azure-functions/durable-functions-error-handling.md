@@ -3,23 +3,19 @@ title: 处理 Durable Functions 中的错误 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理错误。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 04/30/2018
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763299"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377899"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -29,7 +25,7 @@ Durable Function 业务流程采用代码实现，并可使用编程语言的错
 
 活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `FunctionFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
 
-例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转到另一帐户：
+例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转移到另一帐户：
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -72,7 +68,7 @@ public static async Task Run(DurableOrchestrationContext context)
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 
-调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例试图调用某函数多达 3 次，且每次重试之间等待时间 5 秒：
+调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例尝试调用某个函数多达 3 次，且每次重试之间等待 5 秒：
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -96,7 +92,7 @@ public static async Task Run(DurableOrchestrationContext context)
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
 * **最大重试间隔**：每次重试之间需要等待的最大时间。
 * **重试超时**：执行重试的最大时间。 默认行为是可无限期重试。
-* **自定义**：可指定用户定义的回退，确定是否应该重试函数调用。
+* **处理**：可指定用户定义的回退，确定是否应该重试函数调用。
 
 ## <a name="function-timeouts"></a>函数超时
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 55a271e49977feb6d8e5c188f1724b66db4cb4f5
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a7d77df4d6be1572d2076684cfa4702cb32b5ed6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140823"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户的集成
 
@@ -317,6 +317,9 @@ ms.locfileid: "42140823"
 27. 创建组后，请选择该组并分配到应用程序。
 
     ![配置单一登录 Add](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+
+> [!Note]
+> 分配组时不支持嵌套组。
 
 28. 若要将角色分配到组，请选择该角色，然后单击页面底部的“分配”按钮。
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223661"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023345"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
@@ -44,10 +44,11 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 
 * 主题：桌面背景、用户磁贴、任务栏位置等。 
 * Internet Explorer 设置：浏览历史记录、键入的 URL、收藏夹等。 
-* 密码：[Windows 凭据保险箱](https://technet.microsoft.com/library/jj554668.aspx)，包括 Wi-Fi 配置文件 
+* 密码：Windows 凭据管理器，包括 Wi-Fi 配置文件 
 * 语言首选项：拼写字典、系统语言设置 
 * 轻松访问：讲述人、屏幕键盘、放大镜 
 * 其他 Windows 设置：请参阅 Windows 设置详细信息
+* Edge 浏览器设置：Microsoft Edge 收藏夹、读取列表和其他设置
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,7 +74,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **应用数据**：单个应用可同步数据 |同步备份 |同步备份 |内部 |
 | **应用列表**：已安装应用的列表 |X |backup |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
-| **命令提示符**：命令提示符“Defaults”设置 |sync |X | |
+| **命令提示符**：命令提示符“Defaults”设置 |sync |X |内部 |
 | **凭据**：凭据保险箱 |sync |sync |password |
 | **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |语言 |
 | **日期、时间和区域**：24 小时制 |sync |X |语言 |

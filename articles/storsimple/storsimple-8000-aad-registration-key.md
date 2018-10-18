@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: e6e792c31f9856bcaf1d777e534dcac8d8be3dd3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113521"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387032"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>将新身份验证用于 StorSimple
 
@@ -28,7 +28,7 @@ ms.locfileid: "37113521"
 StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 迄今为止，StorSimple 设备管理器服务使用访问控制服务 (ACS) 面向 StorSimple 设备对服务进行身份验证。 ACS 机制即将弃用，会替换为 Azure Active Directory (AAD) 身份验证。 有关详细信息，请转到有关 ACS 弃用以及使用 AAD 身份验证的以下公告。
 
 - [Azure ACS 的未来是 Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/12/the-future-of-azure-acs-is-azure-active-directory/)
-- [对 Microsoft 访问控制服务即将进行的更改](https://azure.microsoft.com/en-in/blog/acs-access-control-service-namespace-creation-restriction/)
+- [对 Microsoft 访问控制服务即将进行的更改](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/)
 
 本指南介绍 AAD 身份验证和关联的新服务注册密钥以及适用于 StorSimple 设备的防火墙规则修改的详细信息。 本文中包含的信息仅适用于 StorSimple 8000 系列设备。
 

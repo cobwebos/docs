@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841412"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299043"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -31,26 +31,26 @@ ms.locfileid: "30841412"
 
 可通过几种方式在 Azure 上创建 Cloud Foundry 环境：
 
-- 使用 Azure Marketplace 中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署应用商店产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
+- 使用 Azure 市场中的 [Pivotal Cloud Foundry 产品][pcf-azuremarketplace]创建包括 PCF Ops Manager 和 Azure Service Broker 的标准环境。 可在 Pivotal 文档中找到有关部署市场产品的[完整说明][pcf-azuremarketplace-pivotaldocs]。
 - 通过[手动部署 Pivotal Cloud Foundry ][pcf-custom]创建自定义环境。
 - 通过设置 [BOSH](http://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
-> 如果要从 Azure Marketplace 部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，应用商店部署指南中对两者都有介绍。 完成本教程也需要它们。 在 Marketplace 部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
+> 如果要从 Azure 市场部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，市场部署指南中对两者都有介绍。 完成本教程也需要它们。 在市场部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 
 云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在本例中，通过 [Cloud Foundry CLI][cf-cli] 与其进行交互。 可以在 Linux 、MacOS 或 Windows 上安装 CLI，但如果不想安装，可将其预安装在 [Azure Cloud Shell][cloudshell-docs] 中。
 
-若要登录，请将 `api` 追加到从应用商店部署中获得的 SYSTEMDOMAINURL 中。 由于默认部署使用自签名证书，因此还应设置 `skip-ssl-validation` 开关。
+若要登录，请将 `api` 追加到从市场部署中获得的 SYSTEMDOMAINURL 中。 由于默认部署使用自签名证书，因此还应设置 `skip-ssl-validation` 开关。
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-系统将提示登录云控制器。 使用从应用商店部署步骤获取的管理员帐户凭据。
+系统将提示登录云控制器。 使用从市场部署步骤获取的管理员帐户凭据。
 
-Cloud Foundry 提供组织和空间作为命名空间，隔离共享部署中的团队和环境。 PCF 应用商店部署包括默认值系统组织和一组用于包含自动缩放服务和 Azure Service Broker 等基本组件的空间。 目前选择系统空间。
+Cloud Foundry 提供组织和空间作为命名空间，隔离共享部署中的团队和环境。 PCF 市场部署包括默认值系统组织和一组用于包含自动缩放服务和 Azure Service Broker 等基本组件的空间。 目前选择系统空间。
 
 
 ## <a name="create-an-org-and-space"></a>创建组织和空间
@@ -145,7 +145,7 @@ cf scale -i 2 hello-spring-cloud
 ## <a name="next-steps"></a>后续步骤
 
 - [阅读 Cloud Foundry 文档 ][cloudfoundry-docs]
-- [为 Cloud Foundry 安装 Visual Studio Team Services 插件 ][vsts-plugin]
+- [为 Cloud Foundry 安装 Azure DevOps Services 插件][vsts-plugin]
 - [为 Cloud Foundry 配置 Microsoft Log Analytics Nozzle ][loganalytics-nozzle]
 
 <!-- LINKS -->

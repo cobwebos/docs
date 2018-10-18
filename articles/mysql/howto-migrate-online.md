@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: ecbd35bd45bd11292bbe4a032329d704858d4c77
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 55d5cf97225508d6c7c490347cfe21ced832300e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293915"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091707"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>在最短的停机时间内迁移到 Azure Database for MySQL
 可以使用为 [Azure 数据库迁移服务](https://aka.ms/get-dms) (DMS) 新引入的**连续同步功能**以最短停机时间执行 MySQL 到 Azure Database for MySQL 的迁移。 此功能可限制应用程序引起的停机时间量。
@@ -24,8 +24,8 @@ DMS 将本地内容初始加载到 Azure Database for MySQL，然后在应用程
 
 ![使用 Azure 数据库迁移服务进行连续同步](./media/howto-migrate-online/ContinuousSync.png)
 
-MySQL 源的 DMS 迁移当前处于预览状态。 如果想要试用用于迁移 MySQL 工作负荷的服务，请通过 Azure DMS [预览页](https://aka.ms/dms-preview)注册以表达你的兴趣。 你的反馈对于帮助进一步改进服务非常重要。
+- MySQL 源的 DMS 迁移当前处于公开预览状态。 如果想要试用迁移 MySQL 工作负载的服务，请继续访问门户。 你的反馈对于帮助进一步改进服务非常重要。
 
 ## <a name="next-steps"></a>后续步骤
 - 观看视频[轻松将 MySQL/PostgreSQL 应用迁移到 Azure 托管服务](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201)，其中包含一个演示，演示如何将 MySQL 应用迁移到 Azure Database for MySQL。
-- 通过 Azure DMS [预览页](https://aka.ms/dms-preview)，注册 MySQL 到 Azure Database for MySQL 的最短停机时间迁移的有限预览版。
+- [使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL] (https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)。

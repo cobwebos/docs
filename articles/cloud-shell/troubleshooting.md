@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 089c623ff2c53a59c60c3fe1a53876c16a5353dd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141030"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159009"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -34,15 +34,13 @@ ms.locfileid: "42141030"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用对 `ux.console.azure.com` 域的访问（可被拒绝），停止对 Cloud Shell入口点的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用对 `ux.console.azure.com` 域的访问（可被拒绝），停止对 Cloud Shell 入口点的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。
 - **解决方案**：通过环境的网络设置限制对 `ux.console.azure.com` 的访问权限。 Cloud Shell 图标仍将存在于 portal.azure.com 中，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- 
-  **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- 
-  **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
 
@@ -107,7 +105,7 @@ Cloud Shell 支持以下最新版本的浏览器：
 
 ### <a name="copy-and-paste"></a>复制和粘贴
 
-[!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
+[!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
 

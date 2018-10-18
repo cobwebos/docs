@@ -1,7 +1,7 @@
 
 ## <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
 
-Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 Cloud Shell 中预安装并配置了常用 Azure 工具供你与帐户一起使用。 只需选择“复制”按钮即可复制代码，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 可以通过多种方式打开 Cloud Shell，你可以选择其中任一种方式打开 Cloud Shell：
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 Cloud Shell 中预安装并配置了常用 Azure 工具供你与帐户一起使用。 只需选择“复制”按钮即可复制代码，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 可通过多种方式打开 Cloud Shell：
 
 |  |   |
 |-----------------------------------------------|---|

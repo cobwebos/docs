@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a9a6e513d95df5dafba82556f74ec209529ff58d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294905"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298636"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -152,7 +152,7 @@ Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正
 在调试期间，可以选择将遥测数据保留在开发计算机中，并在 Visual Studio 中查看这些数据，而无需将其发送到门户。 这个本地选项可避免将调试遥测数据与生产遥测数据混合使用。
 
 ### <a name="build-annotations"></a>版本批注
-如果使用 Visual Studio Team Services 构建和部署应用，部署批注会显示在门户中的图表上。 如果最新版本对指标产生了任何影响，这种影响会变得很明显。
+如果使用 Azure DevOps 构建和部署应用，部署批注会显示在门户中的图表上。 如果最新版本对指标产生了任何影响，这种影响会变得很明显。
 
 ![版本批注](./media/app-insights-devops/070.png)
 

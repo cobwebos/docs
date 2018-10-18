@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3bd77891cc7508eeb1fee2152d37478c654a7e37
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206134"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294685"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric 模式和方案
 如果希望使用 Azure Service Fabric 构建大规模微服务，可向设计和构建了此平台即服务 (PaaS) 的专家学习。 从正确的体系结构开始，了解如何针对应用程序优化资源。 [Service Fabric 模式和实践](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)课程回答了实际客户在 Service Fabric 方案和应用程序领域方面的最常见问题。
@@ -72,7 +72,7 @@ ms.locfileid: "34206134"
 </table>
 
 ## <a name="continuous-delivery"></a>持续交付
-探索概念，包括 Visual Studio Team Services、生成/打包/发布工作流、多环境设置和服务包/共享的持续集成/交付。
+探索概念，包括使用 Azure Pipelines 进行的持续集成/交付、生成/打包/发布工作流、多环境设置和服务包/共享。
 
 <table><tr><th>视频</th><th>PowerPoint 幻灯片</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=78h5ofSGD_305167344">

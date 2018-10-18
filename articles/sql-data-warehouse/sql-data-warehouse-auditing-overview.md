@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288248"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318531"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
 
@@ -112,7 +112,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
-###<a name="server-level-policy-audit-logs"></a>服务器级策略审核日志
+### <a name="server-level-policy-audit-logs"></a>服务器级策略审核日志
 服务器级审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。 它们以 blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。
 
 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
@@ -147,7 +147,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>数据库级策略审核日志
+### <a name="database-level-policy-audit-logs"></a>数据库级策略审核日志
 数据库级审核日志会在设置期间选择的 Azure 存储帐户中前缀为 **SQLDBAuditLogs** 的一系列存储表内进行聚合。 可以使用工具（比如 [Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com)）查看日志文件。
 
 可以借助以[可下载 Excel 电子表格](http://go.microsoft.com/fwlink/?LinkId=403540)形式提供的预配置仪表板报告模板来快速分析日志数据。 若要对审核日志使用模板，需要安装 Excel 2013 或更高版本以及 Power Query（可[从此处下载](http://www.microsoft.com/download/details.aspx?id=39379)）。

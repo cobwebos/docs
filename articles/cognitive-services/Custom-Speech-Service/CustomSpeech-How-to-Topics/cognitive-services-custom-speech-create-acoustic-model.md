@@ -1,24 +1,24 @@
 ---
-title: 教程：创建声学模型 - 自定义语音服务
-titlesuffix: Azure Cognitive Services
-description: 本教程介绍如何使用自定义语音服务创建声学模型。
+title: 教程：使用自定义语音服务创建声学模型 - Microsoft 认知服务 | Microsoft Docs
+description: 本教程介绍如何在 Microsoft 认证服务中使用自定义语音服务创建声学模型。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220196"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344568"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>教程：创建自定义声学模型
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 在本教程中，将为你希望应用程序能够识别的语音数据创建自定义声学模型。 如果应用程序设计用于特定的环境（例如嘈杂工厂）或特定的用户群，则创建自定义声学模型会很有帮助。
 
@@ -140,4 +140,4 @@ ms.locfileid: "47220196"
 在本教程中，已开发了一个用于音频文件和脚本的自定义声学模型。 若要创建用于文本文件的自定义语言文件，请继续阅读有关创建自定义语言模型的教程。
 
 > [!div class="nextstepaction"]
-> [创建自定义声学模型](cognitive-services-custom-speech-create-language-model.md)
+> [创建自定义语言模型](cognitive-services-custom-speech-create-language-model.md)

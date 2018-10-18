@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9d2fa8ec96f629ff85d785897398bc9af52ab3bc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985433"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165753"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B 协作代码和 PowerShell 示例
 
@@ -34,14 +34,14 @@ ms.locfileid: "45985433"
 
 3. 登录到租户
 
-    ```
+    ```powershell
     $cred = Get-Credential
     Connect-AzureAD -Credential $cred
     ```
 
 4. 运行 PowerShell cmdlet
 
-  ```
+  ```powershell
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
   $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
@@ -56,7 +56,7 @@ ms.locfileid: "45985433"
 ## <a name="code-sample"></a>代码示例
 下面将演示如何调用邀请 API，在“仅应用”模式下，获取要邀请 B2B 用户加入的资源的兑换 URL。 目标是发送自定义邀请电子邮件。 可使用 HTTP 客户端撰写电子邮件，以便自定义其外观并通过图形 API 发送。
 
-```
+```csharp
 namespace SampleInviteApp
 {
     using System;

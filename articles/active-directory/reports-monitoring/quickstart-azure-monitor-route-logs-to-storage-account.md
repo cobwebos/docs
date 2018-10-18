@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 08e4525e7dcf8edafc8819416b9d77e76fd78a65
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363422"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394232"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "46363422"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 
 * 一个具有 Azure 存储帐户的 Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
@@ -77,4 +77,4 @@ ms.locfileid: "46363422"
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
-* [常见问题解答和已知的问题](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

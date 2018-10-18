@@ -10,15 +10,17 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: fd974d153e9db48b25c1b732b9719c21b16b5e01
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948768"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341134"
 ---
 # <a name="what-is-translator-speech-api"></a>什么是语音翻译 API？
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 不管目标 OS 或开发语言是什么，都可以使用语音翻译 API 将端到端的实时语音翻译添加到需要多语言语音翻译的应用程序、工具或任何解决方案。 该 API 可用于“语音转语音”和“语音转文本”翻译。
 
 文本翻译 API 是一个 Azure 服务，属于云中机器学习和 AI 算法的 [Azure 认知服务 API 集合](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)，随时可在开发项目中使用。

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9a22b14df18e10342bb2a872b82b94ab4ea62d0a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859861"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163271"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -42,9 +42,7 @@ Cloud Shell 通过以下两种方法持久保存文件：
 #### <a name="prerequisites-for-manual-mounting"></a>手动装载的先决条件
 可使用 `clouddrive mount` 命令更新与 Cloud Shell 相关联的文件共享。
 
-如果装载现有的文件共享，则存储帐户必须：
-* 是支持文件共享的本地冗余存储或异地冗余存储。
-* 位于分配的区域中。 在装入时，被分配到的区域将列在资源组名称 `cloud-shell-storage-<region>` 中。
+如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过从 Bash 运行 `env` 并检查 `ACC_LOCATION` 来检索位置。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 

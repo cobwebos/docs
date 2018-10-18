@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9d2043808cbd61d5e2a69cbe0f2a5a611e3afa31
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 86ab49cb0acd9ffee47fb1f8f531c3a0cd6e6730
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34839752"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297955"
 ---
 # <a name="team-lead-tasks"></a>团队主管任务
 
@@ -29,11 +29,11 @@ ms.locfileid: "34839752"
 
 ![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
->[AZURE.NOTE] 如果使用 Visual Studio Team Services (VSTS) 作为代码托管平台并且希望为你自己的团队创建一个单独的团队项目，则图中的块 1 和块 2 中的任务是必需的。 完成这些任务后，可以在此团队项目下创建你的团队的所有存储库。 
+>[AZURE.NOTE] 如果使用 Azure DevOps 作为代码托管平台并且希望为你自己的团队创建一个单独的 Azure DevOps 项目，则图中的块 1 和块 2 中的任务是必需的。 完成这些任务后，可在此项目下创建你的团队的所有存储库。 
 
 在组管理员使下面部分中指定的几个先决条件任务得以满足后，本教程中还有五个重要任务需要完成（有些是可选的）。 这些任务对应于本主题中主要的带编号部分：
 
-1. 在组的 VSTS 服务器上创建一个**团队项目**并在该项目中创建两个团队存储库：
+1. 在组的 Azure DevOps Services 上创建一个**项目**并在该项目中创建两个团队存储库：
     - **ProjectTemplate 存储库** 
     - **TeamUtilities 存储库**
 2. 从组管理员已设置的 **GroupProjectTemplate** 存储库中将团队 **ProjectTemplate** 存储库设为种子。 
@@ -43,76 +43,76 @@ ms.locfileid: "34839752"
 4. （可选）将 Azure 文件存储装载到团队主管的 **数据科学虚拟机** (DSVM) 并在其上添加数据资产。
 5. 设置**安全控制**，方法是添加团队成员并配置其权限。
 
->[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
+>[AZURE.NOTE] 我们在以下说明中概述了使用 Azure DevOps 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 ## <a name="repositories-and-directories"></a>存储库和目录
 
 本主题使用了存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（**R** 表示 Git 存储库，**D** 表示 DSVM 上的本地目录）：
 
-- **R1**：组管理员在 Git 上在 VSTS 组服务器上设置的 **GroupProjectTemplate** 存储库。
+- **R1**：组管理员在 Git 上在 Azure DevOps 组服务器上设置的 **GroupProjectTemplate** 存储库。
 - **R3**：你在 Git 上设置的团队 **ProjectTemplate** 存储库。
 - **R4**：你在 Git 上设置的 **TeamUtilities** 存储库。
 - **D1**：从 R1 克隆的并复制到 D3 的本地目录。
 - **D3**：从 R3 克隆的、进行了自定义并复制回 R3 的本地目录。
 - **D4**：从 R4 克隆的、进行了自定义并复制回 R4 的本地目录。
 
-在本教程中为存储库和目录指定的名称是基于以下假设提供的：你的目标是在一个较大的数据科学组中为你自己的团队建立一个单独的团队项目。 但是，作为团队主管，你还有其他选择：
+在本教程中为存储库和目录指定的名称是基于以下假设提供的：你的目标是在一个较大的数据科学组中为你自己的团队建立一个单独的项目。 但是，作为团队主管，你还有其他选择：
 
-- 整个组可以选择创建单个团队项目。 来自所有数据科学团队的所有项目都将位于此单个团队项目下。 为实现此目的，你可以指定一个 git 管理员来按照这些说明创建单个团队项目。 例如，此方案对于以下数据科学组可能有效：
+- 整个组可以选择创建单个项目。 来自所有数据科学团队的所有项目都将位于此单个项目下。 为实现此目的，你可以指定一个 git 管理员来按照这些说明创建单个项目。 例如，此方案对于以下数据科学组可能有效：
     -  没有多个数据科学团队的小型数据科学组 
     -  具有多个数据科学团队的较大型数据科学组，不过，该科学组希望通过组级冲刺规划等活动来优化团队间协作 
-- 团队可以选择将团队特定的项目模板或团队特定的实用程序放置到整个组的单个团队项目下。 在这种情况下，团队主管应当在同一团队项目下创建团队项目模板存储库和/或团队实用程序存储库。 将这些存储库命名为 *<TeamName\>ProjectTemplate* 和 *<TeamName\>Utilities*，例如 *TeamJohnProjectTemplate* 和 *TeamJohnUtilities*。 
+- 团队可以选择将团队特定的项目模板或团队特定的实用工具放置到整个组的单个项目下。 在这种情况下，团队主管应当在同一项目下创建项目模板存储库和/或团队实用工具存储库。 将这些存储库命名为 *<TeamName\>ProjectTemplate* 和 *<TeamName\>Utilities*，例如 *TeamJohnProjectTemplate* 和 *TeamJohnUtilities*。 
 
-在任何情况下，团队主管都需要让其团队成员知道在设置和克隆项目与实用程序存储库时要采用哪些模板和实用程序存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的团队项目下或者在单个团队项目下创建项目存储库。 
+在任何情况下，团队主管都需要让其团队成员知道在设置和克隆项目与实用程序存储库时要采用哪些模板和实用程序存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
 
 ## <a name="0-prerequisites"></a>0.先决条件
 
 通过完成[数据科学团队组管理员的任务](group-manager-tasks.md)中介绍的分配给组管理员的任务来满足先决条件。 在此处汇总一下，在开始执行团队主管任务之前，需要满足以下要求： 
 
-- 组管理员已设置**组 VSTS 服务器**（或其他某个代码托管平台上的组帐户）。
+- 组管理员已设置**组 Azure DevOps Services**（或其他某个代码托管平台上的组帐户）。
 - 组管理员已在计划使用的代码托管平台上你的组帐户下设置了 **GroupProjectTemplate 存储库** (R1)。
 - 已在你的组帐户中**授权**你为团队创建存储库。
 - 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
 - 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 随后会转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
-- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
+- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
     
-## <a name="1-create-a-team-project-and-repositories"></a>1.创建团队项目和存储库
+## <a name="1-create-a-project-and-repositories"></a>1.创建项目和存储库
 
-如果使用 VSTS 作为代码托管平台来进行版本控制和协作，请完成此步骤。 在本部分中，还需要在组的 VSTS 服务器中创建三个项目：
+如果使用 Azure DevOps 作为代码托管平台来进行版本控制和协作，请完成此步骤。 在本部分中，还需要在组的 Azure DevOps Services 中创建三个项目：
 
-- VSTS 中的 **MyTeam** 项目
+- Azure DevOps 中的 **MyTeam** 项目
 - Git 上的 **MyProjectTemplate** 存储库 (**R3**)
 - Git 上的 **MyTeamUtilities** 存储库 (**R4**)
 
 ### <a name="create-the-myteam-project"></a>创建 MyTeam 项目
 
-- 转到组的 VSTS 服务器主页，URL 为 `https://<VSTS Server Name\>.visualstudio.com`。 
-- 单击“新建”创建团队项目。 
+- 通过 URL `https://<Azure DevOps Services Name\>.visualstudio.com` 转到组的 Azure DevOps Services 主页。 
+- 单击“新建”创建项目。 
 
     ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
-- “创建团队项目”窗口会要求 输入项目名称（在此示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。 
+- “创建项目”窗口会提示你输入项目名称（在本示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。 
 
     ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
 
-- 单击“创建项目”。 团队项目 **MyTeam** 将在 1 分钟内完成创建。 
+- 单击“创建项目”。 项目 **MyTeam** 将在 1 分钟内完成创建。 
 
-- 在创建团队项目 **MyTeam** 后，单击“导航到项目”按钮，以定向到团队项目的主页。 
+- 在创建项目 **MyTeam** 后，单击“导航到项目”按钮，以定向到项目的主页。 
 
     ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
 
-- 如果看到“祝贺你！” 弹出窗口，请单击“添加代码” （红色框中的按钮）。 否则，请单击“代码”（在黄色框中）。 这会定向到团队项目的 Git 存储库页面。 
+- 如果看到“祝贺你！” 弹出窗口，请单击“添加代码” （红色框中的按钮）。 否则，请单击“代码”（在黄色框中）。 这会定向到项目的 Git 存储库页面。 
 
     ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
 
 ### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>在 Git 上创建 MyProjectTemplate 存储库 (R3)
 
-- 在团队项目的 Git 存储库页面上，单击存储库名称“MyTeam”旁边的向下箭头，然后选择“管理存储库...”。
+- 在项目的 Git 存储库页面上，单击存储库名称“MyTeam”旁边的向下箭头，然后选择“管理存储库...”。
 
     ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
 
-- 在团队项目的控制面板的“版本控制”选项卡上，单击“MyTeam”，然后选择“重命名存储库...”。 
+- 在项目的控制面板的“版本控制”选项卡上，单击“MyTeam”，然后选择“重命名存储库...”。 
 
     ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "34839752"
 
 ### <a name="create-the-myteamutilities-repository-r4-on-git"></a>在 Git 上创建 MyTeamUtilities 存储库 (R4)
 
-- 若要在团队项目下创建新存储库 *<你的团队名称\>Utilities*，请在团队项目的控制面板的“版本控制”选项卡上单击“新建存储库...”。  
+- 若要在项目下创建新存储库 *<你的团队名称\>Utilities*，请在项目的控制面板的“版本控制”选项卡上单击“新建存储库...”。  
 
     ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "34839752"
 
     ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
 
-- 确认看到在团队项目“MyTeam”下创建了两个新的 Git 存储库。 在本示例中： 
+- 确认看到在项目“MyTeam”下创建了两个新的 Git 存储库。 在本示例中： 
 
 - **MyTeamProjectTemplate** (R3) 
 - **MyTeamUtilities** (R4)。
@@ -138,7 +138,7 @@ ms.locfileid: "34839752"
     ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
 
-## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2.将团队 ProjectTemplate 和 TeamUtilities 存储库设为种子
+## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2.将 ProjectTemplate 和 TeamUtilities 存储库设为种子
 
 种子设定过程使用本地 DSVM 上的目录作为中间暂存站点。 如果需要自定义“ProjectTemplate”和“TeamUtilities”存储库以满足某些特定的团队需求，请在以下过程的倒数第二个步骤中进行自定义。 下面摘要列出了用来将数据科学团队的 **MyTeamProjectTemplate** 和 **MyTeamUtilities** 存储库内容设为种子的步骤。 各个步骤对应于种子设定过程中的各个小节：
 
@@ -151,7 +151,7 @@ ms.locfileid: "34839752"
 
 ### <a name="initialize-the-team-repositories"></a>初始化团队存储库
 
-在此步骤中，将基于组项目模板存储库初始化团队项目模板存储库：
+在此步骤中，将基于组项目模板存储库初始化项目模板存储库：
 
 - 基于 **GroupProjectTemplate** (**R1**) 存储库初始化 **MyTeamProjectTemplate** 存储库 (**R3**)
 
@@ -168,45 +168,45 @@ ms.locfileid: "34839752"
 
 **Windows**
 
-    git clone https://<Your VSTS Server name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
     
 
 ![12](./media/team-lead-tasks/team-leads-12-create-two-group-repos.png)
 
 **Linux**
     
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
     
     
 ![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
 
-这些命令将组 VSTS 服务器上的 **GroupProjectTemplate** (R1) 存储库克隆到本机计算机上的 **GitRepos\GroupCommon** 中的本地目录。 在克隆后，会在 **GitRepos\GroupCommon** 目录中创建 **GroupProjectTemplate** (D1) 目录。 此处，我们假定组管理员已创建了一个团队项目 **GroupCommon**，并且 **GroupProjectTemplate** 存储库位于此团队项目下。 
+这些命令将组 Azure DevOps Services 上的 **GroupProjectTemplate** (R1) 存储库克隆到本机计算机上的 **GitRepos\GroupCommon** 中的本地目录。 在克隆后，会在 **GitRepos\GroupCommon** 目录中创建 **GroupProjectTemplate** (D1) 目录。 此处，我们假定组管理员已创建了一个项目 **GroupCommon**，并且 **GroupProjectTemplate** 存储库位于此项目下。 
 
 
 ### <a name="clone-your-team-repositories-into-local-directories"></a>将团队存储库克隆到本地目录中
 
-这些命令将组 VSTS 服务器上的团队项目 **MyTeam** 下的 **MyTeamProjectTemplate** (R3) 和 **MyTeamUtilities** (R4) 存储库克隆到本地计算机上 **GitRepos\MyTeam** 中的 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 目录中。 
+这些命令将组 Azure DevOps Services 上的项目 **MyTeam** 下的 **MyTeamProjectTemplate** (R3) 和 **MyTeamUtilities** (R4) 存储库克隆到本地计算机上 **GitRepos\MyTeam** 中的 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 目录中。 
 
 - 更改到 **GitRepos\MyTeam** 目录
 - 根据情况，在本地计算机的操作系统上运行以下命令。 
 
 **Windows**
 
-    git clone https://<Your VSTS Server name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone https://<Your VSTS Server name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
 
 ![14](./media/team-lead-tasks/team-leads-14-clone_two_empty_team_repos.png)
         
 **Linux**
     
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
     
 ![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
 
-在克隆后，会在 **GitRepos\MyTeam** 目录中创建两个目录：**MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 。 此处，我们假定已将团队项目模板和实用程序存储库命名为 **MyTeamProjectTemplate** 和 **MyTeamUtilities**。 
+在克隆后，会在 **GitRepos\MyTeam** 目录中创建两个目录：**MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 。 此处，我们假定已将项目模板和实用工具存储库命名为 **MyTeamProjectTemplate** 和 **MyTeamUtilities**。 
 
-### <a name="copy-the-group-project-template-content-to-the-local-team-project-template-directory"></a>将组项目模板内容复制到本地团队项目模板目录
+### <a name="copy-the-group-project-template-content-to-the-local-project-template-directory"></a>将组项目模板内容复制到本地项目模板目录
 
 若要将本地 **GroupProjectTemplate** (D1) 文件夹的内容复制到本地 **MyTeamProjectTemplate** (D3)，请运行下列 shell 脚本之一： 
 
@@ -228,7 +228,7 @@ ms.locfileid: "34839752"
 这些脚本不包括 .git 目录的内容。 脚本会提示你提供源目录 D1 和目标目录 D3 的**完整路径**。
         
 
-### <a name="customize-your-team-project-template-or-team-utilities-optional"></a>自定义团队项目模板或团队实用程序（可选）
+### <a name="customize-your-project-template-or-team-utilities-optional"></a>自定义项目模板或团队实用工具（可选）
 
 如果需要，在设置过程的此阶段自定义 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4)。 
 
@@ -248,7 +248,7 @@ ms.locfileid: "34839752"
     
 ![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
 
-运行此脚本时，几乎会立即对组的 VSTS 服务器的 MyTeamProjectTemplate 存储库中的文件进行同步。
+运行此脚本时，几乎会立即对组的 Azure DevOps Services 的 MyTeamProjectTemplate 存储库中的文件进行同步。
 
 ![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
 
@@ -299,7 +299,7 @@ ms.locfileid: "34839752"
 
 为方便在创建此存储后装载并共享此存储，请将 Azure 文件存储信息保存到文本文件中并记下其位置路径。 具体而言，在下一部分中，需要使用此文件将 Azure 文件存储装载到 Azure 虚拟机。 
 
-最好将此文本文件签入到团队 ProjectTemplate 存储库中。 建议将其放置在 **Docs\DataDictionaries** 目录中。 因此，团队中的所有项目都可以访问此数据资产。 
+最好将此文本文件签入到 ProjectTemplate 存储库中。 建议将其放置在 **Docs\DataDictionaries** 目录中。 因此，团队中的所有项目都可以访问此数据资产。 
 
 ![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
 
@@ -329,7 +329,7 @@ ms.locfileid: "34839752"
 
 为方便在创建此存储后访问此存储，请将 Azure 文件存储信息保存到文本文件中并记下其位置路径。 具体而言，在下一部分中，需要使用此文件将 Azure 文件存储装载到 Azure 虚拟机。
 
-最好将此文本文件签入到团队 ProjectTemplate 存储库中。 建议将其放置在 **Docs\DataDictionaries** 目录中。 因此，团队中的所有项目都可以访问此数据资产。 
+最好将此文本文件签入到 ProjectTemplate 存储库中。 建议将其放置在 **Docs\DataDictionaries** 目录中。 因此，团队中的所有项目都可以访问此数据资产。 
 
 ![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
 
@@ -406,7 +406,7 @@ ms.locfileid: "34839752"
 
 ## <a name="5-set-up-security-control-policy"></a>5.设置安全控制策略 
 
-在组 VSTS 服务器的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以在此处向你的团队添加具有各种权限的成员。
+在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以在此处向你的团队添加具有各种权限的成员。
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 

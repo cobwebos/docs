@@ -1,5 +1,5 @@
 ---
-title: 更改 Azure 微服务中的 KVSActorStateProvider 设置 | Microsoft Docs
+title: 更改 Azure Service Fabric 执行组件中的 KVSActorStateProvider 设置 | Microsoft Docs
 description: 了解有关配置类型为 KVSActorStateProvider 的 Azure Service Fabric 有状态执行组件的信息
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017641"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049504"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
 通过更改 Microsoft Visual Studio 程序包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 KVSActorStateProvider 的默认配置。
@@ -36,7 +36,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 默认情况下，空的安全配置节会影响复制安全。
 
 > [!IMPORTANT]
-> 在 Linux 节点上，证书必须是 PEM 格式。 若要了解有关查找和配置适用于 Linux 的证书的详细信息，请参阅[在 Linux 上配置证书](./service-fabric-configure-certificates-linux.md)。 
+> 在 Linux 节点上，证书必须是 PEM 格式。 若要详细了解如何查找和配置适用于 Linux 的证书，请参阅[在 Linux 上配置证书](./service-fabric-configure-certificates-linux.md)。 
 > 
 
 ### <a name="section-name"></a>节名称

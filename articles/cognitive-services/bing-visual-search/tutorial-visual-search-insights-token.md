@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: bda4bdeea019d8cf3ae677d5eaf81e631ca38d16
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222567"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386428"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>教程：必应视觉搜索 SDK ImageInsightsToken 和结果
 视觉搜索 SDK 包括从以前返回 `ImageInsightsToken` 的搜索中查找联机图像的选项。  此示例获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。  该代码将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
@@ -25,7 +25,7 @@ Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： 
 验证 SDK 调用需要认知服务 API 密钥。 注册免费试用密钥。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，请购买访问密钥。 另请参阅定价信息。
 运行 .NET core SDK、.net core 1.1 应用的功能。 可从以下位置获取 CORE、Framework 和运行时： https://www.microsoft.com/net/download/。
 
-##<a name="application-dependencies"></a>应用程序依赖项
+## <a name="application-dependencies"></a>应用程序依赖项
 若要使用必应 Web 搜索 SDK 设置控制台应用程序，请浏览到 Visual Studio 中的解决方案资源管理器中的“管理 NuGet 程序包”选项。 添加：
 * Microsoft.Azure.CognitiveServices.Search.VisualSearch
 * Microsoft.Azure.CognitiveServices.Search.ImageSearchpackage 程序包。
@@ -37,7 +37,8 @@ Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： 
 * Newtonsoft.Json
 
 ## <a name="get-the-imageinsightstoken-from-image-search"></a>从图像搜索获取 ImageInsightsToken
-此示例使用通过以下方法获取的 `ImageInsightsToken`。  有关此调用的详细信息，请参阅[图像搜索 SDK C# 快速入门](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。
+
+此示例使用通过以下方法获取的 `ImageInsightsToken`。  有关此调用的详细信息，请参阅[图像搜索 SDK C# 快速入门](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。
 
 该代码搜索“加拿大落基山脉”的查询的结果，并获取 ImageInsightsToken。 它打印第一个图像的 Insights 标记、缩略图 URL 以及图像内容 URL。  该方法返回 `ImageInsightsToken`，以供在后续视觉搜索请求中使用。
 
@@ -86,12 +87,15 @@ Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： 
 ```
 
 ## <a name="specify-the-imageinsightstoken-for-visual-search-request"></a>为视觉搜索请求指定 ImageInsightsToken
+
 此示例使用前面的方法中返回的 Insights 标记。 以下代码从 `ImageInsightsToken` 中创建 `ImageInfo` 对象并将 ImageInfo 对象加载到 `VisualSearchRequest`。 在 `ImageInfo` 中为 `VisualSearchRequest` 指定 `ImageInsightsToken`
 
 ```
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 ```
+
 ## <a name="use-visual-search-to-find-images-from-an-imageinsightstoken"></a>使用视觉搜索从 ImageInsightsToken 中查找图像
+
 `VisualSearchRequest` 包含有关在 `ImageInfo` 对象中搜索的图像的信息。  `VisualSearchMethodAsync` 方法获取结果。
 ```
 // An image binary is not necessary here, as the image is specified by insights token.
@@ -135,7 +139,8 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
         }
     }
 ```
-有关这些数据类型的详细信息，请参阅[图像 - 视觉搜索](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
+有关这些数据类型的详细信息，请参阅[图像 - 视觉搜索](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)。
+
 ## <a name="complete-code"></a>完整代码
 
 下面的代码运行前面的示例。 它在 POST 请求中发送 `ImageInsightsToken`。 然后它将打印每个 ActionType 的必应搜索 URL。 如果 ActionType 为 `PagesIncluding`，则代码将获取 `Data` 中的 `ImageObject` 项。  `Data` 包含值的列表，它们是 Web 页面上的图像的 URL。  将生成的视觉搜索 URL 复制并粘贴到浏览器，以显示结果。 将 ContentUrl 项复制并粘贴到浏览器，以显示图像。
@@ -283,5 +288,6 @@ namespace VisualSearchFeatures
 }
 
 ```
+
 ## <a name="next-steps"></a>后续步骤
 [视觉搜索响应](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

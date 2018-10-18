@@ -3,25 +3,25 @@ title: 快速入门：检测图像中的人脸 - 人脸 API，Python
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，使用人脸 API 和 Python 检测图像中的人脸。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: nolachar
-ms.openlocfilehash: 7e1185fed1892dbd2c60434cfceec555bf7b0bc5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129188"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339575"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-python"></a>快速入门：使用 Python 检测图像中的人脸
 
 在本快速入门中，使用人脸服务检测远程图像中的人脸。 检测到的人脸用矩形标注起来，并在上方附加每个人的性别和年龄。 若要使用本地图像，请参阅[计算机视觉：使用 Python 分析本地图像](../../Computer-vision/QuickStarts/python-disk.md)中的语法。
 
-可在 [MyBinder](https://mybinder.org) 上以 Jupyter 笔记本的方式运行本快速入门。 若要启动活页夹，请选择以下按钮：
+可在 [MyBinder](https://mybinder.org) 上以 Jupyter 笔记本的方式运行本快速入门。 要启动活页夹，请选择以下按钮：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 

@@ -2,25 +2,19 @@
 title: 有关订购 Microsoft Azure Data Box 磁盘的教程 | Microsoft Docs
 description: 使用本教程了解如何注册和订购用于将数据导入 Azure 的 Azure Data Box 磁盘。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 37130e946aad00ef4eca14b7ce7942a8e435e6cd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: bd90d3c4c9207374d6a6085df6a3962ef42b68a9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782322"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091415"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>教程：订购 Azure Data Box 磁盘（预览版）
 

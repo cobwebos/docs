@@ -1,8 +1,8 @@
 ---
-title: "在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs"
-description: "为开发、测试和生产戳记直接遥测不同的资源。"
+title: 在 Azure Application Insights 中分隔开发、测试和发布阶段的遥测 | Microsoft Docs
+description: 为开发、测试和生产戳记直接遥测不同的资源。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d95958bce0597bfb16ef1c6b99b72ce9134e66f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303619"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -153,7 +154,7 @@ ms.lasthandoff: 11/01/2017
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 
 ### <a name="release-annotations"></a>版本注释
-如果使用 Visual Studio Team Services，则可以在每次发布新版本时会[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
+如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
 
 ![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤

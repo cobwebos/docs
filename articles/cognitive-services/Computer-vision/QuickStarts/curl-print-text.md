@@ -1,21 +1,21 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、cURL - 计算机视觉
+title: 快速入门：提取打印的文本 (OCR) - REST、cURL - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 cURL 从图像中提取印刷体文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: ed064728d32f24e5d61da26f3f9e8297bff8bc99
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 6917e6f4ba0c2f8045d3f7da9a2e23acd949cf48
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630167"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341236"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 cURL 提取印刷体文本 (OCR)
 
@@ -37,7 +37,7 @@ ms.locfileid: "45630167"
     1. 将 `<subscriptionKey>` 的值替换为你的订阅密钥。
     1. 如有必要，请将请求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr`) 替换为获取的订阅密钥所在的 Azure 区域中的 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法的终结点 URL。
     1. （可选）将请求正文中的图像 URL (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) 更改为要分析的其他图像的 URL。
-1. 打开“命令提示符”窗口。
+1. 打开命令提示符窗口。
 1. 将文本编辑器中的命令粘贴到命令提示符窗口，然后运行命令。
 
 ```console
@@ -46,7 +46,7 @@ curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: applica
 
 ## <a name="examine-the-response"></a>检查响应
 
-JSON 中返回成功响应。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功的响应以 JSON 格式返回。 示例应用程序会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

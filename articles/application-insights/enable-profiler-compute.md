@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424018"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091974"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>为 Azure VM、Service Fabric 和 Azure 云服务启用 Application Insights Profiler
 
@@ -48,7 +48,7 @@ ms.locfileid: "39424018"
 
    ![检测密钥的位置](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. 若要完成为 Profiler 设置 Application Insights 实例，请完成 [ 启用 Profiler 中所述的过程。 不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
+1. 若要完成为 Profiler 设置 Application Insights 实例，请完成[启用 Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler) 中所述的过程。 不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
 
 
 ## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
@@ -214,7 +214,7 @@ ms.locfileid: "39424018"
 
 1. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
 
-   a. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All

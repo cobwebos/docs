@@ -18,12 +18,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: a80bec460fffcc7c7170204d541d578428980394
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223943"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022792"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -71,7 +71,7 @@ ms.locfileid: "39223943"
 **潜在问题**：**WamDefaultSet** 和 **AzureAdJoined** 的字段值中均包含“NO”，设备已加入域并已注册到 Azure AD，但设备不同步。如果显示这样的信息，则表示设备可能需要等待应用策略，或者在连接到 Azure AD 时设备身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
 
 
-**潜在问题**：**AzureAdSettingsUrl** 的字段为空，设备不同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员先禁用再重启“用户可同步设置”和“企业应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**AzureAdSettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
+**潜在问题**：**SettingsUrl** 的字段为空，设备不同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员先禁用再重启“用户可同步设置”和“企业应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
 在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
@@ -81,7 +81,7 @@ ms.locfileid: "39223943"
 **潜在问题**：如果管理员配置 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，那么同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
 
 ### <a name="event-viewer"></a>事件查看器
-要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 依次转到“事件查看器”>“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync”下面可以查看事件；对于与标识相关的问题，依次同步转到“Microsoft” > “Windows” > “AAD”。
+要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 依次转到“事件查看器”>“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync-Azure”下面可以查看事件；对于与标识相关的问题，依次同步转到“Microsoft” > “Windows” > “AAD”。
 
 
 ## <a name="known-issues"></a>已知问题
@@ -174,14 +174,6 @@ ms.locfileid: "39223943"
 
 **建议的操作**  
 执行 [KB3196528](https://support.microsoft.com/kb/3196528) 中所列的步骤。  
-
-
-
-## <a name="next-steps"></a>后续步骤
-
-- 欢迎在[用户之声论坛](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming)中提供反馈，并提出有关如何改进企业状态漫游的建议。
-
-- 有关详细信息，请参阅[企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)。 
 
 ## <a name="related-topics"></a>相关主题
 * [企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)

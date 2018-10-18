@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: a4be3f063c51f26e1df9ecf4cca4ae0655554750
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 596db56a71d4cc73517b9a9cbfe9b97e536aa83a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141910"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378840"
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源
 通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源和资源组、检查其属性，以及执行重要的开发人员诊断操作。 
@@ -40,9 +40,9 @@ ms.locfileid: "42141910"
 
     ![Cloud Explorer Azure 帐户设置图标](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. 选择“添加新帐户”。 
+1. 选择“管理帐户”。 
 
-    ![Cloud Explorer 添加帐户链接](media/vs-azure-tools-resources-managing-with-cloud-explorer/add-account-link.png)
+    ![Cloud Explorer 添加帐户链接](media/vs-azure-tools-resources-managing-with-cloud-explorer/manage-accounts-link.png)
 
 1. 登录要浏览其资源的 Azure 帐户。 
 
@@ -56,13 +56,17 @@ ms.locfileid: "42141910"
 
 ## <a name="remove-an-azure-account-from-cloud-explorer"></a>从 Cloud Explorer 删除 Azure 帐户 
 
-1. 在 **Cloud Explorer** 中，选择“Azure 帐户设置”。
+1. 在 **Cloud Explorer** 中选择“帐户管理”。
 
     ![Cloud Explorer Azure 帐户设置图标](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. 在要删除的帐户旁，选择“删除”。
+1. 在要删除的帐户旁，选择“管理帐户”。
 
     ![Cloud Explorer Azure 帐户设置图标](media/vs-azure-tools-resources-managing-with-cloud-explorer/remove-account.png)
+
+1. 选择“删除”以删除该帐户。
+
+    ![Cloud Explorer“管理帐户”对话框](media/vs-azure-tools-resources-managing-with-cloud-explorer/accountmanage.PNG)
 
 ## <a name="view-resource-types-or-resource-groups"></a>查看资源类型或资源组
 若要查看 Azure 资源，可以选择“资源类型”或“资源组”视图。

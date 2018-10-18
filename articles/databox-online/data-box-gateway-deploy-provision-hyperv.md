@@ -1,26 +1,19 @@
 ---
 title: 有关如何在 Hyper-V 中预配 Azure Data Box Gateway 的教程 | Microsoft Docs
 description: 有关如何部署 Azure Data Box Gateway 的第二个教程介绍如何在 Hyper-V 中预配虚拟设备。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/26/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419689"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166451"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>教程：在 Hyper-V（预览版）中预配 Azure Data Box Gateway
 

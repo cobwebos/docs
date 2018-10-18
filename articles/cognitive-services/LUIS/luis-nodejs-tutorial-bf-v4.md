@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: acd9d9ff0b97bf0eaaca2f8ae9a6909e18e320d6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168100"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385900"
 ---
 # <a name="tutorial-luis-bot-in-nodejs"></a>教程：使用 Node.js 的 LUIS 机器人
-使用 Node.js 可以生成与语言理解 (LUIS) 相集成的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 生成的。
+使用 Node.js 可以生成与语言理解 (LUIS) 相集成的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
 
-**本教程介绍如何执行以下操作：**
+**本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
 > * 创建 Web 应用机器人。 此过程将创建新的 LUIS 应用。
@@ -49,7 +49,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
     |设置|目的|建议的设置|
     |--|--|--|
     |机器人名称|资源名称|`luis-nodejs-bot-` + `<your-name>`，例如 `luis-nodejs-bot-johnsmith`|
-    |订阅|要在其中创建机器人的订阅。|主要订阅。
+    |订阅|要在其中创建机器人的订阅。|你的主要订阅。
     |资源组|Azure 资源的逻辑组|创建一个新组用于存储此机器人使用的所有资源，并将该组命名为 `luis-nodejs-bot-resource-group`。|
     |位置|Azure 区域 - 不一定要与 LUIS 创作或发布区域相同。|`westus`|
     |定价层|用于服务请求限制和计费。|`F0` 是免费层。
@@ -67,7 +67,7 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
     
 5. 选择**创建**。 随即会创建机器人服务并将其部署到 Azure。 在此过程中，会创建名为 `luis-nodejs-bot-XXXX` 的 LUIS 应用。 此名称基于上一部分所述的机器人名称和应用名称。
 
-    [![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [ ![创建 Web 应用机器人](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
 6. 请将此浏览器标签页保持打开状态。 对于 LUIS 门户中的任何步骤，都需要打开新的浏览器标签页。部署新机器人服务后，转到下一部分。
 
@@ -350,9 +350,9 @@ https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp
 ## <a name="learn-more-about-bot-framework"></a>深入了解 Bot Framework
 Azure 机器人服务使用 Bot Framework SDK。 详细了解该 SDK 和机器人框架：
 
-* [Azure 机器人服务](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 文档
+* [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 文档
 * [Bot Builder 示例](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Bot Builder SDK](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Bot Builder 工具](https://github.com/Microsoft/botbuilder-tools)：
 
 ## <a name="next-steps"></a>后续步骤

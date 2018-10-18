@@ -2,18 +2,18 @@
 title: 快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 description: 在本快速入门中，将了解如何将数据从事件中心引入（加载）到 Azure 数据资源管理器。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: acc18b6414e62a1f8239562158b4b80219c5d7c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976816"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394172"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -57,7 +57,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     对下表中未列出的任何设置使用默认值。
 
-    **设置** | 建议的值 | 字段说明
+    **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg | 创建新的资源组。 |
@@ -112,7 +112,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     ![事件中心连接](media/ingest-data-event-hub/event-hub-connection.png)
 
-    **设置** | 建议的值 | 字段说明
+    **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 数据连接名称 | test-hub-connection | 要在 Azure 数据资源管理器中创建的连接的名称。|
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
@@ -150,7 +150,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. 构建并运行应用程序。 应用将消息发送到事件中心，并且每十秒显示一次状态。
+1. 生成并运行应用。 应用将消息发送到事件中心，并且每十秒显示一次状态。
 
 1. 应用发送一些消息后，继续执行下一步：查看到事件中心和测试表的数据流。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 55feb64f06c2d67f85f230cb92e84dfe8fd3ada2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782383"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053289"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -117,7 +117,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 第二种触发器基于一个服务所有分区的负载。 指标负载首先经过平滑处理，获得分区中每个副本或实例的负载。 对于有状态服务，分区的负载被认为是主要副本的负载，而对于无状态服务，分区的负载是分区的所有实例的平均负载。 这些值在服务的所有分区中取平均值，并且此值用于触发自动缩放。 与之前的机制相同，有三个因素确定将何时缩放服务：
 
 * 负载阈值下限是一个用于确定何时将服务缩小的值。 如果服务的所有分区的平均负载低于此值，则将缩小该服务。
-* 负载阈值上限是一个用于确定何时将服务扩大的值。如果服务的所有分区的平均负载低于此值，则将扩大该服务。
+* 负载阈值上限是一个用于确定何时将服务扩大的值。如果服务的所有分区的平均负载高于此值，则将扩大该服务。
 * 缩放间隔确定检查触发器的频率。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
 
 此触发器既可用于有状态服务，也可用于无状态服务。 此触发器唯一可以使用的机制是 AddRemoveIncrementalNamedParitionScalingMechanism。 扩大服务时，则添加新的分区；缩小服务时，则删除一个现有分区。 在创建或更新服务时会检查一些限制，如果不满足以下条件，则服务创建/更新将失败：

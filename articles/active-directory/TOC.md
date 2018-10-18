@@ -105,6 +105,7 @@
 #### [将活动日志存档到 Azure 存储帐户](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [使用 Azure Monitor 将活动日志与 Splunk 集成](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [使用 Azure Monitor 将活动日志与 SumoLogic 集成](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [使用 Azure Monitor 将活动日志与 Log Analytics 集成](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### 引用
 #### [保留](reports-monitoring/reference-reports-data-retention.md)

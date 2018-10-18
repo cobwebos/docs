@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782648"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298193"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 (VM) 映像。 它是使用几种用于数据分析和机器学习的工具进行预安装和配置的。 包括以下工具：
@@ -40,7 +40,7 @@ Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/)。 Java 中的可视数据挖掘和机器学习软件。
   * [Apache Drill](https://drill.apache.org/)。 面向 Apache Hadoop、NoSQL 和云存储的无架构 SQL 查询引擎。  它支持使用 ODBC 和 JDBC 接口通过 PowerBI、Microsoft Excel、Tableau 等标准 BI 工具查询 NoSQL 和文件。
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用。
-* 包含 Git Bash 的 Git，可配合源代码存储库（包括 GitHub、Visual Studio Team Services）使用。 Git 提供一些常用的 Linux 命令行实用工具，可通过 Git Bash 和命令提示符对其进行访问。 示例包括 awk、sed、perl、grep、find、wget 和 curl。
+* 包含 Git Bash 的 Git，可配合源代码存储库（包括 GitHub 和 Azure DevOps）使用。 Git 提供一些常用的 Linux 命令行实用工具，可通过 Git Bash 和命令提示符对其进行访问。 示例包括 awk、sed、perl、grep、find、wget 和 curl。
 
 数据科学涉及对一系列任务的迭代：
 

@@ -5,6 +5,8 @@ items:
   items:
   - name: 什么是 Azure AD 报表？
     href: overview-reports.md
+  - name: 什么是 Azure AD 监视？
+    href: overview-monitoring.md
 - name: 快速入门
   items:
   - name: 报告
@@ -68,6 +70,12 @@ items:
       href: howto-configure-prerequisites-for-reporting-api.md
   - name: 监视
     items:
+    - name: 将活动日志与 Log Analytics 集成
+      href: howto-integrate-activity-logs-with-log-analytics.md
+    - name: 在 Log Analytics 中分析活动日志
+      href: howto-analyze-activity-logs-log-analytics.md
+    - name: 安装和使用用于 Azure AD 的 Log Analytics 视图
+      href: howto-install-use-log-analytics-views.md
     - name: 将活动日志与 SumoLogic 集成
       href: howto-integrate-activity-logs-with-sumologic.md
   - name: 故障排除
@@ -102,9 +110,9 @@ items:
     - name: 登录日志架构
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 20321358f74157bda02740d536dd30e7a21f5588
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1ab811294846ae59c0d83efe658b7b9b4f7f8a9a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740280"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395048"

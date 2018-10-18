@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ba02e7760d7400b5168a902415f16c4b276b3a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 0869881ace689d12272affb38d3689965e107e8f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287947"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050926"
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
 
@@ -251,7 +251,7 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
             })
     };
 
-客户端可以以上 JavaScript 逻辑“运送”到用于通过 HTTP POST 进行的事务性执行的数据库。 有关使用 HTTP 方法的详细信息，请参阅[与 Azure Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。 
+客户端可以将上述 JavaScript 逻辑“运送”到数据库，以便通过 HTTP POST 进行事务执行。 有关使用 HTTP 方法的详细信息，请参阅[与 Azure Cosmos DB 资源的 RESTful 交互](https://msdn.microsoft.com/library/azure/mt622086.aspx)。 
 
     client.createStoredProcedureAsync(collection._self, {id: "CRUDProc", body: businessLogic})
        .then(function(createdStoredProcedure) {
@@ -409,7 +409,7 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
 
 作为一种真正的开放式数据库服务，Azure Cosmos DB 不创建任何专用的数据类型（例如日期时间）或用于 JSON 文档的特定编码。 Azure Cosmos DB 不需要任何特殊的 JSON 约定来对各种文档之间的关系进行编码；Azure Cosmos DB 的 SQL 语法提供了强大的分层和关系查询运算符来查询和投影文档，而无需任何特殊的注释，也不需要使用可分辨属性对文档间的关系进行编码。  
 
-与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
+与所有其他资源一样，可以使用 REST API 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、替换、删除、读取、枚举和查询文档。 删除文档将立即释放与所有嵌套附件相对应的配额。 文档的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询文档时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，这将遵循帐户的一致性策略。 
 
 ## <a name="attachments-and-media"></a>附件和媒体
 Azure Cosmos DB 可通过 Azure Cosmos DB 存储二进制 Blob/媒体（每个帐户最大 2 GB），或将其存储到远程媒体存储中。 对于被称为附件的特殊文档而言，它还可以用于表示媒体的元数据。 Azure Cosmos DB 中的附件是引用存储在其他位置的媒体/Blob 的特殊 (JSON) 文档。 附件只是捕获存储在远程媒体存储中的媒体元数据（例如位置、作者等）的特殊文档。 
@@ -424,7 +424,7 @@ Azure Cosmos DB 可通过 Azure Cosmos DB 存储二进制 Blob/媒体（每个�
 
 对于由 Azure Cosmos DB 管理的媒体，附件的 _media 属性通过其 URI 引用媒体。 Azure Cosmos DB 确保在删除所有未完成的引用时对媒体进行垃圾回收。 上传新的媒体并填充 _media 以指向新添加的媒体时，Azure Cosmos DB 会自动生成附件。 如果选择将媒体存储在由你（例如 OneDrive、Azure 存储、DropBox，等等）管理的远程 blob 存储区，仍可以使用附件来引用媒体。 在这种情况下，将自行创建附件并填充其 _media 属性。   
 
-与所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举附件。 至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询附件时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，将遵循帐户的一致性策略。 
+与所有其他资源一样，可以使用 REST API 或任一客户端 SDK 轻松创建、替换、删除、读取或枚举附件。 至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。 可以根据应用程序的数据一致性要求在每个请求中重写此策略。 查询附件时，读取一致性遵循集合上的索引编制模式设置。 对于“一致性”，这将遵循帐户的一致性策略。 
  
 
 ## <a name="users"></a>用户

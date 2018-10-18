@@ -3,8 +3,8 @@ title: 快速入门 - 创建 Azure CDN 配置文件和终结点 | Microsoft Docs
 description: 本快速入门介绍如何通过创建新 CDN 配置文件和 CDN 终结点启用 Azure CDN。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: v-deasim
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b1e287ee949aedf084d4390fe672f0fe41899c34
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607865"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091754"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>快速入门：创建 Azure CDN 配置文件和终结点
 在本快速入门中，请通过创建新的 Azure 内容分发网络 (CDN) 配置文件和 CDN 终结点来启用 CDN。 创建配置文件和终结点以后，即可将内容交付给客户。
@@ -53,12 +53,12 @@ ms.locfileid: "34607865"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | **名称** | 输入 *my-endpoint-123* 作为终结点主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。|
+    | **Name** | 输入 *my-endpoint-123* 作为终结点主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 此名称用于访问在域 _&lt;终结点名称&gt;_.azureedge.net 中缓存的资源。|
     | **源服务器类型** | 选择“存储”。 | 
     | **源服务器主机名** | 输入 *mystorageacct123.blob.core.windows.net* 作为主机名。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 |
     | **源服务器路径** | 留空。 |
     | **源服务器主机标头** | 保留默认的生成值。 |  
-    | **协议** | 保留默认选择的 **HTTP** 和 **HTTPS** 选项。 |
+    | 协议 | 保留默认选择的 **HTTP** 和 **HTTPS** 选项。 |
     | **源服务器端口** | 保留默认的端口值。 | 
     | **优化对象** | 保留默认选择“常规 Web 交付”。 |
 

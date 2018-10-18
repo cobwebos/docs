@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112980"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391345"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
 
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 若要选择灾难恢复解决方案，业务和技术所有者必须先确定必需的灾难期间功能级别，如不可用、精简功能后部分可用、延迟可用或完全可用。
 大多数企业客户选择多区域体系结构，以通过应用程序级或基础结构级故障转移复原。 客户可以选择多种方法，以通过冗余体系结构实现故障转移和高可用性。 下面是一些常用方法：
 
-- **使用冷备用的主动/被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备不活跃。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
+- **使用冷备用的主动/被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
  
     ![使用冷备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
@@ -140,7 +140,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 新建 Azure 流量管理器配置文件，并命名为“contoso123”，再选择“优先级”作为“路由方法”。 若有要与之关联的现有资源组，可以选择现有资源组，否则新建资源组。
 
 ![创建流量管理器配置文件](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
-*图：创建流量管理器配置文件*
+图：创建流量管理器配置文件**
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 3d127afa94b761d96db17bcb59700a275a44a265
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 445bc4b693c8129c4faf42fee3b2be34d90846ae
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38677257"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160245"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure 应用服务的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "38677257"
 
    | 密钥                                   | 值                                                        |
    |---------------------------------------|--------------------------------------------------------------|
-   | Azure.IoT.IoTHub.ConnectionString     | 从 iothub-explorer 获取                                |
+   | Azure.IoT.IoTHub.ConnectionString     | 已从 Azure CLI 获取                                      |
    | Azure.IoT.IoTHub.ConsumerGroup        | 添加到 IoT 中心的使用者组的名称  |
 
    ![将包含键/值对的设置添加到 Web 应用](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)

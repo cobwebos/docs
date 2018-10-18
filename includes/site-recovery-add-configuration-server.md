@@ -1,3 +1,21 @@
+---
+title: include 文件
+description: include 文件
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 09/06/2018
+ms.author: raynew
+ms.custom: include file
+ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058490"
+---
 1. 运行统一安装程序安装文件。
 2. 在“开始之前”中，选择“安装配置服务器和进程服务器”。
 
@@ -21,10 +39,7 @@
 7. 在“MySQL 配置”中，创建用于登录到要安装的 MySQL 服务器实例的凭据。
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. 在“环境详细信息”中，选择是否要复制 VMware VM。 如果要复制，则安装程序会检查 PowerCLI 6.0 是否已安装。
-
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
-
+8. 在“环境详细信息”中，如果要复制 Azure Stack VM 或物理服务器，请选择“否”。 
 9. 在“安装位置”中，选择要安装二进制文件和存储缓存的位置。 所选驱动器必须至少有 5 GB 的可用磁盘空间，但我们建议选择至少有 600 GB 可用空间的缓存驱动器。
 
     ![安装位置](./media/site-recovery-add-configuration-server/combined-wiz8.png)

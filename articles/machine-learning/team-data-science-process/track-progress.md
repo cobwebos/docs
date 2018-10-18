@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: e50390a1b6385cabfd0e6b30340634860a062d8d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 32390b05d2ec258a68ed4f53135399675105a7e9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838936"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302079"
 ---
 # <a name="track-progress-of-data-science-projects"></a>跟踪数据科学项目的进度
 
-数据科学组管理员、团队主管和项目主管需要跟踪其团队项目的进度、已完成了哪些工作及是由谁完成的、待办事项列表上还剩下哪些工作。 
+数据科学组管理员、团队主管和项目主管需要跟踪项目的进度、已完成了哪些工作及是由谁完成的、待办事项列表上还剩下哪些工作。 
 
-## <a name="vsts-dashboards"></a>VSTS 仪表板
-如果使用的是 Visual Studio Team Services (VSTS)，则可以生成仪表板来跟踪与给定敏捷项目关联的活动和工作项。 
+## <a name="azure-devops-dashboards"></a>Azure DevOps 仪表板
+如果使用的是 Azure DevOps，则可以生成仪表板来跟踪与给定敏捷项目关联的活动和工作项。 
 
-有关如何在 Visual Studio Team Services 中创建和自定义仪表板与小组件的详细信息，请参阅以下说明：
+有关如何在 Azure DevOps 中创建和自定义仪表板与小组件的详细信息，请参阅以下几组说明：
 
-- [添加和管理仪表板](https://docs.microsoft.com/vsts/report/dashboards/dashboards)
-- [将小组件添加到仪表板](https://docs.microsoft.com/vsts/report/dashboards/add-widget-to-dashboard)。
+- [添加和管理仪表板](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
+- [将小组件添加到仪表板](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard)。
 
 ## <a name="example-dashboard"></a>示例仪表板
 
@@ -49,7 +49,7 @@ ms.locfileid: "34838936"
 
 ![仪表板](./media/track-progress/dashboard.png)
 
-有关如何生成这些图表的说明，请参阅[仪表板](https://docs.microsoft.com/vsts/report/dashboards/)中的快速入门和教程。
+有关如何生成这些图表的说明，请参阅[仪表板](https://docs.microsoft.com/azure/devops/report/dashboards/)中的快速入门和教程。
  
 ## <a name="next-steps"></a>后续步骤
 

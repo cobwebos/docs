@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2017
-ms.author: mbullwin; aruna
-ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: aruna
+ms.author: mbullwin
+ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869540"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303738"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>开发人员分析工具发行说明
 
@@ -193,7 +194,7 @@ Windows 窗体项目节点的上下文菜单现在包含一个选项，可以将
 
 请注意本向导中的新字段，用于指定应用版本。 对于通用 Windows 应用，通过清单来填充信息。 遗憾的是，Windows 窗体应用不具有此功能的等效项。 需要手动指定它们。
 
-流程的其余部分与通用 Windows 应用类似：选择生成和发布选项，添加版本说明，并在 HockeyApp 门户中进行上载和管理。
+流程的其余部分与通用 Windows 应用类似：选择 Azure Pipelines 选项，添加版本说明，并在 HockeyApp 门户中进行上传和管理。
 
 过程如此简单。 试一下，并告诉我们想法。
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 39d3913013d9528405191c5f052a943f1869048a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630750"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026850"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -35,12 +35,12 @@ ms.locfileid: "39630750"
 * 密码，包括 Internet 密码、Wi-fi 配置文件等。
 * 语言首选项，包括键盘布局、系统语言、日期和时间等设置。
 * 轻松访问功能，如高对比度主题、讲述人和放大镜。
-* 其他 Windows 设置，如命令提示符设置和应用程序列表。
+* *其他 Windows 设置*，例如鼠标设置。
 
 **应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
-在 Windows 8 和 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
+在 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。
 
 主帐户是指用于登录 Windows 的帐户。 可以是 Microsoft 帐户、Azure Active Directory (Azure AD) 帐户、本地 Active Directory 帐户或本地帐户。 除了主帐户外，Windows 10 用户可向设备添加一个或多个辅助云帐户。 辅助帐户通常是 Microsoft 帐户、Azure AD 帐户或某些其他帐户（如 Gmail 或 Facebook）。 这些辅助帐户提供访问其他服务（如单一登录和 Windows 应用商店）的权限，但无法支持设置同步。
 
@@ -59,7 +59,7 @@ ms.locfileid: "39630750"
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>如何从 Windows 8 中的 Microsoft 帐户设置同步升级到 Windows 10 中的 Azure AD 设置同步？
-如果已通过连接的 Microsoft 帐户加入到运行 Windows 8 或 Windows 8.1 的 Active Directory 域，则将通过 Microsoft 帐户来同步设置。 升级到 Windows 10 后，只要是已加入域的用户且 Active Directory 域未与 Azure AD 连接，就将继续通过 Microsoft 帐户来同步用户设置。
+如果已通过连接的 Microsoft 帐户加入到运行 Windows 8.1 的 Active Directory 域，则将通过 Microsoft 帐户来同步设置。 升级到 Windows 10 后，只要是已加入域的用户且 Active Directory 域未与 Azure AD 连接，就将继续通过 Microsoft 帐户来同步用户设置。
 
 如果本地 Active Directory 域与 Azure AD 连接，设备将尝试使用连接的 Azure AD 帐户来同步设置。 如果 Azure AD 管理员没有启用企业状态漫游，则连接的 Azure AD 帐户将停止同步设置。 如果是 Windows 10 用户并且使用 Azure AD 标识登录，则管理员通过 Azure AD 启用设置同步时，就能立即启动 Windows 设置。
 
@@ -94,7 +94,7 @@ ms.locfileid: "39630750"
 将来，Microsoft 可能会探索如何将 UE-V 深度集成到 Windows，以及如何通过 Azure AD 云将 UE-V 扩展为漫游设置。
 
 ## <a name="can-i-store-synced-settings-and-data-on-premises"></a>是否可以本地存储已同步的设置和数据？
-企业状态漫游将所有已同步的数据存储在 Azure 云中。 UE-V 提供本地漫游解决方案。
+企业状态漫游将所有已同步的数据存储在 Microsoft 云中。 UE-V 提供本地漫游解决方案。
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>谁拥有正在进行漫游的数据？
 企业拥有通过企业状态漫游进行漫游的数据。 数据存储在 Azure 数据中心。 使用来自 Azure 信息保护的 Azure Rights Management 服务，云中的所有用户数据都在传输中或静止状态下加密。 与基于 Microsoft 帐户的设置同步（仅在离开设备之前加密某些敏感数据，如用户凭据）相比，这是一个进步。

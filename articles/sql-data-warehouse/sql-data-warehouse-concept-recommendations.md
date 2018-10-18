@@ -10,18 +10,18 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 35ae3d1a8a6de2d348f90e2f55b732421b879917
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307631"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380108"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL 数据仓库的建议
 
 本文介绍 SQL 数据仓库通过 Azure 顾问提供的建议。  
 
-SQL 数据仓库提供建议，确保以一致的方式优化数据仓库的性能。 数据仓库建议与 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)紧密集成，在直接在 [Azure 门户](https://aka.ms/Azureadvisor)中提供最佳做法。 SQL 数据仓库每日分析数据仓库的当前状态，收集遥测数据，并针对活动工作负荷提供建议。 下面概述了支持的数据仓库建议方案，以及如何应用建议的操作。
+SQL 数据仓库提供建议，确保以一致的方式优化数据仓库的性能。 数据仓库建议与 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中提供最佳做法。 SQL 数据仓库每日分析数据仓库的当前状态，收集遥测数据，并针对活动工作负荷提供建议。 下面概述了支持的数据仓库建议方案，以及如何应用建议的操作。
 
 如果在 SQL 数据仓库顾问方面有任何反馈或遇到任何问题，请通过 [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com) 联系我们。   
 
@@ -37,6 +37,6 @@ SQL 数据仓库提供建议，确保以一致的方式优化数据仓库的性�
 
 欠佳的统计信息可能严重影响查询性能，因为它可能导致 SQL 数据仓库查询优化器生成欠佳的查询计划。 以下文档介绍了有关创建和更新统计信息的最佳做法：
 
-- [创建和更新表统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
+- [创建和更新表统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-针对这两条建议，顾问会持续运行以下 [T-SQL 脚本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)来识别受倾斜和统计信息建议影响的表。
+若要查看受这些建议影响的表列表，请运行以下 [T-SQL 脚本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 顾问会不断运行相同的 T-SQL 脚本以生成这些建议。

@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42142051"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386581"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -261,7 +261,7 @@ ms.locfileid: "42142051"
 这些方法将 HTTP POST 请求发送到通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 [通知中心 TestSend 属性](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100))会返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下代码进行初始化：
+在初始化通知中心时启用调试属性会写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 [通知中心 TestSend 属性](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100))会返回有关通知发送结果的详细信息。 若要使用它 - 请使用以下代码进行初始化：
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 

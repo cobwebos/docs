@@ -1,6 +1,6 @@
 ---
-title: 用 C# 创建第一个基于角色的 Azure 微服务 | Microsoft Docs
-description: 本教程会向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。
+title: 在 Azure Service Fabric 上创建基于执行组件的服务 | Microsoft Docs
+description: 了解如何使用 Service Fabric Reliable Actors 在 C# 中创建、调试和部署第一个基于执行组件的服务。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 32d3fa09c863c47753267e97e7c4730dff869887
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211399"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054740"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]

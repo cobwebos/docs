@@ -1,6 +1,6 @@
 ---
-title: 调试 Linux 中的 Azure 微服务 | Microsoft Docs
-description: 了解如何监视和诊断本地开发计算机上使用 Microsoft Azure Service Fabric 编写的服务。
+title: 在 Linux 中调试 Azure Service Fabric 应用 | Microsoft Docs
+description: 了解如何在本地 Linux 开发计算机上监视和诊断 Service Fabric 服务。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 563f9d73d5a8d56e834c36d03aed75812ec123ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212698"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051368"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c0004960b7a234d374ec0ae1bdc2f6576b197705
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124654"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385018"
 ---
 # <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 
@@ -27,7 +27,7 @@ ms.locfileid: "46124654"
 
 Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是文本翻译 API 和[语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation)，这些 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
 
-语音翻译功能可以通过[认知服务语音预览版](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/)获取，它将现有的语音翻译 API、必应语音 API 和自定义语音服务（预览版）组合成了一项统一的可完全自定义的服务。  
+语音翻译功能可以通过[认知服务语音预览版](https://docs.microsoft.com/azure/cognitive-services/speech-service/)获取，它将现有的语音翻译 API、必应语音 API 和自定义语音服务（预览版）组合成了一项统一的可完全自定义的服务。  
 
 详细了解 [Microsoft Translator 服务](https://www.microsoft.com/en-us/translator/home.aspx)
 

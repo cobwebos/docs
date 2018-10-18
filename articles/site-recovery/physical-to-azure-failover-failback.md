@@ -5,22 +5,22 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
-ms.openlocfilehash: 93f62bac3e2207caa265b3fca6634656d64b1491
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4036ab6e62f4738f4b2906eb7571dc5d0e972988
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918231"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391141"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
-本教程介绍如何将物理服务器故障转移到 Azure。 故障转移后，将服务器故障回复到本地站点（如果可用）。 
+本教程介绍如何将物理服务器故障转移到 Azure。 故障转移后，将服务器故障回复到本地站点（如果可用）。
 
 ## <a name="preparing-for-failover-and-failback"></a>准备执行故障转移和故障回复
 
-使用 Site Recovery 复制到 Azure 的物理服务器只能作为 VMware VM 故障回复。 必须有 VMware 基础结构，才能进行故障回复。 
+使用 Site Recovery 复制到 Azure 的物理服务器只能作为 VMware VM 故障回复。 必须有 VMware 基础结构，才能进行故障回复。
 
 故障转移和故障回复具有 4 个阶段：
 
@@ -44,7 +44,7 @@ ms.locfileid: "37918231"
 
 1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”。
 2. 在“故障转移”中，选择要故障转移到的“恢复点”。 可以使用以下选项之一：
-   - **最新**（默认选项）：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
+   - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将计算机故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
    - **最新的应用一致**：此选项将计算机故障转移到由 Site Recovery 处理的最新应用一致恢复点。
    - 自定义：指定恢复点。
@@ -55,7 +55,13 @@ ms.locfileid: "37918231"
 
 > [!WARNING]
 > 不会取消正在进行的故障转移。 在故障转移开始之前，将停止计算机复制。 如果取消故障转移，它会停止，但计算机不会再次复制。
-> 对于物理服务器，其他故障转移处理可能需要大约八到十分钟时间才能完成。 
+> 对于物理服务器，其他故障转移处理可能需要大约八到十分钟时间才能完成。
+
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
+
+如果想要在故障转移后使用 RDP/SSH 连接到 Azure VM，请遵照[此处](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)表格中汇总的要求。
+
+按照[此处](site-recovery-failover-to-azure-troubleshoot.md)所述步骤对故障转移后的任何连接问题进行故障排除。
 
 ## <a name="create-a-process-server-in-azure"></a>在 Azure 中创建进程服务器
 
@@ -120,4 +126,3 @@ ms.locfileid: "37918231"
 2. 选择用于将复制数据发送到 Azure 的进程服务器，然后单击“确定”。
 
 重新保护完成后，该 VM 将复制回 Azure，此时可按需运行故障转移。
-

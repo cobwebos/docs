@@ -12,14 +12,14 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fdfea3ac6b84088002521700e1d50d17398be31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 04d950b0a8001fd76e3754b73a9d7c4c5fe2893d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303088"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318633"
 ---
-#<a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
+# <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
 ## <a name="install-azure-ad-connect"></a>安装 Azure AD Connect
 
@@ -169,7 +169,6 @@ Azure AD Connect Health 门户显示警报、性能监视和使用情况分析�
 
 ## <a name="next-steps"></a>后续步骤
 
-
 - [硬件和先决条件](how-to-connect-install-prerequisites.md) 
 - [快速设置](how-to-connect-install-express.md)
 - [自定义设置](how-to-connect-install-custom.md)
@@ -178,6 +177,3 @@ Azure AD Connect Health 门户显示警报、性能监视和使用情况分析�
 - [Azure AD Connect 和联合身份验证](how-to-connect-fed-whatis.md)
 - [安装 Azure AD Connect Health 代理](how-to-connect-health-agent-install.md) 
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
-
-
-

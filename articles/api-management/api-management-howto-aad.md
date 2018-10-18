@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140627"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391872"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -35,7 +35,7 @@ ms.locfileid: "42140627"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 为开发人员帐户授权
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-1. Select ![箭头](./media/api-management-howto-aad/arrow.png)。
+1. Select ![箭头](./media/api-management-howto-aad/arrow.png).
 1. 在搜索框中键入 **api**。
 1. 选择“API 管理服务”。
 1. 选择自己的 API 管理服务实例。
@@ -52,7 +52,7 @@ ms.locfileid: "42140627"
    ![在 Azure 门户中添加标识提供者的步骤](./media/api-management-howto-aad/api-management-with-aad001.png)  
 1. 在浏览器中，打开另一个标签页。 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-1. Select ![箭头](./media/api-management-howto-aad/arrow.png)。
+1. Select ![箭头](./media/api-management-howto-aad/arrow.png).
 1. 键入 **active**。 此时会显示“Azure Active Directory”窗格。
 1. 选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册”。
@@ -79,7 +79,10 @@ ms.locfileid: "42140627"
 
     ![权限复选框](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. 选择“授予权限”以同意应用程序权限。
+
     有关应用程序权限和委托权限的详细信息，请参阅[访问图形 API][Accessing the Graph API]。
+    
 1. 在左侧窗格中，复制“应用程序 ID”值。
 
     ![“应用程序 ID”值](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ ms.locfileid: "42140627"
     > 记下此密钥。 关闭 Azure AD 配置窗格后，无法再次显示密钥。
     > 
     > 
+
 1. 切换回 API 管理应用程序。 
 
     在“添加标识提供者”窗口中，将密钥粘贴到“客户端机密”文本框中。
@@ -106,6 +110,7 @@ ms.locfileid: "42140627"
     > 请确保在密钥过期前更新“客户端机密”。 
     >  
     >
+
 1. “添加标识提供者”窗口还包含“允许的租户”文本框。 可在此框中指定要授予 API 管理服务实例的 API 对哪些 Azure AD 实例域的访问权限。 可使用换行符、空格或逗号分隔多个域。
 
     可在“允许的租户”部分中指定多个域。 在任何用户可以从注册应用程序的原始域以外的其他域登录之前，不同域的全局管理员必须先授予权限以使应用程序访问目录数据。 若要授予权限，全局管理员应：

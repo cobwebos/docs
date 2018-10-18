@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 15ad606578970290cef440ec4efdd967ca0c0b32
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205223"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298329"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
@@ -42,7 +42,7 @@ ms.locfileid: "34205223"
 
 > [!NOTE]
 > 并非应用程序和服务清单文件中的所有属性都支持参数。
-> 在这些情况下，用户必须依赖于将字符串替换为部署工作流的一部分。 在 Visual Studio Team Services 中，可以使用类似于替换令牌：https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens 的扩展，或者在 Jenkins 中通过运行脚本任务来替换值。
+> 在这些情况下，用户必须依赖于将字符串替换为部署工作流的一部分。 在 Azure DevOps 中，可以使用类似于替换令牌： https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens 的扩展，或者在 Jenkins 中通过运行脚本任务来替换值。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>在应用程序创建期间指定参数
@@ -51,7 +51,7 @@ ms.locfileid: "34205223"
 
   - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
   - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
-  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 从 Visual Studio 发布、使用 Visual Studio Team Service 或 Team Foundation Server 时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
+  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Team Foundation Server 从 Visual Studio 发布时会用到这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：

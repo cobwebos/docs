@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b98b9e0a10f142cb0177e7e5ea831b61f79a4b7a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304656"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361061"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "46304656"
 
 * 对 ADFS（2012 R2 或更高版本）保护的应用程序（信赖方信任），启用基于设备的条件性访问。
 
-这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)。
+这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
@@ -81,7 +81,7 @@ ms.locfileid: "46304656"
    ![Active Directory 管理中心 - 已注册的设备列表](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>启用条件性访问
-[使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-conditional-access-automatic-device-registration-setup.md)中提供了有关启用此方案的详细说明。
+[使用 Azure Active Directory Device Registration 设置本地条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)中提供了有关启用此方案的详细说明。
 
 ## <a name="troubleshooting"></a>故障排除
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>写回复选框仍处于禁用状态
@@ -125,7 +125,7 @@ ms.locfileid: "46304656"
 
 ## <a name="additional-information"></a>其他信息
 * [使用条件性访问管理风险](../active-directory-conditional-access-azure-portal.md)
-* [使用 Azure Active Directory Device Registration 设置本地条件性访问](../active-directory-device-registration-on-premises-setup.md)
+* [使用 Azure Active Directory Device Registration 设置本地条件性访问](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
