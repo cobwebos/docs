@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 8f5bb54e12348fd915b2c4413bbacdc083a2a879
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145764"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032672"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
@@ -54,7 +54,7 @@ ms.locfileid: "42145764"
 1. 在 Power BI Desktop 应用程序中下载并打开以下 Power BI 模板：[网络观察程序 PowerBI 流日志模板](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. 输入所需的查询参数
     1. **StorageAccountName** – 指定包含所要加载和可视化的 NSG 流日志的存储帐户的名称。
-    1. **NumberOfLogFiles** – 指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果将 2 个 NSG 启用并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
+    1. **NumberOfLogFiles** – 指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果启用 2 个 NSG 并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
 
     ![Power BI 主界面][2]
 

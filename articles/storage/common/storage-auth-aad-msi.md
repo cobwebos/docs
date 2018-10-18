@@ -1,57 +1,54 @@
 ---
-title: 通过 Azure VM 托管服务标识使用 Azure AD 验证身份（预览版）| Microsoft Docs
-description: 通过 Azure VM 托管服务标识使用 Azure AD 验证身份（预览版）。
+title: 使用 Azure 资源的 Azure Active Directory 托管标识（预览版）验证对 Blob 和队列的访问权限 - Azure 存储 | Microsoft Docs
+description: Azure Blob 和队列存储支持使用 Azure 资源的托管标识进行 Azure Active Directory 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机、函数应用、虚拟机规模集等位置中。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 09/05/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526379"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090349"
 ---
-# <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>通过 Azure 托管服务标识使用 Azure AD 验证身份（预览版）
+# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>使用 Azure 资源的 Azure 托管标识（预览版）验证对 Blob 和队列的访问权限
 
-Azure 存储支持使用[托管服务标识](../../active-directory/managed-service-identity/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 托管服务标识 (MSI) 在 Azure Active Directory (Azure AD) 中提供自动托管的标识。 可使用 MSI 从在 Azure 虚拟机、函数应用、虚拟机规模集等中运行的应用程序向 Azure 存储进行身份验证。 通过使用 MSI 并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。  
+Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机 (VM)、函数应用、虚拟机规模集等位置中。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。  
 
-若要向存储容器或队列的托管服务标识授予权限，可将包含存储权限的 RBAC 角色分配给 MSI。 有关存储中的 RBAC 角色的详细信息，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。 
+若要向 Blob 容器或队列的托管标识授予权限，请将基于角色的访问控制 (RBAC) 角色分配给托管标识，该标识包含的权限适用于适当范围的该资源。 有关存储中的 RBAC 角色的详细信息，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。 
 
-> [!IMPORTANT]
-> 此预览版仅用于非生产用途。 适用于 Azure 存储的 Azure AD 集成正式发布后，生产服务级别协议 (SLA) 方可使用。 如果你的方案尚不支持 Azure AD 集成，请继续使用应用程序中的共享密钥授权或 SAS 令牌。 有关该预览版的其他信息，请参阅[使用 Azure Active Directory进行 Azure 存储访问权限身份验证（预览版）](storage-auth-aad.md)。
->
-> 预览期间，RBAC 角色分配可能需要长达五分钟的时间进行传播。
+本文介绍如何使用 Azure VM 中的托管标识向 Azure Blob 或队列存储进行身份验证。  
 
-本文介绍如何从 Azure VM 使用 MSI 向 Azure 存储进行身份验证。  
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
-## <a name="enable-msi-on-the-vm"></a>在 VM 上启用 MSI
+## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
 
-在从 VM 使用 MSI 向 Azure 存储进行身份验证前，必须先在 VM 中启用 MSI。 若要了解如何启用 MSI，请参阅以下文章之一：
+在使用 Azure 资源的托管标识对 VM 中 Blob 和队列的访问权限进行验证之前，必须首先在 VM 上启用针对 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
 - [Azure 门户](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
-- [Azure CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
-- [Azure 资源管理器模板](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
-- [Azure SDK](../../active-directory/managed-service-identity/qs-configure-sdk-windows-vm.md)
+- [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure 资源管理器模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="get-an-msi-access-token"></a>获取 MSI 访问令牌
+## <a name="get-a-managed-identity-access-token"></a>获取托管标识访问令牌
 
-若要使用 MSI 进行身份验证，应用程序或脚本必须获取 MSI 访问令牌。 若要了解如何获取访问令牌，请参阅[如何使用 Azure VM 托管服务标识 (MSI) 获取令牌](../../active-directory/managed-service-identity/how-to-use-vm-token.md)。
+若要使用托管标识进行身份验证，应用程序或脚本必须获取托管标识访问令牌。 若要了解如何获取访问令牌，请参阅[如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
 
-代码示例假定你拥有 MSI 访问令牌。 访问令牌用于授权托管服务标识创建块 blob。
+此代码示例假定你拥有托管标识访问令牌。 访问令牌用于授权托管标识创建块 Blob。
 
 ### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
 在 Visual Studio 中，安装 Azure 存储客户端库的预览版本。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”。 在控制台中键入以下命令：
 
 ```
-Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
+Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 
 向代码添加以下 using 语句：
@@ -60,13 +57,13 @@ Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0
 using Microsoft.WindowsAzure.Storage.Auth;
 ```
 
-### <a name="create-credentials-from-the-msi-access-token"></a>通过 MSI 访问令牌创建凭据
+### <a name="create-credentials-from-the-managed-identity-access-token"></a>通过托管标识访问令牌创建凭据
 
-若要创建块 blob，请使用预览版程序包提供的 **TokenCredentials** 类。 构造新的 **TokenCredentials** 实例，传入之前获取的 MSI 访问令牌：
+若要创建块 blob，请使用预览版程序包提供的 **TokenCredentials** 类。 构造新的 **TokenCredentials** 实例，传入之前获取的托管标识访问令牌：
 
 ```dotnet
-// Create storage credentials from your MSI access token.
-TokenCredential tokenCredential = new TokenCredential(msiAccessToken);
+// Create storage credentials from your managed identity access token.
+TokenCredential tokenCredential = new TokenCredential(accessToken);
 StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
 // Create a block blob using the credentials.

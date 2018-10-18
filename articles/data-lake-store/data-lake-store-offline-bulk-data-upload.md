@@ -1,6 +1,6 @@
 ---
-title: 使用脱机方法上传大量数据到 Data Lake Store | Microsoft Docs
-description: 使用 AdlCopy 工具将数据从 Azure 存储 blob 复制到 Data Lake Store
+title: 使用脱机方法将大量数据上传到 Azure Data Lake Storage Gen1 | Microsoft Docs
+description: 使用 AdlCopy 工具将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625672"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391668"
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Store
-本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Store。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
+# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Azure Data Lake Storage Gen1
+本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Storage Gen1。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
 
 使用 Azure 导入/导出服务，可以将硬盘驱动器传送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储。
 
@@ -29,7 +29,7 @@ ms.locfileid: "34625672"
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure 存储帐户**。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>准备数据
 
@@ -66,10 +66,10 @@ ms.locfileid: "34625672"
 ## <a name="physically-ship-the-disks"></a>物理发送磁盘
 现在可以物理方式将磁盘发送到 Azure 数据中心。 随后，会在 Azure 数据中心将数据复制到创建此导入作业时提供的 Azure 存储 blob 中。 此外，创建此作业时，如果选择了稍后提供跟踪信息，则现在可返回到导入作业并更新跟踪号。
 
-## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>将数据从 Azure 存储 blob 复制到 Azure Data Lake Store
-导入作业状态显示已完成后，可验证此数据在先前指定的 Azure 存储 Blob 中是否可用。 然后可使用多种方法从 Blob 将数据移动到 Azure Data Lake Store。 有关上传数据的所有可用选项，请参阅[引入数据到 Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store)。
+## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
+导入作业状态显示已完成后，可验证此数据在先前指定的 Azure 存储 Blob 中是否可用。 然后可使用多种方法从 Blob 将数据移动到 Azure Data Lake Storage Gen1。 有关上传数据的所有可用选项，请参阅[将数据引入到 Data Lake Storage Gen1 中](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-storage-gen1)。
 
-本部分提供 JSON 定义，此定义可用于创建进行复制数据的 Azure 数据工厂管道。 可从 [Azure 门户](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md) 使用这些 JSON 定义。
+本部分提供 JSON 定义，此定义可用于创建进行复制数据的 Azure 数据工厂管道。 可以从 [Azure 门户](../data-factory/tutorial-copy-data-portal.md)或 [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md) 使用这些 JSON 定义。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>源链接服务（Azure 存储 Blob）
 ````
@@ -85,16 +85,16 @@ ms.locfileid: "34625672"
 }
 ````
 
-### <a name="target-linked-service-azure-data-lake-store"></a>目标链接服务（Azure Data Lake Store）
+### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>目标链接服务 (Azure Data Lake Storage Gen1)
 ````
 {
-    "name": "AzureDataLakeStoreLinkedService",
+    "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "description": "",
         "typeProperties": {
-            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Store with your access rights>",
-            "dataLakeStoreUri": "https://<adls_account_name>.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Storage Gen1 account with your access rights>",
+            "dataLakeStoreUri": "https://<adlsg1_account_name>.azuredatalakestore.net/webhdfs/v1",
             "sessionId": "<OAuth session id from the OAuth authorization session. Each session id is unique and may only be used once>"
         }
     }
@@ -127,7 +127,7 @@ ms.locfileid: "34625672"
 "properties": {
   "published": false,
   "type": "AzureDataLakeStore",
-  "linkedServiceName": "AzureDataLakeStoreLinkedService",
+  "linkedServiceName": "AzureDataLakeStorageGen1LinkedService",
   "typeProperties": {
     "folderPath": "/importeddatafeb8job/"
     },
@@ -187,12 +187,12 @@ ms.locfileid: "34625672"
     }
 }
 ````
-有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Data Lake Store](../data-factory/connector-azure-data-lake-store.md)。
+有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Azure Data Lake Storage Gen1](../data-factory/connector-azure-data-lake-store.md)。
 
-## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>重新构造 Azure Data Lake Store 中的数据文件
-以 319GB 大小的文件开始，将其拆分为多个更小的文件，以便可使用 Azure 导入/导出服务进行传输。 此数据已在 Azure Data Lake Store 中，因此现在可将文件重构为其原始大小。 为此，可使用以下 Azure PowerShell cmldt。
+## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>重新构造 Azure Data Lake Storage Gen1 中的数据文件
+以 319GB 大小的文件开始，将其拆分为多个更小的文件，以便可使用 Azure 导入/导出服务进行传输。 此数据已在 Azure Data Lake Storage Gen1 中，因此现在可将文件重构为其原始大小。 为此，可使用以下 Azure PowerShell cmdlet。
 
-````
+```
 # Login to our account
 Connect-AzureRmAccount
 
@@ -204,10 +204,10 @@ Set-AzureRmContext -SubscriptionId
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ````
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: f0f28d4b6573e4e6fecf0e6dd84814d4fc66cd60
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5e399a237fe533b46997365c16b75dce14149dec
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050481"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064316"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -75,6 +75,9 @@ public class TodoItem
 ```
 using Microsoft.WindowsAzure.MobileServices;
 ```
+
+> [!NOTE]
+> 请注意，在 Android 项目中引用的所有支持包必须都具有相同的版本。 对于 Android 平台，SDK 具有 `Xamarin.Android.Support.CustomTabs` 依赖项，因此，如果你的项目使用较新的支持包，请直接安装具有所需版本的此包以避免冲突。
 
 ### <a name="symbolsource"></a>如何在 Visual Studio 中使用调试符号
 [SymbolSource][10] 上提供了 Microsoft.Azure.Mobile 命名空间的符号。  要将 SymbolSource 与 Visual Studio 集成，请参阅 [SymbolSource 说明][11]。

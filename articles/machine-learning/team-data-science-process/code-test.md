@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 上使用 UCI 成人收入预测数据集进行数据科学代码测试 - Team Data Science Process 与 Visual Studio Team Services
+title: 在 Azure 上使用 UCI 成人收入预测数据集进行数据科学代码测试 - Team Data Science Process 与 Azure DevOps Services
 description: 使用 UCI 成人收入预测数据进行数据科学代码测试
 services: machine-learning, team-data-science-process
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439491"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294683"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>使用 UCI 成人收入预测数据集进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -37,8 +37,8 @@ ms.locfileid: "39439491"
 
 本文提供的参考可以作为有用的资源。
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>使用 Visual Studio Team Services 作为测试框架
-本文介绍如何使用 Visual Studio Team Services (VSTS) 来执行测试并使之自动化。 你可以自行决定是否使用替代工具。 我们还介绍如何使用 VSTS 和生成代理来设置自动生成。 对于生成代理，我们使用 Azure 数据科学虚拟机 (DSVM)。
+## <a name="azure-devops-for-the-testing-framework"></a>用于测试框架的 Azure DevOps
+本文介绍了如何使用 Azure DevOps 来执行测试并使之自动化。 你可以自行决定是否使用替代工具。 我们还介绍了如何使用 Azure DevOps 和生成代理来设置自动生成。 对于生成代理，我们使用 Azure 数据科学虚拟机 (DSVM)。
 
 ## <a name="flow-of-code-testing"></a>代码测试流
 在数据科学项目中进行代码测试的总体工作流如下所示： 
@@ -48,7 +48,7 @@ ms.locfileid: "39439491"
     
 ## <a name="detailed-steps"></a>详细步骤
 
-请执行以下步骤，使用生成代理和 VSTS 来设置并运行代码测试和自动化生成：
+请执行以下步骤，使用生成代理和 Azure DevOps 来设置并运行代码测试和自动化生成：
 
 1. 在 Visual Studio 桌面应用程序中创建一个项目：
 
@@ -60,7 +60,7 @@ ms.locfileid: "39439491"
 
     ![解决方案资源管理器](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. 将项目代码馈送到 VSTS 项目代码存储库中： 
+1. 将项目代码馈送到 Azure DevOps 项目代码存储库中： 
 
     ![项目代码存储库](./media/code-test/create_repo.PNG)
 
@@ -108,13 +108,13 @@ ms.locfileid: "39439491"
 
     ![运行测试](./media/code-test/run_tests.PNG)
 
-1. 使用 Git 命令将代码签入项目存储库中。 最新的工作会很快反映在 VSTS 中。
+1. 使用 Git 命令将代码签入项目存储库中。 最新的工作会很快反映在 Azure DevOps 中。
 
     ![用于签入代码的 Git 命令](./media/code-test/git_check_in.PNG)
 
-    ![VSTS 中的最新工作](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Azure DevOps 中的最新工作](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. 在 VSTS 中设置自动生成和测试：
+1. 在 Azure DevOps 中设置自动生成和测试：
 
     a. 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。
 
@@ -128,7 +128,7 @@ ms.locfileid: "39439491"
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
-    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以选择此处的默认设置。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts)（生成并发布代理）。
+    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以选择此处的默认设置。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
@@ -142,17 +142,17 @@ ms.locfileid: "39439491"
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. 选择“保存并排队”，完成生成定义过程。
+    g. 选择“保存并排队”，以完成生成管道过程。
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 （在这里，我们使用 master 作为存储库，但你可以定义任何分库。）此过程运行代理计算机中的 **test1.py** 文件，目的是确保代码中定义的所有内容都能正确运行。 
 
-如果警报设置正确，系统会在生成完成以后通过电子邮件通知你。 也可在 VSTS 中检查生成状态。 如果生成失败，则可检查生成的详细信息，找出出错的片段。
+如果警报设置正确，系统会在生成完成以后通过电子邮件通知你。 也可在 Azure DevOps 中检查生成状态。 如果生成失败，则可检查生成的详细信息，找出出错的片段。
 
 ![生成成功的电子邮件通知](./media/code-test/email_build_succeed.PNG)
 
-![生成成功的 VSTS 通知](./media/code-test/vs_online_build_succeed.PNG)
+![生成成功的 Azure DevOps 通知](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 * 如需通过具体的示例来了解数据科学方案的单元测试，请参阅 [UCI 收入预测存储库](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)。
@@ -161,5 +161,5 @@ ms.locfileid: "39439491"
 ## <a name="references"></a>参考
 * [团队数据科学过程](https://aka.ms/tdsp)
 * [Visual Studio 测试工具](https://www.visualstudio.com/vs/features/testing-tools/)
-* [VSTS 测试资源](https://www.visualstudio.com/team-services/)
+* [Azure DevOps 测试资源](https://www.visualstudio.com/team-services/)
 * [数据科学虚拟机](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

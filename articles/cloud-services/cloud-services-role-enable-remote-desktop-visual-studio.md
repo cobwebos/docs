@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145290"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304044"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接
 
@@ -30,7 +30,7 @@ ms.locfileid: "42145290"
 
 Visual Studio 为云服务提供的发布向导中包括一个选项，用于在发布过程中使用提供的凭据启用远程桌面。 使用 Visual Studio 2017 版本 15.4 和更低版本时，比较适合使用此选项。
 
-但是，使用 Visual Studio 2017 版本 15.5 和更高版本时，我们建议避免通过发布向导启用远程桌面，除非你是以独立的开发人员身份工作。 如果其他开发人员会打开你的项目，则应该通过 Azure 门户、PowerShell 或持续部署工作流中的发布定义启用远程桌面。 推出此建议的原因是 Visual Studio 与云服务 VM 中远程桌面的通信方式发生了变化，本文会对此做出解释。
+但是，使用 Visual Studio 2017 版本 15.5 和更高版本时，我们建议避免通过发布向导启用远程桌面，除非你是以独立的开发人员身份工作。 如果其他开发人员会打开你的项目，则应该通过 Azure 门户、PowerShell 或持续部署工作流中的发布管道启用远程桌面。 推出此建议的原因是 Visual Studio 与云服务 VM 中远程桌面的通信方式发生了变化，本文会对此做出解释。
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>通过 Visual Studio 2017 版本 15.4 和更低版本配置远程桌面
 
@@ -82,9 +82,9 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 ### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>使用 Visual Studio 2017 版本 15.5 和更高版本从生成服务器部署
 
-可以在生成代理中，从装有 Visual Studio 2017 版本 15.5 或更高版本的生成服务器（例如，使用 Visual Studio Team Services）部署云服务项目。 使用此方法时，部署将在可提供加密证书的同一台计算机上进行。
+可以在生成代理中，从装有 Visual Studio 2017 版本 15.5 或更高版本的生成服务器（例如，使用 Azure DevOps Services）部署云服务项目。 使用此方法时，部署将在可提供加密证书的同一台计算机上进行。
 
-若要使用 Visual Studio Team Services 中的 RDP 扩展，请在生成定义中包含以下详细信息：
+若要从 Azure DevOps Services 中使用 RDP 扩展，请在生成管道中包含以下详细信息：
 
 1. 在 MSBuild 参数中包含 `/p:ForceRDPExtensionOverPlugin=true`，确保部署使用 RDP 扩展而不是 RDP 插件。 例如：
 

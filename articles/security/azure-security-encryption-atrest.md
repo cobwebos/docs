@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 21438b107632166f3717c07b0fd01a56a2944f34
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 71351a979e8bb443864c975b91539c527bea7f2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294050"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033414"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -261,7 +261,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | **存储和数据库**        |                    |                    |                    |                    |                    |
 | 磁盘 (IaaS)                      | -                  | 是，RSA 2048 位  | 是               | -                  |
 | SQL Server (IaaS)                | 是                | 是，RSA 2048 位  | 是                | 是                |
-| Azure SQL 数据库 (PaaS)        | 是                | 是，RSA 2048 位  | -                  | 是                |
+| Azure SQL（数据库/数据仓库） | 是                | 是，RSA 2048 位  | -                  | 是                |
 | Azure 存储（块/页 Blob） | 是                | 是，RSA 2048 位  | -                  | 是                |
 | Azure 存储（文件）            | 是                | 是，RSA 2048 位  | -                  | -                  |
 | Azure 存储（表、队列）   | 是                | -                  | -                  | 是                |

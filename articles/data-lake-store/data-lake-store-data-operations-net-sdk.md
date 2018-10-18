@@ -1,25 +1,24 @@
 ---
-title: ".NET SDK：Azure Data Lake Store 中的文件系统操作 | Microsoft Docs"
-description: "使用 Azure Data Lake Store .NET SDK 在 Data Lake Store 上执行文件系统操作，例如创建文件夹等。"
+title: .NET SDK：对 Azure Data Lake Storage Gen1 执行的文件系统操作 | Microsoft Docs
+description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹等。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/30/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1094a5ea3c000707aa7736d22d4df0558da32b5e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 71ddbc2363075b721bfbd418bd29e5154baba866
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391481"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-net-sdk"></a>使用 .NET SDK 在 Azure Data Lake Store 上进行的文件系统操作
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的文件系统操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,16 +27,16 @@ ms.lasthandoff: 02/27/2018
 >
 >
 
-本文介绍如何使用 .NET SDK 在 Data Lake Store 上执行文件系统操作。 文件系统操作包括在 Data Lake Store 帐户中创建文件夹、上传文件、下载文件，等等。
+本文介绍如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作。 文件系统操作包括在 Data Lake Storage Gen1 帐户中创建文件夹、上传文件、下载文件，等等。
 
-若要了解如何使用 .NET SDK 在 Data Lake Store 上执行帐户管理操作，请参阅[在 Data Lake Store 上使用 .NET SDK 进行的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
+若要了解如何使用 .NET SDK 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 .NET SDK 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
@@ -85,7 +84,7 @@ ms.lasthandoff: 02/27/2018
         {
             class Program
             {
-                private static string _adlsAccountName = "<DATA-LAKE-STORE-NAME>.azuredatalakestore.net";        
+                private static string _adlsg1AccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net";        
             }
         }
 
@@ -93,21 +92,21 @@ ms.lasthandoff: 02/27/2018
 
 ## <a name="authentication"></a>身份验证
 
-* 有关应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
-* 有关应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
+* 若要了解应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
+* 若要了解应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
 
 ## <a name="create-client-object"></a>创建客户端对象
-以下代码片段创建了 Data Lake Store filesystem 客户端对象，用于向服务发出请求。
+以下代码片段创建了 Data Lake Storage Gen1 filesystem 客户端对象，用于向服务发出请求。
 
     // Create client objects
-    AdlsClient client = AdlsClient.CreateClient(_adlsAccountName, adlCreds);
+    AdlsClient client = AdlsClient.CreateClient(_adlsg1AccountName, adlCreds);
 
 ## <a name="create-a-file-and-directory"></a>创建文件和目录
 将以下代码片段添加到应用程序。 此代码片段添加一个文件，以及不存在的任何父目录。
 
     // Create a file - automatically creates any parent directories that don't exist
-    // The AdlsOuputStream preserves record boundaries - it does not break records while writing to the store
+    // The AdlsOutputStream preserves record boundaries - it does not break records while writing to the store
     using (var stream = client.CreateFile(fileName, IfExists.Overwrite))
     {
         byte[] textByteArray = Encoding.UTF8.GetBytes("This is test data to write.\r\n");
@@ -118,7 +117,7 @@ ms.lasthandoff: 02/27/2018
     }
 
 ## <a name="append-to-a-file"></a>附加到文件
-以下代码片段将数据附加到 Data Lake Store 帐户中的现有文件。
+以下代码片段将数据附加到 Data Lake Storage Gen1 帐户中的现有文件。
 
     // Append to existing file
     using (var stream = client.GetAppendStream(fileName))
@@ -128,7 +127,7 @@ ms.lasthandoff: 02/27/2018
     }
 
 ## <a name="read-a-file"></a>读取文件
-以下代码片段读取 Data Lake Store 中文件的内容。
+以下代码片段读取 Data Lake Storage Gen1 中文件的内容。
 
     //Read file contents
     using (var readStream = new StreamReader(client.GetReadStream(fileName)))
@@ -150,14 +149,14 @@ ms.lasthandoff: 02/27/2018
 [Github](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的示例中提供了 `PrintDirectoryEntry` 方法的定义。 
 
 ## <a name="rename-a-file"></a>重命名文件
-以下代码片段重命名 Data Lake Store 帐户中的现有文件。
+以下代码片段重命名 Data Lake Storage Gen1 帐户中的现有文件。
 
     // Rename a file
     string destFilePath = "/Test/testRenameDest3.txt";
     client.Rename(fileName, destFilePath, true);
 
 ## <a name="enumerate-a-directory"></a>枚举目录
-以下代码片段枚举 Data Lake Store 帐户中的目录
+以下代码片段枚举 Data Lake Storage Gen1 帐户中的目录
 
     // Enumerate directory
     foreach (var entry in client.EnumerateDirectory("/Test"))
@@ -170,17 +169,17 @@ ms.lasthandoff: 02/27/2018
 ## <a name="delete-directories-recursively"></a>以递归方式删除目录
 以下代码片段以递归方式删除目录及其所有子目录。
 
-    // Delete a directory and all it's subdirectories and files
+    // Delete a directory and all its subdirectories and files
     client.DeleteRecursive("/Test");
 
 ## <a name="samples"></a>示例
-下面是一些示例，介绍了如何使用 Data Lake Store Filesystem SDK。
+下面是一些示例，介绍了如何使用 Data Lake Storage Gen1 Filesystem SDK。
 * [Github 上的基本示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Github 上的高级示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
 ## <a name="see-also"></a>另请参阅
-* [Data Lake Store 上的帐户管理操作（使用 .NET SDK）](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Store .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 上的帐户管理操作（使用 .NET SDK）](data-lake-store-get-started-net-sdk.md)
+* [Data Lake Storage Gen1 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

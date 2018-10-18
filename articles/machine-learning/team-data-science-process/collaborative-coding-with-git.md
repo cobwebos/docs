@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: abb1c7a3f597804a84f06462b1e50bb5a63fb9b3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837355"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300063"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
@@ -28,13 +28,13 @@ ms.locfileid: "34837355"
 
 ## 1.<a name='Linkaworkitemwithagitbranch-1'></a>将工作项链接到 Git 分支 
 
-VSTS 提供了一种将工作项（情景或任务）与 Git 分支连接的简便方法。 它可以让你将情景或任务直接链接到与它关联的代码。 
+Azure DevOps Services 提供了一种将工作项（情景或任务）与 Git 分支连接的简便方法。 它可以让你将情景或任务直接链接到与它关联的代码。 
 
 若要将工作项与新分支连接，请双击工作项，然后在弹出窗口中的“+ 添加链接”下单击“创建新分支”。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-提供该新分支的相关信息，例如分支名称、基 Git 存储库和分支。 所选的 Git 存储库必须是该工作项隶属的同一个团队项目下的存储库。 基分支可以是主分支或某个其他现有分支。
+提供该新分支的相关信息，例如分支名称、基 Git 存储库和分支。 所选的 Git 存储库必须是该工作项隶属的同一个项目下的存储库。 基分支可以是主分支或某个其他现有分支。
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -70,11 +70,11 @@ VSTS 提供了一种将工作项（情景或任务）与 Git 分支连接的简�
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3.<a name='CreateapullrequestonVSTS-3'></a>在 VSTS 上创建拉取请求 
+## 3.<a name='CreateapullrequestonVSTS-3'></a>在 Azure DevOps Services 上创建拉取请求 
 
-在已完成几次提交和推送并已准备就绪后，若要将当前分支合并到它的基分支，可以在 VSTS 服务器上提交拉取请求。 
+在已完成几次提交和推送并已准备就绪后，若要将当前分支合并到它的基分支，可以在 Azure DevOps Services 上提交**拉取请求**。 
 
-转到团队项目的主页，然后单击“代码”。 选择要合并的分支及要将此分支合并到的 Git 存储库的名称。 然后单击“拉取请求”，单击“新建拉取请求”，以在将该分支上的工作合并到其基分支前先创建拉取请求评审。
+转到你的项目的主页，然后单击“代码”。 选择要合并的分支及要将此分支合并到的 Git 存储库的名称。 然后单击“拉取请求”，单击“新建拉取请求”，以在将该分支上的工作合并到其基分支前先创建拉取请求评审。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心安全策略与 Azure 策略的集成 | Microsoft Docs
-description: 本文档介绍了如何配置 Azure 安全中心安全策略与 Azure 策略的集成。
+title: Azure 安全中心安全策略可以单独进行设置或作为 Azure 策略的一部分进行设置 | Microsoft Docs
+description: 本文档介绍了如何在 Azure 安全中心或 Azure Policy 中设置策略。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,30 +9,37 @@ editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: b3d6d15d41fece613290deb2c77e980caa5dcfef
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018557"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032064"
 ---
-# <a name="integrate-security-center-security-policies-with-azure-policy"></a>集成安全中心安全策略与 Azure 策略
-本文可帮助你配置由 [Azure 策略](../azure-policy/azure-policy-introduction.md)提供支持的 Azure 安全中心安全策略。
+# <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>在安全中心或 Azure Policy 中设置安全策略
+
+本文介绍了如何配置 Azure 安全中心安全策略。 Azure 安全中心策略与 Azure 策略进行了集成，因此，可以在特定订阅上的安全中心或 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中设置这些策略，这就使你能够跨管理组和多个订阅来设置策略。
+
+## <a name="what-are-security-policies"></a>什么是安全策略？
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure 安全中心，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中进行设置。
+
+> [!NOTE]
+> 如果以前已在属于管理组或具有多个策略分配的订阅上配置过安全策略，则会在安全中心灰显这些策略，以便能够在管理组级别通过 Azure Policy 页面管理策略。 
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
-安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心内编辑策略，或者使用 Azure 策略执行以下操作：
+安全中心自动为每个 Azure 订阅创建默认的安全策略。 可以在安全中心内编辑策略，或者使用 Azure Policy 执行以下操作：
 - 创建新的策略定义。
 - 跨管理组和订阅分配策略，这些管理组和订阅可以代表整个组织，或者组织中的某个业务部门。
 - 监视策略符合性。
 
-有关 Azure 策略的详细信息，请参阅[创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)。
+有关 Azure Policy 的详细信息，请参阅[创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)。
 
-Azure 策略由以下组件构成：
+Azure Policy 由以下组件构成：
 
 - **策略**是一个规则
 - **计划**是一个策略集合
@@ -40,8 +47,17 @@ Azure 策略由以下组件构成：
 
 资源将根据分配给它的策略进行评估，并且将根据资源符合的策略数收到符合率。
 
+## <a name="who-can-edit-security-policies"></a>谁可以编辑安全策略？
+安全中心使用基于角色的访问控制 (RBAC)，提供可以分配给 Azure 中用户、组和服务的内置角色。 用户打开安全中心时，只能看到其有权访问的资源的相关信息。 这意味着，向用户分配了资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色。 除这些角色外，还有两个特定的安全中心角色：
+
+- 安全读者：有权查看安全中心，包括建议、警报、策略和运行状况，但无法进行更改。
+- 安全管理员：拥有与安全读者相同的查看权限，不同之处在于该角色有权更新安全策略、拒绝建议和关闭警报。
+
 ## <a name="edit-security-policies"></a>编辑安全策略
 可以在安全中心内为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含型管理组的所有者、参与者或安全管理员。 要在安全中心内查看安全策略，请执行以下操作：
+
+> [!NOTE]
+> 在属于管理组或具有多个策略分配的订阅上设置的任何策略在安全中心都会灰显。 你可以在 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中编辑这些策略。 
 
 1. 在“安全中心”仪表板上，在“策略和符合性”下选择“安全策略”。 此时将打开“策略管理”。
 
@@ -95,7 +111,7 @@ Azure 策略由以下组件构成：
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理策略应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的策略。 为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 若要设置用于 Azure 安全中心的管理组，请根据[为 Azure 安全中心实现租户级可见性](security-center-management-groups.md)一文中的说明进行操作。 
 
 > [!NOTE]
-> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
+> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/index.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
 >
 >
 
@@ -111,4 +127,4 @@ Azure 策略由以下组件构成：
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
 * [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
 
-若要了解有关 Azure 策略的详细信息，请参阅[什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)
+若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)

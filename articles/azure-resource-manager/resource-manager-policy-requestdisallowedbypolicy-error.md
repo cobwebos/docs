@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 474400d92660b68fd7fef906216b8e37c6e8c94d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a9993942c20f2c33d944b74fb124a363d0663ced
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094627"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -50,7 +51,7 @@ ms.lasthandoff: 05/20/2018
 
 ### <a name="azure-cli"></a>Azure CLI
 
-在 Azure CLI 2.0 中，提供策略定义的名称：
+在 Azure CLI 中，提供策略定义的名称：
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -63,5 +64,5 @@ az policy definition show --name regionPolicyAssignment
 
 有关详细信息，请参阅以下文章：
 
-- [什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)
+- [什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)
 - [创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)

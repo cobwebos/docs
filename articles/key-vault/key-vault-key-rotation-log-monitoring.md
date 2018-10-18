@@ -3,7 +3,7 @@ title: 使用端到端密钥轮替和审核设置 Azure 密钥保管库 | Micros
 description: 使用本操作指南帮助设置密钥轮替和监视密钥保管库日志。
 services: key-vault
 documentationcenter: ''
-author: swgriffith
+author: barclayn
 manager: mbaldwin
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
@@ -11,23 +11,30 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: stgriffi
-ms.openlocfilehash: 01f1f719545b554b22ef79b38f95087341c65e83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.topic: conceptual
+ms.date: 06/12/2018
+ms.author: barclayn
+ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302011"
 ---
-# <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>使用端到端密钥轮替和审核设置 Azure 密钥保管库
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮替和审核设置 Azure Key Vault
+
 ## <a name="introduction"></a>介绍
-创建密钥保管库后，可以开始使用该保管库存储密钥和机密。 应用程序不再需要保存密钥或机密，而会根据需要从密钥保管库请求密钥或机密。 这样，便可以更新密钥和机密，不会影响应用程序的行为，同时可以各种可能的方法管理密钥和机密。
+
+有了密钥保管库以后，即可使用它来存储密钥和机密。 应用程序不再需要保存密钥或机密，可以根据需要从保管库请求密钥或机密。 这样，便可以更新密钥和机密，不会影响应用程序的行为，同时可以各种可能的方法管理密钥和机密。
 
 >[!IMPORTANT]
 > 本文中的示例仅用于说明目的， 它们不应在生产环境中使用。 
 
-本文介绍了一个使用 Azure 密钥保管库存储机密的示例；在本例中，为应用程序将访问的 Azure 存储帐户密钥。 还介绍了该存储帐户密钥的计划轮替的实现。 最后，介绍了如何监视密钥保管库审核日志，并在收到意外请求时发出警报。
+本文介绍：
+
+- 一个使用 Azure Key Vault 存储机密的示例。 在本教程中，存储的机密是供应用程序访问的 Azure 存储帐户密钥。 
+- 还介绍了该存储帐户密钥的计划轮替的实现。
+- 本教程演示了如何监视密钥保管库审核日志，并在收到意外请求时发出警报。
 
 > [!NOTE]
 > 本教程不详细说明密钥保管库的初始设置。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 有关跨平台命令行接口说明，请参阅[使用 CLI 管理密钥保管库](key-vault-manage-with-cli2.md)。
@@ -35,6 +42,7 @@ ms.lasthandoff: 04/19/2018
 >
 
 ## <a name="set-up-key-vault"></a>设置密钥保管库
+
 要使应用程序能够从密钥保管库检索机密，必须先创建机密并将其上传到保管库。 此操作可通过以下方式实现：启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：
 
 ```powershell
@@ -68,6 +76,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
 Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
+
 接下来，获取所创建的机密的 URI。 这会在后续步骤中使用，在该步骤中将调用密钥保管库检索机密。 运行以下 PowerShell 命令，并记下 ID 值（即机密 URI）：
 
 ```powershell
@@ -75,6 +84,7 @@ Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>设置应用程序
+
 存储机密后，可使用代码检索并使用它。 需要执行几个步骤才能实现此目的。 第一个也是最重要的步骤是向 Azure Active Directory 注册应用程序，并让密钥保管库知道应用程序的信息，以便允许来自应用程序的请求。
 
 > [!NOTE]
@@ -82,29 +92,23 @@ Get-AzureKeyVaultSecret –VaultName <vaultName>
 >
 >
 
-打开 Azure Active Directory 的“应用程序”选项卡。
+1. 导航到 Azure Active Directory。
+2. 选择“应用注册” 
+3. 选择“新应用程序注册”，向 Azure Active Directory 添加应用程序。
 
-![在 Azure Active Directory 中打开应用程序](./media/keyvault-keyrotation/AzureAD_Header.png)
+    ![在 Azure Active Directory 中打开应用程序](./media/keyvault-keyrotation/azure-ad-application.png)
 
-选择“ADD”，向 Azure Active Directory 添加应用程序。
+4. 在“创建”部分，将应用程序类型保留为“Web 应用程序和/或 WEB API”，然后为应用程序指定名称。 为应用程序指定“登录 URL”。 该 URL 可以是需要用于此演示的任何 URL。
 
-![选择“ADD”](./media/keyvault-keyrotation/Azure_AD_AddApp.png)
+    ![创建应用程序注册](./media/keyvault-keyrotation/create-app.png)
 
-将应用程序类型保留为“Web 应用程序和/或 WEB API”，然后为应用程序命名。
+5. 将应用程序添加到 Azure Active Directory 后，会转到应用程序页。 选择“设置”，然后选择属性。 复制“应用程序 ID”值。 该值需要在后面的步骤中使用。
 
-![为应用程序命名](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
+接下来，为应用程序生成密钥，以便它可以与 Azure Active Directory 交互。 导航到“设置”下的“密钥”部分即可创建密钥。 记下在 Azure Active Directory 应用程序中新生成的密钥，以供后续步骤使用。 请注意，从此部分导航出来以后，此密钥将不可用。 
 
-为应用程序指定“登录 URL”和“应用 ID URI”。 可以在本演示中随意填写这些信息，以后也可以根据需要更改。
+![Azure Active Directory 应用密钥](./media/keyvault-keyrotation/create-key.png)
 
-![提供所需的 URI](./media/keyvault-keyrotation/AzureAD_NewApp2.png)
-
-将应用程序添加到 Azure Active Directory 后，会转到应用程序页。 单击“配置”选项卡，并查找并复制“客户端 ID”值。 记下客户端 ID 以供后续步骤使用。
-
-接下来，为应用程序生成密钥，以便它可以与 Azure Active Directory 交互。 可以在“配置”选项卡的“密钥”部分下创建此密钥。记下在 Azure Active Directory 应用程序中新生成的密钥，以供后续步骤使用。
-
-![Azure Active Directory 应用密钥](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
-
-在建立从应用程序到密钥保管库的任何调用之前，必须让密钥保管库知道应用程序及其权限。 以下命令从 Azure Active Directory 应用获取保管库名称和客户端 ID，并为应用程序授予对密钥保管库的“Get”权限。
+在建立从应用程序到密钥保管库的任何调用之前，必须让密钥保管库知道应用程序及其权限。 以下命令从 Azure Active Directory 应用获取保管库名称和应用程序 ID，并为应用程序授予对密钥保管库的“Get”访问权限。
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
@@ -160,6 +164,7 @@ var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 现在，当运行应用程序时，应该会向 Azure Active Directory 进行身份验证，并从 Azure 密钥保管库中检索机密值。
 
 ## <a name="key-rotation-using-azure-automation"></a>使用 Azure 自动化进行密钥轮替
+
 对于存储为 Azure 密钥保管库机密的值，可以使用多种选项实现其轮替策略。 机密可以手动轮替、使用 API 调用以编程方式轮替，或者通过自动化脚本轮替。 为实现本文的目的，我们将结合使用 Azure PowerShell 与 Azure 自动化更改 Azure 存储帐户访问密钥。 然后使用该新密钥更新密钥保管库机密。
 
 若要允许 Azure 自动化在密钥保管库中设置机密值，必须获取建立 Azure 自动化实例时所创建的名为“AzureRunAsConnection”的连接的客户端 ID。 可以通过从 Azure 自动化实例中选择“资产”获取此 ID。 在此处选择“连接”，并选择“AzureRunAsConnection”服务主体。 请记下“应用程序 ID”。
@@ -263,7 +268,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 接下来，[创建 Azure 函数](../azure-functions/functions-create-first-azure-function.md)以轮询存储帐户中的密钥保管库日志并选取新的事件。 这是一个按计划触发的函数。
 
-若要创建 Azure 函数，请选择“创建资源”，在 Marketplace 中搜索 _Function App_，并单击“创建”。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 也可以选择动态托管。 有关托管选项的函数的更多详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
+若要创建 Azure 函数，请选择“创建资源”，在市场中搜索 _Function App_，并单击“创建”。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 也可以选择动态托管。 有关托管选项的函数的更多详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
 
 创建 Azure 函数后，导航到它并选择计时器函数和 C\#。 然后单击“创建此函数”。
 
@@ -406,6 +411,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
        }
     }
 ```
+
 单击“保存”后，Azure Functions 将下载必需的二进制文件。
 
 切换到“**集成**”选项卡，为计时器参数指定一个要在函数中使用的有意义名称。 在上面的代码中，需要称为 *myTimer* 的计时器。 按如下所示为计时器指定 [CRON 表达式](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON)：0 \*\*\*\*\*，这会导致函数一分钟运行一次。
@@ -417,6 +423,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 现在，函数已准备就绪。 确保切换回“开发”选项卡并保存代码。 检查输出窗口中是否有任何编译错误并相应地更正。 如果代码可以编译，则代码现在应每隔一分钟检查密钥保管库日志，并将所有新事件推送到定义的服务总线队列。 每次触发该函数时，都应该看到向日志窗口写入日志记录信息。
 
 ### <a name="azure-logic-app"></a>Azure 逻辑应用
+
 接下来，必须创建一个 Azure 逻辑应用，用于选取函数推送到服务总线队列的事件、分析内容，并根据匹配的条件发送电子邮件。
 
 通过转到“新建”>“逻辑应用”，[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。

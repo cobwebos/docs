@@ -1,34 +1,34 @@
 ---
-title: 如何容器化 Azure Service Fabric 微服务（预览版）
-description: Azure Service Fabric 已添加用于容器化 Service Fabric 微服务的新功能。 此功能目前处于预览状态。
+title: 在 Windows 上容器化 Azure Service Fabric 服务
+description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: anmolah
-editor: anmolah
+editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/04/2017
+ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 3741e74e70769d186da2757b43ca60bbb1e78a1f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d3ed1ff46bf4c82a172954828ec74bae80241288
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212647"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44056694"
 ---
-# <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>如何容器化 Service Fabric Reliable Services 和 Reliable Actors（预览版）
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
 Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Services 和 Reliable Actor 的服务）。 有关详细信息，请参阅 [Service Fabric 容器](service-fabric-containers-overview.md)。
 
-此功能处于预览状态，本文提供各种步骤获取在容器内运行的服务。  
+本文档提供了有关使服务在 Windows 容器内运行的指导。
 
 > [!NOTE]
-> 此功能处于预览状态，在生产环境中不受支持。 当前此功能仅适用于 Windows。 若要运行容器，必须在包含容器的 Windows Server 2016 上运行群集。
+> 当前此功能仅适用于 Windows。 若要运行容器，必须在包含容器的 Windows Server 2016 上运行群集。
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>容器化 Service Fabric 应用程序的步骤
 
@@ -58,13 +58,22 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令。
 
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
-  ```powershell
-    $codePackagePath = 'Path to the code package to containerize.'
-    $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
-    $applicationExeName = 'Name of the ode package executable.'
-    CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
- ```
-  该脚本使用位于 $dockerPackageOutputDirectoryPath 的 Docker 项目创建文件夹。 修改生成的 Dockerfile 公开所有端口，根据需要运行安装程序脚本等。
+
+    完整 .NET
+      ```powershell
+        $codePackagePath = 'Path to the code package to containerize.'
+        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+        $applicationExeName = 'Name of the Code package executable.'
+        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
+      ```
+    .NET Core
+      ```powershell
+        $codePackagePath = 'Path to the code package to containerize.'
+        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+        $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
+        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
+      ```
+      该脚本使用位于 $dockerPackageOutputDirectoryPath 的 Docker 项目创建文件夹。 修改生成的 Dockerfile 来 `expose` 任何端口，根据需要 运行安装程序脚本等。
 
 6. 接下来需要[生成](service-fabric-get-started-containers.md#Build-Containers) Docker 容器包并将其[推送](service-fabric-get-started-containers.md#Push-Containers)到存储库。
 
@@ -79,7 +88,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
       <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
     </ContainerHost>
   </EntryPoint>
-  <!-- Pass environment variables to your container: -->    
+  <!-- Pass environment variables to your container: -->
 </CodePackage>
   ```
 
@@ -94,7 +103,24 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 </Policies>
  ```
 
-9. 若要测试此应用程序，需要将其部署到正在运行版本 5.7 或更高版本的群集。 此外，需要编辑和更新群集设置，启用此预览版功能。 请按照[本文](service-fabric-cluster-fabric-settings.md)中的步骤操作，添加下一步所示的设置。
+9. 有关配置容器隔离模式，请参阅[配置隔离模式]( https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)。 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 以下代码片段展示了如何在应用程序清单文件中指定隔离模式。
+
+ ```xml
+<Policies>
+  <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
+  ...
+  </ContainerHostPolicies>
+</Policies>
+ ```
+  ```xml
+<Policies>
+  <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+  ...
+  </ContainerHostPolicies>
+</Policies>
+ ```
+
+10. 若要测试此应用程序，需要将其部署到正在运行版本 5.7 或更高版本的群集。 对于运行时版本 6.1 或更低版本，你需要编辑并更新群集设置来启用此预览版功能。 请按照[本文](service-fabric-cluster-fabric-settings.md)中的步骤操作，添加下一步所示的设置。
 ```
       {
         "name": "Hosting",
@@ -106,7 +132,8 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
         ]
       }
 ```
-10. 接下来，将已编辑的应用程序包[部署](service-fabric-deploy-remove-applications.md)到此群集。
+
+11. 接下来，将已编辑的应用程序包[部署](service-fabric-deploy-remove-applications.md)到此群集。
 
 现在即具有运行群集的容器化 Service Fabric 应用程序。
 

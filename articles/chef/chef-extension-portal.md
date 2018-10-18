@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 52f34361d7c1f3dff47f2571a714b8be7764cc6f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259488"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378646"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>通过 Azure 门户安装 Chef 客户端
 通过 Azure 门户创建或修改 Linux 或 Windows 虚拟机时，可将 Chef 扩展添加到该虚拟机。 本文逐步讲解如何使用新 Linux 虚拟机完成该过程。
@@ -81,17 +81,17 @@ ms.locfileid: "34259488"
 
 1. 在“安装扩展”选项卡上指定以下值，然后选择“确定”。
 
-    - **Chef 服务器 URL** - 输入包含组织名称的 Chef 服务器 URL。 本演示使用了 *https://api.chef.io/organization/hessco*。
+    - **Chef 服务器 URL** - 输入包含组织名称的 Chef 服务器 URL，例如 *https://api.chef.io/organization/hessco*。
     - **Chef 节点名称** - 输入 Chef 节点名称。 这可以是任意值。
-    - **运行列表** - 输入已添加到计算机的 Chef 运行列表。 此字段可以留空。
-    - **验证客户端名称** - 输入 Chef 验证客户端名称。 本演示使用了 *tarcher-validator*。
+    - **运行列表** - 输入已添加到计算机的 Chef 运行列表。 这可以保留为空。
+    - **验证客户端名称** - 输入 Chef 验证客户端名称。 例如，*tarcher-validator*。
     - **验证密钥** - 选择包含启动计算机时使用的验证密钥的文件。 
-    - **客户端配置文件** - 选择 Chef 客户端的配置文件。 此字段可以留空。
-    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 使用空白值会安装最新版本。 此字段可以留空。
-    - **SSL 验证模式** - 选择“无”或“对等”。 本演示选择了“无”。
-    - **Chef 环境** - 输入此节点所属的 Chef 环境。 此字段可以留空。
-    - **加密数据包机密** - 选择一个文件，其中包含此计算机应有权访问的加密数据包的机密。 此字段可以留空。
-    - **Chef 服务器 SSL 证书** - 选择分配给 Chef 服务器的 SSL 证书。 此字段可以留空。
+    - **客户端配置文件** - 选择 Chef 客户端的配置文件。 这可以保留为空。
+    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 这可以保留为空。 使用空白值会安装最新版本。 
+    - **SSL 验证模式** - 选择“无”或“对等”。 对于演示，选择了“无”。
+    - **Chef 环境** - 输入此节点所属的 Chef 环境。 这可以保留为空。
+    - **加密数据包机密** - 选择一个文件，其中包含此计算机应有权访问的加密数据包的机密。 这可以保留为空。
+    - **Chef 服务器 SSL 证书** - 选择分配给 Chef 服务器的 SSL 证书。 这可以保留为空。
 
     ![在 Linux 虚拟机上安装 Chef 服务器](./media/chef-extension-portal/install-extension.png)
 

@@ -15,19 +15,21 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: a7060f9204690e5e7b84693042cecb164c36b45b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: d52ec316f9f5540d4d0d0fe0bc4e4bf778e1daf7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366331"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345434"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
-## <a name="overview"></a>概述
-本主题旨在提供将应用程序与 Azure Active Directory (AD) 集成的路线图。 以下各部分包含对一个更详细主题的简要汇总，方便用户确定此入门指南的哪些部分属于相关内容。  请单击链接深入学习每个主题。
 
-## <a name="before-you-begin-take-inventory"></a>开始前的盘点工作
-在开始将应用程序与 Azure AD 集成之前，必须知道你所在的位置，以及要前往的位置。  以下问题旨在帮助你思考 Azure AD 应用程序集成项目。
+本主题概述了将应用程序与 Azure Active Directory (AD) 进行集成的流程。 以下各部分包含对一个更详细主题的简要汇总，方便用户确定此入门指南的哪些部分属于相关内容。
+
+若要下载详细的部署计划，请参阅[后续步骤](#next-steps)。
+
+## <a name="take-inventory"></a>获取清单
+在将应用程序与 Azure AD 进行集成之前，必须知道你所在的位置，以及要前往的位置。  以下问题旨在帮助你思考 Azure AD 应用程序集成项目。
 
 ### <a name="application-inventory"></a>应用程序盘点
 * 所有应用程序的所在位置？ 其所有者是谁？
@@ -57,12 +59,16 @@ ms.locfileid: "39366331"
 
 可能最初没有所有这些问题的答案，但没有关系。  本指南可帮助你回答其中一些问题并做出一些明智的决策。
 
-## <a name="prerequisites"></a>先决条件
-* 一个 Azure 订阅和一个 Azure Active Directory 目录。  如果没有 Azure 订阅，可以尝试 30 天 Azure 免费试用版。 [试试看！](https://azure.microsoft.com/trial/get-started-active-directory/)
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>使用 Cloud Discovery 查找未批准的云应用程序
 
-## <a name="application-integration-with-azure-ad"></a>将应用程序与 Azure AD 集成
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>使用 Cloud Discovery 查找未批准的云应用程序
 如上所述，可能有些应用程序到目前为止仍不受组织的管理。  在盘点过程中，可以查找未经认可的云应用程序。 请参阅[设置 Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)。
+
+## <a name="integrating-applications-with-azure-ad"></a>将应用程序与 Azure AD 集成
+以下文章介绍了将应用程序与 Azure AD 集成的不同方法，并提供了一些指导。
+
+* [确定要使用的 Active Directory](../fundamentals/active-directory-administer.md)
+* [使用 Azure 应用程序库中的应用程序](what-is-single-sign-on.md)
+* [集成 SaaS 应用程序教程列表](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>身份验证类型
 每个应用程序可能有不同的身份验证要求。 借助 Azure AD，可对使用 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议以及密码单一登录的应用程序使用签名证书。 有关可用于 Azure AD 的应用程序身份验证类型的详细信息，请参阅[在 Azure Active Directory 中管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和[基于密码的单一登录](what-is-single-sign-on.md)。
@@ -70,27 +76,26 @@ ms.locfileid: "39366331"
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>使用 Azure AD 应用代理启用 SSO
 使用 Microsoft Azure AD 应用程序代理，可以从任何位置和任何设备安全访问专用网络中的应用程序。 在环境中安装应用程序代理连接器后，可以使用 Azure AD 轻松配置该连接器。
 
-### <a name="integrating-applications-with-azure-ad"></a>将应用程序与 Azure AD 集成
-以下文章介绍了将应用程序与 Azure AD 集成的不同方法，并提供了一些指导。
+### <a name="integrating-custom-applications"></a>集成自定义应用程序
+如果正在编写新应用程序，并想要协助开发人员利用 Azure AD 的强大功能，请参阅[指导开发人员](../active-directory-applications-guiding-developers-for-lob-applications.md)。
 
-* [确定要使用的 Active Directory](../fundamentals/active-directory-administer.md)
-* [使用 Azure 应用程序库中的应用程序](what-is-single-sign-on.md)
-* [集成 SaaS 应用程序教程列表](../saas-apps/tutorial-list.md)
+如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
 ## <a name="managing-access-to-applications"></a>管理对应用程序的访问
 以下文章介绍了在使用 Azure AD 连接器和 Azure AD 将应用程序与 Azure AD 集成之后，如何管理对应用程序的访问。
 
 * [使用 Azure AD 管理对应用的访问](what-is-access-management.md)
-* [使用 Azure AD 连接器自动化](../active-directory-saas-app-provisioning.md)
+* [使用 Azure AD 连接器自动化](user-provisioning.md)
 * [将用户分配到应用程序](../active-directory-applications-guiding-developers-assigning-users.md)
 * [将组分配到应用程序](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [共享帐户](../active-directory-sharing-accounts.md)
 
-## <a name="integrating-custom-applications"></a>集成自定义应用程序
-如果正在编写新应用程序，并想要协助开发人员利用 Azure AD 的强大功能，请参阅[指导开发人员](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+## <a name="next-steps"></a>后续步骤
+若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过 [Azure 门户](https://portal.azure.com)下载适用于单一登录、条件性访问和用户预配的部署计划。 
 
-如果想要将自定义应用程序添加到 Azure 应用程序库，请参阅[使用 Azure AD 自助 SAML 配置加入自己的应用](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
+若要从 Azure 门户下载部署计划，请执行以下操作：
 
-## <a name="see-also"></a>另请参阅
-* [有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“企业应用程序” | “选取应用” | “部署计划”。
 
+通过完成[部署计划调查](https://aka.ms/DeploymentPlanFeedback)来提供有关部署计划的反馈。

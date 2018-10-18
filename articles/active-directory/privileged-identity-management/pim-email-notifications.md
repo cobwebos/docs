@@ -11,28 +11,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190170"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303058"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
-当 Azure AD Privileged Identity Management (PIM) 中发生关键事件时，电子邮件通知将发送给相关管理员或用户。 例如，PIM 会针对以下事件发送电子邮件：
+当 Azure AD Privileged Identity Management (PIM) 中发生关键事件时，会发送电子邮件通知。 例如，PIM 会针对以下事件发送电子邮件：
 
 - 当特权角色激活时正在等待审批时
-- 当特权角色激活请求已批准时
+- 当特权角色激活请求已完成时
 - 当特权角色已激活时
 - 当特权角色已分配时
 - 当 Azure AD PIM 已启用时
 
-从 2018 年 7 月底开始，通过 PIM 发送的电子邮件通知将具有新的发件人电子邮件地址和新的可视化设计。 此更新将影响用于 Azure AD 的 PIM 和用于 Azure 资源的 PIM。 之前触发电子邮件通知的所有事件将继续发送电子邮件。 一些电子邮件将更新内容，提供更有针对性的信息。
+电子邮件通知将发送给以下管理员：
+
+- 特权角色管理员
+- 安全管理员
+
+电子邮件通知还将发送给对以下事件具有特权角色的最终用户：
+
+- 当特权角色激活请求已完成时
+- 当特权角色已分配时
+
+从 2018 年 7 月底开始，通过 PIM 发送的电子邮件通知具有新的发件人电子邮件地址和新的可视化设计。 此更新将影响用于 Azure AD 的 PIM 和用于 Azure 资源的 PIM。 之前触发电子邮件通知的所有事件将继续发送电子邮件。 一些电子邮件将更新内容，提供更有针对性的信息。
 
 ## <a name="sender-email-address"></a>发件人电子邮件地址
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: b57b77f5adfa3fb73372ac8297f408fb339b5d79
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837423"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301083"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
 
@@ -31,7 +31,7 @@ ms.locfileid: "34837423"
 2. 向冲刺添加工作项。 
 
 > [!NOTE]
-> 下面一组说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 它们指定了如何使用 VSTS 完成这些任务，因为这是在 Microsoft 中实现 TDSP 的方法。  前面的列表中的第 3 项和第 4 项是选择使用 VSTS 后必然会获得的权益。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。 例如，第 6 部分“将工作项与 Git 分支链接在一起”中的项目可能不会和在 VSTS 上的操作一样简单。
+> 下面的一组说明概述了使用 Azure DevOps Services 设置 TDSP 团队环境所需的步骤。 它们指定了如何使用 Azure DevOps Services 完成这些任务，因为这是在 Microsoft 中实现 TDSP 的方法。  前面的列表中的第 3 项和第 4 项是选择使用 Azure DevOps Services 后必然会获得的权益。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。 例如，第 6 部分**将工作项与 Git 分支链接在一起**中的项目可能不会和在 Azure DevOps Services 上的操作一样简单。
 >
 >
 
@@ -42,7 +42,7 @@ ms.locfileid: "34837423"
 
 ##  1.<a name='Terminology-1'></a>术语 
 
-在 TDSP 冲刺规划框架中，有四种频繁使用的工作项类型：功能、用户情景、任务和 Bug。 每个团队项目维持一个针对所有工作项的积压工作。 团队项目下没有 git 存储库级别的积压工作。 以下是它们的定义：
+在 TDSP 冲刺规划框架中，有四种频繁使用的工作项类型：功能、用户情景、任务和 Bug。 每个项目都维护一个针对所有工作项的积压工作。 在项目下的 git 存储库级别没有积压工作。 以下是它们的定义：
 
 - 功能：一个功能对应一个项目协定。 将客户端的不同协定视为不同的功能。 同样，最好将客户端的项目的不同阶段视为不同的功能。 如果选择类似 ClientName-EngagementName 的架构为功能命名，则可以通过名称轻松识别出项目/协定的上下文。
 - 情景：情景是端到端完成功能（项目）所需的不同工作项。 情景示例包括：
@@ -69,14 +69,14 @@ ms.locfileid: "34837423"
 
 ## 2.<a name='SprintPlanning-2'></a>冲刺规划 
 
-冲刺规划有助于设置项目优先级、进行资源规划和分配。 许多数据科学家同时参与了多个项目，每个项目可能都需要数月才能完成。 项目的进展速度通常会有所不同。 在 VSTS 服务器上，你可以轻松创建、管理和跟踪团队项目的工作项，并执行冲刺规划来确保项目按预期进行。 
+冲刺规划有助于设置项目优先级、进行资源规划和分配。 许多数据科学家同时参与了多个项目，每个项目可能都需要数月才能完成。 项目的进展速度通常会有所不同。 在 Azure DevOps Services 上，你可以轻松创建、管理和跟踪项目的工作项，并执行冲刺规划来确保项目按预期进行。 
 
-请访问[此链接](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning)获取有关 VSTS 中的冲刺规划的分步说明。 
+请访问[此链接](https://www.visualstudio.com/en-us/docs/work/scrum/sprint-planning)获取有关 Azure DevOps Services 中的冲刺规划的分步说明。 
 
 
 ## 3.<a name='AddFeature-3'></a>添加功能  
 
-在团队项目中创建项目存储库后，转到团队“概述”页，然后单击“管理工作”。
+在项目中创建项目存储库后，转到团队“概述”页，然后单击“管理工作”。
 
 ![2](./media/agile-development/2-sprint-team-overview.png)
 
@@ -161,11 +161,11 @@ ms.locfileid: "34837423"
 
 创建数据科学流程模板之后，可以创建和跟踪对应于 TDSP 生命周期的数据科学工作项。
 
-1. 创建新的团队项目时，请选择“Agile\AgileDataScienceProcess”作为“工作项流程”：
+1. 创建新项目时，请选择“Agile\AgileDataScienceProcess”作为“工作项流程”：
 
     ![15](./media/agile-development/15-newproject.png)
 
-2. 导航到新建的团队项目，单击“工作” -> “积压工作”。
+2. 导航到新建的项目，单击“工作” -> “积压工作”。
 
 3. 单击“配置团队设置”使“TDSP 项目”可见，并选中“TDSP 项目”；保存设置。
 

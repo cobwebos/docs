@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: e3e8c843437558c6d5d3a3c39bed1e647f852b18
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593392"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063757"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "27593392"
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin.Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
@@ -187,6 +187,12 @@ ms.locfileid: "27593392"
 
     此代码可确保验证器在应用加载前进行初始化。
 8. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
+
+### <a name="troubleshooting"></a>故障排除
+
+**应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
+
+在某些情况下，支持包中的冲突在 Visual Studio 中仅显示为警告，但应用程序在运行时会崩溃并显示此异常。 在这种情况下，你需要确保在项目中引用的所有支持包都具有相同的版本。 对于 Android 平台，[Azure 移动应用 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)具有 `Xamarin.Android.Support.CustomTabs` 依赖项，因此，如果你的项目使用较新的支持包，则你需要直接安装具有所需版本的此包以避免冲突。
 
 ## <a name="add-authentication-to-the-ios-app"></a>向 iOS 应用添加身份验证
 本部分演示如何在 iOS 应用项目中实现 **IAuthenticate** 接口。 如果不要支持 iOS 设备，请跳过本部分。

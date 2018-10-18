@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4b13d2d277721d37a6b96f6640377c875f0b5c0f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206430"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161571"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 本文介绍一些常见的故障模式，如果未正确建模和管理，这些故障可能成为灾难。 本文还介绍发生灾难时应采取的缓解措施和行动。 目标是在发生计划内或其他故障时，限制或消除停机或数据丢失风险。
@@ -99,9 +99,9 @@ Service Fabric 的目标几乎始终是自动管理故障。 但是，若要处�
     - 对于没有永久性状态的服务，仲裁或多个副本故障会立即导致永久性仲裁丢失。 Service Fabric 在有状态、非永久性服务中检测到仲裁丢失时，会立即通过声明（潜在的）数据丢失转到步骤 3。 转到数据丢失是有意义的，因为 Service Fabric 知道等待副本恢复没有任何意义，这是因为即使副本恢复，也将是空副本。
     - 对于有状态、永久性服务，仲裁或多个副本故障会导致 Service Fabric 开始等待副本恢复并还原仲裁。 这会对服务的受影响分区（或“副本集”）的任何写入造成服务中断。 但是，仍有可能可以读取，其一致性保证降低。 Service Fabric 等待仲裁恢复的默认时间是无限的，因为处理是（潜在的）数据丢失事件并伴有其他风险。 可以替代默认的 `QuorumLossWaitDuration` 值，但不建议这样做。 此时应该尽量还原发生故障的副本。 这需要备份发生故障的节点，并确保其可以将驱动器重新装载到存储本地永久性状态的位置。 如果仲裁丢失由进程故障导致，则 Service Fabric 会自动尝试重新创建进程并重启其中的副本。 如果失败，Service Fabric 会报告运行状况错误。 如果能够解决这些问题，副本通常可以恢复。 但是，副本有时不能恢复。 例如，驱动器可能全部发生故障，或者计算机由于某种原因遭到物理破坏。 这些情况属于永久性仲裁丢失事件。 若要指示 Service Fabric 停止等待发生故障的副本恢复，群集管理员必须确定哪些服务的哪些分区受到了影响，并调用 `Repair-ServiceFabricPartition -PartitionId` 或 ` System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API。  使用此 API 可以指定分区 ID，使其从仲裁丢失转为潜在的数据丢失。
 
-> [!NOTE]
-> 为了确保安全，请务必针对特定分区有目标地使用此 API。 
->
+  > [!NOTE]
+  > 为了确保安全，请务必针对特定分区有目标地使用此 API。 
+  >
 
 3. 确定有无实际数据丢失，并从备份还原
   - 如果 Service Fabric 调用 `OnDataLossAsync` 方法，这始终是因为疑似数据丢失。 Service Fabric 可确保将此调用传送到最合适的剩余副本。 也就是进度最大的副本。 我们总是将其称为疑似数据丢失，这是因为剩余副本在发生故障时实际上可能与主要副本具有完全相同的状态。 但是，如果没有该状态作为对比，Service Fabric 或操作者就没有很好的方法来明确这一点。 此时，Service Fabric 还知道其他副本不会恢复。 这是当我们停止等待仲裁丢失自行解决时所做的决策。 服务采取的最佳做法通常是冻结并等待特定的管理员介入。 那么 `OnDataLossAsync` 方法所执行的典型实现是什么？

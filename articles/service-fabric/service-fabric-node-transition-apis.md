@@ -1,5 +1,5 @@
 ---
-title: 启动和停止群集节点以测试 Azure 微服务 |Microsoft Docs
+title: 启动和停止群集节点来测试 Azure Service Fabric 应用 |Microsoft Docs
 description: 通过启动和停止集群节点，了解如何使用错误注入来测试 Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 0ed18097fa18101c237b4408d26dd1bc9c5d5648
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 95c3726caeb19d6bbf7153533951bb18cd7d0e57
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212572"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055397"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
 
@@ -285,6 +285,6 @@ ms.locfileid: "34212572"
 [startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN#System_Fabric_FabricClient_FaultManagementClient_StartNodeAsync_System_String_System_Numerics_BigInteger_System_String_System_Int32_System_Fabric_CompletionMode_System_Threading_CancellationToken_
 [startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
 [nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient#System_Fabric_FabricClient_QueryClient_GetNodeListAsync_System_String_
-[nodequeryps]: https://docs.microsoft.com/powershell/servicefabric/vlatest/Get-ServiceFabricNode?redirectedfrom=msdn
+[nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
 [snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartNodeTransitionAsync_System_Fabric_Description_NodeTransitionDescription_System_TimeSpan_System_Threading_CancellationToken_
 [gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_GetNodeTransitionProgressAsync_System_Guid_System_TimeSpan_System_Threading_CancellationToken_

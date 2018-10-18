@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f71d4c7dc94fedfd598ab87c51366ba9fb1f184a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063029"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034259"
 ---
 # <a name="set-up-a-device-template"></a>设置设备模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "37063029"
 
 - 显示设备全方位视图的仪表板
 
-在此设备模板中，操作员可以创建和连接名为 **fan-1** 和 **fan-2** 等的真实风扇设备。 所有这些风扇具有度量、设置、属性、规则和仪表板，应用程序用户可对其进行监视和管理。
+在此设备模板中，操作员可以创建和连接名为 **fan-1** 和 **fan-2** 等的真实风扇设备。 所有风扇都具有度量、设置、属性、规则和仪表板，应用程序用户可对其进行监视和管理。
 
 > [!NOTE]
 > 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以在“Device Explorer”页中基于现有的设备模板创建设备。
@@ -63,7 +63,7 @@ ms.locfileid: "37063029"
 - **状态**度量表示设备或其组件在一段时间内的状态。 例如，可将“正在运行”和“已停止”定义为风扇模式的两种可能状态。
 
 ### <a name="create-a-telemetry-measurement"></a>创建遥测度量
-若要添加新的遥测度量，请选择“+ 新建度量”按钮。 选择“遥测”作为度量类型，在“创建遥测”窗体中输入详细信息。
+若要添加新的遥测度量，请选择“编辑模版”，然后单击“+ 新建度量”按钮。 选择“遥测”作为度量类型，在“创建遥测”窗体中输入详细信息。
 
 > [!NOTE]
 > 连接真实设备后，请注意设备报告的度量名称。 该名称必须与度量的“字段名称”条目完全匹配。
@@ -72,12 +72,13 @@ ms.locfileid: "37063029"
 
 ![包含温度度量详细信息的“创建遥测”窗体](./media/howto-set-up-template/measurementsform.png)
 
-选择“保存”后，度量列表中会出现“温度”度量。 操作员可以查看设备正在收集的温度数据的可视化。
+选择“完成”后，度量列表中会出现“温度”度量。 操作员可以查看设备正在收集的温度数据的可视化。
 
-![度量图](./media/howto-set-up-template/measurementsgraph.png)
+> [!NOTE]
+  遥测度量的数据类型为 double。
 
 ### <a name="create-an-event-measurement"></a>创建事件度量
-若要添加新的时间度量，请选择“+ 新建度量”按钮。 选择“事件”作为度量类型，在“创建事件”窗体中输入详细信息。
+若要添加新的事件度量，请选择“编辑模版”，然后单击“+ 新建度量”按钮。 选择“事件”作为度量类型，在“创建事件”窗体中输入详细信息。
 
 提供了事件“显示名称”、“字段名称”和“严重性”的详细信息。 可以从三个可用的严重性级别中选择：“错误”、“警告”和“信息”。  
 
@@ -85,17 +86,19 @@ ms.locfileid: "37063029"
 
 ![包含风扇电机事件详细信息的“创建事件”窗体](./media/howto-set-up-template/eventmeasurementsform.png)
 
-选择“保存”后，度量列表中会出现“风扇电机错误”度量。 操作员可以查看设备正在发送的事件数据的可视化。
+选择“完成”后，度量列表中会出现“风扇电机错误”度量。 操作员可以查看设备正在发送的事件数据的可视化。
 
 ![事件度量图表](./media/howto-set-up-template/eventmeasurementschart.png)
 
-若要查看有关事件的详细信息，请在图表中选择相应的事件图标：
+若要查看有关事件的详细信息，请在图表中选择相应的事件图标。
 
 ![“风扇电机错误”事件详细信息](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
+> [!NOTE]
+  事件度量的数据类型为字符串。
 
 ### <a name="create-a-state-measurement"></a>创建状态度量
-若要添加新的状态度量，请选择“+ 新建度量”按钮。 选择“状态”作为度量类型，在“创建状态”窗体中输入详细信息。
+若要添加新的状态度量，请选择“编辑模版”，然后单击“+ 新建度量”按钮。 选择“状态”作为度量类型，在“创建状态”窗体中输入详细信息。
 
 提供了状态“显示名称”、“字段名称”和“值”的详细信息。 每个值还可能附带一个显示名称，在图表和表格中显示该值时，会使用该名称。
 
@@ -103,14 +106,14 @@ ms.locfileid: "37063029"
 
 ![带有风扇模式详细信息的“编辑状态”窗体](./media/howto-set-up-template/statemeasurementsform.png)
 
-选择“保存”后，度量列表中会出现“风扇模式”状态度量。 操作员可以查看设备正在发送的状态数据的可视化。
+选择“完成”后，度量列表中会出现“风扇模式”状态度量。 操作员可以查看设备正在发送的状态数据的可视化。
 
 ![状态度量图表](./media/howto-set-up-template/statemeasurementschart.png)
 
 如果设备在短时间内发送了过多的数据点，状态度量会以不同的视觉效果显示，如以下屏幕截图所示。 如果单击图表，该时间段内的所有数据点将按时间顺序显示。 还可以缩小时间范围，以查看图表上绘制的度量值。
 
-![“静态风扇模式”状态度量的详细信息](./media/howto-set-up-template/statemeasurementsdetail.png)
-
+> [!NOTE]
+  状态度量的数据类型为字符串。
 
 ## <a name="settings"></a>设置
 
@@ -127,13 +130,13 @@ ms.locfileid: "37063029"
 
 - **错误**：设备返回了错误。
 
-例如，可以添加新的风扇速度设置：
+例如，可以通过选择“编辑模板”并输入新设置来添加新的风扇速度设置：
 
 ![包含速度设置详细信息的“配置编号”窗体](./media/howto-set-up-template/settingsform.png)
 
 选择“保存”后，“风扇速度”设置会显示为磁贴，随时可以使用该设置来更改设备的风扇速度。
 
-创建磁贴后，可以试用新的设置。 首先，在屏幕右上角关闭设计模式。
+创建磁贴后，可以试用新的设置。 首先，在屏幕右上角选择“完成”。
 
 ![包含磁贴“设计模式”开关的“设置”选项卡](./media/howto-set-up-template/settingstile.png)
 
@@ -149,7 +152,7 @@ ms.locfileid: "37063029"
 > [!NOTE]
 > 对于设备属性，在连接真实设备后，请注意设备报告的属性名称。 该名称必须与属性的“字段名称”条目完全匹配。 对于应用程序属性，字段名称可以是任意所需内容，只要该名称在设备模板中唯一即可。
 
-例如，可以添加设备位置作为新属性：
+例如，可以通过选择“编辑模板”并输入新属性来添加设备位置作为一个新属性：
 
 ![“属性”选项卡上的“配置文本”窗体](./media/howto-set-up-template/propertiesform.png)
 
@@ -157,7 +160,7 @@ ms.locfileid: "37063029"
 
 ![位置磁贴](./media/howto-set-up-template/propertiestile.png)
 
-创建磁贴后，可以更改属性值。 首先，在屏幕右上角关闭设计模式。
+创建磁贴后，可以更改属性值。 首先，在屏幕右上角选择“完成”。
 
 ### <a name="create-a-location-property-through-azure-maps"></a>通过 Azure Maps 创建位置属性
 可以在 Azure IoT Central 中为位置数据提供地理上下文，并映射街道地址的任何纬度和经度坐标。 或者仅映射纬度和经度坐标。 Azure Maps 在 IoT Central 中启用此功能。
@@ -169,7 +172,7 @@ ms.locfileid: "37063029"
 #### <a name="add-location-as-an-application-property"></a>添加应用程序位置属性 
 可以在 IoT Central 应用程序中使用 Azure Maps 将位置属性创建为应用程序属性。 例如，可以添加设备安装地址。 
 
-1. 在“属性”选项卡上，确保“设计模式”为“打开”状态。
+1. 在“属性”选项卡上，选择“编辑模板”。
 
    ![“设计模式”打开状态下的“属性”选项卡](./media/howto-set-up-template/locationcloudproperty1.png)
 
@@ -182,17 +185,13 @@ ms.locfileid: "37063029"
    - **作为地址的位置**
    - **作为坐标的位置** 
 
-4. 选择“保存”。 
-
-   ![带有添加的安装地址的位置属性](./media/howto-set-up-template/locationcloudproperty3.png)
-
-现在，操作员可以用位置字段格式更新位置值。 
+4. 选择“保存”和“完成”。 现在，操作员可以用位置字段格式更新位置值。 
 
 #### <a name="add-location-as-a-device-property"></a>添加设备位置属性 
 
 可以将位置属性创建为由设备报告的设备属性。 例如，如果想要跟踪设备位置，则可以：
 
-1. 在“属性”选项卡上，确保“设计模式”为“打开”状态。
+1. 在“属性”选项卡上，选择“编辑模板”。
 
    ![“设计模式”打开状态下的“属性”选项卡](./media/howto-set-up-template/locationdeviceproperty1.png)
 
@@ -216,13 +215,13 @@ ms.locfileid: "37063029"
 
 * **命令**：你可以使用命令在来自远程 IoT Central 的设备上立即运行命令。 如果未连接设备，则命令超时并失败。 例如，想要重新启动设备的情况。  
 
-运行命令时，它可以处于三种状态之一，具体取决于设备是否收到命令。 
+运行命令时，它可以处于三种状态之一，具体取决于设备是否收到命令。
 
-例如，可以添加新的 Echo 命令：
+例如，可以通过选择“编辑模板”，然后单击“+ 新建命令”，并输入新命令来添加一个新的 Echo 命令：
 
 ![包含 echo 详细信息的“配置命令”窗体](./media/howto-set-up-template/commandsecho.png)
 
-选择“保存”后、Echo 命令作为磁贴显示并已准备好用于回显设备。
+选择“保存”和“完成”后，Echo 命令会作为磁贴显示并已准备好用于回显设备。
 
 创建磁贴后，可以试用新的命令。
 
@@ -236,7 +235,7 @@ ms.locfileid: "37063029"
 
 操作员可以转到仪表板来查看有关设备的信息。 构建人员可在此页中添加磁贴，以帮助操作员了解设备的行为。 可将多个仪表板磁贴添加到设备模板。 你可以添加六种类型的仪表板磁贴：图像、折线图、条形图、KPI、设置和属性，以及标签。
 
-例如，可以添加“设置和属性”磁贴，以显示所需的当前设置和属性值：
+例如，可以通过选择“编辑模板”和库中的磁贴，添加“设置和属性”磁贴，以显示所选设置和属性的当前值：
 
 ![带有设置和属性详细信息的“配置设备详细信息”窗体](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
 
@@ -248,12 +247,12 @@ ms.locfileid: "37063029"
 
 如果你之前在[通过 Azure Maps 创建位置属性](#create-a-location-property-through-azure-maps)中配置了位置属性，则可以使用设备仪表板中的地图来可视化位置。
 
-1. 在“仪表板”选项卡上，确保“设计模式”为“打开”状态。
+1. 在“仪表板”选项卡上，选择“编辑模板”。
 
    ![“设计模式”打开状态下的“仪表板”选项卡](./media/howto-set-up-template/locationcloudproperty4map.png)
 
 2. 在“设备仪表板”中，从库中选择“地图”。 
-3. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
+3. 为其指定一个标题，并选择之前已配置为设备属性一部分的位置属性。
 
    ![带有标题和属性详细信息的“配置地图”窗体](./media/howto-set-up-template/locationcloudproperty5map.png)
 
@@ -261,11 +260,7 @@ ms.locfileid: "37063029"
 
    ![带有选定位置的地图图块](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-可以根据需要重设地图大小。
-
-现在，当操作员查看仪表板时，他们可以看到已配置的所有仪表板磁贴，包括位置地图。
-
-![仪表板上的磁贴](./media/howto-set-up-template/locationcloudproperty7map.png) 
+可以根据需要重设地图大小。 现在，当操作员查看仪表板时，他们可以看到已配置的所有仪表板磁贴，包括位置地图。
 
 ## <a name="next-steps"></a>后续步骤
 

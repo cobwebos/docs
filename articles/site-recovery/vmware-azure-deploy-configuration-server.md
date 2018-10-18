@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666426"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025270"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -42,7 +42,7 @@ ms.locfileid: "43666426"
 | 12 个 vCPU（2 个插槽 * 6 个核心 \@ 2.5 GHz） |18 GB |600 GB |500 GB 到 1 TB |复制 100-150 台计算机。 |
 | 16 个 vCPU（2 个插槽 * 8 个核心 \@ 2.5 GHz） |32 GB |1 TB |1 TB 到 2 TB |复制 150-200 台计算机。 |
 
-如果要复制多个 VMware VM，请阅读[容量规划注意事项](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
+如果要复制多个 VMware VM，请阅读[容量规划注意事项](site-recovery-plan-capacity-vmware.md)。 为 VMWare 复制运行 [Deployment Planner 工具](site-recovery-deployment-planner.md)。
 
 ## <a name="download-the-template"></a>下载模板
 
@@ -121,19 +121,19 @@ ms.locfileid: "43666426"
 
 1. 可以使用安装有配置服务器的 VM 实现其他用途吗？
 
-    不可以，我们建议仅将 VM 用于配置服务器。 请确保遵循[上一部分](vmware-azure-deploy-configuration-server.md#Prerequisites)中所述的所有规范，以便有效管理灾难恢复。
+    不可以，我们建议仅将 VM 用于配置服务器。 请确保遵循[先决条件](#prerequisites)中所述的所有规范，以便有效管理灾难恢复。
 2. 可以将已在配置服务器中注册的保管库切换为新创建的保管库吗？
 
     不可以，将保管库注册到配置服务器后，就无法更改。
 3. 可以使用同一配置服务器来同时保护物理计算机和虚拟机吗？
 
-    可以，同一配置服务器可以用于复制物理计算机和虚拟机。 但是，物理计算机仅可故障回复到 VMware VM。
+    **可以**，同一配置服务器可以用于复制物理计算机和虚拟机。 但是，物理计算机仅可故障回复到 VMware VM。
 4. 配置服务器有何用途，可用于何处？
 
-    请在[此处](vmware-azure-architecture.md)参阅我们的 Azure Site Recovery 体系结构，详细了解配置服务器及其功能。
+    请参阅 [VMware 到 Azure 复制体系结构](vmware-azure-architecture.md)来详细了解配置服务器及其功能。
 5. 在哪里可以找到最新版本的配置服务器？
 
-    请参阅[门户中](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)有关升级配置服务器的步骤的文章。 还可以从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)直接下载。
+    有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 还可以从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)直接下载。
 6. 在哪里可以下载配置服务器的密码？
 
     请参阅[本文](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)下载密码。
@@ -143,7 +143,7 @@ ms.locfileid: "43666426"
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-要将配置服务器升级到最新版本，请阅读[此处](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)提供的步骤
+若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。
 
 ## <a name="manage-the-configuration-server"></a>管理配置服务器
 

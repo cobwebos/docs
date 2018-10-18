@@ -1,33 +1,34 @@
 ---
-title: "使用 VSTS 和 Azure Application Insights 连续监视 DevOps 发布管道 | Microsoft Docs"
-description: "提供有关快速设置以启用 Application Insights 连续监视的说明"
+title: 使用 Azure DevOps 和 Azure Application Insights 连续监视 DevOps 发布管道 | Microsoft Docs
+description: 提供有关快速设置以启用 Application Insights 连续监视的说明
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/13/2017
 ms.service: application-insights
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301612"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
-Visual Studio Team Services (VSTS) 与 Azure Application Insights 集成，可连续监视整个软件开发生命周期内的 DevOps 发布管道。 
+Azure DevOps Services 与 Azure Application Insights 集成，可连续监视整个软件开发生命周期内的 DevOps 发布管道。 
 
-VSTS 现在支持连续监视，因此发布管道可以结合来自 Application Insights 和其他 Azure 资源的监视数据。 检测到 Application Insights 警报时，部署可以保持封闭或回退，直到警报解除。 如果所有检查都通过，可以从测试到生产全程自动执行部署，无需手动干预。 
+Azure DevOps Services 现在支持连续监视，因此发布管道可以结合来自 Application Insights 和其他 Azure 资源的监视数据。 检测到 Application Insights 警报时，部署可以保持封闭或回退，直到警报解除。 如果所有检查都通过，可以从测试到生产全程自动执行部署，无需手动干预。 
 
 ## <a name="configure-continuous-monitoring"></a>配置连续监视
 
-1. 选择现有 VSTS 项目。
+1. 选择一个现有的 Azure DevOps Services 项目。
 
 2. 将鼠标悬停在“生成和发布”上 > 选择“版本”，依次单击加号 > “创建发布定义”>搜索“监视” >  使用连续监视的 Azure App Service 部署。
 
-   ![新 VSTS 发布定义](.\media\app-insights-continuous-monitoring\001.png)
+   ![新建 Azure DevOps Services 发布管道](.\media\app-insights-continuous-monitoring\001.png)
 
 3. 单击“应用”。
 
@@ -39,8 +40,8 @@ VSTS 现在支持连续监视，因此发布管道可以结合来自 Application
 
     | 参数        | 值 |
    | ------------- |:-----|
-   | **环境名称**      | 描述发布定义环境的名称 |
-   | **Azure 订阅** | 下拉列表中填充的内容是链接到 VSTS 帐户的所有 Azure 订阅|
+   | **环境名称**      | 描述发布管道环境的名称 |
+   | **Azure 订阅** | 下拉列表中填充的内容是链接到 Azure DevOps Services 组织的所有 Azure 订阅|
    | **应用服务名称** | 此字段可能需要手动输入新值，具体取决于其他选择 |
    | **资源组**    | 下拉列表的填充内容是可用资源组 |
    | **Application Insights 资源名称** | 下拉列表填充的内容是与之前选定资源组对应的所有 Application Insights 资源。
@@ -73,7 +74,7 @@ VSTS 现在支持连续监视，因此发布管道可以结合来自 Application
 
 3. 选择“Azure Monitor”（此选项使你能够从 Azure Monitor 和 Application Insights 访问警报）
 
-    ![Azure 监视器](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
 
 4. 输入“入口超时”值。
 
@@ -89,4 +90,4 @@ VSTS 现在支持连续监视，因此发布管道可以结合来自 Application
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解其他 VSTS 版本和发布，请参阅这些[快速入门](https://docs.microsoft.com/vsts/build-release/)。
+若要详细了解 Azure Pipelines，请尝试使用这些[快速入门](https://docs.microsoft.com/azure/devops/pipelines)。

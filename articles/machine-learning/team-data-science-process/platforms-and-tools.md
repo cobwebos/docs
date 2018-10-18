@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951135"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302854"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>用于数据科学团队项目的平台和工具
+# <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
 Microsoft 为云或本地平台提供整套数据和分析服务与资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
@@ -126,7 +126,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>在 Linux (CentOS) 计算机上生成公共 SSH 密钥
 
-如果使用 Linux (CentOS) 计算机运行 git 命令，需要将计算机的公共 SSH 密钥添加到 VSTS 服务器，使 VSTS 服务器能够识别此计算机。 首先，需要生成公共 SSH 密钥，并在 VSTS 安全设置页中将该密钥添加到 SSH 公钥。 
+如果使用 Linux (CentOS) 计算机运行 git 命令，需要将计算机的公共 SSH 密钥添加到 Azure DevOps Services，使 Azure DevOps Services 能够识别此计算机。 首先，需要生成公共 SSH 密钥，并在 Azure DevOps Services 安全设置页中将该密钥添加到 SSH 公钥。 
 
 - 若要生成 SSH 密钥，请运行以下两条命令： 
 
@@ -136,7 +136,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - 复制整个 SSH 密钥，包括 *ssh-rsa*。 
-- 登录到 VSTS 服务器。 
+- 登录到 Azure DevOps Services。 
 - 单击页面右上角的“<你的姓名\>”，再单击“安全性”。 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)

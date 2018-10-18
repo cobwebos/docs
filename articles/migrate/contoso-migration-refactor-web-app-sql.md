@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: 370f90f0bbc2ebdb386aca5f47b909640271dbbf
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783042"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040527"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso 迁移：将本地应用重构到 Azure Web 应用和 Azure SQL 数据库
 
@@ -22,21 +22,21 @@ ms.locfileid: "43783042"
 
 **文章** | **详细信息** | **Status**
 --- | --- | ---
-[文章 1：概述](contoso-migration-overview.md) | 概述文章系列、Contoso 的迁移策略和该系列所用的示例应用。 | 可用
-[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | Contoso 准备其本地和 Azure 基础结构进行迁移。 该系列的所有迁移文章共用同一个基础结构。 | 可用
-[文章 3：评估要迁移到 Azure 的本地资源](contoso-migration-assessment.md)  | Contoso 评估 VMware 上运行的本地 SmartHotel360 应用。 Contoso 使用 Azure Migrate 服务评估应用 VM，并使用数据迁移助手评估应用 SQL Server 数据库。 | 可用
-[文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
-[文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
-[文章 6：将应用重新托管到 Azure VM 和 SQL Server AlwaysOn 可用性组](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
-[文章 8：在 Azure VM 和 Azure MySQL 服务器上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
-文章 9：在 Azure Web 应用和 Azure SQL 数据库上重构应用 | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 本文
-[文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用 
-[文章 11：基于 VSTS 重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Visual Studio Team Services。 | 可用
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
-[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel360 应用。 | 可用
+[文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
+[文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有迁移文章共用同一个基础结构。 | 可用
+[文章 3：访问本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
+[文章 4：将应用重新托管到 Azure VM 和 SQL 托管实例](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
+[文章 5：将应用重新托管到 Azure VM](contoso-migration-rehost-vm.md) | 展示 Contoso 如何在仅使用 Site Recovery 的情况下迁移 SmartHotel 应用 VM。 | 可用
+[文章 6：将应用重新托管到 Azure VM 和 SQL Server AlwaysOn 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
+[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 8：将 Linux 应用重新托管到 Azure VM 和 Azure MySQL 服务器](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
+文章 9：将应用重构到 Azure Web 应用和 Azure SQL 数据库 | 演示 Contoso 如何将 SmartHotel 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 本文
+[文章 10：将 Linux 应用重构到 Azure Web 应用和 Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux 应用 osTicket 迁移到多个站点中的 Azure Web 应用，并集成 GitHub 以实现持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
+[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将其本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
+[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 
-在本文中，Contoso 将 VMware VM 上运行的双层 Windows. NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
+在本文中，Contoso 将 VMware VM 上运行的双层 Windows. VMware VM 上运行的 NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
 
 ## <a name="business-drivers"></a>业务驱动因素
 
@@ -57,7 +57,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 **应用** | Azure 中的该应用将如同现在一样重要。<br/><br/> 它应当具有与当前在 VMWare 中的性能相同的性能。<br/><br/> 团队不打算对此应用进行投资。 目前，管理员只是将应用安全地移动到云。<br/><br/> 团队希望停止支持当前用来运行此应用的 Windows Server 2008 R2。<br/><br/> 团队还希望从 SQL Server 2008 R2 迁移到一个现代化 PaaS 数据库平台，这将在最大程度上减少管理需求。<br/><br/> Contoso 希望尽可能利用其在 SQL Server 许可和软件保障方面的投资。<br/><br/> 此外，Contoso 还希望减少 Web 层上的单一故障点。
 **限制** | 该应用包括在同一 VM 上运行的一个 ASP.NET 应用和一个 WCF 服务。 他们希望使用 Azure 应用服务将此拆分到两个 Web 应用中。 
 **Azure** | Contoso 希望将应用迁移到 Azure，但不希望在 VM 上运行它。 Contoso 希望为 Web 层和数据层利用 Azure PaaS 服务。 
-**DevOps** | Contoso 希望移动到使用 Visual Studio Team Services (VSTS) 的 DevOps 模型以进行生成和管道发布。
+**DevOps** | Contoso 希望借助用于他们生成和发布管道的 Azure DevOps 来迁移到 DevOps 模型。
 
 ## <a name="solution-design"></a>解决方案设计
 
@@ -80,7 +80,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
     - 借助软件保障，Contoso 可以使用适用于 SQL Server 的 Azure 混合权益交换现有许可证，以获得 SQL 数据库的折扣价格。 这最多可以节省 30% 的费用。
     - SQL 数据库提供了许多安全功能，包括始终加密、动态数据掩码，以及行级安全性/威胁检测。
 - 对于应用 Web 层，Contoso 已决定使用 Azure 应用服务。 使用此 PaaS 服务，只需要执行几项配置更改便可部署应用。 Contoso 将使用 Visual Studio 进行更改，并部署两个 Web 应用。 一个用于网站，一个用于 WCF 服务。
-- 为了满足 DevOps 管道的要求，Contoso 选择了使用 VSTS。 他们将使用 Git 存储库部署 VSTS 以用于源代码管理 (SCM)。 自动化的生成和发布将用于生成代码，并将其部署到 Azure Web 应用。
+- 为了满足 DevOps 管道的要求，Contoso 已选择配合 Git 存储库使用 Azure DevOps 进行源代码管理 (SCM)。 自动化的生成和发布将用于生成代码，并将其部署到 Azure Web 应用。
   
 ### <a name="solution-review"></a>解决方案评审
 Contoso 通过将利弊清单放置在一起来评估其建议的设计。
@@ -109,6 +109,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 [数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso 将使用 DMA 来评估和检测可能影响其在 Azure 中数据库功能的兼容性问题。 DMA 评估 SQL 源和目标之间的功能奇偶一致性，并针对性能和可靠性提升基础建议。 | 它是可以免费下载的工具。
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/) | 一个智能的、完全托管的关系型云数据库服务。 | 成本取决于功能、吞吐量和大小。 [了解详细信息](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 [Azure 应用服务 - Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | 使用完全托管的平台，创建功能强大的云应用 | 成本取决于大小、位置和使用持续时间。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+[Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | 提供一个用于应用开发的持续集成和持续部署 (CI/CD) 管道。 该管道首先会连接到用于管理应用程序代码的 Git 存储库，然后依次配置用于生成包和其他生成项目的生成系统，以及用于在开发、测试及生产环境中部署更改的发布管理系统。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,12 +126,12 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 Contoso 按如下方式运行迁移：
 
 > [!div class="checklist"]
-> * **步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将应用网站迁移到 Azure 后，WCF 服务 Web 应用将指向此实例。
-> * **步骤 2：使用 DMA 迁移数据库**：Contoso 使用数据库迁移助手迁移应用数据库。
-> * **步骤 3：预配 Web 应用**：Contoso 将预配两个 Web 应用。
-> * **步骤 4：设置 VSTS**：Contoso 将创建新的 VSTS 项目，并导入 Git 存储库。
-> * **步骤 5：配置连接字符串**：Contoso 将配置连接字符串，这样使 Web 层 Web 应用、WCF 服务 Web 应用和 SQL 实例能够进行通信。
-> * **步骤 6：在 VSTS 中设置生成和发布管道**：最后一步，Contoso 将设置生成和发布管道以创建应用，并将其部署到两个单独的 Azure Web 应用。
+> * 步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将应用网站迁移到 Azure 后，WCF 服务 Web 应用将指向此实例。
+> * 步骤 2：使用 DMA 迁移数据库：Contoso 使用数据库迁移助手迁移应用数据库。
+> * 步骤 3：预配 Web 应用：Contoso 将预配两个 Web 应用。
+> * 步骤 4：设置 Azure DevOps：Contoso 将创建新的 Azure DevOps 项目，并导入 Git 存储库。
+> * 步骤 5：配置连接字符串：Contoso 将配置连接字符串，这样使 Web 层 Web 应用、WCF 服务 Web 应用和 SQL 实例能够进行通信。
+> * 步骤 6：设置生成和发布管道：最后一步，Contoso 设置生成和发布管道以创建应用，并将其部署到两个单独的 Azure Web 应用。
 
 
 ## <a name="step-1-provision-an-azure-sql-database"></a>步骤 1：预配 Azure SQL 数据库
@@ -236,26 +237,26 @@ Contoso 管理员将使用 DMA 迁移 SmartHotel360 数据库。
 4. 完成后，浏览到应用地址来检查它们是否已成功创建。
 
 
-## <a name="step-4-set-up-vsts"></a>步骤 4：设置 VSTS
+## <a name="step-4-set-up-azure-devops"></a>步骤 4：设置 Azure DevOps
 
 
-Contoso 需要为应用程序构建 DevOps 基础结构和管道。  为此，Contoso 管理员需创建新的 VSTS 项目、导入代码，然后设置生成和发布管道。
+Contoso 需要为应用程序构建 DevOps 基础结构和管道。  为此，Contoso 管理员需创建新的 DevOps 项目、导入代码，然后设置生成和发布管道。
 
-1.   在 Contoso VSTS 帐户中，他们将创建新项目 (ContosoSmartHotelRefactor)，然后选择“Git”用于版本控制。
+1.   在 Contoso Azure DevOps 帐户中，创建新项目 (ContosoSmartHotelRefactor)，然后选择“Git”用于版本控制。
 
     ![新建项目](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
-
 2. 导入当前保存应用代码的 Git 存储库。 该存储库位于某个[公共存储库](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)中，可以下载它。
 
     ![下载应用代码](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
-
+    
 3. 导入代码后，将 Visual Studio 连接到存储库，并使用团队资源管理器克隆代码。
 
-    ![连接到存储库](./media/contoso-migration-refactor-web-app-sql/vsts3.png)
+    ![连接到项目](./media/contoso-migration-refactor-web-app-sql/devops1.png)
 
 4. 将存储库克隆到开发人员计算机后，打开该应用的解决方案文件。 在该文件中，Web 应用和 WCF 服务各自具有独立的项目。
 
     ![解决方案文件](./media/contoso-migration-refactor-web-app-sql/vsts4.png)
+    
 
 ## <a name="step-5-configure-connection-strings"></a>步骤 5：配置连接字符串
 
@@ -277,15 +278,15 @@ Contoso 管理员需要确保 Web 应用和数据库都能够进行通信。 为
 5. 在代码中进行更改后，管理员需要提交所做的更改。 在 Visual Studio 中使用“团队资源管理器”进行提交和同步。
 
 
-## <a name="step-6-set-up-build-and-release-pipelines-in-vsts"></a>步骤 6：在 VSTS 中设置生成和发布管道
+## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>步骤 6：在 Azure DevOps 中设置生成和发布管道
 
-Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 DevOps 工作。
+Contoso 管理员现在配置 Azure DevOps 来执行生成和发布过程。
 
-1. 在 VSTS 中，单击“生成和发布” > “新建管道”。
+1. 在 Azure DevOps 中，单击“生成和发布” > “新建管道”。
 
     ![新建管道](./media/contoso-migration-refactor-web-app-sql/pipeline1.png)
 
-2. 选择“VSTS Git”和相关的存储库。
+2. 选择“Azure Repos Git”和相关的存储库。
 
     ![Git 和存储库](./media/contoso-migration-refactor-web-app-sql/pipeline2.png)
 
@@ -293,15 +294,15 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
      ![ASP.NET 模板](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
     
-4. 他们将为生成指定名称 ContosoSmartHotelRefactor-ASP.NET-CI，并单击“保存并排队”。
+4. 名称“ContosoSmartHotelRefactor-ASP.NET-CI”用于生成。 单击“保存和队列”。
 
      ![保存并排队](./media/contoso-migration-refactor-web-app-sql/pipeline4.png)
 
-5. 这将启动第一个生成。 他们可单击生成号以监视进程。 完成后，他们可以查看进程反馈。
+5. 这将启动第一个生成。 他们可单击生成号以监视进程。 完成后，可以看到进程反馈，单击“项目”可查看生成结果。
 
-    ![反馈](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
+    ![审阅](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
 
-6. 生成成功后，打开生成，并单击“项目”。 此文件夹中包含生成结果
+6. “Drop”文件夹中包含生成结果。
 
     - 两个 zip 文件是包含应用的包。
     - 这些文件在用于部署到 Azure Web 应用的发布管道中使用
@@ -316,11 +317,11 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
     ![Azure 应用服务模板](./media/contoso-migration-refactor-web-app-sql/pipeline8.png)
 
-9. 将发布管道命名为 ContosoSmartHotelRefactor，然后将 WCF Web 应用的名称 (SHWCF-EUS2) 指定为环境名称。
+9. 将发布管道命名为“ContosoSmartHotel360Refactor”，将 WCF Web 应用的名称 (SHWCF-EUS2) 指定为“阶段”的名称。
 
     ![环境](./media/contoso-migration-refactor-web-app-sql/pipeline9.png)
 
-10. 在此环境下，单击“1 个阶段，1 个任务”以配置 WCF 服务的部署。
+10. 在此阶段中，单击“1 个作业，1 个任务”，以配置 WCF 服务的部署。
 
     ![部署 WCF](./media/contoso-migration-refactor-web-app-sql/pipeline10.png)
 
@@ -328,7 +329,7 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
      ![选择应用服务](./media/contoso-migration-refactor-web-app-sql/pipeline11.png)
 
-12. 在“项目”中，选择“+添加项目”，并选择使用 ContosoSmarthotelRefactor-ASP.NET-CI 管道生成。
+12. 在“管道”>“项目”中，选择“+添加项目”，并选择使用“ContosoSmarthotel360Refactor”管道生成。
 
      ![构建](./media/contoso-migration-refactor-web-app-sql/pipeline12.png)
 
@@ -336,11 +337,11 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
      ![闪电符号](./media/contoso-migration-refactor-web-app-sql/pipeline13.png)
 
-16. 此外，请注意，持续部署触发器应已设置为“已启用”。
+16. 持续部署触发器应已设置为“已启用”。
 
    ![已启用持续部署](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
-17. 现在，单击“部署 Azure 应用服务”。
+17. 现在，再次返回“1 个作业，1 个任务”阶段，然后单击“部署 Azure 应用服务”。
 
     ![部署应用服务](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
@@ -348,7 +349,7 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
     ![保存 WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 
-19. 单击“管道” >“+添加”为 SHWEB-EUS2 添加环境，从而选择其他的 Azure 应用服务部署。
+19. 单击“管道” > “阶段”以及“+添加”，为“SHWEB-EUS2”添加环境。 选择另一个 Azure 应用服务部署。
 
     ![添加环境](./media/contoso-migration-refactor-web-app-sql/pipeline17.png)
 
@@ -368,7 +369,7 @@ Contoso 管理员现在配置 VSTS 来执行生成和发布过程，以实施 De
 
     ![保存管道](./media/contoso-migration-refactor-web-app-sql/pipeline21.png)
 
-24. Contoso 管理员可以从 VSTS 中按照生成和发布管道流程进行操作。 生成完成后，将启动发布。
+24. Contoso 管理员可以从 Azure DevOps 中按照生成和发布管道流程进行操作。 生成完成后，将启动发布。
 
     ![生成和发布应用](./media/contoso-migration-refactor-web-app-sql/pipeline22.png)
 

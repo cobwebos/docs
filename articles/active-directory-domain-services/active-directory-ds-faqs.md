@@ -1,5 +1,5 @@
 ---
-title: 常见问题 - Azure Active Directory 域服务 | Microsoft 文档
+title: 常见问题 - Azure Active Directory 域服务 | Microsoft Docs
 description: 有关 Azure Active Directory 域服务的常见问题
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 02b722feece5458a31e89e4041d51104b94e52c6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505859"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023199"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -96,6 +96,9 @@ Azure 免费试用版中包含此服务。 可以注册 [Azure 一个月免费�
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>我能否暂停 Azure AD 域服务托管域？ 
 不是。 一旦启用 Azure AD 域服务托管域，即可在选定的虚拟网络中使用该服务，直到禁用/删除托管域为止。 无法暂停该服务。 删除托管域前，会按小时对服务计费。
+
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？
+否。  Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。  可以在[此处](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)找到体系结构指南。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
 不是。 Azure AD 域服务是即用即付的 Azure 服务，并未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版、基本版和高级版）。 按每小时计费，具体取决于使用量。

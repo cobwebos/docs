@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: a6cf6627d18917a2102dc0537cd44dc7701b063f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a89c0f916f67de1bae81a5e1b3dcfc2cae41d248
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837236"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304180"
 ---
 # <a name="group-manager-tasks"></a>组管理员任务
 
@@ -30,13 +30,13 @@ ms.locfileid: "34837236"
 ![0](./media/group-manager-tasks/tdsp-group-manager.png)
 
 
->[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 组环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码承载平台，组管理员需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
+>[AZURE.NOTE] 我们在以下说明中概述了使用 Azure DevOps Services 设置 TDSP 组环境所需的步骤。 本文指定了如何使用 Azure DevOps Services 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码承载平台，组管理员需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
-1. 为组设置 **Visual Studio Team Services (VSTS) 服务器**。
-2. 在 Visual Studio Team Services 服务器上创建**组团队项目**（适用于 VSTS 用户）
+1. 为组设置 **Azure DevOps Services**。
+2. 在 Azure DevOps Services 上创建**组项目**（适用于 Azure DevOps Services 用户）
 3. 创建 **GroupProjectTemplate** 存储库
 4. 创建 **GroupUtilities** 存储库
-5. 使用 TDSP 存储库中的内容生成 VSTS 服务器的 **GroupProjectTemplate** 和 **GroupUtilities** 存储库。
+5. 使用 TDSP 存储库中的内容生成 Azure DevOps Services 的 **GroupProjectTemplate** 和 **GroupUtilities** 存储库。
 6. 为团队成员设置**安全控件**使团队成员能够访问 GroupProjectTemplate 和 GroupUtilities 存储库。
 
 上述每个步骤都进行了详细说明。 但首先，我们要熟悉缩写，并讨论使用存储库的先决条件。
@@ -47,28 +47,28 @@ ms.locfileid: "34837236"
 
 - **G1**：Microsoft TDSP 团队开发并管理的项目模板存储库。
 - **G2**：Microsoft TDSP 团队开发并管理的实用程序存储库。
-- **R1**：在 VSTS 组服务器上设置的 Git 上的 GroupProjectTemplate 存储库。
-- **R2**：在 VSTS 组服务器上设置的 Git 上的 GroupUtilities 存储库。
+- **R1**：在 Azure DevOps 组服务器上设置的 Git 上的 GroupProjectTemplate 存储库。
+- **R2**：在 Azure DevOps 组服务器上设置的 Git 上的 GroupUtilities 存储库。
 - **LG1** 和 **LG2**：分别克隆了 G1 和 G2 的计算机上的本地目录。
 - **LR1** 和 **LR2**：分别克隆了 R1 和 R2 的计算机上的本地目录。
 
 ### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>克隆存储库及签入和签出代码的先决条件
  
 - 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 此步骤会将你转到最新安装程序页。 在此处下载 .exe 安装程序并运行它。 
-- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
+- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 此步骤会将你转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。 
+- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
 
 
-## <a name="1-create-account-on-vsts-server"></a>1.在 VSTS 服务器上创建帐户
+## <a name="1-create-account-on-azure-devops-services"></a>1.在 Azure DevOps Services 上创建帐户
 
-VSTS 服务器承载以下存储库：
+Azure DevOps Services 承载以下存储库：
 
 - **组通用存储库**：可供多个数据科学项目组内的多个团队采用的通用存储库。 例如，*GroupProjectTemplate* 和 *GroupUtilities* 存储库。
 - **团队存储库**：适用于组内特定团队的存储库。 这些存储库特定于团队需求，可由该团队执行的多个项目采用，但不足以使数据科学组中的多个团队受用。 
 - **项目存储库**：适用于特定项目的存储库。 此类存储库通用程度比较低，可能不足以使一个团队执行的多个项目以及一个数据科学组的多个团队受用。
 
 
-### <a name="setting-up-the-vsts-server-sign-into-your-microsoft-account"></a>设置 VSTS 服务器并登录到 Microsoft 帐户
+### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>设置 Azure DevOps Services 并登录到 Microsoft 帐户
     
 转到 [Visual Studio Online](https://www.visualstudio.com/)，单击右上角的“登录”，然后登录到 Microsoft 帐户。 
     
@@ -86,7 +86,7 @@ VSTS 服务器承载以下存储库：
         
 ![3](./media/group-manager-tasks/create-account-1.PNG)
         
-在“创建帐户”向导中使用以下值填写想要创建的 VSTS 服务器的信息： 
+在“创建帐户”向导中使用以下值填写想要创建的 Azure DevOps Services 的信息： 
 
 - **服务器 URL**：用自己的*服务器名称*替换 *mysamplegroup*。 服务器 URL 应为：*https://\<servername\>.visualstudio.com*。 
 - **管理代码使用：** 选择 **_Git_**。
@@ -103,17 +103,17 @@ VSTS 服务器承载以下存储库：
 
 单击“继续”。 
 
-## <a name="2-groupcommon-team-project"></a>2.GroupCommon 团队项目
+## <a name="2-groupcommon-project"></a>2.GroupCommon 项目
 
-创建 VSTS 服务器后，将打开 **GroupCommon** 页 (*https://\<servername\>.visualstudio.com/GroupCommon*)。
+创建 Azure DevOps Services 后，将打开 **GroupCommon** 页 (*https://\<servername\>.visualstudio.com/GroupCommon*)。
                             
 ![6](./media/group-manager-tasks/server-created-2.PNG)
 
 ## <a name="3-create-the-grouputilities-r2-repository"></a>3.创建 GroupUtilities (R2) 存储库
 
-要在 VSTS 服务器下创建 **GroupUtilities** (R2) 存储库：
+若要在 Azure DevOps Services 下创建 **GroupUtilities** (R2) 存储库，请执行以下操作：
 
-- 若要打开“创建新的存储库”向导，请在团队项目的“版本控制”选项卡上单击“新建存储库”。 
+- 若要打开“创建新的存储库”向导，请在项目的“版本控制”选项卡上单击“新建存储库”。 
 
 ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png) 
 
@@ -128,10 +128,10 @@ VSTS 服务器承载以下存储库：
 
 ## <a name="4-create-the-groupprojecttemplate-r1-repository"></a>4.创建 GroupProjectTemplate (R1) 存储库
 
-VSTS 组服务器的存储库安装包括两个任务：
+Azure DevOps 组服务器的存储库安装包括两个任务：
 
 - 将默认 **GroupCommon** 存储库重命名为 ***GroupProjectTemplate***。
-- 在团队项目 **GroupCommon** 下的 VSTS 服务器上创建 **GroupUtilities** 存储库。 
+- 在项目 **GroupCommon** 下的 Azure DevOps Services 上创建 **GroupUtilities** 存储库。 
 
 本部分在命名约定或我们的存储库和目录注解后，对第一个任务进行了说明。 在下一部分的步骤 4 中对第二个任务进行了说明。
 
@@ -139,12 +139,12 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 要将默认 **GroupCommon** 存储库重命名为 *GroupProjectTemplate*（在本教程中称为 **R1**）：
     
-- 单击 **GroupCommon** 团队项目页上的“协作代码”。 这会将你转到团队项目 **GroupCommon** 的默认 Git 存储库页。 目前，此 Git 存储库为空。 
+- 单击 **GroupCommon** 项目页上的“协作代码”。 这会将你转到项目 **GroupCommon** 的默认 Git 存储库页。 目前，此 Git 存储库为空。 
 
 ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
         
 - 单击 **GroupCommon** 的 Git 存储库页左上角的“GroupCommon”（在下图中用红色方框突出显示），然后选择“管理存储库”（在下图中用绿色方框突出显示）。 此过程将打开“控制面板”。 
-- 选择团队项目的“版本控制”选项卡。 
+- 选择项目的“版本控制”选项卡。 
 
 ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
 
@@ -158,7 +158,7 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 
 
-## <a name="5-seed-the-r1--r2-repositories-on-the-vsts-server"></a>5.在 VSTS 服务器上设定 R1 和 R2 存储库的种子
+## <a name="5-seed-the-r1--r2-repositories-on-the-azure-devops-services"></a>5.在 Azure DevOps Services 上设定 R1 和 R2 存储库的种子
 
 在这一过程阶段中，设定在之前部分中设置的 *GroupProjectTemplate* (R1) 和 *GroupUtilities* (R2) 存储库的种子。 使用 Microsoft 为团队数据科学进程管理的 ***ProjectTemplate*** (**G1**) 和 ***Utilities*** (**G2**) 存储库设定这些存储库的种子。 种子设定完成后：
 
@@ -198,7 +198,7 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 在此步骤中，将在 DSVM 上 **GitRepos\GroupCommon** 下的本地目录（分别称为 LR1 和 LR2）中克隆 GroupProjectTemplate 存储库 (R1) 和 GroupUtilities 存储库 (R2)。
 
-- 要获取 R1 和 R2 存储库的 URL，请转至 VSTS 上的 **GroupCommon** 主页。 这通常具有 URL *https://\<Your VSTS Server Name\>.visualstudio.com/GroupCommon*。 
+- 若要获取 R1 和 R2 存储库的 URL，请转至 Azure DevOps Services 上的 **GroupCommon** 主页。 这通常具有 URL *https://\<你的 Azure DevOps Services 名称\>.visualstudio.com/GroupCommon*。 
 - 单击“代码”。 
 - 选择“GroupProjectTemplate”和“GroupUtilities”存储库。 复制并保存“克隆URL”元素中的每个 URL（Windows 为 HTTPS；Linux 为 SSH），依次用于以下脚本：  
 
@@ -283,7 +283,7 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 ![22](./media/group-manager-tasks/push-to-group-server-2.PNG)
 
-可以看到，在组 VSTS 服务器的 GroupProjectTemplate 存储库中，文件会立即同步。
+可以看到，在组 Azure DevOps Services 的 GroupProjectTemplate 存储库中，文件会立即同步。
 
 ![23](./media/group-manager-tasks/push-to-group-server-showed-up-2.PNG)
 
@@ -308,7 +308,7 @@ VSTS 组服务器的存储库安装包括两个任务：
 
 ## <a name="6-add-group-members-to-the-group-server"></a>6.将组成员添加到组服务器
 
-在组 VSTS 服务器的主页上，单击右上角用户名旁边的“齿轮图标”，然后选择“安全性”选项卡。可以通过各种权限将成员添加到组。
+在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以通过各种权限将成员添加到组。
 
 ![24](./media/group-manager-tasks/add_member_to_group.PNG) 
 

@@ -10,8 +10,7 @@
     - [Azure 自动化](#azure-automation)可以跨 Azure 和本地基础结构执行操作。
 
 - 自动执行应用程序部署和交付
-    - 示例包括 [Visual Studio Team Services](#visual-studio-team-services) 和 [Jenkins](#jenkins)。
-
+    - 示例包括 [Azure DevOps Services](#visual-studio-team-services) 和 [Jenkins](#jenkins)。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) 是适用于配置管理、VM 创建或应用程序部署的自动化引擎。 Ansible 通常将无代理的模型与 SSH 密钥配合使用，对目标计算机进行身份验证和管理。 配置任务在 playbook 中定义，可以使用多个 Ansible 模块来执行特定任务。 有关详细信息，请参阅 [How Ansible works](https://www.ansible.com/how-ansible-works)（Ansible 工作原理）。
@@ -28,8 +27,7 @@
 
 了解如何：
 
-- 
-  [从 Azure 市场部署 Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
+- [从 Azure 市场部署 Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
 - [在 Windows 上安装 Chef 并创建 Azure VM](../articles/virtual-machines/windows/chef-automation.md)。
 
 
@@ -38,8 +36,7 @@
 
 了解如何：
 
-- 
-  [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
+- [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -116,12 +113,12 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 - [使用 Azure 自动化 DSC](../articles/automation/automation-dsc-getting-started.md)。
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) 是一套工具，用于共享和跟踪代码、使用自动化生成，以及创建完整的持续集成和开发 (CI/CD) 管道。 Team Services 集成 Visual Studio 和其他编辑器，简化了使用过程。 Team Services 还可以创建和配置 Azure VM，然后向其部署代码。
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Azure DevOps Services](https://www.visualstudio.com/team-services/) 是一套工具，用于共享和跟踪代码、使用自动化生成，以及创建完整的持续集成和开发 (CI/CD) 管道。 Azure DevOps Services 集成了 Visual Studio 和其他编辑器，简化了使用过程。 Azure DevOps Services 还可以创建和配置 Azure VM，然后向其部署代码。
 
 了解如何：
 
-- [使用 Team Services 创建持续集成管道](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
+- [使用 Azure DevOps Services 创建持续集成管道](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
 
 
 ## <a name="jenkins"></a>Jenkins

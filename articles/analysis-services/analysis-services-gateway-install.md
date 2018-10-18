@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 09/10/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 1ef5d51db34e0d0a947a4d6ba6c7e614b1ac3384
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141433"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348882"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。 要了解有关网关的更多信息，请参阅[本地数据网关](analysis-services-gateway.md)。
@@ -37,6 +37,7 @@ ms.locfileid: "42141433"
 * 一台计算机上只能安装一个网关。
 * 在计算机处于开启但未处于休眠状态下安装网关。
 * 不要在使用无线网络连接的计算机上安装网关。 否则，可能会降低性能。
+* 安装网关时，你用来登录到计算机的用户帐户必须具有“作为服务登录”权限。 安装完成后，本地数据网关服务使用 NT SERVICE\PBIEgwService 帐户作为服务登录。 可以在安装期间指定一个不同的帐户，也可以在安装完成后在“服务”中指定一个不同的帐户。 请确保组策略设置同时允许你在安装时登录的帐户以及你选择的具有“作为服务登录”权限的服务帐户。
 * 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
 * 如果数据源位于 Azure 虚拟网络 (VNet) 上，则必须配置 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 服务器属性。
 * Azure 政府、Azure 德国和 Azure 中国主权区域不支持此处所述的（统一）网关。 请使用从门户中服务器的**快速入门**安装的**用于 Azure Analysis Services 的专用本地网关**。 
@@ -78,7 +79,7 @@ ms.locfileid: "42141433"
 ## <a name="create-resource"></a>创建 Azure 网关资源
 在安装并注册了网关后，需要在 Azure 订阅中创建网关资源。 使用注册网关时使用的帐户登录到 Azure。
 
-1. 在 Azure 门户中，单击“创建新服务” > “企业集成” > “本地数据网关” > “创建”。
+1. 在 Azure 门户中，单击“创建资源” > “集成” > “本地数据网关”。
 
    ![创建网关资源](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 

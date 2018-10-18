@@ -8,20 +8,20 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047449"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302565"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
-本文演示如何使用 Visual Studio Team Services (VSTS) 和 Microsoft Team Foundation Server (TFS) 的持续集成和持续部署功能，快速高效地向 Azure IoT Edge 生成、测试并部署应用程序。 
+本文演示如何使用 Azure DevOps Services 和 Microsoft Team Foundation Server (TFS) 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 
 
 本文介绍如何执行以下操作：
 * 创建并签入包含单元测试的示例 IoT Edge 解决方案。
-* 安装适用于 VSTS 的 Azure IoT Edge 扩展。
+* 安装适用于 Azure DevOps 的 Azure IoT Edge 扩展。
 * 配置持续集成 (CI) 以生成解决方案并运行单元测试。
 * 配置持续部署 (CD) 以部署解决方案并查看响应。
 
@@ -37,7 +37,7 @@ ms.locfileid: "37047449"
 
     ![安装程序 ACR](./media/how-to-ci-cd/acr.png)
 
-2. VS Code 窗口将加载你的 IoT Edge 解决方案空间。 可以选择键入并运行“Edge：添加 IoT Edge 模块”以添加更多模块。 根文件夹中有一个 `modules` 文件夹、一个 `.vscode` 文件夹和一个部署清单模板文件。 所有用户模块代码都将成为文件夹 `modules` 下的子文件夹。 `deployment.template.json` 是部署清单模板。 此文件中的某些参数将通过 `module.json` 进行分析，它存在于每个模块文件夹中。
+2. VS Code 窗口将加载你的 IoT Edge 解决方案空间。 可以选择键入并运行“Edge: Add IoT Edge module”以添加更多模块。 根文件夹中有一个 `modules` 文件夹、一个 `.vscode` 文件夹和一个部署清单模板文件。 所有用户模块代码都将成为文件夹 `modules` 下的子文件夹。 `deployment.template.json` 是部署清单模板。 此文件中的某些参数将通过 `module.json` 进行分析，它存在于每个模块文件夹中。
 
 3. 现在，示例 IoT Edge 解决方案已准备就绪。 默认 C# 模块充当管道消息模块。 在 `deployment.template.json` 中，你将看到此解决方案包含两个模块。 消息将从 `tempSensor` 模块生成，并且将通过 `FilterModule` 直接输送，然后发送到 IoT 中心。 用以下内容替换整个 Program.cs 文件。 有关此代码片段的详细信息，可以参阅[创建 IoT Edge C# 模块项目](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project)。
 
@@ -277,31 +277,31 @@ ms.locfileid: "37047449"
 
     ![单元测试](./media/how-to-ci-cd/unit-test.png)
 
-7. 保存这些项目，然后将其签入至 VSTS 或 TFS 存储库。
+7. 保存这些项目，然后将其签入至 Azure DevOps 或 TFS 存储库。
     
 
 > [!NOTE]
-> 有关使用 VSTS 代码存储库的详细信息，请参阅 [Share your code with Visual Studio and VSTS Git](https://docs.microsoft.com/vsts/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 VSTS Git 共享代码）。
+> 若要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 Azure 存储库共享代码）。
 
 
 ## <a name="configure-continuous-integration"></a>配置持续集成
-在本部分中创建一个生成定义，此定义配置为在将任何更改签入示例 IoT Edge 解决方案时自动运行，且它会自动执行所包含的单元测试。
+在本部分中创建一个生成管道，此管道配置为在将任何更改签入示例 IoT Edge 解决方案时自动运行，且它会自动执行所包含的单元测试。
 
-1. 登录 VSTS 帐户 (https://_your-account_.visualstudio.com) 并打开签入了示例应用的项目。
+1. 登录 Azure DevOps 组织 (https://_your-account_.visualstudio.com) 并打开签入了示例应用的项目。
 
     ![签入代码](./media/how-to-ci-cd/init-project.png)
 
-1. 访问 VSTS Marketplace 上的 [Azure IoT Edge For VSTS](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy)（适用于 VSTS 的 Azure IoT Edge）。 单击“免费获取”并按照向导操作，将此扩展安装至 VSTS 帐户或下载到 TFS。
+1. 访问 Azure DevOps 市场上的 [Azure IoT Edge For Azure DevOps](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy)（适用于 Azure DevOps 的 Azure IoT Edge）。 单击“免费获取”并按照向导操作，将此扩展安装至 Azure DevOps 组织或下载到 TFS。
 
     ![安装扩展](./media/how-to-ci-cd/install-extension.png)
 
-1. 在 VSTS 中打开“生成和发布”中心，并在“生成”选项卡中选择“+ 新建定义”**&amp;**。 或者，如果已有生成定义，则选择“+ 新建”按钮。 
+1. 在 Azure DevOps 中打开“生成和发布”中心，并在“生成”选项卡中选择“+ 新建管道”**&amp;**。 或者，如果已有生成管道，则选择“+ 新建”按钮。 
 
     ![新建生成](./media/how-to-ci-cd/add-new-build.png)
 
-1. 若出现提示，选择“VSTS Git”资源类型，然后选择代码所在的项目、存储库和分支。 选择“继续”。
+1. 若出现提示，选择“Azure DevOps Git”源类型，然后选择代码所在的项目、存储库和分支。 选择“继续”。
 
-    ![选择 VSTS git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![选择 Azure DevOps git](./media/how-to-ci-cd/select-vsts-git.png)
 
 1. 在“选择模板”窗口中选择“从空进程开始”。
 
@@ -343,9 +343,9 @@ ms.locfileid: "37047449"
 
     ![触发器](./media/how-to-ci-cd/configure-trigger.png)
 
-1. 保存新的生成定义并将新的生成排队。 单击“保存和排队”按钮。
+1. 保存新的生成管道并将新的生成排队。 单击“保存和排队”按钮。
 
-1. 在显示的消息栏中选择指向该生成的链接。 或者转至生成定义，查看进入队列的最新生成作业。
+1. 在显示的消息栏中选择指向该生成的链接。 或者转至生成管道，查看进入队列的最新生成作业。
 
     ![构建](./media/how-to-ci-cd/build-def.png)
 
@@ -359,12 +359,12 @@ ms.locfileid: "37047449"
 
 ## <a name="continuous-deployment-to-iot-edge-devices"></a>向 IoT Edge 设备进行持续部署
 
-若要启用连续部署，基本上需要使用合适的 IoT Edge 设备设置 CI 作业，为项目中的分支启用“触发器”。 在经典 DevOps 实践中，一个项目包含两个主要分支。 主分支应该为稳定版本的代码，而开发分支包含最新的代码更改。 团队中的每个开发人员都应在开始更新代码时在开发分支中创建他/她自己的功能分支，这意味着所有提交都发生在开发分支下的功能分支上。 并且推送的每个提交都应通过 CI 系统进行测试。 对代码进行全面的本地测试后，应通过拉取请求将功能分支合并至开发分支。 通过 CI 系统对开发分支上的代码进行测试后，就能通过拉取请求将其合并至主分支。
+若要启用连续部署，基本上需要使用合适的 IoT Edge 设备设置 CI 作业，为项目中的分支启用“触发器”。 在经典 DevOps 实践中，一个项目包含两个主要分支。 主分支应该为稳定版本的代码，而开发分支包含最新的代码更改。 团队中的每个开发人员都应在开始更新代码时在开发分支中创建他/她自己的功能分支，这意味着所有提交都发生在开发分支上的功能分支上。 并且推送的每个提交都应通过 CI 系统进行测试。 对代码进行全面的本地测试后，应通过拉取请求将功能分支合并至开发分支。 通过 CI 系统对开发分支上的代码进行测试后，就能通过拉取请求将其合并至主分支。
 
 因此，在向 IoT Edge 设备进行部署时存在三种主要环境。
 - 在功能分支上，可以使用开发计算机上的模拟 IoT Edge 设备或部署至物理 IoT Edge 设备。
 - 在开发分支上应部署至物理 IoT Edge 设备。
-- 在主分支上，目标 IoT Edge 设备应该为生成设备。
+- 在主分支上，目标 IoT Edge 设备应该为生产设备。
 
 ## <a name="next-steps"></a>后续步骤
 

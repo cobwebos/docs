@@ -1,38 +1,42 @@
 ---
-title: Azure 安全中心安全策略简介 | Microsoft Docs
-description: 了解 Azure 安全中心安全策略及主要功能。
+title: Azure 安全中心安全策略设置 | Microsoft Docs
+description: 配置 Azure 安全中心安全策略设置。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
-ms.author: yurid
-ms.openlocfilehash: f552164edc22b450c4ace57cce5c051d1c93e780
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: ab8a289ea0de263871b76788514052c09a6bf4da
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776119"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295731"
 ---
-# <a name="security-policies-overview"></a>安全策略概述
-本文概述了安全中心安全策略。
+# <a name="security-policy-settings"></a>安全策略设置
+本文概述了安全中心内的安全策略设置。
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure 安全中心，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure 安全中心，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。
 
-安全中心策略由以下部分组成：
+可以在“安全策略”下设置以下项：
 
 - **数据收集**：确定代理预配和[数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)设置。
-- **安全策略**：确定安全中心监视和建议的控制措施。 可在安全中心编辑[安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)。 还可使用 [Azure 策略](security-center-azure-policy.md)（在有限预览版中）新建定义、定义其他策略和跨管理组分配策略。
-- **电子邮件通知**：确定安全联系人和[电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)设置。
-- **定价层**：定义免费或标准的[定价选择](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 所选的层确定可用于范围内资源的安全中心功能。 可为订阅、资源组和工作区指定一个层。 
+- **安全策略**：确定安全中心监视和建议的控制措施。 可在安全中心编辑[安全策略](security-center-policies.md)。 还可使用 [Azure Policy](security-center-azure-policy.md) 创建新的定义、定义其他策略并跨管理组分配策略。 
+- **电子邮件通知**：确定安全联系人和[电子邮件通知](security-center-provide-security-contact-details.md)设置。
+- **定价层**：定义免费或标准的[定价选择](security-center-pricing.md)。 所选的层确定可用于范围内资源的安全中心功能。 可为订阅、资源组和工作区指定一个层。
+
+> [!NOTE]
+> 对于每个订阅，可以设置所有这些项。 对于工作区，只能设置数据收集和定价层。 对于资源组，只能设置定价层。
+>
 
 
 ## <a name="who-can-edit-security-policies"></a>谁可以编辑安全策略？
@@ -53,5 +57,3 @@ ms.locfileid: "32776119"
 - [Azure 安全中心的数据安全](security-center-data-security.md)：了解安全中心如何管理数据并确保数据安全性。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
 * [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/)：获取最新的 Azure 安全新闻和信息。
-
-

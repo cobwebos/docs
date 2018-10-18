@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 108abe45b4b296e0d7928f2da00a06ac43e1ccbe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438777"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301202"
 ---
-# <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道
-可使用 Visual Studio Team Services (VSTS) 中安装的 *Azure 开发测试实验室任务*扩展，将你的 CI/CD 生成与发布管道与 Azure 开发测试实验室轻松集成。 该扩展将安装三个任务： 
+# <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>将 Azure 开发测试实验室集成到 Azure DevOps 持续集成和交付管道
+可使用 Azure DevOps 中安装的 *Azure 开发测试实验室任务*扩展，将 CI/CD 生成与发布管道与 Azure 开发测试实验室轻松集成。 该扩展将安装三个任务： 
 * 创建 VM
 * 从 VM 创建自定义映像
 * 删除 VM 
@@ -85,16 +85,16 @@ ms.locfileid: "39438777"
 
 1. 将该脚本签入到源代码管理系统。 为其命名，例如 **GetLabVMParams.ps1**。
 
-   在发布定义中，在代理上运行此脚本时，如果使用 *Azure 文件复制*或*目标计算机上的 PowerShell* 等任务步骤，则该脚本会收集将应用部署到 VM 所需的值。 这些任务通常用于将应用部署到 Azure VM。 这些任务需要 VM 资源组名称、IP 地址和完全限定的域名 (FDQN) 等值。
+   在发布管道中，在代理上运行此脚本时，如果使用 *Azure 文件复制*或*目标计算机上的 PowerShell* 等任务步骤，则该脚本会收集将应用部署到 VM 所需的值。 这些任务通常用于将应用部署到 Azure VM。 这些任务需要 VM 资源组名称、IP 地址和完全限定的域名 (FDQN) 等值。
 
-## <a name="create-a-release-definition-in-release-management"></a>在 Release Management 中创建发布定义
-要创建发布定义，请执行以下操作：
+## <a name="create-a-release-pipeline-in-release-management"></a>在 Release Management 中创建发布管道
+若要创建发布管道，请执行以下操作：
 
 1. 在“生成与发布”中心的“发布”选项卡上，选择加号 (+) 按钮。
 1. 在“创建发布定义”窗口中，选择“空”模板，然后选择“下一步”。
-1. 选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布定义。
-1. 在新发布定义中，选择环境名称旁边的省略号  (...)，然后选择“配置变量”，可打开快捷菜单。 
-1. 在“配置 - 环境”窗口中，对于在发布定义中使用的变量，输入以下值：
+1. 选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布管道。
+1. 在新发布管道中，选择环境名称旁边的省略号 (...)，然后选择“配置变量”，可打开快捷菜单。 
+1. 在“配置 - 环境”窗口中，对于在发布管道中使用的变量，输入以下值：
 
    a. 对于 vmName，输入在 Azure 门户中创建资源管理器模板时分配给 VM 的名称。
 
@@ -106,13 +106,13 @@ ms.locfileid: "39438777"
 
 部署的下一阶段是创建 VM，在后续部署中作为“黄金映像”。 使用为此目的专门开发的任务，在 Azure 开发测试实验室实例中创建 VM。 
 
-1. 在发布定义中，选择“添加任务”。
+1. 在发布管道中，选择“添加任务”。
 1. 在“部署”选项卡上，添加“Azure 开发测试实验室创建 VM”任务。 对任务进行如下配置：
 
    > [!NOTE]
    > 若要创建 VM 以用于后续部署，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)。
+   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
    b. 对于“实验室名称”，选择之前创建的实例的名称。
 
@@ -135,14 +135,14 @@ ms.locfileid: "39438777"
    ```
 
 1. 执行之前创建的脚本，收集开发测试实验室 VM 的详细信息。 
-1. 在发布定义中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
+1. 在发布管道中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
 
    > [!NOTE]
    > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) 并执行脚本。
 
    a. 对于“Azure 连接类型”，选择“Azure 资源管理器”。
 
-   b. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表之下选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)。
+   b. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表之下选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
    c. 对于“脚本类型”，选择“脚本文件”。
  
@@ -154,22 +154,22 @@ ms.locfileid: "39438777"
       ```
       -labVmId '$(labVMId)'
       ```
-    此脚本收集所需的值，并将其存储在发布定义中的环境变量内，因此可在后续步骤中轻松引用它们。
+    此脚本收集所需的值，并将其存储在发布管道中的环境变量内，因此可在后续步骤中轻松引用它们。
 
 1. 将应用部署到新的开发测试实验室 VM。 用于部署应用的任务通常有 Azure 文件复制和目标计算机上的 PowerShell。
-   这些任务参数所需的 VM 相关信息存储在发布定义中名为 **labVmRgName****labVMIpAddress** 和 **labVMFqdn** 的三个配置变量内。 如果只想试验创建开发测试实验室 VM 和自定义映像，而不向其部署应用，可跳过此步骤。
+   这些任务参数所需的 VM 相关信息存储在发布管道中名为 **labVmRgName****labVMIpAddress** 和 **labVMFqdn** 的三个配置变量内。 如果只想试验创建开发测试实验室 VM 和自定义映像，而不向其部署应用，可跳过此步骤。
 
 ### <a name="create-an-image"></a>创建映像
 
 下一阶段是为 Azure 开发测试实验室实例中新部署的 VM 创建映像。 然后，在需要执行开发任务或运行某些测试时，即可随时使用该映像按需创建 VM 的副本。 
 
-1. 在发布定义中，选择“添加任务”。
+1. 在发布管道中，选择“添加任务”。
 1. 在“部署”选项卡上，添加“Azure 开发测试实验室创建自定义映像”任务。 请如下所述对其进行配置：
 
    > [!NOTE]
    > 若要创建映像，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)。
+   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
    b. 对于“实验室名称”，选择之前创建的实例的名称。
 
@@ -185,17 +185,17 @@ ms.locfileid: "39438777"
 
 最后一个阶段是删除在 Azure 开发测试实验室实例中部署的 VM。 在部署的 VM 上执行所需开发任务或运行所需测试后，通常要删除该 VM。 
 
-1. 在发布定义中，选择“添加任务”，然后在“部署选项卡”上添加“Azure 开发测试实验室删除 VM”任务。 请如下所述对其进行配置：
+1. 在发布管道中，选择“添加任务”，然后在“部署选项卡”上添加“Azure 开发测试实验室删除 VM”任务。 请如下所述对其进行配置：
 
       > [!NOTE]
       > 若要删除 VM，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)。
+   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
  
    b. 对于“源实验室 VM ID”，如果更改了在之前的任务中自动填充了实验室 VM ID 的环境变量的默认名称，请在此处对其进行编辑。 默认值为 $(labVMId)。
 
-1. 输入发布定义名称，然后保存它。
-1. 创建新版本，选择最新生成，并将其部署到定义中的单个环境。
+1. 输入发布管道名称，然后保存它。
+1. 创建新版本，选择最新生成，并将其部署到管道中的单个环境。
 
 在每个阶段，在 Azure 门户中刷新开发测试实验室实例的视图，可查看创建的 VM 和映像，以及再次删除的 VM。
 
@@ -207,5 +207,5 @@ ms.locfileid: "39438777"
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 Resource Manager 模板创建多 VM 环境](devtest-lab-create-environment-from-arm.md)。
 * 若要深入了解适用于开发测试实验室自动化的资源管理器模板快速入门，请参阅[公共开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)。
-* 如有需要，请参阅 [VSTS 疑难解答](https://docs.microsoft.com/vsts/build-release/actions/troubleshooting)页面。
+* 如有需要，请参阅 [Azure DevOps 故障排除](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting)页面。
  

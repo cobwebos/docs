@@ -4,19 +4,19 @@ description: 使用 Azure 事件网格订阅媒体服务作业状态更改事件
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/20/2018
 ms.author: juliako
-ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723739"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034835"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>使用 CLI 将 Azure 媒体服务事件路由到自定义 Web 终结点
 
@@ -26,17 +26,14 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 完成本文所述步骤后，即可看到事件数据已发送到某个终结点。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="prerequisites"></a>先决条件
 
-登录 [Azure 门户](http://portal.azure.com)并启动 CloudShell 以执行 CLI 命令，如后续步骤中所示。
+- 拥有一个有效的 Azure 订阅。
+- [创建媒体服务帐户](create-account-cli-how-to.md)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+    请务必记住用于资源组名称和媒体服务帐户名称的值。
 
-如果选择在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
-
-请务必记住用于媒体服务帐户名称、存储名称和资源名称的值。
+- 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 你也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
 ## <a name="enable-event-grid-resource-provider"></a>启用事件网格资源提供程序
 
@@ -132,7 +129,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 订阅文章是为了告知事件网格要跟踪哪些事件。以下示例订阅所创建的媒体服务帐户，并将创建的 Azure Function Webhook 中的 URL 作为事件通知的终结点传递。 
 
-将 `<event_subscription_name>` 替换为事件订阅的唯一名称。 对于 `<resource_group_name>` 和 `<ams_account_name>`，请使用此前创建的值。  在 `<endpoint_URL>` 中粘贴终结点 URL。 从 URL 删除 &clientID=default。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 
+将 `<event_subscription_name>` 替换为事件订阅的唯一名称。 对于 `<resource_group_name>` 和 `<ams_account_name>`，使用在创建媒体服务帐户时使用的值。 在 `<endpoint_URL>` 中粘贴终结点 URL。 从 URL 删除 &clientID=default。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -145,7 +142,9 @@ az eventgrid event-subscription create \
 
 媒体服务帐户资源 ID 值如下所示：
 
+```
 /subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
+```
 
 ## <a name="test-the-events"></a>测试事件
 
@@ -153,7 +152,7 @@ az eventgrid event-subscription create \
 
 你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到之前创建的 Webhook。 单击“监视”和“刷新”。 可看到作业的状态更改事件：“已排队”、“已计划”、“正在处理”、“已完成”、“错误”、“已取消”、“正在取消”。  有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 
-例如：
+以下示例显示 JobStateChange 事件的架构：
 
 ```json
 [{
@@ -172,16 +171,6 @@ az eventgrid event-subscription create \
 ```
 
 ![测试事件](./media/job-state-events-cli-how-to/test_events.png)
-
-## <a name="clean-up-resources"></a>清理资源
-
-如果打算继续使用此存储帐户和事件订阅，请勿清除本文中创建的资源。 如果不打算继续学习，请使用以下命令删除本文中创建的资源。
-
-将 `<resource_group_name>` 替换为上面创建的资源组。
-
-```azurecli-interactive
-az group delete --name <resource_group_name>
-```
 
 ## <a name="next-steps"></a>后续步骤
 

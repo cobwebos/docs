@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8cec2c2b72b88a27c4a6c15b197e859b879bef43
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308518"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296697"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
 Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的结构化方法可以有效地生成预测分析解决方案和智能应用程序。 本文概述了关键的人员角色及其关联的任务，这些任务由致力于标准化此流程的数据科学团队处理。 
 
-此简介链接到的教程说明了如何为整个数据科学组、数据科学团队和项目设置 TDSP 环境。 其中提供了有关在教程中使用 Visual Studio Team Services (VSTS) 的详细指导。  VSTS 提供代码托管平台和灵活的规划工具用于管理团队任务、控制访问以及管理存储库。 
+此简介链接到的教程说明了如何为整个数据科学组、数据科学团队和项目设置 TDSP 环境。 其中提供了有关在教程中使用 Azure DevOps 的详细指导。 Azure DevOps 提供代码托管平台和灵活的规划工具，用于管理团队任务、控制访问以及管理存储库。 
 
 可以使用这些信息在自己的代码托管平台和灵活的规划工具中实现 TDSP。 
 
@@ -64,7 +64,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 在了解此架构以及下面针对 TDSP 中每个角色所分配的任务提供的更详尽概述以后，你应该就可以根据自己在部门中的职责选择合适的教程。
 
 > [!NOTE]
-> 以下说明演示了在 Visual Studio Team Services (VSTS) 中设置 TDSP 环境并完成其他数据科学任务的步骤。 我们详述了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中用来实现 TDSP 的方法。 VSTS 可以集成工作项（用于跟踪任务）的管理与代码托管服务（用于共享实用程序、组织版本以及提供基于角色的安全性），从而促进协作。 可以随意选择其他平台来实施 TDSP 所概述的任务。 但是，根据具体的平台，可能无法利用 VSTS 中的某些功能。 
+> 以下说明演示了在 Azure DevOps 中设置 TDSP 环境并完成其他数据科学任务的步骤。 我们详述了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中用来实现 TDSP 的方法。 Azure DevOps 可以集成工作项（用于跟踪任务）的管理与代码托管服务（用于共享实用程序、组织版本以及提供基于角色的安全性），从而促进协作。 可以随意选择其他平台来实施 TDSP 所概述的任务。 但是，根据具体的平台，可能无法利用 Azure DevOps 中的某些功能。 
 >
 >此处的说明还使用 Azure 云中的[数据科学虚拟机 (DSVM)](http://aka.ms/dsvm) 作为分析桌面，该桌面已预先配置了多个常用的数据科学工具，并集成了各种 Microsoft 软件和 Azure 服务。 可以通过 DSVM 或任何其他的开发环境来实现 TDSP。 
 
@@ -73,7 +73,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 组管理员（或指定的 TDSP 系统管理员）需完成以下任务才能采用 TDSP：
 
-- 在代码托管平台（例如 Github、Git、VSTS 等）上创建组帐户
+- 在代码托管平台（例如 Github、Git、Azure DevOps 等）上创建组帐户
 - 在组帐户上创建项目模板存储库，然后通过 Microsoft TDSP 团队开发的项目模板存储库将其设定为种子。 Microsoft 的 TDSP 项目模板存储库 
     - 提供**标准化目录结构**，包括数据、代码和文档的目录， 
     - 提供一套**标准化的文档模板**用于引导有效的数据科学过程。 
@@ -86,10 +86,10 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 ## <a name="team-lead-tasks"></a>团队主管任务
 
-团队主管（或指定的团队项目管理员）需完成以下任务才能采用 TDSP：
+团队主管（或指定的项目管理员）需完成以下任务才能采用 TDSP：
 
-- 如果选择 VSTS 作为代码托管平台来实施版本控制和协作，请在组的 VSTS 服务器上创建团队项目。 否则可以跳过此任务。
-- 在团队项目下创建团队项目模板存储库，通过组管理员或管理员委托人设置的组项目模板存储库将其设定为种子。 
+- 如果选择 Azure DevOps 作为代码托管平台来实施版本控制和协作，请在组的 Azure DevOps Services 上创建项目。 否则可以跳过此任务。
+- 在项目下创建项目模板存储库，通过组管理员或管理员委托人设置的组项目模板存储库将其设定为种子。 
 - 创建团队实用程序存储库，然后向该存储库添加特定于团队的实用程序。 
 - （可选）创建 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)，用其存储适用于整个团队的数据资产。 其他团队成员可以在其分析桌面上装载这个共享的云文件存储。
 - （可选）将 Azure 文件存储装载到团队主管的 数据科学虚拟机 (DSVM) 并在其上添加数据资产。
@@ -102,7 +102,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 
 项目主管需完成以下任务才能采用 TDSP：
 
-- 在团队项目下创建项目存储库，通过团队项目模板存储库将其设定为种子。 
+- 在项目下创建项目存储库，通过项目模板存储库将其设定为种子。 
 - （可选）创建 Azure 文件存储，用其存储项目的数据资产。 
 - （可选）将 Azure 文件存储装载到项目主管的 数据科学虚拟机 (DSVM) 并在其上添加项目数据资产。
 - 设置安全控制，方法是添加项目成员并配置其权限。 
@@ -125,7 +125,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
  
 数据科学家、项目主管和团队主管可以根据相关的一组说明来创建工作项，以便跟踪项目从头至尾需要完成的所有任务以及需要经历的阶段。 使用 Git 也可促进数据科学家之间的协作，确保在项目 (project) 执行过程中生成的项目 (artifact) 能够进行版本控制并可供所有项目 (project) 成员共享。
 
-为了方便项目执行而提供的说明在制定时基于一个假设，即工作项和项目 Git 存储库均位于 VSTS 上。 对二者使用 VSTS 即可将 工作项与项目存储库的 Git 分支相关联。 可以通过这种方式轻松地跟踪对某个工作项执行的操作。 
+为了方便项目执行而提供的说明在制定时基于一个假设，即工作项和项目 Git 存储库均位于 Azure DevOps 上。 对二者使用 Azure DevOps 即可将 工作项与项目存储库的 Git 分支相关联。 可以通过这种方式轻松地跟踪对某个工作项执行的操作。 
 
 下图概述了适合使用 TDSP 执行项目的这个工作流。
 

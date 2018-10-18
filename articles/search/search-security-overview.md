@@ -6,14 +6,14 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285723"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092625"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure 搜索中的安全性和数据隐私
 
@@ -23,9 +23,7 @@ Azure 搜索安全体系结构跨越物理安全性、加密传输、加密存�
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>标准符合性：ISO 27001、SOC 2、HIPAA
 
-对于已正式发布的功能，标准符合性的部分列表包括 SOC 2 类型 2 和 HIPAA。 预览功能被认证为正式版的一部分，不能用于具有特定标准要求的解决方案。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/en-us/trustcenter)中。 
-
-以下标准的认证[于 2018 年 6 月公布](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)。
+Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公告](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)所述。
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 类型 2 符合性](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) 有关完整报告，请转到 [Azure - Azure 政府版 SOC 2 类型 II 报告](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)。 
@@ -35,13 +33,15 @@ Azure 搜索安全体系结构跨越物理安全性、加密传输、加密存�
 + [PCI DSS 1 级](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [澳大利亚 IRAP 未分类 DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
+标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/en-us/trustcenter)中。 
+
 ## <a name="encrypted-transmission-and-storage"></a>加密的传输和存储
 
 加密扩展到整个索引管道：从连接通过传输向下到存储在 Azure 搜索中的索引数据。
 
-| 安全层 | 说明 |
+| 安全层 | Description |
 |----------------|-------------|
-| 传输中加密 | Azure 搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 |
+| 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。|
 
 加密在 Azure 搜索内部进行，证书和加密密钥由 Microsoft 内部管理，并广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。 
@@ -94,7 +94,7 @@ Azure 搜索管理 REST API 是 Azure 资源管理器的扩展并共享其依赖
 
 可以通过查询中的安全筛选器实施对索引内容的基于用户的访问，并返回与给定安全标识关联的文档。 基于标识的访问控制不是预定义的角色和角色分配，它是作为一个筛选器实现的，该筛选器可以根据标识修整文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | 说明 |
+| 方法 | Description |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
 |[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |

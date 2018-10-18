@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: 97207b722b65ccf98c57304cd559b0927aacd5a4
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27595289"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063534"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -125,6 +125,12 @@ ms.locfileid: "27595289"
         </activity>
 
 6. 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目，并使用所选的标识提供者登录。 成功登录后，应用会显示登录 ID 和待办事项列表，用户可以对数据进行更新。
+
+## <a name="troubleshooting"></a>故障排除
+
+**应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
+
+在某些情况下，支持包中的冲突在 Visual Studio 中仅显示为警告，但应用程序在运行时会崩溃并显示此异常。 在这种情况下，你需要确保在项目中引用的所有支持包都具有相同的版本。 对于 Android 平台，[Azure 移动应用 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)具有 `Xamarin.Android.Support.CustomTabs` 依赖项，因此，如果你的项目使用较新的支持包，则你需要直接安装具有所需版本的此包以避免冲突。
 
 <!-- URLs. -->
 [创建 Xamarin.Android 应用]: app-service-mobile-xamarin-android-get-started.md

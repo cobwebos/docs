@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616838"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054142"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -26,7 +26,7 @@ ms.locfileid: "42616838"
 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。
 
 ## <a name="persist-data-factory-data"></a>保存数据工厂数据
-数据工厂仅将管道运行数据存储 45 天。 如果希望将管道运行数据保留超过 45 天，则使用 Azure Monitor 不仅可以路由诊断日志以进行分析，还可以将诊断日志保存到存储帐户中，以便在所选的期间内获得工厂信息。
+数据工厂仅将管道运行数据存储 45 天。 如果希望将管道运行数据持久保存 45 天以上，则不仅可以传输诊断日志进行分析，还可以将它们持久保存到存储帐户中，以便在您选择的持续时间内保留工厂信息。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -392,7 +392,7 @@ ADFV2 发出以下指标
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | 成功的管道运行数指标 | Count    | 总计                | 在一分钟时段内成功的管道运行总数 |
 | PipelineFailedRuns   | 失败的管道运行数指标    | Count    | 总计                | 在一分钟时段内失败的管道运行总数    |
-| ActiviySucceededRuns | 成功的活动运行数指标 | Count    | 总计                | 在一分钟时段内成功的活动运行总数  |
+| ActivitySucceededRuns | 成功的活动运行数指标 | Count    | 总计                | 在一分钟时段内成功的活动运行总数  |
 | ActivityFailedRuns   | 失败的活动运行数指标    | Count    | 总计                | 在一分钟时段内失败的活动运行总数     |
 | TriggerSucceededRuns | 成功的触发器运行数指标  | Count    | 总计                | 在一分钟时段内成功的触发器运行总数   |
 | TriggerFailedRuns    | 失败的触发器运行数指标     | Count    | 总计                | 在一分钟时段内失败的触发器运行总数      |

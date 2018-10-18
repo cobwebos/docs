@@ -1,6 +1,6 @@
 ---
-title: 查看 Azure Data Lake Store 诊断日志 | Microsoft Docs
-description: '了解如何设置和访问 Azure Data Lake Store 诊断日志 '
+title: 查看 Azure Data Lake Storage Gen1 诊断日志 | Microsoft Docs
+description: '了解如何设置和访问 Azure Data Lake Storage Gen1 诊断日志 '
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ed401b1d68463bc03f7931e80e2bfb18d9449970
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199052"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390790"
 ---
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
-了解如何启用 Data Lake Store 帐户诊断日志记录以及如何查看为帐户收集的日志。
+# <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
+了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
 
-组织可启用 Azure Data Lake Store 帐户诊断记录来收集数据访问审核跟踪（会提供访问数据的用户列表、数据的访问频率和帐户中存储的数据量等信息）。启用后，会最大程度地记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
+组织可启用 Azure Data Lake Storage Gen1 帐户诊断记录来收集数据访问审核跟踪（会提供访问数据的用户列表、数据的访问频率和帐户中存储的数据量等信息）。启用后，会最大程度地记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。
+* **Azure Data Lake Storage Gen1 帐户**。 请按[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明操作。
 
-## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>对 Data Lake Store 帐户启用诊断日志记录
+## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>对 Data Lake Storage Gen1 帐户启用诊断日志记录
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 打开 Data Lake Store 帐户，在“Data Lake Store 帐户”边栏选项卡上单击“诊断日志”。
-3. 在“诊断日志”边栏选项卡中，单击“启用诊断”。
+2. 打开 Data Lake Storage Gen1 帐户，在 Data Lake Storage Gen1 帐户边栏选项卡中单击“诊断设置”。
+3. 在“诊断设置”边栏选项卡中，单击“启用诊断”。
 
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "启用诊断日志")
 
-3. 在“诊断”边栏选项卡上，作出以下更改来配置诊断日志记录。
+3. 在“诊断设置”边栏选项卡上，作出以下更改来配置诊断日志记录。
    
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "启用诊断日志")
    
@@ -54,24 +54,24 @@ ms.locfileid: "34199052"
 
 启用诊断设置后，可在“诊断日志”选项卡中查看日志。
 
-## <a name="view-diagnostic-logs-for-your-data-lake-store-account"></a>查看 Data Lake Store 帐户诊断日志
-查看 Data Lake Store 帐户日志数据有两种方式。
+## <a name="view-diagnostic-logs-for-your-data-lake-storage-gen1-account"></a>查看 Data Lake Storage Gen1 帐户诊断日志
+查看 Data Lake Storage Gen1 帐户日志数据有两种方式。
 
-* 从 Data Lake Store 帐户设置查看
-* 从存储数据的 Azure 存储帐户
+* 从 Data Lake Storage Gen1 帐户设置视图查看
+* 从存储数据的 Azure 存储帐户查看
 
-### <a name="using-the-data-lake-store-settings-view"></a>使用 Data Lake Store 设置查看
-1. 从 Data Lake Store 帐户“设置”边栏选项卡，单击“诊断日志”。
+### <a name="using-the-data-lake-storage-gen1-settings-view"></a>使用 Data Lake Storage Gen1 设置视图
+1. 从 Data Lake Storage Gen1 帐户的“设置”边栏选项卡，单击“诊断日志”。
    
-    ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志") 
+    ![查看诊断日志](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "查看诊断日志") 
 2. 在“诊断日志”边栏选项卡上，可看到按“审核日志”和“请求日志”分类的日志。
    
-   * 请求日志捕获 Data Lake Store 帐户上作出的每个 API 请求。
-   * 审核日志类似于请求日志，但提供 Data Lake Store 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
+   * 请求日志捕获 Data Lake Storage Gen1 帐户上作出的每个 API 请求。
+   * 审核日志类似于请求日志，但提供 Data Lake Storage Gen1 帐户上正在执行的操作的更详细的分解结构。 例如，一个单一上传 API 调用请求日志可能导致审核日志中有多个“附加”操作。
 3. 要下载日志，请单击每个日志条目的“下载”链接。
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>从包含日志数据的 Azure 存储帐户查看
-1. 打开与日志记录的 Data Lake Store 关联的 Azure 存储帐户边栏选项卡，并单击 Blob。 “Blob 服务”边栏选项卡上会列出两个容器。
+1. 打开与日志记录的 Data Lake Storage Gen1 关联的 Azure 存储帐户边栏选项卡，并单击“Blob”。 “Blob 服务”边栏选项卡上会列出两个容器。
    
     ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "查看诊断日志记录")
    
@@ -81,9 +81,9 @@ ms.locfileid: "34199052"
    
     ![查看诊断日志记录](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "查看诊断日志记录")
    
-    例如，审核日志的完整路径可能是 `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    例如，审核日志的完整路径可能是 `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    类似地，请求日志的完整路径可能是 `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    类似地，请求日志的完整路径可能是 `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>了解日志数据的结构
 审核和请求日志格式为 JSON。 本部分介绍请求和审核日志的 JSON 结构。
@@ -98,7 +98,7 @@ ms.locfileid: "34199052"
         ,
         {
              "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
              "category": "Requests",
              "operationName": "GETCustomerIngressEgress",
              "resultType": "200",
@@ -113,7 +113,7 @@ ms.locfileid: "34199052"
     }
 
 #### <a name="request-log-schema"></a>请求日志架构
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
@@ -126,7 +126,7 @@ ms.locfileid: "34199052"
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -145,14 +145,14 @@ ms.locfileid: "34199052"
         ,
         {
              "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_store_account_name>",
+             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
              "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
+             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
         }
         ,
         . . . .
@@ -160,7 +160,7 @@ ms.locfileid: "34199052"
     }
 
 #### <a name="audit-log-schema"></a>审核日志架构
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的 ID |
@@ -173,12 +173,12 @@ ms.locfileid: "34199052"
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称 | Type | 说明 |
+| 名称 | Type | Description |
 | --- | --- | --- |
 | StreamName |String |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
-将日志从 Azure Data Lake Store 发送到 Azure Log Analytics 时（有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)），以下查询会返回一个表，其中列出了用户显示名称、事件时间和事件时间的事件计数并包含一个可视图表。 可轻松修改该查询，以显示用户 GUID 或其他属性：
+将日志从 Azure Data Lake Storage Gen1 发送到 Azure Log Analytics 时（有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)），以下查询会返回一个表，其中列出了用户显示名称、事件时间和事件时间的事件计数并包含一个可视图表。 可轻松修改该查询，以显示用户 GUID 或其他属性：
 
 ```
 search *
@@ -187,9 +187,9 @@ search *
 ```
 
 
-Azure Data Lake Store 提供如何处理和分析日志数据的示例。 可在 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 找到示例。 
+Azure Data Lake Storage Gen1 提供如何处理和分析日志数据的示例。 可在 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 找到示例。 
 
 ## <a name="see-also"></a>另请参阅
-* [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-* [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
+* [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 

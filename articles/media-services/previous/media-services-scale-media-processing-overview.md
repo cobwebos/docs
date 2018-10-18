@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 698a85244d5341224dd9f513c5617b9086e36844
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368625"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033067"
 ---
 # <a name="scaling-media-processing-overview"></a>调整媒体处理的规模概述
 此页概述了如何以及为何调整媒体处理的规模。 
@@ -30,12 +30,12 @@ ms.locfileid: "39368625"
 除了指定预留单位类型，还可以指定通过预留单位来设置帐户。 设置的预留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个预留单位，则只要有任务要处理，就可以同时运行 5 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何预留单位，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>在不同的预留单位类型之间进行选择
-下表有助于在不同的编码速度之间进行选择时做出决定。 它还提供了几个基准案例，并提供可用于下载视频的 SAS URL，可以对该视频执行自己的测试：
+下表有助于在不同的编码速度之间进行选择时做出决定。 它还提供了几个基准案例，可[下载视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)来执行自己的测试：
 
 | 方案 | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | 预期的用例 |单比特率编码。 <br/>具有 SD 或更低分辨率的文件，不具有高时效性，成本低。 |单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。 |单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。 |
-| 基准 |编码为具有相同分辨率的单比特率 MP4 文件大约需要 11 分钟。 |预设为“H264 单比特率 720p”的编码大约需要 5 分钟。<br/><br/>预设为“H264 多比特率 720p”的编码大约需要 11.5 分钟。 |预设为“H264 单比特率 1080p”的编码大约需要 2.7 分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 5.7 分钟。 |
+| 7 分钟的视频基准 |编码为具有相同分辨率的单比特率 MP4 文件大约需要 5 分钟。 |预设为“H264 单比特率 720p”的编码大约需要 8 分钟。<br/><br/>预设为“H264 多比特率 720p”的编码大约需要 16.8 分钟。 |预设为“H264 单比特率 1080p”的编码大约需要 4 分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 8 分钟。 |
 
 
 ## <a name="considerations"></a>注意事项
@@ -66,8 +66,8 @@ ms.locfileid: "39368625"
 > 
 
 > [!NOTE]
-> 要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)。 <br/>
-> 要下载最新的媒体服务 PHP SDK，请在 [Packagist 存储库](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)中查找 0.5.7 版 Microsoft/WindowAzure 包。  
+> 若要获取最新版本的 Java SDK 并开始使用 Java 进行开发，请参阅[媒体服务的 Java 客户端 SDK 入门](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)。 <br/>
+> 若要下载最新的媒体服务 PHP SDK，请在 [Packagist 存储库](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)中查找 0.5.7 版 Microsoft/WindowAzure 包。  
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

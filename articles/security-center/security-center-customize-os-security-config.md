@@ -3,23 +3,23 @@ title: 在 Azure 安全中心自定义 OS 安全配置（预览）| Microsoft Do
 description: 本文演示如何自定义安全中心评估
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2018
-ms.author: terrylan
-ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.date: 18/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200004"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378357"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -53,29 +53,27 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 1.  打开“安全中心”仪表板。
 
-2.  在左窗格中，选择“安全策略”。  
-    此时将打开“安全中心 - 安全策略”窗口。
+2.  在左窗格中，选择“安全策略”。      
 
-    ![安全策略列表](media/security-center-customize-os-security-config/open-security-policy.png)
+    ![安全策略列表](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  选择要对其执行自定义的订阅。
+3.  在要自定义的订阅对应的行中，单击“编辑设置”。
 
-4. 在“策略组件”下，选择“编辑安全配置”。  
-    此时将打开“编辑安全配置”窗口。
-
+4. 选择“编辑安全配置”。  
+    
     ![“编辑安全配置”窗口](media/security-center-customize-os-security-config/blade.png)
 
-5. 在右窗格中，遵照步骤下载、编辑和上传修改后的文件。
+5. 按步骤下载、编辑和上传修改后的文件。
 
    > [!NOTE]
    > 默认情况下，下载的配置文件采用 *json* 格式。 有关修改此文件的说明，请转到[自定义配置文件](#customize-the-configuration-file)。
    >
 
-   成功保存文件后，配置将应用到与订阅下的所有工作区相连接的所有 VM 和计算机。 此过程通常需要几分钟或更长时间，具体时间取决于基础结构的大小。
-
 6. 若要提交更改，请选择“保存”。 否则不会存储该策略。
 
     ![点击“保存”按钮](media/security-center-customize-os-security-config/save-successfully.png)
+
+   成功保存文件后，配置将应用到与订阅下的工作区相连接的所有 VM 和计算机。 此过程通常需要几分钟或更长时间，具体时间取决于基础结构的大小。
 
 随时可将当前策略配置重置为默认状态。 为此，请在“编辑 OS 安全配置规则”窗口中选择“重置”。 在确认弹出窗口中选择“是”，确认选择此选项。
 
@@ -116,9 +114,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 -   **state**：可以包含 *Disabled* 或 *Enabled* 选项的字符串。 在此个人预览版中，该字符串区分大小写。
 
-只能配置这些字段。 如果不符合文件格式或大小，则无法保存更改。 无法处理文件时，将出现以下错误消息：
-
-![安全配置错误消息](media/security-center-customize-os-security-config/invalid-json.png)
+只能配置这些字段。 如果不符合文件格式或大小，则无法保存更改。 你会收到一条错误消息，指出需上传有效的 JSON 配置文件。
 
 有关其他潜在错误的列表，请参阅[错误代码](#error-codes)。
 
@@ -267,9 +263,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 
 ## <a name="file-upload-failures"></a>文件上传失败
 
-如果由于值或格式错误而导致提交的配置文件无效，将会显示失败错误。 可以下载详细的 csv 错误报告以补救和修复错误，然后重新提交更正的配置文件。
-
-![“保存操作失败”错误消息](media/security-center-customize-os-security-config/invalid-configuration.png)
+如果由于值或格式错误而导致提交的配置文件无效，将会显示失败错误，例如“保存操作失败”。 可以下载详细的 csv 错误报告以补救和修复错误，然后重新提交更正的配置文件。
 
 错误文件的示例：
 
@@ -284,7 +278,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 | BaselineConfiguratiohSchemaVersionError  | 发现属性 *schemaVersion* 无效或为空。 该值必须设置为 *{0}*。                                                         |
 | BaselineInvalidStringError               | 属性 *{0}* 不能包含 *\\n*。                                                                                                         |
 | BaselineNullRuleError                    | 基线配置规则列表包含值为 *null* 的规则。                                                                         |
-| BaselineRuleCceIdNotUniqueError          | CCE-ID *{0}* 不是唯一的。                                                                                                                  |
+| BaselineRuleCceIdNotUniqueError          | CCE-ID *{0}* 不唯一。                                                                                                                  |
 | BaselineRuleEmptyProperty                | 属性 *{0}* 缺失或无效。                                                                                                       |
 | BaselineRuleIdNotInDefault               | 该规则包含源属性 *Microsoft*，但未在 Microsoft 默认规则集中找到。                                                   |
 | BaselineRuleIdNotUniqueError             | 规则 ID 不是唯一的。                                                                                                                       |
@@ -294,14 +288,14 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 | BaselineRuleNotExistInConfigError        | 在新配置中找不到该规则。 无法删除规则。                                                                     |
 | BaselineRuleNotFoundError                | 在默认基线规则集中找不到该规则。                                                                                        |
 | BaselineRuleNotInPlace                   | 该规则与 {0} 类型的默认规则匹配，并已列在 {1} 列表中。                                                                       |
-| BaselineRulePropertyTooLong              | 属性 *{0}* 太长。 允许的最大长度: {1}。                                                                                        |
+| BaselineRulePropertyTooLong              | 属性 *{0}* 过长。 允许的最大长度: {1}。                                                                                        |
 | BaselineRuleRegTypeInvalidError          | 预期值 *{0}* 与定义的注册表值类型不匹配。                                                              |
 | BaselineRulesetAdded                     | 在默认配置中找不到 ID 为 *{0}* 的规则集。 无法添加规则集。                                               |
 | BaselineRulesetIdMustBeUnique            | 给定的基线规则集 *{0}* 必须是唯一的。                                                                                           |
 | BaselineRulesetNotFound                  | 在给定的配置中找不到 ID 为 *{0}* 且名称为 *{1}* 的规则集。 无法删除规则集。                                |
 | BaselineRuleSourceNotMatch               | 已定义 ID 为 *{0}* 的规则。                                                                                                       |
 | BaselineRuleTypeDoesntMatch              | 默认规则类型为 *{0}*。                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | 规则的实际类型为: *{0}*，但 *ruleType* 属性为 *{1}*。                                                                          |
+| BaselineRuleTypeDoesntMatchError         | 规则的实际类型为 *{0}*，但 *ruleType* 属性为 *{1}*。                                                                          |
 | BaselineRuleUnpermittedChangesError      | 只允许更改 *expectedValue* 和 *state* 属性。                                                                       |
 | BaselineTooManyRules                     | 允许的最大自定义规则数为 {0} 个规则。 给定的配置包含 {1} 个规则，其中包括 {2} 个默认规则，{3} 个自定义规则。 |
 | ErrorNoConfigurationStatus               | 找不到配置状态。 请指明所需的配置状态: *Default* 或 *Custom*。                                    |

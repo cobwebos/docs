@@ -13,50 +13,50 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 660080a629e00884dd61a49bc0950ebe25b6a0c5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f943f0e371b3092717a62a2e83a98211723e5302
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146122"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304401"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
-[指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Visual Studio Team Services 生成系统](https://docs.microsoft.com/vsts/pipelines/tasks/)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
+[指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure DevOps Services 生成系统](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
 
 ![显示与服务器响应时间的关联的批注示例](./media/app-insights-annotations/00.png)
 
 
 
-## <a name="release-annotations-with-vsts-build"></a>使用 VSTS 生成系统创建版本批注
+## <a name="release-annotations-with-azure-devops-services-build"></a>使用 Azure DevOps Services 生成系统创建版本批注
 
-版本批注是 Visual Studio Team Services 的基于云的生成和发布服务的一项功能。 
+版本批注是 Azure DevOps Services 的基于云的 Azure Pipelines 服务功能。 
 
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
-若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Team Service 扩展中的一个。
+若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Azure DevOps Services 扩展中的一个。
 
-1. 登录到 [Visual Studio Team Services](https://visualstudio.microsoft.com/vso/) 项目。
-2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Team Services 帐户。
+1. 登录到 [Azure DevOps Services](https://visualstudio.microsoft.com/vso/) 项目。
+2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Azure DevOps Services 组织。
 
-![在 Team Services 网页右上角打开“市场”。 选择“Visual Team Services”，并在“生成与发布”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
+![在 Azure DevOps Services 网页右上角打开“市场”。 选择“Azure DevOps Services”，并在“Azure Pipelines”下面选择“查看更多”。](./media/app-insights-annotations/10.png)
 
-只需针对 Visual Studio Team Services 帐户执行此操作一次。 现在，可为帐户中的任何项目配置版本批注。 
+只需针对 Azure DevOps Services 组织执行此操作一次。 现在，可为组织中的任何项目配置版本批注。 
 
 ### <a name="configure-release-annotations"></a>配置版本批注
 
-需要为每个 VSTS 发布模板单独获取一个 API 密钥。
+需要为每个 Azure DevOps Services 发布模板单独获取一个 API 密钥。
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 （如果尚未创建此资源，可以[立即创建一个](app-insights-overview.md)。）
 2. 打开“API 访问”，并复制“Application Insights ID”。
    
     ![在 portal.azure.com 中打开你的 Application Insights 资源，并选择“设置”。 打开“API 访问”。 复制应用程序 ID](./media/app-insights-annotations/20.png)
 
-4. 在另一个浏览器窗口中，打开（或创建）可从 Visual Studio Team Services 管理部署的发布模板。 
+4. 在另一个浏览器窗口中，打开（或创建）可从 Azure DevOps Services 管理部署的发布模板。 
    
     添加一个任务，并从菜单中选择“Application Insights 版本批注”任务。
    
     粘贴从“API 访问”边栏选项卡复制的**应用程序 ID**。
    
-    ![在 Visual Studio Team Services 中打开“发布”，选择一个发布定义，并选择“编辑”。 单击“添加任务”，并选择“Application Insights 版本批注”。 粘贴 Application Insights ID。](./media/app-insights-annotations/30.png)
+    ![在 Azure DevOps Services 中打开“发布”，选择一个发布管道，并选择“编辑”。 单击“添加任务”，并选择“Application Insights 版本批注”。 粘贴 Application Insights ID。](./media/app-insights-annotations/30.png)
 4. 将“APIKey”字段设置为变量 `$(ApiKey)`。
 
 5. 返回“Azure”窗口，创建新的 API 密钥并复制它。
@@ -69,19 +69,19 @@ ms.locfileid: "42146122"
    
     将 API 密钥粘贴到 ApiKey 变量定义。
    
-    ![在“Team Services”窗口中选择“配置”选项卡，并单击“添加变量”。 设置 ApiKey 的名称并设置“值”，粘贴刚刚生成的密钥，并单击锁状图标。](./media/app-insights-annotations/50.png)
-7. 最后，**保存**发布定义。
+    ![在“Azure DevOps Services”窗口中选择“配置”选项卡，并单击“添加变量”。 设置 ApiKey 的名称并设置“值”，粘贴刚刚生成的密钥，并单击锁状图标。](./media/app-insights-annotations/50.png)
+7. 最后，**保存**发布管道。
 
 
 ## <a name="view-annotations"></a>查看批注
 现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 批注会显示在指标资源管理器中的图表上。
 
-单击任一批注标记可打开有关该版本的详细信息，包括请求者、源控制分支、发布定义和环境等。
+单击任一批注标记可打开有关该版本的详细信息，包括请求者、源控制分支、发布管道和环境等。
 
 ![单击任一版本批注标记。](./media/app-insights-annotations/60.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
-也可以通过所偏好的任何过程（不使用 VS Team System）创建批注。 
+也可以通过所偏好的任何过程（不使用 Azure DevOps Services）创建批注。 
 
 
 1. 为 [GitHub 中的 Powershell 脚本](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)创建一个本地副本。

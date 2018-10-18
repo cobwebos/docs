@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26754180"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096768"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
@@ -86,7 +86,7 @@ Ricardo 刚才向 Cristina 介绍的是 DFD，即**[数据流关系图](https://
 
 ## <a name="analyzing-threats"></a>分析威胁
 
-他单击图标菜单选项（带有放大镜的文件）中的分析视图后，即转到威胁建模工具基于默认模板建立的已生成威胁的列表，该列表使用名为 **[STRIDE（欺骗、篡改、信息泄露、拒绝服务和特权提升）](https://en.wikipedia.org/wiki/STRIDE_(security))** 的 SDL 方法。 思路是，软件来自可预测的一组威胁，可使用这 6 类找到。
+单击图标菜单选项（带有放大镜的文件）中的分析视图后，即转到 Threat Modeling Tool 基于默认模板建立的已生成威胁的列表，该列表使用名为 **[STRIDE（欺骗、篡改、信息泄露、否认性、拒绝服务和特权提升）](https://en.wikipedia.org/wiki/STRIDE_(security))** 的 SDL 方法。 思路是，软件来自可预测的一组威胁，可使用这 6 类找到。
 
 此方法类似于通过先确保房子里的每扇门、每扇窗都锁好来保护房屋的安全，然后再添加警报或抓小偷。
 
@@ -143,4 +143,4 @@ Ricardo 和 Cristina 查看列表并添加重要事项、缓解/理由、优先�
 
 ## <a name="next-steps"></a>后续步骤
 
-将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。**[下载](https://aka.ms/tmtpreview)** 威胁建模工具以开始。
+将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。 **[下载](https://aka.ms/tmtpreview)** 威胁建模工具以开始。

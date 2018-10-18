@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 543c03c22b31389c3d6e048cc9f13c24add5aae7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: da69cc22fbb071ce3fa4b2c53aaf0b1ec4ba5e46
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314715"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096304"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
 
@@ -118,7 +118,7 @@ await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 ## <a name="code-sample-on-github"></a>GitHub 上的代码示例
 若要了解作业准备和释放任务的操作实践，请查看 GitHub 上的 [JobPrepRelease][job_prep_release_sample] 示例项目。 此控制台应用程序将执行以下操作：
 
-1. 创建包含两个“小”节点的池。
+1. 创建包含两个节点的池。
 2. 创建具有作业准备、释放和标准任务的作业。
 3. 运行作业准备任务，该任务首先会将节点 ID 写入节点的“共享”目录中的文本文件。
 4. 在每个节点上运行一个任务，该任务将其任务 ID 写入同一文本文件。
@@ -131,7 +131,7 @@ await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 
 ```
 Attempting to create pool: JobPrepReleaseSamplePool
-Created pool JobPrepReleaseSamplePool with 2 small nodes
+Created pool JobPrepReleaseSamplePool with 2 nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
 Submitting tasks and awaiting completion...
