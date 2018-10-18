@@ -1,44 +1,68 @@
 ---
-title: 在 Azure Active Directory 中向用户分配管理员角色 | Microsoft Docs
-description: 如何在 Azure Active Directory 中更改用户管理信息
+title: 如何使用 Azure Active Directory 向用户分配目录角色 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 向用户分配目录角色。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 06/25/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b73df5ec0381e83c54c8cd9f8c0335448def0c6d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440742"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733036"
 ---
-# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中向用户分配管理员角色
-本文介绍如何将管理角色分配给 Azure Active Directory (Azure AD) 中的用户。 有关添加组织中的新用户的信息，请参阅[将新用户添加到 Azure Active Directory](../add-users-azure-active-directory.md)。 默认情况下添加的用户没有管理员权限，但随时可以为其分配角色。
+# <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>教程：如何使用 Azure Active directory 向用户分配角色和管理员角色
+如果组织中的用户需要管理 Azure Active Directory (Azure AD) 资源的权限，则必须根据用户需要权限才能执行的操作为 Azure AD 中的用户分配适当的角色。
 
-## <a name="assign-a-role-to-a-user"></a>向用户分配角色
-1. 使用目录的全局管理员或特权角色管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+有关可用角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。 有关添加用户的详细信息，请参阅[将新用户添加到 Azure Active Directory](add-users-azure-active-directory.md)。
 
-2. 选择“Azure Active Directory”，选择“用户”，然后从列表中选择一个特定用户。
+## <a name="assign-roles"></a>分配角色
+常用方法是在用户的“目录角色”页面上将 Azure AD 角色分配给用户。
 
-    ![打开“用户管理”](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
+还可以使用 Privileged Identity Management (PIM) 分配角色。 了解如何使用 PIM 的详细信息，请参阅 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
-3. 针对选定的用户，选择“目录角色”，选择“添加角色”，然后从“目录角色”列表中选择合适的管理员角色，例如“条件访问管理员”。 有关管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。 
+### <a name="to-assign-a-role-to-a-user"></a>向用户分配角色
+1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-    ![为用户分配角色](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
+2. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择要获得角色分配的用户。 例如，Alain Charon。
 
-1. 按“选择”进行保存。
+3. 在“Alain Charon - 配置文件”页上，选择“目录角色”。
+
+    将出现“Alain Charon - 目录角色”页面。
+
+4. 依次选择“添加角色”、要分配给 Alain 的角色（例如，“应用程序管理员”）和“选择”。
+
+    ![目录角色页面，显示所选角色](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    应用程序管理员角色分配给 Alain Charon，显示在“Alain Charon - 目录角色”页面上。
+
+## <a name="remove-a-role-assignment"></a>删除角色分配
+如果需要从用户删除角色分配，也可从“Alain Charon - 目录角色”页面执行此操作。
+
+### <a name="to-remove-a-role-assignment-from-a-user"></a>从用户删除角色分配
+
+1. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择删除分配了角色的用户。 例如，Alain Charon。
+
+2. 依次选择“目录角色”、“应用程序管理员”和“删除角色”。
+
+    ![目录角色页面，显示所选角色和删除选项](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+
+    应用程序管理员角色已从 Alain Charon 删除，并且不再显示在“Alain Charon - 目录角色”页面上。
 
 ## <a name="next-steps"></a>后续步骤
-* [快速入门：在 Azure Active Directory 中添加或删除用户](add-users-azure-active-directory.md)
-* [管理用户个人资料](active-directory-users-profile-azure-portal.md)
-* [添加另一个目录中的来宾用户](../b2b/what-is-b2b.md) 
-* [在 Azure AD 中为用户分配角色](active-directory-users-assign-role-azure-portal.md)
-* [还原已删除的用户](active-directory-users-restore.md)
+- [添加或删除用户](add-users-azure-active-directory.md)
+
+- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
+
+- [添加另一个目录中的来宾用户](../b2b/what-is-b2b.md)
+
+也可以执行其他用户管理任务，例如分配委托、使用策略以及共享用户帐户。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
+
+

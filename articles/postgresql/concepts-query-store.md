@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393479"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379155"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
-适用于：Azure Database for PostgreSQL 9.6 和 10
+**适用于：** Azure Database for PostgreSQL 9.6 和 10
 
 > [!IMPORTANT]
-> 查询存储功能在一些有限区域为公共预览版。
+> 查询存储功能目前以公共预览版提供。
 
 
 Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中。

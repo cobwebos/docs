@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 99a1832d82005fabd6f8b62aea6ad7722b317a13
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8fe4fdfa88a5aea4b8df49d9c00fa7f6b1768209
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367876"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363429"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -403,7 +403,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-否，Azure 计算支持磁盘上的指标。 有关详细信息，请参阅此[文章](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/)。
+否，Azure 计算支持磁盘上的指标。 有关详细信息，请参阅此[文章](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

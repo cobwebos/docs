@@ -1,20 +1,21 @@
 ---
-title: Microsoft 文本翻译 API 中的词对齐信息 | Microsoft Docs
-description: 从 Microsoft 文本翻译 API 中接收词对齐信息。
+title: 词对齐信息 - 文本翻译 API
+titlesuffix: Azure Cognitive Services
+description: 从文本翻译 API 接收词对齐信息。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9d8284db61235284ec0d5a1594c34687c89560e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 16334dbcb4631bd927069620e73c1c4474ff99fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365803"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126252"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 

@@ -4,23 +4,23 @@ description: 本文介绍何为流式处理终结点以及 Azure 媒体服务如
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/02/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: c91a538acda44efe55777ec76c5804075a43c322
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 5ba80df26731f9687ec4518d7f12f3c2e3cb0665
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670108"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379172"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
-在 Microsoft Azure 媒体服务 (AMS)中，“流式处理终结点”[](https://docs.microsoft.com/rest/api/media/streamingendpoints)实体表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除默认流式处理终结点。 可以在帐户下创建其他流式处理终结点。 若要启动流式处理视频，需要启动流式处理终结点。 
+在 Microsoft Azure 媒体服务 (AMS)中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints) 实体表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除默认流式处理终结点。 可以在帐户下创建其他流式处理终结点。 若要启动流式处理视频，需要启动流式处理终结点。 
 
 ## <a name="streamingendpoint-types"></a>StreamingEndpoint 类型  
 

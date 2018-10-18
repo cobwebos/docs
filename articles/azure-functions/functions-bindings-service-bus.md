@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: 51b2bd7956f775dbc7f737be33bd0fd6f9246524
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: baf08f18fae7f82fff57616e2d86d3426e32a237
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604529"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387729"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -293,7 +293,7 @@ module.exports = function(context, myQueueItem) {
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
+* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -313,7 +313,7 @@ Functions 1.x 允许你在 *host.json* 中配置 `autoRenewTimeout`，以映射�
 
 服务总线触发器提供了几个[元数据属性](functions-triggers-bindings.md#binding-expressions---trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的属性。
 
-|属性|Type|Description|
+|属性|类型|Description|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|

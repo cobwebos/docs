@@ -3,19 +3,19 @@ title: 检测配色方案 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 检测图像中的配色方案的相关概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: c01433ed3ef1279bf3db9bdcf76e57aad2208895
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 5d0cb6ca751c844846288e8fe26f6ae542e89831
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983591"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339486"
 ---
 # <a name="detecting-color-schemes"></a>检测配色方案
 
@@ -70,7 +70,7 @@ ms.locfileid: "45983591"
 
 | 映像 | 黑色还是白色？ |
 |-------|----------------|
-|![视觉分析建筑](./Images/bw_buildings.png) | 是 |
+|![视觉分析建筑](./Images/bw_buildings.png) | true |
 |![视觉分析住宅庭院](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>后续步骤

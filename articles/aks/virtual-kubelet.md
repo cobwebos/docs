@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b52e491162dcf17eff2ca07bc067586358aa9a35
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226433"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393280"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS)
 
@@ -45,7 +45,7 @@ metadata:
   name: tiller
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller
@@ -118,12 +118,15 @@ virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
 创建名为 `virtual-kubelet-linux.yaml` 的文件，并将其复制到以下 YAML 中。 将 `kubernetes.io/hostname` 值替换为 Linux 虚拟 Kubelet 节点的名称。 请注意，正在使用 [nodeSelector][node-selector] 和 [toleration][toleration] 来计划节点上的容器。
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: aci-helloworld
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: aci-helloworld
   template:
     metadata:
       labels:
@@ -163,12 +166,15 @@ aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.
 创建名为 `virtual-kubelet-windows.yaml` 的文件，并将其复制到以下 YAML 中。 将 `kubernetes.io/hostname` 值替换为 Windows 虚拟 Kubelet 节点的名称。 请注意，正在使用 [nodeSelector][node-selector] 和 [toleration][toleration] 来计划节点上的容器。
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nanoserver-iis
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: aci-helloworld
   template:
     metadata:
       labels:

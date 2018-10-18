@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: b40004e80bf12782b29f5e156a59fb40c807fe57
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296023"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388052"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -52,11 +52,11 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 **Azure AD 密码哈希同步**。 这是在 Azure AD 中为本地目录对象启用身份验证的最简单方法。 用户可以使用其在本地使用的同一用户名和密码，不必部署任何其他基础结构。 某些 Azure AD 高级功能（例如 Identity Protection）需要密码哈希同步，无论选择哪种身份验证方法均是如此。
 
 > [!NOTE] 
-> 请勿以明文形式存储密码，或者使用 Azure AD 不可逆算法加密。 有关密码哈希同步实际过程的详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization)。 
+> 请勿以明文形式存储密码，或者使用 Azure AD 不可逆算法加密。 有关密码哈希同步实际过程的详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)。 
 
 **Azure AD 直通身份验证**。 通过使用在一个或多个本地服务器上运行的软件代理，为 Azure AD 身份验证服务提供简单密码验证。 服务器直接使用本地 Active Directory 验证用户，这将确保云中不发生密码验证。 
 
-具有即时强制本地用户帐户状态、密码策略和登录小时数生效的安全要求的公司可能会使用此身份验证方法。 有关实际直通身份验证过程的详细信息，请参阅[使用 Azure AD 直通身份验证的用户登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)。
+具有即时强制本地用户帐户状态、密码策略和登录小时数生效的安全要求的公司可能会使用此身份验证方法。 有关实际直通身份验证过程的详细信息，请参阅[使用 Azure AD 直通身份验证的用户登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta)。
 
 ### <a name="federated-authentication"></a>联合身份验证
 选择此身份验证方法时，Azure AD 将身份验证过程移交给单独的受信任身份验证系统（例如本地 Active Directory 联合身份验证服务 (AD FS)）来验证用户的密码。
@@ -88,17 +88,17 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 > [!NOTE]
 > 密码过期和帐户锁定状态当前不会借助 Azure AD Connect 同步到 Azure AD。 
 
-请参阅[实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization)了解相关部署步骤。
+请参阅[实现密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)了解相关部署步骤。
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>云身份验证：直通身份验证  
 
 * **工作量**。 对于直通身份验证，需要有一个或多个（我们建议三个）轻量代理安装在现有服务器上。 这些代理必须有权访问本地 Active Directory 域服务，包括本地 AD 域控制器。 它们需要具有对 Internet 的出站访问权限以及对域控制器的访问权限。 因此，不支持将这些代理部署在外围网络中。 
 
-    直通身份验证需要对域控制器进行不受约束的网络访问。 所有流量都已进行加密并受限于身份验证请求。 有关此过程的详细信息，请参阅传递身份验证的[安全性深入研究](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive)。
+    直通身份验证需要对域控制器进行不受约束的网络访问。 所有流量都已进行加密并受限于身份验证请求。 有关此过程的详细信息，请参阅传递身份验证的[安全性深入研究](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-security-deep-dive)。
 
 * **用户体验**。 若要改善用户的登录体验，请将无缝 SSO 随直通身份验证一起部署。 在用户登录后，无缝 SSO 将消除不必要的提示。
 
-* **高级方案**。 直通身份验证在登录时强制实施本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。 
+* **高级方案**。 直通身份验证在登录时强制实施本地帐户策略。 例如，如果本地用户的帐户状态为禁用、锁定或[密码过期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)，或者超出用户被允许登录的小时数，访问会被拒绝。 
 
     需要将多重身份验证与直通身份验证配合使用的组织必须使用 Azure 多重身份验证 (MFA)。 这些组织不能使用第三方或本地多重身份验证方法。 高级功能都需要密码哈希同步已部署，无论你是否选择直通身份验证。 例如 Identity Protection 的已泄漏凭据报表。
 
@@ -108,9 +108,9 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 * **注意事项**。 当代理由于明显的本地故障而无法验证用户的凭据时，可以使用密码哈希同步作为直通身份验证的备份身份验证方法。 故障转移到密码哈希同步不会自动发生，并且必须使用 Azure AD Connect 手动切换登录方法。 
 
-    有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)。
+    有关直通身份验证的其他注意事项（包括备用 ID 支持），请参阅[常见问题](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)。
 
-请参阅[实现传递身份验证](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)了解部署步骤。
+请参阅[实现传递身份验证](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta)了解部署步骤。
 
 ### <a name="federated-authentication"></a>联合身份验证
 
@@ -122,7 +122,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
     * 需要智能卡或证书的身份验证。
     * 本地 MFA 服务器或第三方多重提供程序。
-    * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)。
+    * 使用第三方身份验证解决方案的身份验证。 请参阅[Azure AD 联合身份验证兼容性列表](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility)。
     * 需要 sAMAccountName（例如 DOMAIN\username）而不是用户主体名称 (UPN)（例如 user@domain.com）的登录。
 
 * **业务连续性**。 联合身份验证系统通常需要负载均衡的服务器阵列（称为场）。 此场在内部网络和外围网络拓扑中配置，以便为身份验证请求确保高可用性。
@@ -136,7 +136,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 有关部署步骤，请参阅[部署联合服务器](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers)。
 
 > [!NOTE] 
-> 部署 Azure AD 混合标识解决方案时，必须实现 Azure AD Connect 的某一个受支持拓扑。 有关受支持和不受支持的配置详细信息，请参阅 [Azure AD Connect 拓扑](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-topologies)。
+> 部署 Azure AD 混合标识解决方案时，必须实现 Azure AD Connect 的某一个受支持拓扑。 有关受支持和不受支持的配置详细信息，请参阅 [Azure AD Connect 拓扑](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies)。
 
 ## <a name="architecture-diagrams"></a>体系结构关系图
 
@@ -160,13 +160,13 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |:-----|:-----|:-----|:-----|
 |身份验证在何处发生？|在云中|在云中，在使用本地身份验证代理进行安全密码验证交换后|本地|
 |除预配系统外的本地服务器要求是什么：Azure AD Connect？|无|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
-|除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
+|除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
 |是否有 SSL 证书要求？|否|否|是|
-|是否有运行状况监视解决方案？|不是必需|[Azure Active Directory 管理中心](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)提供的代理状态|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|
-|用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|是|
-|支持哪些登录类型？|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|是否有运行状况监视解决方案？|不是必需|[Azure Active Directory 管理中心](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)提供的代理状态|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
+|用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是|
+|支持哪些登录类型？|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |是否支持 Windows Hello 企业版？|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[使用 Intune 的证书信任模型](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[使用 Intune 的证书信任模型](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[证书信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|
+|有哪些多重身份验证选项？|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA 服务器](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[第三方 MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[带条件访问的自定义控件*](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|
 |支持哪些用户帐户状态？|已禁用帐户<br>（最多 30 分钟延迟）|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|已禁用帐户<br><br>帐户已锁定<br><br>帐户已过期<br><br>密码已过期<br><br>登录小时数|
 |有哪些条件访问选项？|[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)|[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[AD FS 声明规则](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |是否支持阻止旧协议？|[是](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[是](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[是](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6993895b6f2b836308b8ed7c375212c3fae12768
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305916"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320554"
 ---
-#<a name="azure-ad-connect-device-options"></a>Azure AD Connect：设备选项
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect：设备选项
 
 以下文档提供了有关 Azure AD Connect 中提供的各种设备选项的信息。 可使用 Azure AD Connect 配置以下两个操作： 
 * **混合 Azure AD 加入**：如果环境具有本地 AD 占用情况并且希望利用 Azure AD 的优势，则可实现混合 Azure AD 加入的设备。 这些设备同时加入到本地 Active Directory 和 Azure Active Directory。

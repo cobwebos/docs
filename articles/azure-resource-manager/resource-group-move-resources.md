@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452150"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394402"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -110,7 +110,7 @@ ms.locfileid: "47452150"
 
 ## <a name="validate-move"></a>验证移动
 
-[验证移动操作](/rest/api/resources/resources/validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作来确定移动是否会成功。 若要运行此操作，需要：
+[验证移动操作](/rest/api/resources/resources/resources_validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作来确定移动是否会成功。 若要运行此操作，需要：
 
 * 源资源组的名称
 * 目标资源组的资源 ID

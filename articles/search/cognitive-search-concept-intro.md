@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 72d1630ecaeada3acf8b49952a31ccd3ae8634aa
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617952"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729026"
 ---
 # <a name="what-is-cognitive-search"></a>什么是认知搜索？
 
@@ -31,7 +31,7 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 数据引入阶段应用了自然语言和图形处理，同时结果会成为 Azure 搜索中可搜索索引中文档撰写的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
 > [!NOTE]
-> 认知搜索以公共预览版提供，技能集执行目前免费提供。 我们日后会公布此功能的定价。 
+> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="components-of-cognitive-search"></a>认知搜索的组件
 
@@ -59,7 +59,7 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 
 ### <a name="search-index-and-query-based-access"></a>搜索索引和基于查询的访问
 
-完成处理后，将会获得一个由扩充文档组成的搜索集。这些文档在 Azure 搜索中支持全文搜索。 开发人员和用户可以通过[查询索引](search-query-overview.md)来访问管道生成的扩充内容。 
+完成处理后，将会获得一个由扩充文档组成的搜索集。这些文档在 Azure 搜索中支持全文搜索。 开发者和用户可以通过[查询索引](search-query-overview.md)来访问管道生成的扩充内容。 
 
 ![带搜索图标的索引](./media/cognitive-search-intro/search-phase-blowup.png "带搜索图标的索引")
 
@@ -71,7 +71,7 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 
 ## <a name="key-features-and-concepts"></a>重要功能和概念
 
-| 概念 | Description| 链接 |
+| 概念 | 说明| 链接 |
 |---------|------------|-------|
 | 技能集 | 包含技能集合的顶级命名资源。 技能集是扩充管道。 在索引编制期间索引器会调用它。 | [定义技能集](cognitive-search-defining-skillset.md) |
 | 认知技能 | 扩充管道中的原子转换。 通常，它是提取或推断结构的组件，因此增强了我们对输入数据的理解。 输出几乎总是基于文本，处理是自然语言处理，或者从图像输入提取或生成文本的图像处理。 技能的输出可映射到索引中的字段，或用作下游扩充组件的输入。 技能是预定义的、由 Microsoft 提供的或自定义的（由你创建并部署）。 | [预定义技能](cognitive-search-predefined-skills.md) |
@@ -99,11 +99,11 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)
 + [自定义技能示例 (C#)](cognitive-search-create-custom-skill-example.md)
 
-**步骤 3：查看 API（仅适用于 REST）**
+**步骤 3：查看 API（仅限 REST）**
 
-目前仅提供 REST API。 请对所有请求使用 `api-version=2017-11-11-Preview`。 使用以下 API 生成认知搜索解决方案。 只会为认知搜索添加或扩展两个 API。 其他 API 的语法与正式版相同。
+目前，仅提供 REST API。 请对所有请求使用 `api-version=2017-11-11-Preview`。 使用以下 API 生成认知搜索解决方案。 只会为认知搜索添加或扩展两个 API。 其他 API 的语法与正式版相同。
 
-| REST API | Description |
+| REST API | 说明 |
 |-----|-------------|
 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部数据源的资源，提供用于创建扩充文档的源数据。  |
 | [创建技能集 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在索引编制期间协调扩充管道中所用[预定义技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的使用的资源。 |
@@ -118,11 +118,11 @@ Azure 搜索中的认知技能基于认知服务 API 中使用的相同 AI 算�
 
 1. 使用扩充步骤创建[技能集](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 
-1. 定义[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)。 “字段”集合包含源数据中的字段。 还应该抽出其他字段，以保存扩充期间创建的内容的生成值。
+1. 定义[索引架构](https://docs.microsoft.com/rest/api/searchservice/create-index)。 字段集合包含源数据中的字段。 还应该抽出其他字段，以保存扩充期间创建的内容的生成值。
 
 1. 定义引用数据源、技能集和索引的[索引器](https://docs.microsoft.com/rest/api/searchservice/create-skillset)。
 
-1. 在索引器中，添加 *outputFieldMappings*。 此节将技能集的输出（步骤 3）映射到索引架构中的输入字段（步骤 4）。
+1. 在索引器中，添加 outputFieldMappings。 此节将技能集的输出（步骤 3）映射到索引架构中的输入字段（步骤 4）。
 
 1. 发送刚刚创建的“创建索引器”请求（一个 POST 请求，其请求正文包含索引器定义）来表示 Azure 搜索中的索引器。 通过此步骤运行索引器，并调用管道。
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310676"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390306"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -112,7 +112,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="fixed-issues"></a>修复的问题 
 
-- 此版本将 SQL Server Express 安装更新为 SQL Server 2012 SP4，该版本及其他一些版本针对多个安全漏洞提供修补程序。  有关 SQL Server 2012 SP4 的详细信息，请参阅[此处](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information)。
+- 此版本将 SQL Server Express 安装更新为 SQL Server 2012 SP4，该版本及其他一些版本针对多个安全漏洞提供修补程序。  有关 SQL Server 2012 SP4 的详细信息，请参阅[此处](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information)。
 - 同步规则处理：如果父同步规则不再适用，应取消应用没有联接条件的出站联接同步规则
 - 多个可访问性修补程序已应用于 Synchronization Service Manager UI 和同步规则编辑器
 - Azure AD Connect 向导：Azure AD Connect 位于工作组中时，创建 AD 连接器帐户出错

@@ -3,19 +3,19 @@ title: 教程：构建图像处理应用 - C#
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: 介绍一款使用 Microsoft 认知服务中的计算机视觉 API 的基本 Windows 应用。 执行 OCR、创建缩略图，并处理图像中的视觉特征。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 9ea562e7fa2ec3e32da2f0f1453db36dda319303
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: pafarley
+ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295846"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342647"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
 
@@ -32,7 +32,7 @@ ms.locfileid: "46295846"
 在探索示例应用之前，请确保已满足以下先决条件：
 
 * 必须具有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更高版本。
-* 必须具有计算机视觉的订阅密钥。 若要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+* 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
 
 ## <a name="get-the-sample-app"></a>获取示例应用
 

@@ -10,19 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5bd1b534386f38f8dd3a78bbd98ffd012875351f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5387eeacc78875ac0f38f96a6c83fb3f5791775e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736149"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167607"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
 文本合并技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
-> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 认知搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill
@@ -122,7 +122,7 @@ Microsoft.Skills.Text.MergeSkill
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetname" : "merged_text"
+          "name": "mergedText", "targetName" : "merged_text"
         }
       ]
     }

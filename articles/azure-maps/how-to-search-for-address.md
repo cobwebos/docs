@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 293b6af1d591c0c9763c2914713fe892392ae7ea
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578134"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387423"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
@@ -59,7 +59,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
 4. 单击“发送”并查看响应正文。
 
-    “pizza”模糊查询字符串返回了 10 条[兴趣点结果](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI)，其类别属于“pizza”和“restaurant”。 每条结果返回了相应位置的街道地址、纬度/经度值、视口和入口点。
+    “pizza”模糊查询字符串返回了 10 条[兴趣点结果](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI)，其类别属于“pizza”和“restaurant”。 每条结果返回了相应位置的街道地址、纬度/经度值、视口和入口点。
   
     此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 可以使用 **countrySet** 参数来指定只搜索应用程序需要覆盖的国家/地区，因为默认行为是搜索全球，这可能会返回不必要的结果。
 
@@ -120,7 +120,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | typeahead | 是 |
+    | typeahead | true |
 
     **typeahead** 标志告知地址搜索 API 要将查询视为部分输入，并返回预测值的数组。
 
@@ -156,7 +156,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | 数字 | 是 |
+    | 数字 | true |
 
     如果连同请求一起发送了 [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
   
@@ -164,7 +164,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | returnSpeedLimit | 是 |
+    | returnSpeedLimit | true |
   
     如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回发布的速度限制。
 
@@ -172,7 +172,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | returnRoadUse | 是 |
+    | returnRoadUse | true |
 
     如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
 
@@ -180,7 +180,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     | 密钥 | 值 |
     |-----|------------|
-    | roadUse | 是 |
+    | roadUse | true |
 
     可以使用 [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
   

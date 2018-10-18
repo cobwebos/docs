@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.author: ramamill
 ms.date: 09/19/2018
-ms.openlocfilehash: 22c01f2bd9c763eeb681bf2d60e0ccffe1154d85
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 4c57d048f4c3222ac180355a6a700562415f601c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497614"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390187"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -73,7 +73,7 @@ ms.locfileid: "46497614"
 * 若要使用组策略启用文件共享，
   * 转到开始，键入 type gpmc.msc 并搜索。
   * 在导航窗格中，打开以下文件夹：本地计算机策略、用户配置、管理模板、Windows 组件和网络共享。
-  * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 若要了解详细信息，请单击[此处](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
+  * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 若要了解详细信息，请单击[此处](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
 对于更高版本，请按照[此处](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)提供的说明来启用文件和打印机共享
 
