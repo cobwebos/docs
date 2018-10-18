@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Concur 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 Concur 复制数据| Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Concur 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 9414107e92bfb48bbf28348aa45c8ec6795dbd3f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045402"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123846"
 ---
-# <a name="copy-data-from-concur-using-azure-data-factory"></a>使用 Azure 数据工厂从 Concur 复制数据
+# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Concur 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Concur 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前以预览版提供。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -48,7 +48,7 @@ Concur 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Concur** | 是 |
+| type | type 属性必须设置为：“Concur” | 是 |
 | clientId | 由 Concur 应用管理提供的应用程序 client_id。  | 是 |
 | username | 用于访问 Concur 服务的用户名。  | 是 |
 | password | 在“用户名”字段中提供的用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -102,7 +102,7 @@ Concur 链接服务支持以下属性：
 
 ### <a name="concursource-as-source"></a>以 ConcurSource 作为源
 
-要从 Concur 复制数据，请将复制活动中的源类型设置为“ConcurSource”。 复制活动**源**部分支持以下属性：
+要从 Concur 复制数据，请将复制活动中的源类型设置为“ConcurSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -3,8 +3,8 @@ title: 通过 Azure CDN 进行媒体流式处理优化
 description: 优化流媒体文件，以实现顺畅交付
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: v-deasim
-ms.openlocfilehash: 8a2b69aaa601e1d00152f57841a4d67f98680181
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: magattus
+ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766166"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093691"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
  
@@ -65,7 +65,7 @@ ms.locfileid: "33766166"
 
 ### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>配置 Akamai CDN 终结点来优化媒体流式处理
  
-你可以配置内容分发网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户使用 **Akamai 的 Azure CDN 标准版**配置文件的交付过程：
+你可以配置内容分发网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件分发。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户进行的 **Akamai 推出的 Azure CDN 标准版**配置文件的分发过程：
 
 1. 若要添加新的终结点，请在 Akamai“CDN 配置文件”页上选择“终结点”。
   

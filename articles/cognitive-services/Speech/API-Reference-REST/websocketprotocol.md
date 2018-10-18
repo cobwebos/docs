@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962770"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341811"
 ---
 # <a name="bing-speech-websocket-protocol"></a>必应语音 WebSocket 协议
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 必应语音是基于云的平台，采用可用于将语音转换为文本的先进算法。 必应语音协议定义客户端应用程序与服务之间的[连接设置](#connection-establishment)以及对应方之间交换的语音识别消息（[客户端发起的消息](#client-originated-messages)和[服务发起的消息](#service-originated-messages)）。 此外，还介绍了[遥测消息](#telemetry-schema)和[错误处理](#error-handling)。
 

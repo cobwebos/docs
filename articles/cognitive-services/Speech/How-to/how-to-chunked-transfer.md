@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 510bc258aae80582e85478936c3281198e89d755
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979220"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343157"
 ---
 # <a name="chunked-transfer-encoding"></a>分块传输编码
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 要将语音转录为文本，可使用 Microsoft 语音识别 API 将音频作为整个区块发送或将音频拆分为小区块进行发送。 为了有效流式传输音频并降低听录延迟，建议使用[分块传输编码](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)，向服务流式传输音频。 其他实现可能会导致更高的用户感知延迟。 有关详细信息，请参阅[音频流](../concepts.md#audio-streams)页。
 

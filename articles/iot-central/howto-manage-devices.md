@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937612"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737305"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -51,12 +51,9 @@ ms.locfileid: "36937612"
 
 ## <a name="import-devices"></a>导入设备
 
-Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大量的设备连接到应用程序。 
-
-CSV 文件要求：
-1. CSV 文件中只能有一个列包含设备 ID。
-
-1. 该文件不能包含任何标题。
+Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大量的设备连接到应用程序。 该 CSV 文件应包含以下列（和标头）
+1.  IOTC_DeviceID<span style="color:Red">（应为小写）</span>
+1.  IOTC_DeviceName（可选）
 
 
 若要在应用程序中批量注册设备：
@@ -119,11 +116,13 @@ CSV 文件要求：
 
     [![导出成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. 导出的 CSV 文件将具有以下信息：
-    1. 名称
-    1. 设备 ID
-    1. 主要连接字符串
-
+1. 导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助键和主要/辅助证书指纹
+    *   IOTC_DEVICEID
+    *   IOTC_DEVICENAME
+    *   IOTC_SASKEY_PRIMARY
+    *   IOTC_SASKEY_SECONDARY
+    *   IOTC_X509THUMBPRINT_PRIMARY 
+    *   IOTC_X509THUMBPRINT_SECONDARY
 
 ## <a name="delete-a-device"></a>删除设备
 

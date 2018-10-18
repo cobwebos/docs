@@ -4,20 +4,20 @@ description: 本主题介绍如何使用 Azure 媒体服务 v3 对自定义转�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/17/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d298070877a366d04b2df1ef8ac63b08f8771de0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3318020b54beb121ac48d993a8ce794ac8e377f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659137"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376629"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>如何对自定义转换进行编码
 

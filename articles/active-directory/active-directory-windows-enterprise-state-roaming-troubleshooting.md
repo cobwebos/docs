@@ -18,25 +18,26 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c9d22bab6d45bd301b37d367c5dd380ff6cd7a1a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022792"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321914"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
 本主题介绍了如何排查和诊断企业状态漫游问题，并提供已知问题的列表。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>故障排除预备步骤 
+
 在开始故障排除之前，请确认已正确配置用户和设备，并且设备和用户满足企业状态漫游的所有要求。 
 
 1. 已在设备上安装包含最新更新的 Windows 10，最低版本需为 1511（OS 内部版本 10586 或更高）。 
-2. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](device-management-introduction.md)。
-3. 确保如[启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了**企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
-4. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
-25. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
+1. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](device-management-introduction.md)。
+1. 确保如[启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)中所述在 Azure AD 中为租户启用了**企业状态漫游**。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
+1. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
+1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
 ## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
 如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
@@ -55,13 +56,15 @@ ms.locfileid: "44022792"
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>验证同步；“同步设置”设置页 
 
 1. 将 Windows 10 电脑加入到配置为允许企业状态漫游的域之后，请使用工作帐户登录。 转到“设置” > “帐户” > “同步设置”，确认同步和各项设置已打开，并且设置页的顶部指示将与工作帐户同步。 在“设置” > “帐户” > “信息”中确认同一个帐户也用作登录帐户。 
-2. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改能否在 5 分钟内传播到第二台计算机。 
+1. 在原始计算机上进行一些更改（例如，将任务栏移到屏幕右侧或顶部），验证同步是否能够跨多台计算机正常工作。 观察更改能否在 5 分钟内传播到第二台计算机。 
+
   * 可以借助锁定和解锁屏幕 (Win + L) 来触发同步。
   * 必须在这两台 PC 上使用同一帐户登录，同步才能工作 - 因为企业状态漫游绑定到用户帐户，而不是计算机帐户。
 
 **潜在问题**：如果“设置”页中的控件不可用，并且看到了消息“仅当你使用的是 Microsoft 帐户或工作帐户时，某些 Windows 功能才可用。” 对于设置为要加入域并注册到 Azure AD 但尚未在 Azure AD 中成功进行身份验证的设备，可能会出现此问题。 一个可能的原因是必须应用设备策略，但这种策略应用是异步发生的，可能会延迟几个小时。 
 
 ### <a name="verify-the-device-registration-status"></a>验证设备注册状态
+
 企业状态漫游要求将设备注册到 Azure AD。 以下说明尽管不专门针对企业状态漫游，但可帮助确认 Windows 10 客户端是否已注册，并确认指纹、Azure AD 设置 URL、NGC 状态和其他信息。
 
 1.  打开未提升权限的命令提示符。 若要在 Windows 中执行此操作，请打开“运行”启动器 (Win + R) 并键入“cmd”。
@@ -74,6 +77,7 @@ ms.locfileid: "44022792"
 **潜在问题**：**SettingsUrl** 的字段为空，设备不同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员先禁用再重启“用户可同步设置”和“企业应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
+
 在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
 
 **潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 通过 Microsoft Passport for Work PIN 或通过访问其他 Azure 服务（如 Office 365）时完成多重身份验证，管理员用户仍能登录到 Windows 10 设备，从而进行同步。
@@ -81,8 +85,8 @@ ms.locfileid: "44022792"
 **潜在问题**：如果管理员配置 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，那么同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
 
 ### <a name="event-viewer"></a>事件查看器
-要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 依次转到“事件查看器”>“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync-Azure”下面可以查看事件；对于与标识相关的问题，依次同步转到“Microsoft” > “Windows” > “AAD”。
 
+要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 依次转到“事件查看器”>“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync-Azure”下面可以查看事件；对于与标识相关的问题，依次同步转到“Microsoft” > “Windows” > “AAD”。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -108,8 +112,6 @@ ms.locfileid: "44022792"
 
 在使用 Windows 10 周年更新的设备上，为防止数据泄漏，不会通过企业状态漫游同步受 [Windows 信息保护](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip)功能保护的数据。
 
-
-
 **建议的操作**  
 无。 Windows 的未来更新可能会解决此问题。
 
@@ -134,6 +136,7 @@ ms.locfileid: "44022792"
 ---
 
 ### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>在使用智能卡登录的设备上无法同步
+
 如果尝试使用智能卡或虚拟智能卡登录到 Windows 设备，设置同步会停止工作。     
 
 **建议的操作**  
@@ -142,6 +145,7 @@ ms.locfileid: "44022792"
 ---
 
 ### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>已加入域的设备在脱离企业网络后不同步     
+
 如果已加入域并已注册到 Azure AD 的设备长时间离线并且域身份验证无法完成，则可能会发生同步失败。
 
 **建议的操作**  
@@ -149,8 +153,9 @@ ms.locfileid: "44022792"
 
 ---
 
- ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>已加入 Azure AD 的设备不同步，且用户具有混合大小写的用户主体名称。
- 如果用户的 UPN 混用大小写（例如 UserName 而非 username），并且该用户位于已从 Windows 10 内部版本 10586 升级到 14393 的 Azure AD 联接设备上，则用户的设备可能无法同步。 
+### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>已加入 Azure AD 的设备不同步，且用户具有混合大小写的用户主体名称。
+
+如果用户的 UPN 混用大小写（例如 UserName 而非 username），并且该用户位于已从 Windows 10 内部版本 10586 升级到 14393 的 Azure AD 联接设备上，则用户的设备可能无法同步。 
 
 **建议的操作**  
 用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到“设置” > “系统” > “关于”使设备脱离，再选择“从工作或学校管理或断开”。 清理以下文件，Azure AD 将通过以下方式再次联接设备：转到“设置” > “系统” > “关于”，并选择“连接到工作或学校”。 继续将设备加入到 Azure Active Directory 并完成该流。
@@ -162,6 +167,7 @@ ms.locfileid: "44022792"
 ---
 
 ### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用  
+
 如果用户凭据过期，则事件查看器的 SettingSync/Debug 日志下可能会出现此错误。 此外，如果租户未自动预配 AzureRMS，也可能会出现此错误。 
 
 **建议的操作**  
@@ -170,12 +176,14 @@ ms.locfileid: "44022792"
 ---
 
 ### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098: 错误: 0xCAA5001C 令牌代理操作失败  
+
 在事件查看器中的 AAD/Operational 日志下面可能会出现此错误，其中附带消息：“事件 1104: AAD 云 AP 插件调用 Get 令牌返回了错误: 0xC000005F”。 如果缺少权限或所有权属性，将出现此问题。  
 
 **建议的操作**  
 执行 [KB3196528](https://support.microsoft.com/kb/3196528) 中所列的步骤。  
 
 ## <a name="related-topics"></a>相关主题
+
 * [企业状态漫游概述](active-directory-windows-enterprise-state-roaming-overview.md)
 * [在 Azure Active Directory 中启用企业状态漫游](active-directory-windows-enterprise-state-roaming-enable.md)
 * [设置和数据漫游的常见问题](active-directory-windows-enterprise-state-roaming-faqs.md)

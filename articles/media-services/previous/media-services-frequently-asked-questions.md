@@ -4,22 +4,21 @@ description: 常见问题 (FAQ)
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: a47163d06e24814ca5724d1fabea84058f8764cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783236"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353522"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -33,7 +32,7 @@ ms.locfileid: "33783236"
 
 问：如何缩放索引？
 
-答：编码任务和索引任务的保留单位相同。 请遵循[如何缩放编码保留单位](media-services-scale-media-processing-overview.md)中的说明。 **请注意**，保留单位类型不影响索引器性能。
+答：编码任务和索引任务的预留单位相同。 请遵循[如何缩放编码预留单位](media-services-scale-media-processing-overview.md)中的说明。 **请注意**，预留单位类型不影响索引器性能。
 
 问：我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: ea9c9d773cb863c6ee2b052fcbd097275f00fc87
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bd6ac05da5f60fdbe86897ce03ccd6646e6bf191
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300981"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390256"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure 安全性与合规性蓝图 - 符合 Australia PROTECTED 的 PaaS Web 应用程序
 
@@ -82,7 +82,6 @@ ms.locfileid: "44300981"
 -   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   使用 Azure Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用虚拟机时可减少其资源消耗量
--   已启用 [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard)，以便凭据和其他机密在与正在运行的操作系统隔离的受保护环境中运行
 
 **Azure 应用服务环境 v2**：[Azure 应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)是一项 Azure 应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
 
@@ -202,7 +201,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 **Azure Monitor**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在用户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
-Azure 网络观察程序： [Azure 网络观察程序]9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
+Azure 网络观察程序： [Azure 网络观察程序]9 https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
 
 ## <a name="threat-model"></a>威胁模型
 

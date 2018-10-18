@@ -2,7 +2,7 @@
 title: Azure 媒体服务和 Apple FairPlay 许可证支持 | Microsoft Docs
 description: 本主题概述 Apple FairPlay 许可要求和配置。
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: a68896d061040843990318cbc39eaf1aaa3c8b27
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 19f382de3ffe11253005f5fa2874ee817abaeed3
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115108"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376748"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
 

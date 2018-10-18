@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 73ffcf5e2ced63fddaf0f5ef2ca7e72a7d94b966
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786816"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731387"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
-命名实体识别技能会从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
+命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
+
+> [!NOTE]
+> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
@@ -140,4 +143,4 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 ## <a name="see-also"></a>另请参阅
 
 + [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [如何定义技能组合](cognitive-search-defining-skillset.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2ca95f6fd94036e86aae2059c05a3fbb0380005e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2a8fe814801d00b3f27e52484d742cbe6c7b0770
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446290"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>教程：Azure Active Directory 与 Velpic SAML 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39446290"
 
     ![配置单一登录](./media/velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. 在“登录 URL”文本框中，键入 `https://<sub-domain>.velpicsaml.net` 值
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 `https://<sub-domain>.velpicsaml.net` 值
 
     b. 在“标识符”文本框中，粘贴“单一登录 URL”值 `https://auth.velpic.com/saml/v2/<entity-id>/login`
     
@@ -151,7 +151,7 @@ ms.locfileid: "39446290"
 
     ![插件](./media/velpicsaml-tutorial/velpic_5.png)
 
-    a. 在“名称”文本框中，键入 SAML 插件的名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 SAML 插件的名称。
 
     b. 在“颁发者 URL”文本框中，粘贴“SAML 实体 ID”，该 ID 是从 Azure 门户的“配置登录”窗口复制的。
 
@@ -186,7 +186,7 @@ ms.locfileid: "39446290"
  
     ![创建 Azure AD 测试用户](./media/velpicsaml-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -208,7 +208,7 @@ ms.locfileid: "39446290"
 
     ![user](./media/velpicsaml-tutorial/velpic_8.png)
     
-    a. 在“名字”文本框中，键入 Britta Simon 的名字。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入 Britta Simon 的名字。
 
     b. 在“姓氏”文本框中，键入 Britta Simon 的姓氏。
 

@@ -10,18 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 443ac895085053b7c4c876c3deecaa1943c9f506
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2fd1c1ec0d2442afd6367e1d35af6f798dced2c7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171052"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733272"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
 对于多达 120 种语言，语言检测技能会检测输入文本的语言，并报告在请求上提交的每个文档的单一语言代码。 语言代码配有表示分析长度的得分。
 
 当需要提供文本的语言作为其他技能（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)）的输入时，此功能尤其有用。
+
+> [!NOTE]
+> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill
@@ -33,17 +36,17 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 参数区分大小写。
 
-| 输入     | Description |
+| 输入     | 说明 |
 |--------------------|-------------|
-| text | 要分析的文本。|
+| 文本 | 要分析的文本。|
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出名称    | Description |
+| 输出名称    | 说明 |
 |--------------------|-------------|
 | languageCode | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
 | languageName | 语言的名称。 例如，“英语”。 |
-| score | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
+| 得分 | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
 
 ##  <a name="sample-definition"></a>示例定义
 
@@ -130,5 +133,5 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)

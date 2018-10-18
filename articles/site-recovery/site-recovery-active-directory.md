@@ -3,18 +3,18 @@ title: 使用 Azure Site Recovery 保护 Active Directory 和 DNS | Microsoft �
 description: 本文介绍如何使用 Azure Site Recovery 为 Active Directory 实现灾难恢复解决方案。
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/19/2018
-ms.author: manayar
-ms.openlocfilehash: 28ea6c58eed110cfb57f3feaa6b828289bd20e64
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 1072c903e9bd9ccb3d63cae426283a677d10077e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054540"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354285"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>使用 Azure Site Recovery 保护 Active Directory 和 DNS
 

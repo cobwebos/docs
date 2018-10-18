@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: e9d1bf1a6a2383a58a890ce9add816f9e9060273
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948119"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345010"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>必应语音服务客户端库入门
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 除了通过 REST API 直接发出 HTTP 请求外，必应语音服务还为开发人员提供采用不同语言的语音客户端库。 语音客户端库：
 
@@ -33,9 +34,6 @@ ms.locfileid: "46948119"
 - [JavaScript 库](GetStartedJSWebsockets.md)
 - [适用于 Android 的 Java 库](GetStartedJavaAndroid.md)
 - [适用于 iOS 的 Objective-C 库](Get-Started-ObjectiveC-iOS.md)
-
-> [!NOTE] 
-在 2018 年 5 月，我们还以公共预览版形式发布了新的[语音服务](../../speech-service/index.yml)。 我们建议你[免费试用](../../speech-service/get-started.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

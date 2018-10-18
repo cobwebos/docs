@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 4a0800dccca3a43d49204dfbcc32e7778449ae6e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b0e9f72bad685d569b4a09baecec8cebc33fefde
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442079"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717890"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-sqlserver-connector.md)
+> * [版本 1](v1/data-factory-sqlserver-connector.md)
 > * [当前版本](connector-sql-server.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 SQL Server 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -40,7 +40,7 @@ ms.locfileid: "42442079"
 
 ## <a name="prerequisites"></a>先决条件
 
-要从不可公开访问的 SQL Server 数据库复制数据，需要设置自我托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 SQL Server 数据库驱动程序，因此从/向 SQL Server 数据库复制数据时，无需手动安装任何驱动程序。
+要从不可公开访问的 SQL Server 数据库复制数据，需要设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 SQL Server 数据库驱动程序，因此从/向 SQL Server 数据库复制数据时，无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -54,11 +54,11 @@ SQL Server 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**SqlServer** | 是 |
+| type | type 属性必须设置为：SqlServer | 是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 请参阅以下示例。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| userName |如果使用的是 Windows 身份验证，请指定用户名。 示例：**域名\\用户名**。 |否 |
+| userName |如果使用的是 Windows 身份验证，请指定用户名。 示例：域名\\用户名。 |否 |
 | password |指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -112,7 +112,7 @@ SQL Server 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 SQL Server 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SQL Server 数据集支持的属性列表。
 
 要从/向 SQL Server 数据库复制数据，请将数据集的 type 属性设置为“SqlServerTable”。 支持以下属性：
 
@@ -146,20 +146,20 @@ SQL Server 链接服务支持以下属性：
 
 ### <a name="sql-server-as-source"></a>SQL Server 作为源
 
-要从 SQL Server 复制数据，请将复制活动中的源类型设置为“SqlSource”。 复制活动**源**部分支持以下属性：
+要从 SQL Server 复制数据，请将复制活动中的源类型设置为 SqlSource。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SqlSource | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 |否 |
-| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 |否 |
+| sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为：名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
 **需要注意的要点：**
 
-- 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 SQL Server 源运行此查询以获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程使用参数）。
+- 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 SQL Server 源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列，构建针对 SQL Server 运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
+- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName 属性。
 
 **示例：使用 SQL 查询**
 
@@ -254,7 +254,7 @@ GO
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为：**SqlSink** | 是 |
+| type | 复制活动接收器的 type 属性必须设置为：SqlSink | 是 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值：10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | preCopyScript |将数据写入到 SQL Server 之前，指定复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 此属性可用于清理预先加载的数据。 |否 |
@@ -381,7 +381,7 @@ create table dbo.TargetTbl
 }
 ```
 
-**数据集 JSON 定义**
+**目标数据集 JSON 定义**
 
 ```json
 {
@@ -403,7 +403,7 @@ create table dbo.TargetTbl
 }
 ```
 
-请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 **structure** 属性。
+请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 structure 属性。
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> 调用 SQL 接收器的存储过程
 
@@ -464,7 +464,7 @@ BEGIN
 END
 ```
 
-在数据库中，使用与 sqlWriterTableType 相同的名称定义表类型。 请注意，表类型的架构应与输入数据返回的架构相同。
+在数据库中，使用与 SqlWriterTableType 相同的名称定义表类型。 请注意，表类型的架构应与输入数据返回的架构相同。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -475,6 +475,9 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
+
+>[!NOTE]
+>如果要通过调用存储过程写入 Money/Smallmoney 数据类型，值可能会舍入。 在 TVP 中将相应的数据类型指定为十进制而不是 Money/Smallmoney 来缓解。 
 
 ## <a name="data-type-mapping-for-sql-server"></a>SQL Server 的数据类型映射
 
@@ -506,7 +509,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 | smallint |Int16 |
 | smallmoney |小数 |
 | sql_variant |对象 * |
-| text |String, Char[] |
+| 文本 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
@@ -517,21 +520,21 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 
 ## <a name="troubleshooting-connection-issues"></a>连接问题故障排除
 
-1. 将 SQL Server 配置为接受远程连接。 启动 **SQL Server Management Studio**，右键单击“服务器”，并单击“属性”。 从列表选择“连接”，并选中“允许远程连接到此服务器”。
+1. 将 SQL Server 配置为接受远程连接。 启动 SQL Server Management Studio，右键单击“服务器”，并单击“属性”。 从列表选择“连接”，并选中“允许远程连接到此服务器”。
 
     ![启用远程连接](media/copy-data-to-from-sql-server/AllowRemoteConnections.png)
 
     有关详细步骤，请参阅[配置远程访问服务器配置选项](https://msdn.microsoft.com/library/ms191464.aspx)。
 
-2. 启动 **SQL Server 配置管理器**。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议”。 应会在右侧窗格中看到协议。 右键单击“TCP/IP”，并单击“启用”，可启用 TCP/IP。
+2. 启动“SQL Server 配置管理器”。 针对所需实例展开“SQL Server 网络配置”，并选择“MSSQLSERVER 的协议”。 应会在右侧窗格中看到协议。 右键单击“TCP/IP”，并单击“启用”，可启用 TCP/IP。
 
     ![启用 TCP/IP](./media/copy-data-to-from-sql-server/EnableTCPProptocol.png)
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](https://msdn.microsoft.com/library/ms191294.aspx)。
 
 3. 在同一窗口中，双击“TCP/IP”以启动“TCP/IP 属性”窗口。
-4. 切换到“IP 地址”选项卡。向下滚动以查看 **IPAll** 部分。 记下 **TCP 端口**（默认值是 **1433**）。
-5. 在计算机上创建 **Windows 防火墙规则**，以便允许通过此端口传入流量。  
+4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下 TCP 端口（默认值是 1433）。
+5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。  
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如：`"<machine>.<domain>.corp.<company>.com,1433"`。
 
 

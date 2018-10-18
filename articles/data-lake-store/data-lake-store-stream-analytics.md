@@ -1,6 +1,6 @@
 ---
-title: 将数据从流分析流式传输到 Data Lake Store | Microsoft Docs
-description: 使用 Azure 流分析，将数据流入 Azure Data Lake Store
+title: 将数据从流分析流式传输至 Azure Data Lake Storage Gen1 中 | Microsoft Docs
+description: 使用 Azure 流分析，将数据流式传输至 Azure Data Lake Storage Gen1 中
 services: data-lake-store,stream-analytics
 documentationcenter: ''
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 396d514d0d75c43f20ab7b0fcdf8c7351cb3dd89
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213446"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294027"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>使用 Azure Stream Analytics 从 Azure 存储 Blob 流处理数据到 Data Lake Store
-在本文中，将学习如何使用 Azure Data Lake Store 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Store（输出）。
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
+本文介绍如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Storage Gen1（输出）。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
@@ -29,10 +29,10 @@ ms.locfileid: "39213446"
 
 * **Azure 存储帐户**。 将用此帐户的 blob 容器来输入流分析作业的数据。 在本教程中，假设有一个名为 **storageforasa** 的存储帐户，并且在该帐户中有一个名为 **storageforasacontainer** 的容器。 创建容器后，将示例数据文件上传到其中。 
   
-* **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。 假设有一个名为 **asadatalakestore** 的 Data Lake Store 帐户。 
+* **Data Lake Storage Gen1 帐户**。 请遵循[开始通过 Azure 门户使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明。 假设有名为“myadlsg1”的 Data Lake Storage Gen1 帐户。 
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
-首先创建流分析作业，其中包括输入源和输出目标。 对于本教程中，源是一个 Azure blob 容器，目标位于 Data Lake Store。
+首先创建流分析作业，其中包括输入源和输出目标。 在本教程中，源是 Azure blob 容器，目标是 Data Lake Storage Gen1。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -67,9 +67,9 @@ ms.locfileid: "39213446"
     单击“创建”。 现在门户将添加该输入并测试与其的连接。
 
 
-## <a name="create-a-data-lake-store-output-for-the-job"></a>创建作业的 Data Lake Store 输出
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>为作业创建 Data Lake Storage Gen1 输出
 
-1. 打开流分析作业页，单击“输出”选项卡，并单击“添加”。
+1. 打开流分析作业页面，单击“输出”选项卡，单击“添加”，然后选择“Data Lake Storage Gen1”。
 
     ![为作业添加输出](./media/data-lake-store-stream-analytics/create.output.1.png "为作业添加输出")
 
@@ -77,16 +77,15 @@ ms.locfileid: "39213446"
 
     ![为作业添加输出](./media/data-lake-store-stream-analytics/create.output.2.png "为作业添加输出")
 
-    * 对于“输出别名”，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Store。
-    * 对于“接收器”，选择“Data Lake Store”。
-    * 系统会提示授权访问 Data Lake Store 帐户。 单击“授权”。
+    * 对于“输出别名”，输入此作业输出的唯一名称。 该名称是在查询中使用的友好名称，用于将查询输出定向到此 Data Lake Storage Gen1 帐户。
+    * 系统会提示授权访问 Data Lake Storage Gen1 帐户。 单击“授权”。
 
 3. 在“新建输出”边栏选项卡中，继续提供以下值。
 
     ![为作业添加输出](./media/data-lake-store-stream-analytics/create.output.3.png "为作业添加输出")
 
-    * 对于“帐户名称”，选择已创建要将作业输出发送到的 Data Lake Store 帐户。
-    * 对于“路径前缀模式”，输入用于在指定的 Data Lake Store 帐户中写入文件的文件路径。
+    * 在“帐户名称”处，选择已创建的要将作业输出发送到的 Data Lake Storage Gen1 帐户。
+    * 对于“路径前缀模式”，输入用于在指定的 Data Lake Storage Gen1 帐户中写入文件的文件路径。
     * 对于“日期格式”，如果在前缀路径中使用日期标记，可以选择组织文件所采用的日期格式。
     * 对于“时间格式”，如果在前缀路径中使用时间标记，请指定组织文件所采用的时间格式。
     * 对于“事件序列化格式”，选择“CSV”。
@@ -113,11 +112,11 @@ ms.locfileid: "39213446"
 
     ![监视作业](./media/data-lake-store-stream-analytics/run.query.3.png "监视作业")
 
-5. 最后，可以验证作业输出数据是否在 Data Lake Store 帐户中可用。 
+5. 最后，可以验证作业输出数据是否在 Data Lake Storage Gen1 帐户中可用。 
 
     ![验证输出](./media/data-lake-store-stream-analytics/run.query.4.png "验证输出")
 
-    在“数据资源管理器”窗格中，可以看到输出已写入到 Data Lake Store 输出设置中指定的文件夹路径 (`streamanalytics/job/output/{date}/{time}`)。  
+    在“数据资源管理器”窗格中，可以看到输出已写入到 Data Lake Storage Gen1 输出设置中指定的文件夹路径 (`streamanalytics/job/output/{date}/{time}`)。  
 
 ## <a name="see-also"></a>另请参阅
-* [创建 HDInsight 群集以使用 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)

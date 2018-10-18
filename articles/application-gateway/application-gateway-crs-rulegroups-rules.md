@@ -12,12 +12,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 4/16/2018
 ms.author: victorh
-ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 15a86410e8ca853c2ca2431cb9a62de628972703
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515520"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320095"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供的 Web 应用程序防火墙 CRS 规则组和规则列表
 
@@ -30,7 +30,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |911011|规则 911011|
 |911012|规则 911012|
@@ -45,7 +45,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |913011|规则 913011|
 |913012|规则 913012|
@@ -63,7 +63,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |920011|规则 920011|
 |920012|规则 920012|
@@ -117,7 +117,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |921011|规则 921011|
 |921012|规则 921012|
@@ -140,7 +140,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |930011|规则 930011|
 |930012|规则 930012|
@@ -157,7 +157,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |931011|规则 931011|
 |931012|规则 931012|
@@ -174,7 +174,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |932011|规则 932011|
 |932012|规则 932012|
@@ -193,7 +193,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |933011|规则 933011|
 |933012|规则 933012|
@@ -217,7 +217,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |941011|规则 941011|
 |941012|规则 941012|
@@ -250,7 +250,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |942011|规则 942011|
 |942012|规则 942012|
@@ -278,7 +278,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |943011|规则 943011|
 |943012|规则 943012|
@@ -292,11 +292,11 @@ ms.locfileid: "31515520"
 |943017|规则 943017|
 |943018|规则 943018|
 
-##<a name="owasp229"></a> OWASP_2.2.9
+## <a name="owasp229"></a> OWASP_2.2.9
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
@@ -322,7 +322,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs21"></a> crs_21_protocol_anomalies
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
@@ -335,7 +335,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs23"></a> crs_23_request_limits
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |960209|参数名称太长|
 |960208|参数值太长|
@@ -346,7 +346,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs30"></a> crs_30_http_policy
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |960032|方法不受策略允许|
 |960010|请求内容类型不受策略允许|
@@ -356,7 +356,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |990002|请求指示安全扫描程序已扫描站点|
 |990901|请求指示安全扫描程序已扫描站点|
@@ -365,7 +365,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |960024|元字符异常检测警报 - 重复的非单词字符|
 |950008|注入未记录的 ColdFusion 标记|
@@ -394,7 +394,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |981231|检测到 SQL 注释序列。|
 |981260|识别到 SQL 十六进制编码|
@@ -431,7 +431,7 @@ ms.locfileid: "31515520"
 
 ### <a name="crs41xss"></a> crs_41_xss_attacks
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |973336|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |973338|XSS 筛选器 - 类别 3 = Javascript URI 向量|
@@ -536,13 +536,13 @@ ms.locfileid: "31515520"
 
 ### <a name="crs42"></a> crs_42_tight_security
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |950103|路径遍历攻击|
 
 ### <a name="crs45"></a> crs_45_trojans
 
-|RuleId|说明|
+|RuleId|Description|
 |---|---|
 |950110|后门访问|
 |950921|后门访问|

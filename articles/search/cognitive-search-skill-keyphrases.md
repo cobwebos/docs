@@ -10,18 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a12efaa020e626e4a10a0708c9b84d8fe125588c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 694271115626c652523be34160ad6a07053f6387
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786806"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735792"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
-关键短语提取技能会计算非结构化的文本，并针对每个记录返回关键短语列表。
+关键短语提取技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。
 
 如果你需要快速确定记录中的谈话要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回“food”和“wonderful staff”。
+
+> [!NOTE]
+> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
@@ -117,4 +120,4 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 ## <a name="see-also"></a>另请参阅
 
 + [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [如何定义技能组合](cognitive-search-defining-skillset.md)

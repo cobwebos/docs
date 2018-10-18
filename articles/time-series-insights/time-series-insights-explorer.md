@@ -11,17 +11,27 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: dfdc538719b0c7571ba04f4134819d7142f109d3
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629134"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364221"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。
  
 Azure 时序见解是一种完全托管的分析、存储和可视化服务，让同时探索和分析数十亿 IoT 事件变得简单轻松。 它提供数据的全局视图，从而可以快速验证 IoT 解决方案并避免任务关键型设备出现代价高昂的故障时间。 可以近乎实时地发现隐藏的趋势、找出异常以及进行根本原因分析。 时序见解资源管理器当前是公共预览版。
+
+## <a name="video"></a>视频：
+
+本视频中，我们将介绍使用时序见解资源管理器查询数据。 
+
+该视频基于视频“时序见解：  
+<span style="color:blue">使用 Azure IoT 解决方案加速器开始使用时序见解</span>”。
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 ## <a name="prerequisites"></a>先决条件
 

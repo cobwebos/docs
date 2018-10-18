@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: d5cc634451c5412f9a3339c8d2d26654c4d5c1b8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298907"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385628"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -83,7 +83,7 @@ ms.locfileid: "44298907"
       -   续订信息 - > 例如 在到期之前 90 天  
 
   - 证书创建过程通常为异步过程，涉及轮询密钥保管库中“创建证书”操作的状态。  
-[获取证书操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+[获取证书操作](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
       -   状态：“已完成”、“失败并显示错误消息”或“已取消”  
       -   由于创建操作延迟，因此可能会启动取消操作。 取消操作可能生效，也可能不生效。  
 

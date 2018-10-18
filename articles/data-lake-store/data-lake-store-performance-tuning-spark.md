@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store Spark 性能优化指南 | Microsoft 文档
-description: Azure Data Lake Store Spark 性能优化指南
+title: Azure Data Lake Storage Gen1 Spark 性能优化指南 | Microsoft Docs
+description: Azure Data Lake Storage Gen1 Spark 性能优化指南
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a807bea13063d2a0b3c1c71ddb6c98aa2d2568d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d280ef50d91f2e9b5157de5ec918e496f9887681
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34197063"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127663"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Spark on HDInsight 和 Azure Data Lake Store 性能优化指南
+# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 在优化 Spark 的性能时，需要考虑到群集中将要运行的应用数目。  默认情况下，在 HDI 群集中可以同时运行 4 个应用（注意：默认设置可更改）。  可以使用更少的应用，这样便可以覆盖默认设置，将群集中的更多资源用于这些应用。  
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Azure Data Lake Store 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Store 中的数据](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* **在 Data Lake Storage Gen1 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
 
 ## <a name="parameters"></a>parameters
 
-运行 Spark 作业时，可以优化下面这些最重要的设置，提高 ADLS 的性能：
+运行 Spark 作业时，可以优化下面这些最重要的设置，提高 Data Lake Storage Gen1 的性能：
 
 * **执行器数目** - 可执行的并发任务数。
 
@@ -51,7 +51,7 @@ ms.locfileid: "34197063"
 
 ## <a name="guidance"></a>指南
 
-运行 Spark 分析工作负荷处理 Data Lake Store 中的数据时，我们建议使用最新的 HDInsight 版本来获得 Data Lake Store 的最佳性能。 如果作业消耗较多的 I/O 资源，可以配置某些参数来提高性能。  Azure Data Lake Store 是一种高度可缩放的存储平台，能够应对较高的吞吐量。  如果作业主要包括读取或写入，则增大传入和传出 Azure Data Lake Store 的 I/O 的并发性可以提高性能。
+运行 Spark 分析工作负载处理 Data Lake Storage Gen1 中的数据时，建议使用最新的 HDInsight 版本来获得 Data Lake Storage Gen1 的最佳性能。 如果作业消耗较多的 I/O 资源，可以配置某些参数来提高性能。  Data Lake Storage Gen1 是一种高度可缩放的存储平台，能够应对较高的吞吐量。  如果作业主要包括读取或写入，则增大传入和传出 Data Lake Storage Gen1 的 I/O 的并发性可以提高性能。
 
 可通过几种常规方法来提高 I/O 密集型作业的并发性。
 
@@ -65,7 +65,7 @@ ms.locfileid: "34197063"
 增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。  对于执行较复杂操作的作业，应减少每个执行器的核心数。  如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
 
 **步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。  导航到 YARN 并查看“配置”选项卡即可。YARN 内存量会显示在此窗口中。  
-注意：在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
+请注意，在该窗口中操作时，还可以查看默认的 YARN 容器大小。  YARN 容器大小与每个执行器的内存量参数相同。
 
     Total YARN memory = nodes * YARN memory per node
 **步骤 5：计算执行器数目**

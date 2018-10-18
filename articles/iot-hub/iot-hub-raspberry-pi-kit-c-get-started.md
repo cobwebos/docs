@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 8962f41d971ac88134f639a61ef0b42c60bbd419
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c8e2dcfef1db8bfe3d76ac917f8c14a4060e3968
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161486"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318752"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
@@ -61,10 +61,9 @@ ms.locfileid: "44161486"
 * 6 根 F/M 跳线。
 * 散射的 10 毫米 LED 灯。
 
-
 > [!NOTE] 
-这些项是可选项，因为代码示例支持模拟的传感器数据。
-
+> 这些项是可选项，因为代码示例支持模拟的传感器数据。
+>
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -97,7 +96,8 @@ ms.locfileid: "44161486"
    ![在 Raspberry Pi 上启用 SPI 和 SSH](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-若要启用 SSH 和 SPI，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) 中找到更多参考文档。
+> 若要启用 SSH 和 SPI，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) 中找到更多参考文档。
+>
 
 ### <a name="connect-the-sensor-to-pi"></a>将传感器连接到 Pi
 
@@ -171,6 +171,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
    > [!NOTE] 
    > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据。 `sudo ./setup.sh --simulated-data`
+   >
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序
 
@@ -179,6 +180,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    ```bash
    cmake . && make
    ```
+   
    ![生成输出](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. 通过运行以下命令，生成示例应用程序：
@@ -188,8 +190,8 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    ```
 
    > [!NOTE] 
-   确保将设备连接字符串复制并粘贴到单引号中。
-
+   > 确保将设备连接字符串复制并粘贴到单引号中。
+   >
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
 

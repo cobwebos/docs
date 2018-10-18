@@ -8,12 +8,12 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795691"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116364"
 ---
 # <a name="analyzers-in-azure-search"></a>Azure 搜索中的分析器
 
@@ -32,7 +32,7 @@ Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0
 
 下表介绍了 Azure 搜索支持的分析器。
 
-| 类别 | 说明 |
+| 类别 | Description |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 作为按原样使用且具有有限自定义项的成品提供。 <br/>有两种类型：专用和语言特定。 由于按名称而非自定义项引用，因此被称为“预定义”。 <br/><br/>当需要对文本输入进行专业处理或最小处理时，请使用[专业（不限语言）分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
@@ -50,7 +50,7 @@ Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0
 
 3. 向字段定义中添加分析器会在索引上引发写入操作。 如果向现有索引中添加**分析器**，请注意以下步骤：
  
- | 场景 | 影响 | 步骤 |
+ | 场景 | 影响 | Steps |
  |----------|--------|-------|
  | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 处理此任务。|
  | 向现有索引字段添加分析器。 | 重新生成 | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于正在生产中的索引，应创建一个新字段来提供修改后的定义并开始使用该字段。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 以包含新字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
@@ -134,7 +134,7 @@ Azure 搜索允许通过附加的 `indexAnalyzer` 和 `searchAnalyzer` 字段参
      "tokenizers":[
         {
            "name":"my_standard_tokenizer",
-           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizer",
+           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizerV2",
            "maxTokenLength":20
         }
      ],

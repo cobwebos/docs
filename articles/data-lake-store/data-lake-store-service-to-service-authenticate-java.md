@@ -1,6 +1,6 @@
 ---
-title: 服务到服务身份验证：通过 Azure Active Directory 将 Java 与 Data Lake Store 配合使用 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 通过 Java 进行 Data Lake Store 服务到服务身份验证
+title: 服务到服务身份验证：对 Azure Data Lake Storage Gen1 结合使用 Azure Active Directory 和 Java | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 和 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c8ef983871f3fb1ec47522571ce95843bdd2d313
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 86cc5148c862c18c01cec2951fc58e2932c17ca8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625859"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298143"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-java"></a>使用 Java 进行 Data Lake Store 服务到服务身份验证
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>使用 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
 > * [使用 Java](data-lake-store-service-to-service-authenticate-java.md)
 > * [使用 .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34625859"
 > 
 >  
 
-本文介绍如何使用 Java SDK 执行 Azure Data Lake Store 服务到服务身份验证。 不支持使用 Java SDK 进行 Data Lake Store 最终用户身份验证。
+本文介绍如何使用 Java SDK 执行 Azure Data Lake Storage Gen1 服务到服务身份验证。 不支持使用 Java SDK 进行 Data Lake Storage Gen1 最终用户身份验证。
 
 ## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
+* **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
 
 * [Maven](https://maven.apache.org/install.html)。 本教程使用 Maven 生成项目和项目依赖项。 尽管不使用 Maven 或 Gradle 等生成系统也能完成生成，但使用这些系统可以大大减化依赖项的管理。
 
@@ -56,7 +56,7 @@ ms.locfileid: "34625859"
           </dependency>
         </dependencies>
    
-    第一个依赖项从 maven 存储库使用 Data Lake Store SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Store SDK 使用 [slf4j](http://www.slf4j.org/) 日志记录体系，允许用户从多种流行记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](http://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](http://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](http://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 
@@ -77,11 +77,11 @@ ms.locfileid: "34625859"
     
         AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
 
-Data Lake Store SDK 可让用户使用便利的方法管理所需的安全令牌来与 Data Lake Store 帐户通信。 但是，该 SDK 并未规定只能使用这些方法。 可以使用其他任何方法获取令牌，例如，使用 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) 或自己的自定义代码。
+Data Lake Storage Gen1 SDK 可让用户使用便利的方法管理所需的安全令牌来与 Data Lake Storage Gen1 帐户通信。 但是，该 SDK 并未规定只能使用这些方法。 可以使用其他任何方法获取令牌，例如，使用 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) 或自己的自定义代码。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍如何使用 Java SDK 通过最终用户身份验证进行 Azure Data Lake Store 身份验证。 现可查看以下介绍如何使用 Java SDK 在 Azure Data Lake Store 中执行操作的文章。
+本文介绍如何使用 Java SDK 通过最终用户身份验证进行 Data Lake Storage Gen1 身份验证。 接下来，可以查看介绍如何使用 Java SDK 在 Data Lake Storage Gen1 中执行操作的以下文章。
 
-* [使用 Java SDK 在 Data Lake Store 中进行的数据操作](data-lake-store-get-started-java-sdk.md)
+* [使用 Java SDK 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-get-started-java-sdk.md)
 
 

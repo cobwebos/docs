@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fefc508679a309262d07a582fc8f5bdf9f67cfe5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350859"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310107"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory 中企业应用程序管理的新增功能 
 
@@ -53,19 +53,19 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 **开始添加自己的应用程序**：
 
 1. 单击应用程序库顶部的“添加自己的链接”。 
-2. 此时会出现两个选项：“部署现有应用程序”或“开发新应用程序”。 请继续阅读，了解两个选项的差别及用法。
+1. 此时会出现两个选项：“部署现有应用程序”或“开发新应用程序”。 请继续阅读，了解两个选项的差别及用法。
 
 ### <a name="deploying-existing-applications"></a>部署现有应用程序
 
 1. 如果已运行某个应用程序并想要将其集成到 Azure AD 进行单一登录或预配，请选择“部署现有应用程序”选项。 为应用程序选择一个名称，并单击“添加”。
-2. 就这么简单！ 现在，无需事先了解应用程序的所有详细信息，随时可以在左侧菜单中导航并根据需要配置应用程序，设置新应用程序的工作方式。
+1. 就这么简单！ 现在，无需事先了解应用程序的所有详细信息，随时可以在左侧菜单中导航并根据需要配置应用程序，设置新应用程序的工作方式。
 
   ![单击一下鼠标即可添加现有应用程序](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
  
 ### <a name="developing-new-applications"></a>开发新应用程序
 
 1. 若要开发新应用程序，可以轻松地从库直接转到应用程序注册表：
-2. 在应用程序库中单击“添加自己的应用程序”选项，选择“开发现有应用程序”，应用程序添加体验的右侧会显示一个快速链接。
+1. 在应用程序库中单击“添加自己的应用程序”选项，选择“开发现有应用程序”，应用程序添加体验的右侧会显示一个快速链接。
 
   ![单击几下鼠标即可添加新开发的应用程序](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
@@ -86,20 +86,20 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 
 
 ## <a name="updated-application-proxy-configuration"></a>更新的应用程序代理配置
+
 假设你在本地环境中运行了一个添加的新应用程序，并想要将它与 Azure AD 集成。  在新的 Azure AD 门户中，有关新应用程序配置体验的一个很棒的新功能是，通过从应用程序代理配置中拆分应用程序登录模式，可以直接向云公开企业网络中运行的密码 SSO 或联合应用程序，而无需创建多个应用程序实例。
 
 此外，你还可以通过新门户配置添加的用于 Azure AD 应用程序代理的任何新应用程序，包括支持本机 Windows 身份验证体验的应用程序。
 
   ![将应用程序配置为使用 Windows 集成身份验证登录选项](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
-
 若要开始使用应用程序代理配置本机 Windows 身份验证应用程序：
 1. 单击“单一登录”导航项，在登录设置下选择“集成 Windows 身份验证”并根据需要配置设置。
-2. 由于支持这些新的身份验证模式，现在还可以从自定义域上传证书，为组织中的安全终结点上运行的应用程序提供支持。  
+1. 由于支持这些新的身份验证模式，现在还可以从自定义域上传证书，为组织中的安全终结点上运行的应用程序提供支持。  
  
    ![上传用于应用程序代理的证书](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
 
-3. 要为喜好的本地应用程序上载新证书，请在左侧导航菜单中单击“应用程序代理”选项，单击“证书”选择器，并上载一个证书文件用于加密从云终结点发往应用程序的请求。
+1. 要为喜好的本地应用程序上载新证书，请在左侧导航菜单中单击“应用程序代理”选项，单击“证书”选择器，并上载一个证书文件用于加密从云终结点发往应用程序的请求。
 
 ## <a name="advanced-federated-single-sign-on-configuration"></a>高级联合单一登录配置
 
@@ -107,10 +107,9 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
  
   ![自定义传递给联合应用程序的 SAML 令牌用户属性](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
-
 启用新的联合 SSO 配置：
 1. 在左侧导航菜单中打开联合应用程序的“单一登录”，并确保“基于 SAML 的登录”模式处于选中状态。 
-2. 然后，启用“用户属性”标题下面的复选框，修改传递给该应用程序的 SAML 令牌中包含的所有属性。
+1. 然后，启用“用户属性”标题下面的复选框，修改传递给该应用程序的 SAML 令牌中包含的所有属性。
 
 还可以创建、滚动更新和管理用于联合单一登录的证书，以及编辑证书即将过期时收到通知的人员。 你将在同一“单一登录”窗格上的“证书”标题下看到这些新选项。
  
@@ -124,7 +123,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 **设置中继状态参数**：
 
 1. 启用单一登录配置窗格中“域和 URL”标题下面的“显示高级 URL 设置”复选框。 
-2. 将显示一组新的 URL 输入框，用于设置此参数以及其他 SAML URL 设置。
+1. 将显示一组新的 URL 输入框，用于设置此参数以及其他 SAML URL 设置。
 
 ## <a name="bring-your-own-password-sso-applications"></a>引入自己的密码 SSO 应用程序
 
@@ -135,8 +134,8 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 **启用“引入自己的应用程序”功能**：
 
 1. 为添加到“基于密码的登录”的新自定义应用程序设置单一登录模式后，请输入应用程序呈现其登录屏幕时所用的 URL，并 
-2. 单击“ **保存**”。  
-2. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
+1. 单击“ **保存**”。  
+1. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
 
 ## <a name="configure-self-service-application-access"></a>配置自助应用程序访问
 
@@ -147,7 +146,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 **配置和管理自助应用程序访问**：
 
 1. 要开始，可以在应用程序的左侧导航菜单中选择“自助服务”选项，并将“允许用户请求访问此应用程序?”选项设为“是”。 
-2. 这样，便可以配置允许谁批准访问此应用程序，以及要添加哪个自助服务用户组。 此外，如果为密码单一登录配置了应用程序，则还会看到另一个选项，用于根据需要让这些审批人管理分配给应用程序的密码。
+1. 这样，便可以配置允许谁批准访问此应用程序，以及要添加哪个自助服务用户组。 此外，如果为密码单一登录配置了应用程序，则还会看到另一个选项，用于根据需要让这些审批人管理分配给应用程序的密码。
 
 ## <a name="feedback"></a>反馈
 

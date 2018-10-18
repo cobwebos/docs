@@ -3,8 +3,8 @@ title: 针对内容分发类型优化 Azure CDN
 description: 针对内容分发类型优化 Azure CDN
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
-ms.author: v-deasim
-ms.openlocfilehash: be41678b56fdb57c29d65b6b2a17eccd55e85c74
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: magattus
+ms.openlocfilehash: 54979bdaab3d3d49ab3d3a08868dd28e27423e7e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095911"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091736"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>针对内容分发类型优化 Azure CDN
 
-向许多全球受众传送内容时，请务必优化内容传送。 [Azure 内容分发网络 (CDN)](cdn-overview.md) 可以根据内容类型优化分发体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建 CDN 终结点时，请在“优化针对方案”选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
+向许多全球受众传送内容时，请务必优化内容传送。 [Azure 内容分发网络 (CDN)](cdn-overview.md) 可以根据内容类型优化分发体验。 内容可以是网站、实时传送视频流、视频或可供下载的大文件。 创建 CDN 终结点时，请在“优化对象”选项中指定方案。 选择哪个方案决定了对通过 CDN 终结点传送的内容应用哪种优化。
 
 优化选项旨在通过最佳做法行为来提升内容传送性能和改进源卸载。 选择的方案会修改部分缓存、对象区块和源故障重试策略的配置，从而影响性能。 
 
@@ -93,7 +93,7 @@ Microsoft 建议测试不同提供程序的性能差异，以选择最适合分�
 
 这种方案对 Azure 媒体服务客户很常见。 使用 Azure 媒体服务时，你将获得单个用于实时传送视频流和点播视频流的流式处理终结点。 对于这种方案，客户在从实时传送视频流更改为点播视频流时，无需切换到其他终结点。 常规媒体流式处理优化支持这种类型的方案。
 
-对于**来自 Microsoft 的标准 Azure CDN**、**来自 Verizon 的标准 Azure CDN** 和**来自 Verizon 的高级 Azure CDN**，请使用常规 Web 分发优化类型来分发常规流媒体内容。
+对于 **Microsoft 推出的 Azure CDN 标准版**、**Verizon 推出的 Azure CDN 标准版**和 **Verizon 推出的 Azure CDN 高级版**，请使用常规 Web 分发优化类型来分发常规流媒体内容。
 
 有关媒体流式处理优化的详细信息，请参阅[媒体流式处理优化](cdn-media-streaming-optimization.md)。
 

@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dbb9261cfce0a8437cfe76121fa16aa87c4b3393
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786796"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730760"
 ---
 #   <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
 文本拆分技能将文本分解为文本区块。 你可以指定是要将文件分解为句子还是特定长度的页面。 当其他技能下游有最大文本长度要求时，此技能尤其有用。 
+
+> [!NOTE]
+> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -28,23 +31,23 @@ Microsoft.Skills.Text.SplitSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | Description |
 |--------------------|-------------|
 | textSplitMode      | “pages”或“sentences” | 
 | maximumPageLength | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值是 100。 | 
-| defaultLanguageCode   | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免将非空格的语言（例如，中文、日语和朝鲜语）的单词一分为二。</li></ul>  |
+| defaultLanguageCode   | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免将非空格的语言（例如，中文、日语和韩语）的单词一分为二。</li></ul>  |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 参数名称       | 说明      |
+| 参数名称       | Description      |
 |----------------------|------------------|
 | text  | 要拆分为子字符串的文本。 |
 | languageCode  | （可选）文档的语言代码。  |
 
 ## <a name="skill-outputs"></a>技能输出 
 
-| 参数名称     | 说明 |
+| 参数名称     | Description |
 |--------------------|-------------|
 | textItems | 提取的子字符串数组。 |
 
@@ -132,4 +135,4 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="see-also"></a>另请参阅
 
 + [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [如何定义技能组合](cognitive-search-defining-skillset.md)

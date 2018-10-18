@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1240049fd84633365aa55cd07dfb0e4ef75d24d5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 317fb1dd1235793d31ab39f5cb2a99766ca33150
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447500"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
 
@@ -166,7 +166,7 @@ To ensure users can sign-in to Bambu by Sprout Social after it has been configur
  
     ![创建 Azure AD 测试用户](./media/bambubysproutsocial-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **Britta Simon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **Britta Simon**。
 
     b. 在“用户名”文本框中，键入 Britta Simon 的**电子邮件地址**。
 

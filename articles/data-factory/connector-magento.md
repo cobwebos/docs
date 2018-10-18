@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Magento 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 Magento 复制数据| Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Magento 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: cdea8b6f24673186e3a3d2b44183b2c622aaaf41
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047167"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127578"
 ---
-# <a name="copy-data-from-magento-using-azure-data-factory"></a>使用 Azure 数据工厂从 Magento 复制数据
+# <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Magento 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前以预览版提供。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -45,7 +45,7 @@ Magento 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：“Magento” | 是 |
+| type | type 属性必须设置为：Magento | 是 |
 | host | Magento 实例的 URL。 （即 192.168.222.110/magento3）  | 是 |
 | accessToken | 来自 Magento 的访问令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
@@ -77,7 +77,7 @@ Magento 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Magento 数据集支持的属性列表。
 
-要从 Magento 复制数据，请将数据集的 type 属性设置为“MagentoObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject。 此类型的数据集中没有任何其他特定于类型的属性。
 
 **示例**
 
@@ -100,7 +100,7 @@ Magento 链接的服务支持以下属性：
 
 ### <a name="magentosource-as-source"></a>作为源的 MagentoSource
 
-要从 Magento 复制数据，请将复制活动中的源类型设置为“MagentoSource”。 复制活动**源**部分支持以下属性：
+要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

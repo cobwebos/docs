@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store MapReduce 性能优化指南 | Microsoft 文档
-description: Azure Data Lake Store MapReduce 性能优化指南
+title: Data Lake Storage Gen1 MapReduce 性能优化指南 | Microsoft Docs
+description: Data Lake Storage Gen1 MapReduce 性能优化指南
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f5586e7706d4dad7e3c943b2a661fa296b4d30bf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b661499786057a3083f79684dfd12c85266b7b5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198627"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128785"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>MapReduce on HDInsight 和 Azure Data Lake Store 性能优化指南
+# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上使用 MapReduce**。  有关详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>parameters
 
-运行 MapReduce 作业时，以下是可配置以提高 ADLS 性能的最重要参数：
+运行 MapReduce 作业时，以下是可配置以提高 Azure Data Lake Storage Gen1 性能的最重要参数：
 
 * **Mapreduce.map.memory.mb** - 要分配给每个映射器的内存量
 * **Mapreduce.job.maps** - 每个作业的映射任务数
@@ -83,9 +83,9 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 ## <a name="limitations"></a>限制
 
-**ADLS 限制**
+**Data Lake Storage Gen1 限制**
 
-作为一种多租户服务，ADLS 设置帐户级带宽限制。  如果达到这些限制，将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  如果作业需要更多带宽，请与我们联系。   
+作为一种多租户服务，Azure Data Lake Storage Gen1 设有帐户级带宽限制。  如果达到这些限制，将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  如果作业需要更多带宽，请与我们联系。   
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 
@@ -97,7 +97,7 @@ CPU 计划和 CPU 隔离在默认情况下关闭，因此 YARN 容器数受内�
 
 ## <a name="examples-to-run"></a>要运行的示例
 
-为了演示 MapReduce 在 Azure Data Lake Store 上的运行方式，下面提供一些示例代码，这些代码已在具有下列设置的群集上运行：
+为了演示 MapReduce 在 Data Lake Storage Gen1 上的运行方式，下面提供一些示例代码，这些代码在具有下列设置的群集上运行：
 
 * 16 个节点 D14v2
 * 运行 HDI 3.6 的 Hadoop 群集

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: fc0ccd84f493fd69c84515331386592ec11a887e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2f053f6dd98b9f4e97d69e51bce933a003633277
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025287"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497937"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体
 
@@ -27,7 +27,7 @@ ms.locfileid: "44025287"
 本文介绍了如何通过门户执行这些步骤。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
 > [!IMPORTANT]
-> 请考虑使用 Azure AD 托管服务标识作为应用程序标识，而不是创建服务主体。 Azure AD MSI 是 Azure Active Directory 的公共预览版功能，它简化了创建代码标识的操作。 如果代码在支持 Azure AD MSI 的服务上运行并访问支持 Azure Active Directory 身份验证的资源，则 Azure AD MSI 是更好的选择。 若要详细了解 Azure AD MSI（包括哪些服务当前支持它），请参阅 [Azure 资源的托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
+> 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果代码在支持托管标识的服务上运行并访问支持 Azure Active Directory 身份验证的资源，则托管标识是更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -71,7 +71,7 @@ ms.locfileid: "44025287"
 
 ## <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 通过 [Azure 门户](https://portal.azure.com)登录 Azure 帐户。
+1. 通过 [Azure 门户](https://portal.azure.com)登录到 Azure 帐户。
 1. 选择“Azure Active Directory”。
 
    ![选择 azure active directory](./media/resource-group-create-service-principal-portal/select-active-directory.png)
@@ -114,7 +114,7 @@ ms.locfileid: "44025287"
 
    ![保存密钥](./media/resource-group-create-service-principal-portal/save-key.png)
 
-   保存密钥后, 会显示密钥的值。 复制此值，因为稍后不能检索密钥。 提供密钥值及应用程序 ID 登录为该应用程序。 将密钥值存储在应用程序可检索的位置。
+   保存密钥后, 会显示密钥的值。 复制此值，因为稍后不能检索密钥。 提供密钥值及应用程序 ID，以该应用程序的身份登录。 将密钥值存储在应用程序可检索的位置。
 
    ![保存的密钥](./media/resource-group-create-service-principal-portal/copy-key.png)
 

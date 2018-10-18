@@ -3,8 +3,8 @@ title: Azure CDN 规则引擎的 HTTP 变量 | Microsoft Docs
 description: HTTP 变量可用于检索 HTTP 请求和响应元数据。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 36c1b20219fabd1b7c02247d9a93bb7b7cfc898d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.author: magattus
+ms.openlocfilehash: 39084fd8408a123e8152ad96fa92025fd04ed42b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092807"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
@@ -33,7 +34,7 @@ HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后�
 下表介绍了受支持的 HTTP 变量。 如果某个特定请求无法使用 GEO 元数据（例如邮政编码），则会返回空值。
 
 
-| 名称 | 变量 | 说明 | 示例值 |
+| 名称 | 变量 | Description | 示例值 |
 | ---- | -------- | ----------- | ------------ |
 | ASN（申请者） | %{geo_asnum} | 指示申请者的 AS 号码。 <br /><br />**已弃用：**%{virt_dst_asnum}。 <br />此变量已被弃用，以支持 %{geo_asnum}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | AS15133 |
 | 市/县（申请者） | %{geo_city} | 指示申请者所在的市/县。 | 洛杉矶 |
@@ -68,7 +69,7 @@ HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后�
 下表介绍用于指定 HTTP 变量的正确语法。
 
 
-| 语法 | 示例 | 说明 |
+| 语法 | 示例 | Description |
 | ------ | -------- | ---------- |
 | %{&lt;HTTPVariable&gt;} | %{host} | 使用此语法获取对应于指定的 &lt;HTTPVariable&gt; 的整个值。 |
 | %{&lt;HTTPVariableDelimiter&gt;} | %{host,} | 使用此语法设置对应于指定的 &lt;HTTPVariableDelimiter&gt; 的整个值。 |
@@ -91,7 +92,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 
 下表描述了这些分隔符。
 
-| 分隔符 | 说明 |
+| 分隔符 | Description |
 | --------- | ----------- |
 | := | 指示变量为以下情况时将向其分配默认值： <br />- 缺失 <br />- 设置为 NULL。 |
 | :+ | 指示变量已分配有一个值时将向其分配默认值。 |
@@ -109,7 +110,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 ## <a name="exceptions"></a>例外
 下表描述了指定文本未被视为 HTTP 变量的情况。
 
-| 条件 | 说明 | 示例 |
+| 条件 | Description | 示例 |
 | --------- | ----------- | --------|
 | 转义 % 符号 | 可使用反斜杠转义百分比符号。 <br />右侧的示例值将被视为文本值，不会被视为 HTTP 变量。| \%{host} |
 | 未知变量 | 未知变量始终返回空字符串。 | %{unknownvariable} |
@@ -124,7 +125,7 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 
 下表介绍了如何定义默认值。
 
-| 条件 | 语法 | 示例 | 说明 |
+| 条件 | 语法 | 示例 | Description |
 | --------- | ------ | --------| ----------- |
 | 当满足以下任何条件时，可将标头设置为默认值： <br /><br />- 缺少标头 <br /><br />- 标头值设置为 NULL。| %{Variable:=Value} | %{http_referer:=unspecified} | 当 Referer 标头缺失或设置为 NULL 时，只能将其设置为“未指定”。 如果已设置，则无需执行任何操作。 |
 | 如果标头未设置，请将其设置为默认值。 | %{Variable=Value} | %{http_referer=unspecified} | 缺少 Referer 标头时，只能将其设置为“未指定”。 如果已设置，则无需执行任何操作。 |

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据目录中从 Data Lake Store 注册数据 | Microsoft Docs
-description: 在 Azure 数据目录中从 Data Lake Store 注册数据
+title: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据 | Microsoft Docs
+description: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: nitinme
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 8da9f0f8aeb36d9ff2f87511c902dd719bc755b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35fc7b2c713f8d4b88f4a44d9ddef5d92ba4c402
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441592"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294307"
 ---
-# <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>在 Azure 数据目录中从 Data Lake Store 注册数据
-在本文中，将了解如何将 Azure Data Lake Store 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
+# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
+本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本教程前，必须具有：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 为 Data Lake Store 公共预览**启用 Azure 订阅**。 请参阅[说明](data-lake-store-get-started-portal.md)。
-* **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Store 帐户。
+* **为 Data Lake Storage Gen1 启用 Azure 订阅**。 请参阅[说明](data-lake-store-get-started-portal.md)。
+* **Data Lake Storage Gen1 帐户**。 请遵循[开始通过 Azure 门户使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Storage Gen1 帐户。
 
     创建帐户后，将示例数据集上传到其中。 在本教程中，上传 [Azure Data Lake Git存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)中 **AmbulanceDota** 文件夹下的所有.csv文件。 可以使用各种客户端（[Azure 存储资源管理器](http://storageexplorer.com/)将数据上传到 blob 容器。
 * **Azure 数据目录**。 组织必须已具有为组织创建的 Azure数据目录。 每个组织只允许有一个目录。
 
-## <a name="register-data-lake-store-as-a-source-for-data-catalog"></a>将 Data Lake Store 注册为数据目录的源
+## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>将 Data Lake Storage Gen1 注册为数据目录的源
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
@@ -44,15 +44,15 @@ ms.locfileid: "39441592"
 1. 在“欢迎”页上，单击“登录”并输入凭据。
 
     ![欢迎屏幕](./media/data-lake-store-with-data-catalog/welcome.screen.png "欢迎屏幕")
-1. 在“选择数据源”页上，选择“Azure Data Lake”，并单击“下一步”。
+1. 在“选择数据源”页上，选择“Azure Data Lake Store”，并单击“下一步”。
 
     ![选择数据源](./media/data-lake-store-with-data-catalog/select-source.png "选择数据源")
-1. 在下一页上，提供要在数据目录中注册的 Data Lake Store 帐户名称。 其他选项保留为默认值，并单击“连接”。
+1. 在下一页上，提供要在数据目录中注册的 Data Lake Storage Gen1 帐户名。 其他选项保留为默认值，并单击“连接”。
 
     ![连接到数据源](./media/data-lake-store-with-data-catalog/connect-to-source.png "连接到数据源")
 1. 下一个页面可以分为以下几部分。
 
-    a. **服务器层次结构**框表示 Data Lake Store 帐户文件夹结构。 **$Root** 表示 Data Lake Store 帐户的根，而 **AmbulanceData** 表示 Data Lake Store 帐户的根中创建的文件夹。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “服务器层次结构”框表示 Data Lake Storage Gen1 帐户文件夹结构。 “$Root”表示 Data Lake Storage Gen1 帐户的根，而“AmbulanceData”表示 Data Lake Storage Gen1 帐户的根中创建的文件夹。
 
     b. **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
 
@@ -80,4 +80,4 @@ ms.locfileid: "39441592"
 ## <a name="see-also"></a>另请参阅
 * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
 * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
-* [集成 Data Lake Store 和其他 Azure 服务](data-lake-store-integrate-with-other-services.md)
+* [将 Data Lake Storage Gen1 与其他 Azure 服务集成](data-lake-store-integrate-with-other-services.md)

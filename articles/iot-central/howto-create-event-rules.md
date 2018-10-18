@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144843"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730143"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建事件规则并设置通知
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建事件规则并设置通知
+
+本文适用于操作员、构建者和管理员。
 
 可以使用 Azure IoT Central 对连接的设备进行远程监视。 可以通过 Azure IoT Central 规则近乎实时地监视设备并自动调用操作（例如发送电子邮件或触发 Microsoft Flow）。 只需几次单击即可定义用于监视设备数据的条件并配置相应操作。 本文介绍如何创建规则来监视设备发送的事件。
 
@@ -37,10 +39,10 @@ ms.locfileid: "42144843"
     ![尚无规则](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. 在“规则”选项卡上，单击“+ 新建规则”可以查看能够创建的规则类型。
+1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
 
 
-1. 单击“事件”磁贴创建规则。
+1. 单击“事件”磁贴创建事件监视规则。
 
     ![规则类型](media\howto-create-event-rules\Rule_Types.png)
 
@@ -92,6 +94,8 @@ ms.locfileid: "42144843"
    ![配置操作](media\howto-create-event-rules\Configure_Action.png)
 
 1. 若要保存规则，请选择“保存”。 此规则数分钟即可生效，然后就开始监视发送到应用程序的事件。 匹配规则中指定的条件时，规则会触发配置的电子邮件操作。
+
+1. 选择“完成”，退出“编辑模板”模式。
 
 可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 每个规则最多可添加 5 个操作。
 

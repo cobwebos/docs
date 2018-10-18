@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528708"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304673"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ ms.locfileid: "39528708"
   * [附录 2：使用 Wireshark 捕获网络流量]
   * [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]
   * [附录 4：使用 Excel 查看度量值和日志数据]
-  * [附录 5：使用 Application Insights for Visual Studio Team Services 进行监视]
+  * [附录 5：使用 Application Insights for Azure DevOps 进行监视]
 
 ## <a name="introduction"></a>介绍
 本指南演示如何使用 Azure 存储客户端库中的 Azure 存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
@@ -125,8 +125,7 @@ ms.locfileid: "39528708"
 此外，[Azure 门户](https://portal.azure.com)还可以提供影响各种 Azure 服务的事件的通知。
 注意：此信息以前已在 [Azure 服务仪表板](http://status.azure.com)上与历史数据一起提供。
 
-虽然 [Azure 门户](https://portal.azure.com)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 
-  [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Visual Studio Team Services 提供的服务是此方法的示例。 有关 Application Insights for Visual Studio Team Services 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Visual Studio Team Services 进行监视](#appendix-5)”。
+虽然 [Azure 门户](https://portal.azure.com)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Azure DevOps 提供的服务是此方法的示例。 有关 Application Insights for Azure DevOps 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Azure DevOps 进行监视](#appendix-5)”。
 
 ### <a name="monitoring-capacity"></a>监视容量
 存储度量值仅存储 Blob 服务的容量度量值，因为 Blob 通常占所存储数据的最大比例（撰写本文时，尚不能使用存储度量值来监视表和队列的容量）。 如果已为 Blob 服务启用监视，则可以在 **$MetricsCapacityBlob** 表中找到此数据。 存储度量值每天记录一次此数据，并可以使用 **RowKey** 的值来确定某行是否包含与用户数据（值 **data**）或分析数据（值 **analytics**）相关的实体。 每个存储的实体均包含有关所用的存储量（**Capacity**，以字节为单位）、当前的容器数 (**ContainerCount**) 以及存储帐户中正在使用的 Blob 数 (**ObjectCount**) 的信息。 有关 **$MetricsCapacityBlob** 表中存储的容量度量值的详细信息，请参阅[存储分析度量值表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)。
@@ -790,7 +789,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 有关 Microsoft Message Analyzer 本地链路层跟踪的详细信息，请参阅 [Microsoft-PEF-NDIS-PacketCapture Provider](http://technet.microsoft.com/library/jj659264.aspx)（Microsoft-PEF-NDIS-PacketCapture 提供程序）。
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看指标和日志数据
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于“存储分析日志格式”和“存储分析度量表架构”中的信息添加相应的列标题。[](http://msdn.microsoft.com/library/azure/hh343259.aspx)[](http://msdn.microsoft.com/library/azure/hh343264.aspx)
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。 来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。 但是，需要基于[存储分析日志格式](http://msdn.microsoft.com/library/azure/hh343259.aspx)和[存储分析度量表架构](http://msdn.microsoft.com/library/azure/hh343264.aspx)中的信息添加相应的列标题。
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
@@ -800,8 +799,8 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 在“文本导入向导”的第 1 步中，选择“分号”作为唯一的分隔符，并选择双引号作为“文本限定符”。 然后单击“完成”，并选择将数据放入工作簿中的位置。
 
-### <a name="appendix-5"></a>附录 5：使用 Application Insights for Visual Studio Team Services 进行监视
-在性能和可用性监视过程中，还可以使用用于 Visual Studio Team Services 的 Application Insights 功能。 此工具可以：
+### <a name="appendix-5"></a>附录 5：使用 Application Insights for Azure DevOps 进行监视
+在性能和可用性监视过程中，还可以使用用于 Azure DevOps 的 Application Insights 功能。 此工具可以：
 
 * 确保 Web 服务可用且响应迅速。 无论应用程序是一个网站还是使用 Web 服务的设备应用程序，它都可以从世界各地的位置每隔几分钟测试一次 URL，并且让用户知道是否存在问题。
 * 快速诊断 Web 服务中的任何性能问题或异常。 查明 CPU 或其他资源是否过多使用，从异常获取堆栈跟踪并通过日志跟踪轻松地进行搜索。 如果应用程序的性能降至低于可接受的限制，Microsoft 会向你发送电子邮件。 可以同时监视 .NET 和 Java Web 服务。
@@ -866,7 +865,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [附录 2：使用 Wireshark 捕获网络流量]: #appendix-2
 [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]: #appendix-3
 [附录 4：使用 Excel 查看度量值和日志数据]: #appendix-4
-[附录 5：使用 Application Insights for Visual Studio Team Services 进行监视]: #appendix-5
+[附录 5：使用 Application Insights for Azure DevOps 进行监视]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

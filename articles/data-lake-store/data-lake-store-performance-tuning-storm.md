@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store Storm 性能优化指南 | Microsoft 文档
-description: Azure Data Lake Store Storm 性能优化指南
+title: Azure Data Lake Storage Gen1 Storm 性能优化指南 | Microsoft Docs
+description: Azure Data Lake Storage Gen1 Storm 性能优化指南
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 5ebca90ffd679de1c30d1bc324bf4f1c3b9f6f70
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198854"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129227"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Storm on HDInsight 和 Azure Data Lake Store 性能优化指南
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素。 例如，必须了解 Spout 和 Bolt 的工作特征（这种工作是 I/O 密集型还是内存密集型的）。 本文介绍一系列性能优化指南，包括如何排查常见问题。
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)。
-* 具有 Data Lake Store 帐户访问权限的 **Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Data Lake Store 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
-* **Data Lake Store 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
 
-可以通过增大传入和传出 Data Lake Store 的 I/O 的并发性来提高性能。 Storm 拓扑提供一组配置来确定并行度：
+可以通过增大传入和传出 Data Lake Storage Gen1 的 I/O 的并发性来提高性能。 Storm 拓扑提供一组配置来确定并行度：
 * 工作进程数（工作进程均匀分散在 VM 之间）。
 * Spout 执行器实例数。
 * Bolt 执行器实例数。
@@ -51,9 +51,9 @@ ms.locfileid: "34198854"
 * Spout 和 Bolt 执行器实例。 每个执行器实例对应于辅助角色 (JVM) 中运行的一个线程。
 * Storm 任务。 其中每个线程运行的逻辑任务。 这不会更改并行度，因此，应该评估是否需要为每个执行器提供多个任务。
 
-### <a name="get-the-best-performance-from-data-lake-store"></a>从 Data Lake Store 获得最佳性能
+### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>从 Data Lake Storage Gen1 获得最佳性能
 
-使用 Data Lake Store 时，如果采取以下措施，可以获得最佳性能：
+使用 Data Lake Storage Gen1 时，如果采取以下措施，可以获得最佳性能：
 * 将小规模的追加操作联合成更大的大小（理想的大小为 4 MB）。
 * 尽可能地发出大量并发请求。 由于每个 Bolt 线程执行阻塞读取，因此，最好是将每个核心的线程数限制在 8-12 的范围内。 这可以让 NIC 和 CPU 得到充分利用。 更大的 VM 支持更多的并发请求。  
 
@@ -66,7 +66,7 @@ ms.locfileid: "34198854"
 ## <a name="tune-additional-parameters"></a>优化其他参数
 创建基本拓扑后，可以考虑是否要调整以下任何参数：
 * **每个辅助节点的 JVM 数。** 如果在内存中托管一个大型数据结构（例如查找表），则每个 JVM 都需要一个单独的副本。 或者，如果安装更少的 JVM，就能通过许多线程使用该数据结构。 对于 Bolt 的 I/O 而言，JVM 数目不会造成这么大的差异，因为线程数是在这些 JVM 之间增加的。 为方便起见，最好是为每个辅助角色创建一个 JVM。 根据 Bolt 的作用或者所需的应用程序处理功能，可能需要评估是否要更改此数字。
-* **Spout 执行器数。** 由于上面的示例使用 Bolt 向 Data Lake Store 写入数据，因此 Spout 的数目与 Bolt 性能没有直接的关系。 但是，根据 Spout 中发生的处理或 I/O 工作量，最好是优化 Spout 以获得最佳性能。 确保提供足够的 Spout 来让 Bolt 保持繁忙状态。 Spout 的输出速率应与 Bolt 的吞吐量相符。 实际配置取决于 Spout。
+* **Spout 执行器数。** 由于上面的示例使用 Bolt 向 Data Lake Storage Gen1 写入数据，因此 Spout 的数目与 Bolt 性能没有直接的关系。 但是，根据 Spout 中发生的处理或 I/O 工作量，最好是优化 Spout 以获得最佳性能。 确保提供足够的 Spout 来让 Bolt 保持繁忙状态。 Spout 的输出速率应与 Bolt 的吞吐量相符。 实际配置取决于 Spout。
 * **任务数。** 每个 Bolt 以单个线程的形式运行。 增加每个 Bolt 的任务并不能进一步提高并发性。 仅当确认元组的进程占用了大部分 Bolt 执行时间时，增加任务才能发挥作用。 在发送来自 Bolt 的确认之前，最好是将多个元组分组成一个较大的追加操作。 因此，在大多数情况下，分配多个任务并不能带来任何额外的好处。
 * **本地或随机分组。** 如果启用此设置，元组将发送到同一工作进程中的 Bolt。 这会减少进程间通信和网络调用。 建议在大多数拓扑中采用此设置。
 
@@ -85,17 +85,17 @@ ms.locfileid: "34198854"
  一种不错的计算方式是评估每个元组的大小。 然后算出一个 Spout 线程具有的内存量。 将分配给线程的总内存量除以此值，即可得出最大 Spout 挂起时间参数的上限。
 
 ## <a name="tune-the-bolt"></a>优化 Bolt
-向 Data Lake Store 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Store 驱动程序会自动执行这种缓冲。
+向 Data Lake Storage Gen1 写入数据时，请将大小同步策略（客户端的缓冲区）设置为 4 MB。 仅当缓冲区大小达到此值时，才执行刷新或 hsync()。 除非显式执行 hsync()，否则辅助角色 VM 上的 Data Lake Storage Gen1 驱动程序会自动执行这种缓冲。
 
-默认的 Data Lake Store Storm Bolt 提供了一个可用于优化此参数的大小同步策略参数 (fileBufferSize)。
+默认的 Data Lake Storage Gen1 Storm Bolt 提供了一个可用于优化此参数的大小同步策略参数 (fileBufferSize)。
 
 在 I/O 密集型拓扑中，最好是让每个 Bolt 线程将数据写入其自身的文件，并设置文件轮转策略 (fileRotationSize)。 当文件达到特定的大小时，系统会自动刷新流并向其写入新文件。 用于轮转的建议文件大小为 1 GB。
 
 ### <a name="handle-tuple-data"></a>处理元组数据
 
-在 Storm 中，Spout 不断将数据保存到元组，直到该元组被 Bolt 显式确认。 如果元组已由 Bolt 读取但尚未确认，Bolt 可能无法持久保存在 Data Lake Store 后端。 确认元组后，可以保证 Spout 持久保存在 Bolt 中，随后可从 Bolt 读取的任何源中删除源数据。  
+在 Storm 中，Spout 不断将数据保存到元组，直到该元组被 Bolt 显式确认。 如果元组已由 Bolt 读取但尚未确认，Spout 可能无法持久保存在 Data Lake Storage Gen1 后端。 确认元组后，可以保证 Spout 持久保存在 Bolt 中，随后可从 Bolt 读取的任何源中删除源数据。  
 
-若要在 Data Lake Store 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后以一个 4-MB 写入的方式将数据写入 Data Lake Store 后端。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
+若要在 Data Lake Storage Gen1 中获得最佳性能，可为元组数据提供 4 MB 的 Bolt 缓冲区。 然后以一个 4-MB 写入的方式将数据写入 Data Lake Storage Gen1 后端。 成功将数据写入存储（通过调用 hflush()）后，Bolt 可以向 Spout 确认数据。 这就是此处提供的示例 Bolt 的作用。 在发出 hflush() 调用和确认元组之前，还接受保存更大数量的元组。 但是，这会增加 Spout 需要保存的进行中元组数量，因此也会增加每个 JVM 所需的内存量。
 
 > [!NOTE]
 出于其他与性能无关的原因，应用程序可能要求更频繁地确认元组（以小于 4 MB 的数据大小）。 但是，这可能会影响存储后端的 I/O 吞吐量。 应该针对 Bolt 的 I/O 性能认真权衡这种利弊。
@@ -127,13 +127,13 @@ ms.locfileid: "34198854"
 
 * **Bolt 执行延迟较高。** 这表示 Bolt 的 execute() 方法花费的时间太长。 请优化代码，或检查写入大小并刷新行为。
 
-### <a name="data-lake-store-throttling"></a>Data Lake Store 限制
-如果达到 Data Lake Store 所提供的带宽限制，将开始出现任务失败。 请检查任务日志中的限制错误。 可以通过增加容器大小来降低并行度。    
+### <a name="data-lake-storage-gen1-throttling"></a>Data Lake Storage Gen1 限制
+如果达到 Data Lake Storage Gen1 所提供的带宽限制，将开始出现任务失败。 请检查任务日志中的限制错误。 可以通过增加容器大小来降低并行度。    
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
 1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;**。 重新启动所有节点/服务使配置生效。
-2. 监视辅助节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Store 限制异常。
+2. 监视辅助节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Storm 的其他性能优化方法，请参阅这篇[博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。

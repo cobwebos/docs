@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 04/30/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6c4bf0e4bf0a6c1a791cf762ec9bb44ed5c0b1bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09c5981701ffdee5f2e5dba47cc98c91d5df7526
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627682"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603896"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>远程监视体系结构选择
 
@@ -40,7 +40,10 @@ Azure IoT 远程监视解决方案加速器是一种经 MIT 许可的开放源�
 对于流处理，远程监视解决方案使用 Azure 流分析进行复杂的规则处理。  对于希望规则更简单的客户，我们也提供了可以处理简单规则的自定义微服务，虽然此设置不包含在现成的部署中。 参考体系结构建议使用 Azure Functions 进行简单的规则处理，使用 Azure 流分析 (ASA) 进行复杂的规则处理。  
 
 ### <a name="storage"></a>存储
-至于存储，可以使用 Azure Cosmos DB 来应对所有存储需求：冷存储、暖存储、规则存储、警报。 我们目前正按照参考体系结构的建议转移到 Azure Blob 存储。  Azure Cosmos DB 是建议用于 IoT 应用程序的常规用途暖存储解决方案，虽然 Azure 时序见解和 Azure Data Lake 等解决方案也适用于许多情况。
+远程监控解决方案加速器在存储方面使用 Azure 时序见解和 Azure Cosmos DB。 Azure 时序见解存储来自所连接设备的 IoT Hub 消息。 解决方案加速器将 Azure Cosmos DB 用于所有其他存储，例如冷存储、规则定义、警报和配置设置。 Azure Cosmos DB 是建议用于 IoT 应用程序的常规用途暖存储解决方案，虽然 Azure 时序见解和 Azure Data Lake 等解决方案也适用于许多情况。 借助 Azure 时序见解，可以通过发现趋势和异常情况深入了解时序传感器数据，从而进行根本原因分析并避免代价高昂的停机时间。 
+
+> [!NOTE]
+> 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。
 
 ### <a name="business-integration"></a>业务集成
 远程监视解决方案中的业务集成仅限于放置在暖存储中的警报的生成。 将解决方案与 Azure 逻辑应用集成以后，即可执行更多的业务集成。

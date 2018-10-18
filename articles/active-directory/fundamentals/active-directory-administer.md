@@ -1,26 +1,25 @@
 ---
-title: Azure AD 租户目录使用方法概述 | Microsoft Docs
-description: 介绍什么是 Azure AD 租户，以及如何使用 Azure Active Directory 管理 Azure
+title: 管理 Azure Active Directory 租户 | Microsoft Docs
+description: 了解什么是 Azure AD 租户，以及如何使用 Azure Active Directory 管理 Azure。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+custom: it-pro
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767343"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297922"
 ---
-# <a name="manage-your-azure-ad-directory"></a>管理 Azure AD 目录
+# <a name="manage-your-azure-active-directory-tenant"></a>管理你的 Azure Active Directory 租户
 
 ## <a name="what-is-an-azure-ad-tenant"></a>什么是 Azure AD 租户？
 在 Azure Active Directory (Azure AD) 中，租户是组织在注册 Azure 或 Office 365 之类的 Microsoft 云服务时接收的 Azure AD 目录的专用实例。 每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供组织使用的安全资产。 Azure AD 体系结构将客户数据和标识信息隔离开来，因此，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
@@ -43,7 +42,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 
 例如，如果先注册一个 Microsoft Intune 订阅，然后进一步将本地 Active Directory 与 Azure AD 目录同步，则可注册另一 Microsoft 服务（例如 Office 365），轻松获得使用 Microsoft Intune 时获得的目录集成优势。
 
-有关如何将本地目录与 Azure AD 集成的详细信息，请参阅[与 Azure AD Connect 进行目录集成](../connect/active-directory-aadconnect.md)。
+有关如何将本地目录与 Azure AD 集成的详细信息，请参阅[与 Azure AD Connect 进行目录集成](../hybrid/whatis-hybrid-identity.md)。
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>将现有的 Azure AD 目录与新的 Azure 订阅相关联
 可以将新的 Azure 订阅，与用于对现有 Office 365 或 Microsoft Intune 订阅的登录进行身份验证的相同目录进行关联。 有关该方案的详细信息，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)
@@ -61,7 +60,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 2. 确保需要让其成为订阅所有者的用户位于目标目录中。
 3. 单击“转让订阅”。
 4. 指定接收方。 接收方会自动收到含有接受链接的电子邮件。
-5. 接收方单击该链接并遵照说明操作，包括输入他们的付款信息。 接收方成功后，订阅将转让。 
+5. 接收方单击该链接并遵循说明操作，包括输入他们的付款信息。 接收方成功后，订阅将转让。 
 6. 如果订阅所有权转让成功，则订阅的默认目录会更改为该用户所在的目录。
 
 若要了解详细信息，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)

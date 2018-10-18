@@ -1,6 +1,6 @@
 ---
-title: 最终用户身份验证：通过 Azure Active Directory 将 .NET SDK 与 Data Lake Store 配合使用 | Microsoft Docs
-description: 了解如何通过 .NET SDK 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
+title: 最终用户身份验证：对 Azure Data Lake Storage Gen1 结合使用 Azure Active Directory 和 .NET SDK | Microsoft Docs
+description: 了解如何结合使用 .NET SDK 和 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cbb0f703f61b6c15b3a827dc75821286b7914c21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623955"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122819"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>使用 .NET SDK 进行 Data Lake Store 最终用户身份验证
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]
 > * [使用 Java](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [使用 .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,14 +27,14 @@ ms.locfileid: "34623955"
 > 
 >  
 
-本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Store 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Store 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Store 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
+本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
+* **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 打开 Visual Studio，创建一个控制台应用程序。
@@ -80,7 +80,7 @@ ms.locfileid: "34623955"
     ```     
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
-在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD 本机应用程序（作为必备组件列出）检索到的值。 此代码片段允许使用 Data Lake Store **以交互方式**对应用程序进行身份验证，这意味着会提示你输入 Azure 凭据。
+在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD 本机应用程序（作为必备组件列出）检索到的值。 通过此代码片段，可以“交互方式”对应用程序进行 Data Lake Storage Gen1 身份验证，这意味着系统会提示你输入 Azure 凭据。
 
 为了便于使用，下面的代码片段针对客户端 ID 和重定向 URI 使用了对任何 Azure 订阅都有效的默认值。 在下面的代码片段中，只需要提供你的租户 ID 的值。 可以使用[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id) 中提供的说明来检索租户 ID。
     
@@ -104,14 +104,14 @@ ms.locfileid: "34623955"
 
 对于以上代码片段，需要注意以下几个问题：
 
-* 上述代码片段将使用 helper 函数 `GetTokenCache` 和 `GetCreds_User_Popup`。 可在[此处（Github 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)获取这些 helper 函数的代码。
+* 上述代码片段使用 helper 函数 `GetTokenCache` 和 `GetCreds_User_Popup`。 可在[此处（Github 上）](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)获取这些 helper 函数的代码。
 * 为了帮助读者更快完成本教程，此代码片段使用了为所有 Azure 订阅默认提供的本机应用程序客户端 ID。 因此，可以**在应用程序中按原样使用此代码片段**。
-* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，并使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便使用 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
+* 但是，如果想要使用自己的 Azure AD 域和应用程序客户端 ID，则必须创建一个 Azure AD 本机应用程序，并使用所创建的应用程序的 Azure AD 租户 ID、客户端 ID 和重定向 URI。 有关说明，请参阅[创建 Active Directory 应用程序，以便进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
   
 ## <a name="next-steps"></a>后续步骤
-在本文中，你已学习了如何通过 .NET SDK 使用最终用户身份验证进行 Azure Data Lake Store 身份验证。 接下来，可以查看以下介绍如何使用 .NET SDK 在 Azure Data Lake Store 中执行操作的文章。
+本文介绍如何使用 .NET SDK 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 .NET SDK 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [Data Lake Store 上的帐户管理操作（使用 .NET SDK）](data-lake-store-get-started-net-sdk.md)
-* [使用 .NET SDK 在 Data Lake Store 上进行的数据操作](data-lake-store-data-operations-net-sdk.md)
+* [使用 .NET SDK 对 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)
+* [使用 NET SDK 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-net-sdk.md)
 

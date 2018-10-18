@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173095"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321421"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用多值实体
 本教程介绍实体的“多值”属性。
@@ -24,7 +24,7 @@ ms.locfileid: "39173095"
 
 [![教程 6 预览](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
-##<a name="requirements"></a>要求
+## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
 
     npm run tutorial-general
@@ -58,13 +58,13 @@ ms.locfileid: "39173095"
 1. 依次单击“操作”和“新建操作”
 2. 在响应中，键入“你需要哪些浇汁?”。
 3. 在“取消实体资格”中，输入“浇汁”。
-3. 单击创建
+3. 单击“法律条款” 
 
 然后，创建第二个操作。
 
 1. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在响应中，键入“下面是你的浇汁: $Toppings”。
-4. 单击创建
+4. 单击“法律条款” 
 
 现在已有两个操作。
 
@@ -87,7 +87,7 @@ ms.locfileid: "39173095"
 
 7. 输入“添加辣椒”。
     - 单击实体检测下的“辣椒”，然后选择“浇汁”。
-3. 单击“对操作打分”。
+3. 单击“Score Actions”。
     - “pepper”现在显示为配料中的其他值。
 6. 选择“下面是你的浇汁: $Toppings”。
 
@@ -96,7 +96,7 @@ ms.locfileid: "39173095"
 2. 键入“删除辣椒并添加香肠”。
 1. 单击“辣椒”并单击红色 x 以将其删除。
 2. 单击“辣椒”，然后选择“-浇汁”。
-3. 单击“对操作打分”。
+3. 单击“Score Actions”。
     - 已删除“pepper”并添加了“sausage”。
 6. 选择“下面是你的浇汁: $Toppings”。
 
@@ -104,7 +104,7 @@ ms.locfileid: "39173095"
 
 6. 输入“删除蘑菇、删除奶酪并删除香肠”。
 7. 单击这三个浇汁的每一个，然后选择“-浇汁”。
-7. 单击“对操作打分”。
+7. 单击“Score Actions”。
     - 清除所有配料。
 2. 选择“你需要哪些浇汁?”
 3. 单击“完成教学”

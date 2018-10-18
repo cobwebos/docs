@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: f3b9a2ed9b374192151a8a737a5b51d9085d53ff
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ff4d634fb7f6f8057e5f370a694e46ca5e0d772d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430911"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>教程：Azure Active Directory 与 T&E Express 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39430911"
 
     ![配置单一登录](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
-    a. 在“标识符”文本框中，键入 `https://<domain>.tyeexpress.com` 值
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 `https://<domain>.tyeexpress.com` 值
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
@@ -163,7 +163,7 @@ ms.locfileid: "39430911"
  
     ![创建 Azure AD 测试用户](./media/tyeexpress-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
