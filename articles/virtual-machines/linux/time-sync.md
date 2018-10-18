@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987228"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116705"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
@@ -44,7 +44,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 如果没有进行时间同步，则 VM 上的时钟会累积错误。 当只有一个 VM 时，除非工作负载需要高度准确的计时，否则效果可能不会很明显。 但在大多数情况下，我们有多个相互关联的 VM，它们使用时间来跟踪事务，并且需要在整个部署中保持一致的时间。 VM 之间的时间不同时，可能会产生以下影响：
 
-- Kerberos 等安全协议或依赖于证书的技术依赖于系统间的时间一致性。 
+- 身份验证将会失败。 Kerberos 等安全协议或依赖于证书的技术依赖于系统间的时间一致性。
 - 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来好像发生在不同的时间，这使关联变得困难。
 - 如果时钟关闭，则可能无法正确计费。
 
