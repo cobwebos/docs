@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 7f7d447edd0d73084a46aeff81f27b3ab0f072d3
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8ec3b6c5dfdd63de45e287cf0b68e90c7b0cbbd8
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286228"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829540"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征。 例如，可从图像生成标题栏、生成标记或识别名人和地标。
+
+> [!NOTE]
+> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
@@ -44,7 +47,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 
 ##  <a name="sample-definition"></a>示例定义
-
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
@@ -105,8 +107,16 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
     "values": [
         {
             "recordId": "1",
-            "data": {
-                "url": "https://storagesample.blob.core.windows.net/sample-container/image.jpg"
+            "data": {                
+                "image":  {
+                               "data": "BASE64 ENCODED STRING OF A JPEG IMAGE",
+                               "width": 500,
+                               "height": 300,
+                               "originalWidth": 5000,  
+                               "originalHeight": 3000,
+                               "rotationFromOriginal": 90,
+                               "contentOffset": 500  
+                           }
             }
         }
     ]
@@ -217,7 +227,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                         "Black"
                     ],
                     "accentColor": "873B59",
-                    "isBWImg": false
+                    "isBwImg": false
                     },
                 "imageType": {
                     "clipArtType": 0,
@@ -245,6 +255,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

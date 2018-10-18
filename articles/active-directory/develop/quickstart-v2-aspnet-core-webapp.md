@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227413"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830219"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "47227413"
 > 1. 输入应用程序的名称，确保未选中“引导式设置”选项，然后单击“创建”。
 > 1. 单击 `Add Platform`，然后选择 `Web`。
 > 1. 确保“允许隐式流”保持选中状态。
-> 1. 在“重定向 URL”中输入 `https://localhost:3110/`。
+> 1. 在“重定向 URL”中输入 `http://localhost:3110/`。
 > 1. 滚动到页面底部，单击“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -60,7 +60,7 @@ ms.locfileid: "47227413"
 
 #### <a name="step-3-configure-your-project"></a>步骤 3：配置项目
 
-1. 将 zip 文件提取到本地文件夹（例如，C:\Azure-Samples）
+1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 1. 如果使用 Visual Studio 2017，请在 Visual Studio 中打开项目（可选）
 1. 编辑 appsettings.json 并将 `ClientId` 的值替换为刚刚注册的应用程序的应用程序 ID：
 
