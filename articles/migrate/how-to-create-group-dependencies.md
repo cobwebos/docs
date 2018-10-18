@@ -4,28 +4,43 @@ description: 介绍如何在 Azure Migrate 服务中使用组依赖项映射优�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9f95ffe47275cfda77efa294ca6e8ccebe0070eb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622892"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158608"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
-本文介绍如何通过可视化组中所有计算机的依赖项优化组。 如果想要在运行评估之前通过交叉检查组依赖项来优化现有组的成员身份，通常都会使用此方法。 通过依赖项可视化来优化组有助于有效地计划如何迁移到 Azure。可以发现所有需要一起迁移的互相依赖的系统。 它帮助确保在迁移到 Azure 的过程中不会遗留任何内容，也不会发生意外中断。 
+本文介绍如何通过可视化组中所有计算机的依赖项优化组。 如果想要在运行评估之前通过交叉检查组依赖项来优化现有组的成员身份，通常都会使用此方法。 通过依赖项可视化来优化组可帮助你有效地计划到 Azure 的迁移。 你可以发现所有需要一起迁移的互相依赖的系统。 它帮助确保在迁移到 Azure 的过程中不会遗留任何内容，也不会发生意外中断。
 
 
 > [!NOTE]
 > 要可视化其依赖项的组所包含的计算机不应超过 10 台。 如果组中所包含的计算机超过 10 台，建议将该组拆分为更小的组，以便利用依赖项可视化功能。
 
 
-# <a name="prepare-the-group-for-dependency-visualization"></a>为依赖项可视化准备组
-要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果你的计算机未连接到 Internet，你需要在计算机上下载并安装 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+## <a name="prepare-for-dependency-visualization"></a>准备依赖项可视化
+Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算机的依赖项可视化。
+
+### <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
+若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。 只能在创建迁移项目的同一订阅中创建或附加工作区。
+
+- 若要将 Log Analytics 工作区附加到项目，请在“概述”中转到项目的“Essentials”部分，单击“需要配置”
+
+    ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- 创建新工作区时，需要指定工作区的名称。 然后，在与迁移项目相同的订阅和与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
+- “使用现有”选项会仅列出那些在服务映射可用的区域中创建的工作区。 如果某个工作区位于服务映射不可用的区域中，则下拉列表中将不会列出该工作区。
+
+> [!NOTE]
+> 你无法更改与迁移项目关联的工作区。
 
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
+要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果你的计算机未连接到 Internet，你需要在计算机上下载并安装 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+
 1. 在“概述”中，单击“管理” > “组”，转到所需组。
 2. 在计算机列表中，单击“依赖项代理”列中的“需要安装”，查看有关如何下载并安装代理的说明。
 3. 在组中包含的每台 VM 上，从“依赖项”页下载并安装 Microsoft Monitoring Agent (MMA) 和依赖项代理。
@@ -37,8 +52,8 @@ ms.locfileid: "39622892"
 
 1. 双击下载的代理。
 2. 在“欢迎”页面上，单击“下一步”。 在“许可条款”页面上，单击“我接受”以接受许可协议。
-3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。 
-4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。 
+3. 在“目标文件夹”中，保留或修改默认安装文件夹，然后选择“下一步”。
+4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 
@@ -66,7 +81,7 @@ ms.locfileid: "39622892"
 3. 组的依赖项映射显示了以下详细信息：
     - 与组中包含的所有计算机的入站（客户端）和出站（服务器）TCP 连接
         - 没有安装 MMA 和依赖项代理的依赖计算机按端口号进行分组
-        - 安装了 MMA 和依赖项代理的依赖计算机显示在单独的框中 
+        - 安装了 MMA 和依赖项代理的依赖计算机显示在单独的框中
     - 计算机内运行的进程，可以展开每个计算机框查看这些进程
     - 每台计算机的属性（如，完全限定的域名、操作系统、MAC 地址等），可单击每个计算机框查看相关详细信息
 
@@ -86,5 +101,5 @@ ms.locfileid: "39622892"
 
 
 ## <a name="next-steps"></a>后续步骤
-
-[详细了解](concepts-assessment-calculation.md)如何计算评估。
+- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)。
+- [详细了解如何计算评估](concepts-assessment-calculation.md)。

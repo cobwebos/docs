@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdc8222675a9f0099edccb24310bcea03bf963f4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 81638136589fc474d5183341d2fe0f9f896d6b41
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929666"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434460"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数 
 
@@ -54,7 +54,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |int、string、array 或 object |要转换为数组的值。 |
 
@@ -132,7 +132,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |整数、字符串、数组或对象 |要测试是否为 null 的其他值。 |
@@ -220,7 +220,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
@@ -330,11 +330,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>contains
 `contains(container, itemToFind)`
 
-检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。
+检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -428,7 +428,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
@@ -509,7 +509,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -587,7 +587,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -652,7 +652,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -729,7 +729,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串 |要转换为 JSON 的值。 |
 
@@ -737,6 +737,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ### <a name="return-value"></a>返回值
 
 指定字符串中的 JSON 对象，或指定 null 时的空对象。
+
+### <a name="remarks"></a>备注
+
+如需将某个参数值或变量包含在 JSON 对象中，可使用 [concat](resource-group-template-functions-string.md#concat) 函数创建要传递到此函数的字符串。
 
 ### <a name="example"></a>示例
 
@@ -746,6 +750,12 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -756,6 +766,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -767,6 +781,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | ---- | ---- | ----- |
 | jsonOutput | 对象 | {"a": "b"} |
 | nullOutput | 布尔 | True |
+| paramOutput | 对象 | {"a": "demo value"}
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -789,7 +804,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -854,7 +869,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |用于获取元素数的数组，或用于获取字符数的字符串。 |
 
@@ -937,7 +952,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -1001,7 +1016,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -1065,7 +1080,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | startingInteger |是 |int |数组中的第一个整数。 |
 | numberofElements |是 |int |数组中的整数个数。 |
@@ -1129,7 +1144,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1210,7 +1225,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1291,7 +1306,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | Type | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |

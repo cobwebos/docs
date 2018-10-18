@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: ab0fa22e9ba776db3d4af301499545f6e0822478
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 034d59c39628a08c389c5ceb67c5872bbea10d59
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223162"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
 
@@ -109,3 +110,19 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>如何将 Azure 资源管理器虚拟网络与云服务一起使用？ 
 
 不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。  有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
+
+
+## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>如何获取云服务使用的公共 IP 列表？
+
+可以使用以下 PS 脚本来获取订阅下的云服务公共 IP 列表
+
+    $services = Get-AzureService  | Group-Object -Property ServiceName
+
+    foreach ($service in $services) 
+    {
+        "Cloud Service '$($service.Name)'"
+
+        $deployment = Get-AzureDeployment -ServiceName $service.Name 
+        "VIP - " +  $deployment.VirtualIPs[0].Address
+        "================================="
+    }

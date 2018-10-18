@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e9c42429a8feb60ade27afe998cb9a267f1603dd
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341077"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180897"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 
@@ -25,23 +25,16 @@ ms.locfileid: "43341077"
 
 1. 使用 Microsoft 帐户凭据登录 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)。
 2. 在右上角，选择“添加应用”。
-3. 提供应用程序的“名称”，并单击“创建”。
-4. 在注册页上，复制“应用程序 ID”的值。使用该值将 Microsoft 帐户配置为租户中的标识提供者。
+3. 输入应用程序的**名称**。 例如，MSAapp1。
+4. 选择“生成新密码”，并确保复制密码以在配置身份提供程序时使用。 还要复制“应用程序 ID”。 
 5. 选择“添加平台”，然后选择“Web”。
-6. 在“重定向 URL”中输入 `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c）。
-7. 在“应用程序机密”下，选择“生成新密码”。 复制屏幕上显示的新密码。 将 Microsoft 帐户配置为租户中的标识提供者时需要此项。 该密码是一个非常重要的安全凭据。
+4. 在“重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。
+5. 选择“保存”。
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>将 Microsoft 帐户配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 通过在 Azure 门户的右上角切换到包含 Azure AD B2C 租户的目录，确保你正在使用该目录。 选择订阅信息，然后选择“切换目录”。 
-
-    ![切换到 Azure AD B2C 租户](./media/active-directory-b2c-setup-msa-app/switch-directories.png)
-
-    选择包含租户的目录。
-
-    ![选择目录](./media/active-directory-b2c-setup-msa-app/select-directory.png)
-
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 选择“标识提供者”，然后选择“添加”。
 5. 提供“名称”。 例如，输入“MSA”。

@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 821d9bf3c844da030d1d351e895704a81678fb4e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699465"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423164"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 
@@ -140,7 +140,7 @@ committableTransaction.Commit();
 
 当前，服务总线对分区的队列和主题施加以下限制：
 
-* 高级消息传送层不支持分区队列和主题。
+* 高级消息传送层不支持分区队列和主题。 使用 SessionId 在高级层中支持会话。 
 * 分区的队列和主题不支持在单个事务中发送属于不同会话的消息。
 * 服务总线当前允许为每个命名空间最多创建 100 个分区的队列或主题。 每个分区的队列或主题都将计入每个命名空间的 10,000 个实体的配额（不适用于高级层）。
 

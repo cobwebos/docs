@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688722"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225719"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 
@@ -143,7 +143,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
 
 通常，应用程序只使用一个密钥来访问数据。 在特定的一段时间后，可以让应用程序切换为使用第二个密钥。 将应用程序切换到第二个密钥后，将停用第一个密钥，并生成新密钥。 以这种方式使用两个密钥可让应用程序在不引发任何停机的情况下访问数据。
 
-存储帐户密钥始终以加密形式存储在服务中。务。 但是，可以通过 StorSimple 设备管理器服务重置这些密钥。 服务可以获取同一个订阅中所有存储帐户的主密钥和辅助密钥，包括在存储服务中创建的帐户，以及首次创建 StorSimple 设备管理器服务时生成的默认存储帐户。 StorSimple 设备管理器服务始终从 Azure 经典门户中获取这些密钥，然后将它们以加密形式存储。
+存储帐户密钥始终以加密形式存储在服务中。务。 但是，可以通过 StorSimple 设备管理器服务重置这些密钥。 此服务可以获取同一个订阅中所有存储帐户的主密钥和辅助密钥，包括在存储服务中创建的帐户，以及首次创建 StorSimple 设备管理器服务时生成的默认存储帐户。 StorSimple 设备管理器服务始终从 Azure 经典门户中获取这些密钥，然后将它们以加密形式存储。
 
 ## <a name="rotation-workflow"></a>轮换工作流
 

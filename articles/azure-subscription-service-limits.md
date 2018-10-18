@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782584"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393607"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -52,10 +52,12 @@ ms.locfileid: "43782584"
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure 事件网格](#azure-event-grid-limits)
 * [Azure Maps](#azure-maps-limits)
+* [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
 * [Azure Redis 缓存](#azure-redis-cache-limits)
 * [备份](#backup-limits)
 * [批处理](#batch-limits)
+* [Batch AI](#batch-ai-limits)
 * [BizTalk 服务](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [云服务](#cloud-services-limits)
@@ -69,6 +71,7 @@ ms.locfileid: "43782584"
 * [DNS](#dns-limits)
 * [事件中心](#event-hubs-limits)
 * [Azure 防火墙](#azure-firewall-limits)
+* [Front Door](#azure-front-door-service-limits)
 * [IoT 中心](#iot-hub-limits)
 * [IoT 中心设备预配服务](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -77,7 +80,6 @@ ms.locfileid: "43782584"
 * [媒体服务](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [移动服务](#mobile-services-limits)
-* [监视](#monitor-limits)
 * [多重身份验证](#multi-factor-authentication)
 * [网络](#networking-limits)
 * [网络观察程序](#network-watcher-limits)
@@ -87,6 +89,7 @@ ms.locfileid: "43782584"
 * [计划程序](#scheduler-limits)
 * [搜索](#search-limits)
 * [服务总线](#service-bus-limits)
+* [SignalR 服务](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL 数据库](#sql-database-limits)
 * [SQL 数据仓库](#sql-data-warehouse-limits)
@@ -156,11 +159,16 @@ ms.locfileid: "43782584"
 #### <a name="azure-firewall-limits"></a>Azure 防火墙限制
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
-### <a name="storage-limits"></a>存储限制
-有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
+#### <a name="azure-front-door-service-limits"></a>Azure Front Door 服务限制
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
+### <a name="storage-limits"></a>存储限制
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+有关存储帐户限制的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage/common/storage-scalability-targets.md)。
+
+#### <a name="storage-resource-provider-limits"></a>存储资源提供程序限制 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -211,6 +219,9 @@ ms.locfileid: "43782584"
 ### <a name="batch-limits"></a>Batch 限制
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
+### <a name="batch-ai-limits"></a>Batch AI 限制
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
+
 ### <a name="biztalk-services-limits"></a>BizTalk 服务限制
 下表显示了 Azure BizTalk 服务的限制。
 
@@ -224,9 +235,6 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 有关 Azure Database for PostgreSQL 限制，请参阅 [Azure Database for PostgreSQL 中的限制](postgresql/concepts-limits.md)。
-
-### <a name="mobile-engagement-limits"></a>Mobile Engagement 限制
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>搜索限制
 定价层决定了搜索服务的容量和限制。 层包括：
@@ -307,6 +315,9 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 
 ### <a name="backup-limits"></a>备份限制
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>SignalR 服务限制
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>站点恢复限制
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]

@@ -3,19 +3,19 @@ title: 将 Azure 帐户链接到合作伙伴 ID | Microsoft Docs
 description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户帐户来跟踪 Azure 客户的互动。
 services: billing
 author: dhirajgandhi
-ms.author: dhgandhi
+ms.author: cwatson
 ms.date: 03/12/2018
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a48298668e2297cb95f2a2f16eac6387ff509781
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8226ff956db1b21c308d184e8d5876a59d1b646d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608706"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391772"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -89,7 +89,7 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ``` 
 
-2.  使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 Azure CLI 2.0 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+2.  使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>

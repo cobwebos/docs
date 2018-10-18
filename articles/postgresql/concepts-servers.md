@@ -4,17 +4,16 @@ description: 本文提供配置和管理 Azure Database for PostgreSQL 服务器
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/22/2018
-ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 09/27/2018
+ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640007"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404633"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
@@ -42,7 +41,7 @@ Azure Database for PostgreSQL 服务器：
 |||
 |:--|:--|
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
-| **协议** | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
+| 协议 | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
 | TCP/IP | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅 [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
 
@@ -56,6 +55,7 @@ PostgreSQL 超级用户属性分配给属于托管服务的 azure_superuser。 �
 Azure Database for PostgreSQL 服务器具有两个默认数据库： 
 - postgres - 可以在创建服务器后连接到的默认数据库。
 - azure_maintenance - 此数据库用于将提供托管服务的进程与用户操作分开。 你无权访问此数据库。
+- azure_sys - 查询存储的一个数据库。 当查询存储处于关闭状态时，此数据库不会累积数据；这是默认设置。 有关详细信息，请参阅[查询存储概述](concepts-query-store.md)。
 
 
 ## <a name="server-parameters"></a>服务器参数

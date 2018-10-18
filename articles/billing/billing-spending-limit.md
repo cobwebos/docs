@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: genli
-ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.author: cwatson
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670056"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423079"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
 
 Azure 中的支出限制是为了防止支出超过信用额度。 如果注册使用试用版的新客户或具有几个月信用额度的产品/服务，将默认开启支出限制。 支出限制为 $0。 无法进行更改。 支出限制不可用于即用即付订阅和承诺计划等订阅类型。 请参阅 [Azure 产品/服务以及支出限制可用性的完整列表](https://azure.microsoft.com/support/legal/offer-details/)。
-
-**想查找计费警报？** 请参阅[为 Azure 订阅设置计费或信用额度警报](billing-set-up-alerts.md)。
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>达到支出限制后会发生什么情况？
 
@@ -64,7 +62,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 支出限制会阻止你部署或使用某些第三方和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
 
-* 计划部署第一方映像（如 Oracle）和服务（如 Visual Studio Team Services）。 此方案几乎立马导致你超过支出限制并导致订阅被禁。
+* 计划部署第一方映像（如 Oracle）和服务（如 Azure DevOps Services）。 此方案几乎立马导致你超过支出限制并导致订阅被禁。
 * 拥有不可中断的服务。
 * 服务和资源包含希望保留的设置，如虚拟 IP 地址。 这些设置会在取消分配服务和资源时丢失。
 
@@ -78,7 +76,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>如何设置自定义支出限制？
 
-目前无法设置。 但可以选择[使用计费警报控制支出](billing-set-up-alerts.md)。
+自定义支出限制不可用。
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>支出限制是否可防止产生任何 Azure 费用？
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190419"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423487"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -149,7 +149,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户的网址是 [Shell.Azure.com](https://portal.azure.com)。 它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 [portal.azure.com](https://portal.azure.com)。 它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
 
 ### <a name="resources"></a>资源
 
@@ -185,7 +185,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ## <a name="azure-subscriptions"></a>Azure 订阅
 
-订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务按订阅计费。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 除了管理员外，还可以通过基于角色的访问控制 (RBAC) 对单个帐户授予对 Azure 资源的详细控制权限。
+订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
 
 ### <a name="select-and-enable-an-azure-subscription"></a>选择并启用 Azure 订阅
 
@@ -205,13 +205,9 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>授予对 Azure 订阅的管理访问权限
 
-多个帐户管理员角色可用，并且可以随时更改。 两个主要角色是：
+RBAC 有多个可用于分配权限的内置角色。 要使用户成为 Azure 订阅的管理员，请在订阅范围为其分配[所有者](../../role-based-access-control/built-in-roles.md#owner)角色。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。
 
-- **服务管理员**：此角色有权管理 Azure 服务。 默认情况下，有权访问的帐户与帐户管理员相同。
-
-- **共同管理员**：此角色具有与服务管理员相同的访问权限。 但是，此角色不能更改订阅与 Azure 目录的关联。
-
-有关详细信息，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md)。
+有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>在 Azure 门户中查看计费信息
 
@@ -232,10 +228,6 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>使用价格计算器预测成本
 
 每项 Azure 服务的定价各不相同。 许多 Azure 服务提供基本、标准和高级层。 通常，每一层都有多个价格和性能级别。 可通过使用[联机价格计算器](http://azure.microsoft.com/pricing/calculator)来创建价格估计值。 使用该计算器，可灵活地估计单个资源或一组资源的成本。
-
-### <a name="set-up-billing-alerts"></a>设置计费警报
-
-在 Azure 上部署应用程序或解决方案后，可以创建警报，以便在接近警报中定义的支出限制时收到电子邮件。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](../../billing/billing-set-up-alerts.md)。
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 
@@ -307,21 +299,21 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 若要授予访问权限，可向用户或用户组分配角色。 有许多预定义的角色。 还可以定义自己的自定义角色。
 
-以下是 Azure 中内置的一些示例角色：
+以下是 [Azure 中的内置角色](../../role-based-access-control/built-in-roles.md)的一些示例：
 
 - **所有者**：具有此角色的用户可管理所有内容，包括访问权限。
 
 - **读者**：具有此角色的用户可以读取所有类型的资源（机密除外），但不能进行更改。
 
-- **虚拟机参与者**：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
+- 虚拟机参与者：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
 
-- **SQL DB 参与者**：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
+- SQL DB 参与者：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
 
-- **SQL 安全管理器**：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
+- SQL 安全管理器：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
 
-- **存储帐户参与者**：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
+- 存储帐户参与者：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
 
-有关详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="azure-virtual-machines"></a>Azure 虚拟机
 

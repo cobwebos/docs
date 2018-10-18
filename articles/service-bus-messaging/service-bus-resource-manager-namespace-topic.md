@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b5512186913eb59be2b89ce8b8bb9fb881f59cd8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699815"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409977"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 
@@ -41,7 +41,7 @@ ms.locfileid: "43699815"
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>将部署什么内容？
+## <a name="what-do-you-deploy"></a>要部署什么？
 
 使用此模板，将部署包含主题和订阅的服务总线命名空间。
 
@@ -53,9 +53,9 @@ ms.locfileid: "43699815"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
-模板定义以下参数。
+模板定义以下参数：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 要创建的服务总线命名空间的名称。

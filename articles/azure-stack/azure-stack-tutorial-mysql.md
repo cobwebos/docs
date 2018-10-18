@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 2197d197e68528866c892cc51323bc61a208bcc0
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49366599"
+ms.locfileid: "49376799"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>教程： 提供高可用性的 MySQL 数据库
 
@@ -198,4 +198,4 @@ MySQL 群集创建、 配置，并由 Azure Stack 操作员添加为 Azure Stack
 
 转到下一教程，了解如何执行以下操作：
 > [!div class="nextstepaction"]
-> [提供 web 应用](/azure-stack-tutorial-app-service.md)
+> [提供 web 应用](azure-stack-tutorial-app-service.md)

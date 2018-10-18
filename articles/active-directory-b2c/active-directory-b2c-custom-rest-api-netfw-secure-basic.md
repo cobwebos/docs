@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f157602ce3a9c5b6f15a03ad816d8aece4e22805
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339161"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409297"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -237,7 +237,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 6. 在“机密”框中，输入前面定义的应用 ID。
 
-7. 对于“密钥用法”，请选择“机密”。
+7. 对于“密钥用法”，请选择“签名”。
 
 8. 选择**创建**。
 
@@ -257,7 +257,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 6. 在“机密”框中，输入前面定义的应用机密。
 
-7. 对于“密钥用法”，请选择“机密”。
+7. 对于“密钥用法”，请选择“签名”。
 
 8. 选择**创建**。
 

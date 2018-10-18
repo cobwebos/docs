@@ -8,13 +8,13 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ff4a28e2f9a0149016d0e47c24e4665ab2e0500d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/26/2018
+ms.openlocfilehash: 4aecc4941f2181216ea537c0019152ce822ac4b0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265497"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408923"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>将现有的 Azure 应用服务连接到 Azure Database for MySQL 服务器
 本主题将说明如何将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器。
@@ -24,24 +24,15 @@ ms.locfileid: "35265497"
 
 当前有两种解决方案，都允许从 Azure 应用服务访问 Azure Database for MySQL。 这两种解决方案都涉及设置服务器级别的防火墙规则。
 
-## <a name="solution-1---create-a-firewall-rule-to-allow-all-ips"></a>解决方案 1 - 创建允许所有 IP 的防火墙规则
-Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全。 从 Azure App Service 连接到 Azure Database for MySQL 服务器时，请记住应用服务的出站 IP 实际上为动态 IP。 
-
-为了确保 Azure 应用服务的可用性，建议使用此解决方案允许所有 IP。
-
-> [!NOTE]
-> Microsoft 正在研究长期的解决方案，避免允许 Azure 服务的所有 IP 连接到 Azure Database for MySQL。
+## <a name="solution-1---allow-azure-services"></a>解决方案 1 - 允许 Azure 服务
+Azure Database for MySQL 通过使用防火墙保护数据来确保访问安全。 从 Azure App Service 连接到 Azure Database for MySQL 服务器时，请记住应用服务的出站 IP 实际上为动态 IP。 选择“允许访问 Azure 服务”选项将允许应用服务连接到 MySQL 服务器。
 
 1. 在 MySQL 服务器边栏选项卡上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”边栏选项卡。
 
-   ![Azure 门户 - 单击连接安全性](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure 门户 - 单击连接安全性](./media/howto-connect-webapp/1-connection-security.png)
 
-2. 输入“规则名称”、“起始 IP”和“结束 IP”，然后单击“保存”。
-   - 规则名称：Allow-All-IPs
-   - 起始 IP：0.0.0.0
-   - 结束 IP：255.255.255.255
-
-   ![Azure 门户 - 添加所有 IP](./media/howto-connect-webapp/1_2-add-all-ips.png)
+2. 在“允许访问 Azure 服务”中选择“开”，然后选择“保存”。
+   ![Azure 门户 - 允许 Azure 访问](./media/howto-connect-webapp/allow-azure.png)
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>解决方案 2 - 创建显式允许出站 IP 的防火墙规则
 可显式添加 Azure 应用服务的所有出站 IP。

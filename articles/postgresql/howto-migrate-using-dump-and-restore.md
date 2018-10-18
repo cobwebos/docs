@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/19/2018
-ms.openlocfilehash: 94d196ceecc0b63b9f0b0fe94f71363dc2086c30
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/22/2018
+ms.openlocfilehash: b6e6e8eeea7ee442ccdbb0524cafb2f51ff30268
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213644"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409603"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) 将 PostgreSQL 数据库提取到转储文件，并使用 [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) 从 pg_dump 创建的存档文件中还原 PostgreSQL 数据库。
@@ -36,9 +36,6 @@ pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> > <datab
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
-> [!IMPORTANT]
-> 将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
-> 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>使用 pg_restore 将数据还原到目标 Azure Database for PostrgeSQL
 创建目标数据库后，可以使用 pg_restore 命令和 -d、--dbname 参数将数据从转储文件还原到目标数据库。
@@ -57,6 +54,34 @@ pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@s
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+
+## <a name="optimizing-the-migration-process"></a>优化迁移过程
+
+将现有的 PostgreSQL 数据库迁移到 Azure Database for PostgreSQL 服务的一种方法是，在源上备份数据库并在 Azure 中进行还原。 若要最大限度地缩短完成迁移所需的时间，请考虑将以下参数与备份和还原命令结合使用。
+
+> [!NOTE]
+> 有关语法的详细信息，请参阅 [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) 文章。
+>
+
+### <a name="for-the-backup"></a>对于备份
+- 使用 -Fc 交换机进行备份，以便能够并行执行还原以提高速度。 例如：
+
+    ```
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+### <a name="for-the-restore"></a>对于还原
+- 我们建议将备份文件移动到你要迁移到的 Azure Database for PostgreSQL 服务器所在区域中的 Azure VM，并从该 VM 执行 pg_restore 以减少网络延迟。 此外，我们还建议通过启用[加速网络](..\virtual-network\create-vm-accelerated-networking-powershell.md)来创建 VM。
+- 默认情况下应该已经完成，但需打开转储文件来验证 create index 语句是否在插入数据之后。 如果不是这种情况，请将 create index 语句移动到插入的数据之后。
+- 使用 -Fc 和 -j *#* 交换机进行并行还原。 *#* 是目标服务器上的内核数。 你还可以尝试将 *#* 设置为目标服务器内核数的两倍，以查看产生的影响。 例如：
+
+    ```
+    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+- 此外，还可以通过在开头添加 *set synchronous_commit = off;* 命令并在末尾添加 *set synchronous_commit = on;* 命令来编辑转储文件。 如果在应用更改数据之前未在末尾打开该功能，可能会导致随后的数据丢失。
+
+请记住先在测试环境中测试和验证这些命令，然后再将其用于生产。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要使用导出和导入迁移 PostgreSQL 数据库，请参阅[使用导入和导出迁移 PostgreSQL 数据库](howto-migrate-using-export-and-import.md)。

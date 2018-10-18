@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/20/2018
 ms.author: spelluru
-ms.openlocfilehash: 66d0e10765976503ae7222eeb024890916e42af1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ba95eb7742af611cc3365fdb07b75c785ba42681
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698292"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406883"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
@@ -76,7 +76,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 
-**MatchAll** 筛选器是默认筛选器，在创建新订阅时未指定筛选器的情况下使用。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定筛选器，则将使用 MatchAll 筛选器（默认筛选器）。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 **MatchAll** 筛选器。
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -148,7 +148,7 @@ print(msg.body)
 
 参数 `peek_lock` 设置为“False”时，会在读取消息后将其从订阅删除。 通过将参数 `peek_lock` 设置为“True”，可读取（速览）并锁定消息而不会将其从队列中删除。
 
-在接收过程中读取并删除消息的行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“将使用”，因此当应用程序重启并重新开始使用消息时，它会丢失在发生崩溃前使用的消息。
+在接收过程中读取并删除消息的行为是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解此行为，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
 
 如果将 `peek_lock` 参数设置为“True”，则接收会变成一个两阶段操作，从而可支持无法容忍遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完消息（或安全存储该消息以供将来处理）后，会通过对 Message 对象调用 `delete` 方法完成接收过程的第二个阶段。 `delete` 方法会将消息标记为已使用，并将其从订阅中删除。
 
@@ -165,7 +165,7 @@ msg.delete()
 
 另外，还存在与订阅中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线会自动解锁该消息并使其可再次被接收。
 
-如果应用程序在处理消息之后，但在调用 `delete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称作*至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 为此，可以使用消息的 **MessageId** 属性，该属性在各次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在调用 `delete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 经常会调用此行为。 至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 为此，可以使用消息的 **MessageId** 属性，该属性在各次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 

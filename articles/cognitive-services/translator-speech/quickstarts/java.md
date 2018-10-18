@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969455"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386496"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>快速入门：将语音翻译 API 与 Java 配合使用 
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 本文演示如何使用语音翻译 API 翻译 .wav 文件中的口述内容。
 
@@ -38,7 +39,7 @@ ms.locfileid: "46969455"
 - [javax-websocket-client-impl-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
 - [jetty-client-9.4.11.v20180605.jar（或更高版本）](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) 获取此类 .wav 文件。
+将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech) 获取此类 .wav 文件。
 
 必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 

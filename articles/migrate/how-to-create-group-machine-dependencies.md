@@ -4,24 +4,39 @@ description: 介绍了如何在 Azure Migrate 服务中使用计算机依赖项�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621073"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163420"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>使用计算机依赖项映射分组计算机
 
 本文介绍如何通过可视化计算机的依赖项为 [Azure Migrate](migrate-overview.md) 评估创建计算机组。 当你想要在运行评估之前通过交叉检查计算机依赖项评估可信度较高的 VM 组时，通常都会使用此方法。 依赖项可视化有助于有效地计划如何迁移到 Azure。 它帮助确保在迁移到 Azure 的过程中不会遗留任何内容，也不会发生意外中断。 可以发现所有需要一起迁移的互相依赖的系统，并识别运行中的系统仍然为用户提供服务还是在等待解除授权而非迁移。
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>准备计算机以进行依赖项映射
-要查看计算机的依赖项，需要在想要评估的每台本地计算机上下载并安装代理。 此外，如果你的计算机未连接到 Internet，你需要在计算机上下载并安装 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+## <a name="prepare-for-dependency-visualization"></a>准备依赖项可视化
+Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算机的依赖项可视化。
+
+### <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
+若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。 只能在创建迁移项目的同一订阅中创建或附加工作区。
+
+- 若要将 Log Analytics 工作区附加到项目，请在“概述”中转到项目的“Essentials”部分，单击“需要配置”
+
+    ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- 创建新工作区时，需要指定工作区的名称。 然后，在与迁移项目相同的订阅和与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
+- “使用现有”选项会仅列出那些在服务映射可用的区域中创建的工作区。 如果某个工作区位于服务映射不可用的区域中，则下拉列表中将不会列出该工作区。
+
+> [!NOTE]
+> 你无法更改与迁移项目关联的工作区。
 
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
+配置工作区后，需要在要评估的每个本地计算机上下载并安装代理。 此外，如果你的计算机未连接到 Internet，你需要在计算机上下载并安装 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+
 1. 在“概述”中，单击“管理” > “计算机”，然后选择所需的计算机。
 2. 在“依赖项”列中，单击“安装代理”。
 3. 在要评估的每台 VM 上，从“依赖项”页下载并安装 Microsoft 监视代理 (MMA) 和依赖项代理。
@@ -40,6 +55,7 @@ ms.locfileid: "39621073"
 4. 在“代理安装选项”中，选择“Azure Log Analytics” > “下一步”。
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
+[详细了解 MMA 支持的 Windows 操作系统的列表](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)。
 
 若要在 Linux 计算机上安装代理：
 
@@ -48,6 +64,7 @@ ms.locfileid: "39621073"
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+[详细了解 MMA 支持的 Linux 操作系统的列表](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)。
 
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 1. 若要在 Windows 计算机上安装依赖项代理，请双击安装程序文件，然后按照向导操作。
@@ -87,5 +104,6 @@ ms.locfileid: "39621073"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何](how-to-create-group-dependencies.md)通过可视化组依赖项优化该组
-- [详细了解](concepts-assessment-calculation.md)如何计算评估。
+- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)。
+- [了解如何通过可视化组依赖项来优化组](how-to-create-group-dependencies.md)。
+- [详细了解如何计算评估](concepts-assessment-calculation.md)。

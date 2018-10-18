@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783332"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452150"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -163,7 +163,7 @@ Authorization: Bearer <access-token>
 
 ## <a name="services-that-can-be-moved"></a>可以移动的服务
 
-支持同时移动到新资源组和订阅的服务包括：
+以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 有关更为详细的信息，请参阅[支持移动操作的资源](move-support-resources.md)。
 
 * Analysis Services
 * API 管理
@@ -173,6 +173,9 @@ Authorization: Bearer <access-token>
 * 自动化
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure DevOps - 具有非 Microsoft 扩展购买的 Azure DevOps 组织必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
 * Azure Maps
 * Azure 中继
 * Azure Stack - 注册
@@ -193,6 +196,7 @@ Authorization: Bearer <access-token>
 * DNS
 * 事件网格
 * 事件中心
+* Front Door
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
 * IoT 中心
@@ -201,44 +205,41 @@ Authorization: Bearer <access-token>
 * Log Analytics
 * 逻辑应用
 * 机器学习 - 机器学习工作室 Web 服务可以移动到同一订阅中的资源组，但不能移动到不同订阅中。 其他机器学习资源可以跨订阅进行移动。
+* 托管磁盘 - 请参阅[虚拟机针对约束的限制](#virtual-machines-limitations)
 * 托管标识 - 用户分配
 * 媒体服务
-* Mobile Engagement
 * 通知中心
 * 操作见解
 * 操作管理
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
-* Redis 缓存
+* Redis 缓存 - 如果 Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索
 * 服务总线
 * Service Fabric
 * Service Fabric 网格
 * SignalR 服务
-* 存储
+* 存储 - 不同区域中的存储帐户不能在同一操作中移动。 相反，为每个区域使用单独的操作。
 * 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 流分析 - 当流分析作业处于运行状态时，则无法进行移动。
 * SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 * 时序见解
 * 流量管理器
-* 虚拟机 - 包含托管磁盘的 VM 无法移动。 请参阅[虚拟机限制](#virtual-machines-limitations)
+* 虚拟机 - 针对使用托管磁盘的虚拟机，请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 * 虚拟机规模集 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 虚拟网络 - 请参阅[虚拟网络限制](#virtual-networks-limitations)
-* Visual Studio Team Services - 具有非 Microsoft 扩展购买的 VSTS 帐户必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
 * VPN 网关
 
 ## <a name="services-that-cannot-be-moved"></a>无法移动的服务
 
-目前不可移动资源的服务包括：
+以下列表汇总提供了不能移动到新资源组和订阅的 Azure 服务。 有关更为详细的信息，请参阅[支持移动操作的资源](move-support-resources.md)。
 
 * AD 域服务
 * AD 混合运行状况服务
 * 应用程序网关
-* Azure Database for MySQL
-* Azure Database for PostgreSQL
 * Azure 数据库迁移
 * Azure Databricks
 * Azure Migrate
@@ -254,7 +255,6 @@ Authorization: Bearer <access-token>
 * 实验室服务 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 托管应用程序
-* 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * Microsoft 基因组学
 * NetApp
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
@@ -267,22 +267,62 @@ Authorization: Bearer <access-token>
 
 ## <a name="virtual-machines-limitations"></a>虚拟机限制
 
-托管磁盘不支持移动。 此限制意味着，多个相关资源也无法移动。 无法移动以下项：
+从 2018 年 9 月 24 日起，支持移动托管磁盘。 
 
-* 托管磁盘
+1. 你必须注册才能启用此功能。
+
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. 注册请求初始返回状态为 `Registering`。 你可以使用以下方法查看当前状态：
+
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. 请等待几分钟的时间，使状态更改为 `Registered`。
+
+1. 注册该功能后，注册 `Microsoft.Compute` 资源提供程序。 请执行此步骤，即使以前已注册过资源提供程序。
+
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
+
+此支持意味着你还可以移动：
+
 * 包含托管磁盘的虚拟机
-* 基于托管磁盘创建的映像
-* 基于托管磁盘创建的快照
+* 托管映像
+* 托管快照
 * 包含托管磁盘的虚拟机的可用性集
 
-虽然不能移动托管磁盘，但可以创建一个副本，然后从现有的托管磁盘创建新的虚拟机。 有关详细信息，请参阅：
+以下是尚不支持的约束：
 
-* 使用 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) 将托管磁盘复制到同一订阅或不同订阅
-* 通过将现有托管 OS 磁盘与 [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) 或 [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md) 配合使用来创建虚拟机。
+* 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
+* 使用 Azure 备份配置的虚拟机。 使用以下解决方法移动这些虚拟机
+  * 找到虚拟机的位置。
+  * 找到含有以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1` 例如，AzureBackupRG_westus2_1
+  * 如果在 Azure 门户中，则查看“显示隐藏的类型”
+  * 如果在 PowerShell 中，则使用 `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
+  * 如果在 CLI 中，则使用 `az resource list -g AzureBackupRG_<location of your VM>_1`
+  * 现在，使用类型 `Microsoft.Compute/restorePointCollections` 找到具有命名模式 `AzureBackup_<name of your VM that you're trying to move>_###########` 的资源
+  * 删除此资源
+  * 删除完成后，即可移动虚拟机
+* 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集
+* 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
-无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
-
-证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
 
 ## <a name="virtual-networks-limitations"></a>虚拟网络限制
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494069"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220119"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 模板和 Azure 门户部署资源
 
@@ -137,4 +137,4 @@ ms.locfileid: "39494069"
 * 若要查看审核日志，请参阅[使用 Resource Manager 进行审核操作](resource-group-audit.md)。
 * 若要排查部署错误，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要从部署或资源组中检索模板，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
-* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
+* 若要安全地跨多个区域推出服务，请参阅 [Azure 部署管理器](deployment-manager-overview.md)。

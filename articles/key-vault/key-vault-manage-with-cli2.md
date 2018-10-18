@@ -1,6 +1,6 @@
 ---
 title: 使用 CLI 管理 Azure Key Vault | Microsoft Docs
-description: 使用本文通过 CLI 2.0 自动执行 Key Vault 中的常见任务
+description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常见任务
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ba39ba2d4206fa86ed32bddf0538a2e997a79339
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295168"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220561"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>使用 CLI 2.0 管理 Key Vault
+# <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
-本文介绍如何开始使用 Azure CLI 2.0 处理 Azure Key Vault。 你可以获得以下信息：
+本文介绍如何开始使用 Azure CLI 处理 Azure 密钥保管库。  你可以获得以下信息：
 
-- 先决条件
 - 如何在 Azure 中创建强化的容器（保管库）
 - 将密钥、机密或证书添加到密钥保管库
 - 将应用程序注册到 Azure Active Directory
@@ -50,7 +49,7 @@ ms.locfileid: "44295168"
 若要使用本文中的 Azure CLI 命令，必须准备好以下各项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* 命令行接口版本 2.0 或更高版本。 若要安装最新版本，请参阅[安装和配置 Azure 跨平台命令行接口 2.0](/cli/azure/install-azure-cli)。
+* Azure 命令行接口版本 2.0 或更高版本。 若要安装最新版本，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 * 配置为使用本文中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](http://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>获得 Azure 跨平台命令行接口帮助
@@ -67,7 +66,7 @@ az account set -h
 也可以阅读以下文章来熟悉如何在 Azure 跨平台命令行接口中使用 Azure 资源管理器：
 
 * [安装 Azure CLI](/cli/azure/install-azure-cli)
-* [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>如何在 Azure 中创建强化的容器（保管库）
 
@@ -200,7 +199,7 @@ az keyvault certificate list --vault-name 'ContosoKeyVault'
 
 应用程序必须向 Azure Active Directory 提供这两个值才能获取令牌。 如何将应用程序配置为获取令牌取决于应用程序。 对于 [Key Vault 示例应用程序](https://www.microsoft.com/download/details.aspx?id=45343)，应用程序所有者会在 app.config 文件中设置这些值。
 
-有关将应用程序注册到 Azure Active Directory 的详细步骤，请参阅文章[将应用程序与 Azure Active Directory 集成](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)、[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)以及[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
+有关向 Azure Active Directory 注册应用程序的详细步骤，请查看标题为[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)、[使用门户创建可访问资源的 Azure ActiveDirectory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)和[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)的文章。
 
 在 Azure Active Directory 中注册应用程序：
 

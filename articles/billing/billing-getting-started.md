@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: tonguyen
-ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919120"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422994"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -54,17 +54,6 @@ ms.locfileid: "42919120"
 通常情况下，在 Azure 门户中添加服务时，会出现一个视图显示大概的每月预计成本。 例如，选择 Windows VM 的大小时，可看到计算小时数的每月估计成本：
 
 ![示例：一台 A1 Windows VM 预计每月花费 66.96 美元](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>设置计费警报
-
-设置计费警报，以便在使用费用超过指定金额时收到电子邮件。 如果有每月信用额度，设置在达到指定金额时发出警报。 有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](billing-set-up-alerts.md)。
-
-![计费警报电子邮件的屏幕截图](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> 此功能仍处于预览阶段，因此请定期查看使用情况。
-
-设置第一个警报时，建议以定价计算器中的成本预估为准。
 
 ### <a name="spending-limit"></a>检查支出限制是否为开启状态
 
@@ -166,7 +155,7 @@ ms.locfileid: "42919120"
     - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。  请联系注册管理员以获取访问权限。 
     - 是通过一个通道合作伙伴购买的 Azure，而该合作伙伴尚未发布定价信息。  
 - 与费用访问相关的设置在企业门户中更新后，Azure 门户几分钟后才会反映相应更改。
-- 支出限制、帐单警报和发票指南不适用于 EA 订阅。
+- 支出限制和发票指南不适用于 EA 订阅。
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 

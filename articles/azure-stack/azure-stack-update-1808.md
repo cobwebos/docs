@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1808 更新 |Microsoft Docs
-description: 了解什么是 1808年更新中的新的 Azure Stack 集成系统，包括已知的问题和下载更新的位置。
+title: Azure Stack 1808 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统 1808 更新的新增功能，包括已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321812"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395167"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍 1808年更新包的内容。 更新包包括改进、 修复程序和 Azure Stack 的此版本的已知的问题。 本文还包含一个链接，使你能够下载更新。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍 1808 更新包的内容。 此更新包包含此版 Azure Stack 的改进、修复和已知问题。 本文还包含一个用于下载更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]  
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack 1808 更新内部版本号是**1.1808.0.97**。  
+Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。  
 
 ### <a name="new-features"></a>新增功能
 
 此更新包含对 Azure Stack 的以下改进。
 
 <!--  2682594   | IS  --> 
-- **所有 Azure Stack 环境现在都使用协调世界时 (UTC) 时间区域格式。**  以 UTC 格式显示所有日志数据和现在的相关的信息。 如果从以前的版本不使用 UTC 安装更新，将更新你的环境以使用 UTC。 
+- **所有 Azure Stack 环境现在都使用协调世界时 (UTC) 时间区域格式。**  以 UTC 格式显示所有日志数据和现在的相关的信息。 如果你从不是使用 UTC 安装的旧版进行更新，系统会将你的环境更新成使用 UTC。 
 
 <!-- 2437250  | IS  ASDK --> 
-- **支持托管的磁盘。** 现在可以在 Azure Stack 虚拟机和虚拟机规模集使用托管磁盘。 有关详细信息，请参阅[Azure Stack 托管磁盘： 差异和注意事项](/azure/azure-stack/user/azure-stack-managed-disk-considerations)。
+- **支持托管的磁盘。** 现在可以在 Azure Stack 虚拟机和虚拟机规模集中使用托管磁盘。 有关详细信息，请参阅 [Azure Stack 托管磁盘：差异和注意事项](/azure/azure-stack/user/azure-stack-managed-disk-considerations)。
 
 <!-- 2563799  | IS  ASDK --> 
-- **Azure Monitor**。 在 Azure 上的 Azure Monitor，如 Azure Stack 上的 Azure Monitor 为大多数服务提供基本级别基础结构指标和日志。 有关详细信息，请参阅[Azure Stack 上的 Azure Monitor](/azure/azure-stack/user/azure-stack-metrics-azure-data)。
+- **Azure Monitor**。 与 Azure 上的 Azure Monitor 一样，Azure Stack 上的 Azure Monitor 针对大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅 [Azure Stack 上的 Azure Monitor](/azure/azure-stack/user/azure-stack-metrics-azure-data)。
 
 <!-- 2487932| IS --> 
-- **准备扩展主机**。 扩展主机可用于通过减少所需的 TCP/IP 端口的数量来帮助保护 Azure Stack。 1808年更新后，可以准备，使 Azure Stack 可供扩展主机。 有关详细信息，请参阅[准备适用于 Azure Stack 扩展主机](/azure/azure-stack/azure-stack-extension-host-prepare)。
+- **准备扩展主机**。 可以使用扩展主机来减少所需 TCP/IP 端口的数目，以便保护 Azure Stack。 安装 1808 更新后，就可以进行准备，使 Azure Stack 可以用于托管主机。 有关详细信息，请参阅[为 Azure Stack 准备扩展主机](/azure/azure-stack/azure-stack-extension-host-prepare)。
 
 <!-- IS --> 
-- **虚拟机规模集的库项现在内置的**。 虚拟机规模集库项现在可在用户和管理员门户而无需下载它。  如果升级到 1808年是在升级完成时提供。  
+- **虚拟机规模集的库项现在内置的**。 虚拟机规模集库项现在可以在用户和管理员门户中使用，不需下载。  如果升级到 1808，则升级完成后即可使用该项。  
 
 <!-- IS, ASDK --> 
-- **虚拟机规模集缩放**。 可以使用门户，转到[缩放虚拟机规模集](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set)(VMSS)。    
+- **虚拟机规模集缩放**。 可以通过门户[缩放虚拟机规模集](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS)。    
 
 <!-- 2489570 | IS ASDK--> 
 - **对自定义 IPSec/IKE 策略配置的支持**有关[在 Azure Stack 中的 VPN 网关](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways)。
 
 <!-- | IS ASDK--> 
-- **Kubernetes marketplace 项**。 现在，你可以部署使用的 Kubernetes 群集[Kubernetes Marketplace 项](azure-stack-solution-template-kubernetes-cluster-add.md)。 用户可以选择 Kubernetes 项，并填写要部署到 Azure Stack 的 Kubernetes 群集的几个参数。 模板的目的是使用户能够设置几个步骤中的开发/测试 Kubernetes 部署更简单。
+- **Kubernetes marketplace 项**。 现在可以使用 [Kubernetes 市场项](azure-stack-solution-template-kubernetes-cluster-add.md)来部署 Kubernetes 群集。 用户可以选择 Kubernetes 项并填充一些参数，以便将 Kubernetes 群集部署到 Azure Stack。 模板的目的是使用户能够设置几个步骤中的开发/测试 Kubernetes 部署更简单。
 
 <!-- | IS ASDK--> 
-- **区块链模板**。 现在可以执行[以太坊联盟部署](azure-stack-ethereum.md)Azure Stack 上。 您可以找到三个新模板中的[Azure Stack 快速启动模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 它们允许用户部署和配置多成员联盟以太坊网络具有最小的 Azure 和以太坊知识。 模板的目的是使用户能够设置几个步骤中的开发/测试区块链部署更简单。
+- **区块链模板**。 现在可以在 Azure Stack 上执行[以太坊联盟部署](azure-stack-ethereum.md)。 可以在 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)中找到三个新的模板。 有了这些模板，用户不需多少 Azure 和以太坊知识即可部署和配置多成员联盟以太坊网络。 模板的目的是使用户能够设置几个步骤中的开发/测试区块链部署更简单。
 
 <!-- | IS ASDK--> 
-- **API 版本配置文件 2017年-03-09-配置文件已更新为 2018年-03-01-混合**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中的管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
+- **API 版本配置文件 2017年-03-09-配置文件已更新为 2018年-03-01-混合**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
 
  ### <a name="fixed-issues"></a>修复的问题
 <!-- IS ASDK--> 
@@ -90,45 +90,45 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - *快速入门教程*在用户门户仪表板现在链接到联机 Azure Stack 文档中的相关文章。
 
 <!-- 2515955   | IS ,ASDK--> 
-- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在，您可以使用*所有服务*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。
+- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在可以在 Azure Stack 门户中使用“所有服务”作为替代来导航，就像在 Azure 门户中导航一样。
 
 <!-- TBD | IS, ASDK --> 
-- *+ 创建资源*取代 *+ 新建*在 Azure Stack 管理员和用户门户。  现在，您可以使用 *+ 创建资源*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。  
+- *+ 创建资源*取代 *+ 新建*在 Azure Stack 管理员和用户门户。  现在可以在 Azure Stack 门户中使用“+ 创建资源”作为替代方式来导航，就像在 Azure 门户中导航一样。  
 
 <!--  TBD – IS, ASDK --> 
-- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要使用此大小创建 VMSS，请使用 PowerShell 或模板。  
+- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
-此更新将安装以下更新：  
+此更新安装以下更新：  
 
-- [CVE 2018 0952](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0952)
-- [CVE 2018 8200](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8200)
-- [CVE 2018 8204](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8204)
-- [CVE 2018 8253](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8253)
-- [CVE 2018 8339](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8339)
-- [CVE 2018 8340](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8340)
-- [CVE 2018 8341](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8341)
-- [CVE 2018 8343](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8343)
-- [CVE 2018 8344](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8344)
-- [CVE 2018 8345](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8345)
-- [CVE 2018 8347](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8347)
-- [CVE 2018 8348](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8348)
-- [CVE 2018 8349](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8349)
-- [CVE 2018 8394](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8394)
-- [CVE 2018 8398](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8398)
-- [CVE 2018 8401](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8401)
-- [CVE 2018 8404](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8404)
-- [CVE 2018 8405](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8405)
-- [CVE 2018 8406](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8406)  
+- [CVE-2018-0952](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0952)
+- [CVE-2018-8200](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8200)
+- [CVE-2018-8204](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8204)
+- [CVE-2018-8253](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8253)
+- [CVE-2018-8339](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8339)
+- [CVE-2018-8340](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8340)
+- [CVE-2018-8341](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8341)
+- [CVE-2018-8343](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8343)
+- [CVE-2018-8344](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8344)
+- [CVE-2018-8345](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8345)
+- [CVE-2018-8347](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8347)
+- [CVE-2018-8348](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8348)
+- [CVE-2018-8349](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8349)
+- [CVE-2018-8394](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8394)
+- [CVE-2018-8398](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8398)
+- [CVE-2018-8401](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8401)
+- [CVE-2018-8404](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8404)
+- [CVE-2018-8405](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8405)
+- [CVE-2018-8406](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8406)  
 
-有关这些漏洞的详细信息，请单击对从前述链接，或请参阅 Microsoft 知识库文章[4343887](https://support.microsoft.com/help/4343887)。
+有关这些漏洞的详细信息，请单击上述链接，或者查看 Microsoft 知识库文章 [4343887](https://support.microsoft.com/help/4343887)。
 
-此更新还包含名为 L1 终端故障 (L1TF) 中所述的推理执行端通道漏洞的缓解[Microsoft 安全公告 ADV180018](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018)。  
+此更新还包含推理执行旁道漏洞的缓解措施，该漏洞称为 L1 终端故障 (L1TF)，详见 [Microsoft 安全公告 ADV180018](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018)。  
 
 ### <a name="prerequisites"></a>必备组件
 
-- 安装 Azure Stack [1807年更新](azure-stack-update-1807.md)应用 Azure Stack 1808 更新之前。 
+- 在应用 Azure Stack 1808 更新之前安装 Azure Stack [1807 更新](azure-stack-update-1807.md)。 
 
 - 安装最新可用[更新或修补程序版本 1807年](azure-stack-update-1807.md#post-update-steps)。  
   > [!TIP]  
@@ -137,7 +137,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
   > - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
 
-- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)具有以下参数来验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
+- 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
@@ -176,22 +176,22 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 - 在管理员门户中，访问任何用户订阅的详细信息后关闭该边栏选项卡，并单击时**最近**，未显示用户订阅名称。
 
 <!-- 3060156 - IS ASDK --> 
-- 在管理员和用户门户，单击门户设置并选择**删除所有设置和专用仪表板**未按预期运行。 显示错误通知。 
+- 在管理员和用户门户，单击门户设置并选择**删除所有设置和专用仪表板**未按预期运行。 此时会显示错误通知。 
 
 <!-- 2930799 - IS ASDK --> 
-- 管理员和用户门户网站中下**所有服务**，该资产**DDoS 防护计划**错误地列出。 不在 Azure Stack 中实际可用。 如果您尝试创建它，被显示错误，指出在门户中无法创建 marketplace 项。 
+- 管理员和用户门户网站中下**所有服务**，该资产**DDoS 防护计划**错误地列出。 实际上，它在 Azure Stack 中不可用。 如果尝试创建它，则会显示错误，指出门户无法创建此市场项。 
 
 <!-- 2930820 - IS ASDK --> 
-- 门户管理员和用户门户，如果搜索"Docker"，返回此项不正确。 不在 Azure Stack 中实际可用。 如果尝试创建它，会显示一个错误指示的边栏选项卡。 
+- 门户管理员和用户门户，如果搜索"Docker"，返回此项不正确。 实际上，它在 Azure Stack 中不可用。 如果尝试创建它，则会显示一个边栏选项卡，其中包含表明存在错误的内容。 
 
 <!-- 2967387 – IS, ASDK --> 
-- 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 发生这种情况是，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户提供的第一个或最后一个名称。 您必须然后注销，然后重新登录到门户。 
+- 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 如果帐户未指定“名”或“姓”，则会发生这种情况。 若要解决此问题，请编辑用户帐户，提供名或姓。 然后必须注销，再重新登录门户。 
 
 <!--  2873083 - IS ASDK --> 
--  当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请使用门户创建 VMSS 时使用另一个浏览器。  
+-  当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请在通过门户创建 VMSS 时使用其他浏览器。  
 
 <!-- 2931230 – IS  ASDK --> 
-- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!--2760466 – IS  ASDK --> 
 - 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
@@ -261,19 +261,23 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
    2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
       1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4467062/)。
       2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+      
+<!-- 3179561 - IS --> 
+- 托管的磁盘使用情况报告以小时为单位，如中所述[Azure Stack 使用情况常见问题解答](azure-stack-usage-related-faq.md#managed-disks)。 但是，Azure Stack 计费使用每月价格而因此您可能会错误地收费的托管磁盘使用情况或之前年 9 月 27。 我们具有暂停，费用为托管磁盘后年 9 月 27 之前解决该计费问题。 如果你具有已收费的不正确的托管磁盘使用情况，请联系 Microsoft 计费支持。
+从 Azure Stack 用量 Api 生成的使用情况报告显示正确的数量和可用。
 
 <!-- 2869209 – IS, ASDK --> 
-- 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用的磁盘的本地路径，该 cmdlet 会失败并出现以下错误：*长时间运行的操作失败，状态为 '失败'*。 
+- 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 
 
 <!--  2966665 – IS, ASDK --> 
 - 将 SSD 数据磁盘附加到高级大小托管磁盘 （DS、 DSv2、 Fs、 Fs_V2） 的虚拟机失败并出现错误：*未能更新虚拟机 vmname 错误的磁盘： 请求不能执行操作，因为存储帐户类型Premium_LRS' 不支持的 VM 大小 Standard_DS/Ds_V2/FS/Fs_v2)*
 
-   若要解决此问题，请使用*Standard_LRS*而不是数据磁盘*Premium_LRS 磁盘*。 利用*Standard_LRS* IOPs 或计费成本，不会更改数据磁盘。 
+   若要解决此问题，请使用 *Standard_LRS* 数据磁盘而不是 *Premium_LRS* 磁盘。 使用 *Standard_LRS* 数据磁盘不会造成 IOPS 或账单费用变化。 
 
 <!--  2795678 – IS, ASDK --> 
-- 当你使用门户创建虚拟机 (VM) 高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 中时，在标准存储帐户中创建 VM。 创建标准存储帐户中的不会影响就功能而言，IOPs，或计费。 
+- 当你使用门户创建虚拟机 (VM) 高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 中时，在标准存储帐户中创建 VM。 在标准存储帐户中创建不影响功能、IOPS 或计费。 
 
-   您可以放心地忽略该警告，指出：*你已选择使用标准磁盘上可支持高级磁盘的大小。这可能会影响操作系统的性能，不建议。请考虑改为使用高级存储 (SSD)。*
+   可以放心地忽略以下内容的警告：*在 VM 大小需要高级磁盘的情况下，你选择了使用标准磁盘。这可能影响操作系统性能，建议不要这样做。考虑改用高级存储(SSD)。*
 
 <!-- 2967447 - IS, ASDK --> 
 - 虚拟机规模集 (VMSS) 创建体验提供的基于 CentOS 7.2 作为一个选项来部署。 由于该映像不是可在 Azure Stack 上，选择为你的部署的另一个操作系统，或使用指定另一个 CentOS 映像已从 marketplace 部署前运算符所下载的 Azure 资源管理器模板。  
@@ -341,7 +345,7 @@ Azure Stack 1808 更新内部版本号是**1.1808.0.97**。
 
 
 ## <a name="download-the-update"></a>下载更新
-可以从 Azure Stack 1808 更新包下载[此处](https://aka.ms/azurestackupdatedownload)。
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1808 更新包。
   
 
 ## <a name="next-steps"></a>后续步骤

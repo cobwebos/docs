@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666261"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432607"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
-Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生自 POSIX 访问控制模型。 本文汇总了 Data Lake Storage Gen1 访问控制模型的基本知识。 有关 HDFS 访问控制模型的详细信息，请参阅 [HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)（HDFS 权限指南）。
+Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HDFS 又派生自 POSIX 访问控制模型。 本文汇总了 Data Lake Storage Gen1 访问控制模型的基本知识。 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>文件和文件夹访问控制列表
 
@@ -31,11 +31,8 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 * **默认 ACL**：与文件夹关联的 ACL 的“模板”，用于确定在该文件夹下创建的任何子项的访问 ACL。 文件没有默认 ACL。
 
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-1.png)
 
 访问 ACL 和默认 ACL 具有相同的结构。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-2.png)
 
 
 
@@ -43,18 +40,6 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 > 更改父级的默认 ACL 不影响现有子项的访问 ACL 或默认 ACL。
 >
 >
-
-## <a name="users-and-identities"></a>用户和标识
-
-每个文件和文件夹都有这些标识的不同权限：
-
-* 文件的拥有用户
-* 拥有组
-* 命名用户
-* 命名组
-* 所有其他用户
-
-用户和组的标识是 Azure Active Directory (Azure AD) 标识。 因此除非另外指定“用户”，否则在 Data Lake Storage Gen1 的上下文中可能表示 Azure AD 用户或 Azure AD 安全组。
 
 ## <a name="permissions"></a>权限
 
@@ -72,10 +57,10 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 | 数字形式 | 简短形式 |      含义     |
 |--------------|------------|------------------------|
-| 7            | RWX        | RWX |
-| 5            | R-X        | 读取 + 执行         |
-| 4            | R--        | 读取                   |
-| 0            | ---        | 无权限         |
+| 7            | `RWX`        | RWX |
+| 5            | `R-X`        | 读取 + 执行         |
+| 4            | `R--`        | 读取                   |
+| 0            | `---`        | 无权限         |
 
 
 ### <a name="permissions-do-not-inherit"></a>权限不继承
@@ -86,27 +71,15 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-### <a name="permissions-needed-to-read-a-file"></a>读取文件所需的权限
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-3.png)
-
-* 对于要读取的文件，调用方需要“读取”权限。
-* 对于文件夹结构中包含文件的所有文件夹，调用方需要“执行”权限。
-
-### <a name="permissions-needed-to-append-to-a-file"></a>在文件中追加内容所需的权限
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-4.png)
-
-* 对于要追加内容的文件，调用方需要“写入”权限。
-* 对于包含文件的所有文件夹，调用方需要“执行”权限。
-
-### <a name="permissions-needed-to-delete-a-file"></a>删除文件所需的权限
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-5.png)
-
-* 对于父文件夹，调用方需要“写入 + 执行”权限。
-* 对于文件路径中的所有其他文件夹，调用方需要“执行”权限。
-
+|    Operation             |    /    | Seattle/ | Portland/ | Data.txt     |
+|--------------------------|---------|----------|-----------|--------------|
+| Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Delete Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Create Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| List /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| List /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -114,48 +87,30 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 >
 >
 
-### <a name="permissions-needed-to-enumerate-a-folder"></a>枚举文件夹所需的权限
 
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
+## <a name="users-and-identities"></a>用户和标识
 
-* 对于要枚举的文件夹，调用方需要“读取 + 执行”权限。
-* 对于所有上级文件夹，调用方需要“执行”权限。
+每个文件和文件夹都有这些标识的不同权限：
 
-## <a name="viewing-permissions-in-the-azure-portal"></a>在 Azure 门户中查看权限
+* 拥有用户
+* 拥有组
+* 命名用户
+* 命名组
+* 所有其他用户
 
-在 Data Lake Storage Gen1 帐户的“数据资源管理器”边栏选项卡中，单击“访问”查看数据资源管理器中显示的文件或文件夹的 ACL。 单击“访问”查看 **mydatastore** 帐户下的 **catalog** 文件夹的 ACL。
+用户和组的标识是 Azure Active Directory (Azure AD) 标识。 因此除非另外指定“用户”，否则在 Data Lake Storage Gen1 的上下文中可能表示 Azure AD 用户或 Azure AD 安全组。
 
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
+### <a name="the-super-user"></a>超级用户
 
-此边栏选项卡的顶部部分显示所有者权限。 （在屏幕截图中，所有者用户为 Bob。）其后显示分配的访问 ACL。 
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-单击“高级视图”查看更高级视图，其中显示了“默认 ACL”、掩码和超级用户的说明。  在此边栏选项卡中，可以基于当前文件夹的权限以递归方式设置子文件和文件夹的访问 ACL 和默认 ACL。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
-
-## <a name="the-super-user"></a>超级用户
-
-超级用户拥有 Data Lake Store 中所有用户的大多数权限。 超级用户：
+超级用户拥有 Data Lake Storage Gen1 帐户中所有用户的大多数权限。 超级用户：
 
 * 拥有**所有**文件和文件夹的 RWX 权限。
 * 可以更改任何文件或文件夹的权限。
 * 可以更改任何文件或文件夹的拥有用户或拥有组。
 
-在 Azure 中，Data Lake Storage Gen1 帐户具有多个 Azure 角色，包括：
+属于 Data Lake Storage Gen1 帐户“所有者”角色的所有用户都自动成为超级用户。
 
-* 所有者
-* 参与者
-* 读取者
-
-具有 Data Lake Storage Gen1 帐户“所有者”角色的每个人都自动成为该帐户的超级用户。 若要了解详细信息，请参阅[基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
-如果想要创建拥有超级用户权限的自定义基于角色的访问控制 (RBAC) 角色，该角色需要拥有以下权限：
-- Microsoft.DataLakeStore/accounts/Superuser/action
-- Microsoft.Authorization/roleAssignments/write
-
-
-## <a name="the-owning-user"></a>拥有用户
+### <a name="the-owning-user"></a>拥有用户
 
 创建项的用户自动成为该项的拥有用户。 拥有用户可以：
 
@@ -167,16 +122,18 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 >
 >
 
-## <a name="the-owning-group"></a>拥有组
+### <a name="the-owning-group"></a>拥有组
 
-在 POSIX ACL 中，每个用户都与“主组”关联。 例如，用户“alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。
+**背景**
 
-创建新的文件系统项时，Data Lake Storage Gen1 将向拥有组赋值。
+在 POSIX ACL 中，每个用户都与“主组”关联。 例如，用户“alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
+
+**为新文件或文件夹分配负责人组**
 
 * **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在本例中，拥有组设置为创建帐户的用户。
 * **案例 2**（任何其他案例）：创建新项时，从父文件夹复制拥有组。
 
-否则，所有者组的行为类似于为其他用户/组分配的权限。
+**更改负责人组**
 
 拥有组可由以下用户更改：
 * 任何超级用户。
@@ -184,6 +141,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 > [!NOTE]
 > 所有者组无法更改某个文件或文件夹的 ACL。  虽然负责人组设置为在根文件夹（上述 **Case 1** ）的情况下创建了帐户的用户，但单个用户帐户不能有效地用于通过负责人组提供权限。  可以将此权限分配给有效的用户组（如果适用）。
+
 
 ## <a name="access-check-algorithm"></a>访问检查算法
 
@@ -197,119 +155,94 @@ def access_check( user, desired_perms, path ) :
   # path is the file or folder
   # Note: the "sticky bit" is not illustrated in this algorithm
   
-# Handle super users
-    if (is_superuser(user)) :
-      return True
+# Handle super users.
+  if (is_superuser(user)) :
+    return True
 
-  # Handle the owning user. Note that mask is not used.
-    if (is_owning_user(path, user))
-      perms = get_perms_for_owning_user(path)
-      return ( (desired_perms & perms) == desired_perms )
+  # Handle the owning user. Note that mask IS NOT used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & e.permissions) == desired_perms )
 
-  # Handle the named user. Note that mask is used.
-  if (user in get_named_users( path )) :
-      perms = get_perms_for_named_user(path, user)
-      mask = get_mask( path )
-      return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USER )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
-  # Handle groups (named groups and owning group)
-  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
-  if (len(belongs_to_groups)>0) :
-    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
-    perms = 0
-    for p in group_perms : perms = perms | p # bitwise OR all the perms together
-    mask = get_mask( path )
-    return ( (desired_perms & perms & mask ) == desired_perms)
-
+  # Handle named groups and owning group
+  member_count = 0
+  perms = 0
+  entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+  for entry in entries:
+    if (user_is_member_of_group(user, entry.identity)) :
+      member_count += 1
+      perms | =  entry.permissions
+  if (member_count>0) :
+    return ((desired_perms & perms & mask ) == desired_perms)
+ 
   # Handle other
   perms = get_perms_for_other(path)
   mask = get_mask( path )
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask-and-effective-permissions"></a>掩码和“有效权限”
+### <a name="the-mask"></a>掩码
 
-**掩码**是一个 RWX 值，在执行访问检查算法时，用于限制**命名用户**、**拥有组**和**命名组**的访问权限。 下面是掩码的重要概念。
-
-* 掩码创建“有效权限”， 即，执行访问检查时修改权限。
-* 文件所有者和任何超级用户可以直接编辑掩码。
-* 掩码能够删除权限，创建有效的权限。 掩码*无法*将权限添加到有效权限。
-
-让我们探讨一些示例。 在以下示例中，掩码设置为 **RWX**，这意味着掩码不会删除任何权限。 在执行访问检查期间，不会改变命名用户、拥有组和命名组的有效权限。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
-
-在以下示例中，掩码设置为 **R-X**。 这意味着，它在执行访问检查时会**关闭****命名用户**、**拥有组**和**命名组**的“写入”权限。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
-
-为提供参考，下面显示了文件或文件夹掩码在 Azure 门户中的位置。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+如访问检查算法中所示，掩码会限制对“命名用户”、“负责人组”和“命名组”的访问权限。  
 
 > [!NOTE]
 > 对于新 Data Lake Storage Gen1 帐户，根文件夹（“/”）的访问 ACL 的掩码默认为 RWX。
 >
 >
 
-## <a name="permissions-on-new-files-and-folders"></a>新文件和文件夹权限
+### <a name="the-sticky-bit"></a>粘滞位
+
+粘滞位是 POSIX 文件系统的更高级功能。 在 Data Lake Storage Gen1 的上下文中，不太可能需要粘滞位。 总之，如果文件夹上已启用粘滞位，则子项只能由子项的负责人用户删除或重命名。
+
+粘滞位不会显示在 Azure 门户中。
+
+## <a name="default-permissions-on-new-files-and-folders"></a>新文件和文件夹的默认权限
 
 在现有文件夹下面创建新文件或文件夹时，父文件夹的默认 ACL 会确定：
 
 - 子文件夹的默认 ACL 和访问 ACL。
 - 子文件的访问 ACL（文件没有默认 ACL）。
 
-### <a name="the-access-acl-of-a-child-file-or-folder"></a>子文件或文件夹的访问 ACL
+### <a name="umask"></a>umask
 
-创建子文件或文件夹时，父项的默认 ACL 复制为子文件或文件夹的访问 ACL。 此外，如果**其他**用户拥有父项默认 ACL 中的 RWX 权限，则从子项的访问 ACL 中删除该权限。
+创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的 9 位值，其中包含“负责人用户”、“负责人组”和“其他”的 RWX 值。
 
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-child-items-1.png)
+Azure Data Lake Storage Gen1 的 umask 是设置为 007 的常量值。 此值将转换为
 
-在大多数情况下，只需获得上述信息，即可知道如何确定子项的访问 ACL。 但是，如果熟悉 POSIX 系统并且想要详细了解如何实现此转换，请参阅本文稍后的 [为新文件和文件夹创建访问 ACL 时所用的 Umask 角色](#umasks-role-in-creating-the-access-acl-for-new-files-and-folders) 部分。
+| umask 组件     | 数字形式 | 简短形式 | 含义 |
+|---------------------|--------------|------------|---------|
+| umask.owning_user   |    0         |   `---`      | 对于负责人用户，将父项的默认 ACL 复制到子项的访问 ACL | 
+| umask.owning_group  |    0         |   `---`      | 对于负责人组，将父项的默认 ACL 复制到子项的访问 ACL | 
+| umask.other         |    7         |   `RWX`      | 对于其他，删除子项的访问 ACL 的所有权限 |
 
+Azure Data Lake Storage Gen1 的 umask 值实际上表示无论默认 ACL 作何指示，默认情况下永远不会在新子项上传输“其他”的值。 
 
-### <a name="a-child-folders-default-acl"></a>子文件夹的默认 ACL
+以下伪代码显示了在为子项创建 ACL 时如何应用 umask。
 
-在父文件夹下面创建子文件夹时，父文件夹的默认 ACL 按原状复制到子文件夹的默认 ACL。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-child-items-2.png)
-
-## <a name="advanced-topics-for-understanding-acls-in-data-lake-storage-gen1"></a>帮助了解 Data Lake Storage Gen1 中 ACL 的高级主题
-
-下面这些高级主题可帮助你了解如何确定 Data Lake Storage Gen1 文件或文件夹的 ACL。
-
-### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>为新文件和文件夹创建访问 ACL 时所用的 Umask 角色
-
-在 POSIX 兼容的系统中，一般概念是 umask 是父文件夹上的一个 9 位值，用于转换**拥有用户**、**拥有组**和**其他**用户对新子文件或文件夹访问 ACL 的权限。 umask 的位标识要在子项的访问 ACL 中关闭哪些位。 因此，使用选择性地使用 umask 来防止传播**拥有用户**、**拥有组**和**其他**用户的权限。
-
-在 HDFS 系统中，umask 通常是管理员控制的站点范围的配置选项。 Data Lake Storage Gen1 使用不可更改的**帐户范围的 umask**。 下表显示了 Data Lake Storage Gen1 的 umask。
-
-| 用户组  | 设置 | 对新子项的访问 ACL 的影响 |
-|------------ |---------|---------------------------------------|
-| 拥有用户 | ---     | 无影响                             |
-| 拥有组| ---     | 无影响                             |
-| 其他       | RWX     | 删除“读取 + 写入 + 执行”         |
-
-下图显示了此 umask 的工作原理。 实质影响是删除**其他**用户的“读取 + 写入 + 执行”权限。 由于 umask 未指定**拥有用户**和**拥有组**的位，因此不转换这些权限。
-
-![Data Lake Storage Gen1 ACL](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
-
-### <a name="the-sticky-bit"></a>粘滞位
-
-粘滞位是 POSIX 文件系统的更高级功能。 在 Data Lake Storage Gen1 的上下文中，不太可能需要粘滞位。
-
-下表显示了粘滞位在 Data Lake Storage Gen1 中的工作原理。
-
-| 用户组         | 文件    | 文件夹 |
-|--------------------|---------|-------------------------|
-| 粘滞位 **OFF** | 无影响   | 无影响。           |
-| 粘滞位 **ON**  | 无影响   | 防止任何人（子项的**超级用户**和**拥有用户**除外）删除或重命名该子项。               |
-
-粘滞位不会显示在 Azure 门户中。
+```
+def set_default_acls_for_new_child(parent, child):
+    child.acls = []
+    for entry in parent.acls :
+        new_entry = None
+        if (entry.type == OWNING_USER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))
+        elif (entry.type == OWNING_GROUP) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_group))
+        elif (entry.type == OTHER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.other))
+        else :
+            new_entry = entry.clone(perms = entry.perms )
+        child_acls.add( new_entry )
+```
 
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>有关 Data Lake Storage Gen1 中 ACL 的常见问题
-
-下面是有关 Data Lake Storage Gen1 中 ACL 的一些常见问题。
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
@@ -349,31 +282,15 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 不支持。但是，可以使用默认 ACL 来设置父文件夹下新建的子文件和文件夹的 ACL。  
 
-### <a name="what-is-the-difference-between-mask-and-umask"></a>掩码与 umask 之间有何差异？
-
-| 掩码 | umask|
-|------|------|
-| 每个文件和文件夹都提供 **掩码** 属性。 | **umask** 是 Data Lake Storage Gen1 帐户的属性。 因此，Data Lake Storage Gen1 中只有一个 umask。    |
-| 文件的拥有用户或拥有组或超级用户都可以改变文件或文件夹的掩码属性。 | 任何用户（甚至超级用户）都无法修改 umask 属性。 它是一个无法更改的常量值。|
-| 在运行时执行访问检查算法时，将使用掩码属性来确定用户是否拥有对文件或文件夹执行操作的权限。 掩码的角色就是在执行访问检查时创建“有效权限”。 | 执行访问检查期间根本不使用 umask。 umask 用于确定文件夹新子项的访问 ACL。 |
-| 掩码是一个 3 位 RWX 值，在执行访问检查时应用到命名用户、所有者组和命名组。| umask 是一个 9 位值，应用到新子级的拥有用户、拥有组和**其他**用户。|
-
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>在哪里可以了解 POSIX 访问控制模型的详细信息？
 
 * [Linux 上的 POSIX 访问控制列表](https://www.linux.com/news/posix-acls-linux)
-
 * [HDFS 权限指南](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-
 * [POSIX FAQ](http://www.opengroup.org/austin/papers/posix_faq.html)
-
 * [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
-
 * [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
-
 * [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
-
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-
 * [在 Linux 上使用访问控制列表 (ACL)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>另请参阅

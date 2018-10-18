@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 475a4ad72a1c2fc2ebf99387e193713797cc2586
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: a1e90f946508f1ffc0a1ee812dde46ee733d715a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070611"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392425"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure 门户或 Azure 帐户中心的“找不到任何订阅”错误
 
@@ -43,7 +43,7 @@ ms.locfileid: "34070611"
 * 通过单击右上角的帐户确保已选择正确的 Azure 目录。
 
   ![选择 Azure 门户右上角的目录](./media/billing-no-subscriptions-found/directory-switch.png)
-* 如果已选择正确的 Azure 目录，但仍收到错误消息，[请将帐户添加为所有者](billing-add-change-azure-subscription-administrator.md)。
+* 如果已选择正确的 Azure 目录，但仍收到错误消息，[请将所有者角色分配给帐户](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>场景 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
 

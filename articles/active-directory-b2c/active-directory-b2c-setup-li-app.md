@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e1949c32833bb1d5e6603a6f5e36e22dc58e8cec
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1719da96a849bb5390745ec3df3ed11374bb8700
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336922"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180489"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -28,19 +28,12 @@ ms.locfileid: "43336922"
 3. 输入“公司名称”、“应用程序名称”、“应用程序说明”、“应用程序徽标”、“应用程序使用”、“网站 URL”、“企业电子邮件”和“商务电话”。
 4. 同意“LinkedIn API 使用条款”并单击“提交”。
 5. 复制“客户端 ID”和“客户端密钥”的值。 可在“身份验证密钥”下找到它们。 将 LinkedIn 配置为租户中的标识提供者时需要这两个值。 “客户端密钥”是一个重要的安全凭据。
-6. 在“授权的重定向 URL”中输入 `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`。 将 {tenant} 替换为租户名称（例如 contosob2c）。 选择“添加”，然后单击“更新”。
+6. 在“授权的重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。 选择“添加”，然后单击“更新”。
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>将 LinkedIn 帐户配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 通过在 Azure 门户的右上角切换到包含 Azure AD B2C 租户的目录，确保你正在使用该目录。 选择订阅信息，然后选择“切换目录”。 
-
-    ![切换到 Azure AD B2C 租户](./media/active-directory-b2c-setup-li-app/switch-directories.png)
-
-    选择包含租户的目录。
-
-    ![选择目录](./media/active-directory-b2c-setup-li-app/select-directory.png)
-
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 选择“标识提供者”，然后选择“添加”。
 5. 提供“名称”。 例如，输入 LinkedIn。

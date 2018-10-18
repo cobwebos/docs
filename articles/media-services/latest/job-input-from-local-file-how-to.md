@@ -4,19 +4,19 @@ description: 本主题介绍如何从本地文件创建作业输入。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/25/2018
 ms.author: juliako
-ms.openlocfilehash: 94e7192e13397ad8ec973d92f4c538f430c9cd60
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 66bd03b03289f568c019588f1b8ac1317ab9c076
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34159999"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222006"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>从本地文件创建作业输入
 
@@ -36,4 +36,4 @@ ms.locfileid: "34159999"
 
 ## <a name="next-steps"></a>后续步骤
 
-[从 HTTP URL 创建作业输入](job-input-from-http-how-to.md)。
+[从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)。

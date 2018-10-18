@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: 260ec46d292e244dfe51a3714e8b97e9d4689068
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e6b8c769082b688b07bac78bca5e2dca59a2d9c2
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883409"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389405"
 ---
 # <a name="quickstart-create-a-qna-maker-knowledge-base-in-c"></a>快速入门：通过 C# 创建 QnA Maker 知识库
 
@@ -69,8 +69,8 @@ static string kb = @"
     }
   ],
   'urls': [
-    'https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs',
-    'https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq'
+    'https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs',
+    'https://docs.microsoft.com/bot-framework/resources-bot-framework-faq'
   ],
   'files': []
 }
@@ -152,7 +152,7 @@ async static Task<Response> GetStatus(string operationID)
 }
 ```
 
-此 API 调用将返回包括操作状态的 JSON 响应： 
+此 API 调用返回包含操作状态的 JSON 响应： 
 
 ```JSON
 {

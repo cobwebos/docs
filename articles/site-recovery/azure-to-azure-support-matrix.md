@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0e9c5c7ebaaa0a51d723340751e8ea82bfb96b5e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444820"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433661"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -38,8 +38,8 @@ ms.locfileid: "42444820"
 --- | --- | ---
 **跨资源组移动保管库** | 不支持<br/><br/> 不能跨资源组移动恢复服务保管库。
 **跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在复制后移动 VM 或相关组件（如存储/网络），则需要为 VM 禁用并重新启用复制。
-**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一个 Azure Active Directory 租户中受支持。
-**跨订阅迁移 VM** | 不支持。
+**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一 Azure Active Directory 租户中受支持。 经典 VM 不支持。
+**在受支持的地理群集内跨区域迁移虚拟机（订阅内和跨订阅）** | 在“资源管理器部署模型”VM 的同一 Azure Active Directory 租户中受支持。 “经典部署模型”VM 不支持。
 **在同一区域内迁移 VM** | 不支持。
 
 
@@ -60,8 +60,8 @@ ms.locfileid: "42444820"
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4、7.5   
-- CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4、7.5
+- Red Hat Enterprise Linux 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5   
+- CentOS 6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5
 - Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7[（受支持的内核版本）](#supported-debian-kernel-versions-for-azure-virtual-machines)
@@ -69,7 +69,7 @@ ms.locfileid: "42444820"
 - SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
-- Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
+- Oracle Enterprise Linux 6.4、6.5、6.6、6.7（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 
 （不支持复制计算机从 SLES 11 SP3 升级到 SLES 11 SP4。 如果已将复制计算机从 SLES 11SP3 升级到 SLES 11 SP4，则需要禁用复制，并在升级后再次对计算机启用保护。）
 
@@ -81,31 +81,33 @@ ms.locfileid: "42444820"
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
+14.04 LTS | 9.19 | 3.13.0-24-generic 到 3.13.0-153-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-generic 到 3.13.0-151-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-128-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic 到 3.13.0-147-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic 到 3.13.0-144-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-119-generic |
-14.04 LTS | 9.15 | 3.13.0-24-generic 到 3.13.0-143-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-116-generic |
 |||
+16.04 LTS | 9.19 | 4.4.0-21-generic 到 4.4.0-131-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-30-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-generic 到 4.4.0-128-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure |
 16.04 LTS | 9.17 | 4.4.0-21-generic 到 4.4.0-124-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-41-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1016-azure |
 16.04 LTS | 9.16 | 4.4.0-21-generic 到 4.4.0-119-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-38-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1012-azure |
-16.04 LTS | 9.15 | 4.4.0-21-generic 到 4.4.0-116-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-37-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-Debian 7 | 9.17、9.18 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.15、9.16 | 3.2.0-4-amd64 到 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17、9.18、9.19 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.16 | 3.2.0-4-amd64 到 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.19 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.17、9.18 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.15、9.16 | 3.16.0-4-amd64 到 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.5-amd64 |
+Debian 8 | 9.16 | 3.16.0-4-amd64 到 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.5-amd64 |
 
 ### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 12 内核版本
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.19 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.18 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default 到 4.4.126-94.22-default |
 
@@ -124,7 +126,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-def
 美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中北部
 欧洲 | 英国西部、英国南部、北欧、西欧、法国中部、法国南部
 亚洲 | 印度南部、印度中部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
-澳大利亚   | 澳大利亚东部、澳大利亚东南部
+澳大利亚   | 澳大利亚东部、澳大利亚东南部、澳大利亚中部、澳大利亚中部 2
 Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利桑那州、US Gov 德克萨斯州、US DOD 东部、US DOD 中部
 德国 | 德国中部、德国东北部
 中国 | 中国东部、中国北部
@@ -147,6 +149,7 @@ Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚
 --- | --- | ---
 大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 请参阅 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)
 可用性集 | 支持 | 如果在门户中执行“启用复制”步骤时使用默认选项，系统会基于源区域配置自动创建可用性集。 可以随时在“复制的项”>“设置”>“计算和网络”>“可用性集”中更改目标可用性集。
+可用性区域 | 不支持 | 目前不支持可用性区域中部署的 VM。
 混合使用权益 (HUB) VM | 支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
 虚拟机规模集 | 不支持 |
 Azure 库映像 — 由 Microsoft 发布 | 支持 | 只要 VM 在 Site Recovery 支持的操作系统上运行，便支持该配置
@@ -169,7 +172,8 @@ Azure 库映像 — 由第三方发布 | 支持 | 只要 VM 在 Site Recovery �
 高级托管磁盘 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
 存储空间 | 支持 |         
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。   
-Azure 磁盘加密 (ADE) | 不支持 |
+适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持为[使用 Azure AD 应用的加密](https://aka.ms/ade-aad-app)启用的 VM |
+适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 不支持 |
 热添加/移除磁盘 | 不支持 | 如果在 VM 上添加或删除数据磁盘，则需为 VM 禁用复制后重新启用复制。
 排除磁盘 | 不支持|   默认排除临时磁盘。
 存储空间直通  | 不支持|
@@ -205,7 +209,7 @@ Azure 托管的 DNS | 支持 |
 具有本地网络的站点到站点 VPN（带或不带 ExpressRoute）| 支持 | 确保按以下方式配置 UDR 和 NSG：Site Recovery 流量不路由到本地网络。 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  
 VNET 到 VNET 连接 | 支持 | 请参阅[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)。  
 虚拟网络服务终结点 | 支持 | 不支持虚拟网络的 Azure 存储防火墙。 不支持访问用于存储复制数据的缓存存储帐户上特定的 Azure 虚拟网络。
-加速网络 | 不支持 | 可以复制启用了加速网络的 VM，但故障转移 VM 不会启用加快网络。 而且，还会在故障回复后禁用源 VM 的加速网络。
+加速网络 | 支持 | 必须在源 VM 上启用加速网络。 [了解详细信息](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 09/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0dc0ebd94abaa9dacd685034a46da1a7f204bfff
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0be5f9842cd3aa90d82f3efe44451e624ed5d371
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700065"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395672"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
 
@@ -32,9 +32,9 @@ ms.locfileid: "43700065"
 
 ![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-与每条消息都由单个使用方处理的服务总线队列相比，主题和订阅通过发布/订阅模式提供“一对多”通信方式。 可向一个主题注册多个订阅。 当消息发送到主题时，每个订阅会分别对该消息进行处理。
+与每条消息都由单个使用方处理的服务总线队列相比，主题和订阅通过发布/订阅模式提供一对多通信方式。 可向一个主题注册多个订阅。 当消息发送到主题时，每个订阅会分别对该消息进行处理。
 
-主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 可以选择基于每个订阅注册主题的筛选规则，这样就可以筛选/限制哪些主题订阅接收发送至某个主题的哪些消息。
+主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 可以选择基于每个订阅注册主题的筛选规则，这样就可以筛选或限制哪些主题订阅接收发送至某个主题的哪些消息。
 
 利用服务总线主题和订阅，可以进行扩展以处理跨大量用户和应用程序的许多消息。
 
@@ -103,7 +103,7 @@ CreateTopicResult result = service.createTopic(topicInfo);
 主题订阅也是使用 **ServiceBusService** 类创建的。 订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
-如果在创建新订阅时未指定筛选器，则所使用的是默认筛选器 **MatchAll** 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为“AllMessages”的订阅，并使用默认的 **MatchAll** 筛选器。
+如果在创建新订阅时未指定筛选器，则所使用的是默认筛选器 **MatchAll** 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都将置于订阅的虚拟队列中。 以下示例创建名为 `AllMessages` 的订阅，并使用默认的 `MatchAll` 筛选器。
 
 ```java
 SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
@@ -233,7 +233,7 @@ catch (Exception e) {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，则其可以对收到的消息调用 **unlockMessage** 方法（而不是 **deleteMessage** 方法）。 这样一来，服务总线会解除锁定主题中的消息，让它再次可供接收，无论是被同一个使用应用程序接收，还是被其他使用应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，则其可以对收到的消息调用 **unlockMessage** 方法（而不是 **deleteMessage** 方法）。 通过调用此方法，服务总线会解除锁定主题中的消息，让它再次可供接收，无论是被同一个使用应用程序接收，还是被其他使用应用程序接收。
 
 主题中的锁定消息还有相关超时，如果应用程序无法在锁定超时期满前处理消息（例如，当应用程序发生故障时），服务总线会自动解除锁定消息，让它再次可供接收。
 
@@ -253,7 +253,7 @@ service.deleteTopic("TestTopic");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解服务总线队列的基础知识，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]以了解详细信息。
+有关详细信息，请参阅[服务总线队列、主题和订阅][Service Bus queues, topics, and subscriptions]。
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md

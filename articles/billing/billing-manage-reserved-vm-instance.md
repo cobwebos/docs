@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashesvi
-ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.author: cwatson
+ms.openlocfilehash: 0b19bb0d77bb600258596ce369713464641a7d2f
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382144"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423232"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -28,7 +28,7 @@ ms.locfileid: "43382144"
 
 ## <a name="change-the-scope-for-a-reservation"></a>更改预订范围
 
- 预留折扣适用于与预留匹配并在预留范围内运行的虚拟机、SQL 数据库或其他资源。 预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预订的订阅。
+ 预订折扣适用于与预订匹配并在预订范围内运行的虚拟机、SQL 数据库、Azure Cosmos DB 或其他资源。 预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预订的订阅。
 
 若要更新预订范围，请执行以下操作：
 
@@ -91,9 +91,17 @@ ms.locfileid: "43382144"
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
+## <a name="cancellations-and-exchanges"></a>取消和更换
+
+根据预订类型，可能无法取消或更换预订。 有关详细信息，请参阅以下主题中的取消和交换部分：
+
+- [通过 Azure 虚拟机预留实例为虚拟机预付费](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
+- [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>更改预留 VM 实例的优化设置
 
- 购买 VM 预留实例时，可以选择实例大小的灵活性或容量优先级。 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以为部署预留数据中心容量。 此选项使你在需要时能够更加有把握地启动 VM 实例。
+ 购买 VM 预留实例时，可以选择实例大小的灵活性或容量优先级。 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量。 此选项使你在需要时能够更加有把握地启动 VM 实例。
 
 默认情况下，在共享预留范围时，将启用实例大小灵活性。 数据中心容量未针对 VM 部署设置优先级。
 
@@ -109,18 +117,19 @@ ms.locfileid: "43382144"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 预留的详细信息，请参阅以下文章：
+若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
+- [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解如何应用 SUSE Linux Enterprise 软件计划折扣](../billing/billing-understand-suse-reservation-charges.md)
 - [了解如何应用其他预留折扣](billing-understand-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
-- [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841603"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226885"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -26,9 +26,13 @@ ms.locfileid: "43841603"
 
 为了更有效地解决问题，它可能有助于创建更详细的日志以供查看。
 
-对于 Visual Studio 扩展，可以通过将 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 环境变量设置为 1 来执行此操作。 请务必重新启动 Visual Studio 以使环境变量生效。 启用后，详细的日志将写入 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目录。
+对于 Visual Studio 扩展，请将 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 环境变量设置为 1。 请务必重新启动 Visual Studio 以使环境变量生效。 启用后，详细的日志将写入 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目录。
 
-在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。
+在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过从终端窗口运行 `echo $TMPDIR` 找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。
+
+## <a name="debugging-services-with-multiple-instances"></a>使用多个实例调试服务
+
+此时，Azure Dev Spaces 在调试单个实例 (pod) 时效果最佳。 Azds.yaml 文件包含设置 replicaCount，指示将为服务运行的 pod 数。 如果更改 replicaCount 来配置应用以运行给定服务的多个 pod，调试程序将附加到第一个 pod（当按字母顺序列出）。 如果出于任何原因回收该 pod，调试程序将附加到其他 pod，可能会导致意外行为。
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>错误“无法创建 Azure Dev Spaces 控制器”
 
@@ -74,7 +78,7 @@ azds remove -g <resource group name> -n <cluster name>
     
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
-发生此情况时，当尝试连接到与 Dev Spaces 服务关联的公用 URL 时，可能会在 Web 浏览器中看到“页面无法显示”或“无法访问此站点”错误。
+如果 DNS 名称解析失败，当尝试连接到与 Dev Spaces 服务关联的公用 URL 时，可能会在 Web 浏览器中看到“页面无法显示”或“无法访问此站点”错误。
 
 ### <a name="try"></a>请尝试：
 
@@ -84,7 +88,7 @@ azds remove -g <resource group name> -n <cluster name>
 azds list-uris
 ```
 
-如果某个 URL 处于“挂起”状态，则意味着该 Dev Spaces 仍然在等待 DNS 注册完成。 有时，这需要花费几分钟时间来执行。 Dev Spaces 还为每个服务打开一个本地主机隧道，在等待 DNS 注册时你可以使用该隧道。
+如果某个 URL 处于“挂起”状态，则意味着该 Dev Spaces 仍然在等待 DNS 注册完成。 有时，注册需要几分钟的时间才能完成。 Dev Spaces 还为每个服务打开一个本地主机隧道，在等待 DNS 注册时你可以使用该隧道。
 
 如果某个 URL 保持在“挂起”状态超过 5 分钟，则可能指示创建公共终结点的外部 DNS Pod 和/或获取公共终结点的 nginx 入口控制器 Pod 有问题。 可以使用以下命令删除这些 Pod。 这些 Pod 将自动重新创建。
 
@@ -121,7 +125,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 你仍可以将 Azure Dev Spaces 与其他语言编写的代码一起使用，但需要在第一次运行 azds up 之前自行创建 Dockerfile。
 
 ### <a name="try"></a>请尝试：
-如果你的应用程序使用 Azure Dev Spaces 本身不支持的语言编写，你将需要提供相应的 Dockerfile 以生成运行代码的容器映像。 Docker 提供一个[用于编写 Dockerfile 的最佳做法列表](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)以及一个 [Dockerfile 参考](https://docs.docker.com/engine/reference/builder/)，可帮助你执行此操作。
+如果你的应用程序使用 Azure Dev Spaces 本身不支持的语言编写，你将需要提供相应的 Dockerfile 以生成运行代码的容器映像。 Docker 提供一个[用于编写 Dockerfile 的最佳做法列表](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)以及一个 [Dockerfile 参考](https://docs.docker.com/engine/reference/builder/)，可帮助你编写满足你需求的 Dockerfile。
 
 一旦有了相应的 Dockerfile，就可以继续运行 azds up 以在 Azure Dev Spaces 中运行应用程序。
 
@@ -152,7 +156,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 1. 如果代码文件夹中没有 _azds.yaml_ 文件，请运行 `azds prep`，以便生成 Docker、Kubernetes 和 Azure Dev Spaces 资产。
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>错误：“管道程序 'azds' 意外退出，代码为 126。”
-启动 VS Code 调试器有时可能会导致此错误。 这是已知问题。
+启动 VS Code 调试器有时可能会导致此错误。
 
 ### <a name="try"></a>请尝试：
 1. 关闭 VS Code，再将其重新打开。
@@ -162,7 +166,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 运行 VS Code 调试器时，报告错误：`Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>原因
-未在开发计算机上安装适用于 C# 的 VS Code 扩展，其中包括对 .Net Core (CoreCLR) 的调试支持。
+未在开发计算机上安装适用于 C# 的 VS Code 扩展。 C# 扩展包括调试对 .Net Core (CoreCLR) 的支持。
 
 ### <a name="try"></a>请尝试：
 安装[适用于 C# 的 VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。

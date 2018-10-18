@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424222"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423589"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -58,7 +58,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 由于所有上述三个应用类型均共享应用服务运行时，因此，你可以托管网站，支持移动客户端，并在 Azure 中公开你的 API，所有这些均可在同一个项目或解决方案中完成。 若要了解有关应用服务的详细信息，请参阅[什么是 Azure Web 应用](../../app-service/app-service-web-overview.md)。
 
-应用服务在设计之初就考虑到了 DevOps。 它可以支持各种用于发布和持续集成部署的工具，包括 GitHub webhook、Jenkins、Visual Studio Team Services、TeamCity 等。
+应用服务在设计之初就考虑到了 DevOps。 它可以支持各种用于发布和持续集成部署的工具，包括 GitHub webhook、Jenkins、Azure DevOps、TeamCity 等。
 
 你可以通过使用[联机迁移工具](https://www.migratetoazure.net/)将现有应用程序迁移到应用服务。
 
@@ -80,8 +80,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 #### <a name="azure-functions-serverless"></a>Azure Functions（无服务器）
 
-你无需担心构建和管理整个应用程序或运行代码的基础结构。 而是，只需编写代码并以响应事件的方式或按计划来运行代码，那会是怎样？  
-  [Azure Functions](../../azure-functions/functions-overview.md) 是一个“无服务器”样式的产品，可让你仅编写所需的代码。 借助 Functions，将通过 HTTP 请求、webhook、云服务事件，或按计划触发代码执行。 你可以使用所选的开发语言开发编码，如 C\#、F\#、Node.js、Python 或 PHP。 使用基于消耗的计费方式，只需要支付代码执行的时间，并且 Azure 可根据需要进行扩展。
+你无需担心构建和管理整个应用程序或运行代码的基础结构。 而是，只需编写代码并以响应事件的方式或按计划来运行代码，那会是怎样？  [Azure Functions](../../azure-functions/functions-overview.md) 是一个“无服务器”样式的产品，可让你仅编写所需的代码。 借助 Functions，将通过 HTTP 请求、webhook、云服务事件，或按计划触发代码执行。 你可以使用所选的开发语言开发编码，如 C\#、F\#、Node.js、Python 或 PHP。 使用基于消耗的计费方式，只需要支付代码执行的时间，并且 Azure 可根据需要进行扩展。
 
 >何时使用：在你具有由其他 Azure 服务、基于 Web 的事件，或按计划触发的代码的情况下，可以使用 Azure Functions。 此外，当你不需要完整托管项目的开销或者只想支付代码运行时间时，也可以使用 Functions。 有关详细信息，请参阅 [Azure Functions 概览](../../azure-functions/functions-overview.md)。
 
@@ -187,9 +186,9 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
 ### <a name="devops-integration"></a>DevOps 集成
 
-无论是预配虚拟机还是发布持续集成的 Web 应用，Azure 都将与大部分常用的 DevOps 工具集成。 在对 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、VSTS 以及其他工具的支持下，你可以使用已有工具并在最大程度上提升现有体验。
+无论是预配虚拟机还是发布持续集成的 Web 应用，Azure 都将与大部分常用的 DevOps 工具集成。 在对 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、Azure DevOps 以及其他工具的支持下，你可以使用已有工具并在最大程度上提升现有体验。
 
->立即试用：[尝试几个 DevOps 集成](https://azure.microsoft.com/try/devops/)。
+>**立即试用：** [尝试几个 DevOps 集成](https://azure.microsoft.com/try/devops/)。
 
 >开始使用：如需查看应用服务应用的 DevOps 选项，请参阅[对 Azure 应用服务的持续部署](../../app-service/app-service-continuous-deployment.md)。
 
@@ -262,7 +261,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="what-is-an-azure-account"></a>什么是 Azure 帐户？
 
-若要创建或使用 Azure 订阅，你必须有一个 Azure 帐户。 Azure 帐户只是 Azure AD 或目录中的一个标识，如受 Azure AD 信任的工作或学校组织。 如果你不属于此类组织，则始终可以通过使用受 Azure AD 信任的 Microsoft 帐户来创建订阅。 若要了解有关将本地 Windows Server Active Directory 与 Azure AD 集成的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../../active-directory/active-directory-aadconnect.md)。
+若要创建或使用 Azure 订阅，你必须有一个 Azure 帐户。 Azure 帐户只是 Azure AD 或目录中的一个标识，如受 Azure AD 信任的工作或学校组织。 如果你不属于此类组织，则始终可以通过使用受 Azure AD 信任的 Microsoft 帐户来创建订阅。 若要了解有关将本地 Windows Server Active Directory 与 Azure AD 集成的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../../active-directory/hybrid/whatis-hybrid-identity.md)。
 
 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 有关详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -270,19 +269,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="manage-your-subscriptions"></a>管理订阅
 
-订阅是链接到 Azure 帐户的 Azure 服务的逻辑单元。 每个关联的帐户在订阅中都具有一个角色。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅服务列表，请参阅 [Microsoft Azure 订阅详情](https://azure.microsoft.com/support/legal/offer-details/)。
-
-#### <a name="administrator-roles"></a>管理员角色
-
-Azure 订阅有多个帐户管理员角色，你可以随时进行分配。
-
--   **帐户管理员**：此角色可以完全控制订阅并且是负责计费的帐户。
-
--   **服务管理员**：此角色可以完全控制订阅中的所有服务。 默认情况下，这个帐户与帐户管理员所使用的帐户相同。
-
--   **协同管理员**：此角色具有与服务管理员一样的访问权限，但它不能更改订阅与 Azure 目录之间的关联关系。
-
-若要了解管理员角色的详细信息，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription)。
+订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅服务列表，请参阅 [Microsoft Azure 订阅详情](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
 
 #### <a name="resource-groups"></a>资源组
 
@@ -294,11 +281,11 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 当你允许对 Azure 资源进行访问时，最佳做法是，始终为用户提供执行某个给定任务所需的最小特权。
 
--   **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，你可以将一组资源部署到资源组，并为特定用户或组授予权限。 此外，它还可让你限制访问权限，以仅访问属于目标资源组的资源。 此外，你还可以授予对单个资源的访问权限，例如，虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 有很多预定义的角色，不过你也可以定义自己的自定义角色。
+-   **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，你可以将一组资源部署到资源组，并为特定用户或组授予权限。 此外，它还可让你限制访问权限，以仅访问属于目标资源组的资源。 此外，你还可以授予对单个资源的访问权限，例如，虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 有很多预定义的角色，不过你也可以定义自己的自定义角色。 有关详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
 
-    >何时使用：当你需要对用户和组进行精确的访问管理时。
+    >何时使用：当需要对用户和组进行细致的访问管理，或者当需要使用户成为订阅的所有者时使用。
 
-    >开始使用：若要了解详细信息，请参阅 [Azure 门户中的访问管理入门](../../role-based-access-control/overview.md)。
+    >开始使用：有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 -   **服务主体对象**：除了为用户主体和组提供访问权限外，还可以向服务主体授予相同的访问权限。
 
@@ -322,10 +309,4 @@ Azure 提供了一组允许访问资源消耗和 Azure 订阅的元数据信息�
 
 尽管提前估算成本很有挑战性，但是 Azure 有一个[定价计算器](https://azure.microsoft.com/pricing/calculator/)，你可以在估计部署资源的成本时使用它。 此外，你也可以使用门户中的计费边栏选项卡和计费 REST API，根据当前消耗情况来估计未来成本。
 
->开始使用：请参阅 [Azure 计费使用情况和 RateCard API 概述](../../billing-usage-rate-card-overview.md)。
-
-#### <a name="set-up-billing-alerts"></a>设置计费警报
-
-在 Azure 上部署应用程序或解决方案后，可以创建警报，以在接近警报中定义的支出限制时向你发送电子邮件。
-
->开始使用：有关详细信息，请参阅[为 Microsoft Azure 订阅设置计费警报](../../billing-set-up-alerts.md)。
+>**开始使用**：请参阅 [Azure 计费使用情况和 RateCard API 概述](../../billing-usage-rate-card-overview.md)。

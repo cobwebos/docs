@@ -1,38 +1,34 @@
 ---
-title: Azure Functions HTTP 和 webhook 绑定
-description: 了解如何在 Azure Functions 中使用 HTTP 和 webhook 触发器和绑定。
+title: Azure Functions HTTP 触发器和绑定
+description: 了解如何在 Azure Functions 中使用 HTTP 触发器和绑定。
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构, HTTP, API, REST
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 183dad8f70a4094f6d6ba3605fd19f8921dcc988
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e989152ece19168138597a96d1246ec64498ce69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140436"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227548"
 ---
-# <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
+# <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
-本文介绍如何在 Azure Functions 中使用 HTTP 绑定。 Azure Functions 支持 HTTP 触发器和输出绑定。
+本文介绍如何在 Azure Functions 中使用 HTTP 触发器和输出绑定。
 
-HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wiki/Webhook)。 Webhook 触发器仅接受 JSON 有效负载，并验证 JSON。 使用特殊版本的 Webhook 触发器可以更轻松地处理某些提供程序（例如 GitHub 和 Slack）的 Webhook。
+HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wiki/Webhook)。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="packages---functions-1x"></a>包 - Functions 2.x
+## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
 [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 1.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub 存储库中提供了此包的源代码。
 
@@ -280,7 +276,7 @@ module.exports = function(context, req) {
 
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 该函数返回一个 HTTP 状态代码 200 响应，其中请求正文在触发请求正文前面加上“Hello,”问候语。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 该函数返回一个 HTTP 状态代码 200 响应，其中请求正文在触发请求正文前面加上“Hello,”问候语。
 
 
 function.json 文件如下所示：
@@ -316,164 +312,6 @@ public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"
     }
 }
 ```
-     
-## <a name="trigger---webhook-example"></a>触发器 - Webhook 示例
-
-参阅语言特定的示例：
-
-* [C#](#webhook---c-example)
-* [C# 脚本 (.csx)](#webhook---c-script-example)
-* [F#](#webhook---f-example)
-* [JavaScript](#webhook---javascript-example)
-
-### <a name="webhook---c-example"></a>Webhook - C# 示例
-
-以下示例显示一个在泛型 JSON 请求的响应中发送 HTTP 200 的 [C# 函数](functions-dotnet-class-library.md)。
-
-```cs
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-### <a name="webhook---c-script-example"></a>Webhook - C# 脚本示例
-
-以下示例演示 function.json 文件中的一个 Webhook 触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数记录 GitHub 问题注释。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[配置](#trigger---configuration)部分解释了这些属性。
-
-C# 脚本代码如下所示：
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    dynamic data = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
-
-    return req.CreateResponse(HttpStatusCode.OK, new {
-        body = $"New GitHub comment: {data.comment.body}"
-    });
-}
-```
-
-### <a name="webhook---f-example"></a>Webhook - F # 示例
-
-以下示例演示 function.json 文件中的一个 Webhook 触发器绑定以及使用该绑定的 [F# 函数](functions-reference-fsharp.md)。 该函数记录 GitHub 问题注释。
-
-function.json 文件如下所示：
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[配置](#trigger---configuration)部分解释了这些属性。
-
-F# 代码如下所示：
-
-```fsharp
-open System.Net
-open System.Net.Http
-open FSharp.Interop.Dynamic
-open Newtonsoft.Json
-
-type Response = {
-    body: string
-}
-
-let Run(req: HttpRequestMessage, log: TraceWriter) =
-    async {
-        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
-        let data = content |> JsonConvert.DeserializeObject
-        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
-        return req.CreateResponse(
-            HttpStatusCode.OK,
-            { body = sprintf "New GitHub comment: %s" data?comment?body })
-    } |> Async.StartAsTask
-```
-
-### <a name="webhook---javascript-example"></a>Webhook - JavaScript 示例
-
-以下示例演示 function.json 文件中的一个 Webhook 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数记录 GitHub 问题注释。
-
-下面是 function.json 文件中的绑定数据：
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[配置](#trigger---configuration)部分解释了这些属性。
-
-JavaScript 代码如下所示：
-
-```javascript
-module.exports = function (context, data) {
-    context.log('GitHub WebHook triggered!', data.comment.body);
-    context.res = { body: 'New GitHub comment: ' + data.comment.body };
-    context.done();
-};
-```
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
@@ -484,7 +322,7 @@ module.exports = function (context, data) {
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
 public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
 {
     ...
 }
@@ -504,29 +342,18 @@ public static HttpResponseMessage Run(
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |方法 | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | Route | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
-| webHookType | WebHookType |将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
+| webHookType | WebHookType | 仅支持 1.x 版运行时。<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-对于 C# 和 F # 函数，可以将触发器输入的类型声明为 `HttpRequestMessage` 或自定义类型。 如果选择 `HttpRequestMessage`，会获得对请求对象的完全访问权限。 对于自定义类型，函数会尝试分析 JSON 请求正文，以设置对象属性。 
+对于 C# 和 F # 函数，可以将触发器输入的类型声明为 `HttpRequestMessage` 或自定义类型。 如果选择 `HttpRequestMessage`，会获得对请求对象的完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
 
 对于 JavaScript 函数，Functions 运行时提供请求正文而不是请求对象。 有关详细信息，请参阅 [JavaScript 触发器示例](#trigger---javascript-example)。
 
-### <a name="github-webhooks"></a>GitHub Webhook
-
-要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。 
-
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-github-webhook-triggered-function.md)。
-
-### <a name="slack-webhooks"></a>Slack Webhook
-
-Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使用 Slack 中的令牌配置特定于函数的密钥。 请参阅[授权密钥](#authorization-keys)。
 
 ### <a name="customize-the-http-endpoint"></a>自定义 HTTP 终结点
 
-默认情况下，创建 HTTP 触发器或 WebHook 的函数时，可通过以下格式的路由对该函数进行寻址：
+默认情况下，创建 HTTP 触发器的函数时，可通过以下格式的路由对该函数进行寻址：
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
@@ -607,45 +434,90 @@ module.exports = function (context, req) {
 
 ### <a name="authorization-keys"></a>授权密钥
 
-HTTP 触发器允许使用密钥提高安全性。 标准 HTTP 触发器可以将这些密钥用作 API 密钥，这需要在请求中提供此密钥。 Webhook 可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。
+Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。  标准 HTTP 触发器可能会要求在请求中出现此类 API 密钥。 
+
+> [!IMPORTANT]
+> 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
 
 > [!NOTE]
-> 在本地运行函数时，无论 `function.json` 中的 `authLevel` 设置为什么，都将禁用授权。 一旦发布到 Azure Functions，`authLevel` 就会立即生效。
-
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到门户中的某个函数并选择“管理”。 
+> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2.x 版运行时不包括对 Webhook 提供程序的内置支持。
 
 有两种类型的密钥：
 
-- **主机密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
-- **函数密钥**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
+* **主机密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
+* **函数密钥**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
 
 命名每个密钥方便引用，并且在函数和主机级别存在名为“default”的默认密钥。 函数密钥优先于主机密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
 
-主密钥是为每个函数应用定义的默认主机密钥，名为“_master”。 无法撤消此密钥。 它提供对运行时 API 的管理访问权限。 在绑定 JSON 中使用 `"authLevel": "admin"` 需要在请求中提供此密钥；任何其他密钥均会导致授权失败。
+每个函数应用也有一个特殊的主密钥。 此密钥是名为 `_master` 的主机密钥，提供对运行时 API 的管理访问权限。 无法撤消此密钥。 当设置 `admin` 授权级别，请求必须使用主密钥；任何其他密钥会导致授权失败。
 
-> [!IMPORTANT]  
-> 由于提升的权限由主密钥所授予，因此不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必审慎行事。
+> [!CAUTION]  
+> 由于函数应用中提升的权限由主密钥所授予，因此不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必审慎行事。
+
+### <a name="obtaining-keys"></a>获取密钥
+
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到 [Azure 门户](https://portal.azure.com)中的某个 HTTP 触发函数并选择“管理”。
+
+![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+
+没有任何受支持的 API 可用于以编程方式获取函数密钥。
 
 ### <a name="api-key-authorization"></a>API 密钥的授权
 
-默认情况下，HTTP 触发器要求 HTTP 请求中含有 API 密钥。 因此 HTTP 请求通常如下所示：
+大多数 HTTP 触发器模板都需要在请求中获取 API 密钥。 因此 HTTP 请求通常如以下 URL 所示：
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示），也可以包含在 `x-functions-key` HTTP头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
+该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示）。 也可以包含在 `x-functions-key` HTTP 头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
 可以允许匿名请求，它不需要密钥。 可能还需要使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#trigger---configuration)。
 
-### <a name="keys-and-webhooks"></a>密钥和 webhook
+> [!NOTE]
+> 本地运行函数时，将禁用授权，而不考虑指定的身份验证级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。
 
-Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 但是每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
 
-- **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`）传递密钥名称。
-- **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
+
+### <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
+
+若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
+
+* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)。
+
+* 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 为传入请求提供了各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
+
+* 将函数应用部署到 Azure 应用服务环境 (ASE)。 ASE 提供要在其中运行函数的专用托管环境。 ASE 允许配置单个前端网关，可以使用它对所有传入请求进行身份验证。 有关详细信息，请参阅[为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)。
+
+在使用这些函数应用级别的安全方法之一时，应将 HTTP 触发函数身份验证级别设置为 `anonymous`。
+
+### <a name="webhooks"></a>Webhook
+
+> [!NOTE]
+> Webhook 模式仅适用于 1.x 版 Functions 运行时。
+
+Webhook 模式提供了有关 Webhook 有效负载的其他验证。 在 2.x 版中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。
+
+#### <a name="github-webhooks"></a>GitHub Webhook
+
+要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。 
+
+![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+
+有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-github-webhook-triggered-function.md)。
+
+#### <a name="slack-webhooks"></a>Slack Webhook
+
+Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使用 Slack 中的令牌配置特定于函数的密钥。 请参阅[授权密钥](#authorization-keys)。
+
+### <a name="webhooks-and-keys"></a>Webhook 和密钥
+
+Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
+
+* **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`）传递密钥名称。
+* **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
 
 ## <a name="trigger---limits"></a>触发器 - 限制
 
-HTTP 请求长度限制为 100MB（104,857,600 字节），并且 URL 长度限制为 4KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
+HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
 
 如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#consumption-plan)。 
 
@@ -673,7 +545,7 @@ HTTP 请求长度限制为 100MB（104,857,600 字节），并且 URL 长度限�
 
 若要发送 HTTP 响应，请使用语言标准响应模式。 在 C# 或 C# 脚本中，使函数返回类型为 `HttpResponseMessage` 或 `Task<HttpResponseMessage>`。 在 C# 中，不需要返回值属性。
 
-有关示例响应，请参阅[触发器示例](#trigger---example)和 [Webhook 示例](#trigger---webhook-example)。
+有关示例响应，请参阅[触发器示例](#trigger---example)。
 
 ## <a name="next-steps"></a>后续步骤
 

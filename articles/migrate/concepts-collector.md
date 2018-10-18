@@ -1,218 +1,160 @@
 ---
-title: Azure Migrate 中的收集器设备 | Microsoft Docs
-description: 概述了收集器设备及其配置方法。
-author: ruturaj
+title: 关于 Azure Migrate 中的收集器设备 | Microsoft Docs
+description: 介绍 Azure Migrate 中的收集器设备。
+author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
-ms.author: ruturajd
+ms.date: 09/28/2018
+ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665574"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434426"
 ---
-# <a name="collector-appliance"></a>收集器设备
+# <a name="about-the-collector-appliance"></a>关于收集器设备
 
-[Azure Migrate](migrate-overview.md) 会评估要迁移到 Azure 的本地工作负载。 本文介绍如何使用收集器设备。
+ 本文提供了有关 Azure Migrate 收集器的信息。
+
+Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure 之前发现本地 vCenter 环境，以便使用 [Azure Migrate](migrate-overview.md) 服务进行评估。  
+
+
+## <a name="deploying-the-collector"></a>部署收集器
+
+使用 OVF 模板部署收集器设备：
+
+- 从 Azure 门户中的 Azure Migrate 项目下载 OVF 模板。 将下载的文件导入到 vCenter Server，以便设置收集器设备 VM。
+- 从 OVF 中，VMware 设置一个具有 4 个核心、8 GB RAM 和 80 GB 磁盘的 VM。 操作系统是 Windows Server 2012 R2（64 位）。
+- 运行收集器时，将运行一些先决条件检查以确保收集器可以连接到 Azure Migrate。
+
+- [详细了解](tutorial-assessment-vmware.md#create-the-collector-vm)如何创建收集器。
+
+
+## <a name="collector-prerequisites"></a>收集器先决条件
+
+收集器必须通过一些先决条件检查，目的是确保它能够通过互联网连接到 Azure Migrate 服务并上传发现的数据。
+
+- 检查 Internet 连接：收集器可直接或通过代理连接到 Internet。
+    - 先决条件检查验证是否能连接到[必需和可选 URL](#connect-to-urls)。
+    - 如果可以直接连接到 Internet，则无需特定操作，否则要确保收集器可以访问所需的 URL。
+    - 如果要通过代理进行连接，请注意[下面的要求](#connect-via-a-proxy)。
+- 验证时间同步：收集器应与 Internet 时间服务器同步，以确保向服务发出的请求经过身份验证。
+    - portal.azure.com URL 应该能够从收集器访问，以便验证时间。
+    - 如果计算机不同步，则需更改收集器 VM 上的时钟时间，使之与当前时间匹配。 为此，打开 VM 上的管理员提示符，运行 w32tm /tz 检查时区。 运行 w32tm /resync 来同步时间。
+- 检查收集器服务运行情况：Azure Migrate 收集器服务应该正在收集器 VM 上运行。
+    - 此服务在计算机启动时自动启动。
+    - 如果服务未运行，则从控制面板中启动它。
+    - 收集器服务连接到 vCenter Server，收集 VM 元数据和性能数据，并将其发送到 Azure Migrate 服务。
+- 检查安装的 VMware PowerCLI 6.5：VMware PowerCLI 6.5 PowerShell 模块必须安装在收集器 VM 上，以便它可以与 vCenter Server 进行通信。
+    - 如果收集器可访问模块安装所需的 URL，则会在收集器部署过程中自动安装模块。
+    - 如果收集器不能在部署过程中安装模块，则必须[手动安装](#install-vwware-powercli-module-manually)。
+- 检查到 vCenter Server 的连接：收集器必须能够连接到 vCenter Server 和查询 VM、其元数据和性能计数器。 [验证先决条件](#connect-to-vcenter-server)以进行连接。
+
+
+### <a name="connect-to-the-internet-via-a-proxy"></a>通过代理连接到 Internet
+
+- 如果代理服务器需要身份验证，则可在连接控制器时指定用户名和密码。
+- 代理服务器的 IP 地址/FQDN 应该指定为 *http://IPaddress* 或 *http://FQDN*。
+- 仅支持 HTTP 代理。 收集器不支持基于 HTTPS 的代理服务器。
+- 如果代理服务器是截取代理，则必须将代理证书导入到收集器 VM。
+    1. 在收集器 VM 中，转到“开始菜单” > “管理计算机证书”。
+    2. 在“证书”工具中，在“证书 - 本地计算机”下，找到“受信任的发布者”“证书” > 。
+
+        ![“证书”工具](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+    3. 将代理证书复制到收集器 VM。 你可能需要联系网络管理员获取代理证书。
+    4. 双击证书打开证书，并单击“安装证书”。
+    5. 在“证书导入向导”>“存储位置”中，选择“本地计算机”。
+
+    ![证书存储位置](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+    6. 选择“将所有证书放入下列存储” > “浏览” > “受信任的发布者”。 单击“完成”导入证书。
+
+    ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
+
+    7. 检查证书是否按预期导入，并检查 Internet 连接性先决条件检查是否按预期工作。
 
 
 
-## <a name="overview"></a>概述
 
-Azure Migrate 收集器是一种轻量设备，可以用来发现本地 vCenter 环境。 此设备可发现本地 VMware 计算机，并将其相关元数据发送到 Azure Migrate 服务。
+### <a name="connect-to-urls"></a>连接到 URL
 
-收集器设备是一种 OVF，可以从 Azure Migrate 项目中下载。 它可以实例化带有 4 核心、8 GB RAM 和一个 80 GB 磁盘的 VMware 虚拟机。 此设备的操作系统是 Windows Server 2012 R2（64 位）。
+验证连接检查的方法是连接到一系列 URL。
 
-可以按照此处的步骤创建收集器：[如何创建收集器 VM](tutorial-assessment-vmware.md#create-the-collector-vm)。
+**URL** | **详细信息**  | **先决条件检查**
+--- | --- | ---
+*.portal.azure.com | 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| 用于下载 PowerShell vCenter PowerCLI 模块。 | 可选的 URL 访问。<br/><br/> 先决条件检查不会失败。<br/><br/> 收集器 VM 上的自动模块安装将失败。 需要手动安装该模块。
 
-## <a name="collector-communication-diagram"></a>收集器通信关系图
+
+### <a name="install-vmware-powercli-module-manually"></a>手动安装 VMware PowerCLI 模块
+
+1. 使用[这些步骤](https://blogs.vmware.com/PowerCLI/2017/04/powercli-install-process-powershell-gallery.html)安装模块。 这些步骤介绍了联机和脱机安装。
+2. 如果收集器 VM 处于脱机状态，并且模块安装在具有 Internet 访问的不同计算机上，则需要将该计算机中的 VMware.* 文件复制到收集器 VM。
+3. 安装完成后，可以重新启动先决条件检查，以确认 PowerCLI 已安装。
+
+### <a name="connect-to-vcenter-server"></a>连接到 vCenter Server
+
+收集器连接到 vCenter Server，并查询 VM 元数据和性能计数器。 以下是执行此连接所需的组件。
+
+- 仅支持 vCenter Server 5.5、6.0 和 6.5 版。
+- 需要使用具有下面概述的权限的只读帐户进行发现。 只能访问该帐户可访问的数据中心以进行发现。
+- 默认情况下，连接到带有 FQDN 或 IP 地址的 vCenter Server。 如果 vCenter Server 在不同端口上侦听，则使用 IPAddress:Port_Number 或 FQDN:Port_Number 的形式连接到该端口。
+- 若要收集存储和网络的性能数据，vCenter Server 的统计信息设置必须设置为三级。
+- 如果级别低于三级，则可进行发现，但无法收集性能数据。 可能收集一些计数器，但其他计数器将设为零。
+- 如果无法收集存储和网络的性能数据，则评估大小建议基于 CPU 和内存的性能数据，以及磁盘和网络适配器的配置数据。
+- 收集器应该具有网络视线，可以看到 vCenter Server。
+
+#### <a name="account-permissions"></a>帐户权限
+
+**帐户** | **权限**
+--- | ---
+至少一个只读用户帐户 | 数据中心对象 –> 传播到子对象、角色=只读   
+
+
+## <a name="collector-communications"></a>收集器通信
+
+下面的图表汇总了收集器的通信方式。
 
 ![收集器通信关系图](./media/tutorial-assessment-vmware/portdiagram.PNG)
 
 
-| 组件      | 通信对象   | 所需端口                            | 原因                                   |
-| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
-| 收集器      | Azure Migrate 服务 | TCP 443                                  | 收集器应该能够通过 SSL 端口 443 与服务通信 |
-| 收集器      | vCenter Server        | 默认值 443                             | 收集器应能够与 vCenter 服务器进行通信。 它默认情况下通过 443 连接到 vCenter。 如果 vCenter 在另一端口上侦听，则该端口应作为收集器上的传出端口提供 |
-| 收集器      | RDP|   | TCP 3389 | 使你能够通过 RDP 登录到收集器计算机 |
-
-
-
-
-
-## <a name="collector-pre-requisites"></a>收集器先决条件
-
-收集器需通过一些先决条件检查，目的是确保它能够连接到 Azure Migrate 服务并上传发现的数据。 本文探讨每个先决条件并说明其是必需条件的原因。
-
-### <a name="internet-connectivity"></a>Internet 连接
-
-收集器设备需要连接到 Internet 才能发送所发现的计算机信息。 可以采用下列两种方式之一将计算机连接到 Internet。
-
-1. 可以将收集器配置为进行直接的 Internet 连接。
-2. 可以将收集器配置为通过代理服务器进行连接。
-    * 如果代理服务器需要身份验证，则可在连接设置中指定用户名和密码。
-    * 代理服务器的 IP 地址/FQDN 应该是 http://IPaddress 或 http://FQDN 格式。 仅支持 http 代理。
-
-> [!NOTE]
-> 收集器不支持基于 HTTPS 的代理服务器。
-
-#### <a name="internet-connectivity-with-intercepting-proxy"></a>具有拦截代理的 Internet 连接
-
-如果用于连接到 Internet 的代理服务器是拦截代理，则需要将代理证书导入收集器 VM。 以下是如何将证书导入收集器 VM 的步骤。
-
-1. 在收集器 VM 中，转到“开始菜单”，找到并打开“管理计算机证书”。
-2. 在“证书”工具的左窗格中，在“证书 - 本地计算机”下，找到“受信任的发布者”。 在“受信任的发布者”下，单击“证书”以查看右侧窗格中的证书列表。
-
-    ![“证书”工具](./media/concepts-intercepting-proxy/certificates-tool.png)
-
-3. 将代理证书复制到收集器 VM。 可能需要联系组织中的网络管理员团队以获取此证书。
-4. 双击证书将其打开。 单击“安装证书”。 这将带你进入“证书导入”向导。
-5. 在“证书导入”向导中，对于“存储位置”，选择“本地计算机”。 单击“下一步”。
-
-    ![证书存储位置](./media/concepts-intercepting-proxy/certificate-store-location.png)
-
-6. 选择“将所有证书放入下列存储”选项。 单击“浏览”，然后从出现的证书列表中选择“受信任的发布者”。 单击“下一步”。
-
-    ![证书存储](./media/concepts-intercepting-proxy/certificate-store.png)
-    
-7. 单击“完成”。 这将导入证书。 
-8. （可选）可以通过打开“证书”工具来验证是否已导入证书，如上面的步骤 1 和步骤 2 所示。
-9. 在 Azure Migrate 收集器应用上，验证 Internet 连接先决条件检查是否成功。
-
-
-#### <a name="whitelisting-urls-for-internet-connection"></a>Internet 连接的允许列表 URL
-
-如果收集器可以通过提供的设置连接到 Internet，则表明先决条件检查成功。 验证连接检查的方法是连接到一系列在下表中给出的 URL。 如果使用任何基于 URL 的防火墙代理控制出站连接，请确保将下列必需的 URL 列入允许列表：
-
-**URL** | **用途**  
---- | ---
-*.portal.azure.com | 需检查与 Azure 服务的连接并验证时间同步问题。
-
-另外，该检查还会尝试验证到以下 URL 的连接，但即使不能进行访问，也不表明无法通过检查。 为以下 URL 配置允许列表是可选的，但需执行手动步骤来解决先决条件检查的问题。
-
-**URL** | **用途**  | **如果不启用允许列表，会发生什么情况**
+**收集器通信对象** | 端口 | **详细信息**
 --- | --- | ---
-*.oneget.org:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
-*.windows.net:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
-*.windowsazure.com:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
-*.powershellgallery.com:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
-*.msecnd.net:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
-*.visualstudio.com:443 | 需下载基于 PowerShell 的 vCenter PowerCLI 模块。 | PowerCLI 安装失败。 手动安装该模块。
+Azure Migrate 服务 | TCP 443 | 收集器通过 SSL 443 与 Azure Migrate 服务进行通信。
+vCenter Server | TCP 443 | 收集器必须能够与 vCenter Server 进行通信。<br/><br/> 默认情况下，它通过 443 连接到 vCenter。<br/><br/> 如果 vCenter Server 在另一端口上侦听，则该端口应作为收集器上的传出端口提供。
+RDP | TCP 3389 |
 
-### <a name="time-is-in-sync-with-the-internet-server"></a>时间与 Internet 服务器同步
 
-收集器应与 Internet 时间服务器同步，确保向服务发出的请求经过身份验证。 portal.azure.com URL 应该能够从收集器访问，以便验证时间。 如果计算机不同步，则需更改收集器 VM 上的时钟时间，使之与当前时间匹配，如下所示：
+## <a name="securing-the-collector-appliance"></a>保护收集器设备
 
-1. 在 VM 上打开管理员命令提示符。
-1. 若要检查时区，请运行 w32tm /tz。
-1. 若要同步时间，请运行 w32tm /resync。
+建议执行以下步骤来保护收集器设备：
 
-### <a name="collector-service-should-be-running"></a>收集器服务应该正在运行
+- 请勿与未授权方共享管理员密码或将其错放。
+- 未使用时请关闭设备。
+- 将设备置于安全网络中。
+- 在完成迁移后，删除设备实例。
+- 此外，完成迁移后，还要同时删除磁盘备份文件 (VMDK)，因为磁盘上可能缓存了 vCenter 凭据。
 
-Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计算机启动时自动启动。 如果服务未运行，可以通过控制面板启动 Azure Migrate 收集器服务。 收集器服务负责连接到 vCenter Server，收集计算机元数据和性能数据，然后将其发送到服务。
+## <a name="os-license-in-the-collector-vm"></a>收集器 VM 中的 OS 许可证
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
+收集器附带有效期为 180 天的 Windows Server 2012 R2 评估许可证。 如果收集器 VM 的评估期到期，则建议下载新 OVA 并创建一个新的设备。
 
-需安装 VMware PowerCLI powershell 模块，这样收集器才能与 vCenter Server 通信，并查询计算机详细信息及其性能数据。 powershell 模块在进行先决条件检查的过程中自动下载并安装。 自动下载要求将一些 URL 加入允许列表中。如果下载失败，则需通过加入允许列表来提供访问权限，或者手动安装模块。
+## <a name="updating-the-os-of-the-collector-vm"></a>更新收集器 VM 的 OS
 
-通过以下步骤手动安装模块：
+尽管收集器设备具有 180 天的评估许可证，但你需要不断更新设备上的 OS 以避免设备的自动关闭。
 
-1. 若要在没有 Internet 连接的情况下在收集器上安装 PowerCLI，请执行[此链接](https://blogs.vmware.com/PowerCLI/2017/04/powercli-install-process-powershell-gallery.html)中提供的步骤：
-2. 在另一可以访问 Internet 的计算机上安装 PowerShell 模块以后，请将 VMware.* 文件从该计算机复制到收集器计算机。
-3. 重启先决条件检查，确认 PowerCLI 已安装。
+- 如果收集器在 60 天内未更新，则启动自动关闭计算机功能。
+- 如果正在运行发现，即使已超过 60 天未进行更新，也不会关闭计算机。 发现作业完成后，将关闭计算机。
+- 如果使用收集器超过 60 天，则建议通过运行 Windows 更新来始终保持计算机处于最新状态。
 
-## <a name="connecting-to-vcenter-server"></a>连接到 vCenter Server
-
-收集器应该连接到 vCenter Server 并能够查询虚拟机及其元数据和性能计数器。 此数据可供项目用来对评估进行计算。
-
-1. 若要连接到 vCenter Server，可以使用一个只读帐户来运行发现，该帐户的权限已在下表中给出。
-
-    |任务  |所需角色/帐户  |权限  |
-    |---------|---------|---------|
-    |基于收集器设备的发现    | 至少需要一个只读用户        |数据中心对象 –> 传播到子对象、角色=只读         |
-
-2. 只能访问那些可供指定的 vCenter 帐户访问的数据中心来获取发现。
-3. 若要连接到 vCenter Server，需指定 vCenter FQDN/IP 地址。 默认情况下，将通过端口 443 进行连接。 如果已将 vCenter 配置为在另一端口号上进行侦听，则可将它指定为服务器地址的一部分，采用 IPAddress:Port_Number 或 FQDN:Port_Number 格式。
-4. 开始部署之前，应将 vCenter Server 的统计信息设置设定为级别 3。 如果低于级别 3，可以完成发现，但不会收集存储和网络的性能数据。 这种情况的评估大小建议基于 CPU 和内存的性能数据，以及磁盘和网络适配器的配置数据。 [详细了解](./concepts-collector.md)收集的具体数据及其对评估的具体影响。
-5. 收集器应该具有网络视线，可以看到 vCenter Server。
-
-> [!NOTE]
-> 仅正式支持 vCenter Server 5.5、6.0 和 6.5 版。
-
-> [!IMPORTANT]
-> 建议将统计信息级别设置为最高常用级别 (3)，以便正确收集所有计数器。 如果将 vCenter 设置的级别较低，则可能只完整收集几个计数器，而其他的计数器的收集数为 0。 这样，评估可能会显示不完整的数据。
-
-### <a name="selecting-the-scope-for-discovery"></a>选择发现的范围
-
-连接到 vCenter 以后，可以选择一个可供发现的范围。 选择一个范围后，即可通过指定的 vCenter 清单路径发现所有虚拟机。
-
-1. 范围可以是数据中心、文件夹，也可以是 ESXi 主机。
-2. 一次只能选择一个范围。 若要选择更多虚拟机，可以先完成一个发现，然后使用新的范围重启发现过程。
-3. 只能选择虚拟机数不到 1500 的范围。
-
-## <a name="specify-migration-project"></a>指定迁移项目
-
-连接本地 vCenter 并指定范围以后，即可指定迁移项目详细信息，以便将其用于发现和评估。 指定项目 ID 和密钥，然后进行连接。
-
-## <a name="start-discovery-and-view-collection-progress"></a>启动发现并查看收集进度
-
-启动发现以后，就会发现 vCenter 虚拟机，并会将其元数据和性能数据发送到服务器。 进度状态还会告知以下 ID：
-
-1. 收集器 ID：提供给收集器计算机的唯一 ID。 进行不同的发现时，给定计算机的此 ID 不会更改。 在故障情况下需要向 Microsoft 支持部门报告问题时，可以使用此 ID。
-2. 会话 ID：用于正在运行的收集作业的唯一 ID。 当发现作业完成后，可以参阅门户中的同一会话 ID。 每个收集作业的此 ID 都会更改。 发生故障时，可以将此 ID 报告给 Microsoft 支持部门。
-
-### <a name="what-data-is-collected"></a>收集什么数据？
-
-收集作业发现与所选虚拟机相关的以下静态元数据。
-
-1. VM 显示名称（在 vCenter 上）
-2. VM 的清单路径（vCenter 中的主机/文件夹）
-3. IP 地址
-4. MAC 地址
-5. 操作系统
-5. 核心数、磁盘数、NIC 数
-6. 内存大小、磁盘大小
-7. VM、磁盘和网络的性能计数器，如下表中所列出的那样。
-
-下表列出了所收集的性能计数器，并且还列出了在未收集特定计数器的情况下受影响的评估结果。
-
-|计数器                                  |级别    |设备级别  |评估影响                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
-|mem.usage.average                        | 1       |NA                |建议的 VM 大小和成本                    |
-|virtualDisk.read.average                 | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.write.average                | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
-|net.received.average                     | 2       |3                 |VM 大小和网络成本                        |
-|net.transmitted.average                  | 2       |3                 |VM 大小和网络成本                        |
-
-> [!WARNING]
-> 如果刚设置了更高的统计信息级别，将需要最多一天的时间来生成性能计数器。 因此，建议在一天后运行发现。
-
-### <a name="time-required-to-complete-the-collection"></a>完成收集所需的时间
-
-收集器仅发现计算机数据，然后将其发送到项目。 项目可能还需要花一些时间才会将发现的数据显示在门户中，然后你就可以开始创建评估。
-
-根据所选范围中虚拟机数目的不同，可能需要长达 15 分钟的时间才能将静态元数据发送到项目。 静态元数据在门户中可用以后，就会在门户中看到计算机的列表，此时就可以开始创建组。 必须等到收集作业完成且项目已处理数据后，才能创建评估。 收集器上的收集作业完成后，可能需要长达一小时的时间才能在门户中提供性能数据，具体取决于所选范围中虚拟机的数目。
-
-## <a name="locking-down-the-collector-appliance"></a>锁定收集器设备
-我们建议在收集器设备上运行持续的 Windows 更新。 如果收集器已有 60 天未更新，收集器将开始自动关闭计算机。 如果正在运行发现，即使已超过 60 天，也不会关闭计算机。 发现作业完成后，将关闭计算机。 如果使用收集器超过 45 天，我们建议通过运行 Windows 更新来始终保持计算机处于已更新状态。
-
-我们还建议执行以下步骤来保护设备
-1. 请勿与未授权方共享管理员密码或将其错放。
-2. 未使用时请关闭设备。
-3. 将设备置于安全网络中。
-4. 迁移工作完成后，删除设备实例。 请务必同时删除磁盘备份文件 (VMDK)，因为磁盘上可能缓存了 vCenter 凭据。
-
-## <a name="how-to-upgrade-collector"></a>如何升级收集器
+## <a name="upgrading-the-collector-appliance-version"></a>收集器设备版本升级
 
 无需再次下载 OVA，即可将收集器升级到最新版本。
 
-1. 下载最新[升级包](https://aka.ms/migrate/col/upgrade_9_14)（版本 1.0.9.14）。
+1. 下载[最新列出的升级包](concepts-collector-upgrade.md)
 2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -222,47 +164,85 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 4. 右键单击 zip 文件并选择“全部提取”。
 5. 右键单击 Setup.ps1 并选择“使用 PowerShell 运行”，然后按照屏幕上的说明来安装更新。
 
-### <a name="list-of-updates"></a>更新列表
 
-#### <a name="upgrade-to-version-10914"></a>升级到版本 1.0.9.14
+## <a name="discovery-methods"></a>发现方法
 
-升级[包 1.0.9.14](https://aka.ms/migrate/col/upgrade_9_14) 的哈希值
+收集器设备可使用两种发现方法，即一次性发现和连续性发现。
 
-**算法** | **哈希值**
---- | ---
-MD5 | c5bf029e9fac682c6b85078a61c5c79c
-SHA1 | af66656951105e42680dfcc3ec3abd3f4da8fdec
-SHA256 | 58b685b2707f273aa76f2e1d45f97b0543a8c4d017cd27f0bdb220e6984cc90e
 
-#### <a name="upgrade-to-version-10913"></a>升级到版本 1.0.9.13
+### <a name="one-time-discovery"></a>一次性发现
 
-升级[包 1.0.9.13](https://aka.ms/migrate/col/upgrade_9_13) 的哈希值
+收集器与 vCenter Server 进行一次性通信，以收集有关 VM 的元数据。 使用此方法时：
 
-**算法** | **哈希值**
---- | ---
-MD5 | 739f588fe7fb95ce2a9b6b4d0bf9917e
-SHA1 | 9b3365acad038eb1c62ca2b2de1467cb8eed37f6
-SHA256 | 7a49fb8286595f39a29085534f29a623ec2edb12a3d76f90c9654b2f69eef87e
+- 设备未持续连接到 Azure Migrate 项目。
+- 发现完成后，本地环境的更改不会反映在 Azure Migrate 中。 要反映任何更改，你需要重新发现同一项目中的相同环境。
+- 针对此发现方法，需要将 vCenter Server 中的统计信息设置设置为级别三。
+- 设为级别三后，最多需要一天来生成性能计数器。 因此，建议在一天后运行发现。
+- 当收集 VM 的性能数据时，设备依赖于在 vCenter Server 中存储的历史性能数据。 它收集过去一个月内性能历史记录。
+- Azure Migrate 针对每个指标收集平均计数器（而不是峰值计数器）。
 
-#### <a name="upgrade-to-version-10911"></a>升级到版本 1.0.9.11
+### <a name="continuous-discovery"></a>连续性发现
 
-升级[包 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11) 的哈希值
+收集器设备持续连接到 Azure Migrate 项目。
 
-**算法** | **哈希值**
---- | ---
-MD5 | 0e36129ac5383b204720df7a56b95a60
-SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
-SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
+- 收集器持续分析本地环境，每 20 秒收集一次实时利用率数据。
+- 此模型不依赖于 vCenter Server 的统计信息设置来收集性能数据。
+- 设备汇总 20 秒示例，每隔 15 分钟创建单个数据点。
+- 若要创建数据点，设备从 20 秒示例中选择峰值并将其发送到 Azure。
+- 你可以随时从收集器中停止连续分析。
 
-#### <a name="upgrade-to-version-1097"></a>升级到版本 1.0.9.7
+> [!NOTE]
+> 连续性发现功能为预览版。 如果 vCenter Server 的统计信息设置未设置为级别 3，则建议使用此方法。
 
-升级[包 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7) 的哈希值
 
-**算法** | **哈希值**
---- | ---
-MD5 | 01ccd6bc0281f63f2a672952a2a25363
-SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
-SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
+## <a name="discovery-process"></a>发现过程
+
+设备设置完成后，可以运行发现。 工作方式如下：
+
+- 按范围运行发现。 将发现指定的 vCenter 清单路径中的所有 VM。
+    - 一次设置一个范围。
+    - 范围可以包含 1500 个 VM 或更少。
+    - 范围可以是数据中心、文件夹，或 ESXi 主机。
+- 连接到 vCenter Server 后，通过指定集合的迁移项目来进行连接。
+- 发现 VM，并且其元数据和性能数据发送到 Azure。 这些操作是集合作业的一部分。
+    - 收集器设备被赋予一个特定的收集器 ID，该 ID 对于发现中的给定计算机是持续存在的。
+    - 正在运行的集合作业会被指定一个特定的会话 ID。 每个集合作业的会话 ID 都不同，并可用于故障排除。
+
+### <a name="collected-metadata"></a>收集的元数据
+
+收集器设备发现 VM 的以下静态元数据：
+
+- VM 显示名称（在 vCenter Server 上）
+- VM 的清单路径（vCenter Server 上的主机/文件夹）
+- IP 地址
+- MAC 地址
+- 操作系统
+- 核心数、磁盘数、NIC 数
+- 内存大小、磁盘大小
+- VM、磁盘和网络的性能计数器。
+
+#### <a name="performance-counters"></a>性能计数器
+
+- “一次性发现”：收集一次性发现的计数器时，请注意以下事项：
+
+    - 它可能需要最多 15 分钟的时间来收集配置元数据并将其发送到项目。
+    - 收集完配置数据后，可能需要一小时的时间才能在门户中使用性能数据。
+    - 在门户中提供元数据后，将显示 VM 列表，便可以开始创建用于评估的组。
+- 连续性发现：对于连续性发现，请注意以下事项：
+    - VM 的配置数据在发现启动后一小时即可使用
+    - 性能数据在 2 小时后开始变为可用。
+    - 在开始发现之后，设备至少需要一天的时间来分析环境，然后创建评估。
+
+**计数器** | **级别** | **每个设备级别** | **对评估的影响**
+--- | --- | --- | ---
+cpu.usage.average | 1 | NA | 建议的 VM 大小和成本  
+mem.usage.average | 1 | NA | 建议的 VM 大小和成本  
+virtualDisk.read.average | 2 | 2 | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.write.average | 2 | 2  | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberReadAveraged.average | 1 | 3 |  计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberWriteAveraged.average | 1 | 3 |   计算磁盘大小、存储成本和 VM 大小
+net.received.average | 2 | 3 |  计算 VM 大小和网络成本                        |
+net.transmitted.average | 2 | 3 | 计算 VM 大小和网络成本    
 
 ## <a name="next-steps"></a>后续步骤
 

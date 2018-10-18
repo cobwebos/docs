@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a2855ca5dbb76d3fcc30c4b1007c20bb48c91c9b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141448"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423572"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>导入 Power BI Desktop 文件
 
@@ -22,10 +22,13 @@ ms.locfileid: "42141448"
 **限制**   
 
 - 从 pbix 文件中进行导入使用门户中的 Web 设计器功能，该功能处于**预览版**。 功能较为有限。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
+- 若数据模型是在 Power BI Desktop 2018 年 7 月更新 (2.60.5169.3201) 或更高版本中所创建的，则确保未启用任何预览功能。 Azure Analysis Services 尚不支持预览功能。  
+若在导入时收到以下错误，则 pbix 文件启用了 Azure Analysis Services 尚不支持的预览功能。
+
+    ![兼容性级别警告](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - 必须具有服务器管理员权限才能从 pbix 文件中进行导入。
 - pbix 模型只能连接到“Azure SQL 数据库”和“Azure SQL 数据仓库”数据源。
 - pbix 模型不能具有实时连接或 DirectQuery 连接。 
-- 如果 pbix 数据模型包含 Analysis Services 不支持的元数据，导入可能会失败。
 
 
 ## <a name="to-import-from-pbix"></a>从 pbix 中导入

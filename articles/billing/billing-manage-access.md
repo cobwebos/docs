@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7329b06171bd538cc6e9aa8172380a2d4dd47dae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: cwatson
+ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204116"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392070"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>使用基于角色的访问控制管理对 Azure 计费信息的访问
 
@@ -71,7 +71,7 @@ ms.locfileid: "33204116"
 
 ## <a name="adding-users-to-other-roles"></a>将用户添加到其他角色
 
-其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
+其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>谁可以访问[帐户中心](https://account.windowsazure.com)？
 

@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 4dc61258df2311c4e7ccd4c05ebe077b3e2343eb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919000"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222278"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
 使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[一次一个向实验室中添加 VM](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)。 但是，如果环境包含多个 VM，则必须分别创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure 资源管理器模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
 
-- Azure 资源管理器模板是从源代码管理存储库（GitHub 或 Team Services Git）直接加载的。
+- Azure 资源管理器模板是从源代码管理存储库（GitHub 或 Azure DevOps Services Git）直接加载的。
 - 配置后，用户可以在 Azure 门户中通过选择 Azure 资源管理器模板来创建环境，就像对其他类型的 [VM 库](./devtest-lab-comparing-vm-base-image-types.md)所做的一样。
 - 除了 IaaS VM 以外，还可以通过 Azure 资源管理器模板在环境中预配 Azure PaaS 资源。
 - 除了其他类型的库创建的单个 VM 以外，还可以在实验室中跟踪环境的成本。
 - PaaS 资源会被创建，并在成本跟踪中显示；但 VM 自动关闭不适用于 PaaS 资源。
-- 对于环境，用户可以实施他们针对单实验室 VM 所实施的相同的 VM 策略控制。
 
 详细了解[使用 Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)通过单个操作部署、更新或删除所有实验室资源的众多优点。
 
@@ -42,7 +41,7 @@ ms.locfileid: "42919000"
 Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以使用此存储库来创建环境，而无需自行连接到外部 GitHub 源。 此存储库包含常用的模板，例如 Azure Web 应用、Service Fabric 群集和 SharePoint 场开发环境。 此功能类似于针对所创建的每个实验室包含的项目的公共存储库。 借助环境存储库，只需提供极少量的输入参数，即可快速开始使用预先编写的环境模板，在实验室中获得 PaaS 资源的顺畅入门体验。 有关详细信息，请参阅[在开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。
 
 ## <a name="configure-your-own-template-repositories"></a>配置自己的模板存储库
-在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 VSTS Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
+在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 Azure DevOps Services Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
 
 查看[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)中由开发测试实验室团队创建的模板。 在此公共存储库中，可以查看他人共享的模板，可以直接使用或自定义它们来满足你的需求。 创建模板后，将其存储在此存储库中以将其与他人共享。 还可以使用可以用来在云中设置环境的模板设置你自己的 Git 存储库。 
 
@@ -79,9 +78,9 @@ Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库
 1. 选择“添加+”来添加 Azure 资源管理器模板存储库。
 1. 当第二个“存储库”窗格打开时，请如下所示输入所需的信息：
     - **名称** - 输入实验室中使用的存储库名称。
-    - **Git 克隆 URI** - 输入 GitHub 或 Visual Studio Team Services 中的 GIT HTTPS 克隆 URL。  
+    - Git 克隆 URI - 输入 GitHub 或 Azure DevOps Services 中的 GIT HTTPS 克隆 URL。  
     - **分支** - 输入用于访问 Azure 资源管理器模板定义的分支名称。 
-    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Visual Studio Team Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。 
+    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Azure DevOps Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。 
     - **文件夹路径** - 使用两个输入字段中的一个，输入以正斜杠“/”开头的文件夹路径，该路径是项目定义（第一个输入字段）或 Azure 资源管理器模板定义的 Git 克隆 URI 的相对路径。   
     
         ![公共存储库](./media/devtest-lab-create-environment-from-arm/repo-values.png)

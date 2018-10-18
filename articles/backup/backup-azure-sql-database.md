@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433558"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434239"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -434,7 +434,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 
 2. 在“恢复服务保管库”仪表板上的“使用情况”下，选择“备份项”打开“备份项”菜单。
 
-    ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
+    ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。 
 
@@ -711,7 +711,7 @@ backup_size AS BackupSizeInBytes
 
 2. 在“恢复服务保管库”仪表板上的“使用情况”下，选择“备份项”打开“备份项”菜单。
 
-    ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
+    ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。 
 
@@ -823,6 +823,10 @@ backup_size AS BackupSizeInBytes
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>当主副本位于本地时，是否可以保护 SQL Always On 可用性组？
 
 不是。 Azure 备份保护 Azure 中运行的 SQL Server。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份仅保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>能否保护跨 Azure 区域分布的 SQL Always On 可用性组
+Azure 备份恢复服务保管库可以检测并保护与恢复服务保管库位于同一区域中的所有节点。 如果有跨多个 Azure 区域的 SQL Always On 可用性组，则需要从具有主要节点的区域配置备份。 Azure 备份将能够根据备份首选项检测并保护可用性组中的所有数据库。 如果不满足备份首选项，则备份将失败，你将收到故障警报。
+
 
 ## <a name="next-steps"></a>后续步骤
 

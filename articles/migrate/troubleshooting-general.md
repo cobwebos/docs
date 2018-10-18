@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/28/2018
 ms.author: raynew
-ms.openlocfilehash: ca34f27e1d22c6235ec0d6b965d49ec5266f17f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126355"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433491"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -34,6 +34,12 @@ ms.locfileid: "43126355"
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>我已安装代理并使用依赖项可视化效果创建组。 现在，在执行故障转移后，计算机显示“安装代理”操作，而不是“查看依赖项”
 * 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
 * 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+
+### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>创建迁移项目时，我已指定 Azure 地理位置，如何找到将存储所发现元数据的确切 Azure 区域？
+
+你可以转到项目“概述”页中的“Essentials”部分来标识存储元数据的确切位置。 位置是由 Azure Migrate 在地理位置内随机选择的，你无法进行修改。 如果希望仅在特定区域中创建项目，则可以使用 REST API 来创建迁移项目并传递到所需的区域。
+
+   ![项目位置](./media/troubleshooting-general/geography-location.png)
 
 ## <a name="collector-errors"></a>收集器错误
 
@@ -86,9 +92,11 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 
 ### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>UnhandledException 错误 发生内部错误: System.IO.FileNotFoundException
 
-这是在收集器版本低于 1.0.9.5 时出现的问题。 如果使用的收集器是 1.0.9.2 版或预发行版本（例如 1.0.8.59），则会遇到此问题。 请访问[此处提供的论坛链接，获取详细的解答](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)。
+出现此问题可能是由于存在 VMware PowerCLI 安装问题。 请遵循以下步骤来解决该问题：
 
-[通过升级收集器来解决问题](https://aka.ms/migrate/col/checkforupdates)。
+1. 如果你使用的不是最新版本的收集器设备，请[将收集器升级到最新版本](https://aka.ms/migrate/col/checkforupdates)，然后检查问题是否得到解决。
+2. 如果已经是最新版本的收集器，则请手动安装 [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016)，然后检查问题是否得到解决。
+3. 如果上述步骤都未能解决问题，请导航到 C:\Program Files\ProfilerService 文件夹并删除其中的 VMware.dll 和 VimService65.dll 文件，然后在 Windows 服务管理器中重新启动“Azure Migrate 收集器”服务（打开“运行”并键入“services.msc”，可打开 Windows 服务管理器）。
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
 
@@ -102,6 +110,37 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 2. 如果步骤 1 失败，请尝试通过 IP 地址连接到 vCenter Server。
 3. 确定可连接到 vCenter 的正确端口号。
 4. 最后检查 vCenter Server 是否已启动并运行。
+
+## <a name="troubleshoot-dependency-visualization-issues"></a>排查依赖项可视化问题
+
+### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>我本地的 VM 上安装了 Microsoft Monitoring Agent (MMA) 和依赖项代理，但依赖项现在显示在 Azure Migrate 门户中。
+
+你安装这些代理后，Azure Migrate 通常需要 15-30 分钟才能显示门户中的依赖项。 如果等待的时间超过 30 分钟，请确保 MMA 代理能够按照以下步骤与 OMS 工作区进行通信：
+
+对于 Windows VM：
+1. 请转到“控制面板”，然后启动 Microsoft Monitoring Agent
+2. 转到“MMA 属性”弹出窗口中的 Azure Log Analytics (OMS) 选项卡
+3. 确保工作区的“状态”为绿色。
+4. 如果状态不是绿色，请尝试删除工作区，然后再次将其添加到 MMA。
+        ![MMA 状态](./media/troubleshooting-general/mma-status.png)
+
+对于 Linux VM，请确保 MMA 和依赖项代理的安装命令已成功运行。
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>MMA 支持的操作系统有哪些？
+
+[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)列出了 MMA 支持的 Windows 操作系统。
+[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)列出了 MMA 支持的 Linux 操作系统。
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>依赖项代理支持的操作系统有哪些？
+
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)列出了依赖项代理支持的 Windows 操作系统。
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
+
+### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项不能持续超过一小时？
+Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。
+
+### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>我无法可视化具有 10 个以上 VM 的组的依赖项？
+你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
 
 ## <a name="troubleshoot-readiness-issues"></a>排查就绪性问题
 

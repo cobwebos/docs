@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: cb659a79f374b7a48cd3cc29f9f46bc6598c04dc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49366596"
+ms.locfileid: "49386377"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>教程： 提供高度可用的 SQL 数据库
 
@@ -123,7 +123,7 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 >  ![辅助 SQL 实例脚本](./media/azure-stack-tutorial-sqlrp/sql2.png)
 
 ### <a name="configure-contained-database-authentication"></a>配置包含的数据库身份验证
-将包含的数据库添加到可用性组之前，请确保在托管可用性组可用性副本的每个服务器实例上，包含的数据库身份验证服务器选项已设置为 1。 有关详细信息，请参阅[包含的数据库身份验证](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)。
+将包含的数据库添加到可用性组之前，请确保在托管可用性组可用性副本的每个服务器实例上，包含的数据库身份验证服务器选项已设置为 1。 有关详细信息，请参阅[包含的数据库身份验证](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017)。
 
 使用以下命令以设置可用性组中的每个 SQL Server 实例包含的数据库身份验证服务器选项：
 

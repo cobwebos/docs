@@ -1,22 +1,21 @@
 ---
 title: 连接到 Azure Blob 存储 - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Azure 逻辑应用在 Azure 存储中创建和管理 Blob
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "35294673"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452014"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -24,10 +23,19 @@ ms.locfileid: "35294673"
 
 假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。 
 
-如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+> [!NOTE]
+> 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项： 
+>
+> * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。 
+> 
+> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](http://aka.ms/aisarch)。
+
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 如需特定于连接器的技术信息，请参阅 <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Azure Blob 存储连接器参考</a>。
 
 ## <a name="prerequisites"></a>先决条件
+
+* 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
 * [Azure 存储帐户和存储容器](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -94,7 +102,7 @@ ms.locfileid: "35294673"
   
       ![选择文件夹](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 **ID** 号，该元数据是由前述 Blob 存储触发器返回的。
+   2. 根据 Blob 的 **ID** 号查找并选择所需的文件。 可以在 Blob 的元数据中找到此 ID 号，该元数据是由前述 Blob 存储触发器返回的。
 
 5. 完成后，请在设计器工具栏上选择“保存”。
 若要测试逻辑应用，请确保所选文件夹包含一个 Blob。

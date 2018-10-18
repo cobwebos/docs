@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576096"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434001"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -351,7 +351,7 @@ Log Analytics 的中心是托管在 Azure 中的 Log Analytics 工作区。 Log 
 
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>与本地 SIEM 系统进行日志集成
-可以使用 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)将来自 Azure 资源的原始日志与本地 SIEM 系统相集成。
+可以使用 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)将来自 Azure 资源的原始日志与本地 SIEM 系统（安全信息和事件管理系统）相集成。
 
 ![日志集成示意图](./media/azure-log-audit/azure-log-audit-fig9.png)
 

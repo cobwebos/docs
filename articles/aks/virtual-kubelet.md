@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604226"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226433"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS)
 
@@ -36,7 +36,7 @@ Azure 容器实例 (ACI) 提供托管环境，以便在 Azure 中运行容器。
 
 ### <a name="for-rbac-enabled-clusters"></a>对于启用 RBAC 的群集
 
-如果 AKS 群集已启用 RBAC，则必须创建服务帐户和角色绑定以便与 Tiller 一起使用。 有关详细信息，请参阅 [Helm 基于角色的访问控制][helm-rbac]。 要创建服务帐户和角色绑定，请创建名为 rbac-virtualkubelet.yaml 的文件并粘贴以下定义：
+如果 AKS 群集已启用 RBAC，则必须创建服务帐户和角色绑定以便与 Tiller 一起使用。 有关详细信息，请参阅 [Helm 基于角色的访问控制][helm-rbac]。 要创建服务帐户和角色绑定，请创建名为 rbac-virtual-kubelet.yaml 的文件并粘贴以下定义：
 
 ```yaml
 apiVersion: v1
@@ -182,7 +182,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

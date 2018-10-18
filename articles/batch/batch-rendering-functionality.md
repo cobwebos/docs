@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140598"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392764"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -50,9 +50,12 @@ ms.locfileid: "42140598"
 * [创建池](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)时指定 `applicationLicenses` 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
 * 指定一个或多个应用程序时，这些应用程序的费用将与 VM 费用相加。  [Azure Batch 定价页面](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)上列出了应用程序价格。
 
+> [!NOTE]
+> 若改为通过连接到许可证服务器来使用渲染应用程序，则不要指定 `applicationLicenses` 属性。
+
 可以使用 Azure 门户或 Batch Explorer 选择应用程序和显示应用程序价格。
 
-如果尝试使用某个应用程序，但尚未在池配置的 `applicationLicenses` 属性中指定该应用程序，则应用程序执行将会失败，并出现许可错误和非零退出代码。
+如果尝试使用某个应用程序，但尚未在池配置的 `applicationLicenses` 属性中指定该应用程序，或未连接许可证服务器，则应用程序执行将会失败，并出现许可错误和非零退出代码。
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>预装应用程序的环境变量
 

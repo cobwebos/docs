@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: d76d02ba326cf93582c03937b3ab54d806acaff1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067599"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422654"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure 订阅？如何重新激活它？
 
@@ -38,7 +38,7 @@ Azure 订阅被禁用可能是因为信用已过期、达到了支出限制、�
 > [!NOTE] 
 > 如果使用的是“免费试用”订阅且移除了支出限制，则在免费试用结束时会将订阅转为“即用即付”。 创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
 
-若要监视和管理 Azure 的计费活动，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing-getting-started.md)和[为 Microsoft Azure 订阅设置计费警报](billing-set-up-alerts.md)。
+若要监视和管理 Azure 的计费活动，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing-getting-started.md)。
 
 
 ## <a name="your-bill-is-past-due"></a>帐单已过期

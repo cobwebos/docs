@@ -13,24 +13,17 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/25/2018
+ms.date: 10/16/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 66c9b8297254b41156131d795376857029424e97
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221922"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377891"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
-
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [版本 2 - 公开发行版](../previous/media-services-overview.md)
-> * [版本 3 - 预览版](media-services-overview.md)
-
-> [!NOTE]
-> Azure 媒体服务的最新版本目前处于预览状态，可能称为 v3 版本。
 
 Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用程序开发者、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用程序，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。 
 
@@ -133,6 +126,7 @@ Microsoft 生成并支持以下客户端库：
 |[Node.js 参考](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Node.js 示例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
 |[Python 参考](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
 |[Go 参考](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
+|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917117"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422588"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -77,12 +77,11 @@ ms.locfileid: "42917117"
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>接受订阅所有权后的后续步骤
 
-1. 现在你是帐户管理员。查看和更新服务管理员、共同管理员和其他 RBAC 角色。 若要了解详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
+1. 现在你是帐户管理员。查看和更新服务管理员、共同管理员和其他 RBAC 角色。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](billing-add-change-azure-subscription-administrator.md)和[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 1. 更新与此订阅的服务关联的凭据，包括：
    1. 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../cloud-services/cloud-services-certs-create.md)
    1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
    1. Azure 虚拟机等服务的远程访问凭据。 
-1. 请在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)[更新此订阅的计费警报](billing-set-up-alerts.md)。 
 1. 若正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。 可以在 [Azure 门户](https://portal.azure.com)中更新合作伙伴 ID。
 
 <a id="supported"></a>

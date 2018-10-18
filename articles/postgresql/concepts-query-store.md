@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953016"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393479"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
-**适用于：** Azure Database for PostgreSQL 9.6 和 10
+适用于：Azure Database for PostgreSQL 9.6 和 10
 
 > [!IMPORTANT]
-> 查询存储功能目前以公共预览版提供。
+> 查询存储功能在一些有限区域为公共预览版。
 
 
 Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中。
@@ -117,7 +117,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |query_id   |bigint  || 根据语句的分析树计算的内部哈希代码|
 |query_sql_text |Varchar(10000)  || 代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
 |plan_id    |bigint |   |与此查询对应的计划 ID，尚不可用|
-|start_time |timestamp  ||  查询按时段聚合 - 默认情况下，存储桶的时间跨度为 15 分钟，但可以配置。 这是与此条目的时段相对应的开始时间。|
+|start_time |timestamp  ||  查询按时段聚合 - 默认情况下，存储桶的时间跨度为 15 分钟。 这是与此条目的时段相对应的开始时间。|
 |end_time   |timestamp  ||  对应于此条目的时段的结束时间。|
 |calls  |bigint  || 执行查询的次数|
 |total_time |双精度   ||  总查询执行时间（毫秒）|
@@ -168,6 +168,10 @@ Query_store.qs_reset() 返回无效值
 Query_store.staging_data_reset() 返回无效值
 
 `staging_data_reset` 丢弃查询存储在内存中收集的所有统计信息（即内存中尚未刷新到数据库的数据）。 只能由服务器管理员角色执行此函数。
+
+## <a name="limitations-and-known-issues"></a>限制和已知问题
+- 如果 PostgreSQL 服务器具有参数 default_transaction_read_only，则查询存储无法捕获数据。
+- 如果遇到较长的 Unicode 查询（> = 6000 个字节），查询存储功能可能会中断。
 
 
 ## <a name="next-steps"></a>后续步骤

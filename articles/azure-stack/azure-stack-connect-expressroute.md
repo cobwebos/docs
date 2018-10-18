@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c30e70802d125744432f428f903f6ac6789f631e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078692"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389219"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack 连接到 Azure
 
@@ -98,7 +98,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 
 1. 使用用户（租户）帐户登录到用户门户。
-1. 在门户中，选择 **+ 创建资源**。
+1. 在门户中，选择“+ 创建资源”。
 
 1. 在“Azure 市场”下，选择“网络”。
 
@@ -131,7 +131,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 #### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
+1. 在 Azure Stack 用户门户中，选择“+ 创建资源”。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从网络资源列表中选择“虚拟网关”。
 1. 在“名称”字段中，输入 **GW1**。
@@ -146,7 +146,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 本地网络网关资源识别位于 VPN 连接另一端的远程网关。 在本示例中，连接的远程端是 ExpressRoute 路由器的 LAN 子接口。 对于*图 2* 中所示的租户 1，远程地址为 10.60.3.255。
 
-1. 登录到 Azure Stack 用户门户与你的用户帐户，然后选择 **+ 创建资源**。
+1. 使用用户帐户登录到 Azure Stack 用户门户，然后选择“+ 创建资源”。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从资源列表中选择“本地网关”。
 1. 在“名称”字段中，输入 **ER-Router-GW**。
@@ -163,7 +163,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 #### <a name="create-the-connection"></a>创建连接
 
-1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
+1. 在 Azure Stack 用户门户中，选择“+ 创建资源”。
 1. 在“Azure 市场”下，选择“网络”。
 1. 从资源列表中选择“连接”。
 1. 在“基本设置”下，选择“站点到站点(IPSec)”作为“连接类型”。
@@ -187,7 +187,7 @@ Azure ExpressRoute，可将本地网络扩展到 Microsoft 云，通过连接提
 
 若要通过 VPN 连接测试数据流量，需要使用虚拟机在 Azure Stack VNet 中发送和接收数据。 请创建一个虚拟机，并将其部署到虚拟网络的 VM 子网。
 
-1. 在 Azure Stack 用户门户中，选择 **+ 创建资源**。
+1. 在 Azure Stack 用户门户中，选择“+ 创建资源”。
 1. 在“Azure 市场”下，选择“计算”。
 1. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
 
@@ -313,7 +313,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
 示例 Azure 网络基础结构的配置方式如下：
 
-* 标准的中心 (192.168.2.0/24) 和分支 (10.100.0.0./16) VNet 模型。 有关中心辐射型网络拓扑的详细信息，请参阅[在 Azure 中实现中心辐射型网络拓扑](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。
+* 标准的中心 (192.168.2.0/24) 和分支 (10.100.0.0./16) VNet 模型。 有关中心辐射型网络拓扑的详细信息，请参阅[在 Azure 中实现中心辐射型网络拓扑](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。
 * 工作负荷部署在分支 VNet 中，ExpressRoute 线路连接到中心 VNet。
 * 使用 VNet 对等互连连接这两个 VNet。
 

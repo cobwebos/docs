@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ce3c494dc0b8c962c8dae0af38d3cb5476cdf48b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444854"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406169"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -158,7 +158,8 @@ Dynamics 链接服务支持以下属性。
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
 
 > [!IMPORTANT]
->- 从 Dynamics 复制数据时，需要 Dynamics 数据集中的“structure”节。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
+>- 从 Dynamics 复制数据时，Dynamics 数据集中的“结构”部分是可选的但建议使用，以确保确定性复制结果。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
+>- 在创作 UI 中导入架构时，ADF 通过对 Dynamics 查询结果中的前几行进行采样来初始化结构构造，将省略其中不含任何值的列。 可以根据需要查看列并将更多列添加到 Dynamics 数据集架构/结构，这将在副本运行时起作用。
 >- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
@@ -279,7 +280,7 @@ Dynamics 链接服务支持以下属性。
 >[!NOTE]
 >接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance.md#parallel-copy)” 的默认值都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
-对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
+对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 
 “writeBatchSize”和“parallelCopies”的最佳组合取决于实体的架构，例如列数、行大小、与这些调用挂钩的插件/工作流/工作流活动的数量等。10 writeBatchSize * 10 parallelCopies 的默认设置是基于 Dynamics 服务提供的建议设置，该服务可用于大多数 Dynamics 实体，但可能无法获得最佳性能。 你可以通过在复制活动设置中调整组合来调整性能。
 

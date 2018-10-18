@@ -5,14 +5,14 @@ services: azure-migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/26/2018
 ms.author: raynew
-ms.openlocfilehash: 5407fd108315ed68b50d6ace1a317b4f007c56e7
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: bf2562f4772d20f099faec94794e0e908e6636d5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783383"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227531"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -36,9 +36,9 @@ ms.locfileid: "43783383"
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用    
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 将其 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用。 该 Web 应用与 GitHub 集成以便持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
-[文章 11：在 Visual Studio Team Services 中重构 Team Foundation Server](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Visual Studio Team Services。 | 可用
-[文章 12：在 Azure 容器和 Azure SQL 数据库中重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的应用数据库。 | 可用 
-[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel360 应用。 | 可用  
+[文章 11：在 Azure DevOps Services 中重构 Team Foundation Server](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库中重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的应用数据库。 | 可用    
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用 
 
 在本文中，Contoso 设置完成所有迁移方案所需的所有基础结构元素。 
 
@@ -137,8 +137,8 @@ Azure 混合权益为 Contoso 提供了一种经济高效的迁移方法，即�
 - Contoso 决定将其本地 Active Directory 扩展到云中，而不是在 Azure 中生成单独的新系统。
 - 为此，Contoso 创建了基于 Azure 的 Active Directory。
 - Contoso 没有使用 Office 365，因此需要预配新的 Azure AD。
-- Office 365 使用 Azure AD 来管理用户。 如果 Contoso 在使用 Office 365，则其已有 Azure AD 租户，并使用该租户作为其主 AD。
-- [深入了解](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9)用于 Office 365 的 Azure AD，并了解[如何添加订阅](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory)到现有 Azure AD。
+- Office 365 使用 Azure AD 来管理用户。 如果 Contoso 在使用 Office 365，则其已有 Azure AD 租户，并且可以使用该租户作为其主 AD。
+- [深入了解](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9)用于 Office 365 的 Azure AD，并了解[如何添加订阅](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory)到现有 Azure AD 租户。
 
 ### <a name="create-an-azure-ad"></a>创建 Azure AD
 
@@ -154,16 +154,16 @@ Contoso 使用 Azure 订阅中包含的 Azure AD Free 版本。 Contoso 管理�
 
 ### <a name="add-the-domain-name"></a>添加域名
 
-若要使用标准域名，Contoso 管理员需将其作为自定义名称添加到 Azure AD。 管理员可通过此选项分配熟悉的用户名。 例如，用户可以使用电子邮件地址 billg@contoso.com 登录，而无需 billg@contosomigration.microsoft.com。 
+若要使用标准域名，Contoso 管理员需将其作为自定义域名添加到 Azure AD。 管理员可通过此选项分配熟悉的用户名。 例如，用户可以使用电子邮件地址 billg@contoso.com 登录，而无需 billg@contosomigration.microsoft.com。 
 
-为了设置自定义名称，将该名称添加到目录、添加一个 DNS 条目，然后在 Azure AD 中进行验证。
+为了设置自定义域名，将该名称添加到目录、添加一个 DNS 条目，然后在 Azure AD 中进行验证。
 
 1. 在“自定义域名” > “添加自定义域”中添加域。
 2. 要在 Azure 中使用 DNS 条目，需要通过域注册机构进行注册。 
 
     - 在“自定义域名”列表中，记下该名称的 DNS 信息。 Contoso 正在使用 MX 条目。
     - 为此，需要访问名称服务器。 登录到 Contoso.com 域，并使用记录的详细信息为 Azure AD 提供的 DNS 条目创建新 MX 记录。  
-1. DNS 记录传播后，在域的详细名称中单击“验证”，检查该自定义名称。
+1. DNS 记录传播后，在域的详细名称中单击“验证”，检查该自定义域名。
 
      ![Azure AD DNS](./media/contoso-migration-infrastructure/azure-ad-dns.png) 
 
@@ -176,7 +176,7 @@ Azure AD 启动并运行后，Contoso 管理员需要向本地 AD 组添加员�
 Azure 资源组将 Azure 资源聚集在一起。 通过使用资源组 ID，Azure 可以对组中的资源执行操作。
 
 - Azure 订阅可以有多个资源组，但一个资源组只能存在于一个订阅中。
-- 此外，一个资源组可以包含多个资源，但一个资源只能属于一个组。
+- 此外，一个资源组可以包含多个资源，但一个资源只能属于一个资源组。
 
 Contoso 管理员设置下表中汇总的 Azure 资源组。
 
@@ -255,7 +255,7 @@ Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role
 现在，Contoso 管理员将从本地同步的角色分配到 AD 组。
 
 1. 在 ControlCobRG 资源组中，单击“访问控制 (IAM)” > “添加”。
-2. 在“添加权限” > “角色”中，选择“参与者”，然后从列表中选择“ContosoCobRG”AD 组。 该组随即出现在“所选成员”列表中。 
+2. 在“添加权限” > “角色”>“参与者”中，从列表中选择“ContosoCobRG”AD 组。 该组随即出现在“所选成员”列表中。 
 3. 通过将“参与者”权限添加到与资源组匹配的 AD 帐户，使用相同的权限对其他资源组重复此过程（“ContosoAzureAdmins”除外）。
 4. 对于“ContosoAzureAdmins”AD 组，分配“所有者”角色。
 
@@ -274,7 +274,7 @@ Azure 资源部署在不同区域内。
 - 了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)以及[如何配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 
-Contoso 已决定将美国东部 2（位于弗吉尼亚州）作为主要区域，将美国中部作为次要区域。 这样做有几点原因：
+Contoso 已决定将美国东部 2（位于弗吉尼亚州）作为主要区域，将美国中部（位于爱荷华州）作为次要区域。 这样做有几点原因：
 
 - Contoso 数据中心位于纽约，这样做考虑了到最近的数据中心的延迟。
 - 美国东部 2 区域包含 Contoso 需要使用的所有服务和产品。 并非所有 Azure 区域都提供相同的产品和服务。 可查看 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。
@@ -282,7 +282,7 @@ Contoso 已决定将美国东部 2（位于弗吉尼亚州）作为主要区域�
 
 对于混合环境，Contoso 需要考虑如何在其区域设计中融入恢复能力和灾难恢复策略。 广泛地说，策略涵盖从单区域部署（依赖容错域和区域配对等 Azure 平台功能获得恢复能力）到完整 Active-Active 模型（在其中部署了云服务和数据库，并为两个区域的用户提供服务）的所有范围。
 
-Contoso 已决定采取折中的方式。 Contoso 将应用和资源部署在主要区域，而将完整基础结构保留在次要区域，以便在应用完全出现灾难或区域故障时用作完整备份。
+Contoso 已决定采取折中的方式。 Contoso 将应用和资源部署在主要区域，而将基础结构的完整副本保留在次要区域，以便在应用完全出现灾难或区域故障时用作完整备份。
 
 ### <a name="set-up-availability-zones"></a>设置可用性区域
 
@@ -300,9 +300,9 @@ Contoso 已决定采取折中的方式。 Contoso 将应用和资源部署在主
 
 完成区域设计后，Contoso 已准备好考虑网络策略。 需要考虑本地数据中心和 Azure 如何相互连接和通信，以及如何在 Azure 中设计网络基础结构。 具体而言，Contoso 需要：
 
-**规划混合网络连接**：确定如何跨本地和 Azure 连接网络。
-**设计 Azure 网络基础结构**：确定如何在不同的区域部署网络。 如何在同一区域内部和跨区域进行网络通信？
-**设计和设置 Azure 网络**：设置 Azure 网络和子网，并决定其中驻留的内容。
+- **规划混合网络连接**：确定如何跨本地和 Azure 连接网络。
+- **设计 Azure 网络基础结构**：确定如何在不同的区域部署网络。 如何在同一区域内部和跨区域进行网络通信？
+- **设计和设置 Azure 网络**：设置 Azure 网络和子网，并决定其中驻留的内容。
 
 ### <a name="plan-hybrid-network-connectivity"></a>规划混合网络连接
 
@@ -378,7 +378,7 @@ Contoso 将在每个区域部署中心。 中心是 Azure 中的一个虚拟网�
 - 来自 Contoso 数据中心：
     - 通过 VPN 站点到站点（或 ExpressRoute）的传入流量到达 Azure VPN 网关的公共 IP 地址。
     - 流量通过防火墙路由，受防火墙规则约束。
-    - 应用规则后，流量转发到受信任内部区域子网上的一个内部负载均衡器（标准 SKU）。
+    - 应用防火墙规则后，流量转发到受信任内部区域子网上的一个内部负载均衡器（标准 SKU）。
     - 对于通过 VPN 从受信任子网到本地数据中心的出站流量，先通过防火墙进行路由，并应用规则，再通过 VPN 站点到站点连接。
 
 
@@ -459,7 +459,7 @@ Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网�
 
 美国中部是 Contoso 的次要区域。 下面是 Contoso 在该区域架构网络的方式：
 
-- **中心**：美国东部 2 的中心 VNet 是本地数据中心的中心连接点，美国东部 2 的分支 VNet 可用于隔离工作负荷（如果需要），独立于其他分支 VNet 进行管理。
+- 中心：美国东部 2 的中心 VNet 是本地数据中心的中心连接点，美国东部 2 的分支 VNet 可用于隔离工作负载（如果需要），独立于其他分支 VNet 进行管理。
 - **VNet**：Contoso 在美国中部有两个 VNet：
     - VNET-PROD-CUS。 此 VNet 是生产网络，类似于 VNET-PROD_EUS2。 
     - VNET-ASR-CUS。 此 VNet 用作从本地故障转移后创建 VM 的位置，或进行从主要区域到次要区域的故障转移后，Azure VM 的位置。 此网络类似于生产网络，但其中没有任何域控制器。
@@ -535,7 +535,7 @@ VNET-ASR-CUS 包含的基本子网与美国东部 2 的生产 VNET 中相同，�
 
     ![对等互连](./media/contoso-migration-infrastructure/peering2.png)
 
-3. 在本地设置静态路由，通过 VPN 隧道将本地流量路由到 VNet。 在提供从 Contoso 到 Azure 的 VPN 隧道的网关上完成配置。 Contoso 使用 Windows 路由和远程访问执行此操作。
+3. 在本地设置静态路由，通过 VPN 隧道将本地流量路由到 VNet。 在提供从 Contoso 到 Azure 的 VPN 隧道的网关上完成配置。 为此将使用 RRAS。
 
     ![对等互连](./media/contoso-migration-infrastructure/peering3.png)
 
@@ -701,7 +701,7 @@ Contoso 实现锁定的方式如下：
 
 除了提供有关资源和所有者的信息外，标记还可让 Contoso 聚合资源和对资源分组，以及出于退款目的使用该数据。
 
-Contoso 需要以对业务有意义的方式可视化其 Azure 资产。 例如，角色或部门。 请注意，资源不需要驻留在同一个资源组中就可共享一个标记。 为此，Contoso 创建一个简单的标记分类，以便每个人都使用相同的标记。
+Contoso 需要以对业务有意义的方式可视化其 Azure 资产。 例如，角色或部门。 请注意，资源不需要驻留在同一个资源组中就可共享一个标记。 Contoso 将创建一个简单的标记分类，以便每个人都使用相同的标记。
 
 **标记名称** | **值**
 --- | ---
@@ -724,7 +724,7 @@ ENV | DEV、STG 和 PROD 是可能的值。 分别表示开发、暂存和生产
 
 在云中，安全性非常重要，Azure 提供了多种不同的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 阅读[可信云中的置信度](https://azure.microsoft.com/overview/trusted-cloud/)了解有关 Azure 安全性的详细信息。
 
-Contoso 需要考虑几个主要方面：
+Contoso 需要考虑以下几个方面：
 
 - **Azure 安全中心**：Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 有了安全中心，即可对各种工作负荷应用安全策略、减少受到的威胁，以及检测和响应攻击。  [了解详细信息](https://docs.microsoft.com/azure/security-center/security-center-intro)。
 - **网络安全组 (NSG)**：NSG 是一个筛选器（防火墙），包含一系列安全规则，通过应用这些规则，可以允许或拒绝流向连接到 Azure VNet 的资源的网络流量。 [了解详细信息](https://docs.microsoft.com/azure/virtual-network/security-overview)。
@@ -761,11 +761,12 @@ Contoso 可以使用网络安全组限制发往虚拟网络中的资源的网络
 - 网络安全组包含一个安全规则列表，这些规则可根据源或目标 IP 地址、端口和协议允许或拒绝入站或出站网络流量。
 - 向某个子网应用规则时，该规则会应用到该子网中的所有资源。 除了网络接口外，这还包括子网中部署的 Azure 服务实例。
 - 使用应用程序安全组 (ASG)，可将网络安全性配置为应用结构的固有扩展，从而可以基于这些组将 VM 分组以及定义网络安全策略。
-    - 使用应用安全组，可以大量重复使用安全策略，而无需手动维护显式 IP 地址。 平台会处理显式 IP 地址和多个规则集存在的复杂性，让你专注于业务逻辑。
-    - 可将应用程序安全组指定为安全规则中的源和目标。 定义安全策略后，可以创建 VM，并将 VM NIC 分配到组。 
+    - 使用应用程序安全组，Contoso 可以大量重复使用安全策略，而无需手动维护显式 IP 地址。 平台会处理显式 IP 地址和多个规则集存在的复杂性，让你专注于业务逻辑。
+    - Contoso 可将应用程序安全组指定为安全规则中的源和目标。 定义安全策略后，Contoso 可以创建 VM，并将 VM NIC 分配到组。 
 
 
-Contoso 将混合实现 NSG 和 ASG。 Contoso 关注 NSG 管理， 担心过度使用 NSG 会为操作人员增加麻烦。
+Contoso 将混合实现 NSG 和 ASG。 Contoso 关注 NSG 管理。 担心过度使用 NSG 会为操作人员增加麻烦。 下面是 Contoso 要做的事项：
+
 - 流入和留出所有子网的所有流量（北-南）都遵循 NSG 规则，中心网络的 GatewaySubnets 除外。
 - 任何防火墙或域控制器都同时受到子网 NSG 和 NIC NSG 的保护。
 - 所有生成应用程序都应用了 ASG。
