@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048327"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542306"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 门户中添加用户
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048327"
 根据需要，在包含输入数据和输出数据的文件夹上授予“R-X”或“RWX”。
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>（可选）将用户添加到 Azure Data Lake Store 角色“读者”角色。
-1.  找到你自己的 Azure Data Lake Store 帐户。
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>（可选）将用户添加到 Azure Data Lake Storage Gen1 角色“读者”角色。
+1.  找到自己的 Azure Data Lake Storage Gen1 帐户。
 2.  单击“用户”。
 3. 单击 **“添加”**。
 4.  选择“Azure RBAC”角色以分配此组。
-5.  分配给“读者”角色。 此角色具有浏览/管理存储在 ADLS 中的数据所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
+5.  分配给“读者”角色。 此角色具有浏览/管理存储在 ADLSGen1 中的数据所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 6.  键入组的名称。
 7.  单击“确定”。
 

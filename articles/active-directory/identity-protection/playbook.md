@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 02d402b7de82631ce459c60cb42e5335c7e7cfe3
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003294"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580476"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 
@@ -115,7 +115,7 @@ ms.locfileid: "40003294"
 
 ### <a name="user-risk-security-policy"></a>用户风险安全策略
 
-有关详细信息，请参阅[用户风险安全策略](overview.md#user-risk-security-policy)。
+有关详细信息，请参阅[如何配置用户风险策略](howto-user-risk-policy.md)。
 
 ![用户风险](./media/playbook/02.png "演练手册")
 
@@ -140,7 +140,7 @@ ms.locfileid: "40003294"
 
 ### <a name="sign-in-risk-security-policy"></a>登录风险安全策略
 
-有关详细信息，请参阅[用户风险安全策略](overview.md#user-risk-security-policy)。
+有关详细信息，请参阅[如何配置登录风险策略](howto-sign-in-risk-policy.md)。
 
 ![登录风险](./media/playbook/01.png "演练手册")
 

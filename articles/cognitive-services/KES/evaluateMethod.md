@@ -1,30 +1,33 @@
 ---
-title: 知识探索服务 API 中的 Evaluate 方法 | Microsoft Docs
-description: 了解如何使用认知服务内知识探索服务 (KES) API 中的 Evaluate 方法。
+title: Evaluate 方法 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 了解如何在知识探索服务 (KES) API 中使用 Evaluate 方法。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: fc3d73b326b565cfe40d1b82cc419357b28a801a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365488"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128258"
 ---
 # <a name="evaluate-method"></a>evaluate 方法
+
 evaluate 方法根据索引数据，计算并返回结构化查询表达式的输出。
 
 表达式通常是通过响应 interpret 方法获得。  不过，也可以自己编写查询表达式（请参阅[结构化查询表达式](Expressions.md)）。  
 
 ## <a name="request"></a>请求 
+
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
-名称|值|说明
+名称|值|Description
 ----|----|----
 expr       | 文本字符串 | 选择索引实体子集的结构化查询表达式。
 attributes | 文本字符串 | 要在响应中包含的属性的逗号分隔列表。
@@ -36,7 +39,7 @@ timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅
 使用 count 和 offset 参数，可以通过多个请求以递增方式获取大量结果。
   
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath|说明
+JSONPath|Description
 ----|----
 $.expr | 请求中的 expr 参数。
 $.entities | 一组与结构化查询表达式匹配的 0 个或多个对象实体。 

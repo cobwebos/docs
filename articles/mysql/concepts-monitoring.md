@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 03/15/2018
-ms.openlocfilehash: af90fb4c89cf552d4c5637db08ef0acd9984b31b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: 3c9e0acfe9f8ffb159cacf50923f249be175ea77
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264691"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981906"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解为 MySQL 服务器提供支持的资源的行为。 
@@ -25,17 +25,22 @@ ms.locfileid: "35264691"
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for MySQL：
 
-|指标|指标显示名称|单位|说明|
+|指标|指标显示名称|单位|Description|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
-|storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储包括数据库文件、事务日志和服务器日志。|
+|storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
+|serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用的服务器日志存储占服务器的服务器日志最大存储的百分比。|
+|serverlog_storage_usage|服务器日志已用的存储量|字节|使用的服务器日志存储量。|
+|serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
 |storage_limit|存储限制|字节|此服务器的最大存储。|
-|active_connections|活动连接总数|Count|服务器的活动连接数。|
-|connections_failed|失败连接总数|Count|服务器的失败连接数。|
-
+|active_connections|活动连接数|Count|服务器的活动连接数。|
+|connections_failed|失败的连接数|Count|服务器的失败连接数。|
+|seconds_behind_master|复制延迟（秒）|Count|副本服务器针对主服务器延迟的秒数。|
+|network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
+|network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。

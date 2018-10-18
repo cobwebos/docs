@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
+title: 服务到服务身份验证：使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 验证 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,35 +11,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e59ed093417d8761135b946e2fa3f183bb085c9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae1fdb6239b7d04dc366d023a26d1307cbae68f3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215965"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123719"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
 > * [最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 >  
 
-Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写用于 Azure Data Lake Store 的应用程序之前，必须首先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。 可用的两个主要选项是：
+Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。 编写用于 Data Lake Storage Gen1 的应用程序之前，必须先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。 可用的两个主要选项是：
 
 * 最终用户身份验证 
 * 服务到服务身份验证（本文所述） 
 
-这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Azure Data Lake Store 作出的每个请求。
+这两个选项都会将 OAuth 2.0 令牌提供给应用程序，此令牌会附加到对 Data Lake Storage Gen1 作出的每个请求。
 
-本文讨论如何为服务到服务身份验证创建 Azure AD Web 应用程序。 有关最终用户身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
+本文讨论如何为服务到服务身份验证创建 Azure AD Web 应用程序。 有关最终用户身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>步骤 1：创建 Active Directory Web 应用程序
 
-使用 Azure Active Directory，针对通过 Azure Data Lake Store 进行服务到服务身份验证，创建和配置 Azure AD Web 应用程序。 有关说明，请参阅[创建 Azure AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
+使用 Azure Active Directory，针对通过 Azure Data Lake Storage Gen1 进行的服务到服务身份验证创建和配置 Azure AD Web 应用程序。 有关说明，请参阅[创建 Azure AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 
 遵循以上链接的说明时，请确保为应用程序类型选择“Web 应用/API”，如以下屏幕截图所示：
 
@@ -52,13 +52,13 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 
 * 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder"></a>步骤 3：将 Azure AD 应用程序分配给 Azure Data Lake Store 帐户文件或文件夹
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>步骤 3：将 Azure AD 应用程序分配给 Azure Data Lake Storage Gen1 帐户文件或文件夹
 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 打开要与之前创建的 Azure Active Directory 应用程序相关联的 Azure Data Lake Store 帐户。
-2. 在 Data Lake Store 帐户边栏选项卡中，单击“数据资源管理器” 。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 打开要与之前创建的 Azure Active Directory 应用程序相关联的 Data Lake Storage Gen1 帐户。
+2. 在 Data Lake Storage Gen1 帐户边栏选项卡中，单击“数据资源管理器”。
    
-    ![在 Data Lake Store 帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在 Data Lake 帐户中创建目")
+    ![在 Data Lake Storage Gen1 帐户中创建目录](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "在 Data Lake 帐户中创建目录")
 3. 在“数据资源管理器”边栏选项卡中，单击要为其提供 Azure AD 应用程序访问权限的文件或文件夹，并单击“访问”。 若要配置对文件的访问，必须在“文件预览”边栏选项卡中单击“访问”。
    
     ![对 Data Lake 文件系统设置 ACL](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "对 Data Lake 文件系统设置 ACL")
@@ -72,7 +72,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    
-    有关 Data Lake Store 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。
+    有关 Data Lake Storage Gen1 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。
 7. 在“添加自定义访问”边栏选项卡中，单击“确定”。 “访问”边栏选项卡中列出新添加的组以及相关的权限。
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
@@ -81,7 +81,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
 > 如果计划将 Azure Active Directory 应用程序限制到特定文件夹，则还需要为相同的 Azure Active Directory 应用程序提供对根的执行权限，以便通过 .NET SDK 启用文件创建访问。
 
 > [!NOTE]
-> 要使用 SDK 创建 Data Lake Store 帐户，必须将 Azure AD Web 应用程序作为角色分配给要在其中创建 Data Lake Store 帐户的资源组。
+> 若要使用 SDK 创建 Data Lake Storage Gen1 帐户，必须将 Azure AD Web 应用程序作为角色分配给要在其中创建 Data Lake Storage Gen1 帐户的资源组。
 > 
 >
 
@@ -100,11 +100,11 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证。 编写
     ![OAuth 令牌终结点](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 令牌终结点")   
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java、Python、REST API 等在创作的客户端应用程序中收集了所需的信息。现可转到以下文章，它们介绍如何使用 Azure AD 本机应用程序先进行 Data Lake Store 身份验证，再在存储中执行其他操作。
+本文创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java、Python、REST API 等在创作的客户端应用程序中收集了所需的信息。现可转到以下文章，这些文章介绍如何使用 Azure AD 本机应用程序先进行 Data Lake Storage Gen1 身份验证，再在存储中执行其他操作。
 
-* [使用 Java 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)
-* [使用 .NET SDK 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)
-* [使用 Python 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)
-* [使用 REST API 进行 Data Lake Store 服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)
+* [使用 Java 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)
+* [使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)
+* [使用 Python 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)
+* [使用 REST API 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)
 
 

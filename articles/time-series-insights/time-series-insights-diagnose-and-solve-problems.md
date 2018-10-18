@@ -10,14 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626614"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367113"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>在时序见解环境中诊断并解决问题
+
+本文介绍了在时序见解环境中可能会遇到的一些问题。 它提供了问题的潜在原因和解决方案。
+
+## <a name="video"></a>视频： 
+
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>在本视频中，我们介绍常见的时序见解客户面临的挑战和缓解措施。</br>
+
+> [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
 ## <a name="problem-1-no-data-is-shown"></a>问题 1：未显示数据
 在 [Azure 时序见解资源管理器](https://insights.timeseries.azure.com)中未看见数据有多个常见原因：
@@ -31,7 +39,7 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
    ![IoT 中心服务连接权限](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
    如上图所示，“iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限。
-   
+
 * 对于事件中心，需提供具有“侦听”权限的密钥。
 
    ![事件中心侦听权限](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)

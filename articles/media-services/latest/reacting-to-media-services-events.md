@@ -4,19 +4,19 @@ description: 使用 Azure 事件网格订阅媒体服务事件。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/19/2018
 ms.author: juliako
-ms.openlocfilehash: 969957d53824bd70440e5529b83bc830bb5d9cc4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 143fec2ddb168b0fff0e419fa5767e9718637241
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782686"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465531"
 ---
 # <a name="reacting-to-media-services-events"></a>响应媒体服务事件
 
@@ -26,11 +26,20 @@ ms.locfileid: "33782686"
 
 ## <a name="available-media-services-events"></a>可用的媒体服务事件
 
-事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。  当前，媒体服务事件订阅可包含以下事件类型：  
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。  目前，媒体服务事件订阅可包括以下事件：  
 
-|事件名称|说明|
+|事件名称|Description|
 |----------|-----------|
 | Microsoft.Media.JobStateChange| 作业状态更改时引发。 |
+| Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
+| Microsoft.Media.LiveEventEncoderConnected | 编码器与实时事件建立连接。 |
+| Microsoft.Media.LiveEventEncoderDisconnected | 编码器断开连接。 |
+| Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
+| Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒体服务器检测到音频和视频流不同步。用作警告，因为用户体验可能不受影响。 |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒体服务器检测到来自外部编码器的任意两个视频流不同步。用作警告，因为用户体验可能不受影响。 |
+| Microsoft.Media.LiveEventIngestHeartbeat | 当实时事件正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。 |
+| Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
 
 ## <a name="event-schema"></a>事件架构
 

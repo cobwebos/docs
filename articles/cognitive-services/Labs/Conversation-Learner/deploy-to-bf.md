@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171470"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578763"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>如何部署对话学习器机器人
 
@@ -94,9 +94,9 @@ ms.locfileid: "39171470"
 
 采用与发布其他机器人类似的方式发布对话学习器机器人。 在较高级别，将代码上传到托管网站，设置相应配置值，然后使用各种渠道注册机器人。 本视频详细介绍了如何使用 Azure 机器人服务发布机器人。
 
-部署机器人并开始运行后，即可使用 Azure 机器人渠道注册将机器人连接到不同渠道，如 Facebook、Teams、Skype 等。 有关该过程，请参阅文档： https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+部署机器人并开始运行后，即可使用 Azure 机器人渠道注册将机器人连接到不同渠道，如 Facebook、Teams、Skype 等。 有关该过程，请参阅文档： https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
-以下是将对话学习器机器人部署到 Azure 的分步说明。  这些说明假定可从基于云的源（如 VSTS、GitHub、BitBucket 或 OneDrive）获得机器人源，并配置机器人以实现持续部署。
+以下是将对话学习器机器人部署到 Azure 的分步说明。  这些说明假定可从基于云的源（如 Azure DevOps Services、GitHub、BitBucket 或 OneDrive）获得机器人源，并配置机器人以实现持续部署。
 
 1. 登录位于 https://portal.azure.com 的 Azure 门户
 

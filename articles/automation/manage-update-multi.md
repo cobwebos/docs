@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248135"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498226"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -50,7 +50,7 @@ ms.locfileid: "43248135"
 
 Linux 代理必须具有访问更新存储库的权限。
 
-此解决方案不支持适用于 Linux 且配置为向多个 Azure Log Analytics 工作区报告的 Operations Management Suite (OMS) 代理。
+此解决方案不支持适用于 Linux 且配置为向多个 Azure Log Analytics 工作区报告的 Log Analytics 代理。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>为 Azure 虚拟机启用“更新管理”
 
@@ -127,6 +127,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **名称**：输入用于标识更新部署的唯一名称。
 - **操作系统**：选择 **Windows** 或 **Linux**。
+- **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
 - **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ Linux 代理必须具有访问更新存储库的权限。
   - 工具
   - 更新
 
-- **要排除的更新** - 选择此选项会打开“排除”页面。 输入要排除的知识库文章或包名称。
+- **要包含/排除的更新** - 这会打开“包含/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的其他信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior)
 
 - **计划设置**：可以接受默认的日期和时间，即当前时间后 30 分钟。 也可以指定其他时间。
 
    还可以指定是一次性部署还是按计划定期部署。 若要设置定期计划，请在“重复周期”下选择“定期”。
 
    ![“计划设置”对话框](./media/manage-update-multi/update-set-schedule.png)
+
+- **前脚本 + 后脚本**：选择要在部署前和部署后运行的脚本。 若要了解详细信息，请参阅[管理前脚本和后脚本](pre-post-scripts.md)。
 - **维护时段(分钟)**：指定要进行更新部署的时间段。 此设置有助于确保在定义的服务时段内执行更改。
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。

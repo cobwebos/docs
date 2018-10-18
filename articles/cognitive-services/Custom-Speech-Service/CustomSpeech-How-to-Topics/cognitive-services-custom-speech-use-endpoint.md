@@ -1,24 +1,25 @@
 ---
-title: 使用自定义语音终结点 - 自定义语音服务
-titlesuffix: Azure Cognitive Services
-description: 了解如何将自定义语音转文本终结点与自定义语音服务配合使用。
+title: 通过 Azure 上的自定义语音服务使用自定义语音终结点 | Microsoft Docs
+description: 了解如何通过认知服务中的自定义语音服务使用自定义语音转文本终结点。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223366"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341786"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>使用自定义语音转文本终结点
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 可以向 Azure 自定义语音服务语音转文本终结点发送请求，方式与向默认认知服务语音终结点发送请求类似。 这些终结点在功能上与语音 API 的默认终结点相同。 因此，通过语音 API 的客户端库或 REST API 提供的功能也适用于自定义终结点。
 
 使用此服务创建的终结点可以处理不同数量的并发请求。 卷取决于与订阅关联的定价层。 如果接收请求过多，则会出现错误。 免费层每月的请求数量有一定限制。

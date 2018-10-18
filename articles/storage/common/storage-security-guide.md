@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522195"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730943"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -142,20 +142,13 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 
 使用 Azure 密钥保管库的另一个优点是，还可以使用 Azure Active Directory 来控制对密钥的访问。 这意味着，可以将访问权限授予少数必须从 Azure 密钥保管库检索密钥的应用程序，并了解其他应用程序在未特别授予它们权限的情况下无法访问密钥。
 
-注意：建议同一时间在所有应用程序中只使用一个密钥。 如果在某些地方使用密钥 1 并在其他地方使用密钥 2，将无法在没有部分应用程序失去访问的情况下轮转密钥。
+> [!NOTE]
+> Microsoft 建议同一时间在所有应用程序中只使用一个密钥。 如果在某些地方使用密钥 1 并在其他地方使用密钥 2，将无法在没有部分应用程序失去访问的情况下轮转密钥。
 
 #### <a name="resources"></a>资源
-* [关于 Azure 存储帐户](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  此文简要介绍了存储帐户，并探讨了如何查看、复制和重新生成存储访问密钥。
+* [在 Azure 门户中管理存储帐户设置](storage-account-manage.md)
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
-
-  本文提供了特定文章的链接，可据此了解如何检索存储帐户密钥和如何使用 REST API 为 Azure 帐户重新生成存储帐户密钥。 注意：这适用于 Resource Manager 存储帐户。
-* [Operations on storage accounts](https://msdn.microsoft.com/library/ee460790.aspx)（存储帐户的相关操作）
-
-  “存储服务管理器 REST API 参考”主题中的这篇文章提供了特定文章的链接，可据此了解如何使用 REST API 检索和重新生成存储帐户密钥。 注意：此文适用于经典存储帐户。
-
-  本文介绍如何使用 Active Directory 来控制 Azure 密钥保管库中 Azure 存储密钥的访问。 此外，说明如何使用 Azure 自动化作业每小时重新生成密钥。
 
 ## <a name="data-plane-security"></a>数据平面安全性
 数据平面安全是指用于保护存储在 Azure 存储的数据对象（Blob、队列、表和文件）的方法。 我们已了解在传输数据期间加密数据和安全的方法，但该从何处着手来控制访问对象？

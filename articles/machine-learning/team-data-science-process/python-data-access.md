@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838344"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719964"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -65,14 +65,14 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 ## <a name="datasetAccess"></a>使用 Studio 代码片段以访问数据集
 通过 Python 客户端库，能够以编程方式从已运行的实验中访问现有的数据集。
 
-从 Studio Web 界面，可生成代码片段，其中包括所有下载和反序列化数据集作为位置计算机上 Pandas DataFrame 对象的必要信息。
+从 Studio Web 界面，可生成代码片段，其中包括所有下载和反序列化数据集作为位置计算机上 pandas DataFrame 对象的必要信息。
 
 ### <a name="security"></a>数据访问的安全
 Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
 
 出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 在“设置”下的“用户”页面上 Azure 机器学习工作室中会显示你的角色。
 
-![“安全”][security]
+![安全][security]
 
 如果角色未设置为**所有者**，可以请求重新邀请为所有者，或询问工作区所有者以提供代码片段。
 
@@ -197,7 +197,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 请参阅 `SourceDataset` 类以获取关于可用元数据的详细信息。
 
 ### <a name="read-contents"></a>读取内容
-机器学习工作室提供的代码片段会自动将数据集下载并反序列化到 Pandas DataFrame 对象。 通过 `to_dataframe` 方法完成此操作：
+机器学习工作室提供的代码片段会自动将数据集下载并反序列化到 pandas DataFrame 对象。 通过 `to_dataframe` 方法完成此操作：
 
     frame = ds.to_dataframe()
 
@@ -220,7 +220,7 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 ### <a name="create-a-new-dataset"></a>创建新的数据集
 Python 客户端库允许从 Python 程序上传数据集。 然后这些数据集便可在工作区中使用。
 
-如果具有 Pandas DataFrame 中的数据，请使用以下代码：
+如果具有 pandas DataFrame 中的数据，请使用以下代码：
 
     from azureml import DataTypeIds
 
@@ -242,7 +242,7 @@ Python 客户端库允许从 Python 程序上传数据集。 然后这些数据�
         description='my description'
     )
 
-Python 客户端库可以将 Pandas DataFrame 序列化为以下格式（这些的常量是 `azureml.DataTypeIds` 类）：
+Python 客户端库可以将 pandas DataFrame 序列化为以下格式（这些的常量是 `azureml.DataTypeIds` 类）：
 
 * PlainText
 * GenericCSV

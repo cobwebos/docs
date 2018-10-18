@@ -11,19 +11,19 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/15/2018
+ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064095"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353928"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
 SQL 数据库优化建议由 Azure SQL 数据库[自动优化](sql-database-automatic-tuning.md)生成。 此解决方案持续监视和分析 SQL 数据库的工作负载，为与索引创建、索引删除和查询执行计划优化相关的每个数据库提供自定义优化建议。
 
-SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal.md)中查看，使用 [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 调用或通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) 命令可以进行检索。 本文立足于使用 PowerShell 脚本检索自动优化建议。
+SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal.md)中查看，使用 [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) 调用或通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) 命令可以进行检索。 本文立足于使用 PowerShell 脚本检索自动优化建议。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自动发送有关自动优化建议的电子邮件通知
 
@@ -99,7 +99,7 @@ AzureRM.Resources 和 AzureRM.Sql 模块的版本需为版本 4 和更高版本�
 #
 # Microsoft Azure SQL Database team, 2018-01-22.
 
-# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID 
+# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
 $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
@@ -112,8 +112,8 @@ $advisors = ("CreateIndex", "DropIndex");
 $results = @()
 
 # Loop through all subscriptions
-foreach($subscriptionId in $subscriptions) {    
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId    
+foreach($subscriptionId in $subscriptions) {
+    Select-AzureRmSubscription -SubscriptionId $subscriptionId
     $rgs = Get-AzureRmResourceGroup
 
     # Loop through all resource groups
@@ -122,7 +122,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType    
+            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -141,7 +141,7 @@ foreach($subscriptionId in $subscriptions) {
                 if ($resourceId -match ".*/DATABASES/(?<content>.*)") {
                     $DatabaseName = $matches['content']
                 } else {
-                    continue 
+                    continue
                 }
 
                 # Skip if master
@@ -163,7 +163,7 @@ foreach($subscriptionId in $subscriptions) {
                             $results += $object
                         }
                     }
-                }                
+                }
             }
         }
     }
@@ -174,7 +174,7 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-单击右上角的“保存”按钮保存脚本。 如果对脚本满意，单击“发布”按钮发布此 runbook。 
+单击右上角的“保存”按钮保存脚本。 如果对脚本满意，单击“发布”按钮发布此 runbook。
 
 在“主 runbook”窗格中，可选择单击“启动”按钮来测试脚本。 单击“输出”，查看已执行脚本的结果。 此输出将是电子邮件的内容。 脚本的示例输出如以下屏幕截图中所示。
 
@@ -186,7 +186,7 @@ Write-Output $table
 
 ## <a name="automate-the-email-jobs-with-microsoft-flow"></a>使用 Microsoft Flow 自动化电子邮件作业
 
-要完成作为最后一步的该解决方案，请在 Microsoft Flow 中创建包含三个操作（作业）的自动化流： 
+要完成作为最后一步的该解决方案，请在 Microsoft Flow 中创建包含三个操作（作业）的自动化流：
 
 1. “Azure 自动化 - 创建作业”- 用于执行 PowerShell 脚本以检索 Azure 自动化 runbook 中的自动优化建议
 2. “Azure 自动化 - 获取作业输出”- 用于检索已执行的 PowerShell 脚本的输出
@@ -205,25 +205,28 @@ Write-Output $table
 下一步是向新创建的定期流添加三个作业（创建、获取输出和发送电子邮件）。 要完成向流中添加所需作业，请执行以下步骤：
 
 1. 创建操作以执行检索优化建议的 PowerShell 脚本
-- 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
-- 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 创建作业”
-- 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#create-job)。
-- 单击“保存流”完成创建此操作
+
+   - 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
+   - 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 创建作业”
+   - 在“创建作业”窗格中，配置作业属性。 对于此配置，需要之前在“自动化帐户”窗格上记录的 Azure 订阅 ID、资源组和自动化帐户的详细信息。 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 创建作业](https://docs.microsoft.com/connectors/azureautomation/#create-job)。
+   - 单击“保存流”完成创建此操作
 
 2. 创建从已执行的 PowerShell 脚本检索输出的操作
-- 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
-- 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 获取作业输出” 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)。
-- 填充所需字段（类似于创建上一个作业）- 填充 Azure 订阅 ID、资源组和自动化帐户（与“自动化帐户”窗格中输入的内容一样）
-- 单击“作业 ID”字段内部，以便显示“动态内容”菜单。 从此菜单中选择“作业 ID”选项。
-- 单击“保存流”完成创建此操作
+
+   - 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
+   - 在“搜索”字段中键入“自动化”，然后从搜索结果中选择“Azure 自动化 - 获取作业输出” 要了解本部分提供选项的详细信息，请参阅 [Azure 自动化 - 获取作业输出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)。
+   - 填充所需字段（类似于创建上一个作业）- 填充 Azure 订阅 ID、资源组和自动化帐户（与“自动化帐户”窗格中输入的内容一样）
+   - 单击“作业 ID”字段内部，以便显示“动态内容”菜单。 从此菜单中选择“作业 ID”选项。
+   - 单击“保存流”完成创建此操作
 
 3. 创建使用 Office 365 集成发送电子邮件的操作
-- 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
-- 在“搜索”字段中键入“发送电子邮件”，然后从搜索结果中选择“Office 365 Outlook - 发送电子邮件”
-- 在“收件人”字段中，键入需要发送通知电子邮件的电子邮件地址
-- 在“主题”字段中键入电子邮件的主题，例如“自动优化建议电子邮件通知”
-- 单击“正文”字段内部，以便显示“动态内容”菜单。 在此菜单中的“获取作业输出”下，选择“内容” 
-- 单击“保存流”完成创建此操作
+
+   - 在“定期流”窗格中选择“+ 新建步骤”，然后选择“添加操作”
+   - 在“搜索”字段中键入“发送电子邮件”，然后从搜索结果中选择“Office 365 Outlook - 发送电子邮件”
+   - 在“收件人”字段中，键入需要发送通知电子邮件的电子邮件地址
+   - 在“主题”字段中键入电子邮件的主题，例如“自动优化建议电子邮件通知”
+   - 单击“正文”字段内部，以便显示“动态内容”菜单。 在此菜单中的“获取作业输出”下，选择“内容”
+   - 单击“保存流”完成创建此操作
 
 > [!TIP]
 > 要将自动电子邮件发送给不同的收件人，请创建单独的流。 在这些附加流中，更改“收件人”字段中的收件人电子邮件地址，以及“主题”字段中的电子邮件主题行。 使用自定义 PowerShell 脚本在 Azure 自动化中创建新的 runbook（例如更改 Azure 订阅 ID）可进一步自定义自动化方案，例如向单独的收件人发送有关单独订阅的自动优化建议的电子邮件。
@@ -247,7 +250,7 @@ Write-Output $table
 
 可以通过调整 PowerShell 脚本来调整输出和自动电子邮件的格式以满足需求。
 
-可进一步自定义解决方案，生成基于特定优化事件、发送给多个收件人或者有关多个订阅或数据库的电子邮件通知，具体取决于自定义方案。 
+可进一步自定义解决方案，生成基于特定优化事件、发送给多个收件人或者有关多个订阅或数据库的电子邮件通知，具体取决于自定义方案。
 
 ## <a name="next-steps"></a>后续步骤
 

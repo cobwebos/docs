@@ -1,28 +1,31 @@
 ---
-title: 知识探索服务 API 中的 Interpret 方法 | Microsoft Docs
-description: 了解如何在认知服务中使用知识探索服务 (KES) API 中的 Interpret 方法。
+title: Interpret 方法 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 了解如何在知识探索服务 (KES) API 中使用 Interpret 方法。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365505"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127995"
 ---
 # <a name="interpret-method"></a>interpret 方法
+
 interpret 方法采用自然语言查询字符串，并根据语法和索引数据返回对用户意向的格式化解释。  为了提供交互式搜索体验，可以调用此方法，因为每个字符都由用户输入，其中 complete 参数设置为 1 以启用自动完成建议。
 
 ## <a name="request"></a>请求
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
-名称|值| 说明
+名称|值| Description
 ----|----|----
 query    | 文本字符串 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 complete | 0（默认值）或 1 | 1 意味着自动完成建议是基于语法和索引数据生成的。         
@@ -33,7 +36,8 @@ timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅
 使用 count 和 offset 参数，可以在多个请求中以增量方式获取大量结果。
 
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath     | 说明
+
+JSONPath     | Description
 ---------|---------
 $.query |query 参数来自请求。
 $.interpretations   |将输入查询与语法相匹配的 0 种或多种方法数组。
@@ -47,6 +51,7 @@ $.interpretations[\*].rules[\*].output.value|语义输出的值。
 $.aborted | 如果请求超时，则为 True。
 
 ### <a name="parse-xml"></a>分析 XML
+
 分析 XML 注释（已完成）查询，提供关于如何与索引中的语法和属性中的规则相匹配的信息。  下面是学术出版物领域的一个示例：
 
 ```xml
@@ -65,6 +70,7 @@ $.aborted | 如果请求超时，则为 True。
 `<attr>` 元素划定与其 `name` 属性指定的索引属性相匹配的查询范围。  当匹配在输入查询中包含同义词时，`canonical` 属性将包含与索引中的同义词匹配的规范值。
 
 ## <a name="example"></a>示例
+
 在学术出版物示例中，下面的请求针对前缀查询“papers by jaime”返回最多 2 个自动完成建议：
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`

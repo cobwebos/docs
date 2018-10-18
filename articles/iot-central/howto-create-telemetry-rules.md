@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5913df2d4dc286fad63760c95f54e0dbc717acdc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 1b82ac3bf67370a2c39e85bf5691da38539edb74
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246436"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729300"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置通知
+
+本文适用于操作员、构建者和管理员。
 
 可以使用 Azure IoT Central 对连接的设备进行远程监视。 可以通过 Azure IoT Central 规则近乎实时地监视设备并自动调用操作（例如发送电子邮件或触发 Microsoft Flow）。 只需几次单击即可定义用于监视设备数据的条件并配置相应操作。 本文介绍如何创建规则来监视设备发送的遥测数据。
 
@@ -25,7 +27,7 @@ ms.locfileid: "40246436"
 
 若要创建遥测规则，必须在设备模板中至少定义一个遥测度量。 本示例使用一个发送温度和湿度遥测数据的冷冻贩卖机设备。 该规则监视设备报告的温度，并在温度超过 80 度时发送电子邮件。
 
-1. 使用 Device Explorer 导航到要对其添加规则的设备模板。
+1. 使用 Device Explorer，导航到要对其添加规则的设备模板。
 
 1. 在所选模板下，单击一个现有设备。 
 
@@ -36,9 +38,9 @@ ms.locfileid: "40246436"
 
     ![尚无规则](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
 
-1. 在“规则”选项卡上，单击“+ 新建规则”查看可创建的规则类型。
+1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
 
-1. 单击“遥测”磁贴，创建用于监视设备遥测数据的规则。
+1. 单击“遥测”，创建用于监视设备遥测数据的规则。
 
     ![规则类型](media\howto-create-telemetry-rules\Rule_Types.png)
 
@@ -72,7 +74,7 @@ ms.locfileid: "40246436"
 
 ### <a name="configure-actions"></a>配置操作
 
-本部分介绍如何设置在规则激发时要执行的操作。 规则中指定的所有条件评估结果为 true 时会调用操作。
+本部分演示如何设置在规则触发时要执行的操作。 此规则中指定的所有条件评估结果均为 true 时会调用操作。
 
 1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。  
 
@@ -87,7 +89,9 @@ ms.locfileid: "40246436"
 
 1. 若要保存规则，请选择“保存”。 此规则在数分钟内即可生效，然后开始监视发送到应用程序的遥测数据。 匹配规则中指定的条件时，规则会触发配置的电子邮件操作。
 
-可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 最多可为每个规则添加 5 个操作。
+1. 选择“完成”，退出“编辑模板”模式。
+
+可将其他操作添加到规则，例如 Microsoft Flow 和 Webhook。 每个规则最多可添加 5 个操作。
 
 - [Microsoft Flow 操作](howto-add-microsoft-flow.md)，在触发规则时启动 Microsoft Flow 中的工作流 
 - [Webhook 操作](howto-create-webhooks.md)，在触发规则时通知其他服务
@@ -114,7 +118,7 @@ ms.locfileid: "40246436"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure IoT Central 应用程序中创建规则后，接下来请学习以下知识：
+了解如何在 Azure IoT Central 应用程序中创建规则后，可了解如下后续步骤：
 
 - [在规则中添加 Microsoft Flow 操作](howto-add-microsoft-flow.md)
 - [在规则中添加 Webhook 操作](howto-create-webhooks.md)

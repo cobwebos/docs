@@ -3,8 +3,8 @@ title: 分析 Azure CDN 使用模式 |Microsoft Docs
 description: 本文介绍适用于 Azure CDN 产品的不同类型的分析报告。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
-ms.author: rli; v-deasim
-ms.openlocfilehash: 61fbe6e29df787048a9694138d3c9095f5cba76b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: magattus
+ms.openlocfilehash: 45b3698dd77bda815218b43405d64819c3e4789f
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764887"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091260"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
 

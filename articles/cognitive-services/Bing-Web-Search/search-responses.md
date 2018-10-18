@@ -1,23 +1,23 @@
 ---
-title: 必应 Web 搜索 API 响应 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 搜索响应 - 必应 Web 搜索 API
+titleSuffix: Azure Cognitive Services
 description: 了解必应 Web 搜索 API 提供的应答类型和响应。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 13e9792f3d5765047dabb4cdef59e85a47a69aba
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889384"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123770"
 ---
-# <a name="bing-web-search-responses"></a>必应 Web 搜索响应  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
 向必应 Web 搜索发送搜索请求时，它会在响应正文中返回一个 [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 对象。 针对必应确定与查询相关的每个应答，该对象包含一个字段。 本示例演示当必应返回所有应答时的响应对象：
 
@@ -295,7 +295,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |*|乘|
 |^|幂|
 |!|阶乘|
-|。|小数|
+|.|小数|
 |()|优先级分组|
 |[]|函数|
 

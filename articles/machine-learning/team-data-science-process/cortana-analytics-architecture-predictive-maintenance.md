@@ -4,9 +4,10 @@ description: 航天工业、实用工具和交通运输预见性维护的 Micros
 services: machine-learning
 documentationcenter: ''
 author: garyericson
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 759746a5-388a-42cf-bccf-435bf9b53251
+ms.service: machine-learning
 ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 11d6eebca71998056dbe00702a740a21cf14c158
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: b378ec41a7c13e0887fe35aa49b09490f7304b39
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247897"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395078"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航天工业及其它业务预见性维护的 Cortana Intelligence 解决方案模板体系结构
 下图提供了 [Cortana Intelligence Solution Template for predictive maintenance](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)（预见性维护的 Cortana Intelligence 解决方案模板）的体系结构概述。

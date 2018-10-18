@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ad3f42563878d829f900d5cddb0c6866d2deab5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c611fd7893a96113a4a9f2454bcd0b11db02be29
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310930"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教程：Azure Active Directory 与 Snowflake 的集成
 
@@ -39,6 +39,7 @@ ms.locfileid: "43310930"
 
 - Azure AD 订阅
 - 启用了 Snowflake 单一登录的订阅
+- 如果客户没有 Snowflake 帐户，并希望通过 Azure AD 应用库进行试用，请参阅[此](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp)链接。
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -103,22 +104,22 @@ ms.locfileid: "43310930"
  
     ![“单一登录”对话框](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
 
-3. 如果要在“IDP”发起的模式下配置应用程序，请在“Snowflake 域和 URL”部分中执行以下步骤：
+3. 在“Snowflake 域和 URL”部分中，执行以下步骤：
 
     ![Snowflake 域和 URL 单一登录信息](./media/snowflake-tutorial/tutorial_snowflake_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SNOWFLAKE-URL>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<SNOWFLAKE-URL>/fed/login`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Snowflake 域和 URL 单一登录信息](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SNOWFLAKE-URL>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
      
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Snowflake 客户端支持团队](https://support.snowflake.net/s/snowflake-support)获取这些值。 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。
 
 5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -132,7 +133,22 @@ ms.locfileid: "43310930"
 
     ![Snowflake 配置](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
 
-8. 若要在“Snowflake”端配置单一登录，需要将下载的证书 (Base64) 和 SAML 单一登录服务 URL 发送给 [Snowflake 支持团队](https://support.snowflake.net/s/snowflake-support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+8. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Snowflake。
+
+9. 通过将 **certificate** 值设置为从 Azure AD **下载的证书**以及将 **ssoUrl** 设置为从 Azure AD 复制的 **SAML 单一登录服务 URL**（如下所示），在工作表上运行以下 SQL 查询。
+
+    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+
+    ```
+    use role accountadmin;
+    alter account set saml_identity_provider = '{
+    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "type":"custom",
+    "label":"AzureAD"
+    }';
+    alter account set sso_login_page = TRUE;
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -158,7 +174,7 @@ ms.locfileid: "43310930"
 
     ![“用户”对话框](./media/snowflake-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -168,7 +184,25 @@ ms.locfileid: "43310930"
  
 ### <a name="create-a-snowflake-test-user"></a>创建 Snowflake 测试用户
 
-在本部分中，将在 Snowflake 中创建名为“Britta Simon”的用户。 请与 [Snowflake 支持团队](https://support.snowflake.net/s/snowflake-support)协作，将用户添加到 Snowflake 平台中。 使用单一登录前，必须先创建并激活用户。
+为了使 Azure AD 用户能够登录到 Snowflake，必须将其预配到 Snowflake 中。 在 Snowflake 中，预配属手动任务。
+
+**若要预配用户帐户，请执行以下步骤：**
+
+1. 以安全管理员身份登录到 Snowflake。
+
+2. 通过单击页面右上方的“配置文件”，使用“切换角色”将角色切换为“ACCOUNTADMIN”。  
+
+    ![Snowflake 管理员 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+3. 通过运行以下 SQL 查询来创建用户，确保“登录名”设置为工作表上的 Azure AD 用户名，如下所示。
+
+    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+
+    ```
+
+    use role accountadmin;
+    CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
+    ```
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

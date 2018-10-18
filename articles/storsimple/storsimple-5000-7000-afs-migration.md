@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: d54394a8dc74d04f1922a78826b10a4a421d193b
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814584"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729157"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步
 
@@ -56,8 +56,7 @@ StorSimple 5000 和 7000 系列存储设备将在 2019 年 7 月退役。 这意
 - StorSimple 卷已装载在主机上，并包含文件共享。
 - 该主机具有足够的本地存储，可以保存本地缓存的数据。
 - 对用于部署 Azure 文件同步的 Azure 订阅拥有所有者级别的访问权限。如果没有所有者或管理员级别的权限，则为同步组创建云终结点时可能会遇到问题。
-- 有权访问包含所要同步到的 Azure 文件共享的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-options)。 有关详细信息，请转到 
- - 如何[创建常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal#create-a-general-purpose-storage-account)。
+- 有权访问包含所要同步到的 Azure 文件共享的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 有关详细信息，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
  - 如何[创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal)。
 
 ## <a name="migration-process"></a>迁移过程

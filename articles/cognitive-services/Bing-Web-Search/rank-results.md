@@ -1,40 +1,41 @@
 ---
-title: 使用排名显示 Web 答案 | Microsoft Docs
-description: 演示如何使用排名显示必应 Web 搜索 API 返回的答案。
+title: 如何使用排名显示搜索结果 - 必应 Web 搜索 API
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用排名显示必应 Web 搜索 API 中的搜索结果。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 750146f3bb28b94594a71733b68f092880360c5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d362d3aa131ba2ddfec8c7873352c634e7ce099c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366457"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124195"
 ---
-# <a name="using-ranking-to-display-results"></a>使用排名显示结果  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名显示必应 Web 搜索 API 结果  
 
 每个搜索响应均包括一个 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) 答案，它指定搜索结果的显示方式。 排名响应按传统搜索结果页的主线内容和边栏内容对结果进行分组。 如果不以传统主线和边栏格式显示结果，必须以比边栏内容更高的可见度提供主线内容。  
-  
+
 在每个组（主线或边栏）中，[项](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须出现的顺序。 每个项提供以下两种方法来标识答案中的结果。  
-  
+
 -   `answerType` 和 `resultIndex` - `answerType` 字段标识答案（例如，网页或新闻），`resultIndex` 标识答案中的结果（例如某篇新闻文章）。 索引从零开始。  
-  
+
 -   `value` - `value` 字段包含一个 ID，它与答案或答案中结果的 ID 匹配。 答案或结果包含 ID，而不是同时包含。  
-  
+
 使用 ID 更简单，因为你只需要将排名 ID 与答案或其结果之一的 ID 进行匹配。 如果答案对象包含 `id` 字段，则同时显示答案的所有结果。 例如，如果 `News` 对象包含 `id` 字段，则同时显示所有新闻文章。 如果 `News` 对象不包含 `id` 字段，则每个新闻文章均包含 `id` 字段，排名响应会将新闻文章与其他答案的结果混合。  
-  
+
 使用 `answerType` 和 `resultIndex` 会稍微复杂一些。 使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的所有结果进行索引，以获取要显示的结果。 （`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 对象中字段的名称。）如果不应一起显示答案的所有结果，则排名响应项不应包含 `resultIndex` 字段。  
 
 ## <a name="ranking-response-example"></a>排名响应示例
 
 下面展示了一个示例 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)。 由于 Web 答案不包含 `id` 字段，因此你将根据排名单独显示所有网页（每个网页包含 `id` 字段）。 由于图像、视频和相关搜索答案都包含 `id` 字段，因此你可以根据排名将其中每个答案的结果显示在一起。
-  
+
 ```json
 {  
     "_type" : "SearchResponse",
@@ -203,19 +204,19 @@ ms.locfileid: "35366457"
     }
 }  
 ```  
-  
+
 根据此排名响应，主线会显示以下搜索结果：  
-  
--   第一个网页结果 
+
+-   第一个网页结果
 -   所有图像  
 -   第二个和第三个网页结果  
 -   所有视频  
 -   第四个、第五个和第六个网页结果  
-  
+
 边栏会显示以下搜索结果：  
-  
+
 -   所有相关搜索  
-  
+
 
 ## <a name="next-steps"></a>后续步骤
 

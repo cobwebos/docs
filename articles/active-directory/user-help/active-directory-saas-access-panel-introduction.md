@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302271"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719981"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -109,16 +109,6 @@ Azure Active Directory 团队发布了“我的应用”移动应用。 安装�
 
 > [!NOTE]
 > 几乎可以在任何设备上的任何 Web 浏览器中登录到支持与 Azure AD 联合的应用程序（包括 Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 和其他 70 种以上的应用程序），无需安装任何插件或移动应用。 此外，无需在移动设备上使用“我的应用”移动应用，就能[体验 MyApps 门户](https://myapps.microsoft.com/)的所有其他功能。
->
->
-
-### <a name="my-apps-for-android"></a>我的应用 Android 版
-
-运行 Android 4.1 和更高版本的任何 Android 设备都支持“我的应用 Android 版”。  
-
-[Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.myapps)中已提供此应用。
-
-![我的应用 Android 版][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>我的应用 iPhone 和 iPad 版
 
@@ -129,13 +119,13 @@ Azure Active Directory 团队发布了“我的应用”移动应用。 安装�
 ![我的应用 iOS 版][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>Managed Browser 中的“我的应用”
+## <a name="intune-managed-browser-for-my-apps"></a>Intune Managed Browser 中的“我的应用”
 
-“我的应用”还已集成到 Intune Managed Browser 中。 适用于 iOS 和 Android 设备的 Intune Managed Browser 在确保移动设备上的数据安全性方面发挥着重要的作用。 该浏览器可让我们安全查看和导航可能包含公司信息的网页，并提供安全的 Web 浏览体验。  
+“我的应用”还已集成到 Intune Managed Browser 中。 适用于 iOS 和 Android 设备的 Intune Managed Browser 可帮助你更安全地查看和导航可能包含公司信息的网页，从而有助于提供更安全的 Web 浏览体验。  
 
-Managed Browser 主页和书签中提供了“我的应用”的快速访问链接，只需单击几下鼠标即可进入任何想要访问的应用程序。
+可以从 Managed Browser 主页和书签访问“我的应用”，这意味着访问应用所需的单击次数更少。
 
-[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 和 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en)中已提供 Intune Managed Browser。
+[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 和 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)中已提供 Intune Managed Browser。
 
 ![Managed Browser 中的“我的应用”][5]    
 
@@ -210,17 +200,16 @@ Azure 门户提供了第三个选项（名为“现有的单一登录”）用�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要查看与应用程序管理相关的所有主题列表，请参阅[有关 Azure Active Directory 中应用程序管理的文章索引](../active-directory-apps-index.md)。
+- 若要了解应用程序管理，请参阅 [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)。
  
 - 若要了解如何将 SaaS 应用集成到 Azure AD，请参阅[有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)。
  
 - 若要详细了解如何使用 Azure AD 管理应用，请参阅[使用 Azure Active Directory 进行单一登录和应用访问权限管理简介](../manage-apps/what-is-single-sign-on.md)。
  
-- 有关详细了解用户预配，请参阅[在 SaaS 应用程序中自动预配和取消预配用户](../active-directory-saas-app-provisioning.md)。
+- 有关详细了解用户预配，请参阅[在 SaaS 应用程序中自动预配和取消预配用户](../manage-apps/user-provisioning.md)。
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

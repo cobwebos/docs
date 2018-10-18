@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206031"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733458"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -121,7 +121,7 @@ ms.locfileid: "39206031"
     var ConnectionString = require('azure-iot-device').ConnectionString;
     ```
 
-1. 向文件添加以下变量声明：
+1. 将以下变量声明添加到该文件：
 
     ```javascript
     var connectionString = '{your device connection string}';
@@ -129,7 +129,11 @@ ms.locfileid: "39206031"
     var client = clientFromConnectionString(connectionString);
     ```
 
-    将占位符 `{your device connection string}` 更新为设备连接字符串。 已在添加真实设备时从连接详细信息页复制此值。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
+  > [!NOTE]
+   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
+
+
+    将占位符 `{your device connection string}` 更新为设备连接字符串。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
 
 1. 若要向 Azure IoT Central 应用程序发送遥测、状态和事件度量，请将以下函数添加到文件：
 

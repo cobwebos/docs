@@ -1,5 +1,6 @@
 ---
-title: 适用于文本分析 API 的外部和社区内容 - Azure 认知服务 | Microsoft Docs
+title: 适用于文本分析 API 的外部和社区内容
+titleSuffix: Azure Cognitive Services
 description: 适用于 Azure 上 Microsoft 认知服务文本分析 API 的合作伙伴博客、youtube 视频、培训。
 services: cognitive-services
 author: HeidiSteen
@@ -7,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 63de50bac69c5b7358ee2e37f534d2f997fde592
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fbea686ba0f67cdab79f1553344bd99dd105fc00
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366654"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605243"
 ---
-# <a name="external--community-content-for-the-text-analytics-api"></a>适用于文本分析 API 的外部和社区内容
+# <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
 
  本文中的链接指向很有帮助的 Web 内容 - 由具有文本分析 API 经验的合作伙伴和专业人员开发和生成。
 

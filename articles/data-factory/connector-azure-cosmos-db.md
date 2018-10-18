@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: db2f3086da41e990e6f87d8086d6e8defa447532
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600330"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543418"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -34,10 +34,14 @@ ms.locfileid: "39600330"
 
 具体而言，此 Azure Cosmos DB 连接器支持：
 
-- Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction)。
+- 从/向 Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction) 复制数据。
+- 作为 INSERT 或 UPSERT 写入 Cosmos DB。
 - 按原样导入/导出 JSON 文档，或从/向表格数据集（例如 SQL 数据库、CSV 文件等）复制数据。要向/从 JSON 文件或另一 Cosmos DB 集合原样复制文档，请参阅[导入/导出 JSON 文档](#importexport-json-documents)。
 
 数据工厂与 [Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)集成，以便提供写入 Cosmos DB 的最佳性能。
+
+>[!TIP]
+>观看[此视频](https://youtu.be/5-SRNiC_qOU)，其中介绍了如何将数据从 Azure Blob 存储复制到 Cosmos DB，并描述了将数据引入 Cosmos DB 在性能调整方面的总体注意事项。
 
 ## <a name="getting-started"></a>入门
 

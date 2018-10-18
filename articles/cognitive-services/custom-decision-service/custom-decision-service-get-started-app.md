@@ -1,20 +1,21 @@
 ---
-title: 从应用调用 API - Azure 认知服务 | Microsoft Docs
-description: 如果从智能手机应用调用 API，如何开始使用 Azure 自定义 AI 决策服务。
+title: 从应用调用 API - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
+description: 如何从智能手机应用调用自定义 AI 决策服务 API。
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: slivkins
-ms.reviewer: marcozo, alekh
-ms.openlocfilehash: 2d02b0deaaa701dd0b4818638827c04e2c946558
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e7df982c178bff19dcad8df1ba42a5a97904cd4c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366831"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364987"
 ---
 # <a name="call-api-from-an-app"></a>从应用调用 API
 
@@ -66,7 +67,7 @@ curl -d @<request.json> -X POST https://ds.microsoft.com/api/v2/<appId>/rank --h
 curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST
 ```
 
-最后，需要提供操作集 API，这将返回自定义 AI 决策服务考虑的文章（操作）列表。 将此 API 实现为 RSS 馈送，如下所示：
+最后，需要提供操作集 API，这将返回自定义 AI 决策服务考虑的文章（操作）列表。 将此 API 实现为 RSS 源，如下所示：
 
 ```xml
 <rss version="2.0">
@@ -83,7 +84,7 @@ curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST
 </rss>
 ```
 
-此处，每个顶级 `<item>` 元素均描述一篇文章。 `<link>` 是必需的，由自定义 AI 决策服务用作操作 ID。 如果你的文章超过 15 篇，请指定 `<date>`（采用标准 RSS 格式）。 将使用 15 个最新文章。 `<title>` 是可选的，用于为文章创建与文本相关的功能。
+此处，每个顶级 `<item>` 元素各描述一篇文章。 `<link>` 是必需的，由自定义 AI 决策服务用作操作 ID。 如果你的文章超过 15 篇，请指定 `<date>`（采用标准 RSS 格式）。 将使用 15 个最新文章。 `<title>` 是可选的，用于为文章创建与文本相关的功能。
 
 ## <a name="next-steps"></a>后续步骤
 

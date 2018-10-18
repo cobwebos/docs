@@ -1,22 +1,23 @@
 ---
-title: Microsoft 文本翻译 API BreakSentence 方法 | Microsoft Docs
-description: 使用 Microsoft 文本翻译 API BreakSentence 方法。
+title: 文本翻译 API BreakSentence 方法
+titlesuffix: Azure Cognitive Services
+description: 使用文本翻译 API BreakSentence 方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 8ce6644d21b397ea0e7f2e71e3c3a5a96638eec5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366594"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124977"
 ---
-# <a name="text-api-30-breaksentence"></a>文本 API 3.0：BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
 
 标识文本段中的句子边界的位置。
 
@@ -34,17 +35,17 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>api-version</td>
     <td>必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>language</td>
+    <td>语言</td>
     <td>可选查询参数。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。</td>
   </tr>
   <tr>
-    <td>script</td>
+    <td>脚本</td>
     <td>可选查询参数。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。</td>
   </tr>
 </table> 
@@ -53,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>一个授权<br/>标头</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
@@ -85,7 +86,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 以下限制适用：
 
 * 数组最多可具有 100 个元素。
-* 包括空格在内，数组元素的文本值不能超过 10,000 个字符。
+* 数组元素的文本值不能超过 10,000 个字符（包括空格）。
 * 包括空格在内，请求中包含的整个文本不能超过 50,000 个字符。
 * 如果指定了 `language` 查询参数，则所有数组元素必须采用同一语言。 否则，将分别向每个数组元素应用语言自动检测。
 
@@ -121,7 +122,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -134,7 +135,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: b5484233c7d3d32e51098baad8c22ec51df8f0d8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260611"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542525"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个用于基于容器构建无服务器函数的框架。 作为一个开源项目，它在社区中获得了大规模的采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS][open-faas] 是一个用于基于容器构建无服务器函数的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -96,7 +96,7 @@ To verify that openfaas has started, run:
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-输出：
+输出。
 
 ```console
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
@@ -118,11 +118,11 @@ brew install faas-cli
 
 现在，OpenFaaS 已可运行，使用 OpenFaas 门户创建一个函数。
 
-单击“部署新函数”并搜索 **Figlet**。 选择 Figlet 函数，然后单击“部署”。
+单击“部署新函数”并搜索 Figlet。 选择 Figlet 函数，然后单击“部署”。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
-使用 curl 来调用该函数。 将下例中的 IP 地址替换为你的 OpenFaas 网关的 IP 地址。
+使用 curl 来调用该函数。 将下例中的 IP 地址替换为 OpenFaas 网关的 IP 地址。
 
 ```azurecli-interactive
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
@@ -149,7 +149,7 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 az group create --name serverless-backing --location eastus
 ```
 
-部署一个 `MongoDB` 类型的 CosmosDB 实例。 此实例需要一个唯一的名称，请将 `openfaas-cosmos` 更新为在你的环境中唯一的某个名称。
+部署一个 `MongoDB` 类型的 CosmosDB 实例。 此实例需要一个唯一的名称，请将 `openfaas-cosmos` 更新为环境中唯一的某个名称。
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
@@ -157,7 +157,7 @@ az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --
 
 获取 Cosmos 数据库连接字符串并将其存储在一个变量中。
 
-将 `--resource-group` 参数的值更新为你的资源组的名称，将 `--name` 参数的值更新为你的 Cosmos DB 的名称。
+将 `--resource-group` 参数的值更新为资源组名，将 `--name` 参数的值更新为 Cosmos DB 的名称。
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -202,7 +202,7 @@ mongoimport --uri=$COSMOS -c plans < plans.json
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-运行以下命令来创建函数。 将 `-g` 参数的值更新为你的 OpenFaaS 网关地址。
+运行以下命令来创建函数。 将 `-g` 参数的值更新为 OpenFaaS 网关地址。
 
 ```azurecli-interctive
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS

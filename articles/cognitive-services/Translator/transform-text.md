@@ -1,20 +1,21 @@
 ---
-title: 使用 Microsoft 文本翻译 API 转换文本 | Microsoft Docs
-description: 使用 Microsoft 文本翻译 API 转换文本。
+title: 转换文本 - 文本翻译 API
+titlesuffix: Azure Cognitive Services
+description: 使用文本翻译 API 转换文本。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5aa88f471a33a668b8385e46c2105a3139c142cb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365794"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123940"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
@@ -27,7 +28,7 @@ TransformText 方法是用于社交媒体的文本规范化函数，它返回输
 
 ## <a name="parameters"></a>parameters
 
-| 参数 | 说明 |
+| 参数 | Description |
 |:---|:---|
 | 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用键：“Authorization”和值："Bearer" + " " + access token。 有关详细信息，请转到此处。|
 | 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|

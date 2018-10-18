@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038007"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129533"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -72,7 +72,7 @@ ms.locfileid: "40038007"
 在流量管理器中实现对裸域的完全支持已列入我们的待开发功能中。 请[在我们的社区反馈站点上投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)，表达对此项功能的支持。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
-是的，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，执行地理和性能路由方法查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
+会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
 具体而言，是 [RFC 7871 – DNS 查询中的客户端子网](https://tools.ietf.org/html/rfc7871)，它提供[ DNS (EDNS0) 的扩展机制](https://tools.ietf.org/html/rfc2671)，可以从支持该机制的解析器传递客户端子网地址。
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>什么是 DNS TTL，它如何影响我的用户？
@@ -133,6 +133,39 @@ ms.locfileid: "40038007"
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>对于支持此路由类型的 API 版本，是否存在任何限制？
 
 是的。仅 API 2017-03-01 及更高版本支持地理路由类型。 不能使用旧的 API 版本创建地理路由类型的配置文件或向终结点分配地理区域。 如果使用旧的 API 版本从 Azure 订阅检索配置文件，则不会返回任何地理路由类型的配置文件。 另外，在使用旧的 API 版本时，如果返回的配置文件的终结点进行了地理区域分配，则不会显示该地理区域分配。
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>流量管理器子网流量路由方法
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>可以在哪些情况下使用子网路由？
+针对按 DNS 请求 IP 地址的源 IP 标识的特定用户组，子网路由可以为其提供不同的体验。 如果用户从公司总部连接到网站，则会显示不同的内容。 另一种情况是限制来自某些 ISP 的用户，使其只能访问仅支持 IPv4 连接的终结点（针对在使用 IPv6 时性能不佳的 ISP）。
+使用子网路由方法的另一个原因是其能与嵌套配置文件集中的其他配置文件配合使用。 例如，如果要使用地理路由方法对用户进行地域隔离，但想要对特定 ISP 使用不同的路由方法，则可以将具有子网路由方法的配置文件作为父级配置文件，并覆盖该 ISP 以使用特定的子级配置文件，并为其他所有人提供标准的地理配置文件。
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>流量管理器如何获取最终用户的 IP 地址？
+最终用户设备通常使用 DNS 解析器来代表他们执行 DNS 查找。 流量管理器将此类解析器的传出 IP 视为源 IP。 此外，子网路由方法还会查看是否存在随请求一起传递的 EDNS0 扩展客户端子网 (ECS) 信息。 如果存在 ECS 信息，则将该地址用于确定路由。 如果缺少 ECS 信息，则将查询的源 IP 用于路由。
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>使用子网路由时如何指定 IP 地址？
+可以通过两种方式指定与终结点相关联的 IP 地址。 首先，可以使用带有起始和结束地址的四分点十进制八位字节表示法来指定范围（例如，1.2.3.4-5.6.7.8 或 3.4.5.6-3.4.5.6）。 其次，可以使用 CIDR 表示法来指定范围（例如 1.2.3.0/24）。 可以指定多个范围，并且可以在范围集中使用这两种表示法类型。 存在一些限制。
+-   由于每个 IP 必须映射到单个终结点，因此地址范围不能重叠
+-   起始地址不能超过结束地址
+-   在CIDR表示法的下，“/”之前的 IP 地址应该是该范围的起始地址（例如 1.2.3.0/24 有效但 1.2.3.4.4/24 无效）
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>使用子网路由时如何指定回退终结点？
+在具有子网路由的配置文件中，如果没有子网映射到某个终结点，则所有与其他终结点不匹配的请求都将定向到此终结点。 强烈建议在配置文件中配置这样一个回退终结点，因为如果请求进入并且未映射到任何终结点或者如果它映射到终结点但该终结点存在问题，流量管理器将返回 NXDOMAIN 响应。
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>如果在子网路由类型配置文件中禁用终结点会发生什么？
+在具有子网路由的配置文件中，如果终结点已禁用，则流量管理器会像该终结点及其子网映射不存在一样运行。 如果收到与其 IP 地址映射匹配的查询且终结点已禁用，则流量管理器将返回回退终结点（没有映射的终结点），或者如果不存在回退终结点，将返回 NXDOMAIN 响应
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>流量管理器的多值流量路由方法
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>可以在哪些情况下使用多值路由？
+多值路由在单个查询响应中返回多个运行正常的终结点。 此方法的主要优势在于，如果某个终结点运行不正常，则客户端有多个选项可以进行重试，而无需另外进行 DNS 调用（这样做可能会从上游缓存返回相同的值）。 这适用于希望最大程度地减少停机时间、对可用性敏感的应用程序。
+另一种可以使用多值路由方法的情况是：终结点“双归属”于 IPv4 和 IPv6 地址，且你想在调用方启动与该终结点的连接时为其提供这两个选项。
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>使用多值路由会返回多少终结点？
+可以指定返回的最大终结点数，当收到查询时，多值路由将返回不超过该指定数量的正常运行的终结点。 此配置的最大值为 10。
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>使用多值路由时，会收到一组相同的终结点吗？
+我们无法保证在每个查询中都会返回相同的一组终结点。 此结果也受终结点的运行状况影响，在响应中不包括某些终结点时，说明它们可能存在问题
 
 ## <a name="real-user-measurements"></a>真实用户度量
 
@@ -257,7 +290,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 流量管理器当前不提供 IPv6 可寻址的名称服务器。 但是，IPv6 客户端仍可使用流量管理器连接到 IPv6 终结点。 客户端不会直接向流量管理器发出 DNS 请求， 而是使用递归 DNS 服务。 仅使用 IPv6 的客户端通过 IPv6 向递归 DNS 服务发送请求。 然后，该递归服务应该能够使用 IPv4 联系流量管理器名称服务器。
 
-流量管理器使用终结点的 DNS 名称做出响应。 要支持 IPv6 终结点，必须有一条可将终结点 DNS 名称指向 IPv6 地址的 DNS AAAA 记录。 流量管理器运行状况检查仅支持 IPv4 地址。 服务需要在相同的 DNS 名称中公开 IPv4 终结点。
+流量管理器使用终结点的 DNS 名称或 IP 地址做出响应。 要支持 IPv6 终结点，有两个选择。 可以将终结点添加为与 AAAA 记录相关联的 DNA 名称，流量管理器将对该终结点进行运行状况检查，并会在查询响应中将其作为 CNAME 记录类型返回。 还可以使用 IPv6 地址直接添加该终结点，流量管理器将在查询响应中返回 AAAA 类型记录。 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>流量管理器是否可用于同一区域中的多个 Web 应用？
 
@@ -300,6 +333,46 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 * 不支持 SNI 服务器端证书
 * 不支持客户端证书
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>添加终结点时是否使用 IP 地址或 DNS 名称？
+流量管理器支持使用三种方式添加终结点：DNS 名称、IPv4 地址和 IPv6 地址。 如果将终结点添加为 IPv4 或 IPv6 地址，查询响应将分别为记录类型 A 或 AAAA。 如果终结点已添加为 DNS 名称，则查询响应将为记录类型 CNAME。 请注意，仅在终结点的类型为“外部”时，才允许将终结点添加为 IPv4 或 IPv6 地址。
+三种终结点寻址类型支持所有路由方法和监视设置。
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>添加终结点时可以使用哪些类型的 IP 地址？
+流量管理器可使用 IPv4 或 IPv6 地址指定终结点。 下面列出了一些限制：
+- 不允许使用与保留的私有网络 IP 地址空间对应的地址。 其中包括 RFC 1918、RFC 6890、RFC 5737、RFC 3068、RFC 2544 和 RFC 5771 中包括地址
+- 地址不能包含任何端口号（可在配置文件配置设置中指定要使用的端口） 
+- 同一配置文件中的两个终结点不能具有相同的目标 IP 地址
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>可以在单个配置文件中使用不同的终结点寻址类型吗？
+不能，流量管理器不允许在单个配置文件中混合使用不同的终结点寻址类型（多值路由类型的配置文件除外，可在其中混合使用 IPv4 和 IPv6 寻址类型）
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>当传入查询的记录类型与与终结点寻址类型关联的记录类型不同时，会出现什么情况？
+当收到针对配置文件的查询时，流量管理器首先会根据指定的路由方法和终结点的运行状况查找需要返回的终结点。 然后，在根据下表返回响应之前，它会查看传入查询中请求的记录类型以及与终结点关联的记录类型。
+
+对于使用多值路由以外的任何路由方法的配置文件：
+|传入的查询请求|    终结点类型|  提供的响应|
+|--|--|--|
+|任意 |  A/AAAA/CNAME |  目标终结点| 
+|A |    A/CNAME | 目标终结点|
+|A |    AAAA |  无数据 |
+|AAAA | AAAA/CNAME |  目标终结点|
+|AAAA | A | 无数据 |
+|CNAME |    CNAME | 目标终结点|
+|CNAME  |A/AAAA | 无数据 |
+|
+对于将路由方法设置为多值路由的配置文件：
+
+|传入的查询请求|    终结点类型 | 提供的响应|
+|--|--|--|
+|任意 |  混合 A 和 AAAA | 目标终结点|
+|A |    混合 A 和 AAAA | 仅 A 类型的目标终结点|
+|AAAA   |混合 A 和 AAAA|     仅 AAAA 类型的目标终结点|
+|CNAME |    混合 A 和 AAAA | 无数据 |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>可以在嵌套配置文件中使用终结点采用 IPv4/IPv6 地址的配置文件吗？
+可以，有一种例外情况：多值类型的配置文件无法成为嵌套配置文件中的父级配置文件。
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>我在流量管理器配置文件中停止了 Azure 云服务/Web 应用程序终结点，但即使重启，也仍未收到任何流量。 如何解决此问题？
 
 当 Azure 云服务/Web 应用程序终结点停止时，流量管理器会停止检查其运行状况，仅当检测到终结点已重启时，才重新开始运行状况检查。 若要防止这种延迟，请在流量管理器配置文件中禁用该终结点，然后在重启该终结点后将其重新启用。   
@@ -326,9 +399,13 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 流量管理器监视设置是在每个配置文件级别设置的。 如果只需对一个终结点使用不同的监视设置，可将该终结点作为一个[嵌套式配置文件](traffic-manager-nested-profiles.md)，它的监视设置不同于父配置文件。
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>终结点运行状况检查使用什么主机头？
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>如何将 HTTP 标头分配给终结点的流量管理器运行状况检查？
+可以在流量管理器对终结点启动的 HTTP(S) 运行状况检查中指定自定义标头。 若要指定自定义标头，可在配置文件级别（适用于所有终结点）指定，也可在终结点级别指定。 如果在两个级别定义了标头，则在终结点级别指定的标头将覆盖在配置文件级别指定的标头。
+一个常见的用例是指定主机头，以便流量管理器请求可以正确地路由到多租户环境中托管的终结点。 另一个用例是从终结点的 HTTP(S) 请求日志中识别流量管理器请求
 
-流量管理器在 HTTP 和 HTTPS 运行状况检查中使用 host 标头。 流量管理器使用的 host 标头是在配置文件中配置的终结点目标名称。 在主机头中使用的值不能通过目标属性单独指定。
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>终结点运行状况检查使用什么主机头？
+如果未提供自定义主机头设置，流量管理器使用的主机头则为配置文件中配置的终结点目标的 DNS 名称（如果可用）。 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 

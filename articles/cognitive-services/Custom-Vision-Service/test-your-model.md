@@ -1,20 +1,21 @@
 ---
-title: 测试并重新训练模型 - 自定义影像服务 - Azure 认知服务 | Microsoft Docs
+title: 测试和重新训练模型 - 自定义影像服务
+titlesuffix: Azure Cognitive Services
 description: 了解如何测试图像，然后将其用于重新训练模型。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 1933b1a45844ac99308baebe59b49687a957abfa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366027"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367944"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自定义影像服务测试和重新训练模型
 
@@ -50,11 +51,11 @@ ms.locfileid: "35366027"
     > [!TIP]
     > 图像存在先后顺序，对分类器最有用的图像位于最上方。 若要选择不同排序依据，请使用“排序”部分。
 
-    若要将图像添加到训练数据，请依次选择该图像、“标记”，然后选择“保存并关闭”。 图像将从“预测”中删除并添加到训练图像中。 可选择“训练图像”选项卡查看该图像。
+    若要将图像添加到定型数据，请依次选择该图像和标记，然后选择“保存并关闭”。 图像将从“预测”中删除并添加到定型图像中。 可选择“定型图像”选项卡查看该图像。
 
     ![“标记”页面的图像](./media/test-your-model/tag-image.png)
 
-3. 使用“训练”按钮重新训练分类器。
+3. 使用“定型”按钮重新定型分类器。
 
 ## <a name="next-steps"></a>后续步骤
 

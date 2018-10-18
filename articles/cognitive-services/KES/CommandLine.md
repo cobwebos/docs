@@ -1,23 +1,26 @@
 ---
-title: 知识探索服务命令行接口 | Microsoft Docs
-description: 使用 KES 命令行接口从结构化数据生成索引和语法文件，并将其部署为 Microsoft 认知服务中的 Web 服务。
+title: 命令行接口 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 使用命令行接口从结构化数据生成索引和语法文件，并将其部署为 Web 服务。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136349"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127123"
 ---
 # <a name="command-line-interface"></a>命令行接口
-KES 命令行接口能够从结构化数据生成索引和语法文件，并将其部署为 Web 服务。  它用的是常规语法：`kes.exe <command> <required_args> [<optional_args>]`。  可运行没有参数的 `kes.exe` 以显示命令列表，或运行 `kes.exe <command>` 显示可用于指定命令的参数列表。  下面是可用命令列表：
+
+知识探索服务 (KES) 命令行接口能够从结构化数据生成索引和语法文件，并将其部署为 Web 服务。  它用的是常规语法：`kes.exe <command> <required_args> [<optional_args>]`。  可运行没有参数的 `kes.exe` 以显示命令列表，或运行 `kes.exe <command>` 显示可用于指定命令的参数列表。  下面是可用命令列表：
+
 * build_index
 * build_grammar
 * host_service

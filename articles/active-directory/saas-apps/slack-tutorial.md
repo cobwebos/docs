@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f79926d0d4729c6ad939bc604e9eb885dbe9f03
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421229"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
 
@@ -114,11 +114,8 @@ ms.locfileid: "39421229"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.slack.com`
 
-    b. 在“标识符”文本框中，键入 URL：`https://slack.com`
+    b. 在“标识符”文本框中，将值更新为登录 URL。 这是你的工作区域。 例如： `https://contoso.slack.com`
 
-    > [!NOTE] 
-    > 此值不是真实值。 必须使用实际登录 URL 更新此值。 请联系 [Slack 支持团队](https://slack.com/help/contact)来获取此值。
-     
 1. Slack 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录](./media/slack-tutorial/tutorial_slack_attribute.png)
@@ -206,7 +203,7 @@ ms.locfileid: "39421229"
 
     ![创建 Azure AD 测试用户](./media/slack-tutorial/create_aaduser_04.png)
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -220,6 +217,9 @@ ms.locfileid: "39421229"
 
 > [!NOTE]
 > 如果需要手动创建用户，则需联系 [Slack 支持团队](https://slack.com/help/contact)。
+
+> [!NOTE]
+> Azure AD Connect 是同步工具，可以将本地 Active Directory 标识同步到 Azure AD，然后这些同步的用户也可以像其他云用户一样使用应用程序。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

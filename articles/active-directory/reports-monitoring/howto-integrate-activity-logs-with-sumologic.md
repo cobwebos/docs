@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2a90e70a9e7951b298be408992ee5e5fc6332131
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d13eb22bd58dc7e680a27738549665bc2b691898
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729301"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392204"
 ---
 # <a name="integrate-azure-ad-logs-with-sumologic-by-using-azure-monitor-preview"></a>使用 Azure Monitor 将 Azure AD 日志与 SumoLogic 相集成（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "45729301"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * 启用了 SumoLogic 单一登录的订阅。
 
@@ -45,4 +45,4 @@ ms.locfileid: "45729301"
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
-* [常见问题解答和已知的问题](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

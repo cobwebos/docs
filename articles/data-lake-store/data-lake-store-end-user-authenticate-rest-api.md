@@ -1,6 +1,6 @@
 ---
-title: 最终用户身份验证：通过 Azure Active Directory 将 REST API 与 Data Lake Store 配合使用 | Microsoft Docs
-description: 了解如何使用 REST API 通过 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
+title: 最终用户身份验证：通过 Azure Active Directory 将 REST API 与 Azure Data Lake Storage Gen1 配合使用 | Microsoft Docs
+description: 了解如何通过 REST API 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7b339c989a21abff34b885a8cba219aba701ca79
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ea550c0959f5de13f013f135926251bf9f8b450f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624244"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124433"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>使用 REST API 进行 Data Lake Store 最终用户身份验证
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>通过 REST API 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]
 > * [使用 Java](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [使用 .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,20 +27,20 @@ ms.locfileid: "34624244"
 > 
 >  
 
-本文介绍如何使用 REST API 执行 Azure Data Lake Store 最终用户身份验证。 有关使用 REST API 的 Data Lake Store 服务到服务身份验证，请参阅[使用 REST API 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
+本文介绍如何使用 REST API 执行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 REST API 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 REST API 进行 Data Lake Storage Gen1 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-* **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
+* **创建 Azure Active Directory“本机”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)中的步骤。
 
-* **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Store 帐户进行 REST API 调用。
+* **[cURL](http://curl.haxx.se/)**。 本文使用 cURL 演示如何对 Data Lake Storage Gen1 帐户进行 REST API 调用。
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
 如果希望用户使用 Azure AD 登录到应用程序，则最终用户身份验证是建议的方法。 应用程序可访问 Azure 资源，其访问权限级别与已登录用户相同。 用户需要定期提供凭据，以使应用程序可继续访问。
 
-让最终用户登录的结果是会向应用程序授予访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Store 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，并且如果定期使用，默认情况下两周内有效。 可使用两种不同的最终用户登录方式。
+让最终用户登录的结果是会向应用程序授予访问令牌和刷新令牌。 访问令牌会附加到对 Data Lake Storage Gen1 或 Data Lake Analytics 作出的每个请求，默认情况下一小时内有效。 刷新令牌可用于获取新的访问令牌，并且如果定期使用，默认情况下两周内有效。 可使用两种不同的最终用户登录方式。
 
 在此方案中，应用程序提示用户登录，所有操作在用户的上下文中执行。 执行以下步骤：
 
@@ -71,7 +71,7 @@ ms.locfileid: "34624244"
    > 
    > 
 
-3. 响应是一个 JSON 对象，包含访问令牌（例如 `"access_token": "<ACCESS_TOKEN>"`）和刷新令牌（例如 `"refresh_token": "<REFRESH_TOKEN>"`）。 应用程序在访问 Azure Data Lake Store 时使用访问令牌，在访问令牌过期时使用刷新令牌获取另一个访问令牌。
+3. 响应是一个 JSON 对象，包含访问令牌（例如 `"access_token": "<ACCESS_TOKEN>"`）和刷新令牌（例如 `"refresh_token": "<REFRESH_TOKEN>"`）。 应用程序在访问 Azure Data Lake Storage Gen1 时使用访问令牌，在访问令牌过期时使用刷新令牌获取另一个访问令牌。
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
@@ -86,8 +86,8 @@ ms.locfileid: "34624244"
 有关交互式用户身份验证的详细信息，请参阅 [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx)（授权代码授予流）。
    
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Azure Data Lake Store 身份验证。 现可查看以下介绍如何使用 REST API 在 Azure Data Lake Store 中执行操作的文章。
+本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Azure Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 REST API 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 REST API 在Data Lake Store 上进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
-* [使用 REST API 在 Data Lake Store 上进行的数据操作](data-lake-store-data-operations-rest-api.md)
+* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-rest-api.md)
 

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341471"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982872"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -72,7 +72,7 @@ ms.locfileid: "37341471"
 - 不支持减小服务器存储大小。
 
 ### <a name="server-version-upgrades"></a>服务器版本升级
-- 目前不支持在主要数据库引擎版本之间进行自动迁移。
+- 目前不支持在主要数据库引擎版本之间进行自动迁移。 如果要升级到下一主要版本，请将其[转储和还原](./concepts-migrate-dump-restore.md)到使用新引擎版本创建的服务器。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 - 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
@@ -80,9 +80,6 @@ ms.locfileid: "37341471"
 
 ### <a name="vnet-service-endpoints"></a>VNet 服务终结点
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
-
-### <a name="subscription-management"></a>订阅管理
-- 目前不支持跨订阅和资源组动态移动预先创建的服务器。
 
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。

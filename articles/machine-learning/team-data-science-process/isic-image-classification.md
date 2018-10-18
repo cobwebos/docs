@@ -5,6 +5,7 @@ services: machine-learning, team-data-science-process
 documentationcenter: ''
 author: deguhath
 ms.author: deguhath
+manager: cgronlun
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
@@ -14,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
-ms.openlocfilehash: 427ea1f3f22855b2c54beacbfb89a8f7fd37cce0
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ee2e797f3838b8b6b36174d14c73e97fe9790315
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246411"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392806"
 ---
 # <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>使用用于计算机视觉的 Azure 机器学习包和 Team Data Science Process 进行皮肤癌图像分类
 
-本文介绍如何使用[用于计算机视觉的 Azure 机器学习包](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)来训练、测试和部署图像分类模型。 本示例在 [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation) 中使用 Team Data Science Process (TDSP) 结构和模板。 本演练提供完整的示例。 它使用 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) 作为深度学习框架，而训练则在[数据科学虚拟机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) GPU 计算机上进行。 部署使用 Azure 机器学习操作化 CLI。
+本文介绍如何使用[用于计算机视觉的 Azure 机器学习包](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)来训练、测试和部署图像分类模型。 本示例在 [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation) 中使用 Team Data Science Process (TDSP) 结构和模板。 本演练提供完整的示例。 它使用 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) 作为深度学习框架，而训练则在[数据科学虚拟机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) GPU 计算机上进行。 部署使用 Azure 机器学习操作化 CLI。
 
 计算机视觉领域中的许多应用程序都可归为解决图像分类问题。 这包括建立可回答“图像中是否存在对象？”等简单问题的模型， 这里的对象可能是指狗、车或船。 此外还包括更复杂问题（例如“此患者的视网膜扫描显示眼疾严重程度属于哪一级别？”）的答案。 用于计算机视觉的 Azure 机器学习包简化了图像分类数据处理和建模管道。 
 
@@ -32,7 +33,7 @@ ms.locfileid: "40246411"
 
 ## <a name="team-data-science-process-walkthrough"></a>Team Data Science Process 演练
 
-此演练使用 [Team Data Science Process](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) 生命周期。 本演练涵盖以下生命周期步骤。
+此演练使用 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 生命周期。 本演练涵盖以下生命周期步骤。
 
 ### <a name="1-data-acquisitionhttpsgithubcomazuremachinelearningsamples-amlvisionpackage-isicimageclassificationblobmastercode01dataacquisitionandunderstanding"></a>[1.数据采集](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification/blob/master/code/01_data_acquisition_and_understanding)
 国际皮肤成像协作 (ISIC) 数据集用于图像分类任务。 ISIC 是学术界和业界间展开的合作，旨在促进数字皮肤成像的应用，通过研究来确保减少黑色素瘤死亡率。 [ISIC 存档](https://isic-archive.com/#images)中包含 13,000 多张标记为良性或恶性的皮肤病变图像。 请从 ISIC 存档中下载一张样本图像。
@@ -71,13 +72,13 @@ ms.locfileid: "40246411"
 此步骤用于使建模步骤生成的模型可操作。 它介绍了先决条件和所需设置。 此外还解释了 Web 服务的使用。 本教程介绍的是如何使用用于计算机视觉的 Azure 机器学习包构建深度学习模型，并在 Azure 中使该模型可操作。
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关[用于计算机视觉的 Azure 机器学习包](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)的其他文档。
+- 阅读有关[用于计算机视觉的 Azure 机器学习包](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)的其他文档。
 - 阅读 [Team Data Science Process](https://aka.ms/tdsp) 文档，了解如何入门。
 
 
 ## <a name="references"></a>参考
 
-* [Azure Machine Learning package for computer vision](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)（用于计算机视觉的 Azure 机器学习包）
-* [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation)
+* [Azure Machine Learning package for computer vision](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)（用于计算机视觉的 Azure 机器学习包）
+* [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation)
 * [数据科学虚拟机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
 

@@ -3,14 +3,14 @@ title: 使用 Azure Site Recovery 执行 VMware 到 Azure 的复制的体系结�
 description: 本文概述了使用 Azure Site Recovery 将本地 VMware VM 复制到 Azure 时使用的组件和体系结构
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 08/29/2018
+ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288135"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715748"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware 到 Azure 复制体系结构
 
@@ -36,16 +36,23 @@ ms.locfileid: "43288135"
 
 ## <a name="replication-process"></a>复制过程
 
-1. 为 VM 启用复制后，将会根据复制策略开始复制。 
+1. 启用 VM 复制时，对 Azure 存储的初始复制将开始（使用指定复制策略）。 注意以下事项：
+    - VMware VM 复制是块级的几近不间断行为，使用 VM 上运行的移动服务代理。
+    - 应用任何复制策略设置：
+        - **RPO 阈值**。 此设置不影响复制。 它有助于监视。 如果当前 RPO 超过指定的阈值限制，将引发事件并可能发送电子邮件。
+        - **恢复点保留期**。 此设置指定在发生中断时想回退的时间长度。 高级存储上的最大保留期为 24 小时。 标准存储上为 72 小时。 
+        - **应用一致的快照**。 获取应用一致的快照的频率可能为每 1 到 12 个小时，具体取决于应用需求。 快照是标准的 Azure Blob 快照。 VM 上运行的移动代理在复制流中请求对应此设置的 VSS 快照和作为应用程序一致点的时间点书签。
+
 2. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以结合使用 Azure ExpressRoute 和[公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
-3. VM 数据的初始副本将复制到 Azure 存储。
-4. 完成初始复制后，开始将增量更改复制到 Azure。 计算机的受跟踪更改保存在 .hrl 文件中。
-5. 通信按如下方式发生：
+3. 完成初始复制后，开始将增量更改复制到 Azure。 对虚拟机的跟踪更改将发送到进程服务器。
+4. 通信按如下方式发生：
 
     - VM 通过 HTTPS 443 入站端口与本地配置服务器通信，进行复制管理。
     - 配置服务器通过 HTTPS 443 出站端口来与 Azure 协调复制。
     - VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
     - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
+
+
 
 
 **VMware 到 Azure 的复制过程**

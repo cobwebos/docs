@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: e7cd3032053b3628b94f93f3c7e00b6890afd4ca
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 7002e8a63ca0223a38ba099b17955a86034fa057
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916276"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295455"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>将 Azure 虚拟机复制到另一个 Azure 区域
 
@@ -36,6 +36,7 @@ ms.locfileid: "37916276"
     - **源**：VM 的起始点，在本例中为 **Azure**。
     - **源位置**：要在其中保护虚拟机的 Azure 区域。 在本演示中，源位置为“东亚”
     - **部署模型**：源计算机的 Azure 部署模型。
+    - **源订阅**：源虚拟机所属的订阅。 这可以是存在恢复服务保管库的同一 Azure Active Directory 租户中的任何订阅。
     - **资源组**：源虚拟机所属的资源组。 所选资源组下的所有 VM 都会在下一步中列出，以供保护。
 
     ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
@@ -46,6 +47,7 @@ ms.locfileid: "37916276"
 4. 在“设置”中，可以选择性地配置目标站点设置：
 
     - **目标位置**：要在其中复制源虚拟机数据的位置。 根据所选的计算机位置，Site Recovery 会提供合适目标区域的列表。 我们建议将目标位置与恢复服务保管库位置保持相同。
+    - **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅将与源订阅相同。
     - **目标资源组**：所有复制虚拟机所属的资源组。 默认情况下，Azure Site Recovery 会在目标位置中创建一个名称带有“asr”后缀的新资源组。 如果 Azure Site recovery 创建的资源组已存在，则会重复使用。 还可以选择对其进行自定义，如以下部分中所示。 目标资源组的位置可以是除托管源虚拟机区域以外的任何 Azure 区域。
     - **目标虚拟网络**：默认情况下，Site Recovery 会在目标区域中创建一个名称带有“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](site-recovery-network-mapping-azure-to-azure.md)网络映射。
     - **目标存储帐户（如果源 VM 不使用托管磁盘）**：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
@@ -60,7 +62,9 @@ ms.locfileid: "37916276"
 
 可以修改 Site Recovery 使用的默认目标设置。
 
-1. 单击“自定义:”修改默认设置：
+1. 单击“目标订阅”旁边的“自定义：”，修改默认目标订阅。 从同一 Azure Active Directory (AAD) 租户中可用的所有订阅列表中选择订阅。
+
+2. 单击“自定义:”修改默认设置：
     - 在“目标资源组”中，从订阅内目标位置中的所有资源组列表中选择资源组。
     - 在“目标虚拟网络”中，从目标位置中所有虚拟网络列表中选择网络。
     - 在“可用性集”中，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。

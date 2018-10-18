@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 6643db7b732cc5b01ce7602eb3d679c130c46720
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972190"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721313"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -43,7 +43,7 @@ Microsoft Azure 是唯一一个提供安全一致的应用程序平台和服务�
 
 ## <a name="scope"></a>范围
 
-本白皮书的焦点包括用于支持 Microsoft Azure 核心组件（即 [Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure 虚拟机模型](https://docs.microsoft.com/azure/virtual-machines/)以及用于管理这些组件的工具和基础结构）的安全功能。 它重点介绍了客户可用来履行保护数据安全和隐私职责的 Microsoft Azure 技术功能。
+本白皮书的焦点包括用于支持 Microsoft Azure 核心组件（即 [Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure 虚拟机模型](https://docs.microsoft.com/azure/virtual-machines/)以及用于管理这些组件的工具和基础结构）的安全功能和其他功能。 它重点介绍了客户可用来履行保护数据安全和隐私职责的 Microsoft Azure 技术功能。
 
 了解此共同责任模式对于迁移到云的客户至关重要。 云提供商为安全和合规性工作的实施带来了极大的优势，但这些优势并不表示客户就不用保护其用户、应用程序和服务产品。
 
@@ -167,8 +167,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 订阅也与目录相关联。 目录定义一组用户。 这些用户可以是创建该目录的公司或学校的用户，也可以是外部用户（即 Microsoft 帐户）。 订阅可由这些已被指定为服务管理员 (SA) 或共同管理员 (CA) 的目录用户的子集来访问；唯一的例外是，为了保持向后兼容，可以将 Microsoft 帐户（以前称为 Windows Live ID）指定为 SA 或 CA，而这些帐户不必存在于目录中。
 
-面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成工作。 
-  [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 通过对 Azure 提供细致的访问管理帮助解决此问题。
+面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成工作。 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 通过对 Azure 提供细致的访问管理帮助解决此问题。
 
 ![受保护的资源访问 ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 

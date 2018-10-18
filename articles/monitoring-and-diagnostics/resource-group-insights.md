@@ -9,15 +9,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 723006d37ed0570e32790a0bb70a3dce5a87ade8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346328"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465803"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -109,6 +109,11 @@ ms.locfileid: "43346328"
 在这种情况下，如果选择编辑，将看到这组可视化效果由 Azure Monitor Metrics 提供支持。
 
  ![Azure Metrics 的性能视图的屏幕截图](.\media\resource-group-insights\0012-performance-metrics.png)
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="enabling-access-to-alerts"></a>启用对警报的访问
+资源组的 Azure Monitor 需要特定权限才能访问资源组中的资源的警报状态。 如果在加载警报时看到错误消息，则表示你没有足够的权限。 让管理员授予你包含资源组的订阅的“所有者”或“参与者”角色。
 
 ## <a name="next-steps"></a>后续步骤
 

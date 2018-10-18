@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 07/20/2018
+ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5732f6986750dfee49084e2744052bb54e3a8139
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382561"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983995"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C 模块
 
 可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文展示了如何使用 Visual Studio Code (VS Code) 作为主要工具来开发和调试 C 模块。
 
 ## <a name="prerequisites"></a>先决条件
-本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 在开发计算机上模拟 IoT Edge 设备。
+本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 使用 IoT Edge 安全守护程序在开发计算机上模拟 IoT Edge 设备。
 
 > [!NOTE]
-> 本调试文章演示了如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 Linux amd64 容器中的 C 模块。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。 
+> 本调试文章演示了如何在模块容器中附加进程并使用 VS Code 对它进行调试。 只能调试 Linux amd64 容器中的 C 模块。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。
 
 因为本文使用 Visual Studio Code 作为主要开发工具，所以请安装 VS Code。 然后添加必要的扩展：
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -37,7 +37,7 @@ ms.locfileid: "43382561"
 * [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。 
 
-若要在设备上测试模块，你至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门中的步骤操作。 
+若要在设备上测试模块，你至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 快速入门中的步骤进行操作。 
 
 ## <a name="create-a-new-solution-template"></a>创建新的解决方案模板
 
@@ -97,7 +97,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
-2. 在 VS Code 命令面板中，输入并运行命令“Edge: 生成 IoT Edge 解决方案”。
+2. 在 VS Code 命令面板中，输入并运行“Azure IoT Edge: Build and Push IoT Edge solution”命令。
 3. 从命令面板中，选择你的解决方案的 `deployment.template.json` 文件。 
 4. 在 Azure IoT 中心 Device Explorer 中，右键单击某个 IoT Edge 设备 ID。 然后，选择“为单个设备创建部署”。 
 5. 打开你的解决方案的 **config** 文件夹。 然后选择 `deployment.json` 文件。 选择“选择 Edge 部署清单”。 
@@ -111,7 +111,7 @@ VS Code 将调试配置信息保存在 `launch.json` 文件中，该文件位于
 
 1. 导航到 VS Code 调试视图。 选择你的模块的调试配置文件。 调试选项名称应类似于“ModuleName 远程调试(C)”
 
-   ![选择调试配置](./media/how-to-develop-c-module/debug-config.png).
+   ![选择调试配置](./media/how-to-develop-c-module/debug-config.png)
 
 2. 导航到 `main.c`。 在此文件中添加一个断点。
 

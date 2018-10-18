@@ -11,15 +11,15 @@ ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 61cb9fadd60ba35f11e2f3ade94bc647fac9ed72
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1635d0fa51fb56f30dc7cf5864e49000d30cc25d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235917"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719777"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
 
@@ -40,7 +40,7 @@ ms.locfileid: "35235917"
 如果正在运行 .NET Core 控制台应用程序，请使用密钥保管库来安全地保存你的密钥。
 
 ### <a name="save-secret-settings-in-azure-key-vault"></a>在 Azure 密钥保管库中保存密钥设置
-如果正在开发一个团队项目，并需要安全地共享源代码，请使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+如果正在开发一个项目，并需要安全地共享源代码，请使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 1. 在 Azure 订阅中创建密钥保管库。 填写 UI 上的所有必填字段，然后单击边栏选项卡底部的“创建”
 
@@ -106,14 +106,13 @@ ms.locfileid: "35235917"
 2. 创建类似于以下的文件。 将其保存在你的项目文件夹外部的某个位置下。
 
     ```xml
-
-       <root>
-              <secrets ver="1.0">
-                     <secret name="secret1" value="foo_one" />
-                        <secret name="secret2" value="foo_two" />
-                       </secrets>
-      </root>
-      ```
+    <root>
+        <secrets ver="1.0">
+            <secret name="secret1" value="foo_one" />
+            <secret name="secret2" value="foo_two" />
+        </secrets>
+    </root>
+    ```
 
 3. 将密钥文件定义为 Web.config 文件中的配置生成器。 将该部分置于 appSettings 部分前。
 

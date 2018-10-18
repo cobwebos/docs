@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b71e6d41dcdd7efb2d179486f9195c14dae97194
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037615"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45570447"
 ---
 | 资源 | 最大限制 |说明|
 | --- | --- |---|
@@ -22,11 +22,14 @@ ms.locfileid: "39037615"
 | 每个自动化帐户每 30 秒可以导入的模块的最大数量 |5 ||
 | 一个模块的最大大小 |100 MB ||
 | 作业运行时间 - 免费层 |每个订阅每个日历月 500 分钟 ||
-| 每个沙盒允许的最大磁盘空间 <sup>1</sup> |1 GB |仅适用于 Azure 沙盒|
+| 每个沙盒允许的最大磁盘空间 **<sup>1</sup>** |1 GB |仅适用于 Azure 沙盒|
 | 给定到沙盒的最大内存量 **<sup>1</sup>** |400 MB |仅适用于 Azure 沙盒|
 | 每个沙盒允许的最大网络套接字数量 **<sup>1</sup>** |1000 |仅适用于 Azure 沙盒|
 | 每个 runbook 允许的最大运行时 **<sup>1</sup>** |3 小时 |仅适用于 Azure 沙盒|
 | 订阅中自动化帐户的最大数目 |无限制 ||
 |单个混合 Runbook 辅助角色上可运行的最大并发作业数|50 ||
+| Runbook 作业参数大小上限   | 512 kb||
+| Runbook 参数数量上限   | 50|可以将 JSON 或 XML 字符串传递给参数，并在达到 50 个参数的限制时使用 Runbook 对其进行分析|
+| Webhook 有效负载大小上限 |  512 kb|
 
 <sup>1</sup> 沙盒是可由多个作业使用的共享环境，使用相同沙盒的作业受到该沙盒的资源限制的约束。

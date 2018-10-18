@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8e1c194ea2ebc0e06918c8389c9ee6f72afb3e86
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: fb7ec0a6e96a9665782f85cf8a7fc496e20a9a5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887782"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576017"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>通过添加虚拟机规模集扩大 Service Fabric 群集
 本文介绍如何通过将新的虚拟机规模集添加到现有群集来扩大 Azure Service Fabric 群集。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集后，可以纵向缩放群集节点类型（更改节点资源）、升级节点类型 VM 的操作系统或将新的虚拟机规模集添加到现有群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -34,7 +34,7 @@ ms.locfileid: "42887782"
 以下是主节点类型 VM 的 VM 大小和操作系统的更新过程。  升级后，主节点类型 VM 的大小为标准 D4_V2，并且运行带容器的 Windows Server 2016 Datacenter。
 
 > [!WARNING]
-> 在生产群集上尝试执行此过程之前，建议先研究示例模板并对测试群集验证此过程。 该群集也会有段时间不可用。
+> 在生产群集上尝试执行此过程之前，建议先研究示例模板并对测试群集验证此过程。 该群集也会有段时间不可用。 不能并行对声明为相同 NodeType 的多个 VMSS 执行更改，需要执行单独的部署操作来单独为每个 NodeType VMSS 应用更改。
 
 1. 使用这些示例[模板](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json)和[参数](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json)文件部署包含两种节点类型和两个规模集（每种节点类型一个规模集）的初始群集。  这两个规模集的大小均为标准 D2_V2，并且都运行 Windows Server 2012 R2 Datacenter。  等待群集完成基线升级。   
 2. 可选：向群集部署有状态示例。

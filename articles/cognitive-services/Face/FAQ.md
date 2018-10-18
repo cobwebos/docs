@@ -1,22 +1,24 @@
 ---
-title: 人脸 API 服务常见问题解答 | Microsoft Docs
+title: 常见问题解答 - 人脸 API
+titlesuffix: Azure Cognitive Services
 description: 获取人脸 API 服务的最常见问题解答。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: sbowles
-ms.openlocfilehash: da2f75deef8a8beea3ba23b6a39eb6d2fe104b54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b30fa0fbbd655c03800dadb19cc2568d404204d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365453"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129550"
 ---
 # <a name="face-api-frequently-asked-questions"></a>人脸 API 常见问题解答
+
 ### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-face-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>如果本 FAQ 无法解答你的问题，请尝试在 [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) 上的人脸 API 服务社区中提问，或在 [UserVoice](https://cognitive.uservoice.com/) 上联系帮助和支持人员。
 
 -----

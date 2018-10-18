@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206065"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731965"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
@@ -50,7 +50,7 @@ ms.locfileid: "39206065"
 
 1. 选择“仪表板”选项卡。
 
-1. 打开“设计模式”。
+1. 单击“编辑模板”。
 
     ![设计模式已打开](media/howto-use-device-sets/image3.png)
 
@@ -58,9 +58,6 @@ ms.locfileid: "39206065"
 
 1. 添加链接磁贴：
     1. 在右窗格中选择“链接”。
-
-        ![选择链接](media/howto-use-device-sets/image6.png)
-
     1. 为链接指定**标题**。
     1. 选择单击该链接时要打开的 URL。
     1. 为链接提供说明，该说明将显示在**标题**下面。
@@ -87,38 +84,26 @@ ms.locfileid: "39206065"
     > [!NOTE]
     > 可以添加多个图像、链接和网格。
   
-    1. 关闭“设计模式”。
+    1. 单击“Done”（完成） 。
 
     ![设计模式已关闭](media/howto-use-device-sets/image10.png)
 
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>在设备集仪表板中配置位置地图 
-可以添加位置地图，在地图中直观呈现设备集的位置。 
+可以添加位置地图，在地图中直观呈现设备集的位置。
 
 若要向设备集仪表板添加位置地图，必须在设备模板中配置位置属性（请参阅[创建由 Azure Maps 提供技术支持的位置属性](howto-set-up-template.md)）。
 
 
-1. 在设备集仪表板中，选择库中的“地图”。 
+1. 在设备集仪表板中，选择库中的“地图”。
 
     ![设备集仪表板地图](media/howto-use-device-sets/LocationMaps1.png)
 
-
 2. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
-
-    ![配置仪表板地图](media/howto-use-device-sets/LocationMaps2.png)
-
 3. 保存设置，此时会看到显示设备集中设备的位置的地图图块。
-
-    ![保存仪表板地图](media/howto-use-device-sets/LocationMaps3.png)
-
-
-5. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！ 
-
-    ![仪表板地图操作者视图](media/howto-use-device-sets/LocationMaps4.png)
-
-    可以根据需要重设地图大小。
-
-    单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
+4. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！ 
+    
+[!NOTE] 可以根据需要重设地图大小。 单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表

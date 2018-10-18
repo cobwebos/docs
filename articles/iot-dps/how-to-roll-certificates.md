@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976748"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387882"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
@@ -52,7 +52,7 @@ ms.locfileid: "46976748"
 
 在设备上滚动更新新叶证书后，设备不再可以连接到 IoT 中心，因为它使用新证书进行连接。 IoT 中心只会识别具有旧证书的设备。 设备尝试连接会导致“未授权”连接错误。 若要解决此错误，必须更新设备的注册条目，以采用设备的新叶证书。 然后，在重新预配设备时，预配服务可根据需要更新 IoT 中心设备注册表信息。 
 
-如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则建立这种连接可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则会识别该设备。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
+如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则建立这种连接可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则会识别该设备。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
 
 可在“管理注册”页上更新已滚动更新的证书的注册条目。 若要访问该页，请遵循以下步骤：
 

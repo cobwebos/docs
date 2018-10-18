@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440657"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542576"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -118,7 +118,7 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 
 1. 打开 TrustFrameworkBase.xml 文件并搜索 `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`。
 2. 查看此技术配置文件的配置。 观察如何将用户交换定义为需要用户响应的声明（输入声明），以及预期需要自我断言提供程序返回的声明（输出声明）。
-3. 搜索 `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`，可以看到此配置文件已作为 `<UserJourney Id="ProfileEdit">` 的业务流程步骤 4 调用。
+3. 搜索 `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`，可以看到此配置文件已作为 `<UserJourney Id="ProfileEdit">` 业务流程的第 5 步调用。
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>步骤 4：上传并测试配置文件编辑 RP 策略文件
 

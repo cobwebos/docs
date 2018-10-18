@@ -1,20 +1,21 @@
 ---
-title: 知识探索服务 API 中的 CalcHistogram 方法 | Microsoft Docs
-description: 了解如何在认知服务中使用知识探索服务 (KES) API 中的 CalcHistogram 方法。
+title: CalcHistogram 方法 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 了解如何在知识探索服务 (KES) API 中使用 CalcHistogram 方法。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6ed694b0cc9cf41b815cc54b9f6d12adb2b7cd64
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365475"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122750"
 ---
 # <a name="calchistogram-method"></a>calchistogram 方法
 calchistogram 方法可计算与结构化查询表达式匹配的对象，并计算其属性值的分布。
@@ -22,7 +23,7 @@ calchistogram 方法可计算与结构化查询表达式匹配的对象，并计
 ## <a name="request"></a>请求
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-名称|值|说明
+名称|值|Description
 ----|-----|-----------
 expr | 文本字符串 | 指定用于计算直方图的索引实体的结构化查询表达式。
 attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以逗号分隔的属性列表。
@@ -30,7 +31,7 @@ attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以�
 offset  | 数字（默认值为 0） | 要返回的第一个结果的索引。
 
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath | 说明
+JSONPath | Description
 ----|----
 $.expr | expr 参数来自请求。
 $.num_entities | 匹配实体的总数。

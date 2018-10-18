@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store Hive 性能优化指南 | Microsoft 文档
-description: Azure Data Lake Store Hive 性能优化指南
+title: Azure Data Lake Storage Gen1 Hive 性能优化指南 | Microsoft Docs
+description: Azure Data Lake Storage Gen1 Hive 性能优化指南
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9d0ad0398dfc238d48060247cdb6f29b0f34a60
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198963"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123328"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Hive on HDInsight 和 Azure Data Lake Store 性能优化指南
+# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
-已设置默认设置，以便针对许多不同用例提供良好性能。  对于 I/O 密集型查询，可以优化 Hive 以获取更好的 ADLS 性能。  
+已设置默认设置，以便针对许多不同用例提供良好性能。  对于 I/O 密集型查询，可以优化 Hive 以获取更好的 Azure Data Lake Storage Gen1 性能。  
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Store 帐户访问权限的**Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Store 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* **Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上运行 Hive**。  要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅 [在 HDInsight 上使用 Hive] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **ADLS 性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Store 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>parameters
 
-下面是为提高 ADLS 性能要优化的最重要设置：
+下面是为提高 Data Lake Storage Gen1 性能要优化的最重要设置：
 
 * **hive.tez.container.size** - 每个任务使用的内存量
 
@@ -63,7 +63,7 @@ ms.locfileid: "34198963"
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-提高使用 ADLS 的性能的关键是尽可能多地增加并发性。  Tez 会自动计算应创建的任务数，因此无需设置它。   
+提高使用 Data Lake Storage Gen1 的性能的关键是尽可能多地增加并发性。  Tez 会自动计算应创建的任务数，因此无需设置它。   
 
 ## <a name="example-calculation"></a>示例计算
 
@@ -75,9 +75,9 @@ ms.locfileid: "34198963"
 
 ## <a name="limitations"></a>限制
 
-**ADLS 限制** 
+**Data Lake Storage Gen1 限制** 
 
-如果达到 ADLS 所提供的带宽限制，将开始看到任务失败。 这可以通过观察任务日志中的限制错误来确定。  可以通过增加 Tez 容器大小来减少并行度。  如果作业需要更多并发性，请与我们联系。
+如果达到 Data Lake Storage Gen1 提供的带宽限制，将开始出现任务失败。 这可以通过观察任务日志中的限制错误来确定。  可以通过增加 Tez 容器大小来减少并行度。  如果作业需要更多并发性，请与我们联系。
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 

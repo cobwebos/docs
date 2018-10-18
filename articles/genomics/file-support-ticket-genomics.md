@@ -1,23 +1,21 @@
 ---
-title: Microsoft 基因组学：如何创建支持请求 | Microsoft Docs
+title: Microsoft 基因组学：如何提交支持请求 | Microsoft Docs
 titleSuffix: Azure
-description: 详细了解如何创建支持票证
+description: 本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用疑难解答指南或 FAQ 解决问题时十分有用。
 keywords: 故障排除, 错误, 调试, 支持
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: b50de691c9ac6085a416405ece600afcb5575e92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658949"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734363"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
 本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.md)解决问题时十分有用。 

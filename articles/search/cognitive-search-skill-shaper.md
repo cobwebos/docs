@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 311f4bd67081de567763783a9d86540eda36d9f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786766"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728991"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -27,6 +27,8 @@ ms.locfileid: "33786766"
 
 在响应中，输出名称始终为“输出”。 管道可在内部映射不同名称，例如将以下示例中的“analyzedText”映射为“output”，但整形程序技能自身会在响应中返回“output”。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
+> [!NOTE]
+> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
@@ -154,6 +156,6 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)
 

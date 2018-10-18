@@ -9,14 +9,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/23/2018
+ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 6d15405ef22f47dc8a94c07d9d09d343a743408e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a52ba16d7c8548d378d1b13a85fc1fd1070144e8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094546"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128377"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -308,23 +308,40 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, Trac
 
 若要使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 创建订阅，请运行 [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) 命令。
 
-该命令需要可调用函数的终结点 URL。 以下示例演示 URL 模式：
+该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
-```
-https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
-```
+#### <a name="version-2x-runtime"></a>2.x 版运行时
+
+    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+
+#### <a name="version-1x-runtime"></a>1.x 版运行时
+
+    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
 系统密钥是必须包含在事件网格触发器终结点 URL 中的授权密钥。 以下部分介绍如何获取系统密钥。
 
 下面是一个订阅 Blob 存储帐户的示例（包含系统密钥的占位符）：
 
+#### <a name="version-2x-runtime"></a>2.x 版运行时
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
 --provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name glengablobstorage --name myFuncSub  \
+--resource-name myblobstorage12345 --name myFuncSub  \
 --included-event-types Microsoft.Storage.BlobCreated \
 --subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://glengastorageevents.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=LUwlnhIsNtSiUjv/sNtSiUjvsNtSiUjvsNtSiUjvYb7XDonDUr/RUg==
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+```
+
+#### <a name="version-1x-runtime"></a>1.x 版运行时
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup \
+--provider-namespace Microsoft.Storage --resource-type storageAccounts \
+--resource-name myblobstorage12345 --name myFuncSub  \
+--included-event-types Microsoft.Storage.BlobCreated \
+--subject-begins-with /blobServices/default/containers/images/blobs/ \
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
 
 有关如何创建订阅的详细信息，请参阅 [Blob 存储快速入门](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account)或其他事件网格快速入门。
@@ -334,10 +351,10 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 可以使用以下 API (HTTP GET) 获取系统密钥：
 
 ```
-http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-这是一个管理 API，因此它需要函数应用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和主密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。 
+这是一个管理 API，因此它需要函数应用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和主密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。
 
 下面是提供系统密钥的响应示例：
 
@@ -354,7 +371,12 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 }
 ```
 
-有关详细信息，请参阅 HTTP 触发器参考文章中的[授权密钥](functions-bindings-http-webhook.md#authorization-keys)。 
+可以从门户中的“函数应用设置”选项卡获取函数应用的主密钥。
+
+> [!IMPORTANT]
+> 主密钥提供对函数应用的管理员访问权限。 不要与第三方共享此密钥或将其分发到本机客户端应用程序中。
+
+有关详细信息，请参阅 HTTP 触发器参考文章中的[授权密钥](functions-bindings-http-webhook.md#authorization-keys)。
 
 或者，可以发送 HTTP PUT 以自行指定密钥值。
 
@@ -475,7 +497,7 @@ https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionN
 ``` 
 对于 Functions 2.x，请使用以下终结点模式：
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ``` 
 `functionName` 参数必须是在 `FunctionName` 特性中指定的名称。
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 59b33bcc75890372a7b27b9aca40ad1e22c58281
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c60dc354fa0c5f64ece9acae95744477c145bc27
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364272"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393620"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-by-using-azure-monitor-preview"></a>使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "46364272"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * 适用于 Splunk 的 Azure Monitor 加载项。 [下载并配置 Splunk 实例](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md)。
 
@@ -55,4 +55,4 @@ ms.locfileid: "46364272"
 
 * [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
-* [常见问题解答和已知的问题](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

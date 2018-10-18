@@ -10,12 +10,12 @@ ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf2fcb2ce99d4c6c670e5afdb1c4208158ea4de
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095903"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385526"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
 Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。 本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。  
@@ -43,7 +43,7 @@ Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓
 
 **场景 2：** 当前工作数据集不适合放置在缓存中，引发物理读取困难，导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
 
-**场景 3：** 查询运行速度慢的原因可能与缓存无关。 [排查](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)可能导致查询速度变慢的其他方面的情况。 也可以考虑[缩减实例](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)，通过缩减缓存大小来节省成本。 
+**场景 3：** 查询运行速度慢的原因可能与缓存无关。 [排查](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)可能导致查询速度变慢的其他方面的情况。 也可以考虑[缩减实例](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)，通过缩减缓存大小来节省成本。 
 
 **场景 4：** 你使用了冷缓存，这可能是查询速度慢的原因。 考虑重新运行查询，因此工作数据集现在应该位于缓存中。 
 

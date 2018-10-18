@@ -1,26 +1,22 @@
 ---
-title: Azure AD 常见问题解答 | Microsoft Docs
-description: “Azure Active Directory 常见问题解答”提供的常见问题解答涉及 Azure 和 Azure Active Directory、密码管理和应用程序访问。
+title: Azure Active Directory - 常见问题解答 | Microsoft Docs
+description: 了解有关 Azure 和 Azure Active Directory、密码管理以及应用程序访问的常见问题和解答。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141716"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294896"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -48,14 +44,13 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 - - -
 
-**问：订阅管理员和目录管理员的区别是什么？**
+问：所有者与全局管理员之间的差异是什么？
 
-**答：** 默认情况下，当用户注册 Azure 时，系统会为其分配订阅管理员角色。 订阅管理员可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
+答：默认情况下，系统会将注册 Azure 订阅的人员指派为 Azure 资源的所有者角色。 所有者可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
 
-如果其他人需要使用同一个订阅登录和访问服务，则可将其添加为共同管理员。 此角色具有与服务管理员一样的访问特权，但不能更改订阅与 Azure 目录之间的关联关系。  有关订阅管理员的其他信息，请参阅[如何添加或更改 Azure 管理员角色](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)和[Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)。
+如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
-
-Azure AD 提供另一组管理员角色来管理与目录和标识相关的功能。  这些管理员将有权访问 Azure 门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
+默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 全局管理员有权访问所有 Azure AD 目录功能。 Azure AD 提供一组不同的管理员角色，用于管理目录和标识相关的功能。 这些管理员将有权访问 Azure 门户中的各种功能。 管理员的角色决定了其所能执行的操作，例如创建或编辑用户、向其他用户分配管理角色、重置用户密码、管理用户许可证，或者管理域。  有关 Azure AD 目录管理员及其角色的其他信息，请参阅[在 Azure Active Directory 中向用户分配管理员角色](active-directory-users-assign-role-azure-portal.md)和[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
 
 另外，Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合性的企业级管理和安全解决方案来弥补其他 Web 服务（例如 Office 365 和 Microsoft Azure）的不足。
 
@@ -77,7 +72,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：** 可以使用 Azure AD Connect 将本地目录连接到 Azure AD。
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 - - -
 **问：如何设置本地目录与云应用程序之间的 SSO？**
@@ -86,7 +81,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 可以通过联合身份验证解决方案（例如 Active Directory 联合身份验证服务 (AD FS)）或通过配置密码哈希同步，轻松地从本地实现 SSO。可以使用 Azure AD Connect 配置向导轻松部署这两个选项。
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../connect/active-directory-aadconnect.md)。
+有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 - - -
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
@@ -100,7 +95,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：** 可以。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
 
-有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../connect-health/active-directory-aadconnect-health.md)。  
+有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../hybrid/whatis-hybrid-identity-health.md)。  
 
 - - -
 ## <a name="password-management"></a>密码管理
@@ -157,14 +152,13 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 有关预先集成的应用程序的完整列表，请参阅 [Active Directory 市场](https://azure.microsoft.com/marketplace/active-directory/)。
 
 - - -
-
-  **问：如果 Azure AD 市场中没有我需要的应用程序怎么办？**
+**问：如果 Azure AD 市场中没有我需要的应用程序怎么办？**
 
 **答：** 使用 Azure AD Premium，可以添加和配置所需的任何应用程序。 可以根据应用程序的功能和喜好来配置 SSO 和自动预配。  
 
 有关详细信息，请参阅：
 
-* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](../manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
@@ -209,7 +203,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：** 使用 Azure AD 可以在许多流行的云 (SaaS) 应用中自动创建、维护和删除用户标识。
 
-有关详细信息，请参阅[使用 Azure Active Directory 自动预配和取消预配 SaaS 应用程序的用户](../active-directory-saas-app-provisioning.md)。
+有关详细信息，请参阅[使用 Azure Active Directory 自动预配和取消预配 SaaS 应用程序的用户](../manage-apps/user-provisioning.md)。
 
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**

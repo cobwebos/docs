@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 42fde31851968434eef2983f24b0fd01d5386d7e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8045a7c775bd79cf46ba2de3609541023e9208a8
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906253"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575706"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure 安全性和符合性蓝图 - 针对 FFIEC 金融服务的分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "37906253"
 
 此参考体系结构、实施指南和威胁模型共同构成客户符合 FFIEC 要求的基础。 本解决方案提供了一个基线，可帮助客户按符合 FFIEC 要求的方式将工作负荷部署到 Azure 中；但是，本解决方案不得在生产环境中“原样”使用，理由是需要附加配置。
 
-合格的审核员必须就一个生产客户解决方案进行证实，这样才能符合 FFIEC 的要求。 审核由 FFIEC 成员机构中的检查员进行监督，这些机构包括联邦储备系统理事会 (FRB)、联邦存款保险公司 (FDIC)、国家信用合作社管理局 (NCUA)、货币监理署 (OCC) 和消费者金融保护局 (CFPB)。 上述检查员就审核是否由独立于被审机构的评审员实施进行证实。 客户负责针对使用本体系结构构建的任何解决方案开展相应的安全性与符合性评估；具体要求根据客户的每种实施方式具体情况而异。
+合格的审核员必须就一个生产客户解决方案进行证实，这样才能符合 FFIEC 的要求。 审核由 FFIEC 成员机构中的检查员进行监督，这些机构包括联邦储备系统理事会 (FRB)、联邦存款保险公司 (FDIC)、国家信用合作社管理局 (NCUA)、货币监理署 (OCC) 和消费者金融保护局 (CFPB)。 上述检查员就审核是否由独立于被审机构的评审员实施进行证实。 客户有责任对使用本体系结构构建的任何解决方案进行相应的安全性与符合性评估，因为具体要求可能会因客户的具体实施情况而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 
@@ -31,9 +31,9 @@ ms.locfileid: "37906253"
 
 Azure 为客户提供各种报告和分析服务。 此解决方案将 Azure 机器学习服务与 Azure SQL 数据库 相结合，从而快速浏览数据并通过更智能的客户数据建模更快传递结果。 Azure 机器学习通过探索数据集间的新关系加快查询速度。 一旦通过多个统计函数训练数据，最多 7 个额外查询池（包括客户服务器一共 8 个）可以与相同的表格模式同步，从而分散查询工作负荷并减少响应时间。
 
-对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure 机器学习和 Azure SQL 数据库都可以响应客户使用情况进行扩展、收缩或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 作为最佳做法，Azure 建议使用受信任的证书颁发机构来增强安全性。
+对于增强的分析和报告，可以通过列存储索引配置 Azure SQL 数据库。 Azure 机器学习和 Azure SQL 数据库都可以响应客户使用情况进行纵向扩展、减少或关闭。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 作为最佳做法，Azure 建议使用受信任的证书颁发机构来增强安全性。
 
-一旦数据上传到 Azure SQL 数据库并被 Azure 机器学习训练，操作用户和 SQL/数据管理员通过 Power BI 提取其摘要。 Power BI 直观地显示数据，并整合多个数据集的信息以提供更好的见解。 其高度适应性和与 Azure SQL 数据库的轻松集成可确保客户按照自己的业务需求进行配置，从而处理各种情况。
+一旦数据上传到 Azure SQL 数据库并被 Azure 机器学习训练，操作用户和 SQL/数据管理员通过 Power BI 提取其摘要。 Power BI 直观地显示数据，并整合多个数据集的信息以提供更好的见解。 它具有很高的适应性，并能够与 Azure SQL 数据库轻松集成。因此，客户可以按照自己的业务需求进行配置，处理各种情况。
 
 该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 在客户选择的数据中心存储三个数据副本，以提供复原能力。 地理冗余的存储确保将数据复制到数百英里以外的辅助数据中心，且同样在该数据中心存储三个副本，防止客户主要数据中心的不利事件导致数据丢失。
 
@@ -126,9 +126,9 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 - [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 使客户能够最大限度地减少有权访问特定信息的用户数量。 管理员可以使用 Azure Active Directory Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 还可以根据需要，使用此功能来实施按需、实时的管理访问。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可以检测会影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
-**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
+**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护和访问此类数据：
 
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -140,7 +140,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 
 **Azure 安全中心**：借助 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负荷中集中应用和管理安全策略、限制威胁曝露，以及检测和应对攻击。 此外，Azure 安全中心会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
-Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组预定义的[安全警报](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/en-us/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
+Azure 安全中心使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 Azure 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)，这些警报在出现威胁或可疑活动时触发。 客户可以使用 Azure 安全中心的[自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，根据从环境中收集到的数据定义新的安全警报。
 
 Azure 安全中心提供区分优先级的安全警报和事件，让客户更轻松地发现和解决潜在安全问题。 针对检测到的每种威胁生成[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)，帮助事件响应团队调查和解决威胁。
 
@@ -155,7 +155,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
 - [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
-- [代理运行状况](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
 
 **Azure 自动化**：[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 Azure SQL 数据库收集日志。 自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案使得客户能够轻松识别环境中的更改。

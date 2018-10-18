@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144823"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498498"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
-Azure 包括可靠的网络基础结构以支持应用程序和服务连接需求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间，以及 Internet 与 Azure 之间都可能存在网络连接。
+网络安全可以定义为通过对网络流量应用控制来保护资源遭受未经授权的访问或攻击的过程。 目标是确保仅允许合法流量。 Azure 包括可靠的网络基础结构以支持应用程序和服务连接需求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间，以及 Internet 与 Azure 之间都可能存在网络连接。
 
 本文介绍 Azure 在网络安全方面提供的某些选项。 具体内容：
 
@@ -77,7 +77,11 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC 实时 VM 访问
 
-[Azure 安全中心](../security-center/security-center-just-in-time.md)可以管理 VM 上的 NSG，并将 VM 的访问权限锁定到具有相应基于角色的访问控制 ([RBAC](../role-based-access-control/overview.md)) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+[Azure 安全中心](../security-center/security-center-intro.md)可以管理 VM 上的 NSG，并将 VM 的访问权限锁定到具有相应基于角色的访问控制 ([RBAC](../role-based-access-control/overview.md)) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+
+了解更多：
+
+* [及时的 Azure 安全中心](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>服务终结点
 

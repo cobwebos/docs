@@ -1,23 +1,24 @@
 ---
-title: 搜索 Web 上的热门图像 |Microsoft Docs
-description: 介绍如何使用必应图像搜索 API 搜索 Web 中的热门图像。
+title: 搜索 Web 上的热门图像 - 必应图像搜索 API
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用必应图像搜索 API 搜索 Web 中的热门图像。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b12524cd4c1896501820209b3a45746b8f38b210
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365425"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296305"
 ---
-# <a name="get-trending-images"></a>获取热门图像  
+# <a name="get-trending-images-from-the-bing-image-search-api"></a>通过必应图像搜索 API 获取热门图像
 
 要获取今天的热门图像，请发送以下 GET 请求：  
 
@@ -38,7 +39,7 @@ Host: api.cognitive.microsoft.com
 - zh-CN（中文，中国）
 
 响应包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) 对象，该对象按类别列出图像。 使用类别的 `title` 将图像分组到用户体验中。 可能每天更改类别。  
-  
+
 ```json
 {
     "_type" : "TrendingImages",  
@@ -85,8 +86,8 @@ Host: api.cognitive.microsoft.com
     }]  
 }  
 ```  
-  
-每个磁贴包含用于获取相关图像的图像和选项。 要获取相关图像，你可以使用查询 `text` 来调用[图像搜索 API](./search-the-web.md)，并自行显示相关图像。 或者，你可以使用 `webSearchUrl` 中的 URL 将用户转到必应图像搜索结果页面，其中包含相关图像。 
+
+每个磁贴包含用于获取相关图像的图像和选项。 要获取相关图像，你可以使用查询 `text` 来调用[图像搜索 API](./search-the-web.md)，并自行显示相关图像。 或者，你可以使用 `webSearchUrl` 中的 URL 将用户转到必应图像搜索结果页面，其中包含相关图像。
 
 如果调用图像搜索 API 来获取相关图像，请将 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) 查询参数设置为 `id` 字段中的 ID。 指定 ID 可确保响应包含图像（它是响应中的第一个图像）及其相关图像。 另外，将 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) 查询参数设置为 `query` 对象的 `text` 字段中的文本。
 

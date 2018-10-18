@@ -3,23 +3,19 @@ title: Durable Functions 中的 HTTP API - Azure
 description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/29/2017
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264879"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575468"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -43,12 +39,13 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 
 这个示例函数生成以下 JSON 响应数据。 所有字段的数据类型均为 `string`。
 
-| 字段             |说明                           |
+| 字段             |Description                           |
 |-------------------|--------------------------------------|
 | id                |业务流程实例的 ID。 |
 | statusQueryGetUri |业务流程实例的状态 URL。 |
 | sendEventPostUri  |业务流程实例的“引发事件”URL。 |
 | terminatePostUri  |业务流程实例的“终止”URL。 |
+| rewindPostUri     |业务流程实例的“回退”URL。 |
 
 下面是示例响应：
 
@@ -56,13 +53,14 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -86,7 +84,7 @@ Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a2
 
 由扩展实现的所有 HTTP API 均采用以下参数。 所有参数的数据类型均为 `string`。
 
-| 参数  | 参数类型  | 说明 |
+| 参数  | 参数类型  | Description |
 |------------|-----------------|-------------|
 | instanceId | 代码             | 业务流程实例的 ID。 |
 | taskHub    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
@@ -114,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>响应
@@ -125,10 +123,11 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 * HTTP 202 (已接受)：指定实例正在进行中。
 * HTTP 400 (错误请求)：指定实例失败或已终止。
 * HTTP 404 (找不到)：指定实例不存在或未开始运行。
+* **HTTP 500 (内部服务器错误)**：指定实例因未处理的异常而失败。
 
 值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
-| 字段           | 数据类型 | 说明 |
+| 字段           | 数据类型 | Description |
 |-----------------|-----------|-------------|
 | runtimeStatus   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成。 |
 | input           | JSON      | 用于初始化实例的 JSON 数据。 |
@@ -210,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同： 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>响应
@@ -267,7 +266,7 @@ GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 ```
 
 > [!NOTE]
-> 如果实例表中有很多行，则此操作在 Azure存储 I/O 方面可能代价非常高昂。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale#instances-table)文档。
+> 如果实例表中有很多行，则此操作在 Azure存储 I/O 方面可能代价非常高昂。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table)文档。
 > 
 
 ### <a name="raise-event"></a>引发事件
@@ -285,12 +284,12 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
-| 字段       | 参数类型  | 数据类型 | 说明 |
+| 字段       | 参数类型  | 数据类型 | Description |
 |-------------|-----------------|-----------|-------------|
 | eventName   | 代码             | 字符串    | 目标业务流程正在等待的事件的名称。 |
 | {content}   | 请求内容 | JSON      | JSON 格式的事件负载。 |
@@ -325,18 +324,18 @@ Content-Length: 6
 对于 Functions 1.0，请求格式如下：
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数。
 
-| 字段       | 参数类型  | 数据类型 | 说明 |
+| 字段       | 参数类型  | 数据类型 | Description |
 |-------------|-----------------|-----------|-------------|
 | 原因      | 查询字符串    | 字符串    | 可选。 终止业务流程实例的原因。 |
 
@@ -351,7 +350,47 @@ DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?r
 下面的示例请求终止正在运行的实例，并将原因指定为 buggy：
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+此 API 的响应不包含任何内容。
+
+## <a name="rewind-instance-preview"></a>回退实例（预览版）
+
+通过重播最近的失败操作，将失败的业务流程实例还原为运行状态。
+
+#### <a name="request"></a>请求
+
+对于 Functions 1.0，请求格式如下：
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+此 API 的请求参数包括前面提及的默认集及以下唯一参数。
+
+| 字段       | 参数类型  | 数据类型 | Description |
+|-------------|-----------------|-----------|-------------|
+| 原因      | 查询字符串    | 字符串    | 可选。 回退业务流程实例的原因。 |
+
+#### <a name="response"></a>响应
+
+可返回若干可能的状态代码值。
+
+* **HTTP 202 (已接受)**：已接受回退请求，正在处理。
+* HTTP 404 (找不到)：找不到指定的实例。
+* **HTTP 410 (消失)**：指定的实例已完成或已终止。
+
+下面的示例请求回退失败的实例，并将原因指定为**已修复**：
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 此 API 的响应不包含任何内容。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 934520764749b5abce9aefe22b8eb9a5d8e490f2
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 0b6730d6c365484dc19273069785e6824218113e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746485"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>教程：Azure Active Directory 与 Dome9 Arc 的集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "42746485"
 
     ![Dome9 Arc 域和 URL 单一登录信息](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://secure.dome9.com/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/yourcompanyname`
 
@@ -137,7 +137,7 @@ ms.locfileid: "42746485"
     | --------------- | --------------- | 
     | memberof | user.assignedroles |
     
-    a. 单击“添加属性”，打开“添加属性”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录 add 属性](./media/dome9arc-tutorial/tutorial_dome9_04.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "42746485"
     d. 单击“确定” 。
     
     > [!NOTE]
-    > 有关如何配置和设置应用程序的角色，请参阅此[链接](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management)。
+    > 有关如何配置和设置应用程序的角色，请参阅此[链接](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)。
 
 7. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -178,7 +178,7 @@ ms.locfileid: "42746485"
 
     ![Dome9 Arc 配置](./media/dome9arc-tutorial/configure3.png)
 
-    a. 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“帐户 ID”文本框中输入公司名称。 此值将在“Azure 门户 URL”部分提到的回复 URL 中使用。
 
     b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”文本框中。
 
@@ -212,7 +212,7 @@ ms.locfileid: "42746485"
 
     ![“用户”对话框](./media/dome9arc-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -243,7 +243,7 @@ ms.locfileid: "42746485"
 
     ![添加员工](./media/dome9arc-tutorial/user3.png)
 
-    a. 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入用户的电子邮件，例如 Brittasimon@contoso.com。
 
     b. 在“名字”文本框中，键入用户的名字（如 Britta）。
 

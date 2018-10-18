@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: cbf6ac736db9935f5ec52fa4507dab1e56bcde43
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
+ms.openlocfilehash: f15846f3de7162c61edce8aaf5c493bb1444df36
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611181"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498549"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
-Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，比如多重身份验证和条件访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
 
+ 标识管理是对[安全主体](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals)进行身份验证和授权的过程。 它还包括控制有关这些主体（标识）的信息。 安全主体（标识）可能包括服务、应用程序、用户和组等等。Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，比如多重身份验证和条件访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
+ 
 利用 Azure Active Directory (Azure AD) 的安全优势，可以实现以下目的：
 
-* 为混合企业中的每个用户创建和管理单一标识，从而保持用户、组和设备同步。
+* 为混合企业中的每个用户创建和管理单一标识，从而保持用户、组和设备同步。 
 * 提供对应用程序（包括数千个预先集成的 SaaS 应用）的 SSO 访问。
 * 通过对本地应用程序和云应用程序实施基于规则的多重身份验证，启用应用程序访问安全措施。
 * 通过 Azure AD 应用程序代理预配对本地 Web 应用程序的安全远程访问。
@@ -38,14 +40,17 @@ Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数
 * 单一登录
 * 反向代理
 * 多重身份验证
+* 基于角色的访问控制 (RBAC)
 * 安全监控、警报和基于机器学习的报告
 * 消费者标识和访问管理
 * 设备注册
 * Privileged identity management
 * 标识保护
-* 混合标识管理
+* 混合标识管理/Azure AD Connect
+* Azure AD 访问评审
 
 ## <a name="single-sign-on"></a>单一登录
+
 SSO 是指只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
 
 许多组织依赖 SaaS 应用程序（如 Office 365、Box 和 Salesforce）来提高用户生产力。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
@@ -61,6 +66,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 * [将 Azure Active Directory 单一登录与 SaaS 应用相集成](../active-directory/manage-apps/configure-single-sign-on-portal.md)
 
 ## <a name="reverse-proxy"></a>反向代理
+
 使用 Azure AD 应用程序代理可以在专用网络内部发布本地应用程序（例如 [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) 站点、[Outlook Web 应用](https://technet.microsoft.com/library/jj657718.aspx)和基于 [IIS](http://www.iis.net/) 的应用），并网络之外的用户提供安全访问。 应用程序代理为许多类型的本地 Web 应用程序和 Azure AD 支持的数以千计的 SaaS 应用程序提供远程访问和 SSO。 员工可以从家中他们自己的设备登录到应用，并通过此基于云的代理进行身份验证。
 
 了解更多：
@@ -71,6 +77,7 @@ Azure AD 将本地 Active Directory 环境扩展到云，让用户不仅能够�
 * [使用条件性访问](../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
+
 Azure 多重身份验证是需要使用多个验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。 它通过各种验证选项（例如电话、短信、移动应用通知或验证码以及第三方 OAuth 令牌）来提供强身份验证。
 
 了解更多：
@@ -79,7 +86,17 @@ Azure 多重身份验证是需要使用多个验证方法的身份验证方法�
 * [什么是 Azure 多重身份验证？](../active-directory/authentication/multi-factor-authentication.md)
 * [Azure 多重身份验证的工作原理](../active-directory/authentication/concept-mfa-howitworks.md)
 
+## <a name="rbac"></a>RBAC
+
+RBAC 是在 Azure 资源管理器基础上构建的授权系统，针对 Azure 中的资源提供精细的访问权限管理。 通过 RBAC，可以精确控制用户具有的访问权限级别。 例如，可以限制一位用户仅管理虚拟网络，限制另一位用户管理资源组中的所有资源。 Azure 包含多个可用的内置角色。 下面列出了四个基本的内置角色。 前三个角色适用于所有资源类型。
+
+了解更多：
+
+* [什么是基于角色的访问控制 (RBAC)？](../role-based-access-control/overview.md)
+* [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)
+
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
+
 安全监控、警报和基于机器学习的报告（用于标识不一致的访问模式）可以帮助保护业务。 可以使用 Azure AD 的访问和使用情况报告来监控组织目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低这些风险。
 
 在 Azure 门户中，报告分为以下类别：
@@ -97,6 +114,7 @@ Azure 多重身份验证是需要使用多个验证方法的身份验证方法�
 * [Azure Active Directory 报告指南](../active-directory/active-directory-reporting-guide.md)
 
 ## <a name="consumer-identity-and-access-management"></a>消费者标识和访问管理
+
 Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面向用户且可通过缩放来处理数亿标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 使用者只需使用现有社交帐户或创建新凭据，即可通过可自定义的体验登录到所有应用程序。
 
 过去，想要在自己的应用程序中注册客户并使其登录的应用程序开发人员会编写自己的代码。 他们使用本地数据库或系统存储用户名和密码。 Azure AD B2C 通过基于标准的安全平台和大量的可扩展策略，向组织提供一种更好的方式将用户标识管理集成到应用程序中。
@@ -110,6 +128,7 @@ Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面�
 * [Azure Active Directory B2C 预览版：应用程序的类型](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>设备注册
+
 Azure AD 设备注册是基于设备的[条件访问](../active-directory/active-directory-conditional-access-device-registration-overview.md)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件访问策略。
 
 当与 Intune 之类的移动设备管理解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 然后即可根据安全性和符合性方面的标准来创建条件访问规则，强制从设备进行访问。
@@ -121,6 +140,7 @@ Azure AD 设备注册是基于设备的[条件访问](../active-directory/active
 * [对已加入域的 Windows 设备在 Azure AD 中的自动注册进行设置](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
+
 利用 Azure AD Privileged Identity Management，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 和 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问。
 
 用户有时候需要在 Azure 或 Office 365 资源或者其他 SaaS 应用中执行特权操作。 这种需要通常意味着，组织必须授予用户永久的 Azure AD 访问特权。 此类访问会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理员特权执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，此安全漏洞可能会影响组织的总体云安全性。 Azure AD Privileged Identity Management 可帮助解决这一风险。
@@ -139,6 +159,7 @@ Azure AD 设备注册是基于设备的[条件访问](../active-directory/active
 * [Azure AD Privileged Identity Management：如何添加或删除用户角色](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>标识保护
+
 Azure AD Identity Protection 是一种安全服务，它提供一个综合视图，你可以在其中查看影响组织标识的风险事件和潜在漏洞。 Identity Protection 使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 Identity Protection 还引入了新的可以实时检测异常的风险事件类型。
 
 了解更多：
@@ -146,11 +167,26 @@ Azure AD Identity Protection 是一种安全服务，它提供一个综合视图
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
 * [第 9 频道：Azure AD 和标识展示：Identity Protection 预览](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="hybrid-identity-management"></a>混合标识管理
-Microsoft 的标识方法跨越本地和云，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。
+## <a name="hybrid-identity-managementazure-ad-connect"></a>混合标识管理/Azure AD Connect
+
+Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。 Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 它提供以下功能：
+
+* 同步
+* AD FS 和联合集成
+* 直通身份验证
+* 运行状况监视
 
 了解更多：
 
 * [混合标识白皮书](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Azure AD 团队博客](https://blogs.technet.microsoft.com/ad/)
+
+## <a name="azure-ad-access-reviews"></a>Azure AD 访问评审
+
+Azure Active Directory (Azure AD) 访问评审可以使组织有效地管理组成员身份、对企业应用程序的访问权限，以及特权角色分配。
+
+了解更多：
+
+* [Azure AD 访问评审](../active-directory/governance/access-reviews-overview.md)
+* [使用 Azure AD 访问评审管理用户访问权限](../active-directory/governance/access-reviews-overview.md)

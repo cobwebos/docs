@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205130"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734229"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -34,7 +34,7 @@ ms.locfileid: "39205130"
 
 从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Raspberry Pi** 设备模板： 
 
-- 包含设备的度量值的遥测数据：**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）。
+- 包含设备**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）度量值的遥测数据。
 - 显示**电压**、**电流**、**风扇速度**和 **IR** 切换的设置。
 - 包含设备属性**模具编号**和**位置**云属性的属性。
 
@@ -262,6 +262,9 @@ ms.locfileid: "39205130"
 ## <a name="run-your-net-application"></a>运行 .NET 应用程序
 
 将特定于设备的连接字符串添加到代码中，以便设备使用 Azure IoT Central 进行身份验证。 你已经在将真实设备添加到 Azure IoT Central 应用程序时记下此连接字符串。
+
+  > [!NOTE]
+   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
 
 1. 将 **Program.cs** 文件中的 `{your device connection string}` 替换为此前记下的连接字符串。
 

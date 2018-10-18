@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 234651ad3672982e4de9617561a926712697945a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055342"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734027"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
-OCR 技能会从图像文件中提取文本。 支持的文件格式包括：
+OCR 技能可以从图像文件中提取文本。 支持的文件格式包括：
 
 + .JPEG
 + .JPG
@@ -28,6 +28,8 @@ OCR 技能会从图像文件中提取文本。 支持的文件格式包括：
 + .BMP
 + .GIF
 
+> [!NOTE]
+> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -196,7 +198,7 @@ OCR 技能会从图像文件中提取文本。 支持的文件格式包括：
 ```
 
 ## <a name="see-also"></a>另请参阅
-+ [预定义技能](cognitive-search-predefined-skills.md)
++ [预定义的技能](cognitive-search-predefined-skills.md)
 + [TextMerger 技能](cognitive-search-skill-textmerger.md)
 + [如何定义技能组合](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

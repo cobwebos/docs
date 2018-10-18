@@ -1,20 +1,21 @@
 ---
-title: API - Azure 认知服务 | Microsoft Docs
-description: 一个完整的用户友好型 API 指南，适用于 Azure 自定义 AI 决策服务，该服务是一种基于云的日益成熟的 API，用于进行上下文决策。
+title: API 参考 - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
+description: 自定义 AI 决策服务的完整 API 指南。
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.reviewer: marcozo, alekh
-ms.openlocfilehash: 403b17e33394016a07a7b33ba1bcbfe6afdcc05b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d9b87241946a04ae71fabde9958b24ad626c0db
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366584"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364017"
 ---
 # <a name="api"></a>API
 

@@ -1,22 +1,23 @@
 ---
-title: 注册文本分析 API（Azure 上的 Microsoft 认知服务）| Microsoft Docs
+title: 注册文本分析 API
+titleSuffix: Azure Cognitive Services
 description: 说明如何在注册后使用文本分析以及如何在受限情况下运行。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: get-started-article
-ms.date: 3/07/2018
+ms.topic: conceptual
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: dfa5ba138a2e0db75dfc097ca2430fe9c82e826f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623245"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605517"
 ---
-# <a name="how-to-sign-up-for-text-analytics-api"></a>如何注册文本分析 API
+# <a name="how-to-sign-up-for-the-text-analytics-api"></a>如何注册文本分析 API
 
 文本分析资源在云中全天候提供。 在上传需分析的内容之前，必须通过注册获取访问密钥。 每次调用 API 都需要提供请求的访问密钥。
 

@@ -1,27 +1,30 @@
 ---
-title: 知识探索服务 API 中的语法格式 | Microsoft Docs
-description: 了解认知服务的 知识探索服务 (KES) API 中的语法格式。
+title: 语法格式 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 了解知识探索服务 (KES) API 中的语法格式。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865747"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125147"
 ---
 # <a name="grammar-format"></a>语法格式
+
 语法是一个 XML 文件，它指定服务可解释的一组加权的自然语言查询，并指定了如何将这些自然语言查询转换为语义查询表达式。  语法句法基于 [SRGS](http://www.w3.org/TR/speech-grammar/)，这是一个面向语音识别语法的 W3C 标准，具有支持数据索引集成和语义函数的扩展程序。
 
 下面描述了可在语法中使用的每个句法元素。  要了解在上下文中展示这些元素用法的完整语法，请参阅[本例](#example)。
 
-### <a name="grammar-element"></a>grammar 元素 
+### <a name="grammar-element"></a>grammar 元素
+
 `grammar` 元素是语法规范 XML 中的顶级元素。  `root` 属性是必需的，它指定了根规则的名称，而根规则定义了语法的起始点。
 
 ```xml
@@ -29,6 +32,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="import-element"></a>import 元素
+
 `import` 元素导入外部文件中的架构定义来实现属性引用。 此元素必须是顶级 `grammar` 元素的子元素，且显示在所有 `attrref` 元素的前面。 `schema` 属性是必需的，它指定了与语法 XML 文件位于同一目录的架构文件的名称。 `name` 元素也是必需的，它指定了后续 `attrref` 元素在引用此架构中定义的属性时使用的架构别名。
 
 ```xml
@@ -36,6 +40,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="rule-element"></a>rule 元素
+
 `rule` 元素定义了语法规则，该规则是一个结构单元，用于指定系统可解释的一组查询表达式。  此元素必须是顶级 `grammar` 元素的子元素。  `id` 属性是必需的，它指定从 `grammar` 或 `ruleref` 元素中引用的规则的名称。
 
 `rule` 元素定义了一组合法扩展。  文本令牌直接针对数据查询进行匹配。  `item` 元素指定了重复项并更改解释概率。  `one-of` 元素指示替代选项。  `ruleref` 元素可用于根据简单的扩展构造更复杂的扩展。  `attrref` 元素允许针对索引的属性值进行匹配。  `tag` 元素指定解释的语义，且可更改解释概率。
@@ -45,6 +50,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="example-element"></a>example 元素
+
 `example` 元素可选，它指定所含 `rule` 定义可能接受的示例短语。  此元素可用于文档和自动测试。
 
 ```xml
@@ -52,6 +58,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="item-element"></a>item 元素
+
 `item` 元素将一系列语法构造进行分组。  它可用于指示扩展序列的重复，或结合 `one-of` 元素来指定替代项。
 
 当 `item` 元素不是 `one-of` 元素的子级时，它可向计数值分配 `repeat` 属性，从而指定封闭序列的重复。  计数值“n”（其中 n 是一个整数）指示序列必须恰好发生 n 次。  计数值“m-n”允许序列出现 m 到 n 次（包含 m 次和 n 次）。  计数值“m-”指定序列必须至少出现 m 次。  `repeat-logprob` 属性可选，它可用于更改超过最小值的每个额外重复的解释概率。
@@ -71,6 +78,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="one-of-element"></a>one-of 元素
+
 `one-of` 元素指定其中一个子级 `item` 元素中的备选扩展。  `one-of` 元素中仅可出现 `item` 元素。  不同选项间的相对概率可通过每个子级 `item` 中的 `logprob` 进行指定。
 
 ```xml
@@ -82,6 +90,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="ruleref-element"></a>ruleref 元素
+
 `ruleref` 元素通过引用其他 `rule` 元素指定有效扩展。  通过使用 `ruleref` 元素，可基于更简单的规则构建更复杂的表达式。  `uri` 属性是必需的，它使用语法“#*rulename*”指定所引用的 `rule` 的名称。  要捕获所引用语法的语义输出，需使用可选的 `name` 属性来指定要将语义输出分配到的变量的名称。
  
 ```xml
@@ -89,6 +98,7 @@ ms.locfileid: "37865747"
 ```
 
 ### <a name="attrref-element"></a>attrref 元素
+
 `attrref` 元素引用索引属性，从而能够针对索引中观察到的属性值进行匹配。  `uri` 属性是必需的，它使用“*schemaName*#*attrName*”指定索引架构名称和属性名称。  必须存在前置 `import` 元素，它用于导入名为 schemaName 的架构。  属性名称是相应架构中定义的属性的名称。
 
 除了匹配用户输入，`attrref` 元素还返回一个结构化的查询对象作为输出，该对象选择匹配输入值的索引中的对象子集。  可选的 `name` 属性可用于指定应存储查询对象输出的变量的名称。  该查询对象可包含其他查询对象，构成更复杂的表达式。  有关详细信息，请参阅[语义解释](SemanticInterpretation.md)。  
@@ -97,7 +107,8 @@ ms.locfileid: "37865747"
 <attrref uri="academic#Keyword" name="keyword"/>
 ```
 
-#### <a name="query-completion"></a>查询完成 
+#### <a name="query-completion"></a>查询完成
+
 要在解释部分用户查询时支持“查询完成”功能，所引用的每个属性必须在架构定义中包含“starts_with”作为操作。  如果具有用户查询前缀，则 `attrref` 将匹配索引中补全前缀的所有值，并生成每个完整的值作为语法的单独解释。  
 
 示例：
@@ -105,6 +116,7 @@ ms.locfileid: "37865747"
 * 如果针对查询前缀“200”匹配 `<attrref uri="academic#Year" name="year"/>`，则对“2000”年的论文生成一个解释，对“2001”年的论文再生成一个解释等等。
 
 #### <a name="matching-operations"></a>匹配操作
+
 除了完全匹配，select 属性类型还通过可选的 `op` 属性支持前缀和不等性匹配。  如果索引中的对象均不具有匹配值，则语法路径受阻，且服务不生成任何遍历此语法路径的解释。   `op` 属性默认为“eq”。
 
 ```xml
@@ -114,7 +126,7 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 
 下表列出了每个属性类型支持的 `op` 值。  要使用这些值，架构属性定义中需要包含相应的索引操作。
 
-| 属性类型 | Op 值 | 说明 | 索引操作
+| 属性类型 | Op 值 | Description | 索引操作
 |----|----|----|----|
 | String | eq | 字符串完全匹配 | equals |
 | String | starts_with | 字符串前缀匹配 | starts_with |
@@ -129,6 +141,7 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 * `<attrref uri="academic#Year" op="starts_with" name="year"/>` 与输入字符串“20”相匹配，并在单个解释中返回 200-299 和 2000-2999 年发布的论文。这种用法很少见。
 
 ### <a name="tag-element"></a>tag 元素
+
 `tag` 元素指定要如何解释贯穿语法的路径。  它包含一系列以分号结束的语句。  语句可能是文本分配，也可能是另一变量的变量。  此外，它还可向变量分配不带参数或带参数的函数的输出。  每个函数参数都可使用文本或变量指定。  如果函数不返回任何输出，则略掉分配。  变量范围是“包含”规则的本地范围。
 
 ```xml
@@ -144,12 +157,13 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 如需所支持的语义函数的列表，请参阅[语义函数](SemanticInterpretation.md#semantic-functions)。
 
 ## <a name="interpretation-probability"></a>解释概率
+
 贯穿语法的解释路径的概率是指整个路径中遇到的所有 `<item>` 元素和语义函数的累计对数概率。  它描述了与特定输入序列相匹配的相对可能性。
 
 如果概率 p 介于 0 到 1 之间，则相应的对数概率可计算为 log(*p*)，其中 log() 是自然对数函数。  通过使用对数概率，系统可累计贯穿简单加法的解释路径的联合概率。  它还能避免此类联合概率计算中常见的浮点数下溢。  请注意，根据设计，对数概率始终为负浮点值或 0，其中值越大表示可能性越大。
 
-<a name="example"></a>
 ## <a name="example"></a>示例
+
 下面是学术刊物域中的一个示例 XML，它展示了语法的各个元素：
 
 ```xml

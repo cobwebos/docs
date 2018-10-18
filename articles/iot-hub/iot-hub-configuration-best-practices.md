@@ -7,12 +7,12 @@ ms.date: 06/24/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 571aa5a080ae4622a23fdb20d712327d4ec6fbf9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 5eb0ba659961d809d0ae471034b03263f87e3894
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142054"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985492"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解决方案中设备配置的最佳做法
 
@@ -55,7 +55,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 下面是构建基于 Azure 的系统的 IoT 解决方案开发人员的最佳做法：
 
-* **实施[设备孪生](iot-hub-devguide-device-twins.md)：** 使用设备孪生可以从云同步所需配置，以及报告当前配置和设备属性。 最好是通过 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks.) 在云解决方案应用程序内部实施设备孪生。设备孪生最适用于该配置，因为它们：
+* **实施[设备孪生](iot-hub-devguide-device-twins.md)：** 使用设备孪生可以从云同步所需配置，以及报告当前配置和设备属性。 最好是通过 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 在云解决方案应用程序内部实施设备孪生。 设备孪生非常适合用于配置，因为它们：
 
     * 支持双向通信。
     * 允许联网和离线设备状态。 

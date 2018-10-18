@@ -1,20 +1,21 @@
 ---
-title: 将自定义影像服务模型导出到移动环境 - 自定义影像服务 - Azure 认知服务| Microsoft Docs
+title: 将模型导出到移动设备 - 自定义视觉服务
+titlesuffix: Azure Cognitive Services
 description: 了解如何导出模型以用于创建移动应用程序。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: ce8f42d6239867dd217cddfc61a27d7835dc9c9b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 50417e9e1722e69c24185c05ea5e286e6b13e8c7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35366906"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364935"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>导出模型以用于移动设备
 
@@ -73,5 +74,5 @@ ms.locfileid: "35366906"
 * [在 iOS 应用程序中使用导出的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)以使用 Swift 进行实时图像分类的示例
 * [将导出的 CoreML 模型与 Xamarin 配合使用](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)以进行实时图像分类的 iOS 应用程序示例 
 * [在 Android 应用程序中使用导出的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)进行实时图像分类的示例 
-* [配合使用 Tensorflow 模型和 Windows ](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/export-model-python)
-* [将导出的 ONNX 模型与 Windows 机器学习配合使用](https://azure.microsoft.com/en-us/resources/samples/cognitive-services-onnx-customvision-sample/)的示例
+* [配合使用 Tensorflow 模型和 Windows ](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
+* [将导出的 ONNX 模型与 Windows 机器学习配合使用](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)的示例

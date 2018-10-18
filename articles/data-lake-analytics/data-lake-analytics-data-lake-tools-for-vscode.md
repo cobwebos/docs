@@ -2,19 +2,19 @@
 title: 使用针对 Visual Studio Code 的 Azure Data Lake 工具
 description: 了解如何使用针对 Visual Studio Code 的 Azure Data Lake 工具创建、测试和运行 U-SQL 脚本。
 services: data-lake-analytics
+ms.service: data-lake-analytics
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: b06b4c4484e3f41b64ff2d60ce558726c555a2e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e470d27ccfea68f628b793f9afd695bb363e295a
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047905"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630829"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -24,7 +24,7 @@ ms.locfileid: "43047905"
 
 ## <a name="prerequisites"></a>先决条件
 
-适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 MacOS。  
+适用于 VS Code 的 Azure Data Lake 工具支持 Windows、Linux 和 macOS。 U-SQL 本地运行和本地调试仅适用于 Windows。
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -220,6 +220,8 @@ Azure Data Lake 工具支持多种自定义代码。 有关说明，请参阅[�
 - 调试 C# 代码隐藏。 
 - 逐步执行代码。 
 - 在本地验证脚本。
+
+本地运行和本地调试功能仅适用于 Windows 环境，在 macOS 和基于 Linux 的操作系统上不受支持。
 
 有关本地运行和本地调试的说明，请参阅[使用 Visual Studio Code 进行 U-SQL 本地运行和本地调试](data-lake-tools-for-vscode-local-run-and-debug.md)。
 

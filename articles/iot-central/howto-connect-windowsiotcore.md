@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 12f7e466bdfd6d9b6cf1c36df4daf1e76cc417f2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188998"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729818"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -29,18 +29,18 @@ ms.locfileid: "43188998"
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板： 
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板： 
 
-- 包含设备的度量值的遥测数据：**湿度**、**温度**和**压力**。 
-- 显示**风扇速度**的设置。
-- 包含设备属性**模具编号**和**位置**云属性的属性。
+- 包含设备的度量值的遥测数据：湿度、温度和压力。 
+- 显示“风扇速度”的设置。
+- 包含设备属性模具号和位置云属性的属性。
 
 
 有关设备模板配置的完整详细信息，请参阅 [Windows IoT Core 设备模板详细信息](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从“Windows IoT Core”设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[向 Azure IoT Central 应用程序添加真实设备](tutorial-add-device.md)。
+在 Azure IoT Central 应用程序中，从“Windows IoT Core”设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
 
 ### <a name="prepare-the-windows-iot-core-device"></a>准备 Windows IoT Core 设备
 
@@ -48,7 +48,10 @@ ms.locfileid: "43188998"
 
 ### <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从“Windows IoT Core”设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[向 Azure IoT Central 应用程序添加真实设备](tutorial-add-device.md)。
+在 Azure IoT Central 应用程序中，从 Windows IoT Core 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
+
+ > [!NOTE]
+   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>准备 Windows 10 IoT Core 设备
 
@@ -66,7 +69,7 @@ ms.locfileid: "43188998"
 * 在桌面上，将连接字符串保存在名为 connection.string.iothub 的文本文件中。
 * 将文本文件复制到设备的文档文件夹：`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
-完成后，需在任意浏览器中键入 http://[device-IP-address]:8080，以便打开 [Windows 设备门户](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal)。
+完成后，需在任意浏览器中键入 http://[device-IP-address]:8080，以便打开 [Windows 设备门户](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)。
 
 在该处，需按照下图所示执行相关操作：
 1. 展开左侧的“应用”节点。
@@ -91,15 +94,15 @@ ms.locfileid: "43188998"
 如需浏览并修改客户端应用程序的源代码，可以从[此处](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients)的 GitHub 中下载。 如果打算修改代码，则应按[此处](https://github.com/Microsoft/Windows-iotcore-samples)的自述文件中针对桌面操作系统的说明进行操作。
 
 > [!NOTE]
-> 如果开发环境中未安装 **git**，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
+> 如果开发环境中未安装 git，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
 
 ## <a name="windows-iot-core-device-template-details"></a>Windows IoT Core 设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Windows IoT Core** 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
 
-### <a name="telemetry-measurements"></a>遥测度量
+### <a name="telemetry-measurements"></a>遥测数据度量
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
@@ -109,14 +112,14 @@ ms.locfileid: "43188998"
 
 数字设置
 
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名称 | 数据类型 |
+| 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | 位置     | location   | 不适用       |
+| 设备属性 | 模具号   | dieNumber  | 数字    |
+| 文本            | 位置     | 位置   | 不适用       |

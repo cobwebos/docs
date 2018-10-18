@@ -3,23 +3,23 @@ title: 在 Azure Site Recovery 中的两个 Azure 区域之间映射虚拟网络
 description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 editor: ''
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 95e6a388d0638d2fd477d33aaf7c39cf120e29aa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42139783"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353419"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>可在不同 Azure 区域中的虚拟网络之间建立对等互连。
 
@@ -106,7 +106,7 @@ ms.locfileid: "42139783"
 则向故障转移 VM 分配从子网地址范围末尾算起的下一个可用 IP（即 10.0.0.254） </br>
 
 **注意：** 术语“生产 vNet”是指灾难恢复配置期间映射的“目标网络”。
-####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2.如果选择的目标网络不是生产 vNet，但具有与生产网络相同的子网范围 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2.如果选择的目标网络不是生产 vNet，但具有与生产网络相同的子网范围
 
 - 恢复 IP（目标 IP）将是静态 IP，与保留用于故障转移的 IP 地址（即配置的静态 IP 地址）相同。 前提是相同的 IP 地址可用。
 - 如果所配置的静态 IP 已分配给其他某个 VM/设备，则恢复 IP 将是从子网地址范围末尾算起的下一个可用 IP。

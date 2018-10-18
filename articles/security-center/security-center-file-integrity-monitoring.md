@@ -1,27 +1,27 @@
 ---
-title: Azure 安全中心内的文件完整性监视（预览版）| Microsoft Docs
+title: Azure 安全中心内的文件完整性监视 | Microsoft Docs
 description: " 了解如何在 Azure 安全中心启用文件完整性监视。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2018
-ms.author: terrylan
-ms.openlocfilehash: 722a4fd11f35f04ed22d73638f07d15c49ea3c26
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161830"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124110"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center-preview"></a>Azure 安全中心内的文件完整性监视（预览版）
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
 
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
@@ -182,6 +182,14 @@ FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量
   ![将“已启用”设置为 false][19]
 
 6. 选择“保存”。
+
+## <a name="folder-and-path-monitoring-using-wildcards"></a>使用通配符监视文件夹和路径
+
+可使用通配符简化跨目录的跟踪。 使用通配符配置文件夹监视时，以下规则适用：
+-   跟踪多个文件需要使用通配符。
+-   只能在路径的最后一段中使用通配符，例如 C:\folder\file 或 /etc/*.conf
+-   如果环境变量包含无效的路径，验证将成功，但运行清单时，该路径将失败。
+-   设置路径时，请避免使用 c:\*.* 等常规路径，因为这会导致遍历过多的文件夹。
 
 ## <a name="disable-fim"></a>禁用 FIM
 可以禁用 FIM。 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 禁用 FIM 会从所选工作区中删除“更改跟踪”解决方案。

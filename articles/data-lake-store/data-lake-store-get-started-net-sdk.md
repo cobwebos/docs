@@ -1,26 +1,25 @@
 ---
-title: ".NET SDK：Azure Data Lake Store 上的帐户管理选项 | Microsoft Docs"
-description: "使用 Azure Data Lake Store .NET SDK 在 Data Lake Store 中执行帐户管理操作"
+title: .NET SDK：Azure Data Lake Storage Gen1 上的帐户管理选项 | Microsoft Docs
+description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 中执行帐户管理操作
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/30/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cb44fb1cbc279f12f970237f1498a570a63544bd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123906"
 ---
-# <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Azure Data Lake Store 上的帐户管理操作（使用 .NET SDK）
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -28,9 +27,9 @@ ms.lasthandoff: 02/01/2018
 >
 >
 
-本文介绍如何使用 .NET SDK 在 Data Lake Store 上执行帐户管理操作。 帐户管理操作包括创建 Data Lake Store 帐户、列出 Azure 订阅中的帐户、删除帐户，等等。
+本文介绍如何使用 .NET SDK 在 Azure Data Lake Storage Gen1 上执行帐户管理操作。 帐户管理操作包括创建 Data Lake Storage Gen1 帐户、列出 Azure 订阅中的帐户、删除帐户，等等。
 
-若要了解如何使用 .NET SDK 在 Data Lake Store 上执行数据管理操作，请参阅[在 Data Lake Store 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)。
+若要了解如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行数据管理操作，请参阅[在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
@@ -90,7 +89,7 @@ ms.lasthandoff: 02/01/2018
 
                 private static void Main(string[] args)
                 {
-                    _adlsAccountName = "<DATA-LAKE-STORE-NAME>.azuredatalakestore.net"; 
+                    _adlsAccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net"; 
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; 
                     _location = "East US 2";
                     _subId = "<SUBSCRIPTION-ID>";                    
@@ -102,26 +101,26 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="authentication"></a>身份验证
 
-* 有关应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Store 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
-* 有关应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Store 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
+* 若要了解应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
+* 若要了解应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
 ## <a name="create-client-object"></a>创建客户端对象
-以下代码片段创建 Data Lake Store 帐户客户端对象，该对象用于向服务发出帐户管理请求，例如创建帐户、删除帐户，等等。
+以下代码片段创建 Data Lake Storage Gen1 帐户客户端对象，该对象用于向服务发出帐户管理请求，例如创建帐户、删除帐户，等等。
 
     // Create client objects and set the subscription ID
     _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
-## <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
-以下代码片段在 Azure 订阅中创建 Data Lake Store 帐户，该订阅是在创建 Data Lake Store 帐户客户端对象时提供的。
+## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
+以下代码片段在 Azure 订阅中创建 Data Lake Storage Gen1 帐户，该订阅是在创建 Data Lake Storage Gen1 帐户客户端对象时提供的。
 
-    // Create Data Lake Store account
+    // Create Data Lake Storage Gen1 account
     var adlsParameters = new DataLakeStoreAccount(location: _location);
     _adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
 
-## <a name="list-all-data-lake-store-accounts-within-a-subscription"></a>列出某个订阅中的所有 Data Lake Store 帐户
-向类定义添加以下方法。 以下代码片段列出了给定 Azure 订阅中的所有 Data Lake Store 帐户。
+## <a name="list-all-data-lake-storage-gen1-accounts-within-a-subscription"></a>列出订阅中的所有 Data Lake Storage Gen1 帐户
+向类定义添加以下方法。 以下代码片段列出了给定 Azure 订阅中的所有 Data Lake Storage Gen1 帐户。
 
-    // List all Data Lake Store accounts within the subscription
+    // List all Data Lake Storage Gen1 accounts within the subscription
     public static List<DataLakeStoreAccountBasic> ListAdlStoreAccounts()
     {
         var response = _adlsClient.Account.List(_adlsAccountName);
@@ -136,15 +135,15 @@ ms.lasthandoff: 02/01/2018
         return accounts;
     }
 
-## <a name="delete-a-data-lake-store-account"></a>删除 Data Lake Store 帐户
-以下代码片段删除此前创建的 Data Lake Store 帐户。
+## <a name="delete-a-data-lake-storage-gen1-account"></a>删除 Data Lake Storage Gen1 帐户
+以下代码片段删除此前创建的 Data Lake Storage Gen1 帐户。
 
-    // Delete Data Lake Store account
+    // Delete Data Lake Storage Gen1 account
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>另请参阅
-* [使用 .NET SDK 在 Data Lake Store 上进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Store .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)
+* [Data Lake Storage Gen1 .NET SDK 引用](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Store 中的数据](data-lake-store-secure-data.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

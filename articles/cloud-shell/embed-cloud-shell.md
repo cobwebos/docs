@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 0bd5382e5ea37f7c3c52d119e9d39fe7e0bfdc7c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 37ad0adf01172fadc6d9845576045a4542bdae19
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145271"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497784"
 ---
 # <a name="embed-azure-cloud-shell"></a>嵌入 Azure Cloud Shell
 
@@ -27,11 +27,11 @@ ms.locfileid: "42145271"
 
 常规尺寸按钮
 
-[![](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![常规启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 大型尺寸按钮
 
-[![](https://shell.azure.com/images/launchcloudshell@2x.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+[![大型启动](https://shell.azure.com/images/launchcloudshell@2x.png "启动 Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>操作说明
 

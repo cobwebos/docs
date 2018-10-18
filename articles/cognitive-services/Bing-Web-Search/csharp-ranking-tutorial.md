@@ -1,21 +1,22 @@
 ---
-title: 使用排名显示搜索结果 | Microsoft Docs
+title: 使用排名显示搜索结果
+titleSuffix: Azure Cognitive Services
 description: 介绍如何使用必应 RankingResponse 答案按排名顺序显示搜索结果。
 services: cognitive-services
 author: bradumbaugh
-manager: bking
+manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3e55830fcfdbea91581a75fcfc343fd522485c5a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929973"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123396"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 
@@ -45,8 +46,8 @@ ms.locfileid: "41929973"
 
 JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项目中：
 
-- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”。 
-- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”。 
+- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”。
+- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”。
 - 单击“查看更改”窗口中的“确定”按钮。
 - 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡。
 
@@ -60,7 +61,7 @@ JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项�
 
 ## <a name="add-some-necessary-using-statements"></a>添加一些必要的 using 语句
 
-本教程中的代码还需要三个 using 语句。 在 **Program.cs** 顶部的现有 `using` 语句下面添加这些语句： 
+本教程中的代码还需要三个 using 语句。 在 **Program.cs** 顶部的现有 `using` 语句下面添加这些语句：
 
 ```csharp
 using System.Web;
@@ -145,7 +146,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 ## <a name="display-ranked-results"></a>显示排名结果
 
-在介绍如何按排名顺序显示结果之前，请先查看 Web 搜索响应示例： 
+在介绍如何按排名顺序显示结果之前，请先查看 Web 搜索响应示例：
 
 ```json
 {
@@ -171,7 +172,7 @@ static void RunQueryAndDisplayResults(string userQuery)
         },
 
         ...
-        
+
         ],
         "someResultsRemoved" : true
     },
@@ -184,7 +185,7 @@ static void RunQueryAndDisplayResults(string userQuery)
         }
 
         ...
-        
+
         ]
     },
     "rankingResponse" : {
@@ -220,7 +221,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-`rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组： 
+`rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
 
 - `pole`：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
 - `mainline`：要显示在主线中的搜索结果。
@@ -273,7 +274,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 此方法：
 
 - 循环访问响应包含的 `rankingResponse` 组
-- 通过调用 `DisplaySpecificResults(...)` 显示每个组中的项目 
+- 通过调用 `DisplaySpecificResults(...)` 显示每个组中的项目
 
 在 **Program.cs** 中，添加以下两种方法：
 

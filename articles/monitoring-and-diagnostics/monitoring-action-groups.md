@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/1/2018
+ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745701"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717669"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -33,9 +33,9 @@ ms.locfileid: "42745701"
 1. 在[门户](https://portal.azure.com)中，选择“监视器”。 “监视器”边栏选项卡将所有监视设置和数据合并到一个视图中。
 
     ![“监视”服务](./media/monitoring-action-groups/home-monitor.png)
-1. 在“设置”部分中，选择“操作组”。
+1. 选择“警报”，然后选择“管理操作组”。
 
-    ![“操作组”选项卡](./media/monitoring-action-groups/action-groups-blade.png)
+    ![“管理操作组”按钮](./media/monitoring-action-groups/manage-action-groups.png)
 1. 选择“添加操作组”，并填写字段。
 
     ![“添加操作组”命令](./media/monitoring-action-groups/add-action-group.png)
@@ -83,6 +83,7 @@ ms.locfileid: "42745701"
 
 <dt>Runbook</dt>
 <dd>一个操作组中最多可以有 10 个 Runbook 操作</dd>
+<dd>有关针对 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../azure-subscription-service-limits.md)</dd>
 
 <dt>短信</dt>
 <dd>一个操作组中最多可以有 10 个短信操作</dd>
@@ -96,6 +97,17 @@ ms.locfileid: "42745701"
 <dt>Webhook</dt>
 <dd>一个操作组中最多可以有 10 个 Webhook 操作
 <dd>重试逻辑 - 响应的超时期限为 10 秒。 返回的 HTTP 状态代码为 408、429、503、504 时，或者 HTTP 终结点没有响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次（也是最后一次）重试在 100 秒后发生。</dd>
+<dd>源 IP 地址范围
+<ul>
+    <li>13.106.57.181</li>
+    <li>13.106.54.3</li>
+    <li>13.106.54.19</li>
+    <li>13.106.38.142</li>
+    <li>13.106.38.148</li>
+    <li>13.106.57.196</li>
+</ul>
+若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./monitoring-service-notifications.md)。
+</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>管理操作组 ##

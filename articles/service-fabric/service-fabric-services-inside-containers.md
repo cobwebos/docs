@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: d3ed1ff46bf4c82a172954828ec74bae80241288
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5672f5fffd9c93f710f8001285380fdbfcab0c5d
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056694"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386965"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
@@ -103,7 +103,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 </Policies>
  ```
 
-9. 有关配置容器隔离模式，请参阅[配置隔离模式]( https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)。 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 以下代码片段展示了如何在应用程序清单文件中指定隔离模式。
+9. 有关配置容器隔离模式，请参阅[配置隔离模式]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)。 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 以下代码片段展示了如何在应用程序清单文件中指定隔离模式。
 
  ```xml
 <Policies>

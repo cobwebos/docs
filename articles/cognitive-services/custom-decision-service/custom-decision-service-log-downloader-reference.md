@@ -1,19 +1,21 @@
 ---
-title: LogDownloader - Azure 认知服务 | Microsoft Docs
+title: LogDownloader - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
 description: 下载 Azure 自定义 AI 决策服务生成的日志文件。
 services: cognitive-services
 author: marco-rossi29
-manager: marco-rossi29
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 783b534b3b3f4bb7f5d9f073f491690759edfea5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8c5ab0e297690f1fbdb41a2627dd63c3ea522d1b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366451"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366783"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -39,7 +41,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 
 ### <a name="parameters"></a>parameters
 
-| 输入 | 说明 | 默认 |
+| 输入 | Description | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
 | `-a APP_ID`、`--app_id APP_ID` | 应用程序 ID（即 Azure 存储 blob 容器名称）。 | 必选 |

@@ -1,20 +1,21 @@
 ---
-title: 使用自定义影像服务改进分类器 - Azure 认知服务 | Microsoft Docs
-description: 了解如何提高自定义影像服务分类器的质量。
+title: 改进分类器 - 自定义影像服务
+titlesuffix: Azure Cognitive Services
+description: 了解如何提高分类器的质量。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: nolachar
-ms.openlocfilehash: 7c6cbd996d0c35b96fde78daf391bebb36feddce
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: d3f0da9b7c5894a485db4bd204e1a9ed5967c1aa
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888163"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366530"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 

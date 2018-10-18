@@ -1,22 +1,24 @@
 ---
-title: 知识探索服务 API 中的数据格式 | Microsoft Docs
-description: 了解认知服务中知识探索服务 (KES) API 中的数据格式。
+title: 数据格式 - 知识探索服务 API
+titlesuffix: Azure Cognitive Services
+description: 了解知识探索服务 (KES) API 中的数据格式。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a763505ac6458d68df74ae73e71029b81202ec8b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2c67ff1f7a3713b9418458bb7904a35808532293
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365426"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129278"
 ---
 # <a name="data-format"></a>数据格式
+
 数据文件描述要建立索引的对象的列表。
 文件中的每一行都使用 UTF-8 编码指定 [JSON 格式](http://json.org/)的对象的属性值。
 除了在[模式](SchemaFormat.md)中定义的属性之外，每个对象都有一个可选的“logprob”属性，用于指定对象之间的相对对数概率。

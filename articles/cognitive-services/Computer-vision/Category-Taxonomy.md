@@ -1,22 +1,24 @@
 ---
-title: 计算机视觉 API 的 86 个类别分类 | Microsoft Docs
-description: 获取 Microsoft 认知服务中计算机视觉 API 的 86 个类别分类。
+title: 计算机视觉 API 的 86 个类别分类
+titlesuffix: Azure Cognitive Services
+description: 获取 Azure 认知服务中计算机视觉 API 的 86 个类别分类。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
-ms.openlocfilehash: c44345ac1829f09cc855483278198883ca021159
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b5da9a19d51bef6ae31b89c5b8fc8ae4b7c5177e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365472"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984901"
 ---
-##<a name="86-categories-taxonomy"></a>86 个类别分类
+# <a name="86-categories-taxonomy"></a>86 个类别分类
+
 abstract_
 
 abstract_net

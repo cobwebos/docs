@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: b2561f4b1b5ef27f389114c85f0646b968f7765e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c7db8eaf57bf29e17b4543e99a44655030aa6172
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269555"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979725"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用托管磁盘
 
@@ -96,7 +96,7 @@ ms.locfileid: "36269555"
 
 ### <a name="default-managed-disk-settings"></a>默认的托管磁盘设置
 
-若要使用托管磁盘创建 VM，你不再需要创建存储帐户资源，而可以按如下所示更新虚拟机资源。 具体请注意，`apiVersion` 反映 `2017-03-30`，`osDisk` 和 `dataDisks` 不再引用 VHD 的特定 URI。 如果部署时未指定其他属性，磁盘将使用[标准 LRS 存储](../articles/storage/common/storage-redundancy.md)。 如果未指定名称，OS 磁盘的名称格式将采用 `<VMName>_OsDisk_1_<randomstring>`，每个数据磁盘的名称格式将采用 `<VMName>_disk<#>_<randomstring>`。 Azure 磁盘加密默认已禁用；OS 磁盘的缓存设置为“读/写”，数据磁盘的缓存设置为“无”。 在以下示例中，你可能会注意到还有一个存储帐户依赖项，不过，此依赖项只用于诊断信息的存储，而磁盘存储并不需要它。
+若要使用托管磁盘创建 VM，你不再需要创建存储帐户资源，而可以按如下所示更新虚拟机资源。 具体请注意，`apiVersion` 反映 `2017-03-30`，`osDisk` 和 `dataDisks` 不再引用 VHD 的特定 URI。 如果部署时未指定其他属性，磁盘将根据 VM 大小使用存储类型。 例如，如果使用支持“高级”的 VM 大小（名称中有“s”的大小，如 Standard_D2s_v3），则系统将使用 Premium_LRS 存储。 使用磁盘的 SKU 设置指定存储类型。 如果未指定名称，OS 磁盘的名称格式将采用 `<VMName>_OsDisk_1_<randomstring>`，每个数据磁盘的名称格式将采用 `<VMName>_disk<#>_<randomstring>`。 Azure 磁盘加密默认已禁用；OS 磁盘的缓存设置为“读/写”，数据磁盘的缓存设置为“无”。 在以下示例中，你可能会注意到还有一个存储帐户依赖项，不过，此依赖项只用于诊断信息的存储，而磁盘存储并不需要它。
 
 ```json
 {

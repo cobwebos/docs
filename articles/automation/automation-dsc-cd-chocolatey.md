@@ -4,17 +4,17 @@ description: 使用 Azure Automation State Configuration、DSC 和 Chocolatey �
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038071"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634232"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -182,7 +182,7 @@ Get-AzureRmAutomationDscCompilationJob `
 ## <a name="step-6-tying-it-all-together"></a>步骤 6：汇总
 
 每当有某个版本通过 QA 和部署批准时，即会创建包，更新 nuspec 和 nupkg 并将其部署到 NuGet 服务器。 此外，还必须更新配置（上述步骤 4）以便与新版本号匹配。 配置必须发送到“拉”服务器并进行编译。
-然后，依赖于该配置的 VM 将提取并安装更新。 其中的每项更新都很简单 - 只需一两行的 PowerShell 命令。 以 Visual Studio Team Services 为例，有些更新封装在可一起链接到内部版本内的生成任务中。 [本文](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。 此 [GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了各种可用的生成任务。
+然后，依赖于该配置的 VM 将提取并安装更新。 其中的每项更新都很简单 - 只需一两行的 PowerShell 命令。 对于 Azure DevOps，有些更新封装在可一起链接到内部版本内的生成任务中。 [本文](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。 此 [GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了各种可用的生成任务。
 
 ## <a name="notes"></a>说明
 

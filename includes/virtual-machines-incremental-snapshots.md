@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: storage
+author: roygara
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979668"
+---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>使用递增快照备份 Azure 非托管 VM 磁盘
 ## <a name="overview"></a>概述
 Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 的备份和恢复服务，但想要为虚拟机磁盘创建自定义的备份策略，则可以使用此方法。
@@ -57,12 +74,12 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 在下一部分中，我们将详细说明如何使用增量快照复制维护磁盘的备份
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 在本部分中，我们介绍一种方案，它涉及到使用快照针对虚拟机磁盘实施自定义的备份策略。
 
 假设在某个 DS 系列 Azure VM 上附加了一个高级存储 P30 磁盘。 名为 mypremiumdisk 的 P30 磁盘存储在名为 mypremiumaccount 的高级存储帐户中。 名为 mybackupstdaccount 的标准存储帐户用于存储 mypremiumdisk 的备份。 我们希望每隔 12 小时保留一个 mypremiumdisk 的快照。
 
-若要了解如何创建存储帐户和磁盘，请参阅[关于 Azure 存储帐户](../articles/storage/storage-create-storage-account.md)。
+要了解如何创建存储帐户，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
 
 若要了解如何备份 Azure VM，请参阅[规划 Azure VM 备份](../articles/backup/backup-azure-vms-introduction.md)。
 

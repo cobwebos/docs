@@ -1,20 +1,21 @@
 ---
-title: 自定义影像服务的术语表 - Azure 认知服务 | Microsoft Docs
+title: 术语表 - 自定义影像服务
+titlesuffix: Azure Cognitive Services
 description: 自定义影像服务的术语表。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: anroth
-ms.openlocfilehash: 871617ce3c1c5a84df746c0c7d87c113b3a6f354
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ae68db3de5d1f7eaacbe355133b9b7b61f145f04
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365896"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363405"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>自定义影像服务的术语表
 

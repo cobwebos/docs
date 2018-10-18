@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f349dab23b9156d3a5656e8275533ebe6a82cdf9
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173078"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540888"
 ---
 # <a name="wait-and-non-wait-actions"></a>等待和非等待操作
 
@@ -54,14 +54,14 @@ ms.locfileid: "39173078"
 1. 单击“新建操作”
 2. 在“响应”中，键入“牛哞哞叫”。
 3. 取消选中“等待响应”复选框。
-4. 单击创建
+4. 单击“法律条款” 
 
 ### <a name="create-a-second-non-wait-action"></a>创建第二个“非等待”操作
 
 1. 单击“新建操作”
 2. 在“响应”中，键入“鸭子嘎嘎叫”。
 3. 取消选中“等待响应”复选框。
-4. 单击创建
+4. 单击“法律条款” 
 
 ![](../media/tutorial2_actions.PNG)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights 遥测关联 | Microsoft 文档
+title: Azure Application Insights 遥测关联 | Microsoft Docs
 description: Application Insights 遥测关联
 services: application-insights
 documentationcenter: .net
@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 12b46b4abaa17fe9dd0e9055bca5463312bbd15d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298194"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -26,9 +28,9 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="telemetry-correlation-data-model"></a>遥测关联数据模型
 
-Application Insights 定了义用于分配遥测关联的[数据模型](application-insights-data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
+Application Insights 定义了用于分配遥测关联的[数据模型](application-insights-data-model.md)。 要将遥测与逻辑操作关联，每个遥测项都应包含名为 `operation_Id` 的上下文字段。 此标识符由分布式跟踪中的每个遥测项共享。 因此，即使单个层失去了遥测功能，也仍可关联其他组件报告的遥测。
 
-分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](application-insights-data-model-request-telemetry.md)定义。 每个请求遥测具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测（跟踪、异常等）应将 `operation_parentId` 设置为请求 `id` 的值。
+分布式逻辑操作通常由一系列小规模操作（某个组件处理的请求）构成。 这些操作由[请求遥测](application-insights-data-model-request-telemetry.md)定义。 每个请求遥测都具有自身的 `id`，用于对自身进行唯一全局标识。 与此请求关联的所有遥测（跟踪、异常等）应将 `operation_parentId` 设置为请求 `id` 的值。
 
 每个传出操作（例如，对另一个组件的 http 调用）由[依赖项遥测](application-insights-data-model-dependency-telemetry.md)表示。 依赖项遥测也定义了自身的全局唯一的 `id`。 此依赖项调用发起的请求遥测将此 ID 用作 `operation_parentId`。
 
@@ -53,9 +55,9 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 
 在结果视图中可以看到，所有遥测项共享根 `operation_Id`。 从该页面发出 ajax 调用后，会将新的唯一 ID `qJSXU` 分配给依赖项遥测，并将 pageView 的 ID 用作 `operation_ParentId`。 接着，服务器请求将 ajax 的 ID 用作 `operation_ParentId`，等等。
 
-| itemType   | 名称                      | id           | operation_ParentId | operation_Id |
+| itemType   | name                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| pageView   | Stock 页面                |              | STYz               | STYz         |
+| pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | 请求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
@@ -73,15 +75,43 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 
 Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
 
+### <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
+
+我们正在转换为（W3C 分布式跟踪格式）[https://w3c.github.io/distributed-tracing/report-trace-context.html]。 定义的内容：
+- `traceparent` - 承载全局唯一操作 ID 和调用的唯一标识符
+- `tracestate` - 承载跟踪系统特定的上下文。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>启用对 ASP.NET 经典应用的 W3C 分布式跟踪支持
+
+从版本 2.8.0-beta1 开始，此功能在 Microsoft.ApplicationInsights.Web 和 Microsoft.ApplicationInsights.DependencyCollector 包中提供。
+默认情况下，它为关闭状态，若要启用，请更改 `ApplicationInsights.config`：
+
+* 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素，并将值设为 `true`
+* 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素，并将值设为 `true`
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
+
+此功能在版本 2.5.0-beta1 的 Microsoft.ApplicationInsights.AspNetCore 和版本 2.8.0-beta1 的 Microsoft.ApplicationInsights.DependencyCollector 中提供。
+默认情况下，它为关闭状态，若要启用，请将 `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` 设为 `true`：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
+
 ## <a name="open-tracing-and-application-insights"></a>开放跟踪和 Application Insights
 
 [开放跟踪](http://opentracing.io/) 和 Application Insights 数据模型如下所示 
 
-- `request`、`pageView` 映射到采用 `span.kind = server` 设置的 **Span**
-- `dependency` 映射到采用 `span.kind = client` 设置的 **Span**
-- `request` 和 `dependency` 的 `id` 映射到 **Span.Id**
-- `operation_Id` 映射到 **TraceId**
-- `operation_ParentId` 映射到 `ChildOf` 类型的 **Reference**
+- `request`、`pageView` 映射到采用 `span.kind = server` 设置的 Span
+- `dependency` 映射到采用 `span.kind = client` 设置的 Span
+- `request` 和 `dependency` 的 `id` 映射到 Span.Id
+- `operation_Id` 映射到 TraceId
+- `operation_ParentId` 映射到 `ChildOf` 类型的 Reference
 
 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 
@@ -108,7 +138,7 @@ ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelati
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK 中的遥测关联
 从版本 `2.0.0` 开始，[Application Insights Java SDK](app-insights-java-get-started.md) 支持自动关联遥测。 对于所有在请求范围内发出的遥测（跟踪、异常、自定义事件等），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还负责传播关联标头（如上所述），前提是 [Java SDK 代理](app-insights-java-agent.md)已配置。 注意：只有通过 Apache HTTP 客户端进行的调用才能使用关联功能。 如果使用 Spring Rest 模板或 Feign，则二者实际上都可以与 Apache HTTP 客户端配合使用。
 
-目前不支持跨消息传送技术（例如，Kafka、RabbitMQ、Azure 服务总线）自动进行上下文传播。 但是，可以通过 `trackDependency` 和 `trackRequest` API 手动编码此类方案，让依赖项遥测代表由生成者排队的消息，让请求代表由使用者除了的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
+目前不支持跨消息传送技术（例如，Kafka、RabbitMQ、Azure 服务总线）自动进行上下文传播。 但是，可以通过 `trackDependency` 和 `trackRequest` API 手动编码此类方案，让依赖项遥测代表由生成者排队的消息，让请求代表由使用者处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
 
 <a name="java-role-name"></a>
 ### <a name="role-name"></a>角色名称
@@ -135,3 +165,5 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](app-insights-platforms.md)。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
 - 了解如何[扩展和筛选遥测](app-insights-api-filtering-sampling.md)。
+- [Application Insights 配置参考](app-insights-configuration-with-applicationinsights-config.md)
+

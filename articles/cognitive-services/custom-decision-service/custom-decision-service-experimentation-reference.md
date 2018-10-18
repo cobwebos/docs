@@ -1,19 +1,21 @@
 ---
-title: 试验 - Azure 认知服务 | Microsoft Docs
-description: 本文是 Azure 自定义 AI 决策服务试验指南。
+title: 试验 - 自定义 AI 决策服务
+titlesuffix: Azure Cognitive Services
+description: 本文是自定义 AI 决策服务试验的指南。
 services: cognitive-services
 author: marco-rossi29
-manager: marco-rossi29
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: b0ac0bc049d556423493f0c48dd9a548929bcd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366585"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366539"
 ---
 # <a name="experimentation"></a>试验
 
@@ -75,7 +77,7 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
 结果日志追加到 mwt-ds/DataScience/experiments.csv 文件。
 
 ### <a name="parameters"></a>parameters
-| 输入 | 说明 | 默认 |
+| 输入 | Description | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
 | `-f FILE_PATH`、`--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 必选 |  

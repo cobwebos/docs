@@ -1,24 +1,25 @@
 ---
-title: Microsoft 文本翻译 API 字典查找方法 | Microsoft Docs
-description: 使用 Microsoft 文本翻译 API 字典查找方法。
+title: 文本翻译 API 字典查找方法
+titlesuffix: Azure Cognitive Services
+description: 使用文本翻译 API 字典查找方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868078"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127833"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>文本 API 3.0：字典查找
+# <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
 
-为某个单词和少量的惯用语提供替代翻译。 每条翻译包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](.\v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
+为某个单词和少量的惯用语提供替代翻译。 每条翻译都包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](.\v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
 
 ## <a name="request-url"></a>请求 URL
 
@@ -56,7 +57,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   <th>说明</th>
   <tr>
     <td>一个授权<br/>标头</td>
-    <td>必需的请求标头。<br/>请参阅[可用于身份验证的选项](./v3-0-reference.md#authentication)。</td>
+    <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -68,7 +69,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 

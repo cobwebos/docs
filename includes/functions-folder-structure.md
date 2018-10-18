@@ -4,37 +4,42 @@ description: include 文件
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 08/12/2018
+ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3cbe634d862682a5f6b06c2cfc77a4d3b03954f9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2808264b4641bda49a53677ebe216a3b53b7d0d9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809564"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293606"
 ---
-特定函数应用中所有函数的代码位于根文件夹 (`wwwroot`) 中，其中包含主机配置文件和一个或多个子文件夹。 每个子文件夹包含单独函数的代码，如以下示例所示：
+特定函数应用中所有函数的代码均位于根项目文件夹中，其中包含主机配置文件和一个或多个子文件夹。 每个子文件夹包含单独函数的代码，表示形式如下：
 
 ```
-wwwroot
+FunctionApp
  | - host.json
- | - mynodefunction
+ | - Myfirstfunction
  | | - function.json
- | | - index.js
- | | - node_modules
- | | | - ... packages ...
- | | - package.json
- | - mycsharpfunction
+ | | - ...  
+ | - mysecondfunction
  | | - function.json
- | | - run.csx
+ | | - ...  
+ | - SharedCode
  | - bin
- | | - mycompiledcsharp.dll
 ```
 
-host.json 文件包含一些特定于运行时的配置，位于函数应用的根文件夹中。 有关可用设置的信息，请参阅 [host.json 参考](../articles/azure-functions/functions-host-json.md)。
+在 2.x 版 Functions 运行时中，函数应用中的所有函数都必须使用相同的语言辅助角色。  
 
-每个函数有一个对应的文件夹，其中包含一个或多个代码文件、function.json 配置和其他依赖项。 对于 C# 类库项目，已编译的类库 (.dll) 文件将部署到 `bin` 子文件夹。
+[host.json](../articles/azure-functions/functions-host-json.md) 文件包含一些特定于运行时的配置，位于函数应用的根文件夹中。 `bin` 文件夹包含函数应用所需的包和其他库文件。 查看函数应用项目的语言特定要求：
+
+* [C# 类库 (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C# 脚本 (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F# 脚本](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
+* [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
+
+
 

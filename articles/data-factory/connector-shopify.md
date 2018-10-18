@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Shopify 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 Shopify 复制数据（预览）| Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Shopify 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 21065950a886248dcf3cdbc795d0b77f74eaf808
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 8d2550d6a1f99adaec7423997365412eb61ffbdf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045178"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124689"
 ---
-# <a name="copy-data-from-shopify-using-azure-data-factory"></a>使用 Azure 数据工厂从 Shopify 复制数据
+# <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Shopify 复制数据（预览）
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Shopify 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

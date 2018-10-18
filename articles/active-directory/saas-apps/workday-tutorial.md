@@ -3,9 +3,9 @@ title: 教程：Azure Active Directory 与 Workday 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workday 之间配置单一登录。
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: femila
-ms.reviewer: joflore
+author: cmmdesai
+manager: mtillman
+ms.reviewer: jeedes
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
-ms.author: jeedes
-ms.openlocfilehash: 0d3eb8560d034dc6a50b39a504d0912ee6d49e65
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 09/11/2018
+ms.author: chmutali
+ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146338"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>教程：Azure Active Directory 与 Workday 的集成
 
@@ -131,7 +131,7 @@ ms.locfileid: "42146338"
     ![配置单一登录](./media/Workday-tutorial/tutorial_workday_attributes.png)
 
     > [!NOTE]
-    > 这里我们已将名称 ID 与 UPN (user.userprincipalname) 映射为默认值。 你需要在 Workday 帐户（电子邮件、UPN 等）中将名称 ID 与实际用户 ID 进行映射，以便成功运行 SSO。
+    > 此处我们已将名称 ID 与 UPN (user.userprincipalname) 映射为默认值。 需要在 Workday 帐户（电子邮件、UPN 等）中将名称 ID 与实际用户 ID 进行映射，以便成功运行 SSO。
 
 6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -180,7 +180,7 @@ ms.locfileid: "42146338"
 
     ![SAML 标识提供者](./media/workday-tutorial/IC7829271.png "SAML 标识提供者")
 
-    a. 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中，键入提供者名称（例如：*SPInitiatedSSO*）。
 
     b. 在 Azure 门户的“配置登录”窗口中，复制“SAML 实体 ID”值，然后将其粘贴到“颁发者”文本框。
 
@@ -238,7 +238,7 @@ ms.locfileid: "42146338"
     ![确定](./media/workday-tutorial/IC782933.png "确定")
 
     > [!NOTE]
-    > 请确保正确设置单一登录。 如果你使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n
+    > 请确保正确设置单一登录。 如果使用不正确的设置启用单一登录，则可能无法使用凭据进入应用程序并被锁定。在这种情况下，Workday 提供备份登录 URL，用户可以使用以下格式的普通用户名和密码登录：[Workday URL]/login.flex?redirect=n
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

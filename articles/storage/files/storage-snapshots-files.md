@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145276"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983120"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
@@ -32,7 +32,7 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 ## <a name="capabilities"></a>功能
 共享快照是数据在一个时间点只读副本。 可以使用 REST API 创建、删除和管理快照。 此外，客户端库、Azure CLI 和 Azure 门户中也提供了相同的功能。 
 
-可以使用 REST API 和 SMB 查看共享快照。 可以检索目录或文件的版本列表，可以直接作为驱动程序装载特定版本。 
+可以使用 REST API 和 SMB 查看共享快照。 可以检索目录或文件的版本列表，可以直接作为驱动程序装载特定版本（仅适用于 Windows - 请参阅[限制](#limits)）。 
 
 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 无法将整个共享快照复制到另一个存储帐户。 必须使用 AzCopy 或其他复制机制逐个复制文件。
 
@@ -62,6 +62,8 @@ http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享快照之后，必须删除旧的共享快照，以便创建新的共享快照。 
 
 对创建共享快照的同时调用没有限制。 特定文件共享所能占用的共享快照空间没有限制。 
+
+目前，不能在 Linux 上装载共享快照。 因为 Linux SMB 客户端不支持装载快照，这一点与 Windows 不同。
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>数据从共享快照复制回共享
 涉及文件和共享快照的复制操作遵循以下规则：

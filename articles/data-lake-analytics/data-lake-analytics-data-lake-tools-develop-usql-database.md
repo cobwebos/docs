@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 98dc33cc961c5c90fc3f6737a1cc470d4a753fd0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048751"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734918"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
 
@@ -57,7 +57,7 @@ U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开�
 
 U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称的后缀为 `.usqldbpack`。 `.usqldbpack` 包是一个 zip 文件，其中包含“DDL”文件夹中单个 U-SQL 脚本中的所有 DDL 语句，以及“Temp”文件夹中程序集的所有 DLL 和其他文件。
 
-详细了解[如何使用 MSBuild 命令行和 Visual Studio Team Service 生成任务生成 U-SQL 数据库项目](data-lake-analytics-cicd-overview.md)。
+详细了解[如何使用 MSBuild 命令行和 Azure DevOps Services 生成任务生成 U-SQL 数据库项目](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="deploy-a-u-sql-database"></a>部署 U-SQL 数据库
 
@@ -94,7 +94,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 `PackageDeploymentTool.exe` 提供帮助部署 U-SQL 数据库的编程和命令行接口。 SDK 包含在 [U-SQL SDK Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 `build/runtime/PackageDeploymentTool.exe`。
 
-[了解有关 SDK 和如何为 U-SQL 数据库部署设置 CI/CD 管道的详细信息](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-visual-studio-team-service)。
+[了解有关 SDK 和如何为 U-SQL 数据库部署设置 CI/CD 管道的详细信息](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="reference-a-u-sql-database-project"></a>引用 U-SQL 数据库项目
 

@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/17/2018
+ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841541"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721085"
 ---
 # <a name="azure-security-white-papers"></a>Azure 安全性白皮书
 | | |
 |-|-|
 |[Azure&nbsp;&nbsp;&nbsp;安全性简介](azure-security.md)|从客户和 Microsoft 操作的角度说明 Azure 中实现的安全控制集合。 全面介绍了 Azure 提供的面向客户的安全控制。|
+|[Azure 解决方案的安全性最佳做法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|通过 Azure 设计、部署和管理云解决方案时可以使用的一组安全性最佳做法。|
 |[高级威胁检测](azure-threat-detection.md)|指导你完成在威胁漏洞评估、诊断和分析方面的 Azure 方法。 介绍了 Microsoft 如何使用高级威胁检测机制来保护平台。 此外，还介绍了 Microsoft 如何在面向公众的功能和服务中提供这些机制。|
 |[Azure 静态数据加密](azure-security-encryption-atrest.md)|重点介绍如何在 Azure 和参与数据保护实现的各个组件中对数据进行静态保护。 查看不同密钥管理保护方法的优点和缺点。|
 |[Azure 日志记录和审核](azure-log-audit.md)|介绍了如何生成、收集和分析 Azure 上托管的服务的安全日志。 这些日志可以帮助你获得 Azure 部署的安全见解。 |

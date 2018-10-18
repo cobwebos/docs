@@ -1,3 +1,20 @@
+---
+title: include 文件
+description: include 文件
+services: storage
+author: alkohli
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: alkohli
+ms.custom: include file
+ms.openlocfilehash: 4285ee94d2f2a9b5fff9d1896cdf7013f88801ab
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979442"
+---
 #### <a name="to-create-a-new-service"></a>创建新服务
 
 1.  使用 Microsoft 帐户凭据登录到 Azure 门户，URL 如下：<https://portal.azure.com/>。 如果是在政府门户中部署设备，请从以下地址登录：<https://portal.azure.us/>
@@ -18,7 +35,7 @@
 
         -   如果 Azure 中还存在希望使用 StorSimple 设备部署的现有工作负荷，我们建议使用该数据中心。
 
-        -   StorSimple 设备管理器和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请转到 Azure 门户中的 Azure 存储服务，并按照[创建 Azure 存储帐户](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)中的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
+        -   StorSimple 设备管理器和 Azure 存储可位于两个不同的位置。 在这种情况下，需要分别创建 StorSimple 设备管理器和 Azure 存储帐户。 若要创建 Azure 存储帐户，请在 Azure 门户中导航到“Azure 存储”，并按照[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)中所述的步骤操作。 创建此帐户后，按照[针对服务配置新的存储帐户](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)中的步骤，将它添加到 StorSimple 设备管理器服务。
 
         -   如果是在政府门户中部署虚拟设备，则 StorSimple 设备管理器服务在美国爱荷华州和美国弗吉尼亚州可用。
 

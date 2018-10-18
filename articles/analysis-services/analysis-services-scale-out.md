@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 7c0aa2d43001100a392f8882316b7998838d90b9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840983"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121901"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -27,9 +27,11 @@ ms.locfileid: "43840983"
 
 不论查询池中查询副本的数量如何，处理工作负载都不会分布在查询副本中。 一台服务器用作处理服务器。 查询副本在查询池中仅向针对在每个查询副本之间同步的模型的查询提供服务。 
 
-向外扩展时，新的查询副本以增量方式添加到查询池中。 要将新的查询副本资源包括在查询池中最多需要五分钟；已准备好接收客户端连接和查询。 当所有新的查询副本都启动并运行时，将在所有查询池资源之间对新客户端连接进行负载均衡。 现有的客户端连接不会从当前连接到的资源更改。  向内扩展时，将终止与正在从查询池中删除的查询池资源的任何现有客户端连接。 当向内扩展操作完成时，它们将重新连接到其余的查询池资源。
+向外扩展时，新的查询副本以增量方式添加到查询池中。 将新的查询副本资源添加到查询池最多需要五分钟。 当所有新的查询副本都启动并运行时，将在所有查询池资源之间对新客户端连接进行负载均衡。 现有的客户端连接不会从当前连接到的资源更改。  向内扩展时，将终止与正在从查询池中删除的查询池资源的任何现有客户端连接。 当缩小操作完成后，它们将重新连接到其余的查询池资源，此过程最多需要五分钟。
 
 处理模型时，完成处理操作后，必须在处理服务器和查询副本之间执行同步操作。 自动处理操作时，必须在成功完成处理操作后配置同步操作。 可以在门户中手动执行同步，也可以通过使用 PowerShell 或 REST API 进行同步。 
+
+### <a name="separate-processing-from-query-pool"></a>从查询池分离处理操作
 
 为了最大限度地提高处理和查询操作的性能，可以选择将处理服务器与查询池分开。 分离后，现有和新的客户端连接仅会分配给查询池中的查询副本。 如果处理操作仅占用一小段时间，则可以选择将处理服务器与查询池分开仅执行处理和同步操作所需的时间，然后将其包含回查询池中。 
 
@@ -53,14 +55,13 @@ ms.locfileid: "43840983"
 
 1. 在门户中，单击“横向扩展”。使用滑块选择查询副本服务器的数量。 选择的副本数量不包括现有的服务器。
 
-2. 在“从查询池分离处理服务器”中，选择“是”以将处理服务器和查询服务器分开。
+2. 在“从查询池分离处理服务器”中，选择“是”以将处理服务器和查询服务器分开。 使用默认连接字符串（不带 :rw）的客户端连接将重定向到查询池中的副本。 
 
    ![横向扩展滑块](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
 3. 单击“保存”以预配新的查询副本服务器。 
 
 主服务器上的表格模型与副本服务器同步。 同步完成后，查询池开始在副本服务器之间分发传入的查询。 
-
 
 ## <a name="synchronization"></a>同步 
 
@@ -88,8 +89,6 @@ ms.locfileid: "43840983"
 
 若要运行同步，请使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
 
-
-
 ## <a name="connections"></a>连接
 
 服务器的“概述”页上有两个服务器名称。 如果尚未对服务器配置横向扩展，则这两个服务器名称的工作方式相同。 为服务器配置横向扩展之后，需要根据连接类型指定适当的服务器名称。 
@@ -99,6 +98,12 @@ ms.locfileid: "43840983"
 对于 PowerShell 中的 SSMS、SSDT 和连接字符串、Azure 函数应用以及 AMO，请使用“管理服务器名称”。 管理服务器名称包含特殊限定符 `:rw`（读取-写入）。 所有处理操作均在管理服务器上发生。
 
 ![服务器名称](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="troubleshoot"></a>故障排除
+
+**问题：** 用户收到错误 **Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'.**（在连接模式 "ReadOnly" 下找不到服务器“<服务器名称>”实例。）
+
+**解决方案：** 选择“从查询池分离处理服务器”选项时，使用默认连接字符串（不带 :rw）的客户端连接将重定向到查询池副本。 如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，在完成横向扩展和同步操作之前，请不要选择从查询池分离处理服务器。 可以使用内存和 QPU 指标来监视同步状态。
 
 ## <a name="related-information"></a>相关信息
 

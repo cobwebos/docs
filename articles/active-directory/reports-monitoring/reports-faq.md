@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1683321e23eff82e73dc9bb44941fc390633b8c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42140439"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294214"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory 报告常见问题
 
@@ -169,3 +169,7 @@ ms.locfileid: "42140439"
 **问：所有登录报告中的策略名称与 CA 中的策略名称不匹配，为什么？**
 
 **答：** 所有登录报告中的策略名称均基于登录时的 CA 策略名称。 如果你后来（即登录后）更新了策略名称，则这可能与 CA 中的策略名称不一致。
+
+**问：我的登录因条件访问政策而被阻止，但登录活动报告显示已登录成功。为什么？**
+
+**答：** 应用条件访问时，登录报告目前可能无法显示 Exchange ActiveSync 方案的准确结果。 在某些情况下，报告中的登录结果显示已成功登录，但由于条件访问策略，登录实际上失败了。 

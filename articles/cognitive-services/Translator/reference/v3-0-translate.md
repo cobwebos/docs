@@ -1,23 +1,23 @@
 ---
-title: Microsoft 文本翻译 API 翻译方法 | Microsoft Docs
-titleSuffix: Cognitive Services
-description: 使用 Microsoft 文本翻译 API 翻译方法。
+title: 文本翻译 API 翻译方法
+titleSuffix: Azure Cognitive Services
+description: 使用文本翻译 API 翻译方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: d8d5e1e2fac747fa733f1d92c08008b7eac2a1bc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1841730a39d29c5fe1f3451b7614818e924b339f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366810"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128751"
 ---
-# <a name="text-api-30-translate"></a>文本 API 3.0：翻译
+# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
 翻译文本。
 
@@ -35,7 +35,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>api-version</td>
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
@@ -50,7 +50,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>textType</td>
-    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 `plain`（默认）或 `html`。</td>
+    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 `plain`（默认）`html`。</td>
   </tr>
   <tr>
     <td>category</td>
@@ -90,7 +90,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>一个授权<br/>标头</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
@@ -170,7 +170,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

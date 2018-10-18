@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701711"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364068"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 
@@ -45,7 +45,7 @@ HBase 链接服务支持以下属性：
 | type | type 属性必须设置为：**HBase** | 是 |
 | host | HBase 服务器的 IP 地址或主机名。 （即 `[clustername].azurehdinsight.net` `192.168.222.160）  | 是 |
 | port | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
-| httpPath | 对应于 HBase 服务器的部分 URL。 （即 `/hbaserest0`）  | 否 |
+| httpPath | 与 HBase 服务器对应的部分 URL，例如使用 HDInsights 群集时的 `/hbaserest0`。 | 否 |
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许的值为：Anonymous、Basic | 是 |
 | username | 用于连接到 HBase 实例的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |

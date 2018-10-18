@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 管理对 Azure 存储容器和队列的访问权限（预览版）| Microsoft Docs
-description: 使用基于角色的访问控制 (RBAC) 将用于访问 Azure 存储数据的角色分配给用户、组、应用程序服务主体或托管服务标识。 Azure 存储支持通过内置角色和自定义角色来访问容器和队列。
+title: 使用 RBAC 管理对容器和队列的访问权限（预览版） - Azure 存储 | Microsoft Docs
+description: 使用基于角色的访问控制 (RBAC) 将用于访问 blob 和队列数据的角色分配给用户、组、应用程序服务主体或托管服务标识。 Azure 存储支持通过内置角色和自定义角色来访问容器和队列。
 services: storage
 author: tamram
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298669"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737288"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure 存储数据的访问权限（预览版）
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问容器或队列的通用权限集。 在向 Azure AD 标识分配 RBAC 角色时，系统会根据指定的作用域，向该标识授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 分配对 Azure 存储资源的访问权限。 
 
-Azure AD 标识可以是用户、组或应用程序服务主体，也可以是*托管服务标识*。 安全主体可以是用户、组或应用程序服务主体。 [托管服务标识](../../active-directory/managed-identities-azure-resources/overview.md)是一种自动托管标识，用于从 Azure 虚拟机、函数应用、虚拟机规模集等中运行的应用程序进行身份验证。 有关 Azure AD 中标识的概述，请参阅[了解 Azure 标识解决方案](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)。
+Azure AD 标识可以是用户、组或应用程序服务主体，也可以是 Azure 资源的托管标识。 安全主体可以是用户、组或应用程序服务主体。 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是一种自动托管标识，用于从 Azure 虚拟机、函数应用、虚拟机规模集等中运行的应用程序进行身份验证。 有关 Azure AD 中标识的概述，请参阅[了解 Azure 标识解决方案](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)。
 
-## <a name="rbac-roles-for-azure-storage"></a>Azure 存储的 RBAC 角色
+## <a name="rbac-roles-for-blobs-and-queues"></a>Blob 和队列的 RBAC 角色
 
-Azure 存储同时支持内置和自定义 RBAC 角色。 Azure 存储提供以下内置 RBAC 角色用于 Azure AD：
+Azure 存储同时支持内置的和自定义 RBAC 角色。 Azure 存储提供以下内置 RBAC 角色用于 Azure AD：
 
 - [存储 Blob 数据参与者(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
 - [存储 Blob 数据读取器(预览)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)

@@ -1,21 +1,25 @@
 ---
-title: 为 Azure IoT Central 应用程序创建自定义分析 | Microsoft Docs
-description: 如何以操作员身份为 Azure IoT Central 应用程序创建自定义分析。
+title: 在 Azure IoT Central 应用程序中分析设备数据 | Microsoft Docs
+description: 在 Azure IoT Central 应用程序中分析设备数据。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 08/26/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247090"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368080"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>如何使用分析功能来分析设备数据
+
+
+*本文适用于操作员、构建者和管理员。*
+
 
 Microsoft Azure IoT Central 提供各种分析功能对来自设备的大量数据进行分析。 若要开始，请访问左侧导航菜单中的“Analytics”。 
 

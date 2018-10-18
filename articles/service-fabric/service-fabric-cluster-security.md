@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145092"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541898"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 Azure Service Fabric 群集是你拥有的资源。 你应保护群集，防止未经授权的用户与其连接。 当在群集上运行生产工作负荷时，安全的群集环境尤为重要。 尽管可以创建不安全的群集，但当该群集向公共 Internet 公开管理终结点时，匿名用户可与它建立连接。 生产工作负荷不支持不安全群集。 
@@ -92,6 +92,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 * 要为运行生产工作负荷的群集创建证书，请使用正确配置的 Windows Server 证书服务，或从已批准的[证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 获取。
 * 请勿在生产环境中使用任何由 MakeCert.exe 等工具创建的临时或测试证书。
 * 可使用自签名证书，但仅限在测试群集中使用。 请勿在生产中使用自签名证书。
+* 生成证书指纹时，请确保生成 SHA1 指纹。 在配置客户端和群集证书指纹时，使用的是 SHA1。
 
 ### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 必须使用这些证书（一个主要证书，以及一个可选的辅助证书）来保护群集，并防止未经授权的访问。 这些证书提供了群集和服务器身份验证。

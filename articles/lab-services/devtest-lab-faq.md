@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235442"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983944"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -88,17 +88,17 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 **CI/CD 集成和自动化**
 ## <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>开发测试实验室可与我的 CI/CD 工具链集成吗？
-如果使用的是 Visual Studio Team Services，则可使用[开发测试实验室任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)自动化开发测试实验室的发布管道。 可使用此扩展执行的任务包括：
+如果使用的是 Azure DevOps，则可使用[开发测试实验室任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)自动化开发测试实验室的发布管道。 可使用此扩展执行的任务包括：
 
-* 自动创建和部署 VM。 还可以使用 Azure 文件复制或 PowerShell Team Services 任务配置具有最新生成的 VM。
+* 自动创建和部署 VM。 还可以使用 Azure 文件复制或 PowerShell Azure DevOps Services 任务配置具有最新生成的 VM。
 * 测试后自动获取 VM 的状态以在同一 VM 中再现 Bug 进行进一步调查。
 * 当不再需要时，删除发布管道末尾的 VM。
 
-以下博客文章提供了有关使用 Team Services 扩展的指南和信息：
+以下博客文章提供了有关使用 Azure DevOps Services 扩展的指南和信息：
 
-* [DevTest Labs and the Visual Studio Team Services extension](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)（开发测试实验室和 Visual Studio Team Services 扩展）
-* [Deploy a new VM in an existing DevTest Labs lab from Team Services](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)（在现有开发测试实验室中从 Team Services 部署新 VM）
-* [Using Team Services release management for continuous deployments to DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)（使用 Team Services 发布管理对开发测试实验室进行持续部署）
+* [开发测试实验室和 Azure DevOps 扩展](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
+* [在现有开发测试实验室中从 Azure DevOps Services 部署新 VM](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [使用Azure DevOps Services 发布管理对开发测试实验室进行持续部署](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 对于其他持续集成 (CI)/持续交付 (CD) 工具链，可通过使用 [Azure PowerShell cmdlet](../azure-resource-manager/resource-group-template-deploy.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 部署 [Azure 资源管理器模板](https://aka.ms/dtlquickstarttemplate)来实现相同的方案。 还可使用[用于开发测试实验室的 REST API](http://aka.ms/dtlrestapis) 与工具链进行集成。  
 
@@ -112,7 +112,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
 
 ## <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>如何一次性从同一模板创建多个 VM？
 可通过两种方式同时从同一模板创建多个 VM：
-* 可使用 [Visual Studio Team Services 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。 
+* 可以使用 [Azure DevOps 任务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。 
 * 创建 VM 和[从 Windows PowerShell 部署资源管理器模板](../azure-resource-manager/resource-group-template-deploy.md)时，可[生成资源管理器模板](devtest-lab-add-vm.md#save-azure-resource-manager-template)。
 
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>如何将现有 Azure VM 移到开发测试实验室？
@@ -172,7 +172,7 @@ Azure 开发测试实验室可为团队节省时间和金钱。 开发人员可�
     # Get the VMs from that lab.
     $labVMs = Get-AzureRmResource | Where-Object {
               $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
-              $_.ResourceName -like "$($lab.ResourceName)/*"}
+              $_.Name -like "$($lab.Name)/*"}
 
     # Delete the VMs.
     foreach($labVM in $labVMs)

@@ -1,23 +1,24 @@
 ---
-title: Azure 上必应 Web 搜索 API 的常见问题解答 (FAQ) | Microsoft Docs
-description: 获取 Azure 上 Microsoft 认知服务必应 Web 搜索 API 的常见问题解答。
+title: 常见问题解答 (FAQ) - 必应 Web 搜索 API
+titleSuffix: Azure Cognitive Services
+description: 获取有关必应 Web 搜索 API 的常见问题解答。
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 321f571c48f2231d1ced43848cdefd17adaa1a08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0b8fd3eb80d7418546788565402042de20ab3e7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365491"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129312"
 ---
-# <a name="frequently-asked-questions-faq-about-bing-web-search-api-cognitive-services"></a>必应 Web 搜索 API（认知服务）常见问题解答 (FAQ)
- 
+# <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+
  获取与 Azure 上 Microsoft 认知服务必应 Web 搜索 API 有关的概念、代码和方案的常见问题解答。
 
 ## <a name="response-headers-in-javascript"></a>JavaScript 响应头
@@ -52,9 +53,9 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-sea
 
 ## <a name="response-headers-in-production"></a>生产环境中的响应头
 
-上一常见问题解答中介绍的 CORS 代理方法适合于开发、测试和学习环境。 
+上一常见问题解答中介绍的 CORS 代理方法适合于开发、测试和学习环境。
 
-不过，在生产环境中，应在使用必应 Web 搜索 API 的网页所处的域中托管服务器端脚本。 此脚本实际应在网页 JavaScript 发出请求后执行 API 调用，并将所有结果（包括响应头）返回给客户端。 由于（页面和脚本）这两个资源共用源，因此 CORS 不起作用，网页 JavaScript 可以访问特殊响应头。 
+不过，在生产环境中，应在使用必应 Web 搜索 API 的网页所处的域中托管服务器端脚本。 此脚本实际应在网页 JavaScript 发出请求后执行 API 调用，并将所有结果（包括响应头）返回给客户端。 由于（页面和脚本）这两个资源共用源，因此 CORS 不起作用，网页 JavaScript 可以访问特殊响应头。
 
 这种方法还可以保护 API 密钥免遭公开，因为只有服务器端脚本需要它。 此脚本可以使用其他方法，以确保对请求进行授权。
 

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 3772b03d9a9d688b9d0eac42d51af7a2f2e0c5bd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145496"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125079"
 ---
-# <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览）
+# <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
 ![Office 365 徽标](media/monitoring-solution-office-365/icon.png)
 
 通过 Office 365 管理解决方案，可在 Log Analytics 中监视 Office 365 环境。
 
-- 监视 Office 365 帐户的用户活动，以分析使用模式和确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
+- 监视 Office 365 帐户的用户活动，以分析使用模式并确定行为趋势。 例如，可提取特定使用方案，例如组织外共享的文件或最常用的 SharePoint 网站。
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
@@ -36,7 +36,7 @@ ms.locfileid: "42145496"
 需要以下各项才能安装和配置此解决方案。
 
 - 组织的 Office 365 订阅。
-- 充当全局管理员的用户帐户的凭据。
+- 作为全局管理员的用户帐户的凭据。
 - 若要接收审核数据，必须在 Office 365 订阅中[配置审核](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)。  请注意，[邮箱审核](https://technet.microsoft.com/library/dn879651.aspx)单独配置。  若未配置审核，仍可安装解决方案和收集其他数据。
  
 
@@ -44,7 +44,7 @@ ms.locfileid: "42145496"
 此解决方案不会在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中安装任何管理包。
   
 ## <a name="install-and-configure"></a>安装和配置
-首先，[将 Office 365 解决方案添加到你的订阅](monitoring-solutions.md#install-a-management-solution)。 在添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
+首先，[将 Office 365 解决方案添加到你的订阅](monitoring-solutions.md#install-a-management-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
 
 ### <a name="required-information"></a>必需的信息
 在开始此过程之前，收集以下信息。
@@ -70,7 +70,7 @@ ms.locfileid: "42145496"
 1. 单击“新建应用程序注册”。
 
     ![添加应用注册](media/monitoring-solution-office-365/add-app-registration.png)
-1. 输入应用程序**名称**和**登录 URL**。  名称应该是描述性的。  使用 _http://localhost_ 作为 URL，将“应用程序类型”保留为“Web 应用 / API”。
+1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用 _http://localhost_ 作为 URL，将“应用程序类型”保留为“Web 应用/ API”
     
     ![创建应用程序](media/monitoring-solution-office-365/create-application.png)
 1. 单击“创建”并验证应用程序信息。
@@ -104,15 +104,15 @@ ms.locfileid: "42145496"
 ### <a name="add-a-key-for-the-application"></a>为应用程序添加密钥
 
 1. 在“设置”窗口中选择“密钥”。
-1. 键入新密钥的**说明**和**持续时间**。
-1. 单击“保存”，然后复制生成的**值**。
+1. 键入新密钥的说明和持续时间。
+1. 单击“保存”，然后复制生成的值。
 
     ![密钥](media/monitoring-solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>添加管理员同意
 若要首次启用管理帐户，必须为应用程序提供管理同意。 可以使用 PowerShell 脚本执行此操作。 
 
-1. 将以下脚本保存为 *office365_consent.ps1*。
+1. 将以下脚本保存为 office365_consent.ps1。
 
     ```
     param (
@@ -176,7 +176,7 @@ ms.locfileid: "42145496"
 ### <a name="subscribe-to-log-analytics-workspace"></a>订阅 Log Analytics 工作区
 最后一步是让应用程序订阅 Log Analytics 工作区。 也是使用 PowerShell 脚本执行此操作。
 
-1. 将以下脚本保存为 *office365_subscription.ps1*。
+1. 将以下脚本保存为 office365_subscription.ps1。
 
     ```
     param (
@@ -378,7 +378,7 @@ At line:12 char:18
 ## <a name="uninstall"></a>卸载
 可以使用[删除管理解决方案](../monitoring/monitoring-solutions.md#remove-a-management-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Log Analytics 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
-1. 将以下脚本保存为 *office365_unsubscribe.ps1*。
+1. 将以下脚本保存为 office365_unsubscribe.ps1。
 
     ```
     param (
@@ -492,7 +492,7 @@ Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analyti
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | Description |
+| 列 | 说明 |
 |:--|:--|
 | 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
@@ -509,7 +509,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="common-properties"></a>通用属性
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Type | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -526,7 +526,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -537,7 +537,7 @@ Office 365 解决方案在 Log Analytics 工作区中创建的所有记录都具
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory 帐户登录
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
@@ -550,7 +550,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="azure-active-directory"></a>Azure Active Directory
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -567,7 +567,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="data-center-security"></a>数据中心安全
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -582,7 +582,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-admin"></a>Exchange 管理员
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -596,7 +596,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -618,7 +618,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox-audit"></a>Exchange 邮箱审核
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -632,7 +632,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="exchange-mailbox-audit-group"></a>Exchange 邮箱审核组
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -650,7 +650,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-base"></a>SharePoint Base
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -666,7 +666,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-schema"></a>SharePoint 架构
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -678,7 +678,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ### <a name="sharepoint-file-operations"></a>SharePoint 文件操作
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -687,7 +687,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | DestinationRelativeUrl | 复制或移动文件的目标文件夹的 URL。 SiteURL、DestinationRelativeURL 和 DestinationFileName 参数值的组合与 ObjectID 属性的值相同，即为已复制文件的完整路径名称。 此属性仅对 FileCopied 和 FileMoved 事件显示。 |
 | SharingType | 分配给与其共享资源的用户的共享权限类型。 此用户由 UserSharedWith 参数标识。 |
 | Site_Url | 用户访问的文件或文件夹所在的站点的 URL。 |
-| SourceFileExtension | 用户访问的文件的文件扩展名。 如果所访问的对象是文件夹，则此属性空白。 |
+| SourceFileExtension | 用户访问的文件的文件扩展名。 如果所访问的对象是文件夹，则此属性为空。 |
 | SourceFileName |  用户访问的文件或文件夹的名称。 |
 | SourceRelativeUrl | 包含用户访问的文件的文件夹 URL。 SiteURL、SourceRelativeURL 和 SourceFileName 参数值的组合与 ObjectID 属性的值相同，即为用户访问的文件的完整路径名称。 |
 | UserSharedWith |  与其共享资源的用户。 |
@@ -698,7 +698,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的更新记录的示例日志搜索。
 
-| 查询 | Description |
+| 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
@@ -709,6 +709,6 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用[Log Analytics](../log-analytics/log-analytics-log-searches.md)中的日志搜索可查看详细的更新数据。
+* 使用 [Log Analytics](../log-analytics/log-analytics-log-searches.md) 中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
 * [创建警报](../log-analytics/log-analytics-alerts.md)，主动接收重要的 Office 365 活动通知。  

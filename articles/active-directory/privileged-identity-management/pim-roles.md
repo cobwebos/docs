@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666330"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466041"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>可以在 PIM 中管理的 Azure AD 目录角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -35,19 +35,19 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
 使用 Privileged Identity Management 可将用户分配到常见的管理员角色，包括：
 
 * **全局管理员**（也称为公司管理员）：有权访问所有管理功能。 组织中可以有多个全局管理员。 注册购买 Office 365 的人员自动成为全局管理员。
-* **特权角色管理员**：可以管理 Azure AD PIM，以及更新其他用户的角色分配。  
-* **计费管理员**：进行采购、管理订阅、管理支持票证和监视服务运行状况。
+* **特权角色管理员**：管理 Azure AD PIM 以及更新其他用户的角色分配。  
+* **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
 * **密码管理员**：重置密码、管理服务请求和监视服务运行状况。 密码管理员只能重置用户的密码。
 * **服务管理员**：管理服务请求并监视服务运行状况。
   
   > [!NOTE]
-  > 如果使用 Office 365，请在向用户分配服务管理员角色之前，先将服务（例如 Exchange Online）的管理权限分配到该用户。
+  > 如果使用 Office 365，请在向用户分配服务管理员角色之前，先将服务（例如 Exchange Online）的管理权限分配给该用户。
   > 
   > 
-* **用户管理管理员**：重置密码、监视服务运行状况，以及管理用户帐户、用户组和服务请求。 用户管理管理员无法删除全局管理员、创建其他管理员角色，或重置计费管理员、全局管理员和服务管理员的密码。
-* **Exchange 管理员**：具有通过 Exchange 管理中心 (EAC) 访问 Exchange Online 的管理权限，可在 Exchange Online 中执行几乎所有的任务。
-* **SharePoint 管理员（预览）**：具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有的任务。 此角色目前处于预览状态。 在 PIM 中激活后，符合条件的用户在 SharePoint 中使用此角色可能会发生延迟。
-* **Skype for Business 管理员**：具有通过 Skype for Business 管理中心访问 Skype for Business 的管理权限，可在 Skype for Business Online 中执行几乎所有的任务。
+* **用户管理员**：重置密码、监视服务运行状况，并管理用户帐户、用户组和服务请求。 用户管理员无法删除全局管理员、创建其他管理员角色，或重置计费管理员、全局管理员和服务管理员的密码。
+* **Exchange 管理员**：具有通过 Exchange 管理中心 (EAC) 访问 Exchange Online 的管理权限，可在 Exchange Online 中执行几乎所有任务。
+* **SharePoint 服务管理员**：具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有任务。 在 PIM 中激活后，符合条件的用户在 SharePoint 中使用此角色可能会发生延迟。
+* **Skype for Business 管理员**：具有通过 Skype for Business 管理中心访问 Skype for Business 的管理权限，可在 Skype for Business Online 中执行几乎所有任务。
 
 有关详细信息，请参阅文章[在 Azure AD 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)以及[在 Office 365 中分配管理员角色](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)。
 
@@ -63,21 +63,19 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
 ## <a name="roles-not-managed-in-pim"></a>不在 PIM 中管理的角色
 Exchange Online 或 SharePoint Online 中的角色（前面所述的角色除外）并不会出现在 Azure AD 中，因此也不会显示在 PIM 中。 有关在这些 Office 365 服务中更改精细角色分配的详细信息，请参阅 [Permissions in Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)（Office 365 中的权限）。
 
-Azure 订阅和资源组也不会出现在 Azure AD 中。 若要管理 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md)；有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
-
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
 ## <a name="user-roles-and-signing-in"></a>用户角色和登录
 对于某些 Microsoft 服务和应用程序而言，将用户分配到角色可能还不足以让该用户成为管理员。
 
-若要访问 Azure 门户，要求用户必须是 Azure 订阅的服务管理员或共同管理员，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要管理 Azure AD 的配置设置，用户必须身兼 Azure AD 中的全局管理员和 Azure 订阅中的订阅共同管理员。  要了解如何将用户添加到 Azure 订阅，请参阅[如何添加或更改 Azure 管理员角色](../../billing/billing-add-change-azure-subscription-administrator.md)。
+若要访问 Azure 门户，要求用户必须是 Azure 订阅的所有者，即使该用户无需管理 Azure 订阅，也是如此。  例如，若要管理 Azure AD 的配置设置，用户必须既是 Azure AD 中的全局管理员，又是 Azure 订阅中的所有者。  若要了解如何将用户添加到 Azure 订阅，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../..//role-based-access-control/role-assignments-portal.md)。
 
 此外，在访问 Microsoft Online Services 时，用户可能需要获得许可证才能打开服务的门户或执行管理任务。
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>将许可证分配到 Azure AD 中的用户
 
-1. 使用全局管理员帐户或共同管理员帐户登录到 [Azure 门户](http://portal.azure.com)。
+1. 使用全局管理员或所有者角色登录到 [Azure 门户](http://portal.azure.com)。
 
 1. 选择要使用的、包含关联许可证的 Azure AD 目录。
 

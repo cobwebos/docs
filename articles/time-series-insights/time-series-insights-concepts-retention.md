@@ -10,21 +10,28 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 204a9d64d14fe190cb0de73c964bb95b4b9b475f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628760"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364062"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>了解时序见解中的数据保留
+
 本文介绍影响时序见解 (TSI) 环境中的数据保留的两项设置。
 
-每个 TSI 环境都有一项设置控制**数据保留时间**。 该时间值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
+## <a name="video"></a>视频： 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>在本视频中，我们将介绍时序见解数据保留以及如何规划它。</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
+
+每个 TSI 环境都有一项设置控制“数据保留时间”。 该时间值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
 每个 TSI 环境都有一项附加设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
-- **清除旧数据**（默认行为）  
-- **暂停传入**
+- 清除旧数据（默认行为）  
+- 暂停传入
 
 > [!NOTE]
 > 创建新环境时，保留规则默认配置为“清除旧数据”。 在创建后，可以根据需要使用 Azure 门户或者在 TSI 环境的“配置”页上切换此设置。
@@ -36,7 +43,7 @@ ms.locfileid: "39628760"
 ## <a name="purge-old-data"></a>清除旧数据
 - 此行为是 TSI 环境的默认行为，展示的行为与公共预览版 TSI 环境的行为相同。  
 - 如果用户希望在其 TSI 环境中始终能够看到最近的数据，则此行为是首选行为。 
-- 达到环境的限制（保留时间、大小或计数，以先达到的为准）时，此行为会立即清除数据。 保留期默认设置为 30 天。 
+- 达到环境的限制（保留时间、大小或计数，以先达到的为准）时，此行为会立即清除数据。 默认情况下，保留时间设置为 30 天。 
 - 最旧的引入数据最先清除（FIFO 方法）。
 
 ### <a name="example-1"></a>示例 1：
@@ -53,7 +60,7 @@ ms.locfileid: "39628760"
 
 ## <a name="pause-ingress"></a>暂停传入
 - 此行为旨在确保在达到数据保留期之前达到大小和计数限制时，不会清除这些数据。  
-- 在由于超过保留期而清除数据之前，此行为可让用户有更多的时间来增大其环境的容量。
+- 在由于超过保留期而清除数据之前，此行为可让用户有更多的时间来增大其环境的容量
 - 此行为有助于防止数据丢失，但如果暂停数据传入的持续时间超过事件源的保留期，则有可能会丢失最近的数据。
 - 但是，一旦达到环境的最大容量，环境将会暂停数据传入，直到执行附加的操作： 
    - 增加环境的最大容量。 有关详细信息，请参阅[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)以添加更多缩放单元。

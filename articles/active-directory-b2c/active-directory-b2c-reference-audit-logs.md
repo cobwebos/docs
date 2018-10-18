@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969653"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320231"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -24,9 +24,9 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 > [!IMPORTANT]
 > 审核日志仅保留七天。 如果需要保留更长时间，请使用下示方法计划下载并存储日志。 
 
-##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
 审核日志中的“B2C”类别包含以下类型的活动：
-|活动类型 |说明  |
+|活动类型 |Description  |
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动         |
 |Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动 |
@@ -38,10 +38,10 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 > [!NOTE]
 > 有关用户对象 CRUD 活动，请参阅“核心目录”类别。
 
-##<a name="example-activity"></a>示例活动
+## <a name="example-activity"></a>示例活动
 下面的示例显示了用户使用外部标识提供者登录时捕获的数据：![审核日志 - 示例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-##<a name="accessing-audit-logs-through-the-azure-portal"></a>通过 Azure 门户访问审核日志
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>通过 Azure 门户访问审核日志
 1. 转到 [Azure 门户](https://portal.azure.com)。 请确保位于 B2C 目录。
 2. 单击左侧收藏夹栏中的“Azure Active Directory” 
     
@@ -62,18 +62,18 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 - 如果单击列表中的特定行，右侧的上下文框会显示与该活动关联的其他属性
 - 单击“下载”可将活动下载为 csv 文件
 
-##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
+## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
 审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。 
 
-###<a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>先决条件
 若要向 Azure AD 报告 API 进行身份验证，首先需要注册应用程序。 请确保遵循[访问 Azure AD 报告 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。
 
-###<a name="accesing-the-api"></a>访问 API
+### <a name="accesing-the-api"></a>访问 API
 若要通过 API 下载 Azure AD B2C 审核日志，需筛选“B2C”类别的日志。 若要按类别筛选，请在调用 Azure AD 报告 API 终结点时使用查询字符串参数，如下所示：
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
 
-###<a name="powershell-script"></a>PowerShell 脚本
+### <a name="powershell-script"></a>PowerShell 脚本
 以下脚本提供了使用 PowerShell 查询 Azure AD 报告 API 并将结果存储为 JSON 文件的示例：
 
 ```powershell

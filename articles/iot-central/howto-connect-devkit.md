@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205453"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736965"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -43,26 +43,34 @@ ms.locfileid: "39205453"
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从 **MXChip** 设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
+在 Azure IoT Central 应用程序中，从 MXChip 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。
+
+1. 在 Device Explorer 中添加真实设备，单击“+新增”>“真实设备”以添加真实设备。
+    * 输入设备 ID<span style="color:Red">（须小写）</span>或使用所建议的设备 ID。
+    * 输入设备名或使用建议名称
+    
+    ![添加设备](media\concepts-connectivity\add-device.png)
+
+
+1. 通过单击设备页上的“连接”，获取已添加设备的作用域 ID、设备 ID 和主键等连接详细信息。
+ 
+    ![连接详细信息](media\concepts-connectivity\device-connect.PNG)
+
+3. 确保保存这些详细信息，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。 
+
 
 ### <a name="prepare-the-devkit-device"></a>准备 DevKit 设备
 
 > [!NOTE]
 > 如果以前使用过该设备且已存储 wifi 凭据，并且想要重新配置该设备以使用其他 WiFi 网络、连接字符串或遥测度量，请在开发板上同时按 **A** 和 **B** 按钮。 如果这不起作用，请按“重置”按钮并重试。
 
-#### <a name="before-you-start-configuring-the-device"></a>在开始配置设备之前：
-1. 在 IoT Central **示例 Devkits** 中，转到 `Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device`（在右上角） 
-2. 复制主连接字符串
-3. 确保保存该连接字符串，因为在准备 DevKit 设备时，将临时断开与 Internet 的连接。 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>若要准备 DevKit 设备：
 
 
-1. 从 GitHub 上的[发布](https://github.com/Azure/iot-central-firmware/releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。 “发布”页上的下载文件名类似于 `AZ3166-IoT-Central-X.X.X.bin`。
-
+1. 从 GitHub 上的[发布](http://aka.ms/iotcentral-docs-MXChip-releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。
 1. 使用 USB 线缆将 DevKit 设备连接到开发计算机。 在 Windows 中，已映射到 DevKit 设备上的存储的驱动器中会打开一个文件资源管理器窗口。 例如，该驱动器可能名为 **AZ3166 (D:)**。
-
 1. 将 **iotCentral.bin** 文件拖放到驱动器窗口。 复制完成后，设备会使用新固件重新启动。
 
 1. 当 DevKit 设备重启时，会显示以下屏幕：
@@ -75,7 +83,7 @@ ms.locfileid: "39205453"
     ```
 
     > [!NOTE]
-    > 如果屏幕显示任何其他内容，请同时按设备上的 **A** 和 **B** 按钮重新启动设备。 
+    > 如果屏幕显示任何其他内容，请重置设备并同时按设备上的 A 和 B 按钮以重启设备。 
 
 1. 现在，设备处于接入点 (AP) 模式。 可以从计算机或移动设备连接到此 WiFi 接入点。
 
@@ -89,7 +97,7 @@ ms.locfileid: "39205453"
     - 添加 WiFi 网络的名称 
     - WiFi 网络密码
     - 设备 LCD 上显示的 PIN 码 
-    - 设备的连接字符串（应该已经按照相关步骤保存此字符串），可以在 `https://apps.iotcentral.com`->`Device Explorer`->`Device`->`Select or Create a new Real Device`->`Connect this device`（右上角）找到连接字符串
+    - 设备的连接详细信息：作用域 ID、设备 ID 和主键（应已按照以下步骤保存了这些内容）      
     - 选择所有的可用遥测度量！ 
 
 1. 选择“配置设备”后，会看到以下页：
@@ -99,7 +107,6 @@ ms.locfileid: "39205453"
 1. 按设备上的“重置”按钮。
 
 
-
 ## <a name="view-the-telemetry"></a>查看遥测
 
 当 DevKit 设备重启时，设备上的屏幕会显示：
@@ -107,6 +114,9 @@ ms.locfileid: "39205453"
 * 已发送的遥测消息数。
 * 失败数。
 * 收到的所需属性数，以及发送的报告属性数。
+
+> [!NOTE]
+> 如果设备似乎在连接检查期间出现循环，请检查设备是否在 IoT Central 中为“已阻止”，并取消阻止设备，使其可连接到应用。
 
 摇晃设备会递增发送的报告属性数。 设备以“模具编号”设备属性的形式发送随机数。
 

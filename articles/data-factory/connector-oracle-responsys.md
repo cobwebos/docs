@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 Oracle Responsys 复制数据 | Microsoft 文档
+title: 使用 Azure 数据工厂（预览版）从 Oracle Responsys 复制数据| Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle Responsys 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 1368a75fb8ae44949ef25def19589ab164e25d8b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 8c8376fcdcc33996ecc9340647c92a3abcf262c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055260"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129686"
 ---
-# <a name="copy-data-from-oracle-responsys-using-azure-data-factory"></a>使用 Azure 数据工厂从 Oracle Responsys 复制数据
+# <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Responsys 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Responsys 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -46,7 +46,7 @@ Oracle Responsys 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Responsys | 是 |
-| endpoint | Responsys 服务器的终结点。  | 是 |
+| endpoint | Responsys 服务器的终结点  | 是 |
 | clientId | 与 Responsys 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Responsys 应用程序关联的客户端密码。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |

@@ -11,23 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 6418694097c472afd6a2c706e55a9026ab03dcff
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162706"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351856"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
-使用弹性池，可以确定弹性池处理其数据库工作负载所需的资源量，以及每个入池数据库的资源量。 
+使用弹性池，可以确定弹性池处理其数据库工作负载所需的资源量，以及每个入池数据库的资源量。
 
 ## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure 门户：管理弹性池和入池数据库
 
 可在一个位置找到所有池设置：“配置池”边栏选项卡。 若要转到该位置，请在门户中找到所需的弹性池，然后在边栏选项卡顶部，或者在左侧资源菜单中单击“配置池”。
 
 在此处，可以进行以下任意更改组合，并将所有这些更改保存到一个批处理文件中：
+
 1. 更改池的服务层
 2. 缩放性能（DTU 或 vCore）和存储
 3. 在池中添加或删除数据库
@@ -36,7 +37,7 @@ ms.locfileid: "47162706"
 
 ![弹性池配置边栏选项卡](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
 
-## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell：管理弹性池和入池数据库 
+## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell：管理弹性池和入池数据库
 
 若要使用 Azure PowerShell 创建并管理 SQL 数据库弹性池和入池数据库，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 若要创建和管理弹性池的逻辑服务器，请参阅[创建和管理逻辑服务器](sql-database-logical-servers.md)。 若要创建和管理防火墙规则，请参阅[使用 PowerShell 创建和管理防火墙规则](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell)。
 
@@ -56,10 +57,8 @@ ms.locfileid: "47162706"
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|设置数据库的属性，将现有数据库移入、移出弹性池或在其之间移动。|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|删除数据库。|
 
-
 > [!TIP]
 > 使用门户或每次只能创建一个单一数据库的 PowerShell cmdlet 在弹性池中创建多个数据库可能需要一段时间。 若要自动创建到弹性池中，请参阅 [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)。
->
 
 ## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI：管理弹性池和入池数据库
 
@@ -100,18 +99,18 @@ ms.locfileid: "47162706"
 
 | 命令 | Description |
 | --- | --- |
-|[弹性池 - 创建或更新](/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
-|[弹性池 - 删除](/rest/api/sql/elasticpools/delete)|删除弹性池。|
-|[弹性池 - 获取](/rest/api/sql/elasticpools/get)|获取弹性池。|
-|[弹性池 - 按服务器列出](/rest/api/sql/elasticpools/listbyserver)|返回服务器中弹性池的列表。|
-|[弹性池 - 更新](/rest/api/sql/elasticpools/update)|更新现有的弹性池。|
-|[弹性池活动](/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
-|[弹性池数据库活动](/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
-|[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
+|[弹性池 - 创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_createorupdate)|创建新弹性池或更新现有的弹性池。|
+|[弹性池 - 删除](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_delete)|删除弹性池。|
+|[弹性池 - 获取](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_get)|获取弹性池。|
+|[弹性池 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|返回服务器中弹性池的列表。|
+|[弹性池 - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|更新现有的弹性池。|
+|[弹性池活动](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
+|[弹性池数据库活动](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
+|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|获取数据库。|
+|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|更新现有的数据库。|
 
 ## <a name="next-steps"></a>后续步骤
 

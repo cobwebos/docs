@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2018
-ms.author: sdash ; mbullwin
-ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.topic: conceptual
+ms.date: 09/13/2018
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632817"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -31,11 +33,6 @@ ms.lasthandoff: 05/08/2018
 
 对于每个应用程序资源，最多可以创建 100 个可用性测试。
 
-
-> [!NOTE] 
-> * 可用性测试位置最近已移至 Azure 数据中心。 此移动使得我们可以为这些位置添加不断增加的 Azure 数据中心网络，  
-> * 而无需更新测试。 所有测试已迁移，并将从新位置运行。 
->* 有关详细信息，请参阅[服务更新](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/)。
 
 ## <a name="create"></a>为可用性测试报告打开资源
 
@@ -53,15 +50,17 @@ ms.lasthandoff: 05/08/2018
 ![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 * **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 该 URL 可以包括查询字符串。 因此，例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
-* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试会失败。 
-
-    如果不选中此选项，则测试只请求指定 URL 的文件。
+* **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试会失败。 如果不选中此选项，则测试只请求指定 URL 的文件。
 
 * **启用重试**：如果选中此选项，则测试失败时，会在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
 
 * **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。
 
 * **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 请选择多个位置，以便区分网站问题与网络问题。 最多可以选择 16 个位置。
+
+> [!NOTE] 
+> * 我们强烈建议从多个位置进行测试，防止出现因特定位置的暂时性问题导致的误报。
+> * 启用“分析从属请求”选项会导致执行更严格的检查。 对于手动浏览站点时可能不明显的情况，测试可能会失败。
 
 * **成功准则**：
 
@@ -70,58 +69,6 @@ ms.lasthandoff: 05/08/2018
     **HTTP 响应**：视为成功的返回状态代码。 代码 200 指示返回了正常网页。
 
     **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
-* **警报** 。 某个位置的失败很可能是网络问题，而不是站点问题。 但是，可以将阈值更改为更敏感或更不敏感，也可以更改要将电子邮件发送给哪个人。
-
-    可以设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。 （但请注意，查询参数不会以“属性”的形式传递。）
-
-### <a name="test-more-urls"></a>测试其他 URL
-添加更多测试。 例如，除了测试主页外，还可以通过测试搜索 URL 来确保数据库正在运行。
-
-
-## <a name="monitor"></a>查看可用性测试结果
-
-几分钟之后，单击“刷新”即可查看测试结果。 
-
-![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
-
-散点图显示其中都诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试时间戳、测试持续时间、位置和测试名称。 单击散点图中的任何点可查看测试结果的详细信息。  
-
-选择特定测试、位置或减少时间段，可查看围绕感兴趣的时间段的更多结果。 使用搜索资源管理器以查看所有执行结果，或者使用分析查询以针对此数据运行自定义报告。
-
-除了原始结果外，指标资源管理器中还有两个可用性指标： 
-
-1. 可用性：已成功的测试占执行的所有测试的百分比。 
-2. 测试持续时间：执行的所有测试的平均测试持续时间。
-
-可以将筛选器应用于测试名称、位置以分析特定测试和/或位置的趋势。
-
-## <a name="edit"></a> 检查和编辑测试
-
-从摘要页面选择特定的测试。 可以在该处查看具体结果，对其进行编辑或者临时禁用它。
-
-![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
-
-对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。 
-
-## <a name="failures"></a>如果看到失败
-单击红点。
-
-![单击红点](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
-
-
-从可用性测试结果，可以：
-
-* 检查从服务器收到的响应。
-* 使用在处理失败的请求实例时收集的服务器端遥测数据进行故障诊断。
-* 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
-* 在 Visual Studio 中打开 Web 测试结果。
-
-*看起来正常，但却报告为失败* 请参阅[常见问题解答](#qna)，了解如何减少干扰。
-
-
-> [!TIP]
-> 建议从至少 2 个位置进行测试，确保监视的可靠性。
->
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -176,20 +123,6 @@ ms.lasthandoff: 05/08/2018
 
     像设置 ping 测试一样设置测试位置、频率和警报参数。
 
-#### <a name="3-see-the-results"></a>3.查看结果
-
-像单 url 测试一样查看测试结果和所有失败。
-
-此外，还可以下载测试结果，在 Visual Studio 中查看。
-
-#### <a name="too-many-failures"></a>失败太多？
-
-* 失败的常见原因是测试运行时间太久。 运行时间不能超过两分钟。
-
-* 别忘了，必须正确加载页面的所有资源，测试才能成功（包括脚本、样式表、图像，等等）。
-
-* Web 测试必须完全包含在 .webtest 脚本中：不能在测试中使用编码的函数。
-
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>将时间和随机数插入多步骤测试
 假设要测试的工具从外部源获取与时间相关的数据（例如股票）。 录制 Web 测试时，必须使用具体的时间，但要将它们设置为测试参数：StartTime 和 EndTime。
 
@@ -212,6 +145,87 @@ Web 测试插件提供时间参数化方式。
     ![在测试参数中使用 {{plug-in name}}。](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
 
 现在，将测试上传到门户。 每次运行测试时，将使用动态值。
+
+
+## <a name="monitor"></a>查看可用性测试结果
+
+几分钟之后，单击“刷新”即可查看测试结果。 
+
+![主页边栏选项卡中的摘要结果](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
+
+散点图显示其中都诊断测试步骤详细信息的测试结果示例。 测试引擎存储已失败的测试的诊断详细信息。 对于成功的测试，将存储执行子集的诊断详细信息。 将鼠标悬停在任何绿点/红点上，可查看测试时间戳、测试持续时间、位置和测试名称。 单击散点图中的任何点可查看测试结果的详细信息。  
+
+选择特定测试、位置或减少时间段，可查看围绕感兴趣的时间段的更多结果。 使用搜索资源管理器以查看所有执行结果，或者使用分析查询以针对此数据运行自定义报告。
+
+除了原始结果外，指标资源管理器中还有两个可用性指标： 
+
+1. 可用性：已成功的测试占执行的所有测试的百分比。 
+2. 测试持续时间：执行的所有测试的平均测试持续时间。
+
+可以将筛选器应用于测试名称、位置以分析特定测试和/或位置的趋势。
+
+## <a name="edit"></a> 检查和编辑测试
+
+从摘要页面选择特定的测试。 可以在该处查看具体结果，对其进行编辑或者临时禁用它。
+
+![编辑或禁用 Web 测试](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
+
+对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。 
+
+## <a name="failures"></a>如果看到失败
+单击红点。
+
+![单击红点](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
+
+从可用性测试结果中，可以看到所有组件的事务详细信息。 在此门户中，可以：
+
+* 检查从服务器收到的响应。
+* 使用在处理失败的可用性测试时收集的相关服务器端遥测数据进行故障诊断。
+* 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
+* 在 Visual Studio 中打开 Web 测试结果。
+
+从[此处](app-insights-transaction-diagnostics.md)详细了解端到端事务诊断体验。
+
+单击异常行可查看导致综合可用性测试失败的服务器端异常的详细信息。 还可以获取[调试快照](app-insights-snapshot-debugger.md)，进行更丰富的代码级诊断。
+
+![服务器端诊断](./media/app-insights-monitor-web-app-availability/open-instance-4.png)
+
+## <a name="alerts"></a> 可用性警报
+使用经典警报体验可以获得有关可用性数据的以下类型的警报规则：
+1. 在某段时间内，Y 个位置中有 X 个报告失败
+2. 聚合可用性百分比低于阈值
+3. 平均测试持续时间超过阈值
+
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>当 Y 个位置中有 X 个报告失败时发出警报
+创建新的可用性测试时，会在[新的统一警报体验](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)中默认启用“Y 个位置中的 X 个”警报规则。 可通过选择“经典”选项或选择禁用该警报规则来选择退出。
+
+![创建体验](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
+
+**重要信息**：使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，**必须**在警报体验中配置警报规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。 
+
+1. 保存可用性测试后，单击新测试名称以转到其详细信息。 单击“编辑警报”![保存后编辑](./media/app-insights-monitor-web-app-availability/editaftersave.png)
+
+2. 设置所需的严重性级别、规则说明，最重要的是设置具有要用于此警报规则的通知首选项的操作组。
+![保存后编辑](./media/app-insights-monitor-web-app-availability/setactiongroup.png)
+
+
+> [!NOTE]
+> * 通过执行上述步骤，将操作组配置为在警报触发时接收通知。 如果不执行此步骤，则在规则触发时只会收到门户内通知。
+>
+### <a name="alert-on-availability-metrics"></a>根据可用性指标发出警报
+使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
+
+1. 在“指标”体验中选择 Application Insights 资源，然后选择“可用性”指标：![可用性指标选择](./media/app-insights-monitor-web-app-availability/selectmetric.png)
+
+2. 从菜单中配置警报选项将转到新体验，可在其中选择特定测试或位置以将警报规则设置为打开。 还可以在此处配置此警报规则的操作组。
+    ![可用性警报配置](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
+
+### <a name="alert-on-custom-analytics-queries"></a>根据自定义分析查询发出警报
+使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据[自定义日志查询](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这也特别适用。 
+
+> [!Tip]
+> * 可用性数据的指标包括可能通过调用我们的 TrackAvailability SDK 提交的任何自定义可用性结果。 可以使用“根据指标发出警报”支持根据自定义可用性结果发出警报。
+>
 
 ## <a name="dealing-with-sign-in"></a>处理登录
 如果用户登录应用，可以使用许多选项来模拟登录，以便可以在登录后测试页面。 使用的方法取决于应用提供的安全性类型。
@@ -249,11 +263,10 @@ Web 测试插件提供时间参数化方式。
 * 参数化令牌，设置参数来指定从验证器返回令牌的时间，并在站点查询中使用该参数。
   （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
-
 ## <a name="performance-tests"></a>性能测试
 可以在网站上运行负载测试。 与可用性测试一样，可以从全球各地的站点发送简单请求或多步骤请求。 与可用性测试不同的是，发送的许多请求可以模拟多个并发用户。
 
-在“概述”边栏选项卡中，打开“设置”、“性能测试”。 创建测试时，系统会邀请你连接或创建 Visual Studio Team Services 帐户。
+在“概述”边栏选项卡中，打开“设置”、“性能测试”。 创建测试时，系统会邀请你连接或创建 Azure DevOps 帐户。
 
 测试完成时，会显示响应时间和成功率。
 
@@ -268,50 +281,68 @@ Web 测试插件提供时间参数化方式。
 * [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
 * 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
 
-## <a name="qna"></a>有疑问？ 遇到问题？
+## <a name="qna"></a> FAQ
+
+* *站点看上去正常，但测试却失败？为什么 Application Insights 向我发出警报？*
+
+    * 测试是否启用了“分析从属请求”？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
+
+    * 若要降低包括网络在内的各方面因素的干扰影响，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
+
+    * 单击可用性体验中的任意红点或搜索资源管理器中的任意可用性故障，以查看我们报告失败的详细原因。 测试结果以及相关的服务器端遥测数据（如果启用）应该有助于了解测试失败的原因。 暂时性问题的常见原因是网络或连接问题。 
+
+    * 测试是否超时？ 我们在 2 分钟后中止测试。 如果你的 ping 或多步骤测试花费的时间超过 2 分钟，我们会将其报告为失败。 请考虑将测试分成多个可在较短持续时间内完成的测试。
+
+    * 是所有位置都报告失败，还是只有部分位置报告失败？ 如果只有部分位置报告失败，则可能是由网络/CDN 问题引起的。 再次单击红点应该有助于了解该位置报告失败的原因。
+
+* *警报触发和/或解决时，都没有收到电子邮件？*
+
+    检查经典警报配置，确认是否已直接列出你的电子邮件，或者你所在的通讯组列表是否配置为接收通知。 如果是，则检查通讯组列表配置，确认它可以接收外部电子邮件。 另外，检查邮件管理员是否有可能配置了任何可能导致此问题的策略。
+
+* *我没有收到 Webhook 通知？*
+
+    检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+
 * 出现间歇性测试失败和违反协议错误？
 
     错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体说来，某些标头可能没有使用 CRLF 来指示行结束，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，找出可能违反规范的标头。
     
-    注意：URL 可能不会在对 HTTP 标头的验证比较宽松的浏览器上发生故障。 有关该问题的详细说明，请参阅此博客文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
-* 站点看上去正常，但测试却失败？
-
-    * 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
-
-    * 若要降低包括网络在内的各方面因素的干扰影响，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
+    注意：URL 可能不会在对 HTTP 标头的验证比较宽松的浏览器上发生故障。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
 * 看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
     
-    如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。
+    如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](app-insights-sampling.md)正在进行。 请选择其他可用性结果。
+
 * *是否可以从 Web 测试调用代码？*
 
-    不会。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+    不是。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+
 * *是否支持 HTTPS？*
 
     支持 TLS 1.1 和 TLS 1.2。
 * *“Web 测试”与“可用性测试”之间是否有差异？*
 
     这两个术语可以互换引用。 可用性测试是更通用的术语，其中除了包含多步骤 Web 测试外，还包含单 URL ping 测试。
+    
 * *如何在防火墙后面运行的内部服务器上使用可用性测试？*
 
     有两个可能的解决方案：
     
     * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](app-insights-ip-addresses.md)发出的传入请求。
     * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
+
 * *上传多步骤 Web 测试失败*
 
-    存在 300 K 大小限制。
+    可能导致此问题的一些原因包括：
+    * 存在 300 K 大小限制。
+    * 不支持循环。
+    * 不支持对其他 Web 测试的引用。
+    * 不支持数据源。
 
-    不支持循环。
-
-    不支持对其他 Web 测试的引用。
-
-    不支持数据源。
 * *多步骤测试无法完成*
 
-    存在每个测试 100 个请求的限制。
+    存在每个测试 100 个请求的限制。 此外，如果运行时间超过两分钟，测试会停止。
 
-    如果运行时间超过两分钟，测试会停止。
 * *如何使用客户端证书运行测试？*
 
     抱歉，不支持这种测试。

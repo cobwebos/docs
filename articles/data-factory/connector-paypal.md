@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 PayPal 复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂（预览版）从 PayPal 复制数据 | Microsoft Docs
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 PayPal 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 844b9979ed3bb61850ff9448d065bc1300fe23d0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6d752eb5d638171aa510bbbf17a197eddd2b6f60
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054392"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127186"
 ---
-# <a name="copy-data-from-paypal-using-azure-data-factory"></a>使用 Azure 数据工厂从 PayPal 复制数据
+# <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 PayPal 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 PayPal 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 

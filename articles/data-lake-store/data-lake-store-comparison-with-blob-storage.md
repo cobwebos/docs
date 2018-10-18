@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store 与 Azure 存储 Blob 对比 | Microsoft Docs
-description: Azure Data Lake Store 与 Azure 存储 Blob 对比
+title: Azure Data Lake Storage Gen1 与 Azure 存储 Blob 对比 | Microsoft Docs
+description: Azure Data Lake Storage Gen1 与 Azure 存储 Blob 对比
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b374e92a1e1d9828bc8c095e29e1dfdfd13275b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492905"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737186"
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>比较 Azure Data Lake Store 与 Azure 存储 Blob
-本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
+# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比较 Azure Data Lake Storage Gen1 与 Azure Blob 存储
+本文中的表总结了 Azure Data Lake Storage Gen1 和 Azure Blob 存储在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Storage Gen1 是一个针对大数据分析工作负荷进行了优化的超大规模存储库。
 
-|  | Azure Data Lake Store | Azure Blob 存储 |
+|  | Azure Data Lake Storage Gen1 | Azure Blob 存储 |
 | --- | --- | --- |
 | 目的 |大数据分析工作负荷的优化存储 |用于多种存储方案（包括大数据分析）的常规用途对象存储 |
 | 用例 |Batch、交互式流分析和机器学习数据，例如日志文件、IoT 数据、点击流、大型数据集 |任何类型的文本或二进制数据，例如应用程序后端、备份数据、流式处理媒体存储和常规用途数据。 另外，还完全支持分析工作负荷；Batch、交互式流分析和机器学习数据，例如日志文件、IoT 数据、点击流、大型数据集 |
-| 关键概念 |Data Lake Store 帐户包含文件夹，而这些文件夹也会相应地将数据存储为文件 |存储帐户包含容器，而这些容器也会相应地包含 blob 形式的数据 |
+| 关键概念 |Data Lake Storage Gen1 帐户包含文件夹，而这些文件夹也会相应地将数据存储为文件 |存储帐户包含容器，而这些容器也会相应地包含 blob 形式的数据 |
 | 结构 |分层文件系统 |具有平面命名空间的对象存储 |
 | API |基于 HTTPS 的 REST API |基于 HTTP/HTTPS 的 REST API |
 | 服务器端 API |[WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Azure blob 存储 REST API） |
 | Hadoop 文件系统客户端 |是 |是 |
-| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
+| 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-account-manage.md#access-keys)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
 | 数据操作 - 身份验证协议 |OAuth 2.0。 调用必须包含 Azure Active Directory 发布的有效的 JWT（JSON Web 令牌） |基于哈希的消息身份验证代码 (HMAC)。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |
-| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-account-manage.md#access-keys)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |
 | 静态数据加密 |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（预览版）</li></ul><li>客户端加密</li></ul> |
 | 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) |

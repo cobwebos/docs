@@ -1,34 +1,34 @@
 ---
-title: Microsoft 文本翻译 API V2.0 参考 | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Microsoft 文本翻译 API V2.0 的参考文档。
+title: 文本翻译 API V2.0
+titleSuffix: Azure Cognitive Services
+description: 文本翻译 API V2.0 参考文档。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: e32e28608d2fecf27b61acff74af7eb6849f0ba1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366650"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127839"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
 > [!IMPORTANT]
 > 此版文本翻译 API 已弃用。 [查看文本翻译 API v3 的文档](v3-0-reference.md)。
 
-Microsoft 文本翻译 API V2 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供多语言用户体验。 它采用行业标准，可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行语言翻译以及其他语言相关操作，例如文本语言检测或文本转语音操作。 有关 Microsoft 翻译 API 的详细信息，请单击此处。
+文本翻译 API V2 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供多语言用户体验。 它采用行业标准，可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行语言翻译以及其他语言相关操作，例如文本语言检测或文本转语音操作。 有关 Microsoft 翻译 API 的详细信息，请单击此处。
 
 ## <a name="getting-started"></a>入门
-若要访问 Microsoft 文本翻译 API，需[注册 Microsoft Azure](../translator-text-how-to-signup.md)。
+若要访问文本翻译 API，需[注册 Microsoft Azure](../translator-text-how-to-signup.md)。
 
 ## <a name="authorization"></a>授权
-只要调用 Microsoft 文本翻译 API，就需要使用订阅密钥进行身份验证。 此 API 支持两种身份验证模式：
+只要调用文本翻译 API，就需要使用订阅密钥进行身份验证。 此 API 支持两种身份验证模式：
 
 * 使用访问令牌。 使用**步骤** 9 中提到的订阅密钥，通过向授权服务发出 POST 请求来生成访问令牌。 有关详细信息，请参阅令牌服务文档。 使用 Authorization 标头或 access_token 查询参数，将访问令牌传递给翻译工具服务。 访问令牌的有效期为 10 分钟。 每 10 分钟获取一次新的访问令牌，在这 10 分钟内，始终对重复的请求使用同一访问令牌。
 
@@ -76,7 +76,7 @@ Microsoft 文本翻译 API V2 可以无缝集成到应用程序、网站、工�
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明    |参数类型|数据类型|
+|参数|值|Description    |参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid  |(empty)    |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -181,7 +181,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权|(empty) |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
@@ -222,7 +222,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |区域设置|(empty) |必需。 一个表示组合的字符串，该组合包含一个与某种语言关联的 ISO 639 双字母小写区域性代码，以及一个用于将语言名称本地化的 ISO 3166 双字母大写子区域性代码，或者一个单纯的 ISO 639 小写区域性代码。|query|字符串|
@@ -256,7 +256,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)  |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -289,7 +289,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -321,7 +321,7 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
@@ -347,7 +347,7 @@ binary
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/Detect`。
 
-**返回值：** 一个字符串，其包含的双字符语言代码适用于给定的文本。 。
+**返回值：** 一个字符串，其包含的双字符语言代码适用于给定的文本。 .
 
 ### <a name="response-class-status-200"></a>响应类（状态 200）
 
@@ -357,7 +357,7 @@ binary
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，所包含的一些文本需标识其语言。 文本大小不得超过 10000 个字符。|query| 字符串|
@@ -412,7 +412,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
@@ -446,7 +446,7 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型   |
+|参数|值|Description|参数类型|数据类型   |
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |originalText|(empty)|必需。 一个字符串，包含要翻译的文本。 字符串的最大长度为 1000 个字符。|query|字符串|
@@ -523,7 +523,7 @@ AddTranslationArray 方法成功。 2018 年 1 月 31 日以后，不接受句�
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌："Bearer" + " " + "access_token"。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
@@ -556,7 +556,7 @@ integer
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)  |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query| 字符串|
 |text|(empty)   |必需。 一个字符串，表示要拆分成句子的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -650,7 +650,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
 |text|(empty)|必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
@@ -770,7 +770,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
  
 ### <a name="parameters"></a>parameters
 
-|参数|值|说明|参数类型|数据类型|
+|参数|值|Description|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
 |授权  |(empty)    |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|

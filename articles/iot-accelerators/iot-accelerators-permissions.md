@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 676d5e553e2929ae09d447141ca315fd1cc448e3
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e45954389c8dd1b484a7009460c541bf35266973
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448754"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713844"
 ---
 # <a name="permissions-on-the-azureiotsolutionscom-site"></a>azureiotsolutions.com 站点权限
 
@@ -62,9 +62,9 @@ AAD 角色控制预配解决方案加速器，以及在解决方案加速器中�
 
 Azure 管理员角色可控制将 Azure 订阅映射到 AAD 租户的能力。
 
-可以在[如何添加或更改 Azure 协同管理员、服务管理员和帐户管理员][lnk-admin-roles]一文中找到有关 Azure 管理员角色的详细信息。
+可在文章[添加或更改 Azure 订阅管理员][lnk-admin-roles]中找到有关 Azure 管理员角色的更多信息。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>我是服务管理员，要更改我的订阅与特定 AAD 租户之间的目录映射。 如何完成此任务？
 
@@ -93,7 +93,7 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AAD 租户的能力。
 [img-flowchart]: media/iot-accelerators-permissions/flowchart.png
 
 [lnk-azureiotsolutions]: https://www.azureiotsolutions.com
-[lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-rm-github-repo]: https://github.com/Azure/remote-monitoring-services-dotnet
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
 [lnk-aad-admin]:../active-directory/users-groups-roles/directory-assign-admin-roles.md
@@ -102,6 +102,5 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AAD 租户的能力。
 [lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
-[lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 [lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [lnk-customize]: iot-accelerators-remote-monitoring-customize.md

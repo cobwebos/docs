@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.author: ramkris
-ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: ffd8f438429cd8769ac0dbff7f489327166e0000
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300748"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294452"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -36,7 +36,7 @@ ms.locfileid: "36300748"
 
 <table>
 
-<tr><td>**说明**</td><td>批量执行程序库允许客户端应用程序在 Azure Cosmos DB 帐户中执行批量操作。 批量执行程序库提供 BulkImport 和 BulkUpdate 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。</td></tr>
+<tr><td>**说明**</td><td>批量执行程序库允许客户端应用程序在 Azure Cosmos DB 帐户中执行批量操作。 批量执行程序库提供 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。</td></tr>
 
 <tr><td>**SDK 下载**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
 
@@ -46,8 +46,27 @@ ms.locfileid: "36300748"
 
 <tr><td>**入门**</td><td>[批量执行程序库 .NET SDK 入门](bulk-executor-dot-net.md)</td></tr>
 
-<tr><td>**当前受支持的框架**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)（版本 >= 1.21.1）</li><li>
-[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)（版本 >= 10.0.2）
+<tr><td>**当前受支持的框架**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)（版本 >= 2.0.0）</li><li>
+[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)（版本 >= 9.0.1）
 </li></ul></td></tr>
 </table></br>
 
+## <a name="release-notes"></a>发行说明
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+
+* 添加了对 Azure Cosmos DB SQL API 帐户的 BulkDelete 操作的支持。
+* 添加了对 Azure Cosmos DB MongoDB API 帐户的 BulkImport 操作的支持。
+* 增加了对版本 2.0.0 的 DocumentDB .NET SDK 依赖项。 
+
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
+
+* 添加了对 Azure Cosmos DB Gremlin API 帐户的 BulkImport 操作的支持。
+
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+
+* 对 Azure Cosmos DB SQL API 帐户的 BulkImport 操作的小 bug 修复。
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+
+* 添加了对 Azure Cosmos DB SQL API 帐户的 BulkImport 和 BulkUpdate 操作的支持。

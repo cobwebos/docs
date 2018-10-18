@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7b82be6cdc8b64595c11eef84e8071fad9c07191
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: daf83baf5f5c3a2b7bbfe39e043e2b8411d6dd06
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665457"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465769"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>在 PIM 中分配 Azure 资源角色
 
@@ -32,7 +32,7 @@ Azure AD PIM 可以管理内置的 Azure 资源角色以及自定义角色，包
 - 安全管理器等等
 
 >[!NOTE]
-已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以使用适用于 Azure 资源的 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
+已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以对 Azure 资源使用 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
 ## <a name="assign-a-role"></a>分配角色
 

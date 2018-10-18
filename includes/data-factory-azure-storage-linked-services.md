@@ -6,7 +6,7 @@
 | type |type 属性必须设置为：**AzureStorage** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
-请参阅以下文章中的步骤来查看/复制 Azure 存储帐户密钥：[查看、复制和重新生成存储访问密钥](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account)。
+请参阅以下部分了解查看/复制 Azure 存储帐户密钥的步骤：[访问密钥](../articles/storage/common/storage-account-manage.md#access-keys)。
 
 **示例：**  
 

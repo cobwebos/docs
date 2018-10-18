@@ -1,24 +1,25 @@
 ---
-title: Microsoft 文本翻译 API 语言方法 | Microsoft Docs
-description: 使用 Microsoft 文本翻译 API 语言方法。
+title: 文本翻译 API 语言方法
+titlesuffix: Azure Cognitive Services
+description: 使用文本翻译 API 语言方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 93c06218a560faf439f05903438d021b372ce257
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366319"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129635"
 ---
-# <a name="text-api-30-languages"></a>文本 API 3.0：语言
+# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
 
-获取文本 API 的其他操作当前支持的语言集。 
+获取文本翻译 API 的其他操作当前支持的语言集。 
 
 ## <a name="request-url"></a>请求 URL
 
@@ -33,7 +34,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>api-version</td>
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
@@ -48,7 +49,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>Accept-Language</td>
     <td>可选请求标头。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 `fr` 来请求法语名称，或使用值 `zh-Hant` 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
@@ -229,7 +230,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>ETag</td>
     <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 `If-None-Match` 标头字段中发送 `ETag` 值。
@@ -247,7 +248,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -266,11 +267,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生失败的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生失败的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 

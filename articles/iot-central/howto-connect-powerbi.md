@@ -7,14 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5cb55e73b379b909811bde728d2ab39e29635bf5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190693"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368063"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
+
+*本主题适用于管理员。*
 
 ![Power BI 解决方案模板管道](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
@@ -25,9 +27,9 @@ ms.locfileid: "43190693"
 - 观察设备测量值的历史趋势
 - 识别发送大量关键事件的有问题设备
 
-此解决方案模板会设置一个管道，用于通过[连续数据导出](howto-export-data.md)将数据引入 Azure Blob 存储帐户。 此数据将流经 Azure Functions、Azure 数据工厂和 Azure SQL 数据库，这三个服务会处理并转换数据，以便在 Power BI 报表（可下载其 .PBIX 文件）中进行可视化和分析。 所有这些资源在 Azure 订阅中创建，因此，你可以根据需求自定义每个组件。 此解决方案模板完全是开源的，可以访问 [Github 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)来详细了解体系结构和扩展该解决方案。
+此解决方案模板会设置一个管道，用于通过[连续数据导出](howto-export-data.md)将数据引入 Azure Blob 存储帐户。 此数据流入 Azure Functions、Azure 数据工厂和 Azure SQL 数据库以处理和转换数据。 输出可以在 Power BI 报告中得到可视化和分析，并可将该报告下载为 PBIX 文件。 所有这些资源在 Azure 订阅中创建，因此，你可以根据需求自定义每个组件。 此解决方案模板完全是开源的，可以访问 [GitHub 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)来详细了解体系结构并扩展该解决方案。
 
-**[从 Microsoft AppSource 获取 Azure IoT Central Analytics 解决方案模板。](https://aka.ms/iotcentralpowerbisolutiontemplate)**
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>从 Microsoft AppSource 获取 [Azure IoT Central Analytics 解决方案模板](https://aka.ms/iotcentralpowerbisolutiontemplate)
 
 ## <a name="prerequisites"></a>先决条件
 设置此模板需要以下各项：
@@ -52,7 +54,7 @@ ms.locfileid: "43190693"
 
 访问 AppSource 以获取 [Azure IoT Central Analytics 解决方案模板](https://aka.ms/iotcentralpowerbisolutiontemplate)。
 
-访问 [Github 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)，以详细了解体系结构和扩展解决方案。
+访问 [Github 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)，详细了解体系结构并扩展解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 

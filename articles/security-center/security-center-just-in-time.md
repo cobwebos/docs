@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a079456813a67eb40d5cf42bcdd2c91fbc631d3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297033"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124144"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -108,6 +108,9 @@ ms.locfileid: "44297033"
 
 3. 选择“确定”。
 
+> [!NOTE]
+>如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组中为该端口创建拒绝所有入站通信规则。 规则在网络安全组中将具有最高优先级，或比其中的现有规则的优先级更低。 这取决于确定规则是否安全的 Azure 安全中心执行的分析。
+>
 ## <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
 
 若要请求对 VM 的访问权限，请执行以下操作：
@@ -162,8 +165,6 @@ ms.locfileid: "44297033"
 
   “活动日志”提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
 
-  ![查看活动日志][5]
-
 可以通过选择“单击此处将所有项下载为 CSV”来下载日志信息。
 
 修改筛选器并选择“应用”来创建搜索和日志。
@@ -172,15 +173,62 @@ ms.locfileid: "44297033"
 
 通过 Azure 安全中心 API 可以使用及时 VM 访问功能。 可以通过此 API 获取有关配置 VM 的信息、添加新的 VM、请求访问 VM 等。 若要详细了解及时 REST API，请参阅 [Jit Network Access Policies](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)（Jit 网络访问策略）。
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>为 VM 配置恰时策略
+## <a name="using-just-in-time-vm-access-via-powershell"></a>通过 PowerShell 使用恰时 VM 访问 
 
-若要在特定 VM 上配置恰时策略，需要在 PowerShell 会话中运行以下命令：Set-ASCJITAccessPolicy。
-若要了解详细信息，请参阅该 cmdlet 文档。
+若要通过 PowerShell 使用实时 VM 访问解决方案，请使用正式的 Azure 安全中心 PowerShell cmdlet，具体为 `Set-AzureRmJitNetworkAccessPolicy`。
+
+下面的示例可对特定 VM 设置实时 VM 访问策略，并设置以下各项：
+1.  关闭端口 22 和 3389。
+2.  将每个的最大时间窗口设置为 3 小时，使它们能够按每个批准的请求打开。
+3.  允许请求访问的用户控制源 IP 地址，允许用户对批准的实时访问请求建立成功会话。
+
+在 PowerShell 中运行以下命令实现此目的：
+
+1.  分配变量，保存 VM 的实时 VM 访问策略:
+
+        $JitPolicy = (@{
+         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+             number=22;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"},
+             @{
+             number=3389;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"})})
+
+2.  将 VM 实时 VM 访问策略插入数组：
+    
+        $JitPolicyArr=@($JitPolicy)
+
+3.  对所选 VM 配置实时 VM 访问策略：
+    
+        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
 
-若要访问由恰时解决方案保护的特定 VM，需要在 PowerShell 会话中运行以下命令：Invoke-ASCJITAccess。
-若要了解详细信息，请参阅该 cmdlet 文档。
+在以下示例中，可以看到对特定 VM 的实时 VM 访问请求，其中请求端口 22 为特定 IP 地址打开，并持续特定时间：
+
+在 PowerShell 中运行以下命令：
+1.  配置 VM 请求访问属性
+
+        $JitPolicyVm1 = (@{
+          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+           number=22;
+           endTimeUtc="2018-09-17T17:00:00.3658798Z";
+           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.  在数组中插入 VM 访问请求参数：
+
+        $JitPolicyArr=@($JitPolicyVm1)
+3.  发送请求访问权限（使用步骤 1 中获取的资源 ID）
+
+        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+
+有关详细信息，请参阅 PowerShell cmdlet 文档。
+
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解了安全中心中的恰时 VM 访问如何帮助你控制对 Azure 虚拟机的访问。

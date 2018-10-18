@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2017
+ms.date: 09/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fc4eb2b717ea9f4c1b2813db7dcf02062948bae0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 78e432bf526ad270ae8543ad1be40727ed560d4b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048350"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367893"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>使用 Azure 数据工厂从 Phoenix 复制数据 
 
@@ -45,7 +45,7 @@ Phoenix 链接服务支持以下属性：
 | type | type 属性必须设置为：**Phoenix** | 是 |
 | host | Phoenix 服务器的 IP 地址或主机名。 （即，192.168.222.160）  | 是 |
 | port | Phoenix 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8765。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
-| httpPath | 对应于 Phoenix 服务器的部分 URL。 （即，/gateway/sandbox/phoenix/version）。 如果使用 WindowsAzureHDInsightService，默认值是 `hbasephoenix`。  | 否 |
+| httpPath | 对应于 Phoenix 服务器的部分 URL。 （即，/gateway/sandbox/phoenix/version）。 如果使用 HDInsights 群集，请指定 `/hbasephoenix0`。  | 否 |
 | authenticationType | 用于连接到 Phoenix 服务器的身份验证机制。 <br/>允许的值为：**Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | 是 |
 | username | 用于连接到 Phoenix 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -55,6 +55,9 @@ Phoenix 链接服务支持以下属性：
 | allowHostNameCNMismatch | 指定通过 SSL 进行连接时是否要求 CA 颁发的 SSL 证书的名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+
+>[!NOTE]
+>如果群集不支持 HDInsight 等粘性会话，请在 http 路径设置的末尾显式添加节点索引，例如，指定 `/hbasephoenix0` 而不是 `/hbasephoenix`。
 
 **示例：**
 
@@ -66,7 +69,7 @@ Phoenix 链接服务支持以下属性：
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
             "port" : "443",
-            "httpPath" : "hbasephoenix",
+            "httpPath" : "/hbasephoenix0",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",
             "password": {

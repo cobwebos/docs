@@ -1,19 +1,21 @@
 ---
-title: 自定义 AI 决策服务工作流 - Azure 认知服务 | Microsoft Docs
-description: 本文对 Azre 自定义 AI 决策服务工作流进行概述。
+title: 自定义 AI 决策服务工作流
+titlesuffix: Azure Cognitive Services
+description: 本文介绍了 Azure 自定义 AI 决策服务的推荐工作流程。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 851d7f8cc47b455dbced26ff53d841ed0a5ff0db
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3bc7f90c9238ce58fd9dc8ac630987803d79bfd
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366965"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368012"
 ---
 # <a name="custom-decision-service-workflow"></a>自定义 AI 决策服务工作流
 
@@ -21,7 +23,7 @@ ms.locfileid: "35366965"
 
 ![自定义 AI 决策服务工作流](media/custom-decision-service-workflow.png)
 
-添加 [Azure 存储连接字符串](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string)。
+添加 [Azure 存储连接字符串](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)。
 
 ## <a name="next-steps"></a>后续步骤
 

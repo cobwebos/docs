@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886304"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364289"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在远程监视解决方案加速器中配置基于角色的访问控制
 
@@ -134,11 +134,11 @@ ms.locfileid: "42886304"
 
 ### <a name="define-a-policy-for-the-new-role"></a>为新角色定义策略
 
-若要在 Azure 门户中将角色添加到应用，需在 [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) 中，为分配所需设备管理权限的角色定义一个策略。
+若要在 Azure 门户中将角色添加到应用，需在 [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) 中，为分配所需设备管理权限的角色定义一个策略。
 
-1. 将 GitHub 中的[身份验证和授权微服务](https://github.com/Azure/pcs-auth-dotnet)存储库克隆到本地计算机。
+1. 将[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet)存储库从 GitHub 克隆到本地计算机。
 
-1. 按以下代码片段中所示编辑 **Services/data/policies/roles.json** 文件，为 **ManageDevices** 角色添加策略。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
+1. 按以下代码片段中所示编辑 Sauth/Services/data/policies/roles.json 文件，为 ManageDevices 角色添加策略。 **ID** 和 **Role** 值必须与前一部分所述应用清单中的角色定义相匹配。 充当 **ManageDevices** 角色的人员可以使用允许的操作列表来创建、更新设备，以及删除已连接到解决方案的设备：
 
     ```json
     {
@@ -184,7 +184,7 @@ ms.locfileid: "42886304"
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Web UI 如何强制实施权限
 
-Web UI 使用[身份验证和授权微服务](https://github.com/Azure/pcs-auth-dotnet)来确定用户可执行的操作，以及要在 UI 中显示的控件。 例如，如果解决方案名为 **contoso-rm4**，则 Web UI 将通过发送以下请求来检索当前用户可执行的操作列表：
+Web UI 使用[身份验证和授权微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)来确定用户可执行的操作，以及要在 UI 中显示的控件。 例如，如果解决方案名为 **contoso-rm4**，则 Web UI 将通过发送以下请求来检索当前用户可执行的操作列表：
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ Authorization: Bearer <JWT Token from ADAL>
 
 微服务也会检查权限，以防止未经授权的 API 请求。 当微服务收到 API 请求时，会解码并验证 JWT 令牌，以获取与用户角色相关联的用户 ID 和权限。
 
-在 [IoT 中心管理器微服务](https://github.com/Azure/iothub-manager-dotnet)中，摘自 [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) 文件的以下代码片段显示如何强制实施权限：
+在 [IoT 中心管理器微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)中，摘自 [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) 文件的以下代码片段显示如何强制实施权限：
 
 ```csharp
 [HttpDelete("{id}")]
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>后续步骤
 
 本文已介绍如何在远程监视解决方案加速器中实现基于角色的访问控制。
+
+请参阅[配置时序见解资源管理器的访问控制](iot-accelerators-remote-monitoring-rbac-tsi.md)，了解有关如何在远程监视解决方案加速器中管理时序见解资源管理器的访问权限信息。
 
 有关远程监视解决方案加速器的其他概念性信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 

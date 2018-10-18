@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/10/2018
-ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346642"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498430"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure 磁盘加密先决条件（早期版本）
 
@@ -70,7 +70,7 @@ ms.locfileid: "44346642"
     - [安装并配置适用于 Windows 的 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 
         - 安装 PowerShellGet、Azure PowerShell，并加载 AzureRM 模块。 
     - [在 macOS 和 Linux 上安装并配置 Azure PowerShell](/powershell/azure/install-azurermps-maclinux)。
-        -  安装 PowerShell Core、Azure PowerShell for .NET Core，并加载 AzureRM.Netcore 模块。
+        -  安装 PowerShell Core、Azure PowerShell for .NET Core，并加载 Az 模块。
 2. 安装 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module)。 
 
      ```powershell
