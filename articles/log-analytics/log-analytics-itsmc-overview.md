@@ -173,7 +173,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 > 根据导入 Log Analytics 的工作项类型，**ServiceDesk_CL** 包含以下字段：
 
-**工作项：****事件**  
+**工作项：** **事件**  
 ServiceDeskWorkItemType_s="Incident"
 
 **字段**
@@ -200,7 +200,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer
 
 
-**工作项：****更改请求**
+**工作项：** **更改请求**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 

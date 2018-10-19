@@ -169,7 +169,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    1     ConfigurationServer
    ```
 
-   在以上输出中，***$ProcessServers [0]*** 对应于 *ScaleOut ProcessServer****$ProcessServers [1]*** 对应于 *ConfigurationServer* 上的进程服务器角色
+   在以上输出中，***$ProcessServers [0]*** 对应于 *ScaleOut ProcessServer* ***$ProcessServers [1]*** 对应于 *ConfigurationServer* 上的进程服务器角色
 
 3. 标识在配置服务器设置的帐户。
 
