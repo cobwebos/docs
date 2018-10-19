@@ -86,7 +86,7 @@ Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnost
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
-   - **警报逻辑****基于***结果数*，**条件***大于***阈值** *0*
+   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“24 小时内的数据量大于 100 GB”
@@ -100,7 +100,7 @@ Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnost
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
    - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-   - **警报逻辑****基于***结果数*，**条件***大于***阈值** *0*
+   - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
    - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
