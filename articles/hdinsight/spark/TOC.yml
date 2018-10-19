@@ -219,6 +219,8 @@ items:
       href: apache-spark-settings.md
     - name: 优化 Spark 作业
       href: apache-spark-perf.md
+    - name: 使用 IO 缓存启用缓存
+      href: apache-spark-improve-performance-iocache.md
     - name: 群集容量规划
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -454,9 +456,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 17ce2876fecd8ced03f5ddbced3657ac6b76c1e8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 53f7e70e9ce7442ab37008c1c6614eec0783fd85
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364432"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428277"

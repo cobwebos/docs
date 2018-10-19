@@ -16,9 +16,9 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 创建加密的存储帐户
+  - name: 利用模板参考
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-  - name: 创建多个存储帐户实例
+  - name: 创建多个资源实例
     href: resource-manager-tutorial-create-multiple-instances.md
   - name: 设置资源部署顺序
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
@@ -128,10 +128,6 @@ items:
       href: programmatically-create-subscription.md
     - name: 授予访问权限以创建 EA 订阅
       href: grant-access-to-create-subscription.md
-    - name: 创建管理组
-      href: management-groups-create.md
-    - name: 管理你的管理组
-      href: management-groups-manage.md
   - name: 控制访问
     items:
     - name: 创建服务主体
@@ -236,9 +232,9 @@ items:
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: c47c85917445330ed2fa2ec50541b6db3f676a27
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3e7fc5f0e26bcfd0c52b874196eff1ac332b62bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585928"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403350"

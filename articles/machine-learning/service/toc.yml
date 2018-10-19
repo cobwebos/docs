@@ -61,12 +61,12 @@ items:
       href: how-to-transform-data.md
     - name: 写入数据
       href: how-to-write-data.md
-  - name: 访问数据
-    href: how-to-access-data.md
   - name: 训练模型
     items:
     - name: 设置训练环境
       href: how-to-set-up-training-targets.md
+    - name: 在训练期间访问数据
+      href: how-to-access-data.md
     - name: 创建估算器
       href: how-to-train-ml-models.md
       items:
@@ -74,8 +74,6 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-    - name: 创建和部署 ONNX 模型
-      href: how-to-build-deploy-onnx.md
   - name: 调整模型
     items:
     - name: 优化超参数
@@ -89,6 +87,10 @@ items:
       href: how-to-configure-auto-train.md
     - name: 使用远程计算目标
       href: how-to-auto-train-remote.md
+  - name: ONNX 模型
+    items:
+    - name: 创建和部署 ONNX 模型
+      href: how-to-build-deploy-onnx.md
   - name: 部署模型
     items:
     - name: 模型部署位置
@@ -335,13 +337,13 @@ items:
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: 生成和部署文本分类模型
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 6e0224a614bdf457e210b00f186bd531b5053bf4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e408b78c66ddbd809d36c4aa8451b53031ba4d5a
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113675"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428260"

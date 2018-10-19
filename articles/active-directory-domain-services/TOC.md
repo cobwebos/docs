@@ -34,6 +34,7 @@
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理托管域上的 DNS](active-directory-ds-admin-guide-administer-dns.md)
+### [更新电子邮件通知](active-directory-ds-notifications.md)
 ### 为托管域配置安全 LDAP
 #### [任务 1：获取安全 LDAP 的证书](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [任务 2：导出安全 LDAP 证书](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
