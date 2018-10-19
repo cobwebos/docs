@@ -44,6 +44,8 @@ items:
       href: azure-stack-solution-cloud-burst.md
     - name: 创建异地分布式应用程序解决方案
       href: azure-stack-solution-geo-distributed.md
+    - name: 部署混合云解决方案
+      href: azure-stack-solution-hybrid-cloud.md
 - name: 操作指南
   items:
   - name: 使用 Azure Stack 门户
@@ -214,9 +216,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2b65408f4d2171d57031a442725df935f1616764
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5f07a82bb284476895838213aebb72097a3869bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364789"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407820"

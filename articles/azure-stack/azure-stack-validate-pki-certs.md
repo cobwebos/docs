@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f7079d54ccae32d06488d12d45d6035c7f372d63
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8c89c49c1ea88937ba2494a4d9ee7adfa38ea1c1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236596"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408948"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
@@ -38,7 +38,7 @@ ms.locfileid: "48236596"
 - **DNS 名称**  
     检查 SAN 是否包含每个终结点的相关 DNS 名称，或支持性的通配符是否存在。
 - **密钥用法**  
-    检查密钥用法是否包含数字签名和密钥加密并增强型密钥用法包含服务器身份验证和客户端身份验证。
+    检查密钥用法是否包含数字签名和密钥加密，增强型密钥用法是否包含服务器身份验证和客户端身份验证。
 - **密钥大小**  
     检查密钥大小是否为 2048 或更大。
 - **链序**  
@@ -94,7 +94,7 @@ ms.locfileid: "48236596"
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker  -extensionshostfeature -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+    Start-AzsReadinessChecker  -extensionhostfeature -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
     ```
 
 4. 检查输出和所有证书是否通过所有测试。 例如：

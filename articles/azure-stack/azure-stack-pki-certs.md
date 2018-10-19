@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 61c91f7e1f2ba266be6453bb6e6fb25f3834485e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 86e2f328968cb5e45b9aec71aac8e8ac9e6d656b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585890"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403894"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -40,10 +40,10 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
 - 对于部署和轮换，可以使用单一证书覆盖证书的“使用者名称”和“使用者可选名称(SAN)”字段中的所有命名空间，也可以为下面你计划使用的 Azure Stack 服务所需的每个命名空间使用单独的证书。 这两种方法需要将它们必需的例如终结点使用通配符**KeyVault**并**KeyVaultInternal**。 
-- 证书签名算法必须是 3DES。 该算法不能是 SHA1，因为必须更可靠。 
+- 证书签名算法必须是 3DES。 算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
-- 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
-- 证书 pfx 文件的“增强型密钥使用”字段中必须包含“服务器身份验证(1.3.6.1.5.5.7.3.1)”和“客户端身份验证(1.3.6.1.5.5.7.3.2)”值。
+- 证书 pfx 文件中其"密钥用法"字段必须包含值"数字签名"和"KeyEncipherment"。
+- 证书 pfx 文件必须具有"增强型密钥用法"字段中的"服务器身份验证 (1.3.6.1.5.5.7.3.1)"和"客户端身份验证 (1.3.6.1.5.5.7.3.2)"的值。
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 证书 pfx 的密码必须是复杂密码。
@@ -76,8 +76,8 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
-| 管理扩展主机 | *.adminhosting。\<区域 >。\<fqdn > （通配符 SSL 证书） | 管理扩展主机 | adminhosting。\<区域 >。\<fqdn > |
-| 公共扩展主机 | *.hosting。\<区域 >。\<fqdn > （通配符 SSL 证书） | 公共扩展主机 | 承载。\<区域 >。\<fqdn > |
+| 管理扩展主机 | *.adminhosting.\<region>.\<fqdn>（通配符 SSL 证书） | 管理扩展主机 | adminhosting.\<region>.\<fqdn> |
+| 公共扩展主机 | *.hosting.\<region>.\<fqdn>（通配符 SSL 证书） | 公共扩展主机 | hosting.\<region>.\<fqdn> |
 
 如果使用 Azure AD 部署模式来部署 Azure Stack，只需请求上表中所列的证书。 但是，如果使用 AD FS 部署模式来部署 Azure Stack，则还必须请求下表中所述的证书：
 

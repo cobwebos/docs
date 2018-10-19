@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d7e379033cc64b9715ccc7e8c9cbe5fe75e0e5b1
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 378617e331a5539fca3d993410325ef187816137
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869068"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430300"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
-本文提供了有关改进、 修复程序和 Azure Stack 开发工具包中的已知的问题的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
+本文提供了 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
-## <a name="build-11808097"></a>生成 1.1808.0.97
+## <a name="build-11808097"></a>内部版本 1.1808.0.97
 
 ### <a name="new-features"></a>新增功能
 此内部版本包含以下适用于 Azure Stack 的改进和修复。  
@@ -54,10 +54,10 @@ ms.locfileid: "48869068"
 - *快速入门教程*在用户门户仪表板现在链接到联机 Azure Stack 文档中的相关文章。
 
 <!-- 2515955   | IS ,ASDK--> 
-- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在，您可以使用*所有服务*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。
+- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在可以在 Azure Stack 门户中使用“所有服务”作为替代来导航，就像在 Azure 门户中导航一样。
 
 <!--  TBD – IS, ASDK --> 
-- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要使用此大小创建 VMSS，请使用 PowerShell 或模板。 
+- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。 
 
 ### <a name="known-issues"></a>已知问题
 
@@ -67,10 +67,10 @@ ms.locfileid: "48869068"
 - *快速入门教程*在用户门户仪表板现在链接到联机 Azure Stack 文档中的相关文章。
 
 <!-- 2515955   | IS ,ASDK--> 
-- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在，您可以使用*所有服务*作为要在 Azure Stack 门户中导航的方法与在 Azure 门户中执行相同的替代方法。
+- *所有服务*取代*更多服务*在 Azure Stack 管理员和用户门户。 现在可以在 Azure Stack 门户中使用“所有服务”作为替代来导航，就像在 Azure 门户中导航一样。
 
 <!--  TBD – IS, ASDK --> 
-- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要使用此大小创建 VMSS，请使用 PowerShell 或模板。
+- *基本 A*虚拟机大小的已停用[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。
 
 #### <a name="health-and-monitoring"></a>运行状况和监视
 
@@ -107,24 +107,24 @@ ms.locfileid: "48869068"
       1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
       2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
    2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
-      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4465859)。
+      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4468920)。
       2. 按照中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
 
 <!-- 2869209 – IS, ASDK --> 
-- 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用的磁盘的本地路径，该 cmdlet 会失败并出现以下错误：*长时间运行的操作失败，状态为 '失败'*。 
+- 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 
 
 <!--  2966665 – IS, ASDK --> 
 - 将 SSD 数据磁盘附加到高级大小托管磁盘 （DS、 DSv2、 Fs、 Fs_V2） 的虚拟机失败并出现错误：*未能更新虚拟机 vmname 错误的磁盘： 请求不能执行操作，因为存储帐户类型Premium_LRS' 不支持的 VM 大小 Standard_DS/Ds_V2/FS/Fs_v2)*
 
-   若要解决此问题，请使用*Standard_LRS*而不是数据磁盘*Premium_LRS 磁盘*。 利用*Standard_LRS* IOPs 或计费成本，不会更改数据磁盘。  
+   若要解决此问题，请使用 *Standard_LRS* 数据磁盘而不是 *Premium_LRS* 磁盘。 使用 *Standard_LRS* 数据磁盘不会造成 IOPS 或账单费用变化。  
 
 <!--  2795678 – IS, ASDK --> 
-- 当你使用门户创建虚拟机 (VM) 高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 中时，在标准存储帐户中创建 VM。 创建标准存储帐户中的不会影响就功能而言，IOPs，或计费。 
+- 当你使用门户创建虚拟机 (VM) 高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 中时，在标准存储帐户中创建 VM。 在标准存储帐户中创建不影响功能、IOPS 或计费。 
 
-   您可以放心地忽略该警告，指出：*你已选择使用标准磁盘上可支持高级磁盘的大小。这可能会影响操作系统的性能，不建议。请考虑改为使用高级存储 (SSD)。*
+   可以放心地忽略以下内容的警告：*在 VM 大小需要高级磁盘的情况下，你选择了使用标准磁盘。这可能影响操作系统性能，建议不要这样做。考虑改用高级存储(SSD)。*
 
 <!-- 2967447 - IS, ASDK --> 
-- 虚拟机规模集 (VMSS) 创建体验提供的基于 CentOS 7.2 作为一个选项来部署。 由于该映像不是可在 Azure Stack 上，选择为你的部署的另一个操作系统，或使用指定另一个 CentOS 映像已从 marketplace 部署前运算符所下载的 ARM 模板。
+- 虚拟机规模集 (VMSS) 创建体验提供的基于 CentOS 7.2 作为一个选项来部署。 由于该映像在 Azure Stack 上不可用，因此请为部署选择另一 OS，或者使用一个 ARM 模板，指定另一个已在部署之前由操作员从市场下载的 CentOS 映像。
 
 <!-- TBD -  IS ASDK --> 
 - 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
@@ -297,7 +297,7 @@ ms.locfileid: "48869068"
 
 #### <a name="portal"></a>门户  
 <!-- 2931230 – IS  ASDK --> 
-- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!--2760466 – IS  ASDK --> 
 - 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 必须先[激活](.\.\azure-stack-registration.md)，然后才能使用市场联合。 
@@ -382,7 +382,7 @@ ms.locfileid: "48869068"
 <!-- 2724961- IS ASDK --> 
 - 注册时**Microsoft.Insight**订阅设置中的资源提供程序并创建 Windows VM 与来宾 OS 诊断已启用，VM 的概述页不显示度量值的数据。 
 
-   若要查找 VM 的 CPU 百分比图表类似的指标数据，请转到**指标**边栏选项卡，并显示所有受支持的 Windows VM 来宾指标。
+   若要查找指标数据（如 VM 的 CPU 百分比图表），请转到“指标”边栏选项卡并查看所有受支持的 Windows VM 来宾指标。
 
 #### <a name="networking"></a>网络
 <!-- 1766332 - IS, ASDK --> 
@@ -446,14 +446,14 @@ ms.locfileid: "48869068"
 <!-- 2297790 - IS, ASDK --> 
 - **Azure Stack 现已将 *Syslog* 客户端**包含为预览功能。 此客户端允许将与 Azure Stack 基础结构相关的审核和安全日志转发到 Azure Stack 外部的 Syslog 服务器或安全信息与事件管理 (SIEM) 软件。 目前，Syslog 客户端仅支持通过默认端口 514 建立的未经身份验证的 UDP 连接。 每条 Syslog 消息的有效负载采用通用事件格式 (CEF)。
 
-  若要配置 Syslog 客户端，请使用**集 SyslogServer**特权终结点上的 cmdlet。
+  若要配置 Syslog 客户端，请在特权终结点上使用 **Set-SyslogServer** cmdlet。
 
   此预览版中可能会出现以下三种警报。 当 Azure Stack 显示这些警报时，警报中会包含说明和补救指导。
   - 标题：代码完整性关闭  
   - 标题：代码完整性处于审核模式
   - 标题：已创建用户帐户
 
-  虽然此功能处于预览状态，它不应依赖在生产环境中。   
+  此功能目前以预览版提供，在生产环境中请不要依赖此功能。   
 
 
 ### <a name="fixed-issues"></a>修复的问题
@@ -475,7 +475,7 @@ ms.locfileid: "48869068"
 
 #### <a name="portal"></a>门户
 <!-- 2931230 – IS  ASDK --> 
-- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!-- 2551834 - IS, ASDK --> 
 - 当选择**概述**存储帐户中的管理员或用户门户中的信息*Essentials*窗格不会显示。  “概要”窗格显示有关帐户的信息，例如其资源组、位置和订阅 ID。  可以访问“概述”中的其他选项，例如“服务”和“监视”，以及“在资源管理器中打开”或“删除存储帐户”。  
@@ -536,7 +536,7 @@ ms.locfileid: "48869068"
 
   在此版本的 Azure Stack 中，该警报可能会错误地触发。 如果租户虚拟机继续成功部署，则可以放心地忽略此警报。 
   
-  不会自动关闭警报的 #3。 如果你关闭此警报，Azure Stack 将在 15 分钟内创建相同的警报。  
+  警报 #3 不会自动关闭。 如果你关闭此警报，Azure Stack 将在 15 分钟内创建相同的警报。  
 
 <!-- 2368581 - IS. ASDK --> 
 - Azure Stack 操作员，如果你收到内存不足警报并与部署租户虚拟机失败*Fabric VM 创建错误*，可以在 Azure Stack 模具的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。

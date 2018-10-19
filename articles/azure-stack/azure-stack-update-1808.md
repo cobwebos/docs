@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395167"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429059"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -158,7 +158,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 ### <a name="post-update-steps"></a>更新后步骤
 此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
-- [KB 4467062 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.4.108](https://support.microsoft.com/help/4467062/)
+- [KB 4468920 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -259,7 +259,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
       1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
       2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
    2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
-      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4467062/)。
+      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4468920/)。
       2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
       
 <!-- 3179561 - IS --> 
