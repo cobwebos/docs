@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902437"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470540"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -71,6 +71,17 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 |CustomADGlobalCatalog|要与之集成的目标 Active Directory<br>林的 FQDN|Contoso.com|
 |CustomADAdminCredentials|拥有 LDAP“读取”权限的用户|YOURDOMAIN\graphservice|
 
+### <a name="configure-active-directory-sites"></a>配置 Active Directory 站点
+
+对于具有多个站点的 Active Directory 部署，配置到 Azure Stack 部署最近的 Active Directory 站点。 配置可避免 Azure Stack Graph 服务解析查询使用从远程站点的全局编录服务器。
+
+添加 Azure Stack[公共 VIP 网络](azure-stack-network.md#public-vip-network)到 Azure AD 站点与 Azure Stack 最接近的子网。 例如，如果你的 Active Directory 具有两个站点西雅图和雷德蒙德西雅图站点上部署 Azure stack，可将 Azure Stack 公共 VIP 网络子网到 Azure AD 站点为西雅图。
+
+Active Directory 站点的详细信息请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
+
+> [!Note]  
+> 如果你的 Active Directory 包含的单个站点可以跳过此步骤。 如果你有配置全能子网验证 Azure Stack 公共 VIP 网络子网不是它的一部分。
+
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>在现有 Active Directory 中创建用户帐户（可选）
 
 可以选择性地在现有 Active Directory 中创建 Graph 服务的帐户。 如果没有可用的帐户，请执行此步骤。
@@ -109,7 +120,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口与可写入的全局�
 
 Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Directory 通信：
 
-|Type|端口|协议|
+|类型|端口|协议|
 |---------|---------|---------|
 |LDAP|389|TCP 和 UDP|
 |LDAP SSL|636|TCP|

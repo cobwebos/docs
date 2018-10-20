@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cc7b1b9e96e32b090c0ec9ec9ab029588e5ec4ce
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166961"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466148"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -80,16 +80,19 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 ## <a name="pre-steps-for-secret-rotation"></a>机密轮换前的步骤
 
    > [!IMPORTANT]  
-   > 请确保机密轮换尚未成功执行在你的环境。 如果已执行了机密轮换，更新到版本 1807年或更高版本才能执行机密轮换 Azure Stack。 
+   > 请确保未在环境中成功执行机密轮换。 如果已执行机密轮换，请在执行机密轮换之前将 Azure Stack 更新为版本 1807 或更高版本。 
+
 1.  运算符可能会注意到打开，并在 Azure Stack 机密轮换过程中自动关闭的警报。  此行为预期行为，可以忽略，将发出警报。  运算符可以通过运行 Test-azurestack 验证这些警报的有效性。  运算符使用 SCOM 监视的 Azure Stack 系统，一个系统置于维护模式将阻止这些警报到达其 ITSM 系统，但将继续时 Azure Stack 系统变得无法访问的警报。 
 2. 在执行任何维护操作之前通知用户。 将普通的维护时间段尽量安排在非营业时间。 维护操作可能会同时影响用户工作负荷和门户操作。
     > [!note]  
     > 后续步骤仅适用于轮换 Azure Stack 外部机密。
-3. 准备新的替换外部证书集。 新集与 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)中所述的证书规范匹配。
-4.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
-5.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
-6.  在可以访问该文件共享的计算机上打开 PowerShell ISE 控制台。 导航到该文件共享。 
-7.  运行 **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
+
+3. 运行**[Test-azurestack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** 并确认所有测试输出都是在轮换机密之前正常运行。
+4. 准备新的替换外部证书集。 新集与 [Azure Stack PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)中所述的证书规范匹配。
+5.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
+6.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
+7.  在可以访问该文件共享的计算机上打开 PowerShell ISE 控制台。 导航到该文件共享。 
+8.  运行 **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
 
 ## <a name="rotating-external-and-internal-secrets"></a>轮换外部和内部机密
 
@@ -112,7 +115,7 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 4. 等待机密完成轮换。  
 机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
     > [!note]  
-    > 如果机密轮换失败，请按照错误消息中的说明，然后重新运行开始 secretrotation 与 **-请重新运行**参数。 如果你遇到与支持人员联系重复机密轮换失败。 
+    > 如果机密轮换失败，请按照错误消息中的说明操作，并使用 **-Rerun** 参数重新运行 start-secretrotation。 如果遇到反复的机密轮换失败，请联系技术支持。 
 5. 成功完成机密轮换后，请从前期步骤创建的共享中删除证书，并将其存储在安全的备份位置。 
 
 ## <a name="walkthrough-of-secret-rotation"></a>机密轮换的演练
@@ -142,7 +145,7 @@ Remove-PSSession -Session $PEPSession
 3. 等待机密完成轮换。  
 机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
     > [!note]  
-    > 如果机密轮换失败，请按照错误消息中的说明，然后重新运行开始 secretrotation 与 **-重新运行**参数。 如果你遇到与支持人员联系重复机密轮换失败。 
+    > 如果机密轮换失败，请按照错误消息中的说明操作，并使用 **-Rerun** 参数重新运行 start-secretrotation。 如果遇到反复的机密轮换失败，请联系技术支持。 
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation 参考
 
@@ -162,12 +165,12 @@ Start-SecretRotation cmdlet 轮换 Azure Stack 系统的基础结构机密。 �
  
 ### <a name="parameters"></a>parameters
 
-| 参数 | Type | 需要 | 位置 | 默认 | 说明 |
+| 参数 | 类型 | 需要 | 位置 | 默认 | 说明 |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | 名为  | 无  | 包含所有外部网络终结点证书的 **\Certificates** 目录的文件共享路径。 仅在需要时轮换外部机密或所有机密。 结尾目录必须是 **\Certificates**。 |
+| PfxFilesPath | String  | False  | 名为  | 无  | 包含所有外部网络终结点证书的 **\Certificates** 目录的文件共享路径。 仅当轮换外部机密或所有机密时才需要。 结尾目录必须是 **\Certificates**。 |
 | CertificatePassword | SecureString | False  | 名为  | 无  | -PfXFilesPath 中提供的所有证书的密码。 如果在轮换内部和外部密码时提供了 PfxFilesPath，则是必需的值。 |
-| PathAccessCredential | PSCredential | False  | 名为  | 无  | 文件共享的 PowerShell 凭据**\Certificates**目录，其中包含所有外部网络终结点证书。 仅在需要时轮换外部机密或所有机密。  |
-| 重新运行 | SwitchParameter | False  | 名为  | 无  | 每当机密轮换时重试尝试失败后，必须使用重新运行。 |
+| PathAccessCredential | PSCredential | False  | 名为  | 无  | 包含所有外部网络终结点证书的 **\Certificates** 目录的文件共享的 PowerShell 凭据。 仅当轮换外部机密或所有机密时才需要。  |
+| 重新运行 | SwitchParameter | False  | 名为  | 无  | 每当尝试失败后重新尝试机密轮换时，都必须使用重新运行。 |
 
 ### <a name="examples"></a>示例
  
