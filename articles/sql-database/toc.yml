@@ -29,7 +29,7 @@ items:
       href: sql-database-import.md
     - name: 将数据库备份还原到托管实例
       href: sql-database-managed-instance-get-started-restore.md
-  - name: 查询
+  - name: Query
     href: sql-database-connect-query.md
     items:
     - name: SSMS
@@ -65,14 +65,14 @@ items:
     href: sql-database-design-first-database.md
   - name: 2 - 使用 .NET 设计 DB
     href: sql-database-design-first-database-csharp.md
-  - name: 3 - 使用 DMA 迁移到 SQL Server DB
-    href: sql-database-migrate-your-sql-server-database.md
+  - name: 3 - 使用 DMS 迁移到单个 Azure SQL 数据库
+    href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
   - name: 4 - 保护 SQL DB
     href: sql-database-security-tutorial.md
   - name: 5 - 实现地理分散的数据库
     href: sql-database-implement-geo-distributed-database.md
   - name: 6 - 使用 DMS 迁移到托管实例
-    href: ../dms/tutorial-sql-server-to-managed-instance.md
+    href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
   - name: 7 - 设置 Azure SQL 数据同步
     href: sql-database-get-started-sql-data-sync.md
 - name: 示例
@@ -596,7 +596,7 @@ items:
   - name: SQLCMD
     href: /sql/tools/sqlcmd-utility
   - name: SqlPackage
-    href: https://docs.microsoft.com/sql/tools/sqlpackage
+    href: https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/sql-database/toc.json
   - name: SQL 数据库管理库包
     href: https://www.nuget.org/packages/Microsoft.Azure.Management.Sql
   - name: SQL Server 驱动程序
@@ -634,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: e39e94ccbf1da42b10cd8c618cd27c2a7eb214de
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 38a8ec13b8a5e50d60ed46d1bd4d71af933d61f0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353504"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470365"
