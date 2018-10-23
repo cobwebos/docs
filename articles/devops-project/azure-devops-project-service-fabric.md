@@ -72,7 +72,7 @@ Azure DevOps 项目自动在 Azure DevOps Services 组织中配置 Azure DevOps 
 
 1. 导航到“Azure DevOps 项目仪表板”。
 
-1. 在 **Azure DevOps 项目仪表板****顶部**选择“生成管道”。  此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps Services 生成管道。
+1. 在 **Azure DevOps 项目仪表板** **顶部**选择“生成管道”。  此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps Services 生成管道。
 
 1. 将鼠标光标移到“状态”字段旁边的生成管道的右侧。 选择显示的**省略号**。  此操作会打开一个菜单，可以在其中启动多项活动，例如**将新生成排队**、**暂停某个生成**、**编辑生成管道**。
 

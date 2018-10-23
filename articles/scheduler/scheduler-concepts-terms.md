@@ -271,7 +271,7 @@ Azure 计划程序支持多个作业类型：
 
 | 属性 | 必选 | 值 | Description | 
 |----------|----------|-------|-------------| 
-| **retryType** | 是 | **Fixed****None** | 确定是否指定重试策略（固定）或（无）。 | 
+| **retryType** | 是 | **Fixed** **None** | 确定是否指定重试策略（固定）或（无）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 
 | **retryCount** | 否 | 4 | 指定重试尝试的次数。 最大值为 20。 | 
 ||||
