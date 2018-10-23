@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e3b7aff97cbcebe34e6af4755900e8888c5e57d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049931"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352791"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备 
 
@@ -92,6 +92,8 @@ Azure AD Connect：
 如果组织对本地 AD 使用托管（非联合）设置并且不使用 ADFS 与 Azure AD 联合，则 Windows 10 上的混合 Azure AD 加入依赖于 AD 中要同步到 Azure AD 的计算机对象。 确保包含需要加入混合 Azure AD 的计算机对象的任何组织单位 (OU) 都启用了 Azure AD Connect 同步配置中的同步。
 
 对于 Windows 10 设备（1703 或更早版本），如果组织需要通过出站代理访问 Internet，则必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。 
+
+从 Windows 10 1803 开始，即使由联合域中的设备使用 AD FS 进行的混合 Azure AD 加入尝试失败，在 Azure AD Connect 已配置为将计算机/设备对象同步到 Azure AD 的情况下，设备也会尝试使用同步的计算机/设备完成混合 Azure AD 加入操作。
 
 ## <a name="configuration-steps"></a>配置步骤
 

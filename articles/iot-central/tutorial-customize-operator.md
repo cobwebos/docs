@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038283"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309451"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>教程：自定义 Azure IoT Central 操作员的视图
 
@@ -56,7 +56,7 @@ ms.locfileid: "47038283"
 
     ![设备模板仪表板页](media/tutorial-customize-operator/dashboard.png)
 
-4. 若要将 KPI 磁贴添加到仪表板，请选择“KPI”：
+4. 若要将关键绩效指标 (KPI) 磁贴添加到仪表板，请选择“KPI”：
 
     ![添加 KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "47038283"
 
 ## <a name="configure-your-settings-layout"></a>配置设置布局
 
-构建人员还可以配置设备设置的操作员视图。 操作员使用设备设置页来配置设备。 例如，操作员可以使用设置页来设置冷冻机的目标温度。
+构建人员还可以配置设备设置的操作员视图。 操作员使用设备设置页来配置设备。 例如，操作员可以使用设置页来设置连接的空调的目标温度。
 
 1. 若要编辑连接的空调的设置布局，请选择“设置”，然后选择“编辑模板”：
 
@@ -117,7 +117,7 @@ ms.locfileid: "47038283"
 
 在“编辑模板”模式下，可以自定义操作员的仪表板、设置和属性页。 如果未处于“编辑模板”模式，则可以作为操作员查看应用程序。
 
-1. 若要以操作员身份查看连接的空调设备，需要单击“完成”以停止编辑模板。 这会使你返回到设备的操作员视图。
+1. 若要以操作员身份查看连接的空调设备，请单击“完成”以停止编辑模板，返回到操作员的设备视图。
 
 2. 若要更新此设备的位置，请编辑位置磁贴中的值，并选择“保存”：
 

@@ -4,23 +4,21 @@ description: 应用服务 Web 应用功能的 Azure 资源管理器模板示例
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
-editor: ggailey777
 tags: azure-service-management
 ms.service: app-service
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 02/26/2018
+ms.date: 10/15/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 155b47fc4c664701ec0f21bdc5ae34f3d7f666ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 627480fab7a28794a215642fda8e57280f19f19b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29933062"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345061"
 ---
 # <a name="azure-resource-manager-templates-for-web-apps"></a>Web 应用的 Azure 资源管理器模板
 
@@ -29,6 +27,8 @@ ms.locfileid: "29933062"
 | | |
 |-|-|
 |**部署 Web 应用**||
+| [应用服务计划和基本的 Linux Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | 部署为 Linux 配置的 Azure Web 应用。 |
+| [应用服务计划和基本的 Windows Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | 部署为 Windows 配置的 Azure Web 应用。 |
 | [链接到 GitHub 存储库的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| 部署从 GitHub 拉取代码的 Azure Web 应用。 |
 | [使用自定义部署槽位的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| 使用自定义部署槽/环境部署 Azure Web 应用。 |
 |**配置 Web 应用**||
@@ -37,7 +37,7 @@ ms.locfileid: "29933062"
 | [使用自定义域和 SSL 的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| 使用自定义主机名部署 Azure Web 应用，并从 Key Vault 获取 Web 应用证书用于 SSL 绑定。 |
 | [使用 GoLang 扩展的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| 使用 GoLang 站点扩展部署 Azure Web 应用。 然后，可以在 Azure 中运行在 GoLang 上开发的 Web 应用程序。 |
 | [使用 Java 8 和 Tomcat 8 的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| 部署已启用 Java 8 和 Tomcat 8 的 Azure Web 应用。 然后，可以在 Azure 中运行 Java 应用程序。 |
-|**Linux Web 应用**||
+|**使用连接资源的 Linux Web 应用**||
 | [Linux 上的使用 MySQL 的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | 在 Linux 上部署使用 Azure Database for MySQL 的 Azure Web 应用。 |
 | [Linux 上的使用 PostgreSQL 的 Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | 在 Linux 上部署使用 Azure Database for PostgreSQL 的 Azure Web 应用。 |
 |**使用连接资源的 Web 应用**||

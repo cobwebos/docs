@@ -7,21 +7,21 @@ author: fmegen
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: fmegen
-ms.openlocfilehash: 6428dbaabfe176e8d741818ee338bbc2a6bc70bb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/12/2018
+ms.author: wolfma
+ms.openlocfilehash: f2d5ca467777b8b351b2cf51abe71a003374bcf7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883867"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344212"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何使用认知服务语音 SDK 将语音转为文本，进而创建适用于 Android 的 Java 应用程序。
-该应用程序基于Microsoft 认知服务语音 SDK Maven 包（版本 1.0.0）和 Android Studio 3.1。
+该应用程序基于Microsoft 认知服务语音 SDK Maven 包（版本 1.0.1）和 Android Studio 3.1。
 语音 SDK 目前兼容使用 32 位或 64 位 ARM 处理器的 Android 设备。
 
 > [!NOTE]
@@ -57,7 +57,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.0.0`。
+认知服务语音 SDK 的当前版本是 `1.0.1`。
 
 将适用于 Android 的语音 SDK 打包为[ AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及使用它所需的 Android 权限。
 它托管在 Maven 存储库 (https://csspeechstorage.blob.core.windows.net/maven/) 中。
@@ -72,7 +72,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
    ![“项目结构”窗口的屏幕截图](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本 (`com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`)。 然后选择“确定”。
+1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本 (`com.microsoft.cognitiveservices.speech:client-sdk:1.0.1`)。 然后选择“确定”。
    现应将语音 SDK 添加到依赖项列表中，如下所示：
 
    ![“项目结构”窗口的屏幕截图](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

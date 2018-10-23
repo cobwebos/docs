@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: 76545c9953cff944c515e887a6a4214b9c76c501
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fdeb58d72e15f563fd70ae94804de0773dd603c7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038521"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387338"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB：SQL API 简介
 
@@ -67,14 +67,10 @@ Azure Cosmos DB 通过 REST API 公开资源，可以使用能够发出 HTTP/HTT
 
 | 下载 | 文档 |
 | --- | --- |
-| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET 库](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
-| [Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) |[Node.js 库](https://github.com/Azure/azure-cosmosdb-node) |
-| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java 库](/java/api/com.microsoft.azure.documentdb) |
-| [JavaScript SDK](https://github.com/Azure/azure-cosmos-js) |[JavaScript 库](https://github.com/Azure/azure-cosmos-js) |
-| 不适用 |[服务器端 JavaScript SDK](https://github.com/Azure/azure-cosmosdb-js-server) |
-| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python 库](https://github.com/Azure/azure-cosmos-python) |
-| 不适用 | [适用于 MongoDB 的 API](mongodb-introduction.md)
-
+| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
+| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java 参考文档](/java/api/com.microsoft.azure.documentdb) |
+| [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) |[JavaScript 参考文档](https://docs.microsoft.com/javascript/api/@azure/cosmos/?view=azure-node-latest) |
+| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python 参考文档](https://github.com/Azure/azure-cosmos-python) |
 
 使用 [Azure Cosmos DB 模拟器](local-emulator.md)可在本地通过 SQL API 开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure Cosmos DB 帐户。
 

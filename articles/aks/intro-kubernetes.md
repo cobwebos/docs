@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 67b80f539faab40884066f23aaf8a72ad7a6981b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ac18b8099b14f29579b35eb8dd2124d2d63f80d7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394397"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390068"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -29,7 +29,7 @@ ms.locfileid: "47394397"
 
 ### <a name="identity-and-security-management"></a>标识和安全管理
 
-为了限制对群集资源的访问，AKS 支持 [Kubernetes 基于角色的访问控制 (RBAC)][kubernetes-rbac]。 RBAC 允许你控制用户访问 Kubernetes 资源和命名空间的方式，并控制在这些资源上设置的具体权限。 还可将 AKS 群集配置为与 Azure Active Directory (AD) 集成。 使用 Azure AD 集成时，可以将 Kubernetes 访问权限配置为基于现有标识和组成员身份。 可以为现有的 Azure AD 用户和组提供对 AKS 资源的访问权限，以及提供集成式登录体验。
+为了限制对群集资源的访问，AKS 支持 [Kubernetes 基于角色的访问控制 (RBAC)][kubernetes-rbac]。 RBAC 允许你控制用户访问 Kubernetes 资源和命名空间，并控制在这些资源上设置的具体权限。 还可将 AKS 群集配置为与 Azure Active Directory (AD) 集成。 使用 Azure AD 集成时，可以将 Kubernetes 访问权限配置为基于现有标识和组成员身份。 可以为现有的 Azure AD 用户和组提供对 AKS 资源的访问权限，以及提供集成式登录体验。
 
 若要确保 AKS 群集的安全性，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
 
@@ -123,12 +123,12 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO 和 PCI DSS 规范。
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
-[aks-networking]: ./networking-overview.md
+[aks-networking]: ./concepts-network.md
 [aks-portal]: ./kubernetes-walkthrough-portal.md
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
-[azure-dev-spaces]: https://docs.microsoft.com/en-us/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/en-us/azure/devops-project/overview
+[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces
+[azure-devops]: https://docs.microsoft.com/azure/devops-project/overview
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../monitoring/monitoring-container-health.md

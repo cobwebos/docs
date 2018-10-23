@@ -11,19 +11,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/17/2018
+ms.date: 10/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6a3bb5511828d9f8ea7168ffa4748b141484299f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379921"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376424"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
 [应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](app-service-managed-service-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/azure/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，请将托管标识添加到在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)中构建的示例 ASP.NET Web 应用。 完成后，示例应用就可以安全地连接到 SQL 数据库，不需用户名和密码。
+
+> [!NOTE]
+> 此方案目前受 .NET Framework 4.6 及更高版本的支持，但不受 [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) 的支持。 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) 支持此方案，但它尚未包括在应用服务的默认映像中。 
+>
 
 学习如何：
 
@@ -95,6 +99,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ```xml
 <package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
+<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
 ```
 
 打开 _Models\MyDatabaseContext.cs_，将以下 `using` 语句添加到文件顶部：
@@ -122,7 +127,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 此构造函数将自定义 SqlConnection 对象配置为使用应用服务提供的 Azure SQL 数据库的访问令牌。 有了访问令牌，应用服务应用就可以使用其托管标识通过 Azure SQL 数据库进行身份验证。 有关详细信息，请参阅[获取 Azure 资源的令牌](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources)。 可以使用 `if` 语句，通过 LocalDB 继续在本地测试应用。
 
 > [!NOTE]
-> `SqlConnection.AccessToken` 目前仅在 .NET Framework 4.6 及更高版本中受支持，在 [.NET Core](https://www.microsoft.com/net/learn/get-started/windows) 中不受支持。
+> `SqlConnection.AccessToken` 目前仅在 .NET Framework 4.6 及更高版本中受支持，以及在 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) 中受支持，但在 [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) 中不受支持。
 >
 
 若要使用这个新的构造函数，请打开 `Controllers\TodosController.cs` 并找到 `private MyDatabaseContext db = new MyDatabaseContext();` 行。 现有的代码使用默认的 `MyDatabaseContext` 控制器通过标准的连接字符串来创建数据库，该字符串在未经[更改](#modify-connection-string)的情况下以明文形式保存用户名和密码。
@@ -130,7 +135,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 请将整行替换为以下代码：
 
 ```csharp
-private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
+private MyDatabaseContext db = new MyDatabaseContext(new System.Data.SqlClient.SqlConnection());
 ```
 
 ### <a name="publish-your-changes"></a>发布更改
@@ -172,32 +177,23 @@ az ad group member list -g $groupid
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>向 Azure Active Directory 组授予权限
 
-在 Cloud Shell 中，使用 SQLCMD 命令登录到 SQL 数据库。 将 _\<servername>_ 替换为 SQL 数据库服务器名称，将 _\<AADusername>_ 和 _\<AADpassword>_ 替换为 Azure AD 用户的凭据。
-
-```azurecli-interactive
-sqlcmd -S <server_name>.database.windows.net -U <AADuser_name> -P "<AADpassword>" -G -l 30
-```
-
-在 SQL 提示符窗口中运行以下命令，将此前创建的 Azure Active Directory 组添加为用户。
-
-```sql
-CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
-GO
-```
-
-键入 `EXIT`，返回到 Cloud Shell 提示符窗口。 接下来，请再次运行 SQLCMD，但需在 _\<dbname>_ 中指定数据库名称。
+在 Cloud Shell 中，使用 SQLCMD 命令登录到 SQL 数据库。 将 _\<server\_name>_ 替换为 SQL 数据库服务器名称，将 _\<db\_name>_ 替换为应用使用的数据库名称，将 _\<AADuser\_name>_ 和 _\<AADpassword>_ 替换为 Azure AD 用户的凭据。
 
 ```azurecli-interactive
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-在所需数据库的 SQL 提示符窗口中运行以下命令，向 Azure Active Directory 组授予读取和写入权限。
+在所需数据库的 SQL 提示符窗口中运行以下命令，添加以前创建的 Azure Active Directory 组并授予应用所需的权限。 例如， 
 
 ```sql
+CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
 ALTER ROLE db_datareader ADD MEMBER [myAzureSQLDBAccessGroup];
 ALTER ROLE db_datawriter ADD MEMBER [myAzureSQLDBAccessGroup];
+ALTER ROLE db_ddladmin ADD MEMBER [myAzureSQLDBAccessGroup];
 GO
 ```
+
+键入 `EXIT`，返回到 Cloud Shell 提示符窗口。 
 
 ## <a name="next-steps"></a>后续步骤
 

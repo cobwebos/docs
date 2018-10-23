@@ -12,26 +12,26 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731064"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394691"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-premium"></a>如何：注册 Azure Active Directory Premium
 可购买 Azure Active Directory (Azure AD) Premium 并将其与 Azure 订阅进行关联。 如果需要创建新的 Azure 订阅，则还需要激活许可计划和 Azure AD 服务访问权限。
 
 > [!NOTE]
->向中国区使用 Azure Active Directory 全球实例的客户提供 Azure AD Premium 和 Azure AD Basic 版本。 中国区世纪互联所运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD 高级和基本版。 中国区世纪互联所运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 在注册 Active Directory Premium 1 和 Premium 2 之前，必须先确定要使用哪个现有订阅或计划：
 
-    - 通过现有的 Azure 或 Office 365 订阅
+- 通过现有的 Azure 或 Office 365 订阅
 
-    - 通过企业移动性 + 安全性许可计划
+- 通过企业移动性 + 安全性许可计划
 
-    - 通过 Microsoft 批量许可计划
+- 通过 Microsoft 批量许可计划
 
 如果注册时使用的 Azure 订阅具有之前购买并激活的 Azure AD 许可证，则会在同一目录中自动激活这些许可证。 如果不是如此，则仍必须激活许可证计划和 Azure AD 访问权限。 要详细了解如何激活许可证计划，请参阅[激活新的许可证计划](#activate-your-new-license-plan)。 要详细了解如何激活 Azure AD 访问权限，请参阅[激活 Azure AD 访问权限](#activate-your-azure-ad-access)。 
 
@@ -43,20 +43,20 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 
 有关 EMS 的详细信息，请参阅[“企业移动性 + 安全性”网站](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)。
 
-    - 通过免费的[企业移动性 + 安全性 E5 试用订阅](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)试用 EMS
+- 通过免费的[企业移动性 + 安全性 E5 试用订阅](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)试用 EMS
 
-    - 购买[企业移动性 + 安全性 E5 许可证](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
+- 购买[企业移动性 + 安全性 E5 许可证](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
 
-    - 购买[企业移动性 + 安全性 E3 许可证](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
+- 购买[企业移动性 + 安全性 E3 许可证](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
 
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>通过 Microsoft 批量许可计划进行登录
 通过 Microsoft 批量许可计划，可根据要获取的许可证数量使用下述任一计划注册 Azure AD Premium：
 
-    - 对于 250 个或更多许可证： [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- 对于 250 个或更多许可证： [Microsoft 企业协议](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-    - 对于 5 个至 250 个许可证： [打开**批量许可](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- 对于 5 个至 250 个许可证： [打开批量许可](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
-    要详细了解批量许可购买选项，请参阅 [How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可进行购买）。
+要详细了解批量许可购买选项，请参阅 [How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)（如何通过批量许可进行购买）。
 
 ## <a name="activate-your-new-license-plan"></a>激活新的许可计划
 如果已注册使用新的 Azure AD 许可计划，必须使用购买后收到的确认电子邮件为你的组织激活该计划。

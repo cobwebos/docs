@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419111"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378680"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
-了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
+了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -55,9 +55,14 @@ ms.locfileid: "47419111"
 
 ## <a name="edit-the-template"></a>编辑模板
 
-若要了解如何使用 Visual Studio Code 编辑模板，请将额外的一个元素添加到 outputs 节。
+若要了解如何使用 Visual Studio Code 编辑模板，请将额外的一个元素添加到 `outputs` 节。
 
-1. 在 Visual Studio Code 中，将额外的一个输出添加到导出的模板：
+1. 在 Visual Studio Code 中检查 **kind** 的值。 如果该值为 Storage，请将它更新为 StorageV2。
+
+    ```json
+    "kind": "StorageV2",
+    ```
+2. 将额外的一个输出添加到导出的模板：
 
     ```json
     "storageUri": {
@@ -85,25 +90,17 @@ ms.locfileid: "47419111"
 
     ![资源管理器模板 - Visual Studio Code - intellisense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. 选择“文件”>“保存”以保存文件。
+3. 选择“文件”>“保存”以保存文件。
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  本快速入门从 Azure 门户使用 Azure Cloud Shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。 
+可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
-2. 如下图所示，选择右上角的“Cloud Shell”：
-
-    ![Azure 门户 - Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
-
-    Cloud Shell 在窗口底部打开。
-
-3. 在 Cloud Shell 的左上角，它会显示 **PowerShell** 或 **Bash**。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 PowerShell，需打开一个 PowerShell 会话。 选择向下箭头可在 Bash 与 PowerShell 之间切换。 下图显示如何从 PowerShell 切换到 Bash。
+1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
     ![Azure 门户 - Cloud Shell - CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-
-    进行切换时，需重启 shell。
-4. 依次选择“上传/下载文件”、“上传”。
+2. 在 Cloud Shell 的左上角，它会显示 **PowerShell** 或 **Bash**。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 PowerShell，需打开一个 PowerShell 会话。 选择向下箭头可在 Bash 与 PowerShell 之间切换。 请参阅上面的屏幕截图。 进行切换时，需重启 shell。
+3. 依次选择“上传/下载文件”、“上传”。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
@@ -116,7 +113,7 @@ ms.locfileid: "47419111"
     ---
 
     必须先上传模板文件，然后才能通过 shell 来部署它。
-5. 选择前面在本快速入门中保存的文件。 默认名称为 **azuredeploy.json**。
+5. 选择在上一部分保存的文件。 默认名称为 **azuredeploy.json**。
 6. 在 Cloud Shell 中，运行 **ls** 命令来验证是否已成功上传文件。 还可以使用 **cat** 命令来验证模板内容。 下图显示如何从 Bash 运行命令。  使用的命令与 PowerShell 会话中的命令相同。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
@@ -132,20 +129,30 @@ ms.locfileid: "47419111"
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the name for this deployment:" &&
+    read deploymentName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    az group create --name $resourceGroupName --location $location &&
+    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
-
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
     ```
     
     ---
+
+    如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。
 
     以下屏幕截图显示了一个示例部署：
 
@@ -159,26 +166,25 @@ ms.locfileid: "47419111"
     
     ---
 
-    屏幕截图中使用了以下值：
-
-    - **&lt;ResourceGroupName>**：myresourcegroup0709。 参数有两种形式。  请确保使用相同的值。
-    - **&lt;AzureLocation>**：eastus2
-    - **&lt;DeployName>**：mydeployment0709
-    - **&lt;TemplateFile>**：azuredeploy.json
-
-    在屏幕截图上的输出中，存储帐户名称为 *3tqebj3slyfyestandardsa*。 
+    输出部分的存储帐户名称和存储 URL 在屏幕截图上突出显示。 在下一步需要此存储帐户名称。
 
 7. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the Storage Account name:" &&
+    read storageAccountName &&
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
+    Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
     ```
     
     ---

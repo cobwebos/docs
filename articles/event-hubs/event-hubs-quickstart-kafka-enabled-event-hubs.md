@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 2fbca7179d8bc64a92f79f6eaced8d4f1666c530
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b78cef29c64c5c4c522ad5c751c10bbf6a7057c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069210"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363412"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>流式传输到用于 Apache Kafka 的事件中心
 本快速入门演示如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与已启用 Kafka 的事件中心通信。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
 > [!NOTE]
-> [GitHub](https://github.com/Azure/azure-event-hubs) 上提供了此示例
+> [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) 上提供了此示例
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,9 +63,9 @@ ms.locfileid: "49069210"
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>在事件中心内使用 Kafka 发送和接收消息
 
-1. 克隆 [Azure 事件中心存储库](https://github.com/Azure/azure-event-hubs)。
+1. 克隆[用于 Kafka 的 Azure 事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)。
 
-2. 导航到 `azure-event-hubs/samples/kafka/quickstart/producer`。
+2. 导航到 `azure-event-hubs-for-kafka/quickstart/java/producer`。
 
 3. 在 `src/main/resources/producer.config` 中更新生产者的配置详细信息，如下所示：
 
@@ -83,7 +83,7 @@ ms.locfileid: "49069210"
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
     
-5. 导航到 `azure-event-hubs/samples/kafka/quickstart/consumer`。
+5. 导航到 `azure-event-hubs-for-kafka/quickstart/java/consumer`。
 
 6. 在 `src/main/resources/consumer.config` 中更新使用者的配置详细信息，如下所示：
    
@@ -106,5 +106,8 @@ ms.locfileid: "49069210"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 有关详细信息，请继续阅读以下教程：
 
-> [!div class="nextstepaction"]
-> [将 Kafka MirrorMaker 与事件中心配合使用](event-hubs-kafka-mirror-maker-tutorial.md)
+* [了解事件中心](event-hubs-what-is-event-hubs.md)
+* [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+* [在适用于 Kafka 的事件中心 GitHub 上浏览更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) [将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
+* 了解如何使用 [Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心

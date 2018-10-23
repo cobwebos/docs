@@ -1,25 +1,25 @@
 ---
-title: 什么是内容审查器？
+title: 什么是 Azure 内容审查器？
 titlesuffix: Azure Cognitive Services
-description: 了解如何使用内容审查器跟踪、标记、评估和筛选用户生成的内容中不适合的内容。
+description: 了解如何使用内容审查器跟踪、标记、评估和筛选用户生成的内容中不适合的材料。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 06/15/2017
+ms.date: 10/05/2018
 ms.author: sajagtap
-ms.openlocfilehash: e109376f47d921fb18d7bb9a6252e80315419ec0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5756e8fb451b073c68271359848ab27373ad85ed
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226035"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309546"
 ---
 # <a name="what-is-content-moderator"></a>什么是内容审查器？
 
-内容审查是指对可能的冒犯性、不可取和危险内容进行监视的过程。 审查的内容可以是图像、文本和视频。
+内容审查是指对可能的冒犯性、不可取和危险内容进行文本、图像或视频监视的过程。 标记内容随后会进行隐藏，或者以其他方式处理，目的是符合法规的要求，或者为用户维持一个理想的环境。
 
 ## <a name="where-it-is-used"></a>使用位置
 
@@ -29,7 +29,7 @@ ms.locfileid: "47226035"
 - 游戏公司审查用户生成的游戏项目和聊天室
 - 社交通讯平台审查用户添加的图像、文本和视频
 - 企业媒体公司为其内容实现的集中式内容审查
-- K-12 教育解决方案提供商为学生和教师筛选错误和冒犯性内容
+- K-12 教育解决方案提供商为学生和教师筛选不当的和冒犯性的内容
 
 ## <a name="what-it-includes"></a>组成部分
 
@@ -37,17 +37,17 @@ ms.locfileid: "47226035"
 
 ![内容审查器块状图](images/content-moderator-block-diagram.png)
 
-## <a name="apis"></a>API
+### <a name="apis"></a>API
 
-内容审查器包括以下 API：
+内容审查器服务包括以下 API：
   - [**文本审查 API**](text-moderation-api.md)：此 API 用于扫描文本中可能的不雅内容、明未、暗示、冒犯性和个人身份信息 (PII)。
   - [**自定义术语列表 API**](try-terms-list-api.md)：此 API 用于匹配除内置术语之外的自定义术语列表。 根据内容策略，使用这些列表阻止或允许内容。  
-  - [图像审查 API****](image-moderation-api.md)：此 API 用于扫描成人图像和不雅内容，通过光学字符识别 (OCR) 功能检测图像中的文本，以及检测人脸。
+  - [**图像审查 API**](image-moderation-api.md)： 此 API 用于扫描成人图像和不雅内容，通过光学字符识别 (OCR) 功能检测图像中的文本，以及检测人脸。
   - [**自定义图像列表 API**](try-image-list-api.md)：此 API 用于匹配自定义图像列表和无需再次分类的预标识内容。
   - [**视频审查 API**](video-moderation-api.md)：此 API 用于扫描视频中潜在的成人和不雅内容。
   - [评审 API](try-review-api-job.md)：使用[作业](try-review-api-job.md)、[评审](try-review-api-review.md)和[工作流](try-review-api-workflow.md)操作在评审工具中创建和自动执行人工干预工作流。
 
-## <a name="human-review-tool"></a>人工评审工具
+### <a name="human-review-tool"></a>人工评审工具
 
 内容审查器订阅包括内置[人工评审工具](Review-Tool-User-Guide/human-in-the-loop.md)。 使用前面所述的评审 API 来创建文本、图像和视频的评审，以便人工审查器可以制定最终决策。
 

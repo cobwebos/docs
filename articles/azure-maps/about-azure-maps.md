@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e68050e4902183b899bf3fee31bef088b1a0faf2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576062"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165958"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -23,6 +23,14 @@ Azure Maps 是以全新地图数据支撑的一系列地理空间服务，可让
 以下视频深入介绍了 Azure Maps：
 
 <iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="map-controls"></a>地图控件
+
+### <a name="web-control"></a>Web 控件
+
+有了 Azure Maps Web 控件，就可以使用自己的内容和图像来自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此控件进行开发。
+
+![Azure Maps Web 控件](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Maps 中的服务
 

@@ -10,18 +10,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127868"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318650"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 
 可以使用必应 Web 搜索 SDK 轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
-
-想要马上查看代码？ GitHub 上提供了[适用于 C# 示例的必应 Web 搜索 SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -36,6 +34,9 @@ ms.locfileid: "46127868"
 * [.Net Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>创建项目并安装依赖项
+
+> [!TIP]
+> 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) 获取作为 Visual Studio 解决方案的最新代码。
 
 第一步是创建新的控制台项目。 如需控制台项目设置方面的帮助，请参阅 [Hello World -- 你的第一个程序（C# 编程指南）](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)。 若要在应用程序中使用必应 Web 搜索 SDK，需使用 NuGet 包管理器来安装 `Microsoft.Azure.CognitiveServices.Search.WebSearch`。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2d22e995f489a6379a2f134b461b8bb17160919e
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067816"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113829"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块（预览版）进行部署
 
@@ -50,7 +50,7 @@ Azure IoT Edge 设备：
 
 云资源：
 
-* Azure 中的免费层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。 
 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>创建 Azure 流分析作业

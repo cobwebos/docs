@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: e60b2a9ea7c56352a1b4dfb65537ba6dc57fcb68
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 2b524591f3af32e566b0ca364626daf7aaf4ace2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365955"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318446"
 ---
 # <a name="quickstart-translate-text-with-c35"></a>快速入门：使用 C&#35; 翻译文本
 
-在该快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
-
-该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
+在本快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,10 +29,13 @@ ms.locfileid: "46365955"
 
 ## <a name="translate-request"></a>翻译请求
 
+> [!TIP]
+> 从 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 获取最新代码。
+
 以下代码使用 [Translate](./reference/v3-0-translate.md) 方法将源文本从一种语言翻译为另一种语言。
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 

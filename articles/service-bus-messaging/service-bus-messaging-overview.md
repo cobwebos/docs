@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394023"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342201"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -95,9 +95,9 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 如果出现错误，导致客户端怀疑某个发送操作的结果，则可使用[重复项检测](duplicate-detection.md)，此功能支持发送程序重新发送相同的消息，并让队列或主题放弃任何重复的副本，这样就消除了这些情况下的各种怀疑。
 
-### <a name="sas-rbac-and-msi"></a>SAS、RBAC 和 MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>适用于 Azure 资源的 SAS、RBAC 和托管标识
 
-服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[基于角色的访问控制](service-bus-role-based-access-control.md) (RBAC)、[托管服务标识](service-bus-managed-service-identity.md) (MSI)。
+服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[基于角色的访问控制](service-bus-role-based-access-control.md) (RBAC)、[适用于 Azure 资源的托管标识](service-bus-managed-service-identity.md)。
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 

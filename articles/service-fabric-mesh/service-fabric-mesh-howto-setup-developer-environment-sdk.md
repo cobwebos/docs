@@ -9,12 +9,12 @@ ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 094cab324c7a7c66f5fcb57d488661109fcdabea
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920513"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362664"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>设置 Windows 开发环境以生成 Service Fabric 网格应用
 
@@ -69,7 +69,7 @@ Install-WindowsFeature Containers
 按以下顺序安装 Service Fabric 网格运行时、SDK 和工具。
 
 1. 使用 Web 平台安装程序安装 [Service Fabric 网格 SDK][download-sdkmesh]。 这也会安装 Microsoft Azure Service Fabric SDK 和运行时。
-2. 从 Visual Studio 市场安装 [Visual Studio Service Fabric 工具（预览版）扩展][download-tools]。
+2. 从 Visual Studio 市场安装 [Visual Studio Service Fabric 网格工具（预览版）扩展][download-tools]。
 
 ## <a name="build-a-cluster"></a>生成群集
 

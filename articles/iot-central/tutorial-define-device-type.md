@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 246d7f837fdf72ddb2d24139d2d3d83fcd43b640
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984299"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310642"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
@@ -26,8 +26,8 @@ ms.locfileid: "45984299"
 
 * 发送温度和湿度等遥测数据。
 * 报告状态，例如，该设备是已打开还是已关闭。
-* 具有属性，例如固件版本和序列号。
-* 具有设置，例如目标温度和风扇速度。
+* 具有设备属性，例如固件版本和序列号。
+* 具有设置，例如目标温度。
 
 本教程介绍如何执行下列操作：
 
@@ -39,9 +39,9 @@ ms.locfileid: "45984299"
 > * 查看模拟事件
 > * 定义状态度量
 > * 查看模拟状态
-> * 使用设备属性
-> * 使用设备设置
+> * 使用设置和属性
 > * 使用命令
+> * 在仪表板中查看模拟设备
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,24 +58,20 @@ ms.locfileid: "45984299"
     ![Azure IoT Central 的“应用程序管理器”页](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. 若要创建新的 Azure IoT Central 应用程序：
-
-    * 选择一个友好的应用程序名称，例如 **Contoso Air Conditioners**。 Azure IoT Central 将会生成唯一的 URL 前缀。 可将此 URL 前缀更改为更容易记住的内容。
     
-    * 选择要使用的 Azure Active Directory 和 Azure 订阅。 有关目录和订阅的详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+    * 选择“免费”。 7 天免费试用没有订阅要求。
     
-    * 选择现有的资源组，或使用所选的名称创建新的资源组。 例如 **contoso-rg**。
+       有关目录和订阅的详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
     
-    * 选择最靠近自己的地理区域。
+    * 选择“自定义应用程序”。
     
-    * 选择“自定义应用程序”应用程序模板。
-    
-    * 选择“免费 30 天试用版应用程序”付款计划。
+    * 可以选择一个友好的应用程序名称，例如 **Contoso Air Conditioners**。 Azure IoT Central 将会生成唯一的 URL 前缀。 可将此 URL 前缀更改为更容易记住的内容。
     
     * 选择“创建”。
 
-    ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-define-device-type/iotcentralcreate.png)
+    ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-define-device-type/iotcentralcreatenew.png)
 
-有关详细信息，请参阅[如何创建 Azure IoT Central 应用程序](howto-create-application.md)。
+    有关详细信息，请参阅[如何创建 Azure IoT Central 应用程序](howto-create-application.md)。
 
 ## <a name="create-a-new-custom-device-template"></a>创建新的自定义设备模板
 
@@ -107,11 +103,15 @@ ms.locfileid: "45984299"
     
     * 定义用于控制设备的设置。
     
-    * 定义用于记录有关设备的信息的属性。
+    * 定义属于设备元数据的属性。
+
+    * 定义要在设备上直接运行的命令。
     
     * 定义与设备关联的规则。
     
     * 为操作员自定义设备仪表板。
+
+    定义设备模板时，请先选择“编辑模板”来编辑模板。 完成后，选择“完成”。 
 
     ![空调度量](./media/tutorial-define-device-type/airconmeasurements.png)
 
@@ -226,19 +226,23 @@ ms.locfileid: "45984299"
 
     ![查看状态模拟数据](./media/tutorial-define-device-type/stateview.png)
 
-4. 如果设备在短时间内发送了过多的数据点，状态度量值会以不同的视觉效果显示，如下所示。 如果单击图表，该时间段内的所有数据点将按时间顺序显示。 还可以缩小时间范围，以查看图表上绘制的度量值。
+4. 如果设备在短时间内发送了过多的数据点，状态度量值会以不同的视觉效果显示，如下所示。 如果单击图表，该时间段内的所有数据点将按时间顺序显示。 还可以缩小时间范围，以便更详细地查看度量。
 
     ![查看状态详细信息](./media/tutorial-define-device-type/stateviewdetail.png)
 
 ## <a name="settings-properties-and-commands"></a>设置、属性和命令
 
-设置、属性和设备属性以及命令是设备模板中定义的、与每个设备关联的不同值：
+设置、属性以及命令是设备模板中定义的、与每个设备关联的不同值：
 
 * 使用“设置”可从应用程序向设备发送配置数据。 例如，操作员可以使用某项设置将设备的遥测间隔从 2 秒更改为 5 秒。 当操作员更改某项设置时，该设置将在 UI 中标记为挂起，直到设备确认已处理设置更改为止。
 
-* 使用“属性”可以记录有关应用程序中设备的信息。 例如，可以使用属性来记录设备的序列号，或设备制造商的电话号码。 属性存储在应用程序中，不会与设备保持同步。 操作员可以向属性赋值。
+* 请使用“属性”来定义与设备相关联的元数据。 有两种类别的属性：
+    
+    * 使用“应用程序属性”可以记录有关应用程序中设备的信息。 例如，可以使用应用程序属性来记录设备的位置以及上一次进行维修的日期。 这些属性存储在应用程序中，不会与设备保持同步。 操作员可以向属性赋值。
 
-* 使用“设备属性”可让设备向应用程序发送属性值。 这些属性只能由设备更改。 对于操作员而言，设备属性是只读的。
+    * 使用“设备属性”可让设备向应用程序发送属性值。 这些属性只能由设备更改。 对于操作员而言，设备属性是只读的。 在这个有关连接的空调的方案中，固件版本和设备序列号是由设备报告的设备属性。 
+    
+    有关详细信息，请参阅操作方法指南中的[属性][lnk-define-template]，了解如何设置设备模板。
 
 * 请使用命令通过应用程序远程管理设备。 可以通过云直接在设备上运行命令，以便控制设备。 例如，操作员可以运行重启之类的命令来即时重启设备。
 
@@ -260,7 +264,7 @@ ms.locfileid: "45984299"
     | -------------------- | -----------     |
     | 显示名称         | 设置温度 |
     | 字段名称           | setTemperature  |
-    | 度量单位  | F               |
+    | 计量单位      | F               |
     | 小数位数       | 1               |
     | 最小值        | 20              |
     | 最大值        | 200             |
@@ -278,9 +282,9 @@ ms.locfileid: "45984299"
 
     ![自定义设置布局](./media/tutorial-define-device-type/settingslayout.png)
 
-## <a name="use-properties--device-properties"></a>使用属性/设备属性
+## <a name="use-properties"></a>使用属性 
 
-使用“属性”可以存储有关应用程序中设备的信息。 在本部分中，向“连接的空调”设备模板中添加云属性，以便存储设备的位置和最后维修日期。 请注意，这两者都是设备的可编辑属性。 还有由设备报告的无法更改的只读属性，例如设备序列号和固件版本。
+使用“应用程序属性”可以存储有关应用程序中设备的信息。 在本部分中，向“连接的空调”设备模板中添加应用程序属性，以便存储设备的位置和最后维修日期。 请注意，这两者都是设备的可编辑属性。 还有由设备报告的无法更改的只读设备属性，例如设备序列号和固件版本。
  
 1. 导航到“连接的空调”设备模板的“属性”页：
 
@@ -288,7 +292,7 @@ ms.locfileid: "45984299"
 
     可以创建不同类型（例如数字或文本）的设备属性。 若要向设备模板添加位置属性，请选择“位置”。
 
-2. 若要配置位置属性，请使用下表中的信息：
+1. 若要配置位置属性，请使用下表中的信息：
 
     | 字段                | 值                |
     | -------------------- | -------------------- |
@@ -303,9 +307,9 @@ ms.locfileid: "45984299"
 
     选择“保存”。
 
-3. 若要向设备模板添加最后维修日期属性，请选择“日期”。
+1. 若要向设备模板添加最后维修日期属性，请选择“日期”。
 
-4. 若要配置最后维修日期属性，请使用下表中的信息：
+1. 若要配置最后维修日期属性，请使用下表中的信息：
 
     | 字段                | 值                   |
     | -------------------- | ----------------------- |
@@ -322,18 +326,48 @@ ms.locfileid: "45984299"
 
     ![自定义属性布局](./media/tutorial-define-device-type/propertieslayout.png)
 
+1. 若要向设备模板添加设备属性（例如固件版本），请选择“设备属性”。
+
+1.  若要配置固件版本，请使用下表中的信息：
+
+    | 字段                | 值                   |
+    | -------------------- | ----------------------- |
+    | 显示名称         | 固件版本        |
+    | 字段名称           | firmwareVersion         |
+    | 数据类型            | text                    |
+    | Description          | 空调的固件版本 |
+
+    ![配置固件版本](./media/tutorial-define-device-type/configureproperties3.png)
+    
+    选择“保存”。
+
+1. 若要向设备模板添加设备属性（例如序列号），请选择“设备属性”。
+
+1. 若要配置序列号，请使用下表中的信息：
+
+    | 字段                | 值                   |
+    | -------------------- | ----------------------- |
+    | 显示名称         | 序列号           |
+    | 字段名称           | serialNumber            |
+    | 数据类型            | text                    |
+    | Description          | 空调的序列号  |
+
+    ![配置序列号](./media/tutorial-define-device-type/configureproperties4.png)
+    
+    选择“保存”。
+    
+    > [!NOTE]
+    > 设备属性从设备发送到应用程序。 当实际设备连接到 IoT Central 时，固件版本和序列号的值会进行更新。
 
 ## <a name="use-commands"></a>使用命令
 
-若要允许操作员直接在设备上运行命令，请使用“命令”功能。 在本部分，请将一项命令添加到“连接的空调”设备模板，使操作员能够回显已连接空调显示器上的特定消息（这适用于 MxChip 示例代码）。
+若要允许操作员直接在设备上运行命令，请使用“命令”功能。 在本部分，请将一项命令添加到“连接的空调”设备模板，使操作员能够回显已连接空调上的特定消息。
 
-1. 导航到“连接的空调”设备模板的“命令”页：
+1. 导航到“连接的空调”设备模板的“命令”页，以便编辑模板。 
 
-    ![准备添加设置](media/tutorial-define-device-type/commandsecho.png)
+1. 单击“新建命令”，向设备添加命令，然后开始配置新命令。
 
-    可以根据需要创建不同类型的命令。 
-
-1. 单击“新建命令”，向设备添加命令。
+   可以根据需要创建不同类型的命令。 
 
 1. 若要配置新命令，请使用下表中的信息：
 
@@ -345,13 +379,15 @@ ms.locfileid: "45984299"
     | 显示类型         | text            |
     | Description          | 设备命令  |  
 
-可以向命令添加其他输入，方法是单击“+”进行输入。
+    可以向命令添加其他输入，方法是针对“输入字段”单击“+”。
 
-2. 选择“保存”。
+    ![准备添加设置](media/tutorial-define-device-type/commandsecho1.png)
 
-3. 可以通过移动命令磁贴或调整其大小，来自定义“命令”页的布局：
+     选择“保存”。
 
-    ![自定义设置布局](media/tutorial-define-device-type/commandstileresize.png)
+1. 可以通过移动命令磁贴或调整其大小，来自定义“命令”页的布局：
+
+    ![自定义设置布局](media/tutorial-define-device-type/commandstileresize1.png)
 
 ## <a name="view-your-simulated-device"></a>查看模拟设备
 
@@ -361,92 +397,94 @@ ms.locfileid: "45984299"
 
     ![连接的空调仪表板](./media/tutorial-define-device-type/aircondashboards.png)
 
-2. 选择“折线图”，将组成部分拖放到“仪表板”：
+1. 选择“折线图”，将组成部分拖放到“仪表板”：
 
     ![仪表板组成部分](./media/tutorial-define-device-type/dashboardcomponents1.png)
 
-3. 使用下表中的信息配置“折线图”组成部分：
+1. 使用下表中的信息配置“折线图”组成部分：
 
     | 设置      | 值       |
     | ------------ | ----------- |
     | 标题        | 温度 |
     | 时间范围   | 过去 30 分钟 |
-    | 度量 | 温度（选择“温度”旁边的“可见性”） |
+    | 度量值     | 温度（选择“温度”旁边的“可见性”） |
 
     ![折线图设置](./media/tutorial-define-device-type/linechartsettings.png)
 
     然后选择“保存”。
 
-4. 使用下表中的信息配置“事件图表”组成部分：
+1. 使用下表中的信息配置“事件历史记录”组成部分：
 
     | 设置      | 值       |
     | ------------ | ----------- |
     | 标题        | 活动 |
     | 时间范围   | 过去 30 分钟 |
-    | 度量 | 风扇电机错误（选择“风扇电机错误”旁边的“可见性”） |
+    | 度量值     | 风扇电机错误（选择“风扇电机错误”旁边的“可见性”） |
 
     ![折线图设置](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
     然后选择“保存”。
 
-5. 使用下表中的信息配置“状态图表”组成部分：
+1. 使用下表中的信息配置“状态历史记录”组成部分：
 
     | 设置      | 值       |
     | ------------ | ----------- |
     | 标题        | 风扇模式 |
     | 时间范围   | 过去 30 分钟 |
-    | 度量 | 风扇模式（选择“风扇模式”旁边的“可见性”） |
+    | 度量值 | 风扇模式（选择“风扇模式”旁边的“可见性”） |
 
     ![折线图设置](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
     然后选择“保存”。
 
-6. 若要将“设置温度”设置添加到仪表板，请选择“设置和属性”：
+1. 若要将“设置温度”设置添加到仪表板，请选择“设置和属性”。 单击“添加/删除”，添加希望在仪表板中看到的设置或属性。 
 
     ![仪表板组成部分](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
-7. 使用下表中的信息配置“设置和属性”组成部分：
+1. 使用下表中的信息配置“设置和属性”组成部分：
 
     | 设置                 | 值         |
     | ----------------------- | ------------- |
     | 标题                   | 设置目标温度 |
     | 设置和属性 | 设置温度 |
 
-    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings3.png)
+    以前在“设置和属性”页上定义的设置和属性显示在“可用列”中。 
 
-    然后选择“保存”。
+    ![设置温度属性设置](./media/tutorial-define-device-type/propertysettings4.png)
 
-8. 若要将设备序列号添加到仪表板，请选择“设置和属性”：
+    然后选择“确定”。
+
+1. 若要将设备序列号添加到仪表板，请选择“设置和属性”：
 
     ![仪表板组成部分](./media/tutorial-define-device-type/dashboardcomponents3.png)
 
-9. 使用下表中的信息配置“设置和属性”组成部分：
+1. 使用下表中的信息配置“设置和属性”组成部分：
 
     | 设置                 | 值         |
     | ----------------------- | ------------- |
     | 标题                   | 序列号 |
     | 设置和属性 | 序列号 |
 
-    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings3.png)
+    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings5.png)
 
-    然后选择“保存”。
+    然后选择“确定”。
 
-10. 若要将设备固件版本添加到仪表板，请选择“设置和属性”：
+1. 若要将设备固件版本添加到仪表板，请选择“设置和属性”：
 
     ![仪表板组成部分](./media/tutorial-define-device-type/dashboardcomponents4.png)
 
-11. 使用下表中的信息配置“设置和属性”组成部分：
+1. 使用下表中的信息配置“设置和属性”组成部分：
 
     | 设置                 | 值            |
     | ----------------------- | ---------------- |
     | 标题                   | 固件版本 |
     | 设置和属性 | 固件版本 |
 
-    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings3.png)
+    ![序列号属性设置](./media/tutorial-define-device-type/propertysettings6.png)
 
-    然后选择“保存”。
+    然后选择“确定”。
 
-12. 若要以操作员身份查看仪表板，请在页面右上角关闭“设计模式”。
+1. 若要以操作员身份查看仪表板，请在页面右上角关闭“编辑模板”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -461,10 +499,13 @@ ms.locfileid: "45984299"
 > * 查看模拟事件
 > * 定义状态
 > * 查看模拟状态
-> * 使用设备属性
-> * 使用设备设置
+> * 使用设置和属性
+> * 使用命令
+> * 在仪表板中查看模拟设备
 
 在 Azure IoT Central 应用程序内定义设备模板后，建议接下来执行以下后续步骤：
 
 * [为设备配置规则和操作](tutorial-configure-rules.md)
 * [自定义操作员的视图](tutorial-customize-operator.md)
+
+[lnk-define-template]: /azure/iot-central/howto-set-up-template#properties

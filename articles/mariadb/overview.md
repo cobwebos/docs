@@ -9,15 +9,18 @@ ms.service: mariadb
 ms.topic: overview
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 3649a173d5707179ca8547a8169b7d308c4f7f1c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 696ba68894b4ac5f73c234ea49883fd0aa3db4d5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249156"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320911"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
-Azure Database for MariaDB 是 Microsoft 云中基于 [MariaDB 社区版](https://mariadb.org/download/)数据库引擎的一种关系数据库服务。 此服务目前以公共预览版提供。 Azure Database for MariaDB 的优点包括：
+
+在 Microsoft 云中，Azure Database for MariaDB 是关系数据库服务。 Azure Database for MariaDB 基于 [MariaDB 社区版](https://mariadb.org/download/)数据库引擎。 此服务目前以公共预览版提供。 
+
+Azure Database for MariaDB 的优点包括：
 
 - 没有额外费用的内置高可用性。
 - 使用非独占即用即付定价，实现可预测性能。
@@ -26,9 +29,10 @@ Azure Database for MariaDB 是 Microsoft 云中基于 [MariaDB 社区版](https:
 - 长达 35 天的自动备份和时间点还原。
 - 企业级安全性和符合性。
 
-这些功能几乎都不需要进行任何管理，并且都是在不另外收费的情况下提供的。 借助这些功能，用户可将注意力集中在如何快速进行应用开发、加快推向市场，而不需要投入宝贵的时间和资源来管理虚拟机与基础结构。 此外，可以继续使用选择的开源工具和平台来开发应用程序，以提供业务所需的速度和效率，这些都不需要学习新技能。
+这些功能几乎都不需要进行任何管理。 它们是在不另外收费的情况下提供的。 Azure Database for MariaDB 可以帮助你快速开发应用，加快面市时间。 你不需要投入宝贵的时间和资源来管理虚拟机与基础结构。 你也可以使用所选的开源工具和平台继续开发应用程序。 以业务需要的速度和效率进行交付，不需学习新技能。
 
-本文介绍了 Azure Database for MariaDB 在性能、伸缩性和易管理性方面的核心概念与功能，并提供了可进一步了解详细信息的链接。 请参阅这些快速入门，以便尽快入门：
+若要了解 Azure Database for MariaDB 中的核心概念和功能，包括性能、可伸缩性和可管理性，请参阅以下快速入门：
+
 - [使用 Azure 门户创建 Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建 Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
@@ -38,32 +42,38 @@ For a set of Azure CLI samples, see:
 -->
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
-在预览版中，Azure Database for MariaDB 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-pricing-tiers.md)。
+
+在预览版中，Azure Database for MariaDB 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性有助于数据库以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-pricing-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
-如何决定何时调高和调低？ 将内置的性能监视和警报功能与基于 vCore 的性能等级组合使用。 使用这些工具，可以根据当前的或预计的性能需求，快速评估调高或调低 vCore 数产生的影响。 <!--See [Alerts](howto-alert-on-metric.md) for details.-->
+
+如何决定何时进行纵向扩展或缩减？ 可以将 Azure Database for MariaDB 的内置性能监视和警报功能与基于 vCore 的性能等级组合使用。 使用这些工具，可以根据当前的或预计的性能需求，快速评估调高或调低 vCore 数产生的影响。 <!--See [Alerts](howto-alert-on-metric.md) for details.-->
 
 ## <a name="keep-your-app-and-business-running"></a>使应用和业务持续运转
-Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（在公共预览版中未提供），由 Microsoft 管理的数据中心的全球网络提供支持，有助于保持应用全天候运行。 对于每个 Azure Database for MariaDB 服务器，可以利用内置的安全性、容错和数据保护功能。使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 使用 Azure Database for MariaDB，可以使用时间点还原将服务器还原到以前的状态，最多可还原到 35 天前。
+
+Azure 行业领先的 99.99% 可用性 SLA（在公共预览版中未提供）由 Microsoft 管理的数据中心的全球网络提供支持。 此网络可以让应用全天候运行。 你可以受益于 Azure Database for MariaDB 中的内置安全性、容错和数据保护功能。 使用 Azure Database for MariaDB，可以使用时间点还原将服务器还原到以前的状态，最多可还原到 35 天前。
 
 ## <a name="secure-your-data"></a>保护数据
-Azure 数据库沿袭了 Azure Database for MariaDB 的若干数据安全性功能，包括限制访问、保护静止和移动数据，以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
 
-Azure Database for MariaDB 服务为静态数据使用存储加密。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
+Azure 数据库服务沿袭了 Azure Database for MariaDB 的若干数据安全性功能。 Azure Database for MariaDB 提供的功能可以限制访问、保护静态数据和移动数据，以及帮助监视活动。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
 
-默认情况下，将 Azure Database for MariaDB 服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。
+Azure Database for MariaDB 服务为静态数据使用存储加密。 在磁盘上加密数据（包括备份数据）。 （引擎在运行查询时创建的临时文件不在磁盘上加密。）该服务使用包含在 Azure 存储加密中的 AES 256 位密码。 密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
+
+默认情况下，将 Azure Database for MariaDB 服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止连接到数据库服务时的 SSL 要求。
 
 ## <a name="contacts"></a>联系人
-如果有任何关于使用 Azure Database for MariaDB 的问题或建议，请发送电子邮件至 Azure Database for MariaDB 团队 ([@Ask Azure DB for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com))。 请注意，这不是技术支持别名。
 
-另外，请酌情考虑以下联系点：
-- 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-- 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/915439-azure-database-for-mariadb) 创建条目。
+如果有 Azure Database for MariaDB 使用方面的问题或建议，可以将其发送到 [Azure Database for MariaDB 团队](mailto:AskAzureDBforMariaDB@service.microsoft.com)（不是技术支持团队的别名）。
+
+还可以使用以下联系点：
+- 若要联系 Azure 支持部门，请在 Azure 门户中[提出支持请求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 若要修复帐户问题，请在 Azure 门户中[提出支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 若要提供反馈或请求新功能，请在 [Azure 反馈论坛](https://feedback.azure.com/forums/915439-azure-database-for-mariadb)中创建一个条目。
 
 ## <a name="next-steps"></a>后续步骤
-现在，已阅读了 Azure Database for MariaDB 的简介并回答了“什么是 Azure Database for MariaDB？”这个问题，因此可以继续完成以下内容：
-- 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.microsoft.com/pricing/details/mariadb/)
-- 从创建第一个服务器开始。 [使用 Azure 门户创建 Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)
+
+阅读完 Azure Database for MariaDB 简介后，即可：
+- 有关成本比较和计算器，请参阅[定价](https://azure.microsoft.com/pricing/details/mariadb/)页。 
+- 从[创建第一个服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)开始。
 
 <!--- - Build your first app using your preferred language: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md) --->

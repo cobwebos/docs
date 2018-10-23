@@ -10,20 +10,20 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: 6dc6eec729fc1be3f0a859834597bf2d5785d9bc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984918"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341304"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>教程：计算机视觉 API JavaScript
 
 本教程展示 Azure 认知服务计算机视觉 REST API 的功能。
 
-介绍一款 JavaScript 应用程序，它使用计算机视觉 REST API 执行光学符号识别 (OCR)、创建智能裁剪的缩略图，还检测、分类、标记和描述图像中的人脸等视觉特征。 在本例中，你提交一个图像 URL 进行分析和处理。 你可使用此开源示例作为模板，在 JavaScript 中自行构建使用计算机视觉 REST API 的应用。
+介绍一款 JavaScript 应用程序，它使用计算机视觉 REST API 执行光学符号识别 (OCR)、创建智能裁剪的缩略图，还检测、分类、标记和描述图像中的人脸等视觉特征。 通过本示例可提交一个图像 URL 进行分析和处理。 可以使用此开源示例作为模板，生成自己的 JavaScript 应用，以便使用计算机视觉 REST API。
 
-JavaScript 表单应用程序已编写完毕，但不具有计算机视觉功能。 在本教程中，你添加计算机视觉 REST API 特定的代码，补全应用程序的功能。
+JavaScript 表单应用程序已编写完毕，但不具有计算机视觉功能。 在本教程中，你将添加特定于计算机视觉 REST API 的代码，以补全应用程序的功能。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,25 +35,27 @@ JavaScript 表单应用程序已编写完毕，但不具有计算机视觉功能
 
 创建示例之前，必须先订阅 Azure 认知服务中随附的计算机视觉 API。 有关订阅和密钥管理的详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 主密钥和辅助密钥均适用于本教程。 
 
-## <a name="download-the-tutorial-project"></a>下载教程项目
+## <a name="acquire-the-incomplete-tutorial-project"></a>获取不完整的教程项目
+
+### <a name="download-the-tutorial-project"></a>下载教程项目
 
 复制[认知服务 JavaScript 计算机视觉教程](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)，或下载 .zip 文件并将其解压缩到空目录。
 
 如果更想要使用添加了所有教程代码的完备教程，可使用“已完成”文件夹中的文件。
 
-## <a name="add-the-tutorial-code"></a>添加教程代码
+## <a name="add-the-tutorial-code-to-the-project"></a>向项目添加教程代码
 
 JavaScript 应用程序设置有 6 个 .html 文件（每个功能一个文件）。 每个文件展示计算机视觉的不同函数（分析、OCR 等）。 教程的 6 个部分相互独立，因此可向一个文件、全部 6 个文件或仅向几个文件添加教程代码。 而且，可按任意顺序向文件添加教程代码。
 
 让我们开始吧。
 
-## <a name="analyze-an-image"></a>分析图像
+### <a name="analyze-an-image"></a>分析图像
 
-计算机视觉的分析功能可分析图像中超过 2,000 个可识别的对象、生物、风景和动作。 分析完成后，分析功能返回一个 JSON 对象，它使用描述性的标签、色彩分析和题注等解说图像。
+计算机视觉的分析功能可扫描图像中超过 2,000 个可识别的对象、生物、风景和动作。 分析完成后，分析功能返回一个 JSON 对象，它使用描述性的标签、色彩分析和题注等解说图像。
 
 要完成教程应用程序的分析功能，请执行以下步骤：
 
-### <a name="analyze-step-1-add-the-event-handler-code-for-the-form-button"></a>“分析”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 在文本编辑器中打开 analyze.html 文件，找到文件底部附近的 analyzeButtonClick 函数。
 
@@ -77,7 +79,7 @@ function analyzeButtonClick() {
 }
 ```
 
-### <a name="analyze-step-2-add-the-wrapper-for-the-rest-api-call"></a>“分析”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 AnalyzeImage 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
 
@@ -151,17 +153,17 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="analyze-step-3-run-the-application"></a>“分析”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
-保存 analyze.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果。
+保存 analyze.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果。
 
-## <a name="recognize-a-landmark"></a>识别地标
+### <a name="recognize-a-landmark"></a>识别地标
 
 计算机视觉的地标功能可分析图像中的自然和人造地标，例如山脉或著名的建筑物。 分析完成后，地标功能返回一个 JSON 对象，它标识在图像中找到的地标。
 
 要完成教程应用程序的地标功能，请执行以下步骤：
 
-### <a name="landmark-step-1-add-the-event-handler-code-for-the-form-button"></a>“地标”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 在文本编辑器中打开 landmark.html 文件，找到文件底部附近的 landmarkButtonClick 函数。
 
@@ -185,7 +187,7 @@ function landmarkButtonClick() {
 }
 ```
 
-### <a name="landmark-step-2-add-the-wrapper-for-the-rest-api-call"></a>“地标”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 dentifyLandmarks 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示格式化的 JSON 分析结果，且指定的范围中将显示题注。
 
@@ -258,17 +260,17 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="landmark-step-3-run-the-application"></a>“地标”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 保存 landmark.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果。
 
-## <a name="recognize-celebrities"></a>识别名人
+### <a name="recognize-celebrities"></a>识别名人
 
 计算机视觉的名人功能可分析图像中的名人。 分析完成后，名人功能返回一个 JSON 对象，它标识在图像中找到的名人。
 
 要完成教程应用程序的名人功能，请执行以下步骤：
 
-### <a name="celebrities-step-1-add-the-event-handler-code-for-the-form-button"></a>“名人”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 在文本编辑器中打开 celebrities.html 文件，找到文件底部附近的 celebritiesButtonClick 函数。
 
@@ -292,7 +294,7 @@ function celebritiesButtonClick() {
 }
 ```
 
-### <a name="celebrities-step-2-add-the-wrapper-for-the-rest-api-call"></a>“名人”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 ```javascript
 /* Identify celebrities in the image at the specified URL by using Microsoft Cognitive Services 
@@ -361,17 +363,17 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="celebrities-step-3-run-the-application"></a>“名人”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 保存 celebrities.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析”按钮以分析图像并查看结果。
 
-## <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
+### <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
 
 计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能将识别图像中的兴趣区域并集中于此区域创建缩略图，进而生成视觉上更美观的缩略图。
 
 要完成教程应用程序的缩略图功能，请执行以下步骤：
 
-### <a name="thumbnail-step-1-add-the-event-handler-code-for-the-form-button"></a>“缩略图”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 在文本编辑器中打开 thumbnail.html 文件，找到文件底部附近的 thumbnailButtonClick 函数。
 
@@ -403,7 +405,7 @@ function thumbnailButtonClick() {
 }
 ```
 
-### <a name="thumbnail-step-2-add-the-wrapper-for-the-rest-api-call"></a>“缩略图”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 getThumbnail 函数包装 REST API 调用以分析图像。 在成功返回后，指定的 img 元素中将显示缩略图。
 
@@ -482,11 +484,11 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-### <a name="thumbnail-step-3-run-the-application"></a>“缩略图”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 保存 thumbnail.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“生成缩略图”按钮以分析图像并查看结果。
 
-## <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
+### <a name="read-printed-text-ocr"></a>读取打印文本 (OCR)
 
 计算机视觉的光学字符识别 (OCR) 功能可分析图像中的印刷体文本。 分析完成后，OCR 返回一个 JSON 对象，它包含图像中的文本及其位置。
 
@@ -516,7 +518,7 @@ function ocrButtonClick() {
 }
 ```
 
-### <a name="ocr-step-2-add-the-wrapper-for-the-rest-api-call"></a>OCR 步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 ReadOcrImage 函数包装 REST API 调用以分析图像。 成功返回后，指定的文本区域将显示描述文本和文本位置的格式化 JSON。
 
@@ -577,17 +579,17 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-### <a name="ocr-step-3-run-the-application"></a>OCR 步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 保存 ocr.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果。
 
-## <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
+### <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
 
 计算机视觉的手写体识别功能可分析图像中的手写文本。 分析完成后，手写体识别功能返回一个 JSON 对象，它包含图像中的文本及其位置。
 
 要完成教程应用程序的手写体识别功能，请执行以下步骤：
 
-### <a name="handwriting-recognition-step-1-add-the-event-handler-code-for-the-form-button"></a>“手写体识别”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 在文本编辑器中打开 handwriting.html 文件，找到文件底部附近的 handwritingButtonClick 函数。
 
@@ -610,7 +612,7 @@ function handwritingButtonClick() {
 }
 ```
 
-### <a name="handwriting-recognition-step-2-add-the-wrapper-for-the-rest-api-call"></a>“手写体识别”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 ReadHandwrittenImage 函数包装分析图像时所需的两个 REST API 调用。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
 
@@ -736,11 +738,11 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-### <a name="handwriting-recognition-step-3-run-the-application"></a>“手写体识别”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 保存 handwriting.html 文件并在 Web 浏览器中将其打开。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入要读取的文本图像的 URL，然后单击“读取”按钮以分析图像并查看结果。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [计算机视觉 API C# 教程](CSharpTutorial.md)
+- [计算机视觉 API C&#35; 教程](CSharpTutorial.md)
 - [计算机视觉 API Python 教程](PythonTutorial.md)

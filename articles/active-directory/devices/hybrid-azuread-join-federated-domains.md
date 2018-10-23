@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855165"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352654"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
 
@@ -124,7 +124,7 @@ ms.locfileid: "48855165"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
 
-    b. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端，否则必须选择 AD FS 服务器。
+    b. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端且你已配置计算机/设备同步或者你的组织使用 SeamlessSSO，否则必须选择 AD FS 服务器。
 
     c. 单击“添加”，输入企业管理员凭据。
 
@@ -194,7 +194,7 @@ ms.locfileid: "48855165"
 
 - 必须存在其设备 ID 与 Windows 客户端上的 ID 相匹配的对象。
 - DeviceTrustType 的值必须是“已加入域”。 这相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态。
-- 对于采用了条件访问的设备，“已启用”值必须为 True。 
+- 对于采用了条件访问的设备，“已启用”值必须为 True，**DeviceTrustLevel** 必须为 **Managed**。 
 
 
 检查服务详细信息：

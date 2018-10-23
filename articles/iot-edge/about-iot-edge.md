@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032573"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116330"
 ---
 # <a name="what-is-azure-iot-edge"></a>什么是 Azure IoT Edge
 
@@ -55,7 +55,7 @@ Azure IoT Edge 运行时允许在 IoT Edge 设备上使用自定义逻辑和云�
 * 促进 IoT Edge 设备上的模块间的通信。
 * 促进 IoT Edge 设备与云之间的通信。
 
-![IoT Edge 运行时将见解和报告发送到 IoT 中心][1]
+![IoT Edge 运行时将见解和报告发送到 IoT 中心](./media/about-iot-edge/runtime.png)
 
 如何使用 Azure IoT Edge 设备完全取决于你自己。 通常使用运行时将 AI 部署到网关，由后者聚合和处理来自多个其他本地设备的数据，但这只是一个选项。 叶设备也可以是 Azure IoT Edge 设备，不管这些设备是连接到网关，还是直接连接到云。
 
@@ -71,15 +71,10 @@ Azure IoT Edge 与 Azure IoT 解决方案加速器无缝集成，提供一个符
 * 将工作负荷发送到一组设备。
 * 监视在现场设备上运行的工作负荷。
 
-![设备的遥测、见解和操作与云协调][2]
+![设备的遥测、见解和操作与云协调](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-通过[在模拟设备上部署 IoT Edge][lnk-quickstart]，体会上述概念。
+通过[在模拟设备上部署 IoT Edge](quickstart.md)，体会上述概念。
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

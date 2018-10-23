@@ -1,5 +1,5 @@
 ---
-title: 示例：使用视频索引器上传视频和编制视频索引
+title: 使用视频索引器上传视频和编制视频索引
 titlesuffix: Azure Cognitive Services
 description: 本主题演示如何通过视频索引器使用 API 来上传视频和编制视频索引。
 services: cognitive services
@@ -10,14 +10,14 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884301"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377825"
 ---
-# <a name="example-upload-and-index-your-videos"></a>示例：上传视频和编制视频索引  
+# <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
 本文介绍如何使用 Azure 视频索引器上传视频。 视频索引器 API 提供了两个上传选项： 
 

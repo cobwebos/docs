@@ -7,14 +7,14 @@ author: fmegen
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: c0963fa8453dd51dfb05af20a5468e1eed1fc7cf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 1f0c19524ebd59dcf0377cc173cd780d656ba447
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885200"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339190"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音 SDK 通过 Java 识别语音
 
@@ -73,7 +73,7 @@ ms.locfileid: "48885200"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * 还添加一个 `dependencies` 元素，使用语音 SDK 1.0.0 版本作为依赖项：
+  * 还添加一个 `dependencies` 元素，使用语音 SDK 1.0.1 版本作为依赖项：
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

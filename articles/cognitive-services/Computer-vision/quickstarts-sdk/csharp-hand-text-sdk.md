@@ -3,25 +3,23 @@ title: 快速入门：提取文本 - SDK、C# - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 本快速入门将使用计算机视觉 Windows C# 客户端库从图像中提取文本。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.author: nolachar
-ms.openlocfilehash: 86808756721b2dc983df6eaf8a9e643a12d73969
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: pafarley
+ms.openlocfilehash: d819aee7c42759e2427e27e0f640d79536069ccb
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408998"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343599"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 提取文本
 
 本快速入门将使用计算机视觉 Windows 客户端库从图像中提取手写文本或打印文本。
-
-该示例的源代码可在 [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "47408998"
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
 
 ## <a name="recognizetextasync-method"></a>RecognizeTextAsync 方法
+
+> [!TIP]
+> 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 获取作为 Visual Studio 解决方案的最新代码。
 
 `RecognizeTextAsync` 和 `RecognizeTextInStreamAsync` 方法分别为远程图像和本地图像包装[识别文本 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)。 `GetTextOperationResultAsync` 方法包装[获取识别文本操作结果 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)。  可以使用这些方法检测图像中的文本，并将识别的字符提取到可供计算机使用的字符流中。
 
@@ -203,7 +204,7 @@ Pack my box with five dozen liquor jugs
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和地标，创建缩略图以及提取打印文本和手写文本的计算机视觉 API。
+探索用于分析图像、检测名人和地标、创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

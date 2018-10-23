@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888050"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319330"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙连接或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -81,10 +81,9 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 4. 收到请求的网关在网关存储中查找中继。 
 5. 网关将连接请求转发到网关存储中提到的适当网关。 
 6. 网关将请求发送到侦听方客户端，让该客户端与最靠近发送方客户端的网关节点建立临时通道。 
-7. 现在，侦听方客户端会创建一个临时通道，并将响应消息发送到最靠近发送方客户端的网关。
-8. 网关将响应消息转发到发送方客户端。 
-
-建立中继连接后，客户端可以通过用于会合的网关节点交换消息。
+7. 侦听客户端会创建一个临时通道，通往最靠近发送客户端的网关。 通过网关在客户端之间建立连接以后，客户端就可以彼此交换消息了。 
+8. 网关将来自侦听客户端的任何消息转发到发送客户端。 
+9. 网关将来自发送客户端的任何消息转发到侦听客户端。  
 
 ## <a name="next-steps"></a>后续步骤
 * [.NET Websocket 入门](relay-hybrid-connections-dotnet-get-started.md)

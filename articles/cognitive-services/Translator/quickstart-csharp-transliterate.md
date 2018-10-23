@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7fa8c5dc76e59ec236d6b9662bd2ba41db0add0f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367587"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320401"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>快速入门：使用 C&#35; 音译文本
 
 在本快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
-
-该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,10 +29,13 @@ ms.locfileid: "46367587"
 
 ## <a name="transliterate-request"></a>音译请求
 
+> [!TIP]
+> 从 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 获取最新代码。
+
 以下示例使用 [Transliterate](./reference/v3-0-transliterate.md) 方法将一种语言的文本从一个脚本转换为另一个脚本。
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 

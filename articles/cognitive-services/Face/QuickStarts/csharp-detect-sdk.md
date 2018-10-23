@@ -3,25 +3,23 @@ title: 快速入门：检测图像中的人脸 - SDK、C#
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用认知服务中的人脸 Windows C# 客户端库检测图像中的人脸。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: a9a7efd89f8e7462812064615d07acf12acbc3a3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364077"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344976"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>快速入门：使用 C&#35; 检测图像中的人脸 - 人脸
 
 在本快速入门中，你将使用人脸 Windows 客户端库检测图像中的人脸。
-
-该示例的源代码可在 [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46364077"
 * [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
 
 ## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync 方法
+
+> [!TIP]
+> 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) 获取作为 Visual Studio 解决方案的最新代码。
 
 `DetectWithUrlAsync` 和 `DetectWithStreamAsync` 方法分别为远程图像和本地图像包装[人脸 - 检测 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。 使用这些方法可检测图像中的人脸并返回人脸属性，包括：
 

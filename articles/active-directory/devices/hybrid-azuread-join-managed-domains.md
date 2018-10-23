@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855946"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352604"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
 
@@ -172,7 +172,7 @@ ms.locfileid: "48855946"
 
 - 必须存在其设备 ID 与 Windows 客户端上的 ID 相匹配的对象。
 - DeviceTrustType 的值必须是“已加入域”。 这相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态。
-- 对于采用了条件访问的设备，“已启用”值必须为 True。 
+- 对于采用了条件访问的设备，“已启用”值必须为 True，**DeviceTrustLevel** 必须为 **Managed**。 
 
 
 检查服务详细信息：

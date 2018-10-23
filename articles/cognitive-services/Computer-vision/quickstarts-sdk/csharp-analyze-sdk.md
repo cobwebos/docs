@@ -3,25 +3,23 @@ title: 快速入门：分析图像 - SDK、C# - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 Windows C# 客户端库分析图像。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 81a7b32ef2970efc7f53ec8d25350efb217d7b36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056064"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343633"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 分析图像
 
 在本快速入门中，你将使用计算机视觉 Windows 客户端库分析本地和远程图像来提取视觉特征。
-
-该示例的源代码可在 [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "47056064"
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
 
 ## <a name="analyzeimageasync-method"></a>AnalyzeImageAsync 方法
+
+> [!TIP]
+> 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 获取作为 Visual Studio 解决方案的最新代码。
 
 `AnalyzeImageAsync` 和 `AnalyzeImageInStreamAsync` 方法分别为远程图像和本地图像包装[分析图像 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。 可以使用这些方法基于图像内容提取视觉特征并选择要返回的特征，包括：
 
@@ -170,7 +171,7 @@ a large waterfall over a rocky cliff
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和地标，创建缩略图以及提取打印文本和手写文本的计算机视觉 API。
+探索用于分析图像、检测名人和地标、创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

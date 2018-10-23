@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 328f5996a9b830ea6c2ff4b4a535d5311f39e08e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365250"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321337"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>快速入门：使用 C&#35; 查找备用翻译和使用情况
 
 在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
-
-该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,10 +29,13 @@ ms.locfileid: "46365250"
 
 ## <a name="dictionary-lookup-request"></a>字典查找请求
 
-以下示例使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
+> [!TIP]
+> 从 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 获取最新代码。
+
+以下内容使用 [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) 方法获取单词的备用翻译。
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
@@ -154,10 +155,10 @@ namespace TranslatorTextQuickStart
 
 ## <a name="dictionary-examples-request"></a>字典示例请求
 
-以下示例使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
+下面使用 [Dictionary Examples](./reference/v3-0-dictionary-examples.md) 方法在字典中获取如何使用术语的上下文示例。
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 

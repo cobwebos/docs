@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bf0b38c8c2d465abe9f2e129110df41c349c3d07
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055367"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165975"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教程：缩放在 Service Fabric 网格中运行的应用程序
 
-本教程是一个系列中的第二部分。 了解如何手动缩放[以前部署到 Service Fabric 网格](service-fabric-mesh-tutorial-template-deploy-app.md)的应用程序的服务实例数。  完成后，你会有：
+本教程是一个系列中的第二部分。 了解如何手动缩放[以前部署到 Service Fabric 网格](service-fabric-mesh-tutorial-template-deploy-app.md)的应用程序的服务实例数。 完成后，你的前端服务运行三个实例，数据服务运行两个实例。
 
 本系列教程的第二部分将介绍如何：
 

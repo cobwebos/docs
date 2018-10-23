@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.date: 09/21/2017
-ms.openlocfilehash: cca35d031e860e014c8fd84b0daf6b4d60d18046
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985841"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340250"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>教程：计算机视觉 API Java
 
@@ -45,7 +45,9 @@ Java Swing 表单应用程序已编写完毕，但不具备功能。 在本教�
 
 创建示例之前，必须先订阅 Azure 认知服务中随附的计算机视觉 API。 有关订阅和密钥管理的详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 主密钥和辅助密钥均适用于本教程。 
 
-## <a name="download-the-tutorial-project"></a>下载教程项目
+## <a name="acquire-the-incomplete-tutorial-project"></a>获取不完整的教程项目
+
+### <a name="download-the-tutorial-project"></a>下载教程项目
 
 1. 转到[认知服务 Java 计算机视觉教程](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial)存储库。
 1. 单击“克隆”或“下载”按钮。
@@ -53,7 +55,7 @@ Java Swing 表单应用程序已编写完毕，但不具备功能。 在本教�
 
 无需提取 .zip 文件的内容，因为 NetBeans 从 .zip 文件导入项目。
 
-## <a name="import-the-tutorial-project"></a>导入教程项目
+### <a name="import-the-tutorial-project"></a>导入教程项目
 
 将 cognitive-services-java-computer-vision-tutorial-master.zip 文件导入 NetBeans。
 
@@ -65,29 +67,27 @@ Java Swing 表单应用程序已编写完毕，但不具备功能。 在本教�
 1. 双击“MainFrame.java”，将文件加载到 NetBeans 编辑器。 随即出现 MainFrame.java 文件的“设计”选项卡。
 1. 单击“源”选项卡查看 Java 源代码。
 
-## <a name="build-and-run-the-tutorial-project"></a>生成并运行教程项目
+### <a name="build-and-run-the-tutorial-project"></a>生成并运行教程项目
 
 1. 按 F6 生成并运行教程应用程序。
 
     在教程应用程序中，单击选项卡以显示该功能的窗格。 按钮的方法为空，因此不执行任何操作。
 
-    窗口底部是字段“订阅密钥”和“订阅区域”。 必须使用有效的订阅密钥和该订阅密钥正确的区域填充这些字段。 要获取订阅密钥，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 如果是通过该链接获取的免费试用版的订阅密钥，则默认的 **westcentralus** 是订阅密钥的正确区域。
+    窗口底部是字段“订阅密钥”和“订阅区域”。 必须使用有效的订阅密钥和该订阅密钥正确的区域填充这些字段。 要获取订阅密钥，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 如果是通过该链接获取的免费试用版的订阅密钥，则默认区域 **westcentralus** 是订阅密钥的正确区域。
 
 1. 退出教程应用程序。
 
-## <a name="add-the-tutorial-code"></a>添加教程代码
+## <a name="add-the-tutorial-code-to-the-project"></a>向项目添加教程代码
 
-为 Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算机视觉的不同功能（分析、OCR 等等）。 六个教程部分没有相互依赖关系，因此可以添加一个部分、六个部分全部添加，或者仅添加一两个部分。 还可以按任意顺序添加部分。
+为 Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算机视觉的不同功能（分析、OCR 等）。 六个教程部分没有相互依赖关系，因此可以添加一个部分、六个部分全部添加，或者添加任意子集。 可以按任意顺序添加部分。
 
-让我们开始吧。
+### <a name="analyze-an-image"></a>分析图像
 
-## <a name="analyze-an-image"></a>分析图像
-
-计算机视觉的分析功能可分析图像中超过 2,000 个可识别的对象、生物、风景和动作。 分析完成后，分析功能返回一个 JSON 对象，它使用描述性的标签、色彩分析和题注等解说图像。
+计算机视觉的分析功能可扫描图像中超过 2,000 个可识别的对象、生物、风景和动作。 分析完成后，分析功能返回一个 JSON 对象，它使用描述性的标签、色彩分析和题注等解说图像。
 
 要完成教程应用程序的分析功能，请执行以下步骤：
 
-### <a name="analyze-step-1-add-the-event-handler-code-for-the-form-button"></a>“分析”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 analyzeImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 AnalyzeImage 方法来分析图像。 当 AnalyzeImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，从 JSONObject 中提取第一个标题，并显示标题以及标题正确的可信度。
 
@@ -140,7 +140,7 @@ analyzeImageButtonActionPerformed 事件处理程序方法将表单清空、显�
     }
 ```
 
-### <a name="analyze-step-2-add-the-wrapper-for-the-rest-api-call"></a>“分析”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 AnalyzeImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像的 JSONObject，或者如果出现错误，则返回 null。
 
@@ -201,17 +201,17 @@ AnalyzeImage 方法包装 REST API 调用以分析图像。 该方法返回描�
     }
  ```
 
-### <a name="analyze-step-3-run-the-application"></a>“分析”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果。
 
-## <a name="recognize-a-landmark"></a>识别地标
+### <a name="recognize-a-landmark"></a>识别地标
 
 计算机视觉的地标功能可分析图像中的自然和人造地标，例如山脉或著名的建筑物。 分析完成后，地标功能返回一个 JSON 对象，它标识在图像中找到的地标。
 
 要完成教程应用程序的地标功能，请执行以下步骤：
 
-### <a name="landmark-step-1-add-the-event-handler-code-for-the-form-button"></a>“地标”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 landmarkImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 LandmarkImage 方法来分析图像。 当 LandmarkImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个地标名称并在窗口中显示该名称以及正确识别地标的可信度。
 
@@ -264,7 +264,7 @@ landmarkImageButtonActionPerformed 事件处理程序方法将表单清空、显
     }
 ```
 
-### <a name="landmark-step-2-add-the-wrapper-for-the-rest-api-call"></a>“地标”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 LandmarkImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像中找到的地标的 JSONObject，或者如果出现错误，则返回 null。
 
@@ -325,17 +325,17 @@ LandmarkImage 方法包装 REST API 调用以分析图像。 该方法返回描�
     }
 ```
 
-### <a name="landmark-step-3-run-the-application"></a>“地标”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“地标”选项卡，输入地标图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果。
 
-## <a name="recognize-celebrities"></a>识别名人
+### <a name="recognize-celebrities"></a>识别名人
 
 计算机视觉的名人功能可分析图像中的名人。 分析完成后，名人功能返回一个 JSON 对象，它标识在图像中找到的名人。
 
 要完成教程应用程序的名人功能，请执行以下步骤：
 
-### <a name="celebrities-step-1-add-the-event-handler-code-for-the-form-button"></a>“名人”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 celebritiesImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 CelebritiesImage 方法来分析图像。 当 CelebritiesImage 返回时，该方法会在“响应”文本区域中显示格式化的 JSON 响应，然后从 JSONObject 中提取第一个名人姓名并在窗口中显示该姓名以及正确识别名人的可信度。
 
@@ -388,7 +388,7 @@ celebritiesImageButtonActionPerformed 事件处理程序方法将表单清空、
     }
 ```
 
-### <a name="celebrities-step-2-add-the-wrapper-for-the-rest-api-call"></a>“名人”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 CelebritiesImage 方法包装 REST API 调用以分析图像。 该方法返回描述图像中找到的名人的 JSONObject，或者如果出现错误，则返回 null。
 
@@ -449,17 +449,17 @@ CelebritiesImage 方法包装 REST API 调用以分析图像。 该方法返回�
     }
 ```
 
-### <a name="celebrities-step-3-run-the-application"></a>“名人”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“名人”选项卡，输入名人图像的 URL，然后单击“分析图像”按钮以分析图像并查看结果。
 
-## <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
+### <a name="intelligently-generate-a-thumbnail"></a>智能生成缩略图
 
 计算机视觉的缩略图功能可通过图像生成缩略图。 通过使用“智能裁剪”功能，缩略图功能可识别图像中的兴趣区域并集中于此区域创建缩略图，以生成视觉上更美观的缩略图。
 
 要完成教程应用程序的缩略图功能，请执行以下步骤：
 
-### <a name="thumbnail-step-1-add-the-event-handler-code-for-the-form-button"></a>“缩略图”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 thumbnailImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 getThumbnailImage 方法来创建缩略图。 当 getThumbnailImage 返回时，该方法会显示生成的缩略图。
 
@@ -505,7 +505,7 @@ thumbnailImageButtonActionPerformed 事件处理程序方法将表单清空、�
     }
 ```
 
-### <a name="thumbnail-step-2-add-the-wrapper-for-the-rest-api-call"></a>“缩略图”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 getThumbnailImage 方法包装 REST API 调用以分析图像。 该方法返回包含缩略图的 BufferedImage，或者如果出现错误，则返回 null。 在 jsonError 字符串数组的第一个元素中将返回错误消息。
 
@@ -572,17 +572,17 @@ getThumbnailImage 方法包装 REST API 调用以分析图像。 该方法返回
     }
 ```
 
-### <a name="thumbnail-step-3-run-the-application"></a>“缩略图”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“缩略图”选项卡，输入图像 URL，然后单击“生成缩略图”按钮以分析图像并查看结果。
 
-## <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
+### <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
 
 计算机视觉的光学字符识别 (OCR) 功能可分析图像中的印刷体文本。 分析完成后，OCR 返回一个 JSON 对象，它包含图像中的文本及其位置。
 
 要完成教程应用程序的 OCR 功能，请执行以下步骤：
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR 步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 ocrImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 OcrImage 方法来分析图像。 当 OcrImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本。
 
@@ -622,7 +622,7 @@ ocrImageButtonActionPerformed 事件处理程序方法将表单清空、显示 U
     }
 ```
 
-### <a name="ocr-step-2-add-the-wrapper-for-the-rest-api-call"></a>OCR 步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 OcrImage 方法包装 REST API 调用以分析图像。 该方法返回从调用返回的 JSON 数据的 JSONObject，或者如果出现错误，则返回 null。
 
@@ -683,17 +683,17 @@ OcrImage 方法包装 REST API 调用以分析图像。 该方法返回从调用
     }
 ```
 
-### <a name="ocr-step-3-run-the-application"></a>OCR 步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“OCR”选项卡，输入印刷体文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果。
 
-## <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
+### <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（识别手写体）
 
 计算机视觉的手写体识别功能可分析图像中的手写文本。 分析完成后，手写体识别功能返回一个 JSON 对象，它包含图像中的文本及其位置。
 
 要完成教程应用程序的手写体识别功能，请执行以下步骤：
 
-### <a name="handwriting-recognition-step-1-add-the-event-handler-code-for-the-form-button"></a>“手写体识别”步骤 1：为表单按钮添加事件处理程序代码
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>为表单按钮添加事件处理程序代码
 
 handwritingImageButtonActionPerformed 事件处理程序方法将表单清空、显示 URL 中指定的图像，然后调用 HandwritingImage 方法来分析图像。 当 HandwritingImage 返回时，该方法会在“响应”文本区域中以格式化 JSON 的形式显示检测到的文本。
 
@@ -733,7 +733,7 @@ handwritingImageButtonActionPerformed 事件处理程序方法将表单清空、
     }
 ```
 
-### <a name="handwriting-recognition-step-2-add-the-wrapper-for-the-rest-api-call"></a>“手写体识别”步骤 2：添加用于 REST API 调用的包装器
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>添加用于 REST API 调用的包装器
 
 HandwritingImage 方法包装分析图像时所需的两个 REST API 调用。 由于手写体识别非常耗时，因此分两步执行。 第一个调用提交图像进行分析；第二个调用检索完成处理时检测到的文本。
 
@@ -841,7 +841,7 @@ HandwritingImage 方法包装分析图像时所需的两个 REST API 调用。 �
     }
 ```
 
-### <a name="handwriting-recognition-step-3-run-the-application"></a>“手写体识别”步骤 3：运行应用程序
+#### <a name="run-the-application"></a>运行应用程序
 
 按 F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误。 单击“读取手写文本”选项卡，输入手写文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果。
 

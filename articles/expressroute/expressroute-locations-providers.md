@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
-ms.author: jaredro
-ms.openlocfilehash: 78cc4875bd0dabba1c9cfebcb5e35160695fdc4e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/16/2018
+ms.author: pareshmu
+ms.openlocfilehash: 8372cd82e9b62c4440a9e7d525b7135153e59dde
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042404"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378062"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -76,7 +76,7 @@ ms.locfileid: "48042404"
 ### <a name="production-azure"></a>生产 Azure
 | **位置** | **对等位置所有者** | **服务提供商** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo |
+| **阿姆斯特丹** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo |
 | **阿姆斯特丹 2** | Interxion | Interxion |
 | **亚特兰大** | Equinix | Equinix、Megaport |
 | **釜山** |LG CNS | LG CNS |
@@ -99,7 +99,7 @@ ms.locfileid: "48042404"
 | **墨尔本** | NextDC | AARNet、Equinix、Megaport、NEXTDC、Optus+、Telstra Corporation |
 | **迈阿密** | Equinix | C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **Montreal** | Cologix | Bell Canada、Cologix、Telus、Zayo |
-| **Mumbai** | Tata Communications | Global CloudXchange (GCX)、Sify、Tata Communications |
+| **Mumbai** | Tata Communications | Global CloudXchange (GCX)、Sify、Tata Communications、Vodafone Idea |
 | **孟买 2** | Airtel | Airtel、Sify |
 | **纽约** | Equinix | CenturyLink Cloud Connect、Coresite、Equinix、Megaport、Zayo |
 | **Newport(Wales)** | Next Generation Data | Level 3 Communications、Next Generation Data |
@@ -110,7 +110,7 @@ ms.locfileid: "48042404"
 | **圣保罗** | Equinix | Ascenty Data Centers、Equinix、Level 3 Communications、Neutrona Networks、Telefonica、UOLDIVEO |
 | **西雅图** | Equinix | Equinix、Level 3 Communications、Megaport |
 | **首尔** | KINX | KINX、LG CNS、Sejong Telecom |
-| **硅谷** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、IXReach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo Group |
+| **硅谷** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IXReach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo Group |
 | **新加坡** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **新加坡 2** | Global Switch | Megaport、SingTel |
 | **悉尼** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
@@ -160,7 +160,7 @@ ms.locfileid: "48042404"
   * [NextDC](http://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
+  
 * 让连接提供商将网络扩展到选择的对等互连位置。
   * 确保连接提供商以高可用性方式扩展连接，以防出现单点故障。
 * 从 Exchange 连接服务提供商处订购一条 ExpressRoute 线路以连接到 Microsoft。
@@ -197,7 +197,7 @@ ms.locfileid: "48042404"
 | **澳大利亚** | Ensyst、IT Consultancy、MOQdigital、Vigilant.IT |
 | **欧洲** |Avanade Inc.、Altogee、Bright Skies GmbH、Inframon、MSG Services、New Signature、Nelite、Orange Networks、sol-tec |
 | **北美** |Avanade Inc.、Equinix Professional Services、FlexManage、Lightstream、Perficient、Presidio |
-| **南美洲** |Avanade Inc. |
+| **南美洲** |Avanade Inc.、Venha Pra Nuvem |
 ## <a name="next-steps"></a>后续步骤
 * 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 * 确保符合所有先决条件。 请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)。

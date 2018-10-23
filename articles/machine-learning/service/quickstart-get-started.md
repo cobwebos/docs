@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在 Azure 门户中创建机器学习服务工作区 - Azure 机器学习
-description: 使用 Azure 门户创建 Azure 机器学习服务工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。
+description: 使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过 Azure 机器学习进行机器学习模型的试验、训练和部署。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,26 +9,31 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 14bd85a23e2630a1cf2a8b5621d669c4c6748168
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831324"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376612"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习服务
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习
 
-在本快速入门中，将使用 Azure 门户创建 Azure 机器学习服务工作区。 该工作区是基础的云端块，用于使用 Azure 机器学习服务试验、培训和部署机器学习模型。 
+在本快速入门中，请使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 
 
-在本教程中，将：
+本教程介绍以下操作：
 
-* 在 Azure 订阅中创建工作区
-* 在 Azure Notebook 中搭配 Python 使用，并记录多个迭代中的值
-* 在工作区中查看所记录的值
+* 在 Azure 订阅中创建工作区。
+* 在 Azure Notebook 中搭配 Python 使用，并记录多个迭代中的值。
+* 在工作区中查看所记录的值。
 
-为方便起见，如果区域支持，下述资源将自动添加到你的工作区：[容器注册表](https://azure.microsoft.com/services/container-registry/)、[存储](https://azure.microsoft.com/services/storage/)、[应用程序见解](https://azure.microsoft.com/services/application-insights/)和 [Key Vault](https://azure.microsoft.com/services/key-vault/)。
+如果区域支持，下述 Azure 资源会自动添加到工作区：
 
-所创建的资源可以用作其他 Azure 机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与 Azure 机器学习服务相关联的某些资源存在限制（例如， BatchAI 群集大小）。 要了解默认限制以及申请更多配额的方法，请阅读[此](how-to-manage-quotas.md)文章。
+  - [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
+  - [Azure 存储](https://azure.microsoft.com/services/storage/)
+  - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
+  - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
+
+所创建的资源可以用作其他机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与机器学习关联的某些资源存在限制。 Azure Batch AI 群集大小是一个示例。 若要了解默认的限制以及如何提高配额，请参阅[此文](how-to-manage-quotas.md)。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -37,41 +42,43 @@ ms.locfileid: "48831324"
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-在工作区页面上，单击 `Explore your Azure Machine Learning service workspace`
+在工作区页面上，选择`Explore your Azure Machine Learning service workspace`。
 
  ![浏览工作区](./media/quickstart-get-started/explore_aml.png)
 
 
 ## <a name="use-the-workspace"></a>使用工作区
 
-现在看看工作区如何帮助你管理机器学习脚本。 在本部分，你将执行以下操作：
+现在看看工作区如何帮助你管理机器学习脚本。 本部分的操作：
 
-* 在 Azure Notebooks 中打开笔记本
-* 运行会创建一些记录值的代码
-* 在工作区中查看所记录的值
+* 在 Azure Notebooks 中打开笔记本。
+* 运行会创建一些记录值的代码。
+* 在工作区中查看所记录的值。
 
-该示例展示了工作区如何帮助你跟踪脚本中生成的信息。 
+该示例介绍如何通过工作区跟踪脚本中生成的信息。 
 
 ### <a name="open-a-notebook"></a>打开笔记本 
 
-Azure Notebooks 为 Jupyter 笔记本提供了一个免费的云平台，它预配置有运行 Azure 机器学习服务所需的一切内容。  
+Azure Notebooks 为 Jupyter Notebook 提供了一个免费的云平台，它预配置有运行机器学习所需的一切内容。  
 
-单击 `Open Azure Notebooks` 按钮进行第一项实验。
+选择`Open Azure Notebooks`，尝试第一个试验。
 
- ![启动 Azure Notebook](./media/quickstart-get-started/explore_ws.png)
+ ![打开 Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
-登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。  单击`Clone`
+组织可能需要[管理员许可](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)才能让你登录。
+
+登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。 选择 `Clone`
 
 
 ### <a name="run-the-notebook"></a>运行笔记本
 
-除了两个笔记本，还将显示 `config.json` 文件。  此配置文件包含刚才创建的工作区相关信息。  
+除了两个 Notebook，还将显示 `config.json` 文件。 此配置文件包含已创建的工作区的相关信息。  
 
-单击 `01.run-experiment.ipynb` 打开笔记本。
+选择 `01.run-experiment.ipynb` 以打开 Notebook。
 
-可使用 `Shift`+`Enter` 一次运行一个单元。  或者，使用菜单 `Cells` > `Run All` 运行整个笔记本。  当你在单元旁边看到 [*] 时，它正在运行。  该单元的代码完成后，将显示一个数字。
+若要一次运行一个单元，请使用 `Shift`+`Enter`。 也可选择 `Cells` > `Run All` 运行整个 Notebook。 在单元旁边看到星号 [*] 时，表明它正在运行。 该单元的代码完成后，会显示一个数字。
 
-系统可能会提示你登录。  复制消息中的代码，然后单击链接并将代码粘贴到新窗口中。  请确保不要复制代码前后的空格。  使用在 Azure 门户中使用的同一帐户登录。
+系统可能会提示你登录。 复制消息中的代码。 然后选择链接并将代码粘贴到新窗口中。 请确保不要复制代码前后的空格。 使用在 Azure 门户中使用的同一帐户登录。
 
  ![登录](./media/quickstart-get-started/login.png)
 
@@ -80,13 +87,13 @@ Azure Notebooks 为 Jupyter 笔记本提供了一个免费的云平台，它预�
 ws = Workspace.from_config()
 ```
 
-第三个代码单元的开头是一个名为“my-first-experiment”的实验。  你将使用此名称查找工作区中的运行相关信息。
+第三个代码单元启动名为“my-first-experiment”的试验。 请使用此名称查找工作区中的运行相关信息。
 
 ```
 experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
 ```
 
-请注意，在笔记本的最后一个单元中，值写入到日志文件中。
+请注意，在 Notebook 的最后一个单元中，值写入到日志文件中。
 
 ```
 # Log final results
@@ -98,35 +105,37 @@ run.log("Final error: ",math.pi-pi_estimate)
 
 ## <a name="view-logged-values"></a>查看所记录的值
 
-完成笔记本中的所有单元后，返回到门户页面。  
+运行 Notebook 中的所有单元后，返回到门户页面。  
 
-单击 `View Experiments`。
+选择 `View Experiments`。
 
-![查看实验](./media/quickstart-get-started/view_exp.png)
+![查看试验](./media/quickstart-get-started/view_exp.png)
 
 关闭 `Reports` 弹出窗口。
 
-单击 `my-first-experiment`。
+选择 `my-first-experiment`。
 
-查看刚才执行的运行相关信息。  向下滚动页面以查找运行表，然后单击运行编号链接。
+查看刚才执行的运行相关信息。 向下滚动页面，找到运行表。 选择运行编号链接。
 
  ![运行历史记录链接](./media/quickstart-get-started/report.png)
 
-你会看到自动创建的记录值的绘图：
+你会看到自动创建的记录值的绘图。  
 
    ![查看历史记录](./media/quickstart-get-started/plots.png)
+
+由于估算 pi 的代码使用随机值，因此绘图会显示不同的值。
 
 ## <a name="clean-up-resources"></a>清理资源 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-还可保留资源组，但显示工作区属性并选择“删除”按钮来删除单个工作区。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已创建了必要的资源来开始试验和部署模型。 此外，在笔记本中运行了一些代码，并在云端工作区中查看了该代码的运行历史记录。
+你已创建了进行试验和部署模型所需的资源。 另外，已在 Notebook 中运行一些代码。 已在云工作区中浏览了该代码的运行历史记录。
 
-要深入体验工作流，请按照 Azure 机器学习教程来培训和部署模型。  
+若要深入体验工作流，请按照机器学习教程来训练和部署模型。  
 
 > [!div class="nextstepaction"]
 > [教程：训练图像分类模型](tutorial-train-models-with-aml.md)

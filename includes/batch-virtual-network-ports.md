@@ -1,28 +1,109 @@
-- VNet 与 Batch 帐户必须位于同一 Azure 区域和订阅中。
+---
+title: include 文件
+description: include 文件
+services: batch
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
+ms.service: batch
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: ''
+ms.date: 10/05/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 9246dea7fa12e5ac9378203e96352e917679525b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312504"
+---
+### <a name="general-requirements"></a>一般要求
 
-- 对于使用虚拟机配置创建的池，仅支持基于 Azure 资源管理器的 VNet。 对于使用云服务配置创建的池，仅支持经典 VNet。
-  
-- 若要使用经典 VNet，`MicrosoftAzureBatch` 服务主体必须为指定的 VNet 提供 `Classic Virtual Machine Contributor` 基于角色的访问控制 (RBAC) 角色。 若要使用基于 Azure 资源管理器的 VNet，你需要拥有访问 VNet 并在子网中部署 VM 的权限。
+* VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
 
-- 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。 
+* 使用 VNet 的池最多可以有 4096 个节点。
 
-- 部署在 Azure VNet 的虚拟机配置中的池会自动分配其他 Azure 网络资源。 在 VNet 中，每 50 个池节点需要以下资源：1 个网络安全组、1 个公共 IP 地址、1 个负载均衡器。 在包含创建 Batch 池时提供的虚拟网络的订阅中，这些资源受[配额](../articles/batch/batch-quota-limit.md)的限制。
+* 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。 
 
-- VNet 必须允许来自 Batch 服务的通信，才能在计算节点上计划任务。 这可以通过检查 VNet 是否具有任何关联的网络安全组 (NSG) 来进行验证。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。 
+* 需要通过为 VNet 提供服务的自定义 DNS 服务器解析 Azure 存储终结点。 具体而言，`<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 形式的 URL 应当是可以解析的。 
 
-- 如果指定的 VNet 具有关联的网络安全组 (NSG) 和/或防火墙，则配置入站端口和出站端口，如以下各表中所示：
+其他 VNet 要求会有所不同，具体取决于 Batch 池是使用“虚拟机”配置还是使用“云服务”配置。 若要进行新的池部署（部署到 VNet 中），建议使用“虚拟机”配置。
 
+### <a name="pools-in-the-virtual-machine-configuration"></a>“虚拟机”配置中的池
 
-  |    目标端口    |    源 IP 地址      |   Source Port    |    Batch 是否添加 NSG？    |    是使用 VM 所必需的吗？    |    来自用户的操作   |
-  |---------------------------|---------------------------|----------------------------|----------------------------|-------------------------------------|-----------------------|
-  |   <ul><li>使用虚拟机配置创建的池：29876、29877</li><li>使用云服务配置创建的池：10100、20100、30100</li></ul>        |    * <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务在虚拟机配置下创建的每个 VM 上的网络接口级别应用 NSG，以筛选掉所有非 Batch 服务 IP 地址。 | * 或 443 |    是的。 Batch 在附加到 VM 的网络接口 (NIC) 级别添加 NSG。 这些 NSG 仅允许来自 Batch 服务角色 IP 地址的流量。 即使为 Internet 打开这些端口，流量也会在 NIC 上被阻止。 |    是  |  不需指定 NSG，因为 Batch 仅允许 Batch IP 地址。 <br /><br /> 但是，如果指定 NSG，请确保这些端口对入站流量开放。|
-  |    3389 (Windows)、22 (Linux)               |    用户计算机，用于调试目的，方便你远程访问 VM。    |   *  | 否                                    |    否                    |    如需允许远程访问（RDP 或 SSH）VM，请添加 NSG。   |                                
+**支持的 VNet** - 仅限基于 Azure 资源管理器的 VNet
 
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
 
-  |    出站端口    |    目标    |    Batch 是否添加 NSG？    |    是使用 VM 所必需的吗？    |    来自用户的操作    |
-  |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-  |    443    |    Azure 存储    |    否    |    是    |    如果添加任何 NSG，请确保该端口对出站流量开放。    |
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
+  ```
 
-   另请确保可以通过为 VNet 提供服务的自定义 DNS 服务器解析 Azure 存储终结点。 具体而言，`<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 形式的 URL 应当是可以解析的。 
+**权限** - 检查在 VNet 的订阅或资源组上实施的安全策略或锁定是否限制用户管理 VNet 所需的权限。
 
-   如果添加基于资源管理器的 NSG，则可使用[服务标记](../articles/virtual-network/security-overview.md#service-tags)，针对特定区域选择适用于出站连接的存储 IP 地址。 请注意，存储 IP 地址必须与 Batch 帐户及 VNet 位于同一区域。 所选 Azure 区域中的服务标记目前为预览版。
+**其他网络资源** - Batch 自动在包含 VNet 的资源组中分配其他网络资源。 每 50 个专用节点（或者每 20 个低优先级节点），Batch 会分配：1 个网络安全组 (NSG)、1 个公共 IP 地址、1 个负载均衡器。 这些资源受订阅的[资源配额](../articles/azure-subscription-service-limits.md)限制。 对于大型池，可能需要为一个或多个此类资源请求增加配额。
+
+#### <a name="network-security-groups"></a>网络安全组
+
+子网必须允许来自 Batch 服务的入站通信，才能在计算节点上计划任务，必须允许出站通信，才能与 Azure 存储或其他资源通信。 对于“虚拟机”配置中的池，Batch 在附加到 VM 的网络接口 (NIC) 级别添加 NSG。 这些 NSG 自动配置允许以下流量的入站和出站规则：
+
+* 端口 29876 和 29877 上来自 Batch 服务角色 IP 地址的入站 TCP 流量。 
+* 端口 22（Linux 节点）或端口 3389（Windows 节点）上允许远程访问的入站 TCP 流量。
+* 任何端口上通往虚拟网络的出站流量。
+* 任何端口上通往 Internet 的出站流量。
+
+> [!IMPORTANT]
+> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
+
+不需在子网级别指定 NSG，因为 Batch 会配置其自己的 NSG。 但是，如果指定的子网具有关联的网络安全组 (NSG) 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 在端口 3389 (Windows) 或 22 (Linux) 上配置入站流量的前提是需要允许对池 VM 进行远程访问。 不配置它也可使用池 VM。
+
+**入站安全规则**
+
+| 源 IP 地址 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
+| --- | --- | --- | --- | --- | --- |
+任意 <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务在“虚拟机”配置下创建的每个 VM 上的网络接口级别应用 NSG，以筛选掉所有非 Batch 服务 IP 地址。 | * | 任意 | 29876-29877 | TCP | 允许 |
+| 用户计算机，用于调试目的，方便你远程访问池 VM。 | * | 任意 |  3389 (Windows)、22 (Linux) | TCP | 允许 |
+
+**出站安全规则**
+
+| 源 | 源端口 | 目标 | 目标服务标记 | 协议 | 操作 |
+| --- | --- | --- | --- | --- | --- |
+| 任意 | 443 | [服务标记](../articles/virtual-network/security-overview.md#service-tags) | 存储（与 Batch 帐户及 VNet 位于同一区域）  | 任意 | 允许 |
+
+### <a name="pools-in-the-cloud-services-configuration"></a>“云服务”配置中的池
+
+**支持的 VNet** - 仅限经典 VNet
+
+**子网 ID** - 通过 Batch API 指定子网时，请使用子网的资源标识符。 标识符的形式为：
+
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  ```
+
+**权限** - `MicrosoftAzureBatch` 服务主体必须为指定的 VNet 提供 `Classic Virtual Machine Contributor` 基于角色的访问控制 (RBAC) 角色。
+
+#### <a name="network-security-groups"></a>网络安全组
+
+子网必须允许来自 Batch 服务的入站通信，才能在计算节点上计划任务，必须允许出站通信，才能与 Azure 存储或其他资源通信。
+
+不需指定 NSG，因为 Batch 将入站通信配置为只能从 Batch IP 地址到池节点。 但是，如果指定的子网具有关联的 NSG 和/或防火墙，则配置入站和出站安全规则，如以下各表中所示。 如果 NSG 拒绝与指定子网中的计算节点通信，则 Batch 服务会将计算节点的状态设置为“不可用”。
+
+ 在端口 3389 (Windows) 或 22 (Linux) 上配置入站流量的前提是需要允许对池节点进行远程访问。 不配置它也可使用池节点。
+
+**入站安全规则**
+
+| 源 IP 地址 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
+| --- | --- | --- | --- | --- | --- |
+任意 <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务会在每个节点级别应用 ACL 规则，以筛选掉所有非 Batch 服务 IP 地址。 | * | 任意 | 10100、20100、30100 | TCP | 允许 |
+| 用户计算机，用于调试目的，方便你远程访问池 VM。 | * | 任意 |  3389 (Windows)、22 (Linux) | TCP | 允许 |
+
+**出站安全规则**
+
+| 源 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
+| --- | --- | --- | --- | --- | --- |
+| 任意 | * | 任意 | 443  | 任意 | 允许 |

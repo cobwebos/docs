@@ -3,25 +3,23 @@ title: 快速入门：生成缩略图 - SDK、C# - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 Windows C# 客户端库基于图像生成缩略图。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054806"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343106"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 生成缩略图
 
 在本快速入门中，你将使用计算机视觉 Windows 客户端库基于图像生成缩略图。
-
-该示例的源代码可在 [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "47054806"
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) 客户端库 NuGet 包。 不需下载程序包。 下面提供了安装说明。
 
 ## <a name="generatethumbnailasync-method"></a>GenerateThumbnailAsync 方法
+
+> [!TIP]
+> 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) 获取作为 Visual Studio 解决方案的最新代码。
 
 `GenerateThumbnailAsync` 和 `GenerateThumbnailInStreamAsync` 方法分别为远程图像和本地图像包装[获取缩略图 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)。  可以使用这些方法生成图像的缩略图。 可以指定高度和宽度，可以与输入图像的纵横比不同。 计算机视觉使用智能裁剪来智能识别感兴趣的区域并基于该区域生成裁剪坐标。
 
@@ -178,7 +179,7 @@ Thumbnail written to: ...\bin\Debug\Bloodhound_Puppy_thumb.jpg
 
 ## <a name="next-steps"></a>后续步骤
 
-探索用于分析图像、检测名人和地标，创建缩略图以及提取打印文本和手写文本的计算机视觉 API。
+探索用于分析图像、检测名人和地标、创建缩略图以及提取印刷体文本和手写文本的计算机视觉 API。
 
 > [!div class="nextstepaction"]
 > [探索计算机视觉 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

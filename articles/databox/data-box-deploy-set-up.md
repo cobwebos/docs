@@ -2,24 +2,18 @@
 title: 设置 Azure Data Box| Microsoft Docs
 description: 了解如何为 Azure Data Box 连接电缆并连接到它
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785625"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393824"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -91,6 +85,8 @@ ms.locfileid: "48785625"
     - 如果未启用 DHCP，请转到“设置网络接口”，并根据需要分配静态 IP。
 
     ![设备仪表板](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+配置数据网络接口以后，也可使用任何 DATA 1 - DATA 3 接口的 IP 地址来访问本地 Web UI `https://<IP address of a data network interface>`。 
 
 在设备设置完成后，可以连接到设备共享并将数据从计算机复制到设备。 
 

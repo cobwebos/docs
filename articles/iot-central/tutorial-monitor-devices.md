@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4fceaf5a3e573964919d365a67519b26278ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235475"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310618"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
 
@@ -61,7 +61,7 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 
 若要更改设备的目标温度，请使用“设置”页：
 
-1. 选择“设置”。 将“设置温度”更改为 100。 选择“更新”，将新的目标温度发送到设备。 当设备确认设置更改时，设置值的状态将变为“已同步”：
+1. 选择“设置”。 将“设置温度”更改为 75。 选择“更新”，将新的目标温度发送到设备。 当设备确认设置更改时，设置值的状态将变为“已同步”：
 
     ![更新设置](media/tutorial-monitor-devices/change_settings.png)
 

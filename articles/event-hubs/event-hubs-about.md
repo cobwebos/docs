@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 8437b1c10facc28c5fd71b70dd7acf01b7d39e8e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 336756e72c6c07f52101ddd0cd99a6ef9744d3c3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023927"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351755"
 ---
 # <a name="what-is-azure-event-hubs"></a>什么是 Azure 事件中心？
 
@@ -70,7 +70,7 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 - **分区**：每个使用者只读取消息流的特定子集或分区。
 - **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 使用者组使多个消费应用程序都有各自独立的事件流视图，并按自身步调和偏移量独立读取流。
 - **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
-- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。
+- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。 所有 Kafka 使用者都通过 Kafka 协议 1.0 及更高版本进行连接。
 
 下图显示了事件中心流处理体系结构：
 

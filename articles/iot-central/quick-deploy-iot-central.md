@@ -9,28 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af06766d89804b2f3d0aaf061494fb836f6ec262
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0199efbc1456206c67efb846b4381cae333e3749
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465599"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309036"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
-构建人员可以使用 Azure IoT Central UI 来定义 Microsoft Azure IoT Central 应用程序。 本快速入门演示如何：
-
-- 创建一个包含示例设备模板和模拟设备的 Azure IoT Central 应用程序。
-- 查看应用程序中“冷藏食品贩卖机”设备模板的功能。
-- 查看模拟“冷冻机”设备发送的遥测和分析数据。
-
-在本快速入门中，我们将查看设备模板中的模拟“冷冻机”设备。 该模拟设备：
-
-* 将遥测数据（例如温度和压力）发送到应用程序。
-* 向应用程序报告设备属性值，例如运动警报。
-* 具有可在应用程序中设置的设备设置，例如风扇速度。
-
-在 Azure IoT Central 应用程序中基于设备模板创建模拟设备时，该模拟设备允许在连接真实设备之前测试应用程序。
+构建人员可以使用 Azure IoT Central UI 来定义 Microsoft Azure IoT Central 应用程序。 本快速入门介绍如何创建一个包含示例设备模板和模拟设备的 Azure IoT Central 应用程序。
 
 ## <a name="create-the-application"></a>创建应用程序
 

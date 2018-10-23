@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918048"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166266"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 
@@ -43,13 +43,18 @@ ms.locfileid: "41918048"
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在门户的左侧导航窗格中，依次单击“创建资源”、“存储”、“存储帐户”。  
-3. 完成存储帐户窗口中的字段，并单击“创建”。
+2. 在门户的左导航窗格中选择“创建资源”，接着从类别中选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列”。  
+3. 完成“创建存储帐户”窗口中的字段，然后选择“查看 + 创建”。 
 
     ![创建存储帐户][1]
 
-4. 看到“部署成功”消息后，单击新存储帐户名。 在“概要”窗口中单击“Blob”。 “Blob 服务”对话框打开时，单击顶部的“+ 容器”。 为容器指定名称，并关闭“Blob 服务”。  
-5. 单击左侧窗口中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。  
+4. 在“查看 + 创建”页上查看这些字段的值，然后选择“创建”。 
+5. 看到“部署成功”消息后，选择新存储帐户的名称。 
+6. 在“概要”窗口中选择“Blob”。 
+7. 选择顶部的“+ 容器”。 为容器提供一个名称。  
+8. 选择左侧窗口中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 
+
+    将这些值保存到记事本或其他临时位置。
 
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 

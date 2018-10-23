@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b10072e01391da3845567c16fa7cc312ed23ceb2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368046"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320367"
 ---
 # <a name="quickstart-identify-language-from-text-with-c35"></a>快速入门：使用 C&#35; 识别文本的语言
 
 在本快速入门中，你将使用文本翻译 API 识别源文本的语言。
-
-该示例的源代码可在 [Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46368046"
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 
 ## <a name="detect-request"></a>检测请求
+
+> [!TIP]
+> 从 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) 获取最新代码。
 
 以下代码使用 [Detect](./reference/v3-0-detect.md) 方法识别源文本的语言。
 

@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f2946918f0c1a7a516788989042825e8f49d7b0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814298"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318718"
 ---
 # <a name="what-is-bing-custom-search"></a>什么是必应自定义搜索？
 
@@ -29,7 +29,7 @@ ms.locfileid: "48814298"
 
 下图展示自定义搜索集成的简单易用。
 
-![图片替换文字](./media/bcs-overview.png "必应自定义搜索的工作原理。")
+![图片替换文字](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "必应自定义搜索的工作原理。")
 
 ## <a name="adding-custom-search-box-suggestions"></a>添加自定义搜索框建议
 

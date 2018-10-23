@@ -2,18 +2,18 @@
 title: 教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 description: 在本教程中，你将学习如何使用 Power BI 连接到 Azure 数据资源管理器，并可视化数据。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 938d8d6e291ca432ef3f642a0aaec74d5dcf5bf5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977139"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393706"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 
@@ -108,7 +108,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
     ![筛选列](media/visualize-power-bi/filter-column.png)
 
-1. 选择“BeginLat”列的箭头，清除“NULL”复选框，然后选择“确定”。
+1. 右键单击“StormSummary”列标题，然后选择“删除”。
 
     ![删除列](media/visualize-power-bi/remove-column.png)
 

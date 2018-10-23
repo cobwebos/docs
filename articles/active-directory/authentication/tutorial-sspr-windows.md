@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166871"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310209"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
@@ -112,6 +112,8 @@ ms.locfileid: "47166871"
 * 目前不支持从远程桌面进行密码重置。
 
 如果通过注册表项或组策略禁用了 Windows 锁屏，则“重置密码”功能将不可用。
+
+如果策略要求使用 Ctrl+Alt+Del，或者锁屏通知已关闭，则“重置密码”将无效。 Windows 10 19H1 符合此要求。
 
 Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
 

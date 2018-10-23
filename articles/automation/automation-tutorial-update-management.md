@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498515"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167250"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -116,7 +116,8 @@ UpdateRunProgress
 
 #### <a name="runbook-alert"></a>Runbook 警报
 
-对于失败的部署，必须警告主运行已失败 在 Azure 门户中转到“监视器”，然后选择“创建警报”。
+对于失败的部署，必须在主 Runbook 失败时发出警告。
+在 Azure 门户中转到“监视器”，然后选择“创建警报”。
 
 在“1. 定义警报条件”下，单击“选择目标”。 在“按资源类型筛选”下选择“自动化帐户”。 选择你的自动化帐户，然后选择“完成”。
 
