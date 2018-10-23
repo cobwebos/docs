@@ -244,7 +244,6 @@
 
 #### 条件性访问
 ##### [客户不符合设备注册先决条件](active-directory-conditional-access.md)
-##### [由于条件访问策略设置不当，租户被阻止](active-directory-conditional-access-device-remediation.md)
 ##### [企业网络外部规则如何以及何时生效？](https://aka.ms/calocation)
 ##### [如何增加允许用户在 Azure AD 中注册的设备数？](active-directory-azureadjoin-setup.md)
 ##### [如何为 Exchange Online 设置条件访问？](https://aka.ms/csforexchange)

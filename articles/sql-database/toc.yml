@@ -323,8 +323,10 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: SQL 功能比较
     href: sql-database-features.md
-  - name: 性能和监视
+  - name: 监视和性能优化
     items:
+    - name: 监视和优化概述
+      href: sql-database-monitor-tune-overview.md
     - name: 智能性能
       items:
       - name: 查询
@@ -335,8 +337,6 @@ items:
           href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
       - name: 监视和优化
         items:
-        - name: 监视和优化概述
-          href: sql-database-monitor-tune-overview.md
         - name: 数据库顾问性能建议
           href: sql-database-advisor.md
         - name: 优化操作和建议
@@ -351,11 +351,11 @@ items:
           href: sql-database-metrics-diag-logging.md
         - name: 使用诊断日志
           href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: 查询性能见解
+          href: sql-database-query-performance.md
         - name: 性能故障排除
           href: sql-database-intelligent-insights-troubleshoot-performance.md
-      - name: 查询性能见解
-        href: sql-database-query-performance.md
-      - name: 自动性能优化
+      - name: 自动优化
         items:
         - name: 自动优化概述
           href: sql-database-automatic-tuning.md
@@ -634,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 38a8ec13b8a5e50d60ed46d1bd4d71af933d61f0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470365"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650054"
