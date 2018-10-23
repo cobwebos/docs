@@ -1,6 +1,6 @@
 ---
 title: 对 Azure Stack 验证作为服务进行故障排除 |Microsoft Docs
-description: 对适用于 Azure Stack 的验证即服务进行故障排除。
+description: 对验证作为 Azure Stack 的服务进行故障排除。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,43 +10,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: ed070ac4fdf9ccca1b1b4b99b8031bc3fd035779
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 60cfc4a2b20d3c443562a1f66e9c205244d0beef
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160143"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645586"
 ---
-# <a name="troubleshoot-validation-as-a-service"></a>对验证即服务进行故障排除
+# <a name="troubleshoot-validation-as-a-service"></a>对验证作为服务进行故障排除
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 下面是与各个软件版本相关的常见问题及其解决方案。
 
-## <a name="the-portal-shows-local-agent-in-debug-mode"></a>门户在调试模式下显示本地代理
+## <a name="local-agent"></a>本地代理
+
+### <a name="the-portal-shows-local-agent-in-debug-mode"></a>门户在调试模式下显示本地代理
 
 这可能是因为网络连接不稳定，导致代理无法向服务发送检测信号。 检测信号每五分钟发送一次。 如果服务 15 分钟内没有收到检测信号，则服务会认为代理处于非活动状态，并且将不再在其上安排测试。 请检查从中启动代理的目录中的 *Agenthost.log* 文件中的错误消息。
 
-> [!Note] 
+> [!Note]
 > 已在该代理上运行的任何测试都将继续运行，但是，如果检测信号在测试结束之前没有恢复，则代理将无法更新测试状态，也无法上传日志。 测试将始终显示为**正在运行**并且需要取消。
 
-## <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>在执行测试时，计算机上的代理进程已关闭。 要发生的情况
+### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>在执行测试时，计算机上的代理进程已关闭。 要发生的情况
 
-如果代理进程是非正常关闭的，例如计算机重启、进程被终止（在代理窗口上按 CTRL+C 被视为正常关闭），则之前正在其上运行的测试将继续显示为**正在运行**。 如果代理重启，则代理会将测试状态更新为**已取消**。 如果代理未重启，则测试会显示为**正在运行**并且必须手动取消测试
+如果代理进程是非正常关闭的，例如计算机重启、进程被终止（在代理窗口上按 CTRL+C 被视为正常关闭），则之前正在其上运行的测试将继续显示为**正在运行**。 如果重新启动代理，则代理将更新到测试的状态**取消**。 如果不重新启动代理，则该测试显示为**运行**并且您必须手动取消测试。
 
-> [!Note] 
+> [!Note]
 > 工作流中的测试安排为按顺序运行。 在同一工作流中处于**正在运行**状态的测试完成之前，**挂起的**测试不会执行。
 
-## <a name="handle-slow-network-connectivity"></a>处理慢速网络连接
+## <a name="vm-images"></a>VM 映像
 
-可以将 PIR 映像下载到本地数据中心内的某个共享。 然后可以验证映像。
+### <a name="handle-slow-network-connectivity"></a>处理慢速网络连接
+
+可以将 PIR 映像下载到本地数据中心内的某个共享。 然后可以检查该映像。
 
 <!-- This is from the appendix to the Deploy local agent topic. -->
 
-### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>在网络流量慢速的情况下将 PIR 映像下载到本地共享
+#### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>在网络流量慢速的情况下将 PIR 映像下载到本地共享
 
 1. 下载 AzCopy：[vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip)
 
@@ -65,7 +69,7 @@ ms.locfileid: "44160143"
 > [!Note]  
 > LocalFileShare 是共享路径或本地路径。
 
-### <a name="verifying-pir-image-file-hash-value"></a>验证 PIR 映像文件哈希值
+#### <a name="verifying-pir-image-file-hash-value"></a>验证 PIR 映像文件哈希值
 
 可以使用 **Get-HashFile** cmdlet 获取所下载的公用映像存储库映像文件的哈希值来检查映像的完整性。
 
@@ -77,6 +81,44 @@ ms.locfileid: "44160143"
 | Ubuntu1404LTS.vhd | B24CDD12352AAEBC612A4558AB9E80F031A2190E46DCB459AF736072742E20E0 |
 | Ubuntu1604-20170619.1.vhd | C481B88B60A01CBD5119A3F56632A2203EE5795678D3F3B9B764FFCA885E26CB |
 
+### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>上传 VM 映像时失败`VaaSPreReq`脚本
+
+在环境处于正常状态的第一次检查：
+
+1. 此 DVM 从 / 跳转盒，请检查您是否可以成功登录到管理门户中使用的管理员凭据。
+1. 确认没有任何警报或警告。
+
+如果在环境运行正常，手动上传 VaaS 测试运行所需的 5 个 VM 图像：
+
+1. 登录到管理员门户服务管理员。 您可以找到在管理门户从 ECE 应用商店或戳信息文件的 URL。 有关说明，请参阅[环境的参数](azure-stack-vaas-parameters.md#environment-parameters)。
+1. 选择**更多服务** > **资源提供程序** > **计算** > **VM 映像**。
+1. 选择 **+ 添加**顶部的按钮**VM 映像**边栏选项卡。
+1. 修改或检查的第一个 VM 映像的以下字段的值：
+    > [!IMPORTANT]
+    > 并非所有默认值为现有的应用商店项正确。
+
+    | 字段  | 值  |
+    |---------|---------|
+    | 发布者 | MicrosoftWindowsServer |
+    | 产品/服务 | WindowsServer |
+    | OS 类型 | Windows |
+    | SKU | 2012-R2-Datacenter |
+    | 版本 | 1.0.0 |
+    | OS 磁盘 Blob URI | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
+
+1. 选择“创建”按钮。
+1. 重复的剩余 VM 映像。
+
+5 的所有 VM 映像的属性如下所示：
+
+| 发布者  | 产品/服务  | OS 类型 | SKU | 版本 | OS 磁盘 Blob URI |
+|---------|---------|---------|---------|---------|---------|
+| MicrosoftWindowsServer| WindowsServer | Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
+| MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
+| MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter-Server-Core | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterCoreBYOL.vhd |
+| Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
+| Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
+
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Stack 验证即服务](https://docs.microsoft.com/azure/azure-stack/partner)。
+- 审阅[作为服务的验证的发行说明](azure-stack-vaas-release-notes.md)中最新版本的更改。

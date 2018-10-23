@@ -4,49 +4,43 @@ items:
 - name: 概述
   href: index.yml
   items:
-  - name: 作为 Azure Stack 的服务验证
+  - name: 作为 Azure stack 服务验证
     href: azure-stack-vaas-overview.md
   - name: 发行说明
     href: azure-stack-vaas-release-notes.md
-    items:
-    - name: 2018-04-02 更新
-      href: azure-stack-partner-update-1803.md
-    - name: 2018-01-30 更新
-      href: azure-stack-partner-update-1802.md
-  - name: 已知问题
-    href: azure-stack-vaas-known-issues.md
   expanded: true
-- name: 快速入门
-  items:
-  - name: 计划你的第一个测试通过
-    href: azure-stack-vaas-schedule-your-first-test.md
 - name: 教程
   items:
-  - name: 设置您的帐户和 Azure Stack 验证
-    href: azure-stack-vaas-set-up-account.md
+  - name: 设置你的资源
+    href: azure-stack-vaas-set-up-resources.md
   - name: 自动执行使用 PowerShell 的 Azure Stack 验证
     href: azure-stack-vaas-automate-with-powershell.md
+- name: 操作指南
+  items:
+  - name: 计划第一次测试
+    href: azure-stack-vaas-schedule-test-pass.md
+  - name: 部署本地代理
+    href: azure-stack-vaas-local-agent.md
   - name: 验证新的 Azure Stack 解决方案
     href: azure-stack-vaas-validate-solution-new.md
-  - name: 验证 OEM 包
+  - name: 创建一个 OEM 包
+    href: azure-stack-vaas-create-oem-package.md
+  - name: 验证 OEM 程序包
     href: azure-stack-vaas-validate-oem-package.md
-  - name: 从 Microsoft 的软件更新进行验证
+  - name: 验证来自 Microsoft 的软件更新
     href: azure-stack-vaas-validate-microsoft-updates.md
-  - name: 测试 Vm
-    href: azure-stack-vaas-test-vm.md
 - name: 概念
   items:
-  - name: 监视测试
+  - name: 关键概念
+    href: azure-stack-vaas-key-concepts.md
+  - name: 最佳做法
+    href: azure-stack-vaas-best-practice.md
+  - name: 监视和管理 VaaS 门户中的测试
     href: azure-stack-vaas-monitor-test.md
-  - name: 验证配置文件
+  - name: 工作流通用参数
     href: azure-stack-vaas-parameters.md
-  - name: 测试，将参数传递
-    href: azure-stack-vaas-parameters-test.md
   - name: 对验证作为服务进行故障排除
     href: azure-stack-vaas-troubleshoot.md
-- name: 参考
-  items:
-  - name: （来自 JH 项）
 - name: 相关内容
   items:
   - name: Azure Stack 文档
@@ -68,9 +62,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 15f87b24299726c2390c736a9801306e9dcf945b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 3b15fbab72d094a18a1c794ca556a719efd376dd
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235212"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649680"

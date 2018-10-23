@@ -1,6 +1,6 @@
 ---
 title: 验证 Azure Stack 验证作为一项服务中的原始设备制造商 (OEM) 包 |Microsoft Docs
-description: 了解如何检查验证作为服务的原始设备制造商 (OEM) 包。
+description: 了解如何进行验证的验证作为一项服务的原始设备制造商 (OEM) 包。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: cefa32c35df4e87d4d2b983ee8c4a16dc065e774
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160449"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646645"
 ---
 # <a name="validate-oem-packages"></a>验证 OEM 程序包
 
@@ -26,32 +26,104 @@ ms.locfileid: "44160449"
 
 当对已完成的解决方案验证的固件或驱动程序进行了更改时，可以测试新的 OEM 程序包。 在您的软件包经过测试，它是由 Microsoft 签名。 你的测试必须包含更新后的 OEM 扩展程序包，其中包含已通过 Windows Server 徽标和 PCS 测试的驱动程序和固件。
 
-所有在 24 小时内完成的测试的结果都是**成功**。 如果有任何测试的结果**失败**，文件中的 bug [Microsoft 协作](https://aka.ms/collaborate)，并通过发送一封电子邮件通知 Microsoft [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)。
+[!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
-## <a name="get-your-oem-package-signed"></a>对 OEM 程序包进行签名
+> [!IMPORTANT]
+> 在上载或提交包之前, 查看[创建一个 OEM 包](azure-stack-vaas-create-oem-package.md)预期的包格式和内容。
 
-1. 确保已应用了当前的每月更新。 有关最新版本，请查看 [Azure Stack 操作员文档 > 概述 > 发行说明](https://docs.microsoft.com/azure/azure-stack/)中的最新版本。
+## <a name="managing-packages-for-validation"></a>管理包进行验证
 
-    指定 Microsoft 软件更新部署到 Azure Stack 使用命名约定，例如，1803年的该值指示此更新是为 2018 年 3 月。 有关 Azure Stack 更新策略、发布节奏以及发行说明的信息，请参阅 [Azure Stack 服务策略](https://docs.microsoft.com/azure/azure-stack/azure-stack-servicing-policy)。
+使用时**包验证**工作流，以验证包中，将需要提供的 URL **Azure 存储 blob**。 此 blob 是在部署时，解决方案已安装的 OEM 包。 创建使用在安装期间创建的 Azure 存储帐户的 blob (请参阅[设置为服务资源将验证](azure-stack-vaas-set-up-resources.md))。
 
-1. 检查系统运行状况状态由运行**Test-azurestack**为所述 [适用于 Azure Stack 运行验证测试。 在启动测试之前，请解决任何警告和错误。
+### <a name="prerequisite-provision-a-storage-container"></a>先决条件： 预配存储容器
 
-2. 在[验证门户](https://azurestackvalidation.com)中，选择一个现有的解决方案。 如果尚未添加你的解决方案，请参阅[添加新的解决方案](azure-stack-vaas-validate-solution-new.md#add-a-new-solution)。
+包的 blob 在存储帐户中创建容器。 此容器可以用于所有包验证运行。
 
-3. 在“程序包验证”磁贴上选择“启动”以启动新的工作流。
+1. 在中[Azure 门户](https://portal.azure.com)，请转到在中创建的存储帐户[设置为服务资源将验证](azure-stack-vaas-set-up-resources.md)。
+2. 在左侧边栏选项卡上**Blob 服务**，选择上**容器**。
+3. 选择 **+ 容器**在菜单栏，为容器提供名称，例如， `vaaspackages`。
 
-    ![程序包验证](media/image3.png)
+### <a name="upload-package-to-storage-account"></a>将包上载到存储帐户
 
-4.  提供一个诊断连接字符串。 有关说明，请参阅[设置存储帐户](azure-stack-vaas-set-up-account.md)。
+1. 准备要验证的包。 如果您的包具有多个文件，压缩到`.zip`文件。
+2. 在中[Azure 门户](https://portal.azure.com)，选择包容器并上传上选择包**上传**菜单栏中。
+3. 选择的包`.zip`要上传文件。 保留默认值为**Blob 类型**(即**块 Blob**) 和**块大小**。
 
-    对于每次程序包验证运行，都必须指定一个 OEM 扩展程序包。 请指定在部署 Azure Stack 时在解决方案上安装的 OEM 程序包。 有关说明，请参阅[创建 Azure 存储 blob 来存储日志](azure-stack-vaas-set-up-account.md#create-an-azure-storage-blob-to-store-logs)。
+> [!NOTE]
+> 请确保`.zip`内容的根目录处放置`.zip`文件。 包应为任何子文件夹。
 
-    为避免在输入数据时犯错，必须使用一个包含环境变量的 JSON 文件来为运行完成必需字段的输入。 有关说明，请参阅[在 Azure Stack 部署中获取配置文件](azure-stack-vaas-parameters.md)。
+### <a name="generate-package-blob-url-for-vaas"></a>为 VaaS 生成包 blob URL
 
-5. 运行测试。
+创建时**包验证**VaaS 门户中的工作流，你将需要提供包含包的 Azure 存储 blob 的 URL。
 
-6. 在所有测试都成功完成后，将你的解决方案和程序包验证的名称发送到 [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) 以请求程序包签名。
+#### <a name="option-1-generating-an-account-sas-url"></a>选项 1： 生成帐户 SAS URL
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+
+1. 选择**Blob**从**允许的服务选项**。 取消选择任何剩余的选项。
+
+1. 选择**容器**并**对象**从**允许的资源类型**。 取消选择任何剩余的选项。
+
+1. 选择**读**并**列表**从**允许权限**。 取消选择任何剩余的选项。
+
+1. 设置**开始时间**为当前时间，并**结束时间**为从当前时间的 1 小时。
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
+    下面是应如何显示格式： `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+
+1. 修改生成的 SAS URL，包括包容器`{containername}`，和包 blob 的名称`{mypackage.zip}`，按如下所示：  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+
+    使用此值时开始一个新**包验证**VaaS 门户中的工作流。
+
+#### <a name="option-2-using-public-read-container"></a>选项 2： 使用公共只读的容器
+
+> [!CAUTION]
+> 此选项将打开你的容器用于匿名的只读访问。
+
+1. 授予**的公共读取访问仅限对 blob**到按照部分中的说明包容器[授予对容器和 blob 的匿名用户权限](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs)。
+
+2. 在包容器中选择在容器中的包 blob 以打开属性窗格。
+
+3. 复制**URL**。 使用此值时开始一个新**包验证**VaaS 门户中的工作流。
+
+## <a name="apply-monthly-update"></a>应用每月更新
+
+[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+
+## <a name="create-a-package-validation-workflow"></a>创建包验证工作流
+
+1. 登录到[VaaS 门户](https://azurestackvalidation.com)。
+
+2. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
+
+3. 选择**启动**上**包验证**磁贴。
+
+    ![包验证工作流磁贴](media/tile_validation-package.png)
+
+4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+
+5. 给 OEM 包的解决方案安装在部署时输入 Azure 存储 blob URL。 有关说明，请参阅[VaaS 生成包 blob URL](#generate-package-blob-url-for-vaas)。
+
+6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+
+7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+
+    > [!NOTE]
+    > 创建工作流后，无法修改环境的参数。
+
+8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+
+9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+    你将重定向到测试摘要页。
+
+## <a name="run-package-validation-tests"></a>运行包验证测试
+
+在中**包验证测试摘要**页中，将看到的完成验证所需的测试的列表。 此工作流中的测试运行大约 24 小时。
+
+[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+
+已成功完成所有测试，请发送 VaaS 解决方案和对包验证的名称[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)请求包签名。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Stack 验证即服务](https://docs.microsoft.com/azure/azure-stack/partner)。
+- [监视和管理 VaaS 门户中的测试](azure-stack-vaas-monitor-test.md)
