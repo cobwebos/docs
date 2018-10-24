@@ -5,27 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 10/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.reviewer: fiseraci
+ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139683"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945597"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>使用特权终结点监视 Azure Stack 中的更新
 
 *适用于：Azure Stack 集成系统*
 
-可以使用特权终结点来监视 Azure Stack 更新运行的进度，并在 Azure Stack 门户不可用时，从最后一个成功的步骤恢复失败的更新运行。  使用 Azure Stack 门户是管理 Azure Stack 中的更新的建议方法。
+可以使用[特权终结点](azure-stack-privileged-endpoint.md)来监视 Azure Stack 的进度更新运行，并且若要恢复失败的更新运行最后一个成功步骤应在 Azure Stack 门户变得不可用。  使用 Azure Stack 门户是管理 Azure Stack 中的更新的建议方法。
 
 Azure Stack 集成系统 1710 更新版中包含以下用于更新管理的新 PowerShell cmdlet。
 
@@ -168,7 +167,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>故障排除
 
-特权终结点适用于 Azure Stack 环境中的所有 ERCS 虚拟机。 由于未与高度可用的终结点建立连接，因此可能会遇到偶发性中断、警告或错误消息。 这些消息可能指示会话已断开，或者与 ECE 服务通信时出错。 这是预期的行为。 可以在几分钟后重试此操作，或者在其他某个 ERCS 虚拟机上新建特权终结点会话。 
+特权终结点适用于 Azure Stack 环境中的所有 ERCS 虚拟机。 由于未与高度可用的终结点建立连接，因此可能会遇到偶发性中断、警告或错误消息。 这些消息可能指示会话已断开，或者与 ECE 服务通信时出错。 此行为是预期的行为。 可以在几分钟后重试此操作，或者在其他某个 ERCS 虚拟机上新建特权终结点会话。 
 
 ## <a name="next-steps"></a>后续步骤
 

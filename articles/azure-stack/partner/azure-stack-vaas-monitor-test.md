@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: b9500176cd3779c46886e6ed8bc8c989bea20a8c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 03efe32e7a9a29318e4f97ce5636616fad443284
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647505"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956657"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>监视和管理 VaaS 门户中的测试
 
@@ -28,7 +28,7 @@ ms.locfileid: "49647505"
 
 ## <a name="navigate-to-the-workflow-tests-summary-page"></a>导航到工作流测试摘要页
 
-1. 在解决方案仪表板中，选择已在至少一个工作流的现有解决方案。
+1. 在解决方案仪表板中，选择具有至少一个工作流的现有解决方案。
 
     ![工作流磁贴](media/tile_all-workflows.png)
 

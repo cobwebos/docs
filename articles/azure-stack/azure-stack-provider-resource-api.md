@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918181"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945580"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 “提供者”一词适用于服务管理员和任何委派的提供者。 Azure Stack 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如图中所示，P0 可以调用提供者 API，以获取 P1 和 P2 直接使用的使用情况信息；而 P1 可以调用以获取 P3 和 P4 的使用情况信息。
@@ -105,19 +105,19 @@ Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -Repor
 ```
 ### <a name="rest-api"></a>REST API
 
-可以通过调用 Microsoft.Commerce.Admin 服务收集已删除订阅的使用情况的信息。 
+可以通过调用 Microsoft.Commerce.Admin 服务来收集已删除订阅的使用信息。 
 
-**若要返回的所有租户使用情况删除活动用户：**
-
-| **方法** | **请求 URI** |
-| --- | --- |
-| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-预览 |
-
-**若要返回已删除或处于活动状态的租户的使用情况：**
+**若要为活动用户返回已删除的所有租户使用情况：**
 
 | **方法** | **请求 URI** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={订阅者 id} & 的 api-version = 2015年-06-01-预览 |
+| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview |
+
+**若要返回已删除或活动租户的使用情况：**
+
+| **方法** | **请求 URI** |
+| --- | --- |
+| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview |
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386377"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954879"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>教程： 提供高度可用的 SQL 数据库
 
@@ -63,30 +63,28 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 - 一个 VM (Windows Server 2016) 配置为群集的文件共享见证服务器
 - 一个可用性集，其中包含的 SQL 和文件共享见证服务器 Vm  
 
-1. 登录到管理门户：
-    - 有关集成的系统部署，则门户地址将因你的解决方案的区域和外部域名。 它将采用的格式 https://adminportal.&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-    - 如果您使用的 Azure Stack 开发工具包 (ASDK)，则用户门户地址是[ https://adminportal.local.azurestack.external ](https://portal.local.azurestack.external)。
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 选择**\+** **创建资源** > **自定义**，，然后**模板部署**。
 
-   ![自定义模板部署](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![自定义模板部署](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. 上**自定义部署**边栏选项卡，选择**编辑模板** > **快速入门模板**，然后使用下拉列表的可用自定义模板选择**sql 2016 alwayson**模板，单击**确定**，然后**保存**。
 
-   ![选择快速入门模板](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "选择快速入门模板")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. 上**自定义部署**边栏选项卡，选择**编辑参数**和查看的默认值。 根据需要提供所有所需的参数信息，并单击修改的值**确定**。<br><br> 最小值：
 
     - ADMINPASSWORD、 SQLSERVERSERVICEACCOUNTPASSWORD 和 SQLAUTHPASSWORD 参数提供复杂的密码。
     - 对于所有小写字母的 DNSSUFFIX 参数中的反向查找输入的 DNS 后缀 (**azurestack.external**对于 ASDK 安装)。
     
-    ![自定义部署参数](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "编辑自定义部署参数")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. 上**自定义部署**边栏选项卡，选择要使用和创建新的资源组的订阅，或选择现有资源组的自定义部署。<br><br> 接下来，选择资源组位置 (**本地**对于 ASDK 安装)，然后单击**创建**。 将验证自定义部署设置，然后将启动部署。
 
-    ![自定义部署参数](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "创建自定义部署")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. 在管理门户中，选择**资源组**然后的资源组的名称创建自定义部署的和 (**资源组**对于此示例)。 查看以确保所有部署已成功都完成部署的状态。<br><br>接下来，查看资源组项目，然后选择**SQLPIPsql\<资源组名称\>** 公共 IP 地址项。 记下公共 IP 地址和负载均衡器公共 IP 的完整 FQDN。 您需要向 Azure Stack 操作员提供此，因此他们可以创建利用此 SQL AlwaysOn 可用性组 SQL 宿主服务器。
@@ -94,16 +92,16 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
    > [!NOTE]
    > 模板部署将需要几个小时才能完成。
 
-   ![自定义部署参数](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![自定义部署完成](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>启用自动种子设定
 模板已成功部署和配置 SQL AlwaysON 可用性组之后，必须启用[自动种子设定](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)每个可用性组中的 SQL Server 实例上。 
 
 使用自动种子设定创建可用性组时，SQL Server 自动次要副本的每个数据库中创建无需任何其他人工干预组要确保高可用性的 AlwaysOn 数据库所需。
 
-使用以下 SQL 命令来配置 AlwaysOn 可用性组的自动种子设定。
+使用以下 SQL 命令来配置 AlwaysOn 可用性组的自动种子设定。 替换\<InstanceName\>与主数据库与 AlwaysOn 可用性组名称，根据需要实例 SQL Server 名称和 < availability_group_name >。 
 
-主 SQL 实例上 (替换<InstanceName>具有主实例 SQL Server 名称):
+在主 SQL 实例：
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 
 >  ![主 SQL 实例脚本](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-在辅助 SQL 实例 （与 AlwaysOn 可用性组名称替换 < availability_group_name >）：
+在辅助 SQL 实例：
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ Azure Stack 操作员，可以配置承载 SQL Server 数据库服务器 Vm。 S
 > [!NOTE]
 > 以下步骤从运行在 Azure Stack 用户门户租户用户提供 SQL Server 功能 （Microsoft.SQLAdapter 服务） 的订阅。
 
-1. 登录到用户门户：
-    - 有关集成的系统部署，则门户地址将因你的解决方案的区域和外部域名。 它将采用的格式 https://portal.&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-    - 如果您使用的 Azure Stack 开发工具包 (ASDK)，则用户门户地址是[ https://portal.local.azurestack.external ](https://portal.local.azurestack.external)。
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. 选择**\+** **创建资源** > **数据\+存储**，然后**SQL 数据库**。<br><br>提供所需的数据库属性的信息包括名称、 排序规则、 最大大小和订阅、 资源组和位置以用于部署。 
 

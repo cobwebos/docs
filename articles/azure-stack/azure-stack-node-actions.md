@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42139312"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944930"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单元节点操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "42139312"
 > 本文中所述的所有节点操作每次应该针对一个节点。
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>查看缩放单元及其节点的状态
+## <a name="view-the-node-status"></a>查看节点状态
 
 在管理员门户中，可以轻松查看缩放单元及其关联节点的状态。
 
@@ -44,21 +44,21 @@ ms.locfileid: "42139312"
 可在此处查看以下信息：
 
 - 区域名称。 在 PowerShell 模块中使用 **-Location** 引用区域名称。
-- 系统类型
+- 类型的系统
 - 逻辑核心总数
-- 总内存量
-- 各个节点的列表及其状态：“正在运行”或“已停止”。
+- 总内存
+- 各个节点和其状态; 的列表任一**运行**或**已停止**
 
 ![显示每个节点运行状态的缩放单元磁贴](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>查看缩放单元节点的相关信息
+## <a name="view-node-information"></a>查看节点信息
 
 如果选择单个节点，可以查看以下信息：
 
 - 区域名称
 - 服务器模型
 - 基板管理控制器 (BMC) 的 IP 地址
-- 工作状态
+- 操作状态
 - 内核总数
 - 总内存量
  

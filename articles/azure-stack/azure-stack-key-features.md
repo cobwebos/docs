@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 16c908dabd313cd9d64ce5be9b7d0299423a7675
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344679"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959020"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 如果不太熟悉 Microsoft Azure Stack，本文的术语和功能说明可能会有所帮助。
@@ -154,14 +154,6 @@ Azure RBAC 有三个适用于所有资源类型的基本角色：“所有者”
 
 ## <a name="usage-data"></a>使用情况数据
 Microsoft Azure Stack 收集和聚合所有资源提供程序的用量数据并将其传输到 Azure 以进行处理 Azure 商业组件。 可以通过 REST API 查看 Azure Stack 中收集的用量数据。 可以使用 Azure 一致的租户 API 以及提供程序和委派提供程序 API 从所有租户订阅获取使用情况数据。 可以使用这些数据来集成外部工具或服务，以实现计费或费用分摊。 用量经 Azure 商业组件处理后，可以在 Azure 计费门户中查看。
-
-## <a name="in-development-build-of-azure-stack-development-kit"></a>开发中的 Azure Stack 工具包内部版本
-开发中内部版本可让前期采用者评估 Azure Stack 开发工具包的最新版本。 它们是基于最新主要版本的增量内部版本。 主要版本每隔几个月持续发布，开发中内部版本在主要版本的发布间隔期间歇性发布。
-
-开发中内部版本提供以下好处：
-- Bug 修复
-- 新增功能
-- 其他改进
 
 ## <a name="next-steps"></a>后续步骤
 [管理基础知识](azure-stack-manage-basics.md)

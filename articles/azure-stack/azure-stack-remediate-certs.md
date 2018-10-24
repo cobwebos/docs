@@ -15,19 +15,19 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0ebf69dd3436a6b1010d4184b2063317d14547dd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078624"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957627"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>修复 Azure Stack PKI 证书的常见问题
 可以通过本文中的信息来了解并解决 Azure Stack PKI 证书的常见问题。 可以使用 Azure Stack 就绪性检查器工具来[验证 Azure Stack PKI 证书](azure-stack-validate-pki-certs.md)，以便发现问题。 此工具检查的目的是确保证书满足有关 Azure Stack 部署和 Azure Stack 机密轮换的 PKI 要求，结果记录在 [report.json 文件](azure-stack-validation-report.md)中。  
 
 ## <a name="pfx-encryption"></a>PFX 加密
-**失败**-PFX 加密不可 TripleDES SHA1。   
-**修正**-导出 PFX 文件的工具**TripleDES SHA1**加密。 这是所有 Windows 10 客户端从证书管理单元中导出或使用 Export-pfxcertificate 时的默认值。 
+**失败** - PFX 加密不是 TripleDES-SHA1。   
+**补救** - 使用 **TripleDES-SHA1** 加密导出 PFX 文件。 从证书管理单元导出或使用 Export-PFXCertificate 时，这是所有 Windows 10 客户端的默认设置。 
 
 ## <a name="read-pfx"></a>读取 PFX
 **警告** - 密码仅保护证书中的私密信息。  
@@ -69,12 +69,13 @@ ms.locfileid: "49078624"
 **修复** - 使用[准备用于部署的 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤重新导出证书，然后选择选项“包括证书路径中的所有证书(如果可能)”。 确保仅选择分支证书进行导出。
 
 ## <a name="fix-common-packaging-issues"></a>修复常见的打包问题
-AzsReadinessChecker 可以通过导入和导出 PFX 文件来修复常见的打包问题，其中包括： 
- - *PFX 加密*是否不是 TripleDES SHA1
+AzsReadinessChecker 包含帮助器 commandlet 修复 AzsPfxCertificate 可以导入，然后导出 PFX 文件来解决常见打包问题，包括： 
+ - *PFX 加密*不是 TripleDES-SHA1
  - 私钥缺少本地计算机属性。
  - 证书链不完整或错误。 （如果 PFX 包不包含证书链，则本地计算机必须包含。） 
  - *其他证书*。
-但是，如果需要生成新的 CSR 并重新颁发证书，则 AzsReadinessChecker 无用。 
+ 
+您需要生成新的 CSR 并重新颁发证书时，不能帮助修复 AzsPfxCertificate。 
 
 ### <a name="prerequisites"></a>必备组件
 在运行此工具的计算机上，必须满足以下先决条件： 
@@ -96,9 +97,20 @@ AzsReadinessChecker 可以通过导入和导出 PFX 文件来修复常见的打�
    - 对于 *-PfxPath*，请指定要处理的 PFX 文件的路径。  在以下示例中，路径为 *.\certificates\ssl.pfx*。
    - 对于 *-ExportPFXPath*，请指定要导出的 PFX 文件的位置和名称。  在以下示例中，路径为 *.\certificates\ssl_new.pfx*
 
-   > `Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
+   > `Repair-AzsPfxCertificate -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
 
-4. 在工具完成相关操作后，查看成功后的输出：![结果](./media/azure-stack-remediate-certs/remediate-results.png)
+4. 该工具完成后，查看成功的输出： 
+````PowerShell
+Repair-AzsPfxCertificate v1.1809.1005.1 started.
+Starting Azure Stack Certificate Import/Export
+Importing PFX .\certificates\ssl.pfx into Local Machine Store
+Exporting certificate to .\certificates\ssl_new.pfx
+Export complete. Removing certificate from the local machine store.
+Removal complete.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Repair-AzsPfxCertificate Completed
+````
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解 Azure Stack 安全性](azure-stack-rotate-secrets.md)

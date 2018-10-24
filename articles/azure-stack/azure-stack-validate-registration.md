@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d6835f05666d66cc4f6aa937c4b85047ce3c2e93
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 51753a5324bbbcbf4e951628a42dd3bf425354af
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077063"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957575"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册 
 使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure 订阅是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证注册。 就绪性检查器会验证下列项：
@@ -62,10 +62,17 @@ ms.locfileid: "49077063"
    - 将 AzureEnvironment 的值指定为 *AzureCloud*、*AzureGermanCloud* 或 *AzureChinaCloud*。  
    - 提供 Azure Active Directory 管理员用户名和 Azure Active Directory 租户名称。 
 
-   > `Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
+   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
 
-5. 运行该工具后，查看输出。 对于登录名和注册要求，确认状态都为“OK”。 成功的验证如下图所示：  
-![运行验证](./media/azure-stack-validate-registration/registration-validation.png)
+5. 运行该工具后，查看输出。 对于登录名和注册要求，确认状态都为“OK”。 成功验证会显示如下所示：  
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: OK
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 
 
 ## <a name="report-and-log-file"></a>报表和日志文件
@@ -83,15 +90,38 @@ ms.locfileid: "49077063"
 下面的示例针对常见的验证失败提供了指导。
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>用户必须是订阅所有者   
-![订阅所有者](./media/azure-stack-validate-registration/subscription-owner.png)
-**原因** - 帐户不是 Azure 订阅的管理员。   
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+The user admin@contoso.onmicrosoft.com is role(s) Reader for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d. User must be an owner of the subscription to be used for registration.
+Additional help URL https://aka.ms/AzsRemediateRegistration
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因**-的帐户不是 Azure 订阅的管理员。   
 
 **解决方法** - 使用要根据 Azure Stack 部署中的资源使用量而被收费的 Azure 订阅的管理员帐户。
 
 
 ### <a name="expired-or-temporary-password"></a>过期的或临时密码 
-![过期密码](./media/azure-stack-validate-registration/expired-password.png)
-**原因** - 因为密码已过期或者是临时的，所以帐户无法登录。     
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with AADSTS50055: Force Change P
+assword.
+Trace ID: 48fe06f5-a5b4-4961-ad45-a86964689900
+Correlation ID: 3dd1c9b2-72fb-46a0-819d-058f7562cb1f
+Timestamp: 2018-10-22 11:16:56Z: The remote server returned an error: (401) Unauthorized.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因**-因为密码已过期，或者是临时的帐户不能登录。     
 
 **解决方法** - 在 PowerShell 中，运行以下命令，然后根据提示来重置密码。 
   > `Login-AzureRMAccount` 
@@ -99,16 +129,19 @@ ms.locfileid: "49077063"
 或者，以帐户身份登录到 https://portal.azure.com，将会强制用户更改密码。
 
 
-### <a name="microsoft-accounts-are-not-supported-for-registration"></a>不支持使用 Microsoft 帐户进行注册  
-![不受支持的帐户](./media/azure-stack-validate-registration/unsupported-account.png)
-**原因** - 指定了 Microsoft 帐户（例如 Outlook.com or Hotmail.com）。  这些帐户不受支持。
-
-**解决方法** - 使用来自云服务提供商 (CSP) 或企业协议 (EA) 的帐户和订阅。 
-
-
 ### <a name="unknown-user-type"></a>未知用户类型  
-![未知用户](./media/azure-stack-validate-registration/unknown-user.png)
-**原因** - 帐户无法登录到指定的 Azure Active Directory 环境。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。  
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with unknown_user_type: Unknown Us
+er Type
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因**-帐户无法登录到指定的 Azure Active Directory 环境。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。  
 
 **解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中，运行以下命令来验证帐户对特定的环境有效。     
   > `Login-AzureRmAccount -EnvironmentName AzureChinaCloud`

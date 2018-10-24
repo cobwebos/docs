@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2018
 ms.author: sethm
-ms.openlocfilehash: 65fa9593b35af45ee9b8568bac5e4886909314e1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092529"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958442"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
 
@@ -36,17 +36,17 @@ ms.locfileid: "44092529"
 
 ## <a name="getting-started"></a>入门
 
-根据部署 Azure Stack 的方式，可以首先创建服务主体。 本文档介绍如何创建两个服务主体[Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad)并[Active Directory 联合身份验证 Services(AD FS)](#create-service-principal-for-ad-fs)。 创建服务主体后，将使用普遍适用于 AD FS 和 Azure Active Directory 的一组步骤向角色[委派权限](#assign-role-to-service-principal)。     
+根据部署 Azure Stack 的方式，可以首先创建服务主体。 本文档介绍如何为 [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad) 和 [Active Directory 联合身份验证服务 (AD FS)](#create-service-principal-for-ad-fs) 创建服务主体。 创建服务主体后，将使用普遍适用于 AD FS 和 Azure Active Directory 的一组步骤向角色[委派权限](#assign-role-to-service-principal)。     
 
 ## <a name="create-service-principal-for-azure-ad"></a>为 Azure AD 创建服务主体
 
-如果已使用 Azure AD 部署 Azure Stack 作为标识存储，则可以创建服务主体，就像对 Azure 所做的那样。 本部分演示如何通过门户执行这些步骤。 在开始之前，请检查是否具有[所需的 Azure AD 权限](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)。
+如果已使用 Azure AD 部署 Azure Stack 作为标识存储，则可以创建服务主体，就像对 Azure 所做的那样。 本部分演示如何通过门户执行这些步骤。 在开始之前，请检查是否具有[所需的 Azure AD 权限](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 
 ### <a name="create-service-principal"></a>创建服务主体
 在本部分中，将在 Azure AD 中创建表示你的应用程序的应用程序（服务主体）。
 
 1. 通过 [Azure 门户](https://portal.azure.com)登录到 Azure 帐户。
-2. 选择**Azure Active Directory** > **应用注册** > **新应用程序注册**   
+2. 选择“Azure Active Directory” > “应用注册” > “新建应用程序注册”   
 3. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 设置这些值后，选择“创建”。
 
 已为应用程序创建服务主体。
@@ -63,7 +63,7 @@ ms.locfileid: "44092529"
 
 4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
-保存密钥后, 会显示密钥的值。 到记事本或其他某个临时位置复制此值，因为您不能检索此密钥。 提供密钥值及应用程序 ID 登录为该应用程序。 在你的应用程序可以检索某个位置中存储的密钥值。
+保存密钥后, 会显示密钥的值。 将此值复制到记事本或其他某个临时位置，因为以后无法检索该密钥。 提供密钥值及应用程序 ID 登录为该应用程序。 将密钥值存储在应用程序可检索的位置。
 
 ![保存的密钥](./media/azure-stack-create-service-principal/image15.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "44092529"
 1. 打开权限提升的 Windows PowerShell 会话，并运行以下命令：
 
    > [!NOTE]
-   > 此示例创建一个自签名证书。 在生产部署中运行这些命令，使用[获取证书](/powershell/module/pkiclient/get-certificate)检索你想要使用的证书的证书对象。
+   > 此示例创建一个自签名证书。 在生产部署中运行这些命令时，使用 [Get-Certificate](/powershell/module/pkiclient/get-certificate) 检索要使用的证书的证书对象。
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -154,7 +154,7 @@ ms.locfileid: "44092529"
    ```
 
 ### <a name="assign-a-role"></a>分配角色
-创建服务主体后，您必须[将其分配给角色](#assign-role-to-service-principal)。
+创建服务主体后，必须[将它分配到角色](#assign-role-to-service-principal)。
 
 ### <a name="sign-in-through-powershell"></a>通过 PowerShell 登录
 分配角色后，可以在以下命令中使用服务主体登录到 Azure Stack：

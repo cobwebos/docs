@@ -5,22 +5,20 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 698e044aea6bbd78847cb209160c1fa6b2edcdbf
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9f88e71df7697156e0745aeaf6b989548bcc223f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023413"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945102"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -46,7 +44,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
     - 主题
  - Windows 10 或 Windows Server 2016
  
-  > [!NOTE]
+  > [!NOTE]  
   > 从证书颁发机构收回证书时，需要在同一个系统上完成[准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)中的步骤！
 
 ## <a name="generate-certificate-signing-requests"></a>生成证书签名请求
@@ -99,38 +97,35 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
 6. 若要为每个 DNS 名称生成证书签名请求，请执行以下命令：
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
+    若要包括 PaaS 服务，指定开关 ```-IncludePaaS```
 
 7. 或者，用于开发/测试环境。 若要生成具有多个使用者可选名称的单个证书请求，请添加 **-RequestType SingleCSR** 参数和值（**不**建议用于生产环境）：
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
-    若要包括 PaaS 服务，请指定开关 ```-IncludePaaS```
+    若要包括 PaaS 服务，指定开关 ```-IncludePaaS```
     
 8. 查看输出：
 
     ````PowerShell  
-    AzsReadinessChecker v1.1803.405.3 started
-    Starting Certificate Request Generation
-
+    New-AzsCertificateSigningRequest v1.1809.1005.1 started.
+    
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
     oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
     nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com*dn2=*.adminhosting.east.azurestack.contoso.com@dns=*.hosting.east.azurestack.contoso.com
     Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\username\Documents\AzureStackCSR\wildcard_east_azurestack_contoso_com_CertRequest_20180405233530.req
     Certreq.exe output: CertReq: Request Created
 
-    Finished Certificate Request Generation
-
-    AzsReadinessChecker Log location: C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\1.1803.405.3\AzsReadinessChecker.log
-    AzsReadinessChecker Completed
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    New-AzsCertificateSigningRequest Completed
     ````
 
-9.  将生成的 **.REQ** 文件提交到 CA（内部或公共 CA）。  **Start-AzsReadinessChecker** 的输出目录包含提交到证书颁发机构时所需的 CSR。  它还包含一个子目录，其中包含生成证书请求期间用作参考的 INF 文件。 请确保 CA 使用符合 [Azure Stack PKI 要求](azure-stack-pki-certs.md)的生成请求来生成证书。
+9.  将生成的 **.REQ** 文件提交到 CA（内部或公共 CA）。  输出目录**新建 AzsCertificateSigningRequest**包含提交到证书颁发机构所需的 CSR。  目录还包含，以供参考，包含在证书请求生成过程中使用的 INF 文件的子目录。 请确保 CA 使用符合 [Azure Stack PKI 要求](azure-stack-pki-certs.md)的生成请求来生成证书。
 
 ## <a name="next-steps"></a>后续步骤
 

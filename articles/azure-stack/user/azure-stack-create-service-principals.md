@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/22/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 891032e9f0a40b2a9df19ed25ffc19dd81507cab
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628941"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958308"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -57,7 +57,7 @@ ms.locfileid: "45628941"
 如果你的 Azure Stack 使用 Azure AD 作为标识存储，则可以通过 Azure 门户使用与 Azure 中相同的步骤来创建服务主体。
 
 >[!NOTE]
-在开始创建服务主体之前，请检查你是否具有[所需的 Azure AD 权限](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)。
+在开始创建服务主体之前，请检查你是否具有[所需的 Azure AD 权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 
 ### <a name="create-service-principal"></a>创建服务主体
 

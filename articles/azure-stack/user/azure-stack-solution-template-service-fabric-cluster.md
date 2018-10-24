@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804423"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946107"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "48804423"
 
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
-若要部署 Service Fabric 群集，必须指定正确的 KeyVault 机密标识符，或 Service Fabric 群集的 URL。 Azure 资源管理器模板使用 KeyVault 作为输入，然后在安装 Service Fabric 群集的过程中检索群集证书。 
+若要部署 Service Fabric 群集，必须指定正确的 KeyVault 机密标识符，或 Service Fabric 群集的 URL。 Azure 资源管理器模板使用密钥保管库作为输入。 然后该模板在安装 Service Fabric 群集时检索群集证书。
 
 > [!IMPORTANT]  
 > 必须使用 PowerShell 在 KeyVault 中添加一个要用于 Service Fabric 的机密。 不要使用门户。  
@@ -120,7 +120,7 @@ ms.locfileid: "48804423"
 
 ## <a name="deploy-the-marketplace-item"></a>部署市场项
 
-1. 在用户门户中，转到 **+ 创建资源** > **计算** > **Service Fabric 群集**。 
+1. 在用户门户中，转到“+ 创建资源” > “计算” > “Service Fabric 群集”。 
 
    ![选择“Service Fabric 群集”](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "48804423"
    - 源 Key Vault：指定脚本结果中的完整 *keyVault id* 字符串。 
    - 群集证书 URL：指定脚本结果中的 *Secret Id* 中的完整 URL。 
    - 群集证书指纹：指定脚本结果中的 *Cluster Certificate Thumbprint*（群集证书指纹）。
-   - 管理客户端证书指纹：指定在先决条件部分创建的管理客户端证书指纹。 
+   - 管理员客户端证书指纹： 指定*管理员客户端证书指纹*必备组件中创建。 
 
    ![脚本输出](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
@@ -182,9 +182,9 @@ ms.locfileid: "48804423"
 1. 若要查找 Service Fabric Explorer 的 URL 和客户端连接终结点，请查看模板部署的结果。
 
 1. 在浏览器中转到 https://*FQDN*:19080。 将 *FQDN* 替换为在步骤 2 中获取的 Service Fabric 群集 FQDN。   
-   如果使用了自签名的证书，屏幕上会显示一条警告，指出连接不安全。 若要继续访问网站，请依次选择“更多信息”、“继续访问网页”。 
+   如果你已使用自签名的证书，将看到该连接不安全警告。 若要继续访问网站，请依次选择“更多信息”、“继续访问网页”。 
 
-1. 若要在站点中进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
+1. 若要向该站点进行身份验证，必须选择要使用的证书。 选择“更多选项”，选择适当的证书，然后单击“确定”连接到 Service Fabric Explorer。 
 
    ![身份验证](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 

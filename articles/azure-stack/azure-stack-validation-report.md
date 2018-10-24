@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a3285c5f6f2d50d3188f8e103c68ae702e8804e7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079440"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49952996"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 验证报表
-使用 Azure Stack 就绪性检查器工具运行支持的部署和维护的 Azure Stack 环境的验证。 该工具将结果写入到.json 报表文件。 此报表显示有关状态的 Azure Stack 部署先决条件的详细和汇总数据。 报表还显示有关机密轮换为现有的 Azure Stack 部署的信息。  
+使用 Azure Stack 就绪性检查器工具运行验证来为 Azure Stack 环境的部署和维护提供支持。 该工具将结果写入到 .json 报表文件。 该报表显示有关 Azure Stack 部署的先决条件状态的详细数据和汇总数据。 该报表还显示有关现有 Azure Stack 部署的机密轮换的信息。  
 
  ## <a name="where-to-find-the-report"></a>在何处可以找到该报表
 该工具运行时，它会将结果记录到 **AzsReadinessCheckerReport.json** 中。 该工具还会创建一个名为 **AzsReadinessChecker.log** 的日志。 这些文件的位置会随验证结果一起显示在 PowerShell 中。
@@ -37,35 +37,98 @@ ms.locfileid: "49079440"
 - 可以在运行命令的末尾使用 **-CleanReport** 参数从 *AzsReadinessCheckerReport.json* 中清除 有关该工具的以前运行的信息。
 
 ## <a name="view-the-report"></a>查看报告
-若要在 PowerShell 中查看报表，请将报表路径提供为 **-ReportPath** 的值。 此命令显示报表的内容，并标识还没有结果的验证。
+若要在 PowerShell 中查看报表，请将报表路径提供为 **-ReportPath** 的值。 此命令显示报表内容，并指明尚没有结果的验证。
 
 例如，若要从打开到报表所在位置的 PowerShell 提示符查看报表，请运行以下命令： 
-   > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json` 
+   > `Read-AzsReadinessReport -ReportPath .\AzsReadinessReport.json` 
 
-输出如下图所示：
+输出如下所示：
 
-![查看报表](./media/azure-stack-validation-report/view-report.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+Certificate Validation results not available.
+
+############### Registration Validation Summary ###############
+
+Azure Registration Validation results not available.
+
+############### Azure Identity Results ###############
+
+Test                          : ServiceAdministrator
+Result                        : OK
+AAD Service Admin             : admin@contoso.onmicrosoft.com
+Azure Environment             : AzureCloud
+Azure Active Directory Tenant : contoso.onmicrosoft.com
+Error Details                 : 
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+
+############### AzsReadiness Job Summary ###############
+
+Index             : 0
+Operations        : 
+StartTime         : 2018/10/22 14:24:16
+EndTime           : 2018/10/22 14:24:19
+Duration          : 3
+PSBoundParameters : 
+````
 
 ## <a name="view-the-report-summary"></a>查看报表摘要
 若要查看报表摘要，可以在 PowerShell 命令行的末尾添加 **-Summary** 开关。 例如： 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -summary`  
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -summary`  
 
-摘要会显示没有结果的验证并且会指明已完成的验证是通过还是失败。 输出如下图所示：
+摘要会显示没有结果的验证并且会指明已完成的验证是通过还是失败。 输出如下所示：
 
-![报表摘要](./media/azure-stack-validation-report/report-summary.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+    Certificate Validation found no errors or warnings.
+    
+############### Registration Validation Summary ###############
+
+    Registration Validation found no errors or warnings.
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+````
 
 
 ## <a name="view-a-filtered-report"></a>查看经筛选的报表
-若要查看已筛选的报表上是单一类型的验证，请使用 **-ReportSections**参数使用以下值之一：
+若要查看基于单一验证类型筛选的报表，请将 **-ReportSections** 参数与以下值之一结合使用：
 - 证书
 - AzureRegistration
 - AzureIdentity
+- 图形
+- ADFS
 - 作业   
 - 全部  
 
 例如，若要仅查看证书的报表摘要，请使用以下 PowerShell 命令行： 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary`
 
 
 ## <a name="see-also"></a>另请参阅
-[Start-AzsReadinessChecker cmdlet 参考](azure-stack-azsreadiness-cmdlet.md)
