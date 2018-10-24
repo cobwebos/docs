@@ -8,33 +8,39 @@ items:
   expanded: true
 - name: 快速入门
   items:
-  - name: C# API
-    href: QuickStarts/CSharp.md
-  - name: C# SDK
-    href: QuickStarts/csharp-detect-sdk.md
-  - name: cURL
-    href: QuickStarts/curl.md
-  - name: Go
-    href: QuickStarts/go.md
-  - name: Java
-    href: QuickStarts/Java.md
-  - name: JavaScript
-    href: QuickStarts/JavaScript.md
-  - name: Node.js
-    href: QuickStarts/node.md
-  - name: PHP
-    href: QuickStarts/PHP.md
-  - name: Python
-    href: QuickStarts/Python.md
-  - name: Ruby
-    href: QuickStarts/Ruby.md
+  - name: 使用客户端 SDK
+    items:
+    - name: C#
+      href: QuickStarts/csharp-detect-sdk.md
+  - name: 使用 REST API
+    items:
+    - name: C#
+      href: QuickStarts/CSharp.md
+    - name: cURL
+      href: QuickStarts/curl.md
+    - name: Go
+      href: QuickStarts/go.md
+    - name: Java
+      href: QuickStarts/Java.md
+    - name: JavaScript
+      href: QuickStarts/JavaScript.md
+    - name: Node.js
+      href: QuickStarts/node.md
+    - name: PHP
+      href: QuickStarts/PHP.md
+    - name: Python
+      href: QuickStarts/Python.md
+    - name: Ruby
+      href: QuickStarts/Ruby.md
 - name: 教程
   items:
-  - name: C#
-    href: Tutorials/FaceAPIinCSharpTutorial.md
-  - name: Android
+  - name: 使用客户端 SDK
     href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
-- name: 操作方法指南
+    items:
+    - name: C#
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Android
+- name: 操作指南
   items:
   - name: 第一个人脸 API 应用
     items:
@@ -92,9 +98,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 发行说明
     href: ReleaseNotes.md
-ms.openlocfilehash: 493a08f156c41c2fc098ab265cc386dfc5390a39
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b704ef7fc33964eb12b6b4268ff6a3375c3f7c9b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429994"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954192"

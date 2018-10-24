@@ -16,12 +16,6 @@ items:
       href: text-moderation-quickstart-dotnet.md
     - name: 检查视频内容
       href: video-moderation-api.md
-- name: 示例
-  items:
-  - name: .NET SDK 示例
-    href: samples-dotnet.md
-  - name: 以 C# 编写的 REST API 示例
-    href: samples-rest.md
 - name: 概念
   items:
   - name: 图像审查
@@ -36,48 +30,48 @@ items:
     href: workflow-api.md
 - name: 操作指南
   items:
-  - name: 试用内容审查器
+  - name: 使用审查服务
     items:
     - name: 审查 API
       items:
-      - name: 图像 - API 控制台
-        href: try-image-api.md
-      - name: 针对自定义列表检查图像
-        href: image-lists-quickstart-dotnet.md
-      - name: 自定义图像 - API 控制台
-        href: try-image-list-api.md
-      - name: 文本 - API 控制台
-        href: try-text-api.md
-      - name: 针对自定义字词检查文本
-        href: term-lists-quickstart-dotnet.md
-      - name: 自定义术语 - API 控制台
-        href: try-terms-list-api.md
+      - name: 使用 .NET SDK
+        items:
+        - name: 针对自定义列表检查图像
+          href: image-lists-quickstart-dotnet.md
+        - name: 针对自定义字词检查文本
+          href: term-lists-quickstart-dotnet.md
+      - name: 使用 REST API
+        items:
+        - name: 图像 - API 控制台
+          href: try-image-api.md
+        - name: 自定义图像 - API 控制台
+          href: try-image-list-api.md
+        - name: 文本 - API 控制台
+          href: try-text-api.md
+        - name: 自定义术语 - API 控制台
+          href: try-terms-list-api.md
+  - name: 使用审阅工具
+    items:
     - name: 查看 API
       items:
-      - name: 作业 - API 控制台
-        href: try-review-api-job.md
-      - name: 作业 - .NET
-        href: moderation-jobs-quickstart-dotnet.md
-      - name: 审阅 - API 控制台
-        href: try-review-api-review.md
-      - name: 审阅 - .NET
-        href: moderation-reviews-quickstart-dotnet.md
-      - name: 视频审阅 - .NET
-        href: video-reviews-quickstart-dotnet.md
-      - name: 视频脚本审阅 - .NET
-        href: video-transcript-reviews-quickstart-dotnet.md
-      - name: 工作流 - API 控制台
-        href: try-review-api-workflow.md
-  - name: 第一个内容审查器应用
-    items:
-    - name: Facebook 内容审核
-      href: facebook-post-moderation.md
-    - name: 电子商务图像审核
-      href: ecommerce-retail-catalog-moderation.md
-    - name: 视频和脚本审核
-      href: video-transcript-moderation-review-tutorial-dotnet.md
-  - name: 审阅工具
-    items:
+      - name: 使用 .NET SDK
+        items:
+        - name: 作业 - .NET
+          href: moderation-jobs-quickstart-dotnet.md
+        - name: 审阅 - .NET
+          href: moderation-reviews-quickstart-dotnet.md
+        - name: 视频审阅 - .NET
+          href: video-reviews-quickstart-dotnet.md
+        - name: 视频脚本审阅 - .NET
+          href: video-transcript-reviews-quickstart-dotnet.md
+      - name: 使用 REST API
+        items:
+        - name: 作业 - API 控制台
+          href: try-review-api-job.md
+        - name: 审阅 - API 控制台
+          href: try-review-api-review.md
+        - name: 工作流 - API 控制台
+          href: try-review-api-workflow.md
     - name: 人机共生
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 使用设置
@@ -98,6 +92,20 @@ items:
       href: Review-Tool-User-Guide/Workflows.md
     - name: 查看仪表板
       href: Review-Tool-User-Guide/View-Dashboard.md
+  - name: 第一个内容审查器应用
+    items:
+    - name: Facebook 内容审核
+      href: facebook-post-moderation.md
+    - name: 电子商务图像审核
+      href: ecommerce-retail-catalog-moderation.md
+    - name: 视频和脚本审核
+      href: video-transcript-moderation-review-tutorial-dotnet.md
+- name: 示例
+  items:
+  - name: .NET SDK 示例
+    href: samples-dotnet.md
+  - name: 以 C# 编写的 REST API 示例
+    href: samples-rest.md
 - name: 引用
   items:
   - name: 内容审查器 API
@@ -134,9 +142,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: 按需网络研讨会
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: a6e9e2908a6365c1749e8a5d061779ebc37764e0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d162bcaefdde1aceb171d2ad83b5386e54cea890
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428957"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944141"

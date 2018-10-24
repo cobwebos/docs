@@ -9,12 +9,12 @@
 ## [设置开发环境](media-services-set-up-computer.md)
 ### [.NET](media-services-dotnet-how-to-use.md)
 ### [REST](media-services-rest-how-to-use.md)  
-## [使用 AAD 身份验证访问 API](media-services-use-aad-auth-to-access-ams-api.md)
-### [使用门户管理 AAD 身份验证](media-services-portal-get-started-with-aad.md)
+## [使用 Azure AD 身份验证访问 API](media-services-use-aad-auth-to-access-ams-api.md)
+### [使用门户管理 Azure AD 身份验证](media-services-portal-get-started-with-aad.md)
 ### [使用 .NET 访问 API](media-services-dotnet-get-started-with-aad.md)
 ### [使用 REST 访问 API](media-services-rest-connect-with-aad.md)
-### [使用 Azure CLI 创建和配置 AAD 应用](media-services-cli-create-and-configure-aad-app.md)
-### [使用 Azure PowerShell 创建和配置 AAD 应用](media-services-powershell-create-and-configure-aad-app.md)
+### [使用 Azure CLI 创建和配置 Azure AD 应用](media-services-cli-create-and-configure-aad-app.md)
+### [使用 Azure PowerShell 创建和配置 Azure AD 应用](media-services-powershell-create-and-configure-aad-app.md)
 
 ## 传送点播视频
 ### [Azure 门户](media-services-portal-vod-get-started.md)

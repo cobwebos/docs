@@ -7,103 +7,101 @@ items:
     href: translator-info-overview.md
 - name: 快速入门
   items:
-  - name: C#
+  - name: 翻译文本
     items:
-    - name: 翻译文本
+    - name: C#、REST
       href: quickstart-csharp-translate.md
-    - name: 转换文本脚本
-      href: quickstart-csharp-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-csharp-detect.md
-    - name: 获取备用翻译
-      href: quickstart-csharp-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-csharp-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-csharp-sentences.md
-  - name: Go
-    items:
-    - name: 翻译文本
+    - name: Go、REST
       href: quickstart-go-translate.md
-    - name: 转换文本脚本
-      href: quickstart-go-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-go-detect.md
-    - name: 获取备用翻译
-      href: quickstart-go-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-go-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-go-sentences.md
-  - name: Java
-    items:
-    - name: 翻译文本
+    - name: Java、REST
       href: quickstart-java-translate.md
-    - name: 转换文本脚本
-      href: quickstart-java-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-java-detect.md
-    - name: 获取备用翻译
-      href: quickstart-java-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-java-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-java-sentences.md
-  - name: Node.js
-    items:
-    - name: 翻译文本
+    - name: Node.js、REST
       href: quickstart-nodejs-translate.md
-    - name: 转换文本脚本
-      href: quickstart-nodejs-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-nodejs-detect.md
-    - name: 获取备用翻译
-      href: quickstart-nodejs-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-nodejs-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-nodejs-sentences.md
-  - name: PHP
-    items:
-    - name: 翻译文本
+    - name: PHP、REST
       href: quickstart-php-translate.md
-    - name: 转换文本脚本
-      href: quickstart-php-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-php-detect.md
-    - name: 获取备用翻译
-      href: quickstart-php-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-php-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-php-sentences.md
-  - name: Python
-    items:
-    - name: 翻译文本
+    - name: Python、REST
       href: quickstart-python-translate.md
-    - name: 转换文本脚本
-      href: quickstart-python-transliterate.md
-    - name: 确定文本语言
-      href: quickstart-python-detect.md
-    - name: 获取备用翻译
-      href: quickstart-python-dictionary.md
-    - name: 获取支持的语言
-      href: quickstart-python-languages.md
-    - name: 获取文本中的句子长度
-      href: quickstart-python-sentences.md
-  - name: Ruby
-    items:
-    - name: 翻译文本
+    - name: Ruby、REST
       href: quickstart-ruby-translate.md
-    - name: 转换文本脚本
+  - name: 直译文本
+    items:
+    - name: C#、REST
+      href: quickstart-csharp-transliterate.md
+    - name: Go、REST
+      href: quickstart-go-transliterate.md
+    - name: Java、REST
+      href: quickstart-java-transliterate.md
+    - name: Node.js、REST
+      href: quickstart-nodejs-transliterate.md
+    - name: PHP、REST
+      href: quickstart-php-transliterate.md
+    - name: Python、REST
+      href: quickstart-python-transliterate.md
+    - name: Ruby、REST
       href: quickstart-ruby-transliterate.md
-    - name: 确定文本语言
+  - name: 确定语言
+    items:
+    - name: C#、REST
+      href: quickstart-csharp-detect.md
+    - name: Go、REST
+      href: quickstart-go-detect.md
+    - name: Java、REST
+      href: quickstart-java-detect.md
+    - name: Node.js、REST
+      href: quickstart-nodejs-detect.md
+    - name: PHP、REST
+      href: quickstart-php-detect.md
+    - name: Python、REST
+      href: quickstart-python-detect.md
+    - name: Ruby、REST
       href: quickstart-ruby-detect.md
-    - name: 获取备用翻译
+  - name: 获取备用翻译
+    items:
+    - name: C#、REST
+      href: quickstart-csharp-dictionary.md
+    - name: Go、REST
+      href: quickstart-go-dictionary.md
+    - name: Java、REST
+      href: quickstart-java-dictionary.md
+    - name: Node.js、REST
+      href: quickstart-nodejs-dictionary.md
+    - name: PHP、REST
+      href: quickstart-php-dictionary.md
+    - name: Python、REST
+      href: quickstart-python-dictionary.md
+    - name: Ruby、REST
       href: quickstart-ruby-dictionary.md
-    - name: 获取支持的语言
+  - name: 获取支持的语言
+    items:
+    - name: C#、REST
+      href: quickstart-csharp-languages.md
+    - name: Go、REST
+      href: quickstart-go-languages.md
+    - name: Java、REST
+      href: quickstart-java-languages.md
+    - name: Node.js、REST
+      href: quickstart-nodejs-languages.md
+    - name: PHP、REST
+      href: quickstart-php-languages.md
+    - name: Python、REST
+      href: quickstart-python-languages.md
+    - name: Ruby、REST
       href: quickstart-ruby-languages.md
-    - name: 获取文本中的句子长度
+  - name: 确定句子长度
+    items:
+    - name: C#、REST
+      href: quickstart-csharp-sentences.md
+    - name: Go、REST
+      href: quickstart-go-sentences.md
+    - name: Java、REST
+      href: quickstart-java-sentences.md
+    - name: Node.js、REST
+      href: quickstart-nodejs-sentences.md
+    - name: PHP、REST
+      href: quickstart-php-sentences.md
+    - name: Python、REST
+      href: quickstart-python-sentences.md
+    - name: Ruby、REST
       href: quickstart-ruby-sentences.md
   expanded: true
 - name: 教程
@@ -174,9 +172,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: cd559b41832e83b4251531bc6af6a7fe4f7d80ea
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406477"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945257"
