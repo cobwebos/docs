@@ -38,8 +38,8 @@
 ### [管理服务器](analysis-services-manage.md)
 ### [监视服务器指标](analysis-services-monitor.md)
 ### [设置诊断日志记录](analysis-services-logging.md)
-### [创建服务主体 - Azure 门户](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [创建服务主体 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)
+### [创建服务主体 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 ### [将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)
 
 ## 模型
