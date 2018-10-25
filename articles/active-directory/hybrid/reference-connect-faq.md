@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fb19c7b74d059d83cc5a51a158dcc6ba9bede23
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306266"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269439"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -47,7 +47,7 @@ ms.locfileid: "46306266"
 **问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**   
 是的，以下步骤提供了此操作的一般指导。 我们目前正在努力编写更详细的文档。
 1. 备份 LocalDB ADSync 数据库。
-最简单的方法就是使用 Azure AD Connect 所在的同一台计算机上安装的 SQL Server Management Studio。 连接到 *(localdb)\.\ADSync*，然后备份 ADSync 数据库。
+最简单的方法就是使用 Azure AD Connect 所在的同一台计算机上安装的 SQL Server Management Studio。 连接到 *(LocalDb).\ADSync*，然后备份 ADSync 数据库。
 
 2. 将 ADSync 数据库还原到远程 SQL Server 实例。
 
