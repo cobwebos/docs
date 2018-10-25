@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585469"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023487"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -39,7 +39,7 @@ ms.locfileid: "47585469"
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户] (../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页面](https://azure.microsoft.com/pricing/details/storage/)。
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页面](https://azure.microsoft.com/pricing/details/storage/)。
 
     > [!Warning]
     > 默认情况下，存储位置将设置为与 Application Insights 资源相同的地理区域。 如果存储在不同的区域中，则可能会产生传输费用。

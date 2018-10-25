@@ -3,16 +3,17 @@ title: Contoso - 设置迁移基础结构 | Microsoft Docs
 description: 了解 Contoso 如何为迁移到 Azure 设置 Azure 基础结构。
 services: azure-migrate
 author: rayne-wiselman
+manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: bf2562f4772d20f099faec94794e0e908e6636d5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227531"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092962"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -38,7 +39,8 @@ ms.locfileid: "47227531"
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 将其 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用。 该 Web 应用与 GitHub 集成以便持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
 [文章 11：在 Azure DevOps Services 中重构 Team Foundation Server](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
 [文章 12：在 Azure 容器和 Azure SQL 数据库中重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的应用数据库。 | 可用    
-[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用 
+[文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
+[文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用 
 
 在本文中，Contoso 设置完成所有迁移方案所需的所有基础结构元素。 
 
@@ -433,7 +435,7 @@ Contoso 将在每个区域部署中心。 中心是 Azure 中的一个虚拟网�
 
 开发团队将开发 VNet 用作生产试点区域。 它具有三个子网。
 
-子网 | **CIDR** | **地址** | **子网所含组件**
+**子网** | **CIDR** | **地址** | **子网所含组件**
 --- | --- | --- | ---
 **DEV-FE-EUS2** | 10.245.16.0/22 | 1019 | 前端/Web 层 VM
 **DEV-APP-EUS2** | 10.245.20.0/22 | 1019 | 应用层 VM
@@ -444,7 +446,7 @@ Contoso 将在每个区域部署中心。 中心是 Azure 中的一个虚拟网�
 
 Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网。 这些子网与开发网络中的子网匹配，增添了域控制器子网。
 
-子网 | **CIDR** | **地址** | **子网所含组件**
+**子网** | **CIDR** | **地址** | **子网所含组件**
 --- | --- | --- | ---
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | 前端/Web 层 VM
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | 应用层 VM
@@ -480,7 +482,7 @@ Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网�
 
 #### <a name="subnets-in-the--central-us-hub-network-vnet-hub-cus"></a>美国中部中心网络 (VNET-HUB-CUS) 的子网
 
-子网 | **CIDR** | **可用 IP 地址**
+**子网** | **CIDR** | **可用 IP 地址**
 --- | --- | ---
 **IB-UntrustZone** | 10.250.0.0/24 | 251
 **IB-TrustZone** | 10.250.1.0/24 | 251
@@ -493,7 +495,7 @@ Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网�
 
 与主要区域美国东部 2 的生产网络相同，次要区域美国中部也有一个生产网络。 
 
-子网 | **CIDR** | **地址** | **子网所含组件**
+**子网** | **CIDR** | **地址** | **子网所含组件**
 --- | --- | --- | ---
 **PROD-FE-CUS** | 10.255.32.0/22 | 1019 | 前端/Web 层 VM
 **PROD-APP-CUS** | 10.255.36.0/22 | 1019 | 应用层 VM
@@ -506,7 +508,7 @@ VNET-ASR-CUS 网络用于区域间的故障转移。 Site Recovery 用于复制�
 
 VNET-ASR-CUS 包含的基本子网与美国东部 2 的生产 VNET 中相同，但无需域控制器子网。
 
-子网 | **CIDR** | **地址** | **子网所含组件**
+**子网** | **CIDR** | **地址** | **子网所含组件**
 --- | --- | --- | ---
 **ASR-FE-CUS** | 10.255.16.0/22 | 1019 | 前端/Web 层 VM
 **ASR-APP-CUS** | 10.255.20.0/22 | 1019 | 应用层 VM
@@ -562,7 +564,7 @@ Contoso 管理员已确定 Azure DNS 服务不适用于混合环境。 他们利
 
 除了本地域控制器，Contoso 还将实施四个域控制器以支持其 Azure 网络，并为每个区域实施两个域控制器。 下面是 Contoso 要在 Azure 中部署的项。
 
-**区域** | **DC** | **VNet** | 子网 | IP 地址
+**区域** | **DC** | **VNet** | **子网** | IP 地址
 --- | --- | --- | --- | ---
 EUS2 | CONTOSODC3 | VNET-PROD-EUS2 | PROD-DC-EUS2 | 10.245.42.4
 EUS2 | CONTOSODC4 | VNET-PROD-EUS2 | PROD-DC-EUS2 | 10.245.42.5
@@ -779,7 +781,7 @@ Contoso 已针对其应用程序生成了相关模型。
 
 使用最低特权配置与 ASG 关联的 NSG，以确保只有经过允许的数据包可以从网络的一部分流到其目标。
 
-**Action** | **Name** | **源** | **目标** | 端口
+**Action** | **名称** | **源** | **目标** | 端口
 --- | --- | --- | --- | --- 
 允许 | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | APP1-FE 80、443
 允许 | AllowWebToApp | APP1-FE | APP1-DB | 1433

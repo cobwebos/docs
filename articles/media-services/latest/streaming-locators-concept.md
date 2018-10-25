@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 1757ca84e7390f1ecd2d6d1e90a085372d3e4c57
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380554"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986878"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -103,7 +103,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-若要查看 REST 示例，请参阅[流式处理定位符 - 列表](https://docs.microsoft.com/rest/api/media/streaminglocators/streaminglocators_list)
+若要查看 REST 示例，请参阅[流式处理定位符 - 列表](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 
 ## <a name="next-steps"></a>后续步骤
 

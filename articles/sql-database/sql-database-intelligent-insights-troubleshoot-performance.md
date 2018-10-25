@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222448"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353860"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
@@ -61,7 +61,7 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 
 这种可检测性能模式合并了各种性能问题，涉及达到可用资源限制、工作线程限制和会话限制。 检测到这种性能问题之后，诊断日志的说明字段就会指示性能问题是否与资源、工作线程或会话限制相关。
 
-SQL 数据库上的资源通常称为 [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) 或 [vCore](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) 资源。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
+SQL 数据库上的资源通常称为 [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) 或 [vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) 资源。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
 
 会话限制资源表示系统只允许一定数量的 SQL 数据库并发登录。 如果连接到 SQL 数据库的应用程序达到允许的数据库并发登录数，则认为出现了此性能模式。 如果应用程序尝试使用的会话数超过了可在数据库中使用的数目，则会影响查询性能。
 
@@ -73,7 +73,7 @@ SQL 数据库上的资源通常称为 [DTU](https://docs.microsoft.com/azure/sql
 
 如果已达到可用会话限制，可以通过减少数据库登录次数来优化应用程序。 如果无法减少从应用程序到数据库的登录数，可以考虑提高数据库的定价层。 也可以将数据库拆分成多个数据库并进行移动，使工作负荷的分配更为均衡。
 
-有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 若要了解订阅层的可用资源限制，请参阅 [SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits)。
+有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 有关服务器和订阅级别限制的信息，请参阅[逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
 
 ## <a name="workload-increase"></a>工作负载增加
 
@@ -237,7 +237,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 此可检测的性能模式表示当前数据库工作负荷的性能与过去七天的基线相比有所降级。 这是由于在订阅的弹性池中缺少可用的 DTU。 
 
-SQL 数据库中的资源通常称为 [DTU 资源](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
+SQL 数据库中的资源通常称为 [DTU 资源](sql-database-service-tiers.md#dtu-based-purchasing-model)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
 
 ### <a name="troubleshooting"></a>故障排除
 

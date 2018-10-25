@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: f573dba2e7580d58c295d204fc75e2403c0d033c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240694"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945546"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>VS Code Tools for AI：通过 Visual Studio Code 开始使用 Azure 机器学习
 
@@ -34,7 +34,7 @@ ms.locfileid: "48240694"
 
 当安装 Tools for AI 扩展时，会自动安装另外两个扩展（如果可以访问 Internet）。 它们是 [Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展和 [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 扩展
 
-若要使用 Azure 机器学习，需要将 VS Code 转换为 Python IDE。 [在 Visual Studio Code 中使用 Python](https://code.visualstudio.com/docs/languages/python) 时，需要使用随 Tools for AI 自动安装的 Microsoft Python 扩展。 该扩展使得 VS Code 成为一个出色的 IDE，适用于具有各种 Python 解释器的任何操作系统。 它利用 VS Code 的所有功能提供自动完成和 IntelliSense、语法检查、调试和单元测试，并且能够在 Python 环境（包括虚拟环境和 conda 环境）之间轻松切换。 如需查看这一包含编辑、运行和调试 Python 代码的演练，请参阅 [Python Hello World 教程](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+若要使用 Azure 机器学习，需要将 VS Code 转换为 Python IDE。 [在 Visual Studio Code 中使用 Python](https://code.visualstudio.com/docs/languages/python) 时，需要使用随 Tools for AI 自动安装的 Microsoft Python 扩展。 该扩展使得 VS Code 成为一个出色的 IDE，适用于具有各种 Python 解释器的任何操作系统。 它利用 VS Code 的所有功能提供自动完成和 IntelliSense、语法检查、调试和单元测试，并且能够在 Python 环境（包括虚拟环境和 conda 环境）之间轻松切换。 如需查看这一包含编辑、运行和调试 Python 代码的演练，请参阅 [Python Hello World 教程](https://code.visualstudio.com/docs/python/python-tutorial)
 
 **安装 Tools for AI 扩展：**
 
@@ -74,7 +74,7 @@ ms.locfileid: "48240694"
 
 在使用 VS Code 开始培训和部署 ML 模型之前，需要在云中创建一个 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)，以包含你的模型和资源。 了解如何创建一个工作区，并在该工作区中创建第一个试验。
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure: 机器学习”侧栏。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时，“Azure:机器学习”边栏显示。
 
    ![安装](./media/vscode-tools-for-ai/createworkspace.gif)
 

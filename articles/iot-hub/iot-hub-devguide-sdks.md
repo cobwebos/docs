@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 1eeb0afdd5ffcbe00357914d6a98c8d0b3d452ec
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d58c86c17cdab360f37a09b28bdf705cb781a620
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017953"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023809"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -44,7 +44,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 * 通过 [apt-get、MBED、Arduino IDE 或 Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-c)
-* [API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [模块参考](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 适用于 Java 的 Azure IoT 中心设备 SDK： 
@@ -65,13 +65,13 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 * 通过 [pip](https://pypi.python.org/pypi/azure-iothub-device-client/) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-python)
-* API 参考：请参阅 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)
+* API 参考：请参阅 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 适用于 iOS 的 Azure IoT 中心设备 SDK： 
 
 * 通过 [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) 安装
 * [示例](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* API 参考：请参阅 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)
+* API 参考：请参阅 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 > [!NOTE]
 > 有关使用语言和平台特定的程序包管理器在开发计算机上安装二进制文件和依赖项的信息，请参阅 GitHub 存储库中的自述文件。
