@@ -5,26 +5,36 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d9c8a0e6a3bd6d79a11ee0d0dab0500a209e5571
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38943274"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888541"
 ---
-通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）放在网络安全组中，并附加到将接收流量的资源。
+通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）置于附加到接收流量的资源的网络安全组中。
 
-让我们在端口 80 上使用 Web 流量的常见示例。 将 VM 配置为处理标准 TCP 端口 80 上的 Web 请求后（请记住还要在 VM 上启动相应的服务，并打开所有 OS 防火墙规则），可以：
+本文中的示例演示了如何创建使用标准 TCP 端口 80 的网络筛选器（假设已启动了相应的服务并在 VM 上打开了任何 OS 防火墙规则）。
+
+在创建配置为在标准 TCP 端口 80 上处理 Web 请求的 VM 之后，可以：
 
 1. 创建网络安全组。
-2. 使用以下项创建允许流量的入站规则：
-   * 目标端口范围为“80”
-   * 源端口范围为“ * ”（允许任何源端口）
-   * 优先级值小于 65,500（优先级应比默认的“捕获全部”拒绝入站规则要高）
+
+2. 创建允许流量的入站安全规则并将值分配给以下设置：
+
+   - **目标端口范围**：80
+
+   - **源端口范围**：*（允许任何源端口）
+
+   - **优先级值**：输入优先级小于 65,500 且高于默认 catch-all 拒绝入站规则的值。
+
 3. 将网络安全组与 VM 网络接口或子网相关联。
 
-可以创建复杂的网络配置，以使用网络安全组和规则来保护环境。 本示例仅使用一个或两个允许 HTTP 流量或远程管理的规则。 有关详细信息，请参阅下面的[更多信息](#more-information-on-network-security-groups)部分或[什么是网络安全组？](../articles/virtual-network/security-overview.md)
+虽然此示例使用简单规则来允许 HTTP 流量，但你也可以使用网络安全组和规则来创建更复杂的网络配置。 
+
+
+
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 13cf5861bf39cdd9c192586979b95192a31e9399
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3d52ca0c7022e08655ece8775b5855f3ae985aca
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978669"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247446"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 
@@ -22,6 +22,7 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 * **[IoT 中心消息路由](iot-hub-devguide-messages-d2c.md)**：借助此 IoT 中心功能，用户可将设备到云消息路由到服务终结点，如 Azure 存储容器、事件中心、服务总线队列和服务总线主题。 路由还提供了一种查询功能，这样便能先筛选数据，再将数据路由到终结点。 除了设备遥测数据之外，还可以发送可用于触发操作的[非遥测事件](iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 
+
 * **IoT 中心与事件网格的集成**：Azure 事件网格是一种完全托管的事件路由服务，使用发布 - 订阅模型。 IoT 中心和事件网格共同协作，准实时地[将 IoT 中心事件集成到 Azure 和非 Azure 服务中](iot-hub-event-grid.md)。 
 
 ## <a name="similarities-and-differences"></a>相似性和差异性
@@ -34,7 +35,7 @@ Azure IoT 中心可以从已连接的设备流式传输数据并将该数据集�
 | **事件类型** | 是，消息路由可报告双向更改和设备生命周期事件。 | 是，事件网格可以报告设备何时创建、删除、连接以及何时与 IoT 中心断开连接 |
 | **排序** | 是，事件顺序保持不变。  | 否，无法保证事件顺序。 | 
 | **最大消息大小** | 256 KB，设备到云 | 64 KB |
-| **筛选** | 对邮件应用程序属性、邮件系统属性、邮件正文、设备孪生标记和设备孪生属性执行的丰富筛选。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 根据设备 ID 的后缀/前缀进行筛选，适用于存储等分层服务。 |
+| **筛选** | 对消息应用程序属性、消息系统属性、消息正文、设备孪生标记和设备孪生属性执行的丰富筛选。 有关示例，请参阅[消息路由查询语法](iot-hub-devguide-routing-query-syntax.md)。 | 根据设备 ID 的后缀/前缀进行筛选，适用于存储等分层服务。 |
 | **EndPoints** | <ul><li>事件中心</li> <li>Azure Blob 存储</li> <li>服务总线队列</li> <li>服务总线主题</li></ul><br>付费 IoT 中心 SKU（S1、S2 和 S3）限制为 10 个自定义终结点。 每个 IoT 中心都可创建 100 个路由。 | <ul><li>Azure Functions</li> <li>Azure 自动化</li> <li>事件中心</li> <li>逻辑应用</li> <li>存储 Blob</li> <li>自定义主题</li> <li>通过 Webhook 的第三方服务</li></ul><br>有关最新的终结点列表，请参阅[事件网格事件处理程序](../event-grid/overview.md#event-handlers)。 |
 | **成本** | 不会针对消息路由单独收费。 仅针对 IoT 中心的遥测数据入口收费。 例如，如果将一条消息路由到三个不同终结点，则只收取一条消息的费用。 | 不收取 IoT 中心费用。 事件网格每月免费提供前 100,000 次操作，之后每百万次操作收取 0.60 美元。 |
 

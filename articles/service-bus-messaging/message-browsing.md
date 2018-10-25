@@ -11,26 +11,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: bafc08eae4a32f803f485097401a586a662f64e9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700401"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857459"
 ---
 # <a name="message-browsing"></a>消息浏览
 
-通过消息浏览（“速览”），服务总线客户端可以枚举队列或订阅中驻留的所有消息，通常用于诊断和调试目的。
+通过消息浏览或速览，服务总线客户端可以枚举队列或订阅中驻留的所有消息，通常用于诊断和调试目的。
 
 速览操作返回队列或订阅消息日志中驻留的所有消息，而不仅仅是可通过 `Receive()` 或 `OnMessage()` 循环立即获取的消息。 每个消息的 `State` 属性指明消息是有效（可供接收）、[延迟](message-deferral.md)还是[已计划](message-sequencing.md)。
 
 已使用和过期的消息通过异步运行“垃圾回收”操作进行清理，但这不一定与消息过期完全同步。因此，`Peek` 可能确实会返回已过期的消息，如果接下来对队列或订阅调用接收操作，这些消息将会遭到删除或成为死信。
 
-如果试图从队列中恢复延迟的消息，请务必注意这一点。 一旦超过 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc)，便无法再通过其他任何方式定期检索消息，即使是 Peek 返回的消息，也不例外。 返回这些消息是有意而为之，因为 Peek 是反映日志当前状态的诊断工具。
+如果试图从队列中恢复延迟的消息，请务必注意这一点。 已超过其 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) 时刻的消息便无法再通过其他任何方式进行定期检索，即使是 Peek 返回的消息，也不例外。 返回这些消息是有意而为之，因为 Peek 是反映日志当前状态的诊断工具。
 
-Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚未完成的消息。 不过，由于 Peek 返回的快照已断开连接，因此无法通过速览消息观测到消息的锁定状态，如果应用程序尝试读取 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) 和 [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) 属性时，它们会抛出 [InvalidOperationException](/dotnet/api/system.invalidoperationexception)。
+Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚未完成的消息。 不过，由于 Peek 返回的快照已断开连接，因此无法通过速览消息观测到消息的锁定状态，如果应用程序尝试读取 [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) 和 [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) 属性，它们会抛出 [InvalidOperationException](/dotnet/api/system.invalidoperationexception)。
 
 ## <a name="peek-apis"></a>Peek API
 
@@ -46,7 +46,6 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: a35682c1a647039fbb946c0ea79d92e0d3806d0c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e2a5020bec94614971b6e9e7f4dcf94a0df96108
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347216"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888386"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -29,11 +29,11 @@ ms.locfileid: "44347216"
 
 在本教程中概述的方案假定已有以下各项：
 
-*   Azure Active Directory 租户
-*   Salesforce.com 租户
+* Azure Active Directory 租户
+* Salesforce.com 租户
 
->[!IMPORTANT] 
->如果使用的是 Salesforce.com 试用帐户，则无法配置自动化的用户预配。 试用帐户没有所需的 API 访问权限，而只有在付费之后才拥有这种权限。 可使用免费的[开发人员帐户](https://developer.salesforce.com/signup)绕过此项限制，以完成本教程。
+> [!IMPORTANT]
+> 如果使用的是 Salesforce.com 试用帐户，则无法配置自动化的用户预配。 试用帐户没有所需的 API 访问权限，而只有在付费之后才拥有这种权限。 可使用免费的[开发人员帐户](https://developer.salesforce.com/signup)绕过此项限制，以完成本教程。
 
 如果使用 Salesforce 沙盒环境，请参阅 [Salesforce 沙箱集成教程](https://go.microsoft.com/fwLink/?LinkID=521879)。
 
@@ -45,19 +45,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>将用户分配到 Salesforce 的重要提示
 
-*   建议将单个 Azure AD 用户分配到 Salesforce 以测试预配配置。 其他用户和/或组可以稍后分配。
+* 建议将单个 Azure AD 用户分配到 Salesforce 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-*  将用户分配到 Salesforce 时，必须选择有效用户角色。 “默认访问权限”角色不可用于预配
+* 将用户分配到 Salesforce 时，必须选择有效用户角色。 “默认访问权限”角色不可用于预配
 
     > [!NOTE]
-    > 此应用会在预配过程中从 Salesforce 导入自定义角色，客户在分配用户时可能会想要选择该角色
+    > 此应用会在预配过程中从 Salesforce 导入配置文件，客户在 Azure AD 中分配用户时可能会想要选择该配置文件。 请注意，从 Salesforce 导入的配置文件在 Azure AD 中显示为角色。
 
 ## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
 
 本部分将指导完成将 Azure AD 连接到 Salesforce 的用户帐户预配 API 和配置预配服务，以便在 Salesforce 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
 
->[!Tip]
->还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Salesforce 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
+> [!Tip]
+> 还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Salesforce 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配
 
@@ -65,51 +65,51 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-1. 如果已为 Salesforce 配置单一登录，请使用搜索字段搜索 Salesforce 实例。 否则，请选择“添加”并在应用程序库中搜索“Salesforce”。 从搜索结果中选择 Salesforce，并将其添加到应用程序列表。
+2. 如果已为 Salesforce 配置单一登录，请使用搜索字段搜索 Salesforce 实例。 否则，请选择“添加”并在应用程序库中搜索“Salesforce”。 从搜索结果中选择 Salesforce，并将其添加到应用程序列表。
 
-1. 选择 Salesforce 实例，然后选择“预配”选项卡。
+3. 选择 Salesforce 实例，然后选择“预配”选项卡。
 
-1. 将“预配模式”设置为“自动”。
+4. 将“预配模式”设置为“自动”。
 
     ![预配](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-1. 在“管理员凭据”部分中，提供以下配置设置：
-   
-    a. 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
-   
+5. 在“管理员凭据”部分中，提供以下配置设置：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“管理员用户名”文本框中，键入在 Salesforce.com 中已分配“系统管理员”配置文件的 Salesforce 帐户名称。
+
     b. 在“管理员密码”文本框中，键入此帐户的密码。
 
-1. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
+6. 若要获取 Salesforce 安全令牌，请打开新选项卡并登录到同一个 Salesforce 管理员帐户。 在页面右上角单击你的名字，然后单击“设置”。
 
-     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
+    ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
 
-1. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
+7. 在左侧导航窗格中，单击“我的个人信息”展开相关部分，然后单击“重置我的安全令牌”。
   
     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
 
-1. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
+8. 在“重置安全令牌”页上，单击“重置安全令牌”按钮。
 
     ![启用自动用户设置](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
 
-1. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce.com 的包含新安全令牌的电子邮件。
+9. 查看与此管理员帐户关联的电子邮件收件箱。 查找来自 Salesforce.com 的包含新安全令牌的电子邮件。
 
-1. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
+10. 复制令牌，转到 Azure AD 窗口，然后将令牌粘贴到“机密令牌”字段中。
 
-1. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用格式“https://\<your-instance\>.my.salesforce.com”输入租户 URL，并将“\<your-instance\>”替换为 Salesforce 实例的名称。
+11. 如果 Salesforce 实例在 Salesforce 政府云中，则应输入**租户 URL**。 否则，它是可选项。 使用格式“https://\<your-instance\>.my.salesforce.com”输入租户 URL，并将“\<your-instance\>”替换为 Salesforce 实例的名称。
 
-1. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
+12. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Salesforce 应用。
 
-1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+13. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-1. 单击“保存”。  
-    
-1.  在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”。
+14. 单击“保存”。  
 
-1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+15. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Salesforce”。
 
-1. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+16. 在“属性映射”部分中，查看将从 Azure AD 同步到 Salesforce 的用户属性。 请注意，选为“匹配”属性的属性将用于匹配 Salesforce 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-1. 单击“保存”。
+17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+
+18. 单击“保存”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce 应用执行的所有操作。
 
@@ -118,5 +118,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)

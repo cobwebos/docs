@@ -9,13 +9,13 @@ ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/03/2018
-ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 974ef7a51736c2e2b0a0de3c13d23ddc37fa13b7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045868"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855011"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -84,9 +84,9 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 * **DataRoot=<DataRoot path>**。 只有 SyntaxCheck 模式需要 DataRoot。 使用 SyntaxCheck 模式生成脚本时，MSBuild 会检查脚本中对数据库对象的引用。 在生成之前，请设置匹配的本地环境，其中包含生成计算机的 DataRoot 文件夹中 U-SQL 数据库中的引用对象。 你还可以通过[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)管理这些数据库依赖项。 MSBuild 只会检查数据库对象引用，而不检查文件。
 * **EnableDeployment=true** 或 **false**。 EnableDeployment 指示是否允许在生成过程中部署引用的 U-SQL 数据库。 如果引用了 U-SQL 数据库项目，并在 U-SQL 脚本中使用了数据库对象，请将此参数设置为 **true**。
 
-### <a name="continuous-integration-with-visual-studio-team-services"></a>与 Visual Studio Team Services 的持续集成
+### <a name="continuous-integration-through-azure-pipelines"></a>通过 Azure Pipelines 进行持续集成
 
-除了命令行以外，还可以使用 Visual Studio 生成或 MSBuild 任务在 Visual Studio Team Services (VSTS) 中生成 U-SQL 项目。 若要设置生成管道，请确保在生成管道中添加两个任务：一个 NuGet 还原任务，一个 MSBuild 任务。
+除了命令行以外，还可以使用 Visual Studio Build 或 MSBuild 任务在 Azure Pipelines 中生成 U-SQL 项目。 若要设置生成管道，请确保在生成管道中添加两个任务：一个 NuGet 还原任务，一个 MSBuild 任务。
 
 ![U-SQL 项目的 MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
@@ -94,7 +94,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
     ![U-SQL 项目的 NuGet 还原任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  按以下示例中所示，在 Visual Studio 生成工具或 MSBuild 任务中设置 MSBuild 参数。 或者，可以在 VSTS 生成定义中为这些参数定义变量。
+2.  按以下示例中所示，在 Visual Studio 生成工具或 MSBuild 任务中设置 MSBuild 参数。 或者，可以在 Azure Pipelines 生成管道中为这些参数定义变量。
 
     ![为 U-SQL 项目定义 CI/CD MSBuild 变量](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
@@ -115,15 +115,15 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Azure Data Lake 为 U-SQL 脚本和 C# UDO/UDAG/UDF 提供测试项目：
 * 了解如何[为 U-SQL 脚本和扩展的 C# 代码添加测试用例](data-lake-analytics-cicd-test.md#test-u-sql-scripts)。
-* 了解如何[在 Visual Studio Team Services 中运行测试用例](data-lake-analytics-cicd-test.md#run-test-cases-in-visual-studio-team-service)。
+* 了解如何[在 Azure Pipelines 中运行测试用例](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops)。
 
 ## <a name="deploy-a-u-sql-job"></a>部署 U-SQL 作业
 
-通过生成和测试过程验证代码后，可以通过 Azure PowerShell 任务直接从 Visual Studio Team Services 提交 U-SQL 作业。 还可以将脚本部署到 Azure Data Lake Store 或 Azure Blob 存储并[通过 Azure 数据工厂运行计划的作业](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)。
+通过生成和测试过程验证代码后，可以通过 Azure PowerShell 任务直接从 Azure Pipelines 提交 U-SQL 作业。 还可以将脚本部署到 Azure Data Lake Store 或 Azure Blob 存储并[通过 Azure 数据工厂运行计划的作业](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)。
 
-### <a name="submit-u-sql-jobs-through-visual-studio-team-services"></a>通过 Visual Studio Team Services 提交 U-SQL 作业
+### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>通过 Azure Pipelines 提交 U-SQL 作业
 
-U-SQL 项目的生成输出是一个名为 **USQLProjectName.usqlpack** 的 zip 文件。 该 zip 文件包含项目中的所有 U-SQL 脚本。 可将 Visual Studio Team Services 中的 [Azure PowerShell 任务](https://docs.microsoft.com/vsts/pipelines/tasks/deploy/azure-powershell?view=vsts)与下面的示例 PowserShell 脚本配合使用，直接从 Visual Studio Team Service 生成或发布管道提交 U-SQL 作业。
+U-SQL 项目的生成输出是一个名为 **USQLProjectName.usqlpack** 的 zip 文件。 该 zip 文件包含项目中的所有 U-SQL 脚本。 可以将 Pipelines 中的 [Azure PowerShell 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts)与以下示例 PowerShell 脚本配合使用，直接从 Azure Pipelines 提交 U-SQL 作业。
 
 ```powershell
 <#
@@ -230,9 +230,9 @@ Main
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>通过 Azure 数据工厂部署 U-SQL 作业
 
-可以直接从 Visual Studio Team Services 提交 U-SQL 作业。 或者，可将生成脚本上传到 Azure Data Lake Store 或 Azure Blob 存储并[通过 Azure 数据工厂运行计划的作业](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)。
+可以直接从 Azure Pipelines 提交 U-SQL 作业。 或者，可将生成脚本上传到 Azure Data Lake Store 或 Azure Blob 存储并[通过 Azure 数据工厂运行计划的作业](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)。
 
-将 Visual Studio Team Services 中的 [Azure PowerShell 任务](https://docs.microsoft.com/vsts/pipelines/tasks/deploy/azure-powershell?view=vsts)与下面的示例 PowerShell 脚本配合使用，将 U-SQL 脚本上传到 Azure Data Lake Store 帐户：
+将 Azure Pipelines 中的 [Azure PowerShell 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts)与以下示例 PowerShell 脚本配合使用，将 U-SQL 脚本上传到 Azure Data Lake Store 帐户：
 
 ```powershell
 <#
@@ -319,9 +319,9 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
 参数 `USQLSDKPath=<U-SQL Nuget package>\build\runtime` 引用 U-SQL 语言服务的 NuGet 包的安装路径。
 
-### <a name="continuous-integration-with-visual-studio-team-services"></a>与 Visual Studio Team Services 的持续集成
+### <a name="continuous-integration-with-azure-pipelines"></a>使用 Azure Pipelines 进行持续集成
 
-除了命令行以外，还可以使用 Visual Studio 生成或 MSBuild 任务在 Visual Studio Team Services 中生成 U-SQL 数据库项目。 若要设置生成任务，请确保在生成管道中添加两个任务：一个 NuGet 还原任务，一个 MSBuild 任务。
+除了命令行以外，还可以使用 Visual Studio Build 或 MSBuild 任务在 Azure Pipelines 中生成 U-SQL 数据库项目。 若要设置生成任务，请确保在生成管道中添加两个任务：一个 NuGet 还原任务，一个 MSBuild 任务。
 
    ![U-SQL 项目的 CI/CD MSBuild 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
@@ -330,7 +330,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
     ![U-SQL 项目的 CI/CD NuGet 任务](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  按以下示例中所示，在 Visual Studio 生成工具或 MSBuild 任务中设置 MSBuild 参数。 或者，可以在 VSTS 生成定义中为这些参数定义变量。
+2.  按以下示例中所示，在 Visual Studio 生成工具或 MSBuild 任务中设置 MSBuild 参数。 或者，可以在 Azure Pipelines 生成管道中为这些参数定义变量。
 
    ![为 U-SQL 数据库项目定义 CI/CD MSBuild 变量](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
@@ -350,16 +350,16 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 2.  添加对此 U-SQL 项目的数据库引用。 若要获取表值函数和存储过程定义，需要引用包含 DDL 语句的数据库项目。 详细了解[数据库引用](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)。
 3.  为调用表值函数和存储过程的 U-SQL 脚本添加测试用例。 了解如何[为 U-SQL 脚本添加测试用例](data-lake-analytics-cicd-test.md#test-u-sql-scripts)。
 
-## <a name="deploy-u-sql-database-through-visual-studio-team-service"></a>通过 Visual Studio Team Service 部署 U-SQL 数据库
+## <a name="deploy-u-sql-database-through-azure-pipelines"></a>通过 Azure Pipelines 部署 U-SQL 数据库
 
 `PackageDeploymentTool.exe` 提供帮助部署 U-SQL 数据库部署包 **.usqldbpack** 的编程和命令行接口。 SDK 包含在 [U-SQL SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 **build/runtime/PackageDeploymentTool.exe**。 通过使用 `PackageDeploymentTool.exe`，可将 U-SQL 数据库部署到 Azure Data Lake Analytics 和本地帐户。
 
 > [!NOTE]
 >
-> 针对 U-SQL 数据库部署的 PowerShell 命令行支持和 Visual Studio Team Services 发布任务支持正在开发中。
+> 针对 U-SQL 数据库部署的 PowerShell 命令行支持和 Azure Pipelines 发布任务支持正在开发中。
 >
 
-执行以下步骤，在 Visual Studio Team Services 中设置数据库部署任务：
+执行以下步骤，在 Azure Pipelines 中设置数据库部署任务：
 
 1. 在生成或发布管道中添加 PowerShell 脚本任务，并执行以下 PowerShell 脚本。 此任务可帮助获取 `PackageDeploymentTool.exe` 和 `PackageDeploymentTool.exe` 的 Azure SDK 依赖项。 可以设置 **-AzureSDK** 和 **-DBDeploymentTool** 参数以将依赖项和部署工具加载到特定的文件夹。 在步骤 2 中将 **-AzureSDK** 路径作为 **-AzureSDKPath** 参数传递给 `PackageDeploymentTool.exe`。 
 
@@ -388,8 +388,8 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
     echo "workingfolder=$workingfolder, outputfolder=$outputfolder"
     echo "Downloading required packages..."
 
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.2.3-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.3.3-preview -outf Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.5.1-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.4.1-preview -outf Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.3 -outf Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime/2.3.11 -outf Microsoft.Rest.ClientRuntime.2.3.11.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime.Azure/3.3.7 -outf Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip
@@ -399,8 +399,8 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
     echo "Extracting packages..."
 
-    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview -Force
-    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.3.3-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.4.1-preview -Force
     Expand-Archive Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip -DestinationPath Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.2.3.11.zip -DestinationPath Microsoft.Rest.ClientRuntime.2.3.11 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip -DestinationPath Microsoft.Rest.ClientRuntime.Azure.3.3.7 -Force
@@ -412,8 +412,8 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
     mkdir $AzureSDK -Force
     mkdir $DBDeploymentTool -Force
-    copy Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview\lib\net452\*.dll $AzureSDK
-    copy Microsoft.Azure.Management.DataLake.Store.2.3.3-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Store.2.4.1-preview\lib\net452\*.dll $AzureSDK
     copy Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\*.dll $AzureSDK
@@ -454,7 +454,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 | 参数 | Description | 默认值 | 必选 |
 |---------|-----------|-------------|--------|
-|程序包|要部署的 U-SQL 数据库部署包的路径。|Null|是|
+|程序包|要部署的 U-SQL 数据库部署包的路径。|Null|true|
 |数据库|要部署到或创建的数据库名称。|master|false|
 |LogFile|日志记录文件的路径。 默认为标准输出（控制台）。|Null|false|
 |LogLevel|日志级别：Verbose、Normal、Warning 或 Error|LogLevel.Normal|false|
@@ -463,17 +463,17 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 |参数|Description|默认值|必选|
 |---------|-----------|-------------|--------|
-|DataRoot|本地数据根文件夹的路径。|Null|是|
+|DataRoot|本地数据根文件夹的路径。|Null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
 |参数|Description|默认值|必选|
 |---------|-----------|-------------|--------|
-|帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|Null|是|
-|resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|Null|是|
-|SubscriptionId|Azure Data Lake Analytics 帐户的 Azure 订阅 ID。|Null|是|
-|租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|Null|是|
-|AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|Null|是|
+|帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|Null|true|
+|resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|Null|true|
+|SubscriptionId|Azure Data Lake Analytics 帐户的 Azure 订阅 ID。|Null|true|
+|租户|租户名称是 Azure Active Directory (Azure AD) 域名。 可在 Azure 门户的订阅管理页面中找到它。|Null|true|
+|AzureSDKPath|要在 Azure SDK 中搜索依赖程序集的路径。|Null|true|
 |交互|是否使用交互模式进行身份验证。|false|false|
 |ClientId|非交互式身份验证所需的 Azure AD 应用程序 ID。|Null|非交互式身份验证需要此参数。|
 |机密|用于非交互式身份验证的机密或密码。 仅应在受信任和安全的环境中使用。|Null|非交互式身份验证需要此参数，或使用 SecreteFile。|

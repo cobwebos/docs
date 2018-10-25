@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 08/30/2018
+ms.date: 10/09/2018
 ms.author: raynew
-ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697690"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902818"
 ---
-# <a name="replicate-azure-stack-vms-to-azure-preview"></a>将 Azure Stack VM 复制到 Azure（预览版）
+# <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
 本文介绍如何使用 [Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)为 Azure Stack VM 设置到 Azure 的灾难恢复。
 
@@ -25,10 +25,6 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 - 主站点出现中断时，可使用 Site Recovery 进行到 Azure 的故障转移。
 - 进行故障转移时，会根据存储的 VM 数据创建 Azure VM，用户可继续访问在这些 Azure VM 上运行的工作负载。
 - 一切恢复正常运行后，可将 Azure VM 故障回复到主站点，然后再次开始复制到 Azure 存储。
-
-
-> [!NOTE]
-> 适用于 Azure Stack 的 Site Recovery 目前为公共预览版。
 
 
 在本文中，学习如何：

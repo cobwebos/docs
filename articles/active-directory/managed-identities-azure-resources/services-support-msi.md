@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: f09704a5befedb99625595e50587fa6bbd704899
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cd65564bcc6ea18be6ba8a67cac070449c5233a2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106320"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902614"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -29,11 +29,11 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 服务 | 系统分配的状态 | 用户分配的状态| 配置 | 获取令牌 |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure 虚拟机 | 预览 | 预览 | [Azure 门户](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| 虚拟机规模集 | 预览 | 预览 | [Azure 门户](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure 应用服务 | 可用 | 不可用 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell)  |
+| Azure 虚拟机 | 可用 | 预览 | [Azure 门户](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
+| 虚拟机规模集 | 可用 | 预览 | [Azure 门户](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
+| Azure 应用服务 | Windows：可用 <br> Linux：即将支持 | 不可用 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell)  |
 | Azure Functions | 可用 | 不可用 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell) |
-| Azure 数据工厂 V2 | 预览 | 不可用 | [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+| Azure 数据工厂 V2 | 可用 | 不可用 | [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
 | Azure API 管理 | 可用 | 不可用 | [Azure 资源管理器模板](/azure/api-management/api-management-howto-use-managed-service-identity) | 
 
 
@@ -43,10 +43,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 | 服务 | 资源 ID | 状态 | 日期 | 分配访问权限 |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure 资源管理器 | https://management.azure.com/ | 可用 | 2017 年 9 月 | [Azure 门户](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
-| Azure 密钥保管库 | https://vault.azure.net | 可用 | 2017 年 9 月 | |
-| Azure Data Lake | https://datalake.azure.net/ | 可用 | 2017 年 9 月 | |
-| Azure SQL | https://database.windows.net/ | 可用 | 2017 年 10 月 | |
-| Azure 事件中心 | https://eventhubs.azure.net | 可用 | 2017 年 12 月 | |
-| Azure 服务总线 | https://servicebus.azure.net | 可用 | 2017 年 12 月 | |
-| Azure 存储 | https://storage.azure.com/ | 预览 | 2018 年 5 月 | |
+| Azure 资源管理器 | `https://management.azure.com/` | 可用 | 2017 年 9 月 | [Azure 门户](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
+| Azure 密钥保管库 | `https://vault.azure.net` | 可用 | 2017 年 9 月 | |
+| Azure Data Lake | `https://datalake.azure.net/` | 可用 | 2017 年 9 月 | |
+| Azure SQL | `https://database.windows.net/` | 可用 | 2017 年 10 月 | |
+| Azure 事件中心 | `https://eventhubs.azure.net` | 预览 | 2017 年 12 月 | |
+| Azure 服务总线 | `https://servicebus.azure.net` | 预览 | 2017 年 12 月 | |
+| Azure 存储 | `https://storage.azure.com/` | 预览 | 2018 年 5 月 | |

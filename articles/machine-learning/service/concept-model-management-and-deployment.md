@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 机器学习中管理和部署模型
-description: 了解如何使用 Azure 机器学习来部署、管理和监视模型，以便持续改进它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。
+title: 在 Azure 机器学习服务中管理和部署模型
+description: 了解如何使用 Azure 机器学习服务来部署、管理和监视模型，以便不断改进它们。 可以在本地计算机上或从其他源部署使用 Azure 机器学习服务训练的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,21 +9,21 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166531"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885061"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>通过 Azure 机器学习管理、部署和监视模型
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务管理、部署和监视模型
 
-本文介绍如何使用 Azure 机器学习来部署、管理和监视模型，以便持续改进它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。 
+本文介绍如何使用 Azure 机器学习服务来部署、管理和监视模型，以便不断改进它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。 
 
 下图演示完整的部署工作流：[ ![Azure 机器学习的部署工作流](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 部署工作流包括以下步骤：
-1. 在托管在 Azure 机器学习工作区的注册表中**注册模型**
+1. 在 Azure 机器学习服务工作区中托管的注册表中**注册模型**
 1. **注册一个映像**，该映像在可移植容器中将一个模型与评分脚本和依赖项配对。 
 1. 将映像作为 Web 服务**部署**到云或边缘设备
 1. **监视和收集数据**
@@ -35,7 +35,7 @@ ms.locfileid: "47166531"
 
 ## <a name="step-1-register-model"></a>步骤 1：注册模型
 
-模型注册表跟踪 Azure 机器学习工作区中的所有模型。
+模型注册表会跟踪 Azure 机器学习服务工作区中的所有模型。
 模型按名称和版本标识。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 也可在注册过程中提供其他的元数据标记，这些标记可以在搜索模型时使用。
 
 映像正在使用的模型无法删除。
@@ -71,7 +71,7 @@ Web 服务部署也可进行搜索。 例如，可以搜索特定模型或映像
 * Azure FPGA 计算机
 * Azure IoT Edge 设备
 
-部署服务时，推断请求会自动进行负载均衡，群集会根据高峰需求进行缩放。 [有关服务的遥测数据](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py)可以捕获到与工作区关联的 Azure Application Insights 服务中。
+部署服务时，推断请求会自动进行负载均衡，群集会根据高峰需求进行缩放。 [有关服务的遥测数据可以捕获](how-to-enable-app-insights.md)到与工作区关联的 Azure Application Insights 服务中。
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>步骤 4：监视模型和收集数据
 

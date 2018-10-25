@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: adigan
-ms.openlocfilehash: 873e7066bcf51b32c3a7a54e845ffd5a744f407f
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 2da5b04f56a5746fb77de6bc954bb5971eb4664b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745429"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885164"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ ms.locfileid: "42745429"
 14. 在使用 Data Protection Manager 时，可以通过在“管理”选项卡下选择“联机”，单击“配置”选项来修改在注册工作流期间指定的设置。
 
 ## <a name="requirements-and-limitations"></a>要求和限制
-* DPM 可作为物理服务器或安装在 System Center 2012 SP1 或 System Center 2012 R2 上的 Hyper-V 虚拟机运行。 它也可以作为 System Center 2012 R2（至少包含 DPM 2012 R2 Update Rollup 3）上运行的 Azure 虚拟机，或 System Center 2012 R2（至少包含 Update Rollup 5）上运行的 VMWare 中的 Windows 虚拟机运行。
+* DPM 可作为物理服务器或安装在 System Center 2012 SP1 或 System Center 2012 R2 上的 Hyper-V 虚拟机运行。 它也可以作为 System Center 2012 R2（至少包含 DPM 2012 R2 更新汇总 3）上运行的 Azure 虚拟机，或 System Center 2012 R2（至少包含更新汇总 5）上运行的 VMware 中的 Windows 虚拟机运行。
 * 如果要运行 System Center 2012 SP1 中的 DPM，则应安装 System Center Data Protection Manager SP1 的 Update Rollup 2。 只有满足此要求，才能安装 Azure 备份代理。
 * DPM 服务器上应已安装 Windows PowerShell 和 .NET Framework 4.5。
 * DPM 可将大多数工作负载备份到 Azure 备份。 有关所支持内容的完整列表，请参阅下面的 Azure 备份支持项。

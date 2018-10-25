@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/23/2018
+ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 7f70470880845fd4271ffdbb35af771ec433babc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961937"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814315"
 ---
-# <a name="virtual-wan-partners-preview"></a>虚拟 WAN 合作伙伴（预览版）
+# <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
 
 本文介绍如何设置自动化环境以连接和配置 Azure 虚拟 WAN 的分支设备（客户本地 VPN 设备或 SDWAN CPE）。 如果你是可通过 IPsec/IKEv2 或 IPsec/IKEv1 容纳 VPN 连接的分支设备的提供商，那么本文对你有帮助。
 

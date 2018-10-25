@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424596"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079336"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -89,11 +89,24 @@ Azure 容器实例支持仅基于长期服务频道 (LTSC) 版本的 Windows 映
 ],
 ```
 
-## <a name="container-continually-exits-and-restarts"></a>容器不断退出并重启
+## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
-如果容器运行直至完成并自动重启，可能需要将[重启策略](container-instances-restart-policy.md)设置为“失败时”或“从不”。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
+容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-容器实例 API 包括 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
+在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，请在容器组部署中包含如下所示的启动命令，以使容器保持运行。
+
+```azurecli-interactive
+## Deploying a Linux container
+az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
+```
+
+```azurecli-interactive 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+ --command-line "ping -t localhost"
+```
+
+容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
 ```json
 ...

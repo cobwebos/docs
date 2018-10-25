@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 154d82ab5e309631df0bfa40df7fe14902327f46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716394"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884258"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
@@ -41,6 +41,10 @@ ms.locfileid: "44716394"
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>基于微服务的新开源体系结构在新的更新中提供哪些优势？
 
 过去两年以来，云体系结构已发生重大的演变。 微服务应运而生，是能够在不降低开发速度的情况下实现可伸缩性和灵活性的极佳模式。 此体系结构模式已在多种 Microsoft 服务内部使用，且获得了出色的可靠性和可伸缩性。 我们正在将这些知识付诸实践，使客户能够从中受益。
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
+
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 中找到已存档文档。
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>新的解决方案加速器是否在现有解决方案所在的同一地理区域中可用？
 

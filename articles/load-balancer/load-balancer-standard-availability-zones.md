@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/08/2018
 ms.author: kumud
-ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1f34a9319b8bbfba3f4a6f7446f949fc576aa4fa
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322788"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869051"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
@@ -36,7 +36,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 在可用性区域的上下文中，负载均衡器资源的行为和属性描述为区域冗余或局域性。  区域冗余和局域性描述属性的局域性。  在负载均衡器的上下文中，区域冗余始终表示所有区域，局域性表示保证服务位于单个区域。
 
-公共和内部负载均衡器都支持区域冗余和局域性场景，并且两者都可根据需要跨区域定向流量（跨区域负载均衡）。
+公共负载均衡器和内部负载均衡器都支持区域冗余和局域性场景，并且两者都可根据需要跨区域定向流量（跨区域负载均衡）。
 
 负载均衡器资源本身是区域性的，而永远不会是局域性的。  另外，VNet 和子网始终区域性的，而永远不会是局域性的。
 
@@ -54,7 +54,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 #### <a name="zone-redundant-by-default"></a>默认的区域冗余
 
-在包含可用性区域的区域中，标准负载均衡器前端默认是区域冗余的。  单个前端 IP 地址在发生区域性故障时可以幸存，并且可用于访问后端池成员，不管这些成员位于哪个区域。 这并不意味着数据路径无法访问，任何重试或重新建立都会成功。 不需要 DNS 冗余方案。 前端的单个 IP 地址由每个可用性区域中独立的基础结构部署同时提供。  区域冗余意味着所有入站或出站流由某个区域中所有可用性区域使用单个 IP 地址同时提供。
+在包含可用性区域的区域中，标准负载均衡器前端默认是区域冗余的。  单个前端 IP 地址在发生区域性故障时可以幸存，并且可用于访问后端池成员，不管这些成员位于哪个区域。 这并不意味着数据路径无法访问，任何重试或重新建立都会成功。 不需要 DNS 冗余方案。 前端的单个 IP 地址由多个可用性区域中多个独立的基础结构部署同时提供。  区域冗余意味着所有入站或出站流由某个区域中多个可用性区域使用单个 IP 地址同时提供。
 
 一个或多个可用性区域可能会发生故障，而数据路径可以幸存，但前提是该区域中有一个局部区域保持正常。 区域冗余配置是默认配置，不需要额外的操作。  当某个区域能够支持可用性区域时，现有的前端会自动变成区域冗余。
 
@@ -77,7 +77,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
             "apiVersion": "2017-08-01",
             "type": "Microsoft.Network/loadBalancers",
             "name": "load_balancer_standard",
-            "location": "region",
+            "location": "[resourceGroup().location]",
             "sku":
             {
                 "name": "Standard"
@@ -99,7 +99,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 #### <a name="optional-zone-guarantee"></a>可选的区域保证
 
-可以选择将某个前端指定为保证位于单个区域，这称为局域性前端。  这意味着，任何入站或出站流将由某个区域中的单个局部区域提供。  前端的运行状态取决于该局部区域。  区域（保证前端所在的区域除外）中发生故障不会影响数据路径。 可以使用局域性前端来按可用性区域公开 IP 地址。  此外，可以直接使用局域性前端；如果前端由公共 IP 地址构成，可将其集成到[流量管理器](../traffic-manager/traffic-manager-overview.md)等 DNS 负载均衡产品并使用单个 DNS 名称，客户端会将该名称解析为多个局域性 IP 地址。  还可以使用此前端来按区域负载均衡终结点公开 IP 地址，以单独监视每个区域。  如果想要混合使用这些概念（对同一个后端使用区域冗余和局域性配置），请查看 [Azure 负载均衡器的多个前端](/load-balancer-multivip-overview.md)。
+可以选择将某个前端指定为保证位于单个区域，这称为局域性前端。  这意味着，任何入站或出站流将由某个区域中的单个局部区域提供。  前端的运行状态取决于该局部区域。  区域（保证前端所在的区域除外）中发生故障不会影响数据路径。 可以使用局域性前端来按可用性区域公开 IP 地址。  此外，可以直接使用局域性前端；如果前端由公共 IP 地址构成，可将其集成到[流量管理器](../traffic-manager/traffic-manager-overview.md)等 DNS 负载均衡产品并使用单个 DNS 名称，客户端会将该名称解析为多个局域性 IP 地址。  还可以使用此前端来按区域负载均衡终结点公开 IP 地址，以单独监视每个区域。  如果想要混合使用这些概念（对同一个后端使用区域冗余和局域性配置），请查看 [Azure 负载均衡器的多个前端](load-balancer-multivip-overview.md)。
 
 对于公共负载均衡器前端，需将 *zones* 参数添加到前端 IP 配置引用的公共 IP。  
 
@@ -111,7 +111,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
             "apiVersion": "2017-08-01",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "public_ip_standard",
-            "location": "region",
+            "location": "[resourceGroup().location]",
             "zones": [ "1" ],
             "sku":
             {

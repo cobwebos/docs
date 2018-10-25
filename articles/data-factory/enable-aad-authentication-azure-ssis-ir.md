@@ -12,16 +12,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 234fb5af55565602d283539c63076adebad1ed25
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576623"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248969"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
-本文展示了如何使用 Azure 数据工厂标识创建 Azure-SSIS IR。 通过 Azure-SSIS 集成运行时的托管服务标识 (MSI) 进行 Azure Active Directory (Azure AD) 身份验证允许你使用数据工厂 MSI 而非 SQL 身份验证来创建 Azure-SSIS 集成运行时。
+本文展示了如何使用 Azure 数据工厂标识创建 Azure-SSIS IR。 通过 Azure 资源的托管标识针对 Azure-SSIS 集成运行时进行 Azure Active Directory (Azure AD) 身份验证允许你使用数据工厂 MSI 而非 SQL 身份验证来创建 Azure-SSIS 集成运行时。
 
 有关数据工厂 MSI 的详细信息，请参阅 [Azure 数据工厂服务标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)。
 

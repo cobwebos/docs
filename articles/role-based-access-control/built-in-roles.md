@@ -15,12 +15,12 @@ ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410266"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816594"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
@@ -786,14 +786,14 @@ ms.locfileid: "47410266"
 > | **说明** | 允许管理数据工厂，但不允许访问它们。 |
 > | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **操作** |  |
-> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配。 |
 > | Microsoft.DataFactory/dataFactories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
 > | Microsoft.DataFactory/factories/* | 创建和管理数据工厂，以及它们包含的子资源。 |
-> | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Insights/alertRules/* | 创建和管理警报规则。 |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态。 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.Support/* | 创建和管理支持票证。 |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics 开发人员
 > [!div class="mx-tableFixed"]

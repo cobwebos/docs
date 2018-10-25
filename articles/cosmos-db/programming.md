@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287438"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817088"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
 
@@ -39,7 +39,7 @@ ms.locfileid: "43287438"
   
   * 批处理 – 开发人员可以分组操作（如插入）并批量提交它们。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。 
   * 预编译 - Cosmos DB 预编译存储过程、触发器和用户定义的函数 (UDF)，以节省每次调用产生的 JavaScript 编译成本。 对于过程逻辑生成字节代码的开销被摊销为最小值。
-  * 序列化 – 很多操作需要可能涉及执行一个或多个次要存储操作的副作用（“触发器”）。 除了原子性之外，当移动到服务器时，它的性能也更高。 
+  * 序列化 - 很多操作需要可能涉及执行一个或多个次要存储操作的副作用（“触发器”）。 除了原子性之外，当移动到服务器时，它的性能也更高。 
 * **封装：** 可使用存储过程在同一位置对业务逻辑进行分组，这具有两个优点：
   * 它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。 当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得此抽象层很有益。  
   * 这种抽象使企业通过从脚本简化访问来保证他们的数据安全。  
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-上下文对象提供对所有可在 Cosmos DB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，请使用响应对象来设置发送回客户端的响应的主体。 有关详细信息，请参阅 [Azure Cosmos DB JavaScript 服务器 SDK 文档](https://azure.github.io/azure-cosmosdb-js-server/)。  
+上下文对象提供对所有可在 Cosmos DB 存储上执行的操作的访问，以及对请求和响应对象的访问。 在本例中，请使用响应对象来设置发送回客户端的响应的主体。 有关详细信息，请参阅 [Azure Cosmos DB JavaScript 服务器端 API 参考](https://azure.github.io/azure-cosmosdb-js-server/)。  
 
 让我们扩展此示例，并将更多数据库相关的功能添加到存储过程中。 存储过程可以创建、更新、读取、查询和删除集合内部的文档和附件。    
 
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 语言集成的查询 API
-除了使用 Azure Cosmos DB 的 SQL 语法发起查询外，服务器端 SDK 还允许在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到可链接的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
+除了使用 Azure Cosmos DB 的 SQL 语法发起查询外，[服务器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/) 还允许在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到可链接的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
 
 > [!NOTE]
 > `__`（双下划线）是 `getContext().getCollection()` 的别名。
@@ -831,9 +831,8 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 
 还可以查找以下参考和资源，可帮助了解更多有关 Azure Cosmos DB 服务器端编程的信息：
 
-* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Azure Cosmos DB JavaScript 服务器端 API 参考](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Secure and Portable Database Extensibility](http://dl.acm.org/citation.cfm?id=276339)（安全和可移植的数据库扩展性） 
 * [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Service Fabric 中参数化配置文件 | Microsoft Docs
-description: 演示如何在 Service Fabric 中参数化配置文件
+title: 在 Azure Service Fabric 中参数化配置文件 | Microsoft Docs
+description: 了解如何在 Service Fabric 中参数化配置文件。
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
@@ -10,63 +10,54 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/06/2017
+ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: e5bb2f270cc5a6f288e1e995f4bfa74f4e3551b7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9057cdc22e277e4e12e9f439f3fbe0c5a5cda2a2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207812"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900507"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
-本文演示如何在 Service Fabric 中参数化配置文件。
+本文演示如何在 Service Fabric 中参数化配置文件。  如果还不熟悉管理多个环境的应用程序的核心概念，请阅读[管理多个环境的应用程序](service-fabric-manage-multiple-environment-app-configuration.md)。
 
 ## <a name="procedure-for-parameterizing-configuration-files"></a>参数化配置文件的过程
 
 在此示例中，在应用程序部署中使用参数来替代配置值。
 
-1. 打开 Config\Settings.xml 文件。
-1. 通过添加以下 XML 设置配置参数：
+1. 打开服务项目中的 *<MyService>\PackageRoot\Config\Settings.xml* 文件。
+1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
-    ```xml
-      <Section Name="MyConfigSection">
-        <Parameter Name="CacheSize" Value="25" />
-      </Section>
-    ```
+  ```xml
+    <Section Name="MyConfigSection">
+      <Parameter Name="CacheSize" Value="25" />
+    </Section>
+  ```
 
 1. 保存并关闭该文件。
-1. 打开 `ApplicationManifest.xml` 文件。
-1. 添加 `ConfigOverride` 元素，引用配置包、节和参数。
+1. 打开 *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 文件。
+1. 在 ApplicationManifest.xml 文件的 `Parameters` 元素中声明参数和默认值。  建议参数名称包含服务的名称（例如，“MyService”）。
 
-      ```xml
-        <ConfigOverrides>
-          <ConfigOverride Name="Config">
-              <Settings>
-                <Section Name="MyConfigSection">
-                    <Parameter Name="CacheSize" Value="[Stateless1_CacheSize]" />
-                </Section>
-              </Settings>
-          </ConfigOverride>
-        </ConfigOverrides>
-      ```
+  ```xml
+    <Parameters>
+      <Parameter Name="MyService_CacheSize" DefaultValue="80" />
+    </Parameters>
+  ```
+1. 在 ApplicationManifest.xml 文件的 `ServiceManifestImport` 节中，添加 `ConfigOverride` 元素，引用配置包、节和参数。
 
-1. 仍在 ApplicationManifest.xml 文件中，然后在 `Parameters` 元素中指定参数
-
-    ```xml
-      <Parameters>
-        <Parameter Name="Stateless1_CacheSize" />
-      </Parameters>
-    ```
-
-1. 并定义 `DefaultValue`
-
-    ```xml
-      <Parameters>
-        <Parameter Name="Stateless1_CacheSize" DefaultValue="80" />
-      </Parameters>
-    ```
+  ```xml
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+          <Settings>
+            <Section Name="MyConfigSection">
+                <Parameter Name="CacheSize" Value="[MyService_CacheSize]" />
+            </Section>
+          </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
+  ```
 
 > [!NOTE]
 > 在添加 ConfigOverride 的情况下，Service Fabric 将始终选择应用程序参数或应用程序清单中指定的默认值。
@@ -74,6 +65,4 @@ ms.locfileid: "34207812"
 >
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解本文中讨论的一些核心概念，请参阅文章[管理多个环境的应用程序](service-fabric-manage-multiple-environment-app-configuration.md)。
-
 有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)。

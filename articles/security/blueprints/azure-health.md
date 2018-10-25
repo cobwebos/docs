@@ -9,21 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214935"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831613"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
 ## <a name="overview"></a>概述
 
+**Azure 安全性与合规性蓝图 - HIPAA/HITRUST 健康数据和 AI 提供了包含 Azure PaaS 解决方案和 IaaS 解决方案在内的一整套部署，用于演示如何在遵循行业符合性要求的情况下，引入、存储、分析、识别健康数据并与之交互以及安全部署解决方案。对于其数据受到监管的客户来说，本蓝图有助于他们加速采用和利用云。**
 
-  **Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 提供了包含 Azure PaaS 解决方案在内的一整套部署，用于演示如何在遵循行业符合性要求的情况下，安全地引入、存储、分析健康数据并与之交互。对于其数据受到监管的客户来说，本蓝图有助于他们加速采用和利用云。**
+Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提供的工具和指南有助于部署安全且符合美国健康保险流通与责任法案 (HIPAA) 和健康信息信托联盟 (HITRUST) 规定的平台即服务 (PaaS) 环境，以便在安全的已部署为端到端解决方案的多层云环境中引入、存储、分析个人与非个人医疗记录并与之交互。 
 
-Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提供的工具和指南有助于部署安全且符合美国健康保险流通与责任法案 (HIPAA) 和健康信息信托联盟 (HITRUST) 规定的平台即服务 (PaaS) 环境，以便在安全的已部署为端到端解决方案的多层云环境中引入、存储、分析个人与非个人医疗记录并与之交互。 其中展示了常用的参考体系结构，旨在简化 Microsoft Azure 的采用。 这个规定的体系结构演示了一个解决方案，寻求通过基于云的方法减轻部署负担和成本的组织可以利用此解决方案解决其需求。
+IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure，以及如何实现特权访问工作站 (PAW) 以安全地管理基于云的服务和解决方案。 IaaS SQL Server 数据库将潜在的试验数据添加到 SQL IaaS VM 中，并且该 VM 使用经过 MSI 身份验证的访问权限来与 SQL Azure PaaS 服务交互。这些示例都展示了一个通用的参考体系结构，旨在简化对 Microsoft Azure 的采用。 这个规定的体系结构演示了一个解决方案，寻求通过基于云的方法减轻部署负担和成本的组织可以利用此解决方案解决其需求。
 
 ![](images/components.png)
 
@@ -39,23 +40,15 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 
 ## <a name="deploying-the-automation"></a>部署自动化
 
-- 若要部署此解决方案，请遵循部署指南中提供的说明。 
+- 若要部署此解决方案，请遵循[部署指南](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md)中提供的说明。 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-有关本解决方案工作原理的简要概述，请观看[此视频](https://aka.ms/healthblueprintvideo)，其中解释并演示了其部署。
+- 有关本解决方案工作原理的简要概述，请观看[此视频](https://aka.ms/healthblueprintvideo)，其中解释并演示了其部署。
 
 - 常见问题可参阅[常见问题解答](https://aka.ms/healthblueprintfaq)指南。
 
 -   **体系结构图。** 此图显示了用于蓝图和示例用例方案的引用体系结构。
 
--   **部署模板**。 在此部署中，[Azure 资源管理器模板](/azure/azure-resource-manager/resource-group-overview#template-deployment)通过在安装期间指定配置参数，将体系结构的组件自动部署到 Microsoft Azure。
-
--   **[自动化部署脚本](https://aka.ms/healthblueprintdeploy)**。 这些脚本帮助部署解决方案。 脚本包括：
-
-
--   一个模块安装和[全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)设置脚本，用于安装所需的 PowerShell 模块，并验证是否已正确配置全局管理员角色。 
--   可以使用安装 PowerShell 脚本来部署通过 .zip 文件（其中包含预建的演示函数）提供的此解决方案。
+-   [IaaS 扩展](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) 此解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure，以及如何实现特权访问工作站以安全地管理基于云的服务和解决方案。 
 
 ## <a name="solution-components"></a>解决方案组件
 
@@ -71,7 +64,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 # <a name="architectural-diagram"></a>体系结构图
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>角色
 

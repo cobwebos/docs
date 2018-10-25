@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035736"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785251"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>如何：使用 Azure Active Directory 门户添加自定义域名
 每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain@contoso.com*。
@@ -84,7 +84,7 @@ ms.locfileid: "47035736"
 
     ![包含 DNS 条目信息和“验证”按钮的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-### <a name="common-verification-issues"></a>常见验证问题
+## <a name="common-verification-issues"></a>常见验证问题
 - 如果 Azure AD 无法验证自定义域名，请尝试以下建议的方法：
     - **至少等待一小时，然后重试**。 只有在传播 DNS 记录之后，Azure AD 才能验证域，而此过程可能需要一小时或更长时间。
 
@@ -92,7 +92,9 @@ ms.locfileid: "47035736"
 
     如果无法在注册机构站点上更新记录，必须与有权添加条目并验证其准确性的某人共享该条目。
 
-- **确保域名尚未在另一目录中使用。** 只能在一个目录中验证一个域名，这意味着，如果当前在另一目录中验证你的域名，则无法同时在新目录中验证该域名。 若要解决此重复问题，必须从旧目录中删除该域名。 有关删除域名的详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。 
+- **确保域名尚未在另一目录中使用。** 只能在一个目录中验证一个域名，这意味着，如果当前在另一目录中验证你的域名，则无法同时在新目录中验证该域名。 若要解决此重复问题，必须从旧目录中删除该域名。 有关删除域名的详细信息，请参阅[管理自定义域名](../users-groups-roles/domains-manage.md)。
+
+- **确保你没有任何未托管的 Power BI 租户。** 如果你的用户通过自助注册激活了 Power BI 并为你的组织创建了一个非托管租户，那么你必须使用 PowerShell 以内部或外部管理员的身份接管管理。 若要了解有关如何接管非托管目录的详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../users-groups-roles/domains-admin-takeover.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

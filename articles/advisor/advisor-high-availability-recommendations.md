@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: 7bd0737e7fb26af95eed63696d1ac07c88a9dec4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141005"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068343"
 ---
 # <a name="advisor-high-availability-recommendations"></a>顾问高可用性建议
 
@@ -67,6 +67,10 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 如果为地理路由配置了流量管理器配置文件，则会根据已定义的区域将流量路由到终结点。 如果某个区域出现故障，则不会进行预定义的故障转移。 拥有一个“区域分组”配置为“所有(世界)”的终结点可避免流量被丢弃并提高服务可用性。 顾问会识别为地理路由配置的流量管理器配置文件（其中没有终结点配置为将“区域分组”设置为“所有(世界)”），并建议更改该配置。
 
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>对 Azure 存储帐户使用软删除可在意外覆盖或删除时保存和恢复数据
+
+为存储帐户启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)，以便将删除的 blob 转换为软删除状态，而不是永久删除。 覆盖数据时，会生成软删除快照以保存被覆盖数据的状态。 这允许你在意外删除或覆盖时恢复。 顾问会识别未启用软删除的 Azure 存储帐户，并建议你启用它。
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
@@ -78,7 +82,7 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 有关顾问建议的详细信息，请参阅以下资源：
 * [Azure 顾问简介](advisor-overview.md)
 * [顾问入门](advisor-get-started.md)
-* [顾问成本建议](advisor-performance-recommendations.md)
+* [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
 

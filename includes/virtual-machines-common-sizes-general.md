@@ -5,17 +5,19 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369551"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904693"
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数以及存储吞吐量的相关信息。 
+
+- [DC 系列](#dc-series)是 Azure 中的一个新虚拟机系列，可以在公有云中处理数据和代码时帮助保护数据和代码的机密性和完整性。 这些虚拟机由最新一代采用 SGX 技术的 3.7GHz Intel XEON E-2176G 处理器提供支持。 借助 Intel Turbo Boost Technology，这些虚拟机最高可以达到 4.7GHz。 客户使用 DC 系列实例可以构建安全的基于 enclave 的应用程序，以在使用该系列时保护其代码和数据。
 
 - Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 A 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 根据硬件限制大小，为运行中的实例提供一致的处理器性能，不论硬件部署的位置。 若要判断此大小部署所在的物理硬件，请从虚拟机中查询虚拟硬件。
 
@@ -26,6 +28,7 @@ ms.locfileid: "44369551"
 - Dv3 系列在超线程配置中采用 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器或最新的 2.3 GHz Intel XEON ® E5-2673 v4 (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。  Dv3 不再有 D/Dv2 系列的高内存 VM 大小，那些已成为新的 EV3 系列。
 
   示例 D 系列用例包括企业级应用程序、关系数据库、内存中缓存和分析。 
+  
 
 ## <a name="b-series"></a>B 系列
 
@@ -138,6 +141,7 @@ ACU：100
 
 高级存储缓存：不支持
 
+
 | 大小            | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
@@ -149,6 +153,22 @@ ACU：100
 | Standard_A8m_v2 | 8         | 64          | 80             | 8000/160/80                                          | 16/16x500             | 8 / 2000                     |
 
 <br>
+
+
+## <a name="dc-series"></a>DC 系列
+
+高级存储：支持
+
+高级存储缓存：支持
+
+
+
+| 大小          | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+
 
 
 

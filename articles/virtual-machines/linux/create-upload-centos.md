@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: d7c35b79dcdf75dbb3f891dc4c66cbf893b61c03
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777682"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888385"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
 * [为 Azure 准备 CentOS 6.x 虚拟机](#centos-6x)
@@ -298,7 +298,7 @@ ms.locfileid: "33777682"
    
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. 如果要从 **VMWare、VirtualBox 或 KVM** 中生成映像：请确保 initramfs 中包含 Hyper-V 驱动程序：
+10. 如果要从 **VMware、VirtualBox 或 KVM** 生成映像：请确保 initramfs 中包含 Hyper-V 驱动程序：
    
    编辑 `/etc/dracut.conf`，添加内容：
    

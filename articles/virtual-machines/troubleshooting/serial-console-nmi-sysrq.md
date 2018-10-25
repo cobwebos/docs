@@ -3,7 +3,7 @@ title: 用于 SysRq 和 NMI 调用的 Azure 串行控制台 | Microsoft Docs
 description: 在 Azure 虚拟机中使用串行控制台发出 SysRq 和 NMI 调用。
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6f46a1d6964af867b7b0671d020002d1c1de19ae
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411205"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884636"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
@@ -30,11 +30,11 @@ SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预�
 
 可以使用下面显示的命令栏上的键盘图标通过 Azure 串行控制台向 Azure 虚拟机发送 SysRq。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 选择“发送 SysRq 命令”会打开一个对话框，其中提供了常用 SysRq 选项，或者可以接受该对话框中输入的 SysRq 命令序列。  这样，SysRq 序列便可以执行某个高级别的操作，例如，使用 `REISUB` 执行安全重新启动。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 不能在已停止或者其内核处于无响应状态的虚拟机上使用 SysRq 命令。 （例如内核崩溃）。
 
@@ -103,8 +103,9 @@ echo "1" >/proc/sys/kernel/sysrq
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>启用 NMI
 对于支持使用 sysctl 配置内核参数的 Linux 系统，可以使用以下步骤来启用收到此 NMI 时发生崩溃：
 1. 将此行添加到 */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`

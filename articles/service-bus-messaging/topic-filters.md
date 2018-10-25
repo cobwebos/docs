@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699380"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853515"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "43699380"
 
 -   *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。
 
--   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)可测试属性是否存在 (EXISTS)，以及是否为 null 值 (IS NULL)、逻辑“非”/“与”/“或”、关系运算符、简单数值算术和简单文本模式匹配（使用 LIKE 进行）。
+-   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)可测试属性是否存在 (`EXISTS`)，以及是否为 null 值 (`IS NULL`)、逻辑“非”/“与”/“或”、关系运算符、简单数值算术和简单文本模式匹配（使用 `LIKE` 进行）。
 
 -   *相关筛选器* - **CorrelationFilter** 包含一组条件，这些条件按照到达消息的一个或多个用户和系统属性进行匹配。 一个常见用法是按照 **CorrelationId** 属性进行匹配，不过应用程序还可以选择按照 **ContentType** **Label**、**MessageId** **ReplyTo** **ReplyToSessionId**、**SessionId**、**To** 和任何用户定义属性进行匹配。 当到达消息的某个属性值等于相关筛选器中指定的值时，便存在匹配。 对于字符串表达式，比较会区分大小写。 指定多个匹配属性时，筛选器会将它们合并为逻辑“与”条件，这意味着若要使筛选器匹配，所有条件都必须匹配。
 
@@ -40,7 +40,7 @@ ms.locfileid: "43699380"
 
 ## <a name="actions"></a>操作
 
-使用 SQL 筛选条件，并且只有使用它们，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 在匹配之后以及将消息选择到主题中之前对消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
+使用 SQL 筛选条件，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 在匹配之后以及将消息选择到主题中之前对消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
 
 ## <a name="usage-patterns"></a>使用模式
 
@@ -56,7 +56,6 @@ ms.locfileid: "43699380"
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [SQLFilter 语法](service-bus-messaging-sql-filter.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

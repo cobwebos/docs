@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d53877dbcc25edad14714633bfa11a0c3cbbf76e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433252"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>教程：Azure Active Directory 与 Expensify 的集成
 
@@ -56,25 +56,26 @@ ms.locfileid: "39433252"
 1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-expensify-from-the-gallery"></a>从库中添加 Expensify
+
 要配置 Expensify 与 Azure AD 的集成，需要从库中将 Expensify 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Expensify，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![“Azure Active Directory”按钮][1]
+    ![图像](./media/expensify-tutorial/selectazuread.png)
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡][2]
+    ![图像](./media/expensify-tutorial/a_select_app.png)
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![图像](./media/expensify-tutorial/a_new_app.png)
 
-1. 在搜索框中，键入“Expensify”，在结果面板中选择“Expensify”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Expensify”，在结果面板中选择“Expensify”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 Expensify](./media/expensify-tutorial/tutorial_expensify_addfromgallery.png)
+     ![图像](./media/expensify-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -98,84 +99,75 @@ ms.locfileid: "39433252"
 
 **若要配置 Expensify 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的“Expensify”应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Expensify”应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![图像](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
-    ![“单一登录”对话框](./media/expensify-tutorial/tutorial_expensify_samlbase.png)
+2. 单击屏幕顶部的“更改单一登录模式”，以选择 **SAML** 模式。
 
-1. 在“Expensify 域和 URL”部分中，执行以下步骤：
+      ![图像](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
-    ![Expensify 域和 URL 单一登录信息](./media/expensify-tutorial/tutorial_expensify_url.png)
+3. 在“选择单一登录方法”对话框中，对 **SAML** 模式单击“选择”以启用单一登录。
 
-    a. 在“登录 URL”文本框中，将 URL 键入为：`https://www.expensify.com/authentication/saml/login`
+    ![图像](./media/expensify-tutorial/b1_b2_saml_sso.png)
+
+4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+
+    ![图像](./media/expensify-tutorial/b1-domains_and_urlsedit.png)
+
+5. 在“基本 SAML 配置”部分中，执行以下步骤：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://www.expensify.com/authentication/saml/login`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.<companyname>.expensify.com`
 
+    ![图像](./media/expensify-tutorial/b1-domains_and_urls.png)
+
     > [!NOTE] 
-    > 将标识符 URL 的 `<companyname>` 部分替换为公司的域。 请参阅上面的示例 `https://contoso.expensify.com`。 请联系 [Expensify 客户端支持团队](mailto:help@expensify.com)获取此值。
+    > 将标识符 URL 的 <companyname> 部分替换为公司的域。 请参阅上面的示例 `https://contoso.expensify.com`。 在 Expensify 中，这是“设置”>“域控制”中显示的域名。
 
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+    ![Expensify 域信息](./media/expensify-tutorial/tutorial_expensify_domain.png)
 
-    ![证书下载链接](./media/expensify-tutorial/tutorial_expensify_certificate.png) 
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以根据要求下载相应的证书并将其保存在计算机上。
 
-1. 单击“保存”按钮。
+    ![图像](./media/expensify-tutorial/certificatebase64.png)
 
-    ![配置单一登录“保存”按钮](./media/expensify-tutorial/tutorial_general_400.png)
-
-1. 若要在 Expensify 中启用 SSO，首先需要在应用程序中启用“域控制”。 可以通过[此处](http://help.expensify.com/domain-control)列出的步骤在应用程序中启用“域控制”。 有关其他支持，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。 在启用“域控制”后，执行以下步骤：
+7. 若要在 Expensify 中启用 SSO，首先需要在应用程序中启用“域控制”。 可以通过[此处](http://help.expensify.com/domain-control)列出的步骤在应用程序中启用“域控制”。 有关其他支持，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。 在启用“域控制”后，执行以下步骤：
    
     ![配置单一登录](./media/expensify-tutorial/tutorial_expensify_51.png)
     
-    a. 登录到 Expensify 应用程序。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录到 Expensify 应用程序。
     
-    b. 在顶部工具栏中，单击“管理”。
+    b. 在左侧面板中，单击“设置”，然后导航至 **SAML**。
     
-    c. 在左面板中，单击“域”。
+    c. 将“SAML 登录”选项切换为“已启用”。
     
-    d. 单击已验证的域名。
-    
-    e. 在左面板中，单击“SAML”，并选择“启用”。
-    
-    f. 在记事本中打开来自 Azure AD 的已下载联合元数据，然后复制其内容并粘贴到“标识提供者元数据”文本框。
+    d. 在记事本中打开来自 Azure AD 的已下载联合元数据，然后复制其内容并粘贴到“标识提供者元数据”文本框。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”和“用户”，然后选择“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![图像](./media/expensify-tutorial/d_users_and_groups.png)
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/expensify-tutorial/create_aaduser_01.png)
+    ![图像](./media/expensify-tutorial/d_adduser.png)
 
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在用户属性中执行以下步骤。
 
-    ![“用户和组”以及“所有用户”链接](./media/expensify-tutorial/create_aaduser_02.png)
+    ![图像](./media/expensify-tutorial/d_userproperties.png)
 
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    ![“添加”按钮](./media/expensify-tutorial/create_aaduser_03.png)
+    c. 选择“属性”，再选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-1. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/expensify-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
+    d. 选择“创建”。
  
 ### <a name="create-an-expensify-test-user"></a>创建 Expensify 测试用户
 
@@ -185,31 +177,25 @@ ms.locfileid: "39433252"
 
 本部分将通过向 Britta Simon 授予访问 Expensify 的权限，允许其使用 Azure 单一登录。
 
-![分配用户角色][200] 
+1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-**要将 Britta Simon 分配到 Expensify，请执行以下步骤：**
+    ![图像](./media/expensify-tutorial/d_all_applications.png)
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+2. 在应用程序列表中，选择“Expensify”。
 
-    ![分配用户][201] 
+    ![图像](./media/expensify-tutorial/d_all_proapplications.png)
 
-1. 在应用程序列表中，选择“Expensify”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![应用程序列表中的 Expensify 链接](./media/expensify-tutorial/tutorial_expensify_app.png)  
+    ![图像](./media/expensify-tutorial/d_leftpaneusers.png)
 
-1. 在左侧菜单中，单击“用户和组”。
+4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![图像](./media/expensify-tutorial/d_assign_user.png)
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后选择屏幕底部的“选择”按钮。
 
-    ![“添加分配”窗格][203]
-
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
-
-1. 在“用户和组”对话框中单击“选择”按钮。
-
-1. 在“添加分配”对话框中单击“分配”按钮。
+5. 在“添加分配”对话框中，选择“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
@@ -221,19 +207,8 @@ ms.locfileid: "39433252"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/expensify-tutorial/tutorial_general_01.png
-[2]: ./media/expensify-tutorial/tutorial_general_02.png
-[3]: ./media/expensify-tutorial/tutorial_general_03.png
-[4]: ./media/expensify-tutorial/tutorial_general_04.png
 
-[100]: ./media/expensify-tutorial/tutorial_general_100.png
-
-[200]: ./media/expensify-tutorial/tutorial_general_200.png
-[201]: ./media/expensify-tutorial/tutorial_general_201.png
-[202]: ./media/expensify-tutorial/tutorial_general_202.png
-[203]: ./media/expensify-tutorial/tutorial_general_203.png
 

@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0ac19ec18c443f677260ba22b6bce1c06237fb2e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405914"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816424"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -93,7 +93,43 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>指标警报支持的资源类型
 
-可在[此文](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表
+可在[此文](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
+
+如果你现在使用经典指标警报并且想要了解指标警报是否支持所使用的所有资源类型，则下表显示了经典指标警报支持的资源类型，以及这些资源类型现在是否受到指标警报支持。
+
+|经典指标警报支持的资源类型 | 受指标警报支持 |
+|-------------------------------------------------|----------------------------|
+| Microsoft.ApiManagement/service | 是 |
+| Microsoft.Batch/batchAccounts| 是|
+|Microsoft.Cache/redis| 是
+|Microsoft.ClassicCompute/virtualMachines | 否 |
+|Microsoft.ClassicCompute/domainNames/slots/roles | 否|
+|Microsoft.CognitiveServices/accounts | 否 |
+|Microsoft.Compute/virtualMachines | 是|
+|Microsoft.Compute/virtualMachineScaleSets| 是|
+|Microsoft.ClassicStorage/storageAccounts| 否 |
+|Microsoft.DataFactory/datafactories | 是|
+|Microsoft.DBforMySQL/servers| 是|
+|Microsoft.DBforPostgreSQL/servers| 是|
+|Microsoft.Devices/IotHubs | 否|
+|Microsoft.DocumentDB/databaseAccounts| 否|
+|Microsoft.EventHub/namespaces | 是|
+|Microsoft.Logic/workflows | 是|
+|Microsoft.Network/loadBalancers |是|
+|Microsoft.Network/publicIPAddresses| 是|
+|Microsoft.Network/applicationGateways| 是|
+|Microsoft.Network/expressRouteCircuits| 是|
+|Microsoft.Network/trafficManagerProfiles | 是|
+|Microsoft.Search/searchServices | 否|
+|Microsoft.ServiceBus/namespaces| 否|
+|Microsoft.Storage/storageAccounts | 是|
+|Microsoft.StreamAnalytics/streamingjobs| 是|
+|Microsoft.TimeSeriesInsights/environments | 是|
+|Microsoft. Web/serverfarms | 是 |
+|Microsoft. Web/sites（不包括函数） | 是|
+|Microsoft. Web/hostingEnvironments/multiRolePools | 否|
+|Microsoft. Web/hostingEnvironments/workerPools| 否
+|Microsoft.SQL/Servers | 否|
 
 ## <a name="next-steps"></a>后续步骤
 

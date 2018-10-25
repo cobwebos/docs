@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: c2d4317bcbf70a0cebf6ab1915968eeb9ef8b4c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6273f265ebb5f9a2336040aacc01d1428fd0db11
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992620"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077742"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -48,7 +48,7 @@ ms.locfileid: "46992620"
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 
-在 PowerShell 中，需要使用 Add-AzureRmManagementGroups cmdlet：
+在 PowerShell 中，使用 New-AzureRmManagementGroups cmdlet：
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroup -GroupName 'Contoso'
@@ -69,7 +69,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -Pa
 在 Azure CLI 中，可以使用 az account management-group create 命令。
 
 ```azurecli-interactive
-az account management-group create --group-name 'Contoso'
+az account management-group create --name 'Contoso'
 ```
 
 ## <a name="next-steps"></a>后续步骤

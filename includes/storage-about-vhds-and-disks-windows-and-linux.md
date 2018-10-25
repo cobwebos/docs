@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47389992"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874099"
 ---
 ## <a name="about-vhds"></a>关于 VHD
 
@@ -34,11 +34,11 @@ Azure 中想要用作磁盘或映像创建源的所有 .VHD 文件都是只读�
 
 Azure 磁盘具备 99.999% 的可用性。 Azure 磁盘持续提供企业级持久性，年化故障率为 0%，达到行业领先水平。
 
-在创建磁盘时，有三种适用于存储的性能层可供选择 -- 高级 SSD 磁盘、标准 SSD（预览）、标准 HDD 存储。 另外还有两类磁盘 -- 非托管磁盘和托管磁盘。
+在创建磁盘时，有三种适用于存储的性能层可供选择 -- 高级 SSD 盘、标准 SSD、标准 HDD 存储。 另外还有两类磁盘 -- 非托管磁盘和托管磁盘。
 
 ### <a name="standard-hdd-disks"></a>标准 HDD 磁盘
 
-标准 HDD 磁盘受 HDD 支持，提供经济高效的存储。 标准 HDD 存储可以在一个数据中心进行本地复制，也可以通过主要数据中心和辅助数据中心实现异地冗余。 有关存储复制的详细信息，请参阅 [Azure 存储复制](../articles/storage/common/storage-redundancy.md)。 
+标准 HDD 磁盘受 HDD 支持，提供经济高效的存储。 标准 HDD 存储可以在一个数据中心进行本地复制，也可以通过主要数据中心和辅助数据中心实现异地冗余。 有关存储复制的详细信息，请参阅 [Azure 存储复制](../articles/storage/common/storage-redundancy.md)。
 
 若要详细了解如何使用标准 HDD 磁盘，请参阅[标准存储和磁盘](../articles/virtual-machines/windows/standard-storage.md)。
 

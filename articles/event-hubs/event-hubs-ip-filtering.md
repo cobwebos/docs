@@ -3,19 +3,19 @@ title: Azure 事件中心 IP 连接筛选器 | Microsoft Docs
 description: 使用 IP 筛选阻止从特定 IP 地址到 Azure 事件中心的连接。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2018
-ms.author: shvija
-ms.openlocfilehash: 6d96eac3ecd249de3ba0da82eff95c45e45fa02d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.date: 10/08/2018
+ms.author: spelluru
+ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746189"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886171"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -48,6 +48,9 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与事件中心交互。
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络规则
+
+> [!IMPORTANT]
+> 事件中心的**标准**和**专用**层支持虚拟网络。 基本层不支持它。 
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加虚拟网络规则。
 

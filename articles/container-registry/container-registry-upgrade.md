@@ -2,18 +2,17 @@
 title: 升级经典 Azure 容器注册表
 description: 通过升级非托管的经典容器注册表，利用基本、标准和高级托管容器注册表的扩展功能集。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: marsma
-ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.author: danlep
+ms.openlocfilehash: fd22677c2acc9e61abc082b3515a817c01c163cb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189015"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855952"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 

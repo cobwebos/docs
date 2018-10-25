@@ -1,26 +1,18 @@
 ---
-title: 使用 Azure DNS 管理 DNS 记录集和记录 | Microsoft Docs
+title: 使用 Azure DNS 管理 DNS 记录集和记录
 description: Azure DNS 在托管域时具有管理 DNS 记录集和记录的功能。
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451386"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853702"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
 
@@ -120,3 +112,4 @@ Azure 门户可用于从记录集中删除记录。 请注意，从记录集中�
 * 有关 Azure DNS 的详细信息，请参阅 [Azure DNS 概述](dns-overview.md)。
 * 有关自动执行 DNS 的详细信息，请参阅[使用 .NET SDK 创建 DNS 区域和记录集](dns-sdk.md)。
 * 有关反向 DNS 记录的详细信息，请参阅 [Azure 中的反向 DNS 和支持概述](dns-reverse-dns-overview.md)。
+* 有关 Azure DNS 别名记录的详细信息，请参阅 [Azure DNS 别名记录概述](dns-alias.md)。

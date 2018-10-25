@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 6dd4aacddfbce3e06c1ea9a356a559cc8cd8049c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166480"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870972"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -89,7 +89,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>如何限制或控制对数据库的连接访问？
 你可以任意使用多种技术来组织应用程序的连接。 
 - 防火墙规则
-- VNET 服务终结点
+- VNet 服务终结点
 - 保留 IP
 
 #### <a name="firewall"></a>防火墙
@@ -98,11 +98,11 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 可以创建服务器级或数据库级的防火墙规则。 可通过门户或 SSMS 创建服务器级防火墙规则。 有关如何设置服务器和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建防火墙规则](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)。
 
 #### <a name="service-endpoints"></a>服务终结点
-默认情况下，SQL 数据库配置为“允许 Azure 服务访问服务器” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置[VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
+默认情况下，SQL 数据库配置为“允许 Azure 服务访问服务器” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置 [VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
 
 通过服务终结点 (SE) 可以仅向自己在 Azure 中的专用虚拟网络公开关键 Azure 资源。 以此从根本上阻止了对资源的公共访问。 虚拟网络与 Azure 间的流量位于 Azure 主干网络上。 无 SE 时，可获得强制隧道数据包路由。 虚拟网络强制组织的 Internet 流量和 Azure 服务流量通过相同的路由。 借助服务终结点，可优化这进程，因为数据包直接从虚拟网络流向 Azure 主干网络上的服务。
 
-![VNET 服务终结点](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
+![VNet 服务终结点](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
 
 #### <a name="reserved-ips"></a>保留 IP
 另一种方法是为 VM 设置[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并将服务器防火墙设置中的那些特定 VM IP 地址列入允许列表。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。

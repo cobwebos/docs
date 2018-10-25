@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2018
+ms.date: 10/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9043c6583a15d3be9d0d468e83a4bf79b3121794
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d0455e549745e743e7a8c0f65cb56a1e16dfb131
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304112"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044070"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
@@ -34,7 +34,8 @@ ms.locfileid: "44304112"
 > - 目前不支持虚拟机规模集的数据收集。
 
 
-## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>启用 Microsoft Monitoring Agent 的自动设置     
+## 启用 Microsoft Monitoring Agent 的自动预配 <a name="auto-provision-mma"></a>
+
 若要从计算机收集数据，应安装 Microsoft Monitoring Agent。  可以自动安装该代理（建议），也可以选择手动安装。  
 
 >[!NOTE]
@@ -61,8 +62,8 @@ ms.locfileid: "44304112"
 > - 有关如何预配现有安装的说明，请参阅[对现有的代理安装进行自动预配](#preexisting)。
 > - 有关手动预配的说明，请参阅[手动安装 Microsoft Monitoring Agent 扩展](#manualagent)。
 > - 有关关闭自动预配的说明，请参阅[关闭自动预配](#offprovisioning)。
+> - 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。
 >
-
 
 ## <a name="workspace-configuration"></a>工作区配置
 安全中心收集的数据存储在 Log Analytics 工作区中。  可以选择从存储在安全中心创建的工作区或创建的现有工作区中的 Azure VM 收集数据。 
@@ -132,7 +133,7 @@ ms.locfileid: "44304112"
 
 5. 选择要在其中设置 Microsoft Monitoring Agent 的所需工作区的定价层。 <br>若要使用现有工作区，请设置该工作区的定价层。 这会在该工作区中安装一个安全中心解决方案（如果尚不存在）。
 
-    a.  在安全中心主菜单中，选择“安全策略”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
      
     b.  选择要在其中连接代理的所需工作区。
         ![选择工作区][8] c. 设置定价层。
@@ -146,12 +147,17 @@ ms.locfileid: "44304112"
 
 
 ## <a name="data-collection-tier"></a>数据收集层
-安全中心可以减少事件数量，同时保留足够数量的事件用于调查、审核和威胁检测。 可以从代理要收集的四个事件集中为订阅和工作区选择权限筛选策略。
+在 Azure 安全中心选择数据收集层只会影响 Log Analytics 工作区中安全事件的存储。 无论你选择在 Log Analytics 工作区中存储哪一层安全事件（如果有），Microsoft Monitoring Agent 仍将收集和分析 Azure 安全中心威胁检测所需的安全事件。 选择在工作区中存储安全事件将允许在工作区中调查、搜索和审核这些事件。 
+> [!NOTE]
+> 在 Log Analytics 中存储数据可能会产生额外的数据存储费用，有关详细信息，请参阅定价页。
+>
+可以根据要在工作区中存储的四组事件为订阅和工作区选择正确的筛选策略： 
 
-- 所有事件 – 适用于想要确保已收集所有事件的客户。 这是默认值。
-- 通用 – 这是一个事件集，可满足大多数客户的需求，使他们可以进行完整的审核跟踪。
+- **无** - 禁用安全事件存储。 此设置为默认设置。
 - 最小 – 一个较小事件集，适合希望最大程度地减小事件量的客户。
-- 无 – 从安全和 App Locker 日志禁用安全事件收集。 如果客户选择此选项，他们的安全仪表板只包含 Windows 防火墙日志和主动评估，如反恶意软件、基线和更新评估。
+- 通用 – 这是一个事件集，可满足大多数客户的需求，使他们可以进行完整的审核跟踪。
+- 所有事件 - 适用于想要确保存储所有事件的客户。
+
 
 > [!NOTE]
 > 这些安全事件集仅在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
@@ -240,7 +246,7 @@ ms.locfileid: "44304112"
 1.  选择自动预配 - 关闭。
 2.  创建工作区，并指定要在其中设置 Microsoft Monitoring Agent 的工作区的定价层：
 
-    a.  在安全中心主菜单中，选择“安全策略”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
      
     b.  选择要在其中连接代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
         ![选择工作区][8]
@@ -252,7 +258,7 @@ ms.locfileid: "44304112"
 
 4.  若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
 
-    a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
     
     b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
 5.  若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../log-analytics/log-analytics-quick-collect-azurevm.md)中的说明。
@@ -260,7 +266,7 @@ ms.locfileid: "44304112"
   > [!NOTE]
   > “收集事件和性能数据”部分是可选的。
   >
-6. 若要使用 PowerShell 部署扩展：请使用以下 PowerShell 示例：
+6. 若要使用 PowerShell 部署扩展，请使用以下 PowerShell 示例：
     1.  转到“Log Analytics”并单击“高级设置”。
     
         ![设置 Log Analytics][11]
@@ -288,17 +294,17 @@ ms.locfileid: "44304112"
         
              Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
-
-
+> [!NOTE]
+> 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
 -   若要识别自动预配安装问题，请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)。
 
 -  若要确定监视代理网络要求，请参阅[监视代理网络要求故障排除](security-center-troubleshooting-guide.md#mon-network-req)。
--   若要识别手动加入问题，请参阅[如何排查 Operations Management Suite 加入问题](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)
+-   若要识别手动加入问题，请参阅[如何排查 Operations Management Suite 加入问题](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)。
 
-- 若要识别未监视的 VM 和计算机问题，请参阅[未监视的 VM 和计算机](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)
+- 若要识别未监视的 VM 和计算机问题，请参阅[未监视的 VM 和计算机](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下文章：

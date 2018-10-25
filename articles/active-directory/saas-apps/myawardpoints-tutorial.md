@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184445"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>教程：Azure Active Directory 与 My Award Points Top Sub/Top Team 的集成
 
@@ -50,7 +50,8 @@ ms.locfileid: "47184445"
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 My Award Points Top Sub/Top Team
 2. 配置和测试 Azure AD 单一登录
@@ -112,7 +113,7 @@ ms.locfileid: "47184445"
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
 
     > [!NOTE]
-    > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [My Award Points Top Sub/Top Team 客户端支持团队](mailto:myawardpoints@biworldwide.com)获取此值。
+    > 将在本教程的后续步骤中获取 `<SAMLENTITYID>` 值。
 
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -122,7 +123,9 @@ ms.locfileid: "47184445"
 
     ![配置单一登录“保存”按钮](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. 若要在 **My Award Points Top Sub/Top Team** 端配置单一登录，需将下载的**元数据 XML** 发送到 [My Award Points Top Sub/Top Team 支持团队](mailto:myawardpoints@biworldwide.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+6. 在“My Award Points Top Sub/Top Team 配置”部分中，选择“配置 My Award Points Top Sub/Top Team”以打开“配置单一登录”窗口。 从“快速参考”部分复制 SAML 实体 ID，并在 Azure 门户的“My Award Points Top Sub/Top Team 域和 URL”部分中将 SAML 实体 ID 值追加到登录 URL 中，以替换 `<SAMLENTITYID>`。
+
+7. 若要在 **My Award Points Top Sub/Top Team** 端配置单一登录，需将下载的**元数据 XML** 发送到 [My Award Points Top Sub/Top Team 支持团队](mailto:myawardpoints@biworldwide.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -200,7 +203,7 @@ ms.locfileid: "47184445"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 10/10/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cc206e1134fe6df0280512e89447336a32a2d810
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953933"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068348"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -57,6 +57,8 @@ ms.locfileid: "46953933"
 ## <a name="requirements-for-virtual-network-configuration"></a>虚拟网络配置需求
 -   请确保 `Microsoft.Batch` 是托管 Azure-SSIS IR 的虚拟网络子网订阅下的已注册提供程序。 如果使用的是经典虚拟网络，也请将 `MicrosoftAzureBatch` 加入到该虚拟网络的经典虚拟机参与者角色。 
 
+-   请确保具有所需的权限。 请参阅[所需的权限](#perms)。
+
 -   选择合适的子网，承载 Azure-SSIS IR。 请参阅[选择子网](#subnet)。 
 
 -   如果要在虚拟网络上使用自己的域名服务 (DNS) 服务器，请参阅[域名服务服务器](#dns_server)。 
@@ -66,6 +68,18 @@ ms.locfileid: "46953933"
 -   如果要使用 Azure Express Route 或配置用户定义路由 (UDR)，请参阅[使用 Azure ExpressRoute 或用户定义路由](#route)。 
 
 -   请确保虚拟网络的资源组可以创建和删除特定 Azure 网络资源。 请参阅[资源组需求](#resource-group)。 
+
+### <a name="perms"></a> 所需的权限
+
+创建 Azure-SSIS Integration Runtime 的用户必须具有以下权限：
+
+- 如果要将 SSIS IR 加入当前版本的 Azure 虚拟网络，则有两种选择：
+
+  - 使用内置角色*网络参与者*。 但是，此角色需要 *Microsoft.Network/\** 权限，其范围要大得多。
+
+  - 创建包含权限 *Microsoft.Network/virtualNetworks/\*/join/action* 的自定义角色。 
+
+- 如果要将 SSIS IR 加入经典 Azure 虚拟网络，我们建议你使用内置角色“经典虚拟机参与者”。 否则，你必须定义包含加入虚拟网络权限的自定义角色。
 
 ### <a name="subnet"></a>选择子网
 -   不要选择 GatewaySubnet 用于部署 Azure-SSIS 集成运行时，因为它专用于虚拟网络网关。 
@@ -88,7 +102,7 @@ ms.locfileid: "46953933"
 ### <a name="nsg"></a>网络安全组
 如果需要为 Azure-SSIS 集成运行时使用的子网实现网络安全组 (NSG)，请通过以下端口允许入站/出站流量： 
 
-| 方向 | 传输协议 | Source | 源端口范围 | 目标 | 目标端口范围 | 注释 |
+| 方向 | 传输协议 | 源 | 源端口范围 | 目标 | 目标端口范围 | 注释 |
 |---|---|---|---|---|---|---|
 | 入站 | TCP | Internet | * | VirtualNetwork | 29876、29877（如果将 IR 加入 Azure 资源管理器虚拟网络） <br/><br/>10100、20100、30100（如果将 IR 加入经典虚拟网络）| 数据工厂服务使用这些端口来与虚拟网络中 Azure-SSIS 集成运行时的节点通信。 <br/><br/> 无论是否创建子网级 NSG，数据工厂都始终会在附加到托管 Azure-SSIS IR 的虚拟机的网络接口卡 (NIC) 级别配置 NSG。 此 NIC 级别的 NSG 仅允许来自指定端口上的数据工厂 IP 地址的入站流量。 即使在子网级别为 Internet 流量打开这些端口，来自 IP 地址（非数据工厂 IP 地址）的流量也会在 NIC 级别被阻止。 |
 | 出站 | TCP | VirtualNetwork | * | Internet | 443 | 虚拟网络中 Azure-SSIS 集成运行时的节点使用此端口来访问 Azure 服务，例如 Azure 存储和 Azure 事件中心。 |
@@ -178,7 +192,7 @@ ms.locfileid: "46953933"
 
 1. 将 **MicrosoftAzureBatch** 加入虚拟网络的“经典虚拟机参与者”角色。 
 
-    a. 在左侧菜单中选择“访问控制(IAM)”，并在工具栏中选择“添加”。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左侧菜单中选择“访问控制(IAM)”，并在工具栏中选择“添加”。 
 
     ![“访问控制”和“添加”按钮](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
@@ -196,7 +210,7 @@ ms.locfileid: "46953933"
 
 1. 验证是否已将 Azure Batch 提供程序注册到包含虚拟网络的 Azure 订阅中。 或者注册 Azure Batch 提供程序。 如果订阅中已包含 Azure Batch 帐户，则已经为 Azure Batch 注册了订阅。 （如果在数据工厂门户中创建 Azure-SSIS IR，将自动注册 Azure Batch 提供程序。） 
 
-   a. 在 Azure 门户上的左侧菜单中，选择“订阅”。 
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户上的左侧菜单中，选择“订阅”。 
 
    b. 选择订阅。 
 
@@ -239,7 +253,7 @@ ms.locfileid: "46953933"
 
 1. 在“高级设置”页上执行以下操作： 
 
-   a. 选中“选择 Azure-SSIS 集成运行时要加入的 VNet，并允许 Azure 服务配置 VNet 权限/设置”复选框。 
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选中“选择 Azure-SSIS 集成运行时要加入的 VNet，并允许 Azure 服务配置 VNet 权限/设置”复选框。 
 
    b. 对于“类型”，请选择虚拟网络是经典虚拟网络还是 Azure 资源管理器虚拟网络。 
 

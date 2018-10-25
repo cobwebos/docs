@@ -1,5 +1,5 @@
 ---
-title: Azure AD SAML 协议参考 | Microsoft Docs
+title: Azure AD 使用 SAML 协议的方式 | Microsoft Docs
 description: 本文概述 Azure Active Directory 中的单一登录和单一注销 SAML 配置文件。
 services: active-directory
 documentationcenter: .net
@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 067924294838459c866a0603ab092d139f1e6331
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.reviewer: hirsin
+ms.openlocfilehash: b9ae7cf9d6fd383c7cdfa3957b5d9b94c7207d50
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579225"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900649"
 ---
-# <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Azure Active Directory 如何使用 SAML 协议
+# <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 使用 SAML 协议的方式
+
 Azure Active Directory (Azure AD) 使用 SAML 2.0 协议，使应用程序能够为其用户提供单一登录体验。 Azure AD 的[单一登录](single-sign-on-saml-protocol.md)和[单一注销](single-sign-out-saml-protocol.md) SAML 配置文件说明了如何在标识提供者服务中使用 SAML 断言、协议和绑定。
 
 SAML 协议要求标识提供者 (Azure AD) 与服务提供者（应用程序）交换有关自身的信息。

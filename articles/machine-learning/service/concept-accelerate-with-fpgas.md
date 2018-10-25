@@ -1,6 +1,6 @@
 ---
-title: 什么是 FPGA 和 Project Brainwave？ - Azure 机器学习
-description: 了解如何在 Azure 上借助 FPGA 加快模型和深度神经网络的速度。 本文简单介绍了现场可编程门阵列 (FPGA)，以及在将模型部署到 Azure FPGA 时，如何通过 Azure 机器学习来提供实时人工智能 (AI)。
+title: 什么是 FPGA 和 Project Brainwave？ - Azure 机器学习服务
+description: 了解如何在 Azure 上借助 FPGA 加快模型和深度神经网络的速度。 本文简单介绍了现场可编程门阵列 (FPGA)，以及在将模型部署到 Azure FPGA 时，如何通过 Azure 机器学习服务来提供实时人工智能 (AI)。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 9/24/2018
-ms.openlocfilehash: adcd812bc63f98e4cbde949946bf32a037c6d704
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158678"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238849"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>什么是 FPGA 和 Project Brainwave？
 
-本文简单介绍了现场可编程门阵列 (FPGA)，以及在将模型部署到 Azure FPGA 时，如何通过 Azure 机器学习来提供实时人工智能 (AI)。
+本文简单介绍了现场可编程门阵列 (FPGA)，以及在将模型部署到 Azure FPGA 时，如何通过 Azure 机器学习服务来提供实时人工智能 (AI)。
 
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA 与CPU、GPU 和 ASIC 的对比
 
-![Azure 机器学习 FPGA 比较](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Azure 机器学习服务 FPGA 比较](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |处理器||Description|
 |---|:-------:|------|

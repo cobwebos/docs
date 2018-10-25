@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893960"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855929"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
@@ -43,7 +43,7 @@ ms.locfileid: "33893960"
 查看此清单之前，建议阅读 [Azure 数据库安全性最佳做法](https://docs.microsoft.com/azure/security/azure-database-security-best-practices)一文。 了解最佳做法后，便能够充分利用此清单。 然后，可使用此清单确保解决重要的 Azure 数据库安全性问题。
 
 
-|清单类别| 说明|
+|清单类别| Description|
 | ------------ | -------- |
 |**保护数据**||
 | <br> 动态加密/传输中加密| <ul><li>[传输层安全性](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)，用于数据移动到网络时的数据加密。</li><li>数据库要求来自于客户端的通信是基于 [TDS（表格格式数据流）](https://msdn.microsoft.com/en-in/library/dd357628.aspx)协议、通过 TLS（传输层安全性）实现的安全通信。</li></ul> |

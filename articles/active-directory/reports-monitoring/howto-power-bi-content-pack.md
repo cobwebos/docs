@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c0326a6b611d5f3d5633db2d2b64b8cdc15e10a7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782152"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816678"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
@@ -28,50 +28,15 @@ ms.locfileid: "43782152"
 |目前，Azure AD Power BI 内容包使用 Azure AD Graph API 检索 Azure AD 租户中的数据。 因此，你可能会发现内容包中可用数据与使用[用于报告的 Microsoft Graph API](concept-reporting-api.md) 检索的数据之间存在一些差异。 |
 |  |
 
-作为 IT 管理员，了解用户如何使用 Azure Active Directory 功能十分重要。这样才能规划 IT 基础结构和通信，提高使用率并充分利用 AAD 功能。 使用 Azure Active Directory Power BI 内容包可以进一步分析数据，了解如何针对极度依赖的各种功能，通过该数据深入洞察 Azure Active Directory 中发生的情况。  将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验洞察 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
+作为 IT 管理员，你需要了解用户如何采用和使用 Azure Active Directory 功能。 这样才能规划 IT 基础结构和通信，以提高使用率并充分利用 Azure AD 功能。 使用 Azure Active Directory 的 Power BI 内容包，可以进一步分析数据，以便更深入地了解目录中正在发生的事情。 将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验深入了解 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
 
-本主题提供的分步说明介绍如何在环境中安装和使用内容包。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="installation"></a>安装  
+需要 Azure AD premium (P1/P2) 许可证才能使用内容包。 
 
-若要安装 Power BI 内容包，请执行以下步骤：
+## <a name="install-the-content-pack"></a>安装内容包
 
-1. 使用 Power BI 帐户（与 O365 或 Azure AD 帐户属于同一帐户）登录到 [Power BI](https://app.powerbi.com/groups/me/getdata/services)。
-
-2. 在左侧导航窗格底部选择“获取数据”。
-
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/01.png)
- 
-3. 在“服务”框中，单击“获取”。
-   
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/02.png)
-
-4.  搜索“Azure Active Directory”。
-
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/03.png)
- 
-5.  出现提示时，键入 Azure AD 租户 ID，然后单击“下一步”。
-
-    > [!TIP] 
-    > 若要获取 Office 365 / Azure AD 租户的租户 ID，一种快速的方式是登录到 Azure AD 门户，向下钻取到目录，然后从[**属性**页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)复制**目录 ID**。
-
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/04.png) 
-
-6.  单击“登录”。 
- 
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/05.png) 
-
-
-
-7.  输入用户名和密码，然后单击“登录”。
- 
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/06.png) 
-
-8.  在应用的“同意”对话框中，单击“接受”。
- 
-9.  创建 Azure Active Directory 活动日志仪表板后，请单击该仪表板。
- 
-    ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/08.png) 
+查看[快速入门](quickstart-install-power-bi-content-pack.md)以安装 Azure AD Power BI 内容包。
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>此内容包有哪些功能？
 
@@ -155,4 +120,6 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关报告的概述，请参阅 [Azure Active Directory 报告](overview-reports.md)。
+* [安装 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
+* [对内容包错误进行故障排除](troubleshoot-content-pack.md)。
+* [什么是 Azure AD 报告？](overview-reports.md)。

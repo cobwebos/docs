@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4546734cd1b5bf2f4aaddc6477310128c9e62d51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140410"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869629"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
@@ -29,14 +29,23 @@ Azure AD 可以检测到与用户帐户相关的可疑操作。 每检测到一�
 
 检测到的风险事件用于计算：
 
-- **风险登录** - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 有关更多详细信息，请参阅[风险登录](../identity-protection/overview.md#risky-sign-ins)。 
+- **风险登录** - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 有关更多详细信息，请参阅[如何配置登录风险策略](../identity-protection/howto-sign-in-risk-policy.md)。 
 
-- **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关更多详细信息，请参阅[已标记为存在风险的用户](../identity-protection/overview.md#users-flagged-for-risk)。  
+- **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关更多详细信息，请参阅[如何配置用户风险策略](../identity-protection/howto-user-risk-policy.md)。  
 
 在 [Azure 门户](https://portal.azure.com)中，可在“Azure Active Directory”边栏选项卡上的“安全”部分中找到安全报告。 
 
 ![有风险的登录](./media/concept-risky-sign-ins/10.png)
 
+## <a name="who-can-access-the-risky-sign-ins-report"></a>谁可以访问风险登录报告？
+
+风险登录报告可供以下角色的用户使用：
+
+- 安全管理员
+- 全局管理员角色
+- 安全读取者
+
+若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal)。
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>访问安全报表需要什么 Azure AD 许可证？  
 
@@ -48,8 +57,6 @@ Azure AD 可以检测到与用户帐户相关的可疑操作。 每检测到一�
 - Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
 
 - Azure Active Directory Premium 2 版本提供有关所有潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
-
-
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory 免费版和基本版
 
@@ -73,7 +80,7 @@ Azure Active Directory 免费版和基本版提供为用户检测到的有风险
 
 ![有风险的登录](./media/concept-risky-sign-ins/21.png)
 
-有关更多详细信息，请参阅[手动关闭风险事件](../identity-protection/overview.md#closing-risk-events-manually)。
+
 
 此报告提供的选项用于：
 
@@ -98,13 +105,13 @@ Azure Active Directory Premium 版中有风险的登录报表提供：
 
 选择风险事件时，可获得此风险事件的详细报表视图，使你能够：
 
-- 一个用于配置[用户风险补救策略](../identity-protection/overview.md#user-risk-security-policy)的选项  
+- 一个用于配置[用户风险补救策略](../identity-protection/howto-user-risk-policy.md)的选项  
 
 - 查看风险事件的检测时间线  
 
 - 查看已为其检测到此风险事件的用户的列表
 
-- [手动关闭风险事件](../identity-protection/overview.md#closing-risk-events-manually)或重新激活已手动关闭的风险事件。 
+- 手动关闭风险事件。 
 
 
 ![有风险的登录](./media/concept-risky-sign-ins/457.png)
@@ -124,7 +131,7 @@ Azure Active Directory Premium 版中有风险的登录报表提供：
 
 
 若要调查风险事件，请从列表选择某个事件。  
-这会打开此风险事件的“详细信息”边栏选项卡。 在“详细信息”边栏选项卡上，可以选择[手动关闭风险事件](../identity-protection/overview.md#closing-risk-events-manually)或重新激活已手动关闭的风险事件。 
+这会打开此风险事件的“详细信息”边栏选项卡。 在“详细信息”边栏选项卡上，可选择手动关闭风险事件或重新激活已手动关闭的风险事件。 
 
 
 ![有风险的登录](./media/concept-risky-sign-ins/325.png)

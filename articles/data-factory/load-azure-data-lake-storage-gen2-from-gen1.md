@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: jingwang
-ms.openlocfilehash: a160c47e12db3c4ef9cefc5cd70293468ddf8234
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 953585ffcc5a40d9ae48055f68a1c1fa84db25cc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011355"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249326"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2（预览版）
 
@@ -51,7 +51,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
    ![数据工厂主页](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -80,7 +80,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    3. 选择“**下一步**”。
    
    > [!IMPORTANT]
-   > 在此演练中，使用_托管服务标识_进行 Data Lake Storage Gen1 身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)授予 MSI 在 Azure Data Lake Storage Gen1 中的适当权限。
+   > 在本演练中，使用 Azure 资源的托管标识来对 Data Lake Storage Gen1e 进行身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予 MSI 在 Azure Data Lake Storage Gen1 中的适当权限。
    
    ![指定 Azure Data Lake Storage Gen1 帐户](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
    
@@ -131,7 +131,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 16. 验证数据是否已复制到 Data Lake Storage Gen2 帐户。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 如果要从基于文件的数据存储复制大量数据，建议：
 

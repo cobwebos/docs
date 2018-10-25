@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf57acdcbcfa792a6c5ab62c6e8ec0589d625df7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fd2f28f52c45a0ec3128302b02ad5ba498c982b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994576"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247765"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器概念
 本文提供使用 Azure Database for MariaDB 服务器的注意事项和指南。
@@ -44,7 +44,7 @@ Azure Database for MariaDB 服务器：
 | 协议 | 该服务支持 MySQL 使用的基于消息的协议。 |
 | TCP/IP | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为了帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对数据库服务器的访问。 请参阅 [Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。 |
-| SSL | 该服务支持在应用程序和数据库服务器之间强制进行 SSL 连接。  <!--See [Configure SSL connectivity in your application to securely connect to Azure Database for MariaDB](./howto-configure-ssl.md).--> |
+| SSL | 该服务支持在应用程序和数据库服务器之间强制进行 SSL 连接。 请参阅[配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB](./howto-configure-ssl.md)。 |
 
 ## <a name="how-do-i-manage-a-server"></a>如何管理服务器？
 可通过使用 Azure 门户或 Azure CLI 来管理 Azure Database for MariaDB 服务器。
@@ -52,4 +52,5 @@ Azure Database for MariaDB 服务器：
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅 [Azure Database for MariaDB 概述](./overview.md)
 - 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-pricing-tiers.md)
+
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

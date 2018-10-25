@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971531"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079168"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 - OAuth 2.0 授权代码流
 
@@ -178,8 +178,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires_in    | 访问令牌的有效期（以秒为单位）。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 作用域         | access_token 有效的范围。                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关刷新访问令牌的详细信息，请参阅[以下部分](#refresh-the-access-token)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。                                               |
-| id_token      | 无符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+| id_token      | JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
+
 #### <a name="error-response"></a>错误响应
+
 错误响应如下所示：
 
 ```json
@@ -234,7 +236,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>刷新访问令牌
 
-Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`：
+Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。  
+
+刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 
 
 ```
 // Line breaks for legibility only

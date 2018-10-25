@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716111"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043533"
 ---
 # <a name="using-gpus-on-aks"></a>在 AKS 上使用 GPU
 
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-描述某个节点，确认 GPU 是可计划的。 可以在 `Capacity` 节找到此内容。 例如，`alpha.kubernetes.io/nvidia-gpu:  1`。
+描述某个节点，确认 GPU 是可计划的。 可以在 `Capacity` 节找到此内容。 例如，`nvidia.com/gpu:  1`。 如果没有看到 GPU，请参阅下面的**故障排除**部分。
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -96,12 +96,12 @@ Addresses:
   InternalIP:  10.240.0.4
   Hostname:    aks-nodepool1-22139053-0
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57691688Ki
  pods:                            110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57589288Ki
  pods:                            110
@@ -135,7 +135,7 @@ Events:         <none>
 
 为了表明 GPU 确实可以使用，请通过相应的资源请求计划一个启用了 GPU 的工作负荷。 此示例将针对 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/)运行一个 [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) 作业。
 
-以下作业清单包括资源限制 `alpha.kubernetes.io/nvidia-gpu: 1`。 相应的 CUDA 库和调试工具将在 `/usr/local/nvidia` 的节点上提供，并且必须根据相应的卷规范装载到 Pod 中，如下所示。
+以下作业清单包括资源限制 `nvidia.com/gpu: 1`。 
 
 复制此清单并将其另存为 **samples-tf-mnist-demo.yaml**。
 ```
@@ -158,15 +158,8 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            alpha.kubernetes.io/nvidia-gpu: 1
-        volumeMounts:
-        - name: nvidia
-          mountPath: /usr/local/nvidia
+           nvidia.com/gpu: 1
       restartPolicy: OnFailure
-      volumes:
-        - name: nvidia
-          hostPath:
-            path: /usr/local/nvidia
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令运行该作业。 此命令分析清单文件并创建定义的 Kubernetes 对象。

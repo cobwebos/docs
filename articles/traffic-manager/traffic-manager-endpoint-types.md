@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: 115511d15bc2366e49f6b3d1b89b513ea0ee5e90
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 06965c43408e943922048804099f8f28d69c8540
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398022"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248279"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 使用 Microsoft Azure 流量管理器可以控制如何将网络流量分布到在不同数据中心运行的应用程序部署。 需要在流量管理器中将每个应用程序部署配置为一个“终结点”。 当流量管理器收到 DNS 请求时，将选择要在 DNS 响应中返回的可用终结点。 流量管理器根据当前终结点状态和流量路由方法做出这种选择。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。
 
 流量管理器支持三种类型的终结点：
 * **Azure 终结点**用于在 Azure 中托管的服务。
-* **外部终结点**用于在 Azure 外部托管的服务，不管是在本地托管还是通过其他托管提供商进行托管。
+* **外部终结点**用于 IPv4/IPv6 地址，或用于在 Azure 外部托管的服务，可以是在本地托管或通过其他托管提供商进行托管。
 * **嵌套终结点**用于组合流量管理器配置文件，以便创建更灵活的流量路由方案，从而满足更大、更复杂部署的需求。
 
 可以不受限制地在单个流量管理器配置文件中通过各种方式组合不同类型的终结点。 每个配置文件都可以包含任何组合形式的终结点类型。
@@ -37,8 +37,9 @@ ms.locfileid: "39398022"
 
 Azure 终结点用于流量管理器中基于 Azure 的服务。 支持以下 Azure 资源类型：
 
-* “经典”IaaS VM 和 PaaS 云服务。
+* PaaS 云服务。
 * Web 应用
+* Web 应用槽
 * PublicIPAddress 资源（可直接或通过 Azure 负载均衡器连接到 VM）。 必须为 publicIpAddress 分配一个 DNS 名称，才能在流量管理器配置文件中使用它。
 
 PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型中没有这些资源。 因此，这些资源仅在流量管理器的 Azure 资源管理器体验中受支持。 其他终结点类型通过 Resource Manager 和经典部署模型受到支持。
@@ -47,9 +48,10 @@ PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型�
 
 ## <a name="external-endpoints"></a>外部终结点
 
-外部终结点用于 Azure 外部的服务。 例如，本地托管的服务或者具不同提供程序的服务。 外部终结点可以单独使用，也可以在同一流量管理器配置文件中与 Azure 终结点结合使用。 可以将 Azure 终结点与外部终结点结合用于多种方案：
+外部终结点用于 IPv4/IPv6 地址，或用于 Azure 外部的服务。 使用 IPv4/IPv6 地址终结点允许流量管理器检查终结点的运行状况，而无需为其指定 DNS 名称。 因此，在响应中返回终结点时，流量管理器可以使用 A/AAAA 记录响应查询。 Azure 外部的服务可以包括本地托管的服务或通过其他提供商托管的服务。 外部终结点可以单独使用，也可以与同一流量管理器配置文件中的 Azure 终结点结合使用，但指定为 IPv4 或 IPv6 地址的终结点除外，这些终结点只能是外部终结点。 可以将 Azure 终结点与外部终结点结合用于多种方案：
 
-* 在主动-主动或主动-被动故障转移模型中，可以使用 Azure 为现有的本地应用程序提供增强的冗余。
+* 在主动-主动或主动-被动故障转移模型中，可以使用 Azure 为现有的本地应用程序提供增强的冗余。 
+* 将流量路由到没有与其关联的 DNS 名称的终结点。 此外，由于无需运行第二个 DNS 查询以返回 DNS 名称的 IP 地址，减少了整体 DNS 查找延迟。 
 * 要为全球各地的用户降低应用程序延迟，可以将现有的本地应用程序扩展到 Azure 中的其他地理位置。 有关详细信息，请参阅[流量管理器“性能”流量路由](traffic-manager-routing-methods.md#performance)。
 * 使用 Azure 为现有的本地应用程序提供额外容量，既可以持续满足高峰需求，也可以通过“云爆发”解决方案满足此类需求。
 
@@ -71,7 +73,7 @@ PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型�
 
 在流量管理器中禁用终结点可能有助于从处于维护模式或正在重新部署的终结点中临时删除流量。 在终结点再次运行后，可以重新启用该终结点。
 
-可以通过流量管理器门户、PowerShell、CLI 或 REST API 来启用和禁用终结点，Resource Manager 和经典部署模型都支持这些操作。
+可以通过流量管理器门户、PowerShell、CLI 或 REST API 启用和禁用终结点。
 
 > [!NOTE]
 > 禁用某个 Azure 终结点对其在 Azure 中的部署状态没有任何影响。 Azure 服务（例如 VM 或 Web 应用）将保持运行并可接收流量，即使已在流量管理器中禁用。 流量可直接定向到该服务实例，而无需通过流量管理器配置文件 DNS 名称。 相关详细信息，请参阅[流量管理器工作原理](traffic-manager-how-it-works.md)。

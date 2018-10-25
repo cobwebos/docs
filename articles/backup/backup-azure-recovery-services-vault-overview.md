@@ -8,22 +8,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 697245a6465fc15c943acefa4b820982fbaecb55
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42144165"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887592"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
-本文介绍恢复服务保管库的功能。 恢复服务保管库是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 可以使用恢复服务保管库为各种 Azure 服务（例如 IaaS VM（Linux 或 Windows））和 Azure SQL 数据库存储备份数据。 恢复服务保管库支持 System Center DPM、Windows Server、Azure 备份服务器等。 使用恢复服务保管库可以方便地组织备份数据，并将管理开销降至最低。 
+本文介绍恢复服务保管库的功能。 恢复服务保管库是 Azure 中用于存储数据的存储实体。 数据通常是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。 可以使用恢复服务保管库为各种 Azure 服务（例如 IaaS VM（Linux 或 Windows））和 Azure SQL 数据库存储备份数据。 恢复服务保管库支持 System Center DPM、Windows Server、Azure 备份服务器等。 使用恢复服务保管库可以方便地组织备份数据，并将管理开销降至最低。
 
 在 Azure 订阅中，每个区域每个订阅最多可以创建 500 个恢复服务保管库。
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比较恢复服务保管库和备份保管库
 
-如果仍然使用备份保管库，它们将自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。 
+如果仍然使用备份保管库，它们将自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。
 
 恢复服务保管库基于 Azure 的 Azure 资源管理器模型，而备份保管库则基于 Azure Service Manager 模型。 将备份保管库升级到恢复服务保管库时，备份数据在升级过程中和升级后均会保持不变。 恢复服务保管库提供不适用于备份保管库的功能，例如：
 
@@ -38,7 +38,7 @@ ms.locfileid: "42144165"
 - **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
-在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。 
+在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。
 
 ![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
@@ -51,6 +51,9 @@ ms.locfileid: "42144165"
 如果一个恢复服务保管库保护多个服务器，则查看恢复服务保管库可能更符合逻辑。 可以在订阅中搜索所有恢复服务保管库，并从列表中选择一个。
 
 以下部分包含多篇文章的链接，这些文章说明了如何在每类活动中使用恢复服务保管库。
+
+> [!NOTE]
+> 如果恢复服务保管库在 24 小时内被删除，则无法以相同的名称创建它。 请使用其他资源名称或选择其他资源组，或者在 24 小时后重试。
 
 ### <a name="back-up-data"></a>备份数据
 - [备份 Azure VM](backup-azure-vms-first-look-arm.md)

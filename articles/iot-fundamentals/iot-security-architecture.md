@@ -1,26 +1,22 @@
 ---
 title: IoT 安全体系结构
 description: IoT 安全体系结构指导原则和注意事项
-author: dominicbetts
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.author: dobett
-ms.openlocfilehash: 7ff0ef9ef41891a22b516d922fd6b347545e37db
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: a356c068a54833d66bdc600ad3caeb21e49ea815
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038079"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067578"
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>另请参阅
-若要详细了解如何保护由 IoT 解决方案加速器创建的解决方案，请参阅[保护 IoT 部署][lnk-security-deployment]。
+若要详细了解如何保护由 IoT 解决方案加速器创建的解决方案，请参阅[保护 IoT 部署](iot-security-deployment.md)。
 
-可以通过 IoT 中心开发人员指南中的[控制 IoT 中心的访问权限][lnk-devguide-security]了解 IoT 中心安全性。
-
-[lnk-security-deployment]: iot-security-deployment.md
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security
+阅读 IoT 中心开发人员指南中[控制对 IoT 中心的访问](../iot-hub/iot-hub-devguide-security.md)中关于 IoT 中心安全性的内容。

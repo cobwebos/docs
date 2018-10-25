@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2018
+ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: afb4cbafeb29800b1f5b1c837da301e2944d678b
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: e50d1696fdc22916f5ac4699bd17ddc21a82a148
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842526"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815862"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
-> * [第 1 版](v1/data-factory-azure-sql-connector.md)
+> * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
 
 本文介绍如何使用 Azure 数据工厂中的复制活动向/从 Azure SQL 数据库复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
@@ -33,7 +33,7 @@ ms.locfileid: "43842526"
 
 具体而言，此 Azure SQL 数据库连接器支持以下函数：
 
-- 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或托管服务标识 (MSI) 配合使用来复制数据。
+- 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或 Azure 资源的托管标识配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，在复制期间将数据追加到目标表，或调用带有自定义逻辑的存储过程。
 
@@ -58,13 +58,13 @@ Azure SQL 数据库链接服务支持以下属性：
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
 - [SQL 身份验证](#sql-authentication)
 - [Azure AD 应用程序令牌身份验证：服务主体](#service-principal-authentication)
-- [Azure AD 应用程序令牌身份验证：托管服务标识](#managed-service-identity-authentication)
+- [Azure AD 应用程序令牌身份验证：Azure 资源的托管标识](#managed-identity)
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -146,9 +146,9 @@ Azure SQL 数据库链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>托管服务标识身份验证
+### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的[托管服务标识](data-factory-service-identity.md)相关联。 可将此服务标识用于 Azure SQL 数据库身份验证。 指定工厂可使用此标识访问数据库数据并向其/从中复制数据。
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可将此服务标识用于 Azure SQL 数据库身份验证。 指定工厂可使用此标识访问数据库数据并向其/从中复制数据。
 
 要使用基于 MSI 的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
 
@@ -201,7 +201,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services)一文。 本部分提供 Azure SQL 数据库数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)一文。 本部分提供 Azure SQL 数据库数据集支持的属性列表。
 
 要从/向 Azure SQL 数据库复制数据，请将数据集的 type 属性设置为 AzureSqlTable。 支持以下属性：
 
@@ -241,14 +241,14 @@ Azure SQL 数据库链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 SqlSource。 | 是 |
 | sqlReaderQuery | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否 |
-| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 | 否 |
+| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 
 ### <a name="points-to-note"></a>需要注意的要点：
 
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 也可以指定存储过程。 如果存储过程使用参数，则指定 sqlReaderStoredProcedureName 和 storedProcedureParameters。
 - 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则数据集 JSON 的“结构”部分定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
+- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName 属性。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 
@@ -569,6 +569,9 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 
 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
+>[!NOTE]
+>如果要通过调用存储过程写入 Money/Smallmoney 数据类型，值可能会舍入。 在 TVP 中将相应的数据类型指定为十进制而不是 Money/Smallmoney 来缓解。 
+
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的数据类型映射
 
 从/向 Azure SQL 数据库复制数据时，以下映射用于从 Azure SQL 数据库数据类型映射到 Azure 数据工厂临时数据类型。 要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
@@ -599,7 +602,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 | smallint |Int16 |
 | smallmoney |小数 |
 | sql_variant |对象 * |
-| text |String, Char[] |
+| 文本 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |

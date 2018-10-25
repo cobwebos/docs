@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306026"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886059"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可以通过 [Azure AD Graph API 目录扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)或 [Microsoft Graph](https://graph.microsoft.io/) 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://graphexplorer.azurewebsites.net/)和 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。
@@ -28,6 +28,9 @@ ms.locfileid: "46306026"
 目前，没有任何 Office 365 工作负荷使用这些属性。
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
+
+>[!NOTE]
+>“可用属性”框区分大小写。
 
 ![架构扩展向导](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354522"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044478"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>如何将用户和组分配到应用程序
-
-在用户可以对特定应用程序执行下列任何操作之前，需要先**将用户分配给应用程序**以授予其访问权限：
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>向 Azure Active Directory 中的应用程序分配用户和组
+本文介绍如何将用户或组分配到 Azure Active Directory (Azure AD) 中的应用程序。 首先必须将用户分配给应用程序，然后管理员才能授予这些用户访问权限以执行以下操作：
 
 -   通过**直接导航到应用程序的 URL**（也称为 SP 发起的登录）访问应用程序。
 
@@ -33,17 +31,19 @@ ms.locfileid: "44354522"
 
 -   查看显示在其 [Office 365 应用程序启动器](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)中的应用程序。
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>使用 Azure Active Directory 分配应用程序的方法 
+## <a name="prerequisties"></a>先决条件
+在将用户和组分配到应用程序之前，必须要求用户分配。 若要要求用户分配，请执行以下操作：
 
-可以通过 3 种方法使用 Azure Active Directory 分配应用程序：
+1. 使用管理员帐户登录到 Azure 门户。
+2. 在主菜单中单击“所有服务”项。
+3. 选择要用于应用程序的目录。
+4. 单击“企业应用程序”选项卡。
+5. 从与此目录关联的应用程序列表中选择应用程序。
+6. 单击“属性”选项卡。
+7. 将“需要进行用户分配?”切换为“是”。
+8. 单击屏幕顶部的“保存”按钮。
 
--   [以管理员身份直接将用户分配到应用程序](#assign-a-user-directly-as-an-administrator)
-
--   [以管理员身份直接将组分配到应用程序](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [启用自助服务应用程序访问以允许用户查找自己的应用程序](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>以管理员身份直接将用户分配到应用程序
+## <a name="assign-users"></a>分配用户
 
 要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
@@ -81,7 +81,7 @@ ms.locfileid: "44354522"
 
 在一段很短的时间后，所选用户能够使用解决方案描述部分中所述的方法启动这些应用程序。
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>以管理员身份直接将组分配到应用程序
+## <a name="assign-groups"></a>分配组
 
 要直接将一个或多个组分配到应用程序，请遵循以下步骤：
 
@@ -119,7 +119,7 @@ ms.locfileid: "44354522"
 
 在一段很短的时间后，所选组中的用户能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>启用自助服务应用程序访问以允许用户查找自己的应用程序
+## <a name="enable-self-service-application-access"></a>启用自助应用程序访问
 
 自助应用程序访问是帮助用户自己发现应用程序的绝佳方式，可选择性地允许业务组批准对这些应用程序的访问。 可允许业务组直接从其访问面板，管理分配给用户的密码单一登录应用程序的凭据。
 

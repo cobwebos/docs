@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d06d29fb43ea8d8971c3f013c1e66406a30798d3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 738e78e608dbd819f24125799a1e8d48859f1aa0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064248"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043558"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -105,7 +105,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
     ![建议的索引](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用。
+> 请注意，**DROP_INDEX** 选项当前与使用分区切换和索引提示的应用程序不兼容。 
 >
 
 选择所需配置后，单击“应用”。

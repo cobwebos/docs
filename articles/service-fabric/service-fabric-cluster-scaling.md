@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: f9e3f190decdc907cf57a0235b9d7142081bd2f1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f199e6615109278764b9fcc75346da9ee6171cfa
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208023"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815641"
 ---
 # <a name="scaling-service-fabric-clusters"></a>缩放 Service Fabric 群集
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -75,6 +75,10 @@ Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service F
 独立群集允许在本地或所选的云提供程序中部署 Service Fabric 群集。  节点类型由物理机或虚拟机构成，具体取决于部署。 与 Azure 中运行的群集相比，缩放独立群集的过程牵涉到的工作要略多一些。  必须手动更改群集中的节点数，然后运行群集配置升级。
 
 删除可能启动多个升级的节点。 某些节点标有 `IsSeedNode=”true”` 标记，可使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) 通过查询群集清单进行标识。 在此类方案中，因为种子节点需要移动，因此删除此类节点相比其他节点需要较长时间。 群集必须至少维护三个主节点类型的节点。
+
+> [!WARNING]
+> 我们建议你不要将节点数降低到群集的[可靠性层的群集大小](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)以下。 这会干扰 Service Fabric 系统服务在群集中复制的能力，并且会破坏群集的稳定性或可能销毁群集。
+>
 
 缩放独立群集时，请记住以下准则：
 - 应逐个节点地替换主节点，而不是批量删除再添加。

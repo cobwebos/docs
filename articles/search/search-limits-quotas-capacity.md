@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8abcc90bf72544e6226d6c8487d2951b60ea6d29
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641163"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802136"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -55,15 +55,15 @@ ms.locfileid: "34641163"
 
 ## <a name="document-limits"></a>文档限制 
 
-在大多数区域中，对于在 2017 年 11 月/12 月之后创建的所有服务，Azure 搜索定价层（基本、S1、S2、S3、S3 HD）对文档数没有限制。 本部分介绍了施加了限制的区域以及如何确定你的服务是否受影响。 
+自 2018 年 10 月起，在任何区域的任何可计费层（基本、S1，S2、S3、S3 HD）创建的任何新服务都不再有任何文档数限制。 虽然自 2017 年 11 月/12 月以来大多数区域的文档数量不受限制，但仍有五个区域继续实施文档数限制。 根据你创建搜索服务的时间和地点，你可能正在运行仍受文档数限制的服务。
 
 若要确定你的服务是否具有文档数限制，请检查你的服务的概述页中的“使用情况”磁贴。 文档数可能不受限制，也可能基于层受限于某个限制。
 
   ![“使用情况”磁贴](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-### <a name="regions-and-services-having-document-limits"></a>具有文档数限制的区域和服务
+### <a name="regions-previously-having-document-limits"></a>以前具有文档数限制的区域
 
-具有限制的服务是在 2017 年底之前创建的，或者是在使用较低容量群集来承载 Azure 搜索服务的数据中心内运行。 受影响的数据中心位于以下区域：
+如果门户指示文档数限制，则你的服务要么是在 2017 年底之前创建的，要么是在使用容量较低的群集托管 Azure 搜索服务的数据中心上创建的：
 
 + 澳大利亚东部
 + 东亚
@@ -76,6 +76,8 @@ ms.locfileid: "34641163"
 |  免费 | 基本 | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10,000 |1 百万 |每个分区 1500 万，或者每个服务 1 亿 8 千万 |每个分区 6 千万，或者每个服务 7 亿 2 千万 |每个分区 1 亿 2 千万，或者每个服务 14 亿 |每个索引 1 百万，或者每个分区 2 亿 |
+
+如果你的服务具有阻止你的限制，请创建一个新服务，然后将所有内容重新发布到该服务。 没有任何机制可以在后台无缝地将你的服务重新预配到新硬件上。
 
 > [!Note] 
 > 对于 2017 年底后创建的 S3 高密度服务，已去除每个分区 2 亿个文档的限制，但每个索引 100 万个文档的限制保留。

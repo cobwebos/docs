@@ -2,18 +2,17 @@
 title: 快速入门 - 将 Azure 容器注册表事件发送到事件网格
 description: 在本快速入门中，我们将为容器注册表启用事件网格事件，然后将容器映像推送和删除事件发送到示例应用程序。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.author: danlep
+ms.openlocfilehash: 88265ee6f8a340909880ba70bd9f37a49ef85bf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746502"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857357"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>快速入门：将容器注册表事件发送到事件网格
 
@@ -141,20 +140,20 @@ az eventgrid event-subscription create \
 
 ## <a name="trigger-registry-events"></a>触发注册表事件
 
-正常运行示例应用并使用事件网格订阅注册表后，可以生成一些事件。 在本部分，我们将使用 ACR Build 来生成容器映像并将其推送到注册表。 ACR Build 是 Azure 容器注册表的一项功能，可用于在云中生成容器映像，而无需在本地计算机上安装 Docker 引擎。
+正常运行示例应用并使用事件网格订阅注册表后，可以生成一些事件。 在本部分中，将使用 ACR 任务来生成容器映像并将其推送到注册表。 ACR 任务是 Azure 容器注册表的一项功能，可用于在云中生成容器映像，而无需在本地计算机上安装 Docker 引擎。
 
 ### <a name="build-and-push-image"></a>生成和推送映像
 
-执行以下 Azure CLI 命令，基于 GitHub 存储库的内容生成容器映像。 默认情况下，ACR Build 会自动将成功生成的映像推送到注册表，后者会生成 `ImagePushed` 事件。
+执行以下 Azure CLI 命令，基于 GitHub 存储库的内容生成容器映像。 默认情况下，ACR 任务会自动将成功生成的映像推送到注册表，后者会生成 `ImagePushed` 事件。
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-当 ACR Build 生成然后推送映像时，应会显示如下所示的输出。 为简洁起见，以下示例输出已截断。
+当 ACR 任务生成然后推送映像时，应会显示如下所示的输出。 为简洁起见，以下示例输出已截断。
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +226,10 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们部署了一个容器注册表、使用 ACR Build 生成了映像、删除了该映像，并已通过一个示例应用程序从事件网格使用了注册表的事件。 接下来，请继续学习 ACR Build 教程来详细了解如何在云中生成容器映像，包括更新基础映像时自动进行生成：
+在本快速入门中，你部署了一个容器注册表、使用 ACR 任务生成了映像、删除了该映像，并已通过一个示例应用程序从事件网格使用了注册表的事件。 接下来，请继续学习 ACR 任务教程来详细了解如何在云中生成容器映像，包括更新基础映像时自动进行生成：
 
 > [!div class="nextstepaction"]
-> [使用 ACR Build 在云中生成容器映像](container-registry-tutorial-quick-build.md)
+> [使用 ACR 任务在云中生成容器映像](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

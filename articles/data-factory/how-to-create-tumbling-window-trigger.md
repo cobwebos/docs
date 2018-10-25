@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: shlo
-ms.openlocfilehash: c42d6235af8a5ab27fbd550b63c301fd9c6f15b1
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325027"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868320"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
@@ -76,11 +76,11 @@ ms.locfileid: "39325027"
 
 下表概述了与翻转窗口触发器中的循环和计划相关的主要 JSON 元素：
 
-| JSON 元素 | Description | Type | 允许的值 | 必选 |
+| JSON 元素 | Description | 类型 | 允许的值 | 必选 |
 |:--- |:--- |:--- |:--- |:--- |
 | type | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
-| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2016-04-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
+| **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
 | **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 | Integer | 正整数。 | 是 |
 | **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | 是 |
 | **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | 是 |

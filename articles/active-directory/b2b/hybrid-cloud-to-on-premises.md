@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297208"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068837"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -65,9 +65,9 @@ ms.locfileid: "46297208"
 - 可以针对来宾用户设置多重身份验证 (MFA) 策略，以便在应用程序代理身份验证期间使用 MFA。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
 - 针对云 B2B 用户执行的任何赞助、访问评审、帐户验证等操作将应用到本地用户。 例如，如果通过生命周期管理策略删除了云用户，则也会通过 MIM Sync 或 Azure AD Connect Sync 删除本地用户。有关详细信息，请参阅[使用 Azure AD 访问评审管理来宾访问权限](../governance/manage-guest-access-with-access-reviews.md)。
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>通过 MIM 创建 B2B 来宾用户对象（预览版）
+### <a name="create-b2b-guest-user-objects-through-mim"></a>通过 MIM 创建 B2B 来宾用户对象
 
-有关如何使用 MIM 2016 Service Pack 1 和 Microsoft Graph 的 MIM 管理代理在本地目录中创建来宾用户对象的信息，请参阅[使用 Microsoft Identity Manager (MIM) 2016 SP1 和 Azure 应用程序代理（公共预览版）实现 Azure AD 企业到企业 (B2B) 协作](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)。
+有关如何使用 MIM 2016 Service Pack 1 和 Microsoft Graph 的 MIM 管理代理在本地目录中创建来宾用户对象的信息，请参阅[使用 Microsoft Identity Manager (MIM) 2016 SP1 和 Azure 应用程序代理实现 Azure AD 企业到企业 (B2B) 协作](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)。
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>通过脚本创建 B2B 来宾用户对象（预览版）
 

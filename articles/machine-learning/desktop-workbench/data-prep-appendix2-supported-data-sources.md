@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c4686bf01031e30bd9dc94f42d80da524db82931
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb84638e2996b0ee9bd5a580b7e827ea30d0ab21
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969247"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855980"
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>适用于 Azure 机器学习数据准备的受支持数据源 
 
@@ -115,7 +115,7 @@ Parquet 数据集是多个 .parquet 文件的集合，其中每个文件代表�
 本地硬盘或映射网络存储位置。
 
 ### <a name="sql-server"></a>SQL Server
-本地 SQL Sever 或 Azure SQL 数据库。
+本地 SQL server 或 Azure SQL 数据库。
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 Azure Blob 存储需要 Azure 订阅。

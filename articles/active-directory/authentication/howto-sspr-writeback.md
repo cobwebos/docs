@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295812"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801924"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回
 
@@ -34,6 +34,12 @@ ms.locfileid: "46295812"
 8. 在配置完成后，选择“退出”。
 
 有关与密码写回服务相关的疑难解答任务，请参阅疑难解答文章中的[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback)部分。
+
+> [!WARNING]
+> 当 [Azure 访问控制服务 (ACS) 于 2018 年 11 月 7 日停用](../develop/active-directory-acs-migration.md)时，密码写回将停止为使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户工作。 到时 Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
+>
+> 若要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从旧版升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 ## <a name="active-directory-permissions"></a>Active Directory 权限
 
@@ -67,7 +73,7 @@ ms.locfileid: "46295812"
 4. 在“权限”选项卡中，选择“添加”。
 5. 选取要将权限应用到的帐户（通过 Azure AD Connect 安装程序）。
 6. 在“应用到”下拉列表中，选择“子用户”对象。
-7. 在“权限”下，选中下面各项的框：
+7. 在“权限”下，选中以下选项所对应的框：
     * **重置密码**
     * **更改密码**
     * **写入 lockoutTime**

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ae793bad9cef86158418eb87e0c38ee0370a6bd2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cfca7361831734baaf150b3e19b14c7dc88def36
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30176969"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043536"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
 
@@ -48,7 +48,15 @@ Azure 负载均衡器的默认分配模式是 5 元组哈希。 元组由源 IP�
 
 ## <a name="configure-source-ip-affinity-settings"></a>配置源 IP 关联设置
 
-对于虚拟机，可以使用 Azure PowerShell 来更改超时设置。 将 Azure 终结点添加到虚拟机并配置负载均衡器分配模式：
+对于使用资源管理器部署的虚拟机，请使用 PowerShell 更改现有负载均衡规则上的负载均衡器分发设置。 这将更新分发模式： 
+
+```powershell 
+$lb = Get-AzureRmLoadBalancer -Name MyLb -ResourceGroupName MyLbRg 
+$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp' 
+Set-AzureRmLoadBalancer -LoadBalancer $lb 
+```
+
+对于经典虚拟机，请使用 Azure PowerShell 更改分发设置。 将 Azure 终结点添加到虚拟机并配置负载均衡器分配模式：
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 3cab4d87eacc7bce17da64cda213086c262179a8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206192"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041148"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用相同的持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -114,14 +114,14 @@ class MyActorImpl extends FabricActor implements MyActor
 
 有关管理执行组件状态的示例，请阅读[访问、保存并删除 Reliable Actors 状态](service-fabric-reliable-actors-access-save-remove-state.md)。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 对于管理执行组件状态，下面是一些建议的做法和故障排除技巧。
 
 ### <a name="make-the-actor-state-as-granular-as-possible"></a>使执行组件状态尽可能细粒度
 这对于应用程序的性能和资源使用情况是至关重要的。 只要对执行组件的“命名状态”有任何写入/更新操作，与该“命名状态”相对应的整个值就会进行序列化，并通过网络发送到次要副本。  次要副本将它写入到本地磁盘并答复主要副本。 当主要副本收到来自次要副本仲裁的确认时，它会将该状态写入到其本地磁盘。 例如，假设该值是一个具有 20 个成员的类，其大小为 1 MB。 即使只修改了其中一个类成员（大小为 1 KB），最终也得支付全部 1 MB 的序列化、网络和磁盘写入的成本。 同样，如果该值为一个集合（如列表、数组或字典），即使修改其中一个成员，也得支付整个集合的成本。 actor 类的 StateManager 接口类似于字典。 你始终应为此字典之上表示执行组件状态的数据结构建模。
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>正确管理执行组件的生命周期
-你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-platform.md)）以确保执行组件数在预期范围内。
+你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-enumerate.md)）以确保执行组件数在预期范围内。
  
 如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果你是按照这些指南操作的，但仍存在数据库文件大小问题，应通过产品团队[开具支持票证](service-fabric-support.md)以获取帮助。
 

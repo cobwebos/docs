@@ -3,24 +3,23 @@ title: include 文件
 description: include 文件
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5e933406b266b8371019abf0f62365184d8900b3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 022017015808d72f661f6764e8fa10fdc49e9f61
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205238"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843220"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -33,11 +32,13 @@ ms.locfileid: "36205238"
 >
 
 若要创建应用程序，请执行以下操作：
+
 1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
 2. 在“模板”下，选择“Visual C#”。
-3. 选择“WPF 应用”或“WPF 应用程序”，具体取决于所使用的 Visual Studio 版本。
+3. 选择“WPF 应用(.NET Framework)”，具体取决于所使用的 Visual Studio 版本。
 
 ## <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
+
 1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”。
 2. 在“包管理器控制台”窗口中，粘贴以下 Azure PowerShell 命令：
 
@@ -46,10 +47,11 @@ ms.locfileid: "36205238"
     ```
 
     > [!NOTE] 
-    > 此命令将安装 Microsoft 身份验证库。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2 保护的 API 的用户令牌。
+    > 此命令将安装 Microsoft 身份验证库。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌
     >
 
 ## <a name="add-the-code-to-initialize-msal"></a>添加代码以初始化 MSAL
+
 此步骤将创建用于处理与 MSAL 的交互（例如令牌处理）的类。
 
 1. 打开 *App.xaml.cs* 文件，将 MSAL 的引用添加到类：
@@ -93,4 +95,3 @@ ms.locfileid: "36205238"
     </StackPanel>
 </Grid>
 ```
-

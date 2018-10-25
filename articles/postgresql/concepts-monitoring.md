@@ -7,16 +7,16 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e29186d07d9a060e45ed051d6f7ed0ac81a5e15b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/04/2018
+ms.openlocfilehash: 0794c1573c2eaa951b805573cf33f05923da83b4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982658"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867776"
 ---
 # <a name="monitor-and-tune"></a>监视和优化
-监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 
+监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，可以深入了解服务器的行为。
 
 ## <a name="metrics"></a>度量值
 Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解为 PostgreSQL 服务器提供支持的资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
@@ -37,8 +37,11 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
 |active_connections|活动连接数|Count|服务器的活动连接数。|
 |connections_failed|失败的连接数|Count|服务器的失败连接数。|
-|network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
-|network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
+|network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
+|network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
+
+## <a name="server-logs"></a>服务器日志
+可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../log-analytics/log-analytics-queries.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
 
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)是一项公共预览功能，可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 query_store 架构下名为 azure_sys 的一个系统数据库中。 你可以通过各种配置旋钮控制数据的收集和存储。

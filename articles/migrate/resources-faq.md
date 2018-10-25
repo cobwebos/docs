@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: ce9dc4aab26b99bbb1e9f24f018354b8c91f66f4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699958"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239211"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -48,7 +48,7 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 区域？
 
-Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移项目位置。 请注意，即使只能在美国中西部和美国东部创建迁移项目，也仍可以评估[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)的计算机。 项目位置仅用于存储已发现的数据。
+Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移项目位置。 即使只能在美国中西部和美国东部创建迁移项目，也仍可以评估[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)的计算机。 项目位置仅用于存储已发现的数据。
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>本地站点如何连接到 Azure Migrate？
 
@@ -58,7 +58,7 @@ Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移
 
 只要 Azure Migrate 设备工作所需的通信和防火墙规则保持不变，就可以将其他组件（例如防病毒）添加到 .OVA 模板中。   
 
-## <a name="discovery-and-assessment"></a>发现和评估
+## <a name="discovery"></a>发现
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Azure Migrate 收集哪些数据？
 
@@ -87,6 +87,12 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
   - 出网络
 
 基于代理的发现是可以在基于设备的发现的基础上使用的选项，它会帮助客户将本地 VM 的[依赖项可视化](how-to-create-group-machine-dependencies.md)。 依赖项代理收集 FQDN、OS、IP 地址、MAC 地址、VM 中运行的进程，以及 VM 的传入/传出 TCP 连接等详细信息。 基于代理的发现是可选的，如果不想要将 VM 依赖项可视化，则可以选择不安装代理。
+
+### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>是否会对已分析的 ESXi 主机环境造成任何性能影响？
+
+在[一次性发现方法](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)中，为了收集性能数据，vCenter Server 上的统计信息级别将设置为 3。 设置为此级别将收集大量的故障排除数据，这些数据将存储在 vCenter Server 数据库中。 因此，它可能会在 vCenter Server 上导致一些性能问题。 对 ESXi 主机的影响微不足道。
+
+我们已引入了性能数据持续分析（目前为预览版）。 使用持续分析，不再需要更改 vCenter Server 统计信息级别来运行基于性能的评估。 收集器设备现在将对本地计算机进行分析来度量虚拟机的性能数据。 这几乎不会对 ESXi 主机和 vCenter Server 造成性能影响。
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>收集的数据存储在何处，存储多久？
 
@@ -124,11 +130,14 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 在单个迁移项目中可以发现 1500 个虚拟机。 如果本地环境包含更多的计算机，请[详细了解](how-to-scale-assessment.md)如何在 Azure Migrate 中发现大型环境。
 
+## <a name="assessment"></a>评估
+
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate 是否支持基于企业协议 (EA) 的成本估计？
 
 Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为套餐，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
 
   ![折扣](./media/resources-faq/discount.png)
+  
 
 ## <a name="dependency-visualization"></a>依赖项可视化
 
@@ -138,7 +147,34 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>是否可将现有的工作区用于依赖项可视化？
 
-Azure Migrate 不支持使用现有的工作区进行依赖项可视化，但是，Microsoft Monitoring Agent (MMA) 支持多宿主，允许将数据发送到多个工作区。 因此，如果已部署代理并在工作区中对其进行配置，则可以利用 MMA 代理中的多宿主，在 Azure Migrate 工作区中配置该代理，并使其正常工作。 [此博客](https://blogs.technet.microsoft.com/msoms/2016/05/26/oms-log-analytics-agent-multi-homing-support/)介绍了如何在 MMA 代理中启用多宿主。
+可以，Azure Migrate 现在允许将现有工作区附加到迁移项目并利用它进行依赖项可视化。 [了解详细信息](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization#how-does-it-work)。
+
+### <a name="can-i-export-the-dependency-visualization-report"></a>是否可以导出依赖项可视化报表？
+
+否，依赖项可视化报表不能导出。 但是，由于 Azure Migrate 使用服务映射进行依赖项可视化，因此可以使用[服务映射 REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) 获取 JSON 格式的依赖项。
+
+### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>如何才能自动安装 Microsoft Monitoring Agent (MMA) 和依赖项代理？
+
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)有一个脚本，可以使用它来安装依赖项代理。 对于 MMA，TechNet 上的[此处](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)有一个可以使用的脚本。
+
+除了脚本，还可以利用 System Center Configuration Manager (SCCM)、[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) 之类的部署工具来部署代理。
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>MMA 支持的操作系统有哪些？
+
+[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)列出了 MMA 支持的 Windows 操作系统。
+[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)列出了 MMA 支持的 Linux 操作系统。
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>依赖项代理支持的操作系统有哪些？
+
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)列出了依赖项代理支持的 Windows 操作系统。
+[此处](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)列出了依赖项代理支持的 Linux 操作系统。
+
+### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>我在 Azure Migrate 中可视化依赖项时是否可以超过一小时的持续时间？
+否，Azure Migrate 允许依赖项可视化持续最多一小时的时间。 尽管 Azure Migrate 允许返回到历史记录中的某一特定日期可以推至上个月，但可视化依赖项的最长持续时间最多为一小时。 例如，你可以使用依赖项映射中的持续时间功能来查看昨天的依赖项，但只能查看一小时。
+
+### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>包含 10 个以上 VM 的组是否支持依赖项可视化？
+你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
+
 
 ## <a name="next-steps"></a>后续步骤
 

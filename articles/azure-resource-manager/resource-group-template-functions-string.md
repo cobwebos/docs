@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33a49a9fb66240382b0bb4e0bedbb07b8d78a763
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 578d078550daaae54c63bf91da1fa5590bb8fdf6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249139"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
 
@@ -64,7 +65,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要以 base64 表示形式返回的值。 |
 
@@ -115,7 +116,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -142,7 +143,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为 JSON 对象的 base64 表示形式。 |
 
@@ -193,7 +194,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -220,7 +221,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |字符串 |要转换为字符串的 base64 表示形式。 |
 
@@ -271,7 +272,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | one, two, three |
@@ -298,7 +299,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或数组 |串联的第一个值。 |
 | 其他参数 |否 |字符串 |按顺序排列的串联的其他值。 |
@@ -332,7 +333,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -385,7 +386,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | 返回 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -406,11 +407,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>contains
 `contains (container, itemToFind)`
 
-检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。
+检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -474,7 +475,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -504,7 +505,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |是 |字符串 |要转换为数据 URI 的值。 |
 
@@ -546,7 +547,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -572,7 +573,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |是 |字符串 |要转换的数据 URI 值。 |
 
@@ -614,7 +615,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | String | Hello, World! |
@@ -640,7 +641,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -691,7 +692,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -718,7 +719,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -767,7 +768,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -797,7 +798,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -836,7 +837,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -861,7 +862,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字符串 |哈希函数中用于创建 GUID 的值。 |
 | 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
@@ -945,7 +946,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -990,7 +991,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1019,7 +1020,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -1058,7 +1059,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -1084,7 +1085,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -1129,7 +1130,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1158,7 +1159,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |用于获取元素数的数组，或用于获取字符数的字符串。 |
 
@@ -1204,7 +1205,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1230,7 +1231,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | valueToPad |是 |字符串或整数 |要右对齐的值。 |
 | totalLength |是 |int |返回字符串中的字符总数。 |
@@ -1268,7 +1269,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 0000000123 |
 
@@ -1293,7 +1294,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | originalString |是 |字符串 |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
 | oldString |是 |字符串 |要从原始字符串中删除的字符串。 |
@@ -1333,7 +1334,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
 | secodeOutput | String | 123-123-xxxx |
@@ -1359,7 +1360,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1414,7 +1415,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -1440,7 +1441,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | inputString |是 |字符串 |要拆分的字符串。 |
 | delimiter |是 |字符串或字符串数组 |用于拆分字符串的分隔符。 |
@@ -1486,7 +1487,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1512,7 +1513,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |是 |字符串 |包含要查找的项的值。 |
 | stringToFind |是 |字符串 |要查找的值。 |
@@ -1561,7 +1562,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1591,7 +1592,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
 
@@ -1648,7 +1649,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | String | ["a","b","c"] |
@@ -1675,19 +1676,19 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToParse |是 |字符串 |从中提取子字符串的原始字符串。 |
 | startIndex |否 |int |子字符串的从零开始的字符位置。 |
-| length |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 |
+| length |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 必须为零或更大值。 |
 
 ### <a name="return-value"></a>返回值
 
-子字符串。
+子字符串。 或者，如果长度为零，则为空字符串。
 
 ### <a name="remarks"></a>备注
 
-子字符串延伸超出字符串末尾时，函数失败。 以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
+当子字符串延伸超出字符串末尾或长度小于零时，函数将失败。 以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
 
 ```json
 "parameters": {
@@ -1724,7 +1725,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | substringOutput | String | two |
 
@@ -1749,7 +1750,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1804,7 +1805,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1830,7 +1831,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为小写的值。 |
 
@@ -1868,7 +1869,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1894,7 +1895,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |字符串 |要转换为大写的值。 |
 
@@ -1932,7 +1933,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | toLowerOutput | String | one two three |
 | toUpperOutput | String | ONE TWO THREE |
@@ -1958,7 +1959,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |字符串 |要剪裁的值。 |
 
@@ -1992,7 +1993,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | 返回 | String | one two three |
 
@@ -2017,7 +2018,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |字符串 |哈希函数中用于创建唯一字符串的值。 |
 | 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
@@ -2106,7 +2107,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | baseUri |是 |字符串 |基本 uri 字符串。 |
 | relativeUri |是 |字符串 |要添加到基本 uri 字符串的相对 uri 字符串。 |
@@ -2156,7 +2157,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2183,7 +2184,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |是 |字符串 |要编码的值。 |
 
@@ -2224,7 +2225,7 @@ URI 编码值的字符串。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2251,7 +2252,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | 说明 |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |字符串 |要转换为字符串的 URI 编码值。 |
 
@@ -2292,7 +2293,7 @@ URI 编码值的解码字符串。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |

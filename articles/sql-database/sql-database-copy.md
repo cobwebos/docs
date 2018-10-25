@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 2ce86bee96f22b4079afee3eacbeee7ea15a6ffa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 10/05/2018
+ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226001"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868406"
 ---
-# <a name="copy-an-azure-sql-database"></a>复制 Azure SQL 数据库
+# <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
 通过 Azure SQL 数据库，可以以多种方式在相同或不同的服务器上创建现有 Azure SQL 数据库的事务一致性副本。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
 

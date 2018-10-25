@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956891"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870819"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 
@@ -274,7 +274,7 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 
 ## <a name="refreshing-the-access-tokens"></a>刷新访问令牌
 
-访问令牌的生存期很短，必须在其过期后刷新才能继续访问资源。 若要刷新 `access_token`，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。
+访问令牌的生存期很短，必须在其过期后刷新才能继续访问资源。 若要刷新 `access_token`，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已被同意访问的所有资源有效 - 因此，对 `resource=https://graph.microsoft.com` 请求发出的刷新令牌可用于请求 `resource=https://contoso.com/api` 的新访问令牌。 
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理令牌颁发终结点返回的错误。
 

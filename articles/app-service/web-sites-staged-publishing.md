@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ecd58779262f6580287e6c72d3aa2aecf237a562
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 35027b4eadba72776fd27826a389763cc0832eee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983092"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044308"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -84,7 +84,7 @@ ms.locfileid: "45983092"
 * 缩放设置
 * Web 作业计划程序
 
-要将应用设置或连接字符串配置为停在某个槽中（不交换），请访问特定槽的“应用程序设置”边栏选项卡，然后针对应该位于该槽中的配置元素选中“槽设置”框。 如果将配置元素标记为特定于槽，则无法在所有与该应用关联的部署槽之间交换该元素。
+要将应用设置或连接字符串配置为固定在某个槽中（不交换），请访问特定槽的“应用程序设置”边栏选项卡，然后针对应固定在该槽中的配置元素选中“槽设置”框。 如果将配置元素标记为特定于槽，则无法在所有与该应用关联的部署槽之间交换该元素。
 
 ![槽设置][SlotSettings]
 

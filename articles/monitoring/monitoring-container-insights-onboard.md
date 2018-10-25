@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: df145ebe6276c911ef3064e3f8ff7a23a2faa870
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423028"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831188"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>如何为容器载入 Azure Monitor
 本文介绍如何为容器设置 Azure Monitor，以监视部署到 Kubernetes 环境和在 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/)中托管的工作负荷的性能。
@@ -39,8 +39,7 @@ ms.locfileid: "47423028"
 监视性能的能力依赖于适用于 Linux 的容器化 Log Analytics 代理，该代理从群集的所有节点收集性能和事件数据。 启用容器监视后，自动部署代理并注册到指定的 Log Analytics 工作区。 
 
 >[!NOTE] 
->如果已部署 AKS 群集，可使用 Azure CLI 或提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。 
->
+>如果已部署 AKS 群集，可使用 Azure CLI 或提供的 Azure 资源管理器模板启用监视，如后文所示。 不能使用 `kubectl` 升级、删除、重新部署或部署代理。 模板需要部署在群集所在的资源组中。”
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。 
@@ -71,6 +70,18 @@ ms.locfileid: "47423028"
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+输出如下所示：
+
+```azurecli
+provisioningState       : Succeeded
+```
+
+如果希望与现有工作区集成，请使用以下命令指定该工作区。
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
 ```
 
 输出如下所示：
@@ -124,6 +135,10 @@ provisioningState       : Succeeded
 * AKS 容器资源 ID。 
 * 在其中部署群集的资源组。
 * Log Analytics 工作区和要在其中创建工作区的区域。 
+
+>[!NOTE]
+>模板需要部署在群集所在的资源组中。
+>
 
 必须手动创建 Log Analytics 工作区。 若要创建工作区，可通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)中进行设置。
 

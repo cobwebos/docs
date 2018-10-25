@@ -2,18 +2,17 @@
 title: Azure 容器注册表 Webhook 架构参考
 description: Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
-ms.author: marsma
-ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166001"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857748"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
@@ -41,7 +40,7 @@ ms.locfileid: "32166001"
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|Type|说明|
+|元素|类型|Description|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -51,7 +50,7 @@ ms.locfileid: "32166001"
 
 ### <a name="target"></a>目标
 
-|元素|Type|说明|
+|元素|类型|Description|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -62,7 +61,7 @@ ms.locfileid: "32166001"
 
 ### <a name="request"></a>请求
 
-|元素|Type|说明|
+|元素|类型|Description|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -105,7 +104,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|Type|说明|
+|元素|类型|Description|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -115,7 +114,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_target"></a> 目标
 
-|元素|Type|说明|
+|元素|类型|Description|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
@@ -123,7 +122,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_request"></a> 请求
 
-|元素|Type|说明|
+|元素|类型|Description|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
@@ -151,7 +150,7 @@ docker push myregistry.azurecr.io/hello-world:v1
   }
 ```
 
-触发 delete 事件 Webhook 的示例 [Azure CLI 2.0](/cli/azure/acr) 命令：
+触发**删除**事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
 
 ```azurecli
 # Delete repository

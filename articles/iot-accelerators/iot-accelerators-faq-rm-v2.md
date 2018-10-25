@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: ba0d81761904be74632f8f0025488b7f501bd715
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59b52163ba7f5abd53c60264f10f5352e3e4f6cd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185993"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067782"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>远程监视解决方案加速器的常见问题解答
 
@@ -37,6 +37,10 @@ ms.locfileid: "39185993"
 ### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>如何在仪表板上配置动态映射？
 
 有关详细信息，请参阅 [Upgrade map key to see devices on a dynamic map](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)（升级映射键，以查看动态映射上的设备）。
+
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
+
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 中找到已存档文档。
 
 ### <a name="next-steps"></a>后续步骤
 

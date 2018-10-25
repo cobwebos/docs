@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228058"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869306"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>使用 SQL 数据库托管实例进行复制
 
@@ -76,21 +76,22 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
 ## <a name="configure-publishing-and-distribution-example"></a>配置发布和分发示例
 
-1. 在门户中[创建 Azure SQL 数据库托管实例](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)。
+1. 在门户中[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
+2. [创建 Azure 存储帐户](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)（适用于工作目录）。
 
-1. [创建 Azure 存储帐户](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)（适用于工作目录）。 确保复制存储密钥。 请参阅[查看和复制存储访问密钥](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)。
-
-1. 为发布服务器创建数据库。
+   确保复制存储密钥。 请参阅[查看和复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys
+)。
+3. 为发布服务器创建数据库。
 
    在下面的示例脚本中，请将 `<Publishing_DB>` 替换为此数据库的名称。
 
-1. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 请参阅[创建数据库用户](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)。 使用安全密码。
+4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 请参阅[创建数据库用户](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)。 使用安全密码。
 
    在下面的示例脚本中，将 `<SQL_USER>` 和 `<PASSWORD>` 与此 SQL Server 帐户数据库用户和密码配合使用。
 
-1. [连接到 SQL 数据库托管实例](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)。
+5. [连接到 SQL 数据库托管实例](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)。
 
-1. 运行以下查询，以便添加分发服务器和分发数据库。
+6. 运行以下查询，以便添加分发服务器和分发数据库。
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. 若要将发布服务器配置为使用指定的分发数据库，请更新并运行以下查询。
+7. 若要将发布服务器配置为使用指定的分发数据库，请更新并运行以下查询。
 
    将 `<SQL_USER>` 和 `<PASSWORD>` 替换为 SQL Server 帐户和密码。
 
@@ -107,7 +108,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
    在 Microsoft Azure 存储帐户的“访问密钥”选项卡中，将 `<STORAGE_CONNECTION_STRING>` 替换为连接字符串。
 
-   更新以下查询后，请运行它。 
+   更新以下查询后，请运行它。
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
    GO
    ```
 
-1. 配置用于复制的发布服务器。 
+8. 配置用于复制的发布服务器。
 
     在以下查询中，请将 `<Publishing_DB>` 替换为发布服务器数据库的名称。
 
@@ -155,15 +156,13 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
                 @job_password = N'<PASSWORD>'
    ```
 
-1. 添加文章、订阅和推送订阅代理。 
+9. 添加文章、订阅和推送订阅代理。
 
    若要添加这些对象，请更新以下脚本。
 
-   将 `<Object_Name>` 替换为发布对象的名称。
-
-   将 `<Object_Schema>` 替换为源架构的名称。 
-
-   替换尖括号 `<>` 中的其他参数，使之与前述脚本中的值匹配。 
+   - 将 `<Object_Name>` 替换为发布对象的名称。
+   - 将 `<Object_Schema>` 替换为源架构的名称。
+   - 替换尖括号 `<>` 中的其他参数，使之与前述脚本中的值匹配。
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

@@ -3,7 +3,7 @@ title: 对 Azure 市场和 AppSource 的支持 | Azure
 description: Azure 市场和 AppSource 支持信息和链接
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/02/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0007396ad6d5fc16177d76683f959591e9830ac3
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 884432d5604868ad2307a7d7ababa3e5a004a982
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782070"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854059"
 ---
 # <a name="support-for-the-marketplace"></a>市场的支持  
 市场的支持选项。  
 
 ## <a name="onboarding"></a>登记
 
-针对“市场载入”[提交工单](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)，通过 Microsoft 支持来解决所有入门问题。
+针对登记和开始使用时遇到的所有问题，开具 Microsoft [市场发布者支持](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)的票证。
 
 ## <a name="cloud-partner-portal"></a>云合作伙伴门户  
 
 | 支持渠道 | Description | 可用性 |  
 |:--- |:--- |:--- |  
-| 支持<ul> <li>若要获取帮助，请访问“创建事件”页 ([go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975))</li> </ul> | 支持使用云合作伙伴门户。 | 支持全天候提供。 |  
+| 如需帮助，请访问位于[市场支持](https://go.microsoft.com/fwlink/?linkid=844975)中的“创建事件”页</li> </ul> | 支持使用云合作伙伴门户。 | 太平洋标准时间上午 6 点至下午 6 点提供支持。 |  
 
 ## <a name="technical"></a>技术方面  
 
@@ -42,6 +42,7 @@ ms.locfileid: "43782070"
 | MSDN 论坛：Azure 市场位于 [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 论坛。 |  
 | Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上的虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow：Azure 上的容器位于 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 | AppSource 的支持：[appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | 支持发布 Dynamics 应用 |
+
 ## <a name="marketing-resources"></a>市场营销资源  
 
 | 支持渠道 | Description | 可用性 |  

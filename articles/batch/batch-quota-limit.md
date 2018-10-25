@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423736"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887558"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -53,7 +53,9 @@ ms.locfileid: "39423736"
 | 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 |20 |
 | 每个应用程序的应用程序包数 |40 |
 | 最长任务生存期 | 7 天<sup>1</sup> |
-| 计算启用了节点间通信的池中的节点 | 100 |
+| [启用了节点间通信的池](batch-mpi.md)中的计算节点 | 100 |
+| [使用自定义 VM 映像创建的池](batch-custom-images.md)中的专用计算节点 | 2500 |
+| [使用自定义 VM 映像创建的池](batch-custom-images.md)中的低优先级计算节点 | 1000 |
 
 <sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
 
@@ -79,7 +81,7 @@ ms.locfileid: "39423736"
 1. 选择“新建支持请求” > “基本”。
 1. 在“基本信息”中：
    
-    a. “问题类型” > “配额”
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “问题类型” > “配额”
    
     b. 选择订阅。
    
@@ -90,14 +92,14 @@ ms.locfileid: "39423736"
     单击“下一步”。
 1. 在“问题”中：
    
-    a. 根据[业务影响情况][support_sev]选择“严重性”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
     单击“下一步”。
 1. 在“联系人信息”中：
    
-    a. 选择“首选联系方法”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    
