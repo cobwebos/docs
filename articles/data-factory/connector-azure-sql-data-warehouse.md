@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: d7a7b87f0d7915692b5a4a8c2233f543bb4c9e1d
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842329"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389320"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -33,7 +33,7 @@ ms.locfileid: "43842329"
 
 具体而言，此 Azure SQL 数据仓库连接器支持以下函数：
 
-- 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或托管服务标识 (MSI) 配合使用来复制数据。
+- 将 SQL 身份验证和 Azure Active Directory (Azure AD) 应用程序令牌身份验证与服务主体或 Azure 资源的托管标识配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，使用 PolyBase 或批量插入加载数据。 我们建议使用 PolyBase 以获得更好的复制性能。
 
@@ -64,13 +64,13 @@ Azure SQL 数据仓库链接服务支持以下属性：
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的。 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure 集成运行时。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure 集成运行时或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
 - [SQL 身份验证](#sql-authentication)
 - Azure AD 应用程序令牌身份验证：[服务主体](#service-principal-authentication)
-- Azure AD 应用程序令牌身份验证：[托管服务标识](#managed-service-identity-authentication)
+- Azure AD 应用程序令牌身份验证：[Azure 资源的托管标识](#managed-identity)
 
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
@@ -152,9 +152,9 @@ Azure SQL 数据仓库链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>托管服务标识身份验证
+### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定工厂的[托管服务标识](data-factory-service-identity.md)相关联。 可将此服务标识用于 Azure SQL 数据仓库身份验证。 指定工厂可使用此标识访问数据仓库数据并从或向其中复制数据。
+可将数据工厂与代表此特定工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可将此服务标识用于 Azure SQL 数据仓库身份验证。 指定工厂可使用此标识访问数据仓库数据并从或向其中复制数据。
 
 > [!IMPORTANT]
 > 请注意，MSI 身份验证目前不支持 PolyBase。
@@ -210,7 +210,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services)一文。 本部分提供 Azure SQL 数据仓库数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)一文。 本部分提供 Azure SQL 数据仓库数据集支持的属性列表。
 
 要从/向 Azure SQL 数据仓库复制数据，请将数据集的 **type** 属性设置为 **AzureSqlDWTable**。 支持以下属性：
 
@@ -250,14 +250,14 @@ Azure SQL 数据仓库链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是 |
 | sqlReaderQuery | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否 |
-| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 存储过程中的最后一条 SQL 语句必须是 SELECT 语句。 | 否 |
+| sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 
 ### <a name="points-to-note"></a>需要注意的要点：
 
 - 如果为 **SqlSource** 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据仓库源运行此查询以获取数据。 也可以可指定存储过程。 如果存储过程使用参数，则指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters**。
 - 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的 **structure** 节中定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据仓库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName属性。
+- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName 属性。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 
@@ -383,7 +383,7 @@ GO
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>使用 PolyBase 将数据加载到 Azure SQL 数据仓库
 
-使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关详细比较，请参阅[性能参考](copy-activity-performance.md#performance-reference)。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-load-sql-data-warehouse)。
+使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是将大量数据加载到高吞吐量 Azure SQL 数据仓库的有效方法。 使用 PolyBase 而非默认 BULKINSERT 机制可以实现吞吐量的巨大增加。 有关详细比较，请参阅[性能参考](copy-activity-performance.md#performance-reference)。 有关带有用例的演练，请参阅[将 1 TB 的数据加载到 Azure SQL 数据仓库](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse)。
 
 * 如果源数据位于 Azure Blob 存储或 Azure Data Lake Store 中，并且格式与 PolyBase 兼容，请使用 PolyBase 直接复制到 Azure SQL 数据仓库。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)**。
 * 如果 PolyBase 最初不支持源数据存储和格式，请改用**[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式。 它将数据存储在 Azure Blob 存储中。 然后，它将数据载入 SQL 数据仓库。
@@ -576,7 +576,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 
 | smallint | Int16 |
 | smallmoney | 小数 |
 | sql_variant | 对象 * |
-| text | String, Char[] |
+| 文本 | String, Char[] |
 | time | TimeSpan |
 | timestamp | Byte[] |
 | tinyint | Byte |

@@ -12,116 +12,138 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077720"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351348"
 ---
-# <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
+# <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
-本教程将演示如何通过以下方法保护 Web 应用的安全：为 **[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)** 购买 SSL 证书、将其安全存储在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中并与自定义域进行关联。
+本教程将介绍如何通过在 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 中创建（购买）应用服务证书来保护 Web 应用程序以及将其绑定到应用服务应用。
 
-## <a name="step-1---sign-in-to-azure"></a>步骤 1 - 登录 Azure
+> [!TIP]
+> App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 为此，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请参阅[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)。
+>
 
-登录到 Azure 门户 (http://portal.azure.com)
+## <a name="prerequisites"></a>先决条件
 
-## <a name="step-2---place-an-ssl-certificate-order"></a>步骤 2 - 订购 SSL 证书
+按照本操作方法指南操作：
 
-可通过在“Azure 门户”中新建[应用服务证书](https://portal.azure.com/#create/Microsoft.SSL)来订购 SSL 证书。
+- [创建应用服务应用](/azure/app-service/)
+- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](custom-dns-web-site-buydomains-web-app.md)
+
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
+
+## <a name="start-certificate-order"></a>启动证书申请
+
+在<a href="https://portal.azure.com/#create/Microsoft.SSL" target="_blank">应用服务证书创建页</a>启动应用服务证书申请。
 
 ![证书创建](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-为 SSL 证书输入友好“名称”并输入“域名”
+使用下表来帮助配置证书。 完成后，单击“创建”。
 
-> [!NOTE]
-> 此步骤是购买过程中的最重要步骤之一。 请务必输入想要使用此证书保护的正确主机名（自定义域）。 切勿在主机名前面附加 WWW。 
->
+| 设置 | Description |
+|-|-|
+| 名称 | 应用服务证书证书的友好名称。 |
+| 裸域主机名 | 此步骤是购买过程中的最重要步骤之一。 使用已映射到应用的根域名。 切勿在域名前面附加 `www`。 |
+| 订阅 | 托管 Web 应用的数据中心。 |
+| 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
+| 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
+| 法律条款 | 单击以确认你同意法律条款。 |
 
-选择“订阅”、“资源组”和“证书 SKU”
+## <a name="store-in-azure-key-vault"></a>存储在 Azure Key Vault 中
 
-> [!TIP]
-> App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 若要执行此操作，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请阅读[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)。
->
+证书购买过程完成后，还需完成其他一些步骤才可开始使用此证书。 
 
-## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>步骤3 - 将证书存储在 Azure Key Vault 中
-
-> [!NOTE]
-> [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。
->
-
-SSL 证书购买过程完成之后，需要打开[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面。
+选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页中的证书，然后单击“证书配置” > “步骤 1: 存储”。
 
 ![插入已准备好存储在 KV 中的图像](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-证书状态为“等待颁发”，因为还需完成一些步骤，才可开始使用此证书。
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
 
-单击“证书属性”页面中的“证书配置”，然后单击“步骤 1: 存储”将此证书存储到 Azure Key Vault。
+在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
 
-在“Key Vault 状态”页面中单击“Key Vault 存储库”，选择要存储此证书的现有 Key Vault，或者选择“新建 Key Vault”，在同一订阅和资源组中创建新的 Key Vault。
+| 设置 | Description |
+|-|-|
+| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
+| 资源组 | 建议选择与应用服务证书相同的资源组。 |
+| 位置 | 选择与应用服务应用相同的位置。 |
+| 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
+| 访问策略| 定义应用程序和对保管库资源允许的访问权限。 可以稍后配置，请按照[授予多个应用程序访问密钥保管库的权限](../key-vault/key-vault-group-permissions-for-apps.md)的步骤进行操作。 |
+| 虚拟网络访问 | 限制为仅特定 Azure 虚拟网络具有保管库访问权限。 可以稍后配置，请按照[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/key-vault-network-security.md)的步骤进行操作 |
 
-> [!NOTE]
-> 在 Azure Key Vault 中存储此证书会产生少量的费用。
-> 有关详细信息，请参阅 **[Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)**。
->
+选择保管库后，关闭“Key Vault 存储库”页面。 “存储”选项应显示绿色选中标记，表示成功。 保持页面处于打开状态，执行下一步骤。
 
-选择用于存储此证书的 Key Vault 存储库后，“存储”选项应显示为“成功”。
+## <a name="verify-domain-ownership"></a>验证域所有权
 
-![插入表示在 KV 中存储成功的图像](./media/app-service-web-purchase-ssl-web-site/KVStoreSuccess.png)
+在上一步骤中所用的同一“证书配置”页面中，单击“步骤 2: 验证”。
 
-## <a name="step-4---verify-the-domain-ownership"></a>步骤 4 - 验证域所有权
+![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
-在步骤 3 中使用的同一“证书配置”页面中，单击“步骤 2: 验证”。
-
-选择首选的域验证方法。 
-
-应用服务证书支持四种类型的域验证：应用服务验证、域验证和手动验证。 有关验证类型的更多详细信息，请参阅[“高级”部分](#advanced)。
-
-> [!NOTE]
-> 当要验证的域已映射到同一订阅中的应用服务应用时，**应用服务验证**是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
->
-
-请单击“验证”按钮完成此步骤。
-
-![插入域验证图像](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
-
-请在单击“验证”后使用“刷新”按钮，直到“验证”选项显示成功。
-
-![插入表示在 KV 中成功验证的图像](./media/app-service-web-purchase-ssl-web-site/KVVerifySuccess.png)
-
-## <a name="step-5---assign-certificate-to-app-service-app"></a>步骤 5 - 将证书分配到应用服务应用
+选择“应用服务验证”。 由于已将域映射到 Web 应用（请参阅[先决条件](#prerequisites)），所以验证已经执行。 只需单击“验证”来完成此步骤。 单击“刷新”按钮，直到显示“证书为域已验证”消息。
 
 > [!NOTE]
-> 在执行本部分中的这些步骤之前，必须将某个自定义域名与应用相关联。 有关详细信息，请参阅 **[为 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)**。
->
+> 支持四种类型的域验证方法： 
+> 
+> - **应用服务验证** - 当域已映射到同一订阅中的应用服务应用时，这是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
+> - **域** - 验证[从 Azure 购买的应用服务域](custom-dns-web-site-buydomains-web-app.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
+> - **邮件** - 通过向域管理员发送电子邮件来验证域。 选择此选项时会提供相应说明。
+> - **手动** - 使用 HTML 页（仅标准证书）或 DNS TXT 记录验证域。 选择此选项时会提供相应说明。
 
-在 [Azure 门户](https://portal.azure.com/)中，单击页面左侧的“应用服务”选项。
+## <a name="bind-certificate-to-app"></a>将证书绑定到应用
 
-单击要分配此证书的应用的名称。
+在 [Azure 门户](https://portal.azure.com/)的左侧菜单中，选择“应用服务” > “\<your_ app>”。
 
-在“设置”中，单击“SSL 设置”。
-
-单击“导入应用服务证书”，再选择刚购买的证书。
+在应用的左侧导航窗格中，选择“SSL 设置” > “私有证书 (.pfx)” > “导入应用服务证书”。
 
 ![插入导入证书的图像](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-在“SSL 绑定”部分中单击“添加绑定”，使用下拉菜单选择要使用 SSL 保护的域名，并选择要使用的证书。 还可以选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
+选择刚刚购买的证书。
 
-![插入 SSL 绑定的图像](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
+导入证书后，需要将其绑定到应用中已映射的域名。 选择“绑定” > “添加 SSL 绑定”。 
 
-单击“添加绑定”以保存更改并启用 SSL。
+![插入导入证书的图像](./media/app-service-web-purchase-ssl-web-site/AddBinding.png)
+
+使用下表帮助在“SSL 绑定”对话框中配置绑定，然后单击“添加绑定”。
+
+| 设置 | Description |
+|-|-|
+| 主机名 | 要为其添加 SSL 绑定的域名。 |
+| 私有证书指纹 | 要绑定的证书。 |
+| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
+
+## <a name="verify-https-access"></a>验证 HTTPS 访问
+
+使用 `HTTPS://<domain_name>`（而非 `HTTP://<domain_name>`）访问应用，以验证是否已正确配置证书。
+
+## <a name="rekey-and-sync-certificate"></a>重新生成密钥并同步证书
+
+如果需要重新生成证书，选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页的证书，然后选择左侧导航窗格的“重新生成密钥和同步”。
+
+单击“重新生成密钥”按钮启动该过程。 此过程需要 1 - 10 分钟才能完成。
+
+![插入重新生成 SSL 密钥的图像](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
+
+通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
+
+## <a name="renew-certificate"></a>续订证书
+
+若要在任何时候启用自动续订证书，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页中的证书，然后单击左侧导航窗格的“自动续订设置”。 
+
+选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
 
 > [!NOTE]
-> 若选中“基于 IP 的 SSL”，且自定义域是使用 A 记录配置的，则还必须执行以下步骤。 有关更多详细信息，请参阅[高级部分](#Advanced)。
+> 无论是手动续订还是自动续订，续订的证书都不会自动绑定到应用。 若要将其绑定到应用，请参阅[续订证书](./app-service-web-tutorial-custom-ssl.md#renew-certificates)。 
 
-此时，应可使用 `HTTPS://`（而非 `HTTP://`）访问应用，以验证证书已正确配置。
-
-<!--![insert image of https](./media/app-service-web-purchase-ssl-web-site/Https.png)-->
-
-## <a name="step-6---management-tasks"></a>步骤 6 - 管理任务
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -130,74 +152,6 @@ SSL 证书购买过程完成之后，需要打开[应用服务证书](https://po
 ### <a name="powershell"></a>PowerShell
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
-
-## <a name="advanced"></a>高级
-
-### <a name="verifying-domain-ownership"></a>验证域所有权
-
-应用服务证书还支持两种其他类型的域验证：域验证和手动验证。
-
-#### <a name="domain-verification"></a>域验证
-
-选择此选项仅适用于[从 Azure 购买的应用服务域](custom-dns-web-site-buydomains-web-app.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
-
-#### <a name="manual-verification"></a>手动验证
-
-> [!IMPORTANT]
-> HTML 网页验证（仅适用于标准证书 SKU）
->
-
-1. 创建名为“starfield.html”的 HTML 文件
-
-1. 此文件的内容应与“域验证令牌”的名称完全相同。 （可以从“域验证状态”页面复制该令牌）
-
-1. 在托管域的 Web 服务器的根目录处上传此文件 `/.well-known/pki-validation/starfield.html`
-
-1. 单击“刷新”，在完成验证后更新证书状态。 验证可能需要几分钟才能完成。
-
-> [!TIP]
-> 使用 `curl -G http://<domain>/.well-known/pki-validation/starfield.html` 在终端中进行验证，响应需包含 `<verification-token>`。
-
-#### <a name="dns-txt-record-verification"></a>DNS TXT 记录验证
-
-1. 使用 DNS 管理器，在 `@` 子域上创建值等于“域验证令牌”的 TXT 记录。
-1. 单击“刷新”，在完成验证后更新证书状态。
-
-> [!TIP]
-> 需要在 `@.<domain>` 上创建值为 `<verification-token>` 的 TXT 记录。
-
-### <a name="assign-certificate-to-app-service-app"></a>将证书分配到应用服务应用
-
-如果选择了“基于 IP 的 SSL”，并且自定义域是使用 A 记录配置的，则必须执行以下附加步骤：
-
-配置基于 IP 的 SSL 绑定后，会向应用分配专用 IP 地址。 可以在“自定义域”页面中应用设置的下面（紧靠在“主机名”部分的上方）找到此 IP 地址。 此 IP 地址作为“外部 IP 地址”列出
-
-![插入 IP SSL 的图像](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
-
-此 IP 地址与先前配置域的 A 记录时所用的虚拟 IP 地址不同。 若要配置为使用基于 SNI 的 SSL，或未配置为使用 SSL，则不会为此条目列出任何地址。
-
-通过使用域名注册机构所提供的工具，修改自定义域名的 A 记录以指向上一步中的 IP 地址。
-
-## <a name="rekey-and-sync-the-certificate"></a>重新生成密钥并同步证书
-
-如果需要重新生成证书的密钥，请在“证书属性”页面中选择“重新生成密钥并同步”选项。
-
-单击“重新生成密钥”按钮启动该过程。 此过程需要 1 - 10 分钟才能完成。
-
-![插入重新生成 SSL 密钥的图像](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
-
-通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
-
-## <a name="renew-the-certificate"></a>续订证书
-
-若要随时打开证书的自动续订，请单击证书管理页中的“自动续订设置”。 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 90 天自动续订。
-
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
-
-若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
-
-> [!NOTE]
-> 无论是手动续订还是自动续订，续订的证书都不会自动绑定到应用。 若要将其绑定到应用，请参阅[续订证书](./app-service-web-tutorial-custom-ssl.md#renew-certificates)。 
 
 ## <a name="more-resources"></a>更多资源
 

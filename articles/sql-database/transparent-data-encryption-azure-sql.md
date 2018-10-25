@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: becczhang
+author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 07/09/2018
-ms.openlocfilehash: 50b433c65dec1f667f32aaf60148a6e393c67320
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165920"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353012"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -25,7 +25,7 @@ ms.locfileid: "47165920"
 
 对于旧式数据库或 Azure SQL 数据仓库，需要手动启用 TDE。  
 
-透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 此数据库加密密钥受透明数据加密保护器的保护。 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 Azure Key Vault 中的非对称密钥（“创建自己的密钥”）。 可在服务器级别设置透明数据加密保护器。 
+透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 此数据库加密密钥受透明数据加密保护器的保护。 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 Azure Key Vault 中的非对称密钥（“创建自己的密钥”）。 可在服务器级别设置透明数据加密保护器。
 
 数据库启动时，加密的数据库加密密钥将会解密，然后在 SQL Server 数据库引擎进程中用于解密和重新加密数据库文件。 透明数据加密在页面级别对数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 有关透明数据加密的一般说明，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)。
 
@@ -35,11 +35,10 @@ ms.locfileid: "47165920"
 
 在 Azure 中，透明数据加密的默认设置是通过内置的服务器证书保护数据库加密密钥。 内置服务器证书是每个服务器特有的。 如果某个数据库存在异地复制关系，则主数据库和异地辅助数据库将受主数据库的父服务器密钥的保护。 如果两个数据库连接到同一个服务器，则它们共用相同的内置证书。 Microsoft 每隔 90 天自动轮换这些证书至少一次。
 
-Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还原。 
+Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还原。
 
 > [!IMPORTANT]
 > 默认情况下，会使用服务托管的透明数据加密将所有新建的 SQL 数据库加密。 默认不会加密 2017 年 5 月以前的现有数据库，以及通过还原、异地复制和数据库复制创建的数据库。
->
 
 ## <a name="bring-your-own-key"></a>创建自己的密钥
 
@@ -54,11 +53,12 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>移动受透明数据加密保护的数据库
 
 对于 Azure 中的操作，不需要解密数据库。 源数据库或主数据库上的透明数据加密设置将以透明方式继承到目标。 包括的操作涉及到：
-- 异地还原。
-- 自助时间点还原。
-- 还原已删除的数据库。
-- 活动异地复制。
-- 创建数据库副本。
+
+- 异地还原
+- 自助时间点还原
+- 还原已删除的数据库
+- 活动异地复制
+- 创建数据库副本
 
 导出受透明数据加密保护的数据库时，不会加密数据库的导出内容。 此导出内容存储在未加密的 BACPAC 文件中。 请务必适当保护 BACPAC 文件，并在完成新数据库导入后启用透明数据加密。
 
@@ -68,19 +68,19 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 ## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>在 Azure 门户中管理透明数据加密
 
-若要通过 Azure 门户配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。 
+若要通过 Azure 门户配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。
 
-在数据库级别设置透明数据加密。 若要在数据库中启用透明数据加密，请转到 [Azure 门户](https://portal.azure.com)，并使用 Azure 管理员或参与者帐户登录。 在用户数据库下找到透明数据加密设置。 默认会使用服务托管的透明数据加密。 将为包含数据库的服务器自动生成透明数据加密证书。 
+在数据库级别设置透明数据加密。 若要在数据库中启用透明数据加密，请转到 [Azure 门户](https://portal.azure.com)，并使用 Azure 管理员或参与者帐户登录。 在用户数据库下找到透明数据加密设置。 默认会使用服务托管的透明数据加密。 将为包含数据库的服务器自动生成透明数据加密证书。
 
 ![服务托管的透明数据加密](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
 
-在服务器级别设置透明数据加密主密钥（也称为透明数据加密保护器）。 若要使用支持“创建自己的密钥”的透明数据加密，并使用 Key Vault 中的密钥来保护数据库，请查看服务器下的透明数据加密设置。 
+在服务器级别设置透明数据加密主密钥（也称为透明数据加密保护器）。 若要使用支持“创建自己的密钥”的透明数据加密，并使用 Key Vault 中的密钥来保护数据库，请查看服务器下的透明数据加密设置。
 
-![支持“创建自己的密钥”的透明数据加密](./media/transparent-data-encryption-azure-sql/tde-byok-support.png) 
+![支持“创建自己的密钥”的透明数据加密](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
 ## <a name="manage-transparent-data-encryption-by-using-powershell"></a>使用 PowerShell 管理透明数据加密
 
-若要通过 PowerShell 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。 
+若要通过 PowerShell 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。
 
 | Cmdlet | Description |
 | --- | --- |
@@ -102,28 +102,28 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 会加密或解密数据库 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |返回有关数据库的加密状态及其关联的数据库加密密钥的信息 |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |返回有关每个数据仓库节点的加密状态及其关联的数据库加密密钥的信息 | 
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |返回有关每个数据仓库节点的加密状态及其关联的数据库加密密钥的信息 |
 |  | |
 
 无法使用 Transact-SQL 将透明数据加密保护器切换为 Key Vault 中的密钥。 请使用 PowerShell 或 Azure 门户。
 
 ## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>使用 REST API 管理透明数据加密
- 
-若要通过 REST API 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。 
+
+若要通过 REST API 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。
 
 | 命令 | Description |
 | --- | --- |
-|[创建或更新服务器](/rest/api/sql/servers/createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
-|[创建或更新服务器密钥](/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|
-|[删除服务器密钥](/rest/api/sql/serverkeys/delete)|从 SQL Server 实例中删除 Key Vault 密钥|
-|[获取服务器密钥](/rest/api/sql/serverkeys/get)|从 SQL Server 实例中获取特定的 Key Vault 密钥|
-|[按服务器列出服务器密钥](/rest/api/sql/serverkeys/listbyserver)|获取 SQL Server 实例的 Key Vault 密钥 |
-|[创建或更新加密保护器](/rest/api/sql/encryptionprotectors/createorupdate)|设置 SQL Server 实例的透明数据加密保护器|
-|[获取加密保护器](/rest/api/sql/encryptionprotectors/get)|获取 SQL Server 实例的透明数据加密保护器|
-|[按服务器列出加密保护器](/rest/api/sql/encryptionprotectors/listbyserver)|获取 SQL Server 实例的透明数据加密保护器 |
-|[创建或更新透明数据加密配置](/rest/api/sql/transparentdataencryptions/createorupdate)|为数据库启用或禁用透明数据加密|
-|[获取透明数据加密配置](/rest/api/sql/transparentdataencryptions/get)|获取数据库的透明数据加密配置|
-|[列出透明数据加密配置结果](/rest/api/sql/transparentdataencryptionactivities/ListByConfiguration)|获取数据库的加密结果|
+|[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
+|[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|
+|[删除服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|从 SQL Server 实例中删除 Key Vault 密钥|
+|[获取服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|从 SQL Server 实例中获取特定的 Key Vault 密钥|
+|[按服务器列出服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|获取 SQL Server 实例的 Key Vault 密钥 |
+|[创建或更新加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|设置 SQL Server 实例的透明数据加密保护器|
+|[获取加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|获取 SQL Server 实例的透明数据加密保护器|
+|[按服务器列出加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|获取 SQL Server 实例的透明数据加密保护器 |
+|[创建或更新透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|为数据库启用或禁用透明数据加密|
+|[获取透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|获取数据库的透明数据加密配置|
+|[列出透明数据加密配置结果](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|获取数据库的加密结果|
 
 ## <a name="next-steps"></a>后续步骤
 

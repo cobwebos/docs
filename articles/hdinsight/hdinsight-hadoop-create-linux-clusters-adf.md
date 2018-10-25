@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 567bac8a12a841eed2df1467b94a2a91c86ff7b4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 9e21c49e7a472830c19f61388739c35aac17c3ff
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666145"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955603"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "43666145"
 
 - Azure PowerShell。 有关说明，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)。
 
-- 一个 Azure Active Directory 服务主体。 创建服务主体后，请务必使用链接文章中的说明检索**应用程序 ID** 和**身份验证密钥**。 在本教程后面的步骤中，你需要用到这些值。 另外，请确保此服务主体是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关检索所需值和分配适当角色的说明，请参阅[创建 Azure Active Directory 服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
+- 一个 Azure Active Directory 服务主体。 创建服务主体后，请务必使用链接文章中的说明检索**应用程序 ID** 和**身份验证密钥**。 在本教程后面的步骤中，你需要用到这些值。 另外，请确保此服务主体是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关检索所需值和分配适当角色的说明，请参阅[创建 Azure Active Directory 服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -178,7 +178,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     
     |属性  |说明  |
     |---------|---------|
-    |**Name** |  输入数据工厂的名称。 该名称必须全局唯一。|
+    |**名称** |  输入数据工厂的名称。 该名称必须全局唯一。|
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。 |
     |**版本**     | 选择“V2 (预览版)”。 |
@@ -237,7 +237,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     | 属性 | Description |
     | --- | --- |
     | 名称 | 输入 HDInsight 链接服务的名称 |
-    | Type | 选择“按需 HDInsight” |
+    | 类型 | 选择“按需 HDInsight” |
     | Azure 存储链接服务 | 选择先面创建的存储链接服务。 |
     | 群集类型 | 选择“hadoop” |
     | 生存时间 | 提供在自动删除 HDInsight 群集之前希望该群集保留的持续时间。|

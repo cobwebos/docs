@@ -11,23 +11,23 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: effaa9b0b3fec36974a2bc850eeb1f36181ca0c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 83db2bcfe21edc9f8f2649ef8c2b3a23e412e39d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166429"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353979"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Azure SQL 数据库逻辑服务器及其管理
 
-## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器？
+## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器
 
 逻辑服务器用作多个单一或[已共用](sql-database-elastic-pool.md)数据库的中心管理点，包括[登录名](sql-database-manage-logins.md)[防火墙规则](sql-database-firewall-configure.md)[审核规则](sql-database-auditing.md)[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。
 
 逻辑服务器是一种逻辑构造，它不同于在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。 相反，SQL 数据库托管实例中的服务器与你可能熟悉的本地环境中的 SQL Server 实例相似。
 
-创建逻辑服务器时，提供服务器登录帐户和密码，此凭据有权管理服务器上的 master 数据库及其上创建的所有数据库。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库支持结合使用 SQL 身份验证和 Azure Active Directory 身份验证以进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。 不支持 Windows 身份验证。 
+创建逻辑服务器时，提供服务器登录帐户和密码，此凭据有权管理服务器上的 master 数据库及其上创建的所有数据库。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库支持结合使用 SQL 身份验证和 Azure Active Directory 身份验证以进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。 不支持 Windows 身份验证。
 
 Azure 数据库逻辑服务器：
 
@@ -38,19 +38,19 @@ Azure 数据库逻辑服务器：
 - 参与 [Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
 - 是位置靠前的数据库、弹性池和数据仓库标识元素，用于管理 Azure 资源（请参阅“数据库和池的 URL 方案”）
 - 并置区域中的资源
-- 为数据库访问提供连接终结点 (<serverName>.database.windows.net)
-- 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问 
-- 提供应用于数据库的管理策略的作用域，即登录名、防火墙、审核、威胁检测等。 
+- 为数据库访问提供连接终结点 (`<serverName>`.database.windows.net)
+- 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问
+- 提供应用于数据库的管理策略的作用域，即登录名、防火墙、审核、威胁检测等
 - 受父订阅中的配额限制（默认情况下，每个订阅六个服务器，[请单击此处了解订阅限制](../azure-subscription-service-limits.md)）
 - 提供所含资源的数据库配额和 DTU 或 vCore 配额范围（例如，45,000 个 DTU）
-- 是在包含资源上启用的功能的版本控制作用域 
+- 是在包含资源上启用的功能的版本控制作用域
 - 服务器级主体登录名可以管理服务器上的所有数据库
 - 可以包含与本地 SQL Server 实例中的登录名类似的登录名，这些登录名有权访问服务器上的一个或多个数据库，并可以向这些登录名授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
 - 用于所有在逻辑服务器上创建的用户数据库的默认排序规则是 `SQL_LATIN1_GENERAL_CP1_CI_AS`，其中 `LATIN1_GENERAL` 为英语（美国），`CP1` 为代码页 1252，`CI` 不区分大小写，`AS` 区分重音符。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 服务器、数据库和防火墙
 
-可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。 
+可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>创建空白 SQL 服务器（逻辑服务器）
 
@@ -58,7 +58,7 @@ Azure 数据库逻辑服务器：
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>创建空白或示例 SQL 数据库
 
-若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库，请转到空白 SQL 数据库表单，并输入相应信息。 可以提前创建 Azure SQL 数据库的资源组和逻辑服务器，也可以在创建数据库本身期间创建。 可以创建空白数据库，也可以创建基于 Adventure Works LT 的示例数据库。 
+若要使用 [Azure 门户](https://portal.azure.com)创建 Azure SQL 数据库，请转到空白 SQL 数据库表单，并输入相应信息。 可以提前创建 Azure SQL 数据库的资源组和逻辑服务器，也可以在创建数据库本身期间创建。 可以创建空白数据库，也可以创建基于 Adventure Works LT 的示例数据库。
 
   ![创建数据库 - 1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -69,19 +69,16 @@ Azure 数据库逻辑服务器：
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
 
-若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。 
+若要管理现有服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库网页、“SQL 服务器”页或“所有资源”页。
 
-若要管理现有数据库，请转到“SQL 数据库”页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”页开始为数据库设置服务器级防火墙。 
+若要管理现有数据库，请转到“SQL 数据库”页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”页开始为数据库设置服务器级防火墙。
 
-   ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > 要配置数据库的性能属性，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
->
-
 > [!TIP]
 > 有关 Azure 门户快速入门，请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)。
->
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>使用 PowerShell 管理 Azure SQL 服务器、数据库和防火墙
 
@@ -164,7 +161,6 @@ Azure 数据库逻辑服务器：
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|从 Azure SQL 数据库或 SQL 数据仓库中删除数据库级防火墙规则设置。 |
 
-
 > [!TIP]
 > 有关在 Microsoft Windows 上使用 SQL Server Management Studio 的快速入门，请参阅 [Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询](sql-database-connect-query-ssms.md)。 有关在 macOS、Linux 或 Windows 上使用 Visual Studio Code 的快速入门，请参阅 [Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询](sql-database-connect-query-vscode.md)。
 
@@ -174,21 +170,22 @@ Azure 数据库逻辑服务器：
 
 | 命令 | Description |
 | --- | --- |
-|[Servers - Create Or Update](/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
-|[Servers - Delete](/rest/api/sql/servers/delete)|删除 SQL Server。|
-|[Servers - Get](/rest/api/sql/servers/get)|获取服务器。|
-|[Servers - List](/rest/api/sql/servers/list)|返回服务器的列表。|
-|[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
-|[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
-|[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
-|[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
-|[Firewall Rules - Delete](/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
-|[Firewall Rules - Get](/rest/api/sql/firewallrules/get)|获取防火墙规则。|
-|[Firewall Rules - List By Server](/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
+|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|创建或更新新服务器。|
+|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|删除 SQL Server。|
+|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|获取服务器。|
+|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|返回服务器的列表。|
+|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|返回资源组中服务器的列表。|
+|[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|更新现有服务器。|
+|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|删除数据库。|
+|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|获取数据库。|
+|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|更新现有的数据库。|
+|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|创建或更新防火墙规则。|
+|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|删除防火墙规则。|
+|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|获取防火墙规则。|
+|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 

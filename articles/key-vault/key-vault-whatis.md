@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 56a1ebcfbb6dda9bc96aa241bd2b8d753022181a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497597"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385835"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -35,7 +35,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 
 从根本上说，可通过三种方式向密钥保管库进行身份验证
 
-1. **使用[托管服务标识](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**（**建议和最佳做法**）：在 Azure 中的虚拟机上部署应用时，可以为虚拟机分配具有密钥保管库访问权限的标识。 还可以将标识分配给[此处](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)列出的其他 Azure 资源。 这种方法的好处在于应用/服务不管理第一个机密的轮换。 Azure 会自动轮换标识。 
+1. 使用 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（建议和最佳做法）：在 Azure 中的虚拟机上部署应用时，可以为虚拟机分配具有 Key Vault 访问权限的标识。 还可以将标识分配给[此处](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)列出的其他 Azure 资源。 这种方法的好处在于应用/服务不管理第一个机密的轮换。 Azure 会自动轮换标识。 
 2. **使用服务主体和证书：** 第二个选项是使用服务主体和具有密钥保管库访问权限的关联证书。 应用程序所有者或开发人员负责轮换证书，因此，不建议使用此方式
 3. **使用服务主体和机密：** 第三个选项（非首选项）是使用服务主体和机密向密钥保管库进行身份验证
 

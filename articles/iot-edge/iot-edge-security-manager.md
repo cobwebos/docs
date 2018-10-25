@@ -2,19 +2,19 @@
 title: Azure IoT Edge 安全管理器 | Microsoft Docs
 description: 管理 IoT Edge 设备安全性情况和安全服务的完整性。
 services: iot-edge
-keywords: 安全性, 元素, enclave, IoT Edge
+keywords: 安全性, 安全元素, enclave, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126337"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321157"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
@@ -113,7 +113,7 @@ HSM PAL 将所有硬件信任根抽象化，从而使 IoT Edge 开发者或用�
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>安全硅硬件信任根
 
-安全硅必须在 IoT Edge 设备硬件内定位标记信任。  安全硅种类繁多，包括受信任的平台模块 (TPM)、嵌入式安全元素 (eSM)、ARM 信任区、Intel SGX 和自定义安全硅技术。  考虑到 IoT 设备物理访问相关联的威胁，强烈建议在设备中使用安全硅信任根。
+安全硅必须在 IoT Edge 设备硬件内定位标记信任。  安全硅种类繁多，包括受信任的平台模块 (TPM)、嵌入式安全元素 (eSE)、ARM TrustZone、Intel SGX 和自定义安全硅技术。  考虑到 IoT 设备物理访问相关联的威胁，强烈建议在设备中使用安全硅信任根。
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge 安全管理器集成和维护
 

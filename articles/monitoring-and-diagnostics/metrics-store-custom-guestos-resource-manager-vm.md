@@ -8,33 +8,33 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 4ed911766a14dd35ea662326a5d50df11cf81698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f3076054eb6e18eb5143a34ba558c1f9e43ea4a5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984054"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345180"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
 Azure Monitor [Windows Azure诊断扩展](azure-diagnostics.md) (WAD) 支持从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。  该扩展可以将遥测发送到之前链接的文章中列出的许多不同位置。  
 
-本文介绍将 Windows 虚拟机的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自 WAD 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 通过将它们存储在此位置，可以执行可对平台指标执行的相同操作。  操作包括近乎实时的警报、绘制图表、路由、接受 REST API 访问等。  以前，WAD 扩展写入 Azure 存储，而不是 Azure Monitor 数据存储。   
+本文介绍将 Windows 虚拟机的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自 WAD 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 将它们存储在此位置可以访问可用于平台指标的相同操作。  操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。  以前，WAD 扩展写入 Azure 存储，而不是 Azure Monitor 数据存储。   
 
 如果不熟悉资源管理器模板，请了解[模板部署](../azure-resource-manager/resource-group-overview.md)及其结构和语法。  
 
 ## <a name="pre-requisites"></a>先决条件
 
-- 必须向 [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 注册订阅 
+- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 
 
-- 需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1)，也可以使用 [Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) 
+- 需要安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1)，但也可以使用 [Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) 
 
  
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
-Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。  以下步骤演示如何通过资源管理器模板和 PowerShell 来使用新的“Azure Monitor”数据接收器部署 VM。 
+Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。  以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的“Azure Monitor”数据接收器部署 VM。 
 
 ## <a name="author-resource-manager-template"></a>创建资源管理器模板 
-对于此示例，可使用公开发布的示例模板。 起始模板位于 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows 
+对于本示例，可以使用公开发布的示例模板。 起始模板位于 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows 
 
 - Azuredeploy.json 是用于部署虚拟机的预配置资源管理器模板。 
 
@@ -45,7 +45,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 ###  <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
 打开 azuredeploy.parameters.json 文件 
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值。 这些参数用于对 VM 进行远程访问。 请勿使用此模板中的参数以避免 VM 被劫持。 机器人在 Internet 上扫描公共 Github 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。  
+1. 输入 VM 的“adminUsername”和“adminPassword”的值。 这些参数用于对 VM 进行远程访问。 切勿使用此模板中的参数，以避免 VM 被劫持。 机器人在 Internet 上扫描公共 Github 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。  
 
 1. 为 VM 创建唯一 dnsname。  
 
@@ -64,7 +64,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]", 
 ```
 
-将此托管服务标识 (MSI) 扩展添加到“资源”部分顶部的模板。  该扩展可确保 Azure Monitor 接受所发出的指标。  
+将此 Azure 资源托管标识扩展添加到“资源”部分顶部的模板。  该扩展可确保 Azure Monitor 接受所发出的指标。  
 
 ```json
 //Find this code 
@@ -261,7 +261,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 1. 部署成功后，应能在 Azure 门户中找到 VM，并且 VM 应该向 Azure Monitor 发出指标。 
 
    > [!NOTE] 
-   > 可能会遇到与所选 vmSkuSize 相关的错误。 如果发生这种情况，请返回到 azuredeploy.json 文件并更新 vmSkuSize 参数的默认值。 在这种情况下，建议尝试使用 “Standard_DS1_v2”。 
+   > 可能会遇到与所选 vmSkuSize 相关的错误。 如果发生这种情况，请返回到 azuredeploy.json 文件并更新 vmSkuSize 参数的默认值。 在这种情况下，我们建议尝试使用 “Standard_DS1_v2”。 
 
 ## <a name="chart-your-metrics"></a>绘制指标图表 
 

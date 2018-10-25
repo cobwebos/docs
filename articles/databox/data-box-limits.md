@@ -2,25 +2,18 @@
 title: Azure Data Box 限制 | Microsoft Docs
 description: 介绍 Microsoft Azure Data Box 组件和连接的系统限制与建议大小。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: fe42380288c0f139a2bae80a12f0ebc428a4c286
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993064"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091923"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box 限制
 
@@ -35,7 +28,7 @@ ms.locfileid: "46993064"
 
 ## <a name="data-box-limits"></a>Data Box 限制
 
-- Data Box 最多可存储 500 万个文件。
+- Data Box 最多可存储 5 亿个文件。
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 

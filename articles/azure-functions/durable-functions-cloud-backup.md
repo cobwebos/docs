@@ -2,20 +2,20 @@
 title: Durable Functions 中的扇出/扇入方案 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中实现扇出/扇入方案。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: eec75ad9cf0f568e674b2a4f12d962982f84294f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092659"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987509"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -109,7 +109,7 @@ C# 实现也十分直截了当。 本示例恰好使用了 Azure Functions 绑�
 
 ### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
 
-JavaScript 实现无法访问 Azure Functions 的 `Binder` 功能，因此[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将取而代之。 请注意，该 SDK 需要 `AZURE_STORAGE_CONNECTION_STRING` 应用设置。
+JavaScript 实现无法访问 Azure Functions 的 `Binder` 功能，因此[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将取而代之。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 

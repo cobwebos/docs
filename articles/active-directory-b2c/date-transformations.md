@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff96b9a63e7340788ef2474ce9934145c184e1e1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: b287e7f3846de4391de02cce2cedd6a5df3cbc4a
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542763"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167641"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -158,7 +158,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
     <InputClaim ClaimTypeReferenceId="extension_LastTOSAccepted" TransformationClaimType="secondDateTime" />
   </InputClaims>
   <InputParameters>
-    <InputParameter Id="operator" DataType="string" Value="greater than" />
+    <InputParameter Id="operator" DataType="string" Value="later than" />
     <InputParameter Id="timeSpanInSeconds" DataType="int" Value="7776000" />
   </InputParameters>
   <OutputClaims>
@@ -173,7 +173,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
     - firstDateTime：2018-01-01T00:00:00.100000Z
     - secondDateTime：2018-04-01T00:00:00.100000Z
 - 输入参数：
-    - 运算符：greater than
+    - operator: later than
     - timeSpanInSeconds：7776000（90 天）
 - 输出声明： 
     - 结果：true

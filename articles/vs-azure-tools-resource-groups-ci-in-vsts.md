@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297836"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955156"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Azure DevOps Services 中持续集成
 若要部署 Azure 模板，需要在各个阶段执行任务：生成、测试、复制到 Azure（也称为“暂存”）和部署模板。 可通过两种不同的方法将模板部署到 Azure DevOps Services。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -92,7 +92,7 @@ ms.locfileid: "44297836"
       对于 Azure CLI，请使用：
       
       `azure account show`
-   8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](resource-group-create-service-principal-portal.md)或[通过 Azure 资源管理器对服务主体进行身份验证](resource-group-authenticate-service-principal.md)中的过程。
+   8. 若要获取服务主体 ID、服务主体密钥和租户 ID，请遵循[使用门户创建 Active Directory 应用程序和服务主体](active-directory/develop/howto-create-service-principal-portal.md)或[通过 Azure 资源管理器对服务主体进行身份验证](active-directory/develop/howto-authenticate-service-principal-powershell.md)中的过程。
    9. 向“添加 Azure 订阅”对话框添加服务主体 ID、服务主体密钥和租户 ID 值，并选择“确定”按钮。
       
       现在，已获得了用于运行 Azure PowerShell 脚本的有效服务主体。

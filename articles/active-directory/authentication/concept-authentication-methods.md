@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140838"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378913"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -31,6 +31,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 | 安全提问 | 仅限 SSPR |
 | 电子邮件地址 | 仅限 SSPR |
 | Microsoft Authenticator 应用 | MFA 和 SSPR 公共预览版 |
+| OATH 硬件令牌 | MFA 和 SSPR 公共预览版 |
 | SMS | MFA 和 SSPR |
 | 语音呼叫 | MFA 和 SSPR |
 | 应用密码 | 仅限在某些情况下执行 MFA |
@@ -39,7 +40,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 
 |     |
 | --- |
-| 将移动应用通知和移动应用代码用作 Azure AD 自助密码重置方法是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| 将 MFA 和 SSPR 的 OATH 硬件令牌和移动应用通知或移动应用代码用作 Azure AD 自助密码重置方法是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="password"></a>密码
@@ -146,6 +147,30 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 > [!WARNING]
 > 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是可供用户确保最高级别的安全性的唯一选项。
 >
+
+## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
+
+OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 请注意，密钥限制为 128 个字符，可能不会与所有令牌兼容。
+
+![将 OATH 令牌上传到 Azure 门户中的 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+获取令牌后，必须以逗号分隔值 (CSV) 文件格式将其上传，包括 UPN、序列号、密钥、时间间隔、制造商以及型号，如下所示。
+
+```
+upn,serial number,secret key,timeinterval,manufacturer,model
+Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> 请确保 CSV 文件中包含如上所示的标题行。
+
+正确格式化为 CSV 文件后，管理员便可以登录 Azure 门户并导航到 Azure Active Directory、MFA 服务器、OATH 令牌，然后上传生成的 CSV 文件。
+
+根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。
+
+解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥。
 
 ## <a name="mobile-phone"></a>移动电话
 

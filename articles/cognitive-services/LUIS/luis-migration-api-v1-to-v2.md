@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036586"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646569"
 ---
 # <a name="api-v2-migration-guide"></a>API v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 即将弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://aka.ms/luis-endpoint-apis)和[创作](https://aka.ms/luis-authoring-apis) API。 
@@ -155,7 +155,7 @@ LUIS 会从现有[终结点话语](luis-how-to-review-endoint-utt.md)中推荐�
 导出的 1.x 应用的 JSON 有某些区域需要在导入到 [LUIS][LUIS] 2.0 之前进行更改。 
 
 ### <a name="prebuilt-entities"></a>预生成的实体 
-已更改[预生成的实体](luis-prebuilt-entities.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity) 而不是 datetime。 
+已更改[预生成的实体](luis-prebuilt-entities.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 而不是 datetime。 
 
 ### <a name="actions"></a>操作
 操作属性不再有效。 应该为空 

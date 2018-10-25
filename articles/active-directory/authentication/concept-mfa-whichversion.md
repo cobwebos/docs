@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158441"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378010"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>哪个版本的 Azure MFA 适合我的组织？
 
@@ -61,7 +61,7 @@ ms.locfileid: "39158441"
 | 将移动应用验证码用作第二个因素 | ● | ● |
 | 将电话呼叫用作第二个因素 | ● | ● |
 | 将单向短信用作第二个因素 | ● | ● |
-| 将硬件令牌用作第二个因素 | | ● |
+| 将硬件令牌用作第二个因素 | ●（公共预览版） | ● |
 | 不支持 MFA 的 Office 365 客户端的应用密码 | ● | |
 | 管理员控制身份验证方法 | ● | ● |
 | PIN 模式 | | ● |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/13/2017
 ms.author: devinb
-ms.openlocfilehash: 90dd5df4a607568e2f3a60791da2948af7ce4e50
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cd88dec2ad79ad9f4b4c004866060be86b777cd9
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24002924"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311178"
 ---
 # <a name="troubleshoot-visual-studio-2017-development-with-docker"></a>排查使用 Docker 进行的 Visual Studio 2017 开发
 
@@ -33,9 +33,13 @@ ms.locfileid: "24002924"
 1. 选择“共享驱动器”，并共享系统驱动器和项目所在的驱动器。
 
 > [!NOTE]
-> 如果文件显示“已共享”，可能仍需要单击对话框底部的“重置凭据...”链接，以便重新启用卷共享。
+> 如果文件显示“已共享”，可能仍需要单击对话框底部的“重置凭据...”链接，以便重新启用卷共享。 若要在重置凭据后继续，可能必须重启 Visual Studio。
 
 ![共享驱动器](./media/vs-azure-tools-docker-troubleshooting-docker-errors/shareddrives.png)
+
+## <a name="mounts-denied"></a>装载被拒绝
+
+使用 Docker for macOS 时，可能会遇到引用文件夹 /usr/local/share/dotnet/sdk/NuGetFallbackFolder 错误。 将文件夹添加到 Docker 中的“文件共享”选项卡。
 
 ## <a name="unable-to-start-debugging"></a>无法开始调试
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7de7c87e5cf1747f4899f33d9e6b9cbf0bb430e1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139822"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309614"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -33,6 +33,7 @@ Azure Active Directory 向你提供了各种[报告](overview-reports.md)。 对
 
 如果遇到问题，请参阅[如何获取对 Azure Active Directory 的支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
+本文适用于 Azure AD 图形 API。  有关与 Microsoft Graph API 相关的类似信息，请参阅 [directoryAudit resource type](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit)（directoryAudit 资源类型）。
 
 ## <a name="prerequisites"></a>先决条件
 

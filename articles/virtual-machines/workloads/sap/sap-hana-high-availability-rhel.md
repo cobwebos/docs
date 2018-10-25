@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 637e926676c727c01c60fe0d3e4e758173bdbd18
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636543"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167403"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -69,7 +69,7 @@ SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节�
 * [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [SAP HANA system replication in pacemaker cluster（Pacemaker 群集中的 SAP HANA 系统复制）](https://access.redhat.com/articles/3004101)
+* [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
 * 通用 RHEL 文档
   * [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
@@ -643,8 +643,9 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 可以通过禁用节点上的网络接口（SAP HANA 作为主控节点运行）来测试 Azure 隔离代理的设置。
+若要了解如何模拟网络故障，请参阅 [Red Hat 知识库文章 79523](https://access.redhat.com/solutions/79523)。 此示例使用 net_breaker 脚本阻止对网络的所有访问。
 
-<pre><code>[root@hn1-db-1 ~]# sudo ifdown eth0
+<pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
 
 现在，虚拟机应会根据群集配置重启或停止。

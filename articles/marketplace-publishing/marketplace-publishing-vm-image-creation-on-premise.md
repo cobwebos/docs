@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: d86f60c3d7ed28f435c2514e1ab77594079b399a
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f68dadab96e27cc7b90f44681d87ffa7cce8126b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141240"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390051"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
@@ -113,11 +113,11 @@ ms.locfileid: "42141240"
   ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
 
 ### <a name="create-a-storage-account-by-using-powershell"></a>使用 PowerShell 创建存储帐户
-借助 PowerShell，使用 [New-AzureStorageAccount](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/new-azurestorageaccount) cmdlet 创建存储帐户。
+借助 PowerShell，使用 [New-AzureStorageAccount](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azurestorageaccount) cmdlet 创建存储帐户。
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-然后，可以使用 [New-AzureStorageContainer](https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer) cmdlet 在该存储帐户中创建容器。
+然后，可以使用 [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) cmdlet 在该存储帐户中创建容器。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 
@@ -147,7 +147,6 @@ ms.locfileid: "42141240"
 借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [为市场创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
+* [为市场创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
 * [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)
 

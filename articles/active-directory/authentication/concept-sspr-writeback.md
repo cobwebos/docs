@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295829"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319364"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -27,6 +27,12 @@ ms.locfileid: "46295829"
 * [密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)
 * [直通身份验证](../hybrid/how-to-connect-pta.md)
 
+> [!WARNING]
+> 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
+>
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+>
+
 密码写回提供：
 
 * **本地 Active Directory 密码策略的实施**：如果用户重置密码，系统会检查此请求，以确保它符合本地 Active Directory 策略要求，然后再将请求提交到相应目录。 此评审包括检查历史记录、复杂性、期限、密码筛选器，以及已在本地 Active Directory 中定义的其他任何密码限制。
@@ -37,6 +43,7 @@ ms.locfileid: "46295829"
 
 > [!Note]
 > 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
+>
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -63,28 +70,30 @@ ms.locfileid: "46295829"
 1. 执行检查，以确定用户具有何种类型的密码。 如果密码在本地管理：
    * 执行检查，以确定写回服务是否在正常运行。 如果是，则用户可以继续操作。
    * 如果写回服务已关闭，则告知用户暂不能重置密码。
-2. 接下来，用户通过相应的身份验证入口，到达“重置密码”页。
-3. 用户选择一个新密码并进行确认。
-4. 如果用户选择“提交”，则使用写回设置过程中创建的对称密钥来加密纯文本密码。
-5. 加密的密码将包含在一个有效负载中，该负载通过 HTTPS 通道发送到租户特定的服务总线中继（已在写回设置过程中设置此中继）。 此中继受随机生成的密码保护，只有本地安装知道该密码。
-6. 在消息到达服务总线后，密码重置终结点便自动唤醒，并看到有待处理的重置请求。
-7. 然后，服务使用云定位点属性查找用户。 要使查找成功：
+1. 接下来，用户通过相应的身份验证入口，到达“重置密码”页。
+1. 用户选择一个新密码并进行确认。
+1. 如果用户选择“提交”，则使用写回设置过程中创建的对称密钥来加密纯文本密码。
+1. 加密的密码将包含在一个有效负载中，该负载通过 HTTPS 通道发送到租户特定的服务总线中继（已在写回设置过程中设置此中继）。 此中继受随机生成的密码保护，只有本地安装知道该密码。
+1. 在消息到达服务总线后，密码重置终结点便自动唤醒，并看到有待处理的重置请求。
+1. 然后，服务使用云定位点属性查找用户。 要使查找成功：
 
    * Active Directory 连接器空间中必须有用户对象。
    * 用户对象必须链接到相应的 metaverse (MV) 对象。
    * 用户对象必须链接到相应的 Azure Active Directory 连接器对象。
-   * Active Directory 连接器对象与 MV 的链接必须设有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。 <br> <br>
+   * Active Directory 连接器对象与 MV 的链接必须设有同步规则 `Microsoft.InfromADUserAccountEnabled.xxx`。
+   
    当云中有调用发出时，同步引擎使用 cloudAnchor 属性，查找 Azure Active Directory 连接器空间对象。 然后，它依次链接回 MV 对象和 Active Directory 对象。 由于同一用户可能有多个 Active Directory 对象（多林），因此同步引擎依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。
 
    > [!Note]
    > 鉴于有此逻辑，Azure AD Connect 必须能够与主域控制器 (PDC) 仿真器进行通信，这样密码写回服务才能正常运行。 如果需要手动启用此通信，可以将 Azure AD Connect 连接到 PDC 仿真器。 右键单击 Active Directory 同步连接器的“属性”，再选择“配置目录分区”。 随后，查找“域控制器连接设置”部分，并选中“仅使用首选域控制器”框。 即使首选域控制器不是 PDC 仿真器，Azure AD Connect 也会尝试连接到 PDC 来执行密码写回。
 
-8. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
-9. 如果密码设置操作成功，将告知用户其密码已更改。
+1. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
+1. 如果密码设置操作成功，将告知用户其密码已更改。
    > [!NOTE]
    > 如果用户密码哈希已使用密码哈希同步功能同步到 Azure AD，本地密码策略可能会弱于云密码策略。 在这种情况下，将实施本地策略。 此策略可确保在云中强制实施本地策略，无论使用密码哈希同步还是联合身份验证来提供单一登录，都不例外。
+   >
 
-10. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
+1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
    * 服务已关闭。
    * 用户选择的密码不符合组织策略。
    * 在本地 Active Directory 中找不到用户。
@@ -101,10 +110,10 @@ ms.locfileid: "46295829"
    * 创建服务总线中继后，将创建强对称密钥，用于在密码通过线路时加密密码。 此密钥仅驻留在公司在云中的密钥存储内，会被牢牢锁定并接受审核，就像目录中的其他任何密码一样。
 * **行业标准传输层安全性 (TLS)**
    1. 云中发生密码重置或更改操作时，我们会使用公钥来加密纯文本密码。
-   2. 加密的密码将放入到使用 Microsoft SSL 证书通过加密通道发送到服务总线中继的 HTTPS 消息中。
-   3. 此消息到达服务总线后，本地代理便会唤醒，并使用先前生成的强密码对服务总线进行身份验证。
-   4. 本地代理选取加密的消息，并使用私钥解密消息。
-   5. 本地代理尝试通过 AD DS SetPassword API 设置密码。 执行此步骤可在云中实施 Active Directory 本地密码策略（例如复杂性、期限、历史记录和筛选器）。
+   1. 加密的密码将放入到使用 Microsoft SSL 证书通过加密通道发送到服务总线中继的 HTTPS 消息中。
+   1. 此消息到达服务总线后，本地代理便会唤醒，并使用先前生成的强密码对服务总线进行身份验证。
+   1. 本地代理选取加密的消息，并使用私钥解密消息。
+   1. 本地代理尝试通过 AD DS SetPassword API 设置密码。 执行此步骤可在云中实施 Active Directory 本地密码策略（例如复杂性、期限、历史记录和筛选器）。
 * **消息过期策略**
    * 如果由于本地服务关闭而导致消息位于服务总线中，消息会超时并在几分钟后遭到删除。 消息超时和删除进一步提高了安全性。
 

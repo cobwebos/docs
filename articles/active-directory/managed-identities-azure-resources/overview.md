@@ -12,14 +12,14 @@ ms.component: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/28/2018
+ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: 43bfe3abcbe6a66f124565cde8ddb839ba76d045
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107168"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987254"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -116,9 +116,11 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 * [Azure 应用服务](/azure/app-service/app-service-managed-service-identity)
 * [Azure Functions](/azure/app-service/app-service-managed-service-identity)
+* [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
 * [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure 事件中心](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API 管理](../../api-management/api-management-howto-use-managed-service-identity.md)
+* [Azure 容器实例](../../container-instances/container-instances-managed-identity.md)
 
 ## 哪些 Azure 服务支持此功能？<a name="which-azure-services-support-managed-identity"></a>
 

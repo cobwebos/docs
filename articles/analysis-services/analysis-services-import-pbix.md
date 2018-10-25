@@ -5,25 +5,27 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/27/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423572"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090854"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>导入 Power BI Desktop 文件
 
 可以将 Power BI Desktop 文件 (pbix) 中的数据模型导入到 Azure Analysis Services 中。 将导入模型元数据、缓存的数据以及数据源连接。 不会导入报表和可视化效果。 从 Power BI Desktop 中导入的数据模型的兼容级别为 1400。
 
+> [!IMPORTANT]
+> 此功能已弃用。 将来的更新中可能删除或大大更改此功能。 建议在新项目和现有项目中停止使用此功能，以保持与未来更新兼容。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
+
 **限制**   
 
-- 从 pbix 文件中进行导入使用门户中的 Web 设计器功能，该功能处于**预览版**。 功能较为有限。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
-- 若数据模型是在 Power BI Desktop 2018 年 7 月更新 (2.60.5169.3201) 或更高版本中所创建的，则确保未启用任何预览功能。 Azure Analysis Services 尚不支持预览功能。  
-若在导入时收到以下错误，则 pbix 文件启用了 Azure Analysis Services 尚不支持的预览功能。
+
+- 若数据模型是在 Power BI Desktop 2018 年 7 月更新 (2.60.5169.3201) 或更高版本中所创建的，则确保未启用任何预览功能。 Azure Analysis Services 尚不支持预览功能。 若在导入时收到以下错误，则 pbix 文件启用了 Azure Analysis Services 尚不支持的预览功能。
 
     ![兼容性级别警告](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - 必须具有服务器管理员权限才能从 pbix 文件中进行导入。

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: addb99478025757257bce465a02287ebedd40bb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310206"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321625"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -29,11 +29,11 @@ ms.locfileid: "46310206"
 在安装 Azure AD Connect 之前，需要准备好以下项目。
 
 ### <a name="azure-ad"></a>Azure AD
-* Azure 订阅或 [Azure 试用版订阅](https://azure.microsoft.com/pricing/free-trial/)。 此订阅仅用来访问 Azure 门户，不用于使用 Azure AD Connect。 如果使用 PowerShell 或 Office 365，则无需 Azure 订阅即可使用 Azure AD Connect。 如果有 Office 365 许可证，则还可以使用 Office 365 门户。 使用付费的 Office 365 许可证，还可以从 Office 365 门户访问 Azure 门户。
-  * 还可以使用 [Azure 门户](https://portal.azure.com)。 此门户不需要 Azure AD 许可证。
+* Azure AD 租户。 通过 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)获得一个租户。 可以使用以下门户之一来管理 Azure AD Connect：
+  * [Azure 门户](https://portal.azure.com)。
+  * [Office 门户](https://portal.office.com)。  
 * [添加并验证要在 Azure AD 中使用的域](../active-directory-domains-add-azure-portal.md)。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
 * 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制将增加到 30 万个对象。 如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或企业移动性和安全性等许可证。
-* ADSyncPrep 是 PowerShell 脚本模块，提供为 Azure AD Connect 准备 Active Directory 环境的功能。  ADSyncPrep 需要 [Azure AD Microsoft Online v1.1 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)。  版本 2 将无法工作。 可以使用 `Install-Module` cmdlet 安装模块。  有关更多信息，请参见所提供的链接。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
 * 使用 [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) 确定目录中的错误，如重复项和格式设置问题，并同步到 Azure AD 和 Office 365。
@@ -47,7 +47,7 @@ ms.locfileid: "46310206"
 * 建议[启用 Active Directory 回收站](how-to-connect-sync-recycle-bin.md)。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect 服务器
-* 不能在 Small Business Server 或 Windows Server Essentials 上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。
+* 不能在 Small Business Server 或 2019 版以前的 Windows Server Essentials（支持 Windows Server Essentials 2019）上安装 Azure AD Connect。 该服务器必须使用 Windows Server Standard 或更高版本。
 * 必须在 Azure AD Connect 服务器上安装完整的 GUI。 **不支持**在服务器核心上安装 GUI。
 * Azure AD Connect 必须安装在 Windows Server 2008 或更高版本上。 使用快速设置时，此服务器可以是域控制器或成员服务器。 如果使用自定义设置，服务器也可以是独立服务器，并且不需要加入域。
 * 如果在 Windows Server 2008 或 Windows Server 2008 R2 上安装 Azure AD Connect，请确保从 Windows Update 应用最新的修补程序。 在未修补的服务器上无法启动安装。
@@ -70,7 +70,7 @@ ms.locfileid: "46310206"
 ### <a name="accounts"></a>帐户
 * 想要集成的 Azure AD 租户的 Azure AD 全局管理员帐户。 该帐户必须是**学校或组织帐户**，而不能是 **Microsoft 帐户**。
 * 如果使用快速设置或者从 DirSync 升级，则必须创建本地 Active Directory 的企业管理员帐户。
-* 如果使用自定义设置安装路径，[帐户应在 Active Directory 中](reference-connect-accounts-permissions.md)。
+* [Active Directory 中的帐户](reference-connect-accounts-permissions.md)：如果为本地 Active Directory 使用自定义设置安装路径或企业管理员帐户。
 
 ### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 和 Azure AD 终结点。
@@ -184,7 +184,6 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服�
 下面列出了 Azure AD Connect 在要安装 Azure AD Connect 的服务器上安装的组件。 此列表针对基本快速安装。 如果在“安装同步服务”页上选择使用不同的 SQL Server，则不会在本地安装 SQL Express LocalDB。
 
 * Azure AD Connect Health
-* 面向 IT 专业人员的 Microsoft Online Services 登录助手（已安装，但不要依赖它）
 * Microsoft SQL Server 2012 命令行实用工具
 * Microsoft SQL Server 2012 Express LocalDB
 * Microsoft SQL Server 2012 本机客户端

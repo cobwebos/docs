@@ -5,20 +5,21 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
+ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9938772618e9a85f7d85678c4ddde3147cbc40dd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220289"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091840"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>配置 Azure 机器学习服务的开发环境
 
-了解如何使用 Azure 机器学习服务来配置开发环境。 你将了解如何创建将环境与 Azure 机器学习工作区相关联的配置文件。 另外，还将学习如何配置以下开发环境：
+了解如何使用 Azure 机器学习服务来配置开发环境。 了解如何创建将环境与 Azure 机器学习工作区相关联的配置文件。 另外，还将学习如何配置以下开发环境：
 
 * 在你自己的计算机上的 Jupyter Notebooks
 * Visual Studio Code
@@ -35,6 +36,9 @@ ms.locfileid: "47220289"
 
  * 对于 Visual Studio Code 环境，[Python 扩展](https://code.visualstudio.com/docs/python/python-tutorial)。
 
+> [!NOTE]
+> 本文档中使用的 Shell 命令通过 bash 在 Linux 和 macOS 上进行了测试。 这些命令也通过 cmd.exe 在 Windows 上进行了测试。
+
 ## <a name="create-workspace-configuration-file"></a>创建工作区配置文件
 
 工作区配置文件由 SDK 用于与 Azure 机器学习服务工作区通信。  可通过两种方式获取此文件：
@@ -49,7 +53,8 @@ ms.locfileid: "47220289"
         ![Azure 门户](./media/how-to-configure-environment/configure.png) 
     
     1. 使用此 Python 代码创建文件。 在引用工作区的脚本或 Notebook 所在的目录中运行代码：
-        ```
+
+        ```python
         from azureml.core import Workspace
 
         subscription_id ='<subscription-id>'
@@ -113,6 +118,11 @@ Azure Notebooks 是 Azure 云中的 Jupyter Notebook 服务。 Data Science Virt
      ```shell
     pip install --upgrade azureml-sdk[notebooks,automl]
     ```
+
+    > [!NOTE]
+    > 如果收到消息，指示无法卸载 `PyYAML`，请改为使用以下命令：
+    > 
+    > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML` 
 
     安装 SDK 可能耗时几分钟。
 
@@ -179,7 +189,7 @@ Azure Notebooks 是 Azure 云中的 Jupyter Notebook 服务。 Data Science Virt
     conda install <new package>
     ```
 
-6. 启动 Visual Studio Code，然后使用 CTRL-SHIFT-P 来获取“命令面板”。 输入“Python: Select Interpreter”，然后选择你创建的 conda 环境。
+6. 启动 Visual Studio Code，然后使用 __CTRL-SHIFT-P__ (Windows) 或 __COMMAND-SHIFT-P__ (Mac) 来获取__命令面板__。 输入“Python: Select Interpreter”，然后选择你创建的 conda 环境。
 
     > [!NOTE]
     > Visual Studio Code 能够自动感知你的计算机上的 conda 环境。 有关详细信息，请参阅 [Visual Studio 代码文档](https://code.visualstudio.com/docs/python/environments#_conda-environments)。

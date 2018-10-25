@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498243"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311331"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -113,7 +113,7 @@ ms.locfileid: "46498243"
 
 以下是启用双重验证的选项和优势：
 
-**选项 1**：[通过更改用户状态启用多重身份验证](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status)。   
+**选项 1**：[通过更改用户状态启用多重身份验证](../active-directory/authentication/howto-mfa-userstates.md)。   
 **优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](../active-directory/authentication/concept-mfa-whichversion.md)。 使用此方法要求用户每次登录时都执行双重验证并重写条件访问策略。
 
 **选项 2**：[通过条件访问策略启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access)。   
@@ -121,7 +121,7 @@ ms.locfileid: "46498243"
 
 这是为用户启用双重验证最灵活的方式。 启用条件访问策略仅适用于云中的 Azure 多重身份验证，并且是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
 
-**选项 3**：通过评估 [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md) 的用户和登录风险，通过条件访问策略启用多重身份验证。   
+**选项 3**：通过评估 [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md) 的用户和登录风险，通过条件访问策略启用多重身份验证。   
 **优势**：此选项使你能够：
 
 - 检测影响组织标识的潜在漏洞。
@@ -131,7 +131,7 @@ ms.locfileid: "46498243"
 此方法使用 Azure AD Identity Protection 风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md)。
 
 > [!Note]
-> 选项 1 通过更改用户状态启用多重身份验证来替代条件策略。 因为选项 2 和 3 使用条件访问策略，所以无法将选项 1 与其他两个选项结合使用。
+> 选项 1 通过更改用户状态启用多重身份验证来替代条件访问策略。 因为选项 2 和 3 使用条件访问策略，所以无法将选项 1 与其他两个选项结合使用。
 
 未添加额外标识保护层（如双重验证）的组织将更容易受到凭据窃取攻击。 凭据窃取攻击可能导致数据泄漏。
 

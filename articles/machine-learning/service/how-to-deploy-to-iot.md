@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225219"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091617"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>准备好在 IoT Edge 上部署模型
 
@@ -35,7 +35,7 @@ Azure IoT Edge 设备是运行 Azure IoT Edge 运行时的基于 Linux 或 Windo
 
 * Azure 订阅中的 [Azure IoT 中心](../../iot-hub/iot-hub-create-through-portal.md)。 
 
-* 定型的模型。 有关如何训练模型的示例，请参阅[使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)文档。
+* 定型的模型。 有关如何训练模型的示例，请参阅[使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)文档。 [在适用于 Azure IoT Edge GitHub 存储库的 AI 工具包](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)上提供了预训练模型。
 
 ## <a name="prepare-the-iot-device"></a>准备 IoT 设备
 
@@ -43,10 +43,7 @@ Azure IoT Edge 设备是运行 Azure IoT Edge 运行时的基于 Linux 或 Windo
 
 ## <a name="register-the-model"></a>注册模型
 
-Azure IoT Edge 模块基于容器映像。 要将模型部署到 IoT Edge 设备，请使用以下步骤在 Azure 机器学习工作区上注册模型并创建 Docker 映像。 
-
-> [!IMPORTANT]
-> 如果使用了 Azure 机器学习来训练模型，它可能已在工作区中注册，在这种情况下，跳过步骤 3。
+Azure IoT Edge 模块基于容器映像。 要将模型部署到 IoT Edge 设备，请使用以下步骤在 Azure 机器学习服务工作区上注册模型并创建 Docker 映像。 
 
 1. 初始化工作区并加载 config.json 文件：
 
@@ -58,6 +55,9 @@ Azure IoT Edge 模块基于容器映像。 要将模型部署到 IoT Edge 设备
     ```    
 
 1. 将模型注册到工作区。 将默认文本替换为你的模型路径、名称、标记和说明：
+
+    > [!IMPORTANT]
+    > 如果使用了 Azure 机器学习来训练模型，它可能已在工作区中注册。 如果是这样，请跳过此步骤。 若要查看注册了此工作区的模型列表，请使用 `Model.list(ws)`。
 
     ```python
     from azureml.core.model import Model
@@ -122,7 +122,7 @@ Azure IoT 需要 Azure 机器学习服务用于存储 docker 映像的容器注�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/signin/index)。
 
-1. 转到 Azure 机器学习工作区并选择“概述”。 要转到容器注册表设置，请选择“注册表”链接。
+1. 转到 Azure 机器学习服务工作区并选择“概述”。 要转到容器注册表设置，请选择“注册表”链接。
 
     ![容器注册表项的图片](./media/how-to-deploy-to-iot/findregisteredcontainer.png)
 

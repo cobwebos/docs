@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293710"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115516"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 
@@ -73,6 +73,7 @@ ms.locfileid: "36293710"
 本部分包含 Web 应用启动时会要加载的名称/值对。 
 
 * 对于 .NET 应用，这些设置=会在运行时注入到 .NET 配置 `AppSettings` 中，重写现有设置。 
+* 对于 Linux 上的应用服务或用于容器的 Web 应用，如果名称中有嵌套的 json 密钥结构（如 `ApplicationInsights:InstrumentationKey`），则需要将 `ApplicationInsights__InstrumentationKey` 作为密钥名称。 因此请注意，应将所有 `:` 替换为 `__`（即双下划线）。
 * PHP、Python、Java 和 Node 应用程序可以在运行时以环境变量的形式访问这些设置。 系统将为每个应用程序设置创建两个环境变量，一个变量具有由应用程序设置条目指定的名称，另一个具有 APPSETTING_ 前缀。 这两个变量都包含相同的值。
 
 应用程序设置在存储时始终进行加密（静态加密）。

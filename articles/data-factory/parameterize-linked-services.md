@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900717"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649408"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -27,6 +27,10 @@ ms.locfileid: "48900717"
 
 > [!TIP]
 > 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化*机密名称*。
+
+有关此功能的 7 分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>支持的数据存储
 

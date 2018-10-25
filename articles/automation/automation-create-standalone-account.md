@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 021ab6cd29634c2e2f17234e188edce2a14449cf
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145497"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362868"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -43,7 +43,7 @@ ms.locfileid: "42145497"
 
 如果已将某用户添加到全局管理员/共同管理员角色，则可先将其从订阅的 Active Directory 实例中删除，然后将其重新添加到 Active Directory 中的完整用户角色。
 
-要验证用户角色，请执行以下操作：
+若要验证用户角色，请执行以下操作：
 
 1. 在 Azure 门户中，转到“Azure Active Directory”窗格。
 1. 选择“用户和组”。
@@ -61,14 +61,15 @@ ms.locfileid: "42145497"
    ![在 Azure 市场中搜索并选择“自动化和控制”](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
 1. 在下一个屏幕上选择“创建”。
+
   ![添加自动化帐户](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
   > [!NOTE]
   > 如果“添加自动化帐户”边栏选项卡中显示以下消息，则表示你的帐户不是订阅管理员角色成员和订阅的共同管理员。
   >
   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
-  >
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。
+
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。
 1. 对于“位置”，请选择一个 Azure 数据中心位置。

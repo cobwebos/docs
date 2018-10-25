@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 29b045266836ace35aab12c51746b7e339cbb88f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411378"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354336"
 ---
 # <a name="virtual-machine-serial-console"></a>虚拟机串行控制台
 
@@ -28,7 +28,7 @@ ms.locfileid: "47411378"
 
 有关适用于 Linux VM 的串行控制台文档，请[单击此处](serial-console-linux.md)。
 
-> [!Note] 
+> [!NOTE] 
 > 虚拟机串行控制台已在全球 Azure 区域中正式发布。 目前，串行控制台尚不可用于 Azure 政府云或 Azure 中国云。
 
  
@@ -83,9 +83,12 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 1. 通过远程桌面连接到 Windows 虚拟机
 2. 从管理命令提示符运行以下命令 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. 重新启动系统以启用启动菜单
+
+> [!NOTE] 
+> 为启动管理器菜单的显示所设置的超时值会影响将来的 OS 启动时间。 虽然有些人能接受添加 10 秒的超时，以确保可通过串行控制台显示启动管理器，但其他人可能会想设置更短或更长的超时值。 将超时值设置为自己习惯的时间。
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>在 Windows VM 中使用串行控制台进行 NMI 调用
 不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  现在，程序员和系统管理员通常使用 NMI 作为用来对挂起的系统进行调试或故障排除的机制。
@@ -99,7 +102,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 ## <a name="disable-serial-console"></a>禁用串行控制台
 默认情况下，所有订阅为所有 VM 启用了串行控制台访问。 可以在订阅级别或 VM 级别禁用串行控制台。
 
-> [!Note]       
+> [!NOTE]       
 > 若要为订阅启用或禁用串行控制台，必须具有订阅的写入权限。 这包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
 
 ### <a name="subscription-level-disable"></a>订阅级禁用
@@ -175,7 +178,7 @@ RDP 配置问题 | 访问串行控制台并更改设置。 若要开始，请转
 ### <a name="use-serial-console-with-a-screen-reader"></a>结合使用串行控制台与屏幕阅读器
 串行控制台附带内置屏幕阅读器支持。 在打开屏幕阅读器的情况下导航，屏幕阅读器可大声读出当前所选按钮的替换文字。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>错误
 大多数错误都是暂时性的，重试连接即可解决。 下表显示了错误和缓解措施的列表
 
 错误                            |   缓解措施 
@@ -193,7 +196,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 
 问题                             |   缓解措施 
 :---------------------------------|:--------------------------------------------|
-在出现连接标题后按 Enter 不会显示登录提示 | 请参阅此页：[按 Enter 不执行任何操作](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的自定义 VM、强化设备或 GRUB 配置导致 Windows 无法正确连接到串行端口，则可能会发生这种情况。
+在出现连接标题后按 Enter 不会显示登录提示 | 请参阅此页：[按 Enter 不执行任何操作](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口，则可能会发生这种情况。 如果运行的是 Windows 10 客户端 VM，也会发生这种情况，因为只有 Windows Server VM 配置为启用 EMS。
 如果已启用内核调试，则无法在 SAC 提示符下键入内容 | 通过 RDP 连接到 VM，并从权限提升的命令提示符运行 `bcdedit /debug {current} off`。 如果无法建立 RDP 连接，可将 OS 磁盘附加到另一个 Azure VM，在该磁盘附加为数据磁盘的情况下使用 `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` 对其进行修改，然后换回磁盘。
 如果原始内容具有重复的字符，则在 SAC 中粘贴到 PowerShell 将导致第三个字符。 | 解决方法是从当前会话中对 PSReadLine 模块执行 Past 卸载。 运行 `Remove-Module PSReadLine` 从当前会话中卸载 PSReadLine 模块 - 这不会删除或卸载该模块。
 某些键盘输入会生成奇怪的 SAC 输出（例如 `[A`、 `[3~`） | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
@@ -219,7 +222,7 @@ A. 必须具有 VM 的参与者级别访问权限或更高级别访问权限才�
 
 **问：我的串口控制台没有显示任何内容，我该怎么办？**
 
-A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#Enable-Serial-Console-in-custom-or-older-images)。
+A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#enable-serial-console-in-custom-or-older-images)。
 
 **问：串行控制台是否可用于虚拟机规模集？**
 

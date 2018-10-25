@@ -7,16 +7,30 @@ author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963077"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339995"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="cognitive-services-speech-sdk-101"></a>认知服务语音 SDK 1.0.1
+
+可靠性改进和 bug 修复：
+
+* 修复处理识别器时由于争用条件而导致的潜在灾难性错误
+* 修复未设置属性情况下的潜在灾难性错误。
+* 其他错误和参数检查。
+* Objective-C：修复 NSString 中名称替代而引起的潜在灾难性错误。
+* Objectice-C：调整 API 的可见性
+* JavaScript：关于事件及其有效负载的修复。
+* 文档改进。
+
+在[示例存储库](https://aka.ms/csspeech/samples)中已添加了适用于 JavaScript 的新示例。
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>认知服务语音 SDK 1.0.0：2018 年 9 月版本
 

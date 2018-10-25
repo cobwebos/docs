@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: bd03c0801fed0da6d9a87466bc33819f6afa4578
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 61d9606ff14a48e6c224108596f0f01daa4813e1
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296917"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954277"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "46296917"
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **创建 Azure Active Directory“Web”应用程序**。 必须已完成[使用 Azure Active Directory 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步骤。
 
@@ -97,7 +97,7 @@ ms.locfileid: "46296917"
 
 ## <a name="service-to-service-authentication-with-certificate"></a>使用证书的服务到服务身份验证
 
-在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD Web 应用程序（作为必备组件列出）检索到的值。 此代码片段可让你使用 Azure AD Web 应用程序的证书通过 Data Lake Storage Gen1 以非交互方式对应用程序进行身份验证。 有关如何创建 Azure AD 应用程序的说明，请参阅[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)。
+在 .NET 客户端应用程序中添加此代码片段。 将占位符值替换为从 Azure AD Web 应用程序（作为必备组件列出）检索到的值。 此代码片段可让你使用 Azure AD Web 应用程序的证书通过 Data Lake Storage Gen1 以非交互方式对应用程序进行身份验证。 有关如何创建 Azure AD 应用程序的说明，请参阅[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。
 
     
     private static void Main(string[] args)

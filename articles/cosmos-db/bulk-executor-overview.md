@@ -1,21 +1,20 @@
 ---
-title: Azure Cosmos DB 批量执行程序库概述 | Microsoft Docs
-description: 了解 Azure Cosmos DB 批量执行程序库、使用库的优势以及库的体系结构。
-keywords: Java 批量执行程序
+title: 使用批量执行程序库在 Azure Cosmos DB 中批量导入和更新数据 | Microsoft Docs
+description: 通过批量执行程序库提供的批量导入和批量更新 API 功能，在 Azure Cosmos DB 中执行批量操作。
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096169"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363522"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
  
@@ -24,10 +23,10 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 * 大规模的读写吞吐量（每秒数百万操作）。  
 * 存储大量（数百 TB 甚至更多）事务性和操作性数据，延迟低至毫秒级且可预测。  
 
-批量执行程序库有助于利用此大规模的吞吐量和存储。可以使用批量执行程序库，通过批量导入和批量更新 API 在 Azure Cosmos DB 中执行批量操作。 可在以下部分中详细了解批量执行程序库的功能。 
+批量执行程序库可助你利用这个极大的吞吐量和存储。 批量执行程序库允许通过批量导入和批量更新 API 在 Azure Cosmos DB 中执行批量操作。 可在以下部分中详细了解批量执行程序库的功能。 
 
 > [!NOTE] 
-> 目前，批量执行程序库支持导入和更新操作，但该库仅受 Azure Cosmos DB SQL API 帐户支持。 有关该库的任何更新，请参阅 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql-api-sdk-bulk-executor-java.md) 的发行说明。
+> 目前，批量执行程序库支持导入和更新操作，但该库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>批量执行程序库的主要功能  
  

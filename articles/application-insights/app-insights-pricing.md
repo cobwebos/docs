@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141037"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319449"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
 > [!NOTE]
-> 本文介绍如何在 Application Insights 中分析数据使用情况。  有关相关信息，请参阅以下文章。
-> - [监视使用情况和估算成本](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。 它还介绍如何更改定价模型。
+> 本文介绍如何在 Application Insights 中分析数据使用情况。  相关信息请参阅以下文章。
+> - [监视使用情况及预估成本](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。 它还介绍了如何更改定价模型。
 
 [Azure Application Insights][start] 的定价以每个应用程序的数据量为基础。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
 
@@ -159,6 +159,10 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="limits-summary"></a>限制摘要
 
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
+
+## <a name="disable-daily-cap-e-mails"></a>禁用每日上限电子邮件
+
+若要禁用每日容量上限电子邮件，请在“使用情况和预估成本”窗格中 Application Insights 资源的“配置”部分下，选择“每日上限”。 有一些在达到上限时以及达到可调整的警告等级时发送电子邮件的设置。 如果要禁用与每日容量上限相关的所有电子邮件，请取消选中这两个框。
 
 ## <a name="next-steps"></a>后续步骤
 

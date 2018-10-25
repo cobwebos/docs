@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575468"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354251"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -92,6 +92,9 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 | systemKey  | 查询字符串    | 需要授权密钥才可调用 API。 |
 | showHistory| 查询字符串    | 可选参数。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。| 
 | showHistoryOutput| 查询字符串    | 可选参数。 如果设置为 `true`，活动输出将包含在业务流程执行历史记录中。| 
+| createdTimeFrom  | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之后创建的返回实例列表。|
+| createdTimeTo    | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之前创建的返回实例列表。|
+| runtimeStatus    | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
 
 `systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 发现 `systemKey` 值的最简单的方法是使用上文提及的 `CreateCheckStatusResponse` API。
 
@@ -194,9 +197,13 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 HTTP 202 响应还包括 Location 响应标头，该标头引用了与上文提及的 `statusQueryGetUri` 字段相同的 URL。
 
+
 ### <a name="get-all-instances-status"></a>获取所有实例状态
 
 还可以查询所有实例状态。 从“获取实例状态”请求中删除 `instanceId`。 参数与“获取实例状态”相同。 
+
+请务必牢记 `connection` 和 `code` 可选。 如果具有对函数的匿名身份验证，则无需代码。
+如果不想使用除 AzureWebJobsStorage 应用设置中定义的连接字符串之外的其他 blob 存储连接字符串，则可以放心地忽略连接查询字符串参数。
 
 #### <a name="request"></a>请求
 
@@ -210,6 +217,22 @@ Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同�
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="request-with-filters"></a>请求筛选器
+
+可以筛选请求。
+
+对于 Functions 1.0，请求格式如下：
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
+```
+
+Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同： 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
 ```
 
 #### <a name="response"></a>响应
@@ -268,6 +291,7 @@ GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={conne
 > [!NOTE]
 > 如果实例表中有很多行，则此操作在 Azure存储 I/O 方面可能代价非常高昂。 有关实例表的更多详细信息，请参阅 [Durable Functions (Azure Functions) 中的性能和缩放](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table)文档。
 > 
+
 
 ### <a name="raise-event"></a>引发事件
 

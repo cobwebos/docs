@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 911dcd49273edb202c64d046424418b7db048291
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2d132ba1b901c45df79507a974ee8d4786c6311d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692413"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985023"
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL：使用 Ruby 进行连接并查询数据
 本快速入门演示了如何使用 [Ruby](https://www.ruby-lang.org) 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Ruby 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
@@ -30,7 +30,7 @@ ms.locfileid: "29692413"
 在自己的计算机上安装 Ruby。 
 
 ### <a name="windows"></a>Windows
-- 下载并安装最新版本的 [Ruby](http://rubyinstaller.org/downloads/)。
+- 下载并安装最新版本的 [Ruby](https://rubyinstaller.org/downloads/)。
 - 在 MSI 安装程序的完成屏幕上，选中“运行 'ridk install' 以安装 MSYS2 和开发工具链”框。 然后单击“完成”，启动下一安装程序。
 - 此时会启动 RubyInstaller2 for Windows 安装程序。 键入 2，安装 MSYS2 存储库更新。 完成并返回到安装提示符处以后，关闭命令窗口。
 - 从“开始”菜单启动新的命令提示符 (cmd)。
@@ -69,7 +69,7 @@ ms.locfileid: "29692413"
 ## <a name="connect-and-create-a-table"></a>进行连接并创建表
 使用以下代码进行连接，使用 **CREATE TABLE** SQL 语句创建表，然后使用 **INSERT INTO** SQL 语句将行添加到表中。
 
-该代码使用 [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后调用 [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法，以便运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 代码使用 [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
+该代码使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后调用 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 方法，以便运行 DROP、CREATE TABLE 和 INSERT INTO 命令。 代码使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。 
 ```ruby
@@ -111,7 +111,7 @@ end
 ## <a name="read-data"></a>读取数据
 使用以下代码进行连接，并使用 **SELECT** SQL 语句来读取数据。 
 
-该代码使用 [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 SELECT 命令，将结果保存在结果集中。 结果集集合使用 `resultSet.each do` 循环进行循环访问，将最新的行值保存在 `row` 变量中。 代码使用 [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
+该代码使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 SELECT 命令，将结果保存在结果集中。 结果集集合使用 `resultSet.each do` 循环进行循环访问，将最新的行值保存在 `row` 变量中。 代码使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。 
 
@@ -145,7 +145,7 @@ end
 ## <a name="update-data"></a>更新数据
 使用以下代码进行连接，并使用 **UPDATE** SQL 语句更新数据。
 
-该代码使用 [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 UPDATE 命令。 代码使用 [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
+该代码使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 UPDATE 命令。 代码使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。 
 
@@ -179,7 +179,7 @@ end
 ## <a name="delete-data"></a>删除数据
 使用以下代码进行连接，并使用 **DELETE** SQL 语句读取数据。 
 
-该代码使用 [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 UPDATE 命令。 代码使用 [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
+该代码使用 [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) 对象和构造函数 [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) 来连接到 Azure Database for PostgreSQL。 然后，它会调用方法 [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) 来运行 UPDATE 命令。 代码使用 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) 类来检查是否存在错误。 然后，它会调用方法 [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method)，在终止之前关闭连接。
 
 将 `host`、`database`、`user` 和 `password` 字符串替换为你自己的值。 
 

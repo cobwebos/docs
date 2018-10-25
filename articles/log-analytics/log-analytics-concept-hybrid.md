@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041997"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319738"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集混合环境中的数据
 
@@ -45,21 +45,36 @@ Azure Log Analytics 可以从运行在以下环境中的运行 Windows 或 Linux
 适用于 Linux 和 Windows 的代理不仅可连接到 Log Analytics，还支持使用 Azure 自动化来托管混合 Runbook 辅助角色和管理解决方案（例如更改跟踪和更新管理）。  有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
-Windows 代理正式支持以下版本的 Windows 操作系统：
+Windows 代理官方支持以下版本的 Windows 操作系统：
 
 * Windows Server 2008 Service Pack 1 (SP1) 或更高版本
 * Windows 7 SP1 及更高版本。
 
-## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
-以下 Linux 分发版受官方支持。  不过，Linux 代理在未列出的其他发行版上可能也可以运行。  除非另行说明，列出每个主要版本支持所有的次要版本。  
+## <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
+本部分提供有关受支持的 Linux 分发版的详细信息。    
 
-* Amazon Linux 2012.09 到 2015.09 (x86/x64)
-* CentOS Linux 5、6 和 7 (x86/x64)  
-* Oracle Linux 5、6 和 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 5、6 和 7 (x86/x64)
-* Debian GNU/Linux 6、7 和 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 和 12 (x86/x64)
+从 2018 年 8 月之后发布的版本开始，我们对支持模型进行了以下更改：  
+
+* 仅支持服务器版本，不支持客户端版本。  
+* 始终支持新版本的 [Azure Linux 认可的发行版](../virtual-machines/linux/endorsed-distros.md)。  
+* 列出的每个主版本支持所有的次版本。
+* 超出制造商终止支持日期的版本不受支持。  
+* 不支持新版本的 AMI。  
+* 默认仅支持运行 SSL 1.x 的版本。
+
+如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
+
+* Amazon Linux 2017.09 (x64)
+* CentOS Linux 6 (x86/x64) 和 7 (x64)  
+* Oracle Linux 6 和 7 (x86/x64) 
+* Red Hat Enterprise Linux Server 6 (x86/x64) 和 7 (x64)
+* Debian GNU/Linux 8 和 9 (x86/x64)
+* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64) 和 18.04 LTS (x64)
+* SUSE Linux Enterprise Server 12 (x64)
+
+>[!NOTE]
+>仅 x86_x64 平台（64 位）支持 OpenSSL 1.1.0，任何平台均不支持早于 1.x 版本的 OpenSSL。
+>
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 协议
 为了确保传输到 Log Analytics 的数据的安全性，我们强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](log-analytics-data-security.md#sending-data-securely-using-tls-12)。 

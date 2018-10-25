@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529247"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386335"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -32,16 +32,17 @@ ms.locfileid: "39529247"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：信道未加密
 
-出于安全考虑，如果信道未加密，且连接尝试并非来自 Azure 文件共享所在的同一数据中心，将阻止连接到 Azure 文件共享。 仅当用户的客户端 OS 支持 SMB 加密时，才提供信道加密。
+出于安全考虑，如果信道未加密，且连接尝试并非来自 Azure 文件共享所在的同一数据中心，将阻止连接到 Azure 文件共享。 如果在存储帐户中启用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置，则还可以阻止同一数据中心中未加密的连接。 仅当用户的客户端 OS 支持 SMB 加密时，才提供信道加密。
 
 Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持加密的 SMB 3.0 的请求。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
-从符合以下条件之一的客户端连接：
+1. 验证是否已在存储帐户中禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
+2. 从符合以下条件之一的客户端连接：
 
-- 符合 Windows 8 和 Windows Server 2012 或更高版本的要求
-- 从与用于 Azure 文件共享的 Azure 存储帐户位于同一数据中心的虚拟机连接
+    - 符合 Windows 8 和 Windows Server 2012 或更高版本的要求
+    - 从与用于 Azure 文件共享的 Azure 存储帐户位于同一数据中心的虚拟机连接
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2：端口 445 被阻止
 

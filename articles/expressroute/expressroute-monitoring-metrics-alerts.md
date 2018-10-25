@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: fc8abee93983ce4ea06d0b433eb35ed22e0f61b4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218065"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377791"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -20,7 +20,7 @@ ms.locfileid: "47218065"
 
 ## <a name="circuit-metrics"></a>线路指标
 
-若要导航到“指标”，请单击要监视的线路的 ExpressRoute 页。 在“监视”下，可以查看**指标**。
+若要导航到“指标”，请单击要监视的线路的 ExpressRoute 页。 在“监视”下，可以查看**指标**。 选择 BitsInPerSecond 或 BitsOutPerSecond 以及聚合。 可以选择性地应用拆分，这将显示每个对等互连类型的指标。
 
 ![线路指标](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 

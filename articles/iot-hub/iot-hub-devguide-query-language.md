@@ -2,22 +2,21 @@
 title: 了解 Azure IoT 中心查询语言 | Microsoft Docs
 description: 开发人员指南 - 介绍了类似 SQL 的 IoT 中心查询语言，该语言用于在 IoT 中心检索设备/模块孪生和作业的相关信息。
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952471"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318242"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生][lnk-twins]、[作业][lnk-jobs]和[消息路由][lnk-devguide-messaging-routes]的信息。 本文内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
 
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。 有关用于消息路由的查询语言的详细信息，请参阅[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +24,9 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>设备和模块孪生查询
-[设备孪生][lnk-twins]和模块孪生可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+
+[设备孪生](iot-hub-devguide-device-twins.md)和模块孪生可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+
 例如，假定 IoT 中心设备孪生具有以下结构（模块孪生将与之类似，只是具有附加的 moduleId）：
 
 ```json
@@ -80,15 +81,14 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 
 ### <a name="device-twin-queries"></a>设备孪生查询
 
-IoT 中心将设备孪生公开为名为**设备**的文档集合。
-因此，以下查询将检索设备孪生的整个集：
+IoT 中心将设备孪生公开为名为**设备**的文档集合。 例如，以下查询将检索设备孪生的整个集：
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDK][lnk-hub-sdks] 支持将大型结果分页：
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 支持将大型结果分页。
 
 IoT 中心允许使用任意条件检索设备孪生筛选结果。 例如，若要接收 **location.region** 标记设置为 **US** 的设备孪生，请使用以下查询：
 
@@ -101,7 +101,7 @@ WHERE tags.location.region = 'US'
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ WHERE tags.location.region = 'US'
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()`。 例如，若要检索定义了 `connectivity` 属性的设备孪生，请使用以下查询：
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-有关筛选功能的完整参考，请参阅 [WHERE 子句][lnk-query-where]部分。
+有关筛选功能的完整参考，请参阅 [WHERE 子句](iot-hub-devguide-query-language.md#where-clause)部分。
 
 此外还支持分组与聚合。 例如，若要查明每个遥测配置中的设备计数，请使用以下查询：
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 此分组查询将返回类似于以下示例的结果：
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模块孪生查询
 
-对模块孪生进行查询类似于对设备孪生进行查询，但使用你可以查询的一个不同集合/命名空间，即不“从设备”进行查询
+对模块孪生进行查询类似于对设备孪生进行查询，但使用你可以查询 device.modules 的一个不同集合/命名空间，即不“从设备”查询：
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ SELECT * FROM devices.modules
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-以下查询将仅返回指定的设备子集上具有扫描状态的所有模块孪生。
+以下查询将仅返回指定的设备子集上具有扫描状态的所有模块孪生：
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C# 示例
-查询功能由 [C# 服务 SDK][lnk-hub-sdks] 在 **RegistryManager** 类中公开。
+
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开。
+
 下面是一个简单的查询示例：
 
 ```csharp
@@ -198,7 +202,9 @@ while (query.HasMoreResults)
 查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK][lnk-hub-sdks] 在 **Registry** 对象中公开。
+
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开。
+
 下面是一个简单的查询示例：
 
 ```nodejs
@@ -233,8 +239,7 @@ query.nextAsTwin(onResults);
 
 ## <a name="get-started-with-jobs-queries"></a>作业查询入门
 
-使用[作业][lnk-jobs]可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
-从逻辑上讲，
+使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
 
 ```json
 {
@@ -276,16 +281,18 @@ query.nextAsTwin(onResults);
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 请注意此查询如何提供每个返回的作业的设备特定状态（可能还会提供直接方法响应）。
+
 还可针对 **devices.jobs** 集合中的所有对象属性，使用任意布尔条件进行筛选。
+
 若要为特定设备检索在 2016 年 9 月之后创建的所有已完成的设备孪生更新作业，请使用以下查询：
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>限制
+
 目前，对 **devices.jobs** 的查询不支持：
 
 * 投影，因此仅可使用 `SELECT *`。
@@ -306,24 +314,28 @@ WHERE devices.jobs.jobId = 'myJobId'
 * 执行聚合，例如 count、avg、group by。
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询基础知识
+
 每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>FROM 子句
+
 **FROM <from_specification>** 子句只能采用两个值：**FROM devices** 用来查询设备孪生；**FROM devices.jobs** 用来查询每个设备上的作业详细信息。
+
 
 ## <a name="where-clause"></a>WHERE 子句
 **WHERE <filter_condition>** 子句是可选的。 它指定要将 FROM 集合中的 JSON 文档内含在结果中时需满足的一项或多项条件。 任何 JSON 文档必须将指定的条件求值为“true”才能包含在结果中。
 
-[表达式和条件][lnk-query-expressions]部分介绍了允许的条件。
+[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)部分介绍了允许的条件。
 
 ## <a name="select-clause"></a>SELECT 子句
+
 **SELECT <select_list>** 是必需的，用于指定要通过查询检索的值。 它指定用于生成新 JSON 对象的 JSON 值。
 对于 FROM 集合中已筛选子集（且可选择性分组）的每个元素，投影阶段将生成一个新 JSON 对象。 使用 SELECT 子句中指定的值构造此对象。
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。 在[设备孪生查询入门][lnk-query-getstarted]部分可以找到 SELECT 子句的一些示例。
+**Attribute_name** 引用 FROM 集合中 JSON 文档的任一属性。 在[设备孪生查询入门](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries)部分可以找到 SELECT 子句的一些示例。
 
 目前，仅支持在针对设备孪生执行的聚合查询中使用除 **SELECT*** 以外的选择子句。
 
@@ -483,18 +495,5 @@ GROUP BY <group_by_element>
 | CONTAINS(x,y) | 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。 |
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用 [Azure IoT SDK][lnk-hub-sdks] 在应用中执行查询。
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+了解如何使用 [Azure IoT SDK](iot-hub-devguide-sdks.md) 在应用中执行查询。

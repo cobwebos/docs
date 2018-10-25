@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: 8a7346f884a065a21b6f0a822b2236fa7ce5dff0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 497249baa10956c37762172bd0c48fad7be14e0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732551"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319313"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -73,8 +73,8 @@ ms.locfileid: "45732551"
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>在事件中心内使用 Kafka 发送消息
 
-1. 将 [Azure 事件中心存储库](https://github.com/Azure/azure-event-hubs)克隆到计算机。
-2. 导航到文件夹：`azure-event-hubs/samples/kafka/quickstart/producer`。 
+1. 将[用于 Kafka 的 Azure 事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)克隆到计算机。
+2. 导航到文件夹：`azure-event-hubs-for-kafka/quickstart/java/producer`。 
 4. 在 `src/main/resources/producer.config` 中更新生产者的配置详细信息。 指定事件中心命名空间的名称和连接字符串。 
 
     ```xml
@@ -84,7 +84,7 @@ ms.locfileid: "45732551"
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. 导航到 `azure-event-hubs/samples/kafka/quickstart/producer/src/main/java/com/example/app`，在所选编辑器中打开 TestDataReporter.java。 
+5. 导航到 `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app`，在所选编辑器中打开 TestDataReporter.java。 
 6. 为以下代码行添加注释：
 
     ```java
@@ -97,7 +97,7 @@ ms.locfileid: "45732551"
     ```
 
     此代码以 JSON 格式发送事件数据。 配置流分析作业的输入时，指定 JSON 作为输入数据的格式。 
-7. 运行生产者并将其流式传输到已启用 Kafka 的事件中心。 在 Windows 计算机上，使用 Node.js 命令提示符时，先切换到 `azure-event-hubs/samples/kafka/quickstart/producer` 文件夹，再运行这些命令。 
+7. 运行生产者并将其流式传输到已启用 Kafka 的事件中心。 在 Windows 计算机上，使用 Node.js 命令提示符时，先切换到 `azure-event-hubs-for-kafka/quickstart/java/producer` 文件夹，再运行这些命令。 
    
     ```shell
     mvn clean package
@@ -170,7 +170,7 @@ ms.locfileid: "45732551"
 3. 将 `[YourInputAlias]` 替换为之前创建的输入别名。 
 4. 在工具栏上选择“保存”。 
 
-    ![查询](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Query](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
@@ -205,7 +205,10 @@ ms.locfileid: "45732551"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 有关详细信息，请继续阅读以下教程：
+本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
 
-> [!div class="nextstepaction"]
-> [将 Kafka MirrorMaker 与事件中心配合使用](event-hubs-kafka-mirror-maker-tutorial.md)
+* [了解事件中心](event-hubs-what-is-event-hubs.md)
+* [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+* [在适用于 Kafka 的事件中心 GitHub 上浏览更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) [将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
+* 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心

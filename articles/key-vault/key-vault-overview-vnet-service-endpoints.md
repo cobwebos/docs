@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294998"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404318"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -62,7 +62,7 @@ ms.locfileid: "44294998"
 |Azure 资源管理器模板部署服务|[在部署期间传递安全值](../azure-resource-manager/resource-manager-keyvault-parameter.md)|
 |Azure 磁盘加密卷加密服务|允许在 VM 部署期间访问 BitLocker 密钥 (Windows VM) 或 DM 密码 (Linux VM) 和密钥加密密钥，以启用 [Azure 磁盘加密](../security/azure-security-disk-encryption.md)|
 |Azure 备份|允许使用 [Azure 备份](../backup/backup-introduction-to-azure-backup.md)在 Azure VM 备份期间备份和还原相关密钥和机密|
-|Exchange Online 和 SharePoint Online|允许使用[客户密钥](https://support.office.com/en-us/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)访问服务加密的客户密钥。|
+|Exchange Online 和 SharePoint Online|允许使用[客户密钥](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)访问服务加密的客户密钥。|
 |Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
 |应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)|
 |Azure SQL|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|

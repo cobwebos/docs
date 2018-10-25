@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 7/10/2018
-ms.openlocfilehash: adacbaf718c5ef293b4ee3fa833083704aa41f5c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 07/10/2018
+ms.openlocfilehash: 0f729725a04b19a513ca92953e997b51e4558884
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297927"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986259"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure DevOps Services 通过 CI/CD 部署 Azure 流分析作业
 本教程介绍了如何使用 Azure 管道为 Azure 流分析作业设置持续集成和部署。 
@@ -115,7 +115,7 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 11. 展开“Azure 详细信息”并在配置中填写以下信息：
     
-    |**设置**  |建议的值  |
+    |**设置**  |**建议的值**  |
     |---------|---------|
     |订阅  |  选择订阅。   |
     |操作  |  创建或更新资源组   |

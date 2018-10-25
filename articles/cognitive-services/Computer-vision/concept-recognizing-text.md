@@ -3,19 +3,19 @@ title: 识别印刷文本和手写文本 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 与使用计算机视觉 API 识别图像中的印刷文本和手写文本相关的概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985305"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338094"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>识别打印文本和手写文本
 
@@ -29,7 +29,7 @@ ms.locfileid: "45985305"
 
 - 图像必须以 JPEG、PNG 或 BMP 格式显示
 - 图像的文件大小必须不到 4 兆字节 (MB)
-- 图像的尺寸必须介于 40 x 40 和 3200 x 3200 像素之间
+- 图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间
 
 > [!NOTE]
 > 此技术当前处于预览状态，且仅适用于英语文本。

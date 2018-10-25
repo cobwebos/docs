@@ -3,17 +3,17 @@ title: 如何使用 Azure Maps Map Control | Microsoft Docs
 description: 了解如何使用 Azure Maps Map Control 客户端 Javascript 库。
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 850f9b28c112c11fd98a8abc81a1811cd26d81cc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603153"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166011"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps Map Control
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603153"
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
 
-3. 若要在浏览器中呈现新地图，请在 `<style>` 元素中添加 #map 引用：
+3. 要在浏览器中呈现新地图，请在 `<style>` 元素中添加 #map 引用：
 
     ```html
     <style>
@@ -43,14 +43,14 @@ ms.locfileid: "45603153"
     </style>
     ```
 
-4. 若要初始化 Map Control，在 html 正文中定义新部分并创建脚本。 在脚本中使用你自己的 Azure Maps 帐户密钥。 如果需要创建帐户或查找密钥，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。
+4. 要初始化地图控件，请在 html 正文中定义新部分并创建脚本。 在脚本中使用你自己的 Azure Maps 帐户密钥。 如果需要创建帐户或查找密钥，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。 setLanguage 方法指定用于地图标签和控件的语言。 有关受支持语言的详细信息，请参阅[支持的语言](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
 
     ```html
     <div id="map">
         <script>
-            var MapsAccountKey = "<_your account key_>";
+            atlas.setSubscriptionKey("<_your account key_>");
+            atlas.setLanguage("en");
             var map = new atlas.Map("map", {
-                "subscription-key": MapsAccountKey,
                 center: [-122.33263,47.59093],
                 zoom: 12
             });

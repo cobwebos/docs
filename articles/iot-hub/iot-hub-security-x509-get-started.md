@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dobett
-ms.openlocfilehash: 19f6f5d360981c743d819da81eb2f68db1853c8b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f10f1da93df6a313525e102e4906cfe67a5f6ae3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783111"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351876"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
@@ -72,9 +72,9 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>为 IoT 中心创建 X.509 设备
 
-1. 在 Azure 门户中导航到 IoT 中心的“Device Explorer”。
+1. 在 Azure 门户中，导航到 IoT 中心的“Explorer”>“IoT 设备”页。
 
-2. 单击“添加”以添加新设备。 
+2. 单击“+ 添加”以添加新设备。
 
 3. 为“设备 ID”提供友好显示名称，选择“已签名的 X.509 CA”作为“身份验证类型”。 单击“ **保存**”。
 

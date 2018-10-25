@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: a857b813cee86079b96cd2bca297c1cf098819f5
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268473"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113897"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>获取 Azure 机器学习服务的支持和培训
 
@@ -26,6 +26,8 @@ ms.locfileid: "48268473"
 + [教程和操作说明文章](../service/index.yml)
 + [体系结构概述](../service/concept-azure-machine-learning-architecture.md)
 + [视频](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+
+## <a name="submit-doc-feedback"></a>提交文档反馈 
 
 可以使用本文底部的反馈链接**提交请求**，以获取更多学习资料。
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 30a1f2be1917ba6ea404a2862daaf5f51f35ac3f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452288"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394878"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>选择并使用用于定型模型的计算目标
 
@@ -25,9 +25,12 @@ ms.locfileid: "47452288"
 
 可以先从计算机上的本地运行任务入手，再纵向和横向扩展到其他环境，如使用 GPU 的远程 Data Science Virtual Machine 或 Azure Batch AI。 
 
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.168 进行测试 
+
 ## <a name="supported-compute-targets"></a>受支持的计算目标
 
-Azure 机器学习支持以下计算目标：
+Azure 机器学习服务支持以下计算目标：
 
 |计算目标| GPU 加速 | 自动超参数优化 | 自动模型选择 | 可以在管道中使用|
 |----|:----:|:----:|:----:|:----:|
@@ -41,8 +44,8 @@ Azure 机器学习支持以下计算目标：
 各计算目标的关键区别如下：
 * __GPU 加速__：GPU 适用于 Data Science Virtual Machine 和 Azure Batch AI。 可以在本地计算机上使用 GPU，具体视已安装的硬件、驱动程序和框架而定。
 * __自动超参数优化__：Azure 机器学习自动超参数优化有助于发现最适合模型的参数。
-* __自动模型选择__：Azure 机器学习可以在生成模型时智能地推荐算法和超参数选择。 相较于手动尝试不同组合，自动模型选择有助于更快地收敛至优质模型。 有关详细信息，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)一文。
-* __管道__：借助 Azure 机器学习，可以将不同的任务（如定型和部署）组合到管道中。 管道可以并行运行，也可以依序运行，能够形成可靠的自动化机制。 有关详细信息，请参阅[使用 Azure 机器学习服务生成机器学习管道](concept-ml-pipelines.md)一文。
+* __自动模型选择__：Azure 机器学习服务可以在生成模型时智能地推荐算法和超参数选择。 相较于手动尝试不同组合，自动模型选择有助于更快地收敛至优质模型。 有关详细信息，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)一文。
+* __管道__：借助 Azure 机器学习服务，可以将不同的任务（如定型和部署）组合到管道中。 管道可以并行运行，也可以依序运行，能够形成可靠的自动化机制。 有关详细信息，请参阅[使用 Azure 机器学习服务生成机器学习管道](concept-ml-pipelines.md)一文。
 
 可使用 Azure 机器学习 SDK、Azure CLI 或 Azure 门户创建计算目标。 也可以使用现有计算目标，具体方法是将它们添加（附加）到工作区。
 
@@ -106,7 +109,7 @@ from azureml.core.conda_dependencies import CondaDependencies
 run_config_system_managed = RunConfiguration()
 
 run_config_system_managed.environment.python.user_managed_dependencies = False
-run_config_system_managed.prepare_environment = True
+run_config_system_managed.auto_prepare_environment = True
 
 # Specify conda dependencies with scikit-learn
 
@@ -174,7 +177,7 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
     # Use Docker in the remote VM
     run_config.environment.docker.enabled = True
 
-    # Use CPU base image from DockerHub
+    # Use CPU base image
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 
@@ -206,30 +209,30 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
 ```python
 from azureml.core.compute import BatchAiCompute
 from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = ws.name + "cpu"
+batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
+cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
+cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
+autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
 
-found = False
-# see if this compute target already exists in the workspace
-for ct in ws.compute_targets():
-    print(ct.name, ct.type)
-    if (ct.name == batchai_cluster_name and ct.type == 'BatchAI'):
-        found = True
-        print('found compute target. just use it.')
-        compute_target = ct
-        break
-        
-if not found:
+
+if batchai_cluster_name in ws.compute_targets():
+    compute_target = ws.compute_targets()[batchai_cluster_name]
+    if compute_target and type(compute_target) is BatchAiCompute:
+        print('found compute target. just use it. ' + batchai_cluster_name)
+else:
     print('creating a new compute target...')
-    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", # for GPU, use "STANDARD_NC6"
-                                                                #vm_priority = 'lowpriority', # optional
-                                                                autoscale_enabled = True,
-                                                                cluster_min_nodes = 1, 
-                                                                cluster_max_nodes = 4)
+    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                vm_priority = 'lowpriority', # optional
+                                                                autoscale_enabled = autoscale_enabled,
+                                                                cluster_min_nodes = cluster_min_nodes, 
+                                                                cluster_max_nodes = cluster_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,batchai_cluster_name, provisioning_config)
+    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
     # if no min node count is provided it will use the scale settings for the cluster
@@ -372,7 +375,7 @@ run.wait_for_completion(show_output = True)
 1. 访问 [Azure 门户](https://portal.azure.com)，并转到工作区。
 2. 单击“应用程序”部分下的“计算”链接。
 
-    ![查看“计算”选项卡](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![查看“计算”选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>创建计算目标
 
@@ -380,7 +383,7 @@ run.wait_for_completion(show_output = True)
 
 1. 单击加号“+”，以添加计算目标。
 
-    ![添加计算 ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![添加计算 ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. 输入计算目标的名称。
 1. 选择要为“定型”附加的计算类型。 
@@ -414,11 +417,11 @@ run.wait_for_completion(show_output = True)
 
 ## <a name="examples"></a>示例
 下面的笔记本展示了本文中的概念：
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
-* `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
-* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
-* `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
-* `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
+* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm)
+* [01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci)
+* [01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark)
+* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
 
 若要获取这些笔记本，请执行以下操作：[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -1,25 +1,26 @@
 ---
-title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量操作 | Microsoft Docs
-description: 使用 Azure Cosmos DB 的 Bulk Executor Java 库在 Azure Cosmos DB 容器中批量导入和更新文档。
-keywords: Java 批量执行程序
+title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量导入和更新操作 | Microsoft Docs
+description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档。
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 9285b0ea50b7207aa40cea2dcab50f79863ffda9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a22cd65ef5d4ef22038a8506359d1036e829db4d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050181"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362103"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
 本教程提供有关使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档的说明。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos DB 容器。 导入后，我们将批量更新文档的某些属性。 
+
+目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 .Net 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

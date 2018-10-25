@@ -3,8 +3,7 @@ title: 在 Azure 流量管理器中配置多值流量路由方法 | Microsoft Do
 description: 本文介绍如何配置流量管理器以将流量路由到 A/AAAA 终结点。
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: jeconnoc
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 1fae1147c941ed28d23a478a0e809b2dffba7a35
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131117"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986757"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 
@@ -61,7 +60,7 @@ ms.locfileid: "46131117"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | 外部终结点                                   |
+    | 类型                    | 外部终结点                                   |
     | 名称           | myEndpoint1                                        |
     | 完全限定的域名 (FQDN) 或 IP           | 键入要添加到此流量管理器配置文件的终结点的公共 IP 地址                         |
     |        |           |

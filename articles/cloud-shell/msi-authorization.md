@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cloud Shell 中使用 MSI | Microsoft Docs
+title: 在 Azure Cloud Shell 中使用 Azure 资源的托管标识 | Microsoft Docs
 description: 在 Azure Cloud Shell 中使用 MSI 对代码进行身份验证
 services: azure
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 99577faf7328dc773a9da5f7c1227aa63600aa0a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31516281"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352934"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 MSI
+# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 资源的托管标识
 
-Azure Cloud Shell 支持使用托管服务标识 (MSI) 进行授权。 可以使用此功能来检索访问令牌以便安全地与 Azure 服务进行通信。
+Azure Cloud Shell 支持使用 Azure 资源的托管标识进行授权。 可以使用此功能来检索访问令牌以便安全地与 Azure 服务进行通信。
 
-## <a name="about-managed-service-identity-msi"></a>关于托管服务标识 (MSI)
+## <a name="about-managed-identities-for-azure-resources"></a>关于 Azure 资源的托管标识
 生成云应用程序时需要应对的常见挑战是，如何安全地管理为了通过云服务的身份验证而需要插入到代码中的凭据。 在 Cloud Shell 中，可能需要授权从 Key Vault 中检索脚本可能需要的凭据。
 
-托管服务标识 (MSI) 为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
+“Azure 资源的托管标识”为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>在 Cloud Shell 中获取访问令牌
 

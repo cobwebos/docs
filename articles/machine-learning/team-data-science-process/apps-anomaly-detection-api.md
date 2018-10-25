@@ -4,7 +4,7 @@ description: 异常情况检测 API 是一个示例，它使用 Microsoft Azure 
 services: machine-learning
 documentationcenter: ''
 author: alokkirpal
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0b99aeb2ffdb78e472cdc0e11d0efaf91feb3e4a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836460"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394455"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -110,7 +110,7 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="detectors"></a>检测程序
 异常情况检测 API 支持检测程序中的 3 个主要类别。 可在下表中找到特定输入的参数和每个检测程序输出结果的详细信息。
 
-| 检测程序类别 | 检测程序 | 说明 | 输入参数 | Outputs |
+| 检测程序类别 | 检测程序 | Description | 输入参数 | Outputs |
 | --- | --- | --- | --- | --- |
 | 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 中的整数值、默认值：3；较高的值会捕获多个极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
 | 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 范围内的整数值，默认值为 3；值越大，捕获的值更极端，使敏感程度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
@@ -120,9 +120,9 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
+| 输入参数 | Description | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
+| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
 | bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | 趋势检测程序敏感度 |正面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
@@ -133,7 +133,7 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="output"></a>输出
 API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。 
 
-| Outputs | 说明 |
+| Outputs | Description |
 | --- | --- |
 | 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
@@ -156,19 +156,19 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 说明 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
+| 输入参数 | Description | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |聚合输入时间序列的聚合间隔单位为秒 |0（不执行任何聚合） |integer |0：跳过聚合，> 0 否则 |5 分钟到 1 天，时间系列依赖项 |
 | preprocess.aggregationFunc |用于将数据聚合到指定的 AggregationInterval 函数 |平均值 |枚举 |平均值、总和、长度 |不适用 |
 | preprocess.replaceMissing |用户输入缺失的数据值 |lkv（最近一次的值） |枚举 |零、lkv、平均值 |不适用 |
-| detectors.historyWindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
+| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
 | bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | postrenddetector.sensitivity |正面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | negtrenddetector.sensitivity |负面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
 | zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| seasonality.enable |是否要执行季节性分析 |是 |布尔值 |true、false |时间序列依赖项 |
+| seasonality.enable |是否要执行季节性分析 |true |布尔值 |true、false |时间序列依赖项 |
 | seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |integer |1, 2 |1-2 |
 | seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不适用 |
 | postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
@@ -176,7 +176,7 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 ### <a name="output"></a>输出
 API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。 
 
-| Outputs | 说明 |
+| Outputs | Description |
 | --- | --- |
 | 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 原始数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |

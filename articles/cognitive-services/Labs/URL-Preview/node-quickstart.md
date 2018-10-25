@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3367b39333c9d7334bc56b3acdf00453cc9705c0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883561"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465043"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>快速入门：通过 Node.js 使用 URL 预览 
 

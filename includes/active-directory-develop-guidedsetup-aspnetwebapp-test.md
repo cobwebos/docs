@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 3a141bcde75872f2384aedf982ffef5cba9666a3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843546"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988493"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -32,30 +32,35 @@ ms.locfileid: "48843546"
 ![登录 Microsoft 帐户](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>查看应用程序结果
+
 登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括欢迎消息“Hello \<User>”、一个注销链接和一个用于查看用户声明的链接。 用户声明链接浏览到你之前创建的“声明”控制器。
 
 ### <a name="browse-to-see-the-users-claims"></a>浏览查看用户声明
+
 要查看用户声明，选择该链接以浏览到控制器视图（仅经过身份验证的用户可访问该视图）。
 
 #### <a name="view-the-claims-results"></a>查看声明结果
+
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
 |属性 |值 |说明 |
 |---|---|---|
-|**Name** |用户全名 | 用户的名字和姓氏。
+|**名称** |用户全名 | 用户的名字和姓氏。
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名。
 |**主题** |主题 |唯一标识 Web 上用户的字符串。|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 guid。|
 
 此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [Azure AD ID 令牌中的声明列表](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
-
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>测试对具有 Authorize 属性的方法的访问（可选）
+
 若要作为由 `Authorize` 属性保护的控制器的匿名用户来测试访问，请执行以下步骤：
+
 1. 选择注销用户的链接并完成注销过程。
 2. 在浏览器中，键入 http://<span></span>localhost:{port}/claims 来访问由 `Authorize` 属性保护的控制器。
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>访问受保护控制器后的预期结果
+
 系统会提示进行身份验证来使用受保护的控制器视图。
 
 ## <a name="advanced-options"></a>高级选项
@@ -70,6 +75,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制谁可以登录到应用程序
+
 默认情况下，当生成本指南创建的应用程序时，应用程序将接受使用个人帐户（包括 outlook.com、live.com 和其他帐户）以及与 Azure Active Directory 集成的任何公司或组织的工作和学校帐户进行登录。 这是针对 SaaS 应用程序推荐使用的选项。
 
 为了限制应用程序的用户登录访问权限，提供了以下多个选项：
@@ -88,6 +94,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 2. 将 `ValidIssuers` 参数的值设置为允许的组织的列表。
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>选项 3：使用自定义方法来验证颁发者
+
 可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请阅读 MSDN 上的 [TokenValidationParameters class](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)（TokenValidationParameters 类）。
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

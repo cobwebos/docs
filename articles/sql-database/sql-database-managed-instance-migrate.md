@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 7653ce7b0823b4e91685e77701a307370261f7e6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 10/15/2018
+ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394045"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345299"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -38,9 +38,9 @@ ms.locfileid: "47394045"
 
 ## <a name="assess-managed-instance-compatibility"></a>评估托管实例兼容性
 
-首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例旨在方便即时迁移大多数使用本地 SQL Server 或虚拟机中 SQL Server 的现有应用程序。 但是，我们有时可能需要用到一些目前尚不支持的功能，而实施某种解决方法的成本过高。 
+首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例旨在方便即时迁移大多数使用本地 SQL Server 或虚拟机中 SQL Server 的现有应用程序。 但是，我们有时可能需要用到一些目前尚不支持的功能，而实施某种解决方法的成本过高。
 
-使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 请参阅 [Azure SQL 数据库功能](sql-database-features.md)，检查是否报告了一些不是托管实例中阻止程序导致的拦截问题，因为大多数阻止迁移到 Azure SQL 数据库的拦截问题已通过托管实例删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。 
+使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 DMA 目前不支持将托管实例用作迁移目标，但我们建议针对 Azure SQL 数据库运行评估，仔细查看报告的功能搭配列表，并根据产品文档检查兼容性问题。 请参阅 [Azure SQL 数据库功能](sql-database-features.md)，检查是否报告了一些不是托管实例中阻止程序导致的拦截问题，因为大多数阻止迁移到 Azure SQL 数据库的拦截问题已通过托管实例删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接服务器到其他 SQL 源的查询、CLR、全局临时表、实例级视图、Service Broker 等功能。
 
 如果某些报告的拦截问题未在 Azure SQL 数据库托管实例中删除，则可能需要考虑其他选项，例如 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
 
@@ -60,16 +60,16 @@ ms.locfileid: "47394045"
 若要了解如何创建 VNet 基础结构和托管实例，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
 
 > [!IMPORTANT]
-> 始终必须根据[托管实例的 VNET 要求](sql-database-managed-instance-vnet-configuration.md#requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。
+> 必须始终根据[托管实例的 VNet 要求](sql-database-managed-instance-vnet-configuration.md#requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。
 
 ## <a name="select-migration-method-and-migrate"></a>选择迁移方法，然后迁移
 
-托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。 如果需要即时转移定期使用实例级功能和/或跨数据库功能的应用程序的后端，则托管实例是最佳选择。 对于此方案，可将整个实例转移到 Azure 中的相应环境，而无需重新架构应用程序。 
+托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。 如果需要即时转移定期使用实例级功能和/或跨数据库功能的应用程序的后端，则托管实例是最佳选择。 若采用此方案，可将整个实例转移到 Azure 中对应的环境，而无需重新构建应用程序。
 
 若要转移 SQL 实例，需要认真规划：
 
--   迁移需要并置的所有数据库（在同一个实例上运行的数据库）
--   迁移应用程序依赖的实例级对象，包括登录名、凭据、SQL 代理作业和操作员，以及服务器级触发器。 
+- 迁移需要并置的所有数据库（在同一个实例上运行的数据库）
+- 迁移应用程序依赖的实例级对象，包括登录名、凭据、SQL 代理作业和操作员，以及服务器级触发器。
 
 托管实例是一项完全托管的服务，可用于将某些常规 DBA 活动委托给平台，因为系统中已内置这些活动。 因此，不需要迁移某些实例级数据，例如日常备份的维护作业或 Always On 配置，因为系统中内置了[高可用性](sql-database-high-availability.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "47394045"
 
 ### <a name="azure-database-migration-service"></a>Azure 数据库迁移服务
 
-[Azure 数据库迁移服务 (DMS)](../dms/dms-overview.md) 是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。 此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure 虚拟机中的 SQL Server。 DMS 是迁移企业工作负荷的建议方法。 
+[Azure 数据库迁移服务 (DMS)](../dms/dms-overview.md) 是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。 此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure 虚拟机中的 SQL Server。 DMS 是迁移企业工作负荷的建议方法。
 
 如果在本地 SQL Server 上使用 SQL Server Integration Services (SSIS)，虽然 DMS 尚不支持迁移存储 SSIS 包的 SSIS 目录 (SSISDB)，但可在 Azure 数据工厂 (ADF) 中预配 Azure-SSIS 集成运行时，这将在 Azure SQL 数据库/托管实例中新建一个 SSISDB，随后即可将包重新部署到这个 SSISDB，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "47394045"
 
 ### <a name="native-restore-from-url"></a>从 URL 本机还原
 
-还原从本地 SQL Server 或[虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 创建的、在 [Azure 存储](https://azure.microsoft.com/services/storage/)中保存的本机备份（.bak 文件），是 SQL 数据库托管实例的重要功能之一，可以实现快速轻松的脱机数据库迁移。 
+还原从本地 SQL Server 或[虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 创建的、在 [Azure 存储](https://azure.microsoft.com/services/storage/)中保存的本机备份（.bak 文件），是 SQL 数据库托管实例的重要功能之一，可以实现快速轻松的脱机数据库迁移。
 
 下图高度概括了该过程：
 
@@ -121,6 +121,7 @@ ms.locfileid: "47394045"
 此外，无需考虑设置高可用性，因为系统中内置了[高可用性](sql-database-high-availability.md)。
 
 若要增强安全性，请考虑使用某些可用功能：
+
 - 数据库级别的 Azure Active Directory 身份验证
 - 使用[审核](sql-database-managed-instance-auditing.md)、[威胁检测](sql-advanced-threat-protection.md)、[行级安全](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)等[高级安全功能](sql-database-security-overview.md)保证实例的安全。
 

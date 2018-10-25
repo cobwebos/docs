@@ -1,26 +1,19 @@
 ---
 title: Azure Data Box Gateway 限制 | Microsoft Docs
 description: 介绍了 Microsoft Azure Data Box Gateway 的系统限制与建议的大小。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962167"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164427"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway 限制（预览版）
 
@@ -28,7 +21,7 @@ ms.locfileid: "46962167"
 在部署和操作 Microsoft Azure Data Box Gateway 解决方案时请考虑这些限制。 
 
 > [!IMPORTANT] 
-> Data Box Gateway 为预览版。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> Data Box Gateway 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway 服务限制
@@ -40,11 +33,11 @@ ms.locfileid: "46962167"
 
 下表介绍了 Data Box Gateway 设备的限制。
 
-| 说明 | 值 |
+| Description | 值 |
 |---|---|
-|每台 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
-|每台 设备的共享数 |24 |
-|写入到共享的最大文件大小|5 TB |
+|不是。 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
+|不是。 设备的共享数 |24 |
+|写入到共享的最大文件大小|对于 2 TB 的虚拟设备，最大文件大小为 500 GB。 <br> 最大文件大小按上述比例随数据磁盘大小而增大，直至到达最大大小 5 TB。 |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制
 

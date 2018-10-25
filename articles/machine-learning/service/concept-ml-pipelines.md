@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162774"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116447"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>管道和 Azure 机器学习
 
@@ -65,10 +65,10 @@ ms.locfileid: "47162774"
 
 请查看[适用于管道的 Python SDK 参考文档](http://aka.ms/aml-sdk)以及下一部分的 Notebook，了解如何生成你自己的。
 
-## <a name="example-notebooks"></a>示例 Notebook
+## <a name="example-notebooks"></a>示例笔记本
  
-以下 Notebook 演示与 Azure 机器学习一起使用的管道：`pipeline/pipeline-batch-scoring.ipynb`。
+以下 Notebook 演示与 Azure 机器学习一起使用的管道：[pipeline/pipeline-batch-scoring.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb)。
  
-获取以下笔记本：
+获取此笔记本：
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

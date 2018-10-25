@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 93b9075831db356607438288a7c153dde2f8b210
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146137"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384944"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
 可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用此解决方案后，它可以在 AKS 群集中配置入口控制器。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
+
+> [!CAUTION]
+> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 建议不要将此加载项用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](https://docs.microsoft.com/azure/aks/ingress-tls)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
@@ -88,6 +91,13 @@ spec:
       containers:
       - image: r.j3ss.co/party-clippy
         name: party-clippy
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         tty: true
         command: ["party-clippy"]
         ports:
@@ -237,7 +247,7 @@ ingress "party-clippy" deleted
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
-[ingress-https]: ./ingress.md
+[ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 
 

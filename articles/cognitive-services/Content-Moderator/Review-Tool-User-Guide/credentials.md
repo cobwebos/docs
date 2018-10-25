@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024649"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309649"
 ---
 # <a name="manage-credentials"></a>管理凭据
 
@@ -66,11 +66,11 @@ ms.locfileid: "44024649"
 
 ### <a name="resource-id"></a>资源 ID
 
-我们已在[将 Azure 帐户与审阅工具和 API 配合使用](credentials.md#how-to-use-your-azure-account-with-the-review-tool)部分中涵盖了这一部分内容。 此字段通常为空，除非你将 Azure 资源 Id 添加到此字段，如上一部分中所述。
+上一节[将 Azure 帐户与审阅工具和 API 配合使用](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)中已对该组字段进行了介绍。 此字段通常为空，除非你将 Azure 资源 Id 添加到此字段，如上一部分中所述。
 
 ### <a name="workflows"></a>工作流
 
-我们已在前面有关[使用 Azure 密钥运行工作流](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool)的部分中涵盖了这一组字段。 默认情况下，审阅工具使用其自动生成的试用版密钥来运行工作流，并且这就是上一部分开头出现的内容。 借助其他两个字段，可以分别在“筛查文本”和“评估图像”操作中使用术语列表和图像列表。
+上一节[将 Azure 帐户与审阅工具中的工作流配合使用](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool)中已对该组字段进行了介绍。 默认情况下，审阅工具使用其自动生成的试用版密钥来运行工作流，并且这就是上一部分开头出现的内容。 借助其他两个字段，可以分别在“筛查文本”和“评估图像”操作中使用术语列表和图像列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21c9441e2b3d3ad54d491834e6de097a8880b5b7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993844"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311110"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>使用 Log Analytics 设置性能监视
 
@@ -66,7 +66,7 @@ ms.locfileid: "46993844"
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>通过资源管理器模板添加代理
 
-部署 Azure Log Analytics 工作区并将代理添加到每个节点的示例资源管理器模板可用于 [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) 或 [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)。
+部署 Azure Log Analytics 工作区并将代理添加到每个节点的示例资源管理器模板可用于 [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) 或 [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)。
 
 可下载和修改此模板以部署最适合需求的群集。
 
@@ -86,7 +86,7 @@ ms.locfileid: "46993844"
 
 6. 关闭“高级设置”边栏选项卡。
 
-7. 在“常规”标题下，单击“概述”。
+7. 在“常规”标题下，单击“工作区摘要”。
 
 8. 将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击 **Service Fabric** 图形以转到 Service Fabric 分析解决方案。
 

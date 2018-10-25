@@ -10,13 +10,13 @@ ms.reviewer: klam, LADocs
 ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
-ms.date: 08/24/2018
-ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 10/11/2018
+ms.openlocfilehash: 77a76aa4fbb051e5999053279798c1b0147ae8e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042032"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166774"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -27,8 +27,10 @@ ms.locfileid: "43042032"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器从 SFTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作对 SFTP 服务器上的文件执行任务。 还可以让其他操作使用来自 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。
-如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 SFTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作对 SFTP 服务器上的文件执行任务。 还可以让其他操作使用来自 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+
+> [!NOTE]
+> 对于大小在 50 MB 到 1 GB 之间的文件，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)。 除非使用[区块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)，否则 SFTP 连接器仅支持 50 MB 或更小的文件。 
 
 ## <a name="prerequisites"></a>先决条件
 

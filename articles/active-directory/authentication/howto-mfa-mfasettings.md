@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 766f617f3534ffaccdc326e7de8155adb84a69ce
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162137"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114973"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -111,17 +111,33 @@ ms.locfileid: "39162137"
 * 文件大小上限是 5MB。
 * 身份验证消息应少于 20 秒。 超过 20 秒的消息可能导致验证失败。 用户可能不会在消息播放结束前作出响应，导致验证超时。
 
+### <a name="custom-message-language-behavior"></a>自定义消息语言行为
+
+当向用户播放自定义语音消息时，消息的语言取决于以下因素：
+
+* 当前用户的语言。
+   * 用户的浏览器检测到的语言。
+   * 其他身份验证方案可能操作方式不同。
+* 任何可用的自定义消息的语言。
+   * 添加自定义消息时，由管理员选择此语言。
+
+例如，如果只有一条采用德语的自定义消息：
+
+* 以德语进行身份验证的用户将听到自定义德语消息。
+* 以英语进行身份验证的用户将听到标准英语消息。
+
 ### <a name="set-up-a-custom-message"></a>设置自定义消息
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到“Azure Active Directory” > “MFA 服务器” > “电话呼叫设置”。
+1. 浏览到“Azure Active Directory” > “MFA 服务器” > “电话呼叫设置”。
 
    ![录制自定义电话消息](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. 选择“添加问候语”。
-4. 选择问候的类型。 选择语言。
-5. 选择要上传的 .mp3 或 .wav 声音文件。
-6. 选择 **添加** 。
+1. 选择“添加问候语”。
+1. 选择问候的类型。 
+1. 选择语言。
+1. 选择要上传的 .mp3 或 .wav 声音文件。
+1. 选择 **添加** 。
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的缓存
 
@@ -173,14 +189,14 @@ ms.locfileid: "39162137"
 4. 输入位置的名称。
 5. 选择“标记为受信任位置”。
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。
-7. 选择**创建**。
+7. 选择“创建”。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>使用条件访问启用受信任的 IP 功能
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧选择“Azure Active Directory” > “条件访问” > “命名位置”。
 3. 选择“配置 MFA 受信任的 IP”。
-4. 在“服务设置”页上“受信任的 IP”下，从以下两个选项中进行选择：
+4. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择：
    
    * **对于联合用户从我的 Intranet 发起的请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：<br/>
 
@@ -200,10 +216,10 @@ ms.locfileid: "39162137"
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服务设置启用受信任的 IP 功能
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
+2. 在左侧，选择“Azure Active Directory” > “用户”。
 3. 选择“多重身份验证”。
 4. 在“多重身份验证”下，选择“服务设置”。
-5. 在“服务设置”页上“受信任的 IP”下，从以下两个选项中进行选择：
+5. 在“服务设置”页的“受信任的 IP”下，选择以下两个选项中的一个（或两个）：
    
    * **对于来自我的 Intranet 的联合用户请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：<br/>
 
@@ -306,11 +322,11 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 ### <a name="how-the-feature-works"></a>该功能的工作原理
 
-在用户在登录时选择“X 天内不再询问”选项时，“记住多重身份验证”功能将在浏览器上设置持久性 Cookie。 在该 Cookie 过期之前，该浏览器不会再次提示用户进行多重身份验证。 如果用户在同一设备上打开不同浏览器或清除其 Cookie，会提示他们重新进行验证。 
+在用户在登录时选择“X 天内不再询问”选项时，“记住多重身份验证”功能将在浏览器上设置持久性 Cookie。 在该 Cookie 过期之前，该浏览器不会再次提示用户进行多重身份验证。 如果用户在同一设备上打开不同浏览器或清除其 Cookie，会提示他们重新进行验证。
 
-非浏览器应用程序上不会显示“X 天内不再询问”选项，无论该应用是否支持新式身份验证。 这些应用使用每小时提供新访问令牌的刷新令牌。 验证刷新令牌时，Azure AD 会检查上次双重验证是否发生在指定的天数内。 
+非浏览器应用程序上不会显示“X 天内不再询问”选项，无论该应用是否支持新式身份验证。 这些应用使用每小时提供新访问令牌的刷新令牌。 验证刷新令牌时，Azure AD 会检查上次双重验证是否发生在指定的天数内。
 
-此功能可以减少 Web 应用的身份验证次数，而通常每次使用时都会提示验证。 此功能会增加新式身份验证客户端的身份验证次数（通常每隔 90 天提示一次）。
+此功能可以减少 Web 应用的身份验证次数，而通常每次使用时都会提示验证。 此功能会增加新式身份验证客户端的身份验证次数（通常每隔 90 天提示一次）。 与条件访问策略结合使用时，还可能会增加身份验证的次数。
 
 >[!IMPORTANT]
 >当用户通过 Azure 多重身份验证服务器或第三方多重身份验证解决方案对 AD FS 执行双重验证时，“记住多重身份验证”功能与 AD FS 的“使我保持登录”功能不兼容。

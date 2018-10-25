@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037126"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378079"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 
@@ -226,7 +226,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 是的，虚拟网络服务终结点和防火墙可以共存。 一般情况下，在配置虚拟网络服务终结点之前，应确保始终启用门户访问，以便能够查看与容器关联的指标。
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用服务终结点访问后，是否可以“允许给定 Azure 区域中其他 Azure 服务的访问”？  
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用了服务终结点访问时，我能否“接受从公用 Azure 数据中心内连接”？  
 
 仅当你希望自己的 Azure Cosmos DB 帐户可供其他 Azure 第一方服务（例如 Azure 数据工厂和 Azure 搜索）或给定 Azure 区域中部署的任何服务访问时，才需要这样做。
 

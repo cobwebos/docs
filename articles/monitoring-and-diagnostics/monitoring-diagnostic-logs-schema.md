@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 8/21/2018
+ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818958"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116187"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -39,7 +39,7 @@ ms.locfileid: "42818958"
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
 | identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
-| location | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
+| 位置 | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
 | 属性 | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
 ## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>资源诊断日志的服务特定架构
@@ -53,13 +53,14 @@ ms.locfileid: "42818958"
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自动化 |[Azure 自动化的 Log Analytics](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure 批处理 |[Azure Batch 诊断日志记录](../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL 诊断日志](../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | 认知服务 | 架构不可用。 |
 | 内容分发网络 | [CDN 的 Azure 诊断日志](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../cosmos-db/logging.md) |
 | 数据工厂 | [使用 Azure Monitor 监视数据工厂](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[访问 Azure Data Lake Analytics 的诊断日志](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| 适用于 PostgreSQL 的 DB |  架构不可用。 |
 | 事件中心 |[Azure 事件中心诊断日志](../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
@@ -104,6 +105,7 @@ ms.locfileid: "42818958"
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|Requests|请求日志|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 慢查询日志|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.Devices/IotHubs|连接|连接|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|设备遥测|
@@ -164,7 +166,7 @@ ms.locfileid: "42818958"
 |Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
-|Microsoft.Sql/servers/databases|Errors|Errors|
+|Microsoft.Sql/servers/databases|错误|错误|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
 |Microsoft.Sql/servers/databases|超时|超时|
 |Microsoft.Sql/servers/databases|块|块|

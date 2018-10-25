@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061535"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405967"
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -459,8 +459,6 @@ JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志�
 Azure 网络验证旨在确保 Azure 网络如配置的那样正常运行，并且可以使用可用于监视网络的服务和功能执行验证。 使用 Azure 网络观察程序可以访问大量日志记录和诊断功能，便于深入了解网络性能和运行状况。 这些功能可通过门户、Power Shell、CLI、Rest API 和 SDK 访问。
 
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
-
--   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 -   [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 

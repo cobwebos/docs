@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298194"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341117"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>开放跟踪和 Application Insights
 
-[开放跟踪](http://opentracing.io/) 和 Application Insights 数据模型如下所示 
+如以下方式的[开放跟踪数据模型规范](http://opentracing.io/)和 Application Insights 数据模型映射：
 
-- `request`、`pageView` 映射到采用 `span.kind = server` 设置的 Span
-- `dependency` 映射到采用 `span.kind = client` 设置的 Span
-- `request` 和 `dependency` 的 `id` 映射到 Span.Id
-- `operation_Id` 映射到 TraceId
-- `operation_ParentId` 映射到 `ChildOf` 类型的 Reference
+| Application Insights                  | 开放跟踪                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`、`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
+| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
+| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
 
-有关 Application Insights 的类型和数据模型，请参阅[数据模型](application-insights-data-model.md)。
+有关 Application Insights 数据模型的详细信息，请参阅[数据模型](application-insights-data-model.md)。 
 
-有关开放跟踪概念的定义，请参阅[规范](https://github.com/opentracing/specification/blob/master/specification.md)和 [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
+有关开放跟踪概念的定义，请参阅开放跟踪[规范](https://github.com/opentracing/specification/blob/master/specification.md)和 [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
 
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联

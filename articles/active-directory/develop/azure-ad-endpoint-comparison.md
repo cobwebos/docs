@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406526"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955404"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 终结点与 v1.0 终结点的比较
 
@@ -133,7 +133,7 @@ v2.0 终结点颁发的令牌中的声明与正式发布的 Azure AD 终结点�
 
 * 如果必须在应用程序中支持个人 Microsoft 帐户，请使用 v2.0。 但在执行操作前，请确保了解本文讨论的限制。
 
-* 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0。 相反，请参阅 [v1.0 指南](azure-ad-developers-guide.md)。
+* 如果应用程序只需支持 Microsoft 工作和学校帐户，则不要使用 v2.0。 相反，请参阅 [v1.0 指南](v1-overview.md)。
 
 v2.0 终结点将演变为消除此处列出的限制，因此你只需要使用 v2.0 终结点。 在此期间，使用本文来确定 v2.0 终结点是否适合你。 我们将持续更新本文，以反映 v2.0 终结点当前的状态。 可返回查看，重新评估对 v2.0 功能的要求。
 

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125638"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167692"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>标准负载均衡器的指标和运行状况诊断
 
-Azure 标准负载均衡器为资源提供以下诊断功能：
-* **多维指标**：为公共和内部负载均衡器配置提供新的多维诊断功能。 可以监视、管理负载均衡器资源以及排查其问题。
+Azure 标准负载均衡器公布 Azure 标准负载均衡器为资源提供以下诊断功能：
+* **多维指标**：通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 为公共和内部负载均衡器配置提供新的多维诊断功能。 可以监视、管理负载均衡器资源以及排查其问题。
 
 * **资源运行状况**：Azure 门户中的“负载均衡器”页和 Monitor 中的“资源运行状况”页会显示标准负载均衡器的公共负载均衡器配置的“资源运行状况”部分。
 
@@ -219,6 +219,7 @@ VIP 可用性目前仅适用于公共前端。
 
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)。
 - 详细了解[负载均衡器出站连接](https://aka.ms/lboutbound)。
-- 了解 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/)。
+- 了解有关 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 的信息。
+- 了解有关 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 的信息，以及[如何通过 REST API 检索指标](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list)。
 
 

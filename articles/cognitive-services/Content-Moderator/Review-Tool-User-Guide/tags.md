@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: add4c685c07c63944ae89f48a47ac78df28c1623
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c462ff2937453f942db7fdd5b751f3356b6fe715
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365441"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310073"
 ---
 # <a name="about-tags"></a>关于标记 #
 
-除了两个默认标记（a - isadult 和 r - isracy）之外，还可以创建自定义标记来执行更有针对性的扫描。 然后，人工审阅者可以将这些自定义标记分配给图像或文本。
+除了两个默认标记（isadult (a) 和 isracy (r)）之外，还可以创建自定义标记来执行更有针对性的扫描。 然后，人工审阅者可以将这些自定义标记分配给图像或文本。
 
 ## <a name="create-tags"></a>创建标记 ##
 
@@ -27,7 +27,7 @@ ms.locfileid: "35365441"
   ![内容审查标记](images/tags-1.png)
 
 2.  输入标记的两字母短代码。
-3.  输入标记名称。 请务必命名简短的描述性名称。 例如，“isNudity”。
+3.  输入标记名称。 请务必命名简短的描述性名称。 例如，“isbullying”。
 4.  输入说明。
 5.  单击“添加”。
 6.  创建完标记后，单击“保存”。
@@ -50,4 +50,4 @@ ms.locfileid: "35365441"
 
 ## <a name="next-steps"></a>后续步骤 ##
 
-若要了解如何使用标记来审查图像，请参阅[如何审阅已审查的图像](Review-Moderated-Images.md)。
+若要了解如何使用标记来审查图像，请参阅[审阅已审查的图像](Review-Moderated-Images.md)。

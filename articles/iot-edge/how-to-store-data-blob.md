@@ -5,16 +5,16 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9e48eba4b46f024b056fe53b3b3df24feec802e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6fdfc1002528fa48145e577dfee3eac935f31fcd
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995663"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344840"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -60,7 +60,7 @@ IoT Edge 上的 Azure Blob 存储提供三个标准容器映像，两个用于 L
 
 若要通过 Azure 门户部署 blob 存储，请按照[从 Azure 门户部署 Azure IoT Edge 模块](how-to-deploy-modules-portal.md)中的步骤进行操作。 在开始部署模块之前，请复制映像 URI 并根据容器操作系统准备容器创建选项。 在部署文章的“配置部署清单”部分中会使用这些值。 
 
-提供 blob 存储模块的映像 URI：mcr.microsoft.com/azure-blob-storage。 
+提供 blob 存储模块的映像 URI：mcr.microsoft.com/azure-blob-storage:latest。 
    
 对“容器创建选项”字段使用以下 JSON 模板。 使用存储帐户名、存储帐户密钥和存储目录绑定配置 JSON。  
    
@@ -70,24 +70,26 @@ IoT Edge 上的 Azure Blob 存储提供三个标准容器映像，两个用于 L
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
            "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
        ],
-       "HostConfig":[
+       "HostConfig":{
            "Binds":[
                "<storage directory bind>"
            ],
            "PortBindings":{
                "11002/tcp":[{"HostPort":"11002"}]
            }
-       ]
+       }
    }
    ```   
    
-在创建选项 JSON 中，使用任意名称更新 `\<your storage account name\>`。 使用 64 字节 base64 密钥更新 `\<your storage account key\>`。 你可以使用 [GeneratePlus](https://generate.plus/en/base64) 等工具生成密钥，以便选择字节长度。 你将使用这些凭据从其他模块访问 blob 存储。
+在创建选项 JSON 中，使用任意名称更新 `\<your storage account name\>`。 使用 64 字节 base64 密钥更新 `\<your storage account key\>`。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥，以便选择字节长度。 你将使用这些凭据从其他模块访问 blob 存储。
 
 在创建选项 JSON 中，根据容器操作系统更新 `<storage directory bind>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。  
 
    * Linux 容器：\<存储路径 >:/blobroot。 例如：/srv/containerdata:/blobroot。 或，my-volume:/blobroot。 
-   * Windows 容器：\<存储路径 >:C:/BlobRoot。 例如，C:/ContainerData:C:/BlobRoot。 或，my-volume:C:/blobroot。 
-
+   * Windows 容器：\<存储路径 >:C:/BlobRoot。 例如，C:/ContainerData:C:/BlobRoot。 或，my-volume:C:/blobroot。
+   
+   > [!CAUTION]
+   > 对于 \<存储目录绑定> 值，不要更改 Linux 的“/blobroot”和 Windows 的“C:/BlobRoot”。
 
 无需提供注册表凭据即可访问 IoT Edge 上的 Azure Blob 存储，并且无需为部署声明任何路由。 
 
@@ -99,7 +101,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 选择“视图” > “命令面板”。 
 
-2. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 
+2. 在“命令面板”中，输入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 
 
 3. 按照提示操作以创建一个新解决方案： 
 
@@ -111,7 +113,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
    
    4. 提供模块名称 - 为模块输入可识别的名称，例如 azureBlobStorage。
    
-   5. 提供模块的 Docker 映像 - 提供映像 URI：mcr.microsoft.com/azure-blob-storage
+   5. 提供模块的 Docker 映像 - 提供映像 URI：mcr.microsoft.com/azure-blob-storage:latest
 
 VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后在新窗口中加载它。 
 
@@ -133,6 +135,9 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
    * Linux 容器：\<存储路径 >:/blobroot。 例如：/srv/containerdata:/blobroot。 或，my-volume:/blobroot。
    * Windows 容器：\<存储路径 >:C:/BlobRoot。 例如，C:/ContainerData:C:/BlobRoot。 或，my-volume:C:/blobroot。
+   
+   > [!CAUTION]
+   > 对于 \<存储目录绑定> 值，不要更改 Linux 的“/blobroot”和 Windows 的“C:/BlobRoot”。
 
 5. 保存“deployment.template.json”。
 
@@ -145,7 +150,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. 提供任意名称作为存储帐户名，并提供 64 字节的 base64 密钥作为存储帐户密钥。 你可以使用 [GeneratePlus](https://generate.plus/en/base64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。 
+8. 提供任意名称作为存储帐户名，并提供 64 字节的 base64 密钥作为存储帐户密钥。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。 
 
 9. 保存“.env”。 
 
@@ -159,7 +164,13 @@ Visual Studio Code 会获取你在 deployment.template.json 和 .env 中提供�
 
 将你的 IoT Edge 设备指定为对其进行的任何存储请求的 blob 终结点。 你可以使用 IoT Edge 设备信息和配置的帐户名[为显式存储终结点创建连接字符串](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)。 
 
-IoT Edge 上 Azure Blob 存储的 blob 终结点为 `http://<IoT Edge device hostname>:11002/<account name>`。 
+1. 对于部署在运行“IoT Edge 上的 Azure Blob 存储”的同一边缘设备上的模块，blob 终结点为：`http://<Module Name>:11002/<account name>`。 
+2. 对于部署在不同边缘设备，而非运行“IoT Edge 上的 Azure Blob 存储”的边缘设备上的模块，blob 终结点为：`http://<device IP >:11002/<account name>` 或 `http://<IoT Edge device hostname>:11002/<account name>` 或 `http://<FQDN>:11002/<account name>`，具体取决于你的设置
+
+## <a name="logs"></a>日志
+
+可以在以下位置找到容器内的日志： 
+* 对于 Linux：/blobroot/logs/platformblob.log
 
 ## <a name="deploy-multiple-instances"></a>部署多个实例
 
@@ -230,7 +241,7 @@ IoT Edge 上的 blob 存储模块使用相同的 Azure 存储 SDK，并与适用
 ### <a name="block-blobs"></a>块 Blob
 
 受支持： 
-* 放置块
+* 放置块：- 块大小必须小于或等于 4 MB
 * 放置和获取块列表
 
 不受支持：

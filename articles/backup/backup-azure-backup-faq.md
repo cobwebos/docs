@@ -9,15 +9,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493862"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364296"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
-本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
+本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
 
 若要快速浏览本文的各个部分，请使用右侧“本文内容”下的链接。
 
@@ -31,7 +31,7 @@ ms.locfileid: "39493862"
 每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 MAB 代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
 
 ### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>可以使用 REST API 查询保管库中受保护项的大小吗？ <br/>
-可以，[使用情况 - 按保管库列出](https://t.co/2lgIrIaF0J)一文中列出了可从恢复服务保管库获取的信息。
+可以，[使用情况 - 按保管库列出](https://docs.microsoft.com/rest/api/recoveryservices/usages/usages_listbyvaults)一文中列出了可从恢复服务保管库获取的信息。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>如果本组织有一个保管库，如何在还原数据时会一个服务器的数据与另一个服务器隔离？<br/>
 注册到同一个保管库的所有服务器都能够恢复由 *使用同一密码*的其他服务器备份的数据。 如果想要隔离服务器中的备份数据与组织中的其他服务器，请使用这些服务器的指定通行短语。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
@@ -42,8 +42,11 @@ ms.locfileid: "39493862"
 ### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>是否可以将备份数据迁移到另一个保管库？ <br/>
 不是。 保管库中存储的备份数据无法移动到不同的保管库。
 
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>能否在备份后从 GRS 更改为 LRS？ <br/>
+不是。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
+
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>恢复服务保管库基于 Resource Manager。 是否仍支持备份保管库？ <br/>
-备份保管库已转换为恢复服务保管库。 如果你未将备份保管库转换为恢复服务保管库，则系统已为你将备份保管库转换为恢复服务保管库。 
+备份保管库已转换为恢复服务保管库。 如果你未将备份保管库转换为恢复服务保管库，则系统已为你将备份保管库转换为恢复服务保管库。
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>是否可以将备份保管库迁移到恢复服务保管库？ <br/>
 所有备份保管库已转换为恢复服务保管库。 如果你未将备份保管库转换为恢复服务保管库，则系统已为你将备份保管库转换为恢复服务保管库。
@@ -57,7 +60,6 @@ ms.locfileid: "39493862"
 ## <a name="back-up-vmware-servers"></a>备份 VMware 服务器
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>是否可以将 VMware vCenter 服务器备份到 Azure？
-
 是的。 可以使用 Azure 备份服务器将 VMware vCenter 和 ESXi 备份到 Azure。 若要了解支持的 VMware 版本，请参阅 [Azure 备份服务器保护矩阵](backup-mabs-protection-matrix.md)一文。 有关分步说明，请参阅[使用 Azure 备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)。
 
 ### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>是否需要单独的许可证才能从 DPM 或 Azure 备份服务器恢复完整的本地 VMware/Hyper-V 群集？<br/>
@@ -71,17 +73,14 @@ ms.locfileid: "39493862"
 不是。 一个 DPM 或 MABS 服务器只能注册到一个保管库。
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>支持哪个版本的 System Center Data Protection Manager？
-
-建议在适用于 System Center Data Protection Manager (DPM) 的最新更新汇总版本 (UR) 上安装[最新](http://aka.ms/azurebackup_agent)的 Azure 备份代理。 
+建议在适用于 System Center Data Protection Manager (DPM) 的最新更新汇总版本 (UR) 上安装[最新](http://aka.ms/azurebackup_agent)的 Azure 备份代理。
 - 对于 System Center DPM 2012 R2，[更新汇总 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) 是最新的更新。
 - 对于 System Center DPM 2016，[更新汇总 2](https://support.microsoft.com/en-us/help/3209593) 是最新的更新。
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>我已安装 Azure 备份代理来保护我的文件和文件夹。 可以安装 System Center DPM 以在 Azure 中保护本地应用程序/VM 工作负荷吗？
-
 是的。 但是，若要将 Azure 备份与 System Center Data Protection Manager (DPM) 一起使用，请先安装 DPM，然后再安装 Azure 备份代理。 按此顺序安装 Azure 备份组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装 Azure 备份代理。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
-
 不是。 虽然你可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份当前不支持使用 DPM 来备份 Azure Stack 中的应用。
 
 ## <a name="how-azure-backup-works"></a>Azure 备份工作原理
@@ -112,7 +111,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | Windows Server 2016 |64 位 |Standard、Datacenter、Essentials |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Standard、Datacenter、Foundation |
 | Windows Server 2012 和最新的 SP |64 位 |Datacenter、Foundation、Standard |
-| Windows Storage Server 2016 和最新的 SP |64 位 |Standard、Workgroup | 
+| Windows Storage Server 2016 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Storage Server 2012 R2 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Storage Server 2012 和最新的 SP |64 位 |Standard、Workgroup |
 | Windows Server 2012 R2 和最新的 SP |64 位 |Essential |
@@ -145,7 +144,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | Microsoft Exchange |所备份 Exchange 服务器中所有 Exchange 数据库的总和 |
 | BMR/系统状态 |所备份计算机的 BMR 或系统状态的每个副本 |
 
-如果是 Azure IaaS VM 备份，则每个 VM 最多具有 16 个数据磁盘，而每个数据磁盘存储空间最大为 4095 GB。
+如果是 Azure IaaS VM 备份，则每个 VM 最多具有 32 个数据磁盘，而每个数据磁盘存储空间最大为 4095 GB。
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>恢复服务保管库中备份的数据量是否有限制？
 对可以备份到恢复服务保管库的数据量没有限制。
@@ -189,7 +188,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 是的。 发送到 Azure 的数据将保持加密（静态加密）。 Microsoft 不会解密任何位置的备份数据。 备份 Azure VM 时，Azure 备份依赖于虚拟机的加密。 例如，如果使用 Azure 磁盘加密或其他某种加密技术对 VM 进行了加密，则 Azure 备份会使用同样的加密技术来保护数据。
 
 ### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>用于加密备份数据的加密密钥的最小长度是多少？ <br/>
-使用 Azure 备份代理时，加密密钥至少应该为 16 个字符。 就 Azure VM 来说，Azure KeyVault 所使用的密钥没有长度限制。 
+使用 Azure 备份代理时，加密密钥至少应该为 16 个字符。 就 Azure VM 来说，Azure KeyVault 所使用的密钥没有长度限制。
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>如果我丢失了加密密钥，会发生什么情况？ 是否可以恢复数据（或者）Microsoft 是否可以恢复数据？ <br/>
 用于加密备份数据的密钥只能放置在客户场地。 Microsoft 不会在 Azure 中保留副本，并且无权访问密钥。 如果客户丢失了密钥，Microsoft 将无法恢复备份的数据。

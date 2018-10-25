@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974861"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954566"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -37,14 +37,14 @@ ms.locfileid: "46974861"
 * **客户端机密**：必须是密码。 目前，无法使用针对证书身份验证设置的服务主体。
 
 > [!IMPORTANT]
-> 要创建服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 要了解你是否具有必需的权限，请[在门户中查看](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)。
+> 要创建服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 要了解你是否具有必需的权限，请[在门户中查看](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>选项 1：在 Azure AD 中创建服务主体
 
 如需在部署 Kubernetes 群集之前创建 Azure AD 服务主体，可以使用 Azure 提供的多种方法。
 
-以下示例命令演示如何通过 [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) 执行此操作。 也可使用 [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md)、[门户](../../azure-resource-manager/resource-group-create-service-principal-portal.md)等方法创建服务主体。
+以下示例命令演示如何通过 [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) 执行此操作。 也可使用 [Azure PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)、[门户](../../active-directory/develop/howto-create-service-principal-portal.md)等方法创建服务主体。
 
 ```azurecli
 az login

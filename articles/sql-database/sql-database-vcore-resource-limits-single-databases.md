@@ -11,31 +11,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 5f0e5de7503d06d1aff319434d763d3b034053b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 12074ad28e27a249a6dc378986f014ede1cd2ab3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166346"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353573"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制
 
 本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库的单一数据库的详细资源限制。
 
-有关基于 DTU 的购买模型的限制，请参阅 [SQL 数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits.md)。
+有关逻辑服务器上单个数据库的 DTU 购买模型限制，请参阅[逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
+可通过 [Azure 门户](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) 为单一数据库设置服务层、计算大小和存储量。
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>单一数据库：存储大小和计算大小
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>常规用途服务层：存储大小和计算大小
 
-对于单一数据库，下表显示了可用于每个服务层和计算大小的单一数据库的资源。 可通过 [Azure 门户](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) 为单一数据库设置服务层、计算大小和存储量。
+### <a name="generation-4-compute-platform"></a>第 4 代计算平台
 
-### <a name="general-purpose-service-tier"></a>常规用途服务层
-
-#### <a name="generation-4-compute-platform"></a>第 4 代计算平台
 |计算大小|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
@@ -57,7 +55,8 @@ ms.locfileid: "47166346"
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-#### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+
 |计算大小|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|
@@ -79,9 +78,10 @@ ms.locfileid: "47166346"
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-### <a name="business-critical-service-tier"></a>“业务关键”服务层
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>业务关键服务层：存储大小和计算大小
 
-#### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+
 |计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
@@ -103,7 +103,8 @@ ms.locfileid: "47166346"
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-#### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+
 |计算大小|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|
@@ -125,9 +126,10 @@ ms.locfileid: "47166346"
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-### <a name="hyperscale-service-tier-preview"></a>“超大规模”服务层（预览版）
+## <a name="hyperscale-service-tier-preview"></a>“超大规模”服务层（预览版）
 
-#### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>第 4 代计算平台：存储大小和计算大小
+
 |性能级别|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
@@ -148,7 +150,9 @@ ms.locfileid: "47166346"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|7|7|7|7|7|7|
 |||
+
 ### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+
 |性能级别|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|

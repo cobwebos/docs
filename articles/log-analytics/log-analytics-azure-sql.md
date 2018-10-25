@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
-ms.component: na
-ms.openlocfilehash: b7a7e2787128c74cd7d016c01b751d15628fb4b2
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.component: ''
+ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181985"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379298"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -132,7 +132,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 | 
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
-| Errors | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
+| 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
 | 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 否 |
 | 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
 | 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 是 |
@@ -158,6 +158,10 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 通过查询持续时间和查询等待透视，可使用查询报表关联任何查询的性能。 此报表比较不同数据库之间的查询性能，从而可轻松查找良好执行所选查询的数据库以及查询缓慢的数据库。
 
 ![Azure SQL Analytics 查询](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
+
+### <a name="pricing"></a>定价
+
+虽然该解决方案可以免费使用，但超出每月分配的免费数据引入单位的诊断遥测数据消耗量仍适用，请参阅 [Log Analytics 定价](https://azure.microsoft.com/en-us/pricing/details/monitor)。 提供的免费数据引入单位每月可免费监控多个数据库。 请注意，与空闲数据相比，工作负载较重的活动数据库越多，将引入的数据越多。 选择 Azure SQL Analytics 导航菜单上的 OMS 工作区，然后选择使用情况和预估成本，即可轻松监视解决方案中的数据引入消耗量。
 
 ### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 

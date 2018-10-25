@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124144"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320333"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -111,6 +111,33 @@ ms.locfileid: "46124144"
 > [!NOTE]
 >如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组中为该端口创建拒绝所有入站通信规则。 规则在网络安全组中将具有最高优先级，或比其中的现有规则的优先级更低。 这取决于确定规则是否安全的 Azure 安全中心执行的分析。
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>在 VM 中设置实时访问
+
+若要轻松地在 VM 间进行实时访问，可以将 VM 设置为仅允许从 VM 内直接进行实时访问。
+
+1. 在 Azure 门户中，选择“虚拟机”。
+2. 单击要实行实时访问限制的虚拟机。
+3. 在菜单中，单击“配置”。
+4. 在“实时访问”下，单击“启用实时策略”。 
+
+此操作可为使用以下设置的 VM 启用实时访问：
+
+- Windows 服务器：
+    - RDP 端口 3389
+    - 3 小时访问
+    - 允许的源 IP 地址设置为“按请求”
+- Linux 服务器：
+    - SSH 端口 22
+    - 3 小时访问
+    - 允许的源 IP 地址设置为“按请求”
+     
+如果 VM 已启用实时访问，则在转到其配置页时，将看到实时访问已启用。可使用链接打开 Azure 安全中心中的策略，以便查看和更改设置。
+
+![VM 中的 JIT 配置](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>请求对 VM 的访问权限
 
 若要请求对 VM 的访问权限，请执行以下操作：

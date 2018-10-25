@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420089"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389626"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常检测
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供，不建议在生产环境中使用。
+> 此功能即将弃用，将替换为新功能。 有关详细信息，请访问博客文章 [Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)（Azure 流分析中的八个新功能）。
 
 可以使用 **AnomalyDetection** 运算符在事件流中检测不同类型的异常。 例如，在一段较长时间内可用内存缓慢减少，可能预示存在内存泄露，或稳定在一定范围的 Web 服务请求数有可能显著增加或减少。  
 
@@ -243,7 +243,7 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
 ## <a name="references"></a>参考
 
 * [异常检测 - 使用机器学习在时序数据中检测异常](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [机器学习异常检测 API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [机器学习异常检测 API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [时序异常检测](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>后续步骤

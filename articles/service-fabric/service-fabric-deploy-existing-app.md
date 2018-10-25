@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 99d34d59bb9d55ff074d454fe4544917c4e91110
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a80895db8a89b8d9392d0ed067b95daa23474d8b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205970"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113863"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
 将现有可执行文件打包为[来宾可执行文件](service-fabric-guest-executables-introduction.md)时，可以选择是使用 Visual Studio 项目模板，还是[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板会创建应用程序包结构和清单文件。
@@ -168,7 +168,9 @@ SetupEntryPoint 元素用于指定在启动服务代码之前应执行的任何�
 </EntryPoint>
 ```
 
-服务清单文件中的 `EntryPoint` 元素用于指定如何启动该服务。 `ExeHost` 元素指定应用于启动该服务的可执行文件（和参数）。
+服务清单文件中的 `EntryPoint` 元素用于指定如何启动该服务。
+
+`ExeHost` 元素指定应用于启动该服务的可执行文件（和参数）。 可以选择将 `IsExternalExecutable="true"` 属性添加到 `ExeHost`，以指示该程序是代码包外部的外部可执行文件。 例如，`<ExeHost IsExternalExecutable="true">`。
 
 * `Program` 指定应启动服务的可执行文件的名称。
 * `Arguments` 指定应传递给可执行文件的参数。 它可以是带有实参的形参的列表。

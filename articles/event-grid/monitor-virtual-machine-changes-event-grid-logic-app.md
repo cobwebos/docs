@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: 29b28b0d81314d062c1b334092979cc9bccbeb31
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127653"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957915"
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -60,7 +60,7 @@ ms.locfileid: "43127653"
 
    | 设置 | 建议的值 | 说明 | 
    | ------- | --------------- | ----------- | 
-   | **Name** | *{your-logic-app-name}* | 提供一个唯一的逻辑应用名称。 | 
+   | **名称** | *{your-logic-app-name}* | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** | *{your-Azure-subscription}* | 在本教程中，选择同一 Azure 订阅用于所有服务。 | 
    | **资源组** | *{your-Azure-resource-group}* | 在本教程中，选择同一 Azure 资源组用于所有服务。 | 
    | **位置** | *{your-Azure-region}* | 在本教程中，选择同一区域用于所有服务。 | 
@@ -90,7 +90,7 @@ ms.locfileid: "43127653"
    ![使用 Azure 凭据登录](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > 如果使用个人 Microsoft 帐户登录，如 @outlook.com 或 @hotmail.com，事件网格触发器可能不会正确显示。 作为一种解决方法，选择[与服务主体连接](../azure-resource-manager/resource-group-create-service-principal-portal.md)，或作为与 Azure 订阅关联的 Azure Active Directory 成员进行身份验证，例如，user-name@emailoutlook.onmicrosoft.com。
+   > 如果使用个人 Microsoft 帐户登录，如 @outlook.com 或 @hotmail.com，事件网格触发器可能不会正确显示。 作为一种解决方法，选择[与服务主体连接](../active-directory/develop/howto-create-service-principal-portal.md)，或作为与 Azure 订阅关联的 Azure Active Directory 成员进行身份验证，例如，user-name@emailoutlook.onmicrosoft.com。
 
 8. 现在订阅发布者事件的逻辑应用。 提供你在下表中指定的事件订阅的详细信息：
 

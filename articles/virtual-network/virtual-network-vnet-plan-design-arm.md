@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42144168"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378748"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -93,7 +93,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ### <a name="peering"></a>对等互连
 
-使用[虚拟网络对等](virtual-network-peering-overview.md)时，虚拟网络可位于相同的或不同的受支持 Azure 区域中。 虚拟网络可位于相同或不同的 Azure 订阅中，只要这两个订阅都分配给相同的 Azure Active Directory 租户即可。 建立对等之前，建议熟悉所有对等[需求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 相同区域中对等的虚拟网络中的资源之间的带宽与资源在同一虚拟网络中的带宽相同。
+使用[虚拟网络对等](virtual-network-peering-overview.md)时，虚拟网络可位于相同的或不同的受支持 Azure 区域中。 虚拟网络可位于相同或不同的 Azure 订阅中（即使订阅属于不同的 Azure Active Directory 租户）。 建立对等之前，建议熟悉所有对等[需求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 相同区域中对等的虚拟网络中的资源之间的带宽与资源在同一虚拟网络中的带宽相同。
 
 ### <a name="vpn-gateway"></a>VPN 网关
 

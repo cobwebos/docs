@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中使用 Azure DevOps Services 创建 CI/CD 管道 | 
 description: 本教程介绍如何创建 Azure DevOps Services 管道，用于将 Web 应用部署到 Azure 中 Windows VM 上的 IIS，实现持续集成和持续交付。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d4edf0d22ce04eb2cb865d80c2b70f1bcc2169df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b4d514ec8bfd78b303a7f51c2a4072507da5be9
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301892"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471452"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-azure-devops-services-and-iis"></a>教程：使用 Azure DevOps Services 和 IIS 创建持续集成管道
 要将应用程序开发的生成、测试和部署阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure 中使用 Azure DevOps Services 和 Windows 虚拟机 (VM) 创建一个运行 IIS 的 CI/CD 管道。 学习如何：
@@ -186,7 +186,7 @@ Install-WindowsFeature Web-Server,Web-Asp-Net45,NET-Framework-Features
 现在，可将 Web 部署包推送为新版本。 此步骤将与构成部署组的每个实例上的代理通信，推送 Web 部署包，然后将 IIS 配置为运行更新的 Web 应用程序。
 
 1. 在发布管道中选择“+ 发布”，然后选择“创建发布”。
-2. 检查下拉列表中是否已选择最新的生成以及“自动化部署: 创建发布后”。 选择**创建**。
+2. 检查下拉列表中是否已选择最新的生成以及“自动化部署: 创建发布后”。 选择“创建”。
 3. 发布管道的顶部会显示一个小标题，例如“已创建发布‘Release-1’”。 选择发布链接。
 4. 打开“日志”选项卡查看发布进度。
     

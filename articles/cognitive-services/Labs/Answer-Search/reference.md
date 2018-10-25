@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 1149f4d5ec0a3ef55c435d0555f944329cf5b890
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6548e0bb05b117cf79405b9516da815a7e81b6a3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869580"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471214"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
 
@@ -83,7 +83,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|名称|值|Type|必选|  
+|名称|值|类型|必选|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** URL 预览 API 目前仅支持 en-us 市场和语言。<br /><br />|String|是|  
 |<a name="query" />q|要预览的 URL|String|是|  
@@ -106,7 +106,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="error"></a>错误  
 定义已发生的错误。  
   
-|元素|Description|Type|  
+|元素|Description|类型|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -119,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[错误](#error)|  
@@ -129,7 +129,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="license"></a>许可  
 定义文本或照片的使用许可证。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |名称|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
@@ -138,7 +138,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="licenseattribution"></a>LicenseAttribution  
 定义许可证属性的协定规则。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LicenseAttribution。|String|  
 |license|内容使用许可证。|[许可证](#license)|  
@@ -150,7 +150,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |text|显示文本。|String|  
@@ -160,7 +160,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="linkattribution"></a>LinkAttribution  
 定义链接属性的协定规则。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 LinkAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|布尔|  
@@ -172,7 +172,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="mediaattribution"></a>MediaAttribution  
 定义媒体属性的协定规则。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 MediaAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|布尔|  
@@ -186,7 +186,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |名称|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
@@ -196,7 +196,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="webpage"></a>WebPage  
 定义预览版网页的信息。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|  
@@ -208,7 +208,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="querycontext"></a>QueryContext  
 定义必应用于请求的查询上下文。  
   
-|元素|Description|Type|  
+|元素|Description|类型|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|布尔|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
@@ -217,19 +217,19 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |originalQuery|请求中指定的查询字符串。|String|  
 
 ### <a name="identifiable"></a>Identifiable
-|名称|值|Type|  
+|名称|值|类型|  
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
-|名称|值|Type|  
+|名称|值|类型|  
 |-------------|-----------------|----------|
 |items|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
-|名称|值|Type|  
+|名称|值|类型|  
 |-------------|-----------------|----------|
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
@@ -251,7 +251,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |WebPage|一个 JSON 对象，用于定义预览版|字符串|  
@@ -260,7 +260,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ### <a name="textattribution"></a>TextAttribution  
 定义纯文本属性的协定规则。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 TextAttribution。|String|  
 |text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 

@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: cc041104169ca8c4344b9d3de597283d122e63db
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfac8932859db7daa76e831372c97d97f0b24c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394754"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376305"
 ---
 # <a name="query-performance-insight"></a>查询性能见解 
 
 适用于：Azure Database for PostgreSQL 9.6 和 10
 
 > [!IMPORTANT]
-> Query Performance Insight 功能在一些有限区域为公共预览版。 
+> Query Performance Insight 功能现提供公共预览版。 
 
 Query Performance Insight 可帮助你快速确定运行时间最长的查询、它们如何随时间的推移而变化，以及哪些等待因素会影响它们。
 

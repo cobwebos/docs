@@ -14,37 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190515"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388283"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
-本文包含 Azure 存储资源管理器 1.4.1 发行版及以前版本的发行说明。
+本文包含 Azure 存储资源管理器 1.4.3 发行版及以前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-141"></a>版本 1.4.1
-2018/08/28
+## <a name="version-144"></a>版本 1.4.4
+2018/10/15
 
-### <a name="download-azure-storage-explorer-141"></a>下载 Azure 存储资源管理器 1.4.1
-- [适用于 Windows 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.4.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-144"></a>下载 Azure 存储资源管理器 1.4.4
+- [适用于 Windows 的 Azure 存储资源管理器 1.4.4](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.4.4](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.4.4](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>修补程序
-* 首次启动时，存储资源管理器无法生成用来加密敏感数据的密钥。 当使用“快速访问”以及附加资源时，这将导致出现问题。 [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
-* 如果你的帐户不要求其主租户进行 MFA 但要求其他一些租户进行 MFA，则存储资源管理器将无法列出订阅。 现在，在使用此类帐户登录后，存储资源管理器将要求你重新输入凭据并执行 MFA。 [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
-* 存储资源管理器无法从“Azure 德国”和“Azure 美国政府”附加资源。 [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
-* 如果登录到具有相同电子邮件地址的两个帐户，则存储资源管理器有时无法在树视图中显示你的资源。 [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
-* 在较慢的 Windows 计算机上，初始屏幕有时需要很长时间才会显示。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
-* 即使已存在附加的帐户或服务，连接对话框也会显示。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+* Azure 资源管理 API 版本已回滚，以解除阻止 Azure 美国政府用户。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>新建
-* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在你可以：
+* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
@@ -76,7 +72,7 @@ ms.locfileid: "43190515"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -94,6 +90,9 @@ ms.locfileid: "43190515"
 
 ## <a name="previous-releases"></a>以前的版本
 
+* [版本 1.4.3](#version-143)
+* [版本 1.4.2](#version-142)
+* [版本 1.4.1](#version-141)
 * [版本 1.3.0](#version-130)
 * [版本 1.2.0](#version-120)
 * [版本 1.1.0](#version-110)
@@ -120,6 +119,177 @@ ms.locfileid: "43190515"
 * [版本 0.7.20160129.1](#version-07201601291)
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-143"></a>版本 1.4.3
+2018/10/11
+
+### <a name="hotfixes"></a>修补程序
+* Azure 资源管理 API 版本已回滚，以解除阻止 Azure 美国政府用户。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+
+### <a name="new"></a>新建
+* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
+   * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* 存储资源管理器现在支持软删除。 可以：
+   * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
+   * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
+   * 撤消删除已删除的 Blob。
+
+### <a name="fixes"></a>修复项
+* “配置 CORS 设置”操作在高级存储帐户中不再可用，因为高级存储帐户不支持 CORS。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS 附加的服务现在有一个“共享访问签名”属性。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* 对于已固定到“快速访问”的 Blob 和 GPV2 存储帐户，现在可使用“设置默认访问层级”操作。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 有时候，存储资源管理器无法显示经典存储帐户。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>已知问题
+* 使用 Azure 存储仿真器或 Azurite 等仿真器时，需要让它们在默认端口上侦听连接。 否则，存储资源管理器无法连接到这些仿真器。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-142"></a>版本 1.4.2
+2018/09/24
+
+### <a name="hotfixes"></a>修补程序
+* 将 Azure 资源管理 API 版本更新为 2018-07-01，以添加对新 Azure 存储帐户种类的支持。 [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+
+### <a name="new"></a>新建
+* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
+   * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* 存储资源管理器现在支持软删除。 可以：
+   * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
+   * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
+   * 撤消删除已删除的 Blob。
+
+### <a name="fixes"></a>修复项
+* “配置 CORS 设置”操作在高级存储帐户中不再可用，因为高级存储帐户不支持 CORS。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS 附加的服务现在有一个“共享访问签名”属性。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* 对于已固定到“快速访问”的 Blob 和 GPV2 存储帐户，现在可使用“设置默认访问层级”操作。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 有时候，存储资源管理器无法显示经典存储帐户。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>已知问题
+* 使用 Azure 存储仿真器或 Azurite 等仿真器时，需要让它们在默认端口上侦听连接。 否则，存储资源管理器无法连接到这些仿真器。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-141"></a>版本 1.4.1
+2018/08/28
+
+### <a name="hotfixes"></a>修补程序
+* 首次启动时，存储资源管理器无法生成用来加密敏感数据的密钥。 当使用“快速访问”以及附加资源时，这将导致出现问题。 [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* 如果你的帐户不要求其主租户进行 MFA 但要求其他一些租户进行 MFA，则存储资源管理器将无法列出订阅。 现在，在使用此类帐户登录后，存储资源管理器将要求你重新输入凭据并执行 MFA。 [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* 存储资源管理器无法从“Azure 德国”和“Azure 美国政府”附加资源。 [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* 如果登录到具有相同电子邮件地址的两个帐户，则存储资源管理器有时无法在树视图中显示你的资源。 [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* 在较慢的 Windows 计算机上，初始屏幕有时需要很长时间才会显示。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* 即使已存在附加的帐户或服务，连接对话框也会显示。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+
+### <a name="new"></a>新建
+* 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
+   * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* 存储资源管理器现在支持软删除。 可以：
+   * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
+   * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
+   * 撤消删除已删除的 Blob。
+
+### <a name="fixes"></a>修复项
+* “配置 CORS 设置”操作在高级存储帐户中不再可用，因为高级存储帐户不支持 CORS。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS 附加的服务现在有一个“共享访问签名”属性。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* 对于已固定到“快速访问”的 Blob 和 GPV2 存储帐户，现在可使用“设置默认访问层级”操作。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 有时候，存储资源管理器无法显示经典存储帐户。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>已知问题
+* 使用 Azure 存储仿真器或 Azurite 等仿真器时，需要让它们在默认端口上侦听连接。 否则，存储资源管理器无法连接到这些仿真器。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能取消阻止你，请对[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/97)发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是[此处](https://github.com/Azure/azure-storage-node/issues/317)介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-130"></a>版本 1.3.0
 2018/07/09
@@ -162,7 +332,7 @@ ms.locfileid: "43190515"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -219,7 +389,7 @@ ms.locfileid: "43190515"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -240,7 +410,7 @@ ms.locfileid: "43190515"
 
 ### <a name="new"></a>新建
 * 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
-* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
+* 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
 * 生成 SAS 时不再需要开始时间。
 
 ### <a name="fixes"></a>修复项
@@ -273,7 +443,7 @@ ms.locfileid: "43190515"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -300,7 +470,7 @@ ms.locfileid: "43190515"
 * 存储资源管理器反馈现在位于 GitHub 上。 可以通过单击左下方的“反馈”按钮或通过转到 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 来访问我们的问题页面。 请随意提出建议、报告问题、提出问题或留下任何其他形式的反馈。
 * 如果遇到 SSL 证书问题但找不到有问题的证书，现在可以从命令行使用 `--ignore-certificate-errors`标志启动存储资源管理器。 使用此标志启动时，存储资源管理器会忽略 SSL 证书错误。
 * 现在，在 blob 和文件项的上下文菜单中将出现“下载”选项。
-* 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility)了解详细信息。
+* 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)了解详细信息。
 * 存储资源管理器现在使用 Electron 1.8.3
 
 ### <a name="breaking-changes"></a>重大更改
@@ -339,7 +509,7 @@ ms.locfileid: "43190515"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```

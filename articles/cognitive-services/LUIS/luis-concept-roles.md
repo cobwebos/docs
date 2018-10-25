@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035192"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352979"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>“模式”中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。
@@ -28,6 +28,8 @@ ms.locfileid: "47035192"
 |--|--|--|
 |位置|origin|飞机起飞地|
 |位置|目标|飞机降落地|
+|预生成的 datetimeV2|to|结束日期|
+|预生成的 datetimeV2|from|开始日期|
 
 ## <a name="how-are-roles-used-in-patterns"></a>如何在模式中使用角色？
 在模式的模板表述中，角色在表述内使用： 
@@ -47,6 +49,14 @@ ms.locfileid: "47035192"
 |--|--|
 |分层实体|意向|
 |角色|模式|
+
+## <a name="roles-with-prebuilt-entities"></a>具有预生成实体的角色
+
+使用具有预生成实体的角色，对某话语中预生成实体的不同实例赋予含义。 
+
+### <a name="roles-with-datetimev2"></a>具有 datetimeV2 的角色
+
+预生成实体 datetimeV2 可以很好地理解话语中日期和时间的各种变化。 你可能希望以不同于预生成实体的默认理解方式来指定日期和日期范围。 
 
 ## <a name="next-steps"></a>后续步骤
 

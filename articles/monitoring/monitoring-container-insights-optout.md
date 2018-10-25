@@ -12,26 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 2b989fbebe237e4e3746ef2f237193587173dfe4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7cd2aecf21a86bb58452e48fcdf1d79f1d3a2104
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963400"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321217"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
 
-启用 AKS 群集监视后，如果决定不再监视它，可借助 PowerShell cmdlet **New-AzureRmResourceGroupDeployment** 或 Azure CLI 使用提供的 Azure 资源管理器模板*选择退出*。 一个 JSON 模板指定用于*选择退出*的配置。另一个 JSON 模板包含配置的参数值，可用于指定 AKS 群集资源 ID 和在其中部署群集的资源组。 
+如果启用监视 AKS 群集后，决定不再监视它，可以单击“选择退出”。本文介绍如何使用 Azure CLI 或提供的 Azure 资源管理器模板完成此操作。  
+
+
+## <a name="azure-cli"></a>Azure CLI
+使用 [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令禁用容器的 Azure Monitor。 该命令从群集节点中删除代理，它不会删除已收集并存储在 Log Analytics 资源中的解决方案或数据。  
+
+```azurecli
+az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
+```
+
+若要重新启用对群集的监视，请参阅[使用 Azure CLI 启用监视](monitoring-container-insights-onboard.md#enable-monitoring-using-azure-cli)。
+
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，用于指定配置为“选择退出”，另一个模板包含配置的参数值，用于指定在其中部署群集的 AKS 群集资源 ID 和资源组。 
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
+>[!NOTE]
+>模板需要部署在群集所在的资源组中。
+>
+
 如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
-## <a name="create-template"></a>创建模板
+### <a name="create-template"></a>创建模板
 
 1. 将以下 JSON 语法复制并粘贴到文件中：
 
@@ -101,7 +118,7 @@ ms.locfileid: "46963400"
 5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹。
 6. 已做好部署此模板的准备。 
 
-## <a name="remove-the-solution-using-azure-cli"></a>使用 Azure CLI 删除解决方案
+### <a name="remove-the-solution-using-azure-cli"></a>使用 Azure CLI 删除解决方案
 在 Linux 上使用 Azure CLI 执行以下命令以删除解决方案并清除 AKS 群集上的配置。
 
 ```azurecli
@@ -116,7 +133,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 ProvisioningState       : Succeeded
 ```
 
-## <a name="remove-the-solution-using-powershell"></a>使用 PowerShell 删除解决方案
+### <a name="remove-the-solution-using-powershell"></a>使用 PowerShell 删除解决方案
 
 在包含模板的文件夹中执行以下 PowerShell 命令以删除解决方案并从 AKS 群集中清除配置。    
 

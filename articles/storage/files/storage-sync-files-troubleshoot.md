@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409467"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389269"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -131,10 +131,25 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 若要解决此问题，请执行以下步骤：
 
-1. 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重启服务器无法解决问题，请卸载并重新安装 Azure 文件同步代理（注意：卸载并重新安装代理时，将保留服务器设置）。
+1. 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重新启动服务器无法解决此问题，如当前未安装，请将 Azure 文件同步代理升级到版本[3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018)。
 2. 验证是否正确配置了防火墙和代理设置：
-    - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的域。
-    - 如果服务器位于代理后面，请按照代理[文档](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
+    - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的域。
+    - 如果服务器位于代理后面，请按照代理[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
+
+<a id="endpoint-noactivity-sync"></a>服务器终结点的运行状态为“无活动”，已注册服务器边栏选项卡上的服务器状态为“脱机”  
+
+服务器终结点运行状态为“无活动”的意味着服务器终结点在过去两小时内未记录同步活动。
+
+服务器终结点可能会出于以下原因而未记录同步活动：
+
+- 服务器已达到最大并发同步会话数。 Azure 文件同步目前支持每个处理器 2 个活动或每个服务器最多 8 个活动的同步会话。
+
+- 该服务器具有活动的 VSS 同步会话 (SnapshotSync)。 某个服务器终结点的 VSS 同步会话处于活动状态的时，在 VSS 同步会话完成之前，该服务器上的其他服务器终结点无法启动同步会话。
+
+若要检查服务器上当前的同步活动，请参阅[如何监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+
+> [!Note]  
+> 如果已注册服务器边栏选项卡上的服务器状态为“显示脱机”，请执行[服务终结点运行状态为“无活动”或“挂起”，已注册服务器边栏选项卡上的服务器状态为“显示脱机”](#server-endpoint-noactivity)部分中记录的步骤。
 
 ## <a name="sync"></a>同步
 <a id="afs-change-detection"></a>**我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件，该文件同步到同步组中的服务器需要多长时间？**  
@@ -236,7 +251,7 @@ PerItemErrorCount: 1006.
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果 **FileSyncErrorsReport.ps1** PowerShell 脚本显示不受支持的字符导致失败（错误代码 0x7b 和 0x8007007b），请从相关的文件中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
+如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致失败（错误代码 0x7b 和 0x8007007b），请从相关的文件名中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-tool)可用于标识不受支持的字符。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -319,6 +334,16 @@ PerItemErrorCount: 1006.
 | **所需的补救措施** | 是 |
 
 如果 Azure 文件同步使用的内部数据库出现问题，则会发生此错误。出现此问题时，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
+
+<a id="-2134364053"></a>服务器上安装的 Azure 文件同步代理版本不受支持。  
+| | |
+|-|-|
+| **HRESULT** | 0x80C8306B |
+| **HRESULT（十进制）** | -2134364053 |
+| **错误字符串** | ECS_E_AGENT_VERSION_BLOCKED |
+| **所需的补救措施** | 是 |
+
+如果服务器上安装的 Azure 文件同步代理版本不受支持，则会出现此错误。 若要解决此问题，请[升级]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths)到[受支持的代理版本]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。
 
 <a id="-2134351810"></a>**达到了 Azure 文件共享存储限制。**  
 | | |
@@ -687,7 +712,7 @@ if ($fileShare -eq $null) {
 
     如果“混合文件同步服务”没有出现在列表中，请执行以下步骤：
 
-    - 单击 **“添加”**。
+    - 单击“添加”。
     - 在“角色”字段中，选择“读者和数据访问”。
     - 在“选择”字段中，键入“混合文件同步服务”，选择角色并单击“保存”。
 

@@ -4,16 +4,16 @@ description: 本文提供解决方案和培训信息的链接，这些解决方�
 services: active-directory-b2c
 author: davidmu1
 ms.author: davidmu
-ms.date: 09/07/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: bdacbe425aa3140f8a3d60fdf121712d1e6eda3e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 74598aa83a9ed47ee85ef71593745faccfb81ee3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541596"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165941"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 解决方案和培训
 
@@ -22,6 +22,7 @@ ms.locfileid: "45541596"
 | 标题 | Description |
 | ----- | ----------- |
 | [使用 Azure AD B2C 进行客户标识管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在本服务概述中，来自 Azure AD B2C 团队的 Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) 概要介绍了服务的工作原理，并展示了如何快速将 B2C 连接到 ASP.NET Core 应用程序。 |
+| [使用 Azure AD B2C 的优点](https://aka.ms/b2coverview) | 了解 Azure AD B2C 的优点和常见方案，以及应用程序可以如何利用此 CIAM 服务。 |
 | [获取 Azure AD B2C 专业知识：面向开发人员的课程](https://aka.ms/learnAADB2C) | 本端到端课程可带领开发人员完成使用 Azure AD B2C 作为身份验证机制来开发应用程序的完整流程。 带实验室的十个深度模块涵盖从设置 Azure 订阅到创建定义客户吸引旅程的自定义策略在内的所有内容。 |
 | [让合作伙伴、供应商和客户能够使用 Azure Active Directory 访问应用程序](https://aka.ms/aadexternalidentities) | 无论规模、所处的行业、合规情况和安全状况如何，每个组织的成功都依赖于该组织与其他组织协作并与客户建立联系的能力。<br><br>本指南结合使用 Azure AD、Azure AD B2C 和 Azure AD B2B 协作，详细介绍了生成具有以下特征的应用程序或 Web 体验的业务价值和机制：提供专为员工、业务合作伙伴和供应商以及客户环境量身定制的整合身份验证体验。 |
 | [在混合环境中将应用程序身份验证迁移到 Azure AD B2C](https://aka.ms/MigratetoAADB2C) | 在当今的现代组织中，数字化转型和迁移到云在不同阶段进行，这让大多数组织至少需要暂时在混合标识环境中运营。<br><br>本指南重点介绍如何创建将第一个应用程序移到 Azure AD B2C 的迁移计划，并涵盖在混合标识环境中这样做时应该注意的事项。 |

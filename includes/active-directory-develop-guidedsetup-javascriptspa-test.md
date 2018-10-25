@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842950"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988399"
 ---
 ## <a name="test-your-code"></a>测试代码
 
 ### <a name="test-with-node"></a>使用 Node 进行测试
+
 如果使用的不是 Visual Studio，请确保 Web 服务器已启动。
+
 1. 配置服务器侦听基于“index.html”文件位置的 TCP 端口。 对于 Node，通过在命令提示符上从应用程序文件夹运行以下命令，启动 Web 服务器来侦听该端口：
 
     ```bash
@@ -36,15 +38,14 @@ ms.locfileid: "48842950"
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>使用 Visual Studio 进行测试
-如果使用 Visual Studio，请确保选择项目解决方案并按 **F5** 来运行项目。 浏览器随即打开到 http://<span></span>localhost:{port} 位置，然后显示“登录”按钮。
 
+如果使用 Visual Studio，请确保选择项目解决方案并按 **F5** 来运行项目。 浏览器随即打开到 http://<span></span>localhost:{port} 位置，然后显示“登录”按钮。
 
 ## <a name="test-your-application"></a>测试应用程序
 
 在浏览器加载 index.html 文件后，单击“登录”。 系统将提示你使用 Microsoft Azure Active Directory (Azure AD) v2.0 终结点进行登录：
 
 ![登录 JavaScript SPA 帐户](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
 
@@ -53,6 +54,7 @@ ms.locfileid: "48842950"
 ![许可应用程序访问](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>查看应用程序结果
+
 登录后，页面上显示的 Microsoft Graph API 响应中应当会返回你的用户配置文件信息。
 
 ![Microsoft Graph API 调用的预期结果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

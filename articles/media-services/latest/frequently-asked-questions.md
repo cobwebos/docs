@@ -4,21 +4,21 @@ description: 本文将解答 Azure 媒体服务 v3 常见问题。
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110405"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376714"
 ---
-# <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Azure 媒体服务 v3（预览版）常见问题
+# <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 

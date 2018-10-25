@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669001"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114152"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
@@ -42,23 +42,13 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 > [!NOTE]
 > 自 2018 年 9 月 1 日起，新客户无法再将 Azure 多重身份验证作为独立产品进行购买。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
 
-### <a name="auth-provider-or-mfa-license"></a>身份验证提供程序或 MFA 许可证
-
-如果有 Azure AD Premium 或其他包含 Azure AD Premium 的许可证捆绑包，那么你已拥有 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，然后便可以启用 MFA。
-
-如果没有包含 Azure MFA 的许可证或没有足够的许可证来涵盖所有用户，则可以创建 [MFA 身份验证提供程序](concept-mfa-authprovider.md)，从而将 MFA 的全部功能扩展到需要它们的用户。
-
-> [!IMPORTANT]
-> 如果没有足够的许可证供所有用户使用，则可以创建按用户的多重身份验证提供程序来涵盖组织的其余人员。 不要创建按身份验证的多重身份验证提供程序。 否则，最终可能要为已有许可证的用户的验证请求付费。
-
 ## <a name="supportability"></a>可支持性
 
 由于大多数用户习惯只使用密码进行身份验证，因此，贵组织必须让所有用户了解此过程。 如果用户熟悉该过程，他们就不会在遇到与 MFA 相关的小问题时经常呼叫支持人员。 但是，在某些情况下，需要暂时禁用 MFA。 使用以下指导原则了解如何处理这种情况：
 
 * 请对支持人员进行培训，以处理用户因无法访问其身份验证方法或操作不正确而无法登录的情况。
    * 使用 Azure MFA 服务的条件访问策略，支持人员可以将用户添加到从要求 MFA 的策略中排除的组中。
-   * 支持人员可以为 Azure MFA 服务器用户启用临时的免验证一次，让用户在无需双重验证的情况下进行身份验证。 免验证是暂时性的，会在指定的秒数后过期。
-   * 使用 Azure MFA 服务的条件访问策略，支持人员可以将用户添加到从要求 MFA 的策略中排除的组中。
+   * 支持人员可以为 Azure MFA 服务器用户启用临时的免验证一次，让用户在无需双重验证的情况下进行身份验证。 免验证是暂时性的，会在指定的秒数后过期。   
 * 请考虑使用受信任的 IP 或已命名的位置，以此减少双重验证提示。 借助此功能，托管或联合租户的管理员可对从受信任的网络位置（例如组织的 Intranet）登录的用户免除双重验证。
 * 部署 [Azure AD Identity Protection](../active-directory-identityprotection.md) 并根据风险事件触发双重验证。
 

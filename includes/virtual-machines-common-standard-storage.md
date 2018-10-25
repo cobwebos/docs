@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060950"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312605"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
 
@@ -25,7 +25,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 有两种方法可为 Azure VM 创建标准磁盘：
 
-**非托管磁盘**：此类磁盘是管理用于存储与 VM 磁盘对应的 VHD 文件的存储帐户的原始方法。 VHD 文件作为页 blob 存储在存储帐户中。 可将非托管磁盘附加到任意大小的 Azure VM，包括主要使用高级存储的 VM，如 DSv2 和 GS 系列。 Azure VM 支持附加多个标准磁盘，每个 VM 最多支持 256 PiB 的存储容量。 如果使用预览磁盘大小，则可以享有每 VM 2 PiB 的存储空间。 
+**非托管磁盘**：此类磁盘是管理用于存储与 VM 磁盘对应的 VHD 文件的存储帐户的原始方法。 VHD 文件作为页 blob 存储在存储帐户中。 可将非托管磁盘附加到任意大小的 Azure VM，包括主要使用高级存储的 VM，如 DSv2 和 GS 系列。 Azure VM 支持附加多个标准磁盘，每个 VM 最多支持 256 TiB 的存储容量。 如果使用预览磁盘大小，则可以享有每 VM 2 PiB 的存储空间。
 
 [**Azure 托管磁盘**](../articles/virtual-machines/windows/managed-disks-overview.md)：此功能管理用于 VM 磁盘的存储帐户。 指定所需的类型（高级 SSD、标准 SSD 或标准 HDD）和磁盘大小，Azure 即可创建和管理磁盘。 为了确保符合存储帐户的伸缩性限制，不必煞费苦心，将磁盘放置在多个存储帐户中 - Azure 会处理这一切。
 
@@ -82,7 +82,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 | **VM 层**            | **基本层 VM** | **标准层 VM** |
 |------------------------|-------------------|----------------------|
 | 最大磁盘大小          | 32,767 GiB           | 32,767 GiB        |
-| 每个磁盘最大 8 KB IOPS | 高达 2,000         | 高达 2,000        |
+| 每个磁盘最大 8 KB IOPS | 最多 2,000         | 最多 2,000        |
 | 每个磁盘的最大带宽 | 高达 500 MB/秒     | 高达 500 MB/秒      |
 
 如果工作负荷要求高性能、低延迟磁盘支持，则应考虑使用高级存储。 若要深入了解高级存储的优点，请访问[高性能高级存储和 Azure VM 磁盘](../articles/virtual-machines/windows/premium-storage.md)。

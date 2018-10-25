@@ -1,20 +1,21 @@
 ---
 title: 创建自定义唤醒词
-description: 了解如何为语音设备 SDK 创建自定义唤醒词。
 titleSuffix: Azure Cognitive Services
+description: 了解如何为语音设备 SDK 创建自定义唤醒词。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: ab2bc9a83feadd9ece8876559e730e7bc955908a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5f138aee9dfa91e285591e5d50c14465ad32b77d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165464"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469072"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>使用语音服务创建自定义唤醒词
 
@@ -52,10 +53,6 @@ ms.locfileid: "49165464"
 1. 使用你收到 Azure Active Directory 邀请的电子邮件地址创建一个新帐户。 
 
     ![创建新帐户](media/speech-devices-sdk/wake-word-1.png)
- 
-1.  登录后，请填充窗格，然后选择“开始我的旅程”。
-
-    ![已成功登录](media/speech-devices-sdk/wake-word-3.png)
  
 1. 公众无法使用“自定义唤醒词”页，因此没有直接链接可以将你带到那里。 自定义语音功能需要 Azure 订阅，但自定义唤醒词功能不需要。 如果显示“找不到任何订阅。” 错误页，请直接在 URL 中将“Subscriptions?errorMessage=No%20Subscriptions%20found”替换为“customkws”，然后按 Enter。 该 URL 应该是 https://westus.cris.ai/customkws、 https://eastasia.cris.ai/customkws、 https://northeurope.cris.ai/customkws 中的一个，具体取决于你所在的区域。
 

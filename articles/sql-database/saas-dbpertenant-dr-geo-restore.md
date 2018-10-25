@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据库异地冗余备份对 SaaS 应用进行灾难恢复 | Microsoft Docs
+title: SaaS 应用程序：使用 Azure SQL 数据库异地冗余备份进行灾难恢复 | Microsoft Docs
 description: 了解发生中断时，应如何使用 Azure SQL 数据库异地冗余备份来恢复多租户 SaaS 应用
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 784fd1797f2a4f85842666c9fa987a2decc933c2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/15/2018
+ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868711"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352918"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 

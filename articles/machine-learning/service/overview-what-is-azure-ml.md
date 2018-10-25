@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238498"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945954"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
 
@@ -54,7 +54,7 @@ Azure 机器学习服务可以自动生成模型并为你自动优化模型。
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
-- CNTK<a href="https://www.microsoft.com/cognitive-toolkit/" target="_blank"></a>
+- CNTK<a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank"></a>
 - <a href="http://mxnet.io" target="_blank">MXNet</a>
 
 拥有模型后，你就可以使用它来创建可以在本地部署以进行测试的容器（如 Docker），然后将其作为 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)中的生产 Web 服务。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053289"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362596"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -120,7 +120,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 负载阈值上限是一个用于确定何时将服务扩大的值。如果服务的所有分区的平均负载高于此值，则将扩大该服务。
 * 缩放间隔确定检查触发器的频率。 一旦检查触发器，如果需要缩放，则将应用该机制。 如果不需要缩放，则不会采取任何操作。 在这两种情况下，缩放间隔再次到期之前，不会再检查触发器。
 
-此触发器既可用于有状态服务，也可用于无状态服务。 此触发器唯一可以使用的机制是 AddRemoveIncrementalNamedParitionScalingMechanism。 扩大服务时，则添加新的分区；缩小服务时，则删除一个现有分区。 在创建或更新服务时会检查一些限制，如果不满足以下条件，则服务创建/更新将失败：
+此触发器既可用于有状态服务，也可用于无状态服务。 此触发器唯一可以使用的机制是 AddRemoveIncrementalNamedPartitionScalingMechanism。 扩大服务时，则添加新的分区；缩小服务时，则删除一个现有分区。 在创建或更新服务时会检查一些限制，如果不满足以下条件，则服务创建/更新将失败：
 * 命名分区方案必须用于服务。
 * 分区名称必须是连续的整数数值，如“0”、“1”、...
 * 第一个分区名称必须是“0”。
@@ -137,7 +137,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 最小实例计数定义了缩放的下限。 如果服务的分区数量达到此限制，则无论负载如何，都不会缩小服务。
 
 > [!WARNING] 
-> 当 AddRemoveIncrementalNamedParitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
+> 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
 
 ## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
 
@@ -146,7 +146,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>使用 Powershell
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

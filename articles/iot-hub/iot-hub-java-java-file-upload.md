@@ -2,19 +2,18 @@
 title: 使用 Java 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用用于 Java 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 57faff3a95e5b4ccdbc44cb7adb77d34694042c9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 74761448b88daa93e11fe45256c4d2fc75833b0f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220364"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376441"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -22,10 +21,11 @@ ms.locfileid: "47220364"
 
 本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
 
-- 安全提供具有 Azure blob URI 的设备，用于上传文件。
-- 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
+* 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
-[IoT 中心入门](quickstart-send-telemetry-java.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [处理设备到云的消息](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+* 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
+
+[将遥测数据发送到 IoT 中心 (Java)](quickstart-send-telemetry-java.md) 和[使用 IoT 中心发送云到设备的消息 (Java)](iot-hub-java-java-c2d.md) 教程介绍了 IoT 中心提供的基本的设备到云和云到设备消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -37,15 +37,18 @@ ms.locfileid: "47220364"
 在本教程的最后，将运行两个 Java 控制台应用：
 
 * **simulated-device**，这是 [使用 IoT 中心发送云到设备的消息] 教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+
 * **read-file-upload-notification**，它可以接收来自 IoT 中心的文件上传通知。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](http://azure.microsoft.com/develop/iot)。
 
 要完成本教程，需要以下各项：
 
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 * [Maven 3](https://maven.apache.org/install.html)
+
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](http://azure.microsoft.com/pricing/free-trial/)。）
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
@@ -56,15 +59,15 @@ ms.locfileid: "47220364"
 
 1. 将一个图像文件复制到 `simulated-device` 文件夹并将其重命名为 `myimage.png`。
 
-1. 使用文本编辑器打开 `simulated-device\src\main\java\com\mycompany\app\App.java` 文件。
+2. 使用文本编辑器打开 `simulated-device\src\main\java\com\mycompany\app\App.java` 文件。
 
-1. 将变量声明添加到 **App** 类：
+3. 将变量声明添加到 **App** 类：
 
     ```java
     private static String fileName = "myimage.png";
     ```
 
-1. 若要处理文件上传状态回调消息，请将以下嵌套类添加到 **App** 类：
+4. 若要处理文件上传状态回调消息，请将以下嵌套类添加到 **App** 类：
 
     ```java
     // Define a callback method to print status codes from IoT Hub.
@@ -76,7 +79,7 @@ ms.locfileid: "47220364"
     }
     ```
 
-1. 若要将图像上传到 IoT 中心，请将以下方法添加 **App** 类，以便将图像上传到 IoT 中心：
+5. 若要将图像上传到 IoT 中心，请将以下方法添加 **App** 类，以便将图像上传到 IoT 中心：
 
     ```java
     // Use IoT Hub to upload a file asynchronously to Azure blob storage.
@@ -90,7 +93,7 @@ ms.locfileid: "47220364"
     }
     ```
 
-1. 修改 **main** 方法以调用 **uploadFile** 方法，如以下代码片段中所示：
+6. 修改 **main** 方法以调用 **uploadFile** 方法，如以下代码片段中所示：
 
     ```java
     client.open();
@@ -110,7 +113,7 @@ ms.locfileid: "47220364"
     MessageSender sender = new MessageSender();
     ```
 
-1. 使用以下命令生成 **simulated-device** 应用并检查错误：
+7. 使用以下命令生成 **simulated-device** 应用并检查错误：
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -128,9 +131,9 @@ ms.locfileid: "47220364"
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-1. 在命令提示符下，导航到新的 `read-file-upload-notification` 文件夹。
+2. 在命令提示符下，导航到新的 `read-file-upload-notification` 文件夹。
 
-1. 使用文本编辑器打开 `read-file-upload-notification` 文件夹中的 `pom.xml` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
+3. 使用文本编辑器打开 `read-file-upload-notification` 文件夹中的 `pom.xml` 文件，在 **dependencies** 节点中添加以下依赖项。 这样即可使用应用程序中的 **iothub-java-service-client** 包来与 IoT 中心服务通信：
 
     ```xml
     <dependency>
@@ -143,11 +146,11 @@ ms.locfileid: "47220364"
     > [!NOTE]
     > 可以使用 [Maven 搜索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
 
-1. 保存并关闭 `pom.xml` 文件。
+4. 保存并关闭 `pom.xml` 文件。
 
-1. 使用文本编辑器打开 `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` 文件。
+5. 使用文本编辑器打开 `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` 文件。
 
-1. 在该文件中添加以下 **import** 语句：
+6. 在该文件中添加以下 **import** 语句：
 
     ```java
     import com.microsoft.azure.sdk.iot.service.*;
@@ -157,7 +160,7 @@ ms.locfileid: "47220364"
     import java.util.concurrent.Executors;
     ```
 
-1. 将以下类级变量添加到 **App** 类：
+7. 将以下类级变量添加到 **App** 类：
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -165,7 +168,7 @@ ms.locfileid: "47220364"
     private static FileUploadNotificationReceiver fileUploadNotificationReceiver = null;
     ```
 
-1. 若要在控制台中列显有关文件上传的信息，请将以下嵌套类添加到 **App** 类：
+8. 若要在控制台中列显有关文件上传的信息，请将以下嵌套类添加到 **App** 类：
 
     ```java
     // Create a thread to receive file upload notifications.
@@ -192,7 +195,7 @@ ms.locfileid: "47220364"
     }
     ```
 
-1. 若要启动侦听文件上传通知的线程，请将以下代码添加到 **main** 方法：
+9. 若要启动侦听文件上传通知的线程，请将以下代码添加到 **main** 方法：
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException, Exception {
@@ -220,9 +223,9 @@ ms.locfileid: "47220364"
     }
     ```
 
-1. 保存并关闭 `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` 文件。
+10. 保存并关闭 `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` 文件。
 
-1. 使用以下命令生成 **read-file-upload-notification** 应用并检查错误：
+11. 使用以下命令生成 **read-file-upload-notification** 应用并检查错误：
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -260,36 +263,10 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 
 在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
-* [以编程方式创建 IoT 中心][lnk-create-hub]
-* [C SDK 简介][lnk-c-sdk]
-* [Azure IoT SDK][lnk-sdks]
+* [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
+* [C SDK 简介](iot-hub-device-sdk-c-intro.md)
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [使用 IoT Edge 模拟设备][lnk-iotedge]
-
-<!-- Images. -->
-
-[50]: ./media/iot-hub-csharp-csharp-file-upload/run-apps1.png
-[1]: ./media/iot-hub-csharp-csharp-file-upload/image-properties.png
-[2]: ./media/iot-hub-csharp-csharp-file-upload/file-upload-project-csharp1.png
-[3]: ./media/iot-hub-csharp-csharp-file-upload/enable-file-notifications.png
-
-<!-- Links -->
-
-
-
-[Azure IoT 开发人员中心]: http://azure.microsoft.com/develop/iot
-
-[Azure Storage]:../storage/common/storage-quickstart-create-account.md
-[lnk-configure-upload]: iot-hub-configure-file-upload.md
-[Azure IoT service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-
-
+* [使用 IoT Edge 模拟设备](../iot-edge/tutorial-simulate-device-linux.md)

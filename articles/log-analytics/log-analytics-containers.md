@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 80749fedde17a9567aa13e1e72677dfdd027ca36
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043254"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115363"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "48043254"
 - Service Fabric
 - Red Hat OpenShift
 
-若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 AKS（Azure 容器服务）上，请参阅[监视 Azure 容器服务](../monitoring/monitoring-container-health.md)。  容器监视解决方案所提供的支持不包括监视该平台。  
+若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 Azure Kubernetes 服务 (AKS) 上，请参阅[监视 Azure Kubernetes 服务](../monitoring/monitoring-container-health.md)。 容器监视解决方案所提供的支持不包括监视该平台。  
 
 下图显示了 Log Analytics 中各种容器主机和代理之间的关系。
 

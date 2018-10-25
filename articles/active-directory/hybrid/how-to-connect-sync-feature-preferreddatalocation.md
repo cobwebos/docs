@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 56adc97f6872bc3e87e6ba3426cd8f24aa8703e1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 951ac39e1bb6ce050da26fa8ff3f93fd4e27e7d7
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305366"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318378"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -31,7 +31,7 @@ ms.locfileid: "46305366"
 通过设置属性 **preferredDataLocation**，可以定义用户的地域。 可以将用户的 Office 365 资源（例如邮箱和 OneDrive）放在用户所在的同一区域，同时仍对整个组织使用一个租户。
 
 > [!IMPORTANT]
-> Office 365 服务订阅数大于等于 5,000 个 的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
+> Office 365 服务订阅数大于等于 2,500 个的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
 >
 >
 
@@ -136,7 +136,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 5. 将“范围筛选器”留空以包括所有对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     |直接 | preferredDataLocation | 选择源属性 | 未选中 | 更新 |
 
@@ -173,7 +173,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | preferredDataLocation | preferredDataLocation | 未选中 | 更新 |
 
@@ -215,7 +215,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
    1. 右键单击“Azure AD 连接器”，并选择“搜索连接器空间”。
    2. 在“搜索连接器空间”对话框中：
 
-        a. 将“范围”设置为“挂起的导出”。<br>
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“范围”设置为“挂起的导出”。<br>
         b. 选择所有三个复选框，包括“添加”、“修改”和“删除”。<br>
         c. 若要查看包含要导出的更改的对象列表，请选择“搜索”。 若要检查给定对象的更改，请双击该对象。<br>
         d. 验证更改是否符合需要。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ac2cf4d688b1bdc54ed2d7341f0e195d3b2fe42d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4a9ae1d3d84f1396adad07d1cda73ee3747c9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236461"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312462"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>部署期间我的应用会发生什么情况？
 
@@ -21,4 +21,4 @@ ms.locfileid: "35236461"
 
 - 部署期间停止应用或对应用启用脱机模式。 有关详细信息，请参阅 [Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)（处理部署过程中锁定的文件）。
 - 部署到[过渡槽](../articles/app-service/web-sites-staged-publishing.md)且启用了[自动交换](../articles/app-service/web-sites-staged-publishing.md#configure-auto-swap)。 
-- 改为使用 [Run-from-Zip](https://github.com/Azure/app-service-announcements/issues/84)。
+- 改为使用[从程序包运行](https://github.com/Azure/app-service-announcements/issues/84)。

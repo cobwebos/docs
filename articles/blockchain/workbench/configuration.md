@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 10/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: fd3ff0087ee51c392d9cebb32c8bcc969f9a4601
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240746"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341933"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 配置参考
 
  Azure Blockchain Workbench 应用程序是由配置元数据和智能合同代码定义的多方工作流。 配置元数据定义区块链应用程序的高级工作流和交互模型。 智能合同定义区块链应用程序的业务逻辑。 Workbench 使用配置和智能合同代码生成区块链应用程序用户体验。
 
-配置元数据指定每个区块链应用程序的以下信息： 
+配置元数据指定每个区块链应用程序的以下信息：
 
 * 区块链应用程序的名称和说明
 * 可以操作或参与区块链应用程序的用户的独特角色
@@ -67,23 +67,50 @@ ms.locfileid: "48240746"
 
 有关示例，请参阅[配置文件示例](#configuration-file-example)。
 
-## <a name="type"></a>Type
+## <a name="type"></a>类型
 
 支持的数据类型
 
-| Type | Description |
+| 类型 | Description |
 |-------|-------------|
-| 地址  | 区块链地址类型，例如 *contracts* 或 *users* |
-| bool     | 布尔数据类型 |
-| contract | 类型合同的地址 |
-| 枚举     | 枚举的命名值集。 使用枚举类型时，还可以指定 EnumValues 列表。 每个值限制为 255 个字符。 有效值字符包括大写和小写字母（A-Z、a-z）和数字 (0-9)。 |
-| int      | 整数数据类型 |
-| money    | 货币数据类型 |
-| state    | 工作流状态 |
-| 字符串   | 字符串数据类型 |
-| user     | 类型用户的地址 |
-| time     | 时间数据类型 |
+| 地址  | 区块链地址类型，例如 contracts 或 users。 |
+| 数组    | 整数、布尔、货币或时间类型的单级数组。 可以是静态数组或动态数组。 使用 ElementType 指定数组中元素的数据类型。 请参阅[示例配置](#example-configuration-of-type-array)。 |
+| bool     | 布尔数据类型。 |
+| contract | contract 类型的地址。 |
+| 枚举     | 枚举的命名值集。 使用枚举类型时，还可以指定 EnumValues 列表。 每个值限制为 255 个字符。 有效值字符包括大写和小写字母（A-Z、a-z）和数字 (0-9)。 请参阅[示例配置和 Solidity 中的使用](#example-configuration-of-type-enum)。 |
+| int      | Integer 数据类型。 |
+| money    | 货币数据类型。 |
+| state    | 工作流状态。 |
+| 字符串  | 字符串数据类型。 最多 4000 个字符. 请参阅[示例配置](#example-configuration-of-type-string)。 |
+| user     | 用户类型的地址。 |
+| time     | 时间数据类型。 |
 |`[ Application Role Name ]`| 应用程序角色中指定的任何名称。 将用户限制为使用该角色类型。 |
+
+### <a name="example-configuration-of-type-array"></a>数组类型的示例配置
+
+```json
+{
+  "Name": "Quotes",
+  "Description": "Market quotes",
+  "DisplayName": "Quotes",
+  "Type": {
+    "Name": "array",
+    "ElementType": {
+        "Name": "int"
+    }
+  }
+}
+```
+
+#### <a name="using-a-property-of-type-array"></a>使用数组类型的属性
+
+如果将属性定义为配置中的数组类型，需要包含一个显式 get 函数，以返回 Solidity 中数组类型的公共属性。 例如：
+
+```
+function GetQuotes() public constant returns (int[]) {
+     return Quotes;
+}
+```
 
 ### <a name="example-configuration-of-type-string"></a>字符串类型的示例配置
 

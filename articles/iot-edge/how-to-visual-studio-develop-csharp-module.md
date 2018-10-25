@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9cc8e1db577859ad7637902a5ccd5a044efcd033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978516"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394742"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge 的 C# 模块（预览版）
 
@@ -77,7 +77,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![新建项目](./media/how-to-visual-studio-develop-csharp-module/create-new.jpg)
 
-3. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”类型，并指定模块名称和模块映像存储库。  VS 使用 localhost:5000 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：<registry name>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名称。 默认的模块名称为 IoTEdgeModule1
+3. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”类型，并指定模块名称和模块映像存储库。  VS 使用 localhost:5000 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：<registry name>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。 默认的模块名称为 IoTEdgeModule1
 
 4. 单击“确定”，通过 C# 模块创建 Azure IoT Edge 项目。
 
@@ -87,9 +87,24 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认 C# 模块代码位于 IoTEdgeModule1  >  Program.cs。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
+解决方案附带的默认 C# 模块代码位于 IoTEdgeModule1  >  Program.cs。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 
 当你准备使用自己的代码自定义 C# 模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
+
+## <a name="initialize-iotegehubdev-with-iot-edge-device-connection-string"></a>使用 IoT Edge 设备连接字符串初始化“iotegehubdev”
+
+1. 需要获取任何 IoT Edge 设备的连接字符串，可以在 Visual Studio 2017 中从 Cloud Explorer 复制“主连接字符串”的值，如下所示。 请勿复制非 Egde 设备的连接字符串，IoT Edge 设备的图标不同于非 Edge 设备的图标。
+
+   ![复制 Edge 设备连接字符串](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
+
+2. 需要右键单击“AzureIoTEdgeApp1”项目打开上下文菜单，然后单击“设置 Edge 设备连接字符串”，将显示 Azure IoT Edge 设置窗口。
+
+   ![打开设置 Edge 连接字符串窗口](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
+
+3. 在设置窗口中，请输入在第一步中获得的连接字符串，然后单击“确定”按钮。
+
+>[!NOTE]
+>这是一次性工作，只需要在一台计算机上执行此步骤一次，即可获取所有后续 Azure IoT Edge 解决方案（如果免费）。 当然，如果连接字符串无效或者需要更改为另一个连接字符串，可以重新运行此步骤。
 
 ## <a name="build-and-debug-single-c-module"></a>构建和调试单个 C# 模块
 
@@ -190,9 +205,12 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 2. 在 Cloud Explorer 中，展开订阅并找到要部署的 Azure IoT 中心和 Azure IoT Edge 设备。
 
-3. 右键单击 IoT Edge 设备，为其创建部署。你需要选择 `$AzureIoTEdgeApp1\config\Debug|Release\deployment.json` 下的部署清单文件。
+3. 右键单击 IoT Edge 设备，为其创建部署。你需要选择 `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json` 下的部署清单文件。
 
-4. 单击“刷新”按钮。 此时会看到新模块与 TempSensor 模块和 $edgeAgent 及 $edgeHub 一并运行。
+>>[!NOTE]
+>>不得选择 `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
+
+4. 单击刷新按钮。 此时会看到新模块与 TempSensor 模块和 $edgeAgent 及 $edgeHub 一并运行。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
@@ -202,4 +220,4 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。

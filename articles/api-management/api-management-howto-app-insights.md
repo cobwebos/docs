@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 52e034f9a0c11c2b27888d181304bc16c3369e4a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140420"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390017"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -51,7 +51,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
     ![App Insights 记录器](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/en-us/rest/api/apimanagement/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+> 在后台，将在 API 管理实例中创建了一个 [Logger](https://docs.microsoft.com/rest/api/apimanagement/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
@@ -68,7 +68,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 10. 单击“ **保存**”。
 
 > [!NOTE]
-> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/en-us/rest/api/apimanagement/diagnostic/createorupdate) 实体。
+> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate) 实体。
 
 | 设置名称                        | 值类型                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -123,5 +123,5 @@ Azure Application Insights 接收：
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 详细了解 [Azure Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/)。
++ 详细了解 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/)。
 + 考虑[使用 Azure 事件中心进行日志记录](api-management-howto-log-event-hubs.md)。

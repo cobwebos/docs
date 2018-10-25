@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: d7917ad65b3e3fd1abacdb624a03b3f62c7fc07f
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0ea9fbf8042c4d6ab3f9462c77ec5cf5106d1021
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221548"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389526"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -284,7 +284,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 数据 | Description | 引入的版本 
 -----|-------------|-----------------------
-location | 正在运行 VM 的 Azure 区域 | 2017-04-02 
+位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02 
 名称 | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息。 仅为从 Azure 映像库部署的映像显示此值。 | 2017-04-02
 发布者 | VM 映像的发布者 | 2017-04-02
@@ -299,8 +299,8 @@ subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | [计划] VM 的 (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan)，Azure 市场映像，包含名称、产品和发行商 | 2017-04-02
-publicKeys | 公钥的集合 [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey]，已分配给 VM 和路径 | 2017-04-02
+计划 | [计划] VM 的 (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，Azure 市场映像，包含名称、产品和发行商 | 2017-04-02
+publicKeys | 公钥的集合 [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey]，已分配给 VM 和路径 | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01 
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
@@ -310,7 +310,7 @@ subnet/prefix | 子网前缀，例如 24 | 2017-04-02
 ipv6/ipaddress | VM 的本地 IPv6 地址 | 2017-04-02 
 macAddress | VM mac 地址 | 2017-04-02 
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
-identity | （预览版）托管服务标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+identity | （预览）Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 

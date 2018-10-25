@@ -6,26 +6,28 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42146113"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395150"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
 ## <a name="quotas-and-throttling"></a>配额和限制
+
 每个 Azure 订阅最多可以有 50 个 IoT 中心和 1 个免费中心。
 
-每个 IoT 中心都在特定层中预配了特定单位数。 层和单位数决定了可以发送的消息的每日配额上限。 用于计算每日配额的消息大小对于免费层中心为 0.5 KB，对于所有其他层为 4KB。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]。
+每个 IoT 中心都在特定层中预配了特定单位数。 层和单位数决定了可以发送的消息的每日配额上限。 对于免费层中心，用于计算每日配额的消息大小为 0.5 KB，对于所有其他层为 4 KB。 有关详细信息，请参阅 [Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 层还决定了 IoT 中心对所有操作强制实施的限制。
 
 ## <a name="operation-throttles"></a>操作限制
-操作限制是在分钟范围内应用的速率限制，主要是为了防止不当使用。 IoT 中心会尽可能避免返回错误，但如果违反限制太久，就会开始返回异常。
+
+操作限制是在分钟范围内应用的速率限制，主要是为了防止不当使用。 IoT 中心会尽可能避免返回错误，但如果违反限制太久，就会开始返回 `429 ThrottlingException`。
 
 无论何时，都可通过增加 IoT 中心预配的单位数来提高配额或限制。
 
@@ -42,21 +44,21 @@ ms.locfileid: "42146113"
 | 直接方法<sup>1</sup> | 160KB/秒/单位<sup>2</sup> | 480KB/秒/单位<sup>2</sup> | 24MB/秒/单位<sup>2</sup> | 
 | 孪生（设备和模块）读取<sup>1</sup> | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 孪生更新（设备和模块）<sup>1</sup> | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
-| 作业操作<sup>1</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
+| 作业操作<sup>1、3</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
 | 作业设备操作<sup>1</sup> <br/> （更新孪生、调用直接方法） | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 配置和 Edge 部署<sup>1</sup> <br/> （创建、更新、列表、删除） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） |
 
 
-<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>限制计量大小为 8 KB。
+<sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。 <br/><sup>2</sup>限制计量大小为 8 KB。 <br/><sup>3</sup>一次只能有一个活动设备导入/导出作业。
 
-“设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 该限制取决于为 IoT 中心预配的单位数。
+“设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 “设备连接”速率限制取决于为 IoT 中心预配的单位数。
 
 例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
-有关 IoT 中心限制行为的深入讨论，请参阅博客文章 [IoT 中心限制与你息息相关][lnk-throttle-blog]。
+有关 IoT 中心限制行为的深入讨论，请参阅博客文章 [IoT 中心限制与你息息相关](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)。
 
 > [!IMPORTANT]
-> 标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业][lnk-importexport]可以支持读取或更新大量的设备标识。
+> 标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)可以支持读取或更新大量的设备标识。
 > 
 > 
 
@@ -73,9 +75,9 @@ IoT 中心强制实施的其他操作限制：
 | 设备到云的消息传递 | 最大消息大小为 256 KB |
 | 云到设备的消息传递<sup>1</sup> | 最大消息大小为 64 KB。 进行传递的最大挂起消息数为 50。 |
 | 直接方法<sup>1</sup> | 直接方法有效负载的最大大小为 128 KB。 |
-| 配置 | 每个中心 20 个配置。 |
-| Edge 部署 | 每个中心 20 个部署。 每个部署 20 个模块。 |
-| 孪生 | 每个孪生部分（标记、所需属性、报告的属性）的最大大小为 8 KB |
+| 自动设备配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
+| 自动 Edge 部署<sup>1</sup> | 每个部署 20 个模块。 每个付费 SKU 中心 100 个部署。 每个免费 SKU 中心 20 个部署。 |
+| 孪生<sup>1</sup> | 每个孪生部分（标记、所需属性、报告的属性）的最大大小为 8 KB |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
@@ -90,19 +92,11 @@ IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和
 * 请考虑在设备上或在离设备近的网关上使用 Azure IoT Edge 执行易受延迟影响的操作。
 
 如前所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
+
 如果发现操作延迟意外增加，请与 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)联系。
 
 ## <a name="next-steps"></a>后续步骤
+
 此 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-devguide-endpoints]
-* [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-devguide-query]
-* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
-[lnk-importexport]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)

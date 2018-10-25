@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 47589b8cb8aa6e8d1cacaa028948242431f02c44
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 0f2fa2bb8e20ce4cc187fe6f061d2d8c251c4673
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604784"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945206"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>教程：使单页应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证
 
@@ -55,7 +55,7 @@ ms.locfileid: "45604784"
     
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | 我的示例单页应用 | 输入一个**名称**，用于向使用者描述你的应用。 | 
+    | **名称** | 我的示例单页应用 | 输入一个**名称**，用于向使用者描述你的应用。 | 
     | 包括 Web 应用/Web API | 是 | 对于是否为单页应用，选择“是”。 |
     | 允许隐式流 | 是 | 选择“是”，因为应用使用 [OpenID Connect 登录](active-directory-b2c-reference-oidc.md)。 |
     | 回复 URL | `http://localhost:6420` | 回复 URL 属于终结点，允许 Azure AD B2C 在其中返回应用请求的任何令牌。 在本教程中，示例在本地 (localhost) 运行，并在端口 6420 上进行侦听。 |
@@ -85,7 +85,7 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiUpIn | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiUpIn**。 | 
+    | **名称** | SiUpIn | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiUpIn**。 | 
     | **标识提供者** | 电子邮件注册 | 用于唯一标识用户的标识提供者。 |
     | **注册属性** | 显示名称和邮政编码 | 选择要在注册期间从用户处收集的属性。 |
     | **应用程序声明** | 显示名称、邮政编码、用户为新用户、用户的对象 ID | 选择需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
@@ -102,7 +102,7 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiPe | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiPe**。 | 
+    | **名称** | SiPe | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SiPe**。 | 
     | **标识提供者** | 本地帐户登录名 | 用于唯一标识用户的标识提供者。 |
     | **配置文件属性** | 显示名称和邮政编码 | 选择允许用户在配置文件编辑过程中修改的属性。 |
     | **应用程序声明** | 显示名称、邮政编码、用户的对象 ID | 选择在成功地进行配置文件编辑之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
@@ -119,7 +119,7 @@ Azure AD B2C 策略定义用户工作流。 例如，登录、注册、更改密
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SSPR | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SSPR**。 | 
+    | **名称** | SSPR | 输入策略的**名称**。 策略名称以 **B2C_1_** 为前缀。 示例代码中使用了完整的策略名称 **B2C_1_SSPR**。 | 
     | **标识提供者** | 使用电子邮件地址重置密码 | 这是用于唯一标识用户的标识提供者。 |
     | **应用程序声明** | 用户的对象 ID | 选择在成功地进行密码重置之后，需要包括在[访问令牌](../active-directory/develop/developer-glossary.md#access-token)中的[声明](../active-directory/develop/developer-glossary.md#claim)。 |
 
@@ -201,4 +201,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 本教程介绍了如何创建 Azure AD B2C 目录、如何创建策略，以及如何更新示例单页应用来使用 Azure AD B2C 目录。 请继续学习下一教程来学习如何从桌面应用注册、配置和调用受保护的 Web API。
 
 > [!div class="nextstepaction"]
-> 
+> [Azure AD B2C 代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory-b2c&sort=0)

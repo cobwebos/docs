@@ -4,19 +4,19 @@ description: 本文介绍何为资产以及 Azure 媒体服务如何使用这些
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fcb4500a1e4503d90b00528544ae98fa93e16191
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284832"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379207"
 ---
 # <a name="assets"></a>资产
 
@@ -34,9 +34,9 @@ ms.locfileid: "36284832"
 
 下表显示了资产的属性并给出了它们的定义。
 
-|名称|Type|说明|
+|名称|类型|Description|
 |---|---|---|
-|ID|字符串|资源的完全限定的资源 ID。|
+|id|字符串|资源的完全限定的资源 ID。|
 |名称|字符串|资源的名称。|
 |properties.alternateId |字符串|资产的备用 ID。|
 |properties.assetId |字符串|资产 ID。|
@@ -59,18 +59,27 @@ ms.locfileid: "36284832"
 * $top 
 * $skiptoken 
 
+运算符说明：
+
+* Eq = 等于
+* Ne = 不等于
+* Ge = 大于或等于
+* Le = 小于或等于
+* Gt = 大于
+* Lt = 小于
+
 ### <a name="filteringordering"></a>筛选/排序
 
 下表显示了这些选项如何应用于资产属性： 
 
 |名称|筛选器|顺序|
 |---|---|---|
-|ID|支持：<br/>等于<br/>大于<br/>小于|支持：<br/>升序<br/>降序|
-|名称|||
-|properties.alternateId |支持：<br/>等于||
-|properties.assetId |支持：<br/>等于||
+|id|||
+|名称|支持：Eq、Gt、Lt|支持：升序和降序|
+|properties.alternateId |支持：Eq||
+|properties.assetId |支持：Eq||
 |properties.container |||
-|properties.created|支持：<br/>等于<br/>大于<br/>小于|支持：<br/>升序<br/>降序|
+|properties.created|支持：Eq、Gt、Lt| 支持：升序和降序|
 |properties.description |||
 |properties.lastModified |||
 |properties.storageAccountName |||
@@ -86,9 +95,12 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ### <a name="pagination"></a>分页
 
-已启用的四个排序顺序均支持分页。 
+已启用的四个排序顺序均支持分页。 页面大小当前为 1000。
 
-如果查询响应包含许多（当前超过 1000）项，该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 用户不能配置页面大小。 
+> [!TIP]
+> 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
+
+如果查询响应包含很多项，则该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
 
 如果在逐页浏览集合时创建或删除资产，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 
@@ -104,14 +116,14 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-有关 REST 示例，请参阅 [Assets - List](https://docs.microsoft.com/rest/api/media/assets/list)（资产 - 列出）
+有关 REST 示例，请参阅 [Assets - List](https://docs.microsoft.com/rest/api/media/assets/assets_list)（资产 - 列出）
 
 
 ## <a name="storage-side-encryption"></a>存储端加密
 
 若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务中的工作方式：
 
-|加密选项|说明|媒体服务 v2|媒体服务 v3|
+|加密选项|Description|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，媒体服务管理的密钥|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
 |[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|支持|
@@ -123,5 +135,4 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [流式传输文件](stream-files-dotnet-quickstart.md)
+[流式传输文件](stream-files-dotnet-quickstart.md)

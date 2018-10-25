@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966533"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353735"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -140,33 +140,21 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>如何在连接的工厂解决方案中启用互动地图？
 
-若要在连接的工厂解决方案中启用互动地图，必须具有现有的“适用于企业的必应地图 API”计划。
+若要在连接的工厂解决方案中启用互动地图，必须具有 Azure Maps 帐户。
 
-从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 进行部署时，部署过程会验证你的订阅是否已启用“适用于企业的必应地图 API”计划，然后自动将互动地图部署到连接的工厂中。 如果未启用，仍然可以在部署中启用互动地图，如下所示：
+从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 部署时，部署过程会将 Azure Maps 帐户添加到包含解决方案加速器服务的资源组。
 
-在连接的工厂 GitHub 存储库中，当使用 `build.ps1` 脚本进行部署并且有“适用于企业的必应地图 API”计划时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为计划的查询密钥。 互动地图随后会自动启用。
+在连接的工厂 GitHub 存储库中使用 `build.ps1` 脚本进行部署时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 互动地图随后会自动启用。
 
-如果没有“适用于企业的必应地图 API”计划，则可以从 [www.azureiotsolutions.com](http://www.azureiotsolutions.com) 或使用 `build.ps1` 脚本部署连接的工厂解决方案。 然后按照[如何创建“适用于企业的必应地图 API”帐户？](#how-do-i-create-a-bing-maps-api-for-enterprise-account)所述将“适用于企业的必应地图 API”计划添加到订阅中。 按照[如何获取“适用于企业的必应地图 API”查询密钥](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)中所述查找此帐户的查询密钥，然后保存此密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用设置”部分。 将 MapApiQueryKey 设置为你获取的查询密钥。 保存设置，然后导航到“概述”并重新启动应用服务。
+此外，还可以在部署后向解决方案加速器添加 Azure Maps 帐户密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用程序设置”部分。 将 MapApiQueryKey 设置为 [Azure Maps 帐户的密钥](../azure-maps/how-to-manage-account-keys.md)。 保存设置，然后导航到“概述”并重新启动应用服务。
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>如何创建“适用于企业的必应地图 API”帐户
+### <a name="how-do-i-create-a-azure-maps-account"></a>如何创建 Azure Maps 帐户？
 
-可以获取免费的*适用于企业的内部事务 1 级必应地图*计划。 但是，只能将这些计划中的两个添加到 Azure 订阅。 如果没有“适用于企业的必应地图 API”帐户，则通过单击“+ 创建资源”在 Azure 门户中创建一个。 然后，搜索“适用于企业的必应地图 API”并根据提示创建它。
+请参阅[如何管理 Azure Maps 帐户和密钥](../azure-maps/how-to-manage-account-keys.md)。
 
-![必应密钥](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>如何获取 Azure Maps 帐户密钥
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>如何获取“适用于企业的必应地图 API”查询密钥
-
-在创建“适用于企业的必应地图 API”计划后，在 Azure 门户中向你的连接的工厂解决方案的资源组中添加一个“适用于企业的必应地图 API”资源。
-
-1. 在 Azure 门户中，导航到包含你的“适用于企业的必应地图 API”计划的资源组。
-
-1. 单击“所有设置”，并单击“密钥管理”。
-
-1. 那里有两个密钥：**主密钥**和**查询密钥**。 复制**查询密钥**值。
-
-1. 若要通过 `build.ps1` 脚本选取密钥，请将 PowerShell 环境中的环境变量 `$env:MapApiQueryKey` 设置为你的计划的**查询密钥**。 然后，生成脚本会自动将该值添加到应用服务的设置。
-
-1. 使用 `build.ps1` 脚本运行本地或云部署。
+请参阅[如何管理 Azure Maps 帐户和密钥](../azure-maps/how-to-manage-account-keys.md)。
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>在本地进行调试时如何启用互动地图？
 

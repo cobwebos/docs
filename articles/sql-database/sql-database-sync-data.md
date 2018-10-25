@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: ae7ac2726ccb97264b387eb9ae5476ae1946a783
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161975"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362231"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -127,6 +127,8 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 -   不支持 Azure Active Directory 身份验证。
 
+-   不支持具有相同名称但架构不同（例如，dbo.customers 和 sales.customers）的表。
+
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 
 -   FileStream
@@ -150,7 +152,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | **维度**                                                      | **限制**              | **解决方法**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | 任何数据库可属于的同步组的数量上限。       | 5                      |                             |
-| 一个同步组中包含的终结点的数量上限              | 30                     | 创建多个同步组 |
+| 一个同步组中包含的终结点的数量上限              | 30                     |                             |
 | 一个同步组中包含的本地终结点的数量上限。 | 5                      | 创建多个同步组 |
 | 数据库、表、架构和列名称                       | 每个名称 50 个字符 |                             |
 | 同步组中的表                                          | 500                    | 创建多个同步组 |
@@ -158,6 +160,8 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 | 表中的数据行大小                                        | 24MB                  |                             |
 | 最小同步间隔                                           | 5 分钟              |                             |
 |||
+> [!NOTE]
+> 如果只有一个同步组，则单个同步组中最多可能有 30 个终结点。 如果有多个同步组，则所有同步组中的终结点总数不能超过 30。 如果数据库属于多个同步组，则该数据库计算为多个终结点，而不是一个。
 
 ## <a name="faq-about-sql-data-sync"></a>SQL 数据同步常见问题解答
 
