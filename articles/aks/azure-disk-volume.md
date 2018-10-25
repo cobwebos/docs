@@ -1,40 +1,47 @@
 ---
-title: 将 Azure 磁盘与 AKS 配合使用
-description: 将 Azure 磁盘与 AKS 配合使用
+title: 在 Azure Kubernetes 服务 (AKS) 中创建用于 Pod 的静态卷
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘手动创建卷
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: aa9b92df84a48ef4cb706e9e89e0f6c0a25cd42a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420486"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068172"
 ---
-# <a name="volumes-with-azure-disks"></a>含 Azure 磁盘的卷
+# <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
 
-基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 Azure 磁盘可以用作此外部数据存储。 本文详细介绍如何使用 Azure 磁盘作为 Azure Kubernetes 服务 (AKS) 群集中的 Kubernetes 卷。
+基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 如果单个 Pod 需要访问存储，则可以使用 Azure 磁盘来提供本机卷供应用程序使用。 本文介绍了如何手动创建 Azure 磁盘并将其附加到 AKS 中的 Pod。
+
+> [!NOTE]
+> Azure 磁盘一次只能装载到单个 Pod 中。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件][azure-files-volume]。
 
 有关 Kubernetes 卷的详细信息，请参阅 [Kubernetes 卷][kubernetes-volumes]。
 
+## <a name="before-you-begin"></a>开始之前
+
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
+
+还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+
 ## <a name="create-an-azure-disk"></a>创建 Azure 磁盘
 
-在将 Azure 托管磁盘装载为 Kubernetes 卷之前，该磁盘必须位于 AKS 节点资源组中。 使用 [az resource show][az-resource-show] 命令获取资源组名称。
+创建用于 AKS 的 Azure 磁盘时，可以在**节点**资源组中创建磁盘资源。 此方法允许 AKS 群集访问和管理磁盘资源。 如果想要在单独的资源组中创建磁盘，则必须向群集的 Azure Kubernetes 服务 (AKS) 服务主体授予磁盘的资源组的 `Contributor` 角色。
 
-```azurecli-interactive
-$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
+对于本文，请在节点资源组中创建磁盘。 首先，使用 [az aks show][az-aks-show] 命令获取资源组名称并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
+
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-使用 [az disk create][az-disk-create] 命令创建 Azure 磁盘。
-
-将 `--resource-group` 更新为上一个步骤中收集的资源组的名称，并将 `--name` 更新为你选择的名称。
+现在，使用 [az disk create][az-disk-create] 命令创建磁盘。 指定在上一命令中获取的节点资源组名称，然后指定磁盘资源的名称，例如 *myAKSDisk*。 以下示例创建一个 *20*GiB 的磁盘，并且在创建后输出磁盘的 ID：
 
 ```azurecli-interactive
 az disk create \
@@ -44,37 +51,39 @@ az disk create \
   --query id --output tsv
 ```
 
-创建磁盘后，你应该会看到与下面类似的输出。 此值为磁盘 ID，在装载磁盘时会有用。
+> [!NOTE]
+> Azure 磁盘依据特定大小的 SKU 收取费用。 这些 SKU 的范围从用于 S4 或 P4 磁盘的 32 GiB 到用于 S60 或 P60 磁盘的 8TiB。 高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
+
+在命令成功完成后将显示磁盘资源 ID，如以下示例输出中所示。 在下一步骤中将使用此磁盘 ID 来装载磁盘。
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
-> [!NOTE]
-> Azure 托管磁盘依据特定大小的 SKU 收取费用。 这些 SKU 的范围从用于 S4 或 P4 磁盘的 32 GiB 到用于 S50 或 P50 磁盘的 4 TiB。 此外，高级托管磁盘的吞吐量和 IOPS 性能取决于 SKU 和 AKS 群集中节点的实例大小。 请参阅[托管磁盘的定价和性能][managed-disk-pricing-performance]。
 
-> [!NOTE]
-> 如果需要在单独的资源组中创建磁盘，还需要将群集的 Azure Kubernetes 服务 (AKS) 服务主体添加到托管具有 `Contributor` 角色的磁盘的资源组。 
->
+## <a name="mount-disk-as-volume"></a>将磁盘装载为卷
 
-## <a name="mount-disk-as-volume"></a>装载磁盘作为卷
-
-通过按容器规范配置卷，将 Azure 磁盘装载至 Pod。
-
-使用以下内容创建名为 `azure-disk-pod.yaml` 的新文件。 将 `diskName` 更新为新创建的磁盘名称，并将 `diskURI` 更新为磁盘 ID。 此外，请记下 `mountPath`，这是 Azure 磁盘在 Pod 中的装载路径。
+若要将 Azure 磁盘装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-disk-pod.yaml` 的新文件。 将 `diskName` 更新为在上一步骤中创建的磁盘的名称，将 `diskURI` 更新为在磁盘创建命令的输出中显示的磁盘 ID。 如果需要，请更新 `mountPath`，这是 Azure 磁盘在 Pod 中的装载路径。
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-disk-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
       - name: azure
         azureDisk:
           kind: Managed
@@ -82,20 +91,42 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-使用 kubectl 创建 Pod。
+使用 `kubectl` 命令创建 Pod。
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure`。
+现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure`。 可以使用 `kubectl describe pod mypod` 来验证磁盘是否已成功装载。 以下精简示例输出显示容器中装载的卷：
+
+```
+[...]
+Volumes:
+  azure:
+    Type:         AzureDisk (an Azure Data Disk mount on the host and bind mount to the pod)
+    DiskName:     myAKSDisk
+    DiskURI:      /subscriptions/<subscriptionID/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
+    Kind:         Managed
+    FSType:       ext4
+    CachingMode:  ReadWrite
+    ReadOnly:     false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+    Optional:    false
+[...]
+Events:
+  Type    Reason                 Age   From                               Message
+  ----    ------                 ----  ----                               -------
+  Normal  Scheduled              1m    default-scheduler                  Successfully assigned mypod to aks-nodepool1-79590246-0
+  Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "default-token-z5sd7"
+  Normal  SuccessfulMountVolume  41s   kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "azure"
+[...]
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解使用 Azure 磁盘的 Kubernetes 卷。
-
-> [!div class="nextstepaction"]
-> [用于 Azure 磁盘的 Kubernetes 插件][kubernetes-disks]
+有关 AKS 群集与 Azure 磁盘进行交互的详细信息，请参阅 [Azure 磁盘的 Kubernetes 插件][kubernetes-disks]。
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
@@ -107,3 +138,8 @@ kubectl apply -f azure-disk-pod.yaml
 [az-disk-create]: /cli/azure/disk#az-disk-create
 [az-group-list]: /cli/azure/group#az-group-list
 [az-resource-show]: /cli/azure/resource#az-resource-show
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[install-azure-cli]: /cli/azure/install-azure-cli
+[azure-files-volume]: azure-files-volume.md

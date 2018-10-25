@@ -8,30 +8,23 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: b5b3a96991a2150e553af01e3fda73e04116d7fb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452405"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869987"
 ---
-# <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 的 Power BI 教程：使用 Power BI 连接器可视化数据
-[PowerBI.com](https://powerbi.microsoft.com/) 是一个在线服务，在此处可以创建和共享包含对你和组织来说很重要的数据的仪表板和报表。  Power BI Desktop 是一个专用的报表创作工具，使你能够从各种数据源检索数据、合并和转换数据、创建功能强大的报表和可视化效果以及将报表发布到 Power BI。  使用最新版本的 Power BI Desktop，现在可以通过 Power BI 的 Azure Cosmos DB 连接器连接到 Azure Cosmos DB 帐户。   
+# <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
-在此 Power BI 教程中，我们将逐步讲解各步骤 - 在 Power BI Desktop 中连接到 Azure Cosmos DB 帐户、使用导航器导航至我们想要在其中提取数据的集合、使用 Power BI Desktop 查询编辑器将 JSON 数据转换为表格格式、以及生成报表并将其发布到 PowerBI.com。
+[PowerBI](https://powerbi.microsoft.com/) 是一种在线服务，你可以使用它创建和共享仪表板和报表。 Power BI Desktop 是一种报表创作工具，可以从各种数据源检索数据。 Azure Cosmos DB 是可以与 Power BI Desktop 一起使用的一种数据源。 可以使用 Power BI 的 Azure Cosmos DB 连接器将 Power BI Desktop 连接到 Azure Cosmos DB 帐户。  将 Azure Cosmos DB 数据导入到 Power BI 之后，可以对其进行转换，创建报表，以及将报表发布到 Power BI。   
 
-在完成此 Power BI 教程后，能够回答以下问题：  
-
-* 我可以如何使用 Power BI Desktop 生成包含 Azure Cosmos DB 中数据的报表？
-* 如何在 Power BI Desktop 中连接到 Azure Cosmos DB 帐户？
-* 如何在 Power BI Desktop 中从集合检索数据？
-* 如何在 Power BI Desktop 中转换嵌套的 JSON 数据？
-* 如何在 PowerBI.com 中发布和共享我的报表？
+本文介绍了将 Azure Cosmos DB 帐户连接到 Power BI Desktop 所需执行的步骤。 在连接后，可以导航到某个集合，提取数据，将 JSON 数据转换为表格格式，以及将报表发布到 PowerBI。
 
 > [!NOTE]
-> 用于 Azure Cosmos DB 连接到 Power BI Desktop 以获取和转换数据的 Power BI 连接器。 在 Power BI Desktop 中创建的报表随后可以发布到 PowerBI.com。 无法在 PowerBI.com 中执行 Azure Cosmos DB 数据的直接提取和转换。 
+> Azure Cosmos DB 的 Power BI 连接器连接到 Power BI Desktop。 在 Power BI Desktop 中创建的报表可以发布到 PowerBI.com。 无法从 PowerBI.com 执行 Azure Cosmos DB 数据的直接提取。 
 
 > [!NOTE]
 > 目前，仅 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持使用 Power BI 连接器连接 Azure Cosmos DB。
@@ -39,17 +32,16 @@ ms.locfileid: "47452405"
 ## <a name="prerequisites"></a>先决条件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
 
-* [最新版本的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
-* 在 Azure Cosmos DB 帐户中访问我们的演示帐户或数据。
-  * 演示帐户使用本教程中显示的火山数据填充。 此演示帐户未被任何 SLA 绑定且只用于演示意图。  我们保留对此演示帐户进行修改的权利，包括但不限于在任何时间无需提前通知或理由而终止帐户、更改密钥、限制访问、更改和删除数据。
-    * URL：`https://analytics.documents.azure.com`
-    * 只读密钥：`MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
-  * 或者，要创建自己帐户，请参阅[使用 Azure 门户创建 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)。 然后，要获取类似于本教程中使用的示例火山数据（但不包含 GeoJSON 块），请参阅 [NOAA 站点](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)，并使用 [Azure Cosmos DB 数据迁移工具导入数据](import-data.md)。
+* [下载最新版本的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
-要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解更多有关 Power BI 免费版和 Power BI Pro 的信息，请访问 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
+* 从 GitHub 下载[示例火山数据](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
+
+* [创建一个 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)并使用 [Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。
+
+要在 PowerBI.com 中共享报表，必须在 PowerBI.com 中拥有帐户。  若要了解有关 Power BI 和 Power BI Pro 的详细信息，请参阅 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)。
 
 ## <a name="lets-get-started"></a>让我们开始吧
-在本教程中，假设你是一位研究世界各地火山的地理学家。  火山数据存储在 Azure Cosmos DB 帐户中且 JSON 文档的外观如以下示例文档所示。
+在本教程中，假设你是一位研究世界各地火山的地理学家。 火山数据存储在一个 Azure Cosmos DB 帐户中，JSON 文档格式如下所示：
 
     {
         "Volcano Name": "Rainier",
@@ -68,41 +60,33 @@ ms.locfileid: "47452405"
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-你希望从 Azure Cosmos DB 帐户中检索火山数据，并在诸如以下报表的交互式 Power BI 报表中将数据可视化。
+你将从该 Azure Cosmos DB 帐户中检索火山数据并在交互式 Power BI 报表中将数据可视化。
 
-![通过 Power BI 连接器完成此 Power BI 教程，能够使用 Power BI Desktop 火山报表对数据进行可视化](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+1. 运行 Power BI Desktop。
 
-准备好尝试一下了吗？ 让我们开始吧。
-
-1. 在工作站上运行 Power BI Desktop。
-2. 一旦启动 Power BI Desktop 后，会显示“欢迎”屏幕。
+2. 可以“获取数据”、查看“最近使用的源”或直接从“欢迎”屏幕“打开其他报表”。 单击右上角的“X”以关闭屏幕。 将显示 Power BI Desktop 的“报表”视图。
    
-    ![Power BI Desktop 欢迎屏幕 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_welcome.png)
-3. 可以“获取数据”、查看“最近使用的源”或直接从“欢迎”屏幕“打开其他报表”。  单击右上角的 X 以关闭屏幕。 将显示 Power BI Desktop 的“报表”视图。
-   
-    ![Power BI Desktop 报表视图 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
-4. 选择“主页”功能区，并单击“获取数据”。  应出现“获取数据”窗口。
-5. 单击“Azure”，选择“Azure Cosmos DB (Beta 版本)”，并单击“连接”。 
+   ![Power BI Desktop 报表视图 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+
+3. 选择“主页”功能区，并单击“获取数据”。  应出现“获取数据”窗口。
+
+4. 单击“Azure”，选择“Azure Cosmos DB (Beta 版本)”，并单击“连接”。 
 
     ![Power BI Desktop 获取数据 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
-6. 在“预览连接器”页中，单击“继续”。 此时会显示“Azure Cosmos DB”窗口。
-7. 如下所示指定想要从其中检索数据的 Azure Cosmos DB 帐户终结点 URL，并单击“确定”。 要使用自己的帐户，可以在 Azure 门户的[“密钥”](manage-account.md#keys)边栏选项卡的 URI 框检索 URL。 要使用此演示帐户，请为 URL 输入 `https://analytics.documents.azure.com`。 
+
+5. 在“预览连接器”页中，单击“继续”。 此时会显示“Azure Cosmos DB”窗口。
+
+6. 如下所示指定想要从其中检索数据的 Azure Cosmos DB 帐户终结点 URL，并单击“确定”。 要使用自己的帐户，可以在 Azure 门户的[“密钥”](manage-account.md#keys)边栏选项卡的 URI 框检索 URL。 可选：你可以提供数据库名称、集合名称，也可以使用导航器来选择数据库和集合以标识数据来源。
    
-    将数据库名称、集合名称和 SQL 声明留空，因为这些字段为可选。  相反，我们将使用导航器来选择数据库和集合以指定数据来源。
+7. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的[“只读密钥”](manage-account.md#keys)边栏选项卡中的“主密钥”框中检索密钥。 输入相应的密钥，然后单击“连接”。
    
-    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 桌面连接窗口](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-8. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的[“只读密钥”](manage-account.md#keys)边栏选项卡中的“主密钥”框中检索密钥。 对于演示帐户，该密钥为 `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`。 输入相应的密钥，然后单击“连接”。
-   
-    我们建议在生成报表时使用只读密钥。  这可防止主密钥不必要地暴露于潜在的安全风险中。 只读密钥从 Azure 门户的 [密钥](manage-account.md#keys) 边栏选项卡中可用，或者可以使用上文提供的演示帐户信息。
-   
-    ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 帐户密钥](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
+   我们建议在生成报表时使用只读密钥。 这可防止主密钥不必要地暴露于潜在的安全风险中。 可以从 Azure 门户的[密钥](manage-account.md#keys)边栏选项卡获取只读密钥。 
     
-    > [!NOTE] 
-    > 如果收到“未找到指定的数据库”的错误消息， 请参阅此 [Power BI 问题](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200)中的变通办法步骤。
-    
-9. 帐户成功连接后，将出现“导航器”窗格。  “导航器”会在帐户下显示数据库的列表。
-10. 单击并展开将提供报表数据的数据库，如果使用的是演示帐户，请选择 **volcanodb**。   
-11. 现在，选择包含要检索的数据的集合。 如果正在使用演示帐户，请选择 **volcano1**。
+8. 帐户成功连接后，将出现“导航器”窗格。 “导航器”会在帐户下显示数据库的列表。
+
+9. 单击并展开作为报表数据来源的数据库，并选择 **volcanodb**（你的数据库名称可能不同）。   
+
+10. 现在，选择包含要检索的数据的集合，选择 **volcano1**（你的集合名称可能不同）。
     
     预览窗格显示“记录”项的列表。  文档在 Power BI 中表示为一种“记录”类型。 同样，文档内部的嵌套 JSON 块也是“记录”。
     
@@ -170,7 +154,6 @@ ms.locfileid: "47452405"
 5. 现在，你应会看到该地图视觉对象显示有一组表示每座火山位置的气泡，并用气泡的大小对应火山的海拔。
 6. 此时已成功创建了基本报表。  可以通过添加更多可视化效果来进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
    
-    ![Azure Cosmos DB 的 Power BI 教程完成时最终 Power BI Desktop 报表的屏幕截图](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 7. 在“文件”菜单中，单击“保存”并将该文件保存为 PowerBITutorial.pbix。
 
 ## <a name="publish-and-share-your-report"></a>发布和共享报表

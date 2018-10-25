@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2c2e6861fda42a9e8c1aabcba303bfede47ac3c1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e8737e379dc69385b2bd5ac2b2af89bf8d38b63a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669220"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886868"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -25,33 +25,32 @@ ms.locfileid: "43669220"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
+- 完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
+- 请确保你对其中包含由 ADFS 颁发的私钥的证书 .pfx 文件具有访问权限。
 
-## <a name="add-the-adfs-account-application-key-to-azure-ad-b2c"></a>将 ADFS 帐户应用程序密钥添加到 Azure AD B2C
+## <a name="create-a-policy-key"></a>创建策略密钥
 
-与 ADFS 帐户的联合身份验证要求该帐户的客户端密码代表应用程序信任 Azure AD B2C。 需将 ADFS 证书存储在 Azure AD B2C 租户中。 
+需将 ADFS 证书存储在 Azure AD B2C 租户中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 通过在 Azure 门户的右上角切换到包含 Azure AD B2C 租户的目录，确保你正在使用该目录。 选择“切换目录”，然后选择包含所创建的租户的目录。 在本教程中，使用包含名为 contoso0522Tenant.onmicrosoft.com 的租户的 contoso 目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 在“概述”页上，选择“标识体验框架 - 预览”。
+5. 选择“策略密钥”，然后选择“添加”。
+6. 对于“选项”，请选择 `Upload`。
+7. 输入策略密钥的**名称**。 例如，`ADFSSamlCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+8. 浏览并选择带有私钥的证书 .pfx 文件。
+9. 单击“创建”。
 
-    ![切换目录](./media/active-directory-b2c-custom-setup-adfs2016-idp/switch-directories.png)
+## <a name="add-a-claims-provider"></a>添加声明提供程序
 
-3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。 你现在应使用你的租户。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，查看租户中的可用密钥，然后单击“添加”。
-6. 选择“上载”作为选项。
-7. 对于名称，请输入 `ADFSSamlCert`。 可能会自动添加前缀 `B2C_1A_`。
-8. 浏览并选择带有私钥的证书 .pfx 文件。 此证书（带私钥）应与为 ADFS 信赖方颁发和供其使用的证书相同。
-9. 单击“创建”并确认已创建 `B2C_1A_ADFSSamlCert` 密钥。
+如果希望用户使用 ADFS 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。 
 
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>在扩展策略中添加声明提供程序
+可以通过在策略的扩展文件中将 ADFS 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。
 
-如果希望用户使用 ADFS 帐户登录，则需将该帐户定义为声明提供程序。 可以通过指定要与 Azure AD B2C 通信的终结点来执行此操作。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
-
-通过在扩展策略文件中添加一个 ClaimsProvider 元素，将 ADFS 定义为声明提供程序。
-
-1. 在工作目录中，打开 TrustFrameworkExtensions.xml 策略文件。 如果需要 XML 编辑器，请[尝试使用 Visual Studio Code](https://code.visualstudio.com/download)（一个轻型跨平台编辑器）。
-2. 在 ClaimsProviders 元素下添加以下 XML，并将 your-ADFS-domain 替换为你的 ADFS 域名，并将 identityProvider 输出声明的值替换为你的 DNS（表示你的域的任意值），并保存文件。 
+1. 打开 *TrustFrameworkExtensions.xml*。
+2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
+3. 如下所示添加新的 **ClaimsProvider**：
 
     ```xml
     <ClaimsProvider>
@@ -60,7 +59,7 @@ ms.locfileid: "43669220"
       <TechnicalProfiles>
         <TechnicalProfile Id="Contoso-SAML2">
           <DisplayName>Contoso ADFS</DisplayName>
-          <Description>Login with your Contoso account</Description>
+          <Description>Login with your ADFS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
             <Item Key="RequestsSigned">false</Item>
@@ -92,75 +91,52 @@ ms.locfileid: "43669220"
     </ClaimsProvider>
     ```
 
-## <a name="register-the-claims-provider-for-sign-up-and-sign-in"></a>注册声明提供程序以进行注册和登录
+4. 将 `your-ADFS-domain` 替换为你的 ADFS 域的名称，将 **identityProvider** 输出声明的值替换为你的 DNS（表示你的域的任意值）。
+5. 保存文件。
 
-若要在注册和登录页面中提供 ADFS 帐户身份提供程序，需要将其添加到 SignUpOrSignIn 用户旅程中。 
+### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
-制作现有模板用户旅程的副本，然后对其进行修改，使其包含 ADFS 身份提供程序：
+现在，你已配置了策略，因此 Azure AD B2C 知道如何与 ADFS 帐户进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
->[!NOTE]
->如果以前已将策略基本文件中的 UserJourneys 元素复制到扩展文件 (TrustFrameworkExtensions.xml)，则可以跳过本部分。
+1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
+2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+3. 单击“上传” 。
 
-1. 打开策略的基文件。 例如 *TrustFrameworkBase.xml*。
-2. 复制 UserJourneys 元素的整个内容。
-3. 打开扩展文件 (TrustFrameworkExtensions.xml) 并粘贴扩展文件中复制的 UserJourneys 元素的整个内容。
+## <a name="register-the-claims-provider"></a>注册声明提供程序
+
+此时，标识提供者已设置，但不会出现在任何注册或登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 ADFS 标识提供者。
+
+1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
+2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
+4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
+5. 重命名用户旅程的 ID。 例如，`SignUpSignInADFS`。
 
 ### <a name="display-the-button"></a>显示按钮
 
-ClaimsProviderSelections 元素定义声明提供程序选择的列表及其顺序。  ClaimsProviderSelection 元素类似于注册或登录页上的标识提供者按钮。 如果为 ADFS 帐户添加 ClaimsProviderSelection 元素，则当用户看到该页时，会显示一个新按钮。 添加此元素：
+**ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 ADFS 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在复制的用户旅程中标识符为 `SignUpOrSignIn` 的 UserJourney 元素中，找到 `Order="1"` 的 OrchestrationStep 元素。
-2. 在 ClaimsProviderSelections 元素下添加以下 ClaimsProviderSelection 元素：
+1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+2. 在 **ClaimsProviderSelections** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `ContosoExchange`：
 
-    ```xml
+    ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
 ### <a name="link-the-button-to-an-action"></a>将按钮链接到操作
 
-准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 ADFS 帐户通信以接收令牌。 可通过链接 ADFS 帐户声明提供程序的技术配置文件来将按钮链接到操作：
+准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 ADFS 帐户通信以接收令牌。
 
-1. 在 UserJourney 元素下找到 `Order="2"` 的 OrchestrationStep。
-2. 在 ClaimsExchanges 元素下添加以下 ClaimsExchange 元素：
+1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
 
-    ```xml
+    ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
+    
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`Contoso-SAML2`。
 
-> [!NOTE]
-> * 确保 `Id` 具有与前一部分中的 `TargetClaimsExchangeId` 相同的值。
-> * 确保 `TechnicalProfileReferenceId` 设置为前面创建的技术配置文件 (Contoso-SAML2)。
-
-
-## <a name="optional-register-the-claims-provider-for-profile-edit"></a>[可选] 注册配置文件编辑的声明提供程序
-
-此外，可能需要将 ADFS 帐户标识提供者添加到配置文件编辑用户旅程。
-
-### <a name="display-the-button"></a>显示按钮
-
-1. 打开策略的扩展文件。 例如，TrustFrameworkExtensions.xml。
-2. 在复制的用户旅程中标识符为 `ProfileEdit` 的 UserJourney 元素中，找到 `Order="1"` 的 OrchestrationStep 元素。
-3. 在 ClaimsProviderSelections 元素下添加以下 ClaimsProviderSelection 元素：
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>将按钮链接到操作
-
-1. 在 UserJourney 元素下找到 `Order="2"` 的 OrchestrationStep。
-2. 在 ClaimsExchanges 元素下添加以下 ClaimsExchange 元素：
-
-    ```xml
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
-    ```
-
-## <a name="upload-the-policy-to-your-tenant"></a>将策略上传到租户
-
-1. 在 Azure 门户中，选择“所有策略”。
-2. 选择“上传策略”。
-3. 启用“覆盖策略(若存在)”。
-4. 浏览并选择 TrustFrameworkExtensions.xml 策略文件，然后选择“上载”。 确保验证成功。
+3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>配置 ADFS 信赖方信任
@@ -174,12 +150,10 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 替换以下值：
 
 - 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
-- 将 your-policy 替换为你的策略名称。 使用配置 SAML 提供者技术配置文件的策略或从该策略继承的策略。
-- 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。
+- 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
+- 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
  
-打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。
-
-要通过使用 ADFS 管理管理单元添加新的依赖方信任并手动配置设置，请在联合服务器上执行以下过程。 本地计算机上“管理员”中的成员身份或同等身份是完成此过程所需的最低要求。 查看有关使用适当帐户和[本地和域默认组](http://go.microsoft.com/fwlink/?LinkId=83477)中组成员身份的详细信息。
+打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。 要通过使用 ADFS 管理管理单元添加新的依赖方信任并手动配置设置，请在联合服务器上执行以下过程。 本地计算机上“管理员”中的成员身份或同等身份是完成此过程所需的最低要求。
 
 1. 在“服务器管理器”中，选择“工具”，然后选择“ADFS 管理”。
 2. 选择“添加信赖方信任”。
@@ -192,23 +166,30 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 9. 选择“添加规则”。  
 10. 在“声明规则模板”中，选择“以声明方式发送 LDAP 特性”。
 11. 提供“声明规则名称”。 有关“属性存储”，选择“选择 Active Directory”添加以下声明，然后单击“完成”和“确定”。
-
-    ![设置规则属性](./media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-claims-3.png)
-
 12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-1` 或 `SHA-256`，单击“确定”。  
+13. 在“服务器管理器”中，选择“工具”，然后选择“ADFS 管理”。
+14. 选择所创建的信赖方信任，选择“从联合元数据更新”，然后单击“更新”。 
 
-### <a name="update-the-relying-party-metadata"></a>更新信赖方元数据
+## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
-更改 SAML 技术配置文件要求你使用更新的元数据版本更新 ADFS。 创建依赖方应用程序时不需要更新元数据，但在进行更改时，会更新 ADFS 中的元数据。
+通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
-1. 在“服务器管理器”中，选择“工具”，然后选择“ADFS 管理”。
-2. 选择所创建的信赖方信任，选择“从联合元数据更新”，然后单击“更新”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“应用程序”，然后选择“添加”。
+5. 输入应用程序的名称，例如 *testapp1*。
+6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
+7. 单击“创建”。
 
-### <a name="test-the-policy-by-using-run-now"></a>使用“立即运行”测试策略
+### <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 
-1.  打开“Azure AD B2C 设置”并转到“标识体验框架”。
-2.  打开上传的信赖方 (RP) 自定义策略“B2C_1A_ProfileEdit”。 选择“立即运行”。 应能够使用 ADFS 帐户登录。
+更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
-## <a name="download-the-complete-policy-files"></a>下载完整的策略文件
+1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInADFS.xml*。
+2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性值更新为唯一的值。 例如，`SignUpSignInADFS`。
+3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如，`http://contoso.com/B2C_1A_signup_signin_adfs">
+4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignInADFS)。
+5. 保存更改并上传文件，然后选择列表中的新策略。
+6. 确保在“选择应用程序”字段选择你创建的 Azure AD B2C 应用程序，然后单击“立即运行”对其进行测试。
 
-可选：可以在完成[“自定义策略入门”](active-directory-b2c-get-started-custom.md)中的步骤后，使用你自己的自定义策略文件来生成方案。 有关示例文件，请参阅[仅供参考的策略示例文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)。

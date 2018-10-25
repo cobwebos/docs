@@ -4,41 +4,61 @@ description: 本文介绍 Azure Database for PostgreSQL 如何生成查询和错
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.topic: conceptual
+ms.date: 10/04/2018
+ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435484"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867748"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的服务器日志 
-Azure Database for PostgreSQL 生成查询和错误日志。 但不支持访问事务日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 有关详细信息，请参阅[错误报告和日志记录](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)。
+Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 （不包括访问事务日志）。 
 
-## <a name="access-server-logs"></a>访问服务器日志
-可以使用 Azure 门户、[Azure CLI](howto-configure-server-logs-using-cli.md) 和 Azure REST API 列出和下载 Azure PostgreSQL 服务器错误日志。
+## <a name="configure-logging"></a>配置日志记录 
+可以使用日志记录服务器参数在服务器上配置日志记录。 在每台新服务器上，**log_checkpoints** 和 **log_connections** 默认开启。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
 
-## <a name="log-retention"></a>日志保留期
-可以使用与服务器关联的 log\_retention\_ 参数设置系统日志的保留期。 此参数的单位为天。 默认值为 3 天。 最大值为 7 天。 必须为服务器分配足够的存储空间，以便存储保留的日志文件。
-每 1 小时或达到 100 MB 大小时日志文件会轮换一次，以先达到的限制为准。
+![Azure Database for PostgreSQL - 日志记录参数](./media/concepts-server-logs/log-parameters.png)
 
-## <a name="configure-logging-for-azure-postgresql-server"></a>配置 Azure PostgreSQL 服务器的日志
-可以启用服务器的查询日志和错误日志。 错误日志包含自动清空、连接和检查点等信息。
+有关这些参数的详细信息，请参阅 PostgreSQL 的[错误报告和日志记录](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)文档。 若要了解如何配置 Azure Database for PostgreSQL 参数，请参阅[门户文档](howto-configure-server-parameters-using-portal.md)或 [CLI 文档](howto-configure-server-parameters-using-cli.md)。
 
-可以通过设置以下两个服务器参数为 PostgreSQL DB 实例启用查询日志记录：`log_statement` 和 `log_min_duration_statement`。
+## <a name="access-server-logs-through-portal-or-cli"></a>通过门户或 CLI 访问服务器日志
+如果已启用了日志，则可以使用 [Azure 门户](howto-configure-server-logs-in-portal.md)、[Azure CLI](howto-configure-server-logs-using-cli.md) 和 Azure REST API 从 Azure Database for PostgreSQL 日志存储访问它们。 每 1 小时或达到 100MB 大小时日志文件会轮换一次，以先达到的限制为准。 可以使用与服务器关联的 **log\_retention\_period** 参数设置此日志存储的保留期。 默认值为 3 天；最大值为 7 天。 必须为服务器分配足够的存储空间来存放日志文件。 （此保留期参数不控制 Azure 诊断日志）。
 
-**log\_statement** 参数控制要记录的 SQL 语句。 建议将此参数设置为 ***all*** 以便记录所有语句；默认值为“none”。
 
-log\_min\_duration\_statement 参数可以设置记录语句时的时间限制（以毫秒为单位）。 运行时间超过该参数设置的所有 SQL 语句会被记录下来。 默认情况下禁用此参数并将其设置为负 1 (-1)。 启用此参数有助于跟踪应用程序中效果不佳的查询。
+## <a name="diagnostic-logs"></a>诊断日志
+Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 PostgreSQL 服务器上启用日志后，可以选择将它们发送到 [Log Analytics](../log-analytics/log-analytics-queries.md)、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)中的如何操作部分。 
 
-通过 log\_min\_messages 可控制写入服务器日志的消息级别。 默认设置为“警告”。 
 
-有关这些设置的详细信息，请参阅[错误报告和日志记录](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)文档。 有关配置 Azure Database for PostgreSQL 服务器参数的详细信息，请参阅[使用 Azure CLI 自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)。
+下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
+
+|**字段** | **说明** |
+|---|---|
+| TenantId | 租户 ID |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
+| Type | 日志类型。 始终是 `AzureDiagnostics` |
+| SubscriptionId | 服务器所属的订阅的 GUID |
+| resourceGroup | 服务器所属的资源组的名称 |
+| ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceType | `Servers` |
+| ResourceId | 资源 URI |
+| Resource | 服务器的名称 |
+| Category | `PostgreSQLLogs` |
+| OperationName | `LogEvent` |
+| errorLevel | 日志记录级别，示例：LOG、ERROR、NOTICE |
+| Message | 主要日志消息 | 
+| Domain | 服务器版本，示例：postgres-10 |
+| Detail | 辅助日志消息（如果适用） |
+| ColumnName | 列名称（如果适用） |
+| SchemaName | 架构名称（如果适用） |
+| DatatypeName | 数据类型名称（如果适用） |
+| LogicalServerName | 服务器的名称 | 
+| _ResourceId | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤
-- 若要使用 Azure CLI 命令行接口访问日志，请参阅[使用 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-using-cli.md)。
-- 有关服务器参数的详细信息，请参阅[使用 Azure CLI 自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)。
+- 详细了解如何从 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 访问日志。
+- 详细了解 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。

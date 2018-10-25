@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294896"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408704"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -121,7 +121,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 **答：** 对于这种情况，有几个选项。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作原理](../authentication/howto-sspr-deployment.md)。
 
-对于 Office 365 用户，管理员可以使用 [Reset user passwords](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)（重置用户密码）中概述的步骤重置密码。
+对于 Office 365 用户，管理员可以使用 [Reset user passwords](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)（重置用户密码）中概述的步骤重置密码。
 
 对于 Azure AD 帐户，管理员可以使用以下选项之一重置密码：
 

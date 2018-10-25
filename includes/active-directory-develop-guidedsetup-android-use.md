@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cf536879393622744da0a6dd5b4e38c8c52de39b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843456"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988315"
 ---
-## <a name="use-msal-to-get-a-token"></a>使用 MSAL 获取令牌 
+## <a name="use-msal-to-get-a-token"></a>使用 MSAL 获取令牌
 
-1.  在“应用” > “java” > “{domain}.{appname}”下，打开 `MainActivity`。 
-2.  添加以下导入内容：
+1. 在“应用” > “java” > “{domain}.{appname}”下，打开 `MainActivity`。 
+2. 添加以下导入内容：
 
     ```java
     import android.app.Activity;
@@ -241,10 +241,13 @@ ms.locfileid: "48843456"
 
 <!--start-collapse-->
 ### <a name="more-information"></a>详细信息
+
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
+
 调用 `AcquireTokenAsync` 方法会启动一个窗口，提示用户登录或选择其帐户。 应用程序通常需要向用户请求初始交互，但可以从那时起以提示方式运行。 
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
+
 `AcquireTokenSilentAsync` 方法在没有任何用户交互的情况下获得令牌。  可以将 `AcquireTokenSilentAsync` 视为尽力而为请求，当用户需要再次登录或执行一些额外授权（例如多重身份验证）时，可以回退到 `AcquireTokenAsync`。 
 
 当 `AcquireTokenSilentAsync` 失败时，它将生成 `MsalUiRequiredException`。 应用程序可以通过两种方式处理此异常：
@@ -254,7 +257,8 @@ ms.locfileid: "48843456"
 * 稍后重试 `AcquireTokenSilentAsync`。 当用户可以使用其他应用程序功能而不导致中断时（例如，当脱机内容在应用程序中可用时），通常会使用此模式。 可让应用程序决定在网络临时不可用又还原后，是否重试 `AcquireTokenSilentAsync`。 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api"></a>调用 Microsoft Graph API 
+## <a name="call-the-microsoft-graph-api"></a>调用 Microsoft Graph API
+
 将以下方法添加到 `MainActivity` 类：
 
 ```java
@@ -311,6 +315,7 @@ private void updateGraphUI(JSONObject graphResponse) {
     graphText.setText(graphResponse.toString());
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
@@ -376,5 +381,6 @@ private void updateSignedOutUI() {
 `onSignOutClicked()` 方法从 MSAL 缓存中删除用户。 MSAL 将不再具有已登录用户的任何状态，并且它们将从应用程序中注销。 
 
 ### <a name="more-information-on-multi-account-scenarios"></a>有关多帐户方案的详细信息
+
 MSAL 还支持同时登录多个帐户的方案。 例如，许多电子邮件应用允许同时登录多个帐户。 
 <!--end-collapse-->

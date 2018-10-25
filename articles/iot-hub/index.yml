@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f6ca80985d73c0bfe0fd248b697b57ebb5796a2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: ec18a5834ce88d5872ae9044d7896012523e2288
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237942"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024046"
 documentType: LandingData
 title: IoT 中心文档
 metadata:
@@ -70,6 +70,6 @@ sections:
     - title: 命令行
       html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
     - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p><p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C（设备 SDK）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js（服务）</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js（设备）</a></p>
+      html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C（设备 SDK）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js（服务）</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js（设备）</a></p>
     - title: REST
       html: <p><a href="/rest/api/iothub/device">REST（设备）</a></p><p><a href="/rest/api/iothub/service">REST（服务）</a></p><p><a href="/rest/api/iothub/iothubresource">REST（IoT 中心资源）</a></p><p><a href="/rest/api/iothub/certificates">REST（证书）</a></p>

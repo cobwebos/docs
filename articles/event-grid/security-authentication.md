@@ -6,22 +6,22 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 10/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965443"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068175"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
 Azure 事件网格包含三种类型的身份验证：
 
-* 事件订阅
-* 事件发布
 * WebHook 事件传送
+* 事件订阅
+* 自定义主题发布
 
 ## <a name="webhook-event-delivery"></a>WebHook 事件传送
 
@@ -37,18 +37,18 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 1. **ValidationCode 握手**：创建事件订阅时，EventGrid 将向终结点 POST“订阅验证事件”。 此事件的架构类似于其他任何 EventGridEvent，并且此事件的数据部分包括 `validationCode` 属性。 应用程序确认验证请求针对预期的事件订阅后，应用程序代码需要通过将验证代码回显回 EventGrid 以进行响应。 所有 EventGrid 版本均都支持此握手机制。
 
-2. **ValidationURL 握手（手动握手）**：在某些情况下，可能无法控制终结点源代码，以便能够实现基于 ValidationCode 的握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式使用验证码回应。 因此，从版本 2018-05-01-preview 开始，EventGrid 现在支持手动验证握手。 如果要使用此新的 API 版本 (2018-05-01-preview) 的 SDK/工具创建事件订阅，EventGrid 将发送 `validationUrl` 属性（以及 `validationCode` 属性）作为订阅验证事件数据部分的一部分。 若要完成握手，只需通过 REST 客户端或使用 Web 浏览器对该 URL 执行 GET 请求。 提供的验证 URL 有效时间仅 10 分钟左右。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 再次尝试手动验证前，必须重新尝试创建此事件订阅。
+2. **ValidationURL 握手（手动握手）**：在某些情况下，可能无法控制终结点源代码，以便能够实现基于 ValidationCode 的握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式使用验证码回应。 从版本 2018-05-01-preview 开始，EventGrid 现在支持手动验证握手。 如果你在创建事件订阅时使用的 SDK/工具使用了此新的 API 版本 (2018-05-01-preview)，则 EventGrid 将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，只需通过 REST 客户端或使用 Web 浏览器对该 URL 执行 GET 请求。 提供的验证 URL 有效时间仅 10 分钟左右。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在尝试手动验证之前重新创建事件订阅。
 
-“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用 REST API，请确保使用 `api-version=2018-05-01-preview`。
+“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用的是 REST API，请确保使用的是 `api-version=2018-05-01-preview`。
 
 ### <a name="validation-details"></a>验证详细信息
 
 * 在创建/更新事件订阅时，事件网格会将“订阅验证”事件发送到目标终结点。 
 * 该事件包含标头值“aeg-event-type: SubscriptionValidation”。
 * 事件正文具有与其他事件网格事件相同的架构。
-* 该事件的 eventType 属性是“Microsoft.EventGrid.SubscriptionValidationEvent”。
-* 事件数据属性包括“validationCode”属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
-* 如果使用 API 版本 2018-05-01-preview，事件数据还将包括 `validationUrl` 属性，其中包含用于手动验证订阅的 URL。
+* 该事件的 eventType 属性是 `Microsoft.EventGrid.SubscriptionValidationEvent`。
+* 该事件的 data 属性包括一个 `validationCode` 属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
+* 如果使用 API 版本 2018-05-01-preview，则事件数据还将包括 `validationUrl` 属性，其中包含用于手动验证订阅的 URL。
 * 该数组仅包含验证事件。 你回显验证代码后，事件网格会以单独的请求发送其他事件。
 * EventGrid DataPlane SDK 包含对应订阅验证事件数据和订阅验证响应的类。
 
@@ -70,7 +70,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }]
 ```
 
-为证明终结点所有权，请在 validationResponse 属性中回显 验证代码，如下例所示：
+为证明终结点所有权，请在 validationResponse 属性中回显验证代码，如下例所示：
 
 ```json
 {
@@ -78,7 +78,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-或者，可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
+另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
 
 若要查找演示如何处理订阅验证握手的 C# 示例，请访问 https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs。
 
@@ -89,7 +89,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 * 能否控制目标终结点中的应用程序代码？ 例如，如果正在编写基于 HTTP 触发器的 Azure 函数，是否有权访问应用程序代码，以对其进行更改？
 * 如果有权访问应用程序代码，请实现基于 ValidationCode 的握手机制，如上面的示例中所示。
 
-* 如果无权访问应用程序代码（例如使用的是支持 Webhook 的第三方服务），则可以使用手动握手机制。 为了执行此操作，请确保使用 2018-05-01-preview API 版本（例如，使用上述 EventGrid CLI 扩展）以便接收验证事件中的 validationUrl。 若要完成手动验证握手，请获取“validationUrl”属性值，并在 Web 浏览器中访问该 URL。 如果验证成功，应在 Web 浏览器中看到表示验证成功的消息，并且事件订阅的 provisioningState 为“已成功”。 
+* 如果无权访问应用程序代码（例如，如果使用的是支持 Webhook 的第三方服务），则可以使用手动握手机制。 请确保使用 2018-05-01-preview API 版本或更高版本（安装事件网格 Azure CLI 扩展）以便接收验证事件中的 validationUrl。 若要完成手动验证握手，请获取 `validationUrl` 属性的值，并在 Web 浏览器中访问该 URL。 如果验证成功，应当会在 Web 浏览器中看到指明验证已成功的消息。 你将看到事件订阅的 provisioningState 为“Succeeded”。 
 
 ### <a name="event-delivery-security"></a>事件传递安全性
 
@@ -101,7 +101,9 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 ## <a name="event-subscription"></a>事件订阅
 
-若要订阅事件，必须具有所需资源的 Microsoft.EventGrid/EventSubscriptions/Write 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因是订阅系统主题还是订阅自定义主题而异。 本部分介绍了这两种类型。
+若要订阅事件，必须证明你有权访问事件源和处理程序。 上一部分中假定你拥有一个 WebHook。 如果你使用不是 WebHook 的事件处理程序（例如事件中心或队列存储），则需要对该资源具有写入访问权限。 此权限检查可防止未经授权的用户向你的资源发送事件。
+
+你必须在作为事件源的资源上具有 **Microsoft.EventGrid/EventSubscriptions/Write** 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因是订阅系统主题还是订阅自定义主题而异。 本部分介绍了这两种类型。
 
 ### <a name="system-topics-azure-service-publishers"></a>系统主题（Azure 服务发布服务器）
 
@@ -115,9 +117,9 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 例如，若要订阅名为“mytopic”的自定义主题，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限
 
-## <a name="topic-publishing"></a>主题发布
+## <a name="custom-topic-publishing"></a>自定义主题发布
 
-主题使用共享访问签名 (SAS) 或密钥身份验证。 建议使用 SAS，但密钥身份验证提供简单的编程，并与多个现有 webhook 发布服务器兼容。 
+自定义主题使用共享访问签名 (SAS) 或密钥身份验证。 建议使用 SAS，但密钥身份验证提供简单的编程，并与多个现有 webhook 发布服务器兼容。 
 
 HTTP 标头中包括身份验证值。 对于 SAS，使用 aeg-sas-token 作为标头值。 对于密钥身份验证，使用 aeg-sas-key 作为标头值。
 
@@ -185,7 +187,7 @@ Azure 事件网格支持下列操作：
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-最后三个操作可能会返回从常规读取操作中筛选出的机密信息。 最好限制这些操作的访问权限。 可以使用 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure 命令行接口](../role-based-access-control/role-assignments-cli.md) (CLI) 和 [REST API](../role-based-access-control/role-assignments-rest.md) 创建自定义角色。
+最后三个操作可能会返回从常规读取操作中筛选出的机密信息。 建议限制对这些操作的访问。 可以使用 [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure 命令行接口](../role-based-access-control/role-assignments-cli.md) (CLI) 和 [REST API](../role-based-access-control/role-assignments-rest.md) 创建自定义角色。
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>强制实施基于角色的访问检查 (RBAC)
 
@@ -193,7 +195,7 @@ Azure 事件网格支持下列操作：
 
 #### <a name="create-a-custom-role-definition-file-json"></a>创建自定义角色定义文件 (.json)
 
-以下是示例事件网格角色定义，可以让用户执行不同的操作集。
+下面是允许用户采取不同操作的示例事件网格角色定义。
 
 EventGridReadOnlyRole.json：仅允许只读操作。
 

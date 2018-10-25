@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b211ede7ef90fb1aef3a6d6e9a82e0d52397afd3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883714"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465892"
 ---
 # <a name="what-is-project-answer-search"></a>什么是项目答案搜索？
 项目答案搜索 API 使用 Bing v7 终结点获取疑问式询问的答案。 “地球的周长是多少？”此类问题 返回带有事实信息的答案。  对人员、地点或事物的查询则返回与查询识别的实体相关的信息。 这些方案在对话机器人、消息应用、读取器等应用程序中十分有用。  

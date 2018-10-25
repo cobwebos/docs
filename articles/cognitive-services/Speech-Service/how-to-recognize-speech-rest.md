@@ -1,20 +1,21 @@
 ---
 title: 使用 REST API 识别语音
+titleSuffix: Azure Cognitive Services
 description: 了解如何在认知服务语音服务中使用语音转文本 API。
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e87feae7e3321efe7adcdbf1302762f539f034d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1bcc290d987e8294f9a73cf8490f6cdd0251b440
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167267"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467270"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>使用 REST API 识别语音
 

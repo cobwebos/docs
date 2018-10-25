@@ -1,21 +1,21 @@
 ---
 title: 使用适用于 Java 的语音 SDK 从语音中识别意向
-titleSuffix: Microsoft Cognitive Services
-description: >
-  了解如何使用适用于 Java 的语音 SDK 从来自文件或麦克风的语音识别意向。
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用适用于 Java 的语音 SDK 从来自文件或麦克风的语音识别意向。
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cc83c05f4e4183fd7c945cec831d905781b92e6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb7e7095278eed51c7616dc1c19dcf5c9d84b856
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991821"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469888"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>使用适用于 Java 的语音 SDK 从语音中识别意向
 

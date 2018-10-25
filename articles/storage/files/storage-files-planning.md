@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 0701049eb1aa86398e90484dbf21ef3781270fba
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783145"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831375"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 由于 Azure 文件是完全托管的，因此在生产方案中对其进行部署比部署和管理文件服务器或 NAS 设备简单得多。 本文介绍在组织内部署 Azure 文件共享以供生产使用时应考虑的主题。
@@ -56,7 +56,7 @@ Azure 文件提供可确保数据安全的几个内置选项：
 
 * 支持以下两种在线协议的加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
     * 支持 SMB 3.0 加密的客户端通过加密通道发送和接收数据。
-    * 不支持 SMB 3.0 的客户端可通过未加密的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。 请注意，不允许客户端通过未加密的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
+    * 不支持带加密功能的 SMB 3.0 的客户端可通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
 * 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：为所有存储帐户启用存储服务加密 (SSE)。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
 * 加密数据在传输中的可选要求：选定后，Azure 文件拒绝通过未加密通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。 
@@ -68,7 +68,24 @@ Azure 文件提供可确保数据安全的几个内置选项：
 
 如果使用 Azure 文件同步访问 Azure 文件共享，我们将始终使用 HTTPS 和加密的 SMB 3.0 将数据同步到 Windows Server，而不考虑是否需要对静态数据加密。
 
-## <a name="data-redundancy"></a>数据冗余
+## <a name="file-share-performance-tiers"></a>文件共享性能层
+Azure 文件支持两个性能层：标准和高级。
+
+* **标准文件共享**由可轮转的硬盘驱动器 (HDD) 提供支持，这些驱动器为对性能波动不太敏感的 IO 工作负荷（例如，常规用途文件共享和开发/测试环境）提供可靠的性能。 标准文件共享只能在即用即付计费模型下使用。
+* **高级文件共享（预览版）** 由固态磁盘 (SSD) 提供支持，对于大多数 IO 操作，对于大多数 IO 密集型工作负荷，这些磁盘可以提供稳定的高性能和低延迟，延迟为以个位数计的毫秒数。 这使得它们适合于各种各样的工作负荷，例如数据库、网站托管、开发环境，等等。高级文件共享只能在预配的计费模型下使用。
+
+### <a name="provisioned-shares"></a>预配的共享
+高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。 随时可以增大以及减小共享大小，但是自上次增大之后每 24 小时只能减小一次。
+
+最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
+
+| 预配的容量 | 100 GiB | 500 GiB | 1 TiB | 5 TiB | 
+|----------------------|---------|---------|-------|-------|
+| 基线 IOPS | 100 | 500 | 1,024 | 5,120 | 
+| 突增限制 | 300 | 1,500 | 3,072 | 15,360 | 
+| 吞吐量 | 110 MiB/秒 | 150 MiB/秒 | 202 MiB/秒 | 612 MiB/秒 |
+
+## <a name="file-share-redundancy"></a>文件共享冗余
 Azure 文件支持三个数据冗余选项：本地冗余存储 (LRS)、区域冗余存储 (ZRS) 和异地冗余存储 (GRS)。 以下部分介绍了不同的冗余选项之间的差异：
 
 ### <a name="locally-redundant-storage"></a>本地冗余存储
@@ -81,9 +98,9 @@ Azure 文件支持三个数据冗余选项：本地冗余存储 (LRS)、区域�
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>数据增长模式
-目前，Azure 文件共享的最大大小是 5 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。 请注意，一个 Azure 存储帐户可以存储多个共享，存储的所有共享总容量为 500 TiB。
+目前，Azure 文件共享的最大大小是 5 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。 
 
-可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、超大文件共享能够导入 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
+可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、大型文件共享能够导入到 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
 
 ## <a name="data-transfer-method"></a>数据传输方法
 可通过多种简单的选项将数据从现有文件共享（例如本地文件共享）批量传输到 Azure 文件。 几种常用选项包括（非详尽列表）：

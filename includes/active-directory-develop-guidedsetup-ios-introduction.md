@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 063ca2bbb334c120e285d4b3eac8af00fafa7e5a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843447"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988226"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>从 iOS 应用程序调用 Microsoft Graph API
 
@@ -28,6 +28,7 @@ ms.locfileid: "48843447"
 完成本指南中的练习后，你的应用程序可以从任何具有 Azure AD 的公司或组织调用受保护的 API。 应用程序可以使用个人帐户（如 outlook.com、live.com 等）以及工作或学校帐户调用受保护的 API。
 
 ## <a name="prerequisites"></a>先决条件
+
 - XCode 版本 10.x 是在本指南中创建的示例所必需的。 可从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL") 下载 XCode。
 - [Carthage](https://github.com/Carthage/Carthage) 依赖项管理器是包管理所必需的。
 
@@ -37,7 +38,6 @@ ms.locfileid: "48843447"
 
 在本指南中，示例应用程序使 iOS 应用程序能够查询接受 Azure AD v2.0 终结点令牌的 Microsoft Graph API 或 Web API。 在此方案中，通过使用 **Authorization** 标头向 HTTP 请求添加了令牌。 由 Microsoft 身份验证库 (MSAL) 获取和更新令牌。
 
-
 ### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>负责获得用于访问受保护 Web API 的令牌
 
 用户进行身份验证后，示例应用程序将收到一个令牌。 令牌用于查询受 Azure AD v2.0 终结点保护的 Microsoft Graph API 或 Web API。
@@ -46,7 +46,6 @@ API（如 Microsoft Graph）需要访问令牌以允许访问特定资源。 需
 
 MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这些任务。
 
-
 ## <a name="libraries"></a>库
 
 本指南使用以下库：
@@ -54,4 +53,3 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 |库|Description|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|适用于 iOS 的 Microsoft 身份验证库预览|
-

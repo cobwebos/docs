@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044376"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404063"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
@@ -75,8 +75,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
     3. 在“SubscriptionName”边栏选项卡中，单击“连接”。  
         ![连接订阅](./media/log-analytics-activity/subscription-connect.png)
 
-如果使用 OMS 门户添加解决方案，将看到以下磁贴。 登录 Azure 门户，将 Azure 订阅连接到工作区。  
-![执行评估](./media/log-analytics-activity/tile-performing-assessment.png)
+登录 Azure 门户，将 Azure 订阅连接到工作区。  
 
 ## <a name="using-the-solution"></a>使用解决方案
 

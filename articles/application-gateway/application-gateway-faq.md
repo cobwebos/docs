@@ -3,18 +3,17 @@ title: Azure 应用程序网关常见问题
 description: 本页提供有关 Azure 应用程序网关常见问题的解答
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 9/6/2018
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2a550c902e85caf02f05fcbbe5dd7b02acd0cc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986670"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868847"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -26,7 +25,7 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：应用程序网关支持哪些功能？**
 
-应用程序网关支持 SSL 卸载和端到端 SSL、Web 应用程序防火墙、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管，等等。 有关受支持功能的完整列表，请访问[应用程序网关简介](application-gateway-introduction.md)
+应用程序网关支持自动缩放、SSL 卸载和端到端 SSL、Web 应用程序防火墙、基于 Cookie 的会话相关性、基于 URL 路径的路由、多站点托管，等等。 有关受支持功能的完整列表，请参阅[应用程序网关简介](application-gateway-introduction.md)。
 
 **问：应用程序网关与 Azure 负载均衡器之间有什么区别？**
 
@@ -62,7 +61,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 **问：是否支持 HTTP 到 HTTPS 的重定向？**
 
-支持重定向。 若要了解详细信息，请访问[应用程序网关重定向概述](application-gateway-redirect-overview.md)。
+支持重定向。 若要了解详细信息，请参阅[应用程序网关重定向概述](application-gateway-redirect-overview.md)。
 
 **问：按什么顺序处理侦听器？**
 
@@ -72,13 +71,13 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 使用公共 IP 地址作为终结点时，可在公共 IP 地址资源中，或者在门户中应用程序网关的“概述”页上找到此信息。 对于内部 IP 地址，可在“概述”页上找到此信息。
 
-**问：在应用程序网关的生存期内，其 IP 或 DNS 是否会变化？**
+**问：在应用程序网关的生存期内，其 IP 或 DNS 名称是否会变化？**
 
-如果客户停止再启动网关，VIP 可能会变化。 与应用程序网关关联的 DNS 在网关的整个生命周期内不会变化。 出于此原因，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
+如果停止再启动应用程序网关，则 VIP 可能会变化。 与应用程序网关关联的 DNS 名称在网关的整个生命周期内不会变化。 出于此原因，建议使用 CNAME 别名并使其指向应用程序网关的 DNS 地址。
 
 **问：应用程序网关是否支持静态 IP？**
 
-应用程序网关不支持静态公共 IP 地址，但支持静态内部 IP。
+是，应用程序网关 V2 SKU 支持静态公共 IP 地址。 V1 SKU 支持静态内部 IP。
 
 **问：应用程序网关是否支持在网关上使用多个公共 IP？**
 
@@ -97,7 +96,9 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 **问：部署应用程序网关需要多长时间？更新时我的应用程序网关是否仍正常工作？**
 
-预配新应用程序网关部署最多需 20 分钟。 更改实例大小/计数不会出现干扰，且在此期间网关处于活动状态。
+预配新的应用程序网关 V1 SKU 部署最多需 20 分钟。 更改实例大小/计数不会出现干扰，且在此期间网关处于活动状态。
+
+预配 V2 SKU 部署可能需要大约 5 到 6 分钟时间。
 
 ## <a name="configuration"></a>配置
 
@@ -105,9 +106,9 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 是的，始终要将应用程序网关部署在虚拟网络子网中。 此子网只能包含应用程序网关。
 
-**问：应用程序网关是否能够与其虚拟网络外部的实例通信？**
+**问：应用程序网关是否能够与其虚拟网络外部的实例进行通信？**
 
-应用程序网关可与其所在的虚拟网络外部的实例通信，前提是已建立 IP 连接。 如果打算使用内部 IP 作为后端池成员，则需要使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
+应用程序网关可与其所在的虚拟网络外部的实例进行通信，前提是已建立 IP 连接。 如果打算使用内部 IP 作为后端池成员，则需要使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
 **问：是否可以在应用程序网关子网中部署其他任何组件？**
 
@@ -117,7 +118,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 应用程序网关子网支持网络安全组，但存在以下限制：
 
-* 必须提交端口 65503-65534 上传入流量的异常。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
+* 对于应用程序网关 V1 SKU，必须为端口 65503-65534 上的传入流量设置例外，对于 V2 SKU，必须为端口 65200 - 65535 上的传入流量设置例外。 此端口范围是进行 Azure 基础结构通信所必需的。 它们受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
 
 * 不能阻止出站 Internet 连接。
 
@@ -131,7 +132,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 **问：应用程序网关有哪些限制？是否可以提高这些限制？**
 
-请访问[应用程序网关限制](../azure-subscription-service-limits.md#application-gateway-limits)查看限制。
+请参阅[应用程序网关限制](../azure-subscription-service-limits.md#application-gateway-limits)来查看限制。
 
 **问：是否可以同时对外部和内部流量使用应用程序网关？**
 
@@ -183,7 +184,9 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：应用程序网关如何支持高可用性和可伸缩性？**
 
-如果已部署两个或更多个实例，则应用程序网关支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持伸缩性，应用程序网关将添加同一网关的多个实例来分担负载。
+如果已部署两个或更多个实例，则应用程序网关 V1 SKU 支持高可用性方案。 Azure 将跨更新域和容错域分配这些实例，确保所有实例不会同时发生故障。 为了支持伸缩性，V1 SKU 将添加同一网关的多个实例来分担负载。
+
+V2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如果选择了区域冗余，则最新实例还将分布到各个可用性区域中以提供区域性故障复原能力。
 
 **问：如何使用应用程序网关实现跨数据中心的灾难恢复方案？**
 
@@ -191,7 +194,7 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：是否支持自动缩放？**
 
-不支持，但应用程序网关提供吞吐量指标，达到阈值时，可使用该指标发出警报。 手动添加实例或更改大小不会重新启动网关，且不会影响现有流量。
+是，应用程序网关 V2 SKU 支持自动缩放。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md)。
 
 **问：手动扩展/缩减是否导致停机？**
 
@@ -199,7 +202,7 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：应用程序网关是否支持连接排出？**
 
-是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这将允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 请注意，连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
+是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这将允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
 
 **问：有哪些应用程序网关大小？**
 
@@ -229,7 +232,7 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：应用程序网关支持哪些最新的加密套件？**
 
-应用程序网关当前支持以下密码套件。 请访问[在应用程序网关上配置 SSL 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)，了解如何自定义 SSL 选项。
+应用程序网关当前支持以下密码套件。 请参阅[在应用程序网关上配置 SSL 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)，了解如何自定义 SSL 选项。
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -311,7 +314,7 @@ Host 字段指定要将探测数据发送到的名称。 仅在应用程序网�
 
 **问：如何自定义 WAF 规则？**
 
-是的，WAF 规则可自定义，有关如何自定义这些规则的详细信息，请访问[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)
+是的，WAF 规则可自定义，有关如何自定义这些规则的详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)
 
 **问：目前支持哪些规则？**
 
@@ -339,7 +342,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：应用程序网关可以使用哪些类型的日志？**
 
-应用程序网关可以使用三种日志。 有关这些日志和其他诊断功能的详细信息，请访问[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
+应用程序网关可以使用三种日志。 有关这些日志和其他诊断功能的详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
 - **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。
 - **ApplicationGatewayPerformanceLog**：性能日志捕获每个实例的性能信息，包括提供的请求总数、吞吐量（以字节为单位）、失败的请求计数、正常和不正常的后端实例计数。
@@ -351,7 +354,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：什么是诊断日志的保留策略？**
 
-诊断日志将发往客户存储帐户，客户可以根据偏好设置保留策略。 此外，可将诊断日志发送到事件中心或 Log Analytics。 有关详细信息，请访问 [Application Gateway Diagnostics](application-gateway-diagnostics.md)（应用程序网关诊断）。
+诊断日志将发往客户存储帐户，客户可以根据偏好设置保留策略。 此外，可将诊断日志发送到事件中心或 Log Analytics。 有关详细信息，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)。
 
 **问：如何获取应用程序网关的审核日志？**
 
@@ -359,7 +362,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：是否可以使用应用程序网关设置警报？**
 
-可以，应用程序网关确实支持警报。可以基于指标设置警报。 应用程序网关目前提供“吞吐量”指标，可以使用它来配置警报。 若要了解有关警报的详细信息，请访问 [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）。
+可以，应用程序网关支持警报。 警报是针对指标配置的。 若要了解有关应用程序网关指标的详细信息，请参阅[应用程序网关指标](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics)。 若要了解有关警报的详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
 **问：如何分析应用程序网关的流量统计信息？**
 
@@ -369,8 +372,8 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：后端运行状况返回未知状态，什么原因导致此状态？**
 
-最常见的原因是访问的后端被 NSG 或自定义 DNS 阻止。 有关详细信息，请访问 [Backend health, diagnostics logging, and metrics for Application Gateway](application-gateway-diagnostics.md)（应用程序网关的后端运行状况、诊断日志记录和指标）。
+最常见的原因是访问的后端被 NSG 或自定义 DNS 阻止。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志记录和指标](application-gateway-diagnostics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关应用程序网关的详细信息，请访问[什么是 Azure 应用程序网关？](overview.md)
+若要了解有关应用程序网关的详细信息，请参阅[什么是 Azure 应用程序网关？](overview.md)

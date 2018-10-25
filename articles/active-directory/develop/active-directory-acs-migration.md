@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249428"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407465"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -225,7 +225,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 另一种方法是遵循[此代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)，其中有关如何设置 WS 联合身份验证的说明略有不同。 此代码示例不使用 WIF，而是使用 ASP.NET 4.5 OWIN 中间件。 不过，应用注册说明也适用于使用 WIF 的应用，但不需要使用 Azure AD Premium 许可证。 
 
-如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx)。
+如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/library/azure/dn641920.aspx)。
 
 如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](https://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
 
