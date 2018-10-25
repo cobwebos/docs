@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38578911"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043379"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
 
@@ -43,9 +43,9 @@ ms.locfileid: "38578911"
 
 * `--input-schema` 参数指定架构类型。 可用选项为 *cloudeventv01schema*、*customeventschema* 和 *eventgridschema*。 默认值为 eventgridschema。 在你的架构和事件网格架构之间创建自定义映射时，请使用 customeventschema。 当事件采用 CloudEvents 架构时，请使用 cloudeventv01schema。
 
-* `--input-mapping-default-values` 参数为事件网格架构中的字段指定默认值。 可以设置 *subject*、*eventtype* 和 *dataversion* 的默认值。 通常情况下，如果自定义架构不包括这三个字段中的一个的对应字段，请使用此参数。 例如，可以指定将 dataversion 始终设置为 **1.0**。
+* `--input-mapping-default-values` 参数为事件网格架构中的字段指定默认值。 可以为 `subject`、`eventtype` 和 `dataversion` 设置默认值。 通常情况下，如果自定义架构不包括这三个字段中的一个的对应字段，请使用此参数。 例如，可以指定将数据版本始终设置为 **1.0**。
 
-* `--input-mapping-fields` 参数将字段从你的架构映射到事件网格架构。 请以空格分隔的键/值对形式指定值。 对于键名称，请使用事件网格字段的名称。 对于值，请使用字段的名称。 可以使用 *id*、*topic*、*eventtime*、*subject*、*eventtype* 和 *dataversion* 的键名称。
+* `--input-mapping-fields` 参数将字段从你的架构映射到事件网格架构。 请以空格分隔的键/值对形式指定值。 对于键名称，请使用事件网格字段的名称。 对于值，请使用字段的名称。 可以对 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用键名称。
 
 以下示例创建包含某些映射字段和默认字段的自定义主题：
 
@@ -58,7 +58,7 @@ az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
   -g myResourceGroup \
-  --input-schema customeventschema
+  --input-schema customeventschema \
   --input-mapping-fields eventType=myEventTypeField \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
@@ -69,13 +69,14 @@ az eventgrid topic create \
 
 此部分的示例使用适用于事件处理程序的队列存储。 有关详细信息，请参阅[将自定义事件路由到 Azure 队列存储](custom-event-to-queue-storage.md)。
 
-以下示例订阅一个事件网格主题并使用默认的事件网格架构：
+以下示例订阅一个事件网格主题并使用事件网格架构：
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --topic-name demotopic \
   -g myResourceGroup \
   --name eventsub1 \
+  --event-delivery-schema eventgridschema \
   --endpoint-type storagequeue \
   --endpoint <storage-queue-url>
 ```
@@ -100,9 +101,9 @@ az eventgrid event-subscription create \
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name demotopic -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/mapeventfields.json)'")
+event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000", "resourceData":{"someDataField1":"SomeDataFieldValue"} } ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 现在，请查看队列存储。 这两个订阅以不同架构分发了事件。

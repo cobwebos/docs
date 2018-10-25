@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036535"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249428"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -116,6 +116,9 @@ https://<mynamespace>.accesscontrol.windows.net
 - **2017 年 11 月**：[停用](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Azure 经典门户中的 Azure AD 管理体验。 届时，将通过以下新专用 URL 管理访问控制命名空间：`http://manage.windowsazure.com?restoreClassic=true`。 如有需要，可使用此 URl 查看现有命名空间、启用/禁用命名空间和删除命名空间。
 - **2018 年 4 月 2 日**：完全停用 Azure 经典门户，这意味着，不再可以通过任何 URL 管理访问控制命名空间。 此时，不能禁用/启用、删除或枚举访问控制命名空间。 但可通过 `https://\<namespace\>.accesscontrol.windows.net` 访问功能完善的访问控制管理门户。 访问控制的其他所有组件继续正常运行。
 - **2018 年 11 月 7 日**：永久关闭所有访问控制组件。 这包括访问控制管理门户、管理服务、STS 和令牌转换规则引擎。 此时，发送到访问控制（位于 \<命名空间\>.accesscontrol.windows.net）的所有请求都会失败。 应在此之前将所有现有应用和服务迁移到其他技术。
+
+> [!NOTE]
+> 策略会禁用在一段时间内未请求令牌的命名空间。 自 2018 年 9 月初起，这段时间目前是 14 天处于不活动状态，但在未来几周内将缩短为 7 天处于不活动状态。 如果有当前已禁用的访问控制命名空间，则可以[下载并安装 ACS PowerShell](#download-and-install-acs-powershell) 以重新启用命名空间。
 
 ## <a name="migration-strategies"></a>迁移策略
 
@@ -347,6 +350,10 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 | ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持多种与 ACS 相同的功能，PingFederate 是一个类似的本地标识产品，可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
+
+#### <a name="passthrough-authentication"></a>直通身份验证
+
+对于使用任意令牌转换的直通身份验证，没有与 ACS 等价的 Microsoft 技术。 如果你的客户需要此身份验证，Auth0 可能是提供最接近的近似解决方案的服务。
 
 ## <a name="questions-concerns-and-feedback"></a>问题、疑虑和反馈
 

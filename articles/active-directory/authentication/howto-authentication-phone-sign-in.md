@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: d348978924b4123944e019ef1a309633ee72b516
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045865"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804321"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>使用 Microsoft Authenticator 应用（公共预览版）进行无密码手机登录
+# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>使用 Microsoft Authenticator 应用（公共预览版）进行无密码手机登录
 
 使用 Microsoft Authenticator 应用可以登录到任何 Azure AD 帐户，且无需输入密码。 类似于 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) 的技术，Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备的用户凭据，并使用生物识别特征或 PIN。
 
@@ -37,7 +37,7 @@ ms.locfileid: "47045865"
 
 ### <a name="steps-to-enable"></a>启用步骤
 
-1. 安装 [Azure Active Directory V2 PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.114)。  
+1. 安装 [Azure Active Directory V2 PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview/)。  
 2. 在 PowerShell 中运行两条命令：
    1. `Connect-AzureAD`
       1. 在身份验证对话框中，使用租户中的帐户登录。 该帐户必须是安全管理员或全局管理员。

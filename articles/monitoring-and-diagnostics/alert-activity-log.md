@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 526c50fa4d261a30738c3f24d537fe5e0d765f6d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951298"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248323"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -25,7 +25,7 @@ ms.locfileid: "46951298"
 > [!IMPORTANT]
 > 无法通过活动日志警报创建界面创建服务运行状况警报通知。 若要了解有关创建和使用服务运行状况通知的详细信息，请参阅[接收有关服务运行状况通知的活动日志警报](monitoring-activity-log-alerts-on-service-notifications.md)。
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-portal"></a>使用 Azure 门户管理活动日志的警报规则
+## <a name="azure-portal"></a>Azure 门户
 
 > [!NOTE]
 
@@ -36,7 +36,7 @@ ms.locfileid: "46951298"
 - 警报配置 JSON 中没有“anyOf”条件或嵌套的条件（简单而言，只允许一个 allOf，而不允许更多的 allOf/anyOf）。
 - 当类别是“管理”时， 必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
 
-### <a name="create-an-alert-rule-for-an-activity-log-using-azure-portal"></a>使用 Azure 门户创建活动日志的警报规则
+### <a name="create-with-azure-portal"></a>使用 Azure 门户进行创建
 
 请按以下过程操作：
 
@@ -102,7 +102,7 @@ ms.locfileid: "46951298"
  ![ 从活动日志添加警报](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
     
 
-### <a name="view-and-manage-activity-log-alert-rules-in-azure-portal"></a>在 Azure 门户中查看和管理活动日志警报规则
+### <a name="view-and-manage-in-azure-portal"></a>在 Azure 门户中查看和管理
 
 1. 在 Azure 门户中，单击“监视” > “警报”，然后单击窗口左上角的“管理规则”。
 
@@ -127,7 +127,7 @@ ms.locfileid: "46951298"
 4.  可以禁用、启用或删除规则。 根据步骤 2 中的详述选择规则后，在窗口顶部选择相应的选项。
 
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a>使用 Azure 资源模板管理活动日志的警报规则
+## <a name="azure-resource-template"></a>Azure 资源模板
 若要使用资源管理器模板创建活动日志警报，需要创建 `microsoft.insights/activityLogAlerts` 类型的资源。 然后，填充所有相关属性。 下面是用于创建活动日志警报的模板。
 
 ```json
@@ -200,21 +200,23 @@ ms.locfileid: "46951298"
 > [!NOTE]
 > 新的活动日志警报规则可能需要最多 5 分钟才变为活动状态。
 
-## <a name="manage-alert-rules-for-activity-log-using-powershell-cli-or-api"></a>使用 PowerShell、CLI 或 API 管理活动日志的警报规则
+## <a name="rest-api"></a>REST API 
 [Azure Monitor - 活动日志警报 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) 是一个 REST API 并且与 Azure 资源管理器 REST API 完全兼容。 因此，可以使用资源管理器 cmdlet 和 Azure CLI 通过 Powershell 使用它。
 
+## <a name="powershell"></a>PowerShell
 下面展示了之前在[资源模板部分](#manage-alert-rules-for-activity-log-using-azure-resource-template)中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure 资源管理器 PowerShell cmdlet 进行使用的情况：
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 其中，sampleActivityLogAlert.parameters.json 包含为创建警报规则时所需的参数提供的值。
 
+## <a name="cli"></a>CLI
 下面展示了之前在[资源模板部分](#manage-alert-rules-for-activity-log-using-azure-resource-template)中显示的示例资源模板 (sampleActivityLogAlert.json) 通过 Azure CLI 中的 Azure 资源管理器命令进行使用的情况：
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
 ```
-其中，sampleActivityLogAlert.parameters.json 包含为创建警报规则时所需的参数提供的值。
+*sampleActivityLogAlert.parameters.json* 文件包含为创建警报规则时所需的参数提供的值。
 
 
 ## <a name="next-steps"></a>后续步骤

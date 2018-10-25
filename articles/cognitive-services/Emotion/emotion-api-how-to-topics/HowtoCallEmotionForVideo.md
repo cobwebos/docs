@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238601"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026256"
 ---
 # <a name="example-call-emotion-api-for-video"></a>示例：对视频调用情感 API
 
@@ -46,7 +46,7 @@ ocp-apim-subscription-key: <Your subscription key>
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-若要获取订阅密钥，请参阅[订阅] (https://azure.microsoft.com/try/cognitive-services/)。
+要获取订阅密钥，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。
 
 ### <a name="Step2">步骤 2：将视频上传到服务并检查状态</a>
 在执行任何用于视频的情感 API 调用时，最基本的方法是直接上传视频。 此操作通过发送内容类型为 application/octet-stream 且包含从视频文件中读取的数据的“POST”请求完成。 视频的最大大小为 100MB。

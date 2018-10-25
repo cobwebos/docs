@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cc8bd25b58cf898169a4d84154f7f3f81966bb92
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186811"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985788"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>配置 Azure Database for PostgreSQL 中的 SSL 连接
 Azure Database for PostgreSQL 倾向于使用安全套接字层 (SSL) 将客户端应用程序连接到 PostgreSQL 服务。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -58,7 +58,7 @@ az postgres server update --resource-group myresourcegroup --name mydemoserver -
 若要解码应用程序安全连接到数据库服务器所需的本地证书文件，需要在本地计算机上安装 OpenSSL。
 
 #### <a name="for-linux-os-x-or-unix"></a>适用于 Linux、OS X 或 Unix
-[OpenSSL Software Foundation](http://www.openssl.org) 的源代码中直接提供了 OpenSSL 库。 以下说明将指导用户完成在 Linux 电脑上安装 OpenSSL 所需的步骤。 本文使用适用于 Ubuntu 12.04 及更高版本的命令。
+[OpenSSL Software Foundation](https://www.openssl.org) 的源代码中直接提供了 OpenSSL 库。 以下说明将指导用户完成在 Linux 电脑上安装 OpenSSL 所需的步骤。 本文使用适用于 Ubuntu 12.04 及更高版本的命令。
 
 打开终端会话并下载 OpenSSL。
 ```bash

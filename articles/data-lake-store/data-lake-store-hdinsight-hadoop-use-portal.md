@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 28bed3578c653c8081868b3d950ab6332879784a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124314"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955824"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
 > * [使用 Azure 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [使用 PowerShell（对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [使用 Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
@@ -33,12 +33,12 @@ ms.locfileid: "46124314"
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前，请确保满足以下要求：
 
-* **一个 Azure 订阅**。 转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 转到[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 还必须在该帐户上创建根文件夹。  本教程使用名为 __/clusters__ 的根文件夹。
 * **一个 Azure Active Directory 服务主体**。 本教程提供了有关如何在 Azure Active Directory (Azure AD) 中创建服务主体的说明。 但是，只有 Azure AD 管理员才能创建服务主体。 管理员可以跳过此先决条件部分，继续阅读本教程。
 
     >[!NOTE]
-    >仅是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，才能创建包含 Data Lake Storage Gen1 的 HDInsight 群集。 此外，必须根据[使用证书创建服务主体](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)中所述，使用证书创建服务主体。
+    >仅是 Azure AD 管理员时，才能创建服务主体。 Azure AD 管理员必须先创建服务主体，才能创建包含 Data Lake Storage Gen1 的 HDInsight 群集。 此外，必须根据[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)中所述，使用证书创建服务主体。
     >
 
 ## <a name="create-an-hdinsight-cluster"></a>创建 HDInsight 群集
@@ -140,7 +140,7 @@ ms.locfileid: "46124314"
 
 3. 单击页面底部的“选择”。
 4. 单击“运行”分配权限。
-5. 单击“Done”（完成） 。
+5. 单击“完成”。
 
 **分配 HDInsight 群集根级别的权限**
 
@@ -150,7 +150,7 @@ ms.locfileid: "46124314"
 3. 设置文件夹上的权限。  “读取”、“写入”和“执行”默认全部选中。
 4. 单击页面底部的“选择”。
 5. 单击“运行”。
-6. 单击“Done”（完成） 。
+6. 单击“完成”。
 
 如果使用 Data Lake Storage Gen1 作为额外存储，则必须仅为要从 HDInsight 群集访问的文件夹分配权限。 例如，在以下屏幕截图中，仅提供对 Data Lake Storage Gen1 帐户中 mynewfolder 文件夹的访问权限。
 

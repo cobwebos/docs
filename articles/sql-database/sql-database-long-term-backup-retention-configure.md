@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164984"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857527"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
-可以为 Azure SQL 数据库配置[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 来自动将备份在 Azure blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或入池数据库，以自动将备份在 Azure blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
+
+> [!IMPORTANT]
+> [Azure SQL 数据库托管实例](sql-database-managed-instance.md)目前不支持长期备份保留。
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>使用 Azure 门户配置长期保留策略并还原备份
-
 以下各部分展示了如何使用 Azure 门户配置长期保留、查看长期保留的备份，以及还原长期保留的备份。
 
 ### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
@@ -78,6 +80,24 @@ ms.locfileid: "47164984"
 - [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) 或更高版本
 - [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) 或更高版本
 > 
+
+### <a name="rbac-roles-to-manage-long-term-retention"></a>用于管理长期保留的 RBAC 角色
+
+为了管理 LTR 备份，你需要为 
+- “订阅所有者”或
+- “SQL Server 参与者”角色（在**订阅**范围内）或
+- “SQL 数据库参与者”角色（在**订阅**范围内）
+
+如果需要更精细的控制，可以创建自定义 RBAC 角色并在**订阅**范围内分配它们。 
+
+对于 **Get-AzureRmSqlDatabaseLongTermRetentionBackup** 和 **Restore-AzureRmSqlDatabase**，角色需要具有以下权限：
+
+Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
+ 
+对于 **Remove-AzureRmSqlDatabaseLongTermRetentionBackup**，角色需要具有以下权限：
+
+Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+
 
 ### <a name="create-an-ltr-policy"></a>创建 LTR 策略
 

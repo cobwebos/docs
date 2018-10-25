@@ -3,7 +3,7 @@ title: 在 Azure 中使用 Python 创建和管理 Windows VM | Microsoft Docs
 description: 了解如何使用 Python 在 Azure 中创建和管理 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: cynthn
-ms.openlocfilehash: dbe8f1603433f381c3c28cb47d2dbda543b462e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: b15b3b07768d531b748944529cc7e8e6df6d9808
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528335"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958867"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -53,7 +53,7 @@ ms.locfileid: "31528335"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保拥有 [Active Directory 服务主体](../../azure-resource-manager/resource-group-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保拥有 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
 
 1. 打开已创建的 myPythonProject.py 文件，然后添加以下代码运行应用程序：
 

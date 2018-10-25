@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 775e098eb2a067e3e0446bccc223c1c54e082347
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435271"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957350"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -108,7 +108,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 印地语 | hi | 梵语 | <--> | 拉丁语 |
 | 日语 | ja | 日语 | <--> | 拉丁语 |
 | 卡纳达语 | kn | 卡纳达语 | --> | 拉丁语 |
-| 马来语 | ml | 马拉雅拉姆语 | --> | 拉丁语 |
+| 马拉雅拉姆语 | ml | 马拉雅拉姆语 | --> | 拉丁语 |
 | 马拉地语 | mr | 梵语 | --> | 拉丁语 |
 | 奥里雅语 | 或 | 奥里雅语 | <--> | 拉丁语 |
 | 旁遮普语 | pa | 果鲁穆奇语 | <--> | 拉丁语  |

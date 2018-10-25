@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: a15e726e237bcdbd9d380aaf9232e5d16a2e648f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 631c4334b1e2ca37dfc87709718b6639c2762c5c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409129"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857680"
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 
@@ -26,7 +26,7 @@ ms.locfileid: "47409129"
 
 如果消息的绝对顺序至关重要，和/或使用者需要消息的可信唯一标识符，中转站会向消息分发相对于队列或主题的无间隔递增序列号。 对于已分区实体，序列号是相对于分区进行分发。
 
-SequenceNumber 值是在中转站接受并存储消息时分配给消息的唯一 64 位整数，可用作内部标识符。 对于已分区实体，最前面的 16 位数反映的是分区标识符。 在 48-64 位范围用尽后，序列号会回滚到 0。
+SequenceNumber 值是在中转站接受并存储消息时分配给消息的唯一 64 位整数，可用作内部标识符。 对于已分区实体，最前面的 16 位数反映的是分区标识符。 在 48/64 位范围用尽后，序列号会回滚到 0。
 
 序列号可作为唯一标识符受到信任，因为它是由中央主管中立机构（而不是客户端）分配。 它还表示真正的到达顺序，比作为顺序条件的时间戳更为精确，因为时间戳在消息传递速度极快时的解析度可能不够高，并且可能会在中转站所有权跨节点转让时受到时钟偏差的影响（不过影响很小）。
 
@@ -50,7 +50,6 @@ SequenceNumber 值是在中转站接受并存储消息时分配给消息的唯�
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)

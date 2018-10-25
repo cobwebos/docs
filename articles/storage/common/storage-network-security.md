@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972549"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068530"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
 
 > [!IMPORTANT]
-> 启用存储帐户的防火墙规则将阻止访问传入的数据请求，包括来自其他 Azure 服务的数据。  这包括使用门户、写入日志等。对于参与的服务，可通过以下的[异常](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)部分重新启用功能。  若要访问门户，需要从已设置的可信边界（IP 或 VNet）内的计算机进行访问。
+> 启用存储帐户的防火墙规则将阻止访问传入的数据请求，包括来自其他 Azure 服务的数据。  这包括使用门户、写入日志等。通过允许服务实例的子网，可以授予在 VNet 内运行的 Azure 服务相应访问权限。  防火墙将阻止不在 VNet 内运行的 Azure 服务。  可以通过下面所述的[例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)机制启用有限数量的方案。  若要访问门户，需要从已设置的可信边界（IP 或 VNet）内的计算机进行访问。
 >
 
 ## <a name="scenarios"></a>方案

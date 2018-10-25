@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: aa178a24f0c36a1c5fb56b342141b066c150c7c3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037910"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857375"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB：将 Mongoose 框架与 Azure Cosmos DB 配合使用
 
@@ -50,7 +50,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 将一个新文件添加到该文件夹，并将此文件命名为 ```index.js```。
 1. 使用一个 ```npm install``` 选项安装所需的包：
-    * Mongoose：```npm install mongoose --save```
+    * Mongoose：```npm install mongoose@5 --save```
+
+    > [!Note]
+    > 下面的 Mongoose 示例连接基于 Mongoose 5+，后者自早期版本以来已发生变化。
+    
     * Dotenv（若要从 .env 文件加载机密）：```npm install dotenv --save```
 
     >[!Note]
@@ -65,19 +69,21 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 1. 将 Cosmos DB 连接字符串和 Cosmos DB 名称添加到 ```.env``` 文件。
 
     ```JavaScript
-    COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
-    COSMOSDB_DBNAME={Your DB Name Here}
+    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-user
+    COSMOSDB_PASSWORD=cosmos-secret
     ```
 
 1. 将以下代码添加到 index.js 末尾，以使用 Mongoose 框架连接到 Azure Cosmos DB。
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb"); //Creates a new DB, if it doesn't already exist
-
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function() {
-    console.log("Connected to DB");
-    });
+    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+      auth: {
+        user: process.env.COSMODDB_USER,
+        password: process.env.COSMOSDB_PASSWORD
+      }
+    })
+    .then(() => console.log('Connection to CosmosDB successful'))
+    .catch((err) => console.error(err));
     ```
     >[!Note]
     > 此处的环境变量是使用“dotenv”npm 包以 process.env.{variableName} 加载的。

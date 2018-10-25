@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d2023d30cdb86a218d27024c8ccf0f397a7a5d09
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433695"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816595"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -32,10 +32,13 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 * **Azure 经典运行方式帐户** - 此帐户用于经典部署模型资源。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
+  
+  > [!NOTE]
+  > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
 
 ## <a name="permissions"></a>配置运行方式帐户时所需的权限
 
-若要创建或更新运行方式帐户，必须拥有特定的特权和权限。 全局管理员/共同管理员可以完成所有任务。 下表显示了在实施职责分隔的情况下，所需的任务、等效 cmdlet 和权限的列表：
+若要创建或更新运行方式帐户，必须拥有特定的特权和权限。 全局管理员/共同管理员可以完成所有任务。 下表显示了在实施职责分离的情况下，所需的任务、等效 cmdlet 和权限的列表：
 
 |任务|Cmdlet  |最低权限  |
 |---|---------|---------|
@@ -49,18 +52,18 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 * 一个 AD 用户帐户，其权限相当于 Microsoft.Automation 资源的参与者角色，如 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md#contributor)一文所述。  
 * Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。 如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
-如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
+如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>在门户中创建运行方式帐户
 
 在本部分，请执行以下步骤，在 Azure 门户中更新 Azure 自动化帐户。 可以单独创建运行方式帐户和经典运行方式帐户。 如果不需管理经典资源，可以只创建 Azure 运行方式帐户。  
 
 1. 以订阅管理员角色成员和订阅共同管理员的帐户登录 Azure 门户。
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
-1. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。
-1. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”。  
-1. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户。  
-1. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。  
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
+3. 在“自动化帐户”页的自动化帐户列表中选择自动化帐户。
+4. 在左侧窗格的“帐户设置”部分下，选择“运行方式帐户”。  
+5. 根据所需帐户，选择“Azure 运行方式帐户”或“Azure 经典运行方式帐户”。 选择后，便会出现“添加 Azure 运行方式帐户”或“添加 Azure 经典运行方式帐户”页。查看概述信息后，单击“创建”，继续创建运行方式帐户。  
+6. 在 Azure 创建运行方式帐户时，可以在菜单的“通知”下面跟踪进度。 此外还显示一个横幅，指出正在创建帐户。 此过程可能需要几分钟才能完成。  
 
 ## <a name="create-run-as-account-using-powershell"></a>使用 PowerShell 创建运行方式帐户
 
@@ -73,7 +76,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 * 作为 –AutomationAccountName 和 -ApplicationDisplayName 参数的值引用的自动化帐户。
 * 与[配置运行方式帐户时所需的权限](#permissions)中所列权限相当的权限
 
-若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请执行以下操作：
+若要获取脚本的必需参数 SubscriptionID、ResourceGroup 和 AutomationAccountName 的值，请完成以下步骤：
 
 1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“自动化”。 开始键入时，会根据输入筛选该列表。 选择“自动化帐户”。
 1. 在“自动化帐户”页中选择自动化帐户，然后在“帐户设置”下选择“属性”。  
@@ -306,7 +309,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 * 如果使用自签名公共证书（.cer 文件）创建了经典运行方式帐户，该脚本将创建该帐户，并将其保存到计算机上用于执行 PowerShell 会话的用户配置文件下方的临时文件夹（*%USERPROFILE%\AppData\Local\Temp*）。
 
-* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 遵照有关[将管理 API 证书上传到 Azure 门户](../azure-api-management-certs.md)的说明。(automation-verify-runas-authentication.md#classic-run-as-authentication)。
+* 如果使用企业公共证书（.cer 文件）创建了经典运行方式帐户，则使用此证书。 按照[将管理 API 证书上传到 Azure 门户](../azure-api-management-certs.md)的说明进行操作。
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>删除运行方式帐户或经典运行方式帐户
 
@@ -314,9 +317,9 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-1. 在“自动化帐户”页上，选择“运行方式帐户”。
+2. 在“自动化帐户”页上，选择“运行方式帐户”。
 
-1. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。 然后，在所选帐户的“属性”窗格中单击“删除”。
+3. 在“运行方式帐户”属性页上，选择要删除的运行方式帐户或经典运行方式帐户。 然后，在所选帐户的“属性”窗格中单击“删除”。
 
  ![删除运行方式帐户](media/manage-runas-account/automation-account-delete-runas.png)
 
@@ -330,7 +333,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 在运行方式帐户过期之前的某个时间点，需要续订证书。 如果认为运行方式帐户已遭到入侵，可以删除然后重新创建它。 本部分介绍如何执行这些操作。
 
-为运行方式帐户创建的自签名证书自创建日期算起的一年后过期。 可以在该证书过期之前的任何时间续订。 续订时，将保留当前的有效证书，确保已排队的或正在运行的且使用运行方式帐户进行身份验证的任何 Runbook 不会受到影响。 该证书在过期之前将保持有效。
+为运行方式帐户创建的自签名证书自创建日期算起的一年后过期。 可以在该证书过期之前的任何时间续订。 续订时，将保留当前的有效证书，以确保已排队等候或正在主动运行且使用运行方式帐户进行身份验证的任何 Runbook 不会受到负面影响。 该证书在过期之前将保持有效。
 
 > [!NOTE]
 > 如果已将自动化运行方式帐户配置为使用企业证书颁发机构颁发的证书并使用此选项，该企业证书会被自签名证书替换。
@@ -359,7 +362,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 ![订阅参与者](media/manage-runas-account/automation-account-remove-subscription.png)
 
-若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加”，这将打开“添加权限”页。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向其授予 Azure 自动化运行方式服务主体访问权限的资源组执行此操作。
+若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加”，这将打开“添加权限”页。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
 
 ## <a name="misconfiguration"></a>配置错误
 

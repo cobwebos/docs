@@ -1,21 +1,21 @@
 ---
 title: 创建索引（REST API - Azure 搜索）| Microsoft Docs
 description: 使用 Azure 搜索 HTTP REST API 在代码中创建索引。
-author: chaosrealm
-manager: jlembicz
-ms.author: eugenesh
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 tags: azure-portal
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 04/20/2018
-ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.openlocfilehash: ff534bc287e3872ee87ed808be249a6e68c68ab3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182025"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403537"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>使用 REST API 创建 Azure 搜索索引
 > [!div class="op_single_selector"]

@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2dd5721ad0f45080a73172e150891cfb5f48d329
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025763"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>轮转流分析作业的输入和输出的登录凭据
 
@@ -33,7 +34,7 @@ ms.lasthandoff: 04/20/2018
 6. 找到“存储帐户密钥”字段，在其中粘贴新生成的密钥，然后单击“保存”。    
 7. 保存更改后将自动开始进行连接测试，可在通知选项卡上查看。有两种通知：一种对应于保存更新，另一种对应于测试连接：  
    ![编辑密钥后的通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
-8. 进行至 [从上次停止的时间启动作业] (#start-your-job-from-the-last-stopped-time) 部分。
+8. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
 ### <a name="event-hubs"></a>事件中心
 

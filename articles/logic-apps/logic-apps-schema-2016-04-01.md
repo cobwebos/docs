@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c1ef71ea2ec551335c3681760c181624334c3229
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126196"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043195"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
@@ -33,23 +33,23 @@ ms.locfileid: "43126196"
 
 此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
-```
+```json
 {
-    "actions": {
-        "My_Scope": {
-            "type": "scope",
-            "actions": {                
-                "Http": {
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "http://www.bing.com"
-                    },
-                    "runAfter": {},
-                    "type": "Http"
-                }
+   "actions": {
+      "Scope": {
+         "type": "Scope",
+         "actions": {                
+            "Http": {
+               "inputs": {
+                   "method": "GET",
+                   "uri": "http://www.bing.com"
+               },
+               "runAfter": {},
+               "type": "Http"
             }
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -57,29 +57,29 @@ ms.locfileid: "43126196"
 
 ## <a name="conditions-and-loops-changes"></a>条件和循环更改
 
-在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在显示为操作类型。 请详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的条件操作示例：
+在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在都可以操作类型的形式提供。 详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，或者查看这个显示条件操作的基本示例：
 
-```
+```json
 {
-    "If_trigger_is_some-trigger": {
-        "type": "If",
-        "expression": "@equals(triggerBody(), 'some-trigger')",
-        "runAfter": { },
-        "actions": {
-            "Http_2": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://www.bing.com"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        },
-        "else": 
-        {
-            "if_trigger_is_another-trigger": "..."
-        }      
-    }
+   "Condition - If trigger is some trigger": {
+      "type": "If",
+      "expression": "@equals(triggerBody(), '<trigger-name>')",
+      "runAfter": {},
+      "actions": {
+         "Http_2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "runAfter": {},
+            "type": "Http"
+         }
+      },
+      "else": 
+      {
+         "Condition - If trigger is another trigger": {}
+      }  
+   }
 }
 ```
 
@@ -87,16 +87,14 @@ ms.locfileid: "43126196"
 
 ## <a name="runafter-property"></a>“runAfter”属性
 
-`runAfter` 属性替换了 `dependsOn`，根据以前操作的状态为操作指定运行顺序时更精确。
+`runAfter` 属性替换了 `dependsOn`，根据以前操作的状态为操作指定运行顺序时更精确。 `dependsOn` 属性指示“操作是否已成功运行”，具体取决于上一个操作是成功、失败还是跳过 - 而不是指示你希望运行操作的次数。 `runAfter` 属性以对象方式提供灵活性，该对象指定对象在其后运行的所有操作名称。 该属性也定义可充当触发器的状态的数组。 例如，如果希望操作在操作 A 成功后运行，并且在操作 B 成功或失败后运行，请设置此 `runAfter` 属性：
 
-`dependsOn` 属性等同于“操作已运行并成功”，不管用户需要执行某个操作多少次（具体取决于以前的操作是成功、失败还是已跳过）。 `runAfter` 属性以对象方式提供上述灵活性，通过对象指定所有操作名称，对象在相应操作完成后运行。 该属性也定义可充当触发器的状态的数组。 例如，如果某个操作需要在步骤 A 成功后运行，也需要在步骤 B 成功或失败后运行，则可将 `runAfter` 属性构造如下：
-
-```
+```json
 {
-    "...",
-    "runAfter": {
-        "A": ["Succeeded"],
-        "B": ["Succeeded", "Failed"]
+   // Other parts in action definition
+   "runAfter": {
+      "A": ["Succeeded"],
+      "B": ["Succeeded", "Failed"]
     }
 }
 ```
@@ -109,10 +107,12 @@ ms.locfileid: "43126196"
 
 2. 转到“概览”。 在逻辑应用工具栏上，选择“更新架构”。
    
-    ![选择“更新架构”][1]
+   ![选择“更新架构”][1]
    
-    此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
-    但是，强烈建议选择“另存为”，确保已升级逻辑应用中的所有连接引用有效。
+   此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
+
+   > [!IMPORTANT]
+   > *确保*选择“另存为”，以便所有连接引用在升级后的逻辑应用中保持有效。
 
 3. 在升级边栏选项卡工具栏中，选择“另存为”。
 
@@ -125,17 +125,17 @@ ms.locfileid: "43126196"
 
 6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
 
-### <a name="upgrade-tool-notes"></a>升级工具说明
+## <a name="upgrade-tool-notes"></a>升级工具说明
 
-#### <a name="mapping-conditions"></a>映射条件
+### <a name="mapping-conditions"></a>映射条件
 
-在升级的定义中，该工具尽量将 true 和 false 分支操作作为作用域组合在一起。 具体而言，`@equals(actions('a').status, 'Skipped')` 设计器模式应显示为 `else` 操作。 但是，如果检测到无法识别的模式，该工具可能会为 true 和 false 分支创建单独条件。 可以根据需要在升级后重新映射操作。
+在升级后的定义中，该工具尽量将 true 和 false 分支操作作为作用域组合在一起。 具体而言，`@equals(actions('a').status, 'Skipped')` 的设计器模式将显示为 `else` 操作。 但是，如果检测到无法识别的模式，该工具可能会为 true 和 false 分支创建单独条件。 可以根据需要在升级后重新映射操作。
 
 #### <a name="foreach-loop-with-condition"></a>带条件的“foreach”循环
 
-在新架构中，可以使用筛选器操作复制每个项都有一个条件的 `foreach` 循环的模式，不过，此更改会在用户升级时自动发生。 条件会变为 foreach 循环前的筛选器操作，仅返回与条件匹配的项数组，而该数组会传递到 foreach 操作中。 有关示例，请参阅[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)。
+在新架构中，可以使用筛选器操作来复制使用 **For each** 循环（每项一个条件）的模式。 但是，升级时会自动进行更改。 条件会变为在 **For each** 循环之前出现的筛选器操作，仅返回与条件匹配的项数组，并将该数组传递给 **For each** 操作。 有关示例，请参阅[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)。
 
-#### <a name="resource-tags"></a>资源标记
+### <a name="resource-tags"></a>资源标记
 
 升级之后会删除资源标记，因此必须针对升级的工作流重置这些标记。
 
@@ -157,20 +157,20 @@ ms.locfileid: "43126196"
 
 操作现在可以有一个名为 `trackedProperties` 的额外属性，与 `runAfter` 和 `type` 属性同级。 此对象指定要包含在 Azure 诊断遥测中的特定操作输入或输出，作为工作流的一部分发出。 例如：
 
-```
-{                
-    "Http": {
-        "inputs": {
-            "method": "GET",
-            "uri": "http://www.bing.com"
-        },
-        "runAfter": {},
-        "type": "Http",
-        "trackedProperties": {
-            "responseCode": "@action().outputs.statusCode",
-            "uri": "@action().inputs.uri"
-        }
-    }
+``` json
+{
+   "Http": {
+      "inputs": {
+         "method": "GET",
+         "uri": "http://www.bing.com"
+      },
+      "runAfter": {},
+      "type": "Http",
+      "trackedProperties": {
+         "responseCode": "@action().outputs.statusCode",
+         "uri": "@action().inputs.uri"
+      }
+   }
 }
 ```
 

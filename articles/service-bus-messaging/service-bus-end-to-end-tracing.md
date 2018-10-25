@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140829"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854875"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -227,7 +227,6 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 ## <a name="next-steps"></a>后续步骤
 
-* [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [Application Insights 关联](../application-insights/application-insights-correlation.md)
 * 参阅 [Application Insights 监视依赖项](../application-insights/app-insights-asp-net-dependencies.md)，了解 REST、SQL 或其他外部资源是否会降低性能。
 * [使用 Application Insights .NET SDK 跟踪自定义操作](../application-insights/application-insights-custom-operations-tracking.md)

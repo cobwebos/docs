@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831443"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955107"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -54,7 +54,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 * 运行 Azure 备份代理的计算机上需要 Azure PowerShell 3.7.0。 建议你下载并[安装 Azure PowerShell 3.7.0 版](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)。
 * 在运行 Azure 备份代理的计算机上，确保已安装 Microsoft Edge 或 Internet Explorer 11，并已启用 JavaScript。 
 * 在恢复服务保管库所在的同一订阅中创建 Azure 存储帐户。 
-* 确保拥有创建 Azure Active Directory 应用程序的[所需权限](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 脱机备份工作流在与 Azure 存储帐户关联的订阅中创建一个 Azure Active Directory 应用程序。 该应用程序的目标是为 Azure 备份提供 Azure 导入服务的安全受限访问权限，以便完成脱机备份工作流。 
+* 确保拥有创建 Azure Active Directory 应用程序的[所需权限](../active-directory/develop/howto-create-service-principal-portal.md)。 脱机备份工作流在与 Azure 存储帐户关联的订阅中创建一个 Azure Active Directory 应用程序。 该应用程序的目标是为 Azure 备份提供 Azure 导入服务的安全受限访问权限，以便完成脱机备份工作流。 
 * 将 Microsoft.ImportExport 资源提供程序注册到包含 Azure 存储帐户的订阅。 若要注册资源提供程序：
     1. 在主菜单中，单击“订阅”。
     2. 如果有多个订阅，请选择用于脱机备份的订阅。 如果只使用一个订阅，则屏幕上会显示该订阅。
@@ -119,7 +119,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | 参数 | 说明 |
+    | 参数 | Description |
     | --- | --- |
     | s:&lt;暂存位置路径&gt; |必需的输入，用于提供在**启动脱机备份**工作流中所输入的暂存位置路径。 |
     | p:&lt;发布设置文件的路径&gt; |可选的输入，用于提供在**启动脱机备份**工作流中所输入的 **Azure 发布设置**文件路径。 |

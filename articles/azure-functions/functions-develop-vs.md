@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093867"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069171"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -96,7 +96,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 3. 重复上述步骤，将唯一键添加到函数所需的其他任何连接的 **Values** 数组。
 
-## <a name="create-a-function"></a>创建函数
+## <a name="add-a-function-to-your-project"></a>将函数添加到项目
 
 在预先编译的函数中，可以通过在代码中应用属性来定义函数使用的绑定。 使用 Azure Functions 工具通过提供的模板创建函数时，系统会自动应用这些属性。 
 
@@ -171,7 +171,9 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 在运行项目时，可以像测试已部署的函数一样测试代码。 有关详细信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。 在调试模式下运行时，断点将按预期命中 Visual Studio。 
 
-有关如何测试队列触发的函数的示例，请参阅[队列触发的函数快速入门教程](functions-create-storage-queue-triggered-function.md#test-the-function)。  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 若要详细了解如何使用 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。
 
@@ -196,6 +198,20 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 * [使用 Azure 门户](functions-how-to-use-azure-function-app-settings.md#settings)。
 * [使用 `--publish-local-settings` 发布 Azure Functions Core Tools 中的选项](functions-run-local.md#publish)。
 * [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。 
+
+## <a name="monitoring-functions"></a>监视函数
+
+监视 Azure 中函数执行的建议方法是与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。 改为获得内置日志记录，不建议这样做。
+
+若要在 Azure 中为函数应用启用 Application Insights，请执行以下操作：
+
+1. 在 [Azure 门户](https://portal.azure.com)中创建 Application Insights 实例并复制其检测密钥。 若要了解具体方法，请参阅[手动连接 App Insights 资源](functions-monitoring.md#manually-connect-an-app-insights-resource)。  
+
+1. 将名为 `APPINSIGHTS_INSTRUMENTATIONKEY` 的应用设置添加到 Azure 中的函数应用设置，如[函数应用设置](#function-app-settings)中所述。 此应用设置包含在上一步中创建的检测密钥。
+
+1. 从 Azure 的函数应用中删除 `AzureWebJobsDashboard` 应用设置，这将禁用内置日志记录。  
+
+若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

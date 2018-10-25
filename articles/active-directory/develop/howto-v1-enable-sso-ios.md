@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963026"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585911"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
 
@@ -250,7 +250,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 1. 启用应用程序代码调用到 MS SDK 中的中转站模式。
 2. 建立新的重定向 URI，并为应用程序和应用程序的注册提供程序。
 3. 正在注册 URL 方案。
-4. iOS9 支持：将权限添加到 info.plist 文件。
+4. 将权限添加到 info.plist 文件。
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>步骤 1：在应用程序中启用中转站模式
 
@@ -307,12 +307,16 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 例如：*msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>步骤 4：iOS9：将配置参数添加到应用
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>步骤 4：将配置参数添加到应用
 
 ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 需要将“msauth”添加到 `info.plist file` 的 LSApplicationQueriesSchemes 节。
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>已配置 SSO！

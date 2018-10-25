@@ -5,21 +5,24 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 09035146fe3211f9fc46d3ad51326a6e76921b7d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 48f1afcbef873e1af4346199c00ee2fadb1ad858
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977292"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830236"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
 
 可以将现有 Google Cloud Platform 帐户连接到 Cloudyn。 将帐户连接到 Cloudyn 后，即可查看 Cloudyn 报表中的成本和使用情况数据。 本文介绍了如何配置 Google 帐户，并将它连接到 Cloudyn。
+
+> [!NOTE]
+> Google 已修改了其帐户安全性，这会阻止在 Cloudyn 和 Google 之间建立新连接。 Cloudyn 会继续为已将 Cloudyn 连接到 Google 的用户收集 Google 数据。 但是，目前无法向 Cloudyn 添加新 Google 帐户。 Cloudyn 团队不知道何时恢复对向 Cloudyn 添加新 Google 帐户的支持。 支持恢复时，我们将删除此说明。
 
 ## <a name="collect-project-information"></a>收集项目信息
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e01f48ebee9ade35b44242eba3b03e6e0a4faf46
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181135"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802026"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -59,7 +59,8 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 * 标准服务层为 5 周。
 * 高级服务层为 5 周。
 
-如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则备份保留期是可配置的，最长为 35 天。 
+如果使用的是[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则默认的备份保留期为 7 天（逻辑服务器和托管实例上都是如此）。
+在逻辑服务器上，可以[将备份保留期更改为最多 35 天](#how-to-change-backup-retention-period)。 在托管实例中无法更改备份保留期。 
 
 如果缩短当前 PITR 保持期，早于新保持期的所有现有备份将不再可用。 
 
@@ -74,7 +75,7 @@ PITR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/st
 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>长期保留的备份
-SQL 数据库提供选项，用于在 Azure blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。 
+逻辑服务器中托管的 SQL 数据库提供了选项，用于在 Azure blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果启用了 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。 
 
 类似于 PITR，LTR 备份异地冗余且受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)保护。
 
@@ -95,6 +96,10 @@ Azure SQL 数据库工程团队持续不断地自动测试整个服务中数据�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="how-to-change-backup-retention-period"></a>如何更改备份保留期
+
+> [!Note]
+> 无法在托管实例上更改默认备份保留期（7 天）。 
+
 可以使用 REST API 或 PowerShell 更改默认保留期。 支持的值为：7、14、21、28 或 35 天。 以下示例演示如何将 PITR 保留期更改为 28 天。 
 
 > [!NOTE]

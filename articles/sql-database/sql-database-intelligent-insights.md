@@ -11,21 +11,21 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 6ccb29c9c464c21f09b1e547903a283201c52618
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159612"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870683"
 ---
-# <a name="intelligent-insights"></a>Intelligent Insights
+# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>智能见解：使用人工智能监视数据库使用情况
 
 使用 Azure SQL 数据库智能见解可以了解 SQL 数据库和托管实例数据库的性能情况。
 
-Intelligent Insights 使用内置智能，通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的诊断日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议。 
+Intelligent Insights 使用内置智能，通过人工智能持续监视数据库使用情况，并检测导致性能不佳的干扰性事件。 检测后，将执行详细分析，并生成包含对问题的智能评估的诊断日志。 此评估包含对数据库性能问题的根本原因分析，以及为性能改进而提供的可行性建议。
 
-## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights 能为你做什么？
+## <a name="what-can-intelligent-insights-do-for-you"></a>智能见解能为你做什么？
 
 Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下功能价值：
 
@@ -37,11 +37,11 @@ Intelligent Insights 是 Azure 内置智能的一项独特功能，提供以下�
 - 数以十万计的数据库上的横向扩展功能
 - 对 DevOps 资源和总拥有成本的积极影响
 
-## <a name="how-does-intelligent-insights-work"></a>Intelligent Insights 的工作原理是什么？
+## <a name="how-does-intelligent-insights-work"></a>智能见解的工作原理
 
 Intelligent Insights 可分析数据库性能，方法是比较前一个小时的数据库工作负荷和前七天的基线工作负荷。 数据库工作负荷由确定为对数据库性能最为重要的查询（例如重复最多和最大的查询）组成。 由于每个数据库基于其结构、数据、使用情况和应用程序都是唯一的，因此每个生成的工作负荷基线对于单个实例而言都具有特定性和唯一性。 Intelligent Insights 因为独立于工作负荷基线，还可监视绝对操作阈值，并检测过长的等待时间问题、关键异常和查询参数化问题，这些问题可能会对性能造成影响。
 
-在使用人工智能根据多个观察的指标检测到性能降低问题后，将执行分析。 此外还会生成包含数据库状况的智能见解的诊断日志。 Intelligent Insights 可对数据库性能问题从其首次出现到解决全程轻松展开跟踪。 从初始问题检测和性能改进验证到完成，跟踪每个检测到的问题的整个生命周期。 更新在诊断日志中每 15 分钟提供一次。 
+在使用人工智能根据多个观察的指标检测到性能降低问题后，将执行分析。 此外还会生成包含数据库状况的智能见解的诊断日志。 Intelligent Insights 可对数据库性能问题从其首次出现到解决全程轻松展开跟踪。 从初始问题检测和性能改进验证到完成，跟踪每个检测到的问题的整个生命周期。 更新在诊断日志中每 15 分钟提供一次。
 
 ![数据库性能分析工作流](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
@@ -62,7 +62,6 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 
 有关将 Intelligent Insights 与 Azure SQL Analytics 配合使用的实践概述和典型使用方案，请观看嵌入视频：
 
-
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -70,17 +69,17 @@ Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔
 
 ## <a name="configure-intelligent-insights"></a>配置智能见解
 
-智能见解的输出是一种智能性能诊断日志。 此日志可以通过多种方式使用 - 可以流式传输到 Azure SQL Analytics、Azure 事件中心和 Azure 存储，或者第三方产品。 
+智能见解的输出是一种智能性能诊断日志。 此日志可以通过多种方式使用 - 可以流式传输到 Azure SQL Analytics、Azure 事件中心和 Azure 存储，或者第三方产品。
 
-* 将此产品与 [Azure SQL Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) 配合使用，即可通过 Azure 门户的用户界面来查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
-* 将此产品与 Azure 事件中心配合使用，可以开发自定义监视和警报方案
-* 将此产品与 Azure 存储配合使用，可以进行自定义应用程序开发，例如自定义报告、长期数据存档，等等。
+- 将此产品与 [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 配合使用，即可通过 Azure 门户的用户界面来查看见解。 这是集成式 Azure 解决方案，是用于查看见解的最典型方式。
+- 将此产品与 Azure 事件中心配合使用，可以开发自定义监视和警报方案
+- 将此产品与 Azure 存储配合使用，可以进行自定义应用程序开发，例如自定义报告、长期数据存档，等等。
 
 Intelligent Insights 与其他产品（Azure SQL Analytics、Azure 事件中心、Azure 存储或第三方消费产品）的集成是这样执行的：先在数据库的“诊断设置”边栏选项卡中启用 Intelligent Insights 日志记录（“SQLInsights”日志），然后配置要流式传输到这些产品之一的 Intelligent Insights 日志数据。
 
-有关如何启用 Intelligent Insights 日志记录以及如何配置要流式传输到消费产品的日志数据的详细信息，请参阅 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。 
+有关如何启用 Intelligent Insights 日志记录以及如何配置要流式传输到消费产品的日志数据的详细信息，请参阅 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。
 
-### <a name="set-up-with-azure-sql-analytics"></a>通过 Azure SQL Analytics 进行设置 
+### <a name="set-up-with-azure-sql-analytics"></a>通过 Azure SQL Analytics 进行设置
 
 Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能的报告和警报功能，以及智能见解诊断日志数据。
 
@@ -88,9 +87,9 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 > 快速入门：若要完成智能见解的入门，最容易的方式是将它与 Azure SQL Analytics 配合使用，后者提供一个图形用户界面来显示数据库性能问题。 从市场添加 Azure SQL Analytics 解决方案，在此解决方案中创建一个工作区，然后在数据库的“诊断设置”边栏选项卡中针对每个要在其上启用智能见解的数据库配置“SQLInsights”日志的流式传输，以便将其传输到 Azure SQL Analytics 的工作区。
 >
 
-先决条件是将 Azure SQL Analytics 从市场添加到 Azure 门户仪表板，并创建一个工作区，详见[配置 Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration) 
+先决条件是将 Azure SQL Analytics 从市场添加到 Azure 门户仪表板，并创建一个工作区，详见[配置 Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md#configuration)
 
-若要将智能见解与 Azure SQL Analytics 配合使用，请配置要流式传输到 Azure SQL Analytics 工作区（已在上一步创建）的智能见解日志数据，详见 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。 
+若要将智能见解与 Azure SQL Analytics 配合使用，请配置要流式传输到 Azure SQL Analytics 工作区（已在上一步创建）的智能见解日志数据，详见 [Azure SQL 数据库指标和诊断日志记录](sql-database-metrics-diag-logging.md)。
 
 以下示例显示了通过 Azure SQL Analytics 查看的智能见解：
 
@@ -100,7 +99,7 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 
 若要将 Intelligent Insights 与事件中心配合使用，配置要流式传输到事件中心的 Intelligent Insights 日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)。
 
-若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。 
+若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。
 
 ### <a name="set-up-with-azure-storage"></a>通过 Azure 存储进行设置
 
@@ -125,15 +124,15 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 
 所有指标都将通过科学派生的数据模型在各种关系中纳入考虑，并且这种模型会对每个检测到的性能问题进行归类。 通过智能见解提供的信息包括：
 
-* 检测到的性能问题的详细信息。 
-* 检测到的问题的根本原因分析。 
-* 在可能的情况下如何改进所监视 SQL 数据库性能的建议。
+- 检测到的性能问题的详细信息。
+- 检测到的问题的根本原因分析。
+- 在可能的情况下如何改进所监视 SQL 数据库性能的建议。
 
 ## <a name="query-duration"></a>查询持续时间
 
 查询持续时间下降模型分析单独的查询，并检测与性能基线相比，编译和执行查询增加的时间。
 
-如果 SQL 数据库内置智能检测到查询编译或查询执行时间显著增加并影响工作负荷性能，这些查询将标记为出现查询持续时间性能降低问题。 
+如果 SQL 数据库内置智能检测到查询编译或查询执行时间显著增加并影响工作负荷性能，这些查询将标记为出现查询持续时间性能降低问题。
 
 Intelligent Insights 诊断日志会输出性能降低的查询的查询哈希。 查询哈希指出性能降低是否与查询编译或执行时间增加（使查询持续时间增加）有关。
 
@@ -141,11 +140,11 @@ Intelligent Insights 诊断日志会输出性能降低的查询的查询哈希�
 
 超时请求下降模型分析单独的查询，并在查询执行级别检测任何超时增加情况，以及与性能基线持续时间相比，数据库级别的总体请求超时。
 
-某些查询甚至在到达执行阶段之前就可能超时。 通过比较中止的辅助角色数和所提请求数的方式，SQL 数据库内置智能还测量和分析到达数据库的所有查询，而不管它们有没有到达执行阶段。 
+某些查询甚至在到达执行阶段之前就可能超时。 通过比较中止的辅助角色数和所提请求数的方式，SQL 数据库内置智能还测量和分析到达数据库的所有查询，而不管它们有没有到达执行阶段。
 
 在执行查询超时数或中止的请求辅助角色数超出系统管理阈值后，使用智能见解填充诊断日志。
 
-生成的见解包含超时请求数和超时查询数。 指示性能降低是否与执行阶段的超时增加有关，或提供总体数据库级别。 当系统认为超时增加对数据库性能至关重要时，这些查询将标记为出现超时性能降低问题。 
+生成的见解包含超时请求数和超时查询数。 指示性能降低是否与执行阶段的超时增加有关，或提供总体数据库级别。 当系统认为超时增加对数据库性能至关重要时，这些查询将标记为出现超时性能降低问题。
 
 ## <a name="excessive-wait-times"></a>过长的等待时间
 
@@ -172,14 +171,13 @@ Intelligent Insights 诊断日志会输出性能降低的查询的查询哈希�
 
 当系统认为测量出的出错请求数增加（与提出的总请求数有关）对工作负荷性能至关重要时，受影响的查询将标记为具有出错请求的性能降低问题。
 
-Intelligent Insights 日志输出出错请求计数。 它会指示性能降低是否与出错请求数增加或超出受监视的关键异常阈值有关，以及性能降低的测量时间。 
+Intelligent Insights 日志输出出错请求计数。 它会指示性能降低是否与出错请求数增加或超出受监视的关键异常阈值有关，以及性能降低的测量时间。
 
 在任何受监视的关键异常超出系统管理的绝对阈值的情况下，会使用关键异常详细信息生成智能见解。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[使用 Intelligent Insights 排查 SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
-* 使用 [Intelligent Insights SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
-* 了解如何[使用 SQL Analytics 监视 SQL 数据库](../log-analytics/log-analytics-azure-sql.md)。
-* 了解如何[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
 
-
+- 了解如何[使用 Intelligent Insights 排查 SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+- 使用 [Intelligent Insights SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
+- 了解如何[使用 SQL Analytics 监视 SQL 数据库](../log-analytics/log-analytics-azure-sql.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。

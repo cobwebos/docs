@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42141046"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249207"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
@@ -169,6 +169,6 @@ Type                  : ServicePrincipal
 参阅以下主题，其中介绍了何时以及如何使用数据工厂服务标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
-- [使用托管服务标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
+- [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
-请参阅 [MSI 概述](~/articles/active-directory/msi-overview.md)，详细了解托管服务标识的背景，它是数据工厂服务标识的基础。 
+有关数据工厂服务标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](~/articles/active-directory/msi-overview.md)。 

@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics 查询中的有用运算符 | Microsoft Docs
-description: Log Analytics 查询中用于不同方案的常用函数。
+description: 在各种场景下在 Log Analytics 查询中使用的常见函数。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,23 +15,23 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: ce397b1ba8d77d2916caa2798c0161ba55f51dbb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0b14c13462f15dd90285ed9e37080487324a4d85
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447038"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831273"
 ---
 # <a name="useful-operators-in-log-analytics-queries"></a>Log Analytics 查询中的有用运算符
 
 下表提供了一些常用函数，可用于 Log Analytics 查询中的不同方案。
 
-## <a name="useful-operators"></a>有用运算符
+## <a name="useful-operators"></a>有用的运算符
 
 类别                                |相关分析函数
 ----------------------------------------|----------------------------------------
 所选内容和列别名            |`project`、`project-away`、`extend`
-临时表和常量          |`let scalar_alias_name = …;` <br> `let table_alias_name = (){ … &#124; … &#124; … };`
+临时表和常量          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
 比较运算符和字符串运算符         |`startswith`、`!startswith`、`has`、`!has` <br> `contains`、`!contains`、`containscs` <br> `hasprefix`、`!hasprefix`、`hassuffix`、`!hassuffix`、`in`、`!in` <br> `matches regex` <br> `==`、`=~`、`!=`、`!~`
 常用字符串函数                 |`strcat()`、`replace()`、`tolower()`、`toupper()`、`substring()`、`strlen()`
 常用数学函数                   |`sqrt()`、`abs()` <br> `exp()`、`exp2()`、`exp10()`、`log()`、`log2()`、`log10()`、`pow()` <br> `gamma()`、`gammaln()`
@@ -48,4 +48,4 @@ ms.locfileid: "42447038"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成关于[在 Log Analytics 中编写查询](get-started-queries.md)的一课。
+- 完成有关[在 Log Analytics 中编写查询](get-started-queries.md)的课程。

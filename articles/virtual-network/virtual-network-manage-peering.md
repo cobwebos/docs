@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946845"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855300"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -116,7 +116,7 @@ ms.locfileid: "46946845"
 - 创建全球对等互连时，对等虚拟网络可以存在于任何 Azure 公有云区域中，但不能存在于 Azure 国有云中。 只能在国有云中相同区域中的虚拟网络之间建立对等互连。
 - 一个虚拟网络中的资源无法与全球对等互连虚拟网络中 Azure 内部负载均衡器的前端 IP 地址通信。 负载均衡器以及与之通信的资源必须位于相同区域中的同一虚拟网络。 但是，如果对等互连的虚拟网络位于相同区域，则任一虚拟网络中的资源可以与进行对等互连的任一虚拟网络中的 Azure 内部负载均衡器的前端 IP 地址通信。
 - 无法使用远程网关或允许网关在全球对等互连的虚拟网络中传输。 若要使用远程网关或允许网关传输，对等互连的虚拟网络必须位于同一区域中。
-- 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅可关联到同一个或不同的 Azure Active Directory 租户。 如果还没有 AD 租户，可以快速[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)。 门户中不支持与不同 Azure Aztuve Directory 租户相关联的订阅通过虚拟网络进行对等互连。 可使用 CLI、PowerShell 或模板。
+- 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅可关联到同一个或不同的 Azure Active Directory 租户。 如果还没有 AD 租户，可以快速[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)。 门户中不支持通过与不同 Azure Active Directory 租户相关联的订阅跨虚拟网络进行对等互连。 可使用 CLI、PowerShell 或模板。
 - 进行对等互连的虚拟网络的 IP 地址空间不得重叠。
 - 虚拟网络与另一个虚拟网络对等后，不能向其添加或从中删除地址范围。 若要添加或删除地址范围，请删除对等，添加或删除地址范围，然后重新创建对等。 若要为虚拟网络添加或删除地址范围，请参阅[管理虚拟网络](manage-virtual-network.md)。
 - 可以对等互连两个通过资源管理器部署的虚拟网络，或对等互连一个通过资源管理器部署的虚拟网络与一个通过经典部署模型部署的虚拟网络。 不能对等互连两个通过经典部署模型创建的虚拟网络。 如果不熟悉 Azure 部署模型，请阅读[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V)来连接两个通过经典部署模型创建的虚拟网络。

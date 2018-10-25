@@ -9,12 +9,12 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698037"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986876"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -44,7 +44,7 @@ ms.locfileid: "43698037"
 ### <a name="entry-data-stream"></a>入口数据流
 入口数据流包含汽车进入收费站时的相关信息。 出口数据事件从示例应用中包含的 Web 应用实时流式传输到事件中心队列。
 
-| TollID | EntryTime | LicensePlate | 省/直辖市/自治区 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
+| TollID | EntryTime | LicensePlate | 状态 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +60,7 @@ ms.locfileid: "43698037"
 | TollID |唯一标识收费亭的收费亭 ID |
 | EntryTime |汽车进入收费亭的日期和时间（世界协调时） |
 | LicensePlate |汽车的牌照号码 |
-| 省/直辖市/自治区 |美国的某个州 |
+| 状态 |美国的某个州 |
 | 制造商 |汽车制造商 |
 | 模型 |汽车型号 |
 | VehicleType |1（客车）或 2（商用车） |
@@ -109,7 +109,7 @@ ms.locfileid: "43698037"
 | 已过期 |汽车的注册状态：0 代表汽车注册仍有效，1 代表汽车注册已过期 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>设置 Azure 流分析的环境
-若要完成本解决方案，需要一个 Microsoft Azure 订阅。 如果没有 Azure 帐户，可以[请求免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+若要完成本解决方案，需要一个 Microsoft Azure 订阅。 如果没有 Azure 帐户，可以[请求免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 请务必按照本文末尾的“清理 Azure 帐户”部分中的步骤操作，以便充分利用 Azure 额度。
 

@@ -17,14 +17,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: acdc3417643484fa98b16c4be1b83a44a8b73fc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962993"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985720"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因此让人诟病。 然而，这却是 ADAL JS 的实现方式，也是我们建议用于编写 SPA 应用程序的方法。 这是怎么回事呢？ 不外乎是一种权衡利弊之后的结果：事实证明，对于通过 JavaScript 从浏览器使用 Web API 的应用程序而言，隐式授权是所能找到的最好方法。
 

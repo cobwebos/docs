@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064488"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815165"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -216,20 +216,24 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 4. 将 JDBC 驱动程序文件放入 `/home/tomcat/lib` 目录，确保它们可供 Tomcat 类加载器使用。 若要将这些文件上传到应用服务实例，请执行以下步骤：  
     1. 安装 Azure 应用服务 webpp 扩展：
+
       ```azurecli-interactive
       az extension add –name webapp
       ```
+
     2. 运行以下 CLI 命令，创建从本地系统到应用服务的 SSH 隧道：
+
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
-    3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib`。
+
+    3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
 
 5. 重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat`，并使用更新的配置和类。
 
 ## <a name="docker-containers"></a>Docker 容器
 
-若要在容器中使用应用服务中运行的受 Azure 支持的 Zulu JDK，请确保应用程序的 `Dockerfile` 使用 [Java 应用服务 Docker 映像存储库](https://github.com/Azure-App-Service/java)中的映像。
+若要在容器中使用 Azure 支持的 Zulu JDK，请确保拉取并使用 [Azul 下载页](https://www.azul.com/downloads/azure-only/zulu/#docker)上列出的预构建映像，或使用 [Microsoft Java GitHub 存储库](https://github.com/Microsoft/java/tree/master/docker)中的 `Dockerfile` 示例。
 
 ## <a name="runtime-availability-and-statement-of-support"></a>运行时可用性和支持声明
 
@@ -242,7 +246,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
-Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/)。
+Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。
 
 主版本更新将通过适用于 Linux 的 Azure 应用服务中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 
@@ -258,15 +262,15 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 ### <a name="local-development"></a>本地开发
 
-开发人员可以从 [Azul 下载站点](https://www.azul.com/downloads/zulu/)下载 Azul Zulu Enterprise JDK Production Edition 进行本地开发。
+开发人员可以从 [Azul 下载站点](https://www.azul.com/downloads/azure-only/zulu/)下载 Azul Zulu Enterprise JDK Production Edition 进行本地开发。
 
 ### <a name="development-support"></a>开发支持
 
-使用[符合条件的 Azure 支持计划](https://azure.microsoft.com/support/plans/)进行 Azure 或 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 方面的开发时，可以使用 Azul Zulu Enterprise JDK 的产品支持。
+使用[符合条件的 Azure 支持计划](https://azure.microsoft.com/support/plans/)进行 Azure 或 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 方面的开发时，可以获得对 [Azure 支持的 Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) 的产品支持。
 
 ### <a name="runtime-support"></a>运行时支持
 
-如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对应用服务 Linux Java 运行时[提出问题](/azure/azure-supportability/how-to-create-azure-support-request)。
+如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](/azure/azure-supportability/how-to-create-azure-support-request)。
 
 ## <a name="next-steps"></a>后续步骤
 

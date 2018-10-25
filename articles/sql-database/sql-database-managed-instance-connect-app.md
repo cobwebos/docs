@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: f57d582aacad568811314494c0ed614839ccabba
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221734"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870471"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -93,7 +93,7 @@ ms.locfileid: "47221734"
 
    ![入口/出口编号](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- 查看客户端计算机（运行 VPN 客户端的计算机）是否针对你需要访问的所有 Vnet 设置了路由条目。 路由存储在 `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` 中。
+- 查看客户端计算机（运行 VPN 客户端的计算机）是否针对你需要访问的所有 VNet 设置了路由条目。 路由存储在 `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` 中。
 
 
    ![route.txt](./media/sql-database-managed-instance-connect-app/route-txt.png)

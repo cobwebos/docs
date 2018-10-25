@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842976"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988231"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库 (MSAL) 获取用于 Microsoft Graph API 的令牌
 
@@ -29,17 +29,17 @@ ms.locfileid: "48842976"
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
+
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
+
 调用 `acquireToken` 方法将出现提示用户登录的浏览器窗口。 用户首次访问受保护的资源或获取令牌的静默操作失败（如用户密码过期）时，应用程序通常会要求用户以交互方式登录。
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
+
 `acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `acquireToken` 后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用 - 因为调用请求或续订令牌都以静默方式进行。
 
 `acquireTokenSilent` 最终会失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MSALErrorCode.interactionRequired` 异常。 应用程序可以通过两种方式处理此异常：
 
-1.  立即调用 `acquireToken`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例应用程序使用此模式：可在第一次执行应用程序时看到其正在运行。 由于没有用户使用过该应用程序，`applicationContext.allAccounts().first` 将包含一个 null 值，并且引发 ` MSALErrorCode.interactionRequired ` 异常。 此示例中的代码随后处理此异常，方法是通过调用 `acquireToken` 使其显示用户登录提示。
+1. 立即调用 `acquireToken`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例应用程序使用此模式：可在第一次执行应用程序时看到其正在运行。 由于没有用户使用过该应用程序，`applicationContext.allAccounts().first` 将包含一个 null 值，并且引发 ` MSALErrorCode.interactionRequired ` 异常。 此示例中的代码随后处理此异常，方法是通过调用 `acquireToken` 使其显示用户登录提示。
 
-2.  应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下（例如，应用程序中有可用的脱机内容）使用应用程序的其他功能，则通常会使用此方法。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `acquireTokenSilent`。
+2. 应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下（例如，应用程序中有可用的脱机内容）使用应用程序的其他功能，则通常会使用此方法。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `acquireTokenSilent`。
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>注销详细信息
 
@@ -299,11 +303,12 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 用户进行身份验证后，浏览器将用户重定向回应用程序。 按照下列步骤以注册此回叫：
 
-1.  打开 `AppDelegate.swift` 并导入 MSAL：
+1. 打开 `AppDelegate.swift` 并导入 MSAL：
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

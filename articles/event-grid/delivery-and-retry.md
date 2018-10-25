@@ -5,22 +5,52 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841586"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077082"
 ---
-# <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试 
+# <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
 本文介绍了未确认送达时 Azure 事件网格如何处理事件。
 
-事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册 webhook。 如果 webhook 在首次发送后 60 秒内未确认已接收事件，则事件网格会重试事件传送。 
+事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册终结点。 如果终结点未确认收到事件，事件网格会重试传送事件。
 
 目前，事件网格单独将每个事件发送到订阅者。 订阅者接收包含单个事件的数组。
+
+## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
+
+对于事件传送，事件网格使用指数性的回退重试策略。 如果终结点未响应或返回失败代码，事件网格会按照以下计划重新尝试传送：
+
+1. 10 秒
+2. 30 秒
+3. 1 分钟
+4. 5 分钟
+5. 10 分钟
+6. 30 分钟
+7. 1 小时	
+
+事件网格为所有重试步骤添加小的随机性。 一个小时后，事件传送每小时重试一次。
+
+默认情况下，事件网格会使所有在 24 小时内未送达的事件过期。 创建事件订阅时，可[自定义重试策略](manage-event-delivery.md)。 提供最大传递尝试次数（默认值为 30）和事件生存时间（默认为 1440 分钟）。
+
+## <a name="dead-letter-events"></a>死信事件
+
+当事件网格无法传递事件时，它会将未送达的事件发送到某个存储帐户。 此过程称为死信处理。 默认情况下，事件网格不启用死信处理。 若要启用该功能，在创建事件订阅时必须指定一个存储帐户来存放未送达的事件。 你将从此存储帐户中拉取事件来解决传递问题。
+
+事件网格已进行所有重试尝试后会将事件发送到死信位置。 如果事件网格收到 400（错误请求）或 413（请求实体太大）响应代码，它会立即将事件发送到死信终结点。 这些响应代码指示事件传送将永远不会成功。
+
+最后一次尝试发送事件与发送到死信位置之间有五分钟的延迟。 此延迟旨在减少 Blob 存储操作的数量。 如果死信位置已四小时不可用，则会丢弃该事件。
+
+在设置死信位置之前，必须有一个包含容器的存储帐户。 在创建事件订阅时，需要提供此容器的终结点。 终结点的格式如下：`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+
+你可能希望在事件发送到死信位置时收到通知。 若要使用事件网格来响应未送达的事件，请为死信 blob 存储[创建事件订阅](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)。 每当死信 blob 存储收到未送达的事件时，事件网格都会通知处理程序。 处理程序使用你希望采取的、用于协调未送达的事件的操作进行响应。
+
+有关设置死信位置的示例，请参阅[死信和重试策略](manage-event-delivery.md)。
 
 ## <a name="message-delivery-status"></a>消息传送状态
 
@@ -48,31 +78,7 @@ ms.locfileid: "43841586"
 - 503 服务不可用
 - 504 网关超时
 
-如果[配置了死信终结点](manage-event-delivery.md)且事件网格收到 400 或 413 响应代码，则事件网格会立即将事件发送到死信终结点。 否则，事件网格会重试所有错误。
-
-## <a name="retry-intervals-and-duration"></a>重试间隔和持续时间
-
-对于事件传送，事件网格使用指数性的回退重试策略。 如果 webhook 未响应或返回失败代码，事件网格会按照以下计划重新尝试传送：
-
-1. 10 秒
-2. 30 秒
-3. 1 分钟
-4. 5 分钟
-5. 10 分钟
-6. 30 分钟
-7. 1 小时	
-
-事件网格允许所有重试间隔可以略微随机。 一个小时后，事件传送每小时重试一次。
-
-默认情况下，事件网格会使所有在 24 小时内未送达的事件过期。 创建事件订阅时，可[自定义重试策略](manage-event-delivery.md)。 提供最大传递尝试次数（默认值为 30）和事件生存时间（默认为 1440 分钟）。
-
-## <a name="dead-letter-events"></a>死信事件
-
-当事件网格无法传递事件时，它会将未送达的事件发送到某个存储帐户。 此过程称为死信处理。 要查看未传送的事件，可从死信位置拉取它们。 有关详细信息，请参阅[死信与重试策略](manage-event-delivery.md)。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要查看事件传送的状态，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
-* 要自定义事件传递选项，请参阅[管理事件网格传递设置](manage-event-delivery.md)。
-* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
-* 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。
+* 若要自定义事件传送选项，请参阅[死信和重试策略](manage-event-delivery.md)。

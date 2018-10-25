@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: msangapu
-ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 20ca63b7126a6800538129115ff339308c11d8c5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130953"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867012"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
@@ -42,7 +42,7 @@ az webapp deployment container config --name name --resource-group myResourceGro
 
 选择要为其配置 Docker 中心持续部署的应用的名称。
 
-在“Docker 容器”页上，选择“启用”，然后选择“保存”以启用持续部署。
+在“容器设置”页上，选择“启用”，然后选择“保存”以启用持续部署。
 
 ![应用设置的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 

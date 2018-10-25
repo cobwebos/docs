@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 728ed892b4be4334574a04c9794bf3ea549944d4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b1d47c495d24a40f254279db0e9db12a659c861c
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093969"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237715"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -49,7 +49,7 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const approved = yield context.df.waitForExternalEvent("Approval");
     if (approved) {
         // approval granted - do the approved action
@@ -95,7 +95,7 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const event1 = context.df.waitForExternalEvent("Event1");
     const event2 = context.df.waitForExternalEvent("Event2");
     const event3 = context.df.waitForExternalEvent("Event3");
@@ -136,9 +136,9 @@ public static async Task Run(
 #### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
 
 ```javascript
-const df = require("durable-functions");
+const df = require.orchestrator("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const applicationId = context.df.getInput();
 
     const gate1 = context.df.waitForExternalEvent("CityPlanningApproval");
@@ -174,6 +174,34 @@ public static async Task Run(
     await client.RaiseEventAsync(instanceId, "Approval", true);
 }
 ```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+在 JavaScript 中，我们必须调用 rest api 来触发持久函数正在等待的事件。
+以下代码使用“request”包。 以下方法可用于为任何持久函数实例引发任何事件
+
+```js
+function raiseEvent(instanceId, eventName) {
+        var url = `<<BASE_URL>>/runtime/webhooks/durabletask/instances/${instanceId}/raiseEvent/${eventName}?taskHub=DurableFunctionsHub`;
+        var body = <<BODY>>
+            
+        return new Promise((resolve, reject) => {
+            request({
+                url,
+                json: body,
+                method: "POST"
+            }, (e, response) => {
+                if (e) {
+                    return reject(e);
+                }
+
+                resolve();
+            })
+        });
+    }
+```
+
+<<BASE_URL>> 将是函数应用的基本 URL。 如果在本地运行代码，那么它将类似于 http://localhost:7071，在 Azure 中为 https://<<functionappname>>.azurewebsites.net
+
 
 在内部，`RaiseEventAsync` 将正在等待的业务流程协调程序函数选取的消息排入队列。
 

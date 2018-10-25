@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047080"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953723"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "43047080"
 ## <a name="prerequisites"></a>先决条件
 * Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。
 * IntelliJ 或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
-* 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
+* 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 

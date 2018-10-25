@@ -1,6 +1,6 @@
 ---
-title: 创建和管理 Azure 机器学习工作区
-description: 了解如何在 Azure 门户中创建、查看和删除 Azure 机器学习工作区。
+title: 创建和管理 Azure 机器学习服务工作区
+description: 了解如何在 Azure 门户中创建、查看和删除 Azure 机器学习服务工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d01a2e3ebd46315966c82a43a17ffc5b329b829
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bb27dccdaf25da818d5d54a8634556a95da737
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954341"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238663"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区
+# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>创建和管理 Azure 机器学习服务工作区
 
-本文将介绍如何在 Azure 门户中针对 [Azure 机器学习服务](overview-what-is-azure-ml.md)创建、查看和删除 [Azure 机器学习工作区](concept-azure-machine-learning-architecture.md#workspace)。  也可以[使用 CLI](reference-azure-machine-learning-cli.md) 或 [Python 代码](http://aka.ms/aml-sdk)创建和删除工作区。
+本文将介绍如何在 Azure 门户中针对 [Azure 机器学习服务](overview-what-is-azure-ml.md)创建、查看和删除 [**Azure 机器学习服务工作区**](concept-azure-machine-learning-architecture.md#workspace)。  也可以[使用 CLI](reference-azure-machine-learning-cli.md) 或 [Python 代码](http://aka.ms/aml-sdk)创建和删除工作区。
 
 必须有 Azure 订阅，才能创建工作区。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -30,17 +30,17 @@ ms.locfileid: "46954341"
 
 1. 选择门户左上角的“所有服务”。 
 
-1. 在“所有服务”筛选器字段中，键入“机器学习工作区”。  
+1. 在“所有服务”筛选器字段中，键入“机器学习服务工作区”。  
 
-   ![搜索 Azure 机器学习工作区](media/how-to-manage-workspace/allservices-search1.png)
+   ![搜索 Azure 机器学习服务工作区](media/how-to-manage-workspace/allservices-search1.png)
 
-1. 在筛选器结果中，选择“机器学习工作区”，以显示工作区列表。 
+1. 在筛选器结果中，选择“机器学习服务工作区”，以显示工作区列表。 
 
-   ![搜索 Azure 机器学习工作区](media/how-to-manage-workspace/allservices-search.PNG)
+   ![搜索 Azure 机器学习服务工作区](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. 浏览筛选出的工作区列表。 筛选依据可包括订阅、资源组和位置。  
 
-   ![Azure 机器学习工作区列表](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Azure 机器学习服务工作区列表](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. 选择刚刚创建的工作区，即可查看它的属性。
 

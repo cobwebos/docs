@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c777d5376614f7afe59342dc5a9fbfa37ca4556
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 863e465d888774730b9d9269024665a097a1207b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441050"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429282"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -43,7 +43,7 @@ ms.locfileid: "37441050"
   
 4.  选择以下权限之一：  
   
-    |权限|说明|  
+    |权限|Description|  
     |----------------|-----------------|  
     |**无**|成员无法修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
@@ -70,7 +70,7 @@ ms.locfileid: "37441050"
 2. 在“创建角色”中，输入角色名称和描述。
 
 3. 选择权限。
-   |权限|说明|  
+   |权限|Description|  
    |----------------|-----------------|  
    |完全控制（管理员）|成员可以修改模型架构，处理并查询所有数据。| 
    |处理数据库|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
@@ -118,7 +118,7 @@ ms.locfileid: "37441050"
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>使用 PowerShell 添加角色和用户
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
-|Cmdlet|说明|
+|Cmdlet|Description|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|向数据库角色添加成员。| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|从数据库角色删除成员。|   

@@ -1,19 +1,19 @@
 ---
 title: include 文件
 description: include 文件
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029996"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070179"
 ---
 # <a name="internet-of-things-security-architecture"></a>物联网安全体系结构
 
@@ -185,7 +185,7 @@ Microsoft 使用上述体系结构来对 Azure IoT 进行威胁建模。 以下�
 
 下面是此类威胁的一些示例：
 
-欺骗：攻击者可能从设备提取加密密钥材料（无论软件或硬件级别），并使用获取加密密钥数据的设备的标识，配合不同的物理或虚拟设备来访问系统。
+**欺骗**：攻击者可能从设备提取加密密钥材料（无论软件还是硬件级别），然后在从中获取密钥材料的设备的标识下，使用不同的物理或虚拟设备访问系统。
 
 **拒绝服务**：通过干扰无线电频率或剪断线路，导致设备无法运行或无法通信。 例如，蓄意破坏监控摄影头的电源或网络连接，使其完全无法报告数据。
 

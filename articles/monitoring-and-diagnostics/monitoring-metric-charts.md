@@ -8,20 +8,14 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978409"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901407"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
-
-本操作说明将介绍下一代 Azure Monitor 指标图表体验（目前处于公开预览状态）。 该新体验同时支持呈现多维指标的图表和基本指标（不包含维度）的图表。 可以绘制覆盖不同资源类型、多个资源组和订阅的指标的图表。 可以通过应用维度筛选器及分组自定义多维指标图表。 所有图表（包括自定义图表）均可固定到仪表板。
-
-若要查看有关仅支持基本指标（不包含维度）的旧体验的信息，请参阅 [Microsoft Azure 指标概述指南](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)中标题为“通过门户访问指标”的部分。
-
-## <a name="what-is-azure-monitor-metrics-explorer"></a>什么是 Azure Monitor 指标资源管理器？
 
 Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 指标资源管理器是研究 Azure 托管的或 Azure Monitor 服务监视的应用程序，以及基础结构存在的各种性能问题和可用性问题的基本起始点。 
 
@@ -29,21 +23,16 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而自定义指标是由应用程序通过[自定义事件的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 发送给 Azure 的。 自定义指标与其他特定于应用程序的指标存储在 Application Insights 资源中。
 
-
-
 ## <a name="how-do-i-create-a-new-chart"></a>如何创建新图表？
 
-   > [!NOTE]
-   > 目前旧指标体验的某些功能在新的指标资源管理器中尚不可用。 在新体验处于预览状态期间，你可以继续使用 Azure Monitor 的旧（不包含维度）指标视图。 
-
 1. 打开 Azure 门户
-2. 导航到新的“监视”选项卡，并选择“指标(预览)”。
+2. 导航到新的“监视”选项卡，并选择“指标”。
 
-   ![指标预览图](./media/monitoring-metric-charts/0001.png)
+   ![指标图像](./media/monitoring-metric-charts/0001.png)
 
 3. “指标选择器”将自动打开。 从列表中选择一个资源，查看它关联的指标。 列表将只显示具有指标的资源。
 
-   ![指标预览图](./media/monitoring-metric-charts/0002.png)
+   ![指标图像](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >如果有多个 Azure 订阅，指标资源管理器将拉取“门户设置 -> 按订阅筛选”列表中选定的所有订阅中的资源。 若要更改此设置，请单击屏幕顶部的“门户设置”齿轮图标，然后选择要使用的订阅。
@@ -52,11 +41,11 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
    例如，每个 Azure 存储空间都包含针对次级服务“Blob”、“文件”、“队列”和“表”（这些均是存储帐户的组成部分）的指标。 但是，指标“队列消息计数”必然只适用于次级服务“队列”，而不适用于任何其他存储帐户次级服务。
 
-   ![指标预览图](./media/monitoring-metric-charts/0003.png)
+   ![指标图像](./media/monitoring-metric-charts/0003.png)
 
 5. 从列表中选择一个指标。 如果知道所需指标的部分名称，可以将其键入，即可看到可用指标的筛选列表：
 
-   ![指标预览图](./media/monitoring-metric-charts/0004.png)
+   ![指标图像](./media/monitoring-metric-charts/0004.png)
 
 6. 选择指标后，将显示图表，其中包含对所选指标的默认聚合。 此时，在“指标选择器”之外单击即可将其关闭。 也可以选择将图表切换到不同的聚合。 对于一些指标，可以通过切换聚合选择想要在图表上看到的值。 例如，可以在平均值、最小值和最大值之间切换。 
 

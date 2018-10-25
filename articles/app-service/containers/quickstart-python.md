@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 52429d44c41d990fb0de4c01c63d4af9fe5863d4
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902886"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404708"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python Web 应用
 
@@ -179,6 +179,9 @@ Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你
 
 > [!div class="nextstepaction"]
 > [配置自定义启动命令](how-to-configure-python.md#custom-startup-command)
+
+> [!div class="nextstepaction"]
+> [故障排除](how-to-configure-python.md#troubleshooting)
 
 > [!div class="nextstepaction"]
 > [使用自定义映像](tutorial-custom-docker-image.md)

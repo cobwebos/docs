@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 3eb9d6851c30f11980d47d4e48b158217e41995d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30233779"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044716"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -70,16 +70,16 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |json-to-xml|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终应用转换。<br />-   content-type-json - 仅在响应的 Content-Type 标头指示存在 JSON 的情况下进行转换。|是|不适用|
-|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|是|
+|consider-accept-header|属性必须设置为以下值之一。<br /><br /> -   true - 如果在请求的 Accept 标头中请求了 JSON，则应用转换。<br />-   false - 始终应用转换。|否|true|
 |parse-date|设为 `false` 时，转换时则只是简单地复制日期值|否|true|
 
 ### <a name="usage"></a>使用情况
@@ -114,13 +114,13 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |xml-to-json|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |kind|属性必须设置为以下值之一。<br /><br /> -   javascript-friendly - 转换后的 JSON 具有 JavaScript 开发人员熟知的形式。<br />-   direct - 转换后的 JSON 反映了原始 XML 文档的结构。|是|不适用|
 |apply|属性必须设置为以下值之一。<br /><br /> -   always - 始终转换。<br />-   content-type-xml - 仅在响应的 Content-Type 标头指示存在 XML 的情况下进行转换。|是|不适用|
@@ -150,13 +150,13 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |find-and-replace|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |from|要搜索的字符串。|是|不适用|
 |to|替换字符串。 指定一个零长度的替换字符串，以便删除搜索字符串。|是|不适用|
@@ -188,7 +188,7 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |redirect-content-urls|根元素。|是|
 
@@ -252,13 +252,13 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |set-backend-service|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |base-url|新的后端服务基 URL。|否|不适用|
 |backend-id|要路由到的后端标识符。|否|不适用|
@@ -388,13 +388,13 @@ ms.locfileid: "30233779"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |set-body|根元素。 包含正文文本，或者包含会返回正文的表达式。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |template|用于更改设置正文策略运行的模板模式。 目前唯一支持的值是：<br /><br />- Liquid - 设置正文策略会使用 Liquid 模板引擎 |否|Liquid|
 
@@ -481,16 +481,30 @@ OriginalUrl.
 
  有关详细信息，请参阅[策略表达式](api-management-policy-expressions.md)和[上下文变量](api-management-policy-expressions.md#ContextVariables)。
 
+> [!NOTE]
+> 标头的多个值会连接到 CSV 字符串，例如：  
+> `headerName: value1,value2,value3`
+>
+> 例外情况包括标准化标头，其值：
+> - 可能包含逗号（`User-Agent`、`WWW-Authenticate`、`Proxy-Authenticate`），
+> - 可能包含日期（`Cookie`、`Set-Cookie`、`Warning`），
+> - 包含日期（`Date`、`Expires`、`If-Modified-Since`、`If-Unmodified-Since`、`Last-Modified`、`Retry-After`）。
+>
+> 如果出现这些例外情况，多个标头值将不会连接成一个字符串，并将作为单独的标头传递，例如：  
+>`User-Agent: value1`  
+>`User-Agent: value2`  
+>`User-Agent: value3`
+
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
 |值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当标头已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有标头的值。<br />-   skip - 不替换现有标头值。<br />-   append - 将值追加到现有标头值。<br />-   delete - 从请求中删除标头。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置标头；结果中只会设置列出的值。|否|override|
 |名称|指定要设置的标头的名称。|是|不适用|
@@ -543,14 +557,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
 |值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
-|名称|说明|必选|默认|
+|名称|Description|必选|默认|
 |----------|-----------------|--------------|-------------|
 |exists-action|指定当查询参数已指定时要执行的操作。 此属性必须具有下列值之一。<br /><br /> -   override - 替换现有参数的值。<br />-   skip - 不替换现有查询参数值。<br />-   append - 将值追加到现有查询参数值。<br />-   delete - 从请求中删除查询参数。<br /><br /> 如果设置为 `override`，则登记多个同名的条目会导致根据所有条目（将多次列出）设置查询参数；结果中只会设置列出的值。|否|override|
 |名称|指定要设置的查询参数的名称。|是|不适用|
@@ -622,13 +636,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |rewrite-uri|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|属性|说明|必选|默认|
+|属性|Description|必选|默认|
 |---------------|-----------------|--------------|-------------|
 |template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不适用|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|
@@ -638,7 +652,7 @@ OriginalUrl.
 
 -   **策略段：** 入站
 
--   **策略范围：** 产品、API、操作
+-   **策略范围：** 全局、产品、API、操作
 
 ##  <a name="XSLTransform"></a> 使用 XSLT 转换 XML
  `Transform XML using an XSLT` 策略在请求或响应正文中将 XSL 转换应用到 XML。
@@ -691,7 +705,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必选|
+|名称|Description|必选|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
 |参数|用于定义在转换中使用的变量|否|

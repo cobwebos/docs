@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394822"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884797"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -48,6 +48,8 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与服务总线交互。
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络规则
+
+> ![重要] 虚拟网络仅在服务总线的**高级**层中受支持。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 

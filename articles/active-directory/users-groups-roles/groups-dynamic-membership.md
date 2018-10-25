@@ -14,12 +14,12 @@ ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041017"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855266"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -130,15 +130,29 @@ user.department -eq "Sales"
 | In | -in |
 | 不位于 | -notIn |
 
-### <a name="using-the--in-and--notin-operators"></a>使用 -In 和 -notIn 运算符
+### <a name="using-the--in-and--notin-operators"></a>使用 -in 和 -notIn 运算符
 
-若要将用户属性的值与大量其他值进行比较，可使用 -In 或 -notIn 运算符。 使用括号符号“[”和“]”开始和结束值列表。
+若要将用户属性的值与大量其他值进行比较，可使用 -in 或 -notIn 运算符。 使用括号符号“[”和“]”开始和结束值列表。
 
  在以下示例中，如果 user.department 的值等于列表中的任何值，则表达式的计算结果为 true：
 
 ```
-   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
+
+
+### <a name="using-the--match-operator"></a>使用 -match 运算符 
+**-match** 运算符用于匹配任何正则表达式。 示例：
+
+```
+user.displayName -match "Da.*"   
+```
+Da、Dav、David 的计算结果为 true，aDa 的计算结果为 false。
+
+```
+user.displayName -match ".*vid"
+```
+David 的计算结果为 true，Da 的计算结果为 false。
 
 ## <a name="supported-values"></a>支持的值
 

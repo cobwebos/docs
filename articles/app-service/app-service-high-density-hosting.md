@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: 97e1efe34417c3bf2f23801b2112b718f55d3416
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: f2cf472ef3c2c9950dd9f9382009e21fbf62771b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36962346"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856779"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
 默认情况下，通过缩放应用服务应用在其中运行的[应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)来缩放这些应用。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
@@ -32,7 +32,7 @@ ms.locfileid: "36962346"
 
 ## <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
-通过将 ```-perSiteScaling $true``` 属性传入 ```New-AzureRmAppServicePlan``` commandlet，创建按应用缩放的计划
+通过将 ```-PerSiteScaling $true``` 参数传入 ```New-AzureRmAppServicePlan``` cmdlet，创建按应用缩放的计划。
 
 ```powershell
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,23 +41,12 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-若要通过按应用缩放更新现有的应用服务计划，请执行以下操作： 
-
-- 获取目标计划 ```Get-AzureRmAppServicePlan```
-- 本地修改属性```$newASP.PerSiteScaling = $true```
-- 将更改发布回 Azure ```Set-AzureRmAppServicePlan``` 
+通过将 `-PerSiteScaling $true` 参数传入 ```Set-AzureRmAppServicePlan``` cmdlet，使用现有应用服务计划启用按应用缩放。
 
 ```powershell
-# Get the new App Service Plan and modify the "PerSiteScaling" property.
-$newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
-$newASP
-
-#Modify the local copy to use "PerSiteScaling" property.
-$newASP.PerSiteScaling = $true
-$newASP
-    
-#Post updated app service plan back to azure
-Set-AzureRmAppServicePlan $newASP
+# Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
+Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+   -Name $AppServicePlan -PerSiteScaling $true
 ```
 
 在应用级别，配置应用可以在应用服务计划中使用的实例数。

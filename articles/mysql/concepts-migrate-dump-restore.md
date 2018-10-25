@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/02/2018
-ms.openlocfilehash: c801426ad354a165ac749333ddd4671c13536edb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f3e38bb3e7e4f2c58f1ae955878747ebc7d386f1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265837"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984480"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -127,4 +127,4 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="next-steps"></a>后续步骤
 - [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)。
-- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](http://aka.ms/datamigration)。
+- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://aka.ms/datamigration)。

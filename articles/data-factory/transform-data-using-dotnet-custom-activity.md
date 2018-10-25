@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144348"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888215"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-use-custom-activities.md)
+> * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
 
 在 Azure 数据工厂管道中可使用两类活动。
@@ -105,7 +105,7 @@ ms.locfileid: "43144348"
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否       |
-| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径 | 否       |
+| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否       |
 | referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
 
@@ -293,6 +293,23 @@ namespace SampleApp
   > [!IMPORTANT]
   > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
   > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。 
+
+## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
+
+指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+此序列化并不是真正安全的，也不应是安全的。 其目的是提示数据工厂屏蔽“监视”选项卡中的值。
+
+若要从自定义活动访问 *SecureString* 类型的属性，请读取 `activity.json` 文件（该文件与 .EXE 放在同一个文件夹中），反序列化 JSON，然后访问 JSON 属性（extendedProperties => [propertyName] => 值）。
 
 ## <a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 

@@ -10,13 +10,13 @@ ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
-ms.author: brumbaug
-ms.openlocfilehash: 3e55830fcfdbea91581a75fcfc343fd522485c5a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: bking
+ms.openlocfilehash: ebe95c8ebad8c7d6b77d98dc0d590a4d38d76b94
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123396"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465961"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 

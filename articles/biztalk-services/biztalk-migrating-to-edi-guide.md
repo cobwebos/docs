@@ -1,6 +1,6 @@
 ---
-title: 将 BizTalk 服务器 EDI 解决方案迁移到 BizTalk 服务 | Microsoft Docs
-description: 了解如何将 Microsoft BizTalk 服务器 EDI 解决方案迁移到 Microsoft Azure BizTalk 服务 (MABS)
+title: 将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务 | Microsoft Docs
+description: 了解如何将 Microsoft BizTalk Server EDI 解决方案迁移到 Microsoft Azure BizTalk 服务 (MABS)
 services: biztalk-services
 ms.service: biztalk-services
 author: jonfancey
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365581"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856524"
 ---
-# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk 服务器 EDI 解决方案迁移到 BizTalk 服务：技术指南
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -28,9 +28,9 @@ ms.locfileid: "39365581"
 编写使用：Microsoft Azure BizTalk 服务 – 2014 年 2 月版本。
 
 ## <a name="introduction"></a>介绍
-电子数据交换 (EDI) 是企业以电子方式交换数据的最普遍的方式之一，也称为企业对企业或 B2B 交易。 自 BizTalk 服务器初版起，数十年来 BizTalk 服务器始终拥有 EDI 支持。 借助 BizTalk 服务，Microsoft 继续在 Microsoft Azure Platform 上支持 EDI 解决方案。 大部分 B2B 事务都在组织外部，因此更容易在云平台上实现。 Microsoft Azure 通过 BizTalk 服务提供此功能。
+电子数据交换 (EDI) 是企业以电子方式交换数据的最普遍的方式之一，也称为企业对企业或 B2B 交易。 自 BizTalk Server 初版起，十多年来 BizTalk Server 始终拥有 EDI 支持。 借助 BizTalk 服务，Microsoft 继续在 Microsoft Azure Platform 上支持 EDI 解决方案。 大部分 B2B 事务都在组织外部，因此更容易在云平台上实现。 Microsoft Azure 通过 BizTalk 服务提供此功能。
 
-虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk 服务器 EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
+虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk Server EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 
 本文档讨论了将 BizTalk Server EDI 项目迁移到 BizTalk 服务所涉及的一些差异。 本文档假定了一种 BizTalk Server EDI 处理和贸易合作伙伴协议的应用知识。 有关 BizTalk Server EDI 的详细信息，请参阅[使用 BizTalk Server 进行贸易合作伙伴管理](https://msdn.microsoft.com/library/bb259970.aspx)。
 

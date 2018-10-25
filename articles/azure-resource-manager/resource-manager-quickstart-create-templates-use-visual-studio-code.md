@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/17/2018
+ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378680"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458133"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -57,12 +57,7 @@ ms.locfileid: "49378680"
 
 若要了解如何使用 Visual Studio Code 编辑模板，请将额外的一个元素添加到 `outputs` 节。
 
-1. 在 Visual Studio Code 中检查 **kind** 的值。 如果该值为 Storage，请将它更新为 StorageV2。
-
-    ```json
-    "kind": "StorageV2",
-    ```
-2. 将额外的一个输出添加到导出的模板：
+1. 将额外的一个输出添加到导出的模板：
 
     ```json
     "storageUri": {
@@ -90,7 +85,7 @@ ms.locfileid: "49378680"
 
     ![资源管理器模板 - Visual Studio Code - intellisense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-3. 选择“文件”>“保存”以保存文件。
+2. 选择“文件”>“保存”以保存文件。
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -128,7 +123,7 @@ ms.locfileid: "49378680"
 7. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the name for this deployment:" &&
@@ -141,7 +136,7 @@ ms.locfileid: "49378680"
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -171,7 +166,7 @@ ms.locfileid: "49378680"
 7. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
@@ -181,7 +176,7 @@ ms.locfileid: "49378680"
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName

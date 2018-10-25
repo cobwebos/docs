@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c906a771a63b3d8320eab1d2d57e8c34916e1d39
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1c5bcca2571ffee9e1c20f0b7d2608b62c962177
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433186"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815335"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
-在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。
+在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 前脚本在更新部署开始时运行。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
