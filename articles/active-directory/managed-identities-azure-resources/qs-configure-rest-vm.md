@@ -105,7 +105,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    例如，如果 VM 具有用户分配给它的托管标识 `ID1` 和 `ID2` 并且你希望将系统分配的托管标识添加到该 VM，请使用以下 CURL 调用。 将 `<ACCESS TOKEN>` 和 `<SUBSCRIPTION ID>` 替换为适合环境的值。
 
-   API 版本 `2018-06-01` 以字典格式将用户分配的托管标识存储在 `userAssignedIdentities` 值中，而 API 版本 `2017-12-01` 以数组格式将其存储在 `identityIds` 值中。
+   API 版本 `2018-06-01` 以字典格式将用户分配的托管标识存储在 `userAssignedIdentities` 值中，而 API 版本 `2017-12-01` 则以数组格式将托管标识存储在 `identityIds` 值中。
    
    **API 版本 2018-06-01**
 

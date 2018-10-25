@@ -53,9 +53,9 @@ ms.locfileid: "47585741"
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL 数据库和 Cosmos DB 保留容量预留的使用情况
 
-以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 使用相同的步骤，你还可以获取 Azure Cosmos DB 的使用情况。 
+以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。 
 
-假设在美国东部区域运行 SQL 数据库第 4 代，并且预留信息如下表中所示：
+假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
 | 字段 | 值 |
 |---| --- |
