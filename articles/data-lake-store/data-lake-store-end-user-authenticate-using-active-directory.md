@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125946"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954748"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
   
     ![获取 AAD 域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
+* Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
 如果希望最终用户通过 Azure AD 登录到应用程序，建议使用此身份验证机制。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
@@ -74,7 +74,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>步骤 1：创建 Active Directory 本机应用程序
 
-创建并配置 Azure AD 本机应用程序，用于使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证。 有关说明，请参阅[创建 Azure AD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
+创建并配置 Azure AD 本机应用程序，用于使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证。 有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 遵循链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示：
 
@@ -82,7 +82,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>步骤 2：获取应用程序 ID 和重定向 URI
 
-请参阅[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) 来检索应用程序 ID。
+请参阅[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) 来检索应用程序 ID。
 
 若要检索重定向 URI，请执行以下步骤。
 

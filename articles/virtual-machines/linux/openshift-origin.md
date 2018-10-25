@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 75a02e61adf3e5477b9945afc778e867d5d9c88c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e525bf0a5aa9bda7fdbbcefc4cb5b683c7fabc3b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958129"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426220"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
@@ -99,7 +99,7 @@ ms.locfileid: "46958129"
 
 
 > [!NOTE] 
-> 以下命令需要 Azure CLI.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+> 以下命令需要 Azure CLI 2.0.8 或更高版本。 可以使用 `az --version` 命令检查 CLI 版本。 若要更新 CLI 版本，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 以下示例使用名为 myOpenShiftCluster 的部署将 OKD 群集和所有相关资源部署到名为 myResourceGroup 的资源组中。 它使用名为 azuredeploy.parameters.json 的本地参数文件直接从 GitHub 存储库引用模板。
 
