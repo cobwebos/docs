@@ -1,6 +1,7 @@
 ---
 title: 使用 Azure 机器人服务创建 QnA 机器人 - QnA Maker
 titleSuffix: Azure Cognitive Services
+description: 本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30400b04ec08d936242b022f10cf1485e009e6d2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031282"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647317"
 ---
 # <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>使用 Azure 机器人服务 v3 创建 QnA 机器人
 本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。

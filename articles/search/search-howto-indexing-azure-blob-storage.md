@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 搜索为 Azure Blob 存储编制索引
 description: 了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: b2660a98139068a8472c018de5cfbd29d6867c5a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778488"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406955"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。

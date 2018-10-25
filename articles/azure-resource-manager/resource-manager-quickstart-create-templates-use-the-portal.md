@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/16/2018
+ms.date: 10/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 8094105fd14ef13dd5f6b892425608806ca4dbd2
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 62bc29495bab3446b6131223110c694e53412db9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378027"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407633"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
@@ -74,7 +74,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入已存在
 3. 选择“模板部署”。
 
     ![Azure 资源管理器模板库](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
-4. 选择**创建**。
+4. 选择“创建”。
 5. 选择“在编辑器中生成自己的模板”。
 6. 选择“加载文件”，然后按说明加载在上部分下载的 template.json。
 7. 添加一个变量，如以下屏幕截图所示：

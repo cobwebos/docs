@@ -4,22 +4,21 @@ description: 媒体服务发行说明
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cdfd19f2dfd599eacaa0759b63c94767e760a874
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141912"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378935"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
@@ -45,6 +44,16 @@ ms.locfileid: "42141912"
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="october-2018"></a>2018 年 10 月
+
+### <a name="cmaf-support"></a>CMAF 支持
+
+CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DASH 播放器。
+
+### <a name="web-vtt-thumbnail-sprites"></a>Web VTT 缩略图子画面
+
+可以使用媒体服务生成使用 v2 API 的 Web VTT 缩略图子画面。 有关详细信息，请参阅[生成缩略图子画面](generate-thumbnail-sprite.md)。
 
 ## <a name="july-2018"></a>2018 年 7 月
 
@@ -533,9 +542,6 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azur
 * 异步方法支持
   
     * 对所有方法增加了异步支持。
-
-## <a name="media-services-learning-paths"></a>媒体服务学习路径
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

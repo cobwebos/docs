@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524424"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957457"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
@@ -98,7 +98,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。 
 
-新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../azure-resource-manager/resource-group-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
+新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
 
 - 应用程序 ID
 - 应用程序密钥 

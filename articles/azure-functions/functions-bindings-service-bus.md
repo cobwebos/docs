@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: baf08f18fae7f82fff57616e2d86d3426e32a237
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8728533171ec8c8754aabf1a3e32c5ab7630db77
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387729"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637956"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -326,7 +326,7 @@ Functions 1.x 允许你在 *host.json* 中配置 `autoRenewTimeout`，以映射�
 |`To`|`string`|发送到地址。|
 |`Label`|`string`|应用程序特定标签。|
 |`CorrelationId`|`string`|相关 ID。|
-|`Properties`|`IDictionary<String,Object>`|应用程序特定的消息属性。|
+|`UserProperties`|`IDictionary<String,Object>`|应用程序特定的消息属性。|
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#trigger---example)。
 

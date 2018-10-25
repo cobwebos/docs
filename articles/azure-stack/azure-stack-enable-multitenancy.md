@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/24/2018
 ms.author: patricka
-ms.openlocfilehash: c9b9e569cf643b85b41698bf29429d0b7ceec37e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585095"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026154"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack 中的多租户
 
@@ -44,8 +44,6 @@ ms.locfileid: "47585095"
     Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ````
-
- - Mary 将需要 Azure Stack 的 [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 访问权限。 
 
 ### <a name="configure-azure-stack-directory"></a>配置 Azure Stack 目录
 

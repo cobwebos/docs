@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin, jeedes
-ms.openlocfilehash: 43b17c54014d2f1beedd02f9ec627dd087e65d5a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.reviewer: paulgarn, hirsin, jeedes
+ms.openlocfilehash: dbe903f502cbd1b96b34b47aed09c52104995b54
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069261"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466199"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -43,7 +43,7 @@ ms.locfileid: "49069261"
 
 有一些可定义如何以及何时在令牌中使用它们的特定声明集。
 
-| 声明集 | 说明 |
+| 声明集 | Description |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
 | 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
@@ -80,13 +80,13 @@ ms.locfileid: "49069261"
 |azpacr|
 |c_hash|
 |ca_enf|
-|cc|
+|抄送|
 |cert_token_use|
 |client_id|
 |cloud_graph_host_name|
 |cloud_instance_name|
 |cnf|
-|code|
+|代码|
 |controls|
 |credential_keys|
 |csr|
@@ -96,7 +96,7 @@ ms.locfileid: "49069261"
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|email|
+|电子邮件|
 |endpoint|
 |enfpolids|
 |exp|
@@ -104,7 +104,7 @@ ms.locfileid: "49069261"
 |grant_type|
 |graph|
 |group_sids|
-|groups|
+|组|
 |hasgroups|
 |hash_alg|
 |home_oid|
@@ -157,8 +157,8 @@ ms.locfileid: "49069261"
 |request_nonce|
 |resource|
 |role|
-|roles|
-|scope|
+|角色|
+|作用域|
 |scp|
 |sid|
 |signature|
@@ -283,7 +283,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-|源|ID|说明|
+|源|ID|Description|
 |-----|-----|-----|
 |用户|surname|姓氏|
 |用户|givenname|名字|
@@ -357,7 +357,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
-|TransformationMethod|预期输入|预期输出|说明|
+|TransformationMethod|预期输入|预期输出|Description|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
 |ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
@@ -383,7 +383,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|说明|
+|源|ID|Description|
 |-----|-----|-----|
 |用户|mail|电子邮件地址|
 |用户|userprincipalname|用户主体名称|

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078998"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430181"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>配置自动化机器学习试验
 
@@ -107,7 +107,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 ```
 
 `get_data` 脚本可以返回以下信息：
-密钥 | Type |    与以下对象互斥 | Description
+密钥 | 类型 |    与以下对象互斥 | Description
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
@@ -147,7 +147,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 2.  云中的远程计算机 – 运行 Linux 的 [Azure Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) – 如果数据集较大，并且你要纵向扩展到 Azure 云中可用的大型计算机，则可以使用此选项。 
 3.  Azure Batch AI 群集 — 可设置为横向扩展并以并行方式运行自动化机器学习迭代的托管群集。 
 
-
+<a name='configure-experiment'/>
 ## <a name="configure-your-experiment-settings"></a>配置试验设置
 
 可以使用多个控件来配置自动化机器学习试验。 通过实例化 `AutoMLConfig` 对象来设置这些参数。

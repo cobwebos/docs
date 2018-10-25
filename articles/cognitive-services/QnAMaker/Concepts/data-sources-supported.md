@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 982bcbb9060a3f29000de2a0487b61dc58e24f6e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 36d74c7fba472956d57344977de79a4cbfd2cf02
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855453"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648507"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -90,7 +90,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 DOC 文件中结构化问答的格式采用每行都有交替的问题和回答的形式，一个问题占据一行，后面的一行是其回答，如下所示： 
 
-```
+```text
 Question1
 
 Answer1

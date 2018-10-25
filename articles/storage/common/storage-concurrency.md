@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 9c36347db2d1678e79e5ad80cda491f77850c4a6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525233"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025288"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -50,29 +50,29 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 ```csharp
 // Retrieve the ETag from the newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the etag in response.
-string orignalETag = blockBlob.Properties.ETag;
+// to storage blob service which returns the ETag in response.
+string originalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
 string helloText = "Blob updated by a third party.";
 
-// No etag, provided so orignal blob is overwritten (thus generating a new etag)
+// No ETag provided so original blob is overwritten (thus generating a new ETag)
 blockBlob.UploadText(helloText);
 Console.WriteLine("Blob updated. Updated ETag = {0}",
 blockBlob.Properties.ETag);
 
-// Now try to update the blob using the orignal ETag provided when the blob was created
+// Now try to update the blob using the original ETag provided when the blob was created
 try
 {
-    Console.WriteLine("Trying to update blob using orignal etag to generate if-match access condition");
+    Console.WriteLine("Trying to update blob using original ETag to generate if-match access condition");
     blockBlob.UploadText(helloText,accessCondition:
-    AccessCondition.GenerateIfMatchCondition(orignalETag));
+    AccessCondition.GenerateIfMatchCondition(originalETag));
 }
 catch (StorageException ex)
 {
     if (ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
     {
-        Console.WriteLine("Precondition failure as expected. Blob's orignal etag no longer matches");
+        Console.WriteLine("Precondition failure as expected. Blob's original ETag no longer matches");
         // TODO: client can decide on how it wants to handle the 3rd party updated content.
     }
     else

@@ -3,20 +3,20 @@ title: 如何在 Azure 虚拟机中启用嵌套虚拟化 | Microsoft 文档
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
-ms.author: cynthn
+ms.author: zarhoads
 ms.date: 10/09/2017
 ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 0d47b89a468aade8cec51ec04709ed99bfd4684c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e9b05751166ac200f4a9cdab4c7fe3ed797f2a10
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42139816"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465242"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 

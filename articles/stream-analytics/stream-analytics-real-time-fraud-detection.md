@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901708"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986026"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
@@ -39,7 +39,7 @@ ms.locfileid: "37901708"
 在开始之前，请确保做好以下准备：
 
 * 一个 Azure 帐户。
-* 呼叫事件生成器应用 [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，可以从 Microsoft 下载中心下载此应用。 将此包解压缩到计算机上的文件夹中。 如果想要查看代码，并在调试程序中运行该应用，可从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取应用源代码。 
+* 呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，可以从 Microsoft 下载中心下载此应用。 将此包解压缩到计算机上的文件夹中。 如果想要查看代码，并在调试程序中运行该应用，可从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取应用源代码。 
 
     >[!NOTE]
     >Windows 可能会阻止下载的 .zip 文件。 如果无法将其解压缩，请右键单击该文件，然后选择“属性”。 如果看到“此文件来自其他计算机，可能被阻止以帮助保护该计算机”的消息，则选择“取消阻止”选项，然后单击“应用”。
@@ -182,7 +182,7 @@ ms.locfileid: "37901708"
  
 3. 单击“添加流输入”并选择“事件中心”。 然后使用以下信息填充“新建输入”页：
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  CallStream   |  输入一个名称，用于标识作业的输入。   |
    |订阅   |  用户的订阅\<\> |  选择包含创建的事件中心的 Azure 订阅。   |
@@ -343,7 +343,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 4. 在“输出”窗格中，单击“添加”，然后选择“BIob 存储”。 使用以下信息填写“新建输出”页：
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名  |  CallStream-FraudulentCalls   |  输入一个名称，用于标识作业的输出。   |
    |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |

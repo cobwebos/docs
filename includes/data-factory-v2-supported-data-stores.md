@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/19/2018
+ms.date: 10/19/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 95647ff712cfb8244e3d3dcd6ed1fdc261508fbc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 3fbfe17d0f4d9516a5aee97b04e7ba38a2845bf3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46509257"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476291"
 ---
 | 类别 | 数据存储 | 支持用作源 | 支持用作接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支持 | 受[自我托管 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支持 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -25,6 +25,7 @@ ms.locfileid: "46509257"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-insance.md) | |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL 数据仓库](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure 搜索索引](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |

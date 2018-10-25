@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: c24bec7366ea62b3dd8f7a301c9d2d62c6dd6c7d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f61399a3a6cb5c67343e28e4364d8d796ffbc066
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859272"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457014"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
 GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元数据**。 此活动可用于以下方案：
@@ -61,6 +61,7 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 | 连接器/元数据 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | Azure SQL 数据库 | √ | √ | √ |
+| Azure SQL 数据库托管实例 | √ | √ | √ |
 | Azure SQL 数据仓库 | √ | √ | √ |
 | SQL Server | √ | √ | √ |
 
@@ -68,7 +69,7 @@ GetMetadata 活动将数据集作为必要输入，并输出可用作活动输�
 
 可以在 GetMetadata 活动字段列表中指定检索以下元数据类型：
 
-| 元数据类型 | 说明 |
+| 元数据类型 | Description |
 |:--- |:--- |
 | itemName | 文件或文件夹的名称。 |
 | itemType | 文件或文件夹的类型。 输出值为 `File` 或 `Folder`。 |

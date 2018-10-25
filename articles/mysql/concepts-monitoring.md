@@ -8,16 +8,16 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: 3c9e0acfe9f8ffb159cacf50923f249be175ea77
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 10/03/2018
+ms.openlocfilehash: c2248f185c5c1c5dd8c4e1d4a24e6145a82ec5cb
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981906"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091549"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
-监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解为 MySQL 服务器提供支持的资源的行为。 
+监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解服务器的行为。
 
 ## <a name="metrics"></a>度量值
 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
@@ -41,6 +41,9 @@ ms.locfileid: "45981906"
 |seconds_behind_master|复制延迟（秒）|Count|副本服务器针对主服务器延迟的秒数。|
 |network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
+
+## <a name="server-logs"></a>服务器日志
+可以在服务器上启用慢查询日志。 这些日志也可通过 OMS Log Analytics、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。

@@ -3,19 +3,19 @@ title: 什么是文本翻译 API？
 titlesuffix: Azure Cognitive Services
 description: 将文本翻译 API 集成到应用程序、网站、工具和其他解决方案中，提供多语言用户体验。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: c0004960b7a234d374ec0ae1bdc2f6576b197705
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: erhopf
+ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385018"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645005"
 ---
 # <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 
@@ -35,7 +35,7 @@ Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是�
 
 自定义翻译是核心 Microsoft Translator 服务的扩展，可以与文本翻译 API 配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
 
-使用自定义翻译，可以构建翻译系统来处理自己的业务或行业中使用的术语。 然后，就可以使用类别参数通过常规的 Microsoft 文本翻译 API 将自定义翻译系统轻松集成到现有的应用程序、工作流和网站中，而且可以跨多种类型的设备。 
+使用自定义翻译，可以构建翻译系统来处理自己的业务或行业中使用的术语。 然后，就可以使用类别参数通过常规的 Microsoft 文本翻译 API 将自定义翻译系统轻松集成到现有的应用程序、工作流和网站中，而且可以跨多种类型的设备。
 
 了解有关[语言自定义](customization.md)的详细信息
 
@@ -45,7 +45,7 @@ Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是�
 
 与 SMT 相比，NMT 不仅能够从原始翻译质量评分的立场提供更好的翻译，而且听起来更流畅、更类似于人类。 这种流畅性的主要原因在于 NMT 使用一个句子的完整语境来翻译单词。 SMT 仅考虑每个单词前面和后面几个单词的直接语境。
 
-NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区别是改进的翻译质量，尤其是针对中文、日语和阿拉伯语等语言。 
+NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区别是改进的翻译质量，尤其是针对中文、日语和阿拉伯语等语言。
 
 详细了解 [NMT 的工作原理](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 

@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 99c31293168fd5ff3e6b95a70dc481e01e4ac8b4
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0b95441fd2805308c601509f1afc477f72bde321
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400173"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476356"
 ---
 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "49400173"
    字段|Description
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 在这里，我们使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
-   订阅 |选择要使用的 Azure 订阅。 如果有多个订阅，请选择用于账单的订阅。
+   订阅 |选择要使用的 Azure 订阅。
    资源组 | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 在这里，我们使用 docs-aml。 
    位置 | 选择最靠近用户和数据资源的位置。 这是用于创建工作区的位置。
 

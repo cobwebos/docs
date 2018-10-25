@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969487"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954022"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>获准对 Azure CDN 启用自定义 HTTPS 的证书颁发机构
 
@@ -70,27 +70,6 @@ ms.locfileid: "46969487"
 - GlobalSign 根 CA
 - Go Daddy 根证书颁发机构 - G2
 - Go Daddy 安全证书颁发机构 - G2
-- Microsoft Authenticode(tm) 根颁发机构
-- Microsoft Exchange Services CA 2015
-- Microsoft 内部企业根
-- Microsoft IT ITO SSL CA 1
-- Microsoft IT SSL SHA1
-- Microsoft IT SSL SHA2
-- Microsoft IT TLS CA 1
-- Microsoft IT TLS CA 2
-- Microsoft IT TLS CA 4
-- Microsoft IT TLS CA 5
-- Microsoft 根颁发机构
-- Microsoft 根证书颁发机构
-- Microsoft 根证书颁发机构 2010
-- Microsoft 根证书颁发机构 2011
-- Microsoft 安全服务器 CA 2011
-- Microsoft 服务合作伙伴根
-- Microsoft 时间戳服务根
-- Microsoft Windows 硬件兼容性
-- MSIT CA Z2
-- MSIT 企业 CA 1
-- MSIT 企业 CA 3
 - RapidSSL RSA CA 2018
 - 根代理
 - Symantec 类 3 EV SSL CA - G3
@@ -102,12 +81,11 @@ ms.locfileid: "46969487"
 - Thawte RSA CA 2018
 - Thawte 时间戳 CA
 - TrustAsia TLS RSA CA
-- UTN-USERFirst-Object
 - VeriSign 类 3 扩展验证 SSL CA
 - VeriSign 类 3 扩展验证 SSL SGC CA
 - VeriSign 类 3 公共主要证书颁发机构 - G5
 - VeriSign 国际服务器 CA - 类 3
 - VeriSign 时间戳服务根
 - VeriSign 通用根证书颁发机构
-- WMSvc-SHA2-DALEDGE1008
+
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132757"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956368"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
 
@@ -104,7 +104,7 @@ ms.locfileid: "43132757"
 
 4. 请务必复制所使用的“租户 ID”（Azure AD 租户的 GUID）、“应用程序 ID”和密码。
 
-有关详细信息，请了解如何[使用 PowerShell 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+有关详细信息，请了解如何[使用 PowerShell 创建服务主体以访问资源](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>第 2 部分：为 Web 应用或 API 应用创建 Azure AD 应用程序标识
 

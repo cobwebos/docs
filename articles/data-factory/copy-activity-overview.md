@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542697"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457028"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
 ## <a name="overview"></a>概述
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-data-movement-activities.md)
+> * [版本 1](v1/data-factory-data-movement-activities.md)
 > * [当前版本](copy-activity-overview.md)
 
 在 Azure 数据工厂中，可使用复制活动在本地和云数据存储之间复制数据。 复制数据后，可对其进一步执行转换和分析操作。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
@@ -168,7 +168,7 @@ ms.locfileid: "38542697"
 
 “复制活动运行结果”->“输出”部分中也会返回复制活动执行详细信息和性能特征。 下面是一个详细清单；将只显示适用于用户复制方案的内容。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。
 
-| 属性名称  | 说明 | 单位 |
+| 属性名称  | Description | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |

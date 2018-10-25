@@ -2,20 +2,20 @@
 title: Durable Functions 中的永久业务流程 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实现永久业务流程。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0e3a3476c3fca6329634c87f933f895ec582f364
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094417"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987508"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -34,12 +34,11 @@ ms.locfileid: "44094417"
 > [!NOTE]
 > Durable Task Framework 会维护同一个实例 ID，但在内部会为由 `ContinueAsNew` 重置的业务流程协调程序函数创建一个新的“执行 ID”。 此执行 ID 通常不对外公开，但在调试业务流程执行时知道该 ID 可能比较有用。
 
-> [!NOTE]
-> `ContinueAsNew` 方法尚不可在 JavaScript 中使用。
-
 ## <a name="periodic-work-example"></a>定期工作示例
 
 永久业务流程的一个用例是需要无限期执行定期工作的代码。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -54,6 +53,23 @@ public static async Task Run(
 
     context.ContinueAsNew(null);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    yield context.df.callActivity("DoCleanup");
+
+    // sleep for one hour between cleanups
+    const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
+    yield context.df.createTimer(nextCleanup);
+
+    context.df.continueAsNew(undefined);
+});
 ```
 
 此示例与计时器触发的函数之间的区别是此处的清理触发时间不基于计划。 例如，每小时执行某个函数的 CRON 计划将在 1:00、2:00 和 3:00 等时间执行，并且可能会遇到重叠问题。 不过，在此示例中，如果清理花费 30 分钟，则它将计划在 1:00、2:30、4:00 等时间执行，因此不可能重叠。

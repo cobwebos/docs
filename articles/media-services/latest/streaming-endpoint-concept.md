@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 5ba80df26731f9687ec4518d7f12f3c2e3cb0665
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 224f60d5b06f87e7b619e6c56b161ec700c657b9
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379172"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986593"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -28,7 +28,7 @@ ms.locfileid: "49379172"
 
 下表描述了类型：  
 
-|Type|缩放单元|Description|
+|类型|缩放单元|Description|
 |--------|--------|--------|  
 |**标准流式处理终结点**（推荐）|0|标准类型是适用于几乎所有流式处理环境和受众规模的推荐选项。 标准类型会自动缩放出站带宽。 <br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果你希望拥有大量受众和并发观看者，请通过 amsstreaming@microsoft.com 与我们联系，获取有关你是否需要转到高级类型的指导。 |
 |**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |

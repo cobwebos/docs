@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094336"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954758"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ ms.locfileid: "43094336"
 在计算机上下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
-按照[此文](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)各节中的说明执行以下任务： 
+按照[此文](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)各节中的说明执行以下任务： 
 
 1. **创建 Azure Active Directory 应用程序**。 在 Azure Active Directory 中创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
 2. 获取**应用程序 ID** 和**身份验证密钥**，并记下稍后要在本教程中使用的这些值。 

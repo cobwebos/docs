@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 0e74406d79484483053ca7d4b89b096c3f70e298
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eb046e62b5ed2d9512af0d25908c3253962f5a6a
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095118"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954653"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 
@@ -35,7 +35,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 若要让 HDInsight 群集有效地使用此文件夹结构，Data Lake Store 管理员必须根据表中所述分配适当的权限。 表中所示的权限对应于访问 ACL，而不是默认 ACL。 
 
 
-|文件夹  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
+|Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |/ | rwxr-x--x  |admin |admin  |服务主体 |--x  |FINGRP   |r-x         |
 |/clusters | rwxr-x--x |admin |admin |服务主体 |--x  |FINGRP |r-x         |
@@ -47,7 +47,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 - **Service principal** 是与帐户关联的 Azure Active Directory (AAD) 服务主体。
 - **FINGRP** 是在 AAD 中创建的用户组，其中包含财务组织中的用户。
 
-有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+有关如何创建 AAD 应用程序（以及创建服务主体）的说明，请参阅[创建 AAD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 有关如何在 AAD 中创建用户组的说明，请参阅[在 Azure Active Directory 中管理组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 需要考虑一些要点。
 
@@ -56,7 +56,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 - 如果不同的 AAD 服务主体可以在 **/clusters/finance** 下创建群集，则粘性位（如果已针对 **finance** 文件夹设置）可确保一个服务主体创建的文件夹不能被另一个服务主体删除。
 - 设置好文件夹结构和权限后，HDInsight 群集创建过程会在 **/clusters/finance/** 下面创建一个特定于群集的存储位置。 例如，名为 fincluster01 的群集的存储可以是 **/clusters/finance/fincluster01**。 下表显示了 HDInsight 群集创建的文件夹的所有权和权限。
 
-    |文件夹  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
+    |Folder  |权限  |拥有用户  |拥有组  | 命名用户 | 命名用户权限 | 命名组 | 命名组权限 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
     |/clusters/finanace/ fincluster01 | rwxr-x---  |Service Principal |FINGRP  |- |-  |-   |-  | 
    

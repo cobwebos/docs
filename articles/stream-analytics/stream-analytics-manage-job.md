@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433984"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985635"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通过创建流分析作业来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
  
@@ -37,7 +37,7 @@ ms.locfileid: "47433984"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。  
 * 登录到 [Azure 门户](https://portal.azure.com/)。  
-* 可以从 Microsoft 下载中心下载电话呼叫事件生成器应用 [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，也可以从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取源代码。  
+* 可以从 Microsoft 下载中心下载电话呼叫事件生成器应用 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)，也可以从 [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) 获取源代码。  
 
 ## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心 
 
@@ -49,7 +49,7 @@ ms.locfileid: "47433984"
    ![查找事件中心](media/stream-analytics-manage-job/find-eh.png)
 3. 使用以下值填写“创建命名空间”窗格：  
 
-   |**设置**  |建议的值 |**说明**  |
+   |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
    |名称     | myEventHubNS        |  用于标识事件中心命名空间的唯一名称。       |
    |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
@@ -89,7 +89,7 @@ ms.locfileid: "47433984"
 
 在启动 TelcoGenerator 应用之前，应该对其进行配置，以便将数据发送到此前创建的 Azure 事件中心。
 
-1. 提取 [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) 文件的内容。  
+1. 提取 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) 文件的内容。  
 2. 在所选文本编辑器中打开 `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` 文件（该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）  
 
 3. 使用以下详细信息更新配置文件中的 <appSettings> 元素：
@@ -130,7 +130,7 @@ ms.locfileid: "47433984"
 
 3. 使用以下值填写“新建流分析作业”窗格：  
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称     |  ASATutorial       |   用于标识事件中心命名空间的唯一名称。      |
    |订阅    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
@@ -153,7 +153,7 @@ ms.locfileid: "47433984"
 
 3. 选择“+添加流输入”（引用输入是指静态查找数据，本教程中不需使用该数据），接着选择“事件中心”，然后使用以下值填写窗格：  
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名     |  CallStream       |  提供用于标识输入的友好名称。 输入别名只能包含字母数字字符、连字符和下划线，而且长度必须介于 3 到 63 个字符之间。       |
    |订阅    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
@@ -175,7 +175,7 @@ ms.locfileid: "47433984"
 
 3. 选择“+添加” > “Power BI”，使用以下详细信息填充窗体（可以提供友好名称来标识“输出别名”、“数据集名称”和“表名”，如表中所示），然后选择“授权”：  
 
-   |**设置**  |建议的值  |
+   |**设置**  |**建议的值**  |
    |---------|---------|---------|
    |输出别名  |  MyPBIoutput  |
    |数据集名称  |   ASAdataset  | 
@@ -260,7 +260,7 @@ ms.locfileid: "47433984"
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>将 PowerBI 仪表板嵌入到 Web 应用程序中
 
-在本教程的此部分，请使用 PowerBI 团队创建的示例性 [ASP.NET](http://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
+在本教程的此部分，请使用 PowerBI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
 在本教程中，我们将按照用户拥有数据应用程序的情况执行相关步骤。 若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。 由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 integrate-dashboard-web-app 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：

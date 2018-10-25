@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 169ebe45287721305800e511174784417569d7b4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352704"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465435"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>使用只读副本对只读的查询工作负荷进行负载均衡（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "49352704"
 
 为这些副本预配的计算大小与常规数据库连接使用的读写副本相同。 “读取扩展”功能允许使用一个只读副本的容量而不是共享读写副本，对 SQL 数据库只读工作负载进行负载均衡。 这样，只读工作负荷将与主要的读写工作负荷相隔离，不会影响其性能。 该功能适用于其中包括逻辑上独立的只读工作负荷（例如分析）的应用程序，因此可以在不增加成本的情况下使用此额外容量来获得性能优势。
 
-若要将读取横向扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式启用此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) 命令，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)方法。
+若要将读取横向扩展功能用于特定的数据库，必须在创建数据库时或者在之后通过更改其配置来显式启用此功能，可以采用以下方式执行此操作：使用 PowerShell 调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) 命令，或者通过 Azure 资源管理器 REST API 使用[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)方法。
 
 为某个数据库启用读取横向扩展后，会根据在应用程序的连接字符串中配置的 `ApplicationIntent` 属性将连接到该数据库的应用程序定向到该数据库的读写副本或只读副本。 有关 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
@@ -118,7 +118,7 @@ Body:
 }
 ```
 
-有关详细信息，请参阅[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)。
+有关详细信息，请参阅[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>结合使用读取扩展与异地复制的数据库
 
@@ -130,4 +130,4 @@ Body:
 ## <a name="next-steps"></a>后续步骤
 
 - 有关使用 PowerShell 设置读取横向扩展的信息，请参阅 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) 或 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) cmdlet。
-- 有关使用 REST API 设置读取横向扩展的信息，请参阅[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)。
+- 有关使用 REST API 设置读取横向扩展的信息，请参阅[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。

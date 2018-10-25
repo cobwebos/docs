@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 608323c467e0106af816c3432dec24090a9a9599
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d10e9d3d2b6fe339b04d3c0754290313312bc2b7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442927"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427274"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
@@ -36,7 +36,7 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 ## <a name="server-metrics"></a>服务器指标
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
-|指标|指标显示名称|单位|聚合类型|说明|
+|指标|指标显示名称|单位|聚合类型|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|
 |CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/01/2018
-ms.openlocfilehash: 6a4d5fd2bb649b2a0b0d23f4f752442f854e5098
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: ee291f24a1ad77f84e7cdb8cf4c687af7dfa3f17
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264895"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986213"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
@@ -86,7 +86,7 @@ ms.locfileid: "35264895"
 下面的示例将从 CSV 文件导入表：
 1. 右键单击要导入的数据库的表。 
 2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步” 。 
-3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” 复选框。 单击“资源组名称” 的 Azure 数据工厂。
+3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” 复选框。 单击“下一步”。
 4. 选择编码和要导入的列，然后单击“下一步”。 
 5. 在“导入数据”页上，单击“下一步”。 向导相应地导入数据。
 
@@ -115,4 +115,4 @@ ms.locfileid: "35264895"
 
 ## <a name="next-steps"></a>后续步骤
 - 另一种迁移方法，请参阅[在 Azure Database for MySQL 中使用转储和还原来迁移 MySQL 数据库](concepts-migrate-dump-restore.md)。
-- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](http://aka.ms/datamigration)。 
+- 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://aka.ms/datamigration)。 

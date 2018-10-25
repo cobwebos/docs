@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376799"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986437"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>教程： 提供高可用性的 MySQL 数据库
 
@@ -65,16 +65,15 @@ Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。
 - 公共 IP 地址 （适用于主 MySQL 群集 VM）
 - 三个 Linux 虚拟机以托管 MySQL 群集
 
-1. 登录到管理门户：
-    - 有关集成的系统部署，则门户地址将因你的解决方案的区域和外部域名。 它将采用的格式 https://adminportal.&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-    - 如果使用的 Azure Stack 开发工具包 (ASDK)，则门户地址是[ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external)。
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. 选择**\+** **创建资源** > **计算**，，然后**MySQL 复制**。
 
-   ![自定义模板部署](media/azure-stack-tutorial-mysqlrp/createcluster1.png)
+   ![自定义模板部署](media/azure-stack-tutorial-mysqlrp/1.png)
 
 3. 提供了有关基本部署信息**基础知识**页。 查看默认值并根据需要更改，单击**确定**。<br><br>至少，提供以下信息：
-   - 部署名称 （默认值为 mysql）
+   - 部署名称 （默认值为 mymysql）
    - 应用程序的根密码。 提供与一个 12 字符的字母数字密码**没有特殊字符**
    - 应用程序数据库名称 （默认值为 bitnami）
    - MySQL 数据库副本要创建的 Vm 数 （默认值为 2）
@@ -82,22 +81,22 @@ Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。
    - 选择要使用或创建一个新的资源组
    - 选择的位置 （默认值为本地对于 ASDK）
 
-   ![部署基础知识](media/azure-stack-tutorial-mysqlrp/createcluster2.png)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "部署基础知识")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
 
 4. 上**环境配置**页上，提供以下信息，然后单击**确定**: 
    - 密码或 SSH 公钥用于安全外壳 (SSH) 身份验证。 如果使用的密码，它必须包含字母、 数字和**可以**包含特殊字符
    - VM 大小 （默认为标准 D1 v2 Vm）
    - 数据磁盘大小以 GB 单击**确定**
 
-   ![环境配置](media/azure-stack-tutorial-mysqlrp/createcluster3.png)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "环境配置")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
 5. 对部署进行复查**摘要**。 （可选） 可以下载自定义的模板和参数，然后依次**确定**。
 
-   ![摘要](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "摘要")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
 6. 单击**创建**上**购买**页后，可以开始部署。
 
-   ![购买](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   ![购买](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > 部署将需要大约一小时。 请确保部署已完成，然后再继续已完全配置 MySQL 群集。 
@@ -110,11 +109,11 @@ Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。
 
 1. 在管理员门户中，导航到部署 MySQL 群集时创建的资源组，并选择网络安全组 (**默认子网 sg**):
 
-   ![开门](media/azure-stack-tutorial-mysqlrp/nsg1.png)
+   ![开门](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. 选择**入站安全规则**，然后单击**添加**。<br><br>输入**3306**中**目标端口范围**并选择性地提供中的说明**名称**并**说明**字段。 单击添加以关闭入站的安全规则对话框。
 
-   ![开门](media/azure-stack-tutorial-mysqlrp/nsg2.png)
+   ![开门](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>配置 MySQL 群集外部访问
 可以作为 Azure Stack MySQL 服务器的主机添加 MySQL 群集之前，必须启用外部访问。
@@ -167,9 +166,8 @@ MySQL 群集创建、 配置，并由 Azure Stack 操作员添加为 Azure Stack
 > [!NOTE]
 > 以下步骤从运行在 Azure Stack 用户门户租户用户提供 MySQL 服务器功能 （Microsoft.MySQLAdapter 服务） 的订阅。
 
-1. 登录到用户门户：
-    - 有关集成的系统部署，则门户地址将因你的解决方案的区域和外部域名。 它将采用的格式 https://portal.&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-    - 如果您使用的 Azure Stack 开发工具包 (ASDK)，则用户门户地址是[ https://portal.local.azurestack.external ](https://portal.local.azurestack.external)。
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. 选择**\+** **创建资源** > **数据\+存储**，然后**MySQL 数据库**.<br><br>提供所需的数据库属性的信息包括名称、 排序规则、 订阅以使用和要使用的部署位置。 
 

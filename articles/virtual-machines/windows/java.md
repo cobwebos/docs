@@ -3,7 +3,7 @@ title: 使用 Java 创建和管理 Azure 虚拟机 |Microsoft Docs
 description: 使用 Java 和 Azure 资源管理器部署虚拟机及其所有支持资源。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: cynthn
-ms.openlocfilehash: e4c77514bb38b6c3c5766bdb4af22e5271c9bffa
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: 00c242ae75e8a581e2b403bac8e75f6b0bb421ad
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525224"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955497"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -117,7 +117,7 @@ ms.locfileid: "31525224"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../azure-resource-manager/resource-group-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
@@ -298,7 +298,7 @@ input.nextLine();
 > 
 >
 
-如果要使用现有磁盘而不是商城映像，请使用以下代码： 
+如果要使用现有磁盘而不是市场映像，请使用以下代码： 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk") 

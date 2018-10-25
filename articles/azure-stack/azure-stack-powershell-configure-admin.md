@@ -1,6 +1,6 @@
 ---
-title: 使用连接到 Azure Stack 操作员的 PowerShell |Microsoft Docs
-description: 了解如何使用连接到 Azure Stack 操作员的 PowerShell
+title: 以操作员身份使用 PowerShell 连接到 Azure Stack | Microsoft Docs
+description: 了解如何以操作员身份使用 PowerShell 连接到 Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/24/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: aa86b44364ee84a9640fe0b39b6279982f5594ad
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 63fd864ebda1cb766792b99a2725fb069d5b5f2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982519"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024063"
 ---
-# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>连接到使用 PowerShell 的 Azure Stack 操作员
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -29,7 +29,7 @@ ms.locfileid: "45982519"
 
 ## <a name="prerequisites"></a>必备组件
 
-如果已[通过 VPN 建立连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)，请通过[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或基于 Windows 的外部客户端运行以下先决条件操作。 
+运行以下先决条件[开发工具包](.\asdk\asdk-connect.md#connect-to-azure-stack-with-remote-desktop)或基于 Windows 的外部客户端是否[连接到通过 VPN ASDK](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn)。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  

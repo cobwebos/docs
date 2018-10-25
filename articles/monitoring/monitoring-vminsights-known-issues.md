@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 819c3e74355cf80c7a998abb8b02b10c9e077059
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062761"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385073"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 的已知问题
 
 下面是用于 VM 的 Azure Monitor 的“运行状况”功能的已知问题：
 
+- 即使在单个 VM 中启动并完成了载入，但运行状况功能也会载入到连接到 Log Analytics 工作区的所有 VM。
+- 如果 Azure VM 由于被移除或删除而不存在了，那么它将在 VM 列表视图中显示三至七天。 此外，单击已移除或已删除的 VM 的状态会为其启动“运行状况诊断”视图，然后进入加载循环。 选择已删除的 VM 的名称会启动边栏选项卡，其中显示一条消息，说明已删除 VM。
 - 此版本的运行状况条件的时间段和频率不能修改。 
 - 无法禁用运行状况条件。 
 - 登记后，可能需要一定的时间才能通过“Azure Monitor”->“虚拟机”->“运行状况”或“VM 资源”边栏选项卡 ->“见解”查看数据
@@ -36,9 +38,26 @@ ms.locfileid: "47062761"
 - 关闭 VM 会将其部分运行状况条件更新为严重状况，另一些更新为正常状况，VM 的总状况为严重状况。
 - 运行状况警报严重性不能修改，只能启用或禁用。  另外，某些严重性会根据运行状况条件的状态进行更新。
 - 修改某个运行状况条件实例的任何设置时，也会修改 VM 上同一类型的所有运行状况条件实例的相同设置。 例如，如果修改对应于逻辑磁盘 C: 的磁盘可用空间运行状况条件实例的阈值，则该阈值会应用到所有其他针对同一 VM 发现和监视的逻辑磁盘。   
-- 某些 Windows 运行状况条件（例如 DNS 客户端服务运行状况）的阈值不可修改，因为其运行状况已根据上下文锁定为服务或实体的“正在运行”、“可用”状态。  在未来版本中，此值不由数字 4 来代表，而是会转换为实际的显示字符串。  
-- 某些 Linux 运行状况条件（例如逻辑磁盘运行状况）的阈值不可修改，因为它们已经设置为在状况不正常时触发。  这些条件指示某个项目是联机还是脱机，是启用还是禁用，并通过显示值 1 或 0 来代表和指示相同的意思。
-- 在对预先选择的订阅和资源组使用“Azure Monitor”->“虚拟机”->“运行状况”-> 任何列表视图在任何资源组中大规模更新“资源组”筛选器时，会导致列表视图显示“无结果”。  返回到“Azure Monitor”->“虚拟机”->“运行状况”选项卡，选择所需的订阅和资源组，然后导航到列表视图。
+- 针对 Windows VM 的以下运行状况条件的阈值不可修改，因为其运行状态已设置为“运行”或“可用”。 从[工作负载监视器 API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager)查询时，若出现以下情况，运行状态会显示 comparisonOperator 值，LessThan 或 GreaterThan，以及服务或实体的阈值 4：
+   - DNS 客户端服务运行状况 - 服务未运行 
+   - DHCP 客户端服务运行状况 - 服务未运行 
+   - RPC 服务运行状况 - 服务未运行 
+   - Windows 防火墙服务运行状况 - 服务未运行
+   - Windows 事件日志服务运行状况 - 服务未运行 
+   - 服务器服务运行状况 - 服务未运行 
+   - Windows 远程管理服务运行状况 - 服务未运行 
+   - 文件系统错误或损坏 - 逻辑磁盘不可用
+
+- 以下 Linux 运行状况条件的阈值不可修改，因为它们的运行状态已设置为“true”。  从实体的工作负载监视 API 查询时，运行状态会显示带有值 LessThan 的 comparisonOperator 以及阈值 1，具体取决于上下文：
+   - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
+   - 磁盘状态 - 磁盘未联机/不可用
+   - 网络适配器状态 - 网络适配器已禁用  
+
+- Windows 中的总 CPU 使用率运行状况条件显示，门户的阈值“不等于 4”，并且从工作负载监视 API 查询，且 CPU 使用率超过 95% 时，系统队列长度大于 15。 无法在此发布中修改此运行状况条件。  
+- 即使门户或工作负载监视器 API 可能会立即更新，但配置更改（例如更新阈值）需要最多 30 分钟才会生效。  
+- Windows 中没有单独的处理器和逻辑处理器级别的运行状况条件，只有总 CPU 使用率可用于 Windows VM。  
+- 为每个运行状况条件定义的预警规则不会在 Azure 门户中公开。 它们只是可以从[工作负载监视器 API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) 中配置，以启用或禁用运行状况预警规则。  
+- 无法从 Azure 门户为运行状况警报分配 [操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。 必须使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，这样针对 VM 触发的所有运行状况警报都会触发相同的操作组。 如传统的 Azure 警报一样，每个运行状况警报规则没有单独的操作组的概念。 此外，触发运行状况警报时，仅支持配置为通过发送电子邮件或 SMS 进行通知的操作组。 
 
 ## <a name="next-steps"></a>后续步骤
 查看[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。

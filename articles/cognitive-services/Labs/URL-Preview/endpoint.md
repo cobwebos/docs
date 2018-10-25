@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 0464ac80c451ada46561de78b5ba0860c59a9e34
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f75fc73bc1268db7b6f9f8a1f4fd602ee57281e8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868640"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464942"
 ---
 # <a name="project-url-preview-endpoint"></a>项目 URL 预览终结点
 
@@ -31,7 +31,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ````
 
 ### <a name="query-parameters"></a>查询参数
-|名称|值|Type|必选|  
+|名称|值|类型|必选|  
 |----------|-----------|----------|--------------|  
 |q|要预览的 URL|String |是|
 |safeSearch|非法的成人内容或盗版内容将被阻止且系统会显示错误代码 400，并且不会返回 *isFamilyFriendly* 标志。 <p>对于合法的成人内容，行为如下。 状态代码返回 200，并且 *isFamilyFriendly* 标志设置为 false。<ul><li>safeSearch=strict：将不会返回标题、说明、URL 和图像。</li><li>safeSearch=moderate：将获取标题、URL 和说明，但不获取说明性图像。</li><li>safeSearch=off：获取所有响应对象/元素 – 标题、URL、说明和图像。</li></ul> |String|非必需。 </br> 默认为 safeSearch=strict。| 

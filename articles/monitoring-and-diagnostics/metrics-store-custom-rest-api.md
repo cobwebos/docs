@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c01440437eae3cb076627ab9f2221e33b833f472
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d36697e6b5765ecf35ed9b3add45cff6c33823a5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977224"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958208"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
@@ -25,7 +25,7 @@ ms.locfileid: "46977224"
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>创建服务主体并授权其发布指标 
 
-使用[创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 
+使用[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 
 
 在完成此过程时记下以下内容： 
 
@@ -103,7 +103,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
 1. 在左侧菜单中，单击“监视” 
 
-1. 在“监视”页面上单击“指标”。 
+1. 在“监视”页上单击“指标”。 
 
    ![访问令牌](./media/metrics-store-custom-rest-api/metrics.png) 
 

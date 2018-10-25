@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0baab86c0cb76bfeecb30cdb62c968a476e402b9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296765"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024344"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 Java 和 MySQL Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "44296765"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[将容器化 Spring Boot 应用部署到 Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)。
 >
 
-本教程介绍如何在 Azure 中创建 Java Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，即可使用 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序将数据存储到[用于 MySQL 的 Azure 数据库](https://docs.microsoft.com/azure/mysql/overview)，后者运行在 [Azure 应用服务 Web 应用](app-service-web-overview.md)中。
+本教程介绍如何在 Azure 中创建 Java Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，即可使用 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序将数据存储到[用于 MySQL 的 Azure 数据库](../mysql/overview.md)，后者运行在 [Azure 应用服务 Web 应用](app-service-web-overview.md)中。
 
 ![在 Azure appservice 中运行的 Java 应用](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -122,7 +122,7 @@ select * from todo_item;
 
 ## <a name="create-an-azure-mysql-database"></a>创建 Azure MySQL 数据库
 
-此步骤使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 创建[用于 MySQL 的 Azure 数据库](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md)实例。 请配置示例应用程序，以便在本教程后面使用该数据库。
+此步骤使用 [Azure CLI](/cli/azure/install-azure-cli) 创建[用于 MySQL 的 Azure 数据库](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md)实例。 请配置示例应用程序，以便在本教程后面使用该数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 在运行示例应用之前，请在 Web 应用上设置应用程序设置，以便使用在 Azure 中创建的 Azure MySQL 数据库。 这些属性以环境变量的形式公开给 Web 应用程序，并替代在已打包 Web 应用的 application.properties 中设置的值。 
 
-在 Cloud Shell 的 CLI 中使用 [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) 设置应用程序设置：
+在 Cloud Shell 的 CLI 中使用 [`az webapp config appsettings`](/cli/azure/webapp/config/appsettings) 设置应用程序设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>获取 FTP 部署凭据 
 可以通过不同的方法将应用程序部署到 Azure appservice，包括 FTP、本地 Git、GitHub、Azure DevOps 和 BitBucket。 就本示例来说，请通过 FTP 将此前在本地计算机上生成的 .WAR 文件部署到 Azure 应用服务。
 
-若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) 命令： 
+若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment#az-webapp-deployment-list-publishing-profiles) 命令： 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -440,25 +440,25 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），则可通过在 Cloud Shell 中运行以下命令将其删除： 
-  
+如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），则可通过在 Cloud Shell 中运行以下命令将其删除： 
+  
 ```azurecli-interactive
-az group delete --name myResourceGroup 
-``` 
+az group delete --name myResourceGroup 
+``` 
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
 > [!div class="checklist"]
-> * 在 Azure 中创建 MySQL 数据库
-> * 将示例 Java 应用连接到 MySQL
-> * 将应用部署到 Azure
-> * 更新并重新部署应用
-> * 从 Azure 流式传输诊断日志
-> * 在 Azure 门户中管理应用
+> * Create a MySQL database in Azure
+> * Connect a sample Java app to the MySQL
+> * Deploy the app to Azure
+> * Update and redeploy the app
+> * Stream diagnostic logs from Azure
+> * Manage the app in the Azure portal
 
-转到下一教程，了解如何向应用映射自定义 DNS 名称。
+Advance to the next tutorial to learn how to map a custom DNS name to the app.
 
 > [!div class="nextstepaction"] 
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)

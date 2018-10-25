@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352962"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467035"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL 数据库数据发现和分类
 
@@ -140,10 +140,10 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 
-- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate) - 创建或更新给定列的敏感度标签
-- [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete) - 删除给定列的敏感度标签
-- [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get) - 获取给定列的敏感度标签
-- [按数据库列出](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase) - 获取给定数据库的敏感度标签
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
+- [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
+- [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
+- [按数据库列出](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) - 获取给定数据库的敏感度标签
 
 ## <a id="subheading-5"></a>后续步骤
 

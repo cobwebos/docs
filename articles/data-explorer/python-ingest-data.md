@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 071099f2f2adfcff95b6066252d74c273880fe12
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.date: 10/16/2018
+ms.openlocfilehash: 5ebf7b580acb404c8016ba39fb522bc3b2ba7b84
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392843"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953914"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>快速入门：使用 Azure 数据资源管理器 Python 库引入数据
 
@@ -35,7 +35,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
 安装 azure-kusto-data 和 azure-kusto-ingest。
 
-```python
+```
 pip install azure-kusto-data
 pip install azure-kusto-ingest
 ```

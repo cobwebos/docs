@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: a3285c5f6f2d50d3188f8e103c68ae702e8804e7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1b2b06c02dc54c4369dd8490b714d1444d4b3b01
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/24/2018
-ms.locfileid: "49952996"
+ms.locfileid: "49986179"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 验证报表
 使用 Azure Stack 就绪性检查器工具运行验证来为 Azure Stack 环境的部署和维护提供支持。 该工具将结果写入到 .json 报表文件。 该报表显示有关 Azure Stack 部署的先决条件状态的详细数据和汇总数据。 该报表还显示有关现有 Azure Stack 部署的机密轮换的信息。  

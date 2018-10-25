@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351856"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466063"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
@@ -106,11 +106,11 @@ ms.locfileid: "49351856"
 |[弹性池 - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|更新现有的弹性池。|
 |[弹性池活动](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
 |[弹性池数据库活动](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
-|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|获取数据库。|
-|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|更新现有的数据库。|
+|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
+|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
 
 ## <a name="next-steps"></a>后续步骤
 

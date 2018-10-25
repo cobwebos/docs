@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296271"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428413"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/fundamentals/active-directory-administer.md)中的有效用户标识。
@@ -27,7 +27,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 
-客户端应用程序（如 Excel 和 Power BI Desktop）和工具（如 SSMS 和 SSDT）更新到最新版时，会安装最新版本的库。 Power BI Desktop、SSMS 和 SSDT 每月更新一次。 Excel [随 Office 365 一起更新](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新频率较低，并且某些组织会使用延期频道将更新延迟 3 个月。
+客户端应用程序（如 Excel 和 Power BI Desktop）和工具（如 SSMS 和 SSDT）更新到最新版时，会安装最新版本的库。 Power BI Desktop、SSMS 和 SSDT 每月更新一次。 Excel [随 Office 365 一起更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新频率较低，并且某些组织会使用延期频道将更新延迟 3 个月。
 
 根据使用的客户端应用程序或工具，身份验证类型和登录方式可能有所不同。 每个应用程序可能支持连接到云服务（如 Azure Analysis Services）的不同功能。
 

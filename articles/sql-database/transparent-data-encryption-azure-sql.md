@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0d5b7e484024294eb5c95b632dbef85c377b717e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353012"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469021"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -113,17 +113,17 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 | 命令 | Description |
 | --- | --- |
-|[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
-|[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|
-|[删除服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|从 SQL Server 实例中删除 Key Vault 密钥|
-|[获取服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|从 SQL Server 实例中获取特定的 Key Vault 密钥|
-|[按服务器列出服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|获取 SQL Server 实例的 Key Vault 密钥 |
-|[创建或更新加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|设置 SQL Server 实例的透明数据加密保护器|
-|[获取加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|获取 SQL Server 实例的透明数据加密保护器|
-|[按服务器列出加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|获取 SQL Server 实例的透明数据加密保护器 |
-|[创建或更新透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|为数据库启用或禁用透明数据加密|
-|[获取透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|获取数据库的透明数据加密配置|
-|[列出透明数据加密配置结果](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|获取数据库的加密结果|
+|[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
+|[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|
+|[删除服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|从 SQL Server 实例中删除 Key Vault 密钥|
+|[获取服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|从 SQL Server 实例中获取特定的 Key Vault 密钥|
+|[按服务器列出服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|获取 SQL Server 实例的 Key Vault 密钥 |
+|[创建或更新加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|设置 SQL Server 实例的透明数据加密保护器|
+|[获取加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|获取 SQL Server 实例的透明数据加密保护器|
+|[按服务器列出加密保护器](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|获取 SQL Server 实例的透明数据加密保护器 |
+|[创建或更新透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|为数据库启用或禁用透明数据加密|
+|[获取透明数据加密配置](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|获取数据库的透明数据加密配置|
+|[列出透明数据加密配置结果](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|获取数据库的加密结果|
 
 ## <a name="next-steps"></a>后续步骤
 

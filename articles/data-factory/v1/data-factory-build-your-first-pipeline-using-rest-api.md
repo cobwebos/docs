@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736693"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955580"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "45736693"
 ## <a name="prerequisites"></a>先决条件
 * 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。
 * 在计算机上安装 [Curl](https://curl.haxx.se/dlwiz/) 。 配合使用 CURL 工具与 REST 命令来创建数据工厂。
-* 遵循 [此文](../../azure-resource-manager/resource-group-create-service-principal-portal.md) 的说明：
+* 遵循 [此文](../../active-directory/develop/howto-create-service-principal-portal.md) 的说明：
   1. 在 Azure Active Directory 中创建名为 **ADFGetStartedApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。

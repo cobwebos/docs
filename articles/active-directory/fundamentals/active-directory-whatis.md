@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393315"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957541"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 Azure Active Directory (Azure AD) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 Azure AD 将核心目录服务、应用程序访问管理和标识保护融入单个解决方案中，提供基于标准的平台，可帮助开发人员根据集中的策略和规则实现对其应用的访问控制。
@@ -74,7 +74,7 @@ Azure AD 的多租户、地理分布和高可用性设计意味着可以依赖�
 注册免费的 30 天试用版并部署第一个云解决方案，请参阅 [Azure Active Directory Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>开发人员如何入门？
-注册免费的 30 天试用版并开始将应用与 Azure AD 集成，请参阅 [Azure Active Directory Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅 Azure Active directory 的[开发者指南](../develop/azure-ad-developers-guide.md)。
+注册免费的 30 天试用版并开始将应用与 Azure AD 集成，请参阅 [Azure Active Directory Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅 Azure Active directory 的[开发者指南](../develop/v1-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [详细了解 Azure 标识和访问管理的基础知识](identity-fundamentals.md)。

@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 媒体服务事件路由到自定义 Web 终结点 | Microsoft Docs
-description: 使用 Azure 事件网格订阅媒体服务作业状态更改事件。
+title: 使用 CLI 通过事件网格监视 Azure 媒体服务事件 | Microsoft Docs
+description: 本文介绍如何订阅事件网格以监视 Azure 媒体服务事件。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,22 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8145b4eb3c39511eb9cd0ed052c36b8338191d4f
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034835"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389490"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>使用 CLI 将 Azure 媒体服务事件路由到自定义 Web 终结点
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>使用 Azure CLI 创建并通过事件网格监视 Azure 媒体服务事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Azure 媒体服务作业状态更改事件，然后触发可查看结果的事件。 
-
-通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 本教程演示如何创建并设置 Webhook。
-
-完成本文所述步骤后，即可看到事件数据已发送到某个终结点。
+Azure 事件网格是针对云的事件处理服务。 本文将使用 Azure CLI 订阅 Azure 媒体服务帐户的事件。 然后，触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，将事件发送到收集并显示消息的 Web 应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,147 +31,88 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 - 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 你也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
-## <a name="enable-event-grid-resource-provider"></a>启用事件网格资源提供程序
+## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-首先需要执行的操作是确保订阅中已启用事件网格资源提供程序。 
+在订阅媒体服务帐户的事件之前，先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 在本文中，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-在 Azure 门户中执行以下操作：
+1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-1. 转到订阅。
-2. 选择订阅。
-3. 在“设置”下，选择“资源提供程序”。
-4. 搜索“EventGrid”。
-5. 请确保已注册事件网格。 如果未注册，则按“注册”按钮。  
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-## <a name="create-a-generic-azure-function-webhook"></a>创建通用 Azure 函数 Webhook 
+1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
-### <a name="create-a-message-endpoint"></a>创建消息终结点
+如果切换到“Azure 事件网格查看器”站点，将看到其中尚不具有任何事件。
+   
+[!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-在订阅事件网格的文章前，创建一个终结点来收集消息，方便你查看。
+## <a name="log-in-to-azure"></a>登录 Azure
 
-按照[通用 Webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function) 一文所述，创建由通用 Webhook 触发的函数。 本教程中使用了 C# 代码。
+登录 [Azure 门户](http://portal.azure.com)并启动 CloudShell 以执行 CLI 命令，如后续步骤中所示。
 
-创建 Webhook 后，通过单击 Azure 门户窗口顶部的“获取函数 URL”链接复制 URL。 不需要 URL 的末尾部分 (&clientID=default)。
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-![创建 Webhook](./media/job-state-events-cli-how-to/generic_webhook_files.png)
+如果选择在本地安装并使用 CLI，本主题要求使用 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
-### <a name="validate-the-webhook"></a>验证 Webhook
+## <a name="set-the-azure-subscription"></a>设置 Azure 订阅
 
-在向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。 有关详细信息，请参阅[事件网格安全性和身份验证](https://docs.microsoft.com/azure/event-grid/security-authentication)。 本节定义了要通过验证必须定义的两个部分。
+在以下命令中，为媒体服务帐户提供想要使用的 Azure 订阅 ID。 导航到[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)即可查看有权访问的订阅列表。
 
-#### <a name="update-the-source-code"></a>更新源代码
-
-创建 Webhook 后，浏览器中会显示 run.csx 文件。 将默认代码替换为以下代码。 
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    log.Info($"Webhook was triggered!");
-
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    string eventGridValidation = 
-        req.Headers.FirstOrDefault( x => x.Key == "Aeg-Event-Type" ).Value?.FirstOrDefault();
-
-    dynamic eventData = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"event: {eventData}");
-
-    if (eventGridValidation != String.Empty)
-    {
-        if (eventData[0].data.validationCode !=String.Empty && eventData[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent")
-        {
-            return req.CreateResponse(HttpStatusCode.OK, new 
-            {
-                validationResponse = eventData[0].data.validationCode
-            });
-        }
-    }
-    
-    log.Info(jsonContent);
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
+```azurecli-interactive
+az account set --subscription mySubscriptionId
 ```
+ 
+[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-#### <a name="update-test-request-body"></a>更新测试请求正文
+## <a name="subscribe-to-media-services-events"></a>订阅媒体服务事件
 
-在 Azure 门户窗口的右侧，可看到两个选项卡：“查看文件”和“测试”。 选择“测试”选项卡。在“请求正文”中，粘贴以下 json。 可以按原样粘贴，无需更改任何值。
+订阅文章是为了告知事件网格要跟踪哪些事件。以下示例订阅所创建的媒体服务帐户，并将所创建网站中的 URL 作为事件通知的终结点进行传递。 
 
-```json
-[{
-  "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
-  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "subject": "",
-  "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
-  },
-  "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-  "eventTime": "2017-08-06T22:09:30.740323Z"
-}
-]
-```
+将 `<event_subscription_name>` 替换为事件订阅的唯一名称。 对于 `<resource_group_name>` 和 `<ams_account_name>`，使用在创建媒体服务帐户时使用的值。 对于 `<endpoint_URL>`，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 
 
-在该窗口顶部按“保存并运行”。
+1. 获取资源 ID
 
-![请求正文](./media/job-state-events-cli-how-to/generic_webhook_test.png)
+    ```azurecli-interactive
+    amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```
 
-## <a name="register-for-the-event-grid-subscription"></a>注册事件网格订阅 
+    例如：
 
-订阅文章是为了告知事件网格要跟踪哪些事件。以下示例订阅所创建的媒体服务帐户，并将创建的 Azure Function Webhook 中的 URL 作为事件通知的终结点传递。 
+    ```
+    amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
+    ```
 
-将 `<event_subscription_name>` 替换为事件订阅的唯一名称。 对于 `<resource_group_name>` 和 `<ams_account_name>`，使用在创建媒体服务帐户时使用的值。 在 `<endpoint_URL>` 中粘贴终结点 URL。 从 URL 删除 &clientID=default。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 
+2. 订阅事件
 
-```cli
-amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```azurecli-interactive
+    az eventgrid event-subscription create \
+    --resource-id $amsResourceId \
+    --name <event_subscription_name> \
+    --endpoint <endpoint_URL>
+    ```
 
-az eventgrid event-subscription create \
-  --resource-id $amsResourceId \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
-```
+    例如：
 
-媒体服务帐户资源 ID 值如下所示：
+    ```
+    az eventgrid event-subscription create --resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
+    ```    
 
-```
-/subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
-```
+    > [!TIP]
+    > 可能会收到验证握手警告。 等待几分钟后握手验证应会完成。
 
-## <a name="test-the-events"></a>测试事件
+现在，让我们触发事件，看事件网格如何将消息分发到终结点。
 
-运行编码作业。 例如，如[流式处理视频文件](stream-files-dotnet-quickstart.md)快速入门中所述。
+## <a name="send-an-event-to-your-endpoint"></a>向终结点发送事件
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到之前创建的 Webhook。 单击“监视”和“刷新”。 可看到作业的状态更改事件：“已排队”、“已计划”、“正在处理”、“已完成”、“错误”、“已取消”、“正在取消”。  有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
+可通过运行编码作业来触发媒体服务帐户的事件。 可遵照[本快速入门](stream-files-dotnet-quickstart.md)来对文件进行编码并开始发送事件。 
 
-以下示例显示 JobStateChange 事件的架构：
+再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 终结点必须将 `validationResponse` 设置为 `validationCode`。 有关详细信息，请参阅[事件网格安全性和身份验证](../../event-grid/security-authentication.md)。 可以查看 Web 应用代码以了解它如何验证订阅。
 
-```json
-[{
-  "topic": "/subscriptions/<subscription id>/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job id>",
-  "eventType": "Microsoft.Media.JobStateChange",
-  "eventTime": "2018-04-20T21:17:26.2534881",
-  "id": "<id>",
-  "data": {
-    "previousState": "Scheduled",
-    "state": "Processing"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1"
-}]
-```
+> [!TIP]
+> 选择眼睛图标以展开事件数据。 如果要查看所有事件，请勿刷新页面。
 
-![测试事件](./media/job-state-events-cli-how-to/test_events.png)
+![查看订阅事件](./media/monitor-events-portal/view-subscription-event.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-[对事件做出响应](reacting-to-media-services-events.md)
+[上传、编码和流式处理](stream-files-tutorial-with-api.md)
 
-## <a name="see-also"></a>另请参阅
-
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

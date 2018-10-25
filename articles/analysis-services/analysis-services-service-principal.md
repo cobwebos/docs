@@ -4,15 +4,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 76cadc453a696b8d19788525bfb69cf9cacd353d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9a91b478ea9012a1d041fc102765890954c2fbb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448231"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956181"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -24,8 +24,8 @@ ms.locfileid: "37448231"
  
 可以通过 Azure 门户或 PowerShell 创建服务主体。 若要了解更多信息，请参阅以下文章：
 
-[创建服务主体 - Azure 门户](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[创建服务主体 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
+[创建服务主体 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>在 Azure 自动化中存储凭据和证书资产
 

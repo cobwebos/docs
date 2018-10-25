@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 5e29dcde80da75fa70fe6dcbf35d7f319a5ca3cb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 97f1c9e16ae6be9e6bece69d0923f6290a8cd072
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311145"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024709"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -33,7 +33,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 ## <a name="sdk-architecture"></a>SDK 体系结构
 
-可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://azure.github.io/azure-iot-sdk-c/index.html)中查看 API 的详细信息。
+可在 GitHub 存储库中找到[**适用于 C 语言的 Azure IoT 设备 SDK**](https://github.com/Azure/azure-iot-sdk-c)，还可在 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)中查看 API 的详细信息。
 
 在此存储库的 **master** 分支中可找到最新版本的库：
 

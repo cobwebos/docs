@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829763"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954600"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -28,7 +28,7 @@ ms.locfileid: "48829763"
 
 通常情况下，通过专用帐户（而不是自己的用户凭据）授予对 Azure 资源的编程访问权限。 将这些专用帐户称为“服务主体”帐户。 若要使用 Azure DNS SDK 示例项目，首先需要创建一个服务主体帐户并为其分配正确的权限。
 
-1. 请按照[这些说明](../azure-resource-manager/resource-group-authenticate-service-principal.md)创建服务主体帐户（Azure DNS SDK 示例项目采用基于密码的身份验证。）
+1. 请按照[这些说明](../active-directory/develop/howto-authenticate-service-principal-powershell.md)创建服务主体帐户（Azure DNS SDK 示例项目采用基于密码的身份验证。）
 2. 创建资源组（[此处提供了方法](../azure-resource-manager/resource-group-template-deploy-portal.md)）。
 3. 使用 Azure RBAC 将服务主体帐户的“DNS 区域参与者”权限授予资源组（[此处提供了方法](../role-based-access-control/role-assignments-portal.md)）。
 4. 如果使用 Azure DNS SDK 示例项目，请如下所示编辑 program.cs 文件：

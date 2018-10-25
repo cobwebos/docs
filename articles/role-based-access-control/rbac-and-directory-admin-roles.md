@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 401c9a3df4cb132769e05cb0487a763f4080dd23
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e32968ae83ef826fbc8e81f1b04eca687642343
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304051"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637662"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -61,6 +61,7 @@ Azure 帐户代表计费关系。 一个 Azure 帐户代表一个用户标识、
 Azure 订阅可帮助你组织 Azure 资源的访问权限。 它们还可帮助控制如何根据资源使用量生成报告、计费及付费。 每个订阅可以采用不同的计费和付款设置，因此，根据办公室、部门、项目等因素，可以采用不同的订阅和不同的计划。 每个服务属于一个订阅，执行编程操作时可能需要订阅 ID。
 
 帐户和订阅在 [Azure 帐户中心](https://account.azure.com/Subscriptions)进行管理。
+
 ## <a name="azure-rbac-roles"></a>Azure RBAC 角色
 
 Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)构建的授权系统，它针对 Azure 资源（例如计算和存储）提供精细的访问权限管理。 Azure RBAC 包括 70 多个内置角色。 有四个基本的 RBAC 角色。 前三个角色适用于所有资源类型：

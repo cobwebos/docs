@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 54804867cfaf38965b3dbf5ceb51e08a731d4dd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966532"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457385"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -220,7 +220,7 @@ ms.locfileid: "46966532"
 1. 对于这两个 VM，运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 
 
     ```bash
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
 
     生成成功后，最后的几个输出行如下所示：

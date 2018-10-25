@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d59cb64e1499f703bf6913ab422d0f979caca324
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f21710354572c9b54dbf0e08d02809bb68a8e120
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008720"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805045"
 ---
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
@@ -33,5 +33,6 @@ ms.locfileid: "47008720"
     - “访问层”默认设置为“热”。
 
 1. 单击“查看+创建”可查看存储帐户设置并创建帐户。
+1. 单击“创建”。
 
 有关存储帐户类型和其他存储帐户设置的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 

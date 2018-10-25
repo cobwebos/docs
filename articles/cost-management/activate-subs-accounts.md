@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 304a52f5571790ea49587a5aeda433f003f0e0bd
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a53ff5fdb256a46f42e7461bb46b6847d17ed230
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423062"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958741"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 激活 Azure 订阅和帐户
 
@@ -64,7 +64,7 @@ ms.locfileid: "47423062"
     2. 在 Azure 门户中，选择“Azure Active Directory”。
     3. 若要获取租户 ID，请选择 Azure AD 租户的“属性”。
     4. 复制目录 ID GUID。 此值即为租户 ID。
-    有关详细信息，请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
+    有关详细信息，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
 3. 根据选择费率 ID。 如果不知道自己的费率 ID，可以使用以下步骤找到它。
     1. 在 Azure 门户的右上角，单击自己的用户信息，然后单击“查看我的帐单”。
     2. 在“计费帐户”下，单击“订阅”。

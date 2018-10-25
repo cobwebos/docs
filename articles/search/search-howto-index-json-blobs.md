@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 description: 使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: 5b4cd1c592c4cd965a0b5d9e4fb8eef84a6bea91
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003275"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405696"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。

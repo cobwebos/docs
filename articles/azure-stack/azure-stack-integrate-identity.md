@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470540"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024432"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -53,7 +53,6 @@ ms.locfileid: "49470540"
 
 要求：
 
-
 |组件|要求|
 |---------|---------|
 |图形|Microsoft Active Directory 2012/2012 R2/2016|
@@ -64,7 +63,6 @@ ms.locfileid: "49470540"
 Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，则仅使用配置中指定的林来提取用户和组。
 
 需要使用以下信息作为自动化参数的输入：
-
 
 |参数|说明|示例|
 |---------|---------|---------|
@@ -96,14 +94,14 @@ Active Directory 站点的详细信息请参阅[设计站点拓扑](https://docs
 
 对于此过程，请使用能够与 Azure Stack 中的特权终结点通信的数据中心网络中的计算机。
 
-2. 打开提升了权限的 Windows PowerShell 会话（以管理员身份运行），连接到特权终结点的 IP 地址。 使用 **CloudAdmin** 的凭据进行身份验证。
+1. 打开提升了权限的 Windows PowerShell 会话（以管理员身份运行），连接到特权终结点的 IP 地址。 使用 **CloudAdmin** 的凭据进行身份验证。
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. 连接到特权终结点后，运行以下命令： 
+2. 连接到特权终结点后，运行以下命令： 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
@@ -210,6 +208,9 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
+   > [!Note]  
+   > 在旋转上现有的 AD FS （帐户 STS） 的证书时必须设置的 AD FS 集成。 即使元数据终结点是可访问或通过提供元数据文件来为其配置，必须设置集成。
+
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>在现有 AD FS 部署上配置信赖方（帐户 STS）
 
 Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的脚本。 不一定要使用此脚本，也可以手动运行命令。
@@ -274,7 +275,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，必须使用 AD FS MMC 管理单元来配置颁发授权规则。
 
 4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：

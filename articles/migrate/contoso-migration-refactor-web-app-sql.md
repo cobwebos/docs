@@ -3,16 +3,17 @@ title: 通过将 Contoso 应用迁移到 Azure Web 应用和 Azure SQL 数据库
 description: 了解 Contoso 如何通过将本地应用迁移到 Azure Web 应用和 Azure SQL Server 数据库来重新托管它。
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 923a1ab9020925c17b3b19d24c7524ab2f8f3356
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040527"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092745"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso 迁移：将本地应用重构到 Azure Web 应用和 Azure SQL 数据库
 
@@ -35,6 +36,7 @@ ms.locfileid: "47040527"
 [文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将其本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
 [文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
+[文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
 在本文中，Contoso 将 VMware VM 上运行的双层 Windows. VMware VM 上运行的 NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
 
@@ -126,11 +128,11 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 Contoso 按如下方式运行迁移：
 
 > [!div class="checklist"]
-> * 步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将应用网站迁移到 Azure 后，WCF 服务 Web 应用将指向此实例。
-> * 步骤 2：使用 DMA 迁移数据库：Contoso 使用数据库迁移助手迁移应用数据库。
-> * 步骤 3：预配 Web 应用：Contoso 将预配两个 Web 应用。
+> * **步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将应用网站迁移到 Azure 后，WCF 服务 Web 应用将指向此实例。
+> * **步骤 2：使用 DMA 迁移数据库**：Contoso 使用数据库迁移助手迁移应用数据库。
+> * **步骤 3：预配 Web 应用**：Contoso 将预配两个 Web 应用。
 > * 步骤 4：设置 Azure DevOps：Contoso 将创建新的 Azure DevOps 项目，并导入 Git 存储库。
-> * 步骤 5：配置连接字符串：Contoso 将配置连接字符串，这样使 Web 层 Web 应用、WCF 服务 Web 应用和 SQL 实例能够进行通信。
+> * **步骤 5：配置连接字符串**：Contoso 将配置连接字符串，这样使 Web 层 Web 应用、WCF 服务 Web 应用和 SQL 实例能够进行通信。
 > * 步骤 6：设置生成和发布管道：最后一步，Contoso 设置生成和发布管道以创建应用，并将其部署到两个单独的 Azure Web 应用。
 
 

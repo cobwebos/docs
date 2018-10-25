@@ -2,16 +2,17 @@
 title: 到 Azure 的 Contoso 迁移概述 | Microsoft Docs
 description: 提供 Contoso 用于将其本地数据中心迁移到 Azure 的迁移策略和方案的概述。
 author: rayne-wiselman
+manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 1a86f12fddf9b18700f2c4a2aff840512dfe4a6f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 30be44b91dbfba0c292c55670e920052d2c8ae3d
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303636"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092858"
 ---
 # <a name="contoso-migration-overview"></a>Contoso 迁移：概述
 
@@ -61,7 +62,7 @@ Azure 意识到，尽管云提供了诸多优点，包括速度和灵活性、�
 [文章 11：在 Azure DevOps Services 中重构 Team Foundation Server](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
 [文章 12：在 Azure 容器和 Azure SQL 数据库中重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用    
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用 
-
+[文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
 在本文中，Contoso 设置完成所有迁移方案所需的所有基础结构元素。 
 

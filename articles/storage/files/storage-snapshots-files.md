@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7f03af0fc338299da9b989d46e7bbfb83f3babeb
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983120"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945699"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
@@ -85,8 +85,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 ## <a name="next-steps"></a>后续步骤
 - 在以下环境中使用共享快照：
-    - [门户](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
-    - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
-    - [CLI](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [PowerShell](storage-how-to-use-files-powershell.md)
+    - [CLI](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
 - [共享快照常见问题解答](storage-files-faq.md#share-snapshots)

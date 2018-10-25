@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5e18a27579c577f914709e25cab1549387a965f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966395"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987590"
 ---
 # <a name="about-microsoft-identity-platform"></a>关于 Microsoft 标识平台
 
@@ -37,7 +37,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 下图显示了高级别的 Microsoft 标识体验，包括应用注册体验、SDK、终结点和支持的标识。
 
-![如今的 Microsoft 标识平台](./media/about-microsoft-identity-platform/microsoft-identity-platform-today.png)
+![如今的 Microsoft 标识平台](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
 
 Microsoft 标识平台具有两个终结点（v1.0 和 v2.0）和两组客户端库，用于处理这些终结点。 开发新应用程序时，请考虑终结点和身份验证库的优势和当前状态。 另请考虑以下因素：
 
@@ -61,5 +61,5 @@ Microsoft 标识平台具有两个终结点（v1.0 和 v2.0）和两组客户端
 
 深入了解 v1.0 和 v2.0。
 
-* [关于 v1.0](azure-ad-developers-guide.md)
-* [关于 v2.0](azure-ad-developers-guide.md)
+* [关于 v1.0](v1-overview.md)
+* [关于 v2.0](v2-overview.md)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 96c9628807d2aae257e27432ea8d27a7d9325de0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380468"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023247"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -24,13 +24,13 @@ ms.locfileid: "49380468"
 
 ## <a name="common-packages-for-aspnet"></a>适用于 ASP.NET 的常用包
 
-| 包名称 | 稳定版本 | 说明 | 下载 |
+| 包名称 | 稳定版本 | Description | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights | 2.8.0 | 提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | 可拦截方法调用 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
 | Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | 适用于 .NET 应用程序的 Application Insights 依赖项收集器。 这是一个用于 Application Insights 平台专用包的依赖包，可自动收集依赖项遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
 | Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights 性能计数器，可用于将性能收集器收集的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.8.0 | 适用于 .NET Web 应用程序的 Application Insights | [下载包] (https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.Web | 2.8.0 | 适用于 .NET Web 应用程序的 Application Insights | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet 包可自动收集 .NET 应用程序的 Application Insights 遥测数据。 此包可用作 Application Insights 平台专用包的依赖包，也可用作平台专用包未涵盖的 .NET 应用程序独立包（例如用于 .NET 辅助角色的包）。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 

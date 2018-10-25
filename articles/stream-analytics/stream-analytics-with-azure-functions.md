@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 0408ea6ead1ddf482ce0a07c21859af80ab6ca43
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697806"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985805"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -40,11 +40,11 @@ ms.locfileid: "43697806"
 ![显示各项 Azure 服务间关系的图表](./media/stream-analytics-with-azure-functions/image1.png)
 
 需要执行以下步骤来完成此任务：
-* [创建以事件中心为输入的流分析作业](#create-stream-analytics-job-with-event-hub-as-input)  
-* [创建 Azure Redis 缓存实例](#create-an-azure-redis-cache)  
-* [在 Azure Functions 中创建可将数据写入到 Azure Redis 缓存的函数](#create-an-azure-function-that-can-write-data-to-the-redis-cache)    
-* [更新流分析作业，以函数作为输出](#update-the-stream-analytic-job-with-azure-function-as-output)  
-* [在 Azure Redis 缓存中检查结果](#check-redis-cache-for-results)  
+* [创建以事件中心为输入的流分析作业](#create-a-stream-analytics-job-with-event-hubs-as-input)  
+* [创建 Azure Redis 缓存实例](#create-an-azure-redis-cache-instance)  
+* [在 Azure Functions 中创建可将数据写入到 Azure Redis 缓存的函数](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [更新流分析作业，以函数作为输出](#update-the-stream-analytics-job-with-the-function-as-output)  
+* [在 Azure Redis 缓存中检查结果](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>创建以事件中心为输入的流分析作业
 

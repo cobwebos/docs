@@ -9,22 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e2b441e0266ac397226b783c66df4ca54e0b3f71
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 72b2c630c514190d2c63e3dd7faa29b0b3abab19
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870156"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944550"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
 本文介绍如何使用数据工厂将 Office 365 中的数据载入 Azure Blob 存储。 可以遵循类似的步骤将数据复制到 Azure Data Lake Gen1 或 Gen2。 请参阅 [Office 365 连接器文章](connector-office-365.md)，了解有关从 Office 365 复制数据的一般信息。
-
-请观看以下 9 分钟简介和演示视频，了解如何将数据工厂连接到 Office 365 数据：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 

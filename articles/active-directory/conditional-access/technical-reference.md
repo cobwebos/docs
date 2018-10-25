@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: e44b68a2ed2786b449e2680ca4a8ca531058b85c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 445611338b0b2895d83626e8cf450dc8d1cb27a6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432779"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406393"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -149,7 +149,7 @@ ms.locfileid: "47432779"
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |名称 | 1 |
-|Type | REG_SZ (String) |
+|类型 | REG_SZ (String) |
 |数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
@@ -158,7 +158,7 @@ ms.locfileid: "47432779"
 |--- | ---|
 |路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |名称 | 1 |
-|Type | REG_SZ (String) |
+|类型 | REG_SZ (String) |
 |数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 
@@ -182,8 +182,8 @@ ms.locfileid: "47432779"
 |“邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）|Office 365 Exchange Online|Windows 10|
 |用于应用的 MFA 和位置策略。 不支持基于设备的策略。 |任何“我的应用”应用服务|Android 和 iOS|
 |Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
-|Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）|Office 365 SharePoint Online|Windows 8.1、Windows 7|
-|Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持|Office 365 SharePoint Online|Windows 10|
+|Office 2016 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）|Office 365 SharePoint Online|Windows 8.1、Windows 7|
+|Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、OneDrive 同步客户端（参见[说明](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)）、计划将来提供的 Office 组支持、计划将来提供的 SharePoint 应用支持|Office 365 SharePoint Online|Windows 10|
 |Office 2016 for macOS（只有 Word、Excel、PowerPoint、OneNote）。 将来计划提供 OneDrive for Business 支持|Office 365 SharePoint Online|Mac OS X|
 |Office 移动应用|Office 365 SharePoint Online|Android、iOS|
 |Office Yammer 应用|Office 365 Yammer|Windows 10、iOS、Android|

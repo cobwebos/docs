@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 4537c0308ee587d921dc795054966f6a3dbb69c4
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 01ff5faa130bf1d6d5b89ac42d5664b13306c203
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093214"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956147"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 可以在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下运行 Microsoft .NET Azure HDInsight 应用程序。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。 
 
 需要从非交互式 .NET 应用程序中获取：
 
-* Azure 订阅租户 ID（也称为目录 ID）。 请参阅[获取租户 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)。
-* Azure Active Directory (Azure AD) 应用程序客户端 ID。 请参阅[创建 Azure Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)和[获取应用程序 ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
-* Azure AD 应用程序密钥。 请参阅[获取应用程序身份验证密钥](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。
+* Azure 订阅租户 ID（也称为目录 ID）。 请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
+* Azure Active Directory (Azure AD) 应用程序客户端 ID。 请参阅[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)和[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
+* Azure AD 应用程序密钥。 请参阅[获取应用程序身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
 ## <a name="prerequisites"></a>先决条件
 * HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
@@ -119,6 +119,6 @@ ms.locfileid: "43093214"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Azure 门户中创建 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
-* 了解如何[使用 Azure 资源管理器对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+* [在 Azure 门户中创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+* 了解如何[使用 Azure 资源管理器对服务主体进行身份验证](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 * 了解 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)。

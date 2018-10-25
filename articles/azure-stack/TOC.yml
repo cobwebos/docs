@@ -128,8 +128,6 @@ items:
       href: azure-stack-region-management.md
     - name: 使用管理员门户
       href: azure-stack-manage-portals.md
-    - name: 连接到 Azure Stack
-      href: azure-stack-connect-azure-stack.md
     - name: 连接到 Azure
       items:
       - name: 使用 VPN 进行连接
@@ -348,7 +346,7 @@ items:
       href: azure-stack-backup-back-up-azure-stack.md
     - name: 在 Azure Stack 上备份文件和应用程序
       href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-    - name: 将 Azure Stack Vm 复制到 Azure
+    - name: 将 Azure Stack VM 复制到 Azure
       href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: 在发生灾难性数据丢失后进行恢复
       href: azure-stack-backup-recover-data.md
@@ -388,9 +386,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 07db25425bf9ef753c1561803dd1cdf838ef3457
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7034026f1a78c34cfd57750dcfdc4a65491ce75b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944948"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023978"

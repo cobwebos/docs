@@ -3,7 +3,7 @@ title: 在 Linux VM 上设置 PostgreSQL | Microsoft Docs
 description: 了解如何在 Azure 中的 Linux 虚拟机上安装和配置 PostgreSQL
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
-ms.author: cynthn
-ms.openlocfilehash: 903e94cfa932ddd93a931caa8888d93f1bdfe365
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: zarhoads
+ms.openlocfilehash: dc7bb0eab9004b9c818a4a7cbbf6102f01b24f45
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932725"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465214"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。

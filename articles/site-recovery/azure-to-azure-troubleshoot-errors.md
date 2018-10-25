@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141429"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945733"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -158,8 +158,8 @@ ms.locfileid: "42141429"
 
 - **解决方法**
    - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。
-   - 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
-   - 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
+   - 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](azure-to-azure-about-networking.md)。
+   - 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](azure-to-azure-about-networking.md)中的步骤执行操作。
 
 ### <a name="issue-2-site-recovery-configuration-failed-151072"></a>问题 2：Site Recovery 配置失败 (151072)
 - **可能的原因** </br>

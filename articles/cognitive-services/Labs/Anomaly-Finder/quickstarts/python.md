@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: eb64bb4daece44d33775dca7417c51b216e04614
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247345"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455430"
 ---
 # <a name="use-the-anomaly-finder-api-with-python"></a>将异常查找器 API 与 Python 配合使用
 
@@ -67,7 +67,7 @@ print(result)
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回成功响应。 示例响应如下。
+成功的响应以 JSON 格式返回。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤
