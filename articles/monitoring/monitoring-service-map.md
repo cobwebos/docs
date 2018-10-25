@@ -366,12 +366,12 @@ Linux：
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
 |Description |观察到的威胁说明。 |
-|TLPLevel |交通信号灯协议 (TLP) 级别为以下定义值之一：White、Green、Amber 和 Red。 |
+|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
 |置信度 |值介于 0 和 100 之间。 |
 |严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
 |FirstReportedDateTime |提供程序第一次报告指标。 |
 |LastReportedDateTime |Interflow 最后一次看到指标。 |
-|IsActive |使用值 True 或 False 指明是否停用指标。 |
+|IsActive |使用值 True 或 False 指明是否停用标志。 |
 |ReportReferenceLink |与给定可观测结果相关的报告的链接。 |
 |AdditionalInformation |提供观测到的威胁的其他信息（若有）。 |
 

@@ -16,7 +16,7 @@ ms.lasthandoff: 10/03/2018
 ms.locfileid: "48240729"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
-云分层是 Azure 文件同步的一项可选功能，即将经常访问的文件本地缓存在服务器上，而将其他所有文件都根据策略设置分层到 Azure 文件中。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
+云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
  
 如果用户打开分层文件，Azure 文件同步会从 Azure 文件中无缝召回文件数据，而用户无需知道文件实际存储在 Azure 中。 
  

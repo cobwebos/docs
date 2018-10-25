@@ -156,11 +156,11 @@ ms.locfileid: "48268053"
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
 
-6. G Suite 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“用户属性”对话框。
+6. G Suite 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
     ![图像](./media/google-apps-tutorial/i3-attribute.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并按照以下步骤操作：
+7. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”按钮，以打开“管理用户声明”对话框。
 
@@ -232,12 +232,12 @@ ms.locfileid: "48268053"
 
     ![图像](./media/google-apps-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入“brittasimon@yourcompanydomain.extension”  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选择“属性”，选中“显示密码”复选框，再记下“密码”框中显示的值。
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
  
@@ -257,7 +257,7 @@ ms.locfileid: "48268053"
 
 在本部分中，通过向 Britta Simon 授予 G Suite 的访问权限，使其可以使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”和“所有应用程序”。
+1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
     ![图像](./media/google-apps-tutorial/d_all_applications.png)
 
@@ -269,11 +269,11 @@ ms.locfileid: "48268053"
 
     ![图像](./media/google-apps-tutorial/d_leftpaneusers.png)
 
-4. 依次选择“添加”按钮和“添加分配”对话框中的“用户和组”。
+4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![图像](./media/google-apps-tutorial/d_assign_user.png)
 
-4. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，再单击屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
     

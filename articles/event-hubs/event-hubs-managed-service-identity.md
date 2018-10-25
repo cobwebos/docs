@@ -19,15 +19,15 @@ ms.locfileid: "48784547"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>具有事件中心的 Azure 资源托管标识
 
-[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是跨整个 Azure 的一项功能，可以用来创建与部署（在其中运行应用程序代码）相关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。 
+[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。 
 
-Azure 平台借助托管标识来管理此运行时标识。 对于标识本身和需要访问的资源，都不需要在应用程序代码或配置中存储和保护访问密钥。 在启用了 Azure 资源托管标识支持的 Azure 应用服务应用程序内或虚拟机中运行的事件中心客户端应用不需要处理 SAS 规则和密钥，也不需要处理任何其他访问令牌。 客户端应用只需要事件中心命名空间的终结点地址。 当应用进行连接时，事件中心通过一个操作将托管标识的上下文绑定到该客户端，本文后面的一个示例展示了该操作。
+借助托管标识，Azure 平台可管理此运行时标识。 对于标识本身和需要访问的资源，都不需要在应用程序代码或配置中存储和保护访问密钥。 在启用了 Azure 资源托管标识支持的 Azure 应用服务应用程序内或虚拟机中运行的事件中心客户端应用不需要处理 SAS 规则和密钥，也不需要处理任何其他访问令牌。 客户端应用只需要事件中心命名空间的终结点地址。 当应用进行连接时，事件中心通过一个操作将托管标识的上下文绑定到该客户端，本文后面的一个示例展示了该操作。
 
 与托管标识关联后，事件中心客户端可以执行所有经授权的操作。 授权是通过将托管标识与事件中心角色相关联来授予的。 
 
 ## <a name="event-hubs-roles-and-permissions"></a>事件中心角色和权限
 
-可以仅将托管标识添加到某个事件中心命名空间的“所有者”或“参与者”角色，这将向该标识授予对该命名空间中所有实体的完全控制权限。 但是，最初只能通过 Azure 资源管理器来支持对命名空间拓扑进行更改的管理操作。 不通过本机事件中心 REST 管理接口来支持。 此支持还意味着无法在托管标识内使用 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 对象。 
+可以仅将托管标识添加到某个事件中心命名空间的“所有者”或“参与者”角色，这将向该标识授予对该命名空间中所有实体的完全控制权限。 不过，最初只能通过 Azure 资源管理器来支持对命名空间拓扑进行更改的管理操作。 不通过本机事件中心 REST 管理接口来支持。 此支持还意味着，无法在托管标识内使用 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 对象。 
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>将事件中心与 Azure 资源托管标识结合使用
 
@@ -55,7 +55,7 @@ Azure 平台借助托管标识来管理此运行时标识。 对于标识本身�
 
 接下来，在支持 Azure 资源的托管标识预览版的 Azure 区域（美国东部、美国东部 2 或西欧）之一中[创建事件中心命名空间](event-hubs-create.md)。 
 
-在门户上导航到命名空间“访问控制(标识和访问管理)”页面，然后单击“添加”将托管标识添加到“所有者”角色。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
+转到门户上的命名空间“访问控制(标识和访问管理)”页，再单击“添加”，向“所有者”角色添加托管标识。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
 
 ![](./media/event-hubs-managed-service-identity/msi2.png)
  
@@ -67,7 +67,7 @@ Web 应用程序的托管标识现在已具有对事件中心命名空间和对�
 
 启动应用后，将浏览器指向 EventHubsMSIDemo.aspx。 还可以将其设置为起始页。 可以在 EventHubsMSIDemo.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到事件中心以发送或接收事件的“发送”和“接收”按钮。 
 
-注意 [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 对象是如何初始化的。 该代码通过 `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保存和使用任何机密。 从托管标识上下文到事件中心的流以及授权握手都是由令牌提供程序自动处理的，该令牌提供程序是一个比使用 SAS 更简单的模型。
+注意 [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 对象是如何初始化的。 此代码通过 `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保存和使用任何机密。 从托管标识上下文到事件中心的流以及授权握手都是由令牌提供程序自动处理的，该令牌提供程序是一个比使用 SAS 更简单的模型。
 
 进行这些更改后，发布并运行应用程序。 你可以通过下载发布配置文件然后将其导入到 Visual Studio 来获取正确的发布数据：
 

@@ -105,7 +105,7 @@ ms.locfileid: "48268168"
 
     ![图像](./media/zendesk-tutorial/b1_b2_select_sso.png)
 
-2. 单击屏幕顶部的“更改单一登录模式”，以选择 SAML 模式。
+2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
 
       ![图像](./media/zendesk-tutorial/b1_b2_saml_ssso.png)
 
@@ -113,11 +113,11 @@ ms.locfileid: "48268168"
 
     ![图像](./media/zendesk-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/zendesk-tutorial/b1-domains_and_urlsedit.png)
 
-5. 在“基本 SAML 配置”部分中，执行以下步骤：
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com`。
 
@@ -167,7 +167,7 @@ ms.locfileid: "48268168"
 
 9. 在“设置 Zendesk”部分，单击“查看分步说明”以打开“配置登录”窗口。 从“快速参考”部分中复制以下 URL。
 
-    请注意，URL 可能指示以下事项：
+    请注意，URL 可能指明以下信息：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 SAML 单一登录服务 URL
 
@@ -223,16 +223,16 @@ ms.locfileid: "48268168"
 
     ![图像](./media/zendesk-tutorial/d_adduser.png)
 
-3. 在用户属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/zendesk-tutorial/d_userproperties.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选择“属性”，再选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
 

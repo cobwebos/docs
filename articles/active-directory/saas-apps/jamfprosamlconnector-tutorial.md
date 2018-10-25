@@ -201,12 +201,12 @@ ms.locfileid: "48268151"
 
     ![图像](./media/jamfprosamlconnector-tutorial/d_userproperties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入“brittasimon@yourcompanydomain.extension”  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选择“属性”，选中“显示密码”复选框，再记下“密码”框中显示的值。
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
 
@@ -268,11 +268,11 @@ ms.locfileid: "48268151"
 
     ![图像](./media/jamfprosamlconnector-tutorial/d_leftpaneusers.png)
 
-4. 依次选择“添加”按钮和“添加分配”对话框中的“用户和组”。
+4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![图像](./media/jamfprosamlconnector-tutorial/d_assign_user.png)
 
-4. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，再单击屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
 

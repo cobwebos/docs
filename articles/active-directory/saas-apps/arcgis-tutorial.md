@@ -109,15 +109,15 @@ ms.locfileid: "48269028"
 
       ![图像](./media/arcgis-tutorial/b1_b2_saml_ssso.png)
 
-3. 在“选择单一登录方法”对话框中，对于“SAML”模式，单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![图像](./media/arcgis-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/arcgis-tutorial/b1-domains_and_urlsedit.png)
 
-5. 在“基本 SAML 配置”部分中，执行以下步骤：
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.maps.arcgis.com`。
 
@@ -168,7 +168,7 @@ ms.locfileid: "48269028"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，选择“Azure Active Directory”，接着选择“用户”，然后选择“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/arcgis-tutorial/d_users_and_groups.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "48269028"
 
     ![图像](./media/arcgis-tutorial/d_adduser.png)
 
-3. 在“用户”属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/arcgis-tutorial/d_userproperties.png)
 
