@@ -25,7 +25,7 @@ ms.locfileid: "48805604"
 ==========================================
 
 可能由于各种原因决定从市场中删除产品/服务。 产品/服务删除可确保新客户无法再购买或部署该产品/服务，但对现有客户不起作用。
-产品/服务终止是终止该服务和/或你与现有客户之间许可协议的过程。 与产品/服务删除和终止相关的指南和政策受 [Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)（请参阅
+产品/服务终止是终止该服务和/或你与现有客户之间许可协议的过程。 与产品/服务删除和终止相关的指南和政策受 [Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)（请参阅第 7 节）
 7) 和[参与策略](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)（请参阅第 6.2 节）的约束。 本文探讨不同的删除方案和可为这些方案执行的步骤。
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>从 Azure 市场删除实时 SKU
