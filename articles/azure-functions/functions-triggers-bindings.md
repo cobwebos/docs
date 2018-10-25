@@ -9,14 +9,14 @@ keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969421"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801299"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -168,7 +168,7 @@ function generateRandomId() {
 
 创建函数或添加绑定时，如果触发器或绑定的扩展需要注册，则系统会显示提示。 单击“安装”注册扩展，以响应提示。 在消耗计划中，安装最多需要 10 分钟。
 
-对于给定的函数应用，只需安装每个扩展一次。 
+对于给定的函数应用，只需安装每个扩展一次。 若要获取门户中不可用的受支持绑定，或要更新已安装扩展，也可以[在门户中手动安装或更新 Azure Functions 绑定扩展](install-update-binding-extensions-manual.md)。  
 
 ### <a name="local-development-azure-functions-core-tools"></a>使用 Azure Functions Core Tools 进行本地开发
 

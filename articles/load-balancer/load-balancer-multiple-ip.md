@@ -4,7 +4,7 @@ description: 在主要和辅助 IP 配置间进行负载均衡。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jpconnock
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
 ms.service: load-balancer
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73f19293fc9dd0f68752e7b38a12a826b8f52b0c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637372"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248562"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [Portal](load-balancer-multiple-ip.md)
+> * [门户](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
@@ -63,7 +63,7 @@ ms.locfileid: "34637372"
 
 对于虚拟网络中的每个 VM，请添加辅助 NIC 的 IP 配置：  
 
-1. 浏览到 Azure 门户：http://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： http://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕左上方，选择“资源组”图标。 然后选择 VM 所在的资源组（例如 **contosofabrikam**）。 “资源组”窗格中显示了 VM 的所有资源和 NIC。
 
@@ -87,7 +87,7 @@ ms.locfileid: "34637372"
 
 为配置创建负载均衡器：
 
-1. 浏览到 Azure 门户：http://portal.azure.com。 使用 Azure 帐户登录。
+1. 浏览到 Azure 门户： http://portal.azure.com。 使用 Azure 帐户登录。
 
 2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 
@@ -181,7 +181,7 @@ ms.locfileid: "34637372"
 
 4. 对于“端口”和“后端端口”，请保留默认值 **80**。
 
-5. 对于“浮动 IP (直接服务器返回)”，请选择“已启用”。
+5. 对于“浮动 IP (直接服务器返回)”，选择“已禁用”。
 
 6. <a name="step6-6"></a>选择“确定”。
 

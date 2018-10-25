@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046373"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268523"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -204,7 +204,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > 还原操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能会被覆盖**。
 
 > [!NOTE]
-> 也可分别使用 Powershell *Backup-AzureRmApiManagement* 和 *Restore-AzureRmApiManagement* 命令执行备份和还原操作。
+> 也可分别运行 PowerShell Backup-AzureRmApiManagement 和 Restore-AzureRmApiManagement 命令，执行备份和还原操作。
 
 ## <a name="next-steps"></a>后续步骤
 

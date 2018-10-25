@@ -1,22 +1,27 @@
 ---
-title: 语言分析 API 中的成分分析 | Microsoft Docs
+title: 成分分析 - 语言分析 API
+titlesuffix: Azure Cognitive Services
 description: 了解成分分析（亦称为“短语结构分析”）如何识别本文中的短语。
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082166"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238618"
 ---
 # <a name="constituency-parsing"></a>成分分析
+
+> [!IMPORTANT]
+> 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 成分分析（亦称为“短语结构分析”）旨在识别文本中的短语。
 从文本中提取信息时，可能会发现此分析很有用。
@@ -60,7 +65,7 @@ ms.locfileid: "37082166"
 
 ## <a name="phrase-types"></a>短语类型
 
-| 标签 | 说明 | 示例 |
+| 标签 | Description | 示例 |
 |-------|-------------|---------|
 |ADJP   | 形容词短语 | "so rude" |
 |ADVP   | 副词短语 | "clear through" |

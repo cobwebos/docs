@@ -1,21 +1,21 @@
 ---
-title: 如何翻页浏览可用的新文章 | Microsoft Docs
-description: 演示如何翻页浏览必应可以返回的所有新文章。
+title: 如何翻阅可返回的新闻文章 - 必应新闻搜索
+titlesuffix: Azure Cognitive Services
+description: 介绍了如何翻阅必应新闻搜索可返回的所有新闻文章。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: EA388F72-FA43-493B-967C-9560B3243C62
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 2c90d468536f0864d7deac073667e29e9a54692f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fff1da15df2e690cd0b37bb82654a4d30159325a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365422"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803386"
 ---
 # <a name="paging-news"></a>翻页新闻
 
@@ -34,7 +34,7 @@ ms.locfileid: "35365422"
   
 若要翻页浏览可用文章，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) 查询参数。  
   
-`count` 参数指定响应中要返回的结果数。 可以在响应中请求的最大结果数为 100。 默认值为 10。 交付的实际数量可能小于请求的数量。
+`count` 参数指定响应中要返回的结果数。 可以在响应中请求的最大结果数为 100。 默认值为 10。 提供的实际结果数可能小于请求获取的结果数。
 
 `offset` 参数指定要跳过的结果数。 `offset` 从零开始且应小于 (`totalEstimatedMatches` - `count`)。  
 

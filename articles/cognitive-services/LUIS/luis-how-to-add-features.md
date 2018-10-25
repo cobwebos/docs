@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036950"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830984"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
@@ -46,7 +46,7 @@ ms.locfileid: "47036950"
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> 可以单击每个短语列表行末尾的省略号 (***...***) 按钮编辑、删除或停用短语列表。
+> 可以在“短语列表”页上，删除或取消激活上下文工具栏中的短语列表。
 
 ## <a name="pattern-regular-expression-feature"></a>模式（正则表达式）功能 
 此功能已弃用。 新的模式功能无法添加到 LUIS。 对任何现有模式功能的支持将截止到 2018 年 5 月。 有助于将标准 LUIS 正则表达式与 PR 匹配到[识别器-文本 Github 存储库](https://github.com/Microsoft/Recognizers-Text)。 

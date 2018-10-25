@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的 Graph 搜索方法 | Microsoft Docs
-description: 学术知识 API 中的 Graph 搜索方法可用于，根据 Microsoft 认知服务中的特定 Graph 模式返回一组学术实体。
+title: Graph 搜索方法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 学术知识 API 中的 Graph 搜索方法可用于，根据特定 Graph 模式返回一组学术实体。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: d811db117c934c0d41fbfea1220d241cc022e4a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365397"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902363"
 ---
 # <a name="graph-search-method"></a>Graph 搜索方法
 
@@ -28,7 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>请求参数  
-名称     | 值 | 必需？  | 说明
+名称     | 值 | 必需？  | Description
 -----------|-----------|---------|--------
 **mode**       | 文本字符串 | 是 | 要使用的模式的名称。 值为 json 或 lambda。
 
@@ -45,7 +46,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 
 <br>
 ## <a name="response-json"></a>响应 (JSON)
-名称 | 说明
+名称 | Description
 -------|-----   
 **results** | 一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含请求获取的属性值。 如果已成功处理请求，此字段就会显示。
 **error** | HTTP 状态代码。 如果请求失败，此字段就会显示。

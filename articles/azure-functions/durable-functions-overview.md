@@ -3,23 +3,19 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 04/30/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 79ffa541d16212b21d20a238465a846fad5e4902
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627400"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237919"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions 概述
 
@@ -70,7 +66,7 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 ```js
 const df = require("durable-functions");
 
-module.exports = df(function*(ctx) {
+module.exports = df.orchestrator(function*(ctx) {
     const x = yield ctx.df.callActivityAsync("F1");
     const y = yield ctx.df.callActivityAsync("F2", x);
     const z = yield ctx.df.callActivityAsync("F3", y);
@@ -118,7 +114,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 ```js
 const df = require("durable-functions");
 
-module.exports = df(function*(ctx) {
+module.exports = df.orchestrator(function*(ctx) {
     const parallelTasks = [];
 
     // get a list of N work items to process in parallel
@@ -239,7 +235,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 const df = require("durable-functions");
 const df = require("moment");
 
-module.exports = df(function*(ctx) {
+module.exports = df.orchestrator(function*(ctx) {
     const jobId = ctx.df.getInput();
     const pollingInternal = getPollingInterval();
     const expiryTime = getExpiryTime();
@@ -304,7 +300,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 const df = require("durable-functions");
 const df = require('moment');
 
-module.exports = df(function*(ctx) {
+module.exports = df.orchestrator(function*(ctx) {
     yield ctx.df.callActivityAsync("RequestApproval");
 
     const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
@@ -338,7 +334,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>事件溯源、检查点和重播
 
-业务流程协调程序函数使用云设计模式（称为[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)）可靠地维护其执行状态。 持久扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而非直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，这具有诸多优点，包括提升性能、可伸缩性和响应能力。 其他优点包括确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索本身可实现可靠的补偿操作。
+Orchestrator 函数使用称为[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)的设计模式，可靠地维护自身的执行状态。 持久扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而非直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，这具有诸多优点，包括提升性能、可伸缩性和响应能力。 其他优点包括确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索本身可实现可靠的补偿操作。
 
 此扩展使用“事件溯源”的过程是透明的。 事实上，业务流程协调程序函数中的 `await` 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 这个透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 如果正在使用 Azure Functions 消耗计划，将停止对其计费。  如果需要完成其他工作，可重启该函数并重新构造其状态。
 
@@ -373,6 +369,8 @@ Durable Functions 扩展使用 Azure 存储队列、表和 Blob 来持久保存�
 业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 如果在 Azure Functions 消耗计划中运行函数应用，这些队列由 [Azure Functions 缩放控制器](functions-scale.md#how-the-consumption-plan-works)进行监视，并根据需要添加新的计算实例。 如果扩大到多个 VM，则业务流程协调程序函数可能在一个 VM 上运行，而它调用的活动函数则在多个不同的 VM 上运行。 可在[性能和缩放](durable-functions-perf-and-scale.md)中找到关于 Durable Functions 的缩放行为的更多详细信息。
 
 表存储用于存储业务流程协调程序帐户的执行历史记录。 每当有实例在特定 VM 上解除冻结时，该实例都可从表存储中获取其执行历史记录，以便可重新生成本地状态。 在表存储中提供历史记录的一项便利是可使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)等工具查看业务流程的历史记录。
+
+存储 blob 主要用作租用机制，用于跨多个 VM 协调业务流程实例的横向扩展。 它们还用于保留无法直接存储在表或队列中的大型消息的数据。
 
 ![Azure 存储资源管理器屏幕截图](media/durable-functions-overview/storage-explorer.png)
 

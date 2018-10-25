@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 672adba0b4b17a25c0c0a1da3596808f767e3fbd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632833"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584092"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 
-[Azure IoT 中心定价][lnk-pricing]概述了 IoT 中心的不同 SKU 和定价。 本文还详述了 IoT 中心如何按消息对各种 IoT 中心功能计费。
+[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)概述了 IoT 中心的不同 SKU 和定价。 本文还详述了 IoT 中心如何按消息对各种 IoT 中心功能计费。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "34632833"
 | 作业的每设备操作数 | 作业操作（例如孪生更新和方法）正常收费。 例如，如果一个作业生成 1000 个方法调用以及 1KB 的请求和正文为空的响应，则按 1000 条消息收费。 |
 
 > [!NOTE]
-> 所有大小均按以字节为单位的有效负载大小进行计算（忽略协议组帧）。 对于具有属性和正文的消息，大小以无关协议的方式计算。 有关详细信息，请参阅 [IoT 中心消息传送开发人员指南][lnk-message-size]。
+> 所有大小均按以字节为单位的有效负载大小进行计算（忽略协议组帧）。 对于具有属性和正文的消息，大小以无关协议的方式计算。 有关详细信息，请参阅 [IoT 中心消息格式](iot-hub-devguide-messages-construct.md)。
 
 ## <a name="example-1"></a>示例 #1
 
@@ -64,7 +64,3 @@ ms.locfileid: "34632833"
 解决方案后端使用 28 条消息 (14KB/0.5KB) 读取设备孪生，并使用 1 条消息进行更新，总计 29 条消息。
 
 设备和解决方案后端每天总共使用 641 条消息。
-
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-message-size]: iot-hub-devguide-messages-construct.md

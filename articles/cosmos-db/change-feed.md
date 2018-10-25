@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287319"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269490"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -351,19 +351,13 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
                     CollectionName = this.leaseCollectionName
                 };
             DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
-            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-
-            /* ie customize StartFromBeginning so change feed reads from beginning
-                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
-            */
-
-            feedOptions.StartFromBeginning = true;
-        
+       
             ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
             // ie. customizing lease renewal interval to 15 seconds
             // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
             feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
+            feedProcessorOptions.StartFromBeginning = true;
 
             this.builder
                 .WithHostName(hostName)
@@ -401,7 +395,7 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 
    若要大量转移更改源的复杂性，可以使用更改源处理器库。 此库可以大幅消除复杂性，同时仍让你保持更改源的完全控制度。 此库遵循[观察程序模式](https://en.wikipedia.org/wiki/Observer_pattern)，处理函数由 SDK 调用。 
 
-   如果有高吞吐量的更改源，可以实例化多个客户端来读取更改源。 由于使用的是“更改源处理器库”，它会自动在不同的客户端之间分配负载。 你不需要执行任何操作。 SDK 会解决所有的复杂性。 但是，若要使用自己的负载均衡器，可以针对自定义的分区策略实现 IParitionLoadBalancingStrategy。 实现 IPartitionProcessor - 用于对分区进行自定义处理更改。 使用 SDK 可以处理分区范围，但是，若要处理特定的分区键，则必须使用 SDK for SQL API。
+   如果有高吞吐量的更改源，可以实例化多个客户端来读取更改源。 由于使用的是“更改源处理器库”，因此它会自动在不同客户端之间分配负载。 你不需要执行任何操作。 SDK 会解决所有的复杂性。 但是，若要使用自己的负载均衡器，可以针对自定义的分区策略实现 IParitionLoadBalancingStrategy。 实现 IPartitionProcessor - 用于对分区进行自定义处理更改。 使用 SDK 可以处理分区范围，但是，若要处理特定的分区键，则必须使用 SDK for SQL API。
 
 * **[使用 Azure Functions](#azure-functions)** 
    
@@ -435,11 +429,11 @@ Azure Functions 使用默认连接策略。 可以在 Azure Functions 中配置�
 
 请确保没有其他函数正在读取具有相同租用集合的相同集合。 我也遇到过这种情况，后来我认识到，缺少的文档已由另一个 Azure 函数处理，该函数也使用了相同的租约。
 
-因此，如果创建多个 Azure 函数来读取相同的更改源，则这些函数必须使用不同的租用集合，或使用“leasePrefix”配置来共享相同的集合。 但是，如果使用更改源处理器库，则可以启动函数的多个实例，SDK 会自动在不同的实例之间分割文档。
+因此，若要创建多个 Azure 函数来读取相同的更改源，这些函数必须使用不同的租用集合，或使用“leasePrefix”配置来共享相同的集合。 但是，如果使用更改源处理器库，则可以启动函数的多个实例，SDK 会自动在不同的实例之间分割文档。
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>我的文档每隔一秒更新一次，但无法在侦听更改源的 Azure Functions 中获取所有更改。
 
-Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 但是，若要使用 5 秒以下的频率，每隔一秒轮询更改源，则可以配置轮询时间“feedPollTime”，具体请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
+Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 不过，若要设置为低于 5 秒（即每秒轮询一次更改源），可配置轮询时间“feedPollTime”（请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)）。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>我在 Mongo API 集合中插入了一个文档，但在更改源中获取该文档时，显示了一个不同的 ID 值。 原因是什么？
 
@@ -451,7 +445,7 @@ Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内�
 
 ### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>是否可以通过某种方式来获取更改源的删除？
 
-目前更改源不会记录日志删除操作。 更改源在不断改进，此功能已在规划中。 目前，可以在文档中添加删除软标记。 在文档中添加名为“deleted”的属性并将其设置为“true”，并在文档中设置 TTL，以便自动删除文档。
+目前更改源不会记录日志删除操作。 更改源在不断改进，此功能已在规划中。 目前，可以在文档中添加删除软标记。 在文档中添加“deleted”属性，并将它设置为“true”。同时，对文档设置 TTL，这样就可以自动删除文档了。
 
 ### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>是否可以读取历史文档的更改源（例如，5 年前添加的文档）？
 

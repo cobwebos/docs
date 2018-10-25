@@ -1,20 +1,29 @@
 ---
-title: 自定义影像服务发行说明
+title: 发行说明 - 自定义影像服务
+titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
+ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8423051fa5169eb8acddc7297e36188e297cb9e4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288656"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901311"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
+
+## <a name="october-9-2018"></a>2018 年 10 月 9 日
+- 对象检测进入付费预览版。 现在可以使用 Azure 资源创建对象检测项目。
+- 向网站添加了“移至 Azure”功能，以便更轻松地升级有限试用版项目以链接到 Azure。 资源链接的项目（F0 或 S0）。可以在产品的“设置”页上找到此信息。  
+- 添加了导出到 ONNX 1.2 的功能，以支持 Windows ML 的 Windows 2018 10 月更新版本。
+Bug 修复，包括带有特殊字符的 ONNX 导出。 
+
 
 ## <a name="august-14-2018"></a>2018 年 8 月 14 日
 - 在 customvision.ai 网站上添加了“入门”小部件，以指导用户完成项目培训。 

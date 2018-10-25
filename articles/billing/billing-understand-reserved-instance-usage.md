@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: c81db66637a4c56a36b6995ad8df0fe1967d08ef
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391654"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585214"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>了解即用即付订阅的 Azure 预留使用情况
 
@@ -62,9 +62,11 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 4. “计量 ID”是预留的计量 ID。 此计量的成本是 0 美元。 对于任何符合预留折扣条件的 VM，将显示此计量 ID。
 5. Standard_DS1_v2 是 1 vCPU VM，此 VM 在不使用 Azure 混合权益的情况下部署。 因此，此计量涉及 Windows 软件的额外费用。 若要查找与 D 系列 1 核心 VM 相对应的计量，请参阅 [Azure 虚拟机预留实例 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)。 如果有 Azure 混合权益，则不会收取此额外费用。
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>SQL 数据库预留容量预留的使用情况
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL 数据库和 Cosmos DB 保留容量预留的使用情况
 
-以下部分假设在美国东部区域运行 SQL 数据库第 4 代，并且预留信息如下表中所示：
+以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。 
+
+假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
 | 字段 | 值 |
 |---| --- |
@@ -75,7 +77,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ### <a name="statement-section-of-csv-file"></a>CSV 文件的声明部分
 
-筛选“预留实例使用情况”计量名称。 此时会显示以下屏幕截图中所示的内容：
+筛选“预留实例使用量”计量名称，并选择所需的“计量类别” - Azure SQL 数据库或 Azure Cosmos DB。 此时会显示以下屏幕截图中所示的内容：
 
 ![SQL 数据库预留容量的 CSV 文件](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -106,3 +108,5 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+
+

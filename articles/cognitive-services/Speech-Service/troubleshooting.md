@@ -1,7 +1,7 @@
 ---
-title: 认知服务语音 SDK 故障排除
-description: 认知服务语音 SDK 故障排除
-titleSuffix: Microsoft Cognitive Services
+title: 排查认知服务语音 SDK 问题
+description: 排查认知服务语音 SDK 问题。
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
@@ -9,38 +9,40 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284116"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816187"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>语音服务 SDK 故障排除
+# <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
 
-本文提供的信息可帮助你解决使用语音 SDK 时可能遇到的问题。
+本文提供的信息可帮助你解决在使用语音 SDK 时可能遇到的问题。
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>错误 `WebSocket Upgrade failed with an authentication error (403).`
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>错误：WebSocket 升级失败，出现身份验证错误 (403)
 
-区域或服务可能有错误的终结点。 请仔细检查 URI 以确保它是正确的。 另请参阅下一节，因为这也可能是订阅密钥或授权令牌有问题。
+你的区域或服务可能有错误的终结点。 请检查 URI 以确保它正确无误。 
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>错误 `HTTP 403 Forbidden` 或错误 `HTTP 401 Unauthorized`
+此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅后续部分。
 
-此错误通常是由身份验证问题导致的。 没有有效 `Ocp-Apim-Subscription-Key` 或 `Authorization` 标头的连接请求将被拒绝，状态为 401 或 403。
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>错误：HTTP 403 禁止访问或 HTTP 401 未授权
 
-* 如果正在使用订阅密钥进行身份验证，原因可能是：
+此错误通常是由身份验证问题导致的。 没有有效 `Ocp-Apim-Subscription-Key` 或 `Authorization` 标头的连接请求将被拒绝，状态为 403 或 401。
+
+* 如果在使用订阅密钥进行身份验证，则可能看到该错误的原因是：
 
     - 订阅密钥缺失或无效
     - 已超出订阅的使用配额
 
-* 如果正在使用授权令牌进行身份验证，原因可能是：
+* 如果在使用授权令牌进行身份验证，则可能看到该错误的原因是：
 
     - 授权令牌无效
     - 授权令牌已过期
 
 ### <a name="validate-your-subscription-key"></a>验证订阅密钥
 
-可以通过运行以下命令之一来验证以确保拥有有效的订阅密钥。
+可以通过运行以下命令之一来验证你拥有有效的订阅密钥。
 
 > [!NOTE]
 > 将 `YOUR_SUBSCRIPTION_KEY` 和 `YOUR_REGION` 分别替换为自己的订阅密钥和关联区域。
@@ -68,7 +70,7 @@ ms.locfileid: "39284116"
 如果使用授权令牌进行身份验证，请运行以下命令之一以验证授权令牌是否仍然有效。 令牌的有效期为 10 分钟。
 
 > [!NOTE]
-> 将 `YOUR_AUDIO_FILE` 替换为预先录制的音频文件的路径，将 `YOUR_ACCESS_TOKEN` 替换为上一步中返回的授权令牌，将 `YOUR_REGION` 替换为正确的区域。
+> 将 `YOUR_AUDIO_FILE` 替换为预先录制的音频文件的路径。 将 `YOUR_ACCESS_TOKEN` 替换为上一步中返回的授权令牌。 将 `YOUR_REGION` 替换为正确的区域。
 
 * PowerShell
 
@@ -83,12 +85,12 @@ ms.locfileid: "39284116"
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
     
-    # Read audio into byte array
+    # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
     
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
     
-    # Show the result
+    # Show the result.
     $RecoResponse
     ```
 
@@ -100,22 +102,23 @@ ms.locfileid: "39284116"
 
 ---
 
-## <a name="error-http-400-bad-request"></a>错误 `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>错误：HTTP 400 错误请求
 
-当请求正文包含无效的音频数据时，通常会发生此错误。 仅支持 `WAV` 格式。 还要检查请求的标头，以确保指定适当的 `Content-Type` 和 `Content-Length`。
+当请求正文包含无效的音频数据时，通常会发生此错误。 仅支持 WAV 格式。 此外，请检查请求的标头，以确保为 `Content-Type` 和 `Content-Length` 指定适当的值。
 
-## <a name="error-http-408-request-timeout"></a>错误 `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>错误：HTTP 408 请求超时
 
-出现该错误很可能是因为未将音频数据发送到服务。 此错误也可能是由网络问题所导致。
+出现该错误很可能是因为未将音频数据发送到服务。 此错误也可能是由网络问题所致。
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>响应中的 `RecognitionStatus` 为 `InitialSilenceTimeout`
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>响应中的“RecognitionStatus”是“InitialSilenceTimeout”
 
-音频数据通常是导致此问题的原因。 例如：
+此问题通常是由音频数据引起的。 出现此错误的可能原因有：
 
-* 音频开头有一段很长的静音。 该服务将在几秒钟后停止识别并返回 `InitialSilenceTimeout`。
+* 音频开头有一段很长的静音。 在这种情况下，该服务将在几秒钟后停止识别并返回 `InitialSilenceTimeout`。
+
 * 音频使用了不受支持的编解码器格式，这导致音频数据被视为静音。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [发行说明](releasenotes.md)
+* [查看发行说明](releasenotes.md)
 

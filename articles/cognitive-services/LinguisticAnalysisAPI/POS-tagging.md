@@ -1,32 +1,36 @@
 ---
-title: 语言分析 API 中的词性标记 | Microsoft Docs
-description: 了解 Microsoft 认知服务中的词性标记如何标识文本中每个字词的词类或词性。
+title: 词性标记 - 语言分析 API
+description: 了解语言分析 API 中的词性标记如何标识文本中每个字词的词类或词性。
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 90fd5b05c2dabdac88c6c8da288ab629177be38d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082632"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238500"
 ---
 # <a name="part-of-speech-tagging"></a>词性标记
+
+> [!IMPORTANT]
+> 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 ## <a name="background-and-motivation"></a>背景和动机
 
 将文本拆分成句子和词汇后，分析的下一步就是标识每个字词的词类或词性。
-词类包括诸如“名词”（一般表示人、地点、事物、想法等）和“谓词”（一般表示动作、状态变化等）之类。对于某些字词，词性是明确的（例如，“quagmire”（泥潭）确实只是名词），但对于其他许多字词，词性就很难判断。
+词类包括诸如“名词”（一般表示人、地点、事物、想法等）和“谓词”（一般表示动作、状态变化等）之类。对于某些字词，词性是明确的（例如，“泥潭”确实只是名词），但对于其他许多字词，词性就很难判断。
 “Table”可以是坐下的位置（或 2D 数字布局），也可以说“table a discussion”（留到以后再讨论）。
 
 ## <a name="list-of-part-of-speech-tags"></a>词性标记列表
 
-| 标记 | 说明 | 示例字词 |
+| 标记 | Description | 示例字词 |
 |-----|-------------|---------------|
 | $ | 美元 | $ |
 | \`\` | 左引号 | \` \`\` |
@@ -35,7 +39,7 @@ ms.locfileid: "37082632"
 | ) | 右括号 | ) ] } |
 | ， | 逗号 | ， |
 | -- | 破折号 | -- |
-| 。 | 句子终止符 | 。 ! ? |
+| . | 句子终止符 | . ! ? |
 | : | 冒号或省略号 | : ; ... |
 | CC | 并列连词 | and but or yet|
 | CD | 基数 | nine 20 1980 '96 |
@@ -45,7 +49,7 @@ ms.locfileid: "37082632"
 | IN | 介词或从属连词| in inside if upon whether |
 | JJ | 形容词或基数 | ninth pretty execrable multimodal |
 | JJR | 形容词的比较级 | better faster cheaper |
-| JJS | 形容词的最高级 | best fastest cheapest | 
+| JJS | 形容词的最高级 | best fastest cheapest |
 | LS | 列表项标记 | (a) (b) 1 2 A B A. B. |
 | MD | 情态助动词 | can may shall will could might should ought |
 | NN | 普通名词、单数名词或集合名词 | potato money shoe |

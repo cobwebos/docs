@@ -1,6 +1,6 @@
 ---
-title: 处理 Azure 逻辑应用中的大型消息 | Microsoft Docs
-description: 了解如何在逻辑应用中使用分块处理大型消息
+title: 处理大型消息 - Azure 逻辑应用 | Microsoft Docs
+description: 了解如何在 Azure 逻辑应用中使用分块处理大型消息
 services: logic-apps
 documentationcenter: ''
 author: shae-hurst
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 6064db5455d92d15dca0e2a4a78285f0aeade904
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299039"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041639"
 ---
-# <a name="handle-large-messages-with-chunking-in-logic-apps"></a>在逻辑应用中使用分块处理大型消息
+# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
 处理消息时，逻辑应用通过最大大小来限制消息内容。 此限制可以减少大型消息的存储和处理带来的开销。 逻辑应用可以通过分块将大消息拆分成小消息，以便处理其大小超出此限制的消息。 有了这种方式，就可以使用逻辑应用在特定条件下传输大文件。 通过连接器或 HTTP 与其他服务通信时，逻辑应用可以使用大型消息，但只能采用区块的方式。 这种情况意味着，连接器也必须支持分块，或者逻辑应用和这些服务之间的基础 HTTP 消息交换必须使用分块。
 
@@ -117,7 +117,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 1. 你的逻辑应用使用空的消息正文发送初始的 HTTP POST 或 PUT 请求。 请求标头包括与逻辑应用需要以区块形式上传的内容的以下信息：
 
-   | 逻辑应用请求标头字段 | 值 | Type | 说明 |
+   | 逻辑应用请求标头字段 | 值 | 类型 | Description |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | 分块 | String | 指示内容以区块形式上传 |
    | **x-ms-content-length** | <*content-length*> | Integer | 整个内容在分块之前的大小（以字节为单位） |
@@ -125,7 +125,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 2. 终结点以“200”成功状态代码和以下可选信息进行响应：
 
-   | 终结点响应标头字段 | Type | 必选 | 说明 |
+   | 终结点响应标头字段 | 类型 | 必选 | Description |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
    | **位置** | String | 否 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
@@ -137,7 +137,7 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
    * 这些标头详述了在每个 PATCH 消息中发送的内容区块：
 
-     | 逻辑应用请求标头字段 | 值 | Type | 说明 |
+     | 逻辑应用请求标头字段 | 值 | 类型 | Description |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
      | **Content-Type** | <*content-type*> | String | 分块内容的类型 |

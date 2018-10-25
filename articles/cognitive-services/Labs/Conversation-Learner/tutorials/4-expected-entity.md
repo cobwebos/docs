@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888198"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268015"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>如何使用操作的“预期实体”属性
 
@@ -63,9 +63,10 @@ ms.locfileid: "42888198"
 2. 在“响应”中，键入“What's your name?”。
 3. 在“预期实体”中，输入 $name。 单击“保存”。
     - 此值意味着，如果询问此问题，并且用户响应没有检测到任何实体，则机器人应假设整个用户的响应就是该实体。
+    - 实体自动添加为不合格实体。 
 2. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在“响应”中，键入“Hello $name”。
-    - 实体自动添加为所需实体。 
+    - 实体自动添加为所需实体。
 4. 单击“保存”。
 
 现在已有两个操作。
@@ -111,7 +112,7 @@ ms.locfileid: "42888198"
 2. 输入“hello”。
 3. 在回答“'what's your name”时，输入“I am called frank”。
     - 整个短语都会突出显示。 这是因为统计模型没有找到名称，因此触发了启发法并选择了整个应答作为名称实体。
-2. 若要更正它，请单击突出显示的短语，然后单击红色的 x。 
+2. 若要更正它，请单击突出显示的短语，然后单击红色回收站图标。 
 3. 单击以选择“frank”，然后单击“name”。
 2. 单击“对操作打分”
 3. 选择“Hello $name”。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 62ca89ffe7507c2dc0a0f1a86750fb2bb996a5bd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: be6bda4f5c420d1e631690fc648f982d4910e198
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836964"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585979"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](http://aka.ms/datascienceprocess) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -103,7 +103,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>NYC 出租车行程数据集
-此处使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](http://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个车程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证编号和出租车（出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+此处使用的示例为公开发布的数据集 - [NYC 出租车行程数据集](http://www.andresmh.com/nyctaxitrips/)。 NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 'trip_data' CSV 包含行程的详细信息，例如乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
 

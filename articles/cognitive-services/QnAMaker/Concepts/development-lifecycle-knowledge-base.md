@@ -1,5 +1,5 @@
 ---
-title: 知识库的开发生命周期 - QnA Maker
+title: 知识库生命周期 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 5af829b3355c6d68bace959b66f9511877d08b83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040908"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857159"
 ---
 # <a name="knowledge-base-lifecycle"></a>知识库生命周期
 QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 

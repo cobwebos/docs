@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999505"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269513"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -48,7 +48,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 下表列出了此示例中使用的资源的 API 版本。
 
-| 资源类型 | API 版本 | 查询 |
+| 资源类型 | API 版本 | Query |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
 
@@ -84,7 +84,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 | query | 要运行的查询。 |
 
 > [!NOTE]
-> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。  例如，如果查询为 Type:AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"，那么在解决方案文件中应将其写作 Type:AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"。
+> 如果查询中包含可解释为 JSON 的字符，则可能需要在查询中使用转义字符。  例如，如果查询为 AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"，应在解决方案文件中将它编写为 AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"。
 
 ## <a name="alerts"></a>警报
 [Azure 日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。  如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)运行一个或多个操作。  
@@ -190,7 +190,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 | 元素名称 | 必选 | Description |
 |:--|:--|:--|
-| Type | 是 | 操作的类型。  警报操作的类型是 Alert。 |
+| 类型 | 是 | 操作的类型。  警报操作的类型是 Alert。 |
 | 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | Description | 否 | 警报的可选说明。 |
 | 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性

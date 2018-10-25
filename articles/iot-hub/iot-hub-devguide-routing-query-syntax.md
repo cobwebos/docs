@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8e9321e72727c1a3149ff2e78b8cb1248734cb88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978499"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018530"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
-消息路由使用户能够将不同的数据类型（即设备遥测消息、设备生命周期事件和设备孪生更改事件）路由到各个终结点。 此外，还可以在路由此数据之前对其应用丰富查询，以接收对你而言重要的数据。 本文介绍 IoT 中心消息路由查询语言，并提供一些常见查询模式 
+消息路由使用户能够将不同的数据类型（即设备遥测消息、设备生命周期事件和设备孪生更改事件）路由到各个终结点。 此外，还可以在路由此数据之前对其应用丰富查询，以接收对你而言重要的数据。 本文介绍 IoT 中心消息路由查询语言，并提供一些常见的查询模式。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "46978499"
 
 ## <a name="message-routing-query-based-on-message-properties"></a>基于消息属性的消息路由查询 
 
-IoT 中心为所有设备到云消息传递定义[通用格式](../iot-hub/iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
+IoT 中心为所有设备到云消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 IoT 中心消息假设以下 JSON 表示形式的消息。 为所有用户添加系统属性并标识消息的内容。 用户可以有选择地向消息添加应用程序属性。 我们建议使用唯一的属性名称，因为 IoT 中心设备到云消息传递不区分大小写。 例如，如果有多个具有相同名称的属性，IoT 中心将仅发送其中一个属性。  
 
 ```json
 { 
@@ -46,16 +46,17 @@ IoT 中心为所有设备到云消息传递定义[通用格式](../iot-hub/iot-h
   } 
 } 
 ```
+
 ### <a name="system-properties"></a>系统属性
 
 系统属性有助于标识消息的内容和源。 
 
-| 属性 | Type | Description |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | connectionDeviceId | 字符串 | 此值由 IoT 中心设置，标识消息的源。 这可以是设备遥测消息、设备孪生更改通知或设备生命周期事件。 这无法进行查询。 |
-| iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `'enqueuedTime'`。 |
+| iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
 
 如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。
 
@@ -65,7 +66,7 @@ IoT 中心为所有设备到云消息传递定义[通用格式](../iot-hub/iot-h
 
 ### <a name="query-expressions"></a>查询表达式
 
-对消息系统属性的查询需要以 `'$'` 符号为前缀。 对应用程序属性的查询使用其名称进行访问，而且不应以 `'$'` 符号为前缀。 如果应用程序属性名称以 `'$'` 开头，则 IoT 中心将在系统属性中搜索它，如果找不到，再在应用程序属性中查找。 例如： 
+对消息系统属性的查询需要以 `$` 符号为前缀。 对应用程序属性的查询使用其名称进行访问，而且不应以 `$` 符号为前缀。 如果应用程序属性名称以 `$` 开头，则 IoT 中心将在系统属性中搜索它，如果找不到，再在应用程序属性中查找。 例如： 
 
 查询系统属性 contentEncoding 
 
@@ -73,18 +74,19 @@ IoT 中心为所有设备到云消息传递定义[通用格式](../iot-hub/iot-h
 $contentEncoding = 'UTF-8'
 ```
 
-查询应用程序属性 processingPath
+查询应用程序属性 processingPath：
+
 ```sql
 processingPath = 'hot'
 ```
 
-若要组合这些查询，可以使用布尔表达式和函数 
+若要组合这些查询，可以使用布尔表达式和函数：
+
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-受支持的运算符和函数的完整列表在[表达式和条件](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions
-)中列出
+受支持的运算符和函数的完整列表在[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)中列出
 
 ## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询 
 
@@ -146,19 +148,22 @@ deviceClient.sendEvent(message, (err, res) => {
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND $body.Weather.IsEnabled 
 ```
+
 ```sql
 length($body.Weather.Location.State) = 2 
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
 ## <a name="message-routing-query-based-on-device-twin"></a>基于设备孪生的消息路由查询 
 
-通过消息路由，可以查询[设备孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)标记和属性，这些是 JSON 对象。 请注意，不支持对模块孪生的查询。 设备孪生标记和属性的示例如下所示。
+通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 请注意，不支持对模块孪生的查询。 设备孪生标记和属性的示例如下所示。
 
 ```JSON
 {
@@ -196,14 +201,16 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
 ```
+
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[消息路由](iot-hub-devguide-messages-d2c.md)
-* 尝试[消息路由教程](tutorial-routing.md)
+* 了解[消息路由](iot-hub-devguide-messages-d2c.md)。
+* 尝试[消息路由教程](tutorial-routing.md)。

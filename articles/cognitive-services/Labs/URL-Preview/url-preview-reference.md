@@ -1,20 +1,21 @@
 ---
-title: 项目 URL 预览参考 - Microsoft 认知服务 | Microsoft Docs
+title: 项目 URL 预览参考
+titlesuffix: Azure Cognitive Services
 description: 项目 URL 预览终结点参考。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: rosh
+ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865869"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870802"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
@@ -61,7 +62,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|说明|  
+|标头|Description|  
 |------------|-----------------|   
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|  
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|  
@@ -74,7 +75,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
   
   
-|名称|值|Type|必选|  
+|名称|值|类型|必选|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|  
 |<a name="query" />q|要预览的 URL|String|是|  
@@ -85,7 +86,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|对象|说明|  
+|对象|Description|  
 |------------|-----------------|  
 |[WebPage](#webpage)|包含预览属性的顶级 JSON 对象。|  
 
@@ -93,7 +94,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 ### <a name="error"></a>错误  
 定义已发生的错误。  
   
-|元素|说明|Type|  
+|元素|Description|类型|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -106,7 +107,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|   
@@ -115,7 +116,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 ### <a name="webpage"></a>WebPage  
 定义预览版网页的信息。  
   
-|名称|值|Type|  
+|名称|值|类型|  
 |----------|-----------|----------|
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|  
@@ -125,7 +126,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 
 ### <a name="identifiable"></a>Identifiable
-|名称|值|Type|  
+|名称|值|类型|  
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
  
@@ -134,7 +135,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 下面是请求可能返回的 HTTP 状态代码。  
   
-|状态代码|说明|  
+|状态代码|Description|  
 |-----------------|-----------------|  
 |200|成功。|  
 |400|查询参数之一缺失或无效。| 
@@ -177,13 +178,13 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|子代码|说明
+|代码|SubCode|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
 |RateLimitExceeded|无子代码|每当超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额时，必应都会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，则必应会回 HTTP 状态代码 429；如果超过 QPM，则必应会返回 403。
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|在必应无法对调用方进行身份验证时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 标头或订阅密钥无效。<br/><br/>如果指定了多个身份验证方法，则会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，则 HTTP 状态代码为 401。
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方没有权限访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已禁用或过期，也会发生此情况。 <br/><br/>如果错误是 InsufficientAuthorization，则 HTTP 状态代码为 403。
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已遭禁用或到期，就会发生此类错误。 <br/><br/>如果错误是 InsufficientAuthorization，HTTP 状态代码为 403。
 
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](csharp.md)

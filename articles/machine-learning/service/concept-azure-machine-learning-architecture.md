@@ -9,18 +9,18 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952115"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237970"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>体系结构和概念：Azure 机器学习服务如何工作？ 
 
 本文档介绍 Azure 机器学习服务的体系结构和概念。 下图显示该服务的主要组件，并说明使用该服务时的常规工作流： 
 
-[![Azure 机器学习体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 工作流通常遵循以下步骤：
 
@@ -41,7 +41,7 @@ ms.locfileid: "46952115"
 
 ## <a name="workspace"></a>工作区
 
-工作区是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习时创建的所有项目。
+工作区是 Azure 机器学习服务的顶级资源。 它提供了一个集中的位置来处理使用 Azure 机器学习服务时创建的所有项目。
 
 工作区保留可用于定型模型的计算目标的列表。 此外，它还保留培训运行的历史记录，包括日志、指标、输出和脚本快照。 此信息用于确定哪个培训运行产生最佳模型。
 
@@ -71,15 +71,15 @@ ms.locfileid: "46952115"
 
 简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型将涉及选择算法、为其提供数据以及优化超参数。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
 
-模型通过 Azure 机器学习中的运行生成。 你还可以使用在 Azure 机器学习之外培训的模型。 可以在 Azure 机器学习工作区下注册模型。
+模型通过 Azure 机器学习中的运行生成。 你还可以使用在 Azure 机器学习之外培训的模型。 可以在 Azure 机器学习服务工作区下注册模型。
 
-Azure 机器学习与框架无关。 创建模型时，你可以使用任何常用机器学习框架，例如 scikit-learn、xgboost、PyTorch、TensorFlow、Chainer 和 CNTK。
+Azure 机器学习服务与框架无关。 创建模型时，你可以使用任何常用机器学习框架，例如 scikit-learn、xgboost、PyTorch、TensorFlow、Chainer 和 CNTK。
 
-有关培训模型的示例，请参阅[快速入门：创建机器学习工作区](quickstart-get-started.md)文档。
+有关培训模型的示例，请参阅[快速入门：创建机器学习服务工作区](quickstart-get-started.md)文档。
 
 ### <a name="model-registry"></a>模型注册表
 
-模型注册表跟踪 Azure 机器学习工作区中的所有模型。 
+模型注册表会跟踪 Azure 机器学习服务工作区中的所有模型。 
 
 模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以该名称注册。
 

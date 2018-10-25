@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 230a4df2c43e8d5e6ae1a5a7e8188cf207461022
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057642"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267464"
 ---
 # <a name="how-to-close-active-risk-events"></a>如何：关闭活动风险事件
 
@@ -51,7 +51,7 @@ Azure Active Directory 使用[风险事件](../reports-monitoring/concept-risk-e
 
 ![重置密码](./media/howto-close-active-risk-events/13.png)
 
-密码重置会关闭相关用户的所有活动风险事件，并使标识恢复安全状态。 使用用户风险策略是关闭活动风险事件的首选方法，因为此方法是自动化的。 现在，受影响用户与支持人员或管理员之间需要交互。
+密码重置会关闭相关用户的所有活动风险事件，并使标识恢复安全状态。 使用用户风险策略是关闭活动风险事件的首选方法，因为此方法是自动化的。 受影响的用户与支持人员或管理员之间不需要交互。
 
 但是，不一定总适合使用用户风险策略。 例如，对于以下情况，用户风险策略就不适用：
 

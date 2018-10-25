@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 897671ef592ac691402a4e452f7a0baa04aa228a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129051"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079066"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
-
 
 在应用中安装 [Azure Application Insights][start] SDK 后，它会将有关应用的遥测数据发送到云中。 负责的开发人员自然想要确切了解发送了哪些数据、数据的后续情况，以及如何控制数据。 具体而言，是否发送了敏感数据？数据存储在何处？其安全性怎样？ 
 
@@ -91,6 +90,8 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
+[调试快照](app-insights-snapshot-debugger.md)存储七天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
+
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 你和团队成员（如果使用组织帐户）可以看到数据。 
 
@@ -128,6 +129,66 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>从应用程序传输到 Application Insights 服务器的数据是否经过加密？
 是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 唯一的例外是从纯 HTTP 网页发送的数据。
 
+## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK 是否创建临时本地存储？
+
+是。如果无法访问终结点，一些遥测通道在本地暂留数据。 请查看下面的内容，以确定哪些框架和遥测通道受影响。
+
+
+利用本地存储的遥测通道会在 TEMP 或 APPDATA 目录中创建临时文件，但仅限于运行应用程序的特定帐户。 当终结点暂时不可用或达到限制值时，可能会发生这种情况。 解决此问题后，遥测通道便会恢复发送所有新数据和暂留数据。
+
+
+此暂留数据未加密，强烈建议将数据收集策略重构为，禁用收集私人数据。 （有关详细信息，请参阅[如何导出和删除私人数据](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)。）
+
+
+如果客户需要使用特定安全要求配置此目录，可以逐个框架进行配置。 请确保运行应用程序的进程对此目录拥有写入权限，并确保此目录受保护，以免遥测数据遭用户意外读取。
+
+### <a name="java"></a>Java
+
+`C:\Users\username\AppData\Local\Temp` 用于暂留数据。 此位置无法通过配置目录进行配置，只有拥有所需凭据的特定用户，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)。）
+
+###  <a name="net"></a>.Net
+
+默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）
+
+
+通过配置文件：
+```
+<TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
+    <StorageFolder>D:\NewTestFolder</StorageFolder>
+</TelemetryChannel>
+```
+
+通过代码：
+
+- 从配置文件中删除 ServerTelemetryChannel
+- 将此代码片段添加到配置中：
+```
+ServerTelemetryChannel channel = new ServerTelemetryChannel();
+channel.StorageFolder = @"D:\NewTestFolder";
+channel.Initialize(TelemetryConfiguration.Active);
+TelemetryConfiguration.Active.TelemetryChannel = channel;
+```
+
+### <a name="netcore"></a>NetCore
+
+默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
+
+下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
+
+```
+services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
+```
+
+（有关详细信息，请参阅 [AspNetCore 自定义配置](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)。 )
+
+### <a name="nodejs"></a>Node.js
+
+默认情况下，`%TEMP%/appInsights-node{INSTRUMENTATION KEY}` 用于暂留数据。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts)。）
+
+可更改 [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) 中的静态变量 `Sender.TEMPDIR_PREFIX` 的运行时值，以替代文件夹前缀 `appInsights-node`。
+
+
+
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>如何使用 TLS 1.2 将数据发送到 Application Insights？
 
 为了确保传输到 Application Insights 终结点的数据的安全性，我们强烈建议客户将其应用程序配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**，并且行业即将放弃对这些旧协议的支持。 
@@ -142,14 +203,14 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 | --- | --- | --- |
 | Azure 应用服务  | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。  |
 | Azure 函数应用 | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。 |
-|.NET | 受支持，配置因版本而异。 | 有关 .NET 4.7 和更低版本的详细配置信息，请参阅[这些说明](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
-|状态监视器 | 受支持，需要配置 | 状态监视器依赖于使用 [OS 配置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) + [.NET 配置](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12)来支持 TLS 1.2。
+|.NET | 受支持，配置因版本而异。 | 有关 .NET 4.7 和更低版本的详细配置信息，请参阅[这些说明](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
+|状态监视器 | 受支持，需要配置 | 状态监视器依赖于使用 [OS 配置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 配置](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)来支持 TLS 1.2。
 |Node.js |  受支持，在 v10.5.0 中可能需要配置。 | 使用[官方的 Node.js TLS/SSL 文档](https://nodejs.org/api/tls.html)完成任何特定于应用程序的配置。 |
 |Java | 受支持，[JDK 6 Update 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) 和 [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) 中添加了对 TLS 1.2 的 JDK 支持。 | JDK 8 [默认使用 TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)。  |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
-| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)页。  |
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 | Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
 |Windows Vista | 。 | 不适用
 

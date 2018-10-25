@@ -1,26 +1,27 @@
 ---
-title: 学术知识 API 中的会议录实体属性 | Microsoft Docs
-description: 了解可以与认知服务中的会议录实体结合使用的属性。
+title: 会议系列实体属性 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 了解可用于会议系列实体的属性。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 332736c927bdaa00334546f626a6eabb8e11d3b5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9f28afd7005d7a61aa0d2f4dba69ca598034b52
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365388"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900742"
 ---
 # <a name="conference-series-entity"></a>会议录实体
 
 <sub> *以下属性为会议录实体专用属性。(Ty = '3') </sub>
 
-名称    |说明                            |Type       | 操作
+名称    |Description                            |类型       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |实体 ID                              |Int64      |等于
 CN      |会议录规范化名称      |String     |等于

@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640900"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801941"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>如何在认知搜索技能集中引用注释
 
@@ -27,7 +27,7 @@ ms.locfileid: "34640900"
 
 在复习语法之前，让我们回顾一些重要的概念，以便更好地理解本文后面提供的示例。
 
-| 术语 | 说明 |
+| 术语 | Description |
 |------|-------------|
 | 扩充文档 | 扩充文档是由管道创建和使用的内部结构，用来保存与文档相关的所有注释。 可以把扩充文档看作是注释树。 通常，从前一个注释创建的注释将成为前一个注释的子级。<p/>扩充文档仅在技能集执行期间存在。 内容映射到搜索索引后，就不再需要扩充文档了。 虽然不直接与扩充文档交互，但在创建技能集时，有一个文档的心理模型是很有用的。 |
 | 扩充上下文 | 扩充发生的上下文，即扩充的元素。 默认情况下，扩充上下文位于 `"/document"` 级别，作用域为单个文档。 当一个技能运行时，该技能的输出将成为[定义上下文的属性](#example-2)。|
@@ -89,7 +89,7 @@ ms.locfileid: "34640900"
   }
 ```
 
-当注释是字符串的数组或集合时，你可能希望针对特定成员而不是整个数组。 上述示例在由上下文表示的每个节点下生成名为 `"last"` 的注释。 如果想要引用此系列的注释，可以使用语法 `"/document/people/*/last"`。 如果想要引用特定注释，可以使用显式索引：`"/document/people/1/last` 引用文档中标识的第一个人的姓氏。 请注意，在此语法中数组的“索引从 1 开始”。
+当注释是字符串的数组或集合时，你可能希望针对特定成员而不是整个数组。 上述示例在由上下文表示的每个节点下生成名为 `"last"` 的注释。 如果想要引用此系列的注释，可以使用语法 `"/document/people/*/last"`。 如果想要引用特定注释，可以使用显式索引：`"/document/people/1/last` 引用文档中标识的第一个人的姓氏。 请注意，在此语法中数组的“索引从 0 开始”。
 
 <a name="example-3"></a>
 

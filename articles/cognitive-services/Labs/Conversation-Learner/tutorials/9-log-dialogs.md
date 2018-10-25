@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4663fc377e795e603bd2484ec4cf98578408501f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171429"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248375"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>如何在对话学习器模型中记录对话
 
@@ -51,7 +51,7 @@ ms.locfileid: "39171429"
 1. 依次单击“操作”和“新建操作”
 2. 在“响应”中，键入“Which city?”。
 3. 在“取消资格实体”中，输入“$city”。
-3. 单击创建
+3. 单击“法律条款” 
 
 然后，创建第二个操作：
 
@@ -76,7 +76,7 @@ ms.locfileid: "39171429"
 
 添加另一个示例对话：
 
-1. 依次单击“新建操作”和“新建定型对话”。
+1. 单击“定型”对话框，然后单击“新建定型”对话框。
 2. 键入“what's the weather in Seattle?”。 注意“Seattle”被标记为实体。
 5. 单击“对操作评分” 
 6. 选择“The weather in $city is probably sunny”。
@@ -86,7 +86,7 @@ ms.locfileid: "39171429"
 假设我们已对用户部署此机器人。
 
 1. 单击“记录对话”。
-2. 单击“新建聊天会话”。
+2. 单击“新建日志”对话框。
     - 这将呈现机器人，其中用户将在 UI 左侧的 Web 聊天控件中与其进行交互。 可以忽略右侧的空白区域。
 3. 键入“hello”。
 4. 机器人响应：“which city?”
@@ -97,10 +97,10 @@ ms.locfileid: "39171429"
 
 启动新会话：
 
-2. 单击“新建聊天会话”。
+2. 单击“新建日志”对话框。
 3. 键入“forecast for Boston”。
 4. 机器人响应：“which city?”
-2. 单击“完成教学”。
+2. 单击“完成测试”。
 
 现在，我们来更正第二个对话：
 
@@ -132,7 +132,7 @@ ms.locfileid: "39171429"
 7. 键入“Boston”。 双击以将“Boston”标记为实体（如果尚未）。
 8. 单击“对操作打分”。
 9. 单击以选择“The weather in $city is probably sunny”。
-10. 单击“完成教学”。
+10. 单击“Done Teaching”。
 
 ![](../media/tutorial9_addnewaction.PNG)
 

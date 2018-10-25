@@ -1,20 +1,21 @@
 ---
-title: Project Acoustics 入门 - 认知服务
+title: Project Acoustics 入门
+titlesuffix: Azure Cognitive Services
 description: 本快速入门指南将演示如何在 Unity 项目中集成插件、制作场景，以及将音效应用于声源。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b80543b199d4b766c1a8800d2dff4cf5ed81f8cc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181148"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902937"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Project Acoustics 入门
 本快速入门指南将演示如何在 Unity 项目中集成插件、制作场景，以及将音效应用于声源。 对于本快速入门教程，首先需要创建 [Azure Batch 帐户](create-azure-account.md)。 本指南假设用户比较熟悉 Unity。
@@ -93,9 +94,9 @@ ms.locfileid: "40181148"
 ![音频源](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>应用后期制作设计
-可以将脚本 AcousticsSourceCustomization 附加到场景中的声源，以启用其他源设计参数，方法是单击“添加注释”，然后选择“脚本”>“音效源自定义”：
+可以将脚本 AcousticsAdjust 附加到场景中的声源，以启用其他源设计参数，方法是单击“添加组件”，然后选择“脚本”>“音效调整”：
 
-![源自定义](media/SourceCustomization.png)
+![AcousticsAdjust](media/AcousticsAdjust.png)
 
 还存在 Microsoft Acoustics 混音器的参数。 有关后期制作设计的详细信息，请参阅[设计参数](design-process.md)。
 

@@ -1,22 +1,27 @@
 ---
-title: 语言分析 API 中的 Analyze 方法 | Microsoft Docs
+title: 分析方法 - 语言分析 API
+titlesuffix: Azure Cognitive Services
 description: 如何使用语言分析 API 中的 Analyze 方法分析某些自然语言输入。
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
-ms.openlocfilehash: b17a00f31845bfa05572dff7ca94e9a1ffd69586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365512"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239296"
 ---
 # <a name="analyze-method"></a>分析方法
+
+> [!IMPORTANT]
+> 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 “Analyze”REST API 用于分析给定的自然语言输入。
 它可能只涉及查找输入内的[句子和令牌](Sentences-and-Tokens.md)、查找[词性标记](POS-tagging.md)或查找[结构树](Constituency-Parsing.md)。
@@ -33,19 +38,19 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>请求参数
 
-名称 | Type | 必选 | 说明
+名称 | 类型 | 必选 | Description
 -----|-------|----------|------------
 **语言**    | 字符串 | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
 **analyzerIds** | 字符串列表 | 是 | 要应用的分析器的 GUID 列表。 有关详细信息，请参阅分析器文档。
 **text**        | 字符串 | 是 | 要分析的原始输入。 这可能是一个短字符串，如单词或短语、完整的句子或完整的段落或语篇。
 
-<br>
 ## <a name="response-json"></a>响应 (JSON)
+
 一组分析输出，其中每个输出对应请求中指定的每个属性。
 
 结果如下：
 
-名称 | Type | 说明
+名称 | 类型 | Description
 -----|------|--------------
 analyzerId | 字符串 | 指定分析器的 GUID
 结果 | 对象 | 分析器结果
@@ -54,7 +59,7 @@ analyzerId | 字符串 | 指定分析器的 GUID
 
 ### <a name="tokens-response-json"></a>令牌响应 (JSON)
 
-名称 | Type | 说明
+名称 | 类型 | Description
 -----|------|-------------
 结果 | 句子对象列表 | 文本内确定的句子边界 |
 result[x].Offset | int | 每个句子的起始字符偏移量 |
@@ -138,8 +143,6 @@ result[x].Tokens[y].NormalizedToken | 字符串 | 字符的规范化形式，可
 结果为字符串列表，在输入中找到的每个句子都有一个解析树。
 解析树采用圆括号形式表示。
 
-<br>
-
 ## <a name="example"></a>示例
 
 `POST /analyze`
@@ -151,7 +154,7 @@ result[x].Tokens[y].NormalizedToken | 字符串 | 字符的规范化形式，可
   "analyzerIds": [
     "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "22A6B758-420F-4745-8A3C-46835A67C0D2" ],
-  "text": "Hi, Tom! How are you today?" 
+  "text": "Hi, Tom! How are you today?"
 }
 ```
 
@@ -159,13 +162,12 @@ result[x].Tokens[y].NormalizedToken | 字符串 | 字符的规范化形式，可
 ```json
 [
   {
-    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04", 
+    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "result": [ ["NNP",",","NNP","."], ["WRB","VBP","PRP","NN","."] ]
   },
   {
-    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2", 
+    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2",
     "result":["(TOP (S (NNP Hi) (, ,) (NNP Tom) (. !)))","(TOP (SBARQ (WHADVP (WRB How)) (SQ (VP (VBP are)) (NP (PRP you)) (NN today) (. ?))))"]
   }
 ]
 ```
-

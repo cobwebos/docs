@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a62d4b0b324d8b2536e408132210f07f08e8bb8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958690"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237171"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>将 Web 服务部署到 Azure 容器实例 
 
@@ -33,9 +33,9 @@ ACI 通常比 AKS 便宜，并且只需 4-6 行代码即可设置。 ACI 是测�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 已安装 Azure 机器学习工作区以及适用于 Python 的 Azure 机器学习 SDK。 使用 [Azure 机器学习快速入门](quickstart-get-started.md)，了解如何获取这些先决条件。
+- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 使用 [Azure 机器学习快速入门](quickstart-get-started.md)，了解如何获取这些先决条件。
 
-- Azure 机器学习工作区对象
+- Azure 机器学习服务工作区对象
 
     ```python
     from azureml.core import Workspace

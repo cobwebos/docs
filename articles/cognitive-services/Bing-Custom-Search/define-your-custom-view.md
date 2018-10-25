@@ -1,20 +1,21 @@
 ---
-title: 必应自定义搜索：定义自定义视图 | Microsoft Docs
+title: 定义自定义视图 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
 description: 介绍如何创建站点和垂直搜索服务
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 59fef9a370ca56080d06f0920ed5409c141683a4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980655"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815250"
 ---
 # <a name="configure-your-custom-search-experience"></a>配置自定义搜索体验
 
@@ -140,7 +141,7 @@ ms.locfileid: "46980655"
 
 若要更改固定项的顺序，可拖放固定项或编辑固定项并更改其序号。 若要拖放固定项，单击列表中要移动的固定项，按住鼠标按钮并将固定项托动至要替换的固定项上，然后释放鼠标按钮。 可以看到固定项的序号会相应改变。
 
-还可以编辑固定项的序号。 在“控件”列中，单击固定项的编辑图标（铅笔状图标）。 输入希望固定项在列表中显示的序号，然后按 Enter 或单击保存按钮。例如，如果固定项在当前列表中排第六位，但你想将其更改为第二位，可将序号改为 2。 For example, if the pin is currently sixth in the list and you want it to be second, change the order number to two (2).
+还可以编辑固定项的序号。 在“控件”列中，单击固定项的编辑图标（铅笔状图标）。 输入希望固定项在列表中显示的序号，然后按 Enter 或单击保存按钮。 例如，如果固定项在当前列表中排第六位，但你想将其更改为第二位，可将序号改为 2。
 
 如果多个固定项满足匹配条件，则必应要使用的固定项由固定项的顺序决定。 例如，如果固定项 2 和固定项 3 满足相同匹配条件，则必应会使用固定项 2。
 

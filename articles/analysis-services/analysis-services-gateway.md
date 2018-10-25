@@ -1,22 +1,22 @@
 ---
-title: 本地数据网关 | Microsoft Docs
+title: 本地数据网关
 description: 如果 Azure 中的 Analysis Services 服务器要连接到本地数据源，则本地网关是必需的。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ba46223f0d0a4db7615bc94fe8a1bbfa18e57f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 84c82da933b17679e8c69c08b0c9cc7372951cfd
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442332"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802047"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>使用 Azure 本地数据网关连接到本地数据源
-本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 你可以将同一区域中的多个服务与单个网关进行关联。 
+本地数据网关的作用好似一架桥，提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 
 
 首次设置网关的过程分为四个部分：
 
@@ -26,7 +26,7 @@ ms.locfileid: "37442332"
 
 - 在 Azure 中创建网关资源 - 在这一步中，在你的 Azure 订阅中创建网关资源。
 
-- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以将多个服务器和其他资源连接到它。
+- 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
 
 若要立即开始，请参阅[安装和配置本地数据网关](analysis-services-gateway-install.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "37442332"
 
 以下是该网关所用的完全限定域名。
 
-| 域名 | 出站端口 | 说明 |
+| 域名 | 出站端口 | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |用于下载该安装程序的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -172,8 +172,6 @@ ms.locfileid: "37442332"
 #### <a name="configuration-logs"></a>配置日志
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
-
-
 
 
 #### <a name="event-logs"></a>事件日志

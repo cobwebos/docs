@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700512"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269337"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -142,6 +142,10 @@ properties: {
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|uuid 数组|是|用于续订的消息锁定令牌。|  
+
+> [!NOTE]
+> 锁定令牌是收到的消息中的 `DeliveryTag` 属性。 请查看以下 [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) 中用于检索这些内容的示例。 令牌也可能会出在“DeliveryAnnotations' as 'x-opt-lock-token”中，但是，这无法得到保证且 `DeliveryTag` 应为首选。 
+> 
   
 #### <a name="response"></a>响应  
 
@@ -365,7 +369,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|字符串|是|`com.microsoft:peek-message`|  
+|operation|字符串|是|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|否|操作服务器超时以毫秒为单位。|  
   
 请求消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  

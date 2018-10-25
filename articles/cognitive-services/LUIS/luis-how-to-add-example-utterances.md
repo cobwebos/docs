@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036484"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888282"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>添加示例表述并通过实体进行标记
 
@@ -92,12 +92,12 @@ book me 2 adult business tickets to Paris tomorrow on Air France
 
 在表述中选择同义的单词，例如水的同义词 `aqua`，然后在下拉列表中选择列表实体名称，例如“饮料”，接着选择“设置为同义词”，再选择与之同义的列表项，例如 **water**。
 
-![“意向详细信息”页的屏幕截图，其中已突出显示“创建新同义词”](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![“意向详细信息”页的屏幕截图，其中已突出显示“创建新的规范化视图”](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>创建列表实体的新项
-通过在表述中选择单词或短语，创建现有列表实体的新项。 如果有一个“饮料”列表，需要添加 `tea` 作为新项，请执行以下步骤：
+通过在表述中选择单词或短语，创建现有列表实体的新项。 如果有一个“员工”列表，需要添加 `Bob Smith` 作为新项，请按照以下步骤操作：
 
-在表述中选择用作新列表项的单词，例如 `tea`，然后在下拉列表中选择列表实体名称，例如“饮料”，接着选择“创建新同义词”。 
+在表述中选择用作新列表项的单词或短语，例如 `Bob Smith`，然后在下拉列表中选择列表实体名称，例如“员工”，接着选择“创建新的规范化视图”。 
 
 ![添加新列表项操作的屏幕截图](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

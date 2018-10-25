@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52dd9d0ab5a22b702ad7d55d91b860d57e81f607
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448605"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267760"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。
@@ -46,7 +46,7 @@ ms.locfileid: "37448605"
     > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。
 
     > [!NOTE]
-    > 如果使用 Microsoft 帐户、Live ID、Yanoo、Gmail 等登录，请将密码字段留空。 单击“连接”后，系统将提示你输入密码。
+    > 如果使用 Microsoft 帐户、Live ID、Yahoo、Gmail 等登录，请将密码字段留空。 单击“连接”后，系统将提示你输入密码。
 
     选择“Windows 身份验证”，以使用 Windows 域\用户名和密码凭据。
 

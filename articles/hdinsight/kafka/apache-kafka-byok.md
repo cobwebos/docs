@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 46105ee92a5c98cb8180b2499d0ad295702aac43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953346"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041503"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>为 Azure HDInsight 上的 Apache Kafka 创建自己的密钥（预览版）
 
@@ -35,17 +35,37 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    ![在 Azure 门户中创建用户分配的托管标识](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-2. 创建或导入 Azure Key Vault。
+2. 导入现有密钥保管库或新建一个。
 
    HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，则可以将密钥导入 Azure Key Vault。 请记住，密钥必须启用“软删除”和“不清除”。 “软删除”和“不清除”功能通过 REST、.NET/C#、PowerShell 和 Azure CLI 接口提供。
 
    若要创建新的密钥保管库，请按照 [Azure Key Vault](../../key-vault/key-vault-get-started.md) 快速入门进行操作。 有关导入现有密钥的详细信息，请访问[关于密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md)。
 
+   若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
+
+   ![在 Azure Key Vault 中生成新密钥](./media/apache-kafka-byok/kafka-create-new-key.png)
+
+   将“选项”设置为“生成”并提供密钥名称。
+
+   ![在 Azure Key Vault 中生成新密钥](./media/apache-kafka-byok/kafka-create-a-key.png)
+
+   选择从密钥列表中创建的密钥。
+
+   ![Azure Key Vault 密钥列表](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+
+   当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
+
+   ![复制密钥标识符](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+   
 3. 将托管标识添加到密钥保管库访问策略。
 
    创建新的 Azure Key Vault 访问策略。
 
    ![创建新的 Azure Key Vault 访问策略](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+
+   在“选择主体”下，选择你创建的用户分配的托管标识。
+
+   ![为 Azure Key Vault 访问策略设置“选择主体”](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
    将“密钥权限”设置为“获取”、“解包密钥”和“包装密钥”。
 
@@ -55,17 +75,13 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    ![设置 Azure Key Vault 访问策略的密钥权限](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-   在“选择主体”下，选择你创建的用户分配的托管标识。
-
-   ![为 Azure Key Vault 访问策略设置“选择主体”](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
-
 4. 创建 HDInsight 群集
 
    现在已准备好新建 HDInsight 群集。 BYOK 只能在群集创建期间应用于新群集。 无法从 BYOK 群集中删除加密，并且无法将 BYOK 添加到现有群集。
 
    ![Azure 门户中的 Kafka 磁盘加密](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`myakv.azure.com/KEK1/v1`。 还需要将托管标识分配给集群并提供密钥 URI。
+   在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
 
 ## <a name="faq-for-byok-to-kafka"></a>适用于 Kafka 的 BYOK 的常见问题解答
 

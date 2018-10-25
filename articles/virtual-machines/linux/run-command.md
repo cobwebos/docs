@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 850c5ac4df8ff3bd0e35567060b3b90dad7baacc
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 9ba60f770c094f65ee5a4ed6dc21a5e07bac3d27
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342685"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267743"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -21,7 +21,7 @@ ms.locfileid: "37342685"
 
 ## <a name="benefits"></a>优点
 
-有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) 使用“运行命令”。
+有多个选项可以用来访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 对于 Linux VM，可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 使用“运行命令”。
 
 此功能适用于要在虚拟机中运行脚本的所有方案，并且是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
@@ -68,7 +68,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 下表显示了可用于 Linux VM 的命令的列表。 **RunShellScript** 命令可用来运行所需的任何自定义脚本。
 
-|名称|**说明**|
+|**名称**|**说明**|
 |---|---|
 |**RunShellScript**|执行 Linux shell 脚本。|
 |**ifconfig**| 获取所有网络接口的配置。|

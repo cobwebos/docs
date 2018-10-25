@@ -1,21 +1,21 @@
 ---
-title: 必应自定义搜索：使用修饰标记来突出显示文本 | Microsoft Docs
+title: 使用修饰标记来突出显示文本 - 必应自定义搜索
+titlesuffix: Azure Cognitive Services
 description: 演示如何启用搜索响应中的文本修饰。
 services: cognitive-services
 author: brapel
-manager: ehansen
-ms.assetid: 5365B568-EA55-4D97-8FBE-0AF60158D4D5
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: d2d0070865aa29257ac827bbb4fc313d87ea7282
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d76cf61f7d7073850c530e6b937bd6503fac68d1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365469"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815284"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用修饰标记来突出显示文本
 
@@ -25,13 +25,13 @@ ms.locfileid: "35365469"
   
 ![命中词突出显示](./media/bing-hit-highlighting.PNG) 
 
-在用户界面中显示该字符串之前，需将 Unicode 字符替换为适合显示格式的字符。 例如，如果要将文本显示为 HTML，则可将 E000 替换为 <b\>，将 E001 替换为 </b\>，从而突出显示查询词。 如果不希望应用格式，请从字符串中删除这些标记。 
+在用户界面中显示该字符串之前，需将 Unicode 字符替换为适合显示格式的字符。 例如，若要将文本显示为 HTML，可以将 E000 替换为 <b\>，并将 E001 替换为 </b\>，从而突出显示查询词。 如果不希望应用格式，请从字符串中删除这些标记。 
 
 必应提供使用 Unicode 字符或 HTML 标记作为标记这一选项。 若要指定要使用的标记，请包括 `textFormat` 查询参数。 要使用 Unicode 字符来标记内容，请将 `textFormat` 设置为 Raw（默认值）；要使用 HTML 标记来标记内容，请将 `textFormat` 设置为 HTML。 
   
 如果 `textDecorations` 为 **true**，必应会在答案的显示字符串中包括以下标记。 如果没有 HTML 等效项，则 HTML 表单元格为空。
 
-|Unicode|HTML|说明
+|Unicode|HTML|Description
 |-|-|-
 |U+E000|\<b>|表示查询词的开头（命中词突出显示）
 |U+E001|\</b>|表示查询词的结尾

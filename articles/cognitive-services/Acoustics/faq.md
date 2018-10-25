@@ -1,20 +1,21 @@
 ---
-title: 有关 Acoustics 的常见问题 - 认知服务
+title: 有关 Project Acoustics 的常见问题解答
+titlesuffix: Azure Cognitive Services
 description: 本页面解答了有关 Project Acoustics 的常见问题，包括下载说明和制作流程。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431782"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900387"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 

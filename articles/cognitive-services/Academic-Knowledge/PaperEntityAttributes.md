@@ -1,55 +1,56 @@
 ---
-title: 学术知识 API 中的论文实体属性 | Microsoft Docs
-description: 了解可以在认知服务中与学术知识 API 中的论文实体结合使用的属性。
+title: 论文实体属性 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 了解可与学术知识 API 中的论文实体结合使用的属性。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 75efba2c2ce8842f233f766876ca00844338fb25
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c1f97896a8c3264fca0e76a0800731b8c6c85267
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094705"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901595"
 ---
 # <a name="paper-entity"></a>论文实体
 
 <sub> *以下属性特定于论文实体。(Ty = '0') </sub>
 
 
-名称    |说明                                        |类型       | 操作
+名称    |Description                                        |类型       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                                          |Int64      |Equals
-Ti      |论文标题                                        |String     |Equals、<br/>StartsWith
-L       |论文语言代码，以 "\@@@" 分隔            |String     |Equals
+ID      |实体 ID                                          |Int64      |等于
+Ti      |论文标题                                        |String     |Equals、<br/>-StartsWith
+L       |论文语言代码，以 "\@@@" 分隔            |String     |等于
 Y       |论文年份                                         |Int32      |Equals、<br/>IsBetween
 D       |论文日期                                         |日期       |Equals、<br/>IsBetween
 CC      |引文计数                                     |Int32      |无  
 ECC     |估计的引文计数                           |Int32      |无
-AA.AuN  |作者姓名                                        |String     |Equals、<br/>StartsWith
-AA.AuId |作者 ID                                          |Int64      |Equals
-AA.AfN  |作者单位名称                            |String     |Equals、<br/>StartsWith
-AA.AfId |作者单位 ID                              |Int64      |Equals
-AA.S    |论文的作者顺序                         |Int32      |Equals
-F.FN    |研究领域名称                                |String     |Equals、<br/>StartsWith
-F.FId   |研究领域 ID                                  |Int64      |Equals
-J.JN    |期刊名称                                       |String     |Equals、<br/>StartsWith
-J.JId   |期刊 ID                                         |Int64      |Equals
-C.CN    |会议系列名称                             |String     |Equals、<br/>StartsWith
-C.CId   |会议系列 ID                               |Int64      |Equals
-RId     |参考的论文的 ID                              |Int64[]    |Equals
-W       |论文标题和摘要中的单词                |String[]   |Equals
+AA.AuN  |作者姓名                                        |String     |Equals、<br/>-StartsWith
+AA.AuId |作者 ID                                          |Int64      |等于
+AA.AfN  |作者单位名称                            |String     |Equals、<br/>-StartsWith
+AA.AfId |作者单位 ID                              |Int64      |等于
+AA.S    |论文的作者顺序                         |Int32      |等于
+F.FN    |研究领域名称                                |String     |Equals、<br/>-StartsWith
+F.FId   |研究领域 ID                                  |Int64      |等于
+J.JN    |期刊名称                                       |String     |Equals、<br/>-StartsWith
+J.JId   |期刊 ID                                         |Int64      |等于
+C.CN    |会议系列名称                             |String     |Equals、<br/>-StartsWith
+C.CId   |会议系列 ID                               |Int64      |等于
+RId     |参考的论文的 ID                              |Int64[]    |等于
+W       |论文标题和摘要中的单词                |String[]   |等于
 E       |扩展的元数据（请参阅下表）                |String     |无  
         
 
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-名称    | 说明               
+名称    | Description               
 --------|---------------------------    
 DN      | 论文的显示名称 
 S       | 来源 - 论文的 Web 来源列表，按静态排名排序

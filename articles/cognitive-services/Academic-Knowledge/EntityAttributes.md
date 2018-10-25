@@ -1,27 +1,28 @@
 ---
-title: 学术知识 API 的 Academic Graph 实体属性 | Microsoft Docs
+title: Academic Graph 实体属性 - 学术知识 API
+titlesuffix: Azure Cognitive Services
 description: 了解可以与学术知识 API 中的 Academic Graph 结合使用的实体属性。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: f771969c3c6f05e5d2c99b1fbf593ae039ccb12c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a203fdf6562dabb1b9d6e8ab5bb8f46ff6d5dc27
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365383"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902784"
 ---
 # <a name="entity-attributes"></a>实体属性
 
 Academic Graph 包含 7 类实体。 所有实体都有实体 ID 和实体类型。
 
 ## <a name="common-entity-attributes"></a>常见实体属性
-名称    |说明                |Type       | 操作
+名称    |Description                |类型       | 操作
 ------- | ------------------------- | --------- | ----------------------------
 ID      |实体 ID                  |Int64      |等于
 Ty      |实体类型                |枚举   |等于

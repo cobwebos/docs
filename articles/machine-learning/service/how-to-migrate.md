@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158558"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236578"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>迁移到最新版本的 Azure 机器学习服务 
 
@@ -52,7 +52,7 @@ ms.locfileid: "47158558"
 
 试验帐户、模型管理帐户以及机器学习计算环境等资源无法迁移到最新版本的 Azure 机器学习服务。 请参阅[时间线](overview-what-happened-to-workbench.md#timeline)，了解资产可以继续工作多长时间。
 
-通过在 [Azure 门户](quickstart-get-started.md)中创建 Azure 机器学习工作区，开始使用最新版本。 门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
+通过在 [Azure 门户](quickstart-get-started.md)中创建 Azure 机器学习服务工作区，开始使用最新版本。 门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
 
 此新工作区是顶级服务资源，使你可以使用 Azure 机器学习服务的所有最新功能。 详细了解此[工作区和体系结构](concept-azure-machine-learning-architecture.md)。
 

@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423131"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017698"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge 代理和 Edge 中心模块孪生的属性
 
@@ -46,6 +46,7 @@ Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备与 IoT 
 | systemModules.edgeHub.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署应用这个清单时由 IoT 中心进行设置。 不是部署清单的一部分。 |
 | modules.{moduleId}.version | 用户定义的字符串，表示此模块的版本。 | 是 |
 | modules.{moduleId}.type | 必须为“docker” | 是 |
+| modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | 是 |
 | modules.{moduleId}.settings.image | 模块映像的 URI。 | 是 |
 | modules.{moduleId}.settings.createOptions | 字符串化的 JSON 包含模块容器的创建选项。 [Docker 创建选项][lnk-docker-create-options] | 否 |

@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的 JSON 搜索语法 | Microsoft Docs
-description: 了解可以对 Microsoft 认知服务中的学术知识 API 使用的 JSON 搜索语法。
+title: JSON 搜索语法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 了解可用于学术知识 API 的 JSON 搜索语法。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: a4b9cf535dae60258d71c43bba6f9eec1444bd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5ece028f89ad9e93840211383db97a5d8a80069a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365389"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900404"
 ---
 # <a name="json-search-syntax"></a>JSON 搜索语法
 

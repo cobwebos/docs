@@ -4,20 +4,20 @@ description: 示例
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
-ms.technology: Speech to Text
+ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981366"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884453"
 ---
 # <a name="batch-transcription"></a>批量听录
 
-Batch 听录非常适合处理大量的音频。 可以指向音频文件并以异步模式返回听录内容。
+Batch 听录非常适合处理大量的音频。 可以通过 URI 指向音频文件并以异步模式返回听录内容。
 
 ## <a name="batch-transcription-api"></a>批量听录 API
 
@@ -59,7 +59,7 @@ wav |  立体声  |
 
 ## <a name="authorization-token"></a>授权令牌
 
-与统一语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 如果计划从基线模型获取听录，则需要进行此操作。 
+与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 如果计划从基线模型获取听录，则需要进行此操作。 
 
 如果计划自定义和使用自定义模型，则需要将此订阅密钥添加到自定义语音门户，如下所示：
 

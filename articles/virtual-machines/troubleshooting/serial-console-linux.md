@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: 642bf03ecef7f6db25c51671635d96ef7baed91a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411182"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885283"
 ---
 # <a name="virtual-machine-serial-console"></a>虚拟机串行控制台
 
@@ -29,7 +29,7 @@ ms.locfileid: "47411182"
 有关适用于 Windows VM 的串行控制台文档，请[单击此处](../windows/serial-console.md)。
 
 > [!Note] 
-> 虚拟机串行控制台已在全球 Azure 区域中正式发布。 目前，串行控制台不可用于 Azure 政府云或 Azure 中国云。
+> 虚拟机串行控制台已在全球 Azure 区域中正式发布。 目前，串行控制台尚不可用于 Azure 政府云或 Azure 中国云。
 
 
 ## <a name="prerequisites"></a>先决条件 
@@ -44,12 +44,12 @@ ms.locfileid: "47411182"
 
     ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* 有关特定于 Linux 分发版的设置，请参阅[访问适用于 Linux 的串行控制台](#Serial-Console-Linux-distro-availability)
+* 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 发行版可用性](#serial-console-linux-distro-availability)
 
 
 
 ## <a name="get-started-with-serial-console"></a>开始使用串行控制台
-只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 下面是通过门户访问虚拟机串行控制台的步骤 
+只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 请确保已满足上面的[先决条件](#prerequisites)。 下面是通过门户访问虚拟机串行控制台的步骤：
 
   1. 打开 Azure 门户
   1. （如果 VM 的用户使用密码身份验证，请跳过此部分）通过单击“重置密码”边栏选项卡添加使用用户名/密码身份验证的用户
@@ -158,7 +158,7 @@ SSH/RDP 配置问题 | 访问串行控制台并更改设置。
 ### <a name="use-serial-console-with-a-screen-reader"></a>结合使用串行控制台与屏幕阅读器
 串行控制台附带内置屏幕阅读器支持。 在打开屏幕阅读器的情况下导航，屏幕阅读器可大声读出当前所选按钮的替换文字。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>错误
 大多数错误都是暂时性的，重试串行控制台连接往往可以解决。 下表显示了错误和缓解措施的列表
 
 错误                            |   缓解措施 
@@ -206,7 +206,7 @@ A. 必须具有 VM 的参与者级别访问权限或更高级别访问权限才�
 
 **问：我的串口控制台没有显示任何内容，我该怎么办？**
 
-A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[访问 Linux 的串行控制台](#Access-Serial-Console-for-Linux)。
+A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[串行控制台 Linux 发行版可用性](#serial-console-linux-distro-availability)。
 
 **问：串行控制台是否可用于虚拟机规模集？**
 

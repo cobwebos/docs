@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382240"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237886"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -62,10 +62,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 > Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 此外，通过 REST 协议对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
 ### <a name="cloud-tiering"></a>云分层 
-云分层是 Azure 文件同步的一项可选功能，可用于将很少使用或访问的文件（大于 64 KiB）分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性，因此第三方应用程序可识别分层文件。 当用户打开分层文件时，Azure 文件同步会从 Azure 文件中无缝调用此文件数据，而用户无需知道文件未存储在本地系统上。 此功能也称为分层存储管理 (HSM)。
-
-> [!Important]  
-> Windows 系统卷上不支持对服务器终结点进行云分层。
+云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 有关详细信息，请参阅[了解云分层](storage-sync-cloud-tiering.md)。
 
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure 文件同步系统要求和互操作性 
 本部分介绍了 Azure 文件同步代理的系统要求以及与 Windows Server 功能和角色以及第三方解决方案的互操作性。
@@ -157,7 +154,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 | \*.laccdb | Access DB 锁定文件|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部同步文件|
 | \\系统卷信息 | 特定于卷的文件夹 |
-| $RECYCLE.BIN| 文件夹 |
+| $RECYCLE.BIN| Folder |
 | \\SyncShareState | 用于同步的文件夹 |
 
 ### <a name="failover-clustering"></a>故障转移群集

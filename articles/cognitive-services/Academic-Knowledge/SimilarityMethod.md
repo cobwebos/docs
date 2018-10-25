@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的相似方法 | Microsoft Docs
-description: 使用相似性方法计算 Microsoft 认知服务中两个字符串的学术相似性。
+title: 相似性方法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 使用相似性方法计算两个字符串的学术相似性。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 472498d6bfe06ae4477a30f892d44e79c901acf5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 76e86eb78a06d98e3d5c6c54b244add3c0c245d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365398"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900455"
 ---
 # <a name="similarity-method"></a>相似性方法
 
@@ -27,14 +28,14 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>请求参数
-参数        |数据类型      |必选 | 说明
+参数        |数据类型      |必选 | Description
 ----------|----------|----------|------------
 s1        |String   |是  |要比较的字符串*
 s2        |String   |是  |要比较的字符串*
 <sub> *要比较的字符串的最大长度为 1 MB。</sub>
 <br>
 ## <a name="response"></a>响应
-名称 | 说明
+名称 | Description
 --------|---------
 SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近 1.0 表示更相似，值接近 -1.0 表示不那么相似
 <br>
@@ -42,7 +43,7 @@ SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近
 ## <a name="successerror-conditions"></a>成功/错误条件
 HTTP 状态 | 原因 | 响应
 -----------|----------|--------
-**200**         |成功 | 浮点数
+**200**         |Success | 浮点数
 **400**         | 错误的请求或请求无效 | 错误消息      
 **500**         |内部服务器错误 | 错误消息
 已超时     | 请求已超时。  | 错误消息

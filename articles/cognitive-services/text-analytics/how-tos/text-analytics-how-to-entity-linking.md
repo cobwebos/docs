@@ -1,39 +1,76 @@
 ---
-title: 如何使用文本分析 REST API（Azure 上的 Microsoft 认知服务）中的实体链接 | Microsoft Docs
-description: 在本演练教程中，了解如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 识别和解析实体。
+title: 结合使用实体识别和文本分析 API
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用文本分析 REST API 识别实体。
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: article
-ms.date: 5/02/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 55bec1a0223b70749a97a30e2da92ef15128038c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365838"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248057"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>如何在文本分析（预览版）中识别链接实体
+# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
 
-[实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) 采用非结构化文本，并对每个 JSON 文档返回一个已消歧实体列表，其中包含指向 Web（Wikipedia 和必应）上的详细信息的链接。 
+[实体识别 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 需要使用非结构化文本，并对每个 JSON 文档返回已消除歧义的实体列表，其中包含网上（维基百科和必应）详细信息的链接。 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>实体链接与命名实体识别
+## <a name="entity-linking-and-named-entity-recognition"></a>实体链接和命名实体识别
 
-在自然语言处理中，实体链接和命名实体识别 (NER) 的概念很容易混淆。 文本分析的 `entities` 终结点的预览版仅支持实体链接。
+文本分析的 `entities` 终结点支持命名实体识别 (NER) 和实体链接。
 
+### <a name="entity-linking"></a>实体链接
 实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定“Mars”是用作行星还是用作罗马战神）。 此过程需要用到已识别实体链接到的知识库 — Wikipedia 用作 `entities` 终结点文本分析的知识库。
+
+文本分析[版本 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 仅支持实体链接。
+
+### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
+命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
+
+文本分析版本 2.1 预览版 (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`) 支持实体链接和命名实体识别 (NER)。
 
 ### <a name="language-support"></a>语言支持
 
 使用各种语言的实体链接需要使用每种语言的相应知识库。 对于文本分析中的实体链接，这意味着 `entities` 终结点支持的每种语言都将链接到该语言的相应 Wikipedia 语料库。 由于语料库的大小因语言而异，因此，实体链接功能的召回率应该也有所不同。
 
+## <a name="supported-types-for-named-entity-recognition"></a>命名实体识别支持的类型
+
+| 类型  | 子类型 | 示例 |
+|:-----------   |:------------- |:---------|
+| 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
+| 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
+| 组织  | 暂无\*         | “Microsoft”   |
+| 数量      | Number        | “6”、“six”     | 
+| 数量      | 百分比    | “50%”、“fifty percent”| 
+| 数量      | Ordinal       | “2nd”、“second”     | 
+| 数量      | NumberRange   | “4 to 8”     | 
+| 数量      | Age           | “90 day old”、“30 years old”    | 
+| 数量      | 货币      | “$10.99”     | 
+| 数量      | 维度     | “10 miles”、“40 cm”     | 
+| 数量      | 温度   | “32 degrees”    |
+| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      | 
+| DateTime      | 日期          | “May 2nd, 2017”、“05/02/2017”   | 
+| DateTime     | 时间          | “8am”、“8:00”  | 
+| DateTime      | DateRange     | “May 2nd to May 5th”    | 
+| DateTime      | TimeRange     | “6pm to 7pm”     | 
+| DateTime      | Duration      | “1 minute and 45 seconds”   | 
+| DateTime      | 设置           | “every Tuesday”     | 
+| DateTime      | TimeZone      |    | 
+| 代码           | 暂无\*         | "http://www.bing.com"    |
+| 电子邮件         | 暂无\*         | "support@contoso.com" |
+\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。
+
+
 
 ## <a name="preparation"></a>准备工作
 
-你必须拥有以下格式的 JSON 文档：ID、文本、语言
+必须拥有以下格式的 JSON 文档：ID、文本、语言
 
 有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
 
@@ -42,11 +79,11 @@ ms.locfileid: "35365838"
 ```
 {"documents": [{"id": "1",
                 "language": "en",
-                "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                "text": "Jeff bought three dozen eggs because there was a 50% discount."
                 },
                {"id": "2",
                 "language": "en",
-                "text": "The Seattle Seahawks won the Super Bowl in 2014."
+                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
                 }
                ]
 }
@@ -58,20 +95,20 @@ ms.locfileid: "35365838"
 
 + 创建 **POST** 请求。 请查看此请求的 API 文档：[实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ 设置关键短语提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ 设置关键短语提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)中的 **API 测试控制台**来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
 在收到请求时执行分析。 该服务每分钟最多接受 100 个请求。 每个请求最大为 1 MB。
 
-记住，该服务是无状态服务。 你的帐户中未存储任何数据。 结果会立即在响应中返回。
+记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
 ## <a name="step-3-view-results"></a>步骤 3：查看结果
 
@@ -81,74 +118,168 @@ ms.locfileid: "35365838"
 
 下面展示了实体链接的输出示例：
 
-```
+```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
-
-响应（如果可用）包括每个检测到的实体的 Wikipedia ID、Wikipedia URL 和必应 ID。 这些可用于通过链接实体相关信息进一步增强应用程序。
 
 
 ## <a name="summary"></a>摘要
 
 在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 
-+ [实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
++ [实体 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。
 + POST 请求的目标是 `/entities` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
 + 响应输出由链接实体（包括每个文档 ID 的置信度分数、偏移量和 Web 链接）组成，可用于任何应用程序
@@ -162,4 +293,4 @@ ms.locfileid: "35365838"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [文本分析 API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [文本分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

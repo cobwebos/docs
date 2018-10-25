@@ -1,19 +1,20 @@
 ---
-title: 必应 Web 搜索 API 的使用和显示要求 | Microsoft Docs
-description: 使用来自必应 Web 搜索 API 的数据改进在网上进行的搜索的结果。
+title: 使用和显示要求 - 必应自定义搜索 API
+titlesuffix: Azure Cognitive Services
+description: 使用来自必应自定义搜索 API 的数据改进在网上进行的搜索的结果。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: v-brapel
-ms.openlocfilehash: e03d81597aeaad1d42e8d83e075e0f1f37b9f502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 02f167e2c292c07a1d9df1fc19a09b812ff72757
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366653"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816605"
 ---
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

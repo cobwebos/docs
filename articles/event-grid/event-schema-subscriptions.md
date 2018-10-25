@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140220"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310226"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure 事件网格用于订阅的事件架构
 
 本文提供 Azure 订阅事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源中的更改相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
+Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源更改或操作相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
 
-已为发送到 `management.azure.com` 的 PUT、PATCH 和 DELETE 操作创建资源事件。 POST 和 GET 操作不会创建事件。 发送到数据面板的操作（如 `myaccount.blob.core.windows.net`）不会创建事件。
+已为发送到 `management.azure.com` 的 PUT、PATCH、POST 和 DELETE 操作创建资源事件。 GET 操作不创建事件。 发送到数据平面的操作（如 `myaccount.blob.core.windows.net`）不会创建事件。 操作事件为操作（例如列出资源的键）提供事件数据。
 
-当订阅 Azure 订阅的事件时，终结点接收该订阅的所有事件。 事件可能包括要查看的事件（例如更新虚拟机），以及可能不重要的事件（例如在部署历史记录中编写新条目）。 可以接收终结点上的所有事件并编写处理待处理事件的代码，也可以在创建事件订阅时设置筛选器。
+当订阅 Azure 订阅的事件时，终结点接收该订阅的所有事件。 事件可能包括要查看的事件（例如更新虚拟机），以及可能不重要的事件（例如在部署历史记录中编写新条目）。 可以在终结点接收所有事件，并编写代码用于处理需要处理的事件。 或可以在创建事件订阅时设置一个筛选器。
 
 若要以编程方式处理事件，可通过查看 `operationName` 值对事件进行排序。 例如，事件终结点可能只处理值等于 `Microsoft.Compute/virtualMachines/write` 或 `Microsoft.Storage/storageAccounts/write` 的操作的事件。
 
@@ -36,12 +36,15 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 | 事件类型 | Description |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | 当资源创建或更新操作成功时引发。 |
-| Microsoft.Resources.ResourceWriteFailure | 当资源创建或更新操作失败时引发。 |
-| Microsoft.Resources.ResourceWriteCancel | 当资源创建或更新操作取消时引发。 |
-| Microsoft.Resources.ResourceDeleteSuccess | 当资源删除操作成功时引发。 |
-| Microsoft.Resources.ResourceDeleteFailure | 当资源删除操作失败时引发。 |
-| Microsoft.Resources.ResourceDeleteCancel | 当资源删除操作取消时引发。 取消模板部署时会发生此事件。 |
+| Microsoft.Resources.ResourceActionCancel | 在资源操作被取消时引发。 |
+| Microsoft.Resources.ResourceActionFailure | 在资源操作失败时引发。 |
+| Microsoft.Resources.ResourceActionSuccess | 在资源操作成功时引发。 |
+| Microsoft.Resources.ResourceDeleteCancel | 在删除操作被取消时引发。 取消模板部署时会发生此事件。 |
+| Microsoft.Resources.ResourceDeleteFailure | 在删除操作失败时引发。 |
+| Microsoft.Resources.ResourceDeleteSuccess | 在删除操作成功时引发。 |
+| Microsoft.Resources.ResourceWriteCancel | 在创建或更新操作被取消时引发。 |
+| Microsoft.Resources.ResourceWriteFailure | 在创建或更新操作失败时引发。 |
+| Microsoft.Resources.ResourceWriteSuccess | 在创建或更新操作成功时引发。 |
 
 ## <a name="example-event"></a>示例事件
 
@@ -171,11 +174,67 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
+以下示例展示了 ResourceActionSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式。
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}" 
+}]
+```
+
 ## <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -188,13 +247,13 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 数据对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | authorization | 对象 | 操作请求的授权。 |
 | 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
 | correlationId | 字符串 | 用于故障排除的操作 ID。 |
 | httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
-| resourceProvider | 字符串 | 执行该操作的资源提供程序。 |
+| resourceProvider | 字符串 | 操作的资源提供程序。 |
 | resourceUri | 字符串 | 操作中资源的 URI。 |
 | operationName | 字符串 | 执行的操作。 |
 | status | 字符串 | 操作状态。 |

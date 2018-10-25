@@ -1,21 +1,21 @@
 ---
-title: 将必应拼写检查 API v5 级到 v7 | Microsoft Docs
-description: 标识需要更新以使用版本 7 的应用程序部分。
+title: 将必应拼写检查 API v5 升级到 v7
+titlesuffix: Azure Cognitive Services
+description: 发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 7DC8FB29-4732-47D8-824B-CF2D7AEBA07B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 305139e45ee93614eab17c5798cb1105e3e8f8cb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3bcbba21d367b3d40eca72d84a7e2447f78fa57f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41937517"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801572"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>拼写检查 API 升级指南
 

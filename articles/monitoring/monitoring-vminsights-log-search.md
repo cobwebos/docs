@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 446268f28e7c87196023636889f03be2da92ecfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967636"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269388"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 查询日志
 用于 VM 的 Azure Monitor 收集性能和连接指标、计算机和进程库存数据以及运行状况信息，并将其转发到 Azure Monitor 中的 Log Analytics 数据存储。  可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)此数据。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
@@ -39,7 +39,7 @@ ms.locfileid: "46967636"
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 
-为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
+为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
 | 属性 | Description |
 |:--|:--|
@@ -69,9 +69,9 @@ ms.locfileid: "46967636"
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
 |响应 |在报告时间范围内观测到的响应数。 
-|ResponseTimeMax |在报告时间范围内观测到的最大响应时间（毫秒）。  如果无值，则该属性为空。|
-|ResponseTimeMin |在报告时间范围内观测到的最小响应时间（毫秒）。  如果无值，则该属性为空。|
-|ResponseTimeSum |在报告时间范围内观测到的所有响应时间的和（毫秒）。  如果无值，则该属性为空|
+|ResponseTimeMax |在报告时间范围内观测到的最大响应时间（毫秒）。 如果无值，则该属性为空。|
+|ResponseTimeMin |在报告时间范围内观测到的最小响应时间（毫秒）。 如果无值，则该属性为空。|
+|ResponseTimeSum |在报告时间范围内观测到的所有响应时间的和（毫秒）。 如果无值，则该属性为空。|
 
 报告的第三种数据类型是响应时间 - 调用方花费了多长时间来等待通过连接发送请求进行处理，并收到远程终结点的响应。 报告的响应时间是底层应用程序协议的真实响应时间的估算值。 它是基于物理网络连接的源与目标端之间的数据流观测结果，使用试探法计算出来的。 从概念上讲，它是请求的最后一个字节离开发送方的时间，与发送方收到响应的最后一个字节的时间的差。 这两个时间戳用于描述给定物理连接上的请求和响应事件。 两者的差表示单个请求的响应时间。 
 
@@ -93,8 +93,8 @@ ms.locfileid: "46967636"
 | 属性 | Description |
 |:--|:--|
 |RemoteCountry |RemoteIp 所在的国家/地区的名称。  例如 *United States* |
-|RemoteLatitude |地理位置的纬度。  例如 *47.68* |
-|RemoteLongitude |地理位置的经度。  例如 *-122.12* |
+|RemoteLatitude |地理位置的纬度。 例如 *47.68* |
+|RemoteLongitude |地理位置的经度。 例如 *-122.12* |
 
 #### <a name="malicious-ip"></a>恶意 IP
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
@@ -102,23 +102,23 @@ ms.locfileid: "46967636"
 | 属性 | Description |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
-|IndicatorThreadType | |
-|Description | |
-|TLPLevel | |
-|置信度 | |
-|Severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+|Description |观察到的威胁说明。 |
+|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
+|置信度 |值介于 0 和 100 之间。 |
+|严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
+|FirstReportedDateTime |提供程序第一次报告指标。 |
+|LastReportedDateTime |Interflow 最后一次看到指标。 |
+|IsActive |使用值 True 或 False 指明是否停用标志。 |
+|ReportReferenceLink |与给定可观测结果相关的报告的链接。 |
+|AdditionalInformation |提供观测到的威胁的其他信息（若有）。 |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
 类型为 *ServiceMapComputer_CL* 的记录包含具有依赖项代理的服务器的库存数据。 这些记录的属性在下表中列出：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
+| 类型 | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中计算机的唯一标识符 |
 | ResourceName_s | 工作区中计算机的唯一标识符 |
@@ -141,9 +141,9 @@ ms.locfileid: "46967636"
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 类型记录
 类型为 *ServiceMapProcess_CL* 的记录包含具有依赖项代理的服务器上 TCP 连接进程的库存数据。 这些记录的属性在下表中列出：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
+| 类型 | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | 工作区中进程的唯一标识符 |
 | ResourceName_s | 进程在运行它的计算机中的唯一标识符|
@@ -166,34 +166,34 @@ ms.locfileid: "46967636"
 ## <a name="sample-log-searches"></a>示例日志搜索
 
 ### <a name="list-all-known-machines"></a>列出所有已知计算机
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量。
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>列出计算机名称、DNS、IP 和 OS。
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>在命令行中查找带有“sql”的所有进程
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>按资源名称查找计算机（最新记录）
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>按 IP 地址查找计算机（最新记录）
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>列出指定计算机上的所有已知进程
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>列出所有运行 SQL 的计算机
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心列出 curl 的所有唯一产品版本
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建由运行 CentOS 的所有计算机组成的计算机组
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>汇总一组计算机的出站连接
 ```

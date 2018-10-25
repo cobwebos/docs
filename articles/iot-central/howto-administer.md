@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a43febf1e78f80451b6aeed19e095b2c313d3216
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1bb0bc0aa7ad6bbbad502832ba8e0a96f36de428
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284847"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268289"
 ---
-# <a name="how-to-administer-your-application"></a>如何管理应用程序
+# <a name="administer-your-iot-central-application"></a>管理 IOT Central 应用程序
 
-创建 Microsoft Azure IoT Central 应用程序后，可以使用 Azure IoT Central 用户界面的“管理”部分对其进行管理。 若要导航到“管理”部分，请在左侧导航菜单中选择“管理”。
+创建 Microsoft Azure IoT Central 应用程序后，可以使用 Azure IoT Central 用户界面的“管理”部分对其进行管理。 若要转到“管理”部分，请在左侧导航菜单中选择“管理”。
 
 在“管理”部分可以：
 
@@ -29,28 +29,28 @@ ms.locfileid: "39284847"
 
 - 管理应用程序设置
 
-- 延长免费试用期
+- 提供免费试用版
 
 “管理”部分提供了一个辅助导航菜单，其中包含各种管理任务的链接。
 
-只有 Azure IoT Central 应用程序中的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文的“管理用户”部分详细介绍了如何向其他用户分配“管理员”角色。
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文的“管理用户”部分详细介绍了如何向其他用户分配“管理员”角色。
 
 ## <a name="change-application-name"></a>更改应用程序名称
 
-若要更改应用程序的名称，请在“管理”部分使用辅助导航菜单导航到“应用程序设置”页。
+若要更改应用程序的名称，请在“管理”部分使用辅助导航菜单转到“应用程序设置”页。
 
-在“应用程序设置”页上，输入在“应用程序名称”字段中选择的名称，然后选择“保存”。
+在“应用程序设置”页上，输入在“应用程序名称”字段中选择的名称。 再选择“保存”。
 
 ## <a name="change-the-application-url"></a>更改应用程序 URL
 
 若要更改应用程序的 URL，请在“管理”部分使用辅助导航菜单导航到“应用程序设置”页。
 
-![应用程序设置页](media\howto-administer\image0-a.png)
+![“应用程序设置”页](media\howto-administer\image0-a.png)
 
-在“应用程序设置”页上，输入在“URL”字段中选择的 URL，然后选择“保存”。 URL 的长度不能超过 200 个字符。 如果该 URL 不可用，会显示验证错误
+在“应用程序设置”页上，输入在“URL”字段中选择的 URL，然后选择“保存”。 URL 的长度不能超过 200 个字符。 如果该 URL 不可用，则会看到验证错误。
 
 > [!Note]
-> 如果更改了 URL，旧 URL 可由其他 Azure IoT Central 客户使用。 在这种情况下，你再也不能使用旧 URL。 更改 URL 后，旧 URL 不再有效，因此必须告知用户要使用的新 URL。
+> 如果更改了 URL，旧 URL 可由其他 Azure IoT Central 客户使用。 如果出现此情况，你再也不能使用旧 URL。 更改 URL 后，旧 URL 不再有效，因此需要告知用户要使用的新 URL。
 
 ## <a name="change-the-application-image"></a>更改应用程序图像
 
@@ -58,22 +58,22 @@ ms.locfileid: "39284847"
 
 ## <a name="copy-an-application"></a>复制应用程序
 
-可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是收费的应用程序。 不能通过复制另一应用程序来创建试用版应用程序。
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是收费的付费应用程序。 不能通过复制另一应用程序来创建试用版应用程序。
 
-若要复制应用程序，请导航到“应用程序设置”页并单击“复制”按钮。
+若要复制应用程序，请转到“应用程序设置”页。 然后选择“复制”按钮。
 
 ![“应用程序设置”页](media\howto-administer\appCopy1.png)
 
-单击“复制”按钮会打开一个对话框，可在其中选择要通过复制应用程序创建的新应用程序的名称、URL、AAD 目录、订阅和 Azure 区域。 选择其中每个字段的值，然后单击“复制”按钮确认你要继续操作。 可在有关[如何创建应用程序](howto-create-application.md)的文章中详细了解要输入哪些值。
+选择“复制”按钮会打开一个对话框，可在其中选择要通过复制应用程序创建的新应用程序的名称、URL、Azure AD 目录、订阅和 Azure 区域。 为其中的每个字段选择值。 然后选择“复制”按钮以确认你想要继续操作。 可在有关[如何创建应用程序](howto-create-application.md)的文章中详细了解要输入哪些值。
 
 ![“应用程序设置”页](media\howto-administer\appCopy2.png)
 
-应用复制操作成功后，可以单击“应用程序设置”页上显示的链接，导航到通过复制应用程序创建的新应用程序。
+应用复制操作成功后，可以转到通过复制应用程序创建的新应用程序。 若要转到应用，请选择显示在“应用程序设置”页上的链接。
 
 ![“应用程序设置”页](media\howto-administer\appCopy3.png)
 
 > [!Note]
-> 复制某个应用程序会复制规则或操作的定义。 但是，由于有权访问原始应用的用户不会复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。
+> 复制某个应用程序也会复制规则或操作的定义。 但是，由于不会将有权访问原始应用的用户复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。
 
 ## <a name="delete-an-application"></a>删除应用程序
 
@@ -82,7 +82,7 @@ ms.locfileid: "39284847"
 选择“删除”。
 
 > [!Note]
-> 删除某个应用程序会删除与该应用程序关联的所有数据，并且此操作不可恢复。 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制管理 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+> 删除某个应用程序会永久删除与该应用程序关联的所有数据。  若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
 ## <a name="roles-in-azure-iot-central"></a>Azure IoT Central 中的角色
 
@@ -108,66 +108,83 @@ ms.locfileid: "39284847"
 
 ### <a name="add-users"></a>添加用户
 
-每个用户必须有一个用户帐户才能登录和访问 Azure IoT Central 应用程序。 Azure IoT Central 支持 Microsoft 帐户 (MSA) 和 Azure Active Directory (AAD) 帐户。 Azure IoT Central 目前不支持 Azure Active Directory 组。
+每个用户必须有一个用户帐户才能登录和访问 Azure IoT Central 应用程序。 Azure IoT Central 支持 Microsoft 帐户 (MSA) 和 Azure Active Directory (Azure AD) 帐户。 Azure IoT Central 目前不支持 Azure Active Directory 组。
 
 有关详细信息，请参阅 [Microsoft 帐户帮助](https://support.microsoft.com/products/microsoft-account?category=manage-account)和[快速入门：将新用户添加到 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
 
-1. 若要将用户帐户添加到 Azure IoT Central 应用程序，请在“管理”部分使用辅助导航菜单导航到“用户”页。
+1. 若要将用户帐户添加到 Azure IoT Central 应用程序，请在“管理”部分使用辅助导航菜单转到“用户”页。
 
     ![用户列表](media\howto-administer\image1.png)
 
-1. 在“用户”页上，选择“+ 添加用户”以添加用户。
+1. 若要添加用户，在“用户”页上，选择“+ 添加用户”。
 
     ![添加用户](media\howto-administer\image2.png)
 
-1. 将用户添加到 Azure IoT Central 应用程序时，请从“角色”下拉列表中选择用户的角色。 请在本文的“Azure IoT Central 中的角色”部分详细了解角色。
+1. 从“角色”下拉菜单中为用户选择一个角色。 请在本文的“Azure IoT Central 中的角色”部分详细了解角色。
 
     ![角色选择](media\howto-administer\image3.png)
 
     > [!NOTE]
-    >  若要批量添加用户，请输入想要添加的所有用户的用户 ID，并用分号分隔。 从“角色”下拉列表中选择一个角色，然后选择“保存”。
+    >  若要批量添加用户，请输入想要添加的所有用户的用户 ID，并用分号分隔。 从“角色”下拉菜单中选择一个角色。 再选择“保存”。
 
 1. 添加用户后，“用户”页上会显示该用户对应的条目。
 
     ![用户列表](media\howto-administer\image4.png)
 
-### <a name="edit-the-roles-assigned-to-users"></a>编辑分配给用户的角色
+### <a name="edit-the-roles-that-are-assigned-to-users"></a>编辑分配给用户的角色
 
-角色在经分配后不可更改。 若要更改分配给某个用户的角色，请删除该用户，然后使用不同的角色再次添加该用户。
+角色分配后无法再对其进行更改。 若要更改分配给某个用户的角色，请删除该用户，然后使用不同的角色再次添加该用户。
 
 ### <a name="delete-users"></a>删除用户
 
-若要删除用户，请在“用户”页上选中一个或多个相应的复选框，然后选择“删除”。
+若要删除用户，选择“用户”页上的一个或多个复选框。 然后选择“删除”。
 
 ## <a name="view-your-bill"></a>查看帐单
 
-若要查看帐单，请在“管理”部分导航到“计费”页，然后选择“计费”。 Azure 计费页将在新选项卡中打开，其中显示了每个 Azure IoT Central 应用程序的帐单。
+若要查看帐单，请在“管理”部分转到“计费”页。 然后选择“计费”。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
 
 ## <a name="convert-your-trial-to-a-paid-application"></a>将试用版转换为付费版应用程序
 
 试用 IoT Central 后，可将试用版转换为付费版应用程序。 若要完成此自助服务过程，请遵循以下步骤：
 
-1. 在“管理”部分使用辅助导航菜单导航到“计费”页。 如果尚未延长试用期，该页的外观如下所示：
+1. 在“管理”部分使用辅助导航菜单转到“计费”页。 如果尚未延长试用期，该页的外观如以下屏幕截图所示：
 
     ![免费试用状态](media/howto-administer/freetrial.png)
 
-2. 单击“转换为付费版”。 如果尚未延长试用期，弹出窗口的外观如下所示：
-
-    在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅。
+2. 选择“转换为付费版”。 如果尚未延长试用期，则弹出窗口的外观如以下屏幕截图所示：
 
     ![延长免费试用期](media/howto-administer/extend.png)
 
-3. 单击“转换”后，试用版将转换为付费版应用程序，并开始计费。
+3. 在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅。
+
+3. 选择“转换”后，试用版将转换为付费版应用程序，并开始计费。
 
 ## <a name="extend-your-free-trial"></a>延长免费试用期
 
-默认情况下，所有免费试用版可用 7 天。 如果想要将试用期增加到 30 天，请遵循以下步骤：
+默认情况下，所有免费试用版可使用 7 天。 如果想要将试用期增加到 30 天，请按照以下步骤操作：
 
-1. 在“管理”部分使用辅助导航菜单导航到“计费”页：
+1. 在“管理”部分使用辅助导航菜单转到“计费”页。
 
-1. 单击“延长试用期”。 在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅：
+1. 选择“延长试用期”。 在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅。
 
-1. 然后单击“延期”。 现在，试用版的有效期为 30 天。
+1. 然后选择“延长”。 现在，试用版的有效期为 30 天。
+
+## <a name="use-the-azure-sdks-for-control-plane-operations"></a>使用 Azure SDK 进行控制平面操作
+
+IoT Central Azure 资源管理器 SDK 程序包适用于 Node、Python、C#、Ruby、Java 和 Go。 这些库支持对 IoT Central 执行控制平面操作，使你能够创建、列出、更新或删除 IoT Central 应用程序。 它们还提供处理身份验证和特定于每种语言的错误处理的帮助程序。 
+
+可以在 [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples) 中找到有关如何使用 Azure 资源管理器 SDK 的示例。
+
+若要了解详细信息，请在 GitHub 上查看这些程序包。
+
+| 语言 | 存储库 | 程序包 |
+| ---------| ---------- | ------- |
+| 节点 | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
+| Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
+| C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
+| Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
+| Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
+| Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>后续步骤
 

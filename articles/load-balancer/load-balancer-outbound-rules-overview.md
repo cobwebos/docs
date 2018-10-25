@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/8/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 15783822631a5372b181f2d65746664d90b389da
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163012"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883952"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -180,10 +180,10 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>内部标准负载均衡器方案的出站 NAT
 
-使用内部标准负载均衡器时，只有在同时配置了公共标准负载均衡器之后，出站 NAT 才可用。 可以通过使用出站规则为内部标准负载均衡器后面的 VM 创建出站连接，来更改此配置。
+使用内部标准负载均衡器时，只有显式声明出站连接之后，出站 NAT 才可用。 你可以通过以下步骤，使用出站规则为内部标准负载均衡器后面的 VM 创建出站连接，以定义出站连接：
 
 1. 创建公共标准负载均衡器。
-2. 创建一个后端池，并将 VM 放入公共负载均衡器的后端池。
+2. 除了内部负载均衡器，还要创建一个后端池，并将 VM 放入公共负载均衡器的后端池。
 3. 在公共负载均衡器中配置出站规则，以便为这些 VM 的出站 NAT 编程。
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>使用公共标准负载均衡器为出站 NAT 启用 TCP 和 UDP 协议

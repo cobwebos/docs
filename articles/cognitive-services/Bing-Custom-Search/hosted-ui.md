@@ -1,20 +1,21 @@
 ---
-title: 必应自定义搜索：站点搜索 | Microsoft Docs
-description: 介绍如何配置托管 UI
+title: 站点搜索, 使用托管 UI 必应自定义搜索
+titlesuffix: Azure Cognitive Services
+description: 介绍如何配置必应自定义搜索托管 UI。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2aec8ba969fb639f2d785a429441f6ed4bbf7dfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77845cb60dac707326acdb08b0198f8725a36f62
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987673"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813968"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 

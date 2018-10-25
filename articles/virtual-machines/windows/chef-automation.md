@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037914"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585368"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 
-使用最新 cloud api 版本，Chef 提供了与 Azure 的无缝集成，使得你能够通过单个命令预配和部署配置状态。
+使用最新的云 API 版本，Chef 提供了与 Azure 的无缝集成，使得你能够通过单个命令预配和部署配置状态。
 
 在本文中，将设置 Chef 环境以预配 Azure 虚拟机，并引导用户完成创建一个策略或“指南”并将此指南部署到 Azure 虚拟机的过程。
 
@@ -42,7 +42,7 @@ Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 
 Chef 有三个主要的体系结构组件：Chef 服务器、Chef 客户端（节点）和 Chef 工作站。
 
-Chef 服务器是管理点，对于 Chef 服务器有两种选择：托管解决方案和本地解决方案。 我们将使用托管解决方案。
+Chef 服务器是管理点，对于 Chef 服务器有两种选择：托管解决方案和本地解决方案。 我们将依照一个托管解决方案来完成本教程。
 
 Chef 客户端（节点）是位于在管理的服务器上的代理。
 
@@ -94,7 +94,7 @@ Chef 工作站是管理工作站，我们会在其中创建策略并执行管理
 
 PEM 文件包含组织和用于通信的管理私钥，而 knife.rb 文件包含 knife 配置。 需要编辑 knife.rb 文件。
 
-在所选编辑器中打开该文件并修改“cookbook_path”：从路径中删除 /../，使其如下所示。
+在所选编辑器中打开该文件，并通过如下所示从路径中删除 /../ 来修改“cookbook_path”：
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
@@ -119,7 +119,9 @@ knife.rb 文件现在应类似于以下示例。
 
 如果未包含，请务必添加这些路径！
 
-*请注意，该路径的顺序非常重要！* 如果 opscode 路径未采用正确的顺序，会遇到问题。
+> [!NOTE]
+> 该路径的顺序非常重要！ 如果 opscode 路径未采用正确的顺序，会遇到问题。 
+> 
 
 在继续操作之前重新启动工作站。
 

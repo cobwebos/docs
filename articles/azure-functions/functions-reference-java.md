@@ -9,14 +9,14 @@ keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无�
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092303"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802111"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092303"
 
 Azure 函数应为处理输入并生成输出的无状态类方法。 虽然可编写实例方法，但函数却不能依赖于类的任何实例字段。 所有函数方法都必须具有 `public` 访问修饰符。
 
-可在项目中放置多个函数。 不要将函数放入单独的 jar 中。
+## <a name="folder-structure"></a>文件夹结构
+
+Java 项目的文件夹结构如下所示：
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+存在共享 [host.json] (functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.Java) 和绑定配置文件 (function.json)。
+
+可在项目中放置多个函数。 不要将函数放入单独的 jar 中。 部署到 Azure 中的函数应用正是目标目录中的 FunctionApp。
 
 ## <a name="triggers-and-annotations"></a>触发器和注释
 
@@ -87,9 +115,15 @@ public class MyClass {
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>JDK 运行时的可用性与支持 
+
+从 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下载和使用[适用于 Azure 的 Azul Zulu](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK，以进行本地 Java 函数应用开发。 JDK 适用于 Windows、Linux 和 macOS，并且在具有[合格支持计划](https://azure.microsoft.com/support/plans/)时，[Azure 支持](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support)可帮助解决在开发过程中遇到的问题。
+
 ## <a name="third-party-libraries"></a>第三方库 
 
 Azure Functions 支持使用第三方库。 默认情况下，项目 `pom.xml` 文件中指定的所有依赖项将在 `mvn package` 目标期间自动进行绑定。 对于未在 `pom.xml` 文件中指定为依赖项的库，请将它们放在函数根目录的 `lib` 目录中。 放置在 `lib` 目录中的依赖项将在运行时添加到系统类加载器中。
+
+默认情况下在类路径上提供 `com.microsoft.azure.functions:azure-functions-java-library` 依赖项，不需要包含在 `lib` 目录中。
 
 ## <a name="data-type-support"></a>数据类型支持
 

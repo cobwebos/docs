@@ -1,20 +1,21 @@
 ---
-title: 自定义影像服务的限制和配额 - Azure 认知服务 | Microsoft Docs
-description: 了解 Azure 认知服务自定义影像服务的限制和配额
+title: 限制和配额 - 自定义影像服务
+titlesuffix: Azure Cognitive Services
+description: 了解自定义影像服务的限制和配额。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: anroth
-ms.openlocfilehash: 44666d5d7f2a51e4017c704205d21b1f6d06908c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366618"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902852"
 ---
 # <a name="limits-and-quotas"></a>限制和配额
 
@@ -25,7 +26,8 @@ ms.locfileid: "35366618"
 ||**有限试用版**|**F0 (Azure)**|**S0 (Azure)**|
 |-----|-----|-----|-----|
 |项目|2|2|100|
-|每项目训练图像数|5,000|5,000|50,000|
+|每项目训练图像数，分类|5,000|5,000|50,000|
+|每项目训练图像数，对象检测|5,000|5,000|10,000|
 |每月预测数|10,000 |10,000|不受限制|
 |每项目标记数|50|50|250|
 |迭代 |10|10|10|

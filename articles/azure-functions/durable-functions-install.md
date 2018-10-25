@@ -3,23 +3,19 @@ title: 安装 Durable Functions 扩展和示例 - Azure
 description: 了解如何针对门户开发或 Visual Studio 开发安装 Azure Functions 的 Durable Functions 扩展。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42142246"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585299"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>安装 Durable Functions 扩展和示例 (Azure Functions)
 
@@ -35,12 +31,12 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ### <a name="prerequisites"></a>先决条件
 
-* 安装[最新版本的 Visual Studio](https://www.visualstudio.com/downloads/)（15.3 版或更高版本）。 在安装选项中包括 **Azure 开发**工作负荷。
+* 安装[最新版 Visual Studio](https://www.visualstudio.com/downloads/)（版本 15.6 或更高版本）。 在安装选项中包括 **Azure 开发**工作负荷。
 
 ### <a name="start-with-sample-functions"></a>从示例函数开始 
 
 1. 下载 [Visual Studio 的示例应用 .zip 文件](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip)。 不需要添加 NuGet 引用，因为示例项目中已包含它。
-2. 安装并运行 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/storage-use-emulator) 5.2 版或更高版本。 另外，也可以使用实际的 Azure 存储连接字符串更新 *local.appsettings.json* 文件。
+2. 安装并运行 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/storage-use-emulator)版本 5.6 或更高版本。 或者，也可以使用实际 Azure 存储连接字符串更新 local.settings.json 文件。
 3. 在 Visual Studio 2017 中打开项目。 
 4. 若要获得有关如何运行示例的说明，请首先查看[函数链接 - Hello 序列示例](durable-functions-sequence.md)。 示例可以在本地运行，也可以发布到 Azure。
 
@@ -49,7 +45,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 按照与从示例开始相同的说明执行操作，但请执行以下步骤而非下载 *.zip* 文件：
 
 1. 创建一个 Function App 项目。
-2. 使用“管理 NuGet 包”搜索以下 NuGet 包引用并将其添加到项目：Microsoft.Azure.WebJobs.Extensions.DurableTask v1.5.0
+2. 使用“管理 NuGet 包”搜索以下 NuGet 包引用，并将它添加到项目中：Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -67,7 +63,7 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
     >[!IMPORTANT]
     >JavaScript 中的 Durable Functions 需要 Azure Functions Core Tools 2.x 版。
 
-*  如果使用 Windows 计算机，请安装并运行 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/storage-use-emulator) 5.2 版或更高版本。 另外，也可以使用实际的 Azure 存储连接更新 *local.appsettings.json* 文件。 
+*  如果使用的是 Windows 计算机，请安装并运行 [Azure 存储模拟器](https://docs.microsoft.com/azure/storage/storage-use-emulator)版本 5.6 或更高版本。 或者，也可以使用实际 Azure 存储连接字符串更新 local.settings.json 文件。 
 
 
 ### <a name="start-with-sample-functions"></a>从示例函数开始
@@ -79,14 +75,14 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 3. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
     ```
 4. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Twilio Extension：
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta5
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
     ```
-5. 运行 Azure 存储仿真器，或使用实际的 Azure 存储连接字符串更新 *local.appsettings.json* 文件。
+5. 运行 Azure 存储模拟器，或使用实际 Azure 存储连接字符串更新 local.settings.json 文件。
 6. 在 Visual Studio Code 中打开项目。 
 7. 若要获得有关如何运行示例的说明，请首先查看[函数链接 - Hello 序列示例](durable-functions-sequence.md)。 示例可以在本地运行，也可以发布到 Azure。
 8. 在命令提示/终端中运行以下命令以启动项目：
@@ -98,50 +94,52 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 
 1. 克隆 [Durable Functions 存储库](https://github.com/Azure/azure-functions-durable-extension.git)。
 2. 在计算机上导航到 [JavaScript 示例文件夹](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)。 
-3. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
+3. 在命令提示符/终端窗口中运行下面的命令，以安装 Azure Functions 持久扩展
 
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
+    func extensions install
+    ```
+    > [!NOTE] 
+    > 这要求必须在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download)
 4. 在命令提示/终端窗口中运行以下命令，还原 npm 包：
     
-    ```bash
+    ```
     npm install
     ``` 
-5. 使用实际的 Azure 存储连接字符串更新 *local.appsettings.json* 文件。
-6. 在 Visual Studio Code 中打开项目。 
+5. 使用 Azure 存储帐户中的 `AzureWebJobsStorage` 连接字符串更新 local.settings.json 文件。  此存储帐户用于持久函数状态。
+6. 在 Visual Studio Code 等编辑器中打开项目。 
 7. 若要获得有关如何运行示例的说明，请首先查看[函数链接 - Hello 序列示例](durable-functions-sequence.md)。 示例可以在本地运行，也可以发布到 Azure。
 8. 在命令提示/终端中运行以下命令以启动项目：
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ### <a name="start-with-an-empty-project"></a>从空项目开始
  
 1. 在命令提示/终端中导航到用于承载函数应用的文件夹。
-2. 在命令提示/终端窗口中运行以下命令，安装 Azure Functions Durable Extension：
-
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
-    ```
 3. 运行以下命令创建函数应用项目：
 
-    ```bash
+    ```
     func init
     ``` 
-4. 运行 Azure 存储仿真器，或使用实际的 Azure 存储连接字符串更新 *local.appsettings.json* 文件。
+4. 运行 Azure 存储模拟器（仅限 Windows），或使用 `AzureWebJobsStorage` 的实际 Azure 存储连接字符串更新 local.settings.json 文件。
 5. 接下来，运行以下命令创建新函数，然后遵循向导中的步骤操作：
 
-    ```bash
+    ```
     func new
     ```
     >[!IMPORTANT]
     > 目前尚未提供持久函数模板，但可以先从支持的某个选项着手，然后修改代码。 用于引用[业务流程客户端](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/HttpStart)、[业务流程触发器](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence)和[活动触发器](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence)的示例。
+2. 在命令提示符/终端窗口中运行下面的命令，以在函数应用目录中安装 Azure Functions 持久扩展：
+
+    ```
+    func extensions install
+    ```
 
 6. 在 Visual Studio Code 中打开项目文件夹，然后修改模板代码以继续。 
 7. 在命令提示/终端中运行以下命令以启动项目：
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ## <a name="azure-portal"></a>Azure 门户

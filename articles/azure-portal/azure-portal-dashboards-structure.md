@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: cwatson
-ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393071"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267981"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
@@ -338,7 +338,7 @@ Azure 资源 id 服从 [Azure 资源命名约定](https://docs.microsoft.com/azu
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – 用于显示监视度量值
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – 用于显示带列表、链接等基本格式的文本或图像。
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` – 用于显示来自 YouTube、Channel9 的视频，以及使用 html 视频标记的任何其他类型的视频。
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – 用于显示来自 YouTube、Channel9 的视频，以及使用 HTML 视频标记的任何其他类型的视频。
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – 用于显示 Azure 虚拟机的名称和状态。
 
 所有部件类型都有其自己的配置。 可能的配置属性有“输入”、“设置”和“资产”。 

@@ -1,20 +1,21 @@
 ---
-title: 实体搜索终结点 | Microsoft Docs
+title: 必应实体搜索终结点
+titlesuffix: Azure Cognitive Services
 description: 实体搜索 API 终结点摘要。
 services: cognitive-services
 author: v-jaswel
-manager: kaiq
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 3d5da30102712baf399c245cc7678eeddbce796a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b1b89cbacf43df544261847d4e3fae396a52f423
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365407"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816270"
 ---
 # <a name="entity-search-endpoints"></a>实体搜索终结点
 实体搜索 API 包括一个终结点。

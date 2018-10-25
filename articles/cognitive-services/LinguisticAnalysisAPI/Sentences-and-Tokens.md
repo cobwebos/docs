@@ -1,22 +1,27 @@
 ---
-title: 语言分析 API 中的句子和词汇 | Microsoft Docs
-description: 了解认知服务中的语言分析 API 支持的句子拆分和词汇切分。
+title: 句子和令牌 - 语言分析 API
+titlesuffix: Azure Cognitive Services
+description: 了解语言分析 API 支持的句子拆分和词汇切分。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084036"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237868"
 ---
 # <a name="sentence-separation-and-tokenization"></a>句子拆分和词汇切分
+
+> [!IMPORTANT]
+> 语言分析预览版已在 2018 年 8 月 9 日停止使用。 我们建议使用 [Azure 机器学习文本分析模块](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)进行文本处理和分析。
 
 ## <a name="background-and-motivation"></a>背景和动机
 
@@ -52,7 +57,8 @@ ms.locfileid: "37084036"
 
 有几种棘手情况。
 首先，标点通常（但不一定）应从周围上下文中切分出来。
-其次，英语有缩写形式（例如“didn't”或“it's”），其中字词已压缩并缩写为更短形式。 tokenizer 的目标是，将字符序列切分为字词。
+其次，英语有缩写形式（例如“didn't”或“it's”），其中字词已压缩并缩写为更短形式。
+tokenizer 的目标是，将字符序列切分为字词。
 
 回到上面的示例句子。
 现已在每个不同词汇之间插入“中心点”(&middot;)。
@@ -63,7 +69,8 @@ ms.locfileid: "37084036"
 
 请注意，大部分词汇都能在字典中查到（例如，important、director）。
 另一些词汇只包含标点。
-最后，还有一些更不常见的词汇表示缩写形式。例如，n't 表示 not，'s 表示所有格等。借助这种词汇切分，可以更一致地处理字词（例如 didn't）和短语（例如 did not）。
+最后，还有一些较不常见的词汇表示缩写形式。例如，n't 表示 not，'s 表示所有格。
+借助这种词汇切分，可以更为一致地处理字词 (didn't) 和短语 (did not)。
 
 ## <a name="specification"></a>规格
 

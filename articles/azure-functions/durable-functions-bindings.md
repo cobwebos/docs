@@ -3,23 +3,19 @@ title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 29cc7982dbe9991e6b0e3363cd636ac88881fc7b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763350"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237275"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -85,7 +81,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
     return `Hello ${name}!`;
 });
@@ -114,7 +110,7 @@ public static async Task<string> Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
     const result = yield context.df.callActivityAsync("SayHello", name);
     return result;
@@ -125,7 +121,7 @@ module.exports = df(function*(context) {
 
 通过活动触发器，可以创作业务流程协调程序函数调用的函数。
 
-如果使用 Visual Studio，则使用 [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性配置活动触发器。 
+如果使用的是 Visual Studio，活动触发器使用 [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性进行配置。 
 
 如果使用 Azure 门户进行开发，则由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
 
@@ -147,7 +143,7 @@ module.exports = df(function*(context) {
 以下是有关活动触发器的一些注意事项：
 
 * 线程处理 - 与业务流程触发器不同，活动触发器没有关于线程处理或 I/O 的任何限制。 可以将它们视为常规功能。
-* 有害消息处理 - 活动触发器中不支持有害消息。
+* **有害消息处理** - 活动触发器不支持有害消息。
 * 消息可见性 - 活动触发器消息会取消排队并在可配置的持续时间内保持可见。 只要函数应用正常运行，这些消息的可见性就会自动更新。
 * 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表。
 

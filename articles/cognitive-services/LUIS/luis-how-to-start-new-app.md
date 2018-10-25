@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 401c4fb8942aee73c036ae2b248a030eaea4917a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 55af0559c98c9fc63fd6902d80b4e6f2f0a7d2da
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031248"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870109"
 ---
 # <a name="create-an-app"></a>创建应用
 可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
@@ -22,9 +22,9 @@ ms.locfileid: "47031248"
 ## <a name="using-the-luis-portal"></a>使用 LUIS 门户
 可以通过以下几种方式在 LUIS 门户中创建新应用：
 
-* [首先](#create-new-app)创建一个空应用，然后创建意向、表述和实体。
-* [首先](#create-new-app)创建一个空应用，然后添加[预生成域](luis-how-to-use-prebuilt-domains.md)。
-* 从已包含意向、表述和实体的 JSON 文件[导入 LUIS 应用](#import-new-app)。
+* 从一个空应用开始，创建意向、表述和实体。
+* 从一个空应用开始，添加[预生成的域](luis-how-to-use-prebuilt-domains.md)。
+* 从已包含意向、表述和实体的 JSON 文件导入 LUIS 应用。
 
 ## <a name="using-the-authoring-apis"></a>使用创作 API
 可以通过以下几种方式使用创作 API 创建新应用：

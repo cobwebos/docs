@@ -1,20 +1,21 @@
 ---
-title: 使用 Project Acoustics 制作音效 - 认知服务
+title: 使用 Project Acoustics 制作音效
+titlesuffix: Azure Cognitive Services
 description: 本文档介绍使用 Unity 编辑器扩展提交音效制作的过程。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0e16ec765ae3cbef8a941f43a149428ffdf5bd8d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181161"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902240"
 ---
 # <a name="bake-acoustics"></a>制作音效
 
@@ -199,15 +200,19 @@ Acoustics 工具窗口收集音效引擎计算场景音效所需的信息。 制
 1. “制作”选项卡，按钮用于打开此页面。
 2. 有关要在此页上所执行操作的简短说明。
 3. 创建 Azure 帐户后，用于输入 Azure 凭据的字段。 有关详细信息，请参阅[创建 Azure Batch 帐户](create-azure-account.md)。
-4. Azure Batch 计算用于计算的节点类型。 节点类型必须受 Azure 数据中心位置支持。 如果不确定，则保留 Standard_F8。
-5. 要用于此计算的节点数。 此处输入的数字将影响完成制作的时间，并受 Azure Batch 核心分配限制。 默认分配仅允许使用两个 8 核节点或一个 16 核节点，但可以进行扩展。 有关核心分配约束的详细信息，请参阅[创建 Azure Batch 帐户](create-azure-account.md)。
-6. 场景的探测计数在“探测”选项卡上计算得出。探测数决定需要在云中运行的模拟次数。 不能指定多于探测数的节点数。
-7. 作业在云中运行预计需要的运行时间。 这不包括节点启动时间。 作业开始运行后，这是返回结果前需要等待的时间。 请注意，这只是估计值。
-8. 运行模拟所需的总计算时间。 这是 Azure 中将使用的总的节点计算时间。 有关如何使用该值的详细信息，请参阅[估计制作成本](#Estimating-bake-cost)。
-9. 此消息告知了作业完成后制作结果保存的位置。
-10. （仅限高级使用）如果出于某种原因需要强制 Unity 忘记已提交的制作（例如使用其他计算机下载结果），请单击“清除状态”按钮，以忘记已提交的作业。 请注意，这表示准备就绪后，将不下载结果文件，且这不同于取消作业。 如果运行，该作业将继续在云中运行。
-11. 单击“制作”按钮，将制作提交到云。 运行作业时，这将改为显示“取消作业”。
-12. 此区域显示制作的状态。 完成后，它应显示“已下载”。
+4. 音效工具集的 Docker 图像标记。
+5. 启动 Azure 门户以管理你的订阅，监视使用情况和查看计费信息等。 
+6. Azure Batch 计算用于计算的节点类型。 节点类型必须受 Azure 数据中心位置支持。 如果不确定，则保留 Standard_F8s_v2。
+7. 要用于此计算的节点数。 此处输入的数字将影响完成制作的时间，并受 Azure Batch 核心分配限制。 默认分配仅允许使用两个 8 核节点或一个 16 核节点，但可以进行扩展。 有关核心分配约束的详细信息，请参阅[创建 Azure Batch 帐户](create-azure-account.md)。
+8. 选择此复选框可将你的计算机池配置为使用[低优先级节点](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)。 低优先级计算节点的成本较低，但它们可能并非一直可用或可能随时被抢占。
+9. 场景的探测计数在“探测”选项卡上计算得出。探测数决定需要在云中运行的模拟次数。 不能指定多于探测数的节点数。
+10. 作业在云中运行预计需要的运行时间。 这不包括节点启动时间。 作业开始运行后，这是返回结果前需要等待的时间。 请注意，这只是估计值。
+11. 运行模拟所需的总计算时间。 这是 Azure 中将使用的总的节点计算时间。 有关如何使用该值的详细信息，请参阅[估计制作成本](#Estimating-bake-cost)。
+12. 此消息告知了作业完成后制作结果保存的位置。
+13. （仅限高级使用）如果出于某种原因需要强制 Unity 忘记已提交的制作（例如使用其他计算机下载结果），请单击“清除状态”按钮，以忘记已提交的作业。 请注意，这表示准备就绪后，将不下载结果文件，且这不同于取消作业。 如果运行，该作业将继续在云中运行。
+14. 单击“制作”按钮，将制作提交到云。 运行作业时，这将改为显示“取消作业”。
+15. 准备在本地计算机上处理音效模拟。 有关详细信息，请参阅[本地制作](#Local-bake)。  
+16. 此区域显示制作的状态。 完成后，它应显示“已下载”。
 
 在 [Azure 门户](https://portal.azure.com)可始终获得有关活动作业、计算池和存储空间的完整信息。
 
@@ -217,13 +222,34 @@ Acoustics 工具窗口收集音效引擎计算场景音效所需的信息。 制
 
 Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关联。 它们仅用于建立与 Azure 的安全连接。
 
-### <a name="Estimating-bake-cost"></a>估计制作成本
+### <a name="Estimating-bake-cost"></a> 估计 Azure 制作成本
 
-要估计给定制作的成本，请采用“估计的计算成本”中显示的值（一段持续时间），再乘以所选 VM 节点类型的每小时费用（当地货币）。 结果不包括节点启动和运行所需的节点时间。 例如，如果对节点类型选择 Standard_F8，其费用为 $0.75/小时，而“估计计算成本”为 3 小时 57 分钟，则运行作业的估计成本为 $0.75 * ~4 小时 = ~$3.00。 实际成本很可能略高，因为开始使用节点时会产生的额外时间。 在 [Azure Batch 定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux)页可找到每小时的节点费用（对类别选择“优化计算”或“高性能计算”）。
+要估计给定制作的成本，请采用“估计的计算成本”中显示的值（一段持续时间），再乘以所选 VM 节点类型的每小时费用（当地货币）。 结果不包括节点启动和运行所需的节点时间。 例如，如果为节点类型选择 Standard_F8s_v2，其费用为 $0.40/小时，而“估计的计算成本”为 3 小时 57 分钟，则运行作业的估计成本为 $0.40 * ~4 小时 = ~$1.60。 实际成本很可能略高，因为开始使用节点时会产生的额外时间。 在 [Azure Batch 定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux)页可找到每小时的节点费用（对类别选择“优化计算”或“高性能计算”）。
 
 ### <a name="reviewing-the-bake-results"></a>查看制作结果
 
 制作完成后，通过运行运行时插件，检查体素和探测点是否位于预期的位置。 请参阅[音效设计过程概述](design-process.md)，了解详细信息。
+
+## <a name="Local-bake"></a>本地制作
+本地制作在你自己的电脑上运行音效模拟，而不是将其卸载到 Azure Batch 计算群集。 对于试用音效的用户，这是一个不错的选择，因为无需具有 Azure 订阅。 请注意，音效模拟对计算量的需求很高，可能需要很长的时间，具体要取决于场景大小、模拟配置和处理计算机的原始计算能力。
+
+### <a name="minimum-hardware-requirements"></a>最低硬件要求
+具有至少 8 核和 32 GB 的 RAM 或更高内存的 64 位 Intel 处理器。
+
+例如，在配有 Intel Xeon E5-1660 @ 3 GHz 和 32 GB 的 8 核计算机上 -
+* 对于具有 100 个探测的小型场景，进行粗略制作需要 2 小时，进行高分辨率制作需要 32 个小时。
+* 对于具有 1000 个探测的大型场景，进行粗略制作需要 20 小时，进行高分辨率制作需要 21 天。
+
+### <a name="setup-docker"></a>安装 Docker
+在电脑上安装并配置 Docker 将处理模拟 -
+1. 安装 [Docker 工具集](https://www.docker.com/products/docker-desktop)。
+2. 启动 Docker 设置，导航到“高级”选项，并将资源配置为具有至少 8 GB 的 RAM。 可向 Docker 分配的 CPU 越多，制作完成的速度就越快。 ![示例 Docker 设置](media/DockerSettings.png)
+3. 导航到“共享驱动器”并启用用于处理的驱动器共享。![DockerDriveSharing](media/DockerSharedDrives.png)
+
+### <a name="run-local-bake"></a>运行本地制作
+1. 单击“制作”选项卡上的“准备本地制作”按钮，并选择将要保存输入文件和执行脚本的文件夹。 然后，通过将该文件夹复制到该计算机，即可在任何计算机上运行制作，只要该计算机满足最低硬件要求并安装了 Docker。
+2. 使用“runlocalbake.bat”脚本启动模拟。 此脚本将提取 Project Acoustics Docker 映像（其中包含用于模拟处理的工具集）并启动模拟。 
+3. 模拟完成后，将生成的 .ace 文件复制回你的 Unity 项目。 为确保 Unity 将此识别为二进制文件，请将“.bytes”追加到文件扩展名（例如，“Scene1.ace.bytes”）。 有关模拟的详细日志存储在“AcousticsLog.txt”中。 如果遇到任何问题，请共享此文件以协助进行诊断。
 
 ## <a name="Data-Files"></a>数据文件
 

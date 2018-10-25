@@ -8,22 +8,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1915c4bc6cd611479c7575179d8fe64def8895eb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3a7284555fb592956d4e1dc3f56137c88d108e1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956365"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584382"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>使用 IoT 中心发送设备到云和云到设备的消息
 
-IoT 中心支持与设备进行双向通信。 使用 IoT 中心消息与设备进行通信，方法是：将消息从设备发送到解决方案后端，以及将命令从 IoT 解决方案后端发送到设备。 了解有关 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的详细信息。
+IoT 中心支持与设备进行双向通信。 使用 IoT 中心消息传递，通过将消息从设备发送到解决方案后端，并将命令从 IoT 解决方案后端发送到设备，可实现与设备的通信。 了解有关 [IoT 中心消息格式](iot-hub-devguide-messages-construct.md)的详细信息。
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
-IoT 中心具有内置服务终结点，后端服务可以使用该终结点从设备中读取遥测消息。 此终结点与[事件中心](https://docs.microsoft.com/azure/event-hubs/)兼容，你可以使用标准 IoT 中心 SDK [从该内置终结点读取]((https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin))。
+IoT 中心具有内置服务终结点，后端服务可以使用该终结点从设备中读取遥测消息。 此终结点与[事件中心](https://docs.microsoft.com/azure/event-hubs/)兼容，你可以使用标准 IoT 中心 SDK [从该内置终结点读取](iot-hub-devguide-messages-read-builtin.md)。
 
-IoT 中心还支持用户可定义的[自定义终结点](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints)使用[消息路由](iot-hub-devguide-messages-d2c.md)将设备遥测数据和事件发送到 Azure 服务。
+IoT 中心还支持用户可定义的[自定义终结点](iot-hub-devguide-endpoints.md#custom-endpoints)使用[消息路由](iot-hub-devguide-messages-d2c.md)将设备遥测数据和事件发送到 Azure 服务。
 
 ## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -38,9 +38,11 @@ IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。 
 使用设备到云的消息从设备应用发送时序遥测数据和警报，使用云到设备的消息向设备应用发送单向通知。
 
 * 有关在使用设备到云的消息、报告属性或文件上传方面进行选择的信息，请参阅[设备到云通信指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance)。
+
 * 有关在使用云到设备的消息、所需属性或直接方法方面进行选择的消息，请参阅[云到设备通信指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 IoT 中心[消息路由](iot-hub-devguide-messages-d2c.md)。
+
 * 了解 IoT 中心[云到设备的消息传递](iot-hub-devguide-messages-c2d.md)。

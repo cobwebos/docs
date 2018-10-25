@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408219"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114662"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure SQL 透明数据加密：支持创建自己的密钥
 
@@ -67,6 +67,8 @@ ms.locfileid: "49408219"
   > 如果**意外删除了 Azure AD 标识，或使用 Key Vault 的访问策略撤销了服务器的权限**，服务器将失去 Key Vault 的访问权限，并且会在 24 小时内删除 TDE 加密的数据库。
 
 - 借助 Azure Key Vault 使用防火墙和虚拟网络时，必须配置以下内容： 
+  - 允许从"所选网络"进行访问 
+  - 若适用，添加现有虚拟网络并选择 SQL 数据库网络（这对于单一数据库是可选的，对于托管实例是必需的） 
   - 允许受信任的 Microsoft 服务跳过此防火墙 - 选择“是” 
          
     > [!NOTE] 

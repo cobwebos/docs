@@ -12,18 +12,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: f7c36fec7ff58c225e41899e8264ca1dde95ce7c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213242"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267998"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 
 Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表：
 
-| 环境变量                         | 说明                                                            | 示例                                                              |
+| 环境变量                         | Description                                                            | 示例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 应用程序的 fabric uri 名称                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | 进程所属的代码包的名称              | 代码                                                                 |
@@ -37,7 +37,7 @@ Service Fabric 为每个服务实例提供了内置环境变量集。 下面是�
 | Fabric_NodeId                                | 运行进程的节点的节点 ID                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | 群集清单文件中指定的节点的 IP 或FQDN。 | localhost 或 10.0.0.1                                                |
 | Fabric_NodeName                              | 运行进程的节点的节点名称                          | _Node_0                                                              |
-| Fabric_ServiceName                           | 服务的名称（如果服务在 ExclusiveProcess 模式下托管）。 仅当使用 ServicePackageActivationMode ExclusiveProcess 创建服务时，此变量值才可用。  | MyService                                               |
+| Fabric_ServiceName                           | 服务的结构 uri 名称（如果服务在 ExclusiveProcess 模式下托管）。 仅当使用 ServicePackageActivationMode ExclusiveProcess 创建服务时，此变量值才可用。  | fabric:/MyApplication/MyService                                               |
 | Fabric_ServicePackageActivationId            | ServicePackageActivationId                                         | GUID                                                               |
 | Fabric_ServicePackageName                    | 包含进程的服务包的名称                     | Web1Pkg                                                              |
 

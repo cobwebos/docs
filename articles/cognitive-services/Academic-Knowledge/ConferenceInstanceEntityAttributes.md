@@ -1,26 +1,27 @@
 ---
-title: 学术知识 API 中的会议实例实体属性 | Microsoft Docs
-description: 了解在认知服务中可与学术知识 API 中的会议实例实体结合使用的属性。
+title: 会议实例实体属性 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 了解可以在学术知识 API 中与会议实例实体结合使用的属性。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ef2bca4346a4666905f3dfb7bd448720f3b0ef8b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6111ad00044943f12b2e098c4fd07ffb40185799
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365399"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902406"
 ---
 # <a name="conference-instance-entity"></a>会议实例实体
 
 <sub> *以下属性特定于会议实例实体。(Ty = '4') </sub>
 
-名称    |说明                            |Type       | 操作
+名称    |Description                            |类型       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |实体 ID                              |Int64      |等于
 CIN     |会议实例规范化名称 ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |String     |等于
@@ -42,6 +43,6 @@ ECC     |会议实例估计引文总计数 |Int32      |无
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-名称    | 说明               
+名称    | Description               
 --------|---------------------------    
 FN      | 会议实例全名

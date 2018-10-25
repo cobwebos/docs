@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的 Evaluate 方法 | Microsoft Docs
-description: Microsoft 认知服务中的 Evaluate 方法用于根据查询表达式返回一组学术实体。
+title: Evaluate 方法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 使用 Evaluate 方法根据查询表达式返回一组学术实体。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 3005ae1f6df042a49db086de4982d8206f6938a4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365395"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902325"
 ---
 # <a name="evaluate-method"></a>Evaluate 方法
 
@@ -27,7 +28,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>请求参数  
-名称     | 值 | 必需？  | 说明
+名称     | 值 | 必需？  | Description
 -----------|-----------|---------|--------
 **expr**       | 文本字符串 | 是 | 指定应返回哪些实体的查询表达式。
 **model**      | 文本字符串 | 否  | 要查询的模型的名称。  默认值暂为“latest”。        
@@ -38,7 +39,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
   
  <br>
 ## <a name="response-json"></a>响应 (JSON)
-名称 | 说明
+名称 | Description
 -------|-----   
 **expr** |  请求中的 expr 参数。
 **entities** |  一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含自然对数概率值，以及其他请求获取的属性值。

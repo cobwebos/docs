@@ -10,20 +10,18 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 436ff9d318dc311efe27352a8b2ac91cfb5be618
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221311"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237579"
 ---
-#<a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
+# <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
 
 使用 [Azure 机器学习数据准备 SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) 加载不同类型的输入数据。 
 
-若要加载数据，有两种方法：
-+ 指定数据文件类型及其参数
-+ 使用 SDK 智能读取功能自动检测文件类型
+若要加载数据，请指定数据文件类型及其参数
 
 ## <a name="use-text-line-data"></a>使用文本行数据 
 加载数据的最简单方式之一是将其读取为文本行。
@@ -352,7 +350,3 @@ dataflow.to_pandas_dataframe().head()
 |2|1011878|100 英里市场|http://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
 |4|1010691|第十街社区农贸市场|http://agrimissouri.com/mo-grown/grodetail.php..。 |第十街和波普拉区|拉马尔|巴顿|
-
-## <a name="use-smart-reading"></a>使用“智能读取”
-
-使用 SDK 智能读取功能自动检测文件类型。

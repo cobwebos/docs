@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fa2bc2dd59a5c62becc7f5cd4c4c9633dac1a29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141254"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585334"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -77,6 +77,9 @@ ms.locfileid: "42141254"
 2. 单击“凭据”部分以打开“凭据”边栏选项卡。
 3. 单击边栏选项卡顶部的“添加凭据”。
 4. 完成表单，并单击“创建”以保存新凭据。
+
+> [!NOTE]
+> 不支持将使用多重身份验证的用户帐户用于 Azure 自动化。
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 创建新的凭据资产
 

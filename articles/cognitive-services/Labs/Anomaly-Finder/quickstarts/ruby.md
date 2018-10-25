@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ef85b82adf3b177678cc8175a7fb2d0eb44323fa
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41929928"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246853"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>将异常查找器 API 与 Ruby 配合使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 本文提供了相关信息和示例代码，帮助用户快速开始将异常查找器 API 与 Ruby 配合使用，从而获取时序数据的异常情况检测结果。
 
@@ -76,7 +78,7 @@ puts response.body
 
 ### <a name="example-response"></a>示例响应
 
-JSON 中返回成功响应。 示例响应如下。
+成功的响应以 JSON 格式返回。 示例响应如下。
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>后续步骤

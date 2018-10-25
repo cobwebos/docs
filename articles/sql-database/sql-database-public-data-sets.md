@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160411"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586251"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用于测试和原型设计的公共数据集
 
@@ -40,7 +40,7 @@ ms.locfileid: "47160411"
 
 | 数据源 | 关于数据 | 关于文件 |
 |---|---|---|
-| [纽约出租车数据](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | “出租车行程记录，其中包括捕获出租车接客和下客的日期/时间、地点、行程距离、各项费用、费率类型、付款方式和驾驶员报告的乘客数量的字段。” | 数据集文件以 CSV 格式按月提供。 |
+| [纽约出租车数据](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | “出租车行程记录包括捕获以下信息的字段：上车和下车日期/时间、上车和下车位置、行程距离、逐条列记的车费、费率类型、付款类型和司机报告的乘客数。” | 数据集文件以 CSV 格式按月提供。 |
 | [Microsoft Research 数据集 -“数据科学研究”](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | 多个数据集，涵盖了人机交互、音频/视频、数据挖掘/信息检索、地理空间/位置、自然语言处理和机器人/计算机视觉。 | 数据集有各种格式，可压缩后下载。 |
 | [公共基因组数据](http://www.completegenomics.com/public-data/) | “公众可使用全人类基因组的不同数据集，提高基因组学研究……”提供商 Complete Genomics 是一家营利性私有公司。 | 经提取的数据集为 UNIX 文本格式。 还可使用分析工具。 |
 | [Open Science Data Cloud 数据](https://www.opensciencedatacloud.org/) | “Open Science Data Cloud 为科学界提供了可存储、共享和分析的 TB 级和 PB 级科学数据集的资源。”| 各种格式的数据集。 |

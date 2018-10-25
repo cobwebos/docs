@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的 Interpret 方法 | Microsoft Docs
+title: Interpret 方法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
 description: 使用 Interpret 方法根据学术关系图数据和 Microsoft 认知服务中的学术语法返回用户查询字符串的格式化解释。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a46c792f14fabf6562666d1067ef880bd505741f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365417"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902563"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -28,18 +29,18 @@ REST 终结点：
 
 ## <a name="request-parameters"></a>请求参数
 
-名称     | 值 | 必需？  | 说明
+名称     | 值 | 必需？  | Description
 ---------|---------|---------|---------
 **query**    | 文本字符串 | 是 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
-**model**    | 文本字符串 | 否  | 想要查询的模型的名称。  当前，值默认为“最新”。        
+**model**    | 文本字符串 | 否  | 要查询的模型的名称。  当前，值默认为“最新”。        
 complete | 0 或 1 | 否<br>default:0  | 1 意味着自动完成建议是基于语法和关系图数据生成的。         
 **count**    | Number | 否<br>default:10 | 返回的最大解释数。         
-offset   | Number | 否<br>default:0  | 返回的第一个解释的索引。 例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
+**offset**   | Number | 否<br>default:0  | 返回的第一个解释的索引。 例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
 timeout  | Number | 否<br>default:1000 | 超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
 <br>
   
 ## <a name="response-json"></a>响应 (JSON)
-名称     | 说明
+名称     | Description
 ---------|---------
 **query** |query 参数来自请求。
 interpretations |用于将用户输入与语法进行匹配的 0 种或更多种不同方式的数组。

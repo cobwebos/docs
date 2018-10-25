@@ -1,5 +1,5 @@
 ---
-title: 常见问题解答 - 语言理解 (LUIS)
+title: FAQ - 常见问题解答 - 语言理解 (LUIS)
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5910417696651cad06d6f21513e81728be4181cd
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432454"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067750"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -113,6 +113,10 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 
 请参阅[同一应用的不同副本之间的预测差异](luis-concept-prediction-score.md#differences-with-predictions)。
 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>我对应用进行更改之后，一些表述会转到错误意图。 此问题似乎随机消失。 如何解决问题？ 
+
+请参阅[使用所有数据进行训练](luis-how-to-train.md#train-with-all-data)。
+
 ## <a name="app-publishing"></a>应用发布
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>“向应用添加密钥”窗口中的租户 ID 是什么？
@@ -135,7 +139,7 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 若要将某个 LUIS 应用转让给另一 Azure 订阅，请导出该 LUIS 应用，然后使用新帐户来导入它。 在进行调用的客户端应用程序中更新 LUIS 应用 ID。 新应用返回的 LUIS 分数与原始应用返回的可能稍有不同。
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>如何下载用户表述的日志？
-默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”，单击应用的列表中的省略号 (***...***)。 然后单击“导出终结点日志”。 日志格式化为逗号分隔值 (CSV) 文件。
+默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”。 日志格式化为逗号分隔值 (CSV) 文件。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>如何禁用表述的日志记录？
 若要关闭用户表述的日志记录，可以在客户端应用程序用来查询 LUIS 的终结点 URL 中设置 `log=false`。 但是，关闭日志记录会禁用 LUIS 应用提供表述建议或改进基于[主动学习](luis-concept-review-endpoint-utterances.md#what-is-active-learning)的性能的功能。 如果因为数据隐私顾虑而设置 `log=false`，则不能从 LUIS 下载这些用户表述的记录，也不能使用这些表述来改进应用。

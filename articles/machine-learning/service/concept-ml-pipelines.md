@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023916"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116447"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>管道和 Azure 机器学习
 
@@ -63,7 +63,7 @@ ms.locfileid: "50023916"
 
 可以将管道另存为模板并部署到某个 REST 终结点，以便对批量评分或重新训练作业进行计划。
 
-请查看[适用于管道的 Python SDK 参考文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)以及下一部分的 Notebook，了解如何生成你自己的。
+请查看[适用于管道的 Python SDK 参考文档](http://aka.ms/aml-sdk)以及下一部分的 Notebook，了解如何生成你自己的。
 
 ## <a name="example-notebooks"></a>示例笔记本
  

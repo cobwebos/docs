@@ -1,22 +1,21 @@
 ---
-title: 必应搜索 SDK | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: 适用于在网上进行搜索的应用程序的必应搜索 SDK。
+title: 必应新闻搜索 SDK
+titleSuffix: Azure Cognitive Services
+description: 适用于在网上进行搜索的应用程序的必应新闻搜索 SDK。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
-ms.assetid: ''
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4a40ea665e153536d2322706b455598902ce41eb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b1d9eaa35416adfa11647f2116171256f82fe095
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35366690"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801227"
 ---
 # <a name="bing-search-sdk"></a>必应搜索 SDK
 必应新闻搜索 API 示例包括执行以下操作的方案：
@@ -29,11 +28,11 @@ ms.locfileid: "35366690"
 * 开始使用 [.NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
     * [NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0)
     * 有关定义和依赖项，另请参阅 [.NET 库](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingNewsSearch)。
-* 开始使用 [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
+* 开始使用 [ 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
     * 有关定义和依赖项，另请参阅 [Node.js 库](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/newsSearch)。
 * 开始使用 [Java 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
     * 有关定义和依赖项，另请参阅 [Java 库](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)。
 * 开始使用 [Python 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
     * 有关定义和依赖项，另请参阅 [Python 库](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-newssearch)。
 
-每种语言的 SDK 示例包括一个自述文件，其中包含有关先决条件和安装/运行示例的详细信息。
+每种语言的 SDK 示例都包括一个自述文件，其中包含有关先决条件和安装/运行示例的详细信息。

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 9281c5fe04e3f29d1e3425edb4841dfaca1cd9e2
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6974350c6abbc6c5f5a8e10b22e91796e2564b08
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294826"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -51,6 +51,7 @@ ms.locfileid: "46294826"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
 1.  **问：此集成是否支持 Google Cloud Platform SSO 与 Azure AD 的集成？**
     
     答：是的。 Google Cloud Platform 和 Google Apps 共用同一个身份验证平台。 因此，若要实现 GCP 集成，需要配置 Google Apps 的 SSO。
@@ -79,25 +80,26 @@ ms.locfileid: "46294826"
 1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-g-suite-from-the-gallery"></a>从库添加 G Suite
+
 若要配置 G Suite 与 Azure AD 的集成，需要从库中将 G Suite 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 G Suite，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![“Azure Active Directory”按钮][1]
+    ![图像](./media/google-apps-tutorial/selectazuread.png)
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡][2]
+    ![图像](./media/google-apps-tutorial/a_select_app.png)
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![图像](./media/google-apps-tutorial/a_new_app.png)
 
-1. 在搜索框中键入“G Suite”，在结果面板中选择“G Suite”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入“G Suite”，在结果面板中选择“G Suite”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 G Suite](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
+     ![图像](./media/google-apps-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -121,19 +123,25 @@ ms.locfileid: "46294826"
 
 **若要配置 G Suite 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中，在 **G Suite** 应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“G Suite”应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![图像](./media/google-apps-tutorial/b1_b2_select_sso.png)
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
 
-    ![“单一登录”对话框](./media/google-apps-tutorial/tutorial_googleapps_samlbase.png)
+      ![图像](./media/google-apps-tutorial/b1_b2_saml_ssso.png)
 
-1. 在“G Suite 域和 URL”部分，如果想要为 **Gmail** 进行配置，请执行以下步骤：
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
-    ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
+    ![图像](./media/google-apps-tutorial/b1_b2_saml_sso.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+
+    ![图像](./media/google-apps-tutorial/b1-domains_and_urlsedit.png)
+
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     | |
@@ -142,50 +150,55 @@ ms.locfileid: "46294826"
     | `google.com` |
     | `http://google.com` |
     | `http://google.com/a/<yourdomain.com>` |
+
+    ![图像](./media/google-apps-tutorial/b1-domains_and_urls.png)
  
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
 
-1. 在“G Suite 域和 URL”部分，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
+6. G Suite 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“用户属性”对话框。
 
-    ![G Suite 域和 URL 单一登录信息](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
+    ![图像](./media/google-apps-tutorial/i3-attribute.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
-
-    b. 在“标识符”文本框中，使用以下模式键入 URL： 
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+7. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并按照以下步骤操作：
     
-    > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”按钮，以打开“管理用户声明”对话框。
 
-1. 在“SAML 签名证书”部分中单击“证书”，然后在计算机上保存证书文件。
+    ![图像](./media/google-apps-tutorial/i2-attribute.png)
 
-    ![证书下载链接](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
+    ![图像](./media/google-apps-tutorial/i4-attribute.png)
 
-1. 单击“保存”按钮。
+    b. 在“源属性”列表中，选择属性值。
 
-    ![配置单一登录“保存”按钮](./media/google-apps-tutorial/tutorial_general_400.png)
+    c. 单击“ **保存**”。
 
-1. 在“G Suite 配置”部分，单击“配置 G Suite”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL、SAML 单一登录服务 URL 和更改密码 URL”。
+8. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“下载”，以根据要求下载相应的证书，并将证书保存在计算机上。
 
-    ![G Suite 配置](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
+    ![图像](./media/google-apps-tutorial/certificatebase64.png)
 
-1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
+9. 在“设置 G Suite”部分中，根据要求复制相应的 URL。
 
-1. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
+    请注意，URL 可能指明以下信息：
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+
+    b. Azure AD 标识符
+
+    c. 注销 URL
+
+    ![图像](./media/google-apps-tutorial/d1_saml.png) 
+
+10. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
+
+11. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
    
     ![单击“安全”。][10]
 
-1. 在“安全”页上单击“设置单一登录 (SSO)”。
+12. 在“安全”页上单击“设置单一登录 (SSO)”。
    
     ![单击“SSO”。][11]
 
-1. 执行以下配置更改：
+13. 执行以下配置更改：
    
     ![配置 SSO][12]
    
@@ -203,78 +216,66 @@ ms.locfileid: "46294826"
 
     g. 单击“保存更改”。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![图像](./media/google-apps-tutorial/d_users_and_groups.png)
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/google-apps-tutorial/create_aaduser_01.png)
+    ![图像](./media/google-apps-tutorial/d_adduser.png)
 
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/google-apps-tutorial/create_aaduser_02.png)
+    ![图像](./media/google-apps-tutorial/d_userproperties.png)
 
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入“BrittaSimon”。
+  
+    b. 在“用户名”字段中，键入“brittasimon@yourcompanydomain.extension”  
+    例如： BrittaSimon@contoso.com
 
-    ![“添加”按钮](./media/google-apps-tutorial/create_aaduser_03.png)
+    c. 选择“属性”，选中“显示密码”复选框，再记下“密码”框中显示的值。
 
-1. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/google-apps-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
+    d. 选择“创建”。
  
 ### <a name="create-a-g-suite-test-user"></a>创建 G Suite 测试用户
 
 本部分的目的是在 G Suite 中创建名为“Britta Simon”的用户。 G Suite 支持在默认情况下启用的自动预配。 在此部分中无需进行任何操作。 尝试访问 G Suite 时，如果 G Suite 中没有用户，系统会创建一个新用户。
 
+>[!NOTE]
+>如果在测试单一登录前尚未启用 Azure AD 中的预配，请确保用户已存在于 G Suite 中。
+
 >[!NOTE] 
 >如果需要手动创建用户，请联系 [Google 支持团队](https://www.google.com/contact/)。
+
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 G Suite 的访问权限，使其可以使用 Azure 单一登录。
 
-![分配用户角色][200] 
+1. 在 Azure 门户中，依次选择“企业应用程序”和“所有应用程序”。
 
-**若要将 Britta Simon 分配到 G Suite，请执行以下步骤：**
+    ![图像](./media/google-apps-tutorial/d_all_applications.png)
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+2. 在应用程序列表中，选择“G Suite”。
 
-    ![分配用户][201] 
+    ![图像](./media/google-apps-tutorial/d_all_proapplications.png)
 
-1. 在应用程序列表中，选择“G Suite”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![应用程序列表中的 G Suite 链接](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
+    ![图像](./media/google-apps-tutorial/d_leftpaneusers.png)
 
-1. 在左侧菜单中，单击“用户和组”。
+4. 依次选择“添加”按钮和“添加分配”对话框中的“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![图像](./media/google-apps-tutorial/d_assign_user.png)
 
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，再单击屏幕底部的“选择”按钮。
 
-    ![“添加分配”窗格][203]
-
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
-
-1. 在“用户和组”对话框中单击“选择”按钮。
-
-1. 在“添加分配”对话框中单击“分配”按钮。
+5. 在“添加分配”对话框中，选择“分配”按钮。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
@@ -286,22 +287,11 @@ ms.locfileid: "46294826"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
-[1]: ./media/googleapps-tutorial/tutorial_general_01.png
-[2]: ./media/googleapps-tutorial/tutorial_general_02.png
-[3]: ./media/googleapps-tutorial/tutorial_general_03.png
-[4]: ./media/googleapps-tutorial/tutorial_general_04.png
-
-[100]: ./media/googleapps-tutorial/tutorial_general_100.png
-
-[200]: ./media/googleapps-tutorial/tutorial_general_200.png
-[201]: ./media/googleapps-tutorial/tutorial_general_201.png
-[202]: ./media/googleapps-tutorial/tutorial_general_202.png
-[203]: ./media/googleapps-tutorial/tutorial_general_203.png
-[10]: ./media/googleapps-tutorial/gapps-security.png
-[11]: ./media/googleapps-tutorial/security-gapps.png
-[12]: ./media/googleapps-tutorial/gapps-sso-config.png
+[10]: ./media/google-apps-tutorial/gapps-security.png
+[11]: ./media/google-apps-tutorial/security-gapps.png
+[12]: ./media/google-apps-tutorial/gapps-sso-config.png
 

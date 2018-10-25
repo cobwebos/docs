@@ -1,21 +1,20 @@
 ---
 title: 语音 SDK API 参考
-titleSuffix: Azure Cognitive Services
 description: 适用于语音 SDK 的参考资料。
 services: cognitive-services
+titleSuffix: Azure Cognitive Services
 author: erhopf
-manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: fb80a3462caa59af423ef4f2f80e43f5d75e89e2
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 88f0fa66ba48f21e77a6c0319129708cabbc9535
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470891"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362630"
 ---
 # <a name="speech-sdk-api-reference"></a>语音 SDK API 参考
 

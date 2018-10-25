@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287704"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269405"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
  
@@ -83,7 +83,7 @@ Spark 与 Azure Cosmos DB 之间的通信仅限于 Spark 主节点和 Azure Cosm
 
 6. 在“创建 Notebook”对话框中输入用户友好名称，然后选择“Python”作为语言。 从下拉列表中选择前面创建的群集，然后选择“创建”。  
 
-7. 使用“doctorwho”Azure Cosmos DB 帐户中托管的航班示例数据运行几个 Spark 查询。 （本帐户可公开访问。）[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub 存储库中托管了 Notebook 的 HTML 版本。 下载存储库文件，并转到 `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`。 可将 Notebook 导入 Azure Databricks 帐户并运行。 以下部分详细介绍了代码块的功能。
+7. 使用“doctorwho”Azure Cosmos DB 帐户中托管的航班示例数据，运行几个 Spark 查询。 （本帐户可公开访问。）[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub 存储库中托管了 Notebook 的 HTML 版本。 下载存储库文件，并转到 `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`。 可将 Notebook 导入 Azure Databricks 帐户并运行。 以下部分详细介绍了代码块的功能。
 
 以下代码片段显示了如何导入 pyDocumentDB SDK 并在 Spark 上下文中运行查询。 如代码片段中所述，pyDocumentDB SDK 包含连接到 Azure Cosmos DB 帐户所需的连接参数。 导入所需的库，并配置主密钥和主机以创建 Azure Cosmos DB 客户端 (pydocumentdb.document_client)。
 
@@ -123,7 +123,7 @@ querystr = "SELECT c.City FROM c WHERE c.State='WA'"
 
 ```
 
-运行查询后，结果将是已转换为 Python 列表的“query_iterable.QueryIterable”。 此列表随后会转换为 Spark 数据帧。 
+运行查询后生成的是，已转换为 Python 列表的“query_iterable.QueryIterable”。 此列表随后会转换为 Spark 数据帧。 
 
 ```python
 # Query documents
@@ -179,7 +179,7 @@ Spark 与 Azure Cosmos DB 之间的通信速度会大幅提高，因为数据在
 
 4. 提取 Twitter 源示例的内容并打开 config.py 文件。 更新 masterKey、host、databaseId、collectionId 和 preferredLocations 值。  
 
-5. 转到 `http://apps.twitter.com/` 并注册 Twitter 源脚本作为新应用程序。 为应用选择名称和应用程序后，将提供“用户密钥”、“用户机密”、“访问令牌”和“访问令牌机密”。 复制这些值并在 config.py 文件中将其更新以提供对 Twitter 的应用程序编程访问。   
+5. 转到 `http://apps.twitter.com/`，并注册 Twitter 源应用程序。 命名应用程序后，需要输入“使用者密钥”、“使用者机密”、“访问令牌”和“访问令牌机密”。 复制这些值，并在 config.py 文件中更新它们，以向 Twitter 源应用程序授予对 Twitter 的 编程访问权限。   
 
 6. 保存 config.py 文件。 打开命令提示符并使用以下命令运行 Python 应用程序：
 

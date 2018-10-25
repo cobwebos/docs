@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5d7d6522dc663f13ce40cc638ba90ac4043d435c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611406"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829828"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>将设备连接到远程监视解决方案加速器 (Linux)
 
@@ -21,142 +21,33 @@ ms.locfileid: "38611406"
 
 本教程介绍如何将物理设备连接到远程监视解决方案加速器。
 
-## <a name="create-a-c-client-project-on-linux"></a>在 Linux 上创建 C 客户端项目
-
 与受约束设备上运行的大多数嵌入式应用程序一样，设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Ubuntu (Linux) 的计算机上生成应用程序。
 
-要完成这些步骤，需要一台运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请使用以下命令在 Ubuntu 设备上安装必备组件包：
+## <a name="prerequisites"></a>先决条件
 
-```sh
-sudo apt-get install cmake gcc g++
-```
+要完成该操作指南中的步骤，你需要一台运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)。
 
-### <a name="install-the-client-libraries-on-your-device"></a>在设备上安装客户端库
+## <a name="view-the-code"></a>查看代码
 
-Azure IoT 中心客户端库以包的形式提供，可以使用 apt-get 命令在 Ubuntu 设备上安装该包。 完成以下步骤，在 Ubuntu 计算机上安装包含 IoT 中心客户端库和头文件的包：
+本指南中使用的[示例代码](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client)可在 Azure IoT C SDK GitHub 存储库中找到。
 
-1. 在 shell 中，向计算机添加 AzureIoT 库：
+### <a name="download-the-source-code-and-prepare-the-project"></a>下载源代码并准备项目
 
-    ```sh
-    sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
-    sudo apt-get update
-    ```
+若要准备项目，请从 GitHub 克隆或下载 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)。
 
-1. 安装 azure-iot-sdk-c-dev 包
+该示例位于 samples/solutions/remote_monitoring_client 文件夹中。
 
-    ```sh
-    sudo apt-get install -y azure-iot-sdk-c-dev
-    ```
+在文本编辑器中打开 samples/solutions/remote_monitoring_client 文件夹中的 remote_monitoring.c 文件。
 
-### <a name="install-the-parson-json-parser"></a>安装 Parson JSON 分析器
-
-IoT 中心客户端库使用 Parson JSON 分析器分析消息有效负载。 在计算机的适当文件夹中，使用以下命令克隆 Parson GitHub 存储库：
-
-```sh
-git clone https://github.com/kgabis/parson.git
-```
-
-### <a name="prepare-your-project"></a>准备项目
-
-在 Ubuntu 计算机上，创建名为 `remote_monitoring` 的文件夹。 在 `remote_monitoring` 文件夹中：
-
-- 创建四个文件：`main.c`、`remote_monitoring.c`、`remote_monitoring.h` 和 `CMakeLists.txt`。
-- 创建名为 `parson` 的文件夹。
-
-将文件 `parson.c` 和 `parson.h` 从 Parson 存储库的本地副本复制到 `remote_monitoring/parson` 文件夹。
-
-在文本编辑器中打开 `remote_monitoring.c` 文件。 添加以下 `#include` 语句：
-
-```c
-#include "iothubtransportmqtt.h"
-#include "schemalib.h"
-#include "iothub_client.h"
-#include "serializer_devicetwin.h"
-#include "schemaserializer.h"
-#include "azure_c_shared_utility/threadapi.h"
-#include "azure_c_shared_utility/platform.h"
-#include <string.h>
-```
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
-
-## <a name="add-code-to-run-the-app"></a>添加代码以运行应用
-
-在文本编辑器中打开 `remote_monitoring.h` 文件。 添加以下代码：
-
-```c
-void remote_monitoring_run(void);
-```
-
-在文本编辑器中打开 `main.c` 文件。 添加以下代码：
-
-```c
-#include "remote_monitoring.h"
-
-int main(void)
-{
-  remote_monitoring_run();
-
-  return 0;
-}
-```
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-以下步骤描述如何使用 CMake 生成客户端应用程序。
+以下步骤描述如何使用 CMake 生成客户端应用程序。 远程监视客户端应用程序是在构建 SDK 的过程中构建的。
 
-1. 在文本编辑器中，打开 `remote_monitoring` 文件夹中的 CMakeLists.txt 文件。
+1. 编辑 remote_monitoring.c 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
 
-1. 添加以下指令，以定义如何生成客户端应用程序：
-
-    ```cmake
-    macro(compileAsC99)
-      if (CMAKE_VERSION VERSION_LESS "3.1")
-        if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-          set (CMAKE_C_FLAGS "--std=c99 ${CMAKE_C_FLAGS}")
-          set (CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
-        endif()
-      else()
-        set (CMAKE_C_STANDARD 99)
-        set (CMAKE_CXX_STANDARD 11)
-      endif()
-    endmacro(compileAsC99)
-
-    cmake_minimum_required(VERSION 2.8.11)
-    compileAsC99()
-
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
-
-    include_directories(${AZUREIOT_INC_FOLDER})
-
-    set(sample_application_c_files
-        ./parson/parson.c
-        ./remote_monitoring.c
-        ./main.c
-    )
-
-    set(sample_application_h_files
-        ./parson/parson.h
-        ./remote_monitoring.h
-    )
-
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
-
-    target_link_libraries(sample_app
-        serializer
-        iothub_client
-        iothub_client_mqtt_transport
-        aziotsharedutil
-        umqtt
-        pthread
-        curl
-        ssl
-        crypto
-        m
-    )
-    ```
-
-1. 在 `remote_monitoring` 文件夹中，创建一个文件夹来存储 CMake 生成的 make 文件。 然后运行 cmake 和 make 命令，如下所示：
+1. 导航到 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)的克隆副本的根目录，然后运行以下命令来生成客户端应用程序：
 
     ```sh
     mkdir cmake
@@ -168,7 +59,12 @@ int main(void)
 1. 运行客户端应用程序，并将遥测数据发送到 IoT 中心：
 
     ```sh
-    ./sample_app
+    ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
+
+    控制台中的消息显示为：
+
+    - 应用程序将示例遥测数据发送到解决方案加速器。
+    - 响应从解决方案仪表板调用的方法。
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
