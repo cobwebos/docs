@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423589"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956425"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -162,7 +162,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：当想要提供 SSO 体验、使用基于图形的数据，或者对基于域的用户进行身份验证时使用。
 
-    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/azure-ad-developers-guide.md)。
+    >开始使用：若要了解详细信息，请参阅 [Azure Active Directory 开发人员指南](../../active-directory/develop/v1-overview.md)。
 
 -   应用服务身份验证：当选择应用服务来托管应用时，还将获得对 Azure AD 以及社交标识提供程序（包括 Facebook、Google、Microsoft 和 Twitter）的内置身份验证支持。
 
@@ -289,7 +289,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 -   **服务主体对象**：除了为用户主体和组提供访问权限外，还可以向服务主体授予相同的访问权限。
 
-    > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../resource-group-create-service-principal-portal.md)。
+    > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 #### <a name="tags"></a>标记
 

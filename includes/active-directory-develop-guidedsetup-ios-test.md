@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 97e032af71947340c7e3b0af3b9d0701c972144e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d8d7d5649ca1dc215f85f928d111ff1367c60bb5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843038"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988230"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>测试从 iOS 应用程序查询 Microsoft Graph API
 
@@ -30,6 +30,7 @@ ms.locfileid: "48843038"
 准备好测试后，选择“调用 Microsoft Graph API”。 出现提示时，请输入用户名和密码。
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
+
 首次登录到应用程序时，系统会提示你同意允许应用程序访问你的个人资料并登录：
 
 ![许可应用程序访问](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
@@ -42,7 +43,7 @@ ms.locfileid: "48843038"
 
 Microsoft Graph API 需要 **user.read** 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 Microsoft Graph API 需要 **Calendars.Read** 作用域来列出用户的日历。
 
-若要在应用程序上下文中访问用户的日历，请将 **Calendars.Read** 委派权限添加到应用程序注册信息。 然后，将“Calendars.Read”作用域添加到“acquireTokenSilent”调用。 
+若要在应用程序上下文中访问用户的日历，请将 **Calendars.Read** 委派权限添加到应用程序注册信息。 然后，将“Calendars.Read”作用域添加到“acquireTokenSilent”调用。
 
 >[!NOTE]
 >当你增加作用域数量时，可能会提示用户另外进行许可。

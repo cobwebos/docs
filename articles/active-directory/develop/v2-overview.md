@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: adcb1b15ed52e6954846ea09be0a87a118222c10
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989578"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956419"
 ---
 # <a name="about-v20"></a>关于 v2.0
 
@@ -62,6 +62,6 @@ Azure 门户开发人员体验已经过重大更新，现在包括使用 ADAL �
 * [Microsoft 图形 API](https://graph.microsoft.io)
 
 > [!NOTE]
-> 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](azure-ad-developers-guide.md)入手。 V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。
+> 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](v1-overview.md)入手。 V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 10/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 85da6989740446c980bcb9f2c89a6c31afe488fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b137396dd6a8ff924c9380aeb87a81b95f91414
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651285"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466216"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何访问课堂实验室、连接到实验室中的 VM 以及停止 VM。 

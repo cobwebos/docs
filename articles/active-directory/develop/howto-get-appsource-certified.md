@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144050"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955473"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 
@@ -32,7 +32,7 @@ ms.locfileid: "42144050"
 
 ## <a name="guides-and-code-samples"></a>指南和代码示例
 
-如果要了解如何使用 OpenID 连接将应用程序与 Azure AD 集成，请遵循 [Azure Active Directory 开发人员指南](azure-ad-developers-guide.md#get-started "Azure AD 开发人员入门")中的指南和代码示例。
+如果要了解如何使用 OpenID 连接将应用程序与 Azure AD 集成，请遵循 [Azure Active Directory 开发人员指南](v1-overview.md#get-started "Azure AD 开发人员入门")中的指南和代码示例。
 
 ## <a name="multi-tenant-applications"></a>多租户应用程序
 
@@ -127,9 +127,9 @@ ms.locfileid: "42144050"
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
-[AAD-Dev-Guide]: azure-ad-developers-guide.md
+[AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
-[AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
+[AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
 
 
 <!--Image references-->

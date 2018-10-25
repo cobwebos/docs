@@ -3,7 +3,7 @@ title: 教程 - 通过 Azure PowerShell 创建和使用规模集的磁盘 | Micr
 description: 了解如何通过 Azure PowerShell 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 17f20ac2313ed4abd4f86bf10b65848a9870a688
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e1510c726ea0d97211f6fdd380da7cb493d32cc
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606665"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464873"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教程：通过 Azure PowerShell 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -48,7 +48,7 @@ ms.locfileid: "38606665"
 **临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
-| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
+| 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
 | [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 1600 |
 | [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
@@ -62,7 +62,7 @@ ms.locfileid: "38606665"
 可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| Type | 常见大小 | 每个 VM 的最大数据磁盘数 |
+| 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
 | [常规用途](../virtual-machines/windows/sizes-general.md) | A、B、D 系列 | 64 |
 | [计算优化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |

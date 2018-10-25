@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f92eac79e9524aa6ded9f898d582ce46c99bf97
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 2aef9b6f32d562776be3e3da25b017d5ff88c4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363286"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024307"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升级和缩放 Azure API 管理实例  
 
@@ -39,7 +39,7 @@ ms.locfileid: "46363286"
 
 + 有一个 APIM 实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
-+ 了解 [Azure API 管理实例的容量] (api-management-capacity.md) 的概念。
++ 了解 [Azure API 管理实例容量](api-management-capacity.md)的概念。
 
 ## <a name="upgrade-and-scale"></a>升级和缩放  
 

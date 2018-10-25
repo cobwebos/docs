@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ab4dd1186715fde51fbf188ace902c8092d192d0
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647181"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394742"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge 的 C# 模块（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "49647181"
 
 Visual Studio 2017 准备就绪后，你还需要：
 
-- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
+- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsc-iot.azureiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
 - 开发计算机上的[Docker 社区版](https://docs.docker.com/install/)，用于构建和运行模块映像。 你需要正确设置在 Linux 容器模式或 Windows 容器模式下运行的 Docker CE。
 - 要设置本地开发环境以调试、运行和测试 IoT Edge 解决方案，需具备 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)。 安装 [Python (2.7/3.6) 和 Pip](https://www.python.org/)。 然后，通过在终端中运行以下命令来安装 iotedgehubdev。 确保 Azure IoT EdgeHub 开发工具版本高于 0.3.0。
 

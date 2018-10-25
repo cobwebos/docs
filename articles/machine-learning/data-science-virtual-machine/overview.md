@@ -1,7 +1,7 @@
 ---
-title: 适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine 简介 | Microsoft Docs
-description: 适用于 Windows 和 Linux Data Science Virtual Machine 的关键分析方案和组件。
-keywords: 数据科学工具, Data Science Virtual Machine, 数据科学工具, Linux 数据科学
+title: 适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介 | Microsoft Docs
+description: 适用于 Windows 和 Linux 数据科学虚拟机的关键分析方案和组件。
+keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: a6f085b0fa11f117b181714a3b92cdc3a7c9e9a9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 8b2180b09267a10479bf5b16be9b43d6cb6310a2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870666"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428838"
 ---
-# <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine 简介
+# <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
-Data Science Virtual Machine (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 和 CentOS 7.4 上提供了 Linux 版本的 DSVM。
+数据科学虚拟机 (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 和 CentOS 7.4 上提供了 Linux 版本的 DSVM。
 
-本主题讨论可对 Data Science VM 执行的操作、概述了使用 VM 的一些关键方案、详细列举了 Windows 和 Linux 版本上可用的关键功能，并说明了如何使用它们。
+本主题讨论可对数据科学 VM 执行的操作、概述了使用 VM 的一些关键方案、详细列举了 Windows 和 Linux 版本上可用的关键功能，并说明了如何使用它们。
 
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>我如何使用 Data Science Virtual Machine？
+## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>我如何使用数据科学虚拟机？
 Data Science Virtual Machine (DSVM) 的目标在于向所有技能级别和各个行业的数据专业人员提供无摩擦、预配置且完全集成的数据科学环境。 可以预配 DSVM，而不是自己推出可比较的工作区 - 在安装、 配置和包管理过程中节省天数甚至_周_数。 分配 DSVM 后，可以立即开始处理数据科学项目。
 
-Data Science VM 的设计和配置意图在于与广泛的使用方案一起使用。 可以根据项目需求的变化纵向扩展或收缩你的环境，使用你偏爱的语言对数据科学任务进行编程，并安装其他工具来针对你的确切需求自定义系统。
+数据科学 VM 的设计和配置意图在于与广泛的使用方案一起使用。 可以根据项目需求的变化纵向扩展或收缩你的环境，使用你偏爱的语言对数据科学任务进行编程，并安装其他工具来针对你的确切需求自定义系统。
 
 ## <a name="key-scenarios"></a>关键方案
-本部分提示一些可部署 Data Science VM 的关键方案。
+本部分提示一些可部署数据科学 VM 的关键方案。
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>在云中预配分析桌面
-Data Science VM为寻求使用托管的云桌面替换本地桌面的数据科学团队提供了基线配置。 此基线确保团队中的所有数据科学家具有可验证实验并促进协作的一致设置。 通过减少 sysadmin 负担并节省评估、安装和维护高级分析所需各种程序包所需的时间，它还降低了成本。  
+数据科学 VM 为寻求使用托管的云桌面替换本地桌面的数据科学团队提供了基线配置。 此基线确保团队中的所有数据科学家具有可验证实验并促进协作的一致设置。 通过减少 sysadmin 负担并节省评估、安装和维护高级分析所需各种程序包所需的时间，它还降低了成本。  
 
 ### <a name="data-science-training-and-education"></a>数据科学训练和培训
-教授数据科学课程的企业培训师和教师通常会提供虚拟机映像，确保学生设置一致，并可以预测示例运行情况。 Data Science VM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。 这些环境需要频繁生成，特别是短期培训课程的情况从中获益极大。
+教授数据科学课程的企业培训师和教师通常会提供虚拟机映像，确保学生设置一致，并可以预测示例运行情况。 数据科学 VM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。 这些环境需要频繁生成，特别是短期培训课程的情况从中获益极大。
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>对于大型项目的按需弹性容量
-数据科学编程马拉松/竞赛或大型数据建模和浏览需要扩展的硬件容量，通常持续时间比较短。 Data Science VM 可有助于在支持需要运行高性能计算资源的扩展服务器上按照需要快速复制数据科学环境。
+数据科学编程马拉松/竞赛或大型数据建模和浏览需要扩展的硬件容量，通常持续时间比较短。 数据科学 VM 可有助于在支持需要运行高性能计算资源的扩展服务器上按照需要快速复制数据科学环境。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期实验和评估
-Data Science VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为 Data Science VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话和会议教程中的演练。
+数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为 Data Science VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话和会议教程中的演练。
 
 ### <a name="deep-learning"></a>深度学习
 Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 在 Linux 版上，在 CentOS 和 Ubuntu DSVM 中都启用了 GPU 上的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu、CentOS 或 Windows 2016 版本的 Data Science VM 部署到非基于 GPU 的 Azure 虚拟机。 
 
-## <a name="whats-included-in-the-data-science-vm"></a>Data Science VM 中包含什么内容？
-Data Science Virtual Machine 已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括了其他工具，可以用来轻松利用各种 Azure 数据和分析产品（例如，用于构建预测模型的 Microsoft ML Server（R、Python）或用于探究大型数据集的 SQL Server 2017）。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了 Data Science Virtual Machine 的 Windows 版和 Linux 版中包括的主要组件。
+## <a name="whats-included-in-the-data-science-vm"></a>数据科学 VM 中包含什么内容？
+数据科学虚拟机已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括了其他工具，可以用来轻松利用各种 Azure 数据和分析产品（例如，用于构建预测模型的 Microsoft ML Server（R、Python）或用于探究大型数据集的 SQL Server 2017）。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了包括在数据科学虚拟机 Windows 和 Linux 版中的主要组件。
 
 
 | **工具**                                                           | **Windows 版** | **Linux 版** |
@@ -107,6 +107,7 @@ Data Science Virtual Machine 已安装并配置了许多热门数据科学工具
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | 是（仅适用于 Ubuntu） |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | N | 是（仅适用于 Ubuntu） |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/)、[Sparkling Water](https://www.h2o.ai/sparkling-water/)、[Deep Water](https://www.h2o.ai/deep-water/) | N | 是（仅适用于 Ubuntu） |
 | **深度学习工具** <br>所有工具均可在 GPU 或 CPU 上正常工作 |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) (Windows 2016) | Y | Y |
@@ -131,11 +132,11 @@ Data Science Virtual Machine 已安装并配置了许多热门数据科学工具
 ## <a name="get-started"></a>入门
 
 ### <a name="windows-data-science-vm"></a>Windows Data Science VM
-* 有关如何创建 Windows DSVM 并使用它的详细信息，请参阅[预配 Windows Data Science Virtual Machine](provision-vm.md)。 有关如何在 Windows DSVM 上执行数据科学项目所需的各种任务的详细信息，请参阅 [Data Science Virtual Machine 的十大功能](vm-do-ten-things.md)。
+* 有关如何创建 Windows DSVM 并使用它的详细信息，请参阅[预配 Windows Data Science Virtual Machine](provision-vm.md)。 有关如何在 Windows DSVM 上执行数据科学项目所需的各种任务的详细信息，请参阅[数据科学虚拟机的十大功能](vm-do-ten-things.md)。
 
-### <a name="linux-data-science-vm"></a>Linux Data Science VM
-* 有关如何创建 Ubuntu DSVM 并使用它的详细信息，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](dsvm-ubuntu-intro.md)。 有关如何创建 CentOS DSVM 并使用它的详细信息，请参阅[在 Azure 上预配 Linux CentOS Data Science Virtual Machine](linux-dsvm-intro.md)。
-* 有关介绍如何通过 Linux VM（CentOS 和 Ubuntu）执行多个常见数据科学任务的演示，请参阅 [Linux Data Science Virtual Machine 上的数据科学](linux-dsvm-walkthrough.md)。
+### <a name="linux-data-science-vm"></a>Linux 数据科学 VM
+* 有关如何创建 Ubuntu DSVM 并使用它的详细信息，请参阅[预配适用于 Linux (Ubuntu) 的数据科学虚拟机](dsvm-ubuntu-intro.md)。 有关如何创建 CentOS DSVM 并使用它的详细信息，请参阅[在 Azure 上预配 Linux CentOS 数据科学虚拟机](linux-dsvm-intro.md)。
+* 有关介绍如何通过 Linux VM（CentOS 和 Ubuntu）执行多个常见数据科学任务的演示，请参阅 [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 的 R 开发人员指南](../r-developers-guide.md)

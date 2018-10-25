@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bae9e2dcb4320c1da4f1d8e3c6ad50ce90195544
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39000984"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958561"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "39000984"
 
 在 Microsoft Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
 
-或者，可以[使用服务主体采用非交互方式登录](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+或者，可以[使用服务主体采用非交互方式登录](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 如果有多个 Azure 订阅，则需要设置 Azure 订阅。 若要查看当前订阅的列表，请运行以下命令。
 
