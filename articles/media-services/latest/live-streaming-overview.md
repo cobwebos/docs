@@ -4,28 +4,28 @@ description: 本主题概述了如何使用 Azure 媒体服务 v3 实时传送�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972173"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378130"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
 使用 Azure 媒体服务传递实时流式处理事件时，通常涉及以下组件：
 
 * 一个用于广播事件的相机。
-* 一个实时视频编码器，用于将信号从相机（或其他设备，如笔记本电脑）转换为发送至媒体服务实时传送视频流服务的流。 信号可能还包括广告 SCTE-35 和 Ad-cues。 
+* 一个实时视频编码器，用于将信号从相机（或其他设备，如笔记本电脑）转换为发送至实时传送视频流服务的流。 信号可能还包括广告 SCTE-35 和 Ad-cues。 
 * 可以通过媒体服务实时传送视频流服务引入、预览、打包、记录、加密内容并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
 本文详细地概述了使用媒体服务的实时传送视频流中涉及的主要组件并提供了其关系图。
@@ -40,6 +40,17 @@ ms.locfileid: "38972173"
 
 也可以根据需要应用**动态筛选**，以便控制发送至播放器的曲目、格式、比特率的数目。 媒体服务还支持 ad-insertion。
 
+### <a name="new-live-encoding-improvements"></a>新的实时编码改进
+
+在最新版本中实现了以下新改进。
+
+- 针对实时传送视频的新的低延迟模式（10 秒端到端）。
+- 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
+- RTMPS 安全引入。
+
+    现可在创建 LiveEvent 时获取 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
+- 24 小时转码支持。 
+- 通过 SCTE35 改进了 RTMP 中的广告信号支持。
 
 ## <a name="liveevent-types"></a>LiveEvent 类型
 
@@ -91,7 +102,7 @@ ms.locfileid: "38972173"
 
 LiveEvent 的当前状态。 可能的值包括：
 
-|状态|说明|
+|状态|Description|
 |---|---|
 |**已停止**| 这是 LiveEvent 在创建后的初始状态（除非指定了自动启动）。此状态下不会发生计费。 在此状态下，可以更新 LiveEvent 属性，但不允许进行流式传输。|
 |**正在启动**| LiveEvent 正在启动。 此状态下不会发生计费。 在此状态下，不允许进行更新或流式传输。 如果发生错误，则 LiveEvent 会返回到“已停止”状态。|

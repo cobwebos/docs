@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6102a6bc28486c24134bbc172b9e8a7e1a61244
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308031"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068496"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -310,6 +310,32 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge 模块无法将消息发送到 edgeHub 并出现 404 错误
+
+自定义 IoT Edge 模块无法将消息发送到 edgeHub 并出现 404 `Module not found` 错误。 IoT Edge 守护程序在日志中输出以下消息： 
+
+```output
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+```
+
+### <a name="root-cause"></a>根本原因
+出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建议的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
+
+### <a name="resolution"></a>解决方法
+确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 edgeHub 发送消息。 例如，确保在 Docker 文件中指定 `ENTRYPOINT` 而不是 `CMD` 命令，因为 `CMD` 会导致模块的一个进程 ID 和 bash 命令的另一个进程 ID 运行主程序，而 `ENTRYPOINT` 会导致生成单个进程 ID。
+
+
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge 部署的防火墙和端口配置规则
+Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 服务器来与 Azure 云通信，具体请参阅[选择通信协议](../iot-hub/iot-hub-devguide-protocols.md)。 为增强安全性，Azure IoT Edge 与 Azure IoT 中心之间的信道始终配置为出站；这种通信基于[服务辅助的通信模式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)，最大程度地减少了恶意实体可浏览的受攻击面。 仅当具体方案中的 Azure IoT 中心需将消息推送到 Azure IoT Edge 服务器时（例如，云到设备的消息传送），才需要进行入站通信。这种通信可以再次使用安全 TLS 通道进行保护，并可以使用 X.509 证书和 TPM 设备模块进一步进行保护。 Azure IoT Edge 安全管理器控制这种通信的建立方式，具体请参阅 [IoT Edge 安全管理器](../iot-edge/iot-edge-security-manager.md)。
+
+IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保设置适当的网络和防火墙规则来保护 Edge 与云之间的通信。 为托管 Azure IoT Edge 运行时的底层服务器配置防火墙规则时，可参考以下指导内容：
+
+|协议|端口|传入|传出|指南|
+|--|--|--|--|--|
+|MQTT|8883|阻止（默认）|阻止（默认）|<ul> <li>使用 MQTT 作为通信协议时，请将传出（出站）端口配置为“打开”。<li>IoT Edge 不支持将端口 1883 用于 MQTT。 <li>应阻止传入（入站）连接。</ul>|
+|AMQP|5671|阻止（默认）|打开（默认）|<ul> <li>IoT Edge 的默认通信协议。 <li> 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须将此端口配置为“打开”。<li>IoT Edge 不支持将端口 5672 用于 AMQP。<li>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。<li>应阻止传入（入站）连接。</ul></ul>|
+|HTTPS|443|阻止（默认）|打开（默认）|<ul> <li>将传出（出站）连接配置为在端口 443 上打开，以进行 IoT Edge 预配，使用手动脚本或Azure IoT 设备预配服务 (DPS) 时必须这样做。 <li>只应针对特定的方案打开传入（入站）连接： <ul> <li>  如果透明网关中的叶设备可能发送方法请求。 在这种情况下，无需向外部网络打开端口 443，即可连接到 IoT 中心或通过 Azure IoT Edge 提供 IoT 中心服务。 因此，传入规则可限制为只能从内部网络打开传入（入站）连接。 <li> 适用于客户端到设备 (C2D) 的方案。</ul><li>IoT Edge 不支持将端口 80 用于 HTTP。<li>如果无法在企业中配置非 HTTP 协议（例如 AMQP、MQTT），可通过 WebSocket 发送消息。 将这种情况下，将使用端口 443 进行 WebSocket 通信。</ul>|
 
 
 ## <a name="next-steps"></a>后续步骤

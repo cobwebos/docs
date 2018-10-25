@@ -7,110 +7,123 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: a601ea42549abad84d6cab5c429cf94147776436
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978618"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885181"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
  Azure Functions 运行时有两个主版本：1.x 和 2.x。 当前版本为 2.x，其中可使用新功能并在进行改进，但两个版本都支持生产方案。  下面详细介绍了两个版本的一些区别、如何创建每个版本以及从 1.x 升级到 2.x。
 
-> [!NOTE] 
+> [!NOTE]
 > 本文引用了云服务 Azure Functions。 如需深入了解可运行本地 Azure Functions 的预览产品，请参阅 [Azure Functions 运行时概述](functions-runtime-overview.md)。
-
-## <a name="creating-1x-apps"></a>创建 1.x 应用
-
-默认情况下，Azure 门户中创建的新应用设置为 2.x，因为这是最新版本，并且正在进行新功能投资。  但是，仍可以通过执行以下操作创建 v1.x 应用。
-
-1. 从 Azure 门户中创建一个 Azure 函数
-1. 打开创建的应用，应用为空白时，打开“函数设置”
-1. 将版本从 ~2 更改为 ~1。  如果应用中含有函数，则将禁用此切换。
-1. 单击“保存”并重启该应用。  现在，所有模板应在 1.x 中创建和运行。
 
 ## <a name="cross-platform-development"></a>跨平台开发
 
-运行时 1.x 仅支持在门户中或在 Windows 上进行开发和托管。 运行时 2.x 在 .NET Core 2 上运行，这意味着它可以在 .NET Core 支持的所有平台上运行，包括 macOS 和 Linux。 这可实现跨平台开发和托管方案。
+2.x 版运行时在 .NET Core 2 上运行，因此，它可以在 .NET Core 支持的所有平台（包括 macOS 和 Linux）上运行。 在 .NET Core 上运行可以实现跨平台开发和托管方案。
+
+相比之下，1.x 版运行时仅支持 Azure 门户或 Windows 计算机上的开发和托管。
 
 ## <a name="languages"></a>语言
 
-运行时 2.x 使用新的语言扩展性模型。 此外，为改进工具和提升性能，2.x 中的每个应用仅限于使用一种语言的函数。 2.x 中当前支持的语言有 C#、F#、JavaScript 和 Java。 Azure Functions 1.x 实验性语言尚未更新为使用此新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本支持的编程语言。
+2.x 版运行时使用新的语言扩展性模型。 在版本 2.x 中，函数应用中的所有函数必须共享相同的语言。 函数应用中的函数语言是在创建应用时选择的。
+
+Azure Functions 1.x 试验性语言不会更新为使用新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 有关详细信息，请参阅[支持的语言](supported-languages.md)。
 
+## <a name="creating-1x-apps"></a>在版本 1.x 上运行
+
+默认情况下，在 Azure 门户中创建的函数应用设置为版本 2.x。 应尽可能地使用此运行时版本，因为其中包含投资开发的新功能。 如果需要，你仍可以在版本 1.x 运行时中运行函数应用。 只能在创建函数应用之后、添加任何函数之前更改运行时版本。 若要了解如何将运行时版本固定为 1.x，请参阅[查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+
 ## <a name="migrating-from-1x-to-2x"></a>从 1.x 迁移到 2.x
 
-你可能希望将在 1.x 中编写的现有应用移动到 2.x。  在版本之间移动，需要考虑的大多数注意事项均与上面列出的语言运行时更改有关（例如，C# 从 .NET Framework 4.7 移动到 .NET Core 2）。  请确保代码和库与使用的语言运行时兼容。  此外，请务必注意触发器、绑定和以下突出显示功能中的任何更改。
+可以选择迁移所编写的现有应用，以使用 1.x 版运行时，而不使用版本 2.x。 需要做出的大多数更改与语言运行时的更改相关，例如，.NET Framework 4.7 与 .NET Core 2 之间的 C# API 更改。 还需要确保代码和库与所选的语言运行时兼容。 最后，请务必注意触发器、绑定和以下突出显示功能中的任何更改。 为获得最佳迁移结果，应该为版本 2.x 创建一个新函数应用，并将现有的 1.x 版函数代码移植到新应用。  
 
 ### <a name="changes-in-triggers-and-bindings"></a>触发器和绑定的更改
 
-虽然大多数触发器和绑定属性和配置在不同版本之间保持不变，但 2.x 中需要向应用安装任何触发器或绑定。 唯一的例外是 HTTP 和计时器触发器。  请参阅[注册和安装绑定扩展](./functions-triggers-bindings.md#register-binding-extensions)。  请注意，不同版本之间函数的 `function.json` 或属性也可能发生更改（例如，CosmosDB `connection` 属性现在为 `ConnectionStringSetting`）。  引用[现有绑定表](#bindings)，以获取每个绑定的文档链接。
+版本 2.x 要求为应用中的函数所用的特定触发器和绑定安装扩展。 唯一的例外是 HTTP 和计时器触发器，它们不需要扩展。  有关详细信息，请参阅[注册和安装绑定扩展](./functions-triggers-bindings.md#register-binding-extensions)。
 
-### <a name="changes-in-features-available"></a>可用功能的更改
+此外，在不同的版本中，函数的 `function.json` 或属性存在几处更改。 例如，事件中心的 `path` 属性现在为 `eventHubName`。 请参阅[现有绑定表](#bindings)，以获取每个绑定的文档链接。
 
-不同版本之间除了语言和绑定的更改，还删除、更新或替换了一些功能。  以下是使用 1.x 后开始使用 2.x 时一些主要注意事项。  v2.x 中进行了以下更改：
+### <a name="changes-in-features-and-functionality"></a>特性和功能的更改
 
-* 调用函数的密钥将始终存储在加密的 blob 存储中。 在 1.x 中，默认情况下它们位于文件存储中，如果启用槽等功能，则可将其移动到 blob。  如果将 1.x 应用升级到 2.x，并且机密当前在文件存储中，则将重置机密。
-* 为提高性能，会删除“webhook”类型触发器并替换为“HTTP”触发器。
-* 对于其中一个属性，主机配置 (`host.json`) 应为空或包含 `2.0` 的 `version`。
-* 为改进监视和可观察性，会将 WebJobs 仪表板 (`AzureWebJobsDashboard`) 替换为 [Azure Application Insights](functions-monitoring.md) (`APPINSIGHTS_INSTRUMENTATIONKEY`)
-* 应用程序设置 (`local.settings.json`) 需要 `FUNCTIONS_WORKER_RUNTIME` 属性的值，该值映射到应用 `dotnet | node | java | python` 的语言。
-    * 为改进占用情况和缩短启动时间，应用仅限于一种语言。 可以发布多个应用，以便为同一解决方案提供使用不同语言的函数。
-* 应用服务计划中函数的默认超时时间为 30 分钟。  这仍然可以手动设置为不受限制。
-* [由于 .NET core 限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除 F# 函数的 `.fsx` 脚本。 已编译 F# 函数仍受支持。
-* 基于 webhook 的触发器（例如事件网格）的格式已更改为 `https://{app}/runtime/webhooks/{triggerName}`
+此外，新版本中已删除、更新或替换了几项功能。 本部分详细介绍在使用版本 1.x 后，版本 2.x 中会出现的更改。
 
-### <a name="upgrading-a-locally-developed-application"></a>升级本地开发的应用程序
+在版本 2.x 中做出了以下更改：
 
-如果是在本地开发的 v1.x 应用，则可以对应用或项目进行更改，使其与 v2 兼容。  建议创建新应用并通过端口将代码复制到新应用。  虽然可以对现有应用进行更改以执行就地升级，但 v1 和 v2 之间还有许多其他改进，而旧版代码可能未利用这些改进（例如，C# 中从 `TraceWriter` 到 `ILogger` 的更改）。  
+* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
 
-建议的路径从其中一个 v2 模板开始，并将代码移动到新项目或应用中。
+* 2.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
+
+* 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
+
+* 为了改进监视功能，门户中使用 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 设置的 WebJobs 仪表板已替换为使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsightsinstrumentationkey) 设置的 Azure Application Insights。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+
+* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functionsworkerruntime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
+
+* 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
+
+* 默认情况下，将对消耗计划函数实施 HTTP 并发性限制，每个实例的并发请求数默认为 100。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
+
+* 由于 [.NET Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F# 脚本 (.fsx) 函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
+
+* 事件网格触发器 Webhook 的 URL 格式已更改为 `https://{app}/runtime/webhooks/{triggerName}`。
+
+### <a name="migrating-a-locally-developed-application"></a>迁移本地开发的应用程序
+
+现有的函数应用项目可能是使用 1.x 版运行时在本地开发的。 若要升级到版本 2.x，应该针对版本 2.x 创建一个本地函数应用项目，并将现有代码移植到新应用。 可以手动更新现有的项目和代码，这是一种“就地”升级的方法。 但是，在版本 1.x 与版本 2.x 之间，可能还需要做出其他一些改进。 例如，在 C# 中，调试对象已从 `TraceWriter` 更改为 `ILogger`。 创建新的 2.x 版项目后，可以基于最新的 2.x 版模板，从更新的函数着手进行开发。
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio 运行时版本
 
-在 Visual Studio 中，可在创建项目时选择运行时版本。  Visual Studio 具有这两个主要版本的位，并可以为项目动态利用适合的版本。  这些设置派生自 `.csproj` 文件。  对于 1.x 应用，项目具有以下属性
+在 Visual Studio 中，可在创建项目时选择运行时版本。 用于 Visual Studio 的 Azure Functions 工具支持这两个主要运行时版本。 基于项目设置进行调试和发布时，将使用正确的版本。 版本设置在 `.csproj` 文件中的以下属性内定义：
+
+##### <a name="version-1x"></a>版本 1.x
 
 ```xml
 <TargetFramework>net461</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
-v2 中的项目属性是
+##### <a name="version-2x"></a>版本 2.x
 
 ```xml
 <TargetFramework>netstandard2.0</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-单击“调试”或“发布”将正确设置项目设置的适当版本。
+调试或发布项目时，将使用正确的运行时版本。
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code 和 Azure Functions Core Tools
 
-其他本地工具依赖于 Azure Functions Core Tools。  这些工具安装在计算机上，通常一次仅在开发计算机上安装一种版本。  请参阅[如何安装特定版本的核心工具的说明](./functions-run-local.md)。
+[Azure Functions Core Tools](functions-run-local.md) 可用于命令行开发，另外，还可供用于 Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)使用。 若要针对版本 2.x 进行开发，请安装 Core Tools 版本 2.x。 版本 1.x 开发需要 Core Tools 版本 1.x。 有关详细信息，请参阅[安装 Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)。
 
-对于 VS Code，可能还需要更新 `azureFunctions.projectRuntime` 的用户设置，以与安装的工具版本匹配。  这还将更新创建新应用期间出现的模板和语言。
+对于 Visual Studio Code 开发，可能还需要更新 `azureFunctions.projectRuntime` 的用户设置，以便与安装的工具版本匹配。  此设置还会更新创建函数应用期间使用的模板和语言。
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中更改应用版本
 
-已发布的应用版本通过应用程序设置 `FUNCTIONS_RUNTIME_VERSION` 设置。  对于 v2 应用，将其设置为 `~2`，对于 v1 应用，则为 `~1`。  在不更改函数的代码的情况下，强烈建议不要更改应用（具有已发布到其中的现有函数）的运行时版本。  建议的路径是创建新函数应用并设置为适当版本、测试更改，然后禁用或删除先前的应用。
+Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functionsextensionversion) 应用程序设置指定。 值 `~2` 表示面向 2.x 版运行时，`~1` 表示面向 1.x 版运行时。 请不要随意更改此设置，因为这可能需要在函数中进行其他应用设置更改和代码更改。 若要了解将函数应用迁移到不同运行时版本的建议方法，请参阅[如何以 Azure Functions 运行时版本为目标](set-runtime-version.md)。
 
-## <a name="bindings"></a>绑定 
+## <a name="bindings"></a>绑定
 
-运行时 2.x 使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型可提供以下优势：
+2.x 版运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型提供以下优势：
 
 * 支持第三方绑定扩展。
-* 运行时和绑定分离。 这允许对绑定扩展进行版本控制和单独发布。 例如，可以选择升级到依赖于基础 SDK 的较新版本的扩展版本。
+
+* 运行时和绑定分离。 此项更改允许对绑定扩展进行版本控制和单独发布。 例如，可以选择升级到依赖于基础 SDK 的较新版本的扩展版本。
+
 * 更轻便的执行环境，其中运行时仅知道和加载正在使用的绑定。
 
-所有内置 Azure Functions 绑定已采用此模型，默认情况下不再包含，但计时器触发器和 HTTP 触发器除外。 通过 Visual Studio 等工具或通过门户创建函数时，将自动安装这些扩展。
+除 HTTP 和计时器触发器外，其他所有绑定必须显式添加到函数应用项目，或者在门户中注册。 有关详细信息，请参阅[注册绑定扩展](functions-triggers-bindings.md#register-binding-extensions)。
 
-下表指示每个运行时版本支持的绑定。
+下表显示了每个运行时版本支持的绑定。
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 

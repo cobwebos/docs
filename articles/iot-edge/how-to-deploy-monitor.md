@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258427"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393451"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
@@ -39,11 +39,11 @@ ms.locfileid: "39258427"
 }
 ```
 
-有关设备孪生和标记的详细信息，请参阅[了解和使用 IoT 中心的设备孪生][lnk-device-twin]。
+有关设备孪生和标记的详细信息，请参阅[了解和使用 IoT 中心的设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 
 ## <a name="create-a-deployment"></a>创建部署
 
-1. 在 [Azure 门户][lnk-portal]中，转到 IoT 中心。 
+1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。 
 1. 选择“IoT Edge”。
 1. 选择“添加 IoT Edge 部署”。
 
@@ -77,7 +77,7 @@ ms.locfileid: "39258427"
 1. 选择“IoT Edge 模块”。
 1. 为模块提供一个名称。
 1. 对于“映像 URI”字段，输入模块的容器映像。 
-1. 指定应传递到容器的任意容器创建选项。 有关详细信息，请参阅 [docker create][lnk-docker-create]。
+1. 指定应传递到容器的任意容器创建选项。 有关详细信息，请参阅 [docker create](https://docs.docker.com/engine/reference/commandline/create/)。
 1. 使用下拉菜单选择“重启策略”。 从以下选项中选择： 
    * 始终 - 如果模块因任何原因关闭，该模块将始终重启。
    * 从不 - 如果模块因任何原因关闭，该模块将不再重启。
@@ -117,11 +117,11 @@ ms.locfileid: "39258427"
 
 若要查看部署的详细信息并监视运行它的设备，请执行以下步骤：
 
-1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。 
 1. 选择“IoT Edge”。
 1. 选择“IoT Edge 部署”。 
 
-   ![查看 IoT Edge 部署][1]
+   ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 检查部署列表。 对于每个部署，可以查看以下详细信息：
    * ID - 部署的名称。
@@ -144,29 +144,29 @@ ms.locfileid: "39258427"
 
 若要修改部署，请执行以下步骤： 
 
-1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。 
 1. 选择“IoT Edge”。
 1. 选择“IoT Edge 部署”。 
 
-   ![查看 IoT Edge 部署][1]
+   ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 选择想要修改的部署。 
 1. 更新以下字段： 
    * 目标条件 
    * 标签 
-   * Priority 
+   * 优先度 
 1. 选择“保存”。
-1. 执行[监视部署][anchor-monitor]中的步骤，注意更改的推出。 
+1. 执行[监视部署](#monitor-a-deployment)中的步骤，注意更改的推出。 
 
 ## <a name="delete-a-deployment"></a>删除部署
 
 删除部署时，任何设备都将采用下一个最高优先级部署。 如果设备不满足任何其他部署的目标条件，则删除该部署时不会删除模块。 
 
-1. 登录 [Azure 门户][lnk-portal]，并导航到 IoT 中心。 
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。 
 1. 选择“IoT Edge”。
 1. 选择“IoT Edge 部署”。 
 
-   ![查看 IoT Edge 部署][1]
+   ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 使用复选框选择想要删除的部署。 
 1. 选择“删除”。
@@ -174,16 +174,4 @@ ms.locfileid: "39258427"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[将模块部署到边缘设备][lnk-deployments]的详细信息。
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+了解有关[将模块部署到 Edge 设备](module-deployment-monitoring.md)的详细信息。

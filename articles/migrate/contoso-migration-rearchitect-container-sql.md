@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 80234610eda264976f3ec20da2a0ef12c73ccba6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9fd83124585e3a0eb19c43e278eeeacb6ec4409c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035702"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094099"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
@@ -35,6 +35,7 @@ ms.locfileid: "47035702"
 [文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
 文章 12：在 Azure 容器和 Azure SQL 数据库上重构应用 | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 本文
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用 
+[文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
 在本文中，Contoso 将在 VMware VM 上运行的两层 Windows WPF、XAML 窗体 SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360) 上下载。
 
@@ -133,15 +134,15 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 Contoso 按如下方式运行迁移：
 
 > [!div class="checklist"]
-> * 步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将前端 Web VM 迁移到 Azure 容器后，具有应用 Web 前端的容器实例将指向此数据库。
-> * 步骤 2：创建 Azure 容器注册表 (ACR)：Contoso 为 Docker 容器映像预配企业容器注册表。
-> * 步骤 3：预配 Azure Service Fabric：预配一个 Service Fabric 群集。
+> * **步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将前端 Web VM 迁移到 Azure 容器后，具有应用 Web 前端的容器实例将指向此数据库。
+> * **步骤 2：创建 Azure 容器注册表 (ACR)**：Contoso 为 Docker 容器映像预配企业容器注册表。
+> * **步骤 3：预配 Azure Service Fabric**：预配一个 Service Fabric 群集。
 > * 步骤 4：管理 Service Fabric 证书：Contoso 设置证书，使 Azure DevOps Services 能够访问群集。
-> * 步骤 5：使用 DMA 迁移数据库：使用数据库迁移助手迁移应用数据库。
+> * **步骤 5：使用 DMA 迁移数据库**：使用数据库迁移助手迁移应用数据库。
 > * 步骤 6：设置 Azure DevOps Services：Contoso 在 Azure DevOps Services 中设置新项目，并将代码导入 Git 存储库。
 > * 步骤 7：转换应用：Contoso 使用 Azure DevOps 和 SDK 工具将应用转换为容器。
-> * 步骤 8：设置生成和发布：Contoso 设置生成和发布管道，以创建应用并将其发布到 ACR 和 Service Fabric 群集。
-> * 步骤 9：扩展应用：在应用公开后，Contoso 扩展该应用以利用 Azure 功能，并使用管道将其重新发布到 Azure。
+> * **步骤 8：设置生成和发布**：Contoso 设置生成和发布管道，以创建应用并将其发布到 ACR 和 Service Fabric 群集。
+> * **步骤 9：扩展应用**：在应用公开后，Contoso 扩展该应用以利用 Azure 功能，并使用管道将其重新发布到 Azure。
 
 
 
