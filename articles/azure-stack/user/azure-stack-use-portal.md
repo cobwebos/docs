@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713726"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086499"
 ---
 # <a name="use-the-azure-stack-portal"></a>使用 Azure Stack 门户
 
@@ -32,12 +32,13 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;。
 - 如果使用的是 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
-
-![Azure Stack 用户门户的屏幕截图](media/azure-stack-use-portal/UserPortal.png)
+- 所有 Azure Stack 部署默认时区设置为协调世界时 (UTC)。 在安装 Azure Stack 时，你可以选择时区，但是，在安装期间，它将自动恢复为默认设置 UTC。
 
 ## <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来创建自定义仪表板。 通过添加或删除磁贴来轻松自定义仪表板。 例如，若要添加的计算磁贴，请选择 **+ 创建资源**。 右键单击“计算”，然后选择“固定到仪表板”。
+仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来创建自定义仪表板。 通过添加或删除磁贴来轻松自定义仪表板。 例如，若要添加“计算”磁贴，请选择“+ 创建资源”。 右键单击“计算”，然后选择“固定到仪表板”。
+
+![Azure Stack 用户门户的屏幕截图](media/azure-stack-use-portal/userportal.png)
 
 ## <a name="create-subscription-and-browse-available-resources"></a>创建订阅和浏览可用资源
 
@@ -45,7 +46,7 @@ Azure Stack 操作员（服务提供商或组织中的管理员）将会告知�
 
 - 选择仪表板上的“市场”磁贴。
 - 在“所有资源”磁贴上，选择“创建资源”。
-- 在左侧的导航窗格中，选择 **+ 创建资源**。
+- 在左侧导航窗格中，选择“+ 创建资源”。
 
 ## <a name="learn-how-to-use-available-services"></a>了解如何使用可用服务
 

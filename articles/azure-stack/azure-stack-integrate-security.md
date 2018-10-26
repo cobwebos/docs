@@ -6,27 +6,25 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/23/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: d46fd8f5ea00ee1fc1ee5f7bf09a15dd6af5ba50
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: d81478e6bdaf4a1844d01278b961350c81b2edd6
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785573"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087723"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack 数据中心集成 - Syslog 转发
 
 本文介绍如何使用 Syslog 将 Azure Stack 基础结构与已经部署在数据中心的外部安全解决方案集成。 例如，安全信息和事件管理 (SIEM) 系统。 Syslog 通道会公开由 Azure Stack 基础结构的所有组件提供的审核、警报和安全日志。 使用 Syslog 转发可以与安全监视解决方案集成，并且/或者可以检索所有审核、警报和安全日志，将其以存储方式保留。 
 
-从 1805 更新开始，Azure Stack 有了一个集成的 Syslog 客户端，该客户端在配置后可以通过通用事件格式 (CEF) 的有效负载发出 Syslog 消息。 
+Azure Stack 从 1809年更新开始，有的集成系统日志客户端，配置完成后，将发出包含有效负载中通用事件格式 (CEF) 的 syslog 消息。
 
-> [!IMPORTANT] 
-> Syslog 转发为预览版。 在生产环境中不应该依赖此功能。  
-
-下图显示了参与 Syslog 集成的主要组件。
+下图介绍 Azure Stack 与外部 SIEM 的集成。 有两个需要考虑的集成模式： 一个 （以蓝色表示一个） 是包含基础结构虚拟机和 HYPER-V 节点的 Azure Stack 基础结构的第一次。 所有审核、 安全日志和警报，这些组件从集中收集并通过 syslog CEF 有效负载为公开。 此文档页面描述了此集成模式。
+第二个集成模式是一个以橘色表示，涵盖基板管理控制器 (Bmc)、 硬件生命周期主机 (HLH)、 虚拟机和/或运行监视的硬件合作伙伴的虚拟设备和管理软件和顶部的架顶式 (TOR) 交换机。 由于这些组件是硬件合作伙伴特定，请联系你的硬件合作伙伴如何将它们与外部 SIEM 集成有关的文档。
 
 ![Syslog 转发图](media/azure-stack-integrate-security/syslog-forwarding.png)
 
@@ -52,7 +50,7 @@ Azure Stack 中的 Syslog 客户端支持以下配置：
 ```powershell
 ### cmdlet to pass the syslog server information to the client and to configure the transport protocol, the encryption and the authentication between the client and the server
 
-Set-SyslogServer [-ServerName <String>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
+Set-SyslogServer [-ServerName <String>] [-ServerPort <String>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
 
 ### cmdlet to configure the certificate for the syslog client to authenticate with the server
 
@@ -62,9 +60,10 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogServer* cmdlet 的参数：
 
-| 参数 | 说明 | Type | 需要 |
+| 参数 | 说明 | 类型 | 需要 |
 |---------|---------|---------|---------|
 |*ServerName* | Syslog 服务器的 FQDN 或 IP 地址 | String | 是|
+|*ServerPort* | 端口号 syslog 服务器正在侦听 | String | 是|
 |*NoEncryption*| 强制客户端以明文形式发送 Syslog 消息 | 标志 | 否|
 |*SkipCertificateCheck*| 在 TLS 初次握手期间跳过对 Syslog 服务器所提供证书的验证 | 标志 | 否|
 |*SkipCNCheck*| 在 TLS 初次握手期间跳过对 Syslog 服务器所提供证书的“公用名称”值的验证 | 标志 | 否|
@@ -72,7 +71,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 |*Remove*| 从客户端删除服务器的配置并停止 Syslog 转发| 标志 | 否|
 
 *Set-SyslogClient* cmdlet 的参数：
-| 参数 | 说明 | Type |
+| 参数 | 说明 | 类型 |
 |---------|---------| ---------|
 | *pfxBinary* | pfx 文件，其中包含的证书可供客户端用作对 Syslog 服务器进行身份验证的标识  | Byte[] |
 | *CertPassword* |  密码，用于导入与 pfx 文件关联的私钥 | SecureString |
@@ -85,11 +84,11 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 > [!IMPORTANT]
 > Microsoft 强烈建议用于生产环境中使用此配置。 
 
-若要使用 TCP、相互身份验证和 TLS 1.2 加密配置 Syslog 转发，请运行下述两个 cmdlet：
+若要通过 TCP、 相互身份验证和 TLS 1.2 加密配置 syslog 转发，请在 PEP 会话中运行这两个这些 cmdlet:
 
 ```powershell
 # Configure the server
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
 
 # Provide certificate to the client to authenticate against the server
 Set-SyslogClient -pfxBinary <Byte[] of pfx file> -CertPassword <SecureString, password for accessing the pfx file>
@@ -99,7 +98,7 @@ Set-SyslogClient -pfxBinary <Byte[] of pfx file> -CertPassword <SecureString, pa
 
 ```powershell
 ##Example on how to set your syslog client with the certificate for mutual authentication.
-##Run these cmdlets from your hardware lifecycle host or privileged access workstation.
+##This example script must be run from your hardware lifecycle host or privileged access workstation.
 
 $ErcsNodeName = "<yourPEP>"
 $password = ConvertTo-SecureString -String "<your cloudAdmin account password" -AsPlainText -Force
@@ -125,7 +124,7 @@ $params = @{
 Write-Verbose "Invoking cmdlet to set syslog client certificate..." -Verbose 
 Invoke-Command @params -ScriptBlock { 
     param($CertContent, $CertPassword) 
-    Set-SyslogClient -PfxBinary $CertContent -CertPassword $CertPassword 
+    Set-SyslogClient -PfxBinary $CertContent -CertPassword $CertPassword }
 ```
 
 ### <a name="configuring-syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption"></a>使用 TCP、服务器身份验证和 TLS 1.2 加密配置 Syslog 转发
@@ -134,17 +133,19 @@ Invoke-Command @params -ScriptBlock {
 使用身份验证和加密的 TCP 的默认配置，表示最小的 Microsoft 建议为生产环境的安全级别。 
 
 ```powershell
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
 ```
 
 如果需要使用自签名证书和/或不受信任的证书来测试 Syslog 服务器与 Azure Stack 客户端的集成，可以使用这些标记来跳过在初次握手期间由客户端执行的服务器验证。
 
 ```powershell
-#Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCNCheck 
- 
-#Skip entirely the server certificate validation
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertificateCheck
+ #Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
+ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
+ -SkipCNCheck
+
+ #Skip entirely the server certificate validation
+ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
+ -SkipCertificateCheck
 ```
 
 > [!IMPORTANT]
@@ -155,7 +156,7 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertific
 在此配置中，Azure Stack 中的 Syslog 客户端在不加密的情况下将消息通过 TCP 转发到 Syslog 服务器。 客户端既不验证服务器的标识，也不将自己的标识提供给服务器进行验证。 
 
 ```powershell
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -NoEncryption
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -NoEncryption
 ```
 
 > [!IMPORTANT]
@@ -167,7 +168,7 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -NoEncryption
 在此配置中，Azure Stack 中的 Syslog 客户端在不加密的情况下将消息通过 UDP 转发到 Syslog 服务器。 客户端既不验证服务器的标识，也不将自己的标识提供给服务器进行验证。 
 
 ```powershell
-Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -UseUDP
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -UseUDP
 ```
 
 不加密的 UDP 是最容易配置的，但不能防范人为干预攻击和消息窃听。 
@@ -228,6 +229,72 @@ CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|
 * Device Version: 1.0
 ```
 
+### <a name="cef-mapping-for-privileged-endpoint-events"></a>特权终结点的事件为 CEF 映射
+
+```
+Prefix fields
+* Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <PEP Event ID>
+* Name: <PEP Task Name>
+* Severity: mapped from PEP Level (details see the PEP Severity table below)
+```
+
+表的特权终结点的事件：
+
+| 事件 | PEP 事件 ID | PEP 任务名称 | 严重性 |
+|-------|--------------| --------------|----------|
+|PrivilegedEndpointAccessed|1000|PrivilegedEndpointAccessedEvent|5|
+|SupportSessionTokenRequested |1001|SupportSessionTokenRequestedEvent|5|
+|SupportSessionDevelopmentTokenRequested |1002|SupportSessionDevelopmentTokenRequestedEvent|5|
+|SupportSessionUnlocked |1003|SupportSessionUnlockedEvent|10|
+|SupportSessionFailedToUnlock |1004|SupportSessionFailedToUnlockEvent|10|
+|PrivilegedEndpointClosed |1005|PrivilegedEndpointClosedEvent|5|
+|NewCloudAdminUser |1006|NewCloudAdminUserEvent|10|
+|RemoveCloudAdminUser |1007|RemoveCloudAdminUserEvent|10|
+|SetCloudAdminUserPassword |1008|SetCloudAdminUserPasswordEvent|5|
+|GetCloudAdminPasswordRecoveryToken |1009|GetCloudAdminPasswordRecoveryTokenEvent|10|
+|ResetCloudAdminPassword |1010|ResetCloudAdminPasswordEvent|10|
+
+PEP 严重性表：
+
+| 严重性 | 级别 | 数字值 |
+|----------|-------| ----------------|
+|0|Undefined|值：0。 指示所有级别的日志|
+|10|严重|值：1。 指示严重警报的日志|
+|8|错误| 值：2。 指示错误的日志|
+|5|警告|值：3。 指示警告的日志|
+|2|信息|值：4。 指示信息性消息的日志|
+|0|详细|值：5。 指示所有级别的日志|
+
+### <a name="cef-mapping-for-recovery-endpoint-events"></a>CEF recovery 终结点事件映射
+
+```
+Prefix fields
+* Signature ID: Microsoft-AzureStack-PrivilegedEndpoint: <REP Event ID>
+* Name: <REP Task Name>
+* Severity: mapped from REP Level (details see the REP Severity table below)
+```
+
+用于恢复终结点的事件的表：
+
+| 事件 | REP 事件 ID | REP 任务名称 | 严重性 |
+|-------|--------------| --------------|----------|
+|RecoveryEndpointAccessed |1011|RecoveryEndpointAccessedEvent|5|
+|RecoverySessionTokenRequested |1012|RecoverySessionTokenRequestedEvent |5|
+|RecoverySessionDevelopmentTokenRequested |1013|RecoverySessionDevelopmentTokenRequestedEvent|5|
+|RecoverySessionUnlocked |1014|RecoverySessionUnlockedEvent |10|
+|RecoverySessionFailedToUnlock |1015|RecoverySessionFailedToUnlockEvent|10|
+|RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
+
+REP 严重性表：
+| 严重性 | 级别 | 数字值 |
+|----------|-------| ----------------|
+|0|Undefined|值：0。 指示所有级别的日志|
+|10|严重|值：1。 指示严重警报的日志|
+|8|错误| 值：2。 指示错误的日志|
+|5|警告|值：3。 指示警告的日志|
+|2|信息|值：4。 指示信息性消息的日志|
+|0|详细|值：5。 指示所有级别的日志|
+
 ### <a name="cef-mapping-for-windows-events"></a>Windows 事件的 CEF 映射
 
 ```
@@ -284,7 +351,7 @@ Azure Stack 中 Windows 事件的自定义扩展表：
 ```
 
 警报严重性表：
-| Severity | 级别 |
+| 严重性 | 级别 |
 |----------|-------|
 |0|Undefined|
 |10|严重|

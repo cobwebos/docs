@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946107"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087266"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
 使用 Azure 市场中的“Service Fabric 群集”项在 Azure Stack 中部署受保护的 Service Fabric 群集。 
 
 有关使用 Service Fabric 的详细信息，请参阅[的 Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)并[Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)，Azure 文档中。
+
+Azure Stack 中的 Service Fabric 群集不会使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是虚拟机规模集通过使用 Desired State Configuration (DSC) 设置的预安装软件。
 
 ## <a name="prerequisites"></a>必备组件
 

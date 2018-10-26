@@ -12,28 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 55be312046f5cdea2c1481ed435b5859ab2c2540
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: knithinc
+ms.openlocfilehash: 1b5d5a2934205877f0e0c2ac891e62c90e960b3d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026925"
+ms.locfileid: "50085143"
 ---
-# <a name="connect-to-the-azure-stack-development-kit"></a>连接到 Azure Stack 开发工具包
+# <a name="connect-to-the-asdk"></a>连接到 ASDK
 
-若要管理资源，必须先连接到 Azure Stack 开发工具包 (ASDK)。 在本文中，我们将介绍为连接到 ASDK 所采取的步骤。 可以使用以下连接选项之一：
+若要管理资源，必须先连接到 Azure Stack 开发工具包 (ASDK)。 在本文中，我们将介绍通过使用以下连接选项连接到 ASDK 所采取的步骤：
 
-* [远程桌面连接](#connect-with-remote-desktop)。 使用远程桌面连接进行连接时，单个用户可以快速连接到开发工具包。
+* [远程桌面连接 (RDP)](#connect-with-rdp)。 使用远程桌面连接进行连接时，单个用户可以快速连接到开发工具包。
 * [虚拟专用网络 (VPN)](#connect-with-vpn)。 使用 VPN 进行连接时，多个用户可以同时从 Azure Stack 基础结构外部的客户端进行连接。 VPN 连接需要一些设置。
 
-<a name="connect-to-azure-stack-with-remote-desktop"></a>
-##  <a name="connect-to-azure-stack-by-using-remote-desktop-connection"></a>使用远程桌面连接连接到 Azure Stack
+<a name="connect-with-rdp"></a>
+## <a name="connect-to-azure-stack-using-rdp"></a>连接到 Azure Stack 使用 RDP
 
-单个并发用户可以通过远程桌面连接管理运营商门户或用户门户中的资源。
+单个并发用户可以直接从 asdk 主机管理 Azure Stack 管理门户或通过远程桌面连接在用户门户中的资源。 
 
-1. 打开远程桌面连接 (mstc.exe) 并连接到开发工具包主机作为**AzureStack\AzureStackAdmin**使用 ASDK 安装过程中指定的密码。  
+> [!TIP]
+> 此选项还可以使用 RDP 重新登录到 asdk 主机时登录到 ASDK 主机计算机上创建的虚拟机。 
+
+1. 打开远程桌面连接 (mstc.exe) 并连接到开发工具包主机的计算机使用的 IP 地址授权远程登录到 asdk 主机的帐户。 默认情况下**AzureStack\AzureStackAdmin**拥有对远程连接到 asdk 主机中的权限。  
 
 2. 在开发工具包主机上打开服务器管理器 (ServerManager.exe)。 选择**本地服务器**，将关闭**IE 增强的安全配置**，关闭服务器管理器。
 
@@ -44,15 +48,15 @@ ms.locfileid: "50026925"
 > [!NOTE]
 > 有关何时使用何种帐户的详细信息，请参阅[ASDK 管理基础知识](asdk-admin-basics.md#what-account-should-i-use)。
 
-<a name="connect-to-azure-stack-with-vpn"></a>
-## <a name="connect-to-azure-stack-by-using-vpn"></a>使用 VPN 连接到 Azure Stack
+<a name="connect-with-vpn"></a>
+## <a name="connect-to-azure-stack-using-vpn"></a>连接到 Azure Stack 使用 VPN
 
-您可以建立拆分隧道 VPN 连接到 ASDK，以便访问 Azure Stack 门户和 Visual Studio 和 PowerShell 之类的本地安装的工具。 使用 VPN 连接，多个用户可以连接到托管的 ASDK 的 Azure Stack 资源同时。
+您可以建立拆分隧道 VPN 连接到 ASDK 主机计算机访问 Azure Stack 门户和 Visual Studio 和 PowerShell 之类的本地安装的工具。 使用 VPN 连接，多个用户可以连接到托管的 ASDK 的 Azure Stack 资源同时。
 
 支持 VPN 连接为这两个 Azure AD 和 Active Directory 联合身份验证服务 (AD FS) 部署。
 
 > [!NOTE]
-> VPN 连接不提供与 Azure Stack 基础结构 VM 的连接。
+> VPN 连接*却不*向 Azure Stack Vm 提供连接。 你将无法再通过 rdp 连接到 Azure Stack Vm 通过 VPN 连接时。
 
 ### <a name="prerequisites"></a>必备组件
 在与 ASDK 的 VPN 连接进行设置之前, 请确保已满足以下先决条件。
@@ -98,29 +102,33 @@ Add-AzsVpnConnection `
 
 如果设置成功，**azurestack** 将出现在 VPN 连接列表中。
 
-![网络连接](media/asdk-connect/image3.png)  
+![网络连接](media/asdk-connect/vpn.png)  
 
 ### <a name="connect-to-azure-stack"></a>连接到 Azure Stack
 
-使用以下方法之一连接到 Azure Stack 实例：  
+  使用以下方法之一连接到 Azure Stack 实例：  
 
-* 使用 `Connect-AzsVpn ` 命令：
-    
-  ```PowerShell
-  Connect-AzsVpn `
-    -Password $Password
-  ```
+  * 使用 `Connect-AzsVpn ` 命令：
+      
+    ```PowerShell
+    Connect-AzsVpn `
+      -Password $Password
+    ```
 
-  出现提示时，信任 Azure Stack 主机，并将 **AzureStackCertificateAuthority** 提供的证书安装到本地计算机的证书存储中。 
+  * 在本地计算机上，选择“网络设置” > “VPN” > “azurestack” > “连接”。 在登录提示符下，输入用户名 (**AzureStack\AzureStackAdmin**) 和密码。
+
+第一次连接时，将会提示您安装的 Azure Stack 根证书**AzureStackCertificateAuthority**本地计算机的证书存储区中。 此步骤将 ASDK 证书颁发机构 (CA) 添加到受信任主机列表。 单击**是**安装证书。
+
+![根证书](media/asdk-connect/cert.png)  
   
   > [!IMPORTANT]
-  > 在提示符下可能会隐藏的 PowerShell 窗口。
-
-* 在本地计算机上，选择“网络设置” > “VPN” > “azurestack” > “连接”。 在登录提示符下，输入用户名 (**AzureStack\AzureStackAdmin**) 和密码。
+  > 在提示符下可能会隐藏在 PowerShell 窗口或其他应用程序。
 
 ### <a name="test-vpn-connectivity"></a>测试 VPN 连接
 
-若要测试门户连接，请打开 web 浏览器，然后转到用户门户 (https://portal.local.azurestack.external/)或在管理门户 (https://adminportal.local.azurestack.external/)。 登录并创建资源。  
+若要测试门户连接，请打开 web 浏览器，然后转到用户门户 (https://portal.local.azurestack.external/)或在管理门户 (https://adminportal.local.azurestack.external/)。 
+
+使用要创建和管理资源的相应的订阅凭据登录。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: fabc72e6dc31bb7f244cda9634af3b2556ba23a9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 98a7ae31aeeae29b81a1053b38992d3bc4e0e03f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023787"
+ms.locfileid: "50085303"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>使用发布工具添加市场项
 
@@ -28,7 +28,7 @@ ms.locfileid: "50023787"
 
 ## <a name="prerequisites"></a>必备组件
 
- - 必须在 Azure Stack 主机上运行该工具包或具有[VPN](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn)从其运行该工具的计算机连接到 ASDK 主机。
+ - 必须在 Azure Stack 主机上运行该工具包或具有[VPN](.\asdk\asdk-connect.md#connect-with-vpn)从其运行该工具的计算机连接到 ASDK 主机。
 
  - 下载 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)并解压缩。
 

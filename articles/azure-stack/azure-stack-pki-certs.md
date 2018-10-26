@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 112940dbacf0bfdaff735eb0abd79e177cf5c9c5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456995"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093951"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -40,7 +40,8 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
 - 对于部署和轮换，可以使用单一证书覆盖证书的“使用者名称”和“使用者可选名称(SAN)”字段中的所有命名空间，也可以为下面你计划使用的 Azure Stack 服务所需的每个命名空间使用单独的证书。 这两种方法需要将它们必需的例如终结点使用通配符**KeyVault**并**KeyVaultInternal**。 
-- 签名算法不能是 SHA1，因为必须更可靠。 
+- 证书的 PFX 加密应为 3DES。 
+- 证书签名算法不应为 SHA1。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
 - PFX 加密必须的 3DES （从 Windows 10 客户端或 Windows Server 2016 证书存储导出时，这是默认值）。
 - 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。

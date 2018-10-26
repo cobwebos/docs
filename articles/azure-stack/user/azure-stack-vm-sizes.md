@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: dc9e1b3fb59aca8fba0c84fbfa674931c24c12c9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945886"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087485"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack 中支持的虚拟机大小
 
@@ -31,6 +31,10 @@ ms.locfileid: "49945886"
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 它们用于测试和开发小到中型数据库和低到中等流量 Web 服务器。
 
 ### <a name="basic-a"></a>基本 A
+
+> [!NOTE]
+> *基本 A*虚拟机大小的已停用[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md)(VMSS) 通过门户。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。
+
 |大小 - 大小\名称 |vCPU     |内存 | 最大临时磁盘大小 | 最大 OS 磁盘吞吐量：(IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘吞吐量 (IOPS) | 最大 NIC 数 |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |

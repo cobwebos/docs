@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985288"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085767"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>在 Azure Stack 中使用管理员门户
 
@@ -40,6 +40,8 @@ ms.locfileid: "45985288"
 | | |
 
  ![管理员门户](media/azure-stack-manage-portals/admin-portal.png)
+
+请注意，所有 Azure Stack 部署默认时区设置为协调世界时 (UTC)。 在安装 Azure Stack 时，你可以选择时区，但是，在安装期间，它将自动恢复为默认设置 UTC。
 
 在管理员门户中，可以执行如下所述的操作：
 
@@ -70,9 +72,9 @@ Azure Stack 操作员可在管理员门户中为用户（包括自己）添加�
 
 ### <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择 **+ 创建资源**，右键单击**产品/服务 + 计划**，然后选择**固定到仪表板**。
+仪表板包含一组默认磁贴。 可以选择“编辑仪表板”来修改默认仪表板，或者选择“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，可以选择“+ 创建资源”，右键单击“套餐 + 计划”，然后选择“固定到仪表板”。
 
-有时，可能会看到在门户中的空白仪表板。 若要恢复仪表板，单击**编辑仪表板**，然后右键单击并选择**重置为默认状态**。
+有时可能会在门户中看到空白的仪表板。 若要恢复仪表板，请单击“编辑仪表板”，然后右键单击并选择“重置为默认状态”。
 
 ### <a name="quick-access-to-online-documentation"></a>快速访问联机文档
 

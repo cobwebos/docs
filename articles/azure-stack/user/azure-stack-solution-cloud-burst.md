@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 1f3dcc7da3e91d3805cae805422778978d0187c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971325"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095332"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>教程： 使用 Azure 创建跨云缩放解决方案
 
@@ -101,7 +101,7 @@ ms.locfileid: "46971325"
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>将代码添加到 Visual Studio Team Services 项目
 
-1. 登录到 Visual Studio Team Services (VSTS) 与 VSTS 具有项目创建权限的帐户~~。~~
+1. 登录到 Visual Studio Team Services (VSTS) 与 VSTS 具有项目创建权限的帐户。
 
     混合 CI/CD 可同时应用到应用程序代码和基础结构代码。 使用[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)用于这两个私有云和托管云开发。
 
