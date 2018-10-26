@@ -1,22 +1,23 @@
 ---
-title: 快速入门：使用认知服务语音 SDK 在 iOS 上的 Objective-C 中识别语音
-titleSuffix: Microsoft Cognitive Services
-description: 了解如何使用认知服务语音 SDK 在 iOS 上的 Objective-C 中识别语音
+title: 快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
 services: cognitive-services
 author: chlandsi
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: chlandsi
-ms.openlocfilehash: ce9979d8d300f2308a4b7a22791c242409f2c988
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 8d6ecf251bb816eb0f41352af7c9d086c4aad751
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341168"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469769"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>快速入门：使用认知服务语音 SDK 在 iOS 上的 Objective-C 中识别语音
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
