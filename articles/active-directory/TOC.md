@@ -326,12 +326,6 @@
 
 ## [故障排除](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## 部署 Azure AD 概念证明 (PoC)
-### [PoC 演练手册：简介](active-directory-playbook-intro.md)
-### [PoC 演练手册：要素](active-directory-playbook-ingredients.md)
-### [PoC 演练手册：实现](active-directory-playbook-implementation.md)
-### [PoC 演练手册：构建基块](active-directory-playbook-building-blocks.md)
-
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell cmdlet](/powershell/azure/overview)

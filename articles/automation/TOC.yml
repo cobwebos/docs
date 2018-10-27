@@ -12,19 +12,24 @@ items:
   - name: 创建 runbook
     href: automation-quickstart-create-runbook.md
   - name: 创建 DSC 配置
+    displayName: DSC, state configuration, config, node configuration, node
     href: automation-quickstart-dsc-configuration.md
   expanded: true
 - name: 教程
   items:
   - name: 通过观察程序任务跟踪更新的文件
+    displayName: hybrid runbook worker, hybrid worker, trigger
     href: automation-watchers-tutorial.md
   - name: 管理 VM 的更新
+    displayName: alert, patch
     href: automation-tutorial-update-management.md
   - name: 通过 Runbook 载入更新和更改跟踪
     href: automation-onboard-solutions.md
   - name: 标识环境中的软件
+    displayName: inventory
     href: automation-tutorial-installed-software.md
   - name: 排查 VM 上的更改问题
+    displayName: inventory
     href: automation-tutorial-troubleshoot-changes.md
 - name: 操作指南
   items:
@@ -39,6 +44,7 @@ items:
   - name: 更新管理
     items:
     - name: 更新管理概述
+      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
       href: automation-update-management.md
     - name: 管理多个 VM 的更新
       href: manage-update-multi.md
@@ -47,12 +53,15 @@ items:
     - name: 将 OMS 更新部署迁移到 Azure
       href: migrate-oms-update-deployments.md
     - name: 将 SCCM 与更新管理集成
+      displayName: Configuration Manager
       href: oms-solution-updatemgmt-sccmintegration.md
   - name: 更改跟踪
     items:
     - name: 更改跟踪概述
+      displayName: wildcard, recursion, environment variables, registry
       href: automation-change-tracking.md
     - name: 查看所跟踪文件的文件内容
+      displayName: change tracking, hash
       href: change-tracking-file-contents.md
   - name: 清单
     items:
@@ -63,14 +72,17 @@ items:
     - name: 创建独立的自动化帐户
       href: automation-create-standalone-account.md
     - name: 管理自动化运行方式帐户
+      displayName: certificate renewal
       href: manage-runas-account.md
     - name: 配置使用 AWS 进行的身份验证
       href: automation-config-aws-account.md
     - name: 管理基于角色的访问控制
+      displayName: RBAC
       href: automation-role-based-access-control.md
   - name: 创建 Runbook
     items:
     - name: Runbook 类型
+      displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
     - name: 创建和导入 Runbook
       href: automation-creating-importing-runbook.md
@@ -83,6 +95,7 @@ items:
     - name: 创建 Python Runbook
       href: automation-first-runbook-textual-python2.md
     - name: 编辑文本 Runbook
+      displayName: powershell
       href: automation-edit-textual-runbook.md
     - name: 编辑图形 Runbook
       href: automation-graphical-authoring-intro.md
@@ -93,11 +106,14 @@ items:
     - name: 子 Runbook
       href: automation-child-runbooks.md
     - name: Runbook 输出
+      displayName: message streams, progress records, preference
       href: automation-runbook-output-and-messages.md
     - name: 源代码管理集成
+      displayName: github, vsts, azure devops, personal access token
       href: source-control-integration.md
     - name: 源代码管理集成 - 传统
       href: automation-source-control-integration-legacy.md
+      displayname: github
     - name: 使用Graphical runbook SDK 创建 runbook
       href: graphical-runbook-sdk.md
   - name: 自动化
@@ -111,8 +127,10 @@ items:
     - name: 图形 Runbook 中的错误处理
       href: automation-runbook-graphical-error-handling.md
     - name: 跟踪 Runbook 作业
+      displayName: fair share, activity log
       href: automation-runbook-execution.md
     - name: 管理 Azure 自动化数据
+      displayName: backup
       href: automation-managing-data.md
     - name: 将 JSON 对象传递到 Azure 自动化 Runbook
       href: automation-pass-json-string.md
@@ -127,26 +145,36 @@ items:
     - name: 部署 Windows 混合 Runbook 辅助角色
       href: automation-windows-hrw-install.md
     - name: 部署 Linux 混合 Runbook 辅助角色
+      displayName: signature validation
       href: automation-linux-hrw-install.md
     - name: 在混合 Runbook 辅助角色中运行 Runbook
+      displayName: signed runbooks
       href: automation-hrw-run-runbooks.md
   - name: 状态配置
+    displayName: DSC
     items:
     - name: 状态配置概述
+      displayName: DSC
       href: automation-dsc-overview.md
     - name: 入门
+      displayName: DSC
       href: automation-dsc-getting-started.md
     - name: 使用状态配置将服务器配置为所需状态并管理偏移
+      displayName: DSC, compliance
       href: tutorial-configure-servers-desired-state.md
     - name: 载入用于管理的计算机
+      displayName: DSC, state configuration
       href: automation-dsc-onboarding.md
     - name: 编译 DSC 配置
+      displayName: state configuration, composite resources, configurationData
       href: automation-dsc-compile.md
     - name: 使用复合资源编写 DSC 配置
       href: compose-configurationwithcompositeresources.md
     - name: 使用 Chocolatey 进行连续部署
+      displayName: dsc, state configuration
       href: automation-dsc-cd-chocolatey.md
     - name: 将状态配置报告数据转发到 Log Analytics
+      displayName: DSC
       href: automation-dsc-diagnostics.md
   - name: 管理共享资源
     items:
@@ -171,12 +199,15 @@ items:
     - name: 使用指标警报监视 Runbook
       href: automation-alert-metric.md
     - name: 从 Azure 警报启动 Runbook
+      displayName: Monitor, Azure Monitor
       href: automation-create-alert-triggered-runbook.md
     - name: 创建 Amazon Web 服务 VM
       href: automation-scenario-aws-deployment.md
     - name: 源代码管理与 GitHub Enterprise 的集成
+      displayName: CI, runbooks
       href: automation-scenario-source-control-integration-with-github-ent.md
     - name: 源代码管理与 Azure DevOps 的集成
+      displayName: VSTS, CI, runbooks
       href: automation-scenario-source-control-integration-with-VSTS.md
     - name: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
       href: automation-deploy-template-runbook.md
@@ -189,22 +220,30 @@ items:
   - name: 迁移
     items:
     - name: 从 Orchestrator 迁移
+      displayName: SCORCH, runbooks
       href: automation-orchestrator-migration.md
 - name: 故障排除
   items:
   - name: 登记
+    displayName: troubleshoot
     href: troubleshoot/onboarding.md
   - name: Runbook
+    displayName: troubleshoot
     href: troubleshoot/runbooks.md
   - name: 状态配置 (DSC)
+    displayName: Desired State Configuration, troubleshoot
     href: troubleshoot/desired-state-configuration.md
   - name: 混合 Runbook 辅助角色
+    displayName: troubleshoot, HRW, hybrid worker
     href: troubleshoot/hybrid-runbook-worker.md
   - name: 更改跟踪和库存
+    displayName: troubleshoot
     href: troubleshoot/change-tracking.md
   - name: 更新管理
+    displayName: troubleshoot
     href: troubleshoot/update-management.md
   - name: 排查更新代理问题
+    displayName: hybrid runbook worker, hybrid worker, troubleshoot
     href: troubleshoot/update-agent-issues.md
 - name: 引用
   items:
@@ -238,9 +277,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: c0dd1231814d41761c35831b6bfabae1c5480c5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9ecdfd37ac2de97342447d25c4e09c53730651bf
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095280"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155587"
