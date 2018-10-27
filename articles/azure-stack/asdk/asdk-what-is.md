@@ -13,18 +13,18 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fa20f746e55f784e02244355c96ac273b9906acc
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339536"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138304"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>什么是 Azure Stack 开发工具包？
-[Microsoft Azure Stack 集成系统](.\.\azure-stack-poc.md)的大小范围从 4 到 12 个节点，并由硬件合作伙伴和 Microsoft 共同提供支持。 使用 Azure Stack集成系统为自己的生产工作负荷实现新方案。 如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅[操作员文档](https://docs.microsoft.com/azure/azure-stack)。
+[Microsoft Azure Stack 集成系统](.\.\azure-stack-poc.md)范围从 4 到 16 节点的大小，由硬件合作伙伴和 Microsoft 共同提供支持。 使用 Azure Stack集成系统为自己的生产工作负荷实现新方案。 如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅[操作员文档](https://docs.microsoft.com/azure/azure-stack)。
 
 Azure Stack 开发工具包 (ASDK) 用于对 Azure Stack 进行单节点部署，可以**免费**下载和使用。 所有 ASDK 组件都安装在单主机服务器计算机上运行的虚拟机中，该计算机必须满足或超过[最低硬件要求](asdk-deploy-considerations.md#hardware)。 ASDK 旨在提供一个特定的环境，方便你在其中评估 Azure Stack 并开发现代应用程序，所使用的 API 和工具与非生产环境中的 Azure 一致。 
 
@@ -47,7 +47,7 @@ ASDK 旨在为以下人员提供 Azure 一致性混合云体验：
 
 |说明|ASDK|多节点 Azure Stack|
 |-----|-----|-----|
-|**缩放**|所有组件都安装在一个单节点服务器计算机上。|大小范围为 4-12 节点。|
+|**缩放**|所有组件都安装在一个单节点服务器计算机上。|从 4 到 16 节点的大小范围。|
 |**复原能力**|单节点配置不提供高可用性|支持[高可用性](.\.\azure-stack-key-features.md#high-availability-for-azure-stack)功能。|
 |**网络**|ASDK 使用名为 AzS-BGPNAT01 的 VM 来路由所有 ASDK 网络流量。 无其他切换要求。|AzS-BGPNAT01 VM 在多节点部署中不存在。 更复杂的[网络路由基础结构](.\.\azure-stack-network.md#network-infrastructure)是必需的，其中包括：架顶 (TOR)、基板管理控制器 (BMC) 和边界（数据中心网络）交换机。|
 |**修补和更新过程**|若要改用新版 ASDK，必须在开发工具包主机上重新部署 ASDK。|[修补和更新](.\.\azure-stack-updates.md)过程用于更新已安装的 Azure Stack 版本。|

@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 10/26/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: e13934a52d7da1f5352bf23d39dbf5f3d1121b5f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095399"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158153"
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明  
-本文提供了 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
+# <a name="asdk-release-notes"></a>ASDK 发行说明  
+本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 

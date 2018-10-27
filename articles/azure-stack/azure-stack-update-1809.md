@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7061438e5d5aa60ab09af2b516fc918bc84f06ec
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095263"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158460"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -205,7 +205,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    - *基础结构角色实例不可用*
    - *缩放单位节点处于脱机状态*
    
-  请运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+  运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
 
 <!-- 1264761 - IS ASDK -->  
 - 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  
