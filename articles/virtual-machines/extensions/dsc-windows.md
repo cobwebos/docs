@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630915"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407701"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -130,7 +130,7 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。 包含 OMS 代理 VM 扩展的示例 Resource Manager 模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm)中找到。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm)中找到。 
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 
 
@@ -139,7 +139,7 @@ Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Serv
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-可以使用 Azure CLI 将 OMS 代理 VM 扩展部署到现有的虚拟机。 将 OMS 密钥和 OMS ID 替换为 OMS 工作区中的相应项。 
+可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将 Log Analytics 密钥和 Log Analytics ID 替换为 Log Analytics 工作区中的对应项。 
 
 ```azurecli
 az vm extension set \

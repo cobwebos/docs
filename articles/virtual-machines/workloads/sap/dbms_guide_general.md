@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162302"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429876"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -58,7 +58,7 @@ ms.locfileid: "44162302"
 ## <a name="definitions-upfront"></a>定义预释
 整个文档使用以下术语：
 
-* IaaS：基础结构即服务。
+* IaaS：服务架构。
 * PaaS：平台即服务。
 * SaaS：软件即服务。
 * SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 EP。  SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
@@ -75,7 +75,7 @@ ms.locfileid: "44162302"
 有些 Microsoft 文档在描述跨界方案时稍有不同，特别是针对 DBMS HA 配置。 在 SAP 相关的文档中，跨界方案单纯是指具有站点到站点或专用 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 连接，以及将 SAP 布局分布到本地与 Azure 的情况。
 
 ## <a name="resources"></a>资源
-Azure 上发布了有关 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)开始，然后选择感兴趣的领域
+已发布有关 Azure 上 SAP 工作负荷的各种文章。  建议从 [Azure 上的 SAP 工作负荷 - 入门](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)开始，然后选择感兴趣的领域
 
 以下 SAP 说明与 Azure 上的 SAP 有关，涉及本文档中介绍的领域：
 
@@ -132,7 +132,7 @@ Azure 强制实施每个数据磁盘的 IOPS 配额。 对于 Azure 标准存储
 > 对于 DBMS 部署，强烈建议将高级存储用于任何数据、事务日志或重做文件。 因此，部署生产还是非生产系统并不重要。
 
 > [!NOTE]
-> 若要利用 Azure 的唯一[单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)，附加的所有磁盘的类型需要是 Azure 高级存储，包括基础 VHD。
+> 若要利用 Azure 的唯一[单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)，附加的所有磁盘的类型都需要是 Azure 高级存储，包括基础 VHD。
 >
 
 数据库文件和日志/重做文件的放置以及所使用的 Azure 存储类型应该根据 IOPS、延迟和吞吐量需求来定义。 为了有足够的 IOPS，可能必须使用多个磁盘或使用更大的高级存储磁盘。 如果使用多个磁盘，需跨磁盘构建软件带区，其中包含数据文件或日志/重做文件。 在这种情况下，基础高级存储磁盘的 IOPS 和磁盘吞吐量 SLA 或 Azure 标准存储磁盘的最大可达到 IOPS 是针对生成的带区集累积的。 
@@ -216,7 +216,7 @@ Azure 存储帐户不只是一种管理构造，还是一个具有各种限制�
 
 
 ### <a name="azure-non-persistent-disks"></a>Azure 非永久磁盘
-部署 VM 后，Azure VM 提供非永久磁盘。 如果 VM 重启，这些驱动器上的所有内容将被擦除。因此，数据库的数据文件和日志/重做文件决不能放置在这些非永久性驱动器上。 但一些数据库例外，在此情况下，这些非永久性驱动器对于 tempdb 和临时表空间可能是适合的。 但是，应避免将这些驱动器用于 A 系列 VM，因为这些非永久性驱动器在该 VM 系列中的吞吐量有限。 有关进一步详细信息，请参阅[了解 Microsoft Azure 虚拟机上的临时驱动器](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)一文
+部署 VM 后，Azure VM 提供非永久磁盘。 如果 VM 重启，这些驱动器上的所有内容将被擦除。因此，数据库的数据文件和日志/重做文件决不能放置在这些非永久性驱动器上。 但一些数据库例外，在此情况下，这些非永久性驱动器对于 tempdb 和临时表空间可能是适合的。 但是，应避免将这些驱动器用于 A 系列 VM，因为这些非永久性驱动器在该 VM 系列中的吞吐量有限。 有关进一步详细信息，请参阅[了解 Azure 中 Windows VM 上的临时驱动器](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)一文
 
 - - -
 > ![Windows][Logo_Windows] Windows

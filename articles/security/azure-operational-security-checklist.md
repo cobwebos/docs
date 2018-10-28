@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 481fcb869004a6fca83fdf19c32c41010057de32
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008189"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403979"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure 操作安全性清单
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 在生产环境中部署云应用程序之前，准备好一个清单会很有用，这样可以根据一份必要和建议的操作安全措施列表来评估应用程序。
@@ -51,8 +51,7 @@ Azure 提供一套可用于部署应用程序的基础结构服务。 Azure 操�
 许多组织已在 Azure 中成功部署并运行其云应用程序。 提供的清单强调了几项必备要点，可帮助提高成功部署和顺畅运营的几率。 我们强烈建议针对 Azure 上的现有应用程序部署和新的部署实施这些操作性和策略性事项。
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍 OMS 安全和审核解决方案。 若要了解有关 OMS 安全的详细信息，请参阅以下文章：
+若要了解有关安全性的详细信息，请参阅以下文章：
 
-- [Operations Management Suite (OMS) 概述](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 - [设计和操作安全性](https://www.microsoft.com/trustcenter/security/designopsecurity)
 - [Azure 安全中心规划和操作](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)

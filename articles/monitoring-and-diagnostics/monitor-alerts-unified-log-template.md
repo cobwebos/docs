@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6ec07d02e61d50aa588d75ba7337eb9237e11207
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576861"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402891"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 本文演示如何在 Azure 中通过 [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) 和 [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 使用 [Azure 资源管理器模板](..//azure-resource-manager/resource-group-authoring-templates.md)，以编程方式大规模管理[日志警报](monitor-alerts-unified-log.md)。 目前，Azure 警报支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Azure Application Insights](../application-insights/app-insights-analytics-tour.md) 的查询相关的日志警报。
 
 ## <a name="managing-log-alert-on-log-analytics"></a>在 Log Analytics 上管理日志警报
-[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 的日志警报集成到[新的 Azure 警报体验](monitoring-overview-unified-alerts.md)；然而它仍然运行 Log Analytics API 并保持与之前用来管理 [OMS 门户中的警报](..//log-analytics/log-analytics-alerts-creating.md)的架构的兼容性。
+[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 的日志警报已集成到[新的 Azure 警报体验](monitoring-overview-unified-alerts.md)中；虽然它仍然运行 Log Analytics API 并且保持与之前使用的架构兼容。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日起，工作区的所有警报都将开始自动扩展到 Azure 。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](monitoring-alerts-extend.md)。 
+> 从 2018 年 5 月 14 日起，工作区中的所有警报都将开始自动扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](monitoring-alerts-extend.md)。 
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 通过警报规则创建 Log Analytics 的日志警报，该规则按固定时间间隔运行保存的搜索。 如果查询结果与指定的条件相符，则会创建一个警报记录且会运行一个或多个操作。 

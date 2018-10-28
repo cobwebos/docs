@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dmalik
+author: oslake
+ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 09/18/2018
-ms.openlocfilehash: 3cfff932834682471990236c9e96b499e20d33f1
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0fc5ca73dec79942e05c7dfd410bc0a13e5ffb44
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092552"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648711"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>对 Azure SQL 数据库和 SQL 数据仓库使用虚拟网络服务终结点和规则
 
@@ -28,14 +28,9 @@ ms.locfileid: "49092552"
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
 
-#### <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
+## <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
 
 如果只创建虚拟网络规则，则可跳到[本文后面](#anchor-how-to-by-using-firewall-portal-59j)的步骤和说明。
-
-
-
-
-
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -51,23 +46,17 @@ ms.locfileid: "49092552"
 
 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
 
-
-
-
-
-
-
 <a name="anch-benefits-of-a-vnet-rule-68b" />
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
 在你采取措施之前，子网上的 VM 不能与 SQL 数据库通信。 建立通信的一项操作是创建虚拟网络规则。 若要弄清楚为何选择 VNet 规则方法，必须进行一个比较和对比式的讨论，其中涉及到防火墙提供的竞争性安全选项。
 
-#### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
+### <a name="a-allow-access-to-azure-services"></a>A. 允许访问 Azure 服务
 
 防火墙窗格有一个标记为“允许访问 Azure 服务”的“启用/禁用”按钮。 “启用”设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信。 这些 Azure IP 或子网可能不是你所拥有的。 此“启用”设置可能超出你在开放方面对 SQL 数据库的需要。 虚拟网络规则功能提供精细得多的控制。
 
-#### <a name="b-ip-rules"></a>B. IP 规则
+### <a name="b-ip-rules"></a>B. IP 规则
 
 可以通过 SQL 数据库防火墙规则指定 IP 地址范围，处于该范围内的通信允许进入 SQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。 某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
@@ -75,16 +64,11 @@ ms.locfileid: "49092552"
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
-#### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. 目前，子网上不允许有 SQL 数据库
+### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. 目前，子网上不允许有 SQL 数据库
 
 如果 Azure SQL 数据库服务器是虚拟网络子网上的一个节点，则虚拟网络中的所有节点都可以与 SQL 数据库通信。 在这种情况下，VM 可以与 SQL 数据库通信，不需任何虚拟网络规则或 IP 规则。
 
 但截至 2017 年 9 月，Azure SQL 数据库服务仍然无法分配给子网。
-
-
-
-
-
 
 <a name="anch-details-about-vnet-rules-38q" />
 
@@ -92,19 +76,19 @@ ms.locfileid: "49092552"
 
 此部分介绍虚拟网络规则的多项详细信息。
 
-#### <a name="only-one-geographic-region"></a>只有一个地理区域
+### <a name="only-one-geographic-region"></a>只有一个地理区域
 
 一个虚拟网络服务终结点只能应用于一个 Azure 区域。 终结点不允许其他区域接受来自该子网的通信。
 
 任何虚拟网络规则都只能应用于基础终结点应用到的区域。
 
-#### <a name="server-level-not-database-level"></a>服务器级而非数据库级
+### <a name="server-level-not-database-level"></a>服务器级而非数据库级
 
 每个虚拟网络规则都适用于整个 Azure SQL 数据库服务器，而不仅仅是该服务器上某个特定的数据库。 换句话说，虚拟网络规则适用于服务器级而非数据库级。
 
 - 与之不同的是，IP 规则适用于这其中的任一级别。
 
-#### <a name="security-administration-roles"></a>安全管理角色
+### <a name="security-administration-roles"></a>安全管理角色
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
@@ -121,6 +105,7 @@ RBAC 备用：
 > 在某些情况下，Azure SQL 数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
 > - 两个订阅都必须属于同一 Azure Active Directory 租户。
 > - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
+> - 两个订阅都必须注册 Microsoft.Sql 提供程序。
 
 ## <a name="limitations"></a>限制
 
@@ -135,18 +120,18 @@ RBAC 备用：
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
 - 如果启用 Azure SQL 数据库的虚拟网络服务终结点，会同时启用 MySQL 和 PostgreSQL Azure 服务的终结点。 但是，启用终结点后，尝试从终结点连接到 MySQL 或 PostgreSQL 实例会失败。
-    - 根本原因是 MySQL 和 PostgreSQL 目前不支持 ACLing。
-
+  - 根本原因是 MySQL 和 PostgreSQL 目前不支持 ACLing。
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
-    - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
-    - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
+  - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
+  - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
 
-#### <a name="considerations-when-using-service-endpoints"></a>使用服务终结点的注意事项
+### <a name="considerations-when-using-service-endpoints"></a>使用服务终结点的注意事项
+
 在使用 Azure SQL 数据库的服务终结点时，请查看以下注意事项：
 
 - **需要 Azure SQL 数据库公共 IP 的出站连接**：必须为 Azure SQL 数据库 IP 启用网络安全组 (NSG) 才能进行连接。 可以使用 Azure SQL 数据库的 NSG [服务标记](../virtual-network/security-overview.md#service-tags)执行此操作。
 
-#### <a name="expressroute"></a>ExpressRoute
+### <a name="expressroute"></a>ExpressRoute
 
 如果是在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
   
@@ -160,31 +145,37 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 ## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>删除“允许 Azure 服务访问服务器”的影响
 
 许多用户希望从其 Azure SQL Server 中删除“允许 Azure 服务访问服务器”，将其替换为 VNet 防火墙规则。
-但是，删除该项会影响以下 Azure SQLDB 功能：
+但是，删除该项会影响以下 Azure SQL 数据库功能：
 
-#### <a name="import-export-service"></a>导入/导出服务
-Azure SQLDB 导入/导出服务在 Azure 中的 VM 上运行。 这些 VM 不在 VNet 中，因此在连接到数据库时会获取 Azure IP。 删除“允许 Azure 服务访问服务器”后，这些 VM 将无法访问数据库。
+### <a name="import-export-service"></a>导入/导出服务
+
+Azure SQL 数据库导入/导出服务在 Azure 中的 VM 上运行。 这些 VM 不在 VNet 中，因此在连接到数据库时会获取 Azure IP。 删除“允许 Azure 服务访问服务器”后，这些 VM 将无法访问数据库。
 可以解决此问题。 通过 DACFx API 直接在代码中运行 BACPAC 导入或导出。 确保该项部署在 VM 中且已为其所在的 VNet-子网设置防火墙规则。
 
-#### <a name="sql-database-query-editor"></a>SQL 数据库查询编辑器
+### <a name="sql-database-query-editor"></a>SQL 数据库查询编辑器
+
 Azure SQL 数据库查询编辑器部署在 Azure 中的 VM 上。 这些 VM 不在 VNet 中。 因此，这些 VM 在连接到数据库时会获取 Azure IP。 删除“允许 Azure 服务访问服务器”后，这些 VM 将无法访问数据库。
 
-#### <a name="table-auditing"></a>表审核
+### <a name="table-auditing"></a>表审核
+
 目前有两种方法可以在 SQL 数据库上启用审核。 在 Azure SQL Server 上启用服务终结点后，表审核会失败。 在这里，解决办法是转为 Blob 审核。
 
-#### <a name="impact-on-data-sync"></a>对数据同步的影响
-Azure SQLDB 具有数据同步功能，可使用 Azure IP 连接到数据库。 使用服务终结点时，很可能你将关闭逻辑服务器的“允许 Azure 服务访问服务器”访问权限。 这将中断数据同步功能。
+### <a name="impact-on-data-sync"></a>对数据同步的影响
+
+Azure SQL 数据库具有数据同步功能，可使用 Azure IP 连接到数据库。 使用服务终结点时，很可能你将关闭逻辑服务器的“允许 Azure 服务访问服务器”访问权限。 这将中断数据同步功能。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>将 VNet 服务终结点与 Azure 存储配合使用的影响
 
 Azure 存储已实现相同的功能，允许限制到存储帐户的连接。
-如果选择将此功能与某个存储帐户配合使用，而该帐户正由 Azure SQL Server 使用，则可能会出现问题。 接下来会列出受此影响的 Azure SQLDB 功能并对其进行讨论。
+如果选择将此功能与某个存储帐户配合使用，而该帐户正由 Azure SQL Server 使用，则可能会出现问题。 接下来会列出受此影响的 Azure SQL 数据库功能并对其进行讨论。
 
-#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase 通常用于将数据从存储帐户加载到 Azure SQLDW 中。 如果正从存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 我们提供了此方面的缓解措施，请联系 Microsoft 支持部门了解详细信息。
+### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL 数据仓库 PolyBase
 
-#### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB Blob 审核
-Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储帐户使用 VNet 服务终结点功能，则会断开从 Azure SQLDB 到存储帐户的连接。
+PolyBase 通常用于将数据从存储帐户加载到 Azure SQL 数据仓库中。 如果正从存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 我们提供了此方面的缓解措施，请联系 Microsoft 支持部门了解详细信息。
+
+### <a name="azure-sql-database-blob-auditing"></a>Azure SQL 数据库 Blob 审核
+
+Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储帐户使用 VNet 服务终结点功能，则会断开从 Azure SQL 数据库到存储帐户的连接。
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在未打开 VNet 服务终结点的情况下，将 VNet 防火墙规则添加到服务器
 
@@ -194,12 +185,11 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 可以使用 PowerShell 设置 **IgnoreMissingServiceEndpoint** 标志。 有关详细信息，请参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
-
 ## <a name="errors-40914-and-40615"></a>错误 40914 和 40615
 
 连接错误 40914 与虚拟网络规则（如 Azure 门户中的“防火墙”窗格所指定）相关。 错误 40615 基本相似，不同之处在于与“防火墙”上的“IP 地址规则”相关。
 
-#### <a name="error-40914"></a>错误 40914
+### <a name="error-40914"></a>错误 40914
 
 消息正文：无法打开登录时请求的服务器 [server-name]。 不允许客户端访问服务器。
 
@@ -207,7 +197,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 错误解决方法：在 Azure 门户的“防火墙”窗格中，使用虚拟网络规则控件为子网[添加虚拟网络规则](#anchor-how-to-by-using-firewall-portal-59j)。
 
-#### <a name="error-40615"></a>错误 40615
+### <a name="error-40615"></a>错误 40615
 
 消息文本：无法打开登录时请求的服务器“{0}”。 不允许 IP 地址为“{1}”的客户端访问此服务器。
 
@@ -215,12 +205,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 错误解决方法：输入客户端 IP 地址作为 IP 规则。 为此，可以使用 Azure 门户中的“防火墙”窗格。
 
-
 [此处][sql-database-develop-error-messages-419g]收录了多个 SQL 数据库错误消息的列表。
-
-
-
-
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
@@ -233,17 +218,17 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 >
 > 如果没有为子网启用服务终结点，门户会要求你启用。 在添加规则的边栏选项卡上单击“启用”按钮。
 
-#### <a name="powershell-alternative"></a>PowerShell 备用
+## <a name="powershell-alternative"></a>PowerShell 备用
 
 PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmSqlServerVirtualNetworkRule。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
-#### <a name="rest-api-alternative"></a>REST API 替代项
+## <a name="rest-api-alternative"></a>REST API 替代项
 
 在内部，用于 SQL VNet 操作的 PowerShell cmdlet 调用 REST API。 可以直接调用 REST API。
 
 - [虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
 
-#### <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。
 
@@ -252,7 +237,7 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 <a name="a-portal-steps-for-vnet-rule-200" />
 
-### <a name="azure-portal-steps"></a>Azure 门户步骤
+## <a name="azure-portal-steps"></a>Azure 门户步骤
 
 1. 登录到 [Azure 门户][http-azure-portal-link-ref-477t]。
 
@@ -277,10 +262,9 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 
 6. 单击窗格底部的“确定”按钮。
 
-7.  查看防火墙窗格中生成的虚拟网络规则。
+7. 查看防火墙窗格中生成的虚拟网络规则。
 
     ![查看防火墙窗格中的新规则。][image-portal-firewall-vnet-result-rule-30-png]
-
 
 > [!NOTE]
 > 以下状态适用于这些规则：
@@ -288,7 +272,6 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmS
 > - **失败：** 表示所启动的操作已失败。
 > - **已删除：** 仅适用于删除操作，表示规则已删除，不再适用。
 > - **进行中：** 表示操作正在进行。 操作处于这种状态时，会应用旧规则。
-
 
 <a name="anchor-how-to-links-60h" />
 
@@ -304,8 +287,6 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 - [使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点，然后创建虚拟网络规则。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - 使用 REST API 的[虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
 
-
-
 <!-- Link references, to images. -->
 
 [image-portal-firewall-vnet-add-existing-10-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-add-existing-10.png
@@ -313,8 +294,6 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 [image-portal-firewall-create-update-vnet-rule-20-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-create-update-vnet-rule-20.png
 
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
-
-
 
 <!-- Link references, to text, Within this same Github repo. -->
 
@@ -338,15 +317,11 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
-
-
 <!-- Link references, to text, Outside this Github repo (HTTP). -->
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 
 [rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
-
-
 
 <!-- ??2
 #### Syntax related articles

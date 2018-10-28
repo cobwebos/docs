@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721313"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405559"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -199,7 +199,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 **标识用于存储数据的所有位置**
 
-静态加密的目标是加密所有数据。 这样做可以避免丢失重要数据或所有持久位置。请清点应用程序存储的所有数据。 
+静态加密的目标是加密所有数据。 这样做可以避免丢失重要数据或所有持久保留位置。 请清点应用程序存储的所有数据。 
 
 > [!Note] 
 > 不只是“应用程序数据”或“PII”，还包括与应用程序相关的所有数据，其中包括帐户元数据（订阅映射、联系信息、PII）。
@@ -398,17 +398,17 @@ Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.d
 
 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
-### <a name="microsoft-operations-management-suiteoms"></a>Microsoft Operations Management Suite (OMS)
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是混合云的 IT 管理解决方案。 OMS 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是混合云的 IT 管理解决方案。 Log Analytics 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
 
-![Microsoft Operations Management Suite (OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-使用 OMS，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 OMS 专为云优先的环境而设计，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
+使用 Log Analytics，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 Log Analytics 专为云优先的环境而构建，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

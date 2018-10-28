@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4f40dfced7060dd01df7410d07ac5b7cfdf3176
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f744a1126e12766980727e31d5c50ce4aa17934c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580695"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408772"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Azure 安全性和合规性蓝图：用于 GDPR 的分析
 
@@ -43,7 +43,7 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 
 整个解决方案基于客户从 Azure 门户配置的 Azure 存储构建。 Azure 存储通过“存储服务加密”加密所有数据，以保持静态数据的机密性。 异地冗余存储 (GRS) 确保客户主数据中心的不良事件不会导致数据丢失，因为第二个副本将存储在数百英里以外的独立位置中。
 
-为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 通过 Operations Management Suite (OMS) 和 Azure Monitor 监视系统运行状况。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
+为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 系统运行状况通过 Log Analytics 和 Azure Monitor 进行监视。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
 
 通常通过 SQL Server Management Studio (SSMS) 管理 Azure SQL 数据库，它从配置为通过安全 VPN 或 ExpressRoute 连接访问 Azure SQL 数据库的本地计算机运行。 **Azure 建议配置 VPN 或 ExpressRoute 连接，以便进行管理和将数据导入参考体系结构资源组。**
 
@@ -56,7 +56,7 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 - Azure 机器学习
 - Azure Active Directory
 - Azure 密钥保管库
-- Operations Management Suite (OMS)
+- Log Analytics
 - Azure Monitor
 - Azure 存储
 - Power BI 仪表板
@@ -89,7 +89,7 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - 已将 OMS Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+  - 已将 Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网都与其相应的 NSG 相关联。
 
@@ -138,13 +138,13 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集和分析 Azure 和本地环境中的资源生成的数据。
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集并分析 Azure 和本地环境中的资源生成的数据。
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
-此外，包含以下 OMS 解决方案作为此体系结构的一部分：
--   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
+此外，以下监视解决方案作为此体系结构的一部分包括在内：
+-   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
 -   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
 -   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案存储、运行和管理 Runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。

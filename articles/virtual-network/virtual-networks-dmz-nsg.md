@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23126675"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457283"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -99,7 +99,7 @@ ms.locfileid: "23126675"
     ``` 
 
 2. 本示例中的第一个规则允许所有内部网络之间的 DNS 流量发往后端子网上的 DNS 服务器。 该规则有一些重要参数：
-  * “destinationAddressPrefix”- 规则可以使用一种特殊类型的、称作“默认标记”的地址前缀。这些标记是系统提供的标识符，用于方便对较大类别的地址前缀进行寻址。 此规则使用默认标记“Internet”来表示 VNet 外部的任何地址。 其他前缀标签包括 VirtualNetwork 和 AzureLoadBalancer。
+  * “destinationAddressPrefix”- 目标地址前缀设置为“10.0.2.4”，以便允许 DNS 流量到达 DNS 服务器。
   * “方向”表示此规则要对哪个方向的流量生效。 该方向是从子网或虚拟机的角度定义的（取决于此 NSG 绑定到的位置）。 因此，如果“方向”为“入站”并且流量进入子网，此规则将适用，而离开子网的流量则不受此规则影响。
   * “优先级”设置流量的评估顺序。 编号越低，优先级越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
   * “访问”表示是要阻止（“拒绝”）还是允许（“允许”）受此规则影响的流量。
@@ -180,7 +180,7 @@ ms.locfileid: "23126675"
     },
      ```
 
-6. 此规则将拒绝从 Internet 到网络上任何服务器的流量。 使用优先级为 110 和 120 的规则的效果是，只允许入站 Internet 流量发往服务器上的防火墙和 RDP 端口，除此之外的其他流量会被阻止。 此规则是一种“故障安全性”规则，可阻止所有意外的流量。
+6. 规则可以使用一种特殊类型的、称作“默认标记”的地址前缀。这些标记是系统提供的标识符，用于方便对较大类别的地址前缀进行寻址。 此规则使用默认标记“VirtualNetwork”作为目标地址前缀，以表示 VNet 内的任何地址。 其他前缀标签包括 Internet 和 AzureLoadBalancer。 此规则将拒绝从 Internet 到网络上任何服务器的流量。 使用优先级为 110 和 120 的规则的效果是，只允许入站 Internet 流量发往服务器上的防火墙和 RDP 端口，除此之外的其他流量会被阻止。 此规则是一种“故障安全性”规则，可阻止所有意外的流量。
 
     ```JSON
     {

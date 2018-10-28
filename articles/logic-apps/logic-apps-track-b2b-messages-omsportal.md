@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125762"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405678"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 通信
 
@@ -40,9 +40,9 @@ ms.locfileid: "43125762"
 >  
 > 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>将逻辑应用 B2B 解决方案添加到 Log Analytics
+## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>将逻辑应用 B2B 解决方案添加到 Azure
 
-若要让 Log Analytics 跟踪逻辑应用的 B2B 消息，必须将**逻辑应用 B2B** 解决方案添加到 OMS 门户。 详细了解如何[将解决方案添加到 Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)。
+若要让 Log Analytics 跟踪逻辑应用的 B2B 消息，必须将**逻辑应用 B2B** 解决方案添加到 Log Analytics。 详细了解如何[将解决方案添加到 Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
 
@@ -52,7 +52,7 @@ ms.locfileid: "43125762"
 
    ![选择你的 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. 在“管理”下，选择“概述”。
+3. 在“管理”下，选择“工作区摘要”。
 
    ![选择“Log Analytics 门户”](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

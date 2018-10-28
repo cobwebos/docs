@@ -1,34 +1,33 @@
 ---
 title: Azure SQL 数据库连接体系结构 | Microsoft Docs
-description: 本文档介绍 Azure 内部或 Azure 外部的 Azure SQLDB 连接体系结构。
+description: 本文档从 Azure 内部或 Azure 外部说明 Azure SQL 数据库连接体系结构。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dhruv
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064116"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986315"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构 
+# <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构
 
-本文介绍 Azure SQL 数据库连接体系结构，并说明如何使用不同的组件将流量定向到 Azure SQL 数据库实例。 借助这些 Azure SQL 数据库连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure 数据库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。 
+本文介绍 Azure SQL 数据库连接体系结构，并说明如何使用不同的组件将流量定向到 Azure SQL 数据库实例。 借助这些 Azure SQL 数据库连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure 数据库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
 下图提供了 Azure SQL Database 连接体系结构的高级别概述。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/architecture-overview.png)
-
 
 以下步骤介绍如何通过 Azure SQL 数据库软件负载均衡器 (SLB) 和 Azure SQL 数据库网关建立到 Azure SQL 数据库的连接。
 
@@ -39,7 +38,6 @@ ms.locfileid: "47064116"
 
 > [!IMPORTANT]
 > 其中每个组件都具有内置于网络和应用层的分布式拒绝服务 (DDoS) 保护。
->
 
 ## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
 
@@ -54,7 +52,9 @@ ms.locfileid: "47064116"
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 VNet 内启用连接，必须允许到下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。 使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许 NSG 出站到下面列出的 Azure SQLDB 网关 IP 将还不够，必须允许出站到所有 Azure SQLDB IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 VNet 内启用连接，必须允许到下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。
+
+使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许根据 NSG 出站到下面列出的 Azure SQL 数据库网关 IP 将还不够，必须允许出站到所有 Azure SQL 数据库 IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
@@ -73,11 +73,18 @@ ms.locfileid: "47064116"
 | 加拿大中部 | 40.85.224.249 | |
 | 加拿大东部 | 40.86.226.166 | |
 | 美国中部 | 23.99.160.139 | 13.67.215.62 |
+| 中国东部 1 | 139.219.130.35 | |
+| 中国东部 2 | 40.73.82.1 | |
+| 中国北部 1 | 139.219.15.17 | |
+| 中国北部 2 | 40.73.50.0 | |
 | 东亚 | 191.234.2.139 | 52.175.33.150 |
 | 美国东部 1 | 191.238.6.43 | 40.121.158.30 |
 | 美国东部 2 | 191.239.224.107 | 40.79.84.180 * |
-| 印度中部 | 104.211.96.159  | |
-| 印度南部 | 104.211.224.146  | |
+| 法国中部 | 40.79.137.0 | 40.79.129.1 |
+| 德国中部 | 51.4.144.100 | |
+| 德国东北部 | 51.5.144.179 | |
+| 印度中部 | 104.211.96.159 | |
+| 印度南部 | 104.211.224.146 | |
 | 印度西部 | 104.211.160.80 | |
 | 日本东部 | 191.237.240.43 | 13.78.61.196 |
 | 日本西部 | 191.238.68.11 | 104.214.148.156 |
@@ -90,11 +97,11 @@ ms.locfileid: "47064116"
 | 英国北部 | 13.87.97.210 | |
 | 英国南部 1 | 51.140.184.11 | |
 | 英国南部 2 | 13.87.34.7 | |
-| 英国西部 | 51.141.8.11  | |
+| 英国西部 | 51.141.8.11 | |
 | 美国中西部 | 13.78.145.25 | |
 | 西欧 | 191.237.232.75 | 40.68.37.158 |
 | 美国西部 1 | 23.99.34.75 | 104.42.238.205 |
-| 美国西部 2 | 13.66.226.202  | |
+| 美国西部 2 | 13.66.226.202 | |
 ||||
 
 \* **注意:** *美国东部 2* 还有第三个 IP 地址 `52.167.104.0`。
@@ -170,10 +177,10 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 > [!IMPORTANT]
 > 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
->
 
 以下 CLI 脚本演示如何更改连接策略。
 
+```azurecli-interactive
 <pre>
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
@@ -181,13 +188,14 @@ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-grou
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
 
-# Get current connection policy 
+# Get current connection policy
 az resource show --ids $id
 
-# Update connection policy 
+# Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
+```
 
 ## <a name="next-steps"></a>后续步骤
 

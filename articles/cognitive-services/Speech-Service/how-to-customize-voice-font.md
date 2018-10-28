@@ -1,33 +1,33 @@
 ---
-title: 什么是自定义语音？ - Azure 认知服务
-description: 本文概述了 Microsoft 文本转语音这一语音自定义功能，说明如何通过该功能创建可识别的特色语音。
+title: 如何创建自定义语音字体
+titlesuffix: Azure Cognitive Services
+description: 本文概述了文本转语音这一语音自定义功能，说明如何通过该功能创建可识别的特色语音。
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 5e99e7e376a020f845816fb38e31dd727d87a4cb
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423419"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467712"
 ---
 # <a name="creating-custom-voice-fonts"></a>创建自定义语音字体
 
-使用 Microsoft 文本转语音 (TTS) 语音自定义功能可以创建可识别的特色语音，该语音带有你的特色：语音字体。 
+使用文本转语音 (TTS) 语音自定义功能可以创建可识别的特色语音，该语音带有你的特色：语音字体。 
 
 若要创建语音字体，请先进行录音，然后将关联的脚本以训练数据的形式上传。 然后，此服务会根据你的录音创建唯一的语音模型。 然后，你就可以使用此语音字体来合成语音。 
 
 一开始可以使用少量数据进行概念证明。 不过，提供的数据越多，语音听起来越自然，越专业。
 
-
 ## <a name="prerequisites"></a>先决条件
 
-“文本转语音”语音自定义功能目前为专用预览版。 若要试用，请[填写申请表](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u)。
-
-还需要一个 Azure 帐户和语音服务的订阅。 如果还没有该订阅，请[创建一个](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 将订阅连接到自定义语音门户，如下所示：
+需要一个 Azure 帐户和语音服务的订阅。 如果还没有该订阅，请[创建一个](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 将订阅连接到自定义语音门户，如此处所示。
 
 1. 通过申请访问时使用过的 Microsoft 帐户登录到[自定义语音门户](https://customvoice.ai)。
 
@@ -37,7 +37,6 @@ ms.locfileid: "47423419"
 
 3. 在“订阅”页上，选择“连接现有订阅”。 请注意，语音服务支持不同的区域。 检查创建订阅密钥的区域，并确保将密钥连接到正确的子门户。  
 
-     
 4. 将订阅密钥粘贴到表中，如以下示例中所示。 每个订阅都有两个密钥，可使用其中任意一个。
 
      ![添加订阅](media/custom-voice/add-subscription.png)
@@ -56,7 +55,7 @@ ms.locfileid: "47423419"
 
 ### <a name="audio-files"></a>音频文件
 
-每个音频文件应包含一个表述（例如，一个句子，或者对话系统的一个轮次）。 所有文件必须使用相同的语言。 （不支持多语言自定义语音。）音频文件还必须都有唯一的数字文件名及扩展名 `.wav`。
+每个音频文件应包含一个表述（例如，一个句子，或者对话系统的一个轮次）。 所有文件必须使用相同的语言。 （不支持多语言自定义语音。）每个音频文件还必须有唯一的带文件名扩展名 `.wav` 的数字文件名。
 
 音频文件应按如下方式准备。 其他格式不受支持，会被拒绝。
 

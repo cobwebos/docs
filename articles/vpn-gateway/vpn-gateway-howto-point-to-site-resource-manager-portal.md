@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: d524555330653a90f52505c22f50f4d677ab6632
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3254f0c26e21bc7ba71fc23362f263cb126ea3b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387253"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026358"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：Azure 门户
 
@@ -73,7 +73,7 @@ ms.locfileid: "49387253"
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
+>基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
 >
 
 ## <a name="generatecert"></a>5.生成证书
@@ -172,7 +172,7 @@ VPN 客户端配置文件包含的设置用来对设备进行配置以通过 P2S
 
 在“网络”对话框中，找到要使用的客户端配置文件，在 [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) 中指定设置，然后单击“连接”。
 
-请查看[安装 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) 获取详细说明。
+请查看[安装 - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) 获取详细说明。 如果连接有问题，请验证虚拟网络网关是否未使用基本 SKU。 Mac 客户端不支持基本 SKU。
 
   ![Mac 连接](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

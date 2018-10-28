@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e42c678f3c6d030be13e40197a06e73b62581902
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843165"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988390"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft 身份验证库 (MSAL) 登录用户
 
@@ -127,24 +127,26 @@ else {
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
 
-用户首次单击“登录”按钮后，`signIn` 方法调用 `loginPopup` 登录用户。 此方法导致使用 *Microsoft Azure Active Directory v2 终结点*打开一个弹出窗口，以提示并验证用户的凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
+用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户。 此方法导致使用 *Microsoft Azure Active Directory v2.0 终结点*打开一个弹出窗口，以提示用户输入凭据并验证该凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
 本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Azure Active Directory v2 终结点交互，一些示例包括：
+初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Azure Active Directory v2.0 终结点交互，一些示例包括：
+
 - 由于密码已过期，用户可能需要重新输入凭据
 - 应用程序正在请求访问用户需要同意的资源
 - 需要双重身份验证
 
-调用 acquireTokenPopup(scope) 导致显示一个弹出窗口（或调用 acquireTokenRedirect(scope) 导致将用户重定向到 Azure Active Directory v2 终结点），在这种情况下，用户需要通过确认其凭据、同意所需资源或完成双因素身份验证来与之交互。
+调用 acquireTokenPopup(scope) 导致显示一个弹出窗口（或调用 acquireTokenRedirect(scope) 导致将用户重定向到 Azure Active Directory v2.0 终结点），在这种情况下，用户需要通过确认其凭据、同意所需资源或完成双因素身份验证来与之交互。
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
+
 ` acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginPopup`（或 `loginRedirect`）后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用，因为调用请求或续订令牌都以静默方式进行。
 在某些情况下，`acquireTokenSilent` 可能会失败，例如用户的密码已过期。 应用程序可以通过两种方式处理此异常：
 
-1.  立即调用 `acquireTokenPopup`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的未经身份验证的内容。 本指导式设置生成的示例使用此模式。
+1. 立即调用 `acquireTokenPopup`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的未经身份验证的内容。 本指导式设置生成的示例使用此模式。
 
 2. 应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下（例如，应用程序中有可用的未经身份验证的内容）使用应用程序的其他功能，则通常会使用此方法。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息。
 

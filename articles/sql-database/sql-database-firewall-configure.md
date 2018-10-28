@@ -11,20 +11,23 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 4f6c98533a2ab1289ca5f1da25c44fe1a77a983c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353659"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945461"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL 数据库和 SQL 数据仓库防火墙规则
 
 Microsoft Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)为 Azure 和其他基于 Internet 的应用程序提供关系型数据库服务。 为了保护数据，在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。
 
 > [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 
+
+> [!IMPORTANT]
+> 本文不适用于 **Azure SQL 数据库托管实例**。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
 
 ## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>将虚拟网络规则作为 IP 规则的替代
 
@@ -80,7 +83,7 @@ Microsoft 建议尽量使用数据库级防火墙规则，以增强安全性并�
 
 ## <a name="creating-and-managing-firewall-rules"></a>创建和管理防火墙规则
 
-第一个服务器级防火墙设置可以使用 [Azure 门户](https://portal.azure.com/)进行创建，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) 或 [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate) 通过编程方式创建。 后续的服务器级防火墙规则可以使用这些方法或通过 Transact-SQL 创建和管理。
+第一个服务器级防火墙设置可以使用 [Azure 门户](https://portal.azure.com/)进行创建，也可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) 或 [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) 通过编程方式创建。 后续的服务器级防火墙规则可以使用这些方法或通过 Transact-SQL 创建和管理。
 
 > [!IMPORTANT]
 > 只能使用 Transact-SQL 创建和管理数据库级防火墙规则。
@@ -189,10 +192,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | 级别 | Description |
 | --- | --- | --- |
-| [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver) |服务器 |显示当前的服务器级防火墙规则 |
-| [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate) |服务器 |创建或更新服务器级防火墙规则 |
-| [删除防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete) |服务器 |删除服务器级防火墙规则 |
-| [获取防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get) | 服务器 | 获取服务器级别防火墙规则 |
+| [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |服务器 |显示当前的服务器级防火墙规则 |
+| [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |服务器 |创建或更新服务器级防火墙规则 |
+| [删除防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |服务器 |删除服务器级防火墙规则 |
+| [获取防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | 服务器 | 获取服务器级别防火墙规则 |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>服务器级防火墙规则与数据库级防火墙规则
 

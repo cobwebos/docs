@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095192"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407106"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
   > [!NOTE]
@@ -45,6 +45,9 @@ ms.locfileid: "44095192"
 
 ## <a name="configure-the-service-map-integration"></a>配置服务映射集成
 安装服务映射管理包后，“管理”窗格中“Operations Management Suite”的下面会显示新节点“服务映射”。 
+
+>[!NOTE]
+>[Operations Management Suite 是一组服务](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) 的一部分。
 
 若要配置服务映射集成，请执行以下操作：
 
@@ -104,7 +107,12 @@ ms.locfileid: "44095192"
     ![Operations Manager 分布式应用程序关系图](media/monitoring-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>编辑或删除工作区
-可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。 目前只能配置一个 Log Analytics 工作区。
+可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。
+
+>[!NOTE]
+>[Operations Management Suite 是一组服务](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) 的一部分。
+
+目前只能配置一个 Log Analytics 工作区。
 
 ![Operations Manager 的“编辑工作区”窗格](media/monitoring-service-map/scom-edit-workspace.png)
 

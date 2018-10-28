@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406906"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430164"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -418,7 +418,7 @@ SQL Server 2014 引入了一项称为[缓冲池扩展](https://docs.microsoft.co
 
 
 ### <a name="automated-backup-for-sql-server"></a>SQL Server 自动备份
-自动备份为 Windows Azure VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。 如果在安装了 SQL Server 情况下部署自己的 OS 映像，需要单独安装 VM 扩展。 本[文章](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)介绍了必要的步骤。
+自动备份为 Azure Windows VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。 如果在安装了 SQL Server 情况下部署自己的 OS 映像，需要单独安装 VM 扩展。 本[文章](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)介绍了必要的步骤。
 
 有关此方法的功能的详细信息，请参阅以下文章：
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042081"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408202"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -58,8 +58,8 @@ ms.locfileid: "48042081"
 ## <a name="configuration"></a>配置
 
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
-2. 在 OMS 门户中，单击“设置”&gt;“数据”&gt;“Application Insights”。
-3. 在“选择订阅”下面选择包含 Application Insights 资源的订阅，然后在“应用程序名称”下面选择一个或多个应用程序。
+2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”以打开 Application Insights。 然后，搜索 Application Insights。 
+3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。
 4. 单击“ **保存**”。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
@@ -133,7 +133,7 @@ ms.locfileid: "48042081"
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>在 Azure 门户中透视应用
 
-使用 OMS 门户时，可以通过“Application Insights 连接器”边栏选项卡透视选定的 Application Insights 应用。 可以使用该解决方案作为高级监视平台来帮助排查应用问题。 在任何连接的应用程序中发现潜在问题时，可以在 Log Analytics 搜索中深入到该问题，或者直接透视 Application Insights 应用。
+“Application Insights 连接器”边栏选项卡用来在你使用 Azure 门户时切换到选定的 Application Insights 应用。 可以使用该解决方案作为高级监视平台来帮助排查应用问题。 在任何连接的应用程序中发现潜在问题时，可以在 Log Analytics 搜索中深入到该问题，或者直接透视 Application Insights 应用。
 
 若要透视，请单击每行末尾显示的省略号 (**...**)，然后选择“在 Application Insights 中打开”。
 
@@ -174,9 +174,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | 记录的时间 |
 | ApplicationId | Application Insights 应用的检测密钥 |
@@ -225,7 +225,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>异常特定的字段
 
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 异常 |
 | ExceptionType | 异常的类型 |
@@ -242,9 +242,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
 | ResponseCode | 发送到客户端的 HTTP 响应 |
 | RequestSuccess | 指示成功或失败。 True 或 False。 |

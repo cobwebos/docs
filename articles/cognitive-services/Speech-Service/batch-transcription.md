@@ -1,27 +1,35 @@
 ---
 title: Azure Batch 听录 API
-description: 示例
+titlesuffix: Azure Cognitive Services
+description: 用于听录大量音频内容的示例。
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e7523bf97d6252422ebb853b818453c935640f50
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884453"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648796"
 ---
 # <a name="batch-transcription"></a>批量听录
 
-Batch 听录非常适合处理大量的音频。 可以通过 URI 指向音频文件并以异步模式返回听录内容。
+如果存储中有大量音频，批量听录是理想的选择。 使用我们的 Rest API，可以通过 SAS URI 指向音频文件并异步接收听录。
 
 ## <a name="batch-transcription-api"></a>批量听录 API
 
-Batch 听录 API 提供异步语音转文本听录和其他功能。
+Batch 听录 API 提供异步语音转文本听录和其他功能。 它是一种 REST API 公开方法，用于：
+
+1. 创建批处理请求
+
+2. 查询状态 
+
+3. 下载听录
 
 > [!NOTE]
 > Batch 听录 API 非常适合经常累积数千小时音频的呼叫中心。 该 API 秉持“用后即焚”理念，能够轻松听录大量的录音。
@@ -95,78 +103,77 @@ wav |  立体声  |
         }
 ```
 
-获取令牌后，必须指定指向需要听录的音频文件的 SAS URI。 剩余代码将循环访问状态并显示结果。
+获取令牌后，必须指定指向需要听录的音频文件的 SAS URI。 剩余代码将循环访问状态并显示结果。 最初可以设置要使用的密钥、区域、模型和 SA， 如下面的代码片段所示。 然后对客户端和 POST 请求进行实例化。 
 
 ```cs
-   static async Task TranscribeAsync()
-        { 
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
+            // SAS URI 
+            private const string RecordingsBlobUri = "some SAS URI";
+
+            // adapted model Ids
+            private static Guid AdaptedAcousticId = new Guid("some guid");
+            private static Guid AdaptedLanguageId = new Guid("some guid");
+
             // Creating a Batch transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
-            var transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
+```
 
-            // get the transcription Id from the location URI
-            var createdTranscriptions = new List<Guid>();
-            createdTranscriptions.Add(new Guid(transcriptionLocation.ToString().Split('/').LastOrDefault()))
+现在已发出了请求，用户可以查询和下载听录结果，如代码片段所示。
 
-            while (true)
+```cs
+  
+            // get all transcriptions for the user
+            transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
+
+            // for each transcription in the list we check the status
+            foreach (var transcription in transcriptions)
             {
-                // get all transcriptions for the user
-                transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-                completed = 0; running = 0; notStarted = 0;
-
-                // for each transcription in the list we check the status
-                foreach (var transcription in transcriptions)
+                switch(transcription.Status)
                 {
-                    switch(transcription.Status)
-                    {
-                        case "Failed":
-                        case "Succeeded":
+                    case "Failed":
+                    case "Succeeded":
 
                             // we check to see if it was one of the transcriptions we created from this client.
-                            if (!createdTranscriptions.Contains(transcription.Id))
-                            {
-                                // not creted form here, continue
-                                continue;
-                            }
+                        if (!createdTranscriptions.Contains(transcription.Id))
+                        {
+                            // not creted form here, continue
+                            continue;
+                        }
                             
-                            completed++;
+                        completed++;
                             
-                            // if the transcription was successfull, check the results
-                            if (transcription.Status == "Succeeded")
-                            {
-                                var resultsUri = transcription.ResultsUrls["channel_0"];
-                                WebClient webClient = new WebClient();
-                                var filename = Path.GetTempFileName();
-                                webClient.DownloadFile(resultsUri, filename);
-                                var results = File.ReadAllText(filename);
-                                Console.WriteLine("Transcription succedded. Results: ");
-                                Console.WriteLine(results);
-                            }
-                            break;
-                        case "Running":
-                            running++;
-                            break;
-                        case "NotStarted":
-                            notStarted++;
-                            break;
+                        // if the transcription was successfull, check the results
+                        if (transcription.Status == "Succeeded")
+                        {
+                            var resultsUri = transcription.ResultsUrls["channel_0"];
+                            WebClient webClient = new WebClient();
+                            var filename = Path.GetTempFileName();
+                            webClient.DownloadFile(resultsUri, filename);
+                            var results = File.ReadAllText(filename);
+                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine(results);
+                        }
+                    
+                    break;
+                    case "Running":
+                    running++;
+                     break;
+                    case "NotStarted":
+                    notStarted++;
+                    break;
+                    
                     }
                 }
-
-                Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
-
-                await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             }
-
-            Console.WriteLine("Press any key...");
         }
 ```
+
+我们的 [Swagger 文档](https://westus.cris.ai/swagger/ui/index)提供了有关上述调用的完整详细信息。 [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) 中提供了此处所示的完整示例。
 
 > [!NOTE]
 > 在上述代码中，订阅密钥取自在 Azure 门户上创建的语音资源。 从自定义语音服务资源获取的密钥不起作用。

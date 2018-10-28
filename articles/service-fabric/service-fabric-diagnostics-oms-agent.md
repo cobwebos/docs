@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 21c9441e2b3d3ad54d491834e6de097a8880b5b7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: cc051e1ba0bbea68bb1e888168883351bf4f730f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311110"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406205"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>使用 Log Analytics 设置性能监视
 

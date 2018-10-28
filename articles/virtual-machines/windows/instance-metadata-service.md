@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 0ea9fbf8042c4d6ab3f9462c77ec5cf5106d1021
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 331ec4bd7e91e8283f6a44b0fd440a9d73e28710
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389526"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024165"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -299,7 +299,7 @@ subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | [计划] VM 的 (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，Azure 市场映像，包含名称、产品和发行商 | 2017-04-02
+计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者 | 2017-04-02
 publicKeys | 公钥的集合 [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey]，已分配给 VM 和路径 | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01 

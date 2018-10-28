@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6a777418c5381f1f52bae31ad4e697248587fc6d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 84e26212b1102d693b84e5b66fbd606da2673934
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576538"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405922"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-gdpr"></a>Azure 安全性和符合性蓝图：符合 GDPR 的数据仓库
 
@@ -66,7 +66,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 - Azure Active Directory
 - 恢复服务保管库
 - Azure 密钥保管库
-- Operations Management Suite (OMS)
+- Log Analytics
 - Azure 数据目录
 - Azure 安全中心
 
@@ -83,7 +83,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 
 此解决方案使用以下配置将虚拟机创建为已加入域的守护主机：
 -   [反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [OMS 扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Log Analytics 扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   使用 Azure Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用虚拟机时可减少其资源消耗量
@@ -100,7 +100,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - 已将 OMS Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+  - 已将 Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网都与其相应的 NSG 相关联。
 
@@ -140,7 +140,7 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 - 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
-**修补程序管理**：部署为此参考体系结构一部分的 Windows 虚拟机默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 OMS [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，通过它可以在需要时创建更新部署修补虚拟机。
+**修补程序管理**：部署为此参考体系结构一部分的 Windows 虚拟机默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，通过该服务可以在需要时创建更新部署，以修补虚拟机。
 
 **恶意软件防护**：用于虚拟机的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)提供实时保护功能，当已知的恶意软件或不需要的软件试图在受保护的虚拟机上进行安装或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。
 
@@ -152,13 +152,13 @@ SQL 负载均衡器管理 SQL 流量，确保高性能。 此参考体系结构�
 **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 可广泛记录系统和用户活动以及系统运行状况。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集和分析 Azure 和本地环境中的资源生成的数据。
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 可广泛记录系统和用户活动以及系统运行状况。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集并分析 Azure 和本地环境中的资源生成的数据。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **日志存档**：所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期允许用户进行配置，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
-此外，包含以下 OMS 解决方案作为此体系结构的一部分：
--   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
+此外，以下 Log Analytics 解决方案作为此体系结构的一部分包括在内：
+-   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
 -   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
 -   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案存储、运行和管理 Runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49347011"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437163"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 
@@ -151,7 +151,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 ### <a name="premium-storage-disk-limits"></a>高级存储磁盘限制
 预配高级存储磁盘时，磁盘的大小将确定最大 IOPS 和吞吐量（带宽）。 Azure 提供了八种 GA 类型的高级存储磁盘：P4（仅适用于托管磁盘）、P6（仅适用于托管磁盘）、P10、P15（仅适用于托管磁盘）、P20、P30、P40 和 P50。 同时提供了三种预览磁盘大小：P60、P70 和 P80。 每种高级存储磁盘类型在 IOPS 和吞吐量方面存在具体的限制。 下表描述了磁盘类型的限制：
 
-| 高级磁盘类型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   | |---------------------|-------|-------|-------|-------|-------|-------|-------|-------||-------||-------||-------| | 磁盘大小           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 TiB)    | | IOPS/磁盘       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              | | 每磁盘吞吐量 | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
+| 高级磁盘类型  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| 磁盘大小           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16,384 GiB (16 TiB)| 32,767 GiB (32 TiB)|
+| 每个磁盘的 IOPS       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12,500          | 15,000             | 20,000             |
+| 每个磁盘的吞吐量 | 每秒 25 MB | 每秒 50 MB | 每秒 100 MB | 每秒 125 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 每秒 480 MB | 每秒 750 MB | 每秒 750 MB |
 
 > [!NOTE]
 > 请确保 VM 上有足够的带宽可用来驱动磁盘流量，如[高级存储支持的 VM](#premium-storage-supported-vms) 中所述。 否则，磁盘吞吐量和 IOPS 将限制为较小的值。 最大吞吐量和 IOPS 基于 VM 限制，而不是上表中所述的磁盘限制。  

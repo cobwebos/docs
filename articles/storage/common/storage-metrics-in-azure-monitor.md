@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 8fe4fdfa88a5aea4b8df49d9c00fa7f6b1768209
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b9b6c67930e251302f397e199c65f949997a25cf
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363429"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637946"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -23,13 +23,13 @@ Azure Monitor 提供统一的用户界面用于监视不同的 Azure 服务。 �
 
 ## <a name="access-metrics"></a>访问指标
 
-Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Operation Management Suite 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）以及分析解决方案（例如事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 默认情况下，已启用指标，并且可访问过去 93 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 中完成这种配置。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>在 Azure 门户中访问指标
 
-可在 Azure 门户中访问不同时间的指标。 以下演示如何查看帐户级别的 **UsedCapacity**。
+可在 Azure 门户中访问不同时间的指标。 以下示例演示如何查看帐户级别的**事务**。
 
 ![在 Azure 门户中访问指标的屏幕截图](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 

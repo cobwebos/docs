@@ -1,20 +1,21 @@
 ---
-title: 通过语音服务使用“文本转语音”功能
+title: 使用语音服务中的“文本转语音”功能
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务中的“文本转语音”功能。
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 774425d19101e4d326f0d6435d56aff1b37a31f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165039"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469905"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>使用语音服务中的“文本转语音”功能
 

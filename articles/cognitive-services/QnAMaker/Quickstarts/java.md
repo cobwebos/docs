@@ -1,23 +1,23 @@
 ---
-title: 快速入门：适用于 QnA Maker API (v4) 的 Java
+title: REST API (V4) - Java - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
+description: 获取基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 464860b94d0524cded48934e7684f5c78e595a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c92addcbb6a4071022474c5c157c498364ebf0f6
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389337"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647929"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>使用 Java 的 Microsoft QnA Maker API 快速入门 
+# <a name="qna-maker-rest-api-with-java"></a>QnA Maker REST API 与 Java 
 <a name="HOLTop"></a>
 
 本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md) 与 Java 结合使用以执行下列操作。

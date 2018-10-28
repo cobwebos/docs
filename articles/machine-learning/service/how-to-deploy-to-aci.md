@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237171"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429450"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>将 Web 服务部署到 Azure 容器实例 
 
@@ -82,10 +82,10 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > 如果是[从模型文件部署](#deploy-from-model-file) (`Webservice.deploy()`)，可跳过本条。
 
-注册模型以使用 [`Webservice.deploy_from_model`](#deploy-from-registered-model) 或 [`Webservice.deploy_from_image`](#deploy-from-image)。 如果已有注册的模型，请立即检索它。
+注册模型以使用 [Webservice.deploy_from_model](#deploy-from-registered-model) 或 [Webservice.deploy_from_image](#deploy-from-image)。 如果已有注册的模型，请立即检索它。
 
 ### <a name="retrieve-a-registered-model"></a>检索已注册的模型
-如果使用 Azure 机器学习来训练模型，该模型可能已在工作区中注册。  例如，在[训练模型](tutorial-train-models-with-aml.md)教程的最后一步就注册了模型。  然后，检索要部署的已注册模型。
+如果使用 Azure 机器学习来训练模型，该模型可能已在工作区中注册。  例如，在[训练模型教程](tutorial-train-models-with-aml.md)的最后一步就注册了模型。  然后，检索要部署的已注册模型。
 
 ```python
 from azureml.core.model import Model
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>选项 1：从模型文件部署
 
 从模型文件部署的选项需要写入的代码量最少，但也对组件的命名提供的控制也最少。 此选项从模型文件开始，将其注册到工作区中。  但是，你无法对模型命名或为其关联标记或描述。  
@@ -148,6 +148,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 1. 现可[测试 Web 服务](#test-web-service)。
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>选项 2：从已注册的模型部署
 
 部署已注册模型文件的选项需要更多行代码，并且需要对输出的命名进行一些控制。 此选项是部署已有注册模型的便捷方法。  然而，你无法命名 Docker 映像。  
@@ -173,6 +174,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 1. 现可[测试 Web 服务](#test-web-service)。
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>选项 3：从映像部署
 
 使用 `Webservice.deploy_from_image()` 部署已注册的模型 (`model`)。 使用此方法，可单独创建 Docker 映像，然后从该映像进行部署。
@@ -215,6 +217,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 现可测试 Web 服务。
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>测试 Web 服务
 
 无论使用哪一种方法，Web 服务都相同。  若要获得预测，请使用服务的 `run` 方法。  

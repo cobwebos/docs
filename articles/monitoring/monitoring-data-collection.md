@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406033"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637791"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../azure-monitor/overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -108,7 +108,7 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 
 
 ### <a name="viewing-metrics"></a>查看指标
-Azure 中的指标收集到 Azure Monitor 指标存储中。 该存储是一个经优化的时序数据库，支持快速检索，并可将指标值存储 93 天。 将指标复制到 Log Analytics 以进行长期分析和了解长期趋势。
+Azure 中的指标将收集到 Azure Monitor 指标数据库中。 该存储是一个经优化的时序数据库，支持快速检索，并可将指标值存储 93 天。 将指标复制到 Log Analytics 以进行长期分析和了解长期趋势。
 
 如前所述，指标数据有多种用法。 使用[指标资源管理器](../monitoring-and-diagnostics/monitoring-metric-charts.md)直接分析指标存储中的数据，并在图表中绘制多个指标在不同时间段的值。 可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) 检索指标。
 
@@ -173,7 +173,7 @@ Log Analytics 可从 Azure 和本地资源中的各种源收集数据。 写入 
 有关如何从 Azure 资源收集指标的指南，可以参阅[收集在 Log Analytics 中使用的 Azure 服务日志和指标](../log-analytics/log-analytics-azure-storage.md)。 有关如何从 Azure PaaS 资源收集资源指标的指南，请参阅[使用 Log Analytics 配置 Azure PaaS 资源指标的收集](../log-analytics/log-analytics-collect-azurepass-posh.md)。
 
 ### <a name="logs-to-metrics"></a>从日志传输到指标
-如前所述，指标的响应速度快于日志，因此在创建警报时延迟更低，成本也更低。 Log Analytics 收集的很多数字数据本来是适合指标的，但并不存储在 Azure 指标存储中。  一个常见的示例是从代理和管理解决方案收集的性能数据。 某些这样的数据可以复制到 Azure 指标存储中，以便通过指标资源管理器发送警报以及进行分析。
+如前所述，指标的响应速度快于日志，因此在创建警报时延迟更低，成本也更低。 Log Analytics 会收集大量适合指标的数字数据，但不会存储在 Azure 指标数据库中。  一个常见的示例是从代理和管理解决方案收集的性能数据。 其中一些值可以复制到 Azure 指标数据库中，可用于发出警报以及使用指标资源管理器进行分析。
 
 有关此功能的说明，请参见[在 Azure Monitor 中为日志创建指标警报](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md)。 值支持列表可以在 [Azure Monitor 支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)中获得。
 

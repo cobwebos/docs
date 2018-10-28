@@ -14,38 +14,38 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cf064be5f723651d571b2db619782f50225e5ade
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4f820a95759d16a9b6ac1eb1e442ae0bc8d681a3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843109"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988220"
 ---
 ## <a name="setting-up-your-ios-application"></a>设置 iOS 应用程序
 
-本部分提供分步说明，介绍如何创建新项目，用于演示如何将 iOS 应用程序 (Swift) 与“登录 Microsoft”集成，使其能查询需要令牌的 Web API。
+本部分提供分步说明，介绍如何创建新项目，以演示如何将 iOS 应用程序 (Swift) 与“使用 Microsoft 登录”集成，使其能查询需要令牌的 Web API。
 
 > 想要改为下载此示例的 XCode 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)并跳到[配置步骤](#register-your-application)，在执行前配置代码示例。
 
-
 ## <a name="install-carthage-to-download-and-build-msal"></a>安装 Carthage 以下载和生成 MSAL
+
 Carthage 程序包管理器在 MSAL 预览期间使用 - 它与 XCode 集成，同时保留 Microsoft 对库做出更改的能力。
 
-- 在[此处](https://github.com/Carthage/Carthage/releases "Carthage 下载 URL")下载和安装最新版本的 Carthage
+- 在[此处](https://github.com/Carthage/Carthage/releases "Carthage 下载 URL") 下载并安装最新版本的 Carthage。
 
 ## <a name="creating-your-application"></a>创建应用程序
 
-1.  打开 Xcode，然后选择 `Create a new Xcode project`
-2.  选择 `iOS` > `Single view Application`，然后单击“下一步”
-3.  提供产品名称并单击“下一步”
-4.  选择一个文件夹以创建应用，然后单击“创建”
+1. 打开 Xcode，并选择“新建 Xcode 项目”。
+2. 选择“iOS”>“单一视图应用程序”，并选择“下一步”。
+3. 提供产品名称并选择“下一步”。
+4. 选择一个文件夹以创建应用，然后单击“创建”
 
 ## <a name="build-the-msal-framework"></a>生成 MSAL Framework
 
 请按照以下说明使用 Carthage 拉取和生成最新版本的 MSAL：
 
-1.  打开 Bash 终端，然后转到应用的根文件夹
-2.  复制以下内容并粘贴到 Bash 终端以创建“Cartfile”文件：
+1. 打开 Bash 终端，并转到应用的根文件夹。
+2. 复制以下内容并粘贴到 Bash 终端以创建“Cartfile”文件：
 
 ```bash
 echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" > Cartfile
@@ -61,15 +61,16 @@ echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" >
 carthage update
 ```
 
-> 上述过程用于下载和生成 MMicrosoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2 保护的 API 的用户令牌。
+> 上述过程用于下载和生成 MMicrosoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌。
 
 ## <a name="add-the-msal-framework-to-your-application"></a>将 MSAL framework 添加到应用程序
-1.  在 Xcode 中打开 `General` 选项卡
-2.  转到 `Linked Frameworks and Libraries` 部分，然后单击 `+`
-3.  选择 `Add other…`
-4.  选择：`Carthage` > `Build` > `iOS` > `MSAL.framework`，然后单击“打开”。 会看到 `MSAL.framework` 添加到了列表。
-5.  转到 `Build Phases` 选项卡，然后单击 `+` 图标并选择 `New Run Script Phase`
-6.  将以下内容添加到脚本区域：
+
+1. 在 Xcode 中，打开“常规”选项卡。
+2. 转到“链接的框架和库”部分，选择 **+**。
+3. 选择“添加其他...”。
+4. 选择“Carthage”>“生成”>“iOS”>“MSAL.framework”，然后选择“打开”。 会看到 `MSAL.framework` 添加到了列表。
+5. 转到“构建阶段”选项卡，选择 **+** 图标，然后选择“新建运行脚本阶段”。
+6. 将以下内容添加到脚本区域：
 
 ```text
 /usr/local/bin/carthage copy-frameworks
@@ -87,6 +88,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ```
 
 ## <a name="creating-your-applications-ui"></a>创建应用程序 UI
+
 项目模板中应自动创建了 Main.storyboard 文件。 请按照以下说明创建应用 UI：
 
 1.  按住 Control 键并单击 `Main.storyboard` 打开上下文菜单，然后单击：`Open As` > `Source Code`

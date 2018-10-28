@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067750"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649306"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -157,11 +157,9 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 * 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft 是否会访问我的 LUIS 应用数据来供其自己使用？例如，用来增强 LUIS 或一般 Microsoft 产品的功能？
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Microsoft 如何管理我发送给 LUIS 的数据？
 
-不是。 LUIS 不会使用 LUIS 应用的数据模型来增强作为平台的 LUIS，Microsoft 也不会以任何方式使用该数据模型。 每个应用的数据都是独立的并且仅由用户和协作者拥有。
-
-详细了解[用户隐私](luis-user-privacy.md)、[附加安全符合性](luis-concept-security.md#security-compliance)和[数据存储](luis-concept-data-storage.md)。
+[信任中心](https://www.microsoft.com/trustcenter)解释了我们的承诺以及用于在 Azure 服务中进行数据管理和访问的选项。
 
 ## <a name="language-and-translation-support"></a>语言和翻译支持
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 自动化中的 runbook 收集 Log Analytics 数据 | Microsoft Docs
-description: 分步教程，逐步讲解如何在 Azure 自动化中创建 runbook，将数据收集到 OMS 存储库，供 Log Analytics 进行分析。
+description: 此分步教程逐步讲解如何在 Azure 自动化中创建 runbook，以将数据收集到存储库，供 Log Analytics 进行分析。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347609"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409503"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../log-analytics/log-analytics-data-sources.md)以及[从 Azure 中收集的数据](../log-analytics/log-analytics-azure-storage.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../log-analytics/log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   
@@ -56,7 +56,7 @@ ms.locfileid: "37347609"
 
 
 ## <a name="2-create-automation-variables"></a>2.创建自动化变量
-[自动化变量](..\automation\automation-variables.md)保存可由自动化帐户中所有 runbook 使用的值。  这些变量允许更改这些值，而无需编辑实际的 runbook，这样可使 runbook 更为灵活。 来自 HTTP 数据收集器 API 的每个请求都需要 OMS 工作区的 ID 和密钥，并且变量资产是存储此信息的理想之选。  
+[自动化变量](..\automation\automation-variables.md)保存可由自动化帐户中所有 runbook 使用的值。  这些变量允许更改这些值，而无需编辑实际的 runbook，这样可使 runbook 更为灵活。 来自 HTTP 数据收集器 API 的每个请求都需要 Log Analytics 工作区的 ID 和密钥，并且变量资产是存储此信息的理想之选。  
 
 ![变量](media/monitoring-runbook-datacollect/variables.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "37347609"
 | 属性 | 工作区 ID 值 | 工作区密钥值 |
 |:--|:--|:--|
 | 名称 | WorkspaceId | WorkspaceKey |
-| Type | String | String |
+| 类型 | String | String |
 | 值 | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
 | 加密 | 否 | 是 |
 

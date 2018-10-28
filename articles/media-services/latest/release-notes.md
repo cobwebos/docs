@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 4001d0e21e7a0c8977d785463fb54aa4de45786c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378731"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945029"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明 
 
@@ -35,10 +35,6 @@ ms.locfileid: "49378731"
 ### <a name="rest-v3-ga-release"></a>REST v3 GA 发布
 
 [REST v3 GA 发布](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)包含更多用于实时、帐户/资产级别清单筛选器和 DRM 支持的 API。
-
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
- 
-Azure CLI 2.0 模块适用于所有功能，包括实时、内容密钥策略、帐户/资产筛选器、流式处理策略。
 
 #### <a name="azure-resource-management"></a>Azure 资源管理 
 
@@ -95,7 +91,9 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="plans-for-changes"></a>更改计划
 
-Azure CLI 版本将于 2018/10/23 日推出。
+#### <a name="azure-cli-20"></a>Azure CLI 2.0
+ 
+包含所有功能（包括 Live、内容密钥策略、帐户/资产筛选器、流式处理策略）的操作的 Azure CLI 2.0 模块即将推出。 
 
 ### <a name="known-issues"></a>已知问题
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 452502d5d6a0a35f642de7e14b2a7ee7fc573bfa
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378663"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025576"
 ---
 # <a name="encoding-with-azure-media-services"></a>使用 Azure 媒体服务进行编码
 
@@ -26,7 +26,7 @@ ms.locfileid: "49378663"
 
 使用 Azure 媒体服务进行编码时，可以使用预设来指示编码器应如何处理输入媒体文件。 例如，可以在编码内容中指定所需的视频分辨率和/或音频信道数量。 
 
-可以使用行业最佳做法推荐的内置预设之一快速入门，也可以选择针对特定方案或设备要求生成自定义预设。 有关详细信息，请参阅[使用 Azure 媒体服务进行编码](encoding-concept.md)。 
+可以使用行业最佳做法推荐的内置预设之一快速入门，也可以选择针对特定方案或设备要求生成自定义预设。 有关详细信息，请参阅[使用自定义转换编码](customize-encoder-presets-how-to.md)。 
 
 ## <a name="built-in-presets"></a>内置预设
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108755"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025984"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 设备管理器服务修改 StorSimple 设备配置
 
@@ -65,7 +65,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
  从下拉列表中选择所在的时区。 最多可以指定两个网络时间协议 (NTP) 服务器：
 
- - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可以将默认 Windows Server **time.windows.com** 指定为 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress] (https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
+ - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可以将默认 Windows Server **time.windows.com** 指定为 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
 
 - **辅助 NTP 服务器** - 该配置是可选的。 可以使用门户来配置辅助 NTP 服务器。
 
@@ -168,5 +168,5 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何[为 StorSimple 设备配置 MPIO](storsimple-8000-configure-mpio-windows-server.md)。
-* 了解如何[使用 StorSimple 设备管理器服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
+* 了解如何[使用 StorSimple Device Manager 服务管理 StorSimple 设备](storsimple-8000-manager-service-administration.md)。
 

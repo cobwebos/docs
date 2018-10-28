@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: b9372c806eab1b0ca69ba078d972b076c8a7d6f6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212704"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402975"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 
@@ -45,7 +45,7 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 ## <a name="how-to-access-events"></a>如何访问事件
 
 可以通过以下几种不同的方式访问 Service Fabric 事件：
-* 通过操作通道。 可以通过 Azure 诊断扩展收集这些事件并将其发送到存储表以便使用或引入到诸如 OMS Log Analytics 的工具中。 为群集启用“诊断”后，Azure 诊断代理便会部署在群集上，并默认配置为通过操作通道读取日志。 详细了解如何配置 [Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)，以便修改群集的诊断配置，从而获取更多日志或性能计数器。 
+* 通过操作通道。 可以通过 Azure 诊断扩展收集这些事件并将其发送到存储表以便使用或引入到诸如 Azure Log Analytics 的工具中。 为群集启用“诊断”后，Azure 诊断代理便会部署在群集上，并默认配置为通过操作通道读取日志。 详细了解如何配置 [Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)，以便修改群集的诊断配置，从而获取更多日志或性能计数器。 
 * 通过 EventStore 服务的 Rest API，这允许直接查询群集；或者通过 Service Fabric 客户端库。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>后续步骤

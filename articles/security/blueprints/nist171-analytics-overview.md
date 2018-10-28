@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 02db944e96c74d865026a17a3871dbad2835cf1d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f4d8f4a927415426248860b07a40e7294c84de59
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056066"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406949"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图：针对 NIST SP 800-171 的数据分析
 
@@ -22,7 +22,7 @@ ms.locfileid: "47056066"
 
 本 Azure 安全性和符合性蓝图提供的指导可帮助客户在 Azure 中部署数据分析体系结构，用于实施一部分 NIST SP 800-171 控制措施。 该解决方案展示了客户可以满足特定安全性和符合性要求的方式。 此外，它还是客户在 Azure 中构建及配置其数据分析解决方案的基础。
 
-此参考体系结构、相关实施指南和威胁模型旨在为客户适应其特定要求奠定基础， 而不应在生产环境中按原样使用。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
+此参考体系结构、相关实施指南和威胁模型旨在为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 此解决方案提供一个分析平台，客户可以在此平台上构建自己的分析工具。 参考体系结构概述了通用用例。 客户可以通过让 SQL/数据管理员执行大容量数据导入从而利用此体系结构来输入数据。 此外，客户还可以通过让操作用户执行操作数据更新从而利用此体系结构来输入数据。 两个工作流都将导入数据的 Azure Functions 合并到 Azure SQL 数据库。 Azure Functions 必须由客户通过 Azure 门户进行配置，以处理特定于客户分析要求的导入任务。
@@ -35,7 +35,7 @@ Azure 为客户提供各种报告和分析服务。 此解决方案利用 Azure 
 
 整个解决方案基于客户从 Azure 门户配置的 Azure 存储构建。 存储通过“存储服务加密”加密所有数据，以保持静态数据的机密性。 异地冗余存储可确保客户主数据中心的负面事件不会导致数据丢失。 第二个副本存储在数百英里以外的独立位置。
 
-为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户同时将这两个监视服务配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
+为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可同时将这两个监视服务配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
 
 通常通过 SQL Server Management Studio 管理 SQL 数据库。 它从配置为通过安全 VPN 或 Azure ExpressRoute 连接访问 SQL 数据库的本地计算机运行。 我们建议配置 VPN 或 ExpressRoute 连接，以便管理及将数据导入资源组。
 
@@ -71,12 +71,12 @@ Azure Functions：[Azure Functions](https://docs.microsoft.com/azure/azure-funct
 
 Azure 机器学习：[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/preview/)是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。
 
-Azure 数据目录：[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可以针对数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将添加到数据目录。 包含对数据源位置的引用。 会对元数据编制索引以轻松通过搜索发现每个数据源。 索引编制还让发现数据源的用户易于理解。
+Azure 数据目录：[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可以针对数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将添加到数据目录。 包含对数据源位置的引用。 会对元数据编制索引以轻松通过搜索发现每个数据源。 另外，索引编制还会让发现数据源的用户对其易于理解。
 
 ### <a name="virtual-network"></a>虚拟网络
 此参考体系结构定义一个地址空间为 10.0.0.0/16 的专用虚拟网络。
 
-网络安全组：[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 包含允许或拒绝虚拟网络中的流量的访问控制列表。 NSG 可用于在子网或单个虚拟机级别保护流量。 存在以下 NSG：
+网络安全组：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) 包含允许或拒绝虚拟网络中流量的访问控制列表。 NSG 可用于在子网或单个虚拟机级别保护流量。 存在以下 NSG：
   - 用于 Active Directory 的 NSG
   - 针对工作负荷的 NSG
 
@@ -134,9 +134,9 @@ Azure 安全中心：借助[安全中心](https://docs.microsoft.com/azure/secur
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志，以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-Log Analytics：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中用于进行处理、存储和仪表板报告。 收集数据后，会针对 Operations Management Suite 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
+Log Analytics：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中用于进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
 
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：可以使用 Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
@@ -166,7 +166,7 @@ Azure Monitor：[Monitor](https://docs.microsoft.com/azure/monitoring-and-diagno
 ### <a name="vpn-and-expressroute"></a>VPN 和 ExpressRoute
 必须配置安全 VPN 隧道或 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)，以安全地建立与作为此数据分析参考体系结构的一部分部署的资源的连接。 通过适当设置 VPN 或 ExpressRoute，客户可以为传输中的数据添加一层保护。
 
-在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 进行。 客户可以利用该连接在其网络和 Azure 之间安全“传输”加密链接内的信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
+在 Azure 中实施安全 VPN 隧道，可在本地网络与 Azure 虚拟网络之间创建虚拟专用连接。 此连接通过 Internet 实现。 客户可以利用该连接在其网络和 Azure 之间安全“传输”加密链接内的信息。 站点到站点 VPN 是安全成熟的技术，各种规模的企业已部署数十年。 此选项使用 [IPsec 隧道模式](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))作为加密机制。
 
 由于 VPN 隧道中的流量会通过站点到站点 VPN 在 Internet 上遍历，因此，Microsoft 提供了另一个更为安全的连接选项。 ExpressRoute 是 Azure 与本地位置或 Exchange 托管提供商之间专用的 WAN 链接。 ExpressRoute 连接直接连接到客户的电信服务提供商。 因此，数据不会在 Internet 上传输且不会对 Internet 公开。 与典型连接相比，这些连接在可靠性、速度、延迟和安全性方面都更胜一筹。 
 
@@ -176,7 +176,7 @@ Azure Monitor：[Monitor](https://docs.microsoft.com/azure/monitoring-and-diagno
 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 可将数据加载到 SQL 数据库，无需单独的提取、转换、加载或导入工具。 PolyBase 允许通过 T-SQL 查询访问数据。 Microsoft 商业智能和分析堆栈以及与 SQL Server 兼容的第三方工具都可以与 PolyBase 一起使用。
 
 ### <a name="azure-ad-setup"></a>Azure AD 设置
-[Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)，即可将本地部署 Active Directory 与 Azure AD 集成。 客户还可以将已部署的 Active Directory 基础结构（域控制器）绑定到 Azure AD。 若要执行此操作，请将 Active Directory 基础结构作为 Azure AD 林的子域进行部署。
+[Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)，即可将本地部署 Active Directory 与 Azure AD 集成。 此外，客户还可以将已部署的 Active Directory 基础结构（域控制器）绑定到 Azure AD。 若要执行此操作，请将 Active Directory 基础结构作为 Azure AD 林的子域进行部署。
 
 ## <a name="disclaimer"></a>免责声明
 

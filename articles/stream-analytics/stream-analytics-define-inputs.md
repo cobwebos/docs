@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 556b71d8312c7661b58a3ccf56fd76f6753ef9cf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579283"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987573"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -39,7 +39,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 `EventEnqueuedUtcTime` 是事件到达事件中心的时间戳，也是事件从事件中心发送到流分析的默认时间戳。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
 
 ### <a name="consumer-groups"></a>使用者组
-应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。 此外，还有一项限制，即每个事件中心只能有 20 个使用者组。 有关详细信息，请参阅[使用事件中心接收器排查 Azure 流分析问题](stream-analytics-event-hub-consumer-groups.md)。
+应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。 如果作业包含自联接或具有多个输入，则某些输入可能会由下游的多个读取器读取。 这种情况会影响单个使用者组中的读取器数量。 为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。 此外，还有一项限制，即每个事件中心只能有 20 个使用者组。 有关详细信息，请参阅[排查 Azure 流分析输入问题](stream-analytics-troubleshoot-input.md)。
 
 ### <a name="stream-data-from-event-hubs"></a>从事件中心对数据进行流式传输
 下表介绍了 Azure 门户的“新输入”页中用于从事件中心流式传输数据输入的每个属性：
@@ -179,5 +179,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301

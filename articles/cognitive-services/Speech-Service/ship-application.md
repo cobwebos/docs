@@ -1,20 +1,21 @@
 ---
-title: Azure 认知服务、认知服务语音 SDK API 文档 - 教程、API 参考
-description: 了解如何使用认知服务语音 SDK 创建和开发应用
-titleSuffix: Microsoft Cognitive Services
+title: 语音服务 SDK API 文档 - 教程和 API 参考
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用语音服务 SDK 创建和开发应用
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 4bfede8df88c64e795e33620650efb579f43ebba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7510b1501051b79f6bdaf33ec57647a7982fafda
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404302"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469412"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 

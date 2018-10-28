@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: ddb9e36775a815c07d40cecd61360c3e5b9c2611
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: c74d71f0ca8faec587cb36a789ed0328f9b24711
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378765"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954685"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
 
@@ -48,6 +48,9 @@ vCore 模型提供了两个服务层：常规用途和业务关键。 服务层�
 |备份|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份和还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算的 IO 性能。 还原速度非常快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
 |内存中|不支持|支持|不支持|
 |||
+
+> [!NOTE]
+> 可以将在基本服务层获得的免费 Azure SQL 数据库与 Azure 免费帐户结合使用来探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 - 有关详细信息，请参阅[单一数据库中的 vCore 资源限制](sql-database-vcore-resource-limits-single-databases.md)和[托管实例中的 vCore 资源限制](sql-database-managed-instance.md#vcore-based-purchasing-model)。
 - 若要详细了解常规用途服务层和业务关键服务层，请参阅[常规用途服务层和业务关键服务层](sql-database-service-tiers-general-purpose-business-critical.md)。

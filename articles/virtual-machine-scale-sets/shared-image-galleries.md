@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 76e1c4aec6804013a5958c8651c24eed61440c84
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 79f6a15bd4b56d9d7ee8b7ee741c0a4460231dfe
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045669"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023162"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -31,4 +31,4 @@ ms.locfileid: "47045669"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 [Azure CLI] 部署共享映像 (shared-images-cli.md)
+了解如何使用 [Azure CLI](shared-images-cli.md) 部署共享映像

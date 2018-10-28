@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f774aed837fac1829413493c98b6df0e4ca30600
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ec608964190c65d8d064582920e53545b9ee62a6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393207"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403996"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的数据仓库
 
@@ -22,7 +22,7 @@ ms.locfileid: "47393207"
 
 本 Azure 安全性和符合性蓝图提供的指导可帮助客户在 Azure 中部署数据仓库体系结构，用于实施一部分 NIST SP 800-171 控制措施。 该解决方案展示了客户可以满足特定安全性和符合性要求的方式。 此外，它还是客户在 Azure 中构建和配置其数据仓库解决方案的基础。
 
-此参考体系结构、相关实施指南和威胁模型的主要宗旨是为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能会因每个客户的具体实施方案而有所不同。
+此参考体系结构、相关实施指南和威胁模型的主要宗旨是为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 此解决方案提供了一个实现高性能和安全云数据仓库的参考体系结构。 此体系结构中有两个单独的数据层。 一个层是在群集的 SQL 环境中导入、存储和暂存数据的位置。 另一个层是用于 SQL 数据仓库的。 在这个层中，通过使用提取-转换-加载 (ETL) 工具（例如，[PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase) T-SQL 查询）来加载数据以进行处理。 将数据存储到 SQL 数据仓库后，即可大规模地运行分析。
@@ -35,7 +35,7 @@ SQL Server 负载均衡器将管理 SQL 流量以确保高性能。 此参考体
 
 此数据仓库参考体系结构还包含用于管理体系结构内资源的 Active Directory 层。 Active Directory 子网可在更大的 Active Directory 林结构下轻松采用。 这样，即使无法访问更大的林，环境也可以连续运行。 所有 VM 均已加入到 Active Directory 层的域中。 它们使用 Active Directory 组策略在操作系统级别强制实施安全性和符合性配置。
 
-该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 会在客户选择的数据中心内存储三个数据副本，以提供复原能力。 异地冗余存储可确保将数据复制到数百英里之外的辅助数据中心，并在该数据中心内再次存储为三个副本。 这种布排方式可防止客户主要数据中心发生不利事件而导致数据丢失。
+该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 会在客户选择的数据中心内存储三个数据副本，以提供复原能力。 异地冗余存储可确保将数据复制到数百英里之外的辅助数据中心，并在该数据中心内再次存储为三个副本。 此安排可防止客户主要数据中心发生的不利事件导致数据丢失。
 
 为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可同时将这两个监视服务配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
 
@@ -83,7 +83,7 @@ Azure 数据目录：[数据目录](https://docs.microsoft.com/azure/data-catalo
 此解决方案使用以下配置将 VM 创建为已加入域的守护主机：
 -   [反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)。
 -   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)。
--   使用密钥保管库的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
+-   使用 Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用 VM 时可减少其资源消耗量。
 -   已启用 [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard)，以便凭据和其他机密在与运行操作系统相隔离的受保护环境中运行。
 
@@ -114,7 +114,7 @@ Azure SQL 数据库：SQL 数据库实例使用以下数据库安全措施：
 -   [SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
 -   SQL 数据库配置为使用[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 它对数据库、相关备份和事务日志文件进行实时加密和解密，以保护静态信息。 透明数据加密可确保存储的数据免遭他人未经授权的访问。
 -   在授予相应的权限前，[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)会阻止对数据库服务器的所有访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。
--   [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)可启用检测并对出现的潜在威胁做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式时，它会提供安全警报。
+-   [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)启用检测并对出现的潜在威胁做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式时，它会提供安全警报。
 -   [加密列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)可以确保敏感数据永远不会在数据库系统中以明文形式显示。 启用数据加密后，只有具有密钥访问权限的客户端应用程序或应用服务器才能访问明文数据。
 - [扩展属性](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql)可用于停止处理数据主体。 用户可以向数据库对象添加自定义属性。 另外，他们还可以将数据标记为“已停止”，以支持应用程序逻辑防止处理关联的财务数据。
 - [行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)使用户能够定义策略来限制对数据的访问，以停止处理。
@@ -124,18 +124,18 @@ Azure SQL 数据库：SQL 数据库实例使用以下数据库安全措施：
 以下技术在 Azure 环境中提供用于管理数据访问的功能：
 -   [Azure AD](https://azure.microsoft.com/services/active-directory/) 是 Microsoft 提供的多租户、基于云的目录和标识管理服务。 此解决方案的所有用户（包括访问 SQL 数据库的用户）均在 Azure AD 中创建。
 -   使用 Azure AD 对应用程序执行身份验证。 有关详细信息，请参阅如何[将应用程序与 Azure AD 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 数据库列加密还使用 Azure AD 对访问 SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
--   [Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 可供管理员用于定义细致的访问权限。 使用它，管理员可以仅授予用户执行其作业所需的访问次数。 无需向每个用户授予 Azure 资源的不受限访问权限，管理员可以只允许使用特定的操作来访问资源和数据。 订阅访问仅限于订阅管理员。
+-   [Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 可供管理员用于定义细化的访问权限。 使用它，管理员可以仅授予用户执行其作业所需的访问次数。 无需向每个用户授予 Azure 资源的不受限访问权限，管理员可以只允许使用特定的操作来访问资源和数据。 订阅访问仅限于订阅管理员。
 - [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 可供客户用来最大限度地减少有权访问特定信息（例如数据）的用户数量。 管理员可以使用 Azure AD Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 此外，还可以根据需要，使用此功能来实施按需、实时的管理性访问。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可检测影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
 
 ### <a name="security"></a>安全
-**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 密钥保管库有助于保护云应用程序和服务所用的加密密钥和机密。 以下密钥保管库功能可帮助客户保护数据：
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Key Vault 帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Key Vault 功能帮助客户保护数据：
 - 根据需要配置高级访问权限策略。
-- 使用对密钥和机密所需的最低权限来定义密钥保管库访问策略。
-- 密钥保管库中的所有密钥和机密都有过期日期。
-- 密钥保管库中的所有密钥受专用硬件安全模块的保护。 密钥类型是硬件安全模块保护的 2048 位 RSA 密钥。
+- 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
+- Key Vault 中的所有密钥和机密都有过期日期。
+- Key Vault 中的所有密钥受专用硬件安全模块的保护。 密钥类型是硬件安全模块保护的 2048 位 RSA 密钥。
 - 使用 RBAC 可向所有用户和标识授予最低要求的权限。
-- 启用密钥保管库的诊断日志时，保留期设置为至少 365 天。
+- 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
 修补程序管理：作为此参考体系结构一部分部署的 Windows VM 默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
@@ -144,7 +144,7 @@ Azure SQL 数据库：SQL 数据库实例使用以下数据库安全措施：
 
 Azure 安全中心：借助[安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，客户可在工作负载中集中应用和管理安全策略、限制威胁暴露，以及检测和响应攻击。 此外，安全中心还会访问 Azure 服务的现有配置，以提供配置与服务建议来帮助改善安全状况和保护数据。
 
-安全中心会使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)，会在出现威胁或可疑活动时触发。 客户可以使用[自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，根据从环境中已经收集到的数据定义新的安全警报。
+安全中心会使用各种检测功能，提醒客户针对其环境的潜在攻击。 这些警报包含有关触发警报的内容、目标资源以及攻击源的重要信息。 安全中心有一组[预定义的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)，会在出现威胁或可疑活动时触发。 客户可以使用[自定义警报规则](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，根据已从环境中收集到的数据定义新的安全警报。
 
 安全中心提供按优先级排序的安全警报和事件。 安全中心让客户可以更轻松地发现并解决潜在安全问题。 针对每个检测到的威胁会生成一个[威胁智能报告](https://docs.microsoft.com/azure/security-center/security-center-threat-report)。 事件响应团队可在调查和修正威胁时使用这些报告。
 
@@ -161,12 +161,12 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志，以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集数据后，会针对 Operations Management Suite 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
+**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
 
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
--   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 它提供了特定于已部署服务器基础结构的建议优先级列表。
-- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 它为客户提供了特定于已部署服务器基础结构的建议优先级列表。
-- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布情况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
+-   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：可以使用 Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
+- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
+- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
 -   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
 
 Azure 自动化：[自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 SQL 数据库收集日志。 客户可以使用自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案轻松识别环境中的更改。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064367"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405508"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -54,7 +54,7 @@ ms.locfileid: "47064367"
 - Windows 8
 - Windows 7
 
-## <a name="supported-linux-operating-systems"></a>支持的 Linux 操作系统
+## <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
 以下部分列出了Red Hat Enterprise Linux、CentOS Linux 和 Oracle Linux（具有 RHEL 内核）上 Dependency Agent 支持的操作系统。  
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
@@ -138,22 +138,22 @@ ms.locfileid: "47064367"
 | System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
-在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。 （根据上下文，可将此代理称为 System Center Operations Manager 代理、OMS 代理、Log Analytics 代理、MMA 或直接代理。）System Center Operations Manager 和 Log Analytics 提供不同的 MMA 现成版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。  
+在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。 （根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。）System Center Operations Manager 和 Log Analytics 提供不同的 MMA 现成版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。  
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集监视数据并将其发送到 Log Analytics。 可以在服务器上配合使用服务映射和直接连接服务或向 Log Analytics 集成的 Operations Manager 管理组报告的 Log Analytics 代理。  
 
 本文中将所有代理都称为“Log Analytics 代理”（不论是 Linux 还是 Windows，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）。 
 
-服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 Log Analytics 代理直接或通过 OMS 网关传输到 Log Analytics 服务。
+服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Log Analytics 服务。
 
 ![服务映射代理](media/monitoring-service-map/agents.png)
 
 如果你是一位 System Center Operations Manager 客户且具有连接到 Log Analytics 的管理组：
 
 - 如果 System Center Operations Manager 代理可以访问 Internet 来连接到 Log Analytics，则无需进行额外配置。  
-- 如果 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需配置 OMS 网关来与 System Center Operations Manager 配合使用。
+- 如果 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需配置 Log Analytics 网关来与 System Center Operations Manager 配合使用。
   
-如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 OMS 网关连接到 Log Analytics。 有关如何部署和配置 OMS 网关的详细信息，请参阅[使用 OMS 网关连接无法访问 Internet 的计算机](../log-analytics/log-analytics-oms-gateway.md)。  
+如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用网关连接到 Log Analytics 工作区。 有关如何部署和配置 Log Analytics 网关的详细信息，请参阅[使用 Log Analytics 网关连接无法访问 Internet 的计算机](../log-analytics/log-analytics-oms-gateway.md)。  
 
 ### <a name="management-packs"></a>管理包
 在 Log Analytics 工作区中激活服务映射时，将向该工作区中的所有 Windows 服务器转发到 300KB 的管理包。 若在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署服务映射管理包。 

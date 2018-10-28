@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 983a551da26e08797b2a65f609cff17954a52828
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801907"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954804"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -33,6 +33,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 巴西 |巴西南部 2 |美国中南部 |
 | 加拿大 |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
+| 中国 |中国北部 2 |中国东部 2|
 | 欧洲 |北欧 |西欧 |
 | 法国 |法国中部|法国南部|
 | 德国 |德国中部 |德国东北部 |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: ad28e30f7f31ec61332faac3ab3ee3c3e2fd67ca
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42140643"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024148"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -72,11 +72,11 @@ ms.locfileid: "42140643"
 
 1. 检查 Azure RHUI 终结点的 VM 配置：
 
-    a. 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `[rhui-microsoft-azure-rhel*]` 部分的 `baseurl` 是否包含对 `rhui-[1-3].microsoft.com` 的引用。 如果是，则使用的是新 Azure RHUI。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 检查 `/etc/yum.repos.d/rh-cloud.repo` 文件 `[rhui-microsoft-azure-rhel*]` 部分的 `baseurl` 是否包含对 `rhui-[1-3].microsoft.com` 的引用。 如果是，则使用的是新 Azure RHUI。
 
     b. 如果它指向 `mirrorlist.*cds[1-4].cloudapp.net` 模式的位置，则需要更新配置。 你使用的是旧 VM 快照，需要将其更新为指向新的 Azure RHUI。
 
-1. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围] (https://www.microsoft.com/download/details.aspx?id=41653) 内的 VM 进行访问。
+1. Azure 托管的 RHUI 仅限 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内的 VM 进行访问。
  
 1. 如果使用新配置并已确认 VM 从 Azure IP 范围建立了连接，但仍无法连接到 Azure RHUI，请向 Microsoft 或 Red Hat 提出支持案例。
 
@@ -131,7 +131,7 @@ ms.locfileid: "42140643"
     >[!NOTE]
     >包版本已发生更改。 如果手动连接到 Azure RHUI，可通过从库预配最新的映像，找到每个 RHEL 系列的最新版客户端包。
   
-   a. 下载。 
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载。 
    
     - 适用于 RHEL 6：
         ```bash

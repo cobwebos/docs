@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 7fc3e68e9d714ca95a28a28b470b1e1fdbff2c47
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870887"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025610"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 
@@ -202,7 +202,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 | parameters | Description |
 | --- | --- |
 |     /j:&lt;JournalFile&gt;  | **必需**<br/> 日记文件的路径。 日记文件跟踪一组驱动器，并记录这些驱动器的准备进度。 必须始终指定日记文件。  |
-|     /logdir:&lt;LogDirectory&gt;  | **可选**。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能将日志目录指定指定一次。  |
+|     /logdir:&lt;LogDirectory&gt;  | 可选。 日志目录。<br/> 详细日志文件以及某些临时文件将写入此目录。 如果未指定，则将当前目录用作日志目录。 对于同一个日记文件，只能将日志目录指定指定一次。  |
 |     /id:&lt;SessionId&gt;  | **必需**<br/> 用于标识复制会话的会话 ID。 它用于确保准确恢复中断的复制会话。  |
 |     /ResumeSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来恢复该会话。   |
 |     /AbortSession  | 可选。 如果最后一个复制会话异常终止，可以指定此参数来中止该会话。  |
@@ -214,11 +214,11 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /d:&lt;TargetDirectories&gt; | **必需**。 仅适用于 RepairImport 和 RepairExport。 对于 RepairImport，值为要修复的一个或多个以分号分隔的目录；对于 RepairExport，值为要修复的一个目录，例如驱动器的根目录。  |
 |     /CopyLogFile:&lt;DriveCopyLogFile&gt; | **必需** 仅适用于 RepairImport 和 RepairExport。 驱动器复制日志文件（详细或错误）的路径。  |
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必需** 仅适用于 RepairExport。<br/> 驱动器清单文件的路径。  |
-|     /PathMapFile:&lt;DrivePathMapFile&gt; | **可选**。 仅适用于 RepairImport。<br/> 包含驱动器根目录相对路径与实际文件位置之间的映射的文件（制表符分隔）的路径。 首次指定时，该字段中将填充目标为空的文件路径，也就是说，在 TargetDirectories 中找不到目录、访问目标被拒绝、名称无效，或者目标在多个目录中存在。 可以手动编辑路径映射文件来包含正确的目标路径，并再次为工具指定该文件，以正确解析文件路径。  |
+|     /PathMapFile:&lt;DrivePathMapFile&gt; | 可选。 仅适用于 RepairImport。<br/> 包含驱动器根目录相对路径与实际文件位置之间的映射的文件（制表符分隔）的路径。 首次指定时，该字段中将填充目标为空的文件路径，也就是说，在 TargetDirectories 中找不到目录、访问目标被拒绝、名称无效，或者目标在多个目录中存在。 可以手动编辑路径映射文件来包含正确的目标路径，并再次为工具指定该文件，以正确解析文件路径。  |
 |     /ExportBlobListFile:&lt;ExportBlobListFile&gt; | **必需**。 仅适用于 PreviewExport。<br/> 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 文件格式与导入/导出服务 REST API 的“放置作业”操作中的 Blob 列表 Blob 格式相同。  |
 |     /DriveSize:&lt;DriveSize&gt; | **必需**。 仅适用于 PreviewExport。<br/>  用于导出的驱动器的大小。 例如，500 GB、1.5 TB。 注意：1 GB = 1,000,000,000 字节，1 TB = 1,000,000,000,000 字节  |
 |     /DataSet:&lt;dataset.csv&gt; | **必需**<br/> 包含要复制到目标驱动器的目录列表和/或列表文件的 CSV 文件。  |
-|     /silentmode  | **可选**。<br/> 如果未指定，系统会提醒驱动器的要求，并且需要确认才能继续操作。  |
+|     /silentmode  | 可选。<br/> 如果未指定，系统会提醒驱动器的要求，并且需要确认才能继续操作。  |
 
 ## <a name="tool-output"></a>工具输出
 
@@ -309,7 +309,7 @@ WAImportExport 工具是可与 Microsoft Azure 导入/导出服务一起使用�
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>在哪里可以找到上一个版本的 WAImportExport 工具？
 
-WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 使用 WAImportExport 工具，用户可以指定多个源，并写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以 [下载 WAImportExport V1 工具] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) 并参阅 [WAImportExport V1 Reference](storage-import-export-tool-how-to-v1.md)（WAImportExport V1 参考），获取 WAImportExport V1 用法的帮助。
+WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 使用 WAImportExport 工具，用户可以指定多个源，并写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以[下载 WAImportExport V1 工具](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)并参阅 [WAImportExport V1 参考](storage-import-export-tool-how-to-v1.md)，获取 WAImportExport V1 用法的帮助。
 
 #### <a name="what-is-a-session-id"></a>会话 ID 是什么？
 
@@ -407,7 +407,7 @@ WAImportExport 工具逐批读取和写入文件，每个批最多包含 100000 
 * [设置 Azure 导入/导出工具](storage-import-export-tool-setup.md)
 * [在导入过程中设置属性和元数据](storage-import-export-tool-setting-properties-metadata-import.md)
 * [为导入作业准备硬盘驱动器的示例工作流](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [常用命令快速参考](storage-import-export-tool-quick-reference.md) 
+* [常用命令快速参考](storage-import-export-tool-quick-reference.md) 
 * [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)
 * [修复导入作业](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [修复导出作业](storage-import-export-tool-repairing-an-export-job-v1.md)

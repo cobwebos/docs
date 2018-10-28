@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50378fd7739567b0cc56066168ddd33c3ea14141
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400180"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957048"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -27,7 +27,7 @@ ms.locfileid: "39400180"
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
-Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要安装 Blobfuse，请配置一个此类存储库。
+适用于 Ubuntu 和 RHEL 发行版的 Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照[此处](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)的安装步骤从源代码生成二进制文件。
 
 ### <a name="configure-the-microsoft-package-repository"></a>配置 Microsoft 包存储库
 配置 [Microsoft 产品的 Linux 包存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
@@ -89,7 +89,7 @@ Blobfuse 要求将凭据采用以下格式存储在文本文件中：
 
 ```
 accountName myaccount
-accountKey myaccesskey==
+accountKey storageaccesskey
 containerName mycontainer
 ```
 
@@ -97,6 +97,10 @@ containerName mycontainer
 ```bash
 chmod 700 fuse_connection.cfg
 ```
+
+> [!NOTE]
+> 如果已在 Windows 上创建了配置文件，请确保运行 `dos2unix` 以清理并转换为 Unix 格式。 
+>
 
 ### <a name="create-an-empty-directory-for-mounting"></a>创建装载用的空目录
 ```bash

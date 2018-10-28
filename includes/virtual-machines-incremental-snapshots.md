@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979668"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960219"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>使用递增快照备份 Azure 非托管 VM 磁盘
 ## <a name="overview"></a>概述
@@ -66,7 +66,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 可以通过执行以下操作来实现增量快照复制：
 
 * 使用[快照 Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) 获取基本 Blob 的快照。
-* 使用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) 将快照复制到目标备份存储帐户。 这是备份页 Blob。 创建备份页 Blob 的快照，并将其存储在备份帐户中。
+* 使用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) 将快照复制到相同区域或任何其他 Azure 区域中的目标备份存储帐户。 这是备份页 Blob。 创建备份页 Blob 的快照，并将其存储在备份帐户中。
 * 使用快照 Blob 创建基本 Blob 的另一个快照。
 * 使用 [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) 获取基本 Blob 的第一个与第二个快照之间的差异。 使用新参数 **prevsnapshot** 指定要用于获取差异的快照的 DateTime 值。 如果提供此参数，则 REST 响应只包含在目标快照与先前快照之间更改的页面（包括清除页面）。
 * 使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 将这些更改应用到备份页 Blob。

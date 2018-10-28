@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e00ccc4d55da805538801a0a8f3ee5502d871fab
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eaf6aa538a4733528b52b1417c2d53318064e068
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042302"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405389"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -34,7 +34,7 @@ ms.locfileid: "48042302"
 
 1. 使用具有管理权限的帐户登录到计算机。
 2. 打开“控制面板”
-3. 选择“Microsoft Monitoring Agent”，然后单击“Azure Log Analytics (OMS)”选项卡。
+3. 选择“Microsoft Monitoring Agent”，然后单击“Azure Log Analytics”选项卡。
 4. 若要删除工作区，请选中该工作区，然后单击“删除”。 如果还需代理停止向任何其他工作区报告，请重复此步骤。
 5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥）。 如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 美国政府”。 
 6. 单击“确定”  保存更改。
@@ -101,7 +101,7 @@ $mma.ReloadConfiguration()
 无需重启代理服务即可使更改生效。
 
 ## <a name="update-proxy-settings"></a>更新代理设置 
-若要将代理配置为在部署后通过代理服务器或[ OMS 网关](log-analytics-oms-gateway.md)与服务通信，请使用以下任一方法来完成此任务。
+若要将代理配置为在部署后通过代理服务器或 [Log Analytics 网关](log-analytics-oms-gateway.md)与服务通信，请使用以下任一方法来完成此任务。
 
 ### <a name="windows-agent"></a>Windows 代理
 
@@ -110,7 +110,7 @@ $mma.ReloadConfiguration()
 1. 使用具有管理权限的帐户登录到计算机。
 2. 打开“控制面板”
 3. 选择“Microsoft Monitoring Agent”，然后单击“代理设置”选项卡。
-4. 单击“使用代理服务器”，然后提供代理服务器或网关的 URL 和端口号。 如果代理服务器或 OMS 网关要求身份验证，请键入用户名和密码进行身份验证，然后单击“确定”。 
+4. 单击“使用代理服务器”，然后提供代理服务器或网关的 URL 和端口号。 如果代理服务器或 Log Analytics 网关要求身份验证，请键入用户名和密码进行身份验证，然后单击“确定”。 
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新设置 
 
@@ -141,7 +141,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux 代理
-如果 Linux 计算机需要通过代理服务器或 OMS 网关与 Log Analytics 通信，请执行以下步骤。  代理配置值具有以下语法 `[protocol://][user:password@]proxyhost[:port]`。  *proxyhost* 属性接受代理服务器的完全限定域名或 IP 地址。
+如果 Linux 计算机需要通过代理服务器或 Log Analytics 网关进行通信，请执行以下步骤。  代理配置值具有以下语法 `[protocol://][user:password@]proxyhost[:port]`。  *proxyhost* 属性接受代理服务器的完全限定域名或 IP 地址。
 
 1. 运行以下命令编辑文件 `/etc/opt/microsoft/omsagent/proxy.conf`，并针对特定设置更改相关的值。
 
@@ -185,7 +185,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>将代理配置为向 Operations Manager 管理组报告
 
 ### <a name="windows-agent"></a>Windows 代理
-执行以下步骤可将适用于 Windows 的 OMS 代理配置为向 System Center Operations Manager 管理组报告。 
+执行以下步骤可将适用于 Windows 的 Log Analytics 代理配置为向 System Center Operations Manager 管理组报告。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
 1. 使用具有管理权限的帐户登录到计算机。
 2. 打开“控制面板” 
@@ -199,7 +201,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 10. 单击“**确定**”关闭“**添加管理组**”对话框中，再单击“**确定**”关闭“**Microsoft Monitoring Agent 属性**”对话框。
 
 ### <a name="linux-agent"></a>Linux 代理
-执行以下步骤可将 OMS Agent for Linux 配置为向 System Center Operations Manager 管理组报告。 
+执行以下步骤可将适用于 Linux 的 Log Analytics 代理配置为向 System Center Operations Manager 管理组报告。 
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 1. 编辑 `/etc/opt/omi/conf/omiserver.conf` 文件
 2. 确保以 `httpsport=` 开头的行定义了端口 1270。 例如：`httpsport=1270`

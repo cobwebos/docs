@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344126"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430011"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>优化模型的超参数
 
@@ -141,8 +141,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> 贝叶斯采样不支持任何提前终止策略（请参阅[指定提前终止策略](#specify-an-early-termination-policy)）。 使用贝叶斯参数采样时，请设置 `early_termination_policy = None`，或不使用 `early_termination_policy` 参数。
-`
+> 贝叶斯采样不支持任何提前终止策略（请参阅[指定提前终止策略](#specify-early-termination-policy)）。 使用贝叶斯参数采样时，请设置 `early_termination_policy = None`，或不使用 `early_termination_policy` 参数。
+
+<a name='specify-primary-metric-to-optimize'/>
 
 ## <a name="specify-primary-metric"></a>指定主要指标
 
@@ -158,9 +159,11 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 优化运行以最大化“准确性”。  确保在训练脚本中记录此值。
 
+<a name='log-metrics-for-hyperparameter-tuning'/>
+
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>记录用于超参数优化的指标
 
-模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定要优化的主要指标](#specify-a-primary-metric-to-optimize)。）必须在训练脚本中记录此指标，以便将其用于超参数优化过程。
+模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定要优化的主要指标](#specify-primary-metric-to-optimize)。）必须在训练脚本中记录此指标，以便将其用于超参数优化过程。
 
 使用以下示例代码片段将此指标记录在训练脚本中：
 
@@ -171,6 +174,8 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 训练脚本将计算 `val_accuracy`，并将其记录为“准确性”，它会用作主要指标。 每次记录指标时，超参数优化服务都将收到该指标。 由模型开发人员确定报告此指标的频率。
+
+<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a>指定提前终止策略
 
@@ -297,7 +302,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` 是要分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅 [Azure 机器学习的工作原理](/concept-azure-machine-learning-architecture.md)）
+`experiment_name` 是要分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅 [Azure 机器学习的工作原理](concept-azure-machine-learning-architecture.md)）
 
 ## <a name="visualize-experiment"></a>将实验可视化
 
@@ -320,7 +325,7 @@ RunDetails(hyperdrive_run).show()
 
 ![超参数优化并行坐标](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
 
-还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在 Web 门户中查看试验，请参阅[如何跟踪试验](/how-to-track-experiments.md/#view-the-experiment-in-the-web-portal)。
+还可将 Azure Web 门户中的所有超参数优化运行可视化。 若要详细了解如何在 Web 门户中查看试验，请参阅[如何跟踪试验](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)。
 
 ![超参数优化门户](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 

@@ -9,30 +9,33 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: ced10a54d569531b06ee47b646130f43cedd2963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984596"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649986"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
 
 在 Azure 机器学习服务中，可通过跟踪试验和监视指标来改进模型创建过程。 本文介绍向训练脚本添加日志记录的不同方法、如何使用 start_logging 和 ScriptRunConfig 提交实验、如何检查正在运行的作业的进度以及如何查看运行结果。 
 
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.168 进行测试 
+
 ## <a name="list-of-training-metrics"></a>训练指标列表 
 
-训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细的列表，请参阅 [SDK 参考文档](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py)。
+训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细的列表，请参阅 [SDK 参考文档](https://aka.ms/aml-sdk)。
 
-|Type| Python 函数 | 说明|
-|----|:----:|:----:|
-|标量值 | `run.log(name, value, description='')`| 使用给定名称在运行中记录指标值。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
-|列表| `run.log_list(name, value, description='')`|使用给定名称在运行中记录列表指标值。|
-|行| `run.log_row(name, description=None, **kwargs)`|使用 log_row 创建包含列的表指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
-|表| `run.log_table(name, value, description='')`| 使用给定名称在运行中记录表格指标。 |
-|映像| `run.log_image(name, path=None, plot=None)`|在运行记录中记录图像指标。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
-|标记一个运行| `run.tag(key, value=None)`|使用一个字符串键和可选字符串值标记运行。|
-|上传文件或目录|`run.upload_file(name, path_or_stream)`|将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
+|类型| Python 函数 | 示例 | 说明|
+|----|:----|:----|:----|
+|标量值 | `run.log(name, value, description='')`| `run.log("accuracy", 0.95) ` |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
+|列表| `run.log_list(name, value, description='')`| `run.log_list("accuracies", [0.6, 0.7, 0.87])` | 使用给定名称将值列表记录到运行中。|
+|行| `run.log_row(name, description=None, **kwargs)`| `run.log_row("Y over X", x=1, y=0.4)` | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
+|表| `run.log_table(name, value, description='')`| `run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]})` | 使用给定名称将字典对象记录到运行中。 |
+|映像| `run.log_image(name, path=None, plot=None)`| `run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
+|标记一个运行| `run.tag(key, value=None)`| `run.tag("selected", "yes")` | 使用一个字符串键和可选字符串值标记运行。|
+|上传文件或目录|`run.upload_file(name, path_or_stream)`| run.upload_file("best_model.pkl", "./model.pkl") | 将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
 
 > [!NOTE]
 > 标量、列表、行和表的指标的类型可以为：float、integer 或 string。
@@ -141,14 +144,14 @@ ms.locfileid: "46984596"
 
   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_submitted_run()
+  run = Run.get_context()
 
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = np.arange(0.0, 1.0, 0.05)
+  alphas = mylib.get_alphas()
 
   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
@@ -232,6 +235,7 @@ ms.locfileid: "46984596"
 
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 现在可以获取上面示例中记录的所有指标以确定最佳模型。
 
+<a name='view-the-experiment-in-the-web-portal'/>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>在 Azure 门户中查看实验
 
 当实验完成运行时，可浏览到试验运行记录。 可通过两种方式实现此目的：
@@ -247,8 +251,8 @@ ms.locfileid: "46984596"
 
 ## <a name="example-notebooks"></a>示例笔记本
 下面的笔记本展示了本文中的概念：
-* `01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb`
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
+* [01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
+* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 
 若要获取这些笔记本，请执行以下操作：[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

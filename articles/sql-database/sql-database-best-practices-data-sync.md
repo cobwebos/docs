@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063638"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646291"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -70,6 +70,10 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 同步组中的每个表均必须具有主键。 SQL 数据同步服务无法同步没有主键的表。
 
 在生产中使用 SQL 数据同步之前，请测试初始和正在进行的同步性能。
+
+#### <a name="empty-tables-provide-the-best-performance"></a>空表提供最佳性能
+
+空表在初始化时提供最佳性能。 如果目标表为空表，则数据同步会使用批量插入来加载数据。 否则，数据同步会逐行进行比较和插入以检查是否存在冲突。 但是，如果不考虑性能，则可以在已包含数据的表之间设置同步。
 
 ### <a name="provisioning-destination-databases"></a> 预配目标数据库
 

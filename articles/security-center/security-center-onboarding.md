@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379989"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405440"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
 升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层 60 天。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
@@ -46,7 +46,7 @@ ms.locfileid: "44379989"
   ![入门](./media/security-center-onboarding/get-started.png)
 2. 在“升级”下，安全中心将列出符合载入条件的订阅和工作区。 
    - 可以单击可展开的“申请试用”来查看所有订阅和工作区的列表及其试用资格状态。
-   -    可以升级不符合试用条件的订阅和工作区。
+   -    你可以升级没有资格试用的订阅和工作区。
    -    可以选择符合试用条件的工作区和订阅来开始试用。
 3.  单击“开始试用”在所选订阅上开始试用。
   ![选择订阅](./media/security-center-onboarding/select-subscription.png)
@@ -82,6 +82,8 @@ ms.locfileid: "44379989"
    ![添加新工作区][4]
 
 2. 在“安全和审核”下，选择“OMS 工作区”以新建工作区。
+> [!NOTE]
+> OMS 工作区现在称为 Log Analytics 工作区。
 3. 在“OMS 工作区”下，输入工作区的相关信息。
 4. 在“OMS 工作区”下，选择“确定”。  选择“确定”后，将获取一个用于下载 Windows 或 Linux 代理的链接和工作区 ID 的密钥（用于配置此代理）。
 5. 在“安全和审核”下，选择“确定”。

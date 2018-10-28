@@ -7,24 +7,24 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dmalik
+author: oslake
+ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: f21614757716b860c25436acfa7b6275cd848109
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868187"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945920"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：为 SQL 创建虚拟服务终结点和 VNet 规则
 
 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)均支持虚拟服务终结点。
 
 > [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 由于你没有与托管实例子网关联的服务终结点，因此本文不适用于 **Azure SQL 数据库托管实例**。
 
 本文将提供并介绍执行以下操作的 PowerShell 脚本：
 

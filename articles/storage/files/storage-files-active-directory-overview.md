@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831545"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427631"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>通过 SMB 为 Azure 文件进行 Azure Active Directory 身份验证概述（预览）
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -58,7 +58,7 @@ Azure 文件使用 Azure AD 域服务，支持通过已加入域的 VM 中的 Az
 ![屏幕截图显示了通过 SMB 进行 Azure AD 身份验证的关系图](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>启用通过 SMB 进行 Azure AD 身份验证
-可对 2018 年 8 月 29 日之后创建的新存储帐户和现有存储帐户启用通过 SMB 为 Azure 文件进行 Azure AD 身份验证这一功能。 
+可对 2018 年 9 月 24 日之后创建的新存储帐户和现有存储帐户启用通过 SMB 为 Azure 文件进行 Azure AD 身份验证这一功能。 
 
 在启用通过 SMB 进行 Azure AD 身份验证之前，请验证是否已为与存储帐户关联的主 Azure AD 租户部署了 Azure AD 域服务。 如果尚未设置 Azure AD 域服务，请按照[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)中提供的分步指导进行操作。
 

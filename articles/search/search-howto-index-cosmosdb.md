@@ -1,21 +1,21 @@
 ---
 title: 为 Azure 搜索的 Azure Cosmos DB 数据源编制索引 | Microsoft Docs
 description: 本文演示如何使用 Azure Cosmos DB 数据源创建 Azure 搜索索引器。
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 05/29/2018
-ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 8206c076f9e89753adb16854a7d981c0f80c4a3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c74563ba98835403f12a4df048d7ff358014b826
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640330"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406664"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
 
@@ -97,7 +97,8 @@ ms.locfileid: "34640330"
 * **类型**：必须为 `documentdb`。
 * **凭据**：
   
-  * **connectionString**：必需。 按以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`；对于 MongoDB 集合，将 **ApiKind=MongoDb** 添加到连接字符串：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` 
+  * **connectionString**：必需。 按以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`；对于 MongoDB 集合，将 **ApiKind=MongoDb** 添加到连接字符串：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  避免在终结点 URL 中包含端口号。 如果包含端口号，Azure 搜索将无法为 Azure Cosmos DB 数据库编制索引。
 * **容器**：
   
   * **名称**：必需。 指定要编制索引的数据库集合的 ID。

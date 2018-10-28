@@ -2,25 +2,17 @@
 title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN：CLI | Microsoft Docs
 description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用 CLI 创建跨界站点到站点 VPN 网关连接。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.topic: conceptual
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: a4400338baa77f82bafc5b74561695f8e9a70b5f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73bf57721f670c06042b9b7a00f53126a6d1b145
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965800"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957065"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
 
@@ -46,7 +38,9 @@ ms.locfileid: "46965800"
 * 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。 此 IP 地址不得位于 NAT 之后。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
-* 检查是否已安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。
+* 可以使用 Azure Cloud Shell 运行 CLI 命令（参见以下说明）。 但是，如果希望在本地运行命令，请验证是否已安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。 
+ 
+  [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="example"></a>示例值
 
@@ -75,13 +69,15 @@ ConnectionName          = VNet1toSite2
 
 ## <a name="Login"></a>1.连接到订阅
 
+如果选择在本地运行 CLI，请连接到订阅。 如果是在浏览器中使用 Azure Cloud Shell，则无需连接到订阅。 将在 Azure Cloud Shell 中自动连接。 但是，你可能需要在连接后验证是否使用了正确的订阅。
+
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
 ## <a name="rg"></a>2.创建资源组
 
 以下示例在“eastus”位置创建名为“TestRG1”的资源组。 如果在需创建 VNet 的区域中已经有了一个资源组，则可改用该资源组。
 
-```azurecli
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
@@ -96,7 +92,7 @@ az group create --name TestRG1 --location eastus
 
 以下示例创建一个名为“TestVNet1”的虚拟网络和一个名为“Subnet1”的子网。
 
-```azurecli
+```azurecli-interactive
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
@@ -107,7 +103,7 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 命令创建网关子网。
 
-```azurecli
+```azurecli-interactive
 az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
 ```
 
@@ -124,7 +120,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 使用 [az network local-gateway create](/cli/azure/network/local-gateway#az_network_local_gateway_create) 命令添加具有多个地址前缀的本地网关：
 
-```azurecli
+```azurecli-interactive
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
@@ -134,7 +130,7 @@ VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后�
 
 使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 命令请求动态公共 IP 地址。
 
-```azurecli
+```azurecli-interactive
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
@@ -150,7 +146,7 @@ az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocati
 
 使用 [az network vnet-gateway create](/cli/azure/network/vnet-gateway#az_network_vnet_gateway_create) 命令创建 VPN 网关。 如果使用“--no-wait”参数运行该命令，则不会显示任何反馈或输出。 此参数允许在后台创建网关。 创建网关大约需要 45 分钟时间。
 
-```azurecli
+```azurecli-interactive
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
@@ -161,7 +157,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 - 共享密钥。 此共享密钥就是在创建站点到站点 VPN 连接时指定的共享密钥。 在示例中，我们使用基本的共享密钥。 建议生成更复杂的可用密钥。
 - 虚拟网络网关的“公共 IP 地址”。 可以通过 Azure 门户、PowerShell 或 CLI 查看公共 IP 地址。 若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
 
-  ```azurecli
+  ```azurecli-interactive
   az network public-ip list --resource-group TestRG1 --output table
   ```
 
@@ -175,7 +171,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 
 使用 [az network vpn-connection create](/cli/azure/network/vpn-connection#az_network_vpn_connection_create) 命令创建连接。
 
-```azurecli
+```azurecli-interactive
 az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
 ```
 

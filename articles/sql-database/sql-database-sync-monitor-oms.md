@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163352"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409673"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步 
 
@@ -81,7 +81,7 @@ ms.locfileid: "47163352"
 
 4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择**创建**。 现在你拥有了一个 runbook。
+5.  选择“创建”。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
 
@@ -97,7 +97,7 @@ ms.locfileid: "47163352"
 
     2.  同步组信息。
 
-    3.  OMS 信息。 在 OMS 门户查找此信息 |设置 |连接的源。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
+    3.  Log Analytics 信息。 在 Azure 门户 | 设置 | 连接的源中查找此信息。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 
@@ -117,9 +117,9 @@ ms.locfileid: "47163352"
 
 4.  选择“创建新计划”。
 
-5.  将“定期”设置为“重复执行”，并设置所需间隔。 在脚本和 OMS 中，请在此处使用相同的间隔。
+5.  将“定期”设置为“重复执行”，并设置所需间隔。 在脚本和 Log Analytics 中，请在此处使用相同的间隔。
 
-6.  选择**创建**。
+6.  选择“创建”。
 
 ### <a name="check-the-automation"></a>检查自动化
 
@@ -129,7 +129,7 @@ ms.locfileid: "47163352"
 
 若要创建使用 Log Analytics 的警报，请执行以下操作。 作为先决条件，你需要将 Log Analytics 与一个 Log Analytics 工作区进行链接。
 
-1.  在 OMS 门户中，选择“日志搜索”。
+1.  在 Azure 门户中，选择“日志搜索”。
 
 2.  创建查询，以便在所选的间隔内按同步组选择错误和警告。 例如：
 
@@ -147,9 +147,9 @@ ms.locfileid: "47163352"
 
 6.  单击“ **保存**”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
-## <a name="create-an-oms-view-for-monitoring"></a>创建要监控的 OMS 视图。
+## <a name="create-a-log-analytics-view-for-monitoring"></a>创建用于监视的 Log Analytics 视图
 
-此步骤将创建一个 OMS 视图，以直观地监控所有指定的同步组。 该视图包括多个组件：
+此步骤将创建一个 Log Analytics 视图，用于直观地监视所有指定的同步组。 该视图包括多个组件：
 
 -   概述磁贴 - 显示所有同步组具有多少个错误、成功和警告。
 
@@ -157,9 +157,9 @@ ms.locfileid: "47163352"
 
 -   每个同步的磁贴 - 显示错误数、成功数和警告数，以及最近的错误消息数。
 
-若要配置 OMS 视图，请执行以下操作：
+若要配置 Log Analytics 视图，请执行以下操作：
 
-1.  在 OMS 主页上，选择左侧的加号，打开“视图设计器”。
+1.  在 Log Analytics 主页上，选择左侧的加号，打开“视图设计器”。
 
 2.  在视图设计器的顶部栏中选择“导入”。 然后选择“DataSyncLogOMSView”示例文件。
 

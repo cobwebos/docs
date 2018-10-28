@@ -1,6 +1,6 @@
 ---
-title: 使用 OMS Log Analytics 警报 REST API
-description: Log Analytics 警报 REST API 允许用户在属于 Operations Management Suite (OMS) 一部分的 Log Analytics 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
+title: 使用 Log Analytics 警报 REST API
+description: 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创建和管理警报。  本文详细介绍了该 API 并提供了几个执行不同操作的示例。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 85cf55b4117208266e247316b1050e3988a2ce23
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079049"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409146"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则
-Log Analytics 警报 REST API 允许在 Operations Management Suite (OMS) 中创建和管理警报。  本文详细介绍了该 API 并提供了几个执行不同操作的示例。
+使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创建和管理警报。  本文详细介绍了该 API 并提供了几个执行不同操作的示例。
 
-Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在此文档中，你会发现使用 [ARMClient](https://github.com/projectkudu/ARMClient) 通过 PowerShell 命令行访问 API 的示例。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 使用这些工具可以利用 RESTful Azure 资源管理器 API 对 OMS 工作区进行调用并执行它们所包含的搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
+Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在此文档中，你会发现使用 [ARMClient](https://github.com/projectkudu/ARMClient) 通过 PowerShell 命令行访问 API 的示例。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
 ## <a name="prerequisites"></a>先决条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](log-analytics-log-search-api.md)。
@@ -67,7 +67,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 ```
 
 ### <a name="creating-a-schedule"></a>创建计划
-结合使用 Put 方法和唯一计划 ID 创建一个新计划。  请注意，两个计划 ID 不能一样，即使它们与不同的已保存搜索相关联。  在 OMS 控制台中创建计划时，将为计划 ID 创建一个 GUID。
+结合使用 Put 方法和唯一计划 ID 创建一个新计划。  请注意，两个计划 ID 不能一样，即使它们与不同的已保存搜索相关联。  在 Log Analytics 控制台中创建计划时，将为计划 ID 创建一个 GUID。
 
 > [!NOTE]
 > 所有已保存的搜索、计划和使用 Log Analytics API 创建的操作的名称必须小写。
@@ -102,7 +102,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 ### <a name="retrieving-actions"></a>检索操作
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
 
 使用 Get 方法检索计划的所有操作。
 
@@ -113,7 +113,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="creating-or-editing-actions"></a>创建或编辑操作
-结合使用 Put 方法和计划唯一的操作 ID 可创建新操作。  在 OMS 控制台中创建操作时，GUID 是针对操作 ID。
+结合使用 Put 方法和计划唯一的操作 ID 可创建新操作。  在 Log Analytics 控制台中创建操作时，GUID 作为操作 ID。
 
 > [!NOTE]
 > 所有已保存的搜索、计划和使用 Log Analytics API 创建的操作的名称必须小写。
@@ -125,7 +125,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 ### <a name="deleting-actions"></a>删除操作
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
 
 结合使用 Delete 方法和操作 ID 可删除操作。
 
@@ -146,7 +146,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 | Webhook 操作 | 将来自警报的数据以 JSON 形式推送到所需的服务 |如果警报扩展到 Azure，则不是必需的|
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。
 
 #### <a name="thresholds"></a>阈值
 一项警报操作应具有一个且只能有一个阈值。  当已保存搜索的结果匹配与该搜索关联的操作中的阈值时，将运行该操作中的任何其他进程。  操作也可以只包含一个阈值，以便与不包含阈值的其他类型的操作一起使用。
@@ -355,7 +355,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 向一个或多个收件人发送邮件的电子邮件通知。  它们具有下表中的属性。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如电子邮件通知之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如电子邮件通知之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
    
 
 | 属性 | Description |
@@ -396,16 +396,16 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>修正操作
-修正在 Azure 自动化中启动 Runbook，尝试纠正警报发现的问题。  必须为用于修正操作的 Runbook 创建 Webhook，并在 WebhookUri 属性中指定 URI。  使用 OMS 控制台创建此操作时，会自动为 Runbook 创建新的 Webhook。
+修正在 Azure 自动化中启动 Runbook，尝试纠正警报发现的问题。  必须为用于修正操作的 Runbook 创建 Webhook，并在 WebhookUri 属性中指定 URI。  使用 Azure 门户创建此操作时，会自动为 Runbook 创建新的 Webhook。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如使用 runbook 进行修正之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如使用 runbook 进行修正之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
 
 修正具有下表中的属性。
 
 | 属性 | Description |
 |:--- |:--- |
-| RunbookName |Runbook 的名称。 它必须与 OMS 工作区自动化解决方案中配置的自动化帐户中已发布的 Runbook 相匹配。 |
+| RunbookName |Runbook 的名称。 它必须与 Log Analytics 工作区自动化解决方案中配置的自动化帐户中发布的 Runbook 相匹配。 |
 | WebhookUri |Webhook 的 URI。 |
 | Expiry |Webhook 的到期日期和时间。  如果 Webhook 没有到期日期和时间，那么这可以是任何有效的未来日期。 |
 
@@ -458,7 +458,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。  Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。  此外，它们还提供了额外的选项，即提供要发送到远程进程的负载。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如 Webhook 之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 Log Analytics 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制诸如 Webhook 之类的操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 检索或添加操作。
 
 
 Webhook 操作没有阈值，但应添加到具有带阈值的警报操作的计划中。  

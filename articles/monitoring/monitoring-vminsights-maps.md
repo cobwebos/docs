@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 5d9aa8e144109b41144bb8b09447b8701d04f87e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389983"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402143"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>使用适用于 VM 的 Azure Monitor 映射了解应用程序组件
-查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中或通过 VM 组在 Azure Monitor 中观察。 
+查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中观察或通过 VM 组在 Azure Monitor 中观察。 
 
 可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)。
 

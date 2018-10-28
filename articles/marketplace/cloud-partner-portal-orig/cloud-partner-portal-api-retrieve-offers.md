@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805218"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024796"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
@@ -80,7 +80,7 @@ ms.locfileid: "48805218"
 |  status         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                         |
 |  id             | 唯一标识发布者命名空间中的产品/服务的 GUID。                                                    |
 |  版本        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。 |
-|  定义     | 包含工作负载实际定义的摘要视图。 若要获取详细定义，请使用[检索特定产品/服务] (./cloud-partner-portal-api-retrieve-specific-offer.md) API。 |
+|  定义     | 包含工作负载实际定义的摘要视图。 若要获取详细定义，请使用[检索特定产品/服务](./cloud-partner-portal-api-retrieve-specific-offer.md) API。 |
 |  changedTime    | 上次修改该产品/服务时的 UTC 时间                                                                              |
 |  |  |
 
@@ -101,7 +101,7 @@ ms.locfileid: "48805218"
 |  **名称**                    | **说明**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | 产品/服务从未发布过。                  |
-|  NotStarted                  | 产品/服务是新的，但尚未启动。                 |
+|  NotStarted                  | 产品/服务是新的，但未启动。                 |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。         |
 |  正在运行                     | 正在处理产品/服务提交。             |
 |  已成功                   | 产品/服务提交已完成处理。       |

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: cd9792881182fbe90d9c210130ae8a34b12da363
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: jeconnoc
+ms.openlocfilehash: 9433cbaba774237bc739106af410dd8d3dd7308f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26365998"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025697"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。 生成的应用程序提示用户使用给定的号码和消息进行呼叫，如下面的屏幕截图中所示。
@@ -29,7 +29,7 @@ ms.locfileid: "26365998"
 ## <a name="twilio-prereqs"></a>先决条件
 需要执行以下操作才能使用本主题中的代码：
 
-1. 从 [Twilio 控制台][twilio_console]获取 Twilio 帐户和身份验证令牌。 若要开始使用 Twilio，请在 [https://www.twilio.com/try-twilio][try_twilio] 上进行注册。 可以在 [http://www.twilio.com/pricing][twilio_pricing] 上计算价格。 有关 Twilio 提供的 API 的信息，请参阅 [http://www.twilio.com/voice/api][twilio_api]。
+1. 从 [Twilio 控制台][twilio_console]获取 Twilio 帐户和身份验证令牌。 若要开始使用 Twilio，请在 [https://www.twilio.com/try-twilio][try_twilio] 注册。 可以在 [http://www.twilio.com/pricing][twilio_pricing] 评估定价。 有关 Twilio 提供的 API 的信息，请参阅 [http://www.twilio.com/voice/api][twilio_api]。
 2. 将 *Twilio .NET 库*添加到 Web 角色。 请参阅本主题后面的**将 Twilio 库添加到 Web 角色项目**。
 
 应熟悉如何[在 Azure 中创建基本 Web 角色][azure_webroles_get_started]。
@@ -148,15 +148,15 @@ namespace WebRole1
 
 ![使用 Twilio 和 ASP.NET 的 Azure 呼叫响应][twilio_dotnet_basic_form_output]
 
-有关 TwiML 的更多信息可在 [http://www.twilio.com/docs/api/twiml][twiml] 中找到。 有关 &lt;Say&gt; 和其他 Twilio 谓词的更多信息可在 [http://www.twilio.com/docs/api/twiml/say][twilio_say] 中找到。
+有关 TwiML 的更多信息，请访问 [http://www.twilio.com/docs/api/twiml][twiml]。 有关 &lt;Say&gt; 和其他 Twilio 谓词的更多信息可在 [http://www.twilio.com/docs/api/twiml/say][twilio_say] 中找到。
 
 ## <a id="nextsteps"></a>后续步骤
 提供此代码是为了演示在 Azure 上的 ASP.NET Web 角色中使用 Twilio 的基本功能。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如：
 
 * 可以使用 Azure Blob 存储或 Azure SQL 数据库实例存储电话号码和呼叫文本，而不使用 Web 窗体。 有关在 Azure 中使用 Blob 的信息，请参阅[如何在 .NET 中使用 Azure Blob 存储服务][howto_blob_storage_dotnet]。 有关使用 SQL 数据库的信息，请参阅[如何在 .NET 应用程序中使用 Azure SQL 数据库][howto_sql_azure_dotnet]。
 * 可以使用 `RoleEnvironment.getConfigurationSettings` 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在窗体中对这些值进行硬编码。 有关 `RoleEnvironment` 类的信息，请参阅 [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet]。
-* 阅读 [https://www.twilio.com/docs/security][twilio_docs_security] 上的 Twilio 安全准则。
-* 可在 [https://www.twilio.com/docs][twilio_docs] 中详细了解 Twilio。
+* 阅读 [https://www.twilio.com/docs/security][twilio_docs_security] 处的 Twilio 安全准则。
+* 在 [https://www.twilio.com/docs][twilio_docs] 了解有关 Twilio 的更多信息。
 
 ## <a name="seealso"></a>另请参阅
 * [如何在 Azure 中使用 Twilio 实现语音和短信功能](twilio-dotnet-how-to-use-for-voice-sms.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125079"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406315"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "46125079"
 
 - 组织的 Office 365 订阅。
 - 作为全局管理员的用户帐户的凭据。
-- 若要接收审核数据，必须在 Office 365 订阅中[配置审核](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)。  请注意，[邮箱审核](https://technet.microsoft.com/library/dn879651.aspx)单独配置。  若未配置审核，仍可安装解决方案和收集其他数据。
+- 若要接收审核数据，必须在 Office 365 订阅中[配置审核](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)。  请注意，[邮箱审核](https://technet.microsoft.com/library/dn879651.aspx)单独配置。  若未配置审核，仍可安装解决方案和收集其他数据。
  
 
 ## <a name="management-packs"></a>管理包
@@ -477,7 +477,7 @@ At line:12 char:18
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="supported-agents"></a>支持的代理
-Office 365 解决方案不会从任何 [OMS 代理](../log-analytics/log-analytics-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
+Office 365 解决方案不会从任何 [Log Analytics 代理](../log-analytics/log-analytics-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
 ### <a name="collection-frequency"></a>收集频率
 初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Log Analytics 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Log Analytics 中。

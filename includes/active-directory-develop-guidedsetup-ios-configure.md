@@ -14,30 +14,34 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: brandwe
 ms.custom: include file
-ms.openlocfilehash: 331d16df55e26df5d49555c636b307499dd052af
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1604b7c9ee9888375e65aa679803c6e996e13b14
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843549"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988227"
 ---
 ## <a name="register-your-application"></a>注册应用程序
+
 如接下来的两部分中所述，可以采用两种方式之一注册应用程序。
 
 ### <a name="option-1-express-mode"></a>选项 1：快速模式
+
 现在需要在 Microsoft 应用程序注册门户中注册应用程序：
-1. 通过 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)注册应用程序
-2.  输入应用程序的名称和电子邮件
-3.  确保选中“指导式设置”选项
-4.  按照说明获取应用程序 ID，并将其粘贴到代码中
+
+1. 通过 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)注册应用程序。
+2. 输入应用程序的名称和电子邮件。
+3. 确保选中“指导式设置”选项。
+4. 按照说明获取应用程序 ID，并将其粘贴到代码中。
 
 ### <a name="option-2-advanced-mode"></a>选项 2：高级模式
 
-1.  转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)
-2.  输入应用程序的名称
-3.  确保取消选中“指导式设置”选项
-4.  单击 `Add Platform`，选择 `Native Application` 并单击 `Save`
-5.  返回 Xcode。 在 `ViewController.swift` 中，将以“ `let kClientID`”开头的行替换为刚注册的应用程序 ID：
+1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)。
+2. 输入应用程序的名称。
+3. 确保取消选中“指导式设置”选项。
+4. 依次选择“`Add Platform`”、“`Native Application`”。
+5. 选择 `Save`。
+6. 返回 Xcode。 在 `ViewController.swift` 中，将以“ `let kClientID`”开头的行替换为刚注册的应用程序 ID：
 
 ```swift
 let kClientID = "Your_Application_Id_Here"

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 1db1b8ee7ba3611f8d1d69f711f1ec72308c7d06
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833322"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465621"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
@@ -55,11 +55,11 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 **是否只有数据科学家才能加入？**
 
-不会。 事实上，我们鼓励数据爱好者，对数据科学感兴趣的任何人和其他有志于数据的科学家参加我们的竞赛。 我们已设计了支持文档，以便每个人都可以参与到比赛中。 我们的目标受众是：
+不是。 事实上，我们鼓励数据爱好者，对数据科学感兴趣的任何人和其他有志于数据的科学家参加我们的竞赛。 我们已设计了支持文档，以便每个人都可以参与到比赛中。 我们的目标受众是：
 
 * **数据开发人员**、**数据科学家**、**BI** 和**专业分析师**：负责生成数据和分析内容，供他人使用。
 * **数据专员**：了解数据的含义、用法和用途
-* **学生** & **研究人员**：在大学期间或大规模开放在线课堂 (MOOC) 参与过程中，通过学术程序学习和获取与数据相关的技能
+* **学生****研究人员**：在大学期间或大规模开放在线课程 (MOOC) 参与过程中，通过学术程序学习和获取与数据相关的技能
 
 **可以和同事组队参加吗？**
 
@@ -106,7 +106,7 @@ Microsoft 会验证专用排行榜的结果，然后我们将与你联系。 请
 
 **可以使用来宾工作区参与竞赛吗？**
 
-不会。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者试验，但你不能从该工作区创建要提交的有效项。 
+不是。 必须使用免费或标准工作区参与竞赛。 可以在来宾工作区中打开竞赛初用者试验，但你不能从该工作区创建要提交的有效项。 
 
 **可以在任何 Azure 区域中使用工作区参与竞赛吗？**
 

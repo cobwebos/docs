@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983661"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429552"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览）
 
@@ -37,7 +37,7 @@ ms.locfileid: "46983661"
 在预览版中，生命周期管理功能是免费的。 客户需要支付[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 和[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 若要详细了解定价，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="register-for-preview"></a>注册预览版 
-若要注册公共预览版，需要提交请求，将此功能注册到订阅中。 请求获得批准后（在几天内），将为美国西部 2、美国中西部和西欧的任何现有和新的 GPv2 或 Blob 存储帐户启用此功能。 在预览期，仅支持块 Blob。 与大多数预览版一样，不应将此功能用于生产工作负荷，直到正式版发布。
+若要注册公共预览版，需要提交请求，将此功能注册到订阅中。 请求获得批准后（在几天内），将为美国西部 2、美国中西部、美国东部 2 和西欧的任何现有和新的 GPv2 或 Blob 存储帐户启用此功能。 在预览期，仅支持块 Blob。 与大多数预览版一样，不应将此功能用于生产工作负荷，直到正式版发布。
 
 若要提交请求，请运行以下 PowerShell 或 CLI 命令。
 
@@ -69,7 +69,7 @@ az feature show --namespace Microsoft.Storage --name DLM
 
 ## <a name="add-or-remove-policies"></a>添加或删除策略 
 
-可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies) 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
+可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate) 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -316,6 +316,10 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
   ]
 }
 ```
+## <a name="faq"></a>常见问题解答
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>我创建了一个新策略，为什么指定的操作没有立即执行？ 
+
+生命周期策略由平台每天执行一次。 设置新策略后，最多可能需要 24 小时才能启动和执行分层或删除等操作。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220457"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408075"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
@@ -36,7 +36,7 @@ ms.locfileid: "47220457"
 
 2. 搜索“Service Fabric 分析”。 选择显示的资源。
 
-3. 选择**创建**。
+3. 选择“创建”。
 
     ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "47220457"
 
 * 创建一个 5 节点 Service Fabric 群集
 * 创建 Log Analytics 工作区和 Service Fabric 解决方案
-* 配置 OMS 代理以收集 2 个示例性能计数器并将其发送到工作区
+* 配置 Log Analytics 代理以收集 2 个示例性能计数器并将其发送到工作区
 * 配置 WAD 以收集 Service Fabric 并将其发送到 Azure 存储表 (WADServiceFabric*EventTable)
 * 配置 Log Analytics 工作区以从这些表中读取事件
 

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 718f351ad4ce325f3585ebcbe7adfc4b5905e734
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9688b9ba305a2eb59b80b02c0b41a7f4855dd051
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998604"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024556"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>缩放群集以管理 Web 服务吞吐量
 
@@ -65,7 +65,7 @@ az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>缩放群集中的 Kubernetes pod 副本数量
  
-可以使用 Azure 机器学习 CLI 或 [Kubernetes 仪表板] (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 对分配到群集的 Pod 副本数量进行缩放。
+可以使用 Azure 机器学习 CLI 或 [Kubernetes 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)对分配到群集的 Pod 副本数量进行缩放。
 
 有关 Kubernetes 副本 pod 的详细信息，请参阅 [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) 文档。
 
@@ -89,7 +89,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 例如，将 `autoscale-min-replicas` 设置为 5 将创建 5 个副本。 为了达到最佳 Web 服务数，请将数量设置为值（如 10），然后监视 503 错误消息数。 然后对数量作出相应的调整。
 
 
-| 参数名称 | Type | Description |
+| 参数名称 | 类型 | Description |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | 布尔值 | 指定是否启用自动缩放。 默认值：true |
 | `autoscale-min-replicas` | integer | 指定最小 pod 数。 必须大于或等于 0。 默认值：1 |

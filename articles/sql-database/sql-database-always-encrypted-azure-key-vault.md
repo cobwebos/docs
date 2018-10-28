@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: d944ead01da81e2fec49d256a4da939067bcceee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064401"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958969"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt459280.aspx) 中的[始终加密向导](https://msdn.microsoft.com/library/hh213248.aspx)，通过数据加密来保护 SQL 数据库中的敏感数据。 它还包括如何将每个加密密钥存储在 Azure 密钥保管库的说明。
 
@@ -48,13 +48,14 @@ ms.locfileid: "47064401"
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>使客户端应用程序可以访问 SQL 数据库服务
 首先必须通过设置 Azure Active Directory (AAD) 应用程序并复制对应用程序进行身份验证所需的应用程序 ID 和密钥，使客户端应用程序可以访问 SQL 数据库服务。
 
-若要获取应用程序 ID 和*密钥*，请按照[创建可访问资源的 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)中的步骤进行操作。
+若要获取应用程序 ID 和*密钥*，请按照[创建可访问资源的 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)中的步骤进行操作。
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>创建密钥保管库以存储密钥
 至此，已配置客户端应用并且已拥有应用程序 ID，接下来，可以创建密钥保管库并配置其访问策略，以便你和你的应用程序可以访问保管库的机密（Always Encrypted 密钥）。 *create*、*get*、*list*、*sign*、*verify*、*wrapKey* 和 *unwrapKey* 权限是用于创建新的列主密钥以及通过 SQL Server Management Studio 设置加密所必需的。
 
 通过运行以下脚本，可以快速创建密钥保管库。 有关这些 cmdlet 的详细说明以及有关创建和配置密钥保管库的详细信息，请参阅 [Azure 密钥保管库入门](../key-vault/key-vault-get-started.md)。
 
+```powershell
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
@@ -72,7 +73,7 @@ ms.locfileid: "47064401"
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
     Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
-
+```
 
 
 
@@ -107,6 +108,7 @@ ms.locfileid: "47064401"
 2. 右键单击“Clinic”数据库，并单击“新建查询”。
 3. 将以下 Transact-SQL (T-SQL) 粘贴到新查询窗口中，然后“执行”它。
 
+```sql
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
          [SSN] [char](11) NOT NULL,
@@ -120,7 +122,7 @@ ms.locfileid: "47064401"
          [BirthDate] [date] NOT NULL
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
          GO
-
+```
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>加密列（配置始终加密）
 SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加密列即可轻松地配置始终加密。
@@ -183,9 +185,10 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 在包管理器控制台中运行以下 2 行代码。
 
+```powershell
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-
+```
 
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>修改连接字符串以启用始终加密
@@ -204,6 +207,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 ### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>通过 SqlConnectionStringBuilder 启用始终加密
 以下代码显示了如何通过将 [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) 设置为[启用](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx)来启用“始终加密”。
 
+```CS
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
        new SqlConnectionStringBuilder("replace with your connection string");
@@ -211,10 +215,12 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
     // Enable Always Encrypted.
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
+```
 
 ## <a name="register-the-azure-key-vault-provider"></a>注册 Azure 密钥保管库提供程序
 下面的代码演示如何使用 ADO.NET 驱动程序注册 Azure 密钥保管库提供程序。
 
+```C#
     private static ClientCredential _clientCredential;
 
     static void InitializeAzureKeyVaultProvider()
@@ -230,8 +236,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
        providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
        SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
     }
-
-
+```
 
 ## <a name="always-encrypted-sample-console-application"></a>始终加密示例控制台应用程序
 此示例演示了如何执行以下操作：
@@ -244,7 +249,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 将 **Program.cs** 的内容替换为以下代码。 将 Main 方法前一行中全局 connectionString 变量的连接字符串替换为 Azure 门户中的有效连接字符串。 这是需要对此代码进行的唯一更改。
 
 运行该应用以在操作中查看始终加密。
-
+```CS
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -584,7 +589,7 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
         public DateTime BirthDate { get; set; }
     }
     }
-
+```
 
 
 ## <a name="verify-that-the-data-is-encrypted"></a>确保数据已加密
@@ -592,13 +597,15 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
 
 针对 Clinic 数据库运行以下查询。
 
+```sql
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+```
 
 可以看到，加密的列不包含任何明文数据。
 
    ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-若要使用 SSMS 访问纯文本数据，首先需要确保用户具有 Azure Key Vault 的适当权限：get、unwrapKey 和 verify。 有关详细信息，请参阅[创建和存储列主密钥 (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017)。
+若要使用 SSMS 访问纯文本数据，首先需要确保用户具有 Azure Key Vault 的适当权限：get、unwrapKey 和 verify。 有关详细信息，请参阅[创建和存储列主密钥 (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017)。
 
 然后在连接期间添加 *Column Encryption Setting=enabled* 参数。
 
@@ -608,12 +615,13 @@ SSMS 提供了一个向导，通过设置列主密钥、列加密密钥和已加
    
     ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 4. 针对 Clinic 数据库运行以下查询。
-   
-        SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-   
-     现在，可以看到已加密列中的明文数据。
 
-    ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+   ```sql
+      SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+   ```
+
+     现在，可以看到已加密列中的明文数据。
+     ![新建控制台应用程序](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,22 +4,19 @@ description: 本文介绍了 Azure 流量管理器的“嵌套式配置文件”
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111695"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648592"
 ---
 # <a name="nested-traffic-manager-profiles"></a>嵌套式流量管理器配置文件
 
@@ -35,7 +32,7 @@ ms.locfileid: "23111695"
 
 ![单个流量管理器配置文件][4]
 
-现在，假设要针对服务的某项更新进行测试，然后再推广该更新。 想要使用“加权”流量路由方法，以便将少部分流量定向到测试部署。 在西欧设置了测试部署以及现有的生产部署。
+现在，假设要针对服务的某项更新进行测试，再推广该更新。 想要使用“加权”流量路由方法，以便将少部分流量定向到测试部署。 在西欧设置了测试部署以及现有的生产部署。
 
 无法在单个配置文件中结合使用“加权”和“性能”流量路由方法。 若要支持此方案，可以使用位于西欧的两个终结点和“加权”流量路由方法创建流量管理器配置文件。 接下来，将此“子”配置文件作为终结点添加到“父”配置文件。 父配置文件仍使用“性能”流量路由方法，并且仍包含终结点形式的其他全局部署。
 
@@ -66,9 +63,7 @@ ms.locfileid: "23111695"
 
 ## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>示例 3：“性能”流量路由中的优先故障转移区域
 
-“性能”流量路由方法的默认行为旨在避免下一个最靠近的终结点发生过载并导致一系列的连锁故障。 当某个终结点发生故障时，定向到该终结点的所有流量将均匀分布到所有区域中的其他终结点。
-
-![默认故障转移的“性能”流量路由][5]
+“性能”流量路由方法的默认行为是，当终结点位于不同地理位置时，将依据最低网络延迟将最终用户路由到“最近”的终结点。
 
 但是，假设希望将西欧的流量故障转移到美国西部，仅当这两个终结点都不可用时才将流量定向到其他区域。 可以使用包含“优先级”流量路由方法的子配置文件创建此解决方案。
 

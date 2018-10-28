@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs
-description: 本文提供了有关如何将 ITSM 产品/服务与 OMS Log Analytics 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。
+description: 本文提供了有关如何将 ITSM 产品/服务与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。
 documentationcenter: ''
 author: jyothirmaisuri
 manager: riyazp
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 50ab09d39fc0c224a97b6cf0c758c55026ac8ce7
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042829"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409197"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -76,7 +76,7 @@ ms.locfileid: "48042829"
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择需要通过 ITSMC 同步的 Service Manager 工作项。  这些工作项将导入到 Log Analytics。 **选项：**“事件”、“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
-| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，OMS 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
+| **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，Log Analytics 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 ![Service Manager 连接](./media/log-analytics-itsmc/service-manager-connection.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "48042829"
     - [为日内瓦设置 OAuth](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- 安装用于 Microsoft OMS 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
+- 安装用于 Microsoft Log Analytics 集成的用户应用（ServiceNow 应用）。 [了解详细信息](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - 为安装的用户应用创建集成用户角色。 [此处](#create-integration-user-role-in-servicenow-app)提供了有关如何创建集成用户角色的信息。
 
 ### <a name="connection-procedure"></a>**连接过程**
@@ -221,7 +221,7 @@ ms.locfileid: "48042829"
 
 | **字段** | **说明** |
 | --- | --- |
-| **连接名称**   | 键入需要与 ITSMC 连接的 ServiceNow 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 OMS 中使用此名称。 |
+| **连接名称**   | 键入需要与 ITSMC 连接的 ServiceNow 实例的名称。  以后在此 ITSM 中配置工作项/查看详细日志分析时，需要在 Log Analytics 中使用此名称。 |
 | **合作伙伴类型**   | 选择“ServiceNow”。 |
 | **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。  |
@@ -247,6 +247,9 @@ ms.locfileid: "48042829"
 使用以下过程：
 
 1.  访问 [ServiceNow 应用商店](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)，并在 ServiceNow 实例中安装**用于 ServiceNow 和 Microsoft OMS 集成的用户应用**。
+   
+   >[!NOTE]
+   >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现在称为 Log Analytics。     
 2.  安装后，请访问 ServiceNow 实例的左侧导航栏，搜索并选择 Microsoft OMS 集成器。  
 3.  单击“安装清单”。
 

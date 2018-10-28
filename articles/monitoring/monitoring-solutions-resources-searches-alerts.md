@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269513"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024747"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -54,7 +54,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 
 ## <a name="saved-searches"></a>保存的搜索
-将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将在 OMS 门户的“收藏夹”和 Azure 门户的“保存的搜索”下显示。  每个警报也需要一个保存的搜索。   
+将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将在 Azure 门户的“保存的搜索”下显示。  每个警报也需要一个保存的搜索。   
 
 [Log Analytics 保存的搜索](../log-analytics/log-analytics-log-searches.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
@@ -90,7 +90,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 [Azure 日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)是由定期运行指定日志查询的 Azure 警报规则创建的。  如果查询结果与指定的条件相符，则会创建一个警报记录，并且会使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)运行一个或多个操作。  
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
 
 管理解决方案中的警报规则由以下三种不同资源组成。
 
@@ -146,7 +146,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 可使用 [操作组] 资源或操作资源定义操作。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
 
 
 存在两类由 **Type** 属性指定的操作资源。  一个计划需要一个“Alert”操作，该操作可定义警报规则的详细信息并在创建警报时定义要采取的操作。 操作资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`。  
@@ -242,7 +242,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 每个计划都有一个 Alert 操作。  这可定义警报的详细信息，并选择性定义通知和修正操作的详细信息。  通知将一封电子邮件发送到一个或多个地址。  修正在 Azure 自动化中启动 runbook，尝试修正检测到的问题。
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 在 2018 年 5 月 14 日之前，用户可以自愿开始将警报扩展到 Azure。 有关详细信息，请参阅[将警报从 OMS 扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
+> 从 2018 年 5 月 14 日开始，Log Analytics 工作区的 Azure 公有云实例中的所有警报都将开始自动扩展到 Azure。 有关详细信息，请参阅[将警报扩展到 Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 对于将警报扩展到 Azure 的用户，现在可以在 Azure 操作组中控制操作。 当工作区及其警报扩展到 Azure 后，可以使用[操作组 - Azure 资源管理器模板](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)检索或添加操作。
 
 ##### <a name="emailnotification"></a>EmailNotification
  此部分为可选。如果希望警报将邮件发送给一个或多个收件人，请将此部分包含在内。

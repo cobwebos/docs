@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: b604782f917584d1ecec432c20de75f427176ed1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29132885"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025542"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -155,5 +155,5 @@ install.sh #or upgrade.sh if prior LIS was previously installed
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[带宽/吞吐量测试 Azure VM](virtual-network-bandwidth-testing.md)，查阅方案的优化结果。
-* 阅读有关如何 [将带宽分配给虚拟机] (virtual-machine-network-throughput.md) 的信息
+* 阅读有关如何[为虚拟机分配带宽](virtual-machine-network-throughput.md)的信息
 * 通过 [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md) 了解详细信息

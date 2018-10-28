@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6e77d24c31401051d82501ca8064d02201bf218e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354268"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471469"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>概述：活动异地复制和自动故障转移组
 
@@ -279,8 +279,8 @@ ms.locfileid: "49354268"
 
 | API | Description |
 | --- | --- |
-| [创建或更新数据库 (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |创建、更新或还原主数据库或辅助数据库。 |
-| [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |返回创建操作过程中的状态。 |
+| [创建或更新数据库 (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |创建、更新或还原主数据库或辅助数据库。 |
+| [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |返回创建操作过程中的状态。 |
 | [将辅助数据库设为主数据库（计划的故障转移）](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |通过来自当前主要副本数据库的故障转移设置副本数据库。 |
 | [将辅助数据库设为主数据库（未计划的故障转移）](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |通过来自当前主要副本数据库的故障转移设置副本数据库。 此操作可能导致数据丢失。 |
 | [获取复制链路](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |获取异地复制合作关系中给定 SQL 数据库的特定复制链路。 它检索 sys.geo_replication_links 目录视图中可见的信息。 |

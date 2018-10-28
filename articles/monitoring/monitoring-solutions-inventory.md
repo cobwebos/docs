@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324744"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404097"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
 本文包括了 Microsoft 提供的[管理解决方案](monitoring-solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
@@ -34,7 +34,7 @@ ms.locfileid: "44324744"
 - **Operations Manager** - 与 Microsoft Monitoring Agent 相同的代理。 在此配置中，它[连接到已连接到 Log Analytics 的 Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)。 
 -  **Azure 存储** - 此解决方案从 Azure 存储帐户收集数据。 
 - **是否需要 Operations Manager？** - 管理解决方案进行数据收集时需要一个已连接的 Operations Manager 管理组。 
-- **通过管理组发送 Operations Manager 代理数据** - 如果代理[连接到 SCOM 管理组](../log-analytics/log-analytics-om-agents.md)，则数据将从管理服务器发送到 Log Analytics。 在这种情况下，代理不需要直接连接到 Log Analytics。 如果未选中此框，则数据将从代理直接发送到 Log Analytics，即使代理已连接到一个 SCOM 管理组。 它还需要能够通过 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)与 Log Analytics 进行通信。
+- **通过管理组发送 Operations Manager 代理数据** - 如果代理[连接到 SCOM 管理组](../log-analytics/log-analytics-om-agents.md)，则数据将从管理服务器发送到 Log Analytics。 在这种情况下，代理不需要直接连接到 Log Analytics。 如果未选中此框，则数据将从代理直接发送到 Log Analytics，即使代理已连接到一个 SCOM 管理组。 它还需要能够通过 [Log Analytics 网关](../log-analytics/log-analytics-oms-gateway.md)与 Log Analytics 进行通信。
 - **收集频率** - 指定管理解决方案收集数据时采用的频率。 
 
 

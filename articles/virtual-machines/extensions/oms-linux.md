@@ -15,18 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: bab579b540dbeed8ecbff8925547509edb1d78c9
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352370"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404845"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
 ## <a name="overview"></a>概述
 
 Log Analytics 提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
+
+>[!NOTE]
+>从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -210,13 +213,13 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 9 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
 | 10 | VM 已连接至 Log Analytics 工作区 | 要将 VM 连接到扩展架构中指定的工作区，请在公共设置中将“stopOnMultipleConnections”设置为 false，或删除该属性。 连接到工作区后，此 VM 立即开始计费。 |
 | 11 | 提供给扩展的无效配置 | 按上述示例设置部署所需的所有属性值。 |
-| 17 | OMS 包安装失败 | 
+| 17 | Log Analytics 包安装失败 | 
 | 19 | OMI 包安装失败 | 
 | 20 | SCX 包安装失败 |
 | 51 | VM 的操作系统不支持此扩展 | |
-| 55 | 无法连接到 OMS 服务或缺少所需的软件包或 dpkg 软件包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
+| 55 | 无法连接到 Log Analytics 服务或缺少所需的包或 dpkg 包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
 
-有关其他故障排除信息，可查看 [OMS-Agent-for-Linux 故障排除指南](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)。
+有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)。
 
 ### <a name="support"></a>支持
 

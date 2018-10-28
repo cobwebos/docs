@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434019"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405202"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -74,10 +74,10 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 ## <a name="operations"></a>操作
 本部分提供了关于安全操作中主要特性的其他信息以及有关这些功能的摘要信息。
 
-### <a name="operations-management-suite-security-and-audit-dashboard"></a>Operations Management Suite 安全和审核仪表板
-[OMS 安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 [安全和审核](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，提供 OMS 中安全的所有相关内容。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+### <a name="security-and-audit-dashboard"></a>“安全和审核”仪表板
+[安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助[内置搜索查询](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 [安全和审核](https://technet.microsoft.com/library/mt484091.aspx)仪表板是主屏幕，提供 Log Analytics 中安全性的所有相关内容。 它提供计算机安全状态的高级洞见。 还允许查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
-此外，检测到特定事件时，可以将 OMS 安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
+此外，检测到特定事件时，可以将安全性和符合性配置为[自动执行特定操作](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)。
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用 [Azure 资源管理器模板](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)来完成部署，该模板适用于测试、过渡和生产等不同环境。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
@@ -95,7 +95,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 对来自 Azure 基础结构（[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)）和每个单独的 Azure 资源（[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="log-analytics"></a>Log Analytics
-[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 中的 [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) 组件 – 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Log Analytics，因此可以在一个位置查看整个环境的指标和日志。
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) - 为本地基础结构和第三方基于云的基础结构（例如 AWS），以及 Azure 资源提供 IT 管理解决方案。 可以将来自 Azure Monitor 的数据直接路由到 Log Analytics，因此可以在一个位置查看整个环境的指标和日志。
 
 在取证和其他安全分析中，Log Analytics 是非常有用的工具，因为使用该工具能通过灵活的查询方法快速搜索大量与安全相关的条目。 此外，本地[防火墙和代理日志可以导出到 Azure 中，并可以使用 Log Analytics 进行分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)。
 

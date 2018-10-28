@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302176"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404471"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>使用 Log Analytics 进行事件分析和可视化
 Log Analytics 从云中托管的应用程序和服务收集和分析遥测，并提供分析工具来帮助你最大限度地提高其可用性和性能。 本文概述如何在 Log Analytics 中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：
@@ -105,7 +105,7 @@ Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
-* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 OMS 网关将无法访问 Internet 的计算机连接到 Log Analytics](../log-analytics/log-analytics-oms-gateway.md)
-* 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断
-* 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
-* 有关 Log Analytics 及其功能的更详细概述，请参阅[什么是 Log Analytics？](../operations-management-suite/operations-management-suite-overview.md)
+* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Log Analytics](../log-analytics/log-analytics-oms-gateway.md)。
+* 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断。
+* 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
+* 有关 Log Analytics 及其功能的更详细概述，请参阅[什么是 Log Analytics？](../operations-management-suite/operations-management-suite-overview.md)。

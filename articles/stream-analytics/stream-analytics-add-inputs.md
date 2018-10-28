@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665817"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648949"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 
@@ -38,7 +38,7 @@ Azure 流分析作业连接到一个或多个数据输入。 每个输入定义�
 有关流式处理数据输入的详细信息，请参阅[将数据作为输入流式传输到流分析中](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>引用数据输入
-流分析还支持称为“引用数据”的输入。 引用数据是完全静态的或更改缓慢。 它通常用于执行关联和查找。 例如，可以将数据流输入中的数据联接到引用数据中的数据，就像执行 SQL 联接以查找静态值一样。 目前只支持使用 Azure Blob 存储作为引用数据的输入源。 引用数据源 Blob 的大小限制为 100 MB。
+流分析还支持称为“引用数据”的输入。 引用数据是完全静态的或更改缓慢。 它通常用于执行关联和查找。 例如，可以将数据流输入中的数据联接到引用数据中的数据，就像执行 SQL 联接以查找静态值一样。 目前只支持使用 Azure Blob 存储作为引用数据的输入源。 参考数据源 blob 的大小限制为最多 300 MB，具体取决于查询复杂性和分配的流单元。
 
 有关引用数据输入的详细信息，请参阅[在流分析中使用引用数据进行查找](stream-analytics-use-reference-data.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4b13d2d277721d37a6b96f6640377c875f0b5c0f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b22d18408d040d564d6220e74e8b8a893fe41ae9
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161571"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646239"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 本文介绍一些常见的故障模式，如果未正确建模和管理，这些故障可能成为灾难。 本文还介绍发生灾难时应采取的缓解措施和行动。 目标是在发生计划内或其他故障时，限制或消除停机或数据丢失风险。
@@ -133,7 +133,7 @@ Service Fabric 的目标几乎始终是自动管理故障。 但是，若要处�
 ### <a name="random-failures-leading-to-cluster-failures"></a>随机故障导致群集故障
 Service Fabric 具有种子节点的概念。 种子节点可以维护基础群集的可用性。 这些节点有助于通过在某些类型的网络故障期间，与其他节点建立租约并充当决胜属性来确保群集保持启动状态。 如果随机故障删除了群集中的大部分种子节点并且无法将其恢复，则群集会自动关闭。 在 Azure 中，系统自动管理种子节点：种子节点可分布在可用的容错域和升级域上，如果从群集中删除了单个种子节点，系统会在原位重新创建一个。 
 
-在独立 Service Fabric 群集和 Azure 中，“主节点类型”是运行种子的节点。 定义主节点类型时，Service Fabric 自动利用通过创建最多 9 个种子节点和每个系统服务的 9 个副本所提供的节点数。 如果一组随机故障同时使用大部分系统服务副本，则系统服务将进入如上所述的仲裁丢失状态。 如果大部分种子节点丢失，群集将在不久之后关闭。
+在独立 Service Fabric 群集和 Azure 中，“主节点类型”是运行种子的节点。 定义主节点类型时，Service Fabric 会自动利用通过创建最多 9 个种子节点和每个系统服务的 7 个副本所提供的节点数。 如果一组随机故障同时使用大部分系统服务副本，则系统服务将进入如上所述的仲裁丢失状态。 如果大部分种子节点丢失，群集将在不久之后关闭。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何使用[可测试性框架](service-fabric-testability-overview.md)模拟各种故障

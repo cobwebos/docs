@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 32bed3a60c40b93471b75b9d54dccd822ccc3be8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325016"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025865"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -122,7 +122,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 1. 在 Azure Migrate 项目中，单击“开始” > “发现和评估” > “发现计算机”。
 2. 在“发现计算机”中，有两个适用于设备的选项。请单击“下载”，以便根据首选项下载适当的设备。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **一次性发现：** 此模型的应用设备与 vCenter Server 通信，以便收集有关 VM 的元数据。 至于 VM 的性能数据收集，它依赖于存储在 vCenter Server 中的历史性能数据，会收集上一个月的性能历史记录。 在此模型中，Azure Migrate 针对每个指标收集平均计数器（不同于峰值计数器）[了解详情] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)。 由于它是一次性发现，因此在发现完成后，将不再反映本地环境中的更改。 如果希望反映所做的更改，则需对同一项目的同一环境执行重新发现操作。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **一次性发现：** 此模型的应用设备与 vCenter Server 通信，以便收集有关 VM 的元数据。 至于 VM 的性能数据收集，它依赖于存储在 vCenter Server 中的历史性能数据，会收集上一个月的性能历史记录。 在此模型中，Azure Migrate 针对每个指标收集平均计数器（不同于峰值计数器）[了解详情](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)。 由于它是一次性发现，因此在发现完成后，将不再反映本地环境中的更改。 如果希望反映所做的更改，则需对同一项目的同一环境执行重新发现操作。
 
     b. **持续发现：** 此模型的设备持续分析本地环境，以便收集每个 VM 的实时利用率数据。 在此模型中，将会针对每个指标（CPU 利用率、内存利用率等）收集峰值计数器。 进行性能数据收集时，此模型不依赖于 vCenter Server 的统计信息设置。 可以随时停止设备提供的持续分析。
 
@@ -148,7 +148,17 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 #### <a name="one-time-discovery"></a>一次性发现
 
-适用于 OVA 版本 1.0.9.14
+<<<<<<< HEAD 适用于 OVA 版本 1.0.9.15（于 2018 年 10 月 23 日发布）
+
+ <a name="algorithm--hash-value"></a>**算法**|**哈希值**
+=======
+适用于 OVA 版本 1.0.9.15
+
+**算法** | **哈希值**
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37 --- | --- MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+
+<<<<<<< HEAD 适用于 OVA 版本 1.0.9.14（于 2018 年 8 月 24 日发布）======= 适用于 OVA 版本 1.0.9.14
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 **算法** | **哈希值**
 --- | ---
@@ -254,7 +264,7 @@ SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
 3.  在桌面上，选择“运行收集器”快捷方式。
 4.  在 Azure Migrate 收集器中，打开“设置先决条件”然后：
 
-    a. 接受许可条款，并阅读第三方信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 接受许可条款，并阅读第三方信息。
 
     收集器将会检查 VM 是否可访问 Internet。
 

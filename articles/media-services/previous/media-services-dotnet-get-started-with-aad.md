@@ -4,20 +4,21 @@ description: 本主题介绍了如何使用 Azure Active Directory (Azure AD) �
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: b8f58f4010590dc40d5e8dc7ac1b634f161a807d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945563"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
 
@@ -28,7 +29,7 @@ ms.lasthandoff: 05/07/2018
 - 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
 - 一个媒体服务帐户。 有关详细信息，请参阅[通过使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
 - 最新的 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 程序包。
-- 熟悉主题[使用 AAD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)。 
+- 熟悉主题[使用 Azure AD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)。 
 
 通过 Azure 媒体服务使用 Azure AD 身份验证时，可以通过以下两种方式之一进行身份验证：
 
@@ -96,14 +97,14 @@ ms.lasthandoff: 05/07/2018
 
 以下示例介绍如何创建 Azure AD 令牌和上下文：
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
         class Program
         {
             static void Main(string[] args)
             {
                 // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR AAD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
+                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
     
                 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
     
@@ -157,7 +158,7 @@ ms.lasthandoff: 05/07/2018
     
 以下示例介绍如何创建 Azure AD 令牌和上下文：
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
     
         class Program

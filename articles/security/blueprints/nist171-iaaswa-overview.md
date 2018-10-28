@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: e65369546715a679de19fb1aa44dd221fb4de04e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 78c92f8d738dd675ac20c31bd8171bd4370a56f6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408430"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406239"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST SP 800-171 的 IaaS Web 应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "47408430"
 
 本 Azure 安全性和符合性蓝图提供的指导可帮助客户在 Azure 中部署 Web 应用程序体系结构，用于实施一部分 NIST SP 800-171 控制措施。 该解决方案展示了客户可以满足特定安全性和符合性要求的方式。 此外，它还是客户在 Azure 中构建和配置其 Web 应用程序的基础。
 
-此参考体系结构、相关实施指南和威胁模型的主要宗旨是为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能会因每个客户的具体实施方案而有所不同。
+此参考体系结构、相关实施指南和威胁模型的主要宗旨是为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 此 Azure 安全性与合规性蓝图可针对具有 SQL Server 后端的 IaaS Web 应用程序部署一个参考体系结构。 体系结构包括 Web 层、数据层、Active Directory 基础结构、Azure 应用程序网关和 Azure 负载均衡器。 在可用性集中配置部署到 Web 层和数据层的虚拟机 (VM)。 在 Always On 可用性组中配置 SQL Server 实例以实现高可用性。 VM 已加入域。 Active Directory 组策略在操作系统级别强制实施安全性和符合性配置。
@@ -76,7 +76,7 @@ ms.locfileid: "47408430"
 此解决方案使用以下配置将 VM 创建为已加入域的守护主机：
 -   [反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)。
 -   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)。
--   使用密钥保管库的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
+-   使用 Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)。
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用 VM 时可减少其资源消耗量。
 -   已启用 [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard)，以便凭据和其他机密在与运行操作系统相隔离的受保护环境中运行。
 
@@ -120,13 +120,13 @@ Azure 磁盘加密：磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [�
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可检测影响组织标识的潜在漏洞。 它将自动响应配置为检测与组织标识相关的可疑操作。 它还会调查可疑事件，以采取适当的措施进行解决。
 
 ### <a name="security"></a>安全
-机密管理：此解决方案使用[密钥保管库](https://azure.microsoft.com/services/key-vault/)管理密钥和机密。 密钥保管库有助于保护云应用程序和服务所用的加密密钥和机密。 以下密钥保管库功能可帮助客户保护数据：
+机密管理：此解决方案使用 [Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Key Vault 帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Key Vault 功能帮助客户保护数据：
 - 根据需要配置高级访问权限策略。
-- 使用对密钥和机密所需的最低权限来定义密钥保管库访问策略。
-- 密钥保管库中的所有密钥和机密都有过期日期。
-- 密钥保管库中的所有密钥受专用硬件安全模块的保护。 密钥类型是硬件安全模块保护的 2048 位 RSA 密钥。
+- 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
+- Key Vault 中的所有密钥和机密都有过期日期。
+- Key Vault 中的所有密钥受专用硬件安全模块的保护。 密钥类型是硬件安全模块保护的 2048 位 RSA 密钥。
 - 使用 RBAC 可向所有用户和标识授予最低要求的权限。
-- 启用密钥保管库的诊断日志时，保留期设置为至少 365 天。
+- 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 - 此解决方案与密钥保管库集成，用于管理 IaaS VM 磁盘加密密钥和机密。
 
@@ -165,14 +165,14 @@ Azure 应用程序网关：体系结构使用配置了 Web 应用程序防火墙
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集数据后，会针对 Operations Management Suite 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
+**Log Analytics**：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中进行处理、存储和在仪表板上报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
 
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
--   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 它提供了特定于已部署服务器基础结构的建议优先级列表。
-- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 它为客户提供了特定于已部署服务器基础结构的建议优先级列表。
-- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布情况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
+-   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：可以使用 Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。
+- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案会定期评估服务器环境的风险和运行状况。 此解决方案为客户提供了特定于已部署服务器基础结构的建议优先级列表。
+- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告部署的代理数量及其地理分布状况。 此外，它还报告未响应代理数量和提交操作数据的代理数量。
 -   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户所有 Azure 订阅的 Azure 活动日志。
 
 Azure 自动化：[自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 SQL Server 中收集日志。 客户可以使用自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案轻松识别环境中的更改。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333388"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457402"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -53,7 +53,9 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 ## <a name="supported-regions"></a>支持的区域
 
-可以对以下任何区域中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2 区、美国中北部、美国中南部、美国中部、美国西部、美国西部 2 区、西欧、北欧、英国西部、英国南部、澳大利亚东部、澳大利亚东南部和东南亚。 Log Analytics 工作区必须位于美国中西部、美国东部、西欧、英国南部、澳大利亚东南部或东南亚区域。
+可以对以下任何区域中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2、美国中北部、美国中南部、美国中部、美国西部、美国西部 2、加拿大中部、西欧、北欧、英国西部、英国南部、日本东部、印度中部、澳大利亚东部、澳大利亚东南部和东南亚。 
+
+Log Analytics 工作区必须位于美国中西部、美国东部、西欧、英国南部、加拿大中部、日本东部、印度中部、澳大利亚东南部或东南亚区域。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -135,7 +137,7 @@ New-AzureRmStorageAccount `
 2. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。
 3. 将“保留期”设置为存储数据的天数。
 4. 为“流量分析状态”选择“打开”。
-5. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#traffic-analytics-supported-regions)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+5. 选择现有的 Log Analytics 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#traffic-analytics-supported-regions)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
     托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在西欧区域的某个工作区中，同时将 NSG 部署在美国东部和美国西部。 可在同一工作区中配置多个 NSG。
 6. 选择“保存”。

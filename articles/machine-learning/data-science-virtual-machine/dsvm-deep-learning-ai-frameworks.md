@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952818"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646104"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 和[深度学习 VM](http://aka.ms/dsvm/deeplearning) 支持多个深度学习框架，可帮助生成具有预测分析和认知功能（例如图像和语言理解）的人工智能 (AI) 应用程序。 
@@ -174,7 +174,7 @@ export CUDA_ROOT=/usr/local/cuda-8.0
 
     sudo systemctl start digits
 
-该服务需要约一分钟启动。 打开 Web 浏览器并导航到 `http://localhost:5000`。
+该服务需要约一分钟启动。 打开 Web 浏览器并导航到 `http://localhost:5000`。 请注意，DIGITS 不提供安全登录，不应在 VM 外部公开。
 
 
 

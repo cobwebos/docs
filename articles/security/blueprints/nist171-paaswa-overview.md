@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: a073c0ddfe9f75984d2aa47e51d04c7217589dc5
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e7851b39327e61f1676ae0cf1c3bff3de75b56bd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433848"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409265"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure 安全性和符合性蓝图 - 符合 NIST Special Publication 800-171 的 PaaS Web 应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "47433848"
 
 本 Azure 安全性和符合性蓝图提供的指导可帮助客户在 Azure 中部署平台即服务 (PaaS) Web 应用程序，用于实施一部分 NIST SP 800-171 控制措施。 该解决方案展示了客户可以满足特定安全性和符合性要求的方式。 此外，它还是客户在 Azure 中构建和配置其 Web 应用程序的基础。
 
-此参考体系结构、相关实施指南和威胁模型旨在为客户适应其特定要求奠定基础， 而不应在生产环境中按原样使用。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
+此参考体系结构、相关实施指南和威胁模型旨在为客户适应其特定要求奠定基础， 请不要在生产环境中原样照搬。 在不经修改的情况下部署此体系结构并不足以完全满足 NIST SP 800-171 的要求。 客户负责对任何使用此体系结构构建的解决方案进行适当的安全性和符合性评估。 要求可能因每个客户的具体实施方案而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 
@@ -180,7 +180,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
-Azure Log Analytics：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中用于进行处理、存储和仪表板报告。 收集数据后，会针对 Operations Management Suite 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
+Azure Log Analytics：这些日志将整合到 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 中用于进行处理、存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Log Analytics 集成。 客户可以使用 Log Analytics 查询来访问其安全事件数据并将其与其他服务中的数据合并在一起。
 
 以下 Log Analytics [管理解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)是此体系结构的一部分：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：可以使用 Active Directory 运行状况检查解决方案定期评估服务器环境的风险和运行状况。 此解决方案提供了特定于已部署服务器基础结构的建议优先级列表。

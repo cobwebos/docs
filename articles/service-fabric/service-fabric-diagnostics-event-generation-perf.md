@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 9e740dd3acce842f888e5994fe8f46222477adc1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208227"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408007"
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -84,4 +84,4 @@ Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 Service Fabric 中的[平台级事件生成情况](service-fabric-diagnostics-event-generation-infra.md)
-* 通过 [OMS 代理](service-fabric-diagnostics-oms-agent.md)收集性能指标
+* 通过 [Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)收集性能指标

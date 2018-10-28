@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411321"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429144"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -73,7 +73,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 ### <a name="azure-security-center-and-windows-update"></a>Azure 安全中心和 Windows 更新
 Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少的操作系统更新。 安全中心从 Windows Update 或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows VM 上配置的服务。 安全中心还可检查 Linux 系统的最新更新。 如果 VM 缺少系统更新，安全中心会建议你应用系统更新。 通过 Azure 门户中的安全中心控制这些系统更新的应用情况。 应用某些更新后，可能需要重启 VM。 有关详细信息，请参阅[在 Azure 安全中心应用系统更新](../../security-center/security-center-apply-system-updates.md)。
 
-与本地服务器一样，Azure 不会向 Microsoft Azure VM 推送 Windows 更新提供的更新，因为这些虚拟机应由用户进行管理。 但是，我们依然建议启用 Windows 自动更新设置。 自动安装 Windows 更新提供的更新也会导致应用更新后发生重启。 有关详细信息，请参阅 [Windows 更新常见问题解答](https://support.microsoft.com/help/12373/windows-update-faq)。
+与本地服务器一样，Azure 不会向 Windows VM 推送 Windows 更新提供的更新，因为这些虚拟机应由用户进行管理。 但是，我们依然建议启用 Windows 自动更新设置。 自动安装 Windows 更新提供的更新也会导致应用更新后发生重启。 有关详细信息，请参阅 [Windows 更新常见问题解答](https://support.microsoft.com/help/12373/windows-update-faq)。
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>影响 VM 可用性的其他情况
 在其他情况下，Azure 可能主动暂停使用 VM。 你会在执行此操作前收到电子邮件通知，因此有机会解决该基础问题。 举例来说，影响 VM 可用性的问题包括：违反安全规范、付款方式过期。

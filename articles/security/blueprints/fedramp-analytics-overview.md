@@ -8,40 +8,40 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: db9e49cc4dc02b6864bee2dc4b73ff3c085f5380
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 0e5beb89f3ea2a5c14fc56af35112710964bdb16
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206276"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406562"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure 安全性和符合性蓝图：用于 FedRAMP 的分析
 
 ## <a name="overview"></a>概述
 
-[联邦风险与授权管理计划 (FedRAMP)](https://www.fedramp.gov/) 是美国政府范围的计划，它提供一种标准化方法来对云产品和服务进行安全评估、授权和持续监视。 本 Azure 安全性和符合性蓝图指导如何传递帮助实现 FedRAMP 高控件子集的 Microsoft Azure 分析体系结构。 此解决方案指导适用于常用参考体系结构的 Azure 资源的部署和配置，演示了客户如何通过多种方式达到特定的安全性和符合性要求，是客户在 Azure 上生成和配置其分析解决方案的基础。
+[联邦风险与授权管理计划 (FedRAMP)](https://www.fedramp.gov/) 是美国政府范围的计划，它提供一种标准化方法来对云产品和服务进行安全评估、授权和持续监视。 本 Azure 安全性和符合性蓝图指导如何构建有助于实现一部分 FedRAMP High 控制的 Microsoft Azure 分析体系结构。 此解决方案介绍了如何通过部署和配置 Azure 资源来构建常用参考体系结构，演示了客户如何通过多种方式达到特定的安全性和符合性要求，是客户在 Azure 上生成和配置其分析解决方案的基础。
 
 此参考体系结构、相关的控制实现指南和威胁模型旨在作为客户适应其特定要求的基础，不应在生产环境中按原样使用。 在未经修改的情况下将应用程序直接部署到此环境并不足以完全符合 FedRAMP 高基线的要求。 请注意以下事项：
-- 体系结构提供一个基线来帮助客户以遵从 FedRAMP 的方式将工作负载部署到 Azure。
-- 客户负责针对使用本体系结构构建的任何解决方案开展相应的安全性与符合性评估；具体要求根据客户的每种实施方式具体情况而异。
+- 该体系结构提供一个基线来帮助客户以遵从 FedRAMP 的方式将工作负载部署到 Azure。
+- 客户有责任对使用本体系结构构建的任何解决方案进行相应的安全性与符合性评估，因为具体要求可能会因客户的具体实施情况而异。
 
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 
-此解决方案提供一个分析平台，客户可以在此平台上构建自己的分析工具。 该参考体系结构概述了一个泛型用例，其中客户通过 SQL/数据管理员的批量数据导入或通过经操作用户的操作数据更新输入数据。 两个工作流都会将用于导入数据的 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 合并到 SQL 数据库。 Azure Functions 必须由客户通过 Azure 门户进行配置，以处理特定于客户每个分析需求的导入任务。
+此解决方案提供一个分析平台，客户可以在此平台上构建自己的分析工具。 该参考体系结构概述了一个泛型用例，其中客户通过 SQL/数据管理员的批量数据导入或通过经操作用户的操作数据更新输入数据。 两个工作流都会整合 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)，用于将数据导入 SQL 数据库。 Azure Functions 必须由客户通过 Azure 门户进行配置，以处理特定于每个客户具体分析需求的导入任务。
 
 Microsoft Azure 为客户提供各种报告和分析服务；但此解决方案会将 Azure Analysis Services 与 Azure SQL 数据库 相结合，以快速浏览数据并通过更智能的客户数据建模更快地传递结果。 Azure Analytics Services 是一种意在通过探索数据集间的新关系加快查询速度的机器学习。 数据一旦通过多个统计函数定型后，便可与相同的表格模型同步多达 7 个额外查询池（包括客户服务器在内一共 8 个），以分担查询工作负荷并减少响应时间。
 
-对于增强的分析和报告，可以通过列存储索引配置 SQL 数据库。 Azure Analytics Services 和 SQL 数据库都可以进行横向或纵向扩展，或者完全关闭以响应客户使用情况。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 最佳做法是，Azure 建议使用受信任的证书颁发机构来增强安全性。
+对于增强的分析和报告，可以通过列存储索引配置 SQL 数据库。 Azure Analytics Services 和 SQL 数据库都可以进行扩展或缩减，或者完全关闭以响应客户使用情况。 所有 SQL 流量都通过包含自签名证书使用 SSL 加密。 Azure 建议使用受信任的证书颁发机构来增强安全性，这是最佳做法。
 
-数据上传到 Azure SQL 数据库并被 Azure Analysis Services 定型后，操作用户和 SQL/数据管理员便可通过 Power BI 使用该数据。 Power BI 可直观地显示数据并整合多个数据集的信息以提供更好的见解。 其高度适应性和与 Azure SQL 数据库的轻松集成可确保客户按照自己的业务需求进行配置，从而处理各种情况。
+数据上传到 Azure SQL 数据库并被 Azure Analysis Services 定型后，操作用户和 SQL/数据管理员便可通过 Power BI 使用该数据。 Power BI 可直观地显示数据并整合多个数据集的信息以提供更好的见解。 它具有很高的适应性，并能够与 Azure SQL 数据库轻松集成。因此，客户可以按照自己的业务需求进行配置，处理各种情况。
 
-整个解决方案基于帐户客户从 Azure 门户配置的 Azure 存储进行构建。 Azure 存储通过“存储服务加密”加密所有数据，以保持静态数据的机密性。  异地冗余存储 (GRS) 确保客户主数据中心的不良事件不会导致数据丢失，因为第二个副本将存储在数百英里以外的独立位置中。
+整个解决方案基于一个 Azure 存储帐户进行构建，客户可从 Azure 门户配置该帐户。 Azure 存储通过“存储服务加密”加密所有数据，以保持静态数据的机密性。  异地冗余存储 (GRS) 确保客户主数据中心的不良事件不会导致数据丢失，因为第二个副本将存储在数百英里以外的独立位置中。
 
-为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 通过 Operations Management Suite (OMS) 和 Azure Monitor 监视系统运行状况。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
+为了增强安全性，此体系结构通过 Azure Active Directory 和 Azure Key Vault 管理资源。 系统运行状况通过 Log Analytics 和 Azure Monitor 进行监视。 客户配置两个监视服务捕获日志并在单独的、可轻松导航的仪表板中显示系统运行状况。
 
 Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理，后者从配置为通过安全 VPN 或 ExpressRoute 连接访问 Azure SQL 数据库的本地计算机运行。 **Azure 建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构资源组。**
 
-![用于 FedRAMP 参考体系结构图的分析](images/fedramp-analytics-reference-architecture.png?raw=true "Analytics for FedRAMP reference architecture diagram")
+![用于 FedRAMP 参考体系的分析示意图](images/fedramp-analytics-reference-architecture.png?raw=true "用于 FedRAMP 参考体系的分析示意图")
 
 ### <a name="roles"></a>角色
 该分析蓝图概述的方案包括以下三种常规用户类型：操作用户、SQL/数据管理员和系统工程师。 Azure 基于角色的访问控制 (RBAC) 可通过内置自定义角色实现精确的访问管理。 这些资源可用于配置[基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)以及概述和实现[预定义的角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
@@ -50,7 +50,7 @@ Azure SQL 数据库通常通过 SQL Server Management Studio (SSMS) 进行管理
 系统工程师拥有 Azure 客户订阅，并通过 Azure 门户配置解决方案的部署。
 
 #### <a name="sqldata-administrator"></a>SQL/数据管理员
-SQL/数据管理员构建批量数据导入函数和操作数据更新函数以更新到 Azure SQL 数据库。 SQL/数据管理器不负责数据库中的任何操作数据更新，但能够通过 Power BI 查看数据。
+SQL/数据管理员构建批量数据导入函数和操作数据更新函数以将数据上传到 Azure SQL 数据库。 SQL/数据管理器不负责数据库中的任何操作数据更新，但能够通过 Power BI 查看数据。
 
 #### <a name="operational-user"></a>操作用户
 操作用户定期更新数据，并拥有日常数据生成。 操作用户也通过 Power BI 解释结果。
@@ -63,7 +63,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 - Azure Analysis Service
 - Azure Active Directory
 - Azure 密钥保管库
-- OMS
+- Azure Log Analytics
 - Azure Monitor
 - Azure 存储
 - ExpressRoute/VPN 网关
@@ -78,14 +78,14 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 **Azure Analysis Service**：[Azure Analysis Service](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) 提供企业数据建模和与 Azure 数据平台服务的集成。 通过将多个源的数据结合到单个数据模型中，Azure Analysis Service 加快浏览大量数据的速度。
 
-**Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) 为尝试从数据处理行为中提取更好见解的客户提供分析和报告功能。
+**Power BI**：[Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) 为尝试通过数据处理工作提取更好见解的客户提供分析和报告功能。
 
 ### <a name="networking"></a>网络
 **网络安全组**：设置 [Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 来管理流向部署资源和服务的流量。 网络安全组设置为默认拒绝方案，并且仅允许预配置访问控制列表 (ACL) 中包含的流量。
 
 每个 NSG 都打开了特定的端口和协议，以便解决方案能够安全正确地工作。 此外，为每个 NSG 启用了以下配置：
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - 已将 OMS [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) 连接到 NSG 的诊断功能。
+  - 已将 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) 连接到 NSG 的诊断功能。
 
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
@@ -110,15 +110,15 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ### <a name="logging-and-audit"></a>日志记录和审核
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) 生成完整显示的监视数据（包括活动日志、指标和诊断数据），使用户可以全面了解系统运行状况。  
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集和分析 Azure 和本地环境中的资源生成的数据。
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作见解。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
-此外，以下 OMS 解决方案作为此体系结构的一部分包括在内：
+此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
--   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：安全和审核仪表板通过提供安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全性状态的高级见解。
+-   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
 -   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
 -   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案帮助客户跨所有 Azure 订阅分析 Azure 活动日志。
 
@@ -142,14 +142,14 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ### <a name="additional-services"></a>其他服务
 #### <a name="iaas---vm-vonsiderations"></a>IaaS - VM 注意事项
-此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下，可以利用用于业务持续性和 OMS 的特定功能和服务：
+此 PaaS 解决方案不包括任何 Azure IaaS VM。 客户可以创建 Azure VM 运行多个 PaaS 服务。 在这种情况下，可以利用用于业务持续性和 Log Analytics 的特定功能和服务：
 
 ##### <a name="business-continuity"></a>业务连续性
 - **高可用性**：服务器工作负荷将分组到[可用性集](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，帮助确保 Azure 中虚拟机的高可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
 - **恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
-##### <a name="oms"></a>OMS
+##### <a name="monitoring-solutions"></a>监视解决方案
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
 -   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
 -   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
@@ -158,7 +158,7 @@ SQL/数据管理员构建批量数据导入函数和操作数据更新函数以�
 
 ##### <a name="security"></a>安全
 - **恶意软件防护**：用于虚拟机的 [Microsoft 反恶意软件](https://docs.microsoft.com/azure/security/azure-security-antimalware)提供实时保护功能，当已知的恶意软件或不需要的软件试图在受保护的虚拟机上进行安装或运行时，它使用可配置的警报帮助识别和删除病毒、间谍软件和其他恶意软件。
-- **修补程序管理**：部署为此参考体系结构一部分的 Windows 虚拟机默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 OMS [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，通过该服务可以在需要时创建更新部署，以修补虚拟机。
+- **修补程序管理**：部署为此参考体系结构一部分的 Windows 虚拟机默认配置为接收来自 Windows 更新服务的自动更新。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，通过该服务可以在需要时创建更新部署，以修补虚拟机。
 
 #### <a name="azure-commercial"></a>Azure 商业版
 尽管此数据分析体系结构不适用于部署到 [Azure 商业版](https://azure.microsoft.com/overview/what-is-azure/)环境，但是可以通过此参考体系结构中所描述的服务以及仅在 Azure 商业版环境中可用的其他服务实现类似目标。 请注意，Azure 商业版将 FedRAMP JAB P-ATO 维持在中等影响级别，政府机构和合作伙伴可以将中等敏感信息部署到利用 Azure 商业版环境的云。

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.component: disks
-ms.openlocfilehash: 5d3c2f09a6e4c45aa477cd85911147eab6de7a2c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714700"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404131"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -77,8 +77,10 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 ### <a name="step-1-create-a-recovery-services-vault"></a>步骤 1：创建恢复服务保管库
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-2. 选择“创建资源” > “管理” > “备份和 Site Recovery (OMS)”。 或者，可以选择“浏览” > “恢复服务保管库” > “添加”。 
-3. 指定将 VM 复制到的区域。 若要在同一区域中迁移，请选择源 VM 和源存储帐户所在的区域。 
+2. 选择“创建资源” > “管理” > “备份和 Site Recovery (OMS)”。 或者，可以选择“浏览” > “恢复服务保管库” > “添加”。
+   >[!NOTE]
+   >备份和 Site Recovery 以前是 ![OMS 套件](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)的一部分。
+1. 指定将 VM 复制到的区域。 若要在同一区域中迁移，请选择源 VM 和源存储帐户所在的区域。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>步骤 2：选择保护目标 
 

@@ -1,21 +1,21 @@
 ---
-title: 文本翻译 API 注册
+title: 如何注册文本翻译 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
-description: 如何注册文本翻译 API。
+description: 了解如何注册文本翻译 API 并获取订阅密钥。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 18d2926be9d358b90e5b34754e689604aef85522
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: a08a3a5f2c4e17406863ab203c5af1781b4223d3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128302"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648321"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>如何注册文本翻译 API
 

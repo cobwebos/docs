@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239211"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407055"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -98,7 +98,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 收集器设备收集的数据存储在创建迁移项目时指定的 Azure 位置。 数据安全存储在 Microsoft 订阅中，当用户删除 Azure Migrate 项目时，会删除这些数据。
 
-对于依赖项可视化，如果在 VM 上安装了代理，则依赖项代理收集的数据将存储在美国的某个 OMS 工作区中，该工作区是在用户的订阅中创建的。 在订阅中删除 OMS 工作区时会删除此数据。 [了解详细信息](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
+对于依赖项可视化，如果在 VM 上安装了代理，则依赖项代理收集的数据将存储在美国的某个 Log Analytics 工作区中，该工作区是在用户的订阅中创建的。 在订阅中删除 Log Analytics 工作区时会删除此数据。 [了解详细信息](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>数据是否经过静态加密和传输中加密？
 

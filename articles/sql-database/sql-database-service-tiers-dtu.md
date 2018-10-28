@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/22/2018
+ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831307"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955246"
 ---
 # <a name="dtu-based-service-tiers"></a>基于 DTU 的服务层
 
@@ -25,7 +25,6 @@ ms.locfileid: "48831307"
 
 > [!IMPORTANT]
 > SQL 数据库托管实例（目前以公共预览版提供）不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
-
 > [!NOTE]
 > 有关基于 vCore 的服务层的信息，请参阅[基于 vCore 的服务层](sql-database-service-tiers-vcore.md)。 有关区分基于 DTU 的服务层和基于 vCore 的服务层的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-service-tiers.md)。
 
@@ -33,7 +32,7 @@ ms.locfileid: "48831307"
 
 选择服务层首要考虑的是业务连续性、存储和性能需求。
 ||基本|标准|高级|
-| :-- | --: |--:| --:| --:| 
+| :-- | --: |--:| --:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产||
 |运行时间 SLA|99.99%|99.99%|99.99%|在预览版中不适用|
 |备份保留|7 天|35 天|35 天|
@@ -44,13 +43,16 @@ ms.locfileid: "48831307"
 |内存中 OLTP|不适用|不适用|支持|
 |||||
 
+> [!NOTE]
+> 可以将在基本服务层获得的免费 Azure SQL 数据库与 Azure 免费帐户结合使用来探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers.md#dtu-based-purchasing-model)？
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: | --: |
-| 最大存储大小 | 2 GB | 1 TB | 4 TB  | 
+| 最大存储大小 | 2 GB | 1 TB | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | |
 ||||||
 
@@ -59,18 +61,17 @@ ms.locfileid: "48831307"
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和已共用数据库限制
 
-| | **基本** | **标准** | **高级** | 
+| | **基本** | **标准** | **高级** |
 | :-- | --: | --: | --: | --: |
-| 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB | 
-| 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB | 
-| 每个数据库的最大 eDTU 数 | 5 | 3000 | 4000 | 
-| 每个池的最大 eDTU 数 | 1600 | 3000 | 4000 | 
-| 每个池的数据库数目上限 | 500  | 500 | 100 | 
+| 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
+| 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
+| 每个数据库的最大 eDTU 数 | 5 | 3000 | 4000 |
+| 每个池的最大 eDTU 数 | 1600 | 3000 | 4000 |
+| 每个池的数据库数目上限 | 500  | 500 | 100 |
 ||||||
 
 > [!IMPORTANT]
 > 除以下区域外的所有区域当前均提供超过 1 TB 的高级层存储：美国中西部、中国东部、USDoDCentral、德国中部、USDoDEast、US Gov 西南部、USGov Iowa、德国东北部、中国北部。 在其他区域，高级层中的最大存储限制为 1 TB。 请参阅 [P11-P15 当前限制](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
-
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 

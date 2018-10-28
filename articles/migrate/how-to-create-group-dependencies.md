@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 9f95ffe47275cfda77efa294ca6e8ccebe0070eb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158608"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407430"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -39,7 +39,7 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 > 你无法更改与迁移项目关联的工作区。
 
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
-要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果你的计算机未连接到 Internet，你需要在计算机上下载并安装 [OMS 网关](../log-analytics/log-analytics-oms-gateway.md)。
+要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../log-analytics/log-analytics-oms-gateway.md)。
 
 1. 在“概述”中，单击“管理” > “组”，转到所需组。
 2. 在计算机列表中，单击“依赖项代理”列中的“需要安装”，查看有关如何下载并安装代理的说明。
@@ -102,4 +102,4 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
 ## <a name="next-steps"></a>后续步骤
 - [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)。
-- [详细了解如何计算评估](concepts-assessment-calculation.md)。
+- [详细了解](concepts-assessment-calculation.md)如何计算评估。

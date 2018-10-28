@@ -1,23 +1,23 @@
 ---
-title: 快速入门：适用于 QnA Maker API (V4) 的 Go
+title: REST API (V4) - Go - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
+description: 获取基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1628daa0ffef4c1fd9d8717abbdbdf7d0bbb65fd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390119"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650224"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>将 Microsoft QnA Maker API 与 Go 配合使用快速入门 
+# <a name="qna-maker-rest-api-with-go"></a>QnA Maker REST API 与 Go 
 <a name="HOLTop"></a>
 
 本文展示了如何将 [Microsoft QnA Maker API](../Overview/overview.md) 与 Go 配合使用来执行下列操作。

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044291"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408534"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -50,7 +50,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 |:---|:---|
 | 显示名称   | 要在门户中显示的搜索的名称。 |
 | 类别       | 在门户中对搜索进行组织的类别。 |
-| 查询          | 针对计算机组的查询。 |
+| Query          | 针对计算机组的查询。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
 
 在 Azure 门户中，可以使用以下过程从日志搜索创建计算机组。
@@ -62,7 +62,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 
 ### <a name="active-directory"></a>Active Directory
-在将 Log Analytics 配置为导入 Active Directory 组成员身份时，它将使用 OMS 代理分析任何加入域的计算机的组成员身份。  在 Log Analytics 中为 Active Directory 中的每个安全组创建一个计算机组，并且会将每台计算机添加到与其所属安全组对应的计算机组。  此成员身份每 4 小时持续更新一次。  
+将 Log Analytics 配置为导入 Active Directory 组成员身份时，它将使用 Log Analytics 代理分析任何加入域的计算机的组成员身份。  在 Log Analytics 中为 Active Directory 中的每个安全组创建一个计算机组，并且会将每台计算机添加到与其所属安全组对应的计算机组。  此成员身份每 4 小时持续更新一次。  
 
 在 Azure 门户中，从 Log Analytics“高级设置”中配置 Log Analytics 以导入 Active Directory 安全组。  依次选择“计算机组”、“Active Directory”和“从计算机导入 Active Directory 组成员身份”。  无需进一步的配置。
 
@@ -71,7 +71,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 导入组后时，菜单将列出检测到组成员身份的计算机数以及导入的组数。  可以单击任一链接以返回包含此信息的 **ComputerGroup** 记录。
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-在将 Log Analytics 配置为导入 WSUS 组成员身份时，它将使用 OMS 代理分析任何计算机的目标组成员身份。  如果使用客户端目标，连接到 Log Analytics 并且属于任意 WSUS 目标组的所有计算机的组成员身份会导入到 Log Analytics。 如果使用服务器端目标，OMS 代理应安装在 WSUS 服务器上，以使组成员身份信息导入到 Log Analytics。  此成员身份每 4 小时持续更新一次。 
+将 Log Analytics 配置为导入 WSUS 组成员身份时，它将使用 Log Analytics 代理分析任何计算机的目标组成员身份。  如果使用客户端目标，连接到 Log Analytics 并且属于任意 WSUS 目标组的所有计算机的组成员身份会导入到 Log Analytics。 如果使用服务器端目标，Log Analytics 代理应安装在 WSUS 服务器上，以便将组成员身份信息导入到 Log Analytics。  此成员身份每 4 小时持续更新一次。 
 
 在 Azure 门户中，从 Log Analytics“高级设置”中配置 Log Analytics 以导入 WSUS 组。  依次选择“计算机组”、“WSUS”和“导入 WSUS 组成员身份”。  无需进一步的配置。
 
@@ -123,9 +123,9 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 ## <a name="computer-group-records"></a>计算机组记录
 会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 Log Analytics 工作区中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志搜索为计算机组创建记录。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
-| Type |*ComputerGroup* |
+| 类型 |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
 | Computer |成员计算机的名称。 |
 | 组 |组名称。 |

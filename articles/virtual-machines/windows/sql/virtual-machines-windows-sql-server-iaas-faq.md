@@ -1,5 +1,5 @@
 ---
-title: Windows Azure 虚拟机上的 SQL Server 常见问题 | Microsoft 文档
+title: Azure 的 Windows 虚拟机上的 SQL Server 常见问题解答 | Microsoft Docs
 description: 本文提供有关运行 Azure VM 中的 SQL Server 时遇到的常见问题的解答。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012065"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427172"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Microsoft Azure 虚拟机上运行的 SQL Server 的常见问题
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](../../linux/sql/sql-server-linux-faq.md)
 
-本文提供有关[在 Windows Azure 虚拟机上运行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 时出现的一些最常见问题的解答。
+本文提供有关[在 Azure 的 Windows 虚拟机上运行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 时出现的一些最常见问题的解答。
 
 > [!NOTE]
 > 本文重点阐述在 Windows VM 上运行 SQL Server 的特定问题。 如果在 Linux VM 上运行 SQL Server，请参阅 [Linux 常见问题](../../linux/sql/sql-server-linux-faq.md)。

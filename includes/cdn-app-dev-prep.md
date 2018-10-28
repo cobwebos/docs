@@ -21,14 +21,14 @@
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序并应用权限
 可使用以下两种方式在 Azure Active Directory 中进行应用身份验证：个人用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
 
-创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  要创建它，请[遵循此教程](../articles/resource-group-create-service-principal-portal.md)。
+创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  要创建它，请[遵循此教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 
 > [!IMPORTANT]
-> 请务必遵循[链接的教程](../articles/resource-group-create-service-principal-portal.md)中的所有步骤。  必须完全按照说明完成操作，这*很重要*。  请务必记下**租户 ID**、**租户域名**（通常是 *.onmicrosoft.com* 域，除非指定了自定义域）、**客户端 ID** 和**客户端身份验证密钥**，因为稍后需要用到这些信息。  请妥善保护**客户端 ID** 和**客户端身份验证密钥**，因为任何人都可以使用这些凭据以服务主体的身份执行操作。
+> 请务必遵循[链接的教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)中的所有步骤。  必须完全按照说明完成操作，这*很重要*。  请务必记下**租户 ID**、**租户域名**（通常是 *.onmicrosoft.com* 域，除非指定了自定义域）、**客户端 ID** 和**客户端身份验证密钥**，因为稍后需要用到这些信息。  请妥善保护**客户端 ID** 和**客户端身份验证密钥**，因为任何人都可以使用这些凭据以服务主体的身份执行操作。
 >
 > 执行“Configure multi-tenant application”（配置多租户应用程序）步骤时，请选择“No”（否）。
 >
-> 执行 [Assign application to role](../articles/azure-resource-manager/resource-group-create-service-principal-portal.md#assign-application-to-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读取者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
+> 执行 [Assign the application to a role](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)（将应用程序分配到角色）步骤时，请使用前面创建的资源组 *CdnConsoleTutorial* 而不是“读者”角色来分配“CDN 配置文件参与者”角色。  在资源组中为应用程序分配“CDN 配置文件参与者”角色之后，请返回本教程。 
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: 协作性翻译框架 (CTF) 报告 - 文本翻译
+title: 协作性翻译框架 (CTF) 报告 - 文本翻译 API
 titlesuffix: Azure Cognitive Services
 description: 如何使用协作性翻译框架 (CTF) 报告。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126915"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646001"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
 > [!NOTE]
 > 此方法已弃用。 它在文本翻译 API V3.0 中不可用。
 
-> 以前可用于文本翻译 API V2.0 的协作性翻译框架 (CTF) 自 2018 年 2 月 1 日起被弃用。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已被停用，并且不可替代。 
+> 以前可用于文本翻译 API V2.0 的协作性翻译框架 (CTF) 自 2018 年 2 月 1 日起被弃用。 AddTranslation 和 AddTranslationArray 函数允许用户通过协作性翻译框架启用更正。 在 2018 年 1 月 31 日之后，这两个函数不接受新的句子提交，并且用户会收到错误消息。 这些函数已被停用，并且不可替代。
 
 >Translator Hub API 提供类似的功能，允许你使用术语和样式生成自定义翻译系统，并且可以使用文本翻译 API 中的类别 ID 调用它。 Translator Hub：[https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API：[https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "46126915"
 
 ## <a name="endpoint"></a>终结点
 CTF 报告 API 的终结点为 http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-                        
+
 
 ## <a name="methods"></a>方法
 | 名称 |    Description|
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -135,12 +135,12 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **参数**
@@ -154,8 +154,8 @@ UserTranslation[] GetUserTranslations (
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user| **可选。一个字符串，用于根据提交发起方筛选结果**|
-| category| **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 general。| 
-| minDateUtc| **可选**：要检索翻译的起始日期。 日期必须采用 UTC 格式。| 
+| category| **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 general。|
+| minDateUtc| **可选**：要检索翻译的起始日期。 日期必须采用 UTC 格式。|
 | maxDateUtc| **可选**：要检索翻译的结束日期。 日期必须采用 UTC 格式。|
 | skip| **可选**：要在页面上跳过的结果数。 例如，如果要跳过前 20 行结果，从第 21 个结果记录开始查看，则为此参数指定 20。 此参数的默认值为 0。|
 | take| **可选**：要检索的结果数。 每个请求的最大数目为 100 个。 默认值为 50。|
@@ -192,21 +192,3 @@ UserTranslation[] GetUserTranslations (
 **查看 GitHub 上的代码示例**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

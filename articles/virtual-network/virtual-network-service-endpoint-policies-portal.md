@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 8c750937cd45e104e754335f7da51d813b8dc7ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c28181e1d1a4fd1cdac530ed8f393c7e0c7ea92
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999641"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426289"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 门户创建、更改或删除服务终结点策略
 
@@ -64,7 +64,7 @@ ms.locfileid: "46999641"
    
    ![创建服务终结点策略定义](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. 可选：在“选项卡”中，输入或选择以下信息
+5. 可选：在“标记”中，输入或选择以下信息
    
    - 密钥：选择策略的键。 例如 Dept     
    - 值：输入该键的值对。 例如 Finance

@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042442"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650105"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -61,6 +61,10 @@ ms.locfileid: "47042442"
 ## <a name="assign-entities-in-none-intent"></a>在 None 意向中分配实体
 所有意向（包括 None 意向）都应对实体进行标记。 这可帮助 LUIS 深入了解实体在话语中的位置，以及实体周围的字词。 
 
+## <a name="entity-status-for-predictions"></a>预测的实体状态
+
+有关详细信息，请参阅[实体状态预测](luis-how-to-add-example-utterances.md#entity-status-predictions)。 
+
 ## <a name="types-of-entities"></a>实体类型
 LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实体和列表实体。
 
@@ -93,12 +97,12 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 查看[限制](luis-boundaries.md#model-boundaries)，了解可添加到模型中的每种类型的实体的数量。
 
 ## <a name="entity-roles"></a>实体角色
-实体[角色](luis-concept-roles.md)仅在模式中使用。 
+实体[角色](luis-concept-roles.md)适用于自定义和预构建实体，并且仅在模式中使用。 
 
 ## <a name="composite-vs-hierarchical-entities"></a>复合实体与分层实体
 复合实体和分层实体都具有父子关系，并且都是机器学习的实体。 通过机器学习，LUIS 能够基于不同上下文（字词排列方式）来理解实体。 复合实体更为灵活，因为它们允许使用不同的实体类型作为子实体。 分层实体的子实体只能是简单实体。 
 
-|Type|目的|示例|
+|类型|目的|示例|
 |--|--|--|
 |分层实体|简单实体的父子关系|Location.Origin=纽约<br>Location.Destination=伦敦|
 |复合实体|父子实体：预生成的实体、列表实体、简单实体、分层实体| 数字=3<br>列表=头等舱<br>prebuilt.datetimeV2=3 月 5 日|
@@ -200,7 +204,7 @@ LUIS 还提供非机器学习的列表实体类型，可允许 LUIS 应用指定
 
 如果已考虑使用分层、复合和列表实体，但所需超过了限制，请与支持部门联系。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 如果发起调用的应用或机器人需要执行操作时所需的话语中的某些参数或数据时，请创建[实体](luis-concept-entity-types.md)。 实体就是话语中需要提取的词或短语（比如用作函数的参数）。 
 

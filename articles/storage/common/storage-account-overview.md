@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432879"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638414"
 ---
 # <a name="azure-storage-account-overview"></a>Azure 存储帐户概述
 
@@ -25,9 +25,9 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 Azure 存储提供三种类型的存储帐户。 每个类型支持不同的功能，并具有自身的定价模型。 在创建存储帐户之前，请考虑到这些差异，以确定最适合应用程序的帐户类型。 存储帐户的类型包括：
 
-* **常规用途 v2** 帐户（建议用于大多数方案）
-* **常规用途 v1** 帐户
-* **Blob 存储**帐户
+* **[常规用途 v2 帐户](#general-purpose-v2-accounts)**（建议用于大多数方案）
+* **[常规用途 v1 帐户](#general-purpose-v1-accounts)**
+* **[Blob 存储帐户](#blob-storage-accounts)** 
 
 下表描述了存储帐户的类型及其功能：
 
@@ -41,7 +41,7 @@ Azure 存储提供三种类型的存储帐户。 每个类型支持不同的功�
 
 <sup>2</sup>使用针对静态数据的存储服务加密 (SSE) 来加密所有存储帐户。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
 
-<sup>3</sup>存档层仅在单个 Blob 级别可用，在存储帐户级别不可用。 只能存档块 Blob 和追加 Blob。 有关详细信息，请参阅 [Azure Blob 存储：热、冷和存档存储层](../blobs/storage-blob-storage-tiers.md)。
+<sup>3</sup>存档层仅在单个 Blob 级别可用，在存储帐户级别不可用。 只能存档块 Blob 和追加 Blob。 有关详细信息，请参阅 [Azure Blob 存储：热存储层、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
 <sup>4</sup>区域冗余存储 (ZRS) 仅适用于标准常规用途 v2 存储帐户。 有关 ZRS 的详细信息，请参阅[区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](storage-redundancy-zrs.md)。 有关其他复制选项的详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
@@ -49,13 +49,16 @@ Azure 存储提供三种类型的存储帐户。 每个类型支持不同的功�
 
 常规用途 v2 存储帐户支持最新的 Azure 存储功能，并整合了常规用途 v1 和 Blob 存储帐户的所有功能。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 常规用途 v2 存储帐户支持以下 Azure 存储服务：
 
-- Blob（所有类型）
+- Blob（所有类型：块 Blob、追加 Blob、页 Blob）
 - 文件
 - 磁盘
 - 队列
 - 表
 
-Microsoft 建议对大多数方案使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户，无需停机或重新编写应用程序，且无需复制数据。 有关升级到常规用途 v2 帐户的详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。 
+> [!NOTE]
+> Microsoft 建议对大多数方案使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户，无需停机且无需复制数据。
+>
+> 有关升级到常规用途 v2 帐户的详细信息，请参阅[升级到常规用途 v2 存储帐户](storage-account-upgrade.md)。 
 
 常规用途 v2 存储帐户提供多个访问层用于根据使用模式存储数据。 有关详细信息，请参阅[块 Blob 数据的访问层](#access-tiers-for-block-blob-data)。
 
@@ -103,19 +106,20 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 
 可用的访问层包括：
 
-* **热**访问层：已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据是最经济高效的，不过，存储开销要高一些。 默认情况下，新存储帐户在热层中创建。
-* **冷**存储层：已针对不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在冷层中是较为经济高效的做法，但访问这些数据的开销可能比访问热层中的数据更高一些。
-* **存档**层：仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。 
-
 > [!NOTE]
 > [高级访问层](../blobs/storage-blob-storage-tiers.md#premium-access-tier)在北欧、美国东部 2、美国中部和美国西部区域中以本地冗余存储 (LRS) 帐户的形式提供，目前为受限预览版。 若要了解如何注册预览版，请参阅 [Azure 高级 Blob 存储简介](http://aka.ms/premiumblob)。
 
-如果数据的使用模式有所更改，则可以随时在这些访问层之间切换。 
+* **热**访问层，已针对存储帐户中频繁访问的对象进行优化。 访问热层中的数据是最经济高效的，不过，存储开销要高一些。 默认情况下，新存储帐户在热层中创建。
+* **冷**访问层，已针对存储不常访问且存储时间至少为 30 天的大量数据进行优化。 将数据存储在冷层中是较为经济高效的做法，但访问这些数据的开销可能比访问热层中的数据更高一些。
+* **存档**层，仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是用于存储数据的最经济高效的选项，但访问这些数据的开销比访问热层或冷层中的数据要高一些。 
+
+
+如果数据的使用模式有所更改，则可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：高级存储层（预览版）、热存储层、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
 > [!IMPORTANT]
-> 更改现有存储帐户或 Blob 的访问层可能会产生额外的费用。
+> 更改现有存储帐户或 Blob 的访问层可能会产生额外的费用。 有关详细信息，请参阅[“存储帐户计费”部分](#storage-account-billing)。
 
-有关访问层的详细信息，请参阅 [Azure Blob 存储：高级（预览版）、热、冷和存档存储层](../blobs/storage-blob-storage-tiers.md)。
+
 
 ## <a name="replication"></a>复制
 

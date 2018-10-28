@@ -2,25 +2,17 @@
 title: 跨界 Azure 连接的 VPN 网关设置 | Microsoft Docs
 description: 了解 Azure 虚拟网络网关的 VPN 网关设置。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618215"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649833"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
@@ -29,10 +21,11 @@ VPN 网关是一种虚拟网络网关，可跨公共连接在虚拟网络和本�
 VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文的各部分介绍了与在 Resource Manager 部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在 [关于 VPN 网关](vpn-gateway-about-vpngateways.md)一文中找到每种连接解决方案的介绍和拓扑图。
 
 >[!NOTE]
-> 本文中的值适用于使用 -GatewayType 'Vpn' 的虚拟网络网关。 这就是这些特殊虚拟网络网关称为 VPN 网关的原因。 ExpressRoute 网关的值与用于 VPN 网关的值不同。
+> 本文中的值适用于 VPN 网关（使用 -GatewayType Vpn 的虚拟网络网关）。 本文未涵盖所有网关类型或区域冗余网关。
 >
->有关适用于 -GatewayType 'ExpressRoute' 的值，请参阅[适用于 ExpressRoute 的虚拟网络网关](../expressroute/expressroute-about-virtual-network-gateways.md)。
->
+>* 有关适用于 -GatewayType 'ExpressRoute' 的值，请参阅[适用于 ExpressRoute 的虚拟网络网关](../expressroute/expressroute-about-virtual-network-gateways.md)。
+>* 对于区域冗余网关，请参阅[关于区域冗余网关](about-zone-redundant-vnet-gateways.md)。
+>* 有关虚拟 WAN，请参阅[关于虚拟 WAN](../virtual-wan/virtual-wan-about.md)。 
 >
 
 ## <a name="gwtype"></a>网关类型

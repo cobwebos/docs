@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c06dc83f8b460e6215448fbc9e4ac42c749b5922
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353996"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427410"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>使用 Azure 资源托管标识（预览版）验证对 Blob 和队列的访问权限
 
-Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 可以使用 Azure 资源的托管标识在应用程序中验证对 Blob 和队列的访问权限，此类应用程序可以运行在 Azure 虚拟机 (VM)、函数应用、虚拟机规模集等位置中。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。  
+Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集等位置中运行的应用程序使用 Azure AD 凭据验证对 Blob 和队列的访问权限。 通过使用 Azure 资源的托管标识并利用 Azure AD 身份验证功能，可避免将凭据随在云中运行的应用程序一起存储。  
 
 若要向 Blob 容器或队列的托管标识授予权限，请将基于角色的访问控制 (RBAC) 角色分配给托管标识，该标识包含的权限适用于适当范围的该资源。 有关存储中的 RBAC 角色的详细信息，请参阅[使用 RBAC 管理存储数据访问权限（预览版）](storage-auth-aad-rbac.md)。 
 
@@ -34,6 +34,10 @@ Azure Blob 和队列存储支持使用 [Azure 资源的托管标识](../../activ
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure 资源管理器模板](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>将 RBAC 角色分配给 Azure AD 托管标识
+
+若要从 Azure 存储应用程序对托管标识进行身份验证，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 将 RBAC 角色分配给托管标识时，将授予该托管标识对此资源的访问权限。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](storage-auth-aad-rbac.md)。
 
 ## <a name="get-a-managed-identity-access-token"></a>获取托管标识访问令牌
 

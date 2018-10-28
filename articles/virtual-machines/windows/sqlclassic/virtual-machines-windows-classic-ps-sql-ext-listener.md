@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698628"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023179"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 > [!div class="op_single_selector"]
@@ -32,12 +32,12 @@ ms.locfileid: "38698628"
 本主题说明如何为 AlwaysOn 可用性组配置一个可以通过 Internet 从外部访问的侦听器。 这通过将云服务的**公共虚拟 IP (VIP)** 地址与侦听器关联来实现。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。 下面的步骤假设已经[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>外部侦听器的准则和限制
-在使用云服务的公共 VIP 地址部署时，请注意有关 Azure 中可用性组侦听器的以下准则：
+使用云服务的公共 VIP 地址部署时，请注意有关 Azure 中可用性组侦听器的以下准则：
 
 * Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 支持可用性组侦听器。
 * 客户端应用程序必须位于与包含可用性组 VM 的云服务不同的云服务中。 Azure 不支持客户端和服务器位于同一个云服务中的直接服务器返回。

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 08/13/2018
-ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/24/2018
+ms.openlocfilehash: fd63d0ce9ef335efdebf9759d52cf93312986d16
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166497"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025372"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
@@ -103,7 +103,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 > ``` 
 CREATE CERTIFICATE  
  FROM BINARY = asn_encoded_certificate    
-WITH PRIVATE KEY ( <private_key_options> ) 
+WITH PRIVATE KEY (<private_key_options>) 
 >```   
  
 ### <a name="clr"></a>CLR 
@@ -282,7 +282,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 - 不支持的语法 
    - `RESTORE LOG ONLY` 
    - `RESTORE REWINDONLY ONLY`
-- Source  
+- 源  
  - `FROM URL`（Azure Blob 存储）是唯一受支持的选项。
  - 不支持 `FROM DISK`/`TAPE`/备份设备。
  - 不支持备份集。 
@@ -333,21 +333,22 @@ WITH PRIVATE KEY ( <private_key_options> )
  - `remote proc trans` 
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- 不支持 `Extended stored procedures`，包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
+- 不支持 `Extended stored procedures`，包括 `sp_addextendedproc`  和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 - 不支持 `sp_renamedb`。 请参阅 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql)。
 
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。  
-- 作业 - 目前支持 T-SQL 作业步骤
-- 目前不支持其他类型的作业步骤（在公共预览版中将添加更多步骤类型）。
-  - 不支持的复制作业包括：
+- 作业
+ - 支持 T-SQL 作业步骤。
+ - 支持以下复制作业：
     - 事务日志读取器。  
     - 快照。
-    - 分发服务器。  
-    - 合并。  
-  - 尚不支持 SSIS。 
+    - 分发服务器。
+ - 支持 SSIS。 
+- 目前不支持其他类型的工作步骤，包括：
+  - 不支持合并复制作业步骤。  
   - 不支持队列读取器。  
   - 尚不支持命令外壳。 
   - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
@@ -411,7 +412,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 
 如果 `CREDENTIAL` 中的共享访问签名不正确，读取 .bak 文件的 `RESTORE DATABASE` 可能会不断重试读取 .bak 文件，并在较长一段时间后返回错误。 请在还原数据库之前执行 RESTORE HEADERONLY，确保 SAS 密钥正确。
-确保在使用 Azure 门户生成的 SAS 密钥中删除前导 `?`。
+确保从使用 Azure 门户生成的 SAS 密钥中删除前导 `?`。
 
 ### <a name="tooling"></a>工具
 

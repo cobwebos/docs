@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 4b51631e8b7d3f53edd1afdba76de3031b112254
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454532"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805067"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
@@ -35,7 +35,7 @@ ms.locfileid: "47454532"
   - 受约束的 vCPU 大小
   - VM 系列：A 系列、Av2 系列或 G 系列
   - 预览版 VM：预览版中的任何 VM 系列或大小
-- 云：不能在 Azure 美国政府、德国或中国区域购买预留。
+- 云：不能在德国或中国区域中购买预留。
 - 配额不足：其范围仅限单个订阅的预留必须在订阅中具有可用的 vCPU 配额才能获得新的 RI。 例如，如果目标订阅的配额限制为 10 个 vCPU（适用于 D 系列），则不能为 11 个 Standard_D1 实例购买预留。 虚拟机预留实例的配额检查包括已在订阅中部署的 VM。 例如，如果该订阅的配额为针对 D 系列购买 10 个 vCPU，并且已部署两个 Standard_D1 实例，则可在该订阅中为 10 个 Standard_D1 实例购买预留。 
 - 容量限制：在极少数情况下，Azure 限制购买部分 VM 大小的新虚拟机预留实例，因为某个区域的容量不足。
 
@@ -53,7 +53,7 @@ ms.locfileid: "47454532"
     |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |区域    |预订涵盖的 Azure 区域。|    
     |VM 大小     |VM 实例的大小。|
-    |优化对象     |VM 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量， 使你在需要时能够更加有把握地启动 VM 实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |
+    |优化对象     |VM 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量。 使你在需要时能够更加有把握地启动 VM 实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |
     |术语        |一年或三年。|
     |数量    |预订中购买的实例数。 数量是可以获得计费折扣的正在运行的 VM 实例数。 例如，如果正在美国东部运行 10 个 Standard_D2 VM，则会将数量指定为 10，以将所有正在运行的虚拟机的权益最大化。 |
 5. 选择“计算成本”时，可以查看预订的成本。
@@ -65,7 +65,7 @@ ms.locfileid: "47454532"
 
     ![提交预留购买之后的屏幕截图](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
-## <a name="cancellations-and-exchanges"></a>取消和交换
+## <a name="cancellations-and-exchanges"></a>取消和更换
 
 如果需要取消预留，可能会产生 12% 的提前终止费。 退款根据购买价格和当前预留价格中的最低者计算。 退款限制为每年 50,000 美元。 收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要请求取消，请在 Azure 门户中访问该预留，并选择“退款”创建支持请求。
 

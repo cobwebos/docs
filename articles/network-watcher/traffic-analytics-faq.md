@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578304"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402754"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -77,9 +77,9 @@ ms.locfileid: "45578304"
 
 是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，而将 Operations Management Suite 工作区放在另一个订阅中？
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
-是，可将 Azure 存储帐户置于一个订阅中，而将 Operations Management Suite 工作区置于另一个订阅中。
+是，可将 Azure 存储帐户置于一个订阅中，而将 Log Analytics 工作区置于另一个订阅中。
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
@@ -115,7 +115,7 @@ ms.locfileid: "45578304"
 
 出现此消息的可能原因有：
 - 流量分析最近才启用，可能尚未聚合足够的数据，无法获得有意义的见解。
-- 正在使用免费版 Operations Management Suite 工作区，并且它超出了配额限制。 可能需要使用容量更大的工作区。
+- 正在使用免费版 Log Analytics 工作区，并且它超出了配额限制。 可能需要使用容量更大的工作区。
     
 如果问题仍未解决，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
     

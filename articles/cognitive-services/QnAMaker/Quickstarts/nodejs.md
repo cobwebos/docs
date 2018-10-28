@@ -1,23 +1,23 @@
 ---
-title: 快速入门：适用于 QnA Maker API (V4) 的 Node.js
+title: REST API (V4) - Node.js - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 获取信息和示例代码，帮助用户通过 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API 快速入门。
+description: 获取基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: bbcd031f80010f10ab36440b703ac6dd55a8ced2
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68ec8fe90c19106c989f072dc041ee81af536389
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387406"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647912"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>将 Microsoft QnA Maker API 与 Node.js 配合使用快速入门 
+# <a name="qna-maker-rest-api-with-nodejs"></a>QnA Maker REST API 与 Node.js 
 <a name="HOLTop"></a>
 
 本文展示了如何将 [Microsoft QnA Maker API](../Overview/overview.md) 与 Node.js 配合使用来执行下列操作。

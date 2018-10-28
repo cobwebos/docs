@@ -1,24 +1,25 @@
 ---
-title: 关于认知服务语音 SDK
-description: 可用于语音服务的 SDK 的概述。
+title: 关于语音服务 SDK
 titleSuffix: Azure Cognitive Services
+description: 可用于语音服务的 SDK 的概述。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4be6b1e8373b6e7a7db8d97f2c99137cb6aca9bf
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f071c15ea586f7b146b82a6201adf16dadc65add
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364636"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464794"
 ---
-# <a name="about-the-cognitive-services-speech-sdk"></a>关于认知服务语音 SDK
+# <a name="about-the-speech-service-sdk"></a>关于语音服务 SDK
 
-使用认知服务语音软件开发工具包 (SDK)，应用程序可以直接访问语音服务的功能，这使得软件开发工作更为容易。 当前，该 SDK 提供了对**语音到文本**、**语音翻译**和**意向识别**功能的访问。
+使用语音服务软件开发工具包 (SDK)，应用程序可以本机访问语音服务的功能，这使得软件开发工作更为容易。 当前，该 SDK 提供了对**语音到文本**、**语音翻译**和**意向识别**功能的访问。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

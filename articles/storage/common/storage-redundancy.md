@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c5cbeed7f689a7ae159d753963c35281b051f632
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114186"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954481"
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -38,7 +38,7 @@ ms.locfileid: "49114186"
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |
 | 区域范围的服务中断                                                                                     | 否                              | 否                               | 是                                  | 是                                  |
 | 整个区域不可用时对数据进行读取访问（远程异地复制区域中） | 否                              | 否                               | 否                                   | 是                                  |
-| 旨在给定年份为对象提供 ___ 的持续性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
+| 旨在给定年份为对象提供 \_\_ 的持续性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
 | 支持的存储帐户类型                                                                   | GPv2、GPv1、Blob                | GPv2、GPv1（通过 PowerShell、Azure CLI 或资源提供程序 API）                             | GPv2、GPv1、Blob                     | GPv2、GPv1、Blob                     |
 | 读取请求的可用性 SLA | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 SLA | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248057"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645791"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
 
@@ -28,12 +28,12 @@ ms.locfileid: "48248057"
 ### <a name="entity-linking"></a>实体链接
 实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定“Mars”是用作行星还是用作罗马战神）。 此过程需要用到已识别实体链接到的知识库 — Wikipedia 用作 `entities` 终结点文本分析的知识库。
 
-文本分析[版本 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 仅支持实体链接。
+文本分析[版本 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) 仅支持实体链接。
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
 
-文本分析版本 2.1 预览版 (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`) 支持实体链接和命名实体识别 (NER)。
+文本分析[版本 2.1 预览版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)支持实体链接和命名实体识别 (NER)。
 
 ### <a name="language-support"></a>语言支持
 

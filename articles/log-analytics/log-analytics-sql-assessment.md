@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43faf1b29f602d2930a2b5764dd83ea4ce1fc9ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043531"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407718"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -47,7 +47,7 @@ ms.locfileid: "48043531"
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 SQL 运行状况检查解决方案。  只有 Azure 订阅中的管理员或参与者才能安装该解决方案。
 
   > [!NOTE]
-  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。
+  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。
   >
   >
 
@@ -86,7 +86,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 >
 
 1. 在 Operations Manager 中，打开操作控制台，并单击“管理”。
-2. 在“运行方式配置”下，单击“配置文件”，并打开“OMS SQL 评估运行方式配置文件”。
+2. 在“运行方式配置”下，单击“配置文件”，并打开“SQL 评估运行方式配置文件”。
 3. 在“运行方式帐户”页上，单击“添加”。
 4. 选择包含 SQL Server 所需凭据的 Windows 运行方式帐户，或者单击“新建”创建一个帐户。
 
@@ -123,7 +123,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
     import-module OperationsManager
     New-SCOMManagementGroupConnection "<your management group name>"
 
-    $profile = Get-SCOMRunAsProfile -DisplayName "OMS SQL Assessment Run As Profile"
+    $profile = Get-SCOMRunAsProfile -DisplayName "SQL Assessment Run As Profile"
     $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 8f5c33a63fd932bedd7f1de3d3ae47306b3ea3e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de5322709b5d7f7bcfe6c512bab94b025d9a56a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954477"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023535"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘存储
 
@@ -34,7 +34,7 @@ ms.locfileid: "46954477"
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。 
+每个 VM 包含一个临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 成功标准重启期间，临时驱动器上的数据应保留。 但是，有些情况下数据可能不会持久保留，例如移到新主机。 因此，临时驱动器上的任何数据都不应该是对系统至关重要的数据。
 
 临时磁盘默认标记为 D: 盘，用于存储 pagefile.sys。 要将此磁盘重新映射到其他驱动器号，请参阅 [Change the drive letter of the Windows temporary disk](change-drive-letter.md)（更改 Windows 临时磁盘的驱动器号）。 临时磁盘的大小因虚拟机的大小而异。 有关详细信息，请参阅 [Sizes for Windows virtual machines](sizes.md)（Windows 虚拟机的大小）。
 

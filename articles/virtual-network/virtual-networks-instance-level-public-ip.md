@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430975"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024609"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>实例层级公共 IP（经典）概述
 实例层级公共 IP (ILPIP) 是可直接分配至 VM 或云服务角色实例（而非 VM 或角色实例所在的云服务）的公共 IP 地址。 ILPIP 不会取代分配给云服务的虚拟 IP (VIP)。 而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
@@ -47,7 +47,7 @@ ms.locfileid: "47430975"
 ## <a name="why-would-i-request-an-ilpip"></a>为什么要请求 ILPIP？
 如果想要能够通过直接向其分配的 IP 地址链接到 VM 或角色实例，请为 VM 或角色实例请求 ILPIP，而不是使用云服务VIP:&lt;端口号&gt;。
 
-* **主动 FTP** - 通过向 VM 分配 ILPIP，可在任何端口上接收流量。 VM 不需要终结点来接收流量。  请参阅 [FTP 协议概述] (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) 了解有关 FTP 协议的详细信息。
+* **主动 FTP** - 通过向 VM 分配 ILPIP，可在任何端口上接收流量。 VM 不需要终结点来接收流量。  请参阅 [FTP 协议概述](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)了解有关 FTP 协议的详细信息。
 * **出站 IP** - 源自 VM 的出站流量会映射到充当源的 ILPIP，而 ILPIP 唯一标识针对外部实体的 VM。
 
 > [!NOTE]

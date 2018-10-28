@@ -1,26 +1,27 @@
 ---
 title: 关于语音翻译
+titlesuffix: Azure Cognitive Services
 description: 语音翻译功能概述
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165431"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469125"
 ---
 # <a name="about-the-speech-translation-api"></a>关于语音翻译 API
 
-使用 Microsoft 语音 API，可以将端到端、实时和多语言语音翻译添加到应用程序、工具和设备。 相同 API 可以用于语音到语音和语音到文本的转换。
+使用语音服务 API，可以将端到端、实时和多语言语音翻译添加到应用程序、工具和设备。 相同 API 可以用于语音到语音和语音到文本的转换。
 
-借助 Microsoft 语音翻译 API，客户端应用程序将语音音频流式传输到服务，然后接收返回的结果流。 这些结果包含源语言识别文本及其目标语言翻译。 可以提供临时翻译直到一个陈述完成，然后会提供最终翻译。
+借助语音翻译 API，客户端应用程序将语音音频流式传输到服务，然后接收返回的结果流。 这些结果包含源语言识别文本及其目标语言翻译。 可以提供临时翻译直到一个陈述完成，然后会提供最终翻译。
 
 （可选）可以准备最终翻译的合成音频版本，以启用真正的语音到语音转换。
 

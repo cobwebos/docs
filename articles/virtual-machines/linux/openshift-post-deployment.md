@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 05/09/2018
 ms.author: haroldw
-ms.openlocfilehash: d400512c2e96e0e24bbf965b2e201adf92ccbb0f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 39febceff58127fb9777ace6e3063fbe41605b79
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434885"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426441"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -82,7 +82,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
   ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6.  依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
+6.  依次单击“步骤 1: 选择 API”、“Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
 
   ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
@@ -174,7 +174,7 @@ sudo systemctl restart atomic-openshift-master
 
 ## <a name="monitor-openshift-with-log-analytics"></a>使用 Log Analytics 监视 OpenShift
 
-若要使用 Log Analytics 监视 OpenShift，可以使用以下两个选项之一：VM 主机上安装的 OMS 代理，或 OMS 容器。 本文提供有关部署 OMS 容器的说明。
+若要使用 Log Analytics 监视 OpenShift，可以使用以下两个选项之一：VM 主机上安装的 Log Analytics 代理，或 Log Analytics 容器。 本文提供有关部署 Log Analytics 容器的说明。
 
 ## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>为 Log Analytics 创建 OpenShift 项目并设置用户访问权限
 
@@ -276,7 +276,7 @@ echo $key_data | base64 | tr -d '\n'
 oc create -f ocp-secret.yml
 ```
 
-部署 OMS 代理守护程序集：
+部署 Log Analytics 代理守护程序集：
 
 ```bash
 oc create -f ocp-omsagent.yml

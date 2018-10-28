@@ -1,7 +1,7 @@
 ---
 pageTitle: Synonyms in Azure Search | Microsoft Docs
 description: 使用同义词扩大搜索查询的范围
-authors: mhko
+author: mhko
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fcb4314583036c2abfffdf7e5d0b5d90478dbe6b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093208"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468545"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
 
@@ -148,6 +148,8 @@ Washington, Wash., WA => WA
 同义词功能适用于搜索查询且不适用于筛选器或方面。 同样，建议仅基于原始术语；同义词匹配不会在响应中显示。
 
 同义词扩展不适用于通配符搜索术语；也不会扩展前缀、模糊和正则表达式术语。
+
+如果需要执行应用同义词扩展和通配符、正则表达式或模糊搜索的单个查询，则可以使用 OR 语法组合查询。 例如，若要将同义词与通配符组合用于简单查询语法，则术语将为 `<query> | <query>*`。
 
 ## <a name="tips-for-building-a-synonym-map"></a>构建同义词映射的提示
 

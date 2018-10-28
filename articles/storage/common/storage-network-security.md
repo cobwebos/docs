@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068530"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470058"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -188,11 +188,15 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 > 不支持使用“/31”或“/32”前缀大小的小型地址范围。  这些范围应使用单独的 IP 地址规则配置。
 >
 
-IP 网络规则仅适用于**公共 Internet** IP 地址。  IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。  专用网络包括以 *10.\**、*172.16.\** 和 *192.168.\** 开头的地址。
+IP 网络规则仅适用于**公共 Internet** IP 地址。  IP 规则不允许为专用网络保留的 IP 地址范围（如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定义）。  专用网络包括以 10.\*、172.16.\**172.31.\* 和 192.168.\* 开头的地址 - *。
+
+> [!NOTE]
+> IP 网络规则对源自与存储帐户相同的 Azure 区域的请求不起作用。  请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
+>
 
 目前仅支持 IPV4 地址。
 
-每个存储帐户最多可支持 100 个 IP 网络规则，这些规则可与 [虚拟网络规则](#grant-access-from-a-virtual-network)组合使用
+每个存储帐户最多可支持 100 个 IP 网络规则，这些规则可与 [虚拟网络规则](#grant-access-from-a-virtual-network)组合使用。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>配置从本地网络的访问
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。  若要获得帮助，请联系网络管理员。

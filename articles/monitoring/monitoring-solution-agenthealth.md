@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733171"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404029"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Log Analytics 工作区报告或向连接到 Log Analytics 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -75,9 +75,9 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。  这些记录的属性在下表中列出。  
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
-| Type | Heartbeat|
+| 类型 | Heartbeat|
 | 类别 | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
 | Computer | 计算机名称。|
 | OSType | Windows 或 Linux 操作系统。|
@@ -98,7 +98,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的记录的示例日志搜索。
 
-| 查询 | Description |
+| Query | Description |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |代理总数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |

@@ -2,22 +2,23 @@
 title: 语音服务 REST API
 description: 语音服务 REST API 的参考。
 services: cognitive-services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: erhopf
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032421"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025831"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
-Azure 认知服务统一语音服务的 REST API 与[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/Speech)提供的 API 类似。 该终结点与必应语音服务使用的终结点不同。 可以使用区域终结点，但必须使用对应于所用终结点的订阅密钥。
+Azure 认知服务语音服务的 REST API 与[必应语音 API](https://docs.microsoft.com/azure/cognitive-services/Speech) 提供的 API 类似。 该终结点与必应语音服务使用的终结点不同。 可以使用区域终结点，但必须使用对应于所用终结点的订阅密钥。
 
 ## <a name="speech-to-text"></a>语音转文本
 
@@ -30,13 +31,14 @@ Azure 认知服务统一语音服务的 REST API 与[必应语音 API](https://d
 
 此 API 仅支持短话语。 请求最多可包含 10 秒的音频，总共持续 14 秒。 REST API 仅返回最终结果，不返回部分或中间结果。 语音服务还提供一个可以听录较长音频的[批处理听录](batch-transcription.md) API。
 
+
 ### <a name="query-parameters"></a>查询参数
 
 可将以下参数包含在 REST 请求的查询字符串中。
 
 |参数名称|必需/可选|含义|
 |-|-|-|
-|`language`|必选|要识别的语言的标识符。 请参阅[支持的语言](supported-languages.md#speech-to-text)。|
+|`language`|必选|要识别的语言的标识符。 请参阅[支持的语言](language-support.md#speech-to-text)。|
 |`format`|可选<br>默认值：`simple`|结果格式，`simple` 或 `detailed` 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和持续时间。 详细结果包括多个具有置信度值的候选项，以及四种不同的表示形式。|
 |`profanity`|可选<br>默认值：`masked`|如何处理识别结果中的亵渎内容。 可以是 `masked`（将亵渎内容替换为星号）、`removed`（删除所有亵渎内容）或 `raw`（包含亵渎内容）。
 
@@ -55,13 +57,19 @@ Azure 认知服务统一语音服务的 REST API 与[必应语音 API](https://d
 
 ### <a name="audio-format"></a>音频格式
 
-在 HTTP `PUT` 请求的正文中发送音频。 音频应采用 PCM 单声道（单音）16 位 WAV 格式，采样率为 16 KHz。
+在 HTTP `POST` 请求的正文中发送音频。 音频应采用 PCM 单声道（单音）16 位 WAV 格式，16 KHz 的以下格式/编码。
+
+* 使用 PCM 编解码器的 WAV 格式
+* 使用 OPUS 编解码器的 Ogg 格式
+
+>[!NOTE]
+>语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](/index.yml) 目前仅支持使用 PCM 编解码器的 WAV 格式。
 
 ### <a name="chunked-transfer"></a>分块传输
 
 分块传输 (`Transfer-Encoding: chunked`) 有助于降低识别延迟，因为它允许语音服务在传输期间开始处理音频文件。 REST API 不提供部分结果或临时结果。 此选项专门用于改善响应能力。
 
-以下代码演示如何分块发送音频。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
+以下代码演示如何分块发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
 
 ```csharp
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
@@ -119,7 +127,7 @@ HTTP 代码|含义|可能的原因
 
 结果以 JSON 格式返回。 `simple` 格式仅包括以下顶级字段。
 
-|字段名称|内容|
+|字段名|内容|
 |-|-|
 |`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
 |`DisplayText`|经过大小写转换、添加标点、执行反向文本规范化（将口头文本转换为短形式，例如，200 表示“two hundred”，或“Dr.Smith”表示“doctor smith”）和屏蔽亵渎内容之后的识别文本。 仅在成功时提供。|
@@ -137,12 +145,12 @@ HTTP 代码|含义|可能的原因
 | `Error` | 识别服务遇到内部错误，无法继续。 如果可能，请重试。 |
 
 > [!NOTE]
-> 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。 
+> 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
 
 
 `detailed` 格式包含 `simple` 格式所包含的相同字段，并包含 `NBest` 字段。 `NBest` 字段是相同语音的备选解释列表，从最有可能到最不可能进行排名。 第一个条目与主要识别结果相同。 每个条目包含以下字段：
 
-|字段名称|内容|
+|字段名|内容|
 |-|-|
 |`Confidence`|条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信）
 |`Lexical`|已识别文本的词法形式：识别的实际单词。
@@ -195,17 +203,14 @@ HTTP 代码|含义|可能的原因
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> 如果创建了自定义语音字体，请改用关联的自定义终结点。
-
 语音服务支持 24-KHz 音频输出，此外还支持必应语音所支持的 16-Khz 输出。 在 `X-Microsoft-OutputFormat` HTTP 标头中可以使用四种 24-KHz 输出格式，支持两种 24-KHz 语音：`Jessa24kRUS` 和 `Guy24kRUS`。
 
 区域设置 | 语言   | 性别 | 服务名称映射
 -------|------------|--------|------------
-en-US  | 美式英语 | 女 | “Microsoft 服务器语音的文本转语音（en-US，Jessa24kRUS）” 
+en-US  | 美式英语 | 女 | “Microsoft 服务器语音的文本转语音（en-US，Jessa24kRUS）”
 en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音（en-US，Guy24kRUS）”
 
-[支持的语言](supported-languages.md#text-to-speech)中提供了可用语音的完整列表。
+[支持的语言](language-support.md#text-to-speech)中提供了可用语音的完整列表。
 
 ### <a name="request-headers"></a>请求标头
 
@@ -230,7 +235,7 @@ en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音�
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。 
+> 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
 
 ### <a name="request-body"></a>请求正文
 
@@ -249,7 +254,7 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
@@ -265,7 +270,8 @@ HTTP 代码|含义|可能的原因
 400 |错误的请求 |必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。
 401|未授权 |请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。
 413|请求实体太大|SSML 输入超过了 1024 个字符。
-|502|错误的网关    | 网络或服务器端问题。 也可能表示标头无效。
+429|请求过多|已经超过了订阅允许的配额或请求速率。
+502|错误的网关 | 网络或服务器端问题。 也可能表示标头无效。
 
 如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中，以便日后播放或用于其他目的。
 
@@ -322,10 +328,10 @@ cURL 是 Linux（及面向 Linux 的 Windows 子系统）中提供的一种命�
 > 为方便阅读，该命令分行显示，但在 shell 提示符下，请独行输入。
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -405,7 +411,7 @@ Connection: Keep-Alive
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -480,4 +486,3 @@ public class Authentication
 - [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)
-

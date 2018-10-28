@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/15/2018
+ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1d52c9b3b9b91873bd6f34443f162c74d724a65c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49367082"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471524"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -30,13 +30,6 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 * 入站 DNAT 支持
 * 跨 Azure 订阅和 VNET 集中创建、实施和记录应用程序与网络连接策略
 * 与 Azure Monitor 完全集成，实现记录和分析功能
-
-### <a name="what-is-the-pricing-for-azure-firewall"></a>Azure 防火墙采用何种定价方式？
-
-Azure 防火墙采用固定成本 + 可变成本的定价方式：
-
-* 固定费用：1.25 美元/防火墙/小时
-* 可变费用：0.03 美元/GB（防火墙处理的入口或出口数据）
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure 防火墙的典型部署模型是什么？
 
@@ -78,6 +71,17 @@ Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提�
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>如何使用服务终结点设置 Azure 防火墙？
 
 若要安全访问 PaaS 服务，我们建议使用服务终结点。 可以选择在 Azure 防火墙子网中启用服务终结点，并在连接的分支虚拟网络中禁用它们。 这样可以受益于以下两个功能：服务终结点安全性和针对所有流量的集中日志记录。
+
+### <a name="what-is-the-pricing-for-azure-firewall"></a>Azure 防火墙采用何种定价方式？
+
+Azure 防火墙采用固定成本 + 可变成本的定价方式：
+
+* 固定费用：1.25 美元/防火墙/小时
+* 可变费用：0.03 美元/GB（防火墙处理的入口或出口数据）
+
+已解除分配的防火墙不需要任何费用。
+
+有关详细信息，请参阅 [Azure 防火墙定价](https://azure.microsoft.com/pricing/details/azure-firewall/)。
 
 ### <a name="how-can-i-stop-and-start-azure-firewall"></a>如何停止和启动 Azure 防火墙？
 

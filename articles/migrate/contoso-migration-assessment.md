@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 34409197a080b4d755b76f140111b7694925b5df
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a0aa63291a7fb3f069663d40687f81c3a3265712
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094048"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945937"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -232,7 +232,7 @@ Contoso 评估使用依赖项映射。 依赖关系映射要求在将要评估�
 
 ### <a name="set-statistics-settings"></a>设置统计信息设置
 
-在开始部署前，Contoso 必须将 vCenter Server 的统计信息设置设为级别 3。 
+在开始部署前，Contoso 必须将 vCenter Server 的统计信息设置设为级别 3。
 
 > [!NOTE]
 > - 设置级别以后，Contoso 必须等待至少一天，然后才能运行评估。 否则，可能无法按预期进行评估。
@@ -258,7 +258,7 @@ Contoso 评估使用依赖项映射。 依赖关系映射要求在将要评估�
 ### <a name="create-a-project"></a>创建一个项目
 
 1. 在 [Azure 门户](https://portal.azure.com)中，Contoso 搜索“Azure Migrate”。 然后，Contoso 创建一个项目。
-2. Contoso 指定项目名称 (**ContosoMigration**) 和 Azure 订阅。 它创建新的 Azure 资源组 (**ContosoFailoverRG**)。 
+2. Contoso 指定项目名称 (**ContosoMigration**) 和 Azure 订阅。 它创建新的 Azure 资源组 (**ContosoFailoverRG**)。
     > [!NOTE]
     > - 只能在“美国中西部”或“美国东部”区域创建 Azure Migrate 项目。
     > - 可以针对任意目标位置来计划迁移。
@@ -283,17 +283,25 @@ Azure Migrate 会创建一个称作*收集器设备*的本地 VM。 此 VM 可�
 2. Contoso 运行以下命令，生成 OVA 文件的哈希：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
-    **示例** 
-    
-    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成的哈希应与这些设置匹配（版本 1.0.9.14）：
 
+    **示例**
+
+    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+3. 生成的哈希应与这些设置匹配（版本 1.0.9.15）：
+
+<<<<<<< HEAD
     **算法** | **哈希值**
     --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+=======
+**算法** | **哈希值**
+--- | ---
+MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 ### <a name="create-the-collector-appliance"></a>创建收集器设备
 
@@ -411,8 +419,8 @@ Contoso 在每个 VM 上运行安装。
 3. Contoso 安装 MMA：
     - Contoso 在命令中输入工作区 ID 和密钥。
     - 这些命令适用于 64 位。
-    - 工作区 ID 和主密钥位于 Microsoft Operations Management Suite (OMS) 门户中。 依次选择“设置”和“连接的源”选项卡。
-    - 运行以下命令以下载 OMS 代理，验证校验和，并安装和载入代理：
+    - 工作区 ID 和主密钥位于 Azure 门户的 Log Analytics 工作区中。 依次选择“设置”和“连接的源”选项卡。
+    - 运行以下命令以下载 Log Analytics 代理，验证校验和，并安装和载入代理：
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==

@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure Active Directory 进行身份验证以从应用程序访问 blob 和队列数据（预览版） | Microsoft Docs
-description: 使用 Azure Active Directory 从应用程序中进行身份验证，并授权对 Azure 存储资源的请求（预览版）。
+description: 使用 Azure Active Directory 从应用程序中进行身份验证，然后授权对 blob 和队列的请求（预览版）。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816372"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427087"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>从 Azure 存储应用程序使用 Azure Active Directory 验证身份（预览版）
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列（预览版）
 
 搭配使用 Azure Active Directory (Azure AD) 和 Azure 存储的主要优点在于不再需要在代码中存储凭据。 相反，可从 Azure AD 请求 OAuth 2.0 访问令牌。 Azure AD 处理运行应用程序的安全主体（用户、组或服务主体）的身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure 存储请求授权。
 
@@ -26,6 +26,10 @@ ms.locfileid: "48816372"
 有关 OAuth 2.0 代码授权流的概述，请参阅[使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序](../../active-directory/develop/v1-protocols-oauth-code.md)。
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>将 RBAC 角色分配给 Azure AD 安全主体
+
+若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置基于角色的访问控制 (RBAC) 设置。 Azure 存储定义包含容器和队列权限的 RBAC 角色。 如果将 RBAC 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](storage-auth-aad-rbac.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
@@ -56,7 +60,7 @@ ms.locfileid: "48816372"
     ![显示存储权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
 6. 在“选择权限”下，勾选“访问 Azure 存储”旁边的复选框，然后单击“选择”。
-7. 单击“Done”（完成） 。
+7. 单击“完成”。
 
 “所需权限”窗口现在显示 Azure AD 应用程序拥有 Azure Active Directory 和 Azure 存储的访问权限。 首次向 Azure AD 注册应用时，系统会自动向 Azure AD 授予权限。
 

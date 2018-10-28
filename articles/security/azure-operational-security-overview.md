@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4305afff1e35e9e05f1b2314f8fb9d5a96383e9f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575212"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955637"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 它是一个结合了从各种 Microsoft 独有功能获取的知识的框架。 这些功能包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁态势的深入感知。
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+##  <a name="azure-management-services"></a>Azure 管理服务
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是基于云的 IT 管理解决方案，可帮助管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
-### <a name="log-analytics"></a>Log Analytics
-[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 将托管资源的数据收集到中心存储库，以便为 Operations Management Suite 提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。 
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。 
 
 可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 此外，Log Analytics 还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
 
@@ -85,7 +85,7 @@ Azure AD 中还包括了整套[标识管理功能](https://docs.microsoft.com/az
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](https://docs.microsoft.com/azure/security-center/security-center-permissions)。
 
-安全中心使用 Microsoft Monitoring Agent。 这与 Operations Management Suite 和 Log Analytics 服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 这也是 Log Analytics 服务使用的代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
@@ -155,8 +155,8 @@ Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商�
 -   利用[微服务](https://www.visualstudio.com/learn/what-are-microservices/)体系结构将业务用例隔离到小型可重用的服务。  此体系结构提高了可伸缩性和效率。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解 Operations Management Suite 安全和审核解决方案，请参阅以下文章：
+若要了解有关安全和审核解决方案的信息，请参阅以下文章：
 
 - [安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [监视和响应 Operations Management Suite 安全和审核解决方案中的安全警报](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
-- [监视 Operations Management Suite 安全和审核解决方案中的资源](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)
+- [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)

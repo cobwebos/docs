@@ -1,33 +1,34 @@
 ---
-title: 认知服务语音 SDK 文档 | Microsoft Docs
+title: 语音服务 SDK 文档
+titlesuffix: Azure Cognitive Services
 description: 发行说明 - 最新版本中的内容更改
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339995"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471129"
 ---
 # <a name="release-notes"></a>发行说明
 
-## <a name="cognitive-services-speech-sdk-101"></a>认知服务语音 SDK 1.0.1
+## <a name="speech-service-sdk-101"></a>语音服务 SDK 1.0.1
 
 可靠性改进和 bug 修复：
 
-* 修复处理识别器时由于争用条件而导致的潜在灾难性错误
-* 修复未设置属性情况下的潜在灾难性错误。
-* 其他错误和参数检查。
-* Objective-C：修复 NSString 中名称替代而引起的潜在灾难性错误。
-* Objectice-C：调整 API 的可见性
-* JavaScript：关于事件及其有效负载的修复。
+* 修复了处理识别器时由于争用条件而导致的潜在严重错误
+* 修复了未设置属性情况下的潜在严重错误。
+* 添加了其他错误检查和参数检查。
+* Objective-C：修复了 NSString 中名称替代而引起的潜在严重错误。
+* Objective-C：调整了 API 的可见性
+* JavaScript：针对事件及其有效负载进行了修复。
 * 文档改进。
 
 在[示例存储库](https://aka.ms/csspeech/samples)中已添加了适用于 JavaScript 的新示例。

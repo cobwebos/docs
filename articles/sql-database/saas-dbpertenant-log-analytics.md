@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056703"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405066"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>通过多租户 SQL 数据库 SaaS 应用设置和使用 Log Analytics
 
@@ -42,7 +42,7 @@ ms.locfileid: "47056703"
 
 对于大容量方案，可以将 Log Analytics 用于监视和警报。 Log Analytics 是一项单独的 Azure 服务，可以用来对诊断日志和遥测数据进行分析，这些日志和数据是在工作区中可能从许多服务收集的。 Log Analytics 提供了内置的查询语言和数据可视化工具，可用于实现具有可操作性的数据分析。 SQL Analytics 解决方案提供了多个预定义的弹性池和数据库监视和警报视图与查询。 Log Analytics 还提供自定义视图设计器。
 
-Log Analytics 工作区和分析解决方案可以在 Azure 门户和 Operations Management Suite 中打开。 Azure 门户是更新的访问点，但在某些区域中可能会落后于 Operations Management Suite 门户。
+OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和分析解决方案可以在 Azure 门户中打开。 Azure 门户是更新的访问点，但在某些区域中可能会落后于 Operations Management Suite 门户。
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>通过模拟租户上的工作负荷创建性能诊断数据 
 
@@ -70,12 +70,12 @@ Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Anal
 1. 在 PowerShell ISE 中，打开 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*。
 1. 若要运行脚本，请按 F5。
 
-现在，可以在 Azure 门户或 Operations Management Suite 门户中打开 Log Analytics。 在 Log Analytics 工作区中收集遥测数据并使其可见需要花费几分钟时间。 留给系统收集诊断数据的时间越长，体验越微妙。 
+现在可以在 Azure 门户中打开 Log Analytics。 在 Log Analytics 工作区中收集遥测数据并使其可见需要花费几分钟时间。 留给系统收集诊断数据的时间越长，体验越微妙。 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>使用 Log Analytics 和 SQL Analytics 解决方案监视池和数据库
 
 
-在本练习中，打开 Log Analytics 和 Operations Management Suite 门户来查看为数据库和池收集的遥测数据。
+在本练习中，在 Azure 门户中打开 Log Analytics，以查看为数据库和池收集的遥测数据。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”以打开 Log Analytics。 然后搜索“Log Analytics”。
 
@@ -127,9 +127,9 @@ Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Anal
 
 1. 返回到 Log Analytics 工作区，选择“OMS 门户”以在那里打开工作区。
 
-    ![Operations Management Suite 门户磁贴](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics 工作区](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-在 Operations Management Suite 门户中，可以在工作区中进一步浏览日志和指标数据。 
+在 Log Analytics 门户中，可进一步浏览日志和指标数据。 
 
 Log Analytics 中的监视和警报功能基于工作区中的数据查询，不像在 Azure 门户的每个资源上定义的警报功能。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅限于工作区中可用的数据。
 

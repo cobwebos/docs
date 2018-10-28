@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948003"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404777"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>在 Azure 逻辑应用中监视 B2B 消息并为集成帐户设置日志记录
 
@@ -58,7 +58,9 @@ ms.locfileid: "46948003"
 
    1. 选择“发送到 Log Analytics”。 
    2. 在“Log Analytics”下，选择“配置”。 
-   3. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区。
+   3. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区。 
+   > [!NOTE]
+   > OMS 工作区现在称为 Log Analytics 工作区。 
    4. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别。
    5. 选择“保存”。
 
@@ -93,6 +95,8 @@ ms.locfileid: "46948003"
    1. 选择“发送到 Log Analytics”。 
    2. 在“Log Analytics”下，选择“配置”。 
    3. 在“OMS 工作区”下，选择要用于日志记录的 Log Analytics 工作区。
+   > [!NOTE]
+   > OMS 工作区现在称为 Log Analytics 工作区。
    4. 在“日志”下，选择“IntegrationAccountTrackingEvents”类别。
    5. 完成后，选择“保存”。
 
@@ -129,6 +133,6 @@ Azure 支持这些跟踪架构类型，它们都具有除自定义类型以外�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "在 OMS 中跟踪 B2B 消息")
+* [在 Azure Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "在 Azure Log Analytics 中跟踪 B2B 消息")
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
 

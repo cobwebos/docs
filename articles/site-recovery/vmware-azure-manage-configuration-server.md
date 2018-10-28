@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/15/2018
 ms.author: raynew
-ms.openlocfilehash: 35cce4e9e0b722e8ee1b2ea42a79f18a987033f0
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: bb756a89babef96b16419104737e87405b3527ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078626"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407395"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
 
@@ -138,6 +138,9 @@ ms.locfileid: "49078626"
 - 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
 
 [wiki 更新页](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)中提供了用于升级到配置服务器的所有版本的更新汇总的链接。
+
+> [!IMPORTANT]
+> 对于每一新版“N”的已发布 Azure Site Recovery 组件，“N-4”以下的所有版本都被视为不受支持。 始终建议升级到可用的最新版本。
 
 按如下所示升级服务器：
 

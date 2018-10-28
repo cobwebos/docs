@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7557e2b993a5059df8aea63c7394539acc28c110
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295864"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403518"
 ---
 # <a name="production-readiness-checklist"></a>生产就绪情况核对清单
 
@@ -36,7 +36,7 @@ ms.locfileid: "44295864"
 6. 理解并选取节点类型的[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)。 建议使用银级或更高级别的可靠性。
 7. 对工作负载进行负载和缩放测试，确定群集的[容量需求](service-fabric-cluster-capacity.md)。 
 8. 服务和应用程序受到监控，会生成并存储应用程序日志，并带有警报。 有关示例，请参阅[向 Service Fabric 应用程序添加日志记录](service-fabric-how-to-diagnostics-log.md)和[使用 Log Analytics 监视容器](service-fabric-diagnostics-oms-containers.md)。
-9. 群集通过警报（例如，通过 [OMS](service-fabric-diagnostics-event-analysis-oms.md)）得到监控。 
+9. 通过警报（例如，通过 [Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)）监视群集。 
 10. 基础虚拟机规模集基础结构通过警报（例如，通过 [Log Analytics](service-fabric-diagnostics-oms-agent.md)）得到监控。
 11. 该群集始终具有[主要和辅助证书](service-fabric-cluster-security-update-certs-azure.md)（因此不会将你拒之门外）。
 12. 维护用于开发、暂存和生产的独立集群。 

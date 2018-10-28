@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: b71c381c3ebc2b36c36b862c00de02144f94bd0f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1d72d56188c3b787ab335ced554eb7c1dc74e0b7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043543"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427427"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -69,7 +69,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 1. 创建一个可在其中创建保管库的 Azure 资源管理器资源组，或者使用现有资源组。 创建新资源组，如下所示。 $ResourceGroupName 变量包含需要创建的资源组的名称，$Geo 变量包含可在其中创建资源组的 Azure 区域（例如：“巴西南部”）。
 
-    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo` 
+    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo`
 
 2. 若要获取订阅中的资源组列表，请运行 Get-AzureRmResourceGroup cmdlet。
 2. 创建如下所示的新的 Azure 恢复服务保管库：
@@ -83,22 +83,22 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 设置保管库上下文，如下所示：
 
-`Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault`
+`Set-AsrVaultSettings -Vault $vault`
 
 ## <a name="step-4-create-a-hyper-v-site"></a>步骤 4：创建 Hyper-V 站点
 
 1. 创建新的 Hyper-V 站点，如下所示：
 
         $sitename = "MySite"                #Specify site friendly name
-        New-AzureRmSiteRecoverySite -Name $sitename
+        New-AsrFabric -Type HyperVSite -Name $sitename
 
 2. 此 cmdlet 会启动一个创建该站点所需的站点恢复作业，并返回一个站点恢复作业对象。 等待作业完成，并验证作业已成功完成。
-3. 使用 Get-AzureRmSiteRecoveryJob cmdlet 检索作业对象，并查看作业的当前状态。
+3. 使用 **Get-AsrJob cmdlet** 检索作业对象，并查看作业的当前状态。
 4. 生成和下载站点的注册密钥，如下所示：
 
     ```
-    $SiteIdentifier = Get-AzureRmSiteRecoverySite -Name $sitename | Select -ExpandProperty SiteIdentifier
-        Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename -Path $Path
+    $SiteIdentifier = Get-AsrFabric -Name $sitename | Select -ExpandProperty SiteIdentifier
+    $path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
 5. 将已下载的密钥复制到 Hyper-V 主机。 需要通过该密钥将 Hyper-V 主机注册到站点。
@@ -111,7 +111,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 4. 在系统提示时提供下载的密钥，然后完成 Hyper-V 主机的注册过程。
 5. 验证 Hyper-V 主机是否已注册到站点，如下所示：
 
-        $server =  Get-AzureRmSiteRecoveryServer -FriendlyName $server-friendlyname
+        $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 ## <a name="step-6-create-a-replication-policy"></a>步骤 6：创建复制策略
 
@@ -124,33 +124,33 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
         $Recoverypoints = 6                    #specify the number of recovery points
         $storageaccountID = Get-AzureRmStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
 
-        $PolicyResult = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
+        $PolicyResult = New-AsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
 2. 检查返回的作业，确保复制策略创建成功。
 
 3. 检索对应于该站点的保护容器，如下所示：
 
-        $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
+        $protectionContainer = Get-AsrProtectionContainer
 3. 将保护容器与复制策略相关联，如下所示：
 
-     $Policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $PolicyName   $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $Policy -PrimaryProtectionContainer $protectionContainer
+     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 
 4. 等待关联作业成功完成。
 
 ## <a name="step-7-enable-vm-protection"></a>步骤 7：启用 VM 保护
 
-1. 检索与要保护的 VM 相对应的保护实体，如下所示：
+1. 检索与要保护的 VM 相对应的可保护项，如下所示：
 
         $VMFriendlyName = "Fabrikam-app"                    #Name of the VM
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
+        $ProtectableItem = Get-AsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 2. 保护 VM。 如果要保护的 VM 有多个附加磁盘，则需使用 *OSDiskName* 参数指定操作系统磁盘。
 
         $Ostype = "Windows"                                 # "Windows" or "Linux"
-        $DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
+        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS Windows -RecoveryResourceGroupId
 
-3. 等待 VM 在完成初始复制后进入受保护状态。 这可能需要一段时间，具体取决于诸如要复制的数据量和 Azure 的可用上游带宽等因素。 进入受保护状态后，更新作业状态和 StateDescription，如下所示： 
+3. 等待 VM 在完成初始复制后进入受保护状态。 这可能需要一段时间，具体取决于诸如要复制的数据量和 Azure 的可用上游带宽等因素。 进入受保护状态后，更新作业状态和 StateDescription，如下所示：
 
-        PS C:\> $DRjob = Get-AzureRmSiteRecoveryJob -Job $DRjob
+        PS C:\> $DRjob = Get-AsrJob -Job $DRjob
 
         PS C:\> $DRjob | Select-Object -ExpandProperty State
         Succeeded
@@ -163,31 +163,16 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
         PS C:\> $VMFriendlyName = "Fabrikam-App"
 
-        PS C:\> $VM = Get-AzureRmSiteRecoveryVM -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
+        PS C:\> $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
-        PS C:\> $UpdateJob = Set-AzureRmSiteRecoveryVM -VirtualMachine $VM -PrimaryNic $VM.NicDetailsList[0].NicId -RecoveryNetworkId $nw1.Id -RecoveryNicSubnetName $nw1.Subnets[0].Name
+        PS C:\> $UpdateJob = Set-AsrReplicationProtectedItem --InputObject $rpi -PrimaryNic $VM.NicDetailsList[0].NicId -RecoveryNetworkId $nw1.Id -RecoveryNicSubnetName $nw1.Subnets[0].Name
 
-        PS C:\> $UpdateJob = Get-AzureRmSiteRecoveryJob -Job $UpdateJob
+        PS C:\> $UpdateJob = Get-AsrJob -Job $UpdateJob
 
-        PS C:\> $UpdateJob
+        PS C:\> $UpdateJob| select -ExpandProperty state
+        Get-AsrJob -Job $job | select -ExpandProperty state
 
-        Name             : b8a647e0-2cb9-40d1-84c4-d0169919e2c5
-        ID               : /Subscriptions/a731825f-4bf2-4f81-a611-c331b272206e/resourceGroups/MyRG/providers/Microsoft.RecoveryServices/vault
-                           s/MyVault/replicationJobs/b8a647e0-2cb9-40d1-84c4-d0169919e2c5
-        Type             : Microsoft.RecoveryServices/vaults/replicationJobs
-        JobType          : UpdateVmProperties
-        DisplayName      : Update the virtual machine
-        ClientRequestId  : 805a22a3-be86-441c-9da8-f32685673112-2015-12-10 17:55:51Z-P
-        State            : Succeeded
-        StateDescription : Completed
-        StartTime        : 10-12-2015 17:55:53 +00:00
-        EndTime          : 10-12-2015 17:55:54 +00:00
-        TargetObjectId   : 289682c6-c5e6-42dc-a1d2-5f9621f78ae6
-        TargetObjectType : ProtectionEntity
-        TargetObjectName : Fabrikam-App
-        AllowedActions   : {Restart}
-        Tasks            : {UpdateVmPropertiesTask}
-        Errors           : {}
+        Succeeded
 
 
 
@@ -196,13 +181,13 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
 
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMFriendlyName -ProtectionContainer $protectionContainer
+        $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
-        $TFjob = Start-AzureRmSiteRecoveryTestFailoverJob -ProtectionEntity $protectionEntity -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
+        $TFjob =Start-AsrTestFailoverJob -ReplicationProtectedItem $VM -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
 2. 验证是否在 Azure 中创建了测试 VM。 在 Azure 中创建测试 VM 之后，暂停测试故障转移作业。
 3. 若要清理并完成测试故障转移，请运行：
 
-        $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
+        $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
 ## <a name="next-steps"></a>后续步骤
 [详细了解](https://docs.microsoft.com/powershell/module/azurerm.siterecovery) Azure Site Recovery 和 Azure 资源管理器 PowerShell cmdlet。

@@ -1,20 +1,21 @@
 ---
 title: 关于语音转文本
+titleSuffix: Azure Cognitive Services
 description: 语音转文本 API 功能概述。
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 7cb0257a7302221f80bb90c0a6c3446cde07290a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: erhopf
+ms.openlocfilehash: 041ec1c095ec604fed7906368ff266c1586df570
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434120"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471333"
 ---
 # <a name="about-the-speech-to-text-api"></a>关于语音转文本 API
 
@@ -26,7 +27,7 @@ ms.locfileid: "47434120"
 
 - 实时连续识别。 **语音转文本**允许用户实时将音频转录为文本。 它还支持接收到目前为止已识别的单词的中间结果。 该服务自动识别结束语。 用户还可选择其他格式选项，包括大写和标点符号、脏话屏蔽和反向文本规范化。
 
-- 已针对交互式、对话和听写场景优化**语音转文本**结果。 已识别结果以词法形式和显示形式返回（对于词法结果，请参阅示例或 API 中的 DetailedSpeechRecognitionResult）。
+- 结果以词法形式和显示形式返回（对于词法结果，请参阅示例或 API 中的 DetailedSpeechRecognitionResult）。
 
 - 支持多种口语和方言。 有关每种识别模式下支持的语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
@@ -34,9 +35,11 @@ ms.locfileid: "47434120"
 
 - 自然语言理解。 通过与[语言理解](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) 集成，你可以从语音中获取意向和实体。 用户不必了解应用的词汇，但可以用自己的语言描述他们想要的内容。
 
+- 如果在语音配置对象（SpeechConfig.OutputFormat 属性）上指定详细输出，则会从服务返回置信度分数。 然后，可以对结果使用 Best() 方法，或者直接从服务返回的 JSON 获得分数（类似于 result.Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)）。
+
 ## <a name="api-capabilities"></a>API 功能
 
-**语音转文本** API 的许多功能 - 特别是围绕自定义的功能 - 可以通过 REST 获得。 下表总结了每种访问 API 的方法的功能。 有关功能和 API 详细信息的完整列表，请参阅 [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+**语音转文本** API 的某些功能（特别是围绕自定义的功能）可以通过 REST 获得。 下表总结了每种访问 API 的方法的功能。 有关功能和 API 详细信息的完整列表，请参阅 [Swagger 参考](https://westus.cris.ai/swagger/ui/index)。
 
 | 使用案例 | REST | SDK |
 |-----|-----|-----|----|
