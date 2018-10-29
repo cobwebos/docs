@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
-ms.reviewer: vanto, carlrab, ronitr
+ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: b8bb9cbf53b297d8dca1ac67bae8765edcc2c9f4
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 10/22/2018
+ms.openlocfilehash: 9978497f8bd3ebb11247f3bffe319866128e9f1d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311195"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646501"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -32,7 +32,11 @@ ms.locfileid: "49311195"
 SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全性](https://support.microsoft.com/kb/3135244)提供加密；对于静态数据，使用[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)提供加密；对于使用中的数据，将使用 [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 提供加密。
 
 > [!IMPORTANT]
-> 在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。 必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（通过将连接字符串复制到 Azure 门户外部来完成此操作），否则，连接不会验证服务器的身份，并且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 **Encrypt=True** 和 **TrustServerCertificate=False**。 有关 TLS 和连接的信息，请参阅 [TLS 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)。
+> Azure SQL 数据库始终为所有连接强制执行加密 (SSL/TLS)，这确保了在数据库与客户端之间所有数据“在传输中”都是加密的。 无论连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 的设置如何，都会进行加密。
+>
+> 在应用程序的连接字符串中，请确保指定加密连接并且不要信任服务器证书（对于 ADO.NET 驱动程序而言，这表示为 **Encrypt=True** 且 **TrustServerCertificate=False**）。 通过强制应用程序验证服务器并强制加密，这有助于防止应用程序遭受中间人攻击。 如果是从 Azure 门户中获取连接字符串，则它将具有正确的设置。
+>
+> 有关 TLS 和连接的信息，请参阅 [TLS 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)。
 
 若要通过其他方法加密数据，请考虑：
 
@@ -78,7 +82,7 @@ SQL 数据库身份验证是指连接到数据库时如何证明用户的身份�
 
 ### <a name="row-level-security"></a>行级别安全性
 
-行级别安全性使客户能够根据执行查询的用户的特征（例如，组成员身份或执行上下文），控制对数据库表中的行的访问。 有关详细信息，请参阅[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)。
+行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 有关详细信息，请参阅[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)。
 
 ### <a name="dynamic-data-masking"></a>动态数据掩码
 
@@ -90,7 +94,7 @@ SQL 数据库通过提供审核和威胁检测功能来保护数据。
 
 ### <a name="auditing"></a>审核
 
-Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到 Azure 存储帐户中的审核日志，帮助用户保持合规性。 使用审核可以了解正在进行的数据库活动，以及分析和调查历史活动，标识潜在威胁或可疑的滥用行为和安全违规。 有关更多信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
+Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到 Azure 存储帐户中的审核日志，帮助用户保持合规性。 使用审核可以了解正在进行的数据库活动，以及分析和调查历史活动，标识潜在威胁或可疑的滥用行为和安全违规。 有关详细信息，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。  
 
 ### <a name="threat-detection"></a>威胁检测
 
@@ -104,7 +108,7 @@ Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记�
 
 SQL 数据库通过提供数据库扫描和集中式安全仪表板（使用 [SQL 漏洞评估](sql-vulnerability-assessment.md)）可帮助你管理数据安全性。
 
-**漏洞评估**：[SQL 漏洞评估](sql-vulnerability-assessment.md)（目前处于预览状态）是一个内置于 Azure SQL 数据库中的易于配置的工具，可帮助你发现、跟踪和修正潜在的数据库漏洞。 该评估在数据库上执行漏洞扫描并生成报告（让你了解安全状态），其中包括用于解决安全问题和提高数据库安全性的可操作步骤。 可以通过为权限配置、功能配置和数据库设置设置可接受的基线，来为环境自定义评估报告。 此评估可以帮助你：
+**[SQL 漏洞评估](sql-vulnerability-assessment.md)** 是一个内置于 Azure SQL 数据库中的易于配置的工具，可帮助你发现、跟踪和修正潜在的数据库漏洞。 该评估在数据库上执行漏洞扫描并生成报告（让你了解安全状态），其中包括用于解决安全问题和提高数据库安全性的可操作步骤。 可以通过为权限配置、功能配置和数据库设置设置可接受的基线，来为环境自定义评估报告。 此评估可以帮助你：
 
 - 满足需要数据库扫描报告的符合性要求。
 - 满足数据隐私标准。

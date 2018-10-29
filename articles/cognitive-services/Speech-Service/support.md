@@ -1,19 +1,21 @@
 ---
 title: 支持和帮助选项
-description: 了解在创建与 Azure 认知服务语音集成的应用程序时，如何针对所遇到的问题获取帮助和支持
+titlesuffix: Azure Cognitive Services
+description: 在创建与语音服务集成的应用程序时，如何针对所遇到的问题获取帮助和支持
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c08cc34631afdec4a4b08b4c599b79e1a161558c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364151"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468052"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -74,8 +76,41 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 示例通常发布为开放源代码。 若有疑问和问题，请在相应的 GitHub 存储库中创建问题。 你也可以提交拉取请求。 下面的列表包含了示例存储库的链接：
 
-* [语音 SDK](https://aka.ms/csspeech/samples)
-* [设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [语音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [设备 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+
+你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
+
+**描述 bug**
+
+清晰而简洁地描述此 bug 是什么。
+
+**重现步骤**
+
+用于重现此行为的步骤：
+1. ...
+2. ...
+
+**预期行为**
+
+清晰而简洁地描述你预期发生的情况。
+
+**认知服务语音 SDK 的版本**
+
+所使用的 SDK 的版本。
+
+**平台、操作系统和编程语言**
+
+ - OS：[例如 Windows、Linux、Android、iOS、...] - 请具体说明
+ - 硬件 - x64、x86、ARM、...
+ - 浏览器：[例如 Chrome、Safari]（如果适用）- 请具体说明
+
+**其他上下文**
+
+ - 错误消息、日志信息、堆栈跟踪、...
+ - 如果你针对特定的服务交互报告了一个错误，请报告所报告的事件的 SessionId 和时间（包括时区）。 你收到的所有回调/事件中都会报告 SessionId。
+ - 任何其他附加信息
+
 
 ## <a name="uservoice-forum"></a>UserVoice 论坛
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: bd7a7e0288ced0219a0600034b273d1acba6b09b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659184"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402222"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
 
@@ -31,8 +31,8 @@ ms.locfileid: "34659184"
 
 * [Application Insights 与 Service Fabric](service-fabric-tutorial-monitoring-aspnet.md)
 * [在群集上启用 Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)
-* [设置 OMS Log Analytics 工作区](service-fabric-diagnostics-oms-setup.md)
-* [用于跟踪性能计数器的 OMS 代理](service-fabric-diagnostics-oms-agent.md)
+* [设置 Log Analytics 工作区](service-fabric-diagnostics-oms-setup.md)
+* [用于跟踪性能计数器的 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)
 
 ## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>如何在应用程序中查看未经处理的异常？
 
@@ -63,7 +63,7 @@ ms.locfileid: "34659184"
 1. 节点事件由 Service Fabric 群集跟踪。 导航到名为 **ServiceFabric(NameofResourceGroup)** 的 Service Fabric 分析解决方案资源
 2. 单击标题为“摘要”的边栏选项卡底部的图表
 
-    ![OMS 解决方案](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Log Analytics 解决方案](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. 此处有许多图表和磁贴，上面显示了各种指标。 单击其中一个图表，它会带你进入“日志搜索”。 在这里，你可以查询任何群集事件或性能计数器。
 4. 输入以下查询。 这些事件 ID 位于[节点事件参考](service-fabric-diagnostics-event-generation-operational.md#application-events)中
@@ -75,7 +75,7 @@ ms.locfileid: "34659184"
 
 5. 单击顶部的“新建警报规则”，现在只要发生基于此查询的事件，就会通过所选通信方式收到警报。
 
-    ![OMS 新建警报](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Log Analytics 新建警报](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>怎样才能收到应用程序升级回滚警报？
 
@@ -90,24 +90,24 @@ ms.locfileid: "34659184"
 
 ## <a name="how-do-i-see-container-metrics"></a>如何查看容器指标？
 
-在包含所有图表的相同视图中，你将看到有关容器性能的一些磁贴。 你需要 OMS 代理和[容器监视解决方案](service-fabric-diagnostics-oms-containers.md)来填充这些磁贴。
+在包含所有图表的相同视图中，你将看到有关容器性能的一些磁贴。 你需要 Log Analytics 代理和[容器监视解决方案](service-fabric-diagnostics-oms-containers.md)来填充这些磁贴。
 
-![OMS 容器指标](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
+![Log Analytics 容器指标](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
 
 >[!NOTE]
 >若要从容器**内部**检测遥测数据，需要为容器添加 [Application Insights nuget 包](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios)。
 
 ## <a name="how-can-i-monitor-performance-counters"></a>如何监视性能计数器？
 
-1. 向群集添加 OMS 代理后，需要添加要跟踪的特定性能计数器。导航到门户中的 OMS 工作区页面（工作区选项卡位于解决方案页面的左侧菜单中）。
+1. 向群集添加 Log Analytics 代理后，需要添加要跟踪的特定性能计数器。导航到门户中的 Log Analytics 工作区页面（工作区选项卡位于解决方案页面的左侧菜单中）。
 
-    ![OMS 工作区选项卡](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Log Analytics 工作区选项卡](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
 2. 进入工作区页面后，单击同一左侧菜单中的“高级设置”。
 
-    ![OMS 高级设置](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![Log Analytics 高级设置](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
-3. 单击“数据”>“Windows 性能计数器”（对于 Linux 计算机，则为“数据”>“Linux 性能计数器”），开始通过 OMS 代理从节点收集特定计数器。 以下是要添加的计数器的格式示例
+3. 单击“数据”>“Windows 性能计数器”（对于 Linux 计算机，则为“数据”>“Linux 性能计数器”），开始通过 Log Analytics 代理从节点收集特定计数器。 以下是要添加的计数器的格式示例
 
     * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
     * `Processor(_Total)\\% Processor Time`
@@ -118,7 +118,7 @@ ms.locfileid: "34659184"
     * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
     * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![OMS 性能计数器](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+    ![Log Analytics 性能计数器](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
 4. 这将允许你查看基础结构处理工作负荷的方式，并根据资源利用率设置相关警报。 例如，如果处理器总利用率高于 90% 或低于 5%，则可能需要设置警报。 此时将使用名为“% Processor Time”的计数器。 可通过为以下查询创建警报规则来执行此操作：
 
@@ -128,7 +128,7 @@ ms.locfileid: "34659184"
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>如何跟踪 Reliable Services 和 Actors 的性能？
 
-若要跟踪应用程序中 Reliable Services 或 Actors 的性能，还应添加 Service Fabric Actor、Actor Method、Service 和 Service Method 计数器。 可以按照与上一情况类似的方式添加这些计数器，以下是要在 OMS 中添加的 Reliable Service 和 Actor 性能计数器的示例
+若要跟踪应用程序中 Reliable Services 或 Actors 的性能，还应添加 Service Fabric Actor、Actor Method、Service 和 Service Method 计数器。 可以按照与上一情况类似的方式添加这些计数器，以下是要在 Log Analytics 中添加的 Reliable Service 和 Actor 性能计数器的示例：
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
@@ -141,7 +141,7 @@ ms.locfileid: "34659184"
 
 * [在 AI 中设置警报](../application-insights/app-insights-alerts.md)以获取有关性能或使用情况的通知
 * [Application Insights 中的智能检测](../application-insights/app-insights-proactive-diagnostics.md)针对发送给 AI 的遥测进行主动分析，向你警告潜在的性能问题
-* 详细了解有助于进行检测和诊断的 OMS Log Analytics [警报](../log-analytics/log-analytics-alerts.md)。
-* 对于本地群集，OMS 提供可用于向 OMS 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 OMS 网关将无法访问 Internet 的计算机连接到 OMS](../log-analytics/log-analytics-oms-gateway.md)
+* 详细了解有助于进行检测和诊断的 Log Analytics [警报](../log-analytics/log-analytics-alerts.md)。
+* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Log Analytics](../log-analytics/log-analytics-oms-gateway.md)
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
 * 有关 Log Analytics 及其功能的更详细概述，请参阅[什么是 Log Analytics？](../operations-management-suite/operations-management-suite-overview.md)

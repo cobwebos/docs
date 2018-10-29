@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956642"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637958"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能
 可以使用适用于容器的 Azure Monitor 从两个角度查看 Azure Kubernetes 服务 (AKS) 群集的性能，一是直接从 AKS 群集查看，二是从 Azure Monitor 查看订阅中的所有 AKS 群集。 
 
 可以通过本文了解这两个角度的不同体验，以及如何快速评估、调查和解决检测到的问题。
@@ -109,6 +109,10 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![性能视图中的示例 Kubernetes 节点层次结构](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 单击特定节点的“控制器”列下的值。   
+
+![性能视图中从节点到控制器的示例向下钻取](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 可从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。  如果想要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%*，它表示未定义或无法表示的值的数值数据类型值。 
 
 ![容器节点性能视图](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -125,7 +129,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表介绍查看节点时显示的信息：
 
-| 列 | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -144,11 +148,13 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![<名称>控制器性能视图](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-行层次结构从控制器开始并展开控制器。 可查看一个或多个容器。 展开 Pod，最后一行显示分组到 Pod 的容器。  
+行层次结构以控制器开始，当展开控制器时，可以查看一个或多个 pod。  展开 Pod，最后一行显示分组到 Pod 的容器。 从展开的控制器中，你可以向下钻取到运行它的节点来查看针对该节点筛选的性能数据。 单击特定控制器的“节点”列下的值。   
+
+![性能视图中从节点到控制器的示例向下钻取](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 下表介绍查看控制器时显示的信息：
 
-| 列 | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 完成运行状态时容器的汇总状态，例如“正常”、“已终止”、“已失败”、“已停止”或“已暂停”。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表中提供了状态图标的更多详细信息。|
@@ -179,9 +185,13 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![<名称>控制器性能视图](./media/monitoring-container-insights-analyze/containers-containers-view.png)
 
+从容器中，可以向下钻取到某个 pod 或节点来查看针对该对象筛选的性能数据。 单击特定容器的“Pod”或“节点”列下的值。   
+
+![性能视图中从节点到控制器的示例向下钻取](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
+
 下表介绍查看容器时显示的信息：
 
-| 列 | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|

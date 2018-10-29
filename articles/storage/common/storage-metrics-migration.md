@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: fc11e29b03df617c4b5bb6f4fbb43cd478001d42
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521415"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649289"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 存储指标迁移
 
@@ -25,7 +25,7 @@ ms.locfileid: "39521415"
 
 Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内的 $Metric 表中。 可以使用 Azure 门户设置监视图表。 还可以使用 Azure 存储 SDK 从基于架构的 $Metric 表格读取数据。 有关详细信息，请参阅[存储分析](./storage-analytics.md)。
 
-旧指标仅对 Azure Blob 存储提供容量指标。 旧指标对 Blob 存储、表存储、Azure 文件和队列存储提供事务指标。 
+旧指标仅对 Azure Blob 存储提供容量指标。 旧指标对 Blob 存储、表存储、Azure 文件和队列存储提供事务指标。
 
 旧指标采用平面架构设计。 当没有可触发指标的流量模式时，此设计会导致生成指标值 0。 例如，即使未在流向存储帐户的实时流量中收到任何服务器超时错误，$Metric 表中的 ServerTimeoutError 值也将设置为 0。
 
@@ -65,14 +65,14 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 
 | 旧指标 | 新指标 |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError） |
-| **AnonymousClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError） |
-| **AnonymousClientTimeoutError** | 事务（维度 ResponseType 等于 ClientTimeoutError） |
-| **AnonymousNetworkError** | 事务（维度 ResponseType 等于 NetworkError） |
-| **AnonymousServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError） |
-| **AnonymousServerTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError） |
-| **AnonymousSuccess** | 事务（维度 ResponseType 等于 Success） |
-| **AnonymousThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError） |
+| **AnonymousAuthorizationError** | 维度 **ResponseType** 等于 **AuthorizationError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousClientOtherError** | 维度 **ResponseType** 等于 **ClientOtherError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousClientTimeoutError** | 维度 **ResponseType** 等于 **ClientTimeoutError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousNetworkError** | 维度 **ResponseType** 等于 **NetworkError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousServerOtherError** | 维度 **ResponseType** 等于 **ServerOtherError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousServerTimeoutError** | 维度 **ResponseType** 等于 **ServerTimeoutError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousSuccess** | 维度 **ResponseType** 等于 **Success** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
+| **AnonymousThrottlingError** | 维度 **ResponseType** 等于 **ClientThrottlingError** 或 **ServerBusyError** 且维度 **Authentication** 等于 **Anonymous** 的事务 |
 | **AuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError） |
 | **可用性** | **可用性** |
 | **AverageE2ELatency** | **SuccessE2ELatency** |
@@ -87,14 +87,14 @@ Azure 存储收集旧指标值，将其聚合并存储在同一存储帐户内�
 | **PercentSuccess** | 事务（维度 ResponseType 等于 Success） |
 | **PercentThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError） |
 | **PercentTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError 或 ResponseType 等于 ClientTimeoutError） |
-| **SASAuthorizationError** | 事务（维度 ResponseType 等于 AuthorizationError） |
-| **SASClientOtherError** | 事务（维度 ResponseType 等于 ClientOtherError） |
-| **SASClientTimeoutError** | 事务（维度 ResponseType 等于 ClientTimeoutError） |
-| **SASNetworkError** | 事务（维度 ResponseType 等于 NetworkError） |
-| **SASServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError） |
-| **SASServerTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError） |
-| **SASSuccess** | 事务（维度 ResponseType 等于 Success） |
-| **SASThrottlingError** | 事务（维度 ResponseType 等于 ClientThrottlingError 或 ServerBusyError） |
+| **SASAuthorizationError** | 维度 **ResponseType** 等于 **AuthorizationError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASClientOtherError** | 维度 **ResponseType** 等于 **ClientOtherError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASClientTimeoutError** | 维度 **ResponseType** 等于 **ClientTimeoutError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASNetworkError** | 维度 **ResponseType** 等于 **NetworkError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASServerOtherError** | 维度 **ResponseType** 等于 **ServerOtherError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASServerTimeoutError** | 维度 **ResponseType** 等于 **ServerTimeoutError** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASSuccess** | 维度 **ResponseType** 等于 **Success** 且维度 **Authentication** 等于 **SAS** 的事务 |
+| **SASThrottlingError** | 维度 **ResponseType** 等于 **ClientThrottlingError** 或 **ServerBusyError** 且维度 **Authentication** 等于 **SAS** 的事务 |
 | **ServerOtherError** | 事务（维度 ResponseType 等于 ServerOtherError） |
 | **ServerTimeoutError** | 事务（维度 ResponseType 等于 ServerTimeoutError） |
 | **Success** | 事务（维度 ResponseType 等于 Success） |

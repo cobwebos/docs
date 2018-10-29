@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856872"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408823"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
-Azure 通过 Azure Active Directory (Azure AD)、Azure Operations Management Suite (OMS) 和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
+Azure 通过 Azure Active Directory (Azure AD)、Azure Log Analytics 和 Azure 安全中心等服务提供内置的高级威胁检测功能。 安全服务和功能的此集合提供了一种简单快速了解 Azure 部署运行状况的方法。
 
 Azure 提供多种安全性配置和自定义选项，以满足应用部署的要求。 本文介绍如何满足这些要求。
 
@@ -75,21 +75,21 @@ PIM 可帮助用户进行以下操作：
 
 -   获取有关访问特权角色的警报。
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助管理和保护本地和云基础结构。 由于 OMS 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 自动提供新增安全功能，从而节省持续维护和升级成本。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 因为 Log Analytics 是作为基于云的服务实现的，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 自动提供新增安全功能，从而节省持续维护和升级成本。
 
-除自行提供有价值的服务外，OMS 还可与 [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) 等 System Center 组件集成，将现有安全管理投资扩展到云。 System Center 和 OMS 可协同工作来提供完整的混合管理体验。
+除自行提供有价值的服务外，Log Analytics 还可与 [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) 等 System Center 组件集成，将现有安全管理投资扩展到云。 System Center 和 Log Analytics 可协同工作来提供完整的混合管理体验。
 
 ### <a name="holistic-security-and-compliance-posture"></a>安全性与符合性总体情况
 
-[OMS 安全和审核仪表板](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 “安全和审核”仪表板是提供 OMS 中所有安全相关内容的主屏幕。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
+[Log Analytics 安全和审核仪表板](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)借助内置搜索查询找到需要关注的重要问题，从而提供有关组织的 IT 安全态势的全面观点。 安全和审核仪表板是主屏幕，提供 Log Analytics 中安全性的所有相关内容。 它提供计算机安全状态的高级洞见。 还可以查看过去 24 小时、7 天或任何自定义时间范围的所有事件。
 
-OMS 仪表板有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
+Log Analytics 有助于用户快速轻松了解任何环境中的总体安全情况，在 IT 操作的上下文中即可实现，这些操作包括软件更新评估、反恶意软件评估和配置基线。 可访问现成的安全日志数据，简化安全性和符合性审核过程。
 
-![OMS 安全和审核仪表板](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+![Log Analytics 安全和审核仪表板](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
-OMS 安全和审核仪表板有四个主要类别：
+Log Analytics 安全和审核仪表板有四个主要类别：
 
 -   **安全域**：可进一步了解随时间推移的安全记录；访问恶意软件评估；更新评估；查看网络安全、身份和访问信息；查看具有安全事件的计算机；并快速访问 Azure 安全中心仪表板。
 
@@ -102,25 +102,25 @@ OMS 安全和审核仪表板有四个主要类别：
 -   **常见安全查询**：列出了可用于监视环境的最常见安全查询。 如果选择了任何查询，“搜索”窗格将打开并显示该查询的结果。
 
 ### <a name="insight-and-analytics"></a>见解与分析
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 的中心是由 Azure 托管的 OMS 存储库。
+[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 的中心是由 Azure 托管的存储库。
 
 ![见解与分析关系图](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。
 
-![OMS 仪表板 ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Log Analytics 仪表板 ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 数据源和解决方案分别创建具有自身属性集的单独记录类型，但是用户仍可在对存储库的查询中同时对它们进行分析。 可以使用相同的工具和方法来处理由不同的源收集的各种数据。
 
 
-与 Log Analytics 的大部分交互都会通过 OMS 门户完成，该门户在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
+与 Log Analytics 的大部分交互都会通过 Azure 门户完成，该门户在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
 * [日志搜索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)，可在其中构造查询以分析收集的数据。
 * [仪表板](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)，可提供其他功能和分析工具。
 
 ![分析工具](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-解决方案向 Log Analytics 添加功能。 解决方案主要在云中运行，并提供对 OMS 存储库中收集的数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在 OMS 仪表板中提供的其他用户界面对这些记录类型进行分析。
+解决方案向 Log Analytics 添加功能。 解决方案主要在云中运行，并提供对 Log Analytics 存储库中收集的数据的分析。 解决方案也可以定义要收集的新记录类型，可使用日志搜索或通过解决方案在 Log Analytics 仪表板中提供的其他用户界面对这些记录类型进行分析。
 
 安全和审核仪表板是这些类型的解决方案的一个示例。
 

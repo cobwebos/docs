@@ -150,9 +150,9 @@ items:
     items:
     - name: 添加意向
       href: luis-how-to-add-intents.md
-    - name: 添加表达
+    - name: 将实体添加到话语
       href: luis-how-to-add-example-utterances.md
-    - name: 添加实体
+    - name: 在没有话语的情况下添加实体
       href: luis-how-to-add-entities.md
     - name: 使用预构建的模型
       items:
@@ -368,9 +368,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: f946ab4262d078b8f645800cee9a8e98ee0e104c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 43d36dd8f08508139bc74904c9c155b947ace52e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647045"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139663"

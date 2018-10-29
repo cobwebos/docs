@@ -333,7 +333,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 - 此元素必须与 **ClaimsTransformation** 属性（定义如何生成此声明的数据）中的转换条目的 ID 元素匹配。
 
-**声明类型：****JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
+**声明类型：** **JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
 
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。

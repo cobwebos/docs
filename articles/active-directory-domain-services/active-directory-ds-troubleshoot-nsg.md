@@ -26,7 +26,7 @@ ms.locfileid: "49426052"
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：
 
 ## <a name="alert-aadds104-network-error"></a>警报 AADDS104：网络错误
-**警报消息：***Microsoft 不能访问此托管域的域控制器。如果虚拟网络上配置的网络安全组 (NSG) 阻止访问托管域，则可能会发生这种情况。另一个可能的原因为，如果有用户定义的路由阻止来自 Internet 的传入流量。*
+**警报消息：** *Microsoft 不能访问此托管域的域控制器。如果虚拟网络上配置的网络安全组 (NSG) 阻止访问托管域，则可能会发生这种情况。另一个可能的原因为，如果有用户定义的路由阻止来自 Internet 的传入流量。*
 
 无效的 NSG 配置是导致 Azure AD 域服务网络错误的最常见原因。 为虚拟网络配置的网络安全组 (NSG) 必须允许访问[特定端口](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)。 如果已阻止这些端口，Microsoft 将无法监视或更新托管域。 此外，Azure AD 目录与托管域之间的同步也会受到影响。 创建 NSG 时，请保持这些端口处于打开状态，以避免服务中断。
 

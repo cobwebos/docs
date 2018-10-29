@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用 PowerShell 将数据磁盘附加到 Windows VM | Microsoft Docs
+title: 使用 PowerShell 将数据磁盘附加到 Azure 中的 Windows VM | Microsoft Docs
 description: 如何配合使用 PowerShell 和 Resource Manager 部署模型将新磁盘或现有数据磁盘附加到 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 10/16/2018
 ms.author: cynthn
-ms.openlocfilehash: 384203134d1588053f91b66d32e9b0bf1ec69306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd11bb8ae8f22705feb7eebeafde385fcf11fdcd
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38680908"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637079"
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
+# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
-本文介绍如何使用 PowerShell 将新磁盘和现有磁盘附加到 Windows 虚拟机。 
+本文介绍了如何使用 PowerShell 将新磁盘和现有磁盘附加到 Windows 虚拟机。 
 
-在开始之前，请查看以下提示：
-* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 若要使用高级存储，则需要使用支持高级存储的 VM，如 DS 系列或 GS 系列虚拟机。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+首先，查看以下提示：
+* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 若要使用高级存储，则需要使用支持高级存储的 VM 类型，例如 DS 系列或 GS 系列虚拟机。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+若要在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
@@ -80,7 +80,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>初始化磁盘
 
-添加空磁盘后，需对其进行初始化。 要初始化该磁盘，可以登录到一个 VM，并使用磁盘管理进行初始化。 如果在创建 VM 时在其上启用了 WinRM 和证书，则可以使用远程 PowerShell 初始化该磁盘。 还可以使用自定义脚本扩展： 
+添加空磁盘后，需要对其进行初始化。 要初始化该磁盘，可以登录到一个 VM，并使用磁盘管理进行初始化。 如果在创建 VM 时在其上启用了 [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) 和证书，则可以使用远程 PowerShell 初始化该磁盘。 还可以使用自定义脚本扩展： 
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
         
-脚本文件可以包含类似于下面的代码来初始化磁盘：
+脚本文件可以包含用来初始化磁盘的代码，例如：
 
 ```azurepowershell-interactive
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465803"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986417"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -113,7 +113,12 @@ ms.locfileid: "46465803"
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="enabling-access-to-alerts"></a>启用对警报的访问
-资源组的 Azure Monitor 需要特定权限才能访问资源组中的资源的警报状态。 如果在加载警报时看到错误消息，则表示你没有足够的权限。 让管理员授予你包含资源组的订阅的“所有者”或“参与者”角色。
+
+若要在适用于资源组的 Azure Monitor 中查看警报，需要由此订阅中具有“所有者”或“参与者”角色的某人为订阅中的任何资源组打开适用于资源组的 Azure Monitor。 这会使得具有读取访问权限的任何人都能够在适用于资源组的 Azure Monitor 中查看针对该订阅中所有资源组的警报。 如果你拥有“所有者”或“参与者”角色，请在几分钟后刷新此页面。
+
+适用于资源组的 Azure Monitor 依赖于 Azure Monitor 警报管理系统来检索警报状态。 默认情况下没有为每个资源组和订阅配置“警报管理”，它只能由具有“所有者”或“参与者”角色的某人来启用。 可以通过以下任一方式启用它：
+* 为订阅中的任何资源组打开适用于资源组的 Azure Monitor。
+* 或者，转到订阅，单击“资源提供程序”，然后单击“注册 Alerts.Management”。
 
 ## <a name="next-steps"></a>后续步骤
 

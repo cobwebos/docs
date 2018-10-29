@@ -1,6 +1,6 @@
 ---
 title: Azure 操作安全性 |Microsoft Docs
-description: 了解 Microsoft Operations Management Suite (OMS) 及其服务，以及它的工作原理。
+description: 了解 Microsoft Azure Log Analytics、它的服务和它的工作原理。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342263"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409486"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>介绍
@@ -30,7 +30,7 @@ ms.locfileid: "37342263"
 为帮助客户更好地从客户和 Microsoft 操作这两个角度了解 Microsoft Azure 中实施的一系列安全控件，特编写本白皮书《Azure 操作安全性》，全面介绍通过 Microsoft Azure 实现的操作安全性。
 
 ### <a name="azure-platform"></a>Azure 平台
-Azure 是一个公有云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 它可通过 Docker 集成运行 Linux 容器；使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；生成适用于 iOS、Android 和 Windows 设备的后端。 Azure 云服务支持数百万开发人员和 IT 专业人士依赖并信任的技术。
+Azure 是一个公有云服务平台，支持多种操作系统、编程语言、框架、工具、数据库和设备。 它可运行与 Docker 集成的 Linux 容器；使用 JavaScript、Python、.NET、PHP、Java 和 Node.js 生成应用；生成适用于 iOS、Android 和 Windows 设备的后端。 Azure 云服务支持数百万开发人员和 IT 专业人士依赖并信任的技术。
 
 构建 IT 资产或将其迁移到公有云服务提供商处时，需要借助该组织的能力来保护应用程序和数据，并使用该组织提供的服务和控制机制来管理基于云的资产的安全性。
 
@@ -40,7 +40,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
 
 本白皮书概述了 Microsoft 在 Microsoft Azure 云平台中的 Azure 操作安全性方法，并介绍了以下服务：
-1.  [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 2.  [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
@@ -53,19 +53,19 @@ Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据
 6.  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
+## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-Microsoft Operations Management Suite (OMS) 是混合云的 IT 管理解决方案。 OMS 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
+Microsoft Azure Log Analytics 是适用于混合云的 IT 管理解决方案。 Log Analytics 可单独使用，也可用于扩展现有 System Center 部署，为用户基于云管理基础结构提供了最大的灵活性和控制度。
 
-![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-使用 OMS，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 OMS 专为云优先的环境而设计，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
+使用 Log Analytics，可以在任何云中（包括本地、Azure、AWS、Windows Server、Linux、VMware 和 OpenStack）管理任何实例，且成本低于其他有竞争力的解决方案。 Log Analytics 专为云优先的环境而构建，为管理企业提供了一种新方法，能最快且最经济高效地应对新的业务挑战并适应新的工作负载、应用程序和云环境。
 
-### <a name="oms-services"></a>OMS 服务
+### <a name="log-analytics-services"></a>Log Analytics 服务
 
-OMS 的核心功能由 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
+Log Analytics 的核心功能由在 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
-| 服务  | 说明|
+| 服务  | Description|
 | :------------- | :-------------|
 | Log Analytics | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
 |自动化 | 将手动过程自动化，实施物理机和虚拟机的配置。 |
@@ -74,7 +74,7 @@ OMS 的核心功能由 Azure 中运行的一组服务提供。 每个服务提�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
 
 使用这种方法可以整合来自各种源的数据，因此可将 Azure 服务中的数据合并到现有的本地环境。 此外，它还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
@@ -92,17 +92,17 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 
 ### <a name="azure-backup"></a>Azure 备份
 
-[Azure 备份](http://azure.microsoft.com/documentation/services/backup)提供数据备份和还原服务，属于 OMS 产品和服务套件。
+[Azure 备份](http://azure.microsoft.com/documentation/services/backup)提供数据备份和还原服务，是 Log Analytics 产品和服务套件的一部分。
 它可以保护应用程序数据，并且无需资本投资、只需最低的运行成本，即可将这些数据保留多年。 除 SQL Server 和 SharePoint 等应用程序工作负荷之外，它还可以备份物理和虚拟 Windows 服务器中的数据。 [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) 也可使用它将受保护的数据复制到 Azure，以实现冗余和长期存储。
 
 
 Azure 备份中的受保护数据存储在位于特定地理区域的备份保管库。 数据在同一区域内复制，并且根据保管库类型，可能还会复制到其他区域以进一步实现复原。
 
 ### <a name="management-solutions"></a>管理解决方案
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 基于云的 IT 管理解决方案，有助于管理和保护本地和云基础结构。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。
 
 
-[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 OMS 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
+[管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现使用一个或多个 Log Analytics 服务的特定管理方案。 Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高在 Log Analytics 方面所做投资的价值。 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure 市场或快速启动模板将它们提供给用户。
 
 
 ![管理解决方案](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -164,7 +164,7 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[OMS 安全](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)和审核解决方案允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 OMS 安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
+[Log Analytics 安全和审核解决方案](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)允许 IT 人员主动监视所有资源，这有助于最大程度地降低安全事件的影响。 Log Analytics 安全和审核具有可用于监视资源的安全域。 安全域支持快速访问用于安全监视的选项，详细介绍了以下域：
 
 -   恶意软件评估
 -   更新评估
@@ -312,7 +312,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 本文介绍了
 
--   如何在 Operations Management Suite (OMS) 中进行数据收集、处理和保护。
+-   Log Analytics 套件如何收集、处理和保护数据。
 
 -   跨多个数据源快速分析事件。 识别安全风险并了解威胁和攻击的范围和影响，降低违反安全的行为所带来的损害。
 
@@ -335,7 +335,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 Microsoft 在设计其服务和软件时始终关注安全性，确保其云基础结构可复原，并能防御攻击。
 
-- [Operations Management Suite | 安全性和符合性](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Log Analytics | 安全性与合规性](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 使用 Microsoft 安全数据和分析来执行更智能和有效的威胁检测。
 

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: f27716cc416b162a5b2df5542d709058f3b3e903
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 362c5e2e7216d584a9858ace5fb607dc0ee126d5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182021"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426054"
 ---
 # <a name="train-your-luis-app-version"></a>训练 LUIS 应用版本
 
@@ -26,8 +26,11 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 对应用进行训练和[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 
-## <a name="how-to-train"></a>如何训练
-若要开始迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
+训练将应用于 LUIS 门户中的活动版本。 
+
+## <a name="how-to-train-interactively"></a>如何以交互方式训练
+
+若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
 1. 在“我的应用”页面上选择应用名称以访问应用。 
 
@@ -41,7 +44,18 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 >如果应用中有一个或多个意向未包含陈述示例，则无法训练应用。 请为所有意向添加陈述。 有关详细信息，请参阅[添加陈述示例](luis-how-to-add-example-utterances.md)。
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
+
 训练使用一小部分负采样。 如果要使用所有数据而不是少量负采样，请使用[版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 并将 `UseAllTrainingData` 设置为 true 以关闭该功能。 
+
+## <a name="unnecessary-training"></a>不必要的训练
+
+不需要在每次更改后都进行训练。 只有在向模型应用一组更改后并且要执行的下一步骤是测试或发布时，才应当进行训练。 如果不需要测试或发布，则无需训练。 
+
+## <a name="training-with-the-rest-apis"></a>使用 REST API 进行训练
+
+在 LUIS 门户中进行训练是单个步骤，只需按下“训练”按钮。 使用 REST API 进行训练是一个两步过程。 第一个步骤是通过 HTTP POST [请求训练](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 然后通过 HTTP Get 请求[训练状态](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。 
+
+若要了解训练是何时完成的，必须对状态进行轮询，直至所有模型都成功训练。 
 
 ## <a name="next-steps"></a>后续步骤
 

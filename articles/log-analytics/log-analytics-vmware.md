@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bd195b8be558cfcfda10a750fbfe91079c6b094
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043530"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404607"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -31,7 +31,7 @@ ms.locfileid: "48043530"
 
 Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大型 VMware 日志的集中式日志记录和监视方法的解决方案。 本文介绍如何使用该解决方案在单个位置对 ESXi 主机进行故障排除、捕获和管理。 使用该解决方案，可以看到在单个位置中看到所有 ESXi 主机的详细数据。 可以看到通过 ESXi 主机日志提供的 VM 和 ESXi 主机的重要事件计数、状态及趋势。 可以通过查看和搜索集中式 ESXi 主机日志进行故障排除。 而且，可以基于日志搜索查询创建警报。
 
-解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 OMS 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 OMS 代理打开端口 1514 并对它进行侦听。 当接收到数据后，OMS 代理将数据推送到 Log Analytics 中。
+解决方案使用 ESXi 主机的本机 syslog功能将数据推送到具有 Log Analytics 代理的目标 VM。 但是，该解决方案不会将文件写入到目标 VM 内的 syslog 中。 Log Analytics 代理打开端口 1514 并对它进行侦听。 当接收到数据后，Log Analytics 代理将数据推送到 Log Analytics 中。
 
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
@@ -42,7 +42,9 @@ Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大�
 vSphere ESXi 主机 5.5、6.0 和 6.5
 
 #### <a name="prepare-a-linux-server"></a>准备一台 Linux 服务器
-创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [OMS Linux 代理](log-analytics-linux-agents.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。  
+创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](log-analytics-linux-agents.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
    ![系统日志流](./media/log-analytics-vmware/diagram.png)
 
@@ -56,14 +58,14 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 1. 检查 vSphere 控制台以验证该 syslog 是否已正确设置。 在 ESXI 主机上确认端口 **1514** 已配置。
-1. 在 Linux 服务器上下载并安装适用于 Linux 的 OMS 代理。 有关详细信息，请参阅 [适用于 Linux 的 OMS 代理的文档](https://github.com/Microsoft/OMS-Agent-for-Linux)。
-1. 安装 OMS Agent for Linux 后，转到 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目录，将 vmware_esxi.conf 文件复制到 /etc/opt/microsoft/omsagent/conf/omsagent.d 目录并更改文件的所有者/组和权限。 例如：
+1. 在 Linux 服务器上下载并安装适用于 Linux 的 Log Analytics 代理。 有关详细信息，请参阅[适用于 Linux 的 Log Analytics 代理的文档](https://github.com/Microsoft/OMS-Agent-for-Linux)。
+1. 安装适用于 Linux 的 Log Analytics 代理后，转到 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目录，将 vmware_esxi.conf 文件复制到 /etc/opt/microsoft/omsagent/conf/omsagent.d 目录并更改文件的所有者/组和权限。 例如：
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. 通过运行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 重新启动 OMS Agent for Linux。
+1. 通过运行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 重启适用于 Linux 的 Log Analytics 代理。
 1. 通过使用 ESXi 主机上的 `nc` 命令测试 Linux 服务器和 ESXi 主机之间的连接。 例如：
 
     ```
@@ -78,11 +80,11 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
     如果查看的日志搜索结果类似于上面的图像，则要设置使用 VMware 监视解决方案仪表板。  
 
 ## <a name="vmware-data-collection-details"></a>VMware 数据收集详细信息
-VMware 监视解决方案使用已启用的 OMS Agent for Linux 从 ESXi 主机收集各种性能指标和日志数据。
+VMware 监视解决方案使用已启用的适用于 Linux 的 Log Analytics 代理从 ESXi 主机收集各种性能指标和日志数据。
 
 下表显示数据收集方法以及有关如何收集数据的其他详细信息。
 
-| 平台 | OMS Agent for Linux | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 适用于 Linux 的 Log Analytics 代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |每隔 3 分钟 |
 
@@ -190,12 +192,12 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 
       如果此操作不成功，则高级配置中的 vSphere 设置可能不正确。 若要深入了解如何设置 ESXi 主机以进行 syslog 转发，请参阅[配置 syslog 集合](#configure-syslog-collection)。
   1. 如果 syslog 端口连接成功，但仍看不到任何数据，则通过使用 ssh 运行以下命令在 ESXi 主机上重新加载 syslog：` esxcli system syslog reload`
-* 具有 OMS 代理的 VM 设置不正确。 若要对此进行测试，请执行以下步骤：
+* 具有 Log Analytics 代理的 VM 设置不正确。 若要对此进行测试，请执行以下步骤：
 
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 `ps -ef | grep oms` 验证 OMS 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a. 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
     b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 

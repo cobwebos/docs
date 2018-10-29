@@ -1,6 +1,6 @@
 ---
 title: Log Analytics 中的 Wire Data 解决方案| Microsoft Docs
-description: 线路数据是通过 OMS 代理（包括 Operations Manager 和 Windows 连接的代理）从计算机收集的网络和性能整合数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
+description: 线路数据是具有 Log Analytics 代理的计算机提供的整合网络和性能数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269151"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405355"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
 ![Wire Data 符号](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-线路数据是通过 OMS 代理（包括由环境中的 Operations Manager 监视的代理）从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 网络数据与其他日志数据结合在一起，可帮助你将数据进行关联。
+线路数据是通过 Log Analytics 代理（包括由环境中的 Operations Manager 监视的代理）从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 网络数据与其他日志数据结合在一起，可帮助你将数据进行关联。
 
-除 OMS 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Log Analytics。  
+除了 Log Analytics 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Log Analytics。  
 
 >[!NOTE]
 >如果已部署服务映射，或者正在考虑使用服务映射或[面向 VM 的 Azure Monitor](../monitoring/monitoring-vminsights-overview.md)，则它们收集了新的连接指标数据集并存储在 Log Analytics 中，这些数据提供了可与线路数据相媲美的信息。
@@ -65,20 +65,20 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
-在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、OMS 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Log Analytics 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。
+在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Log Analytics 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集数据并将其发送到 Log Analytics。 可对具有直接连接到 Log Analytics 的代理的服务器或通过 System Center Operations Manager 管理组连接到 Log Analytics 的服务器使用 Wire Data。
 
-依赖关系代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 Wire Data 中的数据始终由 Log Analytics 代理直接或通过 OMS 网关传输到 Log Analytics。
+依赖关系代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 Wire Data 中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Log Analytics。
 
 ![代理示意图](./media/log-analytics-wire-data/agents.png)
 
 如果你是一位 System Center Operations Manager 用户且具有连接到 Log Analytics 的管理组：
 
 - 若 System Center Operations Manager 代理可以访问 Internet 来连接到 Log Analytics，则无需进行额外配置。
-- 若 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需配置 OMS 网关来与 System Center Operations Manager 配合使用。
+- 如果 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需要对 Log Analytics 网关进行配置以便与 System Center Operations Manager 配合使用。
 
-如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 OMS 网关连接到 Log Analytics。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。
+如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 Log Analytics 网关连接到 Log Analytics。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -211,7 +211,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 使用以下步骤在运行 Windows 的每台计算机上安装依赖关系代理：
 
-1. 遵循[从托管在环境中的 Windows 计算机收集数据](log-analytics-windows-agent.md)所述步骤安装 OMS 代理。
+1. 遵循[从托管在环境中的 Windows 计算机收集数据](log-analytics-windows-agent.md)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Windows 依赖项代理，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
 4. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
@@ -237,7 +237,7 @@ InstallDependencyAgent-Windows.exe /?
 
 使用以下步骤在每台 Linux 计算机上安装依赖关系代理：
 
-1. 遵循[从托管在环境中的 Linux 计算机收集数据](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 OMS 代理。
+1. 遵循[从托管在环境中的 Linux 计算机收集数据](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
 3. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
 

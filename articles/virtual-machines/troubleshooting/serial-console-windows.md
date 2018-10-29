@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/07/2018
+ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: 29b045266836ace35aab12c51746b7e339cbb88f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354336"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024402"
 ---
 # <a name="virtual-machine-serial-console"></a>虚拟机串行控制台
 
@@ -53,7 +53,6 @@ ms.locfileid: "49354336"
   3. 在列表中单击所需的 VM。 此时会打开该 VM 的概述页。
   4. 向下滚动到“支持 + 故障排除”部分，单击“串行控制台”选项。 此时会打开一个包含串行控制台的新窗格，并启动连接。
 
-
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>在自定义或更低版本的映像中启用串行控制台
 Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。 若要为 2018 年 2 月之前创建的 Windows 虚拟机启用串行控制台，请执行以下步骤： 
 
@@ -74,7 +73,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>如何知道是否已启用 SAC？
 
-如果未启用 [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，串行控制台将不会显示 SAC 提示符。 在某些情况下，将显示 VM 运行状况信息，在其他情况下，它将为空白。 如果使用的是 2018 年 2 月之前创建的 Windows Server 映像，则很可能未启用 SAC。
+如果未启用 [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，则串行控制台将不会显示 SAC 提示符。 在某些情况下，将显示 VM 运行状况信息，在其他情况下，它将为空白。 如果使用的是 2018 年 2 月之前创建的 Windows Server 映像，则很可能未启用 SAC。
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>在串行控制台中启用 Windows 启动菜单 
 
@@ -99,6 +98,21 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 有关配置 Windows 在收到 NMI 时创建故障转储的信息，请参阅：[如何在基于 Windows 上的系统上使用 NMI 生成完整的故障转储文件或内核故障转储文件](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
+## <a name="open-cmd-or-powershell-in-serial-console"></a>在串行控制台中打开 CMD 或 Powershell
+
+1. 连接到串行控制台。 如果你已成功连接到串行控制台，则会看到 **SAC>**，如以下屏幕截图所示：
+
+    ![连接到 SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+
+3.  键入 `cmd` 以创建具有 CMD 实例的通道。 
+4.  键入 `ch -si 1` 以切换到正在运行 CMD 实例的通道。 
+5.  按 Enter，然后输入具有管理权限的登录凭据。
+6.  输入有效凭据后，CMD 实例随即打开。
+7.  若要启动 PowerShell 实例，请在 CMD 实例中键入 `PowerShell`，然后按 Enter。 
+
+    ![打开 PowerShell 实例](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+
+
 ## <a name="disable-serial-console"></a>禁用串行控制台
 默认情况下，所有订阅为所有 VM 启用了串行控制台访问。 可以在订阅级别或 VM 级别禁用串行控制台。
 
@@ -110,7 +124,7 @@ Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
-另外，可以在 Cloud Shell 中使用以下命令集（显示的 bash 命令）来为订阅禁用、启用和查看串行控制台的状态。 
+另外，可以在 Cloud Shell 中使用以下命令集（显示的 bash 命令）来为订阅禁用、启用和查看串行控制台的禁用状态。 
 
 * 若要为订阅获取串行控制台的禁用状态，请使用以下命令：
     ```azurecli-interactive
@@ -196,7 +210,7 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 
 问题                             |   缓解措施 
 :---------------------------------|:--------------------------------------------|
-在出现连接标题后按 Enter 不会显示登录提示 | 请参阅此页：[按 Enter 不执行任何操作](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口，则可能会发生这种情况。 如果运行的是 Windows 10 客户端 VM，也会发生这种情况，因为只有 Windows Server VM 配置为启用 EMS。
+在出现连接标题后按 Enter 不会显示登录提示 | 参阅此页：[按 Enter 不执行任何操作](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果运行的自定义 VM、强化设备或启动配置导致 Windows 无法正确连接到串行端口，则可能会发生这种情况。 如果运行的是 Windows 10 客户端 VM，也会发生这种情况，因为只有 Windows Server VM 配置为启用 EMS。
 如果已启用内核调试，则无法在 SAC 提示符下键入内容 | 通过 RDP 连接到 VM，并从权限提升的命令提示符运行 `bcdedit /debug {current} off`。 如果无法建立 RDP 连接，可将 OS 磁盘附加到另一个 Azure VM，在该磁盘附加为数据磁盘的情况下使用 `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` 对其进行修改，然后换回磁盘。
 如果原始内容具有重复的字符，则在 SAC 中粘贴到 PowerShell 将导致第三个字符。 | 解决方法是从当前会话中对 PSReadLine 模块执行 Past 卸载。 运行 `Remove-Module PSReadLine` 从当前会话中卸载 PSReadLine 模块 - 这不会删除或卸载该模块。
 某些键盘输入会生成奇怪的 SAC 输出（例如 `[A`、 `[3~`） | SAC 提示符不支持 [VT100](https://aka.ms/vtsequences) 转义序列。
@@ -206,27 +220,27 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 
 **问：如何发送反馈？**
 
-A. 可以访问 https://aka.ms/serialconsolefeedback 来提供问题反馈。 也可以通过 azserialhelp@microsoft.com，或者 http://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）
+答： 可以访问 https://aka.ms/serialconsolefeedback 来提供问题反馈。 也可以通过 azserialhelp@microsoft.com，或者 http://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 是的，它支持。 使用 Ctrl + Shift + C 和 Ctrl + Shift + V 复制并粘贴到终端。
+答： 是的，它支持。 使用 Ctrl + Shift + C 和 Ctrl + Shift + V 复制并粘贴到终端。
 
 **问：谁可以为我的订阅启用或禁用串行控制台？**
 
-A. 若要在订阅范围级别启用或禁用串行控制台，必须具有订阅的写入权限。 具有写入权限的角色包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
+答： 若要在订阅范围级别启用或禁用串行控制台，必须具有订阅的写入权限。 具有写入权限的角色包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
 
 **问：谁可以访问 VM 的串行控制台？**
 
-A. 必须具有 VM 的参与者级别访问权限或更高级别访问权限才能访问 VM 的串行控制台。 
+答： 必须具有 VM 的参与者级别访问权限或更高级别访问权限才能访问 VM 的串行控制台。 
 
 **问：我的串口控制台没有显示任何内容，我该怎么办？**
 
-A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#enable-serial-console-in-custom-or-older-images)。
+答： 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#enable-serial-console-in-custom-or-older-images)。
 
 **问：串行控制台是否可用于虚拟机规模集？**
 
-A. 目前，不支持访问虚拟机规模集实例的串行控制台。
+答： 目前，不支持访问虚拟机规模集实例的串行控制台。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关可以在 Windows SAC 中使用的 CMD 和 PowerShell 命令的深度指南，请单击[此处](serial-console-cmd-ps-commands.md)。

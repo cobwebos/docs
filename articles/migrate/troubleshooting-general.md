@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433491"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945512"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -40,6 +40,14 @@ ms.locfileid: "47433491"
 你可以转到项目“概述”页中的“Essentials”部分来标识存储元数据的确切位置。 位置是由 Azure Migrate 在地理位置内随机选择的，你无法进行修改。 如果希望仅在特定区域中创建项目，则可以使用 REST API 来创建迁移项目并传递到所需的区域。
 
    ![项目位置](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>我使用了持续发现 OVA，但在本地环境中删除的 VM 仍然显示在门户中。
+
+持续发现设备仅持续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
+
+1. 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+
+2. 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 ## <a name="collector-errors"></a>收集器错误
 

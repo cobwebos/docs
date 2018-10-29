@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: de7ae5788224b83105e4dc9a24aea35c8b841c88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19d015947e5d2331c50cd64956e8a7650f96616d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986721"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638318"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
@@ -92,5 +92,17 @@ ms.locfileid: "46986721"
     docker-cimprov 1.0.0.31
     ```
 
+## <a name="error-messages"></a>错误消息
+
+下表汇总了使用适用于容器的 Azure Monitor 时可能会遇到的已知错误。
+
+| 错误消息  | 操作 |  
+| ---- | --- |  
+| 错误消息 `No data for selected filters`  | 为新创建的群集建立监视数据流可能需要花费一些时间。 请等待至少 10 到 15 分钟，以便群集的数据出现。 |   
+| 错误消息 `Error retrieving data` | 为 Azure Kubenetes 服务群集设置运行状况和性能监视时，会在群集与 Azure Log Analytics 工作区之间建立连接。 Log Analytics 工作区用于存储你的群集的所有监视数据。 当 Log Analytics 工作区已删除或丢失时，可能会发生此错误。 通过查看 [管理访问权限](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information) 来检查你的工作区是否可用。 如果缺少工作区，则需要使用适用于容器的 Azure Monitor 重新载入你的群集。 若要重新载入，需要[禁用](/monitoring-container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json)群集的监视，并使用适用于容器的 Azure Monitor 重新[启用](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster)。 |  
+| 通过 az aks cli 添加适用于容器的 Azure Monitor 后出现 `Error retrieving data` | 使用 `az aks cli` 进行载入时，适用于容器的 Azure Monitor 可能不会正确载入。 检查该解决方案是否已载入。 若要执行此操作，请转到你的 Log Analytics 工作区，并从左侧的面板中选择“解决方案”来查看该解决方案是否可用。 若要解决此问题，需要按照[如何部署适用于容器的 Azure Monitor](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) 中的说明重新部署该解决方案。 |  
+
+为了帮助诊断问题，我们在[此处](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)提供了一个可用的故障排除脚本。  
+
 ## <a name="next-steps"></a>后续步骤
-通过启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标，这些运行状况指标可在 Azure 门户中找到。 若要了解如何使用用于容器的 Azure Monitor，请参阅[查看 Azure Kubernetes 服务运行状况](monitoring-container-insights-analyze.md)。
+启用监视来捕获 AKS 群集节点和 Pod 的运行状况指标后，可在 Azure 门户中找到这些运行状况指标。 要了解如何将 Azure Monitor 用于容器，请参阅[查看 Azure Kubernetes 服务运行状况](monitoring-container-insights-analyze.md)。

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353285"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638185"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -65,17 +65,17 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
-* **性能监视器**：如果需要监视每个子网到其他子网的网络连接，请将 Operations Management Suite 代理安装在至少一个已连接到每个子网的节点上。
+* **性能监视器：** 将 Log Analytics 代理安装在至少一个已连接到每个子网的节点上。需要监视从每个子网到其他子网的网络连接。
 
     要监视某个网络链接，请在该链接的两个终结点上安装代理。 如果不确定网络的拓扑，请在具有关键工作负荷且这些负荷之间的网络性能需要进行监视的服务器上安装代理。 例如，如果需要监视 Web 服务器和运行 SQL 的服务器之间的网络连接，请将代理安装在这两个服务器上。 代理会监视主机之间的网络连接（链接），而不是主机本身。 
 
-* **服务终结点监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Operations Management Suite 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Operations Management Suite 代理。 
+* **服务终结点监视器**：要监视节点到服务终结点的网络连接，需在每个此类节点上安装 Log Analytics 代理。 例如，假设要监视从标记为 O1、O2 和 O3 的办公网站到 Office 365 的网络连接。 分别在 O1、O2 和 O3 中的至少一个节点上安装 Log Analytics 代理。 
 
-* **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Operations Management Suite 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
+* **ExpressRoute 监视器**：在 Azure 虚拟网络中安装至少一个 Log Analytics 代理。 并在通过 ExpressRoute 专用对等互连连接的本地子网中安装至少一个代理。  
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>配置 Operations Management Suite 代理的监视功能 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>配置 Log Analytics 代理的监视功能 
 
-网络性能监视器使用综合事务来监视源代理和目标代理之间的网络性能。 在性能监视器和服务连接性监视器功能中，可选择 TCP 或 ICMP 作为监视协议。 只有 TCP 可用作 ExpressRoute 监视器的监视协议。 请确保防火墙允许在 Operations Management Suite 代理之间通信，这些代理用于监视选定的协议。 
+网络性能监视器使用综合事务来监视源代理和目标代理之间的网络性能。 在性能监视器和服务连接性监视器功能中，可选择 TCP 或 ICMP 作为监视协议。 只有 TCP 可用作 ExpressRoute 监视器的监视协议。 请确保防火墙允许在 Log Analytics 代理之间通信，这些代理用于监视选定的协议。 
 
 * **TCP 协议**：如果选择 TCP 作为用于监视的协议，请在用于网络性能监视器和 ExpressRoute 监视器的代理上打开防火墙端口，确保代理能够互相连接。 若要打开端口，请使用管理员权限在 PowerShell 窗口中运行不带任何参数的 [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell 脚本。
 
@@ -109,7 +109,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    ![网络性能监视器磁贴](media/log-analytics-network-performance-monitor/npm-config.png)
 
-4. 在“安装”页的“常用设置”视图中，可以看到用于安装 Operations Management Suite 代理并配置代理监视功能的选项。 如上所述，如果安装并配置了 Operations Management Suite 代理，请选择“安装”视图来配置要使用的功能。 
+4. 在“安装”页的“常用设置”视图中，可以看到用于安装 Log Analytics 代理并配置代理监视功能的选项。 如上所述，如果安装并配置了 Log Analytics 代理，请选择“安装”视图来配置要使用的功能。 
 
    **性能监视器**：在“默认”性能监视器规则中选择用于综合事务的协议，然后选择“保存并继续”。 此协议选择仅适用于系统生成的默认规则。 每次显式创建性能监视器规则时，均需要选择协议。 始终可以转到“性能监视器”选项卡中的“默认”规则设置（这在完成第 0 天的配置后显示），在以后更改协议。 如果不需要性能监视器功能，则可在“性能监视器”选项卡的“默认”规则设置中禁用默认规则。
 
@@ -135,7 +135,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
     
 针对这些对等互连的监视功能一开始处于禁用状态。 选择要监视的每个对等互连，然后从右侧的详细信息视图中配置相应的监视功能。 选择“保存”以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
 
-安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况。 然后可以编辑对安装了 Operations Management Suite 代理的节点和从环境中发现的子网的监视设置。
+安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况。 然后，你可以对安装了 Log Analytics 代理的节点以及从环境中发现的子网的监视进行编辑。
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>编辑子网和节点的监视设置 
 
@@ -144,7 +144,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 启用或禁用对特定子网的监视：
 
-1. 选中或清除  **子网 ID** 旁的复选框。 然后，请确保选中或清除  **用于监视**  (视情况而定）。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
+1. 选中或清除 **子网 ID** 旁的复选框。 然后，请确保根据情况选中或清除“用于监视”。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
 2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 可以向子网添加自定义说明。
 3. 选择“保存”以保存配置。 
 
@@ -176,7 +176,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
  
 
  
-解决方案使用综合事务来评估网络的运行状况。 网络中各个点安装的 Operations Management Suite 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 代理聚合数据三分钟，然后数据将上传到 Log Analytics 服务。
+解决方案使用综合事务来评估网络的运行状况。 在网络中各个点安装的 Log Analytics 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 代理聚合数据三分钟，然后数据将上传到 Log Analytics 服务。
 
 
 
@@ -259,7 +259,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)管理所有通知。  
 
-如果你是通过 OMS 创建警报的 NPM 用户： 
+如果你是通过 Log Analytics 创建警报的 NPM 用户： 
 1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  

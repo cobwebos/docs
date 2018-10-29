@@ -1,6 +1,6 @@
 ---
-title: 从 Azure 逻辑应用连接到 Azure 虚拟网络
-description: 若要从 Azure 逻辑应用访问 Azure 虚拟网络，可以创建专用的、将逻辑应用和其他资源与公有云或“全球”Azure 分开的隔离式集成服务环境
+title: 通过集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
+description: 创建集成服务环境 (ISE)，以便逻辑应用和集成帐户可以访问 Azure 虚拟网络，同时保持专用并与公共或“全局”Azure 相隔离
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,23 +9,21 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: 354c31014448b914b33d2bef5483efc78092f726
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b4e4e801c3c54b635f2f13b319257018ea544c03
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391915"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404114"
 ---
-# <a name="create-isolated-environments-to-access-azure-virtual-networks-from-azure-logic-apps"></a>创建隔离环境以从 Azure 逻辑应用访问 Azure 虚拟网络
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>通过集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
 > [!NOTE]
 > 此功能在个人预览版中提供。 若要请求访问权限，[请在此处创建加入请求](https://aka.ms/iseprivatepreview)。
 
-在集成方案中，如果逻辑应用和集成帐户需要访问 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，则你可以创建一个链接到虚拟网络并将逻辑应用服务部署到你的网络的[*集成服务环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 创建逻辑应用和集成帐户时，请选择此 ISE 作为位置。 然后，逻辑应用和集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。 
+对于你的逻辑应用和集成帐户需要访问 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的集成方案，请创建一个[*集成服务环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，并使它成为一个专用的隔离环境，使用与公共或*全局*逻辑应用服务独立的专用存储和其他资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 可以将此 ISE 链接到你的 Azure 虚拟环境，后者然后会将逻辑应用服务部署到你的虚拟网络中。 创建逻辑应用或集成帐户时，请选择此 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。 
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
-
-ISE 是专用的隔离环境，它使用独立于公共服务或全局逻辑应用服务的专用存储和其他资源。 这种分离还有助于减少其他 Azure 租户可能对应用性能产生的影响。 
 
 本文将介绍如何执行以下任务：
 
@@ -149,7 +147,7 @@ ISE 是专用的隔离环境，它使用独立于公共服务或全局逻辑应�
 
    | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | **Name** | 是 | <*environment-name*> | 为环境指定的名称 | 
+   | **名称** | 是 | <*environment-name*> | 为环境指定的名称 | 
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 | 
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中存储有关环境的信息的 Azure 数据中心区域 |
