@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 21f30e5db59f07b6384304f9e64157d312547ad9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 225571379cc1dd3d747219db7613fbf4a53bac9a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731287"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024097"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
@@ -73,7 +73,7 @@ ms.locfileid: "45731287"
 
     * 输入群集的名称。
     * 在本文中，请创建运行时为 **4.0** 的群集。 
-    * 请务必选中**在不活动超过 ____ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。 
 

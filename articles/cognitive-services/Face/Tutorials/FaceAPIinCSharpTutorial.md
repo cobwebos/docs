@@ -1,5 +1,5 @@
 ---
-title: 教程：检测和定格图像中的人脸 - 人脸 API、C#
+title: 教程：通过将 .NET SDK 与 C# 配合使用检测和定格图像中的人脸
 titleSuffix: Azure Cognitive Services
 description: 本教程创建一个 Windows 应用，以便使用人脸 API 来检测和定格图像中的人脸。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: pafarley
-ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: df5e46270275ca08a8499607fbad4c1161382fab
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340947"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956488"
 ---
-# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 WPF 应用
+# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image-using-the-net-sdk"></a>教程：通过 .NET SDK 创建一个用于检测和定格图像中人脸的 WPF 应用
 
 本教程创建一个 Windows Presentation Framework (WPF) 应用程序，以便通过 .NET 客户端库使用人脸服务。 该应用检测图像中的人脸，围绕每张脸绘制一个框架，并在状态栏上显示人脸描述。 完整的示例代码在 GitHub 上的[在 Windows 上检测和定格图像中的人脸](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample)中提供。
 

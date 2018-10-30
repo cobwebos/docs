@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 custom: it-pro
-ms.openlocfilehash: 8ef68c8afcf61a1a11c341a679443071aece9812
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46362997"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023534"
 ---
 # <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>快速入门：访问 Azure Active Directory 以创建新租户
 可使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
@@ -24,13 +24,6 @@ ms.locfileid: "46362997"
 在该快速入门中，你将学习如何转到 Azure 门户和 Azure Active Directory，以及如何为组织创建基本租户。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-
-## <a name="prerequisites"></a>先决条件
-在开始之前，需要：
-
-- 确保组织具备有效的 Azure AD 许可证。
-
-- 确保你是全局管理员。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 使用全局管理员帐户登录到组织的 [Azure 门户](https://portal.azure.com/)。
@@ -76,3 +69,5 @@ ms.locfileid: "46362997"
 - 要添加组和成员，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)
 
 - 为帮助管理组织的应用程序和资源访问权限，请了解[使用 Privileged Identity Management 基于角色进行访问](../../role-based-access-control/pim-azure-resource.md)和[条件访问](../../role-based-access-control/conditional-access-azure-management.md)。
+
+- 了解 Azure AD，包括[基本许可信息、术语和关联的功能](active-directory-whatis.md)。
