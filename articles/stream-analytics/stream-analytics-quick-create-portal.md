@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 15f465bf2aaf7c8b3a4a49819548c8db0b2ea014
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022382"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958850"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -66,7 +66,7 @@ ms.locfileid: "42022382"
 
 4. 使用以下信息填写“流分析作业”页：
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称   |  myasajob   |   输入用于标识流分析作业的名称。 流分析作业名称只能包含字母数字字符、连字符和下划线，其长度必须介于 3 到 63 个字符之间。 |
    |订阅  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
@@ -93,7 +93,7 @@ ms.locfileid: "42022382"
 
 3. 使用以下值填写“Blob 存储”页：
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  BlobInput   |  输入一个名称，用于标识作业的输入。   |
    |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
@@ -112,7 +112,7 @@ ms.locfileid: "42022382"
 
 3. 使用以下值填写“Blob 存储”页：
 
-   |**设置**  |建议的值  |**说明**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名 |   BlobOutput   |   输入一个名称，用于标识作业的输出。 |
    |订阅  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
@@ -179,7 +179,9 @@ ms.locfileid: "42022382"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了一个简单的流分析作业。 若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
+在本快速入门中，你使用 Azure 门户部署了一个简单的流分析作业。 也可通过 [PowerShell](stream-analytics-quick-create-powershell.md)和 [Visual Studio](stream-analytics-quick-create-vs.md) 部署流分析作业。
+
+若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e10b5271caef5530c94cca73b3e2e1d435080676
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 623c45cbc82139090d893b8501c7d363c4443d67
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066915"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456148"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -24,7 +24,8 @@ ms.locfileid: "49066915"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
+> [!NOTE]
+> 本文旨在引导新用户使用默认选项和最小的自定义来获取 Azure Site Recovery 体验。 若要详细了解可以自定义的各种设置，请参阅[为 Azure VM 启用复制的教程](azure-to-azure-tutorial-enable-replication.md)
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -33,15 +34,12 @@ ms.locfileid: "49066915"
 ## <a name="enable-replication-for-the-azure-vm"></a>为 Azure VM 启用复制
 
 1. 在 Azure 门户中，单击“虚拟机”，并选择要复制的 VM。
-
 2. 在“操作”中，单击“灾难恢复”。
 3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域。
 4. 在本快速入门中，接受其他默认设置。
 5. 单击“启用复制”。 这将启动用于为 VM 启用复制的作业。
 
     ![启用复制](media/azure-to-azure-quickstart/enable-replication1.png)
-
-
 
 ## <a name="verify-settings"></a>验证设置
 
@@ -68,7 +66,7 @@ ms.locfileid: "49066915"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，将单个 VM 复制到了次要区域。
+在本快速入门中，将单个 VM 复制到了次要区域。 现在可以浏览更多的选项并尝试按恢复计划复制一组 Azure VM。
 
 > [!div class="nextstepaction"]
 > [为 Azure VM 配置灾难恢复](azure-to-azure-tutorial-enable-replication.md)

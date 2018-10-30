@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 脚本示例 - 使用 OMS monitoring 创建 Linux VM | Microsoft 文档
-description: Azure CLI 脚本示例 - 使用 OMS monitoring 创建 Linux VM
+title: Azure CLI 脚本示例 - 使用 Azure Monitoring 创建 Linux VM | Microsoft Docs
+description: Azure CLI 脚本示例 - 使用 Azure Monitoring 创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cedb8d9c2ef4acd9d7a896153bce6be790ed83a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932613"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407956"
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>使用 Operations Management Suite 监视 VM
+# <a name="monitor-a-vm-with-azure-monitoring"></a>使用 Azure Monitoring 监视 VM
 
-此脚本创建一个 Azure 虚拟机，安装 Operations Management Suite (OMS) 代理，并将系统注册到 OMS 工作区。 运行脚本后，该虚拟机会显示在 OMS 控制台中。
+此脚本创建一个 Azure 虚拟机，安装 Log Analytics 代理，并将系统注册到 Log Analytics 工作区。 运行脚本后，该虚拟机会显示在控制台中。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -51,7 +51,7 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Operations Management Suite 代理扩展安装 OMS 代理，并在 OMS 工作区中注册 VM。 |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 针对虚拟机运行 VM 扩展。 在此示例中，使用 Log Analytics 代理扩展安装 Log Analytics 代理，并在 Log Analytics 工作区中注册 VM。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

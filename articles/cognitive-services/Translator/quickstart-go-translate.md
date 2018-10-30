@@ -1,23 +1,23 @@
 ---
-title: 快速入门：翻译文本 - 文本翻译，Go
+title: 快速入门：翻译文本，Go - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Go 将文本从一种语言翻译成另一种语言。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: df8b938c9541a4f57a337065af0ab02fe6815c6d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 53ca6c830d4e4fb80a47d498e4b033cee0f6f7a7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126694"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648303"
 ---
-# <a name="quickstart-translate-text-with-go"></a>快速入门：使用 Go 翻译文本
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-go"></a>快速入门：使用文本翻译 REST API (Go) 对文本进行翻译
 
 在本快速入门中，你将使用文本翻译 API 将文本从一种语言翻译成另一种语言。
 

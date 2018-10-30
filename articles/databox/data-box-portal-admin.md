@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 10/19/2018
 ms.author: alkohli
-ms.openlocfilehash: 49c2258100e99742bcb2e22fbce7f05b69c70ef6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1b228a66f2d59b3ff252df266783f7bd5d27139e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090716"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645433"
 ---
 # <a name="use-the-azure-portal-to-administer-your-data-box"></a>使用 Azure 门户管理 Data Box
 
@@ -48,7 +48,7 @@ ms.locfileid: "49090716"
 
     ![克隆订单 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。    
+2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
@@ -72,6 +72,7 @@ ms.locfileid: "49090716"
 如果 Data Box 的电子墨水显示屏不工作并且没有返回发货标签，则你可能需要下载发货标签。 
 
 执行以下步骤下载发货标签。
+
 1.  转到“概况”>“下载发货标签”。 只有在设备已发货后，此选项才可用。 
 
     ![下载发货标签](media/data-box-portal-admin/download-shipping-label.png)
@@ -109,6 +110,77 @@ ms.locfileid: "49090716"
     ![编辑通知详细信息 2](media/data-box-portal-admin/edit-notification-details2.png)
 
 
+## <a name="download-order-history"></a>下载订单历史记录
+
+Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清理完成后，可以在 Azure 门户中下载订单历史记录。
+
+若要下载订单历史记录，请执行以下步骤。
+
+1. 在 Data Box 订单中，转到“概览”。 请确保订单完整。 如果订单完整且设备清理已完成，则请转到“订单详细信息”。 “下载订单历史记录”选项可用。
+
+    ![下载订单历史记录](media/data-box-portal-admin/download-order-history-1.png)
+
+2. 单击“下载订单历史记录”。 在下载的历史记录中，会看到一个有关承运人跟踪日志的记录。 如果向下滚动到该日志的底部，则可看到以下内容的链接：
+    
+    - **复制日志** - 包含一个文件列表，其中的文件是在将数据从 Data Box 复制到 Azure 存储帐户的过程中出错的。
+    - **审核日志** - 包含有关 Data Box 启动的信息，以及当它位于 Azure 数据中心外部时在其上共享访问权限的信息。
+    - **BOM 文件** - 包含在**准备寄送**过程中可以下载的文件的列表（也称文件清单），其中包含文件名、文件大小和文件校验和。
+
+        ```
+        -------------------------------
+        Microsoft Data Box Order Report
+        -------------------------------
+        
+        Name                                               : eastusdryrun                                      
+        StartTime(UTC)                                     : 9/6/2018 12:54:47 PM +00:00                       
+        DeviceType                                         : ImolaPod                                          
+        
+        -------------------
+        Data Box Activities
+        -------------------
+        
+        Time(UTC)             | Activity                       | Status          | Description                                                                                                                                           
+        
+        9/6/2018 12:54:51 PM  | OrderCreated         | Completed  |                                                                                                                              
+        9/11/2018 8:57:38 PM  | DevicePrepared       | Completed  |                                                                                                                                                       
+        9/12/2018 7:28:15 PM  | ShippingToCustomer   | InProgress | Pickup Scan. Local Time : 9/12/2018 2:52:31 PM at Chantilly                                                                                           
+        9/13/2018 2:33:04 AM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/12/2018 9:00:00 PM at Chantilly                                                                                                                                                                                                                                                              
+        9/13/2018 12:40:31 PM | ShippingToCustomer   | InProgress | Arrival Scan. Local Time : 9/13/2018 5:00:00 AM at Oakland                                                                                            
+        9/13/2018 2:42:10 PM  | ShippingToCustomer   | InProgress | Departure Scan. Local Time : 9/13/2018 6:08:00 AM at Oakland                                                                                          
+        9/13/2018 3:42:12 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:14:08 AM at Sunnyvale                                                                                      
+        9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Destination Scan. Local Time : 9/13/2018 8:56:54 AM at Sunnyvale                                                                                      
+        9/13/2018 4:43:05 PM  | ShippingToCustomer   | InProgress | Out For Delivery Today. Local Time : 9/13/2018 9:11:21 AM at Sunnyvale                                                                                
+        9/13/2018 5:43:07 PM  | ShippingToCustomer   | Completed  | Delivered. Local Time : 9/13/2018 9:44:17 AM at SUNNYVALE                                                                                             
+        9/14/2018 11:48:35 PM | ShippingToDataCenter | InProgress | Pickup Scan. Local Time : 9/14/2018 3:55:37 PM at Sunnyvale                                                                                                                                                                                 
+        9/15/2018 1:52:35 AM  | ShippingToDataCenter | InProgress | Arrival Scan. Local Time : 9/14/2018 6:31:00 PM at San Jose                                                                                           
+        9/15/2018 2:52:39 AM  | ShippingToDataCenter | InProgress | Departure Scan. Local Time : 9/14/2018 7:17:00 PM at San Jose                                                                                                                                                                             
+        9/17/2018 8:23:31 AM  | ShippingToDataCenter | InProgress | Destination Scan. Local Time : 9/17/2018 4:14:37 AM at Chantilly                                                                                      
+        9/17/2018 12:24:42 PM | ShippingToDataCenter | InProgress | Loaded on Delivery Vehicle. Local Time : 9/17/2018 7:45:36 AM at Chantilly                                                                            
+        9/17/2018 1:25:11 PM  | ShippingToDataCenter | InProgress | Out For Delivery Today. Local Time : 9/17/2018 8:27:11 AM at Chantilly                                                                                
+        9/17/2018 2:25:51 PM  | ShippingToDataCenter | Completed | Delivered. Local Time : 9/17/2018 9:56:32 AM at STERLING                                                                                              
+        9/18/2018 9:55:41 PM  | DeviceBoot           | Completed | Appliance booted up successfully                                                                                                                      
+        9/18/2018 11:00:25 PM | DataCopy             | Started   |                                                                                                                                                       
+        9/18/2018 11:01:33 PM | DataCopy             | Completed | Copy Completed.                                                                                                                                       
+        9/18/2018 11:20:58 PM | SecureErase          | Started   |                                                                                                                                                       
+        9/18/2018 11:28:46 PM | SecureErase          | Completed | Azure Data Box:BY506B4B616700 has been sanitized according to NIST 800 -88 Rev 1.                                                                     
+        
+        ----------------------
+        Data Box Job Log Links
+        ----------------------
+        
+        Account Name         : eastusdryrun                                         
+        Copy Logs Path       : copylog/copylogd695869a2a294396b7b903296c208388.xml                                                                                                                                                     
+        Audit Logs Path      : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700                                                                                                                     
+        BOM Files Path       : azuredatabox-chainofcustodylogs\3b4cf163-f1af-475c-a391-f8afea3fa327\by506b4b616700
+        ```
+然后，可以转到存储帐户并查看复制日志。
+
+![登录存储帐户](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+
+也可查看包含审核日志和 BOM 文件的监管日志链。
+
+![登录存储帐户](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+
 ## <a name="view-order-status"></a>查看订单状态
 
 当设备状态在门户中发生更改时，你会通过电子邮件收到通知。
@@ -125,7 +197,7 @@ ms.locfileid: "49090716"
 |已完成       |已成功完成订单。<br> 从服务器中删除本地数据之前，请验证数据是否已在 Azure 中。         |
 |已完成但出错| 数据复制已完成，但在复制期间发生错误。 <br> 请使用 Azure 门户中提供的路径查看复制日志。   |
 |已取消            |订单已取消。 <br> 你取消了订单，或者由于遇到错误，服务取消了订单。 如果不能在 90 天内履行订单，则订单也将取消并且会向你发送通知。     |
-|清理 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了订单日志报告时，可以认为设备清理已完成。|
+|清理 | 已擦除设备磁盘上的数据。 当 Azure 门户中提供了可供下载的订单历史记录时，可以认为设备清理已完成。|
 
 
 

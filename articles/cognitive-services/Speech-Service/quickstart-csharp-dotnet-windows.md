@@ -1,30 +1,31 @@
 ---
-title: 快速入门：使用认知服务语音 SDK 在 Windows 上的 .NET Framework 下的 C# 中识别语音
-titleSuffix: Microsoft Cognitive Services
-description: 了解如何使用认知服务语音 SDK 在 Windows 上的 .NET Framework 下的 C# 中识别语音
+title: 快速入门：使用语音服务 SDK 在 Windows 上的 .NET Framework 下的 C# 中识别语音
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用语音服务 SDK 在 Windows 上的 .NET Framework 下的 C# 中识别语音
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 32b484451c4ee2264c25cca92b1d03d91b955a29
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 06d4a41a4a67d077f8d79eee68938dff65adf0e8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053990"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468511"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 .NET Framework 下的 C# 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，将使用[语音 SDK](speech-sdk.md) 为 Windows 上的 .NET Framework 创建 C# 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 该应用程序使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）生成。
+在本文中，将使用[语音 SDK](speech-sdk.md) 为 Windows 上的 .NET Framework 创建 C# 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）构建的。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要语音服务订阅密钥才能完成此快速入门。 你可以免费获得一个。 有关详细信息，请参阅[免费试用语音服务](get-started.md)。
+需要具有语音服务订阅密钥才能完成此快速入门。 你可以免费获得一个。 有关详细信息，请参阅[免费试用语音服务](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
@@ -38,7 +39,7 @@ ms.locfileid: "47053990"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 
-1. 还将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
+1. 另外，请将字符串 `YourServiceRegion` 替换为与你的订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 
 1. 保存对项目的更改。
 

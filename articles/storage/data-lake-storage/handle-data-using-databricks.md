@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: ed8230b76300d6b7fee06761133ebbea779fe3cb
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920662"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024323"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -94,7 +94,7 @@ ms.locfileid: "41920662"
 
     * 输入群集的名称。
     * 在本文中，请创建采用 **4.2** 版运行时的群集。
-    * 请务必选中**在不活动超过 ____ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 

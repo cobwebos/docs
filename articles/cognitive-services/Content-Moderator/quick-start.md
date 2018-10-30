@@ -1,5 +1,5 @@
 ---
-title: 内容审查器入门
+title: 内容审查器快速入门
 titlesuffix: Azure Cognitive Services
 description: 如何开始使用内容审查器。
 services: cognitive-services
@@ -8,82 +8,66 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: c2ac0ccd89b5f1436a151e3d69c5d7423090f244
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225288"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023434"
 ---
-# <a name="get-started-with-content-moderator"></a>内容审查器入门
+# <a name="quickstart-get-familiar-with-content-moderator"></a>快速入门：熟悉内容审查器
 
-可以通过以下方式开始使用内容审查器：
+本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 
-- [从评审工具开始](#start-with-the-review-tool)，获取 API 密钥并创建评审团队。 这样做的好处是，可以使用 API 密钥调用审查 API 来扫描内容，并调用评审 API 来生成评审，而无需执行其他步骤。
-- 在 Azure 中[订阅内容审查器](#start-with-the-apis)可获得 API 密钥。 请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。 仍需要联机注册才能创建评审团队。
-- [使用 Flow 连接器和模板](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/)，通过易于使用的设计器检查各种集成。
+## <a name="prerequisites"></a>先决条件
 
-无论你选择哪个选项，请参阅[管理凭据](review-tool-user-guide/credentials.md)一文以查找 API 凭据。
+- Web 浏览器
 
-## <a name="start-with-the-review-tool"></a>从评审工具开始
-在内容审查器评审工具网站上[注册](http://contentmoderator.cognitive.microsoft.com/)。
+## <a name="set-up-the-review-tool"></a>设置评审工具
+内容审查器评审工具是一个基于 Web 的工具，可让评审人员借助认知服务做出决策。 在本指南中，你将执行一个简短的过程来设置评审工具，以便可以了解内容审查器服务的工作原理。 转到[内容审查器评审工具](http://contentmoderator.cognitive.microsoft.com/)站点并注册。
 
 ![内容审查器主页](images/homepage.PNG)
 
-### <a name="create-a-review-team"></a>创建评审团队
-为团队指定名称。 如果想要邀请同事，可以输入他们的电子邮件地址来完成此操作。
+## <a name="create-a-review-team"></a>创建评审团队
+
+接下来创建评审团队。 在工作方案中，这是将要手动评审服务审查决策的人员组。 暂时只需创建团队名称。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
 
 ![邀请团队成员](images/QuickStart-2-small.png)
 
-### <a name="upload-images-or-enter-text"></a>上传图像或输入文本
-单击“尝试”>“图像”或“尝试”>“文本”。 最多上传五个示例图像或输入示例文本进行审核。
+## <a name="upload-sample-content"></a>上传示例内容
+
+现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。
 
 ![请尝试图像或文本审核](images/tryimagesortext.png)
 
-### <a name="submit-for-automated-moderation"></a>提交以进行自动审核
-提交内容以进行自动审核。 在内部，评审工具将调用审核 API 来审查你的内容。 扫描完成后，你会看到一条消息，通知等待你查看的结果。
+提交内容进行审查。 在内部，评审工具将调用审查 API 来扫描该内容。 扫描完成后，会出现一条消息，告知有结果等待你的评审。
 
 ![审核文件](images/submitted.png)
 
-### <a name="review-and-confirm-results"></a>查看并确认结果
-查看自动审核的标记，根据需要进行更改，然后使用“下一步”按钮进行提交。 当业务应用程序调用审查器 API 时，标记的内容将开始排队，等待人工评审团队进行评审。 可以使用此方法快速评审大量内容。
+## <a name="review-moderation-tags"></a>评审审查标记
 
-![查看结果](images/reviewresults.png)
+评审已应用的审查标记。 可以查看哪些标记已应用到内容，以及每个类别的评分。
 
-了解如何使用所有[评审工具的功能](Review-Tool-User-Guide/human-in-the-loop.md)或继续学习下一部分以了解 API。 跳过注册步骤，因为你已在评审工具中为自己预配了 API 密钥，如[管理凭据](review-tool-user-guide/credentials.md)一文中所示。
+![查看结果](images/reviewresults_text.png)
 
-### <a name="use-the-apis"></a>使用 API
+在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。 当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
 
-了解如何将内容审查器与商务应用程序进行集成。 请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。
+现在，你已使用内容审查器评审工具通过示例了解了内容审查器服务的功能。 接下来，可以详细了解评审工具，以及如何使用评审 API 将它集成到软件项目，或者，可以跳转到[后续步骤](#next-steps)部分来了解如何在应用中单独使用审查 API。
 
-## <a name="subscribe-in-the-azure-portal"></a>在 Azure 门户中订阅
+## <a name="learn-more-about-the-review-tool"></a>详细了解评审工具
 
-在 Azure 门户中，[订阅内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。 从以下 API 之一开始：
-
-### <a name="image-moderation"></a>图像审查
-
-从 [API 控制台](try-image-api.md)开始，或按照 [.NET 快速入门](image-moderation-quickstart-dotnet.md)使用标记、置信度分数和其他提取的信息扫描图像并检测潜在的成人和猥亵内容。
-
-### <a name="text-moderation"></a>文本审查
-
-从 [API 控制台](try-text-api.md)开始，或使用 [.NET 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人身份信息 (PII)。 
-
-
-### <a name="video-moderation"></a>视频审查
-
-从 [.NET 快速入门](video-moderation-api.md)开始，扫描视频并检测潜在的成人和猥亵内容。 
-
-
-### <a name="review-apis"></a>查看 API
-
-通过从作业、评审和工作流 API 中选择，从这里开始。
-
+若要详细了解如何使用内容审查器评审工具，请查看[人机回圈](Review-Tool-User-Guide/human-in-the-loop.md)指南，并参阅“评审工具 API”来了解如何微调人工评审体验：
 - [作业 API](try-review-api-job.md) 使用审核 API 审查你的内容，并在评审工具中生成评论。 
 - [评审 API](try-review-api-review.md) 无需先扫描内容即可直接为人工审查器创建图像、文本或视频评论。 
 - [工作流 API](try-review-api-workflow.md) 可创建、更新和获取有关团队创建的自定义工作流的详细信息。
 
+或者继续执行后续步骤，在代码中开始使用审查 API。
+
 ## <a name="next-steps"></a>后续步骤
 
-请查阅 [API 参考](api-reference.md)和 [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net)。 快速开始与 [.NET SDK 示例](sdk-and-samples.md#net-sdk-samples)、[C# 中的 REST API 示例](https://github.com/sanjeev3/azure-docs-pr/blob/master/articles/cognitive-services/Content-Moderator/sdk-and-samples.md#rest-api-samples-in-c)和[教程](sdk-and-samples.md#tutorials)集成。
+了解如何在应用中单独使用审查 API。
+- 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或 [C# 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人身份信息 (PII)。 
+- 实施视频审查。 使用 [C# 快速入门](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

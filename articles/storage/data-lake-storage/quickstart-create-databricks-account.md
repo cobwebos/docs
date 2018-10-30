@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: b0db5e79ac3f52bfcd9c7791a843265a421ef1bf
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5ffbc52bf8a4b8dab298b3ed4895596480fbdccc
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903005"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426713"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -53,7 +53,7 @@ ms.locfileid: "48903005"
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../../azure-resource-manager/resource-group-overview.md)。 |
-    |**位置**     | 选择“美国西部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
+    |**位置**     | 选择“美国西部 2”。 可以根据偏好随意选择其他公共区域。        |
     |**定价层**     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
     选择“固定到仪表板”，并单击“创建”。
@@ -98,7 +98,7 @@ ms.locfileid: "48903005"
 
     ![在 Databricks 中创建笔记本](./media/handle-data-using-databricks/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    选择**创建**。
+    选择“创建”。
 
 4. 在以下代码中，请将 **ACCOUNT_NAME** 和 **ACCOUNT_KEY** 文本替换为在本教程开头保存的值。 另请将 **FILE_SYSTEM_NAME** 文本替换为需要提供给文件系统的名称。 然后将代码输入到第一个单元格中。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831205"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955144"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -50,10 +50,26 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>创建引用现有 Azure 负载均衡器的规模集
 使用 Azure 门户创建规模集后，就大多数配置选项来说，都会创建新的负载均衡器。 如果创建需引用现有负载均衡器的规模集，可以使用 CLI。 以下示例脚本先创建负载均衡器，然后创建规模集来引用该均衡器：
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
@@ -91,7 +107,7 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>使用可配置的虚拟机域名创建规模集
-若要通过 CLI 使用自定义 DNS 名称为虚拟机创建规模集，请将 --vm-domain-name 参数添加到 vmss create 命令中，后接表示域名的字符串。
+若要通过 CLI 使用自定义 DNS 名称为虚拟机创建规模集，请将 --vm-domain-name 参数添加到 **virtual machine scale set create** 命令中，后接表示域名的字符串。
 
 若要在 Azure 模板中设置域名，请将 **dnsSettings** 属性添加到规模集的 **networkInterfaceConfigurations** 节。 例如：
 
@@ -155,23 +171,35 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 若要使用 PowerShell 列出规模集的公共 IP 地址，请使用_Get-AzureRmPublicIpAddress_ 命令。 例如：
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 也可以通过直接引用公共 IP 地址配置的资源 ID 来查询公共 IP 地址。 例如：
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-使用 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API **2017-03-30** 或更高版本查询分配到规模集虚拟机的公共 IP 地址。
+也可通过查询 [Azure 资源浏览器](https://resources.azure.com)或者 Azure REST API 2017-03-30 或更高版本来显示分配到规模集虚拟机的公共 IP 地址。
 
-若要使用资源浏览器查看规模集的公共 IP 地址，请找到规模集下的 publicipaddresses 节。 例如： https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+若要查询 [Azure 资源浏览器](https://resources.azure.com)，请执行以下操作：
 
-```
+1. 在 Web 浏览器中打开 [Azure 资源浏览器](https://resources.azure.com)。
+1. 展开左侧的“订阅”，方法是单击其旁边的 *+*。 如果在“订阅”下只有一个项，则“订阅”可能已展开。
+1. 展开订阅。
+1. 展开资源组。
+1. 展开提供程序。
+1. 展开 *Microsoft.Compute*。
+1. 展开 *virtualMachineScaleSets*。
+1. 展开规模集。
+1. 单击“publicipaddresses”。
+
+若要查询 Azure REST API，请执行以下操作：
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-示例输出：
+[Azure 资源浏览器](https://resources.azure.com)和 Azure REST API 的示例输出：
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>每个规模集的 NSG 和 ASG
+可以使用[网络安全组](../virtual-network/security-overview.md)通过安全规则来筛选 Azure 虚拟网络中出入 Azure 资源的流量。 可以通过[应用程序安全组](../virtual-network/security-overview.md#application-security-groups)来处理 Azure 资源的网络安全问题，并将其作为应用程序结构的扩展组合起来。
+
 可以直接向规模集应用网络安全组，只需将引用添加到规模集虚拟机属性的网络接口配置节即可。
 
 也可以直接为规模集指定应用程序安全组，只需将引用添加到规模集虚拟机属性的网络接口 IP 配置节即可。
 
 例如： 
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
     ]
 }
 ```
+
+若要验证网络安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+若要验证应用程序安全组是否与规模集相关联，请使用 `az vmss show` 命令。 下面的示例使用 `--query` 来筛选结果，只显示输出的相关部分。
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。

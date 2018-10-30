@@ -233,7 +233,7 @@
 ## [Azure PowerShell（资源管理器）](/powershell/module/azurerm.media)
 ## [Azure PowerShell（服务管理）](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media/mediaservice)
+## [REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 ## 规范
 ### [实时引入 - 碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 ### [实时引入 - 在实时传送视频流中发出超时元数据信号](media-services-specifications-live-timed-metadata.md)

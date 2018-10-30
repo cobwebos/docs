@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066983"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458048"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>运行 Azure VM 到 Azure 次要区域的灾难恢复演练
 
@@ -26,12 +26,13 @@ ms.locfileid: "49066983"
 > * 检查先决条件
 > * 为单个 VM 运行测试故障转移
 
-
+> [!NOTE]
+> 本教程旨在引导用户完成相关步骤，以便在尽量减少步骤的情况下执行 DR 演练；如果需要详细了解与执行 DR 演练相关联的各个方面（包括网络注意事项、自动化或故障排除），请参阅适用于 Azure VM 的“操作方法”下面的文档。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 在运行测试故障转移前，我们建议先验证 VM 属性以确保一切按预期进行。  访问“复制项”中的 VM 属性。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
-- 建议使用单独的 Azure VM 网络进行测试故障转移，而不是使用启用复制时设置的默认网络。
+- **建议使用单独的 Azure VM 网络进行测试故障转移**，而不是使用启用复制时设置的默认网络。
 
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移

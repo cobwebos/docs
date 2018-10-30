@@ -31,6 +31,8 @@ items:
   items:
   - name: 什么是密钥保管库？
     href: key-vault-whatis.md
+  - name: 保护密钥保管库
+    href: key-vault-secure-your-key-vault.md
   - name: 安全体系
     href: key-vault-ovw-security-worlds.md
   - name: 软删除
@@ -72,8 +74,6 @@ items:
     href: key-vault-soft-delete-powershell.md
   - name: 使用组授予访问权限
     href: key-vault-group-permissions-for-apps.md
-  - name: 保护密钥保管库
-    href: key-vault-secure-your-key-vault.md
   - name: 配置防火墙和虚拟网络
     href: key-vault-network-security.md
 - name: 引用
@@ -92,6 +92,10 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
+  - name: 身份验证、请求和响应
+    href: authentication-requests-and-responses.md
+  - name: 常见参数和标头
+    href: common-parameters-and-headers.md
   - name: 开发
     items:
     - name: 开发人员指南
@@ -104,47 +108,39 @@ items:
       href: vs-secure-secret-appsettings.md
     - name: 使用 .NET 进行服务身份验证
       href: service-to-service-authentication.md
-    - name: 使用 Visual Studio
-      items:
-      - name: 使用 Key Vault 连接服务
-        href: vs-key-vault-add-connected-service.md
-      - name: ASP.NET 项目入门
-        href: vs-key-vault-aspnet-get-started.md
-      - name: 我的 ASP.NET 项目发生了什么情况？
-        href: vs-key-vault-aspnet-what-happened.md
-      - name: ASP.NET Core 项目入门
-        href: vs-key-vault-aspnet-core-get-started.md
-      - name: 我的 ASP.NET Core 项目发生了什么情况？
-        href: vs-key-vault-aspnet-core-what-happened.md
+    - name: 使用 Key Vault 连接服务
+      href: vs-key-vault-add-connected-service.md
 - name: 资源
   items:
   - name: 利用 Microsoft Learn 掌握技能
     href: /learn/browse/?products=azure-key-vault
+  - name: 身份验证、请求和响应
+    href: authentication-requests-and-responses.md
+  - name: 常见参数和标头
+    href: common-parameters-and-headers.md
   - name: 客户数据
     href: key-vault-customer-data.md
   - name: 发行说明
     href: key-vault-versions.md
-  - name: 服务
-    items:
-    - name: 定价
-      href: https://azure.microsoft.com/pricing/details/key-vault/
-    - name: 上市区域
-      href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-    - name: 服务级别协议 (SLA)
-      href: https://azure.microsoft.com/support/legal/sla/key-vault/
-    - name: 服务限制
-      href: key-vault-service-limits.md
-    - name: 服务状态
-      href: https://azure.microsoft.com/status/
-    - name: 服务更新
-      href: https://azure.microsoft.com/updates/?product=key-vault
-  - name: 团队博客
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/key-vault/
+  - name: 上市区域
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
+  - name: 服务级别协议 (SLA)
+    href: https://azure.microsoft.com/support/legal/sla/key-vault/
+  - name: 服务限制
+    href: key-vault-service-limits.md
+  - name: 服务状态
+    href: https://azure.microsoft.com/status/
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=key-vault
+  - name: 博客
     href: http://blogs.technet.com/b/kv/
 - name: 产品反馈
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 64b4f6cbb26da244898d46b8fd5250a2eeeef91e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: e58f20767e6a3ae49eff17e5388b7abeb1dcaa65
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140936"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221319"

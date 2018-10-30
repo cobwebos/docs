@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8afaf9675dfac29449769e1f2ab323417376897
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731081"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026205"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -40,7 +40,7 @@ ms.locfileid: "45731081"
  |:-------------       |:-------------         |:----------            |
  |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
  |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
- |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅 [资源组] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
+ |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
  |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
 

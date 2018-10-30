@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1c9af5c94aa05f60220080b779921a2c79c322f3
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067425"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456501"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>在 Azure 区域之间故障转移和故障回复 Azure VM
 
@@ -28,7 +28,8 @@ ms.locfileid: "49067425"
 > * 故障回复辅助 VM
 > * 重新保护主 VM，以便它复制回次要区域
 
-
+> [!NOTE]
+> 本教程旨在引导用户完成相关步骤，以便在尽量减少自定义的情况下故障转移到目标区域并进行故障回复；如果需要详细了解与故障转移相关联的各个方面（包括网络注意事项、自动化或故障排除），请参阅适用于 Azure VM 的“操作方法”下面的文档。
 
 ## <a name="prerequisites"></a>先决条件
 

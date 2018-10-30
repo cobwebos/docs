@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419519"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945784"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>教程：创建用于部署已加密存储帐户的 Azure 资源管理器模板
 
@@ -40,8 +40,7 @@ ms.locfileid: "47419519"
 
 若要完成本文，需要做好以下准备：
 
-* [Visual Studio Code](https://code.visualstudio.com/)。
-* 资源管理器工具扩展。 若要进行安装，请参阅[安装资源管理器扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* 包含[资源管理器工具扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)的 [Visual Studio Code](https://code.visualstudio.com/)。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
@@ -56,7 +55,7 @@ ms.locfileid: "47419519"
 3. 选择“打开”以打开该文件。
 4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。
 
-## <a name="understand-the-format"></a>了解格式
+## <a name="understand-the-schema"></a>了解架构
 
 在 VS Code 中将模板折叠到根级别。 你使用最简单的结构，其中包含以下元素：
 
@@ -69,7 +68,7 @@ ms.locfileid: "47419519"
 * **resources**：指定已在资源组中部署或更新的资源类型。
 * **outputs**：指定部署后返回的值。
 
-## <a name="use-parameters-in-template"></a>使用模板中的参数
+## <a name="use-parameters"></a>使用参数
 
 可以使用参数提供针对特定环境定制的值，以便自定义部署。 为存储帐户设置值时，请使用模板中定义的参数。
 
@@ -90,7 +89,7 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>使用模板中的变量
+## <a name="use-variables"></a>使用变量
 
 变量用于构造可在整个模板中使用的值。 变量有助于减轻模板的复杂性。
 
@@ -117,9 +116,7 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 
     ![资源管理器模板参考存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    资源管理器模板-资源参考-存储帐户
-1. 了解与加密相关的信息。  
-1. 在存储帐户资源定义的 properties 元素中，添加以下 json：
+4. 查找与加密相关的定义信息。  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
         }
     }
     ```
-    此部分启用 Blob 存储服务的加密功能。
-
-在 Visual Studio Code 中修改模板，使最终的资源元素如下所示：
-
-![资源管理器模板加密的存储帐户资源](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. 在 Visual Studio Code 中修改模板，使最终的资源元素如下所示：
+    
+    ![资源管理器模板加密的存储帐户资源](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>部署模板
 

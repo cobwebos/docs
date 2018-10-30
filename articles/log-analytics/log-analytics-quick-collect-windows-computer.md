@@ -16,12 +16,12 @@ ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 39c30934ddf3b1d90b2dc604af0f0bb29bf79c04
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 756b5e208cd2a3fa70f7ed3cf1c4deaaf72348ed
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043723"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407803"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>在混合环境中为 Windows 计算机配置 Log Analytics 代理
 [Azure Log Analytics](log-analytics-overview.md) 可将物理或虚拟 Windows 计算机中的数据从数据中心或其他云环境直接收集到单个存储库中，以便进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Windows 计算机中配置或收集数据。  有关 Azure Windows VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
@@ -37,7 +37,7 @@ ms.locfileid: "48043723"
 1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
-  * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 
+  * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 
   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
   * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。  
@@ -45,7 +45,7 @@ ms.locfileid: "48043723"
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
-3. 在“OMS 工作区”窗格上提供所需信息后，单击“确定”。  
+3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "48043723"
 2. 在“欢迎”页面上，单击“下一步”。
 3. 在“许可条款”页面上阅读许可协议，然后单击“我接受”。
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“下一步”。
-5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics (OMS)，单击“下一步”。   
+5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics，单击“下一步”。   
 6. 在“Azure Log Analytics”页上执行以下操作：
    1. 粘贴前面复制的“工作区 ID”和“工作区密钥(主密钥)”。  如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 美国政府版”。  
    2. 如果计算机需要通过代理服务器来与 Log Analytics 通信，请单击“高级”并提供代理服务器的 URL 和端口号。  如果代理服务器要求身份验证，请键入用于在代理服务器上进行身份验证的用户名和密码，并单击“下一步”。  
@@ -74,7 +74,7 @@ ms.locfileid: "48043723"
 8. 在“准备安装”页上检查所做的选择，并单击“安装”。
 9. 在“配置已成功完成”页上，单击“完成”。
 
-完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可以检查配置，并验证代理是否已连接到 Log Analytics。 如果已连接，代理会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可以检查配置，并验证代理是否已连接到 Log Analytics。 如果已连接，代理会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Log Analytics 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>收集的事件和性能数据
 Log Analytics 可从 Windows 事件日志以及指定用于长期分析的性能计数器中收集事件，并在检测到特定条件时采取措施。  首先，请按照下列步骤操作，配置 Windows 事件日志以及几个常见性能计数器中收集事件。  

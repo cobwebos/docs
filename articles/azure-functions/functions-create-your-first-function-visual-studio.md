@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用 Visual Studio 创建你的第一个函数 | Microsoft Docs
+title: 在 Azure 中使用 Visual Studio 创建你的第一个函数
 description: 使用 Visual Studio 创建并发布一个 HTTP 触发的 Azure 函数。
 services: functions
 documentationcenter: na
@@ -10,21 +10,23 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 10/17/2018
 ms.author: glenga
-ms.custom: mvc, devcenter, , vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: b7c9b08d1f6cb1c52419519658765ab687a234fc
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116583"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649969"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
 Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
 
 本文介绍如何使用 Azure Functions 的 Visual Studio 2017 工具在本地创建并测试“hello world”函数。 然后将函数代码发布到 Azure。 Visual Studio 2017 中的 Azure 开发工作负荷已随附这些工具。
+
+![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
 本主题包括[一部视频](#watch-the-video)，其中演示了相同的基本步骤。
 
@@ -54,13 +56,13 @@ Visual Studio 将创建一个项目，并在该项目中创建一个包含所选
 
 2. 从 Azure Functions 运行时输出复制函数的 URL。
 
-    ![Azure 本地运行时](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
+    ![Azure 本地运行时](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-debugging.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
 
-    ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
+    ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local.png)
 
-4. 若要停止调试，请按 Shift + F5。
+4. 若要停止调试，请按 **Shift + F5**。
 
 验证该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
@@ -72,15 +74,15 @@ Visual Studio 将创建一个项目，并在该项目中创建一个包含所选
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。
+1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并执行请求。
 
     调用 HTTP 触发函数的 URL 应采用以下格式：
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+        http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME> 
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应：
 
-    ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
+    ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
 ## <a name="watch-the-video"></a>观看视频
 

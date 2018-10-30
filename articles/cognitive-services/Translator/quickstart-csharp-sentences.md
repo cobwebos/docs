@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取句子长度 - 文本翻译 API，C#
+title: 快速入门：获取句子长度，C# - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 C# 查明文本中句子的长度。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 699c4b775f2c5745a5b52593d44a0af408c5e73a
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: c10a38164c71eaa4239072fe10973932ce8cce3b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319591"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645003"
 ---
-# <a name="quickstart-get-sentence-lengths-with-c35"></a>快速入门：使用 C&#35; 获取句子长度
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 获取句子长度
 
 在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 

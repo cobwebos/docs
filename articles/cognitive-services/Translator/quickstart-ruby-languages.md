@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取受支持的语言 - 文本翻译 API，Ruby
+title: 快速入门：获取受支持的语言，Ruby - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 Ruby 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 02ebeae83464aa9770854fd06468b3731d6b8549
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121832"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645263"
 ---
-# <a name="quickstart-get-supported-languages-with-ruby"></a>快速入门：使用 Ruby 获取支持的语言
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>快速入门：通过文本翻译 REST API (Ruby) 获取受支持的语言
 
 在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 

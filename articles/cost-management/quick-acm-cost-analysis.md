@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079100"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471282"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -34,21 +34,25 @@ ms.locfileid: "49079100"
 
 所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
 
-- “计费帐户”范围是在 https://ea.azure.com 定义的，并且需要“企业管理”访问权限。 不需要任何先决条件 EA 设置。 成本分析中的计费信息是针对企业协议中的所有订阅合并得出的。 计费帐户通常称为“企业协议”或“注册”。
 
-- “部门”范围是在 https://ea.azure.com 定义的，并且需要“部门管理”访问权限。 需要在 EA 门户中启用“DA 视图费用”设置。 成本分析中的计费信息是针对链接到该部门的注册帐户拥有的所有订阅合并得出的。
+|**范围**|**定义位置**|**在范围内分析成本所需的访问权限**|**先决条件 EA 设置**|**将计费数据合并到**|
+|---                |---                  |---                   |---            |---           |
+|计费帐户<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|企业管理员|无|企业协议中的所有订阅|
+|部门|[https://ea.azure.com ](https://ea.azure.com )|部门管理员|已启用 DA 查看费用|属于一个合约帐户的所有订阅，该帐户已关联到部门|
+|合约帐户<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|帐户所有者|已启用 AO 查看费用|注册帐户的所有订阅|
+|管理组|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|管理组下的所有订阅|
+|订阅|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|订阅中的所有资源/资源组|
+|资源组|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|资源组中的所有资源|
 
-- “注册帐户”范围是在 https://ea.azure.com 定义的，并且需要“帐户所有者”访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该注册帐户拥有的所有订阅合并得出的。 注册帐户通常称为“帐户所有者”。
+<sup>1</sup>计费帐户通常称为企业协议或合约。
 
-- “管理组”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该管理组下的所有订阅合并得出的。
-
-- “订阅”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该订阅中的所有资源和资源组合并得出的。
-
-- “资源组”范围是在 https://portal.azure.com 定义的，并且需要“成本管理读者”（或“读者”）访问权限。 需要在 EA 门户中启用“AO 视图费用”设置。 成本分析中的计费信息是针对该资源组中的所有资源合并得出的。
-
-
+<sup>2</sup>合约帐户通常称为帐户所有者。
 
 有关配置 **DA 视图费用**和 **AO 视图费用**设置的详细信息，请参阅[启用对成本的访问权限](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs)。
+
+
+
+
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

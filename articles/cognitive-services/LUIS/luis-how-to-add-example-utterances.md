@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888282"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645553"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>添加示例表述并通过实体进行标记
 
@@ -159,6 +159,36 @@ book me 2 adult business tickets to Paris tomorrow on Air France
     >子实体名称在单个应用的所有实体中必须唯一。 两个不同的分层实体不得包含同一名称的子实体。 
 
     请参阅[数据提取](luis-concept-data-extraction.md#hierarchical-entity-data)，详细了解如何从终结点 JSON 查询响应提取分层实体。 请尝试分层实体[快速入门](luis-quickstart-intent-and-hier-entity.md)，详细了解如何使用分层实体。
+
+## <a name="entity-status-predictions"></a>实体状态预测
+
+在 LUIS 门户中输入新话语时，该话语可能会出现实体预测误差。 预测误差是指实体标记方式与 LUIS 预测实体的方式之间的差异。 
+
+在 LUIS 门户中，将通过为话语添加一个红色下划线来直观显示这种差异。 红色下划线可能出现在实体括号内部或括号外部。 
+
+![实体状态预测差异的屏幕截图](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+在话语中选择带红色下划线的单词。 
+
+实体框将显示“实体状态”，如果出现预测差异，则会显示一个红色感叹号。 若要在“实体状态”中查看有关标记实体与预测实体之间的差异的信息，请选择“实体状态”，然后选择右侧的项。
+
+![实体状态预测差异的屏幕截图](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+红线可以出现在任何以下时间：
+
+    * 输入查询文本时（但在标记实体之前）
+    * 应用实体标签时
+    * 删除实体标签时
+    * 预测该文本的多个实体标签时 
+
+以下解决方法可帮助解决实体预测差异：
+
+|实体|可视的指示器|预测|解决方案|
+|--|--|--|--|
+|输入了话语，但尚未标记实体。|红色下划线|预测正确。|标记带有预测值的实体。|
+|未标记的文本|红色下划线|错误的预测|需要在所有意向中检查使用此错误实体的当前话语。 当前话语错误地告知 LUIS 此文本是预测的实体。
+|正确标记的文本|蓝色实体突出显示，带红色下划线|错误的预测|在各种位置和用法中提供包含正确标记的实体的更多话语。 当前话语不足，无法告知 LUIS 此实体是或者类似于同一上下文中显示的实体。 类似实体应组合成单个实体，以免给 LUIS 造成混淆。 另一种解决方法是添加一个短语列表，以提升单词的重要性。 |
+|错误标记的文本|蓝色实体突出显示，带红色下划线|正确的预测| 在各种位置和用法中提供包含正确标记的实体的更多话语。 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>从表述中删除实体标签

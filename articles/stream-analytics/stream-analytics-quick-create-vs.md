@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: a69bfbe4c062012e82ca49233226eb1fcb8eb75e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: be4c906535981c6b05c1a72aa23e4e1f78f57edf
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113534"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954737"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>快速入门：使用用于 Visual Studio 的 Azure 流分析工具创建流分析作业
 
@@ -89,11 +89,11 @@ ms.locfileid: "39113534"
 
 2. 使用以下值填写“流分析输入配置”：
 
-   |**设置**  |建议的值  |**说明**   |
+   |**设置**  |**建议的值**  |**说明**   |
    |---------|---------|---------|
    |输入别名  |  输入   |  输入一个名称，用于标识作业的输入。   |
    |源类型   |  数据流 |  选择合适的输入源：数据流或引用数据。   |
-   |Source  |  Blob 存储 |  选择合适的输入源。   |
+   |源  |  Blob 存储 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
    |订阅  |  用户的订阅\<\>   | 选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。   |
    |存储帐户  |  asaquickstartstorage   |  选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。   |
@@ -109,7 +109,7 @@ ms.locfileid: "39113534"
 
 2. 使用以下值填写“流分析输出配置”：
 
-   |**设置**  |建议的值  |**说明**   |
+   |**设置**  |**建议的值**  |**说明**   |
    |---------|---------|---------|
    |输出别名  |  输出   |  输入一个名称，用于标识作业的输出。   |
    |接收器   |  Blob 存储 |  选择合适的接收器。    |
@@ -178,7 +178,9 @@ ms.locfileid: "39113534"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了一个简单的流分析作业。 若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
+在本快速入门中，你使用 Visual Studio 部署了一个简单的流分析作业。 也可通过 [Azure 门户](stream-analytics-quick-create-portal.md)和 [PowerShell](stream-analytics-quick-create-powershell.md) 部署流分析作业。 
+
+若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)

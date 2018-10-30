@@ -1,25 +1,25 @@
 ---
-title: 快速入门：查找备用翻译 - 文本翻译，Python
+title: 快速入门：查找备用翻译，Python - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 Python 查找字词的备用翻译和示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: cb8f6addd9fa68cd5a4683f52621b05dcd25e7b4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122716"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646400"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>快速入门：使用 Python 查找备用翻译和使用情况
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-python"></a>快速入门：使用文本翻译 REST API (Python) 查找备用翻译
 
-在该快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
+在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 
 ## <a name="prerequisites"></a>先决条件
 

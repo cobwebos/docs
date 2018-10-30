@@ -1,23 +1,23 @@
 ---
 title: 快速入门：更新知识库 - REST、C# - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 本快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。 用来更新知识库的 JSON 定义允许添加、更改或删除问题和解答对。
+description: 此基于 REST 的快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。 用来更新知识库的 JSON 定义允许添加、更改或删除问题和解答对。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801687"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648218"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>快速入门：通过 C# 更新 QnA Maker 知识库
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：通过 C# 更新 QnA Maker 中的知识库
 
 本快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。  使用此 JSON，可以通过添加新数据源、更改数据源或删除数据源来更新知识库。
 
@@ -31,7 +31,7 @@ ms.locfileid: "48801687"
 
 * 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
 * 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。
-* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID。
+* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -57,13 +57,13 @@ ms.locfileid: "48801687"
 
 ## <a name="add-the-kb-update-definition"></a>添加知识库更新定义
 
-在常量后，添加以下知识库更新定义。 更新定义中有三个部分：
+在常量后，添加以下知识库更新定义。 更新定义包含三个节：
 
-* add
+* 添加
 * update
 * delete
 
-各个部分可以在发送到 API 的同一请求中使用。 
+各个节可以在发送到 API 的同一请求中使用。 
 
 ```csharp
 static string new_kb = @"

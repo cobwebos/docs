@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310209"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430215"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
@@ -118,6 +118,8 @@ ms.locfileid: "49310209"
 Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
 
 ![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 passwordreset.microsoftonline.com 和 ajax.aspnetcdn.com 传输 HTTPS 流量 (443)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

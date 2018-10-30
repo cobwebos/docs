@@ -1,6 +1,6 @@
 ---
 title: 使用 Ansible（预览版）创建 Azure Web 应用
-description: 了解如何使用 Ansible 在 Linux 上的应用服务中创建采用 Java 8 和 Tomcat 容器运行时的 Web 应用。
+description: 了解如何使用 Ansible 在 Linux 上的应用服务中创建采用 Java 8 和 Tomcat 容器运行时的 Web 应用
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, Java
 author: tomarcher
@@ -8,29 +8,29 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 1899b1fc1e0a38d859fb3a7ce2153585579650f3
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 48b4c201b2b96bd4662e8c90be7298a4f418af53
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586633"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426544"
 ---
-# <a name="create-azure-app-service-web-apps-using-ansible-preview"></a>使用 Ansible（预览版）创建 Azure 应用服务 Web 应用
-[Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)（简称 Web 应用）是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
+# <a name="create-azure-app-service-web-apps-by-using-ansible-preview"></a>使用 Ansible（预览版）创建 Azure 应用服务 Web 应用
+[Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
 
-使用 Ansible 可以在环境中自动部署和配置资源。 本文介绍了如何使用 Ansible 创建采用 Java 运行时的 Web 应用。 
+使用 Ansible 可以在环境中自动部署和配置资源。 本文介绍如何使用 Ansible 通过 Java 运行时创建 Web 应用。 
 
 ## <a name="prerequisites"></a>先决条件
 - **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> 在本教程中运行以下示例 playbook 需要 Ansible 2.7。 可以通过运行 `sudo pip install ansible[azure]==2.7.0rc2` 来安装 Ansible 2.7 RC 版本。 Ansible 2.7 将在 2018 年 10 月发布。 在那之后，你不需要在此指定版本，因为默认版本将是 2.7。 
+> 在本教程中运行以下示例 playbook 需要 Ansible 2.7。 可以通过运行 `sudo pip install ansible[azure]==2.7.0rc2` 来安装 Ansible 2.7 RC 版本。 在 Ansible 2.7 发布之后，不需在此指定版本，因为默认版本会是 2.7。 
 
 ## <a name="create-a-simple-app-service"></a>创建一个简单的应用服务
 本部分提供一个示例 Ansible playbook，它定义了以下资源：
 - 你的应用服务计划和 Web 应用将部署到其中的资源组
-- Web 应用 - Linux 上的应用服务中采用 Java 8 和 Tomcat 容器运行时的 Web 应用
+- Linux 上的应用服务中采用 Java 8 和 Tomcat 容器运行时的 Web 应用
 
 ```
 - hosts: localhost
@@ -62,7 +62,7 @@ ms.locfileid: "47586633"
               java_container: tomcat
               java_container_version: 8.5
 ```
-将上述 playbook 保存为 firstwebapp.yml。
+将上面的 playbook 另存为 **firstwebapp.yml**。
 
 若要运行此 playbook，请使用 **ansible-playbook** 命令，如下所示：
 ```bash
@@ -84,17 +84,17 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=2    unreachable=0    failed=0   
 ```
 
-## <a name="create-app-service-with-traffic-manager"></a>使用流量管理器创建应用服务
-可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager)来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，Azure 流量管理器会跟踪应用服务的状态（正在运行、已停止或已删除），以便确定那些终结点中有哪些应该接收流量。
+## <a name="create-an-app-service-by-using-traffic-manager"></a>使用流量管理器创建应用服务
+可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager)来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，流量管理器会跟踪应用服务应用的状态。 状态包括“正在运行”、“已停止”和“已删除”。 然后，流量管理器就可以确定这些终结点中的哪一个应该接收流量。
 
 在应用服务中，应用在应用服务计划中运行。[](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
-) 应用服务计划为要运行的 Web 应用定义一组计算资源。 可以在不同的组中管理你的应用服务计划和 Web 应用。
+) 应用服务计划为要运行的 Web 应用定义一组计算资源。 可以在不同的组中管理应用服务计划和 Web 应用。
 
 本部分提供一个示例 Ansible playbook，它定义了以下资源：
 - 你的应用服务计划将部署到其中的资源组
 - 应用服务计划
-- 你的 Web 应用将部署到其中的另一个资源组
-- Web 应用 - Linux 上的应用服务中采用 Java 8 和 Tomcat 容器运行时的 Web 应用
+- 另一个资源组，你的 Web 应用将部署到其中
+- Linux 上的应用服务中采用 Java 8 和 Tomcat 容器运行时的 Web 应用
 - 流量管理器配置文件
 - 流量管理器终结点，使用所创建的网站
 
@@ -179,7 +179,7 @@ localhost                  : ok=2    changed=2    unreachable=0    failed=0
       target_resource_id: "{{ webapp.webapps[0].id }}"
 
 ```
-将 playbook 保存为 webapp.yml，或者[下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml)。
+将上一 playbook 另存为 **webapp.yml**，或者[下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml)。
 
 若要运行此 playbook，请使用 **ansible-playbook** 命令，如下所示：
 ```bash

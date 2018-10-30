@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856031"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405593"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>使用 Azure Log Analytics 进行容器实例日志记录
 
@@ -100,7 +100,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 部署容器组以后，可能需要等待数分钟（最多 10 分钟），第一个日志条目才会显示在 Azure 门户中。 若要查看容器组的日志，请先打开 Log Analytics 工作区，然后执行以下操作：
 
-1. 在“OMS 工作区”概览中，选择“日志搜索”
+1. 在“OMS 工作区”概览中，选择“日志搜索”。 OMS 工作区现在称为 Log Analytics 工作区。  
 1. 在“尝试更多查询”下选择“所有收集的数据”链接。
 
 此时会看到 `search *` 查询显示的多个结果。 如果一开始没有看到任何结果，请等待数分钟，然后选择“运行”按钮，再次执行查询。 默认情况下，日志条目以“列表”视图方式显示--选择“表”即可以更紧致的格式查看日志条目。 然后即可展开某一行来查看单个日志条目的内容。

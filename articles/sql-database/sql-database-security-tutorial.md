@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b81e76201f7f751ee01e903d83f316811abaf483
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857952"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955467"
 ---
 # <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
 
@@ -59,7 +59,7 @@ SQL 数据库还有复杂的监视、审核和威胁检测功能。
 
 SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与服务器和服务器内数据库的所有连接，连接自其他 Azure 服务的连接除外。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)。
 
-最安全的配置是将“允许访问 Azure 服务”设置为“关闭”。 如果需要从 Azure VM 或云服务连接到数据库，则应创建[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，且仅允许保留的 IP 地址通过防火墙进行访问。 
+最安全的配置是将“允许访问 Azure 服务”设置为“关闭”。 如果需要从 Azure VM 或云服务连接到数据库，则应创建[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)（经典部署），且仅允许保留的 IP 地址通过防火墙进行访问。 如果使用[资源管理器](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)部署模型，则会为资源分配专用公共 IP 地址。应该允许此 IP 地址通过防火墙。
 
 按照以下步骤为服务器创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，以允许从特定 IP 地址进行连接。 
 

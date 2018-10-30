@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 126677df01ad34d488863dd83e2f8c9a2d947824
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185374"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958884"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -285,7 +285,9 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何部署简单的流分析作业。 若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
+在本快速入门中，你使用 PowerShell 部署了一个简单的流分析作业。 也可通过 [Azure 门户](stream-analytics-quick-create-portal.md)和 [Visual Studio](stream-analytics-quick-create-vs.md) 部署流分析作业。
+
+若要了解如何配置其他输入源并执行实时检测，请继续阅读以下文章：
 
 > [!div class="nextstepaction"]
 > [使用 Azure 流分析实时检测欺诈行为](stream-analytics-real-time-fraud-detection.md)

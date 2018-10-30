@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 446d9ead47e9d9380a608933ced3793e99241622
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714983"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026324"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -33,7 +33,7 @@ ms.locfileid: "44714983"
 此教程为系列教程中的第三个教程。 本教程假设你已完成前面教程中的以下任务：
 
 1. [准备 Azure](tutorial-prepare-azure.md)
-2. 在本地准备 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md) 服务器。
+2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 服务器或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 服务器。
 
 在开始之前，查看用于灾难恢复的 [VMware](vmware-azure-architecture.md) 或 [Hyper-V](hyper-v-azure-architecture.md) 体系结构会有所帮助。
 

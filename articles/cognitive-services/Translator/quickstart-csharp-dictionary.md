@@ -1,23 +1,23 @@
 ---
-title: 快速入门：查找备用翻译 - 文本翻译 API，C#
+title: 快速入门：查找备用翻译，C# - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 C# 查找字词的备用翻译和示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: e7a450838ab32d191ca8659a8e84e0104c76e3a5
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321337"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645450"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>快速入门：使用 C&#35; 查找备用翻译和使用情况
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 查找备用翻译
 
 在本快速入门中，你将使用文本翻译 API 查找术语的可能备用翻译的详细信息，以及这些备用翻译的使用示例。
 

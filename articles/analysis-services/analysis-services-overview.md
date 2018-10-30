@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394511"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429433"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -81,29 +81,34 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |巴西南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|美国东部 2     |     B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>1    |
+|美国东部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
+|美国东部 2     |     S8、S9   |    1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
-|美国西部     |    B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>2  |
-|美国西部 2    |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9  |    3<br>1     |
+|美国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
+|美国西部     |    S8、S9   |    2  |
+|美国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
+|美国西部 2    |    S8、S9  |    1     |
 
 ### <a name="europe"></a>欧洲
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |北欧     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
-|英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|西欧     |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9    |    7<br>1     |
+|英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
+|西欧     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
+|西欧    |   S8、S9  |  1  |
 
 ### <a name="asia-pacific"></a>亚太区 
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
+|澳大利亚东部     |    B1、B2、S0、S1、S2、S4     |    3     |
+|澳大利亚东部     |    S8、S9    |    1     |
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
-|澳大利亚东部     |    B1、B2、S0、S1、S2、S4    <br>S8、S9    |    3<br>1     |
-|日本东部  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
+|日本东部     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
 |东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
@@ -184,9 +189,11 @@ Azure Analysis Services 受 [Microsoft 联机服务条款](http://www.microsoftv
 
 ![BI 开发人员工具](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>适用于 Visual Studio 的 SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-使用免费的[适用于 Visual Studio 的 SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 开发和部署模型。 SSDT 包括适用于快速入门的 Analysis Services 项目模板。 SSDT 现在包括适用于表格 1400 模型的新式“获取数据”数据源查询和混合功能。 如果你熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 还可以将 Microsoft Analysis Services 以 VSIX 可安装包的形式在 Visual Studio 中使用。 [从市场下载](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。
+使用免费的[适用于 Visual Studio 的 SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) 开发和部署模型。 SSDT 包括适用于快速入门的 Analysis Services 项目模板。 SSDT 现在包括适用于表格 1400 模型的新式“获取数据”数据源查询和混合功能。 如果你熟悉 Power BI Desktop 和 Excel 2016 中的“获取数据”功能，则已知道创建高度自定义的数据源查询很容易。 
+
+如果使用 Visual Studio 2017，则会以免费可安装 VSIX 包的形式提供 Microsoft Analysis Services Projects。 [从市场下载](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

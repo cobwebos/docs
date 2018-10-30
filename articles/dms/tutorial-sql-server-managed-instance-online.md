@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 56bd3ab61045ff99601ed50cd27332b370204795
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068020"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946073"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)，且几乎不用停机。 有关需要一些手动工作量的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
@@ -32,6 +32,10 @@ ms.locfileid: "49068020"
 > * 使用 Azure 数据库迁移服务创建迁移项目并开始联机迁移。
 > * 监视迁移。
 > * 准备就绪后交接迁移。
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+本文介绍如何从 SQL Server 联机迁移到 Azure SQL 数据库托管实例。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例](tutorial-sql-server-to-managed-instance.md)。
 
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：

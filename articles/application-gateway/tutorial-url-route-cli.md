@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2402dd2adb27abb784c34a2a3569e8f6e4a60f77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f683d63683e903d947d0789a16a8efa48196d36a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954783"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026188"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程 - 使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -30,16 +30,15 @@ ms.locfileid: "46954783"
 > * 创建侦听器、URL 路径映射和规则
 > * 创建可缩放的后端池
 
-
 ![URL 路由示例](./media/tutorial-url-route-cli/scenario.png)
 
-如果需要，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 完成本教程中的步骤。
+如果你愿意，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 门户](create-url-route-portal.md)完成本教程中的步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

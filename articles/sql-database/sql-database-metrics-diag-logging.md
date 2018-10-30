@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: bf9185ece171ef0595aa3470fd52b839eb5d6136
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 775883d575a87758f563bd8dae8e5a726cd8ed36
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165953"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959071"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 
-Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以便更轻松地进行性能监视。 可配置数据库，将资源使用情况、辅助角色和会话以及连接性流式传输到以下 Azure 资源之一：
+Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可发出指标和诊断日志，以便更轻松地进行性能监视。 可配置数据库，将资源使用情况、辅助角色和会话以及连接性流式传输到以下 Azure 资源之一：
 
 * **Azure SQL Analytics**：用于具有报告、警报和缓解功能的集成式 Azure 数据库智能性能监视解决方案。
 * **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成。
@@ -29,9 +29,12 @@ Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以�
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging-for-a-database"></a>为数据库启用日志记录功能
+若要了解各种 Azure 服务支持的指标和日志类别，请阅读以下主题：
 
-默认情况下，不在 SQL 数据库或托管实例数据库上启用指标和诊断日志记录功能。 可使用以下方法之一在数据库上启用并管理指标和诊断遥测日志记录：
+* [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+* [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
+
+ 可使用以下方法之一在数据库上启用并管理指标和诊断遥测日志记录：
 
 - Azure 门户
 - PowerShell
@@ -39,15 +42,67 @@ Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以�
 - Azure Monitor REST API 
 - Azure 资源管理器模板
 
-启用指标和诊断日志记录时，需要指定收集所选数据的 Azure 资源。 可用选项包括：
+启用指标和诊断日志记录时，需要指定收集所选数据的 Azure 资源目标。 可用选项包括：
 
 - SQL Analytics
 - 事件中心
 - 存储 
 
-可预配新的 Azure 资源或选择现有资源。 在使用数据库诊断设置选项选择资源之后，需指定要收集的数据。 支持 Azure SQL 数据库和托管实例数据库的可用选项包括：
+可预配新的 Azure 资源或选择现有资源。 在使用诊断设置选项选择资源之后，需指定要收集的数据。 
 
-| 监视遥测数据 | Azure SQL 数据库支持 | 托管实例中的数据库支持 |
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>为弹性池或托管实例启用日志记录
+
+用作数据库容器的弹性池和托管实例具有自身的诊断遥测，但此功能默认未启用。 请注意，此遥测不同于数据库诊断遥测。 正因如此，除了配置数据库诊断遥测以外，还需要配置弹性池和托管实例的诊断遥测流，下面将提供进一步的介绍。 
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>配置弹性池的诊断遥测流
+
+以下诊断遥测可用于弹性池资源集合：
+
+| 资源 | 监视遥测数据 |
+| :------------------- | ------------------- |
+| **弹性池** | [所有指标](sql-database-metrics-diag-logging.md#all-metrics)包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 |
+
+若要为**弹性池资源**启用诊断遥测流，请执行以下步骤：
+
+- 在 Azure 门户中转到弹性池资源
+- 选择“诊断设置”
+- 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+- 键入设置名称 - 供自己参考
+- 选择要将弹性池中的诊断数据流式传输到哪个资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”
+- 如果选择了 Log Analytics，请选择“配置”，并通过选择“+ 创建新工作区”来创建新工作区；或者选择现有的工作区
+- 选中弹性池诊断遥测 **AllMetrics** 对应的复选框
+- 单击“保存”
+
+针对要监视的每个弹性池重复上述步骤。
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>为托管实例配置诊断遥测流
+
+以下诊断遥测适用于托管实例资源的集合：
+
+| 资源 | 监视遥测数据 |
+| :------------------- | ------------------- |
+| **托管实例** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间、已使用的存储空间。 |
+
+若要为**托管实例资源**启用诊断遥测流，请执行以下步骤：
+
+- 在 Azure 门户中转到托管实例资源
+- 选择“诊断设置”
+- 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+- 键入设置名称 - 供自己参考
+- 选择要将弹性池中的诊断数据流式传输到哪个资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”
+- 如果选择了 Log Analytics，请创建或使用现有的工作区
+- 选中诊断遥测 **ResourceUsageStats** 对应的复选框
+- 单击“保存”
+
+针对要监视的每个托管实例重复上述步骤。
+
+## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>为 Azure SQL 数据库或托管实例中的数据库启用日志记录
+
+默认情况下，不会对 SQL 数据库以及托管实例中的数据库启用指标与诊断日志记录。
+
+以下诊断遥测适用于 Azure SQL 数据库以及托管实例中的数据库的集合：
+
+| 数据库的监视遥测 | Azure SQL 数据库支持 | 托管实例中的数据库支持 |
 | :------------------- | ------------------- | ------------------- |
 | [所有指标](sql-database-metrics-diag-logging.md#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics)：包含有关查询运行时统计信息（如 CPU 使用率、查询持续时间统计信息等）的信息。 | 是 | 是 |
@@ -58,37 +113,49 @@ Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以�
 | [阻塞](sql-database-metrics-diag-logging.md#blockings-dataset)：包含有关在数据库上发生的阻塞事件的信息。 | 是 | 否 |
 | [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset)：包含性能方面的智能见解。 [详细了解 Intelligent Insights](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
-**请注意**：若要使用审核日志和 SQLSecurityAuditEvents 日志，则虽然这些选项仅在数据库“诊断”设置中提供，但只能通过“SQL 审核”解决方案来启用这些日志，以便配置将遥测数据流式传输到 Log Analytics、事件中心或存储的功能。
-
-如果选择事件中心或存储帐户，可以指定保留策略。 此策略删除早于选定时间段的数据。 如果指定 Log analytics，保留策略将取决于所选的定价层。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。 
-
-## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>为弹性池或托管实例启用日志记录
-
-默认情况下，不在弹性池或托管实例上启用指标和诊断日志记录功能。 可以为弹性池或托管实例启用并管理指标和诊断遥测日志记录。 以下数据可以收集：
-
-| 监视遥测数据 | 弹性池支持 | 托管实例支持 |
-| :------------------- | ------------------- | ------------------- |
-| [所有指标](sql-database-metrics-diag-logging.md#all-metrics)（弹性池）：包含 eDTU/CPU 百分比、eDTU/CPU 限制、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制，以及 XTP 存储百分比。 | 是 | 不适用 |
-| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats)（托管实例）：包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间、已使用的存储空间。 | 不适用 | 是 |
-
-若要了解各种 Azure 服务支持的指标和日志类别，建议阅读以下主题：
-
-* [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
-
 ### <a name="azure-portal"></a>Azure 门户
 
-- 若要为 SQL 数据库或托管实例启用指标和诊断日志集合，请转到数据库，然后选择“诊断设置”。 如果配置新设置，请选择“+添加诊断设置”；若要要编辑现有设置，请选择“编辑设置”。
+在 Azure 门户中通过每个数据库的诊断设置菜单，将 Azure SQL 数据库、托管实例中的数据库的诊断遥测数据配置为流式传输到 Azure 存储目标、事件中心或 Log Analytics。
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-azure-sql-database"></a>为 Azure SQL 数据库配置诊断遥测流
+
+若要为 **Azure SQL 数据库**启用诊断遥测流，请执行以下步骤：
+
+- 转到 Azure SQL 数据库资源
+- 选择“诊断设置”
+- 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+- 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。 若要配置为使用多个并行连接将诊断数据流式传输到多个资源，请选择“+添加诊断设置”以创建附加的设置。
 
    ![在 Azure 门户中启用](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-- 对于 **Azure SQL 数据库**，请通过选择目标和遥测数据来新建或编辑现有诊断设置。
+- 键入设置名称 - 供自己参考
+- 选择要将数据库中的诊断数据流式传输到哪个资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”
+- 对于标准监视体验，请选中数据库诊断日志遥测对应的复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”、“Deadlocks”。 此遥测基于事件，提供标准监视体验。
+- 对于高级监视体验，请选中“AllMetrics”对应的复选框。 如前所述，这是 1 分钟的数据库诊断遥测。 
 
    ![诊断设置](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
 
-- 对于**托管实例数据库**，请通过选择目标和遥测数据来新建或编辑现有诊断设置。
+针对要监视的每个 Azure SQL 数据库重复上述步骤。
+
+> [!NOTE]
+> 无法从数据库诊断设置启用审核日志，即使显示了该选项。 若要启用审核日志流，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)
+>
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-databases-in-managed-instance"></a>为托管实例中的数据库配置诊断遥测流
+
+若要为**托管实例中的数据库**启用诊断遥测流，请执行以下步骤：
+
+- 转到托管实例中的数据库
+- 选择“诊断设置”
+- 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+- 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。 若要配置为使用多个并行连接将诊断数据流式传输到多个资源，请选择“+添加诊断设置”以创建附加的设置。
+- 键入设置名称 - 供自己参考
+- 选择要将数据库中的诊断数据流式传输到哪个资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”
+- 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”
 
    ![诊断设置](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
+
+针对要监视的每个托管实例中数据库重复上述步骤。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -128,7 +195,7 @@ Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以�
 
 可以组合这些参数以启用多个输出选项。
 
-### <a name="to-configure-multiple-azure-resources"></a>配置多个 Azure 资源
+### <a name="to-configure-multiple-azure-subscriptions"></a>配置多个 Azure 订阅
 
 若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。
 
@@ -182,6 +249,7 @@ Azure SQL 数据库和托管实例数据库可发出指标和诊断日志，以�
 阅读有关如何[在创建资源时使用资源管理器模板启用诊断设置](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)的信息。 
 
 ## <a name="stream-into-log-analytics"></a>流式传输到 Log Analytics 中 
+
 在门户中使用内置的“发送到 Log Analytics”选项，可将 SQL 数据库指标和诊断日志流式处理到 Log Analytics 中。 此外，还可以通过 PowerShell cmdlet、Azure CLI 或 Azure Monitor REST API 使用诊断设置来启用 Log Analytics。
 
 ### <a name="installation-overview"></a>安装概述
@@ -232,7 +300,6 @@ SQL Analytics 是一个分层仪表板，用户使用它可在 SQL 数据库资�
 - [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-
 可以通过以下几种方式使用流式传输功能：
 
 * **通过将热路径数据流式传输到 Power BI 来查看服务运行状况**。 使用事件中心、流分析和 PowerBI，可以在 Azure 服务中轻松地将指标和诊断数据转换成几近实时的分析结果。 有关如何设置事件中心、如何使用流分析处理数据，以及如何使用 PowerBI 作为输出的概述，请参阅[流分析和 Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)。
@@ -275,9 +342,15 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 了解如何[从存储下载指标和诊断日志](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application)。
 
+## <a name="data-retention-policy-and-pricing"></a>数据保留策略和定价
+
+如果选择事件中心或存储帐户，可以指定保留策略。 此策略删除早于选定时间段的数据。 如果指定 Log analytics，保留策略将取决于所选的定价层。 超过每个月分配的免费数据引入单位会消耗诊断遥测。 提供的免费数据引入单位每月可免费监控多个数据库。 请注意，与空闲数据相比，工作负载较重的活动数据库越多，将引入的数据越多。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)。 
+
+如果使用 Azure SQL Analytics，则可以选择 Azure SQL Analytics 导航菜单上的 OMS 工作区，然后选择使用情况和预估成本，来轻松监视解决方案中的数据引入消耗量。
+
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-请查找可供 Azure SQL 数据库、弹性池、托管实例以及托管实例中的数据库使用的有关指标和日志的详细监视遥测内容。
+请查找可供 Azure SQL 数据库、弹性池、托管实例以及托管实例中的数据库使用的有关指标和日志的详细监视遥测内容，以便使用 [SQL Analytics 语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)进行**自定义分析**和**应用程序开发**。
 
 ## <a name="all-metrics"></a>所有指标
 
@@ -304,7 +377,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：ResourceUsageStats|
 |资源|资源的名称。|
@@ -331,7 +404,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：QueryStoreRuntimeStatistics|
 |OperationName|操作的名称。 始终是：QueryStoreRuntimeStatisticsEvent|
@@ -382,7 +455,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：QueryStoreWaitStatistics|
 |OperationName|操作的名称。 始终是：QueryStoreWaitStatisticsEvent|
@@ -420,7 +493,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Errors|
 |OperationName|操作的名称。 始终是：ErrorEvent|
@@ -435,7 +508,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |消息|纯文本格式的错误消息。|
 |user_defined_b|用户定义位错误。|
 |error_number_d|错误代码。|
-|Severity|错误的严重性。|
+|严重性|错误的严重性。|
 |state_d|错误的状态。|
 |query_hash_s|失败查询的查询哈希（如果存在）。|
 |query_plan_hash_s|失败查询的查询计划哈希（如果存在）。|
@@ -449,7 +522,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：DatabaseWaitStatistics|
 |OperationName|操作的名称。 始终是：DatabaseWaitStatisticsEvent|
@@ -478,7 +551,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Timeouts|
 |OperationName|操作的名称。 始终是：TimeoutEvent|
@@ -501,7 +574,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Blocks|
 |OperationName|操作的名称。 始终是：BlockEvent|
@@ -525,7 +598,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC] |记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Deadlocks|
 |OperationName|操作的名称。 始终是：DeadlockEvent|
@@ -546,7 +619,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|Type|始终是：AzureDiagnostics|
+|类型|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：AutomaticTuning|
 |资源|资源的名称。|

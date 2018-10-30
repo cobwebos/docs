@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 10/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ff52c0fa647dd0e86b22bcfdf7af04062a135f94
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392799"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024386"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -31,7 +31,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 ## <a name="prerequisites"></a>先决条件
 
-要以按用户付款模式使用 Batch 中的渲染应用程序，需要有一个即用即付订阅或其他 Azure 购买选项。 如果使用的是提供货币额度的免费 Azure 套餐，则不支持按使用付费的许可。
+要以按用户付款模式使用 Batch 中的渲染应用程序，需要有一个即用即付订阅或其他 Azure 购买选项。 **如果使用的是提供货币额度的免费 Azure 套餐，则不支持按使用付费的许可。**
 
 [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) 上提供了本教程的示例 3ds Max 场景，以及示例 Bash 脚本和 JSON 配置文件。 3ds Max 场景来自 [Autodesk 3ds Max 示例文件](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)。 （提供的 Autodesk 3ds Max 示例文件已获得 Creative Commons Attribution-NonCommercial-Share Alike 许可。 版权所有 © Autodesk, Inc.）
 
@@ -175,7 +175,7 @@ az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2018-11-15
+    --expiry 2019-11-15
 ```
 
 记下该命令返回的令牌，如下所示。 在稍后的步骤中会使用此令牌。

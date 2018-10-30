@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Maps 查找多条路线 | Microsoft Docs
 description: 使用 Azure Maps 查找不同出行模式的路线
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 340bf83f07b9e730cc43baccc60a39f5ba1f9942
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 864f662cd6be3c5929166db92f2dad92b9c6586e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815301"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648201"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>使用 Azure Maps 查找不同出行模式的路线
 
@@ -74,15 +74,16 @@ ms.locfileid: "48815301"
     </html>
     ```
     HTML 标头如何为 Azure Maps 库嵌入 CSS 和 JavaScript 文件的资源位置。 HTML 正文的脚本段将包含地图的内联 JavaScript 代码。
+
 3. 将以下 JavaScript 代码添加到 HTML 文件的 *script* 块。 使用从 Maps 帐户复制的主要密钥替换字符串 \<your account key\>。 如果未向地图指示焦点位置，则显示全世界视图。 此代码设置地图的中心点并声明缩放级别，以便可以默认聚焦于一个特定区域。
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
+    var mapCenterPosition = [-73.985708, 40.75773];
+    atlas.setSubscriptionKey("<your account key>");
     var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-         center: [-118.2437, 34.0522],
-         zoom: 12
+      center: mapCenterPosition,
+      zoom: 11
     });
     ```
     Atlas.Map 提供一个可视和交互式的 Web 地图控件，它是 Azure Map Control API 的一个组件。
@@ -93,10 +94,10 @@ ms.locfileid: "48815301"
 
 ## <a name="visualize-traffic-flow"></a>可视化交通流量
 
-1. 将交通流量显示添加到地图。  **map.addEventListener** 可确保在完全加载地图后加载添加到地图的所有地图函数。
+1. 将交通流量显示添加到地图。  **map.events.add** 可确保在完全加载地图后加载添加到地图的所有地图函数。
 
     ```JavaScript
-    map.addEventListener("load", function() {
+    map.events.add("load", function() {
         // Add Traffic Flow to the Map
         map.setTraffic({
             flow: "relative"
@@ -146,7 +147,7 @@ ms.locfileid: "48815301"
         padding: 100
     });
     
-    map.addEventListener("load", function() { 
+    map.events.add("load", function() { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -155,7 +156,7 @@ ms.locfileid: "48815301"
         });
     });
     ```
-    map.setCameraBounds 调用根据起点和终点的坐标调整地图窗口。 **map.addEventListener** 可确保在完全加载地图后加载添加到地图的所有地图函数。 API **map.addPins** 将这些点作为可视组件添加到地图控件中。
+    map.setCameraBounds 调用根据起点和终点的坐标调整地图窗口。 **map.events.add** 可确保在完全加载地图后加载添加到地图的所有地图函数。 API **map.addPins** 将这些点作为可视组件添加到地图控件中。
 
 3. 保存文件并刷新浏览器以查看地图上显示的图钉。 即使已经声明将地图的中心点设在洛杉矶，map.setCameraBounds 仍会移动视图以显示起点和终点。
 
@@ -165,7 +166,7 @@ ms.locfileid: "48815301"
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>呈现按行驶模式划分优先级的路线
 
-本部分介绍如何使用 Maps 的路线服务 API 根据运输模式查找从指定起点到目的地的多个路线。 路线服务提供多个 API，在考虑到当前交通状况的情况下，规划两个地点之间最快、最短、环保或令人兴奋的路线。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。  应该**在 map load eventListener 中**添加以下所有代码块，以确保它们在地图完全加载之后加载。
+本部分介绍如何使用 Maps 的路线服务 API 根据运输模式查找从指定起点到目的地的多个路线。 路线服务提供多个 API，在考虑到当前交通状况的情况下，规划两个地点之间最快、最短、环保或令人兴奋的路线。 此外，它还允许用户使用 Azure 广泛的历史交通数据库和预测任何一天任何时间的路线时间来规划路线。 有关详细信息，请参阅 [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 应该**在 map load eventListener 中**添加以下所有代码块，以确保它们在地图完全加载之后加载。
 
 1. 首先，在地图上添加一个新层以显示路线路径或 linestring。 在本教程中，有两种不同的路线 -“汽车路线”和“卡车路线”，每种路线有自己的样式。 将以下 JavaScript 代码添加到脚本块：
 
@@ -233,7 +234,7 @@ ms.locfileid: "48815301"
     // Execute the car route query then add the route to the map once a response is received  
     client.route.getRouteDirections(routeQuery).then(response => {
         // Parse the response into GeoJSON
-        var geoJsonResponse = new tlas.service.geojson
+        var geoJsonResponse = new atlas.service.geojson
             .GeoJsonRouteDiraectionsResponse(response);
 
         // Get the first in the array of routes and add it to the map 

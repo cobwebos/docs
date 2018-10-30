@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: b8961edebd80d5f36d844734e3c93a4bd3b1f0cf
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6783c59b354e0eebc7fa6d8f67985b8d7b72c22a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42162127"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645825"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建并自动执行任务、流程和工作流 - Visual Studio
 
@@ -148,6 +148,10 @@ ms.locfileid: "42162127"
 
    ![部署状态输出](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
+   如果所选连接器需要你提供输入，则会在背景中打开一个 PowerShell 窗口，提示你输入必需的密码或机密密钥。 输入该信息后，部署会继续。
+   
+   ![部署 powershell_window](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   
    部署完成后，逻辑应用就会出现在 Azure 门户中，并会根据指定的计划（每隔一分钟）检查 RSS 源。 
    如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 
    否则，逻辑应用会等到下一个间隔过后才进行检查。 

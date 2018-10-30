@@ -6,22 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: facf8895770f890bfbbef946a32cc681f685e998
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 361a1934a1e0cdcc0647c4c4f62af98f52b8c899
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915196"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456860"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
 [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 - 这是本系列的第二个教程，演示如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在第一个教程中，我们[设置了 VMware 灾难恢复所需的 Azure 组件](tutorial-prepare-azure.md)。
-- 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 
+
+
+> [!NOTE]
+> 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请参阅相应方案的“操作方法”部分。
 
 在本文中，我们演示，当你希望使用 Azure Site Recovery 将 VMware VM 复制到 Azure 时，如何准备本地 VMware 环境。 学习如何：
 
@@ -91,7 +94,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
     - 应在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP。
     - 检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](https://support.microsoft.com/kb/3031135)。
 - 触发故障转移时，VM 上不应存在待处理的 Windows 更新。 如果存在，则在更新完成之前无法登录到虚拟机。
-- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”查看 VM 的屏幕截图。 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除技巧](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 在 Windows Azure VM 上执行故障转移后，请选中“启动诊断”，查看 VM 的屏幕截图。 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除技巧](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 若要在故障转移后使用 SSH 连接到 Linux VM，请执行以下操作：
 
@@ -101,11 +104,13 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 - 为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。
 - 可选中“启动诊断”查看 VM 的屏幕截图。
 
+
+## <a name="failback-requirements"></a>故障回复要求
+如果打算故障回复到本地，则还需确保某些[先决条件得到满足](vmware-azure-reprotect.md##before-you-begin)。 不过，对 VM 来说，这些先决条件**不是开始启用灾难恢复所需的**，也可在故障转移到 Azure 后履行。
+
 ## <a name="useful-links"></a>有用链接
 
 如果要复制多个 VM，则应在开始之前规划容量和部署。 [了解详细信息](site-recovery-deployment-planner.md)。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

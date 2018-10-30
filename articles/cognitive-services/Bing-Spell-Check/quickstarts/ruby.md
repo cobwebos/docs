@@ -10,16 +10,16 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 3fe8729a9e2524cc2ccda168a857d58664a98b10
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e75b8e8b23bbb8e49cb8d8ec55e42f6ffb204197
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801074"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023485"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>通过 Ruby 使用必应拼写检查 API 快速入门 
 
-本文展示了如何通过 Ruby 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/)。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
+本文展示了如何通过 Ruby 使用[必应拼写检查 API](https://azure.microsoft.com/services/cognitive-services/spell-check/) 。 拼写检查 API 返回它无法识别的单词和建议的替换的列表。 通常，你将向此 API 提交文本，然后在文本中进行建议的替换，或者向应用程序的用户显示这些替换，以便他们可以决定是否进行替换。 本文介绍如何发送包含文本“Hollo, wrld!”的请求 建议的替换为“Hello”和“world”。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "48801074"
 
 1. 在你喜欢使用的 IDE 中新建一个 Ruby 项目。
 2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
+3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。
 
 ```ruby

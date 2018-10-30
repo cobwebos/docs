@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166247"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466964"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>教程：使用 Azure Data Box Edge（预览版）转换数据
 
 本教程介绍如何在 Data Box Edge 中配置计算角色。 配置计算角色后，Data Box Edge 可在将数据发送到 Azure 之前先转换数据。
 
-此过程可能需要大约 30-45 分钟才能完成。 
+此过程可能需要大约 30-45 分钟才能完成。
 
 本教程介绍如何执行下列操作：
 
@@ -31,7 +31,7 @@ ms.locfileid: "49166247"
 > * 验证数据转换和传输
 
 > [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,8 @@ ms.locfileid: "49166247"
 
 ![创建 IoT 中心资源](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-未设置 Edge 计算角色时，请注意 
+未设置 Edge 计算角色时，请注意：
+
 - IoT 中心资源不包含任何 IoT 设备或 IoT Edge 设备。
 - 无法创建 Edge 本地共享。 添加共享时，不会启用用来为 Edge 计算创建本地共享的选项。
 
@@ -91,12 +92,12 @@ ms.locfileid: "49166247"
 
     ![设置计算角色](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-但是，此 Edge 设备不包含任何自定义模块。 现在，可将自定义模块添加到此设备。
+但是，此 Edge 设备不包含任何自定义模块。 现在，可将自定义模块添加到此设备。 若要了解如何创建自定义模块，请访问[为 Data Box Edge 开发 C# 模块](data-box-edge-create-iot-edge-module.md)。
 
 
 ## <a name="add-a-custom-module"></a>添加自定义模块
 
-在本部分，我们将一个自定义模块添加到 IoT Edge 设备。 
+在此部分，请将在[为 Data Box Edge 开发 C# 模块](data-box-edge-create-iot-edge-module.md)中创建的自定义模块添加到 IoT Edge 设备。 
 
 此过程使用一个示例，其中，所用的自定义模块从 Edge 设备上的本地共享提取文件，并将其移到设备上的云共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。 
 
@@ -133,11 +134,26 @@ ms.locfileid: "49166247"
 
         ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. 指定 IoT Edge 自定义模块的设置。 提供模块的**名称**和**映像 URI**。 
+    2. 指定 IoT Edge 自定义模块的设置。 提供模块的**名称**，并为相应的容器映像提供**映像 URI**。 
     
         ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. 在“容器创建选项”中，提供在前面步骤中为云共享和本地共享复制的 Edge 模块本地装入点（必须使用这些路径，而不要创建新路径）。 这些共享将映射到相应的容器装入点。 另外，请在此处为模块提供任何环境变量。
+    3. 在“容器创建选项”中，提供在前面步骤中为云共享和本地共享复制的 Edge 模块本地装入点（必须使用这些路径，而不要创建新路径）。 本地装载点映射到相应的 **InputFolderPath** 和 **OutputFolderPath**，后者是在[使用自定义代码更新模块](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code)时在模块中指定的。 
+    
+        可以复制下面显示的示例并将其粘贴到**容器创建选项**中： 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        另外，请在此处为模块提供任何环境变量。
 
         ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ ms.locfileid: "49166247"
         ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  在“指定路由”下，设置模块之间的路由。 在本例中，请提供要将数据推送到云共享的本地共享的名称。 单击“下一步”。
+
+    可以将路由替换为以下路由字符串："route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
 
     ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

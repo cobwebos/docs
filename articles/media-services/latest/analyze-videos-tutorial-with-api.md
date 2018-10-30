@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376646"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985703"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
 
@@ -33,9 +33,6 @@ ms.locfileid: "49376646"
 > * 运行应用
 > * 检查输出
 > * 清理资源
-
-> [!Note]
-> 根据[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)中所述，使用 Azure 门户将媒体服务帐户设置为 10 个 S3 媒体预留单元。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,6 +68,9 @@ ms.locfileid: "49376646"
 4. 提交作业。
 5. 检查作业的状态。
 6. 下载运行作业产生的文件。 
+
+> [!NOTE]
+> 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体保留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 

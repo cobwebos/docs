@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/27/2018
+ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 7d044559d72b07dc86a5ee1c2269452a9059de61
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354387"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471503"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -42,6 +42,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.AAD/locations/operationresults/read |  |
 > | 操作 | Microsoft.AAD/Operations/read |  |
 > | 操作 | Microsoft.AAD/register/action | 注册域服务 |
+> | 操作 | Microsoft.AAD/unregister/action | 取消注册域服务 |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
 
@@ -665,6 +666,26 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.BingMaps/mapApis/regenerateKey/action | 再生成密钥 |
 > | 操作 | Microsoft.BingMaps/mapApis/Write | 写入操作 |
 > | 操作 | Microsoft.BingMaps/Operations/read | 操作说明。 |
+
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+
+> [!div class="mx-tdCol2BreakAll"]
+> | 操作类型 | Operation | Description |
+> | --- | --- | --- |
+> | 操作 | Microsoft.Blueprint/blueprintAssignments/delete | 删除任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprintAssignments/read | 读取任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprintAssignments/write | 创建或更新任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprints/artifacts/delete | 删除任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprints/artifacts/read | 读取任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprints/artifacts/write | 创建或更新任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprints/delete | 删除任何蓝图 |
+> | 操作 | Microsoft.Blueprint/blueprints/read | 读取任何蓝图 |
+> | 操作 | Microsoft.Blueprint/blueprints/versions/artifacts/read | 读取任何蓝图项目 |
+> | 操作 | Microsoft.Blueprint/blueprints/versions/delete | 删除任何蓝图 |
+> | 操作 | Microsoft.Blueprint/blueprints/versions/read | 读取任何蓝图 |
+> | 操作 | Microsoft.Blueprint/blueprints/versions/write | 创建或更新任何蓝图 |
+> | 操作 | Microsoft.Blueprint/blueprints/write | 创建或更新任何蓝图 |
+> | 操作 | Microsoft.Blueprint/register/action | 注册蓝图资源提供程序 |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -1610,9 +1631,12 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/monitoringdata/read | 获取任何集成运行时的监视数据。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/nodes/delete | 删除指定的集成运行时的节点。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/nodes/ipAddress/action | 返回集成运行时的指定节点的 IP 地址。 |
+> | 操作 | Microsoft.DataFactory/factories/integrationruntimes/nodes/read | 读取指定的集成运行时的节点。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/nodes/write | 更新自承载集成运行时节点。 |
+> | 操作 | Microsoft.DataFactory/factories/integrationruntimes/queryactivityruns/action | 查询指定的集成运行时的活动运行。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/read | 读取任何集成运行时。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/regenerateauthkey/action | 重新生成指定的集成运行时的身份验证密钥。 |
+> | 操作 | Microsoft.DataFactory/factories/integrationruntimes/removelinks/action | 从指定的集成运行时中删除链接的集成运行时引用。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/start/action | 启动任何集成运行时。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/stop/action | 停止任何集成运行时。 |
 > | 操作 | Microsoft.DataFactory/factories/integrationruntimes/synccredentials/action | 同步指定的集成运行时的凭据。 |
@@ -1983,7 +2007,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.DevTestLab/labs/users/secrets/read | 读取机密。 |
 > | 操作 | Microsoft.DevTestLab/labs/users/secrets/write | 添加或修改机密。 |
 > | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/delete | 删除 Service Fabric。 |
-> | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/ListApplicableSchedules/action | 列出所有适用的计划 |
+> | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/ListApplicableSchedules/action | 列出适用的启动/停止计划（如果有）。 |
 > | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/read | 读取 Service Fabric。 |
 > | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/delete | 删除计划。 |
 > | 操作 | Microsoft.DevTestLab/labs/users/serviceFabrics/schedules/Execute/action | 执行计划。 |
@@ -1999,7 +2023,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/delete | 删除虚拟机。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/DetachDataDisk/action | 从虚拟机中分离指定的磁盘。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/GetRdpFileContents/action | 获取一个字符串，该字符串表示虚拟机的 RDP 文件内容 |
-> | 操作 | Microsoft.DevTestLab/labs/virtualMachines/ListApplicableSchedules/action | 列出所有适用的计划 |
+> | 操作 | Microsoft.DevTestLab/labs/virtualMachines/ListApplicableSchedules/action | 列出适用的启动/停止计划（如果有）。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/read | 读取虚拟机。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/Redeploy/action | 重新部署虚拟机 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/Resize/action | 调整虚拟机大小。 |
@@ -2010,7 +2034,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/schedules/write | 添加或修改计划。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/Start/action | 启动虚拟机。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/Stop/action | 停止虚拟机 |
-> | 操作 | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | 将虚拟机数据磁盘的所有权转让给自己 |
+> | 操作 | Microsoft.DevTestLab/labs/virtualMachines/TransferDisks/action | 转移附加到虚拟机的所有数据磁盘，该虚拟机将规当前用户所有。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/UnClaim/action | 释放现有虚拟机的所有权 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualMachines/write | 添加或修改虚拟机。 |
 > | 操作 | Microsoft.DevTestLab/labs/virtualNetworks/delete | 创建虚拟网络。 |
@@ -2122,6 +2146,13 @@ ms.locfileid: "49354387"
 > [!div class="mx-tdCol2BreakAll"]
 > | 操作类型 | Operation | Description |
 > | --- | --- | --- |
+> | 操作 | Microsoft.EventGrid/domains/delete | 删除域 |
+> | 操作 | Microsoft.EventGrid/domains/listKeys/action | 列出域的密钥 |
+> | 操作 | Microsoft.EventGrid/domains/providers/Microsoft.Insights/metricDefinitions/read | 获取域的可用指标 |
+> | 操作 | Microsoft.EventGrid/domains/read | 读取域 |
+> | 操作 | Microsoft.EventGrid/domains/regenerateKey/action | 重新生成域的密钥 |
+> | 操作 | Microsoft.EventGrid/domains/topics/read | 读取域主题 |
+> | 操作 | Microsoft.EventGrid/domains/write | 创建或更新域 |
 > | 操作 | Microsoft.EventGrid/eventSubscriptions/delete | 删除 eventSubscription |
 > | 操作 | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | 获取事件订阅的完整 URL |
 > | 操作 | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | 获取事件订阅的诊断设置 |
@@ -2132,7 +2163,11 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/read | 获取主题的诊断设置 |
 > | 操作 | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新主题的诊断设置 |
 > | 操作 | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/metricDefinitions/read | 获取主题的可用指标 |
-> | 操作 | Microsoft.EventGrid/register/action | 注册 EventGrid 资源提供程序的 eventSubscription，并启用事件网格订阅的创建。 |
+> | 操作 | Microsoft.EventGrid/locations/operationResults/read | 读取区域操作的结果 |
+> | 操作 | Microsoft.EventGrid/locations/operationsStatus/read | 读取区域操作的状态 |
+> | 操作 | Microsoft.EventGrid/operationResults/read | 读取操作的结果 |
+> | 操作 | Microsoft.EventGrid/operationsStatus/read | 读取操作的状态 |
+> | 操作 | Microsoft.EventGrid/register/action | 注册事件网格资源提供程序的订阅。 |
 > | 操作 | Microsoft.EventGrid/topics/delete | 删除主题 |
 > | 操作 | Microsoft.EventGrid/topics/listKeys/action | 列出主题的密钥 |
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 获取主题的诊断设置 |
@@ -2141,6 +2176,8 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.EventGrid/topics/read | 读取主题 |
 > | 操作 | Microsoft.EventGrid/topics/regenerateKey/action | 重新生成主题的密钥 |
 > | 操作 | Microsoft.EventGrid/topics/write | 创建或更新主题 |
+> | 操作 | Microsoft.EventGrid/topictypes/eventtypes/read | 读取主题类型支持的事件类型 |
+> | 操作 | Microsoft.EventGrid/topictypes/read | 读取主题类型 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -2711,8 +2748,10 @@ ms.locfileid: "49354387"
 > | DataAction | Microsoft.LogAnalytics/logs/Heartbeat/read | 从 Heartbeat 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/IISAssessmentRecommendation/read | 从 IISAssessmentRecommendation 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/InboundConnection/read | 从 InboundConnection 表读取数据 |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeEvents/read | 从 KubeEvents 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/KubeNodeInventory/read | 从 KubeNodeInventory 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/KubePodInventory/read | 从 KubePodInventory 表读取数据 |
+> | DataAction | Microsoft.LogAnalytics/logs/KubeServices/read | 从 KubeServices 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/LinuxAuditLog/read | 从 LinuxAuditLog 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplication/read | 从 MAApplication 表读取数据 |
 > | DataAction | Microsoft.LogAnalytics/logs/MAApplicationHealth/read | 从 MAApplicationHealth 表读取数据 |
@@ -3033,6 +3072,9 @@ ms.locfileid: "49354387"
 > | --- | --- | --- |
 > | DataAction | Microsoft.Maps/accounts/data/read | 授予对映射帐户的数据读权限。 |
 > | 操作 | Microsoft.Maps/accounts/delete | 删除 Maps 帐户。 |
+> | 操作 | Microsoft.Maps/accounts/eventGridFilters/delete | 删除事件网格筛选器 |
+> | 操作 | Microsoft.Maps/accounts/eventGridFilters/read | 获取事件网格筛选器 |
+> | 操作 | Microsoft.Maps/accounts/eventGridFilters/write | 创建或更新事件网格筛选器 |
 > | 操作 | Microsoft.Maps/accounts/listKeys/action | 列出 Maps 帐户密钥 |
 > | 操作 | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.Maps/accounts/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
@@ -3739,6 +3781,7 @@ ms.locfileid: "49354387"
 > | 操作类型 | Operation | Description |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OperationalInsights/linkTargets/read | 列出不与 Azure 订阅关联的现有帐户。 要将此 Azure 订阅链接到工作区，请使用此操作在“创建工作区”操作的客户 ID 属性中返回的客户 ID。 |
+> | 操作 | microsoft.operationalinsights/operations/read | 列出所有可用的 OperationalInsights Rest API 操作。 |
 > | 操作 | Microsoft.OperationalInsights/register/action | 将订阅注册到资源提供程序。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/analytics/query/schema/read | 获取搜索架构 V2。 |
@@ -3751,6 +3794,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.OperationalInsights/workspaces/datasources/read | 获取工作区下面的数据源。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/datasources/write | 在工作区下面创建/更新数据源。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/delete | 删除工作区。 如果该工作区在创建时已链接到现有工作区，则不会删除它链接到的工作区。 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/gateways/delete | 删除为工作区配置的网关。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/generateregistrationcertificate/action | 为工作区生成注册证书。 此证书用于将 Microsoft System Center Operation Manager 连接到工作区。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/intelligencepacks/disable/action | 为给定的工作区禁用智能包。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/intelligencepacks/enable/action | 为给定的工作区启用智能包。 |
@@ -3813,8 +3857,10 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | 从 Heartbeat 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | 从 IISAssessmentRecommendation 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | 从 InboundConnection 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeEvents/read | 从 KubeEvents 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeNodeInventory/read | 从 KubeNodeInventory 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/KubePodInventory/read | 从 KubePodInventory 表读取数据 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/query/KubeServices/read | 从 KubeServices 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/LinuxAuditLog/read | 从 LinuxAuditLog 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/MAApplication/read | 从 MAApplication 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/MAApplicationHealth/read | 从 MAApplicationHealth 表读取数据 |
@@ -3920,16 +3966,20 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | 从 WUDOAggregatedStatus 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | 从 WUDOStatus 表读取数据 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/regeneratesharedkey/action | 重新生成指定的工作区共享密钥 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/delete | 删除保存的搜索查询 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
+> | 操作 | microsoft.operationalinsights/workspaces/savedsearches/results/read | 获取保存的搜索结果。 已放弃 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/savedSearches/write | 创建保存的搜索查询 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/schema/read | 获取工作区的搜索架构。  搜索架构包含公开的字段及其类型。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
+> | 操作 | microsoft.operationalinsights/workspaces/search/read | 获取搜索结果。 已弃用。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/sharedKeys/action | 检索工作区的共享密钥。 这些密钥用于将 Microsoft Operational Insights 代理连接到工作区。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/sharedKeys/read | 检索工作区的共享密钥。 这些密钥用于将 Microsoft Operational Insights 代理连接到工作区。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete | 删除存储配置。 这会阻止 Microsoft Operational Insights 从存储帐户中读取数据。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read | 获取存储配置。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write | 创建新的存储配置。 这些配置用于从现有存储帐户中的某个位置提取数据。 |
+> | 操作 | Microsoft.OperationalInsights/workspaces/upgradetranslationfailures/read | 获取工作区的搜索升级转换失败日志 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/usages/read | 获取工作区的使用情况数据，包括工作区读取的数据量。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/write | 创建新的工作区，或者通过提供现有工作区中的客户 ID 链接到现有工作区。 |
 
@@ -4234,7 +4284,9 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Resourcehealth/healthevent/Resolved/action | 表示指定资源的运行状况状态的更改 |
 > | 操作 | Microsoft.Resourcehealth/healthevent/Updated/action | 表示指定资源的运行状况状态的更改 |
 > | 操作 | Microsoft.ResourceHealth/impactedResources/read | 获取给定订阅中受影响的资源 |
+> | 操作 | Microsoft.ResourceHealth/Operations/read | 获取可用于 Microsoft ResourceHealth 的操作 |
 > | 操作 | Microsoft.ResourceHealth/register/action | 注册 Microsoft ResourceHealth 的订阅 |
+> | 操作 | Microsoft.ResourceHealth/unregister/action | 取消注册 Microsoft ResourceHealth 的订阅 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
@@ -4358,6 +4410,7 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Security/securityStatuses/read | 获取 Azure 资源的安全运行状况 |
 > | 操作 | Microsoft.Security/securityStatusesSummaries/read | 获取某一范围的安全状态摘要 |
 > | 操作 | Microsoft.Security/tasks/read | 获取所有可用的安全建议 |
+> | 操作 | Microsoft.Security/unregister/action | 从 Azure 安全中心取消注册订阅 |
 > | 操作 | Microsoft.Security/webApplicationFirewalls/delete | 删除 Web 应用程序防火墙 |
 > | 操作 | Microsoft.Security/webApplicationFirewalls/read | 获取 Web 应用程序防火墙 |
 > | 操作 | Microsoft.Security/webApplicationFirewalls/write | 创建新的或更新现有的 Web 应用程序防火墙 |
@@ -4534,6 +4587,8 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Sql/locations/instanceFailoverGroups/write | 使用指定参数创建实例故障转移组，或更新指定实例故障转移组的属性或标记。 |
 > | 操作 | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | 返回特定接口终结点 Azure 异步操作的详细信息 |
 > | 操作 | Microsoft.Sql/locations/interfaceEndpointProfileOperationResults/read | 返回特定接口终结点配置文件操作的详细信息 |
+> | 操作 | Microsoft.Sql/locations/jobAgentAzureAsyncOperation/read | 获取作业代理操作的状态。 |
+> | 操作 | Microsoft.Sql/locations/jobAgentOperationResults/read | 获取作业代理操作的结果。 |
 > | 操作 | Microsoft.Sql/locations/longTermRetentionBackups/read | 列出某个位置的每台服务器上的每个数据库的长期保留备份 |
 > | 操作 | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read | 列出服务器上每个数据库的长期保留备份 |
 > | 操作 | Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete | 删除长期保留备份 |
@@ -4552,6 +4607,8 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Sql/managedInstances/administrators/delete | 删除托管实例的现有管理员。 |
 > | 操作 | Microsoft.Sql/managedInstances/administrators/read | 获取托管实例管理员的列表。 |
 > | 操作 | Microsoft.Sql/managedInstances/administrators/write | 使用指定参数创建或更新托管实例管理员。 |
+> | 操作 | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/read | 获取托管数据库的短期保留策略 |
+> | 操作 | Microsoft.Sql/managedInstances/databases/backupShortTermRetentionPolicies/write | 更新托管数据库的短期保留策略 |
 > | 操作 | Microsoft.Sql/managedInstances/databases/delete | 删除现有托管数据库 |
 > | 操作 | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.Sql/managedInstances/databases/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
@@ -4585,6 +4642,8 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/logDefinitions/read | 获取托管实例的可用日志 |
 > | 操作 | Microsoft.Sql/managedInstances/providers/Microsoft.Insights/metricDefinitions/read | 返回托管实例可用的指标类型 |
 > | 操作 | Microsoft.Sql/managedInstances/read | 返回托管实例的列表，或获取指定托管实例的属性。 |
+> | 操作 | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/read | 获取已删除的托管数据库的短期保留策略 |
+> | 操作 | Microsoft.Sql/managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies/write | 更新已删除的托管数据库的短期保留策略 |
 > | 操作 | Microsoft.Sql/managedInstances/restorableDroppedDatabases/read | 返回可还原的已删除托管数据库的列表。 |
 > | 操作 | Microsoft.Sql/managedInstances/securityAlertPolicies/read | 检索在给定托管服务器上配置的托管服务器威胁检测策略的详细信息 |
 > | 操作 | Microsoft.Sql/managedInstances/securityAlertPolicies/write | 更改给定托管服务器的托管服务器威胁检测策略 |
@@ -4773,6 +4832,9 @@ ms.locfileid: "49354387"
 > | 操作 | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | 删除指定的接口终结点配置文件 |
 > | 操作 | Microsoft.Sql/servers/interfaceEndpointProfiles/read | 返回指定接口终结点配置文件的属性 |
 > | 操作 | Microsoft.Sql/servers/interfaceEndpointProfiles/write | 使用指定的参数创建接口终结点配置文件，或更新指定接口终结点的属性或标记 |
+> | 操作 | Microsoft.Sql/servers/jobAgents/delete | 删除 Azure SQL DB 作业代理 |
+> | 操作 | Microsoft.Sql/servers/jobAgents/read | 获取 Azure SQL DB 作业代理 |
+> | 操作 | Microsoft.Sql/servers/jobAgents/write | 创建或更新 Azure SQL DB 作业代理 |
 > | 操作 | Microsoft.Sql/servers/keys/delete | 删除现有服务器密钥。 |
 > | 操作 | Microsoft.Sql/servers/keys/read | 返回服务器密钥的列表，或获取指定服务器密钥的属性。 |
 > | 操作 | Microsoft.Sql/servers/keys/write | 使用指定参数创建密钥，或更新指定服务器密钥的属性或标记。 |

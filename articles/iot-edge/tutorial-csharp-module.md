@@ -9,12 +9,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c4c86017655facd6ab29f8e9e6c8f496ef79c72
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61bcb01f549b6a47f3c4899975d4b1b23fbd9e3b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166213"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957014"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C# IoT Edge 模块并将其部署到模拟设备
 
@@ -58,7 +58,7 @@ Azure IoT Edge 设备：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “Azure 容器注册表”。
 2. 为注册表提供一个名称，选择一个订阅，选择一个资源组，然后将 SKU 设置为“基本”。 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
 5. 将“管理员用户”切换到“启用”。
 6. 复制“登录服务器”、“用户名”和“密码”的值。 在本教程稍后，我们会使用这些值将 Docker 映像发布到注册表，并将注册表凭据添加到 Azure IoT Edge 运行时。 
@@ -266,7 +266,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 3. 在 deployment.template.json 文件中，**registryCredentials** 节存储 Docker 注册表凭据。 实际的用户名和密码对存储在 git 忽略的 .env 文件中。  
 
-4. 将 **CSharpModule** 模块孪生添加到部署清单。 在 **moduleContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容： 
+4. 将 **CSharpModule** 模块孪生添加到部署清单。 在 **modulesContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容： 
     ```json
         "CSharpModule": {
             "properties.desired":{

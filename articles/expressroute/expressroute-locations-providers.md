@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: pareshmu
-ms.openlocfilehash: 8372cd82e9b62c4440a9e7d525b7135153e59dde
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a55e57c2cc1c0ff2ba44f681cbae90ba69fdc434
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378062"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957785"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -49,7 +49,7 @@ ms.locfileid: "49378062"
 | **日本** |日本西部、日本东部 |大坂、东京 |
 | **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
 | **澳大利亚政府** | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 | 
-| **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
+| **印度** |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 | **南非** |[南非西部+、南非北部+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |开普敦、约翰内斯堡 |
 
@@ -76,7 +76,7 @@ ms.locfileid: "49378062"
 ### <a name="production-azure"></a>生产 Azure
 | **位置** | **对等位置所有者** | **服务提供商** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo |
+| **阿姆斯特丹** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
 | **阿姆斯特丹 2** | Interxion | Interxion |
 | **亚特兰大** | Equinix | Equinix、Megaport |
 | **釜山** |LG CNS | LG CNS |
@@ -85,13 +85,13 @@ ms.locfileid: "49378062"
 | **开普敦** | Teraco | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **金奈** | Tata Communications | Global CloudXchange (GCX)、SIFY、Tata Communications |
 | **金奈 2** | Airtel | Airtel |
-| **芝加哥** | Equinix | AT&T NetBond、Comcast、Coresite、Equinix、PacketFabric、PCCW Global Limited、Level 3 Communications、Megaport、Sprint、Verizon、Zayo |
-| **达拉斯** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Neutrona Networks、Telmex Uninet+、Verizon、Zayo|
+| **芝加哥** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Comcast、Coresite、Equinix、Internet2、Level 3 Communications、Megaport、PacketFabric、PCCW Global Limited、Sprint、Verizon、Zayo |
+| **达拉斯** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Internet2、Level 3 Communications、Megaport、Neutrona Networks、Telmex Uninet+、Verizon、Zayo|
 | **丹佛** | CoreSite | CoreSite、Megaport |
 | **都柏林** | Equinix | Colt、eir、Equinix、Interxion、Megaport |
 | **香港** | Equinix | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **约翰内斯堡** | Teraco | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
-| **吉隆坡** | TIME | TIME |
+| **吉隆坡** | TIME dotCom | TIME dotCom |
 | **拉斯维加斯** | Switch | CenturyLink Cloud Connect、Megaport |
 | **伦敦** | Equinix | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |
 | **洛杉矶** | CoreSite | CoreSite、Equinix、Megaport、NTT、Zayo |
@@ -100,23 +100,23 @@ ms.locfileid: "49378062"
 | **迈阿密** | Equinix | C3ntro+、Equinix、Megaport、Neutrona Networks |
 | **Montreal** | Cologix | Bell Canada、Cologix、Telus、Zayo |
 | **Mumbai** | Tata Communications | Global CloudXchange (GCX)、Sify、Tata Communications、Vodafone Idea |
-| **孟买 2** | Airtel | Airtel、Sify |
-| **纽约** | Equinix | CenturyLink Cloud Connect、Coresite、Equinix、Megaport、Zayo |
+| **孟买 2** | Airtel | Airtel、Sify、Vodafone Idea |
+| **纽约** | Equinix | CenturyLink Cloud Connect、Coresite、Equinix、InterCloud、Megaport、Zayo |
 | **Newport(Wales)** | Next Generation Data | Level 3 Communications、Next Generation Data |
 | **大阪** | Equinix | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **巴黎** | Interxion | Colt、Intercloud、Interxion、Equinix、Orange |
 | **魁北克市** | 4Degrees | Bell Canada、Megaport |
 | **圣安东尼奥** | CyrusOne | CenturyLink Cloud Connect、Megaport |
-| **圣保罗** | Equinix | Ascenty Data Centers、Equinix、Level 3 Communications、Neutrona Networks、Telefonica、UOLDIVEO |
-| **西雅图** | Equinix | Equinix、Level 3 Communications、Megaport |
+| **圣保罗** | Equinix | Aryaka Networks、Ascenty Data Centers、British Telecom、Equinix、Level 3 Communications、Neutrona Networks、Orange、Tata Communications、Telefonica、UOLDIVEO |
+| **西雅图** | Equinix | Aryaka Networks、Equinix、Level 3 Communications、Megaport、Zayo |
 | **首尔** | KINX | KINX、LG CNS、Sejong Telecom |
 | **硅谷** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IXReach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo Group |
-| **新加坡** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
+| **新加坡** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **新加坡 2** | Global Switch | Megaport、SingTel |
 | **悉尼** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
 | **东京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt, Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Softbank、Verizon |
 | **多伦多** | Cologix | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、Megaport、Telus、Zayo |
-| **华盛顿特区** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
+| **华盛顿特区** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 
  **+** 表示即将推出
 
@@ -130,8 +130,8 @@ ms.locfileid: "49378062"
 | **纽约** |Equinix、CenturyLink Cloud Connect、Verizon |
 | **Phoenix** | CenturyLink Cloud Connect |
 | **圣安东尼奥** | Megaport |
-| **硅谷** | Equinix、Level 3 Communications |
-| **西雅图** | Equinix |
+| **硅谷** | Equinix、Level 3 Communications、Verizon |
+| **西雅图** | Equinix、Megaport |
 | **华盛顿特区** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
 ### <a name="china"></a>中国

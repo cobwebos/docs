@@ -1,24 +1,30 @@
 ---
-title: 快速入门：Python 更新知识库 - QnA Maker
-description: 如何使用 Python 为 QnA Maker 更新知识库。
+title: 快速入门：更新知识库 - REST、Python - QnA Maker
+description: 此基于 REST 的快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。 用来更新知识库的 JSON 定义允许添加、更改或删除问题和解答对。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 35ef0222de6093e7bae3b41377db2ea3fd3c3d75
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031928"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645908"
 ---
-# <a name="update-a-knowledge-base-in-python"></a>使用 Python 更新知识库
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：通过 Python 更新 QnA Maker 中的知识库
 
-以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
+本快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。  使用此 JSON，可以通过添加新数据源、更改数据源或删除数据源来更新知识库。
+
+此 API 等效于进行编辑然后使用 QnA Maker 门户中的“保存并训练”按钮。
+
+本快速入门调用了 QnA Maker API：
+* [更新](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) - 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
+* [获取操作详细信息](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

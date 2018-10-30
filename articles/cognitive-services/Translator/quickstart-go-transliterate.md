@@ -1,29 +1,29 @@
 ---
-title: 快速入门：转换文本脚本 - 文本翻译，Go
+title: 快速入门：转换文本脚本，Go - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Go 将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126745"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648354"
 ---
-# <a name="quickstart-transliterate-text-with-go"></a>快速入门：使用 Go 音译文本
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>快速入门：使用文本翻译 REST API (Go) 对文本进行直译
 
 在本快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用**核心**库，因此不需要外部依赖项。
+需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此不需要外部依赖项。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

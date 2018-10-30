@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095913"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638233"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 本文将数据工厂与数据工厂版本 1 进行了比较。 有关数据工厂的简介，请参阅[数据工厂简介](introduction.md)。有关数据工厂版本 1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 
@@ -62,7 +62,7 @@ ms.locfileid: "43095913"
 [Until](control-flow-until-activity.md) 活动提供的功能与编程语言中 do-until 循环结构提供的功能相同。 它在循环中运行一组活动，直到与活动相关联的条件的计算结果为 `true`。 你可以在数据工厂中为 Until 活动指定超时值。  
 
 ### <a name="trigger-based-flows"></a>基于触发器的流
-可以按需或按时钟时间触发管道。 [管道和触发器](concepts-pipeline-execution-triggers.md)一文详细介绍了触发器。 
+可以按需（基于事件，即 blob post）或按时钟时间触发管道。 [管道和触发器](concepts-pipeline-execution-triggers.md)一文详细介绍了触发器。 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>从一个管道调用另一个管道
 [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)允许一个数据工厂管道调用另一个管道。

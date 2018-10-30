@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056431"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647266"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -42,7 +42,7 @@ ms.locfileid: "47056431"
 
    ![创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图说明”保留为空。  在“定义位置”复选框中，单击右侧的省略号，选择想要在其中保存蓝图的[管理组](../management-groups/overview.md)然后单击“选择”。
+1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图说明”保留为空。  在“定义位置”框中，单击右侧的省略号，选择想要在其中保存蓝图的[管理组](../management-groups/overview.md)，然后单击“选择”。
 
    > [!NOTE]
    > 蓝图定义只能保存到管理组。 若要创建第一个管理组，请按照[以下步骤](../management-groups/create.md)进行操作。
@@ -111,7 +111,7 @@ ms.locfileid: "47056431"
 
    ![项目 - 资源管理器模板](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. 已完成的蓝图应如下所示： 请注意，每个项目在“参数”列下都显示“已填充 y 个参数中的 x 个。 动态参数将在每次分配蓝图期间设置，并且已在角色分配上配置单个静态参数。
+1. 已完成的蓝图应如下所示： 请注意，每个项目在“参数”列下都显示“已填充 y 个参数中的 x 个。 动态参数将在每次分配蓝图期间设置。
 
    ![已完成的蓝图](./media/create-blueprint-portal/completed-blueprint.png)
 

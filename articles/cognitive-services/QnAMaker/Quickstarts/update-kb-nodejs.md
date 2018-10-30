@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3bbc55b3bb064b2cf4b140a395e99209b71a5ce1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1b92589fe01f171b732c04057dc290f0f32cb31a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816198"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647810"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-nodejs"></a>快速入门：通过 Node.js 更新 QnA Maker 知识库
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：通过 Node.js 更新 QnA Maker 中的知识库
 
 本快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。  使用此 JSON，可以通过添加新数据源、更改数据源或删除数据源来更新知识库。
 
@@ -136,7 +136,7 @@ ms.locfileid: "48816198"
 
 ## <a name="add-updatekb-method"></a>添加 update_kb 方法
 
-以下方法更新知识库并重复检查状态。 由于创建知识库可能要花费一段时间，因此需要重复执行调用来检查状态，直到状态为成功或失败。
+以下方法更新知识库并重复检查状态。 因为知识库创建可能要花费一些时间，所以你需要重复用来检查状态的调用，直到状态为成功或失败。
 
 [!code-nodejs[Add update_kb method](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/update-knowledge-base/update-knowledge-base.js?range=139-169 "Add update_kb method")]
 
@@ -148,7 +148,7 @@ ms.locfileid: "48816198"
 node update-knowledge-base.js
 ```
 
-更新知识库后，可在 QnA Maker 门户的[我的知识库](https://www.qnamaker.ai/Home/MyServices)页中查看它。 
+更新知识库以后，可以在 QnA Maker 门户中的[我的知识库](https://www.qnamaker.ai/Home/MyServices)页中查看它。 
 
 ## <a name="next-steps"></a>后续步骤
 

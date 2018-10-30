@@ -1,6 +1,6 @@
 ---
 title: 收集 Azure 虚拟机相关数据 | Microsoft Docs
-description: 了解如何启用 OMS 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据。
+description: 了解如何启用 Log Analytics 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据的功能。
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -16,12 +16,12 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: c7015eb346136130b9ffd3c23460cb8b9609dc9b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 141df44f62ddb4a62f6f5f6a8b67107aa2c58a29
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040999"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404488"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>收集 Azure 虚拟机相关数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从 Azure 虚拟机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Azure Linux 或 Windows VM 中配置或收集数据。  
@@ -38,7 +38,7 @@ ms.locfileid: "48040999"
 
 2. 单击“创建”，然后为以下各项选择选项：
 
-  * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 
+  * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 OMS 工作区现在称为 Log Analytics 工作区。  
   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
   * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
@@ -46,22 +46,25 @@ ms.locfileid: "48040999"
   
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
-3. 在“OMS 工作区”窗格上提供所需信息后，单击“确定”。  
+3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>启用 Log Analytics VM 扩展
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+
 对于已在 Azure 中部署的 Windows 和 Linux 虚拟机，可使用 Log Analytics VM 扩展安装 Log Analytics 代理。  使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
 
 >[!NOTE]
->无法将适用于 Linux 的 OMS 代理配置为向多个 Log Analytics 工作区报告。 
+>无法将适用于 Linux 的 Log Analytics 代理配置为向多个 Log Analytics 工作区报告。 
 
 1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中，选择之前创建的 DefaultLAWorkspace。
 3. 在左侧菜单上的“工作区数据源”下，单击“虚拟机”。  
-4. 在“虚拟机”列表中，选择要在其中安装代理的虚拟机。 请注意，VM 的“OMS 连接状态”指示其“未连接”。
+4. 在“虚拟机”列表中，选择要在其中安装代理的虚拟机。 请注意，VM 的“Log Analytics 连接状态”指示其“未连接”。
 5. 在虚拟机的详细信息中，选择“连接”。 则自动会为 Log Analytics 工作区安装并配置代理。 此过程需要几分钟的时间，在此期间，“状态”为“正在连接”。
-6. 安装并连接代理后，会使用“此工作区”更新“OMS 连接状态”。
+6. 安装并连接代理后，会使用“此工作区”更新“Log Analytics 连接状态”。
 
 ## <a name="collect-event-and-performance-data"></a>收集的事件和性能数据
 Log Analytics 可从 Windows 事件日志或 Linux Syslog 以及指定用于长期分析的性能计数器中收集事件，并在检测到特定条件时采取措施。  首先，请按照下列步骤操作，配置从 Windows 系统日志和 Linux Syslog 以及几个常见性能计数器中收集事件。  

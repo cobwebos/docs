@@ -3,7 +3,7 @@ title: 在 Azure API 管理中导入和发布第一个 API | Microsoft Docs
 description: 了解如何在 API 管理中导入和发布第一个 API。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093396"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467389"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
 
@@ -59,7 +59,7 @@ ms.locfileid: "47093396"
     |---|---|---|
     |**OpenAPI 规范**|http://conferenceapi.azurewebsites.net?format=json|引用实现 API 的服务。 API 管理将请求转发到此地址。|
     |**显示名称**|演示会议 API|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。|
-    |**Name**|*demo-conference-api*|提供 API 的唯一名称。 <br/>如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
+    |**名称**|*demo-conference-api*|提供 API 的唯一名称。 <br/>如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
     |**说明**|提供 API 的可选说明。|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
     |**URL 方案**|*HTTPS*|确定可用于访问 API 的协议。 |
     |**API URL 后缀**|会议|此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。|
@@ -69,13 +69,15 @@ ms.locfileid: "47093396"
     >[!NOTE]
     > 若要发布 API，必须将其与某个产品相关联。 可以从“设置”页执行此操作。
     
-3. 选择**创建**。
+3. 选择“创建”。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 
+![测试 API 映射](./media/api-management-get-started/01-import-first-api-01.png)
+
 可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。  
 1. 从“API”选项卡选择在上一步骤中创建的 API。
-2. 按“测试”选项卡。![测试 API](./media/api-management-get-started/test-api.png)
+2. 按“测试”选项卡。
 3. 单击“GetSpeakers”。
     该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
 4. 按“发送”。
@@ -87,7 +89,8 @@ ms.locfileid: "47093396"
 此外，也可以从**开发人员门户**调用操作来测试 API。
 
 1. 导航到**开发人员门户**。
-![开发人员门户](./media/api-management-get-started/developer-portal.png)
+
+ ![开发人员门户](./media/api-management-get-started/developer-portal.png)
 
 2. 选择“API”，单击“演示会议 API”，然后单击“GetSpeakers”。
     

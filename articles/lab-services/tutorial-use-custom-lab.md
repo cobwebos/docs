@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638018"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470857"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的实验室
 本教程使用[教程：在 Azure 开发测试实验室中创建实验室](tutorial-create-custom-lab.md)中创建的实验室。
@@ -31,7 +31,7 @@ ms.locfileid: "34638018"
 > * 连接到 VM
 > * 取消认领 VM
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="access-the-lab"></a>访问实验室
 
@@ -57,6 +57,10 @@ ms.locfileid: "34638018"
 
     ![连接到虚拟机](./media/tutorial-use-custom-lab/connect-button.png)
 2. 将下载的“RDP”文件保存在硬盘中，然后用它来连接虚拟机。 指定上一节创建 VM 时提到的用户名和密码。 
+
+    > [!NOTE] 
+    > 若要连接到 Linux VM，必须为该 VM 启用 SSH 和/或 RDP 访问权限。 如需通过 RDP 连接到 Linux VM 的步骤，请参阅[安装和配置远程桌面以连接到 Azure 中的 Linux VM](../virtual-machines/linux/use-remote-desktop.md)。 
+
 
 ## <a name="unclaim-the-vm"></a>取消认领 VM
 使用 VM 完成操作后，执行以下步骤取消认领 VM： 

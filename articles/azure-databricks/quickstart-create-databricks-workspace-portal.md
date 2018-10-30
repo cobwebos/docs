@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: becf592d07f650c00263e26ccff2ad8525310dac
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 38e254c3ddc976a0ffebaa8c6fe1c60fd3b7c840
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363464"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025559"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -77,7 +77,7 @@ ms.locfileid: "49363464"
 
     * 输入群集的名称。
     * 在本文中，请创建运行时为 **4.0** 的群集。 
-    * 请务必选中**在不活动超过 ____ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。 
 

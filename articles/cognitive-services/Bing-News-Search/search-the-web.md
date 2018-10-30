@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 787fdea047f9e7d77ca0a156f1c41fa50fd2fa48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801465"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023196"
 ---
 # <a name="what-is-bing-news-search"></a>什么是必应新闻搜索？
 
@@ -27,7 +27,7 @@ ms.locfileid: "48801465"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="getting-general-news"></a>获取普通新闻
 
@@ -265,7 +265,7 @@ Host: api.cognitive.microsoft.com
 
 若要快速了解如何使用第一个请求，请参阅[发出第一个请求](./quickstart.md)。
 
-自行熟悉[必应新闻搜索 API v7] (https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考。 此参考文档包含可以用来请求搜索结果的终结点、标头和查询参数的列表。 此外还包含响应对象的定义。
+自行熟悉[必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考。 此参考文档包含可以用来请求搜索结果的终结点、标头和查询参数的列表。 此外还包含响应对象的定义。
 
 若要改进搜索框用户体验，请参阅[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md)。 当用户输入其查询词时，你可以调用此 API，以便获取他人所使用的相关查询词。
 

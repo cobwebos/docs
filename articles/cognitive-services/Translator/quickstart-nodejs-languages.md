@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取受支持的语言 - 文本翻译，Node.js
+title: 快速入门：获取受支持的语言，Node.js - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 Node.js 获取翻译、音译和字典查找支持的语言列表及示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: a3b9dde8983b87a63858b3eb1381f7c74545cb1a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: ff921243df078010bdc825d28b55d07333016774
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122852"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646401"
 ---
-# <a name="quickstart-get-supported-languages-with-nodejs"></a>快速入门：使用 Node.js 获取支持的语言
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-nodejs"></a>快速入门：通过文本翻译 REST API (Node.js) 获取受支持的语言
 
 在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 

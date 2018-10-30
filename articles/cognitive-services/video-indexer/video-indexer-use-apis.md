@@ -1,5 +1,5 @@
 ---
-title: 教程：使用视频索引器 API
+title: 使用视频索引器 API
 titlesuffix: Azure Cognitive Services
 description: 本文介绍如何开始使用视频索引器 API。
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985560"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637743"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>教程：使用视频索引器 API
+# <a name="use-the-video-indexer-api"></a>使用视频索引器 API
 
 > [!Note]
 > 视频索引器 V1 API 已于 2018 年 8 月 1 日弃用。 从现在起，应该使用视频索引器 v2 API。 <br/>若要使用视频索引器 v2 API 进行开发，请参阅[此处](https://api-portal.videoindexer.ai/)的说明。 
@@ -52,6 +52,9 @@ ms.locfileid: "45985560"
 
     ![注册](./media/video-indexer-use-apis/video-indexer-api03.png)
 
+> [!TIP]
+> 视频索引器用户可以使用单个订阅密钥连接到多个视频索引器帐户。 然后，可以个这些视频索引器帐户链接到不同的媒体服务帐户。
+
 ## <a name="obtain-access-token-using-the-authorization-api"></a>使用授权 API 获取访问令牌
 
 订阅授权 API 后，可以获取访问令牌。 这些访问令牌用于对操作 API 进行身份验证。 
@@ -78,7 +81,7 @@ ms.locfileid: "45985560"
 
 下表中所述的值适用。 “参数值”是使用 API 时传递的值。
 
-|**Name**|**参数值**|**说明**|
+|**名称**|**参数值**|**说明**|
 |---|---|---|
 |试用|试用|表示试用帐户。|
 |美国西部|westus2|表示 Azure 美国西部 2 区域。|

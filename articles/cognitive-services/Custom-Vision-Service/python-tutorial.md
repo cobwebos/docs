@@ -1,5 +1,5 @@
 ---
-title: 教程：创建图像分类项目 - 自定义影像服务，Python
+title: 教程：使用适用于 Python 的自定义视觉 SDK 创建图像分类项目
 titlesuffix: Azure Cognitive Services
 description: 创建项目、添加标记、上载图像、定型你的项目并使用默认终结点进行预测。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 96125ba1c54f742bb9ddf32a1588173217be0766
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363371"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953106"
 ---
-# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>教程：使用自定义影像服务和 Python 创建图像分类项目
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-python"></a>教程：使用适用于 Python 的自定义视觉 SDK 创建图像分类项目
 
 了解如何使用自定义影像服务和基本的 Python 脚本创建图像分类项目。 创建该项目后，你可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并将其用于以编程方式测试图像。 将此开源示例用作通过使用自定义视觉 API 构建自己的应用的模板。
 

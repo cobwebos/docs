@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380125"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429586"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -61,7 +61,9 @@ ms.locfileid: "44380125"
 ## <a name="create-an-azure-sql-db"></a>创建 Azure SQL DB
 在生产中运行 Fabrikam Fiber CallCenter 应用程序时，需要将数据保存在数据库中。 目前无法保证将数据保留在容器中，因此无法将生产数据存储在容器中的 SQL Server 中。
 
-建议使用 [Azure SQL 数据库](/azure/sql-database/sql-database-get-started-powershell)。 若要在 Azure 中设置和运行托管的 SQL Server DB，请运行以下脚本。  根据需要修改脚本变量。 clientIP 是开发计算机的 IP 地址。  如果你处于企业防火墙之后，则开发计算机的 IP 地址可能不是暴露于 Internet 的 IP 地址。  还可以通过 [Azure 门户](https://portal.azure.com)设置 SQL 数据库的服务器防火墙规则，Azure 门户中会列出计算机的 IP 地址。
+建议使用 [Azure SQL 数据库](/azure/sql-database/sql-database-get-started-powershell)。 若要在 Azure 中设置和运行托管的 SQL Server DB，请运行以下脚本。  根据需要修改脚本变量。 clientIP 是开发计算机的 IP 地址。
+
+如果你处于企业防火墙之后，则开发计算机的 IP 地址可能不是暴露于 Internet 的 IP 地址。 若要验证数据库是否有防火墙规则的正确 IP 地址，请转到 [Azure 门户](https://portal.azure.com)，在“SQL 数据库”部分找到数据库。 单击其名称，然后在“概览”部分单击“设置服务器防火墙”。 “客户端 IP 地址”是开发计算机的 IP 地址。 请确保它与“AllowClient”规则中的 IP 地址匹配。
 
 ```powershell
 $subscriptionID="<subscription ID>"

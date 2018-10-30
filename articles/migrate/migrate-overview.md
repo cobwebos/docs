@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162027"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025613"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -29,16 +29,16 @@ Azure Migrate 有助于：
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0 或 6.5 版）进行管理。
+- 只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0 或 6.5 版）进行管理。
 - 若要评估 Hyper-VM 和物理服务器，请使用 [Azure Site Recovery 部署规划器](http://aka.ms/asr-dp-hyperv-doc)进行 Hyper-V 评估，使用我们的[合作伙伴工具](https://azure.microsoft.com/migration/partners/)进行物理计算机评估。
 - 一次发现最多可以发现 1500 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 1500 个 VM。
 - 若要发现更大的环境，可以拆分发现，然后创建多个项目。 [了解详细信息](how-to-scale-assessment.md)。 Azure Migrate 最多允许每个订阅 20 个项目。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
-- 只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 这不会影响迁移计划的制定。可以迁移到任何 Azure 目标位置。 迁移项目的地域只用来存储在本地环境中发现的元数据。 [详细了解](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) Azure Migrate 收集的元数据。 收集的元数据存储在所选的 [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域之一中：
+-  只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 但是，可以计划到任意目标 Azure 位置的迁移。
+    - 只有在本地环境中发现的元数据才会存储在迁移项目区域中。
+    - 元数据存储在下述地理区域之一中：美国中西部/美国东部。
+    - 如果将依赖项可视化与 Log Analytics 工作区配合使用，则会在项目所在的区域中创建它。 
 
-**地域** | **区域**
---- | ---
-美国 | 美国中西部、美国东部
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？
 

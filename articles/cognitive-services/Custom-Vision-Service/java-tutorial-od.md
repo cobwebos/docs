@@ -1,5 +1,5 @@
 ---
-title: 教程：创建对象检测项目 - 自定义视觉 API，Java
+title: 教程：使用适用于 Java 的自定义视觉 SDK 创建对象检测项目 - 自定义视觉服务
 titlesuffix: Azure Cognitive Services
 description: 创建项目、添加标记、上载图像、定型你的项目并使用默认终结点进行预测。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364995"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957329"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>教程：使用 Java 构建对象检测项目
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>教程：使用适用于 Java 的自定义视觉 SDK 创建对象检测项目
 
 探索使用计算机视觉 API 创建对象检测项目的基础 Java 应用程序。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 将此开源示例用作通过使用自定义视觉 API 构建自己的应用的模板。
 

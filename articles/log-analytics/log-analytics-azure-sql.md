@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379298"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025661"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
 ![Azure SQL Analytics 符号](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics 是一种云监视解决方案，用于跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 它通过内置智能来收集和直观显示重要的 Azure SQL 数据库性能指标，以便进行性能故障排除。
+Azure SQL Analytics 是一种云监视解决方案，用于通过单个视图跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 它通过内置智能来收集和直观显示重要的 Azure SQL 数据库性能指标，以便进行性能故障排除。
 
 使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标和 Log Analytics 视图，在单个 Log Analytics 工作区中呈现有关所有 Azure SQL 数据库和弹性池和托管实例中的数据库的数据。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
 
@@ -66,23 +66,11 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>配置 Azure SQL 数据库、弹性池和托管实例以流式传输诊断遥测数据
 
-在工作区中创建 Azure SQL Analytics 解决方案后，为了监视 Azure SQL 数据库、托管实例数据库和弹性池的性能，需要**配置其中每个**要监视的资源，以将其诊断遥测数据流式传输到解决方案。
+在工作区中创建 Azure SQL Analytics 解决方案后，为了监视 Azure SQL 数据库、托管实例中的数据库和弹性池的性能，需要**配置其中每个**要监视的资源，以将其诊断遥测数据流式传输到解决方案。 请遵循此页面上的详细说明：
 
 - 为 Azure SQL 数据库、托管实例数据库和弹性池启用 Azure 诊断，以便[将诊断遥测数据流式传输到 Azure SQL Analytics](../sql-database/sql-database-metrics-diag-logging.md)。
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>配置多个 Azure 订阅
- 
-若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。 在执行脚本时提供工作区资源 ID 作为参数，以便将诊断数据从一个 Azure 订阅中的资源发送到另一 Azure 订阅中的工作区。
-
-**示例**
-
-```
-PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
-```
-
-```
-PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
-```
+上述页面还提供了有关启用通过单个 Azure SQL Analytics 工作区，在单个视图中监视多个 Azure 订阅的支持。
 
 ## <a name="using-the-solution"></a>使用解决方案
 
@@ -159,11 +147,48 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ![Azure SQL Analytics 查询](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
-### <a name="pricing"></a>定价
+## <a name="permissions"></a>权限
 
-虽然该解决方案可以免费使用，但超出每月分配的免费数据引入单位的诊断遥测数据消耗量仍适用，请参阅 [Log Analytics 定价](https://azure.microsoft.com/en-us/pricing/details/monitor)。 提供的免费数据引入单位每月可免费监控多个数据库。 请注意，与空闲数据相比，工作负载较重的活动数据库越多，将引入的数据越多。 选择 Azure SQL Analytics 导航菜单上的 OMS 工作区，然后选择使用情况和预估成本，即可轻松监视解决方案中的数据引入消耗量。
+若要使用 Azure SQL Analytics，最起码需要为用户授予 Azure 中的“读取者”角色。 但是，此角色不允许用户查看查询文本，或执行任何自动优化操作。 在 Azure 中，可以最大程度地使用该解决方案的更自由角色包括“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”。 可能还需要考虑在门户中创建一个自定义角色，该角色只拥有 Azure SQL Analytics 的特定使用权限，而无权管理其他资源。
 
-### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
+### <a name="creating-a-custom-role-in-portal"></a>在门户中创建自定义角色
+
+认识到某些组织会在 Azure 中强制实施严格的权限控制，请查看以下 PowerShell 脚本，以便在 Azure 门户中创建“SQL Analytics 监视操作员”自定义角色，该角色拥有最大程度地使用 Azure SQL Analytics 所需的最低读取和写入权限。
+
+请将以下脚本中的“{SubscriptionId}”替换为自己的 Azure 订阅 ID，并在以 Azure 中“所有者”或“参与者”角色的身份登录后执行该脚本。
+
+   ```powershell
+    Connect-AzureRmAccount
+    Select-AzureRmSubscription {SubscriptionId}
+    $role = Get-AzureRmRoleDefinition -Name Reader
+    $role.Name = "SQL Analytics Monitoring Operator"
+    $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
+    $role.IsCustom = $true
+    $role.Actions.Add("Microsoft.SQL/servers/databases/read");
+    $role.Actions.Add("Microsoft.SQL/servers/databases/topQueries/queryText/*");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/*");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Resources/deployments/write");
+    $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
+    New-AzureRmRoleDefinition $role
+   ```
+
+创建新角色后，请将此角色分配给你需要向其授予自定义权限，使其能够使用 Azure SQL Analytics 的每个用户。
+
+## <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
+
+Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Analytics 语言](./query-language/get-started-queries.md)。 请在[可用的指标和日志](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)中查看从数据库资源收集的、用于自定义查询的数据的说明。
+
+若要在解决方案中实现自动化警报，必须编写一个可在满足条件时触发警报的 Log Analytics 查询。 请查看有关 Log Analytics 查询的以下几个示例，可以基于这些示例在解决方案中设置警报。
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>针对 Azure SQL 数据库创建警报
 
@@ -257,6 +282,10 @@ AzureDiagnostics
 > [!NOTE]
 > - 设置此警报的先决条件是，已在解决方案中为受监视的托管实例启用了 ResourceUsageStats 日志的流式传输。
 > - 此查询要求将警报规则设置为当存在来自查询的结果时（> 0 个结果，表示托管实例满足该条件）触发。 输出是托管实例上的存储消耗量百分比。
+
+### <a name="pricing"></a>定价
+
+虽然该解决方案可以免费使用，但超出每月分配的免费数据引入单位的诊断遥测数据消耗量仍适用，请参阅 [Log Analytics 定价](https://azure.microsoft.com/en-us/pricing/details/monitor)。 提供的免费数据引入单位每月可免费监控多个数据库。 请注意，与空闲数据相比，工作负载较重的活动数据库越多，将引入的数据越多。 选择 Azure SQL Analytics 导航菜单上的 OMS 工作区，然后选择使用情况和预估成本，即可轻松监视解决方案中的数据引入消耗量。
 
 ## <a name="next-steps"></a>后续步骤
 

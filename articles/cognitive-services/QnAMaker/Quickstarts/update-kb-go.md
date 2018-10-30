@@ -1,25 +1,31 @@
 ---
-title: 快速入门：Go 更新知识库 - QnA Maker
+title: 快速入门：更新知识库 - REST、Go - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 如何在 Go 中为 QnA Maker 更新知识库。
+description: 此基于 REST 的快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。 用来更新知识库的 JSON 定义允许添加、更改或删除问题和解答对。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b447b77eb1fdd9135f7d15a791414d166194b2dd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5275184994dce446a7ca572a049f3860c4782139
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389303"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646875"
 ---
-# <a name="update-a-knowledge-base"></a>更新知识库
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-go"></a>快速入门：通过 Go 更新 QnA Maker 中的知识库
 
-以下代码使用 [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) 方法更新现有知识库。
+本快速入门将指导你完成以编程方式更新示例 QnA Maker 知识库 (KB) 的过程。  使用此 JSON，可以通过添加新数据源、更改数据源或删除数据源来更新知识库。
+
+此 API 等效于进行编辑然后使用 QnA Maker 门户中的“保存并训练”按钮。
+
+本快速入门调用了 QnA Maker API：
+* [更新](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) - 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
+* [获取操作详细信息](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 1. 在你喜欢使用的 IDE 中新建一个 C# 项目。
 2. 添加下面提供的代码。
@@ -191,7 +197,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>获取请求状态
 
-可以调用 [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) 方法检查创建或更新知识库的请求的状态。 若要了解如何使用此方法，请参阅 [Create](#Create) 或 [Update](#Update) 方法示例代码。
+可以调用 [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) 方法检查创建或更新知识库的请求的状态。 若要了解如何使用此方法，请参阅 [Create](create-new-kb-go.md) 快速入门的示例代码。
 
 ## <a name="next-steps"></a>后续步骤
 

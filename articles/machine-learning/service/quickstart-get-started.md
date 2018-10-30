@@ -9,18 +9,20 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: 14bd85a23e2630a1cf2a8b5621d669c4c6748168
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376612"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456807"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习
 
 在本快速入门中，请使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 
 
-本教程介绍以下操作：
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+在本快速入门中，请执行以下操作：
 
 * 在 Azure 订阅中创建工作区。
 * 在 Azure Notebook 中搭配 Python 使用，并记录多个迭代中的值。

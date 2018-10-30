@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 86b1cc50128cd74f4a11ff599c1ca26ce5ae5117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067834"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945393"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库。
@@ -30,6 +30,10 @@ ms.locfileid: "49067834"
 > * 运行迁移。
 > * 监视迁移。
 > * 下载迁移报告。
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
 
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：

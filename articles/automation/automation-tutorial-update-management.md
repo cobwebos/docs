@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6046781f59b64dcec4769686a2acd710c7b68965
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167250"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987301"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -90,7 +90,7 @@ ms.locfileid: "49167250"
 
 #### <a name="log-analytics-query-alert"></a>Log Analytics 查询警报
 
-如果部署成功，则可根据 Log Analytics 查询来创建警报。 如果部署失败，则可使用 [Runbook 警报](#runbook-alert)步骤在协调更新部署的主 runbook 失败时发出警报。 可以编写一个自定义查询来提供其他警报，以涵盖许多不同的方案。
+如果部署成功，则可根据 Log Analytics 查询来创建警报。 如果部署失败，则可使用 [Runbook 警报](#runbook-alert)步骤在协调更新部署的主 Runbook 失败时发出警报。 可以编写一个自定义查询来提供其他警报，以涵盖许多不同的方案。
 
 在 Azure 门户中转到“监视器”，然后选择“创建警报”。
 
@@ -194,6 +194,9 @@ UpdateRunProgress
 ![更新“计划设置”窗格](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
 此时会回到状态仪表板。 选择“计划性更新部署”即可显示所创建的部署计划。
+
+> [!NOTE]
+> 更新管理支持部署第一方更新和预下载的修补程序。 这需要在修补的系统上进行更改，请参阅[第一方和预下载支持](automation-update-management.md#firstparty-predownload)以了解如何在系统上配置这些设置。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 

@@ -1,26 +1,27 @@
 ---
 title: 快速入门：识别 Java 中的语音（Windows 或 Linux）
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何识别 Java 中的语音（Windows 或 Linux）
 services: cognitive-services
 author: fmegen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
+ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 1f0c19524ebd59dcf0377cc173cd780d656ba447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 80ddef79392acb677555ed795bf429f5ec0266a0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339190"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467253"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音 SDK 通过 Java 识别语音
+# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音服务 SDK 通过 Java 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，你将使用[语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows 或 Ubuntu Linux 16.04 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+在本文中，请使用[语音服务 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows 或 Ubuntu Linux 16.04 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 > [!NOTE]
 > 对于语音设备 SDK 和 Roobo 设备，请参阅[语音设备 SDK](speech-devices-sdk.md)。

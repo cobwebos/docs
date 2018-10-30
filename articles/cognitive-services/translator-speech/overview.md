@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341134"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023571"
 ---
 # <a name="what-is-translator-speech-api"></a>什么是语音翻译 API？
 
@@ -34,7 +34,7 @@ ms.locfileid: "49341134"
 语音翻译 API 使用 WebSocket 协议在客户端和服务器之间提供全双工信道。 
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
-Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是 [文本翻译 API] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) 和语音翻译 API，这些 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
+Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是[文本翻译 API](https://www.microsoft.com/en-us/translator/translatorapi.aspx) 和语音翻译 API，这些 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
 
 详细了解 [Microsoft Translator 服务](https://www.microsoft.com/en-us/translator/home.aspx)
 

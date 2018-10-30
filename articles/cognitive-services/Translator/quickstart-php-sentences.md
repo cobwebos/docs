@@ -1,29 +1,29 @@
 ---
-title: 快速入门：获取句子长度 - 文本翻译，PHP
+title: 快速入门：获取句子长度，PHP - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 PHP 查明文本中句子的长度。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 63c2822e7b61eb437a43fb394cfa3cc8172d9af3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 7c709c10d7944a53a557f6a1ce2a6d9b930cccce
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124739"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645382"
 ---
-# <a name="quickstart-get-sentence-lengths-with-php"></a>快速入门：使用 PHP 获取句子长度
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-php"></a>快速入门：使用文本翻译 REST API (PHP) 获取句子长度
 
 在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+需要 [PHP 5.6.x](http://php.net/downloads.php) 运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

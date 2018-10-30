@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c70b90a6e465c72193f63afd7ab9106579e2c634
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e1e349f4ddbebdd9df38d7f0babf50d726241d4f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886604"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648728"
 ---
-# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-nodejs"></a>快速入门：通过 Node.js 发布 QnA Maker 知识库
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：在 QnA Maker 中通过 Node.js 发布知识库
 
 本快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
@@ -28,7 +28,7 @@ ms.locfileid: "48886604"
 
 * [Node.js 6+](https://nodejs.org/en/download/)
 * 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
-* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID。
+* 在 kbid 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 

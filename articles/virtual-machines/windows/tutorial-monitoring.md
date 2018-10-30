@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f2388747d60f1911994431d8edbd57e32d5c35a
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: ce90ea447f7dcf4df1451294acf9f7fd093ad6ee
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932647"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408636"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Windows 虚拟机
 
 Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据存储在 Azure 存储中，并使其可供通过门户、Azure PowerShell 模块和 Azure CLI 进行访问。 使用更新管理可以管理 Azure Windows VM 的更新和修补程序。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 VM 上启用启动诊断
@@ -276,9 +276,9 @@ Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -Location "East US"
 ```
 
-几分钟后，应该会在 Log Anaytics 工作区中看到新 VM。
+几分钟后，应该会在 Log Analytics 工作区中看到新 VM。
 
-![OMS 边栏选项卡](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics 边栏选项卡](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>后续步骤
 

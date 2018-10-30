@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636981"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467423"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
 在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
@@ -31,7 +31,7 @@ ms.locfileid: "34636981"
 > * 将虚拟机 (VM) 添加到实验室
 > * 将用户添加到实验室用户角色
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-lab"></a>创建实验室
 以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 
@@ -45,7 +45,7 @@ ms.locfileid: "34636981"
     2. 在“订阅”中，选择要在其中创建实验室的订阅。 
     3. 在“资源组”中选择“新建”，然后输入资源组的名称。 
     4. 在“位置”中，选择要在其中创建实验室的位置/区域。 
-    5. 选择**创建**。 
+    5. 选择“创建”。 
     6. 选择“固定到仪表板”。 创建实验室之后，仪表板中会显示实验室。 
 
         ![创建开发测试实验室的实验室部分](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
@@ -55,7 +55,7 @@ ms.locfileid: "34636981"
 1. 在“开发测试实验室”页上的工具栏中选择“+ 添加”。 
 
     ![“添加”按钮](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. 在“选择基”页上，搜索“Ubuntu”关键字并选择列表中的一个基映像。 
+1. 在“选择基”页上，使用关键字（例如 Windows、Ubuntu）进行搜索，然后选择列表中的一个基映像。 
 1. 在“虚拟机”页上，执行以下操作： 
     1. 在“虚拟机名称”中，输入虚拟机的名称。 
     2. 在“用户名称”中，输入有权访问虚拟机的用户的名称。 
@@ -64,13 +64,16 @@ ms.locfileid: "34636981"
     5. 在“使此计算机可认领”中，选择“是”。
     6. 确认“实例计数”已设为“1”。 如果将其设为 2，将创建 2 个带有名称 `<base image name>00' and <base image name>01` 的 VM。 例如 `win10vm00` 和 `win10vm01`。 
     7. 若要关闭“高级”页，请单击“确定”。 
-    8. 选择**创建**。 
+    8. 选择“创建”。 
 
         ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
     9. 可在“可认领的虚拟机”列表中查看虚拟机的状态。 创建虚拟机大概需要 25 分钟。 虚拟机会创建在独立的 Azure 资源组中，其名称以具有实验室的当前资源组的名称作为开头。 例如，如果实验室在 `labrg` 中，则可能会在资源组 `labrg3988722144002` 中创建 VM。 
 
         ![VM 创建状态](./media/tutorial-create-custom-lab/vm-creation-status.png)
 1. 创建 VM 之后，可在列表中的“可认领的虚拟机”列表中进行查看。 
+
+    > [!NOTE] 
+    > 向实验室添加 Linux VM 时，可以允许通过 SSH 和 RDP 方式访问 VM。 如果在创建 VM 时未启用此访问权限，可以手动在与该 VM 关联的网络安全组中添加规则，为 SSH 和 RDP 打开端口。
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>将用户添加到实验室用户角色
 

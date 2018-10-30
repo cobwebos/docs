@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ff80bc2452c9826a5c51c146a957fddc72d2dbc2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917539"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409112"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>通过 Azure 门户启用事件中心捕获
 
@@ -75,6 +75,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心的流式
 
 - 阅读[事件中心捕获概述][capture-overview]，详细了解事件中心捕获。
 - 还可以通过 Azure 资源管理器模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure 资源管理器模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
+- [了解如何创建使用事件中心命名空间作为源的 Azure 事件网格订阅](store-captured-data-data-warehouse.md)
 - [Azure Data Lake Store 入门（使用 Azure 门户）](../data-lake-store/data-lake-store-get-started-portal.md)
 
 [capture-overview]: event-hubs-capture-overview.md

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078981"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457136"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -21,7 +21,8 @@ ms.locfileid: "49078981"
 
 本文是此系列的第一个教程，演示如何为本地 VM 设置灾难恢复。 无论是保护本地 VMware VM、Hyper-V VM 还是物理服务器，它都很相关。
 
-教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 
+> [!NOTE]
+> 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请参阅相应方案的“操作方法”部分。
 
 本文介绍如何在要将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行下列操作：
 

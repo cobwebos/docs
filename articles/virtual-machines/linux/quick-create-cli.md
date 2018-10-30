@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: beb70b03198589808c20ab17498902367a1c6a3d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3c2212ba0216949d3ca7dbcedb5e086bc3e43b97
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067479"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406630"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍了如何使用 Azure CLI 在 Azure 中部署 Linux 虚拟机 (VM)。 在本教程中，我们将安装 Ubuntu 160.04 LTS。 为了显示运转中的 VM，我们将使用 SSH 连接到它并安装 NGINX Web 服务器。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍了如何使用 Azure CLI 在 Azure 中部署 Linux 虚拟机 (VM)。 在本教程中，我们将安装 Ubuntu 16.04 LTS。 为了显示运转中的 VM，我们将使用 SSH 连接到它并安装 NGINX Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -33,7 +33,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器选项卡中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 

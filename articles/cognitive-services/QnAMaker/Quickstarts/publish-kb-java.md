@@ -1,29 +1,32 @@
 ---
-title: 快速入门：Java 发布知识库 - QnA Maker
+title: 快速入门：发布知识库 - REST、Java - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 如何在 Java 中为 QnA Maker 发布知识库。
+description: 此基于 REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: defd0cb7fc22423db9b2c7d25960b5dc27042506
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 83390ace8d9747d218fdd5c6b50ba9bdc6d11957
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885078"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648813"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-java"></a>快速入门：通过 Java 发布知识库
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中通过 Java 发布知识库
 
-以下代码使用 [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 方法发布现有知识库。
+本快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
+
+本快速入门调用了 QnA Maker API：
+* [发布](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - 此 API 不需要请求正文中的任何信息。
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
-1. 在最喜爱的 IDE 中新建 Java 项目。
+1. 在喜欢使用的 IDE 中新建一个 Java 项目。
 2. 添加下方提供的代码。
 3. 使用对订阅有效的访问密钥替换 `key` 值。
 4. 运行该程序。

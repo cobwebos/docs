@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4a70801fa11316fbd023f348981743639fe111dc
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308690"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024405"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -102,7 +102,7 @@ ms.locfileid: "36308690"
 
     * 输入群集的名称。
     * 在本文中，请创建运行时为 **4.0** 的群集。
-    * 请务必选中**在不活动超过 ____ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
@@ -166,7 +166,7 @@ ms.locfileid: "36308690"
 
     ![在 Databricks 中创建笔记本](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "在 Databricks 中创建笔记本")
 
-    选择**创建**。
+    选择“创建”。
 
 3. 重复上述步骤创建 **ReadTweetsFromEventHub** 笔记本。
 

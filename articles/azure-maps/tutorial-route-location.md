@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Maps 查找路线 | Microsoft Docs
 description: 使用 Azure Maps 查找前往兴趣点的路线
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fda234b882cbf4a155881895bbf8401fe3ff3aca
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816712"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645023"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>使用 Azure Maps 查找前往兴趣点的路线
 
@@ -80,11 +80,10 @@ ms.locfileid: "48816712"
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Atlas.Map 提供一个可视和交互式的 Web 地图控件，它是 Azure Map Control API 的一个组件。
 
 4. 保存文件并在浏览器中打开它。 此时，你有一个可以进一步开发的基础地图。
@@ -126,7 +125,7 @@ ms.locfileid: "48816712"
         padding: 50
     });
 
-    map.addEventListener("load", function () { 
+    map.events.add("load", function () { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -135,7 +134,7 @@ ms.locfileid: "48816712"
         });
     });
     ```
-    map.setCameraBounds 根据起点和终点的坐标调整地图窗口。 **map.addEventListener** 可确保在完全加载地图后加载添加到地图的所有地图函数。 事件侦听器中的 API **map.addPins** 将这些点作为视觉组件添加到地图控件中。
+    map.setCameraBounds 根据起点和终点的坐标调整地图窗口。 **map.events.add** 可确保在完全加载地图后加载添加到地图的所有地图函数。 事件侦听器中的 API **map.addPins** 将这些点作为视觉组件添加到地图控件中。
 
 3. 保存“MapRoute.html”文件并刷新浏览器。 现在，地图的中心为西雅图，可以看到标记起点的圆形蓝色图钉和标记终点的蓝色图钉。
 

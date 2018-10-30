@@ -1,21 +1,21 @@
 ---
-title: 教程：使用 C# 为文本翻译编写 WPF 应用程序
+title: 教程：使用 C# 创建 WPF 应用程序 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将学习如何通过使用 C# 构建 WPF 应用程序，使用文本翻译 API 来翻译文本，获取受支持语言的本地化列表以及执行更多操作。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
-ms.author: nolachar
-ms.openlocfilehash: 97660985b275bbe4384acb3fc92be8aaa0b57881
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: e302c1aa1cd4021b0d449fd981181b790546c0f8
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123957"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647470"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>教程：使用 C# 编写用于文本翻译的 WPF 应用程序
 

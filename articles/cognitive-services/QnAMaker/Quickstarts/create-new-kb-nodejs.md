@@ -1,22 +1,22 @@
 ---
 title: 快速入门：创建知识库 - REST、Node.js - QnA Maker
-description: 本快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
+description: 此基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: f0375affa547f657ae36de71901298047359cae2
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fdba785e33c16c397e2ffaeb4462ea2066a99126
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884910"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647538"
 ---
-# <a name="quickstart-create-a-qna-maker-knowledge-base-in-nodejs"></a>快速入门：通过 Node.js 创建 QnA Maker 知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入门：通过 Node.js 在 QnA Maker 中创建知识库
 
 本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
 

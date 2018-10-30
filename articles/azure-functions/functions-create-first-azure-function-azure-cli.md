@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: ef5459b2b31b67afe187612ffc1ab079a5045a8c
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114904"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985992"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>通过命令行创建第一个函数
 
@@ -31,7 +31,7 @@ ms.locfileid: "49114904"
 
 + 安装 [Azure Core Tools 2.x 版](functions-run-local.md#v2)。
 
-+ 安装 [Azure CLI]( /cli/azure/install-azure-cli)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
++ 安装 [Azure CLI]( /cli/azure/install-azure-cli)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 你也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
 + 一个有效的 Azure 订阅。
 
@@ -45,7 +45,7 @@ ms.locfileid: "49114904"
 func init MyFunctionProj
 ```
 
-当系统提示时，请使用箭头键从下面的语言选项中选择一个辅助角色运行时：
+当系统提示时，请从下面的语言选项中选择一个辅助角色运行时：
 
 + `dotnet`：创建一个 .NET 类库项目 (.csproj)。
 + `node`：创建一个 JavaScript 项目。
@@ -59,110 +59,17 @@ Writing local.settings.json
 Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 ```
 
-## <a name="create-a-function"></a>创建函数
-
-以下命令导航到新项目，并创建一个名为 `MyHtpTrigger` 的 HTTP 触发的函数。
+使用以下命令导航到新的 `MyFunctionProj` 项目文件夹。
 
 ```bash
 cd MyFunctionProj
-func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 
-执行命令后，看到的内容如以下输出所示，是一个 JavaScript 函数：
+[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
 
-```output
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\index.js
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\sample.dat
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\function.json
-```
+[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
 
-## <a name="edit-the-function"></a>编辑此函数
-
-默认情况下，模板会创建一个函数，该函数在进行请求时需要功能键。 为了便于在 Azure 中测试此函数，需更新此函数，使之允许匿名访问。 进行此更改的方式取决于函数项目语言。
-
-### <a name="c"></a>C\#
-
-打开 MyHttpTrigger.cs 代码文件（你的新函数），并将函数定义中的 **AuthorizationLevel** 属性更新为值 `anonymous`，然后保存所做的更改。
-
-```csharp
-[FunctionName("MyHttpTrigger")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, 
-            "get", "post", Route = null)]HttpRequest req, ILogger log)
-```
-
-### <a name="javascript"></a>JavaScript
-
-打开新函数的 function.json 文件（在文本编辑器中打开），将 **bindings.httpTrigger** 中的 **authLevel** 属性更新为 `anonymous`，然后保存所做的更改。
-
-```json
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-```
-
-现在可以在 Azure 中调用此函数，不需提供功能键。 在本地运行时，从不需要功能键。
-
-## <a name="run-the-function-locally"></a>在本地运行函数
-
-以下命令用于启动函数应用。 此应用使用 Azure 中的 Azure Functions 运行时来运行。
-
-```bash
-func host start --build
-```
-
-若要编译 C# 项目，`--build` 选项是必需的。 不需对 JavaScript 项目使用此选项。
-
-Functions 主机启动时，会写入类似于以下输出的内容。为了可读性，这些输出已经被截断：
-
-```output
-
-                  %%%%%%
-                 %%%%%%
-            @   %%%%%%    @
-          @@   %%%%%%      @@
-       @@@    %%%%%%%%%%%    @@@
-     @@      %%%%%%%%%%        @@
-       @@         %%%%       @@
-         @@      %%%       @@
-           @@    %%      @@
-                %%
-                %
-
-...
-
-Content root path: C:\functions\MyFunctionProj
-Now listening on: http://0.0.0.0:7071
-Application started. Press Ctrl+C to shut down.
-
-...
-
-Http Functions:
-
-        HttpTrigger: http://localhost:7071/api/HttpTrigger
-
-[8/27/2018 10:38:27 PM] Host started (29486ms)
-[8/27/2018 10:38:27 PM] Job host started
-```
-
-从运行时输出中复制 `HTTPTrigger` 函数的 URL，将其粘贴到浏览器的地址栏中。 将查询字符串 `?name=<yourname>` 追加到此 URL 并执行请求。 下面演示浏览器中本地函数返回的对 GET 请求的响应：
-
-![在浏览器中进行本地测试](./media/functions-create-first-azure-function-azure-cli/functions-test-local-browser.png)
-
-在本地运行函数以后，即可在 Azure 中创建函数应用和其他必需的资源。
+[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

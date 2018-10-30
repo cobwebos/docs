@@ -11,12 +11,12 @@ ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5f7b8b98f97e020b4f6fb4b125d444df87f8d5a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967891"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025746"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
 
@@ -143,13 +143,13 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>创建与云 Git 存储库关联的新项目
-可以创建与 Azure DevOps Git 存储库关联的新项目。 每次提交试验时，都会将整个项目文件夹的快照提交到远程 Git 存储库。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
+可以在 Azure 存储库中创建与 Git 存储库关联的新项目。 每次提交试验时，都会将整个项目文件夹的快照提交到远程 Git 存储库。 有关更多详细信息，请参阅[将 Git 存储库与 Azure Machine Learning Workbench 项目配合使用](using-git-ml-project.md)。
 
 > [!NOTE]
-> Azure 机器学习仅支持在 Azure DevOps 中创建的空 Git 存储库。
+> Azure 机器学习仅支持在 Azure 存储库中创建的空 Git 存储库。
 
 ```azure-cli
-$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <repo URL>
 ```
 > [!TIP]
 > 如果收到错误“存储库 URL 可能无效，或者用户可能没有访问权限”，可以在 Azure DevOps 中创建安全令牌（“安全性”下的“添加个人访问令牌”菜单），并在创建项目时使用 `--vststoken` 参数。 

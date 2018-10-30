@@ -1,29 +1,29 @@
 ---
-title: 快速入门：识别文本中的语言 - 文本翻译，PHP
+title: 快速入门：识别文本中的语言，PHP - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 PHP 识别源文本的语言。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: cb643503f72f9cf21c83f35477ca6878d8938339
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: e13dbe63efe950061f157b6d8dec7665c1bc5c42
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125963"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649444"
 ---
-# <a name="quickstart-identify-language-from-text-with-php"></a>快速入门：使用 PHP 识别文本的语言
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-php"></a>快速入门：使用文本翻译 REST API (PHP) 识别文本中的语言
 
-在该快速入门中，你将使用文本翻译 API 识别源文本的语言。
+在本快速入门中，你将使用文本翻译 API 识别源文本的语言。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+需要 [PHP 5.6.x](http://php.net/downloads.php) 运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901612"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406460"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>为 Linux 上的 Azure 应用服务配置 Python 应用
 
@@ -74,10 +74,16 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 
 ### <a name="custom-startup-command"></a>自定义启动命令
 
-可以通过提供自定义 Gunicorn 启动命令来控制容器的启动行为。 例如，如果 Flask 应用的主模块是 *hello.py*，而 Flask 应用对象名为 `myapp`，则命令如下所示：
+可以通过提供自定义 Gunicorn 启动命令来控制容器的启动行为。 例如，如果 Flask 应用的主模块是 *hello.py*，而该文件中的 Flask 应用对象名为 `myapp`，则命令如下所示：
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+```
+
+如果主模块位于子文件夹（例如 `website`）中，请使用 `--chdir` 参数指定该文件夹：
+
+```bash
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
 还可以将 Gunicorn 的任何附加参数添加到该命令，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
@@ -105,9 +111,10 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 
 - **部署自己的应用代码后看到默认应用。**  之所以出现默认应用，是因为你实际上并未将应用代码部署到应用服务，或应用服务未找到你的应用代码，因此运行了默认应用。
   - 请重启应用服务，等待 15 到 20 秒，然后再次检查应用。
-  - 使用 SSH 或 Kudu 控制台直接连接到应用服务，并检查文件是否存在于 *site/wwwroot* 下。 如果这些文件不存在，请检查部署过程并重新部署应用。
+  - 请确保使用适用于 Linux 的应用服务，而不要使用基于 Windows 的实例。 在 Azure CLI 中运行 `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` 命令，对 `<resource_group_name>` 和 `<app_service_name>` 进行相应的替换。 应该会看到作为输出的 `app,linux`，否则请重新创建应用服务并选择 Linux。
+    - 使用 SSH 或 Kudu 控制台直接连接到应用服务，并检查文件是否存在于 *site/wwwroot* 下。 如果这些文件不存在，请检查部署过程并重新部署应用。
   - 如果这些文件存在，则表示应用服务无法识别特定的启动文件。 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。
-
+  
 - **浏览器中显示“服务不可用”消息。** 浏览器在等待应用服务的响应时超时，这表示应用服务已启动 Gunicorn 服务器，但指定应用代码的参数不正确。
   - 刷新浏览器，尤其是在应用服务计划中使用最低定价层的情况下。 例如，使用免费层时，应用可能需要较长时间才能启动，并在刷新浏览器后才会做出响应。
   - 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。

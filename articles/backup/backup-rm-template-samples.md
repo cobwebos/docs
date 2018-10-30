@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 04/18/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 0aac49be397f5e1c86fa834d341399775fd71cfa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 941357d0a8b7fb46a5c2dcebb70681452118f23f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607066"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406375"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板
 
@@ -31,6 +31,6 @@ ms.locfileid: "34607066"
 | [为 IaaS VM 创建每日备份策略](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | 模板创建恢复服务保管库和每日备份策略，该策略用于备份经典虚拟机和资源管理器虚拟机。|
 | [部署启用了备份的 Windows Server VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | 模板创建启用默认备份策略的 Windows Server VM 和恢复服务保管库。|
 |**监视备份作业** |  |
-| [使用 OMS Log Analytics 监视 Azure 备份](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | 模板部署用于 Azure 备份的 OMS 监视，后者用于监视备份和还原作业、备份警报以及在恢复服务保管库中使用的云存储。|  
+| [使用 Log Analytics 监视 Azure 备份](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | 模板部署用于 Azure 备份的 Log Analytics Monitoring，后者用于监视备份和还原作业、备份警报以及在恢复服务保管库中使用的云存储。|  
 |   |   |
 

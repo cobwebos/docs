@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取受支持的语言 - 文本翻译 API，C#
+title: 快速入门：获取受支持的语言，C# - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 C# 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 82e051895bd5ba8542fa32aa147b050a25c43c84
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: 9ac881adcf7d273c9a3bcea55d084acced59c107
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318380"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645389"
 ---
-# <a name="quickstart-get-supported-languages-with-c35"></a>快速入门：使用 C&#35; 获取支持的语言
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>快速入门：通过文本翻译 REST API (C#) 获取受支持的语言
 
 在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 

@@ -1,29 +1,29 @@
 ---
-title: 快速入门：转换文本脚本 - 文本翻译，PHP
+title: 快速入门：转换文本脚本，PHP - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用文本翻译 API 和 PHP 将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: b2b1773bc6eeea3a19d197faae75039511e77cf9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: e858e33864ddec211f2424c7380b5b421a3db0f5
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123841"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649463"
 ---
-# <a name="quickstart-transliterate-text-with-php"></a>快速入门：使用 PHP 音译文本
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>快速入门：使用文本翻译 REST API (PHP) 对文本进行直译
 
-在该快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
+在本快速入门中，你将使用文本翻译 API 将一种语言的文本从一个脚本转换为另一个脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [PHP 5.6.x](http://php.net/downloads.php) 来运行此代码。
+需要 [PHP 5.6.x](http://php.net/downloads.php) 运行此代码。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

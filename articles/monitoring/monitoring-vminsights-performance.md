@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 63549768f616e60e92c853047525c18cefdaddb4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a63a9d22638231aa076cc4ced9030a378d0c36e4
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386259"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429470"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>如何使用用于 VM 的 Azure Monitor 绘制性能图表
 用于 VM 的 Azure Monitor 包含一组针对几项关键性能指标 (KPI) 的性能图表，帮助你确定虚拟机的性能状况。 这些图表显示一段时间内的资源利用率，可让你识别瓶颈和异常，或切换到列出每个计算机的透视图，以根据所选指标查看资源利用率。 处理性能时需要考虑大量的要素，而用于 VM 的 Azure Monitor 侧重于通过处理器、内存、网络适配器和磁盘显示的操作系统性能。 “性能”对运行状况监视功能做了补充，可帮助揭示可能指示系统组件发生了故障的问题，支持调整和优化以提高效率，或支持容量规划。  
@@ -33,7 +33,7 @@ ms.locfileid: "49386259"
 
 ![VM Insights - 性能 -“前 N 项列表”视图](./media/monitoring-vminsights-performance/vminsights-performance-aggview-01.png)
 
-在“前 N 项图表”选项卡中，如果有多个 Log Analytics 工作区，请在页面顶部的“工作区”选择器中选择使用解决方案启用的工作区。 “组”选择器将返回与所选工作区相关的订阅、资源组、[计算机组](../log-analytics/log-analytics-computer-groups.md)和计算机的 VM 规模集，可使用这些返回的内容对此页和其他页的图表中显示的结果进行进一步的筛选。 你的选择仅应用于性能功能，不会延伸到运行状况或映射。  
+在“前 N 项图表”选项卡中，如果有多个 Log Analytics 工作区，请在页面顶部的“工作区”选择器中选择使用解决方案启用的工作区。 “组”选择器将返回与所选工作区相关的订阅、资源组、[计算机组](../log-analytics/log-analytics-computer-groups.md)和计算机的虚拟机规模集，可使用这些返回的内容对此页和其他页的图表中显示的结果进行进一步的筛选。 你的选择仅应用于性能功能，不会延伸到运行状况或映射。  
 
 默认情况下，图表会显示过去 24 小时的信息。 使用“TimeRange”选择器可以查询最长 30 天的历史时间范围，以便显示过去观测到的性能状况。   
 
@@ -104,7 +104,11 @@ ms.locfileid: "49386259"
 ![直接从 VM 查看 VM insights 性能](./media/monitoring-vminsights-performance/vminsights-performance-directvm-01.png)
 
 ## <a name="alerting-and-alert-management"></a>警报和警报管理 
-VM 的 Azure Monitor 中启用的性能指标不包含预配置的预警规则。 尽管有与在 Azure VM 上发现的问题相对应的运行状况警报（例如高 CPU 利用率、可用内存不足、磁盘空间不足等），但这些警报仅适用于与集成了 VM 的 Azure Monitor 的同一个 Log Analytics 工作区相连接的所有 VM。 如果需要灵活地指定自己的条件或逻辑，可按照[使用 Azure Monitor 创建、查看和管理警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中的说明来创建自定义预警规则。 
+VM 的 Azure Monitor 中启用的性能指标不包含预配置的预警规则。 尽管有与在 Azure VM 上发现的问题相对应的[运行状况警报](monitoring-vminsights-health.md#alerting-and-alert-management)（例如高 CPU 利用率、可用内存不足、磁盘 I/O 不足、磁盘空间不足等），但这些警报仅适用于与启用了 VM 的 Azure Monitor 的同一个 Log Analytics 工作区相连接的所有 VM。 
+
+但是，我们只能在 Log Analytics 工作区中收集和存储所需的一部分性能指标。 如果监视策略需要包含其他各种性能指标的分析或警报才能有效评估虚拟机的容量或运行状况，或者你需要灵活地指定自己的警报条件或逻辑，可以在 Log Analytics 中配置[这些性能计数器的收集](../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json)，并定义[日志警报](../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json)。 尽管 Log Analytics 允许对其他数据类型执行复杂分析，并提供较长的保留期来支持趋势分析，但另一方面，指标是轻量的，它们能够支持近实时的方案。 它们由 [Azure 诊断代理](../virtual-machines/windows/monitor.md)收集并存储在 Azure Monitor 指标存储中，使你能够以较低的延迟和成本创建警报。
+
+在配置这些附加指标和警报规则的收集之前，请查看[使用 Azure Monitor 收集指标和日志](monitoring-data-collection.md?toc=/azure/azure-monitor/toc.json)的概述，以了解基本差异和其他注意事项。  
 
 ## <a name="next-steps"></a>后续步骤
 若要了解如何使用“运行状况”功能，请参阅[查看用于 VM 的 Azure Monitor 运行状况](monitoring-vminsights-health.md)；若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](monitoring-vminsights-maps.md)。 

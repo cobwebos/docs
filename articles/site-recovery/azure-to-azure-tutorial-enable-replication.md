@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ab79201442fe9c7334525972c34eba86daf27e99
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069091"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457419"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -27,6 +27,9 @@ ms.locfileid: "49069091"
 > * 验证目标资源设置
 > * 为 VM 设置出站访问
 > * 为虚拟机启用复制
+
+> [!NOTE]
+> 本教程旨在引导用户完成相关步骤，以便在尽量减少自定义的情况下进行复制；如果需要详细了解与灾难恢复相关联的各个方面（包括网络注意事项、自动化或故障排除），请参阅适用于 Azure VM 的“操作方法”下面的文档。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -193,7 +196,7 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 你可�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已经为 Azure VM 配置了灾难恢复。 下一步骤是对配置进行测试。
+在本教程中，已经为 Azure VM 配置了灾难恢复。 下一步骤是启动 DR 演练，对配置进行测试。
 
 > [!div class="nextstepaction"]
 > [运行灾难恢复演练](azure-to-azure-tutorial-dr-drill.md)

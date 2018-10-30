@@ -17,14 +17,14 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 02b6823a46c94edb0ba28c7a2a8b9ae0efc44ae8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407291"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406086"
 ---
-# <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道
+# <a name="tutorial--create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>教程：使用 Azure DevOps 项目为现有的代码创建 CI/CD 管道
 
 Azure DevOps 项目提供简化的体验，既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
 
@@ -157,7 +157,7 @@ Azure DevOps 项目已自动在 Azure DevOps Services 组织中配置 Azure DevO
 
 ## <a name="next-steps"></a>后续步骤
 
-当你在本教程中配置 CI/CD 过程时，系统会在 Azure DevOps 项目中自动创建生成和发布管道。 可以根据所在团队的需求修改这些生成和发布管道。 你已了解如何：
+当你在本教程中配置 CI/CD 过程时，系统会在 Azure DevOps 项目中自动创建生成和发布管道。 可以根据你的团队的需求修改这些生成和发布管道。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Azure DevOps 项目

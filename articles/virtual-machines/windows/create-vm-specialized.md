@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 专用 VHD 中创建 Windows VM | Microsoft Docs
-description: 在 Resource Manager 部署模型中，通过将专用托管磁盘附加为 OS 磁盘来创建新 Windows VM。
+description: 使用资源管理器部署模型，通过将专用托管磁盘附加为 OS 磁盘来创建新的 Windows VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,37 +13,37 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 34bfe7733c60337d6ab7d81c498d2fb0fd15e1fd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 53062ee6384113ef8c483bc9cc6b407559c35994
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338480"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406120"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
-通过将专用托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中虚拟硬盘 (VHD) 的副本。 
+通过将专用托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是包含原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中虚拟硬盘 (VHD) 的副本。 
 
-使用专用 VHD 创建新 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他计算机特定信息，在某些情况下，这种重复信息可能会导致问题。 请注意，在复制 VM 时，应用程序依赖哪些类型的计算机特定信息。
+使用专用 VHD 创建新 VM 时，新 VM 将保留原始 VM 的计算机名。 还会保留其他计算机特定信息，在某些情况下，这种重复信息可能会导致问题。 复制 VM 时，请注意应用程序依赖哪些类型的计算机特定信息。
 
 有几种选项：
-* [使用现有托管磁盘](#option-1-use-an-existing-disk)。 如果你有一个未正常工作的 VM，这很有用。 可以删除该 VM，并重用托管磁盘创建新 VM。 
+* [使用现有托管磁盘](#option-1-use-an-existing-disk)。 如果你有一个未正常工作的 VM，此选项很有用。 可以删除该 VM，然后重用托管磁盘创建新 VM。 
 * [上传 VHD](#option-2-upload-a-specialized-vhd) 
 * [使用快照复制现有 Azure VM](#option-3-copy-an-existing-azure-vm)
 
 还可以使用 Azure 门户[从专用 VHD 创建新 VM](create-vm-specialized-portal.md)。
 
-本主题演示如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)
+本文介绍如何使用托管磁盘。 如果有需要使用存储帐户的旧版部署，请参阅[从存储帐户中的专用 VHD 创建 VM](sa-create-vm-specialized.md)。
 
 ## <a name="before-you-begin"></a>开始之前
-如果使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 
+若要使用 PowerShell，请确保使用最新版本的 AzureRM.Compute PowerShell 模块。 
 
 ```powershell
 Install-Module AzureRM -RequiredVersion 6.0.0
 ```
-有关详细信息，请参阅 [Azure PowerShell 版本控制](/powershell/azure/overview)。
+有关详细信息，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="option-1-use-an-existing-disk"></a>选项 1：使用现有磁盘
 
@@ -63,33 +63,33 @@ $osDisk = Get-AzureRmDisk `
 可从使用本地虚拟化工具（如 Hyper-V）创建的专用 VM 或从另一个云导出的 VM 上传 VHD。
 
 ### <a name="prepare-the-vm"></a>准备 VM
-如果打算按原样使用 VHD 来创建新 VM，请确保完成以下步骤。 
+使用原始 VHD 创建新的 VM。 
   
   * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
-  * 确保 VM 配置为通过 DHCP 提取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得 VNet 中的 IP 地址。 
+  * 确保 VM 配置为从 DHCP 获取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得虚拟网络中的 IP 地址。 
 
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
 Azure 中需要有一个存储帐户用于存储上传的 VHD。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
-若要显示可用的存储帐户，请键入：
+显示可用的存储帐户。
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-如果要使用现有存储帐户，请转到[上传 VHD](#upload-the-vhd-to-your-storage-account) 部分。
+若要使用现有存储帐户，请转到[上传 VHD](#upload-the-vhd-to-your-storage-account) 部分。
 
-如果需要创建存储帐户，请执行以下步骤：
+创建存储帐户。
 
-1. 需要使用要在其中创建存储帐户的资源组的名称。 若要找出订阅中的所有资源组，请键入：
+1. 需要使用要在其中创建存储帐户的资源组的名称。 使用 Get-AzureRmResourceGroup 查看订阅中的所有资源组。
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    若要在*美国西部*区域创建一个名为 *myResourceGroup* 的资源组，请键入：
+    在“美国西部”区域创建名为 *myResourceGroup* 的资源组。
 
     ```powershell
     New-AzureRmResourceGroup `
@@ -97,7 +97,7 @@ Get-AzureRmStorageAccount
        -Location "West US"
     ```
 
-2. 使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 在此资源组中创建名为 *mystorageaccount* 的存储帐户：
+2. 使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 在新资源组中创建名为 *mystorageaccount* 的存储帐户。
    
     ```powershell
     New-AzureRmStorageAccount `
@@ -109,7 +109,7 @@ Get-AzureRmStorageAccount
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>将 VHD 上传到存储帐户 
-使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 myVHD.vhd 从 `"C:\Users\Public\Documents\Virtual hard disks\"` 上传到 myResourceGroup 资源组中名为 mystorageaccount 的存储帐户。 该文件存储在名为“mycontainer”的容器中，新文件名为“myUploadedVHD.vhd”。
+使用 [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) cmdlet 将 VHD 上传到存储帐户中的容器。 本示例将文件 *myVHD.vhd* 从 "C:\Users\Public\Documents\Virtual hard disks\" 上传到 *myResourceGroup* 资源组中名为 *mystorageaccount* 的存储帐户。 该文件存储在名为“mycontainer”的容器中，新文件名为“myUploadedVHD.vhd”。
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -120,7 +120,7 @@ Add-AzureRmVhd -ResourceGroupName $resourceGroupName `
 ```
 
 
-如果成功，会显示类似于下面的响应：
+如果该命令成功，则会显示类似于下面的响应：
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -134,7 +134,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-根据网络连接速度和 VHD 文件的大小，此命令可能需要一段时间才能完成。
+根据网络连接速度和 VHD 文件的大小，可能需要一段时间才能完成此命令。
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>从 VHD 创建托管磁盘
 
@@ -151,7 +151,7 @@ New-AzureRmResourceGroup -Location $location `
 从上传的 VHD 创建新 OS 磁盘。 
 
 ```powershell
-$sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
+$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
     (New-AzureRmDiskConfig -AccountType Standard_LRS  `
@@ -167,9 +167,9 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘快照
 
-可拍摄整个 VM（包括所有磁盘）快照或仅拍摄单个磁盘快照。 以下步骤展示了如何使用 [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) cmdlet 拍摄仅 VM 的 OS 磁盘的快照。 
+可创建整个 VM（包括所有磁盘）的快照或仅创建单个磁盘的快照。 以下步骤说明如何使用 [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) cmdlet 仅创建 VM OS 磁盘的快照。 
 
-设置一些参数。 
+首先设置一些参数。 
 
  ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -211,7 +211,7 @@ $snapShot = New-AzureRmSnapshot `
 ```
 
 
-如果计划使用快照创建需要高性能的 VM，请结合使用 `-AccountType Premium_LRS` 参数和 New-AzureRmSnapshot 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘比标准托管磁盘费用高。 因此使用该参数前，请确保确实需要高级托管磁盘。
+若要使用快照创建高性能的 VM，请将 `-AccountType Premium_LRS` 参数添加到 New-AzureRmSnapshot 命令。 此参数将创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘的费用比标准托管磁盘更高，因此，在使用该参数之前，请确认需要高级托管磁盘。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>从快照创建新磁盘
 
@@ -245,35 +245,35 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
 
 创建新 VM 使用的网络和其他 VM 资源。
 
-### <a name="create-the-subnet-and-vnet"></a>创建子网和 vNet
+### <a name="create-the-subnet-and-virtual-network"></a>创建子网和虚拟网络
 
-创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
+为 VM 创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)和子网。
 
-创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24。
+1. 创建子网。 本示例在资源组“myDestinationResourceGroup”中创建名为“mySubNet”的子网，并将子网地址前缀设置为 10.0.0.0/24。
    
-```powershell
-$subnetName = 'mySubNet'
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
-   -Name $subnetName `
-   -AddressPrefix 10.0.0.0/24
-```
-
-创建 vNet。 本示例将虚拟网络名称设置为 **myVnetName**，将位置设置为**美国西部**，将虚拟网络的地址前缀设置为 **10.0.0.0/16**。 
+    ```powershell
+    $subnetName = 'mySubNet'
+    $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+       -Name $subnetName `
+       -AddressPrefix 10.0.0.0/24
+    ```
+    
+2. 创建虚拟网络。 本示例将虚拟网络名称设置为 *myVnetName*，将位置设置为*美国西部*，将虚拟网络的地址前缀设置为 *10.0.0.0/16*。 
    
-```powershell
-$vnetName = "myVnetName"
-$vnet = New-AzureRmVirtualNetwork `
-   -Name $vnetName -ResourceGroupName $destinationResourceGroup `
-   -Location $location `
-   -AddressPrefix 10.0.0.0/16 `
-   -Subnet $singleSubnet
-```    
-
+    ```powershell
+    $vnetName = "myVnetName"
+    $vnet = New-AzureRmVirtualNetwork `
+       -Name $vnetName -ResourceGroupName $destinationResourceGroup `
+       -Location $location `
+       -AddressPrefix 10.0.0.0/16 `
+       -Subnet $singleSubnet
+    ```    
+    
 
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>创建网络安全组和 RDP 规则
-若要使用 RDP 登录到 VM，需要创建一个允许在端口 3389 上进行 RDP 访问的安全规则。 由于新 VM 的 VHD 是从现有专用 VM 创建的，因此可以将源虚拟机中的帐户用于 RDP。
+若要使用远程桌面协议 (RDP) 登录到 VM，需要创建一个允许在端口 3389 上进行 RDP 访问的安全规则。 在本示例中，由于新 VM 的 VHD 是从现有专用 VM 创建的，因此，可将源虚拟机中的帐户用于 RDP。
 
-本示例将 NSG 名称设置为 **myNsg**，将 RDP 规则名称设置为 **myRdpRule**。
+本示例将网络安全组 (NSG) 名称设置为 *myNsg*，将 RDP 规则名称设置为 *myRdpRule*。
 
 ```powershell
 $nsgName = "myNsg"
@@ -289,32 +289,32 @@ $nsg = New-AzureRmNetworkSecurityGroup `
     
 ```
 
-有关终结点和 NSG 规则的详细信息，请参阅 [Opening ports to a VM in Azure using PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 PowerShell 在 Azure 中打开 VM 端口）。
+有关终结点和 NSG 规则的详细信息，请参阅[使用 PowerShell 在 Azure 中打开 VM 端口](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)和网络接口。
 
-创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 **myIP**。
+1. 创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 *myIP*。
    
-```powershell
-$ipName = "myIP"
-$pip = New-AzureRmPublicIpAddress `
-   -Name $ipName -ResourceGroupName $destinationResourceGroup `
-   -Location $location `
-   -AllocationMethod Dynamic
-```       
-
-创建 NIC。 在本示例中，NIC 名称设置为 **myNicName**。
+    ```powershell
+    $ipName = "myIP"
+    $pip = New-AzureRmPublicIpAddress `
+       -Name $ipName -ResourceGroupName $destinationResourceGroup `
+       -Location $location `
+       -AllocationMethod Dynamic
+    ```       
+    
+2. 创建 NIC。 在本示例中，NIC 名称设置为 *myNicName*。
    
-```powershell
-$nicName = "myNicName"
-$nic = New-AzureRmNetworkInterface -Name $nicName `
-   -ResourceGroupName $destinationResourceGroup `
-   -Location $location -SubnetId $vnet.Subnets[0].Id `
-   -PublicIpAddressId $pip.Id `
-   -NetworkSecurityGroupId $nsg.Id
-```
-
+    ```powershell
+    $nicName = "myNicName"
+    $nic = New-AzureRmNetworkInterface -Name $nicName `
+       -ResourceGroupName $destinationResourceGroup `
+       -Location $location -SubnetId $vnet.Subnets[0].Id `
+       -PublicIpAddressId $pip.Id `
+       -NetworkSecurityGroupId $nsg.Id
+    ```
+    
 
 
 ### <a name="set-the-vm-name-and-size"></a>设置 VM 名称和大小
@@ -350,7 +350,7 @@ $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType 
 New-AzureRmVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
-如果此命令成功，会看到类似于下面的输出：
+如果此命令成功，则会显示类似于下面的输出：
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -360,7 +360,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
+应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $destinationResourceGroup

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取受支持的语言 - 文本翻译 API，Java
+title: 快速入门：获取受支持的语言，Java - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Java 获取翻译、音译和字典查找支持的语言列表以及示例。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 64954c06d90ff8110b77874846fe57072faf2f76
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2af7ceeeef347d1959b571aebf3f26bd5035e4c4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126966"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646162"
 ---
-# <a name="quickstart-get-supported-languages-with-java"></a>快速入门：使用 Java 获取支持的语言
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-java"></a>快速入门：通过文本翻译 REST API (Java) 获取受支持的语言
 
 在该快速入门中，你将使用文本翻译 API 获取翻译、音译和字典查找支持的语言列表以及示例。
 

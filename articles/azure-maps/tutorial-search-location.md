@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Maps 进行搜索 | Microsoft Docs
 description: 使用 Azure Maps 搜索附近兴趣点
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816814"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645808"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -116,11 +116,10 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     此段为 Azure Maps 帐户密钥初始化地图控件 API。 **Atlas** 是包含 API 和相关视觉组件的命名空间。 **Atlas.Map** 提供视觉对象和交互式 Web 地图的控件。
 
 4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用“atlas.map”所能生成的最基本的地图。
@@ -148,14 +147,14 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. 加载地图后，应加载地图上的所有函数。 可以通过将所有地图函数都放在地图的 eventListener 块中来确保这一点。 添加以下代码行将 [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) 添加到地图中，以确保在添加功能之前完全加载地图。
+3. 加载地图后，应加载地图上的所有函数。 可以通过将所有地图函数都放在地图的 eventListener 块中来确保这一点。 添加以下代码行将 [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) 添加到地图中，以确保在添加功能之前完全加载地图。
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. **在 map load eventListener 中**添加以下脚本块来构建查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址和兴趣点 (POI) 标记的任意组合。 它在指定半径内搜索邻近的加油站。 然后，响应会解析成 GeoJSON 格式并转换为点特征，作为图钉添加到地图中。 脚本的最后一部分使用地图的 [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) 属性为地图添加照相机边界。
+4. **在地图加载事件中**添加以下脚本块来构建查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址和兴趣点 (POI) 标记的任意组合。 它在指定半径内搜索邻近的加油站。 然后，响应会解析成 GeoJSON 格式并转换为点特征，作为图钉添加到地图中。 脚本的最后一部分使用地图的 [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) 属性为地图添加照相机边界。
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. 保存“MapSearch.html”文件并刷新浏览器。 现在应看到地图以西雅图为中心，蓝色的图钉标记了该区域中加油站的位置。
 

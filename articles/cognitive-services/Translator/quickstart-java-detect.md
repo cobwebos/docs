@@ -1,23 +1,23 @@
 ---
-title: 快速入门：识别文本中的语言 - 文本翻译，Java
+title: 快速入门：识别文本中的语言，Java - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Java 识别源文本的语言。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 244ba0bb3836923536cd77fa697b4250f751668e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: dd08280b0a4a4608888cf262957c51499412612c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129414"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647113"
 ---
-# <a name="quickstart-identify-language-from-text-with-java"></a>快速入门：使用 Java 识别文本的语言
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-java"></a>快速入门：使用文本翻译 REST API (Java) 识别文本中的语言
 
 在本快速入门中，你将使用文本翻译 API 识别源文本的语言。
 

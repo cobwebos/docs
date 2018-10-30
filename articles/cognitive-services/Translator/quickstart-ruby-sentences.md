@@ -1,23 +1,23 @@
 ---
-title: 快速入门：获取句子长度 - 文本翻译，Ruby
+title: 快速入门：获取句子长度，Ruby - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Ruby 查明文本中句子的长度。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: a39982555b281cfe0537a0033c9a67a7f5a1fe63
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 18ef4e20c28b783738d2be929e063e6dada412d4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122563"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644702"
 ---
-# <a name="quickstart-get-sentence-lengths-with-ruby"></a>快速入门：使用 Ruby 获取句子长度
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>快速入门：使用文本翻译 REST API (Ruby) 获取句子长度
 
 在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 

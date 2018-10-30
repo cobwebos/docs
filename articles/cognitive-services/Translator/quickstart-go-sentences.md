@@ -1,29 +1,29 @@
 ---
-title: 快速入门：获取句子长度 - 文本翻译，Go
+title: 快速入门：获取句子长度，Go - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Go 查明文本中句子的长度。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: erhopf
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 34b30179d674a42f6c9c2c358c0feb6e083089f6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 92ea2291760edf16863dc58a00bac4389f818e72
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129448"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644898"
 ---
-# <a name="quickstart-get-sentence-lengths-with-go"></a>快速入门：使用 Go 获取句子长度
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-go"></a>快速入门：使用文本翻译 REST API (Go) 获取句子长度
 
 在本快速入门中，你将使用文本翻译 API 查明文本中句子的长度。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用**核心**库，因此不需要外部依赖项。
+需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此不需要外部依赖项。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

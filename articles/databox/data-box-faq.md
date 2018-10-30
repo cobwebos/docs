@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092604"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649391"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -217,7 +217,7 @@ A.  完成将数据复制到 Azure 的过程后，会根据 NIST SP 800-88 修�
 ## <a name="audit-report"></a>审核报表
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Azure Data Box 服务如何帮助支持客户的监管过程链？
-A.  Azure Data Box 服务以本机方式提供可用于监管文件链的报表。 可在 Azure 存储帐户中审核和复制日志，订单完成后，可以在 Azure 门户中的订单中下载订单历史记录。
+A.  Azure Data Box 服务以本机方式提供可用于监管文件链的报表。 Azure 存储帐户中提供审核和复制日志。订单完成后，可以在 Azure 门户中[下载订单历史记录](data-box-portal-admin.md#download-order-history)。
 
 
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>哪种类型的报表可用于支持监管链？
@@ -230,7 +230,7 @@ A.  以下报表可用于支持监管链：
 - 数据复制到 Azure 存储帐户后，依据 NIST 800 88R1 标准清理 Data Box 设备。
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>承运人跟踪日志（来自 UPS/DHL）是否可用？ 
-A.  承运人跟踪日志在 Data Box 审核日志报告中进行捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到运营商的网站，使用订单跟踪号码获取跟踪信息。
+A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到运营商的网站，使用订单跟踪号码获取跟踪信息。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否将 Data Box 运输到 Azure 数据中心？ 
 A.  不是。 Azure 数据中心目前不接受客户或 UPS/DHL 以外的承运人交付 Data Box。
