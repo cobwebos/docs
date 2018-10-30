@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391362"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457009"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>对复制到 Azure 的 VMware VM 和物理服务器进行故障转移和故障回复
 
@@ -93,13 +93,12 @@ ms.locfileid: "44391362"
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>准备对 Azure VM 进行重新保护
 
-### <a name="create-a-process-server-in-azure"></a>在 Azure 中创建进程服务器
+- **如果有 Azure ExpressRoute 连接**，可以在设置过程中使用自动安装于配置服务器上的本地进程服务器（内置进程服务器）。
 
-进程服务器从 Azure VM 检索数据，并近期发送到本地站点。 在进程服务器与受保护 VM 之间需要配置低延迟网络。
+> [!IMPORTANT]
+> 如果在本地环境与 Azure 之间有 VPN 连接，则必须将 Azure VM 设置为进程服务器才能进行重新保护和故障回复。 若要在 Azure 中设置进程服务器，请按照[本文](vmware-azure-set-up-process-server-azure.md)说明进行操作。
 
-- 出于测试目的，如果有 Azure ExpressRoute 连接，可使用自动安装于配置服务器上的本地进程服务器（内置进程服务器）。
-- 如果有 VPN 连接，或者在生产环境中运行故障回复，则必须将 Azure VM 设置为基于 Azure 的进程服务器才能进行故障回复。
-- 若要在 Azure 中设置进程服务器，请按照[本文](vmware-azure-set-up-process-server-azure.md)说明进行操作。
+若要详细了解进行重新保护和故障回复所需的先决条件，请参阅此[部分](vmware-azure-reprotect.md##before-you-begin)。 
 
 ### <a name="configure-the-master-target-server"></a>配置主目标服务器
 

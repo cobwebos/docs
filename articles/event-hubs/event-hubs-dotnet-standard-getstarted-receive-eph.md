@@ -14,47 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 03cba90874d0f42e6c404009dc4115fb4f1798ed
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166266"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468069"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
+事件中心是一个服务，可用于处理来自连接设备和应用程序的大量事件数据（遥测）。 将数据采集到事件中心后，可以使用任何实时分析提供程序或存储群集来转换和存储数据。 这种大规模事件收集和处理功能是现代应用程序体系结构（包括物联网 (IoT)）的重要组件。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
+
+本教程显示如何编写 .NET Core 控制台应用程序，以使用[事件处理程序主机](event-hubs-event-processor-host.md)从事件中心接收消息。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 此示例演示如何为单一接收方使用事件处理程序主机。 [扩大事件处理][使用事件中心扩大事件处理]示例显示如何将事件处理程序主机用于多个接收方。
 
 > [!NOTE]
-> [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 上提供了此示例。
-
-本教程介绍如何编写 .NET Core 控制台应用程序，以使用**事件处理程序主机**库从事件中心接收消息。 可以按原样运行 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 解决方案，将字符串替换为事件中心和存储帐户的值。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) 下载此用作示例的快速入门，将 `EventHubConnectionString`、`EventHubName`、`StorageAccountName`、`StorageAccountKey`、`StorageContainerName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
-
 * [Microsoft Visual Studio 2015 或 2017](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017，但也支持 Visual Studio 2015。
 * [.NET Core Visual Studio 2015 或 2017 工具](http://www.microsoft.com/net/core)。
-* Azure 订阅。
-* Azure 事件中心命名空间和事件中心。
-* 一个 Azure 存储帐户。
 
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心  
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
 
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作，并继续学习本教程。  
-
-## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在门户的左导航窗格中选择“创建资源”，接着从类别中选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列”。  
-3. 完成“创建存储帐户”窗口中的字段，然后选择“查看 + 创建”。 
-
-    ![创建存储帐户][1]
-
-4. 在“查看 + 创建”页上查看这些字段的值，然后选择“创建”。 
-5. 看到“部署成功”消息后，选择新存储帐户的名称。 
-6. 在“概要”窗口中选择“Blob”。 
-7. 选择顶部的“+ 容器”。 为容器提供一个名称。  
-8. 选择左侧窗口中的“访问密钥”，复制存储容器、存储帐户的名称和 **key1** 的值。 
-
-    将这些值保存到记事本或其他临时位置。
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
@@ -118,7 +100,7 @@ ms.locfileid: "49166266"
     }
     ```
 
-## <a name="write-a-main-console-method-that-uses-the-simpleeventprocessor-class-to-receive-messages"></a>编写使用 SimpleEventProcessor 类接收消息的主控制台方法
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>更新 Main 方法以使用 SimpleEventProcessor
 
 1. 在 Program.cs 文件顶部添加以下 `using` 语句。
 
@@ -220,12 +202,11 @@ ms.locfileid: "49166266"
 
 祝贺你！ 现在已使用事件处理器主机从事件中心接收消息。
 
-## <a name="next-steps"></a>后续步骤
-访问以下链接可以了解有关事件中心的详细信息：
+> [!NOTE]
+> 本教程使用单个 [EventProcessorHost](event-hubs-event-processor-host.md) 实例。 若要增加吞吐量，建议运行多个 [EventProcessorHost](event-hubs-event-processor-host.md) 实例，如[扩展的事件处理](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)示例中所示。 在这些情况下，为了对接收的事件进行负载均衡，多个实例会自动相互协调。 
 
-* [事件中心概述](event-hubs-what-is-event-hubs.md)
-* [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+## <a name="next-steps"></a>后续步骤
+在本快速入门，你已创建从事件中心接收消息的 .NET Standard 应用程序。 若要了解如何使用 .NET Standard 将事件发送到事件中心，请参阅[从事件中心发送事件 - .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)。
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png
