@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116906"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231230"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>排查到 Azure Stack 的 Kubernetes 部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116906"
 > [!Note]  
 > Azure Stack 上的 Kubernetes 处于预览状态。
 
-以下文章讨论了 Kubernetes 群集进行疑难解答。 您可以查看部署警报以及部署的状态部署所需的元素。 您可能需要从 Azure Stack 或 Linux Vm 托管 Kubernetes 收集部署日志。 此外，您可能需要与 Azure Stack 管理员联系，以从管理终结点检索日志。
+以下文章讨论了 Kubernetes 群集进行疑难解答。 您可以查看部署警报，并通过查看部署所需的元素中查看部署的状态。 您可能需要从 Azure Stack 或 Linux Vm 托管 Kubernetes 收集部署日志。 此外，您可能需要与 Azure Stack 管理员联系，以从管理终结点检索日志。
 
 ## <a name="overview-of-deployment"></a>部署概述
 
@@ -47,7 +47,7 @@ ms.locfileid: "49116906"
     输入所需设置 Kubernetes 群集包括的值：
     -  **用户名称**是 Kubernetes 群集的一部分的 Linux 虚拟机以及 DVM 的用户名称。
     -  **SSH 公钥**用于到 Kubernetes 群集和 DVM 的一部分创建的所有 Linux 计算机的授权的密钥
-    -  **服务主体**Kubernetes Azure 云提供程序所使用的 ID。 标识为应用程序 ID 创建服务主体时客户端 ID。 
+    -  **服务主体**Kubernetes Azure 云提供程序所使用的 ID。 当您在创建你的服务主体时，客户端 ID 被标识为应用程序 ID。 
     -  **客户端机密**密钥的创建服务主体时创建它们。
 
 2. 创建 VM 的部署和自定义脚本扩展。
@@ -112,7 +112,7 @@ ms.locfileid: "49116906"
     | 属性 | 说明 |
     | ----     | ----        |
     | 资源 | 资源的名称。 |
-    | Type | 资源提供程序和资源的类型。 |
+    | 类型 | 资源提供程序和资源的类型。 |
     | 状态 | 将项的状态。 |
     | 时间戳 | 时间的 UTC 时间戳。 |
     | 操作详细信息 | 操作详细信息，例如操作、 资源终结点和资源的名称中所涉及的资源提供程序。 |

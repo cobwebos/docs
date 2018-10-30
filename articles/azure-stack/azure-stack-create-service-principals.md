@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 10/26/2018
 ms.author: sethm
-ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958442"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230108"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
 
@@ -77,6 +77,13 @@ ms.locfileid: "49958442"
 要求：
 - 需要证书。
 
+证书要求：
+ - 加密服务提供商 (CSP) 必须是旧密钥提供程序。
+ - 证书格式必须是 PFX 文件中，因为这两个公共和私有密钥所需。 Windows 服务器使用包含公钥文件 （SSL 证书文件） 的.pfx 文件和关联的私钥文件。
+ - 对于生产环境，必须从内部证书颁发机构或公共证书颁发机构颁发证书。 如果使用的公共证书颁发机构，你必须作为 Microsoft 受信任的根颁发机构计划的一部分运行的基本系统映像中包含颁发机构。 您可以找到在的完整列表[Microsoft 受信任的根证书程序： 参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)。
+ - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 HTTP 终结点。
+
+
 #### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
@@ -93,7 +100,7 @@ ms.locfileid: "49958442"
 1. 打开权限提升的 Windows PowerShell 会话，并运行以下命令：
 
    > [!NOTE]
-   > 此示例创建一个自签名证书。 在生产部署中运行这些命令时，使用 [Get-Certificate](/powershell/module/pkiclient/get-certificate) 检索要使用的证书的证书对象。
+   > 此示例创建一个自签名证书。 在生产部署中运行这些命令，使用[Get-item](/powershell/module/Microsoft.PowerShell.Management/Get-Item)检索你想要使用的证书的证书对象。
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -102,7 +109,7 @@ ms.locfileid: "49958442"
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}

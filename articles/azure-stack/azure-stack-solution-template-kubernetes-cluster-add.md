@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 9250e38eadb9d9b1e8bf0c09fa1a9a165e5e69f1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5a3d63637d7b680a012057b92546ccde87ac73de
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886256"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233355"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack Marketplace
 
@@ -48,7 +48,7 @@ ms.locfileid: "48886256"
 
 1. 选择“更改状态”。 选择“公共”。
 
-1. 选择 **+ 创建资源** > **提供了和计划** > **订阅**若要创建新的订阅。
+1. 选择“+ 创建资源” > “套餐和计划” > “订阅”来创建新订阅。
 
     a. 输入**显示名称**。
 
@@ -66,15 +66,16 @@ ms.locfileid: "48886256"
 
 1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理**。
+1. 选择“所有服务”，然后在“管理”类别下，选择“市场管理”。
 
 1. 选择“+ 从 Azure 添加”。
 
 1. 输入 `UbuntuServer`。
 
-1. 选择具有以下配置文件的服务器的最新版本：
+1. 选择最新版本的服务器。 检查的完整版本，并确保有最新版本：
     - **发布者**：Canonical
     - **套餐**：UbuntuServer
+    - **版本**: 16.04.201806120
     - **SKU**：16.04-LTS
 
 1. 选择“下载”。
@@ -85,7 +86,7 @@ ms.locfileid: "48886256"
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理**。
+1. 选择“所有服务”，然后在“管理”类别下，选择“市场管理”。
 
 1. 选择“+ 从 Azure 添加”。
 

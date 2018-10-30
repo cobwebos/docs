@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 10/27/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158460"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210867"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -38,6 +38,8 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 ### <a name="new-features"></a>新增功能
 
 此更新包括适用于 Azure Stack 的以下改进：
+
+- 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端 （公开上市）** 此客户端允许转发的审核、 警报和到 syslog 服务器或安全信息和事件管理 (SIEM) 软件的 Azure Stack 基础结构相关的安全日志Azure Stack 的外部。 Syslog 客户端现在支持指定的 syslog 服务器正在侦听的端口。
 
@@ -147,6 +149,8 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - <!-- 2468613 - IS --> 在安装此更新期间，可能会出现标题如下的警报：“错误 - 缺少 FaultType UserAccounts.New 的模板”。  可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
 - <!-- 2489559 - IS --> 在安装此更新的过程中，请勿尝试创建虚拟机。 有关如何管理更新的详细信息，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md#plan-for-updates)。
+
+- <!-- 3139614 | IS --> 如果已从您的 OEM，对 Azure Stack 应用更新**可用更新**通知可能不会显示在 Azure Stack 管理门户中。 若要安装 Microsoft 更新，请下载并导入它使用位于此处的说明手动[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。
 
 ### <a name="post-update-steps"></a>更新后步骤
 

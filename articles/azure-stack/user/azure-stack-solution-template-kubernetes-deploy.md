@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 62eb28c6cdb2dd6c1ddff1487826c01ef3bf6e3e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4aa74aebfd9e0ef6c71913c76181a07045aa3ad7
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091583"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231213"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
@@ -95,7 +95,7 @@ ms.locfileid: "49091583"
 
 为服务主体提供对订阅的访问权限，使该主体能够创建资源。
 
-1.  登录到[Azure Stack 门户](https://portal.local.azurestack.external/)。
+1.  登录到 [Azure Stack 门户](https://portal.local.azurestack.external/)。
 
 1. 选择**所有服务** > **订阅**。
 
@@ -113,7 +113,7 @@ ms.locfileid: "49091583"
 
 1. 打开 [Azure Stack 门户](https://portal.local.azurestack.external)。
 
-1. 选择 **+ 创建资源** > **计算** > **Kubernetes 群集**。 单击“创建”。
+1. 选择“+ 创建资源” > “计算” > “Kubernetes 群集”。 单击“创建”。
 
     ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
