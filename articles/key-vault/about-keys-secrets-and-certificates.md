@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311348"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958646"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -101,7 +101,7 @@ Key Vault 仅支持 RSA 和椭圆曲线密钥。
 -   **RSA**：“软”RSA 密钥。
 -   **RSA-HSM**：“硬”RSA 密钥。
 
-Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥。 Key Vault 支持类型为 P-256、P-384、P-521 和 P-256K 的椭圆曲线密钥。
+Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥。 Key Vault 支持类型为 P-256、P-384、P-521 和 P-256K (SECP256K1) 的椭圆曲线密钥。
 
 ### <a name="cryptographic-protection"></a>加密保护
 
@@ -110,12 +110,19 @@ Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信�
 ###  <a name="ec-algorithms"></a>EC 算法
  Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
 
+#### <a name="curve-types"></a>曲线类型
+
+-   P-256 - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](http://www.secg.org/sec2-v2.pdf) 中定义。
+-   P-384 - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-521 - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **ES256** - 使用曲线 P-256 创建的 SHA-256 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
+-   **ES256** - 使用曲线 P-256 创建的 SHA-256 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 -   **ES256K** - 使用曲线 P-256K 创建的 SHA-256 摘要和密钥的 ECDSA。 此算法正在等待标准化。
--   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
--   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518] 中描述了此算法。
+-   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
+-   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 
 ###  <a name="rsa-algorithms"></a>RSA 算法  
  Key Vault 中的 RSA 和 RSA-HSM 密钥支持以下算法标识符。  

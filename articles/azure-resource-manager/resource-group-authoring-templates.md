@@ -12,19 +12,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542238"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945869"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 本文介绍 Azure 资源管理器模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。 模板中包含可用于为部署构造值的 JSON 和表达式。 有关创建模板的分步教程，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
 
+## <a name="quickstarts-and-tutorials"></a>快速入门和教程
+
+使用以下快速入门和教程了解如何开发资源管理器模板：
+
+- 快速入门
+
+  	|标题|Description|
+  	|------|-----|
+  	|[使用 Azure 门户](./resource-manager-quickstart-create-templates-use-the-portal.md)|使用门户生成模板，以及模板的编辑和部署过程。|
+  	|[使用 Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|使用 Visual Studio Code 创建和编辑模板，以及如何使用 Azure Cloud shell 部署模板。|
+  	|[使用 Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|使用 Visual Studio 创建、编辑和部署模板。|
+
+- 教程
+
+  	|标题|Description|
+  	|------|-----|
+  	|[利用模板参考](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|利用模板参考文档来开发模板。 在本教程中，找到存储帐户架构，并使用相关信息来创建加密的存储帐户。|
+  	|[创建多个实例](./resource-manager-tutorial-create-multiple-instances.md)|创建多个 Azure 资源的实例。 在本教程中，将创建多个存储帐户实例。|
+  	|[设置资源部署顺序](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|定义资源依赖关系。 在本教程中，将创建虚拟网络、虚拟机和相关 Azure 资源。 了解如何定义依赖关系。|
+  	|[使用条件](./resource-manager-tutorial-use-conditions.md)|基于某些参数值来部署资源。 在本教程中，基于参数的值定义一个模板以创建新的存储帐户或使用现有存储帐户。|
+  	|[集成 Key Vault](./resource-manager-tutorial-use-key-vault.md)|从 Azure Key Vault 检索机密/密码。 在本教程中，将创建虚拟机。  从 Key Vault 检索虚拟机管理员密码。|
+  	|[创建链接模板](./resource-manager-tutorial-create-linked-templates.md)|模块化模板，并从模板中调用其他模板。 在本教程中，将创建虚拟网络、虚拟机和相关资源。  相关存储帐户在链接模板中定义。 |
+  	|[使用安全部署实践](./deployment-manager-tutorial.md)|使用 Azure 部署管理器。 |
+
 ## <a name="template-format"></a>模板格式
+
 使用最简单的结构时，模板有以下元素：
 
 ```json
@@ -279,7 +304,7 @@ ms.locfileid: "45542238"
 ],
 ```
 
-有关详细信息，请参阅 [Azure 资源管理器模板的资源部分](resource-manager-templates-resources.md)。
+若要在部署过程中有条件地包括或排除资源，请使用 [Condition 元素](resource-manager-templates-resources.md#condition)。 有关资源部分的详细信息，请参阅 [Azure 资源管理器模板的资源部分](resource-manager-templates-resources.md)。
 
 ## <a name="outputs"></a>Outputs
 在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。

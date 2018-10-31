@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: e51c0178691279d803e9a1afcd4147f1d6ed767e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498226"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985244"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -163,6 +163,9 @@ Linux 代理必须具有访问更新存储库的权限。
    |仅重启 - 不安装更新|此选项忽略安装更新，仅开始重启。|
 
 配置完计划后，选择“创建”按钮以返回到状态仪表板。 “已计划”表会显示你创建的部署计划。
+
+> [!NOTE]
+> 更新管理支持部署第一方更新和预下载的修补程序。 这需要在修补的系统上进行更改，请参阅[第一方和预下载支持](automation-update-management.md#firstparty-predownload)以了解如何在系统上配置这些设置。
 
 ## <a name="view-results-of-an-update-deployment"></a>查看更新部署结果
 

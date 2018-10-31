@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343729"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985482"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
 
@@ -102,7 +102,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 ### <a name="score-on-premises"></a>本地评分
 
-要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#scoring-in-hdinsight)所述的方法，或使用 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)对新数据进行评分。
+要在创建模型之后进行本地评分，可以在 R 中序列化模型，将其下载，将其反序列化，然后使用它进行新数据评分。 可以使用前面[在 HDInsight 中评分](#score-in-hdinsight)所述的方法，或使用 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)对新数据进行评分。
 
 ## <a name="maintain-the-cluster"></a>维护群集
 

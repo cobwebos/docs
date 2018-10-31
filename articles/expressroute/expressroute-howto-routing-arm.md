@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/3/2018
+ms.date: 10/23/2018
 ms.author: osamaz, jaredr80
-ms.openlocfilehash: d4f8f0e6c8fab5dfb4efcc4f1659ba90336c8bf0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dc67f4a4e2189a63cfd4adbb5c1b7eace23acad5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593876"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957524"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -42,7 +42,7 @@ ms.locfileid: "31593876"
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
 * 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
 
-这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则你的连接服务提供商将为你配置和管理路由。
+这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商会配置和管理路由。
 
 > [!IMPORTANT]
 > 我们目前无法通过服务管理门户播发服务提供商配置的对等互连。 我们正在努力不久就实现这一功能。 请在配置 BGP 对等互连之前与服务提供商核对。
@@ -310,7 +310,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 可以运行以下示例来删除对等互连配置：
 
 > [!WARNING]
-> 运行此示例前，必须确保已从 ExpressRoute 线路取消链接所有虚拟网络。 
+> 运行此示例前，必须确保已删除所有虚拟网络和 ExpressRoute Global Reach 连接。 
 > 
 > 
 

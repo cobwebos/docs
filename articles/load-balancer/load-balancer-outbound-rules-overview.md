@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/8/2018
+ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 15783822631a5372b181f2d65746664d90b389da
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883952"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637556"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 

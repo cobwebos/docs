@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/24/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: d074b263d11c6b12a4283d2ff479a5b3dc1d6908
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fdb8c1c49e1791e3dafa006928bf244e05d00909
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952437"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025967"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 
@@ -27,23 +27,23 @@ ms.locfileid: "46952437"
 2. 单击顶部导航栏上的“帮助”。
 3. 在“帮助”菜单中，单击“帮助和支持”。
 4. 在“帮助”下的“帮助和支持”中，单击“新建支持请求”。
-5. 在“问题类型”下的“基本信息”区域中，选择“技术”。
+5. 在“问题类型”下的“基本信息”区域中，选择“计费”。
 6. 在“订阅”下，选择任何列出的订阅。 所选订阅不用于问题路由。
-7. 在“服务”下，选择“所有服务”，并从列表中选择“Cloudyn”。
-8. 在“支持计划”下，选择“Azure 支持计划”并单击“下一步”。  
-    ![新建支持请求 -“基本信息”区域](./media/support-request-cost-management/support-request01.png)
-9. 在“问题”区域中，选择“严重性”级别，以帮助确定响应时间。
-10. 选择“问题类型”，然后选择某个“类别”。
-11. 在“标题”框中，输入描述你的请求的标题。
-12. 在“详细信息”框中，键入其他信息。
-13. 对“问题开始时间”，选择近似的日期和时间，然后单击“下一步”。  
-    ![新建支持请求 -“问题”区域](./media/support-request-cost-management/support-request02.png)
+7. 在“支持计划”下，选择“Azure 支持计划”并单击“下一步”。  
+8. 在“问题”区域中，选择“严重性”级别，以帮助确定响应时间。
+9. 在“问题类型”中选择“Cloudyn 旧版”，然后选择“类别”。
+10. 在“标题”框中，输入描述你的请求的标题。
+11. 在“详细信息”框中，键入其他信息。
+12. 对“问题开始时间”，选择近似的日期和时间，然后单击“下一步”。  
 14. 在“联系人信息”区域中，选择首选联系方式并提供联系人信息，然后单击“创建”。  
-    ![新建支持请求 -“联系人”区域](./media/support-request-cost-management/support-request03.png)
 
 创建支持票证后，该票证会自动添加到支持队列中。 根据问题的支持计划和严重性（即业务影响），响应时间各不相同。 有关详细信息，请参阅[支持范围和响应能力](https://azure.microsoft.com/support/plans/response/)。
 
+如果想要在成本管理中创建计费支持票证，请在“问题类型”下选择“Azure 成本管理”。
+
 若要查看已提交事件的状态，请参阅[所有支持请求](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests)。
+
+如果是没有 Azure 帐户的旧 Cloudyn 用户，则可以在 http://support.microsoft.com/oas/default.aspx?prid=16451 打开支持请求。
 
 
 ## <a name="next-steps"></a>后续步骤

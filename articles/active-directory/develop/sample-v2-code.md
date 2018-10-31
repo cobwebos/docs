@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/17/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e76097c0d0cbaf14f2fc2b1a407bc2d320a2091d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7323f532787fa767d875e13262cce9f1ceaa79d8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964377"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955503"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Azure Active Directory 代码示例（V2 终结点）
 
@@ -49,8 +49,8 @@ ms.locfileid: "46964377"
  平台 |  调用 Microsoft Graph
  -------- |  ---------------------
 ![JavaScript](media/sample-v2-code/logo_js.png) JavaScript (msal.js)  | [javascript-graphapi-web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2)
-![Angular JS](media/sample-v2-code/logo_angular.png) JavaScript (msal AngularJS) | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
-![Angular](media/sample-v2-code/logo_angular.png) JavaScript (msal Angular) | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp)
+![Angular JS](media/sample-v2-code/logo_angular.png) JavaScript (MSAL AngularJS) | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
+![Angular](media/sample-v2-code/logo_angular.png) JavaScript (MSAL Angular) | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp)
 
 ## <a name="web-applications"></a>Web 应用程序
 
@@ -65,15 +65,17 @@ ms.locfileid: "46964377"
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>桌面和移动公共客户端应用
 
-以下示例展示了以用户身份使用交互式登录访问 Microsoft Graph 或你自己的 Web API 的公共客户端应用程序（桌面/移动应用程序）。 所有这些客户端应用程序均使用 MicroSoft 身份验证库 (MSAL)
+以下示例展示了以用户身份访问 Microsoft Graph 或你自己的 Web API 的公共客户端应用程序（桌面/移动应用程序）。 所有这些客户端应用程序均使用 MicroSoft 身份验证库 (MSAL)
 
-客户端应用程序 | 平台 | 调用 Microsoft Graph | 调用 ASP.NET Core 2.0 Web API
------------------- | -------- |  -------------------- | -------------------------
-桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [dotnet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
-移动 (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | [dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-移动（Android、iOS、UWP）   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | [xamarin-native-v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
-移动 (iOS)       | ![iOS / Objective C 或 swift](media/sample-v2-code/logo_iOS.png) | [ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
-移动 (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) |   [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
+客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET Core 2.0 Web API
+------------------ | -------- |  ----------| ---------- | -------------------------
+桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 交互式 | [dotnet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) <p/> [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) | [dotnet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NET.png) | Windows 集成身份验证 |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
+桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | 用户名/密码 |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-up-v2)
+移动 (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | 交互式 |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
+移动（Android、iOS、UWP）   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | 交互式 |[xamarin-native-v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
+移动 (iOS)       | ![iOS / Objective C 或 swift](media/sample-v2-code/logo_iOS.png) | 交互式 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+移动 (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) | 交互式 |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>守护程序应用程序
 
@@ -81,9 +83,16 @@ ms.locfileid: "46964377"
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph
 ------------------ | -------- | ---------- | --------------------
+控制台 | ![.NET Core](media/sample-v2-code/logo_NETcore.png)<p/> ASP.NET  | 客户端凭据 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
 Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET  | 客户端凭据 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
-> 显示桌面守护应用程序的示例位于待办事项列表中。
+## <a name="headless-applications"></a>无外设应用程序
+
+以下示例展示了在没有 Web 浏览器的设备上运行的公共客户端应用程序。 这些应用可以是命令行工具，或在 Linux/Mac 或 iOT 应用程序上运行的应用。 示例采用应用程序，以用户身份访问 Microsoft Graph，该用户以交互方式在另一台设备上登录（例如移动电话）。 所有这些客户端应用程序均使用 MicroSoft 身份验证库 (MSAL)
+
+客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph
+------------------ | -------- |  ----------| ----------
+桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | 设备代码流 |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)
 
 ## <a name="web-apis"></a>Web API
 
@@ -99,7 +108,7 @@ Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure Active Directory 开发人员指南](azure-ad-developers-guide.md)
+[Azure Active Directory 开发人员指南](v1-overview.md)
 
 [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 

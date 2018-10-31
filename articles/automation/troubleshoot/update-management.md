@@ -4,16 +4,16 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141434"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405219"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -41,7 +41,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 #### <a name="resolution"></a>解决方法
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
-2. 如果使用克隆映像，请首先对映像进行 sysprep，然后在事后安装 MMA 代理。
+2. 如果使用克隆映像，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
 
 ## <a name="windows"></a>Windows
 
@@ -110,6 +110,28 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 #### <a name="resolution"></a>解决方法
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
+
+### <a name="hresult"></a>场景：计算机显示“未评估”，并显示 HResult 异常
+
+#### <a name="issue"></a>问题
+
+有计算机在“符合性”下显示“未评估”，并且能看到下面显示一条异常消息。
+
+#### <a name="cause"></a>原因
+
+计算机中的 Windows 更新配置不正确。
+
+#### <a name="resolution"></a>解决方法
+
+双击显示为红色的异常，查看完整的异常消息。 查看下表，了解可能采取的解决方案或措施：
+
+|异常  |解决方法或操作  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | 搜索 [ Windows 更新错误代码列表](https://support.microsoft.com/help/938205/windows-update-error-code-list)中的相关错误代码，以查找有关异常原因的其他详细信息。        |
+|`0x8024402C` 或 `0x8024401C`     | 这些错误是网络连接问题。 请确保你的计算机具有与更新管理的适当网络连接。 请参阅[网络规划](../automation-update-management.md#ports)部分，了解所需的端口和地址的列表。        |
+|`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值具有正确的 WSUS 服务器。        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务 (wuauserv) 正在运行，并且未禁用。        |
+|任何其他一般异常     | 在 Internet 上搜索可能的解决方案，并与本地 IT 支持人员合作。         |
 
 ## <a name="linux"></a>Linux
 

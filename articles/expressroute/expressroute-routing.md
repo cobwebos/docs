@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: ganesr
-ms.openlocfilehash: 525d75264ecb54d42d920cacb0712397f4d8c3a8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43304351"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650122"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -211,7 +211,11 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | SharePoint Online | 12076:5020 |
 | Skype For Business Online | 12076:5030 |
 | Dynamics 365 | 12076:5040 |
+| Azure 全球服务* | 12076:5050 |
 | 其他 Office 365 Online 服务 | 12076:5100 |
+
+*Azure 全球服务包括 Azure DevOps
+
 
 > [!NOTE]
 > Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。

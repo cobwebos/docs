@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f2ceae349c921ce0d83fb7401e3b18404722763
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362902"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637859"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -83,6 +83,10 @@ ms.locfileid: "49362902"
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
 否。在一台服务器上只能安装一个传递身份验证代理。 若要配置传递身份验证实现高可用性，请[遵循此处的说明](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+
+## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>我是否必须手动续订由传递身份验证代理使用的证书？
+
+使用基于证书的身份验证保护各传递身份验证代理与 Azure AD 之间的通信。 这些[证书每隔几个月由 Azure AD 自动续订](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents)。 无需手动续订这些证书。 可以根据需要清除已过期的旧证书。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 

@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 044cb56b8991a1eb2dd6a1d35be621f2ffab3250
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 40a1955e88b23ecfb86412b388413b920dd2eb1a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064215"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407599"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>排查加入解决方案时发生的错误
 
@@ -55,13 +55,15 @@ ms.locfileid: "37064215"
   * 将策略重定位到特定资源（例如，特定自动化帐户）。
   * 修改该策略已配置为拒绝的资源集。
 
-检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure 策略的详细信息，请访问：[Azure 策略概述](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)。
+检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure Policy 的详细信息，请访问：[Azure Policy 概述](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ## <a name="mma-extension-failures"></a>MMA 扩展失败
 
-部署解决方案时，会部署各种相关资源。 其中的一个资源是 Microsoft Monitoring Agent 扩展或适用于 Linux 的 OMS 代理。 这些虚拟机扩展由虚拟机的来宾代理安装，该代理负责与配置的 Operations Management Suite (OMS) 工作区通信，目的是在所要加入的解决方案开始执行后，协调该解决方案所依赖的二进制文件和其他文件的下载。
-通常，通知中心显示的通知首先会指出发生了 MMA 或适用于 Linux 的 OMS 代理安装失败。 单击该通知可以获取有关特定失败问题的更多信息。 依次导航到“资源组”资源和“部署”元素，其中也提供了发生的部署失败问题的详细信息。
-MMA 或适用于 Linux 的 OMS 代理安装可能会出于各种原因而失败，这些失败问题的解决步骤根据问题的不同而异。 具体的故障排除步骤如下。
+[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
+
+部署解决方案时，会部署各种相关资源。 其中一个资源是 Microsoft Monitoring Agent 扩展或 Log Analytics Linux 代理。 这些虚拟机扩展由虚拟机的来宾代理安装，该代理负责与配置的 Log Analytics 工作区通信，目的是在所要加入的解决方案开始执行后，协调该解决方案所依赖的二进制文件和其他文件的下载。
+通常，通知中心显示的通知首先会指出发生了 MMA 或 Log Analytics Linux 代理安装失败。 单击该通知可以获取有关特定失败问题的更多信息。 依次导航到“资源组”资源和“部署”元素，其中也提供了发生的部署失败问题的详细信息。
+MMA 或 Log Analytics Linux 代理安装可能会出于各种原因而失败，这些失败问题的解决步骤根据问题的不同而异。 具体的故障排除步骤如下。
 
 以下部分描述了在加入过程中可能会遇到的、导致 MMA 扩展部署失败的各种问题。
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223825"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404556"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -113,7 +113,7 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 基于 Log Analytics 查询的警报规则现在在[统一警报体验](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中管理。 请参阅[如何将警报从 Log Analytics 扩展到 Azure 警报中](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md)，详细了解如何在 Azure 门户中配置和使用警报。
 
 ## <a name="how-do-i-access-my-dashboards"></a>如何访问我的仪表板？
-Log Analytics 中的[仪表板](../log-analytics/log-analytics-dashboards.md)已弃用。  可以使用包含其他功能的[视图设计器](../log-analytics/log-analytics-view-designer.md)将 Log Analytics 中的数据可视化，并将查询和视图固定到 Azure 仪表板。
+Log Analytics 中的[我的仪表板](../log-analytics/log-analytics-dashboards.md)功能已被弃用。 此功能允许你有一个专用的视图设计器部件集合，已被内置的 Azure 仪表板功能所取代。 你可以使用共享视图的[视图设计器](../log-analytics/log-analytics-view-designer.md)继续可视化 Log Analytics 中的数据。 此外，还可以将这些视图或者[各个查询](../log-analytics/log-analytics-tutorial-dashboards.md)的可视化效果固定到 Azure 仪表板。
 
 ## <a name="how-do-i-check-my-usage"></a>如何查看我的使用情况？
 现在可以轻松地查看和管理 Log Analytics 的使用情况和成本，只需在工作区中选择“使用情况和预估成本”即可。

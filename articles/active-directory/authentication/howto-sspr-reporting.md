@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627519"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024999"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -23,7 +23,7 @@ ms.locfileid: "39627519"
 
 ![报告][Reporting]
 
-[Azure 门户] (https://portal.azure.com/): 中提供的报表可解答以下问题：
+[Azure 门户](https://portal.azure.com/)中提供的报表可解答以下问题：
 
 > [!NOTE]
 > 必须是[全局管理员](../users-groups-roles/directory-assign-admin-roles.md)，并且必须选择代表组织收集这些数据。 要做出此选择，必须至少访问一次“报告”选项卡或审核日志。 在此之前，不会为组织收集数据。

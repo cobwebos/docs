@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067528"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427393"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -200,7 +200,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 使用 like 和 notLike 条件时，可以在值中指定通配符 `*`。
 值不得包含多个通配符 `*`。
 
-当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>字段
 

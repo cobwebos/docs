@@ -1,0 +1,204 @@
+---
+title: 如何在 Azure 数字孪生中调试 UDF | Microsoft Docs
+description: 有关如何在 Azure 数字孪生中调试 UDF 的指南
+author: stefanmsft
+manager: deshner
+ms.service: digital-twins
+services: digital-twins
+ms.topic: conceptual
+ms.date: 10/22/2018
+ms.author: stefanmsft
+ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946090"
+---
+# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中使用用户定义的函数调试问题
+
+本文概述如何诊断用户定义的函数。 然后，本文确定了使用用户定义的函数时遇到的一些最常见情况。
+
+## <a name="debug-issues"></a>调试问题
+
+了解如何诊断 Azure 数字孪生实例中出现的任何问题将帮助你有效地确定问题、问题的原因和解决方案。
+
+### <a name="enable-log-analytics-for-your-instance"></a>为实例启用 Log Analytics
+
+Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下文档假设你已通过 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)、通过 [Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md) 或通过 [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../log-analytics/log-analytics-queries.md) 工作区。
+
+> [!NOTE]
+> 将事件首次发送到 Log Analytics 时，可能会遇到 5 分钟的延迟。
+
+请阅读[“从 Azure 资源收集和使用日志数据”](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文，了解如何通过门户、Azure CLI 或 PowerShell 启用 Azure 数字孪生实例的诊断设置。 请务必选择所有日志类别、指标和 Azure Log Analytics 工作区。
+
+### <a name="trace-sensor-telemetry"></a>跟踪传感器遥测数据
+
+请确保在 Azure 数字孪生实例上启用了诊断设置，选择了所有日志类别，并且将日志发送到 Azure Log Analytics。
+
+要将传感器遥测数据消息与其各自的日志进行匹配，可以在要发送的事件数据上指定相关 ID。 为此，请将 `x-ms-client-request-id` 属性设置为 GUID。
+
+发送遥测数据之后, 打开 Azure Log Analytics 并使用集相关 ID 查询日志：
+
+```Kusto
+AzureDiagnostics
+| where CorrelationId = 'yourCorrelationIdentifier'
+```
+
+| 自定义属性名称 | 替换为 |
+| --- | --- |
+| yourCorrelationIdentifier | 已在事件数据中指定的相关 ID |
+
+如果记录用户定义的函数，这些日志将显示在 Azure Log Analytics 实例中，类别为 `UserDefinedFunction`。 若要检索这些日志，请在 Azure Log Analytics 中输入以下查询条件：
+
+```Kusto
+AzureDiagnostics
+| where Category = 'UserDefinedFunction'
+```
+
+有关功能强大的查询操作的详细信息，请参阅[开始使用查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)。
+
+## <a name="identify-common-issues"></a>识别常见问题
+
+在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面总结了开发用户定义的函数时遇到的几个常见问题。
+
+### <a name="ensure-a-role-assignment-was-created"></a>确保已创建角色分配
+
+如果没有在管理 API 中创建角色分配，用户定义的函数将无权执行任何操作，例如发送通知、检索元数据以及在拓扑中设置计算值。
+
+通过管理 API 检查用户定义的函数是否存在角色分配：
+
+```plaintext
+GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+```
+
+| 自定义属性名称 | 替换为 |
+| --- | --- |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| yourUserDefinedFunctionId | 要检索其角色分配的用户定义的函数 ID|
+
+如果未检索到任何角色分配，请按照[如何为用户定义的函数创建角色分配](./how-to-user-defined-functions.md)一文中的说明操作。
+
+### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>检查匹配程序是否适用于传感器的遥测数据
+
+通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定给定的匹配程序是否适用于给定的传感器。
+
+```plaintext
+GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+```
+
+| 自定义属性名称 | 替换为 |
+| --- | --- |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| yourMatcherIdentifier | 要评估的匹配程序的 ID |
+| yourSensorIdentifier | 要评估的传感器的 ID |
+
+响应：
+
+```JavaScript
+{
+    "success": true,
+    "logs": [
+        "$.dataType: \"Motion\" Equals \"Motion\" => True"
+    ]
+}
+```
+
+### <a name="check-what-a-sensor-will-trigger"></a>检查传感器要触发的内容
+
+通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定将由给定传感器的传入遥测数据触发的用户定义的函数的标识符：
+
+```plaintext
+GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+```
+
+| 自定义属性名称 | 替换为 |
+| --- | --- |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| yourSensorIdentifier | 将发送遥测数据的传感器的 ID |
+
+响应：
+
+```JavaScript
+[
+    {
+        "id": "48a64768-797e-4832-86dd-de625f5f3fd9",
+        "name": "MotionMatcher",
+        "spaceId": "2117b3e1-b6ce-42c1-9b97-0158bef59eb7",
+        "conditions": [
+            {
+                "id": "024a067a-414f-415b-8424-7df61392541e",
+                "target": "Sensor",
+                "path": "$.dataType",
+                "value": "\"Motion\"",
+                "comparison": "Equals"
+            }
+        ],
+        "userDefinedFunctions": [
+            {
+                "id": "373d03c5-d567-4e24-a7dc-f993460120fc",
+                "spaceId": "2117b3e1-b6ce-42c1-9b97-0158bef59eb7",
+                "name": "Motion User-Defined Function",
+                "disabled": false
+            }
+        ]
+    }
+]
+```
+
+### <a name="issue-with-receiving-notifications"></a>接收通知的问题
+
+如果未从触发的用户定义函数中接收通知，请确保拓扑对象类型参数与正在使用的标识符的类型匹配。
+
+不正确示例：
+
+```JavaScript
+var customNotification = {
+    Message: 'Custom notification that will not work'
+};
+
+sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
+```
+
+出现这种情况是因为使用的标识符指的是传感器，而指定的拓扑对象类型是“Space”。
+
+正确示例：
+
+```JavaScript
+var customNotification = {
+    Message: 'Custom notification that will work'
+};
+
+sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
+```
+
+避免遇到此问题的最简单方法是在元数据对象上使用 `Notify` 方法。
+
+示例：
+
+```JavaScript
+function process(telemetry, executionContext) {
+    var sensorMetadata = getSensorMetadata(telemetry.SensorId);
+
+    var customNotification = {
+        Message: 'Custom notification'
+    };
+
+    // Short-hand for above methods where object type is known from metadata.
+    sensorMetadata.Notify(JSON.stringify(customNotification));
+}
+```
+
+## <a name="common-diagnostic-exceptions"></a>常见诊断异常
+
+如果启用诊断设置，可能会遇到以下常见异常：
+
+1. 限制：如果用户定义的函数超出[服务限制](./concepts-service-limits.md)一文中列出的执行速率限制，它将受到限制。 在限制到期之前，限制不需要进一步的操作成功执行。
+
+1. 找不到数据：如果用户定义的函数尝试访问不存在的元数据，操作将失败。
+
+1. 未授权：如果用户定义的函数没有设置角色分配或缺少从拓扑中访问某些元数据的足够权限，操作将失败。
+
+## <a name="next-steps"></a>后续步骤
+
+了解如何在 Azure 数字孪生中启用[监视和日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。

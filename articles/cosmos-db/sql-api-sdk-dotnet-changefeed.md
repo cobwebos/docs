@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/21/2018
+ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c4dafa5b15548b3dbc02a9c093232197b3f1400
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716547"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023945"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -42,6 +42,14 @@ ms.locfileid: "44716547"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* 多主机帐户和新的会话令牌格式的固定估计器计算。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* 添加了对已分区租用集合的支持。 分区键必须定义为 /id。
+* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一个高级的扩展点，通过它可以提供文档客户端自定义实现以与更改源处理器结合使用，例如修饰 DocumentClient 并截获对它的所有调用以进行额外跟踪和错误处理等等。利用此更新，实现 IChangeFeedDocumentClient 的代码将需要更改为在实现中包含新参数。
+* 次要诊断改进。
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 添加了新的 API，Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync()。 此 API 可用于获取每个分区估算的工作量。
@@ -134,6 +142,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |
 | [1.3.1](#1.3.1) |2018 年 3 月 13 日 |--- |

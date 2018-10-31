@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 430ea5f0a6f737d7632a4352c24d893368b80558
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e470a44732b881311eacecfdf2bd2211598d880a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310376"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984854"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
@@ -33,6 +33,21 @@ ms.locfileid: "46310376"
 ## <a name="troubleshooting-steps"></a>疑难解答步骤 
 * 请务必仔细审阅并满足[要求部分](how-to-connect-health-agent-install.md#requirements)。
 * 使用[测试连接工具](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)来发现连接问题。
+* 如果具有 HTTP 代理，请遵循[此处的配置步骤](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 
+
+### <a name="connect-health-for-adfs"></a>适用于 ADFS 的 Connect Health
+可通过额外步骤来验证 AD FS，并按照 [AD FS 帮助](https://adfshelp.microsoft.com/TroubleshootingGuides/Workflow/3ef51c1f-499e-4e07-b3c4-60271640e282)中的工作流操作。
+
+### <a name="data-collection-map-required-steps"></a>数据收集将映射所需的步骤
+| 服务名称 | 数据元素 | 疑难解答步骤 |
+| --- | --- | --- | 
+| 适用于 AD FS 的 Connect Health | PerfCounter, TestResult | - [Azure 服务终结点的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [已筛选或禁用针对出站流量的 SSL 检查](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [运行代理的服务器上的防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [如果启用了 IE 增强安全性，允许指定的网站](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | Adfs-UsageMetrics | 基于 IP 地址的出站连接，请参阅 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653) | 
+| 适用于同步的 Connect Health | PerfCounter | - [Azure 服务终结点的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [已筛选或禁用针对出站流量的 SSL 检查](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [运行代理的服务器上的防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [如果启用了 IE 增强安全性，允许指定的网站](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | AadSyncService-SynchronizationRules, <br /> AadSyncService-Connectors, <br /> AadSyncService-GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService-ServiceConfigurations, <br /> AadSyncService-ServiceStatus | - 基于 IP 地址的出站连接，请参阅 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Azure 服务终结点的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [运行代理的服务器上的防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| 适用于 ADDS 的 Connect Health  | PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Azure 服务终结点的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [已筛选或禁用针对出站流量的 SSL 检查](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [运行代理的服务器上的防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [如果启用了 IE 增强安全性，允许指定的网站](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) <br />  - 基于 IP 地址的出站连接，请参阅 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)  |
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

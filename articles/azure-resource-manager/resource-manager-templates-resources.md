@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eea12a0a31d11065ebdc2cbef556b84df1ace750
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007155"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945189"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的资源部分
 
@@ -87,7 +87,7 @@ ms.locfileid: "39007155"
 | apiVersion |是 |用于创建资源的 REST API 版本。 |
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 |
 | 名称 |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 |
-| location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
+| 位置 |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
 | 注释 |否 |用于描述模板中资源的注释 |
 | 复制 |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。 |
@@ -100,7 +100,9 @@ ms.locfileid: "39007155"
 
 ## <a name="condition"></a>条件
 
-如果必须在部署期间决定是否创建资源，请使用 `condition` 元素。 此元素的值解析为 true 或 false。 如果值为 true，将创建资源。 如果值为 false，将不会创建资源。 通常，当要创建新资源或使用现有资源时，可以使用此值。 例如，若要指定是部署了新存储帐户，还是使用了现有的存储帐户，请使用：
+如果必须在部署期间决定是否创建资源，请使用 `condition` 元素。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+
+通常，当要创建新资源或使用现有资源时，可以使用此值。 例如，若要指定是部署了新存储帐户，还是使用了现有的存储帐户，请使用：
 
 ```json
 {

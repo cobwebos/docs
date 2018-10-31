@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803046"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649260"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -26,7 +26,12 @@ ms.locfileid: "48803046"
 - 不再与其他 Microsoft 服务共享 Cookie。
 - URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`。
 
-若要使用 b2clogin.com，请将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 还可以将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于策略引用和令牌终结点。 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
+使用 b2clogin.com 时，考虑可能需要更改的这些设置：
+
+- 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
+- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于策略引用和令牌终结点。 
+- 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
+- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
 
 ## <a name="change-redirect-urls"></a>更改重定向 URL
 

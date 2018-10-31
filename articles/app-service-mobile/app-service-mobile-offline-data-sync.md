@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597971"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471027"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
@@ -58,7 +58,7 @@ ms.locfileid: "34597971"
 开发人员也可以实现自己的本地存储。 例如，如果希望将数据以加密格式存储在移动客户端上，可以定义使用 SQLCipher 进行加密的本地存储。
 
 ## <a name="what-is-a-sync-context"></a>什么是同步上下文？
-*同步上下文*与移动客户端对象（例如 `IMobileServiceClient` 或 `MSClient`）关联，并跟踪对同步表所做的更改。 同步上下文维护*操作队列*，其中保留了 CUD 操作（Create、Update、Delete）的顺序列表，该列表稍后发送到服务器。
+*同步上下文*与移动客户端对象（例如 `IMobileServiceClient` 或 `MSClient`）关联，并跟踪对同步表所做的更改。 同步上下文维护操作队列，其中保留了 CUD 操作（Create、Update、Delete）的顺序列表，该列表稍后发送到服务器。
 
 本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
 

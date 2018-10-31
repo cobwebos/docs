@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888265"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406528"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>升级到 Azure VM 备份堆栈 V2
 
@@ -28,8 +28,8 @@ ms.locfileid: "48888265"
 
 * 还原时可使用非托管 VM 的原始存储帐户。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
     > [!NOTE]
-    > 此能力与重写原始 VM 不同。
-    >
+    > 此功能不同于用恢复点的数据替换 VM 磁盘。 
+    
 
 ## <a name="whats-changing-in-the-new-stack"></a>新堆栈有哪些变化？
 目前，备份作业包括两个阶段：

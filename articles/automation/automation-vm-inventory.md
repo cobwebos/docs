@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091400"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403604"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -63,7 +63,7 @@ ms.locfileid: "47091400"
 |属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
@@ -72,7 +72,7 @@ ms.locfileid: "47091400"
 |属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”
 
@@ -81,13 +81,13 @@ ms.locfileid: "47091400"
 |属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“/etc/*.conf”       |
 |路径类型     | 要跟踪的项的类型，可能值为“文件”和“目录”        |
-|递归     | 确定在查找要跟踪的项时是否使用递归。        |
-|使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
-|链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+|递归     | 在查找要跟踪的项时，确定是否使用递归。        |
+|使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
+|链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
 
 ## <a name="manage-machine-groups"></a>管理计算机组
 
@@ -114,6 +114,10 @@ ms.locfileid: "47091400"
 1. 在 Azure 门户的左窗格中选择“Log Analytics”，然后选择载入虚拟机时使用过的工作区。
 2. 在“Log Analytics”窗口的“资源”菜单的“工作区数据源”类别下选择“虚拟机”。
 3. 在列表中选择要断开连接的虚拟机。 该虚拟机有一个绿色复选标记，位于“OMS 连接”列中“此工作区”的旁边。
+
+   >[!NOTE]
+   >OMS 现在称为 Log Analytics。
+   
 4. 在下一页的顶部，选择“断开连接”。
 5. 在配置窗口中，选择“是”。
     此操作断开计算机与管理的连接。

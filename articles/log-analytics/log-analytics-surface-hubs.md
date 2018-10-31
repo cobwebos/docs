@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b38ce59a80d3fa78449892c8a76ed70b4dc698d3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041470"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407157"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>使用 Log Analytics 监视 Surface Hub 以跟踪其运行状况
 
@@ -51,7 +51,7 @@ Intune 是 Microsoft 的一个产品，它允许集中管理应用于一个或�
 1. 登录 Intune。
 2. 导航到“**设置**” > “**连接源**”。
 3. 创建或编辑基于 Surface Hub 模板的策略。
-4. 导航到策略的 OMS（Azure 操作见解）部分，为策略添加 Log Analytics“工作区 ID”和“工作区密钥”。
+4. 导航到策略的“Azure 操作见解”部分，为策略添加 Log Analytics“工作区 ID”和“工作区密钥”。
 5. 保存策略。
 6. 关联策略和相应的设备组。
 
@@ -66,9 +66,9 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 
 1. 从 Surface Hub 打开“**设置**”。
 2. 在出现提示时，输入设备管理凭据。
-3. 单击“**此设备**”，并单击“**监视**”下面的“**配置 OMS 设置**”。
+3. 单击“此设备”，并单击“监视”下面的“配置 Log Analytics 设置”。
 4. 选择“**启用监视**”。
-5. 在“OMS 设置”对话框中，键入 Log Analytics“工作区 ID”和“工作区密钥”。  
+5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”和“工作区密钥”。  
    ![设置](./media/log-analytics-surface-hubs/settings.png)
 6. 单击“**确定**”以完成配置。
 

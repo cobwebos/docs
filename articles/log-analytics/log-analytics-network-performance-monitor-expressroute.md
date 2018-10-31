@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041149"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402522"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
@@ -36,7 +36,7 @@ ms.locfileid: "48041149"
 若要打开网络性能监视器的配置，请打开[网络性能监视器解决方案](log-analytics-network-performance-monitor.md)并选择“配置”。
 
 ### <a name="configure-network-security-group-rules"></a>配置网络安全组规则 
-对于 Azure 中用于通过网络性能监视器进行监视的服务器，配置网络安全组 (NSG) 规则以允许将网络性能监视器在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 此配置允许安装在 Azure VM 上的 Operations Management Suite 代理与本地监视代理进行通信。 
+对于 Azure 中用于通过网络性能监视器进行监视的服务器，配置网络安全组 (NSG) 规则以允许将网络性能监视器在端口上使用的 TCP 流量用于综合事务。 默认端口为 8084。 此配置允许安装在 Azure VM 上的 Log Analytics 代理与本地监视代理进行通信。 
 
 有关 NSG 的详细信息，请参阅 [网络安全组](../virtual-network/manage-network-security-group.md)。 
 

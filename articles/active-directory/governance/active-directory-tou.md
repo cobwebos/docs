@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393977"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944135"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
-组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
+组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>概述视频
+
+下面的视频提供了使用条款的快速概述。
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+有关其他视频，请参阅：
+- [如何部署 Azure Active Directory 使用条款](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [如何实行 Azure Active Directory 使用条款](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>使用条款可以用来做什么？
 可以通过 Azure AD 使用条款来完成以下事项：
@@ -33,8 +43,9 @@ ms.locfileid: "49393977"
 - 显示基于用户属性（例如， [动态组](../users-groups-roles/groups-dynamic-membership.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
 - 在用户访问业务影响大的应用程序（例如 Salesforce）时显示特定使用条款。
 - 以不同的语言显示使用条款。
+- 有助于符合隐私法规。
 - 列出已同意或尚未同意使用条款的人员。
-- 显示使用条款活动的审核日志。
+- 显示使用条款活动的日志，以了解合规性和进行审核。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用和配置 Azure AD 使用条款，必须具备以下先决条件：

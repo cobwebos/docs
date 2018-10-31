@@ -2,20 +2,20 @@
 title: Durable Functions 中的诊断 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ebca858632a64b5822658182a3b83c48f310164
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c111031af4163dcc915ab6c705edbd613cfcefd
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953017"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984819"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions 中的诊断 (Azure Functions)
 
@@ -153,13 +153,13 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context){
+module.exports = df.orchestrator(function*(context){
     context.log("Calling F1.");
-    yield context.df.callActivityAsync("F1");
+    yield context.df.callActivity("F1");
     context.log("Calling F2.");
-    yield context.df.callActivityAsync("F2");
+    yield context.df.callActivity("F2");
     context.log("Calling F3.");
-    yield context.df.callActivityAsync("F3");
+    yield context.df.callActivity("F3");
     context.log("Done!");
 });
 ```
@@ -184,6 +184,8 @@ Done!
 
 如果只想针对非重播执行记录日志，可以编写一个条件表达式，规定仅当 `IsReplaying` 为 `false` 时才记录日志。 沿用上面的示例，不过这一次要执行重播检查。
 
+#### <a name="c"></a>C#
+
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
@@ -198,6 +200,23 @@ public static async Task Run(
     log.Info("Done!");
 }
 ```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    if (!context.df.isReplaying) context.log("Calling F1.");
+    yield context.df.callActivity("F1");
+    if (!context.df.isReplaying) context.log("Calling F2.");
+    yield context.df.callActivity("F2");
+    if (!context.df.isReplaying) context.log("Calling F3.");
+    yield context.df.callActivity("F3");
+    context.log("Done!");
+});
+```
+
 做出这种更改后，日志输出如下所示：
 
 ```txt
@@ -206,9 +225,6 @@ Calling F2.
 Calling F3.
 Done!
 ```
-
-> [!NOTE]
-> `IsReplaying` 属性在 JavaScript 中尚不可用。
 
 ## <a name="custom-status"></a>自定义状态
 
@@ -226,6 +242,9 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
     // ...do more work...
 }
 ```
+
+> [!NOTE]
+> 适用于 JavaScript 的自定义业务流程状态将在即将发布的版本中提供。
 
 在业务流程正在运行时，外部客户端可以提取此自定义状态：
 

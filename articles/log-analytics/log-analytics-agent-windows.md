@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e4140bfa3053798be56f3af9512c11d3ff0e58c0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042149"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404437"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -54,7 +54,7 @@ ms.locfileid: "48042149"
 2. 在“欢迎”页面上，单击“下一步”。
 3. 在“许可条款”页面上阅读许可协议，然后单击“我接受”。
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“下一步”。
-5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics (OMS)，单击“下一步”。   
+5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics，单击“下一步”。   
 6. 在“Azure Log Analytics”页上执行以下操作：
    1. 粘贴前面复制的“工作区 ID”和“工作区密钥(主密钥)”。  如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 美国政府版”。  
    2. 如果计算机需要通过代理服务器来与 Log Analytics 通信，请单击“高级”并提供代理服务器的 URL 和端口号。  如果代理服务器要求身份验证，请键入用于在代理服务器上进行身份验证的用户名和密码，并单击“下一步”。  
@@ -160,7 +160,7 @@ ms.locfileid: "48042149"
 
 代理安装完毕后，可通过两种方式来验证是否成功连接和完成报告。  
 
-在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择此项，代理应会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择此项，代理应会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 还可在 Azure 门户中执行简单的日志搜索。  
 

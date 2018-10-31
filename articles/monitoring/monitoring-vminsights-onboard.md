@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 2f0568064eed556429675ffb34c84d588ac670d5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064350"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390238"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>如何载入用于 VM 的 Azure Monitor 
 本文介绍如何设置用于 VM 的 Azure Monitor，以监视 Azure 虚拟机的操作系统运行状况，以及发现和映射这些虚拟机上托管的应用程序依赖项。  
@@ -44,11 +44,22 @@ ms.locfileid: "47064350"
 
 <sup>1</sup> 此区域目前不支持用于 VM 的 Azure Monitor 的“运行状况”功能   
 
-如果没有工作区，可以通过 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)创建工作区。  
+>[!NOTE]
+>Azure 虚拟机可以从任何区域载入，并且不限于 Log Analytics 工作区支持的区域。
+>
+
+如果没有工作区，则可通过 [Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md)、[PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)、在 [Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) 门户中，或使用 [Azure 资源管理器](../log-analytics/log-analytics-template-workspace-configuration.md)来创建它。  如果要从 Azure 门户启用对单个 Azure VM 的监视，可选择在此过程中创建工作区。  
 
 只有 Log Analytics 参与者角色的成员才能启用该解决方案。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../log-analytics/log-analytics-manage-access.md)。
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
+若要为大规模方案启用解决方案，首先需要在 Log Analytics 工作区中配置以下各项：
+
+* 安装 **ServiceMap** 和  **InfrastructureInsights** 解决方案
+* 配置 Log Analytics 工作区以收集性能计数器
+
+若要为此方案配置工作区，请参阅[设置 Log Analytics 工作区](#setup-log-analytics-workspace)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -138,7 +149,7 @@ ms.locfileid: "47064350"
 |12 SP3 | 4.4.* |
 
 ### <a name="hybrid-environment-connected-sources"></a>混合环境中的连接源
-用于 VM 的 Azure Monitor 映射从 Microsoft 依赖项代理获取其数据。 依赖项代理依赖于使用 Log Analytics 代理连接到 Log Analytics。 这意味着，必须在系统上连同依赖项代理一起安装并配置 Log Analytics 代理。  下表描述了映射功能在混合环境中支持的连接源。
+用于 VM 的 Azure Monitor 映射从 Microsoft 依赖项代理获取其数据。 Dependency Agent 依赖于 Log Analytics 代理来与 Log Analytics 进行连接，因此，系统必须安装 Log Analytics 代理并使用 Dependency Agent 进行配置。 下表描述了映射功能在混合环境中支持的连接源。
 
 | 连接的源 | 支持 | Description |
 |:--|:--|:--|
@@ -206,6 +217,9 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 |网络 |已传输的字节数总计 |  
 |处理器 |处理器时间百分比 |  
 
+## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
+
 ## <a name="enable-from-the-azure-portal"></a>从 Azure 门户启用
 若要在 Azure 门户中启用对 Azure VM 的监视，请执行以下操作：
 
@@ -225,76 +239,183 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 
 ![启用用于 VM 的 Azure Monitor 来监视部署处理](./media/monitoring-vminsights-onboard/onboard-vminsights-vm-portal-status.png)
 
-## <a name="enable-using-azure-policy"></a>使用 Azure Policy 启用
-若要为多个 Azure VM 启用该解决方案以确保持续合规并使新预配的 VM 自动起作用，我们建议使用 [Azure Policy](../azure-policy/azure-policy-introduction.md)。  结合提供的策略使用 Azure Policy 可为新的 VM 提供以下优势：
 
-* 为定义的范围中的每个 VM 启用用于 VM 的 Azure Monitor
-* 部署 Log Analytics 代理 
-* 部署依赖项代理以发现应用程序依赖项并在映射图中显示
-* 审核 Azure VM OS 映像是否在策略定义中预定义的列表内  
-* 审核 Azure VM 是否将日志记录到非指定的工作区
-* 报告合规性结果 
-* 支持针对不合规的 VM 进行补救
+## <a name="on-boarding-at-scale"></a>大规模载入
+本部分说明如何使用 Azure Policy 或 Azure PowerShell 执行用于 VM 的 Azure Monitor 的大规模部署。  所需执行的第一步是配置 Log Analytics 工作区。  
 
-若要为租户激活此功能，需要：
+### <a name="setup-log-analytics-workspace"></a>设置 Log Analytics 工作区
+如果没有 Log Analytics 工作区，请查看[先决条件](#log-analytics)部分中建议的可用方法，然后创建一个。  
 
-- 使用此处所列的步骤配置 Log Analytics 工作区
-- 将计划定义导入到租户（在管理组或订阅级别）
-- 将策略分配到所需的范围
-- 检查合规性结果
+#### <a name="enable-performance-counters"></a>启用性能计数器
+如果解决方案引用的 Log Analytics 工作区尚未配置为收集解决方案所需的性能计数器，则需要启用性能计数器。 可根据[此文](../log-analytics/log-analytics-data-sources-performance-counters.md)所述手动启用，或者下载并运行 [Azure Powershell 库](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)中提供的某个 PowerShell 脚本。
+ 
+#### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>安装 ServiceMap 和 InfrastructureInsights 解决方案
+此方法包含一个 JSON 模板，其中指定了用于在 Log Analytics 工作区中启用解决方案组件的配置。  
 
-### <a name="add-the-policies-and-initiative-to-your-subscription"></a>将策略和计划添加到订阅
-若要使用策略，可以使用 Azure PowerShell 库中提供的 PowerShell 脚本[Add-VMInsightsPolicy.ps1](https://www.powershellgallery.com/packages/Add-VMInsightsPolicy/1.2) 完成此任务。 该脚本会将策略和计划添加到订阅。  执行以下步骤在订阅中配置 Azure Policy。 
+如果不熟悉使用模板部署资源的概念，请参阅：
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)
+* [使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
-1. 将 PowerShell 脚本下载到本地文件系统。
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.27 版或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
-2. 在文件夹中使用以下 PowerShell 命令来添加策略。 该脚本支持以下可选参数： 
+1. 将以下 JSON 语法复制并粘贴到文件中：
+
+    ```json
+    {
+
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "WorkspaceName": {
+            "type": "string"
+        },
+        "WorkspaceLocation": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-03-15-preview",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('WorkspaceName')]",
+            "location": "[parameters('WorkspaceLocation')]",
+            "resources": [
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+
+                    "plan": {
+                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                        "promotionCode": ""
+                    }
+                },
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+                    "plan": {
+                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
+                        "promotionCode": ""
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+
+2. 使用 **installsolutionsforvminsights.json** 文件名将此文件保存到某个本地文件夹中。
+3. 编辑 **WorkspaceName**、**ResourceGroupName** 和 **WorkspaceLocation** 的值。  **WorkspaceName** 的值是 Log Analytics 工作区的完整资源 ID（其中包括工作区名称），而 **WorkspaceLocation** 的值是在其中定义工作区的区域。
+4. 现在，可以使用以下 PowerShell 命令部署此模板：
 
     ```powershell
-    -UseLocalPolicies [<SwitchParameter>]
-      <Optional> Load the policies from a local folder instead of https://raw.githubusercontent.com/dougbrad/OnBoardVMInsights/Policy/Policy/
+    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    ```
 
-    -SubscriptionId <String>
-      <Optional> SubscriptionId to add the Policies/Initiatives to
-    -ManagementGroupId <String>
-      <Optional> Management Group Id to add the Policies/Initiatives to
+    配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
-    -Approve [<SwitchParameter>]
-      <Optional> Gives the approval to add the Policies/Initiatives without any prompt
-    ```  
+    ```powershell
+    provisioningState       : Succeeded
+    ```
+
+### <a name="enable-using-azure-policy"></a>使用 Azure Policy 启用
+若要大规模启用用于 VM 的 Azure Monitor 以确保持续合规并使预配的新 VM 自动起作用，建议使用 [Azure Policy](../azure-policy/azure-policy-introduction.md)。 这些策略：
+
+* 部署 Log Analytics 代理和 Dependency Agent 
+* 报告合规性结果 
+* 修正不合规的 VM
+
+通过策略为租户启用用于 VM 的 Azure Monitor 需要： 
+
+- 将计划分配到范围：管理组、订阅或资源组 
+- 检查和修正合规结果  
+
+有关 Azure Policy 分配的详细信息，请参阅 [Azure Policy 概述](../governance/policy/overview.md#policy-assignment)，并在继续操作前查看[管理组概述](../governance/management-groups/index.md)。  
+
+下表列出提供的策略定义。  
+
+|名称 |Description |类型 |  
+|-----|------------|-----|  
+|[预览]：启用用于 VM 的 Azure Monitor |在指定范围（管理组、订阅或资源组）中启用用于虚拟机 (VM) 的 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |  
+|[预览]：审核 Dependency Agent 部署 - VM 映像 (OS) 未列出 |如果 VM 映像 (OS) 不在定义的列表中且未安装代理，则报告 VM 不合规。 |策略 |  
+|[预览]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出 |如果 VM 映像 (OS) 不在定义的列表中且未安装代理，则报告 VM 不合规。 |策略 |  
+|[预览]：为 Linux VM 部署 Dependency Agent |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Linux VM 部署 Dependency Agent。 |策略 |  
+|[预览]：为 Windows VM 部署 Dependency Agent |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Windows VM 部署 Dependency Agent。 |策略 |  
+|[预览]：为 Linux VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Linux VM 部署 Log Analytics 代理。 |策略 |  
+|[预览]：为 Windows VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 位于定义的列表中且未安装代理，请为 Windows VM 部署 Log Analytics 代理。 |策略 |  
+
+独立策略（未包含在计划中） 
+
+|名称 |Description |类型 |  
+|-----|------------|-----|  
+|[预览]：审核 VM 的 Log Analytics 工作区 - 报告不匹配 |如果 VM 未记录到策略/计划分配中指定的 LA 工作区，则报告 VM 不合规。 |策略 |
+
+#### <a name="assign-azure-monitor-initiative"></a>分配 Azure Monitor 计划
+在此初始版本中，只能从 Azure 门户创建策略分配。 若要了解如何完成这些步骤，请参阅 [从 Azure 门户创建策略分配](../governance/policy/assign-policy-portal.md)。 
+
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
+2. 选择“Azure Policy”页左侧的“分配”。 分配即为在特定范围内分配策略以供执行。
+3. 在“策略 - 分配”页的顶部选择“分配计划”。
+4. 在“分配计划”页上，通过单击省略号选择”范围”，然后选择管理组或订阅，还可选择资源组。 范围将我们示例中的策略分配限制于用于执行的一组虚拟机。 单击“范围”页底部的“选择”以保存更改。
+5. “排除项”允许忽略范围中的一个或多个资源，这是可选的。 
+6. 选择“计划定义”省略号以打开可用定义的列表，从列表中选择“[预览]启用用于 VM 的 Azure Monitor”，然后单击“选择”。
+7. “分配名称”会自动填充所选的计划名称，但可以更改它。 还可根据需要添加“说明”。 “分配者”根据登录的用户自动填充，此字段是可选的。
+8. 从支持的区域提供的下拉列表中选择“Log Analytics 工作区”。
 
     >[!NOTE]
-    >注意：若要将计划/策略分配到多个订阅，则必须将定义存储在策略所要分配到的订阅所在的管理组中。 因此必须使用 -ManagementGroupID 参数。
+    >如果工作区超出分配范围，则必须将 **Log Analytics 参与者**权限授予策略分配的主体 ID。 如果不这样做，可能会看到部署失败，例如：`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` 查看[如何手动配置托管标识](../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)以授予访问权限。
     >
-   
-    不使用参数的示例：`.\Add-VMInsightsPolicy.ps1`
 
-### <a name="create-a-policy-assignment"></a>创建策略分配
-运行 `Add-VMInsightsPolicy.ps1` PowerShell 脚本后，将添加以下计划和策略：
+9. 请注意，已选中“托管标识”选项。 当分配的计划包含具有 deployIfNotExists 效果的策略时，将选中此选项。 从“管理标识位置”下拉列表中选择适当的区域。  
+10. 单击“分配”。
 
-* **部署适用于 Windows VM 的 Log Analytics 代理 - 预览版**
-* **部署适用于 Linux VM 的 Log Analytics 代理 - 预览版**
-* **部署适用于 Windows VM 的依赖项代理 - 预览版**
-* **部署适用于 Linux VM 的依赖项代理 - 预览版**
-* **审核 Log Analytics 代理部署 - 未列出的 VM 映像 (OS) - 预览版**
-* **审核依赖项代理部署 - 未列出的 VM 映像 (OS) - 预览版**
+#### <a name="review-and-remediate-the-compliance-results"></a>检查和修正合规结果 
 
-将添加以下计划参数：
+可阅读[识别不合规结果](../governance/policy/assign-policy-portal.md#identify-non-compliant-resources)一文，了解如何检查合规结果。 选择页面左侧的“合规性”，然后根据创建的分配找到“[预览]启用用于 VM 的 Azure Monitor”计划。
 
-- **Log Analytice 工作区**（如果使用 PowerShell 或 CLI 应用分配，则必须提供工作区的 ResourceID）
+![Azure VM 的策略合规性](./media/monitoring-vminsights-onboard/policy-view-compliance-01.png)
 
-    对于在审核策略中发现不合规的 VM（“不在 OS 范围内的 VM”），部署策略的条件仅包含从已知 Azure VM 映像部署的 VM。 请查看文档来确定 VM OS 是否受支持。  如果不受支持，则需要复制部署策略并更新/修改它，使映像在范围以内。
+根据计划中包含的策略的结果，VM 在以下情况中报告为不合规：  
+  
+1. 未部署 Log Analytics 或 Dependency Agent。  
+   这对于已经拥有 VM 的范围来说是典型情况。 若要缓解这种情况，请在不合规的策略上[创建修正任务](../governance/policy/how-to/remediate-resources.md)来部署所需的代理。    
+ 
+    - [预览]: Deploy Dependency Agent for Linux VMs   
+    - [预览]: Deploy Dependency Agent for Windows VMs  
+    - [预览]: Deploy Log Analytics Agent for Linux VMs  
+    - [预览]: Deploy Log Analytics Agent for Windows VMs  
 
-将添加以下独立的可选策略：
+2. VM 映像 (OS) 不在策略定义确定的列表中。  
+   部署策略标准仅包含通过已知 Azure VM 映像部署的 VM。 请查看文档来确定 VM OS 是否受支持。 如果不受支持，则需要复制部署策略并更新/修改它来使映像合规。 
+  
+    - [预览]：审核 Dependency Agent 部署 - VM 映像 (OS) 未列出  
+    - [预览]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 
-- **为不匹配的 Log Analytics 工作区配置 VM - 预览版**
+3. VM 未记录到指定的 LA 工作区。  
+计划范围内的某些 VM 可能会记录到策略分配中指定的 LA 工作区以外的 LA 工作区。 此策略是用于确定向不合规工作区报告的 VM 的工具。  
+ 
+    - [预览]: Audit Log Analytics Workspace for VM - Report Mismatch  
 
-    此策略可用于识别已使用 [Log Analytics VM 扩展](../virtual-machines/extensions/oms-windows.md)配置的、但使用非预期工作区（预期工作区由策略分配指定）配置的 VM。 这会采用 WorkspaceID 的参数。
-
-在此初始版本中，只能从 Azure 门户创建策略分配。 若要了解如何完成这些步骤，请参阅[从 Azure 门户创建策略分配](../azure-policy/assign-policy-definition.md)。
-
-## <a name="enable-with-powershell"></a>使用 PowerShell 启用
-若要为多个 VM 或 VM 规模集启用用于 VM 的 Azure Monitor，可以使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) 完成此任务。  此脚本将循环访问订阅中、*ResourceGroup* 指定的每个限定资源组中的每个虚拟机和虚拟机规模集，或循环访问 *Name* 指定的单个 VM 或规模集。  对于每个 VM 或 VM 规模集，该脚本将验证是否已安装 VM 扩展，如果未安装，则尝试重新安装。  否则，它会继续安装 Log Analytics 和依赖项代理 VM 扩展。   
+### <a name="enable-with-powershell"></a>使用 PowerShell 启用
+若要为多个 VM 或虚拟机规模集启用用于 VM 的 Azure Monitor，可以使用 Azure PowerShell 库中提供的 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) 完成此任务。  此脚本将循环访问订阅中、*ResourceGroup* 指定的限定资源组中的每个虚拟机和虚拟机规模集，或循环访问 *Name* 指定的单个 VM 或虚拟机规模集。  对于每个 VM 或虚拟机规模集，该脚本将验证是否已安装 VM 扩展，如果未安装，则尝试重新安装。  否则，它会继续安装 Log Analytics 和依赖项代理 VM 扩展。   
 
 此脚本需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
@@ -588,7 +709,7 @@ Dependency Agent 的文件放置在以下目录中：
     ```
 
 2. 使用 **installsolutionsforvminsights.json** 文件名将此文件保存到某个本地文件夹中。
-3. 编辑 **WorkspaceName**、**ResourceGroupName** 和 **WorkspaceLocation** 的值。  **WorkspaceName** 的值是 Log Analytics 工作区的完整资源 ID（其中包括工作区名称），**WorkspaceLocation** 的值是定义工作区的区域。
+3. 编辑 **WorkspaceName**、**ResourceGroupName** 和 **WorkspaceLocation** 的值。  **WorkspaceName** 的值是 Log Analytics 工作区的完整资源 ID（其中包括工作区名称），而 **WorkspaceLocation** 的值是在其中定义工作区的区域。
 4. 现在，可以使用以下 PowerShell 命令部署此模板：
 
     ```powershell

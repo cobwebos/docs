@@ -2,26 +2,25 @@
 title: Azure 备份：准备备份虚拟机
 description: 确保对环境进行准备，以便在 Azure 中备份虚拟机。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: 备份; 正在备份;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
-ms.author: markgal
-ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/23/2018
+ms.author: raynew
+ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884927"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025933"
 ---
-# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
+# <a name="prepare-to-back-up-azure-vms"></a>准备备份 Azure VM
 
-本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。 备份虚拟机时，备份数据或恢复点存储在恢复服务保管库。 恢复服务保管库可保存经典部署虚拟机和资源管理器部署虚拟机的备份数据。
+本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。 备份虚拟机时，备份数据或恢复点存储在恢复服务备份保管库。 
 
-> [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
+
 
 在保护（或备份）资源管理器部署虚拟机之前，请确保符合以下先决条件：
 
@@ -47,7 +46,6 @@ ms.locfileid: "48884927"
 准备环境之前，请务必了解限制：
 
 * 不支持备份超过 32 个数据磁盘的虚拟机。
-* 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 * 不支持备份通过 Linux 统一密钥设置 (LUKS) 加密法加密的 Linux VM。
 * 不建议备份包含群集共享卷 (CSV) 或横向扩展文件服务器配置的 VM。 如果已备份，会造成 CSV 编写器故障。 这些操作涉及到在执行快照任务执行期间包含在群集配置中的所有 VM。 Azure 备份不支持多 VM 一致性。
 * 备份数据不包括连接到 VM 的网络挂载驱动器。

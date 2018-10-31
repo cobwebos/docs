@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 603a5dfcf2137c15ae19ea248f3e0f4f136c22f1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 91263d7f6e8c0c2774df560a45eeff9efc672343
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144179"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408418"
 ---
 # <a name="azure-event-hubs-capture"></a>Azure 事件中心捕获
 
@@ -104,6 +104,10 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 ## <a name="how-event-hubs-capture-is-charged"></a>Azure 事件中心捕获的收费方式
 
 事件中心捕获的计量方式与吞吐量单位类似：按小时收费。 费用直接与为命名空间购买的吞吐量单位数成正比。 随着吞吐量单位增加和减少，事件中心捕获计量也相应地增加和减少以提供匹配的性能。 相继进行计量。 有关定价的详细信息，请参见[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 
+
+## <a name="integration-with-event-grid"></a>事件网格集成 
+可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅（其中事件中心作为源，Azure Functions 应用作为接收器）：[使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 SQL 数据仓库](store-captured-data-data-warehouse.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

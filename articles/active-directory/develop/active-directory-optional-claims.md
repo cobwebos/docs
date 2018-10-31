@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079119"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466046"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>如何：向 Azure AD 应用（公共预览版）提供可选声明
 
@@ -215,7 +215,7 @@ ms.locfileid: "49079119"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
-1. 在左侧导航窗格中选择“Azure AD 扩展”扩展，并单击“应用注册”。
+1. 选择左侧的“应用注册”。
 1. 在列表中找到要为其配置可选声明的应用程序并单击它。
 1. 在应用程序页面中，单击“清单”打开内联清单编辑器。 
 1. 可使用此编辑器直接编辑清单。 该清单遵循 [Application 实体](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)的架构，保存后会自动设置格式。 新元素将添加到 `OptionalClaims` 属性。

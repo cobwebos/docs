@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902019"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466710"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -49,21 +49,38 @@ ms.locfileid: "48902019"
 ![编辑用户属性][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>编辑 NameIdentifier 声明
-若要解决使用不同用户名部署应用程序的问题，请单击“用户属性”部分的“用户标识符”下拉列表。 此操作提供包含多个不同选项的对话框：
+
+若要解决使用不同用户名部署应用程序的问题，请在“用户属性”部分的“用户标识符”下拉列表上进行选择。 此操作提供包含多个不同选项的对话框：
 
 ![编辑用户属性][4]
 
-在下拉列表中，选择“user.mail”，将 NameIdentifier 声明设置为目录中用户的电子邮件地址。 或者，选择“user.onpremisessamaccountname”，设置为已从本地 Azure AD 同步的用户 SAM 帐户名。
+### <a name="attributes"></a>属性
 
-还可以使用特殊的 ExtractMailPrefix() 函数删除电子邮件地址、SAM 帐户名或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。
+为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-![编辑用户属性][5]
+| 名称 | Description |
+|------|-------------|
+| 电子邮件 | 用户的电子邮件地址 |
+| userprincipalName | 用户的用户主体名称 (UPN) |
+| onpremisessamaccount | 已从本地 Azure AD 同步的 SAM 帐户名 |
+| objectID | Azure AD 中的用户的 objectID |
+| EmployeeID | 用户的 EmployeeID |
+| 目录扩展 | 目录扩展[使用 Azure AD Connect 同步从本地 Active Directory 同步](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| 扩展属性 1-15 | 用于扩展 Azure AD 架构的本地扩展属性 |
 
-现在还可使用 join() 函数，通过用户标识符值加入已验证域。 在“用户标识符”中选择 join() 函数时，首先选择用户标识符（如电子邮件地址或用户主体名称），然后在第二个下拉列表中选择已验证的域。 如果选择已验证域的电子邮件地址，则 Azure AD 从 joe_smith@contoso.com 的第一个值 joe_smith 中提取用户名，并向该用户名追加 contoso.onmicrosoft.com。 请参阅以下示例：
+### <a name="transformations"></a>转换
 
-![编辑用户属性][6]
+还可以使用特殊声明转换函数。
+
+| 函数 | Description |
+|----------|-------------|
+| **ExtractMailPrefix()** | 从电子邮件地址、SAM 帐户名或用户主体名称中删除域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
+| **join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
+| **ToLower()** | 将所选属性的字符转换为小写字符。 |
+| **ToUpper()** | 将所选属性的字符转换为大写字符。 |
 
 ## <a name="adding-claims"></a>添加声明
+
 添加声明时，可以指定属性名称（根据 SAML 规范，并不严格需要遵循 URI 模式）。 将值设置为目录中存储的任何用户属性。
 
 ![添加用户属性][7]
@@ -133,7 +150,7 @@ SAML 中有一些受限声明。 如果添加此类声明，Azure AD 不会发�
 
 * [Azure AD 中的应用程序管理](../manage-apps/what-is-application-management.md)
 * [针对不在 Azure AD 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录问题](howto-v1-debug-saml-sso-issues.md)
+* [排查基于 SAML 的单一登录的问题](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

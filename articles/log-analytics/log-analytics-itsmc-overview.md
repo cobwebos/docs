@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042422"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407497"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -63,9 +63,13 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
     ![添加 ITSMC 解决方案](./media/log-analytics-itsmc/add-itsmc-solution.png)
 
 3.  在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。
+   >[!NOTE]
+   >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 4.  在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。
 
     ![ITSMC 工作区](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    >[!NOTE]
+    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 
 5.  单击“创建”。
 
@@ -212,7 +216,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 源
 - 分配给
 - 标题
-- Type
+- 类型
 - 类别
 - 状态
 - 升级
@@ -264,7 +268,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
-| Type_s|  Type |
+| Type_s|  类型 |
 | Category_s|  类别 |
 | CRState_s|  状态|
 | Urgency_s|  紧急性 |
@@ -290,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。  
 
 2.  如果未向 Log Analytics 同步来自 ServiceNow 的数据，请确保 ServiceNow 实例处于非休眠状态。 如果 ServiceNow 开发实例长时间处于空闲状态，有时会进入休眠状态。 否则，请报告问题。
-3.  如果 OMS 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
+3.  如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
  -  ITSMC：此解决方案显示连接/工作项/计算机等的摘要。单击显示“连接器状态”的磁贴，可以跳转到具有相关查询的“日志搜索”。 查看含有 LogType_S as ERROR 的日志记录，了解详细信息。
  - “日志搜索”页：`*`使用 ServiceDeskLog_CL`*` 查询直接查看错误/相关信息。
 

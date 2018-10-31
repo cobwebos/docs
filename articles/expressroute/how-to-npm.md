@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47f219b7319e4d2bbadf03954f7bd7f6f39da3b4
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d334fdba48f248bb7989c2b549517413b1ef793c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128973"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404335"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
@@ -43,7 +43,7 @@ ms.locfileid: "37128973"
 
 监视本地和 Azure 中的多个服务器上安装的代理。 代理相互通信，但不会发送数据，而是发送 TCP 握手数据包。 通过代理间的通信，Azure 可以映射流量可能经过的网络拓扑和路径。
 
-1. 创建 NPM 工作区。 此工作区与 OMS 工作区相同。
+1. 创建 NPM 工作区。 这与 Log Analytics 工作区相同。
 2. 安装和配置软件代理： 
     * 在本地服务器和 Azure VM 上安装监视代理（用于专用对等互连）。
     * 在监视代理服务器上配置设置，允许监视代理进行通信。 （打开防火墙端口等）
@@ -63,10 +63,10 @@ ms.locfileid: "37128973"
    >
 
    ![portal](.\media\how-to-npm\3.png)<br><br>
-2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面。 单击“OMS 工作区 - 选择工作区”打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面。
-3. 在“OMS 工作区”页面上，选择“新建”并配置下列设置：
+2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面。 单击“Log Analytics 工作区 - 选择工作区”打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面。
+3. 在“Log Analytics 工作区”页面上，选择“新建”并配置下列设置：
 
-  * “OMS 工作区”- 键入工作区的名称。
+  * Log Analytics 工作区 - 键入工作区的名称。
   * “订阅”- 若有多个订阅，请选择要与新工作区相关联的订阅。
   * “资源组”- 创建一个资源组或使用现有资源组。
   * 位置 - 此位置用于指定代理连接日志所用的存储帐户的位置。
@@ -86,9 +86,9 @@ ms.locfileid: "37128973"
 
 ### <a name="download"></a>2.1：下载代理安装程序文件
 
-1. 转到资源的“网络性能监视器配置”页面的“通用设置”选项卡。 从“安装 OMS 代理”部分中选择与你的服务器的处理器对应的代理，并下载安装文件。
+1. 转到资源的“网络性能监视器配置”页面的“通用设置”选项卡。 从“安装 Log Analytics 代理”部分中选择与你的服务器的处理器对应的代理，并下载安装文件。
 2. 接下来，将“工作区 ID”和“主密钥”复制到记事本。
-3. 从“将 OMS 代理配置为使用 TCP 协议进行监视”部分中，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
+3. 从“将 Log Analytics 代理配置为使用 TCP 协议进行监视”部分中，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
 
   ![PowerShell 脚本](.\media\how-to-npm\7.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "37128973"
     ![帐户](.\media\how-to-npm\10.png)
 6. 在“准备安装”页上检查所做的选择，并单击“安装”。
 7. 在“配置已成功完成”页上，单击“完成”。
-8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 可在该处查看配置并验证代理是否已连接到 Azure Log Analytics (OMS)。 如果已连接，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。
+8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 可在该处查看配置并验证代理是否已连接到 Azure Log Analytics。 如果已连接，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。
 
 9. 针对需要监视的每个 VNET 重复上述过程。
 

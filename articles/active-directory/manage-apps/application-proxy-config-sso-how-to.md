@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9c353c9b34c3d4a2b21093cc0ae82e638f5ddd01
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354358"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956980"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
@@ -36,7 +36,7 @@ ms.locfileid: "44354358"
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>为应用程序代理应用程序配置单一登录模式
 配置特定类型的单一登录。 登录方法的分类基于后端应用程序使用的身份验证类型。 应用代理应用程序支持三种类型的登录：
 
--   **基于密码的登录**：基于密码的登录可用于任何使用用户名和密码字段进行登录的应用程序。 可以在[密码 SSO 配置文档](../active-directory-enterprise-apps-whats-new-azure-portal.md#bring-your-own-password-sso-applications)中找到配置步骤。
+-   **基于密码的登录**：基于密码的登录可用于任何使用用户名和密码字段进行登录的应用程序。 若要了解配置步骤，请参阅[配置 Azure AD 库应用程序的密码单一登录](configure-password-single-sign-on-gallery-applications.md)。
 
 -   **集成 Windows 身份验证**：对于使用集成 Windows 身份验证 (IWA) 的应用程序，通过 Kerberos 约束委派 (KCD) 启用单一登录。 此方法在 Active Directory 中赋予应用程序代理连接器权限来模拟用户，并代表用户发送和接收令牌。 关于配置 KCD 的详细信息，可以在[通过 KCD 启用单一登录文档](application-proxy-configure-single-sign-on-with-kcd.md)中找到。
 

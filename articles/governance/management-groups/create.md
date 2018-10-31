@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: 6273f265ebb5f9a2336040aacc01d1428fd0db11
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077742"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956402"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -48,7 +48,7 @@ ms.locfileid: "49077742"
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 
-在 PowerShell 中，使用 New-AzureRmManagementGroups cmdlet：
+在 PowerShell 中，使用 New-AzureRmManagementGroup cmdlet：
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroup -GroupName 'Contoso'
@@ -74,7 +74,7 @@ az account management-group create --name 'Contoso'
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解管理组，请参阅：
+若要了解有关管理组的详细信息，请参阅：
 
 - [使用 Azure 管理组来组织资源](overview.md)
 - [如何更改、删除或管理管理组](manage.md)

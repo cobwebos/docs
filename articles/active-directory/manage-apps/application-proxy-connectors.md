@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364604"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406271"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -79,7 +79,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* 此计算机的连接限制为 800。 对于所有其他计算机，我们使用了默认的 200 连接限制。
+\* 此计算机使用自定义设置提高某些默认连接限制，使之超过 .Net 推荐的设置。 我们建议先使用默认设置运行测试，再联系支持人员以为你的租户更改此限制。
  
 >[!NOTE]
 >在 4 核心、8 核心和 16 核心计算机之间，最大 TPS 没有多大区别。 主要区别体现在预期的延迟。  

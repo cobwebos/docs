@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298262"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408162"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -74,7 +74,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 拥有全局管理员访问权限的有效 Azure AD Premium P1 订阅
 * 用于测试和集成目的的 Workday 实现租户
 * 在 Workday 中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据
-* 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Service 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
+* 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Server 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
 * 已安装 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，用于在 Active Directory 与 Azure AD 之间同步
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -200,9 +200,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | ---------- | ---------- | 
 | “获取”和“放置” | 工作人员数据：公职人员报告 |
 | “获取”和“放置” | 工作人员数据：工作联系信息 |
-| Get | 工作人员数据：所有职位 |
-| Get | 工作人员数据：当前人员配备信息 |
-| Get | 工作人员数据：工作人员个人资料中的职称 |
+| 获取 | 工作人员数据：所有职位 |
+| 获取 | 工作人员数据：当前人员配备信息 |
+| 获取 | 工作人员数据：工作人员个人资料中的职称 |
 
 
 ### <a name="activate-security-policy-changes"></a>激活安全策略更改

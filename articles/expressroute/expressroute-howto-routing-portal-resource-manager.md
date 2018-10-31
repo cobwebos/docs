@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9b96417140bea581aeb106e45c3c93a19858dfe7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7acfb71dd3edd798095472b8f863a658dccaa51b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310875"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955178"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -156,6 +156,11 @@ ms.locfileid: "49310875"
 ### <a name="deleteprivate"></a>删除 Azure 专用对等互连
 
 可以通过选择删除图标来删除对等互连配置，如下图中所示：
+
+> [!WARNING]
+> 运行此示例前，必须确保已删除所有虚拟网络和 ExpressRoute Global Reach 连接。 
+> 
+> 
 
 ![删除专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
 

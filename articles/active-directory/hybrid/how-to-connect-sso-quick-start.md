@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405982"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638186"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -57,6 +57,9 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
 通过 [Azure AD Connect](whatis-hybrid-identity.md) 启用无缝 SSO。
+
+>[!NOTE]
+> 此外，如果 Azure AD Connect 不能满足你的要求，还可以[使用 PowerShell 启用无缝 SSO](tshoot-connect-sso.md#manual-reset-of-the-feature)。 如果每个 Active Directory 林具有多个域，并且你想要更具针对性地指向要启用无缝 SSO 的域，请使用此选项。
 
 如果你要全新安装 Azure AD Connect，请选择[自定义安装路径](how-to-connect-install-custom.md)。 在“用户登录”页上，请选择“启用单一登录”选项。
 

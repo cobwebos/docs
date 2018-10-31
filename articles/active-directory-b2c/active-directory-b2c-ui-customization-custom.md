@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略自定义 UI | Microsoft Docs
-description: 了解在 Azure AD B2C 中使用自定义策略时自定义用户界面 (UI) 的相关事项。
+title: 使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory B2C 中的自定义策略自定义用户界面。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446157"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945053"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C：在自定义策略中配置 UI 自定义
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "37446157"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，必须先完成[自定义策略入门](active-directory-b2c-get-started-custom.md)。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
+完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
 ## <a name="page-ui-customization"></a>页面 UI 自定义
 
@@ -103,13 +103,13 @@ ms.locfileid: "37446157"
 >想要使用我们的示例 HTML 和 CSS 内容来尝试 UI 自定义功能？ 我们提供了[一个简单的帮助工具](active-directory-b2c-reference-ui-customization-helper-tool.md)，它可以在 Blob 存储帐户中上传和配置示例内容。 如果使用该工具，请直接跳到[修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy)。
 
 1. 在“存储”边栏选项卡中，在“设置”下，打开“CORS”。
-2. 单击 **“添加”**。
+2. 单击“添加”。
 3. 对于“允许的来源”，键入一个星号 (\*)。
 4. 在“允许的谓词”下拉列表中，同时选择“GET”和“OPTIONS”。
 5. 对于“允许的标头”，键入一个星号 (\*)。
 6. 对于“公开的标头”，键入一个星号 (\*)。
 7. 对于“最长存在时间(秒)”，键入“200”。
-8. 单击 **“添加”**。
+8. 单击“添加”。
 
 ## <a name="test-cors"></a>测试 CORS
 
@@ -119,27 +119,44 @@ ms.locfileid: "37446157"
 2. 单击“发送请求”。  
     如果收到错误，请确保 [CORS 设置](#configure-cors)正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>修改注册或登录自定义策略
+## <a name="modify-the-extensions-file"></a>修改扩展文件
 
-在顶级 *\<TrustFrameworkPolicy\>* 标记下，应当会发现 *\<BuildingBlocks\>* 标记。 在 *\<BuildingBlocks\>* 标记内，通过复制以下示例添加一个 *\<ContentDefinitions\>* 标记。 将 *your_storage_account* 替换为你的存储帐户的名称。
+要配置 UI 自定义，请将 ContentDefinition 及其子元素从基本文件复制到扩展文件。
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. 打开策略的基文件。 例如 *TrustFrameworkBase.xml*。
+2. 搜索并复制 ContentDefinitions 元素的全部内容。
+3. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
+4. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。 
+5. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
+6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如， https://mystore1.azurewebsites.net/b2c/customize-ui.html。
+    
+    自定义策略应如下所示：
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. 保存扩展文件。
 
 ## <a name="upload-your-updated-custom-policy"></a>上传已更新的自定义策略
 
-1. 在 [Azure 门户](https://portal.azure.com)中，[切换到你的 Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，然后打开“Azure AD B2C”边栏选项卡。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“标识体验框架”。
 2. 单击“所有策略”。
 3. 单击“上传策略”。
-4. 上传包含你之前添加的 *\<ContentDefinitions\>* 标记的 `SignUpOrSignin.xml`。
+4. 上传以前已更改的扩展文件。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
@@ -157,7 +174,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | 说明 |
+| HTML5 模板 | Description |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -167,7 +184,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 在 [修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy) 部分中，你已配置了 的内容定义`api.idpselections` 。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | 说明 | 
+| 内容定义 ID | Description | 
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

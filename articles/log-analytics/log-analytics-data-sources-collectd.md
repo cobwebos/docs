@@ -1,5 +1,5 @@
 ---
-title: 在 OMS Log Analytics 中收集来自 CollectD 的数据 | Microsoft Docs
+title: 在 Log Analytics 中收集来自 CollectD 的数据 | Microsoft Docs
 description: CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文提供了与将来自 CollectD 的数据收集到 Log Analytics 中相关的信息。
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041284"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404590"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>在 Linux 代理上将来自 CollectD 的数据收集到 Log Analytics 中
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文提供了与将来自 CollectD 的性能数据收集到 Log Analytics 中相关的信息。
@@ -29,7 +29,9 @@ ms.locfileid: "48041284"
 
 ![CollectD 概述](media/log-analytics-data-sources-collectd/overview.png)
 
-用于 Linux 的 OMS 代理中包括了以下 CollectD 配置，用以将 CollectD 数据路由到用于 Linux 的 OMS 代理。
+Log Analytics Linux 代理中包括了以下 CollectD 配置，用以将 CollectD 数据路由到 Log Analytics Linux 代理。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
     LoadPlugin write_http
 
@@ -52,12 +54,12 @@ ms.locfileid: "48041284"
        </URL>
     </Plugin>
 
-CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能指标数据发送到用于 Linux 的 OMS 代理。 
+CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能指标数据发送到 Log Analytics Linux 代理。 
 
 > [!NOTE]
 > 如果需要，可以将此端口配置为一个自定义的端口。
 
-用于 Linux 的 OMS 代理也在端口 26000 上侦听 CollectD 指标，然后将其转换为采用 OMS 架构的指标。 下面是用于 Linux 的 OMS 代理配置 `collectd.conf`。
+Log Analytics Linux 代理也在端口 26000 上侦听 CollectD 指标，然后将其转换为采用 Log Analytics 架构的指标。 下面是 Log Analytics Linux 代理配置 `collectd.conf`。
 
     <source>
       type http
@@ -72,19 +74,19 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 ## <a name="versions-supported"></a>支持的版本
 - Log Analytics 当前支持 CollectD 4.8 版及更高版本。
-- 要收集 CollectD 指标，需要用于 Linux 的 OMS 代理 v1.1.0-217 或更高版本。
+- 要收集 CollectD 指标，需要 Log Analytics Linux 代理 v1.1.0-217 或更高版本。
 
 
 ## <a name="configuration"></a>配置
 下面是在 Log Analytics 中配置 CollectD 数据收集的基本步骤。
 
-1. 将 CollectD 配置为使用 write_http 插件将数据发送到用于 Linux 的 OMS 代理。  
-2. 将用于 Linux 的 OMS 代理配置为在相应的端口上侦听 CollectD 数据。
-3. 重新启动 CollectD 和用于 Linux 的 OMS 代理。
+1. 将 CollectD 配置为使用 write_http 插件将数据发送到 Log Analytics Linux 代理。  
+2. 将 Log Analytics Linux 代理配置为在相应的端口上侦听 CollectD 数据。
+3. 重新启动 CollectD 和 Log Analytics Linux 代理。
 
 ### <a name="configure-collectd-to-forward-data"></a>配置 CollectD 来转发数据 
 
-1. 要将 CollectD 数据路由到用于 Linux 的 OMS 代理，需要将 `oms.conf` 添加到 CollectD 的配置目录中。 此文件的目的地取决于计算机的 Linux 发行版。
+1. 要将 CollectD 数据路由到 Log Analytics Linux 代理，需要将 `oms.conf` 添加到 CollectD 的配置目录中。 此文件的目的地取决于计算机的 Linux 发行版。
 
     如果 CollectD 配置目录位于 /etc/collectd.d/ 中：
 
@@ -103,12 +105,12 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. 使用以下命令重新启动 CollectD 和用于 Linux 的 OMS 代理。
+3. 使用以下命令重新启动 CollectD 和 Log Analytics Linux 代理。
 
     sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>CollectD 指标到 Log Analytics 架构的转换
-为了在用于 Linux 的 OMS 代理已收集的基础结构指标与 CollectD 收集的新指标之间维护一个熟悉的模型，将使用以下架构映射：
+为了在 Log Analytics Linux 代理已收集的基础结构指标与 CollectD 收集的新指标之间维护一个熟悉的模型，将使用以下架构映射：
 
 | CollectD 指标字段 | Log Analytics 字段 |
 |:--|:--|

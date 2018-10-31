@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392070"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429637"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>使用基于角色的访问控制管理对 Azure 计费信息的访问
 
@@ -67,7 +67,7 @@ ms.locfileid: "47392070"
     ![显示计费读取者可在 Azure 门户中所见内容的屏幕截图](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> 计费读取者功能处于预览状态，尚不支持企业 (EA) 订阅或非全局云。
+> 计费读取者功能处于预览状态，尚不支持非全局云。 如果企业管理员启用了查看费用，企业订阅即可查看成本。
 
 ## <a name="adding-users-to-other-roles"></a>将用户添加到其他角色
 

@@ -1,6 +1,6 @@
 ---
-title: 在 OMS Log Analytics 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
-description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
+title: 在 Log Analytics 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
+description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041027"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402934"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>通过用于 Linux 的 OMS 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
-[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>通过 Log Analytics Linux 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
  
 ## <a name="prerequisites"></a>先决条件
-适用于 Linux 的 OMS 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
+Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
 
 ## <a name="configure-alert-collection"></a>配置警报收集
 
@@ -85,7 +86,7 @@ ms.locfileid: "48041027"
 
 Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Nagios**。  它们具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Type |*Alert* |
 | SourceSystem |*Nagios* |
@@ -101,7 +102,7 @@ Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 ### <a name="zabbix-alert-records"></a>Zabbix 警报记录
 Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Zabbix**。  它们具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Type |*Alert* |
 | SourceSystem |*Zabbix* |

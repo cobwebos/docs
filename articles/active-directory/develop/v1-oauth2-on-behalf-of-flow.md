@@ -17,18 +17,21 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ce29c6a9df49721ca23f84da3f1c97bcc83ab4a7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a231b79bebd9684281edea48dfe7cf5f57ccdacb
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579987"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986009"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委派用户标识的服务到服务调用
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
 OAuth 2.0 (OBO) 代理流适用于这样的用例：其中应用程序调用某个服务/web API，而后者又需要调用另一个服务/web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，该服务需要代表用户保护 Azure Active Directory (Azure AD) 提供的访问令牌。
 
 > [!IMPORTANT]
-> 使用 [OAuth 2.0 隐式授予](v1-oauth2-implicit-grant-flow.md)的公共客户端不能使用 OBO 流。 这些客户端必须将其访问令牌传递给中间层机密客户端，才能执行 OBO 流。 有关哪些客户端可以执行 OBO 调用的详细信息，请参阅[客户端限制](#client-limitations)。
+> 从 2018 年 5 月开始，`id_token` 不能用于代理流 - SPA 必须将访问令牌传递给中间层机密客户端，才能执行 OBO 流。 请参阅[限制](#client-limitations)，以了解有关哪些客户端能够执行代理调用的详细信息。
 
 ## <a name="on-behalf-of-flow-diagram"></a>代理流示意图
 假设已在应用程序中使用 [OAuth 2.0 授权代码授权流](v1-protocols-oauth-code.md)对用户进行身份验证。 此时，应用程序已获得访问令牌（令牌 A），其中包含用户对访问中间层 Web API (API A) 的声明和许可。 现在，API A 需要向下游 Web API (API B) 发出身份验证请求。
@@ -43,6 +46,9 @@ OAuth 2.0 (OBO) 代理流适用于这样的用例：其中应用程序调用某�
 3. Azure AD 令牌颁发终结点使用令牌 A 验证 API A 的凭据，并颁发访问 API B 的令牌（令牌 B）。
 4. 令牌 B 设置在向 API B 发出的请求的 authorization 标头中。
 5. API B 返回受保护资源中的数据。
+
+>[!NOTE]
+>用于为下游服务请求令牌的访问令牌中的受众声明必须是发出 OBO 请求的服务的 ID，且令牌必须使用 Azure Active Directory 全局签名密钥进行签名（通过门户中的“应用注册”注册的应用程序的默认设置）
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>在 Azure AD 中注册应用程序和服务
 在 Azure AD 中注册客户端应用程序和中间层服务。
@@ -82,8 +88,8 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 | 参数 |  | Description |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
-| assertion |必填 | 请求中使用的令牌值。 |
+| grant_type |必填 | 令牌请求的类型。 由于 OBO 请求使用 JWT 访问令牌，值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| assertion |必填 | 请求中使用的访问令牌值。 |
 | client_id |必填 | 注册到 Azure AD 期间分配给调用服务的应用 ID。 若要查找应用 ID，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称。 |
 | client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
 | resource |必填 | 接收服务（受保护资源）的应用 ID URI。 若要查找应用 ID URI，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称、“所有设置”、“属性”。 |
@@ -114,7 +120,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 |  | Description |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
+| grant_type |必填 | 令牌请求的类型。 由于 OBO 请求使用 JWT 访问令牌，值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
 | assertion |必填 | 请求中使用的令牌值。 |
 | client_id |必填 | 注册到 Azure AD 期间分配给调用服务的应用 ID。 若要查找应用 ID，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称。 |
 | client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
@@ -201,6 +207,52 @@ GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
+## <a name="service-to-service-calls-using-a-saml-assertion-obtained-with-an-oauth20-on-behalf-of-flow"></a>使用通过 OAuth2.0 代理流获取的 SAML 断言的服务到服务调用
+
+一些基于 OAuth 的 Web 服务需要访问在非交互式流中接受 SAML 断言的其他 Web服务 API。  Azure Active Directory 可以提供 SAML 断言，以响应将基于 SAML 的 Web 服务作为目标资源的代理流。 
+
+>[!NOTE] 
+>这是非标准的 OAuth 2.0 代理流扩展，它允许基于 OAuth2 的应用程序访问使用 SAML 令牌的 Web 服务 API 终结点。  
+
+>[!TIP]
+>如果正在从前端 Web 应用程序调用 SAML 保护的 Web 服务，可以只需调用 API 并启动正常的交互式身份验证流，它将使用用户的现有会话。  当服务到服务调用需要 SAML 令牌来提供用户上下文时，只需考虑使用 OBO 流。
+
+### <a name="obtain-a-saml-token-using-an-obo-request-with-a-shared-secret"></a>使用带共享密钥的 OBO 请求获取 SAML 令牌
+用于获取 SAML 断言的服务到服务请求包含以下参数：
+
+| 参数 |  | Description |
+| --- | --- | --- |
+| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
+| assertion |必填 | 请求中使用的访问令牌值。|
+| client_id |必填 | 注册到 Azure AD 期间分配给调用服务的应用 ID。 若要查找应用 ID，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称。 |
+| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。  若要查找应用 ID URI，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、应用程序名称、“所有设置”、“属性”。 |
+| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| requested_token_type | 必填 | 指定请求令牌的类型。  值可以是“urn:ietf:params:oauth:token-type:saml2”或“urn:ietf:params:oauth:token-type:saml1”，具体取决于所访问资源的要求。 |
+
+
+响应将包含 UTF8 和 Base64url 编码 SAML 令牌。 
+
+SAML 断言的 SubjectConfirmationData 源自 OBO 调用：如果目标应用程序需要 SubjectConfirmationData 中的接收方值，则它必须设置为资源应用程序配置中的非通配符答复 URL。
+
+SubjectConfirmationData 节点不能包含 InResponseTo 属性，因为它不是 SAML 响应的一部分。  接收 SAML 令牌的应用程序需要能够在没有 InResponseTo 属性的情况下接受 SAML 断言。
+
+许可：为了接收包含 OAuth 流上用户数据的 SAML 令牌，必须授予许可。  有关权限和获取管理员许可的信息，请参阅 https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent。
+
+### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
+
+| 参数 | Description |
+| --- | --- |
+| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)。 |
+| 作用域 |令牌中授予的访问权限的范围。 |
+| expires_in |访问令牌有效的时间长度（以秒为单位）。 |
+| expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
+| resource |接收服务（受保护资源）的应用 ID URI。 |
+| access_token |access_token 参数中返回 SAML 断言。 |
+| refresh_token |刷新令牌。 当前 SAML 断言过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
+
+token_type: Bearer expires_in:3296 ext_expires_in:0 expires_on:1529627844 resource:https://api.contoso.com access_token: <Saml assertion> issued_token_type:urn:ietf:params:oauth:token-type:saml2 refresh_token: <Refresh token>
+
 ## <a name="client-limitations"></a>客户端限制
 具有通配符回复 URL 的公共客户端无法为 OBO 流使用 `id_token`。 但是，机密客户端仍可兑现通过隐式授予流获取的访问令牌，即使公共客户端已注册通配符重定向 URI。
 

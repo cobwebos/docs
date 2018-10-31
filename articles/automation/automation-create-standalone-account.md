@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362868"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958799"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
 本文介绍如何在 Azure 门户中创建 Azure 自动化帐户。 可以使用门户自动化帐户来评估和了解自动化，而无需使用其他管理解决方案，或者与 Azure Log Analytics 集成。 以后随时可以添加这些管理解决方案或者与 Log Analytics 集成，以获得高级的 Runbook 作业监视。
 
-使用自动化帐户，可以对在 Azure 资源管理器部署或经典部署中管理资源的 Runbook 进行身份验证。
+使用自动化帐户，可以对在 Azure 资源管理器部署或经典部署中管理资源的 Runbook 进行身份验证。 一个自动化帐户可以跨所有区域和订阅管理给定租户的资源。
 
 在 Azure 门户中创建自动化帐户时，会自动创建以下帐户：
 
@@ -37,7 +37,7 @@ ms.locfileid: "49362868"
 若要创建或更新自动化帐户，并完成本文所述的任务，必须具有以下特权和权限：
 
 * 若要创建自动化帐户，必须将 Azure AD 用户帐户添加到一个角色，该角色的权限相当于 **Microsoft.Automation** 资源的所有者角色。 有关详细信息，请参阅 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)。
-* 在 Azure 门户的“Azure Active Directory” > “管理” > “应用注册”下，如果“应用注册”设置为“是”，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
+* 在 Azure 门户的“Azure Active Directory” > “管理” > “应用注册”下，如果“应用注册”设置为“是”，则 Azure AD 租户中的非管理员用户可以[注册 Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果“应用注册”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
 如果在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则将作为来宾添加到 Active Directory。 在这种情况下，“添加自动化帐户”页中会显示此消息：“你无权创建”。
 

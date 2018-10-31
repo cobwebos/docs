@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c27df658ae810ac31813ffb94f397a0070933f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182240"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429127"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 本文说明如何为 Azure AD 域服务托管域启用安全轻量目录访问协议 (LDAPS)。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的轻量目录访问协议 (LDAP)。
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-在上述示例中，请将“*.contoso100.com”替换为托管域的 DNS 域名。例如，如果创建了名为“contoso100.onmicrosoft.com”的托管域，则将上述脚本中的“*.contoso100.com”替换为“*.contoso100.onmicrosoft.com”。
+在上述示例中，将“contoso100.com”替换为托管域的 DNS 域名。 例如，如果创建了名为“contoso100.onmicrosoft.com”的托管域，则将 Subject 属性中的“contoso100.com”替换为“contoso100.onmicrosoft.com”，并将 DnsName 属性中的“*.contoso100.com”替换为“*.contoso100.onmicrosoft.com”。
 
 ![选择 Azure AD 目录](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

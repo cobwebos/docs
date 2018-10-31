@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: 备份; VM 备份
-ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a30b4081bf01a76c6d89e7557fbb1b40baa86fbc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717907"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985873"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
 
@@ -96,11 +96,11 @@ ms.locfileid: "44717907"
 
   完成初始备份之前，“上次备份状态”显示为“警告(初始备份挂起)”。 若要查看下一个计划备份作业的进行时间，请在“摘要”下单击该策略的名称。 “备份策略”菜单将打开，并显示计划的备份时间。
 
-10. 若要保护虚拟机，单击“立即备份”。 
+10. 若要保护虚拟机，单击“立即备份”。
 
   ![单击“立即备份”以运行初始备份](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-  “立即备份”菜单随即打开。 
+  “立即备份”菜单随即打开。
 
   ![显示“立即备份”边栏选项卡](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
@@ -185,7 +185,7 @@ ms.locfileid: "44717907"
   ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-update.png)
 
 2. 在新保管库的“管理”菜单中，使用垂直滚动条向下滚动到“管理”部分，并单击“备份基础结构”打开“备份基础结构”菜单。
- 
+
    ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-config-bkup-infra.png)
 
 3. 在“备份基础结构”菜单中，单击“备份配置”打开“备份配置”菜单。
@@ -291,6 +291,11 @@ ms.locfileid: "44717907"
   ![设置保留立即备份恢复点的最后一天](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
   部署通知会告知你备份作业已触发，并且可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+
+  > [!NOTE]
+  > 所有由 Azure 备份负责备份的数据均通过[存储服务加密 (SSE)](../storage/common/storage-service-encryption.md) 进行静态加密。
+  >
+  >
 
 6. 若要查看或跟踪初始备份的状态，请在保管仪表板的“备份作业”磁贴上，单击“正在进行”。
 

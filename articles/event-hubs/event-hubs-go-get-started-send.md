@@ -7,34 +7,33 @@ manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 40b3aa82c3e9e8ab9a30362c0a41998877655725
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005591"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458082"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>使用 Go 将事件发送到事件中心
 
-Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒可处理大量事件，从而使应用程序能够处理和分析连接设备和其他系统所产生的海量数据。 收集到事件中心后，可使用进程内处理程序或通过转发到其他分析系统，接收和处理事件。
+Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-若要了解有关事件中心的详细信息，请参阅[事件中心概述][Event Hubs overview]。
+本教程介绍如何从 Go 编写的应用程序中将事件发送到事件中心。 
 
-本教程介绍如何从 Go 编写的应用程序中将事件发送到事件中心。 若要接收事件，请使用 Go eph（事件处理器主机）包，如[相应的接收文章](event-hubs-go-get-started-receive-eph.md)中所述。
-
-本教程中的代码取自[以下 GitHub 示例](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs)，可以检查这些代码，查看包括导入语句和变量声明的功能完善的应用程序。
-
-其他示例[在事件中心包存储库](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples)中提供。
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
 * 已本地安装 Go。 若有必要，请按照[以下说明操作](https://golang.org/doc/install)。
-* 有效的 Azure 帐户。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。
 * 现有事件中心命名空间和事件中心。 请按[本文](event-hubs-create.md)中的说明创建以下实体。
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
 
 ## <a name="install-go-package"></a>安装 Go 包
 
@@ -125,15 +124,13 @@ if err != nil {
 log.Printf("got partition IDs: %s\n, info.PartitionIDs)
 ```
 
+运行应用程序将事件发送到事件中心。 
+
+祝贺你！ 现在已向事件中心发送消息。
+
 ## <a name="next-steps"></a>后续步骤
-
-若要了解有关事件中心的详细信息，请访问以下页面：
-
-* [使用 EventProcessorHost 接收事件](event-hubs-go-get-started-receive-eph.md)
-* [事件中心概述][Event Hubs overview]
-* [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+在此快速入门中，已使用 Go 向事件中心发送消息。 若要了解如何使用 Go 从事件中心接收事件，请参阅[从事件中心接收事件 - Go](event-hubs-go-get-started-receive-eph.md)。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md
-[免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

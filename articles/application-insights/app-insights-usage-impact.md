@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/25/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 85547bd8528c4d5d4a627750bb5334f05ed231b1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091475"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024301"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -68,7 +68,7 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact 工具如何计算这些转换率？
 
-在底层，Impact 工具依赖于 [皮尔逊相关系数] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示零相关，1 表示正相关。
+在底层，Impact 工具依赖于[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示零相关，1 表示正相关。
 
 简单而言，Impact Analysis 工作原理的分解如下：
 

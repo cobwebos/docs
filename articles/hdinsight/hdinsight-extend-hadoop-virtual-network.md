@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/08/2018
+ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972175"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945750"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -173,7 +173,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="directly-connect-to-hadoop-services"></a>直接连接到 Hadoop 服务
 
-关于 HDInsight 的大多数文档都假定能够通过 Internet 访问群集。 例如，可以通过 https://CLUSTERNAME.azurehdinsight.net 连接到该群集。 此地址使用公共网关，在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
+可以通过 https://CLUSTERNAME.azurehdinsight.net 连接到该群集。 此地址使用公共 IP，如果已使用 NSG 或 UDR 来限制从 internet 传入流量，可能无法访问此地址。 此外，在 VNet 中部署群集时，可以使用专用终结点 https://CLUSTERNAME-int.azurehdinsight.net 访问它。 此终结点可解析为 VNet 中的专用 IP，以进行群集访问。
 
 若要通过虚拟网络连接到 Ambari 以及其他网页，请使用以下步骤：
 
@@ -253,7 +253,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 >
 > 如果不使用网络安全组或用户定义的路由来控制流量，则可以忽略本部分。
 
-如果使用网络安全组或用户定义的路由，则必须允许来自 Azure 运行状况和管理服务的流量发往 HDInsight。 使用以下步骤来查找必须允许的 IP 地址：
+如果使用网络安全组或用户定义的路由，则必须允许来自 Azure 运行状况和管理服务的流量发往 HDInsight。 还必须允许在子网内的 VM 之间传输流量。 使用以下步骤来查找必须允许的 IP 地址：
 
 1. 必须始终允许来自以下 IP 地址的流量：
 
@@ -280,6 +280,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
     | &nbsp; | 加拿大中部 | 52.228.37.66</br>52.228.45.222 | 443 | 入站 |
     | 中国 | 中国北部 | 42.159.96.170</br>139.217.2.219 | 443 | 入站 |
     | &nbsp; | 中国东部 | 42.159.198.178</br>42.159.234.157 | 443 | 入站 |
+    | &nbsp; | 中国北部 2 | 40.73.37.141</br>40.73.38.172 | 443 | 入站 |
     | 欧洲 | 北欧 | 52.164.210.96</br>13.74.153.132 | 443 | 入站 |
     | &nbsp; | 西欧| 52.166.243.90</br>52.174.36.244 | 443 | 入站 |
     | 德国 | 德国中部 | 51.4.146.68</br>51.4.146.80 | 443 | 入站 |
@@ -301,7 +302,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 
     若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。
 
-3. 如果对虚拟网络使用自定义 DNS 服务器，还必须允许从 __168.63.129.16__ 进行访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
+3. 还必须允许从 168.63.129.16 访问。 此地址是 Azure 的递归解析程序。 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
 

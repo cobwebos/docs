@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093283"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955229"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 
@@ -71,28 +71,28 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
  
 此选项仅适用于来自 Verizon 的 Azure CDN Premium 配置文件。 使用此选项，可以在源服务器上保护 Blob 存储。 如果不需要对文件进行特定的访问权限限制，但希望阻止用户直接访问存储源以提高 Azure CDN 卸载时间，则需要使用此选项。 若要在源服务器的指定容器中访问文件，必须使用对用户来说不可知的 SAS 令牌。 不过，由于 URL 重写规则的缘故，CDN 终结点上不需要 SAS 令牌。
  
-1. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则。 新规则需要 10 分钟才能完成传播。
+1. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则。 新规则需要 4 小时来传播。
 
    ![CDN 管理按钮](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![CDN 规则引擎按钮](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   以下示例 URL 重写规则使用包含捕获组和名为 storagedemo 的终结点的正则表达式模式：
+   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式：
    
    源：   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    目标：   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![CDN URL 重写规则 - 左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. 新规则激活以后，任何人都可以访问 CDN 终结点上指定容器中的文件，不管这些人是否在 URL 中使用 SAS 令牌。 格式为：`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    例如：   
-   `https://demoendpoint.azureedge.net/container1/demo.jpg`
+   `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
 3. 使用缓存规则或在源服务器处添加 `Cache-Control` 标头来微调缓存持续时间。 由于 Azure CDN 将 SAS 令牌视为普通查询字符串，因此，最佳做法是应该设置在 SAS 到期时或到期之前到期的缓存持续时间。 否则，如果文件的缓存持续时间长于 SAS 的有效时间，在 SAS 到期之后，则可从 Azure CDN 源服务器访问此文件。 如果出现这种情况，并且你需要使缓存文件不可访问，则必须对文件执行清除操作以将其从缓存中清除。 有关对 Azure CDN 设置缓存持续时间的信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
@@ -108,24 +108,24 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
  
    例如：   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
    安全令牌身份验证的参数选项不同于 SAS 令牌的参数选项。 如果在创建安全令牌时选择使用到期时间，则应将它设置为与 SAS 令牌的到期时间相同的值。 这样可确保到期时间是可预测的。 
  
-2. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则以启用对容器中所有 blob 的 SAS 令牌访问。 新规则需要 10 分钟才能完成传播。
+2. 使用[规则引擎](cdn-rules-engine.md)创建 URL 重写规则以启用对容器中所有 blob 的 SAS 令牌访问。 新规则需要 4 小时来传播。
 
-   以下示例 URL 重写规则使用包含捕获组和名为 storagedemo 的终结点的正则表达式模式：
+   以下示例 URL 重写规则使用包含捕获组和名为 sasstoragedemo 的终结点的正则表达式模式：
    
    源：   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    目标：   
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![CDN URL 重写规则 - 左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. 如果续订 SAS，请确保使用新的 SAS 令牌更新 URL 重写规则。 
 
