@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: barbkess
 ms.reviewer: baselden
-ms.openlocfilehash: 750bf1905a3ca352e181dcd5b7fcecdfc8d04f76
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: d2ede423a92fe9e0d45155d9470d63689bc8d281
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465497"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165523"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>用于将应用程序迁移到 Azure Active Directory 的资源
 
-帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。 
+帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。 请参与此简短调查（ https://aka.ms/AppsMigrationFeedback) 提供有关将应用迁移到 Azure AD 的体验反馈（包括迁移的阻止程序、是否需要工具/指南，以及保留本地 IDP 的原因）。 
 
 | 资源  | 说明  |
 |:-----------|:-------------|

@@ -1,24 +1,24 @@
 ---
-title: 什么是自定义语音服务？
-titlesuffix: Azure Cognitive Services
+title: Azure 上的自定义语音服务概述 | Microsoft Docs
 description: 自定义语音服务是一种基于云的服务，借助该服务，可自定义语音到文本转换的语音模型。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: overview
+ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97eee2b6440dbbf740ad5fa856bd518facabbfef
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222737"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342285"
 ---
 # <a name="what-is-custom-speech-service"></a>什么是自定义语音服务？
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 自定义语音服务是一种基于云的服务，让用户能自定义语音到文本转换的语音模型。
 若要使用自定义语音服务，请参阅[自定义语音服务门户](https://cris.ai)。
@@ -44,7 +44,7 @@ Microsoft 语音转文本引擎是一流的引擎，专用于上述各种场景�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何使用自定义语音服务的详细信息，请参阅 [自定义语音服务门户] (https://cris.ai))。
+有关如何使用自定义语音服务的详细信息，请参阅[自定义语音服务门户](https://cris.ai)。
 
 * [入门](cognitive-services-custom-speech-get-started.md)
 * [常见问题](cognitive-services-custom-speech-faq.md)

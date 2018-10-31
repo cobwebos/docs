@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 590f9e2a9cf531a1124f9cb132791f2956227d9c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045619"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393246"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 
@@ -25,7 +25,7 @@ Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐�
 
 将该应用用于双重验证时，它采用以下两种工作方式之一：
 
-- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。
+- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。 单击“拒绝”后，还可以将请求标记为欺骗性请求。
 
 - **验证码。** 键入用户名和密码后，可以打开应用，并将“帐户”屏幕上提供的验证码复制到登录屏幕。 验证码充当第二种形式的身份验证。
 

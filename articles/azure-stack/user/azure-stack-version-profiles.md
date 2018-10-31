@@ -67,7 +67,7 @@ Azure Stack 不使用全球 Azure 中提供的最新版 API。 在创建解决�
 
 API 配置文件可与使用 Azure 资源管理器的工具（例如 PowerShell、Azure CLI、SDK 中提供的代码，以及 Microsoft Visual Studio）配合运行。 工具和 SDK 可以使用配置文件来读取生成应用程序时要包含的模块和库的版本。
 
-例如，如果你使用 PowerShell 创建存储帐户使用**Microsoft.Storage**支持 api 版本 2016年-03-30 和使用 api 版本的 Microsoft.Compute 资源提供程序的 VM 的资源提供程序2015-12-01，需要查找 PowerShell 模块支持 2016年-03-30 为存储和计算哪个模块支持 2015年-02-01，并安装它们。 可以改用配置文件。 使用 cmdlet **Install-Profile *profilename***，然后 PowerShell 会加载正确的模块版本。
+例如，如果你使用 PowerShell 创建存储帐户使用**Microsoft.Storage**支持 api 版本 2016年-03-30 和使用 api 版本的 Microsoft.Compute 资源提供程序的 VM 的资源提供程序2015-12-01，需要查找 PowerShell 模块支持 2016年-03-30 为存储和计算哪个模块支持 2015年-02-01，并安装它们。 可以改用配置文件。 使用 cmdlet **Install-Profile \*profilename**\*，然后 PowerShell 会加载正确的模块版本。
 
 同样，在使用 Python SDK 生成基于 Python 的应用程序时，可以指定配置文件。 SDK 将为脚本中指定的资源提供程序加载正确的模块。
 

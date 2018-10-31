@@ -3,8 +3,8 @@ title: Azure CDN 规则引擎功能 | Microsoft Docs
 description: Azure CDN 规则引擎功能的参考文档。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.author: magattus
+ms.openlocfilehash: d5be292c66a07f43b40d12e10e4939d9d91559e1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42146110"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395235"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -315,7 +315,7 @@ If the desired site does not appear in the list, then you should edit its config
 - 请指定一个或多个查询字符串参数名称，并用一个空格分隔各个参数名称。
 - 此功能确定 cache-key 中是否包括查询字符串参数。 下表提供了每个选项的详细信息。
 
-Type|Description
+类型|Description
 --|--
  包括|  表示 cache-key 中应包括每个指定的参数。 将为每个包含此功能中定义的查询字符串参数的唯一值的请求生成唯一 cache-key。 
  全部包括  |表示将为每个发送到资产的请求生成唯一 cache-key，该资产包括唯一查询字符串。 通常不建议此类配置，因为此类配置可能导致缓存命中百分比低。 缓存命中数少会增加源服务器上的负载，因为它必须发送更多请求。 此配置复制“Query-String 缓存”页上名为“unique-cache”的缓存行为。 
@@ -333,7 +333,7 @@ Type|Description
 
 此功能的以下示例用法提供了示例请求和默认的 cache-key：
 
-- **示例请求：** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **示例请求：**http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **默认 cache-key：**/800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>包括
@@ -1256,7 +1256,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
         - 请求 URL（重定向后）：http:\//cdn.mydomain.com/resources/widgets.pdf  
     - 示例方案 2： 
         - 示例请求（边缘 CNAME URL）：http:\//marketing.mydomain.com/brochures/widgets.pdf 
-        - 请求 URL（重定向后）：http:\//cdn.mydomain.com/resources/widgets.pdf  示例解决方案
+        - 请求 URL（重定向后）：http:\//cdn.mydomain.com/resources/widgets.pdf
     - 示例方案 3： 
         - 示例请求（边缘 CNAME URL）：http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
         - 请求 URL（重定向后）：http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  

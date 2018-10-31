@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854994"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365607"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -44,17 +44,19 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 若要添加全局唯一标识符 (GUID)，可对主模板文件进行一次性的修改：
 
-1. 创建 GUID（例如 eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. [创建 GUID](#create-guids)（例如，eb7927c8-dd66-43e1-b0cf-c346a422063）和[注册 GUID](#register-guids-and-offers)。
 
 1. 打开资源管理器模板。
 
 1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在 **pid-** 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在 pid- 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
 
 1. 检查模板是否存在任何错误。
 
 1. 在相应存储库中重新发布模板。
+
+1. [在模板部署中验证 GUID 是否成功](#verify-the-guid-deployment)。
 
 ### <a name="sample-template-code"></a>示例模板代码
 
@@ -99,6 +101,24 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>创建 GUID
+
+GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 建议利用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)。 但是，如果不想使用 Azure 存储的 GUID 生成器，可使用多个[在线 GUID 生成器](https://www.bing.com/search?q=guid%20generator)。
+
+> [!Note]
+> 强烈建议使用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)创建 GUID。 有关详细信息，请参阅[常见问题解答](#faq)。
+
+请为每个产品/服务和分销渠道创建唯一的 GUID。 如果使用模板部署两个解决方案，并且每个解决方案都在 Azure 市场和 GitHub 中提供，则需要创建四个 GUID：
+
+*   Azure 市场中的产品/服务 A 
+*   GitHub 中的产品/服务 A
+*   Azure 市场中的产品/服务 B 
+*   GitHub 中的产品/服务 B
+
+报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来执行。 
+
+也可以在更加精细的级别跟踪 GUID（例如 SKU，其中 SKU 是产品/服务的变体）。
 
 ## <a name="register-guids-and-offers"></a>注册 GUID 和产品/服务
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>创建 GUID
-
-GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 可使用多个[在线 GUID 生成器](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E)。
-
-请为每个产品/服务和分销渠道创建唯一的 GUID。 如果使用模板部署两个解决方案，并且每个解决方案都在 Azure 市场和 GitHub 中提供，则需要创建四个 GUID：
-
-*   Azure 市场中的产品/服务 A 
-*   GitHub 中的产品/服务 A
-*   Azure 市场中的产品/服务 B 
-*   GitHub 中的产品/服务 B
-
-报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来执行。 
-
-也可以在更加精细的级别跟踪 GUID（例如 SKU，其中 SKU 是产品/服务的变体）。
-
 ## <a name="notify-your-customers"></a>通知客户
 
 合作伙伴应让客户知道部署中使用了资源管理器 GUID 跟踪。 Microsoft 将向合作伙伴报告与这些部署关联的 Azure 使用情况。 以下示例包含可用于向客户告知这些部署的内容。 请将示例中的 \<PARTNER> 替换为自己的公司名称。 合作伙伴应确保通知与其数据隐私和收集政策保持一致，包括供客户选择将自己从跟踪中排除的选项。 
@@ -275,3 +280,7 @@ Microsoft 为合作伙伴提供其模板的客户部署情况以及有关受其�
 **此跟踪方法是否类似于数字记录合作伙伴 (DPOR)？**
 
 这种将部署和使用情况与合作伙伴解决方案关联的新方法提供将合作伙伴解决方案与 Azure 使用情况连接的机制。 DPOR 旨在将咨询（系统集成商）或管理（托管服务提供商）合作伙伴与客户的 Azure 订阅关联。   
+
+**使用 Azure 存储的 GUID 生成器窗体有何益处？**
+
+Azure 存储的 GUID 生成器窗体可确保生成所需格式的 GUID。 此外，如果使用任何 Azure 存储的数据平面跟踪方法，则可以利用相同 GUID 进行市场控制平面跟踪。 这样，你将可以利用 Partner 属性的单个统一 GUID，而无需维护单独的多个 GUID。

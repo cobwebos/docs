@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dd86fd1aa8b1dab9f329f12924ff37db1256d1eb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056499"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377893"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 本文介绍如何使用 SAP ERP Central Component (ECC) 连接器在逻辑应用内部访问本地 SAP 资源。 SAP ECC 连接器支持通过中间文档 (IDoc)、业务应用程序编程接口 (BAPI) 或远程函数调用 (RFC) 来与基于 SAP Netweaver 的系统相互进行消息或数据集成。
 
-SAP ECC 连接器使用 <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP .Net 连接器 (NCo) 库</a>，并提供以下操作：
+SAP ECC 连接器使用 <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .Net 连接器 (NCo) 库</a>，并提供以下操作：
 
 - **发送到 SAP**：在 SAP 系统中通过 tRFC 发送 IDoc 或调用 BAPI 函数。
 - **从 SAP 接收**：通过 tRFC 从 SAP 系统接收 IDoc 或 BAPI 函数调用。
@@ -44,7 +44,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 * 在任何本地计算机上下载并安装最新的[本地数据网关](https://www.microsoft.com/download/details.aspx?id=53127)。 在继续操作之前，请确保在 Azure 门户中设置网关。 网关有助于安全访问数据，资源位于本地。 有关详细信息，请参阅[为 Azure 逻辑应用安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-* 在本地数据网关所安装到的同一台计算机上，下载并安装最新的 SAP 客户端库，目前为<a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">适用于 Microsoft .NET Framework 4.0 和 Windows 64 位 (x64) 的 SAP 连接器 (NCo) 3.0.20.0</a>。 安装此版本或更高版本的原因是：
+* 在本地数据网关所安装到的同一台计算机上，下载并安装最新的 SAP 客户端库，目前为<a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">适用于 Microsoft .NET Framework 4.0 和 Windows 64 位 (x64) 的 SAP 连接器 (NCo) 3.0.21.0</a>。 安装此版本或更高版本的原因是：
 
   * 如果同时发送多个 IDoc 消息，早期的 SAP NCo 版本可能死锁。 
   这种状态会阻止向 SAP 目标发送所有后续消息，从而导致消息超时。

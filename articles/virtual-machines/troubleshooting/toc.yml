@@ -9,8 +9,6 @@ items:
     href: allocation-failure-classic.md
 - name: RDP
   items:
-  - name: 连接频繁断开
-    href: troubleshoot-rdp-intermittent-connectivity.md
   - name: 重置 RDP
     href: reset-rdp.md
   - name: RDP 故障排除
@@ -19,8 +17,16 @@ items:
     href: detailed-troubleshoot-rdp.md
   - name: 排查特定错误
     href: troubleshoot-specific-rdp-errors.md
-  - name: 排查 RDP 连接频繁断开的问题
+  - name: 排查“无许可证服务器”错误
+    href: troubleshoot-rdp-no-license-server.md
+  - name: 排查远程桌面服务问题
+    href: troubleshoot-remote-desktop-services-issues.md
+  - name: 排查内部错误
+    href: Troubleshoot-rdp-internal-error.md
+  - name: 排查连接频繁断开的问题
     href: troubleshoot-rdp-intermittent-connectivity.md
+  - name: 排查常见错误
+    href: troubleshoot-rdp-general-error.md
 - name: SSH
   items:
   - name: SSH 故障排除
@@ -129,9 +135,9 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 了解系统重启
   href: understand-vm-reboot.md
-ms.openlocfilehash: 49e216bfd9f1b7ad9c8e9f74ae67d38359f7f474
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 749bfa9916431b4131dd7d0e814835baa96c6d64
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138255"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209235"

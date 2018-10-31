@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 10/03/2018
+ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124263"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093776"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器日志
 在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。 
@@ -45,6 +45,39 @@ ms.locfileid: "46124263"
 - **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
 
 有关慢查询日志参数的完整说明，请参阅 MySQL [慢查询日志文档](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
+
+## <a name="diagnostic-logs"></a>诊断日志
+Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 在 MySQL 服务器上启用慢查询日志后，可以选择将它们发送到 Log Analytics、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)中的操作说明部分。
+
+下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
+
+| **属性** | **说明** |
+|---|---|---|
+| TenantId | 租户 ID |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
+| 类型 | 日志类型。 始终是 `AzureDiagnostics` |
+| SubscriptionId | 服务器所属的订阅的 GUID |
+| resourceGroup | 服务器所属的资源组的名称 |
+| ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
+| ResourceType | `Servers` |
+| ResourceId | 资源 URI |
+| 资源 | 服务器的名称 |
+| 类别 | `MySqlSlowLogs` |
+| OperationName | `LogEvent` |
+| Logical_server_name_s | 服务器的名称 |
+| start_time_t [UTC] | 查询开始时间 |
+| query_time_s | 查询执行所用的总时间 |
+| lock_time_s | 查询锁定的总时间 |
+| user_host_s | 用户名 |
+| rows_sent_s | 发送的行数 |
+| rows_examined_s | 检查的行数 |
+| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| insert_id_s | 插入 ID |
+| sql_text_s | 完整的查询 |
+| server_id_s | 服务器的 ID |
+| thread_id_s | 线程 ID |
+| \_ResourceId | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤
 - [如何通过 Azure CLI 配置和访问服务器日志](howto-configure-server-logs-in-cli.md)。

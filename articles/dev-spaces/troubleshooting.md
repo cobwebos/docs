@@ -11,12 +11,12 @@ ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
 manager: douge
-ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226885"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353352"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -76,6 +76,23 @@ azds remove -g <resource group name> -n <cluster name>
 
     ![“工具选项”对话框的屏幕截图](media/common/VerbositySetting.PNG)
     
+尝试使用多阶段 Dockerfile 时，可能会看到此错误。 详细输出如下所示：
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+这是因为 AKS 节点运行的旧版 Docker 不支持多阶段生成。 需重写 Dockerfile 以避免多阶段生成。
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
 如果 DNS 名称解析失败，当尝试连接到与 Dev Spaces 服务关联的公用 URL 时，可能会在 Web 浏览器中看到“页面无法显示”或“无法访问此站点”错误。
@@ -206,6 +223,14 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>启动 Dev Spaces 时出现“Error: could not find a ready tiller pod”（错误: 找不到准备好的 Tiller Pod）
+
+### <a name="reason"></a>原因
+如果 Helm 客户端无法再与群集中运行的 Tiller Pod 通信，则会发生此错误。
+
+### <a name="try"></a>请尝试：
+重新启动群集中的代理节点通常可以解决此问题。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces 似乎没有使用我的现有 Dockerfile 来生成容器 
 

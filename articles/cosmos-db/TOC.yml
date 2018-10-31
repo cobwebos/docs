@@ -74,21 +74,27 @@ items:
     href: sql-api-resources.md
   - name: 全球分布
     items:
-    - name: 介绍
+    - name: 概述
       href: distribute-data-globally.md
-    - name: 主要优点
-      href: distribute-data-globally-benefits.md
-    - name: 启用全局分发
-      href: distribute-data-globally-turnkey.md
-    - name: 启用多主数据库
-      href: enable-multi-master.md
-    - name: 包含 OSS NoSQL 数据库的多主数据库
-      href: multi-master-oss-nosql.md
-    - name: 冲突解决
-      href: multi-master-conflict-resolution.md
+    - name: 一致性级别
+      href: consistency-levels.md
+    - name: 选择适当的一致性级别
+      href: consistency-levels-choosing.md
+    - name: 一致性级别和 Cosmos DB API
+      href: consistency-levels-across-apis.md
+    - name: 一致性、可用性和性能权衡
+      href: consistency-levels-tradeoffs.md
+    - name: 高可用性
+      href: high-availability.md
+    - name: 全局缩放吞吐量
+      href: scaling-throughput.md
+    - name: 冲突解决策略
+      href: conflict-resolution-policies.md
+    - name: 全球分布 - 揭秘
+      href: global-dist-under-the-hood.md
   - name: Throughput
     items:
-    - name: 介绍
+    - name: 概述
       href: request-units.md
     - name: 获取和设置吞吐量
       href: set-throughput.md
@@ -96,8 +102,6 @@ items:
     href: partition-data.md
   - name: 索引
     href: indexing-policies.md
-  - name: 一致性模型
-    href: consistency-levels.md
   - name: 更改源
     href: change-feed.md
   - name: 生存时间
@@ -106,7 +110,7 @@ items:
     href: unique-keys.md
   - name: 安全
     items:
-    - name: 介绍
+    - name: 概述
       href: database-security.md
     - name: 数据加密
       href: database-encryption-at-rest.md
@@ -122,8 +126,6 @@ items:
     href: cosmos-db-reserved-capacity.md
   - name: 备份和还原
     href: online-backup-and-restore.md
-  - name: 高可用性
-    href: regional-failover.md
 - name: 多模型 API
   items:
   - name: SQL API 文档
@@ -190,6 +192,8 @@ items:
         href: programming.md
       - name: SQL 数据分区
         href: sql-api-partition-data.md
+      - name: 排查 Java Async SDK 问题
+        href: troubleshoot-java-async-sdk.md
       - name: 数据类型
         items:
         - name: DateTime
@@ -417,6 +421,14 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: 设置 VSTS CI/CD 管道
     href: tutorial-setup-ci-cd.md
+  - name: 全球分布
+    items:
+    - name: 管理数据库帐户
+      href: how-to-manage-database-account.md
+    - name: 管理一致性
+      href: how-to-manage-consistency.md
+    - name: 管理冲突
+      href: how-to-manage-conflicts.md
   - name: 最佳做法
     items:
     - name: 性能提示
@@ -501,9 +513,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: dfa5b34127abf569a359814b6064ec981f57796d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 55a0bb09e56667078d463846d90cd086cb05dd4e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985822"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240420"

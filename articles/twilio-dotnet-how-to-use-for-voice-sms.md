@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Twilio 实现语音和短信功能 (.NET) | Microsoft 文档
+title: 如何使用 Twilio 实现语音和短信功能 (.NET) | Microsoft Docs
 description: 了解如何在 Azure 中使用 Twilio API 服务发起电话呼叫和发送短信。 采用 .NET 编写的代码示例。
 services: ''
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 1442e3af26ae87e645cf207228ed1197b2afdd4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cde668fdeda7e484585a457a46fc5c25ce6ea6ae
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111785"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310532"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -44,26 +44,28 @@ API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在�
 
 下面是 Twilio 谓词的列表。  通过 [Twilio 标记语言文档](http://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
 
-* **&lt;Dial&gt;**：将呼叫方连接到其他电话。
-* **&lt;Gather&gt;**：收集通过电话按键输入的数字。
-* **&lt;Hangup&gt;**：结束呼叫。
-* **&lt;Play&gt;**：播放音频文件。
-* **&lt;Pause&gt;**：安静地等待指定的时间（以秒为单位）。
-* **&lt;Record&gt;**：录制呼叫方的声音并返回包含该录音的文件 URL。
-* **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
-* **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费
-* **&lt;Say&gt;**：将文本转换为呼叫中生成的语音。
-* **&lt;Sms&gt;**：发送短信。
+* `<Dial>`：将呼叫方连接到其他电话。
+* `<Gather>`：收集通过电话按键输入的数字。
+* `<Hangup>`：结束呼叫。
+* `<Play>`：播放音频文件。
+* `<Pause>`：安静地等待指定的秒数。
+* `<Record>`：录制呼叫方的声音并返回包含该录音的文件 URL。
+* `<Redirect>`：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
+* `<Reject>`：拒绝对 Twilio 号码的传入呼叫且无需付费
+* `<Say>`：将文本转换为通话语音。
+* `<Sms>`：发送短信。
 
-### <a id="TwiML"></a>TwiML
+### <a name="twiml"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
 
 例如，以下 TwiML 将文本 **Hello World** 转换为语音。
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+  <Say>Hello World</Say>
+</Response>
+```
 
 当应用程序调用 Twilio API 时，某个 API 参数将为返回 TwiML 响应的 URL。 在开发过程中，可以使用 Twilio 提供的 URL 来提供应用程序所使用的 TwiML 响应。 还可以托管自己的 URL 来生成 TwiML 响应，也可以选择使用 **TwiMLResponse** 对象。
 
@@ -82,15 +84,17 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 Twilio 提供了一系列可包装 Twilio 各个方面的 .NET 帮助程序库，因此，能够以简单且轻松地方式与 Twilio REST API 和 Twilio 客户端进行交互，从而生成 TwiML 响应。
 
 Twilio 为 .NET 开发人员提供了 5 个库：
-库|说明
----|---
-Twilio.API|可在友好的 .NET 库中包装 Twilio REST API 的核心 Twilio 库。 此库可用于 .NET、Silverlight 和 Windows Phone 7。
-Twilio.TwiML|可提供一种 .NET 友好方式来生成 TwiML 标记。
-Twilio.MVC|对于使用 ASP.NET MVC 的开发人员，此库包括 TwilioController、TwiML ActionResult，及请求验证特性。
-Twilio.WebMatrix|对于使用 Microsoft 免费 WebMatrix 开发工具的开发人员，此库包含适用于各种 Twilio 操作的 Razor 语法帮助程序。
-Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Capability 令牌生成器。
 
-请注意，所有库都需要 .NET 3.5、Silverlight 4 或者 Windows Phone 7 或更高版本。
+| 库 | Description |
+| --- | --- |
+| Twilio.API | 可在友好的 .NET 库中包装 Twilio REST API 的核心 Twilio 库。 此库可用于 .NET、Silverlight 和 Windows Phone 7。 |
+| Twilio.TwiML | 可提供一种 .NET 友好方式来生成 TwiML 标记。 |
+| Twilio.MVC | 对于使用 ASP.NET MVC 的开发人员，此库包括 TwilioController、TwiML ActionResult，及请求验证特性。 |
+| Twilio.WebMatrix | 对于使用 Microsoft 免费 WebMatrix 开发工具的开发人员，此库包含适用于各种 Twilio 操作的 Razor 语法帮助程序。 |
+| Twilio.Client.Capability | 包含可用于 Twilio 客户端 JavaScript SDK 的 Capability 令牌生成器。 |
+
+> [!Important]
+> 所有库都需要 .NET 3.5、Silverlight 4 或者 Windows Phone 7 或更高版本。
 
 本指南中提供的示例使用 Twilio.API 库。
 
@@ -111,148 +115,157 @@ Twilio.Client.Capability|包含可用于 Twilio 客户端 JavaScript SDK 的 Cap
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。
 
-## <a id="howto_make_call"></a>如何：发起传出呼叫
+## <a id="howto_make_call"></a>如何拨打传出呼叫
 以下代码演示如何使用 **CallResource** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“被呼叫方”和“呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
-    // Use your account SID and authentication token instead
-    // of the placeholders shown here.
-    const string accountSID = "your_twilio_account";
-    const string authToken = "your_twilio_authentication_token";
+```csharp
+// Use your account SID and authentication token instead
+// of the placeholders shown here.
+const string accountSID = "your_twilio_account";
+const string authToken = "your_twilio_authentication_token";
 
-    // Initialize the TwilioClient.
-    TwilioClient.Init(accountSID, authToken);
+// Initialize the TwilioClient.
+TwilioClient.Init(accountSID, authToken);
 
-    // Use the Twilio-provided site for the TwiML response.
-    var url = "http://twimlets.com/message";
-    url = $"{url}?Message%5B0%5D=Hello%20World";
+// Use the Twilio-provided site for the TwiML response.
+var url = "http://twimlets.com/message";
+url = $"{url}?Message%5B0%5D=Hello%20World";
 
-    // Set the call From, To, and URL values to use for the call.
-    // This sample uses the sandbox number provided by
-    // Twilio to make the call.
-    var call = CallResource.Create(
-        to: new PhoneNumber("+NNNNNNNNNN"),
-        from: new PhoneNumber("NNNNNNNNNN"),
-        url: new Uri(url));
-        }
+// Set the call From, To, and URL values to use for the call.
+// This sample uses the sandbox number provided by
+// Twilio to make the call.
+var call = CallResource.Create(
+    to: new PhoneNumber("+NNNNNNNNNN"),
+    from: new PhoneNumber("NNNNNNNNNN"),
+    url: new Uri(url));
+    }
+```
 
-若要深入了解传入到 **CallResource.Create** 方法中的参数，请参阅 [http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]。
+有关传入 **CallResource.Create** 方法的参数的详细信息，请参阅 [http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]。
 
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的站点来提供 TwiML 响应。 有关详细信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-## <a id="howto_send_sms"></a>如何：发送短信
+## <a id="howto_send_sms"></a>如何发送短信
 以下屏幕截图演示如何使用 **MessageResource** 类发送短信。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须验证 Twilio 帐户的“被呼叫方”号码。
 
-    // Use your account SID and authentication token instead
-    // of the placeholders shown here.
-    const string accountSID = "your_twilio_account";
-    const string authToken = "your_twilio_authentication_token";
+```csharp
+// Use your account SID and authentication token instead
+// of the placeholders shown here.
+const string accountSID = "your_twilio_account";
+const string authToken = "your_twilio_authentication_token";
 
-    // Initialize the TwilioClient.
-    TwilioClient.Init(accountSID, authToken);
+// Initialize the TwilioClient.
+TwilioClient.Init(accountSID, authToken);
 
-    try
-    {
-        // Send an SMS message.
-        var message = MessageResource.Create(
-            to: new PhoneNumber("+12069419717"),
-            from: new PhoneNumber("+14155992671"),
-            body: "This is my SMS message.");
-    }
-    catch (TwilioException ex)
-    {
-        // An exception occurred making the REST call
-        Console.WriteLine(ex.Message);
-    }
+try
+{
+    // Send an SMS message.
+    var message = MessageResource.Create(
+        to: new PhoneNumber("+12069419717"),
+        from: new PhoneNumber("+14155992671"),
+        body: "This is my SMS message.");
+}
+catch (TwilioException ex)
+{
+    // An exception occurred making the REST call
+    Console.WriteLine(ex.Message);
+}
+```
 
 ## <a id="howto_provide_twiml_responses"></a>如何：从你自己的网站提供 TwiML 响应
 当应用程序启动对 Twilio API 的调用时（例如通过 **CallResource.Create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [http://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
-> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空 &lt;Response&gt; 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。
->
+> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [http://twimlets.com/message][twimlet_message_url] 可查看空的 `<Response>` 元素；再例如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 `<Response>` 元素。
 >
 
 可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 HTTP 响应的站点。 本主题假设要从 ASP.NET 一般处理程序承载该 URL。
 
 以下 ASP.NET 处理程序将生成在呼叫时表述 **Hello World** 的 TwiML 响应。
 
-    using System.Text;
-    using System.Web;
+```csharp
+using System.Text;
+using System.Web;
 
-    namespace WebRole1
+namespace WebRole1
+{
+    /// <summary>
+    /// Summary description for Handler1
+    /// </summary>
+    public class Handler1 : IHttpHandler
     {
-        /// <summary>
-        /// Summary description for Handler1
-        /// </summary>
-        public class Handler1 : IHttpHandler
+        public void ProcessRequest(HttpContext context)
         {
-            public void ProcessRequest(HttpContext context)
-            {
-                const string twiMLResponse =
-                    "<Response><Say>Hello World.</Say></Response>";
-                
-                context.Response.Clear();
-                context.Response.ContentType = "text/xml";
-                context.Response.ContentEncoding = Encoding.UTF8;
-                context.Response.Write(twiMLResponse);
-                context.Response.End();
-            }
+            const string twiMLResponse =
+                "<Response><Say>Hello World.</Say></Response>";
 
-            public bool IsReusable
+            context.Response.Clear();
+            context.Response.ContentType = "text/xml";
+            context.Response.ContentEncoding = Encoding.UTF8;
+            context.Response.Write(twiMLResponse);
+            context.Response.End();
+        }
+
+        public bool IsReusable
+        {
+            get
             {
-                get
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
+}
+```
     
 如上面的示例中所示，TwiML 响应只是一个 XML 文档。 Twilio.TwiML 库包含将生成 TwiML 的类。 以下示例将生成与上面所示相同的响应，但该响应会使用 **VoiceResponse** 类。
 
-    using System.Web;
-    using Twilio.TwiML;
+```csharp
+using System.Web;
+using Twilio.TwiML;
 
-    namespace WebRole1
+namespace WebRole1
+{
+    /// <summary>
+    /// Summary description for Handler1
+    /// </summary>
+    public class Handler1 : IHttpHandler
     {
-        /// <summary>
-        /// Summary description for Handler1
-        /// </summary>
-        public class Handler1 : IHttpHandler
+
+        public void ProcessRequest(HttpContext context)
         {
+            var twiml = new VoiceResponse();
+            twiml.Say("Hello World.");
 
-            public void ProcessRequest(HttpContext context)
+            context.Response.Clear();
+            context.Response.ContentType = "text/xml";
+            context.Response.Write(twiml.ToString());
+            context.Response.End();
+        }
+
+        public bool IsReusable
+        {
+            get
             {
-                var twiml = new VoiceResponse();
-                twiml.Say("Hello World.");
-
-                context.Response.Clear();
-                context.Response.ContentType = "text/xml";
-                context.Response.Write(twiml.ToString());
-                context.Response.End();
-            }
-
-            public bool IsReusable
-            {
-                get
-                {
-                    return false;
-                }
+                return false;
             }
         }
     }
+}
+```
 
 有关 TwiML 的详细信息，请参阅 [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)。
 
 在设置提供 TwiML 响应的方法后，可将此 URL 传入 **CallResource.Create** 方法中。 例如，如果将名为 MyTwiML 的 Web 应用程序部署到 Azure 云服务，则 ASP.NET 处理程序的名称将为 mytwiml.ashx，并且可将 URL 传递到 **CallResource.Create**，如以下代码示例中所示：
 
-    // This sample uses the sandbox number provided by Twilio to make the call.
-    // Place the call.
-    var call = CallResource.Create(
-        to: new PhoneNumber("+NNNNNNNNNN"),
-        from: new PhoneNumber("NNNNNNNNNN"),
-        url: new Uri("http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.ashx"));
-        }
+```csharp
+// This sample uses the sandbox number provided by Twilio to make the call.
+// Place the call.
+var call = CallResource.Create(
+    to: new PhoneNumber("+NNNNNNNNNN"),
+    from: new PhoneNumber("NNNNNNNNNN"),
+    url: new Uri("http://<your_hosted_service>.cloudapp.net/MyTwiML/mytwiml.ashx"));
+    }
+```
 
 有关通过 ASP.NET 在 Azure 上使用 Twilio 的其他信息，请参阅[如何在 Azure 的 Web 角色中使用 Twilio 发起电话呼叫][howto_phonecall_dotnet]。
 

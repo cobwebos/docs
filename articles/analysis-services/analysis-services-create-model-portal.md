@@ -5,28 +5,30 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 837601a55bbe97e904f3dece9f4c87563d6dd4e9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141447"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092671"
 ---
 # <a name="create-a-model-in-azure-portal"></a>在 Azure 门户中创建模型
 
 Azure 门户的 Azure Analysis Services Web 设计器（预览）功能提供了一种轻松快捷的方式，可用于创建和编辑表格模型以及直接在浏览器中查询模型数据。 
 
-请记住，Web 设计器是预览版。 功能较为有限。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
+> [!IMPORTANT]
+> 此功能已弃用。 将来的更新中可能删除或大大更改此功能。 建议在新项目和现有项目中停止使用此功能，以保持与未来更新兼容。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
+
 
 ## <a name="before-you-begin"></a>开始之前
 
-- Azure Analysis Services 服务器必须位于标准或开发人员层。 使用 Web 设计器创建的新模型是 DirectQuery，且仅支持上述这些层。
+- Azure Analysis Services 服务器必须处于“标准”或“开发人员”层。 使用 Web 设计器创建的新模型是 DirectQuery，且仅支持上述这些层。
 - 作为数据源的 Azure SQL 数据库、Azure SQL 数据仓库或 Power BI Desktop (.pbix) 文件。 从 Power BI Desktop 文件创建的新模型支持 Azure SQL 数据库和 Azure SQL 数据仓库。
 - 用于连接到 Azure SQL 数据库或 Azure SQL 数据仓库数据源的 SQL Server 帐户和密码。
-- 必须具有服务器管理员权限才能创建新模型。 使用设计器编辑和查询模型需要数据库管理员权限。
+- 必须具有服务器管理员权限才能创建新模型。 需要数据库管理员权限才可使用设计器编辑和查询模型。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

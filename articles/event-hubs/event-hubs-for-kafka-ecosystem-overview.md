@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: bahariri
-ms.openlocfilehash: 16c101068be48ba1435ef230b29c679fcef17d08
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b1a046fdb62926d32c05bab5a1616b250911865b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143986"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352567"
 ---
 # <a name="azure-event-hubs-for-apache-kafka-preview"></a>用于 Apache Kafka 的 Azure 事件中心（预览版）
 
-事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) 和更高版本的客户端，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。 
+事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 协议 1.0 及更高版本](https://kafka.apache.org/documentation/)，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。 
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>适用于 Kafka 的事件中心可提供什么？
 
@@ -70,6 +70,7 @@ Azure 事件中心要求所有通信都使用 SSL 或 TLS，并要求使用共�
 
 * [如何创建启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)
 * [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+* [在 GitHub 上了解更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
 * 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
 * [事件中心常见问题解答](event-hubs-faq.md)
 

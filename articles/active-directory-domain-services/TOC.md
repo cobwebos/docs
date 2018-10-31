@@ -24,44 +24,45 @@
 ## [使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)
 ## [配置从 Azure AD 到托管域的作用域内同步](active-directory-ds-scoped-synchronization.md)
 ## [保护托管域](active-directory-ds-secure-your-domain.md)
-## 加入托管域
-### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
-### [CentOS](active-directory-ds-join-centos-linux-vm.md)
-### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
-### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
-## 管理托管域
-### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
-### [管理托管域上的 DNS](active-directory-ds-admin-guide-administer-dns.md)
-### [更新电子邮件通知](active-directory-ds-notifications.md)
-### 为托管域配置安全 LDAP
-#### [任务 1：获取安全 LDAP 的证书](active-directory-ds-admin-guide-configure-secure-ldap.md)
-#### [任务 2：导出安全 LDAP 证书](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [任务 3：使用 Azure 门户为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-#### [任务 4：配置 DNS 以便从 Internet 访问托管域](active-directory-ds-ldaps-configure-dns.md)
-#### [任务 5：绑定到托管域和锁定安全 LDAP 访问](active-directory-ds-ldaps-bind-lockdown.md)
-#### [排查安全 LDAP 问题](active-directory-ds-ldaps-troubleshoot.md)
-
-### [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
-### [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
-### [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
-### [配置托管域上的密码策略](active-directory-ds-password-policy.md)
+## [在托管域上创建 OU](active-directory-ds-admin-guide-create-ou.md)
+## [在托管域上创建组托管服务帐户](active-directory-ds-create-gmsa.md)
+## [管理托管域中的组策略](active-directory-ds-admin-guide-administer-group-policy.md)
+## [配置托管域上的密码策略](active-directory-ds-password-policy.md)
 ## [选择虚拟网络](active-directory-ds-networking.md)
 ## 部署应用程序
 ### [为 SharePoint Server 配置对配置文件同步的支持](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [配置 Kerberos 约束委派](active-directory-ds-enable-kcd.md)
 ### [部署 Azure AD 应用程序代理](active-directory-ds-deploy-azure-app-proxy.md)
 ## [删除托管域](active-directory-ds-disable-aadds.md)
-## 故障排除
-### [常见问题](active-directory-ds-faqs.md)
-### [故障排除指南](active-directory-ds-troubleshooting.md)
-### [排查警报问题](active-directory-ds-troubleshoot-alerts.md)
-#### [修复存在问题的 NSG 配置](active-directory-ds-troubleshoot-nsg.md)
-#### [恢复缺少的服务主体](active-directory-ds-troubleshoot-service-principals.md)
-#### [安全 LDAP 错误](active-directory-ds-troubleshoot-ldaps.md)
-### [解决“不匹配的租户”错误](active-directory-ds-mismatched-tenant-error.md)
-### [挂起的域](active-directory-ds-suspension.md)
+
+# 加入托管域
+## [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+## [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
+## [CentOS](active-directory-ds-join-centos-linux-vm.md)
+## [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
+## [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+## [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
+# 管理托管域
+## [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
+## [管理托管域上的 DNS](active-directory-ds-admin-guide-administer-dns.md)
+## [更新电子邮件通知](active-directory-ds-notifications.md)
+# 为托管域配置安全 LDAP
+## [任务 1：获取安全 LDAP 的证书](active-directory-ds-admin-guide-configure-secure-ldap.md)
+## [任务 2：导出安全 LDAP 证书](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+## [任务 3：使用 Azure 门户为托管域启用安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+## [任务 4：配置 DNS 以便从 Internet 访问托管域](active-directory-ds-ldaps-configure-dns.md)
+## [任务 5：绑定到托管域和锁定安全 LDAP 访问](active-directory-ds-ldaps-bind-lockdown.md)
+## [排查安全 LDAP 问题](active-directory-ds-ldaps-troubleshoot.md)
+
+# 故障排除
+## [常见问题](active-directory-ds-faqs.md)
+## [故障排除指南](active-directory-ds-troubleshooting.md)
+## [排查警报问题](active-directory-ds-troubleshoot-alerts.md)
+### [修复存在问题的 NSG 配置](active-directory-ds-troubleshoot-nsg.md)
+### [恢复缺少的服务主体](active-directory-ds-troubleshoot-service-principals.md)
+### [安全 LDAP 错误](active-directory-ds-troubleshoot-ldaps.md)
+## [解决“不匹配的租户”错误](active-directory-ds-mismatched-tenant-error.md)
+## [挂起的域](active-directory-ds-suspension.md)
 
 
 # 引用

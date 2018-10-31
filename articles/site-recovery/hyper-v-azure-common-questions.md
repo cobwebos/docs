@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721902"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319721"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>常见问题 - Hyper-V 到 Azure 的复制
 
@@ -104,7 +104,7 @@ ms.locfileid: "44721902"
 
 ### <a name="whats-the-replication-process"></a>复制过程是什么？
 
-1. 当触发初始复制时，系统会拍摄一个 Hyper-V VM 快照。
+1. 当触发初始复制时，系统会拍摄 Hyper-V VM 快照。
 2. VM 上的虚拟硬盘是逐一复制的，直至全部复制到 Azure 为止。 该过程可能需要一些时间，具体取决于 VM 大小和网络带宽。 了解如何增加网络带宽。
 3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助存储器。 当初始复制正在进行时，快照和日志将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照。
@@ -135,7 +135,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 若要复制某个 Hyper-V VM，该 VM 必须运行受支持的操作系统。 此外，该 VM 必须满足 Azure VM 的要求。 在支持矩阵中[了解详细信息](hyper-v-azure-support-matrix.md#replicated-vms)。
 
-###<a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
+### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
 可以每隔 30 秒（高级存储除外）、5 分钟或 15 分钟复制一次 Hyper-V VM。
 
@@ -207,6 +207,3 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可以故障回复到不同位置？
 可以。故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)。
-
-
-

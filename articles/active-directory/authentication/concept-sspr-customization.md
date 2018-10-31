@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222782"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318956"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -55,7 +55,9 @@ Active Directory 联合身份验证服务 (AD FS) 管理员可以使用[添加�
 
 若要将链接添加到 AD FS 登录页，请在 AD FS 服务器上使用以下命令。 用户可以使用此页输入 SSPR 工作流。
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>自定义登录页和访问面板的外观
 
@@ -65,8 +67,8 @@ Active Directory 联合身份验证服务 (AD FS) 管理员可以使用[添加�
 
 * 用户输入其用户名后
 * 如果用户通过以下方式访问自定义的 URL：
-    * 通过将 whr 参数传递到密码重置页，如“https://login.microsoftonline.com/?whr=contoso.com”
-    * 通过将 username 参数传递到密码重置页，如“https://login.microsoftonline.com/?username=admin@contoso.com”
+    * 通过将 `whr` 参数传递到密码重置页，如“https://login.microsoftonline.com/?whr=contoso.com”
+    * 通过将 `username` 参数传递到密码重置页，如“https://login.microsoftonline.com/?username=admin@contoso.com”
 
 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页](../fundamentals/customize-branding.md)一文。
 

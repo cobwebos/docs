@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033815"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352440"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -93,11 +93,11 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ### <a name="all-available-machines"></a>所有可用计算机
 
-若要为所有可用的计算机启用解决方案，请选择“在所有可用的计算机上启用”。 这会禁用分别添加计算机的控件。 此任务会将向工作区进行报告的所有计算机的名称添加到计算机组保存的搜索查询。
+若要为所有可用的计算机启用解决方案，请选择“在所有可用的计算机上启用”。 这会禁用分别添加计算机的控件。 此任务会将向工作区进行报告的所有计算机的名称添加到计算机组保存的搜索查询。 选中此项后，将禁用“管理计算机”按钮。
 
 ### <a name="all-available-and-future-machines"></a>所有可用的和将来的计算机
 
-若要为所有可用的计算机和所有将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 这将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。
+若要为所有可用的计算机和所有将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 这将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，将禁用“管理计算机”按钮。
 
 ### <a name="selected-machines"></a>所选计算机
 
@@ -120,13 +120,13 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
 
-1. 在“取消链接工作区”页上，单击“取消链接工作区”。
+2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
    ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
    系统会提示用户确认是否要继续。
 
-1. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
+3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 

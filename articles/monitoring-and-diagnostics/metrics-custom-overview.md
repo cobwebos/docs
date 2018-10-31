@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978074"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344738"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -31,7 +31,7 @@ ms.locfileid: "46978074"
 
 ### <a name="authentication"></a>身份验证
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的“Bearer”标头中提供有效的 Azure Active Directory 令牌。 可通过几种支持的方法获取有效的持有者令牌：
-1. [MSI（托管服务标识）](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)- 为 Azure 资源本身（例如 VM）提供一个标识。 MSI 旨在授予资源权限来执行特定的操作 - 例如，允许资源发出有关其自身的指标。 可为某个资源（或其 MSI）授予针对另一个资源的“监视指标发布者”权限，使该 MSI 也能发出其他资源的指标。
+1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)：为 Azure 资源本身（例如 VM）提供标识。 MSI 旨在授予资源权限来执行特定的操作 - 例如，允许资源发出有关其自身的指标。 可为某个资源（或其 MSI）授予针对另一个资源的“监视指标发布者”权限，使该 MSI 也能发出其他资源的指标。
 2. [AAD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) - 此处的方案是，可向某个 AAD 应用程序（服务）分配发出有关 Azure 资源的指标的权限。
 为了对请求进行身份验证，Azure Monitor 将使用 AAD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限，可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围（订阅、资源组或特定资源）为服务主体授予“监视指标发布者”角色。
 

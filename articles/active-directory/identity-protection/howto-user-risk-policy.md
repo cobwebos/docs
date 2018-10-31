@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a54403b7794d26d87c810f5cd20050db35c078f1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3ba8c93d158a6ff80c3db788924503e9d4e87242
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054301"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378113"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>如何：配置用户风险策略
 
@@ -41,7 +41,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 用户风险策略是可为特定用户风险级别配置的自动响应。 使用用户风险策略可以阻止对资源的访问，或者要求更改密码，使用户帐户恢复安全状态。
 
 
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>如何访问登录风险策略？
+## <a name="how-do-i-access-the-user-risk-policy"></a>如何访问用户风险策略？
    
 登录风险策略位于 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”部分中。
    
@@ -85,7 +85,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 * 避免针对受影响用户生成新的用户风险事件
 * 允许管理员手动补救影响用户标识的风险事件，并将它还原到安全状态
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。
 但是，这会从策略中排除标记为“低”和“中”风险的用户，因而无法保护以前疑似或已知遭到入侵的标识或设备。

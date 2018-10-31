@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d78959ba415c837e931edcc0278de84daa879bc1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307987"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393944"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>示例：使用文本翻译 API 创建自定义技能
 
@@ -37,6 +37,8 @@ ms.locfileid: "39307987"
 1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”。
 
 1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”。 函数应用名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
+
+1. 选择“Azure Functions v2 (.Net Core)”。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
 
 1. 选择“HTTP 触发器”作为类型
 
@@ -243,14 +245,6 @@ POST https://localhost:7071/api/Translate
 1. 部署完成后，请记下站点 URL。 这是 Azure 中你的函数应用的地址。 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找发布的翻译函数。 在“管理”部分下，应可看到主机密钥。 对默认主机密钥选择“复制”图标。  
-
-## <a name="update-ssl-settings"></a>更新 SSL 设置
-
-2018 年 6 月 30 日之后创建的所有 Azure 函数都已禁用了 TLS 1.0，它当前与自定义技能不兼容。
-
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找发布的翻译函数。 在“平台功能”部分下，应当会看到 SSL。
-
-1. 选择 SSL 后，应当将**最低 TLS 版本**更改为 1.0。 尚不支持将 TLS 1.2 函数用作自定义技能。
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 中测试函数
 

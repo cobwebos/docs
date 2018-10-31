@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 6feafba41cf65a752dd5bf0819b0b93bacff0aff
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141634"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce 沙盒集成
 
@@ -107,30 +107,38 @@ ms.locfileid: "42141634"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
 
-    ![“单一登录”对话框](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_samlbase.png)
+      ![配置单一登录链接](./media/salesforce-sandbox-tutorial/tutorial_general_300.png)
 
-3. 在“Salesforce 沙盒域和 URL”部分，如果要在 **IDP** 启动的模式下配置应用程序，请执行以下步骤：
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
-   ![Salesforce 沙盒域和 URL 单一登录信息](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+    ![配置单一登录链接](./media/salesforce-sandbox-tutorial/tutorial_general_301.png)
 
-   在“回复 URL”文本框中，键入组织特定的“回复 URL”。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+   
+    ![配置单一登录链接](./media/salesforce-sandbox-tutorial/tutorial_general_302.png)
 
-   > [!NOTE]
-   > 使用实际的回复 URL 更新回复 URL 值（本教程稍后将会介绍）。
+5. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-4. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
+
+    ![上传元数据文件](./media/salesforce-sandbox-tutorial/upload_metadata.png)
+
+    b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
+
+    ![选择元数据文件](./media/salesforce-sandbox-tutorial/browse_upload_metadata.png)
+
+    > [!NOTE]
+    > 将从 Salesforce 沙盒管理门户获取服务提供商元数据文件，本教程稍后会对此进行说明。
+
+    c. 成功上传元数据文件后，“回复 URL”文本框会自动填入“回复 URL”值。
+
+    ![Salesforce 沙盒域和 URL 单一登录信息](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+
+6. 在“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”，然后将 xml 文件保存在计算机上。
 
     ![证书下载链接](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
-
-5. 单击“保存”按钮。
-
-    ![配置单一登录“保存”按钮](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-6. 在“Salesforce 沙盒配置”部分，单击“配置 Salesforce 沙盒”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
-
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
 
 7. 在浏览器中打开新选项卡并登录到 Salesforce 沙盒管理员帐户。
 
@@ -150,49 +158,29 @@ ms.locfileid: "42141634"
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-12. 若要配置 SAML 单一登录设置，请单击“新建”。
+12. 若要配置 SAML 单一登录设置，请单击“从元数据文件新建”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-13. 在“单一登录设置”部分执行以下步骤：
+13. 单击“选择文件”以上传从 Azure 门户下载的元数据 XML 文件，然后单击“创建”。
 
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-saml-config1.png)
+    ![配置单一登录](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-    a. 选中“已启用 SAML”复选框。
+14. 在“SAML 单一登录设置”页上，字段将自动填充，请单击“保存”。
 
-    b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”字段中。
+    ![配置单一登录](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
-    c. 若要上传“标识提供者证书”，请单击“浏览”来浏览并选择已从 Azure 门户下载的证书文件。
-
-    d. 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
-
-    e. 作为 SAML 标识类型，选择以下选项之一：
-
-      * 如果用户的 Salesforce 用户名传递到 SAML 断言中，则选择“断言包含用户的 Salesforce 用户名”
-
-      * 如果将来自用户对象的联合 ID 传递到 SAML 断言中，则选择“断言包含来自用户对象的联合 ID”
-  
-    f. 对于“SAML 标识位置”，请选择“标识是 Attribute 元素”。
-
-    g. SFDC 不支持 SAML 注销。  解决方法是将 `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` 粘贴到“自定义注销 URL”文本框中。
-
-    h. 单击“ **保存**”。
-
-14. 在“单一登录设置”页上，单击“下载元数据”按钮。
+15. 在“单一登录设置”页上，单击“下载元数据”按钮以下载服务提供商元数据文件。 在 Azure 门户的“基本 SAML 配置”部分中使用此文件，以便如上所述配置必要的 URL。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/configure4.png)
 
-15. 在不同的浏览器窗口中打开下载的元数据，复制“位置”值，并将其粘贴到 Azure 门户上“Salesforce 沙盒域和 URL”部分的“回复 URL”文本框中。  
-
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/configure5.png)
-
 16. 如果要在 **SP** 发起的模式下配置应用程序，请满足以下先决条件：
 
-    a. 应有一个已验证的域。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 应有一个已验证的域。
 
     b. 需在 Salesforce 沙盒中配置并启用域，本教程稍后会介绍相关步骤。
 
-    c. 在 Azure 门户中的“Salesforce 沙盒域和 URL”部分，选择“显示高级 URL 设置”并执行以下步骤：
+    c. 在 Azure 门户的“基本 SAML 配置”部分中，单击“设置其他 URL”并执行以下步骤：
   
     ![Salesforce 沙盒域和 URL 单一登录信息](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
@@ -201,71 +189,41 @@ ms.locfileid: "42141634"
     > [!NOTE]
     > 启用域后，应从 Salesforce 沙盒门户复制此值。
 
-17. 在“SAML 签名证书”部分中，单击“证书(原始)”，并在计算机上保存证书文件。
+17. 在“SAML 签名证书”部分中，单击“联合元数据 XML”，然后将 xml 文件保存在计算机上。
 
     ![证书下载链接](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
 
-18. 单击“保存”按钮。
+18. 在浏览器中打开新选项卡并登录到 Salesforce 沙盒管理员帐户。
 
-    ![配置单一登录“保存”按钮](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-19. 在“Salesforce 沙盒配置”部分，单击“配置 Salesforce 沙盒”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
-
-    ![配置单一登录](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
-
-20. 在浏览器中打开新选项卡并登录到 Salesforce 沙盒管理员帐户。
-
-21. 单击页面右上角设置图标下的“安装”。
+19. 单击页面右上角设置图标下的“安装”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/configure1.png)
 
-22. 向下滚动到左侧导航窗格中的“设置”，单击“标识”，以展开相关部分。 然后单击“单一登录设置”。
+20. 向下滚动到左侧导航窗格中的“设置”，单击“标识”，以展开相关部分。 然后单击“单一登录设置”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-23. 在“单一登录设置”页上，单击“编辑”按钮。
+21. 在“单一登录设置”页上，单击“编辑”按钮。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/configure3.png)
 
-24. 选择“已启用 SAML”，并单击“保存”。
+22. 选择“已启用 SAML”，并单击“保存”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-25. 若要配置 SAML 单一登录设置，请单击“新建”。
+23. 若要配置 SAML 单一登录设置，请单击“从元数据文件新建”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-26. 若要添加另一个实例，需按前面所述启用域（SP 发起的用例）。 在“SAML 单一登录设置”部分中，执行以下步骤：
+24. 单击“选择文件”以上传元数据 XML 文件，然后单击“创建”。
+
+    ![配置单一登录](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+
+25. 在“SAML 单一登录设置”页上，各字段会自动填充数据，在“名称”文本框中键入配置的名称（例如：*SPSSOWAAD_Test*）并单击“保存”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
-    a. 在“名称”文本框中，键入配置的名称（例如：*SPSSOWAAD_Test*）。
-
-    b. 将从 Azure 门户复制的“SAML 实体 ID”的值粘贴到“颁发者”字段中。
-
-    c. 在“实体 ID”文本框中，对第一个实例使用 `https://test.salesforce.com` 值；在应用程序的第二个实例中，可以使用租户特定的“标识符”值。
-
-    d. 要上传“标识提供者证书”，请单击“选择文件”来浏览并选择已从 Azure 门户下载的证书文件。
-
-    e. 作为 SAML 标识类型，选择以下选项之一：
-
-      * 如果用户的 Salesforce 用户名传递到 SAML 断言中，则选择“断言包含用户的 Salesforce 用户名”
-
-      * 如果将来自用户对象的联合 ID 传递到 SAML 断言中，则选择“断言包含来自用户对象的联合 ID”
-
-      * 如果将来自用户对象的用户 ID 传递到 SAML 断言中，则选择“断言包含来自用户对象的用户 ID”
-
-    f. 对于“SAML 标识位置”，请选择“标识位于 Subject 语句的 NameIdentifier 元素中”。
-
-    g. 对于“服务提供程序发起的请求绑定”，请选择“HTTP POST”。
-
-    h. 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”的值。
-
-    i. SFDC 不支持 SAML 注销。  解决方法是将 `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` 粘贴到“自定义注销 URL”文本框中。
-
-    j. 单击“ **保存**”。
-
-27. 若要在 Salesforce 沙盒中启用域，请执行以下步骤：
+26. 若要在 Salesforce 沙盒中启用域，请执行以下步骤：
 
     > [!NOTE]
     > 在启用域之前，需在 Salesforce 沙盒中创建相同的域。 有关详细信息，请参阅[定义域名](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US)。 创建域后，请确保配置正确。
@@ -286,33 +244,26 @@ ms.locfileid: "42141634"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![创建 Azure AD 用户][100]
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/salesforce-sandbox-tutorial/create_aaduser_01.png)
+    ![创建 Azure AD 测试用户](./media/salesforce-sandbox-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
+    ![创建 Azure AD 测试用户](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    ![“添加”按钮](./media/salesforce-sandbox-tutorial/create_aaduser_03.png)
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
-4. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/salesforce-sandbox-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
+    d. 选择“创建”。
 
 ### <a name="create-a-salesforce-sandbox-test-user"></a>创建 Salesforce 沙盒测试用户
 
@@ -338,7 +289,7 @@ ms.locfileid: "42141634"
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
@@ -358,9 +309,8 @@ ms.locfileid: "42141634"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置用户预配](salesforce-sandbox-provisioning-tutorial.md)
-
 
 <!--Image references-->
 

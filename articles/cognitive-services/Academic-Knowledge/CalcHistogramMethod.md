@@ -1,20 +1,21 @@
 ---
-title: 学术知识 API 中的 CalcHistogram 方法 | Microsoft Docs
-description: CalcHistogram 方法可用于计算 Microsoft 认知服务中一组论文实体的属性值分布。
+title: CalcHistogram 方法 - 学术知识 API
+titlesuffix: Azure Cognitive Services
+description: 使用 CalcHistogram 方法计算一组论文实体的属性值分布。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e0b773fb9791ee638c8cfdbbc9dca40543e50ec0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365409"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321285"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram 方法
 
@@ -29,16 +30,18 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
   
 ## <a name="request-parameters"></a>请求参数
 
-名称  |值 | 必需？  |说明
+名称  |值 | 必需？  |Description
 -----------|----------|--------|----------
 **expr**    |文本字符串 | 是  |指定计算哪些实体的直方图的查询表达式。
 **model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”。
 **attributes** | 文本字符串 | 否<br>默认值： | 指定响应中包含的属性值的逗号分隔列表。 属性名区分大小写。
 **count** |Number | 否<br>默认值：10 |要返回的结果数。
 **offset**  |Number | 否<br>默认值：0 |要返回的第一个结果的索引。
-<br>
+timeout  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
+
 ## <a name="response-json"></a>响应 (JSON)
-名称 | 说明
+
+名称 | Description
 --------|---------
 **expr**  |请求中的 expr 参数。
 **num_entities** | 匹配实体总数。
@@ -52,7 +55,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 **histograms[x].histogram[y].count**  |与此属性值匹配的实体数。
 **aborted** | 如果请求超时，则为 True。
 
- <br>
+
 #### <a name="example"></a>示例：
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

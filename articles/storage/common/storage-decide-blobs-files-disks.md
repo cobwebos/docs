@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39529104"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091703"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -42,7 +42,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 |终结点|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |目录|平面命名空间|真正目录对象|  
 |名称区分大小写|区分大小写|不区分大小写，但保留大小写|  
-|Capacity|最多 500 TiB 容器|5 TiB 文件共享|  
+|容量|最多 500 TiB 容器|5 TiB 文件共享|  
 |Throughput|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
 |对象大小|每个块 blob 最多大约 4.75 TiB|每个文件最多为 1 TiB|  
 |计费容量|基于写入的字节数|基于文件大小|  
@@ -64,8 +64,8 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
 |清理|自动|手动|  
 |使用 REST 访问|无法访问 VHD 中的文件|可以访问共享中存储的文件|  
 |最大大小|4 TiB 磁盘|5 TiB 文件共享，共享中可保存 1 TiB 文件|  
-|最大 8KB IOps|500 IOps|1000 IOps|  
-|Throughput|每个磁盘高达 60 MiB/秒|每个文件共享高达 60 MiB/秒|  
+|最大 IOPS|500 IOps|1000 IOps|  
+|Throughput|每个磁盘高达 60 MiB/秒|目标是每个文件共享 60 MiB/秒（更高 IO 大小可以达到更高目标）|  
 
 ## <a name="next-steps"></a>后续步骤
 

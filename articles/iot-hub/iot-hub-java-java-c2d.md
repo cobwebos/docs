@@ -2,53 +2,59 @@
 title: 使用 Azure IoT 中心发送云到设备消息 (Java) | Microsoft Docs
 description: 如何使用 Azure IoT SDK for Java 将云到设备的消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: e4d0df28449a2e50e72b192f0118a8eae3325d15
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2c784fa2879a78e52ed7aa80cb50535a830b1ed7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220166"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376680"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中心发送云到设备的消息 (Java)
+
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [IoT 中心入门]教程演示了如何创建 IoT 中心、在其中预配设备标识，以及编写用来发送“设备到云”消息的模拟设备应用。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到中心 (Java)](quickstart-send-telemetry-java.md)教程介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教程是在 [IoT 中心入门]的基础上制作的。 其中了说明了如何：
+本教程建立在[将遥测数据从设备发送到 IoT 中心 (Java)](quickstart-send-telemetry-java.md) 的基础之上。 它展示了如何执行以下操作：
 
 * 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
+
 * 在设备上接收云到设备的消息。
+
 * 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
 
-可以在 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]中找到有关云到设备消息的详细信息。
+可以在 [IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本教程的最后，将运行两个 Java 控制台应用：
 
-* **simulated-device**，这是在 [IoT 中心入门]中创建的应用的修改版本，可连接到 IoT 中心并接收云到设备的消息。
+* simulated-device（[将遥测数据从设备发送到中心 (Java)](quickstart-send-telemetry-java.md) 中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
+
 * **send-c2d-messages**，它将“云到设备”消息通过 IoT 中心发送到模拟设备应用，然后接收 IoT 中心的送达确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](http://azure.microsoft.com/develop/iot)。
 
 要完成本教程，需要以下各项：
 
-* [IoT 中心入门](quickstart-send-telemetry-java.md)或[处理 IoT 中心设备到云的消息](tutorial-routing.md)教程的完整有效版。
+* [将遥测数据从设备发送到中心 (Java)](quickstart-send-telemetry-java.md) 或[使用 IoT 中心配置消息路由](tutorial-routing.md)教程的完整工作版本。
+
 * 最新的 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 * [Maven 3](https://maven.apache.org/install.html)
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。）
+
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](http://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 
-在本部分中，会修改在 [IoT 中心入门]中创建的模拟设备应用，以接收来自 IoT 中心的“云到设备”消息。
+在本部分中，修改在[将遥测数据从设备发送到中心 (Java)](quickstart-send-telemetry-java.md) 中创建的模拟设备应用，接收来自 IoT 中心的云到设备消息。
 
 1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 
@@ -75,7 +81,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 
     > [!NOTE]
-    > 如果使用 HTTPS（而不使用 MQTT 或 AMQP）作为传输，则 DeviceClient 实例将不会频繁（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南][IoT Hub developer guide - C2D]。
+    > 如果使用 HTTPS（而不使用 MQTT 或 AMQP）作为传输，则 DeviceClient 实例将不会频繁（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南的消息传递部分](iot-hub-devguide-messaging.md)。
 
 4. 若要使用 Maven 生成 **simulated-device** 应用，请在 simulated-device 文件夹中的命令提示符下执行以下命令：
 
@@ -85,7 +91,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-在本部分中，会创建 Java 控制台应用，用于向模拟设备应用发送“云到设备”消息。 需要使用 [IoT 中心入门]教程中添加的设备的设备 ID。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户]）。
+在本部分中，会创建 Java 控制台应用，用于向模拟设备应用发送“云到设备”消息。 需要在[将遥测数据从设备发送到中心 (Java)](quickstart-send-telemetry-java.md) 快速入门中添加的设备的设备 ID。 还需要中心的 IoT 中心连接字符串（位于 [Azure 门户](https://portal.azure.com)）。
 
 1. 在命令提示符处使用以下命令，创建名为 **send-c2d-messages** 的 Maven 项目。 请注意，此命令是一条很长的命令：
 
@@ -106,7 +112,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索][lnk-maven-service-search]检查是否有最新版本的 **iot-service-client**。
+    > 可以使用 [Maven 搜索](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
 
 4. 保存并关闭 pom.xml 文件。
 
@@ -125,7 +131,8 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "{yourdeviceid}";
-    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
+    private static final IotHubServiceClientProtocol protocol =    
+        IotHubServiceClientProtocol.AMQPS;
     ```
 
 8. 将 **main**方法替换为以下代码。 此代码用于连接到 IoT 中心，将消息发送到设备，然后等待设备已接收并处理消息的通知：
@@ -180,7 +187,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![运行模拟设备应用][img-simulated-device]
+    ![运行模拟设备应用](./media/iot-hub-java-java-c2d/receivec2d.png)
 
 2. 在 send-c2d-messages 文件夹的命令提示符处，运行以下命令以发送云到设备的消息并等待反馈确认：
 
@@ -188,27 +195,12 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![运行命令以发送“云到设备”消息][img-send-command]
+    ![运行命令以发送“云到设备”消息](media/iot-hub-java-java-c2d/sendc2d.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，已学习如何发送和接收云到设备的消息。 
 
-若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器]。
+若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)。
 
-若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南]。
-
-<!-- Images -->
-[img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
-[img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
-<!-- Links -->
-
-[IoT 中心入门]: quickstart-send-telemetry-java.md
-[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[IoT 中心开发人员指南]: iot-hub-devguide.md
-[Azure IoT 开发人员中心]: http://azure.microsoft.com/develop/iot
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[Azure 门户]: https://portal.azure.com
-[Azure IoT 远程监视解决方案加速器]: https://azure.microsoft.com/documentation/suites/iot-suite/
-[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
+若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。

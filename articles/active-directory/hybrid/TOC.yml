@@ -83,6 +83,8 @@ items:
       href: plan-connect-performance-factors.md
     - name: 用户将如何登录
       href: plan-connect-user-signin.md
+    - name: Azure AD UserPrincipalName 填充
+      href: plan-connect-userprincipalname.md
     - name: 有关实例的特殊注意事项
       href: reference-connect-instances.md
     - name: 混合标识设计注意事项
@@ -153,6 +155,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: 使用 Azure AD 管理 AD FS 信任
       href: how-to-connect-azure-ad-trust.md
+    - name: 更改 O365 RP 的哈希算法
+      href: how-to-connect-fed-sha256-guidance.md
     - name: Azure AD 联合身份验证兼容性列表
       href: how-to-connect-fed-compatibility.md
     - name: 使用 SAML 2.0 服务器作为 Idp
@@ -287,9 +291,9 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Azure AD 联合身份验证兼容性列表
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: eda2a26a9bd3d5a484865a8458246506f24bb518
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e5d89e467b9dd6b41e246c889f41ad9abe21182b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351926"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249658"
