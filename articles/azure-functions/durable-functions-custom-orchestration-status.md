@@ -2,24 +2,27 @@
 title: Durable Functions 中的自定义业务流程状态 - Azure
 description: 了解如何为 Durable Functions 配置和使用自定义业务流程状态。
 services: functions
-author: kadimitr
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/24/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b8017288adb75c990113b0f2ff5ba29a1f1e0a18
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093085"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986650"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
 
 使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP GetStatus API 或 `DurableOrchestrationClient.GetStatusAsync` API 提供的。
+
+> [!NOTE]
+> 适用于 JavaScript 的自定义业务流程状态将在即将发布的版本中提供。
 
 ## <a name="sample-use-cases"></a>示例用例 
 

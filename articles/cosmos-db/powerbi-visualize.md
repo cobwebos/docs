@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869987"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945172"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
-[PowerBI](https://powerbi.microsoft.com/) 是一种在线服务，你可以使用它创建和共享仪表板和报表。 Power BI Desktop 是一种报表创作工具，可以从各种数据源检索数据。 Azure Cosmos DB 是可以与 Power BI Desktop 一起使用的一种数据源。 可以使用 Power BI 的 Azure Cosmos DB 连接器将 Power BI Desktop 连接到 Azure Cosmos DB 帐户。  将 Azure Cosmos DB 数据导入到 Power BI 之后，可以对其进行转换，创建报表，以及将报表发布到 Power BI。   
+[Power BI](https://powerbi.microsoft.com/) 是一种在线服务，你可以使用它创建和共享仪表板和报表。 Power BI Desktop 是一种报表创作工具，可以从各种数据源检索数据。 Azure Cosmos DB 是可以与 Power BI Desktop 一起使用的一种数据源。 可以使用 Power BI 的 Azure Cosmos DB 连接器将 Power BI Desktop 连接到 Azure Cosmos DB 帐户。  将 Azure Cosmos DB 数据导入到 Power BI 之后，可以对其进行转换，创建报表，以及将报表发布到 Power BI。   
 
-本文介绍了将 Azure Cosmos DB 帐户连接到 Power BI Desktop 所需执行的步骤。 在连接后，可以导航到某个集合，提取数据，将 JSON 数据转换为表格格式，以及将报表发布到 PowerBI。
+本文介绍了将 Azure Cosmos DB 帐户连接到 Power BI Desktop 所需执行的步骤。 在连接后，可以导航到某个集合，提取数据，将 JSON 数据转换为表格格式，以及将报表发布到 Power BI。
 
 > [!NOTE]
 > Azure Cosmos DB 的 Power BI 连接器连接到 Power BI Desktop。 在 Power BI Desktop 中创建的报表可以发布到 PowerBI.com。 无法从 PowerBI.com 执行 Azure Cosmos DB 数据的直接提取。 

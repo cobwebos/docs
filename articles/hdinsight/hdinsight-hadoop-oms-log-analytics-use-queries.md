@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 9550468e8bc9b93216fd4c1ecf144415badfc7dc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 18ee51e54c1e44ba3affd6ca49bed5360211fa9c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103651"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408161"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>通过查询 Azure Log Analytics 监视 Azure HDInsight 群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "43103651"
 
 了解如何查找 HDInsight 群集的特定指标。
 
-1. 从 Azure 门户打开关联到 HDInsight 群集的 OMS 工作区。
+1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
 2. 选择“日志搜索”磁贴。
 3. 在搜索框中键入以下查询，在所有指标中搜索所有适用于所有 HDInsight 群集（已配置为使用 Azure Log Analytics）的指标，然后选择“运行”。
 
@@ -65,7 +65,7 @@ ms.locfileid: "43103651"
 
 了解如何在特定的时间窗口查找错误消息。 此处的步骤只是演示如何找到感兴趣的错误消息的一个示例。 可以使用任何可用属性来查找要查找的错误。
 
-1. 从 Azure 门户打开关联到 HDInsight 群集的 OMS 工作区。
+1. 从 Azure 门户打开关联到 HDInsight 群集的 Log Analytics 工作区。
 2. 选择“日志搜索”磁贴。
 3. 键入以下查询，搜索所有适用于所有 HDInsight 群集（已配置为使用 Azure Log Analytics）的错误消息，然后选择“运行”。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "43103651"
 3. 选择要编辑或删除的警报。
 4. 可选择以下选项：“保存”、“放弃”、“禁用”和“删除”。
 
-    ![HDInsight Log Analytics OMS 警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight Log Analytics 警报删除编辑](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 有关详细信息，请参阅[使用 Log Analytics 中的警报规则](../log-analytics/log-analytics-alerts-creating.md)。
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: ef7838c41bb479da273123c2eb3def8e12802390
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc5570b188bfdc0e1be78aa2bd5c5d92e884f377
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351296"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638012"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>连接 API 并对其进行身份验证
 
@@ -46,6 +46,7 @@ Microsoft Azure 身份验证库提供多种方法，用于获取 Active Director
 1. 导航到 https://www.getpostman.com/ 下载该应用
 1. 请按照[此处](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)的步骤创建 Azure Active Directory 应用程序（也可以选择重复使用现有注册）。 
 1. 在所需权限下添加“Azure 数字孪生”，然后选择“委托的权限”。 不要忘记单击“授予权限”完成授权。
+1. 打开应用程序清单，并将“oauth2AllowImplicitFlow”设置为“true”
 1. 将回复 URL 配置为 [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback)。
 1. 选择“授权”选项卡，单击“OAuth 2.0”，然后选择“获取新访问令牌”。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e43188459bf495748a054b0f24936c9141bd218c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392069"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025696"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>了解如何将 Azure 预留折扣应用于虚拟机
 
@@ -51,7 +51,7 @@ ms.locfileid: "47392069"
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>将预订折扣应用于 Windows VM
 
-正在运行 Windows VM 实例时，将应用预留以涵盖基础结构成本。 对 Windows VM 的 VM 基础结构成本应用预订与对非 Windows VM 的 VM 基础结构成本应用预订相同。 将按 vCPU 对 Windows 软件单独收费。 请参阅 [Windows 软件的预留成本](https://go.microsoft.com/fwlink/?linkid=862756)。 可以利用 [Windows Server 的 Azure 混合权益] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)) 来涵盖 Windows 许可费用。
+正在运行 Windows VM 实例时，将应用预留以涵盖基础结构成本。 对 Windows VM 的 VM 基础结构成本应用预订与对非 Windows VM 的 VM 基础结构成本应用预订相同。 将按 vCPU 对 Windows 软件单独收费。 请参阅 [Windows 软件的预留成本](https://go.microsoft.com/fwlink/?linkid=862756)。 可以利用 [Windows Server 的 Azure 混合权益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)来涵盖 Windows 许可费用。
 
 ## <a name="next-steps"></a>后续步骤
 

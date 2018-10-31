@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627434"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406137"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 
@@ -70,9 +70,9 @@ Azure Service Broker 提供一致的接口用于管理应用程序对 Azure 服�
 
 ## <a name="6-metrics-and-logging"></a>6.指标和日志记录
 Azure Log Analytics Nozzle 是一个 Cloud Foundry 组件，可将指标从 [Cloud Foundry Loggregator Firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) 转发到 [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/)。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
-单击[此处](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)了解如何将 Azure Log Analytics Azure Log Analytics Nozzle 部署到开源 Cloud Foundry 和 Pivotal Cloud Foundry 环境，然后从 Azure Log Analytics OMS 控制台访问数据。 
+单击[此处](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)了解如何将 Azure Log Analytics Nozzle 部署到开源 Cloud Foundry 和 Pivotal Cloud Foundry 环境，然后从 Azure Log Analytics 控制台访问数据。 
 > [!NOTE]
-> 在 PCF 2.0 中，VM 的 BOSH 运行状况指标默认将转发到 Loggregator Firehose，并集成到 Azure Log Analytics OMS 控制台。
+> 在 PCF 2.0 中，VM 的 BOSH 运行状况指标默认将转发到 Loggregator Firehose，并集成到 Azure Log Analytics 控制台。
 
 ## <a name="7-cost-saving"></a>7.成本节省
 ### <a name="cost-saving-for-devtest-environments"></a>开发/测试环境的成本节省

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579762"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468018"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>如何：使用 Azure Active Directory 在其他组中添加或删除组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。
@@ -25,10 +25,13 @@ ms.locfileid: "45579762"
 >[!Note]
 >如果尝试删除父组，请参阅[如何更新或删除组及其成员](active-directory-groups-delete-group.md)。
 
-## <a name="add-a-group-as-a-member-to-another-group"></a>将组作为成员添加到其他组
-可以将现有组添加到其他现有组，创建成员组（子组）和父组。 成员组会继承父组的特性和属性，从而节省配置时间。
+## <a name="add-a-group-to-another-group"></a>将组添加到另一个组
+可以将现有安全组添加到其他现有安全组（也称为“嵌套组”），以创建成员组（子组）和父组。 成员组会继承父组的特性和属性，从而节省配置时间。
 
-### <a name="to-add-a-group-as-a-member-to-another-group"></a>要将组作为成员添加到其他组
+>[!Important]
+>当前不支持：<ul><li>将安全组添加到 Office 365 组</li><li>将 Office 365 组添加到安全组或其他 Office 365 组</li><li>将应用分配到嵌套组</li><li>将许可证应用于嵌套组</li></ul>
+
+### <a name="to-add-a-group-as-a-member-of-another-group"></a>若要将组作为成员添加到其他组
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -55,8 +58,8 @@ ms.locfileid: "45579762"
 
     ![显示成员和组详细信息的“组成员身份”页](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
-## <a name="remove-a-member-group-from-another-group"></a>从其他组中删除成员组
-可以从其他组中删除现有成员组。 但是，删除成员身份也会删除用户的所有继承特性和属性。
+## <a name="remove-a-group-from-another-group"></a>从另一个组中删除组
+可以从其他安全组中删除现有安全组。 但是，删除组也会删除其成员的所有继承特性和属性。
 
 ### <a name="to-remove-a-member-group-from-another-group"></a>要从其他组中删除成员组
 1. 在“组 - 所有组”页上，搜索并选择要作为其他组成员进行删除的组。 在本练习中，我们再次使用“MDM 策略 - 西部”组。
@@ -81,4 +84,6 @@ ms.locfileid: "45579762"
 
 - [编辑组设置](active-directory-groups-settings-azure-portal.md)
 
-- [按组向用户分配许可证](../users-groups-roles/licensing-groups-assign.md)
+- [使用组管理对 SaaS 应用程序的访问](../users-groups-roles/groups-saasapps.md)
+
+- [在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)

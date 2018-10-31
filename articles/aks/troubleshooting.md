@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287533"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025320"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 在创建或管理 AKS 群集时，可能偶尔会遇到问题。 本文详细介绍了一些常见问题及其排查步骤。
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>通常在何处查看 Kubernetes 问题调试的相关信息？
 
-[此处]https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 是介绍 kubernetes 群集问题排查的官方链接。
+[此处](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)是介绍 kubernetes 群集问题排查的官方链接。
 [此处](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)的链接指向 Microsoft 工程师就 Pod、节点和群集等问题排查所发布的答疑解难指南。
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到超出配额的错误。 我该怎么办？ 

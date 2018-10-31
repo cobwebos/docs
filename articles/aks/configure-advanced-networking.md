@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 87c3ab9624116e9c1c61041531fdf5d3b26117e1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 4c60474c07a3853e409436359713578178b639fb
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380514"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024847"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置高级网络
 
@@ -33,23 +33,23 @@ ms.locfileid: "49380514"
 
 使用高级网络配置的群集需要额外的规划。 虚拟网络及其子网的大小必须适应计划运行的 Pod 数以及群集的节点数。
 
-Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。 为每个节点配置一个主要 IP（即节点的 IP），以及 Azure CNI 预配置的 30 个附加 IP 地址，这些附加 IP 地址将分配给节点上安排的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。
+Pod 和群集节点的 IP 地址是从虚拟网络中指定的子网分配的。 每个节点都配置了主 IP 地址。 默认情况下，Azure CNI 预先配置了 30 个额外的 IP 地址，这些地址被分配给安排在节点上的 Pod。 横向扩展群集时，将使用子网中的 IP 地址以类似方式配置每个节点。 还可以查看[每个节点的最大 Pod 数](#maximum-pods-per-node)。
 
 AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网以及 Kubernetes 服务地址范围。
 
 | 地址范围 / Azure 资源 | 限制和调整大小 |
 | --------- | ------------- |
 | 虚拟网络 | Azure 虚拟网络的大小可以为 /8，但仅限于 65,536 个已配置的 IP 地址。 |
-| 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 <p/>计算最小子网大小：`(number of nodes) + (number of nodes * pods per node)` <p/>50 个节点群集的示例：`(50) + (50 * 30) = 1,550`（/21 或更大） |
+| 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 <p/>计算最小子网大小：`(number of nodes) + (number of nodes * maximum pods per node that you configure)` <p/>50 个节点群集的示例：`(50) + (50 * 30 (default)) = 1,550`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
 | Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 |
 | Docker 桥地址 | IP 地址（采用 CIDR 表示法）用作节点上的 Docker 桥 IP 地址。 默认地址为 172.17.0.1/16。 |
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
-AKS 群集中每个节点的默认最大 Pod 数因基础网络和高级网络以及群集部署方法而异。
+AKS 群集中每个节点的最大 Pod 数为 110。 每个节点的默认最大 Pod 数因基础网络和高级网络以及群集部署方法而异。
 
-| 部署方法 | 基本 | 高级 | 可在部署时配置 |
+| 部署方法 | 基本默认值 | 高级默认值 | 可在部署时配置 |
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是（最大 110） |
 | 资源管理器模板 | 110 | 30 | 是（最大 110） |

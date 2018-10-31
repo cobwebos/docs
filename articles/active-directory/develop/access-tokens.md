@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078760"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958935"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -136,7 +136,7 @@ Microsoft 标识可以通过与应用程序相关的多种方式进行身份验�
 | 值 | Description |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
-| `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |
+| `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |
 | `otp` | 使用电子邮件或短信的一次性密码。 |
 | `fed` | 使用了联合身份验证断言（例如 JWT 或 SAML）。 |
 | `wia` | Windows 集成身份验证 |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> 在浏览器中尝试打开此 URL！
+> 在浏览器中尝试打开此 [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration)！
 
 此元数据文档：
 
@@ -187,7 +187,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * 包含 `jwks_uri`，提供用于对令牌进行签名的公钥集的位置。 位于 `jwks_uri` 的 JSON 文档包含在该特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明选择本文档中已用于对特定令牌进行签名的公钥。 然后可以使用正确的公钥和指定的算法来执行签名验证。
 
 > [!NOTE]
-> v1.0 终结点会返回 `x5t` 和 `kid` 声明。 v2.0 令牌中缺少 `x5t` 声明。 v2.0 终结点以 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
+> V1.0 终结点返回 `x5t` 和 `kid` 声明，尽管 v2.0 终结点仅使用 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
 执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。
 
@@ -202,7 +202,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * 检查 `tid` 是否与允许调用该 API 的租户相匹配。
 * 使用 `acr` 声明验证已执行 MFA 的用户。 请注意，应使用[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)强制实施此步骤。
 * 如果在访问令牌中请求了 `roles` 或 `groups` 声明，请验证用户是否在允许执行此操作的组中。
-  * 对于使用隐式流检索的令牌，可能需要在 [Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。 
+  * 对于使用隐式流检索的令牌，可能需要在 [Microsoft Graph](https://developer.microsoft.com/graph/) 中查询此数据，因为该数据通常很庞大，无法放到令牌中。 
 
 ## <a name="user-and-application-tokens"></a>用户和应用程序令牌
 

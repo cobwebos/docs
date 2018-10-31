@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: f04b4015e201d272fa624b1de265792564ac14cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045917"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646995"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>使用 Azure 容器注册表作为应用程序图表的 Helm 存储库
 
@@ -30,7 +30,7 @@ ms.locfileid: "47045917"
 若要完成本文中的步骤，必须满足以下先决条件：
 
 - Azure 容器注册表 - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-- Helm 客户端可搜索并安装图表。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，可以[创建 Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和使用 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
+- Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本 - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，可以[创建 Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
 - Azure CLI 版本 2.0.46 或更高版本 - 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="add-a-repository-to-helm-client"></a>将一个存储库添加到 Helm 客户端

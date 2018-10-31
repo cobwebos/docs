@@ -7,35 +7,33 @@ manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 413f36a12dee135cc1a7dc99a34d8b7b2be6c46f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 14ea98b9d31bee08b962e8b3801ed507472ba692
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801057"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455787"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>使用 Node.js 将事件发送到 Azure 事件中心
 
-Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒可处理大量事件，从而使应用程序能够处理和分析连接设备和其他系统所产生的海量数据。 收集到事件中心后，可使用进程内处理程序或通过转发到其他分析系统，接收和处理事件。
+Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-若要了解有关事件中心的详细信息，请参阅[事件中心概述](event-hubs-about.md)。
+本教程介绍了如何从以 Node.js 编写的应用程序中将事件发送到事件中心。
 
-本教程介绍了如何从以 Node.js 编写的应用程序中将事件发送到事件中心。 若要使用 Node.js 事件处理器主机包接收事件，请参阅[相应的接收文章](event-hubs-node-get-started-receive.md)。
-
-[GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 上提供了本快速入门的代码。 
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
 - Node.js 版本 8.x 和更高版本。 从 [https://nodejs.org](https://nodejs.org) 下载最新的 LTS 版本。
-- 有效的 Azure 帐户。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。
 - Visual Studio Code（推荐使用）或任何其他 IDE
 
-## <a name="create-a-namespace-and-event-hub"></a>创建命名空间和事件中心
-第一步是使用 Azure 门户创建包含事件中心的事件中心命名空间。 如果没有现成可用的，可以按照[使用 Azure 门户创建事件中心命名空间和事件中心](event-hubs-create.md)中的说明创建这些实体。
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
 
 ## <a name="clone-the-sample-git-repository"></a>克隆示例 Git 存储库
 将示例 Git 存储库从 [Github](https://github.com/Azure/azure-event-hubs-node) 克隆到计算机。 
@@ -55,7 +53,7 @@ npm install @azure/event-hubs
 
 1. 在 Visual Studio Code 中打开项目。 
 2. 在 **client** 文件夹下创建一个名为 **.env** 的文件。 从根文件夹中的 **sample.env** 中复制并粘贴示例环境变量。
-3. 配置你的事件中心连接字符串、事件中心名称和存储终结点。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-quickstart-portal.md#create-an-event-hubs-namespace)。
+3. 配置你的事件中心连接字符串、事件中心名称和存储终结点。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-create.md#create-an-event-hubs-namespace)。
 4. 在 Azure CLI 中，导航到 **client** 文件夹路径。 通过运行以下命令安装节点程序包并生成项目：
 
     ```nodejs
@@ -105,12 +103,6 @@ export EVENTHUB_NAME="<your-event-hub-name>"
 ```
 
 ## <a name="next-steps"></a>后续步骤
+在此快速入门中，已使用 Node.js 向事件中心发送消息。 若要了解如何使用 Node.js 从事件中心接收事件，请参阅[从事件中心接收事件 - Node.js](event-hubs-node-get-started-receive.md)
 
-若要了解有关事件中心的详细信息，请参阅以下文章：
-
-* [使用 Node.js 接收事件](event-hubs-node-get-started-receive.md)
-* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples/)
-* [事件中心常见问题解答](event-hubs-faq.md)
-
-<!-- Links -->
-[免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+在 [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples/) 中查看事件中心的其他 Node.js 示例。

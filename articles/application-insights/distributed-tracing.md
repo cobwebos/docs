@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 47ea4fadba50fdbbd6d83531bd4eb40fc581d2ad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950193"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638369"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -45,7 +45,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 
 安装并配置适当的 Application Insights SDK 以后，系统就会通过 SDK 依赖项自动收集器自动收集常用框架、库和技术的跟踪信息。 [依赖项自动收集文档](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中提供支持的技术的完整列表。
 
- 另外，任何技术都可以通过在 [TeleletryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上调用 [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 手动进行跟踪。
+ 另外，任何技术都可以通过在 [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上调用 [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 手动进行跟踪。
 
 ## <a name="enable-via-opencensus"></a>通过 OpenCensus 启用
 

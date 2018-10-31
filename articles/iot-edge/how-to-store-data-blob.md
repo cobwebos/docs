@@ -9,16 +9,18 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fdfc1002528fa48145e577dfee3eac935f31fcd
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4b86f73302d9f5d07cd1e6e8c7801de56a988cc7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344840"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955263"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
-IoT Edge 上的 Azure Blob 存储在边缘提供了块 blob 存储解决方案。 IoT Edge 设备上的 blob 存储模块的行为类似于 Azure blob 服务，但块 blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的块 blob API 调用来访问 blob。 
+IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 存储解决方案。 IoT Edge 设备上的 blob 存储模块的行为类似于 Azure 块 blob 服务，但块 blob 存储在本地 IoT Edge 设备上。 你可以使用相同的 Azure 存储 SDK 方法或已经习惯的块 blob API 调用来访问 blob。 
+
+拥有视频、图像、财务数据、医院数据或任何需要在本地存储稍后可在本地处理或传输到云的数据的方案，都是使用此模块的很好的示例。
 
 本文提供有关在 IoT Edge 设备上运行 blob 服务的 IoT Edge 容器中部署 Azure Blob 存储的说明。 
 
@@ -48,21 +50,33 @@ Azure IoT Edge 设备：
 
 ## <a name="deploy-blob-storage-to-your-device"></a>将 blob 存储部署到设备
 
-IoT Edge 上的 Azure Blob 存储提供三个标准容器映像，两个用于 Linux 容器（AMD64 和 ARM32 体系结构），另一个用于 Windows 容器 (AMD64)。 使用其中一个模块映像将 blob 存储部署到 IoT Edge 设备时，需要提供三条信息来配置设备的模块实例：
-
-* “帐户名”和“帐户密钥”。 为了与 Azure 存储保持一致，blob 存储模块使用帐户名和帐户密钥来管理访问权限。 帐户名长度应为 3 到 24 个字符，并带有小写字母和数字。 帐户密钥应为 base64 编码，长度为 64 个字节。 你可以使用 [GeneratePlus](https://generate.plus/en/base64) 等工具生成密钥。
-* 本地存储选项。 Blob 存储模块在 IoT Edge 设备上本地存储 blob，因此，如果模块停止或重启，blob 将保持不变。 声明现有的[卷](https://docs.docker.com/storage/volumes
-)或本地文件夹路径，其中 blob 应存储在你的设备上。 
-
 有多种方法可以将模块部署到 IoT Edge 设备，并且所有这些方法都适用于 IoT Edge 模块上的 Azure Blob 存储。 两种最简单的方法是使用 Azure 门户或 Visual Studio Code 模板。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要通过 Azure 门户部署 blob 存储，请按照[从 Azure 门户部署 Azure IoT Edge 模块](how-to-deploy-modules-portal.md)中的步骤进行操作。 在开始部署模块之前，请复制映像 URI 并根据容器操作系统准备容器创建选项。 在部署文章的“配置部署清单”部分中会使用这些值。 
+#### <a name="find-the-module"></a>查找模块
 
-提供 blob 存储模块的映像 URI：mcr.microsoft.com/azure-blob-storage:latest。 
-   
-对“容器创建选项”字段使用以下 JSON 模板。 使用存储帐户名、存储帐户密钥和存储目录绑定配置 JSON。  
+选择查找 blob 存储模块的两种方法之一：
+
+1. 在 Azure 门户中搜索“IoT Edge 上的 Azure Blob 存储”。 选择搜索结果项
+2. 从 Azure 门户转到市场，然后单击“物联网”。 在“IoT Edge 模块”部分选择“IoT Edge 上的 Azure Blob 存储”。 单击“创建”
+
+#### <a name="steps-to-deploy"></a>部署步骤
+
+**IoT Edge 模块的目标设备**
+
+1. 选择在其中部署 IoT 中心的“订阅”。
+2. 选择“IoT 中心”。
+3. 提供想要在其中部署此模块的“IoT Edge 设备名称”。 可以选择使用“查找设备”找到你的设备。
+4. 单击“创建”。
+
+**设置模块**
+
+1. 在“添加模块”部分的“部署模块”下，你会发现该模块已使用以“AzureBlobStorageonIoTEdge”开头的名称列出。 
+2. 从“部署模块”列表中选择 blob 存储模块。 将打开“IoT Edge 自定义模块”侧面板。
+3. 名称：可以在此处更改模块的名称
+4. 映像 URI：将 URI 替换为 mcr.microsoft.com/azure-blob-storage:latest
+5. 容器创建选项：使用你的值编辑以下 JSON 并将其替换为“门户”页中的 JSON：
    
    ```json
    {
@@ -81,17 +95,23 @@ IoT Edge 上的 Azure Blob 存储提供三个标准容器映像，两个用于 L
    }
    ```   
    
-在创建选项 JSON 中，使用任意名称更新 `\<your storage account name\>`。 使用 64 字节 base64 密钥更新 `\<your storage account key\>`。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥，以便选择字节长度。 你将使用这些凭据从其他模块访问 blob 存储。
+    * 更新 `<your storage account name>`。 帐户名长度应为 3 到 24 个字符，并带有小写字母和数字。
+    * 使用 64 字节 base64 密钥更新 `<your storage account key>`。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。
+    * 更新 `<storage directory bind>`。 具体取决于容器操作系统。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。  
 
-在创建选项 JSON 中，根据容器操作系统更新 `<storage directory bind>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。  
-
-   * Linux 容器：\<存储路径 >:/blobroot。 例如：/srv/containerdata:/blobroot。 或，my-volume:/blobroot。 
-   * Windows 容器：\<存储路径 >:C:/BlobRoot。 例如，C:/ContainerData:C:/BlobRoot。 或，my-volume:C:/blobroot。
+       * Linux 容器：\<存储路径 >:/blobroot。 例如：/srv/containerdata:/blobroot。 或，my-volume:/blobroot。 
+       * Windows 容器：\<存储路径 >:C:/BlobRoot。 例如，C:/ContainerData:C:/BlobRoot。 或，my-volume:C:/blobroot。
    
    > [!CAUTION]
    > 对于 \<存储目录绑定> 值，不要更改 Linux 的“/blobroot”和 Windows 的“C:/BlobRoot”。
 
-无需提供注册表凭据即可访问 IoT Edge 上的 Azure Blob 存储，并且无需为部署声明任何路由。 
+    ![更新模块值](./media/how-to-store-data-blob/edit-module.png)
+
+6. 保存“IoT Edge 自定义模块”中的值
+7. 单击“设置模块”部分中的“下一步”
+8. 单击“指定路由”部分中的“下一步”
+9. 检查后，单击“查看部署”部分中的“提交”。
+10. 在 IoT 中心验证设备正在运行 blob 存储模块 
 
 ### <a name="visual-studio-code-templates"></a>Visual Studio Code 模板
 
@@ -150,7 +170,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. 提供任意名称作为存储帐户名，并提供 64 字节的 base64 密钥作为存储帐户密钥。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。 
+8. 提供 `STORAGE_ACCOUNT_NAME` 的值，帐户名长度应为 3 到 24 个字符，并带有小写字母和数字。 并提供 `STORAGE_ACCOUNT_KEY` 的 64 字节 base64 密钥。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。 
 
 9. 保存“.env”。 
 

@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785251"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023111"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>如何：使用 Azure Active Directory 门户添加自定义域名
 每个新的 Azure AD 租户都附带了初始域名 *domainname*.onmicrosoft.com。 无法更改或删除初始域名，但可以将组织的名称添加到列表中。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain@contoso.com*。
@@ -28,7 +28,7 @@ ms.locfileid: "48785251"
 ## <a name="create-your-directory-in-azure-ad"></a>在 Azure AD 中创建目录
 获取域名后，可以创建第一个 Azure AD 目录。
 
-1. 使用目录的订阅所有者帐户登录到 [Azure 门户](https://portal.azure.com/)，然后选择“Azure Active Directory”。
+1. 使用具有订阅“所有者”角色的帐户登录到 [Azure 门户](https://portal.azure.com/)，然后选择“Azure Active Directory”。 有关订阅角色的详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)。
 
     ![Azure 门户屏幕](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419298"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958410"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -246,7 +246,7 @@ BGP 会话会被删除。 当前缀计数低于限制后，将重置这些会话
 ExpressRoute 高级版是以下功能的集合：
 
 * 对于专用对等互连，将路由表限制从 4000 个路由提升为 10,000 个路由。
-* 增加了可连接到 ExpressRoute 线路的 VNet 数量（默认数量为 10 个）。 有关详细信息，请参阅 [ExpressRoute 限制](#limits)表。
+* 增加了可在 ExpressRoute 线路上启用的 VNet 和 ExpressRoute Global Reach 连接的数量（默认为 10）。 有关详细信息，请参阅 [ExpressRoute 限制](#limits)表。
 * 连接到 Office 365 和 Dynamics 365。
 * 通过 Microsoft 核心网络建立全局连接。 现在，可将一个地缘政治区域中 VNet 链接到另一个区域中的 ExpressRoute 线路。<br>
     **示例：**
@@ -255,9 +255,9 @@ ExpressRoute 高级版是以下功能的集合：
     *  在 Microsoft 对等互连中，会播发来自其他地缘政治区域的前缀，以便可以进行连接，例如，通过硅谷的线路连接到欧洲西部地区的 SQL Azure。
 
 
-### <a name="limits"></a>如果启用了 ExpressRoute 高级版，可将多少个 VNet 链接到一条 ExpressRoute 线路？
+### <a name="limits"></a>如果我启用了 ExpressRoute 高级版，可以在 ExpressRoute 线路上启用多少 Vnet 和 ExpressRoute Global Reach 连接？
 
-下表显示了 ExpressRoute 限制和每条 ExpressRoute 线路的 VNet 数：
+下表显示了 ExpressRoute 限制和每条 ExpressRoute 线路的 VNet 和 ExpressRoute Global Reach 连接数：
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

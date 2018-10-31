@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721613"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956691"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
@@ -65,7 +65,7 @@ pcs login
 
 创建基本解决方案时，以下 Azure 服务会按原价预配到 Azure 订阅中： 
 
-| Count | 资源                       | Type         | 用途 |
+| Count | 资源                       | 类型         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
@@ -81,14 +81,14 @@ pcs login
 
 
 ### <a name="standard"></a>标准
-标准部署是生产就绪型部署，可供开发人员根据需求进行自定义和扩展。 出于可靠性和缩放考虑，可将应用程序微服务构建为 Docker 容器，并使用某个业务流程协调程序（默认为 [Kubernetes](https://kubernetes.io/)）进行部署。 该业务流程协调程序负责部署、缩放和管理应用程序。
+标准部署是生产就绪型部署，可供开发人员根据需求进行自定义和扩展。 准备好自定义生产就绪型体系结构时，应使用专用于缩放和可扩展性的“标准”部署选项。 应用程序微服务生成为 Docker 容器，并使用 Azure Kubernetes 服务 (AKS) 进行部署。 该业务流程协调程序负责部署、缩放和管理应用程序。
+
 
 创建标准解决方案时，以下 Azure 服务会按原价预配到 Azure 订阅中：
 
 | Count | 资源                                     | SKU/大小      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
-| 4     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/)   | 标准 D2 V2  | 1 个 master，3 个代理，用于在确保冗余的情况下托管微服务 |
-| 1     | [Azure 容器服务](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) 业务流程协调程序 |
+| 1     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 标准        | 4 个用于 VM 存储，1 个用于流式处理检查点 |

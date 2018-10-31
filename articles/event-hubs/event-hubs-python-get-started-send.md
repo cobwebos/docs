@@ -7,34 +7,33 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/16/2018
 ms.author: sethm
-ms.openlocfilehash: 762e21cfc7d16b614eb637c569f8bfc5b6115db1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb77ed69ae8f2229cbd62afa545cac9f048689e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703259"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457997"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>使用 Python 将事件发送到事件中心
 
-Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒可处理大量事件，从而使应用程序能够处理和分析连接设备和其他系统所产生的海量数据。 收集到事件中心后，可使用进程内处理程序或通过转发到其他分析系统，接收和处理事件。
+Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
-若要了解有关事件中心的详细信息，请参阅[事件中心概述][Event Hubs overview]。
+本教程介绍如何从以 Python 编写的应用程序中将事件发送到事件中心。 
 
-本教程介绍如何从以 Python 编写的应用程序中将事件发送到事件中心。 若要接收事件，请参阅[相应的接收文章](event-hubs-python-get-started-receive.md)。
-
-本教程中的代码取自[以下 GitHub 示例](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)，可以检查这些代码，查看包括导入语句和变量声明的功能完善的应用程序。 其他示例在同一 GitHub 文件夹中提供。
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
 - Python 3.4 或更高版本。
-- 现有事件中心命名空间和事件中心。 请按[本文](event-hubs-create.md)中的说明创建以下实体。 
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
 
 ## <a name="install-python-package"></a>安装 Python 包
 
@@ -98,23 +97,18 @@ except KeyboardInterrupt:
     pass
 ```
 
-## <a name="send-events"></a>发送事件
+## <a name="run-application-to-send-events"></a>运行应用程序来发送事件
 
-若要运行该脚本，请打开其路径中包含 Python 的命令提示符，然后运行以下命令：
+若要运行此脚本，请打开其路径中包含 Python 的命令提示符，然后运行以下命令：
 
 ```bash
 start python send.py
 ```
+
+祝贺你！ 现在已向事件中心发送消息。
  
 ## <a name="next-steps"></a>后续步骤
-
-现在已使用 Python 将事件发送到事件中心，若要接收事件，请参阅[相应的接收文章](event-hubs-python-get-started-receive.md)。
-
-若要了解有关事件中心的详细信息，请访问以下页面：
-
-* [事件中心概述][Event Hubs overview]
-* [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+在此快速入门中，已使用 Python 向事件中心发送消息。 若要了解如何使用 Python 从事件中心接收事件，请参阅[从事件中心接收事件 - Python](event-hubs-python-get-started-receive.md)。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

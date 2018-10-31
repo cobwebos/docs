@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9fd06a8680a52ac0002f20da88d563ad1cbdb79a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 845bc46ec56bfd6681c4fb318a57de19f66c0edf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041333"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403860"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 扩展故障排除
 本文可帮助排查使用 Microsoft Azure 上运行的 Windows 和 Linux 虚拟机的 Log Analytics VM 扩展时可能遇到的错误，并建议解决这些问题可能的解决方案。
@@ -61,16 +61,17 @@ ms.locfileid: "48041333"
 有关详细信息，请参阅 [Windows 扩展故障排除](../virtual-machines/windows/extensions-oms.md)。
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Linux VM 扩展故障排除
-如果*适用于 Linux 的 OMS 代理* VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+如果 Log Analytics Linux 代理 VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
 
 1. 如果扩展状态为“未知”，则查看 VM 代理日志文件 `/var/log/waagent.log`，检查 Azure VM 代理是否已安装且可正常工作
    * 如果此日志不存在，则未安装 VM 代理。
    * [在 Linux VM 上安装 Azure VM 代理](log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 OMS Agent for Linux VM 扩展日志文件
-3. 如果扩展状态正常，但是未上载数据，则查看 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 OMS Agent for Linux 日志文件
+2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 Log Analytics Linux VM 代理扩展日志文件
+3. 如果扩展状态正常，但是未上传数据，则查看 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 Log Analytics Linux 代理日志文件
 
 有关详细信息，请参阅 [Linux 扩展故障排除](../virtual-machines/linux/extensions-oms.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关与适用于托管在 Azure 外部计算机上 Linux 的 OMS 代理相关的其他故障排除指南，请参阅 [Azure Log Analytics Linux 代理故障排除](log-analytics-agent-linux-support.md)。  
+有关与托管在 Azure 外部计算机上的 Log Analytics Linux 代理相关的其他故障排除指南，请参阅 [Azure Log Analytics Linux 代理故障排除](log-analytics-agent-linux-support.md)。  

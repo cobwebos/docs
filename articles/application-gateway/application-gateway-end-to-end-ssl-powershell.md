@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/27/2018
+ms.date: 10/23/2018
 ms.author: victorh
-ms.openlocfilehash: 7e259936dce433683dd135171ee1c5626bf23739
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154188"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945325"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
 
@@ -127,20 +127,20 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 在创建应用程序网关之前设置所有配置项。 以下步骤将创建应用程序网关资源所需的配置项。
 
-   1. 创建应用程序网关 IP 配置。 此设置配置应用程序网关要使用的子网。 当应用程序网关启动时，它从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+1. 创建应用程序网关 IP 配置。 此设置配置应用程序网关要使用的子网。 当应用程序网关启动时，它从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
 
    ```powershell
    $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
 
-   2. 创建前端 IP 配置。 此设置将专用或公共 IP 地址映射到应用程序网关的前端。 以下步骤将上述步骤中的公共 IP 地址与前端 IP 配置关联。
+2. 创建前端 IP 配置。 此设置将专用或公共 IP 地址映射到应用程序网关的前端。 以下步骤将上述步骤中的公共 IP 地址与前端 IP 配置关联。
 
    ```powershell
    $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-   3. 使用后端 Web 服务器的 IP 地址配置后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 使用自己的应用程序 IP 地址端点替换样本中的 IP 地址。
+3. 使用后端 Web 服务器的 IP 地址配置后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 使用自己的应用程序 IP 地址端点替换样本中的 IP 地址。
 
    ```powershell
    $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
@@ -150,13 +150,13 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > 完全限定的域名 (FQDN) 也是可用于替换后端服务器 IP 地址的有效值。 可通过 -BackendFqdns 开关启用它。 
 
 
-   4. 配置公共 IP 终结点的前端 IP 端口。 此端口是最终用户连接到的端口。
+4. 配置公共 IP 终结点的前端 IP 端口。 此端口是最终用户连接到的端口。
 
    ```powershell
    $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-   5. 配置应用程序网关的证书。 此证书用于加密和解密应用程序网关上的流量。
+5. 配置应用程序网关的证书。 此证书用于加密和解密应用程序网关上的流量。
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -166,13 +166,13 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > [!NOTE]
    > 此示例配置用于 SSL 连接的证书。 该证书需采用 .pfx 格式，并且密码长度必须为 4 到 12 个字符。
 
-   6. 创建应用程序网关的 HTTP 侦听器。 分配要使用的前端 IP 配置、端口和 SSL 证书。
+6. 创建应用程序网关的 HTTP 侦听器。 分配要使用的前端 IP 配置、端口和 SSL 证书。
 
    ```powershell
    $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-   7. 上传要在已启用 SSL 的后端池资源上使用的证书。
+7. 上传要在已启用 SSL 的后端池资源上使用的证书。
 
    > [!NOTE]
    > 默认探测从后端的 IP 地址上的*默认* SSL 绑定获取公钥，并将其收到的公钥值与用户在此处提供的公钥值进行比较。 
@@ -186,27 +186,40 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > [!NOTE]
    > 此步骤中提供的证书应该是后端中存在的 .pfx 证书的公钥。 以索赔、证据和推理 (CER) 格式导出后端服务器上安装的证书（不是根证书），将其用在此步骤。 此步骤会将后端加入应用程序网关的允许列表。
 
-   8. 配置应用程序网关后端 HTTP 设置。 将上述步骤中上传的证书分配给 HTTP 设置。
+   如果使用的是应用程序网关 v2 SKU，则创建受信任的根证书而不是身份验证证书。 有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)：
+
+   ```powershell
+   $trustedRootCert01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
+   ```
+
+8. 配置应用程序网关后端 HTTP 设置。 将上述步骤中上传的证书分配给 HTTP 设置。
 
    ```powershell
    $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
-   9. 创建配置负载均衡器行为的负载均衡器路由规则。 在此示例中，创建基本轮循机制规则。
+
+   对于应用程序网关 v2 SKU，请使用以下命令：
+
+   ```powershell
+   $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+   ```
+
+9. 创建配置负载均衡器行为的负载均衡器路由规则。 在此示例中，创建基本轮循机制规则。
 
    ```powershell
    $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-   10. 配置应用程序网关的实例大小。 可用大小为 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  对于容量，可用值为 1 到 10。
+10. 配置应用程序网关的实例大小。 可用大小为 **Standard\_Small**、**Standard\_Medium** 和 **Standard\_Large**。  对于容量，可用值为 1 到 10。
 
-   ```powershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-   ```
+    ```powershell
+    $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+    ```
 
-   > [!NOTE]
-   > 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 小型网关用于开发/测试，不用于生产。
+    > [!NOTE]
+    > 进行测试时，可以选择 1 作为实例计数。 必须知道的是，2 以下的实例计数不受 SLA 支持，因此不建议使用。 小型网关用于开发/测试，不用于生产。
 
-   11. 配置要在应用程序网关上使用的 SSL 策略。 应用程序网关支持设置 SSL 协议最低版本的功能。
+11. 配置要在应用程序网关上使用的 SSL 策略。 应用程序网关支持设置 SSL 协议最低版本的功能。
 
    以下值是可以定义的协议版本的列表：
 

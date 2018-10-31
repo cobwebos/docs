@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 32f99b43a37277e70d209f1f315dcb398c2b5931
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004786"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986995"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位
 
@@ -27,6 +27,8 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 
 * 数据入口速率超过设置的吞吐量单位数。
 * 数据出口请求速率超过设置的吞吐量单位数。
+
+当负载的增加超过最小阈值时，事件中心服务会增加吞吐量，不会因服务器繁忙错误导致任何请求失败。
 
 ## <a name="how-auto-inflate-works"></a>自动膨胀的工作原理
 
@@ -54,6 +56,10 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 还可以使用门户中“设置”窗格上的“缩放”选项启用自动膨胀：
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+
+
+> [!NOTE]
+> 当应用自动膨胀配置以增加吞吐量单位时，事件中心服务会发出诊断日志，提供有关为何以及何时增加吞吐量的信息。 若要启用事件中心的诊断日志记录，请在 Azure 门户的事件中心页上的左侧菜单上选择“诊断设置”。 有关详细信息，请参阅[设置 Azure 事件中心的诊断日志](event-hubs-diagnostic-logs.md)。 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用自动膨胀
 
@@ -101,6 +107,7 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 ```
 
 有关完整的模板，请参阅 GitHub 上的[创建事件中心命名空间和启用膨胀模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

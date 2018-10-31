@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465786"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958499"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -26,8 +26,8 @@ ms.locfileid: "46465786"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2017 版本 15.7**（装有 **Web 开发**工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 - 对于 ASP.NET（非 Core），需要安装 .NET Framework 4.7.1 开发工具，默认情况下未安装这些工具。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。
 - 已打开一个 ASP.NET 4.7.1 或 ASP.NET Core 2.0 Web 项目。
 
@@ -138,11 +138,33 @@ ms.locfileid: "46465786"
       <h3>@ViewBag.Secret2</h3>
    ```
 
-恭喜，现已确认 Web 应用能够使用 Key Vault 安全访问存储的机密。
+1. 在本地运行你的应用，以验证可以读取在 Azure 门户中输入的机密值，而非配置文件中的虚拟值。
+
+接下来，将应用发布到 Azure。
+
+## <a name="publish-to-azure-app-service"></a>发布到 Azure 应用服务
+
+1. 右键单击项目节点，然后选择“发布”。 此时会出现一个屏幕，指出“选取发布目标”。 在左侧，选择“应用服务”，然后选择“新建”。
+
+   ![发布到应用服务](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. 在“创建应用服务”屏幕上，请确保订阅和资源组与在其中创建 Key Vault 的项相同，然后选择“创建”。
+
+   ![创建应用服务](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. 创建 Web 应用程序后，”发布”屏幕出现。 请注意 Azure 中托管的已发布 Web 应用程序的 URL。 如果“Key Vault”旁边存在“无”，仍然需要告知应用服务要连接到哪些 Key Vault。 选择“添加 Key Vault”链接，然后选择所创建的 Key Vault。
+
+   ![添加 Key Vault](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   如果看到“管理 Key Vault”，可以单击以查看当前设置、编辑权限，或更改 Azure 门户中的机密。
+
+1. 现在，选择站点 URL 链接以在浏览器中访问 Web 应用程序。 确保 Key Vault 中显示正确的值。
+
+恭喜，已确认在 Azure 中运行时 Web 应用能够使用 Key Vault 安全访问存储的机密。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 2. 选择“删除资源组”。

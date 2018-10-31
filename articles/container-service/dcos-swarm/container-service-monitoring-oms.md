@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: b326e5b686e14cefac4e6376bd3f26787ea1d10d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164585"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407786"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
 
@@ -30,48 +30,39 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 本文假设已设置 DC / OS，且已在群集上部署了简单的 Web 容器应用程序。
 
 ### <a name="pre-requisite"></a>先决条件
-- [Microsoft Azure 订阅](https://azure.microsoft.com/free/) - 可免费获取。  
+- [Microsoft Azure 订阅](https://azure.microsoft.com/free/) - 可免费获取订阅。  
 - Log Analytics 工作区设置 - 请参阅下面的“步骤 3”
 - 安装 [DC/OS CLI](https://dcos.io/docs/1.8/usage/cli/install/)。
 
 1. 在 DC/OS 仪表板中单击“通用”，并搜索“OMS”，如下所示。
 
-![](media/container-service-monitoring-oms/image2.png)
+   >[!NOTE]
+   >OMS 现在称为 Log Analytics。
+
+ ![](media/container-service-monitoring-oms/image2.png)
 
 2. 单击“安装”。 将看到包含版本信息并带有“安装包”或“高级安装”按钮的弹出窗口。 单击“高级安装”，可转到 **OMS 特定的配置属性**页面。
 
-![](media/container-service-monitoring-oms/image3.png)
+ ![](media/container-service-monitoring-oms/image3.png)
 
-![](media/container-service-monitoring-oms/image4.png)
+ ![](media/container-service-monitoring-oms/image4.png)
 
 3. 需在此页面上输入 `wsid`（Log Analytics 工作区 ID）和 `wskey`（工作区 ID 的主键）。 若要获取 `wsid` 和 `wskey`，需要在 <https://mms.microsoft.com> 创建一个帐户。
-请按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
+按照步骤创建帐户。 帐户创建完成后，依次单击“设置”、“连接源”和“Linux 服务器”，获取 `wsid` 和 `wskey`，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-4. 选择所需实例数，并单击“查看并安装”按钮。 通常情况下，所需实例数与代理群集中拥有的 VM 数相等。 适用于 Linux 的 OMS 代理作为单独的容器安装在每个 VM 上，其目的是收集用于监视和记录信息的信息。
+4. 选择所需实例数，并单击“查看并安装”按钮。 通常情况下，所需实例数与代理群集中拥有的 VM 数相等。 Log Analytics Linux 代理作为单独的容器安装在每个 VM 上，其目的是收集用于监视和记录信息的信息。
 
-## <a name="setting-up-a-simple-oms-dashboard"></a>设置简单的 OMS 仪表板
+   [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-在 VM 上安装适用于 Linux 的 OMS 代理后，下一步需设置 OMS 仪表板。 可通过两种方法进行此设置：OMS 门户和 Azure 门户。
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>设置简单的 Log Analytics 仪表板
 
-### <a name="oms-portal"></a>OMS 门户 
-
-登录到 OMS 门户 (<https://mms.microsoft.com>) 并转到“解决方案库”。
-
-![](media/container-service-monitoring-oms/image6.png)
-
-进入“解决方案库”后，选择“容器”。
-
-![](media/container-service-monitoring-oms/image7.png)
-
-选择“容器解决方案”后，可在 OMS 概述仪表板页面上看到该磁贴。 将引入的容器数据编入索引后，可看到使用解决方案视图磁贴上的信息填充的磁贴。
-
-![](media/container-service-monitoring-oms/image8.png)
+在 VM 上安装 Log Analytics Linux 代理后，下一步需设置 Log Analytics 仪表板。 可以通过 Azure 门户设置仪表板。
 
 ### <a name="azure-portal"></a>Azure 门户 
 
-在 <https://portal.microsoft.com/> 登录到 Azure 门户。 转到“Marketplace”，选择“监视 + 管理”，并单击“查看全部”。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
+在 <https://portal.microsoft.com/> 登录 Azure 门户。 转到“市场”，选择“监视 + 管理”，并单击“查看全部”。 然后在搜索中键入 `containers`。 搜索结果中将显示“容器”。 选择“容器”，并单击“创建”。
 
 ![](media/container-service-monitoring-oms/image9.png)
 
@@ -85,15 +76,15 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 有关 Log Analytics 容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../log-analytics/log-analytics-containers.md)。
 
-### <a name="how-to-scale-oms-agent-with-acs-dcos"></a>如何使用 ACS DC/OS 缩放 OMS 代理 
+### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>如何使用 ACS DC/OS 缩放 Log Analytics 代理 
 
-如果安装的 OMS 代理需少于实际节点计数，或者通过添加更多 VM 扩展 VMSS，可通过缩放 `msoms` 服务实现。
+如果安装的 Log Analytics 代理需少于实际节点计数，或者通过添加更多 VM 扩展虚拟机规模集，可通过缩放 `msoms` 服务实现。
 
 可以转到 Marathon 或 DC/OS UI 服务选项卡，增加节点计数。
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-这会部署到尚未部署 OMS 代理的其他节点。
+这会部署到尚未部署 Log Analytics 代理的其他节点。
 
 ## <a name="uninstall-ms-oms"></a>卸载 MS OMS
 

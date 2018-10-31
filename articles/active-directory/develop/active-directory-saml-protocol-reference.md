@@ -17,12 +17,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: b9ae7cf9d6fd383c7cdfa3957b5d9b94c7207d50
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c560218bebd5399c85b9cebe11c7342e8d15a59
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900649"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945682"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 使用 SAML 协议的方式
 
@@ -32,7 +32,7 @@ SAML 协议要求标识提供者 (Azure AD) 与服务提供者（应用程序）
 
 将应用程序注册到 Azure AD 时，应用开发人员需将联合身份验证相关的信息注册到 Azure AD。 这些信息包括应用程序的**重定向 URI** 和**元数据 URI**。
 
-Azure AD 使用云服务的**元数据 URI** 来检索签名密钥和注销 URI。 如果应用程序不支持元数据 URI，开发人员必须联系 Microsoft 支持人员，让其提供注销 URI 和签名密钥。
+Azure AD 使用云服务的**元数据 URI** 来检索签名密钥和注销 URI。 客户可以在“Azure AD”->“应用注册”中打开应用，然后可以在“设置”->“属性”中更新注销 URL。 这样，Azure AD 可以将响应发送到正确的 URL。 
 
 Azure Active Directory 公开特定于租户的和公用的（独立于租户的）单一登录和单一注销终结点。 这些 URL 表示可寻址位置（不只是标识符），方便你转到终结点读取元数据。
 
