@@ -4,7 +4,6 @@
 ## [什么是 Azure Active Directory？](fundamentals/active-directory-whatis.md)
 ## [关于 Azure 标识管理](fundamentals/identity-fundamentals.md)
 ## [了解 Azure 标识解决方案](fundamentals/understand-azure-identity-solutions.md)
-## [部署混合标识解决方案](choose-hybrid-identity-solution.md)
 ## [关联 Azure 订阅](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [驻留和数据注意事项](fundamentals/active-directory-data-storage-eu.md)
 ## [常见问题](fundamentals/active-directory-faq.md)
@@ -47,7 +46,6 @@
 ### [将新用户添加到 Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [管理用户个人资料](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [重置用户密码](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [共享帐户](active-directory-sharing-accounts.md)
 ### [将用户分配到管理员角色](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [添加另一个目录中的来宾用户 (B2B)](b2b/what-is-b2b.md)
 #### [管理员添加 B2B 用户](b2b/add-users-administrator.md)
@@ -320,11 +318,15 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [在 Azure 中部署 AD FS](hybrid/how-to-connect-fed-azure-adfs.md)
-### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [更改签名哈希算法](active-directory-federation-sha256-guidance.md)
+
 
 ## [故障排除](fundamentals/active-directory-troubleshooting-support-howto.md)
+
+## 部署 Azure AD 概念证明 (PoC)
+### [PoC 演练手册：简介](active-directory-playbook-intro.md)
+### [PoC 演练手册：要素](active-directory-playbook-ingredients.md)
+### [PoC 演练手册：实现](active-directory-playbook-implementation.md)
+### [PoC 演练手册：构建基块](active-directory-playbook-building-blocks.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
