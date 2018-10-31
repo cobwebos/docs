@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2018
+ms.date: 10/29/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 38a8cd35d123f58d6379ade4d900e86b36b416ec
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210867"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240131"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -39,7 +39,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 此更新包括适用于 Azure Stack 的以下改进：
 
-- 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。
+- 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。 可以使用[Azure Stack 容量规划器](http://aka.ms/azstackcapacityplanner)以帮助在规划过程中以 Azure Stack 功能和配置。
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端 （公开上市）** 此客户端允许转发的审核、 警报和到 syslog 服务器或安全信息和事件管理 (SIEM) 软件的 Azure Stack 基础结构相关的安全日志Azure Stack 的外部。 Syslog 客户端现在支持指定的 syslog 服务器正在侦听的端口。
 
