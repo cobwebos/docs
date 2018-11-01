@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 3e63a4c05fde570e598ba05c65fb99cec0427711
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226411"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415604"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -49,7 +49,7 @@ ms.locfileid: "47226411"
 * **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 记得将 `your-storage-account-name` 替换为存储帐户的相应名称。
 
     ```PowerShell
-    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.file.core.windows.net -Port 445
     
     ```
 
@@ -221,9 +221,9 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 | Windows 版本                           | SMB 1 默认状态 | 禁用/删除方法       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019（预览版）             | Disabled             | 通过 Windows 功能进行删除 |
-| Windows Server，版本 1709+            | Disabled             | 通过 Windows 功能进行删除 |
-| Windows 10，版本 1709+                | Disabled             | 通过 Windows 功能进行删除 |
+| Windows Server 2019（预览版）             | 已禁用             | 通过 Windows 功能进行删除 |
+| Windows Server，版本 1709+            | 已禁用             | 通过 Windows 功能进行删除 |
+| Windows 10，版本 1709+                | 已禁用             | 通过 Windows 功能进行删除 |
 | Windows Server 2016                       | 已启用              | 通过 Windows 功能进行删除 |
 | Windows 10，版本 1507、1607 和 1703 | 已启用              | 通过 Windows 功能进行删除 |
 | Windows Server 2012 R2                    | 已启用              | 通过 Windows 功能进行删除 | 

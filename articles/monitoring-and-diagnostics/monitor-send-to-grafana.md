@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957349"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413139"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在还可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 此插件将收集通过 Application Insights SDK 收集的应用程序性能数据，以及 Azure Monitor 提供的基础结构数据。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -37,13 +37,13 @@ ms.locfileid: "49957349"
 ## <a name="log-in-to-grafana"></a>登录到 Grafana
 1. 部署完成后，选择“转到资源组”。 你将看到新创建的资源列表。
 
-    ![Grafana 资源组对象](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Grafana 资源组对象](media/monitor-send-to-grafana/grafana1.png)
 
     如果选择网络安全组（在本例中为 grafana nsg），你可以看到端口 3000 用于访问 Grafana 服务器。
 
 2. 返回资源列表，然后选择“公共 IP 地址”。 使用在此屏幕上找到的值，在浏览器中键入 http://<IP address>:3000 或 <DNSName>:3000。 你应看到刚生成的 Grafana 服务器登录页。
 
-    ![Grafana 登录屏幕](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Grafana 登录屏幕](media/monitor-send-to-grafana/grafana2.png)
 
 3. 使用用户名 admin 和之前创建的 Grafana 服务器管理员密码登录。
 
@@ -51,7 +51,7 @@ ms.locfileid: "49957349"
 
 成功登录后，你应看到 Azure Monitor 数据源插件已包括在内。
 
-![Grafana 将显示 Azure Monitor 插件](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana 将显示 Azure Monitor 插件](media/monitor-send-to-grafana/grafana3.png)
 
 1. 选择“添加数据源”，以配置 Azure Monitor 和 Application Insights。
 
@@ -70,7 +70,7 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
 
 4. 输入以上所有信息后，选择“保存”，Grafana 将测试此 API。 应看到类似于下面的消息：  
 
-    ![Grafana 将显示 Azure Monitor 插件](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana 将显示 Azure Monitor 插件](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > 配置插件时，你可以指示要针对哪个 Azure 云（公共、Azure 美国政府、Azure 德国或 Azure 中国）配置插件。
@@ -83,7 +83,7 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
 
 2. 在新仪表板中，选择“Graph”。 你可以尝试其他图表选项，但本文使用 Graph 作为示例。
 
-    ![Grafana 新仪表板](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Grafana 新仪表板](media/monitor-send-to-grafana/grafana5.png)
 
 3. 在仪表板上将显示一个空白图表。
 
@@ -93,14 +93,14 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
 
 下面是一个简单的包含两个图表的仪表板。 左图显示两个 VM 的 CPU 百分比。 右图显示 Azure 存储帐户中的事务（按事务 API 类型分解）。
 
-![Grafana 两个图表示例](.\media\monitor-how-to-grafana\grafana6.png)
+![Grafana 两个图表示例](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>可选：创建仪表板播放列表
 
 仪表板播放列表是 Grafana 众多有用功能中的其中一项。 你可以创建多个仪表板，将其添加到播放列表，并配置每个仪表板的显示间隔。 选择“播放”即可查看仪表板循环。 你可能想要在大型监控屏幕墙上显示这些仪表板，为你的小组提供“状态板”。
 
-![Grafana 播放列表示例](.\media\monitor-how-to-grafana\grafana7.png)
+![Grafana 播放列表示例](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>可选：在同一 Grafana 服务器上监视自定义指标
@@ -117,7 +117,7 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
  - [用于 Docker 主机、容器和容器化服务的监控解决方案](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 包含 Azure Monitor 和 Application Insights 指标的完整 Grafana 仪表板的图像如下。
-![Grafana 示例指标](.\media\monitor-how-to-grafana\grafana8.png)
+![Grafana 示例指标](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>清理资源

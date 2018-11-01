@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 71b031469d8d1292358132df129c11b4297ec0ee
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165755"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-mount-initialize-and-format-a-volume"></a>装载、初始化和格式化卷

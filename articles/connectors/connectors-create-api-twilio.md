@@ -11,16 +11,16 @@ ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: db7677042737ea1377af54cc02ee1c82c05435c8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fab52236c701f10c8e8e23ac398362ca4583ea06
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047568"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50228833"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
 
-使用 Azure 逻辑应用和 Twilio 连接器，可以创建用于获取、发送和列出 Twilio 中的消息（这包括全球短信、彩信和 IP 消息）的自动化任务和工作流。 可以使用这些操作通过 Twilio 帐户执行任务。 还可以让其他操作使用来自 Twilio 操作的输出。 例如，当有新消息到达时，你可以使用 Slack 连接器发送消息内容。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+使用 Azure 逻辑应用和 Twilio 连接器，可以创建用于获取、发送和列出 Twilio 中的消息（这包括全球短信、彩信和 IP 消息）的自动化任务和工作流。 可以使用这些操作通过 Twilio 帐户执行任务。 还可以让其他操作使用来自 Twilio 操作的输出。 例如，当有新消息到达时，你可以使用 Slack 连接器发送消息内容。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +74,7 @@ ms.locfileid: "43047568"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

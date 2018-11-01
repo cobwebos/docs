@@ -3,7 +3,7 @@ title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft do
 description: 了解用户，以及他们将应用用于哪些目的。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: mbullwin
-ms.openlocfilehash: d5b580df531e2f0c61ac1d43cfd5ae353f314fce
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091895"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139850"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -82,7 +84,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="retention---how-many-users-come-back"></a>保留 - 有多少个回头用户？
 
-留存情况可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
+留存情况可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
 
 - 了解哪些特定的功能导致某些用户比其他用户回来得更频繁 
 - 基于真实的用户数据构成假设 

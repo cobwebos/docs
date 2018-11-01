@@ -4,7 +4,7 @@ description: 媒体服务 REST API 概述
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: af83e876802b176d4e097535d45df91e8a986dfb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785976"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233457"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "33785976"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
 每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
-| 标头 | Type | 值 |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
 | x-ms-version |小数 |2.17（或最新版本）|
@@ -69,7 +69,7 @@ ms.locfileid: "33785976"
 
 以下是一组可选标头：
 
-| 标头 | Type | 值 |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |请求的时间戳 |
 | Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
@@ -83,7 +83,7 @@ ms.locfileid: "33785976"
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
 下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
-| 标头 | Type | 值 |
+| 标头 | 类型 | 值 |
 | --- | --- | --- |
 | request-id |String |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
@@ -94,7 +94,7 @@ ms.locfileid: "33785976"
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：
 
-| Verb | 说明 |
+| Verb | Description |
 | --- | --- |
 | GET |返回对象的当前值。 |
 | POST |根据提供的数据创建对象，或提交命令。 |
