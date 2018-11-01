@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ebbb231e7d9eefa8eb681b0e14c711e2c4f1fad7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f7efafe5e3080de15781496032b688bc5fa71df2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386513"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418410"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -21,7 +21,7 @@ Azure Monitor 现已成为统一的完整堆栈监视服务，支持跨资源“
 
 新的 Azure 监视和警报平台建成后，我们将于 2019 年 6 月弃用“经典”监视和警报平台（承载于 Azure 警报的“查看经典警报”部分内）。
 
- ![Azure 门户中的经典警报](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Azure 门户中的经典警报](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 我们鼓励你开始在新平台中重新创建警报。 对于有大量警报的客户，我们努力提供自动化方式，将现有经典警报移到新的警报系统，而无需中断或增加成本。
 

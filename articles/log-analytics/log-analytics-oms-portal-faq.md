@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404556"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419786"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -32,7 +32,7 @@ Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理�
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>在 Azure 中的何处查找 Log Analytics？
 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。  单击“所有服务”，然后在资源列表中键入“Log Analytics”。 选择“Log Analytics”，然后选择工作区。 此时会显示工作区的摘要页。
 
-![Log Analytics 工作区](media/log-analytics-new-portal/log-analytics.png)
+![Log Analytics 工作区](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>如何管理权限？
 如果无法访问 Azure 门户中的 Log Analytics 工作区，则需根据[基于 Azure 角色的访问权限](../active-directory/role-based-access-control-configure.md)中的说明来配置权限。 有关如何管理工作区权限的详细信息，请参阅[管理工作区](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users)。 有关如何管理警报权限的信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md)。
@@ -40,12 +40,12 @@ Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理�
 ## <a name="how-do-i-create-a-new-workspace"></a>如何创建新工作区？ 
 在 Azure 门户的工作区列表中单击“添加”。  如需完整详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
 
-![概述页](media/log-analytics-new-portal/new-workspace.png)
+![概述页](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>概览页在哪里？
 OMS 门户中的主屏幕显示在工作区中安装的所有管理解决方案的磁贴，以及已创建的任何自定义视图。 Azure 门户中提供了此相同的视图。 从工作区中选择“工作区摘要”。
 
-![概述页](media/log-analytics-new-portal/overview.png)
+![概述页](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>如何打开日志搜索和视图设计器？
 “日志搜索”和“视图设计器”在 Azure 门户的主页和工作区的左侧菜单中均可用，位于“概览”右侧。
@@ -53,7 +53,7 @@ OMS 门户中的主屏幕显示在工作区中安装的所有管理解决方案�
 ## <a name="where-do-i-find-settings"></a>在哪里可以找到我的设置？
 OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“高级设置”菜单中可用。
 
-![高级设置](media/log-analytics-new-portal/advanced-settings.png)
+![高级设置](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 以下部分提供了一个完整的列表，概述了如何访问以前在 OMS 门户的“设置”部分提供的设置。
 
@@ -118,7 +118,7 @@ Log Analytics 中的[我的仪表板](../log-analytics/log-analytics-dashboards.
 ## <a name="how-do-i-check-my-usage"></a>如何查看我的使用情况？
 现在可以轻松地查看和管理 Log Analytics 的使用情况和成本，只需在工作区中选择“使用情况和预估成本”即可。
 
-![使用情况和预估成本](media/log-analytics-new-portal/usage.png)
+![使用情况和预估成本](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>是否仍可使用经典门户？

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 72a687d6a67ba8e4ccc49cf622cb368e7c8d0db2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8a32cbc726d50fc2e0e8ad0840525d9e505832bf
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649660"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412935"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：通过 Java 在 QnA Maker 中创建知识库
 
@@ -27,7 +27,7 @@ ms.locfileid: "49649660"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但文本编辑器足以满足要求。
 
 必须有一个已将 **QnA Maker** 选作资源的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 将需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)中的新 API 帐户的付费订阅密钥。 任一密钥都适用于本快速入门。
 

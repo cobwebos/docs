@@ -2,7 +2,7 @@
 title: 适用于 .NET 的媒体服务 SDK 中的重试逻辑 | Microsoft Docs
 description: 本主题概述了适用于 .NET 的媒体服务 SDK 中的重试逻辑。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 34125712c59938b3a74e7cdc150f3f16b694b92f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242256"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>适用于 .NET 的媒体服务 SDK 中的重试逻辑
 使用 Microsoft Azure 服务时，可能发生暂时性故障。 如果发生暂时性故障，在大多数情况下，该操作会在几次重试后成功。 适用于 .NET 的媒体服务 SDK 执行重试逻辑以处理与异常和错误关联的暂时性故障，这些异常和错误由 Web 请求、执行查询、保存更改和存储操作导致。  默认情况下，适用于 .NET 的媒体服务 SDK 向应用程序重新引发异常前会执行四次重试。 然后，应用程序中的代码必须正确处理此异常。  
@@ -35,7 +36,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="exception-types"></a>异常类型
 下表说明了适用于 .NET 的媒体服务 SDK 为可能导致暂时性故障的某些操作处理或不处理的异常。  
 
-| 异常 | Web 请求 | 存储 | 查询 | SaveChanges |
+| 异常 | Web 请求 | 存储 | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>有关详细信息，请参阅 [WebException 状态代码](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)部分。 |是 |是 |是 |是 |
 | DataServiceClientException<br/> 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |否 |是 |是 |是 |
@@ -50,7 +51,7 @@ ms.lasthandoff: 05/07/2018
 ### <a name="WebExceptionStatus"></a> WebException 状态代码
 下表显示了对其执行重试逻辑的 WebException 错误代码。 [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) 枚举定义状态代码。  
 
-| 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
+| 状态 | Web 请求 | 存储 | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |是 |是 |是 |是 |
 | NameResolutionFailure |是 |是 |是 |是 |
@@ -68,7 +69,7 @@ ms.lasthandoff: 05/07/2018
 ### <a name="HTTPStatusCode"></a> HTTP 错误状态代码
 查询和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 时，HTTP 错误状态代码将返回在 StatusCode 属性中。  下表显示了对其执行重试逻辑的错误代码。  
 
-| 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
+| 状态 | Web 请求 | 存储 | Query | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |否 |是 |否 |否 |
 | 403 |否 |是<br/>处理等待时间较长的重试。 |否 |否 |

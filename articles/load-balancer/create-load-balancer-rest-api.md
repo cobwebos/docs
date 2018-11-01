@@ -4,9 +4,6 @@ description: 了解如何使用 REST API 创建 Azure 负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: ca952fa4fbea742121e579b28be35d834f17eade
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056641"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416913"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>使用 REST API 创建 Azure 基本负载均衡器
 
@@ -34,7 +31,7 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
   ```
 ### <a name="uri-parameters"></a>URI 参数
 
-|名称  |In  |必选 |Type |Description |
+|名称  |In  |必选 |类型 |Description |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  路径       |  True       |   字符串      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
 |resourceGroupName     |     路径    | True        |  字符串       |   资源组的名称。     |
@@ -47,9 +44,9 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
 
 唯一必需的参数为 `location`。 如果不定义 *SKU* 版本，则会默认创建基本负载均衡器。  请使用[可选参数](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)来自定义负载均衡器。
 
-| 名称 | Type | Description |
+| 名称 | 类型 | Description |
 | :--- | :--- | :---------- |
-| location | 字符串 | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
+| 位置 | 字符串 | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>示例：创建和更新基本负载均衡器

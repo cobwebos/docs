@@ -4,10 +4,7 @@ description: 如何为 Linux VM 配置 DHCPv6。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
-ms.assetid: b32719b6-00e8-4cd0-ba7f-e60e8146084b
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 6248ed2f55fb5bbcc2061af6ce1dedf2bd31ccad
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7ef376c044bceb14614388a72c11942869dbde07
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30261841"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741617"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 
 
-Azure Marketplace 中的某些 Linux 虚拟机映像默认未配置动态主机配置协议版本 6 (DHCPv6)。 要支持 IPv6，必须在使用的 Linux OS 分发版中配置 DHCPv6。 各种 Linux 分发会以不同方式配置 DHCPv6，因为它们使用不同的包。
+Azure 市场中的某些 Linux 虚拟机映像默认未配置动态主机配置协议版本 6 (DHCPv6)。 要支持 IPv6，必须在使用的 Linux OS 分发版中配置 DHCPv6。 各种 Linux 分发会以不同方式配置 DHCPv6，因为它们使用不同的包。
 
 > [!NOTE]
-> Azure Marketplace 中最新的 SUSE Linux 和 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。
+> Azure 市场中最新的 SUSE Linux 和 CoreOS 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。
 
 本文档介绍如何启用 DHCPv6，使 Linux 虚拟机能够获取 IPv6 地址。
 
 > [!WARNING]
-> 不恰当地编辑网络配置文件的操作可能会使你失去 VM 的网络访问权限。 建议先在非生产系统上测试配置更改。 本文中的说明已根据 Azure Marketplace 中的最新版 Linux 映像进行测试。 有关详细说明，请参阅适用于你所用 Linux 版本的文档。
+> 不恰当地编辑网络配置文件的操作可能会使你失去 VM 的网络访问权限。 建议先在非生产系统上测试配置更改。 本文中的说明已根据 Azure 市场中的最新版 Linux 映像进行测试。 有关详细说明，请参阅适用于你所用 Linux 版本的文档。
 
 ## <a name="ubuntu"></a>Ubuntu
 

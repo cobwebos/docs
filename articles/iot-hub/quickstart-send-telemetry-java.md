@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: a4840fee22086bf6716f5f83ba86c4ac464377f9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3b2e25df74d0667b52429a7b998157c4d9e3fe56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364398"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421095"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序从中心读取遥测数据 ( Java)
 
@@ -33,7 +33,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 本快速入门中运行的两个示例应用程序是使用 Java 编写的。 开发计算机上需要有 Java SE 8 或更高版本。
 
-可从 [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 为多个平台下载 Java。
+可从 [Oracle](https://aka.ms/azure-jdks) 为多个平台下载 Java。
 
 可以使用以下命令验证开发计算机上 Java 的当前版本：
 

@@ -3,18 +3,17 @@ title: 使用 Azure 门户部署和配置 Azure 防火墙
 description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 10/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801873"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238822"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -31,7 +30,7 @@ Azure 防火墙提供两种规则类型用于控制出站访问：
 
 应用程序规则和网络规则存储在规则集合中。 规则集合是共享相同操作和优先级的规则列表。  网络规则集合是网络规则列表，应用程序规则集合是应用程序规则列表。
 
-Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -42,8 +41,6 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 > * 配置应用程序规则
 > * 配置网络规则
 > * 测试防火墙
-
-
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -56,32 +53,32 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 
 为便于部署，本教程使用简化的网络配置。 对于生产部署，建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中，工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
-
-
 ## <a name="set-up-the-network-environment"></a>设置网络环境
+
 首先，创建一个资源组用于包含部署防火墙所需的资源。 然后创建 VNet、子网和测试服务器。
 
 ### <a name="create-a-resource-group"></a>创建资源组
-1. 在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
-1. 在 Azure 门户主页上，依次单击“资源组”、“添加”。
-2. 对于“资源组名称”，请键入 **Test-FW-RG**。
-3. 对于“订阅”，请选择自己的订阅。
-4. 对于“资源组位置”，请选择一个位置。 创建的所有后续资源必须位于同一位置。
-5. 单击“创建”。
 
+1. 在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+2. 在 Azure 门户主页上，依次单击“资源组”、“添加”。
+3. 对于“资源组名称”，请键入 **Test-FW-RG**。
+4. 对于“订阅”，请选择自己的订阅。
+5. 对于“资源组位置”，请选择一个位置。 创建的所有后续资源必须位于同一位置。
+6. 单击“创建”。
 
 ### <a name="create-a-vnet"></a>创建 VNet
+
 1. 在 Azure 门户主页中，单击“所有服务”。
 2. 在“网络”下，单击“虚拟网络”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 对于“名称”，请键入 **Test-FW-VN**。
 5. 对于“地址空间”，请键入 **10.0.0.0/16**。
-7. 对于“订阅”，请选择自己的订阅。
-8. 对于“资源组”，请依次选择“使用现有项”、“Test-FW-RG”。
-9. 对于“位置”，请选择前面使用的同一位置。
-10. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。 防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
-11. 对于“地址范围”，请键入 **10.0.1.0/24**。
-12. 使用其他默认设置，然后单击“创建”。
+6. 对于“订阅”，请选择自己的订阅。
+7. 对于“资源组”，请依次选择“使用现有项”、“Test-FW-RG”。
+8. 对于“位置”，请选择前面使用的同一位置。
+9. 在“子网”下，为“名称”键入 **AzureFirewallSubnet**。 防火墙将位于此子网中，子网名称**必须**是 AzureFirewallSubnet。
+10. 对于“地址范围”，请键入 **10.0.1.0/24**。
+11. 使用其他默认设置，然后单击“创建”。
 
 > [!NOTE]
 > AzureFirewallSubnet 子网的最小大小为 /25。
@@ -138,13 +135,11 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 
 使用下表中的信息配置 Srv-Work 虚拟机的“设置”。 剩余的配置与 Srv-Work 虚拟机相同。
 
-
 |设置  |值  |
 |---------|---------|
 |子网|Workload-SN|
 |公共 IP 地址|无|
 |选择公共入站端口|无公共入站端口|
-
 
 ## <a name="deploy-the-firewall"></a>部署防火墙
 
@@ -169,14 +164,13 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 4. 部署完成后，转到“Test-FW-RG”资源组，然后单击“Test-FW01”防火墙。
 6. 记下专用 IP 地址。 稍后在创建默认路由时需要用到此地址。
 
-
 ## <a name="create-a-default-route"></a>创建默认路由
 
 对于“Workload-SN”子网，请配置要通过防火墙的出站默认路由。
 
 1. 在 Azure 门户主页中，单击“所有服务”。
 2. 在“网络”下，单击“路由表”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 对于“名称”，请键入 **Firewall-route**。
 5. 对于“订阅”，请选择自己的订阅。
 6. 对于“资源组”，请依次选择“使用现有项”、“Test-FW-RG”。
@@ -200,9 +194,7 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 18. 对于“下一跃点地址”，请键入前面记下的防火墙专用 IP 地址。
 19. 单击“确定”。
 
-
 ## <a name="configure-application-rules"></a>配置应用程序规则
-
 
 1. 打开“Test-FW-RG”，然后单击“Test-FW01”防火墙。
 2. 在“Test-FW01”页上的“设置”下，单击“规则”。
@@ -214,7 +206,7 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 若要�
 8. 对于“源地址”，请键入 **10.0.2.0/24**。
 9. 对于“协议:端口”，请键入 **http, https**。 
 10. 对于“目标 FQDN”，请键入 **github.com**
-11. 单击 **“添加”**。
+11. 单击“添加”。
 
 Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则集合。 这些 FQDN 特定于平台，不能用于其他目的。 有关详细信息，请参阅[基础结构 FQDN](infrastructure-fqdns.md)。
 
@@ -230,7 +222,7 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 9. 对于“源地址”，请键入 **10.0.2.0/24**。
 10. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
 11. 对于“目标端口”，请键入 **53**。
-12. 单击 **“添加”**。
+12. 单击“添加”。
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>更改 **Srv-Work** 网络接口的主要和辅助 DNS 地址
 
@@ -243,7 +235,6 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 5. 在“添加 DNS 服务器”文本框中键入 **209.244.0.3**，在下一个文本框中键入 **209.244.0.4**。
 6. 单击“ **保存**”。 
 7. 重启 **Srv-Work** 虚拟机。
-
 
 ## <a name="test-the-firewall"></a>测试防火墙
 
@@ -267,7 +258,6 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 ## <a name="clean-up-resources"></a>清理资源
 
 可以将防火墙资源保留到下一教程使用。不再需要时，请删除 **Test-FW-RG** 资源组，以删除与防火墙相关的所有资源。
-
 
 ## <a name="next-steps"></a>后续步骤
 
