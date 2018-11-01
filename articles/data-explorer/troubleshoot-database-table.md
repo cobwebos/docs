@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6ec81d6154f15d1c49428b50f0e65eed8edcedad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986501"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215074"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建或删除数据库或表
 
@@ -21,7 +21,7 @@ ms.locfileid: "46986501"
 
 ## <a name="creating-a-database"></a>创建数据库
 
-1. 请确保具有足够的权限。 若要创建数据库，你必须是 Azure 订阅的“参与者”或“所有者”角色。 如有必要，请与订阅管理员联系，请他们将你添加到相应的角色。
+1. 确保有足够的权限。 若要创建数据库，你必须是 Azure 订阅的“参与者”或“所有者”角色。 如有必要，请与订阅管理员联系，请他们将你添加到相应的角色。
 
 1. 确保数据库名称不存在名称验证错误。 该名称必须是字母数字，最大长度为 260 个字符。
 
@@ -53,11 +53,11 @@ ms.locfileid: "46986501"
 
 ## <a name="general-guidance"></a>一般指南
 
-1. 查看 [Azure 服务运行状况仪表板](https://azure.microsoft.com/status/>)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
+1. 查看 [Azure 服务健康状况仪表板](https://azure.microsoft.com/status/>)。 在尝试使用数据库或表的区域查找 Azure 数据资源管理器的状态。
 
     如果状态不佳（绿色复选标记），请在状态改善后重试。
 
-1. 解决问题时如仍需帮助，请打开 [Azure 门户](https://portal.azure.com)中的支持请求。
+1. 解决问题时如仍需帮助，请打开 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中的支持请求。
 
 ## <a name="next-steps"></a>后续步骤
 

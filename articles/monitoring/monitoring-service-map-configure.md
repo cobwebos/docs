@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405508"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419514"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -146,7 +146,7 @@ ms.locfileid: "49405508"
 
 服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 Log Analytics 代理直接或通过 Log Analytics 网关传输到 Log Analytics 服务。
 
-![服务映射代理](media/monitoring-service-map/agents.png)
+![服务映射代理](media/monitoring-service-map-configure/agents.png)
 
 如果你是一位 System Center Operations Manager 客户且具有连接到 Log Analytics 的管理组：
 
@@ -172,7 +172,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 ## <a name="installation"></a>安装
 
-## <a name="azure-vm-extension"></a>Azure VM 扩展
+### <a name="azure-vm-extension"></a>Azure VM 扩展
 Windows (DependencyAgentWindows) 和 Linux (DependencyAgentLinux) 都有一个扩展，你可以使用 [Azure VM 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)轻松将 Dependency Agent 部署到 Azure VM。  借助 Azure VM 扩展，可以通过 PowerShell 脚本或直接在 VM 中使用 Azure 资源管理器模板将 Dependency Agent 部署到 Windows 和 Linux VM。  如果通过 Azure VM 扩展部署代理，则代理可以自动更新到最新版本。
 
 若要通过 PowerShell 部署 Azure VM 扩展，可以使用以下示例：

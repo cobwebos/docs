@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133545"
+---
 ### <a name="server-auth"></a>如何：使用提供程序（服务器流）进行身份验证
 要让移动应用管理应用中的身份验证过程，必须将应用注册到标识提供者。 然后，需要在 Azure App Service 中配置提供者提供的应用程序 ID 和机密。
 有关详细信息，请参阅[向应用添加身份验证](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md)教程。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f2a48756252f538adc7d813aafe6dbfbf3a270b5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262131"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416675"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -77,11 +77,11 @@ Application Insights 接收器的示例配置：
 
 下图显示了这种关系。
 
-![诊断公共配置](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
+![诊断公共配置](media/azure-diagnostics-configure-application-insights/AzDiag_Channels_App_Insights.png)
 
 下图汇总了配置值及其工作原理。 还可以在层次结构中不同级别下的配置中包含多个接收器。 位于顶层的接收器用作全局设置，在单个元素中指定的接收器类似于该全局设置的重写。
 
-![使用 Application Insights 配置诊断接收器](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
+![使用 Application Insights 配置诊断接收器](media/azure-diagnostics-configure-application-insights/Azure_Diagnostics_Sinks.png)
 
 ## <a name="complete-sink-configuration-example"></a>完整的接收器配置示例
 下面是公共配置文件的完整示例。该文件

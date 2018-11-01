@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0720edeab7577f41ddbaa67e4643f1dfe57ebac0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087468"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740308"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>为 Azure Stack 运行验证测试
 
@@ -39,7 +39,7 @@ ms.locfileid: "50087468"
     3. 以管理员身份打开 PowerShell。
     4. 运行：`Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. 运行：`Test-AzureStack`
-4. 如果任何测试报告**失败**，请运行： `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` cmdlet 从 Test-azurestack 收集日志。 有关诊断日志的详细信息，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。 不应收集日志，或联系 Microsoft 客户服务支持 (CSS)，如果测试报告**给出警告**。
+4. 如果任何测试报告**失败**，请运行： `Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` cmdlet 从 Test-azurestack 收集日志。 有关诊断日志的详细信息，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。 不应收集日志，或联系 Microsoft 客户服务支持 (CSS)，如果测试报告**给出警告**。
 5. 将 **SeedRing** 日志发送给 Microsoft 客户服务支持。 Microsoft 客户服务支持将与你协作来解决问题。
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack 参考

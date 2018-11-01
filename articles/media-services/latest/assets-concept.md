@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: fcb4500a1e4503d90b00528544ae98fa93e16191
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379207"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085768"
 ---
 # <a name="assets"></a>资产
 
@@ -34,19 +34,19 @@ ms.locfileid: "49379207"
 
 下表显示了资产的属性并给出了它们的定义。
 
-|名称|类型|Description|
-|---|---|---|
-|id|字符串|资源的完全限定的资源 ID。|
-|名称|字符串|资源的名称。|
-|properties.alternateId |字符串|资产的备用 ID。|
-|properties.assetId |字符串|资产 ID。|
-|properties.container |字符串|资产 blob 容器的名称。|
-|properties.created |字符串|资产的创建日期。|
-|properties.description |字符串|资产说明。|
-|properties.lastModified |字符串|上次修改资产的日期。|
-|properties.storageAccountName |字符串|存储帐户的名称。|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |资产加密格式。 无格式或 MediaStorageEncryption。|
-|type|字符串|资源的类型。|
+|名称|Description|
+|---|---|
+|id|资源的完全限定的资源 ID。|
+|名称|资源的名称。|
+|properties.alternateId |资产的备用 ID。|
+|properties.assetId |资产 ID。|
+|properties.container |资产 blob 容器的名称。|
+|properties.created |资产的创建日期。|
+|properties.description|资产说明。|
+|properties.lastModified |上次修改资产的日期。|
+|properties.storageAccountName |存储帐户的名称。|
+|properties.storageEncryptionFormat |资产加密格式。 无格式或 MediaStorageEncryption。|
+|type|资源的类型。|
 
 有关完整定义，请参阅[资产](https://docs.microsoft.com/rest/api/media/assets)。
 
@@ -100,7 +100,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 > [!TIP]
 > 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
 
-如果查询响应包含很多项，则该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
+如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
 
 如果在逐页浏览集合时创建或删除资产，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 
@@ -116,8 +116,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-有关 REST 示例，请参阅 [Assets - List](https://docs.microsoft.com/rest/api/media/assets/assets_list)（资产 - 列出）
-
+有关 REST 示例，请参阅 [Assets - List](https://docs.microsoft.com/rest/api/media/assets/list)（资产 - 列出）
 
 ## <a name="storage-side-encryption"></a>存储端加密
 

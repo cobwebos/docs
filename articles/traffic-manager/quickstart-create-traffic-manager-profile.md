@@ -4,10 +4,7 @@ description: 本快速入门文章介绍如何创建流量管理器配置文件�
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: jeconnoc
-editor: ''
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2018
 ms.author: kumud
-ms.openlocfilehash: c969dbc347f0463f6f675a11f69776948d45a9e2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: bf9e296d7edf5ea8f668299830c64aaf3c5f74e9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023479"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140479"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>快速入门：为高度可用的 Web 应用程序创建流量管理器配置文件。
 
@@ -47,7 +44,7 @@ ms.locfileid: "42023479"
      |      位置  |   美国东部        |
     |||
 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 默认网站在 Web 应用成功部署时创建。
 5. 重复步骤 1-3，使用以下设置在另一 Azure 区域创建另一个网站：
 
@@ -89,11 +86,11 @@ ms.locfileid: "42023479"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure 终结点                                   |
+    | 类型                    | Azure 终结点                                   |
     | 名称           | myPrimaryEndpoint                                        |
     | 目标资源类型           | 应用服务                          |
     | 目标资源          | **选择应用服务**可显示同一订阅下的 Web 应用的列表。 在“资源”中，选取要添加为第一个终结点的应用服务。 |
-    | Priority               | 选择“1”。 如果此终结点处于正常状态，这会导致所有流量转到此终结点。    |
+    | 优先度               | 选择“1”。 如果此终结点处于正常状态，这会导致所有流量转到此终结点。    |
     
 4. 针对下一个 Web 应用终结点重复步骤 2 和步骤 3。 确保添加该终结点时将其**优先级**值设为 **2**。
 5.  添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机”。

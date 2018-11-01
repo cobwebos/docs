@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409129"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415247"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 
@@ -49,12 +49,12 @@ Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据
     - 收集数据和为数据建索引所花的时间  
 - 查询列表
 
-![使用情况和成本仪表板](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+![使用情况和成本仪表板](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 )
 
 ### <a name="to-work-with-usage-data"></a>处理使用情况数据
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-usage/azure-portal-01.png)<br><br>  
 3. 在 Log Analytics 工作区列表中选择一个工作区。
 4. 在左窗格的列表中，选择“使用情况和预估成本”。
 5. 在“使用情况和预估成本”仪表板中，可以通过选择“时间: 过去 24 小时”来修改时间范围，对时间间隔进行更改。<br><br> ![时间间隔](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>

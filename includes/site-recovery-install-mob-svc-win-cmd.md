@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 65477f62af80511a73307204c2a6f4b5e0f409d6
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166407"
+---
 1. 将安装程序复制到要保护的服务器上的某个本地文件夹（例如 C:\Temp）。 以管理员身份在命令提示符处运行以下命令：
 
   ```
@@ -25,7 +38,7 @@ Usage :
 UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 ```
 
-| 参数|Type|说明|可能的值|
+| 参数|类型|Description|可能的值|
 |-|-|-|-|
 |/Role|必需|指定是应安装移动服务 (MS) 还是 MasterTarget(MT)。|MS </br> MT|
 |/InstallLocation|可选|移动服务安装到的位置。|计算机上的任意文件夹|
@@ -42,7 +55,7 @@ Usage :
 UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
-  | 参数|Type|说明|可能的值|
+  | 参数|类型|Description|可能的值|
   |-|-|-|-|
   |/CSEndPoint |必需|配置服务器的 IP 地址| 任何有效的 IP 地址|
   |/PassphraseFilePath|必需|密码的位置 |任何有效的 UNC 或本地文件路径|

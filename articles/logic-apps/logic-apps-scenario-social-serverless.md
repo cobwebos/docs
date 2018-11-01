@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6ba274bb3ff3679b4a44950db168215c54f3ade6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299740"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229411"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
@@ -26,7 +26,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 在此场景中，我们将会创建一个逻辑应用，在查找客户的反馈时，将会触发此应用。 部分有助于对客户反馈做出响应的连接器包括：Outlook.com、Office 365、Survey Monkey、Twitter，以及[来自 Web 窗体的 HTTP 请求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)。 创建的工作流将会监视 Twitter 上的井号标签。
 
-可以[在 Visual Studio 中生成整个解决方案](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，并[使用 Azure 资源管理器模板部署该解决方案](../logic-apps/logic-apps-create-deploy-template.md)。 有关演示如何创建此解决方案的视频演练，请[观看此第 9 频道视频](http://aka.ms/logicappsdemo)。 
+可以[在 Visual Studio 中生成整个解决方案](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，并[使用 Azure 资源管理器模板部署该解决方案](../logic-apps/logic-apps-create-deploy-template.md)。 有关演示如何创建此解决方案的视频演练，请[观看此第 9 频道视频](https://aka.ms/logicappsdemo)。 
 
 ## <a name="trigger-on-customer-data"></a>基于客户数据的触发器
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bb0bc0aa7ad6bbbad502832ba8e0a96f36de428
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268289"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155314"
 ---
 # <a name="administer-your-iot-central-application"></a>管理 IOT Central 应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "48268289"
 
 “管理”部分提供了一个辅助导航菜单，其中包含各种管理任务的链接。
 
-只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文的“管理用户”部分详细介绍了如何向其他用户分配“管理员”角色。
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文的 [管理用户](#manage-users) 部分详细介绍了如何向其他用户分配“管理员”角色。
 
 ## <a name="change-application-name"></a>更改应用程序名称
 

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 10191a4fbab325dcd5134b082f050188c6798079
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122114"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229751"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -48,7 +48,7 @@ ms.locfileid: "43122114"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
+   | **名称** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
    | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，以便组织与此应用相关联的所有资源。 | 
    | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
@@ -149,7 +149,7 @@ ms.locfileid: "43122114"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

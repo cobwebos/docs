@@ -14,21 +14,23 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: af59795309dc347bd5fe1263f7546d4aebdd16d1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b3ced6bbd69b38e187b3ed4fa1f2b22e5dd05ce4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843281"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142660"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 
 在此步骤中，需要将应用程序 ID 添加到项目:
 
-1.  在 `ViewController.swift` 中，将以“`let kClientID`”开头的行替换为：
+1. 在 `ViewController.swift` 中，将以“`let kClientID`”开头的行替换为：
+
 ```swift
 let kClientID = "[Enter the application Id here]"
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

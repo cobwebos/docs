@@ -4,16 +4,16 @@ description: Azure IoT Edge 支持的平台
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 6/21/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2163179d3353626e12495381fc64792db56ec78e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b8b4664540d07b76d0cebe5df99ba2cc67dd47e6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286356"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248546"
 ---
 # <a name="azure-iot-edge-support"></a>Azure IoT Edge 支持
 有多种方法可用来寻求对 Azure IoT Edge 产品的支持。
@@ -65,6 +65,3 @@ Azure IoT Edge 在可以运行容器的大多数操作系统上运行，但是�
 ## <a name="container-engines"></a>容器引擎
 Azure IoT Edge 需要一个容器引擎来启动模块，无论它运行于哪个操作系统上。 Microsoft 提供了容器引擎 moby-engine 来满足此要求。 它基于 Moby 开放源代码项目。 Docker CE 和 Docker EE 是其他常用的容器引擎。 它们也基于 Moby 开放源代码项目并且与 Azure IoT Edge 兼容。 Microsoft 对使用那些容器引擎的系统提供尽力而为的支持；但是，Microsoft 没有能力为其中的问题提供修复。 因此，Microsoft 建议在生产系统上使用 moby-engine。
 
-
-<!-- Links -->
-[lnk-edge-blog]: https://azure.microsoft.com/blog/securing-the-intelligent-edge/ 

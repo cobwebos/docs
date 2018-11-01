@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 057ce4b93be27c27e27d49e61a89a7c2b9e46dc8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993011"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421061"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>将 Azure 诊断日志流式传输到 Log Analytics
 
@@ -44,21 +44,21 @@ Azure Log Analytics 是一种灵活的日志搜索和分析工具，利用该工
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>使用门户流式传输诊断日志
 1. 在门户中，导航到 Azure Monitor 并单击“诊断设置”
 
-    ![Azure Monitor 的“监视”部分](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
+    ![Azure Monitor 的“监视”部分](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-blade.png)
 
 2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
 
 3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
 
-   ![添加诊断设置 - 没有现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
+   ![添加诊断设置 - 没有现有的设置](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-none.png)
 
    如果资源上有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
 
-   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
+   ![添加诊断设置 - 现有的设置](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-multiple.png)
 
 3. 为设置提供名称，并选中“发送到 Log Analytics”框，然后选择 Log Analytics 工作区。
 
-   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
+   ![添加诊断设置 - 现有的设置](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-configure.png)
 
 4. 单击“ **保存**”。
 

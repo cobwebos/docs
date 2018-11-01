@@ -1,4 +1,16 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 75bcb9d27ee6f66a1d9c15093d9f933a3ad25881
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133940"
+---
 1. 在 Visual Studio 解决方案资源管理器中，右键单击 Windows 应用商店应用项目。 然后选择“应用商店” > “将应用与应用商店关联”。
 
     ![将应用与 Windows 应用商店关联](./media/app-service-mobile-register-wns/notification-hub-associate-win8-app.png)

@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 9fb462b83eccde3d2b486d491517973fe6bac4f1
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132824"
+---
 Azure Functions [触发器和绑定](..\articles\azure-functions\functions-triggers-bindings.md)与各种 Azure 服务进行通信。 与这些服务集成时，可能会遇到来源于底层 Azure 服务 API 的引发错误。 尝试使用 REST 或客户端库通过函数代码与其他服务进行通信时，也可能会发生错误。 若要避免数据丢失并确保函数的行为正常，请务必处理来自任一源的错误。
 
 以下触发器具有内置重试支持：

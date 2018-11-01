@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 70d7adc9ea8c65a7e6a21165864b7e6d661c6f8c
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8a8c8c7abf5b6f0f2a870f6983c7e855db1e0192
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042285"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231808"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>使用 Azure 逻辑应用按计划检查流量
 
@@ -59,7 +59,7 @@ ms.locfileid: "48042285"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-TravelTime | 逻辑应用的名称 | 
+   | **名称** | LA-TravelTime | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅的名称 | 
    | **资源组** | LA-TravelTime-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称 | 
    | **位置** | 美国东部 2 | 用于存储逻辑应用信息的区域 | 
@@ -171,7 +171,7 @@ ms.locfileid: "48042285"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | travelTime | 变量的名称 | 
+   | **名称** | travelTime | 变量的名称 | 
    | 类型 | Integer | 变量的数据类型 | 
    | **值** | 一个表达式，可将当前的行程时间从秒转换为分钟（参见此表下面的步骤）。 | 变量的初始值 | 
    |||| 
@@ -331,7 +331,7 @@ ms.locfileid: "48042285"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

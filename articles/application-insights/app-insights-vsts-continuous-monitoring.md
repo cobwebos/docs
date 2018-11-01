@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301612"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413615"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
@@ -28,13 +28,13 @@ Azure DevOps Services 现在支持连续监视，因此发布管道可以结合�
 
 2. 将鼠标悬停在“生成和发布”上 > 选择“版本”，依次单击加号 > “创建发布定义”>搜索“监视” >  使用连续监视的 Azure App Service 部署。
 
-   ![新建 Azure DevOps Services 发布管道](.\media\app-insights-continuous-monitoring\001.png)
+   ![新建 Azure DevOps Services 发布管道](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. 单击“应用”。
 
 4. 在红色感叹号旁边，选择蓝色文本以“查看环境任务”。
 
-   ![查看环境任务](.\media\app-insights-continuous-monitoring\002.png)
+   ![查看环境任务](media/app-insights-vsts-continuous-monitoring/002.png)
 
    将显示配置对话框，请使用下表填写输入字段。
 
@@ -60,7 +60,7 @@ Azure DevOps Services 现在支持连续监视，因此发布管道可以结合�
 
 3. 修改可用性“阈值”以满足服务级别要求。
 
-   ![修改警报](.\media\app-insights-continuous-monitoring\003.png)
+   ![修改警报](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. 选择“确定” > “保存”>输入描述性注释>单击“确定”。
 
@@ -68,13 +68,13 @@ Azure DevOps Services 现在支持连续监视，因此发布管道可以结合�
 
 1. 单击“管道”>选择“预部署条件”或“部署后条件”符号，具体取决于需要持续监视入口的阶段。
 
-   ![预部署条件](.\media\app-insights-continuous-monitoring\004.png)
+   ![预部署条件](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. 将“入口”设置为“启用” > “批准入口”>单击“添加”。
 
 3. 选择“Azure Monitor”（此选项使你能够从 Azure Monitor 和 Application Insights 访问警报）
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. 输入“入口超时”值。
 
@@ -86,7 +86,7 @@ Azure DevOps Services 现在支持连续监视，因此发布管道可以结合�
 
 若要了解此行为，请选择“版本”>右键单击“版本名称” > 打开“日志”。
 
-![日志](.\media\app-insights-continuous-monitoring\006.png)
+![日志](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>后续步骤
 

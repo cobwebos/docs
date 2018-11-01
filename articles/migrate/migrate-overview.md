@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025613"
+ms.locfileid: "50086669"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -37,7 +37,7 @@ Azure Migrate 有助于：
 -  只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 但是，可以计划到任意目标 Azure 位置的迁移。
     - 只有在本地环境中发现的元数据才会存储在迁移项目区域中。
     - 元数据存储在下述地理区域之一中：美国中西部/美国东部。
-    - 如果将依赖项可视化与 Log Analytics 工作区配合使用，则会在项目所在的区域中创建它。 
+    - 如果将依赖项可视化与 Log Analytics 工作区配合使用，则会在项目所在的区域中创建它。
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？

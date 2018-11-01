@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1373882fa64ac334b92dc772fc04d4b40260cc25
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2e40e518f9f04809b1fd59b0ed12dcee9b1da9ce
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093402"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240898"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>教程：使用 Azure 门户创建用于复制数据的数据工厂管道 
 > [!div class="op_single_selector"]
@@ -268,7 +268,7 @@ Azure SQL 数据库链接服务指定一个连接字符串，数据工厂服务�
 
 目前，输出数据集驱动计划。 在本教程中，输出数据集配置为每小时生成一个切片。 管道的开始时间和结束时间相差一天，即 24 小时。 因此，管道会生成 24 个输出数据集切片。 
 
-1. 在数据工厂的“编辑器”中，单击命令栏上的“...更多”，并单击“新建管道”。 或者，也可以在树视图中，右键单击“管道”，并单击“新建管道”。
+1. 在数据工厂的“编辑器”中，单击命令栏上的“...**更多”，并单击“新建管道”。 或者，也可以在树视图中，右键单击“管道”，并单击“新建管道”。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段： 
 
     ```json   

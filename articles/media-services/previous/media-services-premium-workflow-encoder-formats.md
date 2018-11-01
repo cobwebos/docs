@@ -4,7 +4,7 @@ description: 本主题概述媒体编码器高级工作流格式和编解码器
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: erik43
+manager: femila
 editor: ''
 ms.assetid: b197fce8-3b9b-4189-8d08-486810c0426f
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 68ba76ee18b3acc1c2825a217641c21a799132c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 337ee0edc3d6e644415b2b3f7524d829d0e3c692
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638582"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246460"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 > [!NOTE]

@@ -1,25 +1,18 @@
 ---
 title: 在 Azure Site Recovery 中的两个 Azure 区域之间映射虚拟网络 | Microsoft Docs
 description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
-services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
-editor: ''
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 95e6a388d0638d2fd477d33aaf7c39cf120e29aa
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1e8bad9a7a194c96c39be0ab4f1c2f40d79031ea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353419"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209577"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>可在不同 Azure 区域中的虚拟网络之间建立对等互连。
 

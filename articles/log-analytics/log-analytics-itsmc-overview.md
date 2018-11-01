@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407497"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421180"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
-![IT Service Management Connector 符号](./media/log-analytics-itsmc/itsmc-symbol.png)
+![IT Service Management Connector 符号](media/log-analytics-itsmc-overview/itsmc-symbol.png)
 
 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。
 
@@ -56,18 +56,18 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 1.  在 Azure 门户中，单击“+ 新建”图标。
 
-    ![Azure 新资源](./media/log-analytics-itsmc/azure-add-new-resource.png)
+    ![Azure 新资源](media/log-analytics-itsmc-overview/azure-add-new-resource.png)
 
 2.  在市场中搜索“IT 服务管理连接器”，然后单击“创建”。
 
-    ![添加 ITSMC 解决方案](./media/log-analytics-itsmc/add-itsmc-solution.png)
+    ![添加 ITSMC 解决方案](media/log-analytics-itsmc-overview/add-itsmc-solution.png)
 
 3.  在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。
    >[!NOTE]
    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 4.  在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。
 
-    ![ITSMC 工作区](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    ![ITSMC 工作区](media/log-analytics-itsmc-overview/itsmc-solution-workspace.png)
     >[!NOTE]
     >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 
@@ -93,12 +93,12 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 1.  转到“所有资源”，找到“ServiceDesk(YourWorkspaceName)”。
 2.  在左窗格中的“工作区数据源”下，单击“ITSM 连接”。
-    ![ITSM 连接](./media/log-analytics-itsmc/itsm-connections.png)
+    ![ITSM 连接](media/log-analytics-itsmc-overview/itsm-connections.png)
 
     此页显示连接列表。
 3.  单击“添加连接”。
 
-    ![添加 ITSM 连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![添加 ITSM 连接](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
 4.  根据[使用 ITSM 产品/服务配置 ITSMC 连接](log-analytics-itsmc-connections.md)一文中所述指定连接设置。
 
@@ -106,7 +106,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
     > 默认情况下，ITSMC 每隔 24 小时刷新连接配置数据一次。 若要即时刷新连接的数据以获取执行的任何编辑或模板更新，单击连接边栏选项卡上的“同步”按钮。
 
-    ![连接刷新](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
+    ![连接刷新](media/log-analytics-itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>使用解决方案
@@ -123,16 +123,16 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 1. 在 Azure 门户中，单击“监视器”。
 2. 在左窗格中，单击“操作组”。 “添加操作组”窗口随即显示。
 
-    ![操作组](media/log-analytics-itsmc/action-groups.png)
+    ![操作组](media/log-analytics-itsmc-overview/action-groups.png)
 
 3. 为操作组提供“名称”和“短名称”。 选择要创建操作组的“资源组”和“订阅”。
 
-    ![操作组详细信息](media/log-analytics-itsmc/action-groups-details.png)
+    ![操作组详细信息](media/log-analytics-itsmc-overview/action-groups-details.png)
 
 4. 在“操作”列表中，从“操作类型”下拉列表菜单中选择“ITSM”。 提供操作的“名称”并单击“编辑详细信息”。
 5. 选择 Log Analytics 工作区所在的“订阅”。 选择后跟工作区名称的“连接”名称（你的 ITSM 连接器名称）。 例如，“MyITSMMConnector(MyWorkspace)。”
 
-    ![ITSM 操作详细信息](./media/log-analytics-itsmc/itsm-action-details.png)
+    ![ITSM 操作详细信息](media/log-analytics-itsmc-overview/itsm-action-details.png)
 
 6. 从下拉列表菜单中选择“工作项”类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
@@ -151,7 +151,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 可以在解决方案中使用 ITSM 连接器仪表板将事件和更改请求数据可视化。
 
-![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
+![Log Analytics 屏幕](media/log-analytics-itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 仪表板还提供有关连接器状态的信息，在分析任何连接问题时，可以从这些信息着手。
 
@@ -161,7 +161,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 如果使用了服务映射解决方案，则可以查看 ITSM 解决方案中创建的服务台工作项，如以下示例中所示：
 
-![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Log Analytics 屏幕](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 详细信息：[服务映射](../operations-management-suite/operations-management-suite-service-map.md)
 

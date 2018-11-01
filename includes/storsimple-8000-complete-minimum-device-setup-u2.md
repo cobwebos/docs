@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 879241b56ddb3be76b1b54d7a3bb5429facf148a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166012"
+---
 <!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最低要求的 StorSimple 设备设置
@@ -25,7 +38,7 @@
 
             ![Test-HcsmConnection 显示可路由的 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 单击 **“确定”**。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
+1. 单击“确定”。 设备配置将启动。 当设备配置完成时，将收到通知。 在“设备”边栏选项卡中，设备状态将更改为“联机”。
 
     ![StorSimple 最低要求设备设置网络接口](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

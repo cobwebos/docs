@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986878"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086839"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -26,20 +26,20 @@ ms.locfileid: "49986878"
 
 下表显示了 StreamingLocator 的属性并给出了它们的定义。
 
-|名称|类型|Description|
-|---|---|---|
-|id |字符串|资源的完全限定的资源 ID。|
-|名称   |字符串|资源的名称。|
-|properties.alternativeMediaId  |字符串|此流式处理定位符的备选媒体 ID。|
-|properties.assetName   |字符串|资产名称|
-|properties.contentKeys |StreamingLocatorContentKey[]|此流式处理定位符使用的 Contentkey。|
-|properties.created |字符串|流式处理定位符的创建时间。|
-|properties.defaultContentKeyPolicyName |字符串|此流式处理定位符使用的默认 ContentKeyPolicy 的名称。|
-|properties.endTime |字符串|流式处理定位符的结束时间。|
-|properties.startTime   |字符串|流式处理定位符的开始时间。|
-|properties.streamingLocatorId  |字符串|流式处理定位符的 StreamingLocatorId。|
-|properties.streamingPolicyName |字符串|此流式处理定位符使用的流式处理策略的名称。 指定创建的流式处理策略的名称，或使用一个预定义的流式处理策略。 可用的预定义流式处理策略包括：“Predefined_DownloadOnly”、“Predefined_ClearStreamingOnly”、“Predefined_DownloadAndClearStreaming”、“Predefined_ClearKey”、“Predefined_MultiDrmCencStreaming”和“Predefined_MultiDrmStreaming”|
-|type   |字符串|资源的类型。|
+|名称|Description|
+|---|---|
+|id |资源的完全限定的资源 ID。|
+|名称   |资源的名称。|
+|properties.alternativeMediaId|此流式处理定位符的备选媒体 ID。|
+|properties.assetName   |资产名称|
+|properties.contentKeys |此流式处理定位符使用的 Contentkey。|
+|properties.created |流式处理定位符的创建时间。|
+|properties.defaultContentKeyPolicyName|此流式处理定位符使用的默认 ContentKeyPolicy 的名称。|
+|properties.endTime |流式处理定位符的结束时间。|
+|properties.startTime|流式处理定位符的开始时间。|
+|properties.streamingLocatorId|流式处理定位符的 StreamingLocatorId。|
+|properties.streamingPolicyName |此流式处理定位符使用的流式处理策略的名称。 指定创建的流式处理策略的名称，或使用一个预定义的流式处理策略。 可用的预定义流式处理策略包括：“Predefined_DownloadOnly”、“Predefined_ClearStreamingOnly”、“Predefined_DownloadAndClearStreaming”、“Predefined_ClearKey”、“Predefined_MultiDrmCencStreaming”和“Predefined_MultiDrmStreaming”|
+|type|资源的类型。|
 
 若要查看完整定义，请参阅[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)。
 
@@ -82,12 +82,12 @@ ms.locfileid: "49986878"
 
 ### <a name="pagination"></a>分页
 
-已启用的四个排序顺序均支持分页。 页面大小当前为 10。
+已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
 
 > [!TIP]
 > 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
 
-如果查询响应包含很多项，则该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
+如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
 
 如果在逐页浏览集合时创建或删除了 StreamingLocator，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 

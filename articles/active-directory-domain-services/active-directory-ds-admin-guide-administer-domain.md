@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：管理托管域 | Microsoft Docs
 description: 管理 Azure Active Directory 域服务托管域
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: c2258b9d26a62fd7c8e50c1ed7b3583c06e1c353
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503428"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157613"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域
 本文介绍如何管理 Azure Active Directory (AD) 域服务托管域。

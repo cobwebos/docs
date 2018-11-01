@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320420"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232267"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -332,7 +332,7 @@ ms.locfileid: "49320420"
 >
 > * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。 
 > 
-> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](http://aka.ms/aisarch)。
+> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](https://aka.ms/aisarch)。
 
 | 逻辑应用区域 | 出站 IP | 
 |-------------------|-------------|  

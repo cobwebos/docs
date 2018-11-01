@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227414"
+---
 必须认识到有两种方法可以在 Azure 中配置可用性组侦听器。 这些方法在创建侦听器时使用的 Azure 负载均衡器的类型方面有所不同。 下表描述了差异：
 
 | 负载均衡器类型 | 实现 | 使用时机： |

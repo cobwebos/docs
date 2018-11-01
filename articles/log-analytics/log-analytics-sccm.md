@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954226"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418069"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -49,7 +49,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 > 必须为 Configuration Manager 指定 Log Analytics 中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
 >
 
-1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-sccm/azure-portal-01.png)<br><br>  
 2. 在 Log Analytics 工作区列表中，选择要修改的工作区。
 3. 在左窗格中，选择“访问控制(IAM)”。
 4. 在“访问控制”页中，单击“添加”。此时会显示“添加权限”窗格。
@@ -101,7 +101,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 
 1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中，选择 Configuration Manager 注册到的工作区。  
-3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-sccm/log-analytics-advanced-settings-01.png)<br><br>  
 4. 依次选择“计算机组”、“SCCM”。  
 5. 选择“导入 Configuration Manager 集合成员身份”，并单击“保存”。  
    ![计算机组 - SCCM 选项卡](./media/log-analytics-sccm/sccm-computer-groups01.png)

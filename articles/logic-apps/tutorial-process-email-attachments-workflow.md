@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: d07342bac3f76472a4783c28cac0741906049bb2
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920971"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231962"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>使用 Azure 逻辑应用处理电子邮件和附件
 
@@ -60,7 +60,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    |---------|-------|-------------| 
-   | **Name** | attachmentstorageacct | 存储帐户的名称 | 
+   | **名称** | attachmentstorageacct | 存储帐户的名称 | 
    | **部署模型** | 资源管理器 | 用于管理资源部署的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **帐户种类** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **位置** | 美国西部 | 用于存储存储帐户信息的区域 | 
@@ -231,7 +231,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-ProcessAttachment | 逻辑应用的名称 | 
+   | **名称** | LA-ProcessAttachment | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 |
    | **位置** | 美国西部 | 以前使用过的同一区域 | 
@@ -670,7 +670,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

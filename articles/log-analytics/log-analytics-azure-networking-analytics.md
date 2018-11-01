@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f1db673ad750a5d9d9d6bda9f41555d5e3affe8d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043073"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418596"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics 中的 Azure 网络监视解决方案
 
@@ -70,7 +70,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure 应用程序网关分析解决方案
 
-![“Azure 应用程序网关分析”符号](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![“Azure 应用程序网关分析”符号](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 应用程序网关支持以下日志：
 
@@ -94,10 +94,10 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 1. 在 Azure 门户中，导航到要监视的应用程序网关资源
 2. 选择“诊断日志”打开以下页面
 
-   ![Azure 应用程序网关资源图像](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Azure 应用程序网关资源图像](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![Azure 应用程序网关资源图像](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
+   ![Azure 应用程序网关资源图像](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. 若要打开诊断，请单击“状态”下面的“打开”
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -117,7 +117,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ```
 
 ### <a name="use-azure-application-gateway-analytics"></a>使用 Azure 应用程序网关分析
-![Azure 应用程序网关分析磁贴图像](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
+![Azure 应用程序网关分析磁贴图像](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-tile.png)
 
 在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
@@ -130,9 +130,9 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
   * 应用程序网关的主机运行状况
   * 最大和 95% 应用程序网关失败请求
 
-![Azure 应用程序网关分析仪表板图像](./media/log-analytics-azure-networking/log-analytics-appgateway01.png)
+![Azure 应用程序网关分析仪表板图像](media/log-analytics-azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Azure 应用程序网关分析仪表板图像](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
+![Azure 应用程序网关分析仪表板图像](media/log-analytics-azure-networking-analytics/log-analytics-appgateway02.png)
 
 在“Azure 应用程序网关分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
 
@@ -141,7 +141,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure 网络安全组分析解决方案
 
-![“Azure 网络安全组分析”符号](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![“Azure 网络安全组分析”符号](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 > [!NOTE]
 > 网络安全组分析解决方案正迁往社区支持，因为其功能已被[流量分析](../network-watcher/traffic-analytics.md)取代。
@@ -165,10 +165,10 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 1. 在 Azure 门户中，导航到要监视的网络安全组资源
 2. 选择“诊断日志”打开以下页面
 
-   ![Azure 网络安全组资源图像](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
+   ![Azure 网络安全组资源图像](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![Azure 网络安全组资源图像](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
+   ![Azure 网络安全组资源图像](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. 若要打开诊断，请单击“状态”下面的“打开”
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -196,9 +196,9 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
   * 具有允许流的网络安全组规则
   * 具有允许流的 MAC 地址
 
-![Azure 网络安全组分析仪表板图像](./media/log-analytics-azure-networking/log-analytics-nsg01.png)
+![Azure 网络安全组分析仪表板图像](media/log-analytics-azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure 网络安全组分析仪表板图像](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
+![Azure 网络安全组分析仪表板图像](media/log-analytics-azure-networking-analytics/log-analytics-nsg02.png)
 
 在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 

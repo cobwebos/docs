@@ -4,8 +4,6 @@ description: 如何配置 Azure 负载均衡器的分配模式以支持源 IP �
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-ms.assetid: 7df27a4d-67a8-47d6-b73e-32c0c6206e6e
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: cfca7361831734baaf150b3e19b14c7dc88def36
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b521d633f5779daeab431a16a13f72bbf301182c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043536"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415519"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
 

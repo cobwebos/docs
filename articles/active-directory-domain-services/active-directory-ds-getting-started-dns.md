@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：更新 Azure 虚拟网络的 DNS 设�
 description: Azure Active Directory 域服务入门
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4f3e82c-6807-4690-b298-4eabad2b7927
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: f683eeee05f264ca239b8f1da2bc5078e0146a17
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 7d2902c997259fc115a1f204f123983038821887
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503479"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157337"
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>启用 Azure Active Directory 域服务
 

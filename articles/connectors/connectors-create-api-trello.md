@@ -11,12 +11,12 @@ ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 4ae8d3dff108f14844c31d7b9d0b0871326832a3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046143"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229326"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Trello
 
@@ -28,7 +28,7 @@ ms.locfileid: "43046143"
 * 列出仪表板、仪表板标签、仪表板上的卡、卡注释、卡成员、团队成员，以及你所属的团队。 
 * 获取团队。
 
-可以使用触发器从 Trello 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Trello 帐户执行任务的操作。 还可以让其他操作使用来自 Trello 操作的输出。 例如，当向仪表板或列表中添加了新卡时，可以通过 Slack 连接器发送消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 Trello 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Trello 帐户执行任务的操作。 还可以让其他操作使用来自 Trello 操作的输出。 例如，当向仪表板或列表中添加了新卡时，可以通过 Slack 连接器发送消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,7 +61,7 @@ ms.locfileid: "43046143"
 
 1. 如果提示你登录到 Trello，请授权你的逻辑应用进行访问并登录。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -70,7 +70,7 @@ ms.locfileid: "43046143"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

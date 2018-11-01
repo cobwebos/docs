@@ -3,7 +3,7 @@ title: Azure SQL 弹性缩放常见问题 | Microsoft 文档
 description: 有关 Azure SQL 数据库弹性缩放的常见问题。
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: d4840c155439efb22cc5f068afb0635e72b97e91
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 31501cb0cc66c9d8db646e3cf0c75cc3d8daf7e0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868371"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242528"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>弹性数据库工具常见问题解答 (FAQ)
 

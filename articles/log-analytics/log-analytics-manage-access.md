@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 633bf2cf68449849c019ba940644d78d1478efc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042320"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421163"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -64,7 +64,7 @@ ms.locfileid: "48042320"
 
 2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。  
 
-    ![Azure 门户](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)  
+    ![Azure 门户](media/log-analytics-manage-access/azure-portal-01.png)  
 
 3. 在 Log Analytics 订阅窗格中选择一个工作区。
 
@@ -99,7 +99,7 @@ Log Analytics 读者角色的成员可以：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| Type    | 权限 | Description |
+| 类型    | 权限 | Description |
 | ------- | ---------- | ----------- |
 | 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 能够执行 Log Search v2 查询 |

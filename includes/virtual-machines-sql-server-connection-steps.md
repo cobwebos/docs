@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: c7c3aea53a1bbdbfc39bad568b2879311e365acd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226666"
+---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口
 1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)。
 2. 登录后，在开始屏幕中，键入“WF.msc”，并按 ENTER。

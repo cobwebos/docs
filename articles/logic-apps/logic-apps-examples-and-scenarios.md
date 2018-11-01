@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304418"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230125"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
@@ -59,7 +59,7 @@ ms.locfileid: "44304418"
 * [为工作流运行设置长时间运行的操作](../logic-apps/logic-apps-create-api-app.md)
 * [使用 webhook 响应外部事件和操作](../logic-apps/logic-apps-create-api-app.md)
 * [利用对 HTTP 请求的同步响应调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)
-* [教程：在几分钟内使用逻辑应用和 Power BI 生成由 AI 提供支持的社交仪表板](http://aka.ms/logicappsdemo)
+* [教程：在几分钟内使用逻辑应用和 Power BI 生成由 AI 提供支持的社交仪表板](https://aka.ms/logicappsdemo)
 * [视频：响应 Twilio SMS Webhook 并发送文本响应](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>控制流、错误处理和日志记录功能
@@ -84,11 +84,11 @@ ms.locfileid: "44304418"
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>运行中的内容类型转换和变换
 
-可以使用 Azure 逻辑应用[工作流定义语言](http://aka.ms/logicappsdocs)中的多个函数访问、转换和变换多个内容类型。 例如，可以使用 `@json()` 和 `@xml()` 工作流表达式在字符串、JSON 和 XML 之间转换。 逻辑应用引擎通过保留内容类型，来支持在服务之间以无损方式进行内容传输。
+可以使用 Azure 逻辑应用[工作流定义语言](https://aka.ms/logicappsdocs)中的多个函数访问、转换和变换多个内容类型。 例如，可以使用 `@json()` 和 `@xml()` 工作流表达式在字符串、JSON 和 XML 之间转换。 逻辑应用引擎通过保留内容类型，来支持在服务之间以无损方式进行内容传输。
 
 * [工作流表达式在逻辑应用中的工作原理](../logic-apps/logic-apps-author-definitions.md)
 * [处理非 JSON 内容类型](../logic-apps/logic-apps-content-type.md)，如 `application/xml`、`application/octet-stream` 和 `multipart/formdata`
-* [Azure 逻辑应用的工作流定义语言架构](http://aka.ms/logicappsdocs)
+* [Azure 逻辑应用的工作流定义语言架构](https://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>其他集成和功能
 

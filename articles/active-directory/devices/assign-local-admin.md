@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042155"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238720"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -92,9 +92,9 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
  
 此外，还可使用命令提示符添加用户：
 
-- 如果从本地 Active Directory 同步了租户用户，请使用 `net localgroup administrators /add “Contoso\username”`。
+- 如果从本地 Active Directory 同步了租户用户，请使用 `net localgroup administrators /add "Contoso\username"`。
 
-- 如果在 Azure AD 中创建了租户用户，请使用 `net localgroup administrators /add “AzureAD\UserUpn”`
+- 如果在 Azure AD 中创建了租户用户，请使用 `net localgroup administrators /add "AzureAD\UserUpn"`
 
 
 ## <a name="considerations"></a>注意事项 

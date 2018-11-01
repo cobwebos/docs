@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: dbe903f502cbd1b96b34b47aed09c52104995b54
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466199"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241661"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -195,7 +195,7 @@ ms.locfileid: "49466199"
 |http://schemas.microsoft.com/identity/claims/identityprovider|
 |http://schemas.microsoft.com/identity/claims/objectidentifier|
 |http://schemas.microsoft.com/identity/claims/puid|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] |
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] |
 |http://schemas.microsoft.com/identity/claims/tenantid|
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
@@ -454,7 +454,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
     1. 若要创建该策略，请运行以下命令： 
     
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
     ```
     2. 若要查看新策略并获取策略 ObjectId，请运行以下命令：
     

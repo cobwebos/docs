@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 9ba2476ccf2601f5d7d2c0e93c7661f740f32145
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818869"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231757"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM DB2 资源
 
@@ -65,7 +65,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 ## <a name="add-db2-action---get-tables"></a>添加 DB2 操作 - 获取表
 
-1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 在 [Azure 门户](https://portal.azure.com)中，在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
 
 1. 在触发器下，选择“新建步骤”。
 
@@ -361,7 +361,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

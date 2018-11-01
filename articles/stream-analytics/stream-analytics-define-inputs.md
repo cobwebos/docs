@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 556b71d8312c7661b58a3ccf56fd76f6753ef9cf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987573"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248738"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -115,7 +115,6 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 | **IoTHub.ConnectionDeviceId** | 用于发送此消息的身份验证 ID。 此值由 IoT 中心在服务绑定的消息上加盖标记。 |
 | **IoTHub.ConnectionDeviceGenerationId** | 用于发送此消息的经过身份验证设备的生成 ID。 此值由 IoT 中心在服务绑定的消息上加盖标记。 |
 | **IoTHub.EnqueuedTime** | IoT 中心收到消息的时间。 |
-| **IoTHub.StreamId** | 由发送方设备添加的自定义事件属性。 |
 
 
 ## <a name="stream-data-from-blob-storage"></a>从 Blob 存储流式传输数据

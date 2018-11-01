@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 83852333d8e66c76f2d2710b1813a4400622e624
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303619"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417304"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -156,7 +156,7 @@ ms.locfileid: "44303619"
 ### <a name="release-annotations"></a>版本注释
 如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
 
-![图表中示例版本批注的屏幕截图](./media/app-insights-asp-net/release-annotation.png)
+![图表中示例版本批注的屏幕截图](media/app-insights-separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤
 
 * [多个角色的共享资源](app-insights-monitor-multi-role-apps.md)

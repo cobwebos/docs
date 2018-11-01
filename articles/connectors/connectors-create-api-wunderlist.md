@@ -11,12 +11,12 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 7226b59504c7112c039061ab0c184fe14f6e59d0
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918665"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230141"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Wunderlist
 
@@ -27,7 +27,7 @@ ms.locfileid: "42918665"
 * 设置提醒。
 * 获取列表、任务、子任务、提醒、文件、说明、注释和其他内容。
 
-[Wunderlist](https://www.wunderlist.com/) 是一项服务，可以帮助你在任何位置在任何设备上计划、管理和完成项目、待办事项列表以及任务。 可以使用触发器从 Wunderlist 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Wunderlist 帐户执行任务的操作。 还可以让其他操作使用来自 Wunderlist 操作的输出。 例如，当新任务到期时，可以使用 Slack 连接器发布消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+[Wunderlist](https://www.wunderlist.com/) 是一项服务，可以帮助你在任何位置在任何设备上计划、管理和完成项目、待办事项列表以及任务。 可以使用触发器从 Wunderlist 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Wunderlist 帐户执行任务的操作。 还可以让其他操作使用来自 Wunderlist 操作的输出。 例如，当新任务到期时，可以使用 Slack 连接器发布消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -68,7 +68,7 @@ ms.locfileid: "42918665"
 
 1. 如果提示你登录到 Wunderlist，请立即登录以便你可以允许访问。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -77,7 +77,7 @@ ms.locfileid: "42918665"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

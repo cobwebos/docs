@@ -1,3 +1,16 @@
+---
+author: PatAltimore
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: patricka
+ms.openlocfilehash: bff2543ec48c66c10db697650def0077e3de28be
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133963"
+---
 若要在应用程序上启用细化密码重置，请使用**密码重置**策略。 请注意，[此处](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md)指定租户范围的密码重置选项。 此策略描述了客户在密码重置过程中将经历的体验以及应用程序在成功完成时会接收到的令牌内容。
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]

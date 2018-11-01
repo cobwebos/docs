@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068684"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158850"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -87,7 +87,7 @@ Azure AD Connect 同步中的默认配置假设：
 ### <a name="multiple-forests-separate-topologies"></a>多个林，独立的拓扑
 ![表示用户在所有目录中只出现一次的选项](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![描述多个林和独立的拓扑](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![描述多个林和独立的拓扑](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 在此环境中，所有本地林都被视为独立的实体。 没有用户出现在任何其他林中。 每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。 合并/收购之后或者如果组织中的每个业务单位独立运营，可能会出现这种拓扑。 在 Azure AD 中，这些林位于相同的组织中并与统一 GAL 一起出现。 在上图中，每个林中的每个对象会在 Metaverse 中出现一次，并在目标 Azure AD 租户中聚合。
 
@@ -117,7 +117,7 @@ Azure AD Connect 同步中的默认配置假设：
 ## <a name="office-365-and-topology-considerations"></a>Office 365 和拓扑注意事项
 某些 Office 365 工作负荷对支持的拓扑实施一些限制：
 
-| 工作负载 | 限制 |
+| 工作负荷 | 限制 |
 | --------- | --------- |
 | Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
 | Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)。 |
