@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976868"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412612"
 ---
 # <a name="smart-groups"></a>智能组
 处理警报时面临的一个常见难题是筛选噪音以找出真正重要的事项 - 智能组旨在解决该问题。  
@@ -29,7 +29,7 @@ ms.locfileid: "46976868"
 
 支持以下智能组状态。
 
-| 省/直辖市/自治区 | Description |
+| 状态 | Description |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查智能组，并已开始进行处理。 |
@@ -44,7 +44,7 @@ ms.locfileid: "46976868"
 
 选择某个智能组时，会显示“智能组详细信息”页。 该页提供智能组的详细信息（包括创建该组的原因），并可在其中更改智能组的状态。
  
-![智能组详细信息](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![智能组详细信息](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 “智能组详细信息”页包括以下部分。

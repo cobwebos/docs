@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239128"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243123"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中为 Office 365 组实施命名策略（预览版）
 
@@ -49,7 +49,7 @@ ms.locfileid: "39239128"
 
 #### <a name="user-attributes"></a>用户属性
 
-可以使用属性帮助你和你的用户标识针对哪个部门、办公室或地理区域创建了组。 例如，如果将命名策略定义为 `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`，且 `User’s department = Engineering`，则强制使用的组名可能是“GRP My Group Engineering”。 支持的 Azure AD 属性包括 \[Department\]、\[Company\]、\[Office\]、\[StateOrProvince\]、\[CountryOrRegion\]、\[Title\]。 不支持的用户属性被视为固定字符串；例如，“\[postalCode\]”。 不支持扩展属性和自定义属性。
+可以使用属性帮助你和你的用户标识针对哪个部门、办公室或地理区域创建了组。 例如，如果将命名策略定义为 `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`，且 `User’s department = Engineering`，则强制使用的组名可能是“GRP My Group Engineering”。 支持的 Azure AD 属性包括 \[Department\]、\[Company\]、\[Office\]、\[StateOrProvince\]、\[CountryOrRegion\]、\[Title\]。 不支持的用户属性被视为固定字符串；例如，“\[postalCode\]”。 不支持扩展属性和自定义属性。
 
 建议对组织中的所有用户使用已填充值的属性，不使用具有 Long 值的属性。
 
@@ -174,7 +174,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 * 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 * 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
-工作负载 | 合规性
+工作负荷 | 合规性
 ----------- | -------------------------------
 Azure Active Directory 门户 | 如果用户在创建或编辑组时键入组名，Azure AD 门户和访问面板门户会显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一错误消息以及阻止字词，以便用户删除它。
 Outlook Web Access (OWA) | 当用户键入组名或组别名时，Outlook Web Access 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，UI 中会显示一条错误消息以及阻止字词，以便用户删除它。

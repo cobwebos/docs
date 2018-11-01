@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 2b92aba8b9a8d8f46ae2aeac3a7bfe60a4755f9b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165189"
+---
 1. 将安装程序复制到要保护的服务器上的某个本地文件夹（例如 /tmp）。 在终端运行以下命令：
   ```
   cd /tmp ;
@@ -22,7 +35,7 @@ Usage:
 ./install -d <Install Location> -r <MS|MT> -v VmWare -q
 ```
 
-|参数|Type|说明|可能的值|
+|参数|类型|Description|可能的值|
 |-|-|-|-|
 |-r |必需|指定是应安装移动服务 (MS) 还是 MasterTarget(MT)。|MS </br> MT|
 |-d |可选|移动服务安装到的位置。|/usr/local/ASR|
@@ -38,7 +51,7 @@ cd /usr/local/ASR/Vx/bin
 UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 ```
 
-|参数|Type|说明|可能的值|
+|参数|类型|Description|可能的值|
 |-|-|-|-|
 |-i |必需|配置服务器的 IP|任何有效的 IP 地址|
 |-P |必需|在其中保存连接密码的文件的完整文件路径|任何有效的文件夹|

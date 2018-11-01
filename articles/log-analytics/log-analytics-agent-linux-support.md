@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01b3fe57cd52149c5c1191345b42bd8544202652
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3f23464776036a8c91b180d46341782fddb9d5e8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404573"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140953"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -161,17 +161,9 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 在载入期间指定的代理不正确
 * Log Analytics 和 Azure 自动化服务终结点不在数据中心的允许列表中 
 
-<<<<<<< HEAD
-### <a name="resolutions"></a>解决方法
-1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Log Analytics。 这允许通过代理服务器连接到 Log Analytics 的代理能够进行详细输出。 
-`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Log Analytics Workspace ID> -s <Log Analytics Workspace Key> -p <Proxy Conf> -v`
-
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-=======
 ### <a name="resolution"></a>解决方法
 1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Log Analytics 服务中。 它允许通过代理服务器连接到 Log Analytics 服务的代理能够进行详细输出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 2. 请查看[更新代理设置](log-analytics-agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
 * 仔细检查下列 Log Analytics 终结点是否在允许列表中：
@@ -193,11 +185,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 1. 使用 date 命令检查 Linux 服务器上的时间。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要纠正此问题，请更新 Linux 服务器的日期和/或时区。 
 2. 验证你是否安装了最新版本的 Log Analytics Linux 代理。  如果时间偏差导致了载入故障，最新版本现在会发出通知。
-<<<<<<< HEAD
-3. 请按照本主题前文所述的安装说明使用正确的工作区 ID 和工作区密钥重新载入。
-=======
 3. 请按照本文前面所述的安装说明使用正确的工作区 ID 和工作区密钥重新载入。
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>问题：载入后，日志文件中立即显示 500 和 404 错误
 这是第一次将 Linux 数据上传到 Log Analytics 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
@@ -206,17 +194,6 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 ### <a name="probable-causes"></a>可能的原因
 
-<<<<<<< HEAD
-- 载入到 Log Analytics 失败
-- 与 Log Analytics 的连接受阻
-- Log Analytics Linux 代理数据已备份
-
-### <a name="resolutions"></a>解决方法
-1. 通过检查是否存在以下文件，来检查是否已成功载入 Log Analytics：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. 使用 `omsadmin.sh` 命令行指令重新载入
-3. 如果使用代理，请参阅之前提供的代理解决方法步骤。
-4. 在某些情况下，当 Log Analytics Linux 代理无法与此服务通信时，代理上的数据会在整个缓冲区（大小 50 MB）中排队。 Log Analytics Linux 代理应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
-=======
 - 载入到 Log Analytics 服务失败
 - 与 Log Analytics 服务的连接受阻
 - Log Analytics Linux 代理数据已备份
@@ -226,10 +203,9 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 2. 使用 `omsadmin.sh` 命令行指令重新载入
 3. 如果使用代理，请参阅之前提供的代理解决方法步骤。
 4. 在某些情况下，当 Log Analytics Linux 代理无法与此服务通信时，代理上的数据会在整个缓冲区（大小 50 MB）中排队。 该代理应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
     >[!NOTE]
-    >This issue is fixed in agent version 1.1.0-28 and later.
+    >此问题已在代理版本 1.1.0-28 及更高版本中解决。
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>问题：看不到转发的 Syslog 消息 

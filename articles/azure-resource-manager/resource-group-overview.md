@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 16e78784337771d1e31d826f475c92c86fe20411
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954209"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212312"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 应用程序的基础结构通常由许多组件构成，其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不作为独立的实体出现，而是作为单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。 
@@ -65,29 +65,7 @@ ms.locfileid: "49954209"
 
 有关创建可以跨全球 Azure、Azure 主权云和 Azure Stack 使用的资源管理器模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
 
-## <a name="quickstarts-and-tutorials"></a>快速入门和教程
-
-使用以下快速入门和教程了解如何开发资源管理器模板：
-
-- 快速入门
-
-    |标题|Description|
-    |------|-----|
-    |[使用 Azure 门户](./resource-manager-quickstart-create-templates-use-the-portal.md)|使用门户生成模板，以及模板的编辑和部署过程。|
-    |[使用 Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|使用 Visual Studio Code 创建和编辑模板，以及如何使用 Azure Cloud Shell 部署模板。|
-    |[使用 Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|使用 Visual Studio 创建、编辑和部署模板。|
-
-- 教程
-
-    |标题|Description|
-    |------|-----|
-    |[利用模板参考](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|利用模板参考文档来开发模板。 在本教程中，找到存储帐户架构，并使用相关信息来创建加密的存储帐户。|
-    |[创建多个实例](./resource-manager-tutorial-create-multiple-instances.md)|创建多个 Azure 资源的实例。 在本教程中，将创建多个存储帐户实例。|
-    |[设置资源部署顺序](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|定义资源依赖关系。 在本教程中，将创建虚拟网络、虚拟机和相关 Azure 资源。 了解如何定义依赖关系。|
-    |[使用条件](./resource-manager-tutorial-use-conditions.md)|基于某些参数值来部署资源。 在本教程中，基于参数的值定义一个模板以创建新的存储帐户或使用现有存储帐户。|
-    |[集成密钥保管库](./resource-manager-tutorial-use-key-vault.md)|从 Azure Key Vault 检索机密/密码。 在本教程中，将创建虚拟机。  从 Key Vault 检索虚拟机管理员密码。|
-    |[创建链接模板](./resource-manager-tutorial-create-linked-templates.md)|模块化模板，并从模板中调用其他模板。 在本教程中，将创建虚拟网络、虚拟机和相关 Azure 资源。  链接模板中定义了相关存储帐户。 |
-    |[使用安全部署做法](./deployment-manager-tutorial.md)|使用 Azure 部署管理器。 |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="resource-groups"></a>资源组
 定义资源组时，需要考虑以下几个重要因素：

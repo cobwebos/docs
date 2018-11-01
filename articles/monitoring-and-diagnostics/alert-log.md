@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976833"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419361"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报  
 
@@ -34,26 +34,26 @@ ms.locfileid: "46976833"
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>使用 Azure 门户创建日志警报规则
 1. 在[门户](https://portal.azure.com/)中选择“监视器”，然后在“监视器”部分下选择“警报”。  
-    ![监视](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![监视](media/alert-log/AlertsPreviewMenu.png)
 
 1. 选择“新建警报规则”按钮，在 Azure 中创建新警报。
-    ![添加警报](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![添加警报](media/alert-log/AlertsPreviewOption.png)
 
 1. 此时会显示“创建警报”部分，其中包括三个组成部分：“定义警报条件”、“定义警报详细信息”和“定义操作组”。
 
-    ![创建规则](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![创建规则](media/alert-log/AlertsPreviewAdd.png)
 
 1.  定义警报条件：使用“选择资源”链接，然后通过选择资源来指定目标。 进行筛选：选择“订阅”和“资源类型”，以及所需的资源。 
 
     >[!NOTE]
 
     > 创建日志警报 - 在继续操作之前，请验证**日志**信号是否可用于所选资源。
-    ![选择资源](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![选择资源](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. *日志警报*：确保“资源类型”是分析源（例如 Log Analytics 或 Application Insights），且信号类型为“日志”，并选择相应的资源，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics* 或 *Application Insights*）从信号列表中选择“自定义日志搜索”选项。
 
-   ![选择资源 - 自定义日志搜索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![选择资源 - 自定义日志搜索](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ ms.locfileid: "46976833"
 
 1.  *日志警报*：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
- ![配置警报规则](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![配置警报规则](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ ms.locfileid: "46976833"
 
     >  对于使用 Application insights 的指标度量类型的日志警报，可以使用“聚合基于”选项指定要使用哪个特定变量对数据进行分组，如下面所示：
 
-    ![“聚合基于”选项](./media/monitor-alerts-unified/aggregate-on.png)
+    ![“聚合基于”选项](media/alert-log/aggregate-on.png)
 
 1.  *日志警报*：打开可视化效果后，可以从显示的“条件”、“聚合”和“阈值”选项中选择“警报逻辑”。 最后，使用“时间段”选项在逻辑中指定评估指定条件的时间。 此外，通过选择“频率”来指定运行警报服务的频率。
 **日志警报**可以基于：
@@ -83,7 +83,7 @@ ms.locfileid: "46976833"
 
     - **阻止警报**：如果打开警报规则的阻止功能，则新建警报之后会在定义的时间段内禁用该规则的操作。 此规则仍在运行中，并且会在满足条件的情况下创建警报记录。 这是为了让你有时间更正问题，而无需运行重复操作。
 
-        ![对日志警报禁止显示警报](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![对日志警报禁止显示警报](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > 指定的禁止显示警报值应大于警报的频率，以确保在没有重叠的情况下停止通知
@@ -98,19 +98,19 @@ ms.locfileid: "46976833"
     - **电子邮件通知**：如果所述操作组中存在一个或多个电子邮件操作，替代通过操作组发送的电子邮件中的电子邮件主题。 无法修改邮件正文，并且该字段不能用于电子邮件地址。
     - **包括自定义 Json 有效负载**：如果所述操作组中存在一个或多个 Webhook 操作，替代操作组所使用的 Webhook JSON。 用户可以指定所有在关联的操作组中配置的 Webhook 所使用的 JSON 格式；有关 Webhook 格式的详细信息，请参阅[针对日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)。 提供了“查看 Webhook”选项来使用示例 JSON 数据检查格式。
 
-        ![日志警报的操作替代](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![日志警报的操作替代](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. 如果所有字段有效并且附带绿色的勾选标记，则可以单击“创建警报规则”按钮，在“Azure Monitor - 警报”中创建警报。 可以从警报仪表板查看所有警报。
 
-    ![创建规则](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![创建规则](media/alert-log/AlertsPreviewCreate.png)
 
     几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 用户还可以在 [Azure 门户中的 Logs Analytics 页面](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 )中完成其分析查询，然后通过“设置警报”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
 
- ![Log Analytics - 设置警报](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics - 设置警报](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>在 Azure 门户中查看和管理日志警报
 
@@ -122,7 +122,7 @@ ms.locfileid: "46976833"
 
 
 1. 在顶部栏中选择“管理规则”按钮，导航到规则管理部分 - 其中列出了创建的所有警报规则，包括已禁用的警报。
-    ![管理警报规则](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![管理警报规则](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>使用 Azure 资源模板管理日志警报
 当前可根据警报所基于的分析平台（即 Log Analytics 或 Application Insights）使用两个不同的资源模板创建日志警报。

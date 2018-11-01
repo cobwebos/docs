@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc4a1a7f99de657a6199985dd0c963eed741ac97
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037467"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210017"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预生成的家庭自动化应用
 
@@ -23,7 +23,7 @@ ms.locfileid: "47037467"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文需要一个在 [http://www.luis.ai](http://www.luis.ai) 的 LUIS 门户中创建的免费 LUIS 帐户。 
+本文需要一个在 [https://www.luis.ai](https://www.luis.ai) 的 LUIS 门户中创建的免费 LUIS 帐户。 
 
 ## <a name="create-a-new-app"></a>创建新应用
 可在“我的应用”中创建和管理应用程序。 

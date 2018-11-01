@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386496"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412918"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>快速入门：将语音翻译 API 与 Java 配合使用 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ ms.locfileid: "49386496"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 可使用喜欢的 Java IDE（如果有）操作，但文本编辑器足以满足要求。
+需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 可使用喜欢的 Java IDE（如果有）操作，但文本编辑器足以满足要求。
 
 需要以下文件。
 - [javax.websocket-api-1.1.jar（或更高版本）](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)

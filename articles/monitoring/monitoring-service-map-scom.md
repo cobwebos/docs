@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b9146bfc284a469f12eb626c2434f4afe52335dc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407106"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250416"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>服务映射与 System Center Operations Manager 的集成
   > [!NOTE]
@@ -53,19 +53,19 @@ ms.locfileid: "49407106"
 
 1. 若要打开配置向导，请在“服务映射概述”窗格中单击“添加工作区”。  
 
-    ![“服务映射概述”窗格](media/monitoring-service-map/scom-configuration.png)
+    ![“服务映射概述”窗格](media/monitoring-service-map-scom/scom-configuration.png)
 
 2. 在“连接配置”窗口中，输入服务主体的租户名称或 ID、应用程序 ID（也称为用户名或 clientID）和密码，并单击“下一步”。 有关详细信息，请参阅[创建服务主体](#creating-a-service-principal)。
 
-    ![“连接配置”窗口](media/monitoring-service-map/scom-config-spn.png)
+    ![“连接配置”窗口](media/monitoring-service-map-scom/scom-config-spn.png)
 
 3. 在“订阅选择”窗口中，选择 Azure 订阅、Azure 资源组（包含 Log Analytics 工作区的资源组）和 Log Analytics 工作区，然后单击“下一步”。
 
-    ![Operations Manager 配置工作区](media/monitoring-service-map/scom-config-workspace.png)
+    ![Operations Manager 配置工作区](media/monitoring-service-map-scom/scom-config-workspace.png)
 
 4. 在“计算机组选择”窗口中，你可以选择要同步到 Operations Manager 的服务映射计算机组。 单击“添加/删除计算机组”，从“可用计算机组”列表中选择组，然后单击“添加”。  选择组后，单击“确定”完成。
     
-    ![Operations Manager 配置计算机组](media/monitoring-service-map/scom-config-machine-groups.png)
+    ![Operations Manager 配置计算机组](media/monitoring-service-map-scom/scom-config-machine-groups.png)
     
 5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与服务映射之间同步的服务器的服务映射服务器组。 单击“添加/删除服务器”。   
     
@@ -75,36 +75,36 @@ ms.locfileid: "49407106"
     * 由服务映射管理
     * 已列在服务映射服务器组中
 
-    ![Operations Manager 配置组](media/monitoring-service-map/scom-config-group.png)
+    ![Operations Manager 配置组](media/monitoring-service-map-scom/scom-config-group.png)
 
 6. 可选：选择要与 Log Analytics 通信的管理服务器资源池，然后单击“添加工作区”。
 
-    ![Operations Manager 配置资源池](media/monitoring-service-map/scom-config-pool.png)
+    ![Operations Manager 配置资源池](media/monitoring-service-map-scom/scom-config-pool.png)
 
     配置和注册 Log Analytics 工作区可能需要一分钟时间。 完成配置后，Operations Manager 将启动首次服务映射同步。
 
-    ![Operations Manager 配置资源池](media/monitoring-service-map/scom-config-success.png)
+    ![Operations Manager 配置资源池](media/monitoring-service-map-scom/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>监视服务映射
 连接 Log Analytics 工作区后，Operations Manager 控制台的“监视”窗格中会显示新文件夹“服务映射”。
 
-![Operations Manager 的“监视”窗格](media/monitoring-service-map/scom-monitoring.png)
+![Operations Manager 的“监视”窗格](media/monitoring-service-map-scom/scom-monitoring.png)
 
 “服务映射”文件夹包含四个节点：
 * 活动警报：列出 Operations Manager 与服务映射之间通信相关的所有活动警报。  注意，这些警报不是要同步到 Operations Manager 的 Log Analytics 警报。 
 
 * **服务器**：列出配置为从服务映射同步的受监视服务器。
 
-    ![Operations Manager 的“监视服务器”窗格](media/monitoring-service-map/scom-monitoring-servers.png)
+    ![Operations Manager 的“监视服务器”窗格](media/monitoring-service-map-scom/scom-monitoring-servers.png)
 
 * 计算机组依赖关系视图：列出已从服务映射同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
 
-    ![Operations Manager 分布式应用程序关系图](media/monitoring-service-map/scom-group-dad.png)
+    ![Operations Manager 分布式应用程序关系图](media/monitoring-service-map-scom/scom-group-dad.png)
 
 * **服务器依赖关系视图**：列出已从服务映射同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
 
-    ![Operations Manager 分布式应用程序关系图](media/monitoring-service-map/scom-dad.png)
+    ![Operations Manager 分布式应用程序关系图](media/monitoring-service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>编辑或删除工作区
 可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。
@@ -114,12 +114,12 @@ ms.locfileid: "49407106"
 
 目前只能配置一个 Log Analytics 工作区。
 
-![Operations Manager 的“编辑工作区”窗格](media/monitoring-service-map/scom-edit-workspace.png)
+![Operations Manager 的“编辑工作区”窗格](media/monitoring-service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>配置规则和重写
 已创建一个 _Microsoft.SystemCenter.ServiceMapImport.Rule_ 规则，用于定期从服务映射提取信息。 若要更改同步计时，可以配置该规则的重写（“创作”窗格 >“规则” > “Microsoft.SystemCenter.ServiceMapImport.Rule”）
 
-![Operations Manager 的“重写属性”窗口](media/monitoring-service-map/scom-overrides.png)
+![Operations Manager 的“重写属性”窗口](media/monitoring-service-map-scom/scom-overrides.png)
 
 * **Enabled**：启用/禁用自动更新。 
 * **IntervalMinutes**：重置更新间隔时间。 默认间隔为 1 小时。 如果想要更频繁地同步服务器映射，可以更改此值。

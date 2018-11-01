@@ -3,7 +3,7 @@ title: 在具有不同架构的云数据库中进行查询 | Microsoft 文档
 description: 如何在垂直分区上设置跨数据库查询
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3d94a52aaafca91d45d7f1a6406d3f998fbffe9f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161754"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238890"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]
@@ -174,7 +174,7 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 ## <a name="connectivity-for-tools"></a>工具的连接
 可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库及其外部表，就像使用工具连接到其他任何 SQL Server 数据库一样。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 * 确保已通过在 SQL 数据库防火墙配置中启用对 Azure 服务的访问授予弹性查询终结点数据库访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。 
 

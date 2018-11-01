@@ -3,7 +3,7 @@ title: 创建和管理弹性池 - Azure SQL 数据库 | Microsoft Docs
 description: 创建和管理 Azure SQL 弹性池。
 services: sql-database
 ms.service: sql-database
-subservice: elastic-pool
+ms.subservice: elastic-pool
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: acf17533ee73313937c2edb9badaef9007309373
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466063"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243089"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
@@ -99,11 +99,11 @@ ms.locfileid: "49466063"
 
 | 命令 | Description |
 | --- | --- |
-|[弹性池 - 创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_createorupdate)|创建新弹性池或更新现有的弹性池。|
-|[弹性池 - 删除](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_delete)|删除弹性池。|
-|[弹性池 - 获取](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_get)|获取弹性池。|
-|[弹性池 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|返回服务器中弹性池的列表。|
-|[弹性池 - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|更新现有的弹性池。|
+|[弹性池 - 创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
+|[弹性池 - 删除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|删除弹性池。|
+|[弹性池 - 获取](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|获取弹性池。|
+|[弹性池 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|返回服务器中弹性池的列表。|
+|[弹性池 - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|更新现有的弹性池。|
 |[弹性池活动](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
 |[弹性池数据库活动](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
 |[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|

@@ -1,6 +1,17 @@
-
-
-简单地来说，自定义虚拟机是指使用“Marketplace”中的“特别推荐的应用”创建的虚拟机，因为它可为你完成大部分的工作。 但你仍然可以选择配置，其中包括以下各项：
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227108"
+---
+简单地来说，自定义虚拟机是指使用“市场”中的“特别推荐的应用”创建的虚拟机，因为它可为你完成大部分的工作。 但你仍然可以选择配置，其中包括以下各项：
 
 * 将虚拟机连接到虚拟网络。
 * 安装 Azure 虚拟机代理和 Azure 虚拟机扩展，如反恶意软件。

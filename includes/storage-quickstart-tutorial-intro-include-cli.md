@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: c5cb1c5a005265950f8dcd02c8e7675918751dab
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165805"
+---
 ## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](/cli/azure/group#az_group_create) 命令创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。

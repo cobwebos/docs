@@ -1,3 +1,16 @@
+---
+author: jasonwhowell
+ms.service: hdinsight
+ms.topic: include
+ms.date: 10/25/2018
+ms.author: jasonh
+ms.openlocfilehash: 43b90181faa5b3ee23b1d3a15146dffb93ab2e2e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164670"
+---
 > [!IMPORTANT]
 > 项目中使用的 SCP.Net 版本必须与 HDInsight 群集上存在的 Storm 版本匹配。 使用下表确定应使用哪个版本：
 > 

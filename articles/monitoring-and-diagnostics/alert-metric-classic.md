@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: ffac9511ab93367cba3f006249bd92658a520e09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 76a87b79ccc776e0facd57a1cff50fbbcb4f0b9e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386921"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414873"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
@@ -24,11 +24,11 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 
 2. 在“监视”部分中，选择“警报(经典)”。 对于不同的资源，文本和图标可能会略有不同。 如果在此处未找到“警报(经典)”，则它可能位于“警报”或“警报规则”中。
 
-    ![监视](./media/alerts-metric-classic/AlertRulesButton.png)
+    ![监视](media/alert-metric-classic/AlertRulesButton.png)
 
 3. 选择“添加指标警报(经典)”命令，并填写字段。
 
-    ![添加警报](./media/alerts-metric-classic/AddAlertOnlyParamsPage.png)
+    ![添加警报](media/alert-metric-classic/AddAlertOnlyParamsPage.png)
 
 4. **命名**警报规则。 然后选择也在通知电子邮件中显示的“说明”。
 

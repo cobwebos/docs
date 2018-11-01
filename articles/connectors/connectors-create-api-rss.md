@@ -11,12 +11,12 @@ ms.topic: article
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885792"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233049"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 RSS 源
 
@@ -27,7 +27,7 @@ ms.locfileid: "42885792"
 
 RSS（极具特色的网站摘要），也称为“真正简单的整合”，是一种流行的 Web 联合格式，用于发布经常更新的内容，例如博客文章和新闻标题。 许多内容发布者都提供 RSS 源，以便用户可以订阅该内容。 
 
-可以使用 RSS 触发器从 RSS 源获取响应，并使输出可用于其他操作。 可以在逻辑应用中使用 RSS 操作来执行 RSS 源的任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用 RSS 触发器从 RSS 源获取响应，并使输出可用于其他操作。 可以在逻辑应用中使用 RSS 操作来执行 RSS 源的任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 
    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“rss”作为筛选器。 在操作列表下，选择所需的操作。
 
-1. 为所选触发器或操作提供必要详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -60,7 +60,7 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

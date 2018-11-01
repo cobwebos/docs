@@ -3,18 +3,18 @@ title: 在 Azure IoT Central 中定义新设备类型 | Microsoft Docs
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新设备类型。 其中介绍了如何为类型定义遥测、状态、属性和设置。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 246d7f837fdf72ddb2d24139d2d3d83fcd43b640
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310642"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156028"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
@@ -175,7 +175,7 @@ ms.locfileid: "49310642"
     | -------------------- | -----------       |
     | 显示名称         | 风扇电机错误   |
     | 字段名称           | fanmotorerr       |
-    | Severity             | 错误             |
+    | 严重性             | 错误             |
 
     若要保存事件定义，请选择“保存”：
 
@@ -297,7 +297,7 @@ ms.locfileid: "49310642"
     | 字段                | 值                |
     | -------------------- | -------------------- |
     | 显示名称         | 位置             |
-    | 字段名称           | location             |
+    | 字段名称           | 位置             |
     | 初始值        | 华盛顿州西雅图          |
     | Description          | 设备位置      |
 

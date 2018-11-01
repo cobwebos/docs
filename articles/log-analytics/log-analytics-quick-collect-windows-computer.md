@@ -16,12 +16,12 @@ ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 756b5e208cd2a3fa70f7ed3cf1c4deaaf72348ed
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 87d1aef0ffbf1a6b371947d804aa48503b507284
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407803"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417049"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>在混合环境中为 Windows 计算机配置 Log Analytics 代理
 [Azure Log Analytics](log-analytics-overview.md) 可将物理或虚拟 Windows 计算机中的数据从数据中心或其他云环境直接收集到单个存储库中，以便进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Windows 计算机中配置或收集数据。  有关 Azure Windows VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
@@ -34,7 +34,7 @@ ms.locfileid: "49407803"
 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-windows-computer/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
   * 为新的 Log Analytics 工作区提供名称，如 DefaultLAWorkspace。 
@@ -43,7 +43,7 @@ ms.locfileid: "49407803"
   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。  
   * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
-        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-windows-computer/create-loganalytics-workspace-02.png)<br>  
 
 3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”。  
 
@@ -54,7 +54,7 @@ ms.locfileid: "49407803"
 
 1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中，选择之前创建的 DefaultLAWorkspace。
-3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-windows-computer/log-analytics-advanced-settings-01.png)<br><br>  
 4. 选择“已连接的源”，然后选择“Windows 服务器”。   
 5. “工作区 ID”和“主密钥”右侧的值。 将它们复制并粘贴到喜爱的编辑器中。   
 
@@ -80,20 +80,20 @@ ms.locfileid: "49407803"
 Log Analytics 可从 Windows 事件日志以及指定用于长期分析的性能计数器中收集事件，并在检测到特定条件时采取措施。  首先，请按照下列步骤操作，配置 Windows 事件日志以及几个常见性能计数器中收集事件。  
 
 1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-2. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br> 
+2. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-windows-computer/log-analytics-advanced-settings-01.png)<br><br> 
 3. 选择“数据”，然后选择“Windows 事件日志”。  
 4. 可通过键入日志名称添加事件日志。  键入“System”，然后单击加号 +。  
 5. 在表中，选中严重性“错误”和“警告”。   
 6. 单击页面顶部的“保存”来保存配置。
 7. 选择“Windows 性能数据”，在 Windows 计算机上启用性能计数器收集。 
-8. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br> ![默认选中的 Windows 性能计数器](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)。<br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
+8. 首次为新的 Log Analytics 工作区配置 Windows 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br> ![默认选中的 Windows 性能计数器](media/log-analytics-quick-collect-windows-computer/windows-perfcounters-default.png)。<br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 9. 单击页面顶部的“保存”来保存配置。
 
 ## <a name="view-data-collected"></a>查看收集的数据
 现已启用数据收集，开始运行简单的日志搜索示例，查看来自目标计算机的部分数据。  
 
 1. 在 Azure 门户中的所选工作区下，单击“日志搜索”磁贴。  
-2. 在“日志搜索”窗格上的查询字段中键入 `Perf`，然后按 Enter 或单击查询字段右侧的搜索按钮。<br><br> ![Log Analytics 日志搜索查询示例](media/log-analytics-quick-collect-linux-computer/log-analytics-portal-queryexample.png)<br><br> 例如，下图中的查询返回了 735 条性能记录。<br><br> ![Log Analytics 日志搜索结果](media/log-analytics-quick-collect-windows-computer/log-analytics-search-perf.png)
+2. 在“日志搜索”窗格上的查询字段中键入 `Perf`，然后按 Enter 或单击查询字段右侧的搜索按钮。<br><br> ![Log Analytics 日志搜索查询示例](media/log-analytics-quick-collect-windows-computer/log-analytics-portal-queryexample.png)<br><br> 例如，下图中的查询返回了 735 条性能记录。<br><br> ![Log Analytics 日志搜索结果](media/log-analytics-quick-collect-windows-computer/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 如果不再需要使用该代理，可从 Windows 计算机中将其删除，并删除 Log Analytics 工作区。  
@@ -104,7 +104,7 @@ Log Analytics 可从 Windows 事件日志以及指定用于长期分析的性能
 2. 打开“程序和功能”。
 3. 在“程序和功能”中选择“Microsoft Monitoring Agent”，单击“卸载”。
 
-若要删除工作区，请选择前面创建的 Log Analytics 工作区，在资源页上单击“删除”。<br><br> ![删除 Log Analytics 资源](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+若要删除工作区，请选择前面创建的 Log Analytics 工作区，在资源页上单击“删除”。<br><br> ![删除 Log Analytics 资源](media/log-analytics-quick-collect-windows-computer/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>后续步骤
 从本地 Linux 计算机上收集操作和性能数据后，现在可轻松开始浏览、分析免费收集的数据，并对它们采取措施。  

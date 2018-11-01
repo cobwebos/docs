@@ -4,9 +4,6 @@ description: 本文介绍流量管理器如何利用终结点监视和终结点�
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221088"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138134"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
@@ -73,8 +70,8 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 | 配置文件状态 | 终结点状态 | 终结点监视器状态 | 说明 |
 | --- | --- | --- | --- |
-| Disabled |已启用 |非活动 |配置文件已禁用。 尽管终结点状态为“已启用”，但配置文件状态（“已禁用”）优先。 不会监视已禁用配置文件中的终结点。 会针对 DNS 查询返回 NXDOMAIN 响应代码。 |
-| &lt;任意&gt; |已禁用 |Disabled |终结点已禁用。 不会监视已禁用的终结点。 该终结点不会包括在 DNS 响应中，因此也不会接收流量。 |
+| 已禁用 |已启用 |非活动 |配置文件已禁用。 尽管终结点状态为“已启用”，但配置文件状态（“已禁用”）优先。 不会监视已禁用配置文件中的终结点。 会针对 DNS 查询返回 NXDOMAIN 响应代码。 |
+| &lt;任意&gt; |已禁用 |已禁用 |终结点已禁用。 不会监视已禁用的终结点。 该终结点不会包括在 DNS 响应中，因此也不会接收流量。 |
 | 已启用 |已启用 |联机 |终结点受到监视，处于正常状态。 该终结点会包括在 DNS 响应中，并且可以接收流量。 |
 | 已启用 |已启用 |已降级 |监视运行状况检查的终结点将要发生故障。 该终结点不会包括在 DNS 响应中，也不会接收流量。 <br>种情况的一个例外是所有终结点都降级，这样会在查询响应中返回所有终结点。</br>|
 | 已启用 |已启用 |正在检查终结点 |终结点受监视，但是，尚未收到首个探测的结果。 “正在检查终结点”是一种临时状态，在配置文件中添加或启用终结点后，通常会立即出现这种状态。 处于此状态的终结点会包括在 DNS 响应中，并且可以接收流量。 |
@@ -91,7 +88,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 | 配置文件状态（已配置） | 终结点监视器状态 | 配置文件监视器状态 | 说明 |
 | --- | --- | --- | --- |
-| Disabled |&lt;任意&gt;或包含未定义终结点的配置文件。 |Disabled |配置文件已禁用。 |
+| 已禁用 |&lt;任意&gt;或包含未定义终结点的配置文件。 |已禁用 |配置文件已禁用。 |
 | 已启用 |至少一个终结点的状态为“已降级”。 |已降级 |查看各终结点状态值，确定哪些终结点需要进一步的关注。 |
 | 已启用 |至少一个终结点的状态为“联机”。 没有任何终结点的状态为“已降级”。 |联机 |服务正在接受流量。 无需进一步执行操作。 |
 | 已启用 |至少一个终结点的状态为“正在检查终结点”。 没有任何终结点为“联机”或“已降级”状态。 |正在检查终结点 |创建或启用配置文件时，将出现这种过渡状态。 正在首次检查终结点的运行状况。 |
@@ -140,7 +137,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 * **性能**。 返回最靠近最终用户的终结点。 如果终结点不可用，流量管理器会将流量转移给下一个最靠近 Azure 区域的终结点。 可以使用[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)针对性能流量路由来配置替代故障转移计划。
 * **地理**。 已返回基于查询请求 IP 映射到地理位置的终结点。 如果该终结点不可用，不会选择其他终结点作为故障转移的目标位置，因为在一个配置文件中，地理位置仅可映射到一个终结点（有关更多详细信息，请参阅[常见问题解答](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)）。 在使用地理路由时，建议的最佳做法是使用嵌套式流量管理器配置文件，其中包含多个终结点作为配置文件的终结点。
 * **MultiValue**：返回多个映射到 IPv4/IPv6 地址的终结点。 收到此配置文件的查询时，系统会根据指定的“响应中的最大记录数”值返回正常终结点。 响应的默认数量为两个终结点。
-* **子网**：返回映射到一组 IP 地址范围的终结点。 从该 IP 地址收到请求时，返回的终结点是针对该 IP 地址映射的终结点。 
+* **子网**：返回映射到一组 IP 地址范围的终结点。 从该 IP 地址收到请求时，返回的终结点是针对该 IP 地址映射的终结点。 
 
 有关详细信息，请参阅[流量管理器流量路由方法](traffic-manager-routing-methods.md)。
 

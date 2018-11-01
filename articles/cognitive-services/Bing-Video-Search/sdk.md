@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 1/25/2018
 ms.author: rosh
-ms.openlocfilehash: 3d8656748a9632ac20b6a658e4bcbdd647c0573e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 951ab55d737a4344c5523aad2991c42fa143316e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224664"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214488"
 ---
 # <a name="bing-search-sdk"></a>必应搜索 SDK
 必应视频搜索 API 示例包括执行以下操作的方案：
@@ -31,7 +31,7 @@ ms.locfileid: "47224664"
 * 开始使用 [ 示例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
     * 有关定义和依赖项，另请参阅 [Node.js 库](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch)。
 * 开始使用 [Java 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * 有关定义和依赖项，另请参阅 [Java 库](h https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)。
+    * 有关定义和依赖项，另请参阅 [Java 库](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)。
 * 开始使用 [Python 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
     * 有关定义和依赖项，另请参阅 [Python 库](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch)。
 

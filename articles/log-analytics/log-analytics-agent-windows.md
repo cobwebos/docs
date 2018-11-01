@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404437"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412952"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -42,7 +42,7 @@ ms.locfileid: "49404437"
 
 1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中，选择要将代理配置为向其报告的工作区。
-3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. 选择“高级设置”。<br><br> ![Log Analytics 高级设置](media/log-analytics-agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. 选择“已连接的源”，然后选择“Windows 服务器”。   
 5. 将**工作区 ID** 和**主密钥**复制并粘贴到常用编辑器。    
    
@@ -58,7 +58,7 @@ ms.locfileid: "49404437"
 6. 在“Azure Log Analytics”页上执行以下操作：
    1. 粘贴前面复制的“工作区 ID”和“工作区密钥(主密钥)”。  如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 美国政府版”。  
    2. 如果计算机需要通过代理服务器来与 Log Analytics 通信，请单击“高级”并提供代理服务器的 URL 和端口号。  如果代理服务器要求身份验证，请键入用于在代理服务器上进行身份验证的用户名和密码，并单击“下一步”。  
-7. 提供所需的配置设置后，单击“下一步”。<br><br> ![粘贴工作区 ID 和主键](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)<br><br>
+7. 提供所需的配置设置后，单击“下一步”。<br><br> ![粘贴工作区 ID 和主键](media/log-analytics-agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. 在“准备安装”页上检查所做的选择，并单击“安装”。
 9. 在“配置已成功完成”页上，单击“完成”。
 
@@ -160,7 +160,7 @@ ms.locfileid: "49404437"
 
 代理安装完毕后，可通过两种方式来验证是否成功连接和完成报告。  
 
-在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择此项，代理应会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择此项，代理应会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/log-analytics-agent-windows/log-analytics-mma-laworkspace-status.png)
 
 还可在 Azure 门户中执行简单的日志搜索。  
 

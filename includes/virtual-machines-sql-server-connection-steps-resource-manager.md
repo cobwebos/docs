@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227013"
+---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>配置用于公共 IP 地址的 DNS 标签
 
 若要从 Internet 连接到 SQL Server 数据库引擎，请考虑创建用于公共 IP 地址的 DNS 标签。 可以通过 IP 地址进行连接，但 DNS 标签可以创建更容易标识的 A 记录，并可抽象基础性公共 IP 地址。

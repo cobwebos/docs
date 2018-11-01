@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377388"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232590"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
@@ -168,7 +168,7 @@ POST
 
 ### <a name="using-parameters-and-secure-parameters"></a>使用参数和安全参数
 
-[工作流定义语言](http://aka.ms/logicappsdocs)提供一项 `@parameters()` 操作用于在运行时访问资源参数的值。 此外，可[在资源部署模板中指定参数](../azure-resource-manager/resource-group-authoring-templates.md#parameters)。 如果将参数类型指定为 `securestring`，它不会连同资源定义的剩余部分一起返回，并且在部署后无法通过查看资源来访问该参数。
+[工作流定义语言](https://aka.ms/logicappsdocs)提供一项 `@parameters()` 操作用于在运行时访问资源参数的值。 此外，可[在资源部署模板中指定参数](../azure-resource-manager/resource-group-authoring-templates.md#parameters)。 如果将参数类型指定为 `securestring`，它不会连同资源定义的剩余部分一起返回，并且在部署后无法通过查看资源来访问该参数。
 
 > [!NOTE]
 > 如果在标头或请求正文中使用参数，在访问运行历史记录和传出 HTTP 请求时，可能会看到该参数。 请务必相应地设置内容访问策略。

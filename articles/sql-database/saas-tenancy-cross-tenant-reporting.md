@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewers: billgib,AyoOlubeko
+ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3bba0eb552338f1b436ea25306a84029d352f1f3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055282"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240982"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 
@@ -70,7 +70,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 若要模拟此模式，请将一组“全局”视图添加到租户数据库中，以将租户 ID 投射到全局查询的每个表中。 例如，VenueEvents 视图将计算出的 VenueId 添加到从 Events 表投射的列中。 同样，VenueTicketPurchases 和 VenueTickets 视图会添加从各自表中投影的 VenueId 计算列。 VenueId 列出现后，弹性查询使用这些视图来并行查询并将其推送到合适的远程租户数据库。 这大大减少了要返回的数据量，从而使许多查询的性能大幅提高。 这些全局视图已经在所有租户数据库中预先创建。
 
 1. 打开 SSMS 并[连接到 tenants1-&lt;USER&gt; 服务器](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
-1. 展开“数据库”，右键单击“contosoconcerthall”，并选择“新建查询”。
+1. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。
 1. 运行以下查询，了解单租户表和全局视图的差异：
 
    ```T-SQL

@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226834"
+---
 可用性集可帮助虚拟机在停机期间（例如维护期间）保持可用。 在可用性集中放置两个或更多个类似配置的虚拟机，可针对虚拟机运行的应用程序或服务创建保持其可用性所需的冗余。 有关工作原理的详细信息，请参阅[管理虚拟机的可用性][Manage the availability of virtual machines]。
 
 同时使用可用性集和负载均衡终结点是帮助确保应用程序一直可用并有效运行的最佳实践。 有关负载均衡终结点的详细信息，请参阅 [Azure 基础结构服务的负载均衡][Load balancing for Azure infrastructure services]。
@@ -22,7 +32,7 @@
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
 2. 单击“创建资源” > “计算”。
-3. 选择要使用的 Marketplace 虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
+3. 选择要使用的市场虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
 4. 对于所选的虚拟机，确认部署模型已设置为“经典”，并单击“创建”
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)

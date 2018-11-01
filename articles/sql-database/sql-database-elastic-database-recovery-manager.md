@@ -3,7 +3,7 @@ title: 使用恢复管理器解决分片映射问题 | Microsoft Docs
 description: 使用 RecoveryManager 类解决分片映射问题
 services: sql-database
 ms.service: sql-database
-subservice: scale-out
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 09eb2312ef2268169535b644470a754e46b51b18
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 70ac86197d4d7fac7ca820ead01ecb6948d832a6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166854"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240055"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) 类使 ADO.Net 应用程序能够轻松检测并更正分片数据库环境中全局分片映射 (GSM) 与本地分片映射 (LSM) 中的任何不一致性。 
@@ -124,7 +124,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 ## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>在分片异地故障转移（还原）之后更新分片位置
 发生异地故障转移时，使辅助数据库可供写入访问，并成为新的主数据库。 服务器的名称（根据具体的配置，有时还包括数据库的名称）可能与原始主副本不同。 因此，必须修复 GSM 和 LSM 分片的映射条目。 同样地，如果数据库还原到不同的名称或位置，或到较早的时间点，可能会在分片映射中造成不一致。 分片映射管理器会将开放连接分发给正确的数据库。 这种分发基于分片映射中的数据以及作为应用程序请求目标的分片键值。 异地故障转移之后，必须使用准确的服务器名称、数据库名称和已恢复数据库的分片映射更新这些信息。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 异地故障转移和恢复是通常由应用程序的云管理员特意使用 Azure SQL 数据库业务连续性功能管理的操作。 规划业务连续性需要实施相应的流程、过程和措施，以确保业务运营能够持续而不中断。 应该在此工作流中使用 RecoveryManager 类随附的方法，以确保根据采取的恢复操作使 GSM 和 LSM 保持最新状态。 可以执行五个基本步骤来确保在故障转移事件后，GSM 和 LSM 能反映准确的信息。 可将执行这些步骤的应用程序代码集成到现有工具和工作流。 
 
 1. 从 ShardMapManager 检索 RecoveryManager。 

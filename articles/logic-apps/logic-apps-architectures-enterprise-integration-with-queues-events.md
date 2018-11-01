@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5b58f4b71d8d9f3ca91d8cefc6215073fd836765
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855368"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093660"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>包含队列和事件的企业集成体系结构
 
@@ -26,7 +26,7 @@ ms.locfileid: "48855368"
 
 ## <a name="architecture-components"></a>体系结构组件
 
-本体系结构构建在[体系结构参考：简单的企业集成](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md)一文所述的体系结构基础之上。 该体系结构的[建议](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations)在本文中同样适用，但为简单起见，本文的[建议](#recommendations)部分省略了这些建议。 本企业集成体系结构包括以下组件：
+本体系结构构建在[体系结构参考：简单的企业集成](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)一文所述的体系结构基础之上。 该体系结构的[建议](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration#recommendations)在本文中同样适用，但为简单起见，本文的[建议](#recommendations)部分省略了这些建议。 本企业集成体系结构包括以下组件：
 
 - **资源组**：[资源组](../azure-resource-manager/resource-group-overview.md)是 Azure 资源的逻辑容器。
 
@@ -143,4 +143,4 @@ ms.locfileid: "48855368"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[简单的企业集成](logic-apps-architectures-simple-enterprise-integration.md)
+* 了解[简单的企业集成](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)

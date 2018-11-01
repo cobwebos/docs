@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133912"
+---
 ## <a name="export-an-api-definition"></a>导出 API 定义
 [为函数创建 OpenAPI 定义](../articles/azure-functions/functions-openapi-definition.md)中已为函数创建了一个 OpenAPI 定义。 此过程的下一步是导出 API 定义，以便 PowerApps 和 Microsoft Flow 可以在自定义 API 中使用它。
 
@@ -14,7 +27,7 @@
 
 1. 在右侧窗格中，使用表中指定的设置。
 
-    |设置|说明|
+    |设置|Description|
     |--------|------------|
     |**导出模式**|选择“快速”自动生成自定义 API。 选择“手动”导出 API 定义，但之后必选手动将其导入到 PowerApps 和 Microsoft Flow。 有关详细信息，请参阅[导出到 PowerApps 和 Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md)。|
     |**环境**|选择自定义 API 应保存到的环境。 有关详细信息，请参阅[环境概述 (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) 或[环境概述 (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/)。|

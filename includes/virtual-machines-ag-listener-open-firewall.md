@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226907"
+---
 在此步骤中，创建一个防火墙规则以打开负载均衡终结点的探测端口（同样采用之前指定的 59999）和另一规则来打开可用性组侦听器端口。 由于在包含可用性组副本的 VM 上创建了负载均衡的终结点，需要打开相应 VM 上的探测端口和侦听器端口。
 
 1. 在托管副本的虚拟机上，启动“具有高级安全性的 Windows 防火墙”。

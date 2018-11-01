@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 0b2e0ff800ab80a2c638293ce23fc1911390f2dd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 79a02115a449c710778e4c69f470efc3ebebae53
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221105"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087043"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -57,7 +57,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     | 设置      |  建议的值   | 说明                                        |
     | --- | --- | --- |
-    | **Name** | MyCognitiveServicesAccnt | 选择唯一的帐户名称。 |
+    | **名称** | MyCognitiveServicesAccnt | 选择唯一的帐户名称。 |
     | **位置** | 美国西部 | 使用最靠近的位置。 |
     | **定价层** | F0 | 从最低的层着手。 如果已用完调用配额，请扩展到更高的层。|
     | **资源组** | myResourceGroup | 请本教程中的所有服务使用同一个资源组。|
@@ -100,6 +100,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     using System;
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
     
@@ -128,7 +129,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
     ```
     此函数代码基于请求中收到的情感评分返回颜色类别。 
 
-4. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入 `0.2` 的值，并单击“运行”。 响应正文中将返回 **RED** 值。 
+4. 若要测试该函数，请单击最右边的“测试”展开“测试”选项卡。在“请求正文”中键入  的值，并单击“运行”。`0.2` 响应正文中将返回 **RED** 值。 
 
     ![在 Azure 门户中测试函数](./media/functions-twitter-email/test.png)
 
@@ -146,7 +147,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     | 设置      |  建议的值   | 说明                                        |
     | ----------------- | ------------ | ------------- |
-    | **Name** | TweetSentiment | 选择适当的应用名称。 |
+    | **名称** | TweetSentiment | 选择适当的应用名称。 |
     | **资源组** | myResourceGroup | 选择与前面相同的现有资源组。 |
     | **位置** | 美国东部 | 选择靠近你的位置。 |    
 

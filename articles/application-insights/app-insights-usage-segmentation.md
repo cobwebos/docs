@@ -3,7 +3,7 @@ title: 在 Azure Application Insights 中进行用户、会话和事件分析 | 
 description: 对 Web 应用的用户进行人口统计学分析。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 2bc10a292855832b7ddb9b8e3a59fbe0f17d8dc6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 6fd8adab93f5741afe6d3eab0c50ca50a327fbff
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093802"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140326"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -48,10 +49,10 @@ ms.locfileid: "47093802"
 * 使用者：选择自定义事件和页面视图。
 * 期间：选择一个时间范围。
 * 依据：选择如何划分数据的存储段，可以按时间段或按其他属性（例如浏览器或城市）。
-* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
-* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
- 
-## <a name="saving-and-sharing-reports"></a>保存和共享报表 
+* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
+* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
+ 
+## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
 若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”，然后复制该链接。

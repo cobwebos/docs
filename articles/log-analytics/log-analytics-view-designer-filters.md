@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3851bfef71aab6553e109bb8108edd7bec182f0e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 87cfcefd91652194adc0a5ca4580a8d00ba4d234
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041946"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412735"
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics 视图中的筛选器
 [Log Analytics 视图](log-analytics-view-designer.md) 中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值在视图中筛选数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
@@ -28,12 +28,12 @@ ms.locfileid: "48041946"
 ## <a name="using-a-filter"></a>使用筛选器
 单击视图顶部的数据时间范围以打开下拉列表，可以在此处更改视图的日期时间范围。
 
-![筛选器示例](media/log-analytics-view-designer/filters-example-time.png)
+![筛选器示例](media/log-analytics-view-designer-filters/filters-example-time.png)
 
 单击 **+** 以添加为视图定义的使用自定义筛选器的筛选器。 从下拉列表中为筛选器选择一个值或键入一个值。 通过单击 **+** 来继续添加筛选器。 
 
 
-![筛选器示例](media/log-analytics-view-designer/filters-example-custom.png)
+![筛选器示例](media/log-analytics-view-designer-filters/filters-example-custom.png)
 
 如果移除筛选器的所有值，则将不再应用该筛选器。
 
@@ -42,7 +42,7 @@ ms.locfileid: "48041946"
 
 [编辑视图](log-analytics-view-designer.md)时，从“筛选器”选项卡创建筛选器。  筛选器适用于视图全局并应用于视图的所有部分。  
 
-![筛选器设置](media/log-analytics-view-designer/filters-settings.png)
+![筛选器设置](media/log-analytics-view-designer-filters/filters-settings.png)
 
 下表描述了筛选器的设置。
 
@@ -59,8 +59,8 @@ ms.locfileid: "48041946"
 | 字段名称 | 查询值 | 标记 |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 计算机 |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
+| EventLevelName | Event &#124; distinct EventLevelName | 严重性 |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | 严重性 |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

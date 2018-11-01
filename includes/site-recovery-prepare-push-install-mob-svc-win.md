@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166293"
+---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>在 Windows 计算机上准备推送安装
 
 1. 确保 Windows 计算机与进程服务器之间已建立网络连接。
@@ -14,7 +27,7 @@
 
 1. 添加在 CSPSConfigtool 中创建的帐户。 执行以下步骤:
 
-    a. 登录到配置服务器。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录到配置服务器。
 
     b. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
 

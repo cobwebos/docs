@@ -2,19 +2,18 @@
 title: 将 Azure 流量管理器与 Azure Site Recovery 配合使用 | Microsoft Docs
 description: 介绍如何结合使用 Azure Site Recovery 和 Azure 流量管理器来实现灾难恢复和迁移
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 8f303ec3349b0003ef764e437c6f06cf498dcc57
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 42422bf94b4bb401850b6b6b21b089c4ab261d75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353248"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212788"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>将 Azure 流量管理器与 Azure Site Recovery 配合使用
 

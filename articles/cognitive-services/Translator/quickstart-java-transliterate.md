@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 53482c725b2cb20ec8c53354ee9683bb0c4c61d0
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0a5cc66aec3244d08fa5552c673aec8c98cb2383
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645211"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419378"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-java"></a>快速入门：使用文本翻译 REST API (Java) 对文本进行直译
 
@@ -23,7 +23,7 @@ ms.locfileid: "49645211"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但也可以使用文本编辑器。
+需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢的 Java IDE，可以使用它，但也可以使用文本编辑器。
 
 若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
 

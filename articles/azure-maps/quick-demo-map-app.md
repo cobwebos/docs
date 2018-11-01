@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 启动演示交互式地图搜索
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/10/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/26/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf39ad460d163a996bd2e0aa522d634cf485d83a
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541545"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209966"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>使用 Azure Maps 启动交互式搜索地图
 

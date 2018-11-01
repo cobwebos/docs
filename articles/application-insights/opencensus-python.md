@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9f14664ca035b3de1af80ca3101c22751c83237
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7507cdd7f3967dc132eecf81de347f2da791487f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963639"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414975"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
 
@@ -44,7 +44,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | 常规 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -180,7 +180,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
     由于我们只跟踪一个方法调用，因此应用程序映射的信息不多。 但是，应用程序映射可以通过缩放将多得多的分布式应用程序可视化：
 
-   ![应用程序地图](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![应用程序地图](media/opencensus-python/application-map.png)
 
 4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。
 

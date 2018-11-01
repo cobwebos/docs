@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ec2e31ae3127d27e0f494222385e7f6d456aa65
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698154"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231859"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -328,7 +328,7 @@ ms.locfileid: "38698154"
           client.onload = function () {
             if (client.readyState == 4) {
               if (client.status == 200) {
-                updateLog("Notification Hub Registration succesful!");
+                updateLog("Notification Hub Registration successful!");
                 updateLog(client.responseText);
               } else {
                 updateLog("Notification Hub Registration did not succeed!");

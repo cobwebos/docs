@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure Site Recovery 将本地 Windows Server 2008 服务器迁移到 Azure | Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 将本地 Windows Server 2008 计算机迁移到 Azure。
-services: site-recovery
-documentationcenter: ''
 author: bsiva
 manager: abhemraj
-editor: raynew
-ms.assetid: ''
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 09/22/2018
 ms.author: bsiva
-ms.openlocfilehash: d15a5b62a148e971c0740f01744fce308e502340
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.custom: MVC
+ms.openlocfilehash: 68a1367eec5392036797612e631a438b076b2cfc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056030"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210459"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 

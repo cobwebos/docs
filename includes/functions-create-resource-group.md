@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: d44865dc3189a7f9dc05106baf9f4d120e5e8bf6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132875"
+---
 ## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源（例如函数应用、数据库和存储帐户）的逻辑容器。
@@ -8,4 +21,4 @@
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-通常在附近的区域中创建资源组和资源。 若要查看应用服务计划的所有支持位置，请运行 [az appservice list-locations](/cli/azure/appservice#az_appservice_list_locations) 命令。
+通常在附近的区域中创建资源组和资源。 若要查看应用服务计划的所有支持位置，请运行 [az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations) 命令。

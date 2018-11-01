@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226691"
+---
 在此步骤中，在故障转移群集管理器和 SQL Server Management Studio 中手动创建可用性组侦听器。
 
 1. 从托管主副本的节点打开故障转移群集管理器。
@@ -20,13 +33,13 @@
    
    * 若要配置混合解决方案，请执行以下操作：
      
-        a. 右键单击与本地子网对应的 IP 地址资源，并选择“属性”。 记下 IP 地址名称和网络名称。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 右键单击与本地子网对应的 IP 地址资源，并选择“属性”。 记下 IP 地址名称和网络名称。
    
         b. 选择“静态 IP 地址”，分配未使用的 IP 地址，并单击“确定”。
  
    * 若要配置仅限 Azure 的解决方案，请执行以下操作：
 
-        a. 右键单击与 Azure 子网对应的 IP 地址资源，并选择“属性”。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 右键单击与 Azure 子网对应的 IP 地址资源，并选择“属性”。
        
        > [!NOTE]
        > 如果随后侦听器因 DHCP 选择的 IP 地址冲突而无法联机，可以在此属性窗口中配置有效的静态 IP 地址。

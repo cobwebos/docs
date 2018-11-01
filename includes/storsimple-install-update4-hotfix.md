@@ -1,10 +1,23 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 6b37f4bac4bfcc6001171ed27899b71cdac7a312
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164343"
+---
 <!--author=alkohli last changed: 01/23/18-->
 
 #### <a name="to-download-hotfixes"></a>下载修补程序
 
 执行以下步骤，从 Microsoft 更新目录下载软件更新。
 
-1. 启动 Internet Explorer 并导航到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -153,7 +166,7 @@
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. 使用 `Get-HcsUpdateStatus` 命令监视安装进度。 当 `RunInProgress` 更改为 `False` 时，即表示更新完成。
-4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 根据选项 1“以完全访问权限登录”登录，并检查磁盘固件版本。 键入：
+4. 安装完成后，安装维护模式修补程序的控制器将重新启动。 使用选项 1“以完全访问权限登录”登录，并验证磁盘固件版本。 键入：
    
    `Get-HcsFirmwareVersion`
    

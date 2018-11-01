@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jasonh
-ms.openlocfilehash: d198db98c07c01a56be118e74ce2bf4b29b8c757
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c62e52d9f2ee456dbaa12be24ff46285023e5eed
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048426"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417537"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "43048426"
 
 ## <a name="requirements"></a>要求
 
-* [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 或更高版本。
+* [Java 平台 JDK](https://aka.ms/azure-jdks) 8 或更高版本。
 
     > [!NOTE]
     > HDInsight 3.5 及更高版本要求 Java 8。 早期版本的 HDInsight 需要 Java 7。

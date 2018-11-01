@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166110"
+---
 ## <a name="configure-your-application-to-access-azure-storage"></a>创建用于访问 Azure 存储的应用程序
 有两种方法可以对要访问存储服务的应用程序进行身份验证：
 
@@ -31,7 +44,7 @@
 
 1. [安装 Microsoft Azure 存储资源管理器](http://storageexplorer.com)（如果尚未安装）
 2. 连接到订阅
-3. 单击存储帐户，然后单击左下方的“操作”选项卡。 单击“获取共享访问签名”，生成 SAS 的连接字符串。
+3. 单击存储帐户，并单击左下方的“操作”选项卡。 单击“获取共享访问签名”，生成 SAS 的连接字符串。
 4. 下面是 SAS 连接字符串的示例，该字符串为存储帐户的 Blob 服务授予对服务、容器和对象级别的读取与写入权限。
    
    `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`

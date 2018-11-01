@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 6b31882ec3916e60ac7dc7b8117328176abef1b4
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818528"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233627"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
@@ -158,7 +158,7 @@ ms.locfileid: "42818528"
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 
-* 若要提交或投票有关 Azure 逻辑应用和连接器的想法，请访问[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)。
+* 若要提交或投票有关 Azure 逻辑应用和连接器的想法，请访问[逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 * 文档中是否缺少你认为很重要的文章或详细信息？ 如果是，你可以在现有文章中补充内容或编写自己的文章。 我们的文档是开源的，托管在 GitHub 上。 使用 Azure 文档的 [GitHub 存储库](https://github.com/Microsoft/azure-docs)入门。 
 

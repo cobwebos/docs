@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226765"
+---
 VM 扩展可帮助你：
 
 * 修改安全性和识别功能，例如重置帐户值和使用反恶意软件
@@ -14,7 +25,7 @@ Azure 虚拟机代理（VM 代理）是一个安全的轻型进程，用于在 A
 
 存在两种 Azure VM 代理，一种用于 Windows VM，另一种用于 Linux VM。
 
-如果需要一个虚拟机实例来使用一个或多个 VM 扩展，该实例必须有安装的 VM 代理。 通过 Azure 门户创建的虚拟机映像和 **Marketplace** 提供的映像会自动在创建过程中安装 VM 代理。 如果虚拟机实例缺少 VM 代理，则可在创建虚拟机实例以后安装该 VM 代理。 也可安装随后上传的自定义 VM 映像中的代理。
+如果需要一个虚拟机实例来使用一个或多个 VM 扩展，该实例必须有安装的 VM 代理。 通过 Azure 门户创建的虚拟机映像和**市场**提供的映像会自动在创建过程中安装 VM 代理。 如果虚拟机实例缺少 VM 代理，则可在创建虚拟机实例以后安装该 VM 代理。 也可安装随后上传的自定义 VM 映像中的代理。
 
 > [!IMPORTANT]
 > 这些 VM 代理是非常轻量级的，可启用虚拟机实例的安全管理的服务。 可能也存在你不想要 VM 代理的情况。 如果是这样，请务必使用 Azure CLI 或 PowerShell 创建未安装 VM 代理的 VM。 尽管可以物理删除 VM 代理，但实例上的 VM 扩展的行为是不确定的。 因此，不支持删除已安装的 VM 代理。
@@ -22,7 +33,7 @@ Azure 虚拟机代理（VM 代理）是一个安全的轻型进程，用于在 A
 
 在下列情况下启用 VM 代理：
 
-* 用户使用 Azure 门户，并从 **Marketplace** 选择一个映像，通过这种方式创建 VM 的实例。
+* 用户使用 Azure 门户，并从**市场**选择一个映像，通过这种方式创建 VM 的实例。
 * 通过 [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx) 或 [New-AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) cmdlet 创建 VM 实例时。 可以通过在 [Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) cmdlet 中添加 **–DisableGuestAgent** 参数来创建没有 VM 代理的 VM。
 
 * 用户手动下载 VM 代理并将其安装在现有的 VM 实例上，然后将 **ProvisionGuestAgent** 值设置为 **true**。 可以对 Windows 和 Linux 代理使用此方法，只需使用 PowerShell 命令或 REST 调用即可。 （如果在手动安装 VM 代理后未设置 **ProvisionGuestAgent** 值，则将无法正常检测到添加的 VM 代理。）以下代码示例演示如何使用 PowerShell 执行此操作，其中 `$svc` 和 `$name` 参数已确定：

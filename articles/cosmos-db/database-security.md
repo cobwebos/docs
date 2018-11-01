@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: d74aa6b7ef762b7971fd67654e7fc1a23a8d83cc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e0cbf806b7999a56ccdf2826a735238fe8130bf5
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037926"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240573"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB 数据库安全性
 
@@ -67,7 +67,7 @@ ms.locfileid: "40037926"
 |用户和权限|使用帐户的[主密钥](#master-key)可为每个数据库创建用户资源和权限资源。 [资源令牌](#resource-token)与数据库中的权限相关联，确定用户是否对数据库中的应用程序资源拥有访问权限（读写、只读或无访问权限）。 应用程序资源包括容器、文档、附件、存储过程、触发器和 UDF。 然后，在身份验证期间，将使用资源令牌来允许或拒绝访问资源。<br><br>在[保护对 Azure Cosmos DB 资源的访问](secure-access-to-data.md)中了解详细信息。|
 |Active Directory 集成 (RBAC)| 还可以在 Azure 门户中使用访问控制 (IAM) 向数据库帐户提供访问权限，如此表后面的屏幕截图所示。 IAM 提供基于角色的访问控制并与 Active Directory 集成。 对于个人和组，可如下图中所示使用内置角色或自定义角色。|
 |全局复制|Azure Cosmos DB 提供全面的全局分发。只需单击一个按钮，就能将数据复制到 Azure 的任何一个全球数据中心。 全局复制可以实现全局缩放，以较低的延迟访问全球各地的数据。<br><br>从安全的上下文来看，全局复制可确保数据受到保护，防范区域性故障。<br><br>在[全球分布数据](distribute-data-globally.md)中了解详细信息。|
-|区域性故障转移|如果已将数据复制到多个数据中心，当区域数据中心脱机时，Azure Cosmos DB 会自动滚动切换操作。 可以使用数据复制到的区域创建故障转移区域的优先级列表。 <br><br>在 [Azure Cosmos DB 中的区域故障转移](regional-failover.md)中了解详细信息。|
+|区域性故障转移|如果已将数据复制到多个数据中心，当区域数据中心脱机时，Azure Cosmos DB 会自动滚动切换操作。 可以使用数据复制到的区域创建故障转移区域的优先级列表。 <br><br>在 [Azure Cosmos DB 中的区域故障转移](high-availability.md)中了解详细信息。|
 |本地复制|即使是在单个数据中心内，Azure Cosmos DB 也会自动复制数据来实现高可用性，并允许选择[一致性级别](consistency-levels.md)。 这可保证为所有单区域帐户和具有松散一致性的所有多区域帐户提供 99.99% 的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)，为所有多区域数据库帐户提供 99.999% 的读取可用性。|
 |自动联机备份|Azure Cosmos DB 数据库将定期备份并存储在异地冗余的存储中。 <br><br>在 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)中了解详细信息。|
 |还原已删除的数据|可以使用自动联机备份来恢复大约 30 天内意外删除的数据。 <br><br>在 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)中了解详细信息|

@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 96cba4e077be8b7658c270b09b177a845e16c8b0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165936"
+---
 本文假设
 
 1. 已在本地网络和 Azure 虚拟网络之间建立**站点到站点 VPN** 或 **ExpressRoute** 连接。

@@ -1,5 +1,16 @@
-
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165296"
+---
 | **限制标识符** | **限制** | **注释** |
 | --- | --- | --- |
 | 总容量（包括云） |每个虚拟设备最高 64 TB |可将整个 StorSimple 虚拟数组故障转移到另一个空数组。 如果尝试还原到同一设备，请确保该设备上有足够的空间，以便能够完成此操作。 超过 32 TB 后，无法还原到同一设备。 |
