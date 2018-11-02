@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 0564cd1b2c7acf09ee59b858eafb49a4217afe35
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 10f0062f27c03d8776415272766a1ec0729e1f80
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954810"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747280"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
@@ -325,6 +325,7 @@ ms.locfileid: "49954810"
                         <p><a href="/azure/cognitive-services/bing-entities-search/">必应实体搜索</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search">必应图像搜索</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search">必应视觉搜索</a></p>
+                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>必应当地企业搜索&nbsp;<sup style="font-size:70%">预览</sup></span></a></p>
                     </div>
                 </div>
             </div>

@@ -19,16 +19,24 @@ items:
     href: quickstart-device-simulation-deploy.md
 - name: 教程
   items:
-  - name: 监视 IoT 设备
-    href: iot-accelerators-remote-monitoring-monitor.md
-  - name: 检测设备问题
-    href: iot-accelerators-remote-monitoring-automate.md
-  - name: 配置和管理设备
-    href: iot-accelerators-remote-monitoring-manage.md
-  - name: 对警报执行根本原因分析
-    href: iot-accelerators-remote-monitoring-root-cause-analysis.md
-  - name: 使用警报并修复设备问题
-    href: iot-accelerators-remote-monitoring-maintain.md
+  - name: 远程监视
+    items:
+    - name: 监视 IoT 设备
+      href: iot-accelerators-remote-monitoring-monitor.md
+    - name: 检测设备问题
+      href: iot-accelerators-remote-monitoring-automate.md
+    - name: 配置和管理设备
+      href: iot-accelerators-remote-monitoring-manage.md
+    - name: 对警报执行根本原因分析
+      href: iot-accelerators-remote-monitoring-root-cause-analysis.md
+    - name: 使用警报并修复设备问题
+      href: iot-accelerators-remote-monitoring-maintain.md
+  - name: 设备模拟
+    items:
+    - name: 创建和运行模拟
+      href: iot-accelerators-device-simulation-create-simulation.md
+    - name: 创建自定义模拟设备
+      href: iot-accelerators-device-simulation-create-custom-device.md
 - name: 概念
   items:
   - name: 远程监视
@@ -47,12 +55,6 @@ items:
     items:
     - name: 体系结构
       href: iot-accelerators-connected-factory-sample-walkthrough.md
-  - name: 设备模拟
-    items:
-    - name: 设备模型架构
-      href: iot-accelerators-device-simulation-device-schema.md
-    - name: 设备模型行为
-      href: iot-accelerators-device-simulation-device-behavior.md
   - name: 对 azureiotsolutions.com 的权限
     href: iot-accelerators-permissions.md
 - name: 操作指南
@@ -124,14 +126,10 @@ items:
     items:
     - name: 使用现有 IoT 中心
       href: iot-accelerators-device-simulation-choose-hub.md
-    - name: 使用自定义设备模型
-      href: iot-accelerators-device-simulation-custom-model.md
+    - name: 创建高级模拟设备
+      href: iot-accelerators-device-simulation-advanced-device.md
     - name: 使用时序见解对遥测数据进行可视化
       href: iot-accelerators-device-simulation-time-series-insights.md
-    - name: 创建模拟设备
-      href: iot-accelerators-device-simulation-create-simulated-device.md
-    - name: 部署模拟设备
-      href: iot-accelerators-device-simulation-deploy-simulated-device.md
 - name: 引用
   items:
   - name: 远程监视
@@ -212,9 +210,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT 解决方案加速器学习路径
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: e28f7e30378291c3384ddbd90af6fe02d1aa365b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f9b92b06850668f0f92fa77a67ac640e4c245c37
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165328"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754012"

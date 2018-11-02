@@ -64,6 +64,7 @@
 
 ## 持续集成和持续部署
 ### [概述](data-lake-analytics-cicd-overview.md)
+### [程序集注册](data-lake-analytics-cicd-manage-assemblies.md)
 ### [设置测试](data-lake-analytics-cicd-test.md)
 ### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 
