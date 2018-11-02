@@ -27,6 +27,10 @@ items:
     href: troubleshoot-rdp-intermittent-connectivity.md
   - name: 排查常见错误
     href: troubleshoot-rdp-general-error.md
+  - name: 排查身份验证错误
+    href: troubleshoot-authentication-error-rdp-vm.md
+  - name: 按事件 ID 排查 Azure VM RDP 连接问题
+    href: event-id-troubleshoot-vm-rdp-connecton.md
 - name: SSH
   items:
   - name: SSH 故障排除
@@ -135,9 +139,11 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 了解系统重启
   href: understand-vm-reboot.md
-ms.openlocfilehash: 749bfa9916431b4131dd7d0e814835baa96c6d64
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+- name: 远程故障排除工具
+  href: remote-tools-troubleshoot-azure-vm-issues.md
+ms.openlocfilehash: 677fad7f648d88d5598d1c58da205d6cbb859408
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209235"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414754"
