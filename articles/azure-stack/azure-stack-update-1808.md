@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1414fd7b559a1bf12cc26d218f4577bbdc986916
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429059"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964112"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -157,6 +157,10 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 - 在某些情况下更新需要引起注意，当相应可能不会生成警报。 准确的状态仍会反映在门户中，不受影响。
 
 ### <a name="post-update-steps"></a>更新后步骤
+
+> [!Important]  
+> 获取 Azure Stack 部署的扩展主机准备就绪。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
+
 此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
 - [KB 4468920 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
