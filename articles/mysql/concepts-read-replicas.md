@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/30/2018
+ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969438"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412442"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -34,6 +34,10 @@ Azure Database for MySQL 服务中创建的副本是新服务器，可以像常�
 ### <a name="pricing-tiers"></a>定价层
 
 只读副本当前仅适用于“常规用途”和“内存优化”的定价层。
+
+### <a name="master-server-restart"></a>主服务器重启
+
+在此预览期间，如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 ### <a name="stopping-replication"></a>停止复制
 

@@ -1,22 +1,20 @@
 ---
-title: 排除 Azure Site Recovery 代理故障：来宾代理状态不可用 | Microsoft Docs
-description: 与代理和扩展相关的 Azure Site Recovery 故障的症状、原因及解决方法
-services: site-recovery
+title: 对 Azure Site Recovery 代理问题进行故障排除 | Microsoft Docs
+description: 提供有关 Azure Site Recovery 代理故障的症状、原因和解决方法的信息。
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: troubleshooting
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919798"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215032"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>排除 Azure Site Recovery 扩展故障：代理或扩展的问题
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>对 Azure Site Recovery 代理问题进行故障排除
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展相关的 Azure Site Recovery 错误。
 

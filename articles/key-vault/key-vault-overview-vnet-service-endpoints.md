@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6e0029e051e418bc54471284547329a0b0a2e9cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404318"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246648"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -44,7 +44,7 @@ ms.locfileid: "49404318"
 请参阅[配置 Azure Key Vault 防火墙和虚拟网络](key-vault-network-security.md)了解详细的分布说明。
 
 > [!IMPORTANT]
-> 防火墙规则生效后，只在调用方请求来自允许的虚拟网络或 IPV4 地址范围时，才能执行所有 Key Vault [数据平面](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)操作。 从 Azure 门户访问密钥保管库时，这同样适用。 虽然用户可从 Azure 门户浏览到密钥保管库，但如果其客户端计算机不在允许列表中，则可能无法列出密钥/机密/证书。 这也会影响其他 Azure 服务的“Key Vault 选取器”。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看密钥保管库列表，但不能查看列表密钥。
+> 防火墙规则生效后，只在调用方请求来自允许的虚拟网络或 IPV4 地址范围时，才能执行所有 Key Vault [数据平面](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)操作。 （若要了解有关管理平面与数据平面的更多信息，请阅读[此文](../key-vault/key-vault-secure-your-key-vault.md#management-plane-access-control)。这也适用于从 Azure 门户访问密钥保管库。 虽然用户可从 Azure 门户浏览到密钥保管库，但如果其客户端计算机不在允许列表中，则可能无法列出密钥/机密/证书。 这也会影响其他 Azure 服务的“Key Vault 选取器”。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看密钥保管库列表，但不能查看列表密钥。
 
 
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 450314dddd49825bae689701b694f9a26758835e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377633"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420517"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
@@ -151,7 +151,7 @@ ms.locfileid: "49377633"
 “放置还原”通过“替换现有”选项卡完成。
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>替换还原点中的现有磁盘
-“替换现有”选项可将当前 VM 中的现有磁盘替换为所选的还原点。 仅在当前 VM 存在时，才可执行此操作。 如果出于任何原因删除了 VM，此操作将无法执行；或者，建议“新建”VM 或磁盘以继续执行还原操作。 替换现有磁盘操作过程中，作为预防措施，请在启动替换磁盘操作之前备份数据。 如果还原点的磁盘数多于/少于当前 VM，则还原点中的磁盘数将仅反映在 VM 中。 目前只有托管磁盘和未加密 VM 支持“替换现有”选项。  
+“替换现有”选项可将当前 VM 中的现有磁盘替换为所选的还原点。 仅在当前 VM 存在时，才可执行此操作。 如果出于任何原因删除了 VM，此操作将无法执行；或者，建议“新建”VM 或磁盘以继续执行还原操作。 替换现有磁盘操作过程中，作为预防措施，请在启动替换磁盘操作之前备份数据。 如果还原点的磁盘数多于/少于当前 VM，则还原点中的磁盘数将仅反映在 VM 中。 目前托管磁盘和加密 VM 不支持“替换现有”选项。 [通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 以及使用[自定义映像](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)创建的 VM 也不支持此选项。  
 
  在“还原配置”边栏选项卡上，需要选择的唯一输入是“临时位置”。
 
@@ -170,7 +170,7 @@ ms.locfileid: "49377633"
 
 “备份作业”边栏选项卡随即打开并显示作业列表。
 
-![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-completed.png)
+![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>使用模板自定义还原 VM
 [还原磁盘操作完成](#Track-the-restore-operation)后，使用在还原操作过程中生成的模板来创建配置与备份配置不同的新 VM。 还可使用该模板自定义从还原点创建新 VM 时创建的资源的名称。

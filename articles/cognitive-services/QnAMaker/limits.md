@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384934"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137287"
 ---
 # <a name="qna-maker-limits"></a>QnA Maker 限制
 QnA Maker 限制的完整列表。
@@ -26,7 +26,7 @@ QnA Maker 限制的完整列表。
 
 |**Azure 搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|已发布知识库的最大允许数量（最大索引 - 1（为测试保留））|2|14|49|199|199|2999|
+|已发布知识库的最大允许数量（最大索引 - 1（为测试保留））|2|14|49|199|199|2,999|
 
 ## <a name="extraction-limits"></a>提取限制
 * 可提取文件的最大数量和最大文件大小：请参阅 [QnAMaker 定价](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -37,12 +37,12 @@ QnA Maker 限制的完整列表。
 
 |**Azure 搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1000|100*|1000|1000|1000|1000|
+|每个 QnA Maker 服务的元数据字段的最大数量（包括所有知识库）|1,000|100*|1,000|1,000|1,000|1,000|
 
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
 知识库中内容的总体限制：
-* 答案文本的长度：250000
-* 问题文本的长度：1000
+* 答案文本的长度：25,000
+* 问题文本的长度：1,000
 * 元数据键/值文本的长度：100
 * 支持的元数据名称字符：字母、数字和 _  
 * 支持的元数据值字符：除 : 和 | 以外的所有字符 

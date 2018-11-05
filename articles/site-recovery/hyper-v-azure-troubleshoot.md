@@ -1,6 +1,6 @@
 ---
-title: 排查使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制的问题 | Microsoft Docs
-description: 介绍如何排查使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制的问题
+title: 常见问题 - 使用 Azure Site Recovery 对 Hyper-V 到 Azure 的灾难恢复进行故障排除 | Microsoft Docs
+description: 介绍如何排查使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制时遇到的灾难恢复问题
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: ramamill
-ms.openlocfilehash: 027107cca1872ddd504567b74c798fc00e9af214
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 753f666c9ac0167f672353ff33e28d0f7e68b755
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067377"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212941"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 

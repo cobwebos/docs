@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323692"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215100"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -25,7 +25,7 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 
 ![数字孪生空间图建筑物][1]
 
-<a id="model" />
+<a id="model"></a>
 
 空间图将空间、设备、传感器和用户汇集在一起。 每个对象都以模拟现实世界的形式连接在一起：43号场馆有四层楼，每层都有多个不同的区域。 用户与其工作站相关联，并且可以访问图形的某些部分。  例如，管理员有权更改空间图，而访问者可能仅有权查看某些建筑物数据。
 
@@ -52,19 +52,19 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 - 匹配器：确定将为给定的遥测消息执行哪些 UDF 的对象。
 - 终结点：可以路由遥测消息和数字孪生事件的位置，例如 `Event Hub`、`Service Bus`、`Event Grid`。
 
-<a id="graph" />
+<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>空间智能图
 
 空间图是数字孪生对象模型中定义的空间、设备和人员的层次结构关系图。 空间图支持继承、筛选、遍历、可伸缩性和可扩展性。 用户可以使用 REST API 集合管理空间图并与其交互（参见下文）。
 
-在订阅中部署数字孪生服务的用户将成为根节点的全局管理员，同时会自动授予对整个结构的完全访问权限。 然后，此用户可以使用 `Space` API 预配关系图中的空间。 可以使用 `Device` API 配置设备，可以使用 `Sensor` API 预配传感器等等。我们还提供用于批量预配关系图的[开放源工具](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
+在订阅中部署数字孪生服务的用户将成为根节点的全局管理员，同时会自动授予对整个结构的完全访问权限。 然后，此用户可以使用空间 API 预配关系图中的空间。 可以使用设备 API 预配设备，可以使用传感器 API 预配传感器等等。我们还提供用于批量预配关系图的[开放源工具](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
 
 关系图继承适用于来源于父节点及其以下所有节点的权限和属性。 例如，当为给定节点上的用户分配角色时，该用户将拥有该角色对给定节点及其以下每个节点所拥有的权限。 此外，该节点下的所有节点将继承为给定节点定义的每个属性密钥和扩展类型。
 
-关系图筛选使用户能够按 ID、名称、类型、子类型、父空间、关联空间、传感器数据类型、属性密钥和值、遍历、minLevel、maxLevel 和其他 OData 筛选器参数缩小请求结果的范围。
+关系图_筛选_使用户能够按 ID、名称、类型、子类型、父空间、关联空间、传感器数据类型、属性密钥和值、遍历、minLevel、maxLevel 和其他 OData 筛选器参数缩小请求结果的范围。
 
-关系图遍历允许用户从深度和广度层面导航空间图。 对于深度，可以使用导航参数 `traverse`、`minLevel`、`maxLevel` 自上而下或自下而上遍历关系图。 对于广度，可以导航关系图以使同级节点直接连接到父空间或其后代之一。 查询对象时，可以使用 GET API 的 `includes` 参数获取与该对象有关系的所有相关对象。
+关系图遍历允许用户从深度和广度层面导航空间图。 对于深度，可以使用导航参数 traverse、minLevel、maxLevel 自上而下或自下而上遍历关系图。 对于广度，可以导航关系图以使同级节点直接连接到父空间或其后代之一。 查询对象时，可以使用 GET API 的 *includes* 参数获取与该对象有关系的所有相关对象。
 
 Azure 数字孪生确保关系图具有可伸缩性，以便它能处理实际工作负荷。 数字孪生可以用于表示房地产、基础设施、设备、传感器、遥测等大型项目组合。
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourInstanceName` | Azure 数字孪生实例的名称 |
-| `yourLocation` | 托管实例的服务器区域 |
+| *yourInstanceName* | Azure 数字孪生实例的名称 |
+| *yourLocation* | 托管实例的服务器区域 |
 
  可在下图中看到使用的完整 URL 格式：
 

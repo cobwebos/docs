@@ -4,9 +4,6 @@ description: 本文列出了 Azure 流量管理器地理路由类型使用的国
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201490"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138236"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
 
-本文列出了 Azure 流量管理器中**地理**流量路由方法使用的国家和地区。 还可以通过调用 [ Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
+本文列出了 Azure 流量管理器中**地理**流量路由方法使用的国家和地区。 还可以通过调用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
 
 - WORLD(全球)
 
@@ -271,7 +268,7 @@ ms.locfileid: "28201490"
 
         - TT(特立尼达和多巴哥)
 
-        - UM(美属外岛)
+        - UM(美属本土外小岛屿)
 
         - US(美国)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 机器学习中的新增功能 | Microsoft 文档
-description: Azure 机器学习中的新增功能。
+title: Azure 机器学习工作室中的新增功能 | Microsoft Docs
+description: Azure 机器学习工作室中提供的新功能。
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -14,19 +14,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 61bea7fde96b239a50ec25a702a73ecfb62ce717
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 10/28/2018
+ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836066"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212652"
 ---
-# <a name="whats-new-in-azure-machine-learning"></a>Azure 机器学习新增功能
+# <a name="whats-new-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的新增功能
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>Microsoft Azure 机器学习更新的 2017 年 3 月版提供以下功能：
+## <a name="october-2018"></a>2018 年 10 月
 
+[执行 R 脚本](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script)模块中的 R 语言引擎添加了一个新的 R 运行时版本 - Microsoft R Open (MRO) 3.4.4。 MRO 3.4.4 基于开源 CRAN R 3.4.4，因此与使用该 R 版本的包兼容。若要详细了解支持的 R 包，请参阅 [Azure 机器学习工作室支持的 R 包](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)。
 
+## <a name="march-2017"></a>2017 年 3 月 
+此版本的 Microsoft Azure 机器学习更新提供以下功能：
 
 * Azure 机器学习 BES 作业的专用容量
 
@@ -35,14 +38,16 @@ ms.locfileid: "34836066"
     有关详细信息，请参阅[适用于机器学习作业的 Azure Batch 服务](dedicated-capacity-for-bes-jobs.md)。
 
 
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Microsoft Azure 机器学习更新的 2016 年 8 月版提供以下功能：
+## <a name="august-2016"></a>2016 年 8 月 
+此版本的 Microsoft Azure 机器学习更新提供以下功能：
 * 经典 Web 服务现可在新的 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户中管理，这里提供管理 Web 服务所有方面的一个地方。    
   * 提供 Web 服务[使用情况统计](manage-new-webservice.md)。
   * 使用示例数据简化了对 Azure 机器学习远程请求调用的测试。
   * 提供新的 Batch 执行服务测试页面，并附有示例数据和作业提交历史记录。
   * 提供更简单的终结点管理。
 
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Microsoft Azure 机器学习更新的 2016 年 7 月版提供以下功能：
+## <a name="july-2016"></a>2016 年 7 月 
+此版本的 Microsoft Azure 机器学习更新提供以下功能：
 * Web 服务现在作为通过 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)界面管理的 Azure 资源进行管理，支持以下增强功能：
   * 新 [REST API](https://msdn.microsoft.com/library/azure/Dn950030.aspx) 可部署和管理基于 Resource Manager 的 Web 服务。
   * 新 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)门户提供管理 Web 服务所有方面的一个地方。

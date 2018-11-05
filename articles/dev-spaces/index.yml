@@ -1,22 +1,21 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cf8cdf228a492f643501367cba2946964ab3e5c2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: d9bcbb0b5aad1a9fd4f8edf361e8f5809897fa41
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390478"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977486"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
   title: Azure Dev Spaces | Microsoft Docs
   meta.description: Rapid Kubernetes development with containers and microservices on Azure.
   services: azure-dev-spaces
-  author: ghogen
-  manager: douge
+  author: iainfoulds
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   ms.date: 08/23/2018
-  ms.author: ghogen
+  ms.author: iainfou
 sections:
 - title: 为团队提供的快速、迭代的 Kubernetes 开发体验
   items:
@@ -26,7 +25,7 @@ sections:
     text: >-
       > [!IMPORTANT]
 
-      > Azure Dev Spaces 当前处于预览状态，仅受“美国东部”、“美国中部”、“美国西部 2”、“西欧”、“加拿大中部”和“加拿大东部”区域内的 AKS 群集支持。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+      > Azure Dev Spaces 当前处于预览状态，仅受“美国东部”、“美国东部 2”、“美国中部”、“美国西部 2”、“西欧”、“东南亚”、“加拿大中部”和“加拿大东部”区域内的 AKS 群集支持。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 - title: 开始使用 Azure Dev Spaces
   items:
   - type: paragraph
@@ -39,7 +38,7 @@ sections:
       text: Java
       href: quickstart-java.md
     - image:
-        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
+        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
       text: .NET 和 VS Code
       href: quickstart-netcore.md
     - image:

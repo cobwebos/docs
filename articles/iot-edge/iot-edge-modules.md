@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 80679d6efd44598fbe403707ad2e757010eb8d91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423385"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741668"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -31,7 +31,7 @@ IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安�
 
 每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 世界不同地区的两台设备可以使用相同的模块映像；但是，当模块在设备上启动时，每个模块都有其自己的模块实例。 
 
-![云中的模块映像 - 设备上模块实例][1]
+![云中的模块映像 - 设备上模块实例](./media/iot-edge-modules/image_instance.png)
 
 在实现中，模块映像作为存储库中的容器映像存在，而模块实例则是设备上的容器。 
 
@@ -46,23 +46,23 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 很显然，当需要在同一设备上多次部署一个模块映像时，可以使用不同的名称多次部署相同的映像。
 
-![模块标识是唯一的][2]
+![模块标识是唯一的](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>模块孪生
 
 此外，每个模块实例都有一个对应的模块孪生，你可以使用它来配置模块实例。 实例和孪生通过模块标识进行相互关联。 
 
-模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生][lnk-device-twin]概念类似。 模块孪生的结构与设备孪生完全相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
+模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)概念类似。 模块孪生的结构与设备孪生完全相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
 
 ```csharp
-// Create a ModuleClient object. This ModuleClient will act on behalf of a 
-// module since it is created with a module’s connection string instead 
-// of a device connection string. 
-ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
-await client.OpenAsync(); 
- 
-// Get the module twin 
-Twin twin = await client.GetTwinAsync(); 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
+// module since it is created with a module’s connection string instead 
+// of a device connection string. 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
+await client.OpenAsync(); 
+ 
+// Get the module twin 
+Twin twin = await client.GetTwinAsync(); 
 ```
 
 ## <a name="offline-capabilities"></a>脱机功能
@@ -79,15 +79,8 @@ Azure IoT Edge 支持在 IoT Edge 设备上执行脱机操作。 现在，这些
 公共预览版中提供了其他脱机功。能。 有关详细信息，请参阅[了解 IoT Edge 设备、模块和子设备的扩展脱机功能](offline-capabilities.md)。
 
 ## <a name="next-steps"></a>后续步骤
- - [了解开发 IoT Edge 模块的要求和工具][lnk-mod-dev]
- - [了解 Azure IoT Edge 运行时及其体系结构][lnk-runtime]
+ - [了解开发 IoT Edge 模块的要求和工具](module-development.md)
+ - [了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)
 
 <!-- Images -->
-[1]: ./media/iot-edge-modules/image_instance.png
 [2]: ./media/iot-edge-modules/identity.png
-
-<!-- Links -->
-[lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-runtime]: iot-edge-runtime.md
-[lnk-mod-dev]: module-development.md

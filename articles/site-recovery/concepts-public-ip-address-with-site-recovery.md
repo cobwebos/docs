@@ -1,22 +1,21 @@
 ---
-title: 将公共 IP 地址与 Site Recovery 配合使用 | Microsoft Docs
+title: 使用 Azure Site Recovery 进行故障转移后使用公共 IP 地址 | Microsoft Docs
 description: 介绍如何结合使用 Azure Site Recovery 和 Azure 流量管理器设置公共 IP 地址来实现灾难恢复和迁移
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mayg
-ms.openlocfilehash: fd17c786515a6db1f8aa5c1aff7c0dcd42ed7dc6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435815"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215270"
 ---
-# <a name="public-ip-address-with-site-recovery"></a>将公共 IP 地址与 Site Recovery 配合使用
+# <a name="set-up-public-ip-addresses-after-failover"></a>设置故障转移后的公共 IP 地址
 
 公共 IP 地址允许 Internet 资源与 Azure 资源进行入站通信。 在 IP 地址已分配给 Azure 资源的情况下，公共 IP 地址还允许这些资源与 Internet 和面向公众的 Azure 服务进行出站通信。
 - 从 Internet 到资源的入站通信，如 Azure 虚拟机 (VM)、Azure 应用程序网关、Azure 负载均衡器、Azure VPN 网关等。 如果 VM 没有分配有公共 IP 地址，则仍可通过 Internet 与某些资源（如 VM）进行通信，前提是 VM 是负载均衡器后端池的一部分且负载均衡器分配有公共 IP 地址。

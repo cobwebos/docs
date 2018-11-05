@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480415"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230778"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -97,6 +97,8 @@ ms.locfileid: "39480415"
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
+>[!NOTE]
+>上面的命令在“`nrequire”中使用反引号。
 
 9. 若要验证自定义 RDP 属性的修改并查看将从此集合的 RDWeb 下载的 RDP 文件内容，请运行以下命令：
     ```

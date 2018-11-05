@@ -1,5 +1,5 @@
 ---
-title: 使用适用于容器的 Azure Monitor 监视 AKS 群集性能 | Microsoft Docs
+title: 使用用于容器的 Azure Monitor（预览版）监视 AKS 群集性能 | Microsoft Docs
 description: 本文介绍如何使用适用于容器的 Azure Monitor 查看和分析性能和日志数据。
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: daec3d6e6cd8e4df3fdfe45fbb8ee98966c8a38e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637958"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214148"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers-preview"></a>使用用于容器的 Azure Monitor（预览版）了解 AKS 群集性能
 可以使用适用于容器的 Azure Monitor 从两个角度查看 Azure Kubernetes 服务 (AKS) 群集的性能，一是直接从 AKS 群集查看，二是从 Azure Monitor 查看订阅中的所有 AKS 群集。 
 
 可以通过本文了解这两个角度的不同体验，以及如何快速评估、调查和解决检测到的问题。
@@ -129,7 +129,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表介绍查看节点时显示的信息：
 
-| 列 | 说明 | 
+| 列 | Description | 
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -154,7 +154,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表介绍查看控制器时显示的信息：
 
-| 列 | 说明 | 
+| 列 | Description | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 完成运行状态时容器的汇总状态，例如“正常”、“已终止”、“已失败”、“已停止”或“已暂停”。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表中提供了状态图标的更多详细信息。|
@@ -191,7 +191,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表介绍查看容器时显示的信息：
 
-| 列 | 说明 | 
+| 列 | Description | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|

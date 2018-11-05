@@ -1,22 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 复制到 Azure (CSP) 的多租户支持概述 | Microsoft Docs
-description: 介绍通过 CSP 计划，在多租户环境中为租户订阅提供 Azure Site Recovery 支持的概述。
-services: site-recovery
+title: 使用 Azure Site Recovery 将 VMware VM 灾难恢复到 Azure (CSP) 的多租户支持概述 | Microsoft Docs
+description: 概述了在多租户环境 (CSP) 程序对从 VMWare 灾难恢复到 Azure 的 Azure Site Recovery 支持。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352865"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210748"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>使用 CSP 将 VMware 复制到 Azure 的多租户支持的概述
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
 [Azure Site Recovery](site-recovery-overview.md) 支持适用于租户订阅的多租户环境。 它还支持适用于租户订阅的多租户，这些租户订阅通过 Microsoft 云解决方案提供商 (CSP) 计划创建和管理。
 

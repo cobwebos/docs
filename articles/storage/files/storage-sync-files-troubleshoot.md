@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389269"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231876"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -74,9 +74,9 @@ Reset-StorageSyncServer
 如果看到此消息，并且 Azure 文件共享当前未被云终结点使用，请完成以下步骤清除 Azure 文件共享上的 Azure 文件同步元数据：
 
 > [!Warning]  
-> 删除云终结点当前正在使用的 Azure 文件共享上的元数据会导致 Azure 文件同步操作失败。 
+> 删除云终结点当前正在使用的 Azure 文件共享上的元数据会导致 Azure 文件同步操作失败。 
 
-1. 在 Azure 门户中，转到 Azure 文件共享。  
+1. 在 Azure 门户中，转到 Azure 文件共享。  
 2. 右键单击该 Azure 文件共享，并选择“编辑元数据”。
 3. 右键单击“SyncService”，并选择“删除”。
 
@@ -258,7 +258,7 @@ PerItemErrorCount: 1006.
 | 字符集 | 字符计数 |
 |---------------|-----------------|
 | <ul><li>0x0000009D（osc 操作系统命令）</li><li>0x00000090（dcs 设备控制字符串）</li><li>0x0000008F (ss3 single shift three)</li><li>0x00000081（高八位字节预设）</li><li>0x0000007F（del 删除）</li><li>0x0000008D（ri 反向换行符）</li></ul> | 6 |
-| 0x0000FDD0-0x0000FDEF（阿拉伯语显示格式 a） | 32 |
+| 0x0000FDD0 - 0x0000FDEF（阿拉伯语显示格式 a） | 32 |
 | 0x0000FFF0-0x0000FFFF（特殊字符） | 16 |
 | <ul><li>0x0001FFFE - 0x0001FFFF = 2（非字符）</li><li>0x0002FFFE - 0x0002FFFF = 2（非字符）</li><li>0x0003FFFE - 0x0003FFFF = 2（非字符）</li><li>0x0004FFFE - 0x0004FFFF = 2（非字符）</li><li>0x0005FFFE - 0x0005FFFF = 2（非字符）</li><li>0x0006FFFE - 0x0006FFFF = 2（非字符）</li><li>0x0007FFFE - 0x0007FFFF = 2（非字符）</li><li>0x0008FFFE - 0x0008FFFF = 2（非字符）</li><li>0x0009FFFE - 0x0009FFFF = 2（非字符）</li><li>0x000AFFFE - 0x000AFFFF = 2（非字符）</li><li>0x000BFFFE - 0x000BFFFF = 2（非字符）</li><li>0x000CFFFE - 0x000CFFFF = 2（非字符）</li><li>0x000DFFFE - 0x000DFFFF = 2（非字符）</li><li>0x000EFFFE - 0x000EFFFF = 2（未定义）</li><li>0x000FFFFE - 0x000FFFFF = 2（补充专用区域）</li></ul> | 30 |
 | 0x0010FFFE、0x0010FFFF | 2 |
@@ -519,7 +519,7 @@ PerItemErrorCount: 1006.
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT（十进制）** | -2134375908 |
-| **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEGE_LIMIT_REACHED |
+| **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c80253 |

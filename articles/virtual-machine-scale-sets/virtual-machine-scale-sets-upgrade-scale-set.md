@@ -3,7 +3,7 @@ title: 修改 Azure 虚拟机规模集 | Microsoft Docs
 description: 了解如何使用 REST API、Azure PowerShell 和 Azure CLI 修改和更新 Azure 虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: negat
-ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: manayar
+ms.openlocfilehash: c3c01d7013749ca5cbd95224c230932a20a8146b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322067"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740581"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 修改现有规模集。
@@ -162,7 +162,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-这些属性描述的是 VM 实例的配置，而不是规模集作为一个整体的配置。 例如，规模集模型使用 `overprovision` 作为属性，而规模集中 VM 实例的模型则不是这样。 之所以存在这种差异，是因为过度预配是规模集作为一个整体的属性，而不是规模集中各个 VM 实例的属性（有关过度预配的详细信息，请参阅[规模集的设计注意事项](virtual-machine-scale-sets-design-overview.md#overprovisioning)）。
+这些属性描述的是规模集中某个 VM 实例的配置，而不是规模集作为一个整体的配置。 例如，规模集模型使用 `overprovision` 作为属性，而规模集中 VM 实例的模型则不是这样。 之所以存在这种差异，是因为过度预配是规模集作为一个整体的属性，而不是规模集中各个 VM 实例的属性（有关过度预配的详细信息，请参阅[规模集的设计注意事项](virtual-machine-scale-sets-design-overview.md#overprovisioning)）。
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>规模集 VM 实例视图
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-这些属性描述的是 VM 实例的当前运行时状态，包括应用于规模集的任何扩展。
+这些属性描述的是规模集中 VM 实例的当前运行时状态，包括应用于规模集的任何扩展。
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>如何更新全局规模集属性

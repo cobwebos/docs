@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: b4e022d6237712d8281c6f4f9332a68821dfd5b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fea0e4d640f42909b33ae418315c460946544256
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470075"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739577"
 ---
 # <a name="paging-webpages"></a>分页网页 
 
@@ -50,11 +50,14 @@ Ocp-Apim-Subscription-Key: <subscription ID>
 Host: api.cognitive.microsoft.com  
 ```  
 
-如果默认 `count` 值适用于你的实现，则只需指定 `offset` 查询参数。  
+如果默认 `count` 值适用于实现，只需指定 `offset` 查询参数即可。  
   
 ```  
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
 Ocp-Apim-Subscription-Key: <subscription ID>  
 Host: api.cognitive.microsoft.com  
 ```  
+
+> [!NOTE]
+> `TotalEstimatedAnswers` 字段是可以为当前查询检索的搜索结果总数的估计值。  设置 `count` 和 `offset` 参数时，`TotalEstimatedAnswers` 数值可能会更改。 
 

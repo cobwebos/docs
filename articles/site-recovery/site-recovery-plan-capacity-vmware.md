@@ -1,21 +1,20 @@
 ---
-title: 规划容量和缩放以便使用 Azure Site Recovery 将 VMware 复制到 Azure | Microsoft Docs
-description: 请阅读本文了解如何规划容量和缩放，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure
-services: site-recovery
+title: 规划容量和缩放以便使用 Azure Site Recovery 将 VMware 灾难恢复到 Azure | Microsoft Docs
+description: 请阅读本文了解在使用 Azure Site Recovery 设置 VMware VM 到 Azure 的灾难恢复时，如何规划容量和缩放
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067534"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210493"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>规划容量和缩放以便将 VMware 灾难恢复到 Auzre
 
 请阅读本文，了解如何规划容量和缩放，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure。
 

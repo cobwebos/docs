@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221972"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157201"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
-本文解答有关 Cloudyn 的一些常见问题。 如果你对 Cloudyn 有疑问，可以在[有关 Cloudyn 的常见问题解答](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)中提出问题。
+本文解答有关 Cloudyn 的一些常见问题。 如果你对 Cloudyn 有疑问，可以在[有关 Cloudyn 的常见问题解答](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn)中提出问题。
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>如何解决常见的间接企业设置问题？
 
@@ -35,7 +35,7 @@ ms.locfileid: "47221972"
 
 1. 经销商需为你的帐户启用标记。 有关说明，请参阅[间接客户加入指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
 
-2. 生成可在 Cloudyn 中使用的 Azure 企业协议密钥。 有关说明，请参阅[添加 Azure EA](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) 或[如何查找 EA 登记 ID 和 API 密钥](https://youtu.be/u_phLs_udig)。
+2. 生成可在 Cloudyn 中使用的 Azure 企业协议密钥。 有关说明，请参阅[添加 Azure EA](quick-register-ea.md#register-with-cloudyn) 或[如何查找 EA 登记 ID 和 API 密钥](https://youtu.be/u_phLs_udig)。
 
 只有 Azure 服务管理员可以启用 Cloudyn。 协同管理员的权限不足。
 
@@ -100,7 +100,7 @@ Cloudyn 用户帐户使用单一登录从 Azure 建立连接。 如果用户错�
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>如何使用 Azure 凭据激活尚未激活的帐户？
 
-Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提供成本数据。 但是，要让 Cloudyn 提供使用情况和性能数据，需要注册帐户的 Azure 凭据。 有关说明，请参阅[添加 Azure 资源管理器](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager)。
+Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提供成本数据。 但是，要让 Cloudyn 提供使用情况和性能数据，需要注册帐户的 Azure 凭据。 有关说明，请参阅[添加帐户或更新订阅](activate-subs-accounts.md#add-an-account-or-update-a-subscription)。
 
 若要添加帐户的 Azure 凭据，请在 Cloudyn 门户中，选择帐户名（而不是订阅）右侧的编辑符号。
 
@@ -108,10 +108,7 @@ Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提�
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>如何将多个帐户和实体添加到现有订阅？
 
-使用更多的实体可将更多的企业协议添加到 Cloudyn 订阅。 以下链接介绍了如何添加更多实体：
-
-- [添加实体](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity)文章
-- [使用成本实体定义层次结构](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities)视频
+使用更多的实体可将更多的企业协议添加到 Cloudyn 订阅。 有关详细信息，请参阅[创建和管理实体](tutorial-user-access.md#create-and-manage-entities)。
 
 对于 CSP：
 

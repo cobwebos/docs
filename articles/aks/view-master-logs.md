@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406035"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138151"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -42,7 +42,7 @@ ms.locfileid: "49406035"
 ![为 AKS 群集的 Log Analytics 启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->OMS 工作区现在称为 Log Analytics 工作区。 
+>OMS 工作区现在称为 Log Analytics 工作区。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 群集上计划测试 pod
 
@@ -82,7 +82,7 @@ pod/nginx created
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
-在左侧选择“日志搜索”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
+在左侧选择“日志”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
 AzureDiagnostics

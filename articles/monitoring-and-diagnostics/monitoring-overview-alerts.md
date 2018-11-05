@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960628"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413854"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -23,7 +23,7 @@ ms.locfileid: "46960628"
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以前摄性的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
-本文讨论 Azure Monitor 中的统一警报体验，其现在包括 Log Analytics 和 Application Insights。 [以前的警报体验](monitoring-overview-alerts.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
+本文讨论 Azure Monitor 中的统一警报体验，其现在包括 Log Analytics 和 Application Insights。 [以前的警报体验](monitoring-overview-alerts.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。
 
 
 ## <a name="overview"></a>概述
@@ -62,7 +62,7 @@ ms.locfileid: "46960628"
 
 支持以下警报状态。
 
-| 状态 | 说明 |
+| 状态 | Description |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
@@ -85,7 +85,7 @@ ms.locfileid: "46960628"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | 说明 |
+| 列 | Description |
 |:---|:---|
 | 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -93,7 +93,7 @@ ms.locfileid: "46960628"
 
 选择“警报”页面顶部的以下值打开另一个页面。
 
-| 值 | 说明 |
+| 值 | Description |
 |:---|:---|
 | 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
 | 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
@@ -135,13 +135,13 @@ ms.locfileid: "46960628"
 
 可以通过选择页面顶部的下拉菜单中的以下值，可以对该视图进行筛选。
 
-| 列 | 说明 |
+| 列 | Description |
 |:---|:---|
 | 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
 | 资源 | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
-| Severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
+| 严重性 | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
 | 监视条件 | 选择监视条件，或选择“所有”以包括所有条件的警报。 |
 | 警报状态 | 选择警报状态，或选择“所有”以包含所有状态的警报。 |
 | 监视服务 | 选择一个服务，或选择“所有”以包含所有服务。 只会包含使用该服务（作为目标）的规则创建的警报。 |
@@ -156,7 +156,7 @@ ms.locfileid: "46960628"
 
 “警报详细信息”页包括以下部分。
 
-| 部分 | 说明 |
+| 部分 | Description |
 |:---|:---|
 | 概要 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |

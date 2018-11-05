@@ -1,22 +1,20 @@
 ---
-title: 适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器 | Microsoft Docs
-description: 本文为适用于 Hyper-V 到 Azure 方案的 Azure Site Recovery 部署规划器用户指南。
-services: site-recovery
+title: 关于用于将 Hyper-V VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器 | Microsoft Docs
+description: 了解用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7a91217e35ae7a32714478171dcebc002e384fcb
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ae93611bfe5dd11bea8bc0327868c2865b36b713
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093578"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210663"
 ---
-# <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>适用于 Hyper-V 到 Azure 部署的 Site Recovery 部署规划器
+# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
 本文为适用于 Hyper-V 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
 

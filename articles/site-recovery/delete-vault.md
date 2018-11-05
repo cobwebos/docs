@@ -1,6 +1,6 @@
 ---
-title: 删除 Site Recovery 保管库
-description: 了解如何根据 Site Recovery 方案删除 Azure Site Recovery 保管库。
+title: 删除为 Azure Site Recovery 服务配置的恢复服务保管库
+description: 了解如何删除为 Azure Site Recovery 配置的恢复服务保管库
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9c4a88d8a3d63555a57bd5553b721cfbcd77df2c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971182"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212414"
 ---
-# <a name="delete-a-site-recovery-vault"></a>删除 Site Recovery 保管库
+# <a name="delete-a-site-recovery-recovery-services-vault"></a>删除 Site Recovery 恢复服务保管库
 
 依赖项可能会阻止删除 Azure Site Recovery 保管库。 需要采取的操作取决于 Site Recovery 方案。 若要删除用于 Azure 备份的保管库，请参阅[删除 Azure 备份保管库](../backup/backup-azure-delete-vault.md)。
 

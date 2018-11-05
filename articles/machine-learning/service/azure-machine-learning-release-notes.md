@@ -8,13 +8,13 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 03/28/2018
-ms.openlocfilehash: 58d0d028c920faa7e86884c85f8fb677ce67c390
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/24/2018
+ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389915"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158680"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -24,19 +24,19 @@ ms.locfileid: "49389915"
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.68
 
-#### <a name="new-features"></a>新增功能
- * 创建新工作区时的多租户支持。
++ **新功能**
+  * 创建新工作区时的多租户支持。
 
-#### <a name="breaking-changes"></a>重大变化
- * 下一版本即将推出：Workspace.compute_targets、datastores、experiments、images、models 和 webservices 将成为属性而不是方法。 例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets。
++ **重大更改**
+  * 下一版本即将推出：Workspace.compute_targets、datastores、experiments、images、models 和 webservices 将成为属性而不是方法。 例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets。
 
-#### <a name="bugs-fixed"></a>修复 bug
- * 部署 Web 服务时，不再需要固定 pynacl 库版本。
++ **修复的 Bug**
+  * 部署 Web 服务时，不再需要固定 pynacl 库版本。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure 机器学习数据准备 SDK v0.3.0
 
-#### <a name="new-features"></a>新功能：
-* 添加了方法 transform_partition_with_file(script_path)，允许用户传入 Python 文件的路径进行执行
++ **新功能**
+  * 添加了方法 transform_partition_with_file(script_path)，允许用户传入 Python 文件的路径进行执行
 
 ## <a name="2018-10-01"></a>2018-10-01
 
@@ -45,56 +45,55 @@ ms.locfileid: "49389915"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
-#### <a name="breaking-changes"></a>重大变化
- * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images，Workspace.web_services 将返回字典，而以前返回列表。 请参阅 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API 文档。
++ **重大更改**
+  * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images，Workspace.web_services 将返回字典，而以前返回列表。 请参阅 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API 文档。
 
- * 自动化机器学习从主要指标中删除了规范化的均方误差。
+  * 自动化机器学习从主要指标中删除了规范化的均方误差。
 
++ **HyperDrive**
+  * 针对 Bayesian 的多种 HyperDrive bug 修复；针对获取指标调用的性能改进。 
+  * 从 1.9 升级的 TensorFlow 1.10 
+  * 针对冷启动的 Docker 映像优化。 
+  * 作业现在报告正确状态，即便退出时显示 0 之外的错误代码。 
+  * SDK 中的 RunConfig 属性验证。 
+  * HyperDrive 运行对象支持类似于“常规运行：不需要传递任何参数”的取消。 
+  * 小组件改进，用于维护分布式运行和 HyperDrive 运行的下拉列表值的状态。 
+  * TensorBoard 和针对参数服务器修复的其他日志文件支持。 
+  * 服务端上的 Intel(R) MPI 支持。 
+  * 对 BatchAI 中验证期间针对分布式运行修复的参数优化的 bug 修复。 
+  * 上下文管理器现可标识主要实例。 
 
-#### <a name="hyperdrive"></a>HyperDrive
- * 针对 Bayesian 的多种 HyperDrive bug 修复；针对获取指标调用的性能改进。 
- * 从 1.9 升级的 TensorFlow 1.10 
- * 针对冷启动的 Docker 映像优化。 
- * 作业现在报告正确状态，即便退出时显示 0 之外的错误代码。 
- * SDK 中的 RunConfig 属性验证。 
- * HyperDrive 运行对象支持类似于“常规运行：不需要传递任何参数”的取消。 
- * 小组件改进，用于维护分布式运行和 HyperDrive 运行的下拉列表值的状态。 
- * TensorBoard 和针对参数服务器修复的其他日志文件支持。 
- * 服务端上的 Intel(R) MPI 支持。 
- * 对 BatchAI 中验证期间针对分布式运行修复的参数优化的 bug 修复。 
- * 上下文管理器现可标识主要实例。 
++ **Azure 门户体验**
+  * 运行详细信息中支持 log_table() 和 log_row()。 
+  * 为包含 1、2 或 3 数字列和可选分类列的表格和行自动创建关系图。
 
-#### <a name="azure-portal-experience"></a>Azure 门户体验
- * 运行详细信息中支持 log_table() 和 log_row()。 
- * 为包含 1、2 或 3 数字列和可选分类列的表格和行自动创建关系图。
++ **自动化机器学习**
+  * 改进了错误处理和文档 
+  * 修复了运行属性检索性能问题。 
+  * 修复了连续运行的问题。 
+  * 修复了集成迭代问题。
+  * 修复了 MAC 操作系统上的训练挂起 bug。
+  * 减少对自定义验证场景中的宏平均 PR/ROC 曲线的采样。
+  * 删除额外的索引逻辑。
+  * 删除了 get_output API 中的筛选器。
 
-#### <a name="automated-machine-learning"></a>自动化机器学习
- * 改进了错误处理和文档 
- * 修复了运行属性检索性能问题。 
- * 修复了连续运行的问题。 
- * 修复了集成迭代问题。
- * 修复了 MAC 操作系统上的训练挂起 bug。
- * 减少对自定义验证场景中的宏平均 PR/ROC 曲线的采样。
- * 删除额外的索引逻辑。
- * 删除了 get_output API 中的筛选器。
++ **管道**
+  * 添加了方法 Pipeline.publish()，用于直接发布管道，而无需首先执行运行。   
+  * 添加了方法 PipelineRun.get_pipeline_runs()，用于获取从已发布管道生成的管道运行。
 
-#### <a name="pipelines"></a>管道
- * 添加了方法 Pipeline.publish()，用于直接发布管道，而无需首先执行运行。   
- * 添加了方法 PipelineRun.get_pipeline_runs()，用于获取从已发布管道生成的管道运行。
-
-#### <a name="project-brainwave"></a>Project Brainwave
- * 更新了对 FPGA 上提供的新 AI 模型的支持。
++ **Project Brainwave**
+  * 更新了对 FPGA 上提供的新 AI 模型的支持。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure 机器学习数据准备 SDK v0.2.0
 [版本 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) 包括以下功能和 bug 修复：
 
-**新功能：** 
- * 独热编码支持
- * 分位转换支持
++ **新功能**
+  * 独热编码支持
+  * 分位转换支持
    
-**Bug 修复：**
- * 适用于所有 Tornado 版本，无需降级 Tornado 版本
- * 值对所有值都有意义，而不仅仅是前三个值
++ **Bug 修复：**
+  * 适用于所有 Tornado 版本，无需降级 Tornado 版本
+  * 值对所有值都有意义，而不仅仅是前三个值
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09（公共预览版刷新）
 

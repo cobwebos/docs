@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ef8fc2ea8b006d49dd54d638183a58bf78a5797
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: b148967af0882993d8ab113bdf0fd3ad3835296f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311682"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>教程：Azure Active Directory 与 Zscaler Three 集成
 
@@ -119,10 +119,7 @@ ms.locfileid: "49311682"
 
     ![配置单一登录](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
 
-    在“回复 URL”文本框中，输入 URL：`https://login.zscalerthree.net/sfc_sso`
-
-    > [!NOTE]
-    > 需使用实际登录 URL 更新此值。 请联系 [Zscaler Three 客户端支持团队](https://www.zscaler.com/company/contact)来获取这些值。
+    在“登录 URL”文本框中，输入 URL：`https://login.zscalerthree.net/sfc_sso`
 
 6. 在“SAML 签名证书”部分中，单击“下载”以下载“证书(Base64)”，并在计算机上保存证书文件。
 

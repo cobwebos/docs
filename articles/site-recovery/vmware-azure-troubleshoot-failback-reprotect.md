@@ -1,22 +1,20 @@
 ---
-title: 解决使用 Azure Site Recovery 将 Azure VM 故障回复到本地 VMware 时出现的错误 | Microsoft Docs
-description: 本文介绍了使用 Azure Site Recovery 从 Azure 故障回复到 VMware 时常见的故障回复和重新保护错误的解决方法。
-services: site-recovery
-documentationcenter: ''
+title: 在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery ，对故障回复到本地进行故障排除 | Microsoft Docs
+description: 本文介绍了在 VMware VM 灾难恢复到 Azure 期间使用 Azure Site Recovery 排查故障回复和重新保护问题的方法。
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 89484e14d69493c74ed1ff983cf88ec146e0313d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920953"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210357"
 ---
-# <a name="troubleshoot-failback-from-azure-to-vmware"></a>从 Azure 故障回复到 VMware 时进行故障排除
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
 
 本文介绍了如何对使用 [Azure Site Recovery](site-recovery-overview.md) 故障转移到 Azure 后将 Azure VM 故障回复到本地 VMware 基础结构时可能会遇到的问题进行故障排除。
 

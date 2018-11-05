@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985169"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157694"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -102,7 +102,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 1.  选择想要导出的设备，然后单击“导出”操作。
 1.  一旦导出完成，将显示一条成功消息，并提供一个用来下载生成文件的链接。
 1.  单击“成功消息”将文件下载到磁盘上的本地文件夹。
-1.  导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助键和主要/辅助证书指纹
+1.  导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助密钥和主要/辅助证书指纹
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

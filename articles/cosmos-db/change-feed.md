@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269490"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741855"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 中的更改源支持的工作原理是侦听 Azure Cosmos DB �
 另外，在[无服务器的](http://azure.com/serverless) Web 应用和移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或位置的更改），以触发特定的操作，例如，使用 [Azure Functions](#azure-functions) 向客户的设备发送推送通知。 例如，若要使用 Azure Cosmos DB 构建游戏，可使用更改源，根据已完成的游戏的分数实时更新排行榜。
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>使用 Azure Functions 
+## <a name="using-azure-functions"></a>使用 Azure Functions 
 
 如果使用 Azure Functions，连接到 Azure Cosmos DB 更改数据源的最简单方法是将一个 Azure Cosmos DB 触发器添加到 Azure Functions 应用。 在 Azure Functions 应用中创建 Azure Cosmos DB 触发器时，请选择要连接到的 Azure Cosmos DB 集合，以及每当对该集合做出更改时要触发的函数。 
 
@@ -114,9 +114,9 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 因此，检查点数组只会保留每个分区的 LSN。 但如果不想要处理分区、检查点、LSN、开始时间等等，更简单的做法是使用更改源处理器库。
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>使用更改源处理器库 
+## <a name="using-the-change-feed-processor-library"></a>使用更改源处理器库 
 
 借助 [Azure Cosmos DB 更改源处理器库](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed)，可以轻松地在多个使用者之间分配事件处理负载。 此库简化了跨分区的以及并行工作的多个线程中的更改的读取。
 
 更改源处理器库的主要优势在于，无需管理每个分区和继续标记，也无需手动轮询每个集合。
 
-更改源处理器库简化了跨分区的以及并行工作的多个线程中的更改的读取。  它使用租约机制自动管理跨分区的更改读取。 如下图中所示，如果启动两个使用更改源处理器库的客户端，它们会在彼此之间划分工作。 如果不断增加客户端，它们仍会在彼此之间划分工作。
+更改源处理器库简化了跨分区的以及并行工作的多个线程中的更改的读取。  它使用租约机制自动管理跨分区的更改读取。 如下图中所示，如果启动两个使用更改源处理器库的客户端，它们会在彼此之间划分工作。 如果不断增加客户端，它们仍会在彼此之间划分工作。
 
 ![Azure Cosmos DB 更改源的分布式处理](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ Azure Functions 使用默认连接策略。 可以在 Azure Functions 中配置�
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>我的文档每隔一秒更新一次，但无法在侦听更改源的 Azure Functions 中获取所有更改。
 
-Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 不过，若要设置为低于 5 秒（即每秒轮询一次更改源），可配置轮询时间“feedPollTime”（请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)）。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
+Azure Functions 每隔 5 秒轮询更改源一次，因此，在 5 秒间隔内发生的任何更改都会丢失。 Azure Cosmos DB 只存储 5 秒间隔的一个版本，因此，你会获取文档的第 5 次更改。 不过，若要设置为低于 5 秒并要每秒轮询一次更改源，可配置轮询时间“feedPollDelay”（请参阅 [Azure Cosmos DB 绑定](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)）。 该时间以毫秒定义，默认值为 5000。 可以使用小于 1 秒的时间，但不建议使用，否则会消耗更多的 CPU。
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>我在 Mongo API 集合中插入了一个文档，但在更改源中获取该文档时，显示了一个不同的 ID 值。 原因是什么？
 

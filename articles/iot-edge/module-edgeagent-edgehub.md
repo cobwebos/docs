@@ -8,18 +8,18 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: ecc48adfeef30a777ae4d96c9b996c8bcdfea12d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017698"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247804"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge 代理和 Edge 中心模块孪生的属性
 
 Edge 代理和 Edge 中心是构成 IoT Edge 运行时的两个模块。 有关每个模块的职责的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。 
 
-本文提供运行时模块孪生的所需属性和报告属性。 若要详细了解如何在 IoT Edge 设备上部署模块，请参阅[部署和监视][lnk-deploy]。
+本文提供运行时模块孪生的所需属性和报告属性。 若要详细了解如何在 IoT Edge 设备上部署模块，请参阅[部署和监视](module-deployment-monitoring.md)。
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent 所需属性
 
@@ -30,26 +30,26 @@ Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备与 IoT 
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |
 | runtime.settings.minDockerVersion | 设置为此部署清单所需的最小 Docker 版本 | 是 |
-| runtime.settings.loggingOptions | 字符串化的 JSON 包含 Edge 代理容器的日志记录选项。 [Docker 日志记录选项][lnk-docker-logging-options] | 否 |
+| runtime.settings.loggingOptions | 字符串化的 JSON 包含 Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.username | 容器注册表的用户名。 对于 Azure 容器注册表，用户名通常是注册表名称。<br><br> 对于任何未公开的模块图像，注册表凭据是必需的。 | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.password | 容器注册表的密码。 | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registryname}.azurecr.io。 | 否 |  
 | systemModules.edgeAgent.type | 必须为“docker” | 是 |
 | systemModules.edgeAgent.settings.image | Edge 代理的图像 URI。 目前，Edge 代理不能自行更新。 | 是 |
-| systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含 Edge 代理容器的创建选项。 [Docker 创建选项][lnk-docker-create-options] | 否 |
+| systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含 Edge 代理容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeAgent.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署应用这个清单时由 IoT 中心进行设置。 不是部署清单的一部分。 |
 | systemModules.edgeHub.type | 必须为“docker” | 是 |
 | systemModules.edgeHub.status | 必须为“running” | 是 |
 | systemModules.edgeHub.restartPolicy | 必须为“always” | 是 |
 | systemModules.edgeHub.settings.image | Edge 中心的图像 URI。 | 是 |
-| systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含 Edge 中心容器的创建选项。 [Docker 创建选项][lnk-docker-create-options] | 否 |
+| systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含 Edge 中心容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeHub.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署应用这个清单时由 IoT 中心进行设置。 不是部署清单的一部分。 |
 | modules.{moduleId}.version | 用户定义的字符串，表示此模块的版本。 | 是 |
 | modules.{moduleId}.type | 必须为“docker” | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | 是 |
 | modules.{moduleId}.settings.image | 模块映像的 URI。 | 是 |
-| modules.{moduleId}.settings.createOptions | 字符串化的 JSON 包含模块容器的创建选项。 [Docker 创建选项][lnk-docker-create-options] | 否 |
+| modules.{moduleId}.settings.createOptions | 字符串化的 JSON 包含模块容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | modules.{moduleId}.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署应用这个清单时由 IoT 中心进行设置。 不是部署清单的一部分。 |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent 报告属性
@@ -63,7 +63,7 @@ Edge 代理报告属性包括三个主要信息：
 如果运行时未成功应用最新的所需属性，而且设备仍在运行以前的部署清单，则最后一条信息将很有用。
 
 > [!NOTE]
-> Edge 代理的报告属性非常有用，因为可以使用 [IoT 中心查询语言][lnk-iothub-query]对其进行查询，进而调查规模部署的状态。 若要详细了解如何使用 Edge 代理属性来获取状态，请参阅[了解单个设备 IoT Edge 部署或大规模 IoT Edge 部署][lnk-deploy]。
+> Edge 代理的报告属性非常有用，因为可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-query-language.md)对其进行查询，进而调查大规模部署的状态。 若要详细了解如何使用 Edge 代理属性来获取状态，请参阅[了解单个设备 IoT Edge 部署或大规模 IoT Edge 部署](module-deployment-monitoring.md)。
 
 下表不包括从所需属性中复制的信息。
 
@@ -117,9 +117,3 @@ Edge 中心的模块孪生被称为 `$edgeHub`，用于协调设备与 IoT 中�
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何使用这些属性构建部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
-
-<!--links -->
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md

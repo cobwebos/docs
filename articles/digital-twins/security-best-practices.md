@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a17fe8ed47384ed248b339643be11269b8b9cdc0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364331"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092179"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -26,15 +26,16 @@ Azure 数字孪生还利用 Azure IoT 上存在的其他安全功能（包括 Az
 > [!IMPORTANT]
 > 查看其他安全资源（包括设备供应商）以确保 IoT 空间的最大安全性。
 
-## <a name="iot-security-best-practices"></a>IoT 安全最佳做法
+## <a name="iot-security-best-practices"></a>IoT 安全最佳实践
 
 安全地保护 IoT 设备的一些关键做法包括：
 
 > [!div class="checklist"]
 > * 以防篡改的方式保护连接到 IoT 空间的每个设备。
 > * 限制 IoT 空间中每个设备、传感器和人员的角色。 如果遭到入侵，影响将降到最低。
-> * 可能会用到设备 IP 地址筛选。
+> * 可能会用到设备 IP 地址筛选和端口限制。
 > * 限制 I/O 和设备带宽，以提高性能。 通过阻止拒绝服务攻击，速率限制可增强安全性。
+> * 使设备固件保持最新。
 
 安全地保护 IoT 空间的一些关键做法包括：
 

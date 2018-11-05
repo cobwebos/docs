@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0468c41f0813277b6ba6d3be8ad89c3178dd1420
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985602"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094664"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -78,15 +78,11 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 **技术要求**
 
-若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[云发布门户](https://cloudpartner.azure.com/)上的 [IoT Edge 模块认证过程](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process)。  
+若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)。  
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-在登录到[云发布门户](https://cloudpartner.azure.com/)时，可使用以下文章：
-
-- [创建 IoT Edge 模块套餐](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) -– 在云发布门户中发布新 IoT Edge 模块套餐的步骤。
-- [IoT Edge 模块认证过程](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) - 认证 IoT Edge 模块的步骤和要求概述。
-- [IoT Edge 模块常见问题解答](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) -– 与 IoT Edge 模块相关的常见问题列表。
+[创建 IoT Edge 模块套餐](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) -– 在云发布门户中发布新 IoT Edge 模块套餐的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

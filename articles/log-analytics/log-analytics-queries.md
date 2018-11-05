@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e587f79f0f77446ea5a61cbb989f3f1c3655e0a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429456"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741753"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>在 Azure Monitor 中分析 Log Analytics 数据
 
-Azure Monitor 收集的日志数据存储在 Log Analytics 中，后者收集来自各种源的遥测数据和其他数据，并提供用于高级分析的查询语言。
+Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工作区基于 [Azure 数据资源管理器](/data-explorer)。 它从各种源收集遥测数据，并使用[数据资源管理器的查询语言](/kusto)来检索和分析数据。
 
 > [!NOTE]
 > Log Analytics 以前在 Azure 中被视为其自己的服务。 现在它被视为 Azure Monitor 的一部分，其主要功能是存储日志数据并使用其查询语言分析日志数据。 以前被视为 Log Analytics 的一部分的功能（例如，用于数据收集的 Windows 和 Linux 代理；用于可视化现有数据的视图；以及主动向你通知问题的警报）没有更改，但现在被视为 Azure Monitor 的一部分。
@@ -51,7 +51,7 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 中，后者收集来
 ![日志搜索](media/log-analytics-queries/queries-overview.png)
 
 ## <a name="write-a-query"></a>编写查询
-Log Analytics 包括[一种扩展查询语言](query-language/get-started-queries.md)，可以通过该语言以各种方式检索和分析日志数据。  通常先使用基本查询，随着要求变得复杂，逐渐开始使用更高级的功能。
+Log Analytics 使用[数据资源管理器查询语言的一个版本](query-language/get-started-queries.md)以各种方式检索和分析日志数据。  通常先使用基本查询，随着要求变得复杂，逐渐开始使用更高级的功能。
 
 查询的基本结构是一个源表，后跟一系列以竖线字符 `|` 隔开的运算符。  可以将多个运算符链接起来以优化数据和执行高级函数。
 

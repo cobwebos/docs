@@ -1,5 +1,5 @@
 ---
-title: 使用用于 VM 的 Azure Monitor 监视虚拟机运行状况 | Microsoft Docs
+title: 使用用于 VM 的 Azure Monitor（预览版）监视虚拟机运行状况 | Microsoft Docs
 description: 本文介绍如何使用用于 VM 的 Azure Monitor 来了解虚拟机和基础操作系统的运行状况。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387815"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094221"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>使用用于 VM 的 Azure Monitor 了解 Azure 虚拟机的运行状况
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>使用用于 VM 的 Azure Monitor（预览版）了解 Azure 虚拟机的运行状况
 Azure 包含的多个服务可在监视空间中单独执行特定的角色或任务，但无法针对 Azure 虚拟机上托管的操作系统提供深入的运行状况透视图。  尽管我们可以使用 Log Analytics 或 Azure Monitor 来监视不同的状况，但这些工具并不能呈现核心组件的运行状况或虚拟机的总体运行状况，或者为这些信息建模。  用于 VM 的 Azure Monitor 运行状况功能可以使用一个代表核心组件及其关系的模型、指定如何度量这些组件的运行状况的条件，来主动监视 Windows 或 Linux 来宾 OS 的可用性和性能，并在检测到不正常状况时发出警报。  
 
 可以直接在虚拟机中或者某个资源组中的所有 VM 上，使用用于 VM 的 Azure Monitor 运行状况功能的两个透视图查看 Azure VM 和基础操作系统的总体运行状况。
@@ -35,7 +35,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 ### <a name="windows-vms"></a>Windows VM
 
-- 可用内存 (MB) 
+- 可用内存 (MB) 
 - 每次写入的平均磁盘秒数（逻辑磁盘）
 - 每次写入的平均磁盘秒数（磁盘）
 - 每次读取的平均逻辑磁盘秒数

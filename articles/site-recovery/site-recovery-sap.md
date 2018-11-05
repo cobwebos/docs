@@ -1,27 +1,23 @@
 ---
-title: 使用 Azure Site Recovery 保护多层 SAP NetWeaver 应用程序部署 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 保护 SAP NetWeaver 应用程序部署。
-services: site-recovery
-documentationcenter: ''
+title: 使用 Azure Site Recovery 为多层 SAP NetWeaver 应用部署设置灾难恢复 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 为 SAP NetWeaver 应用程序部署设置灾难恢复。
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318684"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211717"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>使用 Site Recovery 保护多层 SAP NetWeaver 应用程序部署
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
 大多数大型和中型 SAP 部署具有某种形式的灾难恢复解决方案。 随着更多核心业务流程迁移到 SAP 等应用程序中，可靠和可测试的灾难恢复解决方案越来越重要。 Azure Site Recovery 已经过测试并与 SAP 应用程序集成。 Site Recovery 超过大多数本地灾难恢复解决方案的功能，并且总拥有成本 (TCO) 要低于竞争对手解决方案。
 
@@ -62,7 +58,7 @@ ms.locfileid: "49318684"
 
 此参考体系结构说明如何在具有高可用性的 Azure 上的 Windows 环境中运行 SAP NetWeaver。  此体系结构是使用可根据组织需求更改的特定虚拟机 (VM) 大小来部署的。
 
-![典型 SAP 部署模式的示意图](./media/site-recovery-sap/reference_sap.png)
+![典型 SAP 部署模式的示意图](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>灾难恢复注意事项
 

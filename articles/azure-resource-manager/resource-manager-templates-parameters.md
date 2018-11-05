@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 10/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d09a057d9b8a02c7f8313161e64aa3a42eb6db2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604329"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417763"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的 Parameters 节
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 提供针对特定环境（例如开发、测试和生产环境）定制的参数值可以自定义部署。 无需在模板中提供参数，但如果没有参数，模板始终部署具有相同名称、位置和属性的相同资源。
 
-一个模板中最多可以有 255 个参数。 如本文中所示，可以通过使用包含多个属性的对象来减少参数的数量。
+一个模板中最多可以有 256 个参数。 如本文中所示，可以通过使用包含多个属性的对象来减少参数的数量。
 
 ## <a name="define-and-use-a-parameter"></a>定义和使用参数
 
@@ -83,7 +83,7 @@ ms.locfileid: "34604329"
 }
 ```
 
-| 元素名称 | 必选 | 说明 |
+| 元素名称 | 必选 | Description |
 |:--- |:--- |:--- |
 | parameterName |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
@@ -97,7 +97,7 @@ ms.locfileid: "34604329"
 
 ## <a name="template-functions-with-parameters"></a>包含参数的模板函数
 
-为参数提供默认值时，可以使用大多数模板函数。 可以使用另一个参数值来生成默认值。 以下模板演示了如何在默认值中使用函数：
+为参数指定默认值时，可以使用大多数模板函数。 可以使用另一个参数值来生成默认值。 以下模板演示了如何在默认值中使用函数：
 
 ```json
 "parameters": {
@@ -212,7 +212,7 @@ ms.locfileid: "34604329"
    }
    ```
 
-* 定义参数（密码和 SSH 密钥除外）的默认值。 通过提供默认值，参数在部署过程中成为可选的。 默认值可以是空字符串。 
+* 定义参数（密码和 SSH 密钥除外）的默认值。 通过指定默认值，参数在部署过程中会成为可选项。 默认值可以是空字符串。 
    
    ```json
    "parameters": {
@@ -260,7 +260,7 @@ ms.locfileid: "34604329"
 
 这些示例模板演示了使用参数的一些方案。 请部署这些模板来测试在不同方案中参数是如何处理的。
 
-|模板  |说明  |
+|模板  |Description  |
 |---------|---------|
 |[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |

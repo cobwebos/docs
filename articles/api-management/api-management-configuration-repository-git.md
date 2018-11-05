@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945802"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414397"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -190,7 +190,8 @@ git push
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -200,10 +201,11 @@ git push
 
 | 标识设置 | 映射到 |
 | --- | --- |
-| RegistrationEnabled |“将匿名用户重定向到登录页”复选框 |
+| RegistrationEnabled |是否存在**用户名和密码**标识提供者 |
 | UserRegistrationTerms |“用户登录时的使用条款”文本框 |
 | UserRegistrationTermsEnabled |“显示用户登录时的使用条款”复选框 |
 | UserRegistrationTermsConsentRequired |“需要同意”复选框 |
+| RequireUserSigninEnabled |“将匿名用户重定向到登录页”复选框 |
 
 接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”部分中的“委派”选项卡上的以下设置。
 

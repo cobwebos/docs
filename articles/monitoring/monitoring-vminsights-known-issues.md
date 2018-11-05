@@ -1,5 +1,5 @@
 ---
-title: 用于 VM 的 Azure Monitor 的已知问题 | Microsoft Docs
+title: 用于 VM 的 Azure Monitor（预览版）的已知问题 | Microsoft Docs
 description: 用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它合并了 Azure VM 操作系统的运行状况和性能监视、应用程序组件及其与其他资源的依赖关系的自动发现功能，并映射这些组件和资源之间的通信。 本文介绍已知问题。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385073"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091668"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 的已知问题
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
 下面是用于 VM 的 Azure Monitor 的“运行状况”功能的已知问题：
 

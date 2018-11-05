@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430011"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140800"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>优化模型的超参数
 
@@ -238,16 +238,18 @@ early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, trun
 
 ### <a name="no-termination-policy"></a>无终止策略
 
-如果希望所有训练运行一直运行到完成，请使用 NoTerminationPolicy。 这样就不会应用任何提前终止策略。
+如果希望所有训练运行一直运行到完成，请将策略设置为“无”。 这样就不会应用任何提前终止策略。
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>默认策略
 
-如果未指定策略，超参数优化服务默认会使用 `evaluation_interval` 为 1、`delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
+如果未指定策略，则超参数优化服务将让所有训练运行一直运行到完成。
+
+>[!NOTE] 
+>如果你正在寻找既可以节省成本又不会终止有前景的作业的保守策略，则可以使用 `evaluation_interval` 为 1 且 `delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
 
 ## <a name="allocate-resources"></a>分配资源
 

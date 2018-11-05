@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323686"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210119"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
 
@@ -25,7 +25,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 ![数字孪生数据处理流][1]
 
-1. _验证_阶段将传入的遥测消息转换为通俗易懂的 [`data transfer object`](https://en.wikipedia.org/wiki/Data_transfer_object) 格式。 此阶段还执行设备和传感器验证。
+1. _验证_阶段将传入的遥测消息转换为容易理解的[**数据传输对象**](https://en.wikipedia.org/wiki/Data_transfer_object)格式。 此阶段还执行设备和传感器验证。
 1. _匹配_阶段查找要运行的相应用户定义函数。 预定义的匹配程序将根据传入的遥测消息中的设备、传感器和空间信息查找用户定义的函数。
 1. _计算_阶段运行在前一阶段匹配的用户定义函数。 这些函数可以读取和更新空间图形节点上的计算值，并发出自定义通知。
 1. _分派_阶段将计算阶段的所有自定义通知路由到图形中定义的终结点。
@@ -40,11 +40,11 @@ Azure 数字孪生中的数据处理包括定义三个对象：_匹配程序_、
 
 _匹配程序_定义一组条件，用于评估将根据传入的传感器遥测数据执行的操作。 这些用于确定匹配项的条件可以包括来自传感器、传感器父设备和传感器父空间的属性。 这些条件表示为根据 [JSON 路径](http://jsonpath.com/)进行的比较，如以下示例所述：
 
-- 所有数据类型为 `Temperature` 的传感器。
+- 所有数据类型为 **Temperature** 的传感器。
 - 在其端口中有 `01`。
-- 属于扩展属性键 `Manufacturer` 设置为值 `GoodCorp` 的设备。
-- 属于 `Venue` 类型的空间。
-- 是父 `SpaceId``DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` 的后代。
+- 属于扩展属性键 **Manufacturer** 设置为值 `"GoodCorp"` 的设备。
+- 属于 `"Venue"` 类型的空间。
+- 是父 **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` 的后代。
 
 ```JSON
 {

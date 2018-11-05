@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b7682b83ca415ebff2be1c9dbb5581e8da1bb7fb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 64751e0fcbf9a2255964d0de673e2cc2020ceb9a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49805021"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254764"
 ---
 [Azure 文件](../articles/storage/files/storage-files-introduction.md)使用 [Azure Active Directory (Azure AD) 域服务](../articles/active-directory-domain-services/active-directory-ds-overview.md)，支持通过 SMB（服务器消息块）实现的基于标识的身份验证（预览版）。 域加入 Windows 虚拟机 (VM) 可使用 [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) 凭据访问 Azure 文件共享。 
 
@@ -25,3 +25,4 @@ Azure AD 使用[基于角色的访问控制 (RBAC)](../articles/role-based-acces
 > - Linux VM 不支持通过 SMB 实现的 Azure AD 身份验证（预览版）。 只有 Windows Server VM 才支持。
 > - 访问 Azure 文件的本地计算机不支持通过 SMB 进行 Azure AD 身份验证。
 > - Azure AD 身份验证仅适用于 2018 年 9 月 24 日后创建的存储帐户。
+> - Azure 文件同步服务托管的 Azure 文件共享不支持通过 SMB 进行 Azure AD 身份验证和 NTFS ACL 持久性。 

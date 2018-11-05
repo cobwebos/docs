@@ -1,25 +1,26 @@
 ---
-title: 使用 Azure Site Recovery 执行 VMware 到 Azure 的复制的体系结构 | Microsoft Docs
-description: 本文概述了使用 Azure Site Recovery 将本地 VMware VM 复制到 Azure 时使用的组件和体系结构
+title: 使用 Azure Site Recovery 执行 VMware 到 Azure 灾难恢复的体系结构 | Microsoft Docs
+description: 本文概述了使用 Azure Site Recovery 设置本地 VMware VM 到 Azure 的灾难恢复时使用的组件和体系结构
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715748"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212380"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>VMware 到 Azure 复制体系结构
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
-本文介绍了使用 [Azure Site Recovery](site-recovery-overview.md) 在本地 VMware 站点与 Azure 之间对 VMware 虚拟机 (VM) 进行复制、故障转移和恢复时使用的体系结构和过程。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在本地 VMware 站点和 Azure 之间部署 VMware 虚拟机 (VM) 的灾难恢复复制、故障转移和恢复时使用的体系结构和过程。
 
 
 ## <a name="architectural-components"></a>体系结构组件
 
-下面的表和图提供了用于将 VMware 复制到 Azure 的组件的概要视图。
+下面的表和图提供了用于将 VMware 灾难恢复到 Azure 的组件的概要视图。
 
 组件 | **要求** | **详细信息**
 --- | --- | ---

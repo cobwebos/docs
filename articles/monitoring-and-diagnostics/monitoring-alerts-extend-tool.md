@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990225"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415691"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>将警报从 Log Analytics 扩展为 Azure 警报
 Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡过程中，最初在 Log Analytics 中配置的警报将扩展到 Azure 中。 如果不想等待它们自动移入 Azure，可以启动该过程：
@@ -22,31 +22,31 @@ Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡�
 - 使用 AlertsVersion API 以编程方式启动。  
 
 > [!NOTE]
-> 从 2018 年 5 月 14 日开始，Microsoft 会将在 Log Analytics 的公有云实例中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 如果在创建[操作组](monitoring-action-groups.md)的过程中出现任何问题，请执行[这些修正步骤](monitoring-alerts-extend-tool.md#troubleshooting)，以便自动创建操作组。 在 2018 年 7 月 5 日之前，一直可以使用这些步骤。 *不适用于 Log Analytics 的 Azure 政府云和主权云用户*。 
+> 从 2018 年 5 月 14 日开始，Microsoft 会将 Log Analytics 公有云实例中创建的警报自动扩展到 Azure 警报，此过程会一直重复到完成为止。 如果在创建[操作组](monitoring-action-groups.md)的过程中出现任何问题，请执行[这些修正步骤](monitoring-alerts-extend-tool.md#troubleshooting)，以便自动创建操作组。 在 2018 年 7 月 5 日之前，一直可以使用这些步骤。 不适用于 Log Analytics 的 Azure 政府云和主权云用户。 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>选项 1：从 Operations Management Suite 门户启动
 以下步骤介绍如何从 Operations Management Suite 门户扩展工作区的警报。  
 
 1. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 订阅窗格中选择一个工作区，然后选择“OMS 门户”磁贴。
-![Log Analytics 订阅窗格的屏幕截图，其中突出显示了“OMS 门户”磁贴](./media/monitor-alerts-extend/azure-portal-01.png) 
+![Log Analytics 订阅窗格的屏幕截图，其中突出显示了“OMS 门户”磁贴](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. 重定向到 Operations Management Suite 门户后，选择“设置”图标。
-![Operations Management Suite 门户的屏幕截图，其中突出显示了“设置”图标](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![Operations Management Suite 门户的屏幕截图，其中突出显示了“设置”图标](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. 从“设置”页选择“警报”。  
 5. 选择“扩展到 Azure”。
-![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“扩展到 Azure”](./media/monitor-alerts-extend/ExtendInto.png)
+![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“扩展到 Azure”](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. “警报”窗格中会显示三个步骤的向导。 阅读概述，然后选择“下一步”。
-![向导的步骤 1 的屏幕截图](./media/monitor-alerts-extend/ExtendStep1.png)  
+![向导的步骤 1 的屏幕截图](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. 在第二个步骤中，可查看提议的更改摘要，其中列出了警报的相应[操作组](monitoring-action-groups.md)。 如果在多个警报中出现类似操作，向导会提议将所有这些操作关联到单个操作组。  命名约定如下：WorkspaceName_AG_＃Number。 若要继续，请选择“下一步”。
-![向导的步骤 2 的屏幕截图](./media/monitor-alerts-extend/ExtendStep2.png)  
+![向导的步骤 2 的屏幕截图](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. 在向导的最后一个步骤中，选择“完成”，并在提示启动该过程时进行确认。 或者，可以提供电子邮件地址，以便在完成该过程并且所有警报已成功移至 Azure 警报时通知你。
-![向导的步骤 3 的屏幕截图](./media/monitor-alerts-extend/ExtendStep3.png)
+![向导的步骤 3 的屏幕截图](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 向导完成后，在“警报设置”页上，用于将警报扩展到 Azure 的选项已删除。 系统在后台将警报转移到 Azure，这可能需要一些时间。 在操作过程中，无法对来自 Operations Management Suite 门户的警报进行更改。 可以从门户顶部的横幅中查看当前状态。 如果之前提供了电子邮件地址，则在该过程成功完成时会收到一封电子邮件。  
 
 
 警报在成功迁移到 Azure 后，仍会继续在 Operations Management Suite 门户中列出。
-![Operations Management Suite 门户“警报设置”页的屏幕截图](./media/monitor-alerts-extend/PostExtendList.png)
+![Operations Management Suite 门户“警报设置”页的屏幕截图](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>选项 2：使用 AlertsVersion API
@@ -460,7 +460,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 > 如果基于 Azure 公有云的 Log Analytics 用户在 2018 年 7 月 5 日之前未采取以下补救措施，警报将在 Azure 中运行，但不会触发任何操作或通知。 若要获取警报通知，则必须手动编辑和添加[操作组](monitoring-action-groups.md)，或使用上述[自定义 PowerShell 脚本](#option-3---using-custom-powershell-script)。
 
 以下是针对每个错误的修正步骤：
-- **错误：在订阅/资源组级别存在针对写入操作的作用域锁**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“作用域锁”错误消息](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **错误：在订阅/资源组级别存在针对写入操作的作用域锁**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“作用域锁”错误消息](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     启用作用域锁后，该功能会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新更改。 系统无法将警报扩展到 Azure 并创建必要的操作组。
     
@@ -468,7 +468,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
     
     通过文章中所示的步骤解决错误后，Operations Management Suite 会在第二天的计划运行中将警报扩展到 Azure。 不需要采取任何进一步操作或启动任何内容。
 
-- **错误：在订阅/资源组级别存在策略**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“策略”错误消息](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **错误：在订阅/资源组级别存在策略**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“策略”错误消息](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     应用 [Azure Policy](../azure-policy/azure-policy-introduction.md) 后，它会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新资源。 系统无法将警报扩展到 Azure 并创建必要的操作组。
     

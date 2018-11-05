@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 将 VMware VM 或物理服务器复制到辅助 VMware 站点时的支持矩阵 | Microsoft Docs
-description: 汇总了对通过 Azure Site Recovery 将 VMware/物理服务器复制到辅助站点的支持
-services: site-recovery
+title: 使用 Azure Site Recovery 将 VMware VM 或物理服务器灾难恢复到辅助 VMware 站点时的支持矩阵 | Microsoft Docs
+description: 总结了对使用 Azure Site Recovery 将 VMware VM 或物理服务器灾难恢复到辅助站点的支持。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021987"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209796"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 或物理服务器复制到辅助站点时的支持矩阵
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
-本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 VMware VM 或 Windows/Linux 物理服务器复制到辅助 VMware 站点时所支持的内容。
+本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 VMware VM 或 Windows/Linux 物理服务器灾难恢复到辅助 VMware 站点时所支持的内容。
 
 - 如果要将 VMware VM 或物理服务器复制到 Azure，请查看[此支持矩阵](vmware-physical-azure-support-matrix.md)。
 - 如果要将 Hyper-V VM 复制到辅助站点，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。

@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427393"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212771"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -228,8 +228,8 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 策略支持以下类型的效果：
 
-- **Deny**：会在审核日志中生成一个事件，并使请求失败
-- **Audit**：会在审核日志中生成一个警告事件，但不会使请求失败
+- **Deny**：会在活动日志中生成一个事件，并使请求失败
+- **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
 - **Append**：会将定义的字段集添加到请求
 - **AuditIfNotExists**：如果资源不存在，则启用审核
 - **DeployIfNotExists**：如果资源不存在，则部署一个资源。

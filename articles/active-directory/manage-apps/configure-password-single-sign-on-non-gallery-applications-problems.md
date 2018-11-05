@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 3675889e583fbe2bf949891c3d6b4d5f731e6ac1
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0d069490f2e5b495b417b5a4d511f02fa7891ea9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354620"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240097"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
@@ -141,7 +141,7 @@ ms.locfileid: "44354620"
 
 -   再次尝试手动捕获进程，确保红色红色标记在正确的字段上。
 
--   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开**控制台**，键入 **window.location=”&lt;enter the sign-in url you specified when configuring the app&gt;”**，并按 **Enter**。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
+-   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开**控制台**，键入 **window.location="&lt;enter the sign-in url you specified when configuring the app&gt;"**，并按 **Enter**。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
 
 如果这些方法都无效，支持人员可以提供帮助。 建立支持案例，其中包含所尝试的操作的详细信息以及在[如何查看门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中收集的信息（如果适用）。
 

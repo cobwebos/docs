@@ -86,7 +86,18 @@
 ### [SaaS - 通过 Azure 销售](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
 
-## [容器](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
+
+## [容器产品/服务](./cloud-partner-portal/containers/cpp-containers-offer.md)
+### [先决条件](./cloud-partner-portal/containers/cpp-prerequisites.md)
+### [创建容器产品/服务](./cloud-partner-portal/containers/cpp-create-offer.md)
+#### [“产品/服务设置”选项卡](./cloud-partner-portal/containers/cpp-offer-settings-tab.md)
+#### [“SKU”选项卡](./cloud-partner-portal/containers/cpp-skus-tab.md)
+#### [“市场”选项卡](./cloud-partner-portal/containers/cpp-marketplace-tab.md)
+#### [“支持”选项卡](./cloud-partner-portal/containers/cpp-support-tab.md)
+### [创建容器技术资产](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
+### [发布容器产品/服务](./cloud-partner-portal/containers/cpp-publish-offer.md)
+### [更新现有产品/服务](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
 
 ## [IoT Edge 模块产品/服务](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [先决条件](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)

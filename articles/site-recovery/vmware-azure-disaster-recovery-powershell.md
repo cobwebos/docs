@@ -1,21 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 中的 PowerShell 将 VMware VM 复制和故障转移到 Azure | Microsoft Docs
-description: 了解如何使用 Azure Site Recovery 中的 PowerShell 设置 VMware VM 到 Azure 的复制和故障转移。
-services: site-recovery
+title: 使用 PowerShell 在 Azure Site Recovery 中设置 VMware VM 到 Azure 的灾难恢复 | Microsoft Docs
+description: 了解如何使用 PowerShell 在 Azure Site Recovery 中设置复制和故障转移到 Azure 以进行 VMware VM 的灾难恢复。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042796"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211632"
 ---
-# <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 将 VMware VM 复制和故障转移到 Azure
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 
 本文介绍如何使用 Azure PowerShell 将 VMware 虚拟机复制和故障转移到 Azure 
 

@@ -1,19 +1,8 @@
 ---
-title: 使用 Azure Site Recovery 启用 VMware VM 到 Azure 的复制 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 设置将 VMware VM 复制到 Azure。
-services: site-recovery
-author: asgang
-ms.service: site-recovery
-ms.date: 07/06/2018
-ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 9a868b196a287b7a5121803136d3c0119f64d9fe
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917017"
----
+title: 使用 Azure Site Recovery 为 VMware到 Azure 的灾难恢复启用 VMware VM 的复制 | Microsoft Docs description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 的复制以便灾难恢复到 Azure。
+author: asgang ms.service: site-recovery ms.date: 07/06/2018 ms.topic: conceptual ms.author: asgang
+
+
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
 

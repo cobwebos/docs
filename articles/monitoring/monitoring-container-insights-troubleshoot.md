@@ -1,5 +1,5 @@
 ---
-title: 如何对用于容器的 Azure Monitor 进行故障排除 | Microsoft Docs
+title: 如何对用于容器的 Azure Monitor（预览版）进行故障排除 | Microsoft Docs
 description: 本文介绍如何排查和解决用于容器的 Azure Monitor 存在的问题。
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 19d015947e5d2331c50cd64956e8a7650f96616d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 69e5a61d5e66e5904df31456e9311a39058787b2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638318"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212346"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
+# <a name="troubleshooting-azure-monitor-for-containers-preview"></a>对用于容器的 Azure Monitor（预览版）进行故障排除
 
 使用用于容器的 Azure Monitor 配置 Azure Kubernetes 服务 (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
 

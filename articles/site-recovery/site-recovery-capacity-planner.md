@@ -1,27 +1,20 @@
 ---
-title: 估算 Azure 中的复制容量 | Microsoft 文档
-description: 参考本文估算使用 Azure Site Recovery 进行复制时可用的容量
-services: site-recovery
-documentationcenter: ''
+title: 使用 Azure Site Recovery 为 Hyper-V 灾难恢复规划容量 | Microsoft Docs
+description: 利用本文在使用 Azure Site Recovery 服务设置灾难恢复时估算容量。
 author: rayne-wiselman
-manager: jwhit
-editor: ''
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 3df7bd5ed44bdf514d48e451468329bd11fdf596
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094031"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211411"
 ---
-# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>计划用于使用 Site Recovery 保护 Hyper-V VM 的容量
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>为 Hyper-V VM 灾难恢复规划容量 
 
 [适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器](site-recovery-hyper-v-deployment-planner.md)的新增强版本现已可用。 它取代了旧工具。 使用新工具规划部署。
 该工具提供以下指导原则：

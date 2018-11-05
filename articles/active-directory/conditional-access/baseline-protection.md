@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958544"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158697"
 ---
 # <a name="what-is-baseline-protection-preview"></a>何为基线保护（预览）？  
 
@@ -51,7 +51,7 @@ ms.locfileid: "49958544"
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-此基线策略提供了用来排除用户和组的选项。 你可能需要排除一个[紧急情况下的访问管理帐户](../users-groups-roles/directory-emergency-access.md)以确保你未锁定在租户之外。
+此基线策略提供了用来排除用户的选项。 你可能需要排除一个[紧急情况下的访问管理帐户](../users-groups-roles/directory-emergency-access.md)以确保你未锁定在租户之外。
 
 
 ## <a name="enable-a-baseline-policy"></a>启用基线策略 

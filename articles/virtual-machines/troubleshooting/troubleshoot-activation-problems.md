@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8ecdf1fffb51c0b8e9ce996307595a5444a64ee
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411320"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417457"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -35,7 +35,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 
 ## <a name="symptom"></a>症状
 
-尝试激活 Azure Windows VM 时，将看到类似于以下示例的错误消息：
+尝试激活 Azure Windows VM 时，将收到类似于以下示例的错误消息：
 
 **错误: 0xC004F074 软件授权服务报告无法激活计算机。无法联系任何密钥管理服务(KMS)。有关其他信息，请参阅应用程序事件日志。**
 
@@ -45,7 +45,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 ## <a name="solution"></a>解决方案
 
 >[!NOTE]
->如果使用的是站点间 VPN 和强制隧道，请参阅[使用 Azure 自定义路由通过强制隧道启用 KMS 激活](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)。 
+>如果使用的是站点到站点 VPN 和强制隧道，请参阅[使用 Azure 自定义路由通过强制隧道启用 KMS 激活](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)。 
 >
 >如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)。
 
@@ -82,7 +82,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 2. 转到“开始”，搜索 Windows PowerShell，右键单击 Windows PowerShell，再选择“以管理员身份运行”。
 
 3. 请确保 VM 已配置为使用正确的 Azure KMS 服务器。 为此，请运行以下命令：
-  
+  
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
@@ -90,18 +90,18 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
     此命令应返回：密钥管理服务计算机名称已成功设置为 kms.core.windows.net:1688。
 
 4. 使用 Psping 验证是否已连接到 KMS 服务器。 切换到将 Pstools.zip 下载内容提取到的文件夹，再运行以下命令：
-  
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
+  
   请确保输出的倒数第二行显示：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
   如果“Lost”大于 0（零），表示 VM 未连接到 KMS 服务器。 在这种情况下，如果 VM 位于虚拟网络中，并且指定了自定义 DNS 服务器，必须确保此 DNS 服务器能够解析 kms.core.windows.net。 或者，将 DNS 服务器更改为可以解析 kms.core.windows.net。
 
   请注意，如果从虚拟网络中删除所有 DNS 服务器，VM 将使用 Azure 的内部 DNS 服务。 此服务可以解析 kms.core.windows.net。
   
-此外，还要验证来宾防火墙是否未配置为阻止激活尝试。
+此外，还要验证是否未以阻止激活尝试的方式配置来宾防火墙。
 
 5. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 

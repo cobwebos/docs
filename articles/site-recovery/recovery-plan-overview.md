@@ -1,29 +1,24 @@
 ---
-title: 使用 Azure Site Recovery 中的恢复计划 | Microsoft Docs
-description: 了解 Azure Site Recovery 中的恢复计划。
-services: site-recovery
-documentationcenter: ''
+title: 在灾难恢复中将恢复计划与 Azure Site Recovery 配合使用 | Microsoft Docs
+description: 了解如何通过 Azure Site Recovery 服务使用恢复计划进行灾难恢复。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920099"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215185"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
 本文介绍了 [Azure Site Recovery](site-recovery-overview.md) 中的恢复计划。
 
 恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。
-
-
 
 
 

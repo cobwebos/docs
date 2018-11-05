@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 86fc1c3542bea1be840041bb73df15631c066c7e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294966"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230312"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件 
 
@@ -52,7 +52,7 @@ ms.locfileid: "35294966"
       ![复制事件中心命名空间连接字符串](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > 若要确认连接字符串是与事件中心命名空间关联，还是与特定的事件中心关联，请确保该连接字符串不具有 `EntityPath` 参数。 如果找到了该参数，则说明连接字符串适用于特定的事件中心“实体”，不是适用于逻辑应用的正确字符串。
+      > 若要确认连接字符串是与事件中心命名空间关联，还是与特定的事件中心关联，请确保该连接字符串不具有 `EntityPath` 参数。 如果找到了该参数，则说明连接字符串适用于特定的事件中心“实体”，不是适用于逻辑应用的正确字符串。
 
 4. 现在继续[添加事件中心触发器](#add-trigger)或[添加事件中心操作](#add-action)。
 
@@ -68,7 +68,8 @@ ms.locfileid: "35294966"
 
 2. 在搜索框中，输入“事件中心”作为筛选器。 在触发器列表中，选择所需的触发器。 
 
-   此示例使用此触发器：“事件中心 - 事件在事件中心可用时”
+   此示例使用此触发器： 
+   “事件中心 - 事件在事件中心可用时”****
 
    ![选择触发器](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -111,7 +112,7 @@ ms.locfileid: "35294966"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在该触发器或操作下，选择“新建步骤” > “添加操作”。
+2. 在该触发器或操作下，选择“新建步骤” > “添加操作”。
 
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 
    选择出现的加号 (**+**)，然后选择“添加操作”。
@@ -125,7 +126,7 @@ ms.locfileid: "35294966"
 
 4. 如果系统提示输入连接详细信息，请[立即创建事件中心连接](#create-connection)。 或者，如果连接已存在，请提供操作所需的信息。
 
-   | 属性 | 必选 | 说明 | 
+   | 属性 | 必选 | Description | 
    |----------|----------|-------------|
    | 事件中心名称 | 是 | 选择要发送事件的事件中心 | 
    | 事件内容 | 否 | 要发送的事件内容 | 
@@ -146,7 +147,7 @@ ms.locfileid: "35294966"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必选 | 值 | 说明 | 
+   | 属性 | 必选 | 值 | Description | 
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <connection-name> | 为连接创建的名称 |
    | 事件中心命名空间 | 是 | <event-hubs-namespace> | 选择要使用的事件中心命名空间。 | 
@@ -172,7 +173,7 @@ ms.locfileid: "35294966"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

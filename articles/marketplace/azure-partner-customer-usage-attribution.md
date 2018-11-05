@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365607"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157932"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -44,7 +44,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 若要添加全局唯一标识符 (GUID)，可对主模板文件进行一次性的修改：
 
-1. [创建 GUID](#create-guids)（例如，eb7927c8-dd66-43e1-b0cf-c346a422063）和[注册 GUID](#register-guids-and-offers)。
+1. 使用建议的方法[创建 GUID](#create-guids)，并[注册 GUID](#register-guids-and-offers)。
 
 1. 打开资源管理器模板。
 
@@ -58,9 +58,26 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 1. [在模板部署中验证 GUID 是否成功](#verify-the-guid-deployment)。
 
-### <a name="sample-template-code"></a>示例模板代码
+### <a name="sample-resource-manager-template-code"></a>示例资源管理器模板代码
+将下面的示例代码添加到主模板文件时，请确保使用自己的输入修改该代码。
+资源只需添加到 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![示例模板代码](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>使用资源管理器 API
 
@@ -77,7 +94,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 > [!Note]
 > 字符串的格式很重要。 如果未包含 **pid-** 前缀，我们将无法查询数据。 以不同的方式跟踪不同的 SDK。 若要实现此方法，请查看适用于首选 Azure SDK 的支持和跟踪方法。 
 
-### <a name="example-the-python-sdk"></a>示例：Python SDK
+#### <a name="example-the-python-sdk"></a>示例：Python SDK
 
 对于 Python，请使用 **config** 属性。 只能将该属性添加到 UserAgent。 下面是一个示例：
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>创建 GUID
 
-GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 建议利用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)。 但是，如果不想使用 Azure 存储的 GUID 生成器，可使用多个[在线 GUID 生成器](https://www.bing.com/search?q=guid%20generator)。
+GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 Azure 存储团队已创建 [GUID 生成器窗体](https://aka.ms/StoragePartners)，它将通过电子邮件向你发送格式正确的 GUID，并可在不同的跟踪系统中重复使用。 
 
 > [!Note]
 > 强烈建议使用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)创建 GUID。 有关详细信息，请参阅[常见问题解答](#faq)。

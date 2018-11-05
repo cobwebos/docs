@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery 中的故障回复 | Microsoft Docs
-description: 本文概述了各种类型的故障回复，以及在使用 Azure Site Recovery 服务故障回复到本地时要考虑的注意事项。
+title: 在灾难恢复期间使用 Azure Site Recovery 进行故障回复 | Microsoft Docs
+description: 本文概述了各种类型的故障回复，以及在灾难恢复期间使用 Azure Site Recovery 服务故障回复到本地时要考虑的注意事项。
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920383"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210136"
 ---
 # <a name="overview-of-failback"></a>故障回复概述
 
-故障转移到 Azure 以后，可以故障回复到本地站点。 使用 Azure Site Recovery 可以执行两种不同类型的故障回复： 
+在灾难恢复过程中故障转移到 Azure 以后，可以故障回复到本地站点。 使用 Azure Site Recovery 可以执行两种不同类型的故障回复： 
 
 - 故障回复到原始位置 
 - 故障回复到备用位置

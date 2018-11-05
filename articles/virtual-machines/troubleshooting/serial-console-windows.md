@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 2cde7d2af4dee9e2bd241f0856b8f2d29ccad6ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024402"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210731"
 ---
 # <a name="virtual-machine-serial-console"></a>虚拟机串行控制台
 
@@ -54,20 +54,26 @@ ms.locfileid: "50024402"
   4. 向下滚动到“支持 + 故障排除”部分，单击“串行控制台”选项。 此时会打开一个包含串行控制台的新窗格，并启动连接。
 
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>在自定义或更低版本的映像中启用串行控制台
-Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。 若要为 2018 年 2 月之前创建的 Windows 虚拟机启用串行控制台，请执行以下步骤： 
+Azure 上较新的 Windows Server 映像默认情况下已启用[特殊管理控制台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 SAC 在服务器版本的 Windows 上受支持，但在客户端版本（例如 Windows 10、Windows 8 或 Windows 7）上不可用。 
+
+对于较旧的 Windows Server 映像（在 2018 年 2 月之前创建），可以通过 Azure 门户的“运行命令”功能自动启用串行控制台。 在 Azure 门户中查找名为“EnableEMS”的运行命令。
+
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+
+或者，若要为 2018 年 2 月之前创建的 Windows 虚拟机手动启用串行控制台，请执行以下步骤： 
 
 1. 通过远程桌面连接到 Windows 虚拟机
-2. 从管理命令提示符运行以下命令 
-* `bcdedit /ems {current} on`
-* `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-3. 重新启动系统以启用 SAC 控制台
+1. 从管理命令提示符运行以下命令 
+    * `bcdedit /ems {current} on`
+    * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
+1. 重新启动系统以启用 SAC 控制台
 
-![](/media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
 如果需要，也可以使 SAC 脱机：
 
 1. 将想要为其配置 SAC 的 Windows 磁盘作为数据磁盘附加到现有 VM。 
-2. 从管理命令提示符运行以下命令 
+1. 从管理命令提示符运行以下命令 
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
@@ -220,27 +226,27 @@ Web 套接字已关闭或无法打开。 | 你可能需要将 `*.console.azure.c
 
 **问：如何发送反馈？**
 
-答： 可以访问 https://aka.ms/serialconsolefeedback 来提供问题反馈。 也可以通过 azserialhelp@microsoft.com，或者 http://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）
+A. 可以访问 https://aka.ms/serialconsolefeedback 来提供问题反馈。 也可以通过 azserialhelp@microsoft.com，或者 http://feedback.azure.com 上的虚拟机类别发送反馈（不太建议）
 
 **问：串行控制台是否支持复制/粘贴？**
 
-答： 是的，它支持。 使用 Ctrl + Shift + C 和 Ctrl + Shift + V 复制并粘贴到终端。
+A. 是的，它支持。 使用 Ctrl + Shift + C 和 Ctrl + Shift + V 复制并粘贴到终端。
 
 **问：谁可以为我的订阅启用或禁用串行控制台？**
 
-答： 若要在订阅范围级别启用或禁用串行控制台，必须具有订阅的写入权限。 具有写入权限的角色包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
+A. 若要在订阅范围级别启用或禁用串行控制台，必须具有订阅的写入权限。 具有写入权限的角色包括但不限于管理员或所有者角色。 自定义角色也可能具有写入权限。
 
 **问：谁可以访问 VM 的串行控制台？**
 
-答： 必须具有 VM 的参与者级别访问权限或更高级别访问权限才能访问 VM 的串行控制台。 
+A. 必须具有 VM 的参与者级别访问权限或更高级别访问权限才能访问 VM 的串行控制台。 
 
 **问：我的串口控制台没有显示任何内容，我该怎么办？**
 
-答： 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#enable-serial-console-in-custom-or-older-images)。
+A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[在自定义映像或较旧映像中启用串行控制台](#enable-serial-console-in-custom-or-older-images)。
 
 **问：串行控制台是否可用于虚拟机规模集？**
 
-答： 目前，不支持访问虚拟机规模集实例的串行控制台。
+A. 目前，不支持访问虚拟机规模集实例的串行控制台。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关可以在 Windows SAC 中使用的 CMD 和 PowerShell 命令的深度指南，请单击[此处](serial-console-cmd-ps-commands.md)。

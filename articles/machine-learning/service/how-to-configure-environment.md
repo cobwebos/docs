@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 机器学习的开发环境 | Microsoft 文档
-description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文档介绍如何使用 Conda 环境、创建配置文件和配置 Jupyter Notebook、Azure Notebooks、IDE、代码编辑器和数据科学虚拟机。
+description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文档将学习如何使用 Conda 环境、创建配置文件和配置 Jupyter Notebooks、Azure Notebooks、IDE、代码编辑器和数据科学虚拟机。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.openlocfilehash: 657a762874f7c2fb40553552ef6c17d9b5b6da0f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/24/2018
+ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958612"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158986"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -120,12 +120,16 @@ Azure Notebooks 和 Azure Data Science Virtual Machine (DSVM) 配置为使用 Az
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-    > [!NOTE]
-    > 如果有消息指出无法卸载 `PyYAML`，请改用以下命令：
-    >
-    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   可以在以下 SDK 中查看类和方法的 Python 参考文档：
+   + [适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)
+   + [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)
 
-    安装 SDK 可能需要几分钟时间。
+   > [!NOTE]
+   > 如果有消息指出无法卸载 `PyYAML`，请改用以下命令：
+   >
+   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+
+   安装 SDK 可能需要几分钟时间。
 
 1. 安装机器学习试验的包。 使用以下命令（请将 `<new package>` 替换为要安装的包）：
 

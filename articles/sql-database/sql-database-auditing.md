@@ -11,21 +11,26 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/25/2018
+ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466675"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092945"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
-Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
+审核 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)会跟踪数据库事件，并将这些事件写入 Azure 存储帐户、OMS 工作区或事件中心中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
 - 实现并促进遵从合规标准，但不能保证合规性。 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
+
+
+> [!NOTE] 
+> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+
 
 ## <a id="subheading-1"></a>Azure SQL 数据库审核概述
 
@@ -51,7 +56,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 - 如果启用服务器 blob 审核，它将一直应用于数据库。 将不考虑数据库审核设置审核数据库。
 
-- 除在服务器上启用 blob 审核外，在数据库上启用 blob 审核也不会替代或更改服务器 blob 审核的任何设置。 这两种审核会并存。 换言之，会并行对数据库执行两次审核；一次按服务器策略审核，一次按数据库策略审核。
+- 除在服务器上启用 blob 审核外，在数据库或数据仓库上启用 blob 审核也不会替代或更改服务器 blob 审核的任何设置。 这两种审核会并存。 换言之，会并行对数据库执行两次审核；一次按服务器策略审核，一次按数据库策略审核。
 
    > [!NOTE]
    > 应避免同时启用服务器 blob 审核和数据库 blob 审核，除非：
@@ -87,7 +92,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
     ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
+7. 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
 
     ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
@@ -98,6 +103,11 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 9. 单击“ **保存**”。
 10. 若要自定义已审核的事件，可通过 [PowerShell cmdlet](#subheading-7) 或 [REST API](#subheading-9) 执行此操作。
 11. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
+
+
+> [!IMPORTANT]
+>在 Azure SQL 数据仓库或在具有 Azure SQL 数据仓库的服务器上启用审核将导致数据仓库恢复，即使在以前被暂停的情况下也是如此。 **请确保在启用审核后再次暂停数据仓库**。
+
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
@@ -206,6 +216,9 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
     FAILED_DATABASE_AUTHENTICATION_GROUP
 
     可以按照[使用 Azure PowerShell 管理 SQL 数据库审核](#subheading-7)部分中所述，使用 PowerShell 配置不同类型的操作和操作组的审核。
+
+- 使用 AAD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
+
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 SQL 数据库审核
 

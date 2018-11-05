@@ -1,21 +1,20 @@
 ---
-title: 使用 Site Recovery 和云解决方案提供商 (CSP) 计划在多租户环境中设置到 Azure 的 VMware 复制 | Microsoft Docs
-description: 介绍如何通过 CSP 创建和管理 租户订阅，并在多租户设置中部署 Azure Site Recovery
-services: site-recovery
+title: 使用 Site Recovery 和云解决方案提供商 (CSP) 计划在多租户环境中设置到 Azure 的 VMware 灾难恢复 | Microsoft Docs
+description: 介绍如何使用 Azure Site Recovery 在多租户环境中设置 VMware 灾难恢复。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354109"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208895"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 复制
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 灾难恢复
 
 [CSP 计划](https://partner.microsoft.com/en-US/cloud-solution-provider)可促进 Microsoft 云服务（包括 Office 365、企业移动性套件和 Microsoft Azure）更好地结合在一起。 有了 CSP，合作伙伴就可以与客户建立端到端关系，并在建立关系的过程中充当主要联络点。 合作伙伴可以为客户部署 Azure 订阅，并将这些订阅与自己的增值型自定义产品/服务相结合。
 

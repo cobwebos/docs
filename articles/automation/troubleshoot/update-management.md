@@ -4,20 +4,22 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405219"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092621"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
 本文讨论用于解决使用更新管理时可能遇到的问题的解决方案。
+
+对于混合辅助角色代理，可使用代理故障排除程序来确定底层问题。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。 对于所有其他问题，请参阅以下有关可能问题的详细信息。
 
 ## <a name="general"></a>常规
 
@@ -110,6 +112,20 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 #### <a name="resolution"></a>解决方法
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
+
+### <a name="nologs"></a>场景：Log Analytics 中未显示计算机的更新管理数据
+
+#### <a name="issue"></a>问题
+
+你的计算机在“合规性”下显示为“未评估”，但你会在 Log Analytics 中看到混合 Runbook 辅助角色的检测信号数据，而不是“更新管理”。
+
+#### <a name="cause"></a>原因
+
+混合 Runbook 辅助角色可能需要重新注册并重新安装。
+
+#### <a name="resolution"></a>解决方法
+
+按照[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤重新安装混合辅助角色。
 
 ### <a name="hresult"></a>场景：计算机显示“未评估”，并显示 HResult 异常
 

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002239"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416930"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-copy-activity-performance.md)
+> * [版本 1](v1/data-factory-copy-activity-performance.md)
 > * [当前版本](copy-activity-performance.md)
 
 
@@ -56,7 +56,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 需要注意的要点：
 
 * 使用以下公式计算吞吐量：[从源读取的数据大小]/[复制活动运行持续时间]。
-* 表中的性能参考数字使用单次复制活动运行中的 [TPC-H](http://www.tpc.org/tpch/) 数据集测量得出。
+* 表中的性能参考数字使用单次复制活动运行中的 [TPC-H](http://www.tpc.org/tpch/) 数据集测量得出。 基于文件的存储的测试文件是多个大小为 10 GB 的文件。
 * 在 Azure 数据存储中，源和接收器位于同一 Azure 区域。
 * 对于本地数据存储和云数据存储之间的混合复制，已在与数据存储分开并具有以下规格的计算机上运行每个自承载 Integration Runtime 节点。 单个活动运行时，复制操作仅使用测试计算机的一小部分 CPU、内存或网络带宽。
     <table>
@@ -76,7 +76,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 
 > [!TIP]
-> 可通过使用比允许的默认最大数据集成单元 (DIU) 数更多的 DIU 来实现更高的吞吐量，对于云到云复制活动运行来说，允许的默认上限为 32。 例如，使用 100 个 DIU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[数据集成单元](#data-integration-units)部分，了解有关此功能和受支持方案的相关详细信息。 要请求更多 DIU，请联系 [Azure 支持](https://azure.microsoft.com/support/)。
+> 通过使用更多数据集成单元 (DIU)，可以实现更高吞吐量。 例如，使用 100 个 DIU，可将数据以 **1.0GBps** 的速率从 Azure Blob 复制到 Azure Data Lake Store 中。 请参阅[数据集成单元](#data-integration-units)部分，了解有关此功能和受支持方案的相关详细信息。 
 
 ## <a name="data-integration-units"></a>数据集成单元
 
@@ -94,7 +94,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 监视活动运行时，可以在复制活动输出中看到每次复制运行实际使用的数据集成单元数。 从[复制活动监视](copy-activity-overview.md#monitoring)中了解详细信息。
 
 > [!NOTE]
-> 如果需要更多 DIU 以获得更高的吞吐量，请联系 [Azure 支持](https://azure.microsoft.com/support/)。 目前仅在**将多个文件从 Blob 存储/Data Lake Store/Amazon S3/云 FTP/云 SFTP 复制到其他任何云数据存储**时，才能设置为 8 或更高的值。
+> 目前仅在**将多个文件从 Blob 存储/Data Lake Storage/Amazon S3/云 FTP/云 SFTP 复制到其他任何云数据存储**时，才能设置**大于 4** 的 DIU 数。
 >
 
 **示例：**

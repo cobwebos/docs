@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 执行 Hyper-V 到 Azure 的复制的体系结构 | Microsoft Docs
-description: 本文概述通过 Azure Site Recovery 服务将本地 Hyper-V VM 复制到 Azure（不使用 VMM）所用的组件和体系结构。
+title: 使用 Azure Site Recovery 执行 Hyper-V 到 Azure 灾难恢复的体系结构 | Microsoft Docs
+description: 本文概述了使用 Azure Site Recovery 服务将本地 Hyper-V VM（不带 VMM）的灾难恢复部署到 Azure 时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078352"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210646"
 ---
-# <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V 到 Azure 复制体系结构
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
 
 本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在本地 Hyper-V 主机与 Azure 之间对 Hyper-V 虚拟机 (VM) 进行复制、故障转移和恢复时所使用的体系结构和过程。

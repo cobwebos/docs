@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368080"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156317"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>如何使用分析功能来分析设备数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "46368080"
 *本文适用于操作员、构建者和管理员。*
 
 
-Microsoft Azure IoT Central 提供各种分析功能对来自设备的大量数据进行分析。 若要开始，请访问左侧导航菜单中的“Analytics”。 
+Azure IoT Central 提供各种分析功能对来自设备的大量数据进行分析。 若要开始，请访问左侧导航菜单中的“Analytics”。 
 
   ![IoT Central 导航菜单中的“Analytics”](media\howto-create-analytics\analytics-navigation.png)
 

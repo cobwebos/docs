@@ -1,24 +1,20 @@
 ---
-title: 从 Azure Databricks 连接到不同数据源 | Microsoft Docs
+title: '从 Azure Databricks 连接到不同数据源 '
 description: 了解如何从 Azure Databricks 连接到不同数据源。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 865313a7c6eabd847529b88ff5fff0b7db438fa5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: mamccrea
+ms.openlocfilehash: 8055b5d7e6c53abc385a99d9190a38603ebb968b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30174031"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417440"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>从 Azure Databricks 连接到数据源
 

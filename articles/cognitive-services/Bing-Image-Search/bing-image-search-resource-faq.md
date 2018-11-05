@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ea170f4751952288c7894cab9c5acda2bf443043
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cdc8d8cad26ce4807c8f7bf8fe1d33f13d5799c1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295475"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232930"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -55,7 +55,7 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-s
 
 上一常见问题解答中介绍的 CORS 代理方法适合于开发、测试和学习环境。
 
-不过，在生产环境中，应在使用必应 Web 搜索 API 的网页所处的域中托管服务器端脚本。 此脚本实际应在网页 JavaScript 发出请求后执行 API 调用，并将所有结果（包括响应头）返回给客户端。 由于（页面和脚本）这两个资源共用源，因此 CORS 不起作用，网页 JavaScript 可以访问特殊响应头。
+不过，在生产环境中，应在使用必应 Web 搜索 API 的网页所处的域中托管服务器端脚本。 此脚本实际应在网页 JavaScript 发出请求后执行 API 调用，并将所有结果（包括响应头）返回给客户端。 由于（页面和脚本）这两个资源共用源，因此 CORS 不起作用，网页 JavaScript 可以访问特殊标头。
 
 这种方法还可以保护 API 密钥免遭公开，因为只有服务器端脚本需要它。 此脚本可以使用其他方法（如 HTTP 引荐来源网址），以确保对请求进行授权。
 

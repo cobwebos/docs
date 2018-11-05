@@ -1,6 +1,6 @@
 ---
-title: 在 Microsoft Azure PowerShell 中使用 Azure 数据库迁移服务模块从本地 SQL Server 迁移到 Azure SQL DB | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL。
+title: 使用数据库迁移服务和 PowerShell 将 SQL Server 迁移到 Azure SQL 数据库 | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL 数据库。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: ffa4d5f87a722ed3cb95d873d02707ed1c797dc6
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886603"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248184"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB
+# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库
 在本文中，请使用 Microsoft Azure PowerShell 将还原为 SQL Server 2016 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
 
 在本文中，学习如何：

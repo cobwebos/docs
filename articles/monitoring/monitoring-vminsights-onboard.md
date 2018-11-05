@@ -1,5 +1,5 @@
 ---
-title: 载入用于 VM 的 Azure Monitor | Microsoft Docs
+title: 载入用于 VM 的 Azure Monitor（预览版）| Microsoft Docs
 description: 本文介绍如何载入和配置用于 VM 的 Azure Monitor，以便可以开始了解分布式应用程序的性能，以及识别了哪些运行状况问题。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390238"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092768"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms"></a>如何载入用于 VM 的 Azure Monitor 
+# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>如何载入用于 VM 的 Azure Monitor（预览版）
 本文介绍如何设置用于 VM 的 Azure Monitor，以监视 Azure 虚拟机的操作系统运行状况，以及发现和映射这些虚拟机上托管的应用程序依赖项。  
 
 可以使用以下方法之一来启用用于 VM 的 Azure Monitor，本文稍后会提供每种方法的用法详细信息。  
@@ -31,7 +31,7 @@ ms.locfileid: "49390238"
 * 使用 PowerShell 为指定的订阅或资源组中的多个 Azure VM 或虚拟机规模集启用此功能。
 
 ## <a name="prerequisites"></a>先决条件
-在开始之前，请确保按以下小节中所述做好准备。
+在开始之前，请确保按照以下小节中的说明理解以下内容。
 
 ### <a name="log-analytics"></a>Log Analytics 
 

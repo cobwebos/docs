@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5ddf510d50f38ed9aaf742bd06c330e53ffe1391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f007ca3aacb338c14bf481ee58407596c8290ad
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992790"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091616"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
@@ -50,7 +50,7 @@ ms.locfileid: "46992790"
 - 事件发起者：也称为“调用方”。 电子邮件地址或执行操作的用户的 Azure Active Directory 标识符。
 
 > [!NOTE]
-> 在一个订阅中最多有 100 条针对以下任一范围活动的警报规则：单个资源、资源组中的所有资源（或）整个订阅级别。
+> 在一个订阅中最多有 100 条警报规则可以针对以下任一范围活动创建：单个资源、资源组中的所有资源（或）整个订阅级别。
 
 活动日志警报激活后会使用操作组生成操作或通知。 操作组是一组可重用的通知接收方，例如电子邮件地址、Webhook URL 或短信电话号码。 可以从多个警报中引用接收方，以集中和分组通知通道。 在定义活动日志警报时，有两个选项。 可以：
 

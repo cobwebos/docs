@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972651"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139520"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -60,9 +60,15 @@ Kusto 提供了可与以下项一起用于引入和查询数据的客户端 SDK�
 
 * [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **编程引入方法**：
+
+* 通过 Azure 数据资源管理器数据管理服务引入数据（高吞吐量和可靠引入）
+
+  * [**批量引入**](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample)（由 SDK 提供）：客户端将数据上传到 Azure Blob 存储（由 Azure 数据资源管理器数据管理服务指定）并向 Azure 队列发布通知。 建议使用此方法实现大容量、可靠和低成本的数据引入。
 
 * 直接将数据引入到 Azure 数据资源管理器引擎（最适合用于探索和原型制作）：
 
@@ -71,10 +77,6 @@ Kusto 提供了可与以下项一起用于引入和查询数据的客户端 SDK�
   * **从查询引入**：指向查询结果的控制命令 (.set、.set-or-append、.set-or-replace) 用于生成报表或小型临时表。
 
   * **从存储引入**：在外部存储数据（例如，Azure Blob 存储）的控制命令 (.ingest into) 支持高效的批量引入数据。
-
-* 通过 Azure 数据资源管理器数据管理服务引入数据（高吞吐量和可靠引入）
-
-  * [**批量引入**](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample)（由 SDK 提供）：客户端将数据上传到 Azure Blob 存储（由 Azure 数据资源管理器数据管理服务指定）并向 Azure 队列发布通知。 建议使用此方法实现大容量、可靠和低成本的数据引入。
 
 **不同方法的延迟情况**：
 

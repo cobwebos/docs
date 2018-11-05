@@ -1,18 +1,18 @@
 ---
-title: 通过 Azure Site Recovery 管理配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
-description: 本文介绍了如何通过 Azure Site Recovery 管理现有配置服务器，以便执行 VMware 到 Azure 的 灾难恢复。
+title: 使用 Azure Site Recovery 管理配置服务器，以便进行 VMware 和物理服务器灾难恢复 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 管理现有配置服务器，以便将 VMware VM 和物理服务器灾难恢复到 Azure。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/15/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: bb756a89babef96b16419104737e87405b3527ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4ac3871893e7e8161dc087f285eb3d802cd4a355
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407395"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215134"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
 

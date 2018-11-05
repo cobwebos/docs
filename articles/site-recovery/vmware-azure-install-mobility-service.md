@@ -1,19 +1,19 @@
 ---
-title: 安装移动服务（VMware/物理到 Azure）| Microsoft Docs
-description: 了解如何安装移动服务代理以使用 Azure Site Recovery 保护本地 VMware VM 和物理服务器。
+title: 安装移动服务以将 VMware VM 和物理服务器灾难恢复到 Azure | Microsoft Docs
+description: 了解如何安装移动服务代理以使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526991"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212686"
 ---
-# <a name="install-the-mobility-service"></a>安装移动服务 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>安装移动服务以对 VMware VM 和物理服务器进行灾难恢复
 
 Azure Site Recovery 移动服务安装在要复制到 Azure 的 VMware VM 和物理服务器上。 该服务捕获计算机上的数据写入，然后将其转发到进程服务器。 将移动服务部署到要复制到 Azure 的每台计算机（VMware VM 或物理服务器）上。 可使用以下方法将移动服务部署到需要保护的服务器和 VMware VM 上：
 
@@ -113,7 +113,7 @@ Azure Site Recovery 移动服务安装在要复制到 Azure 的 VMware VM 和物
 2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，并单击“卸装”。
 
 ### <a name="uninstall-at-a-command-prompt"></a>在命令提示符下卸载
-1. 以管理员身份打开“命令提示符”窗口。
+1. 以管理员身份打开命令提示符窗口。
 2. 若要卸载移动服务，请运行以下命令：
 
     ```

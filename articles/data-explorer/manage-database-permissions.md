@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868269"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212873"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>管理 Azure 数据资源管理器数据库权限
 
 通过 Azure 数据资源管理器，可以使用基于角色的访问控制模型来控制对数据库和表的访问。 在此模型下，主体（用户、组和应用）将映射到角色。 主体可以根据分配的角色访问资源。
 
-本文介绍了可用的角色以及如何将主体分配给这些角色。
+本文介绍可用角色以及如何使用 Azure 门户和 Azure 数据资源管理器管理命令将主体分配给这些角色。
 
 ## <a name="roles-and-permissions"></a>角色和权限
 

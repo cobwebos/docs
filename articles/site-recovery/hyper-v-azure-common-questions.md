@@ -1,21 +1,21 @@
 ---
-title: 常见问题 - 使用 Azure Site Recovery 进行 Hyper-V 到 Azure 的复制 | Microsoft Docs
-description: 本文汇总了有关使用 Azure Site Recovery 将本地 Hyper-V VM 复制到 Azure 的常见问题。
+title: 常见问题 - 使用 Azure Site Recovery 进行 Hyper-V 到 Azure 的灾难恢复 | Microsoft Docs
+description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 Hyper-V VM 到 Azure 的灾难恢复的常见问题。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319721"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212482"
 ---
-# <a name="common-questions---hyper-v-to-azure-replication"></a>常见问题 - Hyper-V 到 Azure 的复制
+# <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
 本文提供将本地 Hyper-V VM 复制到 Azure 时可能遇到的常见问题的解答。 
 

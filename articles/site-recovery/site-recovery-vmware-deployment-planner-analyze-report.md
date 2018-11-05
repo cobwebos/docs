@@ -1,21 +1,21 @@
 ---
-title: 适用于 VMware 到 Azure 部署的 Azure Site Recovery Deployment Planner | Microsoft Docs
-description: 本文介绍如何分析适用于 VMware 到 Azure 方案的 Azure Site Recovery 部署规划器的已生成报表。
-services: site-recovery
+title: 分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure | Microsoft Docs
+description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便从 VMware 灾难恢复到 Azure。
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094082"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213910"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery 部署规划器报表
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure
+
 生成的 Microsoft Excel 报表包含以下工作表：
 ## <a name="on-premises-summary"></a>本地摘要
 “本地摘要”工作表概述了分析的 VMware 环境。

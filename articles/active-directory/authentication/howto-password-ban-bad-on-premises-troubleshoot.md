@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 1eea6380d4276644db0c7681f23a4b0c5e79ff09
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187343"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741167"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>预览版：Azure AD 密码保护监视、报告和故障排除
 
 |     |
 | --- |
-| Azure AD 密码保护和自定义禁止密码列表是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure AD 密码保护是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文提供详细信息来帮助你了解每项服务日志信息的位置，以及如何报告 Azure AD 密码保护的用法。
@@ -88,7 +88,7 @@ ms.locfileid: "39187343"
 
 指定用户的密码已被接受，因为 Azure 密码策略尚不可用
 
-UserName: <user> FullName: <user>
+UserName: SomeUser FullName: Some User
 
 这种情况可能是以下一个或多个原因造成的:%n
 
@@ -195,8 +195,8 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 2. 从所有域控制器中卸载 DC 代理软件。 完成此步骤后**需要**重新启动。
 3. 在每个域命名上下文中手动删除所有代理服务连接点。 可使用以下 Active Directory Powershell 命令发现这些对象的位置：
    ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{EBEFB703-6113-413D-9167-9F8DD4D24468}*”
+   $scp = "serviceConnectionPoint"
+   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -207,8 +207,8 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 根据公共预览版软件的部署范围，林中的每个域控制器可能存在其中的一个对象。 可使用以下 Active Directory Powershell 命令发现该对象的位置：
 
    ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*”
+   $scp = "serviceConnectionPoint"
+   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 

@@ -1,18 +1,18 @@
 ---
-title: " 通过 Azure Site Recovery 管理配置服务器，以便进行物理服务器灾难恢复 | Microsoft Docs"
-description: 本文介绍了如何通过 Azure Site Recovery 服务管理现有配置服务器，以便进行物理服务器到 Azure 的灾难恢复。
+title: 使用 Azure Site Recovery 管理配置服务器，以便将本地物理服务器灾难恢复到 Azure | Microsoft Docs
+description: 本文介绍如何管理 Azure Site Recovery 配置服务器，以便将物理服务器灾难恢复到 Azure。
 services: site-recovery
-author: AnoopVasudavan
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 068d2774791995fab1c07c73e6d733a6e09379f1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951170"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213232"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -106,7 +106,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 
 ### <a name="parameters"></a>parameters
 
-|参数名称| Type | 说明| 值|
+|参数名称| 类型 | Description| 值|
 |-|-|-|-|
 | /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
 |/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
