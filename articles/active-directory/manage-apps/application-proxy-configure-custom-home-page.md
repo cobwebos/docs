@@ -120,7 +120,7 @@ ms.locfileid: "50238499"
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
-3. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 *https://sharepoint-iddemo.msappproxy.net/* 更改为 *https://sharepoint-iddemo.msappproxy.net/hybrid/*，则应用用户将直接转到自定义主页。
+3. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 *https://sharepoint-iddemo.msappproxy.net/* 更改为 *https://sharepoint-iddemo.msappproxy.net/hybrid/* ，则应用用户将直接转到自定义主页。
 
     ```
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
