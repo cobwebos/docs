@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255142"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "44391889"
 
 Azure Data Lake Storage Gen1 为 Azure Active Directory (Azure AD) 用户、组和服务主体提供 POSIX 访问控制和详细的审核。 可以对现有文件和文件夹设置这些访问控制。 也可使用访问控制来创建可以应用到新文件或文件夹的默认设置。 设置针对现有文件夹和子对象的权限时，需在每个对象上以递归方式传播这些权限。 如果有大量的文件，传播这些权限可能需要很长时间。 所需时间取决于传播速度，而传播速度则在每秒 30-50 个处理对象这一范围内。 因此，请对文件夹结构和用户组进行相应的规划。 否则，在使用数据时，可能导致意外的延迟和问题。 
 
-假设文件夹有 100,000 个子对象。 以每秒处理 30 个对象的速度下限为例，更新整个文件夹的权限可能需要一小时。 有关 Data Lake Storage Gen1 ACL 的更多详细信息，请参阅 [Azure Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。 若要改进以递归方式分配 ACL 的性能，可以使用 Azure Data Lake 命令行工具。 此工具可以创建多个线程和递归导航逻辑，快速地向数百万文件应用 ACL。 此工具适用于 Linux 和 Windows，其[文档](https://github.com/Azure/data-lake-adlstool)和[下载包](http://aka.ms/adlstool-download)在 GitHub 上提供。 可以通过以 Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) 和 [Java](data-lake-store-get-started-java-sdk.md) SDK 编写的自己的工具来实现相同的性能改进。
+假设文件夹有 100,000 个子对象。 以每秒处理 30 个对象的速度下限为例，更新整个文件夹的权限可能需要一小时。 有关 Data Lake Storage Gen1 ACL 的更多详细信息，请参阅 [Azure Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。 若要改进以递归方式分配 ACL 的性能，可以使用 Azure Data Lake 命令行工具。 此工具可以创建多个线程和递归导航逻辑，快速地向数百万文件应用 ACL。 此工具适用于 Linux 和 Windows，其[文档](https://github.com/Azure/data-lake-adlstool)和[下载包](https://aka.ms/adlstool-download)在 GitHub 上提供。 可以通过以 Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) 和 [Java](data-lake-store-get-started-java-sdk.md) SDK 编写的自己的工具来实现相同的性能改进。
 
 ### <a name="use-security-groups-versus-individual-users"></a>安全组和单个用户的使用比较 
 

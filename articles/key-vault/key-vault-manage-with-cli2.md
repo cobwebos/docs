@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 16b5aed4d034d989bf34b92975b2a743b82903b0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954320"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256438"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -50,7 +50,7 @@ ms.locfileid: "49954320"
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
 * Azure 命令行接口版本 2.0 或更高版本。 若要安装最新版本，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-* 配置为使用本文中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](http://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
+* 配置为使用本文中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>获得 Azure 跨平台命令行接口帮助
 

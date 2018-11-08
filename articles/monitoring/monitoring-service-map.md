@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252915"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -277,7 +277,7 @@ Linux：
 ![“计算机更改跟踪”窗格](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-queries.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
@@ -504,7 +504,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-log-searches.md)，以检索服务映射收集的数据。
+详细了解 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-queries.md)，以检索服务映射收集的数据。
 
 
 ## <a name="troubleshooting"></a>故障排除

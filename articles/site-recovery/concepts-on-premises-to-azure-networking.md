@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c05a97dc5a5fe9a0e8a6f1a8598ff82fcf488ab2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215219"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253272"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>设置在故障转移后用于连接到 Azure VM 的 IP 地址
 
@@ -81,7 +81,7 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 
 ## <a name="assigning-new-ip-addresses"></a>分配新 IP 地址
 
-这篇[博文](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)介绍了如何在运行故障转移后无需保留 IP 地址时设置 Azure 网络基础结构。 这篇博文从应用程序说明入手，介绍了如何设置本地网络和 Azure 网络，最后介绍了如何运行故障转移。
+这篇[博文](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)介绍了如何在运行故障转移后无需保留 IP 地址时设置 Azure 网络基础结构。 这篇博文从应用程序说明入手，介绍了如何设置本地网络和 Azure 网络，最后介绍了如何运行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 [运行故障转移](site-recovery-failover.md)

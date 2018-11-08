@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158153"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282452"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明  
 本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -99,6 +99,9 @@ ms.locfileid: "50158153"
 
 
 #### <a name="compute"></a>计算 
+
+<!-- TBD – IS, ASDK -->
+- 如重新附加到同一虚拟机 (VM) 具有相同名称和 LUN 分离的磁盘失败并出现错误**不能将数据磁盘 datadisk 附加到 VM vm1**。 因为当前正在分离磁盘或最后一个分离操作失败，发生此错误。 请等到磁盘完全分离然后重试或删除/分离磁盘显式试。 解决方法是使用不同的名称，或不同的 LUN 上重新附加它。 
 
 <!-- 3235634 – IS, ASDK -->
 - 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，请指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。

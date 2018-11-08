@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.openlocfilehash: f2a14f2622d78a4222a8518172eb1ce8ed9e6637
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc281f8ca04941da88c0ff1b98ff0a044a3184f5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785636"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250826"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户缩放流式处理终结点
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.locfileid: "33785636"
  
 本主题介绍了如何缩放流式处理终结点。
 
-有关定价详细信息，请参阅[媒体服务定价详细信息](http://go.microsoft.com/fwlink/?LinkId=275107)。
+有关定价详细信息，请参阅[媒体服务定价详细信息](https://go.microsoft.com/fwlink/?LinkId=275107)。
 
 ## <a name="scale-streaming-endpoints"></a>缩放流式处理终结点
 

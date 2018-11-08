@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/10/2017
 ms.author: trinadhk
-ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01aacaecba8c5a4adf1dab5483a2f921df9314c0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606853"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252524"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>已升级到恢复服务保管库的备份保管库
 本文提供恢复服务保管库的功能概述、有关将现有备份保管库升级到恢复服务保管库的常见问题，以及升级后的步骤。 恢复服务保管库是与用于容装备份数据的备份保管库相当的 Azure 资源管理器。 不管在本地还是在 Azure 中，数据通常都是虚拟机 (VM)、工作负荷、服务器或工作站的数据或配置信息的副本。
@@ -26,13 +26,13 @@ ms.locfileid: "34606853"
 
 - **有助于确保备份数据安全的增强功能**：使用恢复服务保管库时，Azure 备份提供用于保护云备份的安全功能。 这些安全功能确保可以保护备份并从云备份安全地恢复数据，即使生产服务器和备份服务器受损。 [了解详细信息](backup-azure-security-feature.md)
 
-- **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和[本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **针对混合 IT 环境进行集中监视**：使用恢复服务保管库时，可以通过中心门户监视 [Azure IaaS VM](backup-azure-manage-vms.md) 和[本地资产](backup-azure-manage-windows-server.md#manage-backup-items)。 [了解详细信息](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
 - **基于角色的访问控制 (RBAC)**：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份包含三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库兼容 RBAC，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
-- **保护 Azure 虚拟机的所有配置**：恢复服务保管库保护基于 Resource Manager 的 VM，其中包括高级磁盘、托管磁盘和加密 VM。 将备份保管库升级到恢复服务保管库以后，即可将基于 Service Manager 的 VM 升级到基于 Resource Manager 的 VM。 在升级保管库的同时，可以保留基于 Service Manager 的 VM 恢复点，并为已升级（已启用 Resource Manager）的 VM 配置保护。 [了解详细信息](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **保护 Azure 虚拟机的所有配置**：恢复服务保管库保护基于 Resource Manager 的 VM，其中包括高级磁盘、托管磁盘和加密 VM。 将备份保管库升级到恢复服务保管库以后，即可将基于 Service Manager 的 VM 升级到基于 Resource Manager 的 VM。 在升级保管库的同时，可以保留基于 Service Manager 的 VM 恢复点，并为已升级（已启用 Resource Manager）的 VM 配置保护。 [了解详细信息](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 > [!NOTE]
 > 如果已使用版本低于 2.0.9083.0 的 MARS 代理将项注册到备份保管库，请[下载最新的 MARS 代理]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe)版本，以利用恢复服务保管库的所有功能。 
@@ -62,16 +62,16 @@ ms.locfileid: "34606853"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **升级计划是否影响正在进行的备份？**</br>
-不会。 升级期间和之后，正在进行的备份都会继续，而不会中断。
+不是。 升级期间和之后，正在进行的备份都会继续，而不会中断。
 
 对于现有的工具而言，此升级有何意义？</br>
 必须将现有的自动化或工具更新到资源管理器部署模型，确保其在升级后可继续运行。 请参阅[资源管理器部署模型](backup-client-automation.md)的 PowerShell cmdlet 参考。
 
 **升级后是否可以回滚？**</br>
-不会。 成功升级资源后，就不支持回滚。
+不是。 成功升级资源后，就不支持回滚。
 
 **升级后是否可以查看经典保管库？**</br>
-不会。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
+不是。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
 **为何在升级后的保管库中看不到 MARS 代理保护的服务器？**</br>
 需要安装最新的 MARS 代理才能查看保管库中受 MARS 代理保护的所有服务器。 可从[此处]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe)下载最新版本的代理。

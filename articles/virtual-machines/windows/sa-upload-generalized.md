@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: be2ec6df33f5756dc080195bfad32e0c9079453c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603194"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244723"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -41,7 +41,7 @@ ms.locfileid: "31603194"
   * 使用 Sysprep 将虚拟机通用化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 通用化 Windows 虚拟机
-本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](http://technet.microsoft.com/library/bb457073.aspx)。
+本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
 
 确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -155,7 +155,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="set-the-uri-of-the-vhd"></a>设置 VHD 的 URI
 
-VHD 使用的 URI 采用以下格式：https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
+VHD 使用的 URI 采用以下格式： https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"

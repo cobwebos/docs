@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9b2f4dbf1e87aa5aa035bfd9071fed7be74a9c07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 023674f05dda6c2da8edddb843277dd07a513162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978977"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244621"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>使用 AI Toolkit for Azure IoT Edge
 
@@ -27,4 +27,4 @@ ms.locfileid: "46978977"
 
 AI Toolkit for Azure IoT Edge 是脚本、代码和可部署容器的集合。 示例包括预测性维护、图像分类和语音处理，以及通过 Azure 机器学习和 Azure IoT 中心的自定义模型部署。 包含在工具包中的模型可以按原样使用，但所有源代码和数据都可供开发者根据自己的需求进行自定义。
 
-可以在 [aka.ms/AI-toolkit](http://aka.ms/AI-toolkit) 找到 AI Toolkit for Azure IoT Edge 公共 GitHub 存储库。
+可以在 [aka.ms/AI-toolkit](https://aka.ms/AI-toolkit) 找到 AI Toolkit for Azure IoT Edge 公共 GitHub 存储库。

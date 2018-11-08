@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393246"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245437"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 
@@ -39,7 +39,7 @@ Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐�
 
 ## <a name="install-the-app"></a>安装应用
 
-Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。 为了获得最佳体验，应确保应用能够根据请求收到通知。 
+Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)。 为了获得最佳体验，应确保应用能够根据请求收到通知。 
 
 ## <a name="add-accounts-to-the-app"></a>将帐户添加到应用
 
@@ -51,7 +51,7 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 
 ### <a name="add-a-work-or-school-account"></a>添加工作或学校帐户
 
-1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](http://aka.ms/mfasetup)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
+1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](https://aka.ms/mfasetup)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
 
     >[!Note]
     >如果管理员已启用安全信息预览版体验，则你可以遵照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明。

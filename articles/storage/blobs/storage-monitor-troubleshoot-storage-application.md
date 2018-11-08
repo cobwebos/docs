@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ff4d39a69df90c31186153c077b1b6183a08dd34
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 1bd237d4b8ecd826caf4ba9a150f1dd50f0c5bb6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259983"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -83,7 +83,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 存储日志将数据存储在存储帐户下名为 $logs 的 blob 容器内的一组 blob 中。 如果列出帐户中的所有 blob 容器，则不会显示该容器，但如果直接访问它，则可查看其内容。
 
-此方案使用 [Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx) 与 Azure 存储帐户进行交互。
+此方案使用 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) 与 Azure 存储帐户进行交互。
 
 ### <a name="download-microsoft-message-analyzer"></a>下载 Microsoft Message Analyzer
 

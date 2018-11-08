@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: acb3297b8d7af1a91563fb2f519e06bc49c65695
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ae6964b36f837931f2278ceef0b330f9badb1d71
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309696"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282707"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -54,7 +54,7 @@ _不_支持以下方案：
 
 ## <a name="next-steps"></a>后续步骤
 - [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
-- [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
+- [从 AD FS 迁移到传递身份验证](https://aka.ms/ADFSTOPTADPDownload) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
 - [技术深入了解](how-to-connect-pta-how-it-works.md)：了解直通身份验证功能的工作原理。
 - [常见问题解答](how-to-connect-pta-faq.md)：查找有关直通身份验证功能的常见问题的解答。

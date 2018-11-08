@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: db976fb61c5659fbdcb7ba30aa4f619d52d441c4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402501"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252388"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
@@ -47,7 +47,7 @@ ms.locfileid: "49402501"
 | ------------ | -------- |
 |**保护数据**||
 | <br> 动态加密/传输中加密| <ul><li>[传输层安全性](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)，用于数据移动到网络时的数据加密。</li><li>数据库要求来自于客户端的通信是基于 [TDS（表格格式数据流）](https://msdn.microsoft.com/library/dd357628.aspx)协议、通过 TLS（传输层安全性）实现的安全通信。</li></ul> |
-|<br>静态加密| <ul><li>[透明数据加密](http://go.microsoft.com/fwlink/?LinkId=526242)，适用于非活动数据以任何数字形式和物理方式存储时的情况。</li></ul>|
+|<br>静态加密| <ul><li>[透明数据加密](https://go.microsoft.com/fwlink/?LinkId=526242)，适用于非活动数据以任何数字形式和物理方式存储时的情况。</li></ul>|
 |**控制访问**||  
 |<br> 数据库访问 | <ul><li>[身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)（Azure Active Directory 身份验证），AD 身份验证使用 Azure Active Directory 管理的标识。</li><li>[授权](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)，授予用户必需的最低权限。</li></ul> |
 |<br>应用程序访问| <ul><li>[行级别安全性](https://msdn.microsoft.com/library/dn765131)（使用安全策略，同时基于用户的标识、角色或执行上下文来限制行级别访问）。</li><li>[动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)（使用“权限和策略”，通过对非特权用户模糊化敏感数据来限制此类数据的泄露）</li></ul>|

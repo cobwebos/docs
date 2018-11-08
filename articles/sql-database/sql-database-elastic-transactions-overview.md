@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3147061f527621ba98dee84f4d347a6e883d61c0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166463"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257463"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务
 Azure SQL 数据库 (SQL DB) 的弹性数据库事务可让你在 SQL DB 中跨多个数据库运行事务。 SQL DB 的弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与你熟悉的使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 类的编程体验相集成。 若要获取该库，请参阅 [.NET Framework 4.6.1（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=49981)。
@@ -143,7 +143,7 @@ SQL DB 中的弹性数据库事务当前存在以下限制：
 * 不支持跨 WCF 服务的事务。 例如，有一个执行事务的 WCF 服务方法。 事务范围内的调用会失败，并显示异常 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)。
 
 ## <a name="next-steps"></a>后续步骤
-如有问题，请在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们；对于功能请求，请将其添加到 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
+如有问题，请在 [SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们；对于功能请求，请将其添加到 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: bca25f5e7a6fd7685d20236033a5a225c5183a2d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fd26fb9e45f8790342472fa0bae92f74bea2fc70
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225338"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242449"
 ---
 # <a name="get-started-with-device-management-netnet"></a>设备管理入门 (.NET/.NET)
 
@@ -38,7 +38,7 @@ ms.locfileid: "47225338"
 
 * Visual Studio 2017。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](http://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
