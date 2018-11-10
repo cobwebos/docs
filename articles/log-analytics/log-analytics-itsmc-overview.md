@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421180"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964034"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -157,13 +157,13 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 还可以在服务映射解决方案中，将针对受影响计算机同步的事件可视化。
 
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详细信息](../operations-management-suite/operations-management-suite-service-map.md)。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详细信息](../monitoring/monitoring-service-map.md)。
 
 如果使用了服务映射解决方案，则可以查看 ITSM 解决方案中创建的服务台工作项，如以下示例中所示：
 
 ![Log Analytics 屏幕](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-详细信息：[服务映射](../operations-management-suite/operations-management-suite-service-map.md)
+详细信息：[服务映射](../monitoring/monitoring-service-map.md)
 
 
 ## <a name="additional-information"></a>其他信息

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: v-wimarc
-ms.openlocfilehash: 2199bb72ce1b3bbb98eb86a480a6484685a39646
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ae3c2d57c3ea43f67f612c6933c0a4e335ed3e3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397883"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226813"
 ---
 # <a name="welcome-to-azure-china-21vianet"></a>欢迎访问 Azure 中国世纪互联
 世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）是位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”，北京世纪互联宽带数据中心有限公司的全资子公司）展开。 
@@ -41,7 +41,7 @@ Azure 中国世纪互联支持全球 Azure 所提供的大多数优异[服务](h
 
 ## <a name="next-steps"></a>后续步骤
 - [Microsoft Azure 中国世纪互联的服务和功能](https://www.azure.cn/home/features/products-by-region)
-- [Azure 全球连接中心](http://aka.ms/azcc)
+- [Azure 全球连接中心](https://aka.ms/azcc)
 - [Azure 案例研究](https://www.azure.cn/partnerancasestudy/case-studies/)（中文版）
 - [GitHub 中的全局连接工具包](https://github.com/Azure/AzureGlobalConnectionToolkit)
 - [世纪互联运营的云服务业务模型](https://wacnppe.blob.core.chinacloudapi.cn/marketing-resource/documents/Windows_Azure_and_Office_365_cloud_services_business_model_operated_by_21Vianet12.pdf)（中文版）

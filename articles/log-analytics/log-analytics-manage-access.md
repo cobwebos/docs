@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421163"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964146"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -52,7 +52,7 @@ ms.locfileid: "50421163"
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
 * 管理多个客户，并希望每个客户/部门/业务组能够看到自己的数据，但看不到他人的数据。
 
-使用 Windows 代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](log-analytics-windows-agents.md)。
+使用 Windows 代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](log-analytics-agent-windows.md)。
 
 如果使用 System Center Operations Manager，每个 Operations Manager 管理组仅可以连接一个工作区。 可以在 Operations Manager 管理的计算机上安装 Microsoft Monitoring Agent，并使代理向 Operations Manager 和不同 Log Analytics 工作区报告。
 
@@ -73,7 +73,7 @@ ms.locfileid: "50421163"
     ![工作区详细信息](./media/log-analytics-manage-access/workspace-overview-page.png)  
 
 ## <a name="manage-accounts-and-users"></a>管理帐户和用户
-每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 通过 [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md)来管理访问权限。 这些访问权限同时适用于 Azure 门户和 API 访问。
+每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 通过 [Azure 基于角色的访问权限](../role-based-access-control/role-assignments-portal.md)来管理访问权限。 这些访问权限同时适用于 Azure 门户和 API 访问。
 
 
 以下活动也需要 Azure 权限：
@@ -87,7 +87,7 @@ ms.locfileid: "50421163"
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 的访问
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)中的步骤。
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)中的步骤。
 
 Azure 有两个内置的适用于 Log Analytics 的用户角色：
 - Log Analytics 读者
@@ -146,7 +146,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 - 资源组 - 访问资源组中的所有工作区
 - 资源 - 仅访问指定工作区
 
-我们建议你在资源级别（工作区）执行分配，以确保准确的访问控制。  使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
+我们建议你在资源级别（工作区）执行分配，以确保准确的访问控制。  使用[自定义角色](../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>将现有工作区链接到 Azure 订阅
 2016 年 9 月 26 日之后创建的所有工作区必须在创建时链接到 Azure 订阅。 此日期之前创建的工作区必须在登录时链接到某工作区。 从 Azure 门户创建工作区或者将工作区链接到 Azure 订阅时，Azure Active Directory 会链接为组织帐户。
@@ -241,5 +241,5 @@ OMS 订阅权利在 Azure 门户中不可见。 可在企业门户中看到权�
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[使用 Log Analytics 从环境中的计算机收集数据](log-analytics-concept-hybrid.md)，以从数据中心或其他云环境中的计算机收集数据。
 * 请参阅[收集有关 Azure 虚拟机的数据](log-analytics-quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。  
-* [从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)，以添加功能和收集数据。
+* [从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)，以添加功能和收集数据。
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145081"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740971"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -104,7 +104,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
    * 对于“存储容量”，请选择“无限制”。  
    * 对于“分区键”字段，请输入 **/Item**。 此值区分大小写，因此请务必正确输入。  
    * 对于“吞吐量”字段，请输入 **10000**。  
-   * 单击“确定”按钮。  
+   * 选择“确定”按钮。  
 
 3. 接下来，创建名为 **leases** 的另一个集合用于处理更改源。 租约 (lease) 集合协调处理跨多个辅助角色的更改源。 单独集合用于存储租用，一个分区一个租用。  
 
@@ -114,7 +114,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
    * 对于“集合 ID”字段，请输入 **leases**。  
    * 对于“存储容量”，请选择“固定”。  
    * 将“吞吐量”字段保留设置为默认值。  
-   * 单击“确定”按钮。
+   * 选择“确定”按钮。
 
 ## <a name="get-the-connection-string-and-keys"></a>获取连接字符串和密钥
 
@@ -207,7 +207,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
    * 将“事件序列化格式”保留为“JSON”。  
    * 将“编码”字段保留设置为“UTF-8”。  
    * 将“事件压缩类型”字段保留设置为“无”。  
-   * 单击“保存”按钮  。
+   * 选择“保存”按钮。
 
 5. 导航回到流分析作业页，并选择“输出”。  
 
@@ -219,10 +219,10 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
    * 将“组工作区”字段保留设置为“授权连接以加载工作区”。  
    * 在“数据集名称”字段中，输入 **averagePrice**。  
    * 在“表名称”字段中，输入 **averagePrice**。  
-   * 单击“授权”按钮，然后遵照说明授权连接到 Power BI。  
-   * 单击“保存”按钮  。  
+   * 选择“授权”按钮，然后遵照说明授权连接到 Power BI。  
+   * 选择“保存”按钮。  
 
-8. 返回到“streamjob1”并单击“编辑查询”。
+8. 返回到“streamjob1”并选择“编辑查询”。
 
    ![编辑查询](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -235,9 +235,9 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. 然后单击左上角的“保存”。  
+10. 然后选择左上角的“保存”。  
 
-11. 现在，请返回到“streamjob1”并单击页面顶部的“启动”按钮。 Azure 流分析可能需要几分钟才能启动，但最终其状态会从“正在启动”更改为“正在运行”。
+11. 现在，请返回到“streamjob1”并选择页面顶部的“启动”按钮。 Azure 流分析可能需要几分钟才能启动，但最终其状态会从“正在启动”更改为“正在运行”。
 
 ## <a name="connect-to-power-bi"></a>连接到 Power BI
 
@@ -249,19 +249,19 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 3. 选择右上角的“+ 添加磁贴”。  
 
-4. 选择“自定义流数据”，然后单击“下一步”按钮。  
+4. 选择“自定义流数据”，然后选择“下一步”按钮。  
  
-5. 从“你的数据集”中选择“averagePrice”，然后单击“下一步”。  
+5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”。  
 
 6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 在名为“值”的下一个部分下面，添加“avg”。选择“下一步”，为图表指定标题，然后选择“应用”。 仪表板上应会出现一个新图表！  
 
 7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。
 
-   a. **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
    b. **输出别名：** top5Output；数据集名称：top5；表名称：top5  
    c. **输出别名：** uniqueVisitorCountOutput；数据集名称：uniqueVisitorCount；表名称：uniqueVisitorCount
 
-   然后单击“编辑查询”，并将以下查询粘贴到所编写的查询的**上面**。
+   然后选择“编辑查询”，并将以下查询粘贴到所编写的查询的上面。
 
    ```sql
     /*TOP 5*/
@@ -329,7 +329,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
    在“changefeedlabdatabase”下添加名为 **topItems**、具有“无限制”存储容量的另一个集合。 写入 **/Item** 作为分区键。
 
-2. 单击“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次。
+2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次。
 
    ![生存时间](./media/changefeed-ecommerce-solution/time-to-live.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成 | Microsoft Docs
+title: 使用 Azure Site Recovery 服务将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成 | Microsoft Docs
 description: 介绍如何使用 Azure Site Recovery 和 Azure ExpressRoute 来设置 Azure VM 的灾难恢复
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 03fac23ea17a6baa1b43e748a4390cf142661a19
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353523"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211547"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 

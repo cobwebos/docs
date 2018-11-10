@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: cae0b6a316839f10636ff3d81b9e18729d03298e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 28f06efdd990e46eaa84b1fe26ed5d8944971505
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987862"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156912"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -63,9 +63,13 @@ ms.locfileid: "49987862"
 
 * **[目录写入者](#directory-writers)**：这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的应用程序。 不应将它分配给任何用户。
 
-* **[Dynamics 365 服务管理员/CRM 服务管理员](#dynamics-365-service-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
+* **[Dynamics 365 管理员/CRM 管理员](#dynamics-365-administrator)**：具有此角色的用户在 Microsoft Dynamics 365 Online（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
+  > [!NOTE] 
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 Azure 门户中的“Dynamics 365 管理员”。
 
-* **[Exchange 服务管理员](#exchange-service-administrator)**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **[Exchange 管理员](#exchange-administrator)**：具有此角色的用户在 Microsoft Exchange Online（如果存在此服务）中拥有全局权限。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+  > [!NOTE]
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 Azure 门户中的“Exchange 管理员”。
 
 * **[全局管理员/公司管理员](#company-administrator)**：具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
@@ -78,7 +82,9 @@ ms.locfileid: "49987862"
 
 * **[信息保护管理员](#information-protection-administrator)**：具有此角色的用户拥有 Azure 信息保护服务中的所有权限。 此角色可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。 此角色不会授予 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的权限。
 
-* **[Intune 服务管理员](#intune-service-administrator)**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
+* **[Intune 管理员](#intune-administrator)**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。 有关详细信息，请参阅[使用 Microsoft Intune 进行基于角色的管理控制 (RBAC)](https://docs.microsoft.com/intune/role-based-access-control)
+  > [!NOTE]
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 Azure 门户中的“Intune 管理员”。
 
 * **[许可证管理员](#license-administrator)**：具有此角色的用户可以添加、删除和更新用户、组（使用基于组的许可）的许可分配，以及管理用户的使用位置。 该角色不授予在使用位置之外购买或管理订阅、创建或管理组，或者创建或管理用户的权限。
 
@@ -102,16 +108,17 @@ ms.locfileid: "49987862"
   * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
-  
   > [!NOTE]
   > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“支持管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“密码管理员”。
   >
   
-* **[Power BI 服务管理员](#power-bi-service-administrator)**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
+* **[Power BI 管理员](#power-bi-administrator)**：具有此角色的用户在 Microsoft Power BI（如果存在此服务）中拥有全局权限，并可以管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
+  > [!NOTE]
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 Azure 门户中的“Power BI 管理员”。
 
 * **[特权角色管理员](#privileged-role-administrator)**：具有此角色的用户可以管理角色分配以及 Azure AD Privileged Identity Management 内的 Azure Active Directory。 此外，此角色允许 Privileged Identity Management 的所有方面。
 
-  <b>重要信息</b>：此角色授予管理所有 Azure AD 角色成员身份（包括全局管理员角色）的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外权限。
+  <b>重要信息</b>：此角色授予管理所有 Azure AD 角色成员身份（包括全局管理员角色）的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
 
 * **[报告读取者](#reports-reader)**：具有此角色的用户可以在 Office 365 管理中心查看使用情况报告数据和报告仪表板，在 Power BI 中查看采用上下文包。 此外，此角色还提供对 Azure AD 中的登录报告和活动以及 Microsoft Graph 报告 API 返回的数据的访问权限。 分配到“报告读者”角色的用户只能访问相关使用情况和采用指标。 它们没有任何管理员权限，无法配置设置或访问产品特定的管理中心（如 Exchange）。 
 
@@ -133,14 +140,14 @@ ms.locfileid: "49987862"
 
 * **[服务支持管理员](#service-support-administrator)**：具有此角色的用户可以打开支持请求与 Microsoft Azure 和 Office 365 服务和服务仪表板和消息中心在 Azure 门户和 Office 365 管理门户中的视图。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
-* [SharePoint 服务管理员](#sharepoint-service-administrator)：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限，并且能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+* **[SharePoint 管理员](#sharepoint-administrator)**：具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限，并且能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
+  > [!NOTE]
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 Azure 门户中的“SharePoint 管理员”。
 
-* **[Skype for Business/Lync 服务管理员](#lync-service-administrator)**：具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持票证、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype for Business/Lync 管理员](#skype-for-business-administrator)**：具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持票证、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
-  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“Skype for Business 服务管理员”。
-  >
-  >
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“Skype for Business 管理员”。
 
 * **[Teams 通信管理员](#teams-communications-administrator)**：充当此角色的用户可以管理 Microsoft Teams 工作负荷的语音与电话相关方面。 这包括用于分配电话号码的管理工具、语音和会议策略，以及通话分析工具集的完全访问权限。
 
@@ -148,7 +155,9 @@ ms.locfileid: "49987862"
 
 * **[Teams 通信支持专家](#teams-communications-support-specialist)**：充当此角色的用户可以使用 Microsoft Teams 和 Skype for Business 管理中心的用户通话故障排除工具，来排查 Microsoft Teams 和 Skype for Business 中的通信问题。 充当此角色的用户只能查看他们所查找的特定用户的通话中的用户详细信息。
 
-* **[Teams 服务管理员](#teams-service-administrator)**：充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 此外，此角色还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。
+* **[Teams 管理员](#teams-administrator)**：充当此角色的用户可以通过 Microsoft Teams 和 Skype for Business 管理中心以及相应的 PowerShell 模块来管理 Microsoft Teams 工作负荷的所有方面。 这包括（但不限于）与电话、消息、会议和 Teams 自身相关的所有管理工具。 此外，此角色还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。
+  > [!NOTE]
+  > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Teams 服务管理员”。 它是 Azure 门户中的“Teams 管理员”。
 
 * **[用户帐户管理员](#user-account-administrator)**：具有此角色的用户可以创建用户和管理用户的所有方面，但具有一定限制（见下方）。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。
 
@@ -439,28 +448,6 @@ ms.locfileid: "49987862"
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | 更新 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 
-### <a name="crm-service-administrator"></a>CRM 服务管理员
-可以管理 Dynamics 365 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
-  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
-  >
-  >
-
-| **操作** | **说明** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.powerApps.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-
 ### <a name="customer-lockbox-access-approver"></a>客户密码箱访问审批者
 可以批准 Microsoft 支持人员访问客户组织数据的请求。
 
@@ -617,8 +604,28 @@ ms.locfileid: "49987862"
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.aad.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
 
-### <a name="exchange-service-administrator"></a>Exchange 服务管理员
-可以管理 Exchange 产品的所有方面。
+### <a name="dynamics-365-administrator"></a>Dynamics 365 管理员
+可以管理 Dynamics 365 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 Azure 门户中的“Dynamics 365 管理员”。
+
+
+  > [!NOTE]
+  > 此角色从“目录读取者”角色继承其他权限。
+  >
+  > 此角色还拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  >
+  >
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+
+### <a name="exchange-administrator"></a>Exchange 管理员
+可以管理 Exchange 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 Azure 门户中的“Exchange 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -706,8 +713,8 @@ ms.locfileid: "49987862"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="intune-service-administrator"></a>Intune 服务管理员
-可以管理 Intune 产品的所有方面。
+### <a name="intune-administrator"></a>Intune 管理员
+可以管理 Intune 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 Azure 门户中的“Intune 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -762,8 +769,8 @@ ms.locfileid: "49987862"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
-### <a name="lync-service-administrator"></a>Lync 服务管理员
-可以管理 Skype for Business 产品的所有方面。
+### <a name="skype-for-business-administrator"></a>Skype for Business 管理员
+可以管理 Skype for Business 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Skype for Business 服务管理员”。 它是 Azure 门户中的“Skype for Business 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -879,8 +886,8 @@ ms.locfileid: "49987862"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="power-bi-service-administrator"></a>Power BI 服务管理员
-可以管理 Power BI 产品的所有方面。
+### <a name="power-bi-administrator"></a>Power BI 管理员
+可以管理 Power BI 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 Azure 门户中的“Power BI 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -1012,8 +1019,8 @@ ms.locfileid: "49987862"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="sharepoint-service-administrator"></a>SharePoint 服务管理员
-可以管理 SharePoint 服务的所有方面。
+### <a name="sharepoint-administrator"></a>SharePoint 管理员
+可以管理 SharePoint 服务的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 Azure 门户中的“SharePoint 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -1101,8 +1108,8 @@ ms.locfileid: "49987862"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
-### <a name="teams-service-administrator"></a>Teams 服务管理员
-可以管理 Microsoft Teams 服务。
+### <a name="teams-administrator"></a>Teams 管理员
+可以管理 Microsoft Teams 服务。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Teams 服务管理员”。 它是 Azure 门户中的“Teams 管理员”。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -1170,7 +1177,6 @@ ms.locfileid: "49987862"
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-
 
 ## <a name="deprecated-roles"></a>已弃用的角色
 

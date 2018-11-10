@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
+description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b6c6e407e0bd54c4713056fdee12f7a4c355af97
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c1426ebb5a64a1e0552cc35a736186fda60a5af1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030893"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415145"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -25,11 +25,17 @@ ms.locfileid: "47030893"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
+Azure IoT 设备预配服务支持两类注册：
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文将演示单个注册。
+
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
 
 1. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 

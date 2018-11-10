@@ -9,20 +9,20 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d031965a812cd218fbb4e78dfbf90ee01c26f5bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352440"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085954"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
 Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 载入计算机的方式有多种，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)、通过自动化帐户或通过 [runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从自动化帐户载入这些解决方案。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.com 中登录 Azure
+登录 Azure (https://portal.azure.com)
 
 ## <a name="enable-solutions"></a>启用解决方案
 
@@ -52,7 +52,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 * **MicrosoftDefaultScopeConfig-Updates**
 
-如果所选工作区已有解决方案， 则不会重新部署该解决方案，而且范围配置也不会添加到其中。
+如果所选工作区已有解决方案，则不会重新部署解决方案，也不会添加作用域配置。
 
 ## <a name="saved-searches"></a>保存的搜索
 
@@ -73,7 +73,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 在“启用更新管理”页上，单击“启用”。 这会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
+单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
 
 ![启用 Azure VM](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -81,23 +81,23 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 需要手动添加 Azure 中没有的计算机。 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“添加非 Azure 计算机”。 这会打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../log-analytics/log-analytics-concept-hybrid.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
+单击“添加非 Azure 计算机”。 此操作打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../log-analytics/log-analytics-concept-hybrid.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
 
 ## <a name="onboard-machines-in-the-workspace"></a>在工作区中载入计算机
 
 必须将手动安装的计算机或已向工作区进行报告的计算机添加到 Azure 自动化中，才能启用解决方案。 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-选择“管理计算机”。 这将打开“管理计算机”页面。 此页面允许你在所选一组计算机上、所有可用的计算机上启用解决方案，或者为所有当前计算机启用解决方案并为所有将来的计算机启用解决方案。
+选择“管理计算机”。 此操作将打开“管理计算机”页面。 此页面允许你在所选一组计算机上、所有可用的计算机上启用解决方案，或者为所有当前计算机启用解决方案并为所有将来的计算机启用解决方案。 如果之前选择了“在所有可用和将来的计算机上启用”选项，则“管理计算机”按钮可能灰显。
 
 ![保存的搜索](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>所有可用计算机
 
-若要为所有可用的计算机启用解决方案，请选择“在所有可用的计算机上启用”。 这会禁用分别添加计算机的控件。 此任务会将向工作区进行报告的所有计算机的名称添加到计算机组保存的搜索查询。 选中此项后，将禁用“管理计算机”按钮。
+若要为所有可用的计算机启用解决方案，请选择“在所有可用的计算机上启用”。 此操作禁用单独添加计算机的控件。 此任务会将向工作区进行报告的所有计算机的名称添加到计算机组保存的搜索查询。 选中此项后，此操作将禁用“管理计算机”按钮。
 
 ### <a name="all-available-and-future-machines"></a>所有可用的和将来的计算机
 
-若要为所有可用的计算机和所有将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 这将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，将禁用“管理计算机”按钮。
+若要为所有可用的计算机和将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 此操作将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的范围配置。
 
 ### <a name="selected-machines"></a>所选计算机
 
@@ -113,12 +113,12 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 如果决定不再想要会自动化帐户与 Log Analytics 集成，可以直接从 Azure 门户取消链接帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
-删除这些解决方案后，可以执行以下步骤取消链接自动化帐户。
+删除这些解决方案后，可以完成以下步骤取消链接自动化帐户。
 
 > [!NOTE]
 > 某些解决方案（包括早期版本的 Azure SQL 监视解决方案）可能已创建自动化资产并可能还需要在取消链接工作区之前删除。
 
-1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
+1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧标有“相关资源”的部分下，选择“链接工作区”。
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
@@ -134,7 +134,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 * 为解决方案创建的混合辅助角色组 - 每个混合辅助角色组的命名都将类似于 machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8。
 
-如果使用了“在非工作时间启动/停止 VM”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
+如果使用了“在非工作时间启动和停止 VM”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
 * 启动和停止 VM Runbook 计划
 * 启动和停止 VM Runbook

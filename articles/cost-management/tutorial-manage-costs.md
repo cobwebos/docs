@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e1c85b345acdce6f50cfa169977c513ba0ae2a3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989629"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740413"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>教程：使用 Cloudyn 管理成本
 
@@ -61,7 +61,7 @@ Cloudyn 从 Azure 获取资源组标记数据，并自动将标记信息传播�
 
 
 
-该示例显示 $14,444 未分类（不带标记）。
+该示例显示 $19,680 未分类（不带标记）。
 
 接下来，选择“未分类的资源”并选择存在未分摊成本的服务。 然后，定义规则来分摊成本。
 

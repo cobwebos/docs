@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 将 TPM 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: Azure 快速入门 - 使用 Java 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务
+description: Azure 快速入门 - 使用 Java 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
@@ -10,19 +10,19 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 68f8125ddc0691346813bb31124fa3abd4976296
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b0068bc912de13590cd9bc7418ea6fcdb01189f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234003"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420483"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 
-以下步骤借助一个示例 Java 应用程序，演示了如何使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 通过编程方式将模拟的 TPM 设备注册到 Azure IoT 中心设备预配服务。 虽然 Java 服务 SDK 在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机来演示注册过程。
+以下步骤演示了如何借助示例 Java 应用程序，使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 在 Azure IoT 中心设备预配服务中以编程方式为模拟 TPM 设备创建单个注册。 虽然 Java 服务 SDK 在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机来演示注册过程。
 
 在继续操作之前，请确保[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)，并[模拟 TPM 设备](quick-create-simulated-device.md#simulatetpm)。
 
@@ -30,9 +30,9 @@ ms.locfileid: "40234003"
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 
 
-2. 设置 Java 安装的环境变量。 `PATH` 变量应包括 *jdk1.8.x\bin* 目录的完整路径。 如果这是计算机的首次 Java 安装，则请创建名为 `JAVA_HOME` 的新的环境变量，将其指向 *jdk1.8.x* 目录的完整路径。 在 Windows 计算机上，该目录通常位于 *C:\\Program Files\\Java\\* 文件夹中。可以通过在 Windows 计算机的“控制面板”上搜索“编辑系统环境变量”来创建或编辑环境变量。 
+2. 设置 Java 安装的环境变量。 `PATH` 变量应包括 *jdk1.8.x\bin* 目录的完整路径。 如果这是计算机的首次 Java 安装，则请创建名为 `JAVA_HOME` 的新的环境变量，将其指向 *jdk1.8.x* 目录的完整路径。 在 Windows 计算机上，该目录位于 *C:\\Program Files\\Java\\* 文件夹中。可以通过在 Windows 计算机的“控制面板”上搜索“编辑系统环境变量”来创建或编辑环境变量。 
 
   可以在命令窗口中运行以下命令，查看 Java 是否已成功安装在计算机上：
 

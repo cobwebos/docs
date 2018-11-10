@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962941"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964180"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -83,7 +83,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |FailedRequests|失败的网关请求数|Count|总计|失败的网关请求数|位置、主机名|
 |OtherRequests|其他网关请求数|Count|总计|其他网关请求数|位置、主机名|
 |Duration|网关请求的总持续时间|毫秒|平均值|网关请求的总持续时间，以毫秒为单位|位置、主机名|
-|Capacity|Capacity|百分比|平均值|ApiManagement 服务的利用率指标|位置|
+|容量|容量|百分比|平均值|ApiManagement 服务的利用率指标|位置|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -149,7 +149,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cacheRead|缓存读取量|每秒字节数|最大值||ShardId|
 |percentProcessorTime|CPU|百分比|最大值||ShardId|
 |cacheLatency|缓存延迟毫秒数（预览）|Count|平均值||ShardId, SampleType|
-|错误|Errors|Count|最大值||ShardId, ErrorType|
+|错误|错误|Count|最大值||ShardId, ErrorType|
 |connectedclients0|连接的客户端数(分片 0)|Count|最大值||无维度|
 |totalcommandsprocessed0|总操作数(分片 0)|Count|总计||无维度|
 |cachehits0|缓存命中数(分片 0)|Count|总计||无维度|
@@ -587,8 +587,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |devices.totalDevices|（已弃用）设备总数|Count|总计|已注册到 IoT 中心的设备数目|无维度|
 |devices.connectedDevices.allProtocol|（已弃用）连接设备数 |Count|总计|已连接到 IoT 中心的设备数目|无维度|
 |d2c.telemetry.egress.success|路由：已发送的遥测消息数|Count|总计|已使用 IoT 中心路由将消息成功发送到所有终结点的次数。 如果消息路由到多个终结点，每次成功发送后，此值将逐一增加。 如果消息多次路由到同一终结点，每次成功发送后，此值将逐一增加。|无维度|
-|d2c.telemetry.egress.dropped|路由：已删除的遥测消息数 |Count|总计|由于死终结点，IoT 中心路由删除消息的次数。 此值不会计算已发送到回退路由的消息，因为已删除的消息未发送到该位置。|无维度|
-|d2c.telemetry.egress.orphaned|路由：已孤立的遥测消息数 |Count|总计|由于消息不匹配任何传递规则（包括回退规则），IoT 中心路由孤立消息的次数。 |无维度|
+|d2c.telemetry.egress.dropped|路由：已删除的遥测消息数 |Count|总计|由于死终结点，IoT 中心路由删除消息的次数。 此值不会计算已发送到回退路由的消息，因为已删除的消息未发送到该位置。|无维度|
+|d2c.telemetry.egress.orphaned|路由：已孤立的遥测消息数 |Count|总计|由于消息不匹配任何传递规则（包括回退规则），IoT 中心路由孤立消息的次数。 |无维度|
 |d2c.telemetry.egress.invalid|路由：不兼容的遥测消息数|Count|总计|由于与终结点不兼容，IoT 中心路由未能发送消息的次数。 此值不包括重试次数。|无维度|
 |d2c.telemetry.egress.fallback|路由：发送到回退的消息数|Count|总计|IoT 中心路由将消息发送到与回退路由相关联的终结点的次数。|无维度|
 |d2c.endpoints.egress.eventHubs|路由：已发送到事件中心的消息数|Count|总计|IoT 中心路由成功将消息发送到事件中心终结点的次数。|无维度|
@@ -1041,7 +1041,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |BackendRequestLatency|后端请求延迟|毫秒|平均值|自请求由 HTTP/S 代理发送到后端直至 HTTP/S 代理从后端收到最后一个响应字节为止，所计算的时间|后端|
 |TotalLatency|总延迟|毫秒|平均值|自请求由 HTTP/S 代理接收后到客户端确认来自 HTTP/S 代理的最后一个响应字节止，所计算的时间|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendHealthPercentage|后端运行状况百分比|百分比|平均值|从 HTTP/S 代理到后端，成功运行状况探测的百分比|Backend, BackendPool|
-|WebApplicationFirewallRequestCount|Web 应用防火墙请求计数|Count|总计|Web 应用程序防火墙所处理的客户端请求数|PolicyName, RuleName, Action|
+|WebApplicationFirewallRequestCount|Web 应用程序防火墙请求计数|Count|总计|Web 应用程序防火墙所处理的客户端请求数|PolicyName, RuleName, Action|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -1384,7 +1384,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |LateInputEvents|延迟输入事件数|Count|总计|延迟输入事件数|无维度|
 |OutputEvents|输出事件数|Count|总计|输出事件数|无维度|
 |ConversionErrors|数据转换错误数|Count|总计|数据转换错误数|无维度|
-|Errors|运行时错误|Count|总计|运行时错误|无维度|
+|错误|运行时错误|Count|总计|运行时错误|无维度|
 |DroppedOrAdjustedEvents|失序事件数|Count|总计|失序事件数|无维度|
 |AMLCalloutRequests|函数请求数|Count|总计|函数请求数|无维度|
 |AMLCalloutFailedRequests|失败的函数请求数|Count|总计|失败的函数请求数|无维度|
@@ -1570,6 +1570,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|实例|
 
 ## <a name="next-steps"></a>后续步骤
-* [了解 Azure Monitor 中的指标](monitoring-overview-metrics.md)
-* [针对指标创建警报](insights-receive-alert-notifications.md)
+* [了解 Azure Monitor 中的指标](../monitoring/monitoring-data-collection.md)
+* [针对指标创建警报](monitoring-overview-alerts.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)

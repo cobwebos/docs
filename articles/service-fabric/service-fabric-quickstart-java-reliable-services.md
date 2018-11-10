@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7fcf0b924868d755bc76f7d1e695e73afc4eae6a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7e71b4f93f3b890ea73e36052570f9047fc8f32
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993385"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228226"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>快速入门：将 Java Reliable Services 应用程序部署到 Service Fabric
 
@@ -90,7 +90,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 合作群集是 Azure 上托管的免费限时 Service Fabric 群集，由 Service Fabric 团队运行。 可以通过合作群集来部署应用程序和了解平台。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。
 
-登录并加入 [Linux 群集](http://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击**自述文件**链接，找到证书密码和说明，了解如何配置使用此证书所需的各种环境。 让“欢迎”页和“自述文件”页保持打开状态，然后需按照以下步骤中的某些说明进行操作。
+登录并加入 [Linux 群集](https://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击**自述文件**链接，找到证书密码和说明，了解如何配置使用此证书所需的各种环境。 让“欢迎”页和“自述文件”页保持打开状态，然后需按照以下步骤中的某些说明进行操作。
 
 > [!Note]
 > 每小时可用的合作群集数目有限。 如果在尝试注册合作群集时出错，可以等待一段时间再重试，或者遵循[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)中的步骤，在订阅中创建一个群集。

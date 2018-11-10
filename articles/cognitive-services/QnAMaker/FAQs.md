@@ -8,37 +8,45 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: efefd595c43d7f46ff1ead91577d070cf8fb90e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9597b878eb3d92727b352ba42a9e5557bb1cc799
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164610"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211428"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
 ## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>为什么我的 URL/文件没有提取问答对？
 
-QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些问答 (QnA) 内容。 在这种情况下，可以将 QnA 内容粘贴到 .txt 文件中，并查看该工具是否可以引入它。 或者，也可以通过编辑方式向知识库添加内容。
+QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些问答 (QnA) 内容。 在这种情况下，可以将 QnA 内容粘贴到 .txt 文件中，并查看该工具是否可以引入它。 或者，也可以通过 [QnA Maker 门户](https://qnamaker.ai)以编辑方式向知识库添加内容。
 
 ## <a name="how-large-a-knowledge-base-can-i-create"></a>我能创建多大的知识库？
 
 知识库的大小取决于在创建 QnA Maker 服务时选择的 Azure 搜索的 SKU。 请参阅[此处](./Tutorials/choosing-capacity-qnamaker-deployment.md)了解详细信息。
 
-## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>当我尝试创建新知识库时，为什么我在下拉列表中看不到任何内容？
+## <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>当我尝试创建新知识库时，为什么在下拉列表中看不到任何内容？
 
-你尚未在 Azure 中创建任何 QnA Maker 服务。 请参阅[此处](./How-To/set-up-qnamaker-service-azure.md)了解如何执行该操作。
+你尚未在 Azure 中创建任何 QnA Maker 服务。 请阅读[此文](./How-To/set-up-qnamaker-service-azure.md)了解如何执行该操作。
 
-## <a name="how-do-i-share-a-knowledge-base-with-other"></a>如何与他人共享知识库？
+## <a name="how-do-i-share-a-knowledge-base-with-others"></a>如何与他人共享知识库？
 
 共享在 QnA Maker 服务级别工作，即将共享服务中的所有知识库。 请参阅[此处](./How-To/collaborate-knowledge-base.md)了解如何在知识库上进行协作。
+
+## <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？ 
+
+共享基于 Azure 基于角色的访问控制 (RBAC)。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。
+
+## <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>如果应用服务计划计划 5 个 QnAMaker 知识库， 是否可以向 5 个不同的用户分配读/写权限，使得其中每个用户只能访问 1 个 QnAMaker 知识库？
+
+可以共享整个 QnAMaker 服务，但不能共享单个知识库。
 
 ## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>如果找不到良好匹配，如何更改默认消息？
 
 默认消息是应用服务中设置的一部分。
-- 转到 Azure 门户中的应用服务资源
+- 在 Azure 门户中转到自己的应用服务资源
 
 ![qnamaker 应用服务](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
 - 单击“设置”选项
@@ -56,11 +64,11 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我对知识库所做的更新没有反映在发布上， 为什么？
 
-每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并定型”按钮。
+每个编辑操作（无论在表更新、测试还是在设置中）需要先保存才能发布。 每次编辑操作后，请确保单击“保存并训练”按钮。 **** 
 
 ## <a name="when-should-i-refresh-my-endpoint-keys"></a>我应该何时刷新终结点密钥？
 
-如果怀疑终结点密钥已被泄漏，应刷新终结点密钥。
+如果怀疑终结点密钥已被泄漏，请刷新终结点密钥。
 
 ## <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>知识库是否支持丰富的数据或多媒体？
 
@@ -74,13 +82,17 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 如果你有多种语言的内容，请务必为每种语言创建单独的服务。
 
+## <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>是否可以针对使用相同语言的知识库使用相同的 Azure 搜索资源？
+
+若要使用多个语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这会为每种语言创建单独的 Azure 搜索服务。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
+
 ## <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>为了使用 QnA Maker，需要使用 Bot Framework 吗？
 
 否，不需要将 Bot Framework 与 QnA Maker 一起使用。 但是，QnA Maker 作为 Azure 机器人服务中的几个模板之一提供。 机器人服务通过 Microsoft Bot Framework 实现快速智能机器人开发，并且它在无服务器的环境中运行。
 
 ## <a name="how-can-i-create-a-bot-with-qna-maker"></a>如何使用 QnA Maker 创建机器人？
 
-按照[此](./Tutorials/create-qna-bot.md)文档中的说明使用 Azure 机器人创建机器人。
+请遵照[此文档](./Tutorials/create-qna-bot.md)中的说明使用 Azure 机器人服务创建机器人。
 
 ## <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>如何将 QnA Maker 服务嵌入网站？
 

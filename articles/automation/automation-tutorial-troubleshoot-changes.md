@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 更改, 跟踪, 自动化
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 09/12/2018
+ms.date: 11/01/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1865fcf47510bbaae82f98ccad85993a85ffc1ab
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995241"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959131"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -97,10 +97,10 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”
 
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
@@ -110,13 +110,13 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”
 
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”         |
-|递归     | 确定在查找要跟踪的项时是否使用递归。        |
+|递归     | 在查找要跟踪的项时，确定是否使用递归。        |
 |上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
 
 ### <a name="add-a-linux-file"></a>添加 Linux 文件
@@ -125,16 +125,16 @@ ConfigurationChange
 
 1. 在“添加用于更改跟踪的 Linux 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”
 
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |已启用     | 确定是否应用了设置        |
-|项目名称     | 要跟踪的文件的友好名称        |
+|项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“/etc/*.conf”       |
 |路径类型     | 要跟踪的项的类型，可能值为“文件”和“目录”        |
-|递归     | 确定在查找要跟踪的项时是否使用递归。        |
-|使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
-|链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+|递归     | 在查找要跟踪的项时，确定是否使用递归。        |
+|使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
+|链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
 |上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
 
    > [!NOTE]

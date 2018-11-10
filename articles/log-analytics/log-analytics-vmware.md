@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404607"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005217"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics 中的 VMware 监视（预览版）解决方案
 
@@ -42,7 +42,7 @@ Log Analytics 中的 VMware 监视解决方案是一个有助于创建针对大�
 vSphere ESXi 主机 5.5、6.0 和 6.5
 
 #### <a name="prepare-a-linux-server"></a>准备一台 Linux 服务器
-创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](log-analytics-linux-agents.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
+创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](log-analytics-quick-collect-linux-computer.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
@@ -131,7 +131,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 单击任意边栏选项卡，打开 Log Analytics 搜索窗格，其中显示了特定于边栏选项卡的详细信息。
 
-在此处可以编辑搜索查询，以对某些具体内容进行修改。 有关创建日志搜索的详细信息，请参阅[在 Log Analytics 中使用日志搜索查找数据](log-analytics-log-searches.md)。
+在此处可以编辑搜索查询，以对某些具体内容进行修改。 有关创建日志搜索的详细信息，请参阅[在 Log Analytics 中使用日志搜索查找数据](log-analytics-queries.md)。
 
 #### <a name="find-esxi-host-events"></a>查找 ESXi 主机事件
 单台 ESXi 主机基于其进程会生成多个日志。 VMware 监视解决方案可对其进行集中管理，并总结事件计数。 此集中式视图可帮助你了解哪些 ESXi 主机有大量的事件，以及在环境中最常发生哪些事件。
@@ -165,7 +165,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>从查询中创建警报
-创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](log-analytics-alerts.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) 博客文章。
+创建查询后，你可能想要使用查询在特定事件发生时向你发出警报。 有关如何创建警报的信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。 有关警报查询示例和其他查询示例，请参阅[使用 Log Analytics 监视 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) 博客文章。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>需要对 ESXi 主机设置执行哪些操作？ 这对目前的环境有什么影响？
@@ -197,7 +197,7 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a. 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 ` sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
     b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 
@@ -206,6 +206,6 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
     d. 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 Log Analytics 中的“[日志搜索](log-analytics-log-searches.md)”可查看详细的 VMware 主机数据。
+* 使用 Log Analytics 中的“[日志搜索](log-analytics-queries.md)”可查看详细的 VMware 主机数据。
 * [创建自己的仪表板](log-analytics-dashboards.md)显示了 VMware 主机数据。
-* 发生特定 VMware 主机事件时[创建警报](log-analytics-alerts.md)。
+* 发生特定 VMware 主机事件时[创建警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。

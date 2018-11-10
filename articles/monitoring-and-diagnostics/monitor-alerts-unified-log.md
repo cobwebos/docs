@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421078"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958145"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 本文提供日志警报的详细信息，该警报是 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
@@ -122,4 +122,4 @@ ms.locfileid: "50421078"
 * 了解 [Azure 日志警报中的 Webhook](monitor-alerts-unified-log-webhook.md)。
 * 了解 [Azure 警报](monitoring-overview-unified-alerts.md)。
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)。
-* 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。    
+* 详细了解 [Log Analytics](../log-analytics/log-analytics-queries.md)。    

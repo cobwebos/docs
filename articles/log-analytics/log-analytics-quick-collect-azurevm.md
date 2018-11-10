@@ -16,15 +16,15 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 141df44f62ddb4a62f6f5f6a8b67107aa2c58a29
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 59133eb9ebc24bc423764523aa9c74430d63b30a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404488"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962514"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>收集 Azure 虚拟机相关数据
-[Azure Log Analytics](log-analytics-overview.md) 可直接从 Azure 虚拟机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Azure Linux 或 Windows VM 中配置或收集数据。  
+[Azure Log Analytics](log-analytics-queries.md) 可直接从 Azure 虚拟机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Azure Linux 或 Windows VM 中配置或收集数据。  
  
 本快速入门假定你拥有现有 Azure 虚拟机。 如果没有，可根据 VM 快速入门[创建 Windows VM](../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)。
 

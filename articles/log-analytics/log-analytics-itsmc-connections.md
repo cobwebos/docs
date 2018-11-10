@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416454"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961834"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -293,7 +293,7 @@ ms.locfileid: "50416454"
 
 
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 
 - 用户角色：管理员。
 

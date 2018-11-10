@@ -4,11 +4,7 @@ description: 如何为 Azure 负载均衡器和负载均衡的 VM 部署 IPv6 �
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
-ms.assetid: 2998e943-13fc-4ea9-a68c-875e53a08db3
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -16,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 431b43979ac364d943c58c40b4199b7f30f9acf6
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263072"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740733"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -115,8 +111,8 @@ Azure 资源管理器模板包含可根据需要自定义的多个变量和参�
 | --- | --- |
 | adminUsername |指定用于登录到虚拟机的管理员帐户名。 |
 | adminPassword |指定用于登录到虚拟机的管理员帐户密码。 |
-| dnsNameforIPv4LbIP |指定想要分配为负载均衡器公共名称的 DNS 主机名。 此名称解析为负载均衡器的公共 IPv4 地址。 此名称必须是小写，并与正则表达式匹配：^[a-z][a-z0-9-]{1,61}[a-z0-9]$. |
-| dnsNameforIPv6LbIP |指定想要分配为负载均衡器公共名称的 DNS 主机名。 此名称解析为负载均衡器的公共 IPv6 地址。 此名称必须是小写，并与正则表达式匹配：^[a-z][a-z0-9-]{1,61}[a-z0-9]$. 此名称可与 IPv4 地址的名称相同。 当名称相同时，如果客户端针对此名称发出 DNS 查询，Azure 将返回 A 和 AAAA 记录。 |
+| dnsNameforIPv4LbIP |指定想要分配为负载均衡器公共名称的 DNS 主机名。 此名称解析为负载均衡器的公共 IPv4 地址。 此名称必须是小写，并与正则表达式匹配：^[a-z][a-z0-9-]{1,61}[a-z0-9]$。 |
+| dnsNameforIPv6LbIP |指定想要分配为负载均衡器公共名称的 DNS 主机名。 此名称解析为负载均衡器的公共 IPv6 地址。 此名称必须是小写，并与正则表达式匹配：^[a-z][a-z0-9-]{1,61}[a-z0-9]$。 此名称可与 IPv4 地址的名称相同。 当名称相同时，如果客户端针对此名称发出 DNS 查询，Azure 将返回 A 和 AAAA 记录。 |
 | vmNamePrefix |指定 VM 名称前缀。 创建 VM 时，模板会在名称后面追加一个编号（0、1 等等）。 |
 | nicNamePrefix |指定网络接口名称前缀。 创建网络接口时，模板会在名称后面追加一个编号（0、1 等等）。 |
 | storageAccountName |输入现有存储帐户的名称，或指定模板创建的新存储帐户的名称。 |
