@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944135"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249771"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -46,6 +46,7 @@ ms.locfileid: "49944135"
 - 有助于符合隐私法规。
 - 列出已同意或尚未同意使用条款的人员。
 - 显示使用条款活动的日志，以了解合规性和进行审核。
+- 使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement)（目前提供预览版）创建和管理使用条款。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用和配置 Azure AD 使用条款，必须具备以下先决条件：

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030840"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913557"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -46,7 +46,7 @@ ms.locfileid: "47030840"
 
 ## <a name="create-a-daily-export"></a>创建每日导出
 
-成本管理 + 计费 &gt; 在订阅中选择订阅或资源组 &gt; 导出 &gt; 添加。
+“成本管理 + 计费”&gt;“成本管理”&gt; 在订阅中选择订阅或资源组 &gt;“导出”&gt;“添加”。
 
 键入导出名称并指定订阅、Azure 存储帐户、容器和文件存储目录或 blob 容器，然后单击“创建”。
 

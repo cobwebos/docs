@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 9edd7261ca62f505ffb4854e3132fae916768f67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e762141e089b11dd0fb129f3bf758874d4ad4da8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26626583"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227631"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>BizTalk 服务中的管理和开发任务列表
 
@@ -39,7 +39,7 @@ ms.locfileid: "26626583"
 | 5. |开发人员 |在 Visual Studio 中安装 SDK 并创建 BizTalk 服务项目。 |[安装 Azure BizTalk 服务 SDK](https://msdn.microsoft.com/library/azure/hh689760.aspx) 和[在 Azure 上创建丰富消息传递终结点](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
 | 6. |开发人员 |将 BizTalk 服务项目部署到托管在 Azure 上的 BizTalk 服务。 |[部署并刷新 BizTalk 服务项目](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
 | 7. |管理员 |使用 EDI 时适用。  可在 Microsoft Azure BizTalk 服务门户上添加合作伙伴和创建协议。 创建协议时，可将开发人员创建的桥和/或转换添加到协议设置。 |[在 BizTalk 服务门户中配置 EDI、AS2 和 EDIFACT](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |管理员 |使用 [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx)，监视 BizTalk 服务的运行状况，包括性能指标。 |[Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 8. |管理员 |使用 [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx)，监视 BizTalk 服务的运行状况，包括性能指标。 |[Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
 | 9. |管理员 |使用 Microsoft Azure BizTalk 服务门户，管理 BizTalk 服务使用的项目，并在桥文件处理消息时跟踪这些消息。 |[使用 BizTalk 服务门户](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
 | 10. |管理员 |创建备份计划以备份 BizTalk 服务。 |[BizTalk 服务中的业务连续性和灾难恢复](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
 
@@ -58,5 +58,5 @@ ms.locfileid: "26626583"
 [添加源、目标和桥消息传送终结点](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
 [了解并创建消息映射和转换](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [使用 BizTalk 适配器服务 (BAS)](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
-[Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=303664)
+[Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

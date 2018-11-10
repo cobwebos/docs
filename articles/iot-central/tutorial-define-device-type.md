@@ -3,24 +3,24 @@ title: 在 Azure IoT Central 中定义新设备类型 | Microsoft Docs
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新设备类型。 其中介绍了如何为类型定义遥测、状态、属性和设置。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 10/12/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156028"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963579"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
 
 本教程向构建人员介绍如何使用设备模板在 Microsoft Azure IoT Central 应用程序中定义新的设备类型。 设备模板定义设备类型的遥测、状态、属性和设置。
 
-为了让你在连接实际设备之前测试应用程序，Azure IoT Central 会在创建设备模板时基于该模板创建一个模拟设备。
+为了让你在连接实际设备之前测试应用程序，IoT Central 会在创建设备模板时基于该模板生成一个模拟设备。
 
 本教程将创建“连接的空调”设备模板。 连接的空调设备：
 
@@ -59,9 +59,9 @@ ms.locfileid: "50156028"
 
 4. 若要创建新的 Azure IoT Central 应用程序：
     
-    * 选择“免费”。 7 天免费试用没有订阅要求。
+    * 选择“试用版”。 无需 Azure 订阅即可创建试用版应用程序。
     
-       有关目录和订阅的详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+       有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
     
     * 选择“自定义应用程序”。
     
@@ -69,9 +69,9 @@ ms.locfileid: "50156028"
     
     * 选择“创建”。
 
-    ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-define-device-type/iotcentralcreatenew.png)
+    ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-define-device-type/iotcentralcreate.png)
 
-    有关详细信息，请参阅[如何创建 Azure IoT Central 应用程序](howto-create-application.md)。
+    有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 
 ## <a name="create-a-new-custom-device-template"></a>创建新的自定义设备模板
 

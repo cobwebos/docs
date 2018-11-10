@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: bb1c59fa7df9cf466ce1fd7f32f08d255fe656bd
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097057"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251118"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -312,7 +312,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 
 请考虑这样一个示例：一个具有数万个部门和员工实体的大型跨国公司，其中每个部门都有许多员工，每个员工都与一个特定部门相关联。 一种方法是存储不同的部门和员工实体，如下所示：  
 
-![][1]
+![部门和员工实体][1]
 
 此示例展示了类型之间基于 **PartitionKey** 值的隐式一对多关系。 每个部门可以有许多员工。  
 
@@ -418,7 +418,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 #### <a name="context-and-problem"></a>上下文和问题
 表服务通过 **PartitionKey** 和 **RowKey** 值自动编制实体的索引。 这使客户端应用程序可以使用这些值高效地检索实体。 例如，使用下面所示的表结构时，客户端应用程序可使用点查询，通过部门名称和员工 ID（**PartitionKey** 和 **RowKey** 值）检索单个员工实体。 客户端还可以在每个部门内检索按员工 ID 排序的实体。
 
-![][6]
+![员工实体][6]
 
 如果还要能够基于另一个属性（例如，电子邮件地址）的值查找员工实体，则必须使用效率较低的分区扫描来查找匹配项。 这是因为表服务不提供辅助索引。 此外，只能按 **RowKey** 顺序对员工列表排序。  
 
@@ -437,7 +437,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 * 要查找销售部门中的所有雇员，其雇员 ID 范围为 000100 到 000199，请使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199')  
 * 要通过以字母“a”开头的邮件地址查找销售部门中的所有雇员，请使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b')  
   
-  请注意，上述示例中使用的筛选器语法源自表服务 REST API，详细信息请参阅 [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx)（查询实体）。  
+  上述示例中使用的筛选器语法源自表服务 REST API，有关详细信息，请参阅[查询实体](http://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
@@ -1289,7 +1289,7 @@ foreach (var e in entities)
 
 如果两个不同类型的实体可能具有相同键值，则在 **RowKey** 前面添加实体类型的第一个选项会很有用。 它还会在分区中将同一类型的实体分组在一起。  
 
-此部分中讨论的技术与本指南中前面部分[模型关系](#modelling-relationships)讨论的[继承关系](#inheritance-relationships)有关。  
+本部分中讨论的技术与本指南中前面的[对关系进行建模](#modelling-relationships)部分中讨论的[继承关系](#inheritance-relationships)有关。  
 
 > [!NOTE]
 > 应考虑在实体类型值中包含版本号以允许客户端应用程序演变 POCO 对象并处理不同版本。  

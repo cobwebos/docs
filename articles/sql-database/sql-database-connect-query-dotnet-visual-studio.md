@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e6eaaa67914579edd5c3b53362835aa1ad168eca
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 5b458c881496a887d1415e115bf2b94c674be029
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064027"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911755"
 ---
-# <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>使用 .NET (C#) 和 Visual Studio 来连接和查询 Azure SQL 数据库
+# <a name="quickstart-use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 .NET (C#) 和 Visual Studio 来连接和查询 Azure SQL 数据库
 
 此快速入门演示如何使用 [.NET framework](https://www.microsoft.com/net/) 与 Visual Studio 来创建连接到 Azure SQL 数据库的 C# 程序，并使用 Transact-SQL 语句来查询数据。
 

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144507"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138987"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>快速入门：尝试使用基于云的解决方案来管理工业 IoT 设备
 
@@ -32,13 +32,13 @@ ms.locfileid: "39144507"
 
 将解决方案加速器部署到 Azure 订阅时，必须设置一些配置选项。
 
-使用 Azure 帐户凭据登录到 [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)。
+导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com)，使用 Azure 帐户凭据登录。
 
-在“联网工厂”磁贴上单击“立即试用”。
+单击“联网工厂”磁贴。 在“联网工厂”页上单击“立即试用”：
 
-![选择“联网工厂”](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![立即试用](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-在“创建联网工厂解决方案”页上，为联网工厂解决方案加速器输入唯一的**解决方案名称**。 此名称是包含所有解决方案加速器资源的 Azure 资源组的名称。 在本快速入门中，此名称为 **MyDemoConnectedFactory**。
+在“创建联网工厂解决方案”页上，为联网工厂解决方案加速器输入唯一的**解决方案名称**。 此名称是包含所有解决方案加速器资源的 Azure 资源组的名称。 本快速入门使用的名称为 **MyDemoConnectedFactory**。
 
 选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 本快速入门使用“Visual Studio Enterprise”和“美国东部”。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 
@@ -66,7 +66,7 @@ ms.locfileid: "39144507"
 
 [![解决方案仪表板](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
-使用仪表板管理工业 IoT 设备。 联网工厂使用层次结构来显示全局工厂配置。 该层次结构的顶层是包含一个或多个工厂的企业，每个工厂包含生产线，而每条生产线由工位构成。 在每个层级，可以查看 OEE 和 KPI、发布新的遥测节点，以及对警报做出响应。
+使用仪表板管理工业 IoT 设备。 联网工厂使用层次结构来显示全局工厂配置。 该层次结构的顶层是包含一个或多个工厂的企业。 每个工厂包含生产线，而每条生产线由工位构成。 在每个层级，可以查看 OEE 和 KPI、发布新的遥测节点，以及对警报做出响应。
 
 在仪表板上可以查看：
 
@@ -122,7 +122,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 ### <a name="alarms"></a>警报
 
-“警报”面板显示当报告的值或计算的 OEE/KPI 值超出配置的阈值时生成的警报。 此面板显示层次结构中从工位级别到企业的每个级别的警报。 每个警报包括说明、日期、时间、位置和发生次数：
+“警报”面板显示当报告的值或计算的 OEE/KPI 值超出阈值时生成的警报。 此面板显示层次结构中从工位级别到企业的每个级别的警报。 每个警报包括说明、日期、时间、位置和发生次数：
 
 [![警报](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 若要进一步分析警报数据，请单击警报面板中的图。
 
-这些警报是根据规则生成的，而这些规则是在解决方案加速器的配置文件中指定的。 这些规则可以在 OEE 或 KPI 数据或 OPC UA 节点值超出其配置的阈值时生成警报。
+这些警报是根据规则生成的，而这些规则是在解决方案加速器的配置文件中指定的。 这些规则可以在 OEE 或 KPI 数据或 OPC UA 节点值超出阈值时生成警报。 可以设置此阈值。
 
 ## <a name="clean-up-resources"></a>清理资源
 

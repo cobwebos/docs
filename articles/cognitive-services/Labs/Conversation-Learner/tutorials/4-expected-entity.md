@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 9e685d2281330457e83abde0a8ac26e086da7479
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268015"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229639"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>如何使用操作的“预期实体”属性
 
@@ -23,7 +23,7 @@ ms.locfileid: "48268015"
 
 ## <a name="video"></a>视频
 
-[![教程 4 预览](http://aka.ms/cl-tutorial-04-preview)](http://aka.ms/blis-tutorial-04)
+[![教程 4 预览](https://aka.ms/cl-tutorial-04-preview)](https://aka.ms/blis-tutorial-04)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人

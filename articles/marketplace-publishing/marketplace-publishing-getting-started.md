@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715995"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227393"
 ---
 > [!NOTE]
 > 本文档不再处于最新状态，因此内容并不准确。 请转到 Azure 市场[卖家指南](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)，获取向 Azure 市场发布产品/服务的相关指导。
@@ -28,7 +28,7 @@ ms.locfileid: "39715995"
 本文旨在帮助开发人员创建、部署和管理在 Azure 市场中列出的解决方案，以便其他 Azure 客户和合作伙伴可进行购买和使用。
 
 ## <a name="marketplace-publishing"></a>市场发布
-作为 Azure 发布商，可以在市场中向其他开发人员、ISV 和 IT 专用人员分发和销售创新解决方案或服务。 可以通过市场接触那些需要快速开发基于云的应用程序和移动解决方案的客户。 如果解决方案面向业务用户，则可能需要考虑 [AppSource](http://appsource.microsoft.com) 市场。
+作为 Azure 发布商，可以在市场中向其他开发人员、ISV 和 IT 专用人员分发和销售创新解决方案或服务。 可以通过市场接触那些需要快速开发基于云的应用程序和移动解决方案的客户。 如果解决方案面向业务用户，则可能需要考虑 [AppSource](https://appsource.microsoft.com) 市场。
 
 
 ## <a name="supported-types-of-solutions"></a>支持的解决方案类型
@@ -51,7 +51,7 @@ ms.locfileid: "39715995"
 >[!NOTE]
 > 如果正与合作伙伴客户经理或 DX 合作伙伴经理合作，请要求他们针对 Azure 认证计划推荐解决方案。 也可转到 [Microsoft Azure 认证](http://createopportunity.azurewebsites.net)网页，并填写申请表。 在“Microsoft 发起人联系人”框中输入合作伙伴客户经理或 DX 合作伙伴经理的电子邮件。
 
-如果符合 [Azure 市场参与策略](http://go.microsoft.com/fwlink/?LinkID=526833)中的资格条件，并且应用程序获得了批准，我们会协助你将解决方案发布到市场。
+如果符合 [Azure 市场参与策略](https://go.microsoft.com/fwlink/?LinkID=526833)中的资格条件，并且应用程序获得了批准，我们会协助你将解决方案发布到市场。
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>将你的帐户注册为 Microsoft 卖方
 将 Microsoft 帐户注册为 [Microsoft 开发人员帐户](marketplace-publishing-accounts-creation-registration.md)。
@@ -60,7 +60,7 @@ ms.locfileid: "39715995"
 要将解决方案发布到市场，请执行以下步骤：
 1. 满足非技术要求。
 
-    a. 满足[非技术先决条件](marketplace-publishing-pre-requisites.md)。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 满足[非技术先决条件](marketplace-publishing-pre-requisites.md)。
 
     b. 满足 [VM 技术先决条件](marketplace-publishing-vm-image-creation-prerequisites.md)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "39715995"
 
 2. 创建产品/服务。
 
-    a. 创建[虚拟机](marketplace-publishing-vm-image-creation.md)产品/服务。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建[虚拟机](marketplace-publishing-vm-image-creation.md)产品/服务。
 
     b. 创建[解决方案模板](marketplace-publishing-solution-template-creation.md)产品/服务。
 
@@ -76,7 +76,7 @@ ms.locfileid: "39715995"
 
 4. 在过渡环境中测试产品/服务。
 
-    a. 在[过渡环境](marketplace-publishing-vm-image-test-in-staging.md)中测试 VM 产品/服务。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在[过渡环境](marketplace-publishing-vm-image-test-in-staging.md)中测试 VM 产品/服务。
 
     b. 在[过渡环境](marketplace-publishing-solution-template-test-in-staging.md)中测试解决方案模板产品/服务。
 
@@ -92,21 +92,14 @@ ms.locfileid: "39715995"
 
 ## <a name="manage-your-solution"></a>管理解决方案
 通过参阅以下资源来管理解决方案：
-* 
-  [阅读虚拟机产品/服务后期制作指南](marketplace-publishing-vm-image-post-publishing.md)
-* 
-  [更新产品/服务或 SKU 的非技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
-* 
-  [更新产品/服务或 SKU 的技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
-* 
-  [在已列出的产品/服务下添加新 SKU](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [阅读虚拟机产品/服务后期制作指南](marketplace-publishing-vm-image-post-publishing.md)
+* [更新产品/服务或 SKU 的非技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [更新产品/服务或 SKU 的技术详细信息](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [在已列出的产品/服务下添加新 SKU](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
 * [更改已列出 SKU 的数据磁盘计数](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* 
-  [从市场中删除已列出的产品/服务](marketplace-publishing-vm-image-post-publishing.md)
-* 
-  [从市场中删除已列出的 SKU](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* 
-  [从市场中删除已列出的 SKU 的当前版本](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [从市场中删除已列出的产品/服务](marketplace-publishing-vm-image-post-publishing.md)
+* [从市场中删除已列出的 SKU](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [从市场中删除已列出的 SKU 的当前版本](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
 * [将定价还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
 * [将计费模型还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
 * [将列出的 SKU 的可见性设置还原为生产值](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)

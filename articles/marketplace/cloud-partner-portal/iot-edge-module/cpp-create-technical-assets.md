@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7f9dfee447cddc771e0e88ca5be04018b51dba2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432440"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227750"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
@@ -45,7 +45,7 @@ IoT Edge 模块必须支持以下平台选项之一。
 支持 IoT Edge 所支持的全部第 1 层平台（已在 [Azure IoT Edge 支持](https://docs.microsoft.com/azure/iot-edge/support)中记录）。 我们之所以推荐此选项，是因为它提供更好的客户体验。 后面将会展示满足此条件的模块。 使用此平台选项的模块必须：
 
 - 提供一个 `latest` 标记和一个版本标记（例如 `1.0.1`），这些标记是使用 GitHub [manifest-tool](https://github.com/estesp/manifest-tool) 生成的清单标记。
-- 使用[“市场”选项卡](./cpp-marketplace-tab.md)添加[已认证的兼容 IoT Edge 设备](http://aka.ms/iot-edge-certified)的链接。 此链接将解析为 `http://aka.ms/iot-edge-certified`，客户可在此网站中浏览或搜索已认证的设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
+- 使用[“市场”选项卡](./cpp-marketplace-tab.md)添加[已认证的兼容 IoT Edge 设备](https://aka.ms/iot-edge-certified)的链接。 此链接将解析为 `http://aka.ms/iot-edge-certified`，客户可在此网站中浏览或搜索已认证的设备。 此网站也称为 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支持的一部分第 1 层平台
   

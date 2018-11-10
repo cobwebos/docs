@@ -14,23 +14,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6af0dfb00ff791b8a73ebf1ad14b35d99f67a483
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227410"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>如何将应用服务应用程序配置为使用 Google 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 本主题介绍如何将 Azure 应用服务配置为使用 Google 作为身份验证提供程序。
 
-要完成本主题中的过程，必须拥有一个包含已验证电子邮件地址的 Google 帐户。 若要新建一个 Google 帐户，请转到 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302)。
+要完成本主题中的过程，必须拥有一个包含已验证电子邮件地址的 Google 帐户。 若要新建一个 Google 帐户，请转到 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)。
 
 ## <a name="register"> </a>向 Google 注册应用程序
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**，稍后将用此来配置 Google 应用。
-2. 导航到 [Google API](http://go.microsoft.com/fwlink/p/?LinkId=268303) 网站，使用 Google 帐户凭据登录，单击“创建项目”，提供“项目名称”，并单击“创建”。
+2. 导航到 [Google API](https://go.microsoft.com/fwlink/p/?LinkId=268303) 网站，使用 Google 帐户凭据登录，单击“创建项目”，提供“项目名称”，并单击“创建”。
 3. 创建项目后，请选择它。 从项目仪表板中，单击“转到 API 概述”。
 4. 选择“启用 API 和服务”。 搜索 **Google + API**，然后选择它。 单击“启用”。
 5. 在左侧导航中，单击“凭据” > “OAuth 许可屏幕”，选择“电子邮件地址”，输入“产品名称”，并单击“保存”。
