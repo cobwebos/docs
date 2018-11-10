@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
 ms.date: 04/09/2018
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985805"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977986"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -196,6 +196,13 @@ ms.locfileid: "49985805"
    此命令应会打印指定键的值：
 
    ![Azure Redis 缓存输出的屏幕截图](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>错误处理和重试
+如果在将事件发送到 Azure Functions 时失败，流分析会重试，直至成功完成操作。 不过，有些失败不会进行重试，如下所示：
+
+ 1. HttpRequestExceptions
+ 2. 请求实体太大（Http 错误代码 413）
+ 3. ApplicationExceptions
 
 ## <a name="known-issues"></a>已知问题
 

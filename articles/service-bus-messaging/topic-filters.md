@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853515"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741056"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
 
@@ -40,7 +40,7 @@ ms.locfileid: "48853515"
 
 ## <a name="actions"></a>操作
 
-使用 SQL 筛选条件，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 在匹配之后以及将消息选择到主题中之前对消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
+使用 SQL 筛选条件，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 在消息匹配之后以及将消息选择到订阅中之前对消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
 
 ## <a name="usage-patterns"></a>使用模式
 

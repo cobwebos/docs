@@ -9,122 +9,136 @@ ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 05/22/2017
+ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351909"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740104"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
-本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 脚本函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
 
-若要让函数处理移动应用表中的单个创建、读取、更新和删除 (CRUD) 操作，应改为使用[移动应用绑定](functions-bindings-mobile-apps.md)。
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2017 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
 
-> [!IMPORTANT]
-> 本文档中的示例适用于 1.x 运行时。 若要了解如何创建 1.x 函数应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
+如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 本主题中将使用计时器触发的函数。 按[在 Azure 中创建由计时器触发的函数](functions-create-scheduled-function.md)主题中的步骤进行操作，创建此函数的 C# 版本。   
++ 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 
-+ 本主题演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作。 若要创建 AdventureWorksLT 示例数据库，请按[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)主题中的步骤进行操作。 
++ 本文演示的是 Transact-SQL 命令，该命令在 AdventureWorksLT 示例数据库的 SalesOrderHeader 表中执行批量清理操作。 若要创建 AdventureWorksLT 示例数据库，请按[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文中的步骤进行操作。
+
++ 必须针对用于本快速入门的计算机的公共 IP 地址添加[服务器级防火墙规则](../sql-database/sql-database-get-started-portal-firewall.md)。 必须提供此规则才能从本地计算机访问 SQL 数据库实例。  
 
 ## <a name="get-connection-information"></a>获取连接信息
 
 完成[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)中的步骤后，需获取所建数据库的连接字符串。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
- 
-3. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
 
-4. 选择“显示数据库连接字符串”，并复制完整的 ADO.NET 连接字符串。 
+1. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
+
+1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。
 
     ![复制 ADO.NET 连接字符串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
-## <a name="set-the-connection-string"></a>设置连接字符串 
+## <a name="set-the-connection-string"></a>设置连接字符串
 
-Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置中存储连接字符串和其他机密信息的最佳做法。 使用应用程序设置可防止在代码中意外泄漏连接字符串。 
+Function App 在 Azure 中托管函数的执行。 这是在函数应用设置中存储连接字符串和其他机密信息的最佳安全做法。 使用应用程序设置可防止在代码中意外泄漏连接字符串。 可以直接从 Visual Studio 访问函数应用的应用设置。
 
-1. 导航到按照[在 Azure 中创建由计时器触发的函数](functions-create-scheduled-function.md)中所述步骤创建的函数应用。
+但前提是必须已将应用发布到 Azure。 若尚未执行此操作，[请将函数应用发布到 Azure ](functions-develop-vs.md#publish-to-azure)。
 
-2. 选择“平台功能” > “应用程序设置”。
-   
-    ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings.png)
+1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “管理应用程序设置...”。选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`然后选择“确认”。
 
-2. 向下滚动到“连接字符串”，并按表中指定通过设置添加连接字符串。
-   
-    ![将连接字符串添加到函数应用设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-strings.png)
+    ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-    | 设置       | 建议的值 | 说明             | 
-    | ------------ | ------------------ | --------------------- | 
-    | **名称**  |  sqldb_connection  | 用于访问函数代码中存储的连接字符串。    |
-    | **值** | 复制的字符串  | 粘贴在上一部分复制的连接字符串，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 |
-    | 类型 | SQL 数据库 | 使用默认的 SQL 数据库连接。 |   
+1. 在新的“sqldb_connection”设置中，将上一部分复制的连接字符串粘贴到“本地”，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 选择“从本地插入值”以将更新值复制到“远程”字段，然后选择“确认”。
 
-3. 单击“ **保存**”。
+    ![添加 SQL 连接字符串设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
+
+    连接字符串以加密方式存储在 Azure 中（远程）。 为防止泄密，应从源代码管理中排除 local.settings.json 项目文件（本地），例如，通过使用 .gitignore 文件完成。
+
+## <a name="add-the-sqlclient-package-to-the-project"></a>将 SqlClient 包添加到项目中
+
+你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
+
+1. 在 Visual Studio 2017 中打开本地函数应用项目。
+
+1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“管理 NuGet 包”。
+
+1. 转到“浏览”选项卡，搜索 ```System.Data.SqlClient```，找到后将其选中。
+
+1. 在“System.Data.SqlClient”页中单击“安装”。
+
+1. 安装完成后，查看所做的更改，然后单击“确定”以关闭“预览”窗口。
+
+1. 如果显示“接受许可证”窗口，则单击“我接受”。
 
 现在，可以添加连接到 SQL 数据库的 C# 函数代码。
 
-## <a name="update-your-function-code"></a>更新函数代码
+## <a name="add-a-timer-triggered-function"></a>添加计时器触发的函数
 
-1. 在门户中的函数应用中，选择由计时器触发的函数。
- 
-3. 在现有 C# 脚本函数代码的顶部添加以下程序集引用：
+1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“添加” > “新 Azure 函数”。
+
+1. 选择“Azure Functions”模板后，请按照类似 `DatabaseCleanup.cs` 的格式命名新项目并选择“添加”。
+
+1. 在“新 Azure 函数”对话框中选择“计时器触发器”，然后选择“确认”。 此对话框为定时器触发器函数创建代码文件。
+
+1. 打开新代码文件，然后在文件的顶部添加以下 using 语句：
 
     ```cs
-    #r "System.Configuration"
-    #r "System.Data"
-    ```
-    >[!NOTE]
-    >这些示例中的代码是门户中的 C# 脚本。 本地开发预编译的 C# 函数时，必须改为在本地项目中添加对这些程序集的引用。  
-
-3. 向函数添加以下 `using` 语句：
-    ```cs
-    using System.Configuration;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
     ```
 
-4. 将现有 `Run` 函数替换为以下代码：
+1. 将现有 `Run` 函数替换为以下代码：
+
     ```cs
-    public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    [FunctionName("DatabaseCleanup")]
+    public static async Task Run([TimerTrigger("*/15 * * * * *")]TimerInfo myTimer, ILogger log)
     {
-        var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+        // Get the connection string from app settings and use it to create a connection.
+        var str = Environment.GetEnvironmentVariable("sqldb_connection");
         using (SqlConnection conn = new SqlConnection(str))
         {
             conn.Open();
-            var text = "UPDATE SalesLT.SalesOrderHeader " + 
+            var text = "UPDATE SalesLT.SalesOrderHeader " +
                     "SET [Status] = 5  WHERE ShipDate < GetDate();";
 
             using (SqlCommand cmd = new SqlCommand(text, conn))
             {
                 // Execute the command and log the # rows affected.
                 var rows = await cmd.ExecuteNonQueryAsync();
-                log.Info($"{rows} rows were updated");
+                log.LogInformation($"{rows} rows were updated");
             }
         }
     }
     ```
 
-    此示例命令会根据装运日期更新 `Status` 列。 应更新 32 行数据。
+    此函数每 15 秒运行一次，以根据发货日期更新 `Status` 列。 要了解有关计时器触发器的详细信息，请参阅 [Azure Functions 的定时器触发器](functions-bindings-timer.md)。
 
-5. 单击“保存”，查看下一次执行函数时的“日志”窗口，请注意 SalesOrderHeader 表中更新的行数。
+1. 按“F5”启动函数应用。 [Azure Functions Core Tools](functions-develop-local.md) 执行窗口在 Visual Studio 后台打开。
 
-    ![查看函数日志。](./media/functions-scenario-database-table-cleanup/functions-logs.png)
+1. 启动后 15 秒，该函数将运行。 观察输出并记下 SalesOrderHeader 表中更新的行数。
+
+    ![查看函数日志。](./media/functions-scenario-database-table-cleanup/function-execution-results-log.png)
+
+    在第一次执行时，应更新 32 行数据。 以下运行不更新任何数据行，除非对 SalesOrderHeader 表数据进行更改，以便 `UPDATE` 语句选择更多行。
+
+如果打算[发布此函数](functions-develop-vs.md#publish-to-azure)，请记得将 `TimerTrigger` 属性更改为比每 15 秒计划更合理的[cron 计划](functions-bindings-timer.md#cron-expressions)。
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来了解如何将 Functions 与逻辑应用配合使用，以集成其他服务。
+下一步，了解如何使用。 将 Functions 与逻辑应用配合使用，以集成其他服务。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [创建与逻辑应用集成的函数](functions-twitter-email.md)
 
-有关 Functions 的详细信息，请参阅以下主题：
+若要深入了解 Functions，请参阅以下文章：
 
-* [Azure Functions 开发人员参考](functions-reference.md)  
++ [Azure Functions 开发人员参考](functions-reference.md)  
   ，用于编码函数和定义触发器及绑定的程序员参考。
-* [测试 Azure Functions](functions-test-a-function.md)  
++ [测试 Azure Functions](functions-test-a-function.md)  
   介绍可用于测试函数的各种工具和技巧。  

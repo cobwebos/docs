@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415691"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957415"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>将警报从 Log Analytics 扩展为 Azure 警报
 Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡过程中，最初在 Log Analytics 中配置的警报将扩展到 Azure 中。 如果不想等待它们自动移入 Azure，可以启动该过程：
@@ -470,7 +470,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 - **错误：在订阅/资源组级别存在策略**：![Operations Management Suite 门户“警报设置”页的屏幕截图，其中突出显示了“策略”错误消息](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    应用 [Azure Policy](../azure-policy/azure-policy-introduction.md) 后，它会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新资源。 系统无法将警报扩展到 Azure 并创建必要的操作组。
+    应用 [Azure Policy](../governance/policy/overview.md) 后，它会限制包含 Log Analytics (Operations Management Suite) 工作区的订阅或资源组中的任何新资源。 系统无法将警报扩展到 Azure 并创建必要的操作组。
     
     若要解决此问题，请编辑导致 *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* 错误的策略，该策略阻止在包含工作区的订阅或资源组中创建新资源。 可以通过 Azure 门户、PowerShell、Azure CLI 或 API 执行此操作。 可以审核操作以找到导致故障的相应策略。 若要了解详细信息，请参阅[查看活动日志以审核操作](../azure-resource-manager/resource-group-audit.md)。 
     

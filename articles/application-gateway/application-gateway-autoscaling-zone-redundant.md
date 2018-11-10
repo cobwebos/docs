@@ -13,16 +13,16 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: victorh
-ms.openlocfilehash: ab1c9405042de02183b8742fa940a3a5a482923a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8fb3dce108b59b8df0d330ec642365d2487eae35
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165223"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085455"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自动缩放和区域冗余应用程序网关（公共预览版）
 
-应用程序网关和 Web 应用程序防火墙 (WAF) 现依据新 SKU 提供可用的公共预览版，可增强性能并添加对关键新功能（如自动缩放、区域冗余）的支持，并支持静态 VIP。 新 SKU 将继续支持通用版 SKU 的现有功能，并且已知限制部分几乎未列出异常。 新 SKU 包括以下增强功能：
+应用程序网关和 Web 应用程序防火墙 (WAF) 现依据新 v2 SKU 提供可用的公共预览版，可增强性能并添加对关键新功能（如自动缩放、区域冗余）的支持，并支持静态 VIP。 新的 v2 SKU 将继续支持通用版 SKU 的现有功能，并且已知限制部分几乎未列出异常。 新的 v2 SKU 包括以下增强功能：
 
 - 自动缩放：凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 因此，SKU 提供了真正的弹性。 在新 SKU 中，应用程序网关可同时在固定容量（自动缩放已禁用）以及启用自动缩放的模式下操作。 固定容量模式对具有一致性和可预测工作负荷的方案非常有用。 自动缩放模式有利于在应用程序流量中出现大量变化的应用程序中。
    
@@ -48,6 +48,11 @@ ms.locfileid: "47165223"
 
 |问题|详细信息|
 |--|--|
+|身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
+|在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持。<br>另外，如果启用了自动缩放，则一个子网只能有一个应用程序网关。|
+|应用程序网关子网上的用户定义路由 (UDR)|不支持|
+|入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
+|Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
 |计费|目前不收费。|
 |FIPS 模式、WebSocket|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|

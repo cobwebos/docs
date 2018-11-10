@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 36c42830738f160b24f65e86576ba93aac1ea737
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411348"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005592"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
@@ -101,7 +101,7 @@ ms.locfileid: "47411348"
 
 11. 选择“稍后附加虚拟硬盘”。
 
-    ![有关“稍后附加虚拟硬盘”选项的图像](/media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![有关“稍后附加虚拟硬盘”选项的图像](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
 12. 创建 VM 后，选择“完成”。
 
@@ -109,11 +109,11 @@ ms.locfileid: "47411348"
 
 14. 依次选择“IDE Controller 0”、“硬盘”，然后单击“添加”。
 
-    ![有关添加新硬盘的图像](/media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![有关添加新硬盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
 15. 在“物理硬盘”中，选择已附加到 Azure VM 的问题 VM 的磁盘。 如果没有看到任何列出的磁盘，请使用磁盘管理检查是否将磁盘设置为离线。
 
-    ![有关安装磁盘的图像](/media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![有关安装磁盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. 依次选择“应用”、“确定”。
@@ -130,11 +130,11 @@ ms.locfileid: "47411348"
 
 3.  转到“所有资源”，搜索磁盘名称，然后选择该磁盘。
 
-     ![有关搜索磁盘的图像](/media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![有关搜索磁盘的图像](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
 4. 单击“创建 VM”。
 
-     ![有关从磁盘创建 VM 的图像](./media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![有关从磁盘创建 VM 的图像](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
 此外也可以使用 Azure PowerShell 从磁盘创建 VM。 有关详细信息，请参阅[使用 PowerShell 从现有磁盘创建新的 VM](../windows/create-vm-specialized.md#create-the-new-vm)。 
 

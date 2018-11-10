@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 2f3d96908cbcb68ff01a6e43696a119bf21d02ce
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902070"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226559"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure 机器学习工作室功能的概要示意图
 **Microsoft Azure 机器学习工作室功能概述** 示意图高度概括了如何使用机器学习工作室开发预测分析模型并在 Azure 云中加以实施。
@@ -39,7 +39,7 @@ ms.locfileid: "48902070"
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>下载机器学习工作室概述示意图
 下载 **Microsoft Azure 机器学习工作室功能概述** 示意图，并获取机器学习工作室功能的高级视图。 若要随时随地查看，可以打印卡片大小（11 x 17 英寸）的示意图。
 
-**请在此处下载示意图：[Microsoft Azure 机器学习工作室功能概述](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**请在此处下载示意图：[Microsoft Azure 机器学习工作室功能概述](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
 ![Microsoft Azure 机器学习工作室功能概述][studio-overview]
 

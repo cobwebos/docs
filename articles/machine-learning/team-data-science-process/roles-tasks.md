@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c245a844ae594f5d78b47a168ad5870f8aea10e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296697"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227767"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
@@ -66,7 +66,7 @@ Team Data Science Process 是由 Microsoft 开发的一个框架，其提供的�
 > [!NOTE]
 > 以下说明演示了在 Azure DevOps 中设置 TDSP 环境并完成其他数据科学任务的步骤。 我们详述了如何使用 Azure DevOps 完成这些任务，因为这是我们在 Microsoft 中用来实现 TDSP 的方法。 Azure DevOps 可以集成工作项（用于跟踪任务）的管理与代码托管服务（用于共享实用程序、组织版本以及提供基于角色的安全性），从而促进协作。 可以随意选择其他平台来实施 TDSP 所概述的任务。 但是，根据具体的平台，可能无法利用 Azure DevOps 中的某些功能。 
 >
->此处的说明还使用 Azure 云中的[数据科学虚拟机 (DSVM)](http://aka.ms/dsvm) 作为分析桌面，该桌面已预先配置了多个常用的数据科学工具，并集成了各种 Microsoft 软件和 Azure 服务。 可以通过 DSVM 或任何其他的开发环境来实现 TDSP。 
+>此处的说明还使用 Azure 云中的[数据科学虚拟机 (DSVM)](https://aka.ms/dsvm) 作为分析桌面，该桌面已预先配置了多个常用的数据科学工具，并集成了各种 Microsoft 软件和 Azure 服务。 可以通过 DSVM 或任何其他的开发环境来实现 TDSP。 
 
 
 ## <a name="group-manager-tasks"></a>组管理员任务

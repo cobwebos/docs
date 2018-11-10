@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: e10bd04f37951f93db8af083692b7a2fe25ac9b7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9d1229084410b6fe7c500a22f8e1e1aed1b8107d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347659"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227342"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>在 StorSimple 虚拟阵列上安装 Update 1.1
 
@@ -27,18 +27,18 @@ ms.locfileid: "39347659"
 
 本文介绍了通过本地 Web UI 和 Azure 门户在 StorSimple 虚拟阵列上安装 Update 1.1 所需的步骤。
 
-应用软件更新或修补程序，使 StorSimple 虚拟阵列保持最新。 在应用更新之前，建议使卷或共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 在卷或共享离线后，还应手动备份设备。
+应用软件更新或修补程序，使 StorSimple Virtual Array 保持最新。 在应用更新之前，建议使卷或共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 在卷或共享离线后，还应手动备份设备。
 
 > [!IMPORTANT]
 > - Update 1.1 对应于设备上的 **10.0.10307.0** 软件版本。 有关此更新中新增功能的信息，请转到 [Update 1.1 发行说明](storsimple-virtual-array-update-11-release-notes.md)。
 >
-> - 请记住，安装更新或修补程序会重新启动设备。 假定 StorSimple 虚拟阵列是单节点设备，任何正在进行的 I/O 都将中断，设备也会停机。
+> - 请记住，安装更新或修补程序会重新启动设备。 假定 StorSimple Virtual Array 是单节点设备，任何正在进行的 I/O 都将中断，设备也会停机。
 >
 > - 只有当虚拟阵列运行 Update 1 时，才能在 Azure 门户中获取 Update 1.1。 对于运行 Update 0.6 版本的虚拟阵列，必须先安装 Update 1.0，然后再应用 Update 1.1。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-如果要运行 Update 0.2 和更高版本，建议通过 Azure 门户安装更新。 门户过程需要用户扫描、下载和安装更新。 根据虚拟阵列运行的软件版本，通过 Azure 门户应用的更新会有所不同。
+如果要运行 Update 0.2 和更高版本，建议通过 Azure 门户安装更新。 门户过程需要用户扫描、下载和安装更新。 根据 Virtual Array 运行的软件版本，通过 Azure 门户应用的更新会有所不同。
 
  - 如果虚拟阵列运行 Update 1，Azure 门户会直接在设备上安装 Update 1.1 (10.0.10307.0)。 此过程大约需要 10 分钟来完成。
  - 如果虚拟阵列在运行 Update 0.6，则通过两个阶段完成更新。 Azure 门户首先在设备上安装 Update 1.0 (10.0.10296.0)。 虚拟阵列进行重启，然后门户将在设备上安装 Update 1.1 (10.0.10307.0)。 此过程完成时间大约为 15 分钟。
@@ -66,7 +66,7 @@ ms.locfileid: "39347659"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "39347659"
    
     ![更新设备](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
-3. 显示一条警告。 假定虚拟阵列为单节点设备，应用更新后，设备将重启并且会出现停机。 单击选中图标。
+3. 显示一条警告。 假定 Virtual Array 为单节点设备，应用更新后，设备将重启并且会出现停机。 单击选中图标。
    
    ![更新设备](./media/storsimple-virtual-array-install-update-11/update3m.png)
 
@@ -122,9 +122,9 @@ ms.locfileid: "39347659"
    
     ![更新设备](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. 重复步骤 2-4，使用文件 `Windows8.1-KB4284815-x64` 安装 Windows 安全修补程序。 安装后会重启虚拟阵列，用户需登录本地 Web UI。
+6. 重复步骤 2-4，使用文件 `Windows8.1-KB4284815-x64` 安装 Windows 安全修补程序。 安装后会重启 Virtual Array，用户需登录本地 Web UI。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
+详细了解如何[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。

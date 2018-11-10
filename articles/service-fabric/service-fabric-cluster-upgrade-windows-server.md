@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93b79b7adacdec18912d28bb9725e2dc77737d59
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2190978b2583b2f5d8a1b10431c65fd24fe6842d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050757"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228141"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>升级 Windows Server 上的独立 Azure Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ ms.locfileid: "43050757"
 可以使用两个不同的工作流将群集升级至最新版本或受支持的 Service Fabric 版本。 其中一个工作流适用于已建立网络连接，可自动下载最新版本的群集。 另一个工作流适用于未建立网络连接，无法下载最新 Service Fabric 版本的群集。
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>升级已建立网络连接，可下载最新代码和配置的群集
-如果群集节点可以通过 Internet 连接到 [Microsoft 下载中心](http://download.microsoft.com)，则使用以下步骤将群集升级至支持的版本。
+如果群集节点可以通过 Internet 连接到 [Microsoft 下载中心](https://download.microsoft.com)，则使用以下步骤将群集升级至支持的版本。
 
-对于可以连接到 [Microsoft 下载中心](http://download.microsoft.com)的群集，Microsoft 会定期检查新的 Service Fabric 版本是否已发布。
+对于可以连接到 [Microsoft 下载中心](https://download.microsoft.com)的群集，Microsoft 会定期检查新的 Service Fabric 版本是否已发布。
 
 推出新的 Service Fabric 版本时，相应的包将下载到群集本地，并为升级完成预配。 此外，为了通知客户已推出新版本，系统会明确显示类似于下面的群集运行状况警告：
 
@@ -106,7 +106,7 @@ ms.locfileid: "43050757"
     解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>升级*未建立网络连接*，无法下载最新代码和配置的群集
-如果群集节点未与 [Microsoft 下载中心](http://download.microsoft.com)建立 Internet 连接，请使用以下步骤将群集升级到支持的版本。
+如果群集节点未与 [Microsoft 下载中心](https://download.microsoft.com)建立 Internet 连接，请使用以下步骤将群集升级到支持的版本。
 
 > [!NOTE]
 > 如果运行的群集未连接到 Internet，则必须关注 Service Fabric 团队博客来了解新版本的信息。 系统不会显示任何群集运行状况警告来提醒有新版本可用。  

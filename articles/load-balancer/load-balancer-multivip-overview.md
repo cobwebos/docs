@@ -4,9 +4,6 @@ description: Azure 负载均衡器上的多个前端概述
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
-manager: narayan
-editor: ''
-ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d435d2c491cf17356e96f7bbb05b1e22c8e04aca
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181483"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219352"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure 负载均衡器的多个前端
 
@@ -31,7 +28,7 @@ ms.locfileid: "30181483"
 
 下表包含一些示例前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -55,7 +52,7 @@ Azure Load Balancer 允许在相同的负载均衡器配置中混用这两种规
 
 在此方案中，前端的配置如下：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -71,7 +68,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 现在，Azure 负载均衡器的完整映射如下：
 
-| 规则 | 前端 IP 地址 | 协议 | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP 地址 |80 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP 地址 |81 |
@@ -105,7 +102,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 假设上述方案使用相同的前端配置：
 
-| 前端 | IP 地址 | 协议 | 端口 |
+| 前端 | IP 地址 | 协议 | port |
 | --- | --- | --- | --- |
 | ![绿色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![紫色前端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -119,7 +116,7 @@ DIP 是入站流量的目标。 在后端池中，每个 VM 公开 DIP 上唯一
 
 下表显示负载均衡器中的完整映射：
 
-| 规则 | 前端 IP 地址 | 协议 | 端口 | 目标 | 端口 |
+| 规则 | 前端 IP 地址 | 协议 | port | 目标 | port |
 | --- | --- | --- | --- | --- | --- |
 | ![绿色规则](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |与前端 (65.52.0.1) 相同 |与前端 (80) 相同 |
 | ![紫色规则](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |与前端 (65.52.0.2) 相同 |与前端 (80) 相同 |

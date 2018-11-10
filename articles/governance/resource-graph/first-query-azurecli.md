@@ -4,17 +4,17 @@ description: 本文将指导你完成为 Azure CLI 启用 Resource Graph 扩展�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: df01a57cda063e301efbc4d99f3bac8dbb4b2e66
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: a252dd6698a5e4f724fcbbf821b01f63ab4f529b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054160"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086805"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -49,7 +49,7 @@ ms.locfileid: "47054160"
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-现在，该 Azure CLI 扩展已添加到你选择的环境中，可以尝试进行简单的 Resource Graph 查询了。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型。
+将 Azure CLI 扩展添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型。
 
 1. 使用 `graph` 扩展和 `query` 命令运行你的第一个 Azure Resource Graph 查询：
 
@@ -73,14 +73,14 @@ ms.locfileid: "47054160"
   > [!NOTE]
   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 这将首先限制查询结果，然后对其进行排序。
 
-1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前 5 个结果：
+1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果：
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    az graph query -q 'project name, type | order by name asc | limit 5'
    ```
 
-假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期 - 按 Name 属性排序，但仍限制为前 5 个结果。
+假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果。
 
 ## <a name="cleanup"></a>清理
 

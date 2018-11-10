@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205980"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228532"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -141,7 +141,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * 在 [Microsoft Azure 主页仪表板](https://portal.azure.com)中，查看服务运行状况地图。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 另请查看[我们的状态博客](http://blogs.msdn.com/b/applicationinsights-status/)。
+* 另请查看[我们的状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否针对[服务器端 SDK](app-insights-api-custom-events-metrics.md) 编写了可能更改 `TelemetryClient` 实例或 `TelemetryContext` 中的检测密钥的任何代码？ 或者，是否编写了可能筛选掉过多内容的[筛选或采样配置](app-insights-api-filtering-sampling.md)？
 * 如果编辑了 ApplicationInsights.config，请仔细检查 [TelemetryInitializers 和 TelemetryProcessors](app-insights-api-filtering-sampling.md) 的配置。 命名不当的类型或参数可能导致 SDK 不发送任何数据。
 
@@ -158,7 +158,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 请参阅[依赖项遥测](app-insights-asp-net-dependencies.md)和[异常遥测](app-insights-asp-net-exceptions.md)。
 
 ## <a name="no-performance-data"></a>没有性能数据
-性能数据（CPU、IO 速率等）适用于 [Java Web 服务](app-insights-java-collectd.md)、[Windows 桌面应用](app-insights-windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-azure.md)。 可在“设置”、“服务器”下面看到这些数据。
+性能数据（CPU、IO 速率等）适用于 [Java Web 服务](app-insights-java-collectd.md)、[Windows 桌面应用](app-insights-windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-overview.md)。 可在“设置”、“服务器”下面看到这些数据。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
@@ -167,7 +167,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 * Windows Server 2008：确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
-* 请查看[状态博客](http://blogs.msdn.com/b/applicationinsights-status/)。
+* 请查看[状态博客](https://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据

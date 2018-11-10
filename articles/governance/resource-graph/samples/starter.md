@@ -4,17 +4,17 @@ description: 使用 Azure 资源图表以运行一些初学者查询。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646622"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084524"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 
@@ -38,7 +38,7 @@ ms.locfileid: "49646622"
 
 ## <a name="language-support"></a>语言支持
 
-Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在执行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
+Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在运行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
 
 ## <a name="count-resources"></a>对 Azure 资源进行计数
 
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>列出按名称排序的资源
 
-在不限制任何类型的资源或特定匹配属性的情况下，此查询仅返回 Azure 资源的“名称”、“类型”和“位置”，但使用 `order by` 根据“名称”属性按升序 (`asc`) 对它们进行排序。
+此查询返回任意类型的资源，但只返回“名称”、“类型”和“位置”属性。 它使用 `order by` 以升序 (`asc`) 按“名称”属性对属性排序。
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>按降序显示按名称排序的所有虚拟机
 
-如果我们只需要虚拟机列表（类型为 `Microsoft.Compute/virtualMachines`），而不是获取所有 Azure 资源，我们可在结果中匹配属性“类型”。
-与上一查询类似，`desc` 将 `order by` 更改为降序。 类型匹配中的 `=~` 告知资源图表不区分大小写。
+若要只列出虚拟机（类型为 `Microsoft.Compute/virtualMachines`），我们可在结果中匹配属性“类型”。 与上一查询类似，`desc` 将 `order by` 更改为降序。 类型匹配中的 `=~` 告知资源图表不区分大小写。
 
 ```Query
 project name, location, type
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>列出所有公共 IP 地址
 
-与上一查询类似，查找包含单词“publicIPAddresses”的所有类型。 此查询扩展了该模式，以排除 properties.ipAddress 为 NULL 的结果，仅返回 properties.ipAddress，并按前 100 名 `limit` 结果。 根据所选 shell，可能需要转义引号。
+与上一查询类似，查找包含单词“publicIPAddresses”的所有类型。
+此查询扩展了该模式，以排除 properties.ipAddress 为 NULL 的结果，仅返回 properties.ipAddress，并按前 100 名 `limit` 结果。 根据所选 shell，可能需要转义引号。
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-如果还需提供资源具有的标记及其值，则可通过将属性“标记”添加到 `project` 关键字来扩展此示例。
+如果还要提供资源具有的标记及其值，请将属性“标记”添加到 `project` 关键字。
 
 ```Query
 where tags.environment=~'internal'
@@ -232,7 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>列出具有特定标记值的所有存储帐户
 
-将前面示例的筛选功能与使用按 Azure 资源类型按“类型”属性筛选相结合，我们可使用特定的标记名称和值来限制对 Azure 资源特定类型的搜索。
+组合前面示例的筛选功能，按“类型”属性筛选 Azure 资源类型。 此查询还使用特定的标记名称和值来限制对 Azure 资源特定类型的搜索。
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eb50673b4f618caadfa1abfb654d7e3f15e51713
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023945"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740954"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "50023945"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* 修复了在对租用集合分区时处理拆分过程中可能出现的问题。 此问题可能导致已分区的租用未从租用集合中删除。 此版本中已修复了此问题。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 多主机帐户和新的会话令牌格式的固定估计器计算。

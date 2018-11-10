@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 533fbfc42939299f99699a13513cd3b55c89cabc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413139"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957278"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在还可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 此插件将收集通过 Application Insights SDK 收集的应用程序性能数据，以及 Azure Monitor 提供的基础结构数据。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -128,4 +128,4 @@ Grafana 使用 Azure Active Directory 服务主体连接到 Azure Monitor API �
 2. 在资源组页上，单击“删除”，在文本框中键入“Grafana”，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Monitor 指标概述](monitoring-overview-metrics.md)
+* [Azure Monitor 指标概述](../monitoring/monitoring-data-collection.md)

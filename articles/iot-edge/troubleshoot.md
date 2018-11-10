@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068496"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740206"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "49068496"
 
 ## <a name="standard-diagnostic-steps"></a>标准诊断步骤 
 
-遇到问题时，请通过查看容器日志和传递到以及来自设备的消息来详细了解 IoT Edge 设备的状态。 可以使用本部分中的命令和工具来收集信息。 
+遇到问题时，请通过查看容器日志和传递到设备以及来自设备的消息来详细了解 IoT Edge 设备的状态。 可以使用本部分中的命令和工具来收集信息。 
 
 ### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>检查 IoT Edge 安全管理器的状态及其日志：
 
@@ -108,7 +108,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>查看经过 Edge 中心的消息
 
-查看经过 Edge 中心的消息，并通过来自 edgeAgent 和 edgeHub 运行时容器的详细日志收集有关设备属性更新的见解。 若要在这些容器上启用详细日志，请在 yaml 配置文件中设置 `RuntimeLogLevel`。 若要打开该文件，请执行以下操作：
+查看经过 Edge 中心的消息，并通过来自运行时容器的详细日志收集见解。 若要在这些容器上启用详细日志，请在 yaml 配置文件中设置 `RuntimeLogLevel`。 若要打开该文件，请执行以下操作：
 
 在 Linux 上：
 
@@ -122,7 +122,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-默认情况下，`agent` 元素将如下所示：
+默认情况下，`agent` 元素将类似于以下示例：
 
    ```yaml
    agent:
@@ -146,7 +146,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
 
 保存该文件并重启 IoT Edge 安全管理器。
 
-还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 可以使用适用于 Visual Studio Code 的 [Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)扩展查看这些消息。 有关更多指导，请参阅[Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的趁手工具）。
+还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 可以使用适用于 Visual Studio Code 的 [Azure IoT 工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)扩展查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
 
 ### <a name="restart-containers"></a>重启容器
 在调查日志和消息获得信息后，可以尝试重启容器：
@@ -181,7 +181,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>Edge 代理在大约一分钟后停止
 
-Edge 代理启动并成功运行了大约一分钟，然后停止。 日志表明，Edge 代理尝试通过 AMQP 连接到 IoT 中心，并且在大约 30 秒后尝试使用 AMQP 通过 Websocket 进行连接。 当该操作失败时，Edge 代理退出。 
+Edge 代理启动并成功运行了大约一分钟，然后停止。 日志表明，Edge 代理尝试通过 AMQP 连接到 IoT 中心，并且尝试使用 AMQP 通过 WebSocket 进行连接。 当该操作失败时，Edge 代理退出。 
 
 示例 Edge 代理日志：
 
@@ -193,7 +193,7 @@ Edge 代理启动并成功运行了大约一分钟，然后停止。 日志表�
 ```
 
 ### <a name="root-cause"></a>根本原因
-主机网络上的某个网络配置阻止 Edge 代理到达该网络。 代理首先会尝试通过 AMQP（端口 5671）进行连接。 如果此操作失败，它将尝试 Websocket（端口 443）。
+主机网络上的某个网络配置阻止 Edge 代理到达该网络。 代理首先会尝试通过 AMQP（端口 5671）进行连接。 如果连接失败，它将尝试 WebSocket（端口 443）。
 
 IoT Edge 运行时会为每个模块设置要在其中进行通信的网络。 在 Linux 上，此网络是一个桥网络。 在 Windows 上，它使用 NAT。 此问题在其中的 Windows 容器使用 NAT 网络的 Windows 设备上更为常见。 
 
@@ -235,7 +235,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ```
 
 ### <a name="root-cause"></a>根本原因
-IoT Edge 运行时只支持短于 64 个字符的主机名。 这对物理计算机来说不算什么问题，但是在虚拟机上设置运行时的时候可能会出现问题。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。 
+IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通常不具有长主机名，但此问题在虚拟机上更常见。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。 
 
 ### <a name="resolution"></a>解决方法
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
@@ -265,16 +265,16 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 这对物理计算
 你可能会在 Raspberry Pi 等受限设备上遇到稳定性问题，尤其是在这些设备用作网关时。 症状包括 Edge 中心模块出现“内存不足”异常、下游设备无法连接或者设备在几小时后停止发送遥测消息。
 
 ### <a name="root-cause"></a>根本原因
-Edge 中心是 Edge 运行时的一部分，默认情况下已针对性能进行了优化，并尝试分配大块内存。 这对于受限 Edge 设备并不理想，并可能会导致稳定性问题。
+Edge 中心是 Edge 运行时的一部分，默认情况下已针对性能进行了优化，并尝试分配大块内存。 这种优化对于受限 Edge 设备并不理想，并可能会导致稳定性问题。
 
 ### <a name="resolution"></a>解决方法
-对于 Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可通过两种方式实现此目的：
+对于 Edge 中心，请将环境变量 OptimizeForPerformance 设置为 false。 可通过两种方式实现此目的：
 
 在 UI 中： 
 
 在门户中，从“设备详细信息”->“设置模块”->“配置高级 Edge 运行时设置”，创建一个名为 *OptimizeForPerformance* 的环境变量，对于 *Edge 中心*将该变量设置为 *false*。
 
-![optimizeforperformance][img-optimize-for-perf]
+![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
 
 **或**
 
@@ -297,7 +297,7 @@ Edge 中心是 Edge 运行时的一部分，默认情况下已针对性能进行
 如果在 Windows 上使用 `Get-WinEvent` 时收到 EventLogException，请检查注册表项。
 
 ### <a name="root-cause"></a>根本原因
-`Get-WinEvent` PowerShell 命令依赖于存在的注册表项来查找特定 `ProviderName` 的日志。
+`Get-WinEvent` PowerShell 命令依赖于存在的注册表项来按特定 `ProviderName` 查找日志。
 
 ### <a name="resolution"></a>解决方法
 设置 IoT Edge 守护程序的注册表项。 创建包含以下内容的 **iotedge.reg** 文件，再双击该文件或使用 `reg import iotedge.reg` 命令将其导入到 Windows 注册表中：
@@ -320,14 +320,14 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 ```
 
 ### <a name="root-cause"></a>根本原因
-出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建议的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
+出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建立的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
 
 ### <a name="resolution"></a>解决方法
-确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 edgeHub 发送消息。 例如，确保在 Docker 文件中指定 `ENTRYPOINT` 而不是 `CMD` 命令，因为 `CMD` 会导致模块的一个进程 ID 和 bash 命令的另一个进程 ID 运行主程序，而 `ENTRYPOINT` 会导致生成单个进程 ID。
+确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，确保在 Docker 文件中指定 `ENTRYPOINT` 而不是 `CMD` 命令，因为 `CMD` 会导致模块使用一个进程 ID、运行主程序的 bash 命令使用另一个进程 ID，而 `ENTRYPOINT` 则导致生成单个进程 ID。
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge 部署的防火墙和端口配置规则
-Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 服务器来与 Azure 云通信，具体请参阅[选择通信协议](../iot-hub/iot-hub-devguide-protocols.md)。 为增强安全性，Azure IoT Edge 与 Azure IoT 中心之间的信道始终配置为出站；这种通信基于[服务辅助的通信模式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)，最大程度地减少了恶意实体可浏览的受攻击面。 仅当具体方案中的 Azure IoT 中心需将消息推送到 Azure IoT Edge 服务器时（例如，云到设备的消息传送），才需要进行入站通信。这种通信可以再次使用安全 TLS 通道进行保护，并可以使用 X.509 证书和 TPM 设备模块进一步进行保护。 Azure IoT Edge 安全管理器控制这种通信的建立方式，具体请参阅 [IoT Edge 安全管理器](../iot-edge/iot-edge-security-manager.md)。
+Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 服务器来与 Azure 云通信，具体请参阅[选择通信协议](../iot-hub/iot-hub-devguide-protocols.md)。 为了增强安全性，Azure IoT Edge 与 Azure IoT 中心之间的信道始终配置为出站。 此配置基于[服务辅助通信模式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)，可最大限度地减少恶意实体可探知的攻击面。 入站通信仅在特定情况下需要，其中 Azure IoT 中心需要将消息推送到 Azure IoT Edge 设备。 使用安全的 TLS 通道来保护云到设备的消息，并且可以使用 X.509 证书和 TPM 设备模块来增强其保护。 Azure IoT Edge 安全管理器控制这种通信的建立方式，具体请参阅 [IoT Edge 安全管理器](../iot-edge/iot-edge-security-manager.md)。
 
 IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保设置适当的网络和防火墙规则来保护 Edge 与云之间的通信。 为托管 Azure IoT Edge 运行时的底层服务器配置防火墙规则时，可参考以下指导内容：
 
@@ -335,11 +335,9 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 |--|--|--|--|--|
 |MQTT|8883|阻止（默认）|阻止（默认）|<ul> <li>使用 MQTT 作为通信协议时，请将传出（出站）端口配置为“打开”。<li>IoT Edge 不支持将端口 1883 用于 MQTT。 <li>应阻止传入（入站）连接。</ul>|
 |AMQP|5671|阻止（默认）|打开（默认）|<ul> <li>IoT Edge 的默认通信协议。 <li> 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须将此端口配置为“打开”。<li>IoT Edge 不支持将端口 5672 用于 AMQP。<li>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。<li>应阻止传入（入站）连接。</ul></ul>|
-|HTTPS|443|阻止（默认）|打开（默认）|<ul> <li>将传出（出站）连接配置为在端口 443 上打开，以进行 IoT Edge 预配，使用手动脚本或Azure IoT 设备预配服务 (DPS) 时必须这样做。 <li>只应针对特定的方案打开传入（入站）连接： <ul> <li>  如果透明网关中的叶设备可能发送方法请求。 在这种情况下，无需向外部网络打开端口 443，即可连接到 IoT 中心或通过 Azure IoT Edge 提供 IoT 中心服务。 因此，传入规则可限制为只能从内部网络打开传入（入站）连接。 <li> 适用于客户端到设备 (C2D) 的方案。</ul><li>IoT Edge 不支持将端口 80 用于 HTTP。<li>如果无法在企业中配置非 HTTP 协议（例如 AMQP、MQTT），可通过 WebSocket 发送消息。 将这种情况下，将使用端口 443 进行 WebSocket 通信。</ul>|
+|HTTPS|443|阻止（默认）|打开（默认）|<ul> <li>将传出（出站）配置为在 443 上打开以进行 IoT Edge 预配。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。 <li>只应针对特定的方案打开传入（入站）连接： <ul> <li>  如果透明网关中的叶设备可能发送方法请求。 在这种情况下，无需向外部网络打开端口 443，即可连接到 IoT 中心或通过 Azure IoT Edge 提供 IoT 中心服务。 因此，传入规则可限制为只能从内部网络打开传入（入站）连接。 <li> 适用于客户端到设备 (C2D) 的方案。</ul><li>IoT Edge 不支持将端口 80 用于 HTTP。<li>如果无法在企业中配置非 HTTP 协议（例如 AMQP 或 MQTT），消息可通过 WebSocket 发送。 将这种情况下，将使用端口 443 进行 WebSocket 通信。</ul>|
 
 
 ## <a name="next-steps"></a>后续步骤
-认为在 IoT Edge 平台中发现了 bug？ 请[提交问题](https://github.com/Azure/iotedge/issues)以便我们可以持续改进。 
+认为在 IoT Edge 平台中发现了 bug？ [提交问题](https://github.com/Azure/iotedge/issues)，以便我们可以持续改进。 
 
-<!-- Images -->
-[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

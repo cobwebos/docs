@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415247"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006492"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 
@@ -58,7 +58,7 @@ Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据
 3. 在 Log Analytics 工作区列表中选择一个工作区。
 4. 在左窗格的列表中，选择“使用情况和预估成本”。
 5. 在“使用情况和预估成本”仪表板中，可以通过选择“时间: 过去 24 小时”来修改时间范围，对时间间隔进行更改。<br><br> ![时间间隔](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。<br><br> ![示例数据使用量 kpi](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-queries.md)”中查看更多详细信息。<br><br> ![示例数据使用量 kpi](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. 在“日志搜索”仪表板中，查看搜索返回的结果。<br><br> ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>当数据收集量高于预期时创建警报
@@ -78,7 +78,7 @@ Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnost
 
 若要针对其他数据量发出警报，请在查询中将 100 更改为要发出警报的 GB 数。
 
-执行[创建新的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中介绍的步骤，当数据收集量超出预期时，系统就会发出通知。
+执行[创建新的日志警报](../monitoring-and-diagnostics/alert-metric.md)中介绍的步骤，当数据收集量超出预期时，系统就会发出通知。
 
 为第一个查询创建警报时，如果 24 小时内的数据超出 100 GB，则请进行如下设置：  
 
@@ -163,19 +163,19 @@ Azure 警报支持使用搜索查询的[日志警报](../monitoring-and-diagnost
 | 事件日志                 | 更改[事件日志配置](log-analytics-data-sources-windows-events.md)如下： <br> - 减少收集的事件日志数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”级别事件 |
 | Syslog                     | 更改 [syslog 配置](log-analytics-data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |
 | AzureDiagnostics           | 更改资源日志集合，以便： <br> - 减少到 Log Analytics 的资源发送日志的数目 <br> - 仅收集必需的日志 |
-| 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。 |
+| 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../monitoring/monitoring-solution-targeting.md)，只从必需的计算机组收集数据。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>查看节点数是否超出预期
 如果你位于“按节点(Log Analytics)”定价层，则根据所用节点和解决方案数收费。 可以在使用情况仪表板的产品/服务部分中查看使用了每项产品的多少个节点。<br><br> ![使用情况仪表板](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 单击“全部查看...”，查看为所选产品/服务发送数据的计算机的完整列表。
 
-使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
+使用[解决方案目标](../monitoring/monitoring-solution-targeting.md)，只从必需的计算机组收集数据。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
-* 执行[创建新的日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中介绍的步骤，当满足搜索条件时，系统就会通知你。
-* 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
+* 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-queries.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
+* 执行[创建新的日志警报](../monitoring-and-diagnostics/alert-metric.md)中介绍的步骤，当满足搜索条件时，系统就会通知你。
+* 使用[解决方案目标](../monitoring/monitoring-solution-targeting.md)，只从必需的计算机组收集数据。
 * 若要配置有效的安全事件收集策略，请参阅 [Azure 安全中心筛选策略](../security-center/security-center-enable-data-collection.md)。
 * 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)。
 * 若要修改事件收集设置，请参阅[事件日志配置](log-analytics-data-sources-windows-events.md)。

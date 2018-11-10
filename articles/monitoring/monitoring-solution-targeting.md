@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1aaa753c91a324621dc66fab23e5fed3a9d11d01
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887397"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912759"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>设定 Azure 中管理解决方案的目标（预览）
 向订阅添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用“解决方案目标”，这是一种允许向解决方案界定一个范围的功能。
@@ -74,5 +74,5 @@ ms.locfileid: "33887397"
 - 代理运行状况评估
 
 ## <a name="next-steps"></a>后续步骤
-- 参阅[将 Azure Log Analytics 管理解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)，了解有关管理解决方案的详细信息，包括可以在环境中安装的解决方案。
+- 参阅[将 Azure Log Analytics 管理解决方案添加到工作区](monitoring-solutions.md)，了解有关管理解决方案的详细信息，包括可以在环境中安装的解决方案。
 - 参阅 [Log Analytics 日志搜索中的计算机组](../log-analytics/log-analytics-computer-groups.md)，了解有关创建计算机组的详细信息。

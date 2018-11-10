@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023196"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227852"
 ---
 # <a name="what-is-bing-news-search"></a>什么是必应新闻搜索？
 
@@ -45,7 +45,7 @@ Host: api.cognitive.microsoft.com
 
 如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。
 
-若要从特定的域获取新闻，请使用 [site:](http://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
+若要从特定的域获取新闻，请使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1

@@ -1,5 +1,5 @@
 ---
-title: 生成适用于 Azure Cosmos DB 的 Node.js Web 应用 | Microsoft Docs
+title: 使用 JavaScript SDK 生成 Node.js Web 应用以管理 Azure Cosmos DB SQL API 数据 | Microsoft Docs
 description: 此 Node.js 教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。
 services: cosmos-db
 author: SnehaGunda
@@ -9,14 +9,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 82711ea96f6b3f8544a411ed1b6636c8473ed7e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c99b7d1ef774e20a49564db269555bab95789a3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957340"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741771"
 ---
-# <a name="_Toc395783175"></a>使用 JavaScript SDK 生成 Node.js Web 应用，以管理 Azure Cosmos DB SQL API 数据
+# <a name="tutorial-build-a-nodejs-web-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用以管理 Azure Cosmos DB SQL API 数据
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -26,27 +26,33 @@ ms.locfileid: "46957340"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
-本 Node.js 教程介绍了如何使用 Azure Cosmos DB SQL API 帐户，通过在 Azure 网站上托管的 Node.js Express 应用程序存储和访问数据。 在本教程中，需生成一个简单的基于 Web 的应用程序（待办事项应用），用于创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 下图显示待办事项应用程序的屏幕快照：
-
-![在本 Node.js 教程中创建的 My Todo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-mytodo.png)
+本 Node.js 教程介绍了如何使用在 Azure 网站上托管的 Node.js Express 应用程序，通过 Azure Cosmos DB SQL API 帐户存储和访问数据。 在本教程中，需生成一个基于 Web 的应用程序（待办事项应用）来创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 
 
 本教程演示如何使用 Azure 门户创建 Azure Cosmos DB SQL API 帐户， 然后生成并运行一个基于 Node.js SDK 的 Web 应用，以便创建数据库和容器并向容器添加项。 本教程使用 JavaScript SDK 版本 2.0。
 
-也可从 [GitHub][GitHub] 获取完成的示例。 只需读取[自述](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md)文件，了解如何运行该应用。
+也可从 [GitHub][GitHub] 获取完成的示例，然后查看[自述](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md)文件来了解如何运行应用。
+
+本教程涵盖以下任务：
+
+> [!div class="checklist"]
+> * 创建 Azure Cosmos DB 帐户
+> * 创建新的 Node.js 应用程序
+> * 将应用程序连接到 Azure Cosmos DB
+> * 运行应用程序并将其部署到 Azure
 
 ## <a name="_Toc395783176"></a>先决条件
 
-在按照本文中的说明操作之前，应确保已拥有下列项：
+在按照本文中的说明操作之前，请确保具备以下资源：
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Node.js][Node.js] 6.10 或更高版本。
-* [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
-* [Git][Git]。
+* [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装 Express）
+* 在本地工作站上安装 [Git][Git]。
 
-## <a name="_Toc395637761"></a>步骤 1：创建 Azure Cosmos DB 数据库帐户
+## <a name="_Toc395637761"></a>步骤 1：创建 Azure Cosmos DB 帐户
 让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -57,33 +63,37 @@ ms.locfileid: "46957340"
 现在让我们来了解如何使用 [Express](http://expressjs.com/) 框架创建基本的 Hello World Node.js 项目。
 
 1. 打开最喜欢的终端，如 Node.js 命令提示符。
-2. 导航到要在其中存储新应用程序的目录。
-3. 使用 Express 生成器生成名叫 **todo**的新应用程序。
+
+1. 导航到要在其中存储新应用程序的目录。
+
+1. 使用 Express 生成器生成名叫 **todo**的新应用程序。
 
    ```bash
    express todo
    ```
-4. 打开新的 **todo** 目录并安装依赖项。
+
+1. 打开 **todo** 目录并安装依赖项。
 
    ```bash
    cd todo
    npm install
    ```
-5. 运行新应用程序。
+
+1. 运行新应用程序。
 
    ```bash
    npm start
    ```
 
-6. 在浏览器中导航到 [http://localhost:3000](http://localhost:3000) 即可查看新应用程序。
+1. 在浏览器中导航到 [http://localhost:3000](http://localhost:3000) 即可查看新应用程序。
    
-    ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
- 停止应用程序的方法是先在终端窗口中按 CTRL+C，然后单击“y”终止批处理作业。
+ 停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
 
 ## <a name="_Toc395783179"></a>步骤 3：安装所需的模块
 
-**package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 稍后，在将此应用程序部署到 Azure 网站时，使用此文件以确定需要在 Azure 上安装哪些模块来支持应用程序。 需要为本教程再安装两个包。
+**package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 在将此应用程序部署到 Azure 时，请使用此文件以确定应该在 Azure 上安装哪些模块来支持应用程序。 为本教程再安装两个包。
 
 1. 打开终端，通过 npm 安装 **async** 模块。
 
@@ -97,7 +107,7 @@ ms.locfileid: "46957340"
    npm install @azure/cosmos
    ```
 
-## <a name="_Toc395783180"></a>步骤 4：在 Node 应用程序中使用 Azure Cosmos DB 服务
+## <a name="_Toc395783180"></a>步骤 4：将 Node.js 应用程序连接到 Azure Cosmos DB
 完成初始安装和配置以后，下一步是编写待办事项应用程序与 Azure Cosmos DB 通信所需的代码。
 
 ### <a name="create-the-model"></a>创建模型
@@ -185,7 +195,7 @@ ms.locfileid: "46957340"
 
 1. 在项目的 **routes** 目录中，创建一个名为 **tasklist.js** 的新文件。  
 
-2. 将以下代码添加到 **tasklist.js**。 这会加载 **tasklist.js** 使用的 CosmosClient 和 async 模块， 并定义 **TaskList** 类，该类作为我们之前定义的 **TaskDao** 对象的一个实例来传递：
+2. 将以下代码添加到 **tasklist.js**。 此代码会加载 **tasklist.js** 使用的 CosmosClient 和 async 模块， 并定义 **TaskList** 类，该类作为我们之前定义的 **TaskDao** 对象的一个实例来传递：
    
    ```nodejs
    const TaskDao = require("../models/TaskDao");
@@ -272,9 +282,10 @@ ms.locfileid: "46957340"
 4. 保存并关闭 **config.js** 文件。
 
 ### <a name="modify-appjs"></a>修改 app.js
+
 1. 在项目目录中，打开 **app.js** 文件。 此文件早于 Express Web 应用程序创建。  
 
-2. 将以下代码添加到 **app.js** 文件。 此代码定义要使用的配置文件，并继续将该文件中的值读取到我们不久要使用的某些变量中。 
+2. 将以下代码添加到 **app.js** 文件。 此代码定义要使用的配置文件，并将值加载到将要在后续部分使用的某些变量中。 
    
    ```nodejs
    const CosmosClient = require("@azure/cosmos").CosmosClient;
@@ -347,12 +358,13 @@ ms.locfileid: "46957340"
    module.exports = app;
    ```
 
-3. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
+3. 最后，保存并关闭 **app.js** 文件。
 
 ## <a name="_Toc395783181"></a>步骤 5：生成用户界面
-现在让我们把注意力转向构建用户界面，因此用户可以与我们的应用程序进行切实的交互。 我们创建的 Express 应用程序使用 **Jade** 作为视图引擎。 有关详细信息，请参阅 [http://jade-lang.com/](http://jade-lang.com/)。
 
-1. **views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。 在此步骤中，将对其进行修改以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个可以轻松设计美观网站的工具包）。  
+现在让我们生成用户界面，使用户能够与应用程序交互。 我们在前述部分创建的 Express 应用程序使用 **Jade** 作为视图引擎。 有关 Jade 的详细信息，请参阅 [Jade 语言](http://jade-lang.com/)。
+
+1. **views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。 在此步骤中，将对其进行修改，让其使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个用于设计网站的工具包）。  
 
 2. 打开 **views** 文件夹中的 **layout.jade** 文件，将内容替换为以下代码：
 
@@ -372,9 +384,7 @@ ms.locfileid: "46957340"
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    这会有效告知 **Jade** 引擎来为应用程序呈现某些 HTML，并创建名为 **content** 的**块**，我们可在其中提供内容页面的布局。
-
-    保存并关闭此 **layout.jade** 文件。
+    此代码会告知 **Jade** 引擎为应用程序呈现某些 HTML，并创建名为 **content** 的**块**，这样我们就可以在其中提供内容页面的布局。 保存并关闭 **layout.jade** 文件。
 
 3. 现在打开 **index.jade** 文件（应用程序将要使用的视图），并将文件内容替换为以下代码：
 
@@ -420,52 +430,58 @@ ms.locfileid: "46957340"
           button.btn(type="submit") Add item
    ```
 
-这会扩展布局，并为我们先前在 **layout.jade** 文件中看到的 **content** 占位符提供内容。
-   
-在此布局中，我们创建了两个 HTML 窗体。
+此代码会扩展布局，并为我们先前在 **layout.jade** 文件中看到的 **content** 占位符提供内容。 在此布局中，我们创建了两个 HTML 窗体。
 
-第一个窗体中的表包含我们的数据和按钮，该按钮允许我们通过将内容发布到控制器的 **/completeTask** 方法来更新项。
+第一个窗体中的表包含数据和按钮，可以通过该按钮将内容发布到控制器的 **/completeTask** 方法，以便更新项。
     
-第二个窗体包含两个输入字段和一个按钮，该按钮允许我们通过发布控制器的 **/addtask** 方法来新建项。
-
-这应该是应用程序工作所需的所有内容了。
+第二个窗体包含两个输入字段和一个按钮，可以通过该按钮将内容发布到控制器的 **/addtask** 方法，以便新建项。 这是运行应用程序所需的一切。
 
 ## <a name="_Toc395783181"></a>步骤 6：在本地运行应用程序
-1. 要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，并刷新 [http://localhost:3000](http://localhost:3000) 浏览页。 该页此时看起来应如下图所示：
+
+1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 [http://localhost:3000](http://localhost:3000) 浏览器页。 该页现在应该如以下屏幕截图所示：
    
     ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 
     > [!TIP]
     > 如果收到有关 layout.jade 文件或 index.jade 文件的缩进错误，请确保这两个文件中的头两行都已经左对齐，没有空格。 如果头两行之前留有空格，请删除这些空格，将这两个文件保存，然后刷新浏览器窗口。 
 
-2. 使用“项”、“项名”和“类别”字段输入新任务，并单击“添加项”。 这会在 Azure Cosmos DB 中创建具有这些属性的文档。 
+2. 使用“项”、“项名”和“类别”字段输入新任务，然后选择“添加项”。 此时会在 Azure Cosmos DB 中创建具有这些属性的文档。 
+
 3. 页面应更新为在 ToDo 列表中显示新建项。
    
     ![ToDo 列表中具有新的项的应用程序屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
-4. 要完成任务，只需选中“完成”列中的复选框，并单击“更新任务” 。 这将更新已创建的文档并将其从视图中删除。
 
-5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
+4. 若要完成任务，请选中“完成”列中的复选框，然后选择“更新任务”。 此时会更新已创建的文档并将其从视图中删除。
 
-## <a name="_Toc395783182"></a>步骤 7：将应用程序开发项目部署到 Azure 网站
-1. 如果尚未部署，则启用 Azure 网站的 git 存储库。 可以在 [Local Git Deployment to Azure 应用服务](../app-service/app-service-deploy-local-git.md) （从本地 GIT 部署到 Azure 应用服务）主题中找到如何执行此操作的说明。
+5. 若要停止应用程序，请在终端窗口中按 CTRL+C，然后选择“Y”以终止批处理作业。
+
+## <a name="_Toc395783182"></a>步骤 7：将应用程序部署到 Azure 网站
+
+1. 启用 Azure 网站的 git 存储库（如果尚未启用）。 可以在[从本地 Git 部署到 Azure 应用服务](../app-service/app-service-deploy-local-git.md)主题中找到如何启用 git 存储库的说明。
+
 2. 将 Azure 网站添加为 git 远程。
    
-        git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
-3. 通过推送到远程进行部署。
+   ```bash
+   git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
+   ```
+
+3. 通过将应用程序推送到远程群集来部署应用程序。
    
-        git push azure master
-4. 在几秒钟内，git 将完成 Web 应用程序发布并启动浏览器，从中可查看在 Azure 中运行的简单作品！
+   ```bash
+   git push azure master
+   ```
 
-    祝贺你！ 刚才构建了第一个使用 Azure Cosmos DB 的 Node.js Express Web 应用程序并将其发布到了 Azure 网站。
+4. 几秒钟后，Web 应用程序就会发布完毕并在浏览器中启动。
 
-    若需下载或参考本教程的完整参考应用程序，可从 [GitHub][GitHub] 下载。
+若需下载或参考本教程的完整参考应用程序，可从 [GitHub][GitHub] 下载。
 
 ## <a name="_Toc395637775"></a>后续步骤
 
-* 希望使用 Azure Cosmos DB 执行规模和性能测试？ 请参阅[使用 Azure Cosmos DB 执行规模和性能测试](performance-testing.md)
-* 了解如何[监视 Azure Cosmos DB 帐户](monitor-accounts.md)。
-* 在 [Query Playground](https://www.documentdb.com/sql/demo)中对示例数据集运行查询。
-* 浏览 [Azure Cosmos DB 文档](https://docs.microsoft.com/azure/cosmos-db/)。
+本教程介绍了如何使用 JavaScript SDK 生成 Node.js Web 应用以管理 Azure Cosmos DB SQL API 数据。 你现在可以继续学习下一篇文章：
+
+> [!div class="nextstepaction"]
+> [使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序](mobile-apps-with-xamarin.md)
+
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/

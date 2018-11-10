@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6e587f79f0f77446ea5a61cbb989f3f1c3655e0a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741753"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005047"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>在 Azure Monitor 中分析 Log Analytics 数据
 
@@ -32,7 +32,7 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工
 
 ## <a name="log-queries"></a>日志查询
 
-你需要执行日志查询来检索来自 Log Analytics 的任何数据。  无论是要[在门户中分析数据](log-analytics-log-search-portals.md)、[配置警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)以在特定条件下发出通知，还是要使用 [Log Analytics API](https://dev.loganalytics.io/) 检索数据，都需要使用查询来指定所需数据。  本文介绍了日志查询在 Log Analytics 中的用法以及创建查询之前应了解的概念。
+你需要执行日志查询来检索来自 Log Analytics 的任何数据。  无论是要[在门户中分析数据](log-analytics-log-search-portals.md)、[配置警报规则](../monitoring-and-diagnostics/alert-metric.md)以在特定条件下发出通知，还是要使用 [Log Analytics API](https://dev.loganalytics.io/) 检索数据，都需要使用查询来指定所需数据。  本文介绍了日志查询在 Log Analytics 中的用法以及创建查询之前应了解的概念。
 
 
 
@@ -41,12 +41,12 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工
 在 Log Analytics 中使用查询的方式包括以下几种：
 
 - **门户。** 可以在 [Azure 门户](log-analytics-log-search-portals.md)中对日志数据执行交互式分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  
-- **警报规则。** [警报规则](log-analytics-alerts.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
+- **警报规则。** [警报规则](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
 - **仪表板。** 可以将任何查询的结果固定到 [Azure 仪表板]()，这使得你可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。 
 - **视图。**  可以使用[视图设计器](log-analytics-view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志查询提供每个视图中[磁贴](log-analytics-view-designer-tiles.md)和[可视化部件](log-analytics-view-designer-parts.md)使用的数据。  
 - **导出。**  将数据从 Log Analytics 工作区导入到 Excel 或 [Power BI](log-analytics-powerbi.md) 中时，你将创建日志查询来定义要导出的数据。
 - **PowerShell。** 可从命令行运行 PowerShell 脚本或运行使用 [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) 的 Azure 自动化 runbook，从 Log Analytics 中检索数据。  此 cmdlet 需要一个查询来确定要检索的数据。
-- **Log Analytics API。**  [Log Analytics 日志搜索 API](log-analytics-log-search-api.md) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Log Analytics 运行的查询，用于确定要检索的数据。
+- **Log Analytics API。**  [Log Analytics 日志搜索 API](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Log Analytics 运行的查询，用于确定要检索的数据。
 
 ![日志搜索](media/log-analytics-queries/queries-overview.png)
 

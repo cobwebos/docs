@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638186"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914084"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
     * 通过 Azure AD Connect 同步到 Azure AD。
     * 包含你想要为其启用无缝 SSO 的用户。
     
-* **启用新式身份验证**：需要在租户上启用[新式身份验证](https://aka.ms/modernauthga)，此功能才有效。
+* **启用新式身份验证**：需要在租户上启用[新式身份验证](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)，此功能才有效。
 
 * **使用最新版本的 Office 365 客户端**：若要获取 Office 365 客户端的无提示登录体验，你的用户需要使用 16.0.8730.xxxx 或更高版本。
 

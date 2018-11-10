@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: a1e90f946508f1ffc0a1ee812dde46ee733d715a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ac1956987b224417dde56014200add6cabb0e1df
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392425"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227427"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure 门户或 Azure 帐户中心的“找不到任何订阅”错误
 
@@ -55,4 +55,4 @@ ms.locfileid: "47392425"
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
-如果仍需帮助，请[联系支持人员](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以快速解决问题。 
+如果仍需帮助，请[联系支持人员](https://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以快速解决问题。 

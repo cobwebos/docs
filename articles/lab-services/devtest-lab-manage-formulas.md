@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7a68f545f60829e5da83f0734c57a4d210cb843
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 47699925f057aab25fe6f7c1c7d0b0620e7e4dbe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001475"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227988"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -38,7 +38,7 @@ ms.locfileid: "39001475"
 ### <a name="create-a-formula-from-a-base"></a>从基项创建公式
 以下步骤介绍从自定义映像、市场映像或其他公式创建公式的过程。
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
@@ -86,7 +86,7 @@ ms.locfileid: "39001475"
 > 
 > 
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的“概述”边栏选项卡上，选择要从中创建公式的 VM。
@@ -103,7 +103,7 @@ ms.locfileid: "39001475"
 ## <a name="modify-a-formula"></a>修改公式
 若要修改公式，请按照下列步骤操作：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
@@ -115,7 +115,7 @@ ms.locfileid: "39001475"
 ## <a name="delete-a-formula"></a>删除公式
 若要删除公式，请按照下列步骤操作：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室“设置”边栏选项卡上，选择“公式”。
