@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 21e280740d5d7f467ee70952febf858e0dc0b89d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887457"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278202"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
 > 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。  
 
-Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-manager/resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
+Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
 
 
 ## <a name="tools"></a>工具
@@ -34,7 +34,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 可使用任何文本编辑器处理解决方案文件，但我们建议利用 Visual Studio 或 Visual Studio Code 提供的功能，如以下文章中所述。
 
 - [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [在 Visual Studio Code 中使用 Azure 资源管理器模板](../azure-resource-manager/resource-manager-vs-code.md)
+- [在 Visual Studio Code 中使用 Azure 资源管理器模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -54,7 +54,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 ## <a name="parameters"></a>parameters
 [parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
-用户通过 Azure Marketplace 或 Azure 快速入门模板[安装管理解决方案](monitoring-solutions.md#install-a-management-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](monitoring-solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](monitoring-solutions.md#install-a-management-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](monitoring-solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
 
 
 下面显示了一个示例参数。  
@@ -69,7 +69,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 
 下表描述了参数属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -77,14 +77,14 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 | description |参数的可选说明。  显示在参数旁边信息气球。 |
 
 ### <a name="standard-parameters"></a>标准参数
-下表列出了所有管理解决方案的标准参数。  从 Azure Marketplace 或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
+下表列出了所有管理解决方案的标准参数。  从 Azure 市场或快速入门模板安装解决方案时，这些值用于为用户进行填充而不是提示他们。  如果使用其他方法安装解决方案，则用户必须为其提供值。
 
 > [!NOTE]
-> Azure Marketplace 和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
+> Azure 市场和快速入门模板中的用户界面正在等待表中的参数名称。  如果使用不同的参数名称，则将对用户进行提示，这些参数不会自动填充。
 >
 >
 
-| 参数 | Type | 说明 |
+| 参数 | 类型 | Description |
 |:--- |:--- |:--- |
 | accountName |字符串 |Azure 自动化帐户名称。 |
 | pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
@@ -212,7 +212,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 窗体中 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
@@ -223,7 +223,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-ma
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | 名称 |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |

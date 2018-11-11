@@ -3,7 +3,7 @@ title: 使用 Azure 事件网格自动调整上传图像的大小 | Microsoft �
 description: Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 services: event-grid, functions
 author: ggailey777
-manager: cfowler
+manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585571"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282490"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
 
@@ -58,7 +58,7 @@ az provider register --namespace Microsoft.EventGrid
 
 如果选择在本地安装并使用 CLI，本教程要求使用 Azure CLI 2.0.14 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
-如果不使用云 Shell，则必须先使用 `az login` 登录。
+如果不使用 Cloud Shell，必须先使用 `az login` 进行登录。
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -158,19 +158,18 @@ az functionapp deployment source config --name <function_app> \
 
 3. 使用表中指定的事件订阅设置。
     
-    ![基于 Azure 门户中的函数创建事件订阅](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
+    ![基于 Azure 门户中的函数创建事件订阅](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | 设置      | 建议的值  | 说明                                        |
+    | 设置      | 建议的值  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | imageresizersub | 标识新事件订阅的名称。 | 
     | 主题类型 |  存储帐户 | 选择存储帐户事件提供程序。 | 
     | **订阅** | Azure 订阅 | 默认情况下，选择当前的 Azure 订阅。   |
     | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。  |
-    | **实例** |  你的 Blob 存储帐户 |  使用你创建 Blob 存储帐户。 |
+    | **资源** |  你的 Blob 存储帐户 |  使用你创建 Blob 存储帐户。 |
     | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
-    | **订阅者类型** |  Web 挂钩 |  选项为“Web 挂钩”或“事件中心”。 |
+    | **订阅者类型** |  自动生成 |  预定义为 Webhook。 |
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
-    | 前缀筛选器 | /blobServices/default/containers/images/blobs/ | 仅筛选图像容器上的那些存储事件。| 
+    | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
 
 4. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
 

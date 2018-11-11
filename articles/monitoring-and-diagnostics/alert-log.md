@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419361"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279088"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报  
 
@@ -57,7 +57,7 @@ ms.locfileid: "50419361"
 
    > [!NOTE]
 
-   > 警报列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图所示。 这样用户便能够在 Analytics 中完善查询，然后保存这些查询供将来在警报中使用 - 有关使用保存的查询的详细信息，请参阅[在 Log Analytics 中使用日志搜索](../log-analytics/log-analytics-log-searches.md)或 [Application Insights Analytics 中的共享查询](../log-analytics/log-analytics-overview.md)。 
+   > 警报列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图所示。 这样用户便能够在 Analytics 中完善查询，然后保存这些查询供将来在警报中使用 - 有关使用保存的查询的详细信息，请参阅[在 Log Analytics 中使用日志搜索](../log-analytics/log-analytics-queries.md)或 [Application Insights Analytics 中的共享查询](../log-analytics/log-analytics-queries.md)。 
 
 1.  *日志警报*：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
@@ -132,7 +132,7 @@ ms.locfileid: "50419361"
 ### <a name="azure-resource-template-for-log-analytics"></a>适用于 Log Analytics 的 Azure 资源模板
 通过警报规则创建 Log Analytics 的日志警报，该规则按固定时间间隔运行保存的搜索。 如果查询结果与指定的条件相符，则会创建一个警报记录且会运行一个或多个操作。 
 
-文档的 Log Analytics 部分提供了 Log Analytics 保存搜索和 Log Analytics 警报的资源模板。 若要了解详细信息，请参阅[添加 Log Analytics 保存搜索和警报](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)，其中包括说明性的示例和架构详细信息。
+文档的 Log Analytics 部分提供了 Log Analytics 保存搜索和 Log Analytics 警报的资源模板。 若要了解详细信息，请参阅[添加 Log Analytics 保存搜索和警报](../monitoring/monitoring-solutions-resources-searches-alerts.md)，其中包括说明性的示例和架构详细信息。
 
 ### <a name="azure-resource-template-for-application-insights"></a>适用于 Application Insights 的 Azure 资源模板
 Application Insights 资源的日志警报的一种类型为 `Microsoft.Insights/scheduledQueryRules/`。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。
@@ -246,5 +246,5 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 * 了解 [Azure 警报中的日志警报](monitor-alerts-unified-log.md)
 * 了解[用于日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)
-* 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。 
+* 详细了解 [Log Analytics](../log-analytics/log-analytics-queries.md)。 
 

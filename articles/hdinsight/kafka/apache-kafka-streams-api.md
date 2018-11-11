@@ -3,18 +3,18 @@ title: '教程：使用 Apache Kafka Streams API - Azure HDInsight '
 description: 了解如何将 Apache Kafka Streams API 与 Kafka on HDInsight 配合使用。 此 API 允许在 Kafka 中的主题之间执行流处理。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/17/2018
-ms.openlocfilehash: f50e61f4acbdc33cee1786f68cf44252a8f29741
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/06/2018
+ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417406"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278695"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>教程：Apache Kafka Streams API
 
@@ -84,7 +84,7 @@ ms.locfileid: "50417406"
 
 ### <a name="streamjava"></a>Stream.java
 
-`Stream.java` 文件使用 Streams API 实现字数统计应用程序。 它从名为 `test` 的 Kafka 主题读取数据，并将字数统计写到名为 `wordcounts` 的主题中。
+[Stream.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Streaming/src/main/java/com/microsoft/example/Stream.java) 文件使用 Streams API 实现字数统计应用程序。 它从名为 `test` 的 Kafka 主题读取数据，并将字数统计写到名为 `wordcounts` 的主题中。
 
 以下代码定义字数统计应用程序：
 
