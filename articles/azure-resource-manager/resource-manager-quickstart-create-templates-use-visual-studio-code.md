@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 092b6f2c3267a2c2cd2cc6304133134825bb7261
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458133"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230127"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -81,15 +81,15 @@ ms.locfileid: "49458133"
     }
     ```
 
-    如果在 Visual Studio Code 中复制并粘贴了代码，请尝试重新键入 **value** 元素，以体验资源管理器工具扩展的 intellisense 功能。
+    如果在 Visual Studio Code 中复制并粘贴了代码，请尝试重新键入 **value** 元素，以体验资源管理器工具扩展的 IntelliSense 功能。
 
-    ![资源管理器模板 - Visual Studio Code - intellisense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+    ![资源管理器模板 - Visual Studio Code - IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
 2. 选择“文件”>“保存”以保存文件。
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。 
+可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: d9ff0387a1d02eb5f4684048aeed8ad0079b28ef
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434409"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251315"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>使用 Ansible 在 Azure 中管理 Linux 虚拟机
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 管理 Azure 虚拟机，就像管理任何其他资源一样。 本文介绍如何使用 Ansible playbook 启动和停止 Linux 虚拟机。 
@@ -27,7 +27,7 @@ ms.locfileid: "47434409"
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>使用 Ansible 解除分配（停止）Azure 虚拟机
 本部分演示如何使用 Ansible 解除分配（停止）Azure 虚拟机
 
-1.  登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1.  登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1.  打开 [Cloud Shell](/azure/cloud-shell/overview)。
 
@@ -85,7 +85,7 @@ ms.locfileid: "47434409"
 ## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>使用 Ansible 启动已解除分配（停止）的 Azure 虚拟机
 本部分演示如何使用 Ansible 启动已解除分配（停止）的 Azure 虚拟机
 
-1.  登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1.  登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1.  打开 [Cloud Shell](/azure/cloud-shell/overview)。
 

@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 将 AWS 中的 VM 迁移到 Azure | Microsoft Docs
+title: 使用 Azure Site Recovery 服务将 AWS VM 迁移到 Azure | Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中运行的 Windows VM 迁移到 Azure。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252133"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -119,7 +119,7 @@ ms.locfileid: "49078930"
 
 1. 使用运行 Windows Server 2012 R2 的 EC2 实例创建配置服务器，并将它注册到恢复保管库。
 2. 在用作配置服务器的 EC2 实例 VM 上配置代理，以便它可以访问[服务 URL](site-recovery-support-matrix-to-azure.md)。
-3. 下载 [Microsoft Azure Site Recovery 统一安装程序](http://aka.ms/unifiedinstaller_wus)。 可以将它下载到本地计算机，然后复制到用作配置服务器的 VM。
+3. 下载 [Microsoft Azure Site Recovery 统一安装程序](https://aka.ms/unifiedinstaller_wus)。 可以将它下载到本地计算机，然后复制到用作配置服务器的 VM。
 4. 选择“下载”按钮，下载保管库注册密钥。 将下载的文件复制到用作配置服务器的 VM。
 5. 在该 VM 上，右键单击为 Microsoft Azure Site Recovery 统一安装程序下载的安装程序，然后选择“以管理员身份运行”。
 

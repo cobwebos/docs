@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 896ec007c03e30e5c20a5344430be040271bc00b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 31efcb2b2f05bd7a49701be708a89db8f2ef26f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171136"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229691"
 ---
 # <a name="demo-virtual-reality-app-launcher"></a>演示：虚拟现实应用启动器
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171136"
 
 ## <a name="video"></a>视频
 
-[![演示 VR 应用预览](http://aka.ms/cl-demo-vrapp-preview)](http://aka.ms/blis-demo-vrapp)
+[![演示 VR 应用预览](https://aka.ms/cl-demo-vrapp-preview)](https://aka.ms/blis-demo-vrapp)
 
 ## <a name="requirements"></a>要求
 
@@ -65,7 +65,7 @@ ms.locfileid: "39171136"
 3. 单击选择“你想启动哪个应用?”
 4. 输入“outlook”。
     - LUIS 将其识别为实体。
-5. 单击“对操作打分”。
+5. 单击“Score Actions”。
 3. 单击以选择“想要把它置于哪个位置?”
 4. 输入“置于留言板上”。
     - LUIS 将其识别为 PlacementLocation。
@@ -85,10 +85,10 @@ ms.locfileid: "39171136"
     - 该模型将 OneNote 识别为应用名。 代码中定义的 `EntityDetectionCallback` 函数将用户输入的名称与代码中定义的应用列表进行匹配，从而将该名称解析为应用名。 然后，它返回一组所有匹配的应用。 
     - 如果匹配列表为零，则表示未安装该应用程序。 系统将其放入 unknownAppName。
     - 如果它找到多个应用，则会将它们复制到 `DisambigAppNames` 并清除 AppName 实体。
-2. 单击“对操作打分”。
+2. 单击“Score Action”。
 3. 单击以选择“抱歉，我不了解应用 $UknownAppName”。
 4. 输入“start Amazon”。 我们将尝试其他路径。
-5. 单击“对操作打分”。
+5. 单击“Score Actions”。
     - Amazon 视频和 Amazon 音乐现位于 `DisambigAppNames` 内存中，系统已清除 OneNote。
 3. 单击选择“有几个听起来类似...的应用”
     - 因为到目前为止我们只有一些定型对话，所以得分不是很高。 定义更多的定型对话会使模型更明确。

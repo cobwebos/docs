@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 2cd77ee6df52940a800733209b7e384d72d98103
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962124"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245352"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>快速入门：从 Azure Active Directory 中删除应用程序
 
@@ -39,7 +39,7 @@ ms.locfileid: "46962124"
 * 如果还没有租户，请[了解如何获取租户](quickstart-create-new-tenant.md)。
 * 若要了解如何将应用添加和注册到你的租户，请参阅[将应用添加到 Azure AD](quickstart-v1-integrate-apps-with-azure-ad.md)。
 
-## <a name="removing-an-application-authored-by-your-organization"></a>删除你的组织编写的应用程序
+## <a name="removing-an-application-authored-by-your-organization"></a>删除组织编写的应用程序
 
 你的组织已注册的应用程序显示在租户的“应用注册”主页上的“我的应用”筛选器下。 这些应用程序是通过 Azure 门户手动注册的，或者通过 PowerShell 或 Microsoft Graph API 以编程方式注册的。 更具体地说，这些应用程序是由租户中的应用程序与服务主体对象表示的。 有关这些对象的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "46962124"
 
 从技术上讲，这些多租户应用程序来自另一个租户，并已在许可过程中注册到你的租户。 更具体地说，它们仅由租户中的服务主体对象表示，没有相应的应用程序对象。 有关应用程序对象与服务主体对象之间的差别的详细信息，请参阅 [Azure AD 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
-若要删除多租户应用程序对目录的访问权限（在授予许可后），公司管理员必须删除该应用程序的服务主体。 管理员必须拥有全局管理员访问权限，并可以通过 Azure 门户或使用 [Azure AD PowerShell Cmdlet](http://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
+若要删除多租户应用程序对目录的访问权限（在授予许可后），公司管理员必须删除该应用程序的服务主体。 管理员必须拥有全局管理员访问权限，并可以通过 Azure 门户或使用 [Azure AD PowerShell Cmdlet](https://go.microsoft.com/fwlink/?LinkId=294151) 删除访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

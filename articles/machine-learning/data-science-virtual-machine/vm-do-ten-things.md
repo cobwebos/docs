@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395723"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250911"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -64,9 +64,9 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 ![PTVS 设置](./media/vm-do-ten-things/PTVSSetup.png)
 
-有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](http://aka.ms/ptvsdocs)。
+有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
 
-现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](http://aka.ms/ptvsdocs)。
+现在即可开始创建新的 Python 项目。 导航到“文件” -> “新建” -> “项目” -> “Python”，并选择要生成的 Python 应用程序的类型。 可以将当前项目的 Python 环境设置为所需版本（Python 2.7 或 3.6），方法是右键单击“Python 环境”，选择“添加/删除 Python 环境”，然后选择所需环境。 要详细了解如何使用 PTVS，请参阅产品[文档](https://aka.ms/ptvsdocs)。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.借助 Jupyter Notebook，可使用 Python 或 R 探索数据并建模
 Jupyter Notebook 是一个功能强大的环境，为数据探索和建模提供基于浏览器的“IDE”。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
@@ -806,7 +806,7 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 它允许使用 JSON 等文档�
 
 1. 已在 DSVM 上安装 Azure Cosmos DB Python SDK（从命令提示符运行 ```pip install pydocumentdb --upgrade``` 以更新）
 2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库
-3. 从[此处](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，并解压缩到所选目录
+3. 从[此处](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)下载“Azure Cosmos DB 迁移工具”，并解压缩到所选目录
 4. 使用迁移工具（安装 Cosmos DB 迁移工具所在目录中的 dtui.exe）的以下命令参数将[公共 blob](https://cahandson.blob.core.windows.net/samples/volcano.json) 上存储的 JSON 数据（火山数据）导入 Cosmos DB。 通过以下参数输入源和目标位置：
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

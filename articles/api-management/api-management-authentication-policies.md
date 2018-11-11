@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 4d13d9dbea9da9db5bfe9a9af85fdbf9eab1ae84
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 4c4c03fffa5786bf3a50f4d2c03511f0a2de0f48
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26127753"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250945"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
-本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
+本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
 
 ##  <a name="AuthenticationPolicies"></a>身份验证策略  
   
@@ -47,26 +47,26 @@ ms.locfileid: "26127753"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |authentication-basic|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |username|指定基本凭据的用户名。|是|不适用|  
 |password|指定基本凭据的密码。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** inbound  
   
 -   **策略范围：** API  
   
 ##  <a name="ClientCertificate"></a>使用客户端证书进行身份验证  
- 通过 `authentication-certificate` 策略使用客户端证书对后端服务进行身份验证。 需要首先将证书[安装到 API 管理](http://go.microsoft.com/fwlink/?LinkID=511599)，并由其指纹进行标识。  
+ 通过 `authentication-certificate` 策略使用客户端证书对后端服务进行身份验证。 需要首先将证书[安装到 API 管理](https://go.microsoft.com/fwlink/?LinkID=511599)，并由其指纹进行标识。  
   
 ### <a name="policy-statement"></a>策略语句  
   
@@ -82,18 +82,18 @@ ms.locfileid: "26127753"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|客户端证书的指纹。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** inbound  
   

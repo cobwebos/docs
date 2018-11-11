@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: eee9183321f21676271c8a9c7e023c80c4daf554
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7d42c026975a18c7574e4bc64ec28ab3ed0082bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915100"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248446"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>在 Azure 中将按需“突发”节点添加到 HPC Pack 群集
 如果在 Azure 中设置了 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，则可能希望有一种方法能够快速增加/减少群集容量，而无需维护一组预配置的计算节点 VM。 本文介绍了如何按需将“突发”节点（云服务中运行的辅助角色实例）作为计算资源添加到 Azure 中的头节点。 
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ![突发节点][burst]
@@ -68,7 +68,7 @@ ms.locfileid: "30915100"
 
 2. 单击“管理证书” > “上传”。
 
-有关配置管理证书的其他选项，请参阅[为 Azure 突发部署配置 Azure 管理证书的方案](http://technet.microsoft.com/library/gg481759.aspx)。
+有关配置管理证书的其他选项，请参阅[为 Azure 突发部署配置 Azure 管理证书的方案](https://technet.microsoft.com/library/gg481759.aspx)。
 
 ## <a name="step-3-deploy-azure-nodes-to-the-cluster"></a>步骤 3：向群集部署 Azure 节点
 本方案中添加和启动 Azure 节点的步骤通常与本地头节点中使用的步骤相同。 有关详细信息，请参阅[使用 Microsoft HPC Pack 部署 Azure 节点的步骤](https://technet.microsoft.com/library/gg481758.aspx)中的以下部分：
@@ -79,7 +79,7 @@ ms.locfileid: "30915100"
 
 添加和启动节点后，它们就已准备好用于运行群集作业。
 
-如果部署 Azure 节点时遇到问题，请参阅[排除使用 Microsoft HPC Pack 部署 Azure 节点时发生的故障](http://technet.microsoft.com/library/jj159097.aspx)。
+如果部署 Azure 节点时遇到问题，请参阅[排除使用 Microsoft HPC Pack 部署 Azure 节点时发生的故障](https://technet.microsoft.com/library/jj159097.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要对突发节点使用计算密集型实例大小，请参阅[高性能计算 VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的注意事项。

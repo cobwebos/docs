@@ -1,19 +1,19 @@
 ---
 title: 关于 Azure Site Recovery | Microsoft Docs
-description: 简要介绍 Azure Site Recovery 服务并概述讲解部署方案。
+description: 简要介绍 Azure Site Recovery 服务并概述灾难恢复和迁移部署方案。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 334b7aa3a3a174055c3741f20a4817063efd21f6
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: b03681e6205b7db24960c99a87a3c84c213884d2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456637"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240284"
 ---
 # <a name="about-site-recovery"></a>关于 Site Recovery
 
@@ -58,7 +58,7 @@ Site Recovery 可以为以下计算机管理复制：
 --- | ---
 **复制方案** | 将 Azure VM 从一个 Azure 区域复制到另一个 Azure 区域。<br/><br/>  将本地 VMware VM、Hyper-V VM、物理服务器（Windows 和 Linux）、Azure4 Stack VM 复制到 Azure。<br/><br/> 将本地 VMware VM、System Center VMM 托管的 Hyper-V VM 以及物理服务器复制到辅助站点。
 **区域** | 查看 Site Recovery [支持的区域](https://azure.microsoft.com/regions/services/)。 |
-复制的计算机 | 查看 [Azure VM](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions) 复制、[本地 VMware VM 和物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)以及[本地 Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 的复制要求。
+复制的计算机 | 查看 [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) 复制、[本地 VMware VM 和物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)以及[本地 Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 的复制要求。
 **工作负荷** | 可以在支持复制的计算机上复制运行的任何工作负荷。 另外，Site Recovery 团队已针对[多个应用](site-recovery-workload.md#workload-summary)执行特定于应用的测试。
 
 

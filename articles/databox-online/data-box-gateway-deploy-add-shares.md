@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 6220a794c10f43d562155adbad910694a233ec88
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166009"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249874"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>教程：使用 Azure Data Box Gateway（预览版）传输数据
 
@@ -146,6 +146,6 @@ ms.locfileid: "49166009"
 请继续学习下一教程，了解如何管理 Data Box Gateway。
 
 > [!div class="nextstepaction"]
-> [使用本地 Web UI 管理 Data Box Gateway](http://aka.ms/dbg-docs)
+> [使用本地 Web UI 管理 Data Box Gateway](https://aka.ms/dbg-docs)
 
 

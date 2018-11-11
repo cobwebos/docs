@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 78ec0e3ee4304e820bf64afa26440380887630a1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6330de2aa67fd83a5d4762c2c13d4916f642743d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250928"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正
 
@@ -29,7 +30,7 @@ ms.lasthandoff: 05/07/2018
 本文提供平滑流式处理清单中 HEVC 视频编解码器信号的技术实现要求；规范参考内容经过更新，参考了包括 HEVC、HEVC 通用加密在内的最新 MPEG 标准；ISO 基本媒体文件格式的框架名称经过更新，与最新规范保持一致。 
 
 参考的平滑流式处理协议规范 [MS-SSTR] 描述了通过以下方式传送实时和点播数字媒体（例如音频和视频）所用的在线格式：从编码器传送到 Web 服务器、从一台服务器传送到另一个服务器，以及从服务器传送到 HTTP 客户端。
-通过 HTTP 使用基于 MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=327787) 的数据结构传送方法能够在不同的压缩媒体内容质量级别之间近乎实时地无缝切换。 因此，即使客户端计算机或设备的网络和视频呈现条件发生变化，也能为 HTTP 客户端最终用户带来一致的播放体验。
+通过 HTTP 使用基于 MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) 的数据结构传送方法能够在不同的压缩媒体内容质量级别之间近乎实时地无缝切换。 因此，即使客户端计算机或设备的网络和视频呈现条件发生变化，也能为 HTTP 客户端最终用户带来一致的播放体验。
 
 ## <a name="11-glossary"></a>1.1 术语表 
 
@@ -39,23 +40,23 @@ ms.lasthandoff: 05/07/2018
 
 本文档专门使用了以下术语：
 
->  **构图时间：**在客户端呈现某个样本的时间，符合 [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) 中的定义。
+>  **构图时间：** 在客户端呈现某个样本的时间，符合 [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的定义。
 
 >   **CENC**：通用加密，符合 [ISO/IEC 23001-7] 第二版中的定义。
 
->   **解码时间：**在客户端解码某个样本所需的时间，符合 [[http://go.microsoft.com/fwlink/?LinkId=18369514496-12] 中的定义。](http://go.microsoft.com/fwlink/?LinkId=183695)
+>   **解码时间：** 在客户端解码某个样本所需的时间，符合 [[http://go.microsoft.com/fwlink/?LinkId=18369514496-12] 中的定义。](https://go.microsoft.com/fwlink/?LinkId=183695)
 
-**片段：**一个可单独下载的**媒体**单元，由一个或多个**样本**构成。
+**片段：** 一个可单独下载的**媒体**单元，由一个或多个**样本**构成。
 
->   **HEVC：**高效视频编码，符合 [ISO/IEC 23008-2] 中的定义
+>   **HEVC：** 高效视频编码，符合 [ISO/IEC 23008-2] 中的定义
 
->   **清单：**有关**呈现内容**的元数据，可让客户端发出**媒体**请求。 **媒体：**由客户端用来播放**呈现内容**的压缩音频、视频和文本数据。 **媒体格式：**以压缩**样本**形式呈现音频或视频时所用的妥善定义的格式。
+>   **清单：** 有关**呈现内容**的元数据，可让客户端发出**媒体**请求。 **媒体：** 由客户端用来播放**呈现内容**的压缩音频、视频和文本数据。 **媒体格式：** 以压缩**样本**形式呈现音频或视频时所用的妥善定义的格式。
 
->   **呈现内容：**播放单部电影所需的所有**流**和相关元数据的集。 **请求：**从客户端发送到服务器的 HTTP 消息，符合 [[RFC2616]](http://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。 **响应：**从服务器发送到客户端的 HTTP 消息，符合 [[RFC2616]](http://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。
+>   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。 **响应：** 从服务器发送到客户端的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义。
 
->   **样本：**存储和处理**媒体**的最小基本单位（例如帧）。
+>   **样本：** 存储和处理**媒体**的最小基本单位（例如帧）。
 
->   **可以、应该、必须、不应、不得：**这些术语的用法符合 [[RFC2119]](http://go.microsoft.com/fwlink/?LinkId=90317) 中的描述。 所有可选行为的陈述使用“可以”、“应该”或“不应”。
+>   **可以、应该、必须、不应、不得：** 这些术语的用法符合 [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) 中的描述。 所有可选行为的陈述使用“可以”、“应该”或“不应”。
 
 ## <a name="12-references"></a>1.2 参考 
 -----------
@@ -64,7 +65,7 @@ ms.lasthandoff: 05/07/2018
 
  ### <a name="121-normative-references"></a>1.2.1 规范参考 
 
->  [MS SSTR] 平滑流式处理协议 v20140502 [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS SSTR].pdf](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+>  [MS SSTR] 平滑流式处理协议 v20140502 [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS SSTR].pdf](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 >   [ISO/IEC 14496-12] 国际标准化组织编写的“信息技术 -- 音频-视频对象编码 -- 第 12 部分：ISO 基本媒体文件格式”，ISO/IEC 14496-12:2014 版本 4，以及勘误 1、修正 1 和 2。
 >   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -78,17 +79,17 @@ ms.lasthandoff: 05/07/2018
 
 >   [RFC-6381] IETF RFC-6381 中阐述的“‘存储桶’媒体类型的‘编解码器’和‘配置文件’参数”<http://tools.ietf.org/html/rfc6381>
 
->   [MPEG4-RA] MP4 注册机构，“MP4REG”，[http://www.mp4ra.org   ](http://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] MP4 注册机构，“MP4REG”，[http://www.mp4ra.org   ](https://go.microsoft.com/fwlink/?LinkId=327787)
 
->   [RFC2119] Bradner, S. 编写的“RFC 中用于指示要求的关键字”，BCP 14，RFC 2119，1997 年 3 月，[http://www.rfc-editor.org/rfc/rfc2119.txt   ](http://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S. 编写的“RFC 中用于指示要求的关键字”，BCP 14，RFC 2119，1997 年 3 月，[http://www.rfc-editor.org/rfc/rfc2119.txt   ](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 信息性参考 
 
 >   [MS-GLOS] Microsoft Corporation 编写的“*Windows 协议主要术语表*”。
 
->   [RFC3548] Josefsson, S., Ed. 编写的“Base16、Base32 和 Base64 数据编码”，RFC 3548，2003 年 7 月，[http://www.ietf.org/rfc/rfc3548.txt   ](http://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed. 编写的“Base16、Base32 和 Base64 数据编码”，RFC 3548，2003 年 7 月，[http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Crocker, D., Ed. 和 Overell, P. 编写的“扩充的 BNF 语法规范：ABNF”，STD 68，RFC 5234，2008 年 1 月，[http://www.rfc-editor.org/rfc/rfc5234.txt   ](http://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed. 和 Overell, P. 编写的“扩充的 BNF 语法规范：ABNF”，STD 68，RFC 5234，2008 年 1 月，[http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 概述 
@@ -113,8 +114,8 @@ ms.lasthandoff: 05/07/2018
 
 >   应使用以下方法来识别采用 HEVC 视频格式的流：
 
->   * **媒体格式的自定义描述性代码：**此功能根据第 *2.2.2.5* 节中的指定，由 **FourCC** 字段提供。
->   实现者可以根据 [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) 中的指定，将扩展代码注册到 MPEG4-RA，来确保扩展不会发生冲突
+>   * **媒体格式的自定义描述性代码：** 此功能根据第 *2.2.2.5* 节中的指定，由 **FourCC** 字段提供。
+>   实现者可以根据 [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的指定，将扩展代码注册到 MPEG4-RA，来确保扩展不会发生冲突
 
 ## <a name="19-standards-assignments"></a>1.9 标准分配 
 ----------------------
@@ -133,9 +134,9 @@ ms.lasthandoff: 05/07/2018
 
 #### <a name="2221-smoothstreamingmedia"></a>2.2.2.1 SmoothStreamingMedia 
 
->   **MinorVersion（变量）：**清单响应消息的次要版本。 必须设置为 2。 （未更改）
+>   **MinorVersion（变量）：** 清单响应消息的次要版本。 必须设置为 2。 （未更改）
 
->   **TimeScale（变量）：**Duration 属性的时标，指定为一秒的增量数。 默认值为
+>   **TimeScale（变量）：** Duration 属性的时标，指定为一秒的增量数。 默认值为
 >   10000000. （未更改）
 
 >   建议值为 90000，表示包含分数帧速率视频（例如 30/1.001 Hz）的视频帧和片段的确切持续时间。
@@ -146,7 +147,7 @@ ms.lasthandoff: 05/07/2018
 
 #### <a name="2223-streamelement"></a>2.2.2.3 StreamElement 
 
->   **StreamTimeScale（变量）：**此流中的持续时间和时间值的时标，指定为一秒的增量数。 对于 HEVC 流，建议指定值 90000。 对于音频流，建议指定与波形样本频率匹配的值（例如 48000 或 44100）。
+>   **StreamTimeScale（变量）：** 此流中的持续时间和时间值的时标，指定为一秒的增量数。 对于 HEVC 流，建议指定值 90000。 对于音频流，建议指定与波形样本频率匹配的值（例如 48000 或 44100）。
 
 ##### <a name="22231-streamprotectionelement"></a>2.2.2.3.1 StreamProtectionElement
 
@@ -154,15 +155,15 @@ ms.lasthandoff: 05/07/2018
 
 #### <a name="225-trackelement"></a>2.2.5 TrackElement 
 
->   **FourCC（变量）：**由四个字符组成的代码，用于确定对每个样本使用了哪种媒体格式。 以下值范围是保留的，其语义含义如下：
+>   **FourCC（变量）：** 由四个字符组成的代码，用于确定对每个样本使用了哪种媒体格式。 以下值范围是保留的，其语义含义如下：
 
 >  * "hev1"：此轨迹的视频样本使用 HEVC 视频，并采用 [ISO/IEC-14496-15] 中指定的“hev1”样本说明格式。
 
->   **CodecPrivateData（变量）：**指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
+>   **CodecPrivateData（变量）：** 指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
 
 >   * 如果 TrackElement 描述 HEVC 视频，则 **FourCC** 字段应等于 **"hev1"**；
 
->   **CodecPrivateData** 字段应包含 ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) 中指定的以下字节序列的十六进制编码字符串表示形式（与 MS-SSTR 中的内容相同）
+>   **CodecPrivateData** 字段应包含 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中指定的以下字节序列的十六进制编码字符串表示形式（与 MS-SSTR 中的内容相同）
 
 >   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x01 PPSField
 
@@ -208,21 +209,21 @@ ms.lasthandoff: 05/07/2018
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
->   **TfhdBox** 和相关字段根据片段中的样本元数据封装默认值。 **TfhdBox** 字段的语法是 [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) 第 8.8.7 节中定义的轨迹片段标头框的语法的严格子集。
+>   **TfhdBox** 和相关字段根据片段中的样本元数据封装默认值。 **TfhdBox** 字段的语法是 [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 第 8.8.7 节中定义的轨迹片段标头框的语法的严格子集。
 
->   **BaseDataOffset（8 字节）：**从 **MdatBox** 字段开始位置到 **MdatBox** 字段中样本字段的偏移量，以字节表示。 若要告知此限制，必须设置 default-base-is-moof 标志 (0x020000)。
+>   **BaseDataOffset（8 字节）：** 从 **MdatBox** 字段开始位置到 **MdatBox** 字段中样本字段的偏移量，以字节表示。 若要告知此限制，必须设置 default-base-is-moof 标志 (0x020000)。
 
 #### <a name="2247-trunbox"></a>2.2.4.7 TrunBox 
 
->   **TrunBox** 和相关字段根据请求片段的样本元数据封装。 **TrunBox** 的语法是 [[ISO/IEC 14496-](http://go.microsoft.com/fwlink/?LinkId=183695)*12]* 第 8.8.8 节中定义的版本 1 轨迹片段运行框的严格子集。
+>   **TrunBox** 和相关字段根据请求片段的样本元数据封装。 **TrunBox** 的语法是 [[ISO/IEC 14496-](https://go.microsoft.com/fwlink/?LinkId=183695)*12]* 第 8.8.8 节中定义的版本 1 轨迹片段运行框的严格子集。
 
->   **SampleCompositionTimeOffset（4 字节）：**每个样本的样本构图时间偏移量经过调整，使片段中第一个呈现的样本的呈现时间等于第一个解码样本的解码时间。 应该根据
+>   **SampleCompositionTimeOffset（4 字节）：** 每个样本的样本构图时间偏移量经过调整，使片段中第一个呈现的样本的呈现时间等于第一个解码样本的解码时间。 应该根据
 
->   [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) 中的定义，使用负值视频样本构图偏移量。
+>   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的定义，使用负值视频样本构图偏移量。
 
 >   注意：这可以避免视频滞后音频等于最大解码图片缓冲消除延迟所造成的视频同步错误，并保持可能具有不同消除延迟的备用片段之间的呈现计时。
 
->   本节中定义的字段语法（符合 ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）保持不变，但以下各项例外：
+>   本节中定义的字段语法（符合 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）保持不变，但以下各项例外：
 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
@@ -238,16 +239,16 @@ ms.lasthandoff: 05/07/2018
 
 #### <a name="2271-filetype"></a>2.2.7.1 FileType 
 
->   **FileType（变量）：**指定 MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=327787) 文件的子类型和目标用途，以及高级属性。
+>   **FileType（变量）：** 指定 MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) 文件的子类型和目标用途，以及高级属性。
 
->   **MajorBrand（变量）：**媒体文件的主要品牌。 必须设置为“isml”。
+>   **MajorBrand（变量）：** 媒体文件的主要品牌。 必须设置为“isml”。
 
->   **MinorVersion（变量）：**媒体文件的次要版本。 必须设置为 1。
+>   **MinorVersion（变量）：** 媒体文件的次要版本。 必须设置为 1。
 
->   **CompatibleBrands（变量）：**指定支持的 MPEG-4 品牌。
+>   **CompatibleBrands（变量）：** 指定支持的 MPEG-4 品牌。
 >   必须包含“ccff”和“iso8”。
 
->   本节中定义的字段语法（符合 ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）如下：
+>   本节中定义的字段语法（符合 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）如下：
 
     FileType = MajorBrand MinorVersion CompatibleBrands
     MajorBrand = STRING_UINT32

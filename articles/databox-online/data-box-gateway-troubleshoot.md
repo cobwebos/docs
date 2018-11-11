@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Gateway 故障排除 | Micrsoft Docs
+title: 使用 Azure 门户排查 Azure Data Box Gateway 问题 | Microsoft Docs
 description: 介绍如何排查 Azure Data Box Gateway 问题。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 00797cdf50104b41777cc8b537c140045677c1a5
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167318"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241594"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题 
 

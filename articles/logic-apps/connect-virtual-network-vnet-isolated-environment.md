@@ -94,8 +94,8 @@ ms.locfileid: "50231774"
 
 1. 现在，创建要与前面创建的网关子网关联的[路由表](../virtual-network/manage-route-table.md)。
 
-   1. 在 Azure 主菜单中，选择“创建资源”> 
-   “网络”>“路由表”。************
+   1. 在 Azure 主菜单中，选择 **“创建资源”** > 
+    **“网络”** > **“路由表”**。
 
       ![创建路由表](./media/connect-virtual-network-vnet-isolated-environment/create-route-table.png)
 

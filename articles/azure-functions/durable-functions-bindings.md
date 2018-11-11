@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24231a02575fed8ee71f85c22a14540f2e9d47e3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987743"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247490"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -257,7 +257,7 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "orchestrationClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -311,7 +311,7 @@ public static Task Run(
     {
       "name": "starter",
       "type": "orchestrationClient",
-      "direction": "out"
+      "direction": "in"
     }
   ],
   "disabled": false
@@ -351,6 +351,12 @@ module.exports = function (context, input) {
 ```
 
 有关启动实例的更多详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 设置
+
+[!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

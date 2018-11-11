@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/30/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986767"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241185"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -20,6 +20,38 @@ ms.locfileid: "49986767"
 
 Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure 之前发现本地 vCenter 环境，以便使用 [Azure Migrate](migrate-overview.md) 服务进行评估。  
 
+## <a name="discovery-methods"></a>发现方法
+
+收集器设备有两个选项：一次性发现或持续发现。
+
+### <a name="one-time-discovery"></a>一次性发现
+
+收集器设备与 vCenter Server 进行一次性通信，以收集有关 VM 的元数据。 使用此方法时：
+
+- 设备未持续连接到 Azure Migrate 项目。
+- 发现完成后，本地环境的更改不会反映在 Azure Migrate 中。 要反映任何更改，你需要重新发现同一项目中的相同环境。
+- 当收集 VM 的性能数据时，设备依赖于在 vCenter Server 中存储的历史性能数据。 它收集过去一个月内性能历史记录。
+- 若要收集历史性能数据，需将 vCenter Server 中的统计信息设置设置为三级。 设置为三级后，需等待至少一天 vCenter 才能收集性能计数器。 因此，建议至少在一天后运行发现。 如果要根据 1 周或 1 个月的性能数据来评估环境，则需等待相应的时间。
+- 在此发现方法中，Azure Migrate 针对每个可能会导致大小不足的指标（而不是峰值计数器）收集平均计数器。 建议使用持续发现选项以获取更准确地大小调整结果。
+
+### <a name="continuous-discovery"></a>持续发现
+
+收集器设备将持续连接到 Azure Migrate 项目，并不断收集 VM 的性能数据。
+
+- 收集器持续分析本地环境，每 20 秒收集一次实时利用率数据。
+- 设备汇总 20 秒示例，每隔 15 分钟创建单个数据点。
+- 若要创建数据点，设备从 20 秒示例中选择峰值并将其发送到 Azure。
+- 此模型不依赖于 vCenter Server 的统计信息设置来收集性能数据。
+- 你可以随时从收集器中停止连续分析。
+
+请注意，设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
+
+- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+
+- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
+
+> [!NOTE]
+> 连续性发现功能为预览版。 建议使用此方法，因为此方法收集细粒度的性能数据并实现精确的大小调整。
 
 ## <a name="deploying-the-collector"></a>部署收集器
 
@@ -163,43 +195,6 @@ RDP | TCP 3389 |
 3. 将 zip 文件复制到 Azure Migrate 收集器虚拟机（收集器设备）。
 4. 右键单击 zip 文件并选择“全部提取”。
 5. 右键单击 Setup.ps1 并选择“使用 PowerShell 运行”，然后按照屏幕上的说明来安装更新。
-
-
-## <a name="discovery-methods"></a>发现方法
-
-收集器设备可使用两种发现方法，即一次性发现和连续性发现。
-
-
-### <a name="one-time-discovery"></a>一次性发现
-
-收集器与 vCenter Server 进行一次性通信，以收集有关 VM 的元数据。 使用此方法时：
-
-- 设备未持续连接到 Azure Migrate 项目。
-- 发现完成后，本地环境的更改不会反映在 Azure Migrate 中。 要反映任何更改，你需要重新发现同一项目中的相同环境。
-- 针对此发现方法，需要将 vCenter Server 中的统计信息设置设置为级别三。
-- 设为级别三后，最多需要一天来生成性能计数器。 因此，建议在一天后运行发现。
-- 当收集 VM 的性能数据时，设备依赖于在 vCenter Server 中存储的历史性能数据。 它收集过去一个月内性能历史记录。
-- Azure Migrate 针对每个可能会导致大小不足的指标收集平均计数器（而不是峰值计数器）。
-
-### <a name="continuous-discovery"></a>持续发现
-
-收集器设备将持续连接到 Azure Migrate 项目，并不断收集 VM 的性能数据。
-
-- 收集器持续分析本地环境，每 20 秒收集一次实时利用率数据。
-- 此模型不依赖于 vCenter Server 的统计信息设置来收集性能数据。
-- 设备汇总 20 秒示例，每隔 15 分钟创建单个数据点。
-- 若要创建数据点，设备从 20 秒示例中选择峰值并将其发送到 Azure。
-- 你可以随时从收集器中停止连续分析。
-
-请注意，设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
-
-1. 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
-
-2. 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
-
-> [!NOTE]
-> 连续性发现功能为预览版。 我们建议你使用此方法，因为此方法收集细粒度的性能数据并实现精确的大小调整。
-
 
 ## <a name="discovery-process"></a>发现过程
 

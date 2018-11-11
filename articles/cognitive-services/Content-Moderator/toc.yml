@@ -10,12 +10,10 @@ items:
     href: quick-start.md
   - name: 使用 .NET SDK
     items:
-    - name: 检查图像内容
+    - name: 分析令人反感的材料的图像内容
       href: image-moderation-quickstart-dotnet.md
-    - name: 检查文本内容
+    - name: 分析令人反感的材料的文本内容
       href: text-moderation-quickstart-dotnet.md
-    - name: 检查视频内容
-      href: video-moderation-api.md
 - name: 概念
   items:
   - name: 图像审查
@@ -36,6 +34,8 @@ items:
       items:
       - name: 使用 .NET SDK
         items:
+        - name: 检查视频内容
+          href: video-moderation-api.md
         - name: 针对自定义列表检查图像
           href: image-lists-quickstart-dotnet.md
         - name: 针对自定义字词检查文本
@@ -142,9 +142,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: 按需网络研讨会
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: d162bcaefdde1aceb171d2ad83b5386e54cea890
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 03363242d1a3764415e9bdc5b985b7fa76076901
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944141"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012813"

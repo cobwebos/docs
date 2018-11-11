@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/15/2018
+ms.date: 10/29/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: f4de10c29364ab96f54e5d07e9c416a2beb038f6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380156"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420338"
 ---
 # <a name="start-monitoring-your-website"></a>开始监视网站
 
 使用 Azure Monitor Application Insights，可轻松监视网站的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 Application Insights 提供服务器端监视和客户端/浏览器端监视功能。
 
-本快速入门介绍如何添加[开源 Application Insight JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)，以便了解网站访客的客户端/浏览器端体验。
+本快速入门介绍如何添加[开源 Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)，以便了解网站访客的客户端/浏览器端体验。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | 常规应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -74,7 +74,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 1. 选择“概述” > “概要”> 复制应用程序的**检测密钥**。
 
-   ![“新建 App Insights 资源”窗体](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
+   ![“新建 App Insights 资源”窗体](media/app-insights-website-monitoring/instrumentation-key-001.png)
 
 2. 将以下脚本添加到 ``hello_world.html`` 的结束标记 ``</head>`` 之前：
 
@@ -98,7 +98,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。 概览页上的四个默认图表局限于服务器端应用程序数据。 由于我们要检测客户端/浏览器端与 JavaScript SDK 的交互，因此该特定视图不会应用，除非我们也安装了服务器端 SDK。
 
-2. 单击![“应用程序映射”图标](./media/app-insights-nodejs-quick-start/006.png)“Analytics”。  这将打开“Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
+2. 单击![“应用程序映射”图标](media/app-insights-website-monitoring/006.png)“Analytics”。  这将打开“Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
 
     ```kusto
     // average pageView duration by name

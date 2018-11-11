@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047248"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250996"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 
-本文介绍如何使用[针对 Visual Studio 的 Azure Data Lake 工具](http://aka.ms/adltoolsvs)将 U-SQL 数据库导出为单个 U-SQL 脚本和下载的资源。 可以使用相同的过程将导出的数据库导入本地帐户。
+本文介绍如何使用[针对 Visual Studio 的 Azure Data Lake 工具](https://aka.ms/adltoolsvs)将 U-SQL 数据库导出为单个 U-SQL 脚本和下载的资源。 可以使用相同的过程将导出的数据库导入本地帐户。
 
 客户通常会维护多个环境进行开发、测试和生产。 这些环境托管在开发人员本地计算机上的本地帐户中，以及 Azure 上的 Azure Data Lake Analytics 帐户中。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "43047248"
    
     ![服务器资源管理器 - 导出数据库](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     如果“导出”菜单选项不可用，需要[将工具更新到最新版本](http://aka.ms/adltoolsvs)。
+     如果“导出”菜单选项不可用，需要[将工具更新到最新版本](https://aka.ms/adltoolsvs)。
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置想要导出的对象
 

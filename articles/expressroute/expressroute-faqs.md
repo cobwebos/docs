@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958410"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211360"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -71,7 +71,6 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
   不支持以下服务：
     * CDN
-    * Azure DevOps Services 负载测试
     * 多重身份验证
     * 流量管理器
 
@@ -81,10 +80,9 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
-* Azure DevOps Services 负载测试
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
 * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>不支持以下服务：
     * CDN
-    * Azure DevOps Services 负载测试
     * 多重身份验证
     * 流量管理器
 

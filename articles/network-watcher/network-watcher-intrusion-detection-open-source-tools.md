@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420024"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -34,7 +35,7 @@ Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用
 
 可在 Azure VM 上设置这两个开源工具，以便在自己的 Azure 网络环境内部执行此分析。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="install-suricata"></a>安装 Suricata
 
@@ -80,7 +81,8 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果未安装 Java，请参阅 [Oracle 网站](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)上的文档
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
+
 1. 下载适用于系统的正确二进制程序包：
 
     ```

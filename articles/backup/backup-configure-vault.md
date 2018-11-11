@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252898"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
 本文介绍如何通过 Resource Manager 部署模型使用 Azure 备份将 Windows Server（或 Windows 客户端）文件和文件夹备份到 Azure。
@@ -250,7 +250,7 @@ Microsoft Azure 备份代理提供了网络限制。 限制功能将控制数据
 ![IR 完成](./media/backup-configure-vault/ircomplete.png)
 
 ## <a name="questions"></a>有疑问？
-如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
+如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>后续步骤
 有关备份 VM 或其他工作负荷的详细信息，请参阅：

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: dccdd6518dd97299150892a5629809ea7f708838
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209349"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253324"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
-在[下载的](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
+在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
 | **文件名** | **简短说明** |
 | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "34209349"
 | TestConfiguration.ps1 |PowerShell 脚本，用于分析 Cluster.json 中指定的基础结构。 |
 | DownloadServiceFabricRuntimePackage.ps1 |用于下载最新带外运行时包的 PowerShell 脚本，适用于部署计算机未连接到 Internet 的方案。 |
 | DeploymentComponentsAutoextractor.exe |包含独立包脚本所用部署组件的自解压缩存档。 |
-| EULA_ENU.txt |有关使用 Microsoft Azure Service Fabric Windows Server 独立包的许可条款。 现在，可以[下载 EULA 的副本](http://go.microsoft.com/fwlink/?LinkID=733084)。 |
+| EULA_ENU.txt |有关使用 Microsoft Azure Service Fabric Windows Server 独立包的许可条款。 现在，可以[下载 EULA 的副本](https://go.microsoft.com/fwlink/?LinkID=733084)。 |
 | Readme.txt |发行说明和基本安装说明的链接。 这是本文中说明的子集。 |
 | ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe 按需运行，收集跟踪日志并将其上传到 Microsoft 以提供支持。 |

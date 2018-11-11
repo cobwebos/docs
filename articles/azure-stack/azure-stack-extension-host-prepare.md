@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 4376b9e89aeef32987f7a3bb29ca6815e941ba00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960236"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514360"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>为 Azure Stack 准备扩展主机
 
@@ -84,8 +84,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 1. 使用可以连接到 Azure Stack 特权终结点的计算机执行后续步骤。 请确保可以从该计算机访问新的证书文件。
 2. 打开 PowerShell ISE 以执行接下来的脚本块
-3. 导入用于托管终结点的证书。 调整脚本以匹配你的环境。
-4. 导入用于管理托管终结点的证书。
+3. 导入用于管理托管终结点的证书。
 
     ```PowerShell  
 
@@ -104,7 +103,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. 导入用于托管终结点的证书。
+4. 导入用于托管终结点的证书。
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 

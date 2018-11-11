@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
 ms.comopnent: ''
-ms.openlocfilehash: 7b44c0712c4d88ec0bbb7a94f574c2a12faf3550
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 52d81e4f4070d8d8e13497ad39d5adf1b99470de
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040670"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007733"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics 中的 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  
@@ -70,7 +70,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-searches-with-iis-logs"></a>使用 IIS 日志进行日志搜索
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| 查询 | Description |
+| Query | Description |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
@@ -80,5 +80,5 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 Log Analytics 以收集其他[数据源](log-analytics-data-sources.md)进行分析。
-* 了解有关[日志搜索](log-analytics-log-searches.md)的信息，以分析从数据源和解决方案收集的数据。
+* 了解有关[日志搜索](log-analytics-queries.md)的信息，以分析从数据源和解决方案收集的数据。
 * 在 Log Analytics 中配置警报，以主动通知你在 IIS 日志中找到的重要情况。

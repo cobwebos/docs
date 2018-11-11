@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 62dc796de430e7c5926f3231db29ef554f210142
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408162"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016771"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -365,7 +365,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **UserID**    |  cn    |   |   仅在创建时写入 |
 | **Join("@", [UserID], "contoso.com")**   | userPrincipalName     |     | 仅在创建时写入 
 | **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
-| **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 创建 + 更新 |
+| **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 创建 + 更新 |
 | **名字**   | givenName       |     |    创建 + 更新 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **PreferredNameData**  |  displayName |     |   创建 + 更新 |

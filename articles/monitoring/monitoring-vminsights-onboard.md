@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092768"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283354"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>如何载入用于 VM 的 Azure Monitor（预览版）
 本文介绍如何设置用于 VM 的 Azure Monitor，以监视 Azure 虚拟机的操作系统运行状况，以及发现和映射这些虚拟机上托管的应用程序依赖项。  
@@ -337,7 +337,7 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
     ```
 
 ### <a name="enable-using-azure-policy"></a>使用 Azure Policy 启用
-若要大规模启用用于 VM 的 Azure Monitor 以确保持续合规并使预配的新 VM 自动起作用，建议使用 [Azure Policy](../azure-policy/azure-policy-introduction.md)。 这些策略：
+若要大规模启用用于 VM 的 Azure Monitor 以确保持续合规并使预配的新 VM 自动起作用，建议使用 [Azure Policy](../governance/policy/overview.md)。 这些策略：
 
 * 部署 Log Analytics 代理和 Dependency Agent 
 * 报告合规性结果 

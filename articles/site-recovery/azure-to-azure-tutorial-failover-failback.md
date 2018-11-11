@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 对复制到 Azure 次要区域的 Azure VM 进行故障转移和故障回复
-description: 了解如何使用 Azure Site Recovery 对复制到 Azure 次要区域的 Azure VM 进行故障转移和故障回复
+title: 使用 Azure Site Recovery 服务对复制到 Azure 次要区域的 Azure IaaS VM 进行故障转移和故障回复，以便实现灾难恢复。
+description: 了解如何使用 Azure Site Recovery 服务对复制到 Azure 次要区域的 Azure VM 进行故障转移和故障回复，以便实现灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456501"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239281"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>在 Azure 区域之间故障转移和故障回复 Azure VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "49456501"
 ## <a name="prerequisites"></a>先决条件
 
 - 确保已完成[灾难恢复演练](azure-to-azure-tutorial-dr-drill.md)，检查所有内容是否都按预期工作。
-- 在运行测试故障转移之前，验证 VM 属性。 该 VM 必须符合 [Azure 要求](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions)。
+- 在运行测试故障转移之前，验证 VM 属性。 该 VM 必须符合 [Azure 要求](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>运行到次要区域的故障转移
 

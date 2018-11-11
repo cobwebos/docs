@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 1cebb3dae8fbfd4188487a6ff7fca42ac0505cf0
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 3561c2959283cd1c589414b96724cf0341af5e0a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498481"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215372"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>为 Linux IaaS VM 启用 Azure 磁盘加密 
 
@@ -136,7 +136,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 | volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
 | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
 | resizeOSDisk | 在拆分系统卷之前，是否应调整 OS 分区大小以占用整个 OS VHD。 |
-| location | 所有资源的位置。 |
+| 位置 | 所有资源的位置。 |
 
 
 
@@ -252,7 +252,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 - 不是根/OS/启动分区
 - 尚未加密
 - 不是 BEK 卷
+- 不是 RAID 卷
+- 不是 LVM 卷
 - 已装载
+
+加密组成 RAID 或 LVM 卷而不是 RAID 或 LVM 卷的磁盘。
 
 ### <a name="bkmk_EFAPSH"> </a> 通过 Azure CLI 使用 EncryptFormatAll 参数
 使用 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) 命令在 Azure 中运行的 IaaS 虚拟机上启用加密。

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a759aad346e25fa42f16d9ccfdb42d9fd5b1cd38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251962"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
-Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 此扩展可以执行分析，并提供一个报告，其中的发现和建议可用于确定和解决虚拟机上的性能问题。 此扩展将安装被称为 [PerfInsights](http://aka.ms/perfinsights) 的疑难解答工具。
+Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 此扩展可以执行分析，并提供一个报告，其中的发现和建议可用于确定和解决虚拟机上的性能问题。 此扩展将安装被称为 [PerfInsights](https://aka.ms/perfinsights) 的疑难解答工具。
 
 > [!NOTE]
     > 如果要从 Azure 门户为非经典 VM 运行 VM 上的诊断，建议使用新体验。 有关详细信息，请参阅 [Azure 虚拟机的性能诊断](performance-diagnostics.md) 
@@ -230,7 +230,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>有关捕获的数据信息
-PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所选方案而定。 有关详细信息，请参阅 [PerfInsights 文档](http://aka.ms/perfinsights)。
+PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所选方案而定。 有关详细信息，请参阅 [PerfInsights 文档](https://aka.ms/perfinsights)。
 
 ## <a name="view-and-share-the-results"></a>查看和共享结果
 

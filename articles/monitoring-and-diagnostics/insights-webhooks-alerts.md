@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f2f96faf6bd8132422aeb3484547e4b6a1195a7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380279"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255534"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>使用 Webhook 让经典指标警报通知非 Azure 系统
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
 
-本文介绍如何针对 Azure 指标警报设置 Webhook。 此外，还说明向 Webhook 发出的 HTTP POST 的有效负载的大致形式。 有关 Azure 活动日志警报（事件警报）的设置和架构的信息，[针对 Azure 活动日志警报调用 Webhook](insights-auditlog-to-webhook-email.md)。
+本文介绍如何针对 Azure 指标警报设置 Webhook。 此外，还说明向 Webhook 发出的 HTTP POST 的有效负载的大致形式。 有关 Azure 活动日志警报（事件警报）的设置和架构的信息，[针对 Azure 活动日志警报调用 Webhook](monitor-alerts-unified-log-webhook.md)。
 
 Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报时提供的 Webhook URI。 本文中稍后将定义架构。 此 URI 必须是有效的 HTTP 或 HTTPS 终结点。 激活警报时，Azure 会针对每个请求发布一个条目。
 
@@ -101,8 +101,8 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 >
 
 ## <a name="next-steps"></a>后续步骤
-* 通过[将 Azure 警报与 PagerDuty 集成](http://go.microsoft.com/fwlink/?LinkId=627080)视频了解有关 Azure 警报和 Webhook 的详细信息。
-* 了解如何[对 Azure 警报执行 Azure 自动化脚本 (Runbook)](http://go.microsoft.com/fwlink/?LinkId=627081)。
+* 通过[将 Azure 警报与 PagerDuty 集成](https://go.microsoft.com/fwlink/?LinkId=627080)视频了解有关 Azure 警报和 Webhook 的详细信息。
+* 了解如何[对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * 了解如何[使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。
 * 了解如何[使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。

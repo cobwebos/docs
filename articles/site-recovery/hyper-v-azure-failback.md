@@ -1,6 +1,6 @@
 ---
-title: 为 Hyper-v 虚拟机运行到本地站点的故障回复 | Microsoft Docs
-description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解从 Azure 故障回复到本地数据中心。
+title: 在 Hyper-v VM 发生灾难时运行从 Azure 到本地的故障回复 | Microsoft Docs
+description: 了解在执行到 Azure 的灾难恢复期间如何使用 Azure Site Recovery 服务将 Hyper-V VM 故障回复到本地站点。
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: fd171251ef465a28e4844901a529e0a3eaaf8f9d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b841dee766399f1e3c7325d2ab67e342dfa8657a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920866"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211853"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>为 Hyper-V VM 运行故障回复
 
@@ -40,10 +40,10 @@ ms.locfileid: "37920866"
 
 4. 如果为云启用了数据加密，请在“加密密钥”中选择你在 VMM 服务器上安装提供者期间启用数据加密时颁发的证书。
 5. 启动故障转移。 可以在“**作业**”选项卡上跟踪故障转移进度。
-6. 如果选择了在故障转移之前同步数据的选项，请在完成初始数据同步且已准备好在 Azure 中关闭虚拟机后，单击“作业”（计划故障转移工作名称）、“完成故障转移”。 这会关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动本地虚拟机。
+6. 如果选择了在故障转移之前同步数据的选项，请在完成初始数据同步并且已准备好在 Azure 中关闭虚拟机后，单击“作业”> 作业名称 >“完成故障转移”。 这会关闭 Azure 计算机，将最新更改传输到本地虚拟机，然后启动本地虚拟机。
 7. 现在，可以登录到虚拟机，以验证是否可以按预期使用它。
-8. 虚拟机处于待提交状态。 单击“**提交**”以提交故障转移。
-9. 现在，为了完成故障回复，请单击“**反向复制**”以开始保护主站点中的虚拟机。
+8. 虚拟机处于待提交状态。 单击“提交”提交故障转移。
+9. 若要完成故障回复，请单击“反向复制”以开始保护主站点中的虚拟机。
 
 
 请遵循以下过程故障回复到原始主站点。 本过程描述如何对恢复计划运行计划的故障转移。 或者，也可以在“**虚拟机**”选项卡上对单个虚拟机运行故障转移。
@@ -57,7 +57,7 @@ ms.locfileid: "37920866"
 3. 选择“**受保护的项**” -> 要故障回复的“**保护组**” -> <ProtectionGroupName> -> <VirtualMachineName>，并选择“**计划的故障转移**”。
 4. 在“**确认计划的故障转移**”中，选择“**如果本地虚拟机不存在，则创建它**”。
 5. 在“主机名”中，选择要在其上放置虚拟机的新 Hyper-V 主机服务器。
-6. 在“数据同步”中，我们建议选择选项“在故障转移之前同步数据”。 此选项可以最大程度地减少虚拟机的停机时间，因为它可以在不关闭虚拟机的情况下执行同步。 此选项将执行以下操作：
+6. 在“数据同步”中，建议选择“在故障转移之前同步数据”这一选项。 此选项可以最大程度地减少虚拟机的停机时间，因为它可以在不关闭虚拟机的情况下执行同步。 此选项将执行以下操作：
 
     - 阶段 1：在 Azure 中生成虚拟机的快照，并将快照复制到本地 Hyper-V 主机。 计算机将继续在 Azure 中运行。
     - 阶段 2：在 Azure 中关闭虚拟机，使其中不会发生任何新的更改。 最终的更改集将传输到本地服务器，本地虚拟机会启动。

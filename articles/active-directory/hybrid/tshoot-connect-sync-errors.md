@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406851"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250433"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>排查同步过程中发生的错误
 将标识数据从 Windows Server Active Directory (AD DS) 同步到 Azure Active Directory (Azure AD) 时可能会发生错误。 本文概述不同类型的同步错误、导致这些错误的某些可能情况，以及这些错误的可能解决方法。 本文介绍常见错误类型，不一定涵盖所有可能的错误。
 
  本文假设读者熟悉 [ Azure AD 和 Azure AD Connect 的基础设计概念](plan-connect-design-concepts.md)。
 
-在最新版本的 Azure AD Connect（\(2016 年 8 月版或更高版本\)）中，[Azure 门户](https://aka.ms/aadconnecthealth)会针对用于同步的 Azure AD Connect Health 提供同步错误报告。
+在最新版本的 Azure AD Connect \(2016 年 8 月版或更高版本\) 中，[Azure 门户](https://aka.ms/aadconnecthealth)会针对用于同步的 Azure AD Connect Health 提供同步错误报告。
 
 从 2016 年 9 月 1 日开始，默认将为所有*新的* Azure Active Directory 租户启用 [Azure Active Directory 重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)功能。 在接下来的几个月，会自动为现有租户启用此功能。
 
@@ -219,6 +219,29 @@ a.在“解决方案资源管理器”中，右键单击项目文件夹下的“
 
 ### <a name="how-to-fix"></a>如何解决
 1. 确保导致错误的属性在允许的限制范围内。
+
+## <a name="existing-admin-role-conflict"></a>现有的管理员角色冲突
+
+### <a name="description"></a>Description
+当用户对象具有以下项时，同步期间用户对象上将发生“现有管理员角色冲突”：
+
+- 管理权限和
+- 与现有 Azure AD 对象相同的 UserPrincipalName
+
+不允许 Azure AD Connect 将本地 AD 中的用户对象与 Azure AD 中分配有管理角色的用户对象进行软匹配。  有关详细信息，请参阅 [Azure AD UserPrincipalName 填充](plan-connect-userprincipalname.md)
+
+![现有管理员](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>如何解决
+若要解决此问题，请执行以下任一操作：
+
+
+- 将 UserPrincipalName 更改为与 Azure AD 中的管理员用户不匹配的值 - 这将在 Azure AD 中使用匹配的 UserPrincipalName 创建新用户
+- 从 Azure AD 的管理员用户中删除管理角色，这将启用本地用户对象与现有 Azure AD 用户对象之间的软匹配。
+
+>[!NOTE]
+>当本地用户对象与 Azure AD 用户对象之间的软匹配完成后，可以再次将管理角色分配给现有用户对象。
 
 ## <a name="related-links"></a>相关链接
 * [Locate Active Directory Objects in Active Directory Administrative Center](https://technet.microsoft.com/library/dd560661.aspx)（在 Active Directory 管理中心查找 Active Directory 对象）

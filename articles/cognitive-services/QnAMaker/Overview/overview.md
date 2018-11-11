@@ -10,18 +10,20 @@ ms.component: qna-maker
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 742c18815445b038e85c33a96743790491976945
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901101"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212210"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
-QnA Maker 是一种问答知识库 (KB)服务，它针对用户的自然语言问题应用自定义的机器学习智能来确定最佳解答。
+QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 
 
-使用 QnA Maker，你可以借助半结构化内容（例如常见问题解答 (FAQ) 文档）、URL、产品手册以及自定义的问题和解答来为基于云的服务提供助力。 通过易于使用的 [Web 门户](https://qnamaker.ai)，没有开发者经验的人也可以创建、管理、训练和发布其服务。 将服务发布到终结点后，诸如聊天机器人之类的客户端应用程序可以管理与用户的对话，从而获取问题并以答案进行响应。 
+使用 QnA Maker，你可以借助半结构化内容（例如常见问题解答 (FAQ)）URL、产品手册、支持文档以及自定义的问题和解答来创建知识库 (KB)。 QnA Maker 服务可以回答用户的自然语言问题，其方法是将问题与知识库的 QnA 中的最可能答案进行匹配。
+
+通过易于使用的 [Web 门户](https://qnamaker.ai)，没有开发者经验的人也可以创建、管理、训练和发布其服务。 将服务发布到终结点后，诸如聊天机器人之类的客户端应用程序可以管理与用户的对话，从而获取问题并以答案进行响应。 
 
 ![概述](../media/qnamaker-overview-learnabout/overview.png)
 
@@ -29,7 +31,7 @@ QnA Maker 是一种问答知识库 (KB)服务，它针对用户的自然语言�
 
 QnA Maker 提供两项针对数据的重要服务：
 
-* **提取**：结构化问题和解答数据是从常见问题解答和产品手册等半结构化[数据源](../Concepts/data-sources-supported.md)提取的。 此提取可以在知识库[创建](https://aka.ms/qnamaker-docs-createkb)过程中进行，也可以在以后的编辑过程中进行。
+* **提取**：结构化问题和解答数据是从常见问题解答和产品手册等结构化和半结构化[数据源](../Concepts/data-sources-supported.md)提取的。 此提取可以在知识库[创建](https://aka.ms/qnamaker-docs-createkb)过程中进行，也可以在以后的编辑过程中进行。
 
 * **匹配**：[训练并测试](https://aka.ms/qnamaker-docs-trainkb)知识库以后，即可将其[发布](https://aka.ms/qnamaker-docs-publishkb)。 这样就会为 QnA Maker 知识库启用一个终结点，然后可以将此终结点用于机器人或客户端应用中。 此终结点接受用户问题，然后使用知识库中的最佳解答进行响应，并提供该匹配的置信度分数。
 
@@ -53,11 +55,11 @@ QnA Maker 提供两项针对数据的重要服务：
 
 ## <a name="qna-maker-architecture"></a>QnA Maker 体系结构
 
-QnA Maker 包括以下 API 服务：
+QnA Maker 体系结构包括下述两个组件：
 
 1. **QnA Maker 管理服务**：QnA Maker 知识库的管理体验，包括初始创建、更新、训练和发布。 这些活动可以通过[门户](https://qnamaker.ai)或[管理 API](https://aka.ms/qnamaker-v4-apis) 来完成。 
 
-2. **QnA Maker 预测服务**：这是在你在指定区域中的 Azure 订阅中部署的。 客户知识库内容存储在 [Azure 搜索](https://azure.microsoft.com/services/search/)中，终结点则部署为[应用服务](https://azure.microsoft.com/services/app-service/)。 还可以选择部署用于分析的 [Application Insights](https://azure.microsoft.com/services/application-insights/) 资源。
+2. **QnA Maker 数据和运行时**：这是在指定区域的 Azure 订阅中部署的。 KB 内容存储在 [Azure 搜索](https://azure.microsoft.com/services/search/)中，终结点则部署为[应用服务](https://azure.microsoft.com/services/app-service/)。 还可以选择部署用于分析的 [Application Insights](https://azure.microsoft.com/services/application-insights/) 资源。
 
 ![体系结构](../media/qnamaker-overview-learnabout/architecture.png)
 

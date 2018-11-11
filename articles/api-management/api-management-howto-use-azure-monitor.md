@@ -14,18 +14,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972992"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418835"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
 通过 Azure Monitor，可直观显示、查询、路由和存档来自 Azure 资源的指标或日志并对其执行操作。
 
-本教程介绍如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 查看活动日志
@@ -36,11 +36,10 @@ ms.locfileid: "38972992"
 下方视频介绍如何使用 Azure Monitor 监视 API 管理。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
->
->
 
 ## <a name="prerequisites"></a>先决条件
 
++ 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
@@ -55,17 +54,16 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 * 未经授权的网关请求数：接收包括 401、403 和 429的 HTTP 响应代码的 API 请求数。
 * 其他网关请求数：接收不属于上述任何类别的 HTTP 响应代码（例如 418）的 API 请求数。
 
+![指标图表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+
 访问指标：
 
 1. 在靠近页面底部的菜单中选择“指标”。
 
     ![指标](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. 从下拉列表中选择所需的指标（可以添加多个指标）。  
-    例如，从可用指标列表中选择“网关请求总数”和“失败的网关请求数”。
-3. 该图显示 API 调用总数。 此外还显示失败的 API 调用数。
-
-    ![指标图表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+2. 从下拉列表中选择所需的指标。 例如，**成功的网关请求数**。 也可向图表添加更多指标。
+3. 图表显示成功的 API 调用的总数。
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>针对未经授权的请求设置警报规则
 
@@ -102,6 +100,8 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 可在 API 管理服务中访问活动日志，或在 Azure Monitor 中访问所有 Azure 资源的日志。 
 
+![活动日志](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 查看活动日志：
 
 1. 选择 APIM 服务实例。
@@ -111,8 +111,6 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 3. 选择所需的筛选范围，然后单击“应用”。
 
-    ![活动日志](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
-
 ## <a name="diagnostic-logs"></a>诊断日志
 
 诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供针对 Azure 资源执行的操作的详细信息。 诊断日志提供资源执行的操作的深入信息。
@@ -120,7 +118,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 若要配置诊断日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
-2. 单击“诊断日志”。
+2. 单击“诊断设置”。
 
     ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
@@ -173,7 +171,7 @@ API 管理当前提供有关单个 API 请求的诊断日志（每小时进行�
 }  
 ```
 
-| 属性  | Type | 说明 |
+| 属性  | 类型 | Description |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | 布尔值 | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
 | time | 日期时间 | 网关接收 HTTP 请求的时间戳 |
@@ -182,7 +180,7 @@ API 管理当前提供有关单个 API 请求的诊断日志（每小时进行�
 | durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒） |
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
-| location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
+| 位置 | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
 | httpStatusCodeCategory | 字符串 | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> 的 ID |
 | 属性 | 对象 | 当前请求的属性 |

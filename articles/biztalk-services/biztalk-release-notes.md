@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576464"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253425"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -188,7 +188,7 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>即使 SQL 数据库处于离线状态，网桥也会继续处理消息
 即使 Microsoft Azure SQL 数据库（用于存储运行中信息，例如已部署的项目和管道）处于离线状态，BizTalk 服务桥在一段时间内仍会继续处理消息。 这是因为 BizTalk 服务使用缓存的项目和网桥配置。
-如果希望网桥在 SQL 数据库离线时不处理任何消息，可使用 BizTalk 服务 PowerShell cmdlet 停止或挂起 BizTalk 服务。 有关用于管理操作的 Windows PowerShell cmdlet，请参阅 [Azure BizTalk 服务管理示例](http://go.microsoft.com/fwlink/p/?LinkID=329019)。  
+如果希望网桥在 SQL 数据库离线时不处理任何消息，可使用 BizTalk 服务 PowerShell cmdlet 停止或挂起 BizTalk 服务。 有关用于管理操作的 Windows PowerShell cmdlet，请参阅 [Azure BizTalk 服务管理示例](https://go.microsoft.com/fwlink/p/?LinkID=329019)。  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>阅读网桥自定义代码组件中的 XML 消息，其中包含多余的 BOM 字符
 请考虑此场景：你想要阅读网桥自定义代码中的 XML 消息。 如果使用 .NET API System.Text.Encoding.UTF8.GetString(bytes)，则多余的 BOM 字符包含在消息开头的输出中。 因此，如果不希望输出包含多余的 BOM 字符，必须使用 ```System.IO.StreamReader().ReadToEnd()```。

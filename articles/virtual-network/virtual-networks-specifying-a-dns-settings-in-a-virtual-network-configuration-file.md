@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: ed7f02d3e389db3bc772c4fcb00a7b3877d60173
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794518"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248379"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>在虚拟网络配置文件中指定 DNS 设置
 网络配置文件有两个可用于指定域名系统 (DNS) 设置的元素：**DnsServers** 和 **DnsServerRef**。 可以通过指定服务器的 IP 地址和 **DnsServers** 元素的引用名添加 DNS 服务器列表。 然后可以使用 **DnsServerRef** 元素指定 DnsServers 元素中的哪些 DNS 服务器条目用于虚拟网络中的不同网络站点。
@@ -36,7 +36,7 @@ ms.locfileid: "31794518"
 > 
 > 
 
-[Dns 元素](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Dns 元素](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -51,7 +51,7 @@ ms.locfileid: "31794518"
 > 
 > 
 
-[虚拟网络站点元素](http://go.microsoft.com/fwlink/?LinkId=248093)
+[虚拟网络站点元素](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <DnsServersRef>
       <DnsServerRef name="ID1" />
@@ -65,7 +65,7 @@ ms.locfileid: "31794518"
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解 [Azure 虚拟网络配置架构](http://go.microsoft.com/fwlink/?LinkId=248093)。
+* 了解 [Azure 虚拟网络配置架构](https://go.microsoft.com/fwlink/?LinkId=248093)。
 * 了解 [Azure 服务配置架构](https://msdn.microsoft.com/library/windowsazure/ee758710)。
 * [使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md)。
 

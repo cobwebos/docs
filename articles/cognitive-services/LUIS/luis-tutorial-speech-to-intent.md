@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883918"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139074"
 ---
 # <a name="integrate-speech-service"></a>语音服务集成
 借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
@@ -39,7 +39,7 @@ ms.locfileid: "48883918"
 
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>添加 KeyPhrase 预构建的实体
-导入应用后，依次选择“实体”和“管理预构建的实体”。 添加 KeyPhrase 实体。 KeyPhrase 实体从话语中提取关键主题。
+导入应用后，选择“实体”，然后选择“添加预构建的实体”。 添加 KeyPhrase 实体。 KeyPhrase 实体从话语中提取关键主题。
 
 ## <a name="train-and-publish-the-app"></a>训练并发布应用
 1. 在右上方的导航栏中，选择“训练”按钮来训练 LUIS 应用。
@@ -78,7 +78,7 @@ ms.locfileid: "48883918"
 
 `Program.cs` 文件已映射人力资源意向。
 
-构建并运行应用程序。 
+生成并运行应用。 
 
 ## <a name="test-code-with-utterance"></a>使用意向测试代码
 对着麦克风说：“在雷德蒙德，谁是已批准的牙医？”。

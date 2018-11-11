@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 73fb2a3f10476550bbe6bd20c387a1cc2a7727d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171909"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246474"
 ---
 # <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用会话回调
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171909"
 
 ## <a name="video"></a>视频
 
-[![教程 11 预览](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
+[![教程 11 预览](https://aka.ms/cl-tutorial-11-preview)](https://aka.ms/blis-tutorial-11)
 
 ## <a name="requirements"></a>要求
 本教程要求运行 `tutorialSessionCallbacks` 机器人。

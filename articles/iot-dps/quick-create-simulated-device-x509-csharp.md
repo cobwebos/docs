@@ -1,6 +1,6 @@
 ---
 title: 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
+description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/18
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d42280935c406a7af0e632434749b2b082ea8b8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ae5601cf35540b6f506521a851b4d90dfaf0a20a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039661"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156453"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -23,6 +23,12 @@ ms.locfileid: "47039661"
 以下步骤演示了如何在运行 Windows OS 的开发计算机上生成 [Azure IoT 中心 C# SDK](https://github.com/Azure/azure-iot-sdk-csharp) 模拟的 X.509 设备示例，以及如何通过设备预配服务和 IoT 中心连接该模拟设备。
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+
+Azure IoT 设备预配服务支持两类注册：
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文将演示单个注册。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -44,7 +50,7 @@ ms.locfileid: "47039661"
 在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
 
 * 自签名证书仅用于测试，不应在生产环境中使用。
-* 自签名证书的默认到期日期为 1 年。
+* 自签名证书的默认过期日期为一年。
 
 你将使用来自 [Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
 

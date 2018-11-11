@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171011"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252541"
 ---
 # <a name="how-to-use-alternative-inputs"></a>如何使用备用输入
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171011"
 
 ## <a name="video"></a>视频
 
-[![教程 8 预览](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
+[![教程 8 预览](https://aka.ms/cl-tutorial-08-preview)](https://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -51,7 +51,7 @@ ms.locfileid: "39171011"
 1. 依次单击“操作”和“新建操作”
 2. 在“响应”中，键入“Which city do you want?”。
 3. 在“取消资格实体”中，输入“$city”。
-3. 单击创建
+3. 单击“法律条款” 
 
 然后，创建第二个操作：
 
@@ -66,7 +66,7 @@ ms.locfileid: "39171011"
 3. 在响应中，键入“Try asking for the weather”。
     - 这将是对用户问题（例如“系统能做什么？”）的响应
 4. 在“取消资格实体”中，输入“$city”。
-4. 单击创建
+4. 单击“法律条款” 
 
 现在有三个操作。
 
@@ -100,7 +100,7 @@ ms.locfileid: "39171011"
 
 1. 依次单击“新建操作”和“新建训练对话”。
 2. 键入“help”。
-3. 单击“对操作打分”。
+3. 单击“Score Actions”。
     - 这两个潜在响应的评分非常接近。 这告诉我们模型对这两个操作之间的边界感到困惑。
 6. 单击“放弃教学”并确认。
 
@@ -148,7 +148,7 @@ ms.locfileid: "39171011"
 
 1. 单击“新建训练对话”。
 2. 键入“what are you capabilities”。
-3. 单击“对操作打分”。
+3. 单击“Score Actions”。
     - 分数现在对下一个操作更具决定性，这表明模型的确定性。
 2. 选择“Try asking for weather”。
 6. 单击“完成教学”

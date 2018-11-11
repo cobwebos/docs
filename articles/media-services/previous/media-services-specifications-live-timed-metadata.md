@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: 2e736872dc3e471af7c5b3f758516910a02067fe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249568"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号
 
@@ -223,7 +223,7 @@ MediaDataBox（“mdat”）块必须具有以下格式：
 ## <a name="32--apple-hls-delivery"></a>3.2 Apple HLS 交付
 Apple HTTP Live Streaming (HLS) 的超时元数据可以嵌入到自定义 M3U 标记中的片段播放列表中。  应用程序层可以分析 M3U 播放列表和处理 M3U 标记。 Azure 媒体服务将在 [HLS] 中定义的 EXT-X-CUE 标记中嵌入超时元数据。  EXT-X-CUE 标记当前被 DynaMux 用于类型为 ADI3 的消息。  要支持 SCTE-35 和非 SCTE-35 消息，请按下面的定义设置 EXT-X-CUE 标记的属性：
 
-| **属性名称** | **类型**                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                      |
+| **属性名称** | 类型                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 提示                | 带引号的字符串                 | 必选                                  | 如 [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) 中所述，编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                |
 | 类型               | 带引号的字符串                 | 必选                                  | 标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。 对于 [SCTE-35] 消息，类型将采用特殊值“scte35”。                                                                                                                                |
@@ -291,7 +291,7 @@ Azure 媒体服务将同时进行 MPD 中的信号发送和使用事件消息块
 
 EventStream 元素具有以下属性：
 
-| **属性名称** | **类型**                | **必需？** | **说明**                                                                                                                                                                                                                                                                                   |
+| **属性名称** | 类型                | **必需？** | **说明**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | scheme_id_uri      | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 值必须为标识消息方案的 URN 或 URL；例如，“urn:example:signaling:1.0”。                                                                |
 | 值              | 字符串                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值必须设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
@@ -300,7 +300,7 @@ EventStream 元素具有以下属性：
 
 EventStream 元素中包含零个或多个事件元素，并且它们具有以下属性：
 
-| **属性名称**  | **类型**                | **必需？** | **说明**                                                                                                                                                                                                             |
+| **属性名称**  | 类型                | **必需？** | **说明**                                                                                                                                                                                                             |
 |---------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | presentation_time   | 64 位无符号整数 | 可选      | 必须是相对于周期开始的事件的媒体呈现时间。 呈现时间和持续时间应与类型 1 或 类型 2 的流访问点 (SAP) 保持一致，如 [ISO-14496-12] 附录 I 中所述。 |
 | duration            | 32 位无符号整数 | 可选      | 事件持续时间。 如果持续时间未知，则必须忽略它。                                                                                                                                                 |
@@ -404,7 +404,7 @@ DASHEventMessageBox 字段定义如下：
 
 **[HLS]** [“HTTP Live Streaming”, draft-pantos-http-live-streaming-14, 2014/10/14](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
-**[MS-SSTR]** [ Microsoft Smoot Streaming Protocol（Microsoft 平滑流式处理协议），2014/5/15](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+**[MS-SSTR]** [ Microsoft Smoot Streaming Protocol（Microsoft 平滑流式处理协议），2014/5/15](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 **[AMF0]**[ （操作消息格式 AMF0）](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
