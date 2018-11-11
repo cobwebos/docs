@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4b1c2d9390890618a9aa61eb425fbd132917f414
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172375"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229042"
 ---
 # <a name="introduction-to-entities"></a>实体简介
 
@@ -23,7 +23,7 @@ ms.locfileid: "39172375"
 
 ## <a name="video"></a>视频
 
-[![教程 3 预览](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
+[![教程 3 预览](https://aka.ms/cl-tutorial-03-preview)](https://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>要求
 
@@ -50,7 +50,7 @@ ms.locfileid: "39172375"
 
 1. 依次单击“实体”和“新建实体”。
 2. 在“实体名称”中，输入“city”。
-3. 单击创建
+3. 单击“法律条款” 
 
 > [!NOTE]
 > 实体类型是“自定义”- 这意味着可以对实体进行定型。  此外，还有预构建实体，这意味着其行为无法调整 - 这些内容在另一个教程中介绍。

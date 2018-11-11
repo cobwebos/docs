@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 21ac3de793f5ce559c3a03de2a09f11ccb86b12a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167352"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963840"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>教程：安装 Azure Data Box Edge（预览版）
 
@@ -111,8 +111,14 @@ ms.locfileid: "49167352"
 
 - 已拆包并装入机架的 Edge 物理设备。
 - 两根电源线。 
-- 两根 1-GbE RJ-45 网线，和四根 25-GbE SFP+ 铜缆。
+- 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
+- 一根 25-GbE SFP+ 铜缆用于配置每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（连接到 Azure）。
 - 可以取用两个配电单元（建议）。
+
+> [!NOTE]
+> - 如果仅连接一个数据网络接口，我们建议使用 25-GbE 网络接口（例如端口 3、端口 4、端口 5 或端口 6）将数据发送到 Azure。 
+> - 为获得最佳性能并处理大量数据，请考虑连接所有数据端口。
+> - Edge 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。 
 
 Edge 设备有 8 块 NVMe SSD。 前面板上还有状态 LED 和电源按钮。 设备的背面带有冗余电源单元 (PSU)。 设备有六个网络接口：两个 1-Gbps 接口和四个 25-Gbps 接口。 设备包含基板管理控制器 (BMC)。 请识别设备背板上的各个端口。
  
@@ -123,13 +129,7 @@ Edge 设备有 8 块 NVMe SSD。 前面板上还有状态 LED 和电源按钮。
 1. 将电源线连接到机柜中的每个 PSU。 为确保高可用性，请安装这两个 PSU 并将其连接到不同的电源。
 2. 将电源线连接到配电装置 (PDU)。 确保两个 PSU 使用单独的电源。
 3. 将 1-GbE 网络接口的端口 1 连接到用于配置物理设备的计算机。 端口 1 是专用的管理接口。
-4. 通过 RJ-45 网线将 1-GbE 网络接口的端口 2 连接到数据中心网络/Internet。 
-5. 使用 SFP+ 铜缆将 25-GbE 网络接口的端口 3、端口 4、端口 5 和端口 6 这四个端口连接到数据中心网络/Internet。 
-
-> [!NOTE]
-> - 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（连接到 Azure）。 
-> - 我们建议使用 25-GbE 网络接口（例如端口 3、端口 4、端口 5 或端口 6）将数据发送到 Azure。 
-> - Edge 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。  
+4. 将一个或多个端口 2、端口 3、端口 4、端口 5 或端口 6 连接到数据中心网络/Internet。 如果连接端口 2，请使用 RJ-45 网线。 对于 25-GbE 网络接口，请使用 SFP+ 铜缆。  
 
 
 ## <a name="next-steps"></a>后续步骤

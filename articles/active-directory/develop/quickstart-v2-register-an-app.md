@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975804"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913272"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>快速入门：使用 Azure Active Directory v2.0 终结点注册应用
 
@@ -30,8 +30,10 @@ ms.locfileid: "46975804"
 
 要生成同时接受个人 Microsoft 帐户 (MSA) 和工作或学校帐户 (Azure AD) 登录的应用，将需要使用 Azure Active Directory (Azure AD) v2.0 终结点注册应用。 目前，无法使用任何现有的应用搭配 Azure AD 或 MSA - 需要创建一个全新的应用。
 
+请注意，v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
+
 > [!NOTE]
-> 请注意，v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
+> 注册新应用？ 在 Azure 门户中试用新的**应用注册（预览版）** 体验。 请参阅[注册应用（预览版）](quickstart-register-app.md)以开始使用。
 
 ## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>步骤 1：登录到 Microsoft 应用程序注册门户
 

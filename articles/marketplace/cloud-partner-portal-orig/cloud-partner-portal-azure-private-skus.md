@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa82db289cd3080cc1e51027b609cc6c8aa66921
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805635"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230234"
 ---
 <a name="private-skus"></a>专用 SKU
 ============
 
-使用专用 SKU 可以限制为只有特定的客户才能使用 SKU。 将某个 SKU 标记为专用后，不会在任何公共目录中提供该 SKU，包括 [Azure 市场](http://azuremarketplace.microsoft.com)和 [Azure 门户](http://portal.azure.com)。 在 Azure 门户中，只有有权访问该 SKU 的客户才能看到它。 此外，这些客户的权限将会提升，有权访问专用的套餐。
+使用专用 SKU 可以限制为只有特定的客户才能使用 SKU。 将某个 SKU 标记为专用后，不会在任何公共目录中提供该 SKU，包括 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](http://portal.azure.com)。 在 Azure 门户中，只有有权访问该 SKU 的客户才能看到它。 此外，这些客户的权限将会提升，有权访问专用的套餐。
 
 >[!NOTE]
 >专用 SKU 必须有新的唯一 SKU/计划 ID，以避免与公共 SKU 发生任何冲突。
