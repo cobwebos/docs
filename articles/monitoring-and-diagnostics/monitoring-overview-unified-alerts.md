@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 30b2d60868702c6113612668b8e4cf9975aa2c40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117167"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962191"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Azure Monitor 中的统一警报
 
@@ -82,9 +82,9 @@ ms.locfileid: "39117167"
  
 这个创作过程经过了简化，用户在选择 Azure 资源之前，不再需要知道受支持的监视源或信号。 可用信号列表会根据选定的目标资源自动筛选，并引导你定义警报规则的逻辑。
 
-可以在[使用 Azure Monitor 创建、查看和管理警报](monitor-alerts-unified-usage.md)中详细了解如何创建警报规则。
+可以在[使用 Azure Monitor 创建、查看和管理警报](alert-metric.md)中详细了解如何创建警报规则。
 
-警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用其中每种服务的信息，请参阅[监视 Azure 应用程序和资源](./monitoring-overview.md)。 下表提供了 Azure 中提供的警报规则类型的列表。 其中还列出了统一警报体验目前支持哪些类型。
+警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用其中每种服务的信息，请参阅[监视 Azure 应用程序和资源](../azure-monitor/overview.md)。 下表提供了 Azure 中提供的警报规则类型的列表。 其中还列出了统一警报体验目前支持哪些类型。
 
 | **监视器源** | **信号类型**  | **说明** | 
 |-------------|----------------|-------------|
@@ -135,7 +135,7 @@ ms.locfileid: "39117167"
 
 支持以下警报状态。
 
-| 省/直辖市/自治区 | Description |
+| 状态 | Description |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
@@ -187,7 +187,7 @@ ms.locfileid: "39117167"
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
 | 资源类型 | 选择一个或多个资源类型。 只有包含选定类型中的目标的警报才会包含在视图中。 仅在指定资源组后，才显示此列。 |
 | 资源 | 选择资源。 只有包含该资源（作为目标）的警报才会包含在视图中。 仅在指定资源类型后，才显示此列。 |
-| Severity | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
+| 严重性 | 选择警报严重性，或选择“所有”以包含所有严重性的警报。 |
 | 监视条件 | 选择监视条件，或选择“所有”以包括所有条件的警报。 |
 | 警报状态 | 选择警报状态，或选择“所有”以包含所有状态的警报。 |
 | 监视服务 | 选择一个服务，或选择“所有”以包含所有服务。 只会包含使用该服务（作为目标）的规则创建的警报。 |
@@ -224,7 +224,7 @@ ms.locfileid: "39117167"
 | 历史记录 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |
 
 ## <a name="next-steps"></a>后续步骤
-- [了解如何使用全新警报体验创建、查看和管理警报](monitor-alerts-unified-usage.md)
+- [了解如何使用全新警报体验创建、查看和管理警报](alert-metric.md)
 - [了解警报体验中的日志警报](monitor-alerts-unified-log.md)
 - [了解警报体验中的指标警报](monitoring-near-real-time-metric-alerts.md)
-- [了解警报体验中的活动日志警报](monitoring-activity-log-alerts-new-experience.md)
+- [了解警报体验中的活动日志警报](alert-activity-log.md)

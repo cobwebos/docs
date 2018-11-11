@@ -1,6 +1,6 @@
 ---
 title: 本快速入门展示了如何使用 C# 将 X.509 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: 在本快速入门中，将使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务
+description: 本快速入门使用组注册。 在本快速入门中，需使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/21/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: cf2a2dfbb46b8958e10431ba61e4bd8bc7ae18d6
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4c466c8289d7ebde484ea627eecfcbba6a5bc4aa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204953"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157405"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 

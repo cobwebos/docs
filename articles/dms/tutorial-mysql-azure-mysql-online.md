@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据库迁移服务将 MySQL 联机迁移到 Azure Database for MySQL | Microsoft Docs
+title: 教程：使用 Azure 数据库迁移服务执行从 MySQL 到 Azure Database for MySQL 的联机迁移 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 MySQL 到 Azure Database for MySQL 的联机迁移。
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/06/2018
-ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829845"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960508"
 ---
-# <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
+# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 MySQL 实例迁移到 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL。
 
 本教程介绍如何执行下列操作：

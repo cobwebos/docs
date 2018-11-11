@@ -2,19 +2,19 @@
 title: 在 HDInsight 群集上将 Hadoop Pig 与 SSH 配合使用 - Azure
 description: 了解如何使用 SSH 连接到基于 Linux 的 Hadoop 群集，并使用 Pig 命令以交互方式或以批处理作业形式运行 Pig Latin 语句。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 4d380c44511ad330542402499829c19de62bd39a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 1deb44fecad6c120dd1e8f82cec36bff6353fc0b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051520"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51003874"
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>使用 Pig 命令 (SSH) 在基于 Linux 的群集上运行 Pig 作业
 

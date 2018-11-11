@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/12/2018
-ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/01/2018
+ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407615"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959216"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
 
@@ -41,7 +41,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
    
    ![“创建服务器”窗体](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
 
-    **设置** | 建议的值 | 字段说明 
+    **设置** | **建议的值** | **字段说明** 
     ---|---|---
     服务器名称 | 唯一的服务器名称 | 选择用于标识 Azure Database for MySQL 服务器的唯一名称。 例如，mydemoserver。 域名 *.mysql.database.azure.com* 将追加到所提供的服务器名称后面。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
     订阅 | 订阅 | 选择要用于服务器的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的订阅。
@@ -98,20 +98,9 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 在此示例中，服务器名称是 **mydemoserver.mysql.database.azure.com**，服务器管理员登录名是 **myadmin@mydemoserver**。
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到 MySQL
-可以通过多个应用程序连接到 Azure Database for MySQL 服务器。 
+使用 mysql.exe 命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
 
-让我们先使用 [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) 命令行工具来演示如何连接到该服务器。 也可根据此处所述使用 Web 浏览器和 Azure Cloud Shell，不安装其他软件。 如果已通过本地方式安装了 mysql 实用程序，也可从该处进行连接。
-
-1. 通过 Azure 门户右上角的终端图标 (**>_**) 启动 Azure Cloud Shell。
-![Azure Cloud Shell 终端符号](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
-
-2.  Azure Cloud Shell 会在浏览器中打开，可以在其中键入 bash shell 命令。
-
-   ![命令提示符--mysql 命令行示例](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
-
-3. 在 Cloud Shell 提示符下键入 mysql 命令行，连接到 Azure Database for MySQL 服务器。
-
-    若要借助 mysql 实用程序连接到 Azure Database for MySQL 服务器，请使用以下格式：
+1. 若要借助 mysql 实用程序连接到 Azure Database for MySQL 服务器，请使用以下格式：
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
@@ -119,13 +108,13 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
 
     例如，以下命令连接到示例服务器：
 
-    ```azurecli-interactive
+    ```bash
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
     mysql 参数 |建议的值|Description
     ---|---|---
-    --host | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
+    --host | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。**** 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。 
     --user | 服务器管理员登录名 |此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
     -p | 等待系统提示 |如果系统提示，请提供在创建服务器时提供的密码。 注意，键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，选择 Enter。
 
@@ -149,7 +138,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
     mysql>
     ```
     > [!TIP]
-    > 如果未将防火墙配置为允许 Azure Cloud Shell 的 IP 地址，则会出现以下错误：
+    > 如果未将防火墙配置为允许客户端的 IP 地址，则会出现以下错误：
     >
     > 错误 2003 (28000): 不允许 IP 地址为 123.456.789.0 的客户端访问服务器。
     >
@@ -178,7 +167,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
     SHOW DATABASES;
     ```
 
-7.  键入 `\q`，然后选择 Enter 键，退出 mysql 工具。 完成后即可关闭 Azure Cloud Shell。
+7.  键入 `\q`，然后选择 Enter 键，退出 mysql 工具。 
 
 现在，你已连接到 Azure Database for MySQL 服务器并创建空白用户数据库。 请转到下一部分进行类似的练习。 下一练习使用另一常用工具（即 MySQL Workbench）连接到同一服务器。
 
@@ -197,7 +186,7 @@ Azure Database for MySQL 服务在服务器级别创建防火墙。 除非创建
     |---|---|---|
      连接名称 | 演示连接 | 此连接的标签。 |
     连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
-    主机名 | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。|
+    主机名 | *服务器名称* | 此前在创建 Azure Database for MySQL 服务器时使用过的服务器名称值。 示例服务器为 **mydemoserver.mysql.database.azure.com**。 请使用完全限定的域名 (\*.mysql.database.azure.com)，如示例中所示。**** 如果不记得服务器名称，请按上一部分的步骤操作，以便获取连接信息。|
      端口 | 3306 | 连接到 Azure Database for MySQL 服务器时需要使用的端口。 |
     用户名 |  服务器管理员登录名 | 此前在创建 Azure Database for MySQL 服务器时提供的服务器管理员登录信息。 示例用户名为 myadmin@mydemoserver。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username@servername。
     密码 | 你的密码 | 选择“在保管库中存储...”按钮来保存密码。 |

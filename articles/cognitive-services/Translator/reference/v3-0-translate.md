@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1841730a39d29c5fe1f3451b7614818e924b339f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128751"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914288"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
@@ -35,7 +35,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>api-version</td>
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
@@ -90,7 +90,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>一个授权<br/>标头</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
@@ -105,7 +105,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -262,7 +262,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 ---
@@ -276,7 +276,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
         "translations":[
             {
                 "text":"你好, 你叫什么名字？",
-                "transliteration":{"text":"nǐ hǎo , nǐ jiào shén me míng zì ？","script":"Latn"},
+                "transliteration":{"script":"Latn", "text":"nǐ hǎo , nǐ jiào shén me míng zì ？"},
                 "to":"zh-Hans"
             }
         ]

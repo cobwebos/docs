@@ -9,12 +9,12 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 7e8a12a215c94102f6b08262f129faebf9cfcde9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: c30f4b9de279f8c02b7f6bc7fa7d9765972899b1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115618"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977425"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
 Service Fabric 网格命令行界面 (CLI) 是在 Service Fabric 网格中部署和管理资源所必需的。 
@@ -37,7 +37,10 @@ az extension add --name mesh
 ```azurecli-interactive
 az extension update --name mesh
 ```
+## <a name="next-steps"></a>后续步骤
 
 还可以设置你的 [Windows 开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)。
+
+找到[常见问题](service-fabric-mesh-faq.md)的答案。
 
 [azure-cli-install]: /cli/azure/install-azure-cli

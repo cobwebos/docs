@@ -3,19 +3,19 @@ title: LUIS 和 QnAMaker - 机器人集成
 titleSuffix: Azure Cognitive Services
 description: 有关在机器人中集成 QnA Maker 和 LUIS 的分步教程。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
-ms.author: tulasim
-ms.openlocfilehash: 4cf9f114fe5cb52c71db5725470d6f875c52c1f2
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.author: diberry
+ms.openlocfilehash: e0f3703d50f20b766b2ac43b96be7e001ff9bc7f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017206"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957693"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>集成 QnA Maker 和 LUIS 以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。

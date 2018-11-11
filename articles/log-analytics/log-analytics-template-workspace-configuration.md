@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 833bb6838733395d83468be3d2960c7c237aa3fc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402210"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957669"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -521,6 +521,6 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 * [将现有存储帐户添加到 Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>后续步骤
-* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../virtual-machines/windows/extensions-oms.md)。
-* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../virtual-machines/linux/extensions-oms.md)。
+* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../virtual-machines/extensions/oms-windows.md)。
+* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../virtual-machines/extensions/oms-linux.md)。
 

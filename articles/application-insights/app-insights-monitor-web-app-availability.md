@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632817"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421248"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -47,7 +47,7 @@ ms.locfileid: "45632817"
 ## <a name="setup"></a>创建 URL ping 测试
 打开“可用性”边栏选项卡，并添加一个测试。
 
-![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![至少填写网站的 URL](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **URL** 可以是要测试的任何网页，但必须在公共 Internet 中可见。 该 URL 可以包括查询字符串。 因此，例如，可以稍微训练一下数据库。 如果 URL 解析为重定向，最多可以跟踪 10 个重定向。
 * **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试会失败。 如果不选中此选项，则测试只请求指定 URL 的文件。
@@ -56,10 +56,10 @@ ms.locfileid: "45632817"
 
 * **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。
 
-* **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 请选择多个位置，以便区分网站问题与网络问题。 最多可以选择 16 个位置。
+* **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 建议最低测试位置数目为 5，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
-> [!NOTE] 
-> * 我们强烈建议从多个位置进行测试，防止出现因特定位置的暂时性问题导致的误报。
+> [!NOTE]
+> * 强烈建议至少在 5 个地点进行测试。 这是为了防止可能由特定位置的暂时性问题导致的虚假警报。 此外，我们发现最佳配置是使测试位置的数目等于警报位置阈值 + 2。 
 > * 启用“分析从属请求”选项会导致执行更严格的检查。 对于手动浏览站点时可能不明显的情况，测试可能会失败。
 
 * **成功准则**：
@@ -70,10 +70,12 @@ ms.locfileid: "45632817"
 
     **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 
+* **警报位置阈值**：建议最少为 3/5 的位置数。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。
+
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
 
-> [!NOTE] 
+> [!NOTE]
 > 对多步骤 Web 测试要收取费用。 [定价方案](http://azure.microsoft.com/pricing/details/application-insights/)。
 > 
 

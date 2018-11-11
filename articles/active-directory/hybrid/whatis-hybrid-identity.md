@@ -13,28 +13,97 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 40ac3ca92c65607df056b883608dde60d816143e
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181765"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979465"
 ---
-# <a name="hybrid-identity-and-microsofts-identity-solutions"></a>混合标识和 Microsoft 的标识解决方案
-如今，企业和公司越来越成为本地应用程序和云应用程序的混合体。  如果应用程序和用户需要访问位于本地和云中的那些应用程序，这将成为一个具有挑战性的场景。
+# <a name="hybrid-identity-and-microsoft-identity-solutions"></a>混合标识和 Microsoft 标识解决方案
+[Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用托管标识还是使用联合标识。 
 
-Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。
+- **托管标识** - 从本地 Active Directory 同步的用户帐户和组以及用户身份验证由 Azure 进行管理。   
+- **联合标识**可以对用户进行更多的控制，其方法是将用户身份验证与 Azure 隔离开，将身份验证委托给受信任的本地标识提供者。 
+
+有多个选项可用于配置混合标识。 当考虑哪个标识模型最适合组织需求时，还需考虑时间、现有基础结构、复杂性和成本。 这些因素对每个组织都不同，并可能随时间变化。 但是，如果需求确实发生更改，你还可灵活切换到不同的标识模型。
+
+## <a name="managed-identity"></a>托管标识 
+
+托管标识是将本地目录对象（用户和组）与 Azure AD 同步的最简单方法。 
+
+![同步混合标识](./media/whatis-hybrid-identity/managed.png)
+
+尽管托管标识是最简单且最快速的方法，你的用户将仍需针对基于云的资源维护一个单独的密码。 若要避免此问题，你还可以（可选）将[用户密码哈希同步](how-to-connect-password-hash-synchronization.md)到 Azure AD 目录中。 同步密码哈希使用户能够使用与本地使用的相同用户名和密码登录基于云的组织资源。 Azure AD Connect 将定期检查本地目录是否发生更改，并保持 Azure AD 目录同步。 如果本地 Active Directory 的用户属性或密码已更改，则将在 Azure AD 中自动更新此信息。 
+
+由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此建议使用默认的密码哈希同步选项。 如果这对你不适应，请在传递身份验证和 AD FS 之间进行选择。
+
+> [!TIP]
+> 用户密码以表示实际用户密码的哈希值形式存储在本地 Windows Server Active Directory 中。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。 如果选择同步密码，Azure AD Connect 将从本地 Active Directory 提取密码哈希，并在同步到 Azure AD 之前将额外安全处理应用于密码哈希。 还可将密码哈希同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。 此外，还可以对连接到公司网络中的已加入域的计算机上的用户启用单一登录 (SSO)。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。 
+>
+
+## <a name="pass-through-authentication"></a>直通身份验证
+
+[Azure AD 传递身份验证](how-to-connect-pta.md)使用本地 Acitve Directory 为基于 Azure AD 的服务提供简单的密码验证解决方案。 如果组织的安全和符合性策略不允许发送用户密码（即使以哈希格式发送也不允许），则只需对加入域的设备提供桌面 SSO 支持，建议使用传递身份验证进行评估。 传递身份验证不需要在 DMZ 中进行任何部署，因此在与 AD FS 进行比较时可以简化部署基础结构。 如果用户使用 Azure AD 进行登录，此身份验证方法可直接针对本地 Active Directory 验证用户的密码。
+
+![直通身份验证](./media/whatis-hybrid-identity/pass-through-authentication.png)
+
+使用传递身份验证，无需复杂的网络基础结构，也不需要将本地密码存储在云中。 结合单一登录，传递身份验证可在登录 Azure AD 或其他云服务时提供真正集成的体验。
+
+传递身份验证可以通过 Azure AD Connect 进行配置，利用一个简单的本地代理来侦听密码验证请求。 可轻松地将此代理部署到多台计算机，以提供高可用性和负载均衡。 由于所有通信均为出站，因此无需在 DMZ 中安装连接器。 服务器计算机的连接器要求如下所示：
+
+- Windows Server 2012 R2 或更高版本
+- 加入通过其验证用户的林中的域
+
+## <a name="federated-identity-ad-fs"></a>联合标识 (AD FS)
+
+若要更好地控制用户访问 Office 365 和其他云服务的方式，可使用 [Active Directory 联合身份验证服务 (AD FS)](how-to-connect-fed-whatis.md) 设置与单一登录 (SSO) 的目录同步。 使用 AD FS 联合验证用户的登录时，可将身份验证委托给验证用户凭据的本地服务器。 在此模型中，本地 Active Directory 凭据永远不会传递到 Azure AD 中。
+
+![联合标识](./media/whatis-hybrid-identity/federated-identity.png)
+
+也称为“联合身份验证”，这种登录方法可确保所有用户身份验证均在本地得以控制，并且允许管理员实施更严格的访问控制。 使用 AD FS 的联合身份验证是最复杂的选项，需要在本地环境中部署其他服务器。 联合身份验证还承诺为 Active Directory 和 AD FS 基础结构提供全天候支持。 如果本地 Internet 访问、域控制器或 AD FS 服务器不可用，用户无法登录云服务，此时就需要这种高级支持。
+
+> [!TIP]
+> 如果决定使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
+>
+
+## <a name="common-scenarios-and-recommendations"></a>常见方案和建议
+
+下面是一些常见的混合标识和访问管理方案，其中每个方案都包含有关适合的混合标识选项的建议。
+
+|我需要：|PHS 和 SSO<sup>1</sup>| PTA 和 SSO<sup>2</sup> | AD FS<sup>3</sup>|
+|-----|-----|-----|-----|
+|将本地 Active Directory 中创建的新用户、联系人和组帐户自动同步到云。|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|为 Office 365 混合方案设置我的租户|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|使用户能够使用其本地密码登录并访问云服务|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|使用公司凭据实现单一登录|![建议](./media/whatis-hybrid-identity/ic195031.png)| ![建议](./media/whatis-hybrid-identity/ic195031.png) |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|确保未在云中存储密码哈希| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|启用云多重身份验证解决方案| |![建议](./media/whatis-hybrid-identity/ic195031.png)|![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|启用本地多重身份验证解决方案| | |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|支持用户使用智能卡身份验证<sup>4</sup>| | |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+|在 Office 门户和 Windows 10 桌面上显示密码到期通知| | |![建议](./media/whatis-hybrid-identity/ic195031.png)|
+
+> <sup>1</sup> 使用单一登录的密码哈希同步。
+>
+> <sup>2</sup> 传递身份验证和单一登录。 
+>
+> <sup>3</sup> 使用 AD FS 的联合单一登录。
+>
+> <sup>4</sup> AD FS 可与企业 PKI 集成，允许使用证书登录。 这些证书可以是通过受信任预配通道（如 MDM、GPO 或智能卡证书（包括 PIV/CAC 卡）或 Hello 企业版（信任证书））部署的软证书。 有关智能卡身份验证支持的详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)。
+>
 
 ## <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
-Azure AD Connect 是设计用来满足和完成你的混合标识目标的 Microsoft 工具。  这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。  它提供以下功能：
+Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。  这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。  它提供以下功能：
     
 - [同步](how-to-connect-sync-whatis.md) - 此组件负责创建用户、组和其他对象。 它还负责确保本地用户和组的标识信息与云匹配。  它负责将密码哈希与 Azure AD 进行同步。
+- [密码哈希同步](how-to-connect-password-hash-synchronization.md) - 一个可选组件，可以将用户密码哈希与 Azure AD 同步，这样用户就可以在本地和云中使用相同的密码。
 -   [AD FS 和联合身份验证集成](how-to-connect-fed-whatis.md) - 联合身份验证是 Azure AD Connect 的可选部件，可用于使用本地 AD FS 基础结构配置混合环境。 它还提供了 AD FS 管理功能，例如证书续订和其他 AD FS 服务器部署。
 -   [直通身份验证](how-to-connect-pta.md) - 另一个可选组件，它允许用户在本地和云中使用相同的密码，但不要求额外提供联合环境的基础结构。
+-   [PingFederate 和联合身份验证集成](how-to-connect-install-custom.md#configuring-federation-with-pingfederate) - 另一联合身份验证选项，允许你使用 PingFederate 作为标识提供者。
 -   [运行状况监视](whatis-hybrid-identity-health.md) - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置，用于查看此活动。 
 
 
