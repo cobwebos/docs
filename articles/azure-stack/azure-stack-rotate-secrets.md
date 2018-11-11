@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466148"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244094"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -92,7 +92,7 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 5.  将用于轮换的证书备份存储在安全的备份位置。 如果运行轮换时发生失败，请使用备份副本替换文件共享中的证书，然后重新运行轮换。 请记得将备份副本保存在安全的备份位置。
 6.  创建可从 ERCS VM 访问的文件共享。 该文件共享必须可供 **CloudAdmin** 标识读取和写入。
 7.  在可以访问该文件共享的计算机上打开 PowerShell ISE 控制台。 导航到该文件共享。 
-8.  运行 **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
+8.  运行 **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** 创建外部证书所需的目录。
 
 ## <a name="rotating-external-and-internal-secrets"></a>轮换外部和内部机密
 

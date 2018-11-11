@@ -3,19 +3,19 @@ title: 使用 Microsoft Avro Library 序列化 Hadoop 中的数据 - Azure
 description: 了解如何使用 Microsoft Avro Library 将 Hadoop on HDInsight 中的数据串行化和反序列化，以将其保留在内存、数据库或文件中。
 keywords: avro, hadoop avro
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: ad8d0392b4b0e1e9e8d94e0d5a7a0c72455ecfcb
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 5928c6490c9de6c48b75800158b8298007d7b8ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246899"
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>使用 Microsoft Avro Library 序列化 Hadoop 中的数据
 
@@ -42,14 +42,14 @@ Apache Avro 序列化格式广泛应用于 Azure HDInsight 及其他 Apache Hado
 .NET Library for Avro 支持通过两种方式序列化对象：
 
 * **反射** - 自动从要序列化的 .NET 类型的数据协定特性生成这些类型的 JSON 架构。
-* **通用记录** - 没有 .NET 类型可以用来描述要序列化的数据的架构时，系统会在以 [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 类表示的记录中显式指定 JSON 架构。
+* **通用记录** - 没有 .NET 类型可以用来描述要序列化的数据的架构时，系统会在以 [**AvroRecord**](https://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 类表示的记录中显式指定 JSON 架构。
 
 当流的写入器和读取器都知道数据架构时，可以发送没有架构的数据。 在未使用 Avro 对象容器文件的情况下，架构将存储在文件中。 可以指定其他参数，例如用于数据压缩的编解码器。 这些情况会在以下代码示例中进一步详述和说明：
 
 ## <a name="install-avro-library"></a>安装 Avro Library
 以下是安装此库之前所需具备的先决条件：
 
-* <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
+* <a href="https://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a>（6.0.4 或更高版本）
 
 请注意，Newtonsoft.Json.dll 依赖项已随着 Microsoft Avro Library 的安装自动下载。 下一部分将提供相关过程：
@@ -93,9 +93,9 @@ Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先
 
 第三和第四个示例说明如何使用 Avro 对象容器文件，将数据序列化与反序列化。 当数据存储在 Avro 容器文件中时，其架构始终随之一起存储，因为必须共享架构才能进行反序列化。
 
-包含前四个示例的样例可以从 <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">Azure 代码示例</a>站点下载。
+包含前四个示例的样例可以从 <a href="https://code.msdn.microsoft.com/Serialize-data-with-the-86055923" target="_blank">Azure 代码示例</a>站点下载。
 
-第五个示例演示如何将自定义压缩编解码器用于 Avro 对象容器文件。 包含此示例代码的样例可以从 <a href="http://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">Azure 代码示例</a>站点下载。
+第五个示例演示如何将自定义压缩编解码器用于 Avro 对象容器文件。 包含此示例代码的样例可以从 <a href="https://code.msdn.microsoft.com/Serialize-data-with-the-67159111" target="_blank">Azure 代码示例</a>站点下载。
 
 第六个示例显示如何使用 Avro 序列化来上传数据到 Azure Blob 存储，然后使用具有 HDInsight (Hadoop) 群集的 Hive 加以分析。 可以从 <a href="https://code.msdn.microsoft.com/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure 代码示例</a>站点下载该示例。
 
@@ -109,7 +109,7 @@ Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先
 * <a href="#Scenario6">使用 Avro 来上传 Microsoft Azure HDInsight 服务的数据</a> - 该示例演示 Avro 序列化如何与 HDInsight 服务交互。 要运行此示例，必须具备有效的 Azure 订阅并且可以访问 Microsoft Azure HDInsight 群集。
 
 ## <a name="Scenario1"></a>示例 1：通过反射进行序列化
-Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据协定特性自动生成类型的 JSON 架构。 Microsoft Avro Library 将创建一个 [**IAvroSeralizer<T>**](http://msdn.microsoft.com/library/dn627341.aspx) 以标识要序列化的字段。
+Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据协定特性自动生成类型的 JSON 架构。 Microsoft Avro Library 将创建一个 [**IAvroSeralizer<T>**](https://msdn.microsoft.com/library/dn627341.aspx) 以标识要序列化的字段。
 
 在此示例中，将对象（具有成员 **Location** 结构的 **SensorData** 类）序列化到内存流，继而又将此流反序列化。 然后，将结果与初始实例进行比较，以确认恢复的 SensorData 对象与原始对象相同。
 
@@ -236,7 +236,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 ## <a name="sample-2-serialization-with-a-generic-record"></a>示例 2：通过通用记录进行序列化
 当数据无法使用具有数据协定的 .NET 类表示而导致不能使用反射时，可以在通用记录中显式指定 JSON 架构。 此方法比使用反射要慢。 在这种情况下，数据架构也可能是动态的，即在编译时是未知的。 以逗号分隔值 (CSV) 文件表示的数据（在运行时转换为 Avro 格式之前，其架构一直是未知的）是这种动态方案的一个示例。
 
-此示例演示如何创建 [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 并使用它显式指定 JSON 架构，如何为其填充数据，并对其进行序列化和反序列化。 然后，将结果与初始实例进行比较，以确认恢复的记录与原始记录相同。
+此示例演示如何创建 [**AvroRecord**](https://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 并使用它显式指定 JSON 架构，如何为其填充数据，并对其进行序列化和反序列化。 然后，将结果与初始实例进行比较，以确认恢复的记录与原始记录相同。
 
 此示例中的架构假定在读取器与写入器之间共享，因此无需采用 Avro 对象容器格式。 有关在架构必须包含在已序列化的数据中时，如何使用通用记录和对象容器格式将数据序列化到内存缓冲区，以及对内存缓冲区中的数据进行反序列化的示例，请参阅<a href="#Scenario4">使用对象容器文件通过通用记录进行序列化</a>示例。
 
@@ -357,9 +357,9 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 
 
 ## <a name="sample-3-serialization-using-object-container-files-and-serialization-with-reflection"></a>示例 3：使用对象容器文件进行序列化与使用反射进行序列化
-此示例与<a href="#Scenario1">第一个示例</a>中使用反射隐式指定架构的方案类似。 除了本示例假设要将架构反序列化的读取器不知道架构以外。 要序列化的 **SensorData** 对象及其隐式指定的架构存储在由 [**AvroContainer**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的 Avro 对象容器文件中。
+此示例与<a href="#Scenario1">第一个示例</a>中使用反射隐式指定架构的方案类似。 除了本示例假设要将架构反序列化的读取器不知道架构以外。 要序列化的 **SensorData** 对象及其隐式指定的架构存储在由 [**AvroContainer**](https://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的 Avro 对象容器文件中。
 
-在此示例中，数据使用 [**SequentialWriter<SensorData>**](http://msdn.microsoft.com/library/dn627340.aspx) 进行序列化，使用 [**SequentialReader<SensorData>**](http://msdn.microsoft.com/library/dn627340.aspx) 进行反序列化。 然后，将结果与初始实例比较，以确保相同。
+在此示例中，数据使用 [**SequentialWriter<SensorData>**](https://msdn.microsoft.com/library/dn627340.aspx) 进行序列化，使用 [**SequentialReader<SensorData>**](https://msdn.microsoft.com/library/dn627340.aspx) 进行反序列化。 然后，将结果与初始实例比较，以确保相同。
 
 对象容器文件中的数据是通过 .NET Framework 4 中的默认 [**Deflate**][deflate-100] 压缩编解码器压缩的。 请参阅本主题中的<a href="#Scenario5">第五个示例</a>，了解如何使用 .NET Framework 4.5 中提供的更新的 [**Deflate**][deflate-110] 压缩编解码器高级版。
 
@@ -599,7 +599,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 ## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>示例 4：使用对象容器文件进行序列化与使用通用记录进行序列化
 此示例与<a href="#Scenario2">第二个示例</a>中使用 JSON 显式指定架构的方案类似。 除了本示例假设要将架构反序列化的读取器不知道架构以外。
 
-测试数据集将通过显式定义的 JSON 架构收集到 [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 对象列表中，然后存储在由 [**AvroContainer**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的对象容器文件中。 此容器文件将创建一个写入器，该写入器用于将未压缩的数据序列化到内存流，并将该内存流保存到文件中。 创建读取器时所用的 [Codec.Null](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) 参数指定不压缩此数据。
+测试数据集将通过显式定义的 JSON 架构收集到 [**AvroRecord**](https://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 对象列表中，然后存储在由 [**AvroContainer**](https://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的对象容器文件中。 此容器文件将创建一个写入器，该写入器用于将未压缩的数据序列化到内存流，并将该内存流保存到文件中。 创建读取器时所用的 [Codec.Null](https://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) 参数指定不压缩此数据。
 
 然后，从文件中读取数据，并将数据反序列化为对象的集合。 将此集合与 Avro 记录的初始列表进行比较，以确认它们相同。
 
@@ -859,7 +859,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 
 
 ## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>示例 5：使用对象容器文件通过自定义压缩编解码器进行序列化
-第五个示例演示如何将自定义压缩编解码器用于 Avro 对象容器文件。 包含此示例代码的样例可以从 [Azure 代码示例](http://code.msdn.microsoft.com/Serialize-data-with-the-67159111)站点下载。
+第五个示例演示如何将自定义压缩编解码器用于 Avro 对象容器文件。 包含此示例代码的样例可以从 [Azure 代码示例](https://code.msdn.microsoft.com/Serialize-data-with-the-67159111)站点下载。
 
 [Avro 规范](http://avro.apache.org/docs/current/spec.html#Required+Codecs)允许使用可选的压缩编解码器（除了 **Null** 和 **Deflate** 默认压缩编解码器外）。 此示例未实现类似 Snappy（在 [Avro 规范](http://avro.apache.org/docs/current/spec.html#snappy)中作为支持的可选编解码器提及）的新编解码器。 它演示如何使用 [**Deflate**][deflate-110] 编解码器的 .NET Framework 4.5 实现，该编解码器基于 [zlib](http://zlib.net/) 压缩库提供比默认的 .NET Framework 4.0 版本更好的压缩算法。
 

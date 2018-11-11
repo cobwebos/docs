@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140426"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233671"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -48,7 +48,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | Runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
-| 资产 |包括自动化帐户中能够在 Runbook 中使用的[自动化资产](http://msdn.microsoft.com/library/dn939988.aspx)。 将资产添加到 Runbook 中时，它会添加一个可以获取所选资产的工作流活动。 在使用变量资产的情况下，可以选择是否添加用于获取变量或设置变量的活动。 |
+| 资产 |包括自动化帐户中能够在 Runbook 中使用的[自动化资产](https://msdn.microsoft.com/library/dn939988.aspx)。 将资产添加到 Runbook 中时，它会添加一个可以获取所选资产的工作流活动。 在使用变量资产的情况下，可以选择是否添加用于获取变量或设置变量的活动。 |
 | Runbook 控件 |包括可以在当前 Runbook 中使用的 Runbook 控件活动。 *交接点*采用多个输入，并会等到所有输入完成后才会继续执行工作流。 *Code* 活动运行一行或多行 PowerShell 或 PowerShell 工作流代码，具体取决于图形 Runbook 类型。 可以将此活动用于自定义代码或通过其他活动难以实现的功能。 |
 
 ### <a name="configuration-control"></a>配置控件
@@ -326,7 +326,7 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 |:--- |:--- |
 | 名称 |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
 | Description |针对输入参数的可选说明。 |
-| Type |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
+| 类型 |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
 | 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，将无法启动 Runbook。 |
 | 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
 
@@ -336,7 +336,7 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 
 ## <a name="powershell-expressions"></a>PowerShell 表达式
 
-图形编写的优点之一是提供以 PowerShell 的基本知识创建 Runbook 的能力。 目前，确实需要熟悉一下 PowerShell 才能填充某些[参数值](#activities)和设置[链接条件](#links-and-workflow)。 本部分提供 PowerShell 表达式的快速简介供不熟悉的用户参考。 [使用 Windows PowerShell 编写脚本](http://technet.microsoft.com/library/bb978526.aspx)中提供了 PowerShell 的完整详细信息。
+图形编写的优点之一是提供以 PowerShell 的基本知识创建 Runbook 的能力。 目前，确实需要熟悉一下 PowerShell 才能填充某些[参数值](#activities)和设置[链接条件](#links-and-workflow)。 本部分提供 PowerShell 表达式的快速简介供不熟悉的用户参考。 [使用 Windows PowerShell 编写脚本](https://technet.microsoft.com/library/bb978526.aspx)中提供了 PowerShell 的完整详细信息。
 
 ### <a name="powershell-expression-data-source"></a>PowerShell 表达式数据源
 可以使用 PowerShell 表达式作为数据源，使用一些 PowerShell 代码的结果来填充[活动参数](#activities)的值。 这可以是执行某个简单函数的单行代码，或执行某个复杂逻辑的多行代码。 未分配给变量的任何命令输出都将输出到参数值。
@@ -414,7 +414,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 
 ### <a name="hashtables"></a>哈希表
 
-[哈希表](http://technet.microsoft.com/library/hh847780.aspx)是返回一组值时很有用的名称/值对。 某些活动的属性可能是哈希表而不是简单值。 哈希表有时也称为字典。
+[哈希表](https://technet.microsoft.com/library/hh847780.aspx)是返回一组值时很有用的名称/值对。 某些活动的属性可能是哈希表而不是简单值。 哈希表有时也称为字典。
 
 使用以下语法创建哈希表。 哈希表可以包含任意数目的条目，但每个条目由一个名称和值定义。
 

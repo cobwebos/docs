@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b2f6df1e5688bf9bc47056c7b05cf6ac16026c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c6dddbdbc781869ef6a3c1a0a707eeb83941b92a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634857"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239315"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -504,7 +504,7 @@ Azure 资源管理器和 Azure 经典部署模型在以下方面有所不同：
 
 在 Azure 资源管理器中，可在一个群集中安装多个 SAP 系统标识符 (SID) ASCS/SCS 实例。 之所以能够使用多 SID 实例，是因为支持对每个 Azure 负载均衡器使用多个 IP 地址。
 
-若要使用 Azure 经典部署模型，请遵循 [Azure 中的 SAP NetWeaver：配合 SIOS DataKeeper 使用 Azure 中的 Windows Server 故障转移群集来组建 SAP ASCS/SCS 实例的群集](http://go.microsoft.com/fwlink/?LinkId=613056)中所述的过程。
+若要使用 Azure 经典部署模型，请遵循 [Azure 中的 SAP NetWeaver：配合 SIOS DataKeeper 使用 Azure 中的 Windows Server 故障转移群集来组建 SAP ASCS/SCS 实例的群集](https://go.microsoft.com/fwlink/?LinkId=613056)中所述的过程。
 
 > [!IMPORTANT]
 > 强烈建议为 SAP 安装使用 Azure 资源管理器部署模型。 它提供经典部署模型所不具备的多种优势。 详细了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   

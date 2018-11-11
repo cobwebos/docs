@@ -3,19 +3,19 @@ title: 使用用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight
 description: 了解如何安装用于 Visual Studio 的 Data Lake 工具并用其连接到 Azure HDInsight 中的 Hadoop 群集，然后运行 Hive 查询。
 keywords: hadoop 工具,hive 查询,visual studio,visual studio hadoop
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 0c90dfe0aa76bd4f27bbc6f9a5e7e30c76595ea1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 281c3744dc311fdced20f810e0a9f2b233076472
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050141"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247137"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>使用用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Hive 查询
 
@@ -65,7 +65,7 @@ ms.locfileid: "43050141"
 可以使用用于 Visual Studio 的 Data Lake 工具连接到 HDInsight 群集，执行一些基本管理操作，以及运行 Hive 查询。
 
 > [!NOTE]
-> 有关连接到常规 Hadoop 群集的信息，请参阅 [Write and submit Hive queries by using Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)（使用 Visual Studio 编写和提交 Hive 查询）。
+> 有关连接到常规 Hadoop 群集的信息，请参阅 [Write and submit Hive queries by using Visual Studio](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)（使用 Visual Studio 编写和提交 Hive 查询）。
 > 
 > 
 

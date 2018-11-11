@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c35f4366b2290164036316be8de730e20aa99bf
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cc9b3bd1d038bd8aa9c01e806e5448824011bc93
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092656"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240743"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
 [Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
@@ -180,7 +180,7 @@ ms.locfileid: "47092656"
 如果想要连续导出数据以便在外部进行处理，请考虑使用[连续导出](app-insights-export-telemetry.md)。
 
 ### <a name="power-bi"></a>Power BI
-如果想要获得数据的更丰富视图，可以[导出到 Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
+如果想要获得数据的更丰富视图，可以[导出到 Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
 
 ## <a name="analytics"></a>分析
 [Analytics](app-insights-analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 
@@ -194,14 +194,14 @@ ms.locfileid: "47092656"
 
     如果想要在不同的图表上设置不同的筛选器，请在不同的边栏选项卡中创建图表，将它们保存为独立的收藏项。 如果需要，可将这些图表固定到仪表板，以便并排查看这些图表。
 * 如果根据指标上未定义的属性将图表分组，则图表中不会显示任何数据。 请尝试清除“分组依据”，或选择不同的分组属性。
-* 性能数据（CPU、IO 速率等）适用于 Java Web 服务、Windows 桌面应用、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-azure.md)。 这些数据不适用于 Azure 网站。
+* 性能数据（CPU、IO 速率等）适用于 Java Web 服务、Windows 桌面应用、[IIS Web 应用和服务（如果安装了状态监视器）](app-insights-monitor-performance-live-website-now.md)以及 [Azure 云服务](app-insights-overview.md)。 这些数据不适用于 Azure 网站。
 
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](app-insights-web-track-usage.md)
+* [使用 Application Insights 监视使用情况](app-insights-usage-overview.md)
 * [使用诊断搜索](app-insights-diagnostic-search.md)
 
 <!--Link references-->

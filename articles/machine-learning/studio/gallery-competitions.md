@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 54ca22d9a3e685f6ae1e1454569bab9d058ce4fe
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 08434007c7ef66349cae2a368d3be94ee522bab1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834485"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242342"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现竞赛
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "34834485"
 有关竞赛的常见问题的解答，请参阅 [Microsoft Cortana Intelligence 竞赛常见问题](competition-faq.md)。
 
 ## <a name="discover"></a>发现
-[“竞赛”](https://gallery.cortanaintelligence.com/competitions)页 ([aka.ms/CIComp](http://aka.ms/CIComp)) 显示最热门竞赛的列表。
+[“竞赛”](https://gallery.cortanaintelligence.com/competitions)页 ([aka.ms/CIComp](https://aka.ms/CIComp)) 显示最热门竞赛的列表。
 
 ![从库主页中选择“竞争”](./media/gallery-competitions/select-competitions-in-gallery.png)
 

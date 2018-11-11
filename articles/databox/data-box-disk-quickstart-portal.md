@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365225"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245063"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户部署 Azure Data Box 磁盘（预览版）
 
@@ -31,11 +31,11 @@ ms.locfileid: "49365225"
 
 开始之前：
 
-- 确保为 Azure Data Box 服务启用了订阅。 若要为此服务启用订阅，请[注册服务](http://aka.ms/azuredataboxfromdiskdocs)。
+- 确保为 Azure Data Box 服务启用了订阅。 若要为此服务启用订阅，请[注册服务](https://aka.ms/azuredataboxfromdiskdocs)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [http://aka.ms/azuredataboxfromdiskdocs](http://aka.ms/azuredataboxfromdiskdocs) 中登录 Azure 门户。
+在 [http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) 中登录 Azure 门户。
 
 ## <a name="order"></a>顺序
 
@@ -70,11 +70,11 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
     3. 运行 Data Box Disk 解锁工具并提供密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 有关如何解锁磁盘的更多信息，请转至[在 Windows 客户端上解锁磁盘]()或[在 Linux 客户端上解锁磁盘]()。
     4. 工具会显示分配给磁盘的驱动器号。 请记下磁盘驱动器号， 后续步骤中需要用到。
 
-## <a name="copy-data-and-verify"></a>复制数据和验证
+## <a name="copy-data-and-validate"></a>复制数据并进行验证
 
 完成此操作所需的时间取决于数据大小。 
 
-1. 驱动器包含 *PageBlob*、*BlockBlob* 和 *AzureImportExport* 文件夹。 通过拖放操作，将需要作为块 Blob 导入的数据复制到 *BlockBlob* 文件夹中。 同理，将 VHD/VHDX 等数据拖放到 *PageBlob* 文件夹中。
+1. 驱动器包含 *PageBlob*、*BlockBlob* 和 *DataBoxDiskImport* 文件夹。 通过拖放操作，将需要作为块 Blob 导入的数据复制到 *BlockBlob* 文件夹中。 同理，将 VHD/VHDX 等数据拖放到 *PageBlob* 文件夹中。
 
     在 Azure 存储帐户中，为 *BlockBlob* 和 *PageBlob* 文件夹下的每个子文件夹创建一个容器。 *BlockBlob* 和 *PageBlob* 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。
 
@@ -82,7 +82,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
     > - 所有容器和 Blob 应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
     > - 确保块 Blob 的文件不超过大约 4.75 TiB，页 Blob 的文件不超过大约 8 TiB。
 
-2. （可选）复制完成后，我们建议运行 *AzureImportExport* 文件夹中提供的 `DataBoxDiskValidation.cmd` 来生成校验和，以用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
+2. （可选）复制完成后，建议运行 *DataBoxDiskImport* 文件夹中提供的 `DataBoxDiskValidation.cmd` 来生成校验和，用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
 3. 拔下驱动器。 
 
 

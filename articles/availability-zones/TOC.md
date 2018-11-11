@@ -1,6 +1,6 @@
 
 # Azure 复原
-## [Azure 复原功能页](http://azure.microsoft.com/features/resiliency)
+## [Azure 复原功能页](https://azure.microsoft.com/features/resiliency)
 ## [设计适用于 Azure 的可复原应用程序](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # 高可用性

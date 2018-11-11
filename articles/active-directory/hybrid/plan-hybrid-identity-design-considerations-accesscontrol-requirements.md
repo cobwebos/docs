@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308326"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247698"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的访问控制要求
 组织在设计混合标识解决方案时，也可以借机评审正在规划中的、用户对资源的访问权限要求。 数据访问权限涉及到标识的所有四个重要组成部分：
@@ -34,7 +34,7 @@ ms.locfileid: "46308326"
 后续部分将更详细说明身份验证与授权，而管理和审核是混合标识生命周期的组成部分。 有关这些功能的详细信息，请参阅[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)。
 
 > [!NOTE]
-> 有关每个重要组成部分的详细信息，请参阅[标识的四个重要组成部分 - 混合 IT 生命周期内的标识管理](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx)。
+> 有关每个重要组成部分的详细信息，请参阅[标识的四个重要组成部分 - 混合 IT 生命周期内的标识管理](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx)。
 > 
 > 
 

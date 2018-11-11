@@ -3,19 +3,19 @@ title: 什么是 Apache Hive 和 HiveQL - Azure HDInsight
 description: Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
 keywords: hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive 是什么
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 9f22766b0ecbaff027cf4b495624f892d4339d17
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249310"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241100"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -70,7 +70,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)文档。
+Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)文档。
 
 有关 Hive 支持的文件格式的详细信息，请参阅[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -106,7 +106,7 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
 
 * [将 C# 用户定义函数与 Hive 配合使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [如何将自定义的 Hive 用户定义函数添加到 HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [如何将自定义的 Hive 用户定义函数添加到 HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 * [用于将日期/时间格式转换为 Hive 时间戳的 Hive 用户定义函数示例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 

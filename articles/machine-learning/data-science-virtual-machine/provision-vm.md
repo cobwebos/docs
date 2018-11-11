@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298193"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240879"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 (VM) 映像。 它是使用几种用于数据分析和机器学习的工具进行预安装和配置的。 包括以下工具：
@@ -60,7 +60,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 可以处理各种
 * Data Science Virtual Machine 的 [Windows Server 2012 版本](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)。 有些工具只能在 Windows Server 2016 版本中使用。 否则，本文也适用于 Windows Server 2012 版。
 
 ## <a name="prerequisite"></a>先决条件
-若要创建 Microsoft Data Science Virtual Machine，必须有一个 Azure 订阅。 请参阅 [获取 Azure 免费试用版](http://azure.com/free)。
+若要创建 Microsoft Data Science Virtual Machine，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](http://azure.com/free)。
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>创建 Microsoft 数据科研虚拟机
@@ -73,7 +73,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 可以处理各种
 
 1. 用于创建 Microsoft Data Science Virtual Machine 的向导要求提供**输入**。 需要提供以下输入才能配置图中右侧显示的每个步骤：
 
-  a. **基本信息**：
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **基本信息**：
 
     i. **名称**。 要创建的数据科学服务器的名称。  
 
@@ -97,7 +97,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 可以处理各种
 
     ii. **其他参数**。 可以使用默认值。 若要使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。  
 
-  d. **摘要**。 验证输入的所有信息是否正确。 选择**创建**。 
+  d. **摘要**。 验证输入的所有信息是否正确。 选择“创建”。 
 
 > [!NOTE]
 > * 除计算“大小”步骤中选择的服务器大小所产生的计算费用外，VM 不产生其他任何费用。 
@@ -186,7 +186,7 @@ VM 上安装了多个 Azure 工具：
 * **Microsoft Azure PowerShell** 是用于管理以 PowerShell 脚本语言编写的 Azure 资源的工具。 它也安装在 VM 上。 
 
 ### <a name="power-bi"></a>Power BI
-为了帮助生成仪表板和可视化效果，VM 上已安装 **Power BI Desktop**。 使用此工具可从不同的源提取数据，创建仪表板和报告并将其发布到云中。 有关详细信息，请参阅 [Power BI](http://powerbi.microsoft.com) 站点。 可在“开始”菜单中找到 Power BI Desktop。 
+为了帮助生成仪表板和可视化效果，VM 上已安装 **Power BI Desktop**。 使用此工具可从不同的源提取数据，创建仪表板和报告并将其发布到云中。 有关详细信息，请参阅 [Power BI](https://powerbi.microsoft.com) 站点。 可在“开始”菜单中找到 Power BI Desktop。 
 
 > [!NOTE]
 > 需有 Microsoft Office 365 帐户才能访问 Power BI。 
@@ -228,7 +228,7 @@ Workbench 的每个用户必须执行一个一次性的操作： 双击 ```Azure
 * 选择“开始”菜单来探索数据科学 VM 上的工具。
 * 访问产品的[快速入门和教程页](../service/index.yml)，了解 Azure 机器学习服务和 Workbench。 
 * 导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用 RevoScaleR 库的示例，该库支持企业级数据分析。  
-* 阅读文章：[Data Science Virtual Machine 的十大功能](http://aka.ms/dsvmtenthings)。
+* 阅读文章：[Data Science Virtual Machine 的十大功能](https://aka.ms/dsvmtenthings)。
 * 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统地构建端到端分析解决方案。
 * 访问 [Azure AI 库](http://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
 

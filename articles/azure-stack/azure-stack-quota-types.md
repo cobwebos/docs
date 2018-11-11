@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/30/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077589"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299413"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -31,15 +31,15 @@ ms.locfileid: "49077589"
 ## <a name="compute-quota-types"></a>计算配额类型 
 | 类型 | **默认值** | **说明** |
 | --- | --- | --- |
-| 虚拟机的数目上限 | 20 | 订阅可以在此位置创建的虚拟机数目上限。 |
-| 虚拟机核心的数目上限 | 50 | 订阅可以在此位置创建的核心数目上限（例如，A3 VM 有四个核心）。 |
+| 虚拟机的数目上限 | 50 | 订阅可以在此位置创建的虚拟机数目上限。 |
+| 虚拟机核心的数目上限 | 100 | 订阅可以在此位置创建的核心数目上限（例如，A3 VM 有四个核心）。 |
 | 可用性集的数目上限 | 10 | 可以在此位置创建的可用性集数目上限。 |
-| 虚拟机规模集的数目上限 | 20 | 可以在此位置创建的虚拟机规模集数目上限。 |
+| 虚拟机规模集的数目上限 | 100 | 可以在此位置创建的虚拟机规模集数目上限。 |
 
 ## <a name="storage-quota-types"></a>存储配额类型 
 | **Item** | **默认值** | **说明** |
 | --- | --- | --- |
-| 最大容量 (GB) |500 |可供此位置的订阅使用的总存储容量。 |
+| 最大容量 (GB) |2048 |可供此位置的订阅使用的总存储容量。 |
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  

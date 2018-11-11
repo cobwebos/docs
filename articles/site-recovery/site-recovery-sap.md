@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211717"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247733"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
 
@@ -167,5 +167,5 @@ Web 调度程序组件用作 SAP 应用程序服务器之间的 SAP 流量的负
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解如何使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案，请参阅可下载的白皮书 [SAP NetWeaver：使用 Azure Site Recovery 构建灾难恢复解决方案](http://aka.ms/asr-sap)。 本白皮书介绍了针对各种 SAP 体系结构的建议，列出了 Azure 上的 SAP 所支持的应用程序和 VM 类型，并介绍了用于灾难恢复解决方案的测试计划选项。
+* 若要详细了解如何使用 Site Recovery 为 SAP NetWeaver 部署构建灾难恢复解决方案，请参阅可下载的白皮书 [SAP NetWeaver：使用 Azure Site Recovery 构建灾难恢复解决方案](https://aka.ms/asr-sap)。 本白皮书介绍了针对各种 SAP 体系结构的建议，列出了 Azure 上的 SAP 所支持的应用程序和 VM 类型，并介绍了用于灾难恢复解决方案的测试计划选项。
 * 详细了解如何使用 Site Recovery [复制其他工作负荷](site-recovery-workload.md)。

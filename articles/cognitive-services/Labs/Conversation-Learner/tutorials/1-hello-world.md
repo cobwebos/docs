@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 271141f24ff729fc99210af67ad769a5ef83a65c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242715"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>如何使用对话学习器创建“Hello World”模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "39170865"
 
 ## <a name="video"></a>视频
 
-[![教程 1 预览](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+[![教程 1 预览](https://aka.ms/cl-tutorial-01-preview)](https://aka.ms/blis-tutorial-01)
 
 
 ## <a name="requirements"></a>要求
@@ -40,7 +40,7 @@ ms.locfileid: "39170865"
 ### <a name="create-the-model"></a>创建模型
 1. 单击“新建模型”
 2. 在“名称”字段中，输入“Hello World”
-3. 单击创建
+3. 单击“法律条款” 
 
 ### <a name="create-an-action"></a>创建操作
 
@@ -49,7 +49,7 @@ ms.locfileid: "39170865"
     - 操作可以是对话学习器返回给用户、API 调用或卡的文本消息。
 3. 在“响应”中，键入“Hello World!”
     - 这是机器人将返回的响应
-4. 单击创建
+4. 单击“法律条款” 
 
 你已经创建了机器人可以做的第一件事，即返回文本响应。
 

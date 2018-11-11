@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232199"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242817"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL 数据库常见问题解答 (FAQ)
 
@@ -27,7 +27,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ## <a name="what-is-the-sla-for-sql-database"></a>SQL 数据库的 SLA 是什么
 
-我们保证至少在 99.99% 的时间内，不管使用哪个服务层，都能在 Microsoft Azure SQL 数据库与我们的 Internet 网关之间保持连接。 剩余 0.01% 的时间用于修补程序、升级和故障转移。 有关详细信息，请参阅 [SLA](http://azure.microsoft.com/support/legal/sla/)。 有关 Azure SQL 数据库的可用性体系结构的信息，请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。
+我们保证至少在 99.99% 的时间内，不管使用哪个服务层，都能在 Microsoft Azure SQL 数据库与我们的 Internet 网关之间保持连接。 剩余 0.01% 的时间用于修补程序、升级和故障转移。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/)。 有关 Azure SQL 数据库的可用性体系结构的信息，请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制修补故障的时间吗
 

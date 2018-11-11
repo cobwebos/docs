@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 11e8f34bf409d6c158e84d6f92baaf59ad4a1e94
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f2b0cd404c0c5ee94b669f366abc79353096a5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42210795"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241406"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
 
@@ -46,7 +46,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 1. [安装 Visual Studio 2017](https://www.visualstudio.com/)，其中包含 Azure 开发以及 ASP.NET 和 Web 开发工作负载。
 2. [安装 Git](https://git-scm.com/)
-3. [安装 Microsoft Azure Service Fabric SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
+3. [安装 Microsoft Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 运行以下命令，将 Visual Studio 启用为把应用程序部署到本地 Service Fabric 群集：
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
@@ -140,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。
 
-登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
+登录并[加入 Windows 群集](https://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 单击“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
 
 ![PFX 和连接终结点](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 

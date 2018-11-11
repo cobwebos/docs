@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1b96c801e3c5a43f23d4c63c13a611c24dd6705b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239502"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
-如果通过 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)在开发测试实验室中创建虚拟机 (VM)，则在保存 VM 前可以查看 Azure 资源管理器模板。 然后可以该模板为基准创建更多具有相同设置的实验室 VM。
+如果通过 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)在开发测试实验室中创建虚拟机 (VM)，则在保存 VM 前可以查看 Azure 资源管理器模板。 然后可以该模板为基准创建更多具有相同设置的实验室 VM。
 
 本文介绍多 VM 和单 VM 的资源管理器模板比较，并演示在创建 VM 时如何查看和保存模板。
 

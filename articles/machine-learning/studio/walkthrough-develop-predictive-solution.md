@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 9d2cfeb780687e1bf0e61173b3550e26f4019115
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a107907dd01b15015c644f835239f6f90b948296
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394142"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245828"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>演练：开发预测分析解决方案，用于在 Azure 机器学习中评估信用风险
 
@@ -57,4 +57,4 @@ ms.locfileid: "47394142"
 > [!TIP] 
 > 可在 [Azure AI 库](https://gallery.cortanaintelligence.com)中找到本演练中开发的试验的工作副本。 请转到**[演练 - 信用风险预测](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)** 并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
 > 
-> 本演练基于简化版的[二进制分类：信用风险评估](http://go.microsoft.com/fwlink/?LinkID=525270)示例试验，也可在[库](http://gallery.cortanaintelligence.com/)中获取。
+> 本演练基于简化版的[二进制分类：信用风险评估](https://go.microsoft.com/fwlink/?LinkID=525270)示例试验，也可在[库](http://gallery.cortanaintelligence.com/)中获取。

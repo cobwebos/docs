@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 93dfe6594aeaf45a6905fe8cb55c98dd37cc9599
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408602"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239791"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>在 Azure 上预配地理人工智能虚拟机 
 
-地理 AI 数据科学虚拟机 (Geo-DSVM) 是流行的 [Azure 数据科学虚拟机](http://aka.ms/dsvm)的一个专门配置的扩展，它将 AI 和地理空间分析组合在一起。 VM 中的地理空间分析由 [ArcGIS Pro](https://www.arcgis.com/features/index.html) 提供支持。 数据科学 VM 能够基于增加了地理空间信息的数据快速训练机器学习模型甚至是深度学习模型。 它仅在 Windows 2016 DSVM 上受支持。 
+地理 AI 数据科学虚拟机 (Geo-DSVM) 是流行的 [Azure 数据科学虚拟机](https://aka.ms/dsvm)的一个专门配置的扩展，它将 AI 和地理空间分析组合在一起。 VM 中的地理空间分析由 [ArcGIS Pro](https://www.arcgis.com/features/index.html) 提供支持。 数据科学 VM 能够基于增加了地理空间信息的数据快速训练机器学习模型甚至是深度学习模型。 它仅在 Windows 2016 DSVM 上受支持。 
 
 Geo-DSVM 包含用于人工智能的多个工具，包括：
 

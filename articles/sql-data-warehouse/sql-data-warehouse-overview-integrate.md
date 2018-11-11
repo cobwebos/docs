@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 221d5d05906e7e162013c0d4cdddc01a95f4024c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302696"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239665"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>使用 SQL 数据仓库集成其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户集成 Azure 中的其他许多服务。 这些服务包括：
@@ -33,7 +33,7 @@ SQL 数据仓库继续集成 Azure 中的更多服务，以及更多的[集成�
 * **直接连接**：使用逻辑下推与 SQL 数据仓库建立更高级的连接。 下推提供更快且更大规模的分析。
 * **在 Power BI 中打开**：“在 Power BI 中打开”按钮将实例信息传递给 Power BI，以简化连接方式。
 
-有关详细信息，请参阅[与 Power BI 集成](sql-data-warehouse-get-started-visualize-with-power-bi.md)或 [Power BI 文档](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)。
+有关详细信息，请参阅[与 Power BI 集成](sql-data-warehouse-get-started-visualize-with-power-bi.md)或 [Power BI 文档](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)。
 
 ## <a name="azure-data-factory"></a>Azure 数据工厂
 Azure 数据工厂为用户提供一个托管平台，用于创建复杂的提取和加载管道。 SQL 数据仓库与 Azure 数据工厂的集成包括：

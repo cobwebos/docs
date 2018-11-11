@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f2e0c7b335b09a0d2b8b8399e807a354ec8e4282
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805575"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245080"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>如何通过云合作伙伴门户创建 Dynamics 365 for Operations 套餐
 
 发布门户提供对门户的基于角色的访问，使多个人员能够在发布套餐方面展开协作。 有关详细信息，请参阅[在云门户中管理用户](./cloud-partner-portal-manage-users.md)。
 
-代表发布者帐户发布套餐之前，其中一个具有\"所有者\"角色的个人需同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、 [Microsoft 隐私声明](http://www.microsoft.com/privacystatement/default.aspx)以及 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
+代表发布者帐户发布套餐之前，其中一个具有\"所有者\"角色的个人需同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、 [Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)以及 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
 ## <a name="how-to-create-a-new-dynamics-365-for-operations-offer"></a>如何创建新的 Dynamics 365 for Operations 套餐
 

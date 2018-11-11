@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409214"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245641"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
 
@@ -140,7 +140,7 @@ ms.locfileid: "49409214"
     }
 
 执行历史记录包含最多 50 个最近完成的执行，它们按反向时间顺序排序（以便最新执行出现在响应中的第一个）。
-有关响应的其他信息可在[获取索引器状态](http://go.microsoft.com/fwlink/p/?LinkId=528198)中找到
+有关响应的其他信息可在[获取索引器状态](https://go.microsoft.com/fwlink/p/?LinkId=528198)中找到
 
 ## <a name="run-indexers-on-a-schedule"></a>按计划运行索引器
 还可以排列索引器，以按计划定期运行。 若要执行此操作，在创建或更新索引器时添加**计划**属性。 下面的示例显示了用于更新索引器的 PUT 请求：

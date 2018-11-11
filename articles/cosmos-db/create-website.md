@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dca9d7900ce229b1cddbef8d0dee44bc0061dc42
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611300"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243771"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
-本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
+本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
 
 使用 Azure 资源管理器模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
@@ -35,7 +35,7 @@ ms.locfileid: "34611300"
 > 
 > 
 
-在按照本教程中的说明操作之前，请确保具有 Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[成员优惠](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+在按照本教程中的说明操作之前，请确保具有 Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[会员套餐](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a id="CreateDB"></a>步骤 1：下载模板文件
 首先，让我们下载本教程所需的模板文件。
@@ -114,7 +114,7 @@ ms.locfileid: "34611300"
 9. 注意，Azure Cosmos DB 终结点和每个 Azure Cosmos DB 主密钥都存在相应的应用程序设置。
 
     ![应用程序设置的屏幕截图](./media/create-website/TemplateDeployment10.png)  
-10. 继续随意浏览 Azure 门户，或按照其中一个 Azure Cosmos DB [示例](http://go.microsoft.com/fwlink/?LinkID=402386)创建自己的 Azure Cosmos DB 应用程序。
+10. 继续随意浏览 Azure 门户，或按照其中一个 Azure Cosmos DB [示例](https://go.microsoft.com/fwlink/?LinkID=402386)创建自己的 Azure Cosmos DB 应用程序。
 
 <a name="NextSteps"></a>
 
@@ -122,14 +122,14 @@ ms.locfileid: "34611300"
 祝贺你！ 已使用 Azure 资源管理器模板部署了 Azure Cosmos DB、应用服务 Web 应用以及示例 Web 应用程序。
 
 * 若要了解有关 Azure Cosmos DB 的详细信息，请单击[此处](http://azure.com/docdb)。
-* 若要了解有关 Azure 应用服务 Web 应用的详细信息，请单击[此处](http://go.microsoft.com/fwlink/?LinkId=325362)。
+* 若要了解有关 Azure 应用服务 Web 应用的详细信息，请单击[此处](https://go.microsoft.com/fwlink/?LinkId=325362)。
 * 若要了解有关 Azure 资源管理器模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 

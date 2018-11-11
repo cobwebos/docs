@@ -3,7 +3,7 @@ title: 在 Azure 安全中心中添加 web 应用程序防火墙 | Microsoft 文
 description: 本文档演示如何实现 Azure 安全中心建议“添加 web 应用程序防火墙”和完成应用程序保护”。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2018
-ms.author: terrylan
-ms.openlocfilehash: 8824e9f7481ed92eb482c14280e79a94be3c9372
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8ae1a4b7b8ce2e82856b63bd108e44a111dfd3fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300709"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246576"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>在 Azure 安全中心中添加 web 应用程序防火墙
 为保护 web 应用程序，Azure 安全中心可能会建议从 Microsoft 合作伙伴添加 web 应用程序防火墙 (WAF)。 本文档将举例说明如何应用此建议。
@@ -40,7 +40,7 @@ ms.locfileid: "44300709"
    ![添加 Web 应用程序防火墙][2]
 3. 可选择使用现有的 web 应用程序防火墙（如果可用）或创建新的防火墙。 此示例中没有任何现有可用的 WAF，因此需要创建 WAF。
 4. 若要创建 WAF，请从集成合作伙伴列表中选择一个解决方案。 在此示例中，选择“Barracuda Web 应用程序防火墙”。
-5. “Barracuda Web 应用程序防火墙”会打开，提供有关该合作伙伴解决方案的信息。 选择**创建**。
+5. “Barracuda Web 应用程序防火墙”会打开，提供有关该合作伙伴解决方案的信息。 选择“创建”。
 
    ![防火墙信息边栏选项卡][3]
 
@@ -78,7 +78,7 @@ ms.locfileid: "44300709"
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
 * [Azure 安全中心常见问题](security-center-faq.md) - 查找有关使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png

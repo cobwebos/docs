@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
-ms.openlocfilehash: 62eafcc6d5d8f9aa99404964167db48c9bba0c37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c6715242ab1a2fd60f876ee97558715ed54c5e18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957323"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239604"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "46957323"
 | API | API 参考 | 下载 | 教程 | 代码示例 | 更多信息 |
 | --- | --- | --- | --- | --- | --- |
 | **批处理 REST** |[docs.microsoft.com][batch_rest] |不适用 |- |- | [支持的版本](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[教程](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [发行说明](http://aka.ms/batch-net-dataplane-changelog) |
+| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet ][api_net_nuget] |[教程](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [发行说明](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[教程](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [自述文件](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
 | **批处理 Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[教程](batch-nodejs-get-started.md) |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **批处理 Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[自述文件][api_sample_java] | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 37d9f433f39b60609870913a13f23e5a6e419476
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597738"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246491"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知
 
@@ -57,7 +57,7 @@ ms.locfileid: "38597738"
 1. 键入应用的名称，然后选择“保留产品名称”。 这将为应用创建一个新的 Windows 应用商店注册。
 
     ![存储应用名称](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-1. 展开“应用管理”，然后依次选择“WNS/MPNS”、“WNS/MPNS”、“Live 服务站点”。 登录 Microsoft 帐户。 “应用程序注册门户”会在新选项卡中打开。也可直接导航到[应用程序注册门户](http://apps.dev.microsoft.com)，然后选择应用程序名称以访问该页。
+1. 展开“应用管理”，然后依次选择“WNS/MPNS”、“WNS/MPNS”、“Live 服务站点”。 登录 Microsoft 帐户。 “应用程序注册门户”会在新选项卡中打开。也可直接导航到[应用程序注册门户](https://apps.dev.microsoft.com)，然后选择应用程序名称以访问该页。
 
     ![WNS MPNS 页](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 1.   记下“应用程序机密”密码和“包安全标识符(SID)”。

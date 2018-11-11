@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: 备份; VM 备份
-ms.openlocfilehash: a30b4081bf01a76c6d89e7557fbb1b40baa86fbc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233535"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
 
@@ -324,8 +324,8 @@ ms.locfileid: "49985873"
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安装 VM 代理 |<li>下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 <li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |<li> 从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent) 。 需要有管理员权限才能完成安装。 <li> [更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |
-| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 安装 VM 代理 |<li>下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 <li>[更新 VM 属性](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |<li> 从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent) 。 需要有管理员权限才能完成安装。 <li> [更新 VM 属性](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) ，指明已安装代理。 |
+| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
 | 验证 VM 代理安装 |<li>导航到 Azure VM 中的 *C:\WindowsAzure\Packages* 文件夹。 <li>应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 |不适用 |
 
 ### <a name="backup-extension"></a>备份扩展
@@ -340,4 +340,4 @@ ms.locfileid: "49985873"
 Azure VM 备份的成本取决于受保护实例的数目。 如需受保护实例的定义，请参阅[什么是受保护实例](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)。 如果需要通过示例来了解如何计算虚拟机的备份费用，请参阅[受保护实例的计算方法](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances)。 请参阅“Azure 备份定价”页，了解[备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 
 ## <a name="questions"></a>有疑问？
-如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
+如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://aka.ms/azurebackup_feedback)。

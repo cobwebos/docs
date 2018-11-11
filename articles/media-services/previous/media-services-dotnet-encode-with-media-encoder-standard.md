@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 7b0de5e149b8b64252f90a01f66642c15fb25ddc
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 426ebb90a0d7716b14664f874db259a0cca2aa7e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247786"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241083"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 通过 Media Encoder Standard 对资产进行编码 
 编码作业是媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 进行编码时，可以使用媒体服务内置的 Media Encoder。 另外，也可以使用媒体服务合作伙伴提供的编码器；第三方编码器可通过 Azure 市场购得。 
 
-本文介绍如何使用 .NET 通过 Media Encoder Standard (MES) 对资产进行编码。 Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
+本文介绍如何使用 .NET 通过 Media Encoder Standard (MES) 对资产进行编码。 Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
 
 建议始终将源文件编码为自适应比特率 MP4 集，然后使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需的格式。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "50247786"
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES 预设
-Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
+Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的其中一个编码器预设进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 如果使用 MES 为输入资产（或资产）编码，在该编码任务成功完成时，便能获取输出资产。 输出资产包含视频、音频、缩略图、清单等等，具体视你使用的编码预设而定。

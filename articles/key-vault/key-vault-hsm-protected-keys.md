@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 31998c3b9cc151e96d0b2e0b85895603698f493b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247734"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -61,7 +61,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 | Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库高级服务层 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层和功能的详细信息。 |
 | Thales HSM、智能卡和支持软件 |必须具有 Thales 硬件安全模块的访问权限和 Thales HSM 的基本操作知识。 请参阅 [Thales 硬件安全模块](https://www.thales-esecurity.com/msrms/buy)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>请注意，在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，我们建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>请注意，在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>请注意，在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，我们建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>请注意，在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -101,7 +101,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure 密钥保管库的 BYOK 工具集
 
-转到 Microsoft 下载中心，针对所在的地理区域或 Azure 实例[下载 Azure Key Vault BYOK 工具集](http://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
+转到 Microsoft 下载中心，针对所在的地理区域或 Azure 实例[下载 Azure Key Vault BYOK 工具集](https://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
 
 - - -
 **美国：**

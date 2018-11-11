@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246831"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
-本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
+本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
   
 ##  <a name="CachingPolicies"></a> 缓存策略  
   
@@ -116,12 +116,12 @@ ms.locfileid: "48269066"
 |----------|-----------------|--------------|-------------|  
 |allow-private-response-caching|设置为 `true` 即可缓存包含 Authorization 标头的请求。|否|false|  
 |downstream-caching-type|此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。|否|无|  
-|must-revalidate|启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。|否|是|  
+|must-revalidate|启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。|否|true|  
 |vary-by-developer|设置为 `true` 即可按开发人员密钥缓存响应。|是||  
 |vary-by-developer-groups|设置为 `true` 即可按用户角色缓存响应。|是||  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 入站  
 -   **策略范围：** API、操作、产品  
@@ -193,7 +193,7 @@ ms.locfileid: "48269066"
 |duration|缓存条目的生存时间，以秒为单位指定。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 出站    
 -   **策略范围：** API、操作、产品  
@@ -237,7 +237,7 @@ ms.locfileid: "48269066"
 |variable-name|在查找成功的情况下，会向其分配查找值的[上下文变量](api-management-policy-expressions.md#ContextVariables)的名称。 如果查找未命中，则会为此变量分配 `default-value` 属性的值或 `null`（如果省略了 `default-value` 属性）。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：** 入站、出站、后端、错误时  
 -   **策略范围：** 全局、API、操作、产品  
@@ -279,7 +279,7 @@ ms.locfileid: "48269066"
 |值|要缓存的值。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：** 入站、出站、后端、错误时  
 -   **策略范围：** 全局、API、操作、产品  
@@ -316,7 +316,7 @@ ms.locfileid: "48269066"
 |key|以前所缓存的值（将从缓存中删除）的密钥。|是|不适用|  
   
 #### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：** 入站、出站、后端、错误时  
 -   **策略范围：** 全局、API、操作、产品  

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: b68e65bdcefcabb2804b259cff45e0a8719f7ab7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870510"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241865"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server 
 
@@ -26,7 +26,7 @@ Azure SQL 数据库与 SQL Server 共享一个通用代码库。 Azure SQL 数�
 Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的服务更新网页，并使用以下筛选器获取最新更新：
 
 * 筛选为 [SQL 数据库服务](https://azure.microsoft.com/updates/?service=sql-database)。
-* 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
+* 筛选为针对 SQL 数据库功能的正式发布版本 [(GA) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
 
 ## <a name="sql-server-feature-support-in-azure-sql-database"></a>Azure SQL 数据库中的 SQL Server 功能支持
 
@@ -128,7 +128,7 @@ Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | 是 | 是 |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | 是 | 是 |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](sql-database-xevent-db-diff-from-svr.md) | 是 |
-| [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [仅限事务性和快照复制订户](sql-database-cloud-migrate.md) | 是 - [使用 SQL 数据库托管实例进行复制 - 公共预览版](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [仅限事务性和快照复制订户](sql-database-cloud-migrate.md) | 是 - [使用 SQL 数据库托管实例进行复制 - 公共预览版](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) | 否 - 请参阅 [Power BI](https://docs.microsoft.com/power-bi/) |
 | [存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | 是 | 是 |
 | [系统存储函数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | 大多数 - 请参阅单个函数 | 是 - 请参阅[存储过程、函数和触发器差异](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

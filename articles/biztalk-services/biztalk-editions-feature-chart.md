@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706642"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240505"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk 服务：版本图表
 
@@ -63,7 +63,7 @@ Azure BizTalk 服务提供多个版本。 借助本文确定适合方案和业�
 
 <tr>
 <td><strong>起价</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk 服务定价</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full"> Azure 价格计算器</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk 服务定价</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full"> Azure 价格计算器</a></td>
 </tr>
 <tr>
 <td><strong>默认最低配置</strong></td>
@@ -153,7 +153,7 @@ Azure BizTalk 服务提供多个版本。 借助本文确定适合方案和业�
 <tr>
 <td><strong>高可用性</strong>
 <br/><br/>
-有关服务级别协议 (SLA)，请参阅 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk Services Pricing</a>（Azure BizTalk 服务定价）。
+有关服务级别协议 (SLA)，请参阅 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011"> Azure BizTalk Services Pricing</a>（Azure BizTalk 服务定价）。
 </td>
 <td>不包括</td>
 <td>不包括</td>
@@ -209,7 +209,7 @@ Azure BizTalk 服务提供多个版本。 借助本文确定适合方案和业�
 > 
 > 
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 #### <a name="what-is-a-biztalk-unit"></a>BizTalk 单位是什么？
 “单位”是 Azure BizTalk 服务部署的原子级别。 每个版本均附带一个具有不同的计算能力和内存的单元。 例如，基本单位具有比开发人员单位更多的计算，而标准单位具有比基本单位更多的计算，依此类推。 缩放 BizTalk 服务时，将按单位进行缩放。
 
@@ -242,10 +242,10 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。 BizTalk 适配器服务
 对于其他版本，使用备份和还原将项目从一个层迁移到另一个层。 例如，在标准层中备份项目，然后将其还原到高级层。 [BizTalk 服务：备份和还原](biztalk-backup-restore.md) 介绍支持的迁移路径，并列出所备份的项目。 请注意，不会备份混合连接。 在备份和还原到新层后，需要重新创建混合连接。  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>BizTalk 适配器服务是否包含在 BizTalk 服务内？ 我如何接收该软件？
-包含在内，BizTalk 适配器服务以及 BizTalk 适配器包已包含在 Azure BizTalk 服务 SDK [下载](http://www.microsoft.com/download/details.aspx?id=39087)中。
+包含在内，BizTalk 适配器服务以及 BizTalk 适配器包已包含在 Azure BizTalk 服务 SDK [下载](https://www.microsoft.com/download/details.aspx?id=39087)中。
 
 ## <a name="next-steps"></a>后续步骤
-若要在 Azure 门户中创建 Azure BizTalk 服务，请转到 [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
+若要在 Azure 门户中创建 Azure BizTalk 服务，请转到 [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## <a name="additional-resources"></a>其他资源
 * [BizTalk 服务：使用 Azure 门户预配](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。 BizTalk 适配器服务
 * [BizTalk Services: Backup and restore](biztalk-backup-restore.md)<br/>
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

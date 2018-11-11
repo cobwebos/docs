@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 56fadde5694dbd298c812db258105e03b7d23d45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a6fdfec4c4c95ba47f17efeb0dc87521a86c03c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996734"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244978"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure 机器学习工作室机器学习算法备忘单
 
@@ -27,7 +27,7 @@ ms.locfileid: "46996734"
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
 
-**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
+**在此处下载该备忘单：[机器学习算法备忘单（11x17 英寸）](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
 ![机器学习算法备忘单：了解如何选择机器学习算法。][cheat-sheet]
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4b254f9a4446a1b0ff400e0d63effe68fc4f82b4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cf39ba6b1754a5e809e7295f2783846e95636ce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363660"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241730"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>使用 PowerShell 将模板部署到 Azure Stack
 
@@ -35,7 +35,7 @@ ms.locfileid: "46363660"
 >[!NOTE]
 >在尝试此示例之前，请确保已为 Azure Stack 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
 
-1. 转到[ http://aka.ms/AzureStackGitHub ](http://aka.ms/AzureStackGitHub)并找到**101 简单的 windows vm**模板。 将该模板保存到此位置：C:\\templates\\azuredeploy-101-simple-windows-vm.json。
+1. 转到[ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub)并找到**101 简单的 windows vm**模板。 将该模板保存到此位置：C:\\templates\\azuredeploy-101-simple-windows-vm.json。
 2. 打开权限提升的 PowerShell 命令提示符。
 3. 将以下脚本中的*用户名*和*密码*替换为你的用户名和密码，然后运行脚本。
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0eb74cee8fb1f4c5d301693a4d53e5d564e12a00
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 349fd1f129d93a2893e2585267d17661e141ad0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242205"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-onprem-sybase-connector.md)
+> * [版本 1](v1/data-factory-onprem-sybase-connector.md)
 > * [当前版本](connector-sybase.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Sybase 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -41,7 +41,7 @@ ms.locfileid: "37053943"
 要使用此 Sybase 连接器，需要：
 
 - 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装 16 或更高版本的[适用于 Sybase iAnywhere.Data.SQLAnywhere 的数据提供程序](http://go.microsoft.com/fwlink/?linkid=324846)。
+- 在集成运行时计算机上安装 16 或更高版本的[适用于 Sybase iAnywhere.Data.SQLAnywhere 的数据提供程序](https://go.microsoft.com/fwlink/?linkid=324846)。
 
 ## <a name="getting-started"></a>入门
 
@@ -90,7 +90,7 @@ Sybase 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 Sybase 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Sybase 数据集支持的属性列表。
 
 要从 Sybase 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
 
@@ -121,7 +121,7 @@ Sybase 链接的服务支持以下属性：
 
 ### <a name="sybase-as-source"></a>以 Sybase 作为源
 
-要从 Sybase 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
+要从 Sybase 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

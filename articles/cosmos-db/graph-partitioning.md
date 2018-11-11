@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078216"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239287"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
-Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向可缩放性处理大规模图形。 此过程是通过 [Azure Cosmos DB 中的分区功能](partition-data.md#how-does-partitioning-work)实现的。该功能利用在存储和吞吐量方面可独立缩放的容器。 Azure Cosmos DB 支持跨所有 API 的以下容器类型：
+Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向可缩放性处理大规模图形。 此过程是通过 [Azure Cosmos DB 中的分区功能](partition-data.md)实现的。该功能利用在存储和吞吐量方面可独立缩放的容器。 Azure Cosmos DB 支持跨所有 API 的以下容器类型：
 
 - **固定容器**：这些容器可以存储大小高达 10 GB、每秒最多可分配 10,000 个请求单位的图形数据库。 若要创建固定容器，不需要在数据中指定分区键属性。
 

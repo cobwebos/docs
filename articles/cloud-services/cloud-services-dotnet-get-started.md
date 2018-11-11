@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 819a2f81ca5403a3656bf713cf0ee3ae58050a4b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003107"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242120"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](http://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob 服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
+本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob 服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
 本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 可以从头构建并进行测试，之后根据喜好部署步骤。
 
@@ -36,7 +36,7 @@ ms.locfileid: "39003107"
 应用程序使用 [以队列为中心的工作模式](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
 ## <a name="alternative-architecture-web-apps-and-webjobs"></a>替代体系结构：Web 应用和 WebJobs
-本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure Web 应用](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务信息，请参阅 [Azure 网站、云服务和虚拟机比较](../app-service/choose-web-site-cloud-service-vm.md)。
+本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure Web 应用](/azure/app-service/)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务信息，请参阅 [Azure 网站、云服务和虚拟机比较](../app-service/choose-web-site-cloud-service-vm.md)。
 
 ## <a name="what-youll-learn"></a>学习内容
 * 如何通过安装 Azure SDK 来让计算机可以进行 Azure 开发。
@@ -71,7 +71,7 @@ ms.locfileid: "39003107"
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
 ## <a name="download-and-run-the-completed-solution"></a>下载并运行已完成的解决方案
-1. 下载并解压缩 [已完成的解决方案](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
+1. 下载并解压缩 [已完成的解决方案](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 2. 启动 Visual Studio。
 3. 从“文件”菜单中，选择“打开项目”，导航到下载解决方案的位置，并打开解决方案文件。
 4. 按 CTRL+SHIFT+B 生成解决方案。
@@ -81,7 +81,7 @@ ms.locfileid: "39003107"
 6. 如果使用 Visual Studio 2015 或更高版本，请在 ContosoAdsWeb 项目的应用程序 *Web.config* 文件以及 ContosoAdsCloudService 项目的 *ServiceConfiguration.Local.cscfg* 文件中，更改 SQL Server 连接字符串。 对于每种情况，请将“(localdb)\v11.0”更改为“(localdb)\MSSQLLocalDB”。
 7. 按 Ctrl+F5 运行应用程序。
 
-    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用计算机资源，以模拟 web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) 数据库模拟 Azure 云存储。
+    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用计算机资源，以模拟 web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) 数据库模拟 Azure 云存储。
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
@@ -311,7 +311,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 >
 
 ## <a name="create-the-application-from-scratch"></a>从头开始创建应用程序
-如果尚未下载 [已完成的应用程序](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)，现在请下载。 要将文件从下载的项目复制到新的项目。
+如果尚未下载 [已完成的应用程序](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)，现在请下载。 要将文件从下载的项目复制到新的项目。
 
 创建 Contoso 广告应用程序涉及以下步骤：
 
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-大部分控制器代码通常用于使用 DbContext 类的实体框架数据模型。 例外情况是 HttpPost `Create` 方法，它上传文件并将其保存在 Blob 存储中。 模型联编程序为该方法提供一个 [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) 对象。
+大部分控制器代码通常用于使用 DbContext 类的实体框架数据模型。 例外情况是 HttpPost `Create` 方法，它上传文件并将其保存在 Blob 存储中。 模型联编程序为该方法提供一个 [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) 对象。
 
 ```csharp
 [HttpPost]
@@ -766,8 +766,8 @@ Contoso 广告应用程序有意保持入门教程的简单性。 例如，它�
 
 下面是演示更实际编码方法的一些云服务示例应用程序，从不太复杂到更复杂排列：
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 在概念上与 Contoso 广告类似，但实施更多的功能和详细的实际编码做法。
-* [带有表、队列和 Blob 的 Azure 云服务多层应用程序](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 引入了 Azure 存储表以及 Blob 和队列。 基于旧版 Azure SDK for .NET，需做一些修改才能配合当前版本。
+* [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 在概念上与 Contoso 广告类似，但实施更多的功能和详细的实际编码做法。
+* [带有表、队列和 Blob 的 Azure 云服务多层应用程序](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 引入了 Azure 存储表以及 Blob 和队列。 基于旧版 Azure SDK for .NET，需做一些修改才能配合当前版本。
 
 有关云开发的常规信息，请参阅 [使用 Azure 生成实际的云应用](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
 

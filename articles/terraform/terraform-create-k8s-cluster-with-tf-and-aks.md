@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960237"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232318"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
@@ -372,6 +372,6 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 本文已介绍如何使用 Terraform 和 AKS 创建 Kubernetes 群集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform： 
 
  [Microsoft.com 中的 Terraform 中心](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure 提供程序文档](http://aka.ms/terraform)  
- [Terraform Azure 提供程序源](http://aka.ms/tfgit)  
- [Terraform Azure 模块](http://aka.ms/tfmodules)
+ [Terraform Azure 提供程序文档](https://aka.ms/terraform)  
+ [Terraform Azure 提供程序源](https://aka.ms/tfgit)  
+ [Terraform Azure 模块](https://aka.ms/tfmodules)

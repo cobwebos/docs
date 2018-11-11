@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387882"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247715"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 
 在 IoT 解决方案的生命周期内，需要滚动更新证书。 滚动更新证书的两个主要原因是出现安全违规和证书过期。 
 
-滚动更新证书是一种安全最佳做法，可以在出现违规时帮助保护系统。 作为[假设违规方法](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)的一部分，Microsoft 提倡实施反应式安全流程及预防措施。 这些安全流程应该包括设备证书的滚动更新。 滚动更新证书的频率取决于解决方案的安全需求。 其解决方案涉及到高度敏感数据的客户可以每日滚动更新证书，而其他客户则可以每隔数年滚动更新其证书。
+滚动更新证书是一种安全最佳做法，可以在出现违规时帮助保护系统。 作为[假设违规方法](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)的一部分，Microsoft 提倡实施反应式安全流程及预防措施。 这些安全流程应该包括设备证书的滚动更新。 滚动更新证书的频率取决于解决方案的安全需求。 其解决方案涉及到高度敏感数据的客户可以每日滚动更新证书，而其他客户则可以每隔数年滚动更新其证书。
 
 滚动更新设备证书涉及到更新存储在设备和 IoT 中心上的证书。 然后，设备可以使用设备预配服务的一般性[自动预配](concepts-auto-provisioning.md)过程，在 IoT 中心重新预配自身。
 
@@ -39,7 +39,7 @@ ms.locfileid: "49387882"
 
 设备上的证书应始终存储在[硬件安全模块 (HSM)](concepts-device.md#hardware-security-module) 等安全位置。 滚动更新设备证书的方式主要取决于它们的创建方式以及在设备中的安装方式。 
 
-如果证书是从第三方获取的，则必须深入了解第三方如何滚动更新其证书。 可以咨询第三方来制定滚动更新流程，或者单独使用他们提供的流程。 
+如果证书是从第三方获取的，则必须深入了解第三方如何滚动更新其证书。 滚动更新流程可能包含在双方的协定中，也可能单独作为一种服务提供。 
 
 若要管理自己的设备证书，必须构建更新证书的管道。 确保新旧叶证书具有相同的公用名 (CN)。 如果 CN 相同，设备就可以重新预配自身，而无需创建重复的注册记录。 
 
@@ -50,9 +50,9 @@ ms.locfileid: "49387882"
 
 最初通过自动预配服务预配设备后，它会启动并联系预配服务。 预配服务通过以下方式做出响应：执行标识检查，然后使用设备的叶证书作为凭据，在 IoT 中心创建设备标识。 预配服务随后告知设备它已分配到哪个 IoT 中心，然后，设备使用其叶证书进行身份验证并连接到 IoT 中心。 
 
-在设备上滚动更新新叶证书后，设备不再可以连接到 IoT 中心，因为它使用新证书进行连接。 IoT 中心只会识别具有旧证书的设备。 设备尝试连接会导致“未授权”连接错误。 若要解决此错误，必须更新设备的注册条目，以采用设备的新叶证书。 然后，在重新预配设备时，预配服务可根据需要更新 IoT 中心设备注册表信息。 
+通过滚动更新获得新叶证书后，设备无法再连接到 IoT 中心，因为它使用新证书进行连接。 IoT 中心只会识别具有旧证书的设备。 设备尝试连接会导致“未授权”连接错误。 若要解决此错误，必须更新设备的注册条目，以采用设备的新叶证书。 然后，在重新预配设备时，预配服务可根据需要更新 IoT 中心设备注册表信息。 
 
-如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则建立这种连接可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则会识别该设备。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
+如果在预配服务中为设备创建了[注册组](concepts-service.md#enrollment-group)，则上述连接尝试可能不会失败。 在这种情况下，如果不是滚动更新设备证书信任链中的根证书或中间证书，并且新证书是注册组中定义的信任链的一部分，则该设备可以识别。 如果在对安全违规做出反应时出现这种情况，至少应将组中被视为违规的特定设备证书加入方块列表。 有关详细信息，请参阅[将注册组中的特定设备加入方块列表](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)。
 
 可在“管理注册”页上更新已滚动更新的证书的注册条目。 若要访问该页，请遵循以下步骤：
 

@@ -52,6 +52,10 @@ items:
       href: concepts-business-continuity.md
     - name: 备份和还原
       href: concepts-backup.md
+  - name: 开发
+    items:
+    - name: 连接复原
+      href: concepts-connectivity.md
   - name: 复制
     items:
     - name: 复制中数据
@@ -90,6 +94,12 @@ items:
     items:
     - name: 配置复制中数据
       href: howto-data-in-replication.md
+  - name: 故障排除
+    items:
+    - name: 排查连接错误
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: 查询性能故障排除
+      href: howto-troubleshoot-query-performance.md
 - name: 引用
   items:
   - name: REST API
@@ -109,14 +119,14 @@ items:
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
   - name: 请求功能
-    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
   - name: 上市区域
     href: https://azure.microsoft.com/regions/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 2ba86afb2bb0aeff5ab83cfb9e3ee1b27ce3b3f5
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: aca88da087f0d51b0c6759e4cecd91889210b614
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986333"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344346"

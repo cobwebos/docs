@@ -7,15 +7,16 @@ ms.component: dsc
 keywords: dsc, 配置, 自动化
 author: KrisBash
 ms.author: krbash
-ms.date: 12/17/2017
+ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243686"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
 
@@ -29,20 +30,20 @@ ms.lasthandoff: 05/11/2018
 * 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
 * 运行 Red Hat Enterprise Linux、CentOS 或 Oracle Linux 的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 
-## <a name="log-in-to-azure"></a>登录 Azure
-在 https://portal.azure.com 中登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
+登录 Azure (https://portal.azure.com)
 
 ## <a name="onboard-a-virtual-machine"></a>载入虚拟机
 可以通过多种不同的方法载入计算机并启用 Desired State Configuration。 本快速入门介绍如何通过自动化帐户进行载入。 可以阅读此[载入](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)文章，详细了解如何通过不同的方法将计算机载入到 Desired State Configuration。
 
 1. 在 Azure 门户的左窗格中，选择“自动化帐户”。 如果该选项未显示在左窗格中，请单击“所有服务”，然后在出现的视图中进行搜索。
 1. 在列表中选择一个自动化帐户。
-1. 在自动化帐户的左窗格中，选择“DSC 节点”。
-1. 单击菜单选项“添加 Azure VM”。
-1. 找到要启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
-1. 单击虚拟机，然后选择“连接”。
-1. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。 可以将[配置模式](https://docs.microsoft.com/powershell/dsc/metaconfig)设置为控制计算机的配置行为。
-1. 单击 **“确定”**
+1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”。
+2. 单击“添加”以打开“VM 选择”页。
+3. 找到要启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
+4. 单击虚拟机，然后选择“连接”。
+5. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。 可以将[配置模式](https://docs.microsoft.com/powershell/dsc/metaconfig)设置为控制计算机的配置行为。
+6. 单击 **“确定”**
 
 ![将 Azure VM 载入到 DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -100,10 +101,10 @@ configuration LAMPServer {
 
 若要导入配置，请执行以下操作：
 
-1. 在自动化帐户的左窗格中，选择“DSC 配置”。
-1. 单击菜单选项“添加配置”。
-1. 选择在前面的步骤中保存的配置文件。
-1. 单击 **“确定”**
+1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”，然后单击“配置”选项卡。
+2. 单击“+ 添加”
+3. 选择在前面的步骤中保存的配置文件。
+4. 单击 **“确定”**
 
 ## <a name="compile-a-configuration"></a>编译配置
 
@@ -111,18 +112,16 @@ configuration LAMPServer {
 
 若要编译配置，请执行以下操作：
 
-1. 在自动化帐户的左窗格中，选择“DSC 配置”。
+1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”，然后单击“配置”选项卡。
 1. 选择在前面的步骤中导入的配置“LAMPServer”。
 1. 在菜单选项中单击“编译”，然后单击“是”。
 1. 在“配置”视图中，可以看到排入队列的新编译作业。 成功完成作业以后，即可转到下一步。 如果出现故障，可以单击该编译作业来了解详细信息。
-
-![编译作业状态](./media/automation-quickstart-dsc-configuration/dsc-compilationjob.png)
 
 ## <a name="assign-a-node-configuration"></a>分配节点配置
 
 可以向 DSC 节点分配编译的节点配置。 可以通过分配操作将配置应用到计算机，并监视（或自动更正）出现的与该配置不符的任何偏差。
 
-1. 在自动化帐户的左窗格中，选择“DSC 节点”
+1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”，然后单击“节点”选项卡。
 1. 选择要为其分配配置的节点
 1. 单击“分配节点配置”
 1. 选择要分配的节点配置  - **LAMPServer.localhost**，然后单击“确定”
@@ -132,7 +131,7 @@ configuration LAMPServer {
 
 ## <a name="viewing-node-status"></a>查看节点状态
 
-可以在自动化帐户的“DSC 节点”视图中找到所有托管节点的状态。 可以通过状态、节点配置或名称搜索的方式来筛选显示结果。 
+所有托管节点的状态都可以在“状态配置(DSC)”中找到，然后在自动化帐户的“节点”选项卡下找到。 可以通过状态、节点配置或名称搜索的方式来筛选显示结果。
 
 ![DSC 节点状态](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

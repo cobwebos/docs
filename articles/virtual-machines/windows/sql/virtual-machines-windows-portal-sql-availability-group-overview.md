@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: b71ba12f6c533d67b04366f05b9334e1993823fa
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382022"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239434"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>介绍 Azure 虚拟机上的 SQL Server Always On 可用性组 #
 
 本文介绍 Azure 虚拟机上的 SQL Server 可用性组。 
 
-Azure 虚拟机上的 Always On 可用性组类似于本地的 Always On 可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)。 
+Azure 虚拟机上的 Always On 可用性组类似于本地的 Always On 可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)。 
 
 此关系图说明了 Azure 虚拟机中完整 SQL Server 可用性组的部件。
 

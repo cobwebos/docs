@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: e6c6f36d877f220bcc8d83b75750f54f85dcc198
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299876"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241542"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 
@@ -71,7 +71,7 @@ ms.locfileid: "44299876"
 10. 继续转到[将实验室连接到存储库](#connect-your-lab-to-the-repository)部分。
 
 ## <a name="connect-your-lab-to-the-repository"></a>将实验室连接到存储库
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“更多服务”，并从服务列表中选择“开发测试实验室”。
 3. 在实验室列表中，选择实验室。 
 4. 依次选择“配置和策略” > “存储库” > “+ 添加”。

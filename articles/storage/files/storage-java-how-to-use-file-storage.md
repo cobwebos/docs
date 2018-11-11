@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a5a71fada190939abf638cd1b681adff7e80970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528961"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244536"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -230,7 +230,7 @@ if ( file.deleteIfExists() ) {
 * [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
 * [用于 Android 的 Azure 存储 SDK](https://github.com/azure/azure-storage-android)
 * [Azure 存储客户端 SDK 参考](http://dl.windowsazure.com/storage/javadoc/)
-* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
 * [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md)
 * [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

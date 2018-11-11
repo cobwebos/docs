@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240386"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>使用 SQL 数据库托管实例进行复制
 
@@ -77,7 +77,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 ## <a name="configure-publishing-and-distribution-example"></a>配置发布和分发示例
 
 1. 在门户中[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-create-tutorial-portal.md)。
-2. [创建 Azure 存储帐户](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)（适用于工作目录）。
+2. [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)（适用于工作目录）。
 
    确保复制存储密钥。 请参阅[查看和复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys
 )。
@@ -85,11 +85,11 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
    在下面的示例脚本中，请将 `<Publishing_DB>` 替换为此数据库的名称。
 
-4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 请参阅[创建数据库用户](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)。 使用安全密码。
+4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 请参阅[创建数据库用户](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)。 使用安全密码。
 
    在下面的示例脚本中，将 `<SQL_USER>` 和 `<PASSWORD>` 与此 SQL Server 帐户数据库用户和密码配合使用。
 
-5. [连接到 SQL 数据库托管实例](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)。
+5. [连接到 SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)。
 
 6. 运行以下查询，以便添加分发服务器和分发数据库。
 
@@ -197,4 +197,4 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
 ## <a name="see-also"></a>另请参阅
 
-- [什么是托管实例？](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [什么是托管实例？](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

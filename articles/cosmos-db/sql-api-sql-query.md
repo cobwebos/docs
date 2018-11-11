@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 766a2a9a2b71d9cd013f26b843d413d7603ab1fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051351"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233297"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>使用 SQL 查询来查询 Azure Cosmos DB 数据
 
@@ -2405,13 +2405,13 @@ Cosmos DB 提供了一种编程模型，使用存储过程和触发器对集合�
 
 ## <a id="References"></a>参考
 1. [Azure Cosmos DB 简介][introduction]
-2. [Azure Cosmos DB SQL 规范](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-documentdb-net)
 4. [Azure Cosmos DB 一致性级别][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
 7. Javascript 规范 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
+8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
 9. Query evaluation techniques for large databases [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)（针对大型数据库的查询评估技术）
 10. Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
 11. Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.

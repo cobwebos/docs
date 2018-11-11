@@ -3,17 +3,17 @@ title: 创建支持“恰好一次”事件处理的 Spark 流作业 - Azure HDI
 description: 如何将 Spark 流设置为处理事件一次且只有一次。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: ae170e90cede26bd6a43fcc10b93fcd7490d838f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 11/06/2018
+ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618815"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241305"
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>创建支持“恰好一次”事件处理的 Spark 流作业
 
@@ -61,13 +61,21 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 1. 在 StreamingContext 对象中配置检查点的存储路径：
 
-    val ssc = new StreamingContext(spark, Seconds(1))  ssc.checkpoint("/path/to/checkpoints")
+    ```Scala
+    val ssc = new StreamingContext(spark, Seconds(1))
+    ssc.checkpoint("/path/to/checkpoints")
+    ```
 
     在 HDInsight 中，应将这些检查点保存到群集上附加的默认存储：Azure 存储或 Azure Data Lake Store。
 
 2. 接下来，在 DStream 上指定检查点间隔（以秒为单位）。 在每个间隔内，会将派生自输入事件的状态数据持久保存到存储。 在从源事件重新生成状态时，持久保存的状态数据可以减少所需的计算。
 
-    val lines = ssc.socketTextStream("hostname", 9999)  lines.checkpoint(30)  ssc.start()  ssc.awaitTermination()
+    ```Scala
+    val lines = ssc.socketTextStream("hostname", 9999)
+    lines.checkpoint(30)
+    ssc.start()
+    ssc.awaitTermination()
+    ```
 
 ### <a name="use-idempotent-sinks"></a>使用幂等接收器
 

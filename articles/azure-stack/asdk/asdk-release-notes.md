@@ -16,7 +16,7 @@ ms.author: sethm
 ms.reviewer: misainat
 ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
 ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2018
 ms.locfileid: "51282452"

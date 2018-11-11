@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 02b4ad8aea3904ba0e99a5ea4d4d035f970e171a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5ad106d45c8bae2d41e0bde74b27f80f4d8ab79b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805812"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241270"
 ---
 <a name="delete-an-offersku-from-azure-marketplace"></a>从 Azure 市场删除产品/服务/SKU 
 ==========================================
 
 可能由于各种原因决定从市场中删除产品/服务。 新客户可能不再购买或部署你的产品/服务，但现有客户不受影响。
-产品/服务终止是终止该服务和/或你与现有客户之间许可协议的过程。 与产品/服务删除和终止相关的指南和政策受 [Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)（请参阅第 7 节）
+产品/服务终止是终止该服务和/或你与现有客户之间许可协议的过程。 与产品/服务删除和终止相关的指南和政策受 [Microsoft 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)（请参阅第 7 节）
 7) 和[参与策略](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)（请参阅第 6.2 节）的约束。 本文探讨了多种受支持的删除方案以及可以采取的步骤。
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>从 Azure 市场删除实时 SKU 

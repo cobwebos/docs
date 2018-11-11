@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4156071c36b06be586b05ee98e9eeb0a9138e4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441521"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246848"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure 的 HPC Pack 群集中的 Linux 计算节点入门
 在 Azure 中设置 [Windows HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) 群集，该群集包含运行 Windows Server 的头节点和运行受支持 Linux 分发版的多个计算节点。 了解可用于在群集的 Linux 节点与 Windows 头节点之间移动数据的选项。 了解如何将 Linux HPC 作业提交到群集。
@@ -36,8 +36,7 @@ ms.locfileid: "39441521"
 ## <a name="deploy-an-hpc-pack-cluster-with-linux-compute-nodes"></a>使用 Linux 计算节点部署 HPC Pack 群集
 本文介绍用于在 Azure 中部署包含 Linux 计算节点的 HPC Pack 群集的两个选项。 这两种方法使用包含 HPC Pack 的 Windows Server 的市场映像创建头节点。 
 
-* 
-  **Azure 资源管理器模板** - 使用 Azure 市场中的模板或社区中的快速入门模板，自动在资源管理器部署模型中创建群集。 例如，Azure 市场中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
+* **Azure 资源管理器模板** - 使用 Azure 市场中的模板或社区中的快速入门模板，自动在资源管理器部署模型中创建群集。 例如，Azure 市场中的 [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)（适用于 Linux 工作负荷的 HPC Pack 群集）模板可为 Linux HPC 工作负荷创建完整的 HPC Pack 群集基础结构。
 * **PowerShell 脚本** - 使用 [Microsoft HPC Pack IaaS 部署脚本](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) (**New-HpcIaaSCluster.ps1**) 在经典部署模型中自动执行完整的群集部署。 此 Azure PowerShell 脚本使用 Azure 市场中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数用于部署 Linux 计算节点。
 
 有关 Azure 中 HPC Pack 群集部署选项的详细信息，请参阅 [Options to create and manage a high-peformance computing (HPC) cluster in Azure with Microsoft HPC Pack](../hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Microsoft HPC Pack 在 Azure 中创建和管理高性能计算 (HPC) 群集时可用的选项）。
@@ -147,7 +146,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
    
-    a. 由于在上述命令中未指定 **AdminPassword**，系统会提示输入用户 *MyAdminName* 的密码。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 由于在上述命令中未指定 **AdminPassword**，系统会提示输入用户 *MyAdminName* 的密码。
    
     b. 然后，此脚本将开始验证配置文件。 这可能最多需要几分钟时间，具体取决于网络连接。
    
@@ -187,7 +186,7 @@ HPC Pack IaaS 部署脚本使用 XML 配置文件作为输入来描述 HPC 群�
 ### <a name="azure-file-storage"></a>Azure 文件存储
 [Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。 Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。 
 
-有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅[在 Windows 上开始使用 Azure 文件存储](../../../storage/files/storage-how-to-use-files-windows.md)。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/files/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
+有关创建 Azure 文件共享以及将其装入头节点的详细步骤，请参阅[在 Windows 上开始使用 Azure 文件存储](../../../storage/files/storage-how-to-use-files-windows.md)。 若要在 Linux 节点上装载 Azure 文件共享，请参阅 [How to use Azure File storage with Linux](../../../storage/files/storage-how-to-use-files-linux.md)（如何通过 Linux 使用 Azure 文件存储）。 要设置持久性连接，请参阅 [Persisting connections to Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)（将连接保存到 Microsoft Azure 文件中）。
 
 在下面的示例中，会在存储帐户上创建 Azure 文件共享。 若要在头节点上装入该共享，请打开命令提示符并输入以下命令：
 
@@ -272,7 +271,7 @@ NFS 服务使你能够在运行 Windows Server 2012 操作系统的计算机之�
 
 通过 HPC Pack GUI 工具和 HPC Web 门户将作业提交到 Azure 中的群集的方法与 Windows 计算节点相同。 请参阅 [HPC Pack Job Manager](https://technet.microsoft.com/library/ff919691.aspx)（HPC Pack 作业管理器）和 [How to submit jobs from an on-premises client computer](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何从本地客户端计算机提交作业）。
 
-若要通过 REST API 提交作业，请参阅 [Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)（在 Microsoft HPC Pack 中通过使用 REST API 创建和提交作业）。 若要从 Linux 客户端提交作业，另请参阅 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) 中的 Python 示例。
+若要通过 REST API 提交作业，请参阅 [Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)（在 Microsoft HPC Pack 中通过使用 REST API 创建和提交作业）。 若要从 Linux 客户端提交作业，另请参阅 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) 中的 Python 示例。
 
 ## <a name="clusrun-for-linux-nodes"></a>用于 Linux 节点的 Clusrun
 HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) 工具可用于通过命令提示符或 HPC 群集管理器在 Linux 节点上执行命令。 下面是一些基本示例。

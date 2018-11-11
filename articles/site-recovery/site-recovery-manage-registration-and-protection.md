@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214080"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244332"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -34,7 +34,7 @@ ms.locfileid: "50214080"
 3. 记下 VMM 服务器的 ID。
 4. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构” > “对于 System Center VMM” >  “复制策略”中，右键单击关联的策略。 右键单击云“取消关联”。
 5. 删除 VMM 服务器或主动节点。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “VMM 服务器”中，右键单击服务器 > “删除”。
-6. 如果 VMM 服务器处于“已断开连接”状态，请对 VMM 服务器下载并运行[清理脚本](http://aka.ms/asr-cleanup-script-vmm)。 使用“以管理员身份运行”选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。 在脚本中，指定要删除的 VMM 服务器的 ID。 脚本会从服务器中删除注册和云配对信息。
+6. 如果 VMM 服务器处于“已断开连接”状态，请对 VMM 服务器下载并运行[清理脚本](https://aka.ms/asr-cleanup-script-vmm)。 使用“以管理员身份运行”选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。 在脚本中，指定要删除的 VMM 服务器的 ID。 脚本会从服务器中删除注册和云配对信息。
 5. 在所有辅助 VMM 服务器上，运行清理脚本。
 6. 在任何其他被动 VMM 群集节点（已安装提供程序）上运行清理脚本。
 7. 手动卸载 VMM 服务器上的提供程序。 如果有一个群集，请从所有节点删除。

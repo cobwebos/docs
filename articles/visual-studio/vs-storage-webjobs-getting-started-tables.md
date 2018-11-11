@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a10d354cf819ebaa7e2199d9de0566b3e6bfd1bf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c708c396911badb7c7ce5df2497aaba47cb7defe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145346"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243754"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -145,5 +145,5 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 有关如何处理队列消息触发的表处理，或者不特定于表处理的 WebJobs SDK 方案的信息，请参阅 [Getting started with Azure Queue storage and Visual Studio connected services (WebJob Projects)](../storage/vs-storage-webjobs-getting-started-queues.md)（开始使用 Azure 队列存储和 Visual Studio 连接服务（Web 作业项目））。
 
 ## <a name="next-steps"></a>后续步骤
-本文章提供了代码示例，演示如何处理用于操作 Azure 表的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](http://go.microsoft.com/fwlink/?linkid=390226)。
+本文章提供了代码示例，演示如何处理用于操作 Azure 表的常见方案。 有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](https://go.microsoft.com/fwlink/?linkid=390226)。
 

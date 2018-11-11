@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044431"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246678"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -26,9 +26,9 @@ ms.locfileid: "43044431"
 
 往下继续之前，要保存以下资源：在将 Power BI 报表集成到示例应用以及自己的应用时，它们会有所帮助。
 
-* [示例工作区 Web 应用](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [示例工作区 Web 应用](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI 工作区集合 API 参考](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK](http://go.microsoft.com/fwlink/?LinkId=746472)（通过 NuGet 提供）
+* [Power BI .NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472)（通过 NuGet 提供）
 * [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "43044431"
 
 下面将引导完成 Visual Studio 开发环境的设置，以便访问运行示例应用时所需的组件。
 
-1. 下载并解压缩 GitHub 上的 [Power BI 工作区集合 - 将报表集成到 Web 应用中](http://go.microsoft.com/fwlink/?LinkId=761493)示例。
+1. 下载并解压缩 GitHub 上的 [Power BI 工作区集合 - 将报表集成到 Web 应用中](https://go.microsoft.com/fwlink/?LinkId=761493)示例。
 2. 在 Visual Studio 中打开 **PowerBI-embedded.sln**。 可能需要在 NuGet 程序包管理器控制台中执行 **Update-Package** 命令来更新此解决方案中使用的程序包。
 3. 生成解决方案。
 4. 运行 **ProvisionSample** 控制台应用。 在示例控制台应用中，预配一个工作区并导入 PBIX 文件。
@@ -51,7 +51,7 @@ ms.locfileid: "43044431"
 8. 复制并保存新创建的**工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
 
     ![Azure 门户中的工作区 ID](media/get-started-sample/workspace-id.png)
-9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
+9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
 10. 如果出现提示，请为**数据集**输入一个易记的名称。
 
 应该会看到如下所示的响应：
@@ -83,7 +83,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
     ```
 3. 运行 **EmbedSample** Web 应用程序。
 
-运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。 要查看导入的报表，请展开“报表”，并单击任一报表。 如果已导入了[零售分析示例 PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)，则示例 Web 应用将如下所示：
+运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。 要查看导入的报表，请展开“报表”，并单击任一报表。 如果已导入了[零售分析示例 PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)，则示例 Web 应用将如下所示：
 
 ![示例应用程序中的示例左导航栏](media/get-started-sample/sample-left-nav.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6d5c721ab84c28bae9415dceeaa09fd12cc05824
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 532001a0cda22903d0bdf807ee868aef211336e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733004"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240078"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
@@ -39,7 +39,7 @@ ms.locfileid: "45733004"
 有关完整代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [代码示例页](http://aka.ms/AzureMapsSamples)
+> [代码示例页](https://aka.ms/AzureMapsSamples)
 
 增强用户体验：
 

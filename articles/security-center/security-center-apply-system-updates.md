@@ -3,7 +3,7 @@ title: 在 Azure 安全中心应用系统更新 | Microsoft 文档
 description: 本文档演示如何实现 Azure 安全中心建议**应用系统更新**和**在系统更新后重启**。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
-ms.author: terrylan
-ms.openlocfilehash: 5f6747629139e85f1ae50364da807636937a464a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 7b5f4415351ad5b51b874e5dc17349160f65e9ef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240369"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 安全中心应用系统更新
 Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监控，以找出缺少的操作系统更新。 安全中心从 Windows 更新或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows 计算机上配置的服务。 安全中心还可以在 Linux 系统中检查最新更新。 如果 VM 或计算机缺少系统更新，安全中心将建议应用系统更新。
@@ -90,7 +90,7 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png

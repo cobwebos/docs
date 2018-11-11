@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 449df8e49eb63cb6e52cd4ec25dafc2bb0851347
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023179"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241753"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ ms.locfileid: "50023179"
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-与前面的示例不同，现在必须使用 SQL 身份验证，因为调用方无法通过 Internet 使用 Windows 身份验证。 有关详细信息，请参阅 [Azure VM 中的 Always On 可用性组：客户端连接方案](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 身份验证时，请确保在两个副本上创建相同的登录名。 有关排查可用性组登录问题的详细信息，请参阅[如何映射登录名或使用包含的 SQL 数据库用户连接到其他副本并映射到可用性数据库](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
+与前面的示例不同，现在必须使用 SQL 身份验证，因为调用方无法通过 Internet 使用 Windows 身份验证。 有关详细信息，请参阅 [Azure VM 中的 Always On 可用性组：客户端连接方案](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 身份验证时，请确保在两个副本上创建相同的登录名。 有关排查可用性组登录问题的详细信息，请参阅[如何映射登录名或使用包含的 SQL 数据库用户连接到其他副本并映射到可用性数据库](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
 
 如果 Always On 副本位于不同子网中，客户端必须在连接字符串中指定 **MultisubnetFailover=True**。 这会导致尝试并行连接到不同子网中的副本。 请注意，这种情况下包括跨区域 AlwaysOn 可用性组部署。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025610"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244026"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 
@@ -309,7 +309,7 @@ WAImportExport 工具是可与 Microsoft Azure 导入/导出服务一起使用�
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>在哪里可以找到上一个版本的 WAImportExport 工具？
 
-WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 使用 WAImportExport 工具，用户可以指定多个源，并写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以[下载 WAImportExport V1 工具](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)并参阅 [WAImportExport V1 参考](storage-import-export-tool-how-to-v1.md)，获取 WAImportExport V1 用法的帮助。
+WAImportExport 工具包含 WAImportExport V1 工具所提供的全部功能。 使用 WAImportExport 工具，用户可以指定多个源，并写入多个驱动器。 此外，用户可以轻松管理要在其中以单个 CSV 文件复制数据的源位置。 但是，如果需要 SAS 支持或者要将单个源复制到单个磁盘，可以[下载 WAImportExport V1 工具](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)并参阅 [WAImportExport V1 参考](storage-import-export-tool-how-to-v1.md)，获取 WAImportExport V1 用法的帮助。
 
 #### <a name="what-is-a-session-id"></a>会话 ID 是什么？
 
