@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257259"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
@@ -52,8 +52,8 @@ ms.locfileid: "42146341"
 
 配置清单描述在配置 StorSimple 虚拟阵列上的软件之前需要收集的信息。 提前准备此类信息有助于简化环境中 StorSimple 设备的部署过程。 需要以下清单之一，具体取决于是将 StorSimple 虚拟阵列部署为文件服务器还是 iSCSI 服务器。
 
-* 下载 [StorSimple 虚拟阵列文件服务器配置清单](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
-* 下载 [StorSimple 虚拟阵列 iSCSI 服务器配置清单](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
+* 下载 [StorSimple 虚拟阵列文件服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
+* 下载 [StorSimple 虚拟阵列 iSCSI 服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -152,7 +152,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
 2. 在“配置”部分中，选择“存储帐户凭据”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
    
     1. 对于“订阅”，选择“当前”。
@@ -161,7 +161,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
    
     3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
    
-    4. 单击 **“添加”**。 成功创建存储帐户后，将收到通知。<br></br>
+    4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
    
      ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

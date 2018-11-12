@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388141"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258443"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 在将 Windows 虚拟机 (VM) 从本地上传到 Microsoft Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的**第 1 代 VM**。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代 VM 从 VHDX 文件系统转换成 VHD 文件系统，以及从动态扩展磁盘转换成固定大小磁盘， 但无法更改 VM 的代次。 有关详细信息，请参阅 [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)（我应该在 Hyper-V 中创建第 1 代还是第 2 代 VM？）。
@@ -48,7 +48,7 @@ ms.locfileid: "49388141"
 >本文中的命令必须在提升权限的 PowerShell 会话中运行。
 
 ### <a name="convert-disk-by-using-powershell"></a>使用 PowerShell 转换磁盘
-可以使用 Windows PowerShell 中的 [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”。 
+可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”。 
 
 以下示例命令从 VHDX 转换为 VHD，从动态扩展磁盘转换为固定大小磁盘：
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 在此命令中，将“-Path”的值替换为要转换的虚拟硬盘的路径，并将“-DestinationPath”的值替换为转换后磁盘的新路径和名称。
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
-如果有 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [Microsoft VM 转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD。 有关详细信息，请参阅博客文章 [How to Convert a VMware VMDK to Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)（如何将 VMware VMDK 转换为 Hyper-V VHD）。
+如果有 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [Microsoft VM 转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD。 有关详细信息，请参阅博客文章 [How to Convert a VMware VMDK to Hyper-V VHD](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)（如何将 VMware VMDK 转换为 Hyper-V VHD）。
 
 ## <a name="set-windows-configurations-for-azure"></a>设置 Azure 的 Windows 配置
 
@@ -377,7 +377,7 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 - [从专用磁盘创建 VM](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)（从专用 VHD 磁盘创建 VM）
 
-若要创建通用化映像，则需运行 sysprep。 有关 Sysprep 的详细信息，请参阅 [How to Use Sysprep: An Introduction](http://technet.microsoft.com/library/bb457073.aspx)（如何使用 Sysprep：简介）。 
+若要创建通用化映像，则需运行 sysprep。 有关 Sysprep 的详细信息，请参阅 [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx)（如何使用 Sysprep：简介）。 
 
 并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持该通用化。 因此，在运行此过程之前，请参阅以下文章，确保该计算机的角色受 sysprep 的支持。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)（Sysprep 对服务器角色的支持）。
 
@@ -401,7 +401,7 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 ## <a name="complete-recommended-configurations"></a>完成建议的配置
 以下设置不影响 VHD 上传。 但是，我们强烈建议配置这些设置。
 
-* 安装 [Azure VM 代理](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能，例如重置密码、配置 RDP 等。 有关详细信息，请参阅：
+* 安装 [Azure VM 代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能，例如重置密码、配置 RDP 等。 有关详细信息，请参阅：
 
     - [VM Agent and Extensions – Part 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)（VM 代理和扩展 – 第 1 部分）
     - [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)（VM 代理和扩展 – 第 2 部分）

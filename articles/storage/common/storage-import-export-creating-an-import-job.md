@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258004"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -35,7 +35,7 @@ ms.locfileid: "44021840"
 
 无论是通过门户还是 REST API 创建作业，为导入作业准备驱动器的步骤都是相同的。
 
-下面是驱动器准备工作的简要概述。 有关完整说明，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。 可从[此处](http://go.microsoft.com/fwlink/?LinkID=301900)下载 Azure 导入/导出工具。
+下面是驱动器准备工作的简要概述。 有关完整说明，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。 可从[此处](https://go.microsoft.com/fwlink/?LinkID=301900)下载 Azure 导入/导出工具。
 
 准备驱动器的过程包括以下步骤：
 

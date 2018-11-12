@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: d6b8341f16cca29fe5bedca34749f47053a14ebb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249262"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 ## <a name="overview"></a>概述
@@ -43,7 +43,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    - 已在 StorSimple 存储设备上配置的卷中托管文件共享
    - 已在 Microsoft Azure 订阅中创建 [Azure Site Recovery 服务保管库](../site-recovery/site-recovery-vmm-to-vmm.md)
 
-此外，如果 Azure 是恢复站点，则可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](http://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。
+此外，如果 Azure 是恢复站点，则可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](https://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。
 
 为避免出现延迟问题（可能会导致成本增加），请确保在同一区域中创建 StorSimple Cloud Appliance、自动化帐户和存储帐户。
 
@@ -81,7 +81,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 
 1. 在每个文件服务器 VM 上安装 VM 代理。 必须这样做才能在已故障转移的 VM 上运行 Azure 自动化脚本。
    
-   1. [将代理下载](http://aka.ms/vmagentwin)到 `C:\\Users\\<username>\\Downloads`。
+   1. [将代理下载](https://aka.ms/vmagentwin)到 `C:\\Users\\<username>\\Downloads`。
    1. 以管理员模式（以管理员身份运行）打开 Windows PowerShell，并输入以下命令导航到下载位置：  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -321,10 +321,10 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
 ## <a name="best-practices"></a>最佳实践
 ### <a name="capacity-planning-and-readiness-assessment"></a>容量规划和准备情况评估
 #### <a name="hyper-v-site"></a>Hyper-V 站点
-使用 [User Capacity Planner 工具](http://www.microsoft.com/download/details.aspx?id=39057)为 Hyper-V 副本环境设计服务器、存储和网络基础结构。
+使用 [User Capacity Planner 工具](https://www.microsoft.com/download/details.aspx?id=39057)为 Hyper-V 副本环境设计服务器、存储和网络基础结构。
 
 #### <a name="azure"></a>Azure
-可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](http://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。 准备情况评估工具会检查 VM 配置，当配置与 Azure 不兼容时会发出警告。 例如，如果 C: 磁盘大小超过 127 GB，它就会发出警告。
+可以在 VM 上运行 [Azure 虚拟机准备情况评估工具](https://azure.microsoft.com/downloads/vm-readiness-assessment/)，确保这些 VM 与 Azure VM 和 Azure Site Recovery 服务兼容。 准备情况评估工具会检查 VM 配置，当配置与 Azure 不兼容时会发出警告。 例如，如果 C: 磁盘大小超过 127 GB，它就会发出警告。
 
 容量规划至少包括两个重要过程：
 

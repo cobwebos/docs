@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240879"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256437"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
 
-Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决一些全世界最复杂的数据科学问题，进而组建全球性的团体。 Cortana Intelligence Competition 欢迎世界各地的数据爱好者参加竞赛，构建高精确和智能的数据科学模型。 这些举办的竞赛基于已经首次公开的唯一的数据集。 参与者将赢得奖励，或通过十佳公共排行榜得到认可。 你可以在 [aka.ms/CIComp](http://aka.ms/CIComp) 中访问竞赛主页。
+Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决一些全世界最复杂的数据科学问题，进而组建全球性的团体。 Cortana Intelligence Competition 欢迎世界各地的数据爱好者参加竞赛，构建高精确和智能的数据科学模型。 这些举办的竞赛基于已经首次公开的唯一的数据集。 参与者将赢得奖励，或通过十佳公共排行榜得到认可。 你可以在 [aka.ms/CIComp](https://aka.ms/CIComp) 中访问竞赛主页。
 
 **Microsoft 多久举办一次新竞赛？**
 
@@ -37,7 +37,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 **如何参赛？**
 
-访问 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的[“竞赛”](https://gallery.cortanaintelligence.com/competitions)主页，或者转到 [http://aka.ms/CIComp](http://aka.ms/CIComp)。 主页列出了当前正在举行的所有竞赛。 在每项竞赛的注册页面上都有对竞赛的详细说明、参与规则、奖品和竞赛时间。
+访问 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的[“竞赛”](https://gallery.cortanaintelligence.com/competitions)主页，或者转到 [http://aka.ms/CIComp](https://aka.ms/CIComp)。 主页列出了当前正在举行的所有竞赛。 在每项竞赛的注册页面上都有对竞赛的详细说明、参与规则、奖品和竞赛时间。
 
 1. 找到想要参加的竞赛，阅读所有说明并观看教程视频。 然后单击“参加竞赛”按钮，将初始试验复制到现有的 Azure 机器学习工作区。 如果还无权访问工作区，必须提前创建一个工作区。 运行初始试验，观察性能指标，并使用创造力提高模型的性能。 大部分时间都将花费在此步骤中。   
 
@@ -98,7 +98,7 @@ Microsoft 会验证专用排行榜的结果，然后我们将与你联系。 请
 
 **如果赢得比赛，如何获得奖金？**
 
-如果是竞赛获胜者，则需要在资格、许可证和发布者的声明上签名。 此窗体将重述竞赛规则。 如果获胜者不是美国纳税人，则需要填写美国纳税表单 W-9 或 Form W-8BEN。 作为奖金支付过程的一部分，我们将使用获胜者的注册电子邮件，与所有获胜者联系。 请参考[条款和条件](http://aka.ms/comptermsandconditions)，了解其他详细信息。
+如果是竞赛获胜者，则需要在资格、许可证和发布者的声明上签名。 此窗体将重述竞赛规则。 如果获胜者不是美国纳税人，则需要填写美国纳税表单 W-9 或 Form W-8BEN。 作为奖金支付过程的一部分，我们将使用获胜者的注册电子邮件，与所有获胜者联系。 请参考[条款和条件](https://aka.ms/comptermsandconditions)，了解其他详细信息。
 
 **如果多个项收到相同的分数，怎么办？**
 
@@ -114,5 +114,5 @@ Microsoft 会验证专用排行榜的结果，然后我们将与你联系。 请
 
 **我们会保留用户的竞赛解决方案和竞赛项吗？**
 
-仅保留用户项用于评估，以确定获胜的解决方案。 请参考[条款和条件](http://aka.ms/comptermsandconditions)，了解详细信息。
+仅保留用户项用于评估，以确定获胜的解决方案。 请参考[条款和条件](https://aka.ms/comptermsandconditions)，了解详细信息。
 

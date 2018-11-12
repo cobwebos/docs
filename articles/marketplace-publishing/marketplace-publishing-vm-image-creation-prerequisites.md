@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714326"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255262"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像的技术先决条件
 在开始之前，请仔细阅读过程，并了解执行每个步骤的位置和原因。 在开始套餐创建过程前，应尽可能多地准备公司信息和其他数据、下载必需的工具和/或创建技术组件。 通过查看本文，应该清楚了解这些项目。  
@@ -30,7 +30,7 @@ ms.locfileid: "39714326"
 * 根据所面向的操作系统，从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 [Azure PowerShell cmdlet](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) 或 [Linux 命令行接口工具](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409)。
 * 从 CodePlex 安装 Azure 存储器资源管理器。
 * 下载并安装 Azure 认证的认证测试工具：
-  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913)： 需要基于 Windows 的计算机才能运行认证工具。 如果未提供基于 Windows 的计算机，可以在 Azure 中使用基于 Windows 的 VM 才能运行工具。
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](https://go.microsoft.com/fwlink/?LinkID=526913)： 需要基于 Windows 的计算机才能运行认证工具。 如果未提供基于 Windows 的计算机，可以在 Azure 中使用基于 Windows 的 VM 才能运行工具。
 
 ## <a name="platforms-supported"></a>支持的平台
 可以在 Windows 或 Linux 上开发基于 Azure 的 VM。 发布过程的某些元素（例如创建 Azure 兼容的虚拟硬盘 (VHD)）使用其他工具和步骤，具体取决于所使用的操作系统：  

@@ -61,6 +61,7 @@
 
 ## 概述
 ### [什么是解决方案？](storsimple-overview.md)
+### [比较数据传输选项](storsimple-8000-choose-storage-solution.md)
 ### [StorSimple 学习路线图](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [安全注意事项](storsimple-8000-security.md)
 ### [上市区域](storsimple-regions.md)
@@ -183,7 +184,7 @@
 #### [从 5000/7000 系列设备](storsimple-8000-migration-options.md)
 ##### [到 StorSimple 8000 系列设备](storsimple-8000-migrate-from-5000-7000.md)
 ##### [到 Azure 文件同步](storsimple-5000-7000-afs-migration.md)
-#### [从其他存储设备](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [从其他存储设备](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
 #### [安装 Update 5 - 最新版](storsimple-8000-install-update-5.md)
@@ -248,8 +249,8 @@
 ## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=storsimple)
-## [支持博客](http://blogs.msdn.com/b/storsimple/)
-## [第三方通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [支持博客](https://blogs.msdn.com/b/storsimple/)
+## [第三方通知](https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 

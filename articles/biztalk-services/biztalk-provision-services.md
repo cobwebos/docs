@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26632714"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261955"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "26632714"
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
-> 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。 如果没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 请参阅 [Azure 免费试用](http://go.microsoft.com/fwlink/p/?LinkID=239738)。
+> 若要登录 Azure 门户，需要使用 Azure 帐户和 Azure 订阅。 如果没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 请参阅 [Azure 免费试用](https://go.microsoft.com/fwlink/p/?LinkID=239738)。
 
 
 ## <a name="CreateService"></a>创建 BizTalk 服务
@@ -84,7 +84,7 @@ Access Control 服务标识是一组凭据，这些凭据允许应用程序或�
 <br/><br/>
 Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管理这些帐户。 例如，Azure 帐户持有人创建一个名为 <em>BizTalkServiceSubscription</em> 的订阅，并向贵公司内的 BizTalk 管理员（例如，ContosoBTSAdmins@live.com）授予对此订阅的访问权限。 在这种情况下，BizTalk 管理员可登录到 Azure，并拥有订阅中所有托管服务（包括 Azure BizTalk 服务）的完全管理员权限。 BizTalk 管理员不是 Azure 帐户持有人，因此无法访问任何结算信息。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">在 Azure 中管理订阅和存储帐户</a>提供了详细信息。
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=267577">在 Azure 中管理订阅和存储帐户</a>提供了详细信息。
 </td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/><br/>
 在创建 BizTalk 服务时，可以使用现有的 Azure SQL Server 和 Azure SQL 数据库，也可以自动创建新的 Azure SQL Server 或 Azure SQL 数据库。
 <br/><br/>
-自动配置 SQL 数据库规模。 通常，默认的规模就足以满足 BizTalk 服务的需要。 更改规模会影响定价。 请参阅 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930">Accounts and Billing in Azure SQL Database</a>（Azure SQL 数据库中的帐户和计费）
+自动配置 SQL 数据库规模。 通常，默认的规模就足以满足 BizTalk 服务的需要。 更改规模会影响定价。 请参阅 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">Accounts and Billing in Azure SQL Database</a>（Azure SQL 数据库中的帐户和计费）
 <br/><br/>
 <strong>说明</strong>
 <br/>
@@ -123,7 +123,7 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/><br/>
 创建存储帐户时，会自动创建主密钥和辅助密钥。 这些密钥控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。
 <br/><br/>
-有关详细信息，请参阅<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671">存储</a>。
+有关详细信息，请参阅<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285671">存储</a>。
 </td>
 </tr>
 
@@ -143,8 +143,8 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/>
 
 <ul>
-<li><strong></strong>增强型密钥使用：Azure BizTalk 服务要求至少进行服务器身份验证。</li>
-<li><strong></strong>公用名：请输入 Azure BizTalk 服务 URL 的完全限定域名 (FQDN)。 请参阅本文中的<a HREF="#CreateService">创建 BizTalk 服务</a>。</li>
+<li>增强型密钥使用：Azure BizTalk 服务要求至少进行服务器身份验证。</li>
+<li>公用名：请输入 Azure BizTalk 服务 URL 的完全限定域名 (FQDN)。 请参阅本文中的<a HREF="#CreateService">创建 BizTalk 服务</a>。</li>
 </ul>
 <br/>
 创建 BizTalk 服务后，便可以添加新的或不同的证书。
@@ -165,7 +165,7 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
  有关详细信息，包括如何创建和管理混合连接，请参阅 [混合连接](integration-hybrid-connection-overview.md) 。
 
 ## <a name="next-steps"></a>后续步骤
-现在已创建 BizTalk 服务，可以让自己熟悉以下各个选项卡： [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)。 BizTalk 服务已准备就绪，可用于应用程序了。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
+现在已创建 BizTalk 服务，可以让自己熟悉以下各个选项卡： [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)。 BizTalk 服务已准备就绪，可用于应用程序了。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## <a name="see-also"></a>另请参阅
 * [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)<br/>
@@ -173,7 +173,7 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 * [BizTalk 服务：备份和还原](biztalk-backup-restore.md)<br/>
 * [BizTalk 服务：限制](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk 服务：颁发者名称和颁发者密钥](biztalk-issuer-name-issuer-key.md)<br/>
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [混合连接](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png

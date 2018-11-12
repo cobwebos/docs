@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214406"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230285"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 
@@ -132,18 +132,18 @@ BizTalk 服务始终在“挂起”状态中还原。 在此状态下，可在�
 </table>
 
 ## <a name="next"></a>下一步
-若要创建 Azure BizTalk 服务，请转到 [BizTalk 服务：预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=235197)。
+若要创建 Azure BizTalk 服务，请转到 [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## <a name="see-also"></a>另请参阅
-* [Backup BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
-* [从备份还原 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk 服务：预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk 服务：预配状态图表](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk 服务：限制](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk 服务：颁发者名称和颁发者密钥](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
+* [从备份还原 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk 服务：预配状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk 服务：限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk 服务：颁发者名称和颁发者密钥](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

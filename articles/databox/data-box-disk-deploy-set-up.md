@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b3b686815b86e28c0473668825b89736b9af5bf1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740478"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232874"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box 磁盘
 
@@ -75,7 +75,7 @@ ms.locfileid: "50740478"
     在此过程中，将仅使用 Data Box Disk 解锁工具。 其他两个工具将在以后使用。
 
     > [!div class="nextstepaction"]
-    > [下载适用于 Windows 的 Data Box Disk 工具集](http://aka.ms/databoxdisktoolswin)         
+    > [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin)         
 
 3. 在将用于复制数据的同一台计算机上提取工具集。 
 4. 打开命令提示符窗口，或者在同一台计算机上以管理员身份运行 Windows PowerShell。
@@ -131,7 +131,7 @@ ms.locfileid: "50740478"
 2. 下载对应于 Linux 客户端的 Data Box Disk 工具集。  
 
     > [!div class="nextstepaction"]
-    > [下载适用于 Linux 的 Data Box Disk 工具集](http://aka.ms/databoxdisktoolslinux) 
+    > [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux) 
 
 3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 输入以下命令： 
 

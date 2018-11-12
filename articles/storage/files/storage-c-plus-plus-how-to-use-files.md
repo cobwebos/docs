@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.component: files
-ms.openlocfilehash: 698b2ca177535709d13c531d3ca2a82a8a970131
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f2b6a03ce4e2c03f148fda67cfad1c4d51636b7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024573"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234963"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -351,5 +351,5 @@ if (share.exists())
 
 * [适用于 C++ 的存储客户端库](https://github.com/Azure/azure-storage-cpp)
 * [C++ 的 Azure 存储文件服务示例](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure 存储资源管理器](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 存储资源管理器](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

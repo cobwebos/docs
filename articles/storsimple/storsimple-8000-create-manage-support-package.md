@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743572"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254360"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -72,10 +72,10 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 可将以下参数用于 Export-HcsSupportPackage cmdlet。
 
-| 参数 | 必需/可选 | 说明 |
+| 参数 | 必需/可选 | Description |
 | --- | --- | --- |
-| `-Path` |必需 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
-| `-EncryptionPassphrase` |必需 |用于提供一个密码，以便加密支持包。 |
+| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-EncryptionPassphrase` |必选 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
 | `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
@@ -93,7 +93,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 #### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中编辑支持包
 
 1. 如前所述生成支持包，详见：[在 Windows PowerShell for StorSimple 中创建支持包](#to-create-a-support-package-in-windows-powershell-for-storsimple)。
-2. [下载脚本](http://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65)到客户端本地。
+2. [下载脚本](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65)到客户端本地。
 3. 导入 Windows PowerShell 模块。 指定已将脚本下载到其中的本地文件夹的路径。 若要导入模块，请输入：
    
     `Import-module <Path to the folder that contains the Windows PowerShell script>`

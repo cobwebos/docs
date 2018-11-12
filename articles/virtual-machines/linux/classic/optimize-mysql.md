@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0ba85e82824bc257869d9801f342bd6dbb0402d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247443"
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>优化 Azure Linux VM 上的 MySQL 性能
 影响 Azure 上 MySQL 性能的因素有很多，主要体现在虚拟硬件选择和软件配置两个方面。 本文重点介绍如何通过存储、系统和数据库配置优化性能。
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/05/2018
 
 可能还要考虑区块大小。 通常，区块越大，开销就越低，对于大型写入操作尤其如此。 不过，如果区块太大，它可能会添加额外的开销，使你无法利用 RAID。 当前的默认大小为 512 KB，经证实，它是大多数常见生产环境的最佳大小。 有关详细信息，请参阅[附录 C](#AppendixC)。   
 
-对于不同的虚拟机类型，可添加的磁盘数量是有限制的。 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)中详细介绍了这些限制。 可以选择设置磁盘较少的 RAID，不过，在本文的 RAID 示例中，需要附加四个数据磁盘。  
+对于不同的虚拟机类型，可添加的磁盘数量是有限制的。 [Azure 的虚拟机和云服务大小](https://msdn.microsoft.com/library/azure/dn197896.aspx)中详细介绍了这些限制。 可以选择设置磁盘较少的 RAID，不过，在本文的 RAID 示例中，需要附加四个数据磁盘。  
 
 本文假定已经创建 Linux 虚拟机，并且安装和配置了 MYSQL。 有关入门的详细信息，请参阅“如何在 Azure 上安装 MySQL”。  
 

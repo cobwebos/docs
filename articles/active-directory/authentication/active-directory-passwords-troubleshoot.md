@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 044a3bae75cb385e7a3542b920e0cb3b5bcedcd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321780"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233620"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -99,7 +99,7 @@ ms.locfileid: "49321780"
 | 代码 | 名称或消息 | Description |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619:“某个限制阻止将密码更改为当前指定的密码。” | 当密码写回服务尝试在本地目录中设置的密码不符合域在密码期限、历史记录、复杂度或筛选方面的要求时，将发生此事件。 <br> <br> 如果使用最短密码期限，并且最近在此时间窗口内已更改过密码，将无法再次更改密码，直到它达到域中指定的期限。 对于测试目的，最短期限应设置为 0。 <br> <br> 如果启用了密码历史记录要求，则必须选择在最近 *N* 次未使用过的密码，其中 *N* 是密码历史记录设置。 如果选择了在最近 *N* 次中使用过的密码，则在此情况下会失败。 对于测试目的，密码历史记录应设置为 0。 <br> <br> 如果有密码复杂性要求，则当用户尝试更改或重置密码时会强制实施所有这些要求。 <br> <br> 如果启用密码筛选器，并且用户选择了不满足筛选条件的密码，则重置或更改操作会失败。 |
-| 6329 | MMS(3040): admaexport.cpp(2837)：服务器不包含 LDAP 密码策略控件。 | 如果未在 DC 中启用 LDAP_SERVER_POLICY_HINTS_OID 控件 (1.2.840.113556.1.4.2066)，将会发生此问题。 要使用密码写回功能，必须启用该控件。 为此，必须在 Windows Server 2008（装有最新 SP）或更高版本上运行 DC。 如果 DC 位于 2008（低于 R2）上，则还必须应用修补程序 [KB2386717](http://support.microsoft.com/kb/2386717)。 |
+| 6329 | MMS(3040): admaexport.cpp(2837)：服务器不包含 LDAP 密码策略控件。 | 如果未在 DC 中启用 LDAP_SERVER_POLICY_HINTS_OID 控件 (1.2.840.113556.1.4.2066)，将会发生此问题。 要使用密码写回功能，必须启用该控件。 为此，必须在 Windows Server 2008（装有最新 SP）或更高版本上运行 DC。 如果 DC 位于 2008（低于 R2）上，则还必须应用修补程序 [KB2386717](https://support.microsoft.com/kb/2386717)。 |
 | HR 8023042 | 同步引擎返回了错误：hr = 80230402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败。 | 在多个域中启用同一用户 ID 时会发生此错误。 例如，如果正在同步帐户和资源林，并且每个林中存在并启用了同一个用户 ID，则会发生此错误。 <br> <br> 如果使用了不唯一的定位点属性（如别名或 UPN），并且两个用户共享了这同一个定位点属性，则也可能发生此错误。 <br> <br> 若要解决此问题，请确保域中没有任何重复的用户，并且每个用户使用唯一的定位点属性。 |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>如果事件源是 PasswordResetService
@@ -215,7 +215,7 @@ ms.locfileid: "49321780"
 > 如果自定义了现成的同步规则，请先备份这些规则，再继续进行升级，并在完成后手动重新部署这些规则。
 >
 
-1. 从 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=615771)下载最新版本的 Azure AD Connect。
+1. 从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?LinkId=615771)下载最新版本的 Azure AD Connect。
 1. 由于已安装 Azure AD Connect，则需要执行就地升级将 Azure AD Connect 安装更新到最新版本。
 1. 执行下载的程序包，并按照屏幕说明进行操作来更新 Azure AD Connect 计算机。
 

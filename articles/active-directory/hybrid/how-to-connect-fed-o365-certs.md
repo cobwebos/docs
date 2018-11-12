@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309886"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237089"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -51,9 +51,9 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 > [!IMPORTANT]
 > 如果使用 AD FS，为确保业务连续性，请确认服务器具有以下更新，以免因已知问题而导致身份验证失败。 这可以减少在此续订期间和未来续订期间出现已知的 AD FS 代理服务器问题：
 >
-> Server 2012 R2 - [Windows Server 2014 年 5 月汇总](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 - [Windows Server 2014 年 5 月汇总](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 and 2012 - [在 Windows Server 2012 或 Windows 2008 R2 SP1 中通过代理进行身份验证失败](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 and 2012 - [在 Windows Server 2012 或 Windows 2008 R2 SP1 中通过代理进行身份验证失败](https://support.microsoft.com/kb/3094446)
 >
 >
 

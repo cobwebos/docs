@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a7d2d1e46847f6126ad2905e9f2d3ce52957dad5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8ef67add44428e08a1851a039e7e8c2c747e930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253850"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载的信息图：具有算法示例的机器学习基础知识
 下载此易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法。 算法示例可帮助机器学习初学者了解可使用的算法及其用途。
@@ -30,7 +30,7 @@ ms.locfileid: "34833345"
 [Azure 机器学习工作室](https://studio.azureml.net/) 附带用于预测分析的大型算法库。 信息图标识了四类常用算法：回归、异常情况检测、群集和分类，并在 [Azure AI 库](https://gallery.cortanaintelligence.com/)中提供了指向工作示例的链接。 该库包含示例试验和演示如何在许多实际解决方案中应用这些算法的教程。
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>下载包含算法示例的信息图
-**[下载：具有链接到算法示例的机器学习基础知识的信息图 (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[下载：具有链接到算法示例的机器学习基础知识的信息图 (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![信息图：具有算法示例的机器学习基础知识。 常用算法。 适合初学者的机器学习。](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 

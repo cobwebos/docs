@@ -72,7 +72,7 @@
 ## [创作模板](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=networking)
 ## [社区模板](https://azure.microsoft.com/resources/templates/)
-## [网络博客](http://azure.microsoft.com/blog/topics/networking)
+## [网络博客](https://azure.microsoft.com/blog/topics/networking)
 ## [定价](https://azure.microsoft.com/pricing)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)

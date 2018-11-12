@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236578"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253442"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>迁移到最新版本的 Azure 机器学习服务 
 
@@ -38,7 +38,7 @@ ms.locfileid: "48236578"
 |已注册的映像|否|在新工作区下重新创建部署 Docker 映像。|
 |已部署的 Web 服务|否|无。 它们仍然会按原样工作 <br/>或[使用最新版本重新部署它们](#services)。|
 |试验和 <br/>模型管理帐户|否|[改为创建工作区](#resources)。|
-|机器学习 CLI 和 SDK|否|使用新的 [CLI](reference-azure-machine-learning-cli.md) 和 [SDK](http://aka.ms/aml-sdk) 执行新工作。|
+|机器学习 CLI 和 SDK|否|使用新的 [CLI](reference-azure-machine-learning-cli.md) 和 [SDK](https://aka.ms/aml-sdk) 执行新工作。|
 
 
 详细了解[此版本中发生了哪些更改](overview-what-happened-to-workbench.md)？
@@ -62,7 +62,7 @@ ms.locfileid: "48236578"
 
 项目现在是最新版本中本地计算机上的目录，而不是将项目放在云中的工作区中。 请参阅[最新体系结构](concept-azure-machine-learning-architecture.md)的关系图。 
 
-要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)Python 命令指定该目录的名称或使用“az ml project attach”CLI 命令。
+要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)Python 命令指定该目录的名称或使用“az ml project attach”CLI 命令。
 
 例如：
 ```python

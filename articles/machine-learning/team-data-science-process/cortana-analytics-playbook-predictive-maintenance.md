@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254564"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -431,13 +431,13 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 |:-------------------|--------------|
 | [使用树和随机林学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公共 | 
 | [使用深度学习学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公共 |
-| [Azure 上的 AI 开发人员](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
-| [Microsoft AI 学校](http://aischool.microsoft.com/learning-paths) | 公共 |
+| [Azure 上的 AI 开发人员](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
+| [Microsoft AI 学校](https://aischool.microsoft.com/learning-paths) | 公共 |
 | [GitHub 中的 Azure AI 学习资源](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公共 |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | 公共 |
 | [Microsoft AI YouTube 网络研讨会](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公共 |
 | [Microsoft AI 展示](http://channel9.msdn.com/Shows/AI-Show) | 公共 |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | 合作伙伴 |
-| [Microsoft 合作伙伴网络](http://learningportal.microsoft.com) | 合作伙伴 |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | 合作伙伴 |
+| [Microsoft 合作伙伴网络](https://learningportal.microsoft.com) | 合作伙伴 |
 
 此外，Stanford 和 MIT 等学术机构以及其他培训公司也在线提供了有关 AI 的免费 MOOCS（大型开放式在线课程）。
