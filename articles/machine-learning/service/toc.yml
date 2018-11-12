@@ -4,7 +4,7 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure 机器学习服务？
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: 服务的工作原理
     displayName: architecture
@@ -17,6 +17,7 @@ items:
   - name: 入门 - 门户
     href: quickstart-get-started.md
   - name: 入门 - Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: 教程
   items:
@@ -25,6 +26,7 @@ items:
   - name: 部署模型：第 2 部分
     href: tutorial-deploy-models-with-aml.md
   - name: 训练自动化 ML 模型
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: 示例
   items:
@@ -34,6 +36,7 @@ items:
 - name: 概念
   items:
   - name: 模型管理
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: 使用 FPGA 加速
     href: concept-accelerate-with-fpgas.md
@@ -51,13 +54,14 @@ items:
     - name: 配置环境
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: 入门
         href: how-to-vscode-tools.md
       - name: 训练和部署
         href: how-to-vscode-train-deploy.md
   - name: 准备数据
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: 加载数据
@@ -69,6 +73,7 @@ items:
   - name: 训练模型
     items:
     - name: 设置训练环境
+      displayName: compute target, train
       href: how-to-set-up-training-targets.md
     - name: 在训练期间访问数据
       href: how-to-access-data.md
@@ -79,13 +84,12 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: 调整模型
-    items:
     - name: 优化超参数
       href: how-to-tune-hyperparameters.md
     - name: 跟踪试验和指标
       href: how-to-track-experiments.md
   - name: 自动化机器学习
+    displayName: automl
     href: how-to-automated-ml.md
     items:
     - name: 配置自动训练
@@ -101,8 +105,10 @@ items:
     - name: 模型部署位置
       href: how-to-deploy-and-where.md
     - name: 部署到 ACI
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: 部署到 AKS
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: 部署到 FPGA
       href: how-to-deploy-fpga-web-service.md
@@ -347,9 +353,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 06fb6198395fbf57d9c56aeedea7d96be3ab1c86
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095069"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287619"

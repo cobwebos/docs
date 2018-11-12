@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0cf5ace29dabd3a55524fe38403a07e3916ea7d6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e218cea543b48371647531cf6d62d8c10a07978
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390886"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230744"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "44390886"
 >
 >
 
-Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](http://aka.ms/downloadadlcopy) 从以下源复制数据：
+Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](https://aka.ms/downloadadlcopy) 从以下源复制数据：
 
 * 从 Azure 存储 Blob 复制到 Data Lake Storage Gen1。 无法使用 AdlCopy 将数据从 Data Lake Storage Gen1 复制到 Azure 存储 blob。
 * 在两个 Azure Data Lake Storage Gen1 帐户之间。
@@ -39,11 +39,11 @@ Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](http://aka.ms/do
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 包含一些数据的 **Azure 存储 Blob** 容器。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * **Azure Data Lake Analytics 帐户（可选）** - 有关如何创建 Data Lake Analytics 帐户的说明，请参阅 [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
-* **AdlCopy 工具**。 从 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) 安装 AdlCopy 工具。
+* **AdlCopy 工具**。 从 [http://aka.ms/downloadadlcopy](https://aka.ms/downloadadlcopy) 安装 AdlCopy 工具。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy 工具语法
 对 AdlCopy 工具使用以下语法
@@ -54,7 +54,7 @@ Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](http://aka.ms/do
 
 | 选项 | Description |
 | --- | --- |
-| Source |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
+| 源 |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
 | 目标 |指定要复制到的 Data Lake Storage Gen1 目标。 |
 | SourceKey |指定 Azure 存储 blob 源的存储访问密钥。 仅在源是 blob 容器或 blob 时必选此项。 |
 | 帐户 |**可选**。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
@@ -180,5 +180,5 @@ AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如�
 
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -26,7 +26,7 @@
 
 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 在需要时，可使用[此处](../articles/media-services/previous/media-services-dotnet-manage-entities.md)所述的代码存档作业/任务信息。
 
-<sup>3</sup> 发出列出作业实体的请求时，每个请求最多返回 1,000 个作业。 如果需要跟踪所有已提交的作业，可以使用 top/skip，如 [OData 系统查询选项](http://msdn.microsoft.com/library/gg309461.aspx)中所述。
+<sup>3</sup> 发出列出作业实体的请求时，每个请求最多返回 1,000 个作业。 如果需要跟踪所有已提交的作业，可以使用 top/skip，如 [OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx)中所述。
 
 <sup>4</sup> 定位符不用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。 有关详细信息，请参阅[此](../articles/media-services/previous/media-services-content-protection-overview.md)部分。
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 432f61adaf736180a720aa23a7275e96fed4c733
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696925"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230863"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示�
 
 ## <a name="letter-sized-cheat-sheets"></a>信纸尺寸的备忘单
 
-如果想要打印到信纸尺寸的纸张 (8.5" x 11")，请下载 [Azure Cosmos DB 信纸尺寸的查询备忘单](http://go.microsoft.com/fwlink/?LinkId=623215)。
+如果想要打印到信纸尺寸的纸张 (8.5" x 11")，请下载 [Azure Cosmos DB 信纸尺寸的查询备忘单](https://go.microsoft.com/fwlink/?LinkId=623215)。
 
 ![Azure Cosmos DB 查询备忘单 - 信纸尺寸（包含 SQL API、JavaScript、MongoDB API、Gremlin API 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 

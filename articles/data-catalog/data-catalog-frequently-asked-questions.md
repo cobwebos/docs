@@ -8,12 +8,12 @@ ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409178"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231458"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -99,7 +99,7 @@ ms.locfileid: "47409178"
 专家是对数据对象具有明智观点的人员。 一个对象可以具有多个专家。 专家不需要是对象的“所有者”，只需知道可以怎样和应该怎样使用数据。
 
 ## <a name="how-do-i-share-information-with-the-data-catalog-team-if-i-encounter-problems"></a>遇到问题时如何与数据目录团队共享信息？
-若要报告问题、共享信息和提出问题，请转到 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。
+若要报告问题、共享信息和提出问题，请转到 [Azure 数据目录论坛](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>该目录是否与我感兴趣的另一个数据源配合使用？
 我们当前正努力将更多数据源添加到数据目录中。 如果想查看支持的具体数据源，请通过转到 [Azure 反馈论坛的数据目录](https://feedback.azure.com/forums/906052-data-catalog)提出建议（如果已有人建议则可表达你的支持）。
@@ -127,4 +127,4 @@ ms.locfileid: "47409178"
 若要更新已在目录中注册的数据资产的元数据，仅需重新注册包含该资产的数据源即可。 数据源中的任何更改（例如添加列、从表或视图中删除列）都会在目录中更新，但会保留用户提供的所有批注。
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>未在此处找到相关问题。 在哪里可以找到答案？
-转到 [Azure 数据目录论坛](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。 将在此处找到提出的问题。
+转到 [Azure 数据目录论坛](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)。 将在此处找到提出的问题。

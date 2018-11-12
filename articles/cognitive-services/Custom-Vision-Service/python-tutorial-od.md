@@ -1,57 +1,52 @@
 ---
-title: 教程：使用适用于 Python 的自定义视觉 SDK 创建对象检测项目 - 自定义视觉服务
+title: 快速入门：使用适用于 Python 的自定义视觉 SDK 创建对象检测项目
 titlesuffix: Azure Cognitive Services
-description: 创建项目、添加标记、上载图像、定型你的项目并使用默认终结点进行预测。
+description: 使用 Python SDK 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958527"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278746"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>教程：使用适用于 Python 的自定义视觉 SDK 创建对象检测项目
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建对象检测项目
 
-探索一个使用计算机视觉 API 创建对象检测项目的基本 Python 脚本。 创建该项目后，可以添加标记的区域、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 将此开源示例用作通过使用自定义视觉 API 构建自己的应用的模板。
+本文提供信息和示例代码，以帮助你开始通过 Python 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用本教程，需要执行以下操作：
+- [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/) 工具
 
-- 安装 Python 2.7 或更高版本，或安装 Python 3.5 或更高版本。
-- 安装 pip。
+## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
 
-### <a name="platform-requirements"></a>平台要求
-已针对 Python 开发此示例。
+若要安装适用于 Python 的自定义影像服务 SDK，请在 PowerShell 中运行以下命令：
 
-### <a name="get-the-custom-vision-sdk"></a>获取自定义视觉 SDK
-
-若要构建此示例，需要为自定义视觉 API 安装 Python SDK：
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
 可以下载图像以及 [Python 示例](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)。
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>步骤 1：获取定型和预测密钥
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-若要获取此示例中使用的密钥，请访问[自定义视觉站点](https://customvision.ai)并选择右上角的__齿轮图标__。 在“帐户”部分中，复制“定型密钥”和“预测密钥”字段中的值。
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-![密钥 UI 的图像](./media/python-tutorial/training-prediction-keys.png)
+## <a name="add-the-code"></a>添加代码
 
-本示例使用[此位置](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)中的图像。
+在首选项目目录中创建名为 *sample.py* 的新文件。
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>步骤 2：创建自定义影像服务项目
+### <a name="create-the-custom-vision-service-project"></a>创建自定义影像服务项目
 
-若要新建自定义影像服务项目，请创建 sample.py 脚本文件并添加以下内容。 请注意，创建对象检测和图像分类项目之间的区别是为 create_project 调用指定的域。
+将以下代码添加到脚本中以创建新的自定义影像服务项目。 在适当的定义中插入订阅密钥。 请注意，创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,9 +66,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>步骤 3：向项目中添加标记
+### <a name="create-tags-in-the-project"></a>在项目中创建标记
 
-若要向项目中添加标记，请插入以下代码以创建两个标记：
+若要在项目中创建分类标记，请将以下代码添加到 *sample.py* 末尾：
 
 ```Python
 # Make two tags in the new project
@@ -81,14 +76,13 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>步骤 4：将图像上传到项目
+### <a name="upload-and-tag-images"></a>上传和标记图像
 
-对于对象检测项目，需要上传图像、区域和标记。 该区域处于标准化坐标中，并指定标记对象的位置。
+在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。
 
-若要将图像、区域和标记添加到项目，请在创建标记后插入以下代码。 请注意，对于本教程，区域与代码进行内联硬编码。 区域指定标准化坐标中的边界框。
+若要将图像、标记和区域添加到项目，请在创建标记后插入以下代码。 请注意，对于本教程，区域与代码进行内联硬编码。 区域在标准化坐标中指定边界框，坐标按以下顺序给定：左部、顶部、宽度、高度。
 
 ```Python
-
 fork_image_regions = {
     "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
     "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
@@ -134,7 +128,10 @@ scissors_image_regions = {
     "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
+```
+然后，使用此关联映射上传每个样本图像及其区域坐标。 添加以下代码。
 
+```Python
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -157,12 +154,9 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>步骤 5：训练项目
+### <a name="train-the-project"></a>定型项目
 
-现在，已向项目中添加了标记和图像，可以对其进行训练了： 
-
-1. 插入以下代码。 这将在项目中创建第一个迭代。 
-2. 将此迭代标记为默认迭代。
+此代码在项目中创建第一个迭代，并将其标记为默认迭代。 默认迭代反映了将响应预测请求的模型版本。 每次重新训练模型时都应更新此版本。
 
 ```Python
 import time
@@ -179,12 +173,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>步骤 6：获取并使用默认预测终结点
+### <a name="get-and-use-the-default-prediction-endpoint"></a>获取并使用默认预测终结点
 
-现在，你已准备就绪，可以使用模型进行预测了： 
-
-1. 获取与默认迭代关联的终结点。 
-2. 使用该终结点向项目发送一个测试图像。
+若要将图像发送到预测终结点并检索预测，请将以下代码添加到文件末尾：
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -203,10 +194,21 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>步骤 7：运行示例
+## <a name="run-the-application"></a>运行应用程序
 
-运行解决方案。 预测结果将显示在控制台上。
+运行 *sample.py*。
 
-```
+```PowerShell
 python sample.py
 ```
+
+应用程序的输出应显示在控制台中。 然后，可以验证测试图像（在 **samples/vision/images/Test** 中找到）是否已正确标记，并验证检测区域是否正确。
+
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+现在你已了解如何在代码中完成对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下指南涉及图像分类，但其原理与对象检测类似。
+
+> [!div class="nextstepaction"]
+> [测试和重新训练模型](test-your-model.md)

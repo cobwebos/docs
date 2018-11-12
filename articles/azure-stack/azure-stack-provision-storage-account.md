@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: ae6539900e201f0559d998ad2d9be24c39d42e3b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235337"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack 中的存储帐户
 存储帐户包含 Blob 和表服务，以及存储数据对象的唯一命名空间。 默认情况下，只有你，即存储帐户所有者，才能使用帐户中的数据。
 
-1. 在 Azure Stack POC 计算机上注册`https://adminportal.local.azurestack.external`作为[管理员](azure-stack-connect-azure-stack.md)，然后单击 **+ 创建资源** > **数据 + 存储** > **存储帐户**。
+1. 在 Azure Stack POC 计算机上，以[管理员](azure-stack-connect-azure-stack.md)身份登录到 `https://adminportal.local.azurestack.external`，然后单击“+ 创建资源” > “数据 + 存储” > “存储帐户”。
 
    ![](media/azure-stack-provision-storage-account/image01.png)
 2. 在“创建存储帐户”边栏选项卡中，键入存储帐户的名称。 创建新**资源组**或选择现有的资源组，然后单击“创建”以创建存储帐户。
@@ -38,4 +38,4 @@ ms.locfileid: "44713487"
 
 [了解 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 
-[下载与 Azure 一致的 Azure Stack 存储验证指南](http://aka.ms/azurestacktp1doc)
+[下载与 Azure 一致的 Azure Stack 存储验证指南](https://aka.ms/azurestacktp1doc)

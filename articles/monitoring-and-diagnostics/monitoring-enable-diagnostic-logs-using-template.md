@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e8af84467c008f5c576142fa094b2757cfd30387
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 774c313086883bedf4f8e06a46715a438fc02e69
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248072"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281194"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>在创建资源时使用 Resource Manager 模板自动启用诊断设置
 本文介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)在创建资源时配置资源的诊断设置。 这样可以让用户在创建资源时自动将诊断日志和指标流式传输到事件中心、将其存档在存储帐户中，或者发送到 Log Analytics。
@@ -26,7 +26,7 @@ ms.locfileid: "39248072"
 通过 Resource Manager 模板启用诊断日志时，所用方法取决于资源类型。
 
 * **非计算**资源（例如，网络安全组、逻辑应用、自动化）使用[此文中描述的诊断设置](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。
-* **计算**（基于 WAD/LAD）资源使用[此文中描述的 WAD/LAD 配置文件](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。
+* **计算**（基于 WAD/LAD）资源使用[此文中描述的 WAD/LAD 配置文件](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
 
 本文介绍如何使用其中一种方法配置诊断。
 
@@ -263,7 +263,7 @@ ms.locfileid: "39248072"
 > 
 > 
 
-整个过程（包括示例）详见[此文档](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+整个过程（包括示例）详见[此文档](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)

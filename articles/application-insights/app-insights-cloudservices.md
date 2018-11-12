@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 2b43e3487493f8568903ee0799fdd3d86e9a6542
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783490"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279664"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 可以通过 [Application Insights][start] 来监视 [Microsoft Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障情况和使用情况，只需将 Application Insights 的 SDK 提供的数据与云服务提供的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据进行组合分析即可。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -96,7 +96,7 @@ ms.locfileid: "43783490"
 
 这相当于将 Application Insights 检测密钥插入到名为 `ServiceConfiguration.*.cscfg` 的文件。 （[示例代码](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)）。
 
-若要改变发送到 Application Insights 的诊断信息级别，可[直接编辑 `.cscfg` 文件](app-insights-azure-diagnostics.md)进行此操作。
+若要改变发送到 Application Insights 的诊断信息级别，可[直接编辑 `.cscfg` 文件](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)进行此操作。
 
 ## <a name="sdk"></a>在每个项目中安装 SDK
 使用此选项可将自定义的业务遥测数据添加到任何角色，以便更细致地分析应用程序的用法和性能。
@@ -151,7 +151,7 @@ ms.locfileid: "43783490"
 
 ![Azure 诊断数据](./media/app-insights-cloudservices/23-wad.png)
 
-使用[搜索](app-insights-diagnostic-search.md)或[分析查询](app-insights-analytics-tour.md)功能在 Azure 诊断发送的各种跟踪日志中进行搜索。 例如，假设具有导致角色崩溃和再循环的未经处理的异常。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用“搜索”功能查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这会帮助你找到问题的根本原因。
+使用[搜索](app-insights-diagnostic-search.md)或[分析查询](../log-analytics/query-language/get-started-analytics-portal.md)功能在 Azure 诊断发送的各种跟踪日志中进行搜索。 例如，假设具有导致角色崩溃和再循环的未经处理的异常。 该信息会在应用程序通道的 Windows 事件日志中显示。 可使用“搜索”功能查看 Windows 事件日志错误，并获取异常的完整堆栈跟踪。 这会帮助你找到问题的根本原因。
 
 ![Azure 诊断搜索](./media/app-insights-cloudservices/25-wad.png)
 
@@ -231,14 +231,14 @@ Application Insights 提供丰富的诊断体验，可让用户查明请求失�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [将 Azure 诊断配置为向 Application Insights 发送数据](app-insights-azure-diagnostics.md)
+* [将 Azure 诊断配置为向 Application Insights 发送数据](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [自动创建 Application Insights 资源](app-insights-powershell.md)
 * [自动化 Azure 诊断](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: app-insights-api-custom-events-metrics.md
 [availability]: app-insights-monitor-web-app-availability.md
-[azure]: app-insights-azure.md
+[azure]: app-insights-overview.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md

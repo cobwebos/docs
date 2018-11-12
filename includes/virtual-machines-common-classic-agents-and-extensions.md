@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9158e6bfe07fc5d06b0685d77eff26644b594a8b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226765"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264389"
 ---
 VM 扩展可帮助你：
 
@@ -42,10 +42,10 @@ Azure 虚拟机代理（VM 代理）是一个安全的轻型进程，用于在 A
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* 用户创建一个 VM 映像，其中包括已安装的 VM 代理。 如果存在包含 VM 代理的映像，则可将该映像上传到 Azure。 对于 Windows VM，下载 [Windows VM 代理 .msi 文件](http://go.microsoft.com/fwlink/?LinkID=394789)并安装 VM 代理。 对于 Linux VM，请从位于 <https://github.com/Azure/WALinuxAgent> 的 GitHub 存储库安装 VM 代理。 有关如何在 Linux 上安装 VM 代理的详细信息，请参阅 [Azure Linux VM 代理用户指南](../articles/virtual-machines/extensions/agent-linux.md)。
+* 用户创建一个 VM 映像，其中包括已安装的 VM 代理。 如果存在包含 VM 代理的映像，则可将该映像上传到 Azure。 对于 Windows VM，下载 [Windows VM 代理 .msi 文件](https://go.microsoft.com/fwlink/?LinkID=394789)并安装 VM 代理。 对于 Linux VM，请从位于 <https://github.com/Azure/WALinuxAgent> 的 GitHub 存储库安装 VM 代理。 有关如何在 Linux 上安装 VM 代理的详细信息，请参阅 [Azure Linux VM 代理用户指南](../articles/virtual-machines/extensions/agent-linux.md)。
 
 > [!NOTE]
-> 在 PaaS 中，VM 代理名为 **WindowsAzureGuestAgent**，并且始终可在 Web 角色和辅助角色 VM 上找到。 （有关详细信息，请参阅 [Azure 角色体系结构](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)。）角色 VM 的 VM 代理现在可以按向永久性虚拟机添加扩展的相同方式向云服务 VM 添加扩展。 角色 VM 和永久性 VM 上的 VM 扩展的最大差异表现在添加 VM 扩展的时候。 使用角色 VM 时，扩展先添加到云服务，然后添加到该云服务中的部署。
+> 在 PaaS 中，VM 代理名为 **WindowsAzureGuestAgent**，并且始终可在 Web 角色和辅助角色 VM 上找到。 （有关详细信息，请参阅 [Azure 角色体系结构](https://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)。）角色 VM 的 VM 代理现在可以按向永久性虚拟机添加扩展的相同方式向云服务 VM 添加扩展。 角色 VM 和永久性 VM 上的 VM 扩展的最大差异表现在添加 VM 扩展的时候。 使用角色 VM 时，扩展先添加到云服务，然后添加到该云服务中的部署。
 >
 > 使用 [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) cmdlet 可列出所有可用的角色 VM 扩展。
 >

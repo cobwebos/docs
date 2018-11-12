@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e86b79cb57b9d4a590d69a98eca591679ee10334
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042926"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010581"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics 中的自定义字段
 Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
@@ -46,9 +46,9 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
-第一步是确定会获得自定义字段的记录。  首先执行[标准日志搜索](log-analytics-log-searches.md)，然后选择要充当模型的记录，Log Analytics 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
+第一步是确定会获得自定义字段的记录。  首先执行[标准日志搜索](log-analytics-queries.md)，然后选择要充当模型的记录，Log Analytics 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
 
-1. 转到“日志搜索”，然后使用[查询来检索记录](log-analytics-log-searches.md)（将具有自定义字段的记录）。
+1. 转到“日志搜索”，然后使用[查询来检索记录](log-analytics-queries.md)（将具有自定义字段的记录）。
 2. 选择 Log Analytics 将用作模型的记录，以便 Log Analytics 学习如何提取要填充到自定义字段中的数据。  确定要从该记录中提取的数据，然后 Log Analytics 将使用此信息为所有类似记录确定自定义字段的填充逻辑。
 3. 单击该记录的任何文本属性左侧的按钮，并选择“字段提取自”。
 4. 将打开“字段提取向导”，所选记录会显示在“主示例”列中。  将为所选属性中具有相同值的记录定义自定义字段。  
@@ -85,7 +85,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 
-![查询](media/log-analytics-custom-fields/query.png)
+![Query](media/log-analytics-custom-fields/query.png)
 
 然后，我们选择事件 ID 为 7036 的任一记录。
 
@@ -140,6 +140,6 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 ![按查询分组](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志搜索](log-analytics-log-searches.md)，使用自定义字段作为条件生成查询。
+* 了解[日志搜索](log-analytics-queries.md)，使用自定义字段作为条件生成查询。
 * 监视使用自定义字段分析的[自定义日志文件](log-analytics-data-sources-custom-logs.md)。
 

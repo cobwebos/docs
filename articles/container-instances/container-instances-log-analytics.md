@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5d3ba4ac4a86b6051ea5dafbff8c038c9198108c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405593"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279545"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>使用 Azure Log Analytics 进行容器实例日志记录
 
@@ -134,7 +134,7 @@ ContainerInstanceLog_CL
 
 若要详细了解如何在 Azure Log Analytics 中查询日志和配置警报，请参阅：
 
-* [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search.md)
+* [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-queries.md)
 * [Azure Monitor 中的统一警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
 
 ### <a name="monitor-container-cpu-and-memory"></a>监视容器 CPU 和内存

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232335"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -88,7 +88,7 @@ A. 可以，Azure 中的“日志”页和[高级分析门户](https://portal.lo
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>问： Log Analytics 是否与 Azure 安全中心使用同一代理？
 
-答：2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 要了解详细信息，请参阅 [Azure 安全中心平台迁移常见问题解答](../security-center/security-center-platform-migration-faq.md)。
+答：2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 要了解详细信息，请参阅 [Azure 安全中心平台迁移常见问题解答](../security-center/security-center-enable-data-collection.md)。
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>问： AD 和 SQL 评估解决方案会执行哪些检查？
 
@@ -135,7 +135,7 @@ Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>问： 当数据收集停止时如何可以收到通知？
 
-答：当数据收集停止时，可以使用[新建日志警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中所述的步骤收到通知。
+答：当数据收集停止时，可以使用[新建日志警报](../monitoring-and-diagnostics/alert-metric.md)中所述的步骤收到通知。
 
 针对数据收集停止时创建警报时，请设置以下各项：
 
@@ -158,7 +158,7 @@ A. 不可以，当前还不能从 Azure 存储中的任意表或容器进行读�
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>问： Log Analytics 服务使用什么 IP 地址？ 如何确保我的防火墙仅允许与 Log Analytics 服务通信？
 
-A. Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)内。
+A. Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内。
 
 当进行服务部署时，Log Analytics 服务的实际 IP 地址会发生变化。 [网络要求](log-analytics-concept-hybrid.md#network-firewall-requirements)中记录了允许穿过防火墙的 DNS 名称。
 
@@ -170,7 +170,7 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>问： 有没有简单易用的方法将现有的 Log Analytics 工作区移到另一个 Log Analytics 工作区/Azure 订阅？
 
-A. `Move-AzureRmResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 - AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)。
+A. `Move-AzureRmResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 - AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx)。
 
 也可在 Azure 门户中进行此更改。
 
@@ -231,4 +231,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [开始使用 Log Analytics](log-analytics-get-started.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。
+* [开始使用 Log Analytics](../azure-monitor/overview.md)，以快速了解有关 Log Analytics 的更多信息并使 Log Analytics 开始运行。

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 110f787866296ec08b9937d56461d37574270a43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980917"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247664"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
 
@@ -202,7 +202,7 @@ ms.locfileid: "46980917"
    * 在“模板”框中，选择“创建”。
    * 在“模型类”框中，选择“项(todo.Models)”。
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
-   * 单击 **“添加”**。
+   * 单击“添加”。
    
 #### <a name="_Toc395888515"></a>添加“编辑项”视图
 最后，采用与之前相同的方式添加最后一个视图，以供编辑 **项** 使用。
@@ -214,7 +214,7 @@ ms.locfileid: "46980917"
    * 在“模板”框中，选择“编辑”。
    * 在“模型类”框中，选择“项(todo.Models)”。
    * 在“布局页”框中，键入 ***~/Views/Shared/_Layout.cshtml***。
-   * 单击 **“添加”**。
+   * 单击“添加”。
 
 完成此操作之后，关闭 Visual Studio 中的所有 cshtml 文档，我们稍后会回头使用这些视图。
 
@@ -488,7 +488,7 @@ ms.locfileid: "46980917"
             return View(item);
         }
    
-    第一个方法会处理当用户单击“索引”视图中的“编辑”链接时所发生的 Http GET。 此方法会从 Azure Cosmos DB 中提取[**文档**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx)，并将它传递给“编辑”视图。
+    第一个方法会处理当用户单击“索引”视图中的“编辑”链接时所发生的 Http GET。 此方法会从 Azure Cosmos DB 中提取[**文档**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx)，并将它传递给“编辑”视图。
    
     “编辑”视图会接着对 **IndexController** 执行 Http POST 操作。 
    

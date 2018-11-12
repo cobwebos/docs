@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: c9d9cd9616b263ca002e6fe7ad6c875cce10289b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246445"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228957"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -173,7 +173,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
   
     ![创建表](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    如前所述，仅当表不存在但已创建时，**CloudTable.CreateIfNotExists** 方法才返回 **true**。 因此，如果在表存在的情况下运行该应用，该方法会返回 **false**。 若要多次运行应用，必须在再次运行应用之前删除表。 可通过 **CloudTable.Delete** 方法删除表。 也可以使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)删除表。  
+    如前所述，仅当表不存在但已创建时，**CloudTable.CreateIfNotExists** 方法才返回 **true**。 因此，如果在表存在的情况下运行该应用，该方法会返回 **false**。 若要多次运行应用，必须在再次运行应用之前删除表。 可通过 **CloudTable.Delete** 方法删除表。 也可以使用 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)删除表。  
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 

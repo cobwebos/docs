@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 13ce074f8ec22bc80ee5c56f2127b3a5b4d788bf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215389"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230880"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -51,7 +51,7 @@ ms.locfileid: "50215389"
 
 ### <a name="set-up-an-azure-account"></a>设置 Azure 帐户
 
-获取 Microsoft [Azure 帐户](http://azure.microsoft.com/)。
+获取 Microsoft [Azure 帐户](https://azure.microsoft.com/)。
 
 - 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
 - 了解 [Site Recovery 定价](site-recovery-faq.md#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。

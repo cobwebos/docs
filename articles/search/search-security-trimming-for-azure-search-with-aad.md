@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: e19f1a63c478d17154a24c14f6700e2fb07f2467
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42143971"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237054"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
@@ -28,7 +28,7 @@ ms.locfileid: "42143971"
 - 使用组标识符筛选器发出搜索请求
 
 >[!NOTE]
-> 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 
+> 本文中的示例代码片段是用 C# 语言编写的。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 
 
 ## <a name="prerequisites"></a>先决条件
 

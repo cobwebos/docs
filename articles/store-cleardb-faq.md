@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230625"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -106,7 +106,7 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 EA Azure 注册管理员可以管理 Azure 市场第三方服务的访问权限。 在企业门户中，管理员可在“帐户”部分下的“管理帐户和订阅”中禁用或重新启用对应用商店内所购第三方服务的访问权限。
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>有关 EA 订阅中的 ClearDB 服务帐单问题，应联系谁？
-有关根据 EA 注册计费的问题，请联系[企业客户支持人员](http://aka.ms/AzureEntSupport)。 EA 门户支持团队会回答问题或帮你解决问题。
+有关根据 EA 注册计费的问题，请联系[企业客户支持人员](https://aka.ms/AzureEntSupport)。 EA 门户支持团队会回答问题或帮你解决问题。
 
 ## <a name="more-information"></a>详细信息
 [Azure 市场常见问题解答](https://azure.microsoft.com/marketplace/faq/)

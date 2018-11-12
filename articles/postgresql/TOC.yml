@@ -100,6 +100,8 @@ items:
     items:
     - name: 连接库
       href: concepts-connection-libraries.md
+    - name: 连接复原
+      href: concepts-connectivity.md
 - name: 操作指南
   items:
   - name: 创建用户
@@ -140,6 +142,10 @@ items:
     items:
     - name: 针对指标创建警报
       href: howto-alert-on-metric.md
+  - name: 故障排除
+    items:
+    - name: 排查连接错误
+      href: howto-troubleshoot-common-connection-issues.md
   - name: 高级威胁防护
     items:
     - name: Azure 门户
@@ -198,9 +204,9 @@ items:
     href: partners-migration-postgresql.md
   - name: 数据库迁移指南
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: cd05ba229be03190dfd43a17fe24f750bdaf57d9
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 72cb09c49c25cd994a66ab0e32a324aeefeb06a7
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986471"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280123"

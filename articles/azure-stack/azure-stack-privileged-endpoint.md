@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f064521929bdaf0565a2993e12be62a3959ad567
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945291"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300432"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
@@ -55,7 +55,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - 如果运行的是 ADSK，请登录到开发工具包主机。
+    - 如果您运行 ASDK，登录到开发工具包主机。
 
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
@@ -67,7 +67,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
-    - 如果运行的是 ADSK：
+    - 如果您运行 ASDK:
      
       ````PowerShell
         $cred = Get-Credential
@@ -127,7 +127,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - 如果运行的是 ADSK，请登录到开发工具包主机。
+    - 如果您运行 ASDK，登录到开发工具包主机。
 
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
@@ -139,7 +139,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
-    - 如果运行的是 ADSK：
+    - 如果您运行 ASDK:
      
       ````PowerShell
        $cred = Get-Credential

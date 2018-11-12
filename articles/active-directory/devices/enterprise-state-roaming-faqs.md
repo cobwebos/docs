@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: bea59f0d1ce1d1f3813c0b39a57b1f4e726fe2a5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128814"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247290"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -37,7 +37,7 @@ ms.locfileid: "50128814"
 * 轻松访问功能，如高对比度主题、讲述人和放大镜。
 * *其他 Windows 设置*，例如鼠标设置。
 
-**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
+**应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[应用数据存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) 和 [Windows 8 应用数据漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帐户可用于设置同步？
 在 Windows 8.1 中，设置同步始终使用使用者 Microsoft 帐户。 企业用户可以将 Microsoft 帐户连接到其 Active Directory 域帐户，以便获取访问设置同步的权限。在 Windows 10 中，主/辅助帐户框架取代了这一连接的 Microsoft 帐户功能。

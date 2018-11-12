@@ -15,32 +15,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: d24902b894a632e9fe8c57f2fb2b652b44ab128c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 932b4c80912fa516a08c18cd581f96b5ea91e1dc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42139371"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232290"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure Stack 准备基于 Red Hat 的虚拟机
 
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure Stack 中使用。 本文介绍的 RHEL 版本为 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。
 
-有关 Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)。
+有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack：常见问题解答](https://access.redhat.com/articles/3413531)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
-本部分假设已有 Red Hat 网站中的 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-v 管理器来安装操作系统映像的详细信息，请参阅[安装 HYPER-V 角色和配置虚拟机](http://technet.microsoft.com/library/hh846766.aspx)。
+本部分假设已从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ### <a name="rhel-installation-notes"></a>RHEL 安装说明
 
 * Azure Stack 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
 * Azure Stack 仅支持第 1 代虚拟机。 可以将第 1 代虚拟机从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 但无法更改虚拟机的代次。 有关详细信息，请参阅[是否应在 Hyper-V 中创建第 1 代或第 2 代虚拟机？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 * VHD 允许的最大大小为 1,023 GB。
-* 在安装 Linux 操作系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)（通常是许多安装的默认设置）。 这种做法可以避免 LVM 与克隆的虚拟机的名称发生冲突，特别是如果您曾需要将操作系统磁盘附加到另一个完全相同的虚拟机进行故障排除。
-* 需要装载通用磁盘格式 (UDF) 文件系统的内核支持。 在首次启动附加到来宾的 UDF 格式媒体将预配配置传递给 Linux 虚拟机。 Azure Linux 代理必须装载 UDF 文件系统才能读取其配置和预配虚拟机。
-* 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，并在临时资源磁盘上创建交换文件。 有关详细信息可在以下步骤。
-* 在 Azure 上的所有 Vhd 必须都已将虚拟大小调整为 1MB。 当从原始磁盘转换为 VHD，必须确保原始磁盘大小是在转换之前的 1 MB 的倍数。 可以在以下步骤中找到更多详细信息。
+* 在安装 Linux 操作系统时，建议使用标准分区而不是逻辑卷管理器 (LVM)（通常是许多安装的默认设置）。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。
+* 需要装载通用磁盘格式 (UDF) 文件系统的内核支持。 首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递给 Linux 虚拟机。 Azure Linux 代理必须装载 UDF 文件系统才能读取其配置和预配虚拟机。
+* 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，并在临时资源磁盘上创建交换文件。 可在以下步骤中找到更多相关信息。
+* Azure 上所有 VHD 的虚拟大小必须已按 1 MB 对齐。 从原始磁盘转换为 VHD 时，必须确保在转换前的原始磁盘大小是 1 MB 的倍数。 可以在以下步骤中找到更多详细信息。
 * Azure Stack 不支持 cloud-init。 必须使用受支持版本的 Windows Azure Linux 代理 (WALA) 配置 VM。
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
@@ -69,7 +69,7 @@ ms.locfileid: "42139371"
     NM_CONTROLLED=no
     ```
 
-1. 请确保网络服务启动在启动时，通过运行以下命令：
+1. 运行以下命令，确保网络服务在引导时启动：
 
     ```bash
     sudo systemctl enable network
@@ -87,7 +87,7 @@ ms.locfileid: "42139371"
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   这可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
+   这可以确保所有控制台消息都发送到第一个串行端口，从而协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
 
    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。 我们建议删除以下参数：
 
@@ -122,7 +122,7 @@ ms.locfileid: "42139371"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，并取消预配虚拟机后可能会清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
     ```sh
     ResourceDisk.Format=y
@@ -138,7 +138,7 @@ ms.locfileid: "42139371"
     sudo subscription-manager unregister
     ```
 
-1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果使用的系统是通过企业证书颁发机构部署的，则 RHEL 虚拟机不会信任 Azure Stack 根证书。 需将该证书放入受信任的根存储。 请参阅[将受信任的根证书添加到服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
@@ -150,7 +150,7 @@ ms.locfileid: "42139371"
 
 1. 在 Hyper-V 管理器中单击“操作” > “关闭”。
 
-1. 将 VHD 转换为固定大小的 VHD 使用 Hyper-v 管理器"编辑磁盘"功能或 CONVERT-VHD PowerShell 命令。 Linux VHD 现已准备好上传到 Azure。
+1. 使用 Hyper-V 管理器的“编辑磁盘”功能或 Convert-VHD PowerShell 命令将 VHD 转换为固定大小的 VHD。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
 
@@ -199,7 +199,7 @@ ms.locfileid: "42139371"
     NM_CONTROLLED=no
     ```
 
-1. 请确保网络服务启动在启动时，通过运行以下命令：
+1. 运行以下命令，确保网络服务在引导时启动：
 
     ```bash
     sudo systemctl enable network
@@ -217,9 +217,9 @@ ms.locfileid: "42139371"
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   此命令还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 该命令还会关闭新 RHEL 7 命名约定 Nic
+   此命令还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此命令还会禁用 NIC 的新 RHEL 7 命名约定
 
-   图形和无人参与引导不是其中的所有日志都发送到串行端口的云环境中有用的。 如果需要，可以保留配置的 `crashkernel` 选项。 此参数可以减少 128 MB 或更多，在虚拟机中的可用内存量可能会较小的虚拟机大小有问题。 我们建议删除以下参数：
+   在要将所有日志发送到串行端口的云环境中，图形界面式启动和静默启动不起作用。 如果需要，可以保留配置的 `crashkernel` 选项。 此参数可将虚拟机中的可用内存量减少 128 MB 或更多，当虚拟机大小较小时，这可能会造成问题。 我们建议删除以下参数：
 
     ```sh
     rhgb quiet crashkernel=auto
@@ -284,7 +284,7 @@ ms.locfileid: "42139371"
 
 1. 不要在操作系统磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，并取消预配虚拟机后可能会清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 本地资源磁盘是临时磁盘，可能在取消预配虚拟机时被清空。 在上一步中安装 Azure Linux 代理后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
     ```sh
     ResourceDisk.Format=y
@@ -300,7 +300,7 @@ ms.locfileid: "42139371"
     subscription-manager unregister
     ```
 
-1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果使用的系统是通过企业证书颁发机构部署的，则 RHEL 虚拟机不会信任 Azure Stack 根证书。 需将该证书放入受信任的根存储。 请参阅[将受信任的根证书添加到服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
@@ -349,7 +349,7 @@ ms.locfileid: "42139371"
 
 本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](http://partnerweb.vmware.com/GOSIG/home.html)。
 
-* 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这样可以避免 LVM 与克隆的虚拟机的名称发生冲突，尤其是操作系统磁盘需要连接到另一个虚拟机进行故障排除。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
+* 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
 * 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”。
 
@@ -458,7 +458,7 @@ ms.locfileid: "42139371"
     sudo subscription-manager unregister
     ```
 
-1. 如果您将使用企业证书颁发机构部署的系统，RHEL 虚拟机将不信任 Azure Stack 根证书。 您需要将它放入受信任的根存储区。 请参阅[添加受信任根证书服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
+1. 如果使用的系统是通过企业证书颁发机构部署的，则 RHEL 虚拟机不会信任 Azure Stack 根证书。 需将该证书放入受信任的根存储。 请参阅[将受信任的根证书添加到服务器](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)。
 
 1. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
@@ -670,6 +670,6 @@ ms.locfileid: "42139371"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果第一次，在将 VHD 文件上载到 Azure Stack，请参阅[使用 Marketplace 工具包创建和发布 marketplace 项](azure-stack-marketplace-publisher.md)。
+现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果这是你第一次将 VHD 文件上传到 Azure Stack，请参阅[使用市场工具包创建和发布市场项](azure-stack-marketplace-publisher.md)。
 
-有关经过认证可以运行 Red Hat Enterprise Linux 的虚拟机监控程序的详细信息，请参阅[Red Hat 网站](https://access.redhat.com/certified-hypervisors)。
+有关经认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。

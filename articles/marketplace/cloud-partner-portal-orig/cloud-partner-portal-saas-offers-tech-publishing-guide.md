@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d73040f11549741643d96913c42df49594b8d41
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228889"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS 应用程序技术发布指南
 ===========================================
@@ -34,7 +34,7 @@ ms.locfileid: "48805244"
 
 发布门户将提供对门户的基于角色的访问，能够让多人在发布产品/服务方面展开协作。 有关详细信息，请参阅[管理用户](./cloud-partner-portal-manage-users.md)。 
 
-代表发布者帐户发布产品/服务之前，其中一个具有*所有者*角色的个人需同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](http://www.microsoft.com/privacystatement/default.aspx)，以及 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
+代表发布者帐户发布产品/服务之前，其中一个具有*所有者*角色的个人需同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)，以及 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
 
 <a name="creating-an-offer"></a>创建产品/服务
@@ -70,7 +70,7 @@ SaaS 应用产品/服务包含 5 个部分，如下表所述：
 
 | **产品/服务字段** | **说明**                                                                                            |
 |------------------|----------------------------------------------------------------------------------------------------------- |
-| 产品/服务 ID         | 发布者个人资料内产品/服务的唯一标识符。 此 ID 在产品 URL 和计费报表中可见。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 请注意，此字段在推出产品/服务后处于锁定状态。 例如，如果发布者 Contoso 发布了产品/服务 ID 为 sample-vm 的产品/服务，该产品/服务将以“[https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview](https://azuremarketplace.microsoft.com/)”形式显示在 Azure 市场中 |
+| 套餐 ID         | 发布者配置文件中套餐的唯一标识符。 此 ID 在产品 URL 和计费报表中可见。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 请注意，此字段在推出产品/服务后处于锁定状态。 例如，如果发布者 Contoso 发布了产品/服务 ID 为 sample-vm 的产品/服务，该产品/服务将以“[https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview](https://azuremarketplace.microsoft.com/)”形式显示在 Azure 市场中 |
 | 发布者 ID     | 发布者 ID 是你在市场中的唯一标识符。 你的所有产品/服务均应附加发布者 ID。 一旦保存该产品/服务后，将无法修改发布者 ID。                                                                                       |
 | 名称             | 这是产品/服务的显示名称。 这是在 Azure 市场和 Azure 门户中将显示的名称。 该名称不能超过 50 个字符。 指导原则是在其中包含产品的可识别品牌名称。 除非销售需要，否则不要在此处包含公司名称。 如果要在自己的网站上销售此产品/服务，请确保名称正是在网站上显示的名称。             |
 |  |  |

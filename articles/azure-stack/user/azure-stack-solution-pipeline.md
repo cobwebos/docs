@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419822"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280735"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -292,7 +292,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 | 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
 | 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。 |
 | 服务主体键 | THESCRETGOESHERE = | 从同一篇文章 （或如果使用脚本的密码） 键。 |
-| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 租户 ID 检索的以下的说明获取租户 id。 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。  |
+| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。  |
 | 连接： | 未验证 | 验证到服务主体的连接设置。 |
 
 现在，创建端点时，Azure Stack 连接到 DevOps 是可供使用。 在 Azure Stack 中的生成代理从 DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
@@ -317,7 +317,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 | 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
 | 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 为 AD FS 创建从服务主体的客户端 ID。 |
 | 证书 | `<certificate>` |  将证书文件从 PFX 转换为 PEM。 将证书 PEM 文件内容粘贴到此字段。 <br> 将 PFX 转换为 PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 租户 ID 检索的以下的说明获取租户 id。 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。 |
+| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。 |
 | 连接： | 未验证 | 验证到服务主体的连接设置。 |
 
 现在，创建端点时，Azure Stack 连接到 Azure DevOps 是可供使用。 在 Azure Stack 中的生成代理从 Azure DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。

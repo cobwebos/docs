@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4e8e6a6bbe5ece856c1524ca4c2fc46f0cb9137e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243157"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231033"
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
@@ -33,7 +33,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 
 相关链接：
 
-* [下载最新连接器](http://go.microsoft.com/fwlink/?LinkId=717495)
+* [下载最新连接器](https://go.microsoft.com/fwlink/?LinkId=717495)
 * [泛型 LDAP 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)参考文档
 * [泛型 SQL 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)参考文档
 * [Web 服务连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws)参考文档

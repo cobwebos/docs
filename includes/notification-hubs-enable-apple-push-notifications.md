@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915156"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263966"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>生成证书签名请求文件
 
@@ -41,7 +41,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
 要将推送通知发送到 iOS 应用程序，必须向 Apple 注册应用程序，还要注册推送通知。  
 
-1. 如果尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户](http://go.microsoft.com/fwlink/p/?LinkId=272456)，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用 ID），最后单击“+”号注册新的应用。
+1. 如果尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户](https://go.microsoft.com/fwlink/p/?LinkId=272456)，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用 ID），最后单击“+”号注册新的应用。
 
     ![iOS 预配门户应用 ID 页](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -55,7 +55,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
     此操作会生成应用 ID 并请求你确认信息。 单击“注册”  以确认新的应用 ID。
 
-    单击“注册”后，会看到“注册已完成”屏幕，如下图所示。 单击“Done”（完成） 。
+    单击“注册”后，会看到“注册已完成”屏幕，如下图所示。 单击“完成”。
 
     ![应用 ID 注册完成，显示了权利](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
@@ -111,7 +111,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>为应用程序创建配置文件
 
-1. 返回 [iOS 预配门户](http://go.microsoft.com/fwlink/p/?LinkId=272456)，选择“Provisioning Profiles”（预配配置文件），选择“All”（全部），并单击 **+**（加号）按钮创建一个新的配置文件。 将显示“添加 iOS 预配配置文件”向导：
+1. 返回 [iOS 预配门户](https://go.microsoft.com/fwlink/p/?LinkId=272456)，选择“Provisioning Profiles”（预配配置文件），选择“All”（全部），并单击 **+**（加号）按钮创建一个新的配置文件。 将显示“添加 iOS 预配配置文件”向导：
 
     ![预配配置文件列表](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

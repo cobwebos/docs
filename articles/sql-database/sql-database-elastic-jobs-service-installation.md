@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 69a4364c1d110ae78370fbf0ba1b4a92e033a862
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233569"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "50241558"
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如需免费试用，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure PowerShell。 使用 [Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* Azure PowerShell。 使用 [Web 平台安装程序](https://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 * [NuGet 命令行实用程序](https://nuget.org/nuget.exe)用于安装弹性数据库作业包。 有关详细信息，请参阅 http://docs.nuget.org/docs/start-here/installing-nuget。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>下载并导入弹性数据库作业 PowerShell 程序包

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235694"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加内部支持声明
 
@@ -31,7 +31,7 @@ ms.locfileid: "38696244"
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>向现有实验室添加支持声明的步骤
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 （实验室可能已显示在“所有资源”下的“仪表板”上）。
 1. 从实验室列表中选择要向其添加支持声明的实验室。  
 1. 在实验室的“概览”区域中，选择“配置和策略”。  
@@ -55,7 +55,7 @@ ms.locfileid: "38696244"
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>用户查看支持消息的步骤
 
-1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室。
+1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室。
 
 1. 在实验室的“概述”区域，选择“内部支持”。  
 

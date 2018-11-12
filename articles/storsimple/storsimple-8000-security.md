@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fb8c3fe9dd5ca207e4ae37faf9a5a1c4edfffc63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906383"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233807"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -121,7 +121,7 @@ StorSimple Snapshot Manager 密码必须为 14 到 15 个字符，必须包含 3
 我们建议使用以下准则来帮助确保 StorSimple 密码具有很高强度并受到严密保护：
 
 * 每三个月更改一次密码。 每年会强制更改密码。
-* 使用强密码。 有关详细信息，请转到[创建更强密码并对其进行保护](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)。
+* 使用强密码。 有关详细信息，请转到[创建更强密码并对其进行保护](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)。
 * 对于不同的访问机制，应始终使用不同的密码；你指定的每个密码应该是唯一的。
 * 不要与未被授权访问 StorSimple 设备的任何人共享密码。
 * 不要在任何人面前说出密码或提示密码格式。
