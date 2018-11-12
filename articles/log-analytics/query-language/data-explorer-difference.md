@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e6d097749dae49cf6f1d710bcf01cf99dcd98a4c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 65f3388074ff7a84c6e0516a64665019d5883ab1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243892"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913166"
 ---
 # <a name="log-analytics-query-language-differences"></a>Log Analytics 查询语言差异
 
@@ -63,11 +63,5 @@ ms.locfileid: "50243892"
 
 ## <a name="next-steps"></a>后续步骤
 
-<<<<<<< HEAD:articles/log-analytics/query-language/data-explorer-difference.md
-- 获取[用于编写 Log Analytics 查询的不同资源](kusto.md)的参考信息。
+- 获取[用于编写 Log Analytics 查询的不同资源](query-language.md)的参考信息。
 - 访问完整的[数据资源管理器查询语言参考文档](/azure/kusto/query/)。
-=======
-- 阅读有关 [Log Analytics](../log-analytics-queries.md) 中的查询的内容。
-- 完成有关编写 [Log Analytics 查询](/log-analytics/query-language/get-started-queries.md)的一节课程。
-- 访问完整的 [Kusto 参考文档](/azure/kusto/query/)。
->>>>>>> 4bccab5ecb17c887658a4d2ed1bab6b22bf29ffd:articles/log-analytics/query-language/kusto.md

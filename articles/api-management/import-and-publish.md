@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4dfd1c50137c0a211aa5ba211a96810b8b9831f1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467389"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417899"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
 
@@ -38,7 +38,8 @@ ms.locfileid: "49467389"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 了解 [Azure API 管理术语](api-management-terminology.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -55,31 +56,34 @@ ms.locfileid: "49467389"
 
     使用下表中的值来创建第一个 API。
 
-    |设置|值|Description|
-    |---|---|---|
-    |**OpenAPI 规范**|http://conferenceapi.azurewebsites.net?format=json|引用实现 API 的服务。 API 管理将请求转发到此地址。|
-    |**显示名称**|演示会议 API|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。|
-    |**名称**|*demo-conference-api*|提供 API 的唯一名称。 <br/>如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
-    |**说明**|提供 API 的可选说明。|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
-    |**URL 方案**|*HTTPS*|确定可用于访问 API 的协议。 |
-    |**API URL 后缀**|会议|此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。|
-    |**产品**|*不受限制*|产品是一个或多个 API 的关联。 可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。 若要将此新 API 添加到产品，请键入产品名称（也可以稍后通过“设置”页执行此操作）。 多次重复此步骤以将 API 添加到多个产品。<br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 <br/> 如果你创建了 APIM 实例，那么你已是管理员，因此订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
-    |对此 API 进行版本控制?||有关版本控制的详细信息，请参阅[发布 API 的多个版本](api-management-get-started-publish-versions.md)。|
-    
+    | 设置                   | 值                                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    |---------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **OpenAPI 规范** | http://conferenceapi.azurewebsites.net?format=json | 引用实现 API 的服务。 API 管理将请求转发到此地址。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **显示名称**          | 演示会议 API                              | 如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+    | **名称**                  | *demo-conference-api*                              | 提供 API 的唯一名称。 <br/>如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **说明**           | 提供 API 的可选说明。        | 如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+    | **URL 方案**            | *HTTPS*                                            | 确定可用于访问 API 的协议。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | **API URL 后缀**        | 会议                                       | 此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **产品**              | *不受限制*                                        | 产品是一个或多个 API 的关联。 可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。 若要将此新 API 添加到产品，请键入产品名称（也可以稍后通过“设置”页执行此操作）。 多次重复此步骤以将 API 添加到多个产品。<br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 <br/> 如果你创建了 APIM 实例，那么你已是管理员，因此订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
+    | 对此 API 进行版本控制?         |                                                    | 有关版本控制的详细信息，请参阅[发布 API 的多个版本](api-management-get-started-publish-versions.md)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
     >[!NOTE]
     > 若要发布 API，必须将其与某个产品相关联。 可以从“设置”页执行此操作。
-    
+
 3. 选择“创建”。
+
+> [!TIP]
+> 如果在导入自己的 API 定义时遇到问题，请[查看已知问题和限制的列表](api-management-api-import-restrictions.md)。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 
 ![测试 API 映射](./media/api-management-get-started/01-import-first-api-01.png)
 
-可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。  
+可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。
+
 1. 从“API”选项卡选择在上一步骤中创建的 API。
 2. 按“测试”选项卡。
-3. 单击“GetSpeakers”。
-    该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
+3. 单击“GetSpeakers”。 该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
 4. 按“发送”。
 
     后端以“200 正常”和某些数据做出响应。
@@ -90,14 +94,15 @@ ms.locfileid: "49467389"
 
 1. 导航到**开发人员门户**。
 
- ![开发人员门户](./media/api-management-get-started/developer-portal.png)
+    ![开发人员门户](./media/api-management-get-started/developer-portal.png)
 
 2. 选择“API”，单击“演示会议 API”，然后单击“GetSpeakers”。
-    
+
     该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
+
 3. 按“试用”。
 4. 按“发送”。
-    
+
     调用操作后，开发人员门户将显示响应。  
 
 ## <a name="next-steps"></a>后续步骤

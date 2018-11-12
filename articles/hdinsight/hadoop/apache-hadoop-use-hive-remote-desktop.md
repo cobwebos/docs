@@ -2,19 +2,19 @@
 title: 在 HDInsight 中将 Hadoop Hive 与远程桌面配合使用 - Azure
 description: 学习如何通过使用远程桌面连接到 HDInsight 中的 Hadoop 群集，并通过使用 Hive 命令行界面运行 Hive 查询。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: d8a0f1baa03d718b2a8e41d82a528a2c7a857c96
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 32fb2bc9514b911d0a1ce295eee651e4b6b6388a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250546"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015071"
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面将 Hive 与 HDInsight 上的 Hadoop 配合使用
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

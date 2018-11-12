@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139605"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035095"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "42139605"
 
 ### <a name="deployment"></a>部署
 
-在部署每个 Azure Stack 云后启用基础结构备份 使用 Azure Stack PowerShell 可以安排从任何具有访问权限的客户端/服务器到操作员管理 API 终结点备份。
+在部署每个 Azure Stack 云后启用基础结构备份 可以使用 Azure Stack PowerShell 通过访问操作员管理 API 终结点从任何客户端/服务器来计划备份。
 
 ### <a name="networking"></a>网络
 
@@ -52,9 +52,8 @@ ms.locfileid: "42139605"
 
 ### <a name="backups"></a>备份
 
- - 基础结构备份控制器需要按需触发。 建议每天至少备份两次。
  - 备份作业在系统正在运行时执行，因此，管理体验和用户应用程序不会经历停机时间。 对于负载合理的解决方案，备份作业预计要花费 20-40 分钟。
- - 根据 OEM 提供的说明，手动备份网络交换机，并且硬件生命周期主机 (HLH) 应当存储在基础结构备份控制器在其中存储控制层备份数据的同一备份共享中。 请考虑将交换机和 HLH 配置存储在区域文件夹中。 如果在同一区域中有多个 Azure Stack 实例，请考虑为属于某个缩放单元的每个配置使用一个标识符。
+ - 根据 OEM 提供的说明，手动备份网络交换机和硬件生命周期主机 (HLH) 应当存储在基础结构备份控制器存储控制层备份数据的位置的同一备份共享。 请考虑将交换机和 HLH 配置存储在区域文件夹中。 如果在同一区域中有多个 Azure Stack 实例，请考虑为属于某个缩放单元的每个配置使用一个标识符。
 
 ### <a name="folder-names"></a>文件夹名称
 
@@ -95,5 +94,6 @@ MASBackup 文件夹是 Azure Stack 存储其备份数据的地方。 不应使�
 
 ## <a name="next-steps"></a>后续步骤
 
- - 查看[基础结构备份服务](azure-stack-backup-reference.md)的参考资料。  
- - 启用[基础结构备份服务](azure-stack-backup-enable-backup-console.md)。
+查看[基础结构备份服务](azure-stack-backup-reference.md)的参考资料。
+
+启用[基础结构备份服务](azure-stack-backup-enable-backup-console.md)。
