@@ -13,18 +13,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 39c40482017ae0c0dedcfb1b65ff3767c4e45169
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999182"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230829"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure 应用服务 Web 应用中配置 PHP
 
 ## <a name="introduction"></a>介绍
 
-本指南演示如何执行以下操作：在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中配置 Web 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册[免费试用版]。 要充分利用本指南，应先在应用服务中创建一个 PHP Web 应用。
+本指南演示如何执行以下操作：在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中配置 Web 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册[免费试用版]。 要充分利用本指南，应先在应用服务中创建一个 PHP Web 应用。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 

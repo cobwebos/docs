@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211887"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232165"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 
@@ -44,7 +44,7 @@ ms.locfileid: "50211887"
 使用 Site Recovery 复制的域控制器用于[测试故障转移](#test-failover-considerations)。 确保它满足以下要求：
 
 1. 域控制器是全局编录服务器。
-2. 域控制器应为测试故障转移期间所需角色的 FSMO 角色所有者。 否则，故障转移之后需要[获取](http://aka.ms/ad_seize_fsmo)这些角色。
+2. 域控制器应为测试故障转移期间所需角色的 FSMO 角色所有者。 否则，故障转移之后需要[获取](https://aka.ms/ad_seize_fsmo)这些角色。
 
 ### <a name="configure-vm-network-settings"></a>配置 VM 网络设置
 对于托管域控制器或 DNS 的虚拟机，请在 Site Recovery 中在复制的虚拟机的“计算和网络”设置下配置网络设置。 这可确保故障转移后虚拟机附加到正确的网络。
@@ -93,7 +93,7 @@ ms.locfileid: "50211887"
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>删除对其他域控制器的引用
-进行测试故障转移时，不需要将所有域控制器都引入测试网络中。 若要删除生产环境中存在的对其他域控制器的引用，可能需要为缺失的域控制器[获取 FSMO Active Directory 角色](http://aka.ms/ad_seize_fsmo)并执行[元数据清理](https://technet.microsoft.com/library/cc816907.aspx)。
+进行测试故障转移时，不需要将所有域控制器都引入测试网络中。 若要删除生产环境中存在的对其他域控制器的引用，可能需要为缺失的域控制器[获取 FSMO Active Directory 角色](https://aka.ms/ad_seize_fsmo)并执行[元数据清理](https://technet.microsoft.com/library/cc816907.aspx)。
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>虚拟化安全措施引起的问题
@@ -180,7 +180,7 @@ ms.locfileid: "50211887"
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    有关详细信息，请参阅[禁用需要全局编录服务器才能验证用户登录的要求](http://support.microsoft.com/kb/241789)。
+    有关详细信息，请参阅[禁用需要全局编录服务器才能验证用户登录的要求](https://support.microsoft.com/kb/241789)。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>不同计算机上的 DNS 和域控制器
 

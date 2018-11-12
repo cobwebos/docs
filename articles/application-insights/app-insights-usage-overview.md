@@ -14,12 +14,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 968c5fb093f3ebdb6ce7eb239f79573f19b89e0f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139850"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278627"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -29,7 +29,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 通过在应用服务器代码和网页中安装 Application Insights 来获得最佳体验。 应用的客户端和服务器组件将遥测发送回 Azure 门户进行分析。
 
-1. **服务器代码：** 为 [ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-azure.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md) 或[其他](app-insights-platforms.md)应用安装适当的模块。
+1. **服务器代码：** 为 [ASP.NET](app-insights-asp-net.md)、[Azure](app-insights-overview.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md) 或[其他](app-insights-platforms.md)应用安装适当的模块。
 
     * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](app-insights-create-new-resource.md)。
 

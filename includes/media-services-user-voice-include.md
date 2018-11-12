@@ -1,4 +1,4 @@
-使用 [用户之声](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 还可以直接转到以下类别之一：
+使用 [用户之声](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 还可以直接转到以下类别之一：
 
 * [Azure 媒体播放器](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [客户端 SDK 库](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)

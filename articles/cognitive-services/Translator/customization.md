@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645006"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229673"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -37,7 +37,7 @@ Microsoft 自定义翻译预览版是 Microsoft Translator 服务的一项功能
 
 考虑到训练数据的适当类型和数量，通过使用自定义翻译，期望在翻译质量上获得 5 到 10 分或甚至更多 BLEU 分数的情况并不罕见。
 
-有关基于可用数据的各种自定义级别的更多详细信息，请参阅[自定义翻译用户指南](http://aka.ms/CustomTranslatorDocs)。
+有关基于可用数据的各种自定义级别的更多详细信息，请参阅[自定义翻译用户指南](https://aka.ms/CustomTranslatorDocs)。
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
@@ -53,7 +53,7 @@ Microsoft 自定义翻译预览版是 Microsoft Translator 服务的一项功能
 | SMT 自定义 | 是   | 否 |
 | NMT 自定义 | 否    | 是 |
 | 新的统一语音服务自定义 | 否    | 是 |
-| [无跟踪](http://www.aka.ms/notrace) | 是   | 是 |
+| [无跟踪](https://www.aka.ms/notrace) | 是  | 是 |
 
 ## <a name="collaborative-translations-framework"></a>协作翻译框架
 
@@ -65,4 +65,4 @@ Microsoft 自定义翻译预览版是 Microsoft Translator 服务的一项功能
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用自定义翻译设置自定义语言系统](http://aka.ms/CustomTranslatorDocs)
+> [使用自定义翻译设置自定义语言系统](https://aka.ms/CustomTranslatorDocs)

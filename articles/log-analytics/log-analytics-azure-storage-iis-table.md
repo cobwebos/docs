@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9f4aae578606e14711deaac87e232bad0158bfe9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041471"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278644"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用
 
@@ -53,7 +53,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 >
 >
 
-对于虚拟机，可以选择将 [Log Analytics 代理](log-analytics-azure-vm-extension.md)安装到虚拟机来支持其他见解。 除了能够分析 IIS 日志和事件日志之外，还可以执行其他分析，包括配置更改跟踪、SQL 评估和更新评估。
+对于虚拟机，可以选择将 [Log Analytics 代理](log-analytics-quick-collect-azurevm.md)安装到虚拟机来支持其他见解。 除了能够分析 IIS 日志和事件日志之外，还可以执行其他分析，包括配置更改跟踪、SQL 评估和更新评估。
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断
 通过以下过程，使用 Microsoft Azure 门户在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断。
@@ -151,7 +151,7 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 通过[将 Log Analytics 配置为编制 Azure 诊断索引](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics)中的步骤，将 PowerShell 用于从写入表存储的 Azure 诊断读取。
 
 使用 Azure PowerShell 可以更精确地指定要写入 Azure 存储的事件。
-有关详细信息，请参阅[在 Azure 虚拟机中启用诊断](../virtual-machines-dotnet-diagnostics.md)。
+有关详细信息，请参阅[在 Azure 虚拟机中启用诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
 
 可以使用以下 PowerShell 脚本启用和更新 Azure 诊断。
 还可以将此脚本与自定义日志记录配置结合使用。
@@ -194,5 +194,5 @@ Azure 诊断是用于从 Azure 中运行的辅助角色、Web 角色或虚拟机
 
 ## <a name="next-steps"></a>后续步骤
 * 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](log-analytics-azure-storage.md)。
-* [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
-* [使用搜索查询](log-analytics-log-searches.md)分析数据。
+* [启用解决方案](../monitoring/monitoring-solutions.md)深入分析数据。
+* [使用搜索查询](log-analytics-queries.md)分析数据。

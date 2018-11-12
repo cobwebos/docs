@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 1fd1ce54dea672b19baea84bbf3a40b4365093b8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046212"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229469"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
 
 U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调用 C# 函数，并执行类似于 SQL 的声明性语言所不支持的分析函数。 若要详细了解 U-SQL 扩展性，请参阅 [U-SQL 可编程性指南](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)。 
 
-在实践中，任何代码都可能需要调试，但调试在云中包含自定义代码且日志文件有限的分布式作业有一定的难度。 [针对 Visual Studio 的 Azure Data Lake 工具](http://aka.ms/adltoolsvs)提供一项称作“失败顶点调试”的功能，可帮助我们更轻松地调试自定义代码中发生的失败。 当 U-SQL 作业失败时，服务会保留失败状态，该工具可帮助将云故障环境下载到本地计算机进行调试。 本地下载捕获整个云环境，包括任何输入数据和用户代码。
+在实践中，任何代码都可能需要调试，但调试在云中包含自定义代码且日志文件有限的分布式作业有一定的难度。 [针对 Visual Studio 的 Azure Data Lake 工具](https://aka.ms/adltoolsvs)提供一项称作“失败顶点调试”的功能，可帮助我们更轻松地调试自定义代码中发生的失败。 当 U-SQL 作业失败时，服务会保留失败状态，该工具可帮助将云故障环境下载到本地计算机进行调试。 本地下载捕获整个云环境，包括任何输入数据和用户代码。
 
 下面的视频展示了针对 Visual Studio 的 Azure Data Lake 工具中的“失败顶点调试”功能。
 

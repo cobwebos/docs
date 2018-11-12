@@ -19,7 +19,7 @@
     PSRemotingProtocolVersion      2.2
 
 
-确保 **PSVersion** 的值为 3.0 或 4.0。 如果不是，请参阅 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)。
+确保 **PSVersion** 的值为 3.0 或 4.0。 如果不是，请参阅 [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)。
 
 ### <a name="set-your-azure-account-and-subscription"></a>设置 Azure 帐户和订阅
 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。

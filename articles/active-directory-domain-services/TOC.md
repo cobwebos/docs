@@ -2,6 +2,7 @@
 
 # 概述
 ## [什么是 Azure AD 域服务？](active-directory-ds-overview.md)
+## [常见问题](active-directory-ds-faqs.md)
 ## 它是否适合你？
 ### [与 Windows Server AD 进行比较](active-directory-ds-comparison.md)
 ### [与 Azure AD 加入进行比较](active-directory-ds-compare-with-azure-ad-join.md)
@@ -55,7 +56,6 @@
 ## [排查安全 LDAP 问题](active-directory-ds-ldaps-troubleshoot.md)
 
 # 故障排除
-## [常见问题](active-directory-ds-faqs.md)
 ## [故障排除指南](active-directory-ds-troubleshooting.md)
 ## [排查警报问题](active-directory-ds-troubleshoot-alerts.md)
 ### [修复存在问题的 NSG 配置](active-directory-ds-troubleshoot-nsg.md)

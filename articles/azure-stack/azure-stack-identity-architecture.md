@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/01/2018
+ms.date: 11/07/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: fiseraci
+ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713640"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277811"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack 的标识体系结构
 在选择要与 Azure Stack 配合使用的标识提供者之前，请了解 Azure Active Directory (Azure AD) 的选项与 Active Directory 联合身份验证服务 (AD FS) 的选项之间的重要区别。 
@@ -44,7 +44,7 @@ ms.locfileid: "44713640"
 |应用程序可以将标识提供程序用于登录 |是 |是的。 要求应用程序与本地 AD FS 实例联合。 |
 
 ## <a name="topologies"></a>拓扑
-以下部分介绍可用的各种标识拓扑。
+以下部分介绍可以使用的各种标识拓扑。
 
 ### <a name="azure-ad-single-tenant-topology"></a>Azure AD：单租户拓扑 
 默认情况下，当安装 Azure Stack 并使用 Azure AD 时，Azure Stack 使用单租户拓扑。 

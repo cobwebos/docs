@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783477"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230914"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
 
@@ -57,7 +57,7 @@ ms.locfileid: "43783477"
 
     ![单击 Application Insights](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
-[监视云和 VM 应用](app-insights-azure.md)。
+[监视云和 VM 应用](app-insights-overview.md)。
 
 ### <a name="enable-client-side-monitoring-in-azure"></a>在 Azure 中启用客户端监视
 
@@ -78,7 +78,7 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
 如果应用托管在 IIS 服务器上，请使用状态监视器启用 Application Insights。
 
 1. 在 IIS Web 服务器上，使用管理员凭据登录。
-2. 如果尚未安装 Application Insights 状态监视器，则请下载并运行[状态监视器安装程序](http://go.microsoft.com/fwlink/?LinkId=506648)（或者运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)，并在其中搜索 Application Insights 状态监视器）。
+2. 如果尚未安装 Application Insights 状态监视器，则请下载并运行[状态监视器安装程序](https://go.microsoft.com/fwlink/?LinkId=506648)（或者运行 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)，并在其中搜索 Application Insights 状态监视器）。
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
     配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已针对此应用进行了 [Web 测试][availability]或[客户端监视][client]，请选择现有资源。） 

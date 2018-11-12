@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035175"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283506"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>教程 6：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -34,7 +34,7 @@ ms.locfileid: "47035175"
 > [!div class="checklist"]
 > * 使用现有的教程应用
 > * 添加复合实体 
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 
@@ -57,16 +57,16 @@ ms.locfileid: "47035175"
 
 在此应用中，员工姓名在“员工”列表实体中定义，包括姓名、电子邮件地址、公司电话分机号、移动电话号码和美国联邦纳税人标识号的同义词。 
 
-“MoveEmployee”意向具有示例话语，用于请求员工从一个建筑物和办公室搬迁到另一个建筑物和办公室。 建筑物名称用字母表示：“A”、“B”等，而办公室用数字表示：“1234”、“13245”。 
+“MoveEmployee”意向具有示例话语，用于请求员工从一个建筑物和办公室移动到另一个建筑物和办公室。 建筑物名称用字母表示：“A”、“B”等，而办公室用数字表示：“1234”、“13245”。 
 
 “MoveEmployee”意向中的示例话语包括：
 
 |示例陈述|
 |--|
-|请 John W . Smith 搬迁到 a-2345|
+|将 John W . Smith 调动到 a-2345|
 |明天将 x12345 换到 h-1234|
  
-搬迁请求应包括员工（使用任何同义词），以及最终的建筑物和办公室位置。 请求还可以包括原始的办公室以及应该执行搬迁的日期。 
+搬迁请求应包括员工（使用任何同义词），以及最终的建筑物和办公室位置。 请求还可以包括原始的办公室以及应该执行调动的日期。 
 
 从终结点提取的数据应包含此信息，并在 `RequestEmployeeMove` 复合实体中将其返回：
 
@@ -97,7 +97,7 @@ ms.locfileid: "47035175"
 ]
 ```
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在“意向”页上，选择“MoveEmployee”意向。 
 
@@ -145,7 +145,7 @@ ms.locfileid: "47035175"
 
     [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

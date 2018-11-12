@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628335"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230966"
 ---
 # <a name="install-azure-backup-server-v2"></a>安装 Azure 备份服务器 v2
 
@@ -103,7 +103,7 @@ Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文
 
   如果要添加磁盘，则磁盘必须属于具有旧存储的保护组。 这些磁盘只能用于这些保护组。 如果备份服务器没有具有旧保护的源，则不会列出磁盘。
 
-  有关添加磁盘的详细信息，请参阅[添加磁盘以增大旧存储](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage)。 无法为磁盘提供友好名称。
+  有关添加磁盘的详细信息，请参阅[添加磁盘以增大旧存储](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage)。 无法为磁盘提供友好名称。
 
 
 ### <a name="assign-workloads-to-volumes"></a>将工作负载分配给卷
@@ -175,13 +175,13 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在 System Center 2016 DPM 管理员控制台中，选择“保护”功能。 在“保护组成员”列表中，右键单击成员，然后选择“停止保护成员”。
 
-  ![停止保护成员](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![停止保护成员](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 选择“确定”。
 
   如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”复选框以删除与成员关联的备份数据（和恢复点）。
 
-  ![“从组中删除”对话框](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![“从组中删除”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. 创建一个使用新式备份存储的保护组。 包括未受保护的数据源。
 
@@ -194,7 +194,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在 System Center 2016 DPM 管理员控制台中，选择“管理” > “磁盘存储” > “添加”。
 
-  ![“添加磁盘存储”对话框](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![“添加磁盘存储”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. 在“添加磁盘存储”对话框中，选择“添加磁盘”。
 

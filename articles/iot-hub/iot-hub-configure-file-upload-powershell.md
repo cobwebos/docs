@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: f468567aa67560eed972fb53669638a17778b307
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189948"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232284"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -22,7 +22,7 @@ ms.locfileid: "43189948"
 
 要完成本教程，需要以下各项：
 
-* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](http://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
 

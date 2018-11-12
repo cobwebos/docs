@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394417"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230455"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 
@@ -77,7 +77,7 @@ ms.locfileid: "47394417"
 |已耗用的服务 |你使用的 Azure 平台服务 |
 |资源组 |部署的测定仪正在其中运行的资源组。 <br/><br/>有关详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 |
 |实例 ID | 测定仪的标识符。 <br/><br/> 此标识符包含你在测定仪创建时为其指定的名称。 它是资源的名称或完全限定的资源 ID。 有关详细信息，请参阅 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources)。 |
-|标记 | 分配给测定仪的标记。 使用标记对计费记录进行分组。<br/><br/>例如，可以使用标记按使用测定仪的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
+|标记 | 分配给测定仪的标记。 使用标记对计费记录进行分组。<br/><br/>例如，可以使用标记按使用测定仪的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
 |其他信息 |服务特定的元数据。 例如，虚拟机的映像类型。 |
 |服务信息 1 |订阅上服务所属的项目名称 |
 |服务信息 2 |旧字段，用于捕获可选的服务特定元数据 |

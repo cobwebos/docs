@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a75d7e599b10b1d56bd41db1d6785dace67d5d06
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857833"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278661"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建容器注册表
 
@@ -27,11 +27,11 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-选择“创建资源” > “容器” > “Azure 容器注册表”。
+选择“创建资源” > “容器” > “容器注册表”。
 
 ![在 Azure 门户中创建容器注册表][qs-portal-01]
 
-在“注册表名称”和“资源组”中输入值。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 创建名为 `myResourceGroup` 的新资源组，对于 SKU 选择“Basic”。 选择“创建”，部署 ACR 实例。
+在“注册表名称”和“资源组”中输入值。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。 选择“创建”，部署 ACR 实例。
 
 ![在 Azure 门户中创建容器注册表][qs-portal-03]
 
@@ -71,29 +71,29 @@ docker login --username <username> --password <password> <login server>
 docker pull microsoft/aci-helloworld
 ```
 
-将映像推送到注册表之前，必须使用 ACR 登录服务器名称标记映像。 使用 [docker tag][docker-tag] 命令标记映像。 使用之前记录的登录服务器名称替换登录服务器。
+将映像推送到注册表之前，必须使用 ACR 登录服务器名称标记映像。 使用 [docker tag][docker-tag] 命令标记映像。 使用之前记录的登录服务器名称替换登录服务器。 添加“存储库名称”，例如 **`myrepo`**，以便将映像放入存储库。
 
 ```bash
-docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
 ```
 
-最后，使用 [docker push][docker-push] 将映像推送到 ACR 实例。 使用 ACR 实例的登录服务器名称替换登录服务器。
+最后，使用 [docker push][docker-push] 将映像推送到 ACR 实例。 将“登录服务器”替换为 ACR 实例的登录服务器名称，并将“存储库名称”替换为在上一个命令中使用的存储库名称。
 
 ```bash
-docker push <login server>/aci-helloworld:v1
+docker push <login server>/<repository name>/aci-helloworld:v1
 ```
 
 成功的 `docker push` 命令的输出类似于：
 
 ```
-The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
-7c701b1aeecd: Pushed
-c4332f071aa2: Pushed
-0607e25cc175: Pushed
+The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
 d8fbd47558a8: Pushed
 44ab46125c35: Pushed
 5bef08742407: Pushed
-v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
 ```
 
 ## <a name="list-container-images"></a>列出容器映像
@@ -114,7 +114,7 @@ v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c6
 
 ![启动 ACI 上下文菜单][qs-portal-11]
 
-填写“容器名称”，确保选择正确的订阅，然后选择现有的**资源组**“myResourceGroup”，再单击“确定”以启动 Azure 容器实例。
+填写“容器名称”，确保选择正确的订阅，然后选择现有的**资源组**：“myResourceGroup”。 通过将“公共 IP 地址”选项设置为“是”以确保启用该选项，然后单击“确定”以启动 Azure 容器实例。
 
 ![启动 ACI 部署选项][qs-portal-12]
 
@@ -136,7 +136,7 @@ v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c6
 
 若要清理资源，请导航到门户中的 **myResourceGroup** 资源组。 加载资源组以后，请单击“删除资源组”，以便删除资源组、Azure 容器注册表以及所有 Azure 容器实例。
 
-![在 Azure 门户中创建容器注册表][qs-portal-08]
+![在 Azure 门户中删除资源组][qs-portal-08]
 
 ## <a name="next-steps"></a>后续步骤
 

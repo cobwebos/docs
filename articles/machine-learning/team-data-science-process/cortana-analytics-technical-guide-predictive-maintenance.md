@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 04e0a694d3e8d978a21417e728feabf32f85299f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394589"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231509"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -39,7 +39,7 @@ ms.locfileid: "49394589"
 - 演示如何修改解决方案模板。  
 
 > [!TIP]
-> 可下载和打印[本文的 PDF 版本](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)。
+> 可下载和打印[本文的 PDF 版本](https://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)。
 > 
 > 
 
@@ -47,7 +47,7 @@ ms.locfileid: "49394589"
 ![预见性维护体系结构](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
 部署解决方案时，会激活 Cortana Analytics Suite 中的 Azure 服务（包括事件中心、流分析、HDInsight、数据工厂和机器学习）。 体系结构图展示了如何构造航天工业预测性维护解决方案模板。 可以通过在与解决方案部署一起创建的解决方案模板图表上单击 Azure 门户中的服务对其进行调查（HDInsight 除外，该服务是在要求相关管道活动运行时按需预配的，且随后进行了删除）。
-下载[图表的完全尺寸版本](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
+下载[图表的完全尺寸版本](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)。
 
 以下部分介绍解决方案部分。
 
@@ -67,7 +67,7 @@ ms.locfileid: "49394589"
 使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)对 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析。 然后可将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储服务](https://azure.microsoft.com/services/storage/)中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight 自定义聚合
-使用 HDInsight 运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
+使用 HDInsight 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定飞机引擎（根据收到的输入数据）的剩余使用寿命 (RUL)。 
@@ -122,22 +122,22 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 
 ![Azure 数据工厂](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-此工厂的两个管道包含 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：maintenancesascript\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/maintenancesascript）。
+此工厂的两个管道包含 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：maintenancesascript\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/maintenancesascript）。
 
-类似于 [Azure 流分析](#azure-stream-analytics-1)查询，[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本对传入的数据格式有隐含了解，必须根据数据格式进行更改。
+类似于 [Azure 流分析](#azure-stream-analytics-1)查询，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本对传入的数据格式有隐含了解，必须根据数据格式进行更改。
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
+该[管道](../../data-factory/concepts-pipelines-activities.md)包含单个活动 - [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动，其使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，在 [Azure 流分析作业](https://azure.microsoft.com/services/stream-analytics/)期间对放入 [Azure 存储](https://azure.microsoft.com/services/storage/)的数据进行分区。
 
-此分区任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateFlightInfo.hql***
+此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 此[管道](../../data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验评分的预测。
 
 包含的活动有：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
-  此分区任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***PrepareMLInput.hql***。
+* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本来执行 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验所需的聚合及特征设计。
+  此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***PrepareMLInput.hql***。
 * [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动访问的单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动调用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验，将结果放入单个 [Azure 存储](https://azure.microsoft.com/services/storage/) Blob。
 
@@ -241,5 +241,5 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
 以下两个工具可帮助进一步了解在订阅中运行航天工业预见性维护的解决方案模板产生的总成本：
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator Tool (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure Cost Estimator Tool (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307414"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251553"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -156,7 +156,7 @@ ms.locfileid: "43307414"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem、SQL Azure |
 | **属性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
-| **参考**              | [包含的数据库的安全最佳做法](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **参考**              | [包含的数据库的安全最佳做法](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **步骤** | 缺少强制密码策略可能会增大在包含的数据库中建立弱凭据的可能性。 利用 Windows 身份验证 |
 
 ## <a id="authn-sas-tokens"></a>结合 SaS 令牌使用每个设备的身份验证凭据

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157932"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280667"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -66,7 +66,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 { // add this resource to the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
-    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
         "mode": "Incremental",
@@ -145,7 +145,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建�
 
 将 GUID 添加到模板或用户代理并在 CPP 中注册 GUID 后，系统将跟踪所有部署。 
 
-1. 向 [Azure 市场](http://aka.ms/listonazuremarketplace)提出申请，并获取 CPP 的访问权限。
+1. 向 [Azure 市场](https://aka.ms/listonazuremarketplace)提出申请，并获取 CPP 的访问权限。
 
    * 合作伙伴必须[在 CPP 中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
    * 合作伙伴可以注册多个 GUID。

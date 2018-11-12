@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 004ce399437ef581b319980c83f00cb1427b934b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 0d9f4d14d9f6cbeedb667d9d8debd6bfebf8cbd6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115832"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239113"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso 迁移：将本地应用重新托管到 Azure VM
 
@@ -234,7 +234,7 @@ Contoso 管理员按如下所述设置帐户：
 此外，在运行故障转移时，公司需要检查以下项目：
 
 - 触发故障转移时，VM 上不应存在待处理的 Windows 更新。 如果存在，则在更新完成之前无法登录到 VM。
-- 故障转移后，可选择“启动诊断”来查看 VM 的屏幕截图。 如果此操作无效，应验证确保 VM 正在运行，并查看[疑难解答提示](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 故障转移后，可选择“启动诊断”来查看 VM 的屏幕截图。 如果此操作无效，应验证确保 VM 正在运行，并查看[疑难解答提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 
 **需要更多帮助？**

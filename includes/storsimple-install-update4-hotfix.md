@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 6b37f4bac4bfcc6001171ed27899b71cdac7a312
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f0c631c765ba95602fb2ac3ab1fd72732793a199
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264211"
 ---
 <!--author=alkohli last changed: 01/23/18-->
 
@@ -17,7 +17,7 @@ ms.locfileid: "50164343"
 
 执行以下步骤，从 Microsoft 更新目录下载软件更新。
 
-1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
     ![安装目录](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)

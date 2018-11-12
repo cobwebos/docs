@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8491f3f61746374b67e174ca5efff2fbf2fe5fbe
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946980"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281891"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -96,7 +96,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="methods-of-access"></a>访问方法
 可以通过以下方式设置自动缩放：
 
-* [Azure 门户](insights-how-to-scale.md)
+* [Azure 门户](monitoring-autoscale-get-started.md)
 * [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [跨平台的命令行接口 (CLI)](insights-cli-samples.md#autoscale)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -104,11 +104,11 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="supported-services-for-autoscale"></a>支持进行自动缩放的服务
 | 服务 | 架构和文档 |
 | --- | --- |
-| Web 应用 |[缩放 Web 应用](insights-how-to-scale.md) |
+| Web 应用 |[缩放 Web 应用](monitoring-autoscale-get-started.md) |
 | 云服务 |[自动缩放云服务](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | 虚拟机：经典 |[缩放经典虚拟机可用性集](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| 虚拟机：Linux 规模集 |[缩放 Linux 中的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| 虚拟机：Windows 规模集 |[缩放 Windows 中的虚拟机规模集](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
+| 虚拟机：Linux 规模集 |[缩放 Linux 中的虚拟机规模集](../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | 虚拟机：Windows 示例 |[通过用于 VM 规模集的 Resource Manager 模板进行的高级自动缩放配置](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 | API 管理服务|[自动缩放 Azure API 管理实例](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 

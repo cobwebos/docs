@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07a86345e49081320663d7706310a71a40ace134
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302101"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249347"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -210,7 +210,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [IE8 安全性第五部分：全面保护](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME 类型](http://en.wikipedia.org/wiki/Mime_type) |
+| **参考**              | [IE8 安全性第五部分：全面保护](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME 类型](http://en.wikipedia.org/wiki/Mime_type) |
 | **步骤** | X-Content-Type-Options 标头是一个 HTTP 标头，可让开发人员指定不应该对其内容使用 MIME 探查。 此标头旨在缓解 MIME 探查攻击。 对于可能包含用户可控内容的每个页面，必须使用 HTTP 标头 X-Content-Type-Options:nosniff。 若要针对应用程序中的所有页面全局启用所需的标头，可执行以下操作之一|
 
 ### <a name="example"></a>示例

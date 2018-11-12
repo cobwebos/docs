@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d656d756759c997972eb034e194355185be93e1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262909"
 ---
-接下来，如果群集中的任何服务器运行的是 Windows Server 2008 R2 或 Windows Server 2012，则必须验证群集中的每个本地服务器或 Azure VM 上是否安装了修补程序 [KB2854082](http://support.microsoft.com/kb/2854082)。 位于群集中但不在可用性组中的任何服务器或 VM 也应安装此修补程序。
+接下来，如果群集中的任何服务器运行的是 Windows Server 2008 R2 或 Windows Server 2012，则必须验证群集中的每个本地服务器或 Azure VM 上是否安装了修补程序 [KB2854082](https://support.microsoft.com/kb/2854082)。 位于群集中但不在可用性组中的任何服务器或 VM 也应安装此修补程序。
 
-在每个群集节点的远程桌面会话中，将 [KB2854082](http://support.microsoft.com/kb/2854082) 下载到本地目录。 然后，按顺序在每个群集节点上安装该修补程序。 如果群集节点上当前运行了群集服务，修补程序安装结束后会重新启动服务器。
+在每个群集节点的远程桌面会话中，将 [KB2854082](https://support.microsoft.com/kb/2854082) 下载到本地目录。 然后，按顺序在每个群集节点上安装该修补程序。 如果群集节点上当前运行了群集服务，修补程序安装结束后会重新启动服务器。
 
 > [!WARNING]
 > 停止群集服务或重新启动服务器会影响群集和可用性组的仲裁运行状况，并可能导致群集进入脱机状态。 若要在安装过程中维持群集的高可用性，请确保：

@@ -3,5 +3,5 @@
 
 使用过 Azure？ 你在开发测试实验室中的第一个实验室入门。
 
-[![Azure 开发测试实验室快速入门](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
+[![Azure 开发测试实验室快速入门](./media/devtest-lab-try-it-out/get-started.png)](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 

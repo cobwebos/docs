@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: b565955abaae44efe20291a6e46b57a5fec941d1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046552"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233399"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI 工作区集合入门
 
@@ -47,7 +47,7 @@ ms.locfileid: "43046552"
 5. 在“工作区集合”上输入所需的信息。
    
    ![创建工作区集合](media/get-started/create-workspace-2.png)
-1. 选择**创建**。
+1. 选择“创建”。
 
 工作区集合需要一些时间进行预配。 完成后会转到“工作区集合”。
 
@@ -79,7 +79,7 @@ ms.locfileid: "43046552"
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>使用 Power BI Desktop 创建要嵌入到应用程序中的 Power BI 数据集和报表
 
-至此，已创建应用程序的 Power BI 实例，并有了访问密钥，接下来需要创建要嵌入的 Power BI 数据集和报表。 可以使用 **Power BI Desktop**创建数据集和报表。 可以免费下载 [Power BI Desktop](https://go.microsoft.com/fwlink/?LinkId=521662)。 或者，若要快速开始使用，可以下载 [零售分析示例 PBIX](http://go.microsoft.com/fwlink/?LinkID=780547)。
+至此，已创建应用程序的 Power BI 实例，并有了访问密钥，接下来需要创建要嵌入的 Power BI 数据集和报表。 可以使用 **Power BI Desktop**创建数据集和报表。 可以免费下载 [Power BI Desktop](https://go.microsoft.com/fwlink/?LinkId=521662)。 或者，若要快速开始使用，可以下载 [零售分析示例 PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)。
 
 > [!NOTE]
 > 若要了解有关如何使用 **Power BI Desktop**的详细信息，请参阅 [Power BI Desktop 入门](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)。

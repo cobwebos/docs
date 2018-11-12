@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 2e5d1045edbbc3c71cb0ccff34d2ba327a98a409
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b6f6653381b5fcf80b9647c64334dfed1a2230bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211851"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230846"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -32,7 +32,7 @@ Service Fabric 提供多种方式来获取实体聚合运行状况：
 * 运行状况查询（通过 PowerShell、API 或 REST）
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、API 或 REST）
 
-为了演示这些选项，让我们使用一个具有五个节点的本地群集和 [fabric:/WordCount 应用程序](http://aka.ms/servicefabric-wordcountapp)。 **fabric:/WordCount** 应用程序包含两个默认服务：类型为 `WordCountServiceType` 的有状态服务，和类型为 `WordCountWebServiceType` 的无状态服务。 我更改了 `ApplicationManifest.xml`，从而需要有状态服务的七个目标副本以及一个分区。 由于群集中只有五个节点，因此系统组件会对服务分区报告警告，因为它低于目标计数。
+为了演示这些选项，让我们使用一个具有五个节点的本地群集和 [fabric:/WordCount 应用程序](https://aka.ms/servicefabric-wordcountapp)。 **fabric:/WordCount** 应用程序包含两个默认服务：类型为 `WordCountServiceType` 的有状态服务，和类型为 `WordCountWebServiceType` 的无状态服务。 我更改了 `ApplicationManifest.xml`，从而需要有状态服务的七个目标副本以及一个分区。 由于群集中只有五个节点，因此系统组件会对服务分区报告警告，因为它低于目标计数。
 
 ```xml
 <Service Name="WordCountService">

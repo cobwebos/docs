@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 6c8d0c9f5471395d1552b896b4d411dcad0a280f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2a59d5788898fae23345d179fb037f11599f912e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421129"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230387"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>从 Excel、Python 或 R 连接到 Azure Databricks
 
@@ -102,7 +102,7 @@ ms.locfileid: "50421129"
 在本部分中，你将使用 R 语言 IDE 来引用 Azure Databricks 中可用的数据。 在开始之前，必须在计算机上安装以下各项。
 
 * R 语言的 IDE。 本文中使用了 RStudio for Desktop。 可以从 [R Studio 下载](https://www.rstudio.com/products/rstudio/download/)安装该软件。
-* 如果使用 RStudio for Desktop 作为 IDE，还需要从 [http://aka.ms/rclient/](http://aka.ms/rclient/) 安装 Microsoft R Client。 
+* 如果使用 RStudio for Desktop 作为 IDE，还需要从 [http://aka.ms/rclient/](https://aka.ms/rclient/) 安装 Microsoft R Client。 
 
 打开 RStudio 并执行以下步骤：
 

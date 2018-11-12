@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390289"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231515"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -43,7 +43,7 @@ ms.locfileid: "49390289"
 
 此外，本文档包含参考材料，帮助进一步了解该领域和技术。
 
-请务必注意，本文档未介绍深奥的数据科研过程，及其数学和技术层面。 可以在 [Azure ML 文档](http://azure.microsoft.com/services/machine-learning/)和[博客](http://blogs.microsoft.com/blog/tag/azure-machine-learning/)中找到这些详细信息。
+请务必注意，本文档未介绍深奥的数据科研过程，及其数学和技术层面。 可以在 [Azure ML 文档](https://azure.microsoft.com/services/machine-learning/)和[博客](https://blogs.microsoft.com/blog/tag/azure-machine-learning/)中找到这些详细信息。
 
 ### <a name="target-audience"></a>目标读者
 本文档面向商务和技术人员，帮助他们认识和了解机器学习解决方案，及其在能源预测领域中的具体利用情况。
@@ -176,7 +176,7 @@ Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高�
 
 由于 Cortana Intelligence Suite 提供即用即付价格模式，因此不需要将固定成本项带入此公式中。 每日、每月或每年都可以计算此公式。
 
-[此处](http://azure.microsoft.com/pricing/details/machine-learning/)提供了 Cortana Intelligence Suite 和 Azure ML 的最新定价计划。
+[此处](https://azure.microsoft.com/pricing/details/machine-learning/)提供了 Cortana Intelligence Suite 和 Azure ML 的最新定价计划。
 
 ### <a name="solution-development-process"></a>解决方法开发过程
 能源需求预测解决方案的开发周期通常需要 4 个阶段，在所有阶段中，都采用 Cortana Intelligence Suite 中基于云的技术和服务。
@@ -187,7 +187,7 @@ Cortana Intelligence Suite 是云中的集成环境。 在云环境中部署高�
 
 以下段落描述了这个 4 步骤过程：
 
-1. **数据收集** – 任何基于高级分析的解决方案都依赖于数据（请参阅**了解数据**）。 具体而言，在提到预测分析和预测时，我们依赖于持续、动态的数据流。 就能源需求预测而言，此数据可能直接来自智能电表，或已在本地数据库中聚合。 我们还依赖于其他外部数据源，例如天气和温度。 必须协调、计划和存储此持续数据流。 [Azure 数据工厂](http://azure.microsoft.com/services/data-factory/) (ADF) 是用于完成此任务的主要工具。
+1. **数据收集** – 任何基于高级分析的解决方案都依赖于数据（请参阅**了解数据**）。 具体而言，在提到预测分析和预测时，我们依赖于持续、动态的数据流。 就能源需求预测而言，此数据可能直接来自智能电表，或已在本地数据库中聚合。 我们还依赖于其他外部数据源，例如天气和温度。 必须协调、计划和存储此持续数据流。 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/) (ADF) 是用于完成此任务的主要工具。
 2. **建模** – 为了获得准确又可靠的能源预测，必须开发（训练）并维护一个优秀的模型，使用历史数据并从数据中提取有用且可预测的模式。 随着不断开发出先进的算法，机器学习 (ML) 领域一直在快速发展。 Azure 机器学习工作室提供绝佳的用户体验，有助于在完整的工作流中使用最先进的 ML 算法。 该工作流在直观的流程图中演示，包含准备数据、提取特征、建模和评估模型。 用户可以使用此环境中数以百计的各种不同模型。 此阶段结束时，数据科研人员可获得一个已完整评估且可部署的有效模型。
    
    下图演示了典型的工作流：
@@ -387,7 +387,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 7. 预测的数据存储在最终使用方客户端可访问的数据库中。
 8. 使用方客户端检索预测值，将它应用到电网，并根据所需用例使用它。
 
-请务必注意，这整个周期完全自动化，并按计划运行。 可使用 [Azure 数据工厂](http://azure.microsoft.com/services/data-factory/)等工具来全面协调此数据周期。
+请务必注意，这整个周期完全自动化，并按计划运行。 可使用 [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)等工具来全面协调此数据周期。
 
 ### <a name="end-to-end-deployment-architecture"></a>端到端部署体系结构
 若要在 Cortana Intelligence 中实际部署能源需求预测解决方案，必须确保正确建立并配置所需的组件。

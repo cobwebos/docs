@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49437163"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263281"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 的高性能高级存储和托管磁盘
 
@@ -97,7 +97,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
     可在同一高级存储 VM 中使用高级和标准磁盘。 使用高级存储时，可以预配 VM 并将多个持久性数据磁盘附加到 VM。 如果需要，可以跨磁盘条带化，以增加卷的容量与性能。
 
     > [!NOTE]
-    > 如果使用[存储空间](http://technet.microsoft.com/library/hh831739.aspx)条带化高级存储数据磁盘，请为使用的每个磁盘设置包含 1 列的存储空间。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 默认情况下，在服务器管理器中可以设置最多包含 8 个磁盘的列。 如果磁盘超过 8 个，请使用 PowerShell 来创建卷。 手动指定列数。 否则，即使有更多磁盘，服务器管理器 UI 仍会继续使用 8 个列。 例如，如果一个带区集中有 32 个磁盘，请指定 32 列。 若要指定虚拟磁盘使用的列数，请在 [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet 中使用 *NumberOfColumns* 参数。 有关详细信息，请参阅[存储空间概述](http://technet.microsoft.com/library/hh831739.aspx)和[存储空间常见问题解答](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)。
+    > 如果使用[存储空间](https://technet.microsoft.com/library/hh831739.aspx)条带化高级存储数据磁盘，请为使用的每个磁盘设置包含 1 列的存储空间。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 默认情况下，在服务器管理器中可以设置最多包含 8 个磁盘的列。 如果磁盘超过 8 个，请使用 PowerShell 来创建卷。 手动指定列数。 否则，即使有更多磁盘，服务器管理器 UI 仍会继续使用 8 个列。 例如，如果一个带区集中有 32 个磁盘，请指定 32 列。 若要指定虚拟磁盘使用的列数，请在 [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet 中使用 *NumberOfColumns* 参数。 有关详细信息，请参阅[存储空间概述](https://technet.microsoft.com/library/hh831739.aspx)和[存储空间常见问题解答](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)。
     >
     > 
 
@@ -151,7 +151,9 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 ### <a name="premium-storage-disk-limits"></a>高级存储磁盘限制
 预配高级存储磁盘时，磁盘的大小将确定最大 IOPS 和吞吐量（带宽）。 Azure 提供了八种 GA 类型的高级存储磁盘：P4（仅适用于托管磁盘）、P6（仅适用于托管磁盘）、P10、P15（仅适用于托管磁盘）、P20、P30、P40 和 P50。 同时提供了三种预览磁盘大小：P60、P70 和 P80。 每种高级存储磁盘类型在 IOPS 和吞吐量方面存在具体的限制。 下表描述了磁盘类型的限制：
 
-| 高级磁盘类型  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+用星号表示的大小当前处于预览阶段。
+
+| 高级磁盘类型  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
 | 磁盘大小           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16,384 GiB (16 TiB)| 32,767 GiB (32 TiB)|
 | 每个磁盘的 IOPS       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12,500          | 15,000             | 20,000             |
@@ -237,7 +239,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 要维护快照的异地冗余副本，可以使用 AzCopy 或“复制 Blob”将高级存储帐户中的快照复制到异地冗余的标准存储帐户。 有关详细信息，请参阅[使用 AzCopy 命令行实用工具传输数据](../articles/storage/common/storage-use-azcopy.md)和[复制 Blob](/rest/api/storageservices/Copy-Blob)。
 
-有关对高级存储帐户中的页 Blob 执行 REST 操作的详细信息，请参阅[对 Azure 高级存储执行 Blob 服务操作](http://go.microsoft.com/fwlink/?LinkId=521969)。
+有关对高级存储帐户中的页 Blob 执行 REST 操作的详细信息，请参阅[对 Azure 高级存储执行 Blob 服务操作](https://go.microsoft.com/fwlink/?LinkId=521969)。
 
 ### <a name="managed-disks"></a>托管磁盘
 
@@ -267,12 +269,12 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [需要 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [建议使用 LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
+| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [需要 LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [建议使用 LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> 请参阅下一部分中的注释 |
 | Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+、7.2+ | &nbsp; | UEK4 或 RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 或 RHCK w/[LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 的 LIS 驱动程序

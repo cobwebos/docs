@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408704"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233790"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -86,7 +86,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答：** 是的，Azure AD 提供 [Azure AD 访问面板](http://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
+**答：** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 

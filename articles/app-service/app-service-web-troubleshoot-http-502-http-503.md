@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125796"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251604"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>排查 Azure Web 应用中的“502 错误的网关”和“503 服务不可用”HTTP 错误
-[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)中托管的 Web 应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
+[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的 Web 应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 

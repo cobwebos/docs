@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092467"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253119"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ ms.locfileid: "49092467"
 若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并且会作为 `Cache-Control` `max-age` 指令的值使用。 有关 `<clientCache>` 元素的详细信息，请参阅[客户端缓存<clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>以编程方式设置 Cache-Control 标头
-对于 ASP.NET 应用程序，可以通过设置 .NET API 的 **HttpResponse.Cache** 属性，以编程方式控制 CDN 缓存行为。 有关 **HttpResponse.Cache** 属性的信息，请参阅 [HttpResponse.Cache 属性](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)和 [HttpCachePolicy 类](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)。  
+对于 ASP.NET 应用程序，可以通过设置 .NET API 的 **HttpResponse.Cache** 属性，以编程方式控制 CDN 缓存行为。 有关 **HttpResponse.Cache** 属性的信息，请参阅 [HttpResponse.Cache 属性](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)和 [HttpCachePolicy 类](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)。  
 
 若要以编程方式在 ASP.NET 中缓存应用程序内容，请执行以下步骤：
    1. 验证是否已通过将 `HttpCacheability` 设置为 `Public` 将内容标记为可缓存。 
@@ -132,6 +132,6 @@ Response.Cache.SetLastModified(DateTime.Now);
 
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 **clientCache** 元素](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)的详细信息
-* [阅读有关 **HttpResponse.Cache** 属性的文档](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [阅读有关 **HttpCachePolicy 类**的文档](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
+* [阅读有关 **HttpResponse.Cache** 属性的文档](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
+* [阅读有关 **HttpCachePolicy 类**的文档](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [了解缓存概念](cdn-how-caching-works.md)

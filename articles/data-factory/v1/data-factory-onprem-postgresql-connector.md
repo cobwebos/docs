@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 189adf27795172bb08b52af1a9e3428d854a50a0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7357b609909c3db0bc42d58cb2cd32436c864f66
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046724"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235864"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-onprem-postgresql-connector.md)
+> * [版本 1](data-factory-onprem-postgresql-connector.md)
 > * [版本 2（当前版本）](../connector-postgresql.md)
 
 > [!NOTE]
@@ -44,7 +44,7 @@ ms.locfileid: "37046724"
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 PostgreSQL 数据库，请在数据管理网关所在的同一系统上安装 2.0.12 版到 3.1.9 版之间的[用于 PostgreSQL 的 Ngpsql 数据提供程序](http://go.microsoft.com/fwlink/?linkid=282716)。 支持 7.4 版本和更高版本的 PostgreSQL。
+为使数据管理网关连接到 PostgreSQL 数据库，请在数据管理网关所在的同一系统上安装 2.0.12 版到 3.1.9 版之间的[用于 PostgreSQL 的 Ngpsql 数据提供程序](https://go.microsoft.com/fwlink/?linkid=282716)。 支持 7.4 版本和更高版本的 PostgreSQL。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 PostgreSQL 数据存储移动数据。 

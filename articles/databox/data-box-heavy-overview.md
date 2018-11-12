@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 8ecef86841bcf13a469f9c0dc81f114bd54acdba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946506"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235150"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>什么是 Azure Data Box Heavy？ （预览版）
 
@@ -31,7 +31,7 @@ Data Box Heavy 目前处于预览状态，可通过 Azure 门户注册以请求�
 
 > [!IMPORTANT]
 > - Data Box Heavy 以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> - 若要请求设备，请在[预览门户](http://aka.ms/)中注册。
+> - 若要请求设备，请在[预览门户](https://aka.ms/)中注册。
 > - 在预览期，Data Box Heavy 可以寄送到美国和欧盟的客户。 有关详细信息，请参阅[适用区域](#region-availability)。
 
 ## <a name="use-cases"></a>用例
@@ -40,7 +40,7 @@ Data Box Heavy 非常适合在无网络连接到有限网络连接的情况下�
 
  - **一次性迁移** - 需要将大量本地数据移到 Azure 时。 
      - 将媒体库从脱机磁带移动到 Azure 以创建联机媒体库。
-     - 将 VM 场、SQL Server 和应用程序迁移到 Azure
+     - 将 VM 场、SQL server 和应用程序迁移到 Azure
      - 将历史数据移至 Azure，以便使用 HDInsight 进行深入分析和报告
 
  - **初始批量传输** - 需要先使用 Data Box Heavy（种子）执行初始批量传输，然后通过网络执行增量传输时。 

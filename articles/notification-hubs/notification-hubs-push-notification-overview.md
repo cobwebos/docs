@@ -15,12 +15,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: ccf27748699a49c569a43f041cbc5e3625055852
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: a39eebda5abb41e02ce7254e2084541e86ecee30
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503411"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229503"
 ---
 # <a name="what-is-azure-notification-hubs"></a>什么是 Azure 通知中心？
 Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于从任何后端（云或本地）向任何平台（iOS、Android、Windows、Kindle、百度等）发送通知。 通知中心非常适合用于企业和消费者方案。 下面是一些示例方案：
@@ -40,7 +40,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 有关一些流行平台中的推送通知的详细信息，请参阅以下主题： 
 * [iOS](https://developer.apple.com/notifications/)
 * [Android](https://developer.android.com/guide/topics/ui/notifiers/notifications.html)
-* [Windows](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
+* [Windows](https://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
 
 ## <a name="how-push-notifications-work"></a>推送通知的工作原理是什么？
 推送通知通过称为*平台通知系统* (PNS) 的特定于平台的基础结构进行传送。 它们只是单纯的推送功能，使用提供的句柄向设备传送消息，而没有通用接口。 要跨应用的 iOS、Android 和 Windows 版本将通知发送给所有客户，开发人员必须使用 Apple Push Notification 服务 (APNS)、Firebase Cloud Messaging (FCM) 和 Windows 通知服务 (WNS)。
@@ -101,8 +101,7 @@ PNSes 非常强大。 但应用开发人员仍然需要完成大量工作才能�
     - 共享访问机密 (SAS) 或联合身份验证。
 
 ## <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
-为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用](../app-service-mobile/app-service-mobile-value-prop.md) 原生支持使用通知中心推送通知。 
-  [应用服务 Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
+为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用](../app-service-mobile/app-service-mobile-value-prop.md) 原生支持使用通知中心推送通知。 [应用服务 Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
 
 移动应用开发人员可以借助以下工作流来利用通知中心：
 

@@ -10,32 +10,32 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e560aeffecf63f63966a49053e0f79d012b4a0a3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8fe39a2876d37e4897c03a5654e500e2e2d3cb9f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038266"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276944"
 ---
 # <a name="quickstart-get-intent-using-python"></a>快速入门：使用 Python 获取意向
 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 
-[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 * [Python 3.6](https://www.python.org/downloads/) 或更高版本。
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>获取 LUIS 密钥
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
 ## <a name="get-intent-with-browser"></a>使用浏览器获取意向
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
 ## <a name="get-intent--programmatically"></a>以编程方式获取意向
 
@@ -55,7 +55,7 @@ ms.locfileid: "47038266"
 
 ## <a name="luis-keys"></a>LUIS 密钥
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 删除 python 文件。 

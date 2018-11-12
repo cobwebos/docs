@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5b8d3aa69d6a141394395f012e5cc57873cafaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421206"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235922"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
 本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure 市场 VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
@@ -39,8 +39,7 @@ ms.locfileid: "39421206"
 * **客户端计算机** - 需要一台基于 Windows 的客户端计算机，向群集提交示例性的 Excel 和 SOA 作业。 此外还需一台运行 Azure PowerShell 群集部署脚本（如果选择该部署方法）的 Windows 计算机。
 * **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * **核心配额** - 可能需要增加核心配额，尤其是在部署多个多核 VM 大小的群集节点时。 如果使用的是 Azure 快速入门模板，Resource Manager 中的核心配额基于 Azure 区域。 这种情况下，可能需要增加特定区域的配额。 请参阅 [Azure 订阅限制、配额和约束](../../azure-subscription-service-limits.md)。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
-* 
-  **Microsoft Office 许可证** - 如果使用包含 Microsoft Excel 的 Marketplace HPC Pack 2012 R2 VM 映像部署计算节点，将安装 Microsoft Excel 专业增强版 2013 的 30 天评估版。 评估期以后，需要提供有效的 Microsoft Office 许可证来激活 Excel，才能继续运行工作负荷。 请参阅本文后面部分的 [Excel 激活](#excel-activation)。 
+* **Microsoft Office 许可证** - 如果使用包含 Microsoft Excel 的 Marketplace HPC Pack 2012 R2 VM 映像部署计算节点，将安装 Microsoft Excel 专业增强版 2013 的 30 天评估版。 评估期以后，需要提供有效的 Microsoft Office 许可证来激活 Excel，才能继续运行工作负荷。 请参阅本文后面部分的 [Excel 激活](#excel-activation)。 
 
 ## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>步骤 1。 在 Azure 中设置 HPC Pack 群集
 本文介绍两种设置 HPC Pack 2012 R2 群集的选项：第一种方法使用 Azure 快速入门模板和 Azure 门户；第二种方法使用 Azure PowerShell 部署脚本。
@@ -59,7 +58,7 @@ ms.locfileid: "39421206"
    ![将模板部署到 Azure][github]
 1. 在门户中，按照以下步骤输入 HPC 群集模板的参数。
    
-   a. 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中会显示示例值。 本示例会在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“参数”页上，输入或修改模板参数的值。 （单击每个设置旁边的图标可获得帮助信息。）下面的屏幕中会显示示例值。 本示例会在 *hpc.local* 域中创建名为 *hpc01* 的群集，该群集由 1 个头节点和 2 个计算节点组成。 将从包含 Microsoft Excel 的 HPC Pack VM 映像创建计算节点。
    
    ![输入参数][parameters-new-portal]
    
@@ -79,7 +78,7 @@ ms.locfileid: "39421206"
    e. 在“法律条款”页上，查看条款。 如果同意条款，请单击“购买”。 在完成为模板设置值后，单击“创建”。
 1. 在部署完成时（通常需要花费大约 30 分钟），从群集头节点导出群集证书文件。 在稍后的步骤中，会在客户端计算机上导入此公用证书，为安全 HTTP 绑定提供服务器端身份验证。
    
-   a. 在 Azure 门户中，通过远程桌面转到仪表板，选择头节点，然后在页面顶部单击“连接”以进行连接。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，通过远程桌面转到仪表板，选择头节点，然后在页面顶部单击“连接”以进行连接。
    
     <!-- ![Connect to the head node][connect] -->
    
@@ -226,7 +225,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
         </startup>
     </configuration>
     ```
-1. 设置客户端，以便将作业提交到 HPC Pack 群集。 一个选项是下载完整的 [HPC Pack 2012 R2 Update 3 安装](http://www.microsoft.com/download/details.aspx?id=49922)，并安装 HPC Pack 客户端。 也可为计算机下载并安装 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)和相应的 Visual C++ 2010 可再发行组件（[x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555)）。
+1. 设置客户端，以便将作业提交到 HPC Pack 群集。 一个选项是下载完整的 [HPC Pack 2012 R2 Update 3 安装](https://www.microsoft.com/download/details.aspx?id=49922)，并安装 HPC Pack 客户端。 也可为计算机下载并安装 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)和相应的 Visual C++ 2010 可再发行组件（[x64](https://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555)）。
 1. 此示例使用名为 ConvertiblePricing_Complete.xlsb 的示例 Excel 工作簿。 可以在[此处](https://www.microsoft.com/en-us/download/details.aspx?id=2939)下载。
 1. 将 Excel 工作簿复制到工作文件夹，例如 D:\Excel\Run。
 1. 打开 Excel 工作簿。 在“开发”功能区上，单击“COM 外接程序”并确认 HPC Pack Excel COM 外接程序已成功加载。
@@ -263,7 +262,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 > 
 > 
 
-成功部署群集后，继续使用以下步骤来运行示例内置 Excel UDF。 对于自定义 Excel UDF，请参阅这些[资源](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)来构建 XLL并将它们部署在 IaaS 群集上。
+成功部署群集后，继续使用以下步骤来运行示例内置 Excel UDF。 对于自定义 Excel UDF，请参阅这些[资源](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)来构建 XLL并将它们部署在 IaaS 群集上。
 
 1. 打开一个新的 Excel 工作簿。 在“开发”功能区上，单击“外接程序”。然后，在对话框中单击“浏览”，导航到 %CCP_HOME%Bin\XLL32 文件夹，并选择示例 ClusterUDF32.xll。 如果 ClusterUDF32 未存在于客户端计算机上，请从头节点上的 %CCP_HOME%Bin\XLL32 文件夹复制它。
    
@@ -281,7 +280,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 若要在 HPC Pack IaaS 群集上运行常规 SOA 应用程序，首先请使用步骤 1 中的方法之一部署该群集。 在此示例中，请指定一个泛型计算节点映像，因为计算节点上不需 Excel。 然后，执行以下步骤。
 
 1. 检索群集证书之后，在客户端计算机上的 Cert: \CurrentUser\Root 下导入它。
-1. 安装 [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) 和 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)。 可以使用这些工具开发和运行 SOA 客户端应用程序。
+1. 安装 [HPC Pack 2012 R2 Update 3 SDK](https://www.microsoft.com/download/details.aspx?id=49921) 和 [HPC Pack 2012 R2 Update 3 客户端实用工具](https://www.microsoft.com/download/details.aspx?id=49923)。 可以使用这些工具开发和运行 SOA 客户端应用程序。
 1. 下载 HelloWorldR2 [示例代码](https://www.microsoft.com/download/details.aspx?id=41633)。 在 Visual Studio 2010 或 2012 中打开 HelloWorldR2.sln。 （此示例当前与较新版本的 Visual Studio 不兼容。）
 1. 先生成 EchoService 项目。 然后，按照部署到本地群集的相同方式将服务部署到 IaaS 群集。 有关详细步骤，请参阅 HelloWordR2 中的 Readme.doc。 按以下部分所述修改并生成 HelloWorldR2 及其他项目，以便生成在 Azure IaaS 群集上运行的 SOA 客户端应用程序。
 
@@ -344,7 +343,7 @@ HPC Pack 部署脚本可运行一段时间。 此脚本的一项功能是导出�
 除了将头名称变更为 IaaS 群集完整名称外，SOA 客户端应用程序不需要进行任何更改。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用 HPC Pack 运行 Excel 工作负荷的详细信息，请参阅[这些资源](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)。
+* 有关使用 HPC Pack 运行 Excel 工作负荷的详细信息，请参阅[这些资源](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)。
 * 有关使用 HPC Pack 部署和管理 SOA 服务的详细信息，请参阅[在 Microsoft HPC Pack 中管理 SOA 服务](https://technet.microsoft.com/library/ff919412.aspx)。
 
 <!--Image references-->

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841807"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232736"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
 | 产品/服务 | 文章 |
@@ -157,7 +157,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - OnPrem |
-| **参考**              | [httpCookies 元素（ASP.NET 设置架构）](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 属性](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **参考**              | [httpCookies 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 属性](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **步骤** | 通常只能从 Cookie 限定到的域访问这些 Cookie。 遗憾的是，“域”的定义不包括协议，因此，通过 HTTPS 创建的 Cookie 可通过 HTTP 访问。 “secure”特性可向浏览器指明，只能通过 HTTPS 使用 Cookie。 请确保通过 HTTPS 设置的所有 Cookie 使用 **secure** 特性。 可在 web.config 文件通过将 requireSSL 属性设置为 true，来强制实施此要求。 这是一种首选方法，因为它会强制所有当前和未来的 Cookie 使用 **secure** 属性，而无需对代码进一步进行更改。|
 
 ### <a name="example"></a>示例

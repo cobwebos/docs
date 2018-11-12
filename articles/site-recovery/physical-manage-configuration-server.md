@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213232"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230979"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -42,7 +42,7 @@ ms.locfileid: "50213232"
 
 ## <a name="download-the-latest-installation-file"></a>下载最新的安装文件
 
-Site Recovery 门户中提供了配置服务器安装文件的最新版本。 另外，还可以直接从 [Microsoft 下载中心](http://aka.ms/unifiedsetup)下载该代理。
+Site Recovery 门户中提供了配置服务器安装文件的最新版本。 另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/unifiedsetup)下载该代理。
 
 1. 登录 Azure 门户并浏览到恢复服务保管库。
 2. 浏览到“Site Recovery 基础结构” > “配置服务器”（在“针对 VMware 和物理计算机”下面）。

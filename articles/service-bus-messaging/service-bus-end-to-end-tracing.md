@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854875"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283829"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -181,7 +181,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 #### <a name="logging-additional-properties"></a>记录其他属性
 
-`Activty.Current` 提供当前操作及其父级的详细上下文。 有关更多详细信息，请参阅 [Activity 文档](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)。
+`Activity.Current` 提供当前操作及其父级的详细上下文。 有关更多详细信息，请参阅 [Activity 文档](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)。
 服务总线检测在 `Activity.Current.Tags` 中提供其他信息 - 这些信息包含 `MessageId` 和 `SessionId`（如果已提供）。
 
 跟踪“Receive”、“Peek”和“ReceiveDeferred”事件的活动还可能带有 `RelatedTo` 标记。 该标记包含作为结果收到的消息的 `Diagnostic-Id` 相异列表。

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286646"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232454"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
 本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。 
@@ -104,7 +104,7 @@ Azure 备份提供一个脚本框架，用于控制备份工作流和环境。 �
 * 队列等待时间 - 由于服务同时处理来自多个客户的还原作业，因此还原请求会排入队列中。
 * 数据复制时间 - 将数据从保管库复制到客户存储帐户。 还原时间取决于 Azure 备份服务在所选客户存储帐户上获取的 IOPS 和吞吐量。 若要减少还原过程期间的复制时间，请选择一个未加载其他应用程序写入和读取的存储帐户。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 在为所有虚拟机配置备份时，建议遵循以下做法：
 
@@ -146,7 +146,7 @@ VM 备份定价并非基于附加到虚拟机的每个数据磁盘的最大支�
 针对特定虚拟机的计费仅在停止保护并且删除全部备份数据后才会停止。 当停止保护并且没有活动的备份作业时，最后一个成功的 VM 备份的大小将成为用于每月帐单的受保护实例大小。
 
 ## <a name="questions"></a>有疑问？
-如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。
+如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>后续步骤
 * [备份虚拟机](backup-azure-arm-vms.md)

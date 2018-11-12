@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 590831454e8a18678e357b4824eb35a717d1fee0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129028"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246644"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
-本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
+本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
   
 ##  <a name="CrossDomainPolicies"></a> 跨域策略  
   
@@ -54,12 +54,12 @@ ms.locfileid: "26129028"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 入站  
 -   **策略范围：** 全局  
@@ -123,7 +123,7 @@ ms.locfileid: "26129028"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |cors|根元素。|是|不适用|  
 |allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|不适用|  
@@ -136,13 +136,13 @@ ms.locfileid: "26129028"
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的功能。|否|false|  
 |preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预检响应的功能。|否|0|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 入站  
 -   **策略范围：** API、操作  
@@ -168,18 +168,18 @@ ms.locfileid: "26129028"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|Description|必选|  
 |----------|-----------------|--------------|  
 |jsonp|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|Description|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |callback-parameter-name|以函数所在的完全限定域名为前缀的跨域 JavaScript 函数调用。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 出站  
 -   **策略范围：** 全局、产品、API、操作  

@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
-ms.author: bwren, vinagara
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024747"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282317"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024747"
 > 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。   
 
 
-[管理解决方案](monitoring-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-log-searches.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../log-analytics/log-analytics-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../resource-manager-template-walkthrough.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](monitoring-solutions-creating.md)。
+[管理解决方案](monitoring-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-queries.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](monitoring-solutions-creating.md)。
 
 > [!NOTE]
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案](monitoring-solutions-creating.md)中对它们进行了介绍  
 
 ## <a name="prerequisites"></a>先决条件
-本文假设你已经熟悉如何[创建管理解决方案](monitoring-solutions-creating.md)以及[资源管理器模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
+本文假设你已经熟悉如何[创建管理解决方案](monitoring-solutions-creating.md)以及[资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
@@ -54,9 +54,9 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 
 ## <a name="saved-searches"></a>保存的搜索
-将[保存的搜索](../log-analytics/log-analytics-log-searches.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将在 Azure 门户的“保存的搜索”下显示。  每个警报也需要一个保存的搜索。   
+将[保存的搜索](../log-analytics/log-analytics-queries.md)纳入解决方案后，用户可查询由解决方案收集的数据。  保存的搜索将在 Azure 门户的“保存的搜索”下显示。  每个警报也需要一个保存的搜索。   
 
-[Log Analytics 保存的搜索](../log-analytics/log-analytics-log-searches.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
+[Log Analytics 保存的搜索](../log-analytics/log-analytics-queries.md)资源的类型为 `Microsoft.OperationalInsights/workspaces/savedSearches` 且具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

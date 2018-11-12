@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577317"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233008"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>在市场中发展业务 
 在 AppSource 或 Azure 市场中发布产品/服务后，可将列表用作与 Microsoft 联合开展市场推广 (GTM) 活动的启动平台。 例如，把流量引向自己的市场产品/服务及培养市场潜在顾客就是加速业务增长的好方法。 
@@ -229,7 +229,7 @@ MPN 提供了以下方面的指导：
 
 | 优点 | 资源 |
 |:--- |:--- |
-| 利用核心权益 | 作为 Microsoft 合作伙伴网络的成员，你会收到一系列核心权益，既省时又省钱。 这些权益可能还有助于加强你的能力，让你更好地为客户服务，并建立各种联系，充分发挥你的业务潜能。<br>有关核心权益的详细信息，请访问[核心权益和要求](http://partner.microsoft.com/membership/core-benefits)。 |
+| 利用核心权益 | 作为 Microsoft 合作伙伴网络的成员，你会收到一系列核心权益，既省时又省钱。 这些权益可能还有助于加强你的能力，让你更好地为客户服务，并建立各种联系，充分发挥你的业务潜能。<br>有关核心权益的详细信息，请访问[核心权益和要求](https://partner.microsoft.com/membership/core-benefits)。 |
 | 赢得云平台资格 | 赢得有助于让你在其他 Microsoft 合作伙伴中脱颖而出的资格。 获得某种 Competency 还表明你在市场方面的技术专长和所获得的客户成功。 资格是加入许多关键合作伙伴计划（如联合销售）的先决条件。<br> 有关云平台资格的详细信息，请访问[云平台资格](https://partner.microsoft.com/membership/cloud-platform-competency)。 |
 | 做好 IP 联合销售准备 | 你可能有资格参加 IP 联合销售就绪计划，这让你能够与 Microsoft 销售人员和其他合作伙伴直接协作，共同发展目标客户及完成客户策划。 Microsoft 销售人员可以在销售人员解决方案目录中看到你的解决方案。 Microsoft 销售人员会竭诚与你协作，开创双赢局面。<br> 有关“联合销售就绪性”计划的详细信息（包括资格要求），请访问[促进业务发展](https://partner.microsoft.com/reach-customers/promote-your-business)。 |
 

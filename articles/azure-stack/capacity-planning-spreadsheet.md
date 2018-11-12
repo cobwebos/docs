@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: ec4d8ef43510c07e73ab18de227176d3c282b8e1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3b07485d4168e38736c12a74b0d36bcc8a276748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740835"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233059"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack 容量计划程序
 Azure Stack 容量规划器是用于 Azure Stack 资源容量规划电子表格。 容量规划器为您提供的功能设计各种分配的计算资源，并查看如何跨多个选中的硬件产品/服务适合这些。 下面提供了详细介绍了如何使用 Azure Stack 计算器。
 
 ## <a name="worksheet-descriptions"></a>工作表说明
-下面是简要总结了可以从下载的 Azure Stack 容量规划器电子表格中包含的工作表[ http://aka.ms/azstackcapacityplanner ](http://aka.ms/azstackcapacityplanner):
+下面是简要总结了可以从下载的 Azure Stack 容量规划器电子表格中包含的工作表[ http://aka.ms/azstackcapacityplanner ](https://aka.ms/azstackcapacityplanner):
 
 |选项卡名称|说明|
 |-----|-----|

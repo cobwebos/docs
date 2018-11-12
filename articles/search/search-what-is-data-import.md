@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: b518d86d5cb08f85beecd4afe30efc9e4f70e1f7
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371462"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249772"
 ---
 # <a name="indexing-in-azure-search"></a>在 Azure 搜索中编制索引
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "43371462"
 
 + [Blob 存储](search-howto-indexing-azure-blob-storage.md)
 + [表存储](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](http://aka.ms/documentdb-search-indexer)
++ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
 + [Azure VM 上的 Azure SQL 数据库和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。 

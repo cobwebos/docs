@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524536"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231357"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>使用 RA-GRS 设计高度可用的应用程序
 
@@ -149,7 +149,7 @@ ms.locfileid: "39524536"
 
 可使用三个主要选项监视主要区域中的重试频率，以便确定何时切换到次要区域并将应用程序更改为在只读模式下运行。
 
-*   为传递到存储请求的 [**OperationContext**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) 对象上的[**重试**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+*   为传递到存储请求的 [**OperationContext**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) 对象上的[**重试**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ ms.locfileid: "39524536"
     };
     ```
 
-*   在自定义重试策略的 [**Evaluate**](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
+*   在自定义重试策略的 [**Evaluate**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

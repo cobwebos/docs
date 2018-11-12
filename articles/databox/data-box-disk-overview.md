@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/04/2018
+ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 322c398bd6384821697e2b672825cc0805eb43ad
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229605"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "49092892"
 
 > [!IMPORTANT]
 > - Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> - 需要注册此服务。 若要注册，请转到[预览门户](http://aka.ms/azuredataboxfromdiskdocs)。
+> - 需要注册此服务。 若要注册，请转到[预览门户](https://aka.ms/azuredataboxfromdiskdocs)。
 > - 在预览期，Data Box 磁盘可以寄送到美国和欧盟的客户。 有关详细信息，请参阅[适用区域](#region-availability)。
 
 ## <a name="use-cases"></a>用例
@@ -112,7 +112,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 ## <a name="pricing"></a>定价
 
-在预览期，Data Box 磁盘免费提供。 Data Box 磁盘推出正式版后，价格政策可能会变化。
+有关定价的信息，请访问[预览版定价页](https://azure.microsoft.com/pricing/details/storage/databox/disk/)。
 
 ## <a name="next-steps"></a>后续步骤
 
