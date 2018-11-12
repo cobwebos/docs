@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041704"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014017"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analytics 工作区中。  从每个源收集的数据由所配置的数据源定义。  Log Analytics 中的数据以一组记录的形式存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
 
 ![Log Analytics - 数据收集](./media/log-analytics-data-sources/overview.png)
 
-虽然[管理解决方案](log-analytics-add-solutions.md)同样从连接的数据源收集数据并在 Log Analytics 中创建记录，但数据源还是有别于管理解决方案的。  除了收集数据外，解决方案通常还包括日志搜索和视图，以帮助你分析特定应用程序或服务的操作。
+虽然[管理解决方案](../monitoring/monitoring-solutions.md)同样从连接的数据源收集数据并在 Log Analytics 中创建记录，但数据源还是有别于管理解决方案的。  除了收集数据外，解决方案通常还包括日志搜索和视图，以帮助你分析特定应用程序或服务的操作。
 
 
 ## <a name="summary-of-data-sources"></a>数据源概要介绍
@@ -68,5 +68,5 @@ Log Analytics 所收集的所有数据都作为记录存储在工作区中。  �
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[解决方案](../monitoring/monitoring-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到工作区中。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
-* 配置[警报](log-analytics-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
+* 配置[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7cea11f448f20ace2dd50454834e60ce3a3c3b70
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: e1ace09ba293cf80b2dbbe8f746eb7fd5bc8d7cb
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584262"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036387"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>教程： 配置 Azure 和 Azure Stack 的应用程序的混合云标识
 
@@ -74,7 +74,7 @@ ms.locfileid: "47584262"
 若要使用代码连接到 Azure Stack，请使用 Azure 资源管理器终结点 API 来获取 Azure Stack 安装的身份验证和 Graph 终结点，然后使用 REST 请求进行身份验证。 可在 [GitHub](https://github.com/shriramnat/HybridARMApplication) 中找到示例客户端应用程序。
 
 >[!Note]
->除非所选语言的 Azure SDK 支持 Azure API 配置文件，否则 SDK 可能无法与 Azure Stack 一起使用。 有关 Azure API 配置文件的详细信息，请参阅[管理 API 版本配置文件](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles)一文。
+>除非所选语言的 Azure SDK 支持 Azure API 配置文件，否则 SDK 可能无法与 Azure Stack 一起使用。 有关 Azure API 配置文件的详细信息，请参阅[管理 API 版本配置文件](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,26 +10,28 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: erhopf
-ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645005"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037441"
 ---
 # <a name="what-is-translator-text-api"></a>什么是文本翻译 API？
 
-文本翻译 API 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供 [60 多种语言](languages.md)的多语言用户体验。 它可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行文本到文本语言翻译。
+文本翻译 API 可以轻松地集成到应用程序、网站、工具和解决方案中。 它允许你使用 [60 多种语言](languages.md)添加多语言用户体验，可以在任何硬件平台上使用，以及在任何操作系统中使用，用于文本到文本语言翻译。
 
 文本翻译 API 是云中机器学习和 AI 算法的 Azure [认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合的一部分，可随时在开发项目中使用。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
-Microsoft Translator 是基于云的机器翻译服务。 此服务的核心是文本翻译 API 和[语音翻译 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation)，这些 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
+Microsoft Translator 是基于云的机器翻译服务。 核心服务是文本翻译 API，该 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
 
-语音翻译功能可以通过[认知服务语音预览版](https://docs.microsoft.com/azure/cognitive-services/speech-service/)获取，它将现有的语音翻译 API、必应语音 API 和自定义语音服务（预览版）组合成了一项统一的可完全自定义的服务。  
+语音翻译由文本翻译 API 提供支持，也通过 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/)提供。 它将语音翻译 API、必应语音 API 和自定义语音服务（预览版）的功能组合成了一项统一的可完全自定义的服务。 语音服务将替换语音翻译 API，后者自 2019 年 10 月 15 日起停用。
 
-详细了解 [Microsoft Translator 服务](https://www.microsoft.com/en-us/translator/home.aspx)
+## <a name="language-support"></a>语言支持
+
+Microsoft Translator 为翻译、直译、语言检测和字典提供多语言支持。 请参阅[语言支持](language-support.md)以获取完整的列表，或者通过 [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) 以编程方式访问列表。  
 
 ## <a name="language-customization"></a>语言自定义
 

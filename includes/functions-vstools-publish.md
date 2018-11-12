@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 08/26/2018
+ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f3fa6c75fdaf30d13231bc3072bd671614c9a668
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b290cada86401d91313939a7673998810cb82551
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650632"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51028127"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
 
@@ -22,6 +22,9 @@ ms.locfileid: "49650632"
     ![选取发布目标](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
     启用“从 Zip 运行”后，Azure 中的函数应用会直接从部署包运行。 有关详细信息，请参阅[从包文件运行 Azure Functions](../articles/azure-functions/run-functions-from-deployment-package.md)。
+     
+    >[!CAUTION]
+    >选择“选择现有”时，Azure 中现有函数应用中的所有文件都将被本地项目中的文件覆盖。 仅在将更新重新发布到现有函数应用时才使用此选项。
 
 3. 如果尚未将 Visual Studio 连接到 Azure 帐户，请选择“添加帐户...”。
 

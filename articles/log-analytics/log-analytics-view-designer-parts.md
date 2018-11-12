@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f3c24dbc0f5bb4d5b595799da4f1212b26f8c02a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419769"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016754"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics 中视图设计器可视化部件的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -363,4 +363,4 @@ ms.locfileid: "50419769"
 | 颜色 |指示阈值的颜色。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关 [日志搜索](log-analytics-log-searches.md) 的信息以支持可视化部分中的查询。
+* 了解有关 [日志搜索](log-analytics-queries.md) 的信息以支持可视化部分中的查询。

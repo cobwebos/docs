@@ -3,18 +3,18 @@ title: 适用于 HDInsight 上的 ML Services 的计算上下文选项 - Azure
 description: 了解可供 HDInsight 上的 ML Services 用户使用的不同计算上下文选项
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: b956a641c6e6797efde98e7b613e6ce91023fc09
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e132ceb857b05f24664c93729dd43d75b5a19ac2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042051"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015054"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
 

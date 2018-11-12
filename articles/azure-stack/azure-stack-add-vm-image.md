@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575807"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036583"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
@@ -30,16 +30,16 @@ ms.locfileid: "45575807"
 
 ## <a name="add-a-vm-image-through-the-portal"></a>通过门户添加 VM 映像
 
-> [!NOTE]
+> [!NOTE]  
 > 使用此方法时，必须单独创建市场项。
 
 映像必须能够通过 Blob 存储 URI 进行引用。 以 VHD（不是 VHDX）格式准备 Windows 或 Linux 操作系统映像，然后将映像上传到 Azure 或 Azure Stack 中的存储帐户。 如果映像已上传到 Azure 或 Azure Stack 中的 Blob 存储，则可跳过步骤 1。
 
 1. [将 Windows VM 映像上传到 Azure 以进行资源管理器部署](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)；对于 Linux 映像，请按[在 Azure Stack 上部署 Linux 虚拟机](azure-stack-linux.md)中的说明操作。 在上传映像之前，必须考虑以下因素：
 
-   - Azure Stack 仅支持生成一 （1) VM 中的固定磁盘 VHD 格式。 固定格式结构的逻辑磁盘以线性方式在文件中，使磁盘偏移量 X 存储在 blob 偏移量 X。在 blob 末尾小脚注，描述了 VHD 的属性。 若要确认磁盘是否为固定格式，请使用 [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell 命令。  
+   - Azure Stack 仅支持采用固定磁盘 VHD 格式的第一代 VM。 固定格式在文件内对逻辑磁盘采用线性结构，使磁盘偏移量 X 存储在 Blob 偏移量 X 的位置。在 Blob 末尾有一小段脚注，描述了 VHD 的属性。 若要确认磁盘是否为固定格式，请使用 [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell 命令。  
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     >  Azure Stack 不支持动态磁盘 VHD。 重设附加到 VM 的动态磁盘的大小会导致 VM 处于故障状态。 若要解决此问题，请删除 VM，但不删除 VM 的磁盘（存储帐户中的 VHD Blob）。 然后将 VHD 从动态磁盘转换为固定磁盘，接着重新创建虚拟机。
 
    * 将映像上传到 Azure Stack Blob 存储比上传到 Azure Blob 存储更高效，因为将映像推送到 Azure Stack 映像存储库的时间更短。
@@ -48,13 +48,13 @@ ms.locfileid: "45575807"
 
    * 记下在其中上传映像的 Blob 存储 URI。 Blob 存储 URI 的格式如下：*&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd。
 
-   * 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”，然后选择“访问策略”。 也可改为生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤可确保 blob 是可用于将这添加为映像。 如果该 blob 不进行匿名访问，VM 映像将创建到处于失败状态。
+   * 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”，然后选择“访问策略”。 也可改为生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤确保 blob 可用于将该项添加为映像。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
 
    ![转到存储帐户 Blob](./media/azure-stack-add-vm-image/image1.png)
 
    ![将 Blob 访问权限设置为公共](./media/azure-stack-add-vm-image/image2.png)
 
-2. 以操作员身份登录到 Azure Stack。 在菜单中，选择**所有服务**。 然后，在**ADMINISTRATION**类别中，选择**计算** > **VM 映像** > **添加**。
+2. 以操作员身份登录到 Azure Stack。 在菜单中，选择“所有服务”。 然后，在“管理”类别中，选择“计算” > “VM 映像” > “添加”。
 
 3. 在“添加 VM 映像”下，输入虚拟机映像的发布者、产品/服务、SKU 和版本。 这些名称段是指资源管理器模板中的 VM 映像。 确保正确地选择 **osType** 值。 对于“OS 磁盘 Blob URI”，请输入在其中上传了映像的 Blob URI。 然后选择“创建”，开始创建 VM 映像。
 
@@ -210,7 +210,7 @@ ms.locfileid: "45575807"
     例如： `1.0.0`  
     VM 映像的版本，供用户在部署 VM 映像时使用。 此版本采用以下格式 *\#。\#。\#* 例如，**1.0.0**。 此字段不得包含空格或其他特殊字符。  
     
-    有关删除 AzsPlatformImage cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
+    有关 Remove-AzsPlatformImage cmdlet 的详细信息，请参阅 Microsoft PowerShell [Azure Stack 操作员模块文档](https://docs.microsoft.com/powershell/module/)。
 
 ## <a name="next-steps"></a>后续步骤
 
