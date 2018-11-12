@@ -2,19 +2,19 @@
 title: 在 HDInsight 中将 MapReduce 和 SSH 连接配合使用
 description: 了解如何在 HDInsight 上的 Hadoop 中使用 SSH 运行 MapReduce 作业。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
-ms.openlocfilehash: 71472edf74fba433f24b83362b2880575b73ce85
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 8c3fb1a5474d0546dc06dfea681e6229b563ccc0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047317"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014340"
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Hadoop 配合使用
 
