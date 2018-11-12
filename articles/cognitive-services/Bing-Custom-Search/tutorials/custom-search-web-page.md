@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815369"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279205"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -79,7 +79,7 @@ ms.locfileid: "48815369"
 
 ## <a name="add-pinned-entries"></a>添加固定条目
 
-若要将特定网页固定到搜索结果顶部，可将该网页和查询术语添加到“固定”选项卡。“固定”选项卡包含网页和查询术语的配对列表，用于指定显示为特定查询最匹配结果的网页。 仅当用户的查询字符串与基于 pin 的匹配条件的 pin 查询字符串相匹配时，才会固定网页。 [了解详细信息](../define-your-custom-view.md#pin-to-top)。
+若要将特定网页固定到搜索结果顶部，可将该网页和查询术语添加到“固定”选项卡。“固定”选项卡包含网页和查询术语的配对列表，用于指定显示为特定查询最匹配结果的网页。 仅当用户的查询字符串与基于 pin 的匹配条件的 pin 查询字符串相匹配时，才会固定网页。 只有编制索引的网页才会显示在搜索中。 有关详细信息，请参阅[定义自定义视图](../define-your-custom-view.md#pin-to-top)。
 
 1. 在“配置”页上，单击“固定”选项卡，输入希望作为最匹配结果返回的网页及查询术语。  
   
