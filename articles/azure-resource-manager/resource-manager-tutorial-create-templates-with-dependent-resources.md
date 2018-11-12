@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5e198310dd18cc8574b5510b9318ff4badaffca3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2b8cc34e5ace5e252acae94a16858a69edc63a1c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646292"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240233"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
 
@@ -29,10 +29,8 @@ ms.locfileid: "49646292"
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
-> * 设置安全环境
 > * 打开快速入门模板
 > * 浏览模板
-> * 编辑参数文件
 > * 部署模板
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -41,8 +39,8 @@ ms.locfileid: "49646292"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)。  请参阅[安装扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
-* 若要防止密码喷洒攻击，请为虚拟机管理员帐户生成一个密码。 示例如下：
+* 包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)。  请参阅[安装扩展](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```azurecli-interactive
     openssl rand -base64 32
@@ -66,37 +64,45 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 浏览此部分的模板时，请尝试回答以下问题：
 
-- 在此模板中定义了多少 Azure 资源？
-- 其中一个资源是 Azure 存储帐户。  该定义是否与上一教程中使用的定义类似？
-- 对于此模板中定义的资源，能否找到模板参考？
-- 能否找到资源的依赖项？
+* 在此模板中定义了多少 Azure 资源？
+* 其中一个资源是 Azure 存储帐户。  该定义是否与上一教程中使用的定义类似？
+* 对于此模板中定义的资源，能否找到模板参考？
+* 能否找到资源的依赖项？
 
 1. 在 Visual Studio Code 中折叠元素，直到只能在 **resources** 中看到第一级元素和第二级元素：
 
     ![Visual Studio Code Azure 资源管理器模板](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    有五个通过此模板定义的资源。
-2. 展开第一个资源。 它是一个存储帐户。 此定义应该与上一教程开头使用的定义相同。
+    有五个通过此模板定义的资源：
+
+    * `Microsoft.Storage/storageAccounts`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
+    * `Microsoft.Network/publicIPAddresses`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
+    * `Microsoft.Network/virtualNetworks`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
+    * `Microsoft.Network/networkInterfaces`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
+    * `Microsoft.Compute/virtualMachines`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+
+    在自定义模板之前，不妨对其进行一些基本的了解。
+
+2. 展开第一个资源。 它是一个存储帐户。 将资源定义和[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)进行比较。
 
     ![Visual Studio Code Azure 资源管理器模板存储帐户定义](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. 展开第二个资源。 资源类型为 **Microsoft.Network/publicIPAddresses**。 若要查找模板参考，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)，在“按标题筛选”字段中输入“单个公共 IP 地址”或“多个公共 IP 地址”。 将资源定义和模板参考进行比较。
+3. 展开第二个资源。 资源类型为 `Microsoft.Network/publicIPAddresses`。 将资源定义和[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)进行比较。
 
     ![Visual Studio Code Azure 资源管理器模板公共 IP 地址定义](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. 重复上一步，找到在此模板中定义的其他资源的模板参考。  将资源定义和参考进行比较。
-5. 展开第四个资源：
+4. 展开第四个资源。 资源类型为 `Microsoft.Network/networkInterfaces`：  
 
     ![Visual Studio Code Azure 资源管理器模板 dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
-    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 在本示例中，此资源为 networkInterface。  它依赖于两个其他的资源：
+    使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 此资源依赖于两个其他的资源：
 
-    * publicIPAddress
-    * virtualNetwork
+    * `Microsoft.Network/publicIPAddresses`
+    * `Microsoft.Network/virtualNetworks`
 
-6. 展开第五个资源。 此资源为虚拟机。 它依赖于两个其他的资源：
+5. 展开第五个资源。 此资源为虚拟机。 它依赖于两个其他的资源：
 
-    * storageAccount
-    * networkInterface
+    * `Microsoft.Storage/storageAccounts`
+    * `Microsoft.Network/networkInterfaces`
 
 下图演示了此模板的资源和依赖项信息：
 
@@ -129,22 +135,23 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
     ```bash
     cat azuredeploy.json
     ```
-7. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要增强安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
+7. 在 Cloud Shell 中运行以下 PowerShell 命令。 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 请参阅[先决条件](#prerequisites)。
 
     ```azurepowershell
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
-    $adminPassword = Read-Host -Prompt "Enter the admin password"
-    $dnsLablePrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+    $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
-        -adminUsername = $adminUsername `
-        -adminPassword = $adminPassword `
-        -dnsLabelPrefix = $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json 
+        -adminUsername $adminUsername `
+        -adminPassword $adminPassword `
+        -dnsLabelPrefix $dnsLabelPrefix `
+        -TemplateFile azuredeploy.json
     ```
 8. 运行以下 PowerShell 命令，列出新建的虚拟机：
 
@@ -155,7 +162,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     虚拟机名称在模板中硬编码为 **SimpleWinVM**。
 
-9. 登录到虚拟机，测试管理员的凭据。 
+9. 通过 RDP 连接到虚拟机，验证虚拟机是否已成功创建。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -170,7 +177,5 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 本教程介绍如何通过开发和部署模板来创建虚拟机、虚拟网络和依赖资源。 若要了解如何根据条件部署 Azure 资源，请参阅：
 
-
 > [!div class="nextstepaction"]
 > [使用条件](./resource-manager-tutorial-use-conditions.md)
-

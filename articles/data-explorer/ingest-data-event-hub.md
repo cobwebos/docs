@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394172"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210442"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -27,7 +27,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 * [测试群集和数据库](create-cluster-database-portal.md)
 
-* 生成数据的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+* 生成数据并将其发送到事件中心的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
 
 * 运行示例应用的 [Visual Studio 2017 版本 15.3.2 或更高版本](https://www.visualstudio.com/vs/)
 
@@ -37,9 +37,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器 (ARM) 模板在 Azure 门户中执行此操作。
+在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
 
-1. 选择下面的按钮以开始部署。
+1. 使用下面的按钮启动部署。 建议在另一标签页或窗口中打开链接，以便按本文中的剩余步骤操作。
 
     [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -69,13 +69,15 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 选择“购买”，确认你要在订阅中创建资源。
 
-1. 在工具栏上选择“通知”（钟形图标）以监视预配过程。 部署成功可能需要几分钟时间，但现在可以继续执行下一步。
+1. 在工具栏上选择“通知”以监视预配过程。 部署成功可能需要几分钟时间，但现在可以继续执行下一步。
+
+    ![通知](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>在 Azure 数据资源管理器中创建目标表
 
 现在，在 Azure 数据资源管理器中创建一个表，事件中心会向该表发送数据。 在“先决条件”中预配的群集和数据库中创建表。
 
-1. 在 Azure 门户中的群集下，选择“查询”。
+1. 在 Azure 门户中导航到群集，然后选择“查询”。
 
     ![查询应用程序链接](media/ingest-data-event-hub/query-explorer-link.png)
 
@@ -92,11 +94,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    此命令将传入的 JSON 数据映射到创建表时使用的列名称和数据类型。
+    此命令将传入的 JSON 数据映射到表 (TestTable) 的列名称和数据类型。
 
 ## <a name="connect-to-the-event-hub"></a>连接到事件中心
 
-现在，从 Azure 数据资源管理器连接到事件中心，以便流入事件中心的数据流式传输到测试表。
+现在，请通过 Azure 数据资源管理器连接到事件中心。 当此连接建立好以后，流入事件中心的数据会流式传输到此前在本文中创建的测试表。
 
 1. 在工具栏上选择“通知”，以验证事件中心部署是否成功。
 
@@ -118,27 +120,27 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
     | 事件中心 | test-hub | 你创建的事件中心。 |
     | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
+    | 目标表 | 让“我的数据包含路由信息”保持取消选中状态。 | 有两个路由选项：静态和动态。 对于此快速入门，请使用静态路由（默认），以便指定表名、文件格式和映射。 也可使用动态路由，其中的数据包含必需的路由信息。 |
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
     | 数据格式 | *JSON* | 支持 JSON 和 CSV 格式。 |
-    | 列映射 | TestMapping | 在“TestDatabase”中创建的映射。 |
-
-    对于此快速入门，从事件中心使用静态路由，在事件中心可指定表名、文件格式和映射。 还可以使用动态路由，应用程序在其中设置这些属性。
+    | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
+    | | |
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
-运行应用以生成示例数据时，需要事件中心命名空间的连接字符串。
+运行在先决条件中列出的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)时，需要事件中心命名空间的连接字符串。
 
 1. 在创建的事件中心命名空间下，选择“共享访问策略”，然后选择“RootManageSharedAccessKey”。
 
     ![共享访问策略](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. 复制“连接字符串 - 主键”。
+1. 复制“连接字符串 - 主键”。 请将其粘贴到下一节。
 
     ![连接字符串](media/ingest-data-event-hub/connection-string.png)
 
 ## <a name="generate-sample-data"></a>生成示例数据
 
-现在，Azure 数据资源管理器和事件中心已连接，可以使用下载的示例应用来生成数据。
+现在，Azure 数据资源管理器和事件中心已连接，可以使用下载的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)来生成数据。
 
 1. 在 Visual Studio 中打开示例应用解决方案。
 
@@ -156,20 +158,22 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="review-the-data-flow"></a>查看数据流
 
+应用生成数据以后，现在可以看到该数据从事件中心流到群集中的表。
+
 1. 在 Azure 门户中的事件中心下，可以看到应用运行时活动的峰值。
 
     ![事件中心图](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. 返回应用并在其到达消息 99 后将其停止。
+1. 返回到示例应用并在其到达消息 99 后将其停止。
 
-1. 在测试数据库中运行以下查询，以检查到目前为止已向数据库发送的消息数。
+1. 若要检查到目前为止已向数据库发送的消息数，请在测试数据库中运行以下查询。
 
     ```Kusto
     TestTable
     | count
     ```
 
-1. 运行以下查询以查看消息的内容。
+1. 若要查看消息的内容，请运行以下查询。
 
     ```Kusto
     TestTable

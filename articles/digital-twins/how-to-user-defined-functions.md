@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 7fbaff5ed1b60a4434ba2eb0c78c6aa1f3fd6645
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323706"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215491"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中使用用户定义的函数
 
@@ -27,8 +27,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourInstanceName` | Azure 数字孪生实例的名称 |
-| `yourLocation` | 托管实例的服务器区域 |
+| *yourInstanceName* | Azure 数字孪生实例的名称 |
+| *yourLocation* | 托管实例的服务器区域 |
 
 ## <a name="client-library-reference"></a>客户端库参考
 
@@ -50,9 +50,9 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management
 - `SensorDevice`
 - `SensorSpace`
 
-对于数据类型值为 `Temperature` 的所有传感器遥测事件，以下示例匹配程序的计算结果都为 true。 可以在用户定义的函数上创建多个匹配程序。
+对于数据类型值为 `"Temperature"` 的所有传感器遥测事件，以下示例匹配程序的计算结果都为 true。 可以在用户定义的函数上创建多个匹配程序。
 
-```text
+```plaintext
 POST https://yourManagementApiUrl/api/v1.0/matchers
 {
   "Name": "Temperature Matcher",
@@ -70,8 +70,8 @@ POST https://yourManagementApiUrl/api/v1.0/matchers
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourManagementApiUrl` | 管理 API 的完整 URL 路径  |
-| `yourSpaceIdentifier` | 托管实例的服务器区域 |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| *yourSpaceIdentifier* | 托管实例的服务器区域 |
 
 ## <a name="create-a-user-defined-function-udf"></a>创建用户定义函数 (UDF)
 
@@ -90,7 +90,7 @@ POST https://yourManagementApiUrl/api/v1.0/userdefinedfunctions with Content-Typ
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourManagementApiUrl` | 管理 API 的完整 URL 路径  |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
 
 正文：
 
@@ -118,14 +118,14 @@ function process(telemetry, executionContext) {
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourSpaceIdentifier` | 空间标识符  |
-| `yourMatcherIdentifier` | 要使用的匹配程序的 ID |
+| *yourSpaceIdentifier* | 空间标识符  |
+| yourMatcherIdentifier | 要使用的匹配程序的 ID |
 
 ### <a name="example-functions"></a>示例函数
 
-直接针对数据类型为 `Temperature`（也就是 sensor.DataType）的传感器设置传感器遥测读数：
+直接针对数据类型为 **Temperature**（也就是 `sensor.DataType`）的传感器设置传感器遥测读数：
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Get sensor metadata
@@ -139,9 +139,21 @@ function process(telemetry, executionContext) {
 }
 ```
 
-如果传感器遥测读数超过预定义的阈值，则记录消息。 如果数字孪生实例上启用了诊断设置，则会转发用户定义函数中的日志：
+*telemetry* 参数公开了 **SensorId** 和 **Message** 属性（对应于传感器发送的消息）。 *ExecutionContext* 参数公开了以下属性：
 
-```javascript
+```csharp
+var executionContext = new UdfExecutionContext
+{
+    EnqueuedTime = request.HubEnqueuedTime,
+    ProcessorReceivedTime = request.ProcessorReceivedTime,
+    UserDefinedFunctionId = request.UserDefinedFunctionId,
+    CorrelationId = correlationId.ToString(),
+};
+```
+
+在下一示例中，如果传感器遥测读数超过预定义的阈值，则记录消息。 如果数字孪生实例上启用了诊断设置，则还会转发用户定义函数中的日志：
+
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -156,7 +168,7 @@ function process(telemetry, executionContext) {
 
 如果温度高于预定义常量，以下代码会触发通知。
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -184,7 +196,7 @@ function process(telemetry, executionContext) {
 
 我们需要创建角色分配，让用户定义的函数依据其执行。 如果不这样做，用户定义的函数就没有适当的权限与管理 API 交互，进而无法对图形对象执行操作。 用户定义的函数所执行的操作也需遵循数字孪生管理 API 内基于角色的访问控制。 可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
 
-- 查询角色，并获取要分配给 UDF 的角色的 ID；将它传递给下面的 RoleId。
+1. 查询角色，并获取要分配给 UDF 的角色的 ID；将它传递给下面的 **RoleId**。
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/system/roles
@@ -192,10 +204,11 @@ GET https://yourManagementApiUrl/api/v1.0/system/roles
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourManagementApiUrl` | 管理 API 的完整 URL 路径  |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
 
-- ObjectId 就是先前创建的 UDF ID
-- 使用空间的完整路径来查询空间，以查找 `Path`，并复制 `spacePaths` 值。 创建 UDF 角色分配时，将该值粘贴到下面的 Path 中
+2. **ObjectId** 就是先前创建的 UDF ID。
+3. 通过使用 `fullpath` 查询你的空间来查找 **Path** 的值。
+4. 复制返回的 `spacePaths` 值。 稍后你将使用该值。
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
@@ -203,8 +216,10 @@ GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=ful
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourManagementApiUrl` | 管理 API 的完整 URL 路径  |
-| `yourSpaceName` | 要使用的空间名称 |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| *yourSpaceName* | 要使用的空间名称 |
+
+4. 现在，将返回的 `spacePaths` 值粘贴到 **Path** 中以创建 UDF 角色分配。
 
 ```plaintext
 POST https://yourManagementApiUrl/api/v1.0/roleassignments
@@ -218,10 +233,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | 自定义属性名称 | 替换为 |
 | --- | --- |
-| `yourManagementApiUrl` | 管理 API 的完整 URL 路径  |
-| `yourDesiredRoleIdentifier` | 所需角色的标识符 |
-| `yourUserDefinedFunctionId` | 要使用的 UDF 的 ID |
-| `yourAccessControlPath` | 访问控制路径 |
+| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
+| *yourDesiredRoleIdentifier* | 所需角色的标识符 |
+| yourUserDefinedFunctionId | 要使用的 UDF 的 ID |
+| *yourAccessControlPath* | 访问控制路径 |
 
 ## <a name="send-telemetry-to-be-processed"></a>发送要处理的遥测数据
 
@@ -239,9 +254,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | 空间标识符 |
+| *id*  | `guid` | 空间标识符 |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
@@ -249,9 +264,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | 传感器标识符 |
+| *id*  | `guid` | 传感器标识符 |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
@@ -259,9 +274,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | 设备标识符 |
+| *id* | `guid` | 设备标识符 |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
 
@@ -269,10 +284,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | 传感器标识符 |
-| dataType  | `string` | 传感器数据类型 |
+| *sensorId*  | `guid` | 传感器标识符 |
+| *dataType*  | `string` | 传感器数据类型 |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
 
@@ -280,10 +295,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
-| valueName  | `string` | 空间属性名称 |
+| *spaceId*  | `guid` | 空间标识符 |
+| *valueName* | `string` | 空间属性名称 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -291,10 +306,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | 传感器标识符 |
-| dataType  | `string` | 传感器数据类型 |
+| *sensorId* | `guid` | 传感器标识符 |
+| *dataType* | `string` | 传感器数据类型 |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
 
@@ -302,10 +317,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
-| valueName  | `string` | 空间属性名称 |
+| *spaceId* | `guid` | 空间标识符 |
+| *valueName* | `string` | 空间属性名称 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -313,9 +328,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
+| *spaceId* | `guid` | 空间标识符 |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -323,9 +338,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
+| *spaceId* | `guid` | 空间标识符 |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -333,9 +348,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
+| *spaceId* | `guid` | 空间标识符 |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -343,9 +358,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | 设备标识符 |
+| *deviceId* | `guid` | 设备标识符 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -353,9 +368,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| childSpaceId  | `guid` | 空间标识符 |
+| *childSpaceId* | `guid` | 空间标识符 |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -363,9 +378,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | 传感器标识符 |
+| *childSensorId* | `guid` | 传感器标识符 |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -373,9 +388,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| childDeviceId  | `guid` | 设备标识符 |
+| *childDeviceId* | `guid` | 设备标识符 |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -383,9 +398,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | 传感器标识符 |
+| *childSensorId* | `guid` | 传感器标识符 |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
 
@@ -393,10 +408,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
-| propertyName  | `string` | 空间属性名称 |
+| *spaceId* | `guid` | 空间标识符 |
+| *propertyName* | `string` | 空间属性名称 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -404,10 +419,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | 传感器标识符 |
-| propertyName  | `string` | 传感器属性名称 |
+| *sensorId* | `guid` | 传感器标识符 |
+| *propertyName* | `string` | 传感器属性名称 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -415,10 +430,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | 设备标识符 |
-| propertyName  | `string` | 设备属性名称 |
+| *deviceId* | `guid` | 设备标识符 |
+| *propertyName* | `string` | 设备属性名称 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -426,11 +441,11 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | 传感器标识符 |
-| dataType  | `string` | 传感器数据类型 |
-| 值  | `string` | 值 |
+| *sensorId* | `guid` | 传感器标识符 |
+| *dataType*  | `string` | 传感器数据类型 |
+| *值*  | `string` | 值 |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -438,11 +453,11 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空间标识符 |
-| dataType  | `string` | 数据类型 |
-| 值  | `string` | 值 |
+| *spaceId* | `guid` | 空间标识符 |
+| *dataType* | `string` | 数据类型 |
+| *值* | `string` | 值 |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -450,9 +465,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| message  | `string` | 要记录的消息 |
+| *message* | `string` | 要记录的消息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -460,11 +475,11 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 **类型**：全局函数
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| topologyObjectId  | `Guid` | 图形对象标识符（例如： 空间/传感器/设备 ID）|
-| topologyObjectType  | `string` | （例如： 空间/传感器/设备）|
-| payload  | `string` | 与通知一起发送的 json 有效负载 |
+| *topologyObjectId*  | `guid` | 图形对象标识符（例如： 空间/传感器/设备 ID）|
+| *topologyObjectType*  | `string` | （例如： 空间/传感器/设备）|
+| *payload*  | `string` | 与通知一起发送的 JSON 有效负载 |
 
 ## <a name="return-types"></a>返回类型
 
@@ -501,33 +516,33 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 返回当前空间的扩展属性及其值。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
 返回当前空间的值。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 值的名称 |
+| *valueName* | `string` | 值的名称 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
 返回当前空间的历史值。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 值的名称 |
+| *valueName* | `string` | 值的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 发送具有指定有效负载的通知。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 json 有效负载 |
+| *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
 ### <a name="device"></a>设备
 
@@ -561,17 +576,17 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 返回当前设备的扩展属性及其值。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 发送具有指定有效负载的通知。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 json 有效负载 |
+| *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
 ### <a name="sensor"></a>传感器
 
@@ -609,9 +624,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 返回当前传感器的扩展属性及其值。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 扩展属性的名称 |
+| *propertyName* | `string` | 扩展属性的名称 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -625,9 +640,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 发送具有指定有效负载的通知。
 
-| Param  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 要包含在通知中的 json 有效负载 |
+| *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
 ### <a name="value"></a>值
 
