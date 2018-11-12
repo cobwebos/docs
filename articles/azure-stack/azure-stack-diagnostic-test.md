@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 1726b7d1ac6a4c39e7a8dab733644d01e5f3381e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: af601005c7c8bd8fa7fe335879991caa34187927
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957499"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236969"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>为 Azure Stack 运行验证测试
 
@@ -73,7 +73,7 @@ ms.locfileid: "50957499"
 | BackupShareCredential   | PSCredential    | 否       | NA      |
 
 
-Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关通用参数](http://go.microsoft.com/fwlink/?LinkID=113216)。 
+Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关通用参数](https://go.microsoft.com/fwlink/?LinkID=113216)。 
 
 ### <a name="examples-of-test-azurestack"></a>Test-AzureStack 的示例
 

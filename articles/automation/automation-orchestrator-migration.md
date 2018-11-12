@@ -9,21 +9,21 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f7050a034bea3a92376afbebb3b1489e61382a83
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194982"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237258"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
-[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) 中的 Runbook 基于专为 Orchestrator 编写的集成包中的活动，而 Azure 自动化中的 Runbook 则基于 Windows PowerShell。  Azure 自动化中的[图形 Runbook](automation-runbook-types.md#graphical-runbooks) 具有的外观类似于其活动用于表示 PowerShell cmdlet、子 Runbook 和资产的 Orchestrator Runbook。
+[System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) 中的 Runbook 基于专为 Orchestrator 编写的集成包中的活动，而 Azure 自动化中的 Runbook 则基于 Windows PowerShell。  Azure 自动化中的[图形 Runbook](automation-runbook-types.md#graphical-runbooks) 具有的外观类似于其活动用于表示 PowerShell cmdlet、子 Runbook 和资产的 Orchestrator Runbook。
 
-[System Center Orchestrator 迁移工具包](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all)包含有助于将 Runbook 从 Orchestrator 转换为 Azure 自动化的工具。  除了转换 Runbook 本身，还必须将包含 Runbook 所用活动的集成包转换为包含 Windows PowerShell cmdlet 的集成模块。  
+[System Center Orchestrator 迁移工具包](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all)包含有助于将 Runbook 从 Orchestrator 转换为 Azure 自动化的工具。  除了转换 Runbook 本身，还必须将包含 Runbook 所用活动的集成包转换为包含 Windows PowerShell cmdlet 的集成模块。  
 
 下面是将 Orchestrator Runbook 转换为 Azure 自动化的基本过程。  这每个步骤都在下面的相应部分进行了详细介绍。
 
-1. 下载包含本文讨论的工具和模块的 [System Center Orchestrator 迁移工具包](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all)。
+1. 下载包含本文讨论的工具和模块的 [System Center Orchestrator 迁移工具包](https://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all)。
 2. 将[标准活动模块](#standard-activities-module)导入 Azure 自动化中。  这包括标准 Orchestrator 活动的转换后版本，可供已转换的 Runbook 使用。
 3. 针对访问 System Center 的 Runbook 使用的集成包，将 [System Center Orchestrator 集成模块](#system-center-orchestrator-integration-modules)导入到 Azure 自动化中。
 4. 使用[集成包转换器](#integration-pack-converter)转换自定义的和第三方的集成包，并导入到 Azure 自动化中。
@@ -32,32 +32,32 @@ ms.locfileid: "34194982"
 7. 在本地的数据中心配置[混合 Runbook 辅助角色](#hybrid-runbook-worker)，运行将要访问本地资源、经转换的 Runbook。
 
 ## <a name="service-management-automation"></a>Service Management 自动化
-[Service Management Automation](http://technet.microsoft.com/library/dn469260.aspx) (SMA) 在本地数据中心（如 Orchestrator）运行 Runbook，并使用相同的集成模块（如 Azure 自动化）。 [Runbook 转换器](#runbook-converter)将 Orchestrator Runbook 转换为图形 Runbook，虽然 SMA 中并不支持图形 Runbook。  仍可将[标准活动模块](#standard-activities-module)和 [System Center Orchestrator 集成模块](#system-center-orchestrator-integration-modules)安装到 SMA，但是必须手动[重新编写 Runbook](http://technet.microsoft.com/library/dn469262.aspx)。
+[Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA) 在本地数据中心（如 Orchestrator）运行 Runbook，并使用相同的集成模块（如 Azure 自动化）。 [Runbook 转换器](#runbook-converter)将 Orchestrator Runbook 转换为图形 Runbook，虽然 SMA 中并不支持图形 Runbook。  仍可将[标准活动模块](#standard-activities-module)和 [System Center Orchestrator 集成模块](#system-center-orchestrator-integration-modules)安装到 SMA，但是必须手动[重新编写 Runbook](https://technet.microsoft.com/library/dn469262.aspx)。
 
 ## <a name="hybrid-runbook-worker"></a>混合 Runbook 辅助角色
 Orchestrator 中的 Runbook 存储在数据库服务器上，运行在 Runbook 服务器上，这两种服务器都位于本地数据中心。  Azure 自动化中的 Runbook 存储在 Azure 云中，并可使用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)运行在本地数据中心。  这是通常情况下运行从 Orchestrator 转换过来的 Runbook 的方式，因为这些 Runbook 是设计在本地服务器上运行的。
 
 ## <a name="integration-pack-converter"></a>集成包转换器
-集成包转换器会将使用 [Orchestrator 集成工具包 (OIT)](http://technet.microsoft.com/library/hh855853.aspx) 创建的集成包转换成基于 Windows PowerShell 的集成模块，该模块可导入 Azure 自动化或 Service Management Automation。  
+集成包转换器会将使用 [Orchestrator 集成工具包 (OIT)](https://technet.microsoft.com/library/hh855853.aspx) 创建的集成包转换成基于 Windows PowerShell 的集成模块，该模块可导入 Azure 自动化或 Service Management Automation。  
 
 运行集成包转换器时，系统会显示一个向导，可以通过该向导选择集成包 (.oip) 文件。  然后，该向导会列出该集成包中包括的活动，并允许选择要迁移的活动。  完成向导的操作后，向导会创建一个集成模块，其中包含原始集成包中每个活动的相应 cmdlet。
 
 ### <a name="parameters"></a>parameters
-集成包中活动的任何属性都将转换为集成模块中相应 cmdlet 的参数。  Windows PowerShell cmdlet 有一组可以用于所有 cmdlet 的[通用参数](http://technet.microsoft.com/library/hh847884.aspx)。  例如，-Verbose 参数会导致 cmdlet 输出关于其操作的详细信息。  cmdlet 的参数与通用参数不能有相同的名称。  如果某个活动的属性与通用参数具有相同的名称，向导会提示为参数提供另一个名称。
+集成包中活动的任何属性都将转换为集成模块中相应 cmdlet 的参数。  Windows PowerShell cmdlet 有一组可以用于所有 cmdlet 的[通用参数](https://technet.microsoft.com/library/hh847884.aspx)。  例如，-Verbose 参数会导致 cmdlet 输出关于其操作的详细信息。  cmdlet 的参数与通用参数不能有相同的名称。  如果某个活动的属性与通用参数具有相同的名称，向导会提示为参数提供另一个名称。
 
 ### <a name="monitor-activities"></a>监视活动
-在 Orchestrator 中监视 Runbook 以[监视活动](http://technet.microsoft.com/library/hh403827.aspx)开头，并会持续运行，等待被特定事件调用。  Azure 自动化不支持监视 Runbook，因此集成包中的任何监视活动都不会进行转换。  与之相反，系统会在集成模块中为监视活动创建一个占位符 cmdlet。  此 cmdlet 没有任何功能，但可以通过它来安装使用它的任何已转换 Runbook。  此 Runbook 将不能在 Azure 自动化中运行，但可以进行安装，因此可以对其进行修改。
+在 Orchestrator 中监视 Runbook 以[监视活动](https://technet.microsoft.com/library/hh403827.aspx)开头，并会持续运行，等待被特定事件调用。  Azure 自动化不支持监视 Runbook，因此集成包中的任何监视活动都不会进行转换。  与之相反，系统会在集成模块中为监视活动创建一个占位符 cmdlet。  此 cmdlet 没有任何功能，但可以通过它来安装使用它的任何已转换 Runbook。  此 Runbook 将不能在 Azure 自动化中运行，但可以进行安装，因此可以对其进行修改。
 
 ### <a name="integration-packs-that-cannot-be-converted"></a>不能转换的集成包
 不是使用 OIT 创建的集成包无法使用集成包转换器来进行转换。 另外还有一些 Microsoft 提供的集成包目前无法使用此工具转换。  [已支持下载](#system-center-orchestrator-integration-modules)这些集成包的已转换版本，以便将其安装在 Azure 自动化或 Service Management Automation 中。
 
 ## <a name="standard-activities-module"></a>标准活动模块
-Orchestrator 包括一组[标准活动](http://technet.microsoft.com/library/hh403832.aspx)，这些活动未包括在集成包中，而是由多个 Runbook 使用。  “标准活动”模块是一个集成模块，其中包含每个此类活动的 cmdlet 等效项。  在导入任何使用标准活动的已转换 Runbook 之前，必须在 Azure 自动化中安装此集成模块。
+Orchestrator 包括一组[标准活动](https://technet.microsoft.com/library/hh403832.aspx)，这些活动未包括在集成包中，而是由多个 Runbook 使用。  “标准活动”模块是一个集成模块，其中包含每个此类活动的 cmdlet 等效项。  在导入任何使用标准活动的已转换 Runbook 之前，必须在 Azure 自动化中安装此集成模块。
 
 除了支持转换后的 Runbook，标准活动模块中的 cmdlet 还可由熟悉 Orchestrator 的人用来在 Azure 自动化中构建新的 Runbook。  虽然可以使用 cmdlet 来执行所有标准活动的功能，但这些活动可能会以不同方式运行。  转换后的标准活动模块中的 cmdlet 的工作方式与其相应活动的工作方式相同，并使用相同的参数。  这可以帮助现在的 Orchestrator Runbook 作者过渡到 Azure 自动化 Runbook。
 
 ## <a name="system-center-orchestrator-integration-modules"></a>System Center Orchestrator 集成模块
-Microsoft 提供[集成包](http://technet.microsoft.com/library/hh295851.aspx)用于构建 Runbook 来自动化 System Center 组件和其他产品。  其中的某些集成包目前基于 OIT，但由于已知的问题，无法转换为集成模块。  [System Center Orchestrator 集成模块](https://www.microsoft.com/download/details.aspx?id=49555)包含这些集成包的已转换版本，可以将其导入 Azure 自动化和 Service Management Automation。  
+Microsoft 提供[集成包](https://technet.microsoft.com/library/hh295851.aspx)用于构建 Runbook 来自动化 System Center 组件和其他产品。  其中的某些集成包目前基于 OIT，但由于已知的问题，无法转换为集成模块。  [System Center Orchestrator 集成模块](https://www.microsoft.com/download/details.aspx?id=49555)包含这些集成包的已转换版本，可以将其导入 Azure 自动化和 Service Management Automation。  
 
 在发布此工具的 RTM 版本时，将发布可使用集成包转换器转换、基于 OIT 的集成包的更新版本。  此外，还将提供指导以帮助你使用来自非基于 OIT 的集成包的活动转换 Runbook。
 
@@ -126,8 +126,8 @@ Orchestrator 中的 Runbook 接受具有**初始化数据**活动的输入参数
 Orchestrator 中的 Runbook 使用**调用 Runbook** 活动来启动其他 Runbook。 如果要转换的 Runbook 包含此活动，并且设置了“等待完成”选项，则在转换后的 Runbook 中为其创建 Runbook 活动。  如果未设置“等待完成”选项，则创建使用 **Start-AzureAutomationRunbook** 的工作流脚本活动来启动 Runbook。  将转换的 Runbook 导入 Azure 自动化之后，必须以活动中指定的信息修改此活动。
 
 ## <a name="related-articles"></a>相关文章
-* [System Center 2012 - Orchestrator](http://technet.microsoft.com/library/hh237242.aspx)
+* [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
 * [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
 * [混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)
-* [Orchestrator 标准活动](http://technet.microsoft.com/library/hh403832.aspx)
+* [Orchestrator 标准活动](https://technet.microsoft.com/library/hh403832.aspx)
 * [下载 System Center Orchestrator 迁移工具包](https://www.microsoft.com/en-us/download/details.aspx?id=47323)

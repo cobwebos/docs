@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166514"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281806"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>教程 8：提取话语的关键短语
 在本教程中，使用预生成的 keyPhrase 实体从话语中提取关键主题。 不需要使用预生成的实体标记任何话语。 自动检测实体。
@@ -35,7 +35,7 @@ ms.locfileid: "47166514"
 > [!div class="checklist"]
 > * 使用现有的教程应用
 > * 添加 keyPhrase 实体 
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 
@@ -56,11 +56,11 @@ ms.locfileid: "47166514"
 ## <a name="add-keyphrase-entity"></a>添加 keyPhrase 实体 
 添加 keyPhrase 预生成实体，以从陈述中提取主题。
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在左侧菜单中选择“实体”。
 
-3. 选择“管理预生成实体”。
+3. 选择“添加预生成的实体”。
 
 4. 在弹出对话框中选择“keyPhrase”，然后选择“完成”。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "47166514"
 
     [ ![Utilities.Confirm 意向的屏幕截图，其中在陈述中标记出了 keyPhrase](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

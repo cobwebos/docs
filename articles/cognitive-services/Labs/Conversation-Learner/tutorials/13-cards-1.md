@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: da261beeec4f02dfa7c7cf9071e51dc17cf5c7cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171127"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254377"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>如何使用卡（第 1 部分，共 2 部分）
 
@@ -26,7 +26,7 @@ ms.locfileid: "39171127"
 
 ## <a name="video"></a>视频
 
-[![教程 13 预览](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
+[![教程 13 预览](https://aka.ms/cl-tutorial-13-preview)](https://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab8a289ea0de263871b76788514052c09a6bf4da
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3d2687f56b69174fde783060d994e3c01763ec94
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295731"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256623"
 ---
 # <a name="security-policy-settings"></a>安全策略设置
 本文概述了安全中心内的安全策略设置。
@@ -56,4 +56,4 @@ ms.locfileid: "44295731"
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
 - [Azure 安全中心的数据安全](security-center-data-security.md)：了解安全中心如何管理数据并确保数据安全性。
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
-* [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/)：获取最新的 Azure 安全新闻和信息。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)：获取最新的 Azure 安全新闻和信息。

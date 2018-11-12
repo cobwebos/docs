@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235660"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>在 Azure 安全中心内管理已连接的合作伙伴解决方案
 本文介绍了如何在 Azure 安全中心内管理和监视已连接的安全解决方案。
@@ -65,7 +65,7 @@ ms.locfileid: "44301943"
 * [合作伙伴和解决方案集成](security-center-partner-integration.md) - 获取集成其他安全解决方案的概述。
 * [管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png

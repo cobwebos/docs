@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970917"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249908"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>使用团队数据科学过程模板构建项目
 
@@ -54,7 +54,7 @@ TDSP 是一种执行并交付高级分析解决方案的敏捷、迭代的数据
 * 内容（“docs”文件夹中已存在的内容除外）大小需要小于 25 MB。 请参阅此列表后面的说明。
 * sample\_data 文件夹只能存放用于测试代码或开始早期开发的小型数据文件（小于 5 MB）。
 * 存储 Word 和 PowerPoint 等文件会大幅增加“docs”文件夹的大小。 建议查找协作 Wiki、[SharePoint](https://products.office.com/sharepoint/collaboration) 或其他协作资源来存储此类文件。
-* 若要了解如何在机器学习中处理大型文件和输出的信息，请阅读[持久保存更改和处理大型文件](http://aka.ms/aml-largefiles)。
+* 若要了解如何在机器学习中处理大型文件和输出的信息，请阅读[持久保存更改和处理大型文件](https://aka.ms/aml-largefiles)。
 
 > [!NOTE]
 > 在项目执行期间未使用的所有文档相关内容（readme.md 文件除外）必须驻留在名为“docs”（全小写）的文件夹中，这些内容包括文本、Markdown、图像和其他文档文件。 “docs”文件夹是一个被机器学习执行忽略的特殊文件夹，目的是不让此文件夹中的内容不必要地被复制到计算目标中。 此文件夹中的对象也不计入项目大小的 25 MB 上限。 例如，“docs”文件夹是存储文档中所需的大型图像文件的位置。 但 Git 仍然会通过运行历史记录跟踪这些文件。 

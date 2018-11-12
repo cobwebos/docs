@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7e7d1f8110d8470fe7596633563529f397c5551e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794746"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236561"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "31794746"
 按照本指南创建索引之前，应已经 [创建 Azure 搜索服务](search-create-service-portal.md)。
 
 > [!NOTE]
-> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
 
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>确定 Azure 搜索服务的管理 API 密钥
@@ -53,7 +53,7 @@ ms.locfileid: "31794746"
 ## <a name="create-an-instance-of-the-searchserviceclient-class"></a>创建 SearchServiceClient 类的实例
 若要开始使用 Azure 搜索 .NET SDK，需要创建 `SearchServiceClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
-以下代码使用应用程序配置文件（在使用[示例应用程序](http://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的搜索服务名称和 API 密钥的值创建一个新 `SearchServiceClient`：
+以下代码使用应用程序配置文件（在使用[示例应用程序](https://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的搜索服务名称和 API 密钥的值创建一个新 `SearchServiceClient`：
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)

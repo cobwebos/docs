@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
-ms.openlocfilehash: 1e9ed9d3500b112f98492e6a85d02a1f1843c7c3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ab47db7629c92b0e6a5b268c9d233135485a37a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365571"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237701"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "49365571"
 ## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
-- [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
+- [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)。
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>创建支持 Google Cloud Messaging 的项目
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
@@ -524,7 +524,7 @@ ms.locfileid: "49365571"
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. 创建用于对 POST 请求进行身份验证的软件访问签名 (SaS) 令牌，以便将消息发送到通知中心。 分析连接字符串中的密钥数据，然后按照[常见的概念](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API 参考中所述创建 SaS 令牌。 以下代码是示例实现。
+6. 创建用于对 POST 请求进行身份验证的软件访问签名 (SaS) 令牌，以便将消息发送到通知中心。 分析连接字符串中的密钥数据，然后按照[常见的概念](https://msdn.microsoft.com/library/azure/dn495627.aspx) REST API 参考中所述创建 SaS 令牌。 以下代码是示例实现。
    
     在 `MainActivity.java` 中，将以下方法添加到 `MainActivity` 类，以分析连接字符串。
    

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23112835"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255829"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -525,7 +525,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 说明 |
+| 场景 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | NetBackup 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
@@ -536,9 +536,9 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 本文参考了以下文档：
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [Storage scenarios: Thin provisioning](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
-- [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
-- [Set up shadow copies for shared folders](http://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
+- [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
+- [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 
 ## <a name="next-steps"></a>后续步骤
 

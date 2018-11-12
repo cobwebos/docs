@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0b40b8018715e6b680f42676dfaead0ac6e5bf7a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: a28168291c79dc54feb5ff572c609cdfb09a187f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279137"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515584"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -64,12 +64,13 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 - **Kubernetes marketplace 项**。 现在可以使用 [Kubernetes 市场项](azure-stack-solution-template-kubernetes-cluster-add.md)来部署 Kubernetes 群集。 用户可以选择 Kubernetes 项并填充一些参数，以便将 Kubernetes 群集部署到 Azure Stack。 模板的目的是使用户能够设置几个步骤中的开发/测试 Kubernetes 部署更简单。
 
 <!-- | IS ASDK--> 
-- **区块链模板**。 现在可以在 Azure Stack 上执行[以太坊联盟部署](user/azure-stack-ethereum.md)。 可以在 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)中找到三个新的模板。 有了这些模板，用户不需多少 Azure 和以太坊知识即可部署和配置多成员联盟以太坊网络。 模板的目的是使用户能够设置几个步骤中的开发/测试区块链部署更简单。
+- **区块链模板**。 现在可以在 Azure Stack 上执行[以太坊联盟部署](user/azure-stack-ethereum.md)。 您可以找到三个新模板中的[Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 有了这些模板，用户不需多少 Azure 和以太坊知识即可部署和配置多成员联盟以太坊网络。 模板的目的是使用户能够设置几个步骤中的开发/测试区块链部署更简单。
 
 <!-- | IS ASDK--> 
 - **API 版本配置文件 2017年-03-09-配置文件已更新为 2018年-03-01-混合**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
 
- ### <a name="fixed-issues"></a>修复的问题
+### <a name="fixed-issues"></a>修复的问题
+
 <!-- IS ASDK--> 
 - 我们解决了用于创建可用性集在门户中从而产生了一组具有一个容错域和更新域 1 的问题。 
 
@@ -162,7 +163,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 > 获取 Azure Stack 部署的扩展主机准备就绪。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
 
 此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
-- [KB 4468920 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/help/4468920/)
+- [KB 4468920 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.7.113](https://support.microsoft.com/help/4471992/)
 
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -253,7 +254,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 ### <a name="compute"></a>计算
 
-<!-- TBD – IS, ASDK -->
+<!-- 3164607 – IS, ASDK -->
 - 如重新附加到同一虚拟机 (VM) 具有相同名称和 LUN 分离的磁盘失败并出现错误**不能将数据磁盘 datadisk 附加到 VM vm1**。 因为当前正在分离磁盘或最后一个分离操作失败，发生此错误。 请等到磁盘完全分离然后重试或删除/分离磁盘显式试。 解决方法是使用不同的名称，或不同的 LUN 上重新附加它。 
 
 <!-- 3099544 – IS, ASDK --> 
@@ -266,7 +267,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
       1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
       2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
    2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
-      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4468920/)。
+      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992/)。
       2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
       
 <!-- 3179561 - IS --> 

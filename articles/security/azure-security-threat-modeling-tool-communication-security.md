@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301548"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247375"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -113,7 +113,7 @@ ms.locfileid: "43301548"
 | **适用的技术** | 泛型 |
 | **属性**              | EnvironmentType - Azure |
 | **参考**              | [对 Azure 应用服务强制执行 HTTPS](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **步骤** | <p>尽管 Azure 已使用 *.azurewebsites.net 域的通配符证书为 Azure 应用服务启用了 HTTPS，但它并不强制 HTTPS。 访问者仍可使用 HTTP 访问应用，这可能会损害应用的安全性，因此必须显式强制 HTTPS。 ASP.NET MVC 应用程序应使用 [RequireHttps 筛选器](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)，强制要求通过 HTTPS 重新发送不安全的 HTTP 请求。</p><p>或者，可以使用 Azure 应用服务随附的 URL 重写模块来强制 HTTPS。 开发人员可以使用 URL 重写模块来定义将请求传递给应用程序之前应用到传入请求的规则。 URL 重写规则在 web.config 文件中定义，该文件存储在应用程序根目录中。</p>|
+| **步骤** | <p>尽管 Azure 已使用 *.azurewebsites.net 域的通配符证书为 Azure 应用服务启用了 HTTPS，但它并不强制 HTTPS。 访问者仍可使用 HTTP 访问应用，这可能会损害应用的安全性，因此必须显式强制 HTTPS。 ASP.NET MVC 应用程序应使用 [RequireHttps 筛选器](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)，强制要求通过 HTTPS 重新发送不安全的 HTTP 请求。</p><p>或者，可以使用 Azure 应用服务随附的 URL 重写模块来强制 HTTPS。 开发人员可以使用 URL 重写模块来定义将请求传递给应用程序之前应用到传入请求的规则。 URL 重写规则在 web.config 文件中定义，该文件存储在应用程序根目录中。</p>|
 
 ### <a name="example"></a>示例
 以下示例包含可强制所有传入流量使用 HTTPS 的基本 URL 重写规则
@@ -156,7 +156,7 @@ ms.locfileid: "43301548"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure  |
 | **属性**              | SQL 版本 - V12 |
-| **参考**              | [有关为 SQL 数据库编写安全连接字符串的最佳做法](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **参考**              | [有关为 SQL 数据库编写安全连接字符串的最佳做法](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **步骤** | <p>SQL 数据库与客户端应用程序之间的所有通信始终使用安全套接字层 (SSL) 加密。 SQL 数据库不支持未加密的连接。 若要使用应用程序代码或工具验证证书，需显式请求一个加密的连接并且不信任服务器证书。 即使应用程序代码或工具未请求加密的连接，它们仍会收到加密的连接</p><p>但是，它们可能不会验证服务器证书，因此将容易受到“中间人”攻击。 若要使用 ADO.NET 应用程序代码验证证书，请在数据库连接字符串中设置 `Encrypt=True` 和 `TrustServerCertificate=False`。 若要通过 SQL Server Management Studio 验证证书，请打开“连接到服务器”对话框。 在“连接属性”选项卡中单击“加密连接”</p>|
 
 ## <a id="encrypted-sqlserver"></a>强制以加密形式来与 SQL Server 通信

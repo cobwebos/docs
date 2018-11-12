@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242767"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249857"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 本文档帮助你运行示例应用，以此来介绍[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的开发人员体验。 此示例应用创建一个简单的分片应用程序，并探讨 Azure SQL 数据库弹性数据库工具功能的主要作用。 它重点介绍[分片映射管理](sql-database-elastic-scale-shard-map-management.md)、[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)和[多分片查询](sql-database-elastic-scale-multishard-querying.md)的用例。 该客户端库可用于 .NET 和 Java。 
@@ -67,7 +67,7 @@ ms.locfileid: "50242767"
 
 ## <a name="elastic-database-tools-for-net"></a>适用于 .NET 的弹性数据库工具 
 ### <a name="prerequisites"></a>先决条件
-* 使用 C# 的 Visual Studio 2012 或更高版本。 可以从 [Visual Studio 下载页面](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)下载免费版本。
+* 使用 C# 的 Visual Studio 2012 或更高版本。 可以从 [Visual Studio 下载页面](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)下载免费版本。
 * NuGet 2.7 或更高版本。 若要获取最新版本，请参阅[安装 NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)。
 
 ### <a name="download-and-run-the-sample-app"></a>下载并运行示例应用
@@ -95,13 +95,13 @@ ms.locfileid: "50242767"
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
-* 管理分片和分片映射：该代码演示如何在 ShardManagementUtils.cs 文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](http://go.microsoft.com/?linkid=9862595)。  
+* 管理分片和分片映射：该代码演示如何在 ShardManagementUtils.cs 文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
 
-* 数据依赖型路由：DataDependentRoutingSample.cs 文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](http://go.microsoft.com/?linkid=9862596)。 
+* 数据依赖型路由：DataDependentRoutingSample.cs 文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
 
-* 查询多个分片：MultiShardQuerySample.cs 文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](http://go.microsoft.com/?linkid=9862597)。
+* 查询多个分片：MultiShardQuerySample.cs 文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
 
-* 添加空分片：CreateShardSample.cs 文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](http://go.microsoft.com/?linkid=9862595)。
+* 添加空分片：CreateShardSample.cs 文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 * 拆分现有分片：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
@@ -119,12 +119,12 @@ ms.locfileid: "50242767"
 有关弹性数据库工具的详细信息，请参阅以下文章：
 
 * 代码示例： 
-  * 弹性数据库工具（[.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
-  * [Elastic Database Tools for Azure SQL - Entity Framework Integration](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)（Azure SQL 的弹性数据库工具 – 实体框架集成）
+  * 弹性数据库工具（[.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
+  * [Elastic Database Tools for Azure SQL - Entity Framework Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)（Azure SQL 的弹性数据库工具 – 实体框架集成）
   * [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 博客：[弹性缩放通告](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * 第 9 频道：[弹性缩放概述视频](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* 论坛：[Azure SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* 论坛：[Azure SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * 要测量性能：[分片映射管理器的性能计数器](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

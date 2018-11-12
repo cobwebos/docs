@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: b180acfb74f503447212044f0b6be5589e2dd452
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 454cfc97aa203d5de7b00f47e1f87fd0aed0d28a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158783"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255943"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -126,7 +126,7 @@ Jeff（工作负荷所有者）
 
 安全中心策略包含以下组件：
 - [数据收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理预配和数据收集设置。
-- [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
+- [安全策略](https://docs.microsoft.com/azure/security-center/security-center-policies)：可以通过 [Azure Policy](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) 来决定安全中心所监视和建议的控件，还可以通过 Azure Policy 来创建新的定义、定义其他策略，以及跨管理组分配策略。
 - [电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全联系人和通知设置。
 - [定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)：在选择定价时，可以选择“免费”或“标准”，这决定了相应范围内的资源可以使用哪些安全中心功能（可以针对订阅、资源组和工作区进行指定）。
 
@@ -262,5 +262,5 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 

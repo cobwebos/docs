@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3b6b505be4a0084059d8c37a21099a784cacbed1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414111"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237146"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 远程桌面连接问题的详细故障排除步骤
 本文提供详细的故障排除步骤，用于为基于 Windows 的 Azure 虚拟机诊断和修复复杂的远程桌面错误。
@@ -130,7 +130,7 @@ RDP 连接涉及以下组件：
 * Windows 防火墙或其他本地防火墙使用阻止远程桌面通信的出站规则。
 * Azure 虚拟机上运行的入侵检测或网络监视软件正在阻止远程桌面连接。
 
-对于使用经典部署模型创建的 VM，可以使用与 Azure 虚拟机的远程 Azure PowerShell 会话。 首先，需要安装虚拟机托管云服务的证书。 转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机。
+对于使用经典部署模型创建的 VM，可以使用与 Azure 虚拟机的远程 Azure PowerShell 会话。 首先，需要安装虚拟机托管云服务的证书。 转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机。
 
 接下来，安装 Azure PowerShell（如果尚未安装）。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 

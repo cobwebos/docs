@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 87695e6e7e1f1abce7204ebbbbed2b492297f177
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247766"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
 
 **存在此处找不到的问题？**
 
-Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 转到 [Azure 机器学习论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)搜索答案，或者发布自己的新问题。
+Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 转到 [Azure 机器学习论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)搜索答案，或者发布自己的新问题。
 
 ## <a name="general-questions"></a>一般问题
 **什么是 Azure 机器学习？**
@@ -123,7 +123,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ### <a name="modules"></a>模块
 **查找的算法、数据源、数据格式或数据转换操作不在 Azure 机器学习工作室中。可以使用哪些选项？**
 
-可以访问[用户反馈论坛](http://go.microsoft.com/fwlink/?LinkId=404231)，查看我们跟踪的功能请求。 如果要找的功能已有人请求，请为该请求投票。 如果要找的功能不存在，请创建新请求。 还可以在此论坛中查看请求状态。 我们将密切跟踪此列表，并经常更新功能可用性状态。 另外，还可以使用对 R 和 Python 的内置支持根据需要创建自定义转换。
+可以访问[用户反馈论坛](https://go.microsoft.com/fwlink/?LinkId=404231)，查看我们跟踪的功能请求。 如果要找的功能已有人请求，请为该请求投票。 如果要找的功能不存在，请创建新请求。 还可以在此论坛中查看请求状态。 我们将密切跟踪此列表，并经常更新功能可用性状态。 另外，还可以使用对 R 和 Python 的内置支持根据需要创建自定义转换。
 
 **是否可将现有的代码放入机器学习工作室？**
 
@@ -182,7 +182,7 @@ Azure 机器学习有两种类型的 Web 服务：
 ### <a name="r-module"></a>R 模块
 **可以在机器学习工作室中使用哪些 R 包？**
 
-机器学习工作室目前支持 400 多个 CRAN R 包，下面是所有包含的包的[最新列表](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)。 此外，若要了解如何自行检索此列表，请参阅[使用 R 扩展试验](extend-your-experiment-with-r.md)。 如果所需的包不在此列表中，请在[用户反馈论坛](http://go.microsoft.com/fwlink/?LinkId=404231)中提供包名称。
+机器学习工作室目前支持 400 多个 CRAN R 包，下面是所有包含的包的[最新列表](http://az754797.vo.msecnd.net/docs/RPackages.xlsx)。 此外，若要了解如何自行检索此列表，请参阅[使用 R 扩展试验](extend-your-experiment-with-r.md)。 如果所需的包不在此列表中，请在[用户反馈论坛](https://go.microsoft.com/fwlink/?LinkId=404231)中提供包名称。
 
 **是否可以构建自定义的 R 模块？**
 
@@ -312,7 +312,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 若要获取 Azure 机器学习的技术支持，请转到 [Azure 支持](https://azure.microsoft.com/support/options/)并选择“机器学习”。
 
-Azure 机器学习还在 MSDN 上设有社区论坛，可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 访问 [Azure 论坛](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)。
+Azure 机器学习还在 MSDN 上设有社区论坛，可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 访问 [Azure 论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)。
 
 ## <a name="billing-questions"></a>计费问题
 **机器学习的计费模式是怎样的？**

@@ -3,18 +3,18 @@ title: 使用 Visual Studio 和 C# 的 Apache Storm 拓扑 - Azure HDInsight
 description: 了解如何用 C# 创建 Storm 拓扑。 在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的字数统计拓扑。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2765021d80701826644f095d22c650160001e907
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5dcc9dcada981a6a4174ce34748356d49582f598
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414890"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237564"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -43,7 +43,7 @@ ms.locfileid: "50414890"
 
 * Visual Studio 2012 Update 4
 
-* Visual Studio 2013 Update 4 或 [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 Update 4 或 [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Visual Studio 2015 或 [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 

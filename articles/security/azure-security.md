@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405202"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237547"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -62,7 +62,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 | [强制性安全培训，背景检查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](http://azuredatacentermap.azurewebsites.net/)|
 | [渗透测试](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)，[入侵检测，DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)，[审核和日志记录](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [根据条件提供数据访问](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [云服务审慎调查清单](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Microsoft 中的哪些人员可以根据哪些条款访问数据](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [数据中心状态](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)，物理安全性，[安全网络](https://docs.microsoft.com/azure/security/security-network-overview) | [响应执法部门](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [服务、位置和行业的符合性](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [安全事件响应](http://aka.ms/SecurityResponsepaper)，[共担责任](http://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+|  [安全事件响应](https://aka.ms/SecurityResponsepaper)，[共担责任](https://aka.ms/sharedresponsibility) |[严格的隐私标准](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [查看 Azure 服务和透明度中心的认证](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
 

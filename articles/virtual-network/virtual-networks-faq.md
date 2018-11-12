@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6c429931a7a17ab62892ecc774a5cca15a532f72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269473"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237628"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -213,7 +213,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 ## <a name="apis-schemas-and-tools"></a>API、架构和工具
 
 ### <a name="can-i-manage-vnets-from-code"></a>是否可以通过代码管理 VNet？
-是的。 可在 [Azure 资源管理器](/rest/api/virtual-network)和[经典（服务管理）](http://go.microsoft.com/fwlink/?LinkId=296833)部署模型中使用适用于 VNet 的 REST API。
+是的。 可在 [Azure 资源管理器](/rest/api/virtual-network)和[经典（服务管理）](https://go.microsoft.com/fwlink/?LinkId=296833)部署模型中使用适用于 VNet 的 REST API。
 
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 详细了解以下操作：
