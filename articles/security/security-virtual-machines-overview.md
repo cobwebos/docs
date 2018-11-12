@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 631fe91bc72093cf5ad87779853df4901a27a068
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886908"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249104"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
+
 可使用 Azure 虚拟机灵活地部署各种计算解决方案。 该服务支持 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk Services。 因此，几乎可在任何操作系统上部署任何工作负载和任何语言。
 
 Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运行虚拟机的物理硬件。 可生成并部署应用程序，并保证数据在高度安全的数据中心受到保护且是安全的。
@@ -37,6 +38,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 本文旨在概述能与虚拟机配合使用的核心 Azure 安全功能。 此外还提供了一些文章链接，这些文章详细介绍了每个功能，可从中了解更多信息。  
 
 ## <a name="antimalware"></a>反恶意软件
+
 通过 Azure，可使用安全供应商（例如 Microsoft、Symantec、Trend Micro 和 Kaspersky）提供的反恶意软件。 此软件可帮助保护虚拟机免受恶意文件、广告程序和其他威胁的侵害。
 
 适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。  适用于 Azure 的 Microsoft 反恶意软件提供可配置警报，能在已知恶意软件或不需要的软件试图自行安装或在 Azure 系统上运行时进行警报通知。
@@ -64,7 +66,24 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](../virtual-machines/windows/classic/install-symantec.md)
 * [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
+若要实现更强大的保护，请考虑使用 [Windows Defender 高级威胁防护](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。 使用 Windows Defender ATP，可以实现：
+
+* [攻击面减小](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [下一代保护](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
+* [终结点保护和响应](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
+* [自动调查和补救](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
+* [安全评分](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-secure-score-windows-defender-advanced-threat-protection)
+* [高级追寻](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
+* [管理和 API](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
+* [Microsoft 威胁防护](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+
+了解更多： 
+
+* [WDATP 入门](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [WDATP 功能概述](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
+
 ## <a name="hardware-security-module"></a>硬件安全模块
+
 提高密钥安全性可增强加密和身份验证保护。 通过将关键密码和密钥存储在 Azure 密钥保管库中，可以简化此类密码和密钥的管理和保护。 
 
 密钥保管库提供将密钥存储在已通过 FIPS 140-2 Level 2 标准认证的硬件安全模块 (HSM) 中的选项。 用于备份或[透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)的 SQL Server 加密密钥均可存储在密钥保管库中，此外还可存储应用程序中的任意密钥或密码。 对这些受保护项的权限和访问权限通过 [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) 进行管理。
@@ -76,6 +95,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * [Azure 密钥保管库博客](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虚拟机磁盘加密
+
 Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。
 
 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 它可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
@@ -86,6 +106,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 * [快速入门：使用 Azure PowerShell 加密 Windows IaaS VM](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
+
 Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
 
 了解更多：
@@ -95,6 +116,7 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 * [Azure 备份服务 - 常见问题解答](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
+
 组织的 BCDR 策略的其中一个重要部分是，找出在发生计划的和非计划的中断时让企业工作负荷和应用保持运行的方法。 Azure Site Recovery 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
 Site Recovery：
@@ -112,6 +134,7 @@ Site Recovery：
 * [哪些工作负荷受 Azure Site Recovery 保护？](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虚拟网络
+
 虚拟机需要网络连接。 若要支持该需求，Azure 要求将虚拟机连接到 Azure 虚拟网络。 
 
 Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构造。 每个逻辑 Azure 虚拟网络都独立于所有其他 Azure 虚拟网络。 这种隔离可帮助确保部署中的网络流量对于其他 Microsoft Azure 客户不可访问。
@@ -123,6 +146,7 @@ Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构�
 * [Networking features and partnerships for Enterprise scenarios](https://azure.microsoft.com/blog/networking-enterprise/)（网络功能和用于企业方案的合作关系）
 
 ## <a name="security-policy-management-and-reporting"></a>安全策略管理和报告
+
 Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心可提高对 Azure 资源安全性的可见性和控制力度。 它为 Azure 订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
 
 安全中心通过以下方式帮助优化和监视虚拟机的安全：
@@ -137,9 +161,24 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 * [Azure 安全中心规划和操作](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>合规性
+
 Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使自己的 Azure 应用程序更容易满足合规性要求，并使企业更容易应对各种国内和国际法规要求。
 
 了解更多：
 
 * [Microsoft Trust Center: Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
 * [Trusted Cloud: Microsoft Azure Security, Privacy, and Compliance](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
+
+## <a name="confidential-computing"></a>机密计算
+
+虽然机密计算在技术方面不是虚拟机安全性的一部分，但是虚拟机安全性的主题属于“计算”安全性的更高级别的主题。 机密计算属于“计算”安全性类别。 
+
+当数据“采用明文”（这是进行高效处理所必需的）时，机密计算可确保数据在可信执行环境 https://en.wikipedia.org/wiki/Trusted_execution_environment（TEE - 也称为飞地）中受到保护，下图显示了一个这样的示例。  
+
+TEE 可以确保无法从外部查看数据或执行操作，即使通过调试程序也不可以。 它们甚至可以确保只有经过授权的代码才能访问数据。 如果代码被更改或篡改，则会拒绝操作并禁用环境。 TEE 会在代码在它中执行的整个过程中实施这些保护。 
+
+了解更多：
+
+* [Azure 机密计算介绍](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
+* [Azure 机密计算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+

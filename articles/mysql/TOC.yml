@@ -94,6 +94,8 @@ items:
       href: concepts-compatibility.md
     - name: 应用程序开发
       href: concepts-database-application-development.md
+    - name: 连接复原
+      href: concepts-connectivity.md
   - name: 复制
     items:
     - name: 复制中数据
@@ -158,6 +160,16 @@ items:
       href: howto-data-in-replication.md
     - name: 创建只读副本 Azure 门户
       href: howto-read-replicas-portal.md
+    - name: 创建只读副本 Azure CLI
+      href: howto-read-replicas-cli.md
+  - name: 故障排除
+    items:
+    - name: 排查连接错误
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: 查询性能故障排除
+      href: howto-troubleshoot-query-performance.md
+    - name: 如何使用 sys 架构中的视图
+      href: howto-troubleshoot-sys-schema.md
   - name: 高级威胁防护
     items:
     - name: Azure 门户
@@ -214,9 +226,9 @@ items:
     href: partners-migration-mysql.md
   - name: 数据库迁移指南
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5e81e536ec941d7822dae39ecf5548a21b2e7a5d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 39c05df6c48a1a6fe42c1c2e75cbc79441e42bc5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986553"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287506"

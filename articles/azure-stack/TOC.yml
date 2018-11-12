@@ -34,8 +34,6 @@ items:
     href: azure-stack-tutorial-mysql.md
   - name: 提供 Web 应用
     href: azure-stack-tutorial-app-service.md
-  - name: 部署 Ethereum
-    href: azure-stack-ethereum.md
 - name: 概念
   items:
   - name: 容量规划
@@ -388,9 +386,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c05498ab53b581f4280220d246c4cf2db624bb85
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0e8b5d3661de005acf93b871106242f484cf0eb8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086601"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011504"

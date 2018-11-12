@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: bd90d3c4c9207374d6a6085df6a3962ef42b68a9
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091415"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037937"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>教程：订购 Azure Data Box 磁盘（预览版）
 
-Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 你可以将数据传输到 Microsoft 提供的固态硬盘 (SSD)，并寄回磁盘。 然后，此数据将上传到 Azure。 
+Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 你可以将数据传输到 Microsoft 提供的固态硬盘 (SSD)，并寄回磁盘。 然后，此数据将上传到 Azure。
 
 本教程介绍如何订购 Azure Data Box 磁盘。 本教程的介绍内容包括：
 
@@ -34,7 +34,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 > - Data Box 磁盘以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 > - 在预览期间，Data Box Disk 可以寄送到美国、西欧和北欧、加拿大和澳大利亚的客户。 有关详细信息，请参阅[适用区域](data-box-disk-overview.md#region-availability)。
 
-## <a name="sign-up"></a>注册 
+## <a name="sign-up"></a>注册
 
 Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤注册 Data Box 服务：
 
@@ -64,7 +64,7 @@ Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤�
     |目标 Azure 区域|选择要在其中传输数据的 Azure 区域。|
 
   
-5.  选择“Data Box 磁盘”。 单次订购的解决方案（包括 5 个磁盘）的最大容量为 35 TB。 可以创建多个订单，以增加数据大小。 
+5.  选择“Data Box 磁盘”。 单次订购的解决方案（包括 5 个磁盘）的最大容量为 35 TB。 可以创建多个订单，以增加数据大小。
 
      ![选择 Data Box 磁盘选项](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
@@ -77,6 +77,7 @@ Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤�
     |目标 Azure 区域| 选择存储帐户的区域。<br> 目前，支持美国、西欧和北欧、加拿大和澳大利亚的所有区域的存储帐户。 |
     |存储帐户|根据指定的 Azure 区域，从现有存储帐户的筛选列表中进行选择。 <br>也可以创建新的常规用途 v1 或 v2 帐户。 |
     |估计数据大小(TB)| 输入估计值，以 TB 为单位。 <br>根据数据大小，Microsoft 会寄送适当数量的 8 TB SSD（7 TB 可用容量）。 <br>5 个磁盘的最大可用容量高达 35 TB。 |
+    |磁盘密钥| 如果选中“使用自定义密钥而不是 Azure 生成的密钥”，请提供磁盘密钥。 <br> 提供一个 12 到 32 个字符的字母数字密钥，其中至少包含一个数字和一个特殊字符。 允许使用的特殊字符是 `@?_+`。 <br> 可以选择跳过此选项并使用 Azure 生成的密钥来解锁磁盘。|
 
 13. 单击“下一步”。 
 

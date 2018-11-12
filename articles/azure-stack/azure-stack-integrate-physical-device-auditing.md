@@ -1,29 +1,30 @@
 ---
 title: Azure Stack 物理设备审核
-description: 了解如何将集成在 Azure Stack 中的物理设备访问审核
+description: 了解如何集成 Azure Stack 中的物理设备访问审核
 services: azure-stack
 author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: 459cdf4e1a70ee02d818dd6abe101e4fc3475b68
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034838"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036897"
 ---
-# <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack 数据中心集成-审核物理设备
+# <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack 数据中心集成 - 物理设备审核
 
-基板管理控制器 (Bmc) 和网络交换机等 Azure Stack 中的所有物理设备发出审核日志，并且应将它们集成到整体审核解决方案。 由于不同 Azure Stack OEM 硬件供应商提供不同的设备，有关审核集成的文档与供应商联系。 以下部分提供一些物理设备审核 Azure Stack 中的一般信息。  
+基板管理控制器 (Bmc) 和网络交换机等 Azure Stack 中的所有物理设备发出审核日志。 可以将审核日志集成到整体审核解决方案。 由于设备因不同的 Azure Stack OEM 硬件供应商而异，所以请联系你的供应商来获取有关审核集成的文档。
+以下各部分提供了有关 Azure Stack 中的物理设备审核的一些常规信息。  
 
 ## <a name="physical-device-access-auditing"></a>物理设备访问审核
 
-Azure Stack 中的所有物理设备都支持使用 TACACS 或 RADIUS。 这包括访问基板管理控制器 (BMC) 和网络交换机。
+Azure Stack 中的所有物理设备都支持使用 TACACS 或 RADIUS。 支持包括访问基板管理控制器 (BMC) 和网络交换机。
 
 Azure Stack 解决方案在推出时并未内置 RADIUS 或 TACACS。 但是，经验证，这些解决方案支持使用市面上现有的 RADIUS 或 TACACS 解决方案。
 
@@ -32,9 +33,9 @@ Azure Stack 解决方案在推出时并未内置 RADIUS 或 TACACS。 但是，�
 
 ## <a name="syslog-forwarding-for-network-devices"></a>网络设备的 Syslog 转发
 
-在 Azure Stack 中的所有物理网络设备支持的 syslog 消息。 Azure Stack 解决方案未随附 syslog 服务器。 但是，已验证设备以支持在市场中的消息发送到现有的 syslog 解决方案。
+Azure Stack 中的所有物理网络设备都支持 syslog 消息。 Azure Stack 解决方案未附带 syslog 服务器。 但是，经验证，这些设备支持将消息发送到市面上现有的 syslog 解决方案。
 
-Syslog 目标地址是一个可选参数，收集有关部署，但它还可以添加后期部署。 请咨询 OEM 硬件供应商联系以配置 syslog 转发网络设备上。
+Syslog 目标地址是针对部署所收集的可选参数，但也可以在部署后添加此参数。 要在网络设备上配置 syslog 转发，请咨询你的 OEM 硬件供应商。
 
 ## <a name="next-steps"></a>后续步骤
 

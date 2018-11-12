@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: b0f1ba7f0799fb9f8f58370a39758416eab43dc7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2dffc178a017d8b16ea7a36407d8bbf62c6d642
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195798"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242137"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -150,7 +150,7 @@ ms.locfileid: "32195798"
     }
     ```
 
-1. 在“解决方案资源管理器”中，双击“web.config”将其打开。
+1. 在“解决方案资源管理器”中，双击“Web.config”将其打开。
 
     ![Web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
@@ -709,7 +709,7 @@ ms.locfileid: "32195798"
 
     下表描述了示例应用程序中的每个操作链接：
 
-    | 操作 | 说明 |
+    | 操作 | Description |
     | --- | --- |
     | 新建 |创建新的团队。 |
     | 举行赛季的比赛 |举行一赛季的比赛、更新团队统计信息，以及从缓存中清除任何过时的团队数据。 |

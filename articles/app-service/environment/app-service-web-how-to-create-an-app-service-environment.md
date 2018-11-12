@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 2741ea2931ddd7989fc05e1cddbeedb80bf30410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1df3b790d0c6c0f597a8559551ff5e42c9f110e4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386616"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230261"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
 
@@ -28,12 +28,12 @@ ms.locfileid: "29386616"
 > 
 
 ### <a name="overview"></a>概述
-应用服务环境 (ASE) 是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是将 Azure 应用服务部署到客户的虚拟网络。 若要更好地理解应用服务环境所提供的功能，请阅读文档：[什么是应用服务环境][WhatisASE]。
+应用服务环境 (ASE) 是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是将 Azure 应用服务部署到客户的虚拟网络。 若要更好地理解应用服务环境所提供的功能，请阅读文档： [什么是应用服务环境][WhatisASE] 。
 
 ### <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作
 请务必了解不能更改的事项。 创建 ASE 后，不能更改的方面包括：
 
-* Location
+* 位置
 * 订阅
 * 资源组
 * 使用的 VNet
@@ -43,7 +43,7 @@ ms.locfileid: "29386616"
 选择 VNet 及指定子网时，请确保大小足够容纳任何未来增长。 
 
 ### <a name="creating-an-app-service-environment-v1"></a>创建应用服务环境 v1
-若要创建应用服务环境 v1，可以在 Azure Marketplace 中搜索“应用服务环境 v1”，或者访问“创建资源” -> “Web + 移动” -> “应用服务环境”。 若要创建 ASEv1，请执行以下操作：
+若要创建应用服务环境 v1，可以在 Azure 市场中搜索“应用服务环境 v1”，或者访问“创建资源” -> “Web + 移动” -> “应用服务环境”。 若要创建 ASEv1，请执行以下操作：
 
 1. 提供 ASE 的名称。 为 ASE 指定的名称将用于在 ASE 中创建的应用。 如果 ASE 的名称为 appsvcenvdemo，则子域名称将是：*appsvcenvdemo.p.azurewebsites.net*。 因此，如果创建了名为 *mytestapp* 的应用，则可在 *mytestapp.appsvcenvdemo.p.azurewebsites.net* 中访问它。 不能在 ASE 名称中使用空格。 如果在名称中使用大写字符，域名将为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称。
    

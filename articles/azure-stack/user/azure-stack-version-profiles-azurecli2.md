@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067697"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277267"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>使用 Azure CLI 在 Azure Stack 中使用 API 版本配置文件
 
@@ -139,6 +139,18 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
+    c. 若要注册*用户*在多租户环境中，使用：
+
+      ```azurecli
+      az cloud register \ 
+        -n AzureStackUser \ 
+        --endpoint-resource-manager "https://management.local.azurestack.external" \ 
+        --suffix-storage-endpoint "local.azurestack.external" \ 
+        --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
+        --profile 2018-03-01-hybrid
+      ```
 
 1. 使用以下命令设置活动环境。
 
@@ -164,7 +176,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
    ```
 
     >[!NOTE]  
-    >如果正在运行的 Azure Stack 1808 生成前的版本，你将需要使用 API 版本配置文件**2017年-03-09-profile**而不是 API 版本配置文件**2018年-03-01-混合**。
+    >如果正在运行的 Azure Stack 版本低于 1808 版，则需要使用 API 版本配置文件 **2017-03-09-profile**，而不是 API 版本配置文件 **2018-03-01-hybrid**。
 
 1. 使用 `az login` 命令登录到 Azure Stack 环境。 可以用户身份或以[服务主体](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)的形式登录到 Azure Stack 环境。 
 
@@ -223,7 +235,7 @@ az group create \
 在 Azure Stack 中使用 CLI 时，必须注意一些已知问题：
 
  - Azure Stack 尚不支持 CLI 交互模式（例如 `az interactive` 命令）。
- - 若要获取 Azure Stack 中可用的虚拟机映像列表，请使用 `az vm images list --all` 命令，而不是 `az vm image list` 命令。 指定 `--all` 选项可确保响应只返回 Azure Stack 环境中可用的映像。
+ - 若要获取 Azure Stack 中可用的虚拟机映像列表，请使用 `az vm image list --all` 命令，而不是 `az vm image list` 命令。 指定 `--all` 选项可确保响应只返回 Azure Stack 环境中可用的映像。
  - Azure 中可用的虚拟机映像别名可能不适用于 Azure Stack。 使用虚拟机映像时，必须使用整个 URN 参数 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0)，而不是映像别名。 此 URN 必须与派生自 `az vm images list` 命令的映像规范相匹配。
 
 ## <a name="next-steps"></a>后续步骤

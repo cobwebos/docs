@@ -7,140 +7,113 @@ author: diberry
 manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036076"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139903"
 ---
-# <a name="manage-intents"></a>管理意向 
+# <a name="add-intents"></a>添加意向 
+
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。 
 
-意向通过顶部工具栏中的“生成”部分进行管理。 可以从左侧面板中打开“意向”页添加和管理意向。 
+可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
 
-以下过程演示如何在 TravelAgent 应用中添加“Bookflight”意向。
+## <a name="create-an-app"></a>创建应用
+
+1. 登录到 [LUIS](https://www.luis.ai) 门户。
+
+1. 选择“创建新应用”。 
+
+1. 将新应用命名为 `MyHumanResourcesApp`。 选择“英语”区域性。 说明是可选的。 
+
+1. 选择“完成”。 
 
 ## <a name="add-intent"></a>添加意向
 
-1. 通过单击“我的应用”页中的应用名称来打开应用（如 TravelAgent），然后单击左侧面板中的“意向”。 
-2. 在“意向”页上，单击“创建新意向”。
+1. 应用将会打开并显示“意向”列表。
 
-3. 在“创建新意向”对话框中，键入意向名称“BookFlight”，然后单击“完成”。
+1. 在“意向”页上，选择“创建新意向”。
+
+1. 在“创建新意向”对话框中，输入意向名称 `GetEmployeeInformation`，然后单击“完成”。
 
     ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    在新添加意向的意向详细信息页上，[添加表述](#add-an-utterance-on-intent-page)。
+## <a name="add-an-example-utterance"></a>添加示例话语
 
-## <a name="rename-intent"></a>重命名意向
+示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 
-1. 在“意向”页上，单击意向名称旁边的“重命名”图标 ![重命名意向](./media/luis-how-to-add-intents/Rename-Intent-btn.png)。 
-
-2. “意向”页上的对话框中显示当前的意向名称。 编辑意向名称，然后按 Enter。 将保存新名称并在意向页上显示。
-
-    ![编辑意向](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
-
-## <a name="delete-intent"></a>删除意向
-删除 None 意向以外的意向时，可将所有表述添加到 None 意向。 需要移动而非删除表述时，此方法非常有用。   
-
-1. 在“意向”页上，单击意向名称右侧的“删除意向”按钮。 
-
-    ![“删除意向”按钮](./media/luis-how-to-add-intents/DeleteIntent.png)
-
-2. 单击确认对话框上的“确定”按钮。
-
-<!--
-    TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
-
-    ![Delete Intent Dialog](./media/luis-how-to-add-intents/DeleteIntent-Confirmation.png)
--->
-
-
-## <a name="add-an-utterance-on-intent-page"></a>在意向页添加表述
-
-在意向页的意向名称下的文本框中，输入预期用户会输入的相关表述，例如 `book 2 adult business tickets to Paris tomorrow on Air France`，然后按 Enter。 
+1. 在“GetEmployeeInformation”意向详细信息页上的意向名称下的文本框中，输入预期用户会输入的相关话语，例如 `Does John Smith work in Seattle?`，然后按 Enter。
  
->[!NOTE]
->LUIS 会将所有表述转换为小写。
+    ![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    LUIS 会将所有话语转换为小写，并在连字符等标记的两侧添加空格。
 
-表述随即添加到当前意向的表述列表中。 添加表述后，在表述中[为任何实体添加标记](luis-how-to-add-example-utterances.md)，然后[培训](luis-how-to-train.md)应用。 
+## <a name="intent-prediction-discrepancy-errors"></a>意向预测偏差错误 
 
-## <a name="create-a-pattern-from-an-utterance"></a>通过表述创建模式
-请参阅[在意向或实体页上通过现有表述添加模式](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)。
+意向中的话语可能在所选意向和预测分数之间存在意向预测偏差。 LUIS 通过用红框围住示例话语行上的“已标记意向”来指示这种偏差。 
 
-## <a name="edit-an-utterance-on-intent-page"></a>在意向页编辑表述
+![意向详细信息页的屏幕截图，其中突出显示了表述](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
-要编辑话语，请选择该话语所在行最右侧的省略号 (...) 按钮，然后选择“编辑”。 修改文本，然后在键盘上按 Enter。
+在顶部导航栏中，选择“训练”。 预测偏差现已消失。
 
-![意向详细信息页的屏幕截图，其中突出显示了省略号按钮](./media/luis-how-to-add-intents/edit-utterance.png) 
+## <a name="add-a-custom-entity"></a>添加自定义实体
 
-## <a name="reassign-utterances-on-intent-page"></a>在意向页上重新分配表述
-通过将表述重新分配给其他意向，可更改一个或多个表述的意向。 
+将话语添加到意向后，可以选择话语内部的文本来创建自定义实体。 通过自定义实体可以标记要提取的文本，以及正确的意向。 
 
-若要将一个表述重新分配给其他意向，请在该表述所在行的最右侧，从“已标记意向”列下选择正确的意向名称。 该表述随即从当前意向的表述列表中删除。 
+1. 在话语中选择单词 `Seattle`。 系统会使用方括号括住文本，并显示一个下拉菜单。 
 
-![BookFlight 意向页的屏幕截图，其中选中了“已标记意向”列下的一个表述的意向](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+    ![在“意向详细信息”页上创建自定义实体的屏幕截图](./media/luis-how-to-add-intents/create-custom-entity.png) 
 
-要更改多个表述的意向，请选择表述左侧的复选框，然后选择“重新分配意向”。 从列表中选择正确的意向。
+    此示例选择了要标记为实体的单个单词。 可将单个单词或短语标记为实体。
 
-![BookFlight 意向页的屏幕截图，其中选中了一个表述并且突出显示了“重新分配意向”按钮](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+1. 在菜单的顶部文本框中输入 `Location`，然后选择“创建新实体”。 
 
-## <a name="delete-utterances-on-intent-page"></a>删除意向页上的表述
+    ![在“意向详细信息”页上创建自定义实体名称的屏幕截图](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
 
-要删除话语，请选择该话语所在行最右侧的省略号 (...) 按钮，然后选择“删除”。 该表述随即从列表和 LUIS 应用中删除。
+1. 在用于创建实体的“要创建哪种类型的实体?”弹出窗口中，验证“实体名称”是否为“位置”，“实体类型”是否为“简单”。 选择“完成”。
 
-![意向详细信息页的屏幕截图，其中突出显示了“删除”选项](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+## <a name="entity-prediction-discrepancy-errors"></a>实体预测偏差错误 
 
-要删除多个表述：
+带红色下划线的实体表示存在[实体预测偏差](luis-how-to-add-example-utterances.md#entity-status-predictions)。 由于这是第一个出现的实体，LUIS 并未获得足够的示例，因此无法十分确信已使用正确的实体标记了此文本。 训练应用时，这种偏差将会消除。 
 
-1. 选中表述左侧的复选框，然后选择“删除表述”。 
+![“意向详细信息”页的屏幕截图，其中以蓝色突出显示了自定义实体名称](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-    ![意向详细信息页的屏幕截图，其中选中了多个表述并突出显示了“删除表述”按钮](./media/luis-how-to-add-intents/delete-several-utterances.png)
+文本以蓝色突出显示，表示它是一个实体。  
 
-2. 在“删除表述?”弹出对话框中，选择“完成”。
+## <a name="add-a-prebuilt-entity"></a>添加预构建实体
 
-## <a name="search-in-utterances-on-intent-page"></a>在意向页搜索表述
-可以在意向的话语列表中搜索包含文本（字词或短语）的话语。 例如，你可能会发现涉及某个特定字词的错误，并且希望找出包含该特定字词的所有示例。 
+有关信息，请参阅[预生成实体](luis-how-to-add-entities.md#add-prebuilt-entity)。
 
-1. 选择工具栏中的放大镜图标。
+## <a name="using-the-contextual-toolbar"></a>使用上下文工具栏
 
-    ![意向页的屏幕截图，其中突出显示了放大镜搜索图标](./media/luis-how-to-add-intents/magnifying-glass.png)
+在列表中选择一个或多个示例话语后，可以选中某个话语左侧的框，使用话语列表上方的工具栏执行以下操作：
 
-2. 搜索文本框随即显示。 在表述列表右上角的搜索框中键入字词或短语。 表述列表将更新，仅显示包含搜索文本的表述。 
+* 重新分配意向：将话语移到不同的意向
+* 删除话语
+* 实体筛选器：仅显示包含已筛选实体的话语
+* 全部显示/仅显示错误：显示存在预测错误的话语，或显示所有话语
+* 实体/标记视图：显示包含实体名称的实体视图，或显示话语的原始文本
+* 放大镜：搜索包含特定文本的话语
 
-    ![意向页屏幕截图，其中突出显示了搜索文本框](./media/luis-how-to-add-intents/search-textbox.png)
+## <a name="working-with-an-individual-utterance"></a>使用单个话语
 
-    若要取消搜索并还原表述的完整列表，请删除键入的搜索文本。 若要关闭搜索文本框，请再次选择工具栏中的放大镜图标。
+可以通过话语右侧的省略号菜单针对单个话语执行以下操作：
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>意向页上的预测偏差错误
-意向中的表述可能在所选意向和预测分数之间存在偏差。 LUIS 用带红框的分数表示此偏差。 
+* 编辑：更改话语的文本
+* 删除：从意向中删除话语。 如果仍想保留该话语，则更好的方法是将其移到 **None** 意向。 
+* 添加模式：使用模式可以提取常用话语以及标记可替换的文本和可忽略的文本，从而减少在意向中提供更多话语的需要。 
 
-![BookFlight 意向页的屏幕截图，其中突出显示了预测偏差分数](./media/luis-how-to-add-intents/score-discrepancy.png) 
-
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>在意向页上按意向预测偏差错误进行筛选
-要筛选表述列表以仅显示具有意向预测偏差的表述，请将工具栏中的“显示全部”切换到“仅错误”。 
-
-## <a name="filter-by-entity-type-on-intent-page"></a>在意向页上按实体类型进行筛选
-使用工具栏上的“实体筛选器”下拉列表，按实体筛选表述。 
-
-![意向页的屏幕截图，其中突出显示了实体类型筛选器](./media/luis-how-to-add-intents/filter-by-entities.png) 
-
-若要删除该筛选器，请选择工具栏下包含字词或短语的蓝色筛选框。  
-<!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
-
-## <a name="switch-to-token-view-on-intent-page"></a>在意向页上切换到标记视图
-切换“标记视图”，查看标记而非实体类型名称。 还可使用键盘上的 Ctrl+E 切换视图。 
-
-![BookFlight 意向的屏幕截图，其中突出显示了“标记视图”](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+使用“已标记的意向”列可以更改话语的意向。
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>在对模型进行意向更改后对应用进行培训
-添加、编辑或删除意向后，请针对更改来[培训](luis-how-to-train.md)和[发布](luis-how-to-publish-app.md)应用以影响终结点查询。 
+
+添加、编辑或删除意向后，请[训练](luis-how-to-train.md)并[发布](luis-how-to-publish-app.md)应用，以便将更改应用到终结点查询。 
 
 ## <a name="next-steps"></a>后续步骤
 
-将意向添加到应用后，下一个任务是开始为添加的意向添加[示例表述](luis-how-to-add-example-utterances.md)。 
+详细了解如何添加包含实体的[示例话语](luis-how-to-add-example-utterances.md)。 

@@ -1,32 +1,47 @@
 ---
-title: 使用 Azure 机器人服务创建 QnA 机器人 - QnA Maker
+title: 教程：使用 Azure 机器人服务创建 QnA 机器人 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.component: qna-maker`
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 30400b04ec08d936242b022f10cf1485e009e6d2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647317"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212726"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>使用 Azure 机器人服务 v3 创建 QnA 机器人
-本教程介绍在 Azure 门户中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程。
+# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 
-## <a name="prerequisite"></a>先决条件
-生成之前，请按照[创建知识库](../How-To/create-knowledge-base.md)中的步骤创建包含问题和回答的 QnA Maker 服务。
+本教程介绍了在 [Azure 门户](https://portal.azure.com)中使用 Azure 机器人服务 v3 生成 QnA 机器人的完整过程，不需要编写任何代码。 将已发布的知识库 (KB) 连接到机器人就像更改机器人应用程序设置一样简单。 
 
-该机器人通过 QnAMakerDialog 响应所创建的知识库中的问题。
+> [!Note] 
+> 本主题适用于机器人 SDK 版本 3。 可以在[此处](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)找到版本 4。 
+
+**本教程介绍如何执行下列操作：**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 使用 QnA Maker 模板创建 Azure 机器人服务
+> * 与机器人聊天来验证代码是否正常工作 
+> * 将已发布的 KB 连接到机器人
+> * 使用问题对机器人进行测试
+
+对于本文，你可以使用免费的 QnA Maker [服务](../how-to/set-up-qnamaker-service-azure.md)。
+
+## <a name="prerequisites"></a>先决条件
+
+本教程需要一个已发布的知识库。 如果没有知识库，请按照[创建知识库](../How-To/create-knowledge-base.md)中的步骤创建包含问题和回答的 QnA Maker 服务。
 
 ## <a name="create-a-qna-bot"></a>创建 QnA 机器人
-1. 在 [Azure 门户](https://portal.azure.com)的菜单边栏选项卡中，选择“创建”以创建新资源，然后选择“查看全部”。
+
+1. 在 Azure 门户中，选择“创建资源”。
 
     ![创建机器人服务](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
 
@@ -34,12 +49,12 @@ ms.locfileid: "49647317"
 
     ![选择机器人服务](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. 在“机器人服务”边栏选项卡中提供所需的信息：
+3. 在“机器人服务”中提供所需的信息：
 
     - 将“应用名称”设置为机器人名称。 将机器人部署到云（例如，mynotesbot.azurewebsites.net）时，该名称用作子域。
     - 选择订阅、资源组、应用服务计划和位置。
 
-4. 若要查看使用 SDK v4 创建 QnA 机器人的说明，请参阅 [QnA v4 机器人模板](https://aka.ms/qna-bot-v4)。 若要使用 v3 模板，请选择 **SDK v3** 作为 SDK 版本，选择 **C#** 或 **Node.js** 作为 SDK 语言。
+4. 若要使用 v3 模板，请选择 **SDK v3** 作为 SDK 版本，选择 **C#** 或 **Node.js** 作为 SDK 语言。
 
     ![机器人 sdk 设置](../media/qnamaker-tutorials-create-bot/bot-v3.png)
 
@@ -47,7 +62,7 @@ ms.locfileid: "49647317"
 
     ![选择机器人服务](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
 
-6. 查看设置，然后选择“创建”。 此操作可创建具有 QnAMakerDialog 的机器人服务并将其部署到 Azure。
+6. 查看设置，然后选择“创建”。 这将创建机器人服务并将其部署到 Azure。
 
     ![选择机器人服务](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
 
@@ -57,13 +72,14 @@ ms.locfileid: "49647317"
     - 通知更改为“部署已成功”后，选择该通知中的“转到资源”。
 
 ## <a name="chat-with-the-bot"></a>与机器人聊天
-选择“转到资源”，导航到机器人的资源边栏选项卡。
 
-注册机器人后，单击“通过网页聊天执行测试”，打开“网页聊天”窗格。 在网页聊天中键入“你好”。
+选择“转到资源”，导航到机器人的资源。
+
+选择“通过网上聊天执行测试”，打开“网上聊天”窗格。 在网上聊天中键入“hi”。
 
 ![QnA 机器人网页聊天](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
 
-机器人将响应“请在‘应用设置’中设置 QnAKnowledgebaseId 和 QnASubscriptionKey。 请前往 https://aka.ms/qnaabssetup 了解获取方法”。 此响应表明 QnA Bot 已收到消息，但尚无与其关联的 QnA Maker 知识库。 此关联操作将在下一步中执行。
+机器人将响应“请在‘应用设置’中设置 QnAKnowledgebaseId 和 QnASubscriptionKey。 此响应表明 QnA Bot 已收到消息，但尚无与其关联的 QnA Maker 知识库。 
 
 ## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>将 QnA Maker 知识库连接到机器人
 
@@ -71,10 +87,11 @@ ms.locfileid: "49647317"
 
     ![应用程序设置](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
 
-2. 从 https://qnamaker.ai 中知识库的“设置”选项卡获取知识库 ID、主机 URL 和终结点密钥。
+1. 在 QnA Maker 门户中从知识库的“设置”选项卡获取知识库 ID、主机 URL 和终结点密钥。
+
     - 登录 [QnA Maker](https://qnamaker.ai)
     - 转到你的知识库
-    - 单击“设置”选项卡
+    - 选择“设置”选项卡
     - “发布”知识库（如果尚未执行该操作）
 
     ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
@@ -83,16 +100,27 @@ ms.locfileid: "49647317"
 > 如果要将预览版知识库与 QnA 机器人连接，请将“Ocp-Apim-Subscription-Key”的值设置为“QnAAuthKey”。 将“QnAEndpointHostName”留空。
 
 ## <a name="test-the-bot"></a>测试机器人
-在 Azure 门户中，选择“通过网页聊天执行测试”以测试机器人。 
+
+在 Azure 门户中，选择“在 Web 聊天中测试”以测试机器人。 
 
 ![QnA Maker 机器人](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
 
-QnA 机器人现在通过知识库给出答案。
+QnA 机器人通过知识库给出答案。
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成本教程中的机器人后，在 Azure 门户中删除机器人。 机器人服务包括：
+
+* 应用服务计划
+* 搜索服务
+* 认知服务
+* 应用服务
+* 另外，它还可以包括 Application Insights 服务和 Application Insights 数据的存储
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [集成 QnA Maker 和 LUIS](./integrate-qnamaker-luis.md)
+> [概念：知识库](../concepts/knowledge-base.md)
 
 ## <a name="see-also"></a>另请参阅
 

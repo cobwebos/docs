@@ -3,17 +3,17 @@ title: 将泛型 Node.js 客户端应用程序连接到 Azure IoT Central | Micr
 description: 如何以设备开发人员的身份将泛型 Node.js 设备连接到 Azure IoT Central 应用程序。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4702b0eb53897f173311c40469c912cf41751f24
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733458"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155144"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -41,9 +41,9 @@ ms.locfileid: "45733458"
 | 压力     | 压力    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  遥测度量的数据类型为 double。
+  遥测度量的数据类型是一个浮点数。
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配，则遥测无法显示在应用程序中。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则遥测数据无法显示在应用程序中。
 
 ### <a name="state-measurements"></a>状态度量
 
@@ -56,13 +56,13 @@ ms.locfileid: "45733458"
 > [!NOTE]
   状态度量的数据类型为字符串。
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配，则状态无法显示在应用程序中。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则状态无法显示在应用程序中。
 
 ### <a name="event-measurements"></a>事件度量
 
 在“度量”页中添加以下事件：
 
-| 显示名称 | 字段名称  | Severity |
+| 显示名称 | 字段名称  | 严重性 |
 | ------------ | ----------- | -------- |
 | 过热  | 过热    | 错误    |
 
@@ -78,26 +78,26 @@ ms.locfileid: "45733458"
 | 序列号       | serialNumber      | text      |
 | 设备制造商 | 制造商      | text      |
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配，则应用程序无法显示属性值。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则应用程序无法显示设备属性值。
 
 ### <a name="settings"></a>设置
 
 在**设置页**中添加以下**数字**设置：
 
-| 显示名称    | 字段名称     | 单位 | 小数 | Min | Max  | Initial |
+| 显示名称    | 字段名称     | 单位 | 小数 | Min | Max  | 初始 |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | 风扇速度       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | 设置温度 | setTemperature | F     | 0        | 20  | 200  | 80      |
 
-将表中所示字段名称准确输入设备模板中。 如果字段名称不匹配，则设备无法接收设置值。
+将表中所示字段名称准确输入设备模板中。 如果字段名称与对应的设备代码中的属性名称不匹配，则设备不能收到设置值。
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从创建的设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[向 Azure IoT Central 应用程序添加真实设备](tutorial-add-device.md)
+在 Azure IoT Central 应用程序中，从创建的设备模板添加真实设备，并记下设备连接字符串。 有关如何将 Node.js 应用程序连接到 IoT Central 的分步说明，请参阅“教程”>“添加设备”中的[从应用程序为真实设备生成连接字符串](tutorial-add-device.md#generate-connection-string-for-real-device-from-application)和[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)。
 
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-以下步骤演示如何创建一个客户端应用程序，以便实现已添加到应用程序的真实设备。
+以下步骤演示如何创建一个客户端应用程序，以便实现已添加到应用程序的真实设备。 此处，Node.js 应用程序表示真实的物理设备。 
 
 1. 在计算机上创建名为 `connected-air-conditioner-adv` 的文件夹。 导航到命令行环境中的该文件夹。
 
@@ -130,10 +130,10 @@ ms.locfileid: "45733458"
     ```
 
   > [!NOTE]
-   > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。
+  > Azure IoT Central 已转换为对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)，请按照以下说明[获取设备连接字符串](concepts-connectivity.md#getting-device-connection-string)并继续执行教程的剩余部分。 如果需要更多帮助，还可以在“教程”>“添加设备”中的[准备客户端代码](tutorial-add-device.md#prepare-the-client-code)中找到一组详细说明。
 
 
-    将占位符 `{your device connection string}` 更新为设备连接字符串。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
+  将占位符 `{your device connection string}` 更新为设备连接字符串。 在此示例中，我们将 `targetTemperature` 初始化为零。你可以选择从设备获取当前的读取内容，也可以从设备孪生获取值。 
 
 1. 若要向 Azure IoT Central 应用程序发送遥测、状态和事件度量，请将以下函数添加到文件：
 
@@ -157,7 +157,7 @@ ms.locfileid: "45733458"
     }
     ```
 
-    1. 若要向 Azure IoT Central 应用程序发送设备属性，请将以下函数添加到文件：
+1. 若要向 Azure IoT Central 应用程序发送设备属性，请将以下函数添加到文件：
 
     ```javascript
     // Send device properties.
@@ -269,11 +269,11 @@ node connectedAirConditionerAdv.js
 
     ![查看遥测数据](media/howto-connect-nodejs/viewtelemetry.png)
 
-* 在“属性”页上查看从设备发送的设备属性值。
+* 在“属性”页上查看从设备发送的设备属性值。 如果连接成功，设备属性磁贴将会更新。 
 
     ![查看设备属性](media/howto-connect-nodejs/viewproperties.png)
 
-* 在“设置”页中设置风扇速度和目标温度。
+* 在“设置”页中设置风扇速度和目标温度。 如果连接成功，设置值将会同步。 
 
     ![设置风扇速度](media/howto-connect-nodejs/setfanspeed.png)
 

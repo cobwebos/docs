@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323704"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212244"
 ---
 # <a name="egress-and-endpoints"></a>出口和终结点
 
 Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用户的 Azure 订阅中的消息/事件代理。 可以将事件和消息发送到**事件中心**、**事件网格**和**服务总线主题**。
 
-事件将根据预定义的路由首选项发送至终结点：用户可以指定应接收以下任一事件的终结点：`TopologyOperation`、`UdfCustom`、`SensorChange`、`SpaceChange` 或 `DeviceMessage`。
+事件将根据预定义的路由首选项发送至终结点：用户可以指定应接收以下任一事件的终结点：**TopologyOperation**、**UdfCustom**、**SensorChange**、**SpaceChange** 或 **DeviceMessage**。
 
 若要对事件路由和事件类型有基本了解，请参阅[路由事件和消息](concepts-events-routing.md)。
 
@@ -27,9 +27,9 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 
 以下是每个事件类型的事件格式：
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  适用于图形更改。 `subject` 属性指定受影响的对象类型。 可能触发此事件的对象类型包括：`Device, DeviceBlobMetadata`、`DeviceExtendedProperty`、`ExtendedPropertyKey`、`ExtendedType`、`KeyStore`、`Report`、`RoleDefinition`、`Sensor`、`SensorBlobMetadata`、`SensorExtendedProperty`、`Space`、`SpaceBlobMetadata`、`SpaceExtendedProperty`、`SpaceResource`、`SpaceRoleAssignment`、`System`、`User`、`UserBlobMetadata`、`UserExtendedProperty`。
+  适用于图形更改。 *subject* 属性指定受影响的对象类型。 可以触发此事件的对象类型有：**Device**、**DeviceBlobMetadata**、**DeviceExtendedProperty**、**ExtendedPropertyKey**、**ExtendedType**、**KeyStore**、**Report**、**RoleDefinition**、**Sensor**、**SensorBlobMetadata**、**SensorExtendedProperty**、**Space**、**SpaceBlobMetadata**、**SpaceExtendedProperty**、**SpaceResource**、**SpaceRoleAssignment**、**System**、**User**、**UserBlobMetadata**、**UserExtendedProperty**。
 
   示例：
 
@@ -55,11 +55,14 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  由用户定义的函数 (UDF) 发送的事件。 请注意，必须从 UDF 本身显式发送此事件。
+  由用户定义的函数 (UDF) 发送的事件。 
+  
+  > [!IMPORTANT]
+  > 必须从 UDF 本身显式发送此事件。
 
   示例：
 
@@ -83,9 +86,9 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- `SensorChange`
+- **SensorChange**
 
   以遥测更改为基础的传感器状态更新。
 
@@ -118,9 +121,9 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- `SpaceChange`
+- **SpaceChange**
 
   以遥测更改为基础的空间状态更新。
 
@@ -153,15 +156,15 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  允许指定 `EventHub` 连接，原始遥测事件也可从 Azure 数字孪生路由至此。
+  允许指定 **EventHub** 连接，原始遥测事件也可从 Azure 数字孪生路由至此。
 
 > [!NOTE]
-> - `DeviceMessage` 只能与 `EventHub` 结合使用；不能将 `DeviceMessage` 与任何其他事件类型结合使用。
-> - 只能指定一个 `EventHub`/`DeviceMessage` 组合类型的终结点。
+> - **DeviceMessage** 只能与 **EventHub** 结合使用；不能将 **DeviceMessage** 与任何其他事件类型结合使用。
+> - 只能指定一个 **EventHub** 或 **DeviceMessage** 组合类型的终结点。
 
 ## <a name="configuring-endpoints"></a>配置终结点
 
@@ -171,7 +174,7 @@ Azure 数字孪生支持_终结点_的概念，其中每个终结点均代表用
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- 路由到**服务总线**的事件类型：`SensorChange`、`SpaceChange`、`TopologyOperation`
+- 路由到**服务总线**事件类型：**SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourNamespace` | 终结点的命名空间 |
-    | `yourPrimaryKey` | 用于进行身份验证的主要连接字符串 |
-    | `yourSecondaryKey` | 用于进行身份验证的次要连接字符串 |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourNamespace* | 终结点的命名空间 |
+    | *yourPrimaryKey* | 用于进行身份验证的主要连接字符串 |
+    | *yourSecondaryKey* | 用于进行身份验证的次要连接字符串 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- 路由到**事件网格**的事件类型：`SensorChange`、`SpaceChange`、`TopologyOperation`
+- 路由到**事件网格**事件类型：**SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourPrimaryKey` | 用于进行身份验证的主要连接字符串|
-    | `yourSecondaryKey` | 用于进行身份验证的次要连接字符串 |
-    | `yourTopicName` | 自定义主题的名称 |
+    | *yourPrimaryKey* | 用于进行身份验证的主要连接字符串|
+    | *yourSecondaryKey* | 用于进行身份验证的次要连接字符串 |
+    | *yourTopicName* | 自定义主题的名称 |
 
-- 路由到**事件中心**的事件类型：`SensorChange`、`SpaceChange`、`TopologyOperation`
+- 路由到**事件中心**事件类型：**SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourNamespace` | 终结点的命名空间 |
-    | `yourPrimaryKey` | 用于进行身份验证的主要连接字符串 |
-    | `yourSecondaryKey` | 用于进行身份验证的次要连接字符串 |
-    | `yourEventHubName` | 事件中心的名称 |
+    | *yourNamespace* | 终结点的命名空间 |
+    | *yourPrimaryKey* | 用于进行身份验证的主要连接字符串 |
+    | *yourSecondaryKey* | 用于进行身份验证的次要连接字符串 |
+    | *yourEventHubName* | 你的**事件中心**的名称 |
 
-- 路由到**事件中心**的事件类型 `DeviceMessage`。 请注意包含在 `connectionString` 中的 _EntityPath_，这是必需项。
+- 路由到**事件中心**事件类型：**DeviceMessage**。 必须在 **connectionString** 中包括 `EntityPath`。
 
   ```JSON
   {
@@ -255,10 +258,10 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | 自定义属性名称 | 替换为 |
     | --- | --- |
-    | `yourNamespace` | 终结点的命名空间 |
-    | `yourPrimaryKey` | 用于进行身份验证的主要连接字符串 |
-    | `yourSecondaryKey` | 用于进行身份验证的次要连接字符串 |
-    | `yourEventHubName` | 事件中心的名称 |
+    | *yourNamespace* | 终结点的命名空间 |
+    | *yourPrimaryKey* | 用于进行身份验证的主要连接字符串 |
+    | *yourSecondaryKey* | 用于进行身份验证的次要连接字符串 |
+    | *yourEventHubName* | 你的**事件中心**的名称 |
 
 > [!NOTE]
 > 创建新的终结点时，可能需要 5 到 10 分钟的时间，才能开始在终结点上接收事件。

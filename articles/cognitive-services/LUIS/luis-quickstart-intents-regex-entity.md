@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 06e212ef756fda9224b38b41c69c7c4eccfb9796
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159850"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282374"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>教程 3：提取格式良好的数据
 在本教程中，我们将修改人力资源应用，以使用“正则表达式”实体从话语中提取带有一致格式的数据。
@@ -44,11 +44,11 @@ HRF-456098 title?
 > * 使用现有的教程应用
 > * 添加 FindForm 意向
 > * 添加正则表达式实体 
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
@@ -63,7 +63,7 @@ HRF-456098 title?
 
 ## <a name="findform-intent"></a>FindForm 意向
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“创建新意向”。 
 
@@ -90,7 +90,7 @@ HRF-456098 title?
 
     应用程序包含从前一教程添加的预生成数字实体，因此，已标记每个表单编号。 此信息可能对客户端应用程序而言已足够，但不会使用数字类型来标记编号。 使用适当的名称创建新实体可以在从 LUIS 返回实体后，让客户端应用程序适当地处理该实体。
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 要与表单编号匹配的正则表达式实体是 `hrf-[0-9]{6}`。 此正则表达式匹配文本字符 `hrf-`，但忽略大小写和区域性变体。 它完全匹配数字 0-9 中的 6 个数字。
@@ -115,7 +115,7 @@ HRF 代表 `human resources form`。
 
     因为该实体不是机器学习的实体，因此，在创建标签后，该标签将立即应用到陈述并显示在 LUIS 网站中。
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

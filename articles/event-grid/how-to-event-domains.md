@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 48a5356b03e38e864ba76f048febdb0b040893f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d6da1ee603c85556693b145ba17d1e0cd0dfabd7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669294"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034534"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 
@@ -84,7 +84,7 @@ az eventgrid event-subscription create \
 
 ## <a name="manage-access-to-topics"></a>管理对主题的访问
 
-可通过[角色分配](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli)来管理对主题的访问。 角色分配使用“基于角色的访问权限检查” Azure 资源的操作权限限制为特定范围的已授权用户。
+可通过[角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)来管理对主题的访问。 角色分配使用“基于角色的访问权限检查” Azure 资源的操作权限限制为特定范围的已授权用户。
 
 事件网格包含两个内置角色，可以使用这些角色为特定用户分配对域中不同主题的访问权限。 这些角色为 `EventGrid EventSubscription Contributor (Preview)` 和 `EventGrid EventSubscription Reader (Preview)`，分别用于创建/删除订阅，以及只允许列出事件订阅。
 

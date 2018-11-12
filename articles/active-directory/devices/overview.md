@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f239b3ef6881f9ea1be043b7d27f061e015ae3be
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224624"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037355"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>什么是 Azure Active Directory 中的设备管理？
 
@@ -45,7 +45,7 @@ ms.locfileid: "47224624"
 
 通过向 Azure AD 注册设备可管理设备标识。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录 Azure AD 时对设备进行身份验证。 可使用此标识启用或禁用设备。
 
-当与 Microsoft Intune 之类的移动设备管理 (MDM) 解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。 有关在 Microsoft Intune 中注册设备的详细信息，请参阅“在 Intune 中注册要管理的设备”。
+当与 Microsoft Intune 之类的移动设备管理 (MDM) 解决方案结合使用时，Azure AD 中的设备属性将使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。 有关在 Microsoft Intune 中注册设备的详细信息，请参阅[在 Intune 中注册要管理的设备](https://docs.microsoft.com/intune/device-enrollment#supported-device-platforms)。
 
 加入设备是注册设备的扩展。 这意味着，加入设备除可提供注册设备的所有优势之外，还可更改设备的本地状态。 更改本地状态后，用户可以使用组织的工作或学校帐户而不是个人帐户登录设备。
 

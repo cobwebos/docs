@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
-ms.reviewer: ''
+ms.reviewer: quying
 ms.custom: mvc
-ms.openlocfilehash: 35f4d2adfe3ca64496139cdd708fb5f52f8721ee
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ae32138dffa296a4aad9917897e180d364f189fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023471"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037818"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>教程：将 SQL 数据库提供给 Azure Stack 用户使用
 
@@ -59,7 +59,7 @@ Azure Stack 云管理员可以创建套餐，使用户（租户）能够创建 S
 1. 以租户身份登录到 Azure Stack 门户 (https://portal.local.azurestack.external)。
 2. 选择“获取订阅”，然后在“显示名称”下输入 **TestSQLServerSubscription**。
 3. 选择“选择套餐” > “TestSQLServerOffer” > “创建”。
-4. 选择**所有服务** > **订阅** > **TestSQLServerSubscription** > **资源提供程序**。
+4. 选择“所有服务” > “订阅” > “TestSQLServerSubscription” > “资源提供程序”。
 5. 选择“Microsoft.SQLAdapter”提供程序旁边的“注册”。
 
 ### <a name="create-a-sql-database"></a>创建 SQL 数据库
@@ -72,7 +72,7 @@ Azure Stack 云管理员可以创建套餐，使用户（租户）能够创建 S
     - **资源组**：SQL-RG
 3. 选择“登录设置”，输入数据库的凭据，然后选择“确定”。
 4. 选择“SKU”，选择为 SQL 宿主服务器创建的 SQL SKU，然后选择“确定”。
-5. 选择**创建**。
+5. 选择“创建”。
 
 ## <a name="next-steps"></a>后续步骤
 

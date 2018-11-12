@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402934"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008328"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>通过 Log Analytics Linux 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
+[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
  
 ## <a name="prerequisites"></a>先决条件
 Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
@@ -80,7 +80,7 @@ Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（�
 
 
 ## <a name="alert-records"></a>警报记录
-可以使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)来检索来自 Nagios 和 Zabbix 的警报记录。
+可以使用 Log Analytics 中的[日志搜索](log-analytics-queries.md)来检索来自 Nagios 和 Zabbix 的警报记录。
 
 ### <a name="nagios-alert-records"></a>Nagios 警报记录
 
@@ -118,5 +118,5 @@ Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 
 
 ## <a name="next-steps"></a>后续步骤
-* 在 Log Analytics 中了解[警报](log-analytics-alerts.md)。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
+* 在 Log Analytics 中了解[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
