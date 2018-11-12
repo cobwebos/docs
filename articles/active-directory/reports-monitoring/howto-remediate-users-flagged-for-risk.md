@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578882"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255773"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -61,11 +61,11 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 采取以下措施修正受影响的帐户，确保环境安全：
 
-1.  [验证](http://aka.ms/MFAValid)多重身份验证和自助密码重置的信息是否正确。 
-2.  为所有用户[启用](http://aka.ms/MFAuth)多重身份验证。 
-3.  对所有受影响的帐户使用此[修正脚本](http://aka.ms/remediate)即可自动执行以下步骤： 
+1.  [验证](https://aka.ms/MFAValid)多重身份验证和自助密码重置的信息是否正确。 
+2.  为所有用户[启用](https://aka.ms/MFAuth)多重身份验证。 
+3.  对所有受影响的帐户使用此[修正脚本](https://aka.ms/remediate)即可自动执行以下步骤： 
 
-    a. 重置密码以保护帐户安全并终止活动会话。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 重置密码以保护帐户安全并终止活动会话。
 
     b. 删除邮箱委托。
 
@@ -87,10 +87,10 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 除此之外，还应采取以下措施：
 
-- 在解决异常活动问题时，阅读并实施此[指南](http://aka.ms/fixaccount)。 
-- [启用审核管道](http://aka.ms/improvesecurity)来帮助自己分析在租户上进行的活动。 完成后，系统就会开始在审核存储中填充所有活动日志。 此时也可利用[安全性和符合性中心的搜索和调查](http://aka.ms/sccsearch)功能。 
-- 使用此[脚本](http://aka.ms/mailboxaudit1)对所有帐户启用邮箱审核功能。 
-- 查看所有邮箱的委托权限和邮件转发规则。 可以使用此 [PowerShell 脚本](http://aka.ms/delegateforwardrules)来执行此任务。 
+- 在解决异常活动问题时，阅读并实施此[指南](https://aka.ms/fixaccount)。 
+- [启用审核管道](https://aka.ms/improvesecurity)来帮助自己分析在租户上进行的活动。 完成后，系统就会开始在审核存储中填充所有活动日志。 此时也可利用[安全性和符合性中心的搜索和调查](https://aka.ms/sccsearch)功能。 
+- 使用此[脚本](https://aka.ms/mailboxaudit1)对所有帐户启用邮箱审核功能。 
+- 查看所有邮箱的委托权限和邮件转发规则。 可以使用此 [PowerShell 脚本](https://aka.ms/delegateforwardrules)来执行此任务。 
 
 
 

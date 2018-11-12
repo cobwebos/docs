@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 547943b04fdfb03a3eccf12a66772992f7fa6212
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249334"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238533"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -51,7 +51,7 @@ Azure 备份提供多个组件，可将其下载并部署到适当计算机、�
 
 ### <a name="site-recovery"></a>Site Recovery
 
-[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作。 系统恢复正常后可故障回复。 使用 Azure 安全中心执行更智能和更有效的威胁检测。
+[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作。 系统恢复正常后可故障回复。 使用 Azure 安全中心执行更智能和更有效的威胁检测。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 

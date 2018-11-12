@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
-ms.openlocfilehash: 33c3b91e7bf9fa64e3ba3f98a9396045753d0c2a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045688"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260034"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>对异常的定期作业进行疑难解答
 
-本文展示了如何使用[针对 Visual Studio 的 Azure Data Lake 工具](http://aka.ms/adltoolsvs)对定期作业的问题进行疑难解答。 从 [Azure Data Lake 和 Azure HDInsight 博客](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)中详细了解管道和定期作业。
+本文展示了如何使用[针对 Visual Studio 的 Azure Data Lake 工具](https://aka.ms/adltoolsvs)对定期作业的问题进行疑难解答。 从 [Azure Data Lake 和 Azure HDInsight 博客](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)中详细了解管道和定期作业。
 
 定期作业通常共享相同的查询逻辑和类似的输入数据。 例如，假定你有一个定期作业，该作业在每个星期一上午 8 点运行， 用于计算上周的每周活动用户。 这些作业的脚本共享一个包含查询逻辑的脚本模板。 这些作业的输入是上周的使用情况数据。 共享相同的查询逻辑和类似的输入通常意味着这些作业的性能类似且稳定。 如果你的定期作业之一突然性能异常、失败或执行速度大幅降低，则你可能希望：
 
@@ -39,7 +39,7 @@ ms.locfileid: "43045688"
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>案例 2：拥有定期作业的管道，但没有 URL
 
-在 Visual Studio 中，可以通过“服务器资源管理器”> 你的 Azure Data Lake Analytics 帐户 >“管道”打开管道浏览器。 （如果在服务器资源管理器中没有发现此节点，请[下载最新插件](http://aka.ms/adltoolsvs)。） 
+在 Visual Studio 中，可以通过“服务器资源管理器”> 你的 Azure Data Lake Analytics 帐户 >“管道”打开管道浏览器。 （如果在服务器资源管理器中没有发现此节点，请[下载最新插件](https://aka.ms/adltoolsvs)。） 
 
 ![选择“管道”节点](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 

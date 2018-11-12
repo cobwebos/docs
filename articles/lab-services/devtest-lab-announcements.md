@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259915"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室发布通告
 
@@ -35,7 +35,7 @@ ms.locfileid: "39049943"
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>在现有实验室中发布通告的步骤
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 （实验室可能已显示在“所有资源”下的“仪表板”上）。
 1. 从实验室列表中选择要在其中发布通告的实验室。  
 1. 在实验室的“概览”区域中，选择“配置和策略”。  
@@ -70,7 +70,7 @@ ms.locfileid: "39049943"
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>用户查看通告的步骤
 
-1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室。
+1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室。
 
 1. 如果已针对该实验室发布通告，则该实验室的“概述”页顶部会显示信息通知。 此信息通知是创建通告时指定的通告标题。
 

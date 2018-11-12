@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720117"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236000"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory 的应用程序访问与单一登录是什么？
 单一登录是指只需使用单个用户帐户登录一次，就能访问展开业务所需的全部应用程序和资源。 登录之后，用户可以访问全部所需的应用程序，而无需再次进行身份验证（例如键入密码）。
@@ -102,7 +102,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 以下是有关了解应用支持哪些功能的一些提示：
 
 * Azure AD 支持自动预配和取消预配 [Azure Active Directory 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中所有“特色”应用。
-* 在[此处](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)可以找到专门支持使用 SAML，WS 联合身份验证或 OpenID Connect 协议的联合单一登录的联合应用程序列表。
+* 在[此处](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)可以找到专门支持使用 SAML，WS 联合身份验证或 OpenID Connect 协议的联合单一登录的联合应用程序列表。
 
 找到应用程序后，可以按照应用程序库和 Azure 门户中的分步说明启用单一登录。
 

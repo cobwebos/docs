@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae212bebf5a34e9a80f49a750735137d7a8814be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213361"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232658"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
@@ -32,7 +32,7 @@ ms.locfileid: "39213361"
 Azure [VM 代理](../virtual-machines/extensions/agent-windows.md)必须安装在 VM 上,，以便 Site Recovery 可复制它。
 
 
-1. 若要在运行 Windows 的 VM 上安装 VM 代理，请下载并运行[代理安装程序](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要在 VM 上有管理员权限才能完成安装。
+1. 若要在运行 Windows 的 VM 上安装 VM 代理，请下载并运行[代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要在 VM 上有管理员权限才能完成安装。
 2. 若要在运行 Linux 的 VM 上安装 VM 代理，请安装最新 [Linux 代理](../virtual-machines/extensions/agent-linux.md)。 需要管理员权限才能完成安装。 我们建议从分发存储库安装。 我们不建议直接从 GitHub 安装 Linux VM 代理。 
 
 

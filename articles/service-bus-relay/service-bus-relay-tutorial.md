@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857969"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262006"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF 中继教程
 
@@ -35,7 +35,7 @@ ms.locfileid: "48857969"
 
 要完成本教程，需要以下各项：
 
-* [Microsoft Visual Studio 2015 或更高版本](http://visualstudio.com)。 本教程使用 Visual Studio 2017。
+* [Microsoft Visual Studio 2015 或更高版本](https://visualstudio.com)。 本教程使用 Visual Studio 2017。
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟的时间就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-service-namespace"></a>创建服务命名空间
@@ -81,7 +81,7 @@ ms.locfileid: "48857969"
     ```
 
    > [!NOTE]
-   > 通常情况下，服务协定命名空间包含一个包括版本信息的命名方案。 服务协定命名空间中包括的版本信息可以使服务通过将新服务协定定义为新命名空间并将其公开到新的终结点上，来隔离重大更改。 以这种方式，客户端可以继续使用旧的服务协定，而无需进行更新。 版本信息可能包含日期或内部版本号。 有关详细信息，请参阅 [服务版本控制](http://go.microsoft.com/fwlink/?LinkID=180498)。 鉴于此教程的目的，服务协定命名空间的命名方案不包含版本信息。
+   > 通常情况下，服务协定命名空间包含一个包括版本信息的命名方案。 服务协定命名空间中包括的版本信息可以使服务通过将新服务协定定义为新命名空间并将其公开到新的终结点上，来隔离重大更改。 以这种方式，客户端可以继续使用旧的服务协定，而无需进行更新。 版本信息可能包含日期或内部版本号。 有关详细信息，请参阅 [服务版本控制](https://go.microsoft.com/fwlink/?LinkID=180498)。 鉴于此教程的目的，服务协定命名空间的命名方案不包含版本信息。
    >
    >
 8. 在 `IEchoContract` 接口中，为 `IEchoContract` 协定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到希望将其作为公共 WCF 中继协定的一部分进行公开的方法中，如下所示：

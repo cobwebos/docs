@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 6ffa09343560e4ac55b1fd62325fd4e3bd370848
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242171"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258912"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -287,7 +287,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="replication"></a>复制
 
-复制功能在托管实例上当前为公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
+复制功能在托管实例上当前为公共预览版。 有关复制的信息，请参阅 [SQL Server 复制](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)。
 
 ### <a name="restore-statement"></a>RESTORE 语句
 

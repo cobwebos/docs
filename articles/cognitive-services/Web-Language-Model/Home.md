@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 79b126fc33175b7cd6df96ab07cd7b726d6065a7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241117"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
@@ -50,6 +50,6 @@ Web 语言模型 API 支持四个查找操作：
 
 以下文章提供了有关这些语言模型的开发的详细信息，并且应当在使用此服务的研究出版物中引用：
 
-- [Microsoft Web N-gram 语料库和应用程序概述](http://research.microsoft.com/apps/pubs/default.aspx?id=130762)，NAACL-HLT 2010
+- [Microsoft Web N-gram 语料库和应用程序概述](https://research.microsoft.com/apps/pubs/default.aspx?id=130762)，NAACL-HLT 2010
 
 有关引用此作品的文章的当前列表，请单击[此处](https://academic.microsoft.com/#/search?iq=And%28Ty%3D'0'%2CRId%3D2145833060%29&q=papers%20citing%20an%20overview%20of%20microsoft%20web%20n%20gram%20corpus%20and%20applications&filters=&from=0&sort=0)。
