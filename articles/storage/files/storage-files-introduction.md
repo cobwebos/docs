@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: d42c3e665b4ed3057d340dce33145f8c08e69888
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ef2930f30bf700ce81a2763a5a96a5d154bda1b5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945767"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008481"
 ---
 # <a name="what-is-azure-files"></a>什么是 Azure 文件？
 Azure 文件在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 此外，可以使用 Azure 文件同步将 Azure 文件共享缓存在 Windows Server 上，以加快访问速度（与在数据使用位置进行访问的速度相当）。
@@ -30,7 +30,7 @@ Azure 文件共享可用于：
     可以使用 Azure 文件来完全取代或补充传统的本地文件服务器或 NAS 设备。 流行的操作系统（例如 Windows、macOS 和 Linux）可在世界各地直接装载 Azure 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件共享复制到本地或云中的 Windows Server，以便在使用位置对数据进行高性能的分布式缓存。
 
 * **“直接迁移”应用程序**：  
-    借助 Azure 文件可以轻松地将预期使用文件共享存储文件应用程序或用户数据的应用程序“直接迁移”到云中。 Azure 文件既支持“经典”直接迁移方案（应用程序及其数据被移到 Azure 中），也支持“混合”直接迁移方案（应用程序数据被移到 Azure 文件中，应用程序继续在本地运行）。 
+    借助 Azure 文件可以轻松地将预期使用文件共享存储文件应用程序或用户数据的应用程序“直接迁移”到云中。 Azure 文件既支持“经典”直接迁移方案（应用程序及其数据将移到 Azure 中），也支持“混合”直接迁移方案（应用程序数据将移到 Azure 文件中，应用程序继续在本地运行）。 
 
 * **简化云开发**：  
     还可以通过众多方式使用 Azure 文件来简化新的云开发项目。 例如：

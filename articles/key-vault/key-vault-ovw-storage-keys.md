@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114594"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232216"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
 
@@ -36,33 +36,40 @@ ms.locfileid: "49114594"
       
 <a name="step-by-step-instructions"></a>分步说明
 -------------------------
+在以下说明中，我们将 Key Vault 分配为服务，以便为存储帐户授予操作员权限
 
-1. 获取要管理的 Azure 存储帐户的资源 ID。
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID
+1. 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID
+
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
+    
 2. 获取 Azure Key Vault 的服务主体的应用程序 ID 
+
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
+    
 3. 将存储密钥操作员角色分配给 Azure Key Vault 标识
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
+    
 4. 创建 Key Vault 托管存储帐户。     <br /><br />
-   以下命令会要求 Key Vault 定期重新生成存储访问密钥（具有重新生成周期）。 下面，我们将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。
-   ### <a name="key-regeneration"></a>重新生成密钥
+   下面，我们将重新生成周期设置为 90 天。 90 天后，Key Vault 将重新生成“key1”，并将活动密钥从“key2”交换为“key1”。
+   
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     如果用户未创建存储帐户并且对存储帐户没有权限，以下步骤会为你的帐户设置权限，确保你可以管理 Key Vault 中的所有存储权限。
-    [!NOTE] 如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
+ > [!NOTE] 
+    如果用户对存储帐户没有权限，我们会先获取用户的对象 ID
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
 
 ### <a name="relevant-powershell-cmdlets"></a>相关的 Powershell cmdlet

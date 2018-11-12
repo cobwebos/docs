@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0c274b1ed3cbd0e00e96072adb2fca41541af686
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402654"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961137"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -331,6 +331,6 @@ ms.locfileid: "49402654"
 * 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
 
 ## <a name="next-steps"></a>后续步骤
-若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)。
+若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)。
 
 

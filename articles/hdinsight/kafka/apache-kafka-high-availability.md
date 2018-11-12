@@ -3,18 +3,18 @@ title: Apache Kafka 的高可用性 - Azure HDInsight
 description: 了解如何确保 Azure HDInsight 上 Apache Kafka 的高可用性。 了解如何重新均衡 Kafka 中的分区副本，使之位于 Azure 区域（其中包含 HDInsight）中的不同容错域上。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: bd3b02d54e0a65411e45f0422a0d245645d59096
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e2cd03f28e4a3cd8176f6126817c61508697af94
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049965"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007784"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>通过 Apache Kafka on HDInsight 实现数据的高可用性
 

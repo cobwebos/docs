@@ -1,6 +1,6 @@
 ---
 title: 本快速入门展示了如何使用 Python 将 X.509 设备注册到 Azure 设备预配服务 | Microsoft Docs
-description: 在本快速入门中，将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务
+description: 本快速入门使用组注册。 在本快速入门中，将使用 Python 将 X.509 设备注册到 Azure IoT 中心设备预配服务
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/25/2018
@@ -10,18 +10,18 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 84ec165a78f873f6378e840d7f339cb7590dc098
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1eae992785eac18727c138b4e31369f1cf57f93e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227378"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157235"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-通过创建[注册组](concepts-service.md#enrollment-group)或[个人注册](concepts-service.md#individual-enrollment)将设备注册到预配服务实例。 本快速入门展示了如何使用 Python 以编程方式创建使用中间或根 CA X.509 证书的[注册组](concepts-service.md#enrollment-group)。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 该注册组是使用 [Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) 和一个示例 Python 应用程序创建的。 使用 *Python 预配服务 SDK* 创建个人注册是正在进行的一项工作。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。 
+通过创建[注册组](concepts-service.md#enrollment-group)或[个人注册](concepts-service.md#individual-enrollment)将设备注册到预配服务实例。 本快速入门展示了如何使用 Python 以编程方式创建使用中间或根 CA X.509 证书的[注册组](concepts-service.md#enrollment-group)。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 该注册组是使用 [Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) 和一个示例 Python 应用程序创建的。 使用 *Python 预配服务 SDK* 创建个人注册是正在进行的一项工作。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)。
 
 本快速入门假设你已创建了 IoT 中心和设备预配服务实例。 如果尚未创建这些资源，请先完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门，然后再继续学习本文。
 

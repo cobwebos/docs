@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418069"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016693"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -69,7 +69,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
    
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。
 
-   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+   1. 在 Azure 门户中，已经将配置管理器注册为 Web 应用程序和/或 Web API 应用，并且有[在注册时收到的客户端 ID](../active-directory/develop/quickstart-v1-add-azure-ad-app.md)。
    2. 在 Azure 门户中，已经为 Azure Active Directory 中注册的应用创建了应用密钥。  
    3. 在 Azure 门户中，已为注册的 Web 应用提供访问 Log Analytics 的权限。  
       ![连接到 Log Analytics 向导常规页](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 
 ![计算机组 - SCCM 选项卡](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-单击上面任意一项，都会打开“搜索”，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](log-analytics-log-searches.md)，可以针对配置管理器数据开始深度分析。
+单击上面任意一项，都会打开“搜索”，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](log-analytics-queries.md)，可以针对配置管理器数据开始深度分析。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用[日志搜索](log-analytics-log-searches.md)查看有关配置管理器数据的详细信息。
+* 使用[日志搜索](log-analytics-queries.md)查看有关配置管理器数据的详细信息。

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: e2388c887f4a96883aa64a0a6fec3a5a9df5b8cc
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 71cb39465bd6c180861325ab451aa11be14a80e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818188"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231663"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加推送通知
 
@@ -35,7 +35,7 @@ ms.locfileid: "42818188"
 
 本教程需要设置：
 
-* 有效的 Google 帐户 可以在 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) 注册 Google 帐户。
+* 有效的 Google 帐户 可以在 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) 注册 Google 帐户。
 * [Google Cloud Messaging 客户端组件](http://components.xamarin.com/view/GCMClient/)。
 
 ## <a name="configure-hub"></a>配置通知中心

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2a64b9fc7e2f13c3b9974e95d914a3d3b675d883
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413054"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006798"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics 中视图设计器磁贴的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -179,5 +179,5 @@ ms.locfileid: "50413054"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[日志搜索](log-analytics-log-searches.md)以支持磁贴中的查询。
+* 了解有关[日志搜索](log-analytics-queries.md)以支持磁贴中的查询。
 * 将[可视化部件](log-analytics-view-designer-parts.md)添加到自定义视图。

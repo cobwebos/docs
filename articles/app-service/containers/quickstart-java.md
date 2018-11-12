@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239332"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247549"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java Web 应用
 
@@ -77,26 +77,7 @@ code pom.xml
 
 
 > [!NOTE] 
-> 在本文中，我们仅使用在 WAR 文件中打包的 Java 应用。 该插件还支持 JAR Web 应用程序。 对于这些应用程序，请使用以下替代插件定义。 此配置将在本地文件系统上的 `${project.build.directory}/${project.build.finalName}.jar` 中部署由 Maven 生成的一个 JAR。
->
->```xml
-><plugin>
->            <groupId>com.microsoft.azure</groupId>
->            <artifactId>azure-webapp-maven-plugin</artifactId>
->            <version>1.4.0</version>
->            <configuration>
->                <deploymentType>jar</deploymentType>
->
->           <!-- Web App information -->
->            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
->            <appName>${WEBAPP_NAME}</appName>
->            <region>${REGION}</region>  
->
->                <!-- Java Runtime Stack for Web App on Linux-->
->                <linuxRuntime>jre8</linuxRuntime>
->            </configuration>
->         </plugin>
->```    
+> 在本文中，我们仅使用在 WAR 文件中打包的 Java 应用。 该插件还支持 JAR Web 应用程序。若要试用，请访问[在 Linux 上将 Java SE JAR 文件部署到应用服务](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
 
 
 更新插件配置中的以下占位符：
@@ -127,8 +108,8 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Maven 创建了一个 Java Web 应用，配置了[适用于 Azure Web 应用的 Maven 插件（预览版）](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java Web 应用部署到了 Linux 上的应用服务。 若要详细了解如何将 Java 与 Azure 配合使用，请单击下面的链接。
+在本快速入门中，你已使用 Maven 创建了一个 Java Web 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 若要了解如何连接数据库、设置日志记录和监视、配置安全性、设置运行时选项，请转到适用于 Linux 上的应用服务的 Java 开发人员指南。
 
 > [!div class="nextstepaction"]
-> [面向 Java 开发人员的 Azure](https://docs.microsoft.com/java/azure/)
+> [Linux 上的应用服务 Java 开发人员指南](app-service-linux-java.md)
 

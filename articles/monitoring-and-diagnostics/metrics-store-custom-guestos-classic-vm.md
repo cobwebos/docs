@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 06b3d97f4b2b7867f09a8c4e5fe974615e9b0c70
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9569a9da81848c279db6d6d45b7621f84060387b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093414"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958621"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 数据存储
 
@@ -45,7 +45,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-使用[创建服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 在完成此过程时记下以下内容： 
+使用[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 在完成此过程时记下以下内容： 
 - 为此应用创建新的客户端机密。
 - 保存密钥和客户端 ID，以便在后续步骤中使用。
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395121"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251084"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -36,7 +36,7 @@ Azure DocumentDB 服务现在是 Azure Cosmos DB 服务的一部分，以 SQL AP
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB 如何提供可预测的性能？
 [请求单位](request-units.md) (RU) 是 Azure Cosmos DB 中吞吐量的衡量单位。 1 RU 吞吐量相当于获取 1 KB 文档的吞吐量。 在 Azure Cosmos DB 中进行的每个操作（包括读取、写入、SQL 查询和存储过程执行）都具有一个确定性的 RU 值，该值基于完成该操作所需的吞吐量。 无需考虑 CPU、IO 和内存，以及它们会怎样影响应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
 
-可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的容器一词是指 SQL API 的集合、Gremlin API 的图形、MongoDB API 的集合以及表 API 的表。 
+可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的容器一词是指 SQL API 集合、Gremlin API 图形、MongoDB API 集合以及表 API 的表。 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB 如何支持各种数据模型（例如键/值、纵栏表、文档和图形）？
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Azure Cosmos DB 的吞吐量限制有哪些？
 对于 Azure Cosmos DB 中容器可以支持的吞吐量总量并没有任何限制。 关键是要将工作负荷大致均匀地分布于数量足够多的分区键上。
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>直接连接和网关连接模式是否加密？ 
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>直接连接和网关连接模式是否加密？ 
 是的，两种模式始终完全加密。 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB 的费用是多少？
@@ -88,10 +88,10 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 以下条件适用于“试用 Azure Cosmos DB”订阅：
 
 * 对于 SQL、Gremlin API 和表帐户，每个订阅一个容器。
-* 对于 MongoDB 帐户，每个订阅最多 3 个集合。
-* 10 GB 存储容量。
+* 对于 MongoDB 帐户，每个订阅最多三个集合。
+* 10-GB 存储容量。
 * 全球复制面向后列 [Azure 区域](https://azure.microsoft.com/regions/)提供：美国中部、北欧和东南亚
-* 最大吞吐量为 5K RU/s。
+* 最大吞吐量为 5000 RU/s。
 * 订阅在 24 小时后到期，有效期最多延长 48 小时。
 * 不能为“试用 Azure Cosmos DB”帐户创建 Azure 支持票据；但会为拥有现有支持计划的订阅者提供支持。 
 
@@ -230,7 +230,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>表 API 与 Azure 表存储的行为有哪些不同之处？
 想要使用 Azure Cosmos DB 表 API 创建表的 Azure 表存储用户应注意以下这些行为差异：
 
-* Azure Cosmos DB 表 API 使用保留容量模型来保障性能，但这意味着，一旦创建了表，就必须立即支付容量费用，即使容量未被使用。 使用 Azure 表存储时，只需为实际使用的容量付费。 这也说明了，表 API 在 99% 的时间里为何能够提供 10 毫秒的读取延迟和 15 毫秒的写入延迟 SLA，而 Azure 表存储提供 10 秒延迟 SLA。 因此，使用表 API 表（即使是不带任何请求的空表）时，要达到 Azure Cosmos DB 所提供的 SLA，必须支付费用来确保提供所需的容量来处理对这些表发出的所有请求。
+* Azure Cosmos DB 表 API 使用保留容量模型来保障性能，但这意味着，一旦创建了表，就必须立即支付容量费用，即使容量未被使用。 使用 Azure 表存储时，只需为使用的容量付费。 这也说明了，表 API 在 99% 的时间里为何能够提供 10 毫秒的读取延迟和 15 毫秒的写入延迟 SLA，而 Azure 表存储提供 10 秒延迟 SLA。 因此，使用表 API 表（即使是不带任何请求的空表）时，要达到 Azure Cosmos DB 所提供的 SLA，必须支付费用来确保提供所需的容量来处理对这些表发出的所有请求。
 * 表 API 返回的查询结果未按分区键/行键顺序排序，因为它们在 Azure 表存储中。
 * 行键最多只能包含 255 个字节
 * 批最多只能包含 2 MB
@@ -260,7 +260,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 |                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
-| TableServiceContext | *（实际上此类已弃用） |
+| TableServiceContext | *（此类已弃用） |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
@@ -270,7 +270,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>如何提供有关 SDK 的反馈或 Bug？
 可以通过以下任一方式分享反馈：
 
-* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
+* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
 
@@ -329,7 +329,7 @@ Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以
 可以使用 Azure Cosmos DB 门户的[全局复制设置](tutorial-global-distribution-sql-api.md#portal)添加适合应用程序的区域。 若要开发全球分布的应用程序，还应该将应用程序的 PreferredLocation 信息设置为本地区域，以实现较低的读取延迟。 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>如何在表 API 中更改帐户的主要写入区域？
-可以使用 Azure Cosmos DB 的全局复制门户窗格添加区域，然后故障转移到所需区域。 有关说明，请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)。 
+可以使用 Azure Cosmos DB 的全局复制门户窗格添加区域，然后故障转移到所需区域。 有关说明，请参阅[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)。 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>在分发数据时，如何配置首选读取区域以实现较低的延迟？ 
 可使用 app.config 文件中的 PreferredLocation 键，帮助从本地位置进行读取。 对于现有应用程序，如果设置 LocationMode，表 API 会引发错误。 请删除该代码，因为表 API 会从 app.config 文件中选取此信息。 有关详细信息，请参阅 [Azure Cosmos DB 功能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)。
@@ -351,7 +351,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 使用 Azure Cosmos DB 时，可以在容器级别（在表上）设置一致性级别。 使用 .NET SDK，可以通过在 app.config 文件中提供 TableConsistencyLevel 键值来更改级别。 可能的值包括：非常、有限过期、会话、一致前缀和最终。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。 关键是不能将请求的一致性级别设置为高于表的一致性级别。 例如，不能将表的一致性级别设置为“最终”，而将请求的一致性级别设置为“非常”。 
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>在某个区域出现故障时，表 API 如何处理故障转移？ 
-表 API 利用 Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 
+表 API 利用 Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。 
 
 可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 当然，还需要在帐户中提供一个应用程序，以利用数据库。 这样，客户就不会遇到停机情况。 [最新的 .NET 客户端 SDK](table-sdk-dotnet.md)可自动寻址，但其他 SDK 则不可以。 也就是说，它能够检测到有故障的区域，并自动故障转移到新区域。
 
@@ -431,7 +431,7 @@ Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障�
 
 通过使用吞吐量规范，可以弹性更改吞吐量，以利用应用程序的季节性，满足吞吐量需求并节省成本。
 
-### <a name="azure-table-storage-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Azure 表存储对我而言非常便宜，因为我只需支付数据的存储费用，并且我很少进行查询。 但是，即使我未执行任何事务或存储任何数据，Azure Cosmos DB 表 API 服务似乎也要收费。 这是怎么回事？
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Azure 表存储对我而言非常便宜，因为我只需支付数据的存储费用，并且我很少进行查询。 但是，即使我未执行任何事务或存储任何数据，Azure Cosmos DB 表 API 服务似乎也要收费。 这是怎么回事？
 
 Azure Cosmos DB 设计为一个全球分布的、基于 SLA 的系统，在可用性、延迟和吞吐量方面提供保障。 在 Azure Cosmos DB 中保留吞吐量时，获得的保障与其他系统不同。 Azure Cosmos DB 还提供客户长期以来一直期盼的其他功能，例如辅助索引和全局分发。  
 
@@ -611,10 +611,10 @@ Azure Cosmos DB 针对操作设置上限，在性能和延迟方面提供保障�
 [Azure Cosmos DB 诊断日志记录](logging.md)一文中介绍了诊断日志。
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主键是否映射到 Azure Cosmos DB 的分区键概念？
-是，分区键用来将实体放置在正确位置。 在 Azure Cosmos DB 中，它用来查找存储在物理分区中的正确逻辑分区。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。 此处，必须记住的一点是，逻辑分区目前不应当超出 10 GB 限制。 
+是，分区键用来将实体放置在正确位置。 在 Azure Cosmos DB 中，它用来查找存储在物理分区中的正确逻辑分区。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。 此处，必须记住的一点是，逻辑分区目前不应当超出 10-GB 限制。 
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>当收到指示分区已满的“配额已满”通知时，会发生什么情况？
-Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 它的 Cassandra API 也允许无限制的数据存储。 此无限制的存储是通过使用分区作为键概念的数据水平横向扩展实现的。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。
+Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟、吞吐量、可用性和一致性方面提供保障。 此无限制的存储是通过使用分区作为键概念的数据水平横向扩展实现的。 [在 Azure Cosmos DB 中分区和缩放](partition-data.md)一文中很好地解释了分区概念。
 
 应当遵循每个逻辑分区的实体数或项数不超过 10 GB 的限制。 为确保应用程序能够很好地进行缩放，建议*不要*创建热分区，即，将所有信息存储在一个分区内并查询它。 只有当存在数据倾斜时，也就是说，当一个分区键有大量数据（即超过 10 GB）时，才会发生此错误。 可以使用存储门户查明数据的分布。 若要修复此错误，请重新创建表并选择一个细粒度的主键（分区键），这可以实现更好的数据分布。
 
@@ -627,10 +627,10 @@ Azure Cosmos DB 可以通过对存储进行横向扩展来存储无限的数据�
 ### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>是否可以连续创建多个表？
 Azure Cosmos DB 是资源调控的系统，适用于数据和控制平面活动。 与集合和表一样，容器是针对给定的吞吐量容量预配的运行时实体。 快速连续创建这些容器是非预期的活动，会被限制。 如果存在立即删除/创建表的测试，请尽量将它们隔开。
 
-### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>最多可以创建几个表？
+### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>最多可以创建几个表？
 表数目没有物理限制，如果需要创建数量很多（远远超过平常的数十个或数百个）的表（其中，稳定的总大小超过 10 TB 数据），请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
 
-### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>最多可以创建多少个键空间？ 
+### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>最多可以创建多少个键空间？ 
 键空间数目没有物理限制，因为它们是元数据容器，如果由于某种原因，你有大量的键空间，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送电子邮件。 
 
 ### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>从普通的表启动后，是否可以引入大量数据？ 
@@ -661,7 +661,7 @@ Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无�
 ### <a name="is-composite-partition-key-supported"></a>是否支持复合分区键？
 是的，可以使用正则语法创建复合分区键。 
 
-### <a name="can-i-use-sstable-loader-for-data-loading"></a>是否可以使用 sstable 加载程序加载数据？
+### <a name="can-i-use-stable-loader-for-data-loading"></a>是否可以使用 sstable 加载程序加载数据？
 否，预览版不支持 sstable 加载程序。 
 
 ### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>本地 Cassandra 群集是否可与 Azure Cosmos DB 的 Apache Cassandra API 配对？
@@ -671,7 +671,7 @@ Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无�
 Azure Cosmos DB 的所有 API 目前都提供间隔四小时的两个免费完整备份。 这可确保你不需要设置备份计划等等。如果希望修改保留期和频率，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件或提交支持案例。 [Azure Cosmos DB 的自动联机备份和还原](online-backup-and-restore.md)一文中提供了有关备份功能的信息。 
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>当某个区域出现故障时，Cassandra API 帐户如何处理故障转移？ 
-Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](regional-failover.md)）。 
+Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。 
 
 可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 
 
@@ -688,7 +688,7 @@ Azure Cosmos DB Cassandra API 借助 Azure Cosmos DB 的全球分布式平台。
 Apache Cassandra API 提供了与 Apache Cassandra 相同的 CQL 功能。 我们确实打算研究在将来支持各种功能的可行性。
 
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>常规 Cassandra API 的功能 x 目前不工作，可以在哪里提供反馈？
-请通过 [uservoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)提供反馈。
+请通过 [UserVoice 反馈](https://feedback.azure.com/forums/263030-azure-cosmos-db)提供反馈。
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b8b07db6e21fb685ed76409336c98bb5f4ce5bde
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145353"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009430"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据仓库加载数据
 
@@ -35,6 +35,7 @@ ms.locfileid: "42145353"
 
 > [!NOTE]
 > 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure SQL 数据仓库复制数据](connector-azure-sql-data-warehouse.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅：如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -57,7 +58,7 @@ ms.locfileid: "42145353"
     * **版本**：选择“V2”.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-1. 选择**创建**。
+1. 选择“创建”。
 1. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
    ![数据工厂主页](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
@@ -75,7 +76,7 @@ ms.locfileid: "42145353"
 
 1. 在“源数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”：
 
     ![“源数据存储”页](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
 
@@ -97,7 +98,7 @@ ms.locfileid: "42145353"
 
 1. 在“目标数据存储”页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“+ 创建新连接”来添加连接
 
     ![接收器数据存储页](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
 
@@ -126,7 +127,7 @@ ms.locfileid: "42145353"
 
 1. 在“设置”页上，完成以下步骤：
 
-    a. 在“暂存设置”部分，单击“+ 新建”，新建临时存储。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“暂存设置”部分，单击“+ 新建”，新建临时存储。 该存储用于在使用 PolyBase 将数据加载至 SQL 数据仓库前暂存数据。 复制完成后，会自动清除 Azure 存储中的临时数据。 
 
     ![配置暂存](./media/load-azure-sql-data-warehouse/configure-staging.png)
 

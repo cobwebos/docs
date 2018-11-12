@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420262"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037033"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -119,7 +119,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 1.  若要查看其他自定义安装示例，请使用 Azure 存储资源管理器连接到公共预览版容器。
 
-    a.  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“(本地和附加)”下面，右键单击“存储帐户”，并依次选择“连接到 Azure 存储”、“使用连接字符串或共享访问签名 URI”、“下一步”。
 
        ![使用共享访问签名连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -141,7 +141,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
        1. 一个 `.NET FRAMEWORK 3.5` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装自定义组件可能需要的 .NET Framework 早期版本的自定义安装程序。
 
-       1. 一个 `AAS` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装客户端库的自定义设置，这些客户端库用于使你的 Analysis Services 任务能够使用服务主体身份验证连接到 Azure Analysis Services (AAS) 实例。 首先，从[此处](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers)下载最新的 **MSOLAP (amd64)** 和 **AMO** 客户端库/Windows 安装程序 - 例如 `x64_15.0.900.108_SQL_AS_OLEDB.msi` 和 `x64_15.0.900.108_SQL_AS_AMO.msi`，然后将它们连同 `main.cmd` 一起上传到你的容器。  
+       1. 一个 `AAS` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装客户端库的自定义设置，这些客户端库用于使你的 Analysis Services 任务能够使用服务主体身份验证连接到 Azure Analysis Services (AAS) 实例。 首先，从[此处](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers)下载最新的 **MSOLAP (amd64)** 和 **AMO** 客户端库/Windows 安装程序 - 例如 `x64_15.0.900.108_SQL_AS_OLEDB.msi` 和 `x64_15.0.900.108_SQL_AS_AMO.msi`，然后将它们连同 `main.cmd` 一起上传到你的容器。  
 
        1. 一个 `BCP` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (`MsSqlCmdLnUtils.msi`)（包括批量复制程序 (`bcp`)）的自定义安装程序。
 

@@ -2,19 +2,19 @@
 title: 使用 Spark 中的 Python 库分析网站日志 - Azure
 description: 此笔记本演示如何将自定义库与 Azure HDInsight 上的 Spark 配合使用来分析日志数据。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jasonh
-ms.openlocfilehash: a22e1f90c01b6b0e871516816815286a4f6671a2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 9aca0e7e6f8d8a0d93ee8a0074c288452061e0a6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045710"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008838"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Spark 群集配合使用来分析网站日志
 
@@ -29,7 +29,7 @@ ms.locfileid: "43045710"
 
 必须满足以下条件：
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -114,7 +114,7 @@ ms.locfileid: "43045710"
        print 'There are', numErrors, 'errors and', numLines, 'log entries'
        errors.map(lambda p: str(p)).saveAsTextFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
 
-   应该看到如下输出：
+   应看到如下输出：
 
        # -----------------
        # THIS IS AN OUTPUT
@@ -193,7 +193,7 @@ ms.locfileid: "43045710"
        plt.xlabel('Time (min)')
        plt.ylabel('Average time taken for request (ms)')
 
-   应该看到如下输出：
+   应看到如下输出：
 
    ![Matplotlib 输出](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。

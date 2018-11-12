@@ -2,19 +2,19 @@
 title: 'Azure Toolkit for IntelliJ：在 HDInsight Spark 中远程调试应用程序 '
 description: 了解如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 VPN 远程调试 HDInsight 群集上运行的 Spark 应用程序。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 55f32b498b83203a3823999a2e31024266bf37bc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d8b38d4f35df1a85734a4e9c7345eeeafccb70ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413258"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014544"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用用于 IntelliJ 的 Azure 工具包通过 VPN 在 HDInsight 中远程调试 Spark 应用程序
 

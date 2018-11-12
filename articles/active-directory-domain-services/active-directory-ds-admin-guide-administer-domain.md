@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157613"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230472"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域
 本文介绍如何管理 Azure Active Directory (AD) 域服务托管域。
@@ -63,7 +63,7 @@ ms.locfileid: "50157613"
 ### <a name="remotely-administer-the-managed-domain-from-a-client-computer-for-example-windows-10"></a>通过客户端计算机（例如 Windows 10）远程管理托管域
 本文中的说明使用 Windows Server 虚拟机管理 AAD-DS 托管域。 不过，用户也可选择使用 Windows 客户端（例如 Windows 10）虚拟机来这样做。
 
-可以按照 TechNet 上的说明在 Windows 客户端虚拟机上[安装远程服务器管理工具 (RSAT)](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx)。
+可以按照 TechNet 上的说明在 Windows 客户端虚拟机上[安装远程服务器管理工具 (RSAT)](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx)。
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>任务 2 - 在虚拟机上安装 Active Directory 管理工具
 完成以下步骤，在已加入域的虚拟机上安装 Active Directory 管理工具。 有关[安装和使用远程服务器管理工具](https://technet.microsoft.com/library/hh831501.aspx)的详细信息，请参阅 Technet。

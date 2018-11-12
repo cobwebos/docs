@@ -1,21 +1,20 @@
 ---
 title: 通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
-description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复
-services: site-recovery
+description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便执行 VMware 到 Azure 的灾难恢复
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025270"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233151"
 ---
-# <a name="deploy-a-configuration-server"></a>部署配置服务器
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>将用于 VMware 灾难恢复的配置服务器部署到 Azure
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要部署本地配置服务器。 配置服务器协调本地 VMware 与 Azure 之间的通信。 它还管理数据复制。 将 VMware VM 复制到 Azure 时，本文可引导你完成部署配置服务器所需的步骤。 如果需要为物理服务器复制设置配置服务器，[请按此文中的说明进行操作](physical-azure-set-up-source.md)。
 
@@ -117,6 +116,14 @@ ms.locfileid: "44025270"
 8. 选择“完成配置”以完成注册。
 9. 完成注册后，打开 Azure 门户，验证配置服务器和 VMware 服务器是否在“恢复服务保管库” > “管理” > “Site Recovery 基础结构” > “配置服务器”中列出。
 
+## <a name="upgrade-the-configuration-server"></a>升级配置服务器
+
+若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。
+
+## <a name="manage-the-configuration-server"></a>管理配置服务器
+
+为避免正在进行的复制中断，请确保在配置服务器注册到保管库后配置服务器的 IP 地址不会更改。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
+
 ## <a name="faq"></a>常见问题解答
 
 1. 可以使用安装有配置服务器的 VM 实现其他用途吗？
@@ -140,14 +147,6 @@ ms.locfileid: "44025270"
 7. 在哪里可以下载保管库注册密钥？
 
     在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
-
-## <a name="upgrade-the-configuration-server"></a>升级配置服务器
-
-若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。
-
-## <a name="manage-the-configuration-server"></a>管理配置服务器
-
-为避免正在进行的复制中断，请确保在配置服务器注册到保管库后配置服务器的 IP 地址不会更改。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
 
 ## <a name="troubleshoot-deployment-issues"></a>排查部署问题
 

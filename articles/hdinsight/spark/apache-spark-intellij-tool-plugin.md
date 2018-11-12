@@ -2,19 +2,19 @@
 title: 'Azure Toolkit for IntelliJ：为 HDInsight 群集创建 Spark 应用程序 '
 description: 使用用于 IntelliJ 的 Azure 工具包开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 51e1e7696ece46e63358b2ed6efa55bbf6ab01fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 90c84130902420dcaa2ace74a5743fc9719622b0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420772"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014255"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 

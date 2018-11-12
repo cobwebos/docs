@@ -1,21 +1,21 @@
 ---
-title: 创建用于 Azure Site Recovery 的资源 | Microsoft 文档
-description: 了解如何使用 Azure Site Recovery 准备 Azure ，以进行本地计算机复制。
+title: 准备 Azure 以使用 Azure Site Recovery 对本地计算机进行灾难恢复 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 准备 Azure，对本地计算机进行灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457136"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210238"
 ---
-# <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
+# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
  [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 

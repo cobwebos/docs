@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: a6e7aad6c3d20a67ecba66c49be4efcdebdf718a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fbba1d9b4bdf1536ed596e9a78e53116fe824027
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153415"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232913"
 ---
 > [!WARNING]
 > 只有[开发人员、标准和高级](https://azure.microsoft.com/pricing/details/api-management/)层中提供了 Azure Active Directory B2C 集成。
@@ -32,22 +32,22 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 为开发人员帐户授权
 
-1. 若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
-
-   ![发布者门户][api-management-management-console]
+1. 若要开始，请登录到 [Azure 门户](https://portal.azure.com)并找到你的 API 管理实例。
 
    > [!NOTE]
    > 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门][Get started with Azure API Management]教程中的[创建 API 管理服务实例][Create an API Management service instance]。
 
-2. 在“API 管理”菜单中单击“安全性”。 在“标识”选项卡中选择“Azure Active Directory B2C”。
+2. 在“安全性”下，选择“标识”。 单击顶部的“+添加”。
 
-  ![外部标识 1][api-management-howto-aad-b2c-security-tab]
+   此时将在右侧显示“添加标识提供者”窗格。 选择“Azure Active Directory B2C”。
+    
+   ![将 AAD B2C 添加为标识提供者][api-management-howto-add-b2c-identity-provider]
 
-3. 记下“重定向 URL”，并在 Azure 门户中切换到 Azure Active Directory B2C。
+3. 复制**重定向 URL**。
 
-  ![外部标识 2][api-management-howto-aad-b2c-security-tab-reply-url]
+  ![AAD B2C 标识提供者重定向 URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. 单击“应用程序”按钮。
+4. 在一个新选项卡中，在 Azure 门户中访问你的 Azure Active Directory B2C 租户并打开“应用程序”边栏选项卡。
 
   ![注册新应用程序 1][api-management-howto-aad-b2c-portal-menu]
 
@@ -55,7 +55,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
   ![注册新应用程序 2][api-management-howto-aad-b2c-add-button]
 
-6. 在“新建应用程序”边栏选项卡中，输入应用程序的名称。 在“Web 应用/Web API”下面选择“是”，在“允许隐式流”下面选择“是”。 然后，从发布者门户中“标识”选项卡的“Azure Active Directory B2C”部分中复制“重定向 URL”，并将其粘贴到“回复 URL”文本框中。
+6. 在“新建应用程序”边栏选项卡中，输入应用程序的名称。 在“Web 应用/Web API”下面选择“是”，在“允许隐式流”下面选择“是”。 然后，将在步骤 3 中复制的**重定向 URL** 粘贴到“回复 URL”文本框中。
 
   ![注册新应用程序 3][api-management-howto-aad-b2c-app-details]
 
@@ -67,15 +67,15 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
   ![应用程序 ID 1][api-management-howto-aad-b2c-app-id]
 
-9. 切换回发布者门户，将该 ID 粘贴到“客户端 ID”文本框中。
+9. 切换回 API 管理“添加标识提供者”窗格并将 ID 粘贴到“客户端 ID”文本框中。
 
   ![应用程序 ID 2][api-management-howto-aad-b2c-client-id]
 
-10. 切换回 Azure 门户，单击“密钥”按钮，并单击“生成密钥”。 单击“保存”保存配置并显示“应用密钥”。 将该密钥复制到剪贴板。
+10. 切换回 B2C 应用注册，单击“密钥”按钮，并单击“生成密钥”。 单击“保存”保存配置并显示“应用密钥”。 将该密钥复制到剪贴板。
 
   ![应用密钥 1][api-management-howto-aad-b2c-app-key]
 
-11. 切换回发布者门户并将密钥粘贴到“客户端机密”文本框中。
+11. 切换回 API 管理“添加标识提供者”窗格并将密钥粘贴到“客户端机密”文本框中。
 
   ![应用密钥 2][api-management-howto-aad-b2c-client-secret]
 
@@ -83,7 +83,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
   ![允许的租户][api-management-howto-aad-b2c-allowed-tenant]
 
-13. 指定“注册策略”和“登录策略”。 或者，也可以提供“配置文件编辑策略”和“密码重置策略”。
+13. 从 B2C 租户策略中指定**注册策略**和**登录策略**。 或者，也可以提供“配置文件编辑策略”和“密码重置策略”。
 
   ![策略][api-management-howto-aad-b2c-policies]
 
@@ -126,9 +126,8 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
 
 
-
-[api-management-howto-aad-b2c-security-tab]: ./media/api-management-howto-aad-b2c/api-management-b2c-security-tab.PNG
-[api-management-howto-aad-b2c-security-tab-reply-url]: ./media/api-management-howto-aad-b2c/api-management-b2c-security-tab-reply-url.PNG
+[api-management-howto-add-b2c-identity-provider]: ./media/api-management-howto-aad-b2c/api-management-add-b2c-identity-provider.PNG
+[api-management-howto-copy-b2c-identity-provider-redirect-url]: ./media/api-management-howto-aad-b2c/api-management-b2c-identity-provider-redirect-url.PNG
 [api-management-howto-aad-b2c-portal-menu]: ./media/api-management-howto-aad-b2c/api-management-b2c-portal-menu.PNG
 [api-management-howto-aad-b2c-add-button]: ./media/api-management-howto-aad-b2c/api-management-b2c-add-button.PNG
 [api-management-howto-aad-b2c-app-details]: ./media/api-management-howto-aad-b2c/api-management-b2c-app-details.PNG

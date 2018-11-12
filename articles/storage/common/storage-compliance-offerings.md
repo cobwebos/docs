@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 1a3a2e9e1f19ab2746156de7b07d1ae6146ba4c1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 293067b2d76f7ef88b6946aee9d39d4c6da97230
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524240"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229538"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
 
@@ -57,7 +57,7 @@ ms.locfileid: "39524240"
 * [FFIEC](https://www.microsoft.com/en-us/trustcenter/compliance/FFIEC)
 * [FISC（日本）](https://www.microsoft.com/en-us/trustcenter/compliance/fisc)
 * [GLBA](https://aka.ms/AzureCompliance)
-* [GxP](http://www.microsoft.com/en-us/TrustCenter/Compliance/FDA)
+* [GxP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FDA)
 * [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/compliance/hipaa)
 * [HITRUST](https://www.microsoft.com/en-us/trustcenter/Compliance/HITRUST)
 * [MARS-E](https://www.microsoft.com/en-us/trustcenter/compliance/mars-e)
@@ -71,7 +71,7 @@ ms.locfileid: "39524240"
 
 ## <a name="regional"></a>区域
 
-* [BIR 2012（荷兰）](http://www.microsoft.com/en-us/TrustCenter/Compliance/bir-2012)
+* [BIR 2012（荷兰）](https://www.microsoft.com/en-us/TrustCenter/Compliance/bir-2012)
 * [C5（德国）](https://www.microsoft.com/en-us/TrustCenter/Compliance/C5)
 * [CCSL/IRAP（澳大利亚）](https://www.microsoft.com/en-us/trustcenter/compliance/ccsl)
 * [CS Gold Mark（日本）](https://www.microsoft.com/en-us/trustcenter/compliance/cloud-security-mark)

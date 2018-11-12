@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 11/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 6d981d9dc7433d957819d0beb6aa6265882f1890
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093815"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037390"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "50093815"
 
 ![更新管理流程](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-更新管理可用于在同一租户的多个订阅中本机登记计算机。 若要管理不同租户中的计算机，必须将其登记为[非 Azure 计算机](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine)。
+更新管理可用于在同一租户的多个订阅中本机登记计算机。
 
 发布 CVE 后，Linux 计算机需要 2-3 小时才会显示修补程序以供评估。  对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。
 
