@@ -3,16 +3,16 @@ title: Azure HDInsight 中的 Spark 故障排除
 description: 获取有关使用 Apache Spark 和 Azure HDInsight 的常见问题的解答。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 7c7f89864d9394ff4527f9a0354b9276f7c01c49
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591731"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016669"
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Spark 进行故障排除
 

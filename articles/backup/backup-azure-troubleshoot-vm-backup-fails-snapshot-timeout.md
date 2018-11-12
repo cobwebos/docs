@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 06/25/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544007"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420959"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -22,33 +22,60 @@ ms.locfileid: "45544007"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM 代理无法与 Azure 备份进行通信
+## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
-错误消息：“VM 代理无法与 Azure 备份进行通信”<br>
-错误代码：“UserErrorGuestAgentStatusUnavailable”
+**错误代码**：UserErrorGuestAgentStatusUnavailable <br>
+**错误消息**：VM 代理无法与 Azure 备份通信<br>
 
-注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：
-
+注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：<br>
 **原因 1：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
 **原因 2：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
 **原因 3：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 4：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
 **原因 5：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 
-## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>由于虚拟机未连接到网络，快照操作失败
+## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态
 
-错误消息：“由于虚拟机未建立网络连接，快照操作失败”<br>
-错误代码：“ExtensionSnapshotFailedNoNetwork”
+**错误代码**：GuestAgentSnapshotTaskStatusError<br>
+**错误消息**：无法与 VM 代理通信，因此无法获取快照状态 <br>
+
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
+**原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+
+## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已达到还原点集合的最大限制
+
+**错误代码**：UserErrorRpCollectionLimitReached <br>
+**错误消息**：已达到还原点集合的最大限制。 <br>
+说明:  
+* 如果恢复点资源组中的锁阻止自动清理恢复点，则可能会发生此问题。
+* 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
+
+建议的操作：<br>
+若要解决此问题，请删除资源组中的锁，并重试触发清理的操作。
+
+> [!NOTE]
+    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>`，例如 AzureBackupRG_northeurope_1
+
+
+**步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
+
+## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
+
+**错误代码**：ExtensionSnapshotFailedNoNetwork<br>
+**错误消息**：由于虚拟机未建立网络连接，快照操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：    
 **原因 1：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
 **原因 2：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 3：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 
-## <a name="vmsnapshot-extension-operation-failed"></a>VMSnapshot 扩展操作失败
+## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailed - VMSnapshot 扩展操作失败
 
-错误消息：“VMSnapshot 扩展操作失败”<br>
-错误代码：“ExtentionOperationFailed”
+**错误代码**：ExtentionOperationFailed <br>
+**错误消息**：VMSnapshot 扩展操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -56,20 +83,10 @@ ms.locfileid: "45544007"
 **原因 3：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **原因 4：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
-## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>由于 VM 代理无响应，备份失败
+## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
-错误消息：“无法与 VM 代理通信，因此无法获取快照状态” <br>
-错误代码：“GuestAgentSnapshotTaskStatusError”
-
-注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
-**原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
-
-## <a name="backup-fails-with-an-internal-error"></a>备份失败并出现内部错误
-
-错误消息：“备份失败并出现内部错误 - 请在几分钟后重试操作” <br>
-错误代码：“BackUpOperationFailed”/“BackUpOperationFailedV2”
+**错误代码**：BackUpOperationFailed/BackUpOperationFailedV2 <br>
+**错误消息**：备份失败并出现内部错误 - 请在几分钟后重试操作 <br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
@@ -101,7 +118,7 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 ##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>允许访问与该区域对应的 Azure 存储
 
-可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储建立连接。 确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。 
+可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储建立连接。 确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。
 
 ![使用区域存储标记的网络安全组](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
@@ -112,7 +129,7 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
 
-此外，如果子网不具有 Internet 出站流量的路由，则需要将具有服务标记“Microsoft.Storage”的服务终结点添加到子网。 
+此外，如果子网不具有 Internet 出站流量的路由，则需要将具有服务标记“Microsoft.Storage”的服务终结点添加到子网。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 
@@ -124,7 +141,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 4. 如果“程序和功能”中显示了 Windows 来宾代理，请将其卸载。
 5. 下载并安装[最新版本的代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
 6. 检查能否在服务中看到 Windows 来宾代理服务。
-7. 运行按需备份： 
+7. 运行按需备份：
     * 在门户中，选择“立即备份”。
 
 此外，检查是否在 VM 中[安装了 Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 VM 代理需要使用 .NET 4.5 来与服务通信。
@@ -185,28 +202,41 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 4. 选择“Vmsnapshot 扩展”。
 5. 选择“卸载”。
 
-对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，然后运行备份。 
+对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，然后运行备份。
 
 完成这些步骤可在下一次备份期间重新安装扩展。
 
-### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>备份服务因资源组锁定而无权删除旧的还原点
-此问题特定于用户锁定了资源组的托管 VM。 在此情况下，备份服务无法删除较早的还原点。 由于存在最多 18 个还原点的限制，新备份开始失败。
+### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
+1. 登录到 [Azure 门户](http://portal.azure.com/)。
+2. 转到“所有资源选项”，选择采用 AzureBackupRG_<Geo>_<number> 格式的还原点集合资源组。
+3. 在“设置”部分，选择“锁”以显示锁。
+4. 若要删除锁，请选择省略号，然后单击“删除”。
 
-#### <a name="solution"></a>解决方案
+    ![删除锁 ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-若要解决此问题，请从资源组删除锁定并执行下列步骤以删除还原点集合： 
- 
-1. 删除 VM 所在的资源组中的锁。 
-2. 使用 Chocolatey 安装 ARMClient： <br>
-   https://github.com/projectkudu/ARMClient
-3. 登录 ARMClient： <br>
-    `.\armclient.exe login`
-4. 获取与 VM 对应的还原点集合： <br>
-    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
+### <a name="clean_up_restore_point_collection"></a>清理还原点集合
+删除锁后，必须清理还原点。 若要清理还原点，请执行以下任一方法：<br>
+* [通过运行即席备份来清理还原点集合](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+* [在门户中清理备份服务创建的还原点集合](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
 
-    示例： `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. 删除还原点集合： <br>
-    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. 下一次计划备份会自动创建还原点集合和新的还原点。
+#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>通过运行即席备份来清理还原点集合
+删除锁后，触发即席/手动备份。 这可以确保自动清理还原点。 预期此即席/手动操作第一次会失败；但是，它可以确保自动完成清理，而无需手动删除还原点。 清理后，下一个计划的备份应会成功。
 
-完成后，可以再次将锁放回 VM 资源组。 
+> [!NOTE]
+    > 自动清理将在触发即席/手动备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-portal-created-by-backup-service)列出的步骤手动删除还原点集合。
+
+#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>在门户中清理备份服务创建的还原点集合<br>
+
+若要手动清除由于资源组中存在锁而未能清除的还原点集合，请执行以下步骤：
+1. 登录到 [Azure 门户](http://portal.azure.com/)。
+2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。
+
+    ![删除锁 ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+
+3. 单击“资源组”。此时会显示“概述”边栏选项卡。
+4. 选择“显示隐藏的类型”选项，以显示所有已隐藏的资源。 选择采用 AzureBackupRG_`<VMName>`_`<number>` 格式的还原点集合。
+
+    ![删除锁 ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+
+5. 单击“删除”以清理还原点集合。
+6. 再次重试备份操作。

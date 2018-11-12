@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012055"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412799"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
@@ -34,19 +34,29 @@ Azure 备份提供了 3 个用于控制备份管理操作的内置角色。 详�
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>将备份内置角色映射到备份管理操作
 下表包含了备份管理操作和执行这些操作所需的最低 RBAC 角色。
 
-| 管理操作 | 所需的最低 RBAC 角色 |
-| --- | --- |
-| 创建恢复服务保管库 | 保管库资源组上的参与者 |
-| 启用 Azure VM 备份 | 包含保管库的资源组的范围内定义的备份操作员、VM 上的虚拟机参与者 |
-| 按需 VM 备份 | 备份操作员 |
-| 还原 VM | 备份操作员、将要部署 VM 的资源组参与者、Vnet 上的读者和所选子网上的加入者 |
-| 从 VM 备份还原磁盘及单个文件 | 备份操作员，VM 上的虚拟机参与者 |
-| 创建 Azure VM 备份的备份策略 | 备份参与者 |
-| 修改 Azure VM 备份的备份策略 | 备份参与者 |
-| 删除 Azure VM 备份的备份策略 | 备份参与者 |
-| 停止在 VM 备份上备份（通过保留数据或删除数据） | 备份参与者 |
-| 注册本地 Windows Server/客户端/SCDPM 或 Azure 备份服务器 | 备份操作员 |
-| 删除已注册的本地 Windows Server/客户端/SCDPM 或 Azure 备份服务器 | 备份参与者 |
+| 管理操作 | 所需的最低 RBAC 角色 | 所需的范围 |
+| --- | --- | --- |
+| 创建恢复服务保管库 | 参与者 | 包含保管库的资源组 |
+| 启用 Azure VM 备份 | 备份操作员 | 包含保管库的资源组 |
+| | 虚拟机参与者 | VM 资源 |
+| 按需 VM 备份 | 备份操作员 | 恢复保管库资源 |
+| 还原 VM | 备份操作员 | 将在其中部署 VM 的资源组 |
+| | 虚拟机参与者 | 将在其中部署 VM 的资源组 |
+| 还原非托管磁盘 VM 备份 | 备份操作员 | 恢复保管库资源 |
+| | 虚拟机参与者 | VM 资源 |
+| | 存储帐户参与者 | 存储帐户名称 |
+| 从 VM 备份还原托管磁盘 | 备份操作员 | 恢复保管库资源 |
+| | 虚拟机参与者 | VM 资源 |
+| | 存储帐户参与者 | 存储帐户名称 |
+| | 参与者 | 托管磁盘将还原到的资源组 |
+| 从 VM 备份还原单个文件 | 备份操作员 | 恢复保管库资源 |
+| | 虚拟机参与者 | VM 资源 |
+| 创建 Azure VM 备份的备份策略 | 备份参与者 | 恢复保管库资源 |
+| 修改 Azure VM 备份的备份策略 | 备份参与者 | 恢复保管库资源 |
+| 删除 Azure VM 备份的备份策略 | 备份参与者 | 恢复保管库资源 |
+| 停止在 VM 备份上备份（通过保留数据或删除数据） | 备份参与者 | 恢复保管库资源 |
+| 注册本地 Windows Server/客户端/SCDPM 或 Azure 备份服务器 | 备份操作员 | 恢复保管库资源 |
+| 删除已注册的本地 Windows Server/客户端/SCDPM 或 Azure 备份服务器 | 备份参与者 | 恢复保管库资源 |
 
 ## <a name="next-steps"></a>后续步骤
 * [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408534"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016599"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
-Log Analytics 中的计算机组允许为一组特定的计算机设定[日志搜索](log-analytics-log-search-new.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志搜索中包括组时，结果仅限于与组中的计算机匹配的记录。
+Log Analytics 中的计算机组允许为一组特定的计算机设定[日志搜索](log-analytics-queries.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志搜索中包括组时，结果仅限于与组中的计算机匹配的记录。
 
 ## <a name="creating-a-computer-group"></a>创建计算机组
 可以使用下表中的任一方法在 Log Analytics 中创建计算机组。  在以下各节中提供了每个方法的详细信息。 
@@ -136,5 +136,5 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 | TimeGenerated |创建或更新计算机组的日期和时间。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
 

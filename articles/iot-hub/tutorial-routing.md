@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946929"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416879"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>教程：使用 IoT 中心配置消息路由
 
@@ -268,7 +268,9 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 ### <a name="routing-to-a-storage-account"></a>路由到存储帐户 
 
-现在为存储帐户设置路由。 你转到“消息路由”窗格，然后添加路由。 添加路由时，请为路由定义新的终结点。 此设置完成后，“级别”属性设置为“storage”的消息将自动写入存储帐户。
+现在为存储帐户设置路由。 你转到“消息路由”窗格，然后添加路由。 添加路由时，请为路由定义新的终结点。 此设置完成后，“级别”属性设置为“storage”的消息将自动写入存储帐户。 
+
+数据以 Avro 格式写入 Blob 存储。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“资源组”，然后选择你的资源组。 本教程使用 ContosoResources。 
 
@@ -286,9 +288,19 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 6. 单击“选取容器”。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 选择在准备步骤中设置的容器。 本教程使用 contosoresults。 单击“选择”。 随即返回到“添加终结点”窗格。 
 
-7. 为其余字段使用默认值。 单击“创建”以创建存储终结点并将其添加到路由。 随即返回到“添加路由”窗格。
+7. 在本教程中，其余字段使用默认值。 
 
-8.  现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的存储容器的条件。 填充屏幕上的字段。 
+   > [!NOTE]
+   > 可以使用 **Blob 文件名格式**设置 Blob 名称的格式。 默认为 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必须包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm}，顺序不限。 
+   > 
+   > 例如，使用默认 Blob 文件名格式时，如果中心名称为 ContosoTestHub，日期/时间为 2018 年 10 月 30 日上午 10:56，则 Blob 名称将类似于：`ContosoTestHub/0/2018/10/30/10/56`。
+   > 
+   > Blob 以 Avro 格式写入。
+   >
+
+8. 单击“创建”以创建存储终结点并将其添加到路由。 随即返回到“添加路由”窗格。
+
+9. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的存储容器的条件。 填充屏幕上的字段。 
 
    **名称**：为路由查询输入名称。 本教程使用 StorageRoute。
 
@@ -368,17 +380,17 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    单击“创建”。
 
-1. 现在转到该逻辑应用。 要转到逻辑应用，最简单方法是单击“资源组”，选择你的资源组（本教程使用 ContosoResources），然后从资源列表选择该逻辑应用。 随即将显示该逻辑应用设计器页面（可能需要向右滚动才可查看完整页面）。 在该逻辑应用设计器页面上，向下滚动，直到看见显示“空白的逻辑应用+”的磁贴，单击该磁贴。 
+2. 现在转到该逻辑应用。 要转到逻辑应用，最简单方法是单击“资源组”，选择你的资源组（本教程使用 ContosoResources），然后从资源列表选择该逻辑应用。 随即将显示该逻辑应用设计器页面（可能需要向右滚动才可查看完整页面）。 在该逻辑应用设计器页面上，向下滚动，直到看见显示“空白的逻辑应用+”的磁贴，单击该磁贴。 
 
-1. 此时会显示连接器列表。 选择“服务总线”。 
+3. 此时会显示连接器列表。 选择“服务总线”。 
 
    ![显示连接器列表的屏幕截图。](./media/tutorial-routing/logic-app-connectors.png)
 
-1. 此时会显示触发器的列表。 选择“服务总线 - 在队列中收到邮件时(自动完成)”。 
+4. 此时会显示触发器的列表。 选择“服务总线 - 在队列中收到邮件时(自动完成)”。 
 
    ![显示服务总线的触发器列表的屏幕截图。](./media/tutorial-routing/logic-app-triggers.png)
 
-1. 在下一屏幕上，填写“连接名称”。 本教程使用 ContosoConnection。 
+5. 在下一屏幕上，填写“连接名称”。 本教程使用 ContosoConnection。 
 
    ![显示为服务总线队列设置连接的屏幕截图。](./media/tutorial-routing/logic-app-define-connection.png)
 
@@ -386,21 +398,21 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    
    ![显示完成设置连接的屏幕截图。](./media/tutorial-routing/logic-app-finish-connection.png)
 
-1. 在下一步屏幕上，从下拉列表选择队列名称（本教程使用 contososbqueue）。 其余字段可使用默认值。 
+6. 在下一步屏幕上，从下拉列表选择队列名称（本教程使用 contososbqueue）。 其余字段可使用默认值。 
 
    ![显示队列选项的屏幕截图。](./media/tutorial-routing/logic-app-queue-options.png)
 
-1. 现在，设置一个在队列接收到消息时发送电子邮件的操作。 在逻辑应用设计器中，单击“+新建步骤”添加步骤，然后单击“添加操作”。 在“选择操作”窗格中，找到并单击“Office 365 Outlook”。 在触发器屏幕上，选择“Office 365 Outlook - 发送电子邮件”。  
+7. 现在，设置一个在队列接收到消息时发送电子邮件的操作。 在逻辑应用设计器中，单击“+新建步骤”添加步骤，然后单击“添加操作”。 在“选择操作”窗格中，找到并单击“Office 365 Outlook”。 在触发器屏幕上，选择“Office 365 Outlook - 发送电子邮件”。  
 
    ![显示 Office365 选项的屏幕截图。](./media/tutorial-routing/logic-app-select-outlook.png)
 
-1. 接下来，登录到 Office 365 帐户，设置连接。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
+8. 接下来，登录到 Office 365 帐户，设置连接。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
 
    单击“添加动态内容”，显示消息中可包含的内容。 选择“内容”- 将包含电子邮件中的消息。 
 
    ![显示逻辑应用的电子邮件选项的屏幕截图。](./media/tutorial-routing/logic-app-send-email.png)
 
-1. 单击“ **保存**”。 然后关闭逻辑应用设计器。
+9. 单击“ **保存**”。 然后关闭逻辑应用设计器。
 
 ## <a name="set-up-azure-stream-analytics"></a>设置 Azure 流分析
 
@@ -410,7 +422,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “物联网” > “流分析作业”。
 
-1. 为作业输入以下信息。
+2. 为作业输入以下信息。
 
    **作业名称**：作业的名称。 该名称必须全局唯一。 本教程使用 contosoJob。
 
@@ -420,13 +432,13 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    ![显示如何创建流分析作业的屏幕截图。](./media/tutorial-routing/stream-analytics-create-job.png)
 
-1. 单击“创建”来创建作业。 若要返回到作业，请单击“资源组”。 本教程使用 ContosoResources。 选择资源组，然后在资源列表中单击流分析作业。 
+3. 单击“创建”来创建作业。 若要返回到作业，请单击“资源组”。 本教程使用 ContosoResources。 选择资源组，然后在资源列表中单击流分析作业。 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>将输入添加到流分析作业
 
-1. 在“作业拓扑”下，单击“输入”。
+4. 在“作业拓扑”下，单击“输入”。
 
-1. 在“输入”窗格中，单击“添加流输入”，选择 IoT 中心。 在出现的屏幕上，填写以下字段：
+5. 在“输入”窗格中，单击“添加流输入”，选择 IoT 中心。 在出现的屏幕上，填写以下字段：
 
    **输入别名**：本教程使用 contosoinputs。
 
@@ -444,13 +456,13 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    ![显示如何为流分析作业设置输入的屏幕截图。](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-1. 单击“ **保存**”。
+6. 单击“ **保存**”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
 1. 在“作业拓扑”下，单击“输出”。
 
-1. 在“输出”窗格中，单击“添加”并选择“Power BI”。 在出现的屏幕上，填写以下字段：
+2. 在“输出”窗格中，单击“添加”并选择“Power BI”。 在出现的屏幕上，填写以下字段：
 
    **输出别名**：输出的唯一别名。 本教程使用 contosooutputs。 
 
@@ -460,25 +472,25 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    在剩余字段中使用默认值。
 
-1. 单击“授权”，并登录到你的 Power BI 帐户。
+3. 单击“授权”，并登录到你的 Power BI 帐户。
 
    ![显示如何为流分析作业设置输出的屏幕截图。](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
-1. 单击“ **保存**”。
+4. 单击“ **保存**”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
 1. 在“作业拓扑”下，单击“查询”。
 
-1. 将 `[YourInputAlias]` 替换为作业的输入别名。 本教程使用 contosoinputs。
+2. 将 `[YourInputAlias]` 替换为作业的输入别名。 本教程使用 contosoinputs。
 
-1. 将 `[YourOutputAlias]` 替换为作业的输出别名。 本教程使用 contosooutputs。
+3. 将 `[YourOutputAlias]` 替换为作业的输出别名。 本教程使用 contosooutputs。
 
    ![显示如何为流分析作业设置查询的屏幕截图。](./media/tutorial-routing/stream-analytics-job-query.png)
 
-1. 单击“ **保存**”。
+4. 单击“ **保存**”。
 
-1. 关闭“查询”窗格。 这将返回到“资源组”中的资源的视图。 单击流分析作业。 本教程中将其称为 **contosoJob**。
+5. 关闭“查询”窗格。 这将返回到“资源组”中的资源的视图。 单击流分析作业。 本教程中将其称为 **contosoJob**。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
@@ -520,7 +532,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    * 从服务总线队列检索消息的逻辑应用运行正常。
    * 连接到 Outlook 的逻辑应用连接器工作正常。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“资源组”，并选择你的资源组。 本教程使用 ContosoResources。 选择存储帐户，单击“Blob”，然后选择容器。 本教程使用 contosoresults。 现在应该可以看见一个文件夹，可继续深入查看目录，直到看见一个或多个文件。 打开其中某个文件；这些文件中包含路由到存储帐户的条目。 
+2. 在 [Azure 门户](https://portal.azure.com)中，单击“资源组”，并选择你的资源组。 本教程使用 ContosoResources。 选择存储帐户，单击“Blob”，然后选择容器。 本教程使用 contosoresults。 现在应该可以看见一个文件夹，可继续深入查看目录，直到看见一个或多个文件。 打开其中某个文件；这些文件中包含路由到存储帐户的条目。 
 
    ![显示存储中的结果文件的屏幕截图。](./media/tutorial-routing/results-in-storage.png)
 
@@ -534,35 +546,35 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 1. 登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。
 
-1. 转到“工作区”，然后选择为流分析作业创建输出时设置的工作区。 本教程使用“我的工作区”。 
+2. 转到“工作区”，然后选择为流分析作业创建输出时设置的工作区。 本教程使用“我的工作区”。 
 
-1. 单击“数据集”。
+3. 单击“数据集”。
 
    此时会看到列出的数据集，该数据集是在为流分析作业创建输出时指定的。 本教程使用 contosodataset。 （数据集首次显示的过程可能需要 5-10 分钟。）
 
-1. 在“操作”下，单击第一个用于创建报表的图标。
+4. 在“操作”下，单击第一个用于创建报表的图标。
 
    ![此屏幕截图显示了 PowerBI 工作区，其中突出显示了“操作”和报表图标。](./media/tutorial-routing/power-bi-actions.png)
 
-1. 创建折线图，显示某段时间的实时温度。
+5. 创建折线图，显示某段时间的实时温度。
 
-   a. 在报表创建页上，单击“折线图”图标添加折线图。
+   * 在报表创建页上，单击“折线图”图标添加折线图。
 
    ![显示可视化效果和字段的屏幕截图。](./media/tutorial-routing/power-bi-visualizations-and-fields.png)
 
-   b. 在“字段”窗格中展开一个表，该表是在为流分析作业创建输出时指定的。 本教程使用 contosotable。
+   * 在“字段”窗格中展开一个表，该表是在为流分析作业创建输出时指定的。 本教程使用 contosotable。
 
-   c. 将 **EventEnqueuedUtcTime** 拖至“可视化效果”窗格中的“轴”。
+   * 将 **EventEnqueuedUtcTime** 拖至“可视化效果”窗格中的“轴”。
 
-   d. 将“温度”拖至“值”。
+   * 将“温度”拖至“值”。
 
    已创建一个折线图。 X 轴显示 UTC 时区的日期和时间。 Y 轴显示来自传感器的温度。
 
-1. 创建另一个折线图，显示某段时间的实时湿度。 要设置第二个折线图，请执行上诉相同步骤，将“EventEnqueuedUtcTime”置于 x 轴，将“湿度”置于 y 轴。
+6. 创建另一个折线图，显示某段时间的实时湿度。 要设置第二个折线图，请执行上诉相同步骤，将“EventEnqueuedUtcTime”置于 x 轴，将“湿度”置于 y 轴。
 
    ![此屏幕截图显示了其中有两个折线图的最终 Power BI 报表。](./media/tutorial-routing/power-bi-report.png)
 
-1. 单击“保存”以保存该报表。
+7. 单击“保存”以保存该报表。
 
 现在应在两个图表上都能看到数据。 这表示：
 
@@ -595,7 +607,6 @@ az group delete --name $resourceGroup
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-
 ## <a name="next-steps"></a>后续步骤
 
 通过本教程，了解了如何通过执行以下任务，使用消息路由将 IoT 中心消息路由到不同目标。  
@@ -615,5 +626,3 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 > [!div class="nextstepaction"]
 [从后端服务配置设备](tutorial-device-twins.md)
-
- <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

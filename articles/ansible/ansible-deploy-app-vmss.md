@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391464"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413989"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 将应用程序部署到 Azure。 本文介绍如何将 Java 应用程序部署到 Azure 虚拟机规模集 (VMSS)。  
@@ -23,7 +23,7 @@ ms.locfileid: "44391464"
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **虚拟机规模集** - 如果还没有虚拟机规模集，可以[使用 Ansible 创建虚拟机规模集](ansible-create-configure-vmss.md)。 
 - **git** - [git](https://git-scm.com) 用于下载本教程中使用的 Java 示例。
-- **Java SE 开发工具包 (JDK)** - 该 JDK 用于生成示例 Java 项目。
+- **Java SE 开发工具包 (JDK)** - 此 [JDK](https://aka.ms/azure-jdks) 用于生成示例 Java 项目。
 - **Apache Maven 生成工具** - [Apache Maven 生成工具](https://maven.apache.org/download.cgi)用于生成示例 Java 项目。
 
 > [!Note]

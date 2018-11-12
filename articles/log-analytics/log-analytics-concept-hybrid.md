@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b50e6de9de6498f57fd9b599c45a35f2367b84ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406868"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012133"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>使用 Azure Log Analytics 代理收集混合环境中的数据
 
@@ -127,6 +127,6 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 
 * 查看[数据源](log-analytics-data-sources.md)，了解可用于从 Windows 或 Linux 系统收集数据的数据源。 
 
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
 
-* 了解[解决方案](log-analytics-add-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到 Log Analytics 工作区中。
+* 了解[解决方案](../monitoring/monitoring-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到 Log Analytics 工作区中。

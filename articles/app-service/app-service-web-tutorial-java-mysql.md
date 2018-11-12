@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024344"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414551"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 Java 和 MySQL Web 应用
 
@@ -47,7 +47,7 @@ ms.locfileid: "50024344"
 ## <a name="prerequisites"></a>先决条件
 
 1. [下载并安装 Git](https://git-scm.com/)
-1. [下载并安装 Java 7 JDK 或更高版本](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [下载并安装 Java JDK](https://aka.ms/azure-jdks)
 1. [下载、安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>准备本地 MySQL 
@@ -272,7 +272,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 
 在 Cloud Shell 中，使用 [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) 命令，设置应用所需的 Java 运行时配置。
 
-以下命令配置的 Web 应用可在最新的 Java 8 JDK 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
+以下命令配置的 Web 应用可在最新的 [Java 8 JDK](https://aka.ms/azure-jdks) 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

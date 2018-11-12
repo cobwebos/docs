@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 将模拟的 X.509 设备预配到 Azure IoT 中心 | Microsoft Docs
-description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备
+description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备。本快速入门使用单个注册。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 694c4fe10ec8f738131768d80dd70c5bd18fe223
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1c784aefca19040abb7ab34dd92dddb1ef0f28de
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040731"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418222"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -24,9 +24,15 @@ ms.locfileid: "47040731"
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
+Azure IoT 设备预配服务支持两类注册：
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文将演示单个注册。
+
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
 
 2. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 
@@ -55,7 +61,7 @@ ms.locfileid: "47040731"
 在本部分，你将使用自签名的 X.509 证书。请务必记住以下事项：
 
 * 自签名证书仅用于测试，不应在生产环境中使用。
-* 自签名证书的默认到期日期为 1 年。
+* 自签名证书的默认过期日期为一年。
 
 你将使用来自 [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
 

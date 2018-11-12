@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f07d830e90045c11d870a921d091b45de6d2a89b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815165"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418528"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -147,6 +147,8 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 >[!NOTE]
 > 如果应用程序使用 Spring Framework 或 Spring Boot，你可以在 [应用程序的 properties 文件] 中将 Spring Data JPA 的数据库连接信息设置为环境变量。 然后在 Azure 门户或 CLI 中使用[应用设置](/azure/app-service/web-sites-configure#app-settings)来为应用程序定义这些值。
 
+本节中的示例配置片段使用 MySQL 数据库。 有关其他信息，请参阅 [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017) 和 [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) 的配置文档。
+
 若要使用 Java 数据库连接 (JDBC) 或 Java 持久性 API (JPA) 将 Tomcat 配置为使用数据库的托管连接，请先自定义 Tomcat 在启动时要读取的 CATALINA_OPTS 环境变量。 在应用服务 Maven 插件中通过某个应用设置来设置这些值：
 
 ```xml
@@ -233,7 +235,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ## <a name="docker-containers"></a>Docker 容器
 
-若要在容器中使用 Azure 支持的 Zulu JDK，请确保拉取并使用 [Azul 下载页](https://www.azul.com/downloads/azure-only/zulu/#docker)上列出的预构建映像，或使用 [Microsoft Java GitHub 存储库](https://github.com/Microsoft/java/tree/master/docker)中的 `Dockerfile` 示例。
+若要在容器中使用 Azure 支持的 Zulu JDK，请确保拉取并使用[受支持的 Azul Zulu Enterprise for Azure 下载页面](https://www.azul.com/downloads/azure-only/zulu/)中提到的预构建的映像，或使用 [Microsoft Java GitHub 存储库](https://github.com/Microsoft/java/tree/master/docker)中的 `Dockerfile` 示例。
 
 ## <a name="runtime-availability-and-statement-of-support"></a>运行时可用性和支持声明
 

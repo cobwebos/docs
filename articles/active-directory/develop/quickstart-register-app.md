@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: e4e667c9a9490d164b9fb1c90580ceb30989a7dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988696"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912979"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>快速入门：将应用程序注册到 Microsoft 标识平台（预览版）
 
 企业开发人员和软件即服务 (SaaS) 提供商可以开发能够与 Microsoft 标识平台集成的商业云服务或业务线应用程序，以针对其服务提供安全的登录和授权。
 
-本快速入门介绍如何在 Azure 门户中添加和注册应用程序，使之能够与 Microsoft 标识平台集成。
+本快速入门介绍如何在 Azure 门户中使用**应用注册（预览版）** 体验添加和注册应用程序，使应用能够与 Microsoft 标识平台集成。
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -59,7 +59,7 @@ ms.locfileid: "49988696"
 
     [![在 Azure 门户中注册新应用程序](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
-Azure AD 会将唯一的应用程序 ID 分配给应用，同时你会转到应用程序的“概览”页。 若要向应用程序添加其他功能，可以选择其他配置选项，包括品牌、证书和机密、API 权限，等等。
+Azure AD 会将唯一的应用程序（客户端）ID 分配给应用，同时你会转到应用程序的“概览”页。 若要向应用程序添加其他功能，可以选择其他配置选项，包括品牌、证书和机密、API 权限，等等。
 
 [![新注册应用的概览页](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
