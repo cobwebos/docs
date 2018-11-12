@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户创建 Azure 数据库迁移服务实例 | Microsoft Docs
+title: 快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例 | Microsoft Docs
 description: 使用 Azure 门户创建 Azure 数据库迁移服务的实例
 services: database-migration
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/09/2018
-ms.openlocfilehash: 662543a0717fbddb8eaefb5938f36adc88f4f3f2
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 7df19efc52f0771a10535c10625dd959a6edc90a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883748"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958009"
 ---
-# <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 数据库迁移服务实例
+# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 在本快速入门中，我们将使用 Azure 门户创建 Azure 数据库迁移服务的实例。  创建服务后，可使用它将数据从本地 SQL Server 迁移到 Azure SQL 数据库。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -60,7 +60,7 @@ ms.locfileid: "48883748"
 
         ![创建迁移服务](media/quickstart-create-data-migration-service-portal/dms-create-service1.png)
 
-4. 选择**创建**。
+4. 选择“创建”。
 
     片刻之后，Azure 数据库迁移服务的实例即会创建并可供使用。 此时，会显示下图所示的数据库迁移服务：
 

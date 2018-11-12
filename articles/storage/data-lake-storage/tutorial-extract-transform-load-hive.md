@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 23478a1f72a4b74bcacf27d3b18116250eb6bfff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4e7b6d5c2f84f7d385709dc780507c262081757a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984647"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280573"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
 
@@ -67,7 +67,7 @@ ms.locfileid: "46984647"
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>将数据上传到 HDInsight 群集
 
-可通过多种方式将数据上传到与 HDInsight 群集相关的存储。 本部分使用 `scp` 上传数据。 若要了解上传数据的其他方式，请参阅[使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 预览版之间复制数据](use-distcp.md)。
+可通过多种方式将数据上传到与 HDInsight 群集相关的存储。 本部分使用 `scp` 上传数据。 若要了解上传数据的其他方式，请参阅[使用 Distcp 在现有存储帐户和启用了 Data Lake Storage Gen2 的新存储帐户之间复制数据](use-distcp.md)。
 
 1. 打开命令提示符，使用以下命令将 zip 文件上传到 HDInsight 群集头节点：
 

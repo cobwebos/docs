@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282452"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515754"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明  
 本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
@@ -46,7 +46,7 @@ ms.locfileid: "51282452"
 <!-- TBD - IS ASDK --> 
 - 修复了在其中你在 Azure Stack 用户门户中，创建虚拟机，并在门户显示可以将附加到 DS 系列 VM 的数据磁盘数目不正确的问题。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
-- 以下的托管的磁盘问题固定的中 1809，而且还修复中 1808年[Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- 以下的托管的磁盘问题固定的中 1809，而且还修复中 1808年[Azure Stack 修补程序 1.1808.7.113](https://support.microsoft.com/help/4471992/): 
 
    <!--  2966665 – IS, ASDK --> 
    - 在为高级托管的磁盘的虚拟机 （DS、 DSv2、 Fs、 Fs_V2） 失败，出现错误的大小的附加 SSD 数据磁盘中修复的问题：*未能更新虚拟机 vmname 错误的磁盘： 无法执行操作，因为请求的存储帐户类型 Premium_LRS 不支持的 VM 大小 Standard_DS/Ds_V2/FS/Fs_v2)*。 
@@ -59,6 +59,16 @@ ms.locfileid: "51282452"
 - <!-- 2702741 -  IS, ASDK --> 方法未在部署的使用动态分配的公共 Ip 的已修复的问题后发出停止-解除分配保留保证。 他们现在将保留。
 
 - <!-- 3078022 - IS, ASDK --> 如果 VM 已停止解除分配，1808年之前它不能重新分配 1808年更新后。  在 1809年中修复此问题。 可以在通过这项修复 1809年开始，已在此状态下无法启动的实例。 解决方法还可防止此问题再次发生。
+
+<!-- 3090289 – IS, ASDK --> 
+- 修复了在其中应用 1808年更新后，你可能会遇到以下问题部署包含托管磁盘的 Vm 时：
+
+   1. 如果部署包含托管磁盘 VM 在 1808年更新之前创建的订阅可能会因内部错误消息。 若要解决此错误，按照每个订阅的以下步骤：
+      1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
+      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
+   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
+      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992)。
+      2. 按照中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
 
 - 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的**各种修复**
 
@@ -100,7 +110,7 @@ ms.locfileid: "51282452"
 
 #### <a name="compute"></a>计算 
 
-<!-- TBD – IS, ASDK -->
+<!-- 3164607 – IS, ASDK -->
 - 如重新附加到同一虚拟机 (VM) 具有相同名称和 LUN 分离的磁盘失败并出现错误**不能将数据磁盘 datadisk 附加到 VM vm1**。 因为当前正在分离磁盘或最后一个分离操作失败，发生此错误。 请等到磁盘完全分离然后重试或删除/分离磁盘显式试。 解决方法是使用不同的名称，或不同的 LUN 上重新附加它。 
 
 <!-- 3235634 – IS, ASDK -->
@@ -108,16 +118,6 @@ ms.locfileid: "51282452"
 
 <!-- 3099544 – IS, ASDK --> 
 - 美元/月列时创建新虚拟机 (VM) 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应出现;显示 VM 定价的列不支持在 Azure Stack 中。
-
-<!-- 3090289 – IS, ASDK --> 
-- 更新后应用 1808年，部署包含托管磁盘的 Vm 时可能遇到以下问题：
-
-   1. 如果部署包含托管磁盘 VM 在 1808年更新之前创建的订阅可能会因内部错误消息。 若要解决此错误，按照每个订阅的以下步骤：
-      1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
-   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
-      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4468920)。
-      2. 按照中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
 
 <!-- 2869209 – IS, ASDK --> 
 - 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 

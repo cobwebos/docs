@@ -1,0 +1,75 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: a314401883d0325029ce50502f85c335458e3959
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285044"
+documentType: LandingData
+title: Azure 数据库迁移服务文档
+metadata:
+  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
+  title: Azure 数据库迁移服务文档 - 教程 | Microsoft Docs
+  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
+  services: functions
+  author: pochiraju
+  manager: craigg
+  ms.service: dms
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2018
+  ms.author: rajpo
+abstract:
+  description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/video-thumb-intro2dms.png
+      width: 250
+    title: Azure DMS 简介 (1:30)
+    href: https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu
+    width: 250
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何使用数据库迁移服务将本地 SQL Server 迁移到 Azure SQL 数据库：
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure 门户
+      href: /azure/dms/quickstart-create-data-migration-service-portal
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用数据库迁移服务迁移数据库：
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
+    - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL</a>
+    - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>
+- title: 示例
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB</a>
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL DB 托管实例</a>
+- title: 引用
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/pre-reqs">使用 Azure 数据库迁移服务的先决条件概述</a>
+    - html: <a href="/azure/dms/faq">有关使用 Azure 数据库迁移服务的常见问题解答</a>
+    - html: <a href="/azure/dms/known-issues-azure-sql-online">联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制</a>
