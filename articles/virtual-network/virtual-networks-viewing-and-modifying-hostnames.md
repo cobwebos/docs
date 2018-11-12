@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4a836e0f5e47d6ef91e11fd1a0076859b54ed8e6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243021"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250180"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
 若要允许通过主机名引用角色实例，必须在服务配置文件中为每个角色设置主机名的值。 可以通过将所需主机名添加到 **Role** 元素的 **vmName** 属性来执行该操作。 **vmName** 属性的值将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。 无需在配置文件中为虚拟机指定主机名，因为虚拟机的主机名会基于虚拟机名称填充。 有关配置 Microsoft Azure 服务的详细信息，请参阅 [Azure Service 配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -58,7 +58,7 @@ ms.locfileid: "50243021"
 
 [Azure 服务配置架构 (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure 虚拟网络配置架构](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure 虚拟网络配置架构](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [使用网络配置文件指定 DNS 设置](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

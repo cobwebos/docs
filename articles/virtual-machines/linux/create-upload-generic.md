@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638184"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235966"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -76,7 +76,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
 
 * VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小为 21475270656 字节，这是不受支持的。 大小必须是整数（以 MB 为单位）。
 
-在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
+在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 
 > [!NOTE]
 > 2.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
@@ -125,7 +125,7 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下
 
 Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游 Linux 内核。 包括最新 Linux 内核版本（例如 3.x）在内的许多分发版已提供这些驱动程序，或以其他方式为其内核提供了这些驱动程序的向后移植版本。  这些驱动程序会不断地在上游内核中使用新的修补程序和功能进行更新，因此，如果可能，建议运行包含这些修补程序和更新的[认可的分发版](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-如果你正在运行 Red Hat Enterprise Linux 版本 6.0 到 6.3 的一个变体，需要安装[适用于 Hyper-V 的最新 LIS 驱动程序](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)。 从 RHEL 6.4+（和派生产品）开始，LIS 驱动程序已包含在内核中，因此，无需其他安装包。
+如果你正在运行 Red Hat Enterprise Linux 版本 6.0 到 6.3 的一个变体，需要安装[适用于 Hyper-V 的最新 LIS 驱动程序](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)。 从 RHEL 6.4+（和派生产品）开始，LIS 驱动程序已包含在内核中，因此，无需其他安装包。
 
 如果需要自定义内核，我们建议使用最新的内核版本（例如 3.8+）。 对于维护自己内核的分发版或供应商，需要定期将 LIS 驱动程序从上游内核向后移植到自定义内核。  即使已运行相对较新的内核版本，我们也强烈建议跟踪 LIS 驱动程序中的任何上游修复，并根据需要向后移植这些修复。 LIS 驱动程序源文件的位置在 Linux 内核源树中的 [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) 文件中指定：
 ```

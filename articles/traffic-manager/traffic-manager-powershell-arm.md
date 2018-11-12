@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237921"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -178,7 +178,7 @@ New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -Reso
 在父配置文件中使用特定的终结点类型“NestedEndpoints”配置嵌套式终结点。 指定嵌套式终结点时：
 
 * 必须使用“targetResourceId”参数指定终结点
-* 如果使用了“'Performance”流量路由方法，则需要获取“EndpointLocation”。 否则其则是可选项。 此值必须是[有效的 Azure 区域名称](http://azure.microsoft.com/regions/)。
+* 如果使用了“'Performance”流量路由方法，则需要获取“EndpointLocation”。 否则其则是可选项。 此值必须是[有效的 Azure 区域名称](https://azure.microsoft.com/regions/)。
 * 对于 Azure 终结点，“加权”和“优先级”是可选项。
 * “MinChildEndpoints”参数是可选项。 默认值为“1”。 如果可用终结点数低于此阈值，则父配置文件会将此子配置文件视为“已降级”，并将流量转移到父配置文件中的其他终结点。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 79b2aa22307e4742d00d9422535d52c80485e2db
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249028"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257356"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -939,9 +939,9 @@ Hello world 日志输出
 ```
 
 ## <a name="also-see"></a>另请参阅
-[在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
-[如何在 Azure 媒体服务中使用高级编码](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 [使用 Azure 媒体服务对请求内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)
 
@@ -949,7 +949,7 @@ Hello world 日志输出
 
 [示例工作流文件](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Azure 媒体服务资源管理器工具](http://aka.ms/amse)
+[Azure 媒体服务资源管理器工具](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

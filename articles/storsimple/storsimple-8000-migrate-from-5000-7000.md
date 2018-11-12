@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818910"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234402"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>将数据从 StorSimple 5000-7000 系列迁移到 8000 系列设备
 
@@ -57,7 +57,7 @@ ms.locfileid: "42818910"
 | 3.   | 在成功迁移后，所有数据都将迁移到本地设备上。 当访问数据时将不存在延迟。 | Azure 存储空间的使用将会增加，直到将数据从 5000/7000 设备中删除。                                                                                                        |
 | 4.   |                                                                                                                           | 如果 7000/5000 系列设备包含大量数据，则在迁移期间，需要从 Azure 下载该数据，而这将产生与从 Azure 中下载数据相关的成本和延迟。 |
 
-本文仅着重介绍从 5000/7000 到 8000 系列设备的迁移功能。 有关主机端迁移的详细信息，请转到[从其他存储设备中迁移](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)。
+本文仅着重介绍从 5000/7000 到 8000 系列设备的迁移功能。 有关主机端迁移的详细信息，请转到[从其他存储设备中迁移](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)。
 
 ## <a name="migration-prerequisites"></a>迁移先决条件
 

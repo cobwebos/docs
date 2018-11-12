@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: eb909384805c96ce656cacf86adceedc55613c0f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4fc1c0b87aa5312be0ccac50681e952dc7f1c4ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113652"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251723"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -70,7 +70,7 @@ ms.locfileid: "49113652"
 
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name** | 默认 | 使用模板建议的默认函数名称。|
+    | **名称** | 默认 | 使用模板建议的默认函数名称。|
     | **Azure Cosmos DB 帐户连接** | 新设置 | 选择“新建”，选择你的**订阅**、你之前创建的**数据库帐户**，然后选择“选择”。 这将为帐户连接创建应用程序设置。 此设置由数据库连接的绑定使用。 |
     | 集合名称 | Items | 要监视的集合的名称。 |
     | **创建租赁集合（如果不存在）** | 已选中 | 集合不存在，因此创建集合。 |
@@ -108,7 +108,7 @@ ms.locfileid: "49113652"
     | **集合 ID** | Items | 新集合的名称。 它必须匹配函数绑定中定义的名称。  |
     | **存储容量** | 固定 (10 GB)|使用默认值。 此值是数据库的存储容量。 |
     | **吞吐量** |400 RU| 使用默认值。 如果想要减少延迟，以后可以增加吞吐量。 |
-    | **[分区键](../cosmos-db/partition-data.md#best-practices-when-choosing-a-partition-key)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能集合而言很重要。 | 
+    | **[分区键](../cosmos-db/partition-data.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能集合而言很重要。 | 
 
 1. 单击“确定”创建项集合。 创建该集合可能需要一点时间。
 

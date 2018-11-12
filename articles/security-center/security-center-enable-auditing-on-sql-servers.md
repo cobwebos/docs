@@ -3,7 +3,7 @@ title: 在 Azure 安全中心中对 SQL Server 启用审核和威胁检测 | Mic
 description: 本文档演示如何实现 Azure 安全中心建议**对 SQL Server 启用审核和威胁检测**。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: terrylan
-ms.openlocfilehash: fade8de73a35b75f6096a25af13335d679caffac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: cc0c820fb2172466db917725a4f14e7ea5253fb5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300896"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259898"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>在 Azure 安全中心中对 SQL Server 启用审核和威胁检测
 Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审核和威胁检测（如果尚未启用）。 审核和威胁检测可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可能指示业务利害关系或疑似安全违规的偏差和异常。
@@ -58,7 +58,7 @@ Azure 安全中心将建议对 Azure SQL 服务器上的所有数据库启用审
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md)查找有关使用服务的常见问题。
-* [Azure 安全博客](http://blogs.msdn.com/b/azuresecurity/)获取最新的 Azure 安全新闻和信息。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)获取最新的 Azure 安全新闻和信息。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png
