@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 13f81ced7ebaee97b53cf843421b339db6fd6096
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246901"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013371"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -94,7 +94,7 @@ ms.locfileid: "50246901"
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-此设置是[日志记录](#log)的子项。
+此设置是[日志记录](#logging)的子项。
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 

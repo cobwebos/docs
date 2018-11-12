@@ -4,12 +4,12 @@ ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: patricka
-ms.openlocfilehash: 9d5af21fb3b329623b14cb8742d9ec9c5d1bad46
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcd71f74e0b00934958828024094773e42496b66
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134385"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51017264"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "50134385"
 | **名称** | Contoso B2C API | 输入应用程序的“名称”，用于向使用者描述 API。 | 
 | 包括 Web 应用/Web API | 是 | 对于 Web API，请选择“是”。 |
 | 允许隐式流 | 是 | 如应用程序使用 [OpenID Connect 登录](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md)，请选择“是” |
-| 回复 URL | `https://localhost:44316/` | 回复 URL 是 Azure AD B2C 在其中返回应用程序请求的任何令牌的终结点。 输入[合适](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-web-app-or-api-reply-url)的回复 URL。 在此示例中，Web API 为本地应用，在端口 44316 上侦听。 |
+| 回复 URL | `https://localhost:44316/` | 回复 URL 是 Azure AD B2C 在其中返回应用程序请求的任何令牌的终结点。 在此示例中，Web API 为本地应用，在端口 44316 上侦听。 |
 | 应用 ID URI | api | App ID URI 是用于 Web API 的标识符。 包括域在内的完整标识符 URI 是为你生成的。 |
 
 单击“ **创建** ”以注册应用程序。

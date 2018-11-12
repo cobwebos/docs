@@ -1,25 +1,18 @@
 ---
-title: 在 Azure Site Recovery 中将 Azure 自动化 Runbook 添加到恢复计划 | Microsoft Docs
-description: 了解 Azure Site Recovery 如何帮助用户使用 Azure 自动化扩展恢复计划。 了解如何在恢复到 Azure 期间完成复杂任务。
-services: site-recovery
-documentationcenter: ''
+title: 将 Azure 自动化 Runbook 添加到 Site Recovery 恢复计划中 | Microsoft Docs
+description: 了解如何使用 Azure 自动化扩展恢复计划以使用 Azure Site Recovery 进行灾难恢复。
 author: ruturaj
 manager: gauravd
-editor: ''
-ms.assetid: ecece14d-5f92-4596-bbaf-5204addb95c2
 ms.service: site-recovery
-ms.devlang: powershell
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 55160f3c43d8cbfc5f8b3e6aaf26bcb911387c52
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5da623d07c34114d82c2b818a7c06420ffb9c886
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578759"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211105"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性、可重复性和自动化。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。

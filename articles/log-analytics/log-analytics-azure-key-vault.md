@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412816"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016142"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
@@ -38,7 +38,7 @@ ms.locfileid: "50412816"
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明来安装和配置 Azure 密钥保管库解决方案：
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
 2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>在门户中启用 Key Vault 诊断
@@ -136,7 +136,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 若要使用更新的解决方案，请执行以下操作：
 
 1. [将诊断配置为直接从 Key Vault 发送到 Log Analytics](#enable-key-vault-diagnostics-in-the-portal)  
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
+2. 使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
   + 类型已从 KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
   - 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -153,4 +153,4 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看 Azure 密钥保管库的详细数据。
+* 使用 [Log Analytics 中的日志搜索](log-analytics-queries.md)查看 Azure 密钥保管库的详细数据。

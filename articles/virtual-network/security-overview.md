@@ -4,9 +4,6 @@ description: 了解网络和应用程序安全组。 安全组可以帮助你筛
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987010"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159071"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -35,7 +32,7 @@ ms.locfileid: "46987010"
 |属性  |说明  |
 |---------|---------|
 |名称|网络安全组中的唯一名称。|
-|Priority | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
+|优先度 | 介于 100 和 4096 之间的数字。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。|
 |源或目标| 可以是任何值，也可以是单个 IP 地址、无类别域际路由 (CIDR) 块（例如 10.0.0.0/24）、[服务标记](#service-tags)或[应用程序安全组](#application-security-groups)。 如果为 Azure 资源指定一个地址，请指定分配给该资源的专用 IP 地址。 在 Azure 针对入站流量将公共 IP 地址转换为专用 IP 地址后，系统会处理网络安全组，然后由 Azure 针对出站流量将专用 IP 地址转换为公共 IP 地址。 详细了解 Azure [IP 地址](virtual-network-ip-addresses-overview-arm.md)。 指定范围、服务标记或应用程序安全组可以减少创建的安全规则数。 在一个规则中指定多个单独的 IP 地址和范围（不能指定多个服务标记或应用程序组）的功能称为[扩充式安全规则](#augmented-security-rules)。 只能在通过资源管理器部署模型创建的网络安全组中创建扩充式安全规则。 在通过经典部署模型创建的网络安全组中，不能指定多个 IP 地址和 IP 地址范围。 详细了解 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
 |协议     | TCP、UDP 或“任何”，包括 TCP、UDP 和 ICMP。 不能仅指定 ICMP，因此，如果需要 ICMP，请使用“任何”。 |
 |方向| 该规则是应用到入站还是出站流量。|
@@ -60,9 +57,9 @@ ms.locfileid: "46987010"
  可在安全规则定义中使用以下服务标记。 服务标记的名称根据 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的不同而略有不同。
 
 * **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络。
-* **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
+* **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md##azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
 * **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
-* **AzureCloud**（仅限资源管理器）：此标记表示 Azure 的 IP 地址空间，包括所有数据中心公共 IP 地址。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure AzureCloud，可以指定 AzureCloud.EastUS 作为服务标记。 
+* **AzureCloud**（仅限资源管理器）：此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure AzureCloud，可以指定 AzureCloud.EastUS 作为服务标记。 
 * **AzureTrafficManager**（仅限资源管理器）：此标记表示 Azure 流量管理器探测 IP 地址的 IP 地址空间。 有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 
 * **Storage**（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的存储进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure 存储，可以指定 *Storage.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 由此标记表示的所有地址前缀也由 **Internet** 标记表示。 
 * **Sql**（仅限资源管理器）：此标记表示 Azure SQL 数据库和 Azure SQL 数据仓库服务的地址前缀。 如果指定 *Sql* 作为值，则会允许或拒绝发往 Sql 的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的 Sql 进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure SQL 数据库，可以指定 *Sql.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 由此标记表示的所有地址前缀也由 **Internet** 标记表示。 
@@ -79,7 +76,6 @@ ms.locfileid: "46987010"
 * **GatewayManager**（仅限资源管理器）：此标记表示 Azure 网关管理器服务的地址前缀。 如果指定 GatewayManager 作为值，则会允许或拒绝发往 GatewayManager 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 GatewayManager，则可采用以下格式 GatewayManager.[区域名称] 指定该区域。 
 * **AzureDataLake**（仅限资源管理器）：此标记表示 Azure Data Lake 服务的地址前缀。 如果指定 AzureDataLake 作为值，则会允许或拒绝发往 AzureDataLake 的流量。 
 * **AzureActiveDirectory**（仅限资源管理器）：此标记表示 AzureActiveDirectory 服务的地址前缀。 如果指定 AzureActiveDirectory 作为值，则会允许或拒绝发往 AzureActiveDirectory 的流量。  
-* **CorpNetSAW**（仅限资源管理器）：此标记表示 Azure 运营的 [CorpNetSAW 设备](../security/azure-security-iaas.md)的地址前缀。 在某些情况下，Azure 服务可使用此服务标记来请求访问客户托管实例，从而提高支持能力。 如果指定 CorpNetSAW 作为值，则会允许或拒绝发往 CorpNetSAW 的流量。 
 
 > [!NOTE]
 > Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 区域服务标记在国家/地区云中不受支持，只能在全球云中采用。 例如，存储和 *Sql*。
@@ -95,19 +91,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|Source|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|允许|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|Source|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|允许|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|Source|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|拒绝|
 
@@ -115,19 +111,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | 允许 |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | 允许 |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | 拒绝 |
 
@@ -147,7 +143,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
 
@@ -155,7 +151,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | 全部 | 拒绝 |
 
@@ -163,7 +159,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|Priority|Source|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
 
