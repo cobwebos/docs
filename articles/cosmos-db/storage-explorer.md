@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345101"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261143"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
 
@@ -130,7 +130,7 @@ ms.locfileid: "37345101"
 
 2. 选择“无限制”以便能够指定分区键，然后单击“确定”完成操作。
 
-    如果在创建集合时使用分区键，则一旦创建完成，便无法对集合更改分区键值。 有关分区键设置的信息，请参阅[分区设计](partition-data.md#designing-for-partitioning)。
+    如果在创建集合时使用分区键，则一旦创建完成，便无法对集合更改分区键值。
 
     ![分区键](./media/storage-explorer/partitionkey.png)
 

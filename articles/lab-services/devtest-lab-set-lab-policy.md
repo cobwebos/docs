@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666833"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255161"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 
@@ -27,7 +27,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 ## <a name="set-allowed-virtual-machine-sizes"></a>设置允许的虚拟机大小
 通过指定实验室中允许的 VM 大小，设置允许的 VM 大小策略有助于最小化实验室浪费。 若激活此策略，则只能按列表中的大小创建 VM。
 
-1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室，然后选择“配置和策略”。
+1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室，然后选择“配置和策略”。
 
     ![访问实验室的配置和策略](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
@@ -112,10 +112,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 * [了解共享 IP 地址](devtest-lab-shared-ip.md) - 说明了在开发测试实验室中如何使用共享 IP 地址以最大程度地减少连接到实验室 VM 时所需的公共 IP 地址数。
 * [配置成本管理](devtest-lab-configure-cost-management.md) - 演示了如何使用**每月的估计成本趋势**图表  
   查看当前所处月份的截止目前估计的成本以及截止本月结束预计成本。
-* 
-    [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或市场映像。 本文演示了如何从 VHD 文件创建自定义映像。
-* 
-    [配置市场映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 市场映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 市场映像（如果有）。
-* 
-    [在实验室中创建 VM](devtest-lab-add-vm.md) - 演示了如何从基本映像（自定义或市场映像）创建 VM，以及如何在 VM 中使用项目。
+* [创建自定义映像](devtest-lab-create-template.md) - 创建 VM 时，指定一个基本映像，可以是自定义映像或市场映像。 本文演示了如何从 VHD 文件创建自定义映像。
+* [配置市场映像](devtest-lab-configure-marketplace-images.md) - Azure 开发测试实验室支持创建基于 Azure 市场映像的 VM。 本文展示了如何指定可用于在实验室中创建 VM 的 Azure 市场映像（如果有）。
+* [在实验室中创建 VM](devtest-lab-add-vm.md) - 演示了如何从基本映像（自定义或市场映像）创建 VM，以及如何在 VM 中使用项目。
 

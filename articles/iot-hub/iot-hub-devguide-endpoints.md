@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 12dd93edce365509488631e4ca27462256abfca8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452660"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251434"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -57,7 +57,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 * **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP](https://www.amqp.org/) 协议进行公开。 方法调用终结点通过 HTTPS 协议进行公开。
   
-  * *接收设备到云的消息*。 此终结点与 [Azure 事件中心](http://azure.microsoft.com/documentation/services/event-hubs/)兼容。 后端服务可用它来读取由设备发送的[设备到云的消息](iot-hub-devguide-messages-d2c.md)。 可以在此内置终结点之外的 IoT 中心创建自定义终结点。
+  * *接收设备到云的消息*。 此终结点与 [Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容。 后端服务可用它来读取由设备发送的[设备到云的消息](iot-hub-devguide-messages-d2c.md)。 可以在此内置终结点之外的 IoT 中心创建自定义终结点。
   
   * *发送云到设备的消息和接收送达确认*。 这些终结点可让解决方案后端发送可靠的[云到设备的消息](iot-hub-devguide-messages-c2d.md)，以及接收对应的传送或过期确认。
   

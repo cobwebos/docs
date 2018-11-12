@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8c3980231404e5c8068dbd011d20759f207d7fff
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937948"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260289"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
 > [!NOTE]
@@ -32,7 +32,7 @@ Azure 诊断可以与其他 Microsoft 诊断产品（例如 Azure Monitor、Appl
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
- 有关使用 Azure 诊断的详细信息，请参阅 [Enabling Diagnostics in Azure Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)（在 Azure 云服务中启用诊断）。  
+ 有关使用 Azure 诊断的详细信息，请参阅 [Enabling Diagnostics in Azure Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)（在 Azure 云服务中启用诊断）。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>诊断配置文件示例  
  以下示例演示典型的诊断配置文件：  
@@ -96,7 +96,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="publicconfig-element"></a>PublicConfig 元素  
  诊断配置文件的顶级元素。 下表介绍配置文件的元素。  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**WadCfg**|必需。 待收集的遥测数据的配置设置。|  
 |**StorageAccount**|用于存储数据的 Azure 存储帐户的名称。 执行 Set-AzureServiceDiagnosticsExtension cmdlet 时，还可能将其指定为参数。|  
@@ -105,7 +105,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="wadcfg-element"></a>WadCFG 元素  
 定义待收集的遥测数据的配置设置。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|必需。 可选属性：<br /><br /> -                     **overallQuotaInMB** - 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 5120 MB。<br /><br /> -                     **useProxyServer** - 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|  
 |**CrashDumps**|启用故障转储收集。 可选属性：<br /><br /> -                     **containerName** - Azure 存储帐户中用于存储故障转储的 Blob 容器的名称。<br /><br /> -                     **crashDumpType** - 将 Azure 诊断配置为收集少量或完整故障转储。<br /><br /> -                     **directoryQuotaPercentage** - 配置 VM 上为故障转储保留的 **overallQuotaInMB** 的百分比。|  
@@ -119,7 +119,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="crashdumps-element"></a>CrashDumps 元素  
  启用故障转储收集。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**CrashDumpConfiguration**|必需。 必需属性：<br /><br /> **processName** - 希望 Azure 诊断为其收集故障转储的进程的名称。|  
 |**crashDumpType**|将 Azure 诊断配置为收集少量或完整故障转储。|  
@@ -128,7 +128,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directories-element"></a>Directories 元素  
  启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DataSources**|要监视的目录的列表。|  
 |**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
@@ -137,14 +137,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="datasources-element"></a>DataSources 元素  
  要监视的目录的列表。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DirectoryConfiguration**|必需。 必需属性：<br /><br /> **containerName** - Azure 存储帐户中用于存储日志文件的 blob 容器的名称。|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 元素  
  **DirectoryConfiguration** 可能包括 **Absolute** 或 **LocalResource** 元素，但不能同时包含两者。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**Absolute**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> -                     **Path** - 要监视的目录的绝对路径。<br /><br /> -                      **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
 |**LocalResource**|要监视的本地资源的相对路径。 必需属性：<br /><br /> -                     **Name** - 包含要监视的目录的本地资源<br /><br /> -                     **relativePath** - 包含要监视的目录的名称的相对路径|  
@@ -152,15 +152,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwproviders-element"></a>EtwProviders 元素  
  配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML 持续时间数据类型](http://www.w3schools.com/xml/schema_dtypes_date.asp)。|  
+|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML 持续时间数据类型](http://www.w3schools.com/xml/schema_dtypes_date.asp)。|  
 |**EtwManifestProviderConfiguration**|必需属性：<br /><br /> **provider** - 事件提供程序的 GUID<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML 持续时间数据类型](http://www.w3schools.com/xml/schema_dtypes_date.asp)。|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 元素  
- 配置收集从 [EventSource 类](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 下表介绍子元素：  
+ 配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 |**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
@@ -168,7 +168,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 元素  
  下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 |**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
@@ -176,27 +176,27 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="metrics-element"></a>Metrics 元素  
  可以生成针对快速查询进行优化的性能计数器表。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**MetricAggregation**|必需属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML 持续时间数据类型](http://www.w3schools.com/xml/schema_dtypes_date.asp)。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 元素  
  启用性能计数器收集。 下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> -                     **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> -                     **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration 元素  
  下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**批注**|必需属性：<br /><br /> **displayName** - 计数器的显示名称<br /><br /> 可选属性：<br /><br /> **locale** - 显示计数器名称时使用的区域设置|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 元素  
  下表介绍子元素：  
 
-|元素名称|说明|  
+|元素名称|Description|  
 |------------------|-----------------|  
 |**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> 若要收集所有事件，请指定“*”。|

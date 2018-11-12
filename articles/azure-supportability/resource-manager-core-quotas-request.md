@@ -7,18 +7,18 @@ ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7456785815dbefb2436713814965d90ba0e789ee
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037231"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250979"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>资源管理器 vCPU 配额增加请求
 
 在区域级别和 SKU 系列级别，需要强制实施资源管理器 vCPU 配额。
-有关配额的强制实施方法的详细信息，请参阅 [Azure 订阅和服务限制](http://aka.ms/quotalimits)页面。
-若要了解 SKU 系列的详细信息，可在[虚拟机定价](http://aka.ms/pricingcompute)页面比较成本和性能。
+有关配额的强制实施方法的详细信息，请参阅 [Azure 订阅和服务限制](https://aka.ms/quotalimits)页面。
+若要了解 SKU 系列的详细信息，可在[虚拟机定价](https://aka.ms/pricingcompute)页面比较成本和性能。
 
 若要请求增加，请按照以下说明使用 Azure 门户中提供的 Azure“使用情况 + 配额”边栏选项卡创建支持请求。 
 

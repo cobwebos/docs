@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394241"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238343"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -59,7 +59,7 @@ ms.locfileid: "49394241"
 
     若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)。 请务必单击“高级选项”，并选择加密选项。
 
-    若要测试 FairPlay 加密内容，请使用[此测试播放器](http://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：适用于 Widevine 的 Chrome/Opera/Firefox、适用于 PlayReady 的 MS Edge/IE11、适用于 FairPlay 的 Safari on macOS。
+    若要测试 FairPlay 加密内容，请使用[此测试播放器](https://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：适用于 Widevine 的 Chrome/Opera/Firefox、适用于 PlayReady 的 MS Edge/IE11、适用于 FairPlay 的 Safari on macOS。
 
 3. 安全令牌服务 (STS)，颁发 JSON Web 令牌 (JWT) 作为用于访问后端资源的访问令牌。 可以使用 AMS 许可证传送服务作为后端资源。 STS 必须定义以下信息：
 
@@ -168,8 +168,8 @@ ms.locfileid: "49394241"
 1. 在生产环境中，需要获取安全令牌服务 (STS)（Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
 2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
 
-* 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [http://aka.ms/jwt](http://aka.ms/jwt)。 
-* 有关使用此类 JWT 令牌的、基于 Azure Media Player 的播放器示例，请参阅 [http://aka.ms/amtest](http://aka.ms/amtest)（展开“player_settings”链接可查看令牌输入）。
+* 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [http://aka.ms/jwt](https://aka.ms/jwt)。 
+* 有关使用此类 JWT 令牌的、基于 Azure Media Player 的播放器示例，请参阅 [http://aka.ms/amtest](https://aka.ms/amtest)（展开“player_settings”链接可查看令牌输入）。
 
 ### <a name="question"></a>问题
 

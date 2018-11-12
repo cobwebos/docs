@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0de7e7596fb7fabbc4061709816111a7a4ad827
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213038"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258055"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
-Reliable Actors 是基于[虚拟执行组件](http://research.microsoft.com/en-us/projects/orleans/)模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
+Reliable Actors 是基于[虚拟执行组件](https://research.microsoft.com/en-us/projects/orleans/)模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
 
 ## <a name="what-are-actors"></a>什么是执行组件？
 执行组件是一个使用单线程执行的计算和状态的独立单元。 [执行组件模式](https://en.wikipedia.org/wiki/Actor_model)是并发或分布式系统的计算模型。在此类系统中，大量执行组件可同时相互独立地运行。 执行组件可相互进行通信，并且它们可以创建更多执行组件。

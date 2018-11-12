@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 5dba091f62e320d6f9a48bea0208ef74db351402
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: df3062349ac384b92eeaf9483310cd5d3b48921f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095499"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238550"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库
 
@@ -682,7 +682,7 @@ ORDER BY start_time DESC
 
 ## <a name="monitoring-query-performance"></a>监视查询性能
 
-缓慢或长时间运行的查询会消耗大量系统资源。 本部分演示如何使用动态管理视图来检测一些常见的查询性能问题。 一个较旧但仍很有帮助的故障排除参考是 Microsoft TechNet 上的[排查 SQL Server 2008 中的性能问题](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)这篇文章。
+缓慢或长时间运行的查询会消耗大量系统资源。 本部分演示如何使用动态管理视图来检测一些常见的查询性能问题。 一个较旧但仍很有帮助的故障排除参考是 Microsoft TechNet 上的[排查 SQL Server 2008 中的性能问题](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)这篇文章。
 
 ### <a name="finding-top-n-queries"></a>查找前 n 个查询
 

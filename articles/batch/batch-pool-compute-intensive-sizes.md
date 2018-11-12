@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: danlep
-ms.openlocfilehash: 5a73e926b5979e573ccb0402ff2d23eae2463232
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6969f0c6a05ebf5b34fb746d2a83b884687ad710
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29762435"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258249"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
@@ -52,9 +52,9 @@ ms.locfileid: "29762435"
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>(Microsoft Azure Marketplace) | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、ND 系列*](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或 7.4、<br/>CentOS 7.3 或 7.4<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 驱动程序 | 不适用 | 
-| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>CentOS 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 驱动程序 | 不适用 |
+| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
+| [NC、NCv2、NCv3、ND 系列*](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或 7.4、<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA Toolkit 驱动程序 | 不适用 | 
+| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
 
 *支持 RDMA 的 N 系列 VM 上的 RDMA 连接可能需要[其他配置](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity)，该配置因分发而异。
 
@@ -64,11 +64,11 @@ ms.locfileid: "29762435"
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2 或<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、ND 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla 驱动程序或 CUDA Toolkit 驱动程序| 不适用 | 
-| [NV 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID 驱动程序 | 不适用 |
+| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2 或<br/>2012（Azure 市场） | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，禁用并发任务执行 |
+| [NC、NCv2、NCv3、ND 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA Tesla 驱动程序或 CUDA Toolkit 驱动程序| 不适用 | 
+| [NV 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | 不适用 |
 
-*具有 HpcVMDrivers 扩展和 Microsoft MPI 或 Intel MPI 的 Windows Server 2016 或 Windows Server 2012 R2（来自 Azure Marketplace）支持在支持 RDMA 的 N 系列 VM 上进行 RDMA 连接。
+*具有 HpcVMDrivers 扩展和 Microsoft MPI 或 Intel MPI 的 Windows Server 2016 或 Windows Server 2012 R2（来自 Azure 市场）支持在支持 RDMA 的 N 系列 VM 上进行 RDMA 连接。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows 池 - 云服务配置
 
@@ -105,7 +105,7 @@ ms.locfileid: "29762435"
 
 若要在 Azure A8 节点的池上运行 Windows MPI 应用程序，需要安装支持的 MPI 实现。 以下是使用 Batch 应用程序包在 Windows 池上安装 [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) 的示例步骤。
 
-1. 下载最新版 Microsoft MPI 的[安装程序包](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe)。
+1. 下载最新版 Microsoft MPI 的[安装程序包](https://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe)。
 2. 为程序包创建 zip 文件。
 3. 将程序包上载到 Batch 帐户。 有关详细步骤，请参阅[应用程序包](batch-application-packages.md)指南。 指定应用程序 ID（如 MSMPI）和版本（如 8.1）。 
 4. 通过 Batch API 或 Azure 门户，在云服务配置中创建具有所需节点数和规模的池。 下表列出了在无人参与模式下使用启动任务设置 MPI 的示例设置：

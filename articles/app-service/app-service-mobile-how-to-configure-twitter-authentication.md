@@ -14,19 +14,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: f6449f99fda9c1a612ed9f9134751ff76b25904c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 717772a65d14620547e824d993b5acfe5e259519
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32149946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250894"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>如何将应用服务应用程序配置为使用 Twitter 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 本主题介绍如何将 Azure 应用服务配置为使用 Twitter 作为身份验证提供程序。
 
-若要完成本主题中的过程，必须拥有验证了电子邮件地址和电话号码的 Twitter 帐户。 若要创建新的 Twitter 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>。
+若要完成本主题中的过程，必须拥有验证了电子邮件地址和电话号码的 Twitter 帐户。 若要创建新的 Twitter 帐户，请转至 <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>。
 
 ## <a name="register"> </a>向 Twitter 注册应用程序
 1. 登录到 [Azure 门户]并导航到应用程序。 复制 **URL**。 配置 Twitter 应用时会用到此信息。

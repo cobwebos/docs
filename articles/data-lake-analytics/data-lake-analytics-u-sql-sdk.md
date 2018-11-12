@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052081"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238788"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -36,7 +36,7 @@ Data Lake U-SQL SDK 需要以下依赖项：
 
     ![用于 Visual Studio 的 Data Lake 工具本地运行 Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - 安装[用于 Visual Studio 的 Data Lake 工具](http://aka.ms/adltoolsvs)。 可在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 中找到预打包的 Visual C++ 和 Windows SDK 文件。 在本例中，U-SQL 本地编译器无法自动查找依赖项。 需要为它指定 CppSDK 路径。 可将文件复制到其他位置，或按原样使用。
+    - 安装[用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)。 可在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK 中找到预打包的 Visual C++ 和 Windows SDK 文件。 在本例中，U-SQL 本地编译器无法自动查找依赖项。 需要为它指定 CppSDK 路径。 可将文件复制到其他位置，或按原样使用。
 
 ## <a name="understand-basic-concepts"></a>了解基本概念
 
@@ -332,13 +332,13 @@ LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|Type|Description|
+|参数|类型|Description|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 **属性**
 
-|属性|Type|Description|
+|属性|类型|Description|
 |--------|----|-----------|
 |AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
 |CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|

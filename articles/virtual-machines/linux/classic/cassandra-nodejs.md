@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421350"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237853"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>使用 Node.js 在适用于 Linux 的 Azure 上运行 Cassandra 群集
 
@@ -49,7 +49,7 @@ Cassandra 可以部署到单个或多个 Azure 区域，具体取决于工作负
 ### <a name="single-region-deployment"></a>单区域部署
 让我们先从学习单区域部署开始，再利用所学的知识来创建多区域模型。 使用 Azure 虚拟网络可创建独立的子网，以满足上述网络安全需求。  创建单区域部署的过程中将使用 Ubuntu 14.04 LTS 和 Cassandra 2.08。 但是，其他 Linux 变体也可轻松采用此过程。 以下是单区域部署的部分系统特征。  
 
-**高可用性：** 图 1 中所示的 Cassandra 节点已部署到两个可用性集，因此这些节点是分布到多个容错域的，可用性很高。 VM 被标注了每个可用性集，并已映射到 2 个容错域。 Azure 使用容错域这一概念管理计划外的停机时间（例如硬件或软件故障）。 并使用升级域（例如主机或来宾 OS 修补/升级、应用程序升级等）这一概念管理计划内停机时间。 请参阅 [Azure 应用程序的灾难恢复和高可用性](http://msdn.microsoft.com/library/dn251004.aspx)，了解容错域和升级域在实现高可用性方面的作用。
+**高可用性：** 图 1 中所示的 Cassandra 节点已部署到两个可用性集，因此这些节点是分布到多个容错域的，可用性很高。 VM 被标注了每个可用性集，并已映射到 2 个容错域。 Azure 使用容错域这一概念管理计划外的停机时间（例如硬件或软件故障）。 并使用升级域（例如主机或来宾 OS 修补/升级、应用程序升级等）这一概念管理计划内停机时间。 请参阅 [Azure 应用程序的灾难恢复和高可用性](https://msdn.microsoft.com/library/dn251004.aspx)，了解容错域和升级域在实现高可用性方面的作用。
 
 ![单区域部署](./media/cassandra-nodejs/cassandra-linux1.png)
 

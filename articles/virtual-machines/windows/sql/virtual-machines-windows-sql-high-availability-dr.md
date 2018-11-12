@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: e9b4ca959b93e097bb52a841cec02cc476ef5f48
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257708"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 
@@ -93,7 +93,7 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障
 5. 当 NODE2 尝试与 NODE1 建立连接时，在 NODE1 上定向的数据包从不离开 NODE2，因为后者将 NODE1 的 IP 地址解析为其自身。 NODE2 无法与 NODE1 建立连接，丢失仲裁并关闭群集。
 6. 同时，NODE1 可向 NODE2 发送数据包，但 NODE2 无法回复。 NODE1 丢失仲裁并关闭群集。
 
-可通过将未使用的静态 IP 地址（如 169.254.1.1 等链接本地 IP 地址）分配给群集网络名称，让群集网络名称联机，从而避免这种情况发生。 若要简化此过程，请参阅[在 Azure 中针对可用性组配置 Windows 故障转移群集](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)。
+可通过将未使用的静态 IP 地址（如 169.254.1.1 等链接本地 IP 地址）分配给群集网络名称，让群集网络名称联机，从而避免这种情况发生。 若要简化此过程，请参阅[在 Azure 中针对可用性组配置 Windows 故障转移群集](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)。
 
 有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)。
 
@@ -120,7 +120,7 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障
 
 * [将连接字符串关键字用于 SQL Server 本机客户端](https://msdn.microsoft.com/library/ms130822.aspx)
 * [将客户端连接到数据库镜像会话 (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [在混合 IT 环境中连接到可用性组侦听器](http://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
+* [在混合 IT 环境中连接到可用性组侦听器](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
 * [可用性组侦听器、客户端连接和应用程序故障转移 (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [将数据库镜像连接字符串用于可用性组](https://technet.microsoft.com/library/hh213417.aspx)
 
@@ -139,5 +139,5 @@ Azure 磁盘中的异地复制不支持将同一数据库的数据文件和日�
 
 ### <a name="other-resources"></a>其他资源
 * [在 Azure 中安装新的 Active Directory 林](../../../active-directory/active-directory-new-forest-virtual-machine.md)
-* [在 Azure VM 中创建用于可用性组的故障转移群集](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
+* [在 Azure VM 中创建用于可用性组的故障转移群集](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c89ba62ae104d378dc99809e2d96ac993cd2bc35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d4197effff48c23147799cd1fc3778521c42a19e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115962"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256759"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso 迁移：将本地 Linux 应用重新托管到 Azure VM 和 Azure MySQL
 
@@ -199,7 +199,7 @@ Contoso 管理员按如下所述设置帐户：
 
 - 为了通过 Internet 进行访问，迁移前在本地 Linux VM 上启用 SSH。  对于 Ubuntu，可使用以下命令：Sudo apt-get ssh install -y 完成此操作。
 - 故障转移后，应选中“启动诊断”查看 VM 的屏幕截图。
-- 如果这不起作用，则需要验证 VM 是否正在运行，并查看这些[故障排除提示](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 如果这不起作用，则需要验证 VM 是否正在运行，并查看这些[故障排除提示](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 需要更多帮助？
 

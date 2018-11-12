@@ -10,19 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171361"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260051"
 ---
 # <a name="how-to-add-pre-built-entities"></a>如何添加预构建实体
 本教程展示了如何向对话学习器模型添加预构建实体。
 
 ## <a name="video"></a>视频
 
-[![教程 7 预览](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
+[![教程 7 预览](https://aka.ms/cl-tutorial-07-preview)](https://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -62,7 +62,7 @@ ms.locfileid: "39171361"
 1. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在“响应”中，键入“What's the date?”。
 4. 在“取消实体资格”中，输入“luis-datetimev2”。
-4. 单击创建
+4. 单击“法律条款” 
 
 ![](../media/tutorial7_actions2.PNG)
 

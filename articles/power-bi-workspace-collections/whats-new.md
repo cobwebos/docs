@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 0fe3116934ac4ab9b1e3fd3b5efcd6627df0ed3d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 072fa8978bd4f08494191708d9a71c6c112a0629
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046923"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252047"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI 工作区集合中的新增功能
 
@@ -72,5 +72,5 @@ ms.locfileid: "43046923"
 * 为所有 **v1.0** API 调用更新了示例应用程序。
 * 提供了对 Azure SDK、PowerShell 和 CLI 的 Power BI 工作区集合支持。
 * 用户可以将可视化数据导出到 **.csv** 文件。
-* 现在，与 Microsoft Azure 相同的所有语言/区域设置都支持 Power BI 工作区集合。 若要了解详细信息，请参阅 [Azure - 语言](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)。
+* 现在，与 Microsoft Azure 相同的所有语言/区域设置都支持 Power BI 工作区集合。 若要了解详细信息，请参阅 [Azure - 语言](https://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)。
 

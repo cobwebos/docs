@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959200"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262295"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>如何选择 Azure 机器学习工作室算法
 
@@ -121,7 +121,7 @@ Microsoft Azure 机器学习算法备忘单可帮助从 Azure 机器学习工作
 | [决策林](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [决策森林](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |内存占用量小 |
 | [提升决策树](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |内存占用量大 |
-| [神经网络](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[可以进行其他自定义](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [神经网络](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[可以进行其他自定义](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [平均感知器](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
 | [支持向量机](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |适用于大型特征集 |
 | [本地深度支持向量机](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |适用于大型特征集 |
@@ -130,7 +130,7 @@ Microsoft Azure 机器学习算法备忘单可帮助从 Azure 机器学习工作
 | [逻辑回归](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [决策林](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [决策森林 ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |内存占用量小 |
-| [神经网络](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[可以进行其他自定义](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [神经网络](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[可以进行其他自定义](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [一对多](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |查看所选双类方法的属性 |
 | **回归** | | | | | |
 | [线性](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
@@ -138,7 +138,7 @@ Microsoft Azure 机器学习算法备忘单可帮助从 Azure 机器学习工作
 | [决策林](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [提升决策树](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |内存占用量大 |
 | [快速林分位](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |分发而不是点预测 |
-| [神经网络](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[可以进行其他自定义](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [神经网络](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[可以进行其他自定义](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [泊松](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |从技术上讲是对数线性。 用于预测计数 |
 | [序号](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |用于预测排序 |
 | **异常情况检测** | | | | | |
@@ -190,7 +190,7 @@ Microsoft Azure 机器学习算法备忘单可帮助从 Azure 机器学习工作
 神经网络是涵盖[多类](https://msdn.microsoft.com/library/azure/dn906030.aspx)[双类](https://msdn.microsoft.com/library/azure/dn905947.aspx)和[回归](https://msdn.microsoft.com/library/azure/dn905924.aspx)问题的大脑启发式学习算法。 它们有无限种变化，但 Azure 机器学习中的神经网络都是有向无环图的形式。 这意味着输入特征在被转换为输出之前通过一系列层向前（不向后）传递。 在每个层中，输入以各种组合加权、求和，并传递到下一层。 这种简单计算的结合会不可思议的导致产生学习复杂的类边界和数据趋势的能力。 这种多层网络执行的“深度学习”，极大的促进了技术报告和科幻小说。
 
 但是，此高性并非免费提供。 神经网络定型可能耗时很长，特别是对于具有大量特征的大型数据集。 它们还具有比大多数算法更多的参数，这意味着参数扫描在很大程度上加长了定型时间。
-对于那些希望[指定自己的网络结构](http://go.microsoft.com/fwlink/?LinkId=402867)的成就突出者来说，一切皆有可能。
+对于那些希望[指定自己的网络结构](https://go.microsoft.com/fwlink/?LinkId=402867)的成就突出者来说，一切皆有可能。
 
 ![神经网络学习的边界][6]
 ***神经网络学习的边界可能是复杂而又不规则的***

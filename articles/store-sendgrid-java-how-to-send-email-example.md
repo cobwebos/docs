@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 7db7e00ec3f93695cc6bc3369fe1b00582740d0e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253833"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
 以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 所得的应用程序会提示用户输入电子邮件值，如以下屏幕快照中所示。
@@ -38,7 +38,7 @@ ms.locfileid: "45578066"
 
 还必须有自己的 SendGrid 用户名和密码，才能发送电子邮件。 若要开始使用 SendGrid，请参阅[如何通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email.md)。
 
-此外，强烈建议熟悉[在 Eclipse 中为 Azure 创建 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944)上的信息，如果不使用 Eclipse，则强烈建议熟悉在 Azure 中托管 Java 应用程序的其他方法。
+此外，强烈建议熟悉[在 Eclipse 中为 Azure 创建 Hello World 应用程序](https://msdn.microsoft.com/library/windowsazure/hh690944)上的信息，如果不使用 Eclipse，则强烈建议熟悉在 Azure 中托管 Java 应用程序的其他方法。
 
 ## <a name="create-a-web-form-for-sending-email"></a>创建用于发送电子邮件的 Web 窗体
 以下代码演示如何创建 Web 窗体以检索用于发送电子邮件的用户数据。 在此内容中，JSP 文件的名称为 **emailform.jsp**。
@@ -214,7 +214,7 @@ ms.locfileid: "45578066"
 提供这段代码是为了向你演示如何在 Azure 上通过 Java 使用 SendGrid。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如： 
 
 * 你可以使用 Azure 存储 BLOB 或 SQL 数据库（而不是使用 Web 窗体）存储电子邮件地址和电子邮件。 若要了解如何在 Java 中使用 Azure 存储 Blob，请参阅[如何从 Java 使用 Blob 存储服务](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 若要了解如何在 Java 中使用 SQL 数据库，请参阅[在 Java 中使用 SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
-* 可以使用 `RoleEnvironment.getConfigurationSettings` 从部署的配置设置中检索 SendGrid 用户名和密码，而不使用 Web 窗体检索这些值。 有关 `RoleEnvironment` 类的信息，请参阅[在 JSP 中使用 Azure 服务运行时库](http://msdn.microsoft.com/library/windowsazure/hh690948)以及 <http://dl.windowsazure.com/javadoc> 上的 Azure 服务运行时包文档。
+* 可以使用 `RoleEnvironment.getConfigurationSettings` 从部署的配置设置中检索 SendGrid 用户名和密码，而不使用 Web 窗体检索这些值。 有关 `RoleEnvironment` 类的信息，请参阅[在 JSP 中使用 Azure 服务运行时库](https://msdn.microsoft.com/library/windowsazure/hh690948)以及 <http://dl.windowsazure.com/javadoc> 上的 Azure 服务运行时包文档。
 * 若要了解如何在 Java 中使用 SendGrid，请参阅[如何通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email.md)。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253170"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ ms.locfileid: "44722123"
 
 在 n 层混合应用程序模式中，可以按照指定顺序实现以下工作流：
 
-1. 使用 [Microsoft 评估和计划 (MAP) 工具包](http://microsoft.com/map)，识别需要迁移到云的企业数据库应用程序。 MAP 工具包从准备虚拟化的计算机中收集库存和性能数据，并提供有关容量和评估计划的建议。
+1. 使用 [Microsoft 评估和计划 (MAP) 工具包](https://microsoft.com/map)，识别需要迁移到云的企业数据库应用程序。 MAP 工具包从准备虚拟化的计算机中收集库存和性能数据，并提供有关容量和评估计划的建议。
 2. 计划在 Azure 平台中需要的资源和配置，例如存储帐户和虚拟机。
 3. 设置本地企业网络和 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)之间的连接。 若要设置本地企业网络和 Azure 中虚拟机之间的连接，请使用以下两种方法之一：
    

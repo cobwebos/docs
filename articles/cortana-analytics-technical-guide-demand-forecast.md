@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387650"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238856"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -47,7 +47,7 @@ ms.locfileid: "49387650"
 使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)服务可为来自 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析，将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储](https://azure.microsoft.com/services/storage/)服务中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight 自定义聚合
-Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
+Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本（由 Azure 数据工厂协调），提供使用 Azure 流分析服务存档的原始事件聚合。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定区域（提供收到的输入数据）的将来用电量。
@@ -102,14 +102,14 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-此工厂的五个管道包含 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：demandforecasting\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/demandforecasting）。
+此工厂的五个管道包含 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，用于分区及聚合数据。 可以看到，脚本位在安装期间创建的 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户中。 其位置为：demandforecasting\\\\script\\\\hive\\\\（或 https://[解决方案名称].blob.core.windows.net/demandforecasting）。
 
-类似于 [Azure 流分析查询](#azure-stream-analytics-1)，[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本的对传入的数据格式有隐含了解，需要根据数据格式和[特征设计](machine-learning/team-data-science-process/create-features.md)要求更改这些查询。
+类似于 [Azure 流分析查询](#azure-stream-analytics-1)，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本的对传入的数据格式有隐含了解，需要根据数据格式和[特征设计](machine-learning/team-data-science-process/create-features.md)要求更改这些查询。
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-此[管道](data-factory/concepts-pipelines-activities.md)包含一个活动 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，通过 Azure 流分析作业将变电站级别每隔 10 秒流式传输的需求数据聚合成每小时区域级别，然后放入 [Azure 存储](https://azure.microsoft.com/services/storage/)中。
+此[管道](data-factory/concepts-pipelines-activities.md)包含一个活动 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，通过 Azure 流分析作业将变电站级别每隔 10 秒流式传输的需求数据聚合成每小时区域级别，然后放入 [Azure 存储](https://azure.microsoft.com/services/storage/)中。
 
-此分区任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandRegion1Hr.hql***
+此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 此[管道](data-factory/concepts-pipelines-activities.md)包含两个活动：
@@ -117,7 +117,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 * 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 Hive 脚本，在 Azure 流分析作业期间将变电站级别的每小时历史需求数据聚合成每小时区域级别，然后放入 Azure 存储中
 * [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将聚合数据从 Azure 存储 Blob 移到解决方案模板安装期间预配的 Azure SQL 数据库中。
 
-此任务的 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandHistoryRegion.hql***。
+此任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandHistoryRegion.hql***。
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 这些[管道](data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 Azure 机器学习试验评分的预测。 这些管道几乎完全相同，差别在于它们各自只处理不同的区域（由传入 ADF 管道的不同 RegionID 完成）以及每个区域的 hive 脚本。  
@@ -231,7 +231,7 @@ Azure HDInsight 服务用于运行 [Hive](http://blogs.msdn.com/b/bigdatasupport
 以下两个工具可帮助进一步了解在订阅中运行能源需求预测解决方案模板产生的总成本：
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator Tool (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure Cost Estimator Tool (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**致谢**
 本文由 Microsoft 数据科研人员 Yijing Chen 与软件工程师 Qiu Min 共同撰写。

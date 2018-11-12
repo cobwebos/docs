@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159901"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246746"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,15 +32,15 @@ ms.locfileid: "47159901"
 
 针对 Azure SQL 数据库和 Microsoft SQL Server 的扩展事件的其他相关信息位于：
 
-- [快速入门：SQL Server 中的扩展事件](http://msdn.microsoft.com/library/mt733217.aspx)
-- [扩展的事件](http://msdn.microsoft.com/library/bb630282.aspx)
+- [快速入门：SQL Server 中的扩展事件](https://msdn.microsoft.com/library/mt733217.aspx)
+- [扩展的事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>先决条件
 
 本主题假设读者有以下方面的经验：
 
 - [Azure SQL 数据库服务](https://azure.microsoft.com/services/sql-database/)。
-- Microsoft SQL Server 中的[扩展事件](http://msdn.microsoft.com/library/bb630282.aspx)。
+- Microsoft SQL Server 中的[扩展事件](https://msdn.microsoft.com/library/bb630282.aspx)。
 
 - 有关扩展事件的许多文档都适用于 SQL Server 和 SQL 数据库。
 
@@ -69,10 +69,10 @@ ms.locfileid: "47159901"
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
 
-- 当在 SQL Server 上执行 [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx) 命令时，请使用 **ON SERVER** 子句。 但在 SQL 数据库上，应改为使用 **ON DATABASE** 子句。
+- 当在 SQL Server 上执行 [CREATE EVENT SESSION](https://msdn.microsoft.com/library/bb677289.aspx) 命令时，请使用 **ON SERVER** 子句。 但在 SQL 数据库上，应改为使用 **ON DATABASE** 子句。
 
 
-- **ON DATABASE** 子句也适用于 [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) 和 [DROP EVENT SESSION](http://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL 命令。
+- **ON DATABASE** 子句也适用于 [ALTER EVENT SESSION](https://msdn.microsoft.com/library/bb630368.aspx) 和 [DROP EVENT SESSION](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL 命令。
 
 
 - 最佳实践是在 **CREATE EVENT SESSION** 或 **ALTER EVENT SESSION** 语句中包含 **STARTUP_STATE = ON** 的事件会话选项。
@@ -80,7 +80,7 @@ ms.locfileid: "47159901"
 
 ## <a name="new-catalog-views"></a>新的目录视图
 
-扩展事件功能受多个[目录视图](http://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
+扩展事件功能受多个[目录视图](https://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
 
 | 目录视图<br/>名称 | Description |
 |:--- |:--- |
@@ -92,9 +92,9 @@ ms.locfileid: "47159901"
 
 在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_*。 名称模式类似于 **sys.server_event_%**。
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>新的动态管理视图 [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](http://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
+Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
 
 | DMV 的名称 | Description |
 |:--- |:--- |
@@ -149,11 +149,11 @@ SELECT
 
 以下是可以从 SQL 数据库上的事件会话捕获结果的目标：
 
-- [环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx) - 在内存中短暂保存事件数据。
-- [事件计数器目标](http://msdn.microsoft.com/library/ff878025.aspx) - 统计在扩展事件会话期间发生的所有事件。
-- [事件文件目标](http://msdn.microsoft.com/library/ff878115.aspx) - 将完整缓冲区写入 Azure 存储容器。
+- [环形缓冲区目标](https://msdn.microsoft.com/library/ff878182.aspx) - 在内存中短暂保存事件数据。
+- [事件计数器目标](https://msdn.microsoft.com/library/ff878025.aspx) - 统计在扩展事件会话期间发生的所有事件。
+- [事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx) - 将完整缓冲区写入 Azure 存储容器。
 
-[Windows 事件跟踪 (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) API 不适用于 SQL 数据库上的扩展事件。
+[Windows 事件跟踪 (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) API 不适用于 SQL 数据库上的扩展事件。
 
 ## <a name="restrictions"></a>限制
 
@@ -195,8 +195,8 @@ SELECT
 - [Azure 存储 Cmdlet](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 - [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -209,6 +209,6 @@ SELECT
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

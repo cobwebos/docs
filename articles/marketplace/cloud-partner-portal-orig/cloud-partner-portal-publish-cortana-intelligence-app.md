@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805851"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257201"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>使用云合作伙伴门户发布 Cortana Intelligence 产品/服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "48805851"
 
 云合作伙伴门户支持对门户进行基于角色的访问，这样参与者就能协作发布产品/服务了。 有关详细信息，请参阅[在云门户上管理用户](./cloud-partner-portal-manage-users.md)。
 
-具有“所有者”角色的个人之一必须先同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](http://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)，然后才能以发布者帐户的身份发布产品/服务。
+具有“所有者”角色的个人之一必须先同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)，然后才能以发布者帐户的身份发布产品/服务。
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>开始创建 Cortana Inteligence 产品/服务的具体步骤
 
@@ -55,7 +55,7 @@ ms.locfileid: "48805851"
 这是发布者个人资料内产品/服务的唯一标识符。
 此 ID 显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不得以破折号结尾，且长度不得超过 50 个字符。 
 >[!Note]
->此字段在产品/服务正式上线后处于锁定状态。
+>此字段在套餐推出后处于锁定状态。
 
 **示例：**
 
@@ -66,7 +66,7 @@ ms.locfileid: "48805851"
 发布者配置文件的下拉列表。 用于选择要在哪个发布者配置文件下发布此产品/服务。
 
 >[!Note]
->此字段在产品/服务正式上线后处于锁定状态。
+>此字段在套餐推出后处于锁定状态。
 
 ### <a name="name"></a>名称
 
@@ -164,7 +164,7 @@ ms.locfileid: "48805851"
 
 ### <a name="offer-summary"></a>产品/服务摘要
 
-这是产品/服务的价值主张摘要。 它将显示在产品/服务的搜索页上。 此摘要的长度上限为 100 个字符。
+这是套餐的价值主张摘要。 它将显示在产品/服务的搜索页上。 此摘要的长度上限为 100 个字符。
 
 ### <a name="offer-description"></a>产品/服务描述
 
@@ -216,7 +216,7 @@ ms.locfileid: "48805851"
 
         - [Neal Analytics 库存优化](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- 若要使用“申请试用”（亦称为“合作伙伴引导试用 (PLT)”）选项，客户必须填写联系信息表单，以供合作伙伴跟进。 合作伙伴会跟进，并提供应用演示或试用版。 有关详细信息，请观看 [AppSource 试用体验演练](http://aka.ms/trialexperienceforwebapps)视频，以了解简要概况。
+- 若要使用“申请试用”（亦称为“合作伙伴引导试用 (PLT)”）选项，客户必须填写联系信息表单，以供合作伙伴跟进。 合作伙伴会跟进，并提供应用演示或试用版。 有关详细信息，请观看 [AppSource 试用体验演练](https://aka.ms/trialexperienceforwebapps)视频，以了解简要概况。
 
 >[!Note]
 >数据表明，“客户引导试用”的潜在客户生成率高于“合作伙伴引导试用”。

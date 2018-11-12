@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834349"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261103"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>在 Azure 机器学习中创作自定义 R 模块
 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块。 本主题解释什么是自定义 R 模块以及要使用什么文件来定义该模块。 本主题举例说明如何构建定义模块的文件以及如何在机器学习工作区中注册用于部署的模块。 随后本主题详细描述了定义自定义模块所使用的元素和属性。 本主题还讨论了如何使用辅助功能和文件以及多个输出。 
@@ -41,7 +41,7 @@ ms.locfileid: "34834349"
 也可在 .zip 文件中包含提供功能的辅助文件，可通过自定义模块访问此功能。 此选项在快速入门示例下方的 **XML 定义文件中的元素**参考部分的**参数**部分有所描述。
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>快速入门示例：定义、包和注册自定义模块
-此示例阐述如何构建自定义 R 模块所需的文件，如何将文件打包到一个 zip 文件，然后在机器学习工作区中注册该模块。 可从[下载 CustomAddRows.zip 文件](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)下载示例 zip 包和示例文件。
+此示例阐述如何构建自定义 R 模块所需的文件，如何将文件打包到一个 zip 文件，然后在机器学习工作区中注册该模块。 可从[下载 CustomAddRows.zip 文件](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)下载示例 zip 包和示例文件。
 
 ## <a name="the-source-file"></a>源文件
 以**自定义添加行**模块为例，该模块可修改用于从两个数据集（数据帧）连接行（观察值）的**添加行**模块的标准实施。 标准**添加行**模块会使用 `rbind` 算法将第二个输入数据集的行附加到第一个输入数据集的末尾。 同样自定义 `CustomAddRows` 函数会接受两个数据集，但它还会接受布尔交换参数作为一个额外的输入。 如果交换参数设置为 **FALSE**，函数会返回与标准实现相同的数据集。 但如果交换参数为 **TRUE**，则函数会将第一个输入数据集的行改为附加到第二个数据集的末尾。 CustomAddRows.R 文件包含**自定义添加行**模块公开的 R `CustomAddRows` 函数的实施，该文件拥有如下 R 代码。

@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 83f7f29471d49c4dbbf1630b4e8e9006144638cc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797776"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254411"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 查询 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "31797776"
 开始本演练前，应已[创建 Azure 搜索索引](search-what-is-an-index.md)并[填充数据](search-what-is-data-import.md)。
 
 > [!NOTE]
-> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>标识 Azure 搜索服务的查询 API 密钥
 创建好 Azure 搜索索引后，即可使用 .NET SDK 发出查询。 首先，需要获取为已预配的搜索服务生成的其中一个查询 API 密钥。 每次向服务发出请求时，NET SDK 都会发送这个 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
@@ -49,7 +49,7 @@ ms.locfileid: "31797776"
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>创建 SearchIndexClient 类的实例
 若要使用 Azure 搜索 .NET SDK 发出查询，需要创建 `SearchIndexClient` 类的实例。 此类具有几个构造函数。 需要将搜索服务名称、索引名称和 `SearchCredentials` 对象用作参数。 `SearchCredentials` 包装 API 密钥。
 
-下面的代码使用搜索服务名称值以及应用程序配置文件（在使用[示例应用程序](http://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的 API 密钥值为“hotels”索引创建新的 `SearchIndexClient`（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md)中创建）：
+下面的代码使用搜索服务名称值以及应用程序配置文件（在使用[示例应用程序](https://aka.ms/search-dotnet-howto)时为 `appsettings.json`）中存储的 API 密钥值为“hotels”索引创建新的 `SearchIndexClient`（该索引在[使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md)中创建）：
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420230"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235898"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](how-to-upgrade-previous-version.md) Azure AD Connect 的不同方法。
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
 
-下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+下载| [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 ## <a name="12650"></a>1.2.65.0 
 
@@ -48,7 +48,6 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 
 - 更改了属性写回的功能，以确保托管的语音邮件可按预期方式工作。  在某些情况下，Azure AD 在使用 null 值写回期间，会覆盖 msExchUcVoicemailSettings 属性。  如果未设置云值，Azure AD 现在不再会清除此属性的本地值。
-- 增强了已更改默认规则的处理。 如果对默认规则做出更改，则现在会收到通知，并可以使用相应的选项来修复默认规则。 
 - 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 Azure AD 连接问题。 也可以使用 Test- AdSyncAzureServiceConnectivity Cmdlet 通过 Powershell 直接运行这些诊断。 
 - 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 AD 连接问题。 也可以在 ADConnectivityTools Powershell 模块中使用 Start-ConnectivityValidation 函数，通过 Powershell 直接运行这些诊断。  有关详细信息，请参阅[什么是 ADConnectivityTool PowerShell 模块？](how-to-connect-adconnectivitytools.md)
 - 为混合 Azure Active Directory Join 和设备写回添加了 AD 架构版本预先检查 

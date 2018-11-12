@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 63a45aa02eadd0b5739c1624af524883171a7055
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8dc6b7da77988a789de04578d6653b192f58afa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211190"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261717"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -81,9 +81,9 @@ ms.locfileid: "50211190"
 
 如果想要使用 IP 地址而不是 URL 控制出站连接，请将相应的数据中心范围、Office 365 地址和服务终结点地址加入到基于 IP 的防火墙、代理或 NSG 规则的允许列表。
 
-  - [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
-  - [德国的 Windows Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
-  - [中国的 Windows Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
+  - [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
+  - [德国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=54770)
+  - [中国的 Windows Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064)
   - [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery 服务终结点 IP 地址](https://aka.ms/site-recovery-public-ips)
 

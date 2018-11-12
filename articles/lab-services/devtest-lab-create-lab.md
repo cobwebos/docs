@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a1e52a8ff7a2018c54c7b88b80bab3c2897b1fb4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 868417a9ca1dbcac9b2f77627944fc620fbe78cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481761"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253901"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室
 Azure 开发测试实验室中的实验室是包含一组资源（例如，虚拟机 (VM)）的基础结构，通过指定限制和配额可以更好地管理这些资源。 本文介绍使用 Azure 门户创建实验室的过程。
@@ -32,7 +32,7 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
 ## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建实验室的步骤
 以下步骤演示了如何使用 Azure 门户在 Azure 开发测试实验室中创建实验室。 
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 从左侧的主菜单中，选择“所有服务”（位于列表顶部）。
 
     ![“所有服务”菜单选项](./media/devtest-lab-create-lab/more-services-menu-option.png)
@@ -51,7 +51,7 @@ Azure 开发测试实验室中的实验室是包含一组资源（例如，虚�
     1. 如果要创建自定义标记（将添加到要在实验室中创建的每个资源上），请输入**标记**的**名称**和**值**信息。 标记用于帮助你按类别管理和组织实验室资源。 有关标记的详细信息（包括如何在创建实验室中后添加标记），请参阅[将标记添加到实验室](devtest-lab-add-tag.md)。
     5. 如果想要在门户仪表板上显示实验室的快捷方式，请选择“固定到仪表板”。
     6. 请选择“自动化选项”，以便获取适用于配置自动化的 Azure 资源管理器模板。 
-    7. 选择**创建**。 可以通过观察“通知”区域来监视实验室创建过程的状态。 完成后，刷新页面即可在实验室列表中查看新创建的实验室。  
+    7. 选择“创建”。 可以通过观察“通知”区域来监视实验室创建过程的状态。 完成后，刷新页面即可在实验室列表中查看新创建的实验室。  
     
     ![创建开发测试实验室的实验室部分](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 

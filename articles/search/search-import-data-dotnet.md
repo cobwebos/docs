@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: fb8fb153c7393af0e084cb96ee2f5e82fba5b220
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798047"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258759"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "31798047"
 在开始本演练前，应已 [创建 Azure 搜索索引](search-what-is-an-index.md)。 本文还假定已创建 `SearchServiceClient` 对象，如 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#CreateSearchServiceClient)中所示。
 
 > [!NOTE]
-> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](http://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
+> 本文中的所有示例代码均用 C# 编写。 可以 [在 GitHub 上](https://aka.ms/search-dotnet-howto)找到完整的源代码。 也可参阅 [Azure 搜索 .NET SDK](search-howto-dotnet-sdk.md)，以便更详细地了解示例代码。
 
 要使用 .NET SDK 将文档推送到索引，需要执行以下操作：
 
@@ -54,7 +54,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
 要使用 .NET SDK 导入数据，需要将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 搜索要对该文档上执行什么操作（上传、合并、删除等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
 
-| 操作 | 说明 | 每个文档必需的字段 | 说明 |
+| 操作 | Description | 每个文档必需的字段 | 说明 |
 | --- | --- | --- | --- |
 | `Upload` |`Upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
 | `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 这包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |

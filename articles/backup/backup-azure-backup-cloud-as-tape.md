@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff30dd0e4c7cadabddbeddc38c28a773db68d8ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606488"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259592"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>将长期存储从磁带移动到 Azure 云
 Azure 备份和 System Center Data Protection Manager 客户可以：
@@ -23,7 +23,7 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 * 长期保留备份数据
 * 使用 Azure（而不是磁带）解决其长期数据保留需求。
 
-本文介绍客户如何启用备份和保留策略。 使用磁带解决长期数据保留需求的客户现在可以使用一种强大而可行并且同样提供此功能的替代解决方案。 最新版本的 Azure 备份（可从[此处](http://aka.ms/azurebackup_agent)获取）中已启用该功能。 System Center DPM 客户必须在使用具有 Azure 备份服务的 DPM 之前至少更新到 DPM 2012 R2 UR5。
+本文介绍客户如何启用备份和保留策略。 使用磁带解决长期数据保留需求的客户现在可以使用一种强大而可行并且同样提供此功能的替代解决方案。 最新版本的 Azure 备份（可从[此处](https://aka.ms/azurebackup_agent)获取）中已启用该功能。 System Center DPM 客户必须在使用具有 Azure 备份服务的 DPM 之前至少更新到 DPM 2012 R2 UR5。
 
 ## <a name="what-is-the-backup-schedule"></a>什么是备份计划？
 备份计划指示备份操作的频率。 例如，以下屏幕中的设置表示要在每天下午 6 点和午夜执行备份。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: dfb36cfba312d54d469b371f02820fd01da6dc7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243414"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
 本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
@@ -102,7 +102,7 @@ ms.locfileid: "39214336"
 * [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加快数据加载，请并行启动批量导入操作。 有关加快将大型数据批量导入到 SQL Server 数据库的提示，请参阅[一小时之内加载 1TB 数据](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
+* 若要加快数据加载，请并行启动批量导入操作。 有关加快将大型数据批量导入到 SQL Server 数据库的提示，请参阅[一小时之内加载 1TB 数据](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
 
 下面的 PowerShell 脚本是使用 BCP并行加载数据的示例。
 

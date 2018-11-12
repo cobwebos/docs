@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608556"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235592"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](cloud-services-guestos-update-matrix.md)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)。 而不适用于虚拟机 (IaaS)。
 
-Microsoft 已发布[来宾 OS 的支持策略](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq)。 目前正在阅读的页面描述了如何实施该策略。
+Microsoft 已发布[来宾 OS 的支持策略](https://support.microsoft.com/gp/azure-cloud-lifecycle-faq)。 目前正在阅读的页面描述了如何实施该策略。
 
 该策略规定，
 

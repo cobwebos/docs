@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465871"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254632"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
 为了帮助保护云中的数据，需要考虑数据可能出现的状态以及可用于该状态的控件。 Azure 数据安全与加密的最佳做法与以下数据状态相关：
@@ -132,7 +132,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 - 应用可反映业务需求的标签。 例如：将名为“高度机密”的标签应用于包含绝密数据的所有文档和电子邮件，以对这些数据进行分类和保护。 然后，只有授权的用户才能访问此数据，并具有指定的任何限制。
 - 配置 [Azure RMS 的使用情况日志记录](https://docs.microsoft.com/azure/information-protection/log-analyze-usage)，以便监视组织使用保护服务的方式。
 
-[数据分类](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏或数据滥用。 使用适当的文件保护，可以分析数据流，以深入了解业务、检测风险行为并采取纠正措施、跟踪对文档的访问等等。
+[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏或数据滥用。 使用适当的文件保护，可以分析数据流，以深入了解业务、检测风险行为并采取纠正措施、跟踪对文档的访问等等。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。

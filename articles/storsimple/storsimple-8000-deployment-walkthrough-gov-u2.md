@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681530"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238686"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
 
@@ -40,7 +40,7 @@ ms.locfileid: "38681530"
 ## <a name="deployment-steps"></a>部署步骤
 执行这些必需的步骤来配置 StorSimple 设备，并将其连接到 StorSimple Device Manager 服务。 除了这些所需的步骤外，在部署过程中可能还需要完成一些可选步骤和过程。 逐步部署说明将指示何时应执行每个可选步骤。
 
-| 步骤 | 说明 |
+| 步骤 | Description |
 | --- | --- |
 | **先决条件** |这些是针对即将进行的部署需要做好准备。 |
 | [部署配置清单](#deployment-configuration-checklist) |使用此清单来收集和记录部署之前或期间的信息。 |
@@ -67,7 +67,7 @@ ms.locfileid: "38681530"
 ## <a name="deployment-configuration-checklist"></a>部署配置清单
 在部署 StorSimple 设备之前需要收集信息，以配置设备上的软件。 提前准备一些此类信息有助于简化环境中 StorSimple 设备的部署过程。 下载并使用此清单，记下部署设备时的配置详细信息。
 
-[下载 StorSimple 部署配置清单](http://www.microsoft.com/download/details.aspx?id=49159)
+[下载 StorSimple 部署配置清单](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>部署先决条件
 以下各部分介绍了 StorSimple Device Manager 服务和 StorSimple 设备的配置先决条件。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 617a6f4873c49877cbef48a7df3f2ab2c625445e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412510"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246355"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务应用程序和服务可用性问题：常见问题解答 (FAQ)
 
@@ -33,7 +33,7 @@ Microsoft 大约每月一次为 Microsoft Azure PaaS VM 发布新的来宾 OS �
 
 有关最近来宾 OS 更新的完整详细信息，请参阅 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)。
 
-有关重新启动和指针的有用信息以及有关来宾和主机操作系统更新的技术详情，请阅读 MSDN 博客文章[角色实例因操作系统升级而重新启动](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)。
+有关重新启动和指针的有用信息以及有关来宾和主机操作系统更新的技术详情，请阅读 MSDN 博客文章[角色实例因操作系统升级而重新启动](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)。
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>在服务空闲一段时间之后，为什么到我的云服务的第一个请求所用时间比平常更长？
 当 Web 服务器收到第一个请求时，它首先重新编译代码，然后处理该请求。 这就是为什么第一个请求所用时间比其他请求更长的原因。 默认情况下，在用户不活动时，应用池将关闭。 此外，应用池还将每 1,740 分钟（29 小时）默认回收一次。

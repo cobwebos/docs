@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737407"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238516"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -61,9 +61,9 @@ ms.locfileid: "45737407"
 ## <a name="architecture-of-a-sample-solution"></a>示例解决方案的体系结构
   本文中所述的体系结构适用于简单解决方案。 它也与复杂方案（例如通过金融服务建模的风险、图像处理和渲染和基因组分析）相关。
 
-下图说明数据工厂如何安排数据移动和处理。 它还显示 Batch 如何以并行方式处理数据。 下载并打印该图以便参考（11 x 17 英寸或 A3 大小）。 若要访问该图以便可以打印它，请参阅[使用 Batch 和数据工厂进行的 HPC 和数据业务流程](http://go.microsoft.com/fwlink/?LinkId=717686)。
+下图说明数据工厂如何安排数据移动和处理。 它还显示 Batch 如何以并行方式处理数据。 下载并打印该图以便参考（11 x 17 英寸或 A3 大小）。 若要访问该图以便可以打印它，请参阅[使用 Batch 和数据工厂进行的 HPC 和数据业务流程](https://go.microsoft.com/fwlink/?LinkId=717686)。
 
-[![大规模数据处理关系图](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
+[![大规模数据处理关系图](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
 以下列表提供了该过程的基本步骤。 解决方案包含构建端到端解决方案的代码和说明。
 
@@ -109,7 +109,7 @@ ms.locfileid: "45737407"
 
 1. 在“池”边栏选项卡中，选择工具栏上的“添加”按钮以添加池。
 
-   a. 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入池的 ID（“池 ID”）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
    b. 为“操作系统系列”设置指定“Windows Server 2012 R2”。
 

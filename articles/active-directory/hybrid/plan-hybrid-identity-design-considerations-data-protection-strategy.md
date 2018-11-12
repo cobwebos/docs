@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434749"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238142"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>为混合标识解决方案定义数据保护策略
 在此任务中，会根据规定的业务要求，为混合标识解决方案定义数据保护策略。
@@ -74,7 +74,7 @@ ms.locfileid: "47434749"
 * 添加或删除许可证
 
 > [!NOTE]
-> 请阅读 [Microsoft Azure 安全和审核日志管理](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)详细了解 Azure 中的日志记录功能。
+> 请阅读 [Microsoft Azure 安全和审核日志管理](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)详细了解 Azure 中的日志记录功能。
 > 根据在[确定内容管理要求](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)中回答问题的情况，应该能够确定在混合标识解决方案中要如何保护内容。 尽管表 6 中显示的所有选项都能够与 Azure AD 集成，但请务必定义更适合业务要求的选项。
 >
 >

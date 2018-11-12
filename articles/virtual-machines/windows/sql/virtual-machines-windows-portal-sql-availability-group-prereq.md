@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253068"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -35,7 +35,7 @@ ms.locfileid: "43371479"
 
 ## <a name="review-availability-group-documentation"></a>查看可用性组文档
 
-本教程假设已基本了解 SQL Server AlwaysOn 可用性组。 若不熟悉此技术，请参阅 [AlwaysOn 可用性组概述 (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)。
+本教程假设已基本了解 SQL Server AlwaysOn 可用性组。 若不熟悉此技术，请参阅 [AlwaysOn 可用性组概述 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
 
 ## <a name="create-an-azure-account"></a>创建 Azure 帐户
@@ -83,7 +83,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
 
    | **字段** | 值 |
    | --- | --- |
-   | **Name** |autoHAVNET |
+   | **名称** |autoHAVNET |
    | **地址空间** |10.33.0.0/24 |
    | **子网名称** |管理员 |
    | **子网地址范围** |10.33.0.0/29 |
@@ -123,7 +123,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 | **字段** | 值 |
 | --- | --- |
-| **Name** |**autoHAVNET** |
+| **名称** |**autoHAVNET** |
 | **地址空间** |此值取决于订阅中可用的地址空间。 典型值为 10.0.0.0/16。 |
 | **子网名称** |**admin** |
 | **子网地址范围** |此值取决于订阅中可用的地址范围。 典型值为 10.0.0.0/24。 |
@@ -145,7 +145,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 | **字段** | 域控制器可用性集 | SQL Server 可用性集 |
 | --- | --- | --- |
-| **Name** |adavailabilityset |sqlavailabilityset |
+| **名称** |adavailabilityset |sqlavailabilityset |
 | **资源组** |SQL-HA-RG |SQL-HA-RG |
 | **容错域** |3 |3 |
 | **更新域** |5 |3 |
@@ -158,7 +158,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>为域控制器创建虚拟机
 若要创建并配置域控制器，请返回到 **SQL-HA-RG** 资源组。
 
-1. 单击 **“添加”**。 
+1. 单击“添加”。 
 2. 键入 **Windows Server 2016 Datacenter**。
 3. 单击“Windows Server 2016 Datacenter”。 在“Windows Server 2016 Datacenter”中，确认部署模型为“资源管理器”，并单击“创建”。 
 
@@ -176,7 +176,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 
 | **字段** | 值 |
 | --- | --- |
-| **Name** |第一个域控制器：*ad-primary-dc*。</br>第二个域控制器 *ad-secondary-dc*。 |
+| **名称** |第一个域控制器：*ad-primary-dc*。</br>第二个域控制器 *ad-secondary-dc*。 |
 | **VM 磁盘类型** |SSD |
 | **用户名** |DomainAdmin |
 | **密码** |Contoso!0000 |
@@ -186,7 +186,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **大小** |DS1_V2 |
 | **存储** | **使用托管磁盘** - **是** |
 | **虚拟网络** |autoHAVNET |
-| 子网 |admin |
+| **子网** |admin |
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
 | **可用性集** |adavailabilityset </br>**容错域**:2</br>**更新域**:2|
@@ -349,7 +349,7 @@ Azure 将创建虚拟机。
 
 ## <a name="create-sql-server-vms"></a>创建 SQL Server VM
 
-再创建三个虚拟机。 该解决方案需要两个具有 SQL Server 实例的虚拟机。 第三个虚拟机充当见证服务器。 Windows Server 2016 可以使用[云见证服务器](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)，但是为了与旧版操作系统保持一致，本文档使用虚拟机作为见证服务器。  
+再创建三个虚拟机。 该解决方案需要两个具有 SQL Server 实例的虚拟机。 第三个虚拟机充当见证服务器。 Windows Server 2016 可以使用[云见证服务器](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)，但是为了与旧版操作系统保持一致，本文档使用虚拟机作为见证服务器。  
 
 在继续操作之前，请考虑以下设计决策。
 

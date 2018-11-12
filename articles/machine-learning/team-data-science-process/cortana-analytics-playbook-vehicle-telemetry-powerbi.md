@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: e6601093577eb9e3dfba4ed27e1e0510cad17de7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421043"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262263"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>车辆遥测分析解决方案模板 Power BI 仪表板设置说明
 此菜单链接至此操作手册的此章节。 
@@ -30,7 +30,7 @@ ms.locfileid: "39421043"
 
 ## <a name="prerequisites"></a>先决条件
 * 部署[车辆遥测分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)解决方案。 
-* [安装 Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331)。
+* [安装 Power BI Desktop](https://www.microsoft.com/download/details.aspx?id=45331)。
 * 获取 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)。 如果还没有 Azure 订阅，请开始使用 Azure 免费订阅。
 * 打开一个 Power BI 帐户。
 
@@ -177,7 +177,7 @@ ms.locfileid: "39421043"
 
 1. 若要添加“页面级筛选器”以显示需要维护的车辆的数据，请执行以下操作： 
 
-   a. 将“维修标签”字段拖到“页面级筛选器”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“维修标签”字段拖到“页面级筛选器”。
   
       ![页面级筛选器](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "39421043"
 
 1. 在“格式”部分，更改可视化中的“数据颜色”： 
 
-    a. 将颜色“最小值”更改为“F2C812”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将颜色“最小值”更改为“F2C812”。
 
     b. 将颜色“最大值”更改为“FF6300”。
 
@@ -348,7 +348,7 @@ ms.locfileid: "39421043"
 
 ### <a name="configure-power-bi-reports"></a>配置 Power BI 报表
 
-1. 使用 Power BI Desktop 打开设计器文件“ConnectedCarsPbiReport.pbix”。 如果没有，请从 [Power BI Desktop 安装](http://www.microsoft.com/download/details.aspx?id=45331)网站安装 Power BI Desktop。
+1. 使用 Power BI Desktop 打开设计器文件“ConnectedCarsPbiReport.pbix”。 如果没有，请从 [Power BI Desktop 安装](https://www.microsoft.com/download/details.aspx?id=45331)网站安装 Power BI Desktop。
 
 1. 选择“编辑查询”。
 
@@ -356,7 +356,7 @@ ms.locfileid: "39421043"
 
 1. 双击“源”。
 
-    ![Source](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
+    ![源](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
 
 1. 使用作为部署的一部分提供的 Azure SQL Server 来更新服务器连接字符串。 查看 Azure SQL 数据库中的手动操作说明：
 
@@ -419,7 +419,7 @@ ms.locfileid: "39421043"
 
 1. 从第 3 页起，固定以下内容：  
 
-    a. vin 的计数  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 vin 的计数  
 
    ![第 3 页 vin 的计数](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
 
@@ -429,7 +429,7 @@ ms.locfileid: "39421043"
 
 1. 从第 5 页起，固定以下内容： 
 
-    a. vin 的计数
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 vin 的计数
 
    ![第 5 页图表 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
 
@@ -439,7 +439,7 @@ ms.locfileid: "39421043"
 
 1. 从第 4 页起，固定以下内容：  
 
-    a. vin 的计数 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 vin 的计数 
 
    ![第 4 页图表 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 

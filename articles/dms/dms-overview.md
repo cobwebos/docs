@@ -10,18 +10,18 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 71d79ac34c4797cceb8374d65afb6fd7662f1c21
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 053e571b6285cd405ea17f43fec1d3ea99732070
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456147"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235575"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？
 Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间（联机迁移）。
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>使用熟悉的工具将数据库迁移到 Azure
-Azure 数据库迁移服务集成了一些现有工具和服务的功能。 它为客户提供高度可用的综合解决方案。 该服务使用[数据迁移助手](http://aka.ms/dma)生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 你可以自己选择执行所需的修正。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。 该过程利用了 Microsoft 确定的最佳做法，因此你便可以在启动迁移项目后高枕无忧。
+Azure 数据库迁移服务集成了一些现有工具和服务的功能。 它为客户提供高度可用的综合解决方案。 该服务使用[数据迁移助手](https://aka.ms/dma)生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 你可以自己选择执行所需的修正。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。 该过程利用了 Microsoft 确定的最佳做法，因此你便可以在启动迁移项目后高枕无忧。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于业务关键（预览）定价层创建实例。

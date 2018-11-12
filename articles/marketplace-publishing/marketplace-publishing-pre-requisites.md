@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714183"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261547"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>为 Azure 市场创建产品/服务的一般先决条件
 了解推进其他产品/服务过程所需的一般、以业务流程为中心的先决条件。
@@ -27,10 +27,8 @@ ms.locfileid: "39714183"
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>确保向 Microsoft 注册为卖家
 有关向 Microsoft 注册卖家帐户的详细说明，请转到[帐户创建和注册](marketplace-publishing-accounts-creation-registration.md)。
 
-* 
-  **如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务**，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
-* 
-  **如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务**，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
+* **如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务**，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
+* **如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务**，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
 
 ## <a name="steps-to-add-a-co-admin-in-the-publishing-portal"></a>在发布门户中添加共同管理员的步骤
 发布门户的管理员可添加公司的其他成员，这些成员在发布门户中以共同管理员身份处理应用程序。 **假设你是管理员，** 下面提供了添加共同管理员的步骤。
@@ -72,7 +70,7 @@ ms.locfileid: "39714183"
 
 ## <a name="sell-from-countries"></a>“销售”国家/地区
 > [!WARNING]
-> 若要在 Azure 市场销售服务，必须确保注册实体来自已批准的“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关完整列表，请参阅 [Azure 市场参与策略](http://go.microsoft.com/fwlink/?LinkID=526833)的第 1b 部分。
+> 若要在 Azure 市场销售服务，必须确保注册实体来自已批准的“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关完整列表，请参阅 [Azure 市场参与策略](https://go.microsoft.com/fwlink/?LinkID=526833)的第 1b 部分。
 > 
 > 
 
@@ -83,6 +81,5 @@ ms.locfileid: "39714183"
 * [解决方案模板技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
 
