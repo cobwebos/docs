@@ -1,56 +1,53 @@
 ---
-title: 快速入门：在 C# 中检查图像内容 - 内容审查器
+title: 快速入门：使用 C# 分析图像内容中是否存在令人反感的材料
 titlesuffix: Azure Cognitive Services
-description: 如何使用用于 C# 的内容审查器 SDK 来检查图像内容
+description: 如何使用适用于 .NET 的内容审查器 SDK 分析图像内容中是否存在各种令人反感的材料
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4973d78eac02aed42689bf5742155c375d5f78ae
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8f407a42ab2e1538193206dec1955257a5f9940a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309291"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005489"
 ---
-# <a name="quickstart-check-image-content-in-c"></a>快速入门：在 C# 中检查图像内容 
+# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析图像内容中是否存在令人反感的材料
 
-本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来同时检查图像中是否存在以下内容： 
-
-- 成人或不雅内容
-- 可提取的文本
-- 人脸
+本文中的信息和代码示例有助于你完成[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 的使用入门。 本文将介绍如何通过扫描方式查找成人或不雅内容、可提取的文本以及人脸，以便审查是否存在可能会令人反感的材料。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
+## <a name="prerequisites"></a>先决条件
 
-在通过 REST API 或 SDK 使用内容审查器服务之前，需要 API 帐户的 API 密钥和区域。 在 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)中订阅内容审查器服务以获取这二者。
-
-## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
-
-1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
-
-   在示例代码中，将此项目命名为“ImageModeration”。
-
-1. 将此项目选为解决方案的单一启动项目。
+- 内容审查器的订阅密钥。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
+- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)
 
 
-### <a name="install-required-packages"></a>安装所需程序包
+> [!NOTE]
+> 本指南使用免费层内容审查器订阅。 若要了解为每个订阅层提供的内容，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)页。
 
-安装以下 NuGet 包：
+## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Newtonsoft.Json
+1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **ImageModeration**。 
+1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
+1. 获取所需 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包：
+    - Microsoft.Azure.CognitiveServices.ContentModerator
+    - Microsoft.Rest.ClientRuntime
+    - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>更新程序的 using 语句
+## <a name="add-image-moderation-code"></a>添加图像审查代码
 
-添加以下 `using` 语句。
+接下来，需将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
+
+### <a name="include-namespaces"></a>包括命名空间
+
+将以下 `using` 语句添加到 *Program.cs* 文件顶部。
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -65,44 +62,24 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-添加以下代码来为订阅创建内容审查器客户端。
-
-> [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+向 *Program.cs* 文件添加以下代码，为订阅创建内容审查器客户端提供程序。 在同一命名空间中添加此代码和 **Program** 类。 还需使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
 
 ```csharp
-/// <summary>
-/// Wraps the creation and configuration of a Content Moderator client.
-/// </summary>
-/// <remarks>This class library contains insecure code. If you adapt this 
-/// code for use in production, use a secure method of storing and using
-/// your Content Moderator subscription key.</remarks>
+// Wraps the creation and configuration of a Content Moderator client.
 public static class Clients
 {
-    /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
+    // The region/location for your Content Moderator account, 
+    // for example, westus.
     private static readonly string AzureRegion = "YOUR API REGION";
 
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
+    // The base URL fragment for Content Moderator calls.
     private static readonly string AzureBaseURL =
         $"https://{AzureRegion}.api.cognitive.microsoft.com";
 
-    /// <summary>
-    /// Your Content Moderator subscription key.
-    /// </summary>
+    // Your Content Moderator subscription key.
     private static readonly string CMSubscriptionKey = "YOUR API KEY";
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
+    // Returns a new Content Moderator client for your subscription.
     public static ContentModeratorClient NewClient()
     {
         // Create and initialize an instance of the Content Moderator API wrapper.
@@ -114,93 +91,63 @@ public static class Clients
 }
 ```
 
-### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
+### <a name="set-up-input-and-output-targets"></a>设置输入和输出目标
 
-向 Program.cs 中的 Program 类添加以下静态字段。
+向 Program.cs 中的 Program 类添加以下静态字段。 这些字段指定输入图像内容和输出 JSON 内容的文件。
 
 ```csharp
-///<summary>
-///The name of the file that contains the image URLs to evaluate.
-///</summary>
-///<remarks>You will need to create an input file and update 
-///this path accordingly. Paths are relative to the execution directory.
-///</remarks>
+//The name of the file that contains the image URLs to evaluate.
 private static string ImageUrlFile = "ImageFiles.txt";
 
-///<summary>
 ///The name of the file to contain the output from the evaluation.
-///</summary>
-///<remarks>Paths are relative to the execution directory.
-///</remarks>
 private static string OutputFile = "ModerationOutput.json";
 ```
 
-创建输入文件 _ImageFiles.txt_，然后添加要分析的图像的 URL。 本快速入门使用下面的两个 URL 来生成其示例输出。
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+需创建 *_ImageFiles.txt* 输入文件并相应地更新其路径（相对路径相对于执行目录）。 打开 _ImageFiles.txt_，添加要审查的图像的 URL。 本快速入门使用以 URL 作为其示例输入。
+```
+https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
+https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+```
 
-## <a name="create-a-class-to-handle-results"></a>创建用于处理结果的类
+### <a name="create-a-class-to-handle-results"></a>创建用于处理结果的类
 
-将以下类添加到 Program 类。 将使用此类的实例来记录每个已审阅图像的审查结果。
+在同一命名空间中将以下代码和 **Program** 类添加到 *Program.cs*。 将使用此类的实例来记录每个已审阅图像的审查结果。
 
 ```csharp
-/// <summary>
-/// Contains the image moderation results for an image, 
-/// including text and face detection results.
-/// </summary>
+// Contains the image moderation results for an image, 
+// including text and face detection results.
 public class EvaluationData
 {
-    /// <summary>
-    /// The URL of the evaluated image.
-    /// </summary>
+    // The URL of the evaluated image.
     public string ImageUrl;
 
-    /// <summary>
-    /// The image moderation results.
-    /// </summary>
+    // The image moderation results.
     public Evaluate ImageModeration;
 
-    /// <summary>
-    /// The text detection results.
-    /// </summary>
+    // The text detection results.
     public OCR TextDetection;
 
-    /// <summary>
-    /// The face detection results;
-    /// </summary>
+    // The face detection results;
     public FoundFaces FaceDetection;
 }
 ```
 
-## <a name="create-the-image-evaluation-method"></a>创建图像评估方法
+### <a name="define-the-image-evaluation-method"></a>定义图像评估方法
 
-将以下方法添加到 **Program** 类。 此方法评估单张图像，并返回评估结果。
-
-> [!NOTE]
-> 内容审查器服务密钥有每秒请求数 (RPS) 速率限制。如果超出此限制，SDK 就会抛出异常（错误代码为 429）。 免费层密钥有一个单 RPS 速率限制。
+将以下方法添加到 **Program** 类。 此方法以三种不同的方式评估单张图像，并返回评估结果。 若要详细了解单个操作的功能，请单击[后续步骤](#next-steps)部分的链接。
 
 ```csharp
-/// <summary>
-/// Evaluates an image using the Image Moderation APIs.
-/// </summary>
-/// <param name="client">The Content Moderator API wrapper to use.</param>
-/// <param name="imageUrl">The URL of the image to evaluate.</param>
-/// <returns>Aggregated image moderation results for the image.</returns>
-/// <remarks>This method throttles calls to the API.
-/// Your Content Moderator service key will have a requests per second (RPS)
-/// rate limit, and the SDK will throw an exception with a 429 error code 
-/// if you exceed that limit. A free tier key has a 1 RPS rate limit.
-/// </remarks>
+// Evaluates an image using the Image Moderation APIs.
 private static EvaluationData EvaluateImage(
   ContentModeratorClient client, string imageUrl)
 {
-    var url = new ImageUrl("URL", imageUrl.Trim());
+    var url = new BodyModel("URL", imageUrl.Trim());
 
     var imageData = new EvaluationData();
 
     imageData.ImageUrl = url.Value;
 
-  // Evaluate for adult and racy content.
+    // Evaluate for adult and racy content.
     imageData.ImageModeration =
         client.ImageModeration.EvaluateUrlInput("application/json", url, true);
     Thread.Sleep(1000);
@@ -219,18 +166,9 @@ private static EvaluationData EvaluateImage(
 }
 ```
 
-EvaluateUrlInput 方法是图像审查 REST API 的包装器。
-返回值包含通过 API 调用返回的对象。
+### <a name="load-the-input-images"></a>加载输入图像
 
-OCRUrlInput 方法是图像 OCR REST API 的包装器。
-返回值包含通过 API 调用返回的对象。
-
-FindFacesUrlInput 方法是图像查找人脸 REST API 的包装器。
-返回值包含通过 API 调用返回的对象。
-
-## <a name="evaluate-the-images-in-your-code"></a>评估代码中的图像
-
-将以下代码添加到 Main 方法。
+在 **Program** 类的 **Main** 方法中添加以下代码。 这样会将程序设置为检索输入文件中每个图像 URL 的评估数据， 然后会将该数据写入单个输出文件中。
 
 ```csharp
 // Create an object to store the image moderation results.
@@ -265,9 +203,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
+## <a name="run-the-program"></a>运行程序
 
-打开 _ModerationOutput.json_ 文件，查看输出内容。 该内容应该类似于以下内容。 注意，每个图像有对应于 `ImageModeration`、`FaceDetection` 和 `TextDetection` 的不同部分，对应于 **EvaluateImage** 方法中的三个 API 调用。
+程序会将 JSON 字符串数据写入 _ModerationOutput.json_ 文件。 本快速入门中使用的示例图像的输出如下。 注意，每个图像有对应于 `ImageModeration`、`FaceDetection` 和 `TextDetection` 的不同部分，对应于 **EvaluateImage** 方法中的三个 API 调用。
 
 ```json
 [{
@@ -451,6 +389,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }]
 ```
 
-## <a name="next-steps---get-the-source-code"></a>后续步骤 - 获取源代码
+## <a name="next-steps"></a>后续步骤
 
-为适用于 .NET 的此内容审查器快速入门和其他内容审查器快速入门获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始集成。
+在本快速入门中，你开发了一个简单的 .NET 应用程序，该程序使用内容审查器服务返回给定图像示例的相关信息。 接下来，请详细了解不同标记和分类的含义，以便确定所需数据以及应用处理该数据的方式。
+
+> [!div class="nextstepaction"]
+> [图像审查指南](image-moderation-api.md)
