@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f44b267a28abd64acdd6bc74a43f1c5be8daf0ab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515601"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567904"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -221,6 +221,8 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    - *缩放单位节点处于脱机状态*
    
   运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+
+  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4471993/)，因此请确保安装此修补程序，如果遇到此问题。 
 
 <!-- 1264761 - IS ASDK -->  
 - 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  
