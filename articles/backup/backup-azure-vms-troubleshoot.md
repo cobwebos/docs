@@ -8,19 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8ef8241e9f0f6223b29fa29f7a5803f57f4d6203
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 90e03c66717cafc1cd33f4629e88aba8e76c2c3f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414992"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245713"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
-| 无法执行该操作，因为 VM 不再存在。 - 停止保护虚拟机，无需删除备份数据。 有关详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=808124 |当主 VM 已删除，而备份策略仍继续查找用于备份的 VM 时，会发生这种情况。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）</li><li> 停止保护虚拟机，删除或不删除备份数据。 [更多详细信息](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| 无法执行该操作，因为 VM 不再存在。 - 停止保护虚拟机，无需删除备份数据。 有关详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=808124 |当主 VM 已删除，而备份策略仍继续查找用于备份的 VM 时，会发生这种情况。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）</li><li> 停止保护虚拟机，删除或不删除备份数据。 [更多详细信息](https://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 由于虚拟机上无网络连接，快照操作失败 - 请确保 VM 具有网络访问权限。 要成功进行快照操作，请将 Azure 数据中心 IP 范围加入允许列表，或设置代理服务器用于网络访问。 有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=800034。 如果已经在使用代理服务器，请确保代理服务器设置配置正确 | 拒绝虚拟机上的出站 Internet 连接时会出现此错误。 VM 快照扩展需要 Internet 连接才可拍摄基础磁盘的快照。 请参阅[如何解决由阻止网络访问引起的快照操作问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)这一部分。 |
 | VM 代理无法与 Azure 备份服务进行通信。 - 确保 VM 具有网络连接、VM 代理为最新版且正常运行。 有关详细信息，请参阅文章 http://go.microsoft.com/fwlink/?LinkId=800034。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 [详细了解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup)如何调试 VM 快照问题。<br> 如果 VM 代理未导致任何问题，请重启 VM。 VM 状态错误可能导致出现问题，重启 VM 会重置状态。 |
 | VM 处于失败预配状态 - 请重启 VM，并确保 VM 正在运行或已关闭。 | 当一个扩展失败导致 VM 状态为失败预配状态时，会出现此错误。 转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展的状态都为正在运行，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
@@ -28,7 +28,7 @@ ms.locfileid: "50414992"
 | 由于存储帐户可用空间不足，无法复制虚拟机快照 - 请确保存储帐户的可用空间等效于附加到虚拟机的高级存储磁盘上存在的数据 | 对于 VM 备份堆栈 V1 上的高级 VM，会将快照复制到存储帐户。 这是为了确保适用于快照的备份管理流量不会限制使用高级磁盘的应用程序可用的 IOPS 数。 Microsoft 建议仅分配总存储帐户空间的 50% (17.5 TB)，以便 Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 | 
 | 无法执行操作，因为 VM 代理没有响应 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 对于 Windows VM，请检查服务中的 VM 代理服务状态，以及代理是否显示在控制面板的程序中。 尝试从控制面板中删除程序，再重新安装代理，如[下](#vm-agent)所述。 重新安装代理后，将触发临时备份进行验证。 |
 | 恢复服务扩展操作失败。 - 确保虚拟机上有最新的虚拟机代理，并且代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期会引发此错误。 请参阅以下“更新 VM 代理”部分，更新 VM 代理。 |
-| 虚拟机不存在。 - 请确保该虚拟机存在，或选择其他虚拟机。 |当主 VM 已删除，而备份策略仍继续查找要执行备份的 VM 时，会出现此错误。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）<br></li><li>停止保护虚拟机，无需删除备份数据。 [更多详细信息](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| 虚拟机不存在。 - 请确保该虚拟机存在，或选择其他虚拟机。 |当主 VM 已删除，而备份策略仍继续查找要执行备份的 VM 时，会出现此错误。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）<br></li><li>停止保护虚拟机，无需删除备份数据。 [更多详细信息](https://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 命令执行失败。 - 此项上当前正在进行另一项操作。 请等待前一项操作完成，然后重试此操作。 |现有备份作业正在运行，当前作业结束前无法开始新的作业。 |
 | 从恢复服务保管库复制 VHD 超时 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 如果存储端存在暂时性错误，或者备份服务未在超时范围内接收足够的存储帐户 IOPS 来将数据传输到保管库，则会出现此错误。 请确保按照 [VM 配置最佳做法](backup-azure-vms-introduction.md#best-practices)进行操作。 将 VM 移到未加载的其他存储帐户，然后重试备份作业。|
 | 发生内部错误，备份失败 - 请在几分钟后重试操作。 如果问题持续出现，请联系 Microsoft 支持 |出现此错误的原因有两个： <ol><li> 在访问 VM 存储时存在暂时性问题。 请查看 [Azure 状态网站](https://azure.microsoft.com/status/)，检查区域中是否存在计算、存储或网路问题。 问题解决后，请重试备份作业。 <li>原始 VM 已被删除，恢复点无法采用。 若要保留已删除 VM 的备份数据，但要删除备份错误，请取消保护 VM 并选择保留数据选项。 此操作可停止计划备份作业和阻止反复出现的错误消息。 |
@@ -82,18 +82,18 @@ ms.locfileid: "50414992"
 
 对于 Windows VM：
 
-* 下载并安装 [代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
-* 对于经典虚拟机，请[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明代理已安装。 对于 Resource Manager 虚拟机，无需执行这一步。
+* 下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
+* 对于经典虚拟机，请[更新 VM 属性](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明代理已安装。 对于 Resource Manager 虚拟机，无需执行这一步。
 
 对于 Linux VM：
 
 * 从分发存储库安装最新版本的代理。 有关包名称的详细信息，请参阅 [Linux 代理存储库](https://github.com/Azure/WALinuxAgent)。
-* 对于经典 VM，请[使用博客条目更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，并确保代理成功安装。 资源管理器虚拟机无需执行此步骤。
+* 对于经典 VM，请[使用博客条目更新 VM 属性](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，并确保代理成功安装。 资源管理器虚拟机无需执行此步骤。
 
 ### <a name="updating-the-vm-agent"></a>更新 VM 代理
 对于 Windows VM：
 
-* 要更新 VM 代理，请重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 更新此代理之前，请确保 VM 代理更新期间不存在任何备份操作。
+* 要更新 VM 代理，请重新安装 [VM 代理二进制文件](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 更新此代理之前，请确保 VM 代理更新期间不存在任何备份操作。
 
 对于 Linux VM：
 
@@ -135,7 +135,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 * 备份操作（如磁盘快照）可能失败
 * 显示备份操作状态可能失败
 
-[此处](http://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)说明了在哪些情况下需要解析公共 Internet 地址。 用户需要检查 VNET 的 DNS 配置，并确保可以解析 Azure URI。
+[此处](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)说明了在哪些情况下需要解析公共 Internet 地址。 用户需要检查 VNET 的 DNS 配置，并确保可以解析 Azure URI。
 
 正确完成名称解析后，还需要提供对 Azure IP 的访问权限。 若要取消阻止对 Azure 基础结构的访问，请执行以下步骤之一：
 
