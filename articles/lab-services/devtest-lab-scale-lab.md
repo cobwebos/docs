@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38675959"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248242"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
 在开发测试实验室中工作时，可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”。
@@ -35,7 +35,7 @@ ms.locfileid: "38675959"
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 以下步骤演示了如何查看订阅中特定 Azure 资源的当前配额，以及如何查看每个配额已使用的百分比。
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“更多服务”，并从列表中选择“计费”。
 1. 在“计费”边栏选项卡中，选择一个订阅。
 4. 选择“使用情况 + 配额”。
@@ -49,7 +49,7 @@ ms.locfileid: "38675959"
 ## <a name="requesting-more-resources-in-your-subscription"></a>请求在订阅中提供更多资源
 如果达到配额限制，可以将订阅中资源的默认限制提高到最大限制，详见 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
 
-以下步骤演示如何通过 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)请求提高配额。
+以下步骤演示如何通过 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)请求提高配额。
 
 1. 依次选择“更多服务”、“计费”、“使用情况 + 配额”。
 1. 在“使用情况 + 配额”边栏选项卡中，选择“请求提高配额”按钮。
