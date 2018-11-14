@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344935"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015343"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
 
-访问令牌（在来自 Azure AD B2C 的响应中表示为 access\_）是某种形式的安全令牌，客户端可以使用它来访问受[授权服务器](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics)保护的资源，如 Web API。 访问令牌表示为 [JWT](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens)，包含有关目标资源服务器以及向服务器授予的权限的信息。 调用资源服务器时，必须在 HTTP 请求中提供访问令牌。
+访问令牌（在来自 Azure AD B2C 的响应中表示为 access\_token）是某种形式的安全令牌，客户端可以使用它来访问受 [授权服务器](active-directory-b2c-reference-protocols.md)保护的资源，如 Web API。 访问令牌表示为 [JWT](active-directory-b2c-reference-tokens.md)，包含有关目标资源服务器以及向服务器授予的权限的信息。 调用资源服务器时，必须在 HTTP 请求中提供访问令牌。
 
 本文讨论怎样配置客户端应用程序和 Web API 才能获取 access\_token。
 
@@ -37,22 +37,22 @@ ms.locfileid: "43344935"
 ### <a name="register-a-web-api"></a>注册 Web API
 
 1. 在 Azure 门户的 Azure AD B2C 功能菜单上，单击“应用程序”。
-1. 单击菜单顶部的“+添加”。
-1. 输入应用程序的“ **名称** ”，用于向使用者描述应用程序。 例如，可以输入“Contoso API”。
-1. 将“包括 Web 应用/Web API”开关切换到“是”。
-1. 为“回复 URL”输入任意值。 例如，输入 `https://localhost:44316/`。 由于 API 不会直接从 Azure AD B2C 收到令牌，所以该值并不重要。
-1. 输入**应用 ID URI**。 这是用于 Web API 的标识符。 例如，在框中输入“notes”。 “应用 ID URI”将为 `https://{tenantName}.onmicrosoft.com/notes`。
-1. 单击“ **创建** ”以注册应用程序。
-1. 单击刚刚创建的应用程序，并复制稍后会在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
+2. 单击菜单顶部的“+添加”。
+3. 输入应用程序的“ **名称** ”，用于向使用者描述应用程序。 例如，可以输入“Contoso API”。
+4. 将“包括 Web 应用/Web API”开关切换到“是”。
+5. 为“回复 URL”输入任意值。 例如，输入 `https://localhost:44316/`。 由于 API 不会直接从 Azure AD B2C 收到令牌，所以该值并不重要。
+6. 输入**应用 ID URI**。 这是用于 Web API 的标识符。 例如，在框中输入“notes”。 “应用 ID URI”将为 `https://{tenantName}.onmicrosoft.com/notes`。
+7. 单击“ **创建** ”以注册应用程序。
+8. 单击刚刚创建的应用程序，并复制稍后会在代码中使用的全局唯一“ **应用程序客户端 ID** ”。
 
 ### <a name="publishing-permissions"></a>发布权限
 
 作用域类似于权限，应用调用 API 时必须使用作用域。 作用域的一些示例包括“读取”或“写入”。 假设需要 Web 或本机应用从 API 进行“读取”。 应用将调用 Azure AD B2C 并请求允许访问“读取”作用域的访问令牌。 为了使 Azure AD B2C 发出此类访问令牌，需要授予应用从特定 API 进行“读取”的权限。 若要执行此操作，API 首先需要发布“读取”作用域。
 
 1. 在 Azure AD B2C 的“应用程序”菜单中，打开 Web API 应用程序（“Contoso API”）。
-1. 单击“已发布范围”。 这是定义授予其他应用程序的权限（作用域）的位置。
-1. 根据需要添加“作用域值”（例如，“读取”）。 默认情况下，将定义“user_impersonation”作用域。 如果愿意，可以忽略此操作。 在“作用域名称”列输入作用域描述。
-1. 单击“ **保存**”。
+2. 单击“已发布范围”。 这是定义授予其他应用程序的权限（作用域）的位置。
+3. 根据需要添加“作用域值”（例如，“读取”）。 默认情况下，将定义“user_impersonation”作用域。 如果愿意，可以忽略此操作。 在“作用域名称”列输入作用域描述。
+4. 单击“ **保存**”。
 
 > [!IMPORTANT]
 > “作用域名称”是“作用域值”的说明。 使用作用域时，确保使用“作用域值”。
@@ -62,11 +62,11 @@ ms.locfileid: "43344935"
 一旦配置 API 发布作用域，客户端应用程序将需要通过 Azure 门户授予这些作用域。
 
 1. 在 Azure AD B2C 功能菜单中导航到“应用程序”菜单。
-1. 如果没有客户端应用程序，请进行注册（[Web 应用](active-directory-b2c-app-registration.md#register-a-web-app)或[本机客户端](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)）。 如果按照本指南作为起点，则需要注册客户端应用程序。
-1. 单击“API 访问”。
-1. 单击“添加”。
-1. 选择 Web API 以及授予的（权限）范围。
-1. 单击“确定”。
+2. 如果没有客户端应用程序，请进行注册（[Web 应用](active-directory-b2c-app-registration.md)或[本机客户端](active-directory-b2c-app-registration.md)）。 如果按照本指南作为起点，则需要注册客户端应用程序。
+3. 单击“API 访问”。
+4. 单击“添加”。
+5. 选择 Web API 以及授予的（权限）范围。
+6. 单击“确定”。
 
 > [!NOTE]
 > Azure AD B2C 不要求客户端应用程序用户表示许可。 所有许可由管理员根据上述应用程序之间配置的权限提供。 如果吊销了对某个应用程序的授权，以前能够获取该权限的所有用户不再能够获取。

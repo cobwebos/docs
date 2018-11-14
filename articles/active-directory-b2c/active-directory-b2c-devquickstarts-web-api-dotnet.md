@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory B2C 中调用受保护的 ASP.NET Web API | Microsoft Docs
+title: 从 Azure Active Directory B2C 中的 .NET Web 应用调用 .NET Web API | Microsoft Docs
 description: 如何使用 Azure Active Directory B2C 和 OAuth 2.0 访问令牌构建 .NET Web 应用和调用 Web API。
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 38ad6d8f3746d856d8c0a73520d55fad9d8344e6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7296954a17b21183eb8be2744b42289522cf7f57
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157915"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012490"
 ---
-# <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C：从 .NET Web 应用调用 .NET Web API
+# <a name="call-a-net-web-api-from-a-net-web-app-in-azure-active-directory-b2c"></a>从 Azure Active Directory B2C 中的 .NET Web 应用调用 .NET Web API
 
 使用 Azure AD B2C，可将强大的标识管理功能添加到 Web 应用和 Web API。 本文介绍如何请求访问令牌，以及发出从 .NET“待办事项列表”Web 应用到 .NET Web API 的调用。
 
@@ -31,10 +31,10 @@ ms.locfileid: "50157915"
 若要构建一个调用 Web API 的 Web 应用程序，需要：
 
 1. [创建 Azure AD B2C 租户](active-directory-b2c-get-started.md)。
-2. [注册 Web API](active-directory-b2c-app-registration.md#register-a-web-api)。
-3. [注册 Web 应用](active-directory-b2c-app-registration.md#register-a-web-app)。
+2. [注册 Web API](active-directory-b2c-app-registration.md)。
+3. [注册 Web 应用](active-directory-b2c-app-registration.md)。
 4. [设置策略](active-directory-b2c-reference-policies.md)。
-5. [授权 Web 应用使用 Web API](active-directory-b2c-access-tokens.md#publishing-permissions)。
+5. [授权 Web 应用使用 Web API](active-directory-b2c-access-tokens.md)。
 
 > [!IMPORTANT]
 > 客户端应用程序和 Web API 必须使用相同的 Azure AD B2C 目录。

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: de77050206c98832b274e8bdbda8026fc115610e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236947"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 本文说明如何为 Azure AD 域服务托管域启用安全轻量目录访问协议 (LDAPS)。 安全 LDAP 也称为基于安全套接字层 (SSL)/传输层安全性 (TLS) 的轻量目录访问协议 (LDAP)。
@@ -45,7 +45,7 @@ ms.locfileid: "50156215"
 
 1. **受信任的颁发者** - 证书必须由使用安全 LDAP 连接到托管域的计算机所信任的颁发机构颁发。 此颁发机构可能是公共证书颁发机构 (CA) 或受计算机信任的企业 CA。
 2. **生存期** - 证书必须至少在接下来的 3 到 6 个月内保持有效。 证书过期后，安全 LDAP 不再可以访问托管域。
-3. **使用者名称** - 在托管域中，证书的使用者名称必须是通配符。 例如，如果域名为“contoso100.com”，则证书的使用者名称必须是“*.contoso100.com”。 请将 DNS 名称（使用者替代名称）设置为此通配符名称。
+3. **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为“contoso100.com”，则证书的使用者名称必须是“contoso100.com”。 将 DNS 名称（使用者备用名称）设置为托管域的通配符名称。
 4. **密钥用途** - 必须将证书设置为以下用途：数字签名和密钥加密。
 5. **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
 
@@ -83,7 +83,7 @@ ms.locfileid: "50156215"
 $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
-  -Type SSLServerAuthentication -DnsName *.contoso100.com
+  -Type SSLServerAuthentication -DnsName *.contoso100.com, contoso100.com
 ```
 
 在上述示例中，将“contoso100.com”替换为托管域的 DNS 域名。 例如，如果创建了名为“contoso100.onmicrosoft.com”的托管域，则将 Subject 属性中的“contoso100.com”替换为“contoso100.onmicrosoft.com”，并将 DnsName 属性中的“*.contoso100.com”替换为“*.contoso100.onmicrosoft.com”。

@@ -4,17 +4,17 @@ description: 使用客户端日志记录和其他第三方工具等功能来确�
 services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: ef1d2d0751bf1b1a7ee88fbf37e44e6316dee8f8
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249857"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238823"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排除将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户一同使用时出现的故障
 本文介绍了将 [Java 异步 ADK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户一同使用时的常见问题、解决方法、诊断步骤和工具。
@@ -48,7 +48,7 @@ ulimit -a
 
 ##### <a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
-如果应用部署在 Azure VM 上，则默认情况下 [Azure SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
+如果应用部署在没有公共 IP 地址的 Azure VM 上，则默认情况下 [Azure SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
 
 仅当 Azure VM 具有专用 IP 地址且来自 VM 的进程尝试与公共 IP 地址建立连接时，才使用 Azure SNAT 端口。 因此，有两种解决方法可以避免 Azure SNAT 限制：
     * 按照[启用 VNET 服务终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)中的说明，将 Azure Cosmos DB 服务终结点添加到 Azure VM VNET 的子网中。 启用服务终结点后，请求不再从公共 IP 发送到 cosmos DB，而是发送 VNET 和子网标识。 如果仅允许公共 IP，则此更改可能导致防火墙丢失。 如果使用防火墙，则在启用服务终结点时，使用 [VNET ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 将子网添加到防火墙。

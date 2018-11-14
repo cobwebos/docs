@@ -13,25 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/09/2017
+ms.date: 10/23/2018
 ms.author: cynthn
-ms.openlocfilehash: cca9adb40557cf7bf9e1d4129fc6bd61cbf0df4f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 373003eb8be0482ed96d7d11ecd879237f69b47a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618233"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957159"
 ---
-# <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>如何在 Azure 中的经典 Windows 虚拟机上设置终结点
-在 Azure 中使用经典部署模型创建的所有 Windows 虚拟机都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，Internet 上的计算机或其他虚拟网络需要终结点才能定向虚拟机的入站网络流量。 本文也适用于 [Linux 虚拟机](../../linux/classic/setup-endpoints.md)。
+# <a name="set-up-endpoints-on-a-windows-virtual-machine-by-using-the-classic-deployment-model"></a>使用经典部署模型在 Windows 虚拟机上设置终结点
+在 Azure 中使用经典部署模型创建的 Windows 虚拟机 (VM) 可以通过专用网络通道与同一云服务或虚拟网络中的其他 VM 自动通信。 但是，Internet 上的计算机或其他虚拟网络需要终结点才能将入站网络流量定向到 VM。 
+
+也可以在 [Linux 虚拟机](../../linux/classic/setup-endpoints.md)上设置终结点。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../../resource-manager-deployment-model.md)。 本文介绍经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。  
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-在 **Resource Manager** 部署模型中，终结点使用**网络安全组 (NSG)** 进行配置。 有关详细信息，请参阅 [Allow external access to your VM using the Azure portal](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（允许通过 Azure 门户对 VM 进行外部访问）。
+在**资源管理器**部署模型中，终结点使用**网络安全组 (NSG)** 进行配置。 有关详细信息，请参阅[使用 Azure 门户允许对 VM 进行外部访问](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-在 Azure 门户中创建 Windows 虚拟机时，通常会自动创建常用终结点（如用于远程桌面和 Windows PowerShell 远程处理的终结点）。 可以在创建虚拟机时或之后根据需要配置其他终结点。
+在 Azure 门户中创建 Windows VM 时，通常会自动创建常用终结点（如用于远程桌面和 Windows PowerShell 远程处理的终结点）。 以后可以根据需要配置其他终结点。
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 

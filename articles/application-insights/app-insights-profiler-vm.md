@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10cd05bd40262815e3b27c861982debc18e5b4f3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142668"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978360"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
 还可以在以下服务上部署 Application Insights Profiler：
@@ -50,7 +50,7 @@ ms.locfileid: "50142668"
 
 1. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请通过执行以下操作启用 `IIS Http Tracing` Windows 功能：  
 
-   a. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -63,11 +63,8 @@ ms.locfileid: "50142668"
 
 1. 部署应用程序。
 
-## <a name="enable-profiler-on-on-premises-servers"></a>在本地服务器上启用 Profiler
-
-在本地服务器上启用 Profiler 也称为以独立模式运行 Application Insights Profiler。 它不依赖于 Azure 诊断扩展修改。
-
-我们没有计划为本地服务器提供正式的 Profiler 支持。 如果有兴趣试验这种情况，可以[下载支持代码](https://github.com/ramach-msft/AIProfiler-Standalone)。 我们不负责维护该代码或响应与该代码相关的问题和功能请求。
+## <a name="can-profiler-run-on-on-premises-servers"></a>Profiler 是否可以在本地服务器上运行？
+我们没有计划对本地服务器支持 Application Insights Profiler。 
 
 ## <a name="next-steps"></a>后续步骤
 

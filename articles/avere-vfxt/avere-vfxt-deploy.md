@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670044"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958581"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "50670044"
 
 按照本文档中的说明操作后，将获得虚拟网络、子网、控制器和 vFXT 群集，如下图所示：
 
-![关系图，它所示的 VNET 包含可选 blob 存储以及一个子网，该子网包含三个标记为 vFXT 节点/vFXT 群集的分组 VM 和一个标记为群集控制器的 VM](media/avere-vfxt-deployment-500px.png)
+![关系图，它所示的 VNET 包含可选 blob 存储以及一个子网，该子网包含三个标记为 vFXT 节点/vFXT 群集的分组 VM 和一个标记为群集控制器的 VM](media/avere-vfxt-deployment.png)
 
 在开始部署之前，确保已具备以下必备项：  
 
@@ -198,9 +198,7 @@ ms.locfileid: "50670044"
 
 要从资源管理器模板输出中查找此信息，请按照以下过程操作：
 
-1. 从 Azure 门户顶部应用栏上的通知图标单击“转到资源组”。 这会显示包含你的控制器和 VNET 的新资源组。
-
-   ![门户的“通知”部分，显示了“部署成功”消息和“转到资源组”和“固定到仪表板”按钮](media/avere-vfxt-browse-to-rg.png)
+1. 转到群集控制器的资源组。
 
 1. 在左侧单击“部署”，然后单击“Microsoft.Template”。
 

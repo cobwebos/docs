@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145553"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979499"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 语法参考
 
@@ -483,7 +483,7 @@ ORDER BY <sort_specification>
   
  一元运算符：  
   
-|**Name**|运算符|**详细信息**|  
+|**名称**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -|返回数字值。<br /><br /> 位求反。 返回求反后的数字值。|  
 |位|~|一的补数。 返回数字值的补数。|  
@@ -491,13 +491,13 @@ ORDER BY <sort_specification>
   
  二进制运算符：  
   
-|**Name**|运算符|**详细信息**|  
+|**名称**|运算符|**详细信息**|  
 |-|-|-|  
 |算术|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加。<br /><br /> 减。<br /><br /> 乘。<br /><br /> 除。<br /><br /> 取模。|  
 |位|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|位或。<br /><br /> 位与。<br /><br /> 位异或。<br /><br /> 左移。<br /><br /> 右移。<br /><br /> 补零右移。|  
 |逻辑|**AND**<br /><br /> **或**|逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。<br /><br /> 逻辑与。 如果两个参数都为 true，则返回 true，否则返回 false。|  
 |比较|**=**<br /><br /> !=, <><br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> ??|等于。 如果参数为等于，则返回 "true"，否则返回 "false"。<br /><br /> 不等于。 如果参数为不等于，则返回 "true"，否则返回 "false"。<br /><br /> 大于。 如果第一个参数大于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 大于等于。 如果第一个参数大于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于。 如果第一个参数小于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 小于等于。 如果第一个参数小于或等于第二个参数，则返回 "true"，否则返回 "false"。<br /><br /> 联合。 如果第一个参数是“未定义”值，则返回第二个参数。|  
-|字符串|**&#124;&#124;**|串联。 返回两个参数的串联。|  
+|**字符串**|**&#124;&#124;**|串联。 返回两个参数的串联。|  
   
  三元运算符：  
   
@@ -511,7 +511,7 @@ ORDER BY <sort_specification>
 |未定义|不可比较。|  
 |Null|单个值：null|  
 |**Number**|自然实数。<br /><br /> 负无穷大值小于任何其他数字值。<br /><br /> 正无穷大值大于任何其他数字值。NaN 值不可比较。 与 NaN 进行比较将产生“未定义”值。|  
-|字符串|字典顺序。|  
+|**字符串**|字典顺序。|  
 |数组|不排序，但可以相等。|  
 |**Object**|不排序，但可以相等。|  
   
@@ -2656,20 +2656,30 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     为任何有效的数值表达式。  
-  
+     用于开始数组的从零开始的数字索引。 负值可用于指定相对于数组最后一个元素的起始索引，即 -1 引用数组中最后一个元素。  
+
+-   `num_expr`  
+
+     结果数组中的最大元素数。    
+
  返回类型  
   
- 返回一个布尔值。  
+ 返回数组表达式。  
   
  **示例**  
   
- 以下示例介绍了如何使用 ARRAY_SLICE 获得部分数组。  
+ 以下示例展示了如何使用 ARRAY_SLICE 获取数组的不同切片。  
   
 ```  
 SELECT   
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1),  
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100)      
+  
 ```  
   
  结果集如下。  
@@ -2677,10 +2687,15 @@ SELECT
 ```  
 [{  
            "$1": ["strawberries", "bananas"],   
-           "$2": ["strawberries"]  
-       }]  
+           "$2": ["strawberries"],
+           "$3": ["strawberries"],  
+           "$4": ["strawberries", "bananas"], 
+           "$5": [],
+           "$6": ["strawberries", "bananas"],
+           "$7": [] 
+}]  
 ```  
-  
+ 
 ###  <a name="bk_spatial_functions"></a> 空间函数  
  以下标量函数对标量对象输入值执行操作，并返回数值或布尔值。  
   
@@ -2710,7 +2725,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **示例**  
   
- 以下示例介绍了如何使用 ST_DISTANCE 内置函数返回在指定位置 30 km 内的所有家族文档。 。  
+ 以下示例介绍了如何使用 ST_DISTANCE 内置函数返回在指定位置 30 km 内的所有家族文档。 .  
   
 ```  
 SELECT f.id   

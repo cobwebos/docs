@@ -1,6 +1,6 @@
 ---
-title: Hadoop 组件和版本 - Azure HDInsight
-description: 了解 HDInsight 中的 Hadoop 组件和版本，以及 Hortonworks 数据平台的此云分发版中可用的服务级别。
+title: Apache Hadoop 组件和版本 - Azure HDInsight
+description: 了解 HDInsight 中的 Apache Hadoop 组件和版本，以及 Hortonworks 数据平台的此云分发版中可用的服务级别。
 keywords: hadoop 版本,hadoop 生态系统组件,hadoop 组件,如何检查 hadoop 版本
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: e299eda50967bee25f76c2e6456afa1ecbd7970c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243174"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219726"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
 了解 Microsoft Azure HDInsight 中的 Apache Hadoop 生态系统组件和版本，以及 Enterprise Security 包。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
 
 每个 HDInsight 版本都是某个版本的 Hortonworks 数据平台 (HDP) 的云分发版。
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>可与不同 HDInsight 版本使用的 Hadoop 组件
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>随不同 HDInsight 版本提供的 Apache Hadoop 组件
 Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版本选项创建 HDP 分发版的一个特定版本和该分发版内包含的一组组件。 从 2017 年 4 月 4 日起，Azure HDInsight 使用的默认群集版本是 3.6 并基于 HDP 2.6。
 
 下表列出了与 HDInsight 群集版本关联的组件版本： 
@@ -50,7 +50,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0、2.2.0、2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1（仅限 Windows） |-|-|
 | Apache Livy |0.5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.0.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -247,7 +247,7 @@ HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDIn
   | 边缘：建议的 VM 大小 | | | | | |Windows：D12 v2、D13 v2、D14 v2；Linux：D4 v2、D12 v2、D13 v2、D14 v2 |
 * 仅限巴西南部和日本西部（无 v2 大小）：
 
-  | 群集类型 | Hadoop | HBase | 交互式查询 |Storm | Spark | ML 服务 |
+  | 群集类型 | Hadoop | HBase | 交互式查询 |Storm | Spark | ML Services |
   | --- | --- | --- | --- | --- | --- | --- |
   | 头：默认 VM 大小 |D3 |D3  | D13、D14 |A3 |D12 |D12 |
   | 头：建议的 VM 大小 |D3、D4、D12 |D3、D4、D12  | D13、D14 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |

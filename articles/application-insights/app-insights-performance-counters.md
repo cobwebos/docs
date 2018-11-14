@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: bb1b1e2934de052479f39d40bfe143345e91bc26
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094076"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960100"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。
@@ -27,7 +27,7 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 
 ![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-（性能计数器不适用于 Azure Web 应用。 但是可以[将 Azure 诊断发送到 Application Insights](app-insights-azure-diagnostics.md)。）
+（性能计数器不适用于 Azure Web 应用。 但是可以[将 Azure 诊断发送到 Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)。）
 
 ## <a name="view-counters"></a>查看计数器
 “服务器”边栏选项卡显示一组默认的性能计数器。 

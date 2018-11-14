@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a2b209dc0204c390b16039ed1cf58b47f29629f1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783315"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252099"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在基于 Linux 的 Azure HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流
 
@@ -30,12 +30,12 @@ ms.locfileid: "43783315"
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 > [!NOTE]
-> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 要了解有关数据工厂的详细信息，请参阅[将 Pig 和 Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。
+> 用于定义与 HDInsight 配合运行的工作流的另一个选项是 Azure 数据工厂。 要了解有关数据工厂的详细信息，请参阅[将 Pig 和 Hive 与数据工厂配合使用][azure-data-factory-pig-hive]。 若要在具有企业安全性套餐的群集上使用 Oozie，请参阅[在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 群集**：请参阅[Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **常规 HDInsight 群集**：请参阅[Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。

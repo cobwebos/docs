@@ -299,6 +299,8 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: 基于 Azure Stack 的应用服务 Update 3 发行说明
         href: azure-stack-app-service-release-notes-update-three.md
+      - name: 应用服务在 Azure Stack update 4 发行说明
+        href: azure-stack-app-service-release-notes-update-four.md
   - name: 创建计划、套餐和配额
     items:
     - name: 计划、套餐、配额和订阅概述
@@ -388,9 +390,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578139"
+ms.locfileid: "51614746"

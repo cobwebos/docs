@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df1cada5e730189546f65d9799926807390db083
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b61ee3c3baa4590dc8a2fbf91b1ff941626a01e4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432250"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959812"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>通过 Resource Manager 模板创建 Windows 虚拟机
 
@@ -53,9 +53,9 @@ ms.locfileid: "47432250"
 
 ## <a name="create-the-files"></a>创建文件
 
-此步骤将创建一个用于部署资源的模板文件和一个用于向模板提供参数值的参数文件。 还创建用于执行 Azure 资源管理器操作的授权文件。
+此步骤将创建一个用于部署资源的模板文件和一个用于向模板提供参数值的参数文件。 还创建用于执行 Azure 资源管理器操作的授权文件。 
 
-1. 创建一个名为 *CreateVMTemplate.json* 的文件，并向其中添加此 JSON 代码：
+1. 创建一个名为 *CreateVMTemplate.json* 的文件，并向其中添加 JSON 代码。 将 `domainNameLabel` 的值替换为你自己的唯一名称。
 
     ```json
     {

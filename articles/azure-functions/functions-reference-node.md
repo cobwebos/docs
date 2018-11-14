@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740444"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036540"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -76,7 +76,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 
 以下示例是一个简单的函数，用于记录其已被触发并立即完成执行。
 
-``` javascript
+```javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
 };
@@ -109,22 +109,27 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>绑定 
 在 JavaScript 中，需在函数的 function.json 中配置和定义[绑定](functions-triggers-bindings.md)。 函数通过多种方式来与绑定交互。
 
-### <a name="reading-trigger-and-input-data"></a>读取触发器和输入数据
-函数可通过三种方式读取触发器和输入绑定（`direction === "in"` 的绑定）：
+### <a name="inputs"></a>输入
+在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
  - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 请注意，*function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
+   
  - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + context.bindings.myTrigger);
        context.log("This is myInput: " + context.bindings.myInput);
        context.log("This is myOtherInput: " + context.bindings.myOtherInput);
    };
    ```
+   
  - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + arguments[1]);
        context.log("This is myInput: " + arguments[2]);
@@ -132,12 +137,13 @@ module.exports = async function (context, req) {
    };
    ```
 
-### <a name="writing-data"></a>写入数据
+### <a name="outputs"></a>Outputs
 函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，*function.json* 中定义的绑定属性 `name` 对应于函数中所写入到的对象成员的名称。 
 
 可通过以下方式之一将数据分配到输出绑定。 不要结合使用这些方法。
 - **_[有多个输出时建议使用]_ 返回对象。** 如果使用异步函数/返回 Promise 的函数，可以返回分配有输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       return {
@@ -148,10 +154,12 @@ module.exports = async function (context, req) {
       };
   };
   ```
+  
   如果使用同步函数，可以使用 [`context.done`](#contextdone-method) 返回此对象（请参阅示例）。
 - **_[有单个输出时建议使用]_ 直接返回值，并使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
 - **向 `context.bindings` 赋值** 可以直接向 context.bindings 赋值。
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       context.bindings.httpResponse = {

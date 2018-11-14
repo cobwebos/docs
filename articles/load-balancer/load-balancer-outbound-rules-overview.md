@@ -4,8 +4,6 @@ description: 使用出站规则定义出站网络地址转换
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637556"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219369"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -69,9 +67,9 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
 尽管出站规则只能配合单个公共 IP 地址使用，但出站规则减轻了缩放出站 NAT 的负担。 规划大规模方案时可以使用多个 IP 地址，并可以使用出站规则来缓解容易出现 [SNAT 耗尽](load-balancer-outbound-connections.md#snatexhaust)的模式。  
 
-前端提供的每个附加 IP 地址可提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。 尽管负载均衡规则或入站 NAT 规则具有单个前端，但出站规则可以扩展前端的概念，并允许为每个规则使用多个前端。  为每个规则使用多个前端时，可用 SNAT 端口的数量将与每个公共 IP 地址相乘，因此可以支持极大型方案。
+前端提供的每个附加 IP 地址可提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。 尽管负载均衡规则或入站 NAT 规则具有单个前端，但出站规则可以扩展前端的概念，并允许为每个规则使用多个前端。  为每个规则使用多个前端时，可用 SNAT 端口的数量将与每个公共 IP 地址相乘，因此可以支持大型方案。
 
-此外，可以直接对出站规则使用[公共 IP 前缀](https://aka.ms/lbpublicipprefix)。  这样可以简化缩放，并更轻松地将源自 Azure 部署的流加入白名单。 可以在负载均衡器资源中配置直接引用公共 IP 地址前缀的前端 IP 配置。  这样，负载均衡器将以独占方式控制公共 IP 前缀，而出站规则将自动使用公共 IP 前缀中包含的所有公共 IP 地址来建立出站连接。  公共 IP 前缀范围内的每个 IP 地址提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。   
+此外，可以直接对出站规则使用[公共 IP 前缀](https://aka.ms/lbpublicipprefix)。  使用公共 IP 前缀可以更轻松地缩放，并可简化将源自 Azure 部署的流加入允许列表的操作。 可以在负载均衡器资源中配置直接引用公共 IP 地址前缀的前端 IP 配置。  这样，负载均衡器将以独占方式控制公共 IP 前缀，而出站规则将自动使用公共 IP 前缀中包含的所有公共 IP 地址来建立出站连接。  公共 IP 前缀范围内的每个 IP 地址提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。   
 
 使用此选项时，无法从公共 IP 前缀创建单个公共 IP 地址资源，因为出站规则必须拥有公共 IP 前缀的完全控制权。  如果需要更精细的控制，可以从公共 IP 前缀创建单个公共 IP 地址资源，并将多个公共 IP 地址单独分配到出站规则的前端。
 

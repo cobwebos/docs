@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET 创建 Hadoop 群集 - Azure HDInsight
-description: 了解如何使用 HDInsight .NET SDK 在 Linux 上的 HDInsight 中创建 Hadoop、HBase、Storm 或 Spark 群集。
+title: 使用 .NET 创建 Apache Hadoop 群集 - Azure HDInsight
+description: 了解如何使用 HDInsight .NET SDK 在 Linux for HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。
 services: hdinsight
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: ea5c0d3b9f444601607ebcda8d139797eb8dd2ec
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 943d5aeccf949c1dd494dc8ec8fda0d782527749
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093905"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035674"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-了解如何使用 .NET SDK 在 Azure HDInsight 群集中创建 Hadoop 群集。
+了解如何使用 .NET SDK 在 Azure HDInsight 群集中创建 Apache Hadoop 群集。
 
 > [!IMPORTANT]
 > 本文中的步骤创建了包含一个工作节点的群集。 如果计划使用 32 个以上的工作节点（在创建群集时或是在创建之后通过扩展群集进行），则需要选择至少具有 8 个核心和 14GB RAM 的头节点大小。
@@ -32,7 +32,7 @@ ms.locfileid: "43093905"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
 * **Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017**。
 

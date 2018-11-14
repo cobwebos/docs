@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28de0f8bdcaa730c5beea0c630d4e86e15642809
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142740"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978836"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -46,16 +46,16 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 1. 如果在 Profiler 运行的时间段内发出了请求，请确保应用程序中已启用 Profiler 的组件可以处理该请求。 有时，应用程序包括多个组件，但只对一部分（而不是全部）组件启用了 Profiler。 “配置 Application Insights Profiler”页将显示已上传跟踪的组件。
 
-### <a name="net-core-21-bug"></a>**.Net Core 2.1 bug** 
+### <a name="net-core-21-bug"></a>.Net Core 2.1 bug
 探查器代理中有一个 bug，使其无法上传从 ASP.NET Core 2.1 上运行的应用程序中获取的跟踪。 我们正在努力修复，很快就会解决。 将在 10 月底部署此 bug 的修复程序。
 
-### <a name="other-things-to-check"></a>**要检查的其他事项：**
+### <a name="other-things-to-check"></a>要检查的其他事项：
 * 应用在 .NET Framework 4.6 上运行。
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 * 如果要查看的数据的期限超过了好几周，请尝试限制时间筛选器并重试。 七天后将删除跟踪。
 * 确保代理或防火墙未阻止对 https://gateway.azureserviceprofiler.net 的访问。
 
-### <a id="double-counting"></a>**并行线程的重复计数**
+### <a id="double-counting"></a>并行线程的重复计算
 
 在某些情况下，堆栈查看器中的总时间指标大于请求的持续时间。
 
@@ -63,11 +63,11 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 如果看到跟踪中出现并行线程，请确定哪些线程处于等待状态，以便可以确定请求的关键路径。 在大多数情况下，快速进入等待状态的线程只是在等待其他线程完成。 请专注于其他线程，忽略等待中线程花费的时间。
 
-### <a name="error-report-in-the-profiling-viewer"></a>**探查查看器中的错误报告**
+### <a name="error-report-in-the-profile-viewer"></a>配置文件查看器中的错误报告
 在门户中提交支持票证。 请务必包含错误消息中的相关性 ID。
 
 ## <a name="troubleshooting-profiler-on-app-services"></a>排查应用服务中 Profiler 的问题
-### <a name="for-the-profiler-to-work-properly"></a>**要使 Profiler 正常工作：**
+### <a name="for-the-profiler-to-work-properly"></a>要使 Profiler 正常工作：
 * Web 应用服务计划必须属于“基本”层或更高层。
 * Web 应用中必须已安装应用服务的 Application Insights 扩展 (2.6.5)。
 * 必须在 Web 应用的 **APPINSIGHTS_INSTRUMENTATIONKEY** 应用设置中配置 Application Insights SDK 所用的相同检测密钥。
@@ -82,7 +82,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
     
     ![profiler-webjob-log]
 
-### <a name="manual-installation"></a>**手动安装**
+### <a name="manual-installation"></a>手动安装
 
 配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。
 
@@ -97,9 +97,9 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 从 Azure Web 应用库中安装“Application Insights”。
 1. 重新启动 Web 应用。
 
-### <a name="too-many-active-profiling-sessions"></a>**活动探查会话过多**
+### <a name="too-many-active-profiling-sessions"></a>活动分析会话太多
 
-目前，最多可以对同一服务计划中运行的 4 个 Azure Web 应用和部署槽启用 Profiler。 如果 Profiler Web 作业报告活动探查会话太多，请将一些 Web 应用移到另一服务计划。
+目前，最多可以对同一服务计划中运行的 4 个 Azure Web 应用和部署槽启用 Profiler。 如果你拥有的 Web 应用数多于在一个应用服务计划中运行的 Web 应用数，则可能会看到 Profiler 引发 Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException。 Profiler 为每个 Web 应用单独运行，并尝试为每个应用启动 ETW 会话。 但是，可以同时处于活动状态的 ETW 会话数量有限。 如果 Profiler Web 作业报告活动探查会话太多，请将一些 Web 应用移到另一服务计划。
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>部署错误：目录不为空“D:\\home\\site\\wwwroot\\App_Data\\jobs”
 

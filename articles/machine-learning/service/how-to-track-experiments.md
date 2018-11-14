@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649986"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219301"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
 
 在 Azure 机器学习服务中，可通过跟踪试验和监视指标来改进模型创建过程。 本文介绍向训练脚本添加日志记录的不同方法、如何使用 start_logging 和 ScriptRunConfig 提交实验、如何检查正在运行的作业的进度以及如何查看运行结果。 
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.168 进行测试 
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试 
 
 ## <a name="list-of-training-metrics"></a>训练指标列表 
 
@@ -67,7 +67,6 @@ ms.locfileid: "49649986"
 
   # make up an arbitrary name
   experiment_name = 'train-in-notebook'
-  exp = Experiment(workspace_object = ws, name = experiment_name)
   ```
   
 ## <a name="option-1-use-startlogging"></a>选项 1：使用 start_logging
@@ -103,7 +102,8 @@ ms.locfileid: "49649986"
 2. 使用 Azure 机器学习服务 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志并将模型文件上传到试验运行。
 
   ```python
-  run = Run.start_logging(experiment = exp)
+  experiment = Experiment(workspace = ws, name = experiment_name)
+  run = experiment.start_logging()
   run.tag("Description","My first run!")
   run.log('alpha', 0.03)
   reg = Ridge(alpha = 0.03)
@@ -209,8 +209,8 @@ ms.locfileid: "49649986"
   ```python
   from azureml.core import ScriptRunConfig
 
-  src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_user_managed)
-  run = exp.submit(src)
+  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+  run = experiment.submit(src)
   ```
   
 ## <a name="view-run-details"></a>查看运行详细信息
@@ -248,11 +248,22 @@ ms.locfileid: "49649986"
   ![Azure 门户中的运行详细信息屏幕截图](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 还可查看运行的任何输出或日志，或下载提交的实验的快照，以便与他人共享实验文件夹。
+### <a name="viewing-charts-in-run-details"></a>在运行详细信息中查看图表
+
+可通过多种方式使用日志记录 API 在运行期间记录不同类型的指标，然后在 Azure 门户中以图表形式查看这些指标。 
+
+|记录的值|示例代码| 在门户中查看|
+|----|----|----|
+|记录一组数值| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|单变量折线图|
+|使用重复使用的相同指标名称记录单个数值（例如在 for 循环中）| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 单变量折线图|
+|重复记录包含 2 个数字列的行|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|双变量折线图|
+|记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
 
 ## <a name="example-notebooks"></a>示例笔记本
 下面的笔记本展示了本文中的概念：
 * [01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
 * [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.getting-started/06.logging-api/06.logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
 若要获取这些笔记本，请执行以下操作：[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

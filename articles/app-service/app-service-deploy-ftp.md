@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900319"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231374"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
-本文演示如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714)。
+本文演示如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。
 
 应用的 FTP / S 终结点已处于活动状态。 无需配置即可启用 FTP / S 部署。
 
@@ -45,7 +45,7 @@ ms.locfileid: "48900319"
 
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure
 
-1. 从 FTP 客户端（例如 [Visual Studio](https://www.visualstudio.com/vs/community/) 或 [FileZilla](https://filezilla-project.org/download.php?type=client)），使用收集到的连接信息连接到应用。
+1. 从 FTP 客户端（例如 [Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/) 或 [WinSCP](https://winscp.net/index.php)），使用收集到的连接信息连接到应用。
 3. 将文件及其各自的目录结构复制到 Azure 中的 [**/site/wwwroot** 目录](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure)（对于 Web 作业，复制到 **/site/wwwroot/App_Data/Jobs/** 目录）。
 4. 浏览到应用的 URL，以验证该应用是否正在正常运行。 
 

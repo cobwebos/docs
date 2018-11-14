@@ -6,15 +6,15 @@ manager: garavd
 ms.service: site-recovery
 ms.date: 10/28/2018
 ms.topic: conceptual
-ms.author: rayne
-ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.author: nisoneji
+ms.openlocfilehash: c6ec47017d944a206642932223ebb1d9df9cf942
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210493"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011725"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>规划容量和缩放以便将 VMware 灾难恢复到 Auzre
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
 请阅读本文，了解如何规划容量和缩放，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure。
 

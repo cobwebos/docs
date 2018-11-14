@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 51cacb385f28cf70a65b9c0e1c14d48e22be0a4d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051104"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007648"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -28,7 +28,10 @@ ms.locfileid: "37051104"
 
 可以将数据从 Google BigQuery 复制到任何支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
- 数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
+数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
+
+>[!NOTE]
+>此 Google BigQuery 连接器在 BigQuery API 的基础上构建。 请注意，BigQuery 会限制传入请求的最大速率并按项目强制实施适当的配额，请参阅[配额和限制 - API 请求](https://cloud.google.com/bigquery/quotas#api_requests)。 请确保不会触发过多的帐户并发请求。
 
 ## <a name="get-started"></a>入门
 

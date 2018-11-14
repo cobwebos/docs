@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45570447"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964522"
 ---
 | 资源 | 最大限制 |说明|
 | --- | --- |---|
@@ -31,5 +31,6 @@ ms.locfileid: "45570447"
 | Runbook 作业参数大小上限   | 512 kb||
 | Runbook 参数数量上限   | 50|可以将 JSON 或 XML 字符串传递给参数，并在达到 50 个参数的限制时使用 Runbook 对其进行分析|
 | Webhook 有效负载大小上限 |  512 kb|
+| 保留作业数据的最大天数|30 天|
 
 <sup>1</sup> 沙盒是可由多个作业使用的共享环境，使用相同沙盒的作业受到该沙盒的资源限制的约束。

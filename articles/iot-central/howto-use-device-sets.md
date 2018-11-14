@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731965"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004113"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中使用设备集
 
-本文介绍如何以操作员的身份在 Microsoft Azure IoT Central 应用程序中使用设备集。
+本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
 
-设备集是由于与某个指定的条件匹配，而全部分组到一起的一系列设备。 设备集通过将设备分组到较小的逻辑组，来帮助大规模管理、可视化和分析设备。 例如，可以针对西雅图的所有空调设备创建一个列表，使西雅图的技术人员能够找到他们所要负责的所有设备。 本文介绍如何创建和配置设备集。
+设备集是由于与某个指定的条件匹配，而全部分组到一起的一系列设备。 设备集通过将设备分组到较小的逻辑组，来帮助大规模管理、可视化和分析设备。 例如，可以针对西雅图的所有空调设备创建一个列表，使西雅图的技术人员能够找到他所负责的所有设备。 本文介绍如何创建和配置设备集。
 
 ## <a name="create-a-device-set"></a>创建设备集
 
@@ -73,7 +73,7 @@ ms.locfileid: "45731965"
         ![选择网格](media/howto-use-device-sets/image8.png)
 
     1. 为网格指定**标题**。
-    1. 选择按下设置按钮时要显示的列。 在弹出的面板中，选择要显示的列，并使用右箭头将其选中。
+    1. 选择按下“添加/删除”按钮时要显示的列。 在弹出的面板中，选择要显示的列，并使用右箭头将其选中。
     1. 选择“确定”。
     1. 选择“保存”。
 
@@ -84,7 +84,7 @@ ms.locfileid: "45731965"
     > [!NOTE]
     > 可以添加多个图像、链接和网格。
   
-    1. 单击“Done”（完成） 。
+    1. 单击“完成”。
 
     ![设计模式已关闭](media/howto-use-device-sets/image10.png)
 
@@ -101,9 +101,10 @@ ms.locfileid: "45731965"
 
 2. 指定标题，并选择之前已配置为设备属性的一部分的位置属性。
 3. 保存设置，此时会看到显示设备集中设备的位置的地图图块。
-4. 此时，当操作者查看设备集仪表板时，她可以看到你已配置的所有图块（包括位置地图），所有设备位置一目了然！ 
+4. 现在，当操作者查看设备集仪表板时，他可以看到你已配置的所有磁贴（包括位置地图），所有设备位置一目了然！ 
     
-[!NOTE] 可以根据需要重设地图大小。 单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
+> [!NOTE] 
+> 可以根据需要重设地图大小。 单击地图中的图钉将显示设备信息、名称和位置。 可以单击弹出项，以转到设备属性页。  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>配置设备集的列表

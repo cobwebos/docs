@@ -11,21 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: fcbc924675a97a17b4fcfdf0e1ac39ad5aae9ffd
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218502"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612672"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>更新 Azure Stack 上的 Azure 应用服务
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]  
-> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.3。
+> 适用于 Azure Stack 集成系统的 1809年更新或部署 Azure 应用服务 1.4 之前部署最新的 Azure Stack 开发工具包。
 >
 >
 
@@ -33,7 +33,6 @@ ms.locfileid: "51218502"
 
 > [!IMPORTANT]  
 > 在运行升级之前，请确保已完成[部署 Azure Stack 上的 Azure 应用服务资源提供程序](azure-stack-app-service-deploy.md)
-
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>运行应用服务资源提供程序安装程序
 
@@ -53,7 +52,7 @@ ms.locfileid: "51218502"
 
 若要升级 Azure Stack 上的应用服务部署，请遵循以下步骤：
 
-1. 下载[应用服务安装程序](https://aka.ms/appsvcupdate3installer)
+1. 下载[应用服务安装程序](https://aka.ms/appsvcupdate4installer)
 
 2. 以管理员身份运行 appservice.exe
 
@@ -65,7 +64,7 @@ ms.locfileid: "51218502"
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须根据自定义的情况编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”。
+6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义选项，则必须编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”。
 
     ![Azure Stack 云信息][2]
 
@@ -76,7 +75,7 @@ ms.locfileid: "51218502"
         * 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，*cloudadmin@azurestack.local*。 输入密码，并单击“登录”。
    2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
    3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
-   4. 如果发现了现有的应用服务部署，则资源组和存储帐户将被填充并灰显。
+   4. 如果检测到现有应用服务部署，然后资源组和存储帐户将会填充并灰显状态。
    5. 按“下一步”查看升级摘要。
 
     ![检测到应用服务安装][3]

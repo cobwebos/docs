@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215440"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012099"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -59,6 +59,8 @@ ms.locfileid: "50215440"
 ### <a name="where-do-on-premises-vms-replicate-to"></a>本地 VM 将复制到哪个位置？
 数据将复制到 Azure 存储。 运行故障转移时，Site Recovery 会自动从存储帐户创建 Azure VM。
 
+## <a name="replication"></a>复制
+
 ### <a name="what-apps-can-i-replicate"></a>可以复制哪些应用？
 可以复制 VMware VM 中运行的、符合[复制要求](vmware-physical-azure-support-matrix.md##replicated-machines)的任何应用或工作负荷。 Site Recovery 支持应用程序感知型复制，因此，应用可以故障转移或故障回复到智能状态。 Site Recovery 除了与 Microsoft 应用程序（例如 SharePoint、Exchange、Dynamics、SQL Server 及 Active Directory）集成之外，还能与行业领先的供应商（包括 Oracle、SAP、IBM 及 Red Hat）紧密配合。 [详细了解](site-recovery-workload.md)工作负荷保护。
 
@@ -74,18 +76,17 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 复制到 Azure 时，复制流量会到达 Azure 存储帐户的公共终结点，因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，而不能使用 VPN。
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
+### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
 若要复制某个 VMware VM，该 VM 必须运行受支持的操作系统。 此外，该 VM 必须满足 Azure VM 的要求。 在支持矩阵中[了解详细信息](vmware-physical-azure-support-matrix.md##replicated-machines)。
 
-## <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
+### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 将 VMware VM 复制到 Azure 时，复制是持续性的。
 
-## <a name="can-i-extend-replication"></a>是否可以扩展复制？
+### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展扩展或链式复制。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)中请求此功能。
 
-## <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
+### <a name="can-i-do-an-offline-initial-replication"></a>是否可以执行脱机初始复制？
 不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
 
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
@@ -141,7 +142,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 安装程序保存在配置服务器上的 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** 文件夹中。
 
 ## <a name="how-do-i-install-the-mobility-service"></a>如何安装移动服务？
-可以使用[推送安装](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)、在 [UI](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui) 中使用手动安装或者[使用 PowerShell](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt)，在要复制的每个 VM 上安装移动服务。 或者，可以使用 [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 或 [Azure 自动化和 DSC](vmware-azure-mobility-deploy-automation-dsc.md) 等部署工具进行部署。
+可以使用[推送安装](vmware-azure-install-mobility-service.md)，或者通过 UI 或 Powershell 使用[手动安装](vmware-physical-mobility-service-install-manual.md)，在要复制的每个 VM 上安装移动服务。 或者，可以使用 [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署。
 
 
 

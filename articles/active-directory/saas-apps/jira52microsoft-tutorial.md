@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 85004852b4e67f1a3f030a5cf97abea7c16c5695
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 43ad99d4814923204b3b1993969bd6a0730530c5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741736"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成
 
@@ -62,7 +62,7 @@ ms.locfileid: "50741736"
 **支持的版本：**
 
 * JIRA Core and Software：5.2
-* JIRA 也支持 6.0 和 7.12。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)
+* JIRA 还支持 6.0 到 7.12。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>方案描述
 

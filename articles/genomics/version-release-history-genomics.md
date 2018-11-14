@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 03/02/2018
-ms.openlocfilehash: 96e2f30a59c5b0e366e46363f52e320cc85a245f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 458ac634cee1a64da67e6560900c82c2f2743c0f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732118"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034313"
 ---
 # <a name="version-release-history"></a>版本发行历史记录
 Microsoft 基因组学团队定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。 
 
 ## <a name="latest-release"></a>最新发布
-当前 Python 客户端的版本是 0.7.4。 该版本于 2018 年 3 月 5 日发布，并利用 GATK 3.3。 
+当前 Python 客户端的版本是 0.7.4。 它已于 2018 年 3 月 5 日发布，支持使用 GATK 3.5 和 GATK4 运行工作流。
 
 
 ## <a name="release-history"></a>发布历史记录 

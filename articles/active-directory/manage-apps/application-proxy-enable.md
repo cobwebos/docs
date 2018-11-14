@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366469"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034960"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>开始使用应用程序代理并安装连接器
 本文指导完成在 Azure AD 中为云目录启用 Microsoft Azure AD 应用程序代理的步骤。
@@ -33,6 +33,7 @@ ms.locfileid: "39366469"
 * [Microsoft Azure AD 基本或高级版订阅](../fundamentals/active-directory-whatis.md) 以及本人为全局管理员的 Azure AD 目录。
 * 可以安装应用程序代理连接器、运行 Windows Server 2012 R2 或 2016 的服务器。 该服务器需要能够连接到云中的应用程序代理服务和你要发布的本地应用程序。
   * 若要使用 Kerberos 约束委派单一登录到已发布的应用程序，此计算机应域加入要发布的应用程序所在的同一 AD 域。 有关信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)。
+* 底层操作系统上运行的 TLS 1.2。 若要更改为 TLS 1.2，请按照[启用 TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。 虽然该内容适用于 Azure AD Connect，但是此过程对于所有 .NET 客户端都是相同的。
 
 如果你的组织使用代理服务器连接到 Internet，在开始使用应用程序代理之前，请阅读[使用现有本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)，了解配置方法的详细信息。
 

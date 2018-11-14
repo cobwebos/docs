@@ -1,6 +1,6 @@
 ---
-title: 使用 Ambari 优化群集配置 - Azure HDInsight
-description: 使用 Ambari Web UI 来配置和优化 HDInsight 群集。
+title: 使用 Apache Ambari 优化群集配置 - Azure HDInsight
+description: 使用 Apache Ambari Web UI 来配置和优化 HDInsight 群集。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 73fdd3f221e35bc1e0b0904bdbbaa63525ba4be3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105467"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038512"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Ambari 优化 HDInsight 群集配置
 
@@ -196,7 +196,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 添加自定义设置：
 
-    a. 导航到 Hive 的“配置”选项卡并选择“高级”选项卡。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 导航到 Hive 的“配置”选项卡并选择“高级”选项卡。
 
     b. 在“高级”选项卡下，找到并展开“自定义 hive-site”窗格。
 
@@ -204,7 +204,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     d. 在“添加属性”窗口中，输入 `mapred.map.output.compression.codec` 作为键，输入 `org.apache.hadoop.io.compress.SnappyCodec` 作为值。
 
-    e. 单击 **“添加”**。
+    e. 单击“添加”。
 
     ![Hive 自定义属性](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257992"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011827"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以选择下列两种方式之一将 [Azure 活动日志](monitoring-overview-activity-logs.md)准实时流式传输到任何应用程序：
@@ -39,10 +39,10 @@ ms.locfileid: "39257992"
 ### <a name="via-the-azure-portal"></a>通过 Azure 门户
 1. 使用门户左侧的“全部”服务搜索浏览至“活动日志”部分。
    
-   ![从门户中的服务列表中选择活动日志](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. 选择日志顶部的“导出”按钮。
+   ![从门户中的服务列表中选择活动日志](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
+2. 选择日志顶部的“导出到事件中心”按钮。
    
-   ![门户中的“导出”按钮](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![门户中的“导出”按钮](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    注意，在之前的视图中查看活动日志时所应用的设置对你的导出设置没有任何影响。 这些设置仅仅用于在门户中浏览活动日志时筛选查看的内容。
 3. 在显示出的部分选择“所有区域”。 不要选择特定的区域。
@@ -101,5 +101,5 @@ ms.locfileid: "39257992"
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](monitoring-archive-activity-log.md)
 * [阅读 Azure 活动日志概述](monitoring-overview-activity-logs.md)
-* [根据活动日志事件设置警报](insights-auditlog-to-webhook-email.md)
+* [根据活动日志事件设置警报](monitor-alerts-unified-log-webhook.md)
 

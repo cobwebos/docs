@@ -2,23 +2,25 @@
 title: 在 Azure HDInsight Linux 群集上安装 Presto
 description: 了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Presto 和 Airpal。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978942"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227495"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Presto
 
 本文档介绍如何使用脚本操作在 HDInsight Hadoop 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
+
+HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 有关详细信息，请参阅[在 Azure HDInsight 上安装第三方应用程序](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 **HDInsight 3.5 Hadoop 群集**。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。
@@ -42,17 +44,17 @@ ms.locfileid: "46978942"
 
     * 它必须是装有 HDInsight 3.6 版的 Hadoop 群集。
 
-    * 它必须使用 Azure 存储作为数据存储。 目前不支持在将 Azure Data Lake Store 用作存储选项的群集上使用 Presto。 
+    * 它必须使用 Azure 存储作为数据存储。 在使用 Azure Data Lake Store 作为存储选项的群集上使用 Presto 还不是一个选项。
 
     ![使用自定义选项创建 HDInsight 群集](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. 在“高级设置”区域中，选择“脚本操作”，并提供以下信息：
+2. 在“高级设置”区域中，选择“脚本操作”，并提供以下信息。 对于脚本类型，还可以选择“安装 Presto”选项。
    
    * **名称**：输入脚本操作的友好名称。
    * **Bash 脚本 URI**：`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
    * **标头**：选中此选项
    * **辅助角色**：选中此选项
-   * **ZOOKEEPER**：清除此复选框
+   * **ZOOKEEPER**：将此复选框留空
    * **参数**：将此字段留空
 
 

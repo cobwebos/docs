@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092499"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957482"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
 
@@ -54,14 +54,14 @@ HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和�
 
 就这么简单！ 在 HockeyApp 检测的应用程序中收集的自定义和跟踪数据现在也可在 Application Insights 的 Analytics 和连续导出功能中使用。
 
-让我们简单回顾一下可用的每项功能。
+让我们简单回顾一下其中可用的每项功能。
 
 ## <a name="analytics"></a>分析
 Analytics 是功能强大的即席数据查询工具，可用于诊断和分析遥测数据，快速找出根本原因和模式。
 
 ![分析](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [详细了解 Analytics](app-insights-analytics-tour.md)
+* [详细了解 Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
 
 ## <a name="continuous-export"></a>连续导出
 使用连续导出可将数据导出到 Azure Blob 存储容器。 如果数据所需的保留时间超过 Application Insights 目前提供的保留期间，此功能就非常有用。 可以将数据保留在 Blob 存储中，在 SQL 数据库或首选的数据仓库解决方案中进行处理。
@@ -69,5 +69,5 @@ Analytics 是功能强大的即席数据查询工具，可用于诊断和分析�
 [详细了解连续导出](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [将 Analytics 应用到数据](app-insights-analytics-tour.md)
+* [将 Analytics 应用到数据](../log-analytics/query-language/get-started-analytics-portal.md)
 

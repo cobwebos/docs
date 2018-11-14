@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 91404f01a1a675ac59898336ef8aa81e1d2638b6
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579227"
+ms.locfileid: "51613089"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace 常见问题解答中的 Windows Server
 
@@ -38,7 +38,7 @@ ms.locfileid: "51579227"
 Microsoft 提供了两个版本的 Windows Server 映像，通过 Azure Stack Marketplace:
 
 - **使用即付即用**： 这些映像运行的全价 Windows 计量。 
-   应使用的用户： 使用的 EA 客户*消耗计费模型*;不想使用 SPLA 许可的 Csp。
+   应使用的用户： 使用企业协议 (EA) 客户*消耗计费模型*;不想使用 SPLA 许可的 Csp。
 - **自带许可 (BYOL)**： 这些映像运行基本指标。
    应使用的用户： EA 客户，使用 Windows Server 许可证;使用 SPLA 许可的 Csp。
 
@@ -52,7 +52,7 @@ Azure Stack 不支持 azure 混合使用权益 (AHUB)。 通过"容量"模型许
 
 请参阅[返回到即用即付的权益将 Windows Server Vm](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1)。
 
-### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-ea-entitlement"></a>如果我有较旧的映像和我的用户忘记检查"我拥有的许可证"框中，或我们使用我们自己的映像和我们确实有 EA 权利？
+### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>如果我有较旧的映像和我的用户忘记检查"我拥有的许可证"框中，或我们使用我们自己的映像和我们确实有企业协议授权？
 
 请参阅[转换现有 VM 使用 Azure 混合权益 for Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server)。 请注意，Azure 混合权益不适用于 Azure Stack 中，但不适用于此设置的效果。
 
@@ -60,7 +60,7 @@ Azure Stack 不支持 azure 混合使用权益 (AHUB)。 通过"容量"模型许
 
 这些映像是否适用**licenseType**参数，因此它们是付费使用。 此参数可以设置 （请参见上一个常见问题解答回答）。 这仅适用于 Windows Server 软件，不向需要自带许可证的分层产品 （如 SQL)。 即付使用授权不适用于分层的软件产品。
 
-### <a name="i-have-an-ea-and-i-create-my-own-images-how-do-i-make-sure-they-are-billed-correctly"></a>我具有 ea 的情况并创建我自己的图像;如何确保正确计费？
+### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>我有企业协议 (EA)，并将使用我的 EA Windows Server 许可证;如何确保映像收费正确？
 
 您可以添加**licenseType: Windows_Server** Azure 资源管理器模板中。 必须将此设置添加到每个虚拟机资源块。
 

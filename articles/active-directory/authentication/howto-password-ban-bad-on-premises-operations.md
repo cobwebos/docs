@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 92c8de0961f64eea8eef830ad99c7baa268099d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739458"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007580"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>预览版：Azure AD 密码保护操作规程
 
@@ -67,7 +67,7 @@ ms.locfileid: "50739458"
 
 可以使用 `Get-AzureADPasswordProtectionSummaryReport` cmdlet 生成活动的摘要视图。 此 cmdlet 的示例输出如下所示：
 
-```
+```PowerShell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -83,10 +83,26 @@ PasswordSetErrors               : 1
 可以使用 –Forest、-Domain 和 –DomainController 参数之一来影响 cmdlet 的报告范围。 不指定参数表示使用 –Forest。
 
 > [!NOTE]
-> 此 cmdlet 通过打开与每台域控制器的一个 Powershell 会话进行工作。 若要获得成功，必须在每台域控制器上启用 Powershell 远程会话支持，并且客户端必须具有足够的权限。 有关 Powershell 远程会话要求的详细信息，请在 Powershell 窗口中运行“Get-Help about_Remote_Troubleshooting”。
+> 此 cmdlet 通过打开与每个域控制器的 Powershell 会话进行工作。 若要获得成功，必须在每个域控制器上启用 PowerShell 远程会话支持，并且客户端必须具有足够的权限。 有关 PowerShell 远程会话要求的详细信息，请在 PowerShell 窗口中运行“Get-Help about_Remote_Troubleshooting”。
 
 > [!NOTE]
 > 此 cmdlet 的工作方式是远程查询每个 DC 代理服务的管理事件日志。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
+
+## <a name="dc-agent-discovery"></a>DC 代理发现
+
+`Get-AzureADPasswordProtectionDCAgent` cmdlet 可用于显示域或林中运行的各个 DC 代理的基本信息。 从正在运行的 DC 代理服务注册的 serviceConnectionPoint 对象检索此信息。 此 cmdlet 的示例输出如下所示：
+
+```PowerShell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+每个 DC 代理服务大约每隔一小时更新各种属性。 数据仍可能遇到 Active Directory 复制延迟。
+
+使用 –Forest 或 –Domain 参数可以影响 cmdlet 查询的范围。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2c82007092f9ff93086d5caaf188f6922f4a8aea
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b2676e8f86955a7601f9656f0a038b5ba904a462
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086176"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036421"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -29,7 +29,7 @@ Azure Functions 工具提供以下优势：
 * 开发和部署预先编译的 C# 函数。 与基于 C# 脚本的函数相比，预先编译的函数的冷启动性能更好。 
 * 可以在 C# 中编写函数的代码，同时利用 Visual Studio 开发环境的所有优势。 
 
-本文介绍如何使用用于 Visual Studio 2017 的 Azure Functions 工具在 C# 中开发函数。 此外，还介绍如何将项目作为 .NET 程序集发布到 Azure。
+本文详细介绍了如何使用 Azure Functions Tools for Visual Studio 2017 开发 C# 函数并将其发布到 Azure。 在阅读本文之前，应先完成 [Visual Studio 的函数快速入门](functions-create-your-first-function-visual-studio.md)。 
 
 > [!IMPORTANT]
 > 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
@@ -81,6 +81,9 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.vis
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
 * **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件为函数所需的变量指定应用设置。 针对项目中的函数绑定所需的每个连接，将新项添加到 **Values** 数组。 有关详细信息，请参阅“Azure Functions 核心工具”一文中的[本地设置文件](functions-run-local.md#local-settings-file)。
+
+    >[!IMPORTANT]
+    >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”。 
 
 有关详细信息，请参阅 [Functions 类库项目](functions-dotnet-class-library.md#functions-class-library-project)。
 

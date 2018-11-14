@@ -1,6 +1,6 @@
 ---
 title: 安装已发布的应用程序 - Dataiku DDS - Azure HDInsight
-description: 安装并使用 Dataiku DDS 第三方 Hadoop 应用程序。
+description: 安装并使用 Dataiku DDS 第三方 Apache Hadoop 应用程序。
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 64a6f393498ca90675712747afc8f9befc4b932f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105163"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038257"
 ---
 # <a name="install-published-application---dataiku-dds"></a>安装已发布的应用程序 - Dataiku DDS
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [Dataiku DDS](https://www.dataiku.com/) 发布的 Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [Dataiku DDS](https://www.dataiku.com/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-dataiku-dss"></a>关于 Dataiku DSS
 

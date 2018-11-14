@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736965"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255721"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "45736965"
 
 若要完成本文中的步骤，需要以下各项：
 
-1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](http://mxchip.com/az3166)。
 
 
@@ -69,7 +69,7 @@ ms.locfileid: "45736965"
 #### <a name="to-prepare-the-devkit-device"></a>若要准备 DevKit 设备：
 
 
-1. 从 GitHub 上的[发布](http://aka.ms/iotcentral-docs-MXChip-releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。
+1. 从 GitHub 上的[发布](https://aka.ms/iotcentral-docs-MXChip-releases)页下载 MXChip 的最新预建 Azure IoT Central 固件。
 1. 使用 USB 线缆将 DevKit 设备连接到开发计算机。 在 Windows 中，已映射到 DevKit 设备上的存储的驱动器中会打开一个文件资源管理器窗口。 例如，该驱动器可能名为 **AZ3166 (D:)**。
 1. 将 **iotCentral.bin** 文件拖放到驱动器窗口。 复制完成后，设备会使用新固件重新启动。
 
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/iot-central-firmware
 上述命令会将源代码下载到名为 `iot-central-firmware` 的文件夹。 
 
 > [!NOTE]
-> 如果开发环境中未安装 **git**，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
+> 如果开发环境中未安装 git，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
 
 ## <a name="review-the-code"></a>查看代码
 
@@ -186,7 +186,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 #### <a name="telemetry"></a>遥测 
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
@@ -216,24 +216,24 @@ git clone https://github.com/Azure/iot-central-firmware
 
 数字设置
 
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
-| Current      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
+| 当前      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 切换设置
 
-| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
+| 显示名称 | 字段名 | 打开文本 | 关闭文本 | 初始 |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
+| IR           | activateIR | ON      | OFF      | 关闭     |
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名称 | 数据类型 |
+| 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 设备属性 | 设备位置   | location  | location    |
+| 设备属性 | 模具号   | dieNumber  | 数字    |
+| 设备属性 | 设备位置   | 位置  | 位置    |
 | 文本            | 制造于     | manufacturedIn   | 不适用       |
 
 

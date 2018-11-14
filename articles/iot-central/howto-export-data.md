@@ -8,16 +8,16 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034903"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962786"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>导出 Azure IoT Central 中的数据
 
-本主题适用于管理员。
+*本主题适用于管理员。*
 
 本文介绍如何使用 Azure IoT Central 中的连续数据导出功能定期将数据导出到 Azure Blob 存储帐户。 可以将“度量”、“设备”和“设备模板”导出至 [Apache AVRO](https://avro.apache.org/docs/current/index.html) 格式的文件。 导出的数据可用于冷路径分析，例如 Azure 机器学习中的训练模型或 Microsoft Power BI 中的长期趋势分析。
 
@@ -26,10 +26,10 @@ ms.locfileid: "47034903"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 延长为 30 天的试用版 IoT Central 应用程序或付费应用程序。
-- 含 Azure 订阅的 Azure 帐户。
-- 同一 Azure 帐户是 IoT Central 应用程序中的管理员。
-- 同一 Azure 帐户有权在同一 Azure 订阅中创建存储帐户或访问现有存储帐户。
+- 即用即付应用程序。
+- IoT Central 应用程序中具备以下条件的管理员：
+    - 在 IoT Central 应用程序所在的 Azure 订阅中有一个 Azure 帐户
+    - 有权在此 Azure 订阅中创建存储帐户或访问现有存储帐户
 
 ## <a name="types-of-data-to-export"></a>要导出的数据的类型
 

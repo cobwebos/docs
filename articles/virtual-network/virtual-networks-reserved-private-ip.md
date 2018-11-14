@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414261"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747807"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>如何使用 PowerShell（经典）设置静态内部专用 IP
 大多数情况下，不需要指定虚拟机的静态内部 IP 地址。 虚拟网络中的 VM 会自动从指定的范围接收内部 IP 地址。 但在某些情况下，需要为特定 VM 指定静态 IP 地址。 例如，在 VM 需要运行 DNS 或将要成为域控制器的情况下。 静态内部 IP 地址会始终与 VM 关联在一起，即使经历“停止/取消预配”状态变化。 
@@ -28,9 +28,14 @@ ms.locfileid: "50414261"
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用[Resource Manager 部署模型](virtual-networks-static-private-ip-arm-ps.md)。
 > 
 > 
+## <a name="install-the-azure-powershell-service-management-module"></a>安装 Azure PowerShell 服务管理模块
+
+在运行以下命令之前，请确保计算机上已安装 [Azure PowerShell 服务管理模块](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+)。 有关 Azure PowerShell 服务管理模块的版本历史记录，请参阅 [PowerShell 库中的 Azure 模块](https://www.powershellgallery.com/packages/Azure/5.3.0)。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何验证特定 IP 地址是否可用：
-若要验证 IP 地址 *10.0.0.7* 在名为 *TestVNet* 的 VNet 中是否可用，请运行以下 PowerShell 命令并验证 *IsAvailable* 的值：
+若要验证 IP 地址 *10.0.0.7* 是否在名为 *TestVNet* 的 VNet 中可用，请运行以下 PowerShell 命令并验证 *IsAvailable* 的值。
+
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c52c84a1311c30c19356bb8a1287b203faf476fc
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742902"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913630"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>预览版：Azure AD 密码保护代理版本历史记录
 
@@ -23,6 +23,23 @@ ms.locfileid: "50742902"
 | --- |
 | Azure AD 密码保护是 Azure Active Directory 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
+
+## <a name="12250"></a>1.2.25.0
+
+发行日期：2018 年 11 月 1 日
+
+修复项：
+
+* DC 代理和代理服务应该不再因证书信任失败而失败。
+* DC 代理和代理服务为符合 FIPS 标准的计算机提供了其他修补程序。
+* 代理服务现在可以在只支持 TLS 1.2 的网络环境中正常工作。
+* 进行了微小的性能和稳定性修复
+* 改进了日志记录
+
+更改：
+
+* 代理服务所需的最低 OS 级别现在是 Windows Server 2012 R2。 DC 代理服务所需的最低 OS 级别仍然是 Windows Server 2012。
+* 密码验证算法使用扩展的字符规范化表。 这可能导致在以前版本中接受的密码被拒绝。
 
 ## <a name="12100"></a>1.2.10.0
 
@@ -45,8 +62,8 @@ ms.locfileid: "50742902"
 > DC 代理软件的就地升级将需要重启。
 
 * DC 代理和代理服务器服务现在支持在配置为仅使用符合 FIPS 标准的算法的服务器上运行。
-* 改进了日志记录
 * 进行了微小的性能和稳定性修复
+* 改进了日志记录
 
 ## <a name="11103"></a>1.1.10.3
 

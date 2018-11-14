@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure 经典 CLI 创建 Hadoop 群集 - Azure HDInsight
+title: 使用 Azure 经典 CLI 创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用跨平台 Azure 经典 CLI 创建 HDInsight 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 93ee51c8a00e5cfcbffd56f96b627b68dd124aea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992807"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034687"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 HDInsight 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "46992807"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * **Azure 经典 CLI**。 本文档中的步骤最近已使用 Azure 经典 CLI 版本 0.10.14 进行测试。
 

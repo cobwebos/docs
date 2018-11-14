@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a782a7341e53420dbc31fefc86007951df967a9e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307976"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914356"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 证书使用详细信息
 
@@ -78,9 +78,9 @@ Edge 中心服务器证书是向设备和模块提供的实际证书，用于在
 
 ## <a name="devtest-implications"></a>开发/测试影响
 
-为简化开发和测试方案，Microsoft 提供了一组[便利脚本](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)，用于在透明网关方案中生成适用于 IoT Edge 的非生产证书。
+为简化开发和测试方案，Microsoft 提供了一组[便利脚本](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)，用于在透明网关方案中生成适用于 IoT Edge 的非生产证书。 有关脚本如何工作的示例，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
 
-这些脚本生成的证书遵循本文介绍的证书链结构。 适用于 [Linux](how-to-create-transparent-gateway-linux.md#certificate-creation) 或 [Windows](how-to-create-transparent-gateway-windows.md#certificate-creation)。 以下命令生成“根 CA 证书”和单个“中间 CA 证书”。
+这些脚本生成的证书遵循本文介绍的证书链结构。 以下命令生成“根 CA 证书”和单个“中间 CA 证书”。
 
 ```bash
 ./certGen.sh create_root_and_intermediate 
@@ -124,6 +124,4 @@ New-CACertsEdgeDevice "<gateway device name>"
 
 [了解 Azure IoT Edge 模块](iot-edge-modules.md)
 
-[将 IoT Edge 设备用作透明网关 (Linux)](how-to-create-transparent-gateway-linux.md)
-
-[将 IoT Edge 设备用作透明网关 (Windows)](how-to-create-transparent-gateway-windows.md)
+[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: de5322709b5d7f7bcfe6c512bab94b025d9a56a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023535"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234708"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>关于 Azure Windows VM 的磁盘存储
 
@@ -42,7 +42,7 @@ ms.locfileid: "50023535"
 
 ### <a name="data-disk"></a>数据磁盘
 
-数据磁盘是附加到虚拟机的 VHD，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 4,095 GB，托管磁盘的最大容量为 32,767 TiB。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
+数据磁盘是附加到虚拟机的 VHD，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 4,095 GB，托管磁盘的最大容量为 32,767 GiB。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
 
 > [!NOTE]
 > 有关虚拟机容量的详细信息，请参阅 [Sizes for Windows virtual machines](sizes.md)（Windows 虚拟机的大小）。
@@ -51,8 +51,9 @@ ms.locfileid: "50023535"
 
 随时可以将数据磁盘添加到虚拟机，只需将该磁盘**附加**到虚拟机即可。 可以使用已上传或复制到存储帐户的 VHD，也可以使用 Azure 为你创建的空 VHD。 附加数据磁盘会将 VHD 文件与 VM 关联，方法是在 VHD 上放置“租约”，因此在仍附加 VHD 时无法从存储中删除它。
 
-
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
+
+有关预览大小，请参阅我们的[常见问题解答](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged)，了解它们可用的区域。
 
 ## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最后一个建议：将 TRIM 与非托管标准磁盘配合使用
 

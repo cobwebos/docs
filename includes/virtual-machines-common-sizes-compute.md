@@ -5,21 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312616"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264203"
 ---
 <!-- F-series, Fs-series* -->
 
 计算优化的 VM 大小具有较高的 CPU 内存比，适用于中等流量 Web 服务器、网络设备、批处理进程和应用程序服务器。 本文针对此分组中每种大小提供有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。
 
-Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器，它具有 2.7 GHz 的基本核心频率和 3.7 GHz 的最大单核超频。 Intel 可扩展处理器上全新的 Intel® AVX-512 指令对于单精度和双精度浮点运算可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。 
+Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器，它具有 3.4GHz 的持续全核 Turbo 时钟速度和 3.7 GHz 的最大单核超频。 Intel 可扩展处理器上全新的 Intel® AVX-512 指令对于单精度和双精度浮点运算可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。 
 
 凭借较低的每小时定价，Fsv2 系列在基于每个 vCPU 的 Azure 计算单位 (ACU) 的 Azure 产品组合中具有最高性价比。 
 

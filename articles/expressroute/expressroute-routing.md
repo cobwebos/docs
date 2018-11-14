@@ -5,14 +5,14 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: cb48a9470a39cbe152f821333050e3dd5a28e1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650122"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230934"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -100,7 +100,7 @@ ms.locfileid: "49650122"
 专用 AS 编号可以用于 Microsoft 对等互连，但也需手动验证。 此外，对于收到的前缀，我们会删除 AS PATH 中的专用 AS 数字。 因此，无法在 AS PATH 中追加专用 AS 数字来[影响 Microsoft 对等互连的路由](expressroute-optimize-routing.md)。 
 
 > [!IMPORTANT]
-> 通过 ExpressRoute 播发到 Microsoft 的公共 IP 地址不得播发到 Internet。 这会中断其他 Microsoft 服务的连接。 但是，在用户的网络中由服务器使用的公共 IP 地址可以在 Microsoft 内部与 O365 终结点通信，可以通过 ExpressRoute 进行播发。 
+> 不要将相同的公共 IP 路由播发到公共 Internet 和通过 ExpressRoute 播发。 我们强烈建议你通过 ExpressRoute 播发更具体的路由，而将更一般的路由播发到 Internet 上进行 [NAT](expressroute-nat.md)。 除了要进行 NAT 的公共路由外，还可以在本地网络中通过 ExpressRoute 播发与 Microsoft 中的 Office 365 终结点通信的服务器使用的公共 IP 地址。 
 > 
 > 
 
@@ -138,7 +138,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 * 使用用户定义的路由，为需要 Internet 连接的每个子网建立 Internet 连接。
 
 > [!NOTE]
-> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) 的说明来解决此问题。
+> 播发默认路由会中断 Windows 和其他 VM 许可证激活。 请按照 [此处](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) 的说明来解决此问题。
 > 
 > 
 

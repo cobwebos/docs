@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023434"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260000"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>快速入门：熟悉内容审查器
 
@@ -26,7 +26,7 @@ ms.locfileid: "50023434"
 - Web 浏览器
 
 ## <a name="set-up-the-review-tool"></a>设置评审工具
-内容审查器评审工具是一个基于 Web 的工具，可让评审人员借助认知服务做出决策。 在本指南中，你将执行一个简短的过程来设置评审工具，以便可以了解内容审查器服务的工作原理。 转到[内容审查器评审工具](http://contentmoderator.cognitive.microsoft.com/)站点并注册。
+内容审查器评审工具是一个基于 Web 的工具，可让评审人员借助认知服务做出决策。 在本指南中，你将执行一个简短的过程来设置评审工具，以便可以了解内容审查器服务的工作原理。 转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)站点并注册。
 
 ![内容审查器主页](images/homepage.PNG)
 
@@ -48,7 +48,7 @@ ms.locfileid: "50023434"
 
 ## <a name="review-moderation-tags"></a>评审审查标记
 
-评审已应用的审查标记。 可以查看哪些标记已应用到内容，以及每个类别的评分。
+评审已应用的审查标记。 可以查看哪些标记已应用到内容，以及每个类别的评分。 请参阅[图像](image-moderation-api.md)、[文本](text-moderation-api.md)和[视频](video-moderation-api.md)审核主题，详细了解不同内容标记指示的内容。
 
 ![查看结果](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ ms.locfileid: "50023434"
 了解如何在应用中单独使用审查 API。
 - 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
 - 实施文本审查。 使用 [API 控制台](try-text-api.md)或 [C# 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人身份信息 (PII)。 
-- 实施视频审查。 使用 [C# 快速入门](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 
+- 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

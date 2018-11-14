@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/13/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 6e15fee02fd001bddd25a19b8a9420eb899d4f85
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978666"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623972"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack 诊断工具
 
@@ -70,12 +70,10 @@ if($s)
     Remove-PSSession $s
 }
 ```
+- 参数**OutputSharePath**并**OutputShareCredential**用于将日志存储在用户指定位置。
+- **FromDate**并**ToDate**参数可用于在特定时间段内收集日志。 如果未指定这些参数，日志收集过去四个小时内默认情况下。
 
-- 参数 **OutputSharePath** 和 **OutputShareCredential** 用于将日志上传到外部共享文件夹。
-- 如上一示例所示，可以使用 **FromDate** 和 **ToDate** 参数来收集特定时间段的日志。 在某些情况下（例如，在集成系统上应用更新包以后收集日志），可以使用这种方法。
 
-
- 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
 1. 在主机上以 **AzureStack\CloudAdmin** 身份登录。
 2. 以管理员身份打开 PowerShell 窗口。
@@ -111,15 +109,17 @@ if($s)
 
 - 如果未指定 **FromDate** 和 **ToDate** 参数，则默认收集过去四小时的日志。
 - 使用 **FilterByNode** 参数按计算机名筛选日志。 例如：
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
+    ```
 - 使用 **FilterByLogType** 参数按类型筛选日志。 可以选择按文件、共享或 WindowsEvent 进行筛选。 例如：
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
+    ```
 - 可以使用 **TimeOutInMinutes** 参数设置日志收集的超时。 它默认设置为 150（2.5 小时）。
-- 在 1805 和更高版本中，默认已禁用转储文件日志收集。 若要启用它，请使用 **IncludeDumpFile** 开关参数。 
+- 转储文件日志收集在默认情况下处于禁用状态。 若要启用它，请使用 **IncludeDumpFile** 开关参数。 
 - 目前，可以使用 **FilterByRole** 参数按以下角色筛选日志收集：
 
  |   |   |   |    |

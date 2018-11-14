@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238791"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959981"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -49,6 +49,7 @@ ms.locfileid: "50238791"
 |---|---|
 |![勾选标记][1]|查看支持的设备|
 |![勾选标记][1]|查看应该知道的事项|
+|![勾选标记][1]|查看如何控制设备的混合 Azure AD 加入|
 |![勾选标记][1]|选择方案|
 
 
@@ -112,6 +113,11 @@ Windows 下层设备的混合 Azure AD 加入：
 混合 Azure AD 加入是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 如果遇到这种情况，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)。
 
 
+## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>查看如何控制设备的混合 Azure AD 加入
+
+混合 Azure AD 联接是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 例如，在初始部署期间验证一切是否都按预期运行时，这一点就非常必要。
+
+有关详细信息，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
 ## <a name="select-your-scenario"></a>选择方案
 

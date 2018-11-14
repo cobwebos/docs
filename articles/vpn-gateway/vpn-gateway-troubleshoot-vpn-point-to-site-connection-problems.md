@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 8d1415e996f65f0791b3e449a61fb30053add523
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240199"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238308"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -221,7 +221,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 
-对于每个 VPN 网关，最多可以连接 128 个客户端。 可以在 Azure 门户中查看连接的客户端总数。
+已达到允许的最大连接数。 可以在 Azure 门户中查看连接的客户端总数。
 
 ## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>点到站点 VPN 将 10.0.0.0/8 路由错误添加到路由表
 
@@ -282,7 +282,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="symptom"></a>症状
 
-当客户端使用点到站点 VPN 连接来连接到 Azure 时，它无法解析本地域中的资源的 FQND。
+当客户端使用点到站点 VPN 连接来连接到 Azure 时，它无法解析本地域中的资源的 FQDN。
 
 ### <a name="cause"></a>原因
 

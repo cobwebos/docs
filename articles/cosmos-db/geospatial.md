@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 中的地理空间数据 | Microsoft Docs
+title: 在 Azure Cosmos DB SQL API 帐户中使用地理空间数据 | Microsoft Docs
 description: 了解如何使用 Azure Cosmos DB 和 SQL API 创建、索引和查询空间对象。
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417546"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961902"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
-本文介绍 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中的地理空间功能。 在阅读本文之后，能够回答以下问题：
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>在 Azure Cosmos DB SQL API 帐户中使用地理空间和 GeoJSON 位置数据
+
+本文介绍 Azure Cosmos DB 中的地理空间功能。 目前，仅 Cosmos DB SQL API 帐户支持存储和访问地理空间数据。 阅读本文后，能够回答以下问题：
 
 * 如何在 Azure Cosmos DB 中存储空间数据？
 * 如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据？
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -154,7 +151,7 @@ await client.CreateDocumentAsync(
 我们已经探讨过如何插入地理空间数据，现在就来看看如何通过 SQL 和 LINQ 使用 Azure Cosmos DB 查询此数据。
 
 ### <a name="spatial-sql-built-in-functions"></a>空间 SQL 内置函数
-Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 有关 SQL 语言中的整套内置函数的更多详细信息，请参阅[查询 Azure Cosmos DB](sql-api-sql-query.md)。
+Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 有关 SQL 语言中的整套内置函数的详细信息，请参阅[查询 Azure Cosmos DB](sql-api-sql-query.md)。
 
 <table>
 <tr>
@@ -197,7 +194,7 @@ Azure Cosmos DB 支持以下用于查询地理空间的开放地理空间信息�
       "id": "WakefieldFamily"
     }]
 
-如果在索引策略中包含空间索引，则将通过索引有效地进行“距离查询”。 有关空间索引的更多详细信息，请参阅以下章节。 如果没有指定路径的空间索引，仍然可以通过指定 `x-ms-documentdb-query-enable-scan` 请求标头（其值设置为“true”）执行空间查询。 在 .NET 中，可以通过将可选的 **FeedOptions** 参数传递到 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) 设置为 true 的查询来完成此操作。 
+如果在索引策略中包含空间索引，则将通过索引有效地进行“距离查询”。 有关空间索引的详细信息，请参阅以下部分。 如果没有指定路径的空间索引，仍然可以通过指定 `x-ms-documentdb-query-enable-scan` 请求标头（其值设置为“true”）执行空间查询。 在 .NET 中，可以通过将可选的 **FeedOptions** 参数传递到 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) 设置为 true 的查询来完成此操作。 
 
 ST_WITHIN 可用于检查点是否在多边形内。 多边形通常用来表示边界，例如邮政编码、省/自治区边界或自然构成物。 再次说明，如果在索引策略中包含空间索引，则将通过索引有效地进行“within”查询。 
 
@@ -279,7 +276,7 @@ SQL .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供用户在 LI
 **LINQ 距离查询**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

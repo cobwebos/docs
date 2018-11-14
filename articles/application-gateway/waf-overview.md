@@ -2,16 +2,16 @@
 title: Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 简介
 description: 本文概述应用程序网关的 Web 应用程序防火墙 (WAF)
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068445"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219522"
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
@@ -39,7 +39,7 @@ WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWAS
 
 * 使用实时 WAF 日志监视 Web 应用程序受到的攻击。 此日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成，让你跟踪 WAF 警报和日志并轻松监视趋势。
 
-* WAF 即将与 Azure 安全中心集成。 使用 Azure 安全中心可在一个中心位置查看所有 Azure 资源的安全状态。
+* WAF 已与 Azure 安全中心集成。 使用 Azure 安全中心可在一个中心位置查看所有 Azure 资源的安全状态。
 
 ### <a name="customization"></a>自定义
 
@@ -51,7 +51,7 @@ WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWAS
 - 跨站点脚本保护
 - 常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
 - 防止 HTTP 协议违反行为
-- 防止 HTTP 协议异常行为，例如缺少主机用户代理和接受标头
+- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
 - 防止自动程序、爬网程序和扫描程序
 - 检测常见应用程序错误配置（即 Apache、IIS 等）
 
@@ -78,7 +78,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 - 跨站点脚本保护
 - 常见 Web 攻击保护，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含攻击
 - 防止 HTTP 协议违反行为
-- 防止 HTTP 协议异常行为，例如缺少主机用户代理和接受标头
+- 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
 - 防止自动程序、爬网程序和扫描程序
 - 检测常见应用程序错误配置（即 Apache、IIS 等）
 

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954834"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961817"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -27,8 +27,8 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
 
 - **应用程序监视数据：** 有关已编写并在 Azure 上运行的代码的性能和功能的数据。 应用程序监视数据的示例包括性能跟踪、应用程序日志及用户遥测。 通常以下列的一种方式收集应用程序监视数据：
   - 用 [Application Insights SDK](../application-insights/app-insights-overview.md) 等 SDK 检测代码。
-  - 运行侦听应用程序运行于的计算机上的新应用程序日志的监视代理，如 [Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/linux/diagnostic-extension.md)。
-- **来宾 OS 监视数据：** 有关应用程序运行于的操作系统的数据。 来宾 OS 监视数据的示例有 Linux syslog 或 Windows 系统日志。 若要收集此类型的数据，需安装代理，如[ Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/linux/diagnostic-extension.md)。
+  - 运行侦听应用程序运行于的计算机上的新应用程序日志的监视代理，如 [Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/extensions/diagnostics-linux.md)。
+- **来宾 OS 监视数据：** 有关应用程序运行于的操作系统的数据。 来宾 OS 监视数据的示例有 Linux syslog 或 Windows 系统日志。 若要收集此类型的数据，需安装代理，如[ Windows Azure 诊断代理](./azure-diagnostics.md)或 [Linux Azure 诊断代理](../virtual-machines/extensions/diagnostics-linux.md)。
 - **Azure 资源监视数据：** 有关 Azure 资源操作的数据。 对于某些 Azure 资源类型（如虚拟机），该 Azure 服务中会监视来宾 OS 和应用程序。 对于其他 Azure 资源（如网络安全组），资源监视数据是可用数据的最高层（因为没有 来宾 OS 或应用程序在这些资源中运行）。 可以使用[资源诊断设置](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)收集这些数据。
 - **Azure 订阅监视数据：** 有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 [活动日志](./monitoring-overview-activity-logs.md)包含大多数订阅监视数据，例如服务运行状况事件和 Azure 资源管理器审核。 可以使用日志配置文件收集此数据。
 - **Azure 租户监视数据：** 有关租户级 Azure 服务（如 Azure Active Directory）操作的数据。 Azure Active Directory 审核和登录是租户监视数据的示例。 可以使用租户诊断设置收集此数据。
@@ -54,7 +54,7 @@ Azure 租户监视数据目前仅适用于 Azure Active Directory。 可以使�
 
 ### <a name="azure-active-directory-data"></a>Azure Active Directory 数据
 
-若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)设置租户诊断设置。
+若要将 Azure Active Directory 日志中的数据发送到事件中心命名空间，请在 AAD 租户上设置租户诊断设置。 请[按照此指南](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)设置租户诊断设置。
 
 ## <a name="azure-subscription-monitoring-data"></a>Azure 订阅监视数据
 
@@ -71,7 +71,7 @@ Azure 订阅监视数据可以在 [Azure 活动日志](./monitoring-overview-act
 
 Azure 资源将发出两种类型的监视数据：
 1. [资源诊断日志](./monitoring-overview-of-diagnostic-logs.md)
-2. [指标](monitoring-overview-metrics.md)
+2. [指标](../monitoring/monitoring-data-collection.md)
 
 使用资源诊断设置将两种类型的数据发送到事件中心。 [按照本指南](./monitoring-stream-diagnostic-logs-to-event-hubs.md)在特定资源上设置资源诊断设置。 在要从其收集日志的每个资源上设置资源诊断设置。
 
@@ -113,10 +113,11 @@ Azure 资源将发出两种类型的监视数据：
     1. [适用于 Splunk 的 Azure Monitor 加载项](https://splunkbase.splunk.com/app/3534/)可在 Splunkbase 中找到，它是一个开源项目。 [文档见此处](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)。
     2. 如果无法在 Splunk 实例中安装加载项（例如， 如果使用代理或在 Splunk Cloud 上运行），可以使用[此函数（由事件中心中的新消息触发）](https://github.com/Microsoft/AzureFunctionforSplunkVS)将这些事件转发到 Splunk HTTP 事件收集器。
 * **SumoLogic** - 将 SumoLogic 设置为使用来自事件中心的数据的说明[见此处](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
+* **ArcSight** - ArcSight Azure 事件中心智能连接器作为[此处的 ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。
 * Syslog 服务器 - 如果要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可查看[此 GitHub 存储库](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](monitoring-archive-activity-log.md)
 * [阅读 Azure 活动日志概述](monitoring-overview-activity-logs.md)
-* [根据活动日志事件设置警报](insights-auditlog-to-webhook-email.md)
+* [根据活动日志事件设置警报](monitor-alerts-unified-log-webhook.md)
 

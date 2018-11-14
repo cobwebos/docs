@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: b566b204ca9cf13b412d750740836db8bf8930a5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093979"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960916"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -147,7 +147,7 @@ ms.locfileid: "47093979"
 
 * [指标资源管理器](app-insights-metrics-explorer.md)
 * [搜索资源管理器](app-insights-diagnostic-search.md)
-* [分析 - 功能强大的查询语言](app-insights-analytics-tour.md)
+* [分析 - 功能强大的查询语言](../log-analytics/query-language/get-started-analytics-portal.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 

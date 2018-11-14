@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093611"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251570"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -28,7 +28,7 @@ ASE 有许多入站依赖项。 无法通过防火墙设备发送入站管理流
 
 ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组 (NSG) 锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
-保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 网络团队在预览版中添加了一个名为“Azure 防火墙”的新网络设备。 Azure 防火墙是能够基于目标的 DNS 名称限制 HTTP 和 HTTPS 传出流量。  
+保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
@@ -36,11 +36,11 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 1. 在 ASE 所在的或将要放入到的 VNet 中创建 Azure 防火墙。 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/)
 2. 在 Azure 防火墙 UI 中，选择“应用服务环境 FQDN 标记”
-3. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 
-4. 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 
-5. 将路由添加到 0.0.0.0/0 的路由表以及用作 Azure 防火墙网络设备的下一跃点
-6. 为 Azure SQL 和 Azure 存储的 ASE 子网创建服务终结点
-7. 将创建的路由表分配到 ASE 子网  
+3. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。
+4. 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。
+5. 将路由添加到 0.0.0.0/0 的路由表并将 Azure 防火墙作为下一跃点。
+6. 为 Azure SQL 和 Azure 存储的 ASE 子网创建服务终结点。
+7. 将创建的路由表分配到 ASE 子网。
 
 ## <a name="application-traffic"></a>应用程序流量 
 

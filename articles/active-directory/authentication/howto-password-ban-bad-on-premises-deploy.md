@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6599d634ec1e13715bdd34b6e8ab6fbd9f4f3e61
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50742912"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011487"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>预览版：部署 Azure AD 密码保护
 
@@ -53,6 +53,13 @@ Microsoft 建议在审核模式下开始任何部署。 审核模式是默认的
 * 安装了 Azure AD 密码保护组件的所有计算机（包括域控制器）都必须安装 Universal C 运行时。
 这最好通过使用 Windows 更新完全修补计算机来完成。 否则，可以安装合适的特定于 OS 的更新包 - 请参阅[适用于 Windows 中的 Universal C 运行时的更新](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)。
 * 在每个域中的至少一台域控制器和托管 Azure AD 密码保护代理服务的至少一台服务器之间必须存在网络连接。 此连接必须允许域控制器访问代理服务器服务上的 RPC 终结点映射器端口 (135) 和 RPC 服务器端口。  RPC 服务器端口默认情况下是一个动态 RPC 端口，但可以将其配置为使用静态端口（请参阅下文）。
+* 托管 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
+
+    |终结点 |目的|
+    | --- | --- |
+    |`https://login.microsoftonline.com`|身份验证请求|
+    |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
+
 * 拥有全局管理员帐户，以用来向 Azure AD 注册 Azure AD 密码保护代理服务器服务和林。
 * 拥有在林根域中具有 Active Directory 域管理员权限的帐户，以用来向 Azure AD 注册 Windows Server Active Directory 林。
 * 运行 DC 代理服务软件的任何 Active Directory 域都必须使用 DFSR 进行 sysvol 复制。

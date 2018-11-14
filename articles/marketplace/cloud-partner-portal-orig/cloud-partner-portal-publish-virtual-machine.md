@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387344"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247069"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>将虚拟机发布到 Azure 市场
 
@@ -37,7 +37,7 @@ ms.locfileid: "49387344"
 
 -   [从映像创建并测试 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [创建并上传 Windows VHD](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [创建并上传 Windows VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [从映像创建并测试 Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -60,7 +60,7 @@ ms.locfileid: "49387344"
 
 -   同意 Azure 市场参与政策与发布者协议的条款。
 
--   同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](http://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
+-   同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -116,7 +116,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
     **名称**
 
-    套餐的显示名称。 此名称将显示在 Azure 市场和 Azure 门户中。 该名称不能超过 50 个字符。 参考以下指导指定套餐名称：
+    产品/服务的显示名称。 此名称将显示在 Azure 市场和 Azure 门户中。 该名称不能超过 50 个字符。 参考以下指导指定套餐名称：
     -  其中包含产品的可识别品牌名称。 
     - 除非有套餐营销方面的需要，否则不要在此处包含公司名称。
     - 如果你在自己的网站上营销此套餐，请确保此名称与网站上的名称相同。
@@ -211,7 +211,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 >[!IMPORTANT]
 >-   产品/服务推出后，无法更改价格。 但是，仍然能够添加或删除支持的区域。
->-   除 [Azure 的虚拟机定价\'](http://aka.ms/vmpricingdetails)外，还会以此价格向客户收费。
+>-   除  [Azure 的虚拟机定价](https://aka.ms/vmpricingdetails)外，还会以此价格向客户收费。
 >-   使用设置价格时的实时汇率为所有区域设置价格（使用本地货币）。
 >-   若要单独设置或查看每个区域的价格，请导出定价电子表格并使用自定义定价导入。
 
@@ -225,7 +225,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 -   [从映像创建并测试 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [创建并上传 Windows VHD](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [创建并上传 Windows VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [从映像创建并测试 Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 

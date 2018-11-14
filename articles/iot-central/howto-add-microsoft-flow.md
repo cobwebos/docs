@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155569"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959284"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
@@ -21,8 +21,10 @@ ms.locfileid: "50155569"
 
 使用 Microsoft Flow 跨企业用户依赖的多个应用程序和服务自动完成工作流。 如果在 Microsoft Flow 中使用 IoT Central 连接器，则当规则在 IoT Central 中触发时，就可以触发工作流。 在 IoT Central 或任何其他应用程序触发的工作流中，可以使用 IoT Central 连接器中的操作来创建设备、更新设备的属性和设置，或者删除设备。 请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
 
-> [!NOTE] 
-> 需使用 Microsoft 个人、工作或学校帐户登录到 Microsoft Flow。 在[此处](https://aka.ms/microsoftflowplans)详细了解 Microsoft Flow 计划。
+## <a name="prerequisites"></a>先决条件
+
+- 即用即付应用程序
+- 用于登录 Flow 的 Microsoft 个人、工作或学校帐户（[了解有关 Microsoft Flow 的详细信息](https://aka.ms/microsoftflowplans)）
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>在触发某个规则时触发一个工作流
 

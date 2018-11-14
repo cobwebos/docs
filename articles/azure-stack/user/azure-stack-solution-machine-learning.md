@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 59696245dc33302c65aee5a39dc856926347b8fb
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569108"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616361"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -992,7 +992,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 1.  请确保 Azure 资源提供程序**Microsoft.ContainerRegistry**在订阅中注册。 在步骤 3 中创建环境之前注册此资源提供程序。 检查是否已注册使用以下命令：
 
     ```CLI
-        az provider list --query "\[\].{Provider:namespace, Status:registrationState}" --out table
+        az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
     ```
 
     查看此输出：
@@ -1271,10 +1271,8 @@ Install-kubectl.ps1 -downloadlocation “C:\Users\<Current User>\Documents\Kube
 
 ```Bash  
     apt-get update && apt-get install -y apt-transport-https
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb http://apt.kubernetes.io/ kubernetes-xenial main
-    EOF
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+    sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     apt-get update
     apt-get install -y kubectl
 ```

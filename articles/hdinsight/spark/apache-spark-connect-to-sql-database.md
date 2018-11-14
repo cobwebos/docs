@@ -2,19 +2,19 @@
 title: 使用 Apache Spark 在 Azure SQL 数据库中读取和写入数据
 description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间设置连接，以便在 SQL 数据库中读取数据、写入数据和流式传输数据
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 2aec894da6b4e5ffd59fee12bc8476b25955c991
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045790"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277284"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -155,7 +155,7 @@ ms.locfileid: "43045790"
 
 1. 使用 SSMS 连接到 Azure SQL 数据库，并确认其中是否显示了 `dbo.hvactable`。
 
-    a. 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
 
     ![使用 SSMS 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS 连接到 SQL 数据库")
 

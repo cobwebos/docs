@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-manager: douge
-ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353352"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978887"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -231,6 +230,16 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="try"></a>请尝试：
 重新启动群集中的代理节点通常可以解决此问题。
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Azure Dev Spaces 代理可能会干扰在开发空间中运行的其他 Pod
+
+### <a name="reason"></a>原因
+在 AKS 群集中的某个命名空间上启用 Dev Spaces 时，会在该命名空间内运行的每个 Pod 中安装一个名为 _mindaro-proxy_ 的附加容器。 此容器会拦截对 Pod 中服务的调用，这是 Dev Spaces 团队开发功能不可或缺的一部分。
+
+遗憾的是，它可能会干扰在这些 Pod 中运行的某些服务。 具体来说，它会干扰运行 Redis 缓存的 Pod，从而导致主/从通信中出现连接错误和故障。
+
+### <a name="try"></a>请尝试：
+可以将受影响的 Pod 移动到_未_启用 Dev Spaces 的群集内的命名空间，同时继续在启用 Dev Spaces 的命名空间内运行应用程序的其余部分。 Dev Spaces 不会在未启用 Dev Spaces 的命名空间内安装 _mindaro-proxy_ 容器。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces 似乎没有使用我的现有 Dockerfile 来生成容器 
 

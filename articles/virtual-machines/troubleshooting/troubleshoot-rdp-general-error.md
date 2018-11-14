@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/30/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239384"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960151"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
 
@@ -65,7 +65,7 @@ RDP 侦听器配置不当。
 
 ### <a name="serial-console"></a>串行控制台
 
-#### <a name="step-1-turn-on-remote-deskop"></a>步骤 1：启用远程桌面
+#### <a name="step-1-turn-on-remote-desktop"></a>步骤 1：启用远程桌面
 
 1. 选择“支持和故障排除” > “串行控制台(预览版)”访问 [串行控制台](serial-console-windows.md) 。 如果在 VM 上启用了该功能，则可以成功连接 VM。
 
@@ -76,94 +76,91 @@ RDP 侦听器配置不当。
    ```
    ch -si 1
    ```
-4. 按如下所示检查注册表项的值：
 
-   1. 确保 RDP 组件已启用。
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步骤 2：检查 RDP 注册表项的值：
+
+1. 检查策略是否禁用 RDP。
 
       ```
-      REM Get the local policy
+      REM Get the local policy 
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
 
       REM Get the domain policy if any
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      如果存在域策略，则会覆盖本地策略中的设置。
+      - 如果存在域策略，则会覆盖本地策略中的设置。
+      - 如果域策略指出 RDP 已禁用 (1)，请从域控制器更新 AD 策略。
+      - 如果域策略指出 RDP 已启用 (0)，则无需更新。
+      - 如果域策略不存在，并且本地策略指出 RDP 已禁用 (1)，请使用以下命令启用 RDP： 
+      
+            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+                  
 
-         - 如果域策略指出 RDP 已禁用 (1)，请从域控制器更新 AD 策略。
-         - 如果域策略指出 RDP 已启用 (0)，则无需更新。
-
-      如果域策略不存在，并且本地策略指出 RDP 已禁用 (1)，请使用以下命令启用 RDP：
-
-         ```
-         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-         ```
-
-   2. 检查终端服务器的当前配置。
+2. 检查终端服务器的当前配置。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-   3. 如果该命令返回 0，则表示终端服务器已禁用。 在这种情况下，请按如下所示启用终端服务器：
+      如果该命令返回 0，则表示终端服务器已禁用。 在这种情况下，请按如下所示启用终端服务器：
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-   4. 如果服务器位于终端服务器场（RDS 或 Citrix）中，终端服务器模块将设置为排出模式。 检查终端服务器模块的当前模式。
+3. 如果服务器位于终端服务器场（RDS 或 Citrix）中，终端服务器模块将设置为排出模式。 检查终端服务器模块的当前模式。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-   5. 如果该命令返回 1，则表示终端服务器模块已设置为排出模式。 在这种情况下，请按如下所示将该模块设置为工作模式：
+      如果该命令返回 1，则表示终端服务器模块已设置为排出模式。 在这种情况下，请按如下所示将该模块设置为工作模式：
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-   6. 检查是否可以连接到终端服务器。
+4. 检查是否可以连接到终端服务器。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-   7. 如果该命令返回 1，则表示无法连接到终端服务器。 在这种情况下，请按如下所示启用连接：
+      如果该命令返回 1，则表示无法连接到终端服务器。 在这种情况下，请按如下所示启用连接：
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-
-   8. 检查 RDP 侦听器的当前配置。
+5. 检查 RDP 侦听器的当前配置。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-   9. 如果该命令返回 0，则表示 RDP 侦听器已禁用。 在这种情况下，请按如下所示启用侦听器：
+      如果该命令返回 0，则表示 RDP 侦听器已禁用。 在这种情况下，请按如下所示启用侦听器：
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-   10. 检查是否可以连接到 RDP 侦听器。
+6. 检查是否可以连接到 RDP 侦听器。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   11. 如果该命令返回 1，则表示无法连接到 RDP 侦听器。 在这种情况下，请按如下所示启用连接：
+   如果该命令返回 1，则表示无法连接到 RDP 侦听器。 在这种情况下，请按如下所示启用连接：
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-6. 重启 VM。
+7. 重启 VM。
 
-7. 键入 `exit` 并按 **Enter** 两次，从 CMD 实例退出。
+8. 键入 `exit` 并按 **Enter** 两次，从 CMD 实例退出。
 
-8. 键入 `restart` 重启 VM。
+9. 通过键入 `restart` 重启 VM，然后连接到 VM。
 
 如果仍发生此问题，请转到步骤 2。
 
@@ -177,13 +174,13 @@ RDP 侦听器配置不当。
 
 ### <a name="offline-repair"></a>脱机修复
 
-#### <a name="step-1-turn-on-remote-deskop"></a>步骤 1：启用远程桌面
+#### <a name="step-1-turn-on-remote-desktop"></a>步骤 1：启用远程桌面
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
 3. 确保磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
-3. 开始与恢复 VM 建立远程桌面连接。
-4. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+4. 开始与恢复 VM 建立远程桌面连接。
+5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -219,21 +216,21 @@ RDP 侦听器配置不当。
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-3. 如果 VM 已加入域，请检查以下注册表项，以查看是否有某个组策略禁用了 RDP。 
+6. 如果 VM 已加入域，请检查以下注册表项，以查看是否有某个组策略禁用了 RDP。 
 
-   ```
-   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
-   ```
-
+      ```
+      HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+      ```
 
       如果此注册表项的值设置为 1，则表示策略禁用了 RDP。 若要通过 GPO 策略启用远程桌面，请在域控制器中更改以下策略：
 
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
+   
+      **计算机配置\策略\管理模板：**
 
-4. 从救援 VM 拆离磁盘。
-5. [从磁盘创建新的 VM](../windows/create-vm-specialized.md)。
+      策略定义\Windows 组件\远程桌面服务\远程桌面会话主机\连接\允许用户使用远程桌面服务进行远程连接
+  
+7. 从救援 VM 拆离磁盘。
+8. [从磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
 如果仍发生此问题，请转到步骤 2。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23112425"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261972"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
@@ -510,9 +510,9 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 本文参考了以下文档：
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md)（StorSimple 多路径 I/O 设置）
-- [Storage scenarios: Thin provisioning](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
-- [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
-- [Set up shadow copies for shared folders](http://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)（存储方案：精简预配）
+- [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)（使用 GPT 驱动器）
+- [Set up shadow copies for shared folders](https://technet.microsoft.com/library/cc771893.aspx)（设置共享文件夹的卷影副本）
 
 ## <a name="next-steps"></a>后续步骤
 

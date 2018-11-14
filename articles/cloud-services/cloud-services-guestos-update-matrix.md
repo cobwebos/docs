@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376663"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978734"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -66,7 +66,7 @@ ms.locfileid: "49376663"
 ## <a name="family-5-releases"></a>系列 5 发行版本
 **Windows Server 2016**
 
-已安装的 .NET Framework：4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2
+已安装的 .NET Framework：3.5、4.6.2
 
 > [!NOTE]
 > OS 系列 5 的 RDP 密码至少必须有 10 个字符。
@@ -84,7 +84,7 @@ ms.locfileid: "49376663"
 ## <a name="family-4-releases"></a>系列 4 发行版本
 **Windows Server 2012 R2**
 
-已安装的 .NET Framework：4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：3.5、4.5.1
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ ms.locfileid: "49376663"
 ## <a name="family-3-releases"></a>系列 3 发行版本
 **Windows Server 2012**
 
-已安装的 .NET Framework：4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：3.5、4.5
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ ms.locfileid: "49376663"
 ## <a name="family-2-releases"></a>系列 2 发行版本
 **Windows Server 2008 R2 SP1**
 
-已安装的 .NET Framework：3.5、4.0、4.5、4.5.1、4.5.2
+已安装的 .NET Framework：3.5（包括 2.0 和 3.0）
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |

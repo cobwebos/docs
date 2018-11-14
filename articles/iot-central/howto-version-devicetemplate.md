@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b125d822596675b138560c14c76f9a3120ce3424
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3b9e6a59b44db9295d86e3bc8a8dda9ec9761f38
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628821"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009202"
 ---
 # <a name="create-a-new-device-template-version"></a>创建新设备模板版本
 
-Microsoft Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、编辑或删除度量、设置或属性来快速地循环访问设备模板设计。 对于当前的连接设备，这其中的某些更改可能是侵入性的。 Azure IoT Central 可以标识这些中断性变更，并且可以通过某种方式将这些更新安全地部署到设备。
+Azure IoT Central 用于快速开发 IoT 应用程序。 可以通过添加、编辑或删除度量、设置或属性来快速地循环访问设备模板设计。 对于当前的连接设备，这其中的某些更改可能是侵入性的。 Azure IoT Central 可以标识这些中断性变更，并且可以通过某种方式将这些更新安全地部署到设备。
 
 设备模板在创建后会有一个版本号。 版本号默认为 1.0.0。 如果在编辑设备模板时，所做的更改可能影响实时连接设备，Azure IoT Central 会提示创建新的设备模板版本。
 

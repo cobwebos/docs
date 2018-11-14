@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230295"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246525"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -81,12 +81,5 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 
 ## <a name="next-steps"></a>后续步骤
 
-有关面向管理员的入门教程，请参阅 [Azure Key Vault 入门](key-vault-get-started.md)。
-
-有关 Key Vault 使用情况日志记录的详细信息，请参阅 [Azure Key Vault 日志记录](key-vault-logging.md)。
-
-有关将密钥和机密与 Azure Key Vault 配合使用的详细信息，请参阅 [About keys, secrets, and certificates](https://msdn.microsoft.com/library/azure/dn903623\(v=azure.1\).aspx)（关于密钥、机密和证书）。
-
-<!--Image references-->
-[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
+了解如何[保护保管库](key-vault-secure-your-key-vault.md)
+<!--Image references--> [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png Azure 密钥保管库已在大多数区域中可用。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。

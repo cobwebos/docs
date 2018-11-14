@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719573"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035330"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
@@ -76,11 +76,15 @@ Azure AD 将在 SAML 证书到期前的 60 天、30 天和 7 天发送电子邮�
 
     ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. 为新证书选择所需的到期日期和时间，然后单击“保存”。
+2. 为新证书选择所需的到期日期和时间，然后单击“保存”。 选择与现有证书重叠的日期将确保由于证书到期而导致的停机时间是有限的。 
 
-3. 通过“SAML 签名证书”选项下载证书。 将新证书上传到 SaaS 应用程序的单一登录配置屏幕。 若要了解如何为特定的 SaaS 应用程序执行此操作，请单击“查看应用程序配置教程”链接。
+3. 如果应用可以自动滚动更新证书，请将新证书设置为“活动”。  登录应用以检查其是否正常工作。
+
+4. 如果应用没有自动选取新证书，但可以处理多个签名证书，请在旧证书过期之前，将新证书上传到应用，然后返回到门户并使新证书成为活动证书。 
+
+5. 如果应用一次只能处理一个证书，请选取停机时间窗口，下载新证书，将其上传到应用程序，返回 Azure 门户并将新证书设置为“活动”。 
    
-4. 若要在 Azure AD 中激活新证书，请选中“激活新证书”复选框，然后单击页面顶部的“保存”按钮。 这将在 Azure AD 端滚动使用新证书。 证书的状态会从“新”更改为“活动”。 此后，Azure AD 将开始使用新证书对响应进行签名。 
+6. 若要在 Azure AD 中激活新证书，请选中“激活新证书”复选框，然后单击页面顶部的“保存”按钮。 这将在 Azure AD 端滚动使用新证书。 证书的状态会从“新”更改为“活动”。 此后，Azure AD 将开始使用新证书对响应进行签名。 
    
     ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 

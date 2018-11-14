@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: aed1ab14072da3e3d3e49060b7117a24eeecdb56
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817018"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010246"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ ms.locfileid: "48817018"
 > 有关使用 Azure Data Lake Store 连接器的演练，请参阅[将数据加载到 Azure Data Lake Store](load-azure-data-lake-store.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要在根级别授予的服务主体或 MSI 的权限。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
 
 对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -79,6 +76,9 @@ Azure Data Lake Store 链接服务支持以下属性：
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
 >- 作为源，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
 >- 作为接收器，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+
+>[!NOTE]
+>当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要**在根级别使用“执行”权限**授予的服务主体权限，以便列出从根目录开始的文件夹。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
 
 支持以下属性：
 
@@ -127,6 +127,9 @@ Azure Data Lake Store 链接服务支持以下属性：
 > 确保在 Azure Data Lake Store 中授予数据工厂服务标识适当的权限：
 >- 作为源，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
 >- 作为接收器，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+
+>[!NOTE]
+>当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要**在根级别使用“执行”权限**授予的权限，以便列出从根目录开始的文件夹。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 

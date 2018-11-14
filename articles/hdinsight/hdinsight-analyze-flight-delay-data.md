@@ -1,23 +1,23 @@
 ---
-title: 在 HDInsight 中使用 Hadoop 分析航班延误数据 | Microsoft Azure
+title: 在 HDInsight 中使用 Apache Hadoop 分析航班延误数据 - Azure
 description: 了解如何使用一个 Windows PowerShell 脚本来创建 HDInsight 群集、运行 Hive 作业、运行 Sqoop 作业和删除群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7700de9bed7e5cfc003481a8e7d93720a767928
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091892"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036149"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
-Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
+Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Apache Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
 
 > [!IMPORTANT]
 > 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
@@ -49,7 +49,7 @@ Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsi
 ### <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **配备 Azure PowerShell 的工作站**。
 
     > [!IMPORTANT]

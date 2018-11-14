@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095522"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241253"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -44,7 +44,7 @@ ms.locfileid: "50095522"
 不是。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
-否，不支持 ILR。 
+否，不支持 ILR。
 
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
@@ -75,7 +75,7 @@ ms.locfileid: "50095522"
 
 ### <a name="which-dpm-versions-are-supported"></a>支持哪些 DPM 版本？
 
-支持的 DPM 版本在[支持矩阵](backup-azure-dpm-introduction.md#prerequisites-and-limitations)中进行了总结。 建议安装最新的 DPM 更新，并在 DPM 服务器上运行[最新版本](http://aka.ms/azurebackup_agent)的 Azure 备份代理。
+支持的 DPM 版本在[支持矩阵](backup-azure-dpm-introduction.md#prerequisites-and-limitations)中进行了总结。 建议安装最新的 DPM 更新，并在 DPM 服务器上运行[最新版本](https://aka.ms/azurebackup_agent)的 Azure 备份代理。
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多个保管库注册服务器？
 
@@ -99,7 +99,7 @@ ms.locfileid: "50095522"
 ## <a name="general-backup"></a>常规备份
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>备份计划是否有限制？
-是的。 
+是的。
 - 可以备份 Windows Server 或 Windows 计算机，最多一天三次。 可以将计划策略设置为每日或每周计划。
 - 可以备份 DPM，最多一天两次。 可以将计划策略设置为每日、每周、每月或每年。
 - Azure VM 可每日备份一次。
@@ -110,12 +110,12 @@ Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服�
 
 **OS**| **SKU** |**详细信息**
 --- | --- | ---
-工作站 | | 
+工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。
 Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
-服务器 | | 
+服务器 | |
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
 Windows Server 2012 64 位 | Datacenter、Foundation、Standard | 使用最新服务包/更新。
@@ -133,20 +133,20 @@ Windows Server 2008 64 位 | Standard、Enterprise、Datacenter | 使用最新�
 大小限制如下所示：
 
 
-OS/计算机 | 数据源的大小限制 
---- | --- | --- 
-Windows 8 或更高版本 | 54,400 GB 
-Windows 7 |1700 GB 
-Windows Server 2012 或更高版本 | 54,400 GB 
-Windows Server 2008、Windows Server 2008 R2 | 1700 GB 
-Azure VM | 32 个数据磁盘<br/><br/> 数据磁盘最大为 4095 GB
+OS/计算机 | 数据源的大小限制
+--- | --- | ---
+Windows 8 或更高版本 | 54,400 GB
+Windows 7 |1700 GB
+Windows Server 2012 或更高版本 | 54,400 GB
+Windows Server 2008、Windows Server 2008 R2 | 1700 GB
+Azure VM | 16 个数据磁盘<br/><br/> 数据磁盘最大为 4095 GB
 
 ## <a name="how-is-the-data-source-size-determined"></a>如何确定数据源大小？
 
 下表说明了如何确定每个数据源大小。
 
 **数据源** | **详细信息**
---- | --- 
+--- | ---
 数据量(Volume) |从正在备份的单个卷 VM 备份的数据量。
 SQL Server 数据库 |正在备份的单个 SQL 数据库的大小。
 SharePoint | 正在备份的 SharePoint 场中内容和配置数据库的总和。
@@ -158,7 +158,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 对可以使用恢复服务保管库进行备份的数据量没有限制。
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？ 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
 不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。 Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
 
 如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
@@ -186,7 +186,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>DPM 和不带 DPM 的 Windows 计算机的保留策略是否相同？
 是的，它们都有每日、每周、每月和每年保留策略。
 
-### <a name="can-i-customize-retention-policies"></a>能否自定义保留策略？ 
+### <a name="can-i-customize-retention-policies"></a>能否自定义保留策略？
 是的，可以自定义策略。 例如，可以配置每周和每日保留期要求，但不能配置每年和每月保留期要求。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
@@ -208,7 +208,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>可创建的恢复点数量是否有限制？
 
-最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例包括计算机、服务器（物理或虚拟）或备份到 Azure 的工作负载。 
+最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例包括计算机、服务器（物理或虚拟）或备份到 Azure 的工作负载。
 
 - 了解有关[备份和保留](./backup-introduction-to-azure-backup.md#backup-and-retention)的更多信息。
 - 了解[受保护的实例](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)？
@@ -238,7 +238,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 - 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。
 - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。
 
-Microsoft 不会解密任何位置的备份数据。 
+Microsoft 不会解密任何位置的备份数据。
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？

@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 0794c1573c2eaa951b805573cf33f05923da83b4
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/05/2018
+ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867776"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035078"
 ---
 # <a name="monitor-and-tune"></a>监视和优化
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，可以深入了解服务器的行为。
@@ -39,6 +39,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |connections_failed|失败的连接数|Count|服务器的失败连接数。|
 |network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
 
 ## <a name="server-logs"></a>服务器日志
 可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../log-analytics/log-analytics-queries.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
@@ -55,3 +56,4 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+- 阅读我们的博客，了解[监控服务器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)。

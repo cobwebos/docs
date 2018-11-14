@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5f103e9fe410374a551eb43d456d5993bdd36627
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056639"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962548"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
@@ -57,7 +57,11 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 ## <a name="testing"></a>测试 
 现在已准备好测试应用程序。 访问应用程序 1 中用来发布 QlikSense 的外部 URL，并以分配到两个应用程序的用户身份登录。  
 
+## <a name="additional-references"></a>其他参考
+有关使用应用程序代理发布 Qlik Sense 的更多信息，请参阅 Qlik 社区文章：[Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)（通过 Kerberos 约束委派将 Azure AD 与集成 Windows 身份验证配合使用来实现向 Qlik Sense 进行身份验证）。
+
 ## <a name="next-steps"></a>后续步骤
 
 - [使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
-- [使用应用程序代理连接器](application-proxy-connector-groups.md)。
+- [使用应用程序代理连接器](application-proxy-connector-groups.md)
+

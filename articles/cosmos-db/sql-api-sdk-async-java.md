@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 09/05/2018
-ms.author: sngun
-ms.openlocfilehash: 57172927011532af9b14fa7ff09d6aad9bac1e92
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/02/2018
+ms.author: moderakh
+ms.openlocfilehash: 80beeda607c83bc2a583c140779766952efcc568
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417593"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252864"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -52,6 +52,15 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* 修复了写入重试路径中的 NPE bug。
+* 修复了终结点管理中的 NPE bug。
+* 升级了易受攻击的依赖项 ([github #68](https://github.com/Azure/azure-cosmosdb-java/issues/68))。
+* 添加了对 Netty 网络日志记录的支持，以便进行故障排除。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* 添加了对多区域写入的支持。
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 添加了对代理的支持。
@@ -110,6 +119,8 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.1](#2.1.0) |2018 年 11 月 2日|--- |
+| [2.2.0](#2.2.1) |2018 年 9 月 22 日|--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 5 日|--- |
 | [2.0.1](#2.0.1) |2018 年 8 月 16 日|--- |
 | [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |

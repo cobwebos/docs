@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413786"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036914"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -70,7 +70,7 @@ ms.locfileid: "50413786"
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
-有关详细信息，请参阅[适用于不同 HDInsight 版本的 Hadoop 组件](../hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)一文
+有关详细信息，请参阅[随不同 HDInsight 版本提供的 Apache Hadoop 组件](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)一文
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义 HDInsight 群集
 

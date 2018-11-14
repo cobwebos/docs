@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165018"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010314"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -25,7 +25,7 @@ ms.locfileid: "47165018"
 ## <a name="how-does-it-work"></a>工作原理
 
 Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md) 中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案来实现依赖项可视化。
-- 要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
+- 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。
 - 只能在创建迁移项目的同一订阅中创建或附加工作区。
 - 若要将 Log Analytics 工作区附加到项目，请转到项目“概述”页的“Essentials”部分，单击“需要配置”
 
@@ -38,6 +38,12 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
     ![导航 Log Analytics 工作区](./media/concepts-dependency-visualization/oms-workspace.png)
 
 若要使用依赖项可视化，你需要在要分析的每台本地计算机上下载并安装代理。  
+
+- 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
+- 需要在每台计算机上安装[依赖关系代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
+- 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
+
+除非要使用依赖关系可视化，否则在要评估的计算机上不需要安装这些代理。
 
 ## <a name="do-i-need-to-pay-for-it"></a>是否需要对其付费？
 
@@ -63,4 +69,4 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 - [使用计算机依赖项分组计算机](how-to-create-group-machine-dependencies.md)
-- [详细了解](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)依赖项可视化相关的常见问题解答。
+- [详细了解有关依赖项可视化的常见问题解答](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)。

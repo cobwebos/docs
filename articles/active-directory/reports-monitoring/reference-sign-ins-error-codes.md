@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 85df34445622a13488df590f5cb53bedb7b6ea93
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42139782"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914713"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的登录活动报告错误代码
 
@@ -117,10 +117,10 @@ ms.locfileid: "42139782"
 |50135|由于存在帐户风险，需要更改密码|
 |50136|将 MSA 会话重定向到应用 - 检测到单个 MSA 会话 |
 |50140|此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
-|50143|会话不匹配 - 会话无效，因为不同的资源导致用户租户与域提示不匹配。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。|
+|50143|会话不匹配 - 会话无效，由于资源不同，用户租户与域提示不匹配。请使用关联 ID、请求 ID 和错误代码 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)，以获得更多详细信息。|
 |50144|用户的 Active Directory 密码已过期。 为用户生成新密码，或者让最终用户使用自助重置工具|
 |50146|需要为此应用程序配置特定于应用程序的签名密钥。 没有为此应用程序配置签名密钥，或者密钥已过期或尚未生效。 请联系应用程序所有者|
-|50148|code_verifier 与 PKCE 的授权请求中提供的 code_challenge 不匹配。 请与应用程序开发人员联系。 |
+|50148|code_verifier 与 PKCE 的授权请求中提供的 code_challenge 不匹配。 请与应用程序开发人员联系。 |
 |50155|此用户的设备身份验证失败|
 |50158|不满足外部安全质询|
 |50161|外部提供程序发送的声明不够，或者向外部提供程序请求的声明缺失|
@@ -152,7 +152,7 @@ ms.locfileid: "42139782"
 |70007|请求令牌时，应用程序返回了不受支持的“response_mode”值。 请联系应用所有者|
 |70008|提供的授权代码或刷新令牌已过期 - 已吊销。 让用户重试登录|
 |70011|应用程序请求的作用域无效。 请联系应用程序所有者|
-|70012|对 MSA（使用者）用户进行身份验证时发生服务器错误。 请重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+|70012|对 MSA（使用者）用户进行身份验证时发生服务器错误。 请重试。 如果仍然失败，请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|由于用户为设备代码流键入了错误的用户代码，验证码无效。 授权未获批准|
 |70019|验证码已过期。 让用户重试登录|
 |70037|提供了错误的质询响应。 已拒绝远程控制身份验证会话。|
@@ -180,6 +180,7 @@ ms.locfileid: "42139782"
 |90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
 |90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
+|500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
 
 ## <a name="next-steps"></a>后续步骤
 

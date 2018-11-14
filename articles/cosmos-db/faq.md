@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251084"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250758"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -36,7 +36,7 @@ Azure DocumentDB 服务现在是 Azure Cosmos DB 服务的一部分，以 SQL AP
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB 如何提供可预测的性能？
 [请求单位](request-units.md) (RU) 是 Azure Cosmos DB 中吞吐量的衡量单位。 1 RU 吞吐量相当于获取 1 KB 文档的吞吐量。 在 Azure Cosmos DB 中进行的每个操作（包括读取、写入、SQL 查询和存储过程执行）都具有一个确定性的 RU 值，该值基于完成该操作所需的吞吐量。 无需考虑 CPU、IO 和内存，以及它们会怎样影响应用程序吞吐量，而是从单个 RU 度量值的角度进行考虑。
 
-可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请参阅[估计吞吐量需求](request-units.md#estimating-throughput-needs)并尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的容器一词是指 SQL API 集合、Gremlin API 图形、MongoDB API 集合以及表 API 的表。 
+可以为每个 Azure Cosmos DB 容器保留以每秒 RU 表示的预配吞吐量。 对于任何规模的应用程序，都可以将单个请求设为基准以测量其 RU 值，并预配容器以处理所有请求的请求单位总和。 也可以根据应用程序的发展需求，相应地增加或减少容器的吞吐量。 如需请求单位的详细信息以及帮助确定容器需求，请尝试使用[吞吐量计算器](https://www.documentdb.com/capacityplanner)。 此处的容器一词是指 SQL API 集合、Gremlin API 图形、MongoDB API 集合以及表 API 的表。 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB 如何支持各种数据模型（例如键/值、纵栏表、文档和图形）？
 
@@ -462,7 +462,7 @@ RU 费用取决于遍历的工作数据集，而不是结果集。 例如，如�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>图形数据库可在 Azure Cosmos DB Gremlin API 中拥有的最大规模是怎样的？ 
 
-Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储和吞吐量的需求。 工作负荷的最大吞吐量和存储容量由与给定集合相关联的分区数量决定。 但是，Gremlin API 集合有一组用于按规模确保适当性能体验的特定准则。 有关详细信息和最佳做法，请参阅[分区最佳做法](partition-data.md#best-practices-when-choosing-a-partition-key)文档。 
+Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储和吞吐量的需求。 工作负荷的最大吞吐量和存储容量由与给定集合相关联的分区数量决定。 但是，Gremlin API 集合有一组用于按规模确保适当性能体验的特定准则。 有关分区和最佳做法的详细信息，请参阅 [Azure Cosmos DB 中的分区](partition-data.md)一文。 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>如何使用 Gremlin 驱动程序防范注入式攻击？ 
 

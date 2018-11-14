@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393607"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219556"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -78,7 +78,6 @@ ms.locfileid: "47393607"
 * [Log Analytics](#log-analytics-limits)
 * [托管的标识](#managed-identity-limits)
 * [媒体服务](#media-services-limits)
-* [Mobile Engagement](#mobile-engagement-limits)
 * [移动服务](#mobile-services-limits)
 * [多重身份验证](#multi-factor-authentication)
 * [网络](#networking-limits)
@@ -102,13 +101,13 @@ ms.locfileid: "47393607"
 * [虚拟机规模集](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>订阅限制
-#### <a name="subscription-limits"></a>订阅限制
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>订阅限制 - Azure 服务管理（经典资源）
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>订阅限制 - Azure 资源管理器
 使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 未使用 Azure 资源管理器更改的限制不会在下面列出。 请参阅上表了解这些限制。
 
-有关处理资源管理器请求限制的信息，请参阅[限制资源管理器请求](resource-manager-request-limits.md)。
+有关资源管理器 API 读写限制的信息，请参阅[限制资源管理器请求](resource-manager-request-limits.md)。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -145,6 +144,8 @@ ms.locfileid: "47393607"
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>应用程序网关限制
+
+除非另有说明，否则下表适用于 v1、v2、标准和 WAF SKU。
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>网络观察程序限制

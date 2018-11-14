@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机串行控制台 | Microsoft Docs
+title: 适用于 Linux 的 Azure 虚拟机串行控制台 | Microsoft Docs
 description: Azure 虚拟机的双向串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741702"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963812"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>适用于 Linux 的虚拟机串行控制台
 
@@ -33,17 +33,17 @@ ms.locfileid: "50741702"
 
 ## <a name="prerequisites"></a>先决条件 
 
-* 要在其中访问串行控制台的 VM 必须使用资源管理部署模型。 不支持经典部署。 
+- 你要在其中访问串行控制台的 VM 必须使用资源管理部署模型。 不支持经典部署。 
 
-* 要在其中访问串行控制台的 VM 必须已启用[启动诊断](boot-diagnostics.md)。 在“支持 + 故障排除”部分选择“启动诊断”。
+- 你要在其中访问串行控制台的 VM 必须已启用[启动诊断](boot-diagnostics.md)。 
 
     ![启动诊断设置](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。 
+- 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。 
 
-* 要在其中访问串行控制台的 VM 必须具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
+    - 你要在其中访问串行控制台的 VM 必须具有基于密码的帐户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
 
-* 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
+    - 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
 
 
 
@@ -51,12 +51,14 @@ ms.locfileid: "50741702"
 只能通过 Azure 门户访问虚拟机的串行控制台：
 
   1. 打开 [Azure 门户](https://portal.azure.com)。
+
   1. 在左侧菜单中，选择“虚拟机”。
+
   1. 在列表中选择 VM。 此时会打开该 VM 的概述页。
+
   1. 向下滚动到“支持 + 故障排除”部分，并选择“串行控制台”。 此时会打开一个包含串行控制台的新窗格，并启动连接。
 
-   ![Linux 串行控制台窗口](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
+     ![Linux 串行控制台窗口](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
 > [!NOTE] 

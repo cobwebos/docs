@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419718"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960814"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -185,8 +185,8 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [探查器](app-insights-profiler.md) 
 * [快照调试器](app-insights-snapshot-debugger.md)
-* [分析](app-insights-analytics-tour.md)
-* [分析智能诊断](app-insights-analytics-diagnostics.md)
+* [分析](../log-analytics/query-language/get-started-analytics-portal.md)
+* [分析智能诊断](app-insights-analytics.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245692"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -108,9 +108,9 @@ Microsoft 只使用这些数据来向你提供服务。
 * 不是。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
-Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](http://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
+Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
 
-数据存储在 Microsoft Azure 服务器中。 对于 Azure 门户中的帐户，将实施 [Azure Security, Privacy, and Compliance document](http://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中所述的帐户限制。
+数据存储在 Microsoft Azure 服务器中。 对于 Azure 门户中的帐户，将实施 [Azure Security, Privacy, and Compliance document](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中所述的帐户限制。
 
 Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得许可以及为了帮助你使用 Application Insights 而有必要访问时才访问数据。 
 
@@ -137,7 +137,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 利用本地存储的遥测通道会在 TEMP 或 APPDATA 目录中创建临时文件，但仅限于运行应用程序的特定帐户。 当终结点暂时不可用或达到限制值时，可能会发生这种情况。 解决此问题后，遥测通道便会恢复发送所有新数据和暂留数据。
 
 
-此暂留数据未加密，强烈建议将数据收集策略重构为，禁用收集私人数据。 （有关详细信息，请参阅[如何导出和删除私人数据](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)。）
+此持久化数据未加密，强烈建议重构数据收集策略以禁用私人数据收集。 （有关详细信息，请参阅[如何导出和删除私人数据](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)。）
 
 
 如果客户需要使用特定安全要求配置此目录，可以逐个框架进行配置。 请确保运行应用程序的进程对此目录拥有写入权限，并确保此目录受保护，以免遥测数据遭用户意外读取。
@@ -173,7 +173,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
 
-下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
+下面的代码片段展示了如何在  `Startup.cs`  类的 `ConfigureServices()`  方法中设置 `ServerTelemetryChannel.StorageFolder`：
 
 ```
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -232,7 +232,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights 中存储的个人数据
 
-[Application Insights 个人数据文章](app-insights-customer-data.md)深入探讨了此问题。
+[Application Insights 个人数据文章](../log-analytics/log-analytics-personal-data-mgmt.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接关闭。 我们未提供用户可操作的开关来关闭 Application Insights。

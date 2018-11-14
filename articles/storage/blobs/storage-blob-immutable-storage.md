@@ -2,18 +2,18 @@
 title: Azure 存储 Blob 的不可变存储 | Microsoft Docs
 description: Azure 存储提供对 Blob 对象存储的 WORM（一次写入，多次读取）支持，可让用户根据指定的时间间隔，以不可擦除、不可修改的状态存储数据。
 services: storage
-author: MichaelHauss
+author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: mihauss
+ms.date: 11/05/2018
+ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 38e34391294e1a070d506583fbc30dcdb703bea0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156895"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036985"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -194,7 +194,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 
-是的。 基于时间的保留策略在首先创建时，将处于未锁定状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略一经锁定就会永远保持锁定状态，不可删除。 另外，策略在锁定后就再也不能缩短保留时间间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
+是的。 基于时间的保留策略在首先创建时，将处于未锁定状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 这可以防止删除和修改保留时间间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
 
 **此功能在国家/地区及政府云中是否可用？**
 

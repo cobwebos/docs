@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982199"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958672"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -100,6 +100,7 @@ mkdir -p /mnt/MyAzureFileShare
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+以上命令使用 [mount](https://linux.die.net/man/8/mount) 命令装载特定于 [cifs](https://linux.die.net/man/8/mount.cifs) 的 Azure 文件共享和选项。 具体来说，file_mode 和 dir_mode 选项将文件和目录设置为权限 `0777`。 `0777` 权限为所有用户提供读取、写入和执行权限。 可以通过将值替换为其他 [chmod 权限](https://en.wikipedia.org/wiki/Chmod)来更改这些权限。 还可以使用其他 [cifs](https://linux.die.net/man/8/mount.cifs) 选项，例如 gid 或 uid。 
 
 
 ## <a name="persist-the-mount"></a>持久保留装载

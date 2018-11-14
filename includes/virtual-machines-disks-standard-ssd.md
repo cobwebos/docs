@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060704"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264331"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 虚拟机工作负荷的标准 SSD 托管磁盘
 
@@ -22,7 +22,7 @@ Azure 标准固态硬盘 (SSD) 托管磁盘是经济高效的存储选项，已�
 ## <a name="standard-ssd-features"></a>标准 SSD 的功能
 
 **托管磁盘**：标准 SSD 只可用作托管磁盘。 标准 SSD 不支持非托管磁盘和页 Blob。 创建托管磁盘时，请指定“标准 SSD”作为磁盘类型，并指明所需的磁盘大小，然后，Azure 将自动创建并管理该磁盘。
-标准 SSD 支持托管磁盘提供的所有服务管理操作。 例如，可以像处理托管磁盘一样创建、复制标准 SSD 托管磁盘或生成其快照。
+标准 SSD 支持托管磁盘提供的所有经典部署模型操作。 例如，可以像处理托管磁盘一样创建、复制标准 SSD 托管磁盘或生成其快照。
 
 **虚拟机**：标准 SSD 可用于所有 Azure VM，包括不支持高级磁盘的 VM 类型。 例如，如果使用 A 系列、N 系列、DS 系列 VM 或其他任何 Azure VM 系列，可对该 VM 使用标准 SSD。 随着标准 SSD 的推出，以前使用基于 HDD 的磁盘的各种工作负荷可以过渡到基于 SSD 的磁盘，从而获得 SSD 具有的一致性能、更高可用性、更低的延迟和总体更佳的体验。
 
@@ -32,7 +32,7 @@ Azure 标准固态硬盘 (SSD) 托管磁盘是经济高效的存储选项，已�
 
 ## <a name="scalability-and-performance-targets"></a>可伸缩性和性能目标
 
-下表包含标准 SSD 目前提供的磁盘大小。
+下表包含标准 SSD 目前提供的磁盘大小。 用星号表示的大小当前处于预览阶段。
 
 |标准 SSD 磁盘类型  |磁盘大小  |每个磁盘的 IOPS  |每个磁盘的吞吐量  |
 |---------|---------|---------|---------|
@@ -42,9 +42,9 @@ Azure 标准固态硬盘 (SSD) 托管磁盘是经济高效的存储选项，已�
 |E30     |1,024 GiB       |最多 500         |最高每秒 60 MiB         |
 |E40     |2,048 GiB       |最多 500         |最高每秒 60 MiB         |
 |E50     |4,095 GiB       |最多 500         |最高每秒 60 MiB         |
-|E60     |8,192 GiB       |最多 1,300       |最高每秒 300 MiB        |
-|E70     |16,384 GiB      |高达 2,000       |最高每秒 500 MiB        |
-|E80     |32,767 GiB      |高达 2,000       |最高每秒 500 MiB        |
+|E60 *     |8,192 GiB       |最多 1,300       |最高每秒 300 MiB        |
+|E70 *    |16,384 GiB      |最多 2,000       |最高每秒 500 MiB        |
+|E80 *    |32,767 GiB      |最多 2,000       |最高每秒 500 MiB        |
 
 标准 SSD 可为大多数 IO 操作提供 10 毫秒以下的延迟，并提供不超过上表中所述限制的 IOPS 和吞吐量。 实际 IOPS 和吞吐量有时根据流量模式而异。 相比 HDD 磁盘，标准 SSD 提供更加一致的性能，并且延迟更低。
 

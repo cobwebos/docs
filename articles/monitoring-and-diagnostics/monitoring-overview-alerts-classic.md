@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987639"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015768"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
@@ -29,7 +29,7 @@ ms.locfileid: "46987639"
 
 只能在 Azure 门户中的经典警报用户屏幕中查看经典警报。 可以通过警报屏幕上的“查看经典警报”按钮访问此屏幕。 
 
- ![Azure 门户中的警报选项](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Azure 门户中的警报选项](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 与经典警报体验相比，新式警报用户体验具有以下优点：
 -   **更好的通知系统** - 所有新式警报均使用操作组，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。
@@ -89,14 +89,14 @@ Webhook 可实现自动化和修复，例如使用：
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：
 
-* 详细了解[指标](monitoring-overview-metrics.md)
-* [通过 Azure 门户配置经典指标警报](insights-alerts-portal.md)
-* 配置[经典指标警报 PowerShell](insights-alerts-powershell.md)
-* 配置[经典指标警报命令行接口 (CLI)](insights-alerts-command-line-interface.md)
+* 详细了解[指标](../monitoring/monitoring-data-collection.md)
+* [通过 Azure 门户配置经典指标警报](alert-metric-classic.md)
+* 配置[经典指标警报 PowerShell](alert-metric-classic.md)
+* 配置[经典指标警报命令行接口 (CLI)](alert-metric-classic.md)
 * 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * 详细了解[活动日志](monitoring-overview-activity-logs.md)
 * [通过 Azure 门户配置活动日志警报](monitoring-activity-log-alerts.md)
-* [通过 Resource Manager 配置活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* [通过 Resource Manager 配置活动日志警报](alert-activity-log.md)
 * 查看[活动日志警报 webhook 架构](monitoring-activity-log-alerts-webhook.md)
 * 详细了解[操作组](monitoring-action-groups.md)
-* 配置[较新的警报](monitor-alerts-unified-usage.md)
+* 配置[较新的警报](alert-metric.md)

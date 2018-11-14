@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079336"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978172"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -187,7 +187,7 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
 
-Windows 容器在初始创建后可能最多 5 秒内没有入站或出站连接。 初始设置后，容器网络应适当恢复。
+在初始创建时，Windows 容器在最多 30 秒内（在极少数情况下，会更长时间）可能没有入站或出站连接。 如果容器应用程序需要 Internet 连接，请添加延迟和重试逻辑以允许 30 秒建立 Internet 连接。 初始设置后，容器网络应适当恢复。
 
 ## <a name="resource-not-available-error"></a>资源不可用错误
 

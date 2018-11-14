@@ -1,25 +1,25 @@
 ---
-title: 通过堆转储调试和分析 Hadoop 服务 - Azure
-description: 自动收集 Hadoop 服务的堆转储并将其放置在用于调试和分析的 Azure Blob 存储帐户内。
+title: 通过堆转储调试和分析 Apache Hadoop 服务 - Azure
+description: 自动收集 Apache Hadoop 服务的堆转储并将其放置在用于调试和分析的 Azure Blob 存储帐户内。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f7843ebf49e79d9045c72493bb38b218234288
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099761"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038301"
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>将堆转储收集在 Blob 存储中，以便调试和分析 Hadoop 服务
+# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>将堆转储收集在 Blob 存储中，以便调试和分析 Apache Hadoop 服务
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。 可以自动收集 Hadoop 服务的堆转储，并将其放置在用户 Azure Blob 存储帐户中的 HDInsightHeapDumps/ 下。
+堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。 可以自动收集 Apache Hadoop 服务的堆转储，并将其放置在用户 Azure Blob 存储帐户中的 HDInsightHeapDumps/ 下。
 
 必须为各个群集上的各个服务启用堆转储收集。 默认情况下，为群集关闭了此功能。 这些堆转储可能很大，因此，在启用收集后，建议监视保存这些转储的 Blob 存储帐户。
 
@@ -30,11 +30,11 @@ ms.locfileid: "43099761"
 ## <a name="eligible-services-for-heap-dumps"></a>符合堆转储条件的服务
 可以启用以下服务的堆转储：
 
-* **hcatalog** - tempelton
-* **hive** - hiveserver2、metastore、derbyserver
+* **Apache hcatalog** - tempelton
+* **Apache hive** - hiveserver2、metastore、derbyserver
 * **mapreduce** - jobhistoryserver
-* **yarn** - resourcemanager、nodemanager、timelineserver
-* **hdfs** - datanode、secondarynamenode、namenode
+* **Apache yarn** - resourcemanager、nodemanager、timelineserver
+* **Apache hdfs** - datanode、secondarynamenode、namenode
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>用于启用堆转储的配置元素
 若要为服务启用堆转储，需要在该服务的节（由 **service_name** 指定）中设置相应的配置元素。

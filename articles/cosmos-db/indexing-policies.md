@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054666"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237581"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
 
@@ -147,11 +147,11 @@ Azure Cosmos DB 将 JSON 文档和索引建模为树。 可调整树中路径的
 | 路径                | 说明/用例                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | 集合的默认路径。 递归并应用于整个文档树。                                                                                                                                                                                                                                   |
-| /prop/?             | 执行查询所需的索引路径（分别为哈希或范围类型）：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
-| /prop/*             | 指定标签下所有路径的索引路径。 使用以下查询<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
+| /prop/?             | 执行查询所需的索引路径（分别为哈希或范围类型）：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
+| /prop/*             | 指定标签下所有路径的索引路径。 使用以下查询<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
 | /props/[]/?         | 对标量数组（如 ["a"、"b"、"c"]）进行迭代和 JOIN 查询所需的索引路径︰<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5                                                                         |
 | /props/[]/subprop/? | 针对诸如 [{subprop:"a"}, {subprop:"b"}] 的对象数组进行迭代和 JOIN 查询所需的索引路径：<br><br>SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value"                                  |
-| /prop/subprop/?     | 进行查询所需的索引路径（分别为哈希或范围类型）：<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
+| /prop/subprop/?     | 进行查询所需的索引路径（分别为哈希或范围类型）：<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
 
 > [!NOTE]
 > 在设置自定义索引路径时，需要为由特殊路径“/*”表示的整个文档树指定默认索引规则。 
@@ -276,9 +276,9 @@ Azure Cosmos DB 还针对每个路径支持空间索引类型，可为 Point、P
 
 | 索引种类 | 说明/用例                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 哈希       | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash over /props/[]/? (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
-| 范围      | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                                                                                                                                                              |
-| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) --启用对多边形的索引编制              |
+| 哈希       | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash over /props/[]/? (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
+| 范围      | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                                                                                                                                                              |
+| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) --启用对多边形的索引编制              |
 
 默认情况下，如果没有范围索引（任何精度），则使用范围运算符（如 >=）的查询会返回错误，以提示执行查询必须执行一次扫描。 使用 REST API 中的 x-ms-documentdb-enable-scans 标头或使用 .NET SDK 的 EnableScanInQuery 请求选项，可以在没有范围索引的情况下执行范围查询。 如果在查询中有 Azure Cosmos DB 可以使用索引据其进行筛选的其他筛选器，则不返回错误。
 
@@ -323,7 +323,7 @@ Azure Cosmos DB 还针对每个路径支持空间索引类型，可为 Point、P
 
 关闭自动索引后，仍然可以选择性地只将特定的文档添加到索引中。 相反，可以保留自动索引，并选择排除特定的文档。 当只需要查询一个文档子集时，索引开/关配置非常有用。
 
-下面的示例演示了如何使用 [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) 和 [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) 属性来显式包括文档。
+下面的示例演示了如何使用 [SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) 和 [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) 属性来显式包括文档。
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Azure Cosmos DB 还针对每个路径支持空间索引类型，可为 Point、P
 ## <a name="performance-tuning"></a>性能调优
 SQL API 提供有关性能指标的信息，如所用的索引存储以及每次操作的吞吐量成本（请求单位）。 此信息可用于比较各种索引策略和优化性能。
 
-若要检查存储配额和集合使用情况，请针对集合资源运行 HEAD 或 GET 请求。 然后检查 x-ms-request-quota 和 x-ms-request-usage 标头。 在 .NET SDK 中，[ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) 中的 [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) 和 [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) 属性包含这些相应的值。
+若要检查存储配额和集合使用情况，请针对集合资源运行 HEAD 或 GET 请求。 然后检查 x-ms-request-quota 和 x-ms-request-usage 标头。 在 .NET SDK 中，[ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) 中的 [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) 和 [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) 属性包含这些相应的值。
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ SQL API 提供有关性能指标的信息，如所用的索引存储以及每次
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-若要度量每个写入操作（创建、更新或删除）执行索引的开销，请检查 x-ms-request-charge 标头（或 .NET SDK 中 [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) 的等效 [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) 属性）来度量这些操作占用的请求单位数。
+若要度量每个写入操作（创建、更新或删除）执行索引的开销，请检查 x-ms-request-charge 标头（或 .NET SDK 中 [ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) 的等效 [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx) 属性）来度量这些操作占用的请求单位数。
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

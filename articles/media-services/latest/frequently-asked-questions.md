@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376714"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036761"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "49376714"
 
 ## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>是否有用于配置媒体预留单位的 API？
 
-媒体服务团队正努力消除 v3 中的 RU。 然而，必要的服务工作尚未完成。 在此之前，客户需要使用 Azure 门户或 AMS v2 API 来设置 RU（如[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)中所述）。 
+目前，必须使用 AMS v2 API 来配置媒体保留单位（如[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)中所述。 
 
 使用 **VideoAnalyzerPreset** 和/或 **AudioAnalyzerPreset** 时，将媒体服务帐户设置为 10 个 S3 媒体保留单位。
 

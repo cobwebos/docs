@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8e79d05147cae5bf9c46fc1f7c0e7e98574383d5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731115"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007614"
 ---
 ## <a name="configuring-homepage"></a>配置主页
 
-主页是当有权访问的用户导航到应用程序的 URL 时加载的页面。 如果在创建应用程序时选择了“示例 Contoso”或“示例 Devkits”应用程序模板，则应用程序将具有预定义的主页。 另一方面，如果选择了“自定义应用程序”应用程序模板，则主页将为空白。
+主页是当有权访问应用程序的用户导航到应用程序的 URL 时加载的页面。 如果在创建应用程序时选择了“示例 Contoso”或“示例 Devkits”应用程序模板，则应用程序将具有预定义的主页。 另一方面，如果选择了“自定义应用程序”应用程序模板，则主页将为空白。
 
 例如，下面是基于“示例 Contoso”模板的应用程序的主页。 若要为应用程序自定义主页，请先在右上角选择“编辑”。 
 

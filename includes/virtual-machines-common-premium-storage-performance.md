@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060506"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746115"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -30,6 +30,10 @@ ms.locfileid: "47060506"
 * 如何针对 IOPS、带宽和延迟进行优化？  
 
 我们所提供的这些准则是专门针对高级存储的，因为在高级存储上运行的工作负荷具有高度的性能敏感性。 我们根据需要提供示例。 也可以将部分此类准则应用于在标准存储磁盘的 IaaS VM 上运行的应用程序。
+
+> [!NOTE]
+> 有时，似乎造成性能问题的实际上是网络瓶颈。 在这些情况下，应优化[网络性能](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。
+> 还应确保 VM 支持加速网络连接。 如果是这样，即使在 [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) vm 上部署之后，也可以启用它。
 
 如果尚不熟悉高级存储，请在开始之前首先阅读[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)一文和 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md)一文。
 
@@ -221,11 +225,11 @@ Linux 发行版
 
 Azure 高级存储提供八种 GA 磁盘大小和三种磁盘大小，当前均处于预览状态。 每种磁盘大小对 IOPS、带宽和存储空间设置了不同规格的限制。 选择正确的高级存储磁盘大小，具体取决于应用程序要求和高规格 VM 大小。 下表显示了 11 种磁盘大小及其功能。 目前，仅托管磁盘支持 P4、P6、P15、P60、P70 和 P80 大小。
 
-| 高级磁盘类型  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+| 高级磁盘类型  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| 磁盘大小           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1,024 GiB (1 TiB)    | 2,048 GiB (2 TiB)    | 4,095 GiB (4 TiB)    | 8,192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 GiB)    |
-| 每个磁盘的 IOPS       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              |
-| 每个磁盘的吞吐量 | 25 MiB/秒  | 50 MiB/秒  | 100 MiB/秒 |125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 750 MiB/秒 | 750 MiB/秒 |
+| 磁盘大小           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1,024 GiB (1 TiB)    | 2,048 GiB (2 TiB)    | 4,095 GiB (4 TiB)    | 8,192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 GiB)    |
+| 每个磁盘的 IOPS       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              |
+| 每个磁盘的吞吐量 | 25 MiB/秒  | 50 MiB/秒  | 100 MiB/秒 |125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 750 MiB/秒 | 750 MiB/秒 |
 
 选择多少磁盘取决于所选磁盘大小。 可以使用一个 P50 磁盘或多个 P10 磁盘来满足应用程序需求。 进行选择时，可考虑下面列出的注意事项。
 
@@ -284,7 +288,7 @@ Azure 高级存储提供八种 GA 磁盘大小和三种磁盘大小，当前均�
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  从缓存快速读取可以缩短 SQL Server 查询时间，因为从缓存检索数据页的速度要大大快于直接从数据磁盘进行检索的速度。  
    b.  从缓存进行读取意味着可以从高级数据磁盘获得更多的吞吐量。 SQL Server 可以利用这额外的吞吐量来检索更多数据页和执行其他操作，例如备份/还原、批量加载以及索引重建。  
 1. 在托管日志文件的高级存储磁盘上将缓存配置为“无”。  
-   a.  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  日志文件主要是进行频繁的写入操作。 因此，将缓存设置为 ReadOnly 对其无用。
 
 ## <a name="disk-striping"></a>磁盘条带化
 

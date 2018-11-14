@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466046"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914645"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>如何：向 Azure AD 应用（公共预览版）提供可选声明
 
@@ -30,14 +30,12 @@ ms.locfileid: "49466046"
 - 更改 Azure AD 在令牌中返回的某些声明的行为。
 - 添加和访问应用程序的自定义声明。 
 
-> [!Note]
+> [!NOTE]
 > 此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure AD 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 Azure AD Premium 订阅。
 
 有关标准声明的列表及其在令牌中的使用方式，请参阅 [Azure AD 颁发的令牌基础知识](v1-id-and-access-tokens.md)。 
 
-[v2.0 Azure AD 终结点](active-directory-appmodel-v2-overview.md)的目标之一是缩小令牌大小，以确保客户端获得最佳性能。  因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
-
-  
+[v2.0 Azure AD 终结点](active-directory-appmodel-v2-overview.md)的目标之一是缩小令牌大小，以确保客户端获得最佳性能。 因此，以前包含在访问令牌和 ID 令牌中的多个声明不再在 v2.0 令牌中提供，必须根据应用程序专门请求这些声明。
 
 **表 1：适用性**
 
@@ -46,67 +44,68 @@ ms.locfileid: "49466046"
 | Microsoft 个人帐户  | 不适用 - 改用 RPS 票证 | 即将提供支持 |
 | Azure AD 帐户          | 支持                          | 带注意事项的支持      |
 
-> [!Important]
-> 目前，同时支持个人帐户和 Azure AD（已通过[应用注册门户](https://apps.dev.microsoft.com)注册）的应用无法使用可选声明。  但是，使用 v2.0 终结点仅为 Azure AD 注册的应用可以获取它们在清单中请求的可选声明。
+> [!IMPORTANT]
+> 同时支持个人帐户和 Azure AD（已通过[应用注册门户](https://apps.dev.microsoft.com)注册）的应用无法使用可选声明。 但是，使用 v2.0 终结点仅为 Azure AD 注册的应用可以获取它们在清单中请求的可选声明。 在 Azure 门户中，可以使用现有**应用注册**体验中的应用程序清单编辑器来编辑可选声明。 但是，在新的**应用注册(预览版)** 体验中，使用应用程序清单编辑器时还不能使用此功能。
 
 ## <a name="standard-optional-claims-set"></a>标准的可选声明集
-下面列出了默认可对应用程序使用的可选声明集。  若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)。  请注意，在向**访问令牌**添加声明时，这将适用于应用程序 (Web API) 请求的访问令牌，而不是应用程序发出的访问令牌。  这可确保无论哪个客户端访问你的 API，正确的数据都存在于用于对你的 API 进行身份验证的访问令牌中。
 
-> [!Note]
->其中的大多数声明可包含在 v1.0 和 v2.0 令牌的 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。  此外，尽管可选声明目前仅支持 AAD 用户，但 MSA 支持即将推出。  当 MSA 在 v2.0 终结点上提供可选声明支持时，如果某个声明适用于 AAD 或 MSA 用户，“用户类型”列中会予以注明。  
+下面列出了默认可对应用程序使用的可选声明集。 若要为应用程序添加自定义可选声明，请参阅下面的[目录扩展](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions)。 请注意，在向**访问令牌**添加声明时，这将适用于应用程序 (Web API) 请求的访问令牌，而不是应用程序发出的访问令牌。 这可确保无论哪个客户端访问你的 API，正确的数据都存在于用于对你的 API 进行身份验证的访问令牌中。
+
+> [!NOTE]
+> 其中的大多数声明可包含在 v1.0 和 v2.0 令牌的 JWT 中，但不可包含在 SAML 令牌中，“令牌类型”列中指明的声明除外。 此外，尽管可选声明目前仅支持 AAD 用户，但 MSA 支持即将推出。 当 MSA 在 v2.0 终结点上提供可选声明支持时，如果某个声明适用于 AAD 或 MSA 用户，“用户类型”列中会予以注明。 
 
 **表 2：标准的可选声明集**
 
 | 名称                        | Description   | 令牌类型 | 用户类型 | 说明  |
 |-----------------------------|----------------|------------|-----------|--------|
-| `auth_time`                | 用户上次进行身份验证的时间。  请参阅 OpenID Connect 规范。| JWT        |           |  |
+| `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
 | `signin_state`             | 登录状态声明   | JWT        |           | 6 个标志形式的返回值：<br> "dvc_mngd"：设备受管理<br> "dvc_cmp"：设备合规<br> "dvc_dmjd"：设备已加入域<br> "dvc_mngd_app"：通过 MDM 管理设备<br> "inknownntwk"：设备在已知网络内部。<br> "kmsi"：使用了“使我保持登录状态”。 <br> |
-| `controls`                 | 包含条件访问策略强制实施的会话控制的多值声明。  | JWT        |           | 3 个值：<br> "app_res"：应用需要强制实施更细致的限制。 <br> "ca_enf"：已推迟但仍需要强制实施条件访问。 <br> "no_cookie"：此令牌不足以用于在浏览器中交换 Cookie。 <br>  |
+| `controls`                 | 包含条件访问策略强制实施的会话控制的多值声明。 | JWT        |           | 3 个值：<br> "app_res"：应用需要强制实施更细致的限制。 <br> "ca_enf"：已推迟但仍需要强制实施条件访问。 <br> "no_cookie"：此令牌不足以用于在浏览器中交换 Cookie。 <br>  |
 | `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。| JWT        |           | |
 | `sid`                      | 会话 ID，用于基于会话的用户注销。 | JWT        |           |         |
 | `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
 | `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail      | JWT        |           |         |
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
-| `enfpolids`                | 强制实施的策略 ID。 针对当前用户评估的策略 ID 列表。  | JWT |  |  |
-| `vnet`                     | VNET 说明符信息。    | JWT        |           |      |
+| `enfpolids`                | 强制实施的策略 ID。 针对当前用户评估的策略 ID 列表。 | JWT |  |  |
+| `vnet`                     | VNET 说明符信息。 | JWT        |           |      |
 | `fwd`                      | IP 地址。| JWT    |   | 添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址 |
 | `ctry`                     | 用户所在的国家/地区 | JWT |           | Azure AD 返回 `ctry` 可选声明（如果存在）且声明的值是标准的双字母国家/地区代码，例如 FR、JP、SZ 等。 |
 | `tenant_ctry`              | 资源租户所在的国家/地区 | JWT | | |
-| `xms_pdl`          | 首选数据位置   | JWT | | 对于多地区租户，这是显示用户所在地理区域的 3 字母代码。  有关更多详细信息，请参阅[有关首选数据位置的 Azure AD Connect 文档](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)。 <br> 例如：`APC` 表示“亚太”。 |
-| `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。  在来宾访问方案中，源自其主租户。  已格式化 LL-CC（“en-us”）。 |
-| `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。  已格式化 LL（“en”）。 |
+| `xms_pdl`          | 首选数据位置   | JWT | | 对于多地区租户，这是显示用户所在地理区域的 3 字母代码。 有关更多详细信息，请参阅[有关首选数据位置的 Azure AD Connect 文档](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)。 <br> 例如：`APC` 表示“亚太”。 |
+| `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“en-us”）。 |
+| `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
-| `acct`             | 租户中的用户帐户状态。   | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。  如果他们是来宾，则该值为 `1`。  |
-| `upn`                      | UserPrincipalName 声明。  | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  <br> 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
+| `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
+| `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 <br> 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 
 ### <a name="v20-optional-claims"></a>v2.0 可选声明
 
-这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则不会包含在 v2.0 令牌中。  这些声明仅适用于 JWT（ID 令牌和访问令牌）。  
+这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则不会包含在 v2.0 令牌中。 这些声明仅适用于 JWT（ID 令牌和访问令牌）。 
 
 **表 3：仅限 V2.0 的可选声明**
 
-| JWT 声明     | 名称                            | Description                                                                                                                    | 说明 |
+| JWT 声明     | 名称                            | Description                                | 说明 |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
-| `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。                                                                                      |       |
-| `onprem_sid`  | 本地安全标识符 |                                                                                                                                |       |
-| `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。                                                                                    |       |
-| `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。                                                                        |       |
-| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明                     |       |
-| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。                                                             |       |                                                                                                                |       |
+| `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
+| `onprem_sid`  | 本地安全标识符 |                                             |       |
+| `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
+| `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |       |
+| `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明。   |       |
+| `nickname`    | 别名                        | 用户的附加名称，不同于名字或姓氏。 |       |                                                                                                                |       |
 | `family_name` | 姓氏                       | 按照 Azure AD 用户对象中的定义，指定用户的姓。 <br>"family_name":"Miller" |       |
 | `given_name`  | 名字                      | 和对 Azure AD 用户对象的设置一样，指定用户的名。<br>"given_name": "Frank"                   |       |
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
-可以配置某些可选声明来更改声明的返回方式。  这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序（例如，`include_externally_authenticated_upn_without_hash` 可帮助迁移无法处理 UPN 中的井号标记 (`#`) 的客户端）
+可以配置某些可选声明来更改声明的返回方式。 这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序（例如，`include_externally_authenticated_upn_without_hash` 可帮助迁移无法处理 UPN 中的井号标记 (`#`) 的客户端）
 
 **表 4：用于配置标准可选声明的值**
 
 | 属性名称                                     | 附加属性名称                                                                                                             | Description |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |  可用于 SAML 和 JWT 响应。            |
-| | `include_externally_authenticated_upn`              | 包含资源租户中存储的来宾 UPN。  例如： `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
+| `upn`                                                 |                                                                                                                                      |  可用于 SAML 和 JWT 响应。        |
+| | `include_externally_authenticated_upn`              | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |             
 
 > [!Note]
@@ -127,7 +126,7 @@ ms.locfileid: "49466046"
 }
 ```
 
-此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。  仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，这才会更改令牌中的 `upn` 声明。 
+此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，这才会更改令牌中的 `upn` 声明。 
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
@@ -172,9 +171,9 @@ ms.locfileid: "49466046"
 
 | 名称        | 类型                       | Description                                           |
 |-------------|----------------------------|-------------------------------------------------------|
-| `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。     |
+| `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。 |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
-| `saml2Token`  | 集合 (OptionalClaim) | 在 SAML 令牌中返回的可选声明。       |
+| `saml2Token`  | 集合 (OptionalClaim) | 在 SAML 令牌中返回的可选声明。   |
 
 ### <a name="optionalclaim-type"></a>OptionalClaim 类型
 
@@ -185,13 +184,13 @@ ms.locfileid: "49466046"
 
 | 名称                 | 类型                    | Description                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                               |
+| `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
-| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                                 |
-| `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                                   |
+| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                             |
+| `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
 ## <a name="configuring-custom-claims-via-directory-extensions"></a>通过目录扩展配置自定义声明
 
-除了标准的可选声明集以外，还可将令牌配置为包含目录架构扩展（有关详细信息，请参阅[目录架构扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)一文）。  使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 
+除了标准的可选声明集以外，还可将令牌配置为包含目录架构扩展（有关详细信息，请参阅[目录架构扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)一文）。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 
 
 > [!Note]
 > 目录架构扩展功能只能在 AAD 中使用，因此，如果应用程序清单请求自定义扩展，而 MSA 用户登录到你的应用，则不会返回这些扩展。 
@@ -245,7 +244,7 @@ ms.locfileid: "49466046"
             ]
       }
       ```
-      在本例中，已将不同的可选声明添加到应用程序可以接收的每种令牌。 ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。 其他客户端请求此应用程序的访问令牌现在将包含 auth_time 声明。 SAML 令牌现在会包含 skypeId 目录架构扩展（在本例中，此应用的应用 ID 为 ab603c56068041afb2f6832e2a17e237）。  SAML 令牌会将 Skype ID 公开为 `extension_skypeId`。
+      在本例中，已将不同的可选声明添加到应用程序可以接收的每种令牌。 ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。 其他客户端请求此应用程序的访问令牌现在将包含 auth_time 声明。 SAML 令牌现在会包含 skypeId 目录架构扩展（在本例中，此应用的应用 ID 为 ab603c56068041afb2f6832e2a17e237）。 SAML 令牌会将 Skype ID 公开为 `extension_skypeId`。
 
 1. 更新完清单后，请单击“保存”以保存清单
 

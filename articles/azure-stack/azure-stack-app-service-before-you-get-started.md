@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240862"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615868"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240862"
 在 Azure Stack 上部署 Azure 应用服务之前，必须完成本文中的先决条件步骤。
 
 > [!IMPORTANT]
-> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.3。
+> 将 1809年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.4 之前部署最新 Azure Stack 开发工具包 (ASDK)。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>下载安装程序与帮助器脚本
 
@@ -44,6 +44,10 @@ ms.locfileid: "50240862"
    - Remove-AppService.ps1
    - 模块文件夹
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>联合在 Marketplace 中的自定义脚本扩展
+
+Azure Stack 上的 azure 应用服务需要自定义脚本扩展 v1.9.0。  扩展必须[从 Marketplace 联合](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)开始在 Azure Stack 上部署或升级 Azure 应用服务之前
 
 ## <a name="high-availability"></a>高可用性
 
@@ -61,7 +65,7 @@ Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 A
 
 从帮助器脚本提取到的文件夹运行 *Get-AzureStackRootCert.ps1* 脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建一个根证书。
 
-运行以下 PowerShell 命令时，必须为 AzureStack\CloudAdmin 提供特权终结点和凭据。
+运行以下 PowerShell 命令时，你必须提供 AzureStack\CloudAdmin 特权终结点和凭据。
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -151,6 +155,9 @@ API 证书放在“管理”角色上。 资源提供程序使用它来帮助保
 
 ## <a name="virtual-network"></a>虚拟网络
 
+> [!NOTE]
+> 预创建自定义虚拟网络是可选的因为 Azure Stack 上的 Azure 应用服务可以创建所需的虚拟网络，但然后将需要与 SQL 和通过公共 IP 地址的文件服务器进行通信。
+
 Azure Stack 上的 Azure 应用服务允许将资源提供程序部署到现有的虚拟网络，或者允许在部署时创建虚拟网络。 使用现有虚拟网络可以通过内部 IP 连接到 Azure Stack 上的 Azure 应用服务所需的文件服务器和 SQL Server。 在 Azure Stack 上安装 Azure 应用服务之前，必须为虚拟网络配置以下地址范围和子网：
 
 虚拟网络 - /16
@@ -167,12 +174,20 @@ Azure Stack 上的 Azure 应用服务允许将资源提供程序部署到现有�
 
 Azure 应用服务需要使用文件服务器。 在生产部署中，必须将文件服务器配置为高度可用，且能够应对故障。
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>在 ASDK 上的 Azure 应用服务的部署文件服务器快速入门模板。
+
 如果只部署 Azure Stack 开发工具包，则可以使用[示例 Azure 资源管理器部署模板](https://aka.ms/appsvconmasdkfstemplate)来部署已配置的单节点文件服务器。 单节点文件服务器位于工作组中。
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>高度可用文件服务器和 SQL Server 的快速入门模板
+
+一个[参考体系结构快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha)现已推出，它将部署文件服务器，SQL Server，支持 Active Directory 中虚拟网络基础结构配置为支持的高度可用的部署在 Azure Stack 上的 azure 应用服务。  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>部署自定义文件服务器的步骤
 
 >[!IMPORTANT]
 > 如果你选择部署应用服务中现有的虚拟网络，应将文件服务器部署到单独的子网从应用服务中。
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>在 Active Directory 中预配组和帐户
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>在 Active Directory 中预配组和帐户
 
 1. 创建以下 Active Directory 全局安全组：
 
@@ -195,7 +210,7 @@ Azure 应用服务需要使用文件服务器。 在生产部署中，必须将�
    - 将 **FileShareOwner** 添加到 **FileShareOwners** 组。
    - 将 **FileShareUser** 添加到 **FileShareUsers** 组。
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>在工作组中预配组和帐户
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>在工作组中预配组和帐户
 
 >[!NOTE]
 > 配置文件服务器时，请通过**管理员命令提示符**运行以下所有命令。 <br>***请勿使用 PowerShell。***
@@ -225,7 +240,7 @@ Azure 应用服务需要使用文件服务器。 在生产部署中，必须将�
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>预配内容共享
+#### <a name="provision-the-content-share"></a>预配内容共享
 
 内容共享包含租户网站内容。 在单个文件服务器上预配内容共享的过程与在 Active Directory 和工作组环境中相同。 但是对于 Active Directory 中的故障转移群集则不同。
 

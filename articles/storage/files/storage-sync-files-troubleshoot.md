@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231876"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014272"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -368,7 +368,7 @@ PerItemErrorCount: 1006.
 
     ![Azure 文件共享属性的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
-如果共享已满且未设置配额，则解决此问题的可行方法之一是，将当前服务器终结点的每个子文件夹放入其独立同步组中的相应服务器终结点内。 这样，每个子文件夹就会同步到单个 Azure 文件共享。
+如果共享已满且未设置配额，则解决此问题的可行方法之一是，将当前服务器终结点的每个子文件夹放入其自己的单独同步组中自己的服务器终结点内。 这样，每个子文件夹就会同步到单个 Azure 文件共享。
 
 <a id="-2134351824"></a>**找不到 Azure 文件共享。**  
 | | |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319976"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240420"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -80,16 +80,16 @@ ms.locfileid: "49319976"
 |安全配置|✔|✔|✔|✔|
 |反恶意软件|✔|✔|X|X|
 |JIT VM 访问|✔|X|✔|X|
-|自适应应用程序控制|✔（仅限 Azure）|X|X|X|
+|自适应应用程序控制|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |磁盘加密|✔|X|✔|X|
 |第三方部署|✔|X|✔|X|
 |NSG|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|Filess 威胁检测|✔|✔|X|X|
 |网络映射|✔|X|✔|X|
-|自适应网络强化|✔|X|✔|X|
+|自适应网络控制|✔|X|✔|X|
 
-* 公共预览版目前支持这些功能。
+\* 公共预览版目前支持这些功能。
 
 
 ## <a name="supported-paas-features"></a>支持的 PaaS 功能
@@ -103,26 +103,17 @@ ms.locfileid: "49319976"
 |Blob 存储帐户*|✔| ✔|
 |应用程序服务|✔| ✔|
 |云服务|✔| X|
-|Redis 缓存|✔| X|
-|Service Fabric|✔| X|
-|Azure 自动化|✔| X|
-|Data Lake |✔| X|
-|密钥保管库|✔| X|
-|服务总线|✔| X|
-|流分析|✔| X|
-|Batch|✔| X|
-|逻辑应用|✔| X|
 |Vnet|✔| NA|
 |子网|✔| NA|
 |NIC|✔| ✔|
 |NSG|✔| NA|
 |订阅|✔| ✔|
 
-* 公共预览版目前支持这些功能。
+\* 公共预览版目前支持这些功能。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心
 - [Azure 安全中心按类型划分的安全警报](security-center-alerts-type.md#virtual-machine-behavioral-analysis) - 了解关于安全中心中虚拟机行为分析和故障转储内存分析的详细信息
 - [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
-- [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章
+- [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

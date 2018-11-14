@@ -1,25 +1,25 @@
 ---
-title: 在 HDInsight 中上传 Hadoop 作业的数据
-description: 了解如何使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Hadoop 作业的数据。
+title: 在 HDInsight 中上传 Apache Hadoop 作业的数据
+description: 了解如何使用 Azure 经典 CLI、Azure 存储资源管理器、Azure PowerShell、Hadoop 命令行或 Sqoop 在 HDInsight 中上传和访问 Apache Hadoop 作业的数据。
 keywords: etl hadoop, 将数据引入 hadoop, hadoop 加载数据
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985973"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256912"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Hadoop 作业的数据
 
-Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Store 的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储和 Data Lake Store 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储和 Data Lake Store 是独立的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的益处，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]和[将 Data Lake Store 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)。
+Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data lake Storage Gen1 和 Data lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]、[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](../storage/data-lake-storage/use-hdi-cluster.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,8 @@ Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Store 的功�
 * 学习以下两篇文章：
 
     - [将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]
-    - [将 Data Lake Store 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)
+    - [将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)
+    - [将 Data Lake Storage Gen2 与 HDInsight 配合使用](../storage/data-lake-storage/use-hdi-cluster.md)   
 
 ## <a name="upload-data-to-azure-storage"></a>将数据上传到 Azure 存储
 
@@ -213,7 +214,7 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
     上传完文件后，可以通过 HDInsight 群集中的作业来使用该文件。
 
 ### <a name="mount-azure-storage-as-local-drive"></a>将 Azure 存储装载为本地驱动器
-请参阅[将 Azure 存储装载为本地驱动器](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)。
+请参阅[将 Azure 存储装载为本地驱动器](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)。
 
 ### <a name="upload-using-services"></a>使用服务上传
 #### <a name="azure-data-factory"></a>Azure 数据工厂
@@ -304,6 +305,8 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-adls-gen1]: hdinsight-hadoop-use-data-lake-store.md
+[hdinsight-adls-gen2]: ../storage/data-lake-storage/use-hdi-cluster.md
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 

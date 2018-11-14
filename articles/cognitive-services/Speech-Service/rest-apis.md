@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025831"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038597"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -57,10 +57,12 @@ Azure 认知服务语音服务的 REST API 与[必应语音 API](https://docs.mi
 
 ### <a name="audio-format"></a>音频格式
 
-在 HTTP `POST` 请求的正文中发送音频。 音频应采用 PCM 单声道（单音）16 位 WAV 格式，16 KHz 的以下格式/编码。
+在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
 
-* 使用 PCM 编解码器的 WAV 格式
-* 使用 OPUS 编解码器的 Ogg 格式
+| 格式 | 编解码器 | Bitrate | 采样率 |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 位 | 16 kHz，单声道 |
+| OGG | OPUS | 16 位 | 16 kHz，单声道 |
 
 >[!NOTE]
 >语音服务中的 REST API 和 WebSocket 支持上述格式。 [语音 SDK](/index.yml) 目前仅支持使用 PCM 编解码器的 WAV 格式。
@@ -104,7 +106,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked

@@ -1,24 +1,24 @@
 ---
-title: 在 HDInsight 群集创建过程中添加 Hive 库 - Azure
-description: 了解如何在群集创建中将 Hive 库（jar 文件）添加到 HDInsight 群集中。
+title: 在 HDInsight 群集创建过程中添加 Apache Hive 库 - Azure
+description: 了解如何在群集创建中将 Apache Hive 库（jar 文件）添加到 HDInsight 群集中。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108680"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035299"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Hive 库
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Apache Hive 库
 
-了解如何在 HDInsight 上预加载 Hive 库。 本文档包含有关在群集创建过程中使用脚本操作预加载库的信息。 使用本文档中的步骤添加的库在 Hive 中全局可用 - 不需使用 [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) 来加载。
+了解如何在 HDInsight 上预加载 Apache Hive 库。 本文档包含有关在群集创建过程中使用脚本操作预加载库的信息。 使用本文档中的步骤添加的库在 Hive 中全局可用 - 不需使用 [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) 来加载。
 
 ## <a name="how-it-works"></a>工作原理
 

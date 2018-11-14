@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302582"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748436"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -79,7 +79,7 @@ ms.locfileid: "44302582"
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>如何将我的代码发布到应用服务？
 
-Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中，转到“设置” > “应用部署”。
+Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 若要使用快速入门，请在 Azure 门户中转到应用服务，在“部署”下，选择“快速入门”。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>为何我的应用有时在部署到应用服务之后重新启动？
 

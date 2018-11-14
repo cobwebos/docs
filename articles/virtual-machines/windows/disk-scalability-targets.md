@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: windows
 ms.component: disks
-ms.openlocfilehash: 401b8ebaa119f146cfcea0f948221c92e8bc6eb9
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: cd2f73b3fb2a8a3d80586063566fe66c37c26c67
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713867"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243447"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 上的 VM 磁盘的可伸缩性和性能目标
 
@@ -23,6 +23,8 @@ ms.locfileid: "39713867"
 请参阅 [Windows VM 大小](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)了解其他详细信息。
 
 ## <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
+
+用星号表示的大小当前处于预览阶段。 请参阅我们的[常见问题解答](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged)，了解它们可用的区域。
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
@@ -34,4 +36,3 @@ ms.locfileid: "39713867"
 ## <a name="see-also"></a>另请参阅
 
 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)
-

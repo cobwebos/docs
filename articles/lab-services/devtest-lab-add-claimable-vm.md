@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 669dfab75f34a0d1f997dc34f600402d3c10669b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3bfb674fa66f0701a099d237f4e760453c7b6a6e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781746"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232121"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建和管理可认领 VM
-使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
+使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[市场映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM 的步骤
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中选择要在其中创建可认领 VM 的实验室。  
 1. 在实验室的“概述”页面上，选择“+ 添加”。  
@@ -52,7 +52,7 @@ ms.locfileid: "33781746"
    将显示 VM 的创建状态，先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
 
 > [!NOTE]
-> 如果使用 [Azure 资源管理器模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
+> 如果通过  [Azure 资源管理器模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。
 >
 >
 

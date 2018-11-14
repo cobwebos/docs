@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d25b072ffc41608bca9e0b23116b2eb453dd160
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740342"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "50740342"
 若要配置 Azure AD 与 JIRA SAML SSO by Microsoft 的集成，需要以下项：
 
 - Azure AD 订阅
-- 应在 Windows 64 位版本上安装并配置 JIRA Core and Software 6.0 到 7.8，或 JIRA Service Desk 3.0 到 3.2
+- 应在 Windows 64 位版本上安装并配置 JIRA Core and Software 6.0 到 7.12，或 JIRA Service Desk 3.0 到 3.5
 - JIRA 服务器已启用 HTTPS
 - 请注意，下面部分列出了支持 JIRA 插件版本。
 - JIRA 服务器应当可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌

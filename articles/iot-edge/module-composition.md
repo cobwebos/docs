@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: beb7574653375024f36912c4b3a37b01d2f59bd5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 12c53b1fdad4ab8f55c000ca1cb4f08dab7c8a74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248383"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230355"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -174,7 +174,7 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
 
 如果未在部署清单中指定模块孪生的所需属性，则 IoT 中心将不会以任何方式修改模块孪生，并且你将能够以编程方式设置所需属性。
 
-将使用用来修改设备孪生的相同机制来修改模块孪生。 有关详细信息，请参阅[设备孪生开发人员指南](../iot-hub/iot-hub-devguide-device-twins.md)。   
+将使用用来修改设备孪生的相同机制来修改模块孪生。 有关详细信息，请参阅[模块孪生开发人员指南](../iot-hub/iot-hub-devguide-module-twins.md)。   
 
 ## <a name="deployment-manifest-example"></a>部署清单示例
 
