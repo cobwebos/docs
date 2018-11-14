@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7dec034812647a883fa8ead05f1a7ed6675b4821
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6dc003473ed228fa8e10bd6a10d5b4b9a3d0ac49
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282741"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621354"
 documentType: LandingData
 title: Azure 机器学习文档
 metadata:
@@ -72,7 +72,7 @@ sections:
       - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
     - title: 使用机器学习模型
       values:
-      - href: 
+      - href: /azure/machine-learning/service/how-to-consume-web-service
       - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
     - title: 生成、优化和管理 ML 管道
       values:
