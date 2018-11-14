@@ -70,6 +70,38 @@ items:
   expanded: true
 - name: 概念
   items:
+  - name: 使用 Azure Cosmos 帐户
+    href: account-overview.md
+  - name: 容器和项
+    items:
+    - name: 使用数据库、容器和项
+      href: databases-containers-items.md
+    - name: 索引
+      items:
+      - name: 概述
+        href: index-overview.md
+      - name: 索引编制策略
+        href: index-policy.md
+      - name: 索引类型
+        href: index-types.md
+      - name: 索引路径
+        href: index-paths.md
+    - name: 更改源
+      items:
+      - name: 概述
+        href: change-feed.md
+      - name: 读取更改源
+        href: read-change-feed.md
+      - name: 更改源处理器
+        href: change-feed-processor.md
+      - name: 将更改源与 Azure Functions 配合使用
+        href: change-feed-functions.md
+    - name: 生存时间
+      href: time-to-live.md
+    - name: 唯一键约束
+      href: unique-keys.md
+    - name: 事务和乐观并发
+      href: database-transactions-optimistic-concurrency.md
   - name: 资源模型
     href: sql-api-resources.md
   - name: 全球分布
@@ -86,7 +118,7 @@ items:
       href: consistency-levels-tradeoffs.md
     - name: 高可用性
       href: high-availability.md
-    - name: 全局缩放吞吐量
+    - name: 全局缩放预配的吞吐量
       href: scaling-throughput.md
     - name: 冲突解决策略
       href: conflict-resolution-policies.md
@@ -106,14 +138,6 @@ items:
       href: request-units.md
     - name: 在容器和数据库上预配吞吐量
       href: set-throughput.md
-  - name: 索引
-    href: indexing-policies.md
-  - name: 更改源
-    href: change-feed.md
-  - name: 生存时间
-    href: time-to-live.md
-  - name: 唯一键
-    href: unique-keys.md
   - name: 安全
     items:
     - name: 概述
@@ -122,9 +146,9 @@ items:
       href: database-encryption-at-rest.md
     - name: 保护对数据的访问
       href: secure-access-to-data.md
-    - name: 防火墙支持
+    - name: IP 防火墙
       href: firewall-support.md
-    - name: 设置 VNet 终结点
+    - name: 从虚拟网络访问
       href: vnet-service-endpoint.md
     - name: Key Vault 支持
       href: access-secrets-from-keyvault.md
@@ -393,6 +417,38 @@ items:
   expanded: true
 - name: 操作指南
   items:
+  - name: 管理数据库帐户
+    href: how-to-manage-database-account.md
+  - name: 配置生存时间
+    href: how-to-time-to-live.md
+  - name: 全球分布
+    items:
+    - name: 管理一致性
+      href: how-to-manage-consistency.md
+    - name: 管理冲突
+      href: how-to-manage-conflicts.md
+  - name: 预配的吞吐量
+    items:
+    - name: 预配容器吞吐量
+      href: how-to-provision-container-throughput.md
+    - name: 预配数据库吞吐量
+      href: how-to-provision-database-throughput.md
+  - name: 使用容器和项
+    items:
+    - name: 创建容器
+      href: how-to-create-container.md
+    - name: 查询容器
+      href: how-to-query-container.md
+  - name: 索引
+    items:
+    - name: 配置索引
+      href: how-to-manage-indexing-policy.md
+  - name: 安全
+    items:
+    - name: 配置 IP 防火墙
+      href: how-to-configure-firewall.md
+    - name: 配置从虚拟网络访问
+      href: how-to-configure-vnet-service-endpoint.md
   - name: 管理
     items:
     - name: 使用 PowerShell 管理
@@ -403,8 +459,6 @@ items:
       href: storage-explorer.md
     - name: 使用数据资源管理器进行管理
       href: data-explorer.md
-    - name: 管理帐户
-      href: manage-account.md
   - name: 日志记录
     items:
     - name: 诊断日志记录
@@ -427,26 +481,6 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: 设置 Azure DevOps CI/CD 管道
     href: tutorial-setup-ci-cd.md
-  - name: 全球分布
-    items:
-    - name: 管理数据库帐户
-      href: how-to-manage-database-account.md
-    - name: 管理一致性
-      href: how-to-manage-consistency.md
-    - name: 管理冲突
-      href: how-to-manage-conflicts.md
-  - name: 预配的吞吐量
-    items:
-    - name: 预配容器吞吐量
-      href: how-to-provision-container-throughput.md
-    - name: 预配数据库吞吐量
-      href: how-to-provision-database-throughput.md
-  - name: 使用容器和项
-    items:
-    - name: 创建容器
-      href: how-to-create-container.md
-    - name: 查询容器
-      href: how-to-query-container.md
   - name: 最佳做法
     items:
     - name: 性能提示
@@ -535,9 +569,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5301ed8dad542a03ddd7be617668db9b25417de6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244264"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622459"

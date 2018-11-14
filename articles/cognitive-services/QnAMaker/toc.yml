@@ -69,42 +69,48 @@ items:
     href: Concepts/data-sources-supported.md
 - name: 操作指南
   items:
-  - name: 设置 QnA Maker 服务
-    href: How-To/set-up-qnamaker-service-azure.md
-  - name: 创建并发布知识库
-    href: Quickstarts/create-publish-knowledge-base.md
-  - name: 创建知识库
-    href: How-To/create-knowledge-base.md
-  - name: 向知识库添加聊天内容
-    href: How-to/chit-chat-knowledge-base.md
-  - name: 将元数据与 GenerateAnswer API 配合使用
-    href: How-To/metadata-generateanswer-usage.md
-  - name: 从预览版迁移知识库
-    href: Tutorials/migrate-knowledge-base.md
-  - name: 编辑知识库
-    href: How-To/edit-knowledge-base.md
-  - name: 针对知识库进行协作
-    href: How-To/collaborate-knowledge-base.md
-  - name: 测试知识库
-    href: How-To/test-knowledge-base.md
-  - name: 发布知识库
-    href: How-To/publish-knowledge-base.md
-  - name: 获取有关知识库的分析
-    href: How-To/get-analytics-knowledge-base.md
-  - name: 管理密钥
-    href: How-To/key-management.md
-  - name: 以另一种语言创建知识库
-    href: How-To/language-knowledge-base.md
-  - name: 集成 QnA Maker 和 LUIS
-    href: Tutorials/integrate-qnamaker-luis.md
-  - name: 为 QnA Maker 创建业务连续性计划
-    href: How-To/business-continuity-plan.md
-  - name: 为 QnA Maker 开发选择容量
-    href: Tutorials/choosing-capacity-qnamaker-deployment.md
-  - name: 升级 QnA Maker 服务
-    href: How-To/upgrade-qnamaker-service.md
-  - name: 排查 QnAMaker 运行时问题并对其更新
-    href: How-To/troubleshooting-runtime.md
+  - name: 管理知识库
+    items:
+    - name: 创建并发布知识库
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: 创建知识库
+      href: How-To/create-knowledge-base.md
+    - name: 向知识库添加聊天内容
+      href: How-to/chit-chat-knowledge-base.md
+    - name: 将元数据与 GenerateAnswer API 配合使用
+      href: How-To/metadata-generateanswer-usage.md
+    - name: 从预览版迁移知识库
+      href: Tutorials/migrate-knowledge-base.md
+    - name: 编辑知识库
+      href: How-To/edit-knowledge-base.md
+    - name: 针对知识库进行协作
+      href: How-To/collaborate-knowledge-base.md
+    - name: 以另一种语言创建知识库
+      href: How-To/language-knowledge-base.md
+    - name: 发布知识库
+      href: How-To/publish-knowledge-base.md
+    - name: 测试知识库
+      href: How-To/test-knowledge-base.md
+  - name: 与其他服务集成
+    items:
+    - name: 集成 QnA Maker 和 LUIS
+      href: Tutorials/integrate-qnamaker-luis.md
+  - name: 管理服务
+    items:
+    - name: 设置 QnA Maker 服务
+      href: How-To/set-up-qnamaker-service-azure.md
+    - name: 获取有关知识库的分析
+      href: How-To/get-analytics-knowledge-base.md
+    - name: 管理密钥
+      href: How-To/key-management.md
+    - name: 为 QnA Maker 开发选择容量
+      href: Tutorials/choosing-capacity-qnamaker-deployment.md
+    - name: 升级 QnA Maker 服务
+      href: How-To/upgrade-qnamaker-service.md
+    - name: 为 QnA Maker 创建业务连续性计划
+      href: How-To/business-continuity-plan.md
+    - name: 排查 QnAMaker 运行时问题并对其更新
+      href: How-To/troubleshooting-runtime.md
   - name: 使用 REST API
     items:
     - name: C#
@@ -147,9 +153,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: 博客
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: c376fc03f6dd884206373588c9277dfb224186cd
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7bec0228aa8900f004aa61c2ae5316655628e101
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740053"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623523"

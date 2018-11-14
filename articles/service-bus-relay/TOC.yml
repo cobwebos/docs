@@ -5,37 +5,44 @@ items:
   items:
   - name: 什么是中继？
     href: relay-what-is-it.md
-  - name: 常见问题解答
-    href: relay-faq.md
-- name: 快速入门
+- name: 教程
   items:
-  - name: 创建本地/云混合应用程序
-    href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
   - name: 混合连接
     items:
-    - name: .NET Websocket
+    - name: 发送和接收消息 - .NET Websocket
       href: relay-hybrid-connections-dotnet-get-started.md
-    - name: .NET HTTP
+    - name: 发送和接收消息 - .NET HTTP
       href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-    - name: Node Websocket
+    - name: 发送和接收消息 - Node Websocket
       href: relay-hybrid-connections-node-get-started.md
-    - name: Node HTTP
+    - name: 发送和接收消息 - Node HTTP
       href: relay-hybrid-connections-http-requests-node-get-started.md
-  - name: WCF 中继教程
-    href: service-bus-relay-tutorial.md
-  - name: WCF 中继 REST 教程
-    href: service-bus-relay-rest-tutorial.md
+  - name: Windows Communication Foundation (WCF)
+    items:
+    - name: 向云中的 Web 应用程序公开本地 WCF 服务
+      href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - name: 向网络外部的 WCF 客户端公开本地 WCF 服务
+      href: service-bus-relay-tutorial.md
+    - name: 向网络外部的客户端公开本地 WCF REST 服务
+      href: service-bus-relay-rest-tutorial.md
+- name: 示例
+  items:
+  - name: 混合连接
+    href: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+  - name: WCF 中继
+    href: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- name: 概念
+  items:
+  - name: 身份验证和授权
+    href: relay-authentication-and-authorization.md
+  - name: 混合连接协议
+    href: relay-hybrid-connections-protocol.md
 - name: 如何
   items:
   - name: 规划和设计
     items:
-    - name: 身份验证和安全性
-      href: relay-authentication-and-authorization.md
-      items:
-      - name: 从 ACS 迁移到 SAS
-        href: relay-migrate-acs-sas.md
-    - name: 混合连接协议
-      href: relay-hybrid-connections-protocol.md
+    - name: 从 ACS 迁移到 SAS
+      href: relay-migrate-acs-sas.md
   - name: 开发
     items:
     - name: 创建命名空间
@@ -69,6 +76,8 @@ items:
   items:
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
+  - name: 常见问题解答
+    href: relay-faq.md
   - name: 博客
     href: https://blogs.msdn.microsoft.com/servicebus/
   - name: 定价
@@ -79,9 +88,9 @@ items:
     href: https://github.com/azure/azure-relay/tree/master/samples
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-servicebusrelay
-ms.openlocfilehash: 1c15d984e19f0585f386620f1e6e12667c69da5e
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 0e6f9b0a1830a570bc8388cbfb8149adb12bea11
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144799"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613692"

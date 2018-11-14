@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fe78cdfefb8062d3d576937afd133905e1787a8d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7eba9c526f26254a400eaee1a00644399d3979a8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698795"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612094"
 documentType: LandingData
 title: Azure 服务总线中继文档
 metadata:
@@ -22,33 +22,19 @@ metadata:
 abstract:
   description: Azure 中继服务可在无需打开防火墙连接或者对企业网络基础结构进行侵入式改造的情况下，为企业网络和公有云中的本地环境与云环境之间的混合应用程序提供便利。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure 中继来发送和接收消息：
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: /azure/media/index/logo_net.svg
-      text: .NET Web Socket
-      href: /azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started
-    - image:
-        src: /azure/media/index/logo_net.svg
-      text: .NET HTTP
-      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started
-    - image:
-        src: /azure/media/index/logo_nodejs.svg
-      text: Node.js Web Socket
-      href: /azure/service-bus-relay/relay-hybrid-connections-node-get-started
-    - image:
-        src: /azure/media/index/logo_nodejs.svg
-      text: Node.js HTTP
-      href: /azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用 Azure 中继来创建、管理以及发送和接收消息
+    text: <b>混合连接：</b>
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">发送和接收消息 - .NET Web Socket</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">发送和接收消息 - .NET HTTP</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">发送和接收消息 - Node.js Web Socket</a>
+    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">发送和接收消息 - Node.js HTTP</a>
+  - type: paragraph
+    text: <b>Windows Communication Foundation (WCF) 中继：</b>
   - type: list
     style: ordered
     items:
@@ -58,12 +44,13 @@ sections:
 - title: 示例
   items:
   - type: paragraph
-    text: 查找脚本来管理常见任务。
+    text: GitHub 上的示例
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples">Azure 中继示例</a>
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">混合连接</a>
+    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>
 - title: 引用
   items:
   - type: list
