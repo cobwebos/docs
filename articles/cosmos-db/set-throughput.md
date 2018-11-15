@@ -1,260 +1,85 @@
 ---
-title: 预配 Azure Cosmos DB 的吞吐量 | Microsoft Docs
-description: 了解如何为 Azure Cosmos DB 容器、集合以及关系图和表设置预配吞吐量。
-services: cosmos-db
+title: 预配 Azure Cosmos DB 的吞吐量
+description: 了解如何为 Azure Cosmos DB 容器和数据库设置预配吞吐量。
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 2280a3f6b2a67d392a109a5294e1509bcc804bc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 24b6beec8ecda993667464be5c74dab50fd93201
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869918"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278882"
 ---
-# <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>为 Azure Cosmos DB 容器和数据库设置和获取吞吐量
+# <a name="provision-throughput-for-cosmos-db-containers-and-databases"></a>为 Cosmos DB 容器和数据库预配吞吐量
 
-可通过 Azure 门户或客户端 SDK 为一个 Azure Cosmos DB 容器或一组容器设置吞吐量。 本文介绍了为 Azure Cosmos DB 帐户配置不同粒度的吞吐量所需的步骤。
+Cosmos 数据库是一组容器的管理单元。 数据库包含一组不限架构的容器。 Cosmos 容器是吞吐量和存储的缩放单元。 容器跨 Azure 区域中的一组计算机水平分区，并分布在与 Cosmos 帐户关联的所有 Azure 区域之间。
 
-## <a name="provision-throughput-by-using-azure-portal"></a>使用 Azure 门户预配吞吐量
+Azure Cosmos DB 允许以两种粒度配置吞吐量 - **Cosmos 容器**和 **Cosmos 数据库**。
 
-### <a name="provision-throughput-for-a-container-collectiongraphtable"></a>为一个容器（集合/图/表）预配吞吐量
+# <a name="setting-throughput-on-a-cosmos-container"></a>对 Cosmos 容器设置吞吐量  
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在左侧导航中选择“所有资源”，找到自己的 Azure Cosmos DB 帐户。  
-3. 可以在创建容器（集合、图、表）或更新现有容器的吞吐量时配置吞吐量。  
-4. 若要在创建容器时分配吞吐量，请打开“数据资源管理器”边栏选项卡，然后选择“新建集合”（其他 API 可选择“新建图”或“新建表”）  
-5. 在“添加集合”边栏选项卡中填充窗体。 下表描述了此边栏选项卡中的字段：  
+对 Cosmos 容器预配的吞吐量专门保留给容器使用。 容器始终可获得预配的吞吐量。 对容器预配的吞吐量有 SLA 提供的经济保障。 若要对容器配置吞吐量，请参阅[如何对 Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 
-   |**设置**  |**说明**  |
-   |---------|---------|
-   |数据库 ID  |  提供用于标识数据库的唯一名称。 数据库是一个或多个集合的逻辑容器。 数据库名称必须包含 1 到 255 个字符，不能包含 /、\\、#、? 或尾随空格。 |
-   |集合 ID  | 提供用于标识集合的唯一名称。 集合 ID 与数据库名称的字符要求相同。 |
-   |存储容量   | 此值表示数据库的存储容量。 预配单个集合的吞吐量时，存储容量可以是“固定的(10 GB)”，也可以是“无限制的”。 无限制的存储容量要求为数据设置分区键。  |
-   |Throughput   | 每个集合和数据库都可以按每秒的请求单位数来设置吞吐量。  并且集合可以具有固定或无限的存储容量。 |
+对容器设置预配吞吐量是广泛使用的选项。 尽管可以通过预配任意数量的吞吐量 (RU) 来弹性缩放容器的吞吐量，但无法有选择性地指定逻辑分区的吞吐量。 当逻辑分区上运行的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量时，操作将受到速率限制。 发生速率限制时，可以增大整个容器的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-6. 输入这些字段的值以后，请选择“确定”以保存设置。  
+如果希望容器的性能有保证，则我们建议以容器粒度配置吞吐量。
 
-   ![设置集合的吞吐量](./media/set-throughput/set-throughput-for-container.png)
+对 Cosmos 容器预配的吞吐量均匀分布于该容器的所有逻辑分区之间。 由于某个容器的一个或多个逻辑分区由资源分区托管，因此，物理分区专属于该容器，并支持对该容器预配的吞吐量。 下图显示了资源分区如何托管容器的一个或多个逻辑分区：
 
-7. 若要更新现有容器的吞吐量，请展开数据库和容器，然后单击“设置”。 在新窗口中键入新的吞吐量值，然后选择“保存”。  
+![资源分区](./media/set-throughput/resource-partition.png)
 
-   ![更新集合的吞吐量](./media/set-throughput/update-throughput-for-container.png)
+# <a name="setting-throughput-on-a-cosmos-database"></a>对 Cosmos 数据库设置吞吐量
 
-### <a name="provision-throughput-for-a-set-of-containers-or-at-the-database-level"></a>为一组容器预配吞吐量，或者在数据库级别预配吞吐量
+对 Cosmos 数据库预配吞吐量时，除非对特定的容器指定了预配吞吐量，否则，吞吐量将在在该数据库中的所有容器之间共享。 在容器之间共享数据库吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要对数据库配置吞吐量，请参阅[如何对 Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在左侧导航中选择“所有资源”，找到自己的 Azure Cosmos DB 帐户。  
-3. 可以在创建数据库或更新现有数据库的吞吐量时配置吞吐量。  
-4. 若要在创建数据库时分配吞吐量，请打开“数据资源管理器”边栏选项卡，然后选择“新建数据库”  
-5. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。  
+对 Cosmos 数据库设置吞吐量可保证随时能够获得预配的吞吐量。 由于数据库中的所有容器共享预配的吞吐量，因此，Cosmos DB 不会针对该数据库中的特定容器提供任何可预测的吞吐量保证。 特定容器可获得的吞吐量部分取决于：
 
-   ![使用新数据库选项设置吞吐量](./media/set-throughput/set-throughput-with-new-database-option.png)
+* 容器数量
+* 为各个容器选择的分区键
+* 工作负荷在容器的各个逻辑分区之间的分布形式。 
 
-6. 若要更新现有数据库的吞吐量，请展开数据库和容器，然后单击“缩放”。 在新窗口中键入新的吞吐量值，然后选择“保存”。  
+若要在多个容器之间共享吞吐量，而不希望将吞吐量专门提供给任何特定的容器使用，则我们建议对数据库配置吞吐量。 下面最适合在数据库级别预配吞吐量的一些示例：
 
-   ![更新数据库的吞吐量](./media/set-throughput/update-throughput-for-database.png)
+* 跨一组容器共享数据库的预配吞吐量对多租户应用程序非常有帮助。 每个用户可由不同的 Cosmos 容器表示。
 
-### <a name="provision-throughput-for-a-set-of-containers-as-well-as-for-an-individual-container-in-a-database"></a>为数据库中的一组容器和一个容器预配吞吐量
+* 将 VM 群集或本地物理服务器中托管的 NoSQL 数据库（例如 MongoDB、Cassandra）迁移到 Cosmos DB 时，在一组容器之间共享数据库的预配吞吐量非常有利。 可将针对 Cosmos 数据库配置的预配吞吐量视为在逻辑上等同于（但更具成本效益和弹性）MongoDB 或 Cassandra 群集的计算容量。  
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在左侧导航中选择“所有资源”，找到自己的 Azure Cosmos DB 帐户。  
-3. 创建数据库并向其分配吞吐量。 打开“数据资源管理器”边栏选项卡，然后选择“新建数据库”  
-4. 填充“数据库 ID”值，勾选“预配吞吐量”选项，然后配置吞吐量值。  
+在任意给定的时间点，分配给数据库中容器的吞吐量将分布在该容器的所有逻辑分区之间。 如果有容器共享数据库的预配吞吐量，则无法选择性地将吞吐量应用到特定的容器或逻辑分区。 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 发生速率限制时，可以增大整个容器的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-   ![使用新数据库选项设置吞吐量](./media/set-throughput/set-throughput-with-new-database-option.png)
+可在单个资源分区中托管多个共享数据库预配吞吐量的逻辑分区。 尽管容器的单个逻辑分区始终划归到资源分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 下图显示了资源分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
-5. 接下来，在数据库（已在上面的步骤中创建）中创建一个集合。 若要创建集合，请右键单击数据库，然后选择“新建集合”。  
+![资源分区](./media/set-throughput/resource-partition2.png)
 
-6. 在“添加集合”边栏选项卡中输入集合的名称，然后输入分区键。 如果选择不分配吞吐量值，也可为该特定容器预配吞吐量。分配给数据库的吞吐量由集合共享。  
+## <a name="setting-throughput-on-a-cosmos-database-and-a-container"></a>对 Cosmos 数据库和容器设置吞吐量
 
-   ![（可选）设置容器的吞吐量](./media/set-throughput/optionally-set-throughput-for-the-container.png)
+可以合并两个模型，并同时对数据库和容器预配吞吐量。 以下示例演示如何对 Cosmos 数据库和容器预配吞吐量：
 
-## <a name="considerations-when-provisioning-throughput"></a>预配吞吐量时的注意事项
+* 可以创建预配吞吐量为“K”RU 的名为“Z”的 Cosmos 数据库。 
+* 接下来，在该数据库中创建名为 A、B、C、D 和 E 的五个容器。
+* 可对容器“B”显式配置“P”RU 的预配吞吐量。
+* “K”RU 吞吐量在 A、C、D 和 E 这四个容器之间共享。A、C、D 或 E 的确切可用吞吐量有所不同，每个容器的吞吐量没有 SLA 的保障。
+* 保证容器“B”始终可以获得“P”RU 吞吐量，并有 SLA 的保障。
 
-下面是一些注意事项，可以帮助你确定吞吐量预留策略。
+## <a name="comparison-of-models"></a>模型比较
 
-### <a name="considerations-when-provisioning-throughput-at-the-database-level"></a>在数据库级别预配吞吐量时的注意事项
-
-在以下情况下，考虑在数据库级别（即针对一组容器）预配吞吐量：
-
-* 至少有十几个容器可以部分或全部共享吞吐量。  
-
-* 从专用于在 IaaS 托管的 VM 上运行或本地运行的单租户数据库（例如，NoSQL 数据库或关系数据库）迁移到 Azure Cosmos DB，并且有许多容器。  
-
-* 需要根据数据库级别的共用吞吐量来考虑工作负荷的计划外峰值。  
-
-* 需获取数据库中一组容器的聚合吞吐量，不需在单个容器上设置吞吐量。
-
-### <a name="considerations-when-provisioning-throughput-at-the-container-level"></a>在容器级别预配吞吐量时的注意事项
-
-出现以下情况时，考虑在单个容器上预配吞吐量：
-
-* Azure Cosmos DB 容器数目较少。  
-
-* 需要在 SLA 所支持的某个给定容器上获取保证的吞吐量。
-
-<a id="set-throughput-sdk"></a>
-
-## <a name="set-throughput-by-using-sql-api-for-net"></a>使用 SQL API for .NET 设置吞吐量
-
-### <a name="set-throughput-at-the-container-level"></a>在容器级别设置吞吐量
-以下代码片段使用 SQL API 的 .NET SDK 创建每秒 3,000 个请求单位（适用于单个容器）的容器：
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>在数据库级别为一组容器设置吞吐量
-
-以下代码片段使用 SQL API 的 .NET SDK 为一组容器预配每秒 100,000 个请求单位的吞吐量：
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = await client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 });
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-Azure Cosmos DB 运行一个预留模型来预配吞吐量。 也就是说，用户需要根据保留的吞吐量付费，不管实际使用的吞吐量是多少。 随着应用程序的负载、数据和使用模式的更改，可以通过 SDK 或 [Azure 门户](https://portal.azure.com)轻松增加和减少保留的 RU 数。
-
-每个或每组容器都会映射到 Azure Cosmos DB 中的 `Offer` 资源，该资源包含有关预配吞吐量的元数据。 可以通过查找容器的相应服务资源，并使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将容器的吞吐量更改为每秒 5,000 个请求单位。 更改吞吐量后，应该刷新任何现有的 Azure 门户窗口以显示已更改的吞吐量。 
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-更改吞吐量不会影响一个或一组容器的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
-
-<a id="set-throughput-java"></a>
-
-## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>使用 SQL API for Java 设置吞吐量
-
-下面的代码片段检索当前吞吐量并将其更改为 500 RU/s。 若要查看完整的代码示例，请参阅 GitHub 上的 [OfferCrudSamples.java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) 文件。 
-
-```Java
-// find offer associated with this collection
-// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
-Iterator < Offer > it = client.queryOffers(
-    String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
-assertThat(it.hasNext(), equalTo(true));
-
-Offer offer = it.next();
-assertThat(offer.getString("offerResourceId"), equalTo(collectionResourceId));
-assertThat(offer.getContent().getInt("offerThroughput"), equalTo(throughput));
-
-// update the offer
-int newThroughput = 500;
-offer.getContent().put("offerThroughput", newThroughput);
-client.replaceOffer(offer);
-```
-
-## <a name="get-the-request-charge-using-cassandra-api"></a>使用 Cassandra API 获取请求费用 
-
-通过 Cassandra API 可以获取有关给定操作的请求单位费用的附加信息。 例如，可以按如下方式检索插入操作的 RU/秒费用：
-
-```csharp
-var insertResult = await tableInsertStatement.ExecuteAsync();
- foreach (string key in insertResult.Info.IncomingPayload)
-        {
-            byte[] valueInBytes = customPayload[key];
-            string value = Encoding.UTF8.GetString(valueInBytes);
-            Console.WriteLine($“CustomPayload:  {key}: {value}”);
-        }
-```
-
-
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>使用 MongoDB API 门户指标获取吞吐量
-
-准确估算 MongoDB API 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
-
-![MongoDB API 门户指标][1]
-
-### <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
-如果应用程序超出针对某个容器或一组容器预配的吞吐量，则会对该应用程序进行速率限制，直到使用速率降至低于预配的吞吐量速率。 进行速率限制时，后端会结束请求并返回 `16500` 错误代码 -`Too Many Requests`。 默认情况下，在返回`Too Many Requests`错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的`Too Many Requests`错误代码，可能需要考虑在应用程序的错误处理例程中添加重试逻辑，或者[提高容器的预配吞吐量](set-throughput.md)。
-
-## <a id="GetLastRequestStatistics"></a>通过 MongoDB API 的 GetLastRequestStatistics 命令获取请求费用
-
-MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索给定操作的请求费用。
-
-例如，在 Mongo Shell 中执行所需的操作来验证其请求费用。
-```
-> db.sample.find()
-```
-
-接下来，执行命令 *getLastRequestStatistics*。
-```
-> db.runCommand({getLastRequestStatistics: 1})
-{
-    "_t": "GetRequestStatisticsResponse",
-    "ok": 1,
-    "CommandName": "OP_QUERY",
-    "RequestCharge": 2.48,
-    "RequestDurationInMilliSeconds" : 4.0048
-}
-```
-
-有一种方法可以估算应用程序所需的保留吞吐量：在针对应用程序所用代表性项运行典型操作时，记录与之相关的请求单位费用，然后估算预计每秒会执行的操作数。
-
-> [!NOTE]
-> 如果有多种项类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型项相关联的适用操作请求单位费用。
-> 
-> 
-
-## <a name="throughput-faq"></a>吞吐量常见问题
-
-**是否可以将吞吐量设置为小于 400 RU/s？**
-
-400 RU/s 是 Cosmos DB 单个分区容器上可用的最小吞吐量（1000 RU/s 是分区容器的最小值）。 请求单位按 100 RU/s 间隔进行设置，但吞吐量不能设置为 100 RU/s 或小于 400 RU/s 的任何值。 如果在寻找一种经济高效的方法来开发和测试 Cosmos DB，则可以使用免费的 [ 模拟器](local-emulator.md)（可以在本地免费部署）。 
-
-**如何使用 MongoDB API 设置吞吐量？**
-
-没有可设置吞吐量的 MongoDB API 扩展。 建议使用 SQL API，如[使用 SQL API for .NET 设置吞吐量](#set-throughput-sdk)中所示。
+|**配额**  |**对数据库的预配吞吐量**  |**对容器预配的吞吐量**|
+|---------|---------|---------|
+|缩放单元|容器|容器|
+|最小 RU 数 |400 |400|
+|每个容器的最小 RU 数|100|400|
+|使用 1 GB 存储所需的最小 RU 数|40|40|
+|最大 RU 数|对于数据库无限|对于容器无限|
+|分配/提供给特定容器的 RU 数|无保证。 为给定容器分配的 RU 数取决于多种属性，例如，为共享吞吐量的容器选择的分区键、工作负荷的分布、容器的数量。 |对容器配置的所有 RU 专门保留给该容器使用。|
+|容器的最大存储|不受限制|不受限制|
+|容器的每个逻辑分区的最大吞吐量|10K RU|10K RU|
+|容器的每个逻辑分区的最大存储（数据 + 索引）|10 GB|10 GB|
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何估算吞吐量和请求单位数，请参阅 [Azure Cosmos DB 中的请求单位数和估算吞吐量](request-units.md)
+* 详细了解[逻辑分区](partition-data.md)
+* 了解[如何对 Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)
+* 了解[如何对 Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)
 
-* 若要了解有关使用 Cosmos DB 进行预配和全球扩展的详细信息，请参阅[使用 Cosmos DB 进行分区和缩放](partition-data.md)。
-
-[1]: ./media/set-throughput/api-for-mongodb-metrics.png

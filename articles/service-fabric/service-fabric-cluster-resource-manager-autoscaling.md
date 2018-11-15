@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362596"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281643"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -28,7 +28,9 @@ ms.locfileid: "49362596"
 * 如果我的网关的所有实例平均使用两个以上的核心，则通过再添加一个实例来扩大网关服务。 每小时添加一个，但总共不要超过 7 个实例。
 * 如果我的网关的所有实例平均使用少于 0.5 个的核心，则通过删除一个实例来缩小服务。 每小时删除一个，但总共不要少于 3 个实例。
 
-容器和常规 Service Fabric 服务都支持自动缩放。 本文的其余部分将介绍缩放策略、启用或禁用自动缩放的方式，并举例说明如何使用此功能。
+容器和常规 Service Fabric 服务都支持自动缩放。 若要使用自动缩放，需要在 Service Fabric 运行时 6.2 或更高版本上运行。 
+
+本文的其余部分将介绍缩放策略、启用或禁用自动缩放的方式，并举例说明如何使用此功能。
 
 ## <a name="describing-auto-scaling"></a>描述自动缩放
 可以为 Service Fabric 群集中的每个服务定义自动扩展策略。 每个缩放策略由两部分组成：
@@ -41,7 +43,7 @@ ms.locfileid: "49362596"
 目前自动缩放的支持机制有两种。 第一种适用于无状态服务或容器，其中通过添加或删除[实例](service-fabric-concepts-replica-lifecycle.md)来执行自动缩放。 对于有状态服务和无状态服务，还可以通过添加或删除服务的命名[分区](service-fabric-concepts-partitioning.md)来执行自动缩放。
 
 > [!NOTE]
-> 目前每个服务只支持一种缩放策略。
+> 目前，每个服务仅支持一个缩放策略，并且每个缩放策略仅支持一个缩放触发器。
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>对采用基于实例的缩放的分区负载触发器求平均值
 第一种类型的触发器基于无状态服务分区中实例的负载。 指标负载首先经过平滑处理，获得分区中每个实例的负载，然后将分区的所有实例上的这些值求平均。 有三个因素确定何时缩放服务：

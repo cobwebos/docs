@@ -2,39 +2,38 @@
 title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight
 description: 了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 3f045000791ff2e760cdd69aa524d5222fd76d06
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 11/06/2018
+ms.openlocfilehash: b029ff7575f9d8511abcc1619d0c5e2e00df01ea
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389473"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282180"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 Azure Data Lake Store 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+要分析 HDInsight 群集中的数据，可以将数据存储在 Azure 存储和/或 [Azure Data Lake Storage Gen 1/ Azure Data Lake Store Gen2] 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.5，可以选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统（有少数例外）。 有关对将 Data Lake Store 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
+Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.6，可以选择 Azure 存储或 Azure Data Lake Storage Gen 1/Azure Data Lake Store Gen 2 作为默认文件系统（有少数例外）。 有关对将 Data Lake Storage Gen 1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
 
-本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Store 与 HDInsight 群集如何配合工作，请参阅[如何配合使用 Azure Data Lake Store 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Storage Gen 1 与 HDInsight 群集如何配合工作，请参阅[如何将 Azure Data Lake Store 与 Azure HDInsight 群集配合使用](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 通过 Hadoop 分布式的文件系统 (HDFS) 界面，可以针对作为 Blob 存储的结构化或非结构化数据直接运行 HDInsight 中的整套组件。
 
 > [!WARNING]
 > 创建 Azure 存储帐户时，有几个选项可用。 下表介绍了 HDInsight 所支持的选项：
-> 
-> | 存储帐户类型 | 存储层 | 受 HDInsight 支持 |
-> | ------- | ------- | ------- |
-> | 通用存储帐户 | 标准 | __是__ |
-> | &nbsp; | 高级 | 否 |
-> | Blob 存储帐户 | 热 | 否 |
-> | &nbsp; | 冷 | 否 |
+
+| 存储帐户类型 | 支持的服务 | 支持的性能层 | 支持的访问层 |
+|----------------------|--------------------|-----------------------------|------------------------|
+| 常规用途 V2   | Blob               | 标准                    | 热、冷、存档3    |
+| 常规用途 V1   | Blob               | 标准                    | 不适用                    |
+| Blob 存储         | Blob               | 标准                    | 热、冷、存档3    |
 
 建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 请注意，默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
@@ -67,7 +66,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 创建过程中定义的存储帐户及其密钥存储在群集节点上的 %HADOOP/_HOME%/conf/core-site.xml 中。 HDInsight 的默认行为是使用 core-site.xml 文件中定义的存储帐户。 可以使用 [Ambari](./hdinsight-hadoop-manage-ambari.md) 修改此设置
 
-多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明。 （它目前对带有存储帐户的 Pig 有效，但对元数据无效。）有关详细信息，请参阅[将 HDInsight 群集与备用存储帐户和元存储配合使用](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
+多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明。 （它目前对带有存储帐户的 Pig 有效，但对元数据无效。）有关详细信息，请参阅[将 HDInsight 群集与备用存储帐户和元存储配合使用](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)。
 
 Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键值对，没有目录层次结构。 不过，可在键名称中使用斜杠字符 (/)，使其看起来像存储在目录结构中的文件。 例如，Blob 的键可以是 *input/log1.txt*。 不存在实际的 *input* 目录，但由于键名称中包含斜杠字符，因此使其看起来像一个文件路径。
 

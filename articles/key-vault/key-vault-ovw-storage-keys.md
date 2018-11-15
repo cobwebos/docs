@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: f3f310c247aea3842b5ec7a9a1409032d5bdc0bf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: e62c599d82f488bf1fc30ce503c271084c5ae59d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912911"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300213"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
 
@@ -44,7 +44,7 @@ ms.locfileid: "50912911"
 1. 创建存储帐户后，运行以下命令来获取要管理的存储帐户的资源 ID
 
     ```
-    az storage account show -n storageaccountname (Copy ID out of the result of this command)
+    az storage account show -n storageaccountname (Copy ID field out of the result of this command)
     ```
     
 2. 获取 Azure Key Vault 的服务主体的应用程序 ID 
@@ -56,7 +56,7 @@ ms.locfileid: "50912911"
 3. 将存储密钥操作员角色分配给 Azure Key Vault 标识
 
     ```
-    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ApplicationIdOfKeyVault> --scope <IdOfStorageAccount>
     ```
     
 4. 创建 Key Vault 托管存储帐户。     <br /><br />

@@ -3,128 +3,65 @@ title: 安装移动服务以将 VMware VM 和物理服务器灾难恢复到 Azur
 description: 了解如何安装移动服务代理以使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 14be544c53bf3393466cfa33b2ad815f07d0005d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212686"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007410"
 ---
 # <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>安装移动服务以对 VMware VM 和物理服务器进行灾难恢复
 
-Azure Site Recovery 移动服务安装在要复制到 Azure 的 VMware VM 和物理服务器上。 该服务捕获计算机上的数据写入，然后将其转发到进程服务器。 将移动服务部署到要复制到 Azure 的每台计算机（VMware VM 或物理服务器）上。 可使用以下方法将移动服务部署到需要保护的服务器和 VMware VM 上：
+在使用 [Azure Site Recovery](site-recovery-overview.md) 设置 VMware VM 和物理服务器的灾难恢复时，可在每个本地 VMware VM 和物理服务器上安装 [Site Recovery 移动服务](vmware-physical-mobility-service-overview.md)。  移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器。
+
+## <a name="install-on-windows-machine"></a>在 Windows 计算机上安装
+
+在要保护的每台 Windows 计算机上，执行以下操作：
+
+1. 确保计算机与进程服务器之间已建立网络连接。 如果尚未设置单独的进程服务器，则默认情况下它在配置服务器上运行。
+1. 创建可供进程服务器用来访问计算机的帐户。 该帐户应具有管理员权限（本地或域）。 只能将此帐户用于推送安装和代理更新。
+2. 如果未使用域帐户，请在本地计算机上禁用远程用户访问控制，如下所述：
+    - 在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下，添加一个新的 DWORD：**LocalAccountTokenFilterPolicy**。 将值设置为 **1**。
+    -  为此，请在命令提示符下运行以下命令：  
+   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+3. 在要保护的计算机上的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。 启用“文件和打印机共享”和“Windows Management Instrumentation (WMI)”。 对于属于某个域的计算机，可以使用组策略对象 (GPO) 配置防火墙设置。
+
+   ![防火墙设置](./media/vmware-azure-install-mobility-service/mobility1.png)
+
+4. 添加在 CSPSConfigtool 中创建的帐户。 若要执行此操作，请登录到你的配置服务器。
+5. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
+6. 在“管理帐户”选项卡中，选择“添加帐户”。
+7. 添加已创建的帐户。
+8. 输入为计算机启用复制时使用的凭据。
+
+## <a name="install-on-linux-machine"></a>在 Linux 计算机上安装
+
+在要保护的每台 Linux 计算机上，执行以下操作：
+
+1. 确保 Linux 计算机与进程服务器之间已建立网络连接。
+2. 创建可供进程服务器用来访问计算机的帐户。 帐户应该是源 Linux 服务器上的 **root** 用户。 只能将此帐户用于推送安装和更新。
+3. 确保源 Linux 服务器上的 /etc/hosts 文件包含用于将本地主机名映射到所有网络适配器关联的 IP 地址的条目。
+4. 在要复制的计算机上安装最新的 openssh、openssh-server 和 openssl 包。
+5. 确保安全外科 (SSH) 已启用且正在端口 22 上运行。
+4. 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证。 为此，请以 **root** 身份登录。
+5. 在 **/etc/ssh/sshd_config** 文件中，找到以“PasswordAuthentication”开头的行。
+6. 取消注释该行，并将值更改为 **yes**。
+7. 找到以“Subsystem”开头的行，并取消注释该行。
+
+      ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
+
+8. 重启 sshd 服务。
+9. 添加在 CSPSConfigtool 中创建的帐户。 若要执行此操作，请登录到你的配置服务器。
+10. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
+11. 在“管理帐户”选项卡中，选择“添加帐户”。
+12. 添加已创建的帐户。
+13. 输入为计算机启用复制时使用的凭据。
+
+## <a name="next-steps"></a>后续步骤
+
+安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。 详细了解如何为 [VMware VM(vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
 
 
-* [使用 System Center Configuration Manager 等软件部署工具安装](vmware-azure-mobility-install-configuration-mgr.md)
-* [使用 Azure 自动化和 Desired State Configuration (Automation DSC) 安装](vmware-azure-mobility-deploy-automation-dsc.md)
-* [从 UI 手动安装](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui)
-* [从命令提示符手动安装](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt)
-* [使用 Site Recovery 推送安装进行安装](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
-
-
->[!IMPORTANT]
-> 从版本 9.7.0.0 开始，在 Windows VM 上，移动服务安装程序还会安装最新可用的 [Azure VM 代理](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 当计算机故障转移到 Azure 时，该计算机满足使用任何 VM 扩展所需的代理安装先决条件。
-> </br>在 Linux VM 上，必须手动安装 WALinuxAgent。
-
-## <a name="prerequisites"></a>先决条件
-在服务器上手动安装移动服务之前，请完成以下先决条件步骤：
-1. 登录配置服务器，并以管理员身份打开“命令提示符”窗口。
-2. 将目录更改到 bin 文件夹，然后创建一个密码文件。
-
-    ```
-    cd %ProgramData%\ASR\home\svsystems\bin
-    genpassphrase.exe -v > MobSvc.passphrase
-    ```
-3. 将密码文件存储在安全位置中。 安装移动服务时需要使用此文件。
-4. 适用于所有支持的操作系统的移动服务安装程序均位于 %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository 文件夹。
-
-### <a name="mobility-service-installer-to-operating-system-mapping"></a>移动服务安装程序到操作系统的映射
-
-要查看具有兼容移动服务包的操作系统列表，请参阅 [VMware 虚拟机和物理服务器支持的操作系统](vmware-physical-azure-support-matrix.md#replicated-machines)。
-
-| 安装程序文件模板名称| 操作系统 |
-|---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1（64 位） </br> Windows Server 2012（64 位） </br> Windows Server 2012 R2（64 位） </br> Windows Server 2016（64 位） |
-|Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.*（仅限 64 位） </br> CentOS 6.*（仅限 64 位） |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.*（仅限 64 位） </br> CentOS 7.*（仅限 64 位） |
-|Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1、SP2、SP3（仅限 64 位）|
-|Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3（仅限 64 位）|
-|Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4（仅限 64 位）|
-|Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4、6.5（仅限 64 位）|
-|Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04（仅限 64 位）|
-|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS 服务器（仅限 64 位）|
-|Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7（仅限 64 位）|
-|Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8（仅限 64 位）|
-
-## <a name="install-mobility-service-manually-by-using-the-gui"></a>使用 GUI 手动安装移动服务
-
->[!IMPORTANT]
-> 如果要使用配置服务器将 Azure IaaS 虚拟机从一个 Azure 订阅/区域复制到另一个 Azure 订阅/区域，请使用基于命令行的安装方法。
-
-[!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
-
-## <a name="install-mobility-service-manually-at-a-command-prompt"></a>在命令提示符下手动安装移动服务
-
-### <a name="command-line-installation-on-a-windows-computer"></a>Windows 计算机上的命令行安装
-[!INCLUDE [site-recovery-install-mob-svc-win-cmd](../../includes/site-recovery-install-mob-svc-win-cmd.md)]
-
-### <a name="command-line-installation-on-a-linux-computer"></a>Linux 计算机上的命令行安装
-[!INCLUDE [site-recovery-install-mob-svc-lin-cmd](../../includes/site-recovery-install-mob-svc-lin-cmd.md)]
-
-
-## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>通过推送安装从 Azure Site Recovery 安装移动服务
-可以使用 Site Recovery 执行移动服务的推送安装。 所有目标计算机都必须满足以下先决条件。
-
-[!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
-
-[!INCLUDE [site-recovery-prepare-push-install-mob-svc-lin](../../includes/site-recovery-prepare-push-install-mob-svc-lin.md)]
-
-
-> [!NOTE]
-安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。
-
-## <a name="update-mobility-service"></a>更新移动服务
-
-> [!WARNING]
-> 开始在受保护的服务器上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
-
-1. 在 Azure 门户中，浏览到 *你的保管库的名称* > >“复制的项”视图。
-2. 如果配置服务器已更新到最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
-
-     ![“复制的项”窗口](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
-3. 选择通知以打开虚拟机选择页面。
-4. 选择要升级移动服务的虚拟机，然后选择“确定”。
-
-     ![“复制的项”VM 列表](.\media\vmware-azure-install-mobility-service\update-okpng.png)
-
-将为所选的每个虚拟机启动“更新移动服务”作业。
-
-> [!NOTE]
-> [详细了解](vmware-azure-manage-configuration-server.md)如何为用于安装移动服务的帐户更新密码。
-
-## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>卸载 Windows Server 计算机上的移动服务
-使用以下方法之一卸载 Windows Server 计算机上的移动服务。
-
-### <a name="uninstall-by-using-the-gui"></a>使用 GUI 卸载
-1. 在“控制面板”中，选择“程序”。
-2. 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器”，并单击“卸装”。
-
-### <a name="uninstall-at-a-command-prompt"></a>在命令提示符下卸载
-1. 以管理员身份打开命令提示符窗口。
-2. 若要卸载移动服务，请运行以下命令：
-
-    ```
-    MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
-    ```
-
-## <a name="uninstall-mobility-service-on-a-linux-computer"></a>卸载 Linux 计算机上的移动服务
-1. 在 Linux 服务器上，以**根**用户身份登录。
-2. 在终端中，转到 /user/local/ASR。
-3. 若要卸载移动服务，请运行以下命令：
-
-    ```
-    uninstall.sh -Y
-    ```

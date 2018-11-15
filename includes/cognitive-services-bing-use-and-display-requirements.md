@@ -8,15 +8,13 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/19/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 174af83686eba665a729246be7a477b9a5054f30
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: f166ceac1ae848565f861a94781ce0500c24747e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35366947"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289149"
 ---
-# <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
-
 使用和显示要求适用于内容和相关信息的实现。 例如，这些要求适用于关系、元数据和其他信号。 可通过调用以下 API 获得：
 
 - 必应自定义搜索

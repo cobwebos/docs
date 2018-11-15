@@ -1,3 +1,16 @@
+---
+author: vladvino
+ms.service: api-management
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: vlvinogr
+ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571799"
+---
 ## <a name="append-other-apis"></a>追加其他 API
 
 API 可以包含由其他服务公开的 API，这些服务包括 OpenAPI 规范、SOAP API、Azure 应用服务的 API 应用功能、Azure Function App、Azure 逻辑应用和 Azure Service Fabric。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7700de9bed7e5cfc003481a8e7d93720a767928
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036149"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622330"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
 Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Apache Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
@@ -88,7 +88,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
     $nameToken = "<Enter an Alias>"
 
     ###########################################
-    # You must configure the follwing variables
+    # You must configure the following variables
     # for an existing Azure SQL Database
     ###########################################
     $existingSqlDatabaseServerName = "<Azure SQL Database Server>"
@@ -449,7 +449,7 @@ HiveQL 脚本将执行以下操作：
     Write-Host "`nvalidating the folder structure on the workstation for saving the HQL script file ..."  -ForegroundColor Green
     if (test-path $hqlLocalFileName){
 
-        $isDelete = Read-Host 'The file, ' $hqlLocalFileName ', exists.  Do you want to overwirte it? (Y/N)'
+        $isDelete = Read-Host 'The file, ' $hqlLocalFileName ', exists.  Do you want to overwrite it? (Y/N)'
 
         if ($isDelete.ToLower() -ne "y")
         {
@@ -639,7 +639,7 @@ HiveQL 脚本将执行以下操作：
     catch{Connect-AzureRmAccount}
     #EndRegion
 
-    #region - Create and validate Azure resouce group
+    #region - Create and validate Azure resource group
     try{
         Get-AzureRmResourceGroup -Name $resourceGroupName
     }

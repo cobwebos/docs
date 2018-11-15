@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: a1c68f7e1d0a24be173137d3a7c920876cc8ba66
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978887"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515737"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -64,9 +64,9 @@ azds remove -g <resource group name> -n <cluster name>
 
 使用 _azds.exe_ 时，请使用 --verbose 命令行选项，并使用 --output 命令行选项指定输出格式。
  
-    ```cmd
-    azds up --verbose --output json
-    ```
+```cmd
+azds up --verbose --output json
+```
 
 在 Visual Studio 中：
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ced100f0bdd20841648ca84dfcab1847bdcd3096
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362477"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684726"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -31,7 +31,7 @@ ms.locfileid: "49362477"
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`。 它使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。
+Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`。 它使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。
 
 某个技术配置文件会使用此提供程序来定义 Azure AD B2C 提供的事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 然后会在自定义用户旅程中将此技术配置文件作为 `orchestration step` 或 `validation technical profile` 添加，以便发布事件。
 

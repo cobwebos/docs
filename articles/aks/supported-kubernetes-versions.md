@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379189"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280447"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -29,7 +29,7 @@ AKS 支持以下四个 Kubernetes 次要版本：
 
 例如，如果 AKS 今天引入了 1.11.x，则还会为 1.10.a + 1.10.b、1.9.c + 1.9d、1.8.e + 1.8f（其中，带字母的修补程序版本是两个最新的稳定版本）提供支持。
 
-引入新的次要版本后，将停止对最早次要版本和修补程序版本的支持。 在发布新的次要版本和即将发生版本停用的 15 天前，会通过 Azure 更新通道发布公告。 在已发布 1.11.x 的示例中，停用的版本是 1.7.g + 1.7.h。
+引入新的次要版本后，将停止对最早次要版本和修补程序版本的支持。 在发布新的次要版本和即将发生版本停用的 15 天前，会通过 [Azure 更新通道][azure-update-channel]发布公告。 在已发布 1.11.x 的示例中，停用的版本是 1.7.g + 1.7.h。
 
 在门户中或使用 Azure CLI 部署 AKS 群集时，群集始终会设置为 n-1 次要版本和最新修补程序。 例如，如果 AKS 支持 1.11.x、1.10.a + 1.10.b、1.9.c + 1.9d、1.8.e + 1.8f，则新群集的默认版本是 1.10.b。
 
@@ -85,6 +85,7 @@ KubernetesVersion    Upgrades
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md

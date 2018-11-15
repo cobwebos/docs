@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: ea1e3ca76f779f442c9d22478ea93de3d5ab83f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088100"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614509"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -279,7 +279,7 @@ END
    ![自承载 IR 名称](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
 1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。 
 
-   ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-exress-setup.png)
+   ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 
 
    ![集成运行时安装 - 成功](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)

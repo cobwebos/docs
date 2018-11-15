@@ -1,240 +1,59 @@
 ---
-title: 请求单位和估计吞吐量 - Azure Cosmos DB | Microsoft Docs
-description: 了解如何理解、指定和估计 Azure Cosmos DB 中的请求单位需求。
-services: cosmos-db
+title: Azure Cosmos DB 中的请求单位和吞吐量
+description: 了解如何指定和评估 Azure Cosmos DB 中的请求单位要求。
 author: rimman
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: 23a3e629e12e2a4d417757c9fef5db804bb72c9e
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: eabfe503d9b92252ada0014eba4c83390dd6fd97
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248748"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236069"
 ---
-# <a name="throughput-and-request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的吞吐量和请求单位
+# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
-Azure Cosmos DB 资源根据预配的吞吐量和存储进行计费。 Azure Cosmos DB 吞吐量是以**每秒请求单位数（RU/秒）** 表示的。 Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图形查询等）的许多 API。 每个请求根据为请求提供服务所需的计算量使用请求单位。 操作的请求单位数是确定性的。 可以使用响应标头来跟踪 Azure Cosmos DB 中的任何操作使用的请求单位数。 若要提供可预测的性能，应当预留以 100 RU/秒为单位的吞吐量。 可以使用 Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)来估计吞吐量需求。
+使用 Azure Cosmos DB 时，需要支付预配的吞吐量和每小时消耗的存储的费用。 必须预配吞吐量才能确保随时为 Cosmos 数据库提供足够的系统资源，并达到或超过 Cosmos DB SLA 的要求。
 
-在 Azure Cosmos DB 中，可以在两个粒度级别预配吞吐量： 
+Cosmos DB 支持各种 API（SQL、MongoDB、Cassandra、Gremlin 和表）。 每个 API 具有自身的数据库操作集，从简单的点读取和写入，到复杂的查询。 每个数据库操作根据其复杂性消耗系统资源。  所有数据库操作的成本将由 Cosmos DB 规范化，并以“请求单位”(RU) 表示。 读取 1-KB 项的成本为 1 个请求单位 (1 RU)。 以类似方式为其他所有数据库操作分配 RU 成本。 不管使用哪个 API 来与 Cosmos 容器和数据库操作（写入、读取、查询）交互，都始终以 RU 来计量成本。
 
-1. **Azure Cosmos DB 容器：** 为某个容器预配的吞吐量将仅预留给该特定的容器使用。 在容器级别分配吞吐量（RU/秒）时，可以将容器创建为**固定**或**无限制**模式。 
+可将“RU/秒”视为吞吐量的货币。 RU/秒是基于费率的货币，它抽象化了执行 Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。 下图显示了不同数据库操作消耗的请求单位：
 
-  固定大小的容器的最大吞吐量限制为 10,000 RU/秒，存储限制为 10 GB。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能跨多个分区拆分，因此必须选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，Azure Cosmos DB 可以确保统一地缩放对集合、表和图形的请求。 
+![数据库操作消耗请求单位](./media/request-units/request-units.png)
 
-2. **Azure Cosmos DB 数据库：** 为某个数据库预配的吞吐量由该数据库内的所有容器共享。 在数据库级别预配吞吐量时，可以选择显式排除某些容器，并改为在容器级别为这些容器预配吞吐量。 数据库级吞吐量要求所有集合都使用分区键进行创建。 在数据库级别分配吞吐量时，属于此数据库的容器应当使用分区键进行创建，因为每个集合都是一个**无限制的**容器。  
+为了方便管理和规划容量，Cosmos DB 可确保针对给定数据集执行的给定数据库操作的 RU 数是确定性的。 可以通过检查响应标头，来跟踪任一数据库操作消耗的 RU 数。 了解影响请求单位费用的因素以及应用程序吞吐量要求后，可以经济高效地运行应用程序。
 
-Azure Cosmos DB 会根据预配的吞吐量分配物理分区，以便托管容器并随着数据的增长在各个分区之间拆分数据。 下图说明了不同级别的预配吞吐量：
+尽管是按每小时计费，但你可以按秒来预配应用程序的 RU 数，增量为 100 RU/秒。 若要缩放应用程序的预配吞吐量，随时可以编程方式或使用 Azure 门户增加或减少 RU 数（增量或减量为 100 RU）。
 
-  ![预配一个容器和一组容器的请求单位数](./media/request-units/provisioning_set_containers.png)
+可在两个不同的粒度级别预配吞吐量： 
 
-> [!NOTE] 
-> 在容器级别预配吞吐量与在数据库级别预配吞吐量是不同的套餐，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新集合，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。
-
-## <a name="request-units-and-request-charges"></a>请求单位和请求费用
-
-Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满足应用程序的吞吐量需求。 应用程序加载和访问模式会随着时间推移而更改。 借助 Azure Cosmos DB，可以轻松增加或减少保留供应用程序使用的吞吐量。
-
-通过 Azure Cosmos DB，可根据每秒处理的请求单位指定保留的吞吐量。 可将请求单位视为吞吐量货币。 可以保留每秒可用于应用程序的定量有保障请求单位。 Azure Cosmos DB 中的每个操作（包括编写文档、执行查询、更新文档）都会消耗 CPU、内存和 IOPS。 也就是说，每个操作都会产生请求费用（用请求单位表示）。 了解影响请求单位费用的因素，以及应用程序吞吐量要求时，可以尽量有效地运行应用程序。 
-
-## <a name="throughput-isolation-in-globally-distributed-databases"></a>全局分布式数据库中的吞吐量隔离
-
-将数据库复制到多个区域后，Azure Cosmos DB 将提供吞吐量隔离，以确保一个区域中的请求单位使用不会影响另一个区域中的请求单位使用。 例如，如果将数据写入到一个区域，并从另一个区域读取数据，用于在区域 A 中执行写入操作的请求单位不会减损用于区域 B 中读取操作的请求单位。请求单位不会拆分到数据库部署到的所有区域中。 数据库复制时所在的每个区域都预配了全部数量的请求单位。 有关全局复制的详细信息，请参阅[如何使用 Azure Cosmos DB 进行全局数据分配](distribute-data-globally.md)。
+* **容器**。 有关详细信息，请参阅[如何对 Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
+* **数据库**。 有关详细信息，请参阅[如何对 Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
 
 ## <a name="request-unit-considerations"></a>请求单位注意事项
-在估算要预配的请求单位数时，务必考虑以下变量：
 
-* 项大小。 随着大小的增加，用来读取或写入数据的请求单位数也随之增加。
-* 项属性计数。 假设默认为所有属性创建索引，用于写入文档、节点或实体的单位数将随着属性计数的增加而增加。
-* **数据一致性**。 当使用“强”或“有限过期”的数据一致性级别时，读取项会占用更多单位数。
-* **已创建索引的属性**。 每个容器的索引策略都可确定默认情况下要进行索引的属性类别。 可以通过限制已创建索引的属性数目或启用延迟索引编制，减少写入操作的请求单位消耗。
-* **文档索引**。 默认情况下会自动为每个项创建索引。 如果选择不为某些项创建索引，则使用的请求单位数将会减少。
-* **查询模式**。 查询的复杂性会影响操作使用的请求单位数量。 查询结果数、谓词数、谓词性质、用户定义的函数数目、源数据集的大小和投影数都会影响查询操作的成本。
-* **脚本使用情况**。 正如查询一样，存储过程和触发器也是根据所执行的操作的复杂性来使用请求单位的。 在开发应用程序时，检查请求费用标头，以更好地了解每个操作消耗请求单位容量的方式。
+估算要预配的“RU/秒”数量时，必须考虑以下因素：
 
-## <a name="estimating-throughput-needs"></a>估计吞吐量需求
-请求单位是请求处理成本的规范化的度量。 单个请求单位用于表示读取（通过自链接或 ID）一个包含 10 个唯一属性值（系统属性除外）的 1 KB 项所需的处理容量。 插入、替换或删除同一项的请求要占用服务的更多处理，因此需要更多请求单位。 
+* **项大小** - 随着项的增大，读取或写入该项所要消耗的 RU 数也会增加。
 
-> [!NOTE]
-> 用于 1-KB 项的 1 个请求单位基线通过自链接或项的 ID 与简单的 GET 对应。
-> 
-> 
+* **文档索引** - 默认会自动为每个项创建索引。 如果选择不为容器中的某些项创建索引，则消耗的请求单位数将会减少。
 
-例如，下表显示了三种不同的项大小（1 KB、4 KB 和 64 KB）和两个不同的性能级别（500 次读取/秒 + 100 次写入/秒和 500 次读取/秒 + 500 次写入/秒）所要预配的请求单位数。 在此示例中，数据一致性设置为“会话”，索引策略设置为“无”。
+* **项属性计数** - 假设所有属性采用默认索引，写入某个项所要消耗的 RU 数会随着项属性计数的增加而增加。
 
-| 项大小 | 读取数/秒 | 写入数/秒 | 请求单位
-| --- | --- | --- | --- |
-| 1 KB | 500 | 100 | (500 * 1) + (100 * 5) = 1,000 RU/秒
-| 1 KB | 500 | 500 | (500 * 1) + (500 * 5) = 3,000 RU/秒
-| 4 KB | 500 | 100 | (500 * 1.3) + (100 * 7) = 1,350 RU/秒
-| 4 KB | 500 | 500 | (500 * 1.3) + (500 * 7) = 4,150 RU/秒
-| 64 KB | 500 | 100 | (500 * 10) + (100 * 48) = 9,800 RU/秒
-| 64 KB | 500 | 500 | (500 * 10) + (500 * 48) = 29,000 RU/秒
+* **带索引的属性** - 每个容器的索引策略都可确定默认情况下要进行索引的属性类别。 可以通过限制已创建索引的属性数目，来减少写入操作的请求单位消耗。
 
-### <a name="use-the-request-unit-calculator"></a>使用请求单位计算器
-为了帮助微调吞吐量估算，可以使用一个基于 Web 的[请求单位计算器](https://www.documentdb.com/capacityplanner)。 该计算器可帮助估算典型操作的请求单位要求，包括：
+* **数据一致性** - 在执行读取操作时，非常一致性和有限过期一致性级别消耗的 RU 数大约比其他宽松一致性级别要多 2 倍。
 
-* 项创建（写入）数
-* 项读取数
-* 项删除数
-* 项更新数
+* **查询模式** - 查询的复杂性会影响操作消耗的请求单位数。 查询结果数、谓词数、谓词性质、用户定义的函数数目、源数据的大小、结果集的大小和投影数都会影响查询操作的成本。 Cosmos DB 保证针对相同数据重复执行的相同查询所消耗的 RU 数相同。
 
-此工具也支持根据提供的示例项预估数据存储需求。
-
-使用工具：
-
-1. 上传一个或多个有代表性的项（例如某个示例 JSON 文档）。
-   
-    ![将项上传到请求单位计算器][2]
-2. 若要预估数据存储需求，请输入预期要存储的项（例如文档、行或顶点）的总数。
-3. 输入所需的创建、读取、更新和删除操作数目（以秒为单位）。 若要预估项更新操作的请求单位费用，请上传步骤 1 中包含典型字段更新的示例项的副本。 例如，如果项更新通常会修改名为 *lastLogin* 和 *userVisits* 的两个属性，则请复制示例项，更新这两个属性的值，并上传复制的项。
-   
-    ![在请求单位计算器中输入吞吐量要求][3]
-4. 选择“计算”，并查看结果。
-   
-    ![请求单位计算器结果][4]
-
-> [!NOTE]
-> 如果有多种项类型，它们的索引属性大小和数目截然不同，则将每种类型的典型项的示例上传到该工具，然后计算结果。
-> 
-> 
-
-### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>使用 Azure Cosmos DB 请求费用响应标头
-每个来自 Azure Cosmos DB 服务的响应都包含一个自定义标头 (`x-ms-request-charge`)，该标头包含请求消耗的请求单位数。 也可以通过 Azure Cosmos DB SDK 访问此标头。 在 .NET SDK 中，**RequestCharge** 是 **ResourceResponse** 对象的属性。 对于查询，Azure 门户中的 Azure Cosmos DB 数据资源管理器提供了用于执行的查询的请求费用信息。 要了解如何使用不同多模型 API 来获取和设置吞吐量，请参阅[在 Azure Cosmos DB 中设置和获取吞吐量](set-throughput.md)一文。
-
-有一种方法可以估算应用程序所需的保留吞吐量：在针对应用程序所用代表性项运行典型操作时，记录与之相关的请求单位费用。 然后估算预计每秒会执行的操作数目。 也要确保测算并包含典型查询和 Azure Cosmos DB 脚本使用情况。
-
-> [!NOTE]
-> 如果有多种项类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型项相关联的适用操作请求单位费用。
-> 
-> 
-
-例如，下面是可能需要执行的步骤：
-
-1. 记录创建（插入）典型项的请求单位费用。 
-2. 记录读取典型项的请求单位费用。
-3. 记录更新典型项的请求单位费用。
-4. 记录典型、常见项查询的请求单位费用。
-5. 记录应用程序使用的任何自定义脚本（存储的过程、触发器、用户自定义函数）的请求单位费用。
-6. 根据给定的预计每秒运行的操作估计数计算所需的请求单位。
-
-## <a name="a-request-unit-estimate-example"></a>请求单位估计示例
-请考虑以下大约 1 KB 的文档：
-
-```json
-{
- "id": "08259",
-  "description": "Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX",
-  "tags": [
-    {
-      "name": "cereals ready-to-eat"
-    },
-    {
-      "name": "kellogg"
-    },
-    {
-      "name": "kellogg's crispix"
-    }
-  ],
-  "version": 1,
-  "commonName": "Includes USDA Commodity B855",
-  "manufacturerName": "Kellogg, Co.",
-  "isFromSurvey": false,
-  "foodGroup": "Breakfast Cereals",
-  "nutrients": [
-    {
-      "id": "262",
-      "description": "Caffeine",
-      "nutritionValue": 0,
-      "units": "mg"
-    },
-    {
-      "id": "307",
-      "description": "Sodium, Na",
-      "nutritionValue": 611,
-      "units": "mg"
-    },
-    {
-      "id": "309",
-      "description": "Zinc, Zn",
-      "nutritionValue": 5.2,
-      "units": "mg"
-    }
-  ],
-  "servings": [
-    {
-      "amount": 1,
-      "description": "cup (1 NLEA serving)",
-      "weightInGrams": 29
-    }
-  ]
-}
-```
-
-> [!NOTE]
-> 文档在 Azure Cosmos DB 中已压缩，所以系统计算的上述文档的大小略小于 1 KB。
-> 
-> 
-
-下表显示了此项的典型操作的请求单位大概费用。 （大概请求单位费用假设帐户一致性级别设置为“会话”，且所有项都自动编制索引。）
-
-| Operation | 请求单位费用 |
-| --- | --- |
-| 创建项目 |~15 RU |
-| 读取项 |~1 RU |
-| 按 ID 查询项 |~2.5 RU |
-
-下表显示应用程序中所用请求单位的大概费用：
-
-| Query | 请求单位费用 | 返回的项数 |
-| --- | --- | --- |
-| 按 ID 选择食品 |~2.5 RU |1 |
-| 按制造商选择食物 |~7 RU |7 |
-| 按食品组选择并按重量排序 |~70 RU |100 |
-| 选择食品组中的前 10 个食品 |~10 RU |10 |
-
-> [!NOTE]
-> 请求单位费用取决于返回的项数。
-> 
-> 
-
-使用此信息，可以根据预计的每秒操作和查询数量来估计此应用程序的请求单位需求：
-
-| 操作/查询 | 每秒的估计数量 | 所需的请求单位数 |
-| --- | --- | --- |
-| 创建项目 |10 |150 |
-| 读取项 |100 |100 |
-| 按制造商选择食物 |25 |175 |
-| 按食品组进行选择 |10 |700 |
-| 选择前 10 个 |15 |总计 150 |
-
-在此示例中，预计的平均吞吐量需求为 1,275 RU/秒。 如果舍入到最接近的百位数，请将此应用程序的一个（或一组）容器的吞吐量预配为 1,300 RU/秒。
-
-## <a id="RequestRateTooLarge"></a>超过 Azure Cosmos DB 中保留的吞吐量限制
-请求单位消耗以每秒速率评估。 如果应用程序的速率超过了预配的请求单位速率，则请求速率受到限制，直到该速率降到预配的吞吐量级别以下。 请求速率受限制时，服务器将抢先结束请求、引发 `RequestRateTooLargeException`（HTTP 状态代码 429）并返回 `x-ms-retry-after-ms` 标头。 该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
-
-    HTTP Status 429
-    Status Line: RequestRateTooLarge
-    x-ms-retry-after-ms :100
-
-如果使用 .NET 客户端 SDK 和 LINQ 查询，则多数情况下无需处理此异常。 .NET 客户端 SDK 的当前版本会隐式捕获此响应，遵循服务器指定的 retry-after 标头，然后自动重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
-
-如果存在多个高于请求速率的请求操作，则默认重试行为可能无法满足需要，这时客户端就会向应用程序引发 `DocumentClientException`，其状态代码为 429。 在这种情况下，可以考虑处理应用程序错误处理例程中的重试行为和逻辑，或为一个（或一组）容器增加预配的吞吐量。
+* **脚本的使用** - 与查询一样，存储过程和触发器也是根据所执行的操作的复杂性来消耗 RU。 开发应用程序时，请检查请求费用标头，以更好地了解每个操作消耗的请求单位容量。
 
 ## <a name="next-steps"></a>后续步骤
- 
-- 了解如何使用 Azure 门户与 SDK [在 Azure Cosmos DB 中设置和获取吞吐量](set-throughput.md)。
-- 了解[使用 Azure Cosmos DB 执行性能和缩放测试](performance-testing.md)。
-- 有关 Azure Cosmos DB 数据库的预留吞吐量的详细信息，请参阅 [Azure Cosmos DB 定价](https://azure.microsoft.com/pricing/details/cosmos-db/)和 [Azure Cosmos DB 中的数据分区](partition-data.md)。
-- 有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档](https://azure.microsoft.com/documentation/services/cosmos-db/)。 
 
-[2]: ./media/request-units/RUEstimatorUpload.png
-[3]: ./media/request-units/RUEstimatorDocuments.png
-[4]: ./media/request-units/RUEstimatorResults.png
-[5]: ./media/request-units/RUCalculator2.png
-
-
+* 详细了解如何[为 Cosmos DB 容器和数据库预配吞吐量](set-throughput.md)
+* 详细了解[逻辑分区](partition-data.md)
+* 详细了解如何[缩放吞吐量](scaling-throughput.md)
+* 了解[如何对 Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)
+* 了解[如何对 Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)

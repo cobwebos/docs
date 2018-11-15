@@ -2,18 +2,18 @@
 title: Azure IoT Edge 疑难解答 | Microsoft Docs
 description: 解决 Azure IoT Edge 的常见问题并学习疑难解答技能
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a553798a3ac15340805984a0e87312875f82c46c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740206"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567649"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -340,4 +340,6 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 ## <a name="next-steps"></a>后续步骤
 认为在 IoT Edge 平台中发现了 bug？ [提交问题](https://github.com/Azure/iotedge/issues)，以便我们可以持续改进。 
+
+如果你还有其他问题，请创建[支持请求](https://portal.azure.com/#create/Microsoft.Support)以获取帮助。 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92553fc8867a482c0af99c4ba3937dcc0d2f09e6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: eeb615a89469ef8c165ed7ad76acaa01493f78ec
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158096"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625532"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Windows VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -35,15 +35,7 @@ ms.locfileid: "44158096"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [登录到 Azure 门户](https://portal.azure.com)
-
-- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
-
-- [在虚拟机上启用系统分配的托管标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -83,7 +75,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM �
 
     ![Alt 图像文本](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌以调用 Azure 资源管理器 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌以调用 Azure 资源管理器 
 
 在本教程的剩余部分中，我们从先前创建的 VM 入手。 
 

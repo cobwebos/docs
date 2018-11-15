@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b7839fc498b54d2128528c8d655d78bb759a7cd5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282044"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612433"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
@@ -54,7 +54,7 @@ ms.locfileid: "51282044"
 如果认为某些查询对用户有用，则应定义这些查询，即使视图或警报不使用这些查询。  这些查询会在门户中以“保存的搜索”形式提供给用户，也可将其添加到自定义视图的[“查询列表”可视化效果部件](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part)。
 
 ### <a name="alerts"></a>警报
-[Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。
+[Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。
 
 如果有可能通过自动化过程纠正问题，则通常应在 Azure 自动化中创建一个 runbook 来执行该纠正操作。  大多数 Azure 服务可以通过 [cmdlet](/powershell/azure/overview) 进行管理，runbook 也可以利用后者来执行此类功能。
 

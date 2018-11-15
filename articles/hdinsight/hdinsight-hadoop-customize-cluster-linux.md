@@ -2,19 +2,19 @@
 title: 使用脚本操作自定义 HDInsight 群集 - Azure
 description: 使用脚本操作将自定义组件添加到基于 Linux 的 HDInsight 群集。 脚本操作是 Bash 脚本，可用于自定义群集配置，或者添加 Hue、Solr 或 R 等其他服务和实用工具。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978023"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279691"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -67,7 +67,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
         有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)部分。
 
         > [!WARNING]
-        > HDInsight 仅支持通用 Azure 存储帐户。 它当前不支持 __Blob 存储__帐户类型。
+        > HDInsight 仅支持具有标准性能层的 Azure 存储帐户中的 Blob。 
 
 * 可限制为**只对特定的节点类型运行**，例如头节点或辅助角色节点。
 

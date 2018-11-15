@@ -11,22 +11,23 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: a6c17fc897dae765f9789840262cb001d598b731
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 91c6939e42f0a8a5126883e5258017b2c38e6f2a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297730"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613964"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [版本 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [当前版本](tutorial-hybrid-copy-data-tool.md)
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
 
 > [!NOTE]
 > - 如果对 Azure 数据工厂不熟悉，请参阅[数据工厂简介](introduction.md)。
+
 将在本教程中执行以下步骤：
 
 > [!div class="checklist"]
@@ -107,7 +108,7 @@ ms.locfileid: "44297730"
 
 1. 在容器列表中选择“adftutorial”。
 
-    ![容器选择](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![容器选择](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
 
@@ -190,7 +191,7 @@ ms.locfileid: "44297730"
 
 1. 在“指定本地 SQL Server 数据库”中执行以下步骤： 
 
-      a. 在“名称”下输入 **SqlServerLinkedService**。
+      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **SqlServerLinkedService**。
 
       b. 在“服务器名称”下，输入本地 SQL Server 实例的名称。
 
@@ -222,7 +223,7 @@ ms.locfileid: "44297730"
 
 1. 在“新建链接服务(Azure Blob 存储)”对话框中，执行以下步骤： 
 
-     a. 在“名称”\*\*下输入 **AzureStorageLinkedService**。
+     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”\*\*下输入 **AzureStorageLinkedService**。
 
      b. 在“通过集成运行时连接”下，选择 **TutorialIntegrationRuntime**
 

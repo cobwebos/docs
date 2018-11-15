@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957415"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614935"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>将警报从 Log Analytics 扩展为 Azure 警报
 Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡过程中，最初在 Log Analytics 中配置的警报将扩展到 Azure 中。 如果不想等待它们自动移入 Azure，可以启动该过程：
@@ -479,5 +479,5 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解新的 [Azure 警报体验](monitoring-overview-unified-alerts.md)的详细信息。
+* 了解新的 [Azure 警报体验](monitoring-overview-alerts.md)的详细信息。
 * 了解 [Azure 警报中的日志警报](monitor-alerts-unified-log.md)。

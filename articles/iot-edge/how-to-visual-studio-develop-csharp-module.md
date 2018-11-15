@@ -4,17 +4,17 @@ description: 使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge �
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 091eb6af871cc53dff3459c55c668e8ffb227984
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394742"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567462"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge 的 C# 模块（预览版）
 
@@ -36,9 +36,9 @@ ms.locfileid: "49394742"
 
 Visual Studio 2017 准备就绪后，你还需要：
 
-- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsc-iot.azureiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
+- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
 - 开发计算机上的[Docker 社区版](https://docs.docker.com/install/)，用于构建和运行模块映像。 你需要正确设置在 Linux 容器模式或 Windows 容器模式下运行的 Docker CE。
-- 要设置本地开发环境以调试、运行和测试 IoT Edge 解决方案，需具备 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)。 安装 [Python (2.7/3.6) 和 Pip](https://www.python.org/)。 然后，通过在终端中运行以下命令来安装 iotedgehubdev。 确保 Azure IoT EdgeHub 开发工具版本高于 0.3.0。
+- 要设置本地开发环境以调试、运行和测试 IoT Edge 解决方案，需使用 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)。 安装 [Python (2.7/3.6) 和 Pip](https://www.python.org/)。 然后，通过在终端中运行以下命令来安装 iotedgehubdev。 确保 Azure IoT EdgeHub 开发工具版本高于 0.3.0。
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -77,7 +77,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![新建项目](./media/how-to-visual-studio-develop-csharp-module/create-new.jpg)
 
-3. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”类型，并指定模块名称和模块映像存储库。  VS 使用 localhost:5000 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：<registry name>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。 默认的模块名称为 IoTEdgeModule1
+3. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”类型，并指定模块名称和模块映像存储库。  VS 使用 localhost:5000 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：<registry name>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名称。 默认的模块名称为 IoTEdgeModule1
 
 4. 单击“确定”，通过 C# 模块创建 Azure IoT Edge 项目。
 
@@ -87,7 +87,7 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认 C# 模块代码位于 IoTEdgeModule1  >  Program.cs。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
+解决方案附带的默认 C# 模块代码位于 IoTEdgeModule1  >  Program.cs。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 
 当你准备使用自己的代码自定义 C# 模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
 
@@ -110,11 +110,11 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 通常，我们需要先测试/调试每个模块，然后再在具有多个模块的整个解决方案中运行此模块。
 
-1. 选择“IoTEdgeModule1”作为上下文菜单中的启动项目。
+1. 在上下文菜单中选择“IoTEdgeModule1”作为启动项目。
 
    ![设置启动项目](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
-2. 按 F5 或单击下述按钮以运行模块，首次运行时可能耗时 10 到 20 秒。
+2. 按 F5 或单击下方的按钮以运行模块，首次运行时可能耗时 10 到 20 秒。
 
    ![运行模块](./media/how-to-visual-studio-develop-csharp-module/run-module.png)
 
@@ -210,7 +210,7 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 >>[!NOTE]
 >>不得选择 `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
-4. 单击刷新按钮。 此时会看到新模块与 TempSensor 模块和 $edgeAgent 及 $edgeHub 一并运行。
+4. 单击“刷新”按钮。 此时会看到新模块与 TempSensor 模块和 $edgeAgent 及 $edgeHub 一并运行。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
@@ -220,4 +220,4 @@ IoTEdgeModule1 项目是一个 .Net Core 2.1 控制台应用程序。 它包含 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。

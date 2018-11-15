@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a931b14719775ac3d901591b6424d9c9e9ee10
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232335"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625821"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -160,7 +160,7 @@ A. 不可以，当前还不能从 Azure 存储中的任意表或容器进行读�
 
 A. Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)内。
 
-当进行服务部署时，Log Analytics 服务的实际 IP 地址会发生变化。 [网络要求](log-analytics-concept-hybrid.md#network-firewall-requirements)中记录了允许穿过防火墙的 DNS 名称。
+当进行服务部署时，Log Analytics 服务的实际 IP 地址会发生变化。 [网络要求](log-analytics-agent-overview.md#network-firewall-requirements)中记录了允许穿过防火墙的 DNS 名称。
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>问： 我使用 ExpressRoute 连接到 Azure。 我的 Log Analytics 流量是否使用我的 ExpressRoute 连接？
 

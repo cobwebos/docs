@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095802"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281827"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>适用于 Azure 机器学习工作室 Web 服务的 Excel 加载项
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>在工作簿中使用现有 Web 服务的步骤
 
-1. 打开“[示例 Excel 文件](http://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。 
+1. 打开“[示例 Excel 文件](https://aka.ms/amlexcel-sample-2)”，其中包含 Excel 外接程序和有关 Titanic 上的乘客数据。 
  
 > [!NOTE]
 > 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有**服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
@@ -77,7 +77,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 5. 单击“**添加 Web 服务**”。
 6. 将 URL 粘贴到标记为 **URL** 的 Excel 外接程序文本框中。
 7. 将 API/主密钥粘贴到标记为 **API 密钥**的文本框中。
-8. 单击 **“添加”**。
+8. 单击“添加”。
    
     ![经典 Web 服务的 URL 和 API 密钥。][06]
 9. 若要使用 Web 服务，请按照前面的指导操作：“使用现有 Web 服务的步骤”。
@@ -85,7 +85,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 ## <a name="sharing-your-workbook"></a>共享工作簿
 如果保存工作簿，则会一并保存为 Web 服务添加的 API/主密钥。 这意味着只应与自己信任的人共享该工作簿。
 
-请在以下评论部分中或在我们[论坛](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)上提出任何问题。
+请在以下评论部分中或在我们[论坛](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)上提出任何问题。
 
 [01]: ./media/excel-add-in-for-web-services/image1.png
 [02]: ./media/excel-add-in-for-web-services/image2.png

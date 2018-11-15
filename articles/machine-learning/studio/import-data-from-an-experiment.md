@@ -16,15 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5007657da11cb45c6511780398c5425d14dca900
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 922619f09ffc72a79c5ff6dac1bbc6807c38467c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246452"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344512"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>将数据从另一个试验导入 Azure 机器学习工作室
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 有时候想要从实验中提取直接结果，并将其用作其他实验的一部分。 为此，请将模块另存为数据集：
 

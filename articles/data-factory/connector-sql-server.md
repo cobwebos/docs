@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b0e9f72bad685d569b4a09baecec8cebc33fefde
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717890"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345198"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +119,7 @@ SQL Server 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：SqlServerTable | 是 |
-| tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 | 是 |
+| tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 **示例：**
 
@@ -159,7 +159,6 @@ SQL Server 链接服务支持以下属性：
 
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 SQL Server 源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列，构建针对 SQL Server 运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName 属性。
 
 **示例：使用 SQL 查询**
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: c76b922d311a0e0bc5af2b4c8a95c2ef2ec09ba1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7b05876214c08c9298cca30e01958e43e2ef81d6
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914152"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615324"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Log Analytics 工作区报告或向连接到 Log Analytics 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -118,4 +118,4 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。
+* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。 

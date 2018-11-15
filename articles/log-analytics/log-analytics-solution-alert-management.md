@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008141"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613607"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/log-analytics-solution-alert-management/icon.png)
 
-警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](log-analytics-om-agents.md)导入警报。
+警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../monitoring-and-diagnostics/monitoring-overview-alerts.md)或是[从 Nagios 或 Zabbix 导入](log-analytics-quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](log-analytics-om-agents.md)导入警报。
 
 ## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
-- 对于 Log Analytics 警报，[创建警报规则](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)以直接在存储库中创建警报记录。
+- 对于 Log Analytics 警报，[创建警报规则](../monitoring-and-diagnostics/monitoring-overview-alerts.md)以直接在存储库中创建警报记录。
 - 对于 Nagios 和 Zabbix 警报，[配置这些服务器](log-analytics-quick-collect-linux-computer.md)以将警报发送到 Log Analytics。
 - 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](log-analytics-om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
 
@@ -123,4 +123,4 @@ ms.locfileid: "51008141"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。
+* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。

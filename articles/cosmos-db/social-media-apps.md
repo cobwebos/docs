@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239876"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260306"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
 作为工程师或开发人员，你可能想知道这些网络如何存储数据以及如何将这些数据相互联系起来，甚至有可能被要求自行为特定的间隙市场创建或构建新的社交网络。 这时就会产生一个大问题：所有这些数据是如何存储的？
 
-假设正在创建一个新型时尚的社交网络，用户可以在此网络中发布与媒体相关的文章，例如图片、视频，甚至音乐。 用户可以对帖子发表评论并打分以进行评级。 主网站登录页上将提供用户可见并可进行交互的帖子源。 这听起来似乎并不复杂（最初），但为简单起见，我们就止步于此（你可以深入了解受这些关系影响的自定义用户源，但它超出了本文的目的）。
+假设正在创建一个新型时尚的社交网络，用户可以在此网络中发布与媒体相关的文章，例如图片、视频，甚至音乐。 用户可以对帖子发表评论并打分以进行评级。 主网站登录页上将提供用户可见并可进行交互的帖子源。 此方法听起来似乎并不复杂（最初），但为简单起见，我们就止步于此（你可以深入了解受这些关系影响的自定义用户源，但它超出了本文的目的）。
 
 那么，如何存储此数据以及存储在何处？
 
-很多人可能使用过 SQL 数据库，或至少了解[数据的关系建模](https://en.wikipedia.org/wiki/Relational_model)，还可能忍不住开始绘制以下类似图形：
+你可能有使用 SQL 数据库的经验，或者了解[数据的关系建模](https://en.wikipedia.org/wiki/Relational_model)，并且可能已开始绘制以下类似图形：
 
 ![说明相对关系模型的关系图](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -34,9 +34,9 @@ ms.locfileid: "50239876"
 
 请不要误会我的意思，我的一生都在与 SQL 数据库打交道，它们的确很不错，但就像每一种模式、每一次实践以及每一个软件平台一样，并非对每一种方案都适用。
 
-为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单篇文章的结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 只加入八个表以显示单个 post。现在请想象一下：动态地上传一系列贴子并将其显示在屏幕上。你可能明白我的意思了。
+为什么在此方案中 SQL 不是最佳选择？ 让我们看一下单篇文章的结构，如果想要在网站或应用程序中显示文章，可能不得不执行查询... 通过联接八个表(!)来仅仅显示单个帖子。现在请想象一下：动态地上传一系列贴子并将其显示在屏幕上。你可能就明白我的意思了。
 
-当然，也可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中可以使用许多这些连接来为你提供内容，但当已经有一个更简单的解决方案存在时，为什么还要选择这种呢？
+也可以使用一个功能足够强大的超大 SQL 实例来解决数以千计的查询，其中可以使用许多连接来为你提供内容，但当已经有一个更简单的解决方案存在时，为什么还要选择这种呢？
 
 ## <a name="the-nosql-road"></a>NoSQL 加载
 本文将介绍如何使用 Azure 的 NoSQL 数据库 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)，同时利用 [Gremlin API](../cosmos-db/graph-introduction.md) 等其他 Azure Cosmos DB 功能，以经济高效的方式为社交平台的数据建模。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
@@ -59,7 +59,7 @@ ms.locfileid: "50239876"
         ]
     }
 
-可以使用单个查询获得，且无需联接。 这种方法更简单且更直观，且在预算方面，它所需要的资源更少，但得到的结果更好。
+可以使用单个查询获得，且无需联接。 此查询非常简单直观，且在预算方面，它所需要的资源更少，但得到的结果更好。
 
 Azure Cosmos DB 的自动索引功能可确保为所有功能都建立索引，此功能甚至可以进行[自定义](indexing-policies.md)。 使用无架构方法可以存储不同结构和动态结构的文档，也许明天你希望帖子中具有一系列类别或与其关联的哈希标记，Cosmos DB 将使用添加的属性处理新文档，无需我们进行任何额外操作。
 
@@ -216,12 +216,12 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 为了实现上述任何一种机器学习方案，可以使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 引入不同源的信息，并使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息，并生成可由 Azure 机器学习处理的输出。
 
-另一个可用的选项是使用 [Microsoft 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，并使用[计算机视觉 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
+另一个可用的选项是使用 [Azure 认知服务](https://www.microsoft.com/cognitive-services) 分析用户内容：不仅可以更好地理解它们（通过分析使用 [文本分析 API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)编写的内容），而且还可以检测不需要或不成熟的内容，并使用[计算机视觉 API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api)解决相关问题。 认知服务包括大量不需要使用任何一种机器学习知识的现成的可用解决方案。
 
 ## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
 最后，还必须说明一个非常重要的项目：可伸缩性。 在设计体系结构时，因为需要处理更多的数据和/或希望拥有更大的地理覆盖范围，所以每个组件的自行可伸缩性至关重要。 幸运的是，通过使用 Cosmos DB 完成此类复杂任务是一种统包体验。
 
-Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，并记住可用的[最佳做法](../cosmos-db/partition-data.md#designing-for-partitioning)；对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
+Cosmos DB 根据给定的分区键（定义为文档中的一个属性）自动创建分区，从而支持现成可用的[动态分区](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)。 必须在设计时定义正确的分区键，若要了解详细信息，请参阅[选择正确的分区键](partitioning-overview.md#choose-partitionkey)一文。 对于社交体验，分区策略必须与查询（需要在同一分区内进行读取）和写入（通过在多个分区上分散写入来避免“热点”）方式保持一致。 一些相关选项是：基于临时键（日/月/周）的分区，按内容类别、地理区域和用户进行划分；这一切都取决于查询数据并将其显示在社交体验中的方式。 
 
 值得一提的有趣的一点是，Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），无需在数据增长过程中添加任何逻辑。
 

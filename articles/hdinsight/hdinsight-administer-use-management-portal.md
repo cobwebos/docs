@@ -1,36 +1,34 @@
 ---
-title: 使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Hadoop 群集
-description: 了解如何管理 HDInsight 服务。 创建 HDInsight 群集，打开交互式 JavaScript 控制台，并打开 Hadoop 命令控制台。
+title: 使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Apache Hadoop 群集
+description: 了解如何管理 HDInsight 服务。 创建 HDInsight 群集，打开交互式 JavaScript 控制台，并打开 Apache Hadoop 命令控制台。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970271"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282469"
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中基于 Windows 的 Hadoop 群集
+# <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Apache Hadoop 群集
 
-使用 [Azure 门户][azure-portal]，可在 Azure HDInsight 中创建基于 Windows 的 Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
+使用 [Azure 门户][azure-portal]，可在 Azure HDInsight 中创建基于 Windows 的 Apache Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
 
 本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关管理基于 Linux 的群集的信息，请参阅[使用 Azure 门户管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
 
-> [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户** - HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。 有关 Azure Blob 存储如何提供与 HDInsight 群集的无缝体验的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。 有关创建 Azure 存储帐户的详细信息，请参阅[如何创建存储帐户](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="open-the-portal"></a>打开门户
@@ -328,7 +326,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
     “到期日期”的默认值是“一周”。
 
    > [!NOTE]
-   > 也可以使用 HDInsight .NET SDK 在群集上启用远程桌面。 按以下方式使用 HDInsight 客户端对象上的 **EnableRdp**方法：**client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同样，若要在群集上禁用远程桌面，可以使用 **client.DisableRdp(clustername, location)**。 有关这些方法的详细信息，请参阅 [HDInsight .NET SDK 参考](http://go.microsoft.com/fwlink/?LinkId=529017)。 这仅适用于在 Windows 上运行的 HDInsight 群集。
+   > 也可以使用 HDInsight .NET SDK 在群集上启用远程桌面。 按以下方式使用 HDInsight 客户端对象上的 **EnableRdp**方法：**client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同样，若要在群集上禁用远程桌面，可以使用 **client.DisableRdp(clustername, location)**。 有关这些方法的详细信息，请参阅 [HDInsight .NET SDK 参考](https://go.microsoft.com/fwlink/?LinkId=529017)。 这仅适用于在 Windows 上运行的 HDInsight 群集。
    >
    >
 

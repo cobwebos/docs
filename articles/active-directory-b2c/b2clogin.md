@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00fde1145b038f3bf82e3dbc5e1dc967e1865ad6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234913"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635551"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -24,7 +24,7 @@ ms.locfileid: "51234913"
 使用 b2clogin.com 可以提供更多优势，例如：
 
 - 不再与其他 Microsoft 服务共享 Cookie。
-- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`。
+- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。
 
 使用 b2clogin.com 时，考虑可能需要更改的这些设置：
 

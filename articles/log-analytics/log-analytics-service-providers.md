@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: ef1956f5283105548ba8790b87e82c35d6c9e1cd
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dc6a52462dffcb735e845c9150b2189e37273496
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960933"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615426"
 ---
 # <a name="log-analytics-for-service-providers"></a>适用于服务提供商的 Log Analytics
 Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
@@ -82,6 +82,6 @@ Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软
 ## <a name="next-steps"></a>后续步骤
 * 使用[Resource Manager 模板](log-analytics-template-workspace-configuration.md)自动执行创建和配置工作区
 * 使用 [PowerShell](log-analytics-powershell-workspace-configuration.md) 自动创建工作区 
-* 使用[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)以便与现有系统集成
+* 使用[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)以便与现有系统集成
 * 使用 [Power BI](log-analytics-powerbi.md) 生成摘要报告
 * 查看[配置 Log Analytics 和 Power BI 以监视多个 CSP 客户](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)的过程

@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986315"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978395"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL 数据库连接体系结构
 
@@ -31,19 +31,30 @@ ms.locfileid: "49986315"
 
 以下步骤介绍如何通过 Azure SQL 数据库软件负载均衡器 (SLB) 和 Azure SQL 数据库网关建立到 Azure SQL 数据库的连接。
 
-- Azure 内部或 Azure 外部的客户端连接到 SLB，后者具有公用 IP 地址并侦听端口 1433。
-- SLB 将流量定向到 Azure SQL 数据库网关。
-- 网关将流量重定向到相应的代理中间件。
-- 代理中间件将流量重定向到相应的 Azure SQL 数据库。
+- 客户端连接到 SLB，后者使用公共 IP 地址并侦听端口 1433。
+- SLB 将流量转发到 Azure SQL 数据库网关。
+- 该网关根据有效的连接策略将流量重定向或代理到适当的代理中间件。
+- 代理中间件将流量转发到相应的 Azure SQL 数据库。
 
 > [!IMPORTANT]
 > 其中每个组件都具有内置于网络和应用层的分布式拒绝服务 (DDoS) 保护。
 
+## <a name="connection-policy"></a>连接策略
+
+Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
+
+- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用连接，客户端必须允许对区域中的所有 Azure IP 地址而不仅仅是 Azure SQL 数据库网关 IP 地址应用出站防火墙规则（尝试结合[服务标记](../virtual-network/security-overview.md#service-tags)使用网络安全组 (NSG) 来应用此规则）。 由于数据包会直接发往数据库，因此延迟、吞吐量和性能都会得到改善。
+- **代理：** 在此模式下，所有连接都是通过 Azure SQL 数据库网关代理的。 若要启用连接，客户端必须包含只允许 Azure SQL 数据库网关 IP 地址（通常每个区域有两个 IP 地址）的出站防火墙规则。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用“重定向”连接策略而不要使用“代理”连接策略，以最大程度地降低延迟和提高吞吐量。
+- **默认：** 除非显式将连接策略更改为“代理”或“重定向”，否则，在创建后，此连接策略将在所有服务器上生效。 有效策略取决于连接是源自 Azure 内部（重定向）还是外部（代理）。
+
 ## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
 
-如果从 Azure 内部连接，则连接默认具有重定向连接策略。 重定向策略指建立到 Azure SQL 数据库的 TCP 会话后的连接，然后通过将 Azure SQL 数据库网关的目标虚拟 IP 更改为代理中间件的目标虚拟 IP，将客户端会话重定向到代理中间件。 此后，所有后续数据包绕过 Azure SQL 数据库网关，直接通过代理中间件传输。 下图演示了此流量流。
+如果在 2018 年 11 月 10 日后创建的服务器上从 Azure 内部进行连接，则连接默认采用“重定向”连接策略。 重定向策略指建立到 Azure SQL 数据库的 TCP 会话后的连接，然后通过将 Azure SQL 数据库网关的目标虚拟 IP 更改为代理中间件的目标虚拟 IP，将客户端会话重定向到代理中间件。 此后，所有后续数据包绕过 Azure SQL 数据库网关，直接通过代理中间件传输。 下图演示了此流量流。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> 如果 SQL 数据库服务器是在 2018 年 11 月 10 日之前创建的，则连接策略已显式设置为“代理”。 使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许根据 NSG 出站到下面列出的 Azure SQL 数据库网关 IP 将还不够，必须允许出站到所有 Azure SQL 数据库 IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](../virtual-network/security-overview.md#service-tags)。
 
 ## <a name="connectivity-from-outside-of-azure"></a>从 Azure 外部连接
 
@@ -51,19 +62,11 @@ ms.locfileid: "49986315"
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> 在 Azure SQL 数据库中使用服务终结点时，默认情况下策略为“代理”。 若要从 VNet 内启用连接，必须允许到下面列表中指定的 Azure SQL 数据库网关 IP 地址的出站连接。
-
-使用服务终结点时，我们强烈建议将连接策略更改为“重定向”，以实现更好的性能。 如果将连接策略更改为“重定向”，允许根据 NSG 出站到下面列出的 Azure SQL 数据库网关 IP 将还不够，必须允许出站到所有 Azure SQL 数据库 IP。 这可以借助 NSG（网络安全组）服务标记实现。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
 若要从本地资源连接到 Azure SQL 数据库，需要允许到你的 Azure 区域的 Azure SQL 数据库网关的出站网络流量。 在代理模式下连接时，连接仅通过网关建立，从本地资源进行连接时这是默认设置。
 
 下表列出了所有数据区域的 Azure SQL 数据库网关的主 IP 和次要 IP。 某些区域中存在两个 IP 地址。 在这些区域中，主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是故障转移 IP 地址。 故障转移地址是我们可能会将服务器移动到该位置以保持服务的高可用性的地址。 对于这些区域，我们建议允许出站到这两个 IP 地址。 第二个 IP 地址由 Microsoft 拥有，并且不侦听任何服务，除非 Azure SQL 数据库激活该地址以接受连接。
-
-> [!IMPORTANT]
-> 如果从 Azure 中进行连接，则默认情况下连接策略将为**重定向**（除非使用的是服务终结点）。 仅允许以下 IP 是不够的。 必须允许所有 Azure SQL 数据库 IP。 如果从 VNet 内部进行连接，则可以借助 NSG（网络安全组）服务标记完成此操作。 有关详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 | 区域名称 | 主 IP 地址 | 次要 IP 地址 |
 | --- | --- |--- |

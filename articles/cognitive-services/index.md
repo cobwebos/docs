@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 10f0062f27c03d8776415272766a1ec0729e1f80
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5f5e4ae85f18870ab6ed22ca010977efc28be058
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747280"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633880"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
@@ -71,6 +71,25 @@ ms.locfileid: "50747280"
                             <div class="cardText">
                                 <h3>认知服务中的语言支持</h3>
                                 <p>了解认知服务 API 支持的人类语言。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>在容器中使用认知服务</h3>
+                                <p>了解如何在容器中使用 Azure 认知服务。</p>
                             </div>
                         </div>
                     </div>

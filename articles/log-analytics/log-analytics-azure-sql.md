@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006730"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615487"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -291,4 +291,4 @@ AzureDiagnostics
 
 - 使用 Log Analytics 中的[日志搜索](log-analytics-queries.md)查看 Azure SQL 的详细数据。
 - [创建自己的仪表板](log-analytics-dashboards.md)，显示 Azure SQL 数据。
-- 发生特定 Azure SQL 事件时[创建警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。
+- 发生特定 Azure SQL 事件时[创建警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。

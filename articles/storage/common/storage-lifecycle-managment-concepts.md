@@ -5,32 +5,32 @@ services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 11/01/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6647ff97b078ca5afa5c66833a1617f6b3ec0f1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429552"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978802"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览）
 
-数据集具有独特的生命周期。 通常，有些数据在其生命周期的早期会经常被访问，但随着数据不断陈旧，其访问频率会大幅下降。 有些数据在云中保持空闲状态，并且在存储后很少被访问。 有些数据在创建后的数日或者数月即会过期，还有一些数据集在其整个生存期会频繁受到读取和修改。 Azure Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。
+数据集具有独特的生命周期。 通常，有些数据在其生命周期的早期会经常被访问，但随着数据不断陈旧，其访问频率会大幅下降。 有些数据在云中保持空闲状态，并且在存储后很少被访问。 有些数据在创建后的数日或者数月即会过期，还有一些数据集在其整个生存期会频繁受到读取和修改。 Azure Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于在 GPv2 和 Blob 存储帐户中将数据转移到适当的访问层，并在数据的生命周期结束时使数据过期。
 
 生命周期管理策略有助于：
 
 - 将 Blob 转移到较冷的存储层（从热到冷、从热到存档，或者从冷到存档），以便针对性能和成本进行优化
 - 删除生命周期已结束的 Blob
-- 在存储帐户级别定义每天执行一次的规则（支持 GPv2 和 Blob 存储帐户）
+- 在存储帐户级别定义每天执行一次的规则
 - 将规则应用到容器或 Blob 子集（使用前缀作为筛选器）
 
-假设某个数据集在生命周期的早期阶段频繁被访问，两周后只是偶尔被访问，一个月以后很少被访问。 在这种场景下，早期阶段最适合使用热存储，在偶尔访问阶段最适合使用冷存储，在一个月后数据陈旧时，存档存储便是最佳的层选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略将陈旧数据转移到较冷的存储层。
+假设某个数据集在生命周期的早期阶段频繁被访问，两周后只是偶尔被访问，一个月以后很少被访问。 在这种场景下，早期阶段最适合使用热存储，在偶尔访问阶段最适合使用冷存储，在一个月后数据陈旧时，存档存储便是最佳的层选项。 通过根据数据陈旧程度调整存储层，可根据需求设计出最具性价比的存储选项。 若要实现这种过渡，可以使用生命周期管理策略规则将陈旧数据转移到较冷的存储层。
 
 ## <a name="storage-account-support"></a>存储帐户支持
 
-生命周期管理策略适用于常规用途 v2 (GPv2) 帐户和 Blob 存储帐户。 只需在 Azure 门户中执行简单的一键式过程，即可将现有的常规用途 (GPv1) 帐户转换为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)了解详细信息。  
+生命周期管理策略适用于常规用途 v2 (GPv2) 帐户和 Blob 存储帐户。 只需在 Azure 门户中执行简单的一键式过程，即可将现有的常规用途 (GPv1) 帐户升级到 GPv2 帐户，且不会造成停机。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)了解详细信息。  
 
 ## <a name="pricing"></a>定价 
 
@@ -67,9 +67,9 @@ az feature show --namespace Microsoft.Storage --name DLM
 如果已批准并正确注册了此功能，将会返回“Registered”状态。 
 
 
-## <a name="add-or-remove-policies"></a>添加或删除策略 
+## <a name="add-or-remove-a-policy"></a>添加或删除策略 
 
-可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate) 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
+可以通过 Azure 门户、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate) 或客户端工具使用以下语言来添加、编辑或删除策略：[.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](  https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2)。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -92,7 +92,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 > [!NOTE]
 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过提供例外来取消阻止该请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
 
-## <a name="policies"></a>策略
+## <a name="policy"></a>策略
 
 生命周期管理策略是 JSON 文档中的规则集合：
 
@@ -122,7 +122,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | 版本        | 以 `x.x` 形式表示的字符串 | 预览版本号为 0.5 |
 | 规则          | 规则对象的数组 | 每个策略中至少需要一个规则。 在预览期，最多可为每个策略指定 4 个规则。 |
 
-规则中所需的参数包括：
+在每个规则中，有三个参数是必需的：
 
 | 参数名称 | 参数类型 | 说明 |
 |----------------|----------------|-------|
@@ -132,10 +132,13 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ## <a name="rules"></a>规则
 
-每个规则定义包括筛选器集和操作集。 以下示例规则修改前缀为 `container1/foo` 的基本块 Blob 的层。 在策略中，这些规则定义为：
+每个规则定义包括筛选器集和操作集。 [筛选器集](#rule-filters)用于将规则操作限制为容器或对象名称中的特定一组对象。 [操作集](#rule-actions)对筛选的对象集应用分层或删除操作。
 
-- 在上次修改后的 30 天后，将 Blob 分层到冷存储
-- 在上次修改后的 90 天后，将 Blob 分层到存档存储
+### <a name="sample-rule"></a>示例规则
+以下示例规则将筛选帐户，以便仅对 `container1/foo` 运行操作。 对于位于 `container1` 中**并且**以 `foo` 开头的所有对象，将执行以下操作： 
+
+- 在上次修改后的 30 天后，将 Blob 分层到冷层
+- 在上次修改后的 90 天后，将 Blob 分层到存档层
 - 在上次修改后的 2,555 天（7 年）后，删除 Blob
 - 在创建快照后的 90 天后，删除 Blob 快照
 
@@ -177,7 +180,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 在预览版中，仅支持 `blockBlob`。 | 是 |
-| prefixMatch | 要匹配的前缀字符串数组。 前缀字符串必须以容器名称开头。 例如，如果“https://myaccount.blob.core.windows.net/mycontainer/mydir/...”下的所有 blob 都应当与某个规则匹配，则前缀为“mycontainer/mydir”。 | 如果未定义，此规则将应用到帐户中的所有 Blob。 | 否 |
+| prefixMatch | 要匹配的前缀字符串数组。 前缀字符串必须以容器名称开头。 例如，如果“https://myaccount.blob.core.windows.net/container1/foo/...”下的所有 Blob 都应与某个规则匹配，则 prefixMatch 为“container1/foo”。 | 如果未定义 prefixMatch，规则将应用到帐户中的所有 Blob。 | 否 |
 
 ### <a name="rule-actions"></a>规则操作
 

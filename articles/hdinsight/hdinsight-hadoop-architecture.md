@@ -1,6 +1,6 @@
 ---
-title: Hadoop 体系结构 - Azure HDInsight
-description: 介绍 HDInsight 群集上的 Hadoop 存储和处理。
+title: Apache Hadoop 体系结构 - Azure HDInsight
+description: 介绍 HDInsight 群集上的 Apache Hadoop 存储和处理。
 services: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699424"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277573"
 ---
-# <a name="hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Hadoop 体系结构
+# <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
-Hadoop 包括两个核心组件：提供存储的 Hadoop 分布式文件系统 (HDFS)，以及提供处理功能的 Yet Another Resource Negotiator (YARN)。 有了存储和处理功能，群集就可以运行 MapReduce 程序来执行所需的数据处理。
+Apache Hadoop 包括两个核心组件：提供存储的 Hadoop 分布式文件系统 (HDFS)，以及提供处理功能的 Yet Another Resource Negotiator (YARN)。 有了存储和处理功能，群集就可以运行 MapReduce 程序来执行所需的数据处理。
 
 > [!NOTE]
 > 通常不会将 HDFS 部署在 HDInsight 群集中来提供存储， 而是由 Hadoop 组件来使用 HDFS 兼容接口层。 实际的存储功能由 Azure 存储或 Azure Data Lake Store 提供。 就 Hadoop 来说，在 HDInsight 群集上执行的 MapReduce 作业运行起来就像 HDFS 存在一样，因此不需更改即可满足其存储需求。 在 Hadoop on HDInsight 中，存储是外包的，但 YARN 处理仍为核心组件。 有关详细信息，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)。
 
 本文介绍 YARN，说明其如何协调应用程序在 HDInsight 上的执行。
 
-## <a name="yarn-basics"></a>YARN 基础知识 
+## <a name="apache-yarn-basics"></a>Apache YARN 基础知识 
 
 YARN 控制并协调 Hadoop 中的数据处理。 YARN 有两个核心服务，在群集的节点上作为进程运行： 
 

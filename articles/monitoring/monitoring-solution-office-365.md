@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e22a2eb6eefb84c6745de9b19e7710913b4ee7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257657"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616276"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -711,4 +711,4 @@ Active Directory 用户尝试登录时，将创建这些记录。
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics](../log-analytics/log-analytics-queries.md) 中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
-* [创建警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)，主动接收重要的 Office 365 活动通知。  
+* [创建警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)，主动接收重要的 Office 365 活动通知。  

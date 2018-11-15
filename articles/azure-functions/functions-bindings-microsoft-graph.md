@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251101"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301010"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
-本文介绍如何在 Azure Functions 中配置和使用 Microsoft Graph 触发器和绑定。 借助它们，你可以使用 Azure Functions 处理 [Microsoft Graph](https://graph.microsoft.io) 中的数据、见解和事件。
+本文介绍如何在 Azure Functions 中配置和使用 Microsoft Graph 触发器和绑定。 借助它们，你可以使用 Azure Functions 处理 [Microsoft Graph](https://developer.microsoft.com/graph) 中的数据、见解和事件。
 
 Microsoft Graph 扩展提供了以下绑定：
 - [身份验证令牌输入绑定](#token-input)，通过它你可以与任意 Microsoft Graph API 进行交互。
@@ -834,7 +834,7 @@ Outlook 消息输出绑定通过 Outlook 发送电子邮件。
 * [示例](#outlook-output---example)
 * [属性](#outlook-output---attributes)
 * [配置](#outlook-output---configuration)
-* [使用情况](#outlook-outnput---usage)
+* [使用情况](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook 输出 - 示例
 

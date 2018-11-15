@@ -4,16 +4,16 @@ description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT 
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/24/2018
+ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037450"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913217"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -25,6 +25,18 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 2. 将设备上的 Docker 守护程序和 IoT Edge 守护程序配置为使用代理服务器。
 3. 配置设备上 config.yaml 文件中的 edgeAgent 属性。
 4. 为部署清单中的 IoT Edge 运行时和其他 IoT Edge 模块设置环境变量。 
+
+## <a name="know-your-proxy-url"></a>知道你的代理 URL
+
+若要同时在设备上配置 Docker 守护程序和 IoT Edge，需要知道你的代理 URL。 
+
+代理 URL 采用以下格式：**protocol**://**proxy_host**:**proxy_port**。 
+
+* **protocol** 是 HTTP 或 HTTPS。 可以根据你的容器注册表设置为 Docker 守护程序配置任一协议，但是 IoT Edge 守护程序和运行时容器应当始终使用 HTTPS。
+
+* **proxy_host** 是代理服务器的地址。 如果你的代理服务器要求进行身份验证，则可以采用 **user**:**password**@**proxy_host** 格式将你的凭据提供为 proxy_host 的一部分。 
+
+* **proxy_port** 是代理用来响应网络流量的网络端口。 
 
 ## <a name="install-the-runtime"></a>安装运行时
 
@@ -47,7 +59,7 @@ Install-SecurityDaemon -Manual -ContainerOs Windows
 
 ### <a name="docker-daemon"></a>Docker 守护程序
 
-要使用环境变量配置 Docker 守护程序，请参阅 Docker 文档。 大多数容器注册表（包括 DockerHub 和 Azure 容器注册表）支持 HTTPS 请求，因此，应设置的变量为 HTTPS_PROXY。 如果要从不支持传输层安全性 (TLS) 的注册表中拉取映像，则可能应设置 HTTP_PROXY。 
+要使用环境变量配置 Docker 守护程序，请参阅 Docker 文档。 大多数容器注册表（包括 DockerHub 和 Azure 容器注册表）支持 HTTPS 请求，因此，你应当设置的变量为 **HTTPS_PROXY**。 如果要从不支持传输层安全性 (TLS) 的注册表中拉取映像，则应当设置 **HTTP_PROXY**。 
 
 选择适用于 Docker 版本的项目： 
 
@@ -113,7 +125,9 @@ Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代理�
 
 在 config.yaml 文件中，找到“Edge 代理模块规范”部分。 Edge 代理定义包括可以在其中添加环境变量的 env 参数。 
 
-![edgeAgent 定义](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+<!--
+![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+-->
 
 删除作为 env 参数占位符的大括号，并在新行上添加新变量。 请记住，YAML 中的缩进为两个空格。 
 
@@ -201,7 +215,7 @@ UpstreamProtocol: "AmqpWs"
 ```json
 "env": {
     "https_proxy": {
-        "value": "<proxy URL"
+        "value": "<proxy URL>"
     },
     "UpstreamProtocol": {
         "value": "AmqpWs"

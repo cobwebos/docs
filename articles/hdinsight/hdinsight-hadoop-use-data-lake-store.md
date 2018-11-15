@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277352"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684561"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 
@@ -47,7 +47,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 | HDInsight 版本 3.2 | 否 | 是 | |
 | Storm | | |可使用 Data Lake Store 从 Storm 拓扑写入数据。 对于可由 Storm 拓扑读取的引用数据，也可以使用 Data Lake Store。|
 
-[!WARNING]
+> [!WARNING]
 > Azure Data Lake Storage Gen 1 不支持 HDInsight HBase
 
 使用 Data Lake Store 作为附加存储帐户不会影响从群集读取或写入数据到 Azure 存储的性能或能力。

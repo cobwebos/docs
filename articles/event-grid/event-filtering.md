@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24337863d4e3f8e093c2e33afbb39364ec37516d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252099"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281942"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -57,7 +57,7 @@ ms.locfileid: "50252099"
 
 要按数据字段中的值进行筛选并指定比较运算符，请使用高级筛选选项。 在高级筛选中，指定：
 
-* 运算符 - 比较的类型。
+* 运算符类型 - 比较的类型。
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
 * 值 - 要与键进行比较的值。
 
@@ -67,14 +67,14 @@ ms.locfileid: "50252099"
 "filter": {
   "advancedFilters": [
     {
-      "Operator": "NumberGreaterThanOrEquals",
-      "Key": "Data.Key1",
-      "Values": 5
+      "operatorType": "NumberGreaterThanOrEquals",
+      "key": "Data.Key1",
+      "value": 5
     },
     {
-      "Operator": "StringContains",
-      "Key": "Subject",
-      "Values": ["container1", "container2"]
+      "operatorType": "StringContains",
+      "key": "Subject",
+      "values": ["container1", "container2"]
     }
   ]
 }
@@ -122,7 +122,7 @@ ms.locfileid: "50252099"
 * EventTypeVersion
 * 事件数据（如 Data.key1）
 
-对于自定义输入架构，请使用事件数据字段（如 Data.key1 Data.key1.key2）。
+对于自定义输入架构，请使用事件数据字段（如 Data.key1）。
 
 ### <a name="values"></a>值
 
@@ -140,7 +140,7 @@ ms.locfileid: "50252099"
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值
-* 键仅有两个嵌套级别（如 data.key1.key2）
+* 键只能有一个嵌套级别（如 data.key1）
 
 可以在多个筛选器中使用相同的键。
 

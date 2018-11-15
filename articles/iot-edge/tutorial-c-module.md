@@ -3,18 +3,18 @@ title: Azure IoT Edge C 教程 | Microsoft Docs
 description: 本教程介绍如何使用 C 代码创建 IoT Edge 模块并将其部署到边缘设备
 services: iot-edge
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a7151f8b681b0e6129308b194008742986d6a358
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e5c6b523a098bef4bb40ccd924750cc8aefd0e87
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155688"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567360"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C IoT Edge 模块并将其部署到模拟设备
 
@@ -337,7 +337,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 5. 选择 **config** 文件夹中的 **deployment.json** 文件，然后单击“选择 Edge 部署清单”。 不要使用 deployment.template.json 文件。 
 
-6. 单击刷新按钮。 此时会看到新的 **CModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
+6. 单击“刷新”按钮。 此时会看到新的 **CModule** 在运行，此外还有 **TempSensor** 模块以及 **$edgeAgent** 和 **$edgeHub** 在运行。 
 
 ## <a name="view-generated-data"></a>查看生成的数据
 

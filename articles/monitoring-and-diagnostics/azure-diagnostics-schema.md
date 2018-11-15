@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbe2619b99fdc5281375e2c6c1300432d9a4cbb9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963795"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616123"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 诊断扩展配置架构版本和历史记录
 此页为 Microsoft Azure SDK 附带的 Azure 诊断扩展架构版本编制了索引。  
@@ -67,7 +67,7 @@ Azure 诊断扩展可以与其他 Microsoft 诊断产品（例如 Azure Monitor�
 ### <a name="diagnostics-extension-111"></a>诊断扩展 1.11
 添加了对 Azure Monitor 接收器的支持。 此接收器仅适用于性能计数器。 允许将在 VM、VMSS 或云服务上收集的性能计数器作为自定义指标发送到 Azure Monitor。 Azure Monitor 接收器支持：
 * 通过 [Azure Monitor 指标 API](https://docs.microsoft.com/rest/api/monitor/metrics/list) 检索发送到 Azure Monitor 的所有性能计数器。
-* 通过 Azure Monitor 中新的[统一警报体验](monitoring-overview-unified-alerts.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
+* 通过 Azure Monitor 中新的[统一警报体验](monitoring-overview-alerts.md)根据发送到 Azure Monitor 的所有性能计数器发出警报
 * 将性能计数器中的通配符运算符视为指标上的“实例”维度。 例如，如果你收集了“LogicalDisk(\*)/DiskWrites/sec”计数器，则可以根据“实例”维度进行筛选和拆分，以基于每个逻辑磁盘（C：、D：等）的磁盘写入次数/秒进行绘图或发出警报
 
 将 Azure Monitor 定义为诊断扩展配置中的新接收器

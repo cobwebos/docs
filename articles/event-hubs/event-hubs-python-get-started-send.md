@@ -2,19 +2,19 @@
 title: 使用 Python 将事件发送到 Azure 事件中心 | Microsoft Docs
 description: 使用 Python 将事件发送到事件中心入门
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: sethm
-ms.openlocfilehash: bb77ed69ae8f2229cbd62afa545cac9f048689e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.author: shvija
+ms.openlocfilehash: 05feab0227633ab52f0865fa7c19a310b612eb1c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457997"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286888"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>使用 Python 将事件发送到事件中心
 

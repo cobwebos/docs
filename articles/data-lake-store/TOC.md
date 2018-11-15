@@ -95,12 +95,11 @@
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # 资源
-## [Azure 路线图](https://azure.microsoft.com/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Data Lake Store 博客](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [在 UserVoice 上提供反馈](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [定价](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [服务更新](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Stack Overflow 论坛](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 61354803f4fced7cd8fee31f10b5f72401f267da
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414941"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634186"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
@@ -43,7 +43,7 @@ ms.locfileid: "50414941"
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果未安装 java，请参阅[支持的 Java JDK](https://aka.ms/azure-jdks) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](https://aka.ms/azure-jdks) 上的文档。
 2. 下载适用于系统的正确二进制程序包：
 
    ```bash

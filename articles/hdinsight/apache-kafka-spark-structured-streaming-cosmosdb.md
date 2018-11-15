@@ -2,27 +2,27 @@
 title: 从 Kafka 到 Azure Cosmos DB 的 Apache Spark 结构化流式处理 - Azure HDInsight
 description: 了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka 读取数据，然后将数据存储到 Azure Cosmos DB 中。 本示例使用 Spark on HDInsight 中的 Jupyter 笔记本流式传输数据。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.author: jasonh
-ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: fcedf4a9335a0d70cfbab5a7f803b68cb154e209
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971308"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278899"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>将 Spark 结构化流式处理与 Kafka 和 Azure Cosmos DB 配合使用
+# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Kafka 和 Azure Cosmos DB 配合使用
 
-了解如何使用 Spark 结构化流式处理从 Apache Kafka on Azure HDInsight 读取数据，然后将数据存储到 Azure Cosmos DB 中。
+了解如何使用 Apache Spark 结构化流式处理从 Apache Kafka on Azure HDInsight 读取数据，然后将数据存储到 Azure Cosmos DB 中。
 
 Azure Cosmos DB 是一种全球分布式多模型数据库。 此示例使用 SQL API 数据库模型。 有关详细信息，请参阅[欢迎使用 Azure Cosmos DB](../cosmos-db/introduction.md) 文档。
 
-Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。 有关结构化流式处理的详细信息，请参阅 Apache.org 上的 [Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)（结构化流式处理编程指南 [Alpha]）。
+Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。 有关结构化流式处理的详细信息，请参阅 Apache.org 上的 [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html)（结构化流式处理编程指南）。
 
 > [!IMPORTANT]
 > 此示例使用了 Spark 2.2 on HDInsight 3.6。
@@ -95,7 +95,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 
-4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
+4. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
 
 > [!IMPORTANT]
 > 创建群集、虚拟网络和 Cosmos DB 帐户最多可能需要 45 分钟时间。

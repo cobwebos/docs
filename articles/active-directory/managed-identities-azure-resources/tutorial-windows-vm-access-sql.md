@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238108"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623819"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -35,15 +35,7 @@ ms.locfileid: "51238108"
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [登录到 Azure 门户](https://portal.azure.com)
-
-- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
-
-- [在虚拟机上启用系统分配的托管标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>授予 VM 对 Azure SQL 服务器中的数据库的访问权限
 

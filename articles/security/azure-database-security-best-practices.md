@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040085"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281619"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
-安全性是管理数据库时的首要考虑因素，并且始终是 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心站点](http://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
+安全性是管理数据库时的首要考虑因素，并且始终是 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心站点](https://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
 
 本文介绍一系列 Azure 数据库安全最佳做法。 这些最佳做法衍生自我们的 Azure 数据库安全经验和客户的经验。
 
@@ -72,22 +72,18 @@ SQL 数据库支持两种身份验证：SQL Server 身份验证和 Azure AD 身�
 
 > [!NOTE]
 > SQL Server 身份验证无法使用 Kerberos 安全协议。
->
->
 
 如果使用 SQL Server 身份验证，则必须：
 
 - 自行管理强凭据。
 - 保护连接字符串中的凭据。
-- （可能需要）保护通过网络从 Web 服务器传递到数据库的凭据。 有关详细信息，请参阅[如何：在 ASP.NET 2.0 中使用 SQL 身份验证连接到 SQL Server](https://msdn.microsoft.com/library/ms998300.aspx)。
+- （可能需要）保护通过网络从 Web 服务器传递到数据库的凭据。 有关详细信息，请参阅[如何：在 ASP.NET 2.0 中使用 SQL 身份验证连接到 SQL Server](/previous-versions/msp-n-p/ff648340(v=pandp.10))。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 身份验证*
 Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 通过 Azure AD 身份验证，可以在一个中心位置中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
 
 > [!NOTE]
 > 我们建议使用 Azure AD 身份验证，而不使用 SQL Server 身份验证。
->
->
 
 包括如下优点：
 
@@ -112,12 +108,12 @@ Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据�
 
 有关详细信息，请参阅[将 Azure Active Directory 身份验证与 SQL 数据库、托管实例或 SQL 数据仓库结合使用](../sql-database/sql-database-aad-authentication.md)。
 
-## <a name="protect-your-data-by-using-encryption"></a>使用加密保护数据
-[Azure SQL 数据库透明数据加密](https://msdn.microsoft.com/library/dn948096.aspx)可帮助保护磁盘上的数据，并防止对硬件进行未经授权的访问。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>使用加密和行级别安全性来保护数据
+[Azure SQL 数据库透明数据加密](../sql-database/transparent-data-encryption-azure-sql.md)可帮助保护磁盘上的数据，并防止对硬件进行未经授权的访问。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。
 
 即使整个存储都已加密，也一定要加密数据库本身。 这是数据保护的深度防御方法实现。 如果使用 Azure SQL 数据库，并想要保护敏感数据（例如信用卡号或社会安全号码），可以使用 FIPS 140-2 验证的 256 位 AES 加密来加密数据库。 此加密符合许多行业标准（例如 HIPAA 和 PCI）的要求。
 
-使用透明数据加密来加密数据库时，未加密与[缓冲池扩展 (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) 相关的文件。 必须对 BPE 相关文件使用文件系统级别的加密工具（例如 [BitLocker](https://technet.microsoft.com/library/cc732774)）或[加密文件系统 (EFS)]()。
+使用透明数据加密来加密数据库时，未加密与[缓冲池扩展 (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) 相关的文件。 必须对 BPE 相关文件使用文件系统级别的加密工具（例如 [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11))）或[加密文件系统 (EFS)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10))。
 
 因为经过授权的用户（如安全管理员或数据库管理员）可以访问数据，所以即使已使用透明数据加密将数据库加密，也应遵循以下建议：
 
@@ -126,11 +122,11 @@ Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据�
 - 确保用户和应用程序使用不同的帐户进行身份验证。 这样，可以限制授予用户和应用程序的权限，并降低恶意活动的风险。
 - 使用固定数据库角色（如 db_datareader 或 db_datawriter）实现数据库级别安全性。 也可以为你的应用程序创建自定义角色以向选定数据库对象授予显式权限。
 
-若要通过其他方法加密数据，请考虑：
+若要通过其他方法保护数据，请考虑：
 
-- 使用[单元格级加密](https://msdn.microsoft.com/library/ms179331.aspx)，借助不同的加密密钥来加密特定的数据列甚至数据单元格。
-- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)，可让客户在客户端应用程序中加密敏感数据，永远不会向数据库引擎（SQL 数据库或 SQL Server）透露加密密钥。 因此，Always Encrypted 将数据所有者与数据管理者区分开来，前者可查看数据，而后者无权访问数据。
-- [行级别安全性](https://msdn.microsoft.com/library/dn765131)，使客户能够根据执行查询的用户的特征，控制对数据库表中的行的访问。 （特征可以是组成员身份或执行上下文等。）
+- 使用[单元格级加密](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)，借助不同的加密密钥来加密特定的数据列甚至数据单元格。
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)，可让客户在客户端应用程序中加密敏感数据，永远不会向数据库引擎（SQL 数据库或 SQL Server）透露加密密钥。 因此，Always Encrypted 将数据所有者与数据管理者区分开来，前者可查看数据，而后者无权访问数据。
+- [行级别安全性](/sql/relational-databases/security/row-level-security)，使客户能够根据执行查询的用户的特征，控制对数据库表中的行的访问。 （特征可以是组成员身份或执行上下文等。）
 
 不使用数据库级别加密的组织可能更容易受到攻击，使 SQL 数据库中的数据面临透露的风险。
 
@@ -177,7 +173,7 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 此外，威胁检测还会将警报与 Azure 安全中心集成，以便集中查看所有 Azure 资源的安全状态。
 
 ## <a name="next-steps"></a>后续步骤
-有关通过使用 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
+有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息

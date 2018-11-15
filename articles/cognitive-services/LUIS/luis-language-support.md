@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: ce0a2f36ca11c704062deb28bf47c45a91a32222
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435286"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569193"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -32,10 +32,10 @@ LUIS 理解以下语言：
 | 语言 |区域设置  |  预生成域 | 预生成实体 | 短语建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
-| 加拿大法语 |`fr-CA` |-|   -   |-|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |-|  -   |-|✔|
 | 法语(法国) |`fr-FR` |-| ✔ |✔ |✔|
+| 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
 | 德语 |`de-DE` |-| ✔ |✔ |✔|
 | 意大利语 |`it-IT` |-| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|仅关键短语|

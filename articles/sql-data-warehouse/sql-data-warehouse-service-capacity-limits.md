@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 07/26/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302037"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686596"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
@@ -35,7 +35,7 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 |:--- |:--- |:--- |
 | 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：240TB 用于行存储，无限存储空间用于列存储表 |
 | 表 |最大大小 |磁盘上压缩后 60 TB |
-| 表 |每个数据库的表数 |10,000 |
+| 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
 | 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
 | 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，SQL 数据仓库支持行溢出存储，使可变长度列能够脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8-KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
@@ -59,17 +59,17 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 ## <a name="queries"></a>查询
 | 类别 | Description | 最大值 |
 |:--- |:--- |:--- |
-| 查询 |用户表的排队查询数。 |1000 |
-| 查询 |系统视图的并发查询数。 |100 |
-| 查询 |系统视图的排队查询数。 |1000 |
-| 查询 |最大值参数 |2098 |
+| Query |用户表的排队查询数。 |1000 |
+| Query |系统视图的并发查询数。 |100 |
+| Query |系统视图的排队查询数。 |1000 |
+| Query |最大值参数 |2098 |
 | Batch |最大大小 |65,536*4096 |
 | SELECT 结果 |每个行的列数 |4096<br/><br/>在 SELECT 结果中每行的列数始终不得超过 4096。 无法保证最大值始终为 4096。 如果查询计划需要一个临时表，那么将应用每个表最多 1024 列的最大值。 |
 | SELECT |嵌套子查询 |32<br/><br/>在 SELECT 语句中的嵌套子查询数始终不得超过 32 个。 无法保证最大值始终为 32 个。 例如，JOIN 可以将子查询引入查询计划。 还可以通过可用内存来限制子查询的数量。 |
 | SELECT |每个 JOIN 的列数 |1024 个列<br/><br/>JOIN 中的列数始终不得超过 1024。 无法保证最大值始终为 1024。 如果 JOIN 计划需要列数多于 JOIN 结果的临时表，那么将 1024 限制应用于此临时表。 |
 | SELECT |每个 GROUP BY 列的字节数。 |8060<br/><br/>GROUP BY 子句中的列的字节数最大为 8060 字节。 |
 | SELECT |每个 ORDER BY 列的字节数 |8060 字节<br/><br/>ORDER BY 子句中的列的字节数最大为 8060 字节 |
-| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅 [内部错误：已达到表达式服务限制][内部错误：已达到表达式服务限制]。 |
+| 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/>SQL 数据仓库会限制一条查询的单个表达式中可包含的标识符数。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅 [Internal error: An expression services limit has been reached](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)（内部错误：已达到表达式服务限制）。 |
 | 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>SQL 数据仓库会限制单个查询表达式中可包含的字符串常量数。 超过此数字将导致 SQL Server 错误 8632。|
 
 ## <a name="metadata"></a>元数据

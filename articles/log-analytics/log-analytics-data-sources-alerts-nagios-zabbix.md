@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6050771ee1d129edd4370079c07da721f60d2065
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008328"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613539"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>通过 Log Analytics Linux 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
+[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
  
 ## <a name="prerequisites"></a>先决条件
 Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
@@ -118,5 +118,5 @@ Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 
 
 ## <a name="next-steps"></a>后续步骤
-* 在 Log Analytics 中了解[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。
+* 在 Log Analytics 中了解[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
 * 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 

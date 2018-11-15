@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6bdafffb11fce40ecdd876105e17edd2660c751
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466897"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686953"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -125,7 +125,7 @@ ms.locfileid: "49466897"
 1. 声明变量。 本示例使用此练习中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，将变量复制并粘贴到 PowerShell 控制台中。
 
   ```powershell
-  $Sub1 = "Replace_With_Your_Subcription_Name"
+  $Sub1 = "Replace_With_Your_Subscription_Name"
   $RG1 = "TestRG1"
   $Location1 = "East US"
   $VNetName1 = "TestVNet1"
@@ -323,7 +323,7 @@ ms.locfileid: "49466897"
 1. 声明变量。 请务必将值替换为用于配置的值。
 
   ```powershell
-  $Sub5 = "Replace_With_the_New_Subcription_Name"
+  $Sub5 = "Replace_With_the_New_Subscription_Name"
   $RG5 = "TestRG5"
   $Location5 = "Japan East"
   $VnetName5 = "TestVNet5"

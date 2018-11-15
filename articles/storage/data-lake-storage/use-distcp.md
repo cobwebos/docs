@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 065c4c4315bda209484cc1b2449980e55d4ac798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09703e203370a524b24f552c93161e4cb64d803d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522690"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281670"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 预览版之间复制数据
 
-如果 HDInsight 群集有权访问 Azure Data Lake Storage Gen2 预览版，则可以使用 [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) 等 Hadoop 生态系统工具在 HDInsight 群集存储 (WASB) 与支持 Data Lake Storage Gen2 的帐户之间来回复制数据。 本文提供如何使用 Distcp 工具的说明。
+如果你的 HDInsight 群集已在 Azure Data Lake Storage Gen2 预览版中注册，则可以使用 [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) 等 Hadoop 生态系统工具在 HDInsight 群集存储 (WASB) 与已启用 Data Lake Storage Gen2 的存储帐户之间**来回**复制数据。 本文提供如何使用 Distcp 工具的说明。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 启用 Azure Data Lake Storage（预览版）功能的 Azure 存储帐户。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 预览版存储帐户](quickstart-create-account.md)
-* 具有 Data Lake Storage 帐户访问权限的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](use-hdi-cluster.md)。 请确保对该群集启用远程桌面。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **已启用 Data Lake Storage Gen2（预览版）功能的 Azure 存储帐户**。 有关如何创建 Azure 存储帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 预览版存储帐户](quickstart-create-account.md)
+* 可以访问启用了 Data Lake Storage Gen2 的存储帐户的 **Azure HDInsight 群集**。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](use-hdi-cluster.md)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 Distcp
 
@@ -97,4 +97,4 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 
 * DistCp 被限制为每个文件只有一个映射器。 因此，映射器数不应超过拥有的文件数。 由于 DistCp 只能将一个映射器分配给一个文件，这会限制可用于复制大型文件的并发数量。
 
-* 如果有少量大型文件，则应将它们拆分为 256 MB 的文件块，以便提供更多潜在并发。 
+* 如果有少量大型文件，则应将它们拆分为 256 MB 的文件块，以便提供更多潜在并发。

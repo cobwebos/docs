@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55a3f3d7ac08554273464ed7c6f665e27661c6f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237819"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625515"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -85,7 +85,7 @@ ms.locfileid: "51237819"
 | --- | --- |
 | 2 | 提供给 omsadmin 脚本的选项无效。 运行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 获取使用情况。 |
 | 3 | 提供给 omsadmin 脚本的配置无效。 运行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 获取使用情况。 |
-| 4 | 提供给 omsadmin 脚本的代理无效。 验证代理，并参阅我们的[有关使用 HTTP 代理服务器的文档](log-analytics-concept-hybrid.md#network-firewall-requirements)。 |
+| 4 | 提供给 omsadmin 脚本的代理无效。 验证代理，并参阅我们的[有关使用 HTTP 代理服务器的文档](log-analytics-agent-overview.md#network-firewall-requirements)。 |
 | 5 | 从 Log Analytics 服务收到 403 HTTP 错误。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 6 | 未从 Log Analytics 服务收到 200 HTTP 错误。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 7 | 无法连接到 Log Analytics 服务。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |

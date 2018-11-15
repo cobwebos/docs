@@ -8,16 +8,47 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471129"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218587"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-service-sdk-110"></a>语音服务 SDK 1.1.0
+
+**新功能**
+
+* 对 Android x86/x64 的支持。
+* 代理支持：在 SpeechConfig 对象中，你现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
+* 改进了错误代码和消息。 如果识别返回了错误，这在过去会将 `Reason`（在已取消事件中）或 `CancellationDetails`（在识别结果中）设置为 `Error`。 取消的事件现在包含两个附加的成员：`ErrorCode` 和 `ErrorDetails`。 如果服务器随所报告的错误返回了附加的错误信息，则现在将在新成员中提供该信息。
+
+**改进**
+
+* 在识别器配置中添加了附加的验证并添加了附加的错误消息。
+* 改进了对音频文件中间的长时间静默的处理。
+* NuGet 程序包：对于 .NET Framework 项目，阻止使用 AnyCPU 配置进行构建。
+
+**Bug 修复**
+
+* 修复了在识别器中发现的几处异常。 此外，还会捕获异常并将其转换为已取消事件。
+* 修复了属性管理中的内存泄漏。
+* 修复了音频输入文件可能会导致识别器发生故障的 bug。
+* 修复了在会话停止事件后无法检索事件的 bug。
+* 修复了线程中的一些争用条件。
+* 修复了可能会导致故障的 iOS 兼容性问题。
+* 改进了对 Android 麦克风的支持的稳定性。
+* 修复了 JavaScript 中的识别器将忽略识别语言的 bug。
+* 修复了阻止在 JavaScript 中设置 EndpointId（在某些情况下）的 bug。
+* 更改了 JavaScript 中的 AddIntent 中的参数顺序，并添加了缺少的 AddIntent JavaScript 签名。
+
+**示例**
+
+* 在我们的[示例存储库](https://aka.ms/csspeech/samples)中添加了拉取和推送流用法的 C++ 示例。
 
 ## <a name="speech-service-sdk-101"></a>语音服务 SDK 1.0.1
 

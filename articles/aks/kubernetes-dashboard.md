@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 127f6a5cd8f46b72a4cddcef09cb31b60edd0582
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157184"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299123"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -33,9 +33,6 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
-
-> [!TIP]
-> 如果从 Azure Cloud Shell 运行此命令，请添加 `--enable-cloud-console-aks-browse` 参数以正确打开仪表板。
 
 此命令在开发系统与 Kubernetes API 之间创建一个代理，并在 Web 浏览器中打开 Kubernetes 仪表板。 如果 Web 浏览器未打开到 Kubernetes 仪表板，请复制并在 Azure CLI 中粘贴所记录的 URL 地址，通常为 *http://127.0.0.1:8001*。
 

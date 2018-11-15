@@ -2,7 +2,6 @@
 title: 在 Azure AD 应用代理中使用连接器组在单独的网络和位置上发布应用程序 | Microsoft Docs
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: e149df09bf424d33fa9abdf8108b3b79534a8599
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364967"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622627"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -86,14 +84,14 @@ ms.locfileid: "39364967"
 已部署应用程序代理的大多数客户通过执行 Kerberos 约束委派 (KCD) 来使用其单一登录 (SSO) 功能。 为了实现此目的，需要将连接器的计算机加入到一个域中，该域可将用户委派给应用程序。 KCD 支持跨林功能。 但对于具有不同的多林环境并且林之间没有信任的公司，不能将单一连接器用于所有林。 
 
 在这种情况下，可为每个林部署特定连接器，并将其设置为服务已发布的应用程序，以仅为该特定林的用户提供服务。 每个连接器组表示不同的林。 虽然租户和大多数体验对所有林统一，但可使用 Azure AD 组将用户分配给他们自己的林应用程序。
- 
+ 
 ### <a name="disaster-recovery-sites"></a>灾难恢复站点
 
 根据灾难恢复 (DR) 站点的实现方式，可采取两种不同的方法：
 
 * 如果灾难恢复站点采用主动 - 主动模式构建，其与主站点完全相同，并具有相同的网络和 AD 设置，则可在与主站点相同的连接器组中的灾难恢复站点上创建连接器。 这使 Azure AD 能检测故障转移。
 * 如果灾难恢复站点与主站点分离，则可在灾难恢复站点中创建不同的连接器组，并且 1) 具有备份应用程序，或者 2) 根据需要将现有应用程序手动转移到灾难恢复连接器组。
- 
+ 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>服务单个租户中的多个公司
 
 有多种方式来实现模型，其中单一服务提供程序为多个公司部署和维护 Azure AD 相关服务。 连接器组帮助管理员将连接器和应用程序分隔到不同的组中。 一种适合小公司的方法是使用单个 Azure AD 租户，不同的公司拥有其自己的域名和网络。 这同样适用于 M&A 情景以及单一 IT 部门出于监管或业务原因而服务几家公司的情况。 
@@ -101,7 +99,7 @@ ms.locfileid: "39364967"
 ## <a name="sample-configurations"></a>示例配置
 
 一些可实现的示例，包括以下连接器组。
- 
+ 
 ### <a name="default-configuration--no-use-for-connector-groups"></a>默认配置 - 不使用连接器组
 
 如果不使用连接器组，配置将如下所示：
@@ -109,7 +107,7 @@ ms.locfileid: "39364967"
 ![AzureAD 无连接器组](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
  
 此配置足以用于小型部署和测试。 如果组织具有平面网络拓扑，则此配置也非常适用。
- 
+ 
 ### <a name="default-configuration-and-an-isolated-network"></a>默认配置和隔离网络
 
 此配置是默认配置的演变，其中存在一个运行在隔离网络（如 IaaS 虚拟网络）的特定应用： 
@@ -127,6 +125,6 @@ ms.locfileid: "39364967"
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
-* [启用单一登录](application-proxy-single-sign-on.md)
+* [启用单一登录](what-is-single-sign-on.md)
 
 

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/30/2018
-ms.openlocfilehash: 67f5e6d4674f876b2cfd4d879ab40c5a5b12c0cc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/12/2018
+ms.openlocfilehash: 43db0e66c05b6b5c3331d3fba3e4db363d61c9f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985040"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624346"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅  [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
@@ -75,6 +75,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 | **扩展** | **说明** |
 |---|---|
 | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 可加载过程语言。 |
+| [plv8](https://plv8.github.io/) | 可用于存储过程、触发器等的 PostgreSQL 的 Javascript 语言扩展。 |
 
 ### <a name="miscellaneous-extensions"></a>其他扩展
 
@@ -88,7 +89,7 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | 提供一种显示元组级别统计信息的方法。 |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部数据包装器，用于访问外部 PostgreSQL 服务器中存储的数据。 |
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | 提供了一种创建不耗费 CPU 或磁盘的假设索引的方法。 |
-| [plv8](https://plv8.github.io/) | 可用于存储过程、触发器等的 PostgreSQL 的 Javascript 语言扩展。 |
+
 
 ### <a name="postgis-extensions"></a>PostGIS 扩展
 

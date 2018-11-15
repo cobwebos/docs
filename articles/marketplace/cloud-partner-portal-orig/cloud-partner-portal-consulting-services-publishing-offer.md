@@ -1,6 +1,6 @@
 ---
-title: 咨询服务 | Microsoft Docs
-description: 有关定义和发布咨询服务套餐的指导。
+title: Azure 和 Dynamcis 365 咨询服务套餐 | Microsoft Docs
+description: 有关在云合作伙伴门户中定义和发布 Azure 或 Dynamcis 365 咨询服务套餐的指导。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,19 +12,29 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b3f6b9166afce9ca0cdeaa1c9dd6e10a5a976453
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805729"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037750"
 ---
-<a name="defining-and-publishing-your-consulting-services-offer"></a>定义和发布咨询服务套餐
-======================================================
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务套餐
 
-本指南旨在帮助你在云合作伙伴门户中定义和发布咨询服务套餐。
+<table> <tr> <td>本部分介绍如何将咨询服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource 市场</a>。 基于 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://products.office.com">Office 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a> 和 <a href="https://powerapps.microsoft.com">PowerApps</a> 的解决方案有资格在 AppSource 中列出。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐有资格在 Azure 市场中列出。 </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
+
+
+# <a name="publishing-benefits"></a>发布的好处
+
+发布到上述任一 Microsoft 市场可以获得巨大的好处：
+
+- 利用 Microsoft 品牌推广你的公司。
+- 有机会与 AppSource 中的 1 亿多个 Office 365 和 Dynamics 365 用户接触；通过 Azure 市场与 20 多万家组织接触。
+- 从这些市场获得优质的潜在顾客。
+- 通过 Microsoft 现场和远程销售团队推广你的服务。
+
 
 <a name="define-your-consulting-services-offer"></a>定义咨询服务套餐
 -------------------------------------
@@ -52,43 +62,36 @@ ms.locfileid: "48805729"
 
 ### <a name="define-offer-settings"></a>定义套餐设置
 
-在“新建套餐”屏幕中，第一个步骤是创建套餐标识。
-套餐标识由三个部分组成：
-
-1.  套餐 ID
-2.  发布者 ID
-3.  名称
-
-以下部分将介绍其中的每个组成部分。
+在“新建套餐”屏幕中，第一个步骤是创建套餐标识。  套餐标识由三个部分组成：“套餐 ID”、“发布者 ID”和“名称”。  以下部分将介绍其中的每个组成部分。
 
 #### <a name="offer-id"></a>套餐 ID
 
-这是首次提交套餐时创建的唯一名称。 它只能包含小写的字母数字字符、短划线或下划线。 该 ID 将在 URL 中显示，并会影响搜索引擎的结果。 例如，*yourcompanyname\_exampleservice*
+此标识符是首次提交套餐时创建的唯一名称。 它只能包含小写的字母数字字符、短划线或下划线。 套餐 ID 将在 URL 中显示，并会影响搜索引擎的结果。 例如，*yourcompanyname\_exampleservice*
 
-如示例中所示，套餐 ID 将追加到发布者 ID 的后面，以创建唯一的标识符。 此字符串将公开为可预订服务的永久链接，并由搜索引擎编制索引。
+如示例中所示，套餐 ID 将追加到发布者 ID 的后面，以创建唯一的标识符。 此字符串将公开为可预订服务的永久链接，并由搜索引擎编制索引。 
 
-**套餐上线后，\'无法对其进行更新**
+套餐上线后，无法更新其标识符
 
 #### <a name="publisher-id"></a>发布者 ID
 
-此 ID 与你的帐户相关。 使用组织帐户登录后，发布者 ID 将显示在下拉菜单中。
+此标识符与你的帐户相关。 使用组织帐户登录后，发布者 ID 将显示在下拉菜单中。
 
 #### <a name="name"></a>名称
 
-这是显示在 AppSource 或 Azure 市场中的套餐名称。
+此字符串是显示在 AppSource 或 Azure 市场中的套餐名称。
 
 **重要说明：** 此处只能输入实际服务的名称。 不要包含服务的持续时间和类型。
 
-以下 Edgewater Fullscope 示例演示了如何组合套餐名称。 套餐名称如下所示：
+以下 Edgewater Fullscope 示例演示了如何组合套餐名称。 套餐名称显示为：
 
 ![创建新的咨询服务套餐](media/consulting-services-publishing-offer/cppsampleconsultingoffer.png)
 
 套餐名称由四个部分组成：
 
--   **持续时间：** 在编辑器的“店面详细信息”选项卡中定义此信息。 可使用小时、天或周作为单位来表示持续时间。
--   **服务类型：** 在编辑器的“店面详细信息”选项卡中定义此信息。 类型服务包括“评估”、“简报”、“实施”、“概念证明”和“研讨会”。
--   **介词：** 由审阅者插入
--   **名称：** 在“套餐设置”页中定义。
+-   **持续时间：**- 在编辑器的“店面详细信息”选项卡中定义。 可使用小时、天或周作为单位来表示持续时间。
+-   **服务类型：**- 在编辑器的“店面详细信息”选项卡中定义。 服务类型包括 `Assessment`、`Briefing`、`Implementation`、`Proof of concept` 和 `Workshop`。
+-   **介词：**- 由审阅者插入
+-   **名称：**- 在“套餐设置”页中定义。
 
 以下列表提供了几个适当的套餐名称：
 
@@ -124,7 +127,7 @@ ms.locfileid: "48805729"
 
 ##### <a name="offer-summary"></a>套餐摘要
 
-套餐摘要是套餐的简要说明，紧靠在套餐名称的下面显示。 输入套餐摘要时应使用纯文本，并且不能换行。 下面是适当的套餐摘要及其相应套餐名称的示例：
+套餐摘要是套餐的简要说明，紧靠在套餐名称的下面显示。 输入套餐摘要时请使用纯文本，且不要换行。 下面是适当的套餐摘要及其相应套餐名称的示例：
 
 *示例 1*
 
@@ -153,7 +156,7 @@ ms.locfileid: "48805729"
 
 ##### <a name="offer-description"></a>套餐说明
 
-指咨询服务套餐的说明。 合理的套餐说明包括互动功能的具体详细信息，以及最终向客户交付的内容。 此说明应该可以帮助客户明确了解他们会得到的服务。
+咨询服务套餐的说明。 合理的套餐说明包括互动功能的具体详细信息，以及最终向客户交付的内容。 此说明应该可以帮助客户明确了解他们会得到的服务。
 
 不要在套餐说明中包含电子邮件链接或联系电话号码。 套餐中应该附带一个“与我联系”按钮，使用该按钮可将潜在顾客上传到你在套餐中指定的潜在顾客管理目标。
 
@@ -161,7 +164,7 @@ ms.locfileid: "48805729"
 
 使用这些格式可确保客户能够最方便地阅读你的套餐内容。
 
-套餐说明应该简单扼要，并遵守字符数限制，因为用户并不乐意阅读大量的文字。 但仍可以选择上传更详细地描述套餐的营销手册、事实表和其他文档。
+套餐说明应该简单扼要，并遵守字符数限制，因为用户并不乐意阅读很长的文字。 但仍可以选择上传更详细地描述套餐的营销手册、事实表和其他文档。
 
 以下示例演示了一段适当编写的套餐说明及其相关名称和摘要：
 
@@ -223,7 +226,7 @@ ms.locfileid: "48805729"
 **MPN ID**
 
 输入机密密钥，以便在套餐上线之前，在 AppSource 中对其进行预览。
-这并非密码。
+此标识符并非密码。
 
 #### <a name="listing-details"></a>商品详细信息
 
@@ -287,4 +290,4 @@ Microsoft 专门注重提供给单个客户的固定范围、固定持续时间�
 
 填写“套餐设置”、“店面详细信息”和“联系人”后，选择“发布”并提供电子邮件地址。 当 Microsoft 准备好发布你的套餐时，会向你发送一封电子邮件，可在其中预览该套餐上线之前的外观。 随时可以返回门户检查套餐的状态。
 
-在发布过程中，套餐可能显示为“发布已取消”或“发布失败”状态。 这是发布过程的正常环节，Microsoft 可借此机会对套餐进行编辑。 如果看到套餐处于“发布已取消”状态，请让它保持该状态。
+在发布过程中，套餐可能显示为“发布已取消”或“发布失败”状态。 此状态在发布过程中是正常的，Microsoft 可借此机会对套餐进行编辑。 如果看到套餐处于“发布已取消”状态，请让它保持该状态。

@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407055"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256369"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
-本文包含有关 Azure Migrate 的常见问题。 如果在阅读本文之后还有其他问题，请在 [Azure Migrate 论坛](http://aka.ms/AzureMigrateForum)中提问。
+本文包含有关 Azure Migrate 的常见问题。 如果在阅读本文之后还有其他问题，请在 [Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)中提问。
 
 ## <a name="general"></a>常规
 
@@ -54,9 +54,9 @@ Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移
 
 可以通过 Internet 或使用 ExpressRoute 与公共对等互连。
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>我可以使用 .OVA 模板强化 VM 设置吗？
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>我可以使用 OVA 模板强化 VM 设置吗？
 
-只要 Azure Migrate 设备工作所需的通信和防火墙规则保持不变，就可以将其他组件（例如防病毒）添加到 .OVA 模板中。   
+只要 Azure Migrate 设备工作所需的通信和防火墙规则保持不变，就可以将其他组件（例如防病毒）添加到 OVA 模板中。   
 
 ## <a name="discovery"></a>发现
 
@@ -114,7 +114,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 可以，可以使用单个收集器设备来发现多个 vCenter 服务器，但不能同时使用多个收集器。 需要依次运行发现。
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Site Recovery 使用的 .OVA 模板是否与 Azure Migrate 使用的 .OVA 集成？
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Site Recovery 使用的 OVA 模板是否与 Azure Migrate 使用的 OVA 集成？
 
 当前没有集成。 Site Recovery 中的 .OVA 模板用于为 VMware VM/物理服务器复制设置 Site Recovery 配置服务器。 Azure Migrate 使用的 .OVA 用于发现由 vCenter 服务器托管的 VMware VM，以便进行迁移评估。
 
@@ -134,16 +134,30 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate 是否支持基于企业协议 (EA) 的成本估计？
 
-Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为套餐，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
+Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为产品/服务，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
 
   ![折扣](./media/resources-faq/discount.png)
   
 
 ## <a name="dependency-visualization"></a>依赖项可视化
 
+### <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
+
+使用依赖项可视化，你可以在运行评估之前通过交叉检查计算机依赖项来更自信地评估要迁移的 VM 组。 依赖项可视化可帮助你确保不遗漏任何事项，以避免在迁移到 Azure 时发生意外的服务中断。 Azure Migrate 利用 Log Analytics 中的服务映射解决方案来实现依赖项可视化。
+
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>是否需要支付依赖项可视化功能的使用费？
 
-无需额外付费即可使用 Azure Migrate。 [在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
+不是。 [在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
+
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>要实现依赖项可视化，是否需要安装任何软件？
+
+若要使用依赖项可视化，你需要在要评估的每台本地计算机上下载并安装代理。 
+
+- 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
+- 需要在每台计算机上安装[依赖项代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
+- 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
+
+除非要使用依赖项可视化，否则在要评估的计算机上不需要安装这些代理。
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>是否可将现有的工作区用于依赖项可视化？
 

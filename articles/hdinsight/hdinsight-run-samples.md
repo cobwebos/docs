@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: d1da4d10b6346d774c657b0263c9da6278116b61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1324980e173d31803026f9ec93565d4aabd30c85
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006407"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687242"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 中运行 Hadoop MapReduce 示例
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -926,7 +926,7 @@ public class TeraSort extends Configured implements Tool {
         splitPoints = readPartitions(fs, partFile, job);
         trie = buildTrie(splitPoints, 0, splitPoints.length, new Text(), 2);
         } catch (IOException ie) {
-        throw new IllegalArgumentException("can't read paritions file", ie);
+        throw new IllegalArgumentException("can't read partitions file", ie);
         }
     }
 

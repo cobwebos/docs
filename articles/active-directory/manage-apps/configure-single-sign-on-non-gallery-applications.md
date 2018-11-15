@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719403"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622187"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 
@@ -31,9 +31,9 @@ ms.locfileid: "44719403"
 具有 [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) 许可证的客户还会额外获得以下功能：
 
 * 通过自助方式集成支持 SAML 2.0 标识提供者的任何应用程序（SP 发起或 IdP 发起）
-* 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-single-sign-on) 的任何 Web 应用程序
+* 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
 * 以自助方式连接使用 SCIM 协议进行用户预配的应用程序（如[此处所述](use-scim-to-provision-users-and-groups.md)）
-* 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)中添加任何应用程序的链接
+* 可在 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sso)中添加任何应用程序的链接
 
 这不仅包括正在使用、但尚未登记到 Azure AD 应用程序库中的 SaaS 应用程序，也包括组织已部署到控制的服务器（在云中或本地）的第三方 Web 应用程序。
 
@@ -165,7 +165,7 @@ ms.locfileid: "44719403"
 ## <a name="existing-single-sign-on"></a>现有的单一登录
 选择此选项可将应用程序的链接添加到组织的 Azure AD 访问面板或 Office 365 门户。 可以使用此选项来添加当前正在使用 Azure Active Directory 联合身份验证服务（或其他联合身份验证服务）而不是 Azure AD 进行身份验证的自定义 Web 应用的链接。 或者，可以添加特定 SharePoint 页面或想要在用户访问面板上显示的其他网页的深层链接。 
 
-选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)中。
+选择“下一步”后，系统会提示输入要链接到的应用程序的 URL。 完成上述操作后，可将用户和组分配到应用程序，使应用程序显示在这些用户的 [Office 365 应用启动器](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](end-user-experiences.md)中。
 
 > [!NOTE] 
 > 可以在应用程序的“配置”选项卡中使用“上传徽标”按钮来上传应用程序的磁贴徽标。 

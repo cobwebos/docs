@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: azure
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cynthn
+ms.openlocfilehash: d8e7aa87deaa37f6a2e2eef572b6b7f6140e3fee
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571838"
+---
 ## <a name="open-azure-cloud-shell"></a>打开 Azure Cloud Shell
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 Cloud Shell 中预安装并配置了常用 Azure 工具供你与帐户一起使用。 只需选择“复制”按钮即可复制代码，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 可通过多种方式打开 Cloud Shell：

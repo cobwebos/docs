@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 704f6341573fd49cba57a319956ccc5f502bae77
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a0c7dcf848bfe6e5128117169a48adfbf9483f9b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038546"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346756"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的函数引用
 
@@ -732,12 +732,12 @@ and(<expression1>, <expression2>, ...)
 
 | 参数 | 必选 | 类型 | Description | 
 | --------- | -------- | ---- | ----------- | 
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 | 
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 | 
 ||||| 
 
 | 返回值 | 类型 | Description | 
 | ------------ | -----| ----------- | 
-| true 或 false | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 | 
+| true 或 false | Boolean | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 | 
 |||| 
 
 *示例 1*
@@ -988,7 +988,7 @@ bool(<value>)
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 指定的值的布尔版本 | 
+| true 或 false | Boolean | 指定的值的布尔版本 | 
 |||| 
 
 *示例*
@@ -1096,7 +1096,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
 |||| 
 
 *示例 1*
@@ -1632,7 +1632,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 | 
+| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 | 
 |||| 
 
 *示例* 
@@ -1667,7 +1667,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 | 
+| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 | 
 |||| 
 
 *示例 1* 
@@ -1707,7 +1707,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 | 
+| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 | 
 |||| 
 
 *示例*
@@ -1985,7 +1985,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 | 
+| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 | 
 |||| 
 
 *示例*
@@ -2022,7 +2022,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 | 
+| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 | 
 |||| 
 
 *示例*
@@ -2087,7 +2087,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 参数 | 必选 | 类型 | Description | 
 | --------- | -------- | ---- | ----------- | 
-| <*expression*> | 是 | 布尔 | 要检查的表达式 | 
+| <*expression*> | 是 | Boolean | 要检查的表达式 | 
 | <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 | 
 | <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 | 
 ||||| 
@@ -2466,7 +2466,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 | 
+| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 | 
 |||| 
 
 *示例*
@@ -2503,7 +2503,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |  
+| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |  
 |||| 
 
 *示例*
@@ -2706,12 +2706,12 @@ not(<expression>)
 
 | 参数 | 必选 | 类型 | Description | 
 | --------- | -------- | ---- | ----------- | 
-| <*expression*> | 是 | 布尔 | 要检查的表达式 | 
+| <*expression*> | 是 | Boolean | 要检查的表达式 | 
 ||||| 
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |  
+| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |  
 |||| 
 
 *示例 1*
@@ -2754,12 +2754,12 @@ or(<expression1>, <expression2>, ...)
 
 | 参数 | 必选 | 类型 | Description | 
 | --------- | -------- | ---- | ----------- | 
-| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 | 
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 | 
 ||||| 
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |  
+| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |  
 |||| 
 
 *示例 1*
@@ -3154,7 +3154,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | Description | 
 | ------------ | ---- | ----------- | 
-| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 | 
+| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 | 
 |||| 
 
 *示例 1* 
@@ -3350,7 +3350,7 @@ take([<collection>], <count>)
 这些示例从以下集合的开头获取指定的项数：
 
 ```
-take('abcde`, 3)
+take('abcde', 3)
 take(createArray(0, 1, 2, 3, 4), 3)
 ```
 

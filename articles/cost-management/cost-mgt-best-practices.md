@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/10/2018
+ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f52a849fee4005628fb6a8ad567d89f5046d4765
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968061"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515346"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -186,10 +186,6 @@ Azure 提供许多折扣，组织应利用这些折扣节省成本。
 如果本地部署中已有 Windows Server 或 SQL Server 许可证，可以使用 Azure 混合权益计划节省 Azure 费用。 如果享有 Windows Server 权益，每个许可证涵盖 OS（最多两台虚拟机）成本，仅需支付基础计算成本。 可以使用现有 SQL Server 许可证，在基于 vCore 的 SQL 数据库选项方面节省多达 55% 的费用。 选项包括 Azure 虚拟机中的 SQL Server 和 SQL Server Integration Services。
 
 有关详细信息，请参阅 [Azure 混合权益节省计算器](https://azure.microsoft.com/pricing/hybrid-benefit/)。
-
-#### <a name="monetary-commitment"></a>货币承诺
-
-签订企业协议的客户可以创建针对 Microsoft 的预先货币承诺付款。 货币承诺付款不仅是将预算分配到云资源的简单方法，而且可以降低 Azure 费率。 费率降低可以大大节省组织的成本。
 
 ### <a name="other-resources"></a>其他资源
 

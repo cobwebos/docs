@@ -4,24 +4,22 @@ description: 本快速入门介绍了如何使用 PowerShell 创建基本负载�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: bfd0c8a60c909076809a6a727677cdc4f10046f2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c675b6d50cf6bf5c4e7ea064f3741cae7a091946
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320419"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578301"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建公用负载均衡器
 本快速入门介绍了如何使用 Azure PowerShell 创建基本负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。
@@ -199,10 +197,10 @@ $rule2 = New-AzureRmNetworkSecurityRuleConfig `
 使用 [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) 创建网络安全组。
 
 ```azurepowershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup`
+$nsg = New-AzureRmNetworkSecurityGroup `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'myNetworkSecurityGroup'`
+-Name 'myNetworkSecurityGroup' `
 -SecurityRules $rule1,$rule2
 ```
 

@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 74dcef9e927fc537cba56b03fcbfb9528c952ad0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7852a0fc548980227723c9f6a259c63367159201
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837865"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346233"
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
+
 本文介绍了如何使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
 
 Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.google.com/p/pyodbc/) ODBC 和 [Pandas](http://pandas.pydata.org/) 库进行采样。
@@ -31,10 +32,6 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 > 本文档中的示例 SQL 代码假设该数据在 Azure 上的 SQL Server 中。 如果不存在，请参阅“[将数据移动到 Azure 上的 SQL Server](move-sql-server-virtual-machine.md)”文章，获取有关如何将数据移动到 Azure 上的 SQL Server 的说明。
 > 
 > 
-
-以下“菜单”所链接到的文章将描述如何从不同的存储环境对数据采样。 
-
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
 **为什么对数据进行采样？**
 如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。

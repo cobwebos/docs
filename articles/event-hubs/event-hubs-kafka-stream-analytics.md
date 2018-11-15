@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e7d140f212dd2506f48b23fe99db5ba2be91dac9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 031ed86461420ca6ebb2ac3a8f669305666e3cf4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421027"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278338"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -207,8 +207,13 @@ ms.locfileid: "50421027"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
 
-* [了解事件中心](event-hubs-what-is-event-hubs.md)
-* [了解适用于 Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-* [在适用于 Kafka 的事件中心 GitHub 上浏览更多示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-* 使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) [将事件从本地 Kafka 流式传输到云端已启用 Kafka 的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
-* 了解如何使用[本机 Kafka 应用程序](event-hubs-quickstart-kafka-enabled-event-hubs.md)、[Apache Flink](event-hubs-kafka-flink-tutorial.md) 或 [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) 流式传输到已启用 Kafka 的事件中心
+- [了解事件中心](event-hubs-what-is-event-hubs.md)
+- [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+- [如何创建启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)
+- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [将 Kafka 代理镜像到已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)
+- [将 Apache Spark 连接到已启用 Kafka 的事件中心](event-hubs-kafka-spark-tutorial.md)
+- [将 Apache Flink 连接到已启用 Kafka 的事件中心](event-hubs-kafka-flink-tutorial.md)
+- [将 Kafka Connect 与已启用 Kafka 的事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [将 Akka Streams 连接到已启用 Kafka 的事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka) 

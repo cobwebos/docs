@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571813"
+---
 如果不打算继续使用此应用，请按照以下步骤删除本快速入门中创建的所有资源，以免产生任何费用：
 
 1. 在 Azure 门户的最左侧选择“资源组”，，然后选择创建的资源组。  

@@ -1,3 +1,16 @@
+---
+author: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: nitinme
+ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571815"
+---
 必应支持命中词突出显示，此功能会在某些答案的显示字符串中标记查询词（或必应认为相关的其他词）。 例如，网页的 `name`、`displayUrl` 和 `snippet` 字段可能会标记查询词。
 
 默认情况下，必应不在显示字符串中包括突出显示标记。 要包括这些标记，请在请求中包括 `textDecorations` 查询参数，并将其设置为 **true**。 必应使用 E000 和 E001 Unicode 字符来标记查询词，对该词的开头和结尾进行标记。 例如，如果查询词为 Sailing Dinghy 且这两个单词中的任一个都存在于字段中，则会在命中词突出显示字符中包括该单词，如以下示例所示：  
@@ -10,7 +23,7 @@
   
 如果 `textDecorations` 为 **true**，必应会在答案的显示字符串中包括以下标记。 如果没有 HTML 等效项，则 HTML 表单元格为空。
 
-|Unicode|HTML|说明
+|Unicode|HTML|Description
 |-|-|-
 |U+E000|\<b>|表示查询词的开头（命中词突出显示）
 |U+E001|\</b>|表示查询词的结尾

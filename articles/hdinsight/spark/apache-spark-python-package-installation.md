@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: af25dcff2302827f2291d50972f09b8b5fda6cd3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 093a5eb7ee366abfdbc4c5dba68739544b438ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255432"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684522"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Microsoft Azure HDInsight 服务使用围绕 Hadoop 构建的开源技术生态�
 
 HDInsight 服务中有两种类型的开放源代码组件：
 
-* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Yarn ResourceManager、Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)中提供了群集组件的完整列表。
+* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Yarn ResourceManager、Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)中提供了群集组件的完整列表。
 * **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
 
 > [!WARNING]

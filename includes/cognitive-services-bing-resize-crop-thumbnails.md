@@ -1,3 +1,16 @@
+---
+author: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: nitinme
+ms.openlocfilehash: b1cf3dc24482da70372f775d0ba63a203df1b285
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571854"
+---
 某些必应响应包括必应提供的缩略图的 URL。 可以调整缩略图的大小，也可以对其进行裁剪。 
 
 > [!NOTE]
@@ -11,11 +24,11 @@
 调整图像大小时，会保留其纵横比。 为了保持纵横比，可以将白色填充添加到图像的边框。 例如，如果在不裁剪的情况下将 480x359 大小的图像调整成 200x200 大小，则图像会充斥整个宽度，而高则包含 25 像素的白色填充内容，位于图像的顶部和底部。 如果图像大小为 359x480，则情形与上面类似，区别是图像的左右边缘包含白色填充内容。 如果裁剪图像，不会添加白色填充内容。  
 
  
-下图显示了缩略图的原始大小 (480x300)。  
+下图显示缩略图的原始大小 (480x300)。  
   
 ![原始风景图](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape.PNG)  
   
-下图显示了调整为 200x200 大小后的图像。 保留了纵横比，顶部和底部边框填充了白色（为了显示填充内容，包括了黑色边框）。  
+下图显示调整为 200x200 大小后的图像。 保留了纵横比，顶部和底部边框填充了白色（为了显示填充内容，包括了黑色边框）。  
   
 ![调整大小后的风景图](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape-resized.PNG)  
 

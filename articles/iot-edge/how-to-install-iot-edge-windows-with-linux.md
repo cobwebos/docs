@@ -2,19 +2,19 @@
 title: 如何在带有 Linux 容器的 Windows 上安装 Azure IoT Edge | Microsoft Docs
 description: 在带有 Linux 容器的 Windows 上安装 Azure IoT Edge 的说明
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: c389f904fb3ea21c9bcc538a62c7a866ef3b254d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7bae81f2f8b9ef9f7da45aed3bf8d7b6e15c9d0b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739254"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568261"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>在 Windows 上安装 Azure IoT Edge 运行时，使其与 Linux 容器一起使用
 

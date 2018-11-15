@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: 13ac2ec0569dc79791eca9efb2bd51e7b76ddd05
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571811"
+---
 1. 登录到 [Azure 门户][Azure portal]。
 2. 在左侧菜单中，选择“+ 创建资源”。 然后，选择“集成” > “中继”。 如果未在列表中看到“中继”，请选择右上角的“查看全部”。 
 3. 在“创建命名空间”下输入命名空间名称。 系统会立即检查该名称是否可用。
@@ -6,7 +19,7 @@
 6. 在“位置”中，选择应托管命名空间的国家或地区。
    
     ![创建命名空间][create-namespace]
-7. 选择**创建**。 系统已创建命名空间并已将其启用。 几分钟后，系统将为用户的帐户预配资源。
+7. 选择“创建”。 系统已创建命名空间并已将其启用。 几分钟后，系统将为用户的帐户预配资源。
 
 ### <a name="get-management-credentials"></a>获取管理凭据
 

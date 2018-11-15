@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a517597c2c4586b59594415f2361e3e4166d4c5a
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466947"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299650"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "49466947"
 
 若要查看*资源组*的现有标记，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResourceGroup -Name examplegroup).Tags
 ```
 
@@ -50,31 +50,31 @@ Environment                    Test
 
 若要查看具有指定资源 ID 的资源的现有标记，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
 ```
 
 或者，若要查看具有指定名称和资源组的资源的现有标记，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
 若要获取具有特定标记的资源组，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResourceGroup -Tag @{ Dept="Finance" }).ResourceGroupName
 ```
 
 若要获取具有特定标记的资源，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -Tag @{ Dept="Finance"}).Name
 ```
 
 若要获取具有特定标记名称的资源，请使用：
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResource -TagName Dept).Name
 ```
 
@@ -82,13 +82,13 @@ Environment                    Test
 
 若要将标记添加到*不包含现有标记的资源组*，请使用：
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
 若要将标记添加到包含现有标记的资源组，请检索现有标记，添加新标记，然后重新应用标记：
 
-```powershell
+```azurepowershell-interactive
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
 $tags.Add("Status", "Approved")
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
@@ -96,22 +96,22 @@ Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 
 若要将标记添加到*不包含现有标记的资源*，请使用：
 
-```powershell
+```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
 ```
 
 若要将标记添加到包含现有标记的资源，请使用：
 
-```powershell
+```azurepowershell-interactive
 $r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$r.Tags.Add("Status", "Approved") 
+$r.Tags.Add("Status", "Approved")
 Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
 要将资源组中的所有标记应用于其资源，并且*不保留资源上的现有标记*，请使用以下脚本：
 
-```powershell
+```azurepowershell-interactive
 $groups = Get-AzureRmResourceGroup
 foreach ($g in $groups)
 {
@@ -121,7 +121,7 @@ foreach ($g in $groups)
 
 要将资源组中的所有标记应用于其资源，并且*保留资源上不重复的现有标记*，请使用以下脚本：
 
-```powershell
+```azurepowershell-interactive
 $group = Get-AzureRmResourceGroup "examplegroup"
 if ($group.Tags -ne $null) {
     $resources = Get-AzureRmResource -ResourceGroupName $group.ResourceGroupName
@@ -149,7 +149,7 @@ if ($group.Tags -ne $null) {
 
 若要删除所有标记，请传递一个空哈希表：
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
 
@@ -208,7 +208,7 @@ az group update -n examplegroup --set tags.Environment=Test tags.Dept=IT
 az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-若要将标记添加到已带标记的资源，请检索现有标记，重新格式化该值，然后重新应用现有标记和新标记： 
+若要将标记添加到已带标记的资源，请检索现有标记，重新格式化该值，然后重新应用现有标记和新标记：
 
 ```azurecli
 jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)

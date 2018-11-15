@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: fbdf12af5c14b65f69734c601916fad2b3d825ef
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 8a1bae4a05a0054960771b61ac186c1a48c3aea1
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361868"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686239"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 SQL Server 资源提供程序
 
@@ -39,7 +39,7 @@ ms.locfileid: "49361868"
 
     |最低 Azure Stack 版本|SQL RP 版本|
     |-----|-----|
-    |版本 1804 (1.0.180513.1)|[SQL RP 版本 1.1.24.0](https://aka.ms/azurestacksqlrp)
+    |版本 1808 (1.1808.0.97)|[SQL RP 版本 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
     |     |     |
 
 - 请确保满足数据中心集成先决条件：
@@ -101,8 +101,8 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module  -Name AzureStack -RequiredVersion 1.4.0
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
