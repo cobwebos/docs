@@ -11,23 +11,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 8bfe069ba03aec2476d437f25ebb00f8a934c845
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f421a3752e83a6a86193bb854e53bfc8322cfea4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025547"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280548"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>快速入门：在 HDInsight 中设置群集
 
-在此快速入门中，了解如何使用 Hadoop、Spark、Kafka、交互式查询、HBase、R Server 或 Storm 在 HDInsight 中设置和配置群集。 还将了解如何自定义群集、将它们加入到域并附加到 [Azure Data Lake Storage Gen2 预览版](introduction.md)。
+在此快速入门中，了解如何使用 Hadoop、Spark、Kafka、交互式查询、HBase、R Server 或 Storm 在 HDInsight 中设置和配置群集。 还将了解如何自定义群集、将它们加入到域并附加到启用了 [Azure Data Lake Storage Gen2 预览版](introduction.md)的存储帐户。
 
 Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。
 
 > [!IMPORTANT]
 >创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。 了解如何[删除群集](../../hdinsight/hdinsight-delete-cluster.md)。
 
-在此快速入门中，Data Lake Storage 用作数据层。 借助其分层命名空间服务和 [Hadoop 驱动程序](abfs-driver.md)，Data Lake Storage 针对分布式处理和分析进行优化。 即使是在 HDInsight 群集删除后，Data Lake Storage 中存储的数据仍然保留。
+具有 Data Lake Storage Gen2 功能的存储帐户在此快速入门中用作数据层。 借助其分层命名空间服务和 [Hadoop 驱动程序](abfs-driver.md)，Data Lake Storage Gen2 针对分布式处理和分析进行优化。 即使在删除了 HDInsight 群集后，存储在已启用 Data Lake Storage Gen2 的存储帐户中的数据仍会存在。
 
 ## <a name="cluster-setup-methods"></a>群集设置方法
 
@@ -44,7 +44,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 ## <a name="quick-create-basic-cluster-setup"></a>快速创建：基本群集设置
 
-本文介绍如何在 [Azure 门户](https://portal.azure.com)中进行设置，通过该门户，可以使用“快速创建”或“自定义”创建 HDInsight 群集。 
+本文介绍如何在 [Azure 门户](https://portal.azure.com)中进行设置，通过该门户，可以使用“快速创建”或“自定义”创建 HDInsight 群集。
 
 ![hdinsight 创建选项 自定义 快速创建](media/quickstart-create-connect-hdi-cluster/hdinsight-creation-options.png)
 
@@ -63,12 +63,11 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 可以借助 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)以组（称为 Azure 资源组）的形式处理应用程序中的资源。 可以通过单个协调的操作部署、更新、监视或删除应用程序的所有资源。
 
 ## <a name="cluster-types"></a> 群集类型和配置
+
 Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一组用于提供特定功能的组件。
 
 > [!IMPORTANT]
-> HDInsight 群集类型繁多，每种类型适用于一种工作负荷或技术。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术， [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network) 可以连接所需的群集类型。 
->
->
+> HDInsight 群集类型繁多，每种类型适用于一种工作负荷或技术。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术， [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network) 可以连接所需的群集类型。
 
 | 群集类型 | 功能 |
 | --- | --- |
@@ -112,7 +111,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 > [!WARNING]
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
 
-配置期间，为默认存储终结点指定 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 （可选）可以选择指定群集可访问的其他已链接 Azure Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
+配置期间，为默认存储终结点指定 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 （可选）可以指定群集可访问的其他已启用 Data Lake Storage Gen2 的链接存储帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
 ![群集存储设置：与 HDFS 兼容的存储终结点](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
@@ -122,7 +121,8 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
 ### <a name="optional-metastores"></a>可选元存储
-可以创建可选的 Hive 或 Oozie 元存储。 但是，并非所有群集类型都支持元存储，Azure SQL 数据仓库与元存储不兼容。 
+
+可以创建可选的 Hive 或 Oozie 元存储。 但是，并非所有群集类型都支持元存储，Azure SQL 数据仓库与元存储不兼容。
 
 有关详细信息，请参阅[在 Azure HDInsight 中使用外部元数据存储](../../hdinsight/hdinsight-use-external-metadata-stores.md)。
 
@@ -137,7 +137,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 ### <a name="oozie-metastore"></a>Oozie 元存储
 
-若要提高使用 Oozie 时的性能，请使用自定义元存储。 元存储还可以在用户删除群集后提供对 Oozie 作业数据的访问。 
+若要提高使用 Oozie 时的性能，请使用自定义元存储。 元存储还可以在用户删除群集后提供对 Oozie 作业数据的访问。
 
 > [!IMPORTANT]
 > 无法重用自定义 Oozie 元存储。 若要使用自定义 Oozie 元存储，必须在创建 HDInsight 群集时提供一个空的 Azure SQL 数据库。
@@ -146,11 +146,11 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 只要群集存在，用户就要为节点使用付费。 创建群集后便开始计费，删除群集后停止计费。 无法取消分配群集或暂停群集。
 
-
 ### <a name="number-of-nodes-for-each-cluster-type"></a>每种群集类型的节点数
+
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| Type | Nodes | 图表 |
+| 类型 | Nodes | 图表 |
 | --- | --- | --- |
 | Hadoop |头节点 (2)，数据节点 (1+) |![HDInsight Hadoop 群集节点](media/quickstart-create-connect-hdi-cluster/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集节点](media/quickstart-create-connect-hdi-cluster/hdinsight-hbase-cluster-type-setup.png) |
@@ -159,29 +159,30 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 有关详细信息，请参阅“HDInsight 提供了哪些 Hadoop 组件和版本？”中的[群集的默认节点配置和虚拟机大小](../../hdinsight/hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)
 
-HDInsight 群集的成本取决于节点数和节点的虚拟机大小。 
+HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 
 不同群集类型具有不同的节点类型、节点数和节点大小：
-* Hadoop 群集类型默认具有： 
+* Hadoop 群集类型默认具有：
     * 两个*头节点*  
     * 四个*数据节点*
-* Storm 群集类型默认具有： 
+* Storm 群集类型默认具有：
     * 两个 *Nimbus 节点*
     * 三个 *ZooKeeper 节点*
-    * 四个*监督器节点* 
+    * 四个*监督器节点*
 
 如果只需试用 HDInsight，建议使用一个数据节点。 有关 HDInsight 定价的详细信息，请参阅 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]
 > 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
->
 
-使用 Azure 门户配置群集时，可通过“节点定价层”边栏选项卡查看节点大小。 在门户中，还可以查看不同节点大小的相关成本。 
+使用 Azure 门户配置群集时，可通过“节点定价层”边栏选项卡查看节点大小。 在门户中，还可以查看不同节点大小的相关成本。
 
 ![HDInsight VM 节点大小](media/quickstart-create-connect-hdi-cluster/hdinsight-node-sizes.png)
 
-### <a name="virtual-machine-sizes"></a>虚拟机大小 
+### <a name="virtual-machine-sizes"></a>虚拟机大小
+
 部署群集时，根据计划部署的解决方案选择计算资源。 以下 VM 用于 HDInsight 群集：
+
 * A 系列和 D1-4 系列 VM：[常规用途 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
 * D11-14 系列 VM：[内存优化 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
@@ -189,13 +190,13 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 
 > [!IMPORTANT]
 > 如果需要群集中有 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。
->
->
 
-有关详细信息，请参阅[虚拟机的大小](../../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。   
+有关详细信息，请参阅[虚拟机的大小](../../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
 
 ## <a name="custom-cluster-setup"></a>自定义群集设置
+
 自定义群集设置基于快速创建设置，并添加了以下选项：
+
 - [HDInsight 应用程序](#hdinsight-applications)
 - [群集大小](#cluster-size)
 - 高级设置
@@ -218,8 +219,6 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 > 如果在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
 >
 > Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。 有关支持的组件的列表，请参阅 [HDInsight 提供的群集版本有哪些新功能？](../../hdinsight/hdinsight-component-versioning.md)。
->
->
 
 在创建过程中，有时需要配置以下配置文件：
 
@@ -242,6 +241,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 有关详细信息，请参阅 [使用 Bootstrap 自定义 HDInsight 群集](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md)。
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>高级设置：使用虚拟网络扩展群集
+
 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network)可以连接所需的群集类型。 此配置允许群集以及部署到群集的任何代码直接相互通信。
 
 有关将 Azure 虚拟网络与 HDInsight 配合使用的详细信息，请参阅 [使用 Azure 虚拟网络扩展 HDInsight](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。

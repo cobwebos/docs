@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: af57dc50dd156a3398c2c685e436d22ba3daea95
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211547"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567758"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -185,7 +185,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 - 目标恢复区域是“Azure 东南亚”。
 - ExpressRoute 次要线路连接是通过新加坡的合作伙伴边缘建立的。
 
-有关在故障转移后使用具有相同 IP 地址的单条 ExpressRoute 线路的简单拓扑，请[查看本文](site-recovery-retain-ip-azure-vm-failover.md#on-premises-to-azure-connectivity)。
+有关在故障转移后使用具有相同 IP 地址的单条 ExpressRoute 线路的简单拓扑，请[查看本文](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover)。
 
 ### <a name="example-steps"></a>示例步骤
 若要在本示例中自动执行恢复，需要执行以下操作：

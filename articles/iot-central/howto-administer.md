@@ -1,110 +1,67 @@
 ---
 title: 管理 Azure IoT Central 应用程序 | Microsoft Docs
 description: 如何以管理员身份管理 Azure IoT Central 应用程序
-author: tbhagwat3
-ms.author: tanmayb
+author: viv-liu
+ms.author: viviali
 ms.date: 04/16/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155314"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961341"
 ---
-# <a name="administer-your-iot-central-application"></a>管理 IOT Central 应用程序
+# <a name="administer-your-iot-central-application"></a>管理 IoT Central 应用程序
 
-创建 Microsoft Azure IoT Central 应用程序后，可以使用 Azure IoT Central 用户界面的“管理”部分对其进行管理。 若要转到“管理”部分，请在左侧导航菜单中选择“管理”。
-
-在“管理”部分可以：
-
-- 管理用户
-
-- 管理角色
-
-- 查看计费信息
+创建 IoT Central 应用程序后，可以转到“管理”部分来执行以下操作：
 
 - 管理应用程序设置
+- 管理用户
+- 管理角色
+- 查看帐单
+- 将试用版转换为即用即付版
+- 导出数据
+- 管理设备连接
+- 使用访问令牌
 
-- 提供免费试用版
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文中的[管理用户](#manage-users)部分详细介绍了如何向其他用户分配“管理员”角色。
 
-“管理”部分提供了一个辅助导航菜单，其中包含各种管理任务的链接。
+## <a name="manage-application-settings"></a>管理应用程序设置
 
-只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。 本文的 [管理用户](#manage-users) 部分详细介绍了如何向其他用户分配“管理员”角色。
-
-## <a name="change-application-name"></a>更改应用程序名称
-
-若要更改应用程序的名称，请在“管理”部分使用辅助导航菜单转到“应用程序设置”页。
-
-在“应用程序设置”页上，输入在“应用程序名称”字段中选择的名称。 再选择“保存”。
-
-## <a name="change-the-application-url"></a>更改应用程序 URL
-
-若要更改应用程序的 URL，请在“管理”部分使用辅助导航菜单导航到“应用程序设置”页。
+### <a name="change-application-name-and-url"></a>更改应用程序名称和 URL
+在“应用程序设置”页中，可以更改应用程序的名称和 URL，然后选择“保存”。
 
 ![“应用程序设置”页](media\howto-administer\image0-a.png)
-
-在“应用程序设置”页上，输入在“URL”字段中选择的 URL，然后选择“保存”。 URL 的长度不能超过 200 个字符。 如果该 URL 不可用，则会看到验证错误。
 
 > [!Note]
 > 如果更改了 URL，旧 URL 可由其他 Azure IoT Central 客户使用。 如果出现此情况，你再也不能使用旧 URL。 更改 URL 后，旧 URL 不再有效，因此需要告知用户要使用的新 URL。
 
-## <a name="change-the-application-image"></a>更改应用程序图像
+### <a name="prepare-and-upload-image"></a>准备和上传图像
+若要更改应用程序图像，请参阅[准备图像并将其上传到 Azure IoT Central 应用程序](howto-prepare-images.md)。
 
-有关在 Azure IoT Central 应用程序中使用图像的详细信息，请参阅[准备图像并将其上传到 Azure IoT Central 应用程序](howto-prepare-images.md)。
+### <a name="copy-an-application"></a>复制应用程序
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是付费的即用即付应用程序。 不能以这种方式创建试用版应用程序。
 
-## <a name="copy-an-application"></a>复制应用程序
-
-可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 副本是收费的付费应用程序。 不能通过复制另一应用程序来创建试用版应用程序。
-
-若要复制应用程序，请转到“应用程序设置”页。 然后选择“复制”按钮。
-
-![“应用程序设置”页](media\howto-administer\appCopy1.png)
-
-选择“复制”按钮会打开一个对话框，可在其中选择要通过复制应用程序创建的新应用程序的名称、URL、Azure AD 目录、订阅和 Azure 区域。 为其中的每个字段选择值。 然后选择“复制”按钮以确认你想要继续操作。 可在有关[如何创建应用程序](howto-create-application.md)的文章中详细了解要输入哪些值。
+单击“复制”按钮。 在对话框中，输入新的即用即付应用程序的详细信息。 然后单击“复制”按钮以确认继续。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
 
 ![“应用程序设置”页](media\howto-administer\appCopy2.png)
 
-应用复制操作成功后，可以转到通过复制应用程序创建的新应用程序。 若要转到应用，请选择显示在“应用程序设置”页上的链接。
+应用复制操作成功后，可以使用显示的链接转到通过复制应用程序创建的新应用程序。
 
 ![“应用程序设置”页](media\howto-administer\appCopy3.png)
 
 > [!Note]
-> 复制某个应用程序也会复制规则或操作的定义。 但是，由于不会将有权访问原始应用的用户复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。
+> 复制某个应用程序也会复制规则和操作的定义。 但是，由于不会将有权访问原始应用的用户复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。 一般而言，最好是检查规则和操作，以确保它们在新应用中是最新的。
 
-## <a name="delete-an-application"></a>删除应用程序
+### <a name="delete-an-application"></a>删除应用程序
 
-若要删除应用程序，请在“管理”部分使用辅助导航菜单导航到“应用程序设置”页。
-
-选择“删除”。
-
-> [!Note]
-> 删除某个应用程序会永久删除与该应用程序关联的所有数据。  若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
-
-## <a name="roles-in-azure-iot-central"></a>Azure IoT Central 中的角色
-
-使用角色可以控制组织中的哪些人可以执行各种 Azure IoT Central 任务。 可将 Azure IoT Central 提供的三个角色分配给应用程序的用户。 角色由每个应用程序分配。 同一个用户可以在不同的应用程序中充当不同的角色。 可将同一个用户分配到应用程序中的多个角色。
-
-### <a name="administrator"></a>管理员
-
-充当“管理员”角色的用户有权访问 Azure IoT Central 应用程序中的所有功能。
-
-创建应用程序的用户会自动分配到“管理员”角色。 必须始终有一个用户充当“管理员”角色。
-
-### <a name="application-builder"></a>应用程序构建人员
-
-充当“应用程序构建人员”角色的用户可以在 Azure IoT Central 应用程序中执行任何操作，但无法管理应用程序。
-
-### <a name="application-operator"></a>应用程序操作员
-
-充当“应用程序操作员”角色的用户无权访问“应用程序构建人员”页。 他们无法管理应用程序。
+使用“删除”按钮可以永久删除 IoT Central 应用程序。 此操作会永久删除与该应用程序关联的所有数据。 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
 
 ## <a name="manage-users"></a>管理用户
-
-应用程序管理员可将用户分配到应用程序中的角色。
 
 ### <a name="add-users"></a>添加用户
 
@@ -112,24 +69,18 @@ ms.locfileid: "50155314"
 
 有关详细信息，请参阅 [Microsoft 帐户帮助](https://support.microsoft.com/products/microsoft-account?category=manage-account)和[快速入门：将新用户添加到 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
 
-1. 若要将用户帐户添加到 Azure IoT Central 应用程序，请在“管理”部分使用辅助导航菜单转到“用户”页。
+1. 若要将用户添加到 IoT Central 应用程序，请转到“用户”页中的“管理”部分。
 
     ![用户列表](media\howto-administer\image1.png)
 
 1. 若要添加用户，在“用户”页上，选择“+ 添加用户”。
 
-    ![添加用户](media\howto-administer\image2.png)
-
-1. 从“角色”下拉菜单中为用户选择一个角色。 请在本文的“Azure IoT Central 中的角色”部分详细了解角色。
+1. 从“角色”下拉菜单中为用户选择一个角色。 在本文的[管理角色](#manage-roles)部分详细了解角色。
 
     ![角色选择](media\howto-administer\image3.png)
 
     > [!NOTE]
     >  若要批量添加用户，请输入想要添加的所有用户的用户 ID，并用分号分隔。 从“角色”下拉菜单中选择一个角色。 再选择“保存”。
-
-1. 添加用户后，“用户”页上会显示该用户对应的条目。
-
-    ![用户列表](media\howto-administer\image4.png)
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>编辑分配给用户的角色
 
@@ -139,35 +90,63 @@ ms.locfileid: "50155314"
 
 若要删除用户，选择“用户”页上的一个或多个复选框。 然后选择“删除”。
 
+## <a name="manage-roles"></a>管理角色
+
+使用角色可以控制组织中的哪些人可以在 IoT Central 中执行各种任务。 可将三种角色分配给应用程序的用户。 
+
+### <a name="administrator"></a>管理员
+
+充当“管理员”角色的用户有权访问应用程序中的所有功能。
+
+创建应用程序的用户会自动分配到“管理员”角色。 必须始终有一个用户充当“管理员”角色。
+
+### <a name="application-builder"></a>应用程序构建人员
+
+充当“应用程序构建人员”角色的用户可以在应用程序中执行任何操作，但无法管理应用程序。 这意味着，构建人员可以创建、编辑和删除设备模板与设备、管理设备集，以及运行分析和作业。 构建人员无权访问应用程序的“管理”部分。
+
+### <a name="application-operator"></a>应用程序操作员
+
+充当“应用程序操作员”角色的用户无法对设备模板进行更改，也无法管理应用程序。 这意味着，操作员可以添加和删除设备、管理设备集，以及运行分析和作业。 操作员无权访问“应用程序构建人员”和“管理”页。
+
+
 ## <a name="view-your-bill"></a>查看帐单
 
-若要查看帐单，请在“管理”部分转到“计费”页。 然后选择“计费”。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
+若要查看帐单，请在“管理”部分转到“计费”页。 Azure 计费页将在新选项卡中打开，可以在此处看到每个 Azure IoT Central 应用程序的帐单。
 
-## <a name="convert-your-trial-to-a-paid-application"></a>将试用版转换为付费版应用程序
+### <a name="convert-your-trial-to-pay-as-you-go"></a>将试用版转换为即用即付版
 
-试用 IoT Central 后，可将试用版转换为付费版应用程序。 若要完成此自助服务过程，请遵循以下步骤：
+可试用版应用程序转换为即用即付应用程序。 下面是这些应用程序类型之间的差异。
 
-1. 在“管理”部分使用辅助导航菜单转到“计费”页。 如果尚未延长试用期，该页的外观如以下屏幕截图所示：
+- **试用版**应用程序免费 7 天，然后过期。 它们可以在到期之前随时转换为即用即付。
+- **即用即付**应用程序按设备收费，前 5 台设备免费。
 
-    ![免费试用状态](media/howto-administer/freetrial.png)
+可在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上了解定价详细信息。
+    
+若要完成此自助服务过程，请遵循以下步骤：
 
-2. 选择“转换为付费版”。 如果尚未延长试用期，则弹出窗口的外观如以下屏幕截图所示：
+1. 在“管理”部分转到“计费”页。 
 
-    ![延长免费试用期](media/howto-administer/extend.png)
+    ![试用状态](media/howto-administer/freetrialbilling.png)
 
-3. 在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅。
+1. 单击“转换为即用即付”。 
 
-3. 选择“转换”后，试用版将转换为付费版应用程序，并开始计费。
+    ![转换试用版](media/howto-administer/convert.png)
 
-## <a name="extend-your-free-trial"></a>延长免费试用期
+1. 选择相应的 Azure Active Directory，然后选择要对即用即付应用程序使用的 Azure 订阅。
 
-默认情况下，所有免费试用版可使用 7 天。 如果想要将试用期增加到 30 天，请按照以下步骤操作：
+1. 单击“转换”后，应用程序随即会变成即用即付应用程序，并开始计费。
 
-1. 在“管理”部分使用辅助导航菜单转到“计费”页。
+## <a name="export-data"></a>导出数据
 
-1. 选择“延长试用期”。 在弹出窗口中，选择相应的 Azure Active Directory 租户，然后选择要对 IoT Central 应用程序使用的 Azure 订阅。
+可以启用“连续数据导出”，以将度量值、设备和设备模板数据导出到 Azure Blob 存储帐户。 详细了解[如何导出数据](#howto-export-data)。
 
-1. 然后选择“延长”。 现在，试用版的有效期为 30 天。
+## <a name="manage-device-connection"></a>管理设备连接
+
+使用此处的密钥和证书在应用程序中大规模连接设备。 详细了解如何[连接设备](#concepts-connectivity)。
+
+## <a name="use-access-tokens"></a>使用访问令牌
+
+生成访问令牌，以便在开发人员工具中使用。 目前，可以使用一个开发人员工具（IoT Central 资源管理器）来监视设备消息以及属性和设置的更改。 详细了解 [IoT Central 资源管理器](#howto-use-iotc-explorer)。 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>使用 Azure SDK 进行控制平面操作
 

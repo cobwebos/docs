@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091755"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286990"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
@@ -75,7 +75,7 @@ ms.locfileid: "49091755"
 ### <a name="app-only-mode"></a>“仅应用”模式
 在仅应用上下文中，应用需要 User.Invite.All 作用域才能使邀请成功。
 
-有关详细信息，请参阅 https://graph.microsoft.io/docs/authorization/permission_scopes
+有关详细信息，请参阅 https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell

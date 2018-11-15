@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166327"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277437"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 服务总线指标（预览版）
 
@@ -29,7 +29,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Log Analytics 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 收集的监视数据](../monitoring/monitoring-data-collection.md)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)中配置的。
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
 
@@ -58,7 +58,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 计算数据量和管理操作请求数。
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | 传入的请求数（预览版） | 在指定的期间内向服务总线服务发出的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |成功的请求数（预览版）|在指定的期间内向服务总线服务发出的成功请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -76,14 +76,16 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="message-metrics"></a>消息指标
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |传入的消息数（预览版）|在指定的期间内发送到服务总线的事件或消息数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |传出的消息数（预览版）|在指定的期间内从服务总线收到的事件或消息数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| 消息数（预览版） | 队列/主题中的消息计数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 维度：EntityName |
+| 活动消息数（预览版） | 队列/主题中的活动消息的计数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 维度：EntityName |
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -94,7 +96,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 > [!NOTE] 
 > 以下指标仅适用于高级层。 
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |每个命名空间的 CPU 使用率（预览版）|命名空间的 CPU 使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
 |每个命名空间的内存使用量（预览版）|命名空间的内存使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
@@ -103,9 +105,57 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选的。 如果不添加维度，则指标是在命名空间级别指定的。 
 
-|维度名称|Description|
+|维度名称|说明|
 | ------------------- | ----------------- |
 |EntityName| 总线服务支持命名空间下的消息实体。|
+
+## <a name="set-up-alerts-on-metrics"></a>针对指标设置警报
+
+1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。 
+
+    ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
+2. 选择“选择目标”，并在“选择资源”页面上执行以下操作： 
+    1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
+    2. 对于“按订阅筛选”字段，选择你的订阅。
+    3. 从列表中选择“服务总线命名空间”。 
+    4. 选择“完成”。 
+    
+        ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
+1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
+    1. 对于“信号类型”，选择“指标”。 
+    2. 选择一个信号。 例如：“服务错误(预览版)”。 
+
+        ![选择“服务器错误”](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
+    1. 对于“条件”，选择“大于”。
+    2. 对于“时间聚合”，选择“总计”。 
+    3. 对于“阈值”，输入 **5**。 
+    4. 选择“完成”。    
+
+        ![指定条件](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
+1. 在“创建规则”页面上，展开“定义警报详细信息”，执行以下操作：
+    1. 为警报输入**名称**。 
+    2. 为警报输入**说明**。
+    3. 选择警报的**严重性**。 
+
+        ![警报详细信息](./media/service-bus-metrics-azure-monitor/alert-details.png)
+1. 在“创建规则”页面上，展开“定义操作组”，选择“新建操作组”，然后在“添加操作组”页面上执行以下操作。 
+    1. 为操作组输入名称。
+    2. 为操作组输入短名称。 
+    3. 选择订阅。 
+    4. 选一个择资源组。 
+    5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。
+    6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。 
+    7. 选择“编辑详细信息”。 
+    8. 在“电子邮件/短信/推送/语音”页面上，执行以下操作：
+        1. 选择“电子邮件”。 
+        2. 键入**电子邮件地址**。 
+        3. 选择“确定”。
+
+            ![警报详细信息](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+        4. 在“添加操作组”页面上，选择“确定”。 
+1. 在“创建规则”页面上，选择“创建警报规则”。 
+
+    ![“创建警报规则”按钮](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## <a name="next-steps"></a>后续步骤
 

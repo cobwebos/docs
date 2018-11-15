@@ -1,32 +1,32 @@
 ---
-title: 在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询
-description: 了解如何使用 Zeppelin 运行 Hive 查询。
+title: 在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询
+description: 了解如何使用 Apache Zeppelin 运行 Apache Hive 查询。
 keywords: hdinsight,hadoop,hive,交互式查询,LLAP
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 3064c9cd141458307891f666bd5af9aa738cc021
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093162"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277947"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询 
 
-HDInsight 交互式查询群集包括可用来运行交互式 Hive 查询的 Zeppelin 笔记本。 本文介绍如何使用 Zeppelin 在 Azure HDInsight 中运行 Hive 查询。 
+HDInsight 交互式查询群集包括可用来运行交互式 Hive 查询的 Apache Zeppelin 笔记本。 本文介绍如何使用 Apache Zeppelin 在 Azure HDInsight 中运行 Apache Hive 查询。 
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具备以下项：
 
 * **HDInsight 交互式查询群集**。 若要创建 HDInsight 群集，请参阅[创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”类型。 
 
-## <a name="create-a-zeppelin-note"></a>创建 Zeppelin 笔记
+## <a name="create-a-apache-zeppelin-note"></a>创建 Apache Zeppelin 笔记
 
 1. 浏览到以下 URL：
 

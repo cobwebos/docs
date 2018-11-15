@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f07488e526a15fb067d6ea7a265d069fbe3aee3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5601c6c5b85b144b853c40e89c81a22f87b7880f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009549"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614985"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>使用 Log Analytics 监视 Surface Hub 以跟踪其运行状况
 
@@ -84,8 +84,8 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 
    ![Surface Hub 仪表板](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-可以根据现有或自定义的日志搜索创建[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)。 通过使用 Log Analytics 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
+可以根据现有或自定义的日志搜索创建[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。 通过使用 Log Analytics 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-queries.md)，查看详细的 Surface Hub 数据。
-* 创建[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)，以便在 Surface Hub 出现问题时通知你。
+* 创建[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)，以便在 Surface Hub 出现问题时通知你。

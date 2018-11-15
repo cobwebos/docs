@@ -3,7 +3,7 @@ title: 在 Azure 中的 Service Fabric 上创建 Windows 容器应用 |Microsoft
 description: 在本快速入门中，请在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: vturecek
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/30/2018
-ms.author: ryanwi
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: be6c13b998664cda65b1002c23726cbe89359a59
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2855d28a3d5414413ca1657a7bef9c060f6d4424
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261190"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300330"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 

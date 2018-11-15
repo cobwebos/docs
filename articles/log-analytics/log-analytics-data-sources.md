@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 071e4694bc3e2a8dc70a199fe7d6021332693b88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014017"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613862"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics 中的数据源
 Log Analytics 从已连接的数据源收集数据并将其存储在 Log Analytics 工作区中。  从每个源收集的数据由所配置的数据源定义。  Log Analytics 中的数据以一组记录的形式存储。  每个数据源将创建具有某种特殊类型的记录，而每个类型都具有自己的一组属性。
@@ -69,4 +69,4 @@ Log Analytics 所收集的所有数据都作为记录存储在工作区中。  �
 ## <a name="next-steps"></a>后续步骤
 * 了解[解决方案](../monitoring/monitoring-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到工作区中。
 * 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
-* 配置[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。
+* 配置[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)以便主动向你通知从数据源和解决方案中收集的关键数据。

@@ -2,25 +2,25 @@
 title: 使用 Log Analytics 监视 Azure HDInsight 群集
 description: 了解如何使用 Azure Log Analytics 监视在 HDInsight 群集中运行的作业。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.author: jasonh
-ms.openlocfilehash: 1a526bfdd951e4dc2897ec52c03bfbe96ee14d4c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 531cfb32b3433e0a376845a81a3ea5e13e6f1d11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403672"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278678"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
 了解如何启用 Azure Log Analytics 监视 HDInsight 中的 Hadoop 群集操作，以及如何添加 HDInisght 监视解决方案。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) 是一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+[Log Analytics](../log-analytics/log-analytics-overview.md) 是 Azure Monitor 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "49403672"
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
 > [!NOTE]
-> 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 请注意，Azure Log Analytics 并非在所有 Azure 区域中均可用。
+> 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 Azure Log Analytics 并非在所有 Azure 区域中均可用。
 
 ## <a name="enable-log-analytics-by-using-the-portal"></a>使用门户启用 Log Analytics
 

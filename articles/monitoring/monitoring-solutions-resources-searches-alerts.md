@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b4d6e1137b9e0404675a48260ea6c9f2c0d5c76f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282317"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614067"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "51282317"
 > 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。   
 
 
-[管理解决方案](monitoring-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-queries.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](monitoring-solutions-creating.md)。
+[管理解决方案](monitoring-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-queries.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](monitoring-solutions-creating.md)。
 
 > [!NOTE]
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案](monitoring-solutions-creating.md)中对它们进行了介绍  
@@ -380,8 +380,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]",
-              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Webhook.Name)]"
+              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
             ],
             "properties": {
               "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",

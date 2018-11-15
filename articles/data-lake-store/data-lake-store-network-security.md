@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: b206b49914a448aa3fc9da63f72cca91f9f9ade1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218961"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287993"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成 - 预览
 
@@ -29,8 +29,6 @@ ms.locfileid: "51218961"
 适用于 Data Lake Storage Gen1 的虚拟网络集成在虚拟网络和 Azure Active Directory (Azure AD) 之间使用虚拟网络服务终结点安全性在访问令牌中生成其他安全声明。 然后，系统会使用这些声明对 Data Lake Storage Gen1 帐户进行虚拟网络身份验证，然后允许访问。
 
 > [!NOTE]
-> 此技术为预览版。 建议不要将它用于生产环境。
->
 > 使用这些功能不需额外支付相关费用。 帐户按 Data Lake Storage Gen1 的标准费率收费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)。 至于你使用的所有其他 Azure 服务，请参阅[定价](https://azure.microsoft.com/pricing/#product-picker)。
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>用于 Data Lake Storage Gen1 的虚拟网络集成的方案

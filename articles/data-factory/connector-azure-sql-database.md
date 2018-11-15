@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957983"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346694"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -208,7 +208,7 @@ Azure SQL 数据库链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable。 | 是 |
-| tableName | 链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 | 是 |
+| tableName | 链接服务引用的 Azure SQL 数据库实例中的表名称或视图名称。 | 对于源为“No”，对于接收器为“Yes” |
 
 #### <a name="dataset-properties-example"></a>数据集属性示例
 
@@ -248,7 +248,6 @@ Azure SQL 数据库链接服务支持以下属性：
 
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 也可以指定存储过程。 如果存储过程使用参数，则指定 sqlReaderStoredProcedureName 和 storedProcedureParameters。
 - 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则数据集 JSON 的“结构”部分定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
-- 使用 sqlReaderStoredProcedureName 时，仍需指定数据集 JSON 中虚拟的 tableName 属性。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 

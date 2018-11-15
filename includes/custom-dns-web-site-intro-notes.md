@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: 4ab12a4ccb3aa4acecabd076c774558f904297a1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571797"
+---
 本文适用于 Azure 应用服务（Web 应用、API 应用、移动应用和逻辑应用）；对于云服务，请参阅[为 Azure 云服务配置自定义域名](../articles/cloud-services/cloud-services-custom-domain-name.md)。
 
 > [!NOTE]

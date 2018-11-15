@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 6d31e6a4d424b8e3c634c9d5075b1f02c512187b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651088"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578665"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -38,7 +38,7 @@ ms.locfileid: "49651088"
 
 ### <a name="enable-a-managed-identity"></a>启用托管标识
 
- 在 Azure 容器实例中，Azure 资源的托管标识得到了 REST API 版本 2018-10-01 以及相应 SDK 和工具的支持。 创建容器组时，可通过设置 [ContainerGroupIdentity](/rest/api/container-instances/containergroups/containergroups_createorupdate#containergroupidentity) 属性来启用一个或多个托管标识。 还可以在容器组运行后启用或更新托管标识；任何一个操作都会导致容器组重新启动。 若要在新容器组或现有容器组上设置标识，请使用 Azure CLI、资源管理器模板或 YAML 文件。 
+ 在 Azure 容器实例中，Azure 资源的托管标识得到了 REST API 版本 2018-10-01 以及相应 SDK 和工具的支持。 创建容器组时，可通过设置 [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) 属性来启用一个或多个托管标识。 还可以在容器组运行后启用或更新托管标识；任何一个操作都会导致容器组重新启动。 若要在新容器组或现有容器组上设置标识，请使用 Azure CLI、资源管理器模板或 YAML 文件。 
 
 Azure 容器实例支持以下两种类型的 Azure 托管标识：用户分配和系统分配。 在容器组中，可以启用系统分配的标识、一个或多个用户分配的标识或这两种类型的标识。 
 

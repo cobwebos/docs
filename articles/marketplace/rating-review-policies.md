@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: qianw211
-ms.openlocfilehash: 3679981a335c380b54d7349d16f94bb7e5e1fee3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ab00e51aa8677f71990cf3da8bf01c9ab62ce4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258861"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683130"
 ---
 # <a name="azure-appsource-and-marketplace-review-policies"></a>Azure AppSource 和市场评论政策
 
@@ -52,12 +52,3 @@ ms.locfileid: "51258861"
 * 确保评论中表达的观点公正客观且不带情绪。
 * 请记住，你的内容将在公共论坛中发布，因此行为要与此相符。
 
-## <a name="review-guidelines-for-publishers"></a>面向发布者的评论指导原则
-
-* 请勿发布可能违反 [AppSource 和 Azure 市场评论政策](./rating-review-policies.md)的内容。
-* 请勿在评论中包含任何营销内容或广告。
-* 请勿在评论中推销其他应用或服务。
-* 你的回复应与特定的应用和评论直接相关。
-* 请勿使用模板式回复，或者在多条评论中发布模板式看法。
-* 请勿以任何方式操控评论，例如，通过提供报酬或奖励来让评论者改变评分或评论。
-* 始终以礼待人，并考虑到客户满意才是应用的最大推广动力。

@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 95403e71367f111877c6f317c63811333bd054dd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395184"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345532"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 本主题演示如何在 HDInsight Spark 群集上使用 Python 操作已保存的机器学习模型 (ML)。 它介绍如何加载使用 Spark MLlib 生成并存储在 Azure Blob 存储 (WASB) 中的机器学习模型，以及如何使用同样存储在 WASB 中的数据集为它们评分。 它介绍如何预处理输入数据、使用 MLlib 工具包中的索引和编码函数转换特征，以及如何创建可用作 ML 模型评分的输入的标签点数据对象。 用于评分的模型包括线性回归、逻辑回归、随机林模型和梯度提升树模型。
 

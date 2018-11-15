@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219403"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345583"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>将解决方案模板发布到 Azure 市场
 
@@ -161,7 +161,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 ![包详细信息](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
-- **当前版本** - 要上传的包版本。 它应采用以下格式 -
+- **当前版本** - 要上传的包版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
 
 - **包文件** - 此包包含以下文件，这些文件保存在一个 .zip 文件中。
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 9533992b939983ceda37a7c98d0bc2426168a0ac
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b31be534641f2777bcbfaaa33497d96b457db191
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279343"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684080"
 ---
 # <a name="configure-spark-settings"></a>配置 Spark 设置
 
@@ -30,7 +30,7 @@ HDInsight 群集中节点的 VM 数目和 VM 大小也可能影响 Spark 配置�
 
 使用适合你的群集的最佳 Spark 版本。  HDInsight 服务本身包含 Spark 和 HDInsight 的多个版本。  每个 Spark 版本包含一组默认群集设置。  
 
-创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅 [HDInsight 组件和版本](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)
+创建新群集时，可从以下多个 Spark 版本中进行选择。 若要查看完整列表，请参阅 [HDInsight 组件和版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
 > [!NOTE]

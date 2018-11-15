@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215321"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282061"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -339,7 +339,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 
 ## <a name="rules-for-devices"></a>设备规则
 
-还可以创建一个规则来为组中的成员身份选择设备对象。 无法将用户和设备都作为组成员。 可以使用以下设备属性。
+还可以创建一个规则来为组中的成员身份选择设备对象。 无法将用户和设备都作为组成员。 不再列出 **organizationalUnit** 属性，不应使用该属性。 此字符串由 Intune 在特定情况下设置，但 Azure AD 无法识别，因此不会根据此属性向组添加任何设备。
+
+可以使用以下设备属性。
 
  设备属性  | 值 | 示例
  ----- | ----- | ----------------
@@ -355,9 +357,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  enrollmentProfileName | Apple 设备注册配置文件或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
- organizationalUnit | 由本地 Active Directory 设置的与组织单位名称匹配的任何字符串值 | (device.organizationalUnit -eq "US PCs")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （device.systemLabels - 包含“M365Managed”）
 
 ## <a name="next-steps"></a>后续步骤
 

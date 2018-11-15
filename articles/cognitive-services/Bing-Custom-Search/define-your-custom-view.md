@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815250"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282913"
 ---
 # <a name="configure-your-custom-search-experience"></a>配置自定义搜索体验
 
@@ -64,7 +64,7 @@ ms.locfileid: "48815250"
 
 ## <a name="pinned-list"></a>“固定”列表
 
-如果用户输入特定搜索词，该门户还允许你将特定网页固定到搜索结果的顶部。 “固定”选项卡包含一个查询词和网页对列表，网页对用于指定显示为特定查询最匹配结果的网页。 有关固定结果的信息，请参阅[调整排名](#adjustrank)。
+如果用户输入特定搜索词，该门户还允许你将特定网页固定到搜索结果的顶部。 “固定”选项卡包含一个查询词和网页对列表，网页对用于指定显示为特定查询最匹配结果的网页。 此外，只有已编制索引的网页才会显示在搜索中。 有关固定结果的信息，请参阅[调整排名](#adjustrank)。 
 
 固定结果不适用于图像搜索和视频搜索体验。
 

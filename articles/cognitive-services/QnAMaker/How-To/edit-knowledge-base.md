@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/06/2018
 ms.author: tulasim
-ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451878"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279692"
 ---
 # <a name="edit-a-knowledge-base"></a>编辑知识库
 
@@ -89,6 +89,12 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 3. “分页”允许你管理大型知识库
 
     ![搜索, 分页, 分组](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+## <a name="delete-knowledge-bases"></a>删除知识库
+
+删除知识库 (KB) 是一项永久性操作， 无法撤消。 删除知识库之前，应该从 QnA Maker 门户的“设置”页导出知识库。 
+
+如果你与[协作者](collaborate-knowledge-base.md)共享知识库，然后将该知识库删除，则每个人都会失去对该知识库的访问权限。 
 
 ## <a name="next-steps"></a>后续步骤
 

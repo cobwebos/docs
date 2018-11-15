@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420959"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260493"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -48,7 +48,6 @@ ms.locfileid: "50420959"
 
 **错误代码**：UserErrorRpCollectionLimitReached <br>
 **错误消息**：已达到还原点集合的最大限制。 <br>
-说明:  
 * 如果恢复点资源组中的锁阻止自动清理恢复点，则可能会发生此问题。
 * 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
 
@@ -96,6 +95,21 @@ ms.locfileid: "50420959"
 **原因 5：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 **原因 6：[备份服务因资源组锁定而无权删除旧的还原点](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
 
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize - 当前，Azure 备份不支持大于 1023GB 的磁盘大小
+
+**错误代码**：UserErrorUnsupportedDiskSize <br>
+**错误消息**：当前 Azure 备份不支持大于 1023GB 的磁盘大小 <br>
+
+对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到 Azure VM 备份堆栈 V2。 升级到 Azure VM 备份堆栈 V2 后，最多可支持 4TB。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 当前，Azure 备份不支持标准 SSD 磁盘
+
+**错误代码**：UserErrorStandardSSDNotSupported <br>
+**错误消息**：当前，Azure 备份不支持标准 SSD 磁盘 <br>
+
+当前，只有对于已升级到 Azure VM 备份堆栈 V2 的保管库，Azure 备份才支持标准 SSD 磁盘。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。
+
+
 ## <a name="causes-and-solutions"></a>原因和解决方法
 
 ### <a name="the-vm-has-no-internet-access"></a>VM 无法访问 Internet
@@ -139,7 +153,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 确定 Windows 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 尝试重启 Windows 来宾代理服务并启动备份。    
 2. 如果“服务”中未显示 Windows 来宾代理服务，请在控制面板中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务。
 4. 如果“程序和功能”中显示了 Windows 来宾代理，请将其卸载。
-5. 下载并安装[最新版本的代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
+5. 下载并安装[最新版本的代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
 6. 检查能否在服务中看到 Windows 来宾代理服务。
 7. 运行按需备份：
     * 在门户中，选择“立即备份”。
@@ -208,7 +222,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 1. 登录到 [Azure 门户](http://portal.azure.com/)。
-2. 转到“所有资源选项”，选择采用 AzureBackupRG_<Geo>_<number> 格式的还原点集合资源组。
+2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。
 3. 在“设置”部分，选择“锁”以显示锁。
 4. 若要删除锁，请选择省略号，然后单击“删除”。
 
@@ -217,17 +231,17 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 ### <a name="clean_up_restore_point_collection"></a>清理还原点集合
 删除锁后，必须清理还原点。 若要清理还原点，请执行以下任一方法：<br>
 * [通过运行即席备份来清理还原点集合](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [在门户中清理备份服务创建的还原点集合](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [从 Azure 门户清理还原点集合](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>通过运行即席备份来清理还原点集合
 删除锁后，触发即席/手动备份。 这可以确保自动清理还原点。 预期此即席/手动操作第一次会失败；但是，它可以确保自动完成清理，而无需手动删除还原点。 清理后，下一个计划的备份应会成功。
 
 > [!NOTE]
-    > 自动清理将在触发即席/手动备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-portal-created-by-backup-service)列出的步骤手动删除还原点集合。
+    > 自动清理将在触发即席/手动备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-azure-portal)列出的步骤手动删除还原点集合。
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>在门户中清理备份服务创建的还原点集合<br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>从 Azure 门户清理还原点集合 <br>
 
-若要手动清除由于资源组中存在锁而未能清除的还原点集合，请执行以下步骤：
+若要手动清除由于资源组中存在锁而未能清除的还原点集合，请尝试以下步骤：
 1. 登录到 [Azure 门户](http://portal.azure.com/)。
 2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。
 

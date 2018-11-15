@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341117"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280157"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -66,7 +66,7 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 
 ## <a name="correlation-headers"></a>关联标头
 
-我们正在开发[关联 HTTP 协议](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md)的 RFC 提案。 此提案定义两个标头：
+我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
 
 - `Request-Id` 承载调用的全局唯一 ID
 - `Correlation-Context` 承载分布式跟踪属性的名称值对集合
@@ -77,7 +77,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 ### <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
 
-我们正在转换为（W3C 分布式跟踪格式）[https://w3c.github.io/distributed-tracing/report-trace-context.html]。 定义的内容：
+我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
 - `traceparent` - 承载全局唯一操作 ID 和调用的唯一标识符
 - `tracestate` - 承载跟踪系统特定的上下文。
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-使用[设备上下文类](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)（仅标记此遥测项）
+使用[设备上下文类](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)（仅标记此遥测项）
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```

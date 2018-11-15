@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621195"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747552"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -58,9 +58,17 @@ ms.locfileid: "39621195"
 
 有关获取当前事件网格订阅的信息，请参阅[查询事件网格订阅](query-event-subscriptions.md)。
 
+## <a name="event-subscription-expiration"></a>事件订阅过期
+
+Azure CLI 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)允许你在创建事件订阅时设置过期日期。 如果你使用的是 REST API，请使用 `api-version=2018-09-15-preview`
+
+事件订阅在该日期后自动过期。 为仅在有限时间内需要的事件订阅设置一个过期日期，你不需要担心清理这些订阅。 例如，创建事件订阅来测试某个方案时，你可能想要设置过期日期。 
+
+有关设置过期日期的示例，请参阅[使用高级筛选器进行订阅](how-to-filter-events.md#subscribe-with-advanced-filters)。
+
 ## <a name="event-handlers"></a>事件处理程序
 
-从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 事件网格支持多种处理程序类型。 可以使用受支持的 Azure 服务或你自己的 webhook 作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 对于 HTTP webhook 事件处理程序，在处理程序返回状态代码 `200 – OK` 之前，将重试事件。 对于 Azure 存储队列，在队列服务能够成功处理推送到队列的消息之前，将重试事件。
+从事件网格的角度看，事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 事件网格支持多个处理程序类型。 可以使用受支持的 Azure 服务或你自己的 webhook 作为处理程序。 根据处理程序的类型，事件网格遵循不同机制，以保证事件的传递。 对于 HTTP webhook 事件处理程序，在处理程序返回状态代码 `200 – OK` 之前，将重试事件。 对于 Azure 存储队列，将重试事件，直到队列服务成功处理推送到队列的消息。
 
 有关实现任何受支持的事件网格处理程序的信息，请参阅 [Azure 事件网格中的事件处理程序](event-handlers.md)。
 
@@ -74,7 +82,7 @@ ms.locfileid: "39621195"
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件仍不应超过 64 KB。
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件还不应当超过 64 KB。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247974"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287432"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
@@ -75,7 +75,7 @@ ms.locfileid: "50247974"
 
 默认情况下，Azure AD 提倡使用多租户应用程序。 此类应用程序可跨组织轻松访问，在接受许可后即可轻松使用。
 
-## <a name="consent-framework"></a>许可框架
+## <a name="consent-framework"></a>同意框架
 
 可以使用 Azure AD 许可框架来开发多租户 Web 应用程序和本机客户端应用程序。 这些应用程序允许与应用程序所注册到的租户不同的 Azure AD 租户中的用户帐户登录。 它们可能还需要访问 Web API，例如：
 - Microsoft 图形 API（以便访问 Azure AD、Intune，以及 Office 365 中的服务）。 
@@ -84,7 +84,7 @@ ms.locfileid: "50247974"
 
 该框架基于某个用户或管理员，该用户或管理员许可某个应用程序在其目录中注册。 注册可能涉及到访问目录数据。 获得许可后，客户端应用程序可以代表该用户调用 Microsoft 图形 API，并根据需要使用信息。
 
-[Microsoft 图形 API](https://graph.microsoft.io/) 可用于访问 Office 365 中的数据，例如：
+[Microsoft 图形 API](https://developer.microsoft.com/graph/) 可用于访问 Office 365 中的数据，例如：
 
 - 来自 Exchange 的日历和邮件。
 - 来自 SharePoint 的站点和列表。
@@ -111,26 +111,26 @@ ms.locfileid: "50247974"
 
    如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限与在 Azure 门户中的委托权限中选择的权限相匹配。
 
-    ![许可页](./media/openidoauth-tutorial/consentpage.png)
+    ![同意页](./media/openidoauth-tutorial/consentpage.png)
 
 有些权限可由普通用户许可， 有些权限则需要租户管理员许可。
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>管理员许可与用户许可的区别
 
-作为管理员，还可以代表租户中的所有用户许可应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框。 具有管理员角色的用户可在 Azure 门户中提供许可。 在应用程序的“设置”页中，选择“所需权限” > “授予权限”。
+作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框。 具有管理员角色的用户可在 Azure 门户中提供许可。 在应用程序的“设置”页中，选择“所需权限” > “授予权限”。
 
 ![“授予权限”按钮](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
 > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
 
-仅限应用的权限始终需要租户管理员的许可。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息。 该消息指出该用户无法许可。
+仅限应用的权限始终需要租户管理员的同意。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息。 该消息指出该用户无法许可。
 
 如果应用程序使用需要管理员许可的权限，则需要提供某种表示，例如可供管理员启动操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求。 此请求包含 *prompt=admin_consent* 查询字符串参数。 
 
 在管理员已许可且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 *prompt=admin_consent* 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户许可。
 
-租户管理员可以禁用普通用户许可应用程序的能力。 如果禁用此功能，则始终需要管理员许可，才能在租户中使用应用程序。 如果想要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户](https://portal.azure.com/)中找到配置开关。 该开关位于“企业应用程序”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)部分。
+租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 如果想要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户](https://portal.azure.com/)中找到配置开关。 该开关位于“企业应用程序”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)部分。
 
 *prompt=admin_consent* 参数还可以由请求不需要管理员许可的权限的应用程序使用。 例如，某个应用程序需要如下所述的体验：租户管理员“注册”一次，在此之后不再提示其他用户确认许可。
 

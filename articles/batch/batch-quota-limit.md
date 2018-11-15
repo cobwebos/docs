@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887558"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282775"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -45,17 +45,27 @@ ms.locfileid: "48887558"
 
 如果创建了 Batch 帐户，并将池分配模式设置为“用户订阅”，则会以不同的方式应用配额。 在此模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 Azure Batch 核心配额不会应用到在此模式下创建的帐户。 对于此类帐户，将应用订阅中的区域计算核心数和其他资源的配额。 在 [Azure 订阅和服务的限制、配额和约束](../azure-subscription-service-limits.md)中详细了解这些配额。
 
+## <a name="pool-size-limits"></a>池大小限制
+
+| **资源** | **最大限制** |
+| --- | --- |
+| **[启用了节点间通信的池](batch-mpi.md)中的计算节点**  ||
+| Batch 服务池分配模式 | 100 |
+| Batch 订阅池分配模式 | 80 |
+| **[使用自定义 VM 映像创建的池](batch-custom-images.md)中的计算节点**<sup>1</sup> ||
+| 专用节点 | 2000 |
+| 低优先级节点 | 1000 |
+
+<sup>1</sup> 适用于未启用节点间通信的池。
+
 ## <a name="other-limits"></a>其他限制
 
 | **资源** | **最大限制** |
 | --- | --- |
-| 每个计算节点的[并发任务](batch-parallel-node-tasks.md)数 |4 x 节点核心数 |
-| 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 |20 |
-| 每个应用程序的应用程序包数 |40 |
+| 每个计算节点的[并发任务](batch-parallel-node-tasks.md)数 | 4 x 节点核心数 |
+| 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 | 20 |
+| 每个应用程序的应用程序包数 | 40 |
 | 最长任务生存期 | 7 天<sup>1</sup> |
-| [启用了节点间通信的池](batch-mpi.md)中的计算节点 | 100 |
-| [使用自定义 VM 映像创建的池](batch-custom-images.md)中的专用计算节点 | 2500 |
-| [使用自定义 VM 映像创建的池](batch-custom-images.md)中的低优先级计算节点 | 1000 |
 
 <sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
 

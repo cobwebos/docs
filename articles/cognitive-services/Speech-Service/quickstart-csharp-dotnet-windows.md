@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 2dd001ebebd5cdf90d7d0b8163a85a5f83c855f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281283"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683486"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>快速入门：使用语音 SDK 和 .NET Framework (Windows) 识别和转录语音
 
@@ -23,7 +23,7 @@ ms.locfileid: "51281283"
 
 按照本指南使用适用于 Windows 的 .NET framework 和语音 SDK 创建语音转文本控制台应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
 
-此快速入门需要启用了 Microsoft 语音的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started)获取订阅密钥。
+此快速入门需要启用了 Microsoft 语音的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)获取订阅密钥。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: adfb4c369ea1b324da8562a5b0b245ebdecff602
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323688"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012456"
 ---
 # <a name="create-and-manage-role-assignments"></a>创建和管理角色分配
 
@@ -21,15 +21,15 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 每个角色分配均包括：
 
-* **对象标识符**（Azure Active Directory ID、服务主体对象 ID 或域名）。
-* **对象标识符类型**。
-* **角色定义 ID**。
-* **空间路径**。
-* （在大多数情况下）Azure Active Directory **租户 ID**。
+* **对象标识符**：Azure Active Directory ID、服务主体对象 ID 或域名
+* **对象标识符类型**
+* **角色定义 ID**
+* **空间路径**
+* **租户 ID**：大多数情况下是 Azure Active Directory 租户 ID
 
 ## <a name="role-definition-identifiers"></a>角色定义标识符
 
-下表显示了可以通过查询系统/角色 API 获得的内容：
+下表显示了可以通过查询系统/角色 API 获得的内容。
 
 | **角色** | **标识符** |
 | --- | --- |
@@ -41,11 +41,11 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 | 用户 | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
 | 支持专家 | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | 设备安装员 | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| GatewayDevice | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |
+| 网关设备 | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |
 
 ## <a name="supported-objectidtypes"></a>支持的 ObjectIdTypes
 
-支持的 `ObjectIdTypes` 包括：
+支持的 `ObjectIdTypes`：
 
 * `UserId`
 * `DeviceId`
@@ -62,15 +62,15 @@ HTTP POST /api/v1.0/roleassignments
 
 | **名称** | **必需** | 类型 | **说明** |
 | --- | --- | --- | --- |
-| roleId| 是 |字符串 | 角色定义标识符。 可以通过查询系统 API 找到角色定义及其标识符。 |
-| objectId | 是 |字符串 | 角色分配的对象 ID，必须根据其关联类型进行格式化。 对于 `DomainName` ObjectIdType，ObjectId 必须以 `“@”` 字符开头。 |
-| objectIdType | 是 |字符串 | 角色分配的类型。 必须是此表中的以下行之一。 |
-| tenantId | 多种多样 | 字符串 |租户标识符。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
-| path* | 是 | 字符串 |`Space` 对象的完整访问路径。 例如：`/{Guid}/{Guid}` 如果标识符需要整个图形的角色分配，请指定 `"/"`（用于指定根）。 但是，不建议使用它，而**应始终遵循最低特权原则**。 |
+| roleId| 是 |String | 角色定义标识符。 通过查询系统 API 查找角色定义及其标识符。 |
+| objectId | 是 |String | 角色分配的对象 ID，必须根据其关联类型进行格式化。 对于 `DomainName` ObjectIdType，ObjectId 必须以 `“@”` 字符开头。 |
+| objectIdType | 是 |String | 角色分配的类型。 必须是此表中的以下行之一。 |
+| tenantId | 多种多样 | String |租户标识符。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
+| path* | 是 | String |`Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 请始终遵循最低权限原则。 |
 
 ## <a name="sample-configuration"></a>示例配置
 
-用户需要对租户空间的某一层具有管理访问权限：
+在此示例中，用户需要对租户空间的某一层具有管理访问权限。
 
   ```JSON
     {
@@ -82,7 +82,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-运行模拟设备和传感器的测试方案的应用程序：
+在此示例中，一个应用程序运行对设备和传感器进行模拟的测试方案。
 
   ```JSON
     {
@@ -94,7 +94,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-属于某域的所有用户都将获得对空间、传感器和用户（包括其对应的相关对象）的读取访问权限：
+属于某个域的一部分的所有用户都将收到对空间、传感器和用户的读取访问权限。 此访问权限包括其对应的相关对象。
 
   ```JSON
     {
@@ -105,7 +105,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-获取角色分配：
+使用 GET 获取角色分配。
 
 ```plaintext
 HTTP GET /api/v1/roleassignments?path={path}
@@ -115,7 +115,7 @@ HTTP GET /api/v1/roleassignments?path={path}
 | --- | --- | --- | --- | --- |
 | 路径 | 路径 | True | String | 空间的完整路径 |
 
-删除角色分配：
+使用 DELETE 删除角色分配。
 
 ```plaintext
 HTTP DELETE /api/v1/roleassignments/{id}

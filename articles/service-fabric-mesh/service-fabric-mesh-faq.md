@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501961"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278304"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 本文提供常见问题的解答。
@@ -27,24 +27,54 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 **参与预览版的成本是多少？**
 
-将应用程序或容器部署到网格预览版不收取任何费用。 但是，建议删除部署的资源，不要让它们保持运行，除非正在主动测试这些资源。
+当前，将应用程序或容器部署到网格预览版不收取任何费用。 但是，建议删除你部署的资源，不要让它们保持运行，除非正在主动测试这些资源。
 
 **内核和 RAM 的数量是否有配额限制？**
 
-是的，每个订阅的配额是：
+是的，每个订阅的配额设置如下：
 
 - 应用程序数量 - 5 
 - 每个应用程序的核心数 - 12 
 - 每个应用程序的总内存 - 48 GB 
-- 网络和入口终结点的数量 - 5  
-- 可连接的 Azure 卷数量 - 10 
+- 网络和入口终结点 - 5  
+- 可以附加的 Azure 卷 - 10 
 - 服务副本数 - 3 
-- 可以部署的最大容器限制为 4 个内核、16 GB RAM。
+- 可以部署的最大容器限制为 4 个内核、16GB RAM。
 - 可以将部分核心以 0.5 个核心的增量分配给容器（最多 6 个核心）。
 
-**是否可以让应用程序运行一夜？**
+**我可以将我的已部署应用程序保留多长时间？**
 
-是的，可以，但建议删除部署的资源，不要让它们保持运行，除非正在主动测试这些资源。 此策略将来可能会改变，如果资源被滥用，这些资源可能会被删除。
+当前，我们将应用程序的生存期限制为两天。 这是为了充分利用分配给预览版的空闲核心。 因此，仅允许你将给定的部署持续运行 48 小时，经过该时间量后，系统会关闭该部署。 如果看到此情况发生，可以通过在 Azure CLI 中运行 `az mesh app show` 命令并检查是否返回了 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 来验证系统是否已将其关闭。 
+
+例如： 
+
+```cli
+chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+{
+  "debugParams": null,
+  "description": "Service Fabric Mesh HelloWorld Application!",
+  "diagnostics": null,
+  "healthState": "Ok",
+  "id": "/subscriptions/1134234-b756-4979-84re-09d671c0c345/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabricMesh/applications/helloWorldApp",
+  "location": "eastus",
+  "name": "helloWorldApp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "serviceNames": [
+    "helloWorldService"
+  ],
+  "services": null,
+  "status": "Failed",
+  "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue.",
+  "tags": {},
+  "type": "Microsoft.ServiceFabricMesh/applications",
+  "unhealthyEvaluation": null
+}
+```
+
+若要继续将同一应用程序部署到网格，应当删除与应用程序关联的资源组，或者单独删除应用程序和所有相关的网格资源（包括网络）。 
+
+若要删除资源组，请使用 `az group delete <nameOfResourceGroup>` 命令。 
 
 ## <a name="supported-container-os-images"></a>支持的容器 OS 映像
 部署服务时，可使用以下容器 OS 映像。

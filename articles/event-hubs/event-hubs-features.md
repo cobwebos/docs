@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746908"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280567"
 ---
 # <a name="event-hubs-features-overview"></a>事件中心功能概述
 
@@ -28,13 +28,21 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 ## <a name="namespace"></a>命名空间
 事件中心命名空间提供唯一的范围容器，可以通过其[完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)进行引用，而在该容器中，可以创建一个或多个事件中心或 Kafka 主题。 
 
+## <a name="event-hubs-for-apache-kafka"></a>用于 Apache Kafka 的事件中心
+
+[此功能](event-hubs-for-kafka-ecosystem-overview.md)提供了一个终结点，该终结点允许客户使用 Kafka 协议与事件中心进行通信。 此集成为客户提供了一个 Kafka 终结点。 这允许客户将其现有 Kafka 应用程序配置为与事件中心进行通信，提供了运行其自己的 Kafka 群集的替代方式。 Apache Kafka 的事件中心支持 Kafka 协议 1.0 和更高版本。 
+
+有了此集成，你不需要使用 Zookeeper 便可运行 Kafka 群集或管理它们。 这还允许你使用事件中心的一些要求最严苛的功能，例如“捕获”、“自动扩展”和“异地灾难恢复”。
+
+使用此集成，只需要进行配置更改，便可允许应用程序（例如 Mirror Maker）或框架（例如 Kafka Connect）以非群集方式工作。 
+
 ## <a name="event-publishers"></a>事件发布者
 
-向事件中心发送数据的任何实体都是事件生成者或*事件发布者*。 事件发布者可以使用 HTTPS 或 AMQP 1.0 发布事件。 事件发布者通过共享访问签名 (SAS) 令牌向事件中心表明其身份，可以使用唯一的标识，也可以使用通用的 SAS 令牌。
+向事件中心发送数据的任何实体都是事件生成者或*事件发布者*。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 和更高版本发布事件。 事件发布者通过共享访问签名 (SAS) 令牌向事件中心表明其身份，可以使用唯一的标识，也可以使用通用的 SAS 令牌。
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0 或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，这些库和类用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](http://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 256 KB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
+可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，这些库和类用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](http://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
 
 是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 AMQP 在初始化会话时的网络成本更高，而 HTTPS 则每次请求都需要额外的 SSL 开销。 对于需要频繁进行发布的发布者来说，AMQP 的性能更高。
 
@@ -143,7 +151,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 管理偏移量由用户负责。
 
-## <a name="capacity"></a>Capacity
+## <a name="capacity"></a>容量
 
 事件中心具有高度可伸缩的并行体系结构，在进行大小和规模调整时需要考虑多个重要因素。
 

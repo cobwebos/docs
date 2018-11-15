@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7efafe5e3080de15781496032b688bc5fa71df2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418410"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613189"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -72,4 +72,4 @@ Azure 资源的新指标按以下形式提供：
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[新的统一 Azure Monitor](../azure-monitor/overview.md)。
-* 了解新的 [Azure 警报](monitoring-overview-unified-alerts.md)。
+* 了解新的 [Azure 警报](monitoring-overview-alerts.md)。

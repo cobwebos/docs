@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2017
+ms.date: 11/07/2018
 ms.author: dobett
-ms.openlocfilehash: 8fee8dd727623e81140656a070e6855547693154
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d9e5b46460f04ad491ac741a62ee6d644985e61
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451148"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283421"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -33,11 +33,12 @@ IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>将 Azure 存储帐户与 IoT 中心相关联
 
-要使用文件上传功能，必须首先将 Azure 存储帐户链接到 IoT 中心。 可通过 [Azure 门户](https://portal.azure.com)完成此任务，或通过 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 以编程方式完成此任务。 将 Azure 存储帐户与 IoT 中心关联后，当设备启动文件上传请求时，此服务将向该设备返回 SAS URI。
+要使用文件上传功能，必须首先将 Azure 存储帐户链接到 IoT 中心。 可通过 Azure 门户完成此任务，或通过 [IoT 中心资源提供程序 REST API](/rest/api/iothub/iothubresource) 以编程方式完成此任务。 将 Azure 存储帐户与 IoT 中心关联后，当设备启动文件上传请求时，此服务将向该设备返回 SAS URI。
+
+[使用 IoT 中心将文件从设备上传到云](iot-hub-csharp-csharp-file-upload.md)操作指南提供了文件上传过程的完整演练。 这些操作指南展示了如何使用 Azure 门户将存储帐户与 IoT 中心相关联。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 自动处理检索 SAS URI、上传文件和通知 IoT 中心已完成上传等操作。
-
 
 ## <a name="initialize-a-file-upload"></a>初始化文件上传
 IoT 中心有一个终结点，专供设备在上传文件时请求用于存储的 SAS URI。 为了启动文件上传过程，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files` 发送 POST 请求：
@@ -73,7 +74,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>通知 IoT 中心已完成文件上传
 
-设备负责使用 Azure 存储 SDK 将文件上传到存储空间。 上传完成后，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST 请求：
+设备使用 Azure 存储 SDK 将文件上传到存储。 上传完成后，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST 请求：
 
 ```json
 {
@@ -84,7 +85,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 }
 ```
 
-`isSuccess` 的值为布尔值，表示文件是否上传成功。 `statusCode` 的状态代码表示将文件上传到存储时的状态，`statusDescription` 对应于 `statusCode`。
+`isSuccess` 的值为布尔值，指示文件是否已成功上传。 `statusCode` 的状态代码表示将文件上传到存储时的状态，`statusDescription` 对应于 `statusCode`。
 
 ## <a name="reference-topics"></a>参考主题：
 
@@ -92,11 +93,11 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 ## <a name="file-upload-notifications"></a>文件上传通知
 
-（可选）当设备通知 IoT 中心上传完成时，IoT 中心生成一条通知消息，其中包含文件的名称和存储位置。
+（可选）当设备通知 IoT 中心某个上传完成后，IoT 中心将生成一条通知消息。 此消息包含文件的名称和存储位置。
 
 如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备的消息的接收语义相同，并且具有相同的[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | EnqueuedTimeUtc |指示通知创建时间的时间戳。 |
 | DeviceId |上传文件的设备的 **DeviceId**。 |
@@ -120,9 +121,9 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 ## <a name="file-upload-notification-configuration-options"></a>文件上传通知配置选项
 
-每个 IoT 中心都为文件上传通知公开以下配置选项：
+每个 IoT 中心都具有针对文件上传通知的以下配置选项：
 
-| 属性 | Description | 范围和默认值 |
+| 属性 | 说明 | 范围和默认值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |
@@ -133,7 +134,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了用于运行时和管理操作各种 IoT 中心终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额和限制行为。
 
@@ -141,11 +142,11 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 IoT 中心从设备上传文件以后，可以根据兴趣参阅以下 IoT 中心开发人员指南主题：
+现在，你已了解了如何使用 IoT 中心从设备上传文件，接下来可以根据兴趣查看以下 IoT 中心开发人员指南主题：
 
 * [管理 IoT 中心的设备标识](iot-hub-devguide-identity-registry.md)
 

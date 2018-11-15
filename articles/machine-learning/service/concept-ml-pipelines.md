@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278967"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684852"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>管道和 Azure 机器学习
 
@@ -44,7 +44,7 @@ ms.locfileid: "51278967"
 
 使用 Azure 机器学习时，可以针对管道中的每个步骤使用各种工具包和框架，例如 Microsoft 认知工具包或 TensorFlow。 Azure 会在你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)之间进行协调，使中间数据可以轻松地供下游计算目标共享。 
 
-可以直接在 Azure 门户中[跟踪管道试验的指标](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)。 
+可以直接在 Azure 门户中[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)。 
 
 ## <a name="key-advantages"></a>主要优点
 

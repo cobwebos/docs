@@ -3,19 +3,19 @@ title: SQL 数据仓库的建议 - 概念 | Microsoft Docs
 description: 了解 SQL 数据仓库的建议及其生成方式
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380108"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232148"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL 数据仓库的建议
 
@@ -40,3 +40,27 @@ SQL 数据仓库提供建议，确保以一致的方式优化数据仓库的性�
 - [创建和更新表统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
 若要查看受这些建议影响的表列表，请运行以下 [T-SQL 脚本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 顾问会不断运行相同的 T-SQL 脚本以生成这些建议。
+
+## <a name="replicate-tables"></a>复制表
+
+为了提供复制表的建议，顾问将基于以下物理特征检测表候选项：
+
+- 复制表的大小
+- 列数
+- 表分布类型
+- 分区数
+
+顾问持续利用基于工作负荷的试探法（例如，表的访问频率、平均返回的行数、有关数据仓库大小和活动的阈值）来确保生成优质建议。 
+
+下面介绍了可在 Azure 门户中看到的，用于提供每条复制表建议的基于工作负荷的试探法：
+
+- 扫描平均值 - 在过去七天每次访问表时，从表中返回的行的平均百分比
+- 频繁读取且不更新 - 表示该表在过去七天尚未更新，同时显示访问活动
+- 读取/更新频率 - 访问表的频率，相对于过去七天更新表的时间
+- 活动 - 基于访问活动度量使用情况。 此值将与相对于过去七天内数据仓库中的平均表访问活动的表访问活动进行比较。 
+
+目前，顾问一次性只会显示包含聚集列存储索引的、具有最高活动优先级的最多四个复制表候选项。
+
+> [!IMPORTANT]
+> 复制表建议不是完整的证据，且未考虑帐户数据移动操作。 我们正在努力将此添加为一种试探方法，但在此期间，请始终在应用建议后验证工作负荷。 如果你发现复制表建议导致工作负荷退化，请联系 sqldwadvisor@service.microsoft.com。 若要详细了解复制表，请访问以下[文档](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table)。
+>

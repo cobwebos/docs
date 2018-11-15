@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015768"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614134"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
@@ -55,7 +55,7 @@ ms.locfileid: "51015768"
 
 * **经典活动日志警报** - 当生成与分配的筛选器条件匹配的活动日志事件时，触发的流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只需将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，可以使用这些警报通知。
 
-对于通过 Azure Monitor 提供的诊断日志数据，建议将数据路由到 Log Analytics（之前为 OMS）并使用 Log Analytics 查询警报。 Log Analytics 现在使用[新的警报方法](monitoring-overview-unified-alerts.md) 
+对于通过 Azure Monitor 提供的诊断日志数据，建议将数据路由到 Log Analytics（之前为 OMS）并使用 Log Analytics 查询警报。 Log Analytics 现在使用[新的警报方法](monitoring-overview-alerts.md) 
 
 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 

@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388052"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238907"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
 
@@ -68,6 +68,18 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 ## <a name="decision-tree"></a>决策树
 
 ![Azure AD 身份验证决策树](media/azure-ad/azure-ad-authn-image1.png)
+
+有关决策问题的详细信息：
+
+1. Azure AD 可以处理不依赖于本地组件来验证密码的用户的登录。
+2. Azure AD 可以将用户登录移交给受信任的身份验证提供 程序，例如 Microsoft 的 AD FS。
+3. 如果需要在用户每次登录时应用用户级 Active Directory 安全策略，例如帐户过期、帐户禁用、密码过期、帐户锁定和登录小时数，则 Azure AD 需要一些本地组件。
+4. Azure AD 本身不支持的登录功能：
+   * 使用智能卡或证书进行登录。
+   * 使用本地 MFA 服务器进行登录。
+   * 使用第三方身份验证解决方案进行登录。
+   * 多站点本地身份验证解决方案。
+5. Azure AD Identity Protection 需要使用“密码哈希同步”来提供“具有已泄漏凭据的用户”报告，无论你选择了哪种登录方法。 如果组织的主要登录方法失败，并且该方法是在发生故障事件之前配置的，则组织可以故障转移到“密码哈希同步”。
 
 ## <a name="detailed-considerations"></a>详细的注意事项
 
@@ -207,4 +219,4 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 [开始使用](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) Azure AD 并为组织部署正确的身份验证解决方案。
 
-如果你正在考虑从联合身份验证迁移到云身份验证，请了解有关[更改登录方法](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method)的详细信息。 为帮助你计划和实施迁移，请使用[这些项目部署计划](http://aka.ms/deploymentplans)。
+如果你正在考虑从联合身份验证迁移到云身份验证，请了解有关[更改登录方法](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method)的详细信息。 为帮助你计划和实施迁移，请使用[这些项目部署计划](https://aka.ms/deploymentplans)。

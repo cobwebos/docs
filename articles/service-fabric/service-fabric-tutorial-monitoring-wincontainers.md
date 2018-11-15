@@ -3,7 +3,7 @@ title: 在 Azure 中监视和诊断 Service Fabric 上的 Windows 容器 |Micros
 description: 本教程介绍如何配置 Log Analytics 以便监视和诊断 Azure Service Fabric 上的 Windows 容器。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: dekapur
+ms.author: twhitney, dekapur
 ms.custom: mvc
-ms.openlocfilehash: dfce4adbe986c018ab14e843ee3e8a256a10993f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9249c0bb559328c878d784b54af5117b785daffe
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407038"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300619"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
 

@@ -11,15 +11,15 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318803"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280341"
 ---
-# <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据
 
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的混合同步组，从而设置 Azure SQL 数据同步。 新的同步组进行了全面配置，可根据所设定的计划进行同步。
 
@@ -129,7 +129,7 @@ ms.locfileid: "49318803"
 
     如果选中“新建代理”，请执行以下操作：
 
-   1. 通过提供的链接下载客户端同步代理软件，并将它安装在 SQL Server 所在的计算机上。
+   1. 通过提供的链接下载客户端同步代理软件，并将它安装在 SQL Server 所在的计算机上。 还可以直接从 [SQL Azure 数据同步代理](https://www.microsoft.com/download/details.aspx?id=27693)下载数据同步代理。
 
         > [!IMPORTANT]
         > 必须在防火墙中打开出站 TCP 端口 1433，以便客户端代理能够与服务器进行通信。
@@ -253,35 +253,7 @@ ms.locfileid: "49318803"
 
 ## <a name="faq-about-the-client-agent"></a>有关客户端代理的常见问题解答
 
-### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理
-
-SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信。 此安全功能可防止与防火墙后的数据库进行直接通信。 与代理通信时，SQL 数据同步服务使用加密连接和唯一令牌或代理密钥。 SQL Server 数据库使用连接字符串和代理密钥对代理进行身份验证。 这种设计为数据提供高度安全性。
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>可以运行多少个本地代理 UI 实例
-
-只能运行一个 UI 实例。
-
-### <a name="how-can-i-change-my-service-account"></a>如何更改服务帐户
-
-安装客户端代理后，更改服务帐户的唯一方法是卸载它，然后使用新的服务帐户安装新的客户端代理。
-
-### <a name="how-do-i-change-my-agent-key"></a>如何更改我的代理密钥
-
-一个代理只能使用一次代理密钥。 删除并重新安装新代理后，不能重复使用它，它也不能被多个代理使用。 如果需要为现有代理新建密钥，必须确保使用客户端代理和 SQL 数据同步服务记录相同密钥。
-
-### <a name="how-do-i-retire-a-client-agent"></a>如何停用客户端代理
-
-若要立即使代理失效或停用代理，请在门户中重新生成其密钥，但不要在代理 UI 中提交。 无论相应的代理处于联机还是脱机状态，重新生成密钥都会使以前的密钥失效。
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>如何将客户端代理移至另一台计算机
-
-如果想要从另一台计算机上运行本地代理，请执行以下操作：
-
-1. 在所需的计算机上安装代理。
-2. 登录 SQL 数据同步门户，为新代理重新生成代理密钥。
-3. 使用新代理的 UI 提交新代理密钥。
-4. 客户端代理下载以前已注册的本地数据库列表时，请稍候。
-5. 为显示为无法访问的所有数据库提供数据库凭据。 这些数据库必须可从安装代理的新计算机上访问。
+有关客户端代理的常见问题解答，请参阅[代理常见问题解答](sql-database-data-sync-agent.md#agent-faq)。
 
 ## <a name="next-steps"></a>后续步骤
 

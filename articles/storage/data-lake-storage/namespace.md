@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b5d3a735bd490468e989ac29c9f082475cc7eab3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528691"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283355"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 预览版分层命名空间
 
-一种关键机制，允许 Azure Data Lake Storage Gen2 预览版以对象存储规模和价格提供文件系统性能，是“分层命名空间”的新增内容。 此机制支持按照整理计算机上文件系统的相同方式，将帐户内的对象/文件集合整理成一个包含目录和嵌套子目录的层次结构。 启用分层命名空间后，Data Lake Storage Gen2 可通过分析引擎和框架所熟悉的文件系统语义，提供可扩展和具有成本效益的对象存储。
+一种关键机制，允许 Azure Data Lake Storage Gen2 预览版以对象存储规模和价格提供文件系统性能，是“分层命名空间”的新增内容。 此机制支持按照整理计算机上文件系统的相同方式，将帐户内的对象/文件集合整理成一个包含目录和嵌套子目录的层次结构。 启用分层命名空间后，存储帐户便可通过分析引擎和框架所熟悉的文件系统语义，提供可扩展和具有成本效益的对象存储。
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>分层命名空间服务的优点
 
@@ -26,7 +26,7 @@ ms.locfileid: "39528691"
 
 以下优点适用于对 blob 数据实现分层命名空间的文件系统：
 
-- **原子目录操作：** 通过采用在对象名称中嵌入斜杠 (/) 来表示路径段的惯用做法，使对象存储接近目录层次结构。 虽然此惯用做法适用于组织对象，但对于移动、重命名或删除目录等操作则没有帮助。 在没有真实目录的情况下，应用程序可能必须处理数百万个单独的 blob 才能完成目录级任务。 相比之下，分层命名空间可通过更新单个条目（父目录）来处理这些任务。 
+- **原子目录操作：** 通过采用在对象名称中嵌入斜杠 (/) 来表示路径段的惯用做法，使对象存储接近目录层次结构。 虽然此惯用做法适用于组织对象，但对于移动、重命名或删除目录等操作则没有帮助。 在没有真实目录的情况下，应用程序可能必须处理数百万个单独的 blob 才能完成目录级任务。 相比之下，分层命名空间可通过更新单个条目（父目录）来处理这些任务。
 
     这种显著的优化对于许多大数据分析框架尤为重要。 Hive、Spark 等工具通常将输出写入临时位置，然后在作业结束时对该位置进行重命名。 如果没有分层命名空间，此重命名操作通常比分析过程本身需要更长时间。 作业延迟降低就等同于分析工作负荷的总拥有成本 (TCO) 降低。
 

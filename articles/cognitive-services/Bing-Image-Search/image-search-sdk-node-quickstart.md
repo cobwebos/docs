@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 2fa3a221d42a522f19b00a4cb5596d93039a85ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fcef8d29ae7154633e19c118fd03d98d6489df6f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220188"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686562"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>快速入门：通过必应图像搜索 SDK 和 Node.js 搜索图像
 
@@ -38,7 +38,6 @@ ms.locfileid: "47220188"
 
     ```javascript
     'use strict';
-    https = require('https');
     const Search = require('azure-cognitiveservices-imagesearch');
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     ```

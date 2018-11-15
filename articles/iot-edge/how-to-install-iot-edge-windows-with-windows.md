@@ -2,19 +2,19 @@
 title: 如何采用 Windows 容器在 Windows 上安装 Azure IoT Edge | Microsoft Docs
 description: 采用 Windows 容器在 Windows 上安装 Azure IoT Edge 的说明
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: d85355b50bad9f05acc7da92d763d011e6f807b6
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e6edc9d6e98c03b1a5847dc08bbaa3ad029aa673
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741073"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565031"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用
 
@@ -66,7 +66,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 ### <a name="install-and-automatically-provision"></a>安装和自动预配
 
-1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-windows.md)中的步骤，设置设备预配服务并检索其范围 ID，模拟 TPM 设备并检索其注册 ID，然后创建个人注册。 在 IoT 中心注册设备后，继续安装。  
+1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-windows.md)中的步骤，设置设备预配服务并检索其**范围 ID**，模拟 TPM 设备并检索其**注册 ID**，然后创建个人注册。 在 IoT 中心注册设备后，继续安装。  
 
    >[!TIP]
    >在安装和测试期间，确保运行 TPM 模拟器的窗口处于打开状态。 
@@ -116,6 +116,6 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-预配 IoT Edge 设备和安装运行后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
+预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
-如果在正确安装 Edge 运行时期间遇到问题，请查看[疑难解答](troubleshoot.md)页面。
+如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md)页。

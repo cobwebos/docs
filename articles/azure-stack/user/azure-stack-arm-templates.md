@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 11/14/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: a50f91d5cbbc0eac7080437c96144014dad651ee
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161759"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636214"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>在 Azure Stack 中使用 Azure 资源管理器模板
 
@@ -30,11 +30,11 @@ ms.locfileid: "44161759"
 
 可以使用 Microsoft Azure Stack 门户、 PowerShell、 命令行和 Visual Studio 部署这些模板。
 
-[GitHub](http://aka.ms/azurestackgithub) 中提供了以下快速入门模板：
+[GitHub](https://aka.ms/azurestackgithub) 中提供了以下快速入门模板：
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>部署 SharePoint Server（非高可用性部署）
 
-使用 PowerShell DSC 扩展插件[创建一个 SharePoint Server 2013 场](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha)包括以下资源：
+使用 PowerShell DSC 扩展[创建包含以下资源的 SharePoint Server 2013 场](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha)：
 
 * 虚拟网络
 * 三个存储帐户
@@ -45,7 +45,7 @@ ms.locfileid: "44161759"
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>部署 AD（非高可用性部署）
 
-使用 PowerShell DSC 扩展插件[创建的 AD 域控制器服务器](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha)包括以下资源：
+使用 PowerShell DSC 扩展[创建包含以下资源的 AD 域控制器服务器](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha)：
 
 * 虚拟网络
 * 一个存储帐户
@@ -54,7 +54,7 @@ ms.locfileid: "44161759"
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>部署 AD/SQL（非高可用性部署）
 
-使用 PowerShell DSC 扩展插件[创建 SQL Server 2014 独立服务器](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha)包括以下资源：
+使用 PowerShell DSC 扩展[创建包含以下资源的 SQL Server 2014 独立服务器](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha)：
 
 * 虚拟网络
 * 两个存储帐户
@@ -68,15 +68,15 @@ ms.locfileid: "44161759"
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>从用户映像创建虚拟机
 
-[从自定义用户映像创建虚拟机](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image)。 此模板还会部署虚拟网络（使用 DNS）、公共 IP 地址和网络接口。
+[从自定义用户映像创建虚拟机](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-from-user-image)。 此模板还会部署虚拟网络（使用 DNS）、公共 IP 地址和网络接口。
 
 ## <a name="basic-virtual-machine"></a>基本虚拟机
 
-[部署 Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm)包括虚拟网络 （使用 DNS)、 公共 IP 地址和网络接口。
+[部署一个包含虚拟网络（使用 DNS）、公共 IP 地址和网络接口的 Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm)。
 
 ## <a name="cancel-a-running-template-deployment"></a>取消正在运行的模板部署
 
-若要取消正在运行的模板部署，请使用[停止 AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell cmdlet。
+若要取消正在运行的模板部署，请使用 [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

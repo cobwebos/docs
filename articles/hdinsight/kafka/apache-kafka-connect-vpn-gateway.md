@@ -3,18 +3,18 @@ title: 使用虚拟网络连接到 Kafka - Azure HDInsight
 description: 了解如何通过 Azure 虚拟网络直接连接到 Kafka on HDInsight。 了解如何使用 VPN 网关从开发客户端连接到 Kafka，或使用 VPN 网关设备从本地网络中的客户端连接到 Kafka。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042388"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283064"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight
 
@@ -35,7 +35,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     2. 创建使用站点到站点配置的 VPN 网关。 本文档中使用的配置连接到本地网络中的 VPN 网关设备。
     3. 在虚拟网络中创建 DNS 服务器。
     4. 在每个网络中的 DNS 服务器之间配置转发。
-    5. 在虚拟网络中安装 Kafka on HDInsight。
+    5. 在虚拟网络中创建 Kafka on HDInsight 群集。
 
     有关详细信息，请参阅[从本地网络连接到 Kafka](#on-premises) 部分。 
 
@@ -43,8 +43,8 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
     1. 创建虚拟网络。
     2. 创建使用点到站点配置的 VPN 网关。 此配置可同时用于 Windows 和 MacOS 客户端。
-    3. 在虚拟网络中安装 Kafka on HDInsight。
-    4. 为 IP 播发配置 Kafka。 此配置允许客户端使用 IP 地址而不是域名建立连接。
+    3. 在虚拟网络中创建 Kafka on HDInsight 群集。
+    4. 为 IP 播发配置 Kafka。 此配置允许客户端使用中转站 IP 地址而不是域名进行连接。
     5. 在开发系统上下载并使用 VPN 客户端。
 
     有关详细信息，请参阅[使用 VPN 客户端连接到 Kafka](#vpnclient) 部分。

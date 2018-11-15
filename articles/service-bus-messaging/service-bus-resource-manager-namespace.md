@@ -12,22 +12,17 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/11/2018
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 6f3f44394ab11c1b66be3af976dbd1f7d23de96e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405778"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282724"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
-
-本文介绍如何使用 Azure 资源管理器模板，创建包含标准 SKU 的类型为 Messaging 的服务总线命名空间。 本文还定义了为执行部署指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
-
-有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
-
-有关完整的模板，请参阅 GitHub 上的[服务总线命名空间模板][Service Bus namespace template]。
+在本快速入门中，我们将创建一个 Azure 资源管理器模板，用于创建采用**标准** SKU 的类型为 **Messaging** 的服务总线命名空间。 本文还定义了为执行部署指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关完整的模板，请参阅 GitHub 上的[服务总线命名空间模板][Service Bus namespace template]。
 
 > [!NOTE]
 > 以下 Azure 资源管理器模板可供下载和部署。 
@@ -38,117 +33,174 @@ ms.locfileid: "47405778"
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索服务总线。
-> 
-> 
 
-## <a name="what-will-you-deploy"></a>将部署什么内容？
-
-使用此模板，可以部署包含[标准或高级](https://azure.microsoft.com/pricing/details/service-bus/) SKU 的服务总线命名空间。
-
-若要自动运行部署，请单击以下按钮：
+## <a name="quick-deployment"></a>快速部署
+若要运行该示例且不编写任何 JSON 和运行 PowerShell/CLI 命令，请选择以下按钮：
 
 [![部署到 Azure](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+若要创建模板并手动部署，请通读本文中的以下部分。
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+## <a name="prerequisites"></a>先决条件
+若要完成本快速入门，需要一个 Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-此模板定义以下参数：
+若要使用 **Azure PowerShell** 部署资源管理器模板，请[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)。
 
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+若要使用 **Azure CLI** 部署资源管理器模板，请[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-要创建的服务总线命名空间的名称。
+## <a name="create-the-resource-manager-template-json"></a>创建资源管理器模板 JSON 
+创建包含以下内容的名为 **MyServiceBusNamespace.json** 的 JSON 文件： 
 
 ```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serviceBusNamespaceName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the Service Bus namespace"
+            }
+        },
+        "serviceBusSku": {
+            "type": "string",
+            "allowedValues": [
+                "Basic",
+                "Standard",
+                "Premium"
+            ],
+            "defaultValue": "Standard",
+            "metadata": {
+                "description": "The messaging tier for service Bus namespace"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-04-01",
+            "name": "[parameters('serviceBusNamespaceName')]",
+            "type": "Microsoft.ServiceBus/namespaces",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('serviceBusSku')]"
+            }
+        }
+    ]
 }
 ```
 
-### <a name="servicebussku"></a>serviceBusSKU
+此模板创建一个标准服务总线命名空间。
 
-要创建的服务总线 [SKU](https://azure.microsoft.com/pricing/details/service-bus/) 的名称。
+## <a name="create-the-parameters-json"></a>创建参数 JSON
+在上一步骤中创建的模板包含名为 `Parameters` 的节。 请根据要部署的项目或根据目标环境，为这些值定义参数。 此模板定义以下参数：**serviceBusNamespaceName**、**serviceBusSku** 和 **location**。 若要详细了解服务总线的 SKU，请参阅[服务总线 SKU](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-```json
-"serviceBusSku": { 
-    "type": "string", 
-    "allowedValues": [ 
-        "Standard",
-        "Premium" 
-    ], 
-    "defaultValue": "Standard", 
-    "metadata": { 
-        "description": "The messaging tier for service Bus namespace" 
-    } 
+创建包含以下内容的名为 **MyServiceBusNamespace-Parameters.json** 的 JSON 文件： 
 
-```
+> [!NOTE] 
+> 指定服务总线命名空间的名称。 
 
-此模板定义该参数允许的值（Standard 或 Premium）。 如果未指定任何值，资源管理器将分配默认值 (Standard)。
-
-有关服务总线定价的详细信息，请参阅[服务总线定价和计费][Service Bus pricing and billing]。
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-
-模板的服务总线 API 版本。
 
 ```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       } 
-```
-
-## <a name="resources-to-deploy"></a>要部署的资源
-
-### <a name="service-bus-namespace"></a>服务总线命名空间
-
-创建类型为 **Messaging** 的标准服务总线命名空间。
-
-```json
-"resources": [
-    {
-        "apiVersion": "[parameters('serviceBusApiVersion')]",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/Namespaces",
-        "location": "[variables('location')]",
-        "kind": "Messaging",
-        "sku": {
-            "name": "Standard",
-        },
-        "properties": {
-        }
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "value": "<Specify a name for the Service Bus namespace>"
+    },
+    "serviceBusSku": {
+      "value": "Standard"
+    },
+    "location": {
+        "value": "East US"
     }
-]
+  }
+}
 ```
 
-## <a name="commands-to-run-deployment"></a>运行部署的命令
 
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+## <a name="use-azure-powershell-to-deploy-the-template"></a>使用 Azure PowerShell 部署模板
 
-### <a name="powershell"></a>PowerShell
+### <a name="sign-in-to-azure"></a>登录 Azure
+1. 启动 Azure PowerShell
 
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
-```
+2. 运行以下命令来登录到 Azure：
 
-### <a name="azure-cli"></a>Azure CLI
+   ```azurepowershell
+   Login-AzureRmAccount
+   ```
+3. 如果发出以下命令来设置当前的订阅上下文：
 
-```azurecli-interactive
-azure config mode arm
+   ```azurepowershell
+   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   ```
 
-azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
-```
+### <a name="deploy-resources"></a>部署资源
+若要使用 Azure PowerShell 部署资源，请切换到 JSON 文件所保存到的文件夹，并运行以下命令：
+
+> [!IMPORTANT]
+> 在运行命令之前，请指定 Azure 资源组的名称作为 $resourceGroupName 的值。 
+
+1. 为资源组名称声明一个变量，并为其指定值。 
+
+    ```azurepowershell
+    $resourceGroupName = "<Specify a name for the Azure resource group>"
+    ```
+2. 创建 Azure 资源组。
+
+    ```azurepowershell
+    New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+    ```
+3. 部署资源管理器模板。 指定部署本身、资源组、模板 JSON 文件和参数 JSON 文件的名称
+
+    ```azurepowershell
+    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyServiceBusNamespace.json -TemplateParameterFile MyServiceBusNamespace-Parameters.json
+    ```
+
+## <a name="use-azure-cli-to-deploy-the-template"></a>使用 Azure CLI 部署模板
+
+### <a name="sign-in-to-azure"></a>登录 Azure
+
+1. 运行以下命令来登录到 Azure：
+
+    ```azurecli
+    az login
+    ```
+2. 设置当前订阅上下文。 将 `MyAzureSub` 替换为要使用的 Azure 订阅的名称：
+
+    ```azurecli
+    az account set --subscription <Name of your Azure subscription>
+    ``` 
+
+### <a name="deploy-resources"></a>部署资源
+若要使用 Azure CLI 部署资源，请切换到包含 JSON 文件的文件夹，并运行以下命令：
+
+> [!IMPORTANT]
+> 在 az group create 命令中指定 Azure 资源组的名称。 .
+
+1. 创建 Azure 资源组。 
+    ```azurecli
+    az group create --name <YourResourceGroupName> --location eastus
+    ```
+
+2. 部署资源管理器模板。 指定资源组、部署、模板 JSON 文件、参数 JSON 文件的名称。
+
+    ```azurecli
+    az group deployment create --name <Specify a name for the deployment> --resource-group <YourResourceGroupName> --template-file MyServiceBusNamespace.json --parameters @MyServiceBusNamespace-Parameters.json
+    ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已使用 Azure 资源管理器创建并部署了资源，请通过阅读以下文章了解如何管理这些资源：
+在本文中，我们已创建一个服务总线命名空间。 请参阅其他快速入门，了解如何创建和使用队列、主题/订阅： 
 
-* [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)
-* [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+- [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
+- [服务总线主题入门](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
