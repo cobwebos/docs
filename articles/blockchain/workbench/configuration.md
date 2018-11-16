@@ -41,7 +41,7 @@ ms.locfileid: "49341933"
 
 | 字段 | Description | 必选 |
 |-------|-------------|:--------:|
-| ApplicationName | 唯一的应用程序名称。 相应的智能合约必须对适用的合同类使用相同的 **ApplicationName**。  | 是 |
+| ApplicationName | 唯一的应用程序名称。 相应的智能合约必须对适用的合约类使用相同的 **ApplicationName**。 | 是 |
 | DisplayName | 应用程序的友好显示名称。 | 是 |
 | Description | 应用程序的说明。 | 否 |
 | ApplicationRoles | [ApplicationRoles](#application-roles) 的集合。 可以操作或参与应用程序的用户角色。  | 是 |
@@ -51,11 +51,11 @@ ms.locfileid: "49341933"
 
 ## <a name="workflows"></a>工作流
 
-可将应用程序的业务逻辑建模为状态机，在其中执行某些操作会导致业务逻辑流从一种状态转为另一种状态。 工作流是此类状态和操作的集合。 每个工作流包括一个或多个智能合约，这些合同表示代码文件中的业务逻辑。 可执行合同是工作流的实例。
+可将应用程序的业务逻辑建模为状态机，在其中执行某些操作会导致业务逻辑流从一种状态转为另一种状态。 工作流是此类状态和操作的集合。 每个工作流包括一个或多个智能合约，这些合约表示代码文件中的业务逻辑。 可执行合约是工作流的实例。
 
 | 字段 | Description | 必选 |
 |-------|-------------|:--------:|
-| 名称 | 唯一的工作流名称。 相应的智能合约必须对适用的合同类使用相同的 **Name**。 | 是 |
+| 名称 | 唯一的工作流名称。 相应的智能合约必须对适用的合约类使用相同的 **Name**。 | 是 |
 | DisplayName | 工作流的友好显示名称。 | 是 |
 | Description | 工作流的说明。 | 否 |
 | Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创建合同的用户分配的角色。 | 是 |
@@ -327,7 +327,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | 字段 | Description | 必选 |
 |-------|-------------|:--------:|
 | AllowedRoles | 有权启动转换的应用程序角色列表。 具有指定角色的所有用户可以执行操作。 | 否 |
-| AllowedInstanceRoles | 智能合约中参与或指定的、有权启动转换的用户角色列表。 实例角色在工作流中的“属性”内定义。 AllowedInstanceRoles 表示参与智能合约实例的用户。 AllowedInstanceRoles 允许你在合同实例中限制对用户角色执行操作。  例如，如果你在 AllowedRoles 中指定了角色，你可能只想允许创建合同的用户（InstanceOwner），而不是角色类型 (Owner) 中的所有用户能够终止。 | 否 |
+| AllowedInstanceRoles | 智能合约中参与或指定的、有权启动转换的用户角色列表。 实例角色在工作流中的“属性”内定义。 AllowedInstanceRoles 表示参与智能合约实例的用户。 AllowedInstanceRoles 允许你在合约实例中限制对用户角色执行操作。 例如，如果你在 AllowedRoles 中指定了角色，你可能只想允许创建合约的用户（InstanceOwner），而不是角色类型 (Owner) 中的所有用户能够终止。 | 否 |
 | DisplayName | 转换的友好显示名称。 | 是 |
 | Description | 转换的说明。 | 否 |
 | 函数 | 用于启动转换的函数的名称。 | 是 |
@@ -423,7 +423,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ## <a name="configuration-file-example"></a>配置文件示例
 
-资产转移是用于买卖高价值资产的一种智能合约方案，需要检查员和评估师。 卖家可以通过实例化资产转移智能合约来列出其资产。 买家可以通过对智能合约执行操作来提出报价，其他各方可以采取行动来检查或评估该资产。 一旦资产被标记为已检查和已评估，买家和卖家将在合同设置为“完成”之前再次确认销售。 在此流程的每个阶段，所有参与者都可以在合同更新时查看合同状态。 
+资产转移是用于买卖高价值资产的一种智能合约方案，需要检查员和评估师。 卖家可以通过实例化资产转移智能合约来列出其资产。 买家可以通过对智能合约执行操作来提出报价，其他各方可以采取行动来检查或评估该资产。 一旦资产被标记为已检查和已评估，买家和卖家将在合约设置为“完成”之前再次确认销售。 在此流程的每个阶段，所有参与者都可以在合约更新时查看合约状态。
 
 有关详细信息（包括代码文件），请参阅[适用于 Azure Blockchain Workbench 的资产转移示例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 
