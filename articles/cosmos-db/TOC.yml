@@ -70,38 +70,6 @@ items:
   expanded: true
 - name: 概念
   items:
-  - name: 使用 Azure Cosmos 帐户
-    href: account-overview.md
-  - name: 容器和项
-    items:
-    - name: 使用数据库、容器和项
-      href: databases-containers-items.md
-    - name: 索引
-      items:
-      - name: 概述
-        href: index-overview.md
-      - name: 索引编制策略
-        href: index-policy.md
-      - name: 索引类型
-        href: index-types.md
-      - name: 索引路径
-        href: index-paths.md
-    - name: 更改源
-      items:
-      - name: 概述
-        href: change-feed.md
-      - name: 读取更改源
-        href: read-change-feed.md
-      - name: 更改源处理器
-        href: change-feed-processor.md
-      - name: 将更改源与 Azure Functions 配合使用
-        href: change-feed-functions.md
-    - name: 生存时间
-      href: time-to-live.md
-    - name: 唯一键约束
-      href: unique-keys.md
-    - name: 事务和乐观并发
-      href: database-transactions-optimistic-concurrency.md
   - name: 全球分布
     items:
     - name: 概述
@@ -136,6 +104,38 @@ items:
       href: request-units.md
     - name: 在容器和数据库上预配吞吐量
       href: set-throughput.md
+  - name: 使用 Azure Cosmos 帐户
+    href: account-overview.md
+  - name: 容器和项
+    items:
+    - name: 使用数据库、容器和项
+      href: databases-containers-items.md
+    - name: 索引
+      items:
+      - name: 概述
+        href: index-overview.md
+      - name: 索引编制策略
+        href: index-policy.md
+      - name: 索引类型
+        href: index-types.md
+      - name: 索引路径
+        href: index-paths.md
+    - name: 更改源
+      items:
+      - name: 概述
+        href: change-feed.md
+      - name: 读取更改源
+        href: read-change-feed.md
+      - name: 更改源处理器
+        href: change-feed-processor.md
+      - name: 将更改源与 Azure Functions 配合使用
+        href: change-feed-functions.md
+    - name: 生存时间
+      href: time-to-live.md
+    - name: 唯一键约束
+      href: unique-keys.md
+    - name: 事务和乐观并发
+      href: database-transactions-optimistic-concurrency.md
   - name: 安全
     items:
     - name: 概述
@@ -567,9 +567,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 786829ec3052672c4a931d6a31452a3d96058fcd
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636554"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706382"

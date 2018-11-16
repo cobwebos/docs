@@ -10,6 +10,7 @@ items:
     displayName: architecture
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench 发生了什么情况？
+    displayName: desktop
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: 快速入门
@@ -32,7 +33,7 @@ items:
   items:
   - name: Jupyter 笔记本 (GitHub)
     displayName: example, examples
-    href: http://aka.ms/aml-notebooks
+    href: https://aka.ms/aml-notebooks
 - name: 概念
   items:
   - name: 模型管理
@@ -49,7 +50,7 @@ items:
   - name: 设置开发环境 
     items:
     - name: 配置环境
-      displayName: local, remote
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
       displayName: Visual Studio Code, vscode
@@ -71,7 +72,7 @@ items:
   - name: 训练模型
     items:
     - name: 设置训练环境
-      displayName: compute target, train
+      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: 在训练期间访问数据
       href: how-to-access-data.md
@@ -83,11 +84,12 @@ items:
       - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: 优化超参数
+      displayName: parameter
       href: how-to-tune-hyperparameters.md
     - name: 跟踪试验和指标
       href: how-to-track-experiments.md
   - name: 自动化机器学习
-    displayName: automl
+    displayName: automl, auto ml
     href: how-to-automated-ml.md
     items:
     - name: 配置自动训练
@@ -101,6 +103,7 @@ items:
   - name: 部署模型
     items:
     - name: 模型部署位置
+      displayName: publish
       href: how-to-deploy-and-where.md
     - name: 部署到 ACI
       displayName: Azure Container Instances
@@ -126,17 +129,21 @@ items:
     - name: 使用 Application Insights 进行监视
       href: how-to-enable-app-insights.md
   - name: 管理资源配额
+    displayName: limits
     href: how-to-manage-quotas.md
   - name: 使用机器学习 CLI
-    displayName: cli, command line, command-line
+    displayName: cli, command line, command-line, az,
     href: reference-azure-machine-learning-cli.md
 - name: 引用
   items:
   - name: 机器学习 SDK
-    href: http://aka.ms/aml-sdk
+    displayName: api, core, package
+    href: https://aka.ms/aml-sdk
   - name: 数据准备 SDK
-    href: http://aka.ms/data-prep-sdk
+    displayName: api, preparation, package
+    href: https://aka.ms/data-prep-sdk
   - name: 监视 SDK
+    displayName: api, package
     href: https://aka.ms/aml-monitoring-sdk
 - name: 资源
   items:
@@ -147,12 +154,14 @@ items:
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
   - name: 发行说明
+    displayName: what's new
     href: azure-machine-learning-release-notes.md
   - name: 已知问题
     href: resource-known-issues.md
   - name: 获取支持
     href: support-for-aml-services.md
   - name: 导出和删除数据
+    displayName: gdpr
     href: how-to-export-delete-data.md
   - name: 弃用的文档
     items:
@@ -161,7 +170,7 @@ items:
       href: how-to-migrate.md
     - name: 导出或删除帐户数据（已弃用）
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Workbench 快速入门
+    - name: Workbench 快速入门（已弃用）
       href: ../desktop-workbench/quickstart-installation.md
     - name: 教程 1：准备数据
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
@@ -357,9 +366,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 87379b773b353f4f384252a9840f1e75d595e37b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613624"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706647"

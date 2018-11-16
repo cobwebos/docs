@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 38d54d6d568b3cbacbf62f1d9f4dd3feec083287
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7a1bcde635d890384e660435845c42f016738e00
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389592"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687055"
 documentType: LandingData
 title: 负载均衡器
 metadata:
@@ -13,12 +13,12 @@ metadata:
   meta.description: Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
   services: load-balancer
   author: KumudD
-  manager: jeconnoc
+  manager: twooley
   ms.service: load-balancer
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/19/2018
+  ms.date: 11/14/2018
   ms.author: kumud
 abstract:
   description: 了解如何使用 Azure 负载均衡器。 快速入门、教程、示例等介绍了如何部署负载均衡器，以及如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
@@ -49,7 +49,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">创建和管理负载均衡器</a>
+    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">对传入 VM 的 Internet 流量进行负载均衡</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-basic-internal-portal">对传入 VM 的内部流量进行负载均衡</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">跨可用性区域对 VM 进行负载均衡</a>
     - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">在特定的可用性区域中对 VM 进行负载均衡</a>
