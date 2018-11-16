@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717669"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016040"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -24,8 +24,8 @@ ms.locfileid: "44717669"
 每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* **操作类型**：发送语音呼叫或短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用逻辑应用、向 Azure 应用发送推送通知，或者运行自动化 Runbook。
-* **详细信息**：相应电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。
+* **操作类型**：要执行的操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。 
+* **详细信息**：因“操作类型”而异的相应详细信息。 
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](monitoring-create-action-group-with-resource-manager-template.md)。
 
@@ -57,64 +57,45 @@ ms.locfileid: "44717669"
 
 1. 选择“确定”创建操作组。
 
-## <a name="action-specific-information"></a>特定于操作的信息
-<dl>
-<dt>Azure 应用推送</dt>
-<dd>一个操作组中最多可以有 10 个 Azure 应用操作。</dd>
-<dd>目前，Azure 应用操作只支持 ServiceHealth 警报。 任何其他警报时间都会被忽略。 请参阅[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。</dd>
-
-<dt>电子邮件</dt>
-<dd>将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
-<ul>
-    <li>azure-noreply@microsoft.com</li>
-    <li>azureemail-noreply@microsoft.com</li>
-    <li>alerts-noreply@mail.windowsazure.com</li>
-</ul>
-</dd>
-<dd>一个操作组中最多可以有 1000 个电子邮件操作</dd>
-<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
-
-<dt>ITSM</dt>
-<dd>一个操作组中最多可以有 10 个 ITSM 操作</dd>
-<dd>ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。</dd>
-
-<dt>逻辑应用</dt>
-<dd>一个操作组中最多可以有 10 个逻辑应用操作</dd>
-
-<dt>Runbook</dt>
-<dd>一个操作组中最多可以有 10 个 Runbook 操作</dd>
-<dd>有关针对 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../azure-subscription-service-limits.md)</dd>
-
-<dt>短信</dt>
-<dd>一个操作组中最多可以有 10 个短信操作</dd>
-<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
-<dd>请参阅[短信警报行为](monitoring-sms-alert-behavior.md)一文</dd>
-
-<dt>语音</dt>
-<dd>一个操作组中最多可以有 10 个语音操作</dd>
-<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
-
-<dt>Webhook</dt>
-<dd>一个操作组中最多可以有 10 个 Webhook 操作
-<dd>重试逻辑 - 响应的超时期限为 10 秒。 返回的 HTTP 状态代码为 408、429、503、504 时，或者 HTTP 终结点没有响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次（也是最后一次）重试在 100 秒后发生。</dd>
-<dd>源 IP 地址范围
-<ul>
-    <li>13.106.57.181</li>
-    <li>13.106.54.3</li>
-    <li>13.106.54.19</li>
-    <li>13.106.38.142</li>
-    <li>13.106.38.148</li>
-    <li>13.106.57.196</li>
-</ul>
-若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./monitoring-service-notifications.md)。
-</dd>
-</dl>
-
 ## <a name="manage-your-action-groups"></a>管理操作组 ##
 创建操作组后，它会在“监视器”边栏选项卡的“操作组”部分显示。 选择要管理的操作组：
 
 * 添加、编辑或删除操作。
 * 删除操作组。
+
+## <a name="action-specific-information"></a>特定于操作的信息
+**Azure 应用推送** - 一个操作组中最多可以有 10 个 Azure 应用操作。 目前，Azure 应用操作只支持 ServiceHealth 警报。 任何其他警报时间都会被忽略。 请参阅[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。
+
+**电子邮件** - 将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
+   - azure-noreply@microsoft.com
+   - azureemail-noreply@microsoft.com
+   - alerts-noreply@mail.windowsazure.com
+
+一个操作组中最多可以有 1000 个电子邮件操作。 请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文
+
+**ITSM** - 在需要 ITSM 连接的操作组 ITSM 操作中最多可以有 10 个 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。
+
+**逻辑应用** - 一个操作组中最多可以有 10 个逻辑应用操作。
+
+**Runbook** - 一个操作组中最多可以有 10 个 Runbook 操作，有关 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../azure-subscription-service-limits.md)
+
+**短信** - 一个操作组中最多可以有 10 个短信操作，请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文和[短信警报行为](monitoring-sms-alert-behavior.md)一文
+
+**语音** - 一个操作组中最多可以有 10 个语音操作</dd>
+请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
+
+**Webhook** - 一个操作组中最多可以有 10 个 Webhook 操作。 重试逻辑 - 响应的超时期限为 10 秒。 返回的 HTTP 状态代码为 408、429、503、504 时，或者 HTTP 终结点没有响应时，最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次（也是最后一次）重试在 100 秒后发生。
+
+源 IP 地址范围
+    - 13.106.57.181
+    - 13.106.54.3
+    - 13.106.54.19
+    - 13.106.38.142
+    - 13.106.38.148
+    - 13.106.57.196
+
+若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./monitoring-service-notifications.md)。
+
 
 ## <a name="next-steps"></a>后续步骤 ##
 * 详细了解[短信警报行为](monitoring-sms-alert-behavior.md)。  

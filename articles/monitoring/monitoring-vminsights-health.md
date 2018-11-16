@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f149d09b310553ecd5b03e94601408f279d9c0c
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1b9afa89e5d355668defac30afe4c012b684c71e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914305"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614390"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>使用用于 VM 的 Azure Monitor（预览版）了解 Azure 虚拟机的运行状况
 Azure 包含的多个服务可在监视空间中单独执行特定的角色或任务，但无法针对 Azure 虚拟机上托管的操作系统提供深入的运行状况透视图。  尽管我们可以使用 Log Analytics 或 Azure Monitor 来监视不同的状况，但这些工具并不能呈现核心组件的运行状况或虚拟机的总体运行状况，或者为这些信息建模。  用于 VM 的 Azure Monitor 运行状况功能可以使用一个代表核心组件及其关系的模型、指定如何度量这些组件的运行状况的条件，来主动监视 Windows 或 Linux 来宾 OS 的可用性和性能，并在检测到不正常状况时发出警报。  
@@ -119,7 +119,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 * 有多少个 VM 由于检测到处理器、磁盘、内存或网络适配器的问题而显示为不正常状态（按运行状况分类）？  
 * 有多少个 VM 由于检测到核心操作系统服务的问题而显示为不正常状态（按运行状况分类）？
 
-在此处可以快速识别主动监视 VM 的运行状况条件检测到的最严重问题，以及查看 VM 运行状况警报详细信息和相关的知识库文章，以帮助诊断和修正问题。  选择任一严重性可打开按该严重性筛选的“[所有警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md#all-alerts-page)”页。
+在此处可以快速识别主动监视 VM 的运行状况条件检测到的最严重问题，以及查看 VM 运行状况警报详细信息和相关的知识库文章，以帮助诊断和修正问题。  选择任一严重性可打开按该严重性筛选的“[所有警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page)”页。
 
 “按操作系统列出的 VM 分发版”列表根据 Windows 版本或 Linux 分发版及其版本显示 VM。 在每个操作系统类别中，VM 根据 VM 的运行状况进一步划分。 
 
@@ -247,7 +247,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 若要查看更新的运行状况，可以单击“刷新”链接刷新“运行状况诊断”页。  如果基于预定义的轮询间隔对运行状况条件的运行状况做了更新，则此任务可以避免等待显示最新运行状况。  “运行状况条件状态”是一个筛选器，用于根据所选运行状况（“正常”、“警告”、“严重”、“未知”和所有）来限定结果范围。  右上角的“上次更新时间”表示上次刷新“运行状况诊断”页的时间。  
 
 ## <a name="alerting-and-alert-management"></a>警报和警报管理 
-用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)相集成，当预定义的运行状况条件在检测到相应状况后从正常更改为不正常状态时，会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。  
+用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)相集成，当预定义的运行状况条件在检测到相应状况后从正常更改为不正常状态时，会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。  
 
 “运行状况”仪表板的“警报”部分下显示了按严重性分类的 VM 运行状况警报的总数。 选择警报总数或者对应于某个严重性级别的编号时，“警报”页将会打开并列出与所选内容匹配的所有警报。  例如，如果选择了对应于“严重性级别 1”的行，则会看到以下视图：
 

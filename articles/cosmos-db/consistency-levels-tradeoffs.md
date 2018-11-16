@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 中各种一致性级别的可用性和性能权衡 | Microsoft Docs
-description: Azure Cosmos DB 中各种一致性级别的可用性和性能权衡。
+description: Azure Cosmos DB 中各种一致性级别的可用性和性能利弊。
 keywords: consistency, performance, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963041"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514768"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中各种一致性级别的可用性和性能权衡
 
@@ -33,20 +33,6 @@ ms.locfileid: "50963041"
 - 对于相同数量的请求单元，会话、一致前缀和最终一致性级别提供的读取吞吐量大约是非常一致性和有限过期一致性的 2 倍。
 
 - 对于给定类型的写入操作（例如插入、替换、更新插入、删除等），所有一致性级别为请求单元提供的写入吞吐量是相同的。
-
-## <a name="consistency-levels-and-durability"></a>一致性级别和持久性
-
-在客户端确认写入操作之前，数据将由接受写入操作的区域中的副本仲裁持久提交。 此外，如果为容器配置了一致索引策略，则在将对写入操作的确认发送到客户端之前，副本仲裁还会同步更新、复制并持久提交索引。
-
-下表汇总了在跨多个区域的 Cosmos 帐户遇到区域性灾难时，潜在的数据丢失时间范围。
-
-| **一致性级别** | **发生区域性灾难时潜在的数据丢失时间范围** |
-| - | - |
-| 非常 | 零 |
-| 有限过期 | 限制为你在 Cosmos 帐户中配置的“陈旧时间范围” |
-| 会话 | 最多 5 秒 |
-| 一致前缀 | 最多 5 秒 |
-| 最终 | 最多 5 秒 |
 
 ## <a name="next-steps"></a>后续步骤
 

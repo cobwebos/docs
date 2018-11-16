@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957949"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281687"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -142,7 +142,9 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ## <a name="author-with-github-integration"></a>使用 GitHub 集成进行创作
 
-使用 GitHub 集成进行创作允许在创作数据工厂管道时进行源代码管理和协作。 用户可以选择将数据工厂与 GitHub 帐户存储库相关联，以进行源代码管理、协作和版本控制。 单个的 GitHub 帐户可以有多个存储库，但 GitHub 存储库可以只有一个数据工厂与相关联。 如果你没有 GitHub 帐户或存储库，请按照[这些说明](https://github.com/join)创建资源。 数据工厂的 GitHub 集成支持公共 GitHub 和 GitHub Enterprise。
+使用 GitHub 集成进行创作允许在创作数据工厂管道时进行源代码管理和协作。 用户可以选择将数据工厂与 GitHub 帐户存储库相关联，以进行源代码管理、协作和版本控制。 单个的 GitHub 帐户可以有多个存储库，但 GitHub 存储库可以只有一个数据工厂与相关联。 如果没有 GitHub 帐户或存储库，请按照 [这些说明](https://github.com/join) 创建资源。
+
+GitHub 与数据工厂的集成支持公共 GitHub（即 [https://github.com](https://github.com)）和 GitHub Enterprise。 只要你对 GitHub 中的存储库具有读写权限，就可以将公共和专用 GitHub 存储库与数据工厂一起使用。
 
 若要配置 GitHub 存储库，必须对所用 Azure 订阅拥有管理员权限。
 
@@ -164,11 +166,11 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 配置方法 1（公共存储库）：“让我们开始吧”页
 
-在 Azure 数据工厂，转到**让我们开始吧**页。 选择“配置代码存储库”：
+在 Azure 数据工厂中，转到“开始使用” **** 页。 选择“配置代码存储库” ****：
 
 ![数据工厂“入门”页](media/author-visually/github-integration-image1.png)
 
-**存储库设置**配置窗格中显示：
+此时将显示“存储库设置” **** 配置窗格：
 
 ![GitHub 存储库设置](media/author-visually/github-integration-image2.png)
 
@@ -181,14 +183,14 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 | **RepositoryName**                                       | GitHub 代码存储库名称。 GitHub 帐户包含用于管理源代码的 Git 存储库。 可以创建新存储库，或使用帐户中现有的存储库。                                                                                                                                                                                                                              |                    |
 | **协作分支**                                 | 将用于发布的 GitHub 协作分支。 默认为主分支。 如果希望从其他分支发布资源，可更改此设置。                                                                                                                                                                                                                                                               |                    |
 | **根文件夹**                                          | GitHub 协作分支中的根文件夹。                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否将现有数据工厂资源从 UX **创作画布**导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
+| 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否将现有数据工厂资源从 UX  **创作画布** 导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支**                       | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>配置方法 2（公共存储库）：UX 创作画布
 
-在 Azure 数据工厂 UX**创作画布**，找到你的数据工厂。 选择**数据工厂**下拉列表菜单，然后选择**配置代码存储库**。
+在 Azure 数据工厂 UX  **创作画布**中，找到数据工厂。 选择“数据工厂” **** 下拉菜单，然后选择“配置代码存储库” ****。
 
-此时将显示配置窗格。 有关配置设置的详细信息，请参阅前面*配置方法 1* 中的说明。
+此时将显示配置窗格。 有关配置设置的详细信息，请参阅前面 *配置方法 1* 中的说明。
 
 ### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>使用 Azure 数据工厂配置 GitHub Enterprise 存储库
 
@@ -196,11 +198,11 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>配置方法 1（Enterprise 存储库）：“让我们开始吧”页
 
-在 Azure 数据工厂，转到**让我们开始吧**页。 选择“配置代码存储库”：
+在 Azure 数据工厂中，转到“开始使用” **** 页。 选择“配置代码存储库” ****：
 
 ![数据工厂“入门”页](media/author-visually/github-integration-image1.png)
 
-**存储库设置**配置窗格中显示：
+此时将显示“存储库设置” **** 配置窗格：
 
 ![GitHub 存储库设置](media/author-visually/github-integration-image3.png)
 
@@ -215,14 +217,14 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 | **RepositoryName**                                       | GitHub 代码存储库名称。 GitHub 帐户包含用于管理源代码的 Git 存储库。 可以创建新存储库，或使用帐户中现有的存储库。                                                                                                                                                                                                                              |                    |
 | **协作分支**                                 | 将用于发布的 GitHub 协作分支。 默认为主分支。 如果希望从其他分支发布资源，可更改此设置。                                                                                                                                                                                                                                                               |                    |
 | **根文件夹**                                          | GitHub 协作分支中的根文件夹。                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否将现有数据工厂资源从 UX **创作画布**导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
+| 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否将现有数据工厂资源从 UX  **创作画布** 导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支**                       | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>配置方法 2（Enterprise 存储库）：UX 创作画布
 
-在 Azure 数据工厂 UX**创作画布**，找到你的数据工厂。 选择**数据工厂**下拉列表菜单，然后选择**配置代码存储库**。
+在 Azure 数据工厂 UX  **创作画布**中，找到数据工厂。 选择“数据工厂” **** 下拉菜单，然后选择“配置代码存储库” ****。
 
-此时将显示配置窗格。 有关配置设置的详细信息，请参阅前面*配置方法 1* 中的说明。
+此时将显示配置窗格。 有关配置设置的详细信息，请参阅前面 *配置方法 1* 中的说明。
 
 ## <a name="use-the-expression-language"></a>使用表达式语言
 可使用 Azure 数据工厂支持的表达式语言，在定义属性值过程中指定表达式。
