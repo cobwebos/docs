@@ -14,22 +14,19 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 7d3b0e179972464a1ed857c576ca8a7c8fc2e162
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: ca5322c3c874c434f16a42900227a47245851b02
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686785"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854027"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>删除 MySQL 资源提供程序
 
 删除 MySQL 资源提供程序之前，必须删除该提供程序的所有依赖项。 你还需要用来安装资源提供程序的部署包的副本。
 
-  |最低 Azure Stack 版本|MySQL RP 版本|
-  |-----|-----|
-  |版本 1808 (1.1808.0.97)|[MySQL RP 版本 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
-  |版本 1804 (1.0.180513.1)|[MySQL RP 版本 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
-  |     |     |
+> [!NOTE]
+> 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
 
 ## <a name="dependency-cleanup"></a>依赖项清理
 
