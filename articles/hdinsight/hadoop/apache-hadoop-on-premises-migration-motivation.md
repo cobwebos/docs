@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f899c2fb871ee528219bd48e94de62746626447f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 82792414da9df32524e48031089dc18d2dc521cc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416114"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288112"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -180,7 +180,7 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 |使用 Azure 监控和警报与集成第三方监视|使用 Azure 监视和警报||
 |**主题**：安全性首选项 |||
 |专用和受保护的数据管道？|是||
-|已加入域的群集 (ESPP)？|     是||
+|已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
 |不是。 AD 用户同步？|          100||
 |确定将密码同步到云？|    是||
@@ -204,6 +204,6 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读本系列的下一篇文章：
+阅读本系列教程的下一篇文章：
 
 - [本地到 Azure HDInsight Hadoop 迁移的体系结构最佳做法](apache-hadoop-on-premises-migration-best-practices-architecture.md)

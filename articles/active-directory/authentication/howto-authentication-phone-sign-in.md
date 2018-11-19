@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804321"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287177"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>使用 Microsoft Authenticator 应用（公共预览版）进行无密码手机登录
 
@@ -37,11 +37,16 @@ ms.locfileid: "48804321"
 
 ### <a name="steps-to-enable"></a>启用步骤
 
-1. 安装 [Azure Active Directory V2 PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview/)。  
-2. 在 PowerShell 中运行两条命令：
-   1. `Connect-AzureAD`
-      1. 在身份验证对话框中，使用租户中的帐户登录。 该帐户必须是安全管理员或全局管理员。
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+确保已安装 Azure Active Directory V2 PowerShell 模块的最新公共预览版。 你可能希望通过执行以下命令卸载并重新安装以确认这一点：
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+可以使用以下 PowerShell 命令启用无密码电话登录预览：
+
+1. `Connect-AzureAD`
+   1. 在身份验证对话框中，使用租户中的帐户登录。 该帐户必须是安全管理员或全局管理员。
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>我的最终用户如何启用手机登录？
 

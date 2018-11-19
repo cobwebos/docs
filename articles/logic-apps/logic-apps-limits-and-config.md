@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232267"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346688"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -321,9 +321,9 @@ ms.locfileid: "50232267"
 | 英国西部 | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
-### <a name="connectors"></a>连接器
+### <a name="managed-connectors"></a>托管的连接器
 
-若要支持[连接器](../connectors/apis-list.md)进行的调用，请根据你的逻辑应用所在的区域设置你的防火墙配置，以使其包含这些出站 IP 地址。
+若要支持 [Microsoft 托管连接器](../connectors/apis-list.md)进行的调用，请根据逻辑应用所在的区域设置防火墙配置，使其包含这些出站 IP 地址。
 
 > [!IMPORTANT]
 > 如果你有现有配置，请于 2018 年 9 月 1 日前尽快对其更新，以使其包含并匹配此列表中针对你的逻辑应用所在的位置对应的 IP 地址。 

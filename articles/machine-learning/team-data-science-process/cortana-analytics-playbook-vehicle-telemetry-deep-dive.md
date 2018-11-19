@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234759"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300942"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
-这个菜单链接至此操作手册的部分： 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 本文将深入探究解决方案体系结构中所描述的各个阶段。 其中包含说明和用于自定义的指针。 
+
+若要查看此解决方案的摘要说明，请参阅[车辆遥测分析解决方案操作手册](cortana-analytics-playbook-vehicle-telemetry.md)。
+
 
 ## <a name="data-sources"></a>数据源
 该解决方案使用两个不同的数据源：
@@ -675,3 +675,7 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 * [Azure 数据工厂数据移动功能](../../data-factory/copy-activity-overview.md)
 * [Azure 数据工厂 .NET 活动](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [用于准备示例数据的 Azure 数据工厂 .NET 活动 Visual Studio 解决方案](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解如何为此解决方案配置 Power BI 报告和仪表板，请参阅[车辆遥测分析解决方案模板 Power BI 仪表板设置说明](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)。

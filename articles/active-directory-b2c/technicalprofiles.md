@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1242b299c6d2278bd75b576f225987854a2d8a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382478"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566527"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -104,7 +104,7 @@ ms.locfileid: "44382478"
 
 ### <a name="protocol"></a>协议
 
-**Protocol** 元素包含以下属性：
+Protocol 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |
@@ -162,7 +162,7 @@ ms.locfileid: "44382478"
 
 ### <a name="inputclaims"></a>InputClaims
 
-**InputClaims** 元素包含以下元素：
+InputClaims 元素包含以下元素：
 
 | 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
@@ -170,7 +170,7 @@ ms.locfileid: "44382478"
 
 #### <a name="inputclaim"></a>InputClaim 
 
-**InputClaim** 元素包含以下属性：
+InputClaim 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |
@@ -198,7 +198,7 @@ ms.locfileid: "44382478"
 
 ### <a name="outputclaims"></a>OutputClaims
 
-**OutputClaims** 元素包含以下元素：
+OutputClaims 元素包含以下元素：
 
 | 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
@@ -206,7 +206,7 @@ ms.locfileid: "44382478"
 
 #### <a name="outputclaim"></a>OutputClaim 
 
-**OutputClaim** 元素包含以下属性：
+OutputClaim 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |

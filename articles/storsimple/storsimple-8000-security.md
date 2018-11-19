@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: fb8c3fe9dd5ca207e4ae37faf9a5a1c4edfffc63
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233807"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566187"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -205,7 +205,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
-## <a name="managing-personal-inforamation"></a>管理个人信息
+## <a name="managing-personal-information"></a>管理个人信息
 
 物理系列和虚拟系列的 StorSimple 设备管理器收集以下密钥实例中的个人信息：
 

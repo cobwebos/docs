@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433746"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288248"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -33,7 +33,7 @@ ms.locfileid: "47433746"
 
 从 ASE 发出的、转到 Internet 的所有调用将通过分配给 ASE 的 VIP 离开 VNet。 此 VIP 的公共 IP 将成为从 ASE 发出的、转到 Internet 的所有调用的源 IP。 如果 ASE 中的应用调用了 VNet 中的资源或通过 VNet 发出调用，则源 IP 是 ASE 使用的子网中的某个 IP。 由于 ASE 在 VNet 中，因此也可以访问 VNet 中的资源，而不需要进行任何额外配置。 如果 VNet 连接到本地网络，则 ASE 中的应用也可访问此处的资源，不需其他配置。
 
-![外部 ASE][1] 
+![外部 ASE][1] 
 
 如果拥有外部 ASE，则公共 VIP 还是 ASE 应用针对下述项解析到的终结点：
 
@@ -52,7 +52,7 @@ ms.locfileid: "47433746"
 |----------|---------|-------------|
 |  HTTP/HTTPS  | 用户可配置 |  80、443 |
 |  FTP/FTPS    | 用户可配置 |  21, 990, 10001-10020 |
-|  Visual Studio 远程调试  |  用户可配置 |  4016, 4018, 4020, 4022 |
+|  Visual Studio 远程调试  |  用户可配置 |  4020, 4022, 4024 |
 
 如果在外部 ASE 或 ILB ASE 上操作，就会使用这些端口。 如果在外部 ASE 上操作，将在公共 VIP 上命中这些端口。 如果在 ILB ASE 上操作，则将在 ILB 上命中这些端口。 如果锁定端口 443，则在门户中公开的某些功能可能会收到影响。 有关详细信息，请参阅[门户依赖项](#portaldep)。
 
@@ -170,7 +170,7 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 默认规则允许 VNet 中的 IP 与 ASE 子网对话。 另一条默认规则允许负载均衡器（亦称为公共 VIP）与 ASE 通信。 选择“添加”图标旁边的“默认规则”即可查看此规则。 如果所示 NSG 规则的后面放置一条拒绝其他任何流量的规则，则将阻止 VIP 与 ASE 之间的流量。 要阻止来自 Vnet 内部的流量，请自行添加规则以允许入站。 使用等效于 AzureLoadBalancer 的源，其目标为“任何”，端口范围为 \*。 由于 ASE 子网将应用 NSG 规则，因此无需指定具体的目标。
 
-若向应用分配了 IP 地址，请确保端口保持打开。 可在“应用服务环境” > “IP 地址”中查看端口。  
+若向应用分配了 IP 地址，请确保端口保持打开。 可在“应用服务环境” > “IP 地址”中查看端口。  
 
 下列出站规则中显示的所有项均是必需项，最后一项除外。 使用这些端口可以通过网络访问本文前面所述的 ASE 依赖项。 阻止其中的任意一个，ASE 都将停止工作。 列表中的最后一项可让 ASE 与 VNet 中的其他资源通信。
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637725"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568636"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 

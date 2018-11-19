@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6b8cb104c734edf688d875a8e9674a660f2db4e2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834594"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346029"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享收藏
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="collections"></a>集合
-可使用[收藏](https://gallery.cortanaintelligence.com/collections)将用于特定解决方案或概念的实验、API 以及其他库项组合在一起。 可以将它们组合在一起，以便使用、保存以供日后参考或者共享。
+可使用 [Azure AI 库](http://gallery.cortanaintelligence.com)中的[收藏](https://gallery.cortanaintelligence.com/collections)将用于特定解决方案或概念的试验、API 以及其他库项组合在一起。 可以将它们组合在一起，以便使用、保存以供日后参考或者共享。
 
 ## <a name="discover"></a>发现
 若要浏览[库中](http://gallery.cortanaintelligence.com)的收藏，请在“更多”下选择“收藏”。
@@ -71,7 +69,7 @@ ms.locfileid: "34834594"
    > 
    
     ![选择“公开”或“未列出”](./media/gallery-collections/create-collection-page-3.png)
-7. 选择**创建**。
+7. 选择“创建”。
 
 现在收藏已在 Azure AI 库中。 收藏会在帐户页的“收藏”选项卡上列出。
 

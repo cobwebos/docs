@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281757"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616191"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -81,7 +81,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * 重启存储资源管理器
 * 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
 * 确保为计算机和存储资源管理器正确配置了代理和证书设置。
-* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017。 成功登录 Visual Studio 2017 后，应该可以打开存储资源管理器并在帐户面板中查看帐户。 
+* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017。 成功登录 Visual Studio 2017 后，应该可以打开存储资源管理器并在帐户面板中查看帐户。
 
 如果这些方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
@@ -115,6 +115,8 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 
 * 代理 URL 和端口号
 * 用户名和密码（若代理需要）
+
+请注意，存储资源管理器不支持使用 .pac 文件来配置代理设置。
 
 ### <a name="common-solutions"></a>常见解决方法
 

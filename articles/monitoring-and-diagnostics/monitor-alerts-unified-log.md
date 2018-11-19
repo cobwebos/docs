@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4dae003b011e8e33f0ae935d6dd8399a5687dff6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958145"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633761"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
-本文提供日志警报的详细信息，该警报是 [Azure 警报](monitoring-overview-unified-alerts.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
+本文提供日志警报的详细信息，该警报是 [Azure 警报](monitoring-overview-alerts.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
 
 日志警报包含为 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](alert-log.md)
 
@@ -106,7 +106,7 @@ ms.locfileid: "50958145"
 - 在下午 1:15 时，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 2 个记录，这超出了阈值，因此在触发关联的[操作组](monitoring-action-groups.md)后很快又触发了警报。
 - 现在，下一个迭代发生在下午 1:20 的时候，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果再次提供 0 个记录，这低于阈值，因此不触发警报。
 
-但在上面列出的示例中，在下午 1:15 时，Azure 警报无法确定在 1:10 看到的根本问题是否仍然存在，以及是否存在全新的故障，因为用户提供的查询可能考虑到了以前的记录 - Azure 警报无法确定。 因此，为谨慎起见，Contoso-Log-Alert 在下午 1:15 通过配置的[操作组](monitoring-action-groups.md)再次触发。 现在，在下午 1:20 的时候，已经看不到记录 - Azure 警报无法确定记录问题得到解决的原因，因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，也不会发送通知，指出警报已消除。
+但在上面列出的示例中，在下午 1:15 时，Azure 警报无法确定在 1:10 看到的根本问题是否仍然存在，以及是否存在全新的故障，因为用户提供的查询可能考虑到了以前的记录 - Azure 警报可以确定这一点。 因此，为谨慎起见，在下午 1:15 执行 Contoso-Log-Alert 时，将再次触发已配置的[操作组](monitoring-action-groups.md)。 现在，在下午 1:20 的时候，已经看不到记录 - Azure 警报无法确定记录问题得到解决的原因，因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，也不会发送通知，指出警报已消除。
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
@@ -120,6 +120,6 @@ ms.locfileid: "50958145"
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[在 Azure 中创建日志警报](alert-log.md)。
 * 了解 [Azure 日志警报中的 Webhook](monitor-alerts-unified-log-webhook.md)。
-* 了解 [Azure 警报](monitoring-overview-unified-alerts.md)。
+* 了解 [Azure 警报](monitoring-overview-alerts.md)。
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)。
 * 详细了解 [Log Analytics](../log-analytics/log-analytics-queries.md)。    

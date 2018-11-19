@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252541"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633965"
 ---
 # <a name="how-to-use-alternative-inputs"></a>如何使用备用输入
 
@@ -137,9 +137,11 @@ ms.locfileid: "51252541"
     3. 单击“提交更改”。
 4. 在左窗格中单击以选择“denver”：
     1. 在“添加备用输入”中输入“for denver”。
-    2. 输入“forecast for austin”。
-        - 整个短语都会突出显示。 单击该短语，然后单击红色的 x。 选择 austin，并单击“city”。
-        - 单击“提交更改”
+    1. 输入“forecast for austin”。
+        - 此时将显示错误消息：“文本变体必须包含检测到的与原始输入文本相同的实体。”
+        - 单击“austin”一词。
+        - 此时将出现一个弹出窗口，让你选择“austin”所对应的实体。 单击“城市”。
+        - 单击“提交更改”。
     1. 单击“完成”，这将导致模型重新训练。
 
 ![](../media/tutorial8_altcities.png)

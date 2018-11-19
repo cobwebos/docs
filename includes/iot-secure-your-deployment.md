@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 744d9929d7f82242d2bb75452b70b11af19b3af7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6179086c6a2cf187c976ff23bf24180257023d28
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49084362"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289166"
 ---
-# <a name="secure-your-iot-deployment"></a>保护 IoT 部署
+# <a name="secure-your-internet-of-things-iot-deployment"></a>保护物联网 (IoT) 部署
 
 本文提供保护基于 Azure IoT 的物联网 (IoT) 基础结构的进一步详细信息。 它链接到配置和部署每个组件的实现级别详细信息。 还提供多种竞争方式间的比较和选择。
 

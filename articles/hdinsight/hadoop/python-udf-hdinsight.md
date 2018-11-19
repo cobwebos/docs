@@ -1,6 +1,6 @@
 ---
-title: 通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF) - Azure HDInsight
-description: 了解如何在 HDInsight（Azure 上的 Hadoop 技术堆栈）中通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF)。
+title: 通过 Apache Hive 和 Apache Pig 使用 Python UDF - Azure HDInsight
+description: 了解如何在 HDInsight（Azure 上的 Apache Hadoop 技术堆栈）中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)。
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6227b9517da3dacb18b4f9653a7012ef9ab5a4a7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232267"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632605"
 ---
-# <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>在 HDInsight 中通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF)
+# <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
-了解如何在 Azure HDInsight 上的 Hadoop 中通过 Apache Hive 和 Pig 使用 Python 用户定义的函数 (UDF)。
+了解如何在 Azure HDInsight 上的 Apache Hadoop 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)。
 
 ## <a name="python"></a>Python on HDInsight
 

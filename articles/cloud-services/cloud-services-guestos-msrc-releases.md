@@ -11,30 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/28/2018
+ms.date: 11/12/2018
 ms.author: raiye
-ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215508"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578767"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
 ## <a name="october-2018-guest-os"></a>2018 年 10 月来宾 OS
->[!NOTE]
->10 月来宾 OS 目前正在推出到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 10 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Windows 10 安全性 | 5.24 | 2018 年 10 月 9 日 |
-| Rel 18-10 | [4464330] | Windows 10 安全性 | 6.0 | 2018 年 10 月 9 日 |
 | Rel 18-10 | [4462915] | Windows 安全性 | 2.79 | 2018 年 10 月 9 日 |
 | Rel 18-10 | [4462931] | Windows 安全性 | 3.66 | 2018 年 10 月 9 日 |
 | Rel 18-10 | [4462941] | Windows 安全性 | 4.59 | 2018 年 10 月 9 日 |
-| Rel 18-10 | [4462930] | 闪烁 | 3.66, 4.59, 5.24, 6.0 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462930] | 闪烁 | 3.66, 4.59, 5.24 | 2018 年 10 月 9 日 |
 | Rel 18-10 | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 2018 年 10 月 9 日 |
 | 不适用 | [4339284] | 时区更新 | 2.79, 3.66, 4.59 | 2018 年 7 月 24 日 |
 | 不适用 | [4457144] | 9 月非安全性汇总 | 2.79 | 2018 年 9 月 11 日 |
@@ -48,7 +45,6 @@ ms.locfileid: "50215508"
 | 不适用 | [4457036] | 9 月非安全性 .NET 4.5.2 汇总 | 4.59 | 2018 年 9 月 11 日 |
 
 [4462917]: http://support.microsoft.com/kb/4462917
-[4464330]: http://support.microsoft.com/kb/4464330
 [4462915]: http://support.microsoft.com/kb/4462915
 [4462931]: http://support.microsoft.com/kb/4462931
 [4462941]: http://support.microsoft.com/kb/4462941

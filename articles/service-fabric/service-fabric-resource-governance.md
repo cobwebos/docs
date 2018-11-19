@@ -3,7 +3,7 @@ title: Azure Service Fabric 容器和服务的资源治理 | Microsoft Docs
 description: Azure Service Fabric 允许指定在容器内部或外部运行的服务的资源限制。
 services: service-fabric
 documentationcenter: .net
-author: masnider
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: 49c7e2c99cce13880781a67806543b1cde0c12b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney, subramar
+ms.openlocfilehash: f2898de030a70d578eb45e81c9ccbef90bce96c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208006"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300466"
 ---
 # <a name="resource-governance"></a>资源调控 
 
-在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源预留和限制，从而保证并限制资源使用。
+在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源保留和限制，从而保证并限制资源使用。
 
 > 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型](service-fabric-application-model.md)和 [Service Fabric 托管模型](service-fabric-hosting-model.md)。
 >
 
 ## <a name="resource-governance-metrics"></a>资源调控指标 
 
-根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源预留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
+根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源保留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
 
 * CPU（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑内核。 所有节点上的全部内核都进行了相同的加权。
 
@@ -78,12 +78,12 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 如果需要完全手动设置节点容量，可以使用常规机制来描述群集中的节点。 下面的示例展示了如何设置有四个内核和 2GB 内存的节点： 
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 如果已启用自动检测可用资源，并在群集清单中手动定义了节点容量，Service Fabric 会检查节点中的资源是否足以支持用户定义的容量：
@@ -102,8 +102,8 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 为了获得最佳性能，还应在群集清单中打开以下设置： 
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -131,10 +131,10 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
     </Policies>
   </ServiceManifestImport>
 ```
-  
+  
 在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。 
 
-因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证预留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
+因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证保留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 
 内存限制是绝对的，所以这两个代码包都限制为 1024 MB 内存（和相同的软保证保留）。 代码包（容器或进程）无法分配到超出此限制的内存。如果尝试这样做，则会抛出内存不足异常。 若要强制执行资源限制，服务包中的所有代码包均应指定内存限制。
 
@@ -180,8 +180,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Application>
 ```
 
-> [!IMPORTANT] 
-> 从 Service Fabric 6.1 版开始，可使用应用程序参数指定资源调控。<br> 
+> [!IMPORTANT]  从 Service Fabric 6.1 版开始，可使用应用程序参数指定资源调控。<br> 
 >
 > 使用应用程序参数指定资源调控时，Service Fabric 无法降级到 6.1 之前的版本。 
 

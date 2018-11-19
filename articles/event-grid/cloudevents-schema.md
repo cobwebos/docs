@@ -6,24 +6,26 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044543"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287194"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
-除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents JSON 架构](https://github.com/cloudevents/spec/blob/master/json-format.md)的事件。 [CloudEvents](http://cloudevents.io/) 是一种[开放式标准规范](https://github.com/cloudevents/spec/blob/master/spec.md)，用于以常用方式描述事件数据。
+除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents JSON 架构](https://github.com/cloudevents/spec/blob/master/json-format.md)的事件。 [CloudEvents](http://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/master/spec.md)。
 
 CloudEvents 提供的常用事件架构适合发布和使用基于云的事件，因此可简化互操作性。 可以通过此架构使用统一的工具、以标准方式路由和处理事件，以及以通用方式反序列化外部事件架构。 使用通用架构可以更轻松地跨平台集成工作。
 
 CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Compute Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 0.1。
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
+
+## <a name="install-preview-feature"></a>安装预览功能
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -58,7 +60,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 
 CloudEvents v0.1 提供以下属性：
 
-| CloudEvents        | Type     | 示例 JSON 值             | Description                                                        | 事件网格映射
+| CloudEvents        | 类型     | 示例 JSON 值             | Description                                                        | 事件网格映射
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 发生的事件的类型                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType 的版本（可选）                            | dataVersion
@@ -91,12 +93,12 @@ CloudEvents v0.1 提供以下属性：
 
 ### <a name="input-schema"></a>输入架构
 
-若要将某个自定义主题的输入架构设置为 CloudEvents，请在创建自定义主题 `--input-schema cloudeventv01schema` 时，在 Azure CLI 中使用以下参数。 此自定义主题现在会预期传入事件采用 CloudEvents v0.1 格式。
+在创建自定义主题时为自定义主题设置输入架构。
 
-若要创建事件网格主题，请使用：
+对于 Azure CLI，请使用：
 
-```azurecli
-# if you have not already installed the extension, do it now.
+```azurecli-interactive
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -107,24 +109,50 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
+对于 PowerShell，请使用：
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName gridResourceGroup `
+  -Location westcentralus `
+  -Name <topic_name> `
+  -InputSchema CloudEventV01Schema
+```
+
 CloudEvents 的当前版本不支持对事件进行批处理。 若要使用 CloudEvent 架构将事件发布到某个主题，请单独发布每个事件。
 
 ### <a name="output-schema"></a>输出架构
 
-若要将某个事件订阅的输出架构设置为 CloudEvents，请在创建事件订阅 `--event-delivery-schema cloudeventv01schema` 时，在 Azure CLI 中使用以下参数。 此事件订阅的事件现在以 CloudEvents v0.1 格式分发。
+在创建事件订阅时设置输出架构。
 
-若要创建事件订阅，请使用：
+对于 Azure CLI，请使用：
 
-```azurecli
+```azurecli-interactive
+topicID=$(az eventgrid topic show --name <topic-name> -g gridResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
   --name <event_subscription_name> \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 必须使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[使用 HTTP 触发器作为事件网格触发器](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
+对于 PowerShell，请使用：
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeliverySchema CloudEventV01Schema
+```
+
+CloudEvents 的当前版本不支持对事件进行批处理。 针对 CloudEvent 架构配置的事件订阅会单独接收每个事件。 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[使用 HTTP 触发器作为事件网格触发器](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
 
 ## <a name="next-steps"></a>后续步骤
 

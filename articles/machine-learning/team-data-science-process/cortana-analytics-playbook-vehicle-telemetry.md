@@ -15,19 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 02a12e917ed36367ffac1ac2e7a1fef1c6098ea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0594b9b40fdf8647f99946a31dbb47a95c9694ac
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985361"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300347"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>车辆遥测分析解决方案操作手册
-此菜单链接至此操作手册的此章节。 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
-
-## <a name="overview"></a>概述
 超级计算机已经搬出了实验室，现在停在车库中。 这些超级计算机现在正放置在包含无数传感器的先进汽车中。 这些传感器使它们每秒能够跟踪和监视数百万个事件。 到 2020 年，这些汽车中的大部分将连接到 Internet。 挖掘这些丰富的数据可以提供更高的安全性、可靠性，因此可提供更好的驾驶体验。 Microsoft 通过 Cortana Intelligence 使得这个美梦成真。
 
 Cortana Intelligence 是一个完全托管的大数据和高级分析套件，可将数据转换为智能操作。 Cortana Intelligence 车辆遥测分析解决方案模板演示了汽车经销商、汽车制造商和保险公司如何能够获得车辆运行状况和驾驶习惯的实时和预测性见解。
@@ -54,3 +50,8 @@ Cortana Intelligence 是一个完全托管的大数据和高级分析套件，�
 * **模拟车辆信号和诊断**：车辆远程信息处理模拟器在给定时间点发出对应于车辆的状态和驾驶模式的诊断信息和信号。 
 * **车辆目录**：此参考数据集将 VIN 数映射到模型。
 
+## <a name="next-steps"></a>后续步骤
+
+若要进一步探索此解决方案，请参阅[车辆遥测分析解决方案操作手册：深入了解解决方案](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)。
+
+若要了解如何为此解决方案配置 Power BI 报告和仪表板，请参阅[车辆遥测分析解决方案模板 Power BI 仪表板设置说明](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)。

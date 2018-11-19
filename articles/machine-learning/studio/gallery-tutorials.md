@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 3ca7897455f763237533aa15680fbfcf805cdaf9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834720"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344427"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享教程
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="tutorials"></a>教程
-Azure AI 提供了多个[教程](https://gallery.cortanaintelligence.com/tutorials)，可向用户演示机器学习技术和概念。 教程还可能介绍用于解决机器学习问题的高级方法。
+[Azure AI 库](http://gallery.cortanaintelligence.com)提供了多个[教程](https://gallery.cortanaintelligence.com/tutorials)，可向用户演示机器学习技术和概念。 教程还可能介绍用于解决机器学习问题的高级方法。
 
 ## <a name="discover"></a>发现
 若要浏览[库中](http://gallery.cortanaintelligence.com)的教程，请在“更多”下选择“教程”。
@@ -72,7 +70,7 @@ Azure AI 提供了多个[教程](https://gallery.cortanaintelligence.com/tutoria
   
     ![选择“公开”或“未列出”](./media/gallery-tutorials/create-tutorial-page-3.png)
 
-7. 选择**创建**。
+7. 选择“创建”。
 
 现在教程已在 Azure AI 库中。 教程会在帐户页的“项”选项卡上列出。
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6564877c05dcd5c611c6bbf7a09c65ac2f1f406
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264144"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51293190"
 ---
-# <a name="internet-of-things-security-architecture"></a>物联网安全体系结构
+# <a name="internet-of-things-iot-security-architecture"></a>物联网 (IoT) 安全体系结构
 
 在设计系统时，我们应了解该系统的潜在威胁并添加适当的防御机制，以妥善设计系统与其体系结构。 在一开始设计产品时就先考虑安全很重要，因为了解攻击者可能如何破坏系统，有助于从一开始就准备好适当的安全防护功能。
 
@@ -27,23 +27,23 @@ Microsoft 产品在威胁模型方面历史悠久，并已公开发表公司的�
 
 许多开发团队能精准掌握对客户有益的系统功能要求。 但是，识别有心人士可能如何滥用系统的隐匿方式则更具挑战性。 威胁建模操作可帮助开发团队了解攻击者可能采取的行动和原因。 威胁建模操作是一种结构化的过程，可创建系统安全设计决策的介绍，以及过程中的设计更改将对安全产生哪些影响。 尽管威胁模型只是一种文档，但此文档也是传承知识、保存所学经验，并帮助新团队快速上手的理想方式。 最后，通过威胁建模操作的结果，可让你考虑安全的其他层面，例如想要提供给客户哪些安全承诺。 将这些承诺与威胁建模操作配合使用，即可针对物联网 (IoT) 解决方案提供分析与驱动测试。
 
-### <a name="when-to-threat-model"></a>威胁建模的时机
+### <a name="when-to-do-threat-modeling"></a>何时执行威胁建模
 
 在将[威胁建模](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx)包含于设计阶段中时，威胁建模才能发挥最大的价值。 因为只有在设计阶段，才有最大的弹性空间可进行威胁消除更改。 最理想的结果就是通过设计来消除潜在威胁。 这样做比添加安全防护功能、进行测试，并确保它们保持最新状态等操作更加容易，因为消除不是随时想做就能做到。 随着产品日益成熟，消除威胁会变得更加困难，相比于开发早期采用的威胁建模，这需要更多投入与更高难度的取舍。
 
-### <a name="what-to-threat-model"></a>威胁建模应该注意什么？
+### <a name="what-to-consider-for-threat-modeling"></a>针对威胁建模需要考虑的内容
 
-应该将模型与整个方案集成成一体，同时将焦点放在以下领域：
+应该将解决方案作为一个整体来看待，并重点关注以下方面：
 
 * 安全与隐私功能
 * 其成败将影响安全的相关功能
 * 触及信任边界的功能
 
-### <a name="who-threat-models"></a>威胁模型跟谁有关
+### <a name="who-performs-threat-modeling"></a>谁执行威胁建模
 
 威胁建模与任何其他过程一样。 建议将威胁模型文档视为方案的任何其他组件，并进行验证。 许多开发团队能精准掌握对客户有益的系统功能要求。 但是，识别有心人士可能如何滥用系统的隐匿方式则更具挑战性。 威胁建模操作可帮助开发团队了解攻击者可能采取的行动和原因。
 
-### <a name="how-to-threat-model"></a>如何进行威胁建模
+### <a name="how-to-perform-threat-modeling"></a>如何执行威胁建模
 
 威胁建模过程包括以下四个步骤：
 
@@ -57,16 +57,21 @@ Microsoft 产品在威胁模型方面历史悠久，并已公开发表公司的�
 构建威胁模型时，请谨记以下三项准则：
 
 1. 创建参考体系结构图表。
-1. 先从广度下手。 获取概述，先概略了解整个系统，再进行深入工作。 此方法有助于确保在适当的位置进行深入工作。
-1. 由你控制过程，而不是受过程的摆布。 如果在建模阶段发现问题，并想要进行探索，尽管放心去做！ 不需要盲目遵循这些步骤。
+
+2. 先从广度下手。 获取概述，先概略了解整个系统，再进行深入工作。 此方法有助于确保在适当的位置进行深入工作。
+
+3. 由你控制过程，而不是受过程的摆布。 如果在建模阶段发现问题，并想要进行探索，尽管放心去做！ 不需要盲目遵循这些步骤。
 
 #### <a name="threats"></a>威胁
 
 威胁模型的四个核心元素为：
 
 * 进程（例如 Web 服务、Win32 服务和 *nix 守护程序）。 如果无法在这些区域中进行技术性向下钻取，可将某些复杂实体（例如现场网关和传感器）抽象化为进程。
+
 * 数据存储（存储数据的任何位置，例如配置文件或数据库）
+
 * 数据流（其中数据会在应用程序的其他元素之间移动）
+
 * 外部实体（与系统交互但不在应用程序控制之下的任何要素，例如用户和附属源）
 
 体系结构图中的所有元素都受限于各种威胁；这对这些威胁，本文介绍 STRIDE 助记键。 请阅读 [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/)（再次威胁建模 STRIDE）以详细了解 STRIDE 元素。
@@ -135,7 +140,7 @@ Microsoft 产品在威胁模型方面历史悠久，并已公开发表公司的�
 
 在探索交互模式与进行威胁建模时，对“设备控制”和“设备数据”同等重视。 “设备控制”可以归类为任一方提供给设备的任何信息，其目标是要更改或影响设备针对其状态或环境状态的行为。 “设备数据”可以归类为任何信息，其为设备发出给另一方的设备状态和环境观察状态相关信息。
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>对 Azure IoT 参考体系结构进行威胁建模
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>对 Azure IoT 参考体系结构执行威胁建模
 
 Microsoft 使用上述体系结构来对 Azure IoT 进行威胁建模。 以下部分使用 Azure IoT 参考体系结构的具体示例来演示如何分析 IoT 威胁建模，以及如何处理所识别的威胁。 此示例标识了四个主要区域：
 

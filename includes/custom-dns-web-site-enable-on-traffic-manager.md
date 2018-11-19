@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: cephalin
+ms.openlocfilehash: 2e6697b07f305a78ef4cc3f462c76804160a9d12
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571858"
+---
 在传播域名记录后，应可使用浏览器验证自定义域名能否用于访问 Azure 应用服务中的 Web 应用。
 
 > [!NOTE]

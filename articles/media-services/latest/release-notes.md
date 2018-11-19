@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 70a3de35f6fd942bca5355db3a7c6b57aec6adbc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945029"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613930"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明 
 
@@ -27,6 +27,54 @@ ms.locfileid: "49945029"
 * Bug 修复
 * 已弃用的功能
 * 更改计划
+
+## <a name="november-2018"></a>2018 年 11 月
+
+CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) - v 2.0.50。
+
+### <a name="new-commands"></a>新命令
+
+- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体保留单位
+
+### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
+
+#### <a name="asset-commands"></a>资产命令
+
+- 添加了 ```--storage-account``` 和 ```--container``` 参数。
+- 在 ```az ams asset get-sas-url``` 命令中添加了到期时间默认值（现在时间 + 23 小时）和权限默认值（读取）。
+
+#### <a name="job-commands"></a>作业命令
+
+- 添加了 ```--correlation-data``` 和 ```--label``` 参数
+- ```--output-asset-names``` 已重命名为 ```--output-assets```。 现在，它接受 'assetName=label' 格式的资产列表（以空格分隔）。 没有标签的资产可以采用以下格式发送：'assetName='。
+
+#### <a name="streaming-locator-commands"></a>创建流式处理定位符命令
+
+- ```az ams streaming locator``` 基本命令已替换为 ```az ams streaming-locator```。
+- 添加了 ```--streaming-locator-id``` 和 ```--alternative-media-id support``` 参数。
+- 更新了 ```--content-keys argument``` 参数。
+- ```--content-policy-name``` 已重命名为 ```--content-key-policy-name```。
+
+#### <a name="streaming-policy-commands"></a>流式处理策略命令
+
+- ```az ams streaming policy``` 基本命令已替换为 ```az ams streaming-policy```。
+- 在 ```az ams streaming-policy create``` 中添加了加密参数支持。
+
+#### <a name="transform-commands"></a>转换命令
+
+- ```--preset-names``` 参数已替换为 ```--preset```。 现在只能一次设置 1 个输出/预设（若要添加更多，必须运行 ```az ams transform output add```）。 此外，还可以通过将路径传递到自定义 JSON 来设置自定义 StandardEncoderPreset。
+- 可以通过传递要删除的输出索引来执行 ```az ams transform output remove```。
+- 在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中添加了 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 参数。
 
 ## <a name="october-2018---ga"></a>October 2018 - GA
 
@@ -120,5 +168,4 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [概述](media-services-overview.md)
+[概述](media-services-overview.md)

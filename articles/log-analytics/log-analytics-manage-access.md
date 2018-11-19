@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964146"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625617"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -239,7 +239,7 @@ OMS 订阅权利在 Azure 门户中不可见。 可在企业门户中看到权�
 ![OMS 功能区](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅[使用 Log Analytics 从环境中的计算机收集数据](log-analytics-concept-hybrid.md)，以从数据中心或其他云环境中的计算机收集数据。
+* 请参阅 [Log Analytics 代理概述](log-analytics-agent-overview.md)，以从数据中心或其他云环境中的计算机收集数据。
 * 请参阅[收集有关 Azure 虚拟机的数据](log-analytics-quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。  
 * [从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)，以添加功能和收集数据。
 

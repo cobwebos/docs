@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036332"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568720"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
@@ -31,7 +31,7 @@ ms.locfileid: "23036332"
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本方案中的操作：
 

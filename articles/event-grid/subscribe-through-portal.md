@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234648"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344072"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -45,6 +45,16 @@ ms.locfileid: "40234648"
 1. 提供关于事件订阅的其他详细信息，例如，用于处理事件的终结点以及订阅名称。
 
    ![提供订阅详细信息](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. 若要启用死信和自定义重试策略，请选择“其他功能”。
+
+   ![选择其他功能](./media/subscribe-through-portal/select-additional-features.png)
+
+1. 选择用于存储未传递事件的容器，并设置重试的发送方式。
+
+   ![启用死信并重试](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. 完成后，选择“创建”。
 
 ## <a name="create-subscription-on-resource"></a>创建关于资源的订阅
 

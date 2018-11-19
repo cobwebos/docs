@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bb870b54099fce9f7f6cfd1666be1b6393c5d07
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a921a717445df93c83518c89970050e63a51ddf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391430"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345192"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "44391430"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "44391430"
 
 1. 分配 Data Lake Storage Gen1 根目录的权限。 
 
-    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”。
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "分配 Data Lake Storage Gen1 根目录的权限")
 
@@ -58,7 +58,7 @@ ms.locfileid: "44391430"
     c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 将“添加为”设为“一个访问权限入口和一个默认权限入口”。
 
     > [!IMPORTANT]
-    > 创建用于捕获 Azure 事件中心接收的数据时，有一种简单的方法可用来确保对目标文件夹的访问。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
+    > 创建用于捕获 Azure 事件中心接收的数据的新文件夹层次结构时，这是确保可以访问目标文件夹的简便方法。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "分配 Data Lake Storage Gen1 根目录的权限")
 
@@ -66,7 +66,7 @@ ms.locfileid: "44391430"
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
-    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”。
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
 
@@ -94,7 +94,7 @@ ms.locfileid: "44391430"
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Create Event Hub")
 
-    a. 为事件中心提供一个名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 为事件中心提供一个名称。
     
     b. 本教程将“分区计数”和“消息保留期”均设为默认值。
     

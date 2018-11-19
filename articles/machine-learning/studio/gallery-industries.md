@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d64395314f73c5d359b30c15ef11bfd3078e068f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062091"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346297"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现特定于行业的解决方案
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="industry-specific-cortana-intelligence-solutions"></a>特定于行业的 Cortana Intelligence 解决方案
-库的**[行业](https://gallery.azure.ai/industries)** 部分汇聚了以下所示行业特有的各种资源：
+[Azure AI 库](http://gallery.cortanaintelligence.com)的**[行业](https://gallery.azure.ai/industries)** 部分汇集了以下所示行业特有的各种资源：
 
 * [零售](https://gallery.azure.ai/industries/retail) - 查找零售解决方案，如销售预测、预测客户流失和开发定价模型。
 * [制造](https://gallery.azure.ai/industries/manufacturing) - 查找制造解决方案，如预测设备维护和预测能源价格。

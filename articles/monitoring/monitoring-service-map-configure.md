@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 653ed7e4cdbd2df166e21acfd1e376638cad6290
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52476488307b9467665b1b8df35c92419825078f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257218"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622374"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -133,8 +133,8 @@ ms.locfileid: "51257218"
 
 | 连接的源 | 支持 | Description |
 |:--|:--|:--|
-| Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../log-analytics/log-analytics-concept-hybrid.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../log-analytics/log-analytics-concept-hybrid.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../log-analytics/log-analytics-agent-overview.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../log-analytics/log-analytics-agent-overview.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 |
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
@@ -230,7 +230,7 @@ ForEach-Object {
 
 使用以下步骤在每台 Windows 计算机上安装 Dependency Agent：
 
-1.  按照[使用 Log Analytics 代理收集混合环境中的数据](../log-analytics/log-analytics-concept-hybrid.md)中所述的某种方法安装适用于 Windows 的 Log Analytics 代理。
+1.  按照 [Log Analytics 代理概述](../log-analytics/log-analytics-agent-overview.md)中所述的某种方法安装适用于 Windows 的 Log Analytics 代理。
 2.  下载 Windows 代理，并使用以下命令运行： 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ ForEach-Object {
 
 使用以下步骤在每台 Linux 计算机上安装 Dependency Agent：
 
-1.  按照[使用 Log Analytics 代理收集混合环境中的数据](../log-analytics/log-analytics-concept-hybrid.md)中所述的某种方法安装 Log Analytics 代理。
+1.  按照 [Log Analytics 代理概述](../log-analytics/log-analytics-agent-overview.md)中所述的某种方法安装 Log Analytics 代理。
 2.  运行以下命令将 Linux Dependency Agent 安装为根：
     
     `sh InstallDependencyAgent-Linux64.bin`

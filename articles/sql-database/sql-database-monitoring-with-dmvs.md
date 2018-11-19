@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: df3062349ac384b92eeaf9483310cd5d3b48921f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238550"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288521"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库
 
@@ -333,7 +333,7 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>识别内存授予等待性能问题
 
-如果最相关等待类型为 `RESOURCE_SEMAHPORE`，但你未遇到 CPU 偏高的问题，则可能是出现了内存授予等待问题。
+如果最相关等待类型为 `RESOURCE_SEMAHPORE`，但你未遇到 CPU 使用率偏高的问题，则可能是出现了内存授予等待问题。
 
 ### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>确定 `RESOURCE_SEMAHPORE` 等待是否为最相关的等待
 

@@ -5,20 +5,21 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 11/07/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964522"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285720"
 ---
 | 资源 | 最大限制 |说明|
 | --- | --- |---|
 | 每个自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业） |200 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
+| 30 天滚动期内作业元数据的最大存储大小。 | 10GB（约 400 万个作业）|达到此限制时，后续作业创建请求会失败。 |
 | 每个自动化帐户每 30 秒可以导入的模块的最大数量 |5 ||
 | 一个模块的最大大小 |100 MB ||
 | 作业运行时间 - 免费层 |每个订阅每个日历月 500 分钟 ||

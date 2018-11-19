@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870471"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514955"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 
@@ -83,6 +83,10 @@ ms.locfileid: "48870471"
 下图演示了此方案：
 
 ![集成的应用对等互连](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>VNet 集成功能不会将应用与包含 ExpressRoute 网关的 VNet 集成。 即使以共存模式配置 ExpressRoute 网关，VNet 集成也不会实现。 如果需要通过 ExpressRoute 连接访问资源，则可以使用 VNet 中运行的应用服务环境。
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>排查连接问题
 

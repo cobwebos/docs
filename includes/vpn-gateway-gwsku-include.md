@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 605533f25b36a92a660301d28aa63cb2ecdd44f4
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37909927"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285702"
 ---
 创建虚拟网络网关时，需要指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。
 
@@ -29,7 +29,7 @@ ms.locfileid: "37909927"
 
 | **SKU**| **功能**|
 | ---    | ---         |
-|**基本** (\*\*)   | **基于路由的 VPN**：包含 P2S 的 10 个隧道；无适用于 P2S 的 RADIUS 身份验证；无适用于 P2S 的 IKEv2<br>基于策略的 VPN (IKEv1)：1 个隧道；不含 P2S|
+|**基本** (\*\*)   | **基于路由的 VPN**：用于 S2S /连接的 10 个隧道；无适用于 P2S 的 RADIUS 身份验证；无适用于 P2S 的 IKEv2<br>**基于策略的 VPN**：(IKEv1)：1 个 S2S/连接隧道；无 P2S|
 | VpnGw1、VpnGw2、VpnGw3 | 基于路由的 VPN：最多 30 个隧道 (\*)、P2S、BGP、主动-主动、自定义 IPsec/IKE 策略、ExpressRoute/VPN 共存 |
 |        |             |
 

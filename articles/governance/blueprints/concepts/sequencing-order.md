@@ -4,16 +4,16 @@ description: 了解有关蓝图经历的生命周期以及每个阶段的详细�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094572"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620589"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -47,6 +47,9 @@ JSON 示例中的有些变量需要用自己的值替换：
 在编撰大型蓝图时，可能需要按特定顺序来创建资源。 此方案的最常见使用模式发生在蓝图包含多个 Azure 资源管理器模板时。 蓝图通过允许定义排序顺序来处理此模式。
 
 排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 只有蓝图（用于资源组）和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+
+> [!NOTE]
+> **资源组**资源组支持 `dependsOn` 属性，但不能以任何项目类型作为 `dependsOn` 的目标。
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>示例 - 具有已排序资源组的蓝图
 

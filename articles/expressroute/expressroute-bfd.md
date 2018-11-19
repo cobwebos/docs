@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 97ac49ff5cc50621fd902f77c2543a428c7e8bae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384746"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631653"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD
 
@@ -67,7 +67,7 @@ ExpressRoute 支持基于专用对等互连的双向转发检测 (BFD)。 启用
 
 ## <a name="bfd-timer-negotiation"></a>BFD 计时器协商
 
-在两个 BFD 对等方之间，速度较慢的对等方决定了传输速率。 MSEE BFD 传输/接收间隔设置为 300 毫秒。 通过配置较高的值，可以强制这些间隔变得更长；但无法变得更短。
+在两个 BFD 对等方之间，速度较慢的对等方决定了传输速率。 MSEE BFD 传输/接收间隔设置为 300 毫秒。 在某些情况下，可以将间隔设置为 750 毫秒的较高值。 通过配置较高的值，可以强制这些间隔变得更长；但无法变得更短。
 
 >[!NOTE]
 >如果已配置异地冗余的 ExpressRoute 专用对等互连线路，或使用站点到站点 IPSec VPN 连接作为 ExpressRoute 专用对等互连的备用连接，则启用基于专用对等互连的 BFD 有助于在发生 ExpressRoute 连接故障后加快故障转移的速度。 

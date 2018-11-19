@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: d96852006377123f6e9d17c3ae5b79fe930c1e1c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 546d75172b9e6dbd77d63c36e5b8cebd0835a582
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836790"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345600"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
-本文档介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
 
-以下**菜单**带有描述如何使用工具从不同存储环境浏览数据的主题的链接。 此任务是 Cortana Analytics 过程 (CAP) 中的一个步骤。
+本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 可通过使用 SQL 或 Python 等编程语言的数据整理来实现上述目的。
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
 > [!NOTE]
 > 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: fcb9fa9004039205fa49f63c50d5907a8029a079
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7873192e4a66cd2faed5a1a1255377139d33d750
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153212"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616055"
 ---
 # <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>使用 ExpressRoute 的应用服务环境的网络配置详细信息
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ ms.locfileid: "32153212"
 * 端口 445 上指向 Azure 文件服务的出站网络连接。
 * 与位于应用服务环境相同区域中的 SQL 数据库终结点建立的出站网络连接。  Sql DB 终结点在以下域之下解析：*database.windows.net*。  这需要对端口 1433、11000-11999 和 14000-14999 的公开访问权限。  有关详细信息，请参阅[有关 SQL 数据库 V12 端口使用的这一文章](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)。
 * 与 Azure 管理平面终结点（ASM 和 ARM 终结点）建立的出站网络连接。  这包括指向 *management.core.windows.net* 和 *management.azure.com* 的出站连接。 
-* 与 *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 建立的出站网络连接。需要此连接才能支持 SSL 功能。
+* 与 *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 建立的出站网络连接。  需要此连接才能支持 SSL 功能。
 * 虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。  如果无法解析这些终结点，应用服务环境创建尝试会失败，并且现有的应用服务环境标记为状况不正常。
 * 需要端口 53 上的出站访问权限才能与 DNS 服务器通信。
 * 如果 VPN 网关的另一端有自定义 DNS 服务器存在，则必须可从包含应用服务环境的子网连接该 DNS 服务器。 
@@ -93,7 +93,7 @@ ms.locfileid: "32153212"
 
     Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet
 
-请记住，0.0.0.0/0 是广泛的地址范围，因此被 ExpressRoute 所播发的更明确地址范围所重写。  若要反复迭代前面的建议，具有 0.0.0.0/0 路由的 UDR 应配合也只播发 0.0.0.0/0 的 ExressRoute 配置使用。 
+请记住，0.0.0.0/0 是广泛的地址范围，因此被 ExpressRoute 所播发的更明确地址范围所重写。  若要反复迭代前面的建议，具有 0.0.0.0/0 路由的 UDR 应与也只播发 0.0.0.0/0 的 ExpressRoute 配置结合使用。 
 
 或者，可以下载完整和更新的由 Azure 使用中的 CIDR 范围列表。  从 [Microsoft 下载中心][DownloadCenterAddressRanges]可获取包含所有 Azure IP 地址范围的 Xml 文件。  
 

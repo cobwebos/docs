@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746115"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51678162"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -32,8 +32,8 @@ ms.locfileid: "50746115"
 我们所提供的这些准则是专门针对高级存储的，因为在高级存储上运行的工作负荷具有高度的性能敏感性。 我们根据需要提供示例。 也可以将部分此类准则应用于在标准存储磁盘的 IaaS VM 上运行的应用程序。
 
 > [!NOTE]
-> 有时，似乎造成性能问题的实际上是网络瓶颈。 在这些情况下，应优化[网络性能](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。
-> 还应确保 VM 支持加速网络连接。 如果是这样，即使在 [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) vm 上部署之后，也可以启用它。
+> 有时，显示为磁盘性能问题的原因实际上是网络瓶颈。 在这些情况下，应优化[网络性能](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。
+> 如果 VM 支持加速网络，则应确保它已启用。 如果未启用，则可以在 [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 上启用它。
 
 如果尚不熟悉高级存储，请在开始之前首先阅读[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)一文和 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md)一文。
 

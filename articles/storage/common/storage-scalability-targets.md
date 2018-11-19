@@ -1,41 +1,32 @@
 ---
-title: Azure 存储可伸缩性和性能目标 | Microsoft Docs
-description: 了解有关 Azure 存储帐户的可伸缩性和性能目标的信息，包括标准和高级存储账户的容量、请求速率以及入站和出站带宽。 了解每个 Azure 存储服务中各分区的性能目标。
+title: Azure 存储可伸缩性和性能目标
+description: 了解标准 Azure 存储帐户的可伸缩性和性能目标，包括容量、请求速率以及入站和出站带宽。
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 11/08/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 758871537b89a9c010cfaddf324e2208f9846afb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93e09f3ab6780eb9ce7fa29b4554b53d796b6837
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241307"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564946"
 ---
-# <a name="azure-storage-scalability-and-performance-targets"></a>Azure 存储可伸缩性和性能目标
-## <a name="overview"></a>概述
-本文介绍 Azure 存储的可伸缩性和性能主题。 有关其他 Azure 限制的摘要，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。
+# <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>标准存储帐户的 Azure 存储可伸缩性和性能目标
 
-> [!NOTE]
-> 所有存储帐户都在新的扁平网络拓扑上运行，无论它们创建于何时，都支持本文所述的可伸缩性和性能目标。 有关 Azure 存储的扁平网络体系结构和可伸缩性的详细信息，请参阅 [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（Microsoft Azure 存储：具有高度一致性的高可用云存储服务）。
-> 
+本文详细介绍了标准 Azure 存储帐户的可伸缩性和性能目标。 以下所列的可伸缩性和性能目标为高端目标，但却是能够实现的。 在任何情况下，存储帐户实现的请求速率和带宽取决于存储对象大小、使用的访问模式、应用程序执行的工作负荷类型。 
 
-> [!IMPORTANT]
-> 以下所列的可伸缩性和性能目标为高端目标，但却是能够实现的。 在任何情况下，存储帐户实现的请求速率和带宽取决于存储对象大小、使用的访问模式、应用程序执行的工作负荷类型。 请务必测试服务，以确定其性能是否达到要求。 如果可能，应避免流量速率突发峰值，并确保流量在各个分区上均匀分布。
-> 
-> 当应用程序达到分区能够处理的工作负荷极限时，Azure 存储将开始返回错误代码 503（服务器忙）或错误代码 500（操作超时）响应。 如果发生这些错误，则应用程序应使用指数回退策略进行重试。 使用指数退让策略，可以减少分区上的负载，缓解该分区的流量高峰。
-> 
-> 
+请务必测试服务，以确定其性能是否达到要求。 如果可能，应避免流量速率突发峰值，并确保流量在各个分区上均匀分布。
 
-如果应用程序的需求超过单个存储帐户的伸缩性目标，则可以构建使用多个存储帐户的应用程序。 然后，可以将数据对象分布到这些存储帐户中。 有关批量定价的信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/) 。
+当应用程序达到分区能够处理的工作负荷极限时，Azure 存储将开始返回错误代码 503（服务器忙）或错误代码 500（操作超时）响应。 如果发生 503 错误，请考虑修改应用程序以使用指数退避策略进行重试。 使用指数退让策略，可以减少分区上的负载，缓解该分区的流量高峰。
 
-## <a name="scalability-targets-for-a-storage-account"></a>存储帐户的可伸缩性目标
+## <a name="standard-storage-account-scale-limits"></a>标准存储帐户缩放限制
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-### <a name="storage-resource-provider-limits"></a>存储资源提供程序限制 
+## <a name="storage-resource-provider-scale-limits"></a>存储资源提供程序缩放限制 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -48,7 +39,7 @@ ms.locfileid: "51241307"
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
-对于 Azure 文件同步，在设计时我们已尽最大努力来实现不受限的使用，但这并非始终可能。 下表指明了我们的测试边界以及哪些目标实际上是硬性限制：
+Azure 文件同步的设计目标是无限使用，但并非总是可以无限使用。 下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -63,5 +54,4 @@ ms.locfileid: "51241307"
 * [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)
 * [Azure 存储复制](../storage-redundancy.md)
 * [Microsoft Azure 存储性能和可伸缩性清单](../storage-performance-checklist.md)
-* [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

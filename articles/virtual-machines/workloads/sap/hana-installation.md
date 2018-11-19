@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231094"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633948"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -170,7 +170,7 @@ HANA/log/backup 卷并非旨在用作数据库备份的卷。 它的大小适合
 
 除了提供的存储以外，还可以购买更多存储容量，增量为 1-TB。 可以将此附加存储作为新卷添加到 HANA 大型实例。
 
-在 Azure 上的 SAP HANA 服务管理部门的帮助下进行载入期间，客户指定 sidadm 用户和 sapsys 组的用户 ID (UID) 和组 ID (GID)（例如：1000,500）。在安装 SAP HANA 系统期间，必须使用与此相同的值。 由于要在一个单元上部署多个 HANA 实例，因此将获得多个卷集（每个实例有一个集）。 因此，在部署时需要定义：
+通过 Azure SAP HANA 服务管理加入期间，客户指定 sidadm 用户和 sapsys 组的用户 ID (UID) 和组 ID (GID)（例如：1000,500）。 在安装 SAP HANA 系统期间，必须使用与此相同的值。 由于要在一个单元上部署多个 HANA 实例，因此将获得多个卷集（每个实例有一个集）。 因此，在部署时需要定义：
 
 - 不同 HANA 实例的 SID（sidadm 由此派生）。
 - 不同 HANA 实例的内存大小。 每个实例的内存大小定义各个卷集的卷大小。

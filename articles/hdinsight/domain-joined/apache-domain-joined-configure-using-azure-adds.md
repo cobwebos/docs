@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 5707f97dff099d1ad914dcf3faa96cc287d48de9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245658"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684731"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "51245658"
 本文介绍如何使用 Azure Active Directory 域服务 (Azure AD-DS) 配置具有 ESP 的 HDInsight 群集。
 
 >[!NOTE]
->ESP 在适用于 Spark、Interactive 和 Hadoop 的 HDI 3.6 中为公开发行版。 HBase 和 Kafka 群集类型的 ESP 为预览版。
+>ESP 在适用于 Spark、Interactive 和 Apache Hadoop 的 HDI 3.6 中为正式发布版。 HBase 和 Kafka 群集类型的 ESP 为预览版。
 
 ## <a name="enable-azure-ad-ds"></a>启用 Azure AD-DS
 
@@ -64,6 +64,9 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ![HDInsight 托管标识操作者角色分配](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>网络注意事项
+
+> [!NOTE]
+> Azure AD-DS 必须部署在基于 Azure 资源管理器 (ARM) 的 vNET 中。 Azure AD-DS 不支持经典虚拟网络。 有关更多详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network)。
 
 启用 Azure AD-DS 后，本地域名服务 (DNS) 服务器将在 AD 虚拟机 (VM) 上运行。 配置 Azure AD-DS 虚拟网络 (VNET) 来使用这些自定义 DNS 服务器。 若要找到正确的 IP 地址，请选择“管理”类别下的“属性”，然后查看“虚拟网络上的 IP 地址”下列出的 IP 地址。
 

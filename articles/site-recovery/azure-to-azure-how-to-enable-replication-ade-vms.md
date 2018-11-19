@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043271"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300568"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密 (ADE) 的虚拟机复制到另一个 Azure 区域
 
@@ -27,7 +27,7 @@ ms.locfileid: "48043271"
 
 若要从门户启用 ADE VM 的复制，用户应当具有以下权限。
 - 密钥保管库权限
-    - 列出
+    - list
     - 创建
     - 获取
 
@@ -104,7 +104,7 @@ ms.locfileid: "48043271"
 
 1. 单击“目标订阅”旁边的“自定义：”，修改默认目标订阅。 从同一 Azure Active Directory (AAD) 租户中可用的所有订阅列表中选择订阅。
 
-2. 单击“资源组、存储、网络和可用性集”旁边的“自定义:”来修改以下默认设置：
+2. 单击“资源组、网络、存储和可用性集”旁边的“自定义:”可修改以下默认设置：
     - 在“目标资源组”中，从订阅内目标位置中的所有资源组列表中选择资源组。
     - 在“目标虚拟网络”中，从目标位置中所有虚拟网络列表中选择网络。
     - 在“可用性集”中，可将可用性集设置添加到 VM（如果它们是源区域中可用性集的一部分）。

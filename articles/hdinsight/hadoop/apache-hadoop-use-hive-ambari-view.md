@@ -1,5 +1,5 @@
 ---
-title: 使用 Ambari 视图操作 Hive on HDInsight (Hadoop) - Azure
+title: 使用 Apache Ambari 视图操作 Hive on HDInsight (Apache Hadoop) - Azure
 description: 了解如何在 Web 浏览器中使用 Hive 视图提交 Hive 查询。 Hive 视图是基于 Linux 的 HDInsight 群集随附提供的 Ambari Web UI 的一部分。
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233145"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632741"
 ---
-# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>将 Ambari Hive 视图与 HDInsight 中的 Hadoop 配合使用
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>将 Apache Ambari Hive 视图与 HDInsight 中的 Apache Hadoop 配合使用
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-了解如何使用 Ambari Hive 视图运行 Hive 查询。 Hive 视图允许从 Web 浏览器创作、优化和运行 Hive 查询。
+了解如何使用 Apache Ambari Hive 视图运行 Hive 查询。 Hive 视图允许从 Web 浏览器创作、优化和运行 Hive 查询。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 基于 Linux 的 Hadoop on HDInsight 群集版本 3.4 或更高版本。
+* 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
   > [!IMPORTANT]
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。

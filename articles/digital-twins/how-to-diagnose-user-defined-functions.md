@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946090"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636265"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中使用用户定义的函数调试问题
 
@@ -42,12 +42,12 @@ Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下�
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| 自定义属性名称 | 替换为 |
+| 查询值 | 替换为 |
 | --- | --- |
-| yourCorrelationIdentifier | 已在事件数据中指定的相关 ID |
+| YOUR_CORRELATION_IDENTIFIER | 已在事件数据中指定的相关 ID |
 
 如果记录用户定义的函数，这些日志将显示在 Azure Log Analytics 实例中，类别为 `UserDefinedFunction`。 若要检索这些日志，请在 Azure Log Analytics 中输入以下查询条件：
 
@@ -62,6 +62,8 @@ AzureDiagnostics
 
 在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面总结了开发用户定义的函数时遇到的几个常见问题。
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>确保已创建角色分配
 
 如果没有在管理 API 中创建角色分配，用户定义的函数将无权执行任何操作，例如发送通知、检索元数据以及在拓扑中设置计算值。
@@ -69,13 +71,12 @@ AzureDiagnostics
 通过管理 API 检查用户定义的函数是否存在角色分配：
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| 自定义属性名称 | 替换为 |
+| 参数 | 替换为 |
 | --- | --- |
-| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
-| yourUserDefinedFunctionId | 要检索其角色分配的用户定义的函数 ID|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | 要检索其角色分配的用户定义的函数 ID|
 
 如果未检索到任何角色分配，请按照[如何为用户定义的函数创建角色分配](./how-to-user-defined-functions.md)一文中的说明操作。
 
@@ -84,14 +85,13 @@ GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&o
 通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定给定的匹配程序是否适用于给定的传感器。
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| 自定义属性名称 | 替换为 |
+| 参数 | 替换为 |
 | --- | --- |
-| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
-| yourMatcherIdentifier | 要评估的匹配程序的 ID |
-| yourSensorIdentifier | 要评估的传感器的 ID |
+| *YOUR_MATCHER_IDENTIFIER* | 要评估的匹配程序的 ID |
+| *YOUR_SENSOR_IDENTIFIER* | 要评估的传感器的 ID |
 
 响应：
 
@@ -109,13 +109,12 @@ GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluat
 通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定将由给定传感器的传入遥测数据触发的用户定义的函数的标识符：
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| 自定义属性名称 | 替换为 |
+| 参数 | 替换为 |
 | --- | --- |
-| yourManagementApiUrl | 管理 API 的完整 URL 路径  |
-| yourSensorIdentifier | 将发送遥测数据的传感器的 ID |
+| *YOUR_SENSOR_IDENTIFIER* | 将发送遥测数据的传感器的 ID |
 
 响应：
 

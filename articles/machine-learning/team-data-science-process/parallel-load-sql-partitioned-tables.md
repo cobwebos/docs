@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: dfb36cfba312d54d469b371f02820fd01da6dc7f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c318411fe17fb60c1c0bf991a07b46a515252952
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243414"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683203"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>使用 SQL 分区表并行批量导入数据
-本文档介绍如何构建分区表来快速将数据并行批量导入 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
+
+本文介绍如何构建分区表来快速将数据并行批量导入到 SQL Server 数据库。 要将大型数据加载/传输到 SQL 数据库，可以通过使用*分区表和视图*加快将数据导入 SQL 数据库和后续查询的速度。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
 * [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
@@ -81,7 +82,7 @@ ms.locfileid: "51243414"
   若要根据函数/方案验证每个分区中的有效范围，请运行以下查询：
   
         SELECT psch.name as PartitionScheme,
-            prng.value AS ParitionValue,
+            prng.value AS PartitionValue,
             prng.boundary_id AS BoundaryID
         FROM sys.partition_functions AS pfun
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945172"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622085"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
@@ -76,11 +76,11 @@ ms.locfileid: "49945172"
 
 5. 在“预览连接器”页中，单击“继续”。 此时会显示“Azure Cosmos DB”窗口。
 
-6. 如下所示指定想要从其中检索数据的 Azure Cosmos DB 帐户终结点 URL，并单击“确定”。 要使用自己的帐户，可以在 Azure 门户的[“密钥”](manage-account.md#keys)边栏选项卡的 URI 框检索 URL。 可选：你可以提供数据库名称、集合名称，也可以使用导航器来选择数据库和集合以标识数据来源。
+6. 如下所示指定想要从其中检索数据的 Azure Cosmos DB 帐户终结点 URL，并单击“确定”。 要使用自己的帐户，可以从 Azure 门户的“密钥”边栏选项卡的 URI 框中取得 URL。 可选：你可以提供数据库名称、集合名称，也可以使用导航器来选择数据库和集合以标识数据来源。
    
-7. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的[“只读密钥”](manage-account.md#keys)边栏选项卡中的“主密钥”框中检索密钥。 输入相应的密钥，然后单击“连接”。
+7. 如果是首次连接到此终结点，则会提示输入帐户密钥。 若使用自己的帐户，请从 Azure 门户的“只读密钥”边栏选项卡中的“主密钥”框中取得密钥。 输入相应的密钥，然后单击“连接”。
    
-   我们建议在生成报表时使用只读密钥。 这可防止主密钥不必要地暴露于潜在的安全风险中。 可以从 Azure 门户的[密钥](manage-account.md#keys)边栏选项卡获取只读密钥。 
+   我们建议在生成报表时使用只读密钥。 这可防止主密钥不必要地暴露于潜在的安全风险中。 可以从 Azure 门户的**密钥**边栏选项卡获取只读密钥。 
     
 8. 帐户成功连接后，将出现“导航器”窗格。 “导航器”会在帐户下显示数据库的列表。
 

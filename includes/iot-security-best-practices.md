@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b870be792da9a6646a7854bc17b7e33fb11d7b0c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070162"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289183"
 ---
-# <a name="internet-of-things-security-best-practices"></a>物联网安全最佳实践
+# <a name="security-best-practices-for-internet-of-things-iot"></a>物联网 (IoT) 安全最佳做法
 
 保护物联网 (IoT) 基础结构需要严格的深度安全防御策略。 该策略要求保护云中的数据，在公共 Internet 中传输数据时保护数据的完整性以及安全预配设备。 在总体基础结构中的每一层构建更强的安全性保证。
 

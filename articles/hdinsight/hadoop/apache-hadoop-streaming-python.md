@@ -1,6 +1,6 @@
 ---
 title: 使用 HDInsight 开发 Python 流式处理 MapReduce 作业 - Azure
-description: 了解如何在流式处理 MapReduce 作业中使用 Python。 Hadoop 为 MapReduce 提供一个流式处理 API，以便用 Java 以外的语言编写该程序。
+description: 了解如何在流式处理 MapReduce 作业中使用 Python。 Apache Hadoop 为 MapReduce 提供一个流式处理 API，以便用 Java 以外的语言编写该程序。
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008719"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634016"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>为 HDInsight 开发 Python 流式处理 MapReduce 程序
 
-了解如何在流式处理 MapReduce 操作中使用 Python。 Hadoop 为 MapReduce 提供了一个流式处理 API，使你能够以 Java 之外的其他语言来编写映射和化简函数。 本文档中的步骤实现 Python 中的映射和化简组件。
+了解如何在流式处理 MapReduce 操作中使用 Python。 Apache Hadoop 为 MapReduce 提供了一个流式处理 API，使你能够以 Java 之外的其他语言来编写映射和化简函数。 本文档中的步骤实现 Python 中的映射和化简组件。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 基于 Linux 的 HDInsight 上的 Hadoop 群集
+* 基于 Linux 的 Apache Hadoop on HDInsight 群集
 
   > [!IMPORTANT]
   > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。

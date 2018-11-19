@@ -15,37 +15,17 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141650"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515635"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
-**问：我可以注册 Android 或 iOS BYOD 设备吗？**
-
-**答：** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 不支持使用 AD FS 中的本地设备注册服务进行注册。
-
-**问：如何注册 macOS 设备？**
-
-**答：** 注册 macOS 设备的具体步骤：
-
-1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [定义适用于 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
-
-**备注：**
-
-- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)，才能访问资源。 
-
-- 首次尝试访问期间，用户会看到有关使用公司门户注册设备的提示。
-
----
-
-**问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？**
-
-**答：** 已加入混合 Azure AD 的 Windows 10 设备不显示在 USER 设备下。
+**问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？或者为什么将加入混合 Azure AD 的设备的设备所有者标记为“不适用”？**
+**答：** 加入混合 Azure AD 的 Windows 10 设备不会显示在“用户设备”下。
 需要使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 USER 设备下面只会列出以下设备：
@@ -58,12 +38,16 @@ USER 设备下面只会列出以下设备：
 
 **问：如何了解客户端的设备注册状态？**
 
-**答：** 可以使用 Azure 门户，转到“所有设备”并使用设备 ID 搜索设备。 检查“联接类型”列下的值。
-
-如果要从注册的设备检查本地设备注册状态：
+**答：** 可以使用 Azure 门户，转到“所有设备”并使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或重置映像。 因此，还必须检查设备上的设备注册状态：
 
 - 对于 Windows 10 和 Windows Server 2016 或更高版本的设备，请运行 dsregcmd.exe /status。
 - 对于下层 OS 版本，请运行“%programFiles%\Microsoft Workplace Join\autoworkplace.exe”
+
+---
+
+**问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
+
+**答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
 
 ---
 
@@ -88,25 +72,6 @@ USER 设备下面只会列出以下设备：
 3.  键入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
 
 ---
-**问：如何在设备上本地取消与 Azure AD 联接设备的联接？**
-
-**答：** 
-- 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
-
-- 对于已加入纯 Azure AD 的设备，请确保你有脱机本地管理员帐户或创建一个，因为你将无法使用任何 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后单击“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
-
----
-
-**问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
-
-**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
-
----
-
-**问：如何连接到已加入 Azure AD 的远程设备？**
-**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc。
-
----
 
 **问：Azure 门户中为何出现重复的设备条目？**
 
@@ -128,7 +93,27 @@ USER 设备下面只会列出以下设备：
 
 >[!Note] 
 >对于注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅 [Enroll devices for management in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)（注册设备以便在 Intune 中进行管理）。 
+---
 
+# <a name="azure-ad-join-faq"></a>加入 Azure AD 常见问题解答
+
+**问：如何在设备上本地取消与 Azure AD 联接设备的联接？**
+
+**答：** 
+- 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
+
+- 对于已加入纯 Azure AD 的设备，请确保你有脱机本地管理员帐户或创建一个，因为你将无法使用任何 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后单击“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+
+---
+
+**问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
+
+**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+
+---
+
+**问：如何连接到已加入 Azure AD 的远程设备？**
+**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc。
 
 ---
 
@@ -144,12 +129,6 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
-
-**答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
-
----
-
 **问：刚刚加入 Azure AD 的设备中为何会显示“用户名或密码不正确”消息？**
 
 **答：** 出现这种情况的常见原因包括：
@@ -158,7 +137,7 @@ USER 设备下面只会列出以下设备：
 
 - 计算机无法与 Azure Active Directory 通信。 请检查是否存在任何网络连接问题。
 
-- 联合登录要求联合服务器支持 WS-Trust 活动终结点。 
+- 联合登录要求联合服务器支持启用和可访问 WS-Trust 终结点。 
 
 - 你已启用“直通身份验证”，并且用户具有需要在登录时更改的临时密码。
 
@@ -170,14 +149,15 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：我没有收到任何错误信息，但尝试加入电脑为何失败？**
+**问：我没有收到任何错误信息，但尝试将电脑加入 Azure AD 为何会失败？**
 
 **答：** 一个可能的原因是用户使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory Join 之前创建一个不同的本地帐户以完成设置。 
 
-
 ---
 
-**问：在哪里可以找到有关自动设备注册的故障排除信息？**
+# <a name="hybrid-azure-ad-join-faq"></a>加入混合 Azure AD 常见问题解答
+
+**问：在哪里可以找到用于诊断加入混合 Azure AD 失败的故障排除信息？**
 
 **答：** 有关故障排除信息，请参阅：
 
@@ -188,3 +168,23 @@ USER 设备下面只会列出以下设备：
 
 ---
 
+# <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
+
+**问：我可以注册 Android 或 iOS BYOD 设备吗？**
+
+**答：** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 不支持使用 AD FS 中的本地设备注册服务进行注册。
+
+**问：如何注册 macOS 设备？**
+
+**答：** 注册 macOS 设备的具体步骤：
+
+1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+2.  [定义适用于 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
+
+**备注：**
+
+- 条件访问策略中的用户必须有 [macOS 支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)，才能访问资源。 
+
+- 首次尝试访问期间，用户会看到有关使用公司门户注册设备的提示。
+
+---

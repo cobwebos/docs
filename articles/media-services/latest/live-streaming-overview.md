@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962378"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344961"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -44,11 +44,11 @@ ms.locfileid: "50962378"
 
 在最新版本中实现了以下新改进。
 
-- 针对实时传送视频的新的低延迟模式（10 秒端到端）。
+- 新的低延迟模式。 有关详细信息，请参阅[延迟](#latency)。
 - 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
 - RTMPS 安全引入。
 
-    现可在创建 LiveEvent 时获取 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
+    创建 LiveEvent 时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
 - 24 小时转码支持。 
 - 通过 SCTE35 改进了 RTMP 中的广告信号支持。
 
@@ -82,7 +82,7 @@ ms.locfileid: "50962378"
 
 下表比较了两种 LiveEvent 类型的功能。
 
-| 功能 | 直通 LiveEvent | 基本 LiveEvent |
+| Feature | 直通 LiveEvent | 标准 LiveEvent |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 最大分辨率，层数 |4Kp30  |720p，6 层，30 fps |
@@ -126,6 +126,20 @@ LiveEvent 的当前状态。 可能的值包括：
 将流传输到 LiveEvent 后，可以通过创建资产、LiveOutput 和 StreamingLocator 来启动流式传输事件。 这会存档流，并使观看者可以通过 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) 使用该流。
 
 创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+
+## <a name="latency"></a>Latency
+
+本部分讨论使用低延迟设置和各种播放器时看到的典型结果。 结果因 CDN 和网络延迟而异。
+
+若要使用新的 LowLatency 功能，可以在 LiveEvent 上将 **StreamOptionsFlag** 设置为 **LowLatency**。 流启动并运行后，可以使用 [Azure Media Player](http://ampdemo.azureedge.net/) (AMP) 演示页，并设置播放选项以使用“低延迟启发式配置文件”。
+
+### <a name="pass-through-liveevents"></a>直通 LiveEvents
+
+||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
+|---|---|---|
+|AMP 中的 DASH|10 秒|8 秒|
+|本机 iOS 播放器上的 HLS|14 秒|10 秒|
+|混音播放器中的 HLS.JS|30 秒|16 秒|
 
 ## <a name="billing"></a>计费
 

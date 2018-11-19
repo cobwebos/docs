@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: cdb1fa7dd9bada5615a0dcd706184a5213ff917b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 11d23102ca807ab1ddf41f1d0e72aed8a8513ac8
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299247"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636639"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -67,19 +67,19 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 1. 根据 Windows 计算机的体系结构选择 VPN 客户端配置文件。 对于 64 位处理器体系结构，请选择“VpnClientSetupAmd64”安装程序包。 对于 32 位处理器体系结构，请选择“VpnClientSetupX86”安装程序包。 
 2. 双击所需的包进行安装。 如果显示 SmartScreen 弹出窗口，请单击“更多信息”，并单击“仍要运行”。
-3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。 
+3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。 
 4. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关生成证书的详细信息，请参阅[生成证书](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)。 有关如何安装客户端证书的信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
 ## <a name="installmac"></a>Mac (OS X)
 
  必须在将连接到 Azure 的每个 Mac 上手动配置本机 IKEv2 VPN 客户端。 Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 **Generic** 包含需要用于配置的所有信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。<br>Generic 文件夹包含以下文件：
 
-* **VpnSettings.xml**：包含服务器地址和隧道类型等重要设置。 
+* **VpnSettings.xml**：包含服务器地址和隧道类型等重要设置。 
 * **VpnServerRoot.cer**：包含在 P2S 连接设置过程中验证 Azure VPN 网关所需的根证书。
 
 使用以下步骤在 Mac 中配置用于证书身份验证的本机 VPN 客户端。 必须在将连接到 Azure 的每个 Mac 上完成以下步骤：
 
-1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。  
+1. 将 **VpnServerRoot** 根证书导入 Mac。 为此，可将该文件复制到 Mac，并双击它。  
 单击“添加”进行导入。
 
   ![添加证书](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
@@ -97,7 +97,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 4. 从 **Generic** 文件夹中的 **VpnSettings.xml** 文件复制 **VpnServer** 标记值。 将该值粘贴到配置文件的“服务器地址”和“远程 ID”字段中。
 
   ![服务器信息](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. 单击“身份验证设置”，选择“证书”。 
+5. 单击“身份验证设置”，选择“证书”。 
 
   ![身份验证设置](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
 6. 单击“选择…” 选择要用于身份验证的客户端证书。 这是你在步骤 2 中安装的证书。
@@ -172,7 +172,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 1. 从 Azure 门户下载 VPNClient 程序包。
 2. 解压缩该文件。
 3. 从 **Generic** 文件夹中，将 VpnServerRoot.cer 复制或移动 /etc/ipsec.d/cacerts。
-4. 从 **Generic** 文件夹中，将 cp client.p12 复制或移动到 /etc/ipsec.d/private/。
+4. 将 cp client.p12 复制或移动到 /etc/ipsec.d/private/。 此文件是 Azure VPN 网关的客户端证书。
 5. 打开 VpnSettings.xml 文件并复制 <VpnServer> 值。 下一步骤中将使用此值。
 6. 调整以下示例中的值，然后将该示例添加到 /etc/ipsec.conf 配置中。
   
@@ -185,7 +185,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
   leftauth=eap-tls
   leftid=%client # use the DNS alternative name prefixed with the %
   right= Enter the VPN Server value here# Azure VPN gateway address
-  rightid=%Enter the VPN Server value here# Azure VPN gateway address, prefixed with %
+  rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
   rightsubnet=0.0.0.0/0
   leftsourceip=%config
   auto=add

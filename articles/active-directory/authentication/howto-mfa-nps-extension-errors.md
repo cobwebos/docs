@@ -5,21 +5,21 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036659"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634220"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
-如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 
+如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上事件查看器中“自定义视图” > “服务器角色” > “网络策略和访问服务”下找到。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
@@ -36,9 +36,6 @@ ms.locfileid: "51036659"
 | **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
 | **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 
-
-   
-
 ### <a name="alternate-login-id-errors"></a>备用登录 ID 错误
 
 | 错误代码 | 错误消息 | 疑难解答步骤 |
@@ -46,7 +43,6 @@ ms.locfileid: "51036659"
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：userObjectSid 查找失败 | 验证用户是否存在于本地 Active Directory 实例中。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 查找失败 | 验证 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 是否已设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 设置为 True，或者 LDAP_LOOKUP_FORESTS 配置了非空值，请验证是否已配置全局目录以及是否已将 AlternateLoginId 属性添加到它。 <br><br> 如果 LDAP_LOOKUP_FORESTS 配置了非空值，请验证该值是否正确。 如果有多个林名称，必须用分号（而不是空格）分隔名称。 <br><br> 如果这些步骤不能解决此问题，请[与支持人员联系](#contact-microsoft-support)获取更多帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 值为空 | 验证是否为用户配置了 AlternateLoginId 属性。 |
-
 
 ## <a name="errors-your-users-may-encounter"></a>用户可能会遇到的错误
 
@@ -97,7 +93,7 @@ ms.locfileid: "51036659"
 
 ### <a name="troubleshoot-user-accounts"></a>排查用户帐户问题
 
-如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。 
+如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 
@@ -131,5 +127,3 @@ ms.locfileid: "51036659"
 
 5. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 FALSE
 6. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。
-
-

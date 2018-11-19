@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 83be53edf240220726639b51381b487c5b742cee
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 3109cad0e00b6ec5af47210f2c8d094659bd4553
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754080"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345770"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,6 +35,9 @@ ms.locfileid: "50754080"
 - 使用帐户密钥身份验证、服务共享访问签名身份验证、服务主体身份验证或 Azure 资源的托管标识身份验证复制 Blob。
 - 从块、追加或页 Blob 中复制 Blob，并将数据仅复制到块 Blob。 不支持将 Azure 高级存储用作接收器，因为它由页 Blob 支持。
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
+
+>[!NOTE]
+>如果在 Azure 存储防火墙设置上启用“允许受信任的 Microsoft 服务访问此存储帐户”选项，则使用 Azure Integration Runtime 连接 Blob 存储将失败并显示“已禁止”错误，因为 ADF 不被视为受信任的 Microsoft 服务。 请改用自承载集成运行时进行连接。
 
 ## <a name="get-started"></a>入门
 
@@ -247,7 +250,7 @@ Azure Blob 存储链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **AzureBlob**。 |是 |
-| folderPath | 到 Blob 存储中的容器和文件夹的路径。 不支持通配符筛选器。 示例：myblobcontainer/myblobfolder/。 |是 |
+| folderPath | 到 Blob 存储中的容器和文件夹的路径。 不支持通配符筛选器。 示例：myblobcontainer/myblobfolder/。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
 | fileName | 指定的“folderPath”下 blob 的名称或通配符筛选器。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有 Blob。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且在活动接收器中没有指定 **preserveHierarchy**，则复制活动会自动生成采用以下格式的 blob 名：“*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*”。 例如，“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 |否 |
 | 格式 | 若要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为“最佳”和“最快”。 |否 |

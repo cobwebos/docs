@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336849"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344988"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C：修改注册以添加新声明和配置用户输入。
 
@@ -277,8 +277,8 @@ ms.locfileid: "43336849"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过更改下面列出的技术配置文件，将新的声明添加到社交帐户登录流。 社交/联合帐户登录使用上述方法来写入和读取将 alternativeSecurityId 用作定位符的用户数据。
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+如果策略支持社交帐户，请通过更改下面列出的技术配置文件，将新的声明添加到社交帐户登录流。 社交帐户登录使用这些声明来收集和写入用户的数据。
+
+1. 找到技术配置文件 **SelfAsserted-Social** 并添加输出声明。 “OutputClaims”中的声明顺序将控制 Azure AD B2C 将声明呈现在屏幕上的顺序。 例如，`<OutputClaim ClaimTypeReferenceId="city" />`。
+2. 找到技术配置文件 **AAD-UserWriteUsingAlternativeSecurityId** 并添加持久声明。 例如，`<PersistedClaim ClaimTypeReferenceId="city" />`。
+3. 找到技术配置文件 **AAD-UserReadUsingAlternativeSecurityId** 并添加输出声明。 例如，`<OutputClaim ClaimTypeReferenceId="city" />`。

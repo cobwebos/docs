@@ -8,18 +8,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6c7d4d8d4a16e0679722f9de007870a7ec7554b0
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139520"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635993"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
-数据引入是用于从一个或多个源加载数据记录以在 Azure 数据资源管理器中创建或更新表的过程。 引入后，数据即可用于查询。 下图显示了用于在 Azure 数据资源管理器中运行的端到端流，包括数据引入 (2)。
+数据引入是用于从一个或多个源加载数据记录以在 Azure 数据资源管理器中创建或更新表的过程。 引入后，数据即可用于查询。 下图显示了用于在 Azure 数据资源管理器中运行的端到端流，包括数据引入。
 
-![整体数据流](media/ingest-data-overview/overall-data-flow.png)
+![数据流](media/ingest-data-overview/data-flow.png)
 
 Azure 数据资源管理器数据管理服务负责数据引入的，该服务提供以下功能：
 
@@ -35,16 +35,16 @@ Azure 数据资源管理器数据管理服务负责数据引入的，该服务�
 
 1. **提交数据引入**：使数据可用于查询。
 
-> [!NOTE]
-> 引入数据的有效保留策略衍生自数据库的保留策略。 请参阅[保留策略](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy)获取详细信息。 引入数据需要“表引入器”或“数据库引入器”权限。
-
 ## <a name="ingestion-methods"></a>引入方法
 
-Azure 数据资源管理器支持多种引入方法，每种方法都有自己的目标方案、优点和缺点。 Azure 数据资源管理器提供用于常见服务的连接器、使用 SDK 的编程引入以及以探索为目的对引擎进行的直接访问。
+Azure 数据资源管理器支持多种引入方法，每种方法都有自己的目标方案、优点和缺点。 Azure 数据资源管理器提供用于常见服务的管道和连接器、使用 SDK 的编程引入以及以探索为目的对引擎进行的直接访问。
 
-### <a name="ingestion-using-connectors"></a>使用连接器的引入
+### <a name="ingestion-using-pipelines"></a>使用管道的引入
 
-Azure 数据资源管理器当前支持事件中心连接器，可以使用 Azure 门户中的管理向导进行管理。 有关详细信息，请参阅[快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)。
+Azure 数据资源管理器当前支持事件中心管道，该管道可以使用 Azure 门户中的管理向导进行管理。 有关详细信息，请参阅[快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)。
+
+### <a name="ingestion-using-connectors-and-plugins"></a>使用连接器和插件的引入
+Azure 数据资源管理器目前支持 Logstash 插件。 有关详细信息，请参阅 [Azure 数据资源管理器的 Logstash 输出插件](https://github.com/Azure/logstash-output-kusto/blob/master/README.md)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 
@@ -54,21 +54,21 @@ Azure 数据资源管理器提供可用于查询和数据引入的 SDK。 通过
 
 Kusto 提供了可与以下项一起用于引入和查询数据的客户端 SDK：
 
-* [Python SDK](https://docs.microsoft.com/azure/kusto/api/python/kusto-python-client-library)
+* [Python SDK](/azure/kusto/api/python/kusto-python-client-library)
 
-* [.NET SDK](https://docs.microsoft.com/azure/kusto/api/netfx/about-the-sdk)
+* [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
+* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
-* [Node SDK]
+* [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
-* [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
+* [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **编程引入方法**：
 
-* 通过 Azure 数据资源管理器数据管理服务引入数据（高吞吐量和可靠引入）
+* 通过 Azure 数据资源管理器数据管理服务引入数据（高吞吐量和可靠引入）：
 
-  * [**批量引入**](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample)（由 SDK 提供）：客户端将数据上传到 Azure Blob 存储（由 Azure 数据资源管理器数据管理服务指定）并向 Azure 队列发布通知。 建议使用此方法实现大容量、可靠和低成本的数据引入。
+  * [**批量引入**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample)（由 SDK 提供）：客户端将数据上传到 Azure Blob 存储（由 Azure 数据资源管理器数据管理服务指定）并向 Azure 队列发布通知。 建议使用此方法实现大容量、可靠和低成本的数据引入。
 
 * 直接将数据引入到 Azure 数据资源管理器引擎（最适合用于探索和原型制作）：
 
@@ -118,16 +118,22 @@ Kusto 提供了可与以下项一起用于引入和查询数据的客户端 SDK�
 > [!NOTE]
 > 正在引入数据时，根据目标表列推断数据类型。 如果记录不完整或者无法将字段解析为所需的数据类型，则将使用 NULL 值填充相应的表列。
 
+## <a name="ingestion-recommendations-and-limitations"></a>引入建议和限制
+* 引入数据的有效保留策略衍生自数据库的保留策略。 请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)获取详细信息。 引入数据需要“表引入器”或“数据库引入器”权限。
+* 引入支持的最大文件大小为 5 GB。 建议引入 100MB 到 1GB 之间的文件。
+
 ## <a name="schema-mapping"></a>架构映射
 
 架构映射有助于确定地将源数据字段绑定到目标表列。
 
-* [CSV 映射](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#csv-mapping)（可选）适用于所有基于序数的格式，可以作为引入命令参数传递，也可以[在表中预创建](https://docs.microsoft.com/azure/kusto/management/tables?branch=master#create-ingestion-mapping)并从引入命令参数进行引用。
-* [JSON 映射](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#json-mapping)（必需）和 [Avro 映射](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#avro-mapping)（必需）可以作为引入命令参数传递，也可以[在表中预创建](https://docs.microsoft.com/azure/kusto/management/tables#create-ingestion-mapping)并从引入命令参数进行引用。
+* [CSV 映射](/azure/kusto/management/mappings?branch=master#csv-mapping)（可选）适用于所有基于序数的格式，可以作为引入命令参数传递，也可以[在表中预创建](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)并从引入命令参数进行引用。
+* [JSON 映射](/azure/kusto/management/mappings?branch=master#json-mapping)（必需）和 [Avro 映射](/azure/kusto/management/mappings?branch=master#avro-mapping)（必需）可以作为引入命令参数传递，也可以[在表中预创建](/azure/kusto/management/tables#create-ingestion-mapping)并从引入命令参数进行引用。
 
 ## <a name="next-steps"></a>后续步骤
 
 [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
 
 [快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)
+
+[快速入门：使用 Azure 数据资源管理器 Node 库引入数据](node-ingest-data.md)
 

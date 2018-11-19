@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: e0cbf806b7999a56ccdf2826a735238fe8130bf5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e14ce19d691cc60cb65353bdb025dfa741e1eca
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240573"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636520"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB 数据库安全性
 
@@ -80,7 +80,7 @@ ms.locfileid: "50240573"
 |静态加密|存储在 Azure Cosmos DB 中的所有数据都进行静态加密。 在 [Azure Cosmos DB 静态加密](.\database-encryption-at-rest.md)中了解详细信息|
 |修补的服务器|作为一种托管数据库，在 Azure Cosmos DB 中无需管理和修补服务器，系统会自动完成这些操作。|
 |使用强密码的管理帐户|难以相信，我们竟然还要提到这项要求。但与我们的某些竞争产品不同，在 Azure Cosmos DB 中，不带密码的管理帐户是根本不受允许的。<br><br> DocumentDB 中默认融入了基于 SSL 和 HMAC 机密的身份验证安全性。|
-|安全和数据保护认证|有关认证的最新数据列表，请参阅具有所有认证（搜索 Cosmos）的整体内容（Azure 符合性网站）[https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings]以及最新内容（Azure 符合性文档）[https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942]。 有关更具有针对性的阅读，请查看 2018 年 4 月 25 日的帖子（Azure #CosmosDB：安全性、隐私性、符合性）[https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/]，其中包含 SOCS 1/2 类型 2、HITRUST、PCI DSS 1 级、ISO 27001、HIPPAA、FedRAMP High 和许多其他内容。
+|安全和数据保护认证|有关认证的最新数据列表，请参阅具有所有认证（搜索 Cosmos）的整个 [Azure 符合性站点](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)以及最新 [Azure 符合性文档](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。 有关更具有针对性的阅读，请查看 2018 年 4 月 25 日的帖子 [Azure #CosmosDB：安全性、隐私性、符合性](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/)，其中包含 SOCS 1/2 类型 2、HITRUST、PCI DSS 1 级、ISO 27001、HIPPAA、FedRAMP High 和许多其他内容。
 
 以下屏幕截图显示在 Azure 门户中使用访问控制 (IAM) 的 Active directory 集成 (RBAC)：![Azure 门户中的访问控制 (IAM) - 演示数据库安全性](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

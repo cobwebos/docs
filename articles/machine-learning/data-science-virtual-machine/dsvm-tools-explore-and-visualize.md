@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: df29d0a55317d06d656d8444c6bd7754c6c955eb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407208"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567377"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机上的数据浏览和可视化工具
 
-数据科学的关键步骤之一是了解数据。 可视化和数据浏览工具可帮助加速数据理解。 DSVM 上提供了以下工具，可为这一关键步骤提供辅助。 
+数据科学的关键步骤之一是了解数据。 可视化和数据浏览工具可帮助加速数据理解。 下面是 DSVM 上提供的一些工具，这些工具有助于完成这一关键步骤。 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |

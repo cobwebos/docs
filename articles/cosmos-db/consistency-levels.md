@@ -11,26 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963075"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624821"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
 
 依赖于高可用性、低延迟或两者的复制的分布式数据库在读取一致性与可用性、延迟和吞吐量之间进行基本权衡。 大多数商用分布式数据库都要求开发人员在两种极端一致性模型之间进行选择：非常一致和最终一致。 尽管 [可线性化](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)或非常一致性模型是数据可编程性的黄金标准，但该模型导致的延迟代价太高（稳定状态下）且会降低可用性（在故障期间）。 另一方面，最终一致性可提供更高的可用性和性能，但应用程序编程难度很大。
 
-Cosmos DB 通过某种选择范围来实现数据一致性，而不会走两种极端。 尽管非常一致性和最终一致性处于该范围的两个极端，但在整个范围中，还有很多一致性选项。 这些一致性选项使开发人员能够做出精确的选择，并在高可用性或性能方面做出细致的取舍。 Cosmos DB 使开发人员能够从一致性范围中五个妥善定义的一致性模型（最强到最弱）之间进行选择 – **非常**、**有限过期**、**会话**、**一致前缀**和**最终**一致性。 这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种在[可用性与性能方面都进行了权衡](consistency-levels-tradeoffs.md)，并有全面的 SLA 作为保障。
+Cosmos DB 通过某种选择范围来实现数据一致性，而不会走两种极端。 尽管非常一致性和最终一致性处于该范围的两个极端，但在整个范围中，还有很多一致性选项。 这些一致性选项使开发人员能够做出精确的选择，并在高可用性或性能方面做出细致的取舍。 Cosmos DB 使开发人员能够从一致性范围中五个妥善定义的一致性模型（最强到最弱）之间进行选择 – **非常**、**有限过期**、**会话**、**一致前缀**和**最终**一致性。 这些一致性模型中的每一种都具有明确的定义并直观呈现，可用于特定的真实场景。 五种一致性模型中的每一种在[可用性与性能方面都进行了权衡](consistency-levels-tradeoffs.md)，并有全面的 SLA 作为保障。 下图以范围区间形式显示了不同的一致性级别：
 
 ![范围形式的一致性](./media/consistency-levels/five-consistency-levels.png)
 
-一致性级别与区域无关。 不管以下属性为何，都能保证 Cosmos DB 帐户的所有读取操作的一致性级别：
-
-- 为读取和写入操作提供服务的区域
-- 与 Cosmos 帐户关联的区域数量
-- 为帐户配置了一个还是多个写入区域
+一致性级别与区域无关。 无论从哪个区域提供读取和写入、与 Cosmos 帐户关联的区域数量是多少或帐户是否配置了单个或多个写入区域，所有读取操作都保证 Cosmos DB 帐户的一致性级别。
 
 ## <a name="scope-of-the-read-consistency"></a>读取一致性的范围
 

@@ -12,22 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 83acdb320e0be0837ec5188a11cb86b91ed077fa
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 81f7e46e626bb061881be53e8cace36e1478e0e1
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980115"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683972"
 ---
 # <a name="container-skus-tab"></a>“容器 SKU”选项卡
 
-在“新建产品/服务”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新产品/服务。  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
+在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
 
 ## <a name="sku-settings"></a>SKU 设置
 
-开始创建新产品/服务时，该产品/服务没有任何关联的 SKU。 若要创建新 SKU，请执行以下步骤：
+开始创建新套餐时，该套餐没有任何关联的 SKU。 若要创建新 SKU，请执行以下步骤：
 
 1. 在“SKU”选项卡中，选择“新建 SKU”
 
@@ -46,7 +46,7 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 ### <a name="container-metadata"></a>容器元数据
 
-容器元数据包含你的映像存储库在 Azure 容器注册表 (ACR) 内的详细信息的引用信息。 然后，Azure 市场将此映像复制到公共市场注册表，经认证后可供客户使用。 Azure 用户发出的要使用容器映像的所有请求都将由 Marketplace 容器注册表来提供服务。
+容器元数据包含你的映像存储库在 Azure 容器注册表 (ACR) 内的详细信息的引用信息。 Azure 市场将此映像复制到特定于市场的公共注册表中，然后此映像在认证后可供客户使用。 Azure 用户发出的要使用 Azure 市场容器映像的所有请求都将通过市场的公共注册表（而不是 ACR）来进行处理。
 
 ![容器元数据](./media/containers-image-repository.png)
     
@@ -76,4 +76,4 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[“市场”选项卡](./cpp-marketplace-tab.md)创建产品/服务的市场说明。 
+使用[“市场”选项卡](./cpp-marketplace-tab.md)创建套餐的市场说明。 

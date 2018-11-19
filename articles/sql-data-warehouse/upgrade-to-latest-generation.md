@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580542"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568006"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。
@@ -45,13 +45,17 @@ ms.locfileid: "45580542"
 
 ## <a name="start-the-upgrade"></a>开始升级
 
-1. 在 Azure 门户中转到你的“计算优化第 1 代”层级数据仓库，然后单击“升级到第 2 代”：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. 在 Azure 门户中转到“计算优化第 1 代”层级数据仓库，单击“任务”选项卡下的“升级到第 2 代”卡：![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+    
+> [!NOTE]
+> 如果在“任务”选项卡下未看到“升级到第 2 代”卡，则你的订阅类型在当前区域中受到限制。 [提交支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)以便将你的订阅列入允许列表。
 
 2. 默认情况下，请使用以下映射根据你的“弹性优化第 1 代”层级数据仓库的当前性能级别为数据仓库**选择建议的性能级别**：
     
    | “计算优化第 1 代”层级 | “计算优化第 2 代”层级 |
    | :----------------------: | :-------------------: |
-   |      DW100 – DW1000      |        DW1000c        |
+   |      DW100 - DW600       |        DW500c         |
+   |          DW1000          |        DW1000c        |
    |          DW1200          |        DW1500c        |
    |          DW1500          |        DW1500c        |
    |          DW2000          |        DW2000c        |

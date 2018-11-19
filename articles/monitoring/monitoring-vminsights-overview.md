@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: e39954f9155419e0dea019203efa22ba0d654f92
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8629c27d4a039a702da5f76170fc312dadccaf6a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093677"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612062"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
-用于 VM 的 Azure Monitor 分析 Windows 和 Linux VM 的性能与运行状况，包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 该解决方案支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。  它包括了用来提供此深度见解的三个主要功能：
+用于 VM 的 Azure Monitor 通过分析 Windows 和 Linux VM 的性能与运行状况（包括其不同的进程以及与其他资源和外部进程之间的相互依赖关系），大规模监视 Azure 虚拟机 (VM) 和 Azure 虚拟机规模集。 该解决方案支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。 它包括了用来提供此深度见解的三个主要功能：
 
 * 当满足评估的条件时，将根据一组预先配置的运行状况条件和警报对运行 Windows 和 Linux 操作系统的 Azure VM 进行度量。  
 * 在预先定义的趋势性能图表中收集和呈现来自来宾 VM 操作系统的处理器、内存、磁盘和网络适配器的核心性能指标。
@@ -36,7 +36,7 @@ ms.locfileid: "50093677"
 * 映射
 
 >[!NOTE]
->目前，对于 Azure 虚拟机，仅提供了运行状况功能。
+>目前，对于 Azure 虚拟机和虚拟机规模集，仅提供了运行状况功能。 性能和映射同时支持 Azure VM 和托管在你的环境或其他云提供商中的虚拟机。
 >
 
 与 Log Analytics 的集成提供了功能强大的聚合、筛选和随着时间推移执行数据趋势分析的能力。 单独使用 Azure Monitor、服务映射或 Log Analytics 无法实现全面的工作负荷监视。  
@@ -52,9 +52,9 @@ DevOps 可以通过查明严重的操作系统事件和性能瓶颈、网络问�
 
 ## <a name="data-usage"></a>数据使用情况 
 
-一旦你载入了用于 VM 的 Azure Monitor，将会立即引入由 VM 收集的数据并将其存储在 Azure Monitor 中。  将根据在 Azure Monitor [定价页面](https://azure.microsoft.com/pricing/details/monitor/)上发布的定价，针对引入和保留的数据、监视的运行状况条件指标时序的数量、创建的警报规则、发送的通知对用于 VM 的 Azure Monitor 进行计费。
+一旦你载入了用于 VM 的 Azure Monitor，将会立即引入由 VM 收集的数据并将其存储在 Azure Monitor 中。 将根据在 Azure Monitor [定价页面](https://azure.microsoft.com/pricing/details/monitor/)上发布的定价，针对引入和保留的数据、监视的运行状况条件指标时序的数量、创建的警报规则、发送的通知对用于 VM 的 Azure Monitor 进行计费。
 
-日志大小根据计数器的字符串长度变化，并且可能会随逻辑磁盘和网络适配器的数量而增大。  如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。  如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
+日志大小根据计数器的字符串长度变化，并且可能会随逻辑磁盘和网络适配器的数量而增大。 如果你已有一个工作区并且正在收集这些计数器，则不会重复收费。 如果已在使用服务映射，则你看到的唯一变化是发送到 Azure Monitor 的额外连接数据。
 
 ## <a name="next-steps"></a>后续步骤
 查看[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。

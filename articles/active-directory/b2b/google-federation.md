@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 11/07/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389439"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568999"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -43,15 +43,21 @@ ms.locfileid: "49389439"
 
    ![Google API 凭据](media/google-federation/google-api.png)
  
-4. 选择“Oauth consent screen”（OAuth 许可屏幕），并输入“向用户显示的产品名称”。 （保留其他设置。）选择“保存”。
+4. 选择“OAuth consent screen”（OAuth 许可屏幕）选项卡，并输入**应用程序名称**。 （保留其他设置。）
 
    ![Google OAuth 许可屏幕](media/google-federation/google-oauth-consent-screen.png)
 
-5. 选择“Credentials”（凭据）选项卡。在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。
+5. 滚动到“授权域”部分，然后输入microsoftonline.com。
+
+   ![“授权域”部分](media/google-federation/google-oauth-authorized-domains.png)
+
+6. 选择“保存”。
+
+7. 选择“Credentials”（凭据）选项卡。在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。
 
    ![Google API 凭据](media/google-federation/google-api-credentials.png)
 
-6. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：
+8. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>（其中，`<directory id>` 是你的目录 ID）
    
@@ -60,7 +66,7 @@ ms.locfileid: "49389439"
 
    ![创建 OAuth 客户端 ID](media/google-federation/google-create-oauth-client-id.png)
 
-7. 选择**创建**。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
+9. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
 
    ![OAuth 客户端 ID 和客户端机密](media/google-federation/google-auth-client-id-secret.png)
 

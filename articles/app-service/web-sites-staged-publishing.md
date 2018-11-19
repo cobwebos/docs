@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257827"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636061"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
 
-将 Web 应用、Linux 上的 Web 应用、移动后端和 API 应用部署到 [应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”或“高级”应用服务计划层下运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
+将 Web 应用、Linux 上的 Web 应用、移动后端和 API 应用部署到[应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)时，如果应用在“标准”、“高级”或“独立”应用服务计划层中运行，则可以部署到单独的部署槽而不是默认的生产槽。 部署槽实际上是具有自身主机名的实时应用。 两个部署槽（包括生产槽）之间的应用内容与配置元素可以交换。 将应用程序部署到部署槽具有以下优点：
 
 * 可以在分阶段部署槽中验证应用更改，然后将其与生产槽交换。
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 当不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动化这整个工作流。
@@ -36,7 +36,7 @@ ms.locfileid: "51257827"
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>添加部署槽
-必须在“标准”或“高级”层下运行应用，才能启用多个部署槽。
+应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，打开应用的[资源边栏选项卡](../azure-resource-manager/resource-group-portal.md#manage-resources)。
 2. 选择“部署槽”选项，并单击“添加槽”。
@@ -44,7 +44,7 @@ ms.locfileid: "51257827"
     ![添加新部署槽][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > 如果应用尚未处于“标准”或“高级”层，则会收到消息，指示启用过渡支持的层。 此时，可选择“升级”，并导航到应用的“缩放”选项卡，并继续。
+   > 如果应用尚未处于“标准”、“高级”或“独立”层，则会收到消息，指示启用分步发布支持的层。 此时，可选择“升级”，并导航到应用的“缩放”选项卡，并继续。
    > 
    > 
 3. 在“添加槽”边栏选项卡中，为槽提供一个名称，并选择是否要从其他现有部署槽中克隆应用配置。 单击复选标记以继续。

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b2676e8f86955a7601f9656f0a038b5ba904a462
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036421"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515363"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -189,7 +189,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 还必须将在 local.settings.json 中添加的任何设置添加到 Azure 函数应用中。 发布项目时，不会自动上传这些设置。
 
-将所需设置上传到 Azure 中的函数应用的最简单方法是使用“管理应用程序设置...”链接（在成功发布项目之后显示）。 
+将所需设置上传到 Azure 中的函数应用的最简单方法是使用“管理应用程序设置...”链接（在成功发布项目之后显示）。
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -197,11 +197,13 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择“添加设置”以创建新的应用设置。 使用“从本地插入值”链接将设置值复制到“远程”字段。 你选择“确定”后，挂起的更改将写入本地设置文件和函数应用。
+
 还可以采用以下这些其他方法之一来管理应用程序设置：
 
 * [使用 Azure 门户](functions-how-to-use-azure-function-app-settings.md#settings)。
 * [使用 `--publish-local-settings` 发布 Azure Functions Core Tools 中的选项](functions-run-local.md#publish)。
-* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。 
+* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。
 
 ## <a name="monitoring-functions"></a>监视函数
 

@@ -2,18 +2,18 @@
 title: 开发 Azure IoT Edge 模块 | Microsoft Docs
 description: 了解如何创建 Azure IoT Edge 的自定义模块
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: cb97e2cf6d554753f64afc76de84f43e38443909
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741416"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567224"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>了解开发 IoT Edge 模块的要求和工具
 
@@ -26,9 +26,9 @@ IoT Edge 运行时提供基础结构可集成多个 IoT Edge 模块的功能并�
 IoT Edge 中心提供两种主要功能：连接到 IoT 中心的代理和本地通信。
 
 ### <a name="iot-hub-primitives"></a>IoT 中心基元
-IoT 中心将看到类似设备的模块实例，从某种意义上：
+IoT 中心在以下意义上将模块实例视为与设备类似：
 
-* 它拥有模块孪生，这与[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)和该设备的其他模块孪生不同且与相隔离；
+* 它拥有模块孪生，这与[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)和该设备的其他模块孪生不同且相隔离；
 * 它可以发送[设备到云消息](../iot-hub/iot-hub-devguide-messaging.md)；
 * 它可以接收专门针对其标识的[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 
@@ -41,7 +41,7 @@ IoT 中心将看到类似设备的模块实例，从某种意义上：
 ### <a name="device-to-cloud-messages"></a>设备到云的消息
 若要启用设备到云消息的复杂处理，IoT Edge 中心需要提供模块之间和模块与 IoT 中心之间消息的声明性路由。 声明性路由允许模块拦截并处理其他模块发送的消息，并将它们传播到复杂管道。 [模块组合](module-composition.md)一文介绍如何使用路由将模块组合到复杂管道。
 
-不同于常规 IoT 中心设备应用程序，IoT Edge 模块可以接收其本地 IoT Edge 中心所代理的设备到云消息，以便进行处理。
+与常规 IoT 中心设备应用程序不同，IoT Edge 模块可以接收其本地 IoT Edge 中心所代理的设备到云消息，以便进行处理。
 
 IoT Edge 中心基于[模块组合](module-composition.md)一文中介绍的声明性路由将消息传播到模块。 开发 IoT Edge 模块时，可以通过设置消息处理程序来接收这些消息。
 
@@ -58,7 +58,9 @@ IoT Edge 中心基于[模块组合](module-composition.md)一文中介绍的声�
 | $outputName | 用来发送消息的输出。 可以为空。 |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>从模块连接到 IoT Edge 中心
-从模块连接到本地 IoT Edge 中心涉及两个步骤：模块启动时，使用 IoT Edge 运行时提供的连接字符串，并确保应用程序接受该设备 IoT Edge 中心提供的证书。
+从模块连接到本地 IoT Edge 中心涉及两个步骤： 
+1. 在模块启动时使用 IoT Edge 运行时提供的连接字符串。
+2. 确保应用程序接受该设备上 IoT Edge 中心提供的证书。
 
 要使用的连接字符串由 IoT Edge 运行时注入环境变量 `EdgeHubConnectionString`。 这使得它对任意需要使用它的程序可用。
 

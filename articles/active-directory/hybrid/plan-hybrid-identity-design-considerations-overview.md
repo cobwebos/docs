@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d916e884e7764a1ba5ebaf224750f38e7d7673e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308656"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344876"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory 混合标识设计注意事项
 基于使用者的设备在公司内日益激增，基于云的软件即服务 (SaaS) 应用程序便于采用。 因此，对用户应用程序的内部数据中心和云平台访问保持控制并非易事。  
@@ -62,6 +62,6 @@ Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一�
 | 通过强标识解决方案增强数据安全性的计划 |[确定数据保护要求](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [确定内容管理要求](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [确定访问控制要求](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [确定事件响应要求](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [定义数据保护策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | 规划混合标识生命周期 |[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [同步管理](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [确定混合标识管理采用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="download-this-guide"></a>下载此指南
-可以从 [Technet 库](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288)下载 PDF 版本的混合标识设计注意事项指南。 
+## <a name="next-steps"></a>后续步骤
+[确定标识要求](plan-hybrid-identity-design-considerations-business-needs.md)
 

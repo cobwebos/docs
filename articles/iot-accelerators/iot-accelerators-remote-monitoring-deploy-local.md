@@ -1,6 +1,6 @@
 ---
 title: 在本地部署远程监视解决方案（通过 Visual Studio IDE）- Azure | Microsoft Docs
-description: 本操作方法指南展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。
+description: 本操作指南展示了如何使用 Visual Studio 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c667782ef49f41cda8ccefc2f56e5f1265531037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278814"
+ms.locfileid: "51287602"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 本文介绍如何在 Visual Studio 中运行微服务。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何在 Visual Studio 中运行微服务。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
@@ -115,14 +115,4 @@ npm start
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 设置本地开发环境
-> * 配置解决方案加速器
-> * 部署解决方案加速器
-> * 登录到解决方案加速器
-
 部署远程监视解决方案后，接下来请[探索解决方案仪表板的功能](quickstart-remote-monitoring-deploy.md)。
-
-<!-- Next tutorials in the sequence -->

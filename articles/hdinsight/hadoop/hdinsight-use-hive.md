@@ -1,6 +1,6 @@
 ---
 title: 什么是 Apache Hive 和 HiveQL - Azure HDInsight
-description: Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
+description: Apache Hive 是适用于 Apache Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
 keywords: hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive 是什么
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241100"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633710"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
-[Apache Hive](http://hive.apache.org/) 是适用于 Hadoop 的数据仓库系统。 使用 Hive 可以汇总、查询和分析数据。 Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。
+[Apache Hive](http://hive.apache.org/) 是适用于 Apache Hadoop 的数据仓库系统。 使用 Hive 可以汇总、查询和分析数据。 Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。
 
 Hive 允许在很大程度上未结构化的数据上投影结构。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
 

@@ -1,6 +1,6 @@
 ---
-title: 将 Hive 与 Hadoop 配合使用以进行网站日志分析 - Azure HDInsight
-description: 了解如何通过将 Hive 与 HDInsight 配合使用来分析网站日志。 我们将使用日志文件作为 HDInsight 表的输入，并使用 HiveQL 来查询数据。
+title: 将 Hive 与 Apache Hadoop 配合使用以进行网站日志分析 - Azure HDInsight
+description: 了解如何通过将 Apache Hive 与 HDInsight 配合使用来分析网站日志。 我们将使用日志文件作为 HDInsight 表的输入，并使用 HiveQL 来查询数据。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233586"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634339"
 ---
-# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
+# <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Apache Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
 了解如何通过将 HiveQL 与 HDInsight 配合使用来分析来自网站的日志。 网站日志分析可用于根据类似活动分类受众，按人口统计分类站点访问者，以及了解他们查看的内容和这些内容来自的网站等。
 
 > [!IMPORTANT]

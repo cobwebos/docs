@@ -13,32 +13,31 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145681"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622868"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
-通过 Azure Active Directory (Azure AD) 中的报告，可以获取确定环境运行状况所需的信息。
+通过 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
 
 Azure AD 中的报告体系结构由以下部分组成：
 
-- **活动** 
-    - **登录活动** — 有关托管应用程序的使用和用户登录活动的信息
-    - **审核日志** - 针对 Azure AD 中的各种功能所做的所有更改进行日志记录，通过这些日志提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如用户、应用、组、角色、策略、身份验证等）所做的更改。
-- **安全性** 
-    - **风险登录** - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 有关详细信息，请参阅“有风险的登录”。
-    - **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关详细信息，请参阅“已标记为存在风险的用户”。
+- **活动报告** 
+    - [登录](concept-sign-ins.md) - 提供有关托管应用程序的使用情况和用户登录活动的信息
+    - [审核日志](concept-audit-logs.md) - 针对 Azure AD 中的各种功能所做的所有更改进行日志记录，通过这些日志提供可跟踪性。 
+    
+- **安全报告** 
+    - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
+    - [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
 
 本文列出了可以在审核日志中记录的审核活动。
- 
-
 
 ## <a name="access-reviews"></a>访问评审
 
@@ -72,9 +71,6 @@ Azure AD 中的报告体系结构由以下部分组成：
 |用户管理|获取 V1 应用程序|
 |用户管理|获取 V2 应用程序|
 |用户管理|获取 V2 应用程序|
-
-
-
 
 ## <a name="account-provisioning"></a>帐户预配
 
@@ -593,13 +589,8 @@ Azure AD 中的报告体系结构由以下部分组成：
 |策略管理|用户已注册自助密码重置|
 
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-如需大致了解
-
-- 报表，请参阅 [Azure Active Directory 报表](overview-reports.md)。
-
-- 审核活动报表，请参阅 [Azure Active Directory 门户中的审核活动报表](concept-audit-logs.md)。 
-
+- [Azure AD 报告概述](overview-reports.md)。
+- [审核日志报告](concept-audit-logs.md)。 
+- [以编程方式访问 Azure AD 报告](concept-reporting-api.md)

@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/16/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0363b719e2587226282257e19e58e3c4e55c2219
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: cff3d7bfb89d5b03f986da32edc148efcfb7e7bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454421"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51506269"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 
@@ -21,7 +21,7 @@ SSH 是一种加密的连接协议，利用该协议可以通过未受保护的�
 
 * *公钥*放置在 Linux VM 上或者要对其使用公钥加密的任何其他服务中。
 
-* 私钥是在建立 SSH 连接时向 Linux VM 呈现的内容，以验证身份。 请保护好私钥， 不要透露给其他人。
+* 你连接到 Linux VM 时，SSH 客户端使用你本地系统上的*私钥*来验证你的身份。 请保护好私钥， 不要透露给其他人。
 
 根据组织的安全策略，可重复使用单个公钥-私钥对来访问多个 Azure VM 和服务。 无需对要访问的每个 VM 或服务使用单独的密钥对。 
 

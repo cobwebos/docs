@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/11/2018
 ms.author: raynew
-ms.openlocfilehash: f76a55778a5d4c00060192bfaa704724d5fe1045
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219472"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568448"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
+# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 进行 VMware VM 和物理服务器到 Azure 的灾难恢复时，需要设置本地配置服务器。 配置服务器协调本地 VMware 与 Azure 之间的通信并管理数据复制。 本文概述了在部署配置服务器后对其进行管理时要执行的常见任务。
 
@@ -124,7 +124,7 @@ ms.locfileid: "51219472"
 2. 打开管理员 PowerShell 命令窗口并运行以下命令：
 
     ```
-    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    reg delete "HKLM\Software\Microsoft\Azure Site Recovery\Registration"
     net stop dra
     ```
 3. 使用桌面上的快捷方式启动配置服务器设备浏览器门户。

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247681"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616004"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -45,7 +45,7 @@ ms.locfileid: "51247681"
 * 为基于文件的作业处理引入了[转换](transforms-jobs-concept.md)的概念。 使用转换可以生成可重用的配置、创建 Azure 资源管理器模板，并隔离多个客户或租户之间的处理设置。
 * 一个资产可以有[多个 StreamingLocator](streaming-locators-concept.md)，其中每个 StreamingLocator 有不同的动态打包和动态加密设置。
 * [内容保护](content-key-policy-concept.md)支持多密钥功能。
-* 可以流式传输长达 24 小时的实时事件。
+* 使用媒体服务将单比特率贡献源转码为具有多比特率的输出流时，可以流式传输最长 24 小时的实时事件。
 * LiveEvent 支持新的低延迟实时传送视频流。
 * LiveEvent 预览版支持动态打包和动态加密。 这样，用户便可以使用预览版中的内容保护以及 DASH 和 HLS 打包。
 * 与 v2 API 中的 Program 实体相比，LiveOutput 更易于使用。 
@@ -59,6 +59,7 @@ ms.locfileid: "51247681"
 * v3 SDK 现在已与存储 SDK 分离，可让你更精细地控制所要使用的存储 SDK 版本，并避免版本控制问题。 
 * 在 v3 API 中，所有编码比特率以“比特/秒”为单位。 这与 v2 Media Encoder Standard 预设不同。 例如，v2 中的比特率指定为 128 (kbps)，而在 v3 中，则指定 128000（比特/秒）。 
 * v3 中不存在实体 AssetFile、AccessPolicy 和 Ingestmanifest。
+* v3 中不存在 IAsset.ParentAssets 属性。
 * 现在，Contentkey 不再是实体，而是 StreamingLocator 的一个属性。
 * 事件网格支持替换 NotificationEndpoint。
 * 以下实体已重命名

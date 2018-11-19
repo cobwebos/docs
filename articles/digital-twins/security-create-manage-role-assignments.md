@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012456"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636231"
 ---
 # <a name="create-and-manage-role-assignments"></a>创建和管理角色分配
 
@@ -26,6 +26,8 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 * **角色定义 ID**
 * **空间路径**
 * **租户 ID**：大多数情况下是 Azure Active Directory 租户 ID
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="role-definition-identifiers"></a>角色定义标识符
 
@@ -57,7 +59,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 ## <a name="create-a-role-assignment"></a>创建角色分配
 
 ```plaintext
-HTTP POST /api/v1.0/roleassignments
+HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
 | **名称** | **必需** | 类型 | **说明** |
@@ -108,22 +110,22 @@ HTTP POST /api/v1.0/roleassignments
 使用 GET 获取角色分配。
 
 ```plaintext
-HTTP GET /api/v1/roleassignments?path={path}
+HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
 | **名称** | **位于** | **必需** |    类型 |  **说明** |
 | --- | --- | --- | --- | --- |
-| 路径 | 路径 | True | String | 空间的完整路径 |
+| YOUR_PATH | 路径 | True | String |    空间的完整路径 |
 
 使用 DELETE 删除角色分配。
 
 ```plaintext
-HTTP DELETE /api/v1/roleassignments/{id}
+HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
 ```
 
 | **名称** | **位于** | **必需** | 类型 | **说明** |
 | --- | --- | --- | --- | --- |
-| ID | 路径 | True | String |   角色分配 ID |
+| YOUR_ROLE_ID | 路径 | True | String | 角色分配 ID |
 
 ## <a name="next-steps"></a>后续步骤
 

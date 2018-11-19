@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138786"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564912"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -49,9 +49,9 @@ ms.locfileid: "50138786"
     此队列有三个参数：
     * **Activities**：选择要将哪些事件和页面视图计入“用法”。
     * **Period**：月份的定义。
-    * **UsedAtleastCustom**：用户需要在某个周期内使用某个对象多少次，才能将该用户算作参与用户。
+    * **UsedAtLeastCustom**：用户需要在某个周期内使用某个对象多少次，才能将该用户算作参与用户。
 
-4. 请将 **UsedAtleastCustom** 更改为 **5 天以上**，并将 **Period** 保留为默认 28 天。
+4. 请将 **UsedAtLeastCustom** 更改为 **5 天以上**，并将 **Period** 保留为默认 28 天。
 
     ![参与用户](.\media\app-insights-usage-cohorts\003.png)
 

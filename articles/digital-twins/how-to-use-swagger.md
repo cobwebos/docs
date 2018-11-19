@@ -6,20 +6,23 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960186"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624244"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>使用 Azure 数字孪生 Swagger
 
 每个预配的 Azure 数字孪生实例都包含自己生成的 Swagger 参考文档。
 
 [Swagger](https://swagger.io/) 或 [OpenAPI](https://www.openapis.org/) 将复杂的 API 信息整合到一个交互式和语言无关的参考资源中。 Swagger 提供有关要使用哪些 JSON 有效负载、HTTP 方法和特定终结点对 API 执行操作的关键参考资料。
+
+> [!IMPORTANT]
+> 在公开预览期间暂时禁用对 Swagger 身份验证的支持。
 
 ## <a name="swagger-summary"></a>Swagger 摘要
 
@@ -33,20 +36,7 @@ Swagger 提供 API 的交互式摘要，这包括：
 
 Swagger 是一种非常便利的工具，可用于帮助执行开发和对管理 API 作出的测试调用。
 
-> [!TIP]
-> 我们提供了 Swagger 非公开预览版来演示 API 功能集。
-> 它托管在 [ docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger) 中。
-
-可以在以下位置访问你自己的已生成管理 API Swagger 文档：
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
-```
-
-| 自定义属性名称 | 替换为 |
-| --- | --- |
-| *yourInstanceName* | Azure 数字孪生实例的名称 |
-| *yourLocation* | 托管实例的服务器区域 |
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>参考资料
 
@@ -104,7 +94,10 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 授权
 
-要针对 OAuth 2.0 保护的 API 资源以交互方式测试请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
+若要详细了解如何以交互方式测试受 OAuth 2.0 保护的请求，请参阅[官方文档](https://swagger.io/docs/specification/authentication/oauth2/)。
+
+> [!NOTE]
+> 在公开预览期间暂时禁用对 OAuth 2.0 身份验证的支持。
 
 ## <a name="next-steps"></a>后续步骤
 

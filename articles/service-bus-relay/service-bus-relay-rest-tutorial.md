@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232437"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614466"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
-
 本教程介绍如何生成简单的服务总线主机应用程序，该应用程序公开基于 REST 的接口。 REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。
 
 该教程使用 Windows Communication Foundation (WCF) REST 编程模型在 Azure 中继上构建 REST 服务。 有关详细信息，请参阅 WCF 文档中的 [WCF REST 编程模型](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model)和[设计和实现服务](/dotnet/framework/wcf/designing-and-implementing-services)。
 
-## <a name="step-1-create-a-namespace"></a>第 1 步：创建命名空间
+在本教程中，你将执行以下步骤：
+
+> [!div class="checklist"]
+> * 创建中继命名空间。
+> * 定义基于 REST 的 WCF 服务协定
+> * 实现基于 REST 的 WCF 协定
+> * 托管并运行基于 REST 的 WCF 服务
+> * 运行和测试服务
+
+## <a name="prerequisites"></a>先决条件
+
+若要完成本教程，需要具备以下先决条件：
+
+- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
+
+## <a name="create-a-relay-namespace"></a>创建中继命名空间
 
 若要开始在 Azure 中使用中继功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Azure 资源进行寻址的范围容器。 请按照[此处的说明](relay-create-namespace-portal.md)创建中继命名空间。
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>步骤 2：定义基于 REST 的 WCF 服务约定以用于服务总线
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>定义基于 REST 的 WCF 服务约定以用于 Azure 中继
 
 创建创建 WCF REST 样式的服务时，必须定义约定。 约定指定主机支持的操作。 服务操作可以看作是 Web 服务方法。 约定通过定义 C++、C# 或 Visual Basic 接口来创建。 接口中的每个方法都对应一个特定的服务操作。 必须将 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性应用到每个接口，且必须将 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性应用到每个操作。 如果具有 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 的接口中的方法没有 [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute)，则该方法是不公开的。 该过程后面的示例中显示了这些任务所用的代码。
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>步骤 3：实现基于 REST 的 WCF 服务约定以使用服务总线
+## <a name="implement-the-rest-based-wcf-service-contract"></a>实现基于 REST 的 WCF 服务协定
 创建 REST 样式的 WCF 中继服务首先需要创建使用接口定义的约定。 下一步是实现该接口。 此步骤包括创建名为 **ImageService** 的类，该类用于实现用户定义的 **IImageContract** 接口。 实现约定后，即可使用 App.config 文件配置接口。 该配置文件包含应用程序所需的信息，如服务的名称、协定的名称，以及用来与中继服务通信的协议类型。 该过程后面的示例中提供了这些任务所用的代码。
 
 与前面的步骤一样，实现 REST 样式的约定与实现 WCF 中继约定之间的差别很小。
@@ -430,7 +446,7 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>步骤 4：托管基于 REST 的 WCF 服务以使用 Azure 中继
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>托管基于 REST 的 WCF 服务以使用 Azure 中继
 此步骤描述如何使用控制台应用程序通过 WCF 中继运行 Web 服务。 此步骤中编写的代码的完整列表会在过程后面的示例中提供。
 
 ### <a name="to-create-a-base-address-for-the-service"></a>为服务创建基本地址
@@ -476,7 +492,7 @@ namespace Microsoft.ServiceBus.Samples
     host.Close();
     ```
 
-## <a name="example"></a>示例
+### <a name="example"></a>示例
 以下示例包括本教程中前面步骤中使用的服务约定和实现，并将服务托管在控制台应用程序中。 将以下代码编译到名为 ImageListener.exe 的可执行文件中。
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>编译代码
+## <a name="run-and-test-the-service"></a>运行和测试服务
 生成解决方案之后，请执行以下代码来运行应用程序：
 
 1. 按 **F5**，或浏览找到可执行文件的位置 (ImageListener\bin\Debug\ImageListener.exe) 来运行此服务。 保持应用程序运行，因为这是执行下一步所需要的。

@@ -1,6 +1,6 @@
 ---
 title: 在本地部署远程监视解决方案 - Docker - Azure | Microsoft Docs
-description: 本操作方法指南展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。
+description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285409"
+ms.locfileid: "51288538"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 本文介绍如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
+本文展示了如何将远程监视解决方案加速器部署到本地计算机，用于测试和开发。 了解如何将微服务部署到本地 Docker 容器。 本地微服务部署使用以下云服务：IoT 中心、Cosmos DB、Azure 流分析，以及云中的 Azure 时序见解服务。
 
 若要在本地计算机上的 IDE 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -70,13 +70,13 @@ docker-compose up
 首次运行此命令时，Docker 会从 Docker 中心下载微服务映像以在本地构建容器。 在后续运行中，Docker 会立即运行容器。
 
 > [!TIP]
-> 我们经常会发布具有新功能的新 Docker 映像。 在提取最新映像之前，可使用以下命令集来清理本地 Docker 容器和相应的映像。 
+> Microsoft 经常会发布具有新功能的新 Docker 映像。 在提取最新映像之前，可使用以下命令集来清理本地 Docker 容器和相应的映像：
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 可以使用一个单独的 shell 来查看来自容器的日志。 首先，使用 `docker ps` 命令查找容器 ID。 然后，使用 `docker logs {container-id} --tail 1000` 查看指定容器的最后 1000 个条目。
 
@@ -101,14 +101,4 @@ docker rmi <list_of_images>
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 设置本地开发环境
-> * 配置解决方案加速器
-> * 部署解决方案加速器
-> * 登录到解决方案加速器
-
 部署远程监视解决方案后，接下来请[探索解决方案仪表板的功能](quickstart-remote-monitoring-deploy.md)。
-
-<!-- Next tutorials in the sequence -->

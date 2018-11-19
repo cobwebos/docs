@@ -15,27 +15,27 @@ ms.date: 11/07/2018
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 298afda7549690a9ea0314bff63a714be50a33b9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019737"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577937"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
 
 在 2017 年 11 月我们已宣布，Azure Active Directory (Azure AD) 服务 Microsoft Azure 访问控制服务 (ACS) 将在 2018 年 11 月 7 日停用。
 
-然后，我们在 2018 年 11 月 7 日停用日期之前的 12 个月、9 个月、6 个月、3 个月、1 个月、2 周、1 周和 1 天，向 ACS 订阅管理员发送了多封有关 ACS 停用的电子邮件。
+然后，我们在 2018 年 11 月 7 日停用日期之前的 12 个月、9 个月、6 个月、3 个月、1 个月、2 周、1 周和 1 天，向 ACS 订阅管理员发送了有关 ACS 停用的电子邮件。
 
-在 2018 年 10 月 3 日我们（通过电子邮件和[博客文章](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)）宣布，2018 年 11 月 7 日之前未完成迁移的客户可以请求延期。 通告中还包含了有关请求延期的说明。
+在 2018 年 10 月 3 日我们（通过电子邮件和[博客文章](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)）宣布，2018 年 11 月 7 日之前未完成迁移的客户可以请求延期。 公告还包含了有关请求延期的说明。
 
 ## <a name="why-your-namespace-is-disabled"></a>为何禁用你的命名空间
 
-如果你尚未选择请求延期，我们将从 2018 年 11 月 7 日开始禁用你的 ACS 命名空间。 如果你错过了这些信件，但仍希望延期到 2019 年 2 月 4 日，请遵照以下部分中的说明操作。
+如果你尚未选择请求延期，我们将从 2018 年 11 月 7 日开始禁用 ACS 命名空间。 如果你错过了这些信件，但仍希望延期到 2019 年 2 月 4 日，请遵照以下部分中的说明操作。
 
 > [!NOTE]
-> 只有订阅的管理员才能运行 PowerShell 命令和请求延期。
+> 只有订阅的服务管理员或共同管理员才能运行 PowerShell 命令和请求延期。
 
 ## <a name="find-and-enable-your-acs-namespaces"></a>查找和启用 ACS 命名空间
 
@@ -62,6 +62,9 @@ ms.locfileid: "51019737"
         ```
     
         其中，`[Command-Name]` 是 ACS 命令的名称。
+1. 使用 **Connect-AcsAccount** cmdlet 连接到 ACS。 
+
+    可能需要先通过运行 **Set-ExecutionPolicy** 来更改执行策略，然后才能运行该命令。
 1. 使用 **Get-AcsSubscription** cmdlet 列出可用的 Azure 订阅。
 1. 使用 **Get-AcsNamespace** cmdlet 列出 ACS 命名空间。
 1. 通过检查 `State` 是否为 `Disabled`，来确认命名空间是否已禁用。

@@ -1,6 +1,6 @@
 ---
-title: 将 MapReduce 和远程桌面与 HDInsight 中的 Hadoop 配合使用 - Azure
-description: 了解如何使用远程桌面连接到 HDInsight 上的 Hadoop 并运行 MapReduce 作业。
+title: 将 MapReduce 和远程桌面与 HDInsight 中的 Apache Hadoop 配合使用 - Azure
+description: 了解如何使用远程桌面连接到 HDInsight 上的 Apache Hadoop 并运行 MapReduce 作业。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ee87bd5743307ea5b9ee3ca1258e8cd985a095c5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012922"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634475"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Hadoop 中使用 MapReduce
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Apache Hadoop 中使用 MapReduce
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-本文介绍如何通过使用远程桌面连接到 HDInsight 群集上的 Hadoop，并通过使用 Hadoop 命令运行 MapReduce 作业。
+本文介绍如何通过使用远程桌面连接到 Apache Hadoop on HDInsight 群集，然后使用 Hadoop 命令运行 MapReduce 作业。
 
 > [!IMPORTANT]
 > 远程桌面只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。

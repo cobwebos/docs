@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cdd9ad16096c85db21829840b2bfd7acaced5942
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260051"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683488"
 ---
 # <a name="how-to-add-pre-built-entities"></a>如何添加预构建实体
 本教程展示了如何向对话学习器模型添加预构建实体。
@@ -44,27 +44,28 @@ ms.locfileid: "51260051"
 
 1. 依次单击“实体”和“新建实体”。
 2. 单击“实体类型”下拉列表并选择 datetimev2。
-    - “可编程”和“可否定”选项被禁用，因为它们不适用于预构建实体。
+    - “可编程”和“可否定”选项已禁用，因为它们不适用于预构建实体。
 3. 单击“创建”。
 
-![](../media/tutorial7_entities.PNG)
+![](../media/tutorial7_entities_a.PNG)
 
 ### <a name="create-two-actions"></a>创建两个操作
 
-1. 依次单击“操作”和“新建操作”
-2. 在“响应”中，键入“The date is $luis-datetimev2”。
-3. 单击“创建”。
+1. 依次单击“操作”和“新建操作”。
+1. 在“响应”中，键入“The date is $builtin-datetimev2”。
+1. 在“所需实体”中，输入“$builtin-datetimev2”。
+1. 单击“创建”。
 
-![](../media/tutorial7_actions.PNG)
+![](../media/tutorial7_actions_a.PNG)
 
 然后，创建第二个操作：
 
 1. 依次单击“操作”和“新建操作”以创建第二个操作。
-3. 在“响应”中，键入“What's the date?”。
-4. 在“取消实体资格”中，输入“luis-datetimev2”。
-4. 单击“法律条款” 
+1. 在“响应”中，键入“What's the date?”。
+1. 在“取消实体资格”中，输入“$builtin-datetimev2”。
+1. 单击“创建”。
 
-![](../media/tutorial7_actions2.PNG)
+![](../media/tutorial7_actions2_a.PNG)
 
 现在已有两个操作。
 
@@ -75,11 +76,11 @@ ms.locfileid: "51260051"
 3. 单击“对操作打分”，然后选择“What's the date?”
 2. 输入“today”。 
     - 请注意，today 已被标记并且显示在第二行中，因为它是一个预构建实体并且不可编辑。
-5. 单击“对操作打分”
+5. 单击“Score Actions”。
     - 请注意，日期现在显示在“实体内存”部分中。 
     - 如果将鼠标指针悬停在日期上，则会看到由 LUIS 提供的更多数据，这些数据是可用的并且可以进一步在代码中进行操作。 
-6. 选择“The date is $luis-datetimev2”。
-7. 单击“完成教学”
+6. 选择“The date is $builtin-datetimev2”。
+7. 单击“Done Teaching”。
 
 ## <a name="next-steps"></a>后续步骤
 

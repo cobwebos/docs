@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 336949d3c3c23041d1907ae2b2a9151ca626d94f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 81a2f444012085782c377de050e7cb5445f8ebb3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834635"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344648"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现 Jupyter Notebook
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="jupyter-notebooks"></a>Jupyter 笔记本
-**[Jupyter Notebook](https://gallery.cortanaintelligence.com/notebooks)** 在单一交互式画布中包括代码、数据可视化和文档。
+[Azure AI 库](http://gallery.cortanaintelligence.com)中的 **[Jupyter Notebook](https://gallery.cortanaintelligence.com/notebooks)** 在单一交互式画布中包括代码、数据可视化和文档。
 库中的笔记本提供了有关高级机器学习技术和解决方案的教程和详细说明。
 
 ## <a name="discover"></a>发现

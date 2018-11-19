@@ -9,15 +9,15 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947478"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633659"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
-Oozie 是一个管理 Hadoop 作业的工作流和协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
+Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
 - Apache MapReduce
 - Apache Pig
 - Apache Hive
@@ -166,7 +166,7 @@ nano workflow.xml
  ```
 4. 将 `clustername` 替换为群集的名称。 
 
-5. 若要保存该文件，请选择 Ctrl+X。 输入 `Y`。 然后选择 Enter。
+5. 若要保存该文件，请选择 Ctrl+X。 输入 `Y` 。 然后选择 Enter。
 
     工作流分为两部分：
     *   **凭据部分。** 此部分接收用于验证 Oozie 操作的凭据：

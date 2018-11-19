@@ -1,5 +1,5 @@
 ---
-title: '在 HDInsight 中调试 Hadoop：查看日志和解释错误消息 - Azure '
+title: '在 HDInsight 中调试 Apache Hadoop：查看日志和解释错误消息 - Azure '
 description: 了解在使用 PowerShell 管理 HDInsight 时可能会收到的错误消息，以及恢复正常所需采取的步骤。
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261137"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634628"
 ---
 # <a name="analyze-hadoop-logs"></a>分析 Hadoop 日志
 
-Azure HDInsight 中的每个 Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Hadoop](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)。 即使在删除群集以后，日志仍会保留在存储帐户中。
+Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Hadoop](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)。 即使在删除群集以后，日志仍会保留在存储帐户中。
 
 ## <a name="logs-written-to-azure-tables"></a>写入 Azure 表的日志
 
@@ -131,7 +131,7 @@ Azure HDInsight 中的每个 Hadoop 群集都有一个用作默认文件系统�
 
 其中某些错误消息也可以在使用 Azure 门户管理 HDInsight 群集时在该门户中看到。 但是，由于在此上下文中针对可能的补救措施的约束，可能会遇到的其他一些错误消息可能不是很精细。 将在问题得到明显缓解的上下文中提供其他错误消息。 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **说明**：请至少为一个组件提供 Azure SQL 数据库以便对 Hive 和 Oozie 元存储使用自定义设置。
 * **缓解**：用户需要提供有效的 SQL Azure 元存储，并重试该请求。  
 

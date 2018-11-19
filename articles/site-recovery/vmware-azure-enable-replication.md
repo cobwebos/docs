@@ -1,8 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 为 VMware到 Azure 的灾难恢复启用 VMware VM 的复制 | Microsoft Docs description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 的复制以便灾难恢复到 Azure。
-author: asgang ms.service: site-recovery ms.date: 07/06/2018 ms.topic: conceptual ms.author: asgang
-
-
+title: 使用 Azure Site Recovery 为 VMware 灾难恢复启用 VMware VM 复制 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 复制以便灾难恢复到 Azure。
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566346"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
 
@@ -68,10 +78,7 @@ author: asgang ms.service: site-recovery ms.date: 07/06/2018 ms.topic: conceptua
     ![启用复制](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
-> [!NOTE]
-> 如果虚拟机已准备好进行请求安装，则会在启用保护后安装移动服务组件。 在虚拟机上安装该组件后，会启动保护作业，但随后会失败。 发生这种失败后，需要手动重新启动每台计算机。 重启后，保护作业重新启动，初始复制开始。
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>查看和管理 VM 属性
 

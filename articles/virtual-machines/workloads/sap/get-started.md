@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2deacb7d15f370c9182c3239493ed60f735d738c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6fbb09d41535bf811a42b204f4e3d38b87c2846c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736829"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287942"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 
@@ -35,6 +35,11 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 在 Azure 中承载 SAP 工作负荷方案还可能会导致需要使用 Azure Activity Directory 到不同 SAP 组件以及 SAP SaaS 或 PaaS 产品/服务的标识集成和单一登录。 在“AAD SAP 标识集成和单一登录”部分中介绍和记录了具有 Azure Active Directory (AAD) 和 SAP 实体的这类集成和单一登录方案的列表。
 
 ## <a name="latest-changes"></a>最新的更改
+
+关于 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)在 SAP 系统的延迟关键通信路径中的使用和配置的说明可在以下文章中找到：
+
+- [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 围绕 Azure VM 的 SAP HANA 动态分层的文档
 
@@ -66,7 +71,7 @@ Azure for SAP HANA 的独特性是使 Azure 在竞争中脱颖而出的独特优
 ## <a name="sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA
 文档的此部分介绍 SAP HANA 的不同方面。 作为先决条件，应熟悉 Azure 的主体服务，它们提供 Azure IaaS 的基本服务，因此主要是 Azure 计算、存储和网络的知识。 在与 SAP NetWeaver 相关的 [Azure 规划指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)中介绍了许多这类主题。 
 
-特定于 Azure 上的 HANA 的文档包括以下这列文章及其子文章：
+特定于 Azure 上的 HANA 的文档包括以下列出的文章及其子文章：
 
 - [快速入门：在 Azure VM 上手动安装单实例 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)

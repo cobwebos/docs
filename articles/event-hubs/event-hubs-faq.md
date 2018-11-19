@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282435"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300669"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -50,7 +50,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
-## <a name="apache-kakfa-integration"></a>Apache Kakfa 集成
+## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>如何将现有的 Kafka 应用程序与事件中心集成？
 事件中心提供可由基于 Apache Kafka 的现有应用程序使用的 Kafka 终结点。 只需完成一项配置更改，即可获得 PaaS Kafka 体验。 使用该体验就如同运行自己的 Kafka 群集。 事件中心支持 Apache Kafka 1.0 和更高版本的客户端，并且适用于现有的 Kafka 应用程序、工具和框架。 有关详细信息，请参阅[适用于 Kafka 的事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)。

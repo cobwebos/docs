@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348763"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515312"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -79,13 +79,13 @@ ms.locfileid: "44348763"
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>步骤 3：确定运行状况策略和升级参数
 请熟悉[应用程序升级参数](service-fabric-application-upgrade-parameters.md)和[升级过程](service-fabric-application-upgrade.md)，充分了解所应用的各种升级参数、超时和运行状况标准。 对于本演练，服务运行状况评估标准设置为默认值（即推荐值），这意味着在升级后所有服务和实例均应为*运行状况正常*。  
 
-让我们将 *HealthCheckStableDuration* 增加到 60 秒（这样该服务在进行下一个更新域的升级之前将至少保持 20 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
+但是，让我们将 *HealthCheckStableDuration* 增加到 180 秒（这样该服务在进行下一个更新域的升级之前将至少保持 120 秒的运行状况正常）。  我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
 
 最后，将 *UpgradeFailureAction* 设置为 rollback。 此选项要求 Service Fabric 在升级期间如果遇到任何问题时，将应用程序回滚到旧版。 因此在开始升级（步骤 4）时指定了以下参数：
 
 FailureAction = Rollback
 
-HealthCheckStableDurationSec = 60
+HealthCheckStableDurationSec = 180
 
 UpgradeDomainTimeoutSec = 1200
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036540"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567139"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -419,7 +419,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | Functions 版本 | Node.js 版本 | 
 |---|---|
 | 1.x | 6.11.2（运行时锁定） |
-| 2.x  | 活动 LTS 和当前的 Node.js 版本（推荐 8.11.1 和 10.6.0）。 使用 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
+| 2.x  | _活动 LTS_ 和偶数的_最新_ Node.js 版本（推荐 8.11.1 和 10.6.0）。 使用 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
 
 可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 

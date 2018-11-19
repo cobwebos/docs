@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.openlocfilehash: b5a1e521f46da7feffd2eb556ad1662a9ccaee55
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/08/2018
+ms.openlocfilehash: 4e21b1bb85ba91266370d89ec8dbd0fae84ef197
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913825"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299786"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -23,7 +23,7 @@ ms.locfileid: "50913825"
 * 对主题进行分区，而不单独管理每个主题。
 * 避免单独发布到每个主题终结点。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+此功能为预览版。 若要使用它，必须安装预览扩展或模块。 有关说明，请参阅[使用事件域管理主题和发布事件](how-to-event-domains.md)。
 
 ## <a name="event-domain-overview"></a>事件域概述
 

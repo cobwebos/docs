@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: d57e780fbf5187f2481d40bde28b113181c15b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834652"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346433"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>在 Azure AI 库中发现实验
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="experiments-for-machine-learning-studio"></a>机器学习工作室的实验
-库具有在 [Azure 机器学习工作室](https://studio.azureml.net)中开发的各种[实验](https://gallery.cortanaintelligence.com/experiments)。 实验涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
+[Azure AI 库](http://gallery.cortanaintelligence.com)具有在 [Azure 机器学习工作室](https://studio.azureml.net)中开发的各种[试验](https://gallery.cortanaintelligence.com/experiments)。 实验涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
 
 > [!NOTE]
 > ***实验***是机器学习工作室中的画布，用于构建预测分析模型。 通过将数据与各种分析模块连接来创建模型。 可以尝试不同的想法，执行试运行并最终以 Web 服务的形式在 Azure 中部署模型。 有关如何创建基本实验的示例，请参阅[机器学习教程：在 Azure 机器学习工作室中创建首个实验](create-experiment.md)。 有关如何创建预测分析解决方案的更全面演练，请参阅[演练：在 Azure 机器学习中开发信用风险评估的预测分析解决方案](walkthrough-develop-predictive-solution.md)。

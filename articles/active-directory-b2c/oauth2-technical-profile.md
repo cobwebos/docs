@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f85de79b683ba7b10f5466c4a8042fc0ffdea90
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382398"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612469"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 ## <a name="protocol"></a>协议
 
-**Protocol** 元素的 **Name** 属性必须设置为 `OAuth2`。 例如，**Facebook-OAUTH** 技术配置文件的协议为 `OAuth2`：
+“Protocol”元素的“Name”属性必须设置为 `OAuth2`。 例如，**Facebook-OAUTH** 技术配置文件的协议为 `OAuth2`：
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 ## <a name="output-claims"></a>输出声明
 
-**OutputClaims** 元素包含 OAuth2 标识提供者返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含标识提供者不会返回的声明。
+**OutputClaims** 元素包含 OAuth2 标识提供者返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 只要设置了 `DefaultValue` 属性，就还可以包含标识提供者不会返回的声明。
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 

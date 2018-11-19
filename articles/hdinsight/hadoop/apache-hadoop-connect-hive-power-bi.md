@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: b094df367d4396533d368b9fdbcb4b78ec1673de
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e6711a5595c6b7c6caaff97f4c1996817be1abce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008889"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634543"
 ---
-# <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Hive 数据
+# <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Apache Hive 数据
 
-了解如何使用 ODBC 将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Hive 数据。 
+了解如何使用 ODBC 将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Apache Hive 数据。 
 
 >[!IMPORTANT]
 > 可以利用 Hive ODBC 驱动程序，通过 Power BI Desktop 中的通用 ODBC 连接器执行导入操作。 但是，鉴于 Hive 查询引擎的非交互性质，不建议对 BI 工作负荷执行此操作。 出于性能考量，[HDInsight 交互式查询连接器](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Spark 连接器](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)是更好的选择。
@@ -40,7 +40,7 @@ ms.locfileid: "51008889"
 
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 
-请参阅[创建 Hive ODBC 数据源](apache-hadoop-connect-excel-hive-odbc-driver.md#create-hive-odbc-data-source)。
+请参阅[创建 Hive ODBC 数据源](apache-hadoop-connect-excel-hive-odbc-driver.md#create-apache-hive-odbc-data-source)。
 
 ## <a name="load-data-from-hdinsight"></a>从 HDInsight 加载数据
 

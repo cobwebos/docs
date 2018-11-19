@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914645"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345481"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>如何：向 Azure AD 应用（公共预览版）提供可选声明
 
@@ -42,7 +42,7 @@ ms.locfileid: "50914645"
 | 帐户类型 | V1.0 终结点 | V2.0 终结点  |
 |--------------|---------------|----------------|
 | Microsoft 个人帐户  | 不适用 - 改用 RPS 票证 | 即将提供支持 |
-| Azure AD 帐户          | 支持                          | 带注意事项的支持      |
+| Azure AD 帐户          | 支持                          | 带注意事项的支持 |
 
 > [!IMPORTANT]
 > 同时支持个人帐户和 Azure AD（已通过[应用注册门户](https://apps.dev.microsoft.com)注册）的应用无法使用可选声明。 但是，使用 v2.0 终结点仅为 Azure AD 注册的应用可以获取它们在清单中请求的可选声明。 在 Azure 门户中，可以使用现有**应用注册**体验中的应用程序清单编辑器来编辑可选声明。 但是，在新的**应用注册(预览版)** 体验中，使用应用程序清单编辑器时还不能使用此功能。
@@ -60,8 +60,6 @@ ms.locfileid: "50914645"
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
-| `signin_state`             | 登录状态声明   | JWT        |           | 6 个标志形式的返回值：<br> "dvc_mngd"：设备受管理<br> "dvc_cmp"：设备合规<br> "dvc_dmjd"：设备已加入域<br> "dvc_mngd_app"：通过 MDM 管理设备<br> "inknownntwk"：设备在已知网络内部。<br> "kmsi"：使用了“使我保持登录状态”。 <br> |
-| `controls`                 | 包含条件访问策略强制实施的会话控制的多值声明。 | JWT        |           | 3 个值：<br> "app_res"：应用需要强制实施更细致的限制。 <br> "ca_enf"：已推迟但仍需要强制实施条件访问。 <br> "no_cookie"：此令牌不足以用于在浏览器中交换 Cookie。 <br>  |
 | `home_oid`                 | 对于来宾用户，表示该用户在用户主租户中的对象 ID。| JWT        |           | |
 | `sid`                      | 会话 ID，用于基于会话的用户注销。 | JWT        |           |         |
 | `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
@@ -76,6 +74,7 @@ ms.locfileid: "50914645"
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“en-us”）。 |
 | `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
+|`email`                     | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|  
 | `acct`             | 租户中的用户帐户状态。 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `upn`                      | UserPrincipalName 声明。 | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 <br> 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/04/2018
 ms.author: raynew
-ms.openlocfilehash: 24102593a294d60b3cc2107bef8d443e672443b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a3e695e8c238dd4bc333d5cd477e70b93231399b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019738"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565014"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -46,6 +46,9 @@ Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS 服�
 Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 
 Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
+## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
+
+如果要复制的计算机上正在运行活动的防病毒软件，请确保从防病毒操作中排除移动服务安装文件夹 (*C:\ProgramData\ASR\agent*)。 这可确保复制正常工作。
 
 ## <a name="update-the-mobility-service"></a>更新移动服务
 

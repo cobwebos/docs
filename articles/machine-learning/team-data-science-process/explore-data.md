@@ -13,24 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/08/2018
 ms.author: deguhath
-ms.openlocfilehash: 168d2852d8905735b450850c8bb32a1ae07a620d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 55d92fedbb67d21d34464b792b3600eb6964840b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837276"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345515"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>在 Team Data Science Process 中浏览数据
-本文档介绍如何浏览通常用于 Data Science Process 的四种不同存储环境中的数据：
 
-* 使用 [Pandas](http://pandas.pydata.org/) Python 包浏览 **Azure blob 容器**数据。
-* 使用 SQL 和编程语言（如 Python）浏览 **SQL Server** 数据。
-* 使用 Hive 查询浏览 **Hive 表**数据。
-* 使用 AML 模块浏览 **Azure 机器学习 (AML) 工作室**数据。
+浏览数据是[团队数据科学过程](overview.md)中的一个步骤。
 
-以下**菜单**链接到相关主题，这些主题介绍如何使用这些工具浏览不同存储环境中的数据。 
+以下文章介绍了如何浏览数据科学过程中通常使用的三种不同存储环境中的数据：
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+* 使用 [Pandas](http://pandas.pydata.org/) Python 包浏览 [Azure blob 容器](explore-data-blob.md)数据。
+* 使用 SQL 和编程语言（如 Python）浏览 [SQL Server](explore-data-sql-server.md) 数据。
+* 使用 Hive 查询浏览 [Hive 表](explore-data-hive-tables.md)数据。
 
+此外，视频[在 Azure 机器学习工作室中预处理数据](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)介绍了 Azure 机器学习工作室中用于清除和转换数据的常用模块。

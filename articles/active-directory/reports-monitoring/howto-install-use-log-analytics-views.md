@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395460"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624635"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的 Log Analytics 视图
 
@@ -42,7 +42,7 @@ Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure 
 
 1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
 2. 选择“视图设计器”，选择“导入”，然后选择“选择文件”，从本地计算机中导入视图。
-3. 选择从必备项中下载的视图，然后选择“保存”，以保存导入。 对“Azure AD 帐户预配事件”视图，“登录事件”视图和“用户执行同意”视图执行此操作。
+3. 选择从必备项中下载的视图，然后选择“保存”，以保存导入。 对“Azure AD 帐户预配事件”视图和“登录事件”视图执行此操作。
 
 ## <a name="use-the-views"></a>使用视图
 
@@ -52,7 +52,6 @@ Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure 
 
     * **Azure AD 帐户预配事件**：此视图显示与审核预配活动相关的报表，例如，预配的新用户数和预配失败情况、更新的用户数和更新失败情况以及取消预配的用户数和相应失败情况。    
     * **登录事件**：此视图显示与监视登录活动最相关的报表，例如，分别按应用程序、用户、设备统计的登录情况，以及随时间推移跟踪登录情况的汇总视图。
-    * **用户执行“同意”相关情况**：此视图显示与用户同意相关的报表，如由用户执行的“同意”操作、按执行“同意”操作的用户统计的登录情况，以及按所有基于同意操作的应用程序统计的登录情况。 
 
 3. 选择其中一个视图，跳转到各个报表。 此外，还可以设置有关任何报表参数的警报。 例如，针对每次登录错误设置警报。 若要执行此操作，首先选择“登录事件”视图，选择“随着时间推移发生的登录错误”报表，然后选择“分析”，打开详细信息页面，其中包含报表中的实际查询。 
 

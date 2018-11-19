@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233790"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621745"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -171,7 +171,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 * 直接登录联合应用
 * 联合、基于密码或现有的应用的深层链接
 
-有关详细信息，请参阅 [为用户部署 Azure AD 集成的应用程序](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)。
+有关详细信息，请参阅[应用程序的最终用户体验](../manage-apps/end-user-experiences.md)。
 
 - - -
 **问：Azure AD 可通过哪些不同的方式来启用对应用程序的身份验证和单一登录？**
@@ -182,7 +182,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 * [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)
 * [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Azure Active Directory 中单一登录的工作原理是什么？](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Azure AD 中应用程序的单一登录](../manage-apps/what-is-single-sign-on.md)
 
 - - -
 **问：是否可以添加本地运行的应用程序？**

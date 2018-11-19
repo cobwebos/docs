@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012439"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636894"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌、会话和单一登录配置
 
@@ -26,9 +26,9 @@ ms.locfileid: "51012439"
 - Azure AD B2C 发出的安全令牌中的重要声明格式。
 - Azure AD B2C 租户中跨多个应用和策略的单一登录 (SSO) 行为。
 
-对于内置策略，你可以在 Azure AD B2C 目录中使用此功能，如下所示：
+可以对任何策略类型使用此功能，但此示例显示如何将此功能用于注册或登录策略。 对于内置策略，你可以在 Azure AD B2C 目录中使用此功能，如下所示：
 
-1. 单击“注册或登录策略”。 注意：可以对任何策略类型使用此功能，不局限于\*\*注册或登录策略\*\*。
+1. 单击“注册或登录策略”。
 2. 通过单击策略以打开它。 例如，单击“B2C_1_SiUpIn”。
 3. 单击菜单顶部的“编辑”。
 4. 单击“令牌、会话和单一登录配置”。

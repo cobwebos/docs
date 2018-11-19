@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: c8e2dcfef1db8bfe3d76ac917f8c14a4060e3968
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 20c26c5daa66edd7705e850f14a79a2cbe2964fc
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318752"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515669"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
@@ -43,7 +43,7 @@ ms.locfileid: "49318752"
 
 ## <a name="what-you-need"></a>所需条件
 
-![所需条件](media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
+![所需条件](./media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2 或 Raspberry Pi 3 电路板。
 * 一个有效的 Azure 订阅。 如果没有 Azure 帐户，只需几分钟时间就能[创建一个免费的 Azure 试用帐户](https://azure.microsoft.com/free/)。
@@ -65,7 +65,17 @@ ms.locfileid: "49318752"
 > 这些项是可选项，因为代码示例支持模拟的传感器数据。
 >
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>创建 IoT 中心
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="setup-raspberry-pi"></a>设置 Raspberry Pi
 
@@ -89,11 +99,11 @@ ms.locfileid: "49318752"
 1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
 1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
-   ![Raspbian 首选项菜单](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
+   ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
 1. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
-   ![在 Raspberry Pi 上启用 SPI 和 SSH](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
+   ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
 > 若要启用 SSH 和 SPI，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md) 中找到更多参考文档。
@@ -103,7 +113,7 @@ ms.locfileid: "49318752"
 
 使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请[跳过此部分](#connect-pi-to-the-network)。
 
-![Raspberry Pi 和传感器连接](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
 
 BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。 
 
@@ -124,13 +134,13 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 成功将 BME280 连接到 Raspberry Pi 后，它应如下图所示。
 
-![连接在一起的 Pi 和 BME280](media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![连接在一起的 Pi 和 BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
 通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
-![已连接到有线网络](media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
+![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
 
 
 ## <a name="run-a-sample-application-on-pi"></a>在 Pi 上运行示例应用程序
@@ -143,7 +153,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    1. 下载并安装 [PuTTY](http://www.putty.org/) for Windows。 
    1. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
    
-   ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac 和 Ubuntu 用户**
    
@@ -181,7 +191,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    cmake . && make
    ```
    
-   ![生成输出](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
+   ![生成输出](./media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. 通过运行以下命令，生成示例应用程序：
 
@@ -195,7 +205,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
 
-![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
+![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>后续步骤
 

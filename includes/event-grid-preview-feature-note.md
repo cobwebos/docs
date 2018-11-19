@@ -5,15 +5,52 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: include
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 6ddc0d0e25b5fbc4ea4c0ef0e974ef74e3cd6806
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50737218"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285730"
 ---
-> [!IMPORTANT]
-> 此功能为预览版。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果之前已安装此扩展，请使用 `az extension update -n eventgrid` 进行更新。 如果使用 REST API，请确保使用 `api-version=2018-09-15-preview`。
+此功能为预览版。 若要使用它，必须安装预览扩展或模块。
+
+### <a name="install-extension-for-azure-cli"></a>安装适用于 Azure CLI 的扩展
+
+对于 Azure CLI，需要[事件网格扩展](/cli/azure/azure-cli-extensions-list)。
+
+在 [CloudShell](/azure/cloud-shell/quickstart) 中：
+
+* 如果之前已安装此扩展，请使用 `az extension update -n eventgrid` 进行更新
+* 如果之前尚未安装此扩展，请使用 `az extension add -n eventgrid` 安装
+
+对于本地安装：
+
+1. 在本地卸载 Azure CLI。
+1. 安装[最新版本](/cli/azure/install-azure-cli)的 Azure CLI。
+1. 启动命令窗口。
+1. 卸载早期版本的扩展 `az extension remove -n eventgrid`
+1. 安装扩展 `az extension add -n eventgrid`
+
+### <a name="install-module-for-powershell"></a>安装适用于 PowerShell 的模块
+
+对于 PowerShell，需要 [AzureRM.EventGrid 模块](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)。
+
+在 [CloudShell](/azure/cloud-shell/quickstart-powershell) 中：
+
+* 安装模块 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+
+对于本地安装：
+
+1. 以管理员身份打开 PowerShell 控制台
+1. 安装模块 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+
+如果 `-AllowPrerelease` 参数不可用，请使用以下步骤：
+
+1. 运行 `Install-Module PowerShellGet -Force`
+1. 运行 `Update-Module PowerShellGet`
+1. 关闭 PowerShell 控制台
+1. 以管理员身份重启 PowerShell
+1. 安装模块 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`

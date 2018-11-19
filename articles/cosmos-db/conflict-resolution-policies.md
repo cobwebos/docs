@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958532"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514819"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略
 
 如果为 Cosmos 帐户配置了多个写入区域，则适用冲突和冲突解决策略的概念。
 
-对于配置了多个写入区域的 Cosmos DB 帐户，当多个写入者同时更新多个区域中的相同项时，可能会发生更新冲突。 更新冲突划分为以下三种类型：
+对于配置了多个写入区域的 Cosmos 帐户，当多个写入者同时更新多个区域中的相同项时，可能会发生更新冲突。 更新冲突划分为以下三种类型：
 
 1. **插入冲突：** 当应用程序同时从两个或更多个区域插入具有相同唯一索引（例如 ID 属性）的两个或更多个项时，可能会发生这些冲突。 在这种情况下，相关本地区域中的所有写入最初可能会成功，但根据所选的冲突解决策略，最终只会提交一个具有原始 ID 的项。
 

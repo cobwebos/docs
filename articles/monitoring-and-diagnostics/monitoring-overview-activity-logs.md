@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006016"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613352"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -33,7 +33,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
 > [!NOTE]
->  [新型警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](alert-activity-log.md)。
+> [新型警报](monitoring-overview-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](alert-activity-log.md)。
 
 
 ## <a name="categories-in-the-activity-log"></a>活动日志中的类别

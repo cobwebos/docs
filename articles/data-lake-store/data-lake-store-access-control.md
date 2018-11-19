@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432607"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567479"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：
 
-|            |    文件     |   文件夹 |
+|            |    文件     |   Folder |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项 |
@@ -128,9 +128,11 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 在 POSIX ACL 中，每个用户都与“主组”关联。 例如，用户“alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
 
-**为新文件或文件夹分配负责人组**
+由于Data Lake Storage Gen1 中没有与用户关联的“主组”，因此将拥有组分配如下。
 
-* **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在本例中，拥有组设置为创建帐户的用户。
+**为新文件或文件夹分配拥有组**
+
+* **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
 * **案例 2**（任何其他案例）：创建新项时，从父文件夹复制拥有组。
 
 **更改负责人组**
@@ -140,7 +142,9 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者组无法更改某个文件或文件夹的 ACL。  虽然负责人组设置为在根文件夹（上述 **Case 1** ）的情况下创建了帐户的用户，但单个用户帐户不能有效地用于通过负责人组提供权限。  可以将此权限分配给有效的用户组（如果适用）。
+> 所有者组无法更改某个文件或文件夹的 ACL。
+>
+> 对于在 2018 年 9 月或之前创建的帐户，拥有组设置为在上面**案例 1** 的根文件夹情况下创建帐户的用户。  单个用户帐户无法通过拥有组提供权限，因此此默认设置不授予任何权限。 可以将此权限分配给有效的用户组。
 
 
 ## <a name="access-check-algorithm"></a>访问检查算法

@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee92a5dd474cdf4f32ed2c7327d732a2cfbbbf79
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238823"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632928"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排除将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户一同使用时出现的故障
 本文介绍了将 [Java 异步 ADK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户一同使用时的常见问题、解决方法、诊断步骤和工具。
@@ -148,7 +148,7 @@ Cosmos DB 仿真器 HTTPS 证书是自签名证书。 要将 SDK 与仿真器一
 
 ## <a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
 
-异步 Java SDK 使用 SLF4j 作为日志外观，支持记录到常用的日志框架，如 log4j 和 logback。
+Java 异步 SDK 使用 SLF4j 作为日志记录外观，支持记录到常用的记录框架，如 log4j 和 logback。
 
 例如，如果要使用 log4j 作为日志记录框架，请在 Java 类路径中添加以下库：
 

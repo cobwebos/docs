@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038597"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566612"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -127,14 +127,43 @@ HTTP 代码|含义|可能的原因
 
 ### <a name="json-response"></a>JSON 响应
 
-结果以 JSON 格式返回。 `simple` 格式仅包括以下顶级字段。
+结果以 JSON 格式返回。 根据查询参数，将返回 `simple` 或 `detailed` 格式。
+
+#### <a name="the-simple-format"></a>`simple` 格式 
+
+此格式包括以下顶级字段。
 
 |字段名|内容|
 |-|-|
-|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
+|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参见此[表](rest-apis.md#recognitionstatus)。|
 |`DisplayText`|经过大小写转换、添加标点、执行反向文本规范化（将口头文本转换为短形式，例如，200 表示“two hundred”，或“Dr.Smith”表示“doctor smith”）和屏蔽亵渎内容之后的识别文本。 仅在成功时提供。|
 |`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
 |`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
+
+#### <a name="the-detailed-format"></a>`detailed` 格式 
+
+此格式包括以下顶级字段。
+
+|字段名|内容|
+|-|-|
+|`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参见此[表](rest-apis.md#recognition-status)。|
+|`Offset`|在音频流中开始识别语音的时间（以 100 纳秒为单位）。|
+|`Duration`|在音频流中识别语音的持续时间（以 100 纳秒为单位）。|
+|`NBest`|相同语音的备选解释列表，从最有可能到最不可能进行排名。 请参阅 [NBest 说明](rest-apis.md#nbest)。|
+
+#### <a name="nbest"></a>NBest
+
+`NBest` 字段是相同语音的备选解释列表，从最有可能到最不可能进行排名。 第一个条目与主要识别结果相同。 每个条目包含以下字段：
+
+|字段名|内容|
+|-|-|
+|`Confidence`|条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信）
+|`Lexical`|已识别文本的词法形式：识别的实际单词。
+|`ITN`|已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。
+|`MaskedITN`| 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。
+|`Display`| 已识别文本的显示形式，其中添加了标点符号和大小写形式。
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 `RecognitionStatus` 字段可能包含以下值。
 
@@ -148,17 +177,6 @@ HTTP 代码|含义|可能的原因
 
 > [!NOTE]
 > 如果音频仅包含亵渎内容，并且 `profanity` 查询参数设置为 `remove`，则服务不会返回语音结果。
-
-
-`detailed` 格式包含 `simple` 格式所包含的相同字段，并包含 `NBest` 字段。 `NBest` 字段是相同语音的备选解释列表，从最有可能到最不可能进行排名。 第一个条目与主要识别结果相同。 每个条目包含以下字段：
-
-|字段名|内容|
-|-|-|
-|`Confidence`|条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信）
-|`Lexical`|已识别文本的词法形式：识别的实际单词。
-|`ITN`|已识别文本的反向文本规范化（“规范”）形式，已应用电话号码、数字、缩写（“doctor smith”缩写为“dr smith”）和其他转换。
-|`MaskedITN`| 可根据请求提供应用了亵渎内容屏蔽的 ITN 形式。
-|`Display`| 已识别文本的显示形式，其中添加了标点符号和大小写形式。 与顶级结果中的 `DisplayText` 相同。
 
 ### <a name="sample-responses"></a>示例响应
 

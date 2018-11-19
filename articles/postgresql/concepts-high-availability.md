@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 203a142a21153935e172508e62b813dca95468cb
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6c39cfdd3bfe244296290c4083644ea7e1b35672
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687076"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298987"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的高可用性概念
 Azure Database for PostgreSQL 服务提供有保证的高级别可用性。 财务备份服务级别协议 (SLA) 一定是通用版本。 使用此服务期间，几乎没有应用程序故障时间。
@@ -35,4 +35,5 @@ Azure Database for PostgreSQL 服务提供有保证的高级别可用性。 财�
 执行缩放操作期间，数据库连接会中断。 客户端应用程序的连接中断，未提交的未结事务也会遭取消。 在客户端应用程序重试连接或建立新连接后，网关便会将连接定向到新设置大小的实例。 
 
 ## <a name="next-steps"></a>后续步骤
-- 有关该服务的概述，请参阅 [Azure Database for PostgreSQL 概述](overview.md)
+- 有关该服务的概述，请参阅  [Azure Database for PostgreSQL 概述](overview.md)
+- 有关重试逻辑的概述，请参阅[处理 Azure Database for PostgreSQL 的暂时性连接错误](concepts-connectivity.md)

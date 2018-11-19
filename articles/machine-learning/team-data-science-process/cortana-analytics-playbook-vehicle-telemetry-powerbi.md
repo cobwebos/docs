@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f86d1d74f5139458999a8c91ac35ec76ac278c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262263"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300925"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>车辆遥测分析解决方案模板 Power BI 仪表板设置说明
-此菜单链接至此操作手册的此章节。 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 车辆遥测分析解决方案展示汽车经销商、汽车制造商和保险公司如何使用 Cortana Intelligence 的功能。 他们可以获得对车辆运行状况和驾驶习惯的实时和预测性见解，以改善客户体验、提高研发水平以及促进营销活动。 这些分布说明介绍了在订阅中部署解决方案后，如何配置 Power BI 报表和仪表板。 
+
+若要查看此解决方案的摘要说明，请参阅[车辆遥测分析解决方案操作手册](cortana-analytics-playbook-vehicle-telemetry.md)。
+若要更进一步探索此解决方案，请参阅[车辆遥测分析解决方案操作手册：深入了解解决方案](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)。
 
 ## <a name="prerequisites"></a>先决条件
 * 部署[车辆遥测分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)解决方案。 

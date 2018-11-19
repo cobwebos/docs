@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085336"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578291"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>使用 Application Insights 在生产中监视 Azure 机器学习模型
 
@@ -24,6 +24,10 @@ ms.locfileid: "50085336"
 * 异常。
 
 [详细了解 Application Insights](../../application-insights/app-insights-overview.md)。 
+
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试
+
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -109,8 +113,11 @@ ms.locfileid: "50085336"
 ## <a name="evaluate-data"></a>评估数据
 服务的数据将存储在 Application Insights 帐户中，此帐户与 Azure 机器学习服务位于同一资源组。
 查看数据：
-1. 转到 [Azure 门户](https://portal.azure.com)中的资源组，然后浏览到 Application Insights 资源。 
-2. “概述”选项卡显示服务的基本指标集。
+1. 转到 [Azure 门户](https://portal.azure.com)中的机器学习服务工作区，然后单击 Application Insights 链接。
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. 选择“概述”选项卡可查看服务的一组基本指标。
 
    [![概述](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +137,7 @@ ms.locfileid: "50085336"
 
 ## <a name="next-steps"></a>后续步骤
 还可以在生产环境中收集模型上的数据。 阅读[在生产环境中收集模型数据](how-to-enable-data-collection.md)一文。 
+
+
+## <a name="other-references"></a>其他参考资料
+* [用于容器的 Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

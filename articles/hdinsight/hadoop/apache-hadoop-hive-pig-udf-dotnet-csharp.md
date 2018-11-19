@@ -1,6 +1,6 @@
 ---
-title: 在 HDInsight 中的 Hadoop 上将 C# 与 Hive 和 Pig 配合使用 - Azure
-description: 了解在 Azure HDInsight 中如何将 C# 用户定义的函数 (UDF) 与 Hive 和 Pig 流式处理配合使用。
+title: 在 HDInsight 中的 Apache Hadoop 上将 C# 与 Apache Hive 和 Apache Pig 配合使用 - Azure
+description: 了解在 Azure HDInsight 中如何将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Apache Pig 流式处理配合使用。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8011a9b8009abd2688d76dc3f1cda84ca453fde1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014680"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633829"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>在 HDInsight 中的 Hadoop 上将 C# 用户定义函数与 Hive 和 Pig 流式处理配合使用
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 流式处理配合使用
 
-了解如何在 HDInsight 中将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Pig 配合使用。
+了解如何在 HDInsight 中将 C# 用户定义函数 (UDF) 与 Apache Hive 和 Apache Pig 配合使用。
 
 > [!IMPORTANT]
 > 本文档中的各个步骤适用于基于 Linux 和基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)。

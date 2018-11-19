@@ -15,23 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 0efd754936b67611a747c6c5756de92443a937e4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 60431578ba8b5c740fe5e1124dcdad32c3cb2ede
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837990"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344071"
 ---
 # <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
-本文档所链接到的文章介绍如何对存储在三个不同 Azure 位置之一的数据采样：
 
-* **Azure Blob 容器数据**的采样方法是先以编程方式下载该数据，并使用样本 Python 代码对其采样。
-* **SQL Server 数据**通过使用 SQL 和 Python 编程语言采样。 
-* **Hive 表数据**通过使用 Hive 查询采样。
+以下文章介绍了如何对存储在三个不同 Azure 位置之一的数据进行采样：
 
-以下**菜单**所链接到的主题介绍如何从这些 Azure 存储环境之一采样数据。 
-
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
+* [**Azure Blob 容器数据**](sample-data-blob.md)的采样方法是先以编程方式下载该数据，并使用样本 Python 代码对其采样。
+* [**SQL Server 数据**](sample-data-sql-server.md)是使用 SQL 和 Python 编程语言进行采样。 
+* [**Hive 表数据**](sample-data-hive.md)是使用 Hive 查询进行采样。
 
 此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
 

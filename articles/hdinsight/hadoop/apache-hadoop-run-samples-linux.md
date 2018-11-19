@@ -1,5 +1,5 @@
 ---
-title: 在 HDInsight 上运行 Hadoop MapReduce 示例 - Azure
+title: 在 HDInsight 上运行 Apache Hadoop MapReduce 示例 - Azure
 description: 开始使用 HDInsight 随附的 jar 文件中的 MapReduce 示例。 使用 SSH 连接到群集，然后使用 Hadoop 命令运行示例作业。
 keywords: hadoop 示例 jar,hadoop 示例 jar,hadoop mapreduce 示例,mapreduce 示例
 services: hdinsight
@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 37ba412d9463ccf4cdd18c842910c3c6f5349ef2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007088"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633059"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-了解如何在 HDInsight 上运行 Hadoop 随附的 MapReduce 示例。
+了解如何在 HDInsight 上运行 Apache Hadoop 随附的 MapReduce 示例。
 
 ## <a name="prerequisites"></a>先决条件
 

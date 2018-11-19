@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 8a9342a2354cd4c92fa0230965b4eef6284ee826
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209116"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568846"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -79,4 +79,16 @@ ms.locfileid: "50209116"
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
+## <a name="manage-anti-virus-software-on-process-servers"></a>管理进程服务器上的防病毒软件
+
+如果防病毒软件在独立进程服务器或主目标服务器上处于活动状态，请从防病毒操作中排除以下文件夹：
+
+
+- C:\Program Files\Microsoft Azure Recovery Services Agent
+- C:\ProgramData\ASR
+- C:\ProgramData\ASRLogs
+- C:\ProgramData\ASRSetupLogs
+- C:\ProgramData\LogUploadServiceLogs
+- C:\ProgramData\Microsoft Azure Site Recovery
+- 进程服务器安装目录，例如：C:\Program Files (x86)\Microsoft Azure Site Recovery
 

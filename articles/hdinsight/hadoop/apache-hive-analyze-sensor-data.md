@@ -1,6 +1,6 @@
 ---
-title: 使用 Hive 和 Hadoop 分析传感器数据 - Azure HDInsight
-description: 了解如何通过将 Hive 查询控制台与 HDInsight (Hadoop) 配合使用来分析传感器数据，并通过 PowerView 在 Microsoft Excel 中可视化数据。
+title: 使用 Apache Hive 和 Apache Hadoop 分析传感器数据 - Azure HDInsight
+description: 了解如何通过将 Apache Hive 查询控制台与 HDInsight (Hadoop) 配合使用来分析传感器数据，并通过 PowerView 在 Microsoft Excel 中直观显示数据。
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249398"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634407"
 ---
-# <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>使用 HDInsight 中 Hadoop上的 Hive 查询控制台分析传感器数据
+# <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中 Apache Hadoop上的 Apache Hive 查询控制台分析传感器数据
 
-了解如何通过将 Hive 查询控制台与 HDInsight (Hadoop) 配合使用来分析传感器数据，并通过使用 Power View 在 Microsoft Excel 中可视化数据。
+了解如何通过将 Hive 查询控制台与 HDInsight (Apache Hadoop) 配合使用来分析传感器数据，并通过使用 Power View 在 Microsoft Excel 中直观显示数据。
 
 > [!IMPORTANT]
 > 本文档中的步骤仅适用于基于 Windows 的 HDInsight 群集。 Windows 上仅可使用低于 HDInsight 3.4 版本的 HDInsight。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
