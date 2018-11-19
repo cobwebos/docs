@@ -53,7 +53,7 @@ ms.locfileid: "51301027"
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
 
-可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“不使用身份验证”且任何其他选项均未选中。
+可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“不进行身份验证”且任何其他选项均未选中。
       
 选择“确定”。
 
