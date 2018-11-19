@@ -28,7 +28,7 @@ ms.locfileid: "51301027"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的应用服务中创建 .NET Core Web 应用](./containers/quickstart-dotnetcore.md)。 
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个部署了 Web 应用程序的 Azure Web 应用。
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -53,13 +53,13 @@ ms.locfileid: "51301027"
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
 
-可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“无身份验证”且任何其他选项均未选中。
+可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“不使用身份验证”且任何其他选项均未选中。
       
 选择“确定”。
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
 
-在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
+在菜单中，选择“调试>非调试启动”来在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "51301027"
 
 在“托管计划”旁边，选择“新建”。 
 
-在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "51301027"
 
 在[创建和发布步骤](#create-and-publish-the-web-app)中指定的应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
 
-恭喜，ASP.NET Core Web 应用已在 Azure 应用服务中实时运行！
+恭喜，ASP.NET Core Web 应用已在 Azure 应用服务中正式运行！
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
@@ -155,11 +155,11 @@ ms.locfileid: "51301027"
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet/access-portal.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
