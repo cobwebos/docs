@@ -238,7 +238,7 @@ Solidity 中的智能合约类似于面向对象的语言中的类。 每个合�
 
 ### <a name="base-class"></a>基类
 
-Blockchain Workbench 可以使用 WorkbenchBase 基类来创建和更新合同。 Blockchain Workbench 特定的智能合同代码需要该基类。 合同需继承自 **WorkbenchBase** 基类。
+Blockchain Workbench 可以使用 WorkbenchBase 基类来创建和更新合约。 Blockchain Workbench 特定的智能合约代码需要该基类。 合约需继承自 **WorkbenchBase** 基类。
 
 在 `HelloBlockchain.sol` 智能合约代码文件的开头添加 **WorkbenchBase** 类。 
 
@@ -377,9 +377,9 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 1. 在 Web 浏览器中，导航到 Blockchain Workbench 的 Web 地址。 例如 `https://{workbench URL}.azurewebsites.net/`。该 Web 应用程序是部署 Blockchain Workbench 时创建的。 有关如何查找 Blockchain Workbench Web 地址的信息，请参阅 [Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
 2. 以 [Blockchain Workbench 管理员](manage-users.md#manage-blockchain-workbench-administrators)身份登录。
 3. 选择“应用程序” > “新建”。 此时会显示“新建应用程序”窗格。
-4. 选择“上传合同配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。 系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
-5. 选择“上传合同代码” > “浏览”，找到 **HelloBlockchain.sol** 智能合同代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
-6. 选择“部署”，根据配置和智能合同文件创建区块链应用程序。
+4. 选择“上传合约配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。 系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
+5. 选择“上传合约代码” > “浏览”，找到 **HelloBlockchain.sol** 智能合约代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
+6. 选择“部署”，根据配置和智能合约文件创建区块链应用程序。
 
 部署区块链应用程序需要几分钟时间。 完成部署后，新应用程序会显示在“应用程序”中。 
 
