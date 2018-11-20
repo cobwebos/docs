@@ -171,7 +171,7 @@ IPSec VPN：
 #### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/白名单
 云中的某些数据存储还需要访问它们的计算机的 IP 地址允许列表。 确保已在防火墙中将网关计算机的 IP 地址列入允许列表或对其进行了适当配置。
 
-以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址白名单。 
+以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
 
 - [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)

@@ -57,7 +57,7 @@ ms.locfileid: "51243737"
 
 在当前版本中，运行历史记录现在称为“试验”。 可使用 SDK、CLI 或 Web 门户收集并探索模型的试验。
 
-门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
+门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持。
 
 [ ![联机门户](./media/overview-what-happened-to-workbench/image001.png) ] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
 

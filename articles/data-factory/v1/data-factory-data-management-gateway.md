@@ -231,7 +231,7 @@ ms.locfileid: "43698751"
 > 不要忘记**同时**更新 diahost.exe.config 和 diawp.exe.config。  
 
 
-除了这几点，还需要确保 Microsoft Azure 列于公司的白名单中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
+除了这几点，还需要确保 Microsoft Azure 列于公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>防火墙和代理服务器相关问题的可能症状
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了网关连接到数据工厂进行自身身份验证。 请参考上一部分，确保防火墙和代理服务器已正确配置。

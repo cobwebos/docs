@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: 614e1dc7af174952bb1db0f47e989a91f7334622
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 73eae5f024c6dc707e5fa7c0a55d88672271e313
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363871"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515771"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入门：控制连接到 IoT 中心的设备 (Node.js)
 
@@ -26,6 +26,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 本快速入门使用两个预先编写的 Node.js 应用程序：
 
 * 从后端应用程序调用的可响应直接方法的模拟设备应用程序。 为了接收直接方法调用，此应用程序会连接到 IoT 中心上特定于设备的终结点。
+
 * 后端应用程序，可在模拟设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +51,7 @@ node --version
 
 如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)，则可跳过此步骤。
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -66,15 +67,19 @@ node --version
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
 
-1. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
+2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
+    az iot hub device-identity show-connection-string \
+      --hub-name YourIoTHubName \
+      --device-id MyNodeDevice \
+      --output table
     ```
 
     记下如下所示的设备连接字符串：
@@ -83,12 +88,13 @@ node --version
 
     稍后会在快速入门中用到此值。
 
-1. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
+3. 还需一个服务连接字符串，以便后端应用程序能够连接到 IoT 中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --hub-name YourIoTHubName --output table
+    az iot hub show-connection-string \
+      --hub-name YourIoTHubName --output table
     ```
 
     记下如下所示的服务连接字符串：
@@ -103,11 +109,11 @@ node --version
 
 1. 在本地终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device-2** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
+2. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
 
     将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.js 文件。
 
-1. 在本地终端窗口中，运行以下命令以安装所需的库，并运行模拟设备应用程序：
+3. 在本地终端窗口中，运行以下命令以安装所需的库，并运行模拟设备应用程序：
 
     ```cmd/sh
     npm install
@@ -116,7 +122,7 @@ node --version
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![运行模拟设备](./media/quickstart-control-device-node/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
@@ -124,11 +130,11 @@ node --version
 
 1. 在另一个本地终端窗口中，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\back-end-application 文件夹。
 
-1. 在所选文本编辑器中打开 BackEndApplication.js 文件。
+2. 在所选文本编辑器中打开 BackEndApplication.js 文件。
 
     将 `connectionString` 变量的值替换为以前记下的服务连接字符串。 然后将更改保存到 BackEndApplication.js 文件。
 
-1. 在本地终端窗口中运行以下命令，以安装所需的库并运行后端应用程序：
+3. 在本地终端窗口中运行以下命令，以安装所需的库并运行后端应用程序：
 
     ```cmd/sh
     npm install
@@ -137,16 +143,15 @@ node --version
 
     以下屏幕截图显示了应用程序对设备进行直接方法调用并接收确认后的输出：
 
-    ![运行后端应用程序](media/quickstart-control-device-node/BackEndApplication.png)
+    ![运行后端应用程序](./media/quickstart-control-device-node/BackEndApplication.png)
 
     运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
-    ![模拟客户端的变化](media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![模拟客户端的变化](./media/quickstart-control-device-node/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 

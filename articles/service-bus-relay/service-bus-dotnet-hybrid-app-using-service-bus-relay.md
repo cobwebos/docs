@@ -1,6 +1,6 @@
 ---
 title: Azure WCF 中继本地/云混合应用程序 (.NET) | Microsoft Docs
-description: 了解如何使用 Azure WCF 中继创建 .NET 本地/云混合应用程序。
+description: 了解如何使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -12,38 +12,51 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 668ccc581e457e2ed3ad72c08bf5e65dd86c4b52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228600"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614831"
 ---
-# <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
-
-本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 本教程假定你之前未使用过 Azure。 在不到 30 分钟的时间内，就能让使用多个 Azure 资源的应用程序在云中启动并运行。
-
-将学习以下内容：
+# <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务 
+本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 创建一个使用多个 Azure 资源的应用程序，让其在云中启动并运行。
 
 * 如何创建或修改现有 Web 服务以供 Web 解决方案使用。
 * 如何使用 Azure WCF 中继服务在 Azure 应用程序和托管于其他某处的 Web 服务之间共享数据。
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
+在本教程中，你将执行以下步骤：
+
+> [!div class="checklist"]
+> * 查看方案。
+> * 创建命名空间。
+> * 创建本地服务器
+> * 创建 ASP .NET 应用程序
+> * 在本地运行应用。
+> * 将 Web 应用部署到 Azure
+> * 在 Azure 上运行应用
+
+## <a name="prerequisites"></a>先决条件
+
+若要完成本教程，需要具备以下先决条件：
+
+- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Azure 中继功能将为混合解决方案带来哪些帮助
-
 业务解决方案通常由为处理独特的新业务需求而编写的自定义代码和已有的解决方案和系统所提供的现有功能组成。
 
 解决方案架构师开始使用云来轻松地处理缩放需求和降低运营成本。 在此过程中，他们发现希望用作其解决方案的构建基块的现有服务资产位于企业防火墙内，无法通过云解决方案轻松访问。 许多内部服务的构建或托管方式使得它们无法在企业网络边缘轻松公开。
 
 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的设计考虑到如何利用现有的 Windows Communication Foundation (WCF) Web 服务，使得位于企业外部的解决方案能够安全地访问这些服务，而无需对企业网络基础结构进行彻底的更改。 虽然此类中继服务仍托管在现有环境中，但它们会将侦听传入会话和请求这一任务委托给云托管的中继服务。 Azure 中继还会通过使用[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 身份验证来保护这些服务，以阻止未经授权的访问。
 
-## <a name="solution-scenario"></a>解决方案应用场景
-在本教程中，将创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
+## <a name="review-the-scenario"></a>查看方案
+在本教程中，请创建一个 ASP.NET 网站，用于查看产品库存页上的产品列表。
 
-![][0]
+![场景][0]
 
 本教程假定产品信息位于现有的本地系统中，而且你使用 Azure 中继来访问该系统。 这是由在简单的控制台应用程序中运行的 Web 服务模拟的，并由一系列内存中产品提供支持。 将能够在自己的计算机上运行此控制台应用程序并将 Web 角色部署到 Azure 中。 通过此操作，会看到在 Azure 数据中心运行的 Web 角色确实会调入计算机，即使计算机几乎肯定会驻留在至少一个防火墙和一个网络地址转换 (NAT) 层后面，情况也是如此。
 
@@ -58,31 +71,28 @@ ms.locfileid: "51228600"
 5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
 ## <a name="create-a-namespace"></a>创建命名空间
+第一步是创建命名空间并获取[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 密钥。 命名空间为每个通过中继服务公开的应用程序提供应用程序边界。 创建服务命名空间时，系统会自动生成 SAS 密钥。 服务命名空间与 SAS 密钥的组合为 Azure 提供了一个用于验证应用程序访问权限的凭据。
 
-若要开始在 Azure 中使用中继功能，必须先创建一个服务命名空间。 命名空间提供了用于对应用程序中的 Azure 资源进行寻址的范围容器。 请按照[此处的说明](relay-create-namespace-portal.md)创建中继命名空间。
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-an-on-premises-server"></a>创建本地服务器
-
-首先，将构建 (mock) 本地产品目录系统。 这会非常简单；可以认为，此系统代表一个实际存在的本地产品目录系统，其中包含我们将尝试集成的完整服务图面。
-
-此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
+首先，生成一个模拟的本地产品目录系统。  此项目是一个 Visual Studio 控制台应用程序，它使用 [Azure 服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 来包含服务总线库和配置设置。
 
 ### <a name="create-the-project"></a>创建项目
-
 1. 使用管理员特权启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并单击“以管理员身份运行”。
 2. 在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 3. 从“已安装的模板”的“Visual C#”下，单击“控制台应用(.NET Framework)”。 在“名称”框中，键入名称“ProductsServer”：
 
-   ![][11]
+   ![“新建项目”对话框][11]
 4. 单击“确定”以创建“ProductsServer”项目。
-5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，并重新启动 Visual Studio。
+5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，并单击[“安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)”。 按照提示操作以安装 NuGet 包管理器，然后重启 Visual Studio。
 6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，并单击“管理 NuGet 程序包”。
 7. 单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。
 
-   ![][13]
+   ![选择 NuGet 包][13]
 
-   请注意，现已引用所需的客户端程序集。
+   现已引用所需的客户端程序集。
 8. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目，单击“添加”，并单击“类”。
 9. 在“名称”框中，键入名称 **ProductsContract.cs**。 然后单击“添加”。
 10. 在“ProductsContract.cs”中，将命名空间定义替换为以下代码，以定义服务的协定。
@@ -175,7 +185,7 @@ ms.locfileid: "51228600"
         }
     }
     ```
-12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 `<system.ServiceModel>` 元素的下面（仍在 `<system.ServiceModel>` 中）添加以下 XML 代码。 确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
+12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 `<system.ServiceModel>` 元素底部（但仍在 `<system.ServiceModel>` 中），添加以下 XML 代码：确保将 *yourServiceNamespace* 替换为命名空间的名称，并将 *yourKey* 替换为之前从门户中检索到的 SAS 密钥：
 
     ```xml
     <system.serviceModel>
@@ -213,7 +223,7 @@ ms.locfileid: "51228600"
 
 ## <a name="create-an-aspnet-application"></a>创建 ASP.NET 应用程序
 
-在本部分中，会生成一个简单的 ASP.NET 应用程序，以便显示产品服务中检索到的数据。
+在本部分，请生成一个简单的 ASP.NET 应用程序，以便显示产品服务中检索到的数据。
 
 ### <a name="create-the-project"></a>创建项目
 
@@ -221,25 +231,25 @@ ms.locfileid: "51228600"
 2. 在 Visual Studio 的“文件”菜单中，单击“新建”，并单击“项目”。
 3. 从“已安装的模板”的“Visual C#”下，单击“ASP.NET Web 应用程序(.NET Framework)”。 **ProductsPortal**。 然后单击“确定”。
 
-   ![][15]
+   ![“新建项目”对话框][15]
 
 4. 从“新建 ASP.NET Web 应用程序”对话框的“ASP.NET 模板”列表中，单击“MVC”。
 
-   ![][16]
+   ![选择 ASP .NET Web 应用程序][16]
 
 6. 单击“ **更改身份验证** ”按钮。 在“更改身份验证”对话框中，确保已选择“无身份验证”，然后单击“确定”。 在本教程中，你将部署无需用户登录的应用。
 
-    ![][18]
+    ![指定身份验证][18]
 
 7. 回到“新建 ASP.NET Web 应用程序”对话框，单击“确定”创建 MVC 应用。
 8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)的步骤操作。 然后，返回到本教程并继续执行下一步。
 10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后单击“添加”。
 
-    ![][17]
+    ![创建产品模型][17]
 
 ### <a name="modify-the-web-application"></a>修改 Web 应用程序
 
-1. 在 Visual Studio 的 Product.cs 文件中将现有命名空间定义替换为以下代码。
+1. 在 Visual Studio 的 Product.cs 文件中将现有命名空间定义替换为以下代码：
 
    ```csharp
     // Declare properties for the products inventory.
@@ -254,7 +264,7 @@ ms.locfileid: "51228600"
     }
     ```
 2. 在解决方案资源管理器中，展开 **Controllers** 文件夹，然后双击 **HomeController.cs** 文件以在 Visual Studio 中将其打开。
-3. 在 **HomeController.cs**中，将现有命名空间定义替换为以下代码。
+3. 在 **HomeController.cs**中，将现有命名空间定义替换为以下代码：
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -279,9 +289,9 @@ ms.locfileid: "51228600"
 5. 将每一处 **My ASP.NET Application** 更改为 **Northwind Traders Products**。
 6. 删除“Home”、“About”和“Contact”链接。 在下面的示例中，删除突出显示的代码。
 
-    ![][41]
+    ![删除生成的列表项][41]
 
-7. 在解决方案资源管理器中，展开 Views\Home 文件夹，然后双击 **Index.cshtml**以在 Visual Studio 编辑器中将其打开。 将文件的全部内容替换为以下代码。
+7. 在解决方案资源管理器中，展开 Views\Home 文件夹，然后双击 **Index.cshtml**以在 Visual Studio 编辑器中将其打开。 将文件的全部内容替换为以下代码：
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -326,21 +336,21 @@ ms.locfileid: "51228600"
 2. 在 Visual Studio 中，按 F5。
 3. 应用程序应在浏览器中显示为正在运行。
 
-   ![][21]
+   ![Web 应用程序][21]
 
 ## <a name="put-the-pieces-together"></a>将各个部分组合在一起
 
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
-1. 如果尚未打开在 [创建 ASP.NET 应用程序](#create-an-aspnet-application) 一节中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
+1. 如果尚未打开在[创建 ASP.NET 应用程序](#create-an-aspnet-application)部分创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
 2. 采用与“创建本地服务器”部分类似的步骤，将 NuGet 包添加到项目“引用”中。 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“管理 NuGet 程序包”。
 3. 搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 然后，完成安装过程并关闭此对话框。
 4. 在解决方案资源管理器中，右键单击“ProductsPortal”项目，并单击“添加”，再单击“现有项”。
 5. 从 **ProductsServer** 控制台项目导航到 **ProductsContract.cs** 文件。 单击以突出显示 ProductsContract.cs。 单击“添加”旁边的向下箭头，并单击“添加为链接”。
 
-   ![][24]
+   ![添加为链接][24]
 
-6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。 确保将 yourServiceNamespace 替换为服务命名空间的名称，并将 yourKey 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
+6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码：确保将 *yourServiceNamespace* 替换为服务命名空间的名称，将 *yourKey* 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -386,21 +396,21 @@ ms.locfileid: "51228600"
 9. **ProductsServer** 必须正在运行，才能在 **ProductsPortal** 上显示数据。 在解决方案资源管理器中，右键单击“ProductsPortal”解决方案并单击“属性”。 **属性页** ”对话框。
 10. 在左侧，单击“启动项目”。 在右侧，单击“多个启动项目”。 确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且将“启动”设置为两者的操作。
 
-      ![][25]
+      ![多个启动项目][25]
 
 11. 仍在“属性”对话框中，单击左侧的“项目依赖项”。
 12. 在“项目”列表中，单击“ProductsServer”。 确保未选择“ProductsPortal”。
 13. 在“项目”列表中，单击“ProductsPortal”。 确保已选择 **ProductsServer** 。
 
-    ![][26]
+    ![项目依赖项][26]
 
 14. 单击你正在使用的 Visual Studio 版本的“安装 SDK”in the **属性页** ”。
 
 ## <a name="run-the-project-locally"></a>在本地运行项目
 
-若要在本地测试应用程序，请在 Visual Studio 中按 **F5**。 本地服务器 (**ProductsServer**) 应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动。 这次，会看到产品库存列出了从产品服务本地系统中检索到的数据。
+若要在本地测试应用程序，请在 Visual Studio 中按 **F5**。 本地服务器 (**ProductsServer**) 应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动。 这次，会看到产品清单列出了从产品服务本地系统中检索到的数据。
 
-![][10]
+![Web 应用程序][10]
 
 按“ProductsPortal”页上的“刷新”。 每次刷新该页面时，都会看到服务器应用在调用来自 **ProductsServer** 的 `GetProducts()` 时显示一条消息。
 
@@ -419,7 +429,7 @@ ms.locfileid: "51228600"
 
 2. 复制已部署 Web 应用的 URL，你在下一个步骤中需要用到该 URL。 也可以从 Visual Studio 的“Azure 应用服务活动”窗口中获取此 URL：
 
-  ![][9]
+  ![已部署应用的 URL][9]
 
 3. 关闭浏览器窗口，停止正在运行的应用程序。
 
@@ -431,33 +441,32 @@ ms.locfileid: "51228600"
 2. 在左侧列中，单击 **Web**。
 3. 在“启动操作”部分中，单击“启动 URL”按钮，并在文本框中输入先前部署的 Web 应用的 URL；例如 `http://productsportal1234567890.azurewebsites.net/`。
 
-    ![][27]
+    ![启动 URL][27]
 
 4. 从 Visual Studio 的“文件”菜单中，单击“全部保存”。
 5. 从 Visual Studio 的“生成”菜单中，单击“ **重新生成解决方案**”。
 
 ## <a name="run-the-application"></a>运行应用程序
 
-1. 按 F5 生成并运行应用程序。 本地服务器（**ProductsServer** 控制台应用程序）应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动，如以下屏幕截图所示。 再次提请注意，产品库存列表会列出从产品服务本地系统检索到的数据，并在 Web 应用中显示该数据。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
+1. 按 F5 生成并运行应用程序。 本地服务器（**ProductsServer** 控制台应用程序）应该会先启动，然后 **ProductsPortal** 应用程序会在浏览器窗口中启动，如以下屏幕截图所示：请再次注意，产品清单列出了从产品服务本地系统检索的数据，并将该数据显示在 Web 应用中。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
 
-   ![][1]
+   ![在 Azure 上运行 Web 应用][1]
 
    > [!IMPORTANT]
    > **ProductsServer** 控制台应用程序必须正在运行，而且能够为 **ProductsPortal** 应用程序提供数据。 如果浏览器显示错误，请再多等几秒钟，让 **ProductsServer** 加载并显示以下消息。 然后按浏览器中的“刷新”。
    >
    >
 
-   ![][37]
+   ![服务器的输出][37]
 2. 返回到浏览器中，按“ProductsPortal”页上的“刷新”。 每次刷新该页面时，都会看到服务器应用在调用来自 **ProductsServer** 的 `GetProducts()` 时显示一条消息。
 
-    ![][38]
+    ![更新的输出][38]
 
 ## <a name="next-steps"></a>后续步骤
+转到以下教程： 
 
-若要了解有关 Azure 中继的详细信息，请参阅以下资源：  
-
-* [什么是 Azure 中继？](relay-what-is-it.md)  
-* [如何使用 Azure 中继](relay-wcf-dotnet-get-started.md)  
+> [!div class="nextstepaction"]
+>[向网络外部的 WCF 客户端公开本地 WCF 服务](service-bus-relay-tutorial.md)
 
 [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
 [1]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/App2.png

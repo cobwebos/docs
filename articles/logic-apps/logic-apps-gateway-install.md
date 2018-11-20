@@ -251,7 +251,7 @@ TcpTestSucceeded       : True
 | login.microsoftonline.com | 443 | HTTPS | 
 ||||
 
-在某些情况下，Azure 服务总线连接是使用 IP 地址而不是完全限定的域名建立的。 因此，我们建议将防火墙中数据区域的 IP 地址加入白名单。 若要将 IP 地址而不是域加入白名单，可以下载并使用 [Microsoft Azure 数据中心 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)。 此列表中的 IP 地址采用[无类域间路由 (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表示法。
+在某些情况下，Azure 服务总线连接是使用 IP 地址而不是完全限定的域名建立的。 因此，我们建议将防火墙中数据区域的 IP 地址加入允许列表。 若要将 IP 地址而不是域加入允许列表，可以下载并使用 [Microsoft Azure 数据中心 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)。 此列表中的 IP 地址采用[无类域间路由 (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表示法。
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>强制与 Azure 服务总线进行 HTTPS 通信
 

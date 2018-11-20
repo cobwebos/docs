@@ -1,7 +1,6 @@
 ---
-title: 示例：使用文本分析 REST API 分析情绪
-titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本分析 REST API 检测情绪。
+title: 如何在文本分析 REST API（Azure 上的 Microsoft 认知服务）中进行情绪分析 | Microsoft Docs
+description: 在本演练教程中，了解如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 检测情绪。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605889"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632859"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>示例：如何在文本分析中检测情绪
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605889"
 此功能对于检测社交媒体、客户评论和论坛中的积极和消极情绪非常有用。 用户提供内容；服务提供模型和定型数据。
 
 目前，情绪分析支持英语、德语、西班牙语和法语。 其他语言以预览版提供。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
+
+> [!TIP]
+> 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于进行情绪分析，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
 
 ## <a name="concepts"></a>概念
 
@@ -77,7 +79,7 @@ ms.locfileid: "45605889"
 
 + 创建 POST 请求。 请查看此请求的 API 文档：[情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
 
-+ 设置关键短语提取的 HTTP 终结点。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
