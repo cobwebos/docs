@@ -49,7 +49,7 @@ MyApps 门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使�
 
 确保符合以下浏览器要求：
 
-- **Edge**：Windows 10 周年纪念版或更高版本上。
+- **Microsoft Edge**：Windows 10 周年纪念版或更高版本上。
 - **Chrome**：在 Windows 7 或更高版本上，以及在 Mac OS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。

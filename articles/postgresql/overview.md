@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/15/2018
-ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/14/2018
+ms.openlocfilehash: c1e90e9e39bb9ff698b2e53a2b7cf02340e1111f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092151"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685848"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 
-Azure Database for PostgreSQL 是 Microsoft 云中基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本、为开发人员构建的关系数据库服务。 用于 PostgreSQL 的 Azure 数据库提供以下功能：
+Azure Database for PostgreSQL 是 Microsoft 云中基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎 9.5、9.6 和 10 版的社区版本的关系数据库服务，专为开发人员构建。 用于 PostgreSQL 的 Azure 数据库提供以下功能：
 
 - 没有额外费用的内置高可用性
 - 使用非独占即用即付定价，实现可预测性能
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL 是 Microsoft 云中基于开源 [PostgreSQL](http
 - [用于 PostgreSQL 的 Azure 数据库的 Azure CLI 示例](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
-Azure Database for PostgreSQL 服务提供三个定价层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的资源功能以支持数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-pricing-tiers.md)。
+Azure Database for PostgreSQL 服务提供三个定价层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的资源功能以支持数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅 [定价层](concepts-pricing-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 如何决定何时调高或调低？ 使用内置的 Azure 监视和警报功能。 使用这些工具，可以根据当前的或预计的性能或存储需求，快速评估调高或调低产生的影响。 有关详细信息，请参阅[警报](howto-alert-on-metric.md)。

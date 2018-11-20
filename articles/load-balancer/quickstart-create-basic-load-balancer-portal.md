@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378425"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616021"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共基本负载均衡器
 
@@ -44,7 +44,7 @@ ms.locfileid: "44378425"
    - **公共**：负载均衡器的类型 
    - **myPublicIP**：必须创建的公共 IP，其 SKU 设置为“基本”，“分配”设置为“动态”。
    - **myResourceGroupLB**：新资源组的名称
-3. 选择**创建**。
+3. 选择“创建”。
    
 ![创建负载均衡器](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
@@ -159,6 +159,7 @@ ms.locfileid: "44378425"
    - **myHealthProbe**：运行状况探测的名称
    - **HTTP**：协议类型
    - **80**：端口号
+   - **Healthprobe.aspx**：URI 路径。 可以将此值替换为任何其他的 URI，或者保留默认路径值 **"\\"** 以获取默认 URI。
    - **15**：两次探测尝试之间的**时间间隔**，以秒为单位
    - **2**：**不正常阈值**，即，将 VM 视为不正常之前必须发生的连续探测失败次数
 

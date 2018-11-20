@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c85d3ce6ab3e84d454ddbc2550f430b87705c192
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962004"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622170"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备 
 
@@ -520,7 +520,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="configure-on-premises-federation-service"></a>配置本地联合身份验证服务 
 
-接收发往 Azure AD 信赖方的身份验证请求时，本地联合身份验证服务必须支持颁发 **authenticationmehod** 和 **wiaormultiauthn** 声明，其中包含具有如下所示编码值的 resouce_params 参数：
+接收发往 Azure AD 信赖方的身份验证请求时，本地联合身份验证服务必须支持颁发 **authenticationmehod** 和 **wiaormultiauthn** 声明，其中包含具有如下所示编码值的 resource_params 参数：
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 

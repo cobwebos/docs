@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0134f6c83548ae5ffb4924ecf7d652ce89910340
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 176f8bb6fbb7a1a6bb81525cd3833d57bf9a5086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210612"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568795"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -110,7 +110,10 @@ ms.locfileid: "50210612"
 3. 加密密钥设置与此方案无关。
 4. 选择“在开始故障转移前关闭计算机”。 在触发故障转移之前，Site Recovery 会尝试关闭虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
-6. 在“复制的项”中，右键单击 VM >“完成迁移”。 该操作将完成迁移过程、停止 VM 的复制，并停止对 VM 的 Site Recovery 计费。
+6. 在“复制的项”中，右键单击 VM >“完成迁移”。 这样会执行以下操作：
+
+    - 完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+    - 此步骤清除复制数据。 它不删除迁移的 VM。
 
     ![完成迁移](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 

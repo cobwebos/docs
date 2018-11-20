@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 04fad24b17d7f74211deae53c0d044f2049660f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69ffd2dd4df8ca0a64036f7a96c88d5c83353211
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978312"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685354"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -36,9 +36,6 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 > * 调整磁盘大小
 > * 磁盘快照
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -48,35 +45,15 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 
 临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都会被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
 
-### <a name="temporary-disk-sizes"></a>临时磁盘大小
-
-| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
-|----|----|----|
-| [常规用途](sizes-general.md) | A、B、D 系列 | 1600 |
-| [计算优化](sizes-compute.md) | F 系列 | 576 |
-| [内存优化](sizes-memory.md) | D、E、G、M 系列 | 6144 |
-| [存储优化](sizes-storage.md) | L 系列 | 5630 |
-| [GPU](sizes-gpu.md) | N 系列 | 1440 |
-| [高性能](sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 
-若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 虚拟机的大小决定可附加到 VM 的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
+若要安装应用程序和存储数据，可添加额外的数据磁盘。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 虚拟机的大小决定可附加到 VM 的数据磁盘数。 对于每个 VM vCPU，都可以附加四个数据磁盘。
 
-### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-
-| Type | VM 大小 | 每个 VM 的最大数据磁盘数 |
-|----|----|----|
-| [常规用途](sizes-general.md) | A、B、D 系列 | 64 |
-| [计算优化](sizes-compute.md) | F 系列 | 64 |
-| [内存优化](../virtual-machines-windows-sizes-memory.md) | D、E 和 G 系列 | 64 |
-| [存储优化](../virtual-machines-windows-sizes-storage.md) | L 系列 | 64 |
-| [GPU](sizes-gpu.md) | N 系列 | 64 |
-| [高性能](sizes-hpc.md) | A 和 H 系列 | 64 |
 
 ## <a name="vm-disk-types"></a>VM 磁盘类型
 
-Azure 提供两种类型的磁盘。
+Azure 提供两种类型的磁盘：标准磁盘和高级磁盘。
 
 ### <a name="standard-disk"></a>标准磁盘
 
@@ -88,13 +65,20 @@ Azure 提供两种类型的磁盘。
 
 ### <a name="premium-disk-performance"></a>高级磁盘性能
 
-|高级存储磁盘类型 | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 磁盘大小（向上舍入） | 32 GB | 64 GB | 128 GB | 512 GB | 1,024 GB (1 TB) | 2,048 GB (2 TB) | 4,095 GB (4 TB) |
-| 每个磁盘的最大 IOPS | 120 | 240 | 500 | 2,300 | 5,000 | 7,500 | 7,500 |
-每个磁盘的吞吐量 | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
+|高级存储磁盘类型 | P4 | P6 | P10 | P20 | P30 | P40 | P50 | p60 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 磁盘大小（向上舍入） | 32 GiB | 64 GiB | 128 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB)
+| 每个磁盘的最大 IOPS | 120 | 240 | 500 | 2,300 | 5,000 | 7,500 | 7,500 | 12,500 |
+每个磁盘的吞吐量 | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 |
 
 尽管上表确定了每个磁盘的最大 IOPS，但还可通过条带化多个数据磁盘实现更高级别的性能。 例如，Standard_GS5 VM 最多可实现 80,000 IOPS。 若要详细了解每个 VM 的最大 IOPS，请参阅 [Linux VM 大小](sizes.md)。
+
+
+## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
+
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
+
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="create-and-attach-disks"></a>创建并附加磁盘
 
@@ -116,7 +100,6 @@ az vm create \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
-  --admin-username azureuser \
   --generate-ssh-keys \
   --data-disk-sizes-gb 128 128
 ```
@@ -139,7 +122,6 @@ az vm disk attach \
 
 将磁盘附加到虚拟机后，需要将操作系统配置为使用该磁盘。 以下示例演示如何手动配置磁盘。 还可使用 cloud-init 自动执行此过程，[后面的教程](./tutorial-automate-vm-deployment.md)对此进行了介绍。
 
-### <a name="manual-configuration"></a>手动配置
 
 创建与虚拟机的 SSH 连接。 将示例 IP 地址替换为虚拟机的公共 IP 地址。
 
@@ -204,42 +186,10 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail 
 exit
 ```
 
-## <a name="resize-vm-disk"></a>调整 VM 磁盘大小
 
-部署 VM 后，可增加操作系统磁盘或任何附加数据磁盘的大小。 需要更多存储空间或更高级别的性能（如 P10、P20 或 P30）时，增加磁盘大小很有用。 不能降低磁盘大小。
+## <a name="snapshot-a-disk"></a>拍摄磁盘快照
 
-增加磁盘大小之前，需要磁盘 ID 或名称。 使用 [az disk list](/cli/azure/disk#az-disk-list) 命令返回资源组中的所有磁盘。 记下要调整大小的磁盘名称。
-
-```azurecli-interactive
-az disk list \
-    --resource-group myResourceGroupDisk \
-    --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
-    --output table
-```
-
-必须解除分配 VM。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 命令停止和解除分配 VM。
-
-```azurecli-interactive
-az vm deallocate --resource-group myResourceGroupDisk --name myVM
-```
-
-使用 [az disk update](/cli/azure/vm/disk#az-vm-disk-update) 命令调整磁盘大小。 本示例将名为“myDataDisk”的磁盘的大小调整为 1 TB。
-
-```azurecli-interactive
-az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
-```
-
-完成调整大小操作后，启动 VM。
-
-```azurecli-interactive
-az vm start --resource-group myResourceGroupDisk --name myVM
-```
-
-如果调整操作系统磁盘的大小，则会自动扩展分区。 如果调整数据磁盘的大小，则必须在 VM 操作系统中扩展任何当前分区。
-
-## <a name="snapshot-azure-disks"></a>拍摄 Azure 磁盘快照
-
-创建磁盘快照时，Azure 会创建磁盘的只读时间点副本。 Azure VM 快照可用于快速保存配置更改前 VM 所处的状态。 如果已证实不需要更改配置，可使用此快照还原 VM 状态。 VM 具有多个磁盘时，则拍摄的每个磁盘快照都与其他磁盘快照无关。 若要执行应用程序一致性备份，请考虑在创建磁盘快照之前停止 VM。 或者，使用 [Azure 备份服务](/azure/backup/)，以便在 VM 运行时执行自动备份。
+创建磁盘快照时，Azure 会创建磁盘的只读时间点副本。 Azure VM 快照可用于快速保存配置更改前 VM 所处的状态。 如果出现问题或错误，则可使用快照还原 VM。 VM 具有多个磁盘时，则拍摄的每个磁盘快照都与其他磁盘快照无关。 若要执行应用程序一致性备份，请考虑在创建磁盘快照之前停止 VM。 或者，使用 [Azure 备份服务](/azure/backup/)，以便在 VM 运行时执行自动备份。
 
 ### <a name="create-snapshot"></a>创建快照
 

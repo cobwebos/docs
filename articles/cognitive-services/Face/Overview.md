@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914186"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633455"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？
 
@@ -63,6 +63,10 @@ Azure 人脸 API 服务是一项认知服务，其提供的算法可用于检测
 创建和训练数据库后，可以对组使用新检测到的人脸进行标识。 如果人脸被标识为组中的某一人员，则返回该人员对象。
 
 有关人员标识的详细信息，请参阅[标识 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)。
+
+## <a name="use-containers"></a>使用容器
+
+将标准化的 Docker 容器安装到靠近数据的位置以后，即可[使用人脸容器](face-how-to-install-containers.md)检测、识别和标识人脸。
 
 ## <a name="sample-apps"></a>示例应用
 

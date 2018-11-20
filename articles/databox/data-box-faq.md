@@ -8,16 +8,16 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649391"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568024"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
-利用 Microsoft Azure Data Box 混合云解决方案，可使用传输设备通过快速、经济和可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含在 Azure 门户中使用 Data Box 时可能遇到的问题及其解答。 
+利用 Microsoft Azure Data Box 混合云解决方案，可使用传输设备通过快速、经济和可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含了在 Azure 门户使用 Data Box 时可能遇到的问题及其解答。 
 
 问题和解答分为以下几个类别：
 
@@ -50,7 +50,7 @@ A. 使用 Data Box 10 天会产生少许费用。 在 Azure 门户中创建订�
 A. Data Box 的原始容量为 100 TB，可用容量为 80 TB。 使用 Data Box 最多可传输 80 TB 数据。 若要传输更多数据，需订购更多设备。
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>问： 如何确认 Data Box 在我的区域是否可用？ 
-A.  有关支持 Data Box 的国家/地区的信息，请转到[区域可用性](data-box-overview.md#region-availability)。  
+A.  有关支持 Data Box 的国家/地区的信息，请转到[适用区域](data-box-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>问： 可在哪些区域使用 Data Box 存储数据？
 A. 美国、西欧、北欧、法国和英国的所有区域支持 Data Box。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
@@ -75,7 +75,7 @@ A. 如果无法创建 Data Box 订单，有可能是订阅类型或访问权限�
 A. 每个订阅在每个商务区域（国家和地区的组合）最多允许有 5 个有效订单。 如果需要订购更多设备，请联系 Microsoft 支持部门提高订阅限制。
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>问： 我在尝试创建订单时收到通知，提示 Data Box 服务不可用。 这是什么意思呢？
-A. 这表示 Data Box 服务在你所选的国家和地区组合中不可用。 更改此组合可能会允许使用 Data Box 服务。 有关该服务适用区域的列表，请转到 [Data Box 的区域可用性](data-box-overview.md#region-availability)。
+A. 这表示 Data Box 服务在你所选的国家和地区组合中不可用。 更改此组合可能会允许使用 Data Box 服务。 有关该服务适用区域的列表，请转到 [Data Box 的适用区域](data-box-overview.md#region-availability)。
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>问： 我数天前订购了 Data Box。 何时能收到 Data Box？
 A. 客户下单后，我们会检查订购的设备是否有货。 如果设备有货，我们将在 10 天内寄送。 也可能有高需求时期。 在此情况下，订单将进行排队，可在 Azure 门户中跟踪状态更改。 如果订单未在 90 天内完成，则会自动取消。 
@@ -225,14 +225,14 @@ A.  以下报表可用于支持监管链：
 
 - DHL 和 UPS 的运输物流。
 - 打开电源和用户共享访问的日志记录。
-- 包含针对成功引入 Data Box 的每个文件的 64 位循环冗余检验 (CRC-64) 或校验和的清单文件。
-- 未能上传到 Azure 存储帐户的文件的报告。
+- 具有 64 位循环冗余检验 (CRC-64) 或成功引入到 Data Box 的每个文件的校验和的清单文件。
+- 未能上传到 Azure 存储帐户的文件报告。
 - 数据复制到 Azure 存储帐户后，依据 NIST 800 88R1 标准清理 Data Box 设备。
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>承运人跟踪日志（来自 UPS/DHL）是否可用？ 
 A.  承运人跟踪日志在 Data Box 订单历史记录中捕获。 设备已返回 Azure 数据中心且其中的数据已清理后，此报告可用。 如立即需要，还可直接转到运营商的网站，使用订单跟踪号码获取跟踪信息。
 
-### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否将 Data Box 运输到 Azure 数据中心？ 
+### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我能否自己将 Data Box 送到 Azure 数据中心？ 
 A.  不是。 Azure 数据中心目前不接受客户或 UPS/DHL 以外的承运人交付 Data Box。
 
 

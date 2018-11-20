@@ -1,7 +1,6 @@
 ---
-title: 示例：如何提取文本分析中的关键短语
-titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本分析 REST API 提取关键短语。
+title: 如何使用文本分析 REST API（Azure 上的 Microsoft 认知服务）进行关键短语提取 | Microsoft Docs
+description: 本演练教程介绍了如何使用 Azure 上 Microsoft 认知服务中的文本分析 REST API 提取关键短语。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605481"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632384"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>示例：如何提取文本分析中的关键短语
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605481"
 如果需要快速确定文档集中的要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回谈话要点：“food”和“wonderful staff”。
 
 目前，关键短语提取支持英语、德语、西班牙语和日语。 其他语言以预览版提供。 有关详细信息，请参阅[支持的语言](../text-analytics-supported-languages.md)。
+
+> [!TIP]
+> 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
 
 ## <a name="preparation"></a>准备工作
 
@@ -71,7 +73,7 @@ ms.locfileid: "45605481"
 
 + 创建 POST 请求。 查看此请求的 API 文档：[关键短语 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
-+ 设置关键短语提取的 HTTP 终结点。 它必须包含 `/keyphrases` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 它必须包含 `/keyPhrases` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 缩放具有高可用性体系结构的全球 Web 应用 | Microsoft 文档
+title: Azure CLI 脚本示例 - 缩放具有高可用性体系结构的全球 Web 应用 | Microsoft Docs
 description: Azure CLI 脚本示例 - 缩放具有高可用性体系结构的全球 Web 应用
 services: appservice
 documentationcenter: appservice
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ae2aaaa35d119b6e4691257333547cb1a3a21e86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4403e0081df3120c889b93d642670895252ac47e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968470"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567961"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>缩放具有高可用性体系结构的全球 Web 应用
 
@@ -31,7 +31,7 @@ ms.locfileid: "46968470"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 

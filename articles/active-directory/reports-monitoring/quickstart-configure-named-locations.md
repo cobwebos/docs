@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d99f077449529fb4a4a7f124fe1c0263d4113dee
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363439"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623232"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
 
@@ -62,8 +62,6 @@ ms.locfileid: "46363439"
 
 有关详细信息，请参阅：
 
-- [Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。
-
+- [Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)。
 - [Azure AD 条件访问中的位置条件](../conditional-access/location-condition.md)
-
-- [Azure AD 门户中的风险登录报告](concept-risky-sign-ins.md)。  
+- [风险登录报表](concept-risky-sign-ins.md)。  

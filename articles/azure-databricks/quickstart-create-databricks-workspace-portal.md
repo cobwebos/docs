@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c4b20421135ac27712cf50deb7d74ce91ed639e5
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747858"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568948"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
 本快速入门介绍如何创建一个 Azure Databricks 工作区，并在该工作区中创建一个 Apache Spark 群集。 最后，介绍如何在 Databricks 群集中运行 Spark 作业。 有关 Azure Databricks 的详细信息，请参阅[什么是 Azure Databricks？](what-is-azure-databricks.md)
 
-在运行本快速入门所述的 Spark 作业期间，我们将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。 
+在运行本快速入门所述的 Spark 作业期间，我们将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -31,9 +31,9 @@ ms.locfileid: "50747858"
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-在本部分，使用 Azure 门户创建 Azure Databricks 工作区。 
+在本部分，使用 Azure 门户创建 Azure Databricks 工作区。
 
-1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。 
+1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。
 
     ![Azure 门户上的 Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
 
@@ -41,8 +41,8 @@ ms.locfileid: "50747858"
 
     ![创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
-    提供以下值： 
-     
+    提供以下值：
+    
     |属性  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
@@ -59,8 +59,8 @@ ms.locfileid: "50747858"
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
-> [!NOTE] 
-> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。  
+> [!NOTE]
+> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后单击“启动工作区”。
 
@@ -75,10 +75,10 @@ ms.locfileid: "50747858"
     除以下值外，接受其他所有默认值：
 
     * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0** 的群集。 
+    * 在本文中，请创建运行时为 **4.0** 的群集。
     * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
-    选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。 
+    选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
@@ -86,29 +86,28 @@ ms.locfileid: "50747858"
 ## <a name="download-a-sample-data-file"></a>上传示例数据文件
 下载示例 JSON 数据文件并将其保存到 Azure blob 存储中。
 
-1. [从 Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。 
+1. [从 Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。
 
-2. 如果还没有存储帐户，请创建一个。 
-   - 在 Azure 门户中，选择“创建资源”。  选择**存储**类别，然后选择**存储帐户**  
-   - 为存储帐户提供唯一名称。
-   - 选择“帐户类型”：“Blob 存储”
-   - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
-   
-   有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。 
+2. 如果还没有存储帐户，请创建一个。
+    - 在 Azure 门户中，选择“创建资源”。 选择**存储**类别，然后选择**存储帐户**
+    - 为存储帐户提供唯一名称。
+    - 选择“帐户类型”：“Blob 存储”
+    - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
+    
+    有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。
 
 3. 在 Blob 存储帐户中创建一个存储容器，并将示例 json 文件上传到该容器中。 可以使用 Azure 门户或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)来上传文件。
 
-   - 在 Azure 门户中打开存储帐户。
-   - 选择“Blob”。
-   - 选择“+ 容器”来新建空容器。
-   - 为容器提供**名称**，例如 `databricks`。 
-   - 选择“专用(非匿名访问)”访问级别。
-   - 创建容器后，选择容器名称。
-   - 选择“上传”按钮。
-   - 在“文件”页上，选择**文件夹图标**来浏览并选择要上传的示例文件 `small_radio_json.json`。 
-   - 选择“上传”来上传该文件。
-   
-   
+    - 在 Azure 门户中打开存储帐户。
+    - 选择“Blob”。
+    - 选择“+ 容器”来新建空容器。
+    - 为容器提供**名称**，例如 `databricks`。
+    - 选择“专用(非匿名访问)”访问级别。
+    - 创建容器后，选择容器名称。
+    - 选择“上传”按钮。
+    - 在“文件”页上，选择**文件夹图标**来浏览并选择要上传的示例文件 `small_radio_json.json`。
+    - 选择“上传”来上传该文件。
+
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
 执行以下任务在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
 
@@ -122,7 +121,7 @@ ms.locfileid: "50747858"
 
     单击“创建”。
 
-3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可通过两种方法来实现此关联。 可将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。  
+3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可通过两种方法来实现此关联。 可将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。
 
     > [!IMPORTANT]
     >本文使用**通过 DBFS 装载存储**的方式。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
@@ -150,7 +149,7 @@ ms.locfileid: "50747858"
 4. 运行一条 SQL 语句，以使用示例 JSON 数据文件 **small_radio_json.json** 中的数据创建一个临时表。 在以下代码片段中，请将占位符值替换为容器名称和存储帐户名称。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER。 在该代码片段中，`path` 表示已上传到 Azure 存储帐户的示例 JSON 文件所在的位置。
 
     ```sql
-    %sql 
+    %sql
     DROP TABLE IF EXISTS radio_sample_data;
     CREATE TABLE radio_sample_data
     USING json
@@ -166,7 +165,7 @@ ms.locfileid: "50747858"
 5. 让我们看看示例 JSON 数据的快照，以便更好地了解运行的查询。 将以下代码片段粘贴到代码单元中，并按 **SHIFT + ENTER**。
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -193,7 +192,7 @@ ms.locfileid: "50747858"
 
 9. 输出将显示以下屏幕截图中所示的可视表示形式：
 
-     ![自定义条形图](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "自定义条形图")
+    ![自定义条形图](./media/quickstart-create-databricks-workspace-portal/databricks-sql-query-output-bar-chart.png "自定义条形图")
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -201,7 +200,7 @@ ms.locfileid: "50747858"
 
 ![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 __ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,7 +16,7 @@ ms.locfileid: "47408498"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用公用静态 IP 地址
 
-默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 而是可能需要分配静态 IP 地址，此地址可被列入服务访问白名单。
+默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 而是可能需要分配静态 IP 地址，此地址可被列入服务访问允许列表。
 
 本文介绍了如何创建和使用静态公用 IP 地址，以便用于 AKS 群集中的出口流量。
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471282"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515720"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -32,27 +32,14 @@ ms.locfileid: "49471282"
 
 ## <a name="prerequisites"></a>先决条件
 
-所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。
+所有[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 客户均可使用成本分析。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 若要详细了解如何分配对成本管理数据的访问权限，请参阅[分配对数据的访问权限](assign-access-acm-data.md)。
 
-
-|**范围**|**定义位置**|**在范围内分析成本所需的访问权限**|**先决条件 EA 设置**|**将计费数据合并到**|
-|---                |---                  |---                   |---            |---           |
-|计费帐户<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|企业管理员|无|企业协议中的所有订阅|
-|部门|[https://ea.azure.com ](https://ea.azure.com )|部门管理员|已启用 DA 查看费用|属于一个合约帐户的所有订阅，该帐户已关联到部门|
-|合约帐户<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|帐户所有者|已启用 AO 查看费用|注册帐户的所有订阅|
-|管理组|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|管理组下的所有订阅|
-|订阅|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|订阅中的所有资源/资源组|
-|资源组|[https://portal.azure.com ](https://portal.azure.com )|成本管理读者（或读者）|已启用 AO 查看费用|资源组中的所有资源|
-
-<sup>1</sup>计费帐户通常称为企业协议或合约。
-
-<sup>2</sup>合约帐户通常称为帐户所有者。
-
-有关配置 **DA 视图费用**和 **AO 视图费用**设置的详细信息，请参阅[启用对成本的访问权限](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs)。
-
-
-
-
+- 计费帐户
+- 部门
+- 注册帐户
+- 管理组
+- 订阅
+- 资源组
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

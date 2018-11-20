@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42702400"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615200"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -44,7 +44,7 @@ ms.locfileid: "42702400"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | *myLoadBalancer*                                   |
-    | Type          | 公共                                        |
+    | 类型          | 公共                                        |
     | SKU           | 标准                          |
     | 公共 IP 地址 | 选择“新建”并在文本框中键入 *myPublicIP*。 默认情况下公共 IP 地址的标准 SKU 处于选中状态。 对于“可用性区域”，请选择“区域冗余”。 |
     | 订阅               | 选择订阅。    |
@@ -145,6 +145,7 @@ ms.locfileid: "42702400"
     - *myHealthProbe* - 运行状况探测的名称。
     - **HTTP** - 协议类型。
     - *80* - 端口号。
+    - *Healthprobe.aspx* - URI 路径。 可以将此值替换为任何其他的 URI，或者保留默认路径值 **"\\"** 以获取默认 URI。
     - *15* - 两次探测尝试之间的**时间间隔**（以秒为单位）。
     - *2* - 将 VM 视为不正常所对应的**不正常阈值**或连续探测失败次数。
 4. 单击“确定”。

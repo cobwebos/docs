@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342201"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636578"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -39,7 +39,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ![队列](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。
+队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。 **
 
 ## <a name="topics"></a>主题
 
@@ -115,9 +115,9 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 服务总线与以下 Azure 服务完全集成：
 
-- [事件网格](https://azure.microsoft.com/services/event-grid/) 
-- [逻辑应用](https://azure.microsoft.com/services/logic-apps/) 
-- [函数](https://azure.microsoft.com/services/functions/) 
+- [事件网格](https://azure.microsoft.com/services/event-grid/) 
+- [逻辑应用](https://azure.microsoft.com/services/logic-apps/) 
+- [函数](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [流分析](https://azure.microsoft.com/services/stream-analytics/)
  

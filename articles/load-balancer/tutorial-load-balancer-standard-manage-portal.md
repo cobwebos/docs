@@ -1,5 +1,5 @@
 ---
-title: 教程：创建和管理标准负载均衡器 - Azure 门户 | Microsoft Docs
+title: 教程：对从 Internet 到 VM 的流量进行负载均衡 - Azure 门户 | Microsoft Docs
 description: 本教程展示了如何使用 Azure 门户创建和管理标准负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ef021a89cb1cba5a3240ade5ba67141940413cdc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380036"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687295"
 ---
-# <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建和管理标准负载均衡器
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡
 
-可以通过负载均衡将传入请求分布到多个虚拟机，从而提供更高级别的可用性和可伸缩性。 在本教程中，你将了解 Azure 标准负载均衡器的各种组件，这些组件用于分发流量和提供高可用性。 学习如何：
+可以通过负载均衡将传入请求分布到多个虚拟机，从而提供更高级别的可用性和可伸缩性。 本教程介绍 Azure 标准负载均衡器的各种组件，这些组件用于将 Internet 流量分发到 VM，并提供高可用性。 学习如何：
 
 
 > [!div class="checklist"]
@@ -52,7 +52,7 @@ ms.locfileid: "44380036"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | *myLoadBalancer*                                   |
-    | Type          | 公共                                        |
+    | 类型          | 公共                                        |
     | SKU           | 标准                          |
     | 公共 IP 地址 | 选择“新建”并在文本框中键入 *myPublicIP*。 默认情况下公共 IP 地址的标准 SKU 处于选中状态。 对于“可用性区域”，请选择“区域冗余”。 |
     | 订阅               | 选择订阅。    |

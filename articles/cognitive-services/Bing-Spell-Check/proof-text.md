@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361705"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345702"
 ---
 # <a name="what-is-bing-spell-check-api"></a>什么是必应拼写检查 API？
 
@@ -42,9 +42,12 @@ ms.locfileid: "49361705"
 <br /><br/>**注意：** 如果查询文本长度超出 4096，系统会将其截断，仅保留 4096 个字符，然后对其进行处理。 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell - 适用于 Web 搜索/查询方案
 `Spell` 性能更强，可以返回更好的搜索结果。 `Spell` 模式可以找出大多数拼写错误，但找不出 `Proof` 捕获的某些语法错误，例如大写和重复单词。
-<br /></br>**注意：** 支持的最大查询长度如下所示。 如果查询超出界限，则从结果看来，查询似乎并没有更改。
-<ul><li>130 个字符的限制适用于语言代码 en、de、es、fr、pl、pt、sv、ru、nl、nb、tr-tr、it、zh、ko。 </li>
-<li>65 个字符的限制适用于其他语言代码</li></ul>
+
+> [!NOTE]
+> * 支持的最大查询长度如下。 如果查询超出最大长度，则查询及其结果不会更改。
+>    * 130 个字符的限制适用于以下语言代码：en、de、es、fr、pl、pt、sv、ru、nl、nb、tr-tr、it、zh、ko。 
+>    * 65 个字符的限制适用于所有其他语言代码。
+> * “拼写”模式不支持在查询中使用方括号字符（`[` 和 `]`），否则可能导致结果不一致。 建议在使用“拼写”模式时从查询中删除它们。
 
 ## <a name="market-setting"></a>市场设置
 需在请求 URL 的查询参数中指定市场，否则，拼写器会根据 IP 地址采用默认市场。

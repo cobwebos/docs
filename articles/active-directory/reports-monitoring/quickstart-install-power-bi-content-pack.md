@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816644"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622528"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>快速入门：安装 Azure Active Directory Power BI 内容包
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816644"
 |目前，Azure AD Power BI 内容包使用 Azure AD Graph API 检索 Azure AD 租户中的数据。 因此，你可能会发现内容包中可用数据与使用[用于报告的 Microsoft Graph API](concept-reporting-api.md) 检索的数据之间存在一些差异。 |
 |  |
 
-使用 Azure Active Directory 的 Power BI 内容包，可以深入了解你的 Active Directory 中正在发生的事情。 可以下载预建内容包并使用它通过 Power BI 提供的丰富可视化效果体验来报告你的目录中的所有活动。 还可以轻松创建自己的仪表板并将其与组织中的任何其他人共享。 
+使用 Azure Active Directory (Azure AD) 的 Power BI 内容包，可以可视化环境中的报表数据。 可以下载预建内容包并使用它通过 Power BI 提供的丰富可视化效果体验来报告你的目录中的所有活动。 还可以轻松创建自己的仪表板并将其与组织中的任何其他人共享。 
 
 在本快速入门中，你将了解如何安装内容包。
 

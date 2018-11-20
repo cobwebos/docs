@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232200"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685950"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>什么是 Azure Data Box Edge（预览版）？ 
 
@@ -84,7 +84,7 @@ Data Box Edge 物理设备具有以下功能：
 | 内存| 64 GB RAM|
 | 磁盘| 8 块 NVMe SSD，每块磁盘的空间为 1.6 TB <br> 如果一个 NVMe SSD 发生故障，系统也会发生故障。 |
 | 本地存储容量| 12.8 TB 总容量|
-| 网络接口| 2 个 1 GbE 接口 - 1 个管理接口，用户不可配置，用于初始设置。 其他数据接口可由用户配置，默认为 DHCP。 <br>2 个 25 GbE 接口 – 这些接口也可用作 10 GbE 接口。 用户可将这些数据接口配置为 DHCP（默认）或静态接口。 <br> 2 个 25 GbE 接口 - 用户可将这些数据接口配置为 DHCP（默认）或静态接口。|
+| 网络接口| 2 个 1 GbE 接口 - 1 个管理接口，用户不可配置，用于初始设置。 其他接口可由用户配置，可以用于数据传输，默认为 DHCP。 <br>2 个 25 GbE 接口 – 这些接口也可用作 10 GbE 接口。 用户可将这些数据接口配置为 DHCP（默认）或静态接口。 <br> 2 个 25 GbE 接口 - 用户可将这些数据接口配置为 DHCP（默认）或静态接口。|
 
 ## <a name="components"></a>组件
 

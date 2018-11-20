@@ -165,7 +165,7 @@ ms.locfileid: "43669189"
 1. 在浏览器中打开新选项卡并登录到 Meta Networks 连接器管理员帐户。
     
     > [!NOTE]
-    > Meta Networks 连接器是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入白名单的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入白名单。
+    > Meta Networks 连接器是一个安全的系统。 因此在访问对方门户之前，需首先获取对方列入允许列表的公共 IP 地址。 访问[此处](https://whatismyipaddress.com/)给出的链接可获取公共 IP 地址。 将 IP 地址发送到 [Meta Networks 连接器客户端支持团队](mailto:support@metanetworks.com)可将 IP 地址列入允许列表。
     
 1. 转到“管理员”，然后选择“设置”。
     

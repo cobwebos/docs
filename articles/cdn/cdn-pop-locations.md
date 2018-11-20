@@ -49,5 +49,5 @@ ms.locfileid: "42141853"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要获取最新的 IP 地址白名单，请参阅 [Azure CDN 边缘节点 API](https://docs.microsoft.com/rest/api/cdn/edgenodes)。
+* 若要获取最新的 IP 地址允许列表，请参阅 [Azure CDN 边缘节点 API](https://docs.microsoft.com/rest/api/cdn/edgenodes)。
 

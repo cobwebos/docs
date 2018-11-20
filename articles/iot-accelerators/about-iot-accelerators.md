@@ -3,24 +3,24 @@ title: Azure IoT 解决方案加速器简介 | Microsoft Docs
 description: 了解 Azure IoT 解决方案加速器。 IoT 解决方案加速器是完整的、随时可部署的端到端 IoT 解决方案。
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/24/2018
+ms.date: 11/09/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 7020d8a1756702d8c2b1998eef5a3fc64809ca5e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308106"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345107"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
-基于云的 IoT 解决方案通常使用自定义代码和多个云服务来管理设备连接、数据处理、分析和呈现。
+基于云的 IoT 解决方案通常使用自定义代码和云服务来管理设备连接、数据处理、分析和呈现。
 
-IoT 解决方案加速器是完整的、随时可部署的 IoT 解决方案集合，可以实现远程监视、互联工厂、预测性维护、设备模拟等常见 IoT 方案。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
+IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以实现常见的 IoT 方案。 这些方案包括远程监视、连接工厂、预测性维护和设备模拟。 部署解决方案加速器时，部署将包括全部所需的基于云的服务，以及全部所需的应用程序代码。
 
 解决方案加速器是你自己的 IoT 解决方案的起点。 所有解决方案加速器的源代码都是开源的，并已在 GitHub 中提供。 建议按要求下载并自定义解决方案加速器。
 
@@ -34,7 +34,7 @@ IoT 解决方案加速器是完整的、随时可部署的 IoT 解决方案集�
 
 ### <a name="remote-monitoring"></a>远程监视
 
-使用此解决方案加速器可以从多个远程设备收集遥测数据，以及控制远程设备。 示例设备包括客户现场安装的散热系统，或者远地泵房中安装的阀门。
+使用此解决方案加速器可以从远程设备收集遥测数据，以及控制远程设备。 示例设备包括客户现场安装的散热系统，或者远地泵房中安装的阀门。
 
 可以使用远程监视仪表板查看联网设备发出的遥测数据、预配新设备，或者升级联网设备上的固件：
 
@@ -58,7 +58,7 @@ IoT 解决方案加速器是完整的、随时可部署的 IoT 解决方案集�
 
 ### <a name="device-simulation"></a>设备模拟
 
-使用此解决方案加速器可以运行能够生成真实遥测数据的多个模拟设备。 可以使用此解决方案加速器测试其他解决方案加速器的行为，或测试自己的自定义 IoT 解决方案。
+使用此解决方案加速器可以运行能够生成真实遥测数据的模拟设备。 可以使用此解决方案加速器测试其他解决方案加速器的行为，或测试自己的自定义 IoT 解决方案。
 
 可以使用设备模拟 Web 应用来配置并运行模拟：
 

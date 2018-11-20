@@ -92,7 +92,7 @@ Azure AD 域服务不向此列表发送用于广告、更新或销售目的电�
 
 #### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>我似乎没有收到电子邮件通知，即使已提供我的电子邮件地址也没有收到。 为什么？
 
-请在电子邮件垃圾邮件或垃圾文件夹中检查通知，确保你属于白名单发件人 (azure-noreply@microsoft.com)。
+请在电子邮件垃圾邮件或垃圾文件夹中检查通知，确保你属于允许列表发件人 (azure-noreply@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 - [解决托管域中的警报](active-directory-ds-troubleshoot-alerts.md)

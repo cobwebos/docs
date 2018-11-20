@@ -65,7 +65,7 @@ MyApps 门户至少要求使用支持 JavaScript 且已启用 CSS 的浏览器�
 
 
 MyApps 门户扩展当前适用于：
-- **Edge**：Windows 10 周年纪念版或更高版本上。 
+- **Microsoft Edge**：Windows 10 周年纪念版或更高版本上。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。

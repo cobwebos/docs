@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377825"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625177"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -23,6 +23,7 @@ ms.locfileid: "49377825"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
+* 提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept)，以便使用现有的 Azure 媒体服务资产（仅付费帐户支持此功能）。
 
 本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。  
 
@@ -50,6 +51,35 @@ ms.locfileid: "49377825"
 
 此参数用于指定与视频关联的 ID。 此 ID 可以应用到外部“视频内容管理”(VCM) 系统集成。 位于视频索引器门户中的视频可以使用指定的外部 ID 进行搜索。
 
+### <a name="callbackurl"></a>callbackUrl
+
+一个 URL，用于通知客户（使用 POST 请求）以下事件：
+
+- 索引状态更改： 
+    - 属性：    
+    
+        |名称|Description|
+        |---|---|
+        |id|视频 ID|
+        |state|视频状态|  
+    - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- 在视频中标识的人：
+    - 属性
+    
+        |名称|Description|
+        |---|---|
+        |id| 视频 ID|
+        |faceId|出现在视频索引中的人脸 ID|
+        |knownPersonId|在人脸模型中唯一的个人 ID|
+        |personName|人名|
+        
+     - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>说明
+
+- 视频索引器返回在原始 URL 中提供的任何现有参数。
+- 提供的 URL 必须进行编码。
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
@@ -60,11 +90,11 @@ ms.locfileid: "49377825"
 
 价格取决于所选索引编制选项。  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>priority
 
-一个 POST URL，用于通知索引编制何时完成。 视频索引器向其添加两个查询字符串参数：id 和 state。 例如，如果回调 URL 为“https://test.com/notifyme?projectName=MyProject” ，则通知会和其他参数一起发送至“ https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed ”。
+视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效：**Low**（低）、**Normal**（正常，默认值）、**High**（高）。
 
-也可在 POST 对视频索引器的调用之前将更多参数添加到 URL，然后这些参数就会包括在回调中。 随后即可在代码中分析查询字符串，并取回查询字符串中的所有指定参数（最初追加到 URL 的数据以及视频索引器提供的信息）。需要对 URL 进行编码。
+仅付费帐户支持 **Priority** 参数。
 
 ### <a name="streamingpreset"></a>streamingPreset
 

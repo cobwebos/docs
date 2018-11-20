@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 67cd78d4900b8ce53cf0c50116c02a9c1b967687
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0683516d16bf1501eee83901c5171811b8c0e44d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958757"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621541"
 ---
 # <a name="manage-database-accounts-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理数据库帐户
 
-本文介绍如何管理 Cosmos DB 帐户，以便设置多宿主功能、添加/删除区域、配置多个写入区域，以及设置故障转移优先级。 
+本文介绍如何管理 Azure Cosmos DB 帐户，以便设置多宿主功能、添加/删除区域、配置多个写入区域，以及设置故障转移优先级。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -28,7 +28,7 @@ ms.locfileid: "50958757"
 
 ```bash
 # Create an account
-az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Group Name>
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group Name>
 ```
 
 ## <a name="configure-clients-for-multi-homing"></a>配置多宿主客户端
@@ -122,13 +122,13 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ```bash
 # Given an account created with 1 region like so
-az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Group name> --locations 'eastus=0'
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0'
 
 # Add a new region by adding another region to the list
-az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Group name> --locations 'eastus=0 westus=1'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0 westus=1'
 
 # Remove a region by removing a region from the list
-az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Group name> --locations 'westus=0'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'westus=0'
 ```
 
 ## <a name="configure-multiple-write-regions"></a>配置多个写入区域
@@ -137,17 +137,17 @@ az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Gr
 
 创建数据库帐户时，请确保启用“多区域写入”设置。
 
-![创建 Cosmos DB 帐户的屏幕截图](./media/how-to-manage-database-account/account-create.png)
+![Azure Cosmos 帐户创建屏幕截图](./media/how-to-manage-database-account/account-create.png)
 
 ### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
 ```bash
-az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Group name> --enable-multiple-write-locations true
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-multiple-write-locations true
 ```
 
 ### <a id="configure-multiple-write-regions-arm"></a>资源管理器模板
 
-以下 JSON 代码是一个示例性的资源管理器模板。 可以使用它来部署 Azure Cosmos DB 帐户，并将一致性策略设置为“有限过期”，将最大过期时间间隔设置为 5 秒钟，将可以忍受的最大过期请求数设置为 100。 如需了解资源管理器模板的格式和语法，请参阅[资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)文档。
+以下 JSON 代码是一个示例性的资源管理器模板。 可以使用它来部署 Azure Cosmos 帐户，并将一致性策略设置为“有限过期”，将最大过期时间间隔设置为 5 秒钟，将可以忍受的最大过期请求数设置为 100。 如需了解资源管理器模板的格式和语法，请参阅[资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)文档。
 
 ```json
 {
@@ -202,11 +202,11 @@ az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Gr
 ```
 
 
-## <a name="enable-manual-failover-for-your-cosmos-account"></a>为 Cosmos 帐户启用手动故障转移
+## <a id="manual-failover"></a>为 Azure Cosmos 帐户启用手动故障转移
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure 门户
 
-1. 导航到 Azure Cosmos DB 帐户，打开“全局复制数据”菜单。
+1. 导航到 Azure Cosmos 帐户，打开“全局复制数据”菜单。
 
 2. 在菜单顶部单击“手动故障转移”按钮。
 
@@ -223,14 +223,14 @@ az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Gr
 ```bash
 # Given your account currently has regions with priority like so: 'eastus=0 westus=1'
 # Change the priority order to trigger a failover of the write region
-az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Group name> --locations 'eastus=1 westus=0'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=1 westus=0'
 ```
 
-## <a name="enable-automatic-failover-for-your-cosmos-account"></a>为 Cosmos 帐户启用自动故障转移
+## <a id="automatic-failover"></a>为 Azure Cosmos 帐户启用自动故障转移
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure 门户
 
-1. 在 Azure Cosmos DB 帐户中，打开“全局复制数据”窗格。 
+1. 在 Azure Cosmos 帐户中，打开“全局复制数据”窗格。 
 
 2. 在窗格顶部单击“自动故障转移”按钮。
 
@@ -248,20 +248,20 @@ az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Gr
 
 ```bash
 # Enable automatic failover on account creation
-az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Group name> --enable-automatic-failover true
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover true
 
 # Enable automatic failover on an existing account
-az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Group name> --enable-automatic-failover true
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover true
 
 # Disable automatic failover on an existing account
-az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Group name> --enable-automatic-failover false
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover false
 ```
 
-## <a name="set-failover-priorities-for-your-cosmos-account"></a>为 Cosmos 帐户设置故障转移优先级
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户设置故障转移优先级
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure 门户
 
-1. 在 Azure Cosmos DB 帐户中，打开“全局复制数据”窗格。 
+1. 在 Azure Cosmos 帐户中，打开“全局复制数据”窗格。 
 
 2. 在窗格顶部单击“自动故障转移”按钮。
 
@@ -280,12 +280,12 @@ az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Gr
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 
 ```bash
-az cosmosdb failover-priority-change --name <Cosmos DB Account name> --resource-group <Resource Group name> --failover-policies 'eastus=0 westus=2 southcentralus=1'
+az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies 'eastus=0 westus=2 southcentralus=1'
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过以下文档了解如何在 Cosmos DB 中管理一致性级别和数据冲突：
+可以通过以下文档了解如何在 Azure Cosmos DB 中管理一致性级别和数据冲突：
 
 * [如何管理一致性](how-to-manage-consistency.md)
 * [如何管理区域之间的冲突](how-to-manage-conflicts.md)

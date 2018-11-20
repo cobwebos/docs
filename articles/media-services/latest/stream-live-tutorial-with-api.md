@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET Core 通过 Azure 媒体服务 v3 进行实时流式传输 | Microsoft Docs
+title: 通过 Azure 媒体服务 v3 进行实时流式传输 | Microsoft Docs
 description: 本教程详述了使用 .NET Core 通过媒体服务 v3 进行实时流式传输的步骤。
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392329"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613386"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>使用 .NET Core 通过 Azure 媒体服务 v3 进行实时流式传输
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>教程：使用 API 通过媒体服务 v3 进行实时流式传输
 
-在媒体服务中，[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) 负责处理实时传送视频流内容。 LiveEvent 提供输入终结点（引入 URL），然后由你将该终结点提供给实时编码器。 LiveEvent 从实时编码器接收实时输入流，并通过一个或多个 [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) 使其可用于流式处理。 LiveEvents 还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。 本教程演示如何使用 .NET Core 创建**直通**类型的直播事件。 
+在 Azure 媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责处理实时传送视频流内容。 LiveEvent 提供输入终结点（引入 URL），然后由你将该终结点提供给实时编码器。 LiveEvent 从实时编码器接收实时输入流，并通过一个或多个 [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) 使其可用于流式处理。 LiveEvents 还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。 本教程演示如何使用 .NET Core 创建**直通**类型的直播事件。 
 
 > [!NOTE]
 > 确保在继续操作之前查看[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。 
@@ -31,7 +31,6 @@ ms.locfileid: "49392329"
 本教程介绍如何：    
 
 > [!div class="checklist"]
-> * 创建媒体服务帐户
 > * 访问媒体服务 API
 > * 配置示例应用
 > * 检查执行实时传送视频流的代码
@@ -44,9 +43,17 @@ ms.locfileid: "49392329"
 
 以下是完成本教程所需具备的条件。
 
-* 安装 Visual Studio Code 或 Visual Studio
-* 一个用于广播事件的相机或设备（例如便携式计算机）。
-* 一个本地实时编码器，用于将信号从相机转换为发送至媒体服务实时传送视频流服务的流。 流必须为 **RTMP** 或“平滑流式处理”格式。
+- 安装 Visual Studio Code 或 Visual Studio。
+- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+
+    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
+
+- [创建媒体服务帐户](create-account-cli-how-to.md)。
+
+    请务必记住用于资源组名称和媒体服务帐户名称的值
+
+- 一个用于广播事件的相机或设备（例如便携式计算机）。
+- 一个本地实时编码器，用于将信号从相机转换为发送至媒体服务实时传送视频流服务的流。 流必须为 **RTMP** 或“平滑流式处理”格式。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -61,10 +68,6 @@ ms.locfileid: "49392329"
 > [!IMPORTANT]
 > 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则最终会在帐户中有多个 LiveEvent。 <br/>
 > 确保停止正在运行的 LiveEvent， 否则需**付费**！
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。 可以使用 CloudShell 工具。
+如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。
 
-在 CloudShell 中，执行以下命令：
+执行以下 CLI 命令：
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

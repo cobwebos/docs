@@ -1,5 +1,5 @@
 ---
-title: 使用企业安全性套餐在 HDInsight 中配置 Kafka 策略 - Azure
+title: 使用企业安全性套餐在 HDInsight 中配置 Apache Kafka 策略 - Azure
 description: 了解如何使用企业安全性套餐为 Azure HDInsight 中的 Kafka 配置 Apache Ranger 策略。
 services: hdinsight
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037135"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633028"
 ---
-# <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览）在 HDInsight 中配置 Kafka 策略
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览）在 HDInsight 中配置 Apache Kafka 策略
 
-了解如何为企业安全性套餐 (ESP) Kafka 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 `sales*` 和 `marketingspend` 主题的访问。
+了解如何为企业安全性套餐 (ESP) Apache Kafka 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 `sales*` 和 `marketingspend` 主题的访问。
 
 本教程介绍如何执行下列操作：
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729986"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288027"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -26,10 +26,16 @@ ms.locfileid: "45729986"
 * 运行向导（实体技能将检测人员、地点和组织）
 * 使用[搜索浏览器](search-explorer.md)查询扩充的数据。
 
+## <a name="supported-regions"></a> 支持的区域
+
 可在以下区域中创建的 Azure 搜索服务中试用认知搜索：
 
+* 美国中西部
 * 美国中南部
+* 美国东部
 * 西欧
+* 北欧
+* 东南亚
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -57,7 +63,7 @@ ms.locfileid: "45729986"
 
 1. 对于“资源组”，请创建一个资源组用于包含本快速入门中创建的所有资源。 这样可以在完成本快速入门后更轻松地清理资源。
 
-1. 对于“位置”，请选择“美国中南部”或“西欧”。 预览版目前只能在这些区域使用。
+1. 对于“位置”，请为认知搜索选择[支持的区域](#supported-regions)之一。
 
 1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
 

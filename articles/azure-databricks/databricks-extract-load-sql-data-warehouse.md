@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: c67a223a95e73161b58f8cd4f2aeba2614a9ee76
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419073"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615511"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
-本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 将数据从 Azure Data Lake Store 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，然后将转换的数据加载到 Azure SQL 数据仓库中。 
+本教程使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。 将数据从 Azure Data Lake Store 提取到 Azure Databricks 中，在 Azure Databricks 中对数据运行转换操作，然后将转换的数据加载到 Azure SQL 数据仓库中。
 
 本教程中的步骤使用 Azure Databricks 的 SQL 数据仓库连接器将数据传输到 Azure Databricks。 而此连接器又使用 Azure Blob 存储来临时存储在 Azure Databricks 群集和 Azure SQL 数据仓库之间传输的数据。
 
@@ -27,7 +27,7 @@ ms.locfileid: "50419073"
 
 ![Azure Databricks 与 Data Lake Store 和 SQL 数据仓库](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks 与 Data Lake Store 和 SQL 数据仓库")
 
-本教程涵盖以下任务： 
+本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 创建 Azure Databricks 工作区
@@ -64,7 +64,7 @@ ms.locfileid: "50419073"
 
     ![创建 Azure Databricks 工作区](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
-    提供以下值： 
+    提供以下值：
      
     |属性  |说明  |
     |---------|---------|
@@ -95,14 +95,14 @@ ms.locfileid: "50419073"
     除以下值外，接受其他所有默认值：
 
     * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0** 的群集。 
+    * 在本文中，请创建运行时为 **4.0** 的群集。
     * 请务必选中**在不活动超过 \_\_ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
 
-在此部分，请创建 Azure Data Lake Store 帐户并将 Azure Active Directory 服务主体与之相关联。 本教程的后面部分将在 Azure Databricks 中使用该服务主体访问 Azure Data Lake Store。 
+在此部分，请创建 Azure Data Lake Store 帐户并将 Azure Active Directory 服务主体与之相关联。 本教程的后面部分将在 Azure Databricks 中使用该服务主体访问 Azure Data Lake Store。
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源” > “存储” > “Data Lake Store”。
 3. 在“新建 Data Lake Store”边栏选项卡中，提供以下屏幕截图中所示的值：
@@ -189,7 +189,7 @@ ms.locfileid: "50419073"
 
 1. 复制“目录 ID”。 此值即为租户 ID。
 
-   ![租户 ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
+   ![租户 ID](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
 
 ## <a name="upload-data-to-data-lake-store"></a>将数据上传到 Data Lake Store
 
@@ -306,7 +306,7 @@ ms.locfileid: "50419073"
 
 ## <a name="transform-data-in-azure-databricks"></a>在 Azure Databricks 中转换数据
 
-原始示例数据 **small_radio_json.json** 捕获某个电台的听众，有多个不同的列。 在此部分，请对该数据进行转换，仅检索数据集中的特定列。 
+原始示例数据 **small_radio_json.json** 捕获某个电台的听众，有多个不同的列。 在此部分，请对该数据进行转换，仅检索数据集中的特定列。
 
 1. 一开始仅从已创建的数据帧检索 *firstName*、*lastName*、*gender*、*location* 和 *level* 列。
 
@@ -340,7 +340,7 @@ ms.locfileid: "50419073"
         |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
         +---------+----------+------+--------------------+-----+
 
-2.  可以进一步转换该数据，将 **level** 列重命名为 **subscription_type**。
+2. 可以进一步转换该数据，将 **level** 列重命名为 **subscription_type**。
 
         val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDf.show()
@@ -382,7 +382,7 @@ ms.locfileid: "50419073"
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
-        val blobAccessKey =  "<ACCESS KEY>"
+        val blobAccessKey = "<ACCESS KEY>"
 
 2. 指定一个在 Azure Databricks 和 Azure SQL 数据仓库之间移动数据时需要使用的临时文件夹。
 
@@ -397,15 +397,15 @@ ms.locfileid: "50419073"
 
         //SQL Data Warehouse related settings
         val dwDatabase = "<DATABASE NAME>"
-        val dwServer = "<DATABASE SERVER NAME>" 
+        val dwServer = "<DATABASE SERVER NAME>"
         val dwUser = "<USER NAME>"
         val dwPass = "<PASSWORD>"
-        val dwJdbcPort =  "1433"
+        val dwJdbcPort = "1433"
         val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. 运行以下代码片段来加载转换的数据帧 **renamedColumnsDf**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。 请注意，Azure SQL 数据仓库需要一个主密钥。  可以通过在 SQL Server Management Studio 中执行“CREATE MASTER KEY”命令来创建主密钥。
+5. 运行以下代码片段来加载转换的数据帧 **renamedColumnsDf**，在 SQL 数据仓库中作为表来存储。 此代码片段在 SQL 数据库中创建名为 **SampleTable** 的表。 请注意，Azure SQL 数据仓库需要一个主密钥。 可以通过在 SQL Server Management Studio 中执行“CREATE MASTER KEY”命令来创建主密钥。
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
@@ -413,7 +413,7 @@ ms.locfileid: "50419073"
         
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
-            .option("url", sqlDwUrlSmall) 
+            .option("url", sqlDwUrlSmall)
             .option("dbtable", "SampleTable")
             .option( "forward_spark_azure_storage_credentials","True")
             .option("tempdir", tempDir)
@@ -434,9 +434,9 @@ ms.locfileid: "50419073"
 
 ![停止 Databricks 群集](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 __ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，群集在处于非活动状态一定时间后会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，群集在处于非活动状态一定时间后会自动停止。
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 本教程介绍了如何：
 
 > [!div class="checklist"]
