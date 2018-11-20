@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239536"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625991"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -220,7 +220,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="using-network-logging-tools"></a>使用网络日志记录工具
 可以捕获客户端和服务器之间的流量，以便提供有关客户端和服务器正在交换的数据以及底层网络状况的详细信息。 有用的网络日志记录工具包括：
 
-* [Fiddler](http://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅“[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 通信](#appendix-1)”。
+* [Fiddler](http://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅“[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量](#appendix-1)”。
 * [Microsoft 网络监视器 (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) 和 [Wireshark](http://www.wireshark.org/) 是免费的网络协议分析器，使用它们可以查看各种网络协议的详细数据包信息。 有关 Wireshark 的详细信息，请参阅“[附录 2：使用 Wireshark 捕获网络流量](#appendix-2)”。
 * Microsoft Message Analyzer 是 Microsoft 提供的用于取代 Netmon 的工具，它除了捕获网络数据包数据外，还可帮助查看和分析其他工具捕获的日志数据。 有关详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量](#appendix-3)”。
 * 如果要执行基本连接测试，以检查客户端计算机是否能够通过网络连接到 Azure 存储服务，则不能在客户端上使用标准 **ping** 工具来执行此操作。 但是，可以使用 [**tcping** 工具](http://www.elifulkerson.com/projects/tcping.php)来检查连接性。
@@ -414,7 +414,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 检查队列长度是否随着时间的推移不断增长。 如果没有足够多的工作线程可用于处理其他工作线程放入队列的所有消息，会出现这种情况。 此外，还应检查指标以了解删除请求是否失败，并应查看消息的出队计数，该计数可能指示删除消息的重复失败尝试次数。
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
-### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>指标显示 PercentThrottlingError 增加
+### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>度量值显示 PercentThrottlingError 增加
 当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务进行限制是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关存储帐户的可伸缩性目标和存储帐户中的分区的性能目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
 
 如果 **PercentThrottlingError** 度量值显示失败并出现限制错误的请求百分比增加，则需要调查以下两种情况之一：
@@ -642,7 +642,7 @@ client.SetServiceProperties(sp);
 请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。 成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：
 
 * **ResourceNotFound**（未找到 404），例如，对不存在的 blob 进行 GET 请求时生成。
-* **ResouceAlreadyExists**（冲突 409），例如，在资源已存在的情况下进行 **CreateIfNotExist** 操作时生成。
+* **ResourceAlreadyExists**（冲突 409），例如，在资源已存在的情况下进行 **CreateIfNotExist** 操作时生成。
 * **ConditionNotMet**（未修改 304），例如，进行条件操作时生成，例如仅在自上次操作以来映像已更新时，客户端才会发送 **ETag** 值和一个 HTTP **If-None-Match** 标头来请求此映像。
 
 可以在[常见的 REST API 错误代码](https://msdn.microsoft.com/library/azure/dd179357.aspx)页上找到存储服务返回的常见 REST API 错误代码的列表。

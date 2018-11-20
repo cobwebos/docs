@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4f44deac1e8833af064e0abea4e65c5ca2b2f93
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309166"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686188"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -125,7 +125,7 @@ ms.locfileid: "46309166"
 
 对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin 下查看。
 
-若要查看详细的分析，请启用“会话”日志。 在正常操作期间，请不要在启用此日志的情况下运行身份验证代理；仅用于故障排除。 日志内容只会在再次禁用日志后才可见。
+要进行详细分析，请启用“会话”日志（在“事件查看器”应用程序内右键单击以查找此选项）。 在正常操作期间，请不要在启用此日志的情况下运行身份验证代理；仅用于故障排除。 日志内容只会在再次禁用日志后才可见。
 
 ### <a name="detailed-trace-logs"></a>详细跟踪日志
 

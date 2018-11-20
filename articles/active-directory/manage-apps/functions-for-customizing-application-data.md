@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258827"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345787"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -37,7 +37,7 @@ ms.locfileid: "51258827"
 * 对于字符串常量，如果字符串中需要反斜杠 ( \ ) 或引号 ( " )，则必须使用反斜杠 ( \ ) 符号进行转义。 例如："公司名称: \"Contoso\""
 
 ## <a name="list-of-functions"></a>函数列表
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>附加
@@ -47,10 +47,10 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |通常是来自源对象的属性的名称 |
-| **suffix** |必选 |String |要附加到源值末尾的字符串。 |
+| **source** |必需 |String |通常是来自源对象的属性的名称 |
+| **suffix** |必需 |String |要附加到源值末尾的字符串。 |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -60,11 +60,11 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |通常是来自源对象的属性的名称。 |
-| **inputFormat** |必选 |String |源值的预期格式。 有关支持的格式，请参阅 [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
-| **outputFormat** |必选 |String |输出日期的格式。 |
+| **source** |必需 |String |通常是来自源对象的属性的名称。 |
+| **inputFormat** |必需 |String |源值的预期格式。 有关支持的格式，请参阅 [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
+| **outputFormat** |必需 |String |输出日期的格式。 |
 
 - - -
 ### <a name="join"></a>Join
@@ -76,10 +76,10 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| **separator** |必需 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
+| **source1  … sourceN ** |必需，次数可变 |String |要联接在一起的字符串值。 |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -89,11 +89,11 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |通常是属性的名称。 |
-| **start** |必选 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
-| **length** |必选 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
+| **source** |必需 |String |通常是属性的名称。 |
+| **start** |必需 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
+| **length** |必需 |integer |子字符串的长度。 如果长度超出 **source** 字符串，则函数将返回从 **start** 索引到 **source** 字符串末尾的子字符串。 |
 
 - - -
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -103,9 +103,9 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String | 通常是名字或姓氏属性 |
+| **source** |必需 |String | 通常是名字或姓氏属性 |
 
 - - -
 ### <a name="not"></a>Not
@@ -115,9 +115,9 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+| **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
 - - -
 ### <a name="replace"></a>将
@@ -141,15 +141,33 @@ ms.locfileid: "51258827"
   * 如果 **source** 有值，则使用 **regexPattern** 和 **regexGroupName** 从具有 **replacementPropertyName** 的属性中提取替换值。 替换值作为结果返回
 
 **参数：**<br> 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |通常是来自源对象的属性的名称。 |
+| **source** |必需 |String |通常是来自源对象的属性的名称。 |
 | **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
 | **regexPattern** |可选 |String |要在 **source** 中替换的值的正则表达式模式。 或者，当使用 replacementPropertyName 时，从替换属性中提取值的模式。 |
 | **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 replacementPropertyName 时，才会从替换属性中提取此组的值作为 replacementValue。 |
 | **replacementValue** |可选 |String |用于替换旧值的新值。 |
 | **replacementAttributeName** |可选 |String |当源没有值时，用于替换值的属性名称。 |
 | **template** |可选 |String |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为源值。 |
+
+- - -
+### <a name="selectuniquevalue"></a>SelectUniqueValue
+**函数：**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
+
+**说明：**<br> 需要至少两个参数，这些参数是使用表达式定义的唯一值生成规则。 此函数会评估每个规则，然后在目标应用/目录中检查生成的值的唯一性。 将返回找到的第一个唯一值。 如果所有值都已存在于目标中，则会托管该条目并在审核日志中记录原因。 可以提供的参数数目没有上限。
+
+> [!NOTE]
+>1. 这是一个顶级函数，不能嵌套。
+>2. 此函数仅供用于创建条目。 将其与属性一起使用时，请将“应用映射”属性设置为“仅在创建对象期间”。
+
+
+**参数：**<br> 
+
+| 名称 | 必需/重复 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| **uniqueValueRule1  … uniqueValueRuleN ** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表 |
+
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -159,9 +177,9 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必选 |String |**[appRoleAssignments]** 对象。 |
+| **[appRoleAssignments]** |必需 |String |**[appRoleAssignments]** 对象。 |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -171,9 +189,9 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |要更新的 **source** 值。 |
+| **source** |必需 |String |要更新的 **source** 值。 |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -183,12 +201,12 @@ ms.locfileid: "51258827"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | 类型 | 说明 |
+| 名称 | 必需/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **source** |必选 |String |要更新的 **source** 值。 |
+| **source** |必需 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
-| **key** |必选 |String |用来比较 **source** 值的 **key**。 |
-| **value** |必选 |String |与该 key 匹配的 **source** 的替换值。 |
+| **key** |必需 |String |用来比较 **source** 值的 **key**。 |
+| **value** |必需 |String |与该 key 匹配的 **source** 的替换值。 |
 
 ## <a name="examples"></a>示例
 ### <a name="strip-known-domain-name"></a>删除已知域名
@@ -238,6 +256,7 @@ NormalizeDiacritics([givenName])
 * **输出**：“Zoe”
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
+
 需要以某种格式将日期发送到 SaaS 应用程序。 <br>
 例如，需要为 ServiceNow 设置日期格式。
 
@@ -251,6 +270,7 @@ NormalizeDiacritics([givenName])
 * **输出**：“2015-01-23”
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
+
 需要根据存储在 Azure AD 中的状态代码来定义用户的时区。 <br>
 如果状态代码与任何预定义选项都不匹配，则使用默认值“澳大利亚/悉尼”。
 
@@ -262,6 +282,26 @@ NormalizeDiacritics([givenName])
 
 * **输入** (state)：“QLD”
 * **输出**：“澳大利亚/布里斯班”
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
+
+你需要根据用户的名字、中间名和姓氏为 UPN 属性生成值，并在将该值分配给 UPN 属性之前在目标 AD 目录中检查其唯一性。
+
+**表达式：** <br>
+
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+
+**示例输入/输出：**
+
+* **输入** (PreferredFirstName)："John"
+* **输入** (PreferredLastName)："Smith"
+* **输出**："John.Smith@contoso.com"，如果 UPN 值 John.Smith@contoso.com 尚未存在于目录中
+* **输出**："J.Smith@contoso.com"，如果 UPN 值 John.Smith@contoso.com 已存在于目录中
+* **输出**："Jo.Smith@contoso.com"，如果上面的两个值已存在于目录中
 
 ## <a name="related-articles"></a>相关文章
 * [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)

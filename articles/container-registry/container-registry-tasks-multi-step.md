@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/29/2018
 ms.author: danlep
-ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856711"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632686"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 
@@ -53,7 +53,7 @@ ACR 任务中的多步骤任务定义为 YAML 文件中的一系列步骤。 每
 * [`push`](container-registry-tasks-reference-yaml.md#push)：将生成的映像推送到容器注册表。 支持 Azure 容器注册表等专用注册表，并支持公共 Docker 中心。
 * [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：运行容器，使其可以在所运行任务的上下文中作为函数运行。 可将参数传递到容器的 `[ENTRYPOINT]`，并指定 env、detach 等属性，以及其他熟悉的 `docker run` 参数。 `cmd` 步骤类型可以实现单元测试和功能测试，并支持并发容器执行。
 
-多步骤任务有时就像生成并推送单个映像一样简单：
+以下代码片段演示如何组合使用这些任务步骤类型。 多步骤任务使用类似于以下内容的 YAML 文件可以像从 Dockerfile 构建单个映像并推送到注册表一样简单：
 
 ```yaml
 version: 1.0-preview-1
@@ -62,7 +62,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-有时又比较复杂，例如，以下任务包含生成、测试、helm 打包和 helm 部署的步骤：
+或更复杂，例如以下虚构的多步骤定义，其中包括用于生成、测试 helm 包和 helm 部署的步骤（未显示容器注册表和 Helm 存储库配置）：
 
 ```yaml
 version: 1.0-preview-1
@@ -84,6 +84,8 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
+
+有关多个方案的完整多步骤任务 YAML 文件和 Dockerfile，请参阅[任务示例][task-examples]。
 
 ## <a name="run-a-sample-task"></a>运行示例任务
 
@@ -163,6 +165,7 @@ Run ID: yd14 was successful after 19s
 
 * [任务参考](container-registry-tasks-reference-yaml.md) - 任务步骤的类型、属性和用法。
 * [任务示例][task-examples] - 从简单到复杂的多种方案的示例 `task.yaml` 文件。
+* [命令存储库](https://github.com/AzureCR/cmd) - 作为 ACR 任务命令的容器集合。
 
 <!-- IMAGES -->
 

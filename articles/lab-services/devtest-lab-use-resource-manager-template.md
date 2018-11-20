@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239502"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686375"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
@@ -42,7 +42,7 @@ ms.locfileid: "51239502"
 
    相同环境中的 VM 可以一起管理和共享相同的生命周期。 只要管理员以这种方式配置了实验室，已分配开发测试实验室用户角色的用户就可以使用这些模板创建环境。
 
-本文的其余部分将讨论使用 Mirosoft.DevTestLab/labs/virtualmachines 的 Resource Manager 模板。 实验室管理员可使用这些模板自动创建实验室 VM（如可认领 VM）或自动生成黄金映像（如映像工厂）。
+本文的其余部分将讨论使用 Microsoft.DevTestLab/labs/virtualmachines 的资源管理器模板。 实验室管理员可使用这些模板自动创建实验室 VM（如可认领 VM）或自动生成黄金映像（如映像工厂）。
 
 [创建 Azure 资源管理器模板的最佳做法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)提供许多指导原则和建议，可帮助创建可靠且易用的 Azure 资源管理器模板。
 

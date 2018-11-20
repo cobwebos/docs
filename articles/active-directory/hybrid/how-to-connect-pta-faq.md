@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637859"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685644"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -79,6 +79,23 @@ ms.locfileid: "49637859"
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>传递身份验证代理能否通过出站 Web 代理服务器进行通信？
 
 是的。 如果在本地环境中启用 Web 代理自动发现 (WPAD)，身份验证代理将自动尝试查找并使用网络中的 Web 代理服务器。
+
+如果环境中未设置 WPAD，则可以添加代理信息（如下所示）以允许直通身份验证代理与 Azure AD 通信：
+- 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”。
+- 在服务器上，导航到“C:\Program Files\Microsoft Azure AD Connect Authentication Agent”。
+- 编辑“AzureADConnectAuthenticationAgentService”配置文件并添加以下行（将“http://contosoproxy.com:8080”替换为实际代理地址）：
+
+```
+   <system.net>
+      <defaultProxy enabled="true" useDefaultCredentials="true">
+         <proxy
+            usesystemdefault="true"
+            proxyaddress="http://contosoproxy.com:8080"
+            bypassonlocal="true"
+         />
+     </defaultProxy>
+   </system.net>
+```
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 

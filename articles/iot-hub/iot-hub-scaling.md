@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 中心缩放 | Microsoft Docs
 description: 如何缩放 IoT 中心来支持预期的消息吞吐量和所需的功能。 概括介绍了每层支持的吞吐量和分片选项。
-author: kgremban
+author: wesmc7777
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: kgremban
-ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.author: wesmc
+ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143642"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633370"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -31,7 +31,7 @@ Azure IoT 中心提供两个层，即基本层和标准层，这两个层在所�
 
 IoT 中心的标准层启用了所有功能，是任何需要使用双向通信功能的 IoT 解决方案所必需的。 基本层启用了部分功能，适用于只需单向通信（从设备到云）的 IoT 解决方案。 这两个层提供相同的安全性和身份验证功能。
 
-创建 IoT 中心以后，即可从基本层升级到标准层，不需中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。 请注意，基本层 IoT 中心的最大分区限制为 8，标准层的为 32。 大多数 IoT 中心只需要 4 个分区。 分区限制是在创建 IoT 中心时选择的，它将设备到云消息关联到这些消息的并行读取器的数目。 从基本层迁移到标准层时，此值保持不变。 另请注意，每个 IoT 中心在每个层内只能选择一种类型的[版本](https://azure.microsoft.com/pricing/details/iot-hub/)。 例如，可以创建具有多个 S1 单元的 IoT 中心，但不能创建混合使用不同版本的单元，例如 S1 和 B3，或者 S1 和 S2。
+每个 IoT 中心在每个层内只能选择一种类型的[版本](https://azure.microsoft.com/pricing/details/iot-hub/)。 例如，可以创建具有多个 S1 单元的 IoT 中心，但不能创建混合使用不同版本的单元，例如 S1 和 B3，或者 S1 和 S2。
 
 | 功能 | 基本层 | 标准层 |
 | ---------- | ---------- | ------------- |
@@ -47,7 +47,22 @@ IoT 中心的标准层启用了所有功能，是任何需要使用双向通信�
 
 IoT 中心还提供一个免费层，用于测试和评估。 它具有标准层的所有功能，但消息传递有限额。 不能从免费层升级到基本层或标准层。 
 
-### <a name="iot-hub-rest-apis"></a>IoT 中心 REST API
+
+## <a name="partitions"></a>分区
+
+Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md)的许多核心组件，包括[分区](../event-hubs/event-hubs-features.md#partitions)。 IoT 中心的事件流通常由各种 IoT 设备报告的传入遥测数据进行填充。 事件流的分区功能用来减少当事件流有并发的读取和写入时发生的连接。 
+
+分区限制是在创建 IoT 中心时选择的，并且无法更改。 基本层 IoT 中心的最大分区限制为 8，标准层最大限制为 32。 大多数 IoT 中心只需要 4 个分区。 有关确定分区的详细信息，请参阅事件中心常见问题解答[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+
+
+## <a name="tier-upgrade"></a>层升级
+
+创建 IoT 中心以后，即可从基本层升级到标准层，不需中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。
+
+从基本层迁移到标准层时，分配配置保持不变。
+
+
+## <a name="iot-hub-rest-apis"></a>IoT 中心 REST API
 
 IoT 中心基本层和标准层所支持的功能存在差异，也就是说，某些 API 调用在基本层中心不适用。 下表显示了哪些 API 可用： 
 
@@ -115,7 +130,7 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解 IoT 中心功能和性能，请参阅 [IoT 中心定价][link-pricing]或 [IoT 中心配额和限制][IoT Hub quotas and throttles]。
+* 若要详细了解 IoT 中心功能和性能，请参阅 [IoT 中心定价][lnk-pricing]或 [IoT 中心配额和限制][IoT Hub quotas and throttles]。
 * 若要更改 IoT 中心层，请执行[升级 IoT 中心](iot-hub-upgrade.md)中的步骤。
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub

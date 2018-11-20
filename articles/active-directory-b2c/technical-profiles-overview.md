@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fe7d18cdfa88988e1c7dda7f1120d4750fa52e8c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269422"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578478"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -38,8 +38,7 @@ ms.locfileid: "48269422"
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - WsFed - 与任何 WsFed 议标识提供者联合。 
-- 会话管理 - 处理不同类型的会话。 
-- **用户旅程上下文提供程序**
+- [会话管理](active-directory-b2c-reference-sso-custom.md) - 处理不同类型的会话。 
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技术配置文件流

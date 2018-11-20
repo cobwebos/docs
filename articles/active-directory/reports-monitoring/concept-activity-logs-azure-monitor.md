@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）| Microsoft Docs
-description: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）概述
+description: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）简介
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,32 +13,32 @@ ms.topic: concept
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3a4fc814a40bf370a137a2045c6218d3ee4b8778
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395459"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625430"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure AD 活动日志（预览版）
 
-现在可以使用 Azure Monitor 将 Azure Active Directory (Azure AD) 活动日志路由到你自己的存储帐户或事件中心。 Azure Monitor 中的 Azure Active Directory 日志的公共预览版提供以下功能：
+现在可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点以便长期保留以及获取数据见解。 使用 Azure Monitor 中的 Azure AD 日志公共预览版可以：
 
-* 将 Azure 存储帐户的审核日志存档，以便长期保留数据。
-* 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将审核日志流式传输到 Azure 事件中心进行分析。
-* 将审核日志流式传输到事件中心，以便与自定义日志解决方案集成。
+* 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
+* 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
+* 将 Azure AD 活动日志流式传输到事件中心，以便与自定义日志解决方案集成。
 * 将 Azure AD 活动日志发送到 Log Analytics，以启用丰富的可视化效果以及对连接数据的监视和警报。
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>支持的报表
 
-可以使用此功能将审核活动日志和登录活动日志路由到 Azure 存储帐户、事件中心或自定义解决方案。 
+可以使用此功能将 Azure AD 活动日志和登录日志路由到 Azure 存储帐户、事件中心、Log Analytics 或自定义解决方案。 
 
-* **审核日志**：可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* **审核日志**: 可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * **登录日志**：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
 > [!NOTE]
@@ -101,25 +101,19 @@ ms.locfileid: "49395459"
 
 此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论已知问题。
 
-**问: 我应该从何处着手？** 
-
-**答**: 本文讨论部署此功能需要做哪些准备。 符合先决条件以后，请查看各个教程，了解如何配置日志并将其路由到事件中心。
-
----
-
 **问: 哪些日志包括在其中？**
 
 **答**: 登录活动日志和审核日志均可通过此功能进行路由，虽然与 B2C 相关的审核事件目前未包括在其中。 若要了解目前支持哪些类型的日志和哪些基于功能的日志，请参阅[审核日志架构](reference-azure-monitor-audit-log-schema.md)和[登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)。 
 
 ---
 
-**问: 执行某项操作之后，相应的日志多快会显示在事件中心？**
+**问：执行某项操作之后，相应的日志多快会显示在事件中心内？**
 
 **答**: 日志会在执行操作后两到五分钟内显示在事件中心。 有关事件中心的详细信息，请参阅[什么是 Azure 事件中心？](../../event-hubs/event-hubs-about.md)。
 
 ---
 
-**问: 执行某项操作之后，相应的日志多快会显示在存储帐户中？**
+**问：执行某项操作之后，相应的日志多快会显示在存储帐户中？**
 
 **答**: 就 Azure 存储帐户来说，执行操作之后，日志在其中的显示会有一个 5 到 15 分钟的延迟。
 

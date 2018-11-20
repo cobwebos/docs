@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7d65752787e65eeabf203f9bdc3ea11a1569f8a1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091685"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613369"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>用于 VM 的 Azure Monitor（预览版）常见问题解答
 本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -93,6 +93,11 @@ ms.locfileid: "50091685"
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>为何“性能”选项卡上的网络图表不同于 Azure VM“概述”页上的网络图表？
 
 Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表。  Azure VM“概述”中的网络图表仅显示计费的网络流量。  它不包括 VNet 间的流量。  为用于 VM 的 Azure Monitor 显示的数据和图表基于来宾 VM 中的数据，网络图表显示入站和出站到该 VM 的所有 TCP/IP 流量，包括 VNet 间的流量。
+
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我使用的是 Log Analytics 免费定价计划，它们有何限制？
+如果已经为 Azure Monitor 配置了使用*免费*定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
+
+在这种情况下，在你打开 VM 并从左侧窗格中选择“见解(预览版)”时，甚至在 VM 上安装它后，都将通过“立即尝试”选项向你发出提示。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
 
 ## <a name="next-steps"></a>后续步骤
 查看[载入用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。

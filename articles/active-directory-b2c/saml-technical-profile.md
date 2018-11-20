@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162436"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687463"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 SAML 2.0 身份提供程序提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的身份提供程序（例如 AD-FS 和 Salesforce）联合，从而允许用户使用其现有的社交或企业身份登录。
+Azure Active Directory (Azure AD) B2C 为 SAML 2.0 身份提供程序提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的标识提供者（例如 [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) 和 [Salesforce](active-directory-b2c-setup-sf-app-custom.md)）联合，从而允许用户使用其现有的社交或企业标识登录。
 
 ## <a name="metadata-exchange"></a>元数据交换
 
-元数据是 SAML 协议中用于公开 SAML 方（例如服务提供程序或身份提供程序）的配置的信息。 元数据定义服务的位置，例如登录和注销、证书、登录方法和其他信息。 身份提供程序使用元数据来了解如何与 Azure AD B2C 进行通信。 元数据以 XML 格式配置，并且可以用数字签名签名，以便另一方可以验证元数据的完整性。 当 Azure AD B2C 与 SAML 身份提供程序联合时，它将充当发起 SAML 请求并等待 SAML 响应的服务提供程序。 并且，在某些情况下，除了未经请求的 SAML 身份验证，也称为启动的身份提供程序。 
+元数据是 SAML 协议中用于公开 SAML 方（例如服务提供程序或身份提供程序）的配置的信息。 元数据定义服务的位置，例如登录和注销、证书、登录方法和其他信息。 身份提供程序使用元数据来了解如何与 Azure AD B2C 进行通信。 元数据以 XML 格式配置，并且可以用数字签名签名，以便另一方可以验证元数据的完整性。 当 Azure AD B2C 与 SAML 身份提供程序联合时，它将充当发起 SAML 请求并等待 SAML 响应的服务提供程序。 并且，在某些情况下，会接受未经请求的 SAML 身份验证，也称为标识提供者发起的身份验证。 
 
 元数据可以在双方中配置为“静态元数据”或“动态元数据”。 在静态模式下，你从一方复制整个元数据并将其设置在另一方中。 在动态模式下，你将 URL 设置为元数据，而另一方则动态读取配置。 原理是相同的，在身份提供程序中设置 Azure AD B2C 技术配置文件的元数据，并在 Azure AD B2C 中设置身份提供程序的元数据。
 
@@ -34,14 +34,14 @@ Azure Active Directory (Azure AD) B2C 为 SAML 2.0 身份提供程序提供支�
 以下示例显示 Azure AD B2C 技术配置文件的 SAML 元数据的 URL 地址：
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 替换以下值：
 
-- 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com
+- 将 **your-tenant-name** 替换为你的租户名称，例如 fabrikam.b2clogin.com。
 - 将 your-policy 替换为你的策略名称。 使用配置 SAML 提供者技术配置文件的策略或从该策略继承的策略。
-- 将 your-technical-profile 替换为你的 SAML 身份提供程序的技术配置文件的名称
+- 将 **your-technical-profile** 替换为 SAML 标识提供者技术配置文件名称。
 
 ## <a name="digital-signing-certificates-exchange"></a>数字签名证书交换
 

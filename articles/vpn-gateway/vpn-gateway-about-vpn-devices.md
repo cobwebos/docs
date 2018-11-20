@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/05/2018
 ms.author: yushwang
-ms.openlocfilehash: cbbba60f42c2e0ef7a6e53c34e883e2fdf6f8781
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e93f1174f0beaa7b1c8b3164081714281d5b1050
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229163"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687531"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -39,7 +39,7 @@ ms.locfileid: "51229163"
 
 我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表的设备系列中的所有设备都应适用于 VPN 网关。 请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)，了解如何将 VPN 类型（PolicyBased 或 RouteBased）用于要配置的 VPN 网关解决方案。
 
-若要获取配置 VPN 设备的帮助，请参考各设备系列相对应的链接。 我们会尽力提供各种配置说明链接。 如需 VPN 设备支持，请联系设备制造商。
+若要获取配置 VPN 设备的帮助，请参考相应设备系列所对应的链接。 我们会尽力提供各种配置说明链接。 如需 VPN 设备支持，请联系设备制造商。
 
 |**供应商**          |**设备系列**     |**最低操作系统版本** |**PolicyBased 配置说明** |**RouteBased 配置说明** |
 | ---                | ---                  | ---                   | ---            | ---           |
@@ -68,7 +68,7 @@ ms.locfileid: "51229163"
 | SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E 类 NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不兼容 |[配置指南](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG 下一代防火墙 | XG v17 | | [配置指南](https://community.sophos.com/kb/127546) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347)
-| WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| WatchGuard |All |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
 >

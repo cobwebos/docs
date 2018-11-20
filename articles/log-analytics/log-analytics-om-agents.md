@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961137"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687548"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
-若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
+若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
 
 * 使用 Operations Manager 监视 IT 服务的运行状况
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
@@ -44,7 +44,7 @@ ms.locfileid: "50961137"
 
 * Log Analytics 仅支持 System Center Operations Manager 1807、System Center Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
 * 所有 Operations Manager 代理必须满足最低支持要求。 确保代理中安装了最起码的更新，否则 Windows 代理通信可能失败，并在 Operations Manager 事件日志中生成错误。
-* Log Analytics 工作区。 有关详细信息，请查看[将环境中的计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
+* Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json)。
 * 使用 [Log Analytics 参与者角色](log-analytics-manage-access.md#manage-accounts-and-users)成员帐户在 Azure 中进行身份验证。  
 
 >[!NOTE]
@@ -52,7 +52,7 @@ ms.locfileid: "50961137"
 >为每个 Operations Manager 版本发布了新的管理包：  
 >* 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包  
 >* 对于 System Center 2016 - Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包  
->* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/en-us/download/details.aspx?id=57171)下载管理包  
+>* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包  
 
 ### <a name="network"></a>网络
 下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。 来自每个组件的流量将从网络传出到 Log Analytics 服务。   
@@ -101,7 +101,7 @@ ms.locfileid: "50961137"
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 单击“**向 Operations Management Suite 注册**”链接。
-1. 在“Operations Management Suite 载入向导: 身份验证”页上，输入与 OMS 订阅关联的管理员帐户的电子邮件地址（或电话号码）和密码，然后单击“登录”。
+1. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
 
    >[!NOTE]
    >OMS 现在称为 Log Analytics。

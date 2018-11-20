@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279120"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685763"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何让 ADFS 用户帐户使用 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)登录。
+本文介绍如何让 ADFS 用户帐户使用 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)登录。 可以通过将 [SAML 技术配置文件](saml-technical-profile.md)添加到自定义策略来实现登录。
 
 ## <a name="prerequisites"></a>先决条件
 

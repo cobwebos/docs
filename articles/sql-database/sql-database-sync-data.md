@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 78984cf9f73fd0cdd6e28e20e1d54d5b1198b7be
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362231"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687480"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -82,6 +82,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>在 Azure 门户中设置数据同步
 
 -   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)
+-   数据同步代理 - [Azure SQL 数据同步的数据同步代理](sql-database-data-sync-agent.md)
 
 ### <a name="set-up-data-sync-with-powershell"></a>使用 PowerShell 设置数据同步
 

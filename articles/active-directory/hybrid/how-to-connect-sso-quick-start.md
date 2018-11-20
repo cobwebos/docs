@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914084"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687327"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -91,7 +91,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ![Azure 门户：Azure AD Connect 窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 无缝 SSO 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。 该功能需要使用此计算机帐户才能工作。 将 `AZUREADSSOACC` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+> 无缝 SSO 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。 该功能需要使用此计算机帐户才能工作。 如果在本地环境中使用哈希传递和凭据盗用缓解体系结构，请确保 `AZUREADSSOACC` 计算机帐户最终不会出现在“隔离”容器中。 需要进行适当的更改以在“计算机”容器中创建计算机帐户。 在 Azure AD Connect 向导上成功启用“无缝 SSO”后，请将 `AZUREADSSOACC` 计算机帐户移到管理其他计算机帐户的组织单位 (OU)，以确保不会无意中删除它。
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 461c6e3cbdfcc5ef8207277b08ad4a8cf492f796
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 66a10cdd6324147509bcb45dad9e9b40b5335fef
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282792"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684904"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报  
 
@@ -48,7 +48,7 @@ Azure Monitor 支持比[经典警报](alert-metric-classic.md)更具优势的[�
 1. **活动的 Log Analytics 工作区**：有效且活动的 Log Analytics 工作区必须存在。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
 2. **为 Log Analytics 工作区配置代理**：需要为 Azure VM 和/或本地 VM 配置代理，以便将数据发送到前一步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](../monitoring/monitoring-overview-azure-agents.md)。
 3. **安装受支持的 Log Analytics 解决方案**：Log Analytics 解决方案应已进行配置并可将数据发送到 Log Analytics 工作区 - 支持的解决方案为[适用于 Windows 和 Linux 的性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../monitoring/monitoring-solution-agenthealth.md)、更新管理和[事件数据](../log-analytics/log-analytics-data-sources-windows-events.md)。
-4. **Log Analytics 解决方案已配置为发送日志**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。
+4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。
 
 ## <a name="configuring-metric-alert-for-logs"></a>配置日志的指标警报
  可以使用 Azure 门户、资源管理器模板、REST API、PowerShell 和 Azure CLI 来创建和管理指标警报。 由于日志的指标警报是指标警报的变体，在满足先决条件后，可为指定的 Log Analytics 工作区创建日志的指标警报。 [指标警报](monitoring-near-real-time-metric-alerts.md)的所有特征和功能同样适用于日志的指标警报，包括有效负载架构、适用的配额限制和计费价格。
@@ -101,7 +101,7 @@ Azure Monitor 支持比[经典警报](alert-metric-classic.md)更具优势的[�
             "type": "string",
             "defaultValue": "true",
             "metadata": {
-                "description": "Specifies whether the log convertion rule is enabled"
+                "description": "Specifies whether the log conversion rule is enabled"
             }
         },
         "convertRuleMetric": {
@@ -218,9 +218,9 @@ Azure Monitor 支持比[经典警报](alert-metric-classic.md)更具优势的[�
         }
     },
     "variables": {
-        "convertRuleTag": "hidden-link:/subscriptions/1234-56789-1234-567a/resourceGroups/resouceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName",
+        "convertRuleTag": "hidden-link:/subscriptions/1234-56789-1234-567a/resourceGroups/resourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName",
         "convertRuleSourceWorkspace": {
-            "SourceId": "/subscriptions/1234-56789-1234-567a/resourceGroups/resouceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
+            "SourceId": "/subscriptions/1234-56789-1234-567a/resourceGroups/resourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
         }
     },
     "resources": [

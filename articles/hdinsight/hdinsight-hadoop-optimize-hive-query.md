@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278253"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687208"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
 
@@ -72,7 +72,7 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
 
 * **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
 * **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
-* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会偏斜，性能可能有极大的差异。
+* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
 若要创建分区表，请使用 *Partitioned By* 子句：
 

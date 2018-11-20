@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457199"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623758"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
-持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
+持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
 
 对于 Azure 数据工厂，持续集成和交付意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和交付，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
 
@@ -75,11 +75,11 @@ ms.locfileid: "49457199"
 
 ### <a name="requirements"></a>要求
 
--   一项使用 [*Azure 资源管理器服务终结点*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 Azure Repos 的 Azure 订阅。
+-   一项使用  [*Azure 资源管理器服务终结点*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 Azure Repos 的 Azure 订阅。
 
 -   配置了 Azure Repos Git 集成的数据工厂。
 
--   一个包含机密的 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+-   一个包含机密的  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>设置 Azure Pipelines 发布
 
@@ -99,7 +99,7 @@ ms.locfileid: "49457199"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  创建新的任务，然后搜索并添加“Azure 资源组部署”。
+    a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。
 
     b.  在部署任务中选择目标数据工厂对应的订阅、资源组和位置，然后根据需要提供凭据。
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
 
 可为资源管理器模板定义自定义参数。 只需使用存储库根文件夹中一个名为 `arm-template-parameters-definition.json` 的文件。 （文件名必须与此处显示的名称完全匹配。）数据工厂会尝试从正在使用的任何分支读取文件，而不仅仅是从协作分支读取文件。 如果未找到任何文件，数据工厂则使用默认参数和值。
+
+### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
+
+下面是编写自定义参数文件时要使用一些准则。 若要查看此语法的示例，请参阅以下部分：[示例自定义参数文件](#sample)。
+
+1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的第一个对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. 将属性名称设置为 `*` 时，表示你希望模板在该级别使用所有属性，显式定义的属性除外。
+
+3. 将属性的值设置为字符串时，表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
+    1.  `<action>` 可以是下列字符之一： 
+        1.  `=` 表示将当前值保留为参数的默认值。
+        2.  `-` 表示不保留参数的默认值。
+        3.  `|` 是用于存储连接字符串的 Azure Key Vault 中的机密的特例。
+    2.  `<name>` 是参数的名称。 如果 `<name`> 为空，则它将采用参数的名称。 
+    3.  `<stype>` 是参数的类型。 如果 `<stype>` 为空，则默认类型为字符串。
+4.  如果在参数名称的开头输入 `-` 字符，则整个资源管理器参数名称将缩写为 `<objectName>_<propertyName>`。
+例如，`AzureStorage1_properties_typeProperties_connectionString` 缩写为 `AzureStorage1_connectionString`。
+
+
+### <a name="sample"></a> 示例自定义参数文件
 
 以下示例显示了示例参数文件。 使用此示例作为参考，创建自己的自定义参数文件。 如果提供的文件不是正确的 JSON 格式，则数据工厂会在浏览器控制台中输出错误消息，并重新使用数据工厂 UI 中显示的默认参数和值。
 

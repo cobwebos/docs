@@ -2,23 +2,22 @@
 title: Azure Database for MySQL 关系数据库服务概述
 description: 用于 MySQL 关系数据库服务的 Azure 数据库的概述。
 services: mysql
+ms.service: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
 editor: jasonwhowell
-ms.service: mysql
-ms.topic: article
-ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: b7af709c4175ecd6100de6d638ac9862488a7190
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.topic: article
+ms.date: 11/14/2018
+ms.openlocfilehash: 4d0d78b978f6454170b52a95f538f143b9f24505
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266340"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684786"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
-用于 MySQL 的 Azure 数据库是 Microsoft 云中基于 [MySQL 社区版](https://www.mysql.com/products/community/)数据库引擎的一种关系数据库服务。 用于 MySQL 的 Azure 数据库提供以下功能：
+Azure Database for MySQL 是 Microsoft 云中基于 [MySQL 社区版](https://www.mysql.com/products/community/)数据库引擎版本 5.6 和 5.7 的一种关系数据库服务。 用于 MySQL 的 Azure 数据库提供以下功能：
 
 - 没有额外费用的内置高可用性。
 - 使用非独占即用即付定价，实现可预测性能。
@@ -39,7 +38,7 @@ ms.locfileid: "35266340"
 - [用于 MySQL 的 Azure 数据库的 Azure CLI 示例](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
-Azure Database for MySQL 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-service-tiers.md)。
+Azure Database for MySQL 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅 [定价层](concepts-service-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 如何决定何时调高和调低？ 将内置的性能监视和警报功能与基于 vCore 的性能等级组合使用。 使用这些工具，可以根据当前的或预计的性能需求，快速评估调高或调低 vCore 数产生的影响。 有关详细信息，请参阅[警报](howto-alert-on-metric.md)。

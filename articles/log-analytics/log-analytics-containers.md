@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013048"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685933"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -126,7 +126,7 @@ ms.locfileid: "51013048"
 
 对于除了 CoreOS 之外的所有 Linux 容器主机：
 
-- 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅[将 Linux 计算机连接到 Log Analytics](log-analytics-concept-hybrid.md)。
+- 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅 [Log Analytics 代理概述](log-analytics-agent-overview.md)。
 
 对于包括 CoreOS 在内的所有 Linux 容器主机：
 

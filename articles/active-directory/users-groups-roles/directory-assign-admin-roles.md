@@ -14,18 +14,18 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 28f06efdd990e46eaa84b1fe26ed5d8944971505
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156912"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686120"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
 使用 Azure Active Directory (Azure AD) 时，可以指定不同的管理员来执行不同的功能。 可以在 Azure AD 门户中指定管理员用于执行各种任务，例如，添加或更改用户、分配管理角色、重置用户密码、管理用户许可证，以及管理域名。
 
-全局管理员有权使用所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员可以委托管理员角色。
+全局管理员有权使用所有管理功能。 默认情况下，系统会将注册 Azure 订阅的人员指派为目录的全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。
 
 ## <a name="assign-or-remove-administrator-roles"></a>分配或删除管理员角色
 
@@ -213,8 +213,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | 更新 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
 | microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
-| microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.reports/allEntities/read | 读取 Azure AD 报告。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
@@ -317,8 +317,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.directory/servicePrincipals/delete | 删除 Azure Active Directory 中的 servicePrincipals。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | 更新 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
 | microsoft.aad.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
-| microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
-| microsoft.aad.reports/allEntities/read | 读取 Azure AD 报告。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
@@ -337,7 +337,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.directory/devices/delete | 删除 Azure Active Directory 中的设备。 |
 | microsoft.aad.directory/devices/disable | 禁用 Azure Active Directory 中的设备。 |
 | microsoft.aad.directory/devices/enable | 启用 Azure Active Directory 中的设备。 |
-| microsoft.aad.reports/allEntities/read | 读取 Azure AD 报告。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
@@ -385,7 +386,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.directorySync/allEntities/allTasks | 在 Azure AD Connect 中执行所有操作。 |
 | microsoft.aad.identityProtection/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.aad.identityProtection 中的标准属性。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | 读取 microsoft.aad.privilegedIdentityManagement 中的所有资源。 |
-| microsoft.aad.reports/allEntities/allTasks | 读取和配置 Azure AD 报告。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
 | microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 信息保护的各个方面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
@@ -447,6 +449,28 @@ ms.locfileid: "50156912"
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | 更新 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
+
+### <a name="crm-service-administrator"></a>CRM 服务管理员
+可以管理 Dynamics 365 产品的所有方面。
+
+  > [!NOTE]
+  > 此角色从“目录读取者”角色继承其他权限。
+  >
+  >
+
+  > [!NOTE]
+  > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
+  >
+  >
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
 ### <a name="customer-lockbox-access-approver"></a>客户密码箱访问审批者
 可以批准 Microsoft 支持人员访问客户组织数据的请求。
@@ -604,28 +628,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
 | microsoft.aad.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
 
-### <a name="dynamics-365-administrator"></a>Dynamics 365 管理员
-可以管理 Dynamics 365 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 Azure 门户中的“Dynamics 365 管理员”。
-
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  > 此角色还拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
-  >
-  >
-
-| **操作** | **说明** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.powerApps.dynamics365/allEntities/allTasks | 管理 Dynamics 365 的各个方面。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-
-### <a name="exchange-administrator"></a>Exchange 管理员
-可以管理 Exchange 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 Azure 门户中的“Exchange 管理员”。
+### <a name="exchange-service-administrator"></a>Exchange 服务管理员
+可以管理 Exchange 产品的所有方面。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -640,13 +644,14 @@ ms.locfileid: "50156912"
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
+| microsoft.aad.directory/groups/unified/basic/update | 更新 Office 365 组的基本属性。 |
 | microsoft.aad.directory/groups/unified/create | 创建 Office 365 组。 |
 | microsoft.aad.directory/groups/unified/delete | 删除 Office 365 组。 |
-| microsoft.aad.directory/groups/unified/basic/update | 更新 Office 365 组的基本属性。 |
 | microsoft.aad.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.aad.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
@@ -713,8 +718,8 @@ ms.locfileid: "50156912"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="intune-administrator"></a>Intune 管理员
-可以管理 Intune 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 Azure 门户中的“Intune 管理员”。
+### <a name="intune-service-administrator"></a>Intune 服务管理员
+可以管理 Intune 产品的所有方面。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -769,8 +774,8 @@ ms.locfileid: "50156912"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
-### <a name="skype-for-business-administrator"></a>Skype for Business 管理员
-可以管理 Skype for Business 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Skype for Business 服务管理员”。 它是 Azure 门户中的“Skype for Business 管理员”。
+### <a name="lync-service-administrator"></a>Lync 服务管理员
+可以管理 Skype for Business 产品的所有方面。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -886,8 +891,8 @@ ms.locfileid: "50156912"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="power-bi-administrator"></a>Power BI 管理员
-可以管理 Power BI 产品的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 Azure 门户中的“Power BI 管理员”。
+### <a name="power-bi-service-administrator"></a>Power BI 服务管理员
+可以管理 Power BI 产品的所有方面。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -941,7 +946,8 @@ ms.locfileid: "50156912"
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.reports/allEntities/read | 读取 Azure AD 报告。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
@@ -970,6 +976,8 @@ ms.locfileid: "50156912"
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.aad.identityProtection/allEntities/update | 更新 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | 读取 microsoft.aad.privilegedIdentityManagement 中的所有资源。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.protectionCenter/allEntities/read | 读取 Office 365 防护中心的各个方面。 |
@@ -993,6 +1001,8 @@ ms.locfileid: "50156912"
 | --- | --- |
 | microsoft.aad.identityProtection/allEntities/read | 读取 microsoft.aad.identityProtection 中的所有资源。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | 读取 microsoft.aad.privilegedIdentityManagement 中的所有资源。 |
+| microsoft.aad.reports/applicationAuditLogs/read | 读取 Azure AD 报告中的 applicationAuditLogs。 |
+| microsoft.aad.reports/applicationSignInReports/read | 读取 Azure AD 报告中的 applicationSignInReports。 |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.protectionCenter/allEntities/read | 读取 Office 365 防护中心的各个方面。 |
@@ -1019,8 +1029,8 @@ ms.locfileid: "50156912"
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
 
-### <a name="sharepoint-administrator"></a>SharePoint 管理员
-可以管理 SharePoint 服务的所有方面。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 Azure 门户中的“SharePoint 管理员”。
+### <a name="sharepoint-service-administrator"></a>SharePoint 服务管理员
+可以管理 SharePoint 服务的所有方面。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -1035,12 +1045,14 @@ ms.locfileid: "50156912"
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.aad.directory/groups/unified/delete | 删除 Office 365 组。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
 | microsoft.aad.directory/groups/unified/basic/update | 更新 Office 365 组的基本属性。 |
+| microsoft.aad.directory/groups/unified/create | 创建 Office 365 组。 |
+| microsoft.aad.directory/groups/unified/delete | 删除 Office 365 组。 |
 | microsoft.aad.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.aad.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.sharepoint 中的标准属性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
@@ -1108,8 +1120,8 @@ ms.locfileid: "50156912"
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 
-### <a name="teams-administrator"></a>Teams 管理员
-可以管理 Microsoft Teams 服务。 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Teams 服务管理员”。 它是 Azure 门户中的“Teams 管理员”。
+### <a name="teams-service-administrator"></a>Teams 服务管理员
+可以管理 Microsoft Teams 服务。
 
   > [!NOTE]
   > 此角色从“目录读取者”角色继承其他权限。
@@ -1124,11 +1136,13 @@ ms.locfileid: "50156912"
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
-| microsoft.aad.directory/policies/basic/read | 读取 Azure Active Directory 中策略的基本属性。 |
-| microsoft.aad.directory/groups/unified/delete | 删除 Office 365 组。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
 | microsoft.aad.directory/groups/unified/basic/update | 更新 Office 365 组的基本属性。 |
+| microsoft.aad.directory/groups/unified/create | 创建 Office 365 组。 |
+| microsoft.aad.directory/groups/unified/delete | 删除 Office 365 组。 |
 | microsoft.aad.directory/groups/unified/members/update | 更新 Office 365 组的成员身份。 |
 | microsoft.aad.directory/groups/unified/owners/update | 更新 Office 365 组的所有权。 |
+| microsoft.aad.directory/policies/basic/read | 读取 Azure Active Directory 中策略的基本属性。 |
 | microsoft.azure.accessService/allEntities/allTasks | 管理 Azure 访问服务的所有方面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |

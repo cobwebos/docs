@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 2034616d7c701dfe03761d5a01848171fd264903
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 545723a020609766b9556746e6547eb8b93e5de9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625109"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687514"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密 
 
@@ -125,7 +125,7 @@ ms.locfileid: "51625109"
 | 参数 | Description |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
-| KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可以使用 cmdlet `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MySecureGroup" 获取该名称 |Convertfrom-JSON`|
+| KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可以使用 cmdlet `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MySecureGroup" 获取该名称 |ConvertFrom-JSON`|
 | keyVaultResourceGroup | 包含密钥保管库的资源组的名称|
 |  keyEncryptionKeyURL | 用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 _keyEncryptionKeyURL_ 值。 |
 | volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 
@@ -145,7 +145,7 @@ ms.locfileid: "51625109"
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以使用 [Get AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) 检查注册状态。 `RegistrationState` 报表为已注册状态时，通过 [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以使用 [Get AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) 检查注册状态。 `RegistrationState` 报告“已注册”时，请使用 [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
@@ -200,7 +200,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告处于“已注册”状态后，通过 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

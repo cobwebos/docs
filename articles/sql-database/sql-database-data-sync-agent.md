@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 032676528120995dab980207ee9d09ccad712142
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 11/12/2018
+ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285369"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685134"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的数据同步代理
 
@@ -31,8 +31,14 @@ ms.locfileid: "51285369"
 
 若要从命令提示符以无提示方式安装数据同步代理，请输入类似于以下示例的命令。 检查下载的 .msi 文件的文件名，并为 **TARGETDIR** 和 **SERVICEACCOUNT** 参数提供你自己的值。
 
+- 如果没有为 **TARGETDIR** 提供值，则默认值为 `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`。
+
+- 如果提供 `LocalSystem` 作为 **SERVICEACCOUNT** 的值，请在将代理配置为连接到本地 SQL Server 时使用 SQL Server 身份验证。
+
+- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`。
+
 ```cmd
-msiexec /i SQLDataSyncAgent-2.0--ENU.msi TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn 
+msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>将数据与本地 SQL Server 进行同步
@@ -91,10 +97,10 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 - **原因**。 许多情况会导致这种失败。 若要确定具体原因，请查看日志。
 
-- **解决方法**。 若要找到失败的具体原因，请生成并查看 Windows Installer 日志。 可以在命令提示符下启用日志记录。 例如，如果下载的 AgentServiceSetup.msi 文件是 LocalAgentHost.msi，可使用以下命令行生成并检查日志文件：
+- **解决方法**。 若要找到失败的具体原因，请生成并查看 Windows Installer 日志。 可以在命令提示符下启用日志记录。 例如，如果下载的安装文件为 `SQLDataSyncAgent-2.0-x86-ENU.msi`，请使用以下命令行生成并检查日志文件：
 
-    -   对于安装：`msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   对于卸载：`msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   对于安装：`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+    -   对于卸载：`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     也可以对 Windows Installer 执行的所有安装启用日志记录。 Microsoft 知识库文章[如何启用 Windows Installer 日志记录](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供了启用 Windows Installer 的日志记录的一键式解决方案。 此外它还提供了日志的位置。
 
@@ -139,7 +145,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a. 选择“启动”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
     d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
@@ -205,7 +211,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
   1. 退出应用。  
   1. 打开组件服务面板。  
-    a. 在任务栏上的搜索框中输入 **services.msc**。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
     b. 在搜索结果中，双击“服务”。  
   1. 停止“SQL 数据同步”服务。
   1. 重启“SQL 数据同步”服务。  
@@ -217,7 +223,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="ping-the-service"></a>对服务执行 Ping 命令
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
@@ -231,7 +237,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>显示已注册的数据库
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
@@ -245,7 +251,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>提交代理密钥
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
@@ -259,7 +265,7 @@ SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generate
 
 ### <a name="register-a-database"></a>注册数据库
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -268,7 +274,7 @@ SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdat
 #### <a name="examples"></a>示例
 
 ```cmd
-SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication sql -username xiwu -password Yukon900 -encryption true
+SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication sql -username <user name> -password <password> -encryption true
 
 SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication windows -encryption true
 
@@ -276,7 +282,9 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 ### <a name="unregister-a-database"></a>取消注册数据库
 
-#### <a name="usage"></a>用法
+使用此命令取消注册数据库时，它会完全取消数据库的设置。 如果数据库参与其他同步组，则此操作会中断其他同步组。
+
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
@@ -290,7 +298,7 @@ SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -
 
 ### <a name="update-credentials"></a>更新凭据
 
-#### <a name="usage"></a>用法
+#### <a name="usage"></a>使用情况
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action updatecredential -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -308,6 +316,15 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 
 有关 SQL 数据同步的详细信息，请参阅以下文章：
 
-- [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据](sql-database-get-started-sql-data-sync.md)
-
-- [使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
+-   概述 - [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
+-   设置数据同步
+    - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据](sql-database-get-started-sql-data-sync.md)
+    - 使用 PowerShell
+        -  [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   最佳做法 - [Azure SQL 数据同步最佳做法](sql-database-best-practices-data-sync.md)
+-   监视 - [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
+-   故障排除 - [排查 Azure SQL 数据同步问题](sql-database-troubleshoot-data-sync.md)
+-   更新同步架构
+    -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](sql-database-update-sync-schema.md)
+    -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](scripts/sql-database-sync-update-schema.md)

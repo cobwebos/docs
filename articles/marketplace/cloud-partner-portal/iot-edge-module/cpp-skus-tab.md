@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a216f3ddd89ad92dbbae617c51d5fc9c478c0c03
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432174"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684811"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模块“SKU”选项卡
 
@@ -90,7 +90,7 @@ ms.locfileid: "49432174"
 
 ## <a name="sku-content"></a>SKU 内容
 
-在“Edge 模块映像”下，提供我们在上传 IoT Edge 模块时所需的信息。
+在“Edge 模块映像”下，提供在上传 IoT Edge 模块时所需的信息。
 
 请向我们授予包含 IoT Edge 模块映像的 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/) (ACR) 的访问权限，以便我们能够上传并验证该模块。 发布后，将使用 Azure 市场托管的公共容器注册表复制并分发你的 IoT Edge 模块。
 

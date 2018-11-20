@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304546"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687395"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
@@ -79,8 +79,8 @@ ms.locfileid: "46304546"
 
 1. 用户尝试从企业网络内部已加入域的企业设备访问本地应用程序（例如，Outlook 客户端）。
 2. 如果用户尚未登录，本地应用程序将从设备的 Windows 会话中检索用户的用户名。
-3. 应用将用户名发送至 Azure AD，并检索租户的 WS-Trust MEX 终结点。
-4. 应用随后查询 WS-Trust MEX 终结点，查看集成身份验证终结点是否可用。
+3. 应用将用户名发送至 Azure AD，并检索租户的 WS-Trust MEX 终结点。 此 WS-Trust 终结点由无缝 SSO 功能独占使用，并不是 Azure AD 上的 WS-Trust 协议的常规实现。
+4. 应用随后查询 WS-Trust MEX 终结点，查看集成身份验证终结点是否可用。 集成身份验证终结点由无缝 SSO 功能独占使用。
 5. 如果步骤 4 成功，则颁发 Kerberos 质询。
 6. 如果应用还能检索 Kerberos 票证，则该应用会将其转发到 Azure AD 的集成身份验证终结点。
 7. Azure AD 解密 Kerberos 票证并对其进行验证。

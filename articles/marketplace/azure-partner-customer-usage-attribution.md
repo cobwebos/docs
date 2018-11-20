@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280667"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685695"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -59,12 +59,13 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 1. [在模板部署中验证 GUID 是否成功](#verify-the-guid-deployment)。
 
 ### <a name="sample-resource-manager-template-code"></a>示例资源管理器模板代码
-将下面的示例代码添加到主模板文件时，请确保使用自己的输入修改该代码。
+
+若要为模板启用跟踪资源，需要在资源部分下添加以下附加资源。 将下面的示例代码添加到主模板文件时，请确保使用自己的输入修改该代码。
 资源只需添加到 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 ```
 // Make sure to modify this sample code with your own inputs where applicable
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
@@ -126,14 +127,14 @@ GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建�
 > [!Note]
 > 强烈建议使用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)创建 GUID。 有关详细信息，请参阅[常见问题解答](#faq)。
 
-请为每个产品/服务和分销渠道创建唯一的 GUID。 如果使用模板部署两个解决方案，并且每个解决方案都在 Azure 市场和 GitHub 中提供，则需要创建四个 GUID：
+建议为每个产品/服务和每个产品的分销渠道创建唯一的 GUID。 如果不希望拆分报告，则可以选择对产品的多个分销渠道使用单个 GUID。 
 
-*   Azure 市场中的产品/服务 A 
-*   GitHub 中的产品/服务 A
-*   Azure 市场中的产品/服务 B 
-*   GitHub 中的产品/服务 B
+如果使用模板部署产品并且产品在 Azure 市场和 GitHub 中都提供，则可以创建并注册 2 个不同的 GUID：
 
-报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来执行。 
+*   Azure 市场中的产品 A 
+*   GitHub 中的产品 A
+
+报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来完成。 
 
 也可以在更加精细的级别跟踪 GUID（例如 SKU，其中 SKU 是产品/服务的变体）。
 
