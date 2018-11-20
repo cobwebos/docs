@@ -58,7 +58,7 @@ ms.locfileid: "49341933"
 | 名称 | 唯一的工作流名称。 相应的智能合约必须对适用的合约类使用相同的 **Name**。 | 是 |
 | DisplayName | 工作流的友好显示名称。 | 是 |
 | Description | 工作流的说明。 | 否 |
-| Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创建合同的用户分配的角色。 | 是 |
+| Initiators | [ApplicationRoles](#application-roles) 的集合。 为有权在工作流中创合约的用户分配的角色。 | 是 |
 | StartState | 工作流初始状态的名称。 | 是 |
 | 属性 | [标识符](#identifiers)的集合。 表示可在链外读取，或者在用户体验工具中可视化的数据。 | 是 |
 | 构造函数 | 定义用于创建工作流实例的输入参数。 | 是 |
