@@ -1,9 +1,9 @@
 ---
-title: 常见问题 - Azure Active Directory 域服务 | Microsoft Docs
+title: 常见问题 - Azure Active Directory 域服务 | Microsoft 文档
 description: 有关 Azure Active Directory 域服务的常见问题
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: ergreenl
+ms.openlocfilehash: c2f10b1bf3b61577a2b0616be6fa50f7639559ba
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023199"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158902"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -51,7 +51,7 @@ ms.locfileid: "44023199"
 是的。 请参阅[如何使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)。
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>是否可以使用资源管理器模板来启用 Azure AD 域服务？
-是的。 请参阅[如何使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)。
+否，目前无法使用模板启用 Azure AD 域服务。 请改用 PowerShell，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)。
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>是否可将域控制器添加到 Azure AD 域服务托管域？
 不是。 Azure AD 域服务提供的域是托管域。 无需预配、配置或管理此域的域控制器 - Microsoft 以服务的形式提供这些管理活动。 因此，无法为托管域添加其他域控制器（读写或只读）。
@@ -98,7 +98,7 @@ Azure 免费试用版中包含此服务。 可以注册 [Azure 一个月免费�
 不是。 一旦启用 Azure AD 域服务托管域，即可在选定的虚拟网络中使用该服务，直到禁用/删除托管域为止。 无法暂停该服务。 删除托管域前，会按小时对服务计费。
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？
-否。  Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。  可以在[此处](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)找到体系结构指南。
+不是。  Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。  可以在[此处](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)找到体系结构指南。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
 不是。 Azure AD 域服务是即用即付的 Azure 服务，并未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版、基本版和高级版）。 按每小时计费，具体取决于使用量。

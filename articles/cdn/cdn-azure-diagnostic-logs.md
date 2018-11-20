@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093020"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409248"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -95,17 +95,23 @@ ms.locfileid: "49093020"
 
 2. 选择“配置”以配置 Log Analytics 日志记录。 
 
-   此时将显示“OMS 工作区”页面。
+   此时将显示“Log Analytics 工作区”页。
+
+    >[!NOTE] 
+    >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
 3. 选择“新建工作区”。
 
-    此时将显示“OMS 工作区”页面。
+    此时将显示“Log Analytics 工作区”页。
+
+    >[!NOTE] 
+    >OMS 工作区现在称为 Log Analytics 工作区。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 对于“OMS 工作区”，输入 OMS 工作区名称。 OMS 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
+4. 对于 Log Analytics 工作区，输入 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
 
 5. 对于“订阅”，从下拉列表中选择一个现有的订阅。 
 

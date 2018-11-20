@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: abef93d30ff9cdf1ecdbbfd450d9f96e6352a513
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166140"
+---
 <!--author=alkohli last changed: 06/22/17-->
 
 #### <a name="to-create-a-volume-container"></a>创建卷容器
@@ -20,7 +33,7 @@
       如果有可用的带宽使用情况信息，可以根据计划通过指定“选择带宽模板” 分配带宽。 有关分步过程，请转到 [添加带宽模板](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)。
 
       ![卷容器边栏选项卡](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. 单击“创建” 。
+   7. 单击“创建”。
 
         ![卷容器边栏选项卡](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

@@ -4,9 +4,6 @@ description: 使用 Azure 资源管理器将 powershell 用于负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: tysonn
-ms.assetid: d0394f11-ee5a-4407-9d86-79c936297265
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140002"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235031"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>将 Azure 资源管理器支持与 Azure 负载均衡器配合使用
 
@@ -53,9 +50,9 @@ Azure 资源管理器可让你使用声明性模板预配应用程序。 在单�
 
 模板示例：
 
-* [负载均衡器中的 2 个 VM 和负载均衡规则](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [VNET 中包含内部负载均衡器和负载均衡器规则的 2 个 VM](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [负载均衡器中的 2 个 VM，在 LB 上配置 NAT 规则](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [负载均衡器中的 2 个 VM 和负载均衡规则](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [VNET 中包含内部负载均衡器和负载均衡器规则的 2 个 VM](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [负载均衡器中的 2 个 VM，在 LB 上配置 NAT 规则](https://go.microsoft.com/fwlink/?LinkId=544801)
 
 ## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>使用 PowerShell 或 CLI 设置 Azure 负载均衡器
 

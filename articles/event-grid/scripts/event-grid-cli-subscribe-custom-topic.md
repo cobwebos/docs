@@ -4,20 +4,19 @@ description: Azure CLI 脚本示例 - 订阅自定义主题
 services: event-grid
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0c0b4c77815efc4ae3c80a8602222122254f7d88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a46c348533468ad037ac092037cb34def2b0405c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425772"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038376"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>使用 Azure CLI 订阅自定义主题的事件
 
@@ -27,9 +26,16 @@ ms.locfileid: "31425772"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>示例脚本
+预览示例脚本需要事件网格扩展。 若要安装，请运行 `az extension add --name eventgrid`。
+
+## <a name="sample-script---stable"></a>示例脚本 - 稳定版
 
 [!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-custom-topic/subscribe-to-custom-topic.sh "Subscribe to custom topic")]
+
+## <a name="sample-script---preview-extension"></a>示例脚本 - 预览扩展
+
+[!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-custom-topic-preview/subscribe-to-custom-topic-preview.sh "Subscribe to custom topic")]
+
 
 ## <a name="script-explanation"></a>脚本说明
 
@@ -38,7 +44,7 @@ ms.locfileid: "31425772"
 | 命令 | 说明 |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 创建事件网格订阅。 |
-
+| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 扩展版本 | 创建事件网格订阅。 |
 
 ## <a name="next-steps"></a>后续步骤
 

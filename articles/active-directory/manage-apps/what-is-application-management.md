@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: overview
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 10/30/2018
 ms.author: barbkess
 ms.reviewer: arvinh
-ms.openlocfilehash: 820c6a5cb0bf5fb2d98d27c171c1276866082700
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 577be6669442befec0c14a275505e2eebed72611
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716174"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418086"
 ---
 # <a name="application-management-with-azure-active-directory"></a>使用 Azure Active Directory 进行应用程序管理
 
-Azure Active Directory (Azure AD) 为云和本地应用程序提供了安全无缝的访问。 用户登录一次即可访问 Office 365 和 Microsoft 提供的其他商务应用程序、成千上万的服务型软件 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用。 通过自动化用户预配降低管理成本。 使用多重身份验证和条件访问策略提供安全的应用程序访问。
+Azure Active Directory (Azure AD) 为云和本地应用程序提供了安全无缝的访问。 用户登录一次即可访问 Office 365 和 Microsoft 提供的其他商务应用程序、软件即服务 (SaaS) 应用程序、本地应用程序和业务线 (LOB) 应用。 通过自动化用户预配降低管理成本。 使用多重身份验证和条件访问策略提供安全的应用程序访问。
 
-![通过 Azure AD 进行联合的应用](media/migrate-adfs-apps-to-azure/migrate2.png)
+![通过 Azure AD 进行联合的应用](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>为何使用云解决方案管理应用程序？
 
@@ -40,5 +40,5 @@ SSO 可以提高安全性。 在没有单一登录的情况下，管理员需要
 借助 Azure AD，可通过利用安全信息和事件管理 (SIEM) 工具的报告监视应用程序登录情况。 可从门户或 API 访问报告。 以编程的方式审核有权访问应用程序的用户，并通过访问评审删除不活跃用户的访问权限。
 
 ## <a name="manage-costs"></a>管理成本
-通过迁移到 Azure AD，可节约成本并消除管理本地基础结构的难题。 Azure AD 还提供对应用程序的自助式访问，同时为管理员和用户节约时间。 单一登录消除了特定于应用程序的密码，这能节约应用程序密码重置的相关费用，并避免在找回密码时失去工作效率。
+通过迁移到 Azure AD，可节约成本并消除管理本地基础结构的难题。 Azure AD 还提供对应用程序的自助式访问，同时为管理员和用户节约时间。 单一登录不需特定于应用程序的密码。 这种单一登录功能可以节约应用程序密码重置的相关费用，并避免在找回密码时失去工作效率。
 

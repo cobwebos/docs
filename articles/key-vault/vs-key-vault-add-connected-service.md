@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465786"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230431"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -26,8 +26,8 @@ ms.locfileid: "46465786"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2017 版本 15.7**（装有 **Web 开发**工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 - 对于 ASP.NET（非 Core），需要安装 .NET Framework 4.7.1 开发工具，默认情况下未安装这些工具。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。
 - 已打开一个 ASP.NET 4.7.1 或 ASP.NET Core 2.0 Web 项目。
 
@@ -57,7 +57,7 @@ ms.locfileid: "46465786"
 
    ![将连接服务添加到项目](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. 现在，请在 Azure 上的 Key Vault 中添加机密。 若要转到门户中的相应位置，请单击“管理此 Key Vault 中存储的机密”对应的链接。 如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”下的“所有服务”导航到它，选择 **Key Vault**，然后选择刚刚创建的 Key Vault。
+1. 现在，请在 Azure 上的 Key Vault 中添加机密。 若要转到门户中的相应位置，请单击“管理此 Key Vault 中存储的机密”对应的链接。 如果已关闭该页或项目，可以在 [Azure 门户](https://portal.azure.com)中通过选择“安全性”下的“所有服务”导航到它，选择 **Key Vault**，然后选择已创建的 Key Vault。
 
    ![导航到门户](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -73,76 +73,66 @@ ms.locfileid: "46465786"
  
 现在，可以在代码中访问机密。 后续步骤根据使用的是 ASP.NET 4.7.1 还是 ASP.NET Core 而有所不同。
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>在代码中访问机密（ASP.NET Core 项目）
+## <a name="access-your-secrets-in-code"></a>在代码中访问机密
 
-与密钥保管库的连接在启动时由一个实现 [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) 的类设置，该类使用一种扩展[在 ASP.NET Core 中通过 IHostingStartup 增强来自外部程序集的应用](/aspnet/core/fundamentals/host/platform-specific-configuration)中所述启动行为的方法。 Startup 类使用两个包含密钥保管库连接信息的环境变量：ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED，设置为 true，以及 ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT，设置为你的密钥保管库 URL。 当运行“添加连接的服务”进程时，这些会添加到 launchsettings.json 文件中。
+1. 安装这两个 nuget 包：[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 库。
 
-若要访问机密：
+2. 打开 Program.cs 文件，使用以下代码更新代码： 
+```
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-1. 在 Visual Studio 中的 ASP.NET Core 项目内，现在可以通过在代码中使用以下表达式来引用这些机密：
- 
-   ```csharp
-      config["MySecret"] // Access a secret without a section
-      config["Secrets:MySecret"] // Access a secret in a section
-      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
-   ```
+        public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
 
-1. 在某个 .cshtml 页面（例如 About.cshtml）上，在文件的靠近顶部位置添加 @inject 指令，以设置可用于访问 Key Vault 配置的变量。
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+    }
+```
+3. 接下来打开 About.cshtml.cs 文件并写入以下代码
+    1. 通过此 using 语句包含对 Microsoft.Extensions.Configuration 的引用    
+        ```
+        using Microsoft.Extensions.Configuration
+        ```
+    2. 添加此构造函数
+        ```
+        public AboutModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        ```
+    3. 更新 OnGet 方法。 使用在上述命令中创建的机密名称更新此处显示的占位符值
+        ```
+        public void OnGet()
+        {
+            //Message = "Your application description page.";
+            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+        }
+        ```
 
-   ```cshtml
-      @inject Microsoft.Extensions.Configuration.IConfiguration config
-   ```
-
-1. 作为测试，可以通过在某个页面上显示机密，来确认该机密的值是否可用。 使用 @config 引用配置变量。
- 
-   ```cshtml
-      <p> @config["MySecret"] </p>
-      <p> @config.GetSection("Secrets")["MySecret"] </p>
-      <p> @config["Secrets:MySecret"] </p>
-   ```
-
-1. 生成并运行 Web 应用程序，导航到 About 页面，并查看“secret”值。
-
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>在代码中访问机密（ASP.NET 4.7.1 项目）
-
-当运行“添加连接的服务”进程时，与密钥保管库的连接由 ConfigurationBuilder 类使用添加到 web.config 文件的信息设置。
-
-若要访问机密：
-
-1. 按如下所示修改 web.config。 这些键是占位符，AzureKeyVault ConfigurationBuilder 会将其替换为 Key Vault 中的机密值。
-
-   ```xml
-     <appSettings configBuilders="AzureKeyVault">
-       <add key="webpages:Version" value="3.0.0.0" />
-       <add key="webpages:Enabled" value="false" />
-       <add key="ClientValidationEnabled" value="true" />
-       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-       <add key="MySecret" value="dummy1"/>
-       <add key="Secrets--MySecret" value="dummy2"/>
-     </appSettings>
-   ```
-
-1. 在 HomeController 的 About 控制器方法中添加以下行，以检索机密并将其存储在 ViewBag 中。
- 
-   ```csharp
-            var secret = ConfigurationManager.AppSettings["MySecret"];
-            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
-            ViewBag.Secret = $"Secret: {secret}";
-            ViewBag.Secret2 = $"Secret2: {secret2}";
-   ```
-
-1. 在 About.cshtml 视图中添加以下内容，以显示机密值（仅限测试）。
-
-   ```csharp
-      <h3>@ViewBag.Secret</h3>
-      <h3>@ViewBag.Secret2</h3>
-   ```
-
-恭喜，现已确认 Web 应用能够使用 Key Vault 安全访问存储的机密。
+通过浏览到“关于”页在本地运行应用。 应检索机密值
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 2. 选择“删除资源组”。

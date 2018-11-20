@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b9ad4e69c0693bc856789c52870a588671573b5c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4a610780d11452a8207a1108e4469bc9de62ecb8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144819"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620912"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor（预览版）中的 Azure AD 登录日志架构
 
@@ -150,7 +150,7 @@ ms.locfileid: "42144819"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名称 | Description |
+| 字段名 | Description |
 |------------|-------------|
 | 时间 | 日期和时间 (UTC)。 |
 | ResourceId | 此值未映射，可以放心地忽略此字段。  |

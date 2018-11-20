@@ -94,6 +94,10 @@ items:
     href: security-authentication.md
   - name: 传递和重试
     href: delivery-and-retry.md
+  - name: 事件筛选
+    href: event-filtering.md
+  - name: 事件域
+    href: event-domains.md
   - name: 事件源
     href: event-sources.md
   - name: 事件处理程序
@@ -106,6 +110,8 @@ items:
     href: receive-events.md
   - name: 死信与重试
     href: manage-event-delivery.md
+  - name: 筛选事件
+    href: how-to-filter-events.md
   - name: 监视事件传送
     href: monitor-event-delivery.md
   - name: 查询事件订阅
@@ -116,6 +122,8 @@ items:
     href: input-mappings.md
   - name: 使用 CloudEvents 架构
     href: cloudevents-schema.md
+  - name: 使用事件域管理主题
+    href: how-to-event-domains.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -165,9 +173,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 275b5d5a12e72854d823d3c0645c04bf2e85852c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7d478caf70b799828af5de5afc6f9b491819da8f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980028"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415783"

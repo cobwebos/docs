@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 36db41308678f3f1bd713561f9a844288f5db401
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bbf8dc4ccbd16f2157e65773b01fb42587fbfe9d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306296"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417474"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
 Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整版本 SQL。 以前，当安装 Azure AD Connect 时，始终会创建一个名为 ADSync 的新数据库。 使用 Azure AD Connect 版本 1.1.613.0（或更高版本），可以选择通过将 Azure AD Connect 指向现有的 ADSync 数据库来安装 Azure AD Connect。
@@ -86,6 +86,17 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
  
 11. 安装完成后，Azure AD Connect 服务器自动启用暂存模式。 建议在禁用暂存模式之前，查看服务器配置和意外更改的挂起导出。 
 
+## <a name="post-installation-tasks"></a>安装后任务
+还原使用低于 1.2.65.0 版本的 Azure AD Connect 创建的数据库备份时，暂存服务器会自动选择登录方法“不配置”。 尽管会还原密码哈希同步和密码写回首选项，但随后必须更改登录方法，以便与活动同步服务器的其他生效策略匹配。  如果不完成这些步骤，当此服务器变为活动状态时，用户可能无法登录。  
+
+使用下表来确认是否需要执行其他任何步骤。
+
+|功能|Steps|
+|-----|-----|
+|密码哈希同步| 从 Azure AD Connect 版本 1.2.65.0 开始，密码哈希同步和密码写回设置将完全还原。  如果使用早期版本的 Azure AD Connect 还原，请查看这些功能的同步选项设置，以确保它们与活动的同步服务器匹配。  不必要执行其他任何配置步骤。|
+|使用 AD FS 进行联合身份验证|Azure 身份验证将继续使用针对活动同步服务器配置的 AD FS 策略。  如果使用 Azure AD Connect 来管理 AD FS 场，则可以选择性地将登录方法更改为 AD FS 联合身份验证，以应对备用服务器变成活动同步实例时的情况。   如果在活动同步服务器上启用了设备选项，请通过运行“配置设备选项”任务，在此服务器上配置这些选项。|
+|直通身份验证和桌面单一登录|更新登录方法，以便与活动同步服务器上的配置匹配。  如果在将服务器提升为主服务器之前未遵循此步骤，则直通身份验证以及无缝单一登录将会禁用，并且在未将密码哈希同步用作备用登录选项时，租户可能会被锁定。 另请注意，在暂存模式下启用直通身份验证时，新的身份验证代理将会安装、注册，并以接受登录请求的高可用性代理形式运行。|
+|使用 PingFederate 进行联合身份验证|Azure 身份验证将继续使用针对活动同步服务器配置的 PingFederate 策略。  可以选择性地将登录方法更改为 PingFederate，以应对备用服务器变成活动同步实例时的情况。  可将此步骤推迟到需要使用 PingFederate 联合其他域为止。|
 ## <a name="next-steps"></a>后续步骤
 
 - 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。

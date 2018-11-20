@@ -1,10 +1,27 @@
+---
+title: include 文件
+description: include 文件
+services: batch
+author: dlepow
+ms.service: batch
+ms.topic: include
+ms.date: 10/11/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: c98a2146a019817152be9fae76638dbaa4d9de3d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49458821"
+---
 | **资源** | **默认限制** | **最大限制** |
 | --- | --- | --- |
 | 每个区域每个订阅的 Batch 帐户数 | 1 - 3 |50 |
 | 每个批处理帐户的专用核心数 | 10 - 100 | 不适用<sup>1</sup> |
 | 每个批处理帐户的低优先级核心数 | 10 - 100 | N/A<sup>2</sup> |
-| 每个批处理帐户的活动作业和作业计划数<sup>3</sup> | 100 - 300 | 2500<sup>4</sup> |
-| 每个 Batch 帐户的池数 | 20 - 100 | 500 |
+| 每个批处理帐户的活动作业和作业计划数<sup>3</sup> | 100 - 300 | 1000<sup>4</sup> |
+| 每个 Batch 帐户的池数 | 20 - 100 | 500<sup>4</sup> |
 
 > [!NOTE]
 > 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。 [查看 Batch 帐户中的配额](../articles/batch/batch-quota-limit.md#view-batch-quotas)。 

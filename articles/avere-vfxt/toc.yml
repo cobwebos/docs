@@ -1,0 +1,59 @@
+items:
+- name: Avere vFXT 文档
+  href: index.yml
+- name: 概述
+  items:
+  - name: 什么是 Avere vFXT for Azure？
+    href: avere-vfxt-overview.md
+- name: 概念
+  items:
+  - name: 规划 Avere vFXT 系统
+    href: avere-vfxt-deploy-plan.md
+  - name: Avere vFXT 部署概述
+    href: avere-vfxt-deploy-overview.md
+- name: 操作指南
+  items:
+  - name: 准备创建 Avere vFXT
+    href: avere-vfxt-prereqs.md
+  - name: 部署 vFXT 群集
+    href: avere-vfxt-deploy.md
+  - name: 访问群集配置工具
+    href: avere-vfxt-cluster-gui.md
+  - name: 启用支持上传
+    href: avere-vfxt-enable-support.md
+  - name: 配置存储
+    href: avere-vfxt-add-storage.md
+  - name: 装载 Avere vFXT 群集
+    href: avere-vfxt-mount-clients.md
+  - name: 将数据移到 Avere vFXT 群集
+    href: avere-vfxt-data-ingest.md
+  - name: 管理 Avere vFXT 群集
+    href: avere-vfxt-manage-cluster.md
+  - name: 自定义群集优化
+    href: avere-vfxt-tuning.md
+- name: 资源
+  items:
+  - name: 获得有关系统的帮助
+    href: avere-vfxt-open-ticket.md
+  - name: 演示项目
+    href: avere-vfxt-demo-links.md
+  - name: Avere vFXT for Azure 常见问题解答
+    href: avere-vfxt-faq.md
+  - name: 其他文档
+    items:
+    - name: 补充文档
+      href: avere-vfxt-additional-resources.md
+    - name: 端口允许列表
+      href: avere-vfxt-required-ports.md
+    - name: 在没有控制器的情况下创建群集角色
+      href: avere-vfxt-pre-role.md
+    - name: Avere 群集 DNS 配置
+      href: avere-vfxt-configure-dns.md
+    - name: 授权非所有者部署 Avere vFXT
+      href: avere-vfxt-non-owner.md
+ms.openlocfilehash: 6f99a33ffbf637e02d487a511d17bf8a365cb3ba
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50669126"

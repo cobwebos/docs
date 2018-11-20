@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c0c2323d1864be24edbf6005d634ae1d08bba8ea
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293722"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116600"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
@@ -48,7 +48,7 @@ az acr login --name <acrName>
 
   * *读者*：从注册表到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）的容器部署。 还可从容器注册表进行拉取并推送到相关 Azure 服务，例如 [AKS](../aks/index.yml)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml) 和 [Service Fabric](/azure/service-fabric/) 等。
 
-  * *参与者*：生成容器映像并将它们推送到注册表的持续集成和部署解决方案（如 Azure DevOps 或 Jenkins）。
+  * 参与者：生成容器映像并将它们推送到注册表的持续集成和部署解决方案（如 Azure Pipelines 或 Jenkins）。
 
 > [!TIP]
 > 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) 命令重新生成服务主体的密码。

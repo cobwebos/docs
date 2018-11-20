@@ -1,21 +1,22 @@
 ---
-title: Site Recovery 中的故障转移 | Microsoft Docs
-description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
+title: 在灾难恢复期间使用 Azure Site Recovery 进行故障转移 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 服务在灾难恢复期间对 VM 和物理服务器进行故障转移。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391311"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215151"
 ---
-# <a name="failover-in-site-recovery"></a>Site Recovery 中的故障转移
+# <a name="fail-over-vms-and-physical-servers"></a>对 VM 和物理服务器进行故障转移 
+
 本文介绍如何故障转移受 Site Recovery 保护的虚拟机和物理服务器。
 
 ## <a name="prerequisites"></a>先决条件

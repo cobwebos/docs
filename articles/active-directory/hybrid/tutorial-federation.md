@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2a869e8d504e4f3557caa7925b89e8c184718af9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 161a5710766db626e4c4ec6bb6fdfafcc20650d5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248038"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -88,7 +88,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 6. 输入许可证密钥并单击“下一步”。
 7. 勾选“我接受许可条款”，然后单击“下一步”。
 8. 选择“自定义: 仅安装 Windows (高级)”
-9. 单击“下一步”
+9. 点击“下一步”
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ## <a name="install-active-directory-pre-requisites"></a>安装 Active Directory 的先决条件
@@ -203,7 +203,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
 2. 选择加号图标 (+) 并搜索“Azure Active Directory”。
 3. 在搜索结果中选择“Azure Active Directory”。
-4. 选择**创建**。</br>
+4. 选择“创建”。</br>
 ![创建](media/tutorial-password-hash-sync/create1.png)</br>
 5. 为组织提供名称以及初始域名。 然后选择“创建”。 随即创建目录。
 6. 完成此操作后，单击此处链接以管理目录。
@@ -280,7 +280,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 
-1.  浏览到 [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1.  浏览到 [http://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用在我们的新租户中创建的用户帐户登录。  需要使用以下格式登录：(user@domain.onmicrosoft.com)。 使用用户用于在本地登录的相同密码。
 ![验证](media/tutorial-password-hash-sync/verify1.png)
 

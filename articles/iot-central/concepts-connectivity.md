@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985169"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238721"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -102,7 +102,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 1.  选择想要导出的设备，然后单击“导出”操作。
 1.  一旦导出完成，将显示一条成功消息，并提供一个用来下载生成文件的链接。
 1.  单击“成功消息”将文件下载到磁盘上的本地文件夹。
-1.  导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助键和主要/辅助证书指纹
+1.  导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助密钥和主要/辅助证书指纹
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -150,7 +150,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
     
     下面是一些实用程序命令行工具，可用于生成 CA 证书和设备证书。
 
-    * 如果使用 MxChip，此处提供[命令行工具](http://aka.ms/iotcentral-docs-dicetool)，可用于生成 CA 证书，请将其添加到 IoT Central 应用并验证该证书。 
+    * 如果使用 MxChip，此处提供[命令行工具](https://aka.ms/iotcentral-docs-dicetool)，可用于生成 CA 证书，请将其添加到 IoT Central 应用并验证该证书。 
 
     *   使用此[命令行工具](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )
         * 创建证书链（按照 GitHub 文档中的步骤 2）。 
@@ -165,7 +165,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
     使用预配服务信息对设备进行编程，使其能够在设备开启时获取连接详细信息和 IoT Central 应用分配。    
 
     **更多参考** 
-    *   [RaspberryPi](http://aka.ms/iotcentral-docs-Raspi-releases) 的示例实现。  
+    *   [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) 的示例实现。  
 
     *   [C 编写的示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 

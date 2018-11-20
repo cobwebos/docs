@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068819"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636662"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -37,9 +37,12 @@ ms.locfileid: "49068819"
 1. 在可用日志列表中，选择要启用的日志，例如 *kube-apiserver*、*kube-controller-manager* 和 *kube-scheduler*。 启用 Log Analytics 后，可以返回并更改收集的日志。
 1. 准备就绪后，选择“保存”以启用选定日志的收集。
 
-以下示例门户屏幕截图显示了“诊断设置”窗口，以及用于创建 OMS 工作区的选项：
+以下示例门户屏幕截图显示了“诊断设置”窗口，以及用于创建 Log Analytics 工作区的选项：
 
-![为 AKS 群集的 Log Analytics 启用 OMS 工作区](media/view-master-logs/enable-oms-log-analytics.png)
+![为 AKS 群集的 Log Analytics 启用 Log Analytics 工作区](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>OMS 工作区现在称为 Log Analytics 工作区。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 群集上计划测试 pod
 
@@ -75,11 +78,11 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 OMS 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 
-在左侧选择“日志搜索”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
+在左侧选择“日志”。 若要查看 *kube-apiserver*，请在文本框中输入以下查询：
 
 ```
 AzureDiagnostics
@@ -108,12 +111,12 @@ AzureDiagnostics
 
 为帮助分析日志数据，下表详细说明了用于每个事件的架构：
 
-| 字段名称               | Description |
+| 字段名               | Description |
 |--------------------------|-------------|
 | *resourceId*             | 生成日志的 Azure 资源 |
 | *time*                   | 上传日志的时间戳 |
 | *category*               | 生成日志的容器/组件的名称 |
-| *operationName*          | 始终为 *Microsoft.ContainerService/managedClusters/diagnositicLogs/Read* |
+| *operationName*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
 | *properties.log*         | 来自组件的日志的完整文本 |
 | *properties.stream*      | *stderr* 或 *stdout* |
 | *properties.pod*         | 日志的来源 pod 名称 |

@@ -1,29 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 复制多层 Dynamics AX 部署 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 复制和保护 Dynamics AX
-services: site-recovery
-documentationcenter: ''
+title: 使用 Azure Site Recovery 为多层 Dynamics AX 部署设置灾难恢复 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 为 Dynamics AX 设置灾难恢复
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669436"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210816"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Dynamics AX 应用程序
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复 
 
-## <a name="overview"></a>概述
+
 
 
  Dynamics AX 是企业使用最广泛的 ERP 解决方案之一，可用于标准化不同位置的流程，管理资源及简化符合性。 应用程序对组织至关重要，因此发生灾难时，应用程序应在最短的时间内启动并运行。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 6fc03865185b97fb1f34028239f647f97d5bd315
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836868"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963746"
 ---
 # <a name="retrain-a-classic-web-service"></a>重新训练经典 Web 服务
 部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。 
@@ -51,12 +51,12 @@ ms.locfileid: "34836868"
 2. 使用 Microsoft Azure Web 服务门户
 
 ### <a name="programmatically-add-an-endpoint"></a>以编程方式添加终结点
-可以使用在此 [GitHub 存储库](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)中提供的示例代码添加评分终结点。
+可以使用在此 [GitHub 存储库](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)中提供的示例代码添加评分终结点。
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>使用 Microsoft Azure Web 服务门户添加终结点
 1. 在机器学习工作室的左侧导航栏中，单击“Web 服务”。
 2. 在 Web 服务仪表板的底部，单击“管理终结点预览”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 键入新终结点的名称及说明。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
 ## <a name="update-the-added-endpoints-trained-model"></a>更新已添加终结点的训练模型
@@ -70,7 +70,7 @@ ms.locfileid: "34836868"
 2. 单击“更新资源”链接。
 3. 复制 PATCH 请求的 POST URL。 例如：
    
-     修补程序 URL：https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+     修补程序 URL： https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
 现在可以使用训练模型更新之前创建的评分终结点。
 

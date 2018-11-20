@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269354"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418273"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文介绍了如何使用恢复服务保管库为 Azure 备份配置报表。 还介绍了如何使用 Power BI 访问报表。 完成这些步骤后，可以直接转到 Power BI 来查看、自定义和创建报表。
 
+> [!IMPORTANT]
+> 从 2018 年 11 月 1 日起，某些客户可能会在 Power BI 的 Azure 备份应用中加载数据时发现问题，其消息指出“我们在 JSON 输入末尾发现额外字符。 此异常由 IDataReader 接口引起。”
+这是由于在将数据加载到存储帐户中时，其格式发生了变化。
+请下载最新的应用（版本 1.8）以避免此问题。
+>
+>
+
 ## <a name="supported-scenarios"></a>支持的方案
 - 通过使用 Azure 恢复服务代理执行 Azure 虚拟机备份和将文件和文件夹备份到云中，支持 Azure 备份报表。
-- 目前，Azure SQL 数据库、Data Protection Manager 和 Azure 备份服务器不支持报表。
+- 目前，Azure SQL 数据库、Azure 文件共享、Data Protection Manager 和 Azure 备份服务器不支持报表。
 - 如果为每个保管库配置同一存储帐户，则可以跨保管库和订阅查看报表。 所选存储帐户必须位于与恢复服务保管库相同的区域。
 - 在 Power BI 中，报表按计划每 24 小时刷新一次。 还可以在 Power BI 中对报表执行临时刷新。 在这种情况下，可将客户存储帐户中的最新数据用于呈现报表。
 
@@ -67,23 +74,24 @@ ms.locfileid: "48269354"
       ![查看诊断设置 - 第 9 步](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> 通过保存存储帐户配置报表后，应等待 24 小时以便完成初始数据推送。 应仅在推送完成之后导入 Power BI 中的 Azure 备份内容包。 有关详细信息，请参阅[常见问题解答部分](#frequently-asked-questions)。 
+> 通过保存存储帐户配置报表后，应等待 24 小时以便完成初始数据推送。 仅在此之后才将 Azure 备份应用导入 Power BI。 有关详细信息，请参阅[常见问题解答部分](#frequently-asked-questions)。 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>在 Power BI 中查看报表 
 使用恢复服务保管库配置报表的存储帐户后，报表数据大约需要 24 小时才会开始流向存储帐户。 设置存储帐户 24 小时后，按照下列步骤操作，在 Power BI 中查看报表。
-1. [登录](https://powerbi.microsoft.com/landing/signin/) Power BI。
-2. 选择“获取数据”。 在“内容包库”的“服务”下，选择“获取”。 按照 [Power BI 文档中所述步骤操作，访问内容包](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)。
+如果要自定义和共享报表，请创建工作区并执行以下步骤
 
-     ![导入内容包](./media/backup-azure-configure-reports/content-pack-import.png)
+1. [登录](https://powerbi.microsoft.com/landing/signin/) Power BI。
+2. 选择“获取数据”。 在“用于创建自己内容的更多方法”中，选择“服务内容包”。 按照 [Power BI 文档](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)中的步骤连接到服务。
+
 3. 在“搜索”栏中，输入“Azure 备份”，然后选择“立即获取”。
 
       ![获取内容包](./media/backup-azure-configure-reports/content-pack-get.png)
 4. 输入在上一步骤 5 中配置的存储帐户的名称，并选择“下一步”。
 
     ![输入存储帐户名称](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. 输入此存储帐户的存储帐户密钥。 要[查看并复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys)，请在 Azure 门户中转到存储帐户。 
+5. 使用身份验证方法“密钥”，输入此存储帐户的存储帐户密钥。 要[查看并复制存储访问密钥](../storage/common/storage-account-manage.md#access-keys)，请在 Azure 门户中转到存储帐户。 
 
      ![输入存储帐户](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -95,9 +103,7 @@ ms.locfileid: "48269354"
     
     ![成功导入内容包](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. 成功导入数据后，“Azure 备份”内容包便会显示在导航窗格的“应用”中。 在“仪表板”、“报表”和“数据集”下，此时列表会显示 Azure 备份，带黄色星号表示新导入的报表。
-
-     ![Azure 备份内容包](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. 成功导入数据后，“Azure 备份”内容包便会显示在导航窗格的“应用”中。 在“仪表板”、“报表”和“数据集”下，该列表现在显示了 Azure 备份。
      
 8. 单击“仪表板”下的“Azure 备份”，显示一组固定的关键报表。
 

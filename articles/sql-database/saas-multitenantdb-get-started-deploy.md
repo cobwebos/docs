@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056652"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352205"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署和浏览分片多租户应用程序
 
 在本教程中，你将部署和浏览名为 Wingtip Tickets 的示例多租户 SaaS 多租户应用程序。 Wingtip Tickets 应用旨在展示可简化 SaaS 方案实现的 Azure SQL 数据库功能。
 
@@ -27,7 +27,7 @@ Wingtip Tickets 的这个实现将使用分片多租户数据库模式。 分片
 
 此数据库模式允许在每个分片或数据库中存储一个或多个租户。 你可以通过让多个租户共享每个数据库来优化最低成本。 或者可以通过让每个数据库只存储一个租户来优化隔离。 可针对每个特定租户独立进行优化选择。 可以在首次存储租户时进行选择，也可以稍后再进行更改。 无论采用哪种方式，应用程序均可正常运行。
 
-#### <a name="app-deploys-quickly"></a>应用程序快速部署
+## <a name="app-deploys-quickly"></a>应用程序快速部署
 
 Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面的部署部分提供了蓝色的“部署到 Azure”按钮。 按下按钮时，应用程序将在五分钟内完全部署到你的 Azure 订阅。 你具有完全访问权限，可以使用各个应用程序组件。
 
@@ -35,7 +35,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 任何人都可以从 [GitHub 存储库][link-github-wingtip-multitenantdb-55g]下载 Wingtip Tickets 的 C# 和 PowerShell 源代码。
 
-#### <a name="learn-in-this-tutorial"></a>学习本教程
+## <a name="learn-in-this-tutorial"></a>学习本教程
 
 > [!div class="checklist"]
 > - 如何部署 Wingtip Tickets SaaS 应用程序。
@@ -55,7 +55,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>部署 Wingtip Tickets 应用
 
-#### <a name="plan-the-names"></a>对名称进行计划
+### <a name="plan-the-names"></a>对名称进行计划
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
 - *用户：* **af1** *（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）*
@@ -63,7 +63,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 现在请选择自己的名称，并将其写下来。 
 
-#### <a name="steps"></a>Steps
+### <a name="steps"></a>Steps
 
 1. 单击下面的“部署到 Azure”蓝色按钮。
     - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。
@@ -133,7 +133,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
    ![活动](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure 流量管理器
+### <a name="azure-traffic-manager"></a>Azure 流量管理器
 
 Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户的事件页都会在其 URL 中包括租户名称。 每个 URL 还包括特定的“用户”值。 每个 URL 都通过以下步骤遵循所显示的格式：
 
@@ -144,7 +144,7 @@ Wingtip 应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-
 3. 应用在目录中查找密钥，并获取租户数据库的相应位置。
 4. 应用使用位置信息来查找和访问包含租户的所有数据的那个数据库。
 
-#### <a name="events-hub"></a>事件中心
+### <a name="events-hub"></a>事件中心
 
 1. “事件中心”将列出在目录中注册的所有租户及其场所。
 2. “事件中心”使用目录中扩展的元数据来检索与每个映射关联的租户名称以构造 URL。
@@ -185,6 +185,7 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在其自己数据库中预配新租户
 
 分片多租户模型允许选择是在包含其他租户的数据库中预配新租户，还是在其自己的数据库中进行预配。 租户在其自己的数据库中隔离具有以下好处：
+
 - 可以在不需考虑其他租户需求的情况下，管理租户数据库的性能。
 - 必要时可将数据库还原到较早的时间点，因为其他租户不会受影响。
 
@@ -221,7 +222,6 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
    ![租户服务器](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>监测数据库的性能
 
 如果负载生成器已运行几分钟，则应有足够的遥测数据，因此可以了解 Azure 门户内置的数据库监测功能。
@@ -238,7 +238,7 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
 负载生成器正在向每个租户应用类似负载，而不管每个租户在哪个数据库中。 在 salixsalsa 数据库中只有一个租户的情况下，你可以看到该数据库可以承受比有多个租户的数据库高得多的负载。 
 
-#### <a name="resource-allocations-vary-by-workload"></a>资源分配因工作负荷而异
+### <a name="resource-allocations-vary-by-workload"></a>资源分配因工作负荷而异
 
 有时候，为了维持好的性能，多租户数据库需要比单租户数据库更多的资源，但情况并非总是如此。 资源的优化分配取决于系统中租户的具体工作负荷特征。
 
@@ -249,8 +249,9 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 - 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 - 若要了解弹性池，请参阅：
-    - [弹性池有助于管理和缩放多个 Azure SQL 数据库](sql-database-elastic-pool.md)
-    - [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
+
+  - [弹性池有助于管理和缩放多个 Azure SQL 数据库](sql-database-elastic-pool.md)
+  - [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>后续步骤
 

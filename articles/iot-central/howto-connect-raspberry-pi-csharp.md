@@ -1,19 +1,19 @@
 ---
 title: 将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#) | Microsoft Docs
 description: 如何使用 C# 以设备开发人员的身份将 Raspberry Pi 连接到 Azure IoT Central 应用程序。
-author: dominicbetts
-ms.author: dobett
-ms.date: 01/22/2018
+author: viv-liu
+ms.author: viviali
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: peterpr
+ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734229"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956717"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (C#)
 
@@ -23,21 +23,32 @@ ms.locfileid: "45734229"
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要完成本文中的步骤，需要以下各项：
+若要完成本文中的步骤，需要以下组件：
 
 * 已在开发计算机上安装 [.NET Core 2](https://www.microsoft.com/net)。 此外还应有适当的代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/)。
-* 从“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。
 
 
 ## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Raspberry Pi** 设备模板： 
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板： 
 
-- 包含设备**湿度**、**温度**、**压力**、**磁力计**（沿 X、Y、Z 轴度量）、**加速计**（沿 X、Y、Z 轴度量）和**陀螺仪**（沿 X、Y、Z 轴度量）度量值的遥测数据。
-- 显示**电压**、**电流**、**风扇速度**和 **IR** 切换的设置。
-- 包含设备属性**模具编号**和**位置**云属性的属性。
-
+- 遥测数据，包括设备将收集的以下度量值：
+    - 湿度
+    - 温度
+    - 压力
+    - 磁力计 (X, Y, Z)
+    - 加速计 (X, Y, Z)
+    - 陀螺仪 (X, Y, Z)
+- 设置
+    - 电压
+    - 当前
+    - 风扇速度
+    - 红外开关。
+- 属性
+    - “模具编号”设备属性
+    - “位置”云属性
 
 有关设备模板配置的完整详细信息，请参阅 [Raspberry PI 设备模板详细信息](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
 
@@ -313,11 +324,11 @@ ms.locfileid: "45734229"
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI 设备模板详细信息
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 **Raspberry Pi** 设备模板：
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板：
 
-### <a name="telemetry-measurements"></a>遥测度量
+### <a name="telemetry-measurements"></a>遥测数据度量
 
-| 字段名称     | 单位  | 最小值 | 最大值 | 小数位数 |
+| 字段名     | 单位  | 最小值 | 最大值 | 小数位数 |
 | -------------- | ------ | ------- | ------- | -------------- |
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
@@ -336,24 +347,24 @@ ms.locfileid: "45734229"
 
 数字设置
 
-| 显示名称 | 字段名称 | 单位 | 小数位数 | 最小值 | 最大值 | Initial |
+| 显示名称 | 字段名 | 单位 | 小数位数 | 最小值 | 最大值 | 初始 |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 电压      | setVoltage | 伏 | 0              | 0       | 240     | 0       |
-| Current      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
+| 当前      | setCurrent | 安培  | 0              | 0       | 100     | 0       |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 切换设置
 
-| 显示名称 | 字段名称 | 打开文本 | 关闭文本 | Initial |
+| 显示名称 | 字段名 | 打开文本 | 关闭文本 | 初始 |
 | ------------ | ---------- | ------- | -------- | ------- |
-| IR           | activateIR | 亮起      | 熄灭      | 关闭     |
+| IR           | activateIR | ON      | OFF      | 关闭     |
 
 ### <a name="properties"></a>属性
 
-| Type            | 显示名称 | 字段名称 | 数据类型 |
+| 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
-| 设备属性 | 模具编号   | dieNumber  | 数字    |
-| 文本            | 位置     | location   | 不适用       |
+| 设备属性 | 模具号   | dieNumber  | 数字    |
+| 文本            | 位置     | 位置   | 不适用       |
 
 ## <a name="next-steps"></a>后续步骤
 

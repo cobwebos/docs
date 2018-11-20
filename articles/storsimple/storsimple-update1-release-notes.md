@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7810027e4ab9df6742b4431d12daf9ba2b678bf6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061803"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258980"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 1.2 发行说明
 
@@ -52,12 +52,12 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 * **从 5000-7000 系列迁移到 8000 系列设备** — 此版本引入了一个新的迁移功能，可让 StorSimple 5000-7000 系列设备用户将他们的数据迁移到 StorSimple 8000 系列物理设备或虚拟设备。 迁移功能具有以下两个重要的价值主张：                                                                  
   
   * **业务连续性**，通过将 5000-7000 系列设备上的现有数据迁移到 8000 系列设备来实现。
-  * **8000 系列设备的改进功能**，例如通过 StorSimple Manager 服务对多个设备进行高效的集中式管理、更高级的硬件和已更新的固件、虚拟设备、数据移动性，以及未来路线图中的功能。
+  * **8000 系列设备产品的改进功能**，例如通过 StorSimple Manager 服务对多个设备进行高效的集中式管理、更好的硬件和更新固件类、虚拟设备、数据移动性，以及未来路线图中的功能。
     
     有关如何将 StorSimple 5000-7000 系列迁移到 8000 系列设备的详细信息，请参阅[迁移指南](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)。 
 * **Azure Government 门户中的可用性** — Azure Government 门户中现已提供 StorSimple。 请参阅如何[在 Azure Government 门户中部署 StorSimple 设备](storsimple-deployment-walkthrough-gov.md)。
 * **支持其他云服务提供商** — 支持的其他云服务提供商有 Amazon S3、具有 RRS 的 Amazon S3、HP 和 OpenStack（试用版）。
-* **最新存储 API 的更新** — 通过此版本，StorSimple 已更新到最新的 Azure 存储服务 API。 运行 Update 1 前的软件版本（版本 0.1、0.2 和 0.3）的 StorSimple 8000 系列设备，使用的是 2009 年 7 月 17 日之前的 Azure 存储服务 API 版本。 如更新的[有关存储服务版本删除的公告](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)中所述，这些 API 将于 2016 年 8 月 1 日被弃用。 请务必在 2016 年 8 月 1 日之前应用 StorSimple 8000 系列 Update 1。 如果无法执行此操作，StorSimple 设备将停止正常工作。
+* **最新存储 API 的更新** — 通过此版本，StorSimple 已更新到最新的 Azure 存储服务 API。 运行 Update 1 前的软件版本（版本 0.1、0.2 和 0.3）的 StorSimple 8000 系列设备，使用的是 2009 年 7 月 17 日之前的 Azure 存储服务 API 版本。 如更新的[有关存储服务版本删除的公告](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx)中所述，这些 API 将于 2016 年 8 月 1 日被弃用。 请务必在 2016 年 8 月 1 日之前应用 StorSimple 8000 系列 Update 1。 如果无法执行此操作，StorSimple 设备将停止正常工作。
 * **区域冗余存储空间 (ZRS) 的支持** — 通过升级到最新版本的存储 API，除了本地冗余存储 (LRS) 和异地冗余存储 (GRS)，StorSimple 8000 系列还将支持区域冗余存储空间 (ZRS)。 有关 ZRS 的详细信息，请参阅这篇[有关 Azure 存储冗余选项](../storage/common/storage-redundancy.md)的文章。
 * **增强的初始部署和更新体验** — 在此版本中，安装和更新过程已得到增强。 通过安装向导的安装过程已得到了改进，如果网络配置和防火墙设置不正确，可以为用户提供反馈。 提供了更多诊断 cmdlet，以帮助你对设备的网络进行故障排除。 有关用于故障排除的新诊断 cmdlet 的详细信息，请参阅这篇[部署故障排除](storsimple-troubleshoot-deployment.md)文章。
 

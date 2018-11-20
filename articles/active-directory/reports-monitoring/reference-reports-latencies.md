@@ -13,44 +13,44 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/15/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b81c66acc0a90ba9b74cf1f4fb34ef7a545837f9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736600"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623164"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
-通过使用 Azure Active Directory 中的[报表](../active-directory-preview-explainer.md)，可以获取确定环境运行状况所需的所有信息。 在 Azure 门户中显示报告数据所花费的时间也被称为延迟。 
-
-本主题列出了 Azure 门户中所有报告类别的相关延迟信息。 
-
+延迟是 Azure Active Directory (Azure AD) 报告数据在 [Azure 门户](https://portal.azure.com)中显示所需的时间。 本文列出了不同类型报告的预期延迟。 
 
 ## <a name="activity-reports"></a>活动报表
 
-活动报告有两个方面：
+有两种类型的活动报告：
 
-- **登录活动** — 有关托管应用程序的使用和用户登录活动的信息
-- **审核日志** - 有关用户和组管理、托管应用程序和目录活动的系统活动信息
+- [登录](concept-sign-ins.md) - 提供有关托管应用程序的使用情况和用户登录活动的信息
+- [审核日志](concept-audit-logs.md) - 提供有关用户和组、托管应用程序和目录活动的系统活动信息
 
-下表列出了活动报表的延迟信息。
+下表列出了活动报表的延迟信息。 
+
+> [!NOTE]
+> **延迟 (95%)** 是指报告 95% 的日志所用的时间，**延迟 (99%)** 是指报告 99% 的日志所用的时间。 
+>
 
 | 报表 | 延迟 (95%) |延迟 (99%)|
 | :-- | --- | --- | 
 | 审核日志 | 2 分钟  | 5 分钟  |
 | 登录 | 2 分钟  | 5 分钟 |
 
-
 ## <a name="security-reports"></a>安全报表
 
-安全报告有两个方面：
+有两种类型的安全报告：
 
-- **风险登录** - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
-- **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 
+- [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
+- [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
 
 下表列出了安全报表的延迟信息。
 
@@ -61,7 +61,7 @@ ms.locfileid: "45736600"
 
 ## <a name="risk-events"></a>风险事件
 
-Azure Active Directory 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为“风险事件”的记录中。
+Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 检测到的每个可疑操作都存储在称为“风险事件”的记录中。
 
 下表列出了风险事件的延迟信息。
 
@@ -75,17 +75,8 @@ Azure Active Directory 使用自适应机器学习算法和试探法来检测与
 | 从具有可疑活动的 IP 地址登录 |2 小时 |4 小时 |8 小时  |
 
 
-
 ## <a name="next-steps"></a>后续步骤
 
-如果想要深入了解 Azure 门户中的活动报表，请参阅：
-
-- [Azure Active Directory 门户中的“登录活动”报表](concept-sign-ins.md)
-- [Azure Active Directory 门户中的“审核活动”报表](concept-audit-logs.md)
-
-如果想要深入了解 Azure 门户中的安全报表，请参阅：
-
-- [Azure Active Directory 门户中的“有风险的用户”安全报表](concept-user-at-risk.md)
-- [Azure Active Directory 门户中的“有风险的登录”报表](concept-risky-sign-ins.md)
-
-如果想要深入了解风险事件，请参阅 [Azure Active Directory 风险事件](concept-risk-events.md)。
+* [Azure AD 报告概述](overview-reports.md)
+* [以编程方式访问 Azure AD 报告](concept-reporting-api.md)
+* [Azure Active Directory 风险事件](concept-risk-events.md)

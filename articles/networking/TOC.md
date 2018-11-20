@@ -35,7 +35,7 @@
 # 如何
 ## Internet 连接
 ### [网络负载均衡公共服务器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [应用程序负载均衡公共服务器](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [应用程序负载均衡公共服务器](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [保护 Web 应用程序](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [跨位置分配流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## 内部连接
@@ -72,7 +72,7 @@
 ## [创作模板](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=networking)
 ## [社区模板](https://azure.microsoft.com/resources/templates/)
-## [网络博客](http://azure.microsoft.com/blog/topics/networking)
+## [网络博客](https://azure.microsoft.com/blog/topics/networking)
 ## [定价](https://azure.microsoft.com/pricing)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [区域可用性](https://azure.microsoft.com/regions/services/)

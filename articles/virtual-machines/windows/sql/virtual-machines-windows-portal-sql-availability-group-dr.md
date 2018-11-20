@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 84fa2e051c46e178e3e72709886babc8c3db7b9d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852823"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240403"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
 
@@ -56,7 +56,7 @@ ms.locfileid: "29852823"
    ![可用性组](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->对于在两个 Azure 区域之间进行复制的数据，此体系结构会产生出站数据费用。 请参阅[带宽定价](http://azure.microsoft.com/pricing/details/bandwidth/)。  
+>对于在两个 Azure 区域之间进行复制的数据，此体系结构会产生出站数据费用。 请参阅[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)。  
 
 ## <a name="create-remote-replica"></a>创建远程副本
 
@@ -104,13 +104,13 @@ ms.locfileid: "29852823"
    - 使用远程数据中心的网络。
    - 从新的 Azure 负载均衡器中分配 IP 地址。 
 
-1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](http://msdn.microsoft.com/library/ff878259.aspx)。
+1. 在 SQL Server 配置管理器中的新 SQL Server 上，[启用 Always On 可用性组](https://msdn.microsoft.com/library/ff878259.aspx)。
 
 1. [在新的 SQL Server 上打开防火墙端口](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
 
    打开端口所需的端口号具体取决于环境。 打开镜像终结点和 Azure 负载均衡器运行状况探测的端口。
 
-1. [将副本添加到新 SQL Server 上的可用性组](http://msdn.microsoft.com/library/hh213239.aspx)。
+1. [将副本添加到新 SQL Server 上的可用性组](https://msdn.microsoft.com/library/hh213239.aspx)。
 
    对位于远程 Azure 区域中的副本，将其设置为与手动故障转移进行异步复制。  
 
@@ -142,9 +142,9 @@ ms.locfileid: "29852823"
 
 远程数据中心中的副本属于可用性组，但位于不同子网。 如果此副本成为主副本，可能出现应用程序连接超时。 这种情况类似于多子网部署中的本地可用性组。 若要允许客户端应用程序进行连接，可更新客户端连接，或在群集网络名称资源上配置名称解析缓存。
 
-最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](http://msdn.microsoft.com/library/gg471494#Anchor_0)。
+最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[多子网可用性组中的连接超时](http://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)。
+如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[多子网可用性组中的连接超时](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)。
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
@@ -164,7 +164,7 @@ ms.locfileid: "29852823"
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 
-| Location | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
+| 位置 | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
 | ----- | ----- | ----- | ----- | -----
 | 主数据中心 | SQL-1 | 主要 | 同步 | 自动
 | 主数据中心 | SQL-2 | 辅助 | 同步 | 自动
@@ -175,12 +175,12 @@ ms.locfileid: "29852823"
 
 相关详细信息，请参阅以下主题：
 
-- [对可用性组执行计划的手动故障转移 (SQL Server)](http://msdn.microsoft.com/library/hh231018.aspx)
-- [对可用性组执行强制的手动故障转移 (SQL Server)](http://msdn.microsoft.com/library/ff877957.aspx)
+- [对可用性组执行计划的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>更多链接
 
-* [Always On 可用性组](http://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure 虚拟机](http://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Always On 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure 负载均衡器](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure 可用性集](../manage-availability.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线 WCF 中继教程 | Microsoft Docs
+title: 使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务 | Microsoft Docs
 description: 使用 WCF 中继构建客户端和服务应用程序。
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857969"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615461"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Azure WCF 中继教程
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
 本教程介绍如何使用 Azure 中继功能构建简单的 WCF 中继客户端应用程序和服务。 有关使用[服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md)的类似教程，请参阅[服务总线队列入门](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)。
 
@@ -31,19 +31,32 @@ ms.locfileid: "48857969"
 
 最后三个步骤介绍如何创建客户端应用程序、如何配置客户端应用程序，以及如何创建和使用可以访问主机功能的客户端。
 
+在本教程中，你将执行以下步骤：
+
+> [!div class="checklist"]
+> * 创建中继命名空间。
+> * 创建 WCF 服务协定
+> * 实现 WCF 协定
+> * 托管并运行 WCF 服务以向中继服务注册
+> * 创建服务协定的 WCF 客户端
+> * 配置 WCF 客户端
+> * 实现 WCF 客户端
+> * 运行应用程序。 
+
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要以下各项：
+若要完成本教程，需要具备以下先决条件：
 
-* [Microsoft Visual Studio 2015 或更高版本](http://visualstudio.com)。 本教程使用 Visual Studio 2017。
-* 有效的 Azure 帐户。 如果没有帐户，只需几分钟的时间就能创建一个免费帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/free/)。
+- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- [Visual Studio 2015 或更高版本](http://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+- 用于 .NET 的 Azure SDK。 从 [SDK 下载页](https://azure.microsoft.com/downloads/)安装它。
 
-## <a name="create-a-service-namespace"></a>创建服务命名空间
+## <a name="create-a-relay-namespace"></a>创建中继命名空间
+第一步是创建命名空间并获取[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 密钥。 命名空间为每个通过中继服务公开的应用程序提供应用程序边界。 创建服务命名空间时，系统会自动生成 SAS 密钥。 服务命名空间与 SAS 密钥的组合为 Azure 提供了一个用于验证应用程序访问权限的凭据。
 
-第一步是创建命名空间并获取[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 密钥。 命名空间为每个通过中继服务公开的应用程序提供应用程序边界。 创建服务命名空间时，系统会自动生成 SAS 密钥。 服务命名空间与 SAS 密钥的组合为 Azure 提供了一个用于验证应用程序访问权限的凭据。 请按照[此处的说明](relay-create-namespace-portal.md)创建中继命名空间。
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>定义 WCF 服务协定
-
 此服务协定指定服务支持的操作（方法或函数的 Web 服务术语）。 约定通过定义 C++、C# 或 Visual Basic 接口来创建。 接口中的每个方法都对应一个特定的服务操作。 必须将 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性应用于每个接口，并且必须将 [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性应用于每个操作。 如果具有 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性的接口中的方法没有 [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性，则该方法是不公开的。 该过程后面的示例中提供了这些任务的代码。 有关协定和服务的更多讨论，请参阅 WCF 文档中的 [设计和实现服务](https://msdn.microsoft.com/library/ms729746.aspx) 。
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>使用接口创建中继协定
@@ -51,13 +64,13 @@ ms.locfileid: "48857969"
 1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，并选择“以管理员身份运行”。
 2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”（如果“Visual C#”未出现，则在“其他语言”下方查看）。 单击“控制台应用 (.NET Framework)”模板，并将其命名为“EchoService”。 单击“确定”以创建该项目  。
 
-    ![][2]
+    ![创建控制台应用][2]
 
 3. 安装服务总线 NuGet 包。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) 是可以以编程方式访问 WCF 基本功能的命名空间。 服务总线使用 WCF 的许多对象和属性来定义服务约定。
 
     在“解决方案资源管理器”中，右键单击项目，然后单击“管理 NuGet 程序包”。单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 确保在“版本”  框中选定项目名称。 单击“安装” 并接受使用条款。
 
-    ![][3]
+    ![服务总线包][3]
 4. 在解决方案资源管理器中，双击 Program.cs 文件以在编辑器中将其打开（如果尚未打开）。
 5. 在文件的顶部添加以下 using 语句：
 
@@ -81,7 +94,7 @@ ms.locfileid: "48857969"
     ```
 
    > [!NOTE]
-   > 通常情况下，服务协定命名空间包含一个包括版本信息的命名方案。 服务协定命名空间中包括的版本信息可以使服务通过将新服务协定定义为新命名空间并将其公开到新的终结点上，来隔离重大更改。 以这种方式，客户端可以继续使用旧的服务协定，而无需进行更新。 版本信息可能包含日期或内部版本号。 有关详细信息，请参阅 [服务版本控制](http://go.microsoft.com/fwlink/?LinkID=180498)。 鉴于此教程的目的，服务协定命名空间的命名方案不包含版本信息。
+   > 通常情况下，服务协定命名空间包含一个包括版本信息的命名方案。 服务协定命名空间中包括的版本信息可以使服务通过将新服务协定定义为新命名空间并将其公开到新的终结点上，来隔离重大更改。 以这种方式，客户端可以继续使用旧的服务协定，而无需进行更新。 版本信息可能包含日期或内部版本号。 有关详细信息，请参阅 [服务版本控制](https://go.microsoft.com/fwlink/?LinkID=180498)。 鉴于此教程的目的，服务协定命名空间的命名方案不包含版本信息。
    >
    >
 8. 在 `IEchoContract` 接口中，为 `IEchoContract` 协定在接口中公开的单个操作声明一个方法，然后将 `OperationContractAttribute` 属性应用到希望将其作为公共 WCF 中继协定的一部分进行公开的方法中，如下所示：
@@ -231,7 +244,7 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>托管并运行基本 Web 服务以向中继服务注册
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>托管并运行 WCF 服务以向中继服务注册
 
 此步骤介绍如何运行 Azure 中继服务。
 
@@ -501,7 +514,7 @@ namespace Microsoft.ServiceBus.Samples
     此步骤定义终结点的名称、服务中定义的协定，以及客户端应用程序使用 TCP 与 Azure 中继进行通信的事实。 终结点名称在下一步中用于将此终结点配置与服务 URI 链接。
 5. 单击“文件”，并单击“全部保存”。
 
-## <a name="example"></a>示例
+### <a name="example"></a>示例
 
 下面的代码显示了 Echo 客户端的 App.config 文件。
 
@@ -607,7 +620,7 @@ namespace Microsoft.ServiceBus.Samples
     channelFactory.Close();
     ```
 
-## <a name="example"></a>示例
+### <a name="example"></a>示例
 
 完成的代码应如下所示，演示了如何创建客户端应用程序、如何调用服务操作以及如何在完成操作调用后关闭客户端。
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. 可以继续以这种方式将来自客户端的短信发送至服务。 完成后，在客户端和服务控制台窗口中按 Enter 以结束这两个应用程序。
 
 ## <a name="next-steps"></a>后续步骤
+转到以下教程： 
 
-本教程介绍如何使用服务总线的 WCF 中继功能，构建 Azure 中继客户端应用程序和服务。 有关使用[服务总线消息传送](../service-bus-messaging/service-bus-messaging-overview.md)的类似教程，请参阅[服务总线队列入门](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)。
-
-若要了解有关 Azure 中继的详细信息，请参阅以下主题。
-
-* [Azure 中继概述](relay-what-is-it.md)
-* [如何通过 .NET 使用 WCF 中继服务](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[向网络外部的客户端公开本地 WCF REST 服务](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

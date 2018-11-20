@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：启用密码哈希同步 | Microsoft D
 description: Azure Active Directory 域服务入门
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 5a32a0df-a3ca-4ebe-b980-91f58f8030fc
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: maheshu
-ms.openlocfilehash: 0f7023b60ef3678c284fe05bff7be73674595512
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 9c37eb064fb12ff548763a9c70a2e79219113b67
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504145"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227359"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>允许将密码哈希同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的密码哈希同步到 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。
@@ -53,7 +53,7 @@ Azure Active Directory 域服务需要密码哈希的格式适用于 NTLM 和 Ke
 ### <a name="enable-ntlm-and-kerberos-password-hash-generation-for-a-cloud-only-user-account"></a>对仅限云的用户帐户启用 NTLM 和 Kerberos 密码哈希生成
 下面是需要向用户提供的说明，以便用户可以更改其密码：
 
-1. 转到组织的 [Azure AD 访问面板](http://myapps.microsoft.com)页。
+1. 转到组织的 [Azure AD 访问面板](https://myapps.microsoft.com)页。
 
     ![启动 Azure AD 访问面板](./media/active-directory-domain-services-getting-started/access-panel.png)
 

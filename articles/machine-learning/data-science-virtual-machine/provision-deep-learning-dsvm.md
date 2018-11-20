@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169935"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229656"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
 
-深度学习虚拟机 (DLVM) 是常用的[数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 的特别配置变体，让你更轻松地使用基于 GPU 的 VM 实例快速训练深度学习模型。 Windows 2016 或作为基础的 Ubuntu DSVM 均支持它。 DLVM 共享 DSVM 上提供的相同核心 VM 映像，因此也共享了 DSVM 上所有丰富的工具集。 
+深度学习虚拟机 (DLVM) 是常用的[数据科学虚拟机](https://aka.ms/dsvm) (DSVM) 的特别配置变体，让你更轻松地使用基于 GPU 的 VM 实例快速训练深度学习模型。 Windows 2016 或作为基础的 Ubuntu DSVM 均支持它。 DLVM 共享 DSVM 上提供的相同核心 VM 映像，因此也共享了 DSVM 上所有丰富的工具集。 
 
 DLVM 包含 AI 的多个工具，包括 GPU 版本的常用深度学习框架（如 Microsoft 认知工具包、TensorFlow、Keras、Caffe2、Chainer）、用于获取和预处理映像、文本数据的工具、用于数据科学建模和开发活动的工具（例如 Microsoft R Server Developer Edition、Anaconda Python、用于 Python 和 R 的 Jupyter Notebook、用于 Python 和 R 的 IDE、SQL 数据库以及许多其他数据科学和 ML 工具）。 
 

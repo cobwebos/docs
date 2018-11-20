@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634232"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259167"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -87,7 +87,7 @@ Azure 门户最近添加的另一种技术允许提取新模块或更新现有�
 需要稍微缩放一下。 但这并不困难，并且每个资源只需调整一次（除非将来想要升级）。有关创作 PowerShell 集成模块的详细信息，请参阅以下文章：[Authoring Integration Modules for Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)（创作 Azure 自动化的集成模块）
 
 - 将所需的模块安装到工作站，如下所示：
-  - 安装 [Windows Management Framework v5](http://aka.ms/wmf5latest)（对于 Windows 10 不需要安装）
+  - 安装 [Windows Management Framework v5](https://aka.ms/wmf5latest)（对于 Windows 10 不需要安装）
   - `Install-Module –Name MODULE-NAME`    <—从 PowerShell 库获取模块
 - 将模块文件夹从 `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` 复制到临时文件夹
 - 删除主文件夹中的示例和文档

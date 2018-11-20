@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 35c3027f2b592f6b24075005829ae9376a7fca82
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987026"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244996"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>添加、禁用、启用或删除终结点
 
@@ -80,5 +80,5 @@ ms.locfileid: "49987026"
 * [配置路由方法](traffic-manager-configure-routing-method.md)
 * [流量管理器降级状态疑难解答](traffic-manager-troubleshooting-degraded.md)
 * [流量管理器性能注意事项](traffic-manager-performance-considerations.md)
-* [流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/p/?LinkID=313584)
+* [流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/p/?LinkID=313584)
 

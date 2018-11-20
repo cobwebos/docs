@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0240bbdf2055ac44f8836adfaad3bf6c44893b77
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 93ce9feaf52282b9477d49eaf270d6d89dca7811
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781816"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232522"
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中创建第一个 VM
 
-最初访问开发测试实验室并要创建第一个 VM 时，可能会使用预先加载的[基本 Marketplace 映像](devtest-lab-configure-marketplace-images.md)。 稍后，创建更多 VM 时，还可以从[自定义映像和公式](devtest-lab-add-vm.md)中选择。 
+最初访问开发测试实验室并要创建第一个 VM 时，可能会使用预先加载的[基本市场映像](devtest-lab-configure-marketplace-images.md)。 稍后，创建更多 VM 时，还可以从[自定义映像和公式](devtest-lab-add-vm.md)中选择。 
 
 本教程将引导你完成使用 Azure 门户向开发测试实验室中的实验室添加第一个 VM 的过程。
 
 ## <a name="steps-to-add-your-first-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加第一个 VM 的步骤
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中选择要在其中创建 VM 的实验室。  
 1. 在实验室的“概述”边栏选项卡上，选择“+ 添加”。  
 
     ![“添加 VM”按钮](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
-1. 在“选择基本映像”边栏选项卡上为 VM 选择应用商店映像。
+1. 在“选择基本映像”边栏选项卡上为 VM 选择市场映像。
 1. 在“虚拟机”边栏选项卡的“虚拟机名称”文本框中输入新虚拟机的名称。
 
     ![实验室 VM 边栏选项卡](./media/devtest-lab-add-vm/devtestlab-lab-add-first-vm.png)

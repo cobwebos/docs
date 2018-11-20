@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: f574203f31a21f945115296693f04cff649614c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165630"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649935"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -128,7 +128,7 @@ Ansible 配备了多个模块，这些模块可远程主机上直接执行或通
 | azure_rm_autoscale_facts            | -            | -                         | -          | 是          | 是                                 | 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Azure 的 playbook 角色简介
-[azure_preview_module playbook 角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)是最完整的角色，包括所有最新的 Azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果是将 Ansible 用于 Azure 资源预配目的，建议 azure_preview_module 角色。
+[azure_preview_module playbook 角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)是最完整的角色，包括所有最新的 Azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果是将 Ansible 用于 Azure 资源预配目的，建议安装 azure_preview_module playbook 角色。
 
 azure_preview_module playbook 角色每三周发布一次。
 

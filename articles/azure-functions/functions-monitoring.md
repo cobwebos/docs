@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902699"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457657"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -55,7 +55,7 @@ Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-
 
 3. 输入其他所需信息。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 下一步是[禁用内置日志记录](#disable-built-in-logging)。
 
@@ -211,6 +211,7 @@ Functions 运行时创建具有以“Host”开头的类别的日志。 例如�
 
 Host.json 文件配置函数应用发送到 Application Insights 的日志记录数量。 对于每个类别，均可以指示要发送的最小日志级别。 下面是一个示例：
 
+#### <a name="functions-version-1"></a>Functions 版本 1 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ Host.json 文件配置函数应用发送到 Application Insights 的日志记录
 }
 ```
 
+#### <a name="functions-version-2"></a>Functions 版本 2 
+Functions v2 现在使用 [.NET Core 日志记录筛选器层次结构](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 此示例设置以下规则：
 
 1. 对于类别为“Host.Results”或“Function”的日志，仅向 Application Insights 发送 `Error` 级别及更高级别。 `Warning` 级别及以下级别的日志将被忽略。
@@ -236,6 +253,7 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
 
 如果 host.json 包含以相同字符串开头的多个类别，则先匹配较长的类别。 例如，假设想要让运行时中除“Host.Aggregator”之外的所有内容都在 `Error` 级别记录，而“Host.Aggregator”在 `Information` 级别记录：
 
+#### <a name="functions-version-1"></a>Functions 版本 1 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ host.json 中的类别值控制所有以相同值开头的类别的日志记录�
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>Functions 版本 2 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

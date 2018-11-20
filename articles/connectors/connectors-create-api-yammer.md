@@ -11,12 +11,12 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 41855d6e562ddbb78df5d1d8794127e1064cc2ca
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918289"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233321"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Yammer 帐户
 
@@ -26,7 +26,7 @@ ms.locfileid: "42918289"
 * 获取消息、组、网络、用户详细信息以及其他内容。
 * 发布消息以及为消息点赞。
 
-可以使用触发器从 Yammer 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Yammer 帐户执行任务的操作。 还可以让其他操作使用来自 Yammer 操作的输出。 例如，当有新消息出现在源或组中时，你可以使用 Slack 连接器共享这些消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 Yammer 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Yammer 帐户执行任务的操作。 还可以让其他操作使用来自 Yammer 操作的输出。 例如，当有新消息出现在源或组中时，你可以使用 Slack 连接器共享这些消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -67,7 +67,7 @@ ms.locfileid: "42918289"
 
 1. 如果提示你登录到 Yammer，请立即登录以便你可以允许访问。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -76,7 +76,7 @@ ms.locfileid: "42918289"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

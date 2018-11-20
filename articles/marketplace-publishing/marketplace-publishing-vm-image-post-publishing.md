@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715009"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252966"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>有关 Azure 市场中的虚拟机产品/服务的发布后指南
 本文介绍如何在 Azure 市场中更新实时虚拟机产品。 其中将指导你完成将一个或多个新 SKU 添加到现有产品的过程。 此外，还将引导完成删除从市场的实时虚拟机产品或 SKU 的过程。
@@ -30,7 +30,7 @@ ms.locfileid: "39715009"
 * **SKU 标识符：** 在发布门户中，转到“虚拟机”并选择产品。 然后单击“SKU” > “添加 SKU”。
 * **发布者命名空间：** 在发布门户中，转到“虚拟机” > “演练” > “告诉我们你公司的情况”（可在“步骤 2 注册你的公司”下找到）>“发布者命名空间” > “命名空间”。
 
-当[市场](http://azure.microsoft.com/marketplace)中列出产品/SKU 后，将无法更改以下文本框：
+当[市场](https://azure.microsoft.com/marketplace)中列出产品/SKU 后，将无法更改以下文本框：
 
 * **产品标识符：** 在发布门户中，转到“虚拟机”并选择产品。 然后单击“VM 映像” > “产品标识符”。
 * **SKU 标识符：** 在发布门户中，转到“虚拟机”并选择产品。 然后单击“SKU” > “添加 SKU”。
@@ -330,12 +330,10 @@ ms.locfileid: "39715009"
 5. 完成更改后，请单击“请求批准推送到生产”按钮，在市场中重新发布产品。
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [入门：将产品发布到 Azure 市场](marketplace-publishing-getting-started.md)
+* [入门：将产品发布到 Azure 市场](marketplace-publishing-getting-started.md)
 * [了解付款报告](marketplace-publishing-report-payout.md)
 * [更改云解决方案提供商经销商激励](marketplace-publishing-csp-incentive.md)
-* 
-  [排查市场中的常见发布问题](marketplace-publishing-support-common-issues.md)
+* [排查市场中的常见发布问题](marketplace-publishing-support-common-issues.md)
 * [作为发布者获取支持](marketplace-publishing-get-publisher-support.md)
 * [创建本地 VM 映像](marketplace-publishing-vm-image-creation-on-premise.md)
 * [在 Azure 预览门户中创建运行 Windows 的虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

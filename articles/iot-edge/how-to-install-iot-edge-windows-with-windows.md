@@ -2,19 +2,19 @@
 title: 如何采用 Windows 容器在 Windows 上安装 Azure IoT Edge | Microsoft Docs
 description: 采用 Windows 容器在 Windows 上安装 Azure IoT Edge 的说明
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2eebc96b14ee0f06b3bd88ea565dfe9372aba1ff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e6edc9d6e98c03b1a5847dc08bbaa3ad029aa673
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037808"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565031"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>在 Windows 上安装 Azure IoT Edge 运行时，以将其与 Windows 容器一起使用
 
@@ -36,11 +36,11 @@ Windows 支持目前为预览版。
 ## <a name="install-the-container-runtime"></a>安装容器运行时 
 
 >[!NOTE]
->要在 Windows IoT 核心版上安装容器引擎，请执行[预配 IoT 核心版设备][lnk-iot-core]一文中的步骤，然后继续根据以下说明进行操作。
+>要在 Windows IoT 核心版上安装容器引擎，请执行[预配 IoT 核心版设备](how-to-install-iot-core.md)一文中的步骤，然后继续根据以下说明进行操作。
 
-Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker）。 可通过[用于 Windows 的 Docker][lnk-docker-for-windows] 进行开发和测试。 
+Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时（例如 Docker）。 可通过[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 进行开发和测试。 
 
-将用于 Windows 的 Docker 配置为[使用 Windows 容器][lnk-docker-config]。
+将用于 Windows 的 Docker 配置为[使用 Windows 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 
@@ -51,7 +51,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker
 
 ### <a name="install-and-manually-provision"></a>安装和手动预配
 
-1. 按照[注册新的 Azure IoT Edge 设备][lnk-dcs]中的步骤注册设备并检索设备连接字符串。 
+1. 按照[注册新的 Azure IoT Edge 设备](how-to-register-device-portal.md)中的步骤注册设备并检索设备连接字符串。 
 
 2. 在 IoT Edge 设备上，以管理员身份运行 PowerShell。 
 
@@ -66,7 +66,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时（例如 Docker
 
 ### <a name="install-and-automatically-provision"></a>安装和自动预配
 
-1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备][lnk-dps]中的步骤，设置设备预配服务并检索其范围 ID，模拟 TPM 设备并检索其注册 ID，然后创建个人注册。 在 IoT 中心注册设备后，继续安装。  
+1. 按照[在 Windows上创建和预配模拟 TPM Edge 设备](how-to-auto-provision-simulated-device-windows.md)中的步骤，设置设备预配服务并检索其**范围 ID**，模拟 TPM 设备并检索其**注册 ID**，然后创建个人注册。 在 IoT 中心注册设备后，继续安装。  
 
    >[!TIP]
    >在安装和测试期间，确保运行 TPM 模拟器的窗口处于打开状态。 
@@ -116,21 +116,6 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-预配 IoT Edge 设备和安装运行后，现在可以[部署 IoT Edge 模块][lnk-modules]。
+预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
-如果在正确安装 Edge 运行时期间遇到问题，请查看[疑难解答][lnk-trouble]页面。
-
-
-<!-- Images -->
-[img-nat]: ./media/how-to-install-iot-edge-windows-with-windows/nat.png
-
-<!-- Links -->
-[lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md
-[lnk-docker-for-windows]: https://www.docker.com/docker-windows
-[lnk-iot-core]: how-to-install-iot-core.md
-[lnk-modules]: how-to-deploy-modules-portal.md
+如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md)页。

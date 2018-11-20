@@ -10,12 +10,12 @@ ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4d25e147044053aa76afe2da482b71c24efc2325
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888044"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242868"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Azure 机器学习的开发环境 
 
@@ -59,7 +59,7 @@ Azure Notebooks 的缺点是无法完全控制环境，并且可能无法安装�
 
 ## <a name="data-science-virtual-machine"></a>数据科学虚拟机
 
-数据科学虚拟机 (DSVM) 是上述环境的组合。 它是 Azure 平台上的一个 VM，预装了 Jupyter Notebook，Visual Studio Code 和 Azure 机器学习 SDK。 创建 VM 比创建 Azure Notebooks 更复杂，但比从头设置计算机更简单。 由于所需的软件已预先安装在 VM 映像中，因此可以在创建 VM 后快速开始尝试 Azure 机器学习。
+数据科学虚拟机 (DSVM) 是上述环境的组合。 它是 Azure 平台上的一个 VM，预装了 Jupyter Notebook，Visual Studio Code 和 Azure 机器学习 SDK。 由于所需的软件已预先安装在 VM 映像中，因此可以在创建 VM 后快速开始尝试 Azure 机器学习。
 
 DSVM 允许选择所需的计算资源，例如 CPU、GPU 和内存。 它还预装了其他编辑器，如 PyCharm，以及流行的机器学习软件，如 TensorFlow、Keras 和 PyTorch。 如果未安装所需的软件，则可以自行安装。
 

@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: a415258b8127bb78d8a8d1b5ef228234b34b3e26
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003477"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287500"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
-Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API 的主页。 使用第一个 API **identityRiskEvents** 可以在 Microsoft Graph 中查询[风险事件](../reports-monitoring/concept-risk-events.md)列表和相关信息。 可以参考本文开始查询此 API。 如需深入介绍、完整文档和访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://graph.microsoft.io/)。
+Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API 的主页。 使用第一个 API **identityRiskEvents** 可以在 Microsoft Graph 中查询[风险事件](../reports-monitoring/concept-risk-events.md)列表和相关信息。 可以参考本文开始查询此 API。 如需深入介绍、完整文档和访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://developer.microsoft.com/graph/)。
 
 
 通过 Microsoft Graph 访问 Identity Protection 数据需要执行四个步骤：
@@ -37,8 +37,11 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 准备工作：
 
-* 需有管理员权限才能在 Azure AD 中创建应用程序
-* 租户域的名称（例如 contoso.onmicrosoft.com）。
+- Azure AD P2 租户
+
+- 需有管理员权限才能在 Azure AD 中创建应用程序
+
+- 租户域的名称（例如 contoso.onmicrosoft.com）。
 
 
 ## <a name="retrieve-your-domain-name"></a>检索域名 
@@ -49,12 +52,14 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     ![创建应用程序](./media/graph-get-started/41.png)
 
+3. 单击“自定义域名”。
 
-3. 在“管理”部分，单击“属性”。
+    ![自定义域名](./media/graph-get-started/71.png)
 
-    ![创建应用程序](./media/graph-get-started/42.png)
+4. 从域名列表中，复制标记为主域名的域名。
 
-4. 复制域名。
+    ![自定义域名](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>创建新的应用注册
@@ -72,9 +77,9 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     ![创建应用程序](./media/graph-get-started/44.png)
 
-    a. 在“名称”文本框中，键入应用程序的名称（例如“AADIP 风险事件 API 应用程序”）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入应用程序的名称（例如“AADIP 风险事件 API 应用程序”）。
    
-    b. 在“类型”中，选择“Web 应用程序和/或 Web API”。
+    b. 在“应用程序类型”中，选择“Web 应用程序和/或 Web API”。
    
     c. 在“登录 URL”文本框中，键入 `http://localhost`。
 
@@ -131,7 +136,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     ![创建应用程序](./media/graph-get-started/24.png)
 
-    a. 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）。
     
     b. 对于“持续时间”，请选择“1 年内”。
 
@@ -168,7 +173,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 如果成功，此命令将返回身份验证令牌。  
 若要调用 API，请创建包含以下参数的标头：
 
-    `Authorization`=”<token_type> <access_token>"
+    `Authorization`="<token_type> <access_token>"
 
 
 身份验证时，可以在返回的令牌中找到令牌类型和访问令牌。
@@ -214,7 +219,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 恭喜，已向 Microsoft Graph 发出了第一个调用！  
 现在，可以在适当的情况下查询标识风险事件和使用数据。
 
-若要详细 Microsoft Graph 以及如何使用图形 API 构建应用程序，请查看[文档](https://graph.microsoft.io/docs)。同时，[Microsoft Graph 站点](https://graph.microsoft.io/)上提供了更丰富的信息。 另外，强烈建议将 [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) 网页加入书签，因为其中列出了可在 Graph 中使用的所有 Identity Protection API。 在我们添加了通过 API 使用 Identity Protection 的新方法后，该网页上也会介绍这些方法。
+若要详细 Microsoft Graph 以及如何使用图形 API 构建应用程序，请查看[文档](https://developer.microsoft.com/graph/docs)。同时，[Microsoft Graph 站点](https://developer.microsoft.com/graph/)上提供了更丰富的信息。 另外，强烈建议将 [Azure AD Identity Protection API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root) 网页加入书签，因为其中列出了可在 Graph 中使用的所有 Identity Protection API。 在我们添加了通过 API 使用 Identity Protection 的新方法后，该网页上也会介绍这些方法。
 
 如需相关信息，请参阅：
 
@@ -222,9 +227,9 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
 
 -  [Azure Active Directory Identity Protection 检测到的风险事件类型](../reports-monitoring/concept-risk-events.md)
 
-- [Microsoft Graph](https://graph.microsoft.io/)
+- [Microsoft Graph](https://developer.microsoft.com/graph/)
 
-- [Microsoft Graph 概述](https://graph.microsoft.io/docs)
+- [Microsoft Graph 概述](https://developer.microsoft.com/graph/docs)
 
-- [Azure AD Identity Protection 服务根](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
+- [Azure AD Identity Protection 服务根](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
 

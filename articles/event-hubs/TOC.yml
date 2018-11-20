@@ -5,7 +5,7 @@ items:
   items:
   - name: 什么是事件中心？
     href: event-hubs-about.md
-  - name: 用于 Apache Kafka 的事件中心（预览版）
+  - name: 用于 Apache Kafka 的事件中心
     href: event-hubs-for-kafka-ecosystem-overview.md
   - name: 事件中心捕获
     href: event-hubs-capture-overview.md
@@ -69,8 +69,12 @@ items:
     items:
     - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
       href: event-hubs-kafka-mirror-maker-tutorial.md
+    - name: 将 Apache Spark 连接到已启用 Apache Kafka 的事件中心
+      href: event-hubs-kafka-spark-tutorial.md
     - name: 将 Apache Flink 连接到已启用 Apache Kafka 的事件中心
       href: event-hubs-kafka-flink-tutorial.md
+    - name: 将 Apache Kafka Connect 与已启用 Kafka 的事件中心集成（预览版）
+      href: event-hubs-kafka-connect-tutorial.md
     - name: 将 Akka Streams 连接到已启用 Apache Kafka 的事件中心
       href: event-hubs-kafka-akka-streams-tutorial.md
 - name: 示例
@@ -122,6 +126,12 @@ items:
       href: event-hubs-metrics-azure-monitor.md
     - name: 事件中心管理库
       href: event-hubs-management-libraries.md
+  - name: 获取事件中心连接字符串
+    href: event-hubs-get-connection-string.md
+  - name: 故障排除
+    items:
+    - name: 例外
+      href: event-hubs-messaging-exceptions.md
   - name: 使用 IP 筛选器
     href: event-hubs-ip-filtering.md
   - name: 使用虚拟网络服务终结点
@@ -130,6 +140,8 @@ items:
     href: event-hubs-auto-inflate.md
   - name: 使用事件中心流式传输 Azure 诊断数据
     href: event-hubs-streaming-azure-diags-data.md
+  - name: 使用不同的协议在应用程序之间交换事件
+    href: event-hubs-exchange-events-different-protocols.md
 - name: 引用
   items:
   - name: Java
@@ -152,8 +164,6 @@ items:
       href: /dotnet/api/microsoft.azure.management.eventhub
   - name: REST
     href: /rest/api/eventhub
-  - name: 例外
-    href: event-hubs-messaging-exceptions.md
   - name: 配额
     href: event-hubs-quotas.md
 - name: 资源
@@ -174,9 +184,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 39d053a2bba16ba740075d029cda784577136449
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 28260650a8859f76aa6d8bd6ff9333d57c65e55a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984938"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281450"

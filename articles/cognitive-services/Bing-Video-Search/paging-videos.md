@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cd5d6ef6a75088d02bc34558f66ed520c230e06b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225559"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741880"
 ---
 # <a name="paging-videos"></a>分页视频
 
@@ -65,3 +65,6 @@ Host: api.cognitive.microsoft.com
 
 > [!NOTE]
 > 分页仅适用于视频搜索 (/videos/search)，而不适用于视频见解 (/videos/details) 或热门视频 (/videos/trending)。
+
+> [!NOTE]
+> `TotalEstimatedAnswers` 字段是可以为当前查询检索的搜索结果总数的估计值。  设置 `count` 和 `offset` 参数时，`TotalEstimatedAnswers` 数值可能会更改。 

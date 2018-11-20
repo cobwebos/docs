@@ -9,15 +9,13 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 98e168ccb600bd1371da7f125531f3b4421b3d80
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a974c362bef2d67479e64f16ca4653d8dde9a454
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47018614"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254688"
 ---
-1. [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://aka.ms/aml-clone-azure-notebooks)
-[将示例笔记本导入 Azure Notebooks](https://aka.ms/aml-clone-azure-notebooks)。
-1.  按照[如何配置 Azure 机器学习服务的开发环境](https://aka.ms/aml-how-to-configure-environment)中的说明创建工作区及其配置文件 (**config.json**)。
-2. 在工具栏中选择 `+New`，以将 **config.json** 文件添加到笔记本所在的文件夹中。
-3. 打开笔记本。
+1. [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://aka.ms/aml-clone-azure-notebooks)[ 将示例笔记本导入 Azure Notebooks](https://aka.ms/aml-clone-azure-notebooks)。 （组织可能需要[管理员同意](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)才能让你登录。）
+
+1. 有关运行笔记本的进一步说明，请参阅已导入的库中的自述文件。

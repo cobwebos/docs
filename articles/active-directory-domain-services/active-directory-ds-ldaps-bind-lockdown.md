@@ -3,7 +3,7 @@ title: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域 | Microso
 description: 使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502946"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158528"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>使用安全 LDAP (LDAPS) 绑定到 Azure AD 域服务托管域
 
@@ -38,8 +38,8 @@ ms.locfileid: "39502946"
 选择“视图”，然后选择菜单中的“树”。 将“基 DN”字段留空，再单击“确定”。 导航到想要搜索的容器，右键单击该容器，再选择“搜索”。
 
 > [!TIP]
-> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”容器中。 此容器的搜索路径类似于 ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```。
-> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”容器中。 此容器的搜索路径类似于 ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```。
+> - 从 Azure AD 同步的用户和组存储在“AADDC 用户”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Users,DC=CONTOSO100,DC=COM```。
+> - 加入托管域的计算机的计算机帐户存储在“AADDC 计算机”组织单位中。 此组织单位的搜索路径类似于 ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```。
 >
 >
 

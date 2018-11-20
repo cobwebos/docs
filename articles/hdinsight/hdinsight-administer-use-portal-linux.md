@@ -1,30 +1,30 @@
 ---
-title: 使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
+title: 使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 description: 了解如何使用 Azure 门户创建和管理 HDInsight 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: jasonh
-ms.openlocfilehash: b00c88e526bf72f51df0d2a3d6a87fbd5bc1f991
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: b96712c3a920a70e121f0a72954680ced2ba96ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991974"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252286"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Hadoop 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
+使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 Apache Hadoop 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
 **先决条件**
 
-若要按照本文的步骤进行操作，需要 Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+若要按照本文的步骤进行操作，需要 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="open-the-azure-portal"></a>打开 Azure 门户
 1. 登录到 [https://portal.azure.com](https://portal.azure.com)。
@@ -81,29 +81,32 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **移动**：将群集移至其他资源组或其他订阅。
     * **删除**：删除群集。
 
-    **左侧菜单：**
+**左侧菜单：**
     * **活动日志**：显示和查询活动日志。
     * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
     * **标记**：允许设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。
-    * **诊断并解决问题**：显示疑难解答信息。
-    * 锁定：添加锁防止群集遭到修改或删除。
-    * **自动化脚本**：为群集显示并导出 Azure 资源管理器模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
+* **诊断并解决问题**：显示疑难解答信息。
     * **快速入门**：显示可帮助你开始使用 HDInsight 的信息。
     * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
-    * **订阅核心使用情况**：显示订阅的已使用和可用核心。
-    * **缩放群集**：增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
+**设置**
+* **群集大小**：检查、增加和减少群集工作节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
+    * **配额限制**：显示订阅的已使用和可用核心数。
     * **SSH + 群集登录**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
-    * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
-    * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。 请参阅[使用 Hive/Oozie 元存储](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)。
-    * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
-    * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
-    * **监视**：监视 Azure Log Analytics 中的群集。
-    * **属性**：查看群集属性。
+* **Data Lake Store Gen1**：配置对 Data Lake Store Gen1 的访问权限。  请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
     * **存储帐户**：查看存储帐户和密钥。 存储帐户在群集创建过程中配置。
-    * **Data Lake Store 访问**：配置 Data Lake Store 的访问。  请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+    * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+    * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+    * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
+    * **属性**：查看群集属性。
+* 锁定：添加锁防止群集遭到修改或删除。
+    * **自动化脚本**：为群集显示并导出 Azure 资源管理器模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
+**监视**
+* **更改**：管理警报和操作。
+    * **指标**：监视 Azure Log Analytics 中的群集指标。
+* **诊断设置**：存储诊断指标的位置设置 **支持 + 故障排除**
     * **资源运行状况**：请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
     * **新的支持请求**：允许对 Microsoft 支持创建支持票证。
-    
+
 6. 单击“属性”：
 
     属性包括：
@@ -144,6 +147,15 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 > 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](#list-and-show-clusters)。
 >
 >
+**缩放群集**
+
+1. 登录到[门户][azure-portal]。
+2. 单击左侧菜单中的“HDInsight 群集”。
+3. 单击要缩放的群集。
+3. 单击“缩放群集”。
+4. 输入**辅助角色节点数**。 对群集节点数的限制因 Azure 订阅而异。 若要增大限制，可联系计费支持人员。  成本信息反映对节点数所做的更改。
+
+    ![HDInsight Hadoop HBase Storm Spark 缩放](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 对于 HDInsight 支持的每种类型的群集，更改数据节点数的影响有所不同：
 
@@ -188,15 +200,6 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-**缩放群集**
-
-1. 登录到[门户][azure-portal]。
-2. 单击左侧菜单中的“HDInsight 群集”。
-3. 单击要缩放的群集。
-3. 单击“缩放群集”。
-4. 输入**辅助角色节点数**。 对群集节点数的限制因 Azure 订阅而异。 若要增大限制，可联系计费支持人员。  成本信息反映对节点数所做的更改。
-
-    ![HDInsight Hadoop HBase Storm Spark 缩放](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>暂停/关闭群集
 

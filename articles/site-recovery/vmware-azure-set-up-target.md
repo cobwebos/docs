@@ -1,21 +1,21 @@
 ---
-title: 准备目标环境（用于将 VMware/物理服务器复制到 Azure）| Microsoft Docs
-description: 本文介绍如何准备目标 Azure 环境，以便将 VMware VM 和物理服务器复制到 Azure。
+title: 准备目标环境以便将 VMware 复制到 Azure | Microsoft Docs
+description: 本文介绍如何准备目标 Azure 环境，以便将 VMware VM 复制到 Azure。
 services: site-recovery
-author: bsiva
-manager: abhemraj
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/28/2018
-ms.author: bsiva
-ms.openlocfilehash: 948812f05697362978ad041566d22977efec92a1
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: a6f983b08415659b9a989ebed824cddd210396e1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434630"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233423"
 ---
-# <a name="prepare-the-target-environment-vmwarephysical-to-azure"></a>准备目标环境（用于将 VMware/物理服务器复制到 Azure）
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>准备目标环境，以便将 VMware VM 或物理服务器灾难恢复到 Azure
 
 本文介绍如何准备目标 Azure 环境，以便开始将 VMware 虚拟机或物理服务器复制到 Azure。
 

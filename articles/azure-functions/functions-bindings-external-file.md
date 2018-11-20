@@ -2,20 +2,20 @@
 title: Azure Functions 的外部文件绑定（实验性）
 description: 在 Azure Functions 中使用外部文件绑定
 services: functions
-author: alexkarcher-msft
+author: craigshoemaker
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: alkarche
-ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.author: cshoe
+ms.openlocfilehash: 39036f17b8ceafebbe3660f2074e2a6c84c4df03
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093764"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248687"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions 外部文件绑定（实验性）
 本文演示如何在 Azure Functions 中通过不同 SaaS 提供程序（例如 Dropbox 或 Google Drive）处理文件。 Azure Functions 支持外部文件的触发器、输入和输出绑定。 这些绑定会创建与 SaaS 提供程序的 API 连接，或使用 Function App 的资源组中的现有 API 连接。

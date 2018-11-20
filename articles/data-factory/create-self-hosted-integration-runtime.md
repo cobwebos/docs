@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 251d1a187c2a6742c361349274fd1e0bb1e41525
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817138"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038462"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -146,6 +146,12 @@ ms.locfileid: "48817138"
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>与多个数据工厂共享自承载集成运行时
 
 可以重复使用已在数据工厂中设置的现有自承载集成运行时基础结构。 这样，便可以通过引用现有的自承载 IR（共享），在不同的数据工厂中创建*链接的自承载集成运行时*。
+
+若要使用 PowerShell 共享自承载集成运行时，请参阅[使用 PowerShell 在 Azure 数据工厂中创建共享自承载集成运行时](create-shared-self-hosted-integration-runtime-powershell.md)。
+
+有关此功能的 12 分钟介绍和演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
 ### <a name="terminology"></a>术语
 

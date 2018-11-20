@@ -1,6 +1,6 @@
 ---
-title: 在 OMS Log Analytics 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
-description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
+title: 在 Log Analytics 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
+description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6050771ee1d129edd4370079c07da721f60d2065
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041027"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613539"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>通过用于 Linux 的 OMS 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
-[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](log-analytics-alerts.md)一起进行分析。  本文介绍了如何配置用于 Linux 的 OMS 代理，以便收集来自这些系统的警报。
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>通过 Log Analytics Linux 代理将来自 Nagios 和 Zabbix 的警报收集到 Log Analytics 中 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与[来自其他来源的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
  
 ## <a name="prerequisites"></a>先决条件
-适用于 Linux 的 OMS 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
+Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（最高版本 2.x）收集警报。
 
 ## <a name="configure-alert-collection"></a>配置警报收集
 
@@ -79,13 +80,13 @@ ms.locfileid: "48041027"
 
 
 ## <a name="alert-records"></a>警报记录
-可以使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)来检索来自 Nagios 和 Zabbix 的警报记录。
+可以使用 Log Analytics 中的[日志搜索](log-analytics-queries.md)来检索来自 Nagios 和 Zabbix 的警报记录。
 
 ### <a name="nagios-alert-records"></a>Nagios 警报记录
 
 Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Nagios**。  它们具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Type |*Alert* |
 | SourceSystem |*Nagios* |
@@ -101,7 +102,7 @@ Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 ### <a name="zabbix-alert-records"></a>Zabbix 警报记录
 Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Zabbix**。  它们具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Type |*Alert* |
 | SourceSystem |*Zabbix* |
@@ -117,5 +118,5 @@ Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 
 
 ## <a name="next-steps"></a>后续步骤
-* 在 Log Analytics 中了解[警报](log-analytics-alerts.md)。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
+* 在 Log Analytics 中了解[警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 

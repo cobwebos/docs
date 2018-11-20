@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133592"
+---
 1. 登录到 [Azure 门户]。
 2. 单击“+新建” > “Web + 移动” > “移动应用”，并为移动应用后端提供一个名称。
 3. 在“资源组”下，选择一个现有资源组，或创建一个新资源组（使用与应用相同的名称）。 
@@ -5,7 +18,7 @@
 
    应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
    
-5. 选择**创建**。 此步骤创建移动应用后端。 
+5. 选择“创建”。 此步骤创建移动应用后端。 
 6. 在新的移动应用后端的“设置”窗格中，依次选择“快速启动”>客户端应用平台 >“连接数据库”。 
    
    ![用于连接数据库的选项选择](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)

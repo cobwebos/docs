@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718723"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614032"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]
-> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.3。
+> 适用于 Azure Stack 集成系统的 1809年更新或部署 Azure 应用服务 1.4 之前部署最新的 Azure Stack 开发工具包。
 >
 >
 
@@ -84,8 +84,7 @@ ms.locfileid: "44718723"
     2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
     
     > [!NOTE]
-    > 目前，应用服务只能部署到“默认提供程序订阅”。  在将来的更新中，应用服务将部署到 Azure Stack 1804 中引入的新“计量订阅”，所有现有部署也会迁移到此新订阅。
-    >
+    > 应用服务只能部署到**默认提供商订阅**。
     >
     
     3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
@@ -99,7 +98,7 @@ ms.locfileid: "44718723"
         1. 选择包含虚拟网络的**资源组**；
         2. 选择要部署到的正确**虚拟网络**名称；
         3. 为每个所需角色子网选择正确的“子网”值；
-        4. 单击“下一步”
+        4. 点击“下一步”
 
     ![应用服务安装程序][5]
 
@@ -170,7 +169,7 @@ ms.locfileid: "44718723"
     ![应用服务安装程序][14]
 
     > [!NOTE]
-    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 通过“市场”发布的 Windows Server 2016 映像未启用此功能。**
+    > **不支持将 Windows Server 2016 Core 平台映像与 Azure Stack 上的 Azure 应用服务配合使用。请勿将评估映像用于生产部署。Azure Stack上的 Azure 应用服务要求在用于部署的映像上激活 Microsoft.Net 3.5.1 SP1。 Marketplace 联合 Windows Server 2016 映像没有启用此功能，因此您必须创建并使用 Windows Server 2016 映像预先启用此功能。**
 
 14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
@@ -198,7 +197,7 @@ ms.locfileid: "44718723"
 
 1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
 
-2. 在状态下的概览中，检查“状态”是否显示“所有角色已就绪”。
+2. 在概述中，在状态检查以查看是否**状态**显示**所有角色都已就绪**。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
     
@@ -226,7 +225,7 @@ ms.locfileid: "44718723"
 >
 至于第三个技术预览版，若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并有租户订阅。
 
-1. 在 Azure Stack 租户门户中，单击 **+ 创建资源** > **Web + 移动** > **Web 应用**。
+1. 在 Azure Stack 租户门户中，单击“+ 创建资源” > “Web + 移动” > “Web 应用”。
 
 2. 在“Web 应用”边栏选项卡上的“Web 应用”框中键入名称。
 

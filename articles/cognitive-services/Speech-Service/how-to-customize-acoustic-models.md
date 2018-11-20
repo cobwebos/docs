@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 81449889ae9218f2b59ea48f10c676dcee9aa8b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466080"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215236"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>教程：创建自定义声学模型
 
@@ -53,7 +53,7 @@ ms.locfileid: "49466080"
 * 应该以 WAV (RIFF) 音频格式存储数据集中的所有音频文件。
 * 音频的采样率必须是 8 KHz 或 16 KHz，样本值应存储为未压缩的脉冲码调制 (PCM) 16 位带符号整数（短型）。
 * 支持仅单声道（单音）音频文件。
-* 音频文件的长度必须为 100 毫秒到 1 分钟。 每个音频文件的开头和末尾最好是至少有 100 毫秒的寂静区（往往是 500 毫秒到 1 秒）。
+* 音频文件的长度可以为 100 毫秒到 1 分钟，不过理想情况下应该在 10-12 秒左右。 每个音频文件的开头和末尾最好是至少有 100 毫秒的寂静区（往往是 500 毫秒到 1 秒）。
 * 如果数据中包含背景噪音，则我们建议在数据中讲话内容的前面和/或后面另外包含一些具有更长寂静区的示例（例如，几秒钟的寂静区）。
 * 每个音频文件应包含一条话语（例如，一条听写句子）、一个查询，或者对话系统的一个轮次。
 * 数据集中的每个音频文件应有唯一的文件名和扩展名 .wav。
@@ -69,7 +69,7 @@ ms.locfileid: "49466080"
 | 采样率 | 8,000 Hz 或 16,000 Hz |
 | 声道 | 1（单音） |
 | 样本格式 | PCM，16 位整数 |
-| 文件持续时间 | 0.1 秒 < 持续时间 < 60 秒 |
+| 文件持续时间 | 0.1 秒 < 持续时间 < 12 秒 | 
 | 无声凸环 | > 0.1 秒 |
 | 存档格式 | .zip |
 | 最大存档大小 | 2 GB |

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/07/2018
 ms.author: danlep
-ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544058"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281271"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -42,8 +42,14 @@ ms.locfileid: "45544058"
 | A 系列 | Standard_A0 |
 | B 系列 | 全部 |
 
-M 系列 VM 仅在低优先级节点中受支持。
+仅低优先级节点支持以下 VM 大小：
 
+| 系列  | 支持的大小  |
+|---------|---------|
+| M 系列 | Standard_M64ms |
+| M 系列 | Standard_M128s |
+
+目前不支持 M 系列中的其他 VM 大小。
 
 ### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
 
@@ -55,6 +61,7 @@ M 系列 VM 仅在低优先级节点中受支持。
 | Av2 系列 | Standard_A1_v2、Standard_A2_v2、Standard_A2m_v2 |
 
 ## <a name="restricted-vm-families"></a>受限制的 VM 系列
+
 以下 VM 系列可以在 Batch 池中分配，但必须请求增加特定配额（请参阅[此文](batch-quota-limit.md#increase-a-quota)）：
 * NCv2 系列
 * NCv3 系列

@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 将 Virtual Machine Manager 云中的 Hyper-V VM 复制到辅助站点（Azure 资源管理器）| Microsoft Docs
-description: 介绍如何使用 PowerShell 将 Virtual Machine Manager 云中的 Hyper-V VM 复制到辅助 Virtual Machine Manager 站点（资源管理器）
+title: 使用 Azure Site Recovery 和 PowerShell 设置 VMM 云中的 Hyper-V VM 到辅助站点的灾难恢复 | Microsoft Docs
+description: 介绍如何使用 Azure Site Recovery 和 PowerShell 设置 VMM 云中的 Hyper-V VM 到辅助 VMM 站点的灾难恢复。
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041350"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622833"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell 将 Hyper-V VM 复制到辅助站点（资源管理器）
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 来自动完成相关步骤，以便将 System Center Virtual Machine Manager 云中的 Hyper-V VM 复制到辅助本地站点中的 Virtual Machine Manager 云。
 
@@ -73,7 +73,7 @@ ms.locfileid: "48041350"
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. 创建新的恢复服务保管库。 将保管库对象保存在后面会用到的变量中。 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     可以在创建保管库对象后使用 Get-AzureRMRecoveryServicesVault cmdlet 来检索它。
 

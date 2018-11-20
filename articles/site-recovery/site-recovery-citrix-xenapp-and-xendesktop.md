@@ -1,36 +1,29 @@
 ---
-title: 使用 Azure Site Recovery 复制多层 Citrix XenDesktop 和 XenApp 部署 | Microsoft Docs
-description: 本文介绍如何使用 Azure Site Recovery 保护与恢复 Citrix XenDesktop 和 XenApp 部署。
-services: site-recovery
-documentationcenter: ''
+title: 使用 Azure Site Recovery 为多层 Citrix XenDesktop 和 XenApp 部署设置灾难恢复 | Microsoft Docs
+description: 本文介绍了如何使用 Azure Site Recovery 为 Citrix XenDesktop 和 XenApp 部署设置灾难恢复。
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213627"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210306"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制多层 Citrix XenApp 和 XenDesktop 部署
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
 
-## <a name="overview"></a>概述
+
 
 Citrix XenDesktop 是一个桌面虚拟化解决方案，可以将桌面和应用程序作为按需服务传递给任何位置的任何用户。 利用 FlexCast 传递技术，XenDesktop 可以快速、安全地将应用程序和桌面传递给用户。
 Citrix XenApp 暂不提供任何灾难恢复功能。
 
 合理的灾难恢复解决方案应该允许围绕上述复杂应用程序体系结构为恢复计划建模，同时，可以添加自定义的步骤来处理各层之间的应用程序映射，以便在发生导致 RTO 降低的灾难时，只需按一下鼠标就能彻底解决问题。
 
-本文档逐步介绍了如何为 Hyper-V 和 VMware vSphere 平台上的本地 Citrix XenApp 部署生成灾难恢复解决方案。 此外还介绍了如何利用恢复计划、支持的配置和先决条件，执行到 Azure 的测试故障转移（灾难恢复演练）和计划外故障转移。
+本文档分步介绍了如何为 Hyper-V 和 VMware vSphere 平台上的本地 Citrix XenApp 部署生成灾难恢复解决方案。 此外还介绍了如何利用恢复计划、支持的配置和先决条件，执行到 Azure 的测试故障转移（灾难恢复演练）和计划外故障转移。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,7 +43,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 **部署模式**
 
-包含 AD DNS 服务器、SQL 数据库服务器、Citrix 传递控制器、StoreFront 服务器、XenApp Master (VDA) 和 Citrix XenApp 许可证服务器的 Citrix XenApp 和 XenDesktop 部署
+包含 AD DNS 服务器、SQL 数据库服务器、Citrix 交付控制器、StoreFront 服务器、XenApp Master (VDA) 和 Citrix XenApp 许可证服务器的 Citrix XenApp 和 XenDesktop 部署
 
 ![部署模式 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
@@ -75,10 +68,10 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 1. 支持通过使用服务器 OS 计算机传递 XenApp 发布的应用和 XenApp 发布的桌面，来保护和恢复本地部署。
 
-2. 不支持通过使用桌面 OS 计算机传递客户端虚拟桌面（包括 Windows 10）的桌面 VDI 来保护和恢复本地部署。 这是因为 ASR 不支持恢复具有桌面 OS 的计算机。  此外，Azure 尚不支持对某些客户端虚拟桌面操作系统（如 Windows 7）授权。 [了解](https://azure.microsoft.com/pricing/licensing-faq/) Azure 中的客户端/服务器桌面授权。
+2. 不支持通过使用桌面 OS 计算机传递客户端虚拟桌面（包括 Windows 10）的桌面 VDI 来保护和恢复本地部署。 这是因为 Site Recovery 不支持恢复具有桌面 OS 的计算机。  此外，Azure 尚不支持对某些客户端虚拟桌面操作系统（如 Windows 7）授权。 [了解](https://azure.microsoft.com/pricing/licensing-faq/) Azure 中的客户端/服务器桌面授权。
 
 3.  Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
-需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
+需要使用从交付控制器预配的 Azure RM 重新创建这些克隆。
 
 4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
 
@@ -89,7 +82,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 * 保护 AD DNS 服务器
 * 保护 SQL 数据库服务器
-* 保护 Citrix 传递控制器
+* 保护 Citrix 交付控制器
 * 保护 StoreFront 服务器。
 * 保护 XenApp Master (VDA)
 * 保护 Citrix XenApp 许可证服务器
@@ -147,7 +140,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 1. 故障转移组1：AD DNS
 2. 故障转移组2：SQL Server VM
 2. 故障转移组3：VDA 主映像 VM
-3. 故障转移组4：传递控制器和 StoreFront 服务器 VM
+3. 故障转移组4：交付控制器和 StoreFront 服务器 VM
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>将脚本添加到恢复计划
@@ -163,20 +156,20 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
    >[!NOTE]     
    >包含手动操作或脚本操作的步骤 4、6 和 7 仅适用于具有 MCS/PVS 目录的本地 XenApp 环境。
 
-4. 组 3 手动操作或脚本操作：关闭 Master VDA VM。Master VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure ARM 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
+4. 组 3 手动操作或脚本操作：关闭 Master VDA VM。Master VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
 
-5. 故障转移组4：传递控制器和 StoreFront 服务器 VM
+5. 故障转移组4：交付控制器和 StoreFront 服务器 VM
 6. 组3 手动操作或脚本操作 1：
 
     ***添加 Azure RM 主机连接***
 
-    在传递控制器计算机中创建 Azure ARM 主机连接，以便在 Azure 中预配新的 MCS 目录。 按此[文](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)所述的步骤进行操作。
+    在交付控制器计算机中创建 Azure 主机连接，以便在 Azure 中预配新的 MCS 目录。 按此[文](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)所述的步骤进行操作。
 
 7. 组3 手动操作或脚本操作 2：
 
     ***在 Azure 中重新创建 MCS 目录***
 
-    主站点上现有的 MCS 或 PVS 克隆不会复制到 Azure。 需要使用从传递控制器预配的复制 Master VDA 和 Azure ARM 重新创建这些克隆。按此[文](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/)所述的步骤操作，在 Azure 中创建 MCS 目录。
+    主站点上现有的 MCS 或 PVS 克隆不会复制到 Azure。 你需要使用从交付控制器复制的主 VDA 和 Azure 预配重新创建这些克隆。 根据此[文章](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/)中介绍的步骤在 Azure 中创建 MCS 目录。
 
 ![XenApp 组件的恢复计划](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

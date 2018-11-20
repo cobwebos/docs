@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 6d9d05a56376c07013fdea1c94b0a3262d2397c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378079"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026290"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>使用 Azure 虚拟网络服务终结点保护对 Azure Cosmos DB 帐户的访问
 
@@ -56,8 +56,8 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。  
 
-> [!NOTE]
-> 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
+   > [!NOTE]
+   > 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
 
 2. 在启用虚拟网络服务终结点之前，请复制与 Azure Cosmos DB 帐户关联的 IP 防火墙信息，供将来使用。 配置服务终结点后，可以重新启用 IP 防火墙。  
 
@@ -97,9 +97,8 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
 1. 安装最新的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 并[登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。  在为帐户启用服务终结点之前，请务必记下 IP 防火墙设置并彻底删除 IP 防火墙。
 
-
-> [!NOTE]
-> 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
+  > [!NOTE]
+  > 如果为 Azure Cosmos DB 帐户配置了现有的 IP 防火墙，请记下防火墙配置，删除 IP 防火墙，然后启用服务终结点。 如果在未禁用防火墙的情况下启用服务终结点，则来自该 IP 范围的流量将丢失虚拟 IP 标识，然后会被丢弃并显示 IP 筛选器错误消息。 因此，为防止出现此错误，应始终禁用防火墙规则，将其复制，从子网启用服务终结点，并最终从 Cosmos DB 对子网执行 ACL。 配置服务终结点并添加 ACL 后，可根据需要重新启用 IP 防火墙。
 
 2. 在启用虚拟网络服务终结点之前，请复制与 Azure Cosmos DB 帐户关联的 IP 防火墙信息，供将来使用。 配置服务终结点后，请重新启用 IP 防火墙。  
 
@@ -132,7 +131,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
    $apiVersion = "2015-04-08"
    $acctName = "<Azure Cosmos DB account name>"
 
-   $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+   $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName
@@ -174,7 +173,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
    Set-AzureRmResource `
-     -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName -Properties $CosmosDBProperties
@@ -184,7 +183,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 可将 Azure
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
-     -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
      -Name $acctName
@@ -270,7 +269,7 @@ Azure Cosmos DB 中的 NSG 规则允许你限制对特定 Azure Cosmos DB IP 地
 
 Azure Cosmos DB 是使用公共 IP 地址的多租户服务。 使用服务终结点功能限制对 Azure 虚拟网络子网的访问时，将会通过给定 Azure 虚拟网络及其子网来限制对 Azure Cosmos DB 帐户的访问。  Azure Cosmos DB 帐户不会驻留在该 Azure 虚拟网络中。 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>如果已启用日志记录，如何在 Log Analytics/OMS 中记录任何信息？  
+### <a name="what-if-anything-will-be-logged-in-log-analytics-if-it-is-enabled"></a>如果已启用 Log Analytics，那么在其中记录任何信息会怎样？  
 
 对于 ACL 阻止的请求，Azure Cosmos DB 将会推送包含 IP 地址（不包括最后一个八位字节）和状态 403 的日志。  
 

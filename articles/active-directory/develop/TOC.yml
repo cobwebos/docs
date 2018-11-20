@@ -207,8 +207,13 @@ items:
         href: howto-app-gallery-listing.md
       - name: 发布到 Office 365 卖家仪表板
         href: https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-    - name: 从 Azure 访问控制服务迁移
-      href: active-directory-acs-migration.md
+    - name: Azure 访问控制服务
+      displayName: ACS
+      items:
+      - name: 从 Azure 访问控制服务迁移
+        href: active-directory-acs-migration.md
+      - name: 重新激活禁用的访问控制服务命名空间
+        href: howto-reactivate-disabled-acs-namespaces.md
     - name: 使用 Azure AD 图形 API
       href: active-directory-graph-api-quickstart.md
     - name: 针对开发人员的 AD FS
@@ -428,9 +433,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure 资源的托管标识
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 8d37b5b977509b61d31f7ed29571762325188f33
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 00aa04556d555c5e29707287e2cb91db22f34ac7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987811"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011623"

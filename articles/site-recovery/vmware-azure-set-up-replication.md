@@ -1,21 +1,20 @@
 ---
-title: 使用 Azure Site Recovery 配置和管理 VMware 复制的复制策略 | Microsoft Docs
-description: 介绍如何配置复制设置，以便使用 Azure Site Recovery 从 VMware 复制到 Azure。
-services: site-recovery
+title: 使用 Azure Site Recovery 配置和管理用于从 VMware 灾难恢复到 Azure 的复制策略 | Microsoft Docs
+description: 介绍如何配置复制设置，以便使用 Azure Site Recovery 从 VMware 灾难恢复到 Azure。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 03197d1f42a17d6fc99b85d3fbc3635468b1e6ae
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd987097c2ca7b1e7509a1a0e63905c36ec8fec8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423600"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212890"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>配置和管理 VMware 复制的复制策略
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>配置和管理用于从 VMware 灾难恢复到 Azure 的复制策略
 本文介绍如何配置复制策略，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将 VMware VM 复制到 Azure。
 
 
@@ -46,6 +45,6 @@ ms.locfileid: "39423600"
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>取消关联或删除复制策略
 1. 选择复制策略。
-    a. 若要将策略与配置服务器取消关联，请确保没有复制计算机在使用该策略。 然后，单击“取消关联”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要将策略与配置服务器取消关联，请确保没有复制计算机在使用该策略。 然后，单击“取消关联”。
     b. 若要删除策略，请确保它未与配置服务器关联。 然后单击“删除”。 应需要 30-60 秒才能删除。
 1. 单击“确定”。

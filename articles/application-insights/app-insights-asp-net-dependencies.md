@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c54d8b870d6d8c187dcf145b56e3cbae257889a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999678"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259286"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -44,7 +44,7 @@ ms.locfileid: "46999678"
 
 | 平台 | 安装 |
 | --- | --- |
-| IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)或者[将应用程序升级到 .NET framework 4.6 或更高版本](http://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
+| IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)或者[将应用程序升级到 .NET framework 4.6 或更高版本](https://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
 | Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](app-insights-azure-web-apps.md)，并在出现提示时选择“安装”。 |
 | Azure 云服务 |[使用启动任务](app-insights-cloudservices.md)或[安装 .NET framework 4.6+](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
@@ -207,7 +207,7 @@ ms.locfileid: "46999678"
 
 | 平台 | 安装 |
 | --- | --- |
-| IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)， 或者[将应用程序升级到 .NET framework 4.6 或更高版本](http://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
+| IIS 服务器 |[在服务器上安装状态监视器](app-insights-monitor-performance-live-website-now.md)， 或者[将应用程序升级到 .NET framework 4.6 或更高版本](https://go.microsoft.com/fwlink/?LinkId=528259)，并在应用中安装 [Application Insights SDK](app-insights-asp-net.md)。 |
 | Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](app-insights-azure-web-apps.md)，并在出现提示时选择“安装”。 |
 | Azure 云服务 |[使用启动任务](app-insights-cloudservices.md)或[安装 .NET framework 4.6+](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 

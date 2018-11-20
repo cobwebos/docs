@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e42601646474ba986e75632af41d500e18b64021
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393892"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155977"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -71,6 +71,27 @@ AKS 为单租户群集主机提供专用 API 服务器、计划程序等。定�
 在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。
 
 如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [acs-engine][acs-engine] 部署自己的 Kubernetes 群集。 上游 `acs-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Windows 容器或 Docker 之外的容器运行时，可以使用 `acs-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+
+### <a name="resource-reservations"></a>资源预留
+
+你不需要在每个节点上管理核心 Kubernetes 组件（例如 *kubelet*、*kube-proxy* 和 *kube-dns*），但它们确实消耗某些可用的计算资源。 为保持节点性能和功能，每个节点上会预留以下计算资源：
+
+- **CPU** - 60 毫秒
+- **内存** - 20%，最多 4 GiB
+
+这些预留意味着你的应用程序的可用 CPU 和内存量可能显示为少于节点本身包含的数量。 如果由于你运行的应用程序数太多而存在资源约束，则这些预留可以确保 CPU 和内存保持可供核心 Kubernetes 组件使用。 资源预留无法更改。
+
+例如：
+
+- **标准 DS2 v2** 节点大小包含 2 个 vCPU 和 7 GiB 内存
+    - 7 GiB 内存的 20% = 1.4 GiB
+    - 总共有 *(7 - 1.4) = 5.6 GiB* 内存可供节点使用
+    
+- **标准 E4s v3** 节点大小包含 4 个 vCPU 和 32 GiB 内存
+    - 32 GiB 内存的 20% = 6.4 GiB，但 AKS 最多仅保留 4 GiB
+    - 总共有 *(32 - 4) = 28 GiB* 内存可供节点使用
+    
+基础节点 OS 还需要一定量的 CPU 和内存资源来完成其自己的核心功能。
 
 ### <a name="node-pools"></a>节点池
 

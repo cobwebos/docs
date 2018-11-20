@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 06/04/2018
-ms.openlocfilehash: 7ae97274b03dda4dcf5150c8faacc7d406dad9fd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/26/2018
+ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389609"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228396"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
@@ -311,7 +311,7 @@ ms.locfileid: "49389609"
     }
 
     storage_profile_os_disk {
-      name              = "osdisk"
+      name              = ""
       caching           = "ReadWrite"
       create_option     = "FromImage"
       managed_disk_type = "Standard_LRS"
@@ -343,6 +343,7 @@ ms.locfileid: "49389609"
         name                                   = "IPConfiguration"
         subnet_id                              = "${azurerm_subnet.vmss.id}"
         load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+        primary = true
       }
     }
 
@@ -568,6 +569,6 @@ terraform destroy
 本文已介绍如何使用 Terraform 创建 Azure 虚拟机规模集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform： 
 
  [Microsoft.com 中的 Terraform 中心](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure 提供程序文档](http://aka.ms/terraform)  
- [Terraform Azure 提供程序源](http://aka.ms/tfgit)  
- [Terraform Azure 模块](http://aka.ms/tfmodules)
+ [Terraform Azure 提供程序文档](https://aka.ms/terraform)  
+ [Terraform Azure 提供程序源](https://aka.ms/tfgit)  
+ [Terraform Azure 模块](https://aka.ms/tfmodules)

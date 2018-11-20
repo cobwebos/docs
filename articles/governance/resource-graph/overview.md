@@ -4,17 +4,17 @@ description: Azure Resource Graph 是一项 Azure 服务，可实现对资源的
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d68183f4d0a928ac72f3f73ea5225ad174820cb7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e78b525e1e08a05b8de6071f9ddba0dfb29ff672
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162094"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087265"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph
 
@@ -31,7 +31,7 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 如何补充了 Azure 资源管理器
 
-当前，Azure Resource Manager 向有限的资源缓存发送数据，该缓存公开多个资源字段，具体包括资源名称、ID、类型、资源组、订阅和位置。 现在，如果你想要使用更多资源属性，必须调用单独的资源提供程序，并请求每个资源的属性详细信息。
+当前，Azure 资源管理器向有限的资源缓存发送数据，该缓存提供多个资源字段，具体包括资源名称、ID、类型、资源组、订阅和位置。 以前，使用各种资源属性时，必须调用各个资源提供程序，并请求每个资源的属性详细信息。
 
 使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。
 
@@ -45,12 +45,11 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的权限
 
-若要使用 Resource Graph，必须通过[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 至少授予对想要查询的资源的读取权限。 如果你没有管理组、订阅、资源组或单个资源的`read`权限，则 Resource Graph 查询不会返回相关结果。
+若要使用 Resource Graph，必须在[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 中至少拥有对想要查询的资源的读取权限。 必须至少有 Azure 对象或对象组的 `read` 权限，否则不会返回结果。
 
 ## <a name="running-your-first-query"></a>运行自己的第一个查询
 
-Resource Graph 支持 Azure CLI 和 Azure PowerShell。 无论使用哪种语言，查询组件的构造方式是一样的。 SDK 中尚未提供默认的 Azure Resource Graph 的支持，所以必须加载扩展或模块，以提供所需的命令。
-在 [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module) 中了解如何启用 Resource Graph。
+Resource Graph 支持 Azure CLI 和 Azure PowerShell。 两种语言的查询结构是一样的。 在 [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module) 中了解如何启用 Resource Graph。
 
 ## <a name="next-steps"></a>后续步骤
 

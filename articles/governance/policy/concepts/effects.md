@@ -4,40 +4,46 @@ description: Azure Policy 定义具有各种效果，可确定管理和报告符
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 54562401c830232d0a4bf90405cc5a2dbedcd8bc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055962"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279484"
 ---
 # <a name="understand-policy-effects"></a>了解 Policy 效果
 
 Azure Policy 中的每个策略定义都具有单一效果，在策略规则的 if 段评估为匹配正在扫描的资源时，该效果决定扫描期间会发生的情况。 如果这些效果适用于新资源、更新的资源或现有资源，则它们的行为也会有所不同。
 
-目前在策略定义中支持五种效果：
+目前在策略定义中支持六种效果：
 
 - 附加
 - 审核
 - AuditIfNotExists
 - 拒绝
 - DeployIfNotExists
+- 已禁用
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
 当通过 Azure 资源管理器请求创建或更新资源时，策略会在将请求交给适当的资源提供程序之前处理几种效果。
 这样做可以防止资源提供程序在资源不符合策略的设计治理控制时进行不必要的处理。 策略将按照策略或初始分配创建已分配的所有策略定义列表，该列表按照范围（不包括排除项）应用到资源，并准备根据每个定义评估资源。
 
-- 首先评估“附加”。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
+- 首先检查**已禁用**以确定是否应评估策略规则。
+- 然后评估“追加​​”。 由于“附加”可能会改变请求，因此由“附加”所做的更改可能会阻止“审核”或“拒绝”效果的触发。
 - 然后评估“拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
 - 然后在请求传输到资源提供程序之前评估“审核”。
 
 一旦将请求提供给资源提供程序并且资源提供程序返回成功状态代码，就会评估 AuditIfNotExists 和 DeployIfNotExists 以确定是否需要后续符合性记录或操作。
+
+## <a name="disabled"></a>已禁用
+
+对于测试情况以及在策略定义已参数化效果时，此效果很有用。 通过更改效果的赋值参数而不是禁用策略的所有分配，可以禁用该策略的单个分配。
 
 ## <a name="append"></a>附加
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f408d24a5957061bf03d340a555b87bdc6b2aacc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304129"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614015"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
@@ -111,7 +111,7 @@ ms.locfileid: "44304129"
 
 1. 在容器列表中选择“adftutorial”。
 
-    ![容器选择](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![容器选择](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时可以使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
 
@@ -197,7 +197,7 @@ ms.locfileid: "44304129"
 
 1. 在“选项 1: 快速安装”下选择“单击此处对此计算机启动快速安装”。 
 
-    ![“快速安装”链接](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+    ![“快速安装”链接](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
 1. 在“Integration Runtime (自承载)快速安装”窗口中，选择“关闭”。 
 
@@ -209,7 +209,7 @@ ms.locfileid: "44304129"
 
 1. 在“新建链接服务”窗口中执行以下步骤：
 
-    a. 在“名称”下输入 **SqlServerLinkedService**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **SqlServerLinkedService**。
 
     b. 在“通过集成运行时进行连接”下，确认已显示前面创建的自承载 Integration Runtime。
 
@@ -229,7 +229,7 @@ ms.locfileid: "44304129"
 
 1. 此时应已返回到打开了源数据集的窗口。 在“属性”窗口的“连接”选项卡中执行以下步骤： 
 
-    a. 在“链接服务”中，确认显示了“SqlServerLinkedService”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“链接服务”中，确认显示了“SqlServerLinkedService”。
 
     b. 在“表”中选择“[dbo].[emp]”。
 
@@ -237,7 +237,7 @@ ms.locfileid: "44304129"
 
 1. 转到包含 SQLServerToBlobPipeline 的选项卡，或在树状视图中选择“SQLServerToBlobPipeline”。 
 
-    ![“管道”选项卡](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+    ![“管道”选项卡](./media/tutorial-hybrid-copy-portal/pipeline-tab.png)
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。 
 
@@ -257,7 +257,7 @@ ms.locfileid: "44304129"
 
 1. 在“新建链接服务”窗口中执行以下步骤：
 
-    a. 在“名称”下输入 **AzureStorageLinkedService**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **AzureStorageLinkedService**。
 
     b. 在“存储帐户名称”下选择自己的 Azure 存储帐户。
 
@@ -269,7 +269,7 @@ ms.locfileid: "44304129"
 
 1. 此时应已返回到打开了接收器数据集的窗口。 在“连接”选项卡中执行以下步骤： 
 
-    a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
 
     b. 对于**文件路径**的**文件夹**/ **目录**部分，输入 **adftutorial/fromonprem**。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 

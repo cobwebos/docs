@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125266"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739237"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>如何分页列出必应 Web 搜索 API 中的结果
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 Web 搜索 API 返回的结果包括网页，也可能包括图像、视频和新闻。 对搜索结果进行分页是分页 [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 答案，而不是分页图像或新闻等其他答案。 例如，如果将 `count` 设置为 50，就会返回 50 个网页结果，但响应中可能还有其他答案的结果。 例如，响应可能包括 15 张图像和 4 篇新闻文章。 结果也可能在第一页（而不是第二页）上显示新闻，反之亦然。   
 
-如果指定 `responseFilter` 查询参数，但未在筛选器列表中添加“网页”，请勿使用 `count` 和 `offset` 参数。  
+如果指定 `responseFilter` 查询参数，但未在筛选器列表中添加“网页”，请勿使用 `count` 和 `offset` 参数。 
+
+> [!NOTE]
+> `TotalEstimatedAnswers` 字段是可以为当前查询检索的搜索结果总数的估计值。  设置 `count` 和 `offset` 参数时，`TotalEstimatedAnswers` 数值可能会更改。 

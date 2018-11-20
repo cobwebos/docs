@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0fd843b150148057399a4e05f5e25a728cd4ae56
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298504"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978496"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
 
@@ -133,7 +133,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 > * 查看和修复配置运行状况问题
 > * 查看检测到的威胁
 
-转到下一教程来了解如何使用 Azure DevOps Services 和运行 IIS 的 Windows VM 创建 CI/CD 管道。
+转到下一教程，了解如何在一对 Windows VM 上安装 SQL&#92;IIS&#92;.NET 网络堆栈。
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines(./tutorial-vsts-iis-cicd.md)
+> [SQL&#92;IIS&#92;.NET 堆栈](tutorial-iis-sql.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0b38c6895421b43d6f80e0c34cc23b379a673559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032064"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261938"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>在安全中心或 Azure Policy 中设置安全策略
 
@@ -125,6 +125,6 @@ Azure Policy 由以下组件构成：
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
 * [为 Azure 安全中心实现租户级可见性](security-center-management-groups.md)：了解如何为 Azure 安全中心设置管理组。 
 * [Azure 安全中心常见问题解答](security-center-faq.md)：获取有关使用服务的常见问题的答案。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
 
 若要了解有关 Azure Policy 的详细信息，请参阅[什么是 Azure Policy？](../azure-policy/azure-policy-introduction.md)

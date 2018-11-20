@@ -1,25 +1,18 @@
 ---
-title: 对故障转移到 Azure 的故障进行排除 | Microsoft 文档
-description: 本指南介绍如何解决在故障转移到 Azure 中的常见错误
-services: site-recovery
-documentationcenter: ''
+title: 对故障转移到 Azure 进行故障排除 | Microsoft Docs
+description: 本文介绍如何排查使用 Azure Site Recovery 故障转移到 Azure 期间的常见问题。
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 6be71424e30c5783a03b157171b3f5acd0160e65
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 420d061b34734c7b5997f5cdd58fe7faaee9cb82
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391004"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236750"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>解决从虚拟机到 Azure 的故障转移时出现的错误
 
@@ -29,7 +22,7 @@ ms.locfileid: "44391004"
 
 Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中一个原因也可能导致此情况的发生：
 
-* 创建虚拟机的可用配额不足：你可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。
+* 创建虚拟机的可用配额不足：你可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://aka.ms/getazuresupport) 来增加此配额。
 
 * 尝试在同一个可用性集中故障转移不同大小系列的虚拟机。 确保在同一个可用性集中选择相同大小系列的所有虚拟机。 可以转到虚拟机的“计算和网络”设置来更改大小，然后重试故障转移。
 
@@ -37,7 +30,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中�
 
 ## <a name="failover-failed-with-error-id-28092"></a>故障转移失败，错误 ID 为 28092
 
-Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
+Site Recovery 无法为故障转移的虚拟机创建网络接口。 请确保订阅中有足够的配额来创建网络接口。 可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](https://aka.ms/getazuresupport) 来增加此配额。 如果你拥有足够的配额，则这可能是一个间歇性的问题，请重试该操作。 如果即使在重试后问题仍然存在，请在本文档结尾处留下注释。  
 
 ## <a name="failover-failed-with-error-id-70038"></a>故障转移失败，错误 ID 为 70038
 
@@ -65,14 +58,14 @@ Site Recovery 无法在 Azure 中创建故障转移的经典虚拟机。 这可�
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。
 3. 如果虚拟机已加入域，请确保域控制器正确运行。 可以按照下面给出的步骤执行此操作：
 
-    a. 在同一网络中创建新的虚拟机。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在同一网络中创建新的虚拟机。
 
     b.  确保能够加入其中应启动故障转移的虚拟机的同一域。
 
     c. 如果域控制器**未**正确运行，请尝试使用本地管理员帐户登录到故障转移的虚拟机。
 4. 如果使用自定义 DNS 服务器，请确保可以访问该服务器。 可以按照下面给出的步骤执行此操作：
 
-    a. 在同一网络中创建新的虚拟机；
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在同一网络中创建新的虚拟机；
 
     b. 检查虚拟机是否能够使用自定义 DNS 服务器解析名称
 

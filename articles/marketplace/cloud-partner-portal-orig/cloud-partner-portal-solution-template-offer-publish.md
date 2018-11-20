@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ded952ac6418ae3d9916b3ae8b8dbacb0c9c5a84
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805668"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345583"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>将解决方案模板发布到 Azure 市场
 
@@ -91,7 +91,9 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
     - 产品/服务设置
     - SKU
     - 市场
-    - “支持每个”视图包含一组要填写的字段。必填字段标有红色星号 (\*)。
+    - 支持
+
+每个视图包含一组要填写的字段。必填字段标有红色星号 (\*)。
 
 ## <a name="to-configure-offer-settings"></a>配置“套餐设置”
 
@@ -111,7 +113,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
     **名称**
 
-    套餐的显示名称。 此名称将显示在 Azure 市场和 Azure 门户中。 该名称不能超过 50 个字符。 参考以下指导指定套餐名称：
+    产品/服务的显示名称。 此名称将显示在 Azure 市场和 Azure 门户中。 该名称不能超过 50 个字符。 参考以下指导指定套餐名称：
     -  其中包含产品的可识别品牌名称。 
     - 除非有套餐营销方面的需要，否则不要在此处包含公司名称。
     - 如果你在自己的网站上营销此套餐，请确保此名称与网站上的名称相同。
@@ -159,7 +161,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 ![包详细信息](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
-- **当前版本** - 要上传的包版本。 它应采用以下格式 -
+- **当前版本** - 要上传的包版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
 
 - **包文件** - 此包包含以下文件，这些文件保存在一个 .zip 文件中。
 
@@ -176,7 +178,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 ### <a name="preview-subscription-ids"></a>预览订阅 ID
 
-发布套餐后你希望有权访问的 Azure 订阅 ID 列表。 通过这些列入允许列表的订阅，可以在推出套餐前测试预览的套餐。 通过合作伙伴门户，最多可将 100 个订阅列入允许列表。
+发布套餐后你希望有权访问的 Azure 订阅 ID 列表。 通过这些列入允许列表的订阅，可以在推出套餐前测试预览的套餐。 通过合作伙伴门户，可以将多达 100 个订阅列入允许列表。
 
 ### <a name="suggested-categories"></a>建议的类别
 
@@ -210,7 +212,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 -   Azure 设计具有简单的调色板。 保持徽标上的主要和辅助颜色数较低。
 
--   Azure 门户的主题颜色为白色和黑色。 应避免将这些颜色用作徽标的背景色。 使用可使徽标在 Azure 门户中突出显示的颜色。 建议使用简单的主颜色。
+-   Azure 门户的主题颜色为白色和黑色。 请避免将这两种颜色用作徽标的背景色。 使用可使徽标在 Azure 门户中突出显示的颜色。 建议使用简单的主颜色。
 
     >[!Note] 
     >如果使用透明背景，请确保徽标/文本不使用白色、黑色或蓝色。

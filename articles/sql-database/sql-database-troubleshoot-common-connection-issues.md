@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a34745c5586fa90d3e167bb3be22e93dfa83b7af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041724"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257953"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>排查 Azure SQL 数据库的连接问题
 与 Azure SQL 数据库连接失败时，会收到[错误消息](sql-database-develop-error-messages.md)。 本文是一个集中介绍对 Azure SQL 数据库连接问题进行故障排除的主题。 本文介绍连接问题的[常见原因](#cause)，推荐可帮助确定问题的[故障排除工具](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)，还提供解决[暂时性错误](#troubleshoot-transient-errors)和[持久或非暂时性错误](#troubleshoot-persistent-errors)的故障排除步骤。 
@@ -79,8 +79,8 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 4. 在仪表板中检查服务运行状况。 如果认为存在区域性的中断，请参阅[从中断恢复](sql-database-disaster-recovery.md)，以了解恢复到新区域的步骤。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 Microsoft Azure 上搜索文档](http://azure.microsoft.com/search/documentation/)
-* [查看 Azure SQL 数据库服务的最新更新](http://azure.microsoft.com/updates/?service=sql-database)
+* [在 Microsoft Azure 上搜索文档](https://azure.microsoft.com/search/documentation/)
+* [查看 Azure SQL 数据库服务的最新更新](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>其他资源
 * [SQL 数据库开发概述](sql-database-develop-overview.md)

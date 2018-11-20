@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903041"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625143"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -107,7 +107,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -127,7 +127,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -160,7 +160,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
     </Creative>
 ```
 
-<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResouce**>、<**IFrameResource**> 或 <**HTMLResouce**>。 <**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
+<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 <**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 

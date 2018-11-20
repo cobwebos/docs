@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7b05876214c08c9298cca30e01958e43e2ef81d6
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404029"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615324"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Log Analytics 工作区报告或向连接到 Log Analytics 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -39,7 +39,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md)。
 
 ## <a name="configuration"></a>配置
-执行[添加解决方案](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
+执行[添加解决方案](monitoring-solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
 ## <a name="data-collection"></a>数据收集
@@ -118,4 +118,4 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../log-analytics/log-analytics-alerts.md)。
+* 有关从 Log Analytics 生成警报的详细信息，请参阅 [Log Analytics 中的警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。 

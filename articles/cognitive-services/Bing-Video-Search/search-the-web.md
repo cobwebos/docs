@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: cf37db9bffa8b2a54a6327c29ec806e0eefc8c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225406"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261853"
 ---
 # <a name="what-is-bing-video-search"></a>什么是必应视频搜索？
 
@@ -27,7 +27,7 @@ ms.locfileid: "47225406"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="getting-videos"></a>获取视频
 
@@ -47,7 +47,7 @@ Host: api.cognitive.microsoft.com
 
 如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID。
 
-若要从特定的域获取视频，请使用 [site:](http://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
+若要从特定的域获取视频，请使用 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -131,7 +131,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 - [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength)&mdash;按视频长度来筛选视频（例如，长度不到五分钟的视频）
 - [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness)&mdash;按时间来筛选视频（例如，必应在过去一周发现的视频）
 
-若要从特定域获取视频，请在查询字符串中包含 [site:](http://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
+若要从特定域获取视频，请在查询字符串中包含 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查询运算符。
 
 > [!NOTE]
 > 如果使用 `site:` 查询运算符，则不管 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch) 设置如何，仍有可能出现响应中包含成人内容的情况，具体取决于查询。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352604"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963925"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
 
@@ -140,6 +140,9 @@ ms.locfileid: "49352604"
  
 - 配置设备注册的本地 Intranet 设置
 
+- 控制 Windows 下层设备 
+
+
 ### <a name="update-device-settings"></a>更新设备设置 
 
 要注册 Windows 下层设备，需确保已设置允许用户在 Azure AD 中注册设备的设备设置。 可在 Azure 门户的以下位置找到此设置：
@@ -163,6 +166,12 @@ ms.locfileid: "49352604"
 - `https://autologon.microsoftazuread-sso.com`。
 
 此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
+
+
+### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 
+
+若要注册 Windows 下层设备，需要通过下载中心下载并安装 Windows Installer 包 (.msi)。 有关详细信息，请单击[此处](hybrid-azuread-join-control.md#control-windows-down-level-devices)。 
+
 
 ## <a name="verify-the-registration"></a>验证注册
 

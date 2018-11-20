@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984867"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227920"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的各种方案。  可以在不加以修改的情况下直接使用这些方案，或者使用它们作为起点并根据具体的要求进行编辑。
@@ -22,7 +22,7 @@ ms.locfileid: "45984867"
 可以从 [Runbook 库](#runbooks-in-runbook-gallery)获取 Runbook，并从[PowerShell 库](#modules-in-powerShell-gallery)获取模块。  还可以通过共享开发的方案来为社区做出贡献，请参阅[将 Runbook 添加到库](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbook 库中的 Runbook
-[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](https://gallery.technet.microsoft.com/scriptcenter/site/upload)托管的库下载 Runbook，也可以在 Azure 门户中直接从该库导入 Runbook。
+[Runbook 库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。 可以从 [TechNet 脚本中心](https://gallery.technet.microsoft.com/scriptcenter/site/upload)托管的库下载 Runbook，也可以在 Azure 门户中直接从该库导入 Runbook。
 
 直接从 Runbook 库导入只能使用 Azure 门户来完成。 而不能使用 Windows PowerShell 执行此功能。
 
@@ -37,7 +37,7 @@ ms.locfileid: "45984867"
 3. 找到所需的库项，选择它以查看其详细信息。 在左侧可以输入发布者和类型的其他搜索参数。
    
     ![浏览库](media/automation-runbook-gallery/browse-gallery.png)
-5. 单击“查看源项目”以在 [TechNet 脚本中心](http://gallery.technet.microsoft.com/)查看该项。
+5. 单击“查看源项目”以在 [TechNet 脚本中心](https://gallery.technet.microsoft.com/)查看该项。
 6. 要导入项，请单击它以查看其详细信息，并单击“导入”按钮。
    
     ![“导入”按钮](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -45,7 +45,7 @@ ms.locfileid: "45984867"
 8. Runbook 将出现在自动化帐户的“Runbook”选项卡中。
 
 ### <a name="adding-a-runbook-to-the-runbook-gallery"></a>将 Runbook 添加到 Runbook 库
-Microsoft 建议将 Runbook 添加到认为对其他客户有用的 Runbook 库中。  可通过[将 Runbook 上传到脚本中心](http://gallery.technet.microsoft.com/site/upload)来添加它，并同时考虑以下详细信息。
+Microsoft 建议将 Runbook 添加到认为对其他客户有用的 Runbook 库中。  可通过[将 Runbook 上传到脚本中心](https://gallery.technet.microsoft.com/site/upload)来添加它，并同时考虑以下详细信息。
 
 * 必须为向导中要显示的 Runbook 指定“Microsoft Azure”作为“类别”，指定“自动化”作为“子类别”。  
 * 上传内容必须是单个 .ps1 或 .graphrunbook 文件。  如果 Runbook 需要任何模块、子 Runbook 或资产，则你应该在提交内容的说明和 Runbook 的注释部分列出这些内容。  如果方案需要多个 Runbook，请单独上传每个 Runbook 并在各自的说明中列出相关 Runbook 的名称。 请确保使用相同的标记，以便它们在同一类别中显示。 用户阅读说明后才会知道，方案要正常工作需要其他 Runbook。
@@ -100,7 +100,7 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 可在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)中找到 Python Runbook。 可以将 Python Runbook 投稿至脚本中心库。 执行此操作时，请确保在上传内容时添加标签“Python”。
 
 ## <a name="requesting-a-runbook-or-module"></a>请求 Runbook 或模块
-可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果需要 Runbook 编写帮助，或对 PowerShell 存有疑问，请将问题发布到我们的[论坛](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)。
+可以将请求发送到[用户之声](https://feedback.azure.com/forums/246290-azure-automation/)。  如果需要 Runbook 编写帮助，或对 PowerShell 存有疑问，请将问题发布到我们的[论坛](https://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)。
 
 ## <a name="next-steps"></a>后续步骤
 * 若要开始使用 Runbook，请参阅[在 Azure 自动化中创建或导入 Runbook](automation-creating-importing-runbook.md)

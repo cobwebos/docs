@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c46a9f827bdeeaf7a2b9897b262484f64f83b9a8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466024"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283455"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据
 
-本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便查询支持 Azure Data Lake Storage Gen2 预览版的帐户中的数据。
+本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便查询启用了 Azure Data Lake Storage Gen2 预览版的 Azure 存储帐户中的数据。
 
 > [!div class="checklist"]
 > * 创建 Databricks 群集
@@ -31,9 +31,9 @@ ms.locfileid: "46466024"
 > [!NOTE]
 > 单击“预压缩的文件”复选框，选择所有数据字段。 下载内容的大小将是数个 GB，但这种数量的数据是进行分析所必需的。
 
-## <a name="create-an-azure-data-lake-storage-gen2-account"></a>创建 Azure Data Lake Storage Gen2 帐户
+## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>创建具有分析功能的 Azure 存储帐户
 
-若要开始本教程，请创建新的 [Azure Data Lake Storage Gen2 帐户](quickstart-create-account.md)并为其提供唯一名称。 然后导航到存储帐户，以便检索配置设置。
+首先，创建一个[具有分析功能的新存储帐户](quickstart-create-account.md)，并为其指定唯一名称。 然后导航到存储帐户，以便检索配置设置。
 
 1. 在“设置”下，单击“访问密钥”。
 2. 单击 **key1** 旁边的“复制”按钮，复制密钥值。
@@ -137,11 +137,12 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-你已经通过这些代码示例使用存储在支持 Azure Data Lake Storage Gen2 的帐户中的数据探讨了 HDFS 的层次结构性质。
+
+通过这些代码示例，你已使用启用了 Data Lake Storage Gen2 的存储帐户中存储的数据探讨了 HDFS 的层次结构性质。
 
 ## <a name="query-the-data"></a>查询数据
 
-接下来，可以开始查询上传到 Azure Data Lake Storage 中的数据。 将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
+接下来，可以开始查询上传到存储帐户中的数据。 将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
 
 ### <a name="simple-queries"></a>简单查询
 

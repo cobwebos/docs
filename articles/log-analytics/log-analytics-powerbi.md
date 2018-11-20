@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7610fcfc144e4337f8556c8824dc7d104265bcc4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7cf4613f2fdceca3e869473ed3ec7f47fb417fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044546"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277642"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>将 Azure Log Analytics 数据导入 Power BI
 
@@ -33,7 +33,7 @@ ms.locfileid: "48044546"
 ![Log Analytics 到 Power BI](media/log-analytics-powerbi/overview.png)
 
 ## <a name="export-query"></a>导出查询
-首先创建一个[日志搜索](log-analytics-log-search-new.md)，其从 Log Analytics 返回要填充 Power BI 数据集的数据。  随后将该查询导出为 Power BI Desktop 可以使用的 [Power Query (M) 语言](https://msdn.microsoft.com/library/mt807488.aspx)。
+首先创建一个[日志搜索](log-analytics-queries.md)，其从 Log Analytics 返回要填充 Power BI 数据集的数据。  随后将该查询导出为 Power BI Desktop 可以使用的 [Power Query (M) 语言](https://msdn.microsoft.com/library/mt807488.aspx)。
 
 1. 在 Log Analytics 中创建日志搜索以便为数据集提取数据。
 2. 如果你正在使用日志搜索门户，请单击“Power BI”。  如果你正在使用 Analytics 门户，请选择“导出” > “Power BI Query (M)”。  这两种选项都会将查询导出到一个名为“PowerBIQuery.txt”的文本文件。 
@@ -46,7 +46,7 @@ ms.locfileid: "48044546"
 Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI 的数据集和报表。  另外，你还可以使用它创建使用从 Log Analytics 导出的 Power Query 语言的查询。 
 
 1. 请安装 [Power BI Desktop](https://powerbi.microsoft.com/desktop/)（如果你尚未安装），然后打开该应用程序。
-2. 选择“获取数据” > “空查询”，以打开一个新查询。  然后选择“高级编辑器”并将导出文件的内容粘贴到查询中。 单击“Done”（完成） 。
+2. 选择“获取数据” > “空查询”，以打开一个新查询。  然后选择“高级编辑器”并将导出文件的内容粘贴到查询中。 单击“完成”。
 
     ![Power BI Desktop 查询](media/log-analytics-powerbi/desktop-new-query.png)
 
@@ -81,5 +81,5 @@ Power BI Desktop 是一个桌面应用程序，用于创建可发布到 Power BI
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[日志搜索](log-analytics-log-searches.md)的信息以生成可导出到 Power BI 的查询。
-* 了解有关 [Power BI](http://powerbi.microsoft.com) 的详细信息以基于 Log Analytics 导出内容生成可视化结果。
+* 了解有关[日志搜索](log-analytics-queries.md)的信息以生成可导出到 Power BI 的查询。
+* 了解有关 [Power BI](https://powerbi.microsoft.com) 的详细信息以基于 Log Analytics 导出内容生成可视化结果。

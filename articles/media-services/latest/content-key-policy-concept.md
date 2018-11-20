@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985856"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085948"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -28,16 +28,16 @@ ms.locfileid: "49985856"
 
 下表显示了 ContentKeyPolicy 的属性并给出了它们的定义。
 
-|名称|类型|说明|
-|---|---|---|
-|id|字符串|资源的完全限定的资源 ID。|
-|名称|字符串|资源的名称。|
-|properties.created |字符串|策略的创建日期|
-|properties.description |字符串|策略的说明。|
-|properties.lastModified    |字符串|策略的上次修改日期|
-|properties.options |ContentKeyPolicyOption[]|密钥策略选项。|
-|properties.policyId    |字符串|旧版策略 ID。|
-|type   |字符串|资源的类型。|
+|名称|Description|
+|---|---|
+|id|资源的完全限定的资源 ID。|
+|名称|资源的名称。|
+|properties.created |策略的创建日期|
+|properties.description |策略的说明。|
+|properties.lastModified|策略的上次修改日期|
+|properties.options |密钥策略选项。|
+|properties.policyId    |旧版策略 ID。|
+|type   |资源的类型。|
 
 有关完整定义，请参阅[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)。
 

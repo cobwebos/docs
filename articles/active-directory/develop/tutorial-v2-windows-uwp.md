@@ -1,48 +1,46 @@
 ---
-title: Azure AD v2 UWP 入门 | Microsoft Docs
-description: 通用 Windows 平台应用程序 (UWP) 如何通过 Azure Active Directory v2 终结点调用需要访问令牌的 API
+title: Azure AD v2.0 UWP 入门 | Microsoft Docs
+description: 通用 Windows 平台应用程序 (UWP) 如何通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966378"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986536"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
-
 
 > [!div renderon="docs"]
 > [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-本指南介绍本机通用 Windows 平台 (UWP) 应用程序如何请求访问令牌，然后调用 Microsoft 图形 API。 本指南也适用于其他需要从 Azure Active Directory v2 终结点请求访问令牌的 API。
+本指南介绍本机通用 Windows 平台 (UWP) 应用程序如何请求访问令牌，然后调用 Microsoft 图形 API。 本指南也适用于其他需要从 Azure Active Directory v2.0 终结点请求访问令牌的 API。
 
 在本指南结束时，应用程序将使用个人帐户调用受保护的 API。 示例包括 outlook.com、live.com 等等。 应用程序还将调用任何使用 Azure Active Directory 的公司或组织提供的工作和学校帐户。
 
 >[!NOTE]
 > 本指南需要安装了通用 Windows 平台开发的 Visual Studio 2017。 请参阅[设置](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)，获取有关如何下载和配置 Visual Studio 以开发通用 Windows 平台应用的说明。
 
-### <a name="how-this-guide-works"></a>本指南的工作原理
+## <a name="how-this-guide-works"></a>本指南的工作原理
 
 ![本指南工作原理的示意图](./media/tutorial-v2-windows-uwp/uwp-intro.png)
 
-本指南创建的示例 UWP 应用程序查询从 Azure Active Directory v2 终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，通过 Authorization 标头向 HTTP 请求添加了令牌。 Microsoft 身份验证库 (MSAL) 处理令牌获取和续订。
+本指南创建的示例 UWP 应用程序查询从 Azure Active Directory v2.0 终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，通过 Authorization 标头向 HTTP 请求添加了令牌。 Microsoft 身份验证库 (MSAL) 处理令牌获取和续订。
 
-### <a name="nuget-packages"></a>NuGet 包
+## <a name="nuget-packages"></a>NuGet 包
 
 本指南使用以下 NuGet 包：
 
@@ -50,18 +48,18 @@ ms.locfileid: "46966378"
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 身份验证库|
 
-
 ## <a name="set-up-your-project"></a>设置项目
 
 本部分逐步说明如何将 Windows 桌面 .NET 应用程序 (XAML) 与“登录 Microsoft”集成。 然后，该应用程序可以查询需要令牌的 Web API（例如 Microsoft 图形 API）。
 
 本指南创建的应用程序显示用来查询图形 API 的按钮、注销按钮和显示调用结果的文本框。
 
->[!NOTE]
+> [!NOTE]
 > 想要改为下载此示例的 Visual Studio 项目？ [下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)并跳到[应用程序注册](#register-your-application "应用程序注册步骤")步骤，在运行代码示例前对其进行配置。
 
 
 ### <a name="create-your-application"></a>创建应用程序
+
 1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
 2. 在“模板”下，选择“Visual C#”。
 3. 选择“空白应用(通用 Windows)”。
@@ -79,7 +77,7 @@ ms.locfileid: "46966378"
     ```
 
 > [!NOTE]
-> 此命令将安装 [Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)。 MSAL 获取、缓存和刷新用于访问受 Azure Active Directory v2 保护的 API 的用户令牌。
+> 此命令将安装 [Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)。 MSAL 获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌。
 
 > [!NOTE]
 > 本教程尚未使用最新版本的 MSAL.NET，但我们正在努力对它进行更新。
@@ -193,10 +191,13 @@ ms.locfileid: "46966378"
     ```
 
 ### <a name="more-information"></a>详细信息
+
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
+
 调用 `AcquireTokenAsync` 方法将出现提示用户进行登录的窗口。 当用户首次需要访问受保护的资源时，应用程序通常会要求用户进行交互式登录。 当用于获取令牌的无提示操作失败时，用户也可能需要登录。 例如，当用户的密码过期时。
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
+
 `AcquireTokenSilentAsync` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `AcquireTokenAsync` 并提示用户输入凭据后，应使用 `AcquireTokenSilentAsync` 方法请求后续调用的令牌，因为此方法以无提示方式获取令牌。 MSAL 将处理令牌缓存和续订。
 
 最终，`AcquireTokenSilentAsync` 方法会失败。 失败可能是因为用户已注销，或者在另一设备上更改了密码。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MsalUiRequiredException` 异常。 应用程序可以通过两种方式处理此异常：
@@ -333,7 +334,6 @@ ms.locfileid: "46966378"
 > [!IMPORTANT]
 > 默认情况下，未为此示例配置 Windows 集成身份验证。 请求“企业身份验证”或“共享用户证书”功能的应用程序需要由 Windows 应用商店进行的更高级别的验证。 此外，并非所有开发人员都希望执行更高级别的验证。 仅当需要使用 Azure Active Directory 联合域进行 Windows 集成身份验证时，才启用此设置。
 
-
 ## <a name="test-your-code"></a>测试代码
 
 若要测试应用程序，请按 F5 在 Visual Studio 中运行项目。 将显示主窗口：
@@ -357,7 +357,7 @@ ms.locfileid: "46966378"
 
 |属性  |格式  |Description |
 |---------|---------|---------|
-|**Name** |用户全名|用户的名字和姓氏。|
+|**名称** |用户全名|用户的名字和姓氏。|
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
 |**令牌到期** |DateTime |令牌的过期时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 |**访问令牌** |String |发送到需要授权标头的 HTTP 请求的令牌字符串。|
@@ -369,7 +369,7 @@ ms.locfileid: "46966378"
 
 Microsoft 图形 API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在应用程序注册门户中注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 Microsoft 图形 API 需要 *Calendars.Read* 作用域来列出用户的日历。
 
-若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。 
+若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。
 
 > [!NOTE]
 > 增加作用域数量时，用户可能会收到接受其他许可的提示。
@@ -392,3 +392,5 @@ Microsoft 图形 API 需要 *user.read* 作用域来读取用户的个人资料�
 **原因：** 在 Windows 10 桌面版上运行的 UWP 应用程序中的 Web 身份验证代理存在已知限制。 该代理在 Windows 10 手机版上可正常工作。
 
 **解决方法：** 选择“使用其他选项登录”。 然后选择“使用用户名和密码登录”。 选择“提供密码”。 然后完成手机身份验证过程。
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

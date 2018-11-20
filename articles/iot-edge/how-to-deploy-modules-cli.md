@@ -2,19 +2,19 @@
 title: 部署 Azure IoT Edge 模块 (CLI) | Microsoft Docs
 description: 通过适用于 Azure CLI 的 IoT 扩展将模块部署到 IoT Edge 设备
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/27/2018
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e872b7eaeb7743221b8cdf41dd0a24ea0c4287d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967483"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564980"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -112,7 +112,7 @@ ms.locfileid: "46967483"
 使用以下命令将配置应用于 IoT Edge 设备：
 
    ```cli
-   az iot hub apply-configuration --device-id [device id] --hub-name [hub name] --content [file path]
+   az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
 device id 参数区分大小写。 content 参数指向你保存的部署清单文件。 

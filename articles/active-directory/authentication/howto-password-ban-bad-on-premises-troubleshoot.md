@@ -5,32 +5,34 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 1eea6380d4276644db0c7681f23a4b0c5e79ff09
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187343"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978632"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>预览版：Azure AD 密码保护监视、报告和故障排除
 
 |     |
 | --- |
-| Azure AD 密码保护和自定义禁止密码列表是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure AD 密码保护是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文提供详细信息来帮助你了解每项服务日志信息的位置，以及如何报告 Azure AD 密码保护的用法。
 
 ## <a name="on-premises-logs-and-events"></a>本地日志和事件
 
-### <a name="dc-agent-service"></a>DC 代理服务
+### <a name="dc-agent-admin-log"></a>DC 代理管理日志
 
-在每个域控制器上，DC 代理服务软件会将其密码验证的结果（和其他状态）写入本地事件日志：\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin
+在每个域控制器上，DC 代理服务软件会将其密码验证结果（和其他状态）写入本地事件日志：
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
 各个 DC 代理组件使用以下范围记录事件：
 
@@ -62,101 +64,153 @@ ms.locfileid: "39187343"
 > [!TIP]
 > 首先根据 Microsoft 全局密码列表验证传入的密码；如果失败，则不执行进一步的处理。 此行为与针对 Azure 中的密码更改执行的操作相同。
 
-#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>事件 ID 10014 密码设置成功的示例事件日志消息
+#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>事件 ID 10014（密码设置成功）的示例事件日志消息
 
-指定用户的已更改密码经验证符合当前的 Azure 密码策略。
+```
+The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771 FullName:
+ UserName: BPL_02885102771
+ FullName:
+```
 
-#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>事件 ID 10017 和 30003 密码设置失败的示例事件日志消息
+#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>事件 ID 10017 和 30003（密码设置失败）的示例事件日志消息
 
 10017:
 
-指定用户的重置密码被拒绝，因为它不符合当前的 Azure 密码策略。 请参阅相关的事件日志消息了解更多详细信息。
+```
+The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
 30003:
 
-指定用户的重置密码被拒绝，因为它与当前 Azure 密码策略的每个租户的禁止密码列表中的一个令牌相匹配。
+```
+The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
-要注意的其他关键事件日志消息包括：
+#### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>事件 ID 30001（由于没有可用的策略，因此已接受密码）的示例事件日志消息
 
-#### <a name="sample-event-log-message-for-event-id-30001"></a>事件 ID 30001 的示例事件日志消息
+```
+The password for the specified user was accepted because an Azure password policy is not available yet
 
-指定用户的密码已被接受，因为 Azure 密码策略尚不可用
+UserName: SomeUser
+FullName: Some User
 
-UserName: <user> FullName: <user>
+This condition may be caused by one or more of the following reasons:%n
 
-这种情况可能是以下一个或多个原因造成的:%n
+1. The forest has not yet been registered with Azure.
 
-1. 林尚未注册到 Azure。
+   Resolution steps: an administrator must register the forest using the Register-AzureADPasswordProtectionForest cmdlet.
 
-   解决方法步骤：管理员必须使用 Register-AzureADPasswordProtectionForest cmdlet 注册林。
+2. An Azure AD password protection Proxy is not yet available on at least one machine in the current forest.
 
-2. Azure AD 密码保护代理至少在当前林中的一台计算机上不可用。
+   Resolution steps: an administrator must install and register a proxy using the Register-AzureADPasswordProtectionProxy cmdlet.
 
-   解决方法步骤：管理员必须使用 Register-AzureADPasswordProtectionProxy cmdlet 安装并注册代理。
+3. This DC does not have network connectivity to any Azure AD password protection Proxy instances.
 
-3. 此 DC 尚未与任何 Azure AD 密码保护代理实例建立网络连接。
+   Resolution steps: ensure network connectivity exists to at least one Azure AD password protection Proxy instance.
 
-   解决方法步骤：确保与至少一个 Azure AD 密码保护代理实例建立网络连接。
+4. This DC does not have connectivity to other domain controllers in the domain.
 
-4. 此 DC 尚未与域中的其他域控制器建立连接。
+   Resolution steps: ensure network connectivity exists to the domain.
+```
 
-   解决方法步骤：确保与域建立网络连接。
+#### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>事件 ID 30006（正在实施新策略）的示例事件日志消息
 
-#### <a name="sample-event-log-message-for-event-id-30006"></a>事件 ID 30006 的示例事件日志消息
+```
+The service is now enforcing the following Azure password policy.
 
-服务正在实施以下 Azure 密码策略。
-
+ Enabled: 1
  AuditOnly: 1
+ Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+ Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+ Enforce tenant policy: 1
+```
 
- 全局策略日期: 2018年-05-15T00:00:00.000000000Z
+#### <a name="dc-agent-operational-log"></a>DC 代理操作日志
 
- 租户策略日期: 2018年-06-10T20:15:24.432457600Z
+DC 代理服务还会将操作相关的事件记录到以下日志：
 
- 实施租户策略: 1
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-#### <a name="dc-agent-log-locations"></a>DC 代理日志位置
+#### <a name="dc-agent-trace-log"></a>DC 代理跟踪日志
 
-DC 代理服务还会将操作相关的事件记录到以下日志：\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational
+DC 代理服务还会将详细的调试级别跟踪事件记录到以下日志：
 
-DC 代理服务还会将详细的调试级跟踪事件记录到以下日志：\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
+
+默认已禁用跟踪日志记录。
 
 > [!WARNING]
-> 默认已禁用跟踪日志。 如果启用跟踪日志，此日志会收到大量的事件，从而可能影响域控制器的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此增强型日志时，才启用此日志。
+>  如果启用跟踪日志，此日志会收到大量的事件，从而可能影响域控制器的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此增强型日志时，才启用此日志。
+
+#### <a name="dc-agent-text-logging"></a>DC 代理文本日志记录
+
+可以通过设置以下注册表值，将 DC 代理服务配置为写入到文本日志：
+
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1（REG_DWORD 值）
+
+默认已禁用文本日志记录。 需要重启 DC 代理服务才能使此值的更改生效。 启用后，DC 代理服务会写入到以下目录下的日志文件：
+
+`%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
+
+> [!TIP]
+> 文本日志接收可记录到跟踪日志的相同调试级别条目，但通常采用更简单的格式，可方便查看和分析。
+
+> [!WARNING]
+> 如果启用跟踪日志，此日志会收到大量的事件，从而可能影响域控制器的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此增强型日志时，才启用此日志。
 
 ### <a name="azure-ad-password-protection-proxy-service"></a>Azure AD 密码保护代理服务
 
-密码保护代理服务向以下事件日志发出少量的事件：\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational
+#### <a name="proxy-service-event-logs"></a>代理服务事件日志
 
-密码保护代理服务还会将详细的调试级跟踪事件记录到以下日志：\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace
+代理服务将少量的事件发出到以下事件日志：
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational`
+
+代理服务还会将详细的调试级别跟踪事件记录到以下日志：
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
+
+默认已禁用跟踪日志记录。
 
 > [!WARNING]
-> 默认已禁用跟踪日志。 如果启用跟踪日志，此日志会收到大量的事件，从而可能影响代理主机的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此日志时，才启用此日志。
+> 如果启用跟踪日志，此日志会收到大量的事件，从而可能影响代理主机的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此日志时，才启用此日志。
 
-### <a name="dc-agent-discovery"></a>DC 代理发现
+#### <a name="proxy-service-text-logging"></a>代理服务文本日志记录
 
-`Get-AzureADPasswordProtectionDCAgent` cmdlet 可用于显示域或林中运行的各个 DC 代理的基本信息。 从正在运行的 DC 代理服务注册的 serviceConnectionPoint 对象检索此信息。 此 cmdlet 的示例输出如下所示：
+可以通过设置以下注册表值，将代理服务配置为写入到文本日志：
 
-```
-PS C:\> Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1（REG_DWORD 值）
 
-每个 DC 代理服务大约每隔一小时更新各种属性。 数据仍可能遇到 Active Directory 复制延迟。
+默认已禁用文本日志记录。 需要重启代理服务才能使此值的更改生效。 启用后，代理服务会写入到以下目录下的日志文件：
 
-使用 –Forest 或 –Domain 参数可以影响 cmdlet 查询的范围。
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+> [!TIP]
+> 文本日志接收可记录到跟踪日志的相同调试级别条目，但通常采用更简单的格式，可方便查看和分析。
+
+> [!WARNING]
+> 如果启用跟踪日志，此日志会收到大量的事件，从而可能影响域控制器的性能。 因此，仅当某个问题需要更深入的调查，并且只需短时间启用此增强型日志时，才启用此日志。
+
+#### <a name="powershell-cmdlet-logging"></a>PowerShell cmdlet 日志记录
+
+大多数 Azure AD 密码保护 Powershell cmdlet 会写入到以下目录下的文本日志：
+
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+如果发生 cmdlet 错误并且原因和/或解决方法暂时并不明显，则也可以查阅这些文本日志。
 
 ### <a name="emergency-remediation"></a>紧急补救
 
-如果 DC 代理服务不幸造成了问题，可以立即关闭 DC 代理服务。 DC 代理密码筛选器 dll 会尝试调用未运行的服务并记录警告事件（10012、10013），但在此期间会接受所有传入的密码。 然后，也可以通过 Windows 服务控制管理器并根据需要使用启动类型“Disabled”来配置 DC 代理服务。
+如果 DC 代理服务造成了问题，可以立即关闭 DC 代理服务。 DC 代理密码筛选器 dll 仍会尝试调用未运行的服务并记录警告事件（10012、10013），但在此期间会接受所有传入的密码。 然后，也可以通过 Windows 服务控制管理器并根据需要使用启动类型“Disabled”来配置 DC 代理服务。
 
 ### <a name="performance-monitoring"></a>性能监视
 
@@ -182,6 +236,7 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 ## <a name="domain-controller-demotion"></a>域控制器降级
 
 支持降级仍在运行 DC 代理软件的域控制器。 但管理员应注意，在降级过程中，DC 代理软件将保持运行，并继续实施当前密码策略。 将像验证其他任何密码一样验证（降级操作过程中指定的）新本地管理员帐户密码。 Microsoft 建议在 DC 降级过程中为本地管理员帐户选择安全密码；但是，现有的降级操作过程可能会中断 DC 代理软件对新本地管理员帐户密码执行的验证。
+
 成功降级后，如果域控制器已重新启动并再次以普通成员服务器的形式运行，则 DC 代理软件将恢复为以被动模式运行。 然后，随时可将其卸载。
 
 ## <a name="removal"></a>删除
@@ -189,14 +244,15 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 如果决定卸载公共预览版软件并从域和林中清理所有相关状态，可使用以下步骤完成此任务：
 
 > [!IMPORTANT]
-> 必须按顺序执行这些步骤。 如果密码保护代理服务的任一实例正在运行，它会定期重新创建其 serviceConnectionPoint 对象，并定期重新创建 sysvol 状态。
+> 必须按顺序执行这些步骤。 如果代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象。 如果 DC 代理服务的任何实例仍在运行，它会定期重新创建其 serviceConnectionPoint 对象和 sysvol 状态。
 
 1. 从所有计算机中卸载密码保护代理软件。 完成此步骤后**不需要**重新启动。
 2. 从所有域控制器中卸载 DC 代理软件。 完成此步骤后**需要**重新启动。
 3. 在每个域命名上下文中手动删除所有代理服务连接点。 可使用以下 Active Directory Powershell 命令发现这些对象的位置：
-   ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{EBEFB703-6113-413D-9167-9F8DD4D24468}*”
+
+   ```Powershell
+   $scp = "serviceConnectionPoint"
+   $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -206,9 +262,9 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 
 4. 在每个域命名上下文中手动删除所有 DC 代理连接点。 根据公共预览版软件的部署范围，林中的每个域控制器可能存在其中的一个对象。 可使用以下 Active Directory Powershell 命令发现该对象的位置：
 
-   ```
-   $scp = “serviceConnectionPoint”
-   $keywords = “{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*”
+   ```Powershell
+   $scp = "serviceConnectionPoint"
+   $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -216,8 +272,8 @@ DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器�
 
 5. 手动删除林级配置状态。 林配置状态保留在 Active Directory 配置命名上下文中的某个容器内。 可按如下所示发现和删除该状态：
 
-   ```
-   $passwordProtectonConfigContainer = "CN=Azure AD password protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
+   ```Powershell
+   $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject $passwordProtectonConfigContainer
    ```
 

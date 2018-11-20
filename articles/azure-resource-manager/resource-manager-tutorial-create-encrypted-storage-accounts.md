@@ -10,27 +10,28 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945784"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613505"
 ---
-# <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>教程：创建用于部署已加密存储帐户的 Azure 资源管理器模板
+# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>教程：使用资源管理器模板部署加密的 Azure 存储帐户
 
-了解如何查找相关信息，以便完成 Azure 资源管理器模板。
+了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器模板。
 
-在本教程中，请使用 Azure 快速入门模板中提供的基础模板来创建 Azure 存储帐户。  根据模板参考文档自定义基础模板，以便创建加密的存储帐户。
+在本教程中，请使用 Azure 快速入门模板中提供的基础模板。 根据模板参考文档自定义模板，以便创建加密的存储帐户。
 
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 打开快速入门模板
 > * 了解模板
+> * 查找模板参考
 > * 编辑模板
 > * 部署模板
 
@@ -44,7 +45,7 @@ ms.locfileid: "49945784"
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
+[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。
 2. 在“文件名”中粘贴以下 URL：
@@ -57,58 +58,22 @@ ms.locfileid: "49945784"
 
 ## <a name="understand-the-schema"></a>了解架构
 
-在 VS Code 中将模板折叠到根级别。 你使用最简单的结构，其中包含以下元素：
+1. 在 VS Code 中将模板折叠到根级别。 你使用最简单的结构，其中包含以下元素：
 
-![资源管理器模板的最简单结构](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
+    ![资源管理器模板的最简单结构](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
 
-* **$schema**：指定描述模板语言版本的 JSON 架构文件所在的位置。
-* **contentVersion**：为此元素指定任意值，以便记录模板中的重要更改。
-* **parameters**：指定执行部署以自定义资源部署时提供的值。
-* **variables**：指定在模板中用作 JSON 片段以简化模板语言表达式的值。
-* **resources**：指定已在资源组中部署或更新的资源类型。
-* **outputs**：指定部署后返回的值。
+    * **$schema**：指定描述模板语言版本的 JSON 架构文件所在的位置。
+    * **contentVersion**：为此元素指定任意值，以便记录模板中的重要更改。
+    * **parameters**：指定执行部署以自定义资源部署时提供的值。
+    * **variables**：指定在模板中用作 JSON 片段以简化模板语言表达式的值。
+    * **resources**：指定已在资源组中部署或更新的资源类型。
+    * **outputs**：指定部署后返回的值。
 
-## <a name="use-parameters"></a>使用参数
+2. 展开“resources”。 已定义 `Microsoft.Storage/storageAccounts` 资源。 此模板创建非加密存储帐户。
 
-可以使用参数提供针对特定环境定制的值，以便自定义部署。 为存储帐户设置值时，请使用模板中定义的参数。
+    ![资源管理器模板存储帐户定义](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resource.png)
 
-![资源管理器模板参数](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-parameters.png)
-
-在此模板中，定义了两个参数。 注意，一个模板函数用在 location.defaultValue 中：
-
-```json
-"defaultValue": "[resourceGroup().location]",
-```
-
-resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数的列表，请参阅 [Azure 资源管理器模板函数](./resource-group-template-functions.md)。
-
-若要使用模板中定义的参数，请执行以下代码：
-
-```json
-"location": "[parameters('location')]",
-"name": "[parameters('storageAccountType')]"
-```
-
-## <a name="use-variables"></a>使用变量
-
-变量用于构造可在整个模板中使用的值。 变量有助于减轻模板的复杂性。
-
-![资源管理器模板变量](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-variables.png)
-
-此模板定义 *storageAccountName* 变量。 在定义中，使用两个模板函数：
-
-- **concat()**：连接多个字符串。 有关详细信息，请参阅 [concat](./resource-group-template-functions-string.md#concat)。
-- **uniqueString()**：根据作为参数提供的值创建确定性哈希字符串。 每个 Azure 存储帐户都必须有在整个 Azure 中都唯一的名称。 此函数提供一个唯一字符串。 如需更多的字符串函数，请参阅[字符串函数](./resource-group-template-functions-string.md)。
-
-若要使用模板中定义的变量，请执行以下代码：
-
-```json
-"name": "[variables('storageAccountName')]"
-```
-
-## <a name="edit-the-template"></a>编辑模板
-
-本教程的目标是定义一个模板，以便创建加密的存储帐户。  示例模板仅创建基本的非加密型存储帐户。 若要查找与加密相关的配置，可以使用 Azure 存储帐户的模板参考。
+## <a name="find-the-template-reference"></a>查找模板参考
 
 1. 浏览到 [Azure 模板](https://docs.microsoft.com/azure/templates/)。
 2. 在“按标题筛选”中，输入“存储帐户”。
@@ -120,17 +85,52 @@ resourceGroup() 函数返回表示当前资源组的对象。 有关模板函数
 
     ```json
     "encryption": {
-        "keySource": "Microsoft.Storage",
+      "services": {
+        "blob": {
+          "enabled": boolean
+        },
+        "file": {
+          "enabled": boolean
+        }
+      },
+      "keySource": "string",
+      "keyvaultproperties": {
+        "keyname": "string",
+        "keyversion": "string",
+        "keyvaulturi": "string"
+      }
+    },
+    ```
+
+    在同一网页上，以下说明确认 `encryption` 对象用于创建加密的存储帐户。
+
+    ![资源管理器模板参考存储帐户加密](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption.png)
+
+    可以通过两种方式来管理加密密钥。 可以将 Microsoft 托管的加密密钥用于存储服务加密，或者使用你自己的加密密钥。 为了简化本教程，请使用 `Microsoft.Storage` 选项，这样就不需创建 Azure Key Vault。
+
+    ![资源管理器模板参考存储帐户加密对象](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption-object.png)
+
+    加密对象应如下所示：
+
+    ```json
+    "encryption": {
         "services": {
             "blob": {
                 "enabled": true
+            },
+            "file": {
+              "enabled": true
             }
-        }
+        },
+        "keySource": "Microsoft.Storage"
     }
     ```
-5. 在 Visual Studio Code 中修改模板，使最终的资源元素如下所示：
-    
-    ![资源管理器模板加密的存储帐户资源](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+
+## <a name="edit-the-template"></a>编辑模板
+
+在 Visual Studio Code 中修改模板，使 resources 元素如下所示：
+
+![资源管理器模板加密的存储帐户资源](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>部署模板
 

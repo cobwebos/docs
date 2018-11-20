@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639021"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093034"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -30,9 +30,10 @@ ms.locfileid: "34639021"
 > [!div class="checklist"]
 > * 创建两个 VM
 > * 使用网络观察程序的连接监视器功能监视 VM 之间的通信
+> * 根据连接监视器指标生成警报
 > * 诊断两个 VM 之间的通信问题，并了解如何解决该问题
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -93,7 +94,7 @@ ms.locfileid: "34639021"
     | 设置                  | 值               |
     | ---------                | ---------           |
     | 名称                     | myVm1-myVm2(22)     |
-    | Source                   |                     |
+    | 源                   |                     |
     | 虚拟机          | myVM1               |
     | 目标              |                     |
     | 选择一个虚拟机 |                     |
@@ -121,6 +122,19 @@ ms.locfileid: "34639021"
     | Hops                     | 连接监视器指示两个终结点之间的跃点数。 在此示例中，连接是在同一虚拟网络中的两个 VM 之间进行的，因此只有一个到 IP 地址 10.0.0.5 的跃点。 如果在 VM 之间存在通过其他方式（例如 VPN 网关或网络虚拟设备）完成的系统的或自定义的路由、路由流量，则会列出其他跃点。                                                                                                                         |
     | 状态                   | 终结点出现绿色复选标记指示该终结点是正常的。    ||
 
+## <a name="generate-alerts"></a>生成警报
+
+警报通过警报规则在 Azure Monitor 中创建，可以按固定的时间间隔自动运行保存的查询或自定义日志搜索。 生成的警报可以自动运行一项或多项操作，例如通知某人或启动另一进程。 设置警报规则时，目标资源决定了可以用于生成警报的一系列指标。
+
+1. 在 Azure 门户中选择“监视器”服务，然后选择“警报 > “新建警报规则”。
+2. 单击“选择目标”，然后选择要作为目标的资源。 选择“订阅”，然后设置“资源类型”，以便筛选出要使用的连接监视器。
+
+    ![目标为选中状态的警报屏幕](./media/connection-monitor/set-alert-rule.png)
+1. 选中目标资源以后，请选择“添加条件”。网络观察程序有[创建警报时基于的指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)。 将“可用信号”设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
+
+    ![信号处于选中状态的警报页](./media/connection-monitor/set-alert-signals.png)
+1. 填写警报详细信息，例如警报规则名称、说明和严重性。 也可向警报添加操作组，以便自动完成和自定义警报响应。
+
 ## <a name="view-a-problem"></a>查看问题
 
 默认情况下，Azure 允许在同一虚拟网络中的 VM 之间通过所有端口进行通信。 一段时间之后，你或者组织中的其他人可能会覆盖 Azure 的默认规则，无意中引发通信故障。 完成下述用于制造通信问题的步骤，然后再次查看连接监视器：
@@ -137,7 +151,7 @@ ms.locfileid: "34639021"
     | ---                     | ---            |
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
-    | Priority                | 100            |
+    | 优先度                | 100            |
     | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。 如下图所示，现在的结果有所不同：

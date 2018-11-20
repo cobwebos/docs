@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142253"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959998"
 ---
 # <a name="import-data-into-analytics"></a>将数据导入到 Analytics 中
 
@@ -123,11 +123,11 @@ JSON 格式
 * 位置 - 对于带分隔符的文件格式，它是映射的值的位置。 对于 JSON 格式，它是映射的键的 jpath。
 * 名称 - 列的显示名称。
 * 类型 - 列的数据类型。
- 
+
 > [!NOTE]
 > 如果使用示例数据，且文件为带分隔符的格式，则架构定义必须映射所有列，并在末尾添加新列。
 > 
-> JSON 允许数据的部分映射，因此 JSON 格式的架构定义不必映射在示例数据中找到的每个键。 它还可以映射不属于示例数据一部分的列。 
+> JSON 允许部分映射数据，因此 JSON 格式的架构定义不必映射在示例数据中找到的每个键。 它还可以映射不属于示例数据一部分的列。 
 
 ## <a name="import-data"></a>导入数据
 
@@ -137,7 +137,7 @@ JSON 格式
 
 可以手动执行以下过程，或者设置自动系统以定期执行此过程。 需要对每个要导入的数据块执行这些步骤。
 
-1. 将数据上传到 [Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 
+1. 将数据上传到 [Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 
 
  * Blob 可以是任何小于等于 1 GB 的大小（未压缩）。 从性能角度来看，数百 MB 大小的大型 Blob 十分理想。
  * 可以使用 Gzip 进行压缩，缩短上传时间和数据可供查询的延迟。 使用 `.gz` 文件扩展名。
@@ -369,5 +369,5 @@ namespace IngestionClient
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Log Analytics 查询语言教程](app-insights-analytics-tour.md)
+* [Log Analytics 查询语言教程](../log-analytics/query-language/get-started-analytics-portal.md)
 * 如果使用 Logstash，请[使用 Logstash 插件将数据发送到 Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

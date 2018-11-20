@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ff5a47f977f34535c5ad1fde7e6cac5995e7f7dd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031452"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277471"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>教程 9：提取整体话语的情绪
 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。 情绪是从整个话语确定的。
@@ -39,7 +39,7 @@ ms.locfileid: "47031452"
 > [!div class="checklist"]
 > * 使用现有的教程应用 
 > * 将情绪分析添加为发布设置
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取获取话语的情绪
 
@@ -49,18 +49,18 @@ ms.locfileid: "47031452"
 
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请使用以下步骤：
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
 
 1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `sentiment`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含 URL 中无效的任何字符。
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `sentiment`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
 ## <a name="employeefeedback-intent"></a>EmployeeFeedback 意向 
 添加一个新意向来从公司的成员捕获员工反馈。 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“创建新意向”。
 
@@ -85,7 +85,7 @@ ms.locfileid: "47031452"
 
     [ ![在 EmployeeFeedback 意向中包含了示例陈述的 LUIS 应用的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

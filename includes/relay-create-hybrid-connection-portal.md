@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571822"
+---
 确保已[创建中继命名空间][namespace-how-to]。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。

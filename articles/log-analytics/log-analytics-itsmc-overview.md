@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042422"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964034"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
-![IT Service Management Connector 符号](./media/log-analytics-itsmc/itsmc-symbol.png)
+![IT Service Management Connector 符号](media/log-analytics-itsmc-overview/itsmc-symbol.png)
 
 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。
 
@@ -56,16 +56,20 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 1.  在 Azure 门户中，单击“+ 新建”图标。
 
-    ![Azure 新资源](./media/log-analytics-itsmc/azure-add-new-resource.png)
+    ![Azure 新资源](media/log-analytics-itsmc-overview/azure-add-new-resource.png)
 
 2.  在市场中搜索“IT 服务管理连接器”，然后单击“创建”。
 
-    ![添加 ITSMC 解决方案](./media/log-analytics-itsmc/add-itsmc-solution.png)
+    ![添加 ITSMC 解决方案](media/log-analytics-itsmc-overview/add-itsmc-solution.png)
 
 3.  在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。
+   >[!NOTE]
+   >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 4.  在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。
 
-    ![ITSMC 工作区](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    ![ITSMC 工作区](media/log-analytics-itsmc-overview/itsmc-solution-workspace.png)
+    >[!NOTE]
+    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 
 5.  单击“创建”。
 
@@ -89,12 +93,12 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 1.  转到“所有资源”，找到“ServiceDesk(YourWorkspaceName)”。
 2.  在左窗格中的“工作区数据源”下，单击“ITSM 连接”。
-    ![ITSM 连接](./media/log-analytics-itsmc/itsm-connections.png)
+    ![ITSM 连接](media/log-analytics-itsmc-overview/itsm-connections.png)
 
     此页显示连接列表。
 3.  单击“添加连接”。
 
-    ![添加 ITSM 连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![添加 ITSM 连接](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
 4.  根据[使用 ITSM 产品/服务配置 ITSMC 连接](log-analytics-itsmc-connections.md)一文中所述指定连接设置。
 
@@ -102,7 +106,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
     > 默认情况下，ITSMC 每隔 24 小时刷新连接配置数据一次。 若要即时刷新连接的数据以获取执行的任何编辑或模板更新，单击连接边栏选项卡上的“同步”按钮。
 
-    ![连接刷新](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
+    ![连接刷新](media/log-analytics-itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>使用解决方案
@@ -119,16 +123,16 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 1. 在 Azure 门户中，单击“监视器”。
 2. 在左窗格中，单击“操作组”。 “添加操作组”窗口随即显示。
 
-    ![操作组](media/log-analytics-itsmc/action-groups.png)
+    ![操作组](media/log-analytics-itsmc-overview/action-groups.png)
 
 3. 为操作组提供“名称”和“短名称”。 选择要创建操作组的“资源组”和“订阅”。
 
-    ![操作组详细信息](media/log-analytics-itsmc/action-groups-details.png)
+    ![操作组详细信息](media/log-analytics-itsmc-overview/action-groups-details.png)
 
 4. 在“操作”列表中，从“操作类型”下拉列表菜单中选择“ITSM”。 提供操作的“名称”并单击“编辑详细信息”。
 5. 选择 Log Analytics 工作区所在的“订阅”。 选择后跟工作区名称的“连接”名称（你的 ITSM 连接器名称）。 例如，“MyITSMMConnector(MyWorkspace)。”
 
-    ![ITSM 操作详细信息](./media/log-analytics-itsmc/itsm-action-details.png)
+    ![ITSM 操作详细信息](media/log-analytics-itsmc-overview/itsm-action-details.png)
 
 6. 从下拉列表菜单中选择“工作项”类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
@@ -147,19 +151,19 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 可以在解决方案中使用 ITSM 连接器仪表板将事件和更改请求数据可视化。
 
-![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
+![Log Analytics 屏幕](media/log-analytics-itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 仪表板还提供有关连接器状态的信息，在分析任何连接问题时，可以从这些信息着手。
 
 还可以在服务映射解决方案中，将针对受影响计算机同步的事件可视化。
 
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详细信息](../operations-management-suite/operations-management-suite-service-map.md)。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详细信息](../monitoring/monitoring-service-map.md)。
 
 如果使用了服务映射解决方案，则可以查看 ITSM 解决方案中创建的服务台工作项，如以下示例中所示：
 
-![Log Analytics 屏幕](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Log Analytics 屏幕](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-详细信息：[服务映射](../operations-management-suite/operations-management-suite-service-map.md)
+详细信息：[服务映射](../monitoring/monitoring-service-map.md)
 
 
 ## <a name="additional-information"></a>其他信息
@@ -212,7 +216,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 源
 - 分配给
 - 标题
-- Type
+- 类型
 - 类别
 - 状态
 - 升级
@@ -264,7 +268,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
-| Type_s|  Type |
+| Type_s|  类型 |
 | Category_s|  类别 |
 | CRState_s|  状态|
 | Urgency_s|  紧急性 |
@@ -290,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - 确保成功部署 Web 应用并创建混合连接。 若要验证是否已成功建立与本地 Service Manager 计算机的连接，请访问建立[混合连接](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)文档中详细介绍的 Web 应用 URL。  
 
 2.  如果未向 Log Analytics 同步来自 ServiceNow 的数据，请确保 ServiceNow 实例处于非休眠状态。 如果 ServiceNow 开发实例长时间处于空闲状态，有时会进入休眠状态。 否则，请报告问题。
-3.  如果 OMS 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
+3.  如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
  -  ITSMC：此解决方案显示连接/工作项/计算机等的摘要。单击显示“连接器状态”的磁贴，可以跳转到具有相关查询的“日志搜索”。 查看含有 LogType_S as ERROR 的日志记录，了解详细信息。
  - “日志搜索”页：`*`使用 ServiceDeskLog_CL`*` 查询直接查看错误/相关信息。
 

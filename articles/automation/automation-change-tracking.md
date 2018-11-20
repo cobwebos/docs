@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/31/2018
+ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634432"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166995"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -224,6 +224,17 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 |&nbsp;&nbsp;&nbsp;&nbsp;监视已知或常用的系统 DLL 列表；该系统可以通过删除特洛伊木马版本的系统 DLL 来防止人们利用弱应用程序目录权限。|
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;监视可从 Winlogon（适用于 Windows 操作系统的交互式登录支持模型）接收事件通知的包列表。|
+
+## <a name="network-requirements"></a>网络要求
+
+更改跟踪特别需要以下地址。 与这些地址的通信通过端口 443 完成。
+
+|Azure Public  |Azure Government   |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|* .azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>使用更改跟踪
 

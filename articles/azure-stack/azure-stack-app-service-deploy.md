@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166876"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614049"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166876"
 根据本文中的指南在 Azure Stack 中部署应用服务。
 
 > [!IMPORTANT]  
-> 请将 1807 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.3。
+> 将 1809年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.4 之前部署最新 Azure Stack 开发工具包 (ASDK)。
 
 可以让用户能够创建 Web 应用程序和 API 应用程序。 若要让用户创建这些应用程序，必须：
 
@@ -74,8 +74,8 @@ ms.locfileid: "49166876"
 
    b. 在“Azure Stack 订阅”中，选择“默认提供程序订阅”。
 
-     >[!NOTE]
-     >目前，应用服务只能部署到“默认提供程序订阅”。
+     > [!IMPORTANT]  
+     > 应用服务**必须**将其部署到**默认提供商订阅**。
 
    c. 在“Azure Stack 位置”中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
 
@@ -97,7 +97,7 @@ ms.locfileid: "49166876"
 8. 输入文件共享的信息，然后选择“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名 (FQDN) 或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。
 
    >[!NOTE]
-   >安装程序会尝试测试与继续操作之前的文件共享的连接。 但是，如果你正在部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息正确无误，请继续部署。
+   >安装程序会尝试测试与继续操作之前的文件共享的连接。 不过，如果是部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息正确无误，请继续部署。
 
    ![应用服务安装程序][7]
 
@@ -130,7 +130,7 @@ ms.locfileid: "49166876"
 11. 为用于托管应用服务资源提供程序数据库的服务器实例输入 SQL Server 详细信息，然后选择“下一步”。 安装程序将验证 SQL 连接属性。
 
     > [!NOTE]
-    > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。 但是，如果你正在部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果 SQL Server 信息是正确的，请继续部署。
+    > 在继续下一步之前，安装程序会尝试测试与 SQL Server 的连接。 不过，如果是部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果 SQL Server 信息是正确的，请继续部署。
     >
     > 从 Azure Stack 1.3 上的 Azure 应用服务开始，安装程序将检查 SQL Server 是否在 SQL Server 级别启用了数据库包含。  如果未启用，则会出现以下异常提示：
     > ```sql
@@ -198,7 +198,7 @@ ms.locfileid: "49166876"
 
 1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
 
-2. 在状态下的概览中，检查“状态”是否显示“所有角色已就绪”。
+2. 在概述中，在状态检查以查看是否**状态**显示**所有角色都已就绪**。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
@@ -228,7 +228,7 @@ ms.locfileid: "49166876"
 
 若要创建测试性 Web 应用，请执行以下步骤：
 
-1. 在 Azure Stack 用户门户中，选择 **+ 创建资源** > **Web + 移动** > **Web 应用**。
+1. 在 Azure Stack 用户门户中，选择“+ 创建资源” > “Web + 移动” > “Web 应用”。
 
 2. 在“Web 应用”下的“Web 应用”中输入一个名称。
 

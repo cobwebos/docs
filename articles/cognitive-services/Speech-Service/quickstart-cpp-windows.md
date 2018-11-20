@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: ddac12c6414365f8d20c42d324695be9855774dc
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469861"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218724"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
@@ -60,7 +60,7 @@ ms.locfileid: "49469861"
     ![“管理解决方案包”对话框的屏幕截图](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
     > [!NOTE]
-    > 认知服务语音 SDK 的当前版本是 `1.0.1`。
+    > 认知服务语音 SDK 的当前版本是 `1.1.0`。
 
 1. 接受显示的许可证即可开始安装 NuGet 包。
 

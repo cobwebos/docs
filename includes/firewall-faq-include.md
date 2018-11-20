@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471524"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254714"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -111,10 +111,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="what-are-the-known-service-limits"></a>有哪些已知的服务限制？
 
-* Azure 防火墙的软限制为每个防火墙每月 1000 TB。
-* 在中心虚拟网络中运行的 Azure 防火墙实例存在虚拟网络对等互连的限制：最多 50 个分支虚拟网络。  
-* Azure 防火墙不能与全球对等互连配合使用，因此应该在每个区域部署至少一个防火墙。
-* Azure 防火墙支持 1 万个应用程序规则和 1 万个网络规则。
+有关 Azure 防火墙服务限制，请参阅 [Azure 订阅和服务限制、配额与约束](../articles/azure-subscription-service-limits.md#azure-firewall-limits)
 
 ### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
 

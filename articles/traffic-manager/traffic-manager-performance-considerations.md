@@ -4,9 +4,6 @@ description: 了解流量管理器的性能以及如何测试使用流量管理�
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 3ba5dfa1-2922-43f1-9a23-d06969c4a516
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 43bb407730594498cfe9c78810c4e9dfb17e4af4
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141235"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257691"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -83,7 +80,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 [测试流量管理器设置](traffic-manager-testing-settings.md)
 
-[流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure 流量管理器 cmdlet](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
 

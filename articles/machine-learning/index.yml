@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 258ab57d621c23c305bd37b4e32a8220de8a9521
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6dc003473ed228fa8e10bd6a10d5b4b9a3d0ac49
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886768"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621354"
 documentType: LandingData
 title: Azure 机器学习文档
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  ms.date: 10/31/2018
   ms.author: jmartens
 abstract:
   description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
@@ -56,7 +56,7 @@ sections:
       - href: /azure/machine-learning/studio/create-workspace
     - title: 准备建模的数据
       values:
-      - href: /azure/machine-learning/service/concept-data-preparation
+      - href: /azure/machine-learning/service/how-to-data-prep
       - href: /azure/machine-learning/studio/walkthrough-2-upload-data
     - title: 构建自己的机器学习模型
       values:
@@ -72,8 +72,12 @@ sections:
       - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
     - title: 使用机器学习模型
       values:
-      - href: 
+      - href: /azure/machine-learning/service/how-to-consume-web-service
       - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
+    - title: 生成、优化和管理 ML 管道
+      values:
+      - href: /azure/machine-learning/service/concept-ml-pipelines
+      - href: 
 - title: 其他 Microsoft 机器学习技术
   items:
   - type: list
@@ -107,7 +111,7 @@ sections:
         src: /azure/machine-learning/media/index/tdsp.png
       title: Team Data Science Process
     - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>使用这些 Data Science Virtual Machine (DSVM) 和深度学习 (DLVM) 虚拟机，无需为安装或配置软件而烦恼，即可进行实验。 它已预装了常用的数据分析、机器学习和 AI 工具。</p>
+      html: <p>使用 Data Science Virtual Machine (DSVM) 和深度学习 (DLVM) 虚拟机，无需安装或配置软件即可进行实验。 它已预装了常用的数据分析、机器学习和 AI 工具。</p>
       image:
         src: /azure/machine-learning/media/index/virtualmachine.svg
       title: 数据科学虚拟机

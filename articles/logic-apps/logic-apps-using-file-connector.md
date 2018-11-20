@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125272"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232539"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
@@ -99,7 +99,7 @@ ms.locfileid: "43125272"
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 
-* 为了帮助我们改进 Azure 逻辑应用和连接器，请在 [Azure 逻辑应用用户之声网站](http://aka.ms/logicapps-wish)上投票或发表看法。
+* 为了帮助我们改进 Azure 逻辑应用和连接器，请在 [Azure 逻辑应用用户之声网站](https://aka.ms/logicapps-wish)上投票或发表看法。
 
 ## <a name="next-steps"></a>后续步骤
 

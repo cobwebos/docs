@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: 316e10d56e5c235c4d64dde0fde4dcb9429629c8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18b8fab53e9e2de6d083b3a9e78001a3844b38d5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527781"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226337"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure 中的表存储简介
 
@@ -34,6 +34,6 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 
 * 查看表服务参考文档，了解有关可用 API 的完整详情：
 
-    * [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [.NET 存储客户端库参考](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API 参考](http://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API 参考](https://msdn.microsoft.com/library/azure/dd179355)

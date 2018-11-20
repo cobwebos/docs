@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841609"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420075"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
@@ -87,13 +87,13 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
    ![虚拟机目录的屏幕截图][5]
 2. 要将终结点添加到虚拟机，请单击“终结点”框。
    ![显示“终结点”框的屏幕截图][6]
-3. 单击 **“添加”**。  
+3. 单击“添加”。  
 
    1. 对于终结点，请在“终结点”中输入终结点的名称，并在“公用端口”中输入 80。  
 
-      如果将其设置为 80，则无需在 URL 中包括用于访问 Tomcat 的端口号。 例如，http://tomcatdemo.cloudapp.net。    
+      如果将其设置为 80，则无需在 URL 中包括用于访问 Tomcat 的端口号。 例如， http://tomcatdemo.cloudapp.net。    
 
-      如果将其设置为其他值（例如 81），则需要将端口号添加到 URL 才能访问 Tomcat。 例如，http://tomcatdemo.cloudapp.net:81/。
+      如果将其设置为其他值（例如 81），则需要将端口号添加到 URL 才能访问 Tomcat。 例如， http://tomcatdemo.cloudapp.net:81/。
    2. 在“专用端口”中输入 8080。 默认情况下，Tomcat 侦听 TCP 端口 8080。 如果更改了 Tomcat 的默认侦听端口，应将“专用端口”更新为与 Tomcat 侦听端口相同。  
       ![显示“添加”命令、“公用端口”和“专用端口”的 UI 屏幕截图][7]
 4. 单击“确定”将该终结点添加到虚拟机。
@@ -130,52 +130,19 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 在此阶段，我们将安装 Java 运行时环境、Tomcat7 和其他 Tomcat7 组件。  
 
 ### <a name="java-runtime-environment"></a>Java 运行时环境
-Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：OpenJDK 和 Oracle JDK。 可以选择所需的工具包。  
-
-> [!NOTE]
-> 这两个 JDK 对于 Java API 中的类，几乎包含相同的代码，但用于虚拟机的代码不同。 OpenJDK 倾向于使用开放库，而 Oracle JDK 倾向于使用封闭库。 Oracle JDK 包含更多类并且修复了一些 bug，比 OpenJDK 更稳定。
-
-#### <a name="install-openjdk"></a>安装 OpenJDK  
-
-使用以下命令下载 OpenJDK。   
-
-    sudo apt-get update  
-    sudo apt-get install openjdk-7-jre  
+Tomcat 是用 Java 编写的。 有关如何获取完全支持的 Java 运行时的信息，请参阅[支持的 Java JDK](https://aka.ms/azure-jdks)。 也可使用自带软件，但本文的其余部分将使用 Azure 支持的版本。
 
 
-* 若要创建一个包含 JDK 文件的目录，请执行以下命令：  
+#### <a name="install-azure-supported-jdk"></a>安装支持的 Java JDK
 
-        sudo mkdir /usr/lib/jvm  
-* 要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
-
-#### <a name="install-oracle-jdk"></a>安装 Oracle JDK
-
-
-使用以下命令从 Oracle 网站下载 Oracle JDK。  
-
-     wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* 若要创建一个包含 JDK 文件的目录，请执行以下命令：  
-
-        sudo mkdir /usr/lib/jvm  
-* 要将 JDK 文件解压到 /usr/lib/jvm/ 目录，请执行以下命令：  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* 将 Oracle JDK 设置为默认 Java 虚拟机：  
-
-        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
-
-        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
+按照[适用于 Azure 的 Azul Zulu Enterprise](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) 网站上记录的 `apt-get` 安装说明进行操作。
 
 #### <a name="confirm-that-java-installation-is-successful"></a>确认 Java 安装成功
 可以使用如下命令测试是否已正确安装 Java 运行时环境：  
+    java 版本  
 
-    java -version  
+应会看到如下消息：![指出成功安装 OpenJDK 的消息][14]
 
-如果已安装 OpenJDK，应会看到如下消息：![指出成功安装 OpenJDK 的消息][14]
-
-如果已安装 Oracle JDK，应会看到如下消息：![指出成功安装 Oracle JDK 的消息][15]
 
 ### <a name="install-tomcat7"></a>安装 Tomcat7
 使用以下命令安装 Tomcat7。  

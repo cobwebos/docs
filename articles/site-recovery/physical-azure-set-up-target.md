@@ -1,19 +1,18 @@
 ---
-title: 准备目标（物理到 Azure）| Microsoft Docs
-description: 本文介绍如何准备 Azure 环境以将运行 Windows 或 Linux 的物理服务器复制到 Azure。
-services: site-recovery
+title: 设置用于将本地物理服务器灾难恢复到 Azure 的目标环境 | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 设置目标 Azure 环境以进行物理服务器的灾难恢复。
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915514"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209286"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>准备目标（VMware 到 Azure）
 

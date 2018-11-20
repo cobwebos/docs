@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 302607df2292fe7a67a8b6860dab19eef7f391a9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232070"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
@@ -25,7 +25,7 @@ ms.locfileid: "47160360"
 
 需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
-在 Microsoft SQL Server 中，[事件文件目标](http://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储空间服务来支持事件文件目标。
+在 Microsoft SQL Server 中，[事件文件目标](https://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。 但是，此类文件并不适用于 Azure SQL 数据库。 我们改为使用 Azure 存储空间服务来支持事件文件目标。
 
 本主题演示了一个两阶段代码示例：
 
@@ -44,9 +44,9 @@ ms.locfileid: "47160360"
 * SQL Server Management Studio (ssms.exe)，最好是每月更新版。 
   可从以下位置下载最新的 ssms.exe：
   
-  * 标题为[下载 SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx) 的主题。
-  * [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
-* 必须安装 [Azure PowerShell 模块](http://go.microsoft.com/?linkid=9811175)。
+  * 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
+  * [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
+* 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175)。
   
   * 这些模块提供 **New-AzureStorageAccount** 等命令。
 
@@ -506,11 +506,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 前面的 Transact-SQL 脚本使用以下系统函数来读取 event_file：
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 用于查看扩展事件数据的高级选项的说明可在此处获取：
 
-* [扩展事件的目标数据的高级视图](http://msdn.microsoft.com/library/mt752502.aspx)
+* [扩展事件的目标数据的高级视图](https://msdn.microsoft.com/library/mt752502.aspx)
 
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>转换代码示例以在 SQL Server 上运行
@@ -528,10 +528,10 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
 * [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [命名和引用容器、Blob 与元数据](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [使用根容器](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [第 1 课：在 Azure 容器上创建存储访问策略和共享访问签名](http://msdn.microsoft.com/library/dn466430.aspx)
-  * [第 2 课：使用共享访问签名创建 SQL Server 凭据](http://msdn.microsoft.com/library/dn466435.aspx)
+* [命名和引用容器、Blob 与元数据](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [第 1 课：在 Azure 容器上创建存储访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [第 2 课：使用共享访问签名创建 SQL Server 凭据](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Microsoft SQL Server 扩展事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

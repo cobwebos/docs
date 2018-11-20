@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0efce9fbbbd241f335f08bb258b6ba343982fdb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299182"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231621"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于保存和管理值的变量
 
@@ -69,10 +69,10 @@ ms.locfileid: "35299182"
 
 4. 提供变量的以下信息：
 
-   | 属性 | 必选 | 值 |  说明 |
+   | 属性 | 必选 | 值 |  Description |
    |----------|----------|-------|--------------|
    | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 | 
-   | Type | 是 | <*variable-type*> | 变量的数据类型 | 
+   | 类型 | 是 | <*variable-type*> | 变量的数据类型 | 
    | 值 | 否 | <*start-value*> | 变量的初始值 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道变量的起始值。 | 
    ||||| 
 
@@ -205,7 +205,7 @@ ms.locfileid: "35299182"
 
 3. 提供用于递增变量的以下信息：
 
-   | 属性 | 必选 | 值 |  说明 |
+   | 属性 | 必选 | 值 |  Description |
    |----------|----------|-------|--------------|
    | 名称 | 是 | <*variable-name*> | 要递增的变量的名称 | 
    | 值 | 否 | <*increment-value*> | 用于递增变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递增变量的特定值。 | 
@@ -325,7 +325,7 @@ ms.locfileid: "35299182"
 
 下面是“递减变量”操作的属性：
 
-| 属性 | 必选 | 值 |  说明 |
+| 属性 | 必选 | 值 |  Description |
 |----------|----------|-------|--------------|
 | 名称 | 是 | <*variable-name*> | 要递减的变量的名称 | 
 | 值 | 否 | <*increment-value*> | 用于递减变量的值。 默认值为 1。 <p><p>**提示**：尽管此值是可选的，但最好是设置此值，以便始终知道用于递减变量的特定值。 | 
@@ -360,7 +360,7 @@ ms.locfileid: "35299182"
 
 下面是“设置变量”操作的属性：
 
-| 属性 | 必选 | 值 |  说明 | 
+| 属性 | 必选 | 值 |  Description | 
 |----------|----------|-------|--------------| 
 | 名称 | 是 | <*variable-name*> | 要更改的变量的名称 | 
 | 值 | 是 | <*new-value*> | 要赋给变量的值。 两者的数据类型必须相同。 | 
@@ -418,7 +418,7 @@ ms.locfileid: "35299182"
 
 下面是“追加到...”操作的属性：
 
-| 属性 | 必选 | 值 |  说明 | 
+| 属性 | 必选 | 值 |  Description | 
 |----------|----------|-------|--------------| 
 | 名称 | 是 | <*variable-name*> | 要更改的变量的名称 | 
 | 值 | 是 | <*append-value*> | 要追加的值，可以是任何类型 | 
@@ -456,7 +456,7 @@ ms.locfileid: "35299182"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

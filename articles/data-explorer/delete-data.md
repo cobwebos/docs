@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 485ee48bf197ad996bba8a516b80882f44ba623a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48866884"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212907"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器中删除数据
 
@@ -39,4 +39,4 @@ Azure 数据资源管理器支持多种批量删除方式，我们在本文中�
 
     有关详细信息，请参阅[保留策略](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy)。
 
-如果在解决数据删除问题时需要帮助，请在 [Azure 门户](https://portal.azure.com)中打开一个支持请求。
+如果在解决数据删除问题时需要帮助，请在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中打开一个支持请求。

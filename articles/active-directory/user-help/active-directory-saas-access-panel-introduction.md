@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239827"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -137,7 +137,7 @@ Azure Active Directory 团队发布了“我的应用”移动应用。 安装�
 若要以不同的用户帐户测试，请执行以下操作：
 
 1. 在 Azure 门户或 MyApps 门户的右上角，选择“注销”。 
-2. 转到 [MyApps 门户](http://myapps.microsoft.com)。
+2. 转到 [MyApps 门户](https://myapps.microsoft.com)。
 3. 在登录页中，键入目录中想要测试的帐户的用户名和密码。
 
 

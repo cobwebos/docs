@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429450"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345029"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>将 Web 服务部署到 Azure 容器实例 
 
@@ -48,9 +48,12 @@ ACI 通常比 AKS 便宜，并且只需 4-6 行代码即可设置。 ACI 是测�
 ## <a name="configure-an-image"></a>配置映像
 
 配置用于存储所有模型文件的 Docker 映像。
-1. [使用这些说明](tutorial-deploy-models-with-aml.md#create-scoring-script)创建评分脚本 (score.py)
+1. [使用这些说明](tutorial-deploy-models-with-aml.md#create-scoring-script)创建评分脚本 (score.py)。
 
-1. [使用这些说明](tutorial-deploy-models-with-aml.md#create-environment-file)创建环境文件 (myenv.yml) 
+    > [!IMPORTANT]
+    > 评分脚本接收从客户端提交的数据并将其传递给模型进行评分。 记录脚本和模型所需的数据结构。 使用此文档可以在构建使用 Web 服务的客户端时更轻松。
+
+1. [使用这些说明](tutorial-deploy-models-with-aml.md#create-environment-file)创建环境文件 (myenv.yml)。
 
 1. 使用这两个文件在使用 SDK 的 Python 中配置 Docker 映像，如下所示：
 
@@ -217,8 +220,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 现可测试 Web 服务。
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>测试 Web 服务
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>测试 Web 服务
 
 无论使用哪一种方法，Web 服务都相同。  若要获得预测，请使用服务的 `run` 方法。  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[部署到 Azure Kubernetes 服务](how-to-deploy-to-aks.md)以进行更大规模的部署。 
+* 了解如何[使用部署为 Web 服务的 ML 模型](how-to-consume-web-service.md)。
+* 了解如何[部署到 Azure Kubernetes 服务](how-to-deploy-to-aks.md)以进行更大规模的部署。 

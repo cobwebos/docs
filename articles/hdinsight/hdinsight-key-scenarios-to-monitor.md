@@ -7,28 +7,28 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.author: maxluk
-ms.openlocfilehash: 434b3ecf65aaa5ecea81f5a9773f1bc6e8f6f2be
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: arindamc
+ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255296"
 ---
 # <a name="monitor-cluster-performance"></a>监视群集性能
 
-监视 HDInsight 群集的运行状况和性能对于维持最大性能和资源利用率来说至关重要。 此外，监视还有助于处理潜在的编码或群集配置错误。
+监视 HDInsight 群集的运行状况和性能对于维持最佳性能和资源利用率来说至关重要。 监视还可以帮助你检测并解决群集配置错误和用户代码问题。
 
-以下部分描述如何优化群集负载、YARN 队列效率及存储可访问性。
+以下各部分介绍了如何监视和优化你的群集上的负载、YARN 队列，并检测存储限制问题。
 
-## <a name="cluster-loading"></a>群集负载
+## <a name="monitor-cluster-load"></a>监视群集负载
 
-Hadoop 群集应平衡群集节点间的负载。 这种平衡阻止 RAM、CPU 或磁盘资源限制正在处理的任务。
+当群集上的负载均匀分布在所有节点中时，Hadoop 群集可以提供最佳性能。 这使得处理任务在运行时可以不受个体节点上的 RAM、CPU 或磁盘资源约束。
 
-若要更为详细地查看群集的节点及其负载，请登录 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，然后选择“主机”选项卡。将按主机完全限定域名列出主机。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
+若要概括地查看群集的节点及其负载，请登录到 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，然后选择“主机”选项卡。将按主机完全限定域名列出主机。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | Description |
+| 颜色 | 说明 |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 橙色 | 主机上至少有一个从属组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
@@ -47,15 +47,15 @@ Hadoop 群集应平衡群集节点间的负载。 这种平衡阻止 RAM、CPU �
 
 ## <a name="yarn-queue-configuration"></a>YARN 队列配置
 
-Hadoop 跨其分布式平台运行各种服务。 YARN（另一种资源协调者）协调这些服务、分配群集资源和管理对常见数据集的访问。
+Hadoop 跨其分布式平台运行各种服务。 YARN (Yet Another Resource Negotiator) 协调这些服务并分配群集资源以确保任何负载都均匀地分布在群集中。
 
-YARN 将 JobTracker、资源管理和作业计划/监视的两种责任划分为两个守护程序：全局 ResourceManager 和每应用程序 ApplicationMaster (AM)。
+YARN 将 JobTracker、资源管理和作业计划/监视的两种责任划分为两个守护程序：一个全局资源管理器和一个每应用程序 ApplicationMaster (AM)。
 
-ResourceManager 是一种纯计划程序，且仅仲裁所有竞争应用程序之间的可用资源。 ResourceManager 确保所有资源都处于使用状态，并针对各种常量（如 SLA、容量保障等）进行优化。 ApplicationMaster 处理来自于 ResourceManager 的资源，并与 NodeManager 一起执行和监视容器及其资源消耗。
+资源管理器是一个纯计划程序，且仅仲裁所有竞争应用程序之间的可用资源。 资源管理器确保所有资源都处于使用状态，并针对各种常量（如 SLA、容量保障等）进行优化。 ApplicationMaster 处理来自于 ResourceManager 的资源，并与 NodeManager 一起执行和监视容器及其资源消耗。
 
 如果多个租户共享一个大型群集，则产生针对群集资源的竞争。 CapacityScheduler 是一种可插入计划程序，通过对请求进行排队来协助资源共享。 CapacityScheduler 还支持分层队列，确保在允许其他应用程序的队列使用可用资源之前，在组织的子队列之间共享资源。
 
-YARN 允许我们将资源分配给这些队列，并显示是否已分配所有可用资源。 若要查看有关队列的信息，请登录 Ambari Web UI，然后从顶部菜单选择“YARN 队列管理器”。
+YARN 允许我们将资源分配给这些队列，并显示是否已分配所有可用资源。 若要查看有关队列的信息，请登录到 Ambari Web UI，然后从顶部菜单选择“YARN 队列管理器”。
 
 ![YARN 队列管理器](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
 
@@ -63,13 +63,13 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 ![YARN 队列管理器详细信息页](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-若要更加详细地查看队列，在 Ambari 仪表板中，从左侧列表选择“YARN”服务。 然后，在“快速链接”下拉菜单下，选择活动节点下的“ResourceManager UI”。
+若要更加详细地查看队列，在 Ambari 仪表板中，从左侧列表选择“YARN”服务。 然后，在“快速链接”下拉菜单下，选择活动节点下的“资源管理器 UI”。
 
-![ResourceManager UI 菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![“资源管理器 UI”菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-在 ResourceManager UI 中，从左侧菜单选择“计划程序”。 “应用程序队列”下将显示队列的列表。 此处可看到用于每个队列的容量、作业在队列之间的分布情况，以及作业是否受资源约束。
+在资源管理器 UI 中，从左侧菜单中选择“计划程序”。 “应用程序队列”下将显示队列的列表。 此处可看到用于每个队列的容量、作业在队列之间的分布情况，以及作业是否受资源约束。
 
-![ResourceManager UI 菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![“资源管理器 UI”菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>存储限制
 

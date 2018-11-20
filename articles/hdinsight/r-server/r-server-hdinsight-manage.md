@@ -3,18 +3,18 @@ title: 管理 HDInsight 上的 ML Services 群集 - Azure
 description: 了解如何管理 Azure HDInsight 中的 ML Services 群集。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702395"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255391"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -80,7 +80,7 @@ ms.locfileid: "43702395"
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>远程连接到 Microsoft ML Services
 
-可从台式机上运行的 ML Client 远程实例设置对 HDInsight Hadoop Spark 计算上下文的访问。 为此，在台式机上定义 RxSpark 计算上下文时必须指定选项（hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript）：例如：
+可从台式机上运行的 ML Client 远程实例设置对 HDInsight Spark 计算上下文的访问权限。 为此，在台式机上定义 RxSpark 计算上下文时必须指定选项（hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript）：例如：
 
     myNameNode <- "default"
     myPort <- 0
@@ -226,16 +226,13 @@ ms.locfileid: "43702395"
         summary(modelSpark)
 
 
-   > [!NOTE]
-   > 也可以使用 MapReduce 将计算分布到群集节点之间。 有关计算上下文的详细信息，请参阅[适用于 HDInsight 上 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)。
-
 ## <a name="distribute-r-code-to-multiple-nodes"></a>将 R 代码分布到多个节点
 
 使用 HDInsight 上的 ML Services，可利用现有 R 代码并使用 `rxExec` 跨多个群集节点运行该代码。 执行参数扫描或模拟时，可以使用此函数。 以下代码是 `rxExec` 的用法示例：
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-如果仍在使用 Spark 或 MapReduce 上下文，此命令将针对运行代码 `(Sys.info()["nodename"])` 的辅助角色节点返回 nodename 值。 例如，在四节点群集上，输出应与以下代码片段类似：
+如果仍在使用 Spark 上下文，此命令将针对运行代码 `(Sys.info()["nodename"])` 的工作节点返回 nodename 值。 例如，在四节点群集上，输出应与以下代码片段类似：
 
     $rxElem1
         nodename

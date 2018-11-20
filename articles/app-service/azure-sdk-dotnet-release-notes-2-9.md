@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 04ee2daaf7b06f8e7bdd8de144a039474551ea11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222522"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227036"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>用于 .NET 2.9 的 Azure SDK 发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "39222522"
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 候选发布
 
-- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 单击此链接下载 Visual Studio 2017 RC：https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 单击此链接下载 Visual Studio 2017 RC： https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
@@ -80,7 +80,7 @@ ms.locfileid: "39222522"
 
 * 用于 Visual Studio 的 **Azure Data Lake 工具**现已合并到用于 .NET 的 Azure SDK 版本中。 安装 Azure SDK 时，便会自动安装此工具。 
   
-    此工具经常更新，请转到[此处](http://aka.ms/datalaketool)获取更新。
+    此工具经常更新，请转到[此处](https://aka.ms/datalaketool)获取更新。
 * **服务器资源管理器**现在支持查看所有内容并创建一些 U-SQL 元数据实体。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/documentation/services/data-lake-analytics/)。
 
 ## <a name="hdinsight-tools"></a>HDInsight 工具

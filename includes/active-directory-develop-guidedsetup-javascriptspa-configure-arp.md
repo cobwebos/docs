@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: c2b86e79f0364ee84e01fee5e9837db5a6b618a2
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 66021fa8140da2faae4ecab07c98b0df4ea5297a
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843315"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142659"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 
@@ -29,12 +29,11 @@ ms.locfileid: "48843315"
 
 使用基于 Web 服务器的 index.html 页的 URL 配置 `Redirect URL` 字段，然后单击“更新”。
 
-
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>用于获取重定向 URL 的 Visual Studio 说明
 > 按照以下步骤获取重定向 URL：
-> 1.    在解决方案资源管理器中，选择项目并查看“属性”窗口。 如果没有看到“属性”窗口，请按 **F4**。
-> 2.    将 **URL** 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    将此值粘贴为此页面顶部的“重定向 URL”字段，然后单击“更新”
+> 1. 在解决方案资源管理器中，选择项目并查看“属性”窗口。 如果没有看到“属性”窗口，请按 **F4**。
+> 2. 将 **URL** 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3. 将此值粘贴为此页顶部的“重定向 URL”，然后选择“更新”。
 
 <p/>
 
@@ -44,7 +43,7 @@ ms.locfileid: "48843315"
 
 ### <a name="configure-your-javascript-spa-application"></a>配置 JavaScript SPA 应用程序
 
-1.  在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文中的 `<script></script>` 标记顶部添加以下代码：
+1. 在设置项目期间创建的 `index.html` 文件中，添加应用程序注册信息。 在 `index.html` 文件正文中的 `<script></script>` 标记顶部添加以下代码：
 
 ```javascript
 var applicationConfig = {

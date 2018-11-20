@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 08/30/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ff6978ddbf8718ad45a4265898109b7ac799d70c
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 2977c3d1656bacf8ba8d34080641ea6c5cdf5bbe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46468492"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957092"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central 
 除了从 IoT Central 网站创建和管理 IoT Central 应用程序外，还可通过 Azure 门户管理 IoT Central。 本文将完整介绍可实现的操作以及实现方法。
@@ -35,14 +35,14 @@ ms.locfileid: "46468492"
 
 ![管理门户：IoT Central 资源](media\howto-manage-iot-central-from-portal\image0c.png)
 
-填写窗体中的所有字段。 此窗体与从 IoT Central 网站创建应用程序时需要填写的窗体类似。 若要了解有关如何填写每个字段的详细信息，可以参考[创建 IoT Central 应用程序](https://docs.microsoft.com/ azure/iot-central/howto-create-application)文档。 
+填写窗体中的所有字段。 此窗体与从 IoT Central 网站创建应用程序时需要填写的窗体类似。 若要了解有关如何填写每个字段的详细信息，请查看[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。 
 
 ![管理门户：创建 IoT Central 资源](media\howto-manage-iot-central-from-portal\image1.png)  
 
 填写所有字段后，单击“创建”按钮。
 
 ## <a name="manage-existing-iot-central-applications"></a>管理现有 IoT Central 应用程序
-如果已有 Azure IoT Central 应用程序，可将其删除或移动到 Azure 门户中的其他订阅或资源组。 不能在 Azure 门户中看到 7 天试用版应用程序，因为没有订阅对这些试用版提供支持。
+如果已有 Azure IoT Central 应用程序，可将其删除或移动到 Azure 门户中的其他订阅或资源组。 不能在 Azure 门户中看到试用版应用程序，因为没有订阅对这些试用版提供支持。
 
 要想开始，请单击左侧主导航菜单中的“所有资源”。 在搜索框中键入应用程序的名称并在资源列表中将其找到。 然后单击想要管理的 IoT Central 应用程序。
 

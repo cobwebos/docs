@@ -36,6 +36,8 @@ items:
         href: data-box-gateway-manage-users.md
       - name: 带宽计划
         href: data-box-gateway-manage-bandwidth-schedules.md
+      - name: 访问、开/关、连接
+        href: data-box-gateway-manage-access-power-connectivity-mode.md
     - name: 故障排除
       href: data-box-gateway-troubleshoot.md
   - name: 发行说明
@@ -60,6 +62,10 @@ items:
       href: data-box-edge-deploy-add-shares.md
     - name: 5 - 配置计算
       href: data-box-edge-deploy-configure-compute.md
+  - name: 概念
+    items:
+    - name: 审查要求
+      href: data-box-edge-system-requirements.md
   - name: 如何
     items:
     - name: 开发 C# 模块
@@ -72,9 +78,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: abcc59f405b6d9fe43cb2864fcf42276604391c9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dd349fb32ae6d360d1fbf986fe0642503939ce69
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428974"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514497"

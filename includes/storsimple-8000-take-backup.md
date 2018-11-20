@@ -1,8 +1,21 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 5ec3bff505d2c887269b20c5fa4d0363a3040c1a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166104"
+---
 <!--author=alkohli last changed: 01/12/17-->
 
 ### <a name="to-take-a-backup"></a>执行备份
 
-1. 转到 StorSimple Device Manager 服务。 从设备的表格式列表中，选择并单击设备，然后单击“所有设置”。 在“设置”边栏选项卡中，转到“设置”>“管理”>“备份策略”。
+1. 转到 StorSimple Device Manager 服务。 从设备的表格式列表中，选择并单击设备，单击“所有设置”。 在“设置”边栏选项卡中，转到“设置”>“管理”>“备份策略”。
 
     ![Add-backup-policy](./media/storsimple-8000-take-backup/step8takebu1.png)
 

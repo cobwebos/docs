@@ -3,22 +3,22 @@ title: Azure Application Insights 遥测关联 | Microsoft Docs
 description: Application Insights 遥测关联
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
+author: lgayhardt
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/09/2018
+ms.date: 10/31/2018
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.author: lagayhar
+ms.openlocfilehash: b61163f7e2bc4cf4e7029c9852e5baad431fa0e0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341117"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615834"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -66,7 +66,7 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 
 ## <a name="correlation-headers"></a>关联标头
 
-我们正在开发[关联 HTTP 协议](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md)的 RFC 提案。 此提案定义两个标头：
+我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
 
 - `Request-Id` 承载调用的全局唯一 ID
 - `Correlation-Context` 承载分布式跟踪属性的名称值对集合
@@ -77,7 +77,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 ### <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
 
-我们正在转换为（W3C 分布式跟踪格式）[https://w3c.github.io/distributed-tracing/report-trace-context.html]。 定义的内容：
+我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
 - `traceparent` - 承载全局唯一操作 ID 和调用的唯一标识符
 - `tracestate` - 承载跟踪系统特定的上下文。
 
@@ -146,19 +146,15 @@ ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelati
 ### <a name="role-name"></a>角色名称
 有时候，可能需要对组件名称在[应用程序映射](app-insights-app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一，以便手动设置 `cloud_roleName`：
 
-使用遥测初始化表达式（所有遥测项都进行标记）
-```Java
-public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
-
-    @Override
-    protected void onInitializeTelemetry(Telemetry telemetry) {
-        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
-    }
-  }
+如果使用的是 `WebRequestTrackingFilter`，则 `WebAppNameContextInitializer` 将自动设置应用程序名称。 将以下内容添加到配置文件 (ApplicationInsights.xml)：
+```XML
+<ContextInitializers>
+  <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
+</ContextInitializers>
 ```
-使用[设备上下文类](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)（仅标记此遥测项）
+通过云上下文类：
 ```Java
-telemetry.getContext().getDevice().setRoleName("My Component Name");
+telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
 
 ## <a name="next-steps"></a>后续步骤

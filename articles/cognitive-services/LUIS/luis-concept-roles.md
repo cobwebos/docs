@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 8a92852a2721bd391ddf7c3cf3489b820c4a1400
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638067"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277606"
 ---
-# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>“模式”中的实体角色是上下文子类型
+# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>模式中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。
 
 例如，在表述 `buy a ticket from New York to London` 中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。 
@@ -42,15 +42,10 @@ ms.locfileid: "49638067"
 ## <a name="role-syntax-in-patterns"></a>模式中的角色语法
 实体和角色在括号 `{}` 内。 实体和角色由冒号分隔。 
 
-## <a name="roles-versus-hierarchical-entities"></a>角色与分层实体
-分层实体提供与角色相同的上下文信息，但是仅为“意向”中的表述提供。 同样，角色提供与分层实体相同的上下文信息，但仅在“模式”中提供。
 
-|上下文学习|使用位置|
-|--|--|
-|分层实体|意向|
-|角色|模式|
+[!INCLUDE[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
-## <a name="roles-with-prebuilt-entities"></a>具有预生成实体的角色
+## <a name="roles-with-prebuilt-entities"></a>具有预构建实体的角色
 
 使用具有预生成实体的角色，对某话语中预生成实体的不同实例赋予含义。 
 
@@ -60,4 +55,4 @@ ms.locfileid: "49638067"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何添加[角色](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)
+* 了解如何添加[角色](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

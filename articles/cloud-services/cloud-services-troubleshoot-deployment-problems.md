@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 7f0e65b1de1df48603cab29148c7f4c6fb909714
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 348321592fc32f7dd77447c7217c7142f7ad9bd4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226934"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
 将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
@@ -50,7 +50,7 @@ ms.locfileid: "47094991"
 2. 在 Azure 门户的“属性”窗格中查看相关信息，确定在观察角色回收期间是否进行了服务修复。
 
 在主机 OS 和来宾 OS 更新期间，角色也会差不多每月回收一次。  
-有关详细信息，请参阅博客文章 [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)（因 OS 升级导致的角色实例重启）
+有关详细信息，请参阅博客文章 [Role Instance Restarts Due to OS Upgrades](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)（因 OS 升级导致的角色实例重启）
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>问题：无法进行 VIP 交换并收到错误
 如果部署更新正在进行，则不能进行 VIP 交换。 出现以下情况时，部署更新可能会自动进行：
@@ -68,14 +68,14 @@ ms.locfileid: "47094991"
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>问题：角色实例在“已启动”、“正在初始化”、“忙碌”和“已停止”这几种状态之间循环往复
 这种情况可能表示应用程序代码、包或配置文件存在问题。 在这种情况下，应能看到状态每隔几分钟更改一次，而 Azure 门户则可能会显示“正在回收”、“忙”或“正在初始化”之类的内容。 这表示应用程序存在问题，导致角色实例无法运行。
 
-有关如何解决此问题的详细信息，请参阅博客文章 [Azure PaaS Compute Diagnostics Data](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)（Azure PaaS 计算诊断数据）和[导致角色回收的常见问题](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)。
+有关如何解决此问题的详细信息，请参阅博客文章 [Azure PaaS Compute Diagnostics Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)（Azure PaaS 计算诊断数据）和[导致角色回收的常见问题](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)。
 
 ## <a name="problem-my-application-stopped-working"></a>问题：我的应用程序停止工作
 1. 在 Azure 门户中，单击角色实例。
 2. 在 Azure 门户的“属性”窗格中，考虑是否存在以下情况，以便解决问题：
    * 如果角色实例最近停止过（可查看“中止计数”的值），则可能是因为部署正在进行更新。 等待，看角色实例是否会自行恢复运行。
    * 如果角色实例处于“忙”状态，请检查应用程序代码，以查看是否已处理了 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) 事件。 可能需要添加或修复处理此事件的某些代码。
-   * 浏览博客文章 [Azure PaaS Compute Diagnostics Data](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)（Azure PaaS 计算诊断数据）中的诊断数据和故障排除方案。
+   * 浏览博客文章 [Azure PaaS Compute Diagnostics Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)（Azure PaaS 计算诊断数据）中的诊断数据和故障排除方案。
 
 > [!WARNING]
 > 如果回收云服务，请重置部署的属性，以便有效清除有关原始问题的信息。
@@ -85,4 +85,4 @@ ms.locfileid: "47094991"
 ## <a name="next-steps"></a>后续步骤
 查看更多针对云服务的[故障排除文章](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures)。
 
-若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
+若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。

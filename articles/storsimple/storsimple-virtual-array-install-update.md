@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2d081604c0ca01f47c3ff2aab7477859d280963
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21c10c4bf19d4bf72c4ec5005bb95353ed00c7aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110165"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256946"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>在 StorSimple 虚拟阵列上安装更新 - Azure 门户
 
@@ -49,7 +49,7 @@ ms.locfileid: "23110165"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet Explorer 并导航到 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)。
+1. 启动 Internet Explorer，并转到 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果这是你在此计算机上首次使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”。
 
@@ -59,7 +59,7 @@ ms.locfileid: "23110165"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update/download1.png)
 
-4. 单击 **“添加”**。 该更新随即添加到购物篮中。
+4. 单击“添加”。 该更新随即添加到购物篮中。
 
 5. 单击“查看购物篮”。
 
@@ -79,7 +79,7 @@ ms.locfileid: "23110165"
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用” 。
+2. 在“更新文件路径”中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”。
    
     ![更新设备](./media/storsimple-virtual-array-install-update/update2m.png)
 

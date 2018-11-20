@@ -1,32 +1,33 @@
 ---
-title: 将新式备份存储与 Azure 备份服务器 v2 一起使用
-description: 了解 Azure 备份服务器 v2 中的新功能。 本文介绍如何升级备份服务器安装。
+title: 将新式备份存储与 Azure 备份服务器一起使用
+description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7c583ea048ed1837c662869c62039165aaa3c024
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 11/13/2018
+ms.author: markgal; adigan; kasinh
+ms.openlocfilehash: da9b3d22dce3f92ff6d1a588d283d47f22fca736
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606748"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612961"
 ---
-# <a name="add-storage-to-azure-backup-server-v2"></a>将存储添加到 Azure 备份服务器 v2
+# <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
-Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager 新式备份存储。 Modern Backup Storage 可提供节省 50% 的存储、快三倍的备份以及更高效的存储。 它还提供可感知工作负载的存储。 
+Azure 备份服务器 V2 及更高版本附带 System Center 2016 Data Protection Manager 新式备份存储。 Modern Backup Storage 可提供节省 50% 的存储、快三倍的备份以及更高效的存储。 它还提供可感知工作负荷的存储。
 
 > [!NOTE]
-> 若要使用新式备份存储，必须在 Windows Server 2016 上运行备份服务器 v2。 如果在早期版本的 Windows Server 上运行备份服务器 v2，则 Azure 备份服务器无法利用新式备份存储。 而是采用与备份服务器 v1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
+> 若要使用新式备份存储，必须在 Windows Server 2016 上运行备份服务器 V2 或 V3，或者在 Windows Server 2019 上运行备份服务器 V3。
+> 如果在早期版本的 Windows Server 上运行备份服务器 V2，则 Azure 备份服务器无法利用新式备份存储。 而是采用与备份服务器 V1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
 
-## <a name="volumes-in-backup-server-v2"></a>备份服务器 v2 中的卷
+## <a name="volumes-in-backup-server"></a>备份服务器中的卷
 
-备份服务器 v2 可接受存储卷。 添加卷时，备份服务器会将卷格式化为新式备份存储所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
+备份服务器 V2 或更高版本可接受存储卷。 添加卷时，备份服务器会将卷格式化为新式备份存储所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
 
-1.  在 VM 上设置备份服务器 v2。
+1.  在 VM 上设置备份服务器。
 2.  在存储池中的虚拟磁盘上创建卷：
     1.  将磁盘添加到存储池，然后使用简单布局创建虚拟磁盘。
     2.  添加任何其他磁盘，然后扩展虚拟磁盘。
@@ -36,9 +37,9 @@ Azure 备份服务器 v2 附带 System Center 2016 Data Protection Manager 新�
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>为新式备份存储创建卷
 
-使用具有卷的备份服务器 v2 作为磁盘存储可以帮助维护对存储的控制权。 卷可以是单个磁盘。 但是，如果要在将来扩展存储，请通过使用存储空间创建的磁盘来创建卷。 如果要为备份存储扩展卷，这可能有所帮助。 本部分提供有关使用此设置创建卷的最佳做法。
+使用具有卷的备份服务器 V2 或更高版本作为磁盘存储可以帮助维护对存储的控制权。 卷可以是单个磁盘。 但是，如果要在将来扩展存储，请通过使用存储空间创建的磁盘来创建卷。 如果要为备份存储扩展卷，这可能有所帮助。 本部分提供有关使用此设置创建卷的最佳做法。
 
-1. 在“服务器管理器”中，然后选择“文件和存储服务” > “卷” > “存储池”。 在“物理磁盘”，选择“新建存储池”。 
+1. 在“服务器管理器”中，然后选择“文件和存储服务” > “卷” > “存储池”。 在“物理磁盘”，选择“新建存储池”。
 
     ![创建新存储池](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -91,10 +92,41 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 ![管理员控制台中的磁盘和卷](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
+
+## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>将旧存储迁移到 Modern Backup Storage
+升级到或安装备份服务器 V2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。
+
+可以选择更新保护组以使用新式备份存储。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
+
+1. 在管理员控制台中，选择“保护”功能。 在“保护组成员”列表中，右键单击成员，然后选择“停止保护成员”。
+
+  ![停止保护成员](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+
+2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
+
+  如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”复选框以删除与成员关联的备份数据（和恢复点）。
+
+  ![“从组中删除”对话框](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+
+3. 创建一个使用新式备份存储的保护组。 包括未受保护的数据源。
+
+## <a name="add-disks-to-increase-legacy-storage"></a>添加磁盘以增大旧存储
+
+如果要将旧存储与备份服务器一起使用，则可能需要添加磁盘以增大旧存储。
+
+添加磁盘存储：
+
+1. 在管理员控制台中，选择“管理” > “磁盘存储” > “添加”。
+
+    ![“添加磁盘存储”对话框](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+
+4. 在“添加磁盘存储”对话框中，选择“添加磁盘”。
+
+5. 在可用磁盘的列表中，选择要添加的磁盘，选择“添加”，然后选择“确定”。
+
 ## <a name="next-steps"></a>后续步骤
 安装备份服务器之后，了解如何准备服务器或开始保护工作负载。
 
 - [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
-

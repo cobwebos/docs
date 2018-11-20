@@ -2,19 +2,19 @@
 title: Java HBase 客户端 - Azure HDInsight
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: jasonh
-ms.openlocfilehash: d198db98c07c01a56be118e74ce2bf4b29b8c757
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048426"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016074"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "43048426"
 
 ## <a name="requirements"></a>要求
 
-* [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 或更高版本。
+* [Java 平台 JDK](https://aka.ms/azure-jdks) 8 或更高版本。
 
     > [!NOTE]
     > HDInsight 3.5 及更高版本要求 Java 8。 早期版本的 HDInsight 需要 Java 7。

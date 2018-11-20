@@ -9,18 +9,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444606"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262040"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
 本主题适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
-如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
+如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
 
 * [文本格式](#text-format)
 * [JSON 格式](#json-format)
@@ -434,7 +434,7 @@ ms.locfileid: "42444606"
 ```
 
 > [!IMPORTANT]
-> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 ORC 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
+> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 ORC 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
 >
 
 请注意以下几点：
@@ -478,7 +478,7 @@ ms.locfileid: "42444606"
 ```
 
 > [!IMPORTANT]
-> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
+> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
 >
 
 请注意以下几点：

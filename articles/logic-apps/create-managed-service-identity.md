@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 2964869933dd096b96e892cf08b8d4b66a8f210c
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817052"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229633"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
@@ -45,8 +45,8 @@ ms.locfileid: "48817052"
 
    1. 在逻辑应用菜单的“设置”下，选择“工作流设置”。 
 
-   1. 在“托管服务标识”> 
-   “通过 Azure Active Directory 注册”下，选择“打开”************。
+   1. 在 **“托管服务标识”** > 
+    **“通过 Azure Active Directory 注册”** 下，选择 **“打开”**。
 
    1. 完成后，选择工具栏上的“保存”。
 
@@ -56,7 +56,7 @@ ms.locfileid: "48817052"
 
       ![主体 ID 和租户 ID 的 GUID](./media/create-managed-service-identity/principal-tenant-id.png)
 
-      | 属性 | 值 | 说明 | 
+      | 属性 | 值 | Description | 
       |----------|-------|-------------| 
       | **主体 ID** | <*principal-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中的逻辑应用 | 
       | **租户 ID** | <*Azure-AD-tenant-ID*> | 全局唯一标识符 (GUID)，表示逻辑应用为其中成员的 Azure AD 租户。 在 Azure AD 租户内，服务主体与逻辑应用实例具有相同名称。 | 
@@ -193,5 +193,5 @@ ms.locfileid: "48817052"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 

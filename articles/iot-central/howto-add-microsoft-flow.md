@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039932"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959284"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>在 Microsoft Flow 中使用 IoT Central 连接器生成工作流
 
@@ -21,8 +21,10 @@ ms.locfileid: "47039932"
 
 使用 Microsoft Flow 跨企业用户依赖的多个应用程序和服务自动完成工作流。 如果在 Microsoft Flow 中使用 IoT Central 连接器，则当规则在 IoT Central 中触发时，就可以触发工作流。 在 IoT Central 或任何其他应用程序触发的工作流中，可以使用 IoT Central 连接器中的操作来创建设备、更新设备的属性和设置，或者删除设备。 请检查[这些 Microsoft Flow 模板](https://aka.ms/iotcentralflowtemplates)，此类模板可以将 IoT Central 连接到其他服务，例如移动通知和 Microsoft Teams。
 
-> [!NOTE] 
-> 需使用 Microsoft 个人、工作或学校帐户登录到 Microsoft Flow。 在[此处](https://aka.ms/microsoftflowplans)详细了解 Microsoft Flow 计划。
+## <a name="prerequisites"></a>先决条件
+
+- 即用即付应用程序
+- 用于登录 Flow 的 Microsoft 个人、工作或学校帐户（[了解有关 Microsoft Flow 的详细信息](https://aka.ms/microsoftflowplans)）
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>在触发某个规则时触发一个工作流
 
@@ -96,6 +98,8 @@ ms.locfileid: "47039932"
     ![IoT Central Device Explorer 设备 ID](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
 
 1. 可以更新设备名称。 若要更新设备的属性和设置，必须在“设备模板”下拉列表中选择要更新的设备对应的设备模板。 此时操作磁贴会展开，显示可更新的所有属性和设置。
+
+    ![Flow 的更新设备工作流](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
 
 1. 选择要更新的每个属性和设置。 在动态内容窗格的触发器中，选择相应的输入。 在此示例中，“位置”值会向下传播，以便更新设备的“位置”属性。
 

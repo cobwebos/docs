@@ -2,18 +2,18 @@
 title: Azure IoT Edge 的脱机功能 | Microsoft Docs
 description: 了解 IoT Edge 设备和模块如何能够长时间脱机操作，以及 IoT Edge 如何使常规 IoT 设备也能脱机操作。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4afad753da4a314ade3fb7433c6be3e489e05b0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033679"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567020"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能（预览版）
 
@@ -46,7 +46,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 Edg
 
 ## <a name="restrictions-and-limits"></a>约束和限制
 
-本文所述的扩展脱机功能可在 [IoT Edge 1.0.2 或更高版本](https://github.com/Azure/azure-iotedge/releases)中获得。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
+本文所述的扩展脱机功能可在 [IoT Edge 1.0.4 版或更高版本](https://github.com/Azure/azure-iotedge/releases)中获得。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
 
 除了美国东部和西欧以外，所有提供 IoT Hub 的区域都提供扩展脱机支持。 
 
@@ -56,34 +56,7 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 ## <a name="set-up-an-edge-device"></a>设置 Edge 设备
 
-对于想要在扩展脱机期间执行的任何 IoT Edge 设备，配置 IoT Edge 运行时以通过 MQTT 进行通信。 
-
 对于将其扩展脱机功能扩展到 loT 子设备的 IoT Edge 设备，需要在 Azure 门户中声明父子关系。
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>将上游协议设置为 MQTT
-
-配置 Edge 中心和 Edge 代理，以便按照上游协议与 MQTT 进行通信。 该协议是在部署清单中使用环境变量声明的。 
-
-在 Azure 门户中，可以通过在为部署设置模块时选择“配置高级 Edge 运行时设置”按钮来访问 Edge 中心和 Edge 代理模块定义。 对于这两个模块，创建名为“UpstreamProtocol”的环境变量并将其值设为“MQTT”。 
-
-在部署模板 JSON 中，环境变量声明如以下示例所示： 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>分配子设备
 
@@ -126,11 +99,11 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"C:\\\\HostStoragePath:C:\\\\ModuleStoragePath\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
     },
     "env": {
         "storageFolder": {
-            "value": "C:\\\\ModuleStoragePath"
+            "value": "<ModuleStoragePath>"
         }
     },
     "status": "running",
@@ -138,6 +111,8 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 }
 ```
 
+将 `<HostStoragePath>` 和 `<ModuleStoragePath>` 替换为你的主机和模块存储路径；主机和模块存储路径都必须是绝对路径。  例如，`\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` 表示主机路径 `/etc/iotedge/storage` 映射到容器路径 `/iotedge/storage/`。  你还可以从 [docker 文档](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)中找到有关 createOptions 的更多详细信息。
+
 ## <a name="next-steps"></a>后续步骤
 
-在透明网关方案中启用针对 [Linux](how-to-create-transparent-gateway-linux.md) 或 [Windows](how-to-create-transparent-gateway-windows.md) 设备的扩展脱机操作。 
+在[透明网关](how-to-create-transparent-gateway.md)方案中启用扩展脱机操作。

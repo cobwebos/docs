@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036501"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262176"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -151,7 +151,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 ## <a name="monitor-the-performance-of-your-applications"></a>监视应用程序的性能
 监视是一种数据收集和分析操作，用于确定应用程序的性能、运行状况及可用性。 有效的监视策略有助于了解应用程序组件的详细运行状况， 它有助于向你发送关键情况的通知，让你在这些情况成为问题之前解决它们，从而提高运行时间。 它还有助于检测可能与安全相关的异常。
 
-使用 [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) 监视应用程序的可用性、性能和使用情况，不管其是托管在云中还是在本地。 通过使用 Application Insights，可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 利用所收集的信息，可作出有关应用程序维护和优化的明智抉择。
+使用 [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) 监视应用程序的可用性、性能和使用情况，不管其是托管在云中还是在本地。 通过使用 Application Insights，可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 利用所收集的信息，可作出有关应用程序维护和优化的明智抉择。
 
 Application Insights 提供各种可以与所收集的数据交互的工具。 Application Insights 在公用存储库中存储其数据。 它可以通过 Log Analytics 查询语言充分利用各种共享功能，例如警报、仪表板和深入分析。
 
@@ -167,7 +167,7 @@ Application Insights 提供各种可以与所收集的数据交互的工具。 A
 - Azure 服务总线
 - Web 应用程序防火墙
 
-有关通过使用 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
+有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息

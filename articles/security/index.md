@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: angrobe
-ms.openlocfilehash: 64bf734543825284db29790fc3c1f7c9ef89ff59
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 98cb089baa759b6569d1e1e06c90022eb75f5355
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737098"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228107"
 ---
 # <a name="azure-security-documentation"></a>Azure 安全文档
 
@@ -57,7 +57,7 @@ ms.locfileid: "45737098"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="http://aka.ms/sharedresponsibility">
+        <a href="https://aka.ms/sharedresponsibility">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -172,7 +172,7 @@ ms.locfileid: "45737098"
                         <h3>白皮书</h3>
                         <ul class="noBullet">
                             <li style="list-style: none;">
-                                <a class="barLink" href="http://aka.ms/SecurityResponsepaper">云中的 Azure 安全响应</a>
+                                <a class="barLink" href="https://aka.ms/SecurityResponsepaper">云中的 Azure 安全响应</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-threat-detection">Azure 高级威胁检测</a>
@@ -195,7 +195,7 @@ ms.locfileid: "45737098"
                 <div class="card">
                     <div class="cardText">
                         <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_guidelines.svg" alt="" /></div>
-                        <h3>最佳实践</h3>
+                        <h3>最佳做法</h3>
                         <ul class="noBullet">
                             <li style="list-style: none;">
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Azure 安全性最佳实践</a>

@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 07/09/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: d32e05e99543b30ee92ea455ae2f800b09d83661
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012105"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016822"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序 
 
@@ -35,13 +35,13 @@ Azure IoT Central 将列为可用于管理的服务。 单击页面上的 Azure 
 
 若要创建 Azure IoT Central 应用程序，请单击“新建应用程序”磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
 
-![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4-1.png)
+![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4.png)
 
-![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4-2.png)
+![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4-1.png)
 
 ## <a name="payment-plan"></a>付款计划
 
-作为 CSP，你只能创建付费应用程序。 若要向客户展示 Azure IoT Central，你可以单独创建试用版应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解试用和付费应用程序。
+作为 CSP，你只能创建即用即付应用程序。 若要向客户展示 Azure IoT Central，你可以单独创建试用版应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解试用版和即用即付应用程序。
 
 ## <a name="application-name"></a>应用程序名称
 

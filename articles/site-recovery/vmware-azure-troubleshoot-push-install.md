@@ -1,20 +1,18 @@
 ---
-title: 在启用复制（VMware 到 Azure）期间解决移动服务推送安装失败问题| Microsoft Docs
-description: 复制 Azure 虚拟机时，解决移动服务/推送安装错误问题。
-services: site-recovery
+title: 在为灾难恢复启用复制时，排查移动服务推送安装失败问题 | Microsoft Docs
+description: 在为灾难恢复启用复制时，排查移动服务安装错误
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.author: ramamill
-ms.date: 09/19/2018
-ms.openlocfilehash: 4c57d048f4c3222ac180355a6a700562415f601c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/29/2018
+ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390187"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012320"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -75,7 +73,7 @@ ms.locfileid: "49390187"
   * 在导航窗格中，打开以下文件夹：本地计算机策略、用户配置、管理模板、Windows 组件和网络共享。
   * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 若要了解详细信息，请单击[此处](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
-对于更高版本，请按照[此处](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)提供的说明来启用文件和打印机共享
+对于更高版本，请按照[此处](vmware-azure-install-mobility-service.md)提供的说明来启用文件和打印机共享。
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Windows Management Instrumentation (WMI) 配置检查
 

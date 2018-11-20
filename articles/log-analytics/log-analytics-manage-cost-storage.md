@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfb95a57da62037df8f7fbe7e5d8edd970e264ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044359"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958332"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>通过在 Log Analytics 中控制数据量和保留期管理成本
 
@@ -55,7 +55,7 @@ Log Analytics 用于调整和支持来自任何源的巨量数据的每日收集
 使用 Log Analytics 可以轻松了解基于最近使用模式的可能成本。  为此，请执行以下步骤。  
 
 1. 登录到 [Azure 门户](http://portal.azure.com)。 
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-manage-cost-storage/azure-portal-01.png)<br><br>  
 3. 在 Log Analytics 订阅窗格中选择自己的工作区，然后单击左侧窗格中的“使用情况和预估成本”。<br><br> ![使用情况和预估成本页](media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
 
 在此处可以查看当月数据量。 这包括 Log Analytics 工作区中收到和保留的所有数据。  单击页面顶部的“使用情况详细信息”查看使用情况仪表板，其中按源、计算机和产品/服务显示了有关数据量趋势的信息。 若要查看和设置每日上限或修改保留期，请单击“数据量管理”。
@@ -78,7 +78,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 5. 每日上限默认为“关闭”– 单击“打开”将其启用，然后设置数据量限制（以 GB/天为单位）。<br><br> ![Log Analytics 配置数据限制](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>达到限制时发出警报
-尽管在达到数据限制阈值时，Azure 门户中会显示视觉提示，但此行为不一定符合需要立即关注的操作问题的处理方式。  若要接收警报通知，可以在 Azure Monitor 中创建一个新的警报规则。  有关详细信息，请参阅[如何创建、查看和管理警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。      
+尽管在达到数据限制阈值时，Azure 门户中会显示视觉提示，但此行为不一定符合需要立即关注的操作问题的处理方式。  若要接收警报通知，可以在 Azure Monitor 中创建一个新的警报规则。  有关详细信息，请参阅[如何创建、查看和管理警报](../monitoring-and-diagnostics/alert-metric.md)。      
 
 若要开始操作，请参考下面提供的建议警报设置：
 

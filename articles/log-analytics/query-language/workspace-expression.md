@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 70ee244599f926f4d6c4a36f6065a1f743de2466
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b83650acfee638ae2a667cd0925fd91d44b80b2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971818"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282690"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>Log Analytics 查询中的 workspace() 表达式
 
@@ -74,4 +74,4 @@ union
 ## <a name="next-steps"></a>后续步骤
 
 - 请参阅[应用表达式](workspace-expression.md)，以引用 Application Insights 应用。
-- 阅读有关 [Log Analytics 数据](../../log-analytics/log-analytics-log-search.md)的存储方式的信息。
+- 阅读有关 [Log Analytics 数据](../../log-analytics/log-analytics-queries.md)的存储方式的信息。

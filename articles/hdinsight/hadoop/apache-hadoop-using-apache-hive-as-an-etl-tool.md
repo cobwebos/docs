@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042247"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632537"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
-通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob 或 Azure Data Lake Store）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
+通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob 或 Azure Data Lake Store）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
 
 ## <a name="use-case-and-model-overview"></a>用例和模型概述
 

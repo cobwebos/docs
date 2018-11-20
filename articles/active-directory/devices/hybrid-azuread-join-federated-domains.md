@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/07/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352654"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277964"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
 
@@ -156,6 +156,8 @@ ms.locfileid: "49352654"
  
 - 配置设备注册的本地 Intranet 设置
 
+- 控制 Windows 下层设备 
+
 
 ### <a name="update-device-settings"></a>更新设备设置 
 
@@ -176,8 +178,6 @@ ms.locfileid: "49352654"
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - 组织的安全令牌服务（STS - 联盟域）
 
 - `https://autologon.microsoftazuread-sso.com`（适用于无缝 SSO）。
@@ -185,6 +185,10 @@ ms.locfileid: "49352654"
 此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
 
 
+
+### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 
+
+若要注册 Windows 下层设备，需要通过下载中心下载并安装 Windows Installer 包 (.msi)。 有关详细信息，请单击[此处](hybrid-azuread-join-control.md#control-windows-down-level-devices)。 
 
 ## <a name="verify-the-registration"></a>验证注册
 

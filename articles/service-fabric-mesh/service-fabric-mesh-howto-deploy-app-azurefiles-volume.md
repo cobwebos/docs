@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037902"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614253"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>通过将基于 Azure 文件的卷装载到容器，在 Azure Service Fabric 网格应用程序中存储状态
 
@@ -62,10 +62,10 @@ az group create --name myResourceGroup --location eastus
 
 模板中的 `storageAccountKey` 参数是一个安全字符串。 它不会显示在部署状态和 `az mesh service show` 命令中。 请确保它在以下命令中正确指定。
 
-以上命令使用 [mesh_rp.linux.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [mesh_rp.windows.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json)。 请注意，较大的容器映像可能需要花费较长的时间进行部署。
+以下命令使用 [counter.azurefilesvolume.linux.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [counter.azurefilesvolume.windows.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json)。 请注意，较大的容器映像可能需要花费较长的时间进行部署。
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 几分钟后，命令应返回 `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`

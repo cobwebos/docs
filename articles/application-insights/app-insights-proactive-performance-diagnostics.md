@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095457"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960814"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -47,7 +47,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 通知包含诊断信息。 下面是一个示例：
 
 
-![下面是“服务器响应时间延长”检测的示例](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![下面是“服务器响应时间延长”检测的示例](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **会审**。 通知会显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
 2. **范围**。 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
@@ -61,7 +61,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 智能检测通知默认已启用，将发送到[对 Application Insights 资源拥有所有者、参与者和读取者访问权限](app-insights-resources-roles-access-control.md)的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
   
-  ![智能检测设置](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![智能检测设置](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
 
@@ -143,7 +143,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 依赖项降级通知的示例：
 
-![下面是“依赖项持续时间延长”检测的示例](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![下面是“依赖项持续时间延长”检测的示例](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 请注意，它会指示：
 
@@ -185,8 +185,8 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [探查器](app-insights-profiler.md) 
 * [快照调试器](app-insights-snapshot-debugger.md)
-* [分析](app-insights-analytics-tour.md)
-* [分析智能诊断](app-insights-analytics-diagnostics.md)
+* [分析](../log-analytics/query-language/get-started-analytics-portal.md)
+* [分析智能诊断](app-insights-analytics.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 33fc8a3822def68cc0baad4670233f57044d1985
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408401"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962004"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备 
 
@@ -504,6 +504,9 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
  
 - 将 Azure AD 设备身份验证终结点添加到本地 Intranet 区域，避免对设备进行身份验证时出现证书提示。
 
+- 控制 Windows 下层设备 
+
+
 ### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>在 Azure AD 中设置策略，使用户能够注册设备
 
 若要注册 Windows 下层设备，需确保已设置为允许用户在 Azure AD 中注册设备。 在 Azure 门户中，可在以下位置找到此设置：
@@ -551,6 +554,12 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 为了避免注册设备中的用户在向 Azure AD 身份验证时出现证书提示，可将一个策略推送到已加入域的设备，以便在 Internet Explorer 中将以下 URL 添加到本地 Intranet 区域：
 
 `https://device.login.microsoftonline.com`
+
+
+### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 
+
+若要注册 Windows 下层设备，需要通过下载中心下载并安装 Windows Installer 包 (.msi)。 有关详细信息，请单击[此处](hybrid-azuread-join-control.md#control-windows-down-level-devices)。 
+
 
 
 ## <a name="verify-joined-devices"></a>验证联接的设备

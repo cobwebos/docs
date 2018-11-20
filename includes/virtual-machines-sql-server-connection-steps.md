@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264260"
+---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口
 1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)。
 2. 登录后，在开始屏幕中，键入“WF.msc”，并按 ENTER。
@@ -25,7 +38,7 @@
    
     ![规则名称](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-根据需要为其他组件打开附加端口。 有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问](http://msdn.microsoft.com/library/cc646023.aspx)。
+根据需要为其他组件打开附加端口。 有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问](https://msdn.microsoft.com/library/cc646023.aspx)。
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>将 SQL Server 配置为侦听 TCP 协议
 
@@ -81,5 +94,5 @@
    ![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 9. 单击“确定”。
 
-有关 SQL Server 登录名的详细信息，请参阅[创建登录名](http://msdn.microsoft.com/library/aa337562.aspx)。
+有关 SQL Server 登录名的详细信息，请参阅[创建登录名](https://msdn.microsoft.com/library/aa337562.aspx)。
 

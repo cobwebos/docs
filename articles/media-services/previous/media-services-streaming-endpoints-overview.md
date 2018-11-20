@@ -5,7 +5,7 @@ services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 7b4077747d4c9ec581496786063fc8fbe0c6b247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785946"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240216"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述 
 
@@ -43,7 +43,7 @@ ms.locfileid: "33785946"
 
 从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：**标准**和**高级**。 这些类型属于流式处理终结点版本“2.0”。
 
-Type|说明
+类型|Description
 ---|---
 **标准**|这是适用于大多数方案的默认选项。<br/>使用此选项，可以获得固定/有限的 SLA，在启动流式处理终结点后的前 15 天是免费的。<br/>如果创建多个流式处理终结点，只有第一个流式处理终结点在前 15 天是免费的，其他流式处理终结点在启动后立即就会计费。 <br/>请注意，免费试用仅适用于新创建的媒体服务帐户和默认的流式处理终结点。 现有的流式处理终结点和另外创建的流式处理终结点不包括免费试用期，即使将它们升级到版本 2.0 或创建为版本 2.0，也是如此。
 **高级**|此选项适用于需要更高级缩放或控制的专业方案。<br/>选择此选项则会使用基于已购买高级流单元 (SU) 容量的可变 SLA，专用流式处理终结点存在于隔离环境中，并不争用资源。
@@ -66,9 +66,9 @@ Type|说明
 
 ### <a name="versions"></a>版本
 
-|Type|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
+|类型|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
-|经典|1.0|0|不可用|免费|不可用|
+|经典|1.0|0|NA|免费|NA|
 |标准流式处理终结点|2.0|0|是|付费|是|
 |高级流单元|1.0|>0|是|付费|是|
 |高级流单元|2.0|>0|是|付费|是|

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025661"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615487"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -46,8 +46,8 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 | --- | --- | --- |
 | **[Azure 诊断](log-analytics-azure-storage.md)** | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
-| [Windows 代理](log-analytics-windows-agent.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
-| [Linux 代理](log-analytics-linux-agents.md) | 否 | 该解决方案不使用直接Linux 代理。 |
+| [Windows 代理](log-analytics-agent-windows.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
+| [Linux 代理](log-analytics-quick-collect-linux-computer.md) | 否 | 该解决方案不使用直接Linux 代理。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 该解决方案不使用从 SCOM 代理到 Log Analytics 的直接连接。 |
 
 ## <a name="configuration"></a>配置
@@ -192,7 +192,7 @@ Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Ana
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>针对 Azure SQL 数据库创建警报
 
-可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 以下是部分有用的可用于日志警报的[日志搜索](log-analytics-log-searches.md)查询：
+可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../monitoring-and-diagnostics/alert-metric.md)。 以下是部分有用的可用于日志警报的[日志搜索](log-analytics-queries.md)查询：
 
 *Azure SQL 数据库上的高 CPU*
 
@@ -289,6 +289,6 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Log Analytics 中的[日志搜索](log-analytics-log-searches.md)查看 Azure SQL 的详细数据。
+- 使用 Log Analytics 中的[日志搜索](log-analytics-queries.md)查看 Azure SQL 的详细数据。
 - [创建自己的仪表板](log-analytics-dashboards.md)，显示 Azure SQL 数据。
-- 发生特定 Azure SQL 事件时[创建警报](log-analytics-alerts.md)。
+- 发生特定 Azure SQL 事件时[创建警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。

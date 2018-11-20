@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: a41dcd5f2c93e5c1279e1c7511e10e6d72574b3b
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098740"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242885"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server Business Intelligence
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。 库映像中支持的 SQL Server 版本是可以安装到本地计算机和虚拟机的相同安装文件。 本主题总结了在映像上安装的 SQL Server Business Intelligence (BI) 功能以及在预配虚拟机后所需的配置步骤。 本主题还介绍了 BI 功能和最佳实践的受支持的部署拓扑。
 
@@ -226,7 +226,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 2. 在虚拟机的防火墙中打开端口 80。
 3. 使用 Azure 虚拟机“DNS 名称”作为 URL 中的服务器名称，浏览到 Web 门户或报表管理器。 例如：
    
-    **报表服务器**：http://uebi.cloudapp.net/reportserver **Web 门户**：http://uebi.cloudapp.net/reports
+    **报表服务器**： http://uebi.cloudapp.net/reportserver **Web 门户**： http://uebi.cloudapp.net/reports
    
     [为报表服务器访问配置防火墙](https://msdn.microsoft.com/library/bb934283.aspx)
 
@@ -317,7 +317,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
   * 为前述端口 (*) 打开虚拟机终结点。
 * 如果虚拟机使用 Azure 虚拟网络等 VPN 隧道加入域，则不需要终结点。 但是要在 VM 防火墙中打开端口。
   
-  | 端口 | Type | 说明 |
+  | 端口 | 类型 | Description |
   | --- | --- | --- |
   | **80** |TCP |报表服务器远程访问 (*)。 |
   | **1433** |TCP |SQL Server Management Studio (*)。 |
@@ -336,7 +336,7 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。 在虚拟机�
 ![要为 Azure VM 中的 bi 应用程序打开的端口](./media/virtual-machines-windows-classic-ps-sql-bi/IC654385.gif)
 
 ## <a name="resources"></a>资源
-* 查看在 Azure 虚拟机环境中使用的 Microsoft 服务器软件的支持策略。 以下主题总结了对 BitLocker、故障转移群集和网络负载均衡等功能的支持。 [Microsoft 服务器软件对 Azure 虚拟机的支持](http://support.microsoft.com/kb/2721672)。
+* 查看在 Azure 虚拟机环境中使用的 Microsoft 服务器软件的支持策略。 以下主题总结了对 BitLocker、故障转移群集和网络负载均衡等功能的支持。 [Microsoft 服务器软件对 Azure 虚拟机的支持](https://support.microsoft.com/kb/2721672)。
 * [Azure 虚拟机上的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [在 Azure 上预配 SQL Server 虚拟机](../sql/virtual-machines-windows-portal-sql-server-provision.md)

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: cce78fb6a5472a625e973bb8ca4afdfd6290a26c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166059"
+---
 <!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>创建卷
@@ -34,9 +47,9 @@
        1. 为 ACR 提供“名称”。
        2. 在“iSCSI 发起程序名称” 下，提供 Windows 主机的 iSCSI 限定名称 (IQN)。 如果没有 IQN，请转到 [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host)。
 
-    9. 单击“创建” 。 使用指定的设置创建卷。
+    9. 单击“创建”。 使用指定的设置创建卷。
 
-        ![单击创建](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+        ![单击“法律条款” ](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
         > [!NOTE]
         > 请注意，你在此处创建的卷不受保护。 需要创建备份策略并将其与此卷相关联，然后才能进行计划的备份。 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 639293a1811c35d87bd705800b8ecf62f667c0e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053357"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246712"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>在本地群集上部署和升级应用程序入门
 Azure Service Fabric SDK 包含完整的本地开发环境，可让你快速地在本地群集上开始部署和管理应用程序。 在本文中，会从 Windows PowerShell 创建本地群集、将现有应用程序部署到该群集，然后将该应用程序升级为新版本。
@@ -71,7 +71,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [下载 WordCount 应用程序](http://aka.ms/servicefabric-wordcountapp) 到创建的位置。  注意：Microsoft Edge 浏览器以 *.zip* 扩展名保存文件。  将文件扩展名更改为 *.sfpkg*。
+4. [下载 WordCount 应用程序](https://aka.ms/servicefabric-wordcountapp) 到创建的位置。  注意：Microsoft Edge 浏览器以 *.zip* 扩展名保存文件。  将文件扩展名更改为 *.sfpkg*。
 5. 连接到本地群集：
    
     ```powershell
@@ -139,7 +139,7 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 
 新版应用程序现在只计算以元音开头的单词。 推出升级后，我们会看到应用程序的行为出现两项变化。 首先，计数增长的速率应该变慢，因为计算的单词比较少。 其次，由于第一个分区有两个元音（A 和 E），而其他每个分区只包含一个元音，因此第一个分区的计数最终会超出其他分区。
 
-1. [下载 WordCount v2 包](http://aka.ms/servicefabric-wordcountappv2)并将其保存到已下载的 v1 包的同一位置。
+1. [下载 WordCount v2 包](https://aka.ms/servicefabric-wordcountappv2)并将其保存到已下载的 v1 包的同一位置。
 2. 返回到 PowerShell 窗口并使用 SDK 的升级命令在群集中注册新版本。 然后开始升级 fabric:/WordCount 应用程序。
    
     ```powershell

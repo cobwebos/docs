@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259205"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094807"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
@@ -139,7 +139,7 @@ ms.locfileid: "39259205"
 4.  在“逻辑应用设计器”搜索框中搜索“分析 JSON”，查找并选择“数据操作 - 分析 JSON”[操作](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)。 
     
     ![Azure - 逻辑应用 - 添加“分析 JSON”操作](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  输入“Payload”作为“分析 JSON”有效负载的内容名称。
+5.  输入“Payload”作为 Parse JSON 有效负载的 **Content** 名称，或使用动态内容中的“Body”标记。
 6.  在“分析 JSON”框中，选择“使用有效负载示例生成架构”选项。
     
     ![Azure - 逻辑应用 - 使用 JSON 数据示例生成架构](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 
@@ -148,7 +148,7 @@ ms.locfileid: "39259205"
     显示的文本框如下所示：
         
     ![Azure - 逻辑应用 - JSON 有效负载示例](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-08.png) 
-8.  单击“Done”（完成） 。
+8.  单击“完成”。
 
 ### <a name="add-the-first-conditional-action"></a>添加第一个条件操作
 

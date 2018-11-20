@@ -4,7 +4,7 @@ description: 了解如何使用事件处理程序代码来跟踪作业进度并�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 4e24dc040998586579334c6363707a61c2164db5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9f5632f6b4a99c4771f10a89165b452addee0f1c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782876"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035758"
 ---
 # <a name="monitor-job-progress-using-net"></a>使用 .NET 监视作业进度
 > [!div class="op_single_selector"]

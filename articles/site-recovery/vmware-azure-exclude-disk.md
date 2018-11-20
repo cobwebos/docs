@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 从保护项中排除磁盘 | Microsoft Docs
-description: 介绍在从 VMware 复制到 Azure 时，为何需要从复制中排除 VM 磁盘，以及如何这样做。
+title: 为进行 VMware 灾难恢复而使用 Azure Site Recovery 复制到 Azure 时排除磁盘 | Microsoft Docs
+description: 介绍为进行 VMware 灾难恢复而复制到 Azure 时，为何需要排除 VM 磁盘，以及如何这样做。
 author: nsoneji
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: ea0e9f3572287139612256863ee28b72c83cd4ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092417"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210578"
 ---
-# <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>在从 VMware 到 Azure 方案的复制中排除磁盘
+# <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>在从 VMware VM 到 Azure 的复制中排除磁盘
 
 本文介绍如何在将 VMware VM 复制到 Azure 时排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。 如果需要有关对 Hyper-V 排除磁盘的信息，请阅读[此文](hyper-v-exclude-disk.md)
 

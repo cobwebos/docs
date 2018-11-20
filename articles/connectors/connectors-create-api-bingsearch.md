@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 8ac67f9df0e5baccc668c2aeb70f65d96e574df5
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 9997f27f360f84ff3cd185d7c12c45519513d82b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021279"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233083"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>使用必应搜索和 Azure 逻辑应用查找新闻 
 
@@ -53,7 +53,7 @@ ms.locfileid: "37021279"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | 属性 | 必选 | 值 | 说明 | 
+   | 属性 | 必选 | 值 | Description | 
    |----------|----------|-------|-------------| 
    | 搜索查询 | 是 | <search-words> | 输入要使用的搜索关键字。 |
    | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 | 
@@ -80,7 +80,7 @@ ms.locfileid: "37021279"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在该触发器或操作下，选择“新建步骤” > “添加操作”。
+2. 在该触发器或操作下，选择“新建步骤” > “添加操作”。
 
    此示例使用此触发器：必应搜索 - 新的新闻文章
 
@@ -100,7 +100,7 @@ ms.locfileid: "37021279"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | 属性 | 必选 | 值 | 说明 | 
+   | 属性 | 必选 | 值 | Description | 
    |----------|----------|-------|-------------| 
    | 搜索查询 | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 | 
@@ -147,7 +147,7 @@ ms.locfileid: "37021279"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必选 | 值 | 说明 | 
+   | 属性 | 必选 | 值 | Description | 
    |----------|----------|-------|-------------| 
    | 连接名称 | 是 | <connection-name> | 为连接创建的名称 |
    | API 版本 | 是 | <API-version> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 | 
@@ -167,7 +167,7 @@ ms.locfileid: "37021279"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,26 +1,26 @@
 ---
-title: 将 Apache DataFu 与 Pig on HDInsight 结合使用 - Azure
-description: Apache DataFu Pig 是适用于 Hadoop 上的 Pig 的库集合。 了解如何在 HDInsight 群集上通过 Pig 使用 DataFu。
+title: 将 Apache DataFu 与 Apache Pig on HDInsight 配合使用 - Azure
+description: Apache DataFu Pig 是适用于 Apache Hadoop 上的 Apache Pig 的库集合。 了解如何在 HDInsight 群集上通过 Pig 使用 DataFu。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 3d276de1910289e1f79d07c111eee1ac33e247ba
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 0c7e8b7ab10771c611f80d36fb1c9ed0cf3e6f1b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045846"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632350"
 ---
-# <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>在 HDInsight 上将 Apache DataFu Pig 与 pig 结合使用
+# <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>将 Apache DataFu Pig 与 Apache Pig on HDInsight 配合使用
 
 了解如何将 Apache DataFu Pig 与 HDInsight 结合使用。
 
-DataFu Pig 是适用于 Hadoop 上的 Pig 的开放源代码库集合。
+Apache DataFu Pig 是适用于 Apache Hadoop 上的 Apache Pig 的开源库集合。
 要详细了解 DataFu Pig，请参阅 [https://datafu.apache.org/](https://datafu.apache.org/)。
 
 ## <a name="prerequisites"></a>先决条件

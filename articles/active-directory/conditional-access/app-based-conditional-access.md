@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 基于应用程序的条件访问 | Microsoft Docs
-description: 了解 Azure Active Directory 基于应用程序的条件访问的工作原理。
+title: 如何使用 Azure Active Directory 中的条件访问要求使用经批准的客户端应用进行云应用访问 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 中的条件访问要求使用经批准的客户端应用进行云应用访问。
 services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: f34fc4c41094292db9bed1294ee7b26ec04c96c6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630596"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415383"
 ---
-# <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory 基于应用程序的条件访问  
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的设备进行云应用访问 
 
-员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 借助 Azure Active Directory (Azure AD) 基于应用程序的条件访问，可以限制为只有可以保护公司数据的客户端应用程序，才能访问云应用程序。  
+员工使用移动设备执行个人和工作任务。 既要确保提高员工的工作效率，也要防止数据丢失。 借助 Azure Active Directory (Azure AD) 条件访问，可以限制对云应用程序的访问，仅允许可以保护公司数据的经批准的客户端应用进行访问。  
 
-本主题介绍了如何配置 Azure AD 基于应用程序的条件访问。
+本主题介绍了如何配置要求使用经批准的客户端应用的条件访问策略。
 
 ## <a name="overview"></a>概述
 
@@ -36,7 +36,7 @@ ms.locfileid: "39630596"
 
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据。 Intune 应用程序保护策略不要求使用移动设备管理 (MDM) 解决方案，即无论是否在设备管理解决方案中注册设备，都可以帮助保护公司数据。
 
-借助 Azure Active Directory 基于应用程序的条件访问，可限制为只有支持 Intune 应用程序保护策略的客户端应用程序，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。
+借助 Azure Active Directory 条件访问，可以限制对云应用的访问，仅允许支持 Intune 应用保护策略的客户端应用进行访问。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。
 
 在条件访问这一术语范畴内，这些客户端应用程序被称为“核准客户端应用程序”。  
 
@@ -120,9 +120,9 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/03.png)
 
-    b. 对于“客户端应用”，请选择“移动应用和桌面应用”。
+    b. 对于“客户端应用(预览版)”，选择“移动应用和桌面应用”以及“新式身份验证客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/04.png)
+    ![条件性访问](./media/app-based-conditional-access/91.png)
 
 5. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
@@ -144,11 +144,11 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
-4. **条件：** 对于“条件”，无需配置“客户端应用”. 
+4. **条件：** 对于“条件”，需要配置“客户端应用(预览版)”。 
 
-    a. 对于“客户端应用”，请选择“Exchange Active Sync”。
+    a. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/08.png)
+    ![条件性访问](./media/app-based-conditional-access/92.png)
 
     b. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
@@ -201,9 +201,9 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/03.png)
 
-    b. 对于“客户端应用”，请选择“移动应用和桌面应用”。
+    b. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“新式身份验证客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/04.png)
+    ![条件性访问](./media/app-based-conditional-access/91.png)
 
 5. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
@@ -228,9 +228,9 @@ ms.locfileid: "39630596"
 
 4. **条件：** 对于“条件”，无需配置“客户端应用”：
 
-    a. 对于“客户端应用”，请选择“Exchange Active Sync”。
+    a. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/08.png)
+    ![条件性访问](./media/app-based-conditional-access/92.png)
 
     b. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
 
@@ -285,9 +285,9 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/03.png)
 
-    b. 对于“客户端应用”，请选择“移动应用和桌面应用”。
+    b. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“新式身份验证客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/04.png)
+    ![条件性访问](./media/app-based-conditional-access/91.png)
 
 5. 对于“访问控制”，需选中以下内容：
 
@@ -317,9 +317,9 @@ ms.locfileid: "39630596"
 
 4. **条件：** 对于“条件”，无需配置“客户端应用”. 
 
-    对于“客户端应用”，选择“Exchange Active Sync”。
+    对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/08.png)
+    ![条件性访问](./media/app-based-conditional-access/91.png)
 
 5. 对于“访问控制”，需选中“需要批准的客户端应用(预览)”。
  
@@ -381,9 +381,9 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/03.png)
 
-    b. 对于“客户端应用”，请选择“移动应用和桌面应用”。
+    b. 对于“客户端应用(预览版)”，选择“移动应用和桌面应用”以及“新式身份验证客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/04.png)
+    ![条件性访问](./media/app-based-conditional-access/91.png)
 
 5. 对于“访问控制”，需选中以下内容：
 
@@ -411,11 +411,11 @@ ms.locfileid: "39630596"
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
-4. **条件：** 对于“条件”，无需配置“客户端应用”. 
+4. **条件：** 对于“条件”，需要配置“客户端应用(预览版)”。 
 
-    对于“客户端应用”，请选择“Exchange Active Sync”。
+    对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
-    ![条件性访问](./media/app-based-conditional-access/08.png)
+    ![条件性访问](./media/app-based-conditional-access/92.png)
 
 5. 对于“访问控制”，需选中以下内容：
 

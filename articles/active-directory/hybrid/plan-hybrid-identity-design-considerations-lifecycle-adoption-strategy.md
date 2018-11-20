@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 43aaddc224403f69f90452c024f24eab8c5bdcd2
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304696"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251757"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -94,7 +94,7 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 | 同步管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
 | 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  策略控制：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务的情况下，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  访问控制：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，因此用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
-| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专业人员部署和维护专用的本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](http://go.microsoft.com/fwlink/?linkid=235649)。 |
+| 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专业人员部署和维护专用的本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](https://go.microsoft.com/fwlink/?linkid=235649)。 |
 
 > [!NOTE]
 > 有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。

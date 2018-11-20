@@ -10,65 +10,290 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: d6e628f2131cd5e3bf81cd623b94e02a9837fab7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ff529e7b828c195be89c9d11fc5f50e04104642e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954532"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567343"
 ---
 # <a name="entities-per-culture"></a>每个语言区域的实体
 
 语言理解 (LUIS) 提供了预构建的实体。 当应用程序中包括预构建实体时，LUIS 会在终结点响应中包括对应的实体预测。 所有陈述示例都标记有实体。 **无法**修改预构建实体的行为。 除非另行说明，预构建实体在所有 LUIS 应用程序区域设置（语言区域）中都可用。 下表显示了每个语言区域支持的预构建实体。
 
-预构建实体   |   英语(美国)<br>```En-us```   |   法语(法国)<br>```fr-FR```   |   意大利语(意大利)<br>```it-IT```   |   西班牙语(西班牙)<br>```es-ES```   |   中文<br>```zh-CN```   |   德语<br>```de-DE```   |   葡萄牙语(巴西)<br>```pt-BR```   |   日语(日本)<br>```ja-JP```   |   韩语(韩国)<br>```ko-kr```   | 法语(加拿大)<br>```fr-CA```   |   西班牙语(墨西哥)<br>```es-MX```   |   荷兰语(荷兰)<br>```nl-NL```   |
-------|:------:|------|------|------|------|------|------|------|------|------|------|------|
-[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[货币](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   |   ✔   |   -   |   ✔   |    ✔   |   -   |   ✔   |   -   |   -   |   -   |   -   |   -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
-[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   |   ✔   |   ✔   |   ✔   |   -   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |   ✔   |
-[数字](luis-reference-prebuilt-number.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[PersonName](luis-reference-prebuilt-person.md)   |    ✔   |    -   |    -   |    -   |    ✔   |    -   |    -   |    -   |   -   |   -   |   -   |   -   |
-[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
-[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |    ✔   |   -   |   -   |   -   |   ✔   |
-[URL](luis-reference-prebuilt-url.md)   |    ✔   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |   -   |
+|环境|子区域性|
+|--|--|
+|中文|[zh-CN](#chinese-entity-support)|
+|荷兰语|[nl-NL](#dutch-entity-support)|
+|英语|[en-US（美国）](#english-american-entity-support)|
+|法语|[fr-CA（加拿大）](#french-canadian-entity-support)、[fr-FR（法国）](#french-france-entity-support) |
+|德语|[de-DE](#german-entity-support)|
+|意大利语|[it-IT](#italian-entity-support)|
+|日语|[ja-JP](#japanese-entity-support)|
+|韩语|[ko-KR](#korean-entity-support)|
+|葡萄牙语|[pt-BR（巴西）](#portuguese-brazil-entity-support)|
+|西班牙语|[es-ES（西班牙）](#spanish-spain-entity-support)、[es-MX（墨西哥）](#spanish-mexico-entity-support)|
+
+## <a name="chinese-entity-support"></a>中文实体支持
+
+支持以下实体：
+
+|预生成实体|```zh-CN``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="dutch-entity-support"></a>荷兰语实体支持
+
+支持以下实体：
+
+|预生成实体|```nl-NL``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    -   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="english-american-entity-support"></a>英语（美国）实体支持
+
+支持以下实体：
+
+|预生成实体|```en-US``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="french-france-entity-support"></a>法语（法国）实体支持
+
+支持以下实体：
+
+|预生成实体|```fr-FR``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="french-canadian-entity-support"></a>法语（加拿大）实体支持
+
+支持以下实体：
+
+|预生成实体|```fr-CA``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="german-entity-support"></a>德语实体支持
+
+支持以下实体：
+
+|预生成实体|```de-DE``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="italian-entity-support"></a>意大利语实体支持
+
+支持以下实体：
+
+|预生成实体|```it-IT``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="japanese-entity-support"></a>日语实体支持
+
+支持以下实体：
+
+|预生成实体|```ja-JP``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="korean-entity-support"></a>韩语实体支持
+
+支持以下实体：
+
+|预生成实体|```ko-KR``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    -   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    -   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    -   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="portuguese-brazil-entity-support"></a>葡萄牙语（巴西）实体支持
+
+支持以下实体：
+
+|预生成实体|```pt-BR``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="spanish-spain-entity-support"></a>西班牙语（西班牙）实体支持
+
+支持以下实体：
+
+|预生成实体|```es-ES``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    ✔   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    ✔   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    ✔   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
+
+## <a name="spanish-mexico-entity-support"></a>西班牙语（墨西哥）实体支持
+
+支持以下实体：
+
+|预生成实体|```es-MX``` |
+------|:------:|
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>日期<br>daterange<br>time<br>时间范围   |    -   | 
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   | 
+[电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
+[数字](luis-reference-prebuilt-number.md)   |    ✔   |  
+[序号](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    -   | 
+[URL](luis-reference-prebuilt-url.md)   |    ✔   |
 
 请参阅有关[已废弃的预构建实体](luis-reference-prebuilt-deprecated.md)的说明。
 
 KeyPhrase 不适用于葡萄牙语（巴西）```pt-BR``` 的所有子区域性。
 
-<!--
-## Examples of prebuilt entities in en-us culture
-The following table lists prebuilt entities with example data and the return values.
-
-Prebuilt entity   |   Example utterance   |   JSON
-------|------|------|
- ```builtin.age```   |   ```100 year old```   |```{ "type": "builtin.age", "entity": "100 year old" }```|  
- ```builtin.age```   |   ```19 years old```   |```{ "type": "builtin.age", "entity": "19 years old" }```|
- ```builtin.currency```     |   ```1000.00 US dollars```   |```{ "type": "builtin.currency", "entity": "1000.00 us dollars" }```
- ```builtin.currency```     |   ```$ 67.5 B```   |```{ "type": "builtin.currency", "entity": "$ 67.5" }```|
- ```builtin.datetimeV2``` | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) | See [builtin.datetimeV2](luis-reference-prebuilt-datetimev2.md) |
- ```builtin.dimension```     |   ```2 miles```   |```{ "type": "builtin.dimension", "entity": "2 miles" }```|
- ```builtin.dimension```     |  ```650 square kilometers```   |```{ "type": "builtin.dimension", "entity": "650 square kilometers" }```|
- ```builtin.email```     |  ```patti.owens@microsoft.com```   |```{ "type": "builtin.email", "entity": "patti.owens@microsoft.com" }```|
- ```builtin.number```     |  ```ten```   |``` { "type": "builtin.number", "entity": "ten" } ```|
- ```builtin.number```     |   ```3.1415```   |```  { "type": "builtin.number", "entity": "3 . 1415" }``` |
- ```builtin.ordinal```     |   ```first```   |```{ "type": "builtin.ordinal", "entity": "first" }``` |
- ```builtin.ordinal```     |   ```10th```   | ```{ "type": "builtin.ordinal", "entity": "10th" }``` |  
- ```builtin.percentage```   |   ```The stock price increase by 7 $ this year```   |```{ "type": "builtin.percentage", "entity": "7 %" }```|
- ```builtin.phonenumber```   |   ```my mobile is 00 44 161 1234567```   |```{ "type": "builtin.phonenumber", "entity": "00 44 161 1234567" }```|
- ```builtin.temperature```     |   ```10 degrees celsius```   | ```{ "type": "builtin.temperature", "entity": "10 degrees celcius" }```|   
- ```builtin.temperature```     |   ```78 F```   |```{ "type": "builtin.temperature", "entity": "78 f" }```|
- ```builtin.url```     |   ```http://www.luis.ai is a great cognitive service```   |```{ "type": "builtin.url", "entity": "http://www.luis.ai" }```|
--->
-
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>为预构建实体语言区域做贡献
 预构建实体是在 Recognizers-Text 开发源代码项目中开发的。 [参与](https://github.com/Microsoft/Recognizers-Text)项目。 该项目包括每个语言区域的货币的示例。 
+
+Recognizers-Text 项目中不包括 GeographyV2 和 PersonName。 有关这些预生成实体的问题，请建立[支持请求](../../azure-supportability/how-to-create-azure-support-request.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

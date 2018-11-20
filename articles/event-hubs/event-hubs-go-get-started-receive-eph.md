@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: shvija
-ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005572"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239485"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>使用 Go 从事件中心接收事件
 
@@ -80,7 +80,7 @@ import (
 
 ## <a name="create-service-principal"></a>创建服务主体
 
-按照[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)中的说明创建新的服务主体。 使用以下名称将提供的凭据保存在环境中。 预先配置 Azure SDK for Go 和事件中心包，以便查找这些变量名称。
+按照[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)中的说明创建新的服务主体。 使用以下名称将提供的凭据保存在环境中：Azure SDK for Go 和事件中心包都已预先配置为查找这些变量名称。
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -194,16 +194,10 @@ if err != nil {
 
 ## <a name="notes"></a>说明
 
-本教程使用单个 EventProcessorHost 实例。 若要增加吞吐量和可靠性，应在不同系统上运行多个 EventProcessorHost 实例。 租用系统可确保仅关联一个接收器，并且接收指定时间指定分区中的消息。
+本教程使用单个 **EventProcessorHost** 实例。 若要增加吞吐量和可靠性，应在不同系统上运行多个 EventProcessorHost 实例。 租用系统可确保仅关联一个接收器，并且接收指定时间指定分区中的消息。
 
 ## <a name="next-steps"></a>后续步骤
-
-若要了解有关事件中心的详细信息，请访问以下页面：
-
-* [使用 Go 发送事件](event-hubs-go-get-started-send.md)
-* [事件中心概述](event-hubs-about.md)
-* [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+在本快速入门中，你已创建从事件中心接收消息的 Go 应用程序。 要了解如何使用 Go 将事件发送到事件中心，请参阅[从事件中心发送事件 - Go](event-hubs-go-get-started-send.md)。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

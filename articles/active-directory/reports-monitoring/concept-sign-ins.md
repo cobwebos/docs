@@ -13,55 +13,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc8d3525ab7cdbdf298ecbbc686ced16fa7bc77c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141633"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623754"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
-通过 [Azure 门户](https://portal.azure.com)中的 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
-
-Azure Active Directory 中的报表体系结构由以下部分组成：
+Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录活动** — 有关托管应用程序的使用和用户登录活动的信息
-    - **审核日志** - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
+    - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
+    - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
-    - **风险登录** - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 有关详细信息，请参阅“有风险的登录”。
-    - **已标记为存在风险的用户** - 风险用户是指可能已泄露的用户帐户。 有关详细信息，请参阅“已标记为存在风险的用户”。
+    - **风险登录** - [风险登录](concept-risky-sign-ins.md)是指可能由非用户帐户合法拥有者进行的登录尝试。
+    - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
 
-本主题概述登录活动。
+本主题概述了登录报告。
 
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
-* 具有“安全管理员”、“安全读者”、“报告读者”角色的用户
+* 具有“安全管理员”、“安全读者”和“报告读者”角色的用户
 * 全局管理员
-* 任何用户（非管理员）都可以访问自己的登录活动 
+* 此外，任何用户（非管理员）都可以访问自己的登录活动 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 * 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告
 
+## <a name="sign-ins-report"></a>登录报告
 
-## <a name="sign-in-activities"></a>登录活动
-
-通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
+用户登录报告提供了以下问题的答案：
 
 * 什么是用户的登录模式？
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-所有登录活动数据的第一个入口点是 **Azure Active Directory** 的“活动”部分中的**登录**。
-
+可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
-
 
 登录日志有一个默认列表视图，用于显示：
 
@@ -82,7 +77,7 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 ![登录活动](./media/concept-sign-ins/02.png "登录活动")
 
-通过单击列表视图中的项，可以在水平视图中获得有关该项的所有可用详细信息。
+选择列表视图中的某个项可获得更详细的信息。
 
 ![登录活动](./media/concept-sign-ins/03.png "登录活动")
 
@@ -98,9 +93,9 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
 - 用户
-- Application
+- 应用程序
 - 登录状态
-- 风险检测的状态
+- 条件性访问
 - 日期
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
@@ -111,15 +106,16 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 “登录状态”筛选器用于选择：
 
-- 全部
+- 所有
 - 成功
 - 失败
 
-“检测到的风险”筛选器用于选择：
+使用“条件访问”筛选器可以选择登录的 CA 策略状态：
 
-- 全部
-- 是
-- 否
+- 所有
+- 未应用
+- 成功
+- 失败
 
 “日期”筛选器用于定义已返回数据的时间范围。  
 可能的值包括：
@@ -149,11 +145,14 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
-如果想要在 Azure 门户之外使用登录活动数据，可以将其下载。 单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。  除了“下载”按钮外，Azure 门户还为你提供了一个生成用于下载数据的脚本的选项。  
+如果想要在 Azure 门户外部使用登录活动数据，可以[下载登录数据](quickstart-download-sign-in-report.md)。 单击“下载”会创建一个包含最近 5K 条记录的 CSV 文件。  除了“下载”按钮外，Azure 门户还为你提供了一个[生成用于下载数据的脚本](tutorial-signin-logs-download-script.md)的选项。  
 
 ![下载](./media/concept-sign-ins/71.png "下载")
 
 如果需要更大的灵活性，可以使用脚本解决方案。 单击“脚本”会创建一个 PowerShell 脚本，其中包含已设置的所有筛选器。 以**管理员模式**下载并运行此脚本以生成 CSV 文件。 
+
+> [!IMPORTANT]
+> 可以下载的记录数受 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。  
 
 ### <a name="running-the-script-on-a-windows-10-machine"></a>在 Windows 10 计算机上运行脚本
 
@@ -164,28 +163,18 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 3. 运行 **Set-ExecutionPolicy unrestricted**，并选择 **Yes to All**。 
 4. 现在，可以在管理员模式下运行下载的 PowerShell 脚本以生成 CSV 文件。
 
-除了技术实现外，可以下载的记录数还受到 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)的限制。  
+## <a name="sign-ins-data-shortcuts"></a>登录数据快捷方式
 
+除了 Azure AD 之外，Azure 门户也提供了登录数据的其他入口点：
 
-## <a name="sign-in-activities-shortcuts"></a>登录活动快捷方式
-
-除了 Azure Active Directory 外，Azure 门户还提供了其他登录活动数据的入口点：
-
-- 标识安全保护概览
+- 标识安全保护概述
 - 用户
 - 组
 - 企业应用程序
 
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>标识安全保护中的用户登录数据
 
-### <a name="users-sign-ins-activities"></a>用户登录活动
-
-通过用户登录报表提供的信息，可以找到一些问题的答案，例如：
-
-- 什么是用户的登录模式？
-- 多少用户超过一周都有登录行为？
-- 这些登录的状态怎样？
-
-该数据的入口点为“标识安全保护”概览页上的用户登录图。 用户登录图显示指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
+“标识安全保护”概述页上的用户登录图显示了指定时间内所有用户的按周汇总的登录信息。 默认时间为 30 天。
 
 ![登录活动](./media/concept-sign-ins/06.png "登录活动")
 
@@ -204,14 +193,13 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 - 用户
 - 用户名
 - 应用程序 ID
-- Application
-- Client
+- 应用程序
+- 客户端
 - 位置
 - IP 地址
 - 日期
 - 需要 MFA
 - 登录状态
-
  
 在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
 
@@ -243,9 +231,9 @@ Azure Active Directory 中的报表体系结构由以下部分组成：
 
 ![登录活动](./media/concept-sign-ins/11.png "登录活动")
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-如需详细了解登录活动的错误代码，请参阅 [Azure Active Directory 门户中的登录活动报告错误代码](reference-sign-ins-error-codes.md)。
+* [登录活动报告错误代码](reference-sign-ins-error-codes.md)
+* [Azure AD 数据保留策略](reference-reports-data-retention.md)
+* [Azure AD 报告延迟](reference-reports-latencies.md)
 

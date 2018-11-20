@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861021"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211530"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -97,6 +97,19 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 > [!NOTE]
 > 当 Azure AD 分配组许可证时，任何未指定使用位置的用户将继承目录的位置。 建议管理员在使用基于组的许可之前，先为用户设置正确的使用位置值，以符合当地法律和法规。
 
+## <a name="duplicate-proxy-addresses"></a>重复的代理地址
+
+如果使用的是 Exchange Online，可能会使用相同的代理地址值错误地配置租户中的某些用户。 当基于组的许可尝试为此类用户分配许可证时，此操作会失败并显示“代理地址已被使用”。
+
+> [!TIP]
+> 若要查看是否有重复的代理地址，请针对 Exchange Online 执行以下 PowerShell cmdlet：
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](https://technet.microsoft.com/library/jj984289.aspx) 的信息。 有关[如何在 Azure AD 中填充 proxyAddresses 属性](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)的详细信息，请参阅此文。
+
+为受影响的用户解决代理地址问题之后，请确保强制对组进行许可证处理，确保现在可以应用许可证。
+
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>如果组中有多个产品许可证，会发生什么情况？
 
 可将多个产品许可证分配到一个组。 例如，可将 Office 365 企业版 E3 和企业移动性 + 安全性分配到某个组，轻松为用户启用所有包含的服务。
@@ -134,19 +147,7 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 > [!TIP]
 > 可为每个先决服务计划创建多个组。 例如，如果有用户使用 Office 365 Enterprise E1，也有用户 Office 365 Enterprise E3，则可创建两个组来授权 Microsoft Workplace Analytics：一个使用 E1 作为先决条件，另一个使用 E3。 这样，不需要额外的许可证，即可将附加产品分发到 E1 和 E3 用户。
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>对于某个用户，许可证分配在无提示的情况下失败，因为 Exchange Online 中存在重复代理地址
 
-如果使用的是 Exchange Online，可能会使用相同的代理地址值错误地配置租户中的某些用户。 当基于组的许可尝试向此类用户分配许可证时，此操作会失败且不会记录错误。 在此情况下无法记录错误的原因是此功能的预览版存在限制，我们将在推出正式版之前解决此问题。
-
-> [!TIP]
-> 如果发现某些用户未收到许可证，并且没有针对这些用户错误记录，请先检查他们是否使用了重复的代理地址。
-> 若要查看是否有重复的代理地址，请针对 Exchange Online 执行以下 PowerShell cmdlet：
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](https://technet.microsoft.com/library/jj984289.aspx) 的信息。
-
-为受影响的用户解决代理地址问题之后，请确保强制对组进行许可证处理，确保现在可以应用许可证。
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>如何强制处理组中的许可证以解决错误？
 
@@ -154,11 +155,19 @@ Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.co
 
 例如，如果通过删除用户的直接许可证分配来释放某些许可证，则需要触发以前无法完全为所有用户成员提供许可证的组的处理。 若要重新处理某个组，请转到组窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>如何强制用户处理许可证以解决错误？
+
+根据解决错误时采取的措施，可能需要手动触发用户的处理来更新用户状态。
+
+例如，解决受影响用户的重复代理地址问题后，需要触发用户的处理。 若要重新处理某个用户，请转到用户窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解通过组进行许可证管理的其他方案，请参阅以下部分：
 
-* [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [Azure Active Directory 中基于组的许可是什么？](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
+* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
 * [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
+* [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

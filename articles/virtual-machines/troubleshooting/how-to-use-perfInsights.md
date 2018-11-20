@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a6077b3e10562b4aee313cccd86256b8f00084ec
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 29af7ad8b582682189320185c460597af53cf6d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411369"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243907"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) 是一种自助诊断工具，用于收集和分析诊断数据，并提供报告以帮助解决 Azure 中的 Windows 虚拟机性能问题。 PerfInsights 可以作为独立工具在虚拟机上运行，可以通过使用 [Azure 虚拟机的性能诊断](performance-diagnostics.md)直接从门户运行，也可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)来运行。
+[PerfInsights](https://aka.ms/perfinsightsdownload) 是一种自助诊断工具，用于收集和分析诊断数据，并提供报告以帮助解决 Azure 中的 Windows 虚拟机性能问题。 PerfInsights 可以作为独立工具在虚拟机上运行，可以通过使用 [Azure 虚拟机的性能诊断](performance-diagnostics.md)直接从门户运行，也可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)来运行。
 
 如果遇到虚拟机性能问题，我们建议在联系支持人员之前先运行此工具。
 
@@ -190,7 +190,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 要运行 PerfInsights 工具，请按照以下步骤操作：
 
 
-1. 下载 [PerfInsights.zip](http://aka.ms/perfinsightsdownload)。
+1. 下载 [PerfInsights.zip](https://aka.ms/perfinsightsdownload)。
 
 2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。 在“常规”选项卡上，选择“取消阻止”，然后选择“确定”。 这可以确保运行工具时不会出现其他任何安全提示。  
 

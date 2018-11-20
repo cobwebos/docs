@@ -1,5 +1,5 @@
 ---
-title: Azure 开发测试实验室基础结构的监管
+title: Azure 开发测试实验室基础设施治理
 description: 本文提供有关监管 Azure 开发测试实验室基础结构的指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250709"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740363"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
 本文介绍组织中开发测试实验室的资源调配和管理。 
@@ -67,7 +67,7 @@ ms.locfileid: "48250709"
 
 可能还需要考虑地理边界。 例如，美国 (US) 东北部的开发人员可能会使用美国东部 2 区域中预配的实验室。 另外，位于德克萨斯州达拉斯市和科罗拉多州丹佛市的开发人员可能会定向为使用美国中南部的资源。 如果能够与外部第三方展开协作，则可为这些开发人员分配未由内部开发人员使用的实验室。 
 
-此外，还可以对 Visual Studio Team Services 团队项目中的特定项目使用一个实验室。 然后，通过允许访问这两组资源的指定 Azure Active Directory 组应用安全性。 分配到该实验室的虚拟网络可以是用于整合用户的另一个边界。
+还可以将实验室用于 Azure DevOps 项目中的特定项目。 然后，通过允许访问这两组资源的指定 Azure Active Directory 组应用安全性。 分配到该实验室的虚拟网络可以是用于整合用户的另一个边界。
 
 ## <a name="deletion-of-resources"></a>资源的删除
 

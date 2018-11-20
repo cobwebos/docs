@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: yshoukry, LADocs
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/01/2018
+ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855419"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420092"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -60,10 +60,12 @@ ms.locfileid: "48855419"
 * 下面是本地计算机的要求：
 
   **最低要求**
+
   * .NET Framework 4.5.2
   * 64 位版本的 Windows 7 或 Windows Server 2008 R2（或更高版本）
 
   **建议的要求**
+
   * 8 核 CPU
   * 8 GB 内存
   * 64 位版本的 Windows Server 2012 R2（或更高版本）
@@ -75,11 +77,11 @@ ms.locfileid: "48855419"
     > [!TIP]
     > 为了尽量降低延迟，可将网关安装在尽可能靠近数据源的位置或同一台计算机上（假设你有相应的权限）。
 
-  * 在连接到 Internet 的计算机上安装网关，始终打开，并且不进入休眠状态。 否则，网关不能运行。 此外，在通过无线网络工作时，性能可能会下降。
+  * 在连接到 Internet 的计算机上安装网关，始终打开，并且不进入休眠状态。 否则，网关不能运行。 
+  此外，在通过无线网络工作时，性能可能会下降。
 
-  * 安装期间，只能使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](../active-directory/sign-up-organization.md)（而不是 Microsoft 帐户）登录。 
-  此外，请确保此帐户不是 Azure B2B（来宾）帐户。 
-  在通过为网关创建 Azure 资源注册网关安装时，必须在 Azure 门户中使用相同的登录帐户。 
+  * 安装期间，只能使用由 Azure Active Directory (Azure AD) 托管的[工作或学校帐户](../active-directory/sign-up-organization.md)，例如 @contoso.onmicrosoft.com，而不能使用 Azure B2B（来宾）帐户或个人 Microsoft 帐户，例如 @hotmail.com 或 @outlook.com。 
+  在通过创建网关资源在 Azure 门户中注册网关安装时，必须使用同一登录帐户。 
   然后，在创建从逻辑应用到本地数据源的连接时，可以选择此网关资源。 
   [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
 
@@ -96,6 +98,19 @@ ms.locfileid: "48855419"
   * 如果使用版本低于 14.16.6317.4 的安装程序安装了网关，则无法通过运行最新的安装程序更改网关位置。 但是，可以使用最新的安装程序来安装改用所需位置的新网关。
   
     如果网关安装程序的版本低于 14.16.6317.4，但尚未安装网关，则可以下载并改用最新的安装程序。
+
+## <a name="high-availability-support"></a>高可用性支持
+
+如果完成了多个网关安装并将其设置为群集，则本地数据网关支持高可用性。 如果在创建另一个网关时已有一个网关，则可以选择性地创建高可用性群集。 这些群集会将网关组织成组，帮助避免单一故障点。 此外，所有本地数据网关连接器现在都支持高可用性。
+
+若要使用本地数据网关，请查看以下要求和注意事项：
+
+* 主网关所在的同一个 Azure 订阅中必须至少有一个网关安装，并且你能够提供该安装的恢复密钥。 
+
+* 主网关必须运行网关 2017 年 11 月更新版或更高版本。
+
+满足这些要求后，在创建下一个网关时，请选择“添加到现有网关群集”，选择群集的主网关，然后提供该主网关的恢复密钥。
+有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)。
 
 <a name="install-gateway"></a>
 
@@ -161,19 +176,6 @@ ms.locfileid: "48855419"
 
 10. 现在，请通过[为网关安装创建 Azure 资源](../logic-apps/logic-apps-gateway-connection.md)，在 Azure 中注册网关。 
 
-## <a name="enable-high-availability"></a>启用高可用性
-
-如果完成了多个网关安装并将其设置为群集，则本地数据网关支持高可用性。 如果在创建另一个网关时已有一个网关，则可以选择性地创建高可用性群集。 这些群集会将网关组织成组，帮助避免单一故障点。 若要使用此功能，请查看以下要求和注意事项：
-
-* 只有一部分连接器支持高可用性，例如文件系统连接器和即将推出的其他连接器。 
-     
-* 主网关所在的同一个 Azure 订阅中必须至少有一个网关安装，并且你能够提供该安装的恢复密钥。 
-
-* 主网关必须运行网关 2017 年 11 月更新版或更高版本。
-
-满足这些要求后，在创建下一个网关时，请选择“添加到现有网关群集”，选择群集的主网关，然后提供该主网关的恢复密钥。
-有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)。
-
 <a name="update-gateway-installation"></a>
 
 ## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>更改位置或者迁移、还原或接管现有网关
@@ -236,7 +238,7 @@ TcpTestSucceeded       : True
 
 网关使用以下完全限定的域名：
 
-| 域名 | 出站端口 | Description | 
+| 域名 | 出站端口 | 说明 | 
 | ------------ | -------------- | ----------- | 
 | *.analysis.windows.net | 443 | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 
@@ -253,7 +255,7 @@ TcpTestSucceeded       : True
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>强制与 Azure 服务总线进行 HTTPS 通信
 
-某些代理仅允许流量发往端口 80 和 443。 默认情况下，与 Azure 服务总线之间的通信在除 443 以外的端口上进行。
+某些代理仅允许发往端口 80 和 443 的流量通过。 默认情况下，与 Azure 服务总线之间的通信在除 443 以外的端口上进行。
 可以强制网关通过 HTTPS 而不是通过直接 TCP 来与 Azure 服务总线通信，但这可能会显著降低性能。 若要执行此任务，请执行以下步骤：
 
 1. 浏览到本地数据网关客户端所在的位置，通常可在此处找到：```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
@@ -283,7 +285,7 @@ TcpTestSucceeded       : True
 
 ## <a name="restart-gateway"></a>重启网关
 
-数据网关以 Windows 服务的形式运行，与任何其他 Windows 服务一样，可以通过多种方式启动和停止该网关。 例如，可以在运行网关的计算机上使用提升的权限打开命令提示符，并运行以下任一命令：
+数据网关以 Windows 服务的形式运行，与任何其他 Windows 服务一样，可以通过各种方式启动和停止该网关。 例如，可以在运行网关的计算机上使用提升的权限打开命令提示符，并运行以下任一命令：
 
 * 若要启动该服务，请运行以下命令：
   
@@ -504,7 +506,7 @@ TcpTestSucceeded       : True
 
    2. 若要查找某个查询，请搜索活动类型，例如： 
 
-      | 活动类型 | Description | 
+      | 活动类型 | 说明 | 
       |---------------|-------------| 
       | MGEQ | 通过 ADO.NET 运行的查询。 | 
       | MGEO | 通过 OLEDB 运行的查询。 | 

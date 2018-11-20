@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
-ms.openlocfilehash: 21ed7dd1120958576651703283a0732e3843546d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8aad769da4d1c831dc0222c39daf86801a4f850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244281"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 ## <a name="overview"></a>概述
@@ -94,7 +94,7 @@ ms.locfileid: "33777451"
         }
    
    > [!NOTE]
-   > （可选）请参阅[如何使用 Visual C# 嵌入和访问资源](http://support.microsoft.com/kb/319292)了解有关如何添加和获取项目资源的详细信息。
+   > （可选）请参阅[如何使用 Visual C# 嵌入和访问资源](https://support.microsoft.com/kb/319292)了解有关如何添加和获取项目资源的详细信息。
    > 
    > 
 7. 在 **NotificationsController.cs** 中，使用以下代码段重新定义 **NotificationsController**。 这会将初始无提示的富通知 ID 发送到设备，并允许客户端对图像进行检索：

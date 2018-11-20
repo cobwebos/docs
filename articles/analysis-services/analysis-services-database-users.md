@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 863e465d888774730b9d9269024665a097a1207b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429282"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238873"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -135,8 +135,8 @@ ms.locfileid: "49429282"
   
 |表|DAX 表达式|  
 |-----------|--------------------|  
-|区域|=Region[Country]=”USA”|  
-|ProductCategory|=ProductCategory[Name]=”Bicycles”|  
+|区域|=Region[Country]="USA"|  
+|ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |事务|=Transactions[Year]=2016|  
   
  净效果是指成员可以查询若干行数据，其中客户位于美国，产品类别为自行车，年份是 2016 年。 用户无法查询美国之外的事务，不是自行车事务或非 2016 年的事务，除非它们属于授予这些权限的另一角色。

@@ -66,8 +66,8 @@ items:
         href: backup-azure-microsoft-azure-backup.md
       - name: 添加存储
         href: backup-mabs-add-storage.md
-      - name: 升级到 v.2
-        href: backup-mabs-upgrade-to-v2.md
+      - name: MABS 中的新增功能
+        href: backup-mabs-whats-new-mabs.md
       - name: 无人参与的安装
         href: backup-mabs-unattended-install.md
     - name: 保护工作负荷
@@ -168,6 +168,18 @@ items:
       href: backup-dpm-automation.md
     - name: Azure 门户中的 Windows Server
       href: backup-client-automation.md
+  - name: 使用 Azure 备份 REST API
+    items:
+    - name: 创建恢复服务保管库
+      href: backup-azure-arm-userestapi-createorupdatevault.md
+    - name: 创建和更新备份策略
+      href: backup-azure-arm-userestapi-createorupdatepolicy.md
+    - name: 备份 Azure VM
+      href: backup-azure-arm-userestapi-backupazurevms.md
+    - name: 还原 Azure VM
+      href: backup-azure-arm-userestapi-restoreazurevms.md
+    - name: 管理 Azure 备份作业
+      href: backup-azure-arm-userestapi-managejobs.md
   - name: Azure VM 上的 SQL
     items:
     - name: 备份 Azure 中的 SQL 数据库
@@ -236,9 +248,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: d98a747f8805abdbef529a50c0b2c2d5a17e3106
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff42e7281240f8483355f2b3764dc51826885188
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972589"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578427"

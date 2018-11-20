@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6c68d90605590ed8a17296e83276c7ef5396d6a2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092963"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233576"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -139,7 +139,7 @@ Contoso 按如下方式运行迁移：
 > * **步骤 1：预配 AKS 和 ACR**：Contoso 使用 PowerShell 预配托管 AKS 群集和 Azure 容器注册表
 > * 步骤 2：生成 Docker 容器：使用 Azure DevOps 为 Docker 容器设置 CI，并将容器推送到 ACR。
 > * **步骤 3：部署后端微服务**：部署后端微服务将利用的基础结构的其余部分。
-> * **步骤 4：部署前端基础结构**：部署前端基础结构，包括宠物照片的 blob 存储、Cosmos DB 和视觉 API。
+> * **步骤 4：部署前端基础结构**：部署前端基础结构，包括存储宠物照片的 blob 存储、Cosmos DB 和视觉 API。
 > * **步骤 5：迁移后端**：部署微服务并在 AKS 上运行以迁移后端。
 > * 步骤 6：发布前端：将 SmartHotel360 应用发布到 Azure 应用服务以及宠物服务将调用的 Function App。
 
@@ -545,7 +545,7 @@ Contoso 管理员现在可以发布该网站。
 
     ![新的环境](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-14. 选择“使用槽位部署 Azure 应用服务”将环境命名为“生产”。
+14. 选择“使用槽位部署 Azure 应用服务”并将环境命名为“Prod”。
 15. 单击“1 个作业、2 个任务”，然后选择订阅、应用服务名称和“暂存”槽位。
 
     ![环境名称](./media/contoso-migration-rebuild/vsts-publishfront10.png)

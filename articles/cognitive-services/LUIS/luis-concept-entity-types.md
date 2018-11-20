@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650105"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085787"
 ---
 # <a name="entities-in-luis"></a>LUIS 中的实体
 
@@ -96,8 +96,9 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 ## <a name="entity-limits"></a>实体限制
 查看[限制](luis-boundaries.md#model-boundaries)，了解可添加到模型中的每种类型的实体的数量。
 
-## <a name="entity-roles"></a>实体角色
-实体[角色](luis-concept-roles.md)适用于自定义和预构建实体，并且仅在模式中使用。 
+## <a name="roles-versus-hierarchical-entities"></a>角色与分层实体
+
+有关详细信息，请参阅[角色与分层实体](luis-concept-roles.md#roles-versus-hierarchical-entities)。
 
 ## <a name="composite-vs-hierarchical-entities"></a>复合实体与分层实体
 复合实体和分层实体都具有父子关系，并且都是机器学习的实体。 通过机器学习，LUIS 能够基于不同上下文（字词排列方式）来理解实体。 复合实体更为灵活，因为它们允许使用不同的实体类型作为子实体。 分层实体的子实体只能是简单实体。 

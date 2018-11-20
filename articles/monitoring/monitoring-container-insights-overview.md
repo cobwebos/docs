@@ -1,5 +1,5 @@
 ---
-title: 用于容器的 Azure Monitor 概述 | Microsoft Docs
+title: 用于容器的 Azure Monitor（预览版）概述 | Microsoft Docs
 description: 本文介绍用于容器的 Azure Monitor，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
 services: azure-monitor
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 6819cf96eb968e8faad5441cf3f3dd672653f1cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b90aa9e3c627708b2640086b2b812b8c7079e5bf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971427"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912524"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
+# <a name="azure-monitor-for-containers-preview-overview"></a>用于容器的 Azure Monitor（预览版）概述
 
-用于容器的 Azure Monitor 是一项功能，旨在监视部署到 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负载的性能。 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
+用于容器的 Azure Monitor 功能旨在监视部署到 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 监视容器至关重要，特别是在大规模运行包含多个应用程序的生产群集时。
 
-用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标和日志，并将其存储在 [Log Analytics](../log-analytics/log-analytics-overview.md) 工作区中。 
+用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标和日志，并将其存储在 [Log Analytics](../log-analytics/log-analytics-queries.md) 工作区中。 
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>用于容器的 Azure Monitor 提供了什么？
 

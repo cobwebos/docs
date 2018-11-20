@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: overview
 ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9936cd301cc8dad88ce1a2431f9253a15ab2da7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077912"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251249"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -65,7 +65,7 @@ Azure 视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务�
 
 - 用户参与度 - 可以通过视频见解来提高用户参与度，方法是为用户提供相关的视频瞬间。 以某个教育视频为例，该视频在头 30 分钟讲述球体，在接下来的 30 分钟讲述锥体。 如果某个学生想要了解锥体，则该视频从 30 分钟处开始播放更合适。
 
-有关详细信息，请参阅此[博客](http://aka.ms/videoindexerblog)。
+有关详细信息，请参阅此[博客](https://aka.ms/videoindexerblog)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312605"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264248"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>高性价比标准存储以及非托管和托管 Azure VM 磁盘
 
@@ -61,10 +61,10 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 | **资源** | **默认限制** |
 |--------------|-------------------|
 | 每个存储帐户的 TB  | 500 TB |
-| 每个存储帐户的最大入口 <sup>1</sup>（美国区域） | 如果已启用 GRS/ZRS，则为 10 Gbps；对于 LRS，为 20 Gbps |
-| 每个存储帐户的最大出口 <sup>1</sup>（美国区域） | 如果已启用 RA-GRS/GRS/ZRS，则为 20 Gbps；对于 LRS，为 30 Gbps |
-| 每个存储帐户的最大入口 <sup>1</sup>（欧洲和亚洲区域） | 如果已启用 GRS/ZRS，则为 5 Gbps；对于 LRS，为 10 Gbps |
-| 每个存储帐户的最大出口 <sup>1</sup>（欧洲和亚洲区域） | 如果已启用 RA-GRS/GRS/ZRS，则为 10 Gbps；对于 LRS，为 15 Gbps |
+| 每个存储帐户的最大入口 <sup>1</sup> （美国区域） | 如果已启用 GRS/ZRS，则为 10 Gbps；对于 LRS，为 20 Gbps |
+| 每个存储帐户的最大出口 <sup>1</sup> （美国区域） | 如果已启用 RA-GRS/GRS/ZRS，则为 20 Gbps；对于 LRS，为 30 Gbps |
+| 每个存储帐户的最大入口 <sup>1</sup> （欧洲和亚洲区域） | 如果已启用 GRS/ZRS，则为 5 Gbps；对于 LRS，为 10 Gbps |
+| 每个存储帐户的最大出口 <sup>1</sup> （欧洲和亚洲区域） | 如果已启用 RA-GRS/GRS/ZRS，则为 10 Gbps；对于 LRS，为 15 Gbps |
 | 每个存储帐户的总请求速率（假设对象大小为 1 KB） | 每秒实体或每秒消息数目最高 20,000 IOPS |
 
 <sup>1</sup>传入是指发送到存储帐户的所有数据（请求）。 传出是指从存储帐户接收的所有数据（响应）。
@@ -111,7 +111,7 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 使用标准存储时，请注意以下计费方式：
 
-* 标准存储非托管磁盘/数据大小 
+* 标准存储非托管磁盘/数据大小
 * 标准托管磁盘
 * 标准存储快照
 * 出站数据传输
@@ -121,14 +121,16 @@ Azure 标准存储为运行不区分延迟的工作负荷提供可靠、低成�
 
 **托管磁盘**：标准托管磁盘的计费取决于磁盘的预配大小。 Azure 会将预配大小映射（向上舍入）到下面各表中指定的最接近的托管磁盘选项。 每个托管磁盘都映射到其中一种受支持的预配大小并相应地进行计费。 例如，如果创建了一个标准托管磁盘并将预配大小指定为 200 GiB，则会根据 S15 磁盘类型的定价向你收费。
 
-| 标准 HDD 托管<br>磁盘类型 | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+用星号表示的大小当前处于预览阶段。
+
+| 标准 HDD 托管<br>磁盘类型 | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | 磁盘大小        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,385 GiB (16 TiB) | 32,767 GiB (32 TiB) |
 
 
 **快照**：对标准磁盘的快照使用的额外容量计费。 有关快照的详细信息，请参阅 [Creating a Snapshot of a Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)（创建 Blob 的快照）。
 
-**出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/data-transfers/)（Azure 数据中心送出的数据）会产生带宽使用费。
+**出站数据传输**： [出站数据传输](https://azure.microsoft.com/pricing/details/data-transfers/) （Azure 数据中心传出的数据）会产生带宽使用费。
 
 **事务**：Azure 对标准存储的每 100,000 个事务收费 0.0036 美元。 事务包括对存储区的读操作和写操作。
 

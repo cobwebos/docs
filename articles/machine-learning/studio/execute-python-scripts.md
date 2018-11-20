@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 537839295deb631c3b9811c8d40db8608954e8a1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7520780060f603a7e394b100549529a2c1b6fe4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835247"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228158"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
 
@@ -67,7 +67,7 @@ Azure 机器学习工作室中 Python 主接口通过图 1 中所示的[执行 P
 Azure 机器学习工作室中的[执行 Python 脚本][execute-python-script]模块接受最多三个输入，生成最多两个输出（如下一部分所述），就像 R 模拟一样，即[执行 R 脚本][execute-r-script]模块。 要执行的 Python 代码输入参数框，作为名为 `azureml_main` 的特殊命名的入口点函数。 以下是用于实现此模块的关键设计原则：
 
 1. *必须是 Python 用户常用。* 大多数 Python 用户将他们的代码视为模块中的函数。 因此将大量可执行语句放入顶层模块的情况相对较少。 因此，脚本框对一系列语句采用特殊命名的 Python 函数。 在函数中显示的对象都是标准的 Python 库类型，例如 [Pandas](http://pandas.pydata.org/) 数据帧和 [NumPy](http://www.numpy.org/) 数组。
-2. *在本地和云执行之间必须具有高保真度。* 用于执行 Python 代码的后端基于 [Anaconda](https://store.continuum.io/cshop/anaconda/)，这是跨平台科学分配 Python，已在广泛使用。 它附带接近 200 个最常用的 Python 程序包。 因此，数据科学家可在本地 Azure 机器学习兼容的 Anaconda 环境中调试和限制代码。 然后使用 [IPython](http://ipython.org/) Notebook 或[用于 Visual Studio 的 Python 工具](http://aka.ms/ptvs)等现有开发环境将其作为 Azure 机器学习实验的一部分运行。 `azureml_main` 入口点是普通 Python 函数，因此****可在没有 Azure 机器学习特定代码或不安装 SDK 的情况下编写。
+2. *在本地和云执行之间必须具有高保真度。* 用于执行 Python 代码的后端基于 [Anaconda](https://store.continuum.io/cshop/anaconda/)，这是跨平台科学分配 Python，已在广泛使用。 它附带接近 200 个最常用的 Python 程序包。 因此，数据科学家可在本地 Azure 机器学习兼容的 Anaconda 环境中调试和限制代码。 然后使用 [IPython](http://ipython.org/) Notebook 或[用于 Visual Studio 的 Python 工具](https://aka.ms/ptvs)等现有开发环境将其作为 Azure 机器学习实验的一部分运行。 `azureml_main` 入口点是普通 Python 函数，因此****可在没有 Azure 机器学习特定代码或不安装 SDK 的情况下编写。
 3. *必须与其他 Azure 机器学习模块无缝组合。* 作为输入和输出，[执行 Python 脚本][execute-python-script]模块接受标准的 Azure 机器学习数据集。 基础框架透明且有效地连接 Azure 机器学习和 Python 运行时。 因此，Python 可与现有的 Azure 机器学习工作流一起使用，包括调入 R 和 SQLite 的工作流。 因此，数据科学家可以这样设想工作流：
    * 将 Python 和 Pandas 用于数据预处理和清理
    * 将数据传送到 SQL 转换，集合多个数据集形成特征
@@ -190,7 +190,8 @@ Azure 机器学习中的输入数据集转换为 Pandas 中的数据帧。 输�
 ![image11](./media/execute-python-scripts/figure8.png)
 
 图 10. 根据得分对功能排名的函数。
-  以下实验在 Azure 机器学习的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
+ 
+以下实验则在 Azure 机器学习的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    

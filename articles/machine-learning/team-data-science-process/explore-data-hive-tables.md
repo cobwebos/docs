@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 79d40617ae4f9cd83d04cad213e5d8fd76b03876
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 84bc7ee08c6c98e76c3814f8a59dfa300db9d22d
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42141457"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344565"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
-本文档提供了用于在 HDInsight Hadoop集群的 Hive 表中浏览数据的示例 Hive 脚本。
 
-以下**菜单**带有描述如何使用工具从不同存储环境浏览数据的主题的链接。
+本文提供了用于在 HDInsight Hadoop群集的 Hive 表中浏览数据的示例 Hive 脚本。
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
 ## <a name="prerequisites"></a>先决条件
 本文假设用户具备以下条件：

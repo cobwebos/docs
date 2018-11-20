@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bd72b93d31a25a6aa848fc08a7db4d9d0fcece9f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408466"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010739"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -44,8 +44,8 @@ DNS Analytics 可帮助：
 
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| [Windows 代理](log-analytics-windows-agent.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](log-analytics-linux-agents.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [Windows 代理](log-analytics-agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
+| [Linux 代理](log-analytics-quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](log-analytics-om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据将从管理组转发到 Log Analytics 工作区。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 解决方案不会使用 Azure 存储。 |
 
@@ -57,8 +57,8 @@ DNS Analytics 可帮助：
 
 使用以下信息配置解决方案：
 
-- 在要监视的每个 DNS 服务器上，都必须装有 [Windows](log-analytics-windows-agent.md) 或 [Operations Manager](log-analytics-om-agents.md) 代理。
-- 从 [Azure 市场](https://aka.ms/dnsanalyticsazuremarketplace)将 DNS Analytics 解决方案添加到 Log Analytics 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程。
+- 在要监视的每个 DNS 服务器上，都必须装有 [Windows](log-analytics-agent-windows.md) 或 [Operations Manager](log-analytics-om-agents.md) 代理。
+- 从 [Azure 市场](https://aka.ms/dnsanalyticsazuremarketplace)将 DNS Analytics 解决方案添加到 Log Analytics 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程。
 
 解决方案将开始收集数据，而无需进一步配置。 但是，可使用以下配置自定义数据收集。
 
@@ -190,4 +190,4 @@ DNS Analytics 可帮助：
 
 ## <a name="next-steps"></a>后续步骤
 
-[搜索日志](log-analytics-log-searches.md)以查看详细的 DNS 日志记录。
+[搜索日志](log-analytics-queries.md)以查看详细的 DNS 日志记录。

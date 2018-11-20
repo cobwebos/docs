@@ -3,7 +3,7 @@ title: Azure Service Fabric Docker Compose 部署预览版
 description: Azure Service Fabric 接受 Docker Compose 格式，因此可以更轻松地安排使用 Service Fabric 的现有容器。 这种支持目前处于预览状态。
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 43845a55589be9550e64b4a491b7d3675fb22e8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: twhitney, subramar
+ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641775"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300636"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 
@@ -122,6 +122,15 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 * 卷和部署 > 卷
 
 将群集设置为强制实施 [Service Fabric 资源调控](service-fabric-resource-governance.md)中所述的资源限制。 所有其他 Docker Compose 指令均不受此预览版支持。
+
+### <a name="ports-section"></a>端口部分
+
+指定 Service Fabric 侦听程序将使用“端口”部分中的 http 还是 https 协议。 这将确保使用命名服务正确发布终结点协议，以允许反向代理转发请求：
+* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http。 例如“80:80/http”。
+* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https。 例如“443:443/https”。
+
+> [!NOTE]
+> /http 和 /https 端口部分语法特定于 Service Fabric，用于注册正确的 Service Fabric 侦听程序 URL。  如果以编程方式验证 Docker Compose 文件语法，则可能导致验证错误。
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName 计算
 

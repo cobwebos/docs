@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041639"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085765"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
 处理消息时，逻辑应用通过最大大小来限制消息内容。 此限制可以减少大型消息的存储和处理带来的开销。 逻辑应用可以通过分块将大消息拆分成小消息，以便处理其大小超出此限制的消息。 有了这种方式，就可以使用逻辑应用在特定条件下传输大文件。 通过连接器或 HTTP 与其他服务通信时，逻辑应用可以使用大型消息，但只能采用区块的方式。 这种情况意味着，连接器也必须支持分块，或者逻辑应用和这些服务之间的基础 HTTP 消息交换必须使用分块。
 
-本文介绍如何为超出限制的消息设置分块支持。
+本文展示了如何为处理超过限制的消息的操作设置分块。 逻辑应用触发器不支持分块，因为交换多个消息的开销会增加。 
 
 ## <a name="what-makes-messages-large"></a>哪些因素导致消息成为“大型”消息？
 

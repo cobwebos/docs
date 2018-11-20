@@ -2,19 +2,19 @@
 title: 使用脚本操作自定义 HDInsight 群集 - Azure
 description: 了解如何使用脚本操作自定义 HDInsight 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105918"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230795"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。
@@ -279,7 +279,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 5. 按 **F5** 运行应用程序。
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件
-Microsoft Azure HDInsight 服务是一个弹性平台，允许使用围绕着 Hadoop 形成的开放源代码技术生态系统，在云中生成大数据应用程序。 Microsoft Azure 为开放源代码技术提供一般级别的支持，如 <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure 支持常见问题网站</a>上的**支持范围**部分中所述。 HDInsight 服务为如下所述的某些组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务是一个弹性平台，允许使用围绕着 Hadoop 形成的开放源代码技术生态系统，在云中生成大数据应用程序。 Microsoft Azure 为开放源代码技术提供一般级别的支持，如 <a href="https://azure.microsoft.com/support/faq/" target="_blank">Azure 支持常见问题网站</a>上的**支持范围**部分中所述。 HDInsight 服务为如下所述的某些组件提供附加的支持级别。
 
 HDInsight 服务中有两种类型的开放源代码组件：
 

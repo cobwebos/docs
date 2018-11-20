@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301455"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262363"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [MSDN：自动完成特性](http://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](http://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](http://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参考**              | [MSDN：自动完成特性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[在 HTML 中使用自动完成](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML 净化漏洞](https://technet.microsoft.com/security/bulletin/MS10-071)、[又是自动完成？](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **步骤** | 自动完成特性指定是要打开还是关闭窗体的自动填充。 如果打开自动完成，浏览器会根据用户以前输入的值自动填充值。 例如，如果在窗体中输入新名称和密码，然后提交该窗体，则浏览器会提示是否应保存该密码。此后显示该窗体时，该名称和密码会自动填充，或者在输入名称时自动填充。 拥有本地访问权限的攻击者可能会通过浏览器缓存获取明文密码。 自动完成默认已启用，必须显式将它禁用。 |
 
 ### <a name="example"></a>示例

@@ -15,21 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: a87d02732196af7471636346fa802f9a58869c95
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: a71ee9246ae21ad76be66c022dac9fe3f00ecbb5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393567"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345226"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
-本主题概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
+
+本文概述了用于将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 移动到 Azure 虚拟机上的 SQL Server 的选项。 将数据移到云中的这些任务是“团队数据科学流程”的一部分。
 
 有关概述将数据移到 Azure SQL 数据库进行机器学习的选项的主题，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](move-sql-azure.md)。
-
-下面的**菜单**将链接至介绍如何将数据引入可以在“团队数据科学流程（TDSP，Team Data Science Process）”期间存储和处理数据的其他目标环境的主题。
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 下表汇总了用于将数据移到 Azure 虚拟机上的 SQL Server 的选项。
 

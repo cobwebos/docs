@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190266"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959981"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -49,6 +49,7 @@ ms.locfileid: "43190266"
 |---|---|
 |![勾选标记][1]|查看支持的设备|
 |![勾选标记][1]|查看应该知道的事项|
+|![勾选标记][1]|查看如何控制设备的混合 Azure AD 加入|
 |![勾选标记][1]|选择方案|
 
 
@@ -95,13 +96,13 @@ ms.locfileid: "43190266"
 
 如果依赖于使用虚拟机 (VM) 快照来创建更多的 VM，请确保使用尚未针对混合 Azure AD 加入进行配置的 VM 快照。
 
-已针对用户配置文件漫游或凭据漫游进行配置的设备不支持注册 Windows 下层设备。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
+Windows 下层设备的混合 Azure AD 加入：
 
-- 在非联合环境中，通过无缝单一登录支持 Windows 下层设备的注册 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)。 
- 
-- 使用 Azure AD 直通身份验证但不使用无缝单一登录时，不支持注册 Windows 下级设备。
+- 在非联合环境中，通过 [Azure Active Directory 无缝单一登录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)支持。 
 
-- 使用漫游配置文件的设备不支持 Windows 下层设备的注册。 如果依赖于配置文件或设置漫游，请使用 Windows 10。
+- 使用 Azure AD 直通身份验证但不使用无缝单一登录时，不支持。
+
+- 使用凭据漫游或用户配置文件漫游或使用虚拟桌面基础结构 (VDI) 时，不支持。
 
 
 不支持注册运行域控制器 (DC) 角色的 Windows Server。
@@ -112,6 +113,11 @@ ms.locfileid: "43190266"
 混合 Azure AD 加入是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 如果遇到这种情况，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)。
 
 
+## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>查看如何控制设备的混合 Azure AD 加入
+
+混合 Azure AD 联接是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 例如，在初始部署期间验证一切是否都按预期运行时，这一点就非常必要。
+
+有关详细信息，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
 ## <a name="select-your-scenario"></a>选择方案
 

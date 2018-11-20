@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426866"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281551"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 预览版存储帐户
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>快速入门：创建用于分析的存储帐户
 
-Azure Data Lake Storage Gen2 预览版帐户[支持分层命名空间服务](introduction.md)，该服务提供了一个适合与 Hadoop 分布式文件系统 (HDFS) 配合使用的基于原生目录的文件系统。 可以通过 [ABFS 驱动程序](abfs-driver.md)从 HDFS 访问 Data Lake Storage Gen2 数据。
+启用了 Data Lake Storage Gen2 预览版的存储帐户[支持分层命名空间服务](introduction.md)，该服务提供了一个适合与 Hadoop 分布式文件系统 (HDFS) 配合使用的基于本机目录的文件系统。 可以通过 [ABFS 驱动程序](abfs-driver.md)从 HDFS 访问 Data Lake Storage Gen2 数据。
 
-若要在存储帐户上启用 Data Lake Storage Gen2 功能，请[填写预览版调查来请求访问](https://aka.ms/adlsgen2signup)。 得到批准后，你将能够创建新的 Data Lake Storage Gen2 帐户。 本快速入门展示了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或通过 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 创建帐户。
+若要在存储帐户上启用 Data Lake Storage Gen2 功能，请[填写预览版调查来请求访问](https://aka.ms/adlsgen2signup)。 得到批准后，你将能够创建启用了 Data Lake Storage Gen2 的存储帐户。 本快速入门展示了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或通过 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 创建帐户。
 
 > [!NOTE]
 > 当你获批创建 Data Lake Storage Gen2 帐户后，Azure 门户中的创建帐户 UI 将会更新。 同样，与 Data Lake Storage Gen2 相关的 PowerShell 和 CLI 参数只有在你获批使用此预览版后才起作用。
@@ -51,7 +51,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 也可在本地安装和使用 Azure CLI。 本快速入门需要运行 Azure CLI 2.0.38 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>创建 Azure Data Lake Storage Gen2 帐户概述
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>创建启用了 Azure Data Lake Storage Gen2 的存储帐户
 
 在创建帐户前，首先创建一个资源组，使其充当你创建的存储帐户或任何其他 Azure 资源的逻辑容器。 若要清理本快速入门创建的资源，可以直接删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
@@ -135,7 +135,7 @@ Login-AzureRmAccount
 若要通过 PowerShell 创建新的资源组，请使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令： 
 
 > [!NOTE]
-> > 分层命名空间目前在所有公共区域提供，但不在专用区域提供。 它目前不在主权云中提供。
+> > 分层命名空间目前在所有公共区域中提供。 它目前不在主权云中提供。
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建了一个 Data Lake Storage Gen2 存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门。
+在本快速入门中，你已创建了一个具有 Data Lake Storage Gen2 功能的存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门。
 
 * [使用 AzCopy 将数据移入和移出 Azure Blob 存储](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

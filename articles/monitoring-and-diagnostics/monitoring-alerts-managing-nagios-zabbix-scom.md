@@ -1,5 +1,5 @@
 ---
-title: 管理来自其他监视服务的警报
+title: 在 Azure Monitor 中管理来自其他监视服务的警报
 description: 在 Azure Monitor 中管理 Nagios、Zabbix 和 SCOM 警报
 author: anantr
 services: monitoring
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d9d0cb326fb063e0a6bbfaab6a85961ab2b35416
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bc597d42fe89c0e03c4af1db3a935031b9043a98
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389358"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748266"
 ---
 # <a name="manage-alerts-from-other-monitoring-services"></a>管理来自其他监视服务的警报
 

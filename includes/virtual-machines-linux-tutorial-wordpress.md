@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226552"
+---
 ## <a name="install-wordpress"></a>安装 WordPress
 
 若要尝试堆栈，请安装示例应用。 例如，以下步骤安装用于创建网站和博客的开源 [WordPress](https://wordpress.org/) 平台。 其他可尝试的工作负荷包括 [Drupal](http://www.drupal.org) 和 [Moodle](https://moodle.org/)。 

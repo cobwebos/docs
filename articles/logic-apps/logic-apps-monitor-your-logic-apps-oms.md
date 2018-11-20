@@ -1,6 +1,6 @@
 ---
-title: 使用 Log Analytics 监视逻辑应用运行 - Azure 逻辑应用 | Microsoft Docs
-description: 使用 Log Analytics 获取有关逻辑应用运行的见解和调试数据，以进行故障排除和诊断
+title: 使用 Log Analytics 监视逻辑应用 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Azure Log Analytics 获取见解和调试数据，以对逻辑应用运行进行故障排除和诊断
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,26 +8,26 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: 177c361734a88acab5fc10d6b460645be82bf437
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 10/19/2018
+ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457130"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232370"
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>使用 Log Analytics 监视并获取有关逻辑应用运行的见解
+# <a name="monitor-logic-apps-with-azure-log-analytics"></a>使用 Azure Log Analytics 监视逻辑应用
 
-有关监视和更丰富的调试信息，可在创建逻辑应用的同时启用 Log Analytics。 Log Analytics 提供了诊断日志记录并通过 Azure 门户监视逻辑应用运行。 添加逻辑应用管理解决方案时，你将获得逻辑应用运行的聚合状态，同时获得特定详细信息，如状态、执行时间、重新提交状态和关联 ID。
+要监控并获得有关逻辑应用的更丰富的调试详细信息，请在创建逻辑应用时启用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md)。 在 Azure 门户中安装逻辑应用管理解决方案时，Log Analytics 可为逻辑应用提供诊断日志记录和监视。 此解决方案还为逻辑应用运行提供聚合信息，其中包含状态、执行时间、重新提交状态和相关 ID 等特定的详细信息。 本文介绍了如何启用 Log Analytics，以便查看逻辑应用运行的运行时事件和数据。
 
-本文展示了如何开启 Log Analytics，以便查看逻辑应用运行的运行时事件和数据。
+若要为现有逻辑应用启用 Azure Log Analytics，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
- > [!TIP]
- > 若要监视现有逻辑应用，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
+> [!NOTE]
+> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../log-analytics/log-analytics-oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
 
-## <a name="requirements"></a>要求
+## <a name="prerequisites"></a>先决条件
 
-在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 
+在开始之前，需要一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>创建逻辑应用时请启用诊断日志记录
 
@@ -54,11 +54,11 @@ ms.locfileid: "49457130"
 
 1. 若要查看逻辑应用运行，请[继续执行这些步骤](#view-logic-app-runs-oms)。
 
-## <a name="install-the-logic-apps-management-solution"></a>安装逻辑应用管理解决方案
+## <a name="install-logic-apps-management-solution"></a>安装逻辑应用管理解决方案
 
 如果在创建逻辑应用时已启用了 Log Analytics，可跳过此步骤。 你已经安装了逻辑应用管理解决方案。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中，输入“log analytics”作为筛选器，并选择“Log Analytics”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中，查找“log analytics”，并选择“Log Analytics”。
 
    ![选择“Log Analytics”](./media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "49457130"
 
    ![选择你的 Log Analytics 工作区](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. 在“配置监视解决方案”下，选择“查看解决方案”。
+1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
 
    ![选择“查看解决方案”](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -76,19 +76,23 @@ ms.locfileid: "49457130"
 
    如果未找到此解决方案，请在列表底部选择“加载更多”，直到此解决方案出现。
 
-1. 选择“创建”，这将安装此解决方案。
+1. 选择“创建”，确认要在其中安装解决方案的 Log Analytics 工作区，然后再次选择“创建”。   
 
-   ![为“逻辑应用管理”选择“添加”](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+   ![为“逻辑应用管理”选择“创建”](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+
+   如果不想使用现有工作区，还可以在这次创建新工作区。
+
+   完成后，逻辑应用管理解决方案将显示在“概述”页面上。 
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-logic-app-runs-in-log-analytics-workspace"></a>在 Log Analytics 工作区中查看逻辑应用运行
+## <a name="view-logic-app-run-information"></a>查看逻辑应用运行信息
 
-1. 若要查看逻辑应用运行的计数和状态，请转到你的 Log Analytics 工作区，并打开“概述”页。 
+逻辑应用运行后，可在“逻辑应用管理”磁贴查看状态及逻辑应用运行次数。 
 
-   有关逻辑应用运行的详细信息显示在“逻辑应用管理”磁贴上。 要查看有关逻辑应用运行更多详细信息的摘要，请选择“逻辑应用管理”磁贴。 
+1. 转到 Log Analytics 工作区，然后打开“概览”页。 选择“逻辑应用管理”。 
 
-   ![显示逻辑应用运行计数和状态的概述磁贴](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+   ![逻辑应用运行状态和次数](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
 
    此时，逻辑应用运行将按名称或执行状态进行分组。 
    此页面还显示有关逻辑应用运行的操作或触发器中的失败的详细信息。

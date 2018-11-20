@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580424"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140343"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -182,7 +182,7 @@ public static void Run(
 
 在本地运行的 Azure 存储模拟器不具备 WebJobs SDK 所需的全部功能。 因此，在本部分，我们应在 Azure 中创建一个存储帐户，并将项目配置为使用该帐户。
 
-1. 打开“服务器资源管理器”并登录到 Azure。 右键单击“Azure”节点，选择“连接到 Microsoft Azure 订阅”。
+1. 在 Visual Studio 中打开“服务器资源管理器”并登录 Azure。 右键单击“Azure”节点，选择“连接到 Microsoft Azure 订阅”。
 
    ![登录 Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -194,7 +194,7 @@ public static void Run(
 
 1. 选择在其中创建了应用服务应用的同一**区域**或者靠近的区域。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
    ![创建存储帐户](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -245,7 +245,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 关闭控制台窗口。
 
-1. 在“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。 
+1. 在 Visual Studio 的“服务器资源管理器”中，展开新存储帐户所在的节点，然后右键单击“队列”。 
 
 1. 选择“创建队列”。 
 
@@ -310,7 +310,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 ### <a name="configure-app-settings"></a>配置应用设置 
 
-1. 在“服务器资源管理器”中，展开“Azure”下面的“应用服务”节点。
+1. 在 Visual Studio 的“服务器资源管理器”中，展开“Azure”下面的“应用服务”节点。
 
 1. 展开应用服务应用所在的资源组，然后右键单击应用服务应用。
 
@@ -396,7 +396,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 像[前面](#trigger-the-function)所做的那样，使用“服务器资源管理器”创建队列消息，不过这次要输入 *Hello App Insights!* 作为消息文本。
+1. 像[前面](#trigger-the-function)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
 
 1. 运行该项目。
 
@@ -442,7 +442,6 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 确保不是在本地运行（如果控制台窗口仍旧打开，请将其关闭）。 否则，本地实例可能是处理所创建的任何队列消息的第一个实例。
 
-1. 像[前面](#trigger-the-function)所做的那样，使用“服务器资源管理器”创建队列消息，不过这次要输入 *Hello Azure!*。
 
 1. 刷新 Visual Studio 中的“队列”页，会发现新消息已消失，因为 Azure 应用服务中运行的函数处理了该消息。
 
@@ -485,7 +484,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 在存储帐户中创建 Blob 容器。
 
-   a. 在“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Visual Studio 的“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
 
    b. 在“创建 Blob 容器”对话框中，输入 *container* 作为容器名称，然后单击“确定”。
 

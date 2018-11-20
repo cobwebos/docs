@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: zarhoads
-ms.openlocfilehash: 00c242ae75e8a581e2b403bac8e75f6b0bb421ad
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2e8cc14c2879c9ef98357f19580e59dacc11b930
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955497"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420058"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -39,7 +39,7 @@ ms.locfileid: "49955497"
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-1. 如果尚未安装 [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html)，请安装。
+1. 如果尚未安装 [Java](https://aka.ms/azure-jdks)，请安装。
 2. 安装 [Maven](http://maven.apache.org/download.cgi)。
 3. 创建新文件夹和项目：
     

@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c65cfedd398bbb18d65f36a3f2a768e11443687a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888265"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636503"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>升级到 Azure VM 备份堆栈 V2
 
@@ -28,8 +28,8 @@ ms.locfileid: "48888265"
 
 * 还原时可使用非托管 VM 的原始存储帐户。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
     > [!NOTE]
-    > 此能力与重写原始 VM 不同。
-    >
+    > 此功能不同于用恢复点的数据替换 VM 磁盘。
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>新堆栈有哪些变化？
 目前，备份作业包括两个阶段：
@@ -55,7 +55,7 @@ ms.locfileid: "48888265"
 * 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10-TB 限制。
 
 > [!NOTE]
-> 升级到 Azure VM 备份堆栈 V2 以获得对[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)和最多 32 个数据磁盘的虚拟机的 Azure 备份支持。
+> 升级到 Azure VM 备份堆栈 V2 以获得对[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)的 Azure 备份支持。
 
 ## <a name="upgrade"></a>升级
 ### <a name="the-azure-portal"></a>Azure 门户
@@ -86,15 +86,42 @@ ms.locfileid: "48888265"
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
+### <a name="cli"></a>CLI
+从 shell 运行以下命令：
+1.  请登录到 Azure 帐户：
+
+    ```
+    az login
+    ```
+
+2.  选择要注册的订阅：
+
+    ```
+    az account set --subscription "Subscription Name"
+    ```
+
+3.  注册此订阅：
+
+    ```
+    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+    ```
 
 ## <a name="verify-that-the-upgrade-is-finished"></a>验证升级是否已完成
+### <a name="powershell"></a>PowerShell
 在权限提升的 PowerShell 终端中运行以下 cmdlet：
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-如果输出中显示“Registered”，则表示订阅已升级到 VM 备份堆栈资源管理器部署模型。
+### <a name="cli"></a>CLI
+从 shell 运行以下命令：
+
+```
+az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+```
+
+如果输出中显示“Registered”，则表示订阅已升级到 V2 备份堆栈。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -119,4 +146,4 @@ Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNa
 增量快照用于非托管磁盘。 对于托管磁盘，Azure 备份创建的还原点集合使用 blob 快照，因此是增量快照。
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>如何获得对虚拟机的标准 SSD 托管磁盘支持？
-升级到 Azure VM 备份堆栈 V2 以获得对[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)的 Azure 备份支持。 升级后，还可以备份最多包含 32 个数据磁盘的虚拟机。
+升级到 Azure VM 备份堆栈 V2 以获得对[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)的 Azure 备份支持。

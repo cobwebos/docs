@@ -5,21 +5,21 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4097fab5610bf4bee6c14c65d3b45e0de818a0cc
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160903"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634220"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
-如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 
+如果在使用 Azure 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上事件查看器中“自定义视图” > “服务器角色” > “网络策略和访问服务”下找到。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 
@@ -30,13 +30,11 @@ ms.locfileid: "39160903"
 | **ESTS_TOKEN_ERROR** | 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书和 ADAL 令牌问题。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 服务器无法从 Azure MFA 接收响应。 验证防火墙是否双向打开，用于传入和传出 https://adnotifications.windowsazure.com 的流量 |
 | **HTTP_CONNECT_ERROR** | 在运行 NPS 扩展的服务器上，验证是否可访问 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/。 如果无法加载这些站点，请排查该服务器上的连接问题。 |
+| **适用于 Azure MFA 的 NPS 扩展：** <br> 适用于 Azure MFA 的 NPS 扩展仅对处于 AccessAccept 状态的 Radius 请求执行辅助身份验证。 收到响应状态为 AccessReject 的用户用户名请求，将忽略请求。 | 此错误通常反映了 AD 中的身份验证失败，或者 NPS 服务器无法接收来自 Azure AD 的响应。 使用端口 80 和 443 验证防火墙是否双向打开，以便流量进出 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com。 另外，还要务必检查“网络访问权限”的“拨入”选项卡上的设置是否设置为“通过 NPS 网络策略控制访问”。 |
 | **REGISTRY_CONFIG_ERROR** | 注册表中缺少应用程序的某个项，原因可能是 [PowerShell 脚本](howto-mfa-nps-extension.md#install-the-nps-extension)不是在安装后运行的。 错误消息应包括缺少的项。 请确保在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下创建该项。 |
 | **REQUEST_FORMAT_ERROR** <br> Radius 请求缺少必需的 Radius userName\Identifier 属性。请验证 NPS 是否能够接收 RADIUS 请求 | 此错误通常反映了安装问题。 必须在可以接收 RADIUS 请求的 NPS 服务器上安装 NPS 扩展。 安装为 RRAS 和 RDG 等服务的依赖项的 NPS 服务器无法接收 Radius 请求。 安装在此类安装中的 NPS 扩展无法正常工作并会出错，因为它无法读取身份验证请求中的详细信息。 |
 | **REQUEST_MISSING_CODE** | 请确保 NPS 和 NAS 服务器之间密码加密协议支持你正在使用的辅助身份验证方法。 PAP 在云中支持 Azure MFA 的所有身份验证方法：电话呼叫、单向短信、移动应用通知和移动应用验证码。 **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知。 |
 | **USERNAME_CANONICALIZATION_ERROR** | 验证该用户是否在本地 Active Directory 实例中存在，以及 NPS 服务是否有权访问目录。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
-
-
-   
 
 ### <a name="alternate-login-id-errors"></a>备用登录 ID 错误
 
@@ -45,7 +43,6 @@ ms.locfileid: "39160903"
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：userObjectSid 查找失败 | 验证用户是否存在于本地 Active Directory 实例中。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 查找失败 | 验证 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 是否已设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 设置为 True，或者 LDAP_LOOKUP_FORESTS 配置了非空值，请验证是否已配置全局目录以及是否已将 AlternateLoginId 属性添加到它。 <br><br> 如果 LDAP_LOOKUP_FORESTS 配置了非空值，请验证该值是否正确。 如果有多个林名称，必须用分号（而不是空格）分隔名称。 <br><br> 如果这些步骤不能解决此问题，请[与支持人员联系](#contact-microsoft-support)获取更多帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 值为空 | 验证是否为用户配置了 AlternateLoginId 属性。 |
-
 
 ## <a name="errors-your-users-may-encounter"></a>用户可能会遇到的错误
 
@@ -96,7 +93,7 @@ ms.locfileid: "39160903"
 
 ### <a name="troubleshoot-user-accounts"></a>排查用户帐户问题
 
-如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。 
+如果用户[在使用双重验证时遇到问题](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，请帮助他们自我诊断问题。
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 
@@ -130,5 +127,3 @@ ms.locfileid: "39160903"
 
 5. 打开注册表编辑器并浏览到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa，将 VERBOSE_LOG 设置为 FALSE
 6. 压缩 C:\NPS 文件夹的内容，并将压缩文件附加到支持案例中。
-
-

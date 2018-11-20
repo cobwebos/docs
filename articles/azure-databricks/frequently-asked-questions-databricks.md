@@ -1,34 +1,31 @@
 ---
-title: Azure Databricks：常见问题和帮助 | Microsoft Docs
+title: Azure Databricks：常见问题和帮助
 description: 获取有关 Azure Databricks 的常见问题的答案和故障诊断信息。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434595"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138355"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
-本文列出用户可能会遇到的与 Azure Databricks 相关的热门查询。 以及使用 Databricks 时可能会遇到的一些常见问题。 有关详细信息，请参阅[什么是 Azure Databricks](what-is-azure-databricks.md)？ 
+本文列出了用户可能会遇到的与 Azure Databricks 相关的常见问题。 以及使用 Databricks 时可能会遇到的一些常见问题。 有关详细信息，请参阅[什么是 Azure Databricks](what-is-azure-databricks.md)？ 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>能否使用我自己的密钥进行本地加密？ 
-当前版本不支持使用 Azure Key Vault 中你自己的密钥。 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>是否可以使用 Azure Key Vault 来存储要在 Azure Databricks 中使用的密钥/机密？
+是的。 可以使用 Azure Key Vault 来存储要用于 Azure Databricks 的密钥/机密。 有关详细信息，请参阅 [Azure Key Vault 支持的作用域](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)。
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>可以借助 Databricks 使用 Azure 虚拟网络吗？
-Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中使用自己的 Azure 虚拟网络。
+
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>是否可以将 Azure 虚拟网络与 Databricks 配合使用？
+是的。 可以将 Azure 虚拟网络 (VNET) 与 Databricks 配合使用。 有关详细信息，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)。
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>如何使用笔记本访问 Azure Data Lake Store？ 
 
@@ -116,7 +113,7 @@ Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订�
 
 #### <a name="background"></a>背景
 
-Azure Databricks 已与 Azure AD 集成。 这使你可通过指定 Azure AD 中的用户在 Azure Databricks 中（例如，在笔记本或群集上）设置权限。 要使 Azure Databricks 能够列出 Azure AD 中的用户名称，它需要该信息的读取权限。 这需要许可。 如果许可尚不可用，将看到错误。
+Azure Databricks 集成了 Azure Active Directory。 你可以通过指定 Azure AD 中的用户在 Azure Databricks 中（例如，在笔记本或群集上）设置权限。 要使 Azure Databricks 能够列出 Azure AD 中的用户名称，它需要对该信息的读取权限并需要得到同意。 如果许可尚不可用，将看到错误。
 
 #### <a name="solution"></a>解决方案
 

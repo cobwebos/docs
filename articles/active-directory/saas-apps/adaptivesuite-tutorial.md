@@ -4,22 +4,22 @@ description: 了解如何在 Azure Active Directory 和 Adaptive Insights 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 307c3cf258a74d1ddfb409f0d5b22d9e1fd6bf4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213815"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>教程：Azure Active Directory 与 Adaptive Insights 集成
 
@@ -27,9 +27,9 @@ ms.locfileid: "36213815"
 
 将 Adaptive Insights 与 Azure AD 集成提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Adaptive Insights
-- 可以让用户使用其 Azure AD 帐户自动登录到 Adaptive Insights（单一登录）
-- 可以在一个中心位置（即 Azure 门户）管理帐户
+- 可在 Azure AD 中控制谁有权访问 Adaptive Insights。
+- 可以让用户使用其 Azure AD 帐户自动登录到 Adaptive Insights（单一登录）。
+- 可在中心位置（即 Azure 门户）管理帐户。
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
@@ -61,69 +61,78 @@ ms.locfileid: "36213815"
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![Active Directory][1]
+    ![图像](./media/adaptivesuite-tutorial/selectazuread.png)
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![应用程序][2]
-
+    ![图像](./media/adaptivesuite-tutorial/a_select_app.png)
+    
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![应用程序][3]
+    ![图像](./media/adaptivesuite-tutorial/a_new_app.png)
 
 4. 在搜索框中，键入“Adaptive Insights”，在结果面板中选择“Adaptive Insights”，然后单击“添加”按钮添加该应用程序。
 
-    ![创建 Azure AD 测试用户](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
+     ![图像](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-在本部分中，将基于名为“Britta Simon”的测试用户使用 Adaptive Insights 配置和测试 Azure AD 单一登录。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+
+在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 Adaptive Insights 的 Azure AD 单一登录。
 
 若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Adaptive Insights 用户。 换句话说，需要在 Azure AD 用户与 Adaptive Insights 中相关用户之间建立链接关系。
 
 若要配置和测试 Adaptive Insights 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Adaptive Insights 测试用户](#creating-an-adaptive-insights-test-user)** - 在 Adaptive Insights 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 Adaptive Insights 测试用户](#create-an-adaptive-insights-test-user)** - 在 Adaptive Insights 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Adaptive Insights 应用程序中配置单一登录。
 
 若要配置 Adaptive Insights 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中，在 Adaptive Insights 应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 Adaptive Insights 应用程序集成页上，单击“单一登录”。
 
-    ![配置单一登录][4]
+    ![图像](./media/adaptivesuite-tutorial/B1_B2_Select_SSO.png)
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_samlbase.png)
+    ![图像](./media/adaptivesuite-tutorial/b1_b2_saml_sso.png)
 
-3. 在“Adaptive Insights 域和 URL”部分中，执行以下步骤：
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+    ![图像](./media/adaptivesuite-tutorial/b1-domains_and_urlsedit.png)
 
-    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    ![图像](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
     > 可以从 Adaptive Insights 的“SAML SSO 设置”页获得“标识符(实体 ID)”和“回复 URL”值。
+ 
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“证书 (Base64)”并将其保存在计算机上。
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+    ![图像](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certficate.png) 
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certificate.png)
+6. 在“设置 Adaptive Insights”部分中，根据要求复制相应的 URL。
 
-5. 单击“保存”按钮。
+    请注意，URL 可能指明以下信息：
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_general_400.png)
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
 
-6. 在“Adaptive Insights 配置”部分中，单击“配置 Adaptive Insights”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
+    b. Azure AD 标识符
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_configure.png) 
+    c. 注销 URL
+
+    ![图像](./media/adaptivesuite-tutorial/d1_samlsonfigure.png) 
 
 7. 在其他 Web 浏览器窗口中，以管理员身份登录 Adaptive Insights 公司站点。
 
@@ -139,13 +148,13 @@ ms.locfileid: "36213815"
 
     ![SAML SSO 设置](./media/adaptivesuite-tutorial/IC805646.png "SAML SSO 设置")
 
-    a. 在“标识提供者名称”文本框中，键入配置名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中，键入配置名称。
 
-    b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“标识提供者实体 ID”文本框。
+    b. 将从 Azure 门户复制的“Azure AD 标识符”值粘贴到“标识提供者实体 ID”文本框。
 
-    c. 将从 Azure 门户复制的“SAML 单一登录服务 URL”值粘贴到“标识提供者 SSO URL”文本框。
+    c. 将从 Azure 门户复制的“登录 URL”值粘贴到“标识提供者程序 SSO URL”文本框。
 
-    d. 将从 Azure 门户复制的“SAML 单一登录服务 URL”值粘贴到“自定义注销 URL”文本框。
+    d. 将从 Azure 门户复制的“注销 URL”值粘贴到“自定义注销 URL”文本框。
 
     e. 若要上传所下载的证书，请单击“选择文件”。
 
@@ -163,38 +172,32 @@ ms.locfileid: "36213815"
 
     h. 单击“ **保存**”。
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-![创建 Azure AD 用户][100]
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![图像](./media/adaptivesuite-tutorial/d_users_and_groups.png)
 
-1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![创建 Azure AD 测试用户](./media/adaptivesuite-tutorial/create_aaduser_01.png) 
+    ![图像](./media/adaptivesuite-tutorial/d_adduser.png)
 
-2. 若要显示用户列表，请转到“用户和组”，单击“所有用户”。
+3. 在“用户属性”中，执行以下步骤。
 
-    ![创建 Azure AD 测试用户](./media/adaptivesuite-tutorial/create_aaduser_02.png) 
+    ![图像](./media/adaptivesuite-tutorial/d_userproperties.png)
 
-3. 若要打开“用户”对话框，请在对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 **BrittaSimon**。
+  
+    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    例如： BrittaSimon@contoso.com
 
-    ![创建 Azure AD 测试用户](./media/adaptivesuite-tutorial/create_aaduser_03.png) 
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
-4. 在“用户”对话框页上，执行以下步骤：
-
-    ![创建 Azure AD 测试用户](./media/adaptivesuite-tutorial/create_aaduser_04.png)
-
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
-
-    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
-
-    c. 选择“显示密码”并记下“密码”的值。
-
-    d. 单击“创建”。
-
-### <a name="creating-an-adaptive-insights-test-user"></a>创建 Adaptive Insights 测试用户
+    d. 选择“创建”。
+ 
+### <a name="create-an-adaptive-insights-test-user"></a>创建 Adaptive Insights 测试用户
 
 要使 Azure AD 用户能够登录 Adaptive Insights，必须将其预配到 Adaptive Insights 中。 就 Adaptive Insights 来说，预配任务需要手动完成。
 
@@ -204,14 +207,16 @@ ms.locfileid: "36213815"
 2. 转到“管理员”。
 
    ![管理员](./media/adaptivesuite-tutorial/IC805644.png "管理员")
+
 3. 在“用户和角色”部分中，单击“添加用户”。
 
    ![添加用户](./media/adaptivesuite-tutorial/IC805648.png "添加用户")
+   
 4. 在“新建用户”部分中，执行以下步骤：
 
    ![提交](./media/adaptivesuite-tutorial/IC805649.png "提交")
 
-   a. 键入希望在相关文本框中预配的有效 Azure Active Directory 用户的“姓名”、“登录名”、“电子邮件”、“密码”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入希望在相关文本框中预配的有效 Azure Active Directory 用户的“姓名”、“登录名”、“电子邮件”、“密码”。
 
    b. 选择“角色”。
 
@@ -221,57 +226,38 @@ ms.locfileid: "36213815"
 >可以使用其他任何 Adaptive Insights 用户帐户创建工具或 Adaptive Insights 提供的 API 来预配 AAD 用户帐户。
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Adaptive Insights 的权限，允许其使用 Azure 单一登录。
 
-![分配用户][200]
+1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-若要将 Britta Simon 分配到 Adaptive Insights，请执行以下步骤：
-
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
-
-    ![分配用户][201]
+    ![图像](./media/adaptivesuite-tutorial/d_all_applications.png)
 
 2. 在应用程序列表中，选择“Adaptive Insights”。
 
-    ![配置单一登录](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
+    ![图像](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
 
-3. 在左侧菜单中，单击“用户和组”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![分配用户][202]
+    ![图像](./media/adaptivesuite-tutorial/d_leftpaneusers.png)
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![分配用户][203]
+    ![图像](./media/adaptivesuite-tutorial/d_assign_user.png)
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+4. 在“用户和组”对话框中，在“用户”列表中选择 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+5. 在“添加分配”对话框中，选择“分配”按钮。
+    
+### <a name="test-single-sign-on"></a>测试单一登录
 
-7. 在“添加分配”对话框中单击“分配”按钮。
-
-### <a name="testing-single-sign-on"></a>测试单一登录
-
-本部分用于使用“访问面板”测试 Microsoft Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Adaptive Insights”磁贴时，应自动登录到 Adaptive Insights 应用程序。
+有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/adaptivesuite-tutorial/tutorial_general_01.png
-[2]: ./media/adaptivesuite-tutorial/tutorial_general_02.png
-[3]: ./media/adaptivesuite-tutorial/tutorial_general_03.png
-[4]: ./media/adaptivesuite-tutorial/tutorial_general_04.png
-
-[100]: ./media/adaptivesuite-tutorial/tutorial_general_100.png
-
-[200]: ./media/adaptivesuite-tutorial/tutorial_general_200.png
-[201]: ./media/adaptivesuite-tutorial/tutorial_general_201.png
-[202]: ./media/adaptivesuite-tutorial/tutorial_general_202.png
-[203]: ./media/adaptivesuite-tutorial/tutorial_general_203.png
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

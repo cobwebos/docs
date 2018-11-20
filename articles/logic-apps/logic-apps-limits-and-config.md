@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 10/11/2018
+ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452440"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346688"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -111,9 +111,22 @@ ms.locfileid: "47452440"
 
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
+<a name="sftp"></a>
+
+## <a name="ftp-sftp-and-sftp-ssh-limits"></a>FTP、SFTP 和 SFTP-SSH 限制
+
+### <a name="file-size"></a>文件大小
+
+| 名称 | 限制 | 说明 |
+|------|-------|-------|
+| FTP | 50 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP | 50 MB | 要解决此限制问题，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)或参阅[通过分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP-SSH | 1 GB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+|||| 
+
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>HTTP 请求限制
+## <a name="http-limits"></a>HTTP 限制
 
 以下限制适用于单个 HTTP 请求或同步连接器调用：
 
@@ -156,6 +169,15 @@ ms.locfileid: "47452440"
 | 自定义连接器数 | 每个 Azure 订阅 1,000 | 
 | 每分钟的请求数量（对于自定义连接器创建的每个连接） | 每个连接 500 个请求 |
 |||| 
+
+<a name="managed-identity"></a>
+
+## <a name="managed-identities"></a>托管标识
+
+| 名称 | 限制 | 
+| ---- | ----- | 
+| 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 10 | 
+|||
 
 <a name="integration-account-limits"></a>
 
@@ -299,9 +321,9 @@ ms.locfileid: "47452440"
 | 英国西部 | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | | |
 
-### <a name="connectors"></a>连接器
+### <a name="managed-connectors"></a>托管的连接器
 
-若要支持[连接器](../connectors/apis-list.md)进行的调用，请根据你的逻辑应用所在的区域设置你的防火墙配置，以使其包含这些出站 IP 地址。
+若要支持 [Microsoft 托管连接器](../connectors/apis-list.md)进行的调用，请根据逻辑应用所在的区域设置防火墙配置，使其包含这些出站 IP 地址。
 
 > [!IMPORTANT]
 > 如果你有现有配置，请于 2018 年 9 月 1 日前尽快对其更新，以使其包含并匹配此列表中针对你的逻辑应用所在的位置对应的 IP 地址。 
@@ -310,7 +332,7 @@ ms.locfileid: "47452440"
 >
 > * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。 
 > 
-> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](http://aka.ms/aisarch)。
+> * 如果已使用 API 管理，可以将该服务用于此方案。 有关详细信息，请参阅[简单的企业集成体系结构](https://aka.ms/aisarch)。
 
 | 逻辑应用区域 | 出站 IP | 
 |-------------------|-------------|  

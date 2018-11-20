@@ -28,6 +28,8 @@ items:
     href: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
   - name: 安全技术功能
     href: azure-security-technical-capabilities.md
+  - name: 开发 Azure 上的安全应用
+    href: abstract-develop-secure-apps.md
   expanded: false
 - name: 数据安全与加密
   href: security-azure-encryption-overview.md
@@ -35,13 +37,13 @@ items:
   - name: 数据库安全
     href: azure-database-security-overview.md
     items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: azure-database-security-best-practices.md
     - name: 安全清单
       href: azure-database-security-checklist.md
   - name: 磁盘加密
     items:
-    - name: 最佳实践
+    - name: 最佳做法
       displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: 静态数据加密
@@ -131,7 +133,7 @@ items:
     - name: 安全清单
       displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
-    - name: 最佳实践
+    - name: 最佳做法
       displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: 对订阅管理员强制实施 MFA
@@ -141,7 +143,7 @@ items:
     displayName: firewall, ssl, vpn, ids, gateway, https, azure application gateway, application gateway, ips, waf
     href: security-network-overview.md
     items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: azure-security-network-security-best-practices.md
     - name: DDoS 保护
       href: azure-ddos-best-practices.md
@@ -170,7 +172,7 @@ items:
   - name: Azure Service Fabric 安全
     href: azure-service-fabric-security-overview.md
     items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: azure-service-fabric-security-best-practices.md
     - name: 安全清单
       href: azure-service-fabric-security-checklist.md
@@ -204,7 +206,7 @@ items:
   - name: 运营安全
     href: azure-operational-security-overview.md
     items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: azure-operational-security-best-practices.md
     - name: 安全清单
       href: azure-operational-security-checklist.md
@@ -307,7 +309,7 @@ items:
   href: azure-security-services-technologies.md
 - name: 技术概述
   href: security-overviews.md
-- name: 最佳实践
+- name: 最佳做法
   href: security-best-practices-and-patterns.md
 - name: 资源
   items:
@@ -353,9 +355,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: 会话管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: a5f78762baad4cf7f6173076bbb9a9e8f7e877f0
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 998b787657be90f3b7026a7e338d49e7c1903499
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423045"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710828"

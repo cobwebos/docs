@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264127"
+---
 ## <a name="planning-and-implementation"></a>规划和实现
 标题：Azure 虚拟机上的 SAP NetWeaver - 规划和实现指南
 
@@ -6,7 +18,7 @@
 
 更新时间：2015 年 8 月
 
-[立即下载此指南](http://go.microsoft.com/fwlink/?LinkId=397963)
+[立即下载此指南](https://go.microsoft.com/fwlink/?LinkId=397963)
 
 ## <a name="deployment"></a>部署
 标题：Azure 虚拟机上的 SAP NetWeaver - 部署指南
@@ -15,7 +27,7 @@
 
 更新时间：2015 年 9 月
 
-[立即下载此指南](http://go.microsoft.com/fwlink/?LinkId=397964)
+[立即下载此指南](https://go.microsoft.com/fwlink/?LinkId=397964)
 
 ## <a name="sap-dbms-on-azure"></a>Azure 上的 SAP DBMS
 标题：Azure 中的 SAP DBMS - 部署指南
@@ -24,7 +36,7 @@
 
 更新时间：2015 年 12 月
 
-[立即下载此指南](http://go.microsoft.com/fwlink/?LinkId=397965)
+[立即下载此指南](https://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## <a name="sap-netweaver-on-azure"></a>Azure 上的 SAP NetWeaver
 标题：SAP NetWeaver - 构建基于 Azure 的灾难恢复解决方案
@@ -33,5 +45,5 @@
 
 更新时间：2015 年 9 月
 
-[立即下载此指南](http://go.microsoft.com/fwlink/?LinkID=521971)
+[立即下载此指南](https://go.microsoft.com/fwlink/?LinkID=521971)
 

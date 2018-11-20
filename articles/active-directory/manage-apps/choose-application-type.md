@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354529"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625075"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>添加应用程序时如何选择要使用的应用程序类型
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
+了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
 
-本文将帮助你了解可以与 Azure AD 集成的四种主要应用程序类型：
-
-* 支持的应用程序类型
-* 可能选择某种应用程序的原因
-* 如何配置这些应用程序的核心属性，如**预配**用户的方式，或要使用的**单一登录**技术。
-
-## <a name="supported-application-types-in-azure-ad"></a>Azure AD 中支持的应用程序类型
+## <a name="what-are-the-types-of-applications"></a>有哪些应用程序类型？
 
 Azure AD 支持使用“企业应用程序”下的“添加”功能添加的四种主要应用程序类型。 其中包括：
 
@@ -41,7 +36,7 @@ Azure AD 支持使用“企业应用程序”下的“添加”功能添加的�
 
 -   **非库应用程序** - 引入自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>上述所有应用程序类型都支持的特性和功能
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>上述应用程序类型支持的功能
 
 Azure AD 中的上述四种应用程序类型都支持以下功能：
 

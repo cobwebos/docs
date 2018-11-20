@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956419"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286684"
 ---
 # <a name="about-v20"></a>关于 v2.0
 
@@ -32,7 +32,7 @@ v2.0 终结点和平台已处于预览状态并不断增强。 目前，JavaScri
 
 Azure 门户开发人员体验已经过重大更新，现在包括使用 ADAL 或 MSAL 构建的所有应用程序，并提高了可用性。
 
-在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory (Azure AD) 中的工作帐户的应用程序开发人员必须集成两个单独的系统。 v2.0 终结点和平台提供了一个简化此过程的身份验证 API 版本。 使用它可通过一次集成从这两种类型的帐户登录。 使用 v2.0 终结点的应用程序还可以通过其中一种帐户从 [Microsoft 图形 API](https://graph.microsoft.io) 使用 REST API。
+在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory (Azure AD) 中的工作帐户的应用程序开发人员必须集成两个单独的系统。 v2.0 终结点和平台提供了一个简化此过程的身份验证 API 版本。 使用它可通过一次集成从这两种类型的帐户登录。 使用 v2.0 终结点的应用程序还可以通过其中一种帐户从 [Microsoft 图形 API](https://developer.microsoft.com/graph) 使用 REST API。
 
 ## <a name="getting-started"></a>入门
 
@@ -56,10 +56,10 @@ Azure 门户开发人员体验已经过重大更新，现在包括使用 ADAL �
 
 * [v2.0 协议参考](active-directory-v2-protocols.md)
 * [访问令牌参考](access-tokens.md)
-* [`id_tokens` 参考](id-tokens.md)
+* [ID 令牌参考](id-tokens.md)
 * [v2.0 身份验证库参考](reference-v2-libraries.md)
-* [v2.0 中的范围和许可](v2-permissions-and-consent.md)
-* [Microsoft 图形 API](https://graph.microsoft.io)
+* [v2.0 中的权限和许可](v2-permissions-and-consent.md)
+* [Microsoft 图形 API](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](v1-overview.md)入手。 V2.0 终结点供显式需要登录 Microsoft 个人帐户的开发人员使用。

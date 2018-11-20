@@ -2,19 +2,19 @@
 title: 了解并解决 HDInsight 上的 WebHCat 错误 - Azure
 description: 了解 HDInsight 上的 WebHCat 返回的常见错误以及如何解决它们。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 3c4ce93a12d0ecb86552e9f73d83f623e71385a0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103399"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010365"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解和解决从 HDInsight 上的 WebHCat 收到的错误
 

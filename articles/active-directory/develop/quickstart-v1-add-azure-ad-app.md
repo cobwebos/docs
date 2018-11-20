@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 7e2225a173562be28840cb0a66913b9f8c9657ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962039"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911858"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>快速入门：向 Azure Active Directory v1.0 终结点注册应用
 
@@ -31,7 +31,10 @@ ms.locfileid: "46962039"
 
 任何想要使用 Azure AD 功能的应用程序都必须先在 Azure AD 租户中注册。 此注册过程涉及到提供有关应用程序的 Azure AD 详细信息，例如，该应用程序所在位置的 URL、对用户进行身份验证后用于发送答复的 URL、用于标识应用程序的 URI，等等。
 
-本快速入门介绍如何在 Azure AD 中添加和注册应用程序。
+本快速入门展示了如何使用 Azure 门户中现有的**应用注册**体验在 Azure AD 中添加和注册应用程序。
+
+> [!NOTE]
+> 注册新应用？ 在 Azure 门户中试用新的**应用注册（预览版）** 体验。 请参阅[注册应用（预览版）](quickstart-register-app.md)以开始使用。
 
 ## <a name="prerequisites"></a>先决条件
 

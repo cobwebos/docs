@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: e35686e7ba7c2e88d62930082d39856673a661b6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 482bfe41ebfec7353466f7e243e9e767caee7828
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782446"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228277"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 文件上传到实验室的存储帐户
 
@@ -33,11 +33,11 @@ ms.locfileid: "33782446"
 
 ## <a name="step-by-step-instructions"></a>分步说明
 
-以下步骤将引导使用 [AzCopy](http://aka.ms/downloadazcopy) 将 VHD 文件上传到 Azure 开发测试实验室。 
+以下步骤将引导使用 [AzCopy](https://aka.ms/downloadazcopy) 将 VHD 文件上传到 Azure 开发测试实验室。 
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
@@ -65,7 +65,7 @@ ms.locfileid: "33782446"
 
 1. 使用 AzCopy 上传 VHD 文件：
  
-1. [下载并安装最新版本的 AzCopy](http://aka.ms/downloadazcopy)。
+1. [下载并安装最新版本的 AzCopy](https://aka.ms/downloadazcopy)。
 
 1. 打开一个命令窗口，导航到 AzCopy 安装目录。 还可以选择将 AzCopy 安装位置添加到系统路径。 AzCopy 默认安装到以下目录：
 

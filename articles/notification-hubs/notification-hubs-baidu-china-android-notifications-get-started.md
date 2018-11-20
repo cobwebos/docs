@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38700894"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246763"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "38700894"
 ## <a name="prerequisites"></a>先决条件
 本教程需要：
 
-* Android SDK（我们假设你使用 Android Studio），可从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>下载
+* Android SDK（我们假设你使用 Android Studio），可从 <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>下载
 * [百度推送 Android SDK]
 
 > [!NOTE]
@@ -475,7 +475,7 @@ ms.locfileid: "38700894"
 为简单起见，本教程使用一个控制台应用演示如何通过 .NET SDK 来发送通知。 但是，建议你接下来学习[使用通知中心向用户推送通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)教程，了解如何从 ASP.NET 后端发送通知。 
 
 下面是用于发送通知的不同方法：
-* **REST 接口**：可以使用 [REST 接口](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
+* **REST 接口**：可以使用 [REST 接口](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
 * **Microsoft Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。

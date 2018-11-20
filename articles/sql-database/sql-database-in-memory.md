@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 8fd430aa710c7e36133b40c7079b9d727774c68f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d850aff8ddb2a8b6cdd68620ae823d582c527581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166922"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229084"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -57,11 +57,11 @@ Azure SQL 数据库采用以下内存中技术：
 有关这些技术的深入信息：
 
 - [内存中 OLTP 的概述和使用方案](https://msdn.microsoft.com/library/mt774593.aspx)（包括客户案例研究参考和入门信息）
-- [内存中 OLTP 的文档](http://msdn.microsoft.com/library/dn133186.aspx)
+- [内存中 OLTP 的文档](https://msdn.microsoft.com/library/dn133186.aspx)
 - [列存储索引指南](https://msdn.microsoft.com/library/gg492088.aspx)
 - 混合事务/分析处理 (HTAP)，也称为[实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
 
-有关内存中 OLTP 的快速入门教程：[快速入门 1：通过内存中 OLTP 技术加速 T-SQL 性能](http://msdn.microsoft.com/library/mt694156.aspx)（另一篇帮助用户入门的文章）
+有关内存中 OLTP 的快速入门教程：[快速入门 1：通过内存中 OLTP 技术加速 T-SQL 性能](https://msdn.microsoft.com/library/mt694156.aspx)（另一篇帮助用户入门的文章）
 
 深入介绍这些技术的视频：
 
@@ -158,7 +158,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
 
-2. 使用 SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
+2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
 3. 将 内存中 [OLTP Transact-SQL 脚本](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql)复制到剪贴板。 T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
 
@@ -291,9 +291,9 @@ end
 在 VM 或选择的任何主机上，安装重放标记语言 (RML) 实用工具。 这些实用工具包括 ostress.exe。
 
 有关详细信息，请参阅：
-- [内存中 OLTP 的示例数据库](http://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 介绍。
-- [内存中 OLTP 的示例数据库](http://msdn.microsoft.com/library/mt465764.aspx)。
-- [有关安装 ostress.exe 的博客](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
+- [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 介绍。
+- [内存中 OLTP 的示例数据库](https://msdn.microsoft.com/library/mt465764.aspx)。
+- [有关安装 ostress.exe 的博客](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
 
 
 
@@ -379,7 +379,7 @@ EXECUTE Demo.usp_DemoReset;
 本部分比较使用列存储索引与传统 b 树索引时的 IO 和统计信息结果。
 
 
-通常，在对 OLTP 工作负荷进行实时分析时，最好是使用非群集列存储索引。 有关详细信息，请参阅[列存储索引介绍](http://msdn.microsoft.com/library/gg492088.aspx)。
+通常，在对 OLTP 工作负荷进行实时分析时，最好是使用非群集列存储索引。 有关详细信息，请参阅[列存储索引介绍](https://msdn.microsoft.com/library/gg492088.aspx)。
 
 
 
@@ -493,7 +493,7 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门 1：通过内存中 OLTP 技术加速 T-SQL 性能](http://msdn.microsoft.com/library/mt694156.aspx)
+- [快速入门 1：通过内存中 OLTP 技术加速 T-SQL 性能](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [在现有的 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
 
@@ -508,17 +508,17 @@ GO
 
 - [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)（“Azure SQL 数据库中的内存中 OLTP”博客文章）
 
-- [了解内存中 OLTP](http://msdn.microsoft.com/library/dn133186.aspx)
+- [了解内存中 OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [了解列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [了解实时运营分析](http://msdn.microsoft.com/library/dn817827.aspx)
+- [了解实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- 请参阅[有关常用工作负荷模式和迁移注意事项](http://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
+- 请参阅[有关常用工作负荷模式和迁移注意事项](https://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
 
 #### <a name="application-design"></a>应用程序设计
 
-- [内存中 OLTP（内存中优化）](http://msdn.microsoft.com/library/dn133186.aspx)
+- [内存中 OLTP（内存中优化）](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [在现有的 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
 
@@ -528,4 +528,4 @@ GO
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244929"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
 
@@ -48,7 +48,7 @@ Azure 机器学习服务完全支持开放源代码技术，因此，你可以�
 Azure 机器学习服务可以自动生成模型并为你自动优化模型。
 有关示例，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)。
 
-或者，可以使用适用于 Python 的 Azure 机器学习 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，在 Azure 机器学习服务工作区中自行生成和训练高度准确的机器学习和深度学习模型。
+或者，可以使用适用于 Python 的 Azure 机器学习 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，在 Azure 机器学习服务工作区中自行生成和训练高度准确的机器学习和深度学习模型。
 可以从开放源代码 Python 包中提供的许多机器学习组件中进行选择，例如：
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -59,7 +59,7 @@ Azure 机器学习服务可以自动生成模型并为你自动优化模型。
 
 拥有模型后，你就可以使用它来创建可以在本地部署以进行测试的容器（如 Docker），然后将其作为 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)中的生产 Web 服务。
 
-然后，可以使用 [Azure 门户](https://portal.azure.com/)或 [Azure 机器学习 CLI 扩展](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)来管理已部署的模型。
+然后，可以使用 [Azure 门户](https://portal.azure.com/)或 [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来管理已部署的模型。
 你可以在跟踪模型的试验的同时评估模型指标、重新训练和重新部署模型的新版本。
 
 要开始使用 Azure 机器学习服务，请参阅下面的[后续步骤](#next-steps)。
@@ -85,6 +85,8 @@ Azure 机器学习工作室是一个协作式拖放可视化工作区，无需�
 - 按照完整教程[使用 Azure 机器学习定型图像分类模型](tutorial-train-models-with-aml.md)，了解如何使用 Azure 机器学习服务训练和部署模型
 
 - 有关允许 Azure 机器学习自动生成和自动优化模型的信息，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)
+
+- 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
 
 - 有关该服务技术方面的深入探讨，请参阅 [Azure 机器学习服务体系结构和概念](concept-azure-machine-learning-architecture.md)
 

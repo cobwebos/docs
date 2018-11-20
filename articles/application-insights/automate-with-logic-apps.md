@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301185"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957721"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -99,7 +99,7 @@ ms.locfileid: "44301185"
 
 1. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a. 键入收件人的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
@@ -111,7 +111,7 @@ ms.locfileid: "44301185"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a. 选择“附件名称”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“附件名称”。
 
     b. 选择“附件内容”。
     
@@ -132,7 +132,7 @@ ms.locfileid: "44301185"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何创建 [Analytics 查询](app-insights-analytics-using.md)。
+- 详细了解如何创建 [Analytics 查询](../log-analytics/query-language/get-started-queries.md)。
 - 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的详细信息。
 
 

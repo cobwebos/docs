@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948947"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613352"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -33,10 +33,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
 > [!NOTE]
->  [新型警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
-
-请观看介绍了活动日志的以下视频。
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
+> [新型警报](monitoring-overview-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](alert-activity-log.md)。
 
 
 ## <a name="categories-in-the-activity-log"></a>活动日志中的类别
@@ -70,7 +67,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 在 Azure 门户中，可在多个位置查看活动日志：
 * 可通过在左侧导航窗格中的“所有服务”下搜索活动日志进行访问的“活动日志”。
 * 默认情况下在左侧导航窗格中显示的“监视”。 活动日志是 Azure Monitor 的一部分。
-* 任何资源的资源边栏选项卡，例如虚拟机的“配置”边栏选项卡。 活动日志是大多数这些资源边栏选项卡的一部分，单击它可自动筛选出与特定资源相关的事件。
+* 大多数**资源**，例如，虚拟机的配置边栏选项卡。 活动日志是大多数资源边栏选项卡的一部分，单击它可自动筛选出与该特定资源相关的事件。
 
 在 Azure 门户中，可通过以下字段筛选活动日志：
 * 时间跨度 - 事件的开始时间和结束时间。
@@ -84,11 +81,9 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 事件发起者 -“调用方”或执行操作的用户。
 * 开放搜索 - 这是一个开放的文本搜索框，可在所有事件的所有字段中搜索该字符串。
 
-定义一组筛选条件后，如果将来需要再次使用已应用的筛选条件执行相同的查询，可以将它保存为在会话中保留的查询。 还可以将查询固定到 Azure 仪表板，始终关注特定事件。
+定义了一组筛选器后，可以将查询固定到 Azure 仪表板上，以便始终关注特定事件。
 
-单击“应用”运行查询并显示所有匹配的事件。 单击列表中的任何事件将显示该事件的摘要以及该事件的完整原始 JSON。
-
-若要获得更强大的功能，可以点击“日志搜索”图标，该选项在[Log Analytics Activity Log Analytics 解决方案](../log-analytics/log-analytics-activity.md)中显示活动日志数据。 活动日志边栏选项卡提供对日志的基础筛选/浏览体验，但是 Log Analytics 可以以更强大的方式对数据进行透视、查询和可视化。
+若要获得更强大的功能，可以单击“日志”图标，这会在 [Log Analytics Activity Log Analytics 解决方案](../log-analytics/log-analytics-activity.md)中显示活动日志数据。 活动日志边栏选项卡提供对日志的基础筛选/浏览体验，但是 Log Analytics 可以以更强大的方式对数据进行透视、查询和可视化。
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>使用日志配置文件导出活动日志
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：
@@ -104,7 +99,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
 
 > [!NOTE]
->  当前无法将数据存档到安全虚拟网络中的存储帐户。
+>  当前无法将数据存档到受保护虚拟网络后面的存储帐户。
 
 > [!WARNING]
 > 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./monitor-diagnostic-logs-append-blobs.md) 
@@ -114,14 +109,14 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 这些设置可以通过门户中活动日志边栏选项卡上的“导出”选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。 一个订阅只能有一个日志配置文件。
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>通过 Azure 门户配置日志配置文件
-可以在 Azure 门户中使用“导出”选项将活动日志流式传输到事件中心，或者将其存储在存储帐户中。
+可以在 Azure 门户中使用“导出到事件中心”选项将活动日志流式传输到事件中心，或者将其存储在存储帐户中。
 
 1. 使用门户左侧的菜单导航到“活动日志”。
 
-    ![在门户中导航到“活动日志”](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. 单击边栏选项卡顶部的“导出”按钮。
+    ![在门户中导航到“活动日志”](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. 单击边栏选项卡顶部的“导出到事件中心”按钮。
 
-    ![门户中的“导出”按钮](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![门户中的“导出”按钮](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. 在显示的边栏选项卡中，可以选择：  
   * 要导出事件的区域
   * 要保存事件的存储帐户

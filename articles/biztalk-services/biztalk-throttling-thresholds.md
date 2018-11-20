@@ -1,6 +1,6 @@
 ---
 title: 了解 BizTalk 服务中的限制 | Microsoft Docs
-description: 了解 BizTalk 服务的限制阈值以及导致的运行时行为。 限制以内存使用量和消息数为基础。 MABS, WABS
+description: 了解 BizTalk 服务的限制阈值以及导致的运行时行为。 限制以内存使用量和消息数为基础。 MABS，WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 39fc5ef36bb581c3a81c9948fda048f6cb75eb7e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: daab61a0ea9321b0fb918c60688215c80088e0bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102080"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243345"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk 服务：限制
 
@@ -30,7 +30,7 @@ Azure BizTalk 服务基于两个条件实现服务限制：内存使用量和同
 ## <a name="throttling-thresholds"></a>限制阈值
 下表列出限制源和阈值：
 
-|  | 说明 | 低阈值 | 高阈值 |
+|  | Description | 低阈值 | 高阈值 |
 | --- | --- | --- | --- |
 | 内存 |可用系统内存总量的百分比/页面文件字节数。 <p><p>可用的总页面文件字节数大约是系统内存的 2 倍。 |60% |70% |
 | 消息处理 |同时处理的消息数 |40 * 内核数 |100 * 内核数 |
@@ -57,15 +57,15 @@ Azure BizTalk 服务跟踪限制状态（正常状态与受限制状态)以及�
 * Azure SQL 数据库 Server 还具有内置限制。
 
 ## <a name="additional-azure-biztalk-services-topics"></a>其他 Azure BizTalk 服务主题
-* [安装 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [教程：Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Azure BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [安装 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [教程：Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>另请参阅
-* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk 服务：预配状态图表](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk 服务：备份和还原](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk 服务：颁发者名称和颁发者密钥](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk 服务：预配状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk 服务：备份和还原](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk 服务：颁发者名称和颁发者密钥](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 

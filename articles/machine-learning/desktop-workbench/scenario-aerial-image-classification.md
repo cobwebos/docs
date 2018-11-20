@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967599"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260544"
 ---
 # <a name="aerial-image-classification"></a>航拍图像分类
 
@@ -154,7 +154,7 @@ ms.locfileid: "46967599"
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. 在偏好的文本编辑器中，从 Azure Machine Learning Workbench 项目的“Code”子目录加载 `settings.cfg` 文件，并根据指示插入存储帐户名称和密钥。 保存并关闭 `settings.cfg` 文件。
-1. 下载并安装 [AzCopy](http://aka.ms/downloadazcopy) 实用工具（如果尚未这样做）。 键入“AzCopy”并按 Enter 显示其文档，确保 AzCopy 可执行文件位于系统路径中。
+1. 下载并安装 [AzCopy](https://aka.ms/downloadazcopy) 实用工具（如果尚未这样做）。 键入“AzCopy”并按 Enter 显示其文档，确保 AzCopy 可执行文件位于系统路径中。
 1. 发出以下命令，将所有样本数据、预先训练的模型和模型训练脚本复制到存储帐户中的相应位置：
 
     ```

@@ -4,12 +4,13 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure 机器学习服务？
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: 服务的工作原理
     displayName: architecture
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench 发生了什么情况？
+    displayName: desktop
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: 快速入门
@@ -17,6 +18,7 @@ items:
   - name: 入门 - 门户
     href: quickstart-get-started.md
   - name: 入门 - Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: 教程
   items:
@@ -25,15 +27,17 @@ items:
   - name: 部署模型：第 2 部分
     href: tutorial-deploy-models-with-aml.md
   - name: 训练自动化 ML 模型
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: 示例
   items:
   - name: Jupyter 笔记本 (GitHub)
     displayName: example, examples
-    href: http://aka.ms/aml-notebooks
+    href: https://aka.ms/aml-notebooks
 - name: 概念
   items:
   - name: 模型管理
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: 使用 FPGA 加速
     href: concept-accelerate-with-fpgas.md
@@ -45,19 +49,18 @@ items:
     href: how-to-manage-workspace.md
   - name: 设置开发环境 
     items:
-    - name: 选择环境
-      displayName: local, remote
-      href: how-to-choose-a-dev-environment.md
     - name: 配置环境
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: 入门
         href: how-to-vscode-tools.md
       - name: 训练和部署
         href: how-to-vscode-train-deploy.md
   - name: 准备数据
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: 加载数据
@@ -69,6 +72,7 @@ items:
   - name: 训练模型
     items:
     - name: 设置训练环境
+      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: 在训练期间访问数据
       href: how-to-access-data.md
@@ -79,13 +83,13 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: 调整模型
-    items:
     - name: 优化超参数
+      displayName: parameter
       href: how-to-tune-hyperparameters.md
     - name: 跟踪试验和指标
       href: how-to-track-experiments.md
   - name: 自动化机器学习
+    displayName: automl, auto ml
     href: how-to-automated-ml.md
     items:
     - name: 配置自动训练
@@ -99,10 +103,13 @@ items:
   - name: 部署模型
     items:
     - name: 模型部署位置
+      displayName: publish
       href: how-to-deploy-and-where.md
     - name: 部署到 ACI
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: 部署到 AKS
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: 部署到 FPGA
       href: how-to-deploy-fpga-web-service.md
@@ -112,6 +119,9 @@ items:
       href: how-to-troubleshoot-deployment.md
     - name: 使用 SSL 进行保护
       href: how-to-secure-web-service.md
+    - name: 使用已部署的模型
+      displayName: create client, client, consume
+      href: how-to-consume-web-service.md
   - name: 监视模型
     items:
     - name: 在生产中收集数据
@@ -119,15 +129,22 @@ items:
     - name: 使用 Application Insights 进行监视
       href: how-to-enable-app-insights.md
   - name: 管理资源配额
+    displayName: limits
     href: how-to-manage-quotas.md
+  - name: 使用机器学习 CLI
+    displayName: cli, command line, command-line, az,
+    href: reference-azure-machine-learning-cli.md
 - name: 引用
   items:
   - name: 机器学习 SDK
-    href: http://aka.ms/aml-sdk
+    displayName: api, core, package
+    href: https://aka.ms/aml-sdk
   - name: 数据准备 SDK
-    href: http://aka.ms/data-prep-sdk
-  - name: 机器学习 CLI
-    href: reference-azure-machine-learning-cli.md
+    displayName: api, preparation, package
+    href: https://aka.ms/data-prep-sdk
+  - name: 监视 SDK
+    displayName: api, package
+    href: https://aka.ms/aml-monitoring-sdk
 - name: 资源
   items:
   - name: Azure 路线图
@@ -137,12 +154,14 @@ items:
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
   - name: 发行说明
+    displayName: what's new
     href: azure-machine-learning-release-notes.md
   - name: 已知问题
     href: resource-known-issues.md
   - name: 获取支持
     href: support-for-aml-services.md
   - name: 导出和删除数据
+    displayName: gdpr
     href: how-to-export-delete-data.md
   - name: 弃用的文档
     items:
@@ -151,7 +170,7 @@ items:
       href: how-to-migrate.md
     - name: 导出或删除帐户数据（已弃用）
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Workbench 快速入门
+    - name: Workbench 快速入门（已弃用）
       href: ../desktop-workbench/quickstart-installation.md
     - name: 教程 1：准备数据
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
@@ -347,9 +366,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095069"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706647"

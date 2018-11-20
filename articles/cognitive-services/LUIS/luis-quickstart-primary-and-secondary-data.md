@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 4647e663f4a2734451835f90d2687bb6aaf91712
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867538"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277794"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
 
@@ -38,7 +38,7 @@ ms.locfileid: "48867538"
 > * 使用现有的教程应用
 > * 添加用于从应用提取工作的简单实体
 > * 添加用于增强工作词汇信号的短语列表
-> * 训练 
+> * 定型 
 > * 发布 
 > * 从终结点获取意向和实体
 
@@ -86,7 +86,7 @@ ms.locfileid: "48867538"
 
 在示例话语中标记实体以后，必须添加短语列表来加强简单实体的信号。 短语列表**不**用作完全匹配，不需要是预期的每个可能的值。 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在“意向”页上，选择“ApplyForJob”意向。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "48867538"
 
     还有其他示例陈述，但这些陈述不包含工作词汇。
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

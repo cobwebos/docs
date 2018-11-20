@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269252"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252915"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -72,11 +72,6 @@ ms.locfileid: "48269252"
 
 默认情况下，“服务映射”映射显示过去 30 分钟的依赖关系信息。 使用左上角的时间控件，可在映射中查询历史时间范围（最多一小时），显示依赖关系在过去（例如，发生事件期间或发生更改之前）的出现形式。 服务映射数据在付费工作区中存储 30 天，在免费工作区中存储 7 天。
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>状态徽章和边框着色
 映射中每个服务器的底部可以是状态徽章的列表，用于表示有关服务器的状态信息。 徽章指示其中一个解决方案集成中有服务器的一些相关信息。 单击徽章，直接转到右侧窗格中的状态详细信息。 当前可用状态徽章包括警报、服务台、更改、安全性和更新。
 
@@ -104,7 +99,7 @@ ms.locfileid: "48269252"
 ![为组命名](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->计算机组当前限制为 10 台服务器，但计划很快将增加此限制。
+>计算机组限制为 10 个服务器。
 
 ### <a name="viewing-a-group"></a>查看组
 创建一些组后，便可以选择“组”选项卡查看它们。
@@ -282,7 +277,7 @@ Linux：
 ![“计算机更改跟踪”窗格](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-log-searches.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../log-analytics/log-analytics-queries.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
@@ -509,7 +504,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-log-searches.md)，以检索服务映射收集的数据。
+详细了解 Log Analytics 中的[日志搜索](../log-analytics/log-analytics-queries.md)，以检索服务映射收集的数据。
 
 
 ## <a name="troubleshooting"></a>故障排除

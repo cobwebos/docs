@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582846"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238993"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
@@ -45,7 +45,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 如果当前使用 Azure 表存储，可以通过 Azure Cosmos DB 表 API 获得以下好处：
 
-- 具有多宿主的统包[全局分发](distribute-data-globally.md)与[自动和手动故障转移](regional-failover.md)
+- 具有多宿主的统包[全局分发](distribute-data-globally.md)与[自动和手动故障转移](high-availability.md)
 - 支持针对所有属性的自动架构不可知索引（“辅助索引”）和快速查询 
 - 支持跨任意数量的区域实现[存储和吞吐量的独立缩放](partition-data.md)
 - 支持[按表的专用吞吐量](request-units.md)，可以从每秒数百个请求扩展到每秒数百万个请求
@@ -135,7 +135,7 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。
 
 某些功能通过 CreateCloudTableClient 的新重载进行访问，用户可以使用这些新重载指定连接策略和一致性级别。
 
-| 表连接设置 | 说明 |
+| 表连接设置 | Description |
 | --- | --- |
 | 连接模式  | Azure Cosmos DB 支持两种连接模式。 在`Gateway`模式下，将始终向 Azure Cosmos DB 网关发出请求，该网关会将其转发到相应的数据分区。 在`Direct`连接模式下，客户端会提取表到分区的映射，且会直接针对数据分区发出请求。 建议使用`Direct`（默认）。  |
 | 连接协议 | Azure Cosmos DB 支持两种连接协议 - `Https` 和 `Tcp`。 默认为 `Tcp`，并推荐使用该协议，因为它更轻质。 |
@@ -144,7 +144,7 @@ Azure Cosmos DB 支持大量 Azure 表存储 API 中不可用的功能。
 
 可以通过以下 `appSettings` 配置值启用其他功能。
 
-| 密钥 | 说明 |
+| 密钥 | Description |
 | --- | --- |
 | TableQueryMaxItemCount | 配置单个往返过程中按每个表查询所返回的最大项数。 默认为 `-1`，使 Azure Cosmos DB 在运行时能够动态确定该值。 |
 | TableQueryEnableScan | 如果查询无法使用任何筛选器的索引，则无论如何要通过扫描运行它。 默认为 `false`。|

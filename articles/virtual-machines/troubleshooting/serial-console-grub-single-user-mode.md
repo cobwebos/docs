@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855861"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211377"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
-GRUB 是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
+GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
 
 单用户模式是包含最少量功能的极简环境。 它可用于调查启动问题、文件系统问题或网络问题。 可在后台运行的服务较少，根据具体的运行级别，甚至可以不自动装载文件系统。
 
@@ -33,7 +33,7 @@ GRUB 是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现�
 ## <a name="general-grub-access"></a>常规 GRUB 访问
 若要访问 GRUB，需要重新启动 VM，同时使串行控制台边栏选项卡保持处于打开状态。 某些发行版将需要键盘输入以显示 GRUB，而其他发行版则会自动显示 GRUB 几秒钟，并允许用户键盘输入取消超时。 
 
-需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 下面提供了特定于发行版的信息。
+需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 可在下方的[此链接](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)处查看特定于发行版的信息。
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>重新启动 VM 以在串行控制台中访问 GRUB
 如果启用了 [SysRq](./serial-console-nmi-sysrq.md)，可以使用 SysRq `'b'` 命令在打开串行控制台边栏选项卡的情况下重新启动 VM，或者单击“概述”边栏选项卡中的“重启”按钮（在新浏览器标签页中打开要重启的 VM，无需关闭串行控制台边栏选项卡）。 按照下面的特定于发行版的说明，了解在重新启动时应该从 GRUB 中得到什么。
@@ -45,9 +45,9 @@ GRUB 是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现�
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>使用单用户模式重置或添加密码
 进入单用户模式后，请执行以下操作以添加具有 sudo 权限的新用户：
-1. 运行 `useradd <username>` 添加用户
-1. 运行 `sudo usermod -a -G sudo <username>` 以授予新用户根权限
-1. 使用 `passwd <username>` 为新用户设置密码。 然后将能够以新用户身份登录
+1. 运行 `useradd <username>` 来添加用户
+1. 运行 `sudo usermod -a -G sudo <username>` 向新用户授予根权限
+1. 使用 `passwd <username>` 为新用户设置密码。 然后，你将能够以新用户身份登录
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>在 Red Hat Enterprise Linux (RHEL) 中访问
@@ -186,6 +186,7 @@ Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo rebo
 
 ## <a name="next-steps"></a>后续步骤
 * 主要串行控制台 Linux 文档页位于[此处](serial-console-linux.md)。
+* 了解如何使用串行控制台[在各种发行版中启用 GRUB](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * 使用串行控制台执行 [NMI 和 SysRq 调用](serial-console-nmi-sysrq.md)
 * 串行控制台也适用于 [Windows](serial-console-windows.md) VM
 * 详细了解[启动诊断](boot-diagnostics.md)

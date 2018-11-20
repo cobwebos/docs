@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 7139b88ee9ef137ca28484538262b8bb2fe804db
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133889"
+---
 ```json
 {
     "queues": {
@@ -10,7 +23,7 @@
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性  |默认 | Description |
 |---------|---------|---------| 
 |maxPollingInterval|60000|队列轮询的最大间隔时间，以毫秒为单位。| 
 |visibilityTimeout|0|消息处理失败时的重试间隔时间。| 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297b3f4c9ef110f8adc9dcb5cd9eac9e30729a5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180119"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006526"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
 
@@ -51,7 +51,7 @@ ms.locfileid: "47180119"
 | 恢复保管库         | Microsoft.RecoveryServices/vaults       |             |             | [Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | 搜索服务         | Microsoft.Search/searchServices         | 诊断 | 诊断 | |
 | 服务总线命名空间   | Microsoft.ServiceBus/namespaces         | 诊断 | 诊断 | [Service Fabric 分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | 存储     |             | [Service Fabric 分析（预览版）](log-analytics-service-fabric.md) |
+| Service Fabric          |                                         | 存储     |             | [Service Fabric 分析（预览版）](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 诊断 | [Azure SQL Analytics（预览版）](log-analytics-azure-sql.md) |
 | 存储                 |                                         |             | 脚本      | [Azure 存储分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 分机 <br> 诊断  | |
@@ -61,14 +61,14 @@ ms.locfileid: "47180119"
 
 
 > [!NOTE]
-> 若要监视 Azure 虚拟机（Linux 和 Windows），建议安装 [Log Analytics VM 扩展](log-analytics-azure-vm-extension.md)。 该代理提供从虚拟机中收集到的见解。 对于虚拟机规模集，还可以使用扩展。
+> 若要监视 Azure 虚拟机（Linux 和 Windows），建议安装 [Log Analytics VM 扩展](log-analytics-quick-collect-azurevm.md)。 该代理提供从虚拟机中收集到的见解。 对于虚拟机规模集，还可以使用扩展。
 >
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>将 Azure 诊断定向到 Log Analytics
 许多 Azure 资源都能将诊断日志和度量值直接写入到 Log Analytics，这是收集数据进行分析的首选方法。 使用 Azure 诊断时，数据将立即写入到 Log Analytics，而无需先将数据写入到存储。
 
-支持 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
+支持 [Azure Monitor](../azure-monitor/overview.md) 的 Azure 资源可以直接向 Log Analytics 发送其日志和度量值。
 
 > [!NOTE]
 > 当前不支持通过诊断设置将多维指标发送到 Log Analytics。 多维指标将按平展后的单维指标导出，并跨维值聚合。
@@ -158,5 +158,5 @@ Azure 模板库有[使用 Azure 自动化的示例](https://azure.microsoft.com/
 ## <a name="next-steps"></a>后续步骤
 
 * [使用适用于 IIS 的 blob 存储和适用于事件的表存储](log-analytics-azure-storage-iis-table.md)，读取将诊断写入到表存储或将 ISS 日志写入到 blob 存储的 Azure 服务的日志。
-* [启用解决方案](log-analytics-add-solutions.md)深入分析数据。
-* [使用搜索查询](log-analytics-log-searches.md)分析数据。
+* [启用解决方案](../monitoring/monitoring-solutions.md)深入分析数据。
+* [使用搜索查询](log-analytics-queries.md)分析数据。

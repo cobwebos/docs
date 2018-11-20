@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) - C# - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 获取基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
+description: 获取 C# 基于 REST 的信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的 Microsoft 文本翻译 API。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 0b468556892bf85dac1fbdd09e7299a793e1e700
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a93d6d939f1ccdaa7cbbe16de1e380227489ac45
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646341"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211479"
 ---
 # <a name="qna-maker-rest-api-with-c"></a>QnA Maker REST API 与 C# 
 <a name="HOLTop"></a>
 
-本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md) 与 C# 结合使用以执行下列操作。
+本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 C# 结合使用以执行下列操作。
 
 - [创建新的知识库。](#Create)
 - [更新现有知识库。](#Update)

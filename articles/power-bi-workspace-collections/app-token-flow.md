@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 54eefc9c488718dae25e35ef0c5f0f5c50dea16c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041735"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236924"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -170,7 +170,7 @@ Body
    
    ![应用令牌流 - 服务将报表发送给用户](media/get-started-sample/token-6.png)
 
-在 **Power BI 工作区集合**将报表发送给用户后，用户可以在自定义应用中查看报表。 例如，如果导入了[分析销售数据 PBIX 示例](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix)，该示例 Web 应用将如下所示：
+在 **Power BI 工作区集合**将报表发送给用户后，用户可以在自定义应用中查看报表。 例如，如果导入了[分析销售数据 PBIX 示例](https://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix)，该示例 Web 应用将如下所示：
 
 ![应用中嵌入的报表的示例](media/get-started-sample/sample-web-app.png)
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034427"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281789"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>教程 2：确定常见意向和实体
 在本教程中，修改“人力资源”应用。 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语，因为会自动检测实体。
@@ -28,7 +28,7 @@ ms.locfileid: "47034427"
 > * 使用现有的教程应用
 > * 添加预生成意向 
 > * 添加预生成的实体 
-> * 训练 
+> * 定型 
 > * 发布 
 > * 从终结点获取意向和实体
 
@@ -37,18 +37,18 @@ ms.locfileid: "47034427"
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请使用以下步骤：
+如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
 
 1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `prebuilts`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含 URL 中无效的任何字符。 
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `prebuilts`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
 
 ## <a name="add-prebuilt-intents"></a>添加预生成意向
 LUIS 提供几个预生成意向，以便提供常见用户意向。  
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“添加预生成的意向”。 
 
@@ -76,7 +76,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
     ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

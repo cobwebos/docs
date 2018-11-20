@@ -19,6 +19,8 @@ items:
     href: tutorial-route-location.md
   - name: 3 - 按旅行模式规划多条路线
     href: tutorial-prioritized-routes.md
+  - name: 4 - 创建商店定位器
+    href: tutorial-create-store-locator.md
 - name: 概念
   items:
   - name: 缩放级别和磁贴网格
@@ -59,7 +61,7 @@ items:
       href: choose-map-style.md
     - name: 添加地图控件
       href: map-add-controls.md
-    - name: 添加图钉
+    - name: 添加符号和标记
       href: map-add-pin.md
     - name: 添加弹出项
       href: map-add-popup.md
@@ -161,9 +163,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: f67c65fd04d6b4184f66a0ddb5fadb5b6c4c4779
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e69f28012fcceb7aa741c1ba29c9f21537450089
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364145"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706239"

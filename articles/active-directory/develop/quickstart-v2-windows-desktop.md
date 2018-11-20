@@ -13,33 +13,50 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2018
-ms.author: andret
+ms.date: 11/01/2018
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28c5f025b59b4adbb33a59edd225a839e11dad97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7e7e5e16b6f7de1cee8312fd31801c202c3e16ef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965086"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962905"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-在此快速入门中，你将了解 Windows 桌面.NET (WPF) 应用程序如何登录个人、 工作和学校帐户，获取访问令牌以及如何调用 Microsoft Graph API。
+本快速入门介绍如何编写 Windows 桌面.NET (WPF) 应用程序，该应用程序能够登录个人、工作和学校帐户，获取访问令牌以及调用 Microsoft Graph API。
 
 ![本快速入门生成的示例应用的工作原理](media/quickstart-v2-windows-desktop/windesktop-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download"></a>注册和下载
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>注册并配置应用程序和代码示例
+> ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
+> [!div renderon="docs" class="sxs-lookup"]
+> 可以使用两个选项来启动快速入门应用程序：
+> * [快速] [选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手动] [选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
+>
+> 1. 访问 [Azure 门户 - 应用程序注册](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps)
+> 1. 输入应用程序的名称并选择“注册”。
+> 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
+> [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
-> 若要注册应用程序并将应用程序注册信息添加到解决方案，请执行以下操作：
-> 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)注册应用程序。
-> 1. 在“应用程序名称”框中输入应用程序的名称。
-> 1. 确保未选中“指导式设置”复选框，然后选择“创建”。
-> 1. 依次选择“添加平台”、“本机应用程序”和“保存”。
+> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
+> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)” > “新建注册”。
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
+>      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Win-App-calling-MsGraph`。
+>      - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。
+>      - 选择“注册”以创建应用程序。
+> 1. 在应用的页面列表中，选择“身份验证”。
+> 1. 在“重定向 URI”部分，找到“建议用于公共客户端(移动、桌面)的重定向 URI”部分，然后选择“urn:ietf:wg:oauth:2.0:oob”。
+> 1. 选择“保存”。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
@@ -48,7 +65,7 @@ ms.locfileid: "46965086"
 > > [执行此更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![已配置](media/quickstart-v2-windows-desktop/green-check.png) 应用程序已使用这些属性进行配置
+> > ![已配置](media/quickstart-v2-windows-desktop/green-check.png) 应用程序已使用这些属性进行配置。
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
@@ -56,19 +73,31 @@ ms.locfileid: "46965086"
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
 
-1. 将 zip 文件提取到本地文件夹（例如，C:\Azure-Samples）
+1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
 1. 在 Visual Studio 中打开项目。
-1. 编辑 App.Xaml.cs，并用刚注册的应用程序的应用程序 ID 替换行（以 `private static string ClientId` 开头）：
+1. 编辑 **App.Xaml.cs** 并将字段 `ClientId` 和 `Tenant` 的值替换为以下代码：
 
-```csharp
-private static string ClientId = "Enter_the_Application_Id_here";
-```
+    ```csharp
+    private static string ClientId = "Enter_the_Application_Id_here";
+    private static string Tenant = "Enter_the_Tenant_Info_Here";
+    ```
+
+> [!div renderon="docs"]
+> 其中：
+> - `Enter_the_Application_Id_here` - 是已注册应用程序的**应用程序（客户端）ID**。
+> - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
+>   - 如果应用程序支持“此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
+>   - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将该值替换为 `common`
+>
+> > [!TIP]
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
 
 ## <a name="more-information"></a>详细信息
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 库用于用户登录和请求用于访问由 Microsoft Azure Active Directory (Azure AD) 保护的 API 的令牌库。 可在 Visual Studio 的包管理器控制台中运行以下命令，以进行安装：
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 库用于用户登录和请求用于访问由 Microsoft Azure Active Directory (Azure AD) 保护的 API 的令牌库。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL：
 
 ```powershell
 Install-Package Microsoft.Identity.Client -Pre
@@ -90,11 +119,11 @@ public static PublicClientApplication PublicClientApp = new PublicClientApplicat
 
 > |其中： ||
 > |---------|---------|
-> | `ClientId` | portal.microsoft.com 中注册的应用程序的应用程序 ID |
+> | `ClientId` | 是在 Azure 门户中注册的应用程序的**应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 
 ### <a name="requesting-tokens"></a>请求令牌
 
-MSAL 有两种用于获取令牌的方法：`AcquireTokenAsync` 和 `AcquireTokenSilentAsync`。
+MSAL 有两种获取令牌的方法：`AcquireTokenAsync` 和 `AcquireTokenSilentAsync`。
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
@@ -111,7 +140,7 @@ authResult = await App.PublicClientApp.AcquireTokenAsync(_scopes);
 
 > |其中：||
 > |---------|---------|
-> | `_scopes` | 包含所请求的作用域（即针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`） |
+> | `_scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -124,16 +153,15 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 
 > |其中： ||
 > |---------|---------|
-> |范围 | 包含所请求的作用域（即针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`） |
-> |accounts.FirstOrDefault() | 缓存中的第一个用户（MSAL 支持单个应用中的多个用户） |
+> | `scopes` | 包含所请求的作用域，例如针对 Microsoft Graph 的 `{ "user.read" }` 或针对自定义 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
+> | `accounts.FirstOrDefault()` | 指定缓存中的第一个用户（MSAL 支持单个应用中的多个用户）。 |
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 试用 Windows 桌面教程，了解有关构建应用程序和新功能的完整分布指南，包括本快速入门的完整说明。
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解创建本快速入门中使用的应用程序的步骤
-
 > [!div class="nextstepaction"]
 > [调用 Graph API 教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

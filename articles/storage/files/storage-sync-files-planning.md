@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237886"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625294"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -129,7 +129,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 - 使用 NTFS 文件系统进行了格式化的本地附加卷。
 
 ### <a name="file-system-features"></a>文件系统功能
-| 功能 | 支持状态 | 说明 |
+| Feature | 支持状态 | 说明 |
 |---------|----------------|-------|
 | 访问控制列表 (ACL) | 完全支持 | Windows ACL 由 Azure 文件同步进行保留，并由 Windows Server 在服务器终结点上强制实施。 如果直接在云中访问文件，则 Azure 文件不（尚不）支持 Windows ACL。 |
 | 硬链接 | 已跳过 | |
@@ -191,19 +191,9 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 如果在服务器终结点上启用了云分层功能，则已分层的文件将被跳过，并且不会由 Windows 搜索进行索引。 非分层文件会适当进行索引。
 
 ### <a name="antivirus-solutions"></a>防病毒解决方案
-由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 由于分层文件设置有“脱机”属性，因此建议咨询软件供应商，了解如何配置解决方案以跳过读取脱机文件。 
+由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。
 
-以下解决方案现支持跳过脱机文件：
-
-- [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Windows Defender 会自动跳过读取设置了脱机属性的文件。 我们已对 Defender 进行了测试并发现了一个微小的问题：向现有的同步组添加服务器时，在新服务器上会重新调用（下载）小于 800 字节的文件。 这些文件将保留在新服务器上并且不会分层，因为它们不符合分层大小要求 (> 64kb)。
-- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - SCEP 的工作方式与 Defender 相同；请参阅上文
-- [Symantec 终结点保护](https://support.symantec.com/en_US/article.tech173752.html)
-- [McAfee 终结点安全性](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf)（请参阅 PDF 第 90 页上的“仅扫描所需内容”）
-- [Kaspersky 防病毒](https://support.kaspersky.com/4684)
-- [Sophos 终结点保护](https://community.sophos.com/kb/en-us/40102)
-- [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
+Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endpoint Protection (SCEP) 都会自动跳过读取设有此属性的文件。 我们已对这两个解决方案进行了测试并发现了一个小问题：向现有的同步组添加服务器时，在新服务器上会重新调用（下载）小于 800 字节的文件。 这些文件将保留在新服务器上并且不会分层，因为它们不符合分层大小要求 (> 64kb)。
 
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
@@ -242,7 +232,9 @@ Azure 文件同步仅在以下区域中可用：
 | 东亚 | 香港特别行政区 |
 | 美国东部 | 弗吉尼亚州 |
 | 美国东部 2 | 弗吉尼亚州 |
+| 美国中北部 | 伊利诺斯州 |
 | 北欧 | 爱尔兰 |
+| 美国中南部 | Texas |
 | 印度南部 | 金奈 |
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
@@ -269,6 +261,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 美国东部             | 美国西部            |
 | 美国东部 2           | 美国中部         |
 | 北欧        | 西欧        |
+| 美国中北部    | 美国中南部   |
 | 印度南部         | 印度中部      |
 | 东南亚      | 东亚          |
 | 英国南部            | 英国西部            |

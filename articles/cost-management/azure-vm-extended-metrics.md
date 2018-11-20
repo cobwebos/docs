@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 11/13/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bc3eb2721dd9fc0c4cde407a8257f6be73201a2a
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 5f1b4cf63379f0007b87c44164168b8510612f52
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423351"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624091"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -67,6 +67,8 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 创建新的 VM 时，在“管理”选项卡上，针对“OS 来宾诊断”选择“开启”。
 
 ![启用来宾 OS 诊断](./media/azure-vm-extended-metrics/new-enable-diag.png)
+
+有关为 Azure 虚拟机启用扩展指标的详细信息，请参阅[了解和使用 Azure Linux 代理](../virtual-machines/extensions/agent-linux.md)和 [Azure 虚拟机代理概述](../virtual-machines/extensions/agent-windows.md)。
 
 ## <a name="resource-manager-credentials"></a>资源管理器凭据
 

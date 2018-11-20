@@ -4,9 +4,6 @@ description: 了解如何为公共基本负载均衡器启用警报事件以及�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-tags: azure-resource-manager
-ms.assetid: 56656d74-0241-4096-88c8-aa88515d676d
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42140907"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261496"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>适用于公共基本负载均衡器的 Log Analytics
 
@@ -146,7 +143,7 @@ JSON 输出在属性字段显示了探测运行状况的基本信息。 *dipDown
 
 ## <a name="additional-resources"></a>其他资源
 
-* [使用 Power BI 直观显示 Azure 审核日志](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
+* [使用 Power BI 直观显示 Azure 审核日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)博客文章。
 * [查看和分析 Power BI 中的 Azure 审核日志及更多内容](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)博客文章。
 
 ## <a name="next-steps"></a>后续步骤

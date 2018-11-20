@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360711"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253255"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>使用 Windows 版 AzCopy 跨存储帐户迁移 blob
 
@@ -30,7 +30,7 @@ ms.locfileid: "29360711"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-本示例需要最新版本的 [Windows 版 AzCopy](http://aka.ms/downloadazcopy)。 默认安装目录为 `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`。
+本示例需要最新版本的 [Windows 版 AzCopy](https://aka.ms/downloadazcopy)。 默认安装目录为 `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`。
 
 本示例使用源存储帐户名称和键、目标存储帐户名称和键、AzCopy.exe 的完整文件路径（如果未安装在默认目录）。
 

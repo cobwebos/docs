@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
-ms.openlocfilehash: e3e7d271375cd9c3f49d8fedd963b5234dab7902
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: cf2fe10d6a0ab81ff71c948ee2defe6bc7edfd70
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001518"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300180"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
@@ -80,7 +80,7 @@ ms.locfileid: "39001518"
 
    **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。
 
-   权限（`permisionLevel` 属性）可以设置为以下值之一：
+   权限（`permissionLevel` 属性）可以设置为以下值之一：
 
    | 权限值 | Description |
    | --- | --- |

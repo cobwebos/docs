@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: 9b048c884f947fa4733595dc4ec339503781c28f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 984190176b75c932dcced2c846832428213df32c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250040"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973699"
 ---
 > [!NOTE]
-> 现在提供个人预览版的异常查找器。 有关详细信息，请参阅[异常查找器个人预览版文档](https://aka.ms/AnomalyFinderPrivatePreview)。
+> 现在提供个人预览版的异常查找器。 有关详细信息，请参阅[异常查找器个人预览版文档](https://aka.ms/AnomalyFinderPrivatePreview)。 若要加入异常查找器个人预览版，请[与我们联系](mailto:kenshoteam@microsoft.com)。

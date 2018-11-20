@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f7fa4c9b0926d796c0c12b39d0056fe72e4028c7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349018"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625345"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教程：为 Box 配置自动用户预配
 
@@ -55,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 可以使用 Azure 门户中的“Box”>“用户和组”选项卡指定应向哪些用户和组授予对 Box 的访问权限。 分配用户或组会导致以下结果：
 
 * Azure AD 允许分配的用户（不管是直接分配还是以组成员的方式进行分配）向 Box 进行身份验证。 如果用户尚未分配，则 Azure AD 不会允许其登录到 Box，并会在 Azure AD 登录页上返回错误。
-* Box 的应用磁贴会添加到用户的[应用程序启动程序](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)中。
+* Box 的应用磁贴会添加到用户的[应用程序启动程序](../manage-apps/end-user-experiences.md)中。
 * 如果启用了自动预配，则会将分配的用户和/或组添加到预配队列进行自动预配。
   
   * 如果仅将用户对象配置为进行预配，则会将所有直接分配的用户置于预配队列中，所有属于任何已分配组成员的用户也会置于预配队列中。 
@@ -132,5 +132,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](box-tutorial.md)

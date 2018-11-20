@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/02/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627383"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215406"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -213,21 +213,19 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 
 - 基于组的许可目前不支持包含其他组的组（嵌套组）。 如果将许可证应用到某个嵌套组，只会向该组的直接一级用户成员应用许可证。
 
-- 该功能仅可用于安全组。 目前不支持 Office 组，无法在许可证分配过程中使用它们。
+- 该功能只能用于安全组和其中 securityEnabled=TRUE 的 Office 365 组。
 
 - [Office 365 管理门户](https://portal.office.com )目前不支持基于组的许可。 如果用户从组继承许可证，此许可证会在 Office 管理门户中显示为普通的用户许可证。 如果尝试修改该许可证或尝试删除它，门户会返回错误消息。 无法直接修改用户的继承的组许可证。
 
-- 如果从组中删除某个用户，导致其丢失许可证，则该许可证中的服务计划（例如 SharePoint Online）设置为“挂起”状态。 服务计划不会设置为最终已禁用状态。 这项预防措施可避免管理员在执行组成员身份管理期间由于失误而意外删除用户数据。
-
 - 如果针对大型组（例如，100,000 个用户）分配或修改许可证，则可能会影响性能。 具体而言，Azure AD 自动化生成的大量更改可能会对 Azure AD 与本地系统之间的目录同步性能产生负面影响。
 
-- 在某些高负载情况下，许可证处理可能会延迟，一些更改（例如，添加/删除组许可证或在组中添加/删除用户）可能需要很长时间才能处理。 如果发现处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)，以便让我们调查。 在此功能*正式发布*之前，我们将改进此功能的性能特性。
+- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)。 
+
+- 在某些高负载情况下，处理组的许可证更改或处理具有现有许可证的组的成员身份更改可能需要很长时间。 如果发现对于 60000 及以下的用户群，处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)以便我们调查。 
 
 - 许可证管理自动化不会自动根据环境中的所有更改类型做出反应。 例如，可能会用完许可证，导致某些用户进入错误状态。 若要释放可用的许可席位计数，可以删除其他用户的某些直接分配的许可证。 但是，系统不会自动对此项更改做出反应，也不会修复处于该错误状态的用户。
 
   此类限制的解决方法之一是转到 Azure AD 中的“组”边栏选项卡，并单击“重新处理”。 在可能的情况下，此命令会处理该组中的所有用户并修复错误状态。
-
-- 由于 Exchange Online 中包含重复的代理地址配置，导致无法将许可证分配给用户时，基于组的许可不会记录错误；在许可证分配期间会跳过这些用户。 有关如何识别和解决此问题的详细信息，请参阅[本节](licensing-groups-resolve-problems.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -237,3 +235,5 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 * [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
+* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)

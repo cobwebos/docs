@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4e454030f77a22236da18c8d8a5215667784f7c5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 6da2f7792df564ea3a41df37ab9b00574a205e5b
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301434"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219539"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -53,7 +53,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
 | apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
@@ -118,11 +118,10 @@ ListKeys 返回的对象采用以下格式：
             "type": "string",
             "defaultValue": "southcentralus"
         },
-        "requestContent": {
+        "accountSasProperties": {
             "type": "object",
             "defaultValue": {
                 "signedServices": "b",
-                "signedResourceType": "c",
                 "signedPermission": "r",
                 "signedExpiry": "2018-08-20T11:00:00Z",
                 "signedResourceTypes": "s"
@@ -164,7 +163,7 @@ ListKeys 返回的对象采用以下格式：
         },
         "accountSAS": {
             "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('requestContent'))]"
+            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
         }
     }
 }
@@ -191,7 +190,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |是 |字符串 |提供程序的命名空间 |
 | resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
@@ -279,7 +278,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 |
@@ -571,7 +570,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | Type | Description |
+| 参数 | 必选 | 类型 | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |

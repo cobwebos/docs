@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 041eed3a65faeb4e6c19cd9220a9e6393e18532a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452201"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319126"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -29,7 +29,9 @@ ms.locfileid: "47452201"
 * 控制每个设备/每个模块对中心的面向设备或模块的终结点的访问。
 
 > [!NOTE]
-> 标识注册表不包含任何应用程序特定的元数据。
+> * 标识注册表不包含任何应用程序特定的元数据。
+> * 模块标识和模块孪生为公共预览版。 下面的有关模块标识的功能在公开发布后会受支持。
+>
 
 ## <a name="identity-registry-operations"></a>标识注册表操作
 
@@ -40,7 +42,6 @@ IoT 中心标识注册表公开以下操作：
 * 按 ID 检索设备或模块标识
 * 删除设备或模块标识
 * 最多列出 1000 个标识
-> 模块标识和模块孪生为公共预览版。 下面的有关模块标识的功能在公开发布后会受支持。
 * 将设备标识导出到 Azure Blob 存储
 * 将设备标识从 Azure Blob 存储导入
 
@@ -197,6 +198,9 @@ iothub-message-schema | moduleLifecycleNotification |
 > [!NOTE]
 > 连接状态只能表示连接状态的 IoT 中心视图。 根据网络状态和配置，可能会延迟此状态的更新。
 
+> [!NOTE]
+> 目前，设备 SDK 不支持在 **deviceId** 中使用 `+` 和 `#` 字符。
+
 ## <a name="module-identity-properties"></a>模块标识属性
 
 模块识别表示为包含以下属性的 JSON 文档：
@@ -216,6 +220,9 @@ iothub-message-schema | moduleLifecycleNotification |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
+> [!NOTE]
+> 目前，设备 SDK 不支持在 **deviceId** 和 **moduleId** 中使用 `+` 和 `#` 字符。
+
 ## <a name="additional-reference-material"></a>其他参考资料
 
 IoT 中心开发人员指南中的其他参考主题包括：
@@ -228,7 +235,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

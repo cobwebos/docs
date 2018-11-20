@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dcf31bd6b128115962e30dd6653364c4cd65047d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240590"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235983"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
 除了提供 REST API 以外，Azure Blockchain Workbench 还提供基于消息的集成。 Workbench 通过 Azure 事件网格发布以账本为中心的事件，使下游使用者能够根据这些事件引入数据或执行操作。 对于需要可靠消息传递的客户端，Azure Blockchain Workbench 还会将消息传送到 Azure 服务总线终结点。
 
-很多开发人员还希望能够与外部系统通信，并发起事务来创建用户、创建合同以及更新账本中的合同。 尽管此功能目前尚未推出公共预览版，但在 [http://aka.ms/blockchain-workbench-integration-sample](http://aka.ms/blockchain-workbench-integration-sample) 中可以找到提供此功能的示例。
+很多开发人员还希望能够与外部系统通信，并发起事务来创建用户、创建合同以及更新账本中的合同。 尽管此功能目前尚未推出公共预览版，但在 [http://aka.ms/blockchain-workbench-integration-sample](https://aka.ms/blockchain-workbench-integration-sample) 中可以找到提供此功能的示例。
 
 ## <a name="event-notifications"></a>事件通知
 
@@ -271,7 +271,7 @@ public class MessageModelBase
 |-------|-----------------------------|
 | 名称  | 参数的名称。  |
 | 值 | 参数值。 |
-| Type  | 参数的类型。  |
+| 类型  | 参数的类型。  |
 
 ``` csharp
 public class ContractInputParameter
@@ -291,7 +291,7 @@ public class ContractInputParameter
 | ID    | 属性的 ID。    |
 | 名称  | 属性的名称。  |
 | 值 | 属性的值。 |
-| Type  | 属性类型。  |
+| 类型  | 属性类型。  |
 
 ``` csharp
 public class ContractProperty

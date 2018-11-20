@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 14ddd92320fdbeab3edf8c155bdb195334c93e16
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040585"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006900"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 
@@ -33,12 +33,12 @@ ms.locfileid: "48040585"
 - 监视网络运行状况，不需要 SNMP。
 
 
-![网络性能监视器](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![网络性能监视器](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>配置
 若要打开网络性能监视器的配置，请打开[网络性能监视器解决方案](log-analytics-network-performance-monitor.md)并选择“配置”。
 
-![配置网络性能监视器](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![配置网络性能监视器](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>新建网络
 
@@ -120,21 +120,21 @@ ms.locfileid: "48040585"
 
 深化页显示 **DMZ2-DMZ1** 网络链接中的所有子网链接。 这两个子网链接的延迟已超过阈值，使网络链接不正常。 还可以看到这两个子网链接的延迟趋势。 使用图表中的时间选择控件可以重点关注所需的时间范围。 可以查看延迟达到其峰值时的当天时间。 若要调查问题，以后可以搜索日志来查询此时间段。 选择“查看节点链接”以进一步深化。 
  
- ![“子网链接”页](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![“子网链接”页](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 与上一页类似，特定子网链接的挖掘页面会列出其构成节点链接。 可以在此处执行与上一步类似的操作。 选择“查看拓扑”可查看两个节点之间的拓扑。 
  
- ![“节点链接”页](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![“节点链接”页](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 两个所选节点之间的所有路径都绘制在拓扑图中。 可以在拓扑图上可视化两个节点之间路由的逐跳拓扑。 它清晰地呈现两个节点之间存在多少个路由，以及数据包会采用哪条路径。 网络性能瓶颈以红色显示。 若要定位到发生问题的网络连接或网络设备，请查看拓扑图上的红色元素。 
 
- ![包含拓扑图的拓扑仪表板](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![包含拓扑图的拓扑仪表板](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 可在“操作”窗格中查看每个路径中的丢失情况、延迟和跃点数。 滚动条可用于查看不正常路径的详细信息。 使用筛选器可以选择包含不正常跃点的路径，以便只绘制所选路径的拓扑。 使用鼠标滚轮可以放大或缩小拓扑图。 
 
 在下图中，网络特定部分的问题区域的根本原因出现在红色路径和跃点中。 选择拓扑图中的某个节点会呈现该节点的属性，包括 FQDN 和 IP 地址。 选择某个跃点会显示该跃点的 IP 地址。 
  
-![已在其中选择节点属性的拓扑图](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![已在其中选择节点属性的拓扑图](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>后续步骤
-[搜索日志](log-analytics-log-searches.md)以查看详细的网络性能数据记录。
+[搜索日志](log-analytics-queries.md)以查看详细的网络性能数据记录。

@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3df0087a21547585883f791d4d385025f92580c7
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 0335c17c85313762c28aec8ba283e1944cceefd1
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395031"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621388"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -103,7 +103,7 @@ ms.locfileid: "49395031"
 
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名称 | Description |
+| 字段名 | Description |
 |------------|-------------|
 | time       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
@@ -118,7 +118,7 @@ ms.locfileid: "49395031"
 | correlationId | 客户端所传递的可选 GUID。 它可以帮助将客户端操作与服务器端操作相关联，并且在跟踪跨服务的日志时非常有用。 |
 | identity | 发出请求时提供的令牌中的标识。 标识可以是用户帐户、系统帐户或服务主体。 |
 | 级别 | 消息类型。 对于审核日志，此级别始终为“信息”。 |
-| location | 数据中心的位置。 |
+| 位置 | 数据中心的位置。 |
 | 属性 | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
 
 <br>
@@ -135,5 +135,5 @@ ms.locfileid: "49395031"
 ## <a name="next-steps"></a>后续步骤
 
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
-* [详细了解 Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

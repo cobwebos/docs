@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843340"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035514"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -32,16 +32,18 @@ ms.locfileid: "48843340"
 ![登录应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
-首次登录到应用程序时，还会提示你同意允许应用程序访问你的个人资料并使你登录，如下所示： 
+
+首次登录到应用程序时，还会提示你同意允许应用程序访问你的个人资料并使你登录，如下所示：
 
 ![许可应用程序访问](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>查看应用程序结果
+
 在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenAsync` 或 `AcquireTokenSilentAsync` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
 
 |属性  |格式  |Description |
 |---------|---------|---------|
-|**Name** |用户全名 |用户的名字和姓氏。|
+|**名称** |用户全名 |用户的名字和姓氏。|
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
 |**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 |**访问令牌** |String |发送到需要授权标头的 HTTP 请求的令牌字符串。|
@@ -51,7 +53,7 @@ ms.locfileid: "48843340"
 
 Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在应用程序注册门户中注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 Microsoft Graph API 需要 *Calendars.Read* 作用域来列出用户的日历。
 
-若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。 
+若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。
 
 >[!NOTE]
 >当你增加作用域数量时，可能会提示用户另外进行许可。

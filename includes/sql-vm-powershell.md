@@ -1,9 +1,9 @@
 
 ## <a name="start-your-powershell-session"></a>启动 PowerShell 会话
-首先，需要安装并运行最新的 [Azure PowerShell](http://msdn.microsoft.com/library/mt619274.aspx)。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+首先，需要安装并运行最新的 [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx)。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 > [!NOTE]
-> 由于本主题中的示例使用的是 [Azure 资源管理器部署模型](../articles/azure-resource-manager/resource-group-overview.md)，因此示例将使用 [Azure 资源管理器 cmdlet](http://msdn.microsoft.com/library/azure/mt125356.aspx)。 
+> 由于本主题中的示例使用的是 [Azure 资源管理器部署模型](../articles/azure-resource-manager/resource-group-overview.md)，因此示例将使用 [Azure 资源管理器 cmdlet](https://msdn.microsoft.com/library/azure/mt125356.aspx)。 
 > 
 > 
 

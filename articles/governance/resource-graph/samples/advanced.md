@@ -4,17 +4,17 @@ description: 使用 Azure 资源图表以运行一些高级查询。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647827"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085370"
 ---
 # <a name="advanced-resource-graph-queries"></a>高级资源图表查询
 
@@ -31,11 +31,11 @@ ms.locfileid: "49647827"
 
 ## <a name="language-support"></a>语言支持
 
-Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在执行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
+Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在运行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
 
-## <a name="vmss-capacity"></a>获取 VMSS 容量和大小
+## <a name="vmss-capacity"></a>获取虚拟机规模集容量和大小
 
-此查询将查找虚拟机规模集 (VMSS) 资源，并获取各种详细信息，包括规模集的虚拟机大小和容量。 此信息使用 `toint()` 函数将容量强制转换为数字以便可以存储。 这还会重命名返回到自定义的已命名属性的值。
+此查询将查找虚拟机规模集资源，并获取各种详细信息，包括规模集的虚拟机大小和容量。 此查询使用 `toint()` 函数将容量强制转换为数字以供排序。 最后会将列重命名为自定义命名属性。
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,7 +75,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 **matches regex @** 允许定义要匹配的 regex，即 **^Contoso(.*)[0-9]+$**。 该 regex 定义说明如下：
 
 - `^` - 匹配项必须以该字符串的开头开头。
-- `Contoso` - 要匹配的核心字符串（区分大小写）。
+- `Contoso` - 区分大小写的字符串。
 - `(.*)` - 子表达式匹配项：
   - `.` - 匹配任何单一字符（换行符除外）。
   - `*` - 匹配上一个元素零次或多次。

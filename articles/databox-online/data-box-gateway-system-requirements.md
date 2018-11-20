@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379116"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157354"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway 系统要求（预览版）
 
@@ -56,7 +56,7 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
-下面是 Data Box Gateway 支持的存储类型的列表。
+下面是 Data Box Gateway 支持的存储帐户的列表。
 
 | **存储帐户** | **说明** |
 | --- | --- |

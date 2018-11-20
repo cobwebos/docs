@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407563"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614560"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
@@ -25,7 +25,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视查阅者角色的人员可以查看订阅中的所有监视数据，但不能修改任何资源或编辑与监视资源相关的任何设置。 此角色适用于组织中的用户，如支持人员或操作工程师，他们需要能够：
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
-* 查看 [Azure 警报](monitoring-overview-unified-alerts.md)中定义的预警规则
+* 查看 [Azure 警报](monitoring-overview-alerts.md)中定义的预警规则
 * 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](insights-powershell-samples.md) 或 [跨平台 CLI](insights-cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
 * 查看资源的[诊断设置](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。
@@ -51,7 +51,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 * 将监视仪表板发布为共享仪表板。
 * 设置资源的[诊断设置](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。*
 * 设置订阅的[日志配置文件](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。*
-* 通过 [Azure 警报](monitoring-overview-unified-alerts.md)设置预警规则活动和设置。
+* 通过 [Azure 警报](monitoring-overview-alerts.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
 * 列出 Log Analytics 工作区的共享密钥。
 * 启用或禁用 Log Analytics 智能包。
@@ -186,5 +186,5 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 
 ## <a name="next-steps"></a>后续步骤
 * [阅读有关 Resource Manager 中的 RBAC 和权限的信息](../role-based-access-control/overview.md)
-* [阅读 Azure 中的监视概述](monitoring-overview.md)
+* [阅读 Azure 中的监视概述](../azure-monitor/overview.md)
 

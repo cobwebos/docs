@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142269"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259133"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -33,6 +33,7 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * 使用分析来跟踪某人访问存储时使用的身份验证方法。
 
 有关 Azure 存储中安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。 本指南深入介绍了 Azure 存储的安全功能。 这些功能包括存储帐户密钥、传输中和静态中的数据加密以及存储分析。
+
 
 本文概述可与 Azure 存储配合使用的 Azure 安全功能。 此外还提供了一些文章链接，这些文章详细介绍了每个功能，可从中了解更多信息。
 
@@ -66,7 +67,7 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 了解有关客户端加密的详细信息：
 
 * [适用于 Microsoft Azure 存储的客户端加密](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [云安全控制系列：加密传输中的数据](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [云安全控制系列：加密传输中的数据](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>静态加密
 
@@ -91,13 +92,35 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 
 * [适用于 Windows 和 Linux IaaS 虚拟机的 Azure 磁盘加密](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Azure 存储防火墙和虚拟网络
+## <a name="firewalls-and-virtual-networks"></a>防火墙和虚拟网络
 
 Azure 存储允许你为存储帐户启用防火墙规则。 启用后，它们将阻止传入的数据请求，包括来自其他 Azure 服务的请求。 可以配置例外以允许流量。 可以在现有存储帐户上或在创建时启用防火墙规则。
 
 应该使用此功能将存储帐户保护到一组特定的允许网络。
 
 有关 Azure 存储防火墙和虚拟网络的详细信息，请查看文章[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md)
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。
+
+Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。
+
+了解更多：
+
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box Gateway](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>高级威胁防护
+
+Azure 存储提供了高级威胁防护来实现额外的一层安全智能，用于检测试图访问或利用你的存储帐户的异常或可能有害的企图。 高级威胁防护监视 Azure 存储诊断日志来获取针对 Blob 存储的可疑读取、写入或删除请求。 
+
+可以从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报。 Azure 安全中心会提供有关检测到的任何可疑活动的详细信息，并提供用于针对潜在威胁进行调查和补救的建议操作。 
+
+了解更多：
+
+* [Azure 存储高级威胁防护概述](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>Azure 密钥保管库
 

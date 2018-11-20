@@ -4,17 +4,17 @@ description: 使用 Visual Studio Code 开发、生成和调试 Azure IoT Edge �
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 88659d31b64b4a98043606a71602f7c29316a31e
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: abfd65920348bd51a9923d0a7c74f0f980a01540
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423283"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567819"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C# 模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "47423283"
 
 可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
 
-有两种方法可用来在 VS Code 中调试 C# 模块。 一种方法是在模块容器中附加一个进程，另一种方法是在调试模式下启动模块代码。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。
+有两种方法可用来在 VS Code 中调试 C# 模块。 一种方法是在模块容器中附加一个进程，另一种方法是在调试模式下启动模块代码。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
 
 请首先安装 Visual Studio Code，然后添加以下必要的扩展：
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -34,7 +34,7 @@ ms.locfileid: "47423283"
 
 要创建一个模块，需要生成项目文件夹的 .NET，生成模块映像的 Docker 以及用来保存模块映像的容器注册表：
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
-* 开发计算机上的 [Docker 社区版](https://docs.docker.com/install/) 
+* 开发计算机上的 [Docker Community Edition](https://docs.docker.com/install/)。 
 * [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。 
 
@@ -52,15 +52,15 @@ ms.locfileid: "47423283"
 
 1. 在 Visual Studio Code 中，选择“视图” > “集成终端”。
 2. 选择“视图” > “命令面板”。 
-3. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。
+3. 在“命令面板”中，输入并运行“Azure IoT Edge: New IoT Edge Solution”命令。
 
    ![运行新的 IoT Edge 解决方案](./media/how-to-develop-csharp-module/new-solution.png)
 
 4. 浏览到要创建新解决方案的文件夹。 选择“选择文件夹”。 
 5. 输入解决方案的名称。 
 6. 选择“C# 模块”作为解决方案中第一个模块的模板。
-7. 输入模块的名称。 选择一个在容器注册表中唯一的名称。 
-8. 提供模块的映像存储库的名称。 VS Code 使用 **localhost:5000** 自动填充模块名称。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 **localhost**。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名称。
+7. 输入模块的名称。 选择容器注册表中唯一的名称。 
+8. 提供模块的映像存储库的名称。 VS Code 使用 localhost:5000 自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -70,18 +70,18 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 该解决方案中有四个项： 
 
-* 一个 **.vscode** 文件夹，包含调试配置。
-* 一个 **modules** 文件夹，包含每个模块的子文件夹。 现在，只有一个模块。 但是可以在命令面板中使用“Azure IoT Edge: Add IoT Edge Module”命令添加更多模块。 
-* 一个 **.env** 文件，列出环境变量。 如果 Azure 容器注册表是你的注册表，则其中将包含 Azure 容器注册表用户名和密码。 
+* 一个 .vscode 文件夹，包含调试配置。
+* 一个 modules 文件夹，包含每个模块的子文件夹。 现在，只有一个模块。 但是可以在命令面板中使用“Azure IoT Edge: Add IoT Edge Module”命令添加更多模块。 
+* 一个 .env 文件，列出环境变量。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。 
 
    >[!NOTE]
    >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
 
-* 一个 **deployment.template.json** 文件，列出新模块以及模拟可用于测试的数据的示例 **tempSensor** 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。 
+* 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 tempSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。 
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认 C# 模块代码位于“模块”> ** [你的模块名称] ** >“Program.cs”。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
+解决方案附带的默认 C# 模块代码位于“模块”> ** [你的模块名称] ** >“Program.cs”。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
 
 当你准备使用自己的代码自定义 C# 模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
 
@@ -144,7 +144,7 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>生成用于调试的模块容器并在附加模式下进行调试
 
-默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 C# 管道模块。 模拟的温度传感器不断向 C# 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用任何以扩展名 **.debug** 结尾的文件来生成用于测试的模块。 目前，C# 模块仅支持在 Linux amd64 容器的附加模式下进行调试。
+默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 C# 管道模块。 模拟的温度传感器不断向 C# 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用以扩展名 .debug 结尾的任何文件来生成用于测试的模块。 目前，C# 模块仅支持在 Linux amd64 容器的附加模式下进行调试。
 
 ### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>为 IoT Edge 解决方案设置 IoT Edge 模拟器
 
@@ -170,7 +170,7 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
    ![选择“配置”](media/how-to-develop-csharp-module/debug-config.png)
 
-5. 选择“开始调试”或选择 **F5**。 选择要附加到的进程。
+5. 选择“开始调试”或选择 F5。 选择要附加到的进程。
 
 6. 在 VS Code 调试视图中，将在左侧面板中看到变量。
 
@@ -184,4 +184,4 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
 生成模块后，了解如何[从 Visual Studio Code 部署 Azure IoT Edge 模块](how-to-deploy-modules-vscode.md)。
 
-若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。

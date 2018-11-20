@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855266"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633523"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -60,7 +60,7 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-* 布尔
+* Boolean
 * String
 * 字符串集合
 
@@ -316,7 +316,7 @@ user.objectid -ne null
 device.objectid -ne null
 ```
 
-### <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
+## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
 支持扩展属性和自定义扩展属性作为动态成员资格规则中的字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
 
@@ -335,11 +335,13 @@ device.objectid -ne null
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。
+通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。
 
 ## <a name="rules-for-devices"></a>设备规则
 
-还可以创建一个规则来为组中的成员身份选择设备对象。 无法将用户和设备都作为组成员。 可以使用以下设备属性。
+还可以创建一个规则来为组中的成员身份选择设备对象。 无法将用户和设备都作为组成员。 不再列出 **organizationalUnit** 属性，不应使用该属性。 此字符串由 Intune 在特定情况下设置，但 Azure AD 无法识别，因此不会根据此属性向组添加任何设备。
+
+可以使用以下设备属性。
 
  设备属性  | 值 | 示例
  ----- | ----- | ----------------
@@ -350,14 +352,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceCategory | 有效的设备类别名称 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意字符串值 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意字符串值 | (device.deviceModel -eq "iPad Air")
- deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Company")
+ deviceOwnership | 个人、公司、未知 | (device.deviceOwnership -eq "Corporate")
  domainName | 任意字符串值 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple 设备注册配置文件或 Windows Autopilot 配置文件名称 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
- organizationalUnit | 由本地 Active Directory 设置的与组织单位名称匹配的任何字符串值 | (device.organizationalUnit -eq "US PCs")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | （device.systemLabels - 包含“M365Managed”）
 
 ## <a name="next-steps"></a>后续步骤
 

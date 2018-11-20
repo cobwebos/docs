@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3b1abe60fc81ae0316e2d0552a1750129171ff5f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817018"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345447"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ ms.locfileid: "48817018"
 > 有关使用 Azure Data Lake Store 连接器的演练，请参阅[将数据加载到 Azure Data Lake Store](load-azure-data-lake-store.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要在根级别授予的服务主体或 MSI 的权限。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
 
 对于特定于 Azure Data Lake Store 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -79,6 +76,9 @@ Azure Data Lake Store 链接服务支持以下属性：
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
 >- 作为源，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
 >- 作为接收器，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
+
+>[!NOTE]
+>当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要**在根级别使用“执行”权限**授予的服务主体权限，以便列出从根目录开始的文件夹。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
 
 支持以下属性：
 
@@ -128,6 +128,9 @@ Azure Data Lake Store 链接服务支持以下属性：
 >- 作为源，在数据资源管理器 ->“访问权限”中，至少授予“读取 + 执行”权限以便列出和复制文件夹/子文件夹中的文件，或授予“读取”权限以便复制单个文件；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 对帐户级别访问控制 (IAM) 没有要求。
 >- 作为接收器，在数据资源管理器 ->“访问权限”中，至少授予“写入 + 执行”权限以便在文件夹中创建子项目；对于“递归”，选择添加到“此文件夹和所有子文件夹”并添加为“访问权限和默认权限项”。 如果使用 Azure IR 复制（源和接收器都在云中），请在“访问控制(标识和访问管理)”中，至少授予“读者”角色，以便让数据工厂检测 Data Lake Store 区域。 如果需要避免此 IAM 角色，请通过 Data Lake Store 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并在 Data Lake Store 链接服务中进行关联，如下面的示例所示。
 
+>[!NOTE]
+>当使用“复制数据”工具创作复制管道或者在创作期间使用 ADF UI 执行测试连接/在文件夹间导航时，它需要**在根级别使用“执行”权限**授予的权限，以便列出从根目录开始的文件夹。 同时，只要授予了对要复制的数据的权限，复制活动执行就可以工作。 如果你需要对权限进行限制，则可以跳过创作操作。
+
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 
 **示例：**
@@ -159,7 +162,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureDataLakeStoreFile** |是 |
-| folderPath | Data Lake Store 中的文件夹的路径。 不支持通配符筛选器。 例如：rootfolder/subfolder/ |是 |
+| folderPath | Data Lake Store 中的文件夹的路径。 不支持通配符筛选器。 如果未指定，它指向根目录。 例如：rootfolder/subfolder/ |否 |
 | fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且在活动接收器中没有指定 **preserveHierarchy**，则复制活动会自动生成采用以下格式的文件名：“*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*”。 例如，“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 |否 |
 | 格式 | 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>如果想要分析或生成具有特定格式的文件，则下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |否 |

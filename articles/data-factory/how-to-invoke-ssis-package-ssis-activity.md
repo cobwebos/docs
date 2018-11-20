@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960152"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092451"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SSIS 包。 
@@ -94,6 +94,8 @@ ms.locfileid: "46960152"
 （可选）使用“执行 SSIS 包”活动框底部的“查看源代码”按钮，或管道区域右上角的“代码”按钮，将可以引用数据工厂系统变量的值、表达式或函数分配给 JSON 格式的项目或包参数。 例如，可以将数据工厂管道参数分配给 SSIS 项目或包参数，如以下屏幕截图所示：
 
 ![编辑“执行 SSIS 包”活动的 JSON 脚本](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![将参数添加到“执行 SSIS 包”活动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ![将参数添加到“执行 SSIS 包”活动](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
@@ -204,9 +206,9 @@ ms.locfileid: "46960152"
                     "runtime": "x64",
                     "loggingLevel": "Basic",
                     "packageLocation": {
-                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
                     },
-                    "environmentPath":   "FolderName/EnvironmentName",
+                    "environmentPath":   "FolderName/EnvironmentName",
                     "projectParameters": {
                         "project_param_1": {
                             "value": "123"
@@ -244,7 +246,7 @@ ms.locfileid: "46960152"
                         }
                     },
                     "propertyOverrides": {
-                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
                             "value": 8,
                             "isSensitive": false
                         }

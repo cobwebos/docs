@@ -4,8 +4,6 @@ description: 如何在流量管理器显示为降级状态时对流量管理器�
 services: traffic-manager
 documentationcenter: ''
 author: chadmath
-manager: cshepard
-ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: e314bac630ce06fbcd62081cc6e9f5e85930d32b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 8690ffdca606bf45f306f9273441aaac52b385c8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140625"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241355"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
@@ -49,7 +47,7 @@ ms.locfileid: "42140625"
 
 也可以在 Internet Explorer 中使用“F12 调试工具”的“网络”标签页查看 HTTP 响应。
 
-在本示例中，我们想要查看探测 URL 返回的响应：http://watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
+在本示例中，我们想要查看探测 URL 返回的响应： http://watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -86,11 +84,11 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [什么是流量管理器](traffic-manager-overview.md)
 
-[云服务](http://go.microsoft.com/fwlink/?LinkId=314074)
+[云服务](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure Web 应用](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure 流量管理器 Cmdlet][1]
 

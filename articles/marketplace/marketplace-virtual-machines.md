@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144516"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958655"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -33,14 +33,14 @@ ms.locfileid: "43144516"
 
 |要求  |详细信息  |
 |---------|---------|
-|免费试用期和试用体验     |   客户可以在有限时间内免费试用你的应用。 客户不需要支付产品/服务的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理。 可以选择免费试用或互动演示。 不管选择哪种，都必须向客户提供规定时间的免费产品/服务试用。|
+|免费试用期和试用体验     |   客户可以在有限时间内免费试用你的应用。 客户不需要支付产品/服务的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理。 可以选择免费试用或互动演示。 不管选择哪种，免费试用版都必须向客户提供规定时间的免费产品/服务试用。|
 |可轻松配置、随时可用的解决方案    |  应用的配置和设置须便捷。       |
 |可用性/运行时间    |    SaaS 应用或平台的运行时间须不低于 99.9%。     |
 |Azure Active Directory     |    在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。     |
 
 ## <a name="test-drive"></a>体验版
 
-通过基础结构即服务 (IaaS) 或 SaaS 应用部署一个或多个虚拟机。 “体验版”发布选项的优点是可以根据合作伙伴托管的指导教程，实现对虚拟机或整个解决方案环境的自动预配。 体验版提供评估，且不向客户收取额外的费用。 客户无需是现有 Azure 客户，即可参与试用体验。 
+通过基础结构即服务 (IaaS) 或软件即服务 (SaaS) 应用部署一个或多个虚拟机。 “体验版”发布选项的优点是可以根据合作伙伴托管的指导教程，实现对虚拟机或整个解决方案环境的自动预配。 体验版提供评估，且不向客户收取额外的费用。 客户无需是现有 Azure 客户，即可参与试用体验。 
 
 若要开始，请通过 [amp-testdrive](mailto:amp-testdrive@microsoft.com) 与我们联系。 
 

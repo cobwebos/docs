@@ -7,20 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144488"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140851"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 
-本快速入门介绍了如何部署 Azure IoT 远程监视解决方案加速器来运行基于云的远程监视模拟。 部署该解决方案加速器后，使用解决方案的“仪表板”页在地图上直观显示模拟设备，并使用“维护”页对模拟的冷却器设备发出的压力警报做出响应。 可以将此解决方案加速器用作你自己的实现的起点，或者将其用作学习工具。
+本快速入门介绍了如何部署 Azure IoT 远程监视解决方案加速器。 在这个基于云的解决方案中，请使用“仪表板”页在地图上直观显示模拟设备，并使用“维护”页对模拟的冷却器设备发出的压力警报做出响应。 可以将此解决方案加速器用作你自己的实现的起点，或者将其用作学习工具。
 
-初始部署为名为 Contoso 的公司配置远程监视解决方案加速器。 Contoso 管理不同物理环境中部署的各种不同设备类型，例如冷却器。 冷却器设备将温度、湿度和压力遥测数据发送到远程监视解决方案加速器。
+初始部署为名为 Contoso 的公司配置解决方案加速器。 作为 Contoso 的操作员，你管理不同物理环境中部署的各种不同设备类型，例如冷却器。 冷却器设备将温度、湿度和压力遥测数据发送到远程监视解决方案加速器。
 
 若要完成本快速入门，需要一个有效的 Azure 订阅。
 
@@ -44,7 +44,7 @@ ms.locfileid: "39144488"
 
 选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 对于本快速入门，我们使用 **Visual Studio Enterprise** 和**西部欧洲**。 只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 
-单击“创建解决方案”开始部署。 此过程至少需要五分钟才能完成运行：
+若要开始部署，请单击“创建解决方案”。 此过程至少需要五分钟才能完成运行：
 
 ![远程监视解决方案详细信息](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -68,15 +68,15 @@ ms.locfileid: "39144488"
 
 解决方案仪表板显示有关 Contoso 的模拟设备的以下信息：
 
-* “设备统计信息”显示有关警报和设备总数的摘要信息。 在默认部署中，Contoso 有 10 个不同类型的模拟设备。
+* “设备统计信息”面板显示有关警报和设备总数的摘要信息。 在默认部署中，Contoso 有 10 个不同类型的模拟设备。
 
-* “设备位置”显示设备的物理位置。 当设备发出了警报时，图钉会以彩色显示。
+* “设备位置”面板显示设备的物理位置。 当设备发出了警报时，图钉会以彩色显示。
 
-* “警报”显示设备发出的警报的详细信息。
+* “警报”面板显示设备发出的警报的详细信息。
 
-* “遥测”显示设备发出的遥测数据。 单击顶部的遥测类型可以查看不同的遥测数据流。
+* “遥测”面板显示设备发出的遥测数据。 单击顶部的遥测类型可以查看不同的遥测数据流。
 
-* “分析”显示设备发出的警报的组合信息。
+* “分析”面板显示设备发出的警报的组合信息。
 
 ## <a name="respond-to-an-alert"></a>响应警报
 
@@ -94,11 +94,11 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 [![“维护”页显示已触发的警报列表](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancealarmlist-expanded.png#lightbox)
 
-现已识别触发警报的问题和关联的设备。 操作员要执行的后续步骤是确认警报并解决问题。
+现已识别触发警报的问题和关联的设备。 作为操作员，你要执行的后续步骤是确认警报并解决问题。
 
 ### <a name="fix-the-issue"></a>解决问题
 
-若要向其他操作员指出你目前正在处理警报，请选择该警报，并将“警报状态”更改为“已确认”：
+若要向其他操作员指出你正在处理警报，请选择该警报，并将“警报状态”更改为“已确认”：
 
 [![选择并确认警报](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceacknowledge-expanded.png#lightbox)
 
@@ -108,7 +108,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 [![选择设备并计划操作](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-在“作业”面板中，选择“运行方法”，然后选择“EmergencyValveRelease”方法。 添加作业名称“ChillerPressureRelease”，单击“应用”。 这些设置会创建一个可立即执行的作业。
+在“作业”面板中，选择“运行方法”，然后选择“EmergencyValveRelease”方法。 添加作业名称“ChillerPressureRelease”，单击“应用”。 这些设置会为你创建一个可立即执行的作业。
 
 若要查看作业状态，请返回“维护”页，并在“作业”视图中查看作业列表。 可能需要等待几秒钟才能看到该作业已运行，以释放冷却器的阀门压力：
 

@@ -3,7 +3,7 @@ title: 通过 CI/CD 将容器应用程序部署到 Azure Service Fabric 群集
 description: 本教程介绍了如何使用 Visual Studio Team Services (VSTS) 为 Azure Service Fabric 容器应用程序设置持续集成和部署。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: ryanwi,v-steg
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 5ec898465b550a136db71ee731be5943c7441dcd
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381893"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300178"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -76,6 +76,9 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 打开 Web 浏览器并导航到新的团队项目：[https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)。
 
 依次选择“生成和发布”选项卡、“生成”，然后单击“新建管道”。
+
+>[!NOTE]
+>如果没有看到生成定义模板，请确保已关闭“新 YAML 管道创建体验”功能。 此功能在 DevOps 帐户的“预览功能”部分中配置。
 
 ![新建管道][new-pipeline]
 

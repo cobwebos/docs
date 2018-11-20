@@ -8,51 +8,56 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/05/2018
+ms.date: 10/22/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5756e8fb451b073c68271359848ab27373ad85ed
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309546"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209576"
 ---
-# <a name="what-is-content-moderator"></a>什么是内容审查器？
+# <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
-内容审查是指对可能的冒犯性、不可取和危险内容进行文本、图像或视频监视的过程。 标记内容随后会进行隐藏，或者以其他方式处理，目的是符合法规的要求，或者为用户维持一个理想的环境。
+Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、危险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。 请参阅[内容审查器 API](#content-moderator-apis) 部分，详细了解不同内容标记表示的意思。
 
 ## <a name="where-it-is-used"></a>使用位置
 
-以下列表显示了可以在其中使用内容审查器的几个示例方案：
+下面是软件开发人员或团队会使用内容审察器的一些场景：
 
-- 联机市场审查产品目录和用户生成的内容
-- 游戏公司审查用户生成的游戏项目和聊天室
-- 社交通讯平台审查用户添加的图像、文本和视频
-- 企业媒体公司为其内容实现的集中式内容审查
-- K-12 教育解决方案提供商为学生和教师筛选不当的和冒犯性的内容
+- 在联机市场中审查产品目录和其他用户生成的内容
+- 在游戏公司中审查用户生成的游戏项目和聊天室
+- 在社交通讯平台中审查用户添加的图像、文本和视频
+- 企业媒体公司对其内容进行集中式审查
+- K-12 教育解决方案提供商为学生和教师筛选掉不当的内容
 
 ## <a name="what-it-includes"></a>组成部分
 
-内容审查器包含多个 Web 服务 API 和内置人工干预评审工具，有助于审查图像、文本和视频。
+内容审查器服务包含多个可以通过 REST 调用和 .NET SDK 使用的 Web 服务 API。 它还包括人工审阅工具，让审核人员来协助服务改进或优化其审查功能。
 
-![内容审查器块状图](images/content-moderator-block-diagram.png)
+![内容审查器的方块图，显示审查 API、审核 API 和人工审阅工具](images/content-moderator-block-diagram.png)
 
-### <a name="apis"></a>API
+### <a name="content-moderator-apis"></a>内容审查器 API
 
-内容审查器服务包括以下 API：
-  - [**文本审查 API**](text-moderation-api.md)：此 API 用于扫描文本中可能的不雅内容、明未、暗示、冒犯性和个人身份信息 (PII)。
-  - [**自定义术语列表 API**](try-terms-list-api.md)：此 API 用于匹配除内置术语之外的自定义术语列表。 根据内容策略，使用这些列表阻止或允许内容。  
-  - [**图像审查 API**](image-moderation-api.md)： 此 API 用于扫描成人图像和不雅内容，通过光学字符识别 (OCR) 功能检测图像中的文本，以及检测人脸。
-  - [**自定义图像列表 API**](try-image-list-api.md)：此 API 用于匹配自定义图像列表和无需再次分类的预标识内容。
-  - [**视频审查 API**](video-moderation-api.md)：此 API 用于扫描视频中潜在的成人和不雅内容。
-  - [评审 API](try-review-api-job.md)：使用[作业](try-review-api-job.md)、[评审](try-review-api-review.md)和[工作流](try-review-api-workflow.md)操作在评审工具中创建和自动执行人工干预工作流。
+内容审查器服务包括适用于以下方案的 API。
+
+| 操作 | Description |
+| ------ | ----------- |
+|[**文本审查**](text-moderation-api.md)| 扫描文本中是否存在冒犯性内容、明确的或暗示性的色情内容、不雅内容和个人身份信息 (PII)。|
+|[**自定义术语列表**](try-terms-list-api.md)| 扫描文本中是否存在内置的术语和一系列的自定义术语。 根据你自己的内容策略，使用自定义列表阻止或允许内容。|  
+|[**图像审查**](image-moderation-api.md)| 扫描图像中是否存在成人内容或不雅内容，通过光学字符识别 (OCR) 功能检测图像中的文本，以及检测人脸。|
+|[**自定义图像列表**](try-image-list-api.md)| 针对自定义图像列表对图像进行扫描。 使用自定义图像列表筛选掉常常反复出现的内容的实例，这些实例不需再次分类。|
+|[**视频审查**](video-moderation-api.md)| 扫描视频中是否存在成人内容或挑逗性内容，并针对上述内容返回时间标记。|
+|[**审阅**](try-review-api-job.md)| 使用[作业](try-review-api-job.md)、[审阅](try-review-api-review.md)和[工作流](try-review-api-workflow.md)操作在人工审阅工具中创建和自动执行人工干预工作流。 尚无法通过 .NET SDK 来使用工作流 API。|
 
 ### <a name="human-review-tool"></a>人工评审工具
 
-内容审查器订阅包括内置[人工评审工具](Review-Tool-User-Guide/human-in-the-loop.md)。 使用前面所述的评审 API 来创建文本、图像和视频的评审，以便人工审查器可以制定最终决策。
+内容审查器服务还包括基于 Web 的[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)。 
 
-![内容审查器评审工具](images/video-review-default-view.png)
+![内容审查器人工审阅工具主页](images/homepage.PNG)
+
+使用使用审阅 API，根据指定的筛选器来设置团队审阅，对文本、图像和视频内容进行审阅。 然后，审查人员可以进行最终的审查决策。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[快速入门](quick-start.md)以快速开始使用内容审查器。
+按照[快速入门](quick-start.md)的步骤开始使用内容审查器。

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 0e8db8779958afe1fd3cf4bf12f2a6fd4a97c61c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165302"
+---
 <!--author=alkohli last changed: 9/16/15-->
 
 #### <a name="to-cable-for-power"></a>进行电源布线
@@ -14,10 +27,10 @@
    
     **8100 设备上的电源布线**
    
-   | 标签 | 说明 |
+   | 标签 | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | #N/A |控制器 1 |
+   | 2 |控制器 1 |
    | 3 |控制器 0 |
    | 4 |PCM 1 |
    | 5 |PDU |

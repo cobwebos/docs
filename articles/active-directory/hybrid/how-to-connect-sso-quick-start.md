@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405982"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687327"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -50,13 +50,16 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
     * 通过 Azure AD Connect 同步到 Azure AD。
     * 包含你想要为其启用无缝 SSO 的用户。
     
-* **启用新式身份验证**：需要在租户上启用[新式身份验证](https://aka.ms/modernauthga)，此功能才有效。
+* **启用新式身份验证**：需要在租户上启用[新式身份验证](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)，此功能才有效。
 
 * **使用最新版本的 Office 365 客户端**：若要获取 Office 365 客户端的无提示登录体验，你的用户需要使用 16.0.8730.xxxx 或更高版本。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
 通过 [Azure AD Connect](whatis-hybrid-identity.md) 启用无缝 SSO。
+
+>[!NOTE]
+> 此外，如果 Azure AD Connect 不能满足你的要求，还可以[使用 PowerShell 启用无缝 SSO](tshoot-connect-sso.md#manual-reset-of-the-feature)。 如果每个 Active Directory 林具有多个域，并且你想要更具针对性地指向要启用无缝 SSO 的域，请使用此选项。
 
 如果你要全新安装 Azure AD Connect，请选择[自定义安装路径](how-to-connect-install-custom.md)。 在“用户登录”页上，请选择“启用单一登录”选项。
 
@@ -88,7 +91,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ![Azure 门户：Azure AD Connect 窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 无缝 SSO 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。 该功能需要使用此计算机帐户才能工作。 将 `AZUREADSSOACC` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+> 无缝 SSO 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。 该功能需要使用此计算机帐户才能工作。 如果在本地环境中使用哈希传递和凭据盗用缓解体系结构，请确保 `AZUREADSSOACC` 计算机帐户最终不会出现在“隔离”容器中。 需要进行适当的更改以在“计算机”容器中创建计算机帐户。 在 Azure AD Connect 向导上成功启用“无缝 SSO”后，请将 `AZUREADSSOACC` 计算机帐户移到管理其他计算机帐户的组织单位 (OU)，以确保不会无意中删除它。
 
 ## <a name="step-3-roll-out-the-feature"></a>步骤 3：扩展此功能
 

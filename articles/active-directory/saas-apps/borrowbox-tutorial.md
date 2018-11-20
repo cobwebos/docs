@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 16252f690bfd34e596b2b8db26ab3a2ede0dfdee
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a8ed2f04bf3004907cdd6e33bfb30260233fb101
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48833337"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教程：Azure Active Directory 与 BorrowBox 的集成
 
@@ -61,15 +62,15 @@ ms.locfileid: "48833337"
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![图像](./media/borrowbox-tutorial/selectazuread.png)
+    ![图像](./common/selectazuread.png)
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![图像](./media/borrowbox-tutorial/a_select_app.png)
+    ![图像](./common/a_select_app.png)
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![图像](./media/borrowbox-tutorial/a_new_app.png)
+    ![图像](./common/a_new_app.png)
 
 4. 在搜索框中，键入“BorrowBox”，在结果面板中选择“BorrowBox”，然后单击“添加”按钮添加该应用程序。
 
@@ -97,58 +98,70 @@ ms.locfileid: "48833337"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，在 **BorrowBox** 应用程序集成页上，选择“单一登录”。
 
-    ![图像](./media/borrowbox-tutorial/B1_B2_Select_SSO.png)
+    ![图像](./common/B1_B2_Select_SSO.png)
 
-2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
+2. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
-      ![图像](./media/borrowbox-tutorial/b1_b2_saml_ssso.png)
+    ![图像](./common/b1_b2_saml_sso.png)
 
-3. 在“选择单一登录方法”对话框中，选择“SAML”模式以启用单一登录。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
-    ![图像](./media/borrowbox-tutorial/b1_b2_saml_sso.png)
+    ![图像](./common/b1-domains_and_urlsedit.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
-
-    ![图像](./media/borrowbox-tutorial/b1-domains_and_urlsedit.png)
-
-5. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
+4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
     ![图像](./media/borrowbox-tutorial/tutorial_borrowbox_url.png)
 
-    a. 单击“设置其他 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“设置其他 URL”。
 
     b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`。
 
     ![图像](./media/borrowbox-tutorial/tutorial_borrowbox_url1.png)
 
     > [!NOTE]
-    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BorrowBox 客户端支持团队](mailto:borrowbox@bolinda.com)联系。 
+    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BorrowBox 客户端支持团队](mailto:borrowbox@bolinda.com)联系。
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以根据要求下载相应的证书并将其保存在计算机上。
+5. BorrowBox 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性和声明”对话框。
+
+    ![图像](./media/borrowbox-tutorial/i4-attribute.png)
+
+6. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+    
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”图标，以打开“管理用户声明”对话框。
+
+    ![图像](./media/borrowbox-tutorial/i2-attribute.png)
+
+    ![图像](./media/borrowbox-tutorial/i3-attribute.png)
+
+    b. 在“源属性”列表中，选择 **user.mail**。
+
+    c. 单击“ **保存**”。 
+
+7. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“下载”，以根据要求下载相应的证书，并将证书保存在计算机上。
 
     ![图像](./media/borrowbox-tutorial/tutorial_borrowbox_certificate.png) 
 
-7. 若要在 **BorrowBox** 端配置单一登录，你需要将从 Azure 门户下载的证书/元数据发送给 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+8. 若要在 **BorrowBox** 端配置单一登录，你需要将从 Azure 门户下载的证书/元数据发送给 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![图像](./media/borrowbox-tutorial/d_users_and_groups.png)
+    ![图像](./common/d_users_and_groups.png)
 
 2. 选择屏幕顶部的“新建用户”。
 
-    ![图像](./media/borrowbox-tutorial/d_adduser.png)
+    ![图像](./common/d_adduser.png)
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![图像](./media/borrowbox-tutorial/d_userproperties.png)
+    ![图像](./common/d_userproperties.png)
 
-    a. 在“名称”字段中，输入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -159,7 +172,7 @@ ms.locfileid: "48833337"
 
 本部分的目的是在 BorrowBox 中创建名为 Britta Simon 的用户。 BorrowBox 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果尚不存在用户，在尝试访问 BorrowBox 期间将创建一个新用户。
 >[!Note]
->如果需要手动创建用户，请联系 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。
+>如果需要手动创建用户，请联系  [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -167,7 +180,7 @@ ms.locfileid: "48833337"
 
 1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-    ![图像](./media/borrowbox-tutorial/d_all_applications.png)
+    ![图像](./common/d_all_applications.png)
 
 2. 在应用程序列表中选择“BorrowBox”。
 
@@ -175,13 +188,13 @@ ms.locfileid: "48833337"
 
 3. 在左侧菜单中，选择“用户和组”。
 
-    ![图像](./media/borrowbox-tutorial/d_leftpaneusers.png)
+    ![图像](./common/d_leftpaneusers.png)
 
 4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![图像](./media/borrowbox-tutorial/d_assign_user.png)
+    ![图像](./common/d_assign_user.png)
 
-4. 在“用户和组”对话框中，在“用户”列表中选择 Britta Simon，然后单击屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
     
@@ -190,7 +203,7 @@ ms.locfileid: "48833337"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 BorrowBox 磁贴时，应当会自动登录到 BorrowBox 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

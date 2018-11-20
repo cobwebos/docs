@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210867"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567904"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -39,7 +39,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 此更新包括适用于 Azure Stack 的以下改进：
 
-- 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。
+- 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。 可以使用[Azure Stack 容量规划器](https://aka.ms/azstackcapacityplanner)以帮助在规划过程中以 Azure Stack 功能和配置。
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端 （公开上市）** 此客户端允许转发的审核、 警报和到 syslog 服务器或安全信息和事件管理 (SIEM) 软件的 Azure Stack 基础结构相关的安全日志Azure Stack 的外部。 Syslog 客户端现在支持指定的 syslog 服务器正在侦听的端口。
 
@@ -70,6 +70,17 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - <!-- 2702741 -  IS, ASDK --> 方法未在部署的使用动态分配的公共 Ip 的已修复的问题后发出停止-解除分配保留保证。 他们现在将保留。
 
 - <!-- 3078022 - IS, ASDK --> 如果 VM 已停止解除分配，1808年之前它不能重新分配 1808年更新后。  在 1809年中修复此问题。 可以在通过这项修复 1809年开始，已在此状态下无法启动的实例。 解决方法还可防止此问题再次发生。
+
+<!-- 3090289 – IS, ASDK --> 
+- 已修复问题，其中应用 1808年更新后，你可能会遇到以下问题部署包含托管磁盘的 Vm 时：
+
+   1. 如果部署包含托管磁盘 VM 在 1808年更新之前创建的订阅可能会因内部错误消息。 若要解决此错误，按照每个订阅的以下步骤：
+      1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
+      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
+   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
+      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992)。
+      2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+
 
 ### <a name="changes"></a>更改
 
@@ -128,7 +139,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 ### <a name="prerequisites"></a>必备组件
 
-- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[KB 4468920 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/en-us/help/4468920)。
+- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[KB 4471992 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.7.113](https://support.microsoft.com/help/4471992/)。
 
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
@@ -154,11 +165,11 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 ### <a name="post-update-steps"></a>更新后步骤
 
-*没有更新 1809年更新后步骤。*
+> [!Important]  
+> 获取 Azure Stack 部署准备好进行扩展主机启用的下一个更新包。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
 
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
+此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+- [KB 4471993 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
@@ -210,6 +221,8 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    - *缩放单位节点处于脱机状态*
    
   运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+
+  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4471993/)，因此请确保安装此修补程序，如果遇到此问题。 
 
 <!-- 1264761 - IS ASDK -->  
 - 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  

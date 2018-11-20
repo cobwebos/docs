@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408874"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415179"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
-![网络性能监视器符号](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![网络性能监视器符号](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 
@@ -54,7 +54,7 @@ ms.locfileid: "49408874"
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>应选择 TCP 还是 ICMP 协议进行监视？
 如果使用基于 Windows Server 的节点监视网络，我们建议使用 TCP 作为监视协议，因为它提供更好的准确性。 
 
-对于基于 Windows 桌面/客户端操作系统的节点，建议使用 ICMP，因为此平台不允许通过原始套接字发送 TCP 数据，而 NPM 需要使用这些数据来发现网络拓扑。
+建议将 ICMP 用于基于 Windows 桌面/客户端操作系统的节点。 此平台不允许 TCP 数据通过原始套接字进行发送，而 NPM 需要它来发现网络拓扑。
 
 可在[此处](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol)详细了解每个协议的相对优势。
 
@@ -149,7 +149,7 @@ NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不
 如果主机防火墙或中间防火墙（网络防火墙或 Azure NSG）阻止了源代理与目标之间通过 NPM 用于监视的端口（端口默认为 8084，除非客户更改了端口）进行的通信，则可能会发生这种情况。
 
 * 若要确认主机防火墙是否未阻止所需端口上的通信，请通过以下视图查看源和目标节点的运行状况：“网络性能监视器”->“配置”->“节点”。 
-  如果这些节点不正常，请查看说明并采取纠正措施。 如果节点正常，请转到下面的 步骤 b。
+  如果这些节点不正常，请查看说明并采取纠正措施。 如果节点正常，请转到下面的 使用。
 * 若要确认中间网络防火墙或 Azure NSG 是否未阻止所需端口上的通信，请遵照下面的说明使用第三方 PsPing 实用工具：
   * 可从[此处](https://technet.microsoft.com/sysinternals/psping.aspx)获取 psping 实用工具。 
   * 在源节点中运行以下命令。

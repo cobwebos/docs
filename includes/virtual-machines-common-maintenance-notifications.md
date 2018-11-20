@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40166142"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981317"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>在门户中查看计划用于维护的虚拟机
 
@@ -38,7 +38,7 @@ ms.locfileid: "40166142"
       | 已经更新 | 你的 VM 已经更新，此时无需任何进一步的操作。 | 
       | 稍后重试 | 已经启动维护，但没有成功。 稍后将能够使用自助式维护选项。 | 
       | 立即重试 | 可以重试以前未成功的自行启动的维护。 | 
-      | - | 计划内维护流程不处理你的虚拟机。 |
+      | - | 计划内维护流程不处理你的 VM。 |
       
 
    维护 - 自助服务时段：显示可以自行启动 VM 维护的时间范围。
@@ -49,17 +49,9 @@ ms.locfileid: "40166142"
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅 [通过 Azure 活动日志监视订阅活动] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中选择“监视”。 
-3. 在“监视 - 警报(经典)”窗格中，单击“+ 添加活动日志警报”。
-5. 完成“添加活动日志警报”页面中的信息，并确保在“条件”中设置以下内容：
-   - 事件类别：服务运行状况
-   - 服务：虚拟机规模集和虚拟机
-   - 类型：计划内维护 
-    
-若要详细了解如何配置活动日志警报，请参阅[创建活动日志警报](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md)。
+请确保将“事件类型”设置为“计划内维护”，将“服务”设置为“虚拟机规模集”和/或“虚拟机”
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>从门户启动虚拟机维护

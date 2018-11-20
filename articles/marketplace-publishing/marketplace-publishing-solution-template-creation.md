@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246371"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232855"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>为 Azure 市场创建解决方案模板指南
 完成步骤 1 [帐户创建和注册][link-acct-creation]后，我们已通过[创建解决方案模板的技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)指导创建 Azure 兼容的解决方案模板。 现在，我们指导完成在 Azure 市场的[发布门户][link-pubportal]上为多个 VM 创建解决方案模板的步骤。
@@ -38,9 +38,9 @@ ms.locfileid: "40246371"
 
 * 创建拓扑：“拓扑标识符”通常是解决方案模板的拓扑名称。 拓扑标识符会在 URL 中使用，如下所示：
 
-  Azure 市场：http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
+  Azure 市场： http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
-  Azure 门户：https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
+  Azure 门户： https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 * 添加新版本。
 
 ### <a name="4-get-your-topology-versions-certified"></a>4.认证拓扑版本
@@ -62,7 +62,7 @@ ms.locfileid: "40246371"
 * VM 映像：[关于 Azure 中的虚拟机映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * VM 扩展：[Azure VM 扩展和功能](../virtual-machines/extensions/features-windows.md)
 * Azure 资源管理器：[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)和[简单的模板示例](https://github.com/rjmax/ArmExamples)
-* 存储帐户限制：[如何监视存储帐户限制](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)和[高级存储](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
+* 存储帐户限制：[如何监视存储帐户限制](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)和[高级存储](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

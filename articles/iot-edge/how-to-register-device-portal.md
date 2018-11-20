@@ -2,18 +2,18 @@
 title: 注册新 Azure IoT Edge 设备（门户）| Microsoft Docs
 description: 使用 Azure 门户注册新 IoT Edge 设备
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b61594469df33e11c23c9cbe0b9542da374fefa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6657203c76bc03a262fbcbd30b5bf74b5be140eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034319"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577492"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>通过 Azure 门户注册新 Azure IoT Edge 设备
 
@@ -44,7 +44,7 @@ ms.locfileid: "37034319"
 如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。
 
 1. 在门户的 **IoT Edge** 页中，单击 Edge 设备列表中的设备 ID。 
-2. 复制**连接字符串 - 主密钥**或**连接字符串 - 辅助密钥**的值。 
+2. 复制**连接字符串(主密钥)** 或**连接字符串(辅助密钥)** 的值。 
 
 ## <a name="next-steps"></a>后续步骤
 

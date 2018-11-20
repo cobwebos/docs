@@ -11,14 +11,17 @@ items:
     href: what-is-a-data-warehouse-unit-dwu-cdwu.md
   - name: 备忘单
     href: cheat-sheet.md
-  - name: 最佳实践
+  - name: 最佳做法
     href: sql-data-warehouse-best-practices.md
   - name: 容量限制
     href: sql-data-warehouse-service-capacity-limits.md
   - name: 常见问题解答
     href: sql-data-warehouse-overview-faq.md
 - name: 发行说明
+  href: release-notes.md
   items:
+  - name: 2018 年 10 月
+    href: release-notes-october-2018.md
   - name: 2018 年 9 月
     href: release-notes-september-2018.md
   - name: 2018 年 8 月
@@ -78,11 +81,13 @@ items:
       href: sql-data-warehouse-auditing-overview.md
     - name: 行级别安全性
       href: column-level-security.md
+    - name: 行级别安全性
+      href: https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json
   - name: 数据加载
     items:
     - name: 概述
       href: design-elt-data-loading.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: guidance-for-loading-data.md
     - name: 列存储压缩
       href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -90,7 +95,7 @@ items:
     items:
     - name: 概述
       href: sql-data-warehouse-overview-develop.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: sql-data-warehouse-best-practices-development.md
     - name: 表
       items:
@@ -298,9 +303,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: 数据管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 46faacd4a8704c89ed86f97d205f81cfff222b79
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ec30b0d6cdfeea74350bfdfdc6503992adf20285
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354149"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578172"

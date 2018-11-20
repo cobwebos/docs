@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: jroth
-ms.openlocfilehash: 4619c26e34c90f58702ad286f76a999f83f49cc4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894503"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246814"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -61,7 +61,7 @@ ms.locfileid: "33894503"
 
 ### <a name="basic-settings"></a>基本设置
 
-| 设置 | 范围（默认值） | 说明 |
+| 设置 | 范围（默认值） | Description |
 | --- | --- | --- |
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
@@ -71,7 +71,7 @@ ms.locfileid: "33894503"
 
 ### <a name="advanced-settings"></a>高级设置
 
-| 设置 | 范围（默认值） | 说明 |
+| 设置 | 范围（默认值） | Description |
 | --- | --- | --- |
 | **系统数据库备份** | 启用/禁用（已禁用） | 如果启用，此功能还会备份系统数据库：Master、MSDB 和 Model。 对于 MSDB 和 Model 数据库，如果想要创建日志备份，请验证这些数据库是否处于完整恢复模式。 永远不会针对 Master 数据库创建日志备份。 此外，不会创建 TempDB 的备份。 |
 | **备份计划** | 手动/自动（自动） | 默认情况下，系统会根据日志的增长情况自动确定备份计划。 用户可以使用手动备份计划来指定备份时段。 此情况下，仅按指定的频率、在特定日期的指定时段内进行备份。 |
@@ -151,7 +151,7 @@ ms.locfileid: "33894503"
 
 可以使用 PowerShell 来配置自动备份 v2。 开始之前，必须：
 
-- [下载并安装最新的 Azure PowerShell](http://aka.ms/webpi-azps)。
+- [下载并安装最新的 Azure PowerShell](https://aka.ms/webpi-azps)。
 - 打开 Windows PowerShell 并使用 Connect-AzureRmAccount 命令将其与帐户关联。
 
 ### <a name="install-the-sql-iaas-extension"></a>安装 SQL IaaS 扩展

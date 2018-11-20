@@ -2,24 +2,20 @@
 title: 如何配置非库应用程序的密码单一登录 | Microsoft Docs
 description: 自定义的非库应用程序未在 Azure AD 应用程序库中列出时，如何对其配置安全的基于密码的单一登录
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 37ac3b5fb680a9966f5b8f3da43a2b3013554557
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354501"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578393"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
@@ -115,7 +111,6 @@ ms.locfileid: "44354501"
 
 11. 此外，还可以通过下列步骤代表用户提供凭据：选择用户对应的行，单击“更新凭据”，并代表用户输入用户名和密码。 否则，会在启动时提示用户输入凭据。
 
-12. **可选：** 对于某些社交媒体应用程序，例如 Twitter 和 Facebook，还提供了用于以选定的频率自动滚动更新应用密码的选项。 若要启用此选项，请在代表某个用户或组输入凭据时选择“我希望 Azure AD 自动管理此用户或组的密码”。 然后选择“滚动更新频率(周)”。
 
 ## <a name="assign-a-user-to-an-application-directly"></a>直接将用户分配到应用程序
 

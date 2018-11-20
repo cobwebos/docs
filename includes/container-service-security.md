@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628098"
+---
 # <a name="securing-docker-containers-in-azure-container-service"></a>保护 Azure 容器服务中的 Docker 容器
 
 本文介绍有关保护 Azure 容器服务中部署的 Docker 容器的注意事项和建议。 其中的许多注意事项一般也适用于 Azure 或其他环境中部署的 Docker 容器。 
@@ -43,7 +56,7 @@ Azure 容器服务中提供的每个协调器具有其自身的安全注意事�
 
 有关特定于协调器的其他安全信息，请参阅以下资源：
 
-* **Kubernetes**：[Kubernetes 部署的安全最佳做法](http://blog.kubernetes.io/2016/08/security-best-practices-kubernetes-deployment.html)
+* **Kubernetes**：[Kubernetes 部署的安全最佳做法](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
 * **DC/OS**：[保护群集](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
 

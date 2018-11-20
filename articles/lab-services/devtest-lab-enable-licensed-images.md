@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0e5de93f8a10d27c28b3f07567f9b6fa7e41d482
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 42f3378196b4e3e1dfe1234e801e87875f9c61fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781836"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247647"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -28,7 +28,7 @@ ms.locfileid: "33781836"
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>确定已授权映像是否对用户可用
 允许用户从已授权映像创建 VM 的第一步是确保已接受已授权映像的条款和条件。 以下步骤显示如何查看已授权映像的产品/服务状态，必要时接受其条款和条件。
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
@@ -36,13 +36,13 @@ ms.locfileid: "33781836"
 
 1. 在左侧面板的“设置”下，选择“配置和策略”。
 
-1. 在左侧面板的“虚拟机基础映像”下，选择“Marketplace 映像”。 
+1. 在左侧面板的“虚拟机基础映像”下，选择“市场映像”。 
 
-    ![Marketplace 映像菜单项](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
+    ![市场映像菜单项](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
-    将显示所有可用 Marketplace 映像的列表，包括每个映像的“产品/服务状态”。
+    将显示所有可用市场映像的列表，包括每个映像的“产品/服务状态”。
 
-    ![显示每个映像的产品/服务状态的 Marketplace 映像列表](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
+    ![显示每个映像的产品/服务状态的市场映像列表](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
 
     已授权映像显示的产品/服务状态为 
     
@@ -50,11 +50,11 @@ ms.locfileid: "33781836"
     - **需要评审条款：** 用户当前不可使用已授权映像。 实验室用户必须接受许可证的条款和条件，才能将其用于创建 VM。 
 
 ## <a name="making-a-licensed-image-available-to-lab-users"></a>使实验室用户能够使用已授权映像
-若要确保实验室用户能够使用已授权映像，具有管理员权限的实验室所有者必须首先接受该已授权映像的条款和条件。 启用与已授权映像相关联的订阅的编程部署将自动接受该映像的法律条款和隐私声明。 [Working with Marketplace Images on Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/)（在 Azure 资源管理器上使用 Marketplace 映像）提供了有关 Marketplace 映像的编程部署的其他信息。
+若要确保实验室用户能够使用已授权映像，具有管理员权限的实验室所有者必须首先接受该已授权映像的条款和条件。 启用与已授权映像相关联的订阅的编程部署将自动接受该映像的法律条款和隐私声明。 [Working with Marketplace Images on Azure Resource Manager](https://azure.microsoft.com/blog/working-with-marketplace-images-on-azure-resource-manager/)（在 Azure 资源管理器上使用市场映像）提供了有关市场映像的编程部署的其他信息。
 
 可通过执行以下步骤来启用已授权映像的编程部署：
 
-1. 在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中，转到 Marketplace 映像列表。
+1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，转到市场映像列表。
 
 1. 确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”或“需要评审条款”状态的数据科学虚拟机。
 
@@ -79,7 +79,7 @@ ms.locfileid: "33781836"
 
 1. 选择“保存”。 
 
-    在 Marketplace 映像列表中，该映像现在显示“已接受条款”且可供用户用于创建虚拟机。
+    在市场映像列表中，该映像现在显示“已接受条款”且可供用户用于创建虚拟机。
 
 > [!NOTE]
 > 用户可从已许可的映像中创建自定义映像。 有关详细信息，请参阅[从 VHD 文件创建自定义映像](devtest-lab-create-template.md)。

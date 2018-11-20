@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 1047c117228b57f7361a1e386bc6cde7acbfdde8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d2400c09a7d18faccc94464158419c81962d4a86
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042259"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282146"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>教程 1：修复不确定的预测
 在本教程中，你将通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的陈述，改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。 你应当在计划的 LUIS 维护中定期评审终结点陈述。 
@@ -61,7 +61,7 @@ ms.locfileid: "47042259"
 
 ## <a name="review-endpoint-utterances"></a>查看终结点话语
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 从左侧导航栏中选择“审核终结点表述”。 列表会筛选出 **ApplyForJob** 意向。 
 
@@ -112,7 +112,7 @@ ms.locfileid: "47042259"
 
 3. 将 `Natural Language Processing` 作为值添加，然后选择“保存”。 
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 在训练之前，LUIS 并不知道这些更改。 
 

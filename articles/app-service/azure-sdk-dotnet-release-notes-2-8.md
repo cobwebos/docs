@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6aa2684a900dffecd481d51b8876b0e674c1a6ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "22985952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235524"
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1 和 2.8.2
 ## <a name="overview"></a>概述
@@ -28,9 +28,9 @@ ms.locfileid: "22985952"
 
 ## <a name="azure-sdk-for-net-28"></a>Azure SDK for .NET 2.8
 ### <a name="download-azure-sdk-for-net-28"></a>下载 Azure SDK for .NET 2.8
-[Visual Studio 2015 的用于 .NET 的 Azure SDK 2.8](http://go.microsoft.com/fwlink/?LinkId=699285) 
+[Visual Studio 2015 的用于 .NET 的 Azure SDK 2.8](https://go.microsoft.com/fwlink/?LinkId=699285) 
 
-[Visual Studio 2013 的用于 .NET 的 Azure SDK 2.8](http://go.microsoft.com/fwlink/?LinkId=699287)
+[Visual Studio 2013 的用于 .NET 的 Azure SDK 2.8](https://go.microsoft.com/fwlink/?LinkId=699287)
 
 ### <a name="net-452-support"></a>.NET 4.5.2 支持
 #### <a name="known-issues"></a>已知问题
@@ -48,7 +48,7 @@ Azure 资源组项目提供的 PowerShell 脚本在此版本中已更新，可�
 
 使用 2.8 SDK 时，无法从 Visual Studio 运行在旧版 SDK 上创建的项目中的脚本。  如果使用适当的 Azure PowerShell cmdlet 版本，所有脚本可继续在 Visual Studio 外部运行。  
 
-2.8 SDK 需要 1.0 版的 Azure PowerShell cmdlet。  所有其他版本的 SDK 需要 0.9.8 版的 Azure PowerShell cmdlet。  有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkID=623011)。
+2.8 SDK 需要 1.0 版的 Azure PowerShell cmdlet。  所有其他版本的 SDK 需要 0.9.8 版的 Azure PowerShell cmdlet。  有关详细信息，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkID=623011)。
 
 ### <a name="web-tools-extensions"></a>Web 工具扩展
 #### <a name="known-issues"></a>已知问题

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 75fbfe1e682f0022385bb5c406d772bb217180fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045263"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260561"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-onprem-sybase-connector.md)
+> * [版本 1](data-factory-onprem-sybase-connector.md)
 > * [版本 2（当前版本）](../connector-sybase.md)
 
 > [!NOTE]
@@ -42,7 +42,7 @@ ms.locfileid: "37045263"
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 Sybase 数据库，需要在数据管理网关所在的系统上安装 16 版本或更高版本的 [用于 Sybase iAnywhere.Data.SQLAnywhere 的数据提供程序](http://go.microsoft.com/fwlink/?linkid=324846)。 
+为使数据管理网关连接到 Sybase 数据库，需要在数据管理网关所在的系统上安装 16 版本或更高版本的 [用于 Sybase iAnywhere.Data.SQLAnywhere 的数据提供程序](https://go.microsoft.com/fwlink/?linkid=324846)。 
 
 SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE。
 
@@ -106,7 +106,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+5. [管道](data-factory-create-pipelines.md)，具有使用 [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
 此示例将数据从 Sybase 数据库中的查询结果复制到 blob，每小时进行一次。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231616"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS 防护：最佳做法和参考体系结构
 
@@ -75,7 +75,7 @@ Azure 客户查看 Microsoft 最佳做法，构建采用防故障设计且经过
 为帮助保护 Microsoft Azure 上运行的服务，应该对应用程序体系结构有充分的了解，并重点关注[软件质量的五大要素](https://docs.microsoft.com/azure/architecture/guide/pillars)。
 应该清楚典型的流量大小、应用程序与其他应用程序之间的连接模型，以及向公共 Internet 公开的服务终结点。
 
-至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
+至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
 
 ### <a name="design-for-scalability"></a>可伸缩性设计
 
@@ -265,7 +265,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 #### <a name="paas-web-application"></a>PaaS Web 应用程序
 
-此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了针对使用 [Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/)和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 Web 应用程序运用的一套经过证实的做法。
+此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了针对使用  [Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/) 和  [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 Web 应用程序运用的一套经过验证的做法。
 已针对故障转移场景设置了备用区域。
 
 ![PaaS Web 应用程序的参考体系结构示意图](media/azure-ddos-best-practices/image11.png)
@@ -300,6 +300,6 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 * [Azure DDoS 防护产品页](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Azure DDoS 防护博客](http://aka.ms/ddosblog)
+* [Azure DDoS 防护博客](https://aka.ms/ddosblog)
 
 * [Azure DDoS 防护文档](../virtual-network/ddos-protection-overview.md)

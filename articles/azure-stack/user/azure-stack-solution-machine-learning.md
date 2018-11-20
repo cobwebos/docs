@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353699"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616361"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -992,7 +992,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 1.  请确保 Azure 资源提供程序**Microsoft.ContainerRegistry**在订阅中注册。 在步骤 3 中创建环境之前注册此资源提供程序。 检查是否已注册使用以下命令：
 
     ```CLI
-        az provider list --query "\[\].{Provider:namespace, Status:registrationState}" --out table
+        az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
     ```
 
     查看此输出：
@@ -1175,7 +1175,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>在 Azure AD 中创建服务主体
 
-1.  登录到全局[ *Azure 门户*](http://www.poartal.azure.com/)。
+1.  登录到全局[ *Azure 门户*](http://portal.azure.com/)。
 
 2.  使用与 Azure Stack 实例相关联的 Azure AD 租户登录。
 
@@ -1185,7 +1185,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     2. 输入应用程序的“名称”。 
     3. 选择“Web 应用/API”。 
     4. 输入 `http://localhost` 作为“登录 URL”。 
-    5. 选择**创建**。
+    5. 选择“创建”。
 
 1.  请记下**应用程序 ID**。 创建群集时需要此 ID，作为引用**服务主体客户端 ID**。
 
@@ -1215,7 +1215,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 8.  打开 [Azure Stack 门户](https://portal.local.azurestack.external)。
 
-9.  选择“+新建” > “计算” > “Kubernetes 群集”。 选择**创建**。
+9.  选择“+新建” > “计算” > “Kubernetes 群集”。 选择“创建”。
 
     ![部署解决方案模板](media\azure-stack-solution-machine-learning\image59.png)
 
@@ -1271,10 +1271,8 @@ Install-kubectl.ps1 -downloadlocation “C:\Users\<Current User>\Documents\Kube
 
 ```Bash  
     apt-get update && apt-get install -y apt-transport-https
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb http://apt.kubernetes.io/ kubernetes-xenial main
-    EOF
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+    sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     apt-get update
     apt-get install -y kubectl
 ```

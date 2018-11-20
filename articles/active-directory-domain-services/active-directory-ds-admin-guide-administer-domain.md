@@ -3,7 +3,7 @@ title: Azure Active Directory 域服务：管理托管域 | Microsoft Docs
 description: 管理 Azure Active Directory 域服务托管域
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: c2258b9d26a62fd7c8e50c1ed7b3583c06e1c353
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230472"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域
 本文介绍如何管理 Azure Active Directory (AD) 域服务托管域。
@@ -63,7 +63,7 @@ ms.locfileid: "39503428"
 ### <a name="remotely-administer-the-managed-domain-from-a-client-computer-for-example-windows-10"></a>通过客户端计算机（例如 Windows 10）远程管理托管域
 本文中的说明使用 Windows Server 虚拟机管理 AAD-DS 托管域。 不过，用户也可选择使用 Windows 客户端（例如 Windows 10）虚拟机来这样做。
 
-可以按照 TechNet 上的说明在 Windows 客户端虚拟机上[安装远程服务器管理工具 (RSAT)](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx)。
+可以按照 TechNet 上的说明在 Windows 客户端虚拟机上[安装远程服务器管理工具 (RSAT)](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx)。
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>任务 2 - 在虚拟机上安装 Active Directory 管理工具
 完成以下步骤，在已加入域的虚拟机上安装 Active Directory 管理工具。 有关[安装和使用远程服务器管理工具](https://technet.microsoft.com/library/hh831501.aspx)的详细信息，请参阅 Technet。

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/1/2018
+ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409838"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376697"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -33,6 +33,8 @@ ms.locfileid: "47409838"
 
 > [!NOTE]
 > 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 仍然支持跨不同的云服务进行并行作业处理。
+>
+> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +44,7 @@ ms.locfileid: "47409838"
 
 执行以下步骤可将非工作时间启动/停止 VM 解决方案添加到自动化帐户，然后配置变量来自定义该解决方案。
 
-1. 在自动化帐户中，选择“相关资源”下的“启动/停止 VM”。 在此处，可以单击“详细了解和启用解决方案”。 如果已部署“启动/停止 VM”解决方案，可以单击“管理解决方案”转到已部署的解决方案列表，并在此列表中选择该解决方案。
+1. 在自动化帐户中，选择“相关资源”下的“启动/停止 VM”。 在此处，可以单击“详细了解和启用解决方案”。 如果已部署“启动/停止 VM”解决方案，可单击“管理解决方案”，在列表中找到并选择它。
 
    ![从自动化帐户启用](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
@@ -74,9 +76,9 @@ ms.locfileid: "47409838"
    ![解决方案的“参数”页面](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
    在此处，系统会提示：
-   - 指定“目标资源组名称”。 这些名称是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
-   - 指定“VM 排除列表(字符串)”。 这是来自目标资源组的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
-   - 选择“计划”。 这是启动和停止目标资源组中 VM 的周期性日期和时间。 默认情况下，该计划配置为从现在起 30 分钟后。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedule)。
+   - 指定“目标资源组名称”。 这些值是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
+   - 指定“VM 排除列表(字符串)”。 该值是目标资源组中的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
+   - 选择“计划”。 该值是启动和停止目标资源组中 VM 的周期性日期和时间。 默认情况下，该计划配置为从现在起 30 分钟后。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedule)。
    - 要从操作组接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址。 如果选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。 还需要启用以下警报规则：
 
      - AutoStop_VM_Child
@@ -94,7 +96,7 @@ ms.locfileid: "47409838"
 
 ### <a name="scenario-1-startstop-vms-on-a-schedule"></a>方案 1：按计划启动/停止 VM
 
-这是首次部署解决方案时的默认配置。 例如，你可以将其配置为在下班时晚上停止订阅中的所有 VM，并在早上回到办公室时启动它们。 在部署期间配置计划 **Scheduled-StartVM** 和 **Scheduled-StopVM** 时，它们启动和停止目标 VM。 支持将此解决方案配置为仅停止 VM，若要了解如何配置自定义计划，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
+此方案是首次部署解决方案时的默认配置。 例如，你可以将其配置为在下班时晚上停止订阅中的所有 VM，并在早上回到办公室时启动它们。 在部署期间配置计划 **Scheduled-StartVM** 和 **Scheduled-StopVM** 时，它们启动和停止目标 VM。 支持将此解决方案配置为仅停止 VM，若要了解如何配置自定义计划，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
 
 > [!NOTE]
 > 时区是你配置计划时间参数时的当前时区。 但是它以 UTC 格式存储在 Azure 自动化中。 你不必执行任何时区转换，因为这是在部署过程中处理的。
@@ -112,7 +114,7 @@ ms.locfileid: "47409838"
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
 1. 在 ACTION 参数设置为 **start** 的情况下运行 **ScheduledStartStop_Parent** runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，然后将 WHATIF 参数设置为 **True**。 预览更改。
-1. 通过以逗号分隔的 VM 列表 (VM1,VM2,VM3) 配置 **External_ExcludeVMNames** 参数。
+1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
 
 > [!NOTE]
@@ -120,20 +122,20 @@ ms.locfileid: "47409838"
 
 ### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>方案 2：使用标记按顺序启动/停止 VM
 
-在支持分布式工作负荷的多个 VM 上包含两个或更多组件的环境中，支持按顺序启动和停止组件的顺序非常重要。 为此，可以执行以下步骤：
+在支持分布式工作负荷的多个 VM 上包含两个或更多组件的环境中，支持按顺序启动和停止组件的顺序非常重要。 为了实现此方案，可以执行以下步骤：
 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
-1. 将具有正整数值的 **SequenceStart** 和 **SequenceStop** 标记添加到 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
+1. 将具有正整数值的 sequencestart 和 sequencestop 标记添加到 External_Start_ResourceGroupNames 和 External_Stop_ResourceGroupNames 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
 1. 修改计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 的日期和时间，以满足要求并启用计划。
 1. 在将 ACTION 参数设置为 **start** 且将 WHATIF 参数设置为 **True** 的情况下运行 **SequencedStartStop_Parent** runbook 来预览更改。
 1. 预览操作，并根据需要进行任何更改，然后对生产 VM 执行操作。 准备就绪后，可以手动执行参数设置为 **False** 的 Runbook，或让自动化计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 在规定的计划之后自动运行。
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
-1. 向你计划添加到 **VMList** 变量的 VM 添加具有正整数值的 **SequenceStart** 和 **SequenceStop** 标记。 
+1. 向计划添加到 VMList 变量的 VM 添加具有正整数值的 sequencestart 和 sequencestop 标记。 
 1. 在 ACTION 参数设置为 **start** 的情况下运行 **SequencedStartStop_Parent** runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，然后将 WHATIF 参数设置为 **True**。 预览更改。
-1. 通过以逗号分隔的 VM 列表 (VM1,VM2,VM3) 配置 **External_ExcludeVMNames** 参数。
+1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
 1. 预览操作，并根据需要进行任何更改，然后对生产 VM 执行操作。 准备就绪后，可以手动执行参数设置为 False 的 monitoring-and-diagnostics/monitoring-action-groupsrunbook，或让自动化计划 Sequenced-StartVM 和 Sequenced-StopVM 在规定的计划之后自动运行。
 
@@ -141,7 +143,7 @@ ms.locfileid: "47409838"
 
 为了帮助管理订阅中运行虚拟机的成本，此解决方案可以通过评估在非高峰时段（如下班之后）未使用的 Azure VM 来提供帮助，并在处理器利用率小于 x% 时自动关闭它们。
 
-默认情况下，解决方案已预配置为评估百分比 CPU 指标，并查看平均利用率是否为 5% 或更低。 如果其默认值不符合你的要求，以这由下变量控制并可以修改：
+默认情况下，解决方案已预配置为评估百分比 CPU 指标，并查看平均利用率是否为 5% 或更低。 此方案由以下变量控制，并且可以在默认值不符合要求时进行更改：
 
 - External_AutoStop_MetricName
 - External_AutoStop_Threshold
@@ -159,7 +161,7 @@ ms.locfileid: "47409838"
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
 1. 运行 ACTION 参数设置为 **start** 的 **AutoStop_CreateAlert_Parent** Runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，运行 WHATIF 参数设置为 **True** 的 Runbook，以预览所做的更改。 预览更改。
-1. 通过以逗号分隔的 VM 列表 (VM1,VM2,VM3) 配置 **External_ExcludeVMNames** 参数。
+1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
 
 创建根据 CPU 利用率停止 VM 的计划后，接下来需要启用以下计划之一来启动 VM。
@@ -173,7 +175,7 @@ ms.locfileid: "47409838"
 
 ### <a name="runbooks"></a>Runbook
 
-下表列出了此解决方案部署到你的自动化帐户的 Runbook。 不应该对 Runbook 代码进行更改。 应该对新功能编写自己的 Runbook。
+下表列出了此解决方案部署到你的自动化帐户的 Runbook。 请勿对 Runbook 代码进行更改。 应该对新功能编写自己的 Runbook。
 
 > [!IMPORTANT]
 > 不要直接运行在名称末尾追加了“child”的任何 Runbook。
@@ -183,17 +185,17 @@ ms.locfileid: "47409838"
 |Runbook | parameters | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如，_vm1,vm2,vm3_。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
 |AutoStop_Disable | 无 | 禁用 AutoStop 警报和默认计划。|
 |AutoStop_StopVM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 Runbook 以停止 VM。|
 |Bootstrap_Main | 无 | 使用一次来设置启动配置，例如通常无法从 Azure 资源管理器访问的 webhookURI。 部署成功后，将自动删除此 Runbook。|
 |ScheduledStartStop_Child | VMName <br> Action：Start 或 Stop <br> ResourceGroupName | 从父 runbook 调用。 针对计划的停止执行启动或停止操作。|
-|ScheduledStartStop_Parent | Action：Start 或 Stop <br>VMList <br> WhatIf：True 或 False | 这会影响订阅中的所有 VM。 将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 编辑为仅在这些目标资源组上执行。 此外，还可以通过更新 External_ExcludeVMNames 变量排除特定 VM。<br> VMList：以逗号分隔的 VM 列表。 例如，_vm1,vm2,vm3_。<br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。|
-|SequencedStartStop_Parent | Action：Start 或 Stop <br> WhatIf：True 或 False<br>VMList| 在要确定启动/停止活动序列的每个 VM 上，创建名为 **SequenceStart** 和 **SequenceStop** 的标记。 标记的值应为一个正整数（1、2、3），对应于启动或停止的顺序。 <br> VMList：以逗号分隔的 VM 列表。 例如，_vm1,vm2,vm3_。 <br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。 <br> **注意**：VM 必须位于 Azure 自动化变量中定义的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 资源组中。 它们必须具有相应的标记才能使操作生效。|
+|ScheduledStartStop_Parent | Action：Start 或 Stop <br>VMList <br> WhatIf：True 或 False | 此设置会影响订阅中的所有 VM。 将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 编辑为仅在这些目标资源组上执行。 此外，还可以通过更新 External_ExcludeVMNames 变量排除特定 VM。<br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。|
+|SequencedStartStop_Parent | Action：Start 或 Stop <br> WhatIf：True 或 False<br>VMList| 在要确定启动/停止活动序列的每个 VM 上，创建名为 sequencestart 和 sequencestop 的标记。 这些标记名称区分大小写。 标记的值应为一个正整数（1、2、3），对应于启动或停止的顺序。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。 <br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。 <br> **注意**：VM 必须位于 Azure 自动化变量中定义的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 资源组中。 它们必须具有相应的标记才能使操作生效。|
 
 ### <a name="variables"></a>变量
 
-下表列出了在自动化帐户中创建的变量。 只应修改以 **External** 为前缀的变量。 修改以 **Internal** 为前缀的变量将导致不利影响。
+下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量。 修改以 **Internal** 为前缀的变量将导致不利影响。
 
 |变量 | Description|
 |---------|------------|
@@ -215,17 +217,17 @@ ms.locfileid: "47409838"
 
 ### <a name="schedules"></a>计划
 
-下表列出了在自动化帐户中创建的每个默认计划。 你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 **Scheduled_StartVM** 和 **Scheduled-StopVM**，这些计划都是禁用的。
+下表列出了在自动化帐户中创建的每个默认计划。 你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 Scheduled_StartVM 和 Scheduled-StopVM，所有计划都是禁用的。
 
 不应启用所有计划，因为这可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
 |计划名称 | 频率 | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent Runbook，它将基于 Azure 自动化变量中的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 的值依次停止 VM。 或者，可以使用 VMList 参数指定用逗号分隔的 VM 列表。|
-|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。 自动停止所有满足通过资产变量定义的规则 VM。 应启用相关计划 **Scheduled-StartVM**。|
-|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 _Start_ 参数的 Scheduled_Parent Runbook。 自动启动所有满足相应变量定义的规则的 VM。 应启用相关计划 **Scheduled-StopVM**。|
-|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每星期五在指定的时间运行带有 _Stop_ 参数的 Sequenced_Parent Runbook。 将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的更多详细信息，请参阅“Runbook”部分。 应启用相关计划 **Sequenced-StartVM**。|
-|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在给定的时间运行带有 Start 参数的 Sequenced_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和资产变量的更多详细信息，请参阅“Runbook”部分。 应启用相关计划 **Sequenced-StopVM**。|
+|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。 自动停止所有满足通过资产变量定义的规则 VM。 启用相关计划 Scheduled-StartVM。|
+|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 _Start_ 参数的 Scheduled_Parent Runbook。 自动启动所有满足相应变量定义的规则的 VM。 启用相关计划 Scheduled-StopVM。|
+|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每星期五在指定的时间运行带有 _Stop_ 参数的 Sequenced_Parent Runbook。 将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。 启用相关计划 Sequenced-StartVM。|
+|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在给定的时间运行带有 Start 参数的 Sequenced_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。 启用相关计划 Sequenced-StopVM。|
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 
@@ -277,10 +279,10 @@ ms.locfileid: "47409838"
 
 下表提供了此解决方案收集的作业记录的示例日志搜索。
 
-|查询 | Description|
+|Query | Description|
 |----------|----------|
-|查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | search Category == "JobLogs" &#124; where ( RunbookName_s == "ScheduledStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc|
-|查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc
+|查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>查看解决方案
 
@@ -295,6 +297,9 @@ ms.locfileid: "47409838"
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
 若要在部署解决方案后更改电子邮件通知，请修改在部署期间创建的操作组。  
+
+> [!NOTE]
+> Azure 政府云中的订阅不支持此解决方案的电子邮件功能。
 
 在 Azure 门户中，导航到“监视”->“操作组”。 选择名为“StartStop_VM_Notication”的操作组。
 
@@ -317,10 +322,10 @@ ms.locfileid: "47409838"
 支持将解决方案配置为在特定的时间仅停止 VM。 若要实现此目的，需要：
 
 1. 确保已在 **External_Start_ResourceGroupNames** 变量中添加了要关闭的 VM 的资源组。
-1. 针对要关闭 VM 的时间创建你自己的计划。
-1. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。 这允许你选择在上一步中创建的计划。
-1. 选择“参数和运行设置”并将 ACTION 参数设置为“Stop”。
-1. 单击“确定”  保存更改。
+2. 针对要关闭 VM 的时间创建你自己的计划。
+3. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。 这允许你选择在上一步中创建的计划。
+4. 选择“参数和运行设置”并将 ACTION 参数设置为“Stop”。
+5. 单击“确定”  保存更改。
 
 ## <a name="update-the-solution"></a>更新解决方案
 

@@ -2,31 +2,27 @@
 title: 在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本
 description: 逐步说明如何在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b4c79ada0a243d50aad64600de6dfdfebd59b9da
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048035"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005830"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Zeppelin 笔记本
 
 HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本。 本文介绍如何在 HDInsight 群集中使用 Zeppelin 笔记本。
 
-> [!NOTE]
-> Zeppelin 笔记本仅适用于 HDInsight 3.5 上的 Spark 1.6.3 和 HDInsight 3.6 上的 Spark 2.1.0。
->
-
 **先决条件：**
 
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="launch-a-zeppelin-notebook"></a>启动 Zeppelin 笔记本
@@ -50,7 +46,7 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
    
     将以下代码段粘贴到新笔记本中默认创建的空白段落处。
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
     ![基于原始数据创建临时表](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "基于原始数据创建临时表")
    
     也可以为每个段落提供标题。 在右下角单击“设置”图标，并单击“显示标题”。
+
+> [!NOTE]
+> 所有 HDInsight 版本中的 Zeppelin 笔记本均不支持 %spark2 解释器，HDInsight 4.0 及更高版本不支持 %sh 解释器。
+>
+
 1. 现在可以针对 **hvac** 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 该查询将检索建筑物 ID，以及在给定日期当天每栋建筑物的目标温度与实际温度之间的差异。 按 **Shift + Enter**。
    
         %sql
@@ -124,7 +125,7 @@ HDInsight Spark 群集包括可用于运行 Spark 作业的 Zeppelin 笔记本�
     单击“保存”，并重新启动 Livy 解释程序。
 1. **提示**：若要了解如何访问上面输入的键的值，请查看以下内容。
    
-    a. 在 Maven 存储库中找出该包。 在本教程中，使用了 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Maven 存储库中找出该包。 在本教程中，使用了 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
    
     b. 从存储库中收集 **GroupId**、**ArtifactId** 和 **Version** 的值。
    

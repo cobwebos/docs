@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9edbb9d916840f348a7df589c6e7cb2110419cb3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430334"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262397"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -1259,7 +1259,7 @@ sudo service waagent restart
 >
 > * [在 Linux 上配置软件 RAID][virtual-machines-linux-configure-raid]
 > * [在 Azure 中的 Linux VM 上配置 LVM][virtual-machines-linux-configure-lvm]
-> * [Azure 存储机密和 Linux I/O 优化](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Azure 存储机密和 Linux I/O 优化](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
@@ -1316,7 +1316,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 > 若要设置自动装载，请在以下网页中查看命令行可执行文件 diskpart.exe 的文档：
 >
 > * [DiskPart 命令行选项](https://technet.microsoft.com/library/bb490893.aspx)
-> * [自动装载](http://technet.microsoft.com/library/cc753703.aspx)
+> * [自动装载](https://technet.microsoft.com/library/cc753703.aspx)
 >
 > 应该以管理员身份打开 Windows 命令行窗口。
 >

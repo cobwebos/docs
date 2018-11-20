@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409197"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961834"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -57,7 +57,7 @@ ms.locfileid: "49409197"
 
 2.  在“工作区数据源”下，单击“ITSM 连接”。
 
-    ![新建连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新建连接](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 在右窗格的顶部，单击“添加”。
 
@@ -78,7 +78,7 @@ ms.locfileid: "49409197"
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，Log Analytics 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
-![Service Manager 连接](./media/log-analytics-itsmc/service-manager-connection.png)
+![Service Manager 连接](media/log-analytics-itsmc-connections/service-manager-connection.png)
 
 成功连接并同步后：
 
@@ -128,14 +128,14 @@ ms.locfileid: "49409197"
 2. 单击“设置” > “网络”。
 3. 在“混合连接”下面，单击“配置混合连接终结点”。
 
-    ![混合连接网络](./media/log-analytics-itsmc/itsmc-hybrid-connection-networking-and-end-points.png)
+    ![混合连接网络](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
 4. 在“混合连接”边栏选项卡中，单击“添加混合连接”。
 
-    ![添加混合连接](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-add.png)
+    ![添加混合连接](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
 5. 在“添加混合连接”边栏选项卡中，单击“创建新的混合连接”。
 
-    ![新建混合连接](./media/log-analytics-itsmc/itsmc-create-new-hybrid-connection.png)
+    ![新建混合连接](media/log-analytics-itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. 键入以下值：
 
@@ -146,14 +146,14 @@ ms.locfileid: "49409197"
     - **位置**：选择位置。
     -  **名称**：指定服务总线的名称（如果要创建）。
 
-    ![混合连接值](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
+    ![混合连接值](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. 单击“确定”关闭“创建混合连接”边栏选项卡并开始创建混合连接。
 
     创建混合连接后，它会显示在边栏选项卡下面。
 
 7. 创建混合连接后，请选择该连接，并单击“添加所选混合连接”。
 
-    ![新建混合连接](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
+    ![新建混合连接](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
 #### <a name="configure-the-listener-setup"></a>配置侦听器设置
 
@@ -171,14 +171,14 @@ ms.locfileid: "49409197"
 
 现已成功连接到混合连接。
 
-![混合连接成功](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
+![混合连接成功](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
 > 创建混合连接后，请通过访问部署的 Service Manager Web 应用来验证和测试该连接。 在确保连接成功后，再尝试连接到 Azure 中的 ITSMC。
 
 以下示例图像显示了成功连接的详细信息：
 
-![混合连接测试](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
+![混合连接测试](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-test.png)
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>将 ServiceNow 连接到 Azure 中的 IT 服务管理连接器
 
@@ -209,7 +209,7 @@ ms.locfileid: "49409197"
 1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
 2.  在“工作区数据源”下，单击“ITSM 连接”。
-    ![新建连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新建连接](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 在右窗格的顶部，单击“添加”。
 
@@ -232,7 +232,7 @@ ms.locfileid: "49409197"
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
-![ServiceNow 连接](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
+![ServiceNow 连接](media/log-analytics-itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
 成功连接并同步后：
 
@@ -293,7 +293,7 @@ ms.locfileid: "49409197"
 
 
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)。
+- Provance 应用应已注册到 Azure AD，并且可提供客户端 ID。 有关详细信息，请参阅[如何配置 Active Directory 身份验证](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)。
 
 - 用户角色：管理员。
 
@@ -304,7 +304,7 @@ ms.locfileid: "49409197"
 1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
 2.  在“工作区数据源”下，单击“ITSM 连接”。
-    ![新建连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新建连接](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 在右窗格的顶部，单击“添加”。
 
@@ -326,7 +326,7 @@ ms.locfileid: "49409197"
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天 |
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。|
 
-![Provance 连接](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
+![Provance 连接](media/log-analytics-itsmc-connections/itsm-connections-provance-latest.png)
 
 成功连接并同步后：
 
@@ -355,7 +355,7 @@ ms.locfileid: "49409197"
 1. 在 Azure 门户中，转到“所有资源”，查找“ServiceDesk(YourWorkspaceName)”
 
 2.  在“工作区数据源”下，单击“ITSM 连接”。
-    ![新建连接](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新建连接](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 在右窗格的顶部，单击“添加”。
 
@@ -378,7 +378,7 @@ ms.locfileid: "49409197"
 | **在 ITSM 解决方案中创建新的配置项** | 如果想要在 ITSM 产品中创建配置项，请选择此选项。 选择此选项后，ITSMC 会在支持的 ITSM 系统中创建受影响的 CI 作为配置项（如果不存在 CI）。 **默认**：已禁用。 |
 
 
-![Provance 连接](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
+![Provance 连接](media/log-analytics-itsmc-connections/itsm-connections-cherwell-latest.png)
 
 成功连接并同步后：
 
@@ -396,7 +396,7 @@ ms.locfileid: "49409197"
 2. 单击“安全性” > “编辑 REST API 客户端设置”。
 3. 选择“创建新客户端” > “客户端机密”。
 
-    ![Cherwell 用户 ID](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
+    ![Cherwell 用户 ID](media/log-analytics-itsmc-connections/itsmc-cherwell-client-id.png)
 
 
 ## <a name="next-steps"></a>后续步骤

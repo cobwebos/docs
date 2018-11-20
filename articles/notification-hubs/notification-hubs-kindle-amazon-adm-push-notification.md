@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 41319ba446994da1669e58e33008a943e74ab417
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bf5cb2851acdcf1f9353e88fc2f2caa3c356804e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331384"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230354"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>通知中心入门（Kindle 应用）
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -36,12 +36,12 @@ ms.locfileid: "36331384"
 > * 设置应用程序
 > * 创建 ADM 消息处理程序
 > * 将 API 密钥添加到应用
-> * 运行应用程序
+> * 运行应用
 > * 发送测试通知 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>获取 Android SDK（假设你使用的是 Eclipse）。
+* 从 <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>获取 Android SDK（假设你使用的是 Eclipse）。
 * 按照<a href="https://developer.amazon.com/docs/fire-tablets/ft-set-up-your-development-environment.html">设置开发环境</a>中的步骤设置 Kindle 的开发环境。
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>向开发人员门户添加新应用程序
@@ -258,7 +258,7 @@ ms.locfileid: "36331384"
 1. 在 Eclipse 中，在项目的目录资产中创建名为 **api_key.txt** 的新文件。
 2. 打开文件，复制在 Amazon 开发人员门户中生成的 API 密钥。
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 1. 启动模拟器。
 2. 在模拟器中，从顶部往下轻扫，单击“设置”，单击“我的帐户”并使用有效的 Amazon 帐户注册。
 3. 在 Eclipse 中运行应用程序。

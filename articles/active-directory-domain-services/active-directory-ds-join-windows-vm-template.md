@@ -3,7 +3,7 @@ title: 将 Windows Server VM 加入 Azure Active Directory 域服务 | Microsoft
 description: 使用 Azure 资源管理器模板将 Windows Server 虚拟机加入托管域。
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 40eb0e8133626e77a1f61ddfc5df69ecf1b958f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: ergreenl
+ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950788"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157252"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入托管域
 本文介绍如何使用资源管理器模板将 Windows Server 虚拟机加入 Azure AD 域服务托管域。

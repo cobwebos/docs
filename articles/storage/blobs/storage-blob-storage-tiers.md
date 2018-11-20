@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 3aad10c398aa4f009ab29f4684cc500b6fb428e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3a980abc7b9611cfd6a3933a54505b0208b67f50
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427580"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253714"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：高级（预览版）、热、冷、存档存储层
 
@@ -65,7 +65,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 - 仅在以下地区提供：美国东部 2、美国中部和美国西部
 - 不支持自动分层和数据生命周期管理
 
-若要了解如何注册高级访问层预览版，请参阅 [Azure 高级 Blob 存储简介](http://aka.ms/premiumblob)。
+若要了解如何注册高级访问层预览版，请参阅 [Azure 高级 Blob 存储简介](https://aka.ms/premiumblob)。
 
 ## <a name="hot-access-tier"></a>热访问层
 

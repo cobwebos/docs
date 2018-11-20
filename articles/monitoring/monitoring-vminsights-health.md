@@ -1,5 +1,5 @@
 ---
-title: 使用用于 VM 的 Azure Monitor 监视虚拟机运行状况 | Microsoft Docs
+title: 使用用于 VM 的 Azure Monitor（预览版）监视虚拟机运行状况 | Microsoft Docs
 description: 本文介绍如何使用用于 VM 的 Azure Monitor 来了解虚拟机和基础操作系统的运行状况。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1b9afa89e5d355668defac30afe4c012b684c71e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387815"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614390"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>使用用于 VM 的 Azure Monitor 了解 Azure 虚拟机的运行状况
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>使用用于 VM 的 Azure Monitor（预览版）了解 Azure 虚拟机的运行状况
 Azure 包含的多个服务可在监视空间中单独执行特定的角色或任务，但无法针对 Azure 虚拟机上托管的操作系统提供深入的运行状况透视图。  尽管我们可以使用 Log Analytics 或 Azure Monitor 来监视不同的状况，但这些工具并不能呈现核心组件的运行状况或虚拟机的总体运行状况，或者为这些信息建模。  用于 VM 的 Azure Monitor 运行状况功能可以使用一个代表核心组件及其关系的模型、指定如何度量这些组件的运行状况的条件，来主动监视 Windows 或 Linux 来宾 OS 的可用性和性能，并在检测到不正常状况时发出警报。  
 
 可以直接在虚拟机中或者某个资源组中的所有 VM 上，使用用于 VM 的 Azure Monitor 运行状况功能的两个透视图查看 Azure VM 和基础操作系统的总体运行状况。
@@ -35,7 +35,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 ### <a name="windows-vms"></a>Windows VM
 
-- 可用内存 (MB) 
+- 可用内存 (MB) 
 - 每次写入的平均磁盘秒数（逻辑磁盘）
 - 每次写入的平均磁盘秒数（磁盘）
 - 每次读取的平均逻辑磁盘秒数
@@ -119,7 +119,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 * 有多少个 VM 由于检测到处理器、磁盘、内存或网络适配器的问题而显示为不正常状态（按运行状况分类）？  
 * 有多少个 VM 由于检测到核心操作系统服务的问题而显示为不正常状态（按运行状况分类）？
 
-在此处可以快速识别主动监视 VM 的运行状况条件检测到的最严重问题，以及查看 VM 运行状况警报详细信息和相关的知识库文章，以帮助诊断和修正问题。  选择任一严重性可打开按该严重性筛选的“[所有警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md#all-alerts-page)”页。
+在此处可以快速识别主动监视 VM 的运行状况条件检测到的最严重问题，以及查看 VM 运行状况警报详细信息和相关的知识库文章，以帮助诊断和修正问题。  选择任一严重性可打开按该严重性筛选的“[所有警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page)”页。
 
 “按操作系统列出的 VM 分发版”列表根据 Windows 版本或 Linux 分发版及其版本显示 VM。 在每个操作系统类别中，VM 根据 VM 的运行状况进一步划分。 
 
@@ -247,7 +247,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 若要查看更新的运行状况，可以单击“刷新”链接刷新“运行状况诊断”页。  如果基于预定义的轮询间隔对运行状况条件的运行状况做了更新，则此任务可以避免等待显示最新运行状况。  “运行状况条件状态”是一个筛选器，用于根据所选运行状况（“正常”、“警告”、“严重”、“未知”和所有）来限定结果范围。  右上角的“上次更新时间”表示上次刷新“运行状况诊断”页的时间。  
 
 ## <a name="alerting-and-alert-management"></a>警报和警报管理 
-用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)相集成，当预定义的运行状况条件在检测到相应状况后从正常更改为不正常状态时，会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。  
+用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)相集成，当预定义的运行状况条件在检测到相应状况后从正常更改为不正常状态时，会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。  
 
 “运行状况”仪表板的“警报”部分下显示了按严重性分类的 VM 运行状况警报的总数。 选择警报总数或者对应于某个严重性级别的编号时，“警报”页将会打开并列出与所选内容匹配的所有警报。  例如，如果选择了对应于“严重性级别 1”的行，则会看到以下视图：
 
@@ -271,7 +271,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 |监视服务 |选择一个服务，或选择“所有”以包含所有服务。 此功能仅支持来自 VM 见解的警报。| 
 |时间范围| 只有在选定时间范围内触发的警报才会包含在该视图中。 支持的值为过去 1 小时、过去 24 小时、过去 7 天和过去 30 天。 | 
 
-选择一个警报时会显示“警报详细信息”页，其中提供了该警报的详细信息，并可在其中更改警报的状态。 要详细了解如何管理警报，请参阅[使用 Azure Monitor 创建、查看和管理警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。  
+选择一个警报时会显示“警报详细信息”页，其中提供了该警报的详细信息，并可在其中更改警报的状态。 要详细了解如何管理警报，请参阅[使用 Azure Monitor 创建、查看和管理警报](../monitoring-and-diagnostics/alert-metric.md)。  
 
 >[!NOTE]
 >目前，暂不支持根据运行状况条件创建新警报，或通过门户在 Azure Monitor 中修改现有运行状况警报规则。  

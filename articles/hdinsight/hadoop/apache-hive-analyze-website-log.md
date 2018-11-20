@@ -1,22 +1,22 @@
 ---
-title: 将 Hive 与 Hadoop 配合使用以进行网站日志分析 - Azure HDInsight
-description: 了解如何通过将 Hive 与 HDInsight 配合使用来分析网站日志。 我们将使用日志文件作为 HDInsight 表的输入，并使用 HiveQL 来查询数据。
+title: 将 Hive 与 Apache Hadoop 配合使用以进行网站日志分析 - Azure HDInsight
+description: 了解如何通过将 Apache Hive 与 HDInsight 配合使用来分析网站日志。 我们将使用日志文件作为 HDInsight 表的输入，并使用 HiveQL 来查询数据。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048018"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634339"
 ---
-# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
+# <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>将 Apache Hive 与基于 Windows 的 HDInsight 配合使用以分析来自网站的日志
 了解如何通过将 HiveQL 与 HDInsight 配合使用来分析来自网站的日志。 网站日志分析可用于根据类似活动分类受众，按人口统计分类站点访问者，以及了解他们查看的内容和这些内容来自的网站等。
 
 > [!IMPORTANT]
@@ -34,7 +34,7 @@ ms.locfileid: "43048018"
 ## <a name="prerequisites"></a>先决条件
 * 必须已在 Azure HDInsight 上预配了一个 Hadoop 群集。 有关说明，请参阅[预配 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 * 必须已安装 Microsoft Excel 2013 或 Excel 2010。
-* 必须拥有 [Microsoft Hive ODBC 驱动程序](http://www.microsoft.com/download/details.aspx?id=40886)，才能将数据从 Hive 导入 Excel。
+* 必须拥有 [Microsoft Hive ODBC 驱动程序](https://www.microsoft.com/download/details.aspx?id=40886)，才能将数据从 Hive 导入 Excel。
 
 ## <a name="to-run-the-sample"></a>运行示例
 1. 从 [Azure 门户](https://portal.azure.com/)的启动板（如果在此处固定群集），单击要在其上运行示例的群集磁贴。

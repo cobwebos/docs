@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2a713200436f0f9ce0f3c12fab2f09f2bef42828
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1ce2bc1e48dca424ebe58a9ab605412499812ab7
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159153"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626093"
 documentType: LandingData
 title: QnA Maker 文档
 metadata:
@@ -18,10 +18,19 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/12/2018
+  ms.date: 11/10/2018
   ms.author: tulasim
 abstract:
-  description: 使用 <a href="https://qnamaker.ai">QnA Maker</a>，可以根据常见问题解答文档或者 URL 和产品手册等半结构化内容打造一项问题与解答服务。
+  description: 使用 QnA Maker，可以根据常见问题解答文档或者 URL 和产品手册等半结构化内容打造一项问题与解答服务。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/qnamaker-landing-page-video.png
+      width: 250
+    title: 使用 QnA Maker 在数分钟内构建机器人 (8:54)
+    href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+    width: 250
 sections:
 - title: 5 分钟快速入门
   items:

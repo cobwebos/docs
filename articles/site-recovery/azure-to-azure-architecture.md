@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的复制的体系结构 | Microsoft Docs
-description: 本文概述使用 Azure Site Recovery 服务在 Azure 区域之间复制 Azure VM 时所用的组件和体系结构。
+description: 本文概述了使用 Azure Site Recovery 服务在 Azure 区域之间为 Azure VM 设置灾难恢复时使用的组件和体系结构。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 20387c325497934ccb2e02188b24a0125f937e00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0069ece5d02ad52b6fea9add7817e63fa3c412b6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078251"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212720"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Azure 到 Azure 复制体系结构
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
 
-本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在 Azure 区域之间对 Azure 虚拟机 (VM) 进行复制、故障转移和恢复时使用的体系结构。
+本文介绍使用 [Azure Site Recovery](site-recovery-overview.md) 服务在 Azure 区域之间通过复制、故障转移和恢复 Azure虚拟机 (VM) 部署灾难恢复时使用的体系结构。
 
 
 

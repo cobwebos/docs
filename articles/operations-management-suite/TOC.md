@@ -3,7 +3,7 @@
 
 # 入门
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
-## [自动化](../automation/automation-offering-get-started.md)
+## [自动化](/azure/automation/)
 ## [备份](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
 
@@ -11,7 +11,7 @@
 # 如何
 
 ## 分析
-### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Log Analytics](../log-analytics/log-analytics-queries.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 自动化
 ### [Azure 自动化概述](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -28,8 +28,8 @@
 ### [Web 基线评估](../security-center/security-center-customize-os-security-config.md)
 
 ## 使用解决方案
-### [管理解决方案](../monitoring/monitoring-solutions.md)
-### [目标解决方案](../monitoring/monitoring-solution-targeting.md)
+### [管理解决方案](../azure-monitor/insights/solutions.md)
+### [目标解决方案](../azure-monitor/insights/solution-targeting.md)
 ### 见解与分析
 #### [AD 评估](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD 复制状态](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -42,9 +42,9 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### 服务映射
-##### [使用](../monitoring/monitoring-service-map.md)
-##### [配置](../monitoring/monitoring-service-map-configure.md)
-##### [与 Operations Manager 的集成](../monitoring/monitoring-service-map-scom.md)
+##### [使用](../azure-monitor/insights/service-map.md)
+##### [配置](../azure-monitor/insights/service-map-configure.md)
+##### [与 Operations Manager 的集成](../azure-monitor/insights/service-map-scom.md)
 #### [SQL 评估](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [升级分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -57,15 +57,15 @@
 #### [反恶意软件评估](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## 创建解决方案
-### [设计和生成](../monitoring/monitoring-solutions-creating.md)
-### [解决方案文件](../monitoring/monitoring-solutions-solution-file.md)
-### [自动化资源](../monitoring/monitoring-solutions-resources-automation.md)
-### [日志搜索和警报](../monitoring/monitoring-solutions-resources-searches-alerts.md)
-### [视图](../monitoring/monitoring-solutions-resources-views.md)
-### [最佳实践](../monitoring/monitoring-solutions-best-practices.md)
+### [设计和生成](../azure-monitor/insights/solutions-creating.md)
+### [解决方案文件](../azure-monitor/insights/solutions-solution-file.md)
+### [自动化资源](../azure-monitor/insights/solutions-resources-automation.md)
+### [日志搜索和警报](../azure-monitor/insights/solutions-resources-searches-alerts.md)
+### [视图](../azure-monitor/insights/solutions-resources-views.md)
+### [最佳实践](../azure-monitor/insights/solutions-best-practices.md)
 
 ## 管理方案
-### [从 runbook 收集分析数据](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [从 runbook 收集分析数据](../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)

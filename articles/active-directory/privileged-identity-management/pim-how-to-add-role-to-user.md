@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 07/23/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 33bfe28bf612c47c9f42345dabccc017337c3d45
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190150"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249605"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>在 PIM 中分配 Azure AD 目录角色
 
@@ -112,6 +112,39 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
     ![删除角色](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     随即会删除该角色分配。
+
+## <a name="authorization-error-when-assigning-roles"></a>分配角色时出现授权错误
+
+如果你最近为某个订阅启用了 PIM 并且在尝试使某个用户获得某个目录角色时出现授权错误，则可能是因为 MS-PIM 服务主体尚未具有合适的权限。 MS-PIM 服务主体必须具有[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色才能向其他人分配角色。 不需要等待 MS-PIM 被分配“用户访问管理员”角色，你可以手动分配该角色。
+
+请按照以下步骤向订阅的 MS-PIM 服务主体分配“用户访问管理员”角色。
+
+1. 以全局管理员身份登录到 Azure 门户。
+
+1. 选择“所有服务”，然后选择“订阅”。
+
+1. 选择订阅。
+
+1. 选择“访问控制(IAM)”，在订阅范围查看角色分配的当前列表。
+
+   ![订阅的“访问控制(IAM)”边栏选项卡](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
+
+1. 检查 **MS-PIM** 服务主体是否已分配有“用户访问管理员”角色。
+
+1. 如果没有，请选择“添加”以打开“添加权限”窗格。
+
+1. 在“角色”下拉列表中，选择“用户访问管理员”角色。
+
+1. 在“选择”列表中，找到并选择“MS-PIM”服务主体。
+
+   ![为 MS PIM 添加权限](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+
+1. 选择“保存”以分配角色。
+
+   过一会后，MS-PIM 服务主体将分配有在订阅范围内的“用户访问管理员”角色。
+
+   ![MS-PIM 的“用户访问管理员”角色](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

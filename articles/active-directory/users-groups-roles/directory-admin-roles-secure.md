@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297803"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240097"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -388,7 +388,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 8. 确保保存相关日志的备份，以备将来可能会发生的取证和法庭调查之用。
 
-若要详细了解 Microsoft Office 365 如何处理安全事件，请参阅 [Security Incident Management in Microsoft Office 365](http://aka.ms/Office365SIM)（Microsoft Office 365 中的安全事件管理）。
+若要详细了解 Microsoft Office 365 如何处理安全事件，请参阅 [Security Incident Management in Microsoft Office 365](https://aka.ms/Office365SIM)（Microsoft Office 365 中的安全事件管理）。
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>常见问题解答：我们收到的有关如何保护特权访问的常见问题  
 

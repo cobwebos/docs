@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206073"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248990"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍了如何将多个来宾可执行文件打包并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "34206073"
 * [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>手动打包多个来宾可执行文件应用程序
-或者，也可以手动打包来宾可执行文件。 对于手动打包，本文将使用位于 [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) 的 Service Fabric 打包工具。
+或者，也可以手动打包来宾可执行文件。 对于手动打包，本文将使用位于 [http://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool) 的 Service Fabric 打包工具。
 
 ### <a name="packaging-the-nodejs-application"></a>打包 Node.js 应用程序
 本文假设 Service Fabric 群集中的节点上未安装 Node.js。 因此，需要在打包之前，先将 Node.exe 添加到节点应用程序的根目录中。 Node.js 应用程序（使用 Express Web 框架和 Jade 模板引擎）的目录结构看起来应该与以下类似：

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee2440171b54e1279571ec4fcb0c5be7bec207a1
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 901b44b829398ef92e63f94e0b35549e63cdd3db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045732"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262244"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-onprem-teradata-connector.md)
+> * [版本 1](data-factory-onprem-teradata-connector.md)
 > * [版本 2（当前版本）](../connector-teradata.md)
 
 > [!NOTE]
@@ -42,7 +42,7 @@ ms.locfileid: "37045732"
 > 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。
 
 ## <a name="supported-versions-and-installation"></a>支持的版本和安装
-为使数据管理网关连接到 Teradata 数据库，需要在数据管理网关所在的同一系统上安装 14 版本或更高版本的 [.NET Data Provider for Teradata](http://go.microsoft.com/fwlink/?LinkId=278886)（用于 Teradata 的 .Net 数据提供程序）。 支持 12 版本和更高版本的 Teradata。
+为使数据管理网关连接到 Teradata 数据库，需要在数据管理网关所在的同一系统上安装 14 版本或更高版本的 [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886)（用于 Teradata 的 .Net 数据提供程序）。 支持 12 版本和更高版本的 Teradata。
 
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 

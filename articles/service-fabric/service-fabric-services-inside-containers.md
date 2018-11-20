@@ -3,7 +3,7 @@ title: 在 Windows 上容器化 Azure Service Fabric 服务
 description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
 services: service-fabric
 documentationcenter: .net
-author: anmolah
+author: TylerMSFT
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
-ms.author: anmola
-ms.openlocfilehash: 5672f5fffd9c93f710f8001285380fdbfcab0c5d
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: twhitney, anmola
+ms.openlocfilehash: 24ec0de77c796ad2abf8587b7542e53f745c532d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386965"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298650"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 

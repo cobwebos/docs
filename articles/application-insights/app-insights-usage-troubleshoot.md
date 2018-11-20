@@ -3,7 +3,7 @@ title: Azure Application Insights 中用户行为分析工具的故障排除
 description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 725f67af8178c6c851999d18c771ebdd360d6d01
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: c1e5b420c4821732aa8cc19328b0955070100926
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992099"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138481"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 是否对 [Application Insights 中的用户行为分析工具](app-insights-usage-overview.md)：[用户、会话、事件](app-insights-usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](app-insights-usage-flows.md)、[保留期](app-insights-usage-retention.md)或队列存在疑问？ 请参考下面的解答。

@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 8db2f6a67f64216276ccdb0b16bbeb48565f6bc6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 854cf1646d716f7cd721a7286b79a0f733243268
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127595"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416217"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>快速入门：使用用于 Java 的必应 Web 搜索 SDK
 
@@ -29,7 +29,7 @@ ms.locfileid: "46127595"
 
 下面是在开始本快速入门之前需要准备好的项目：
 
-* [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [JDK 7 或 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) 或你喜欢使用的生成自动化工具
 * 订阅密钥
 

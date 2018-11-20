@@ -1,5 +1,6 @@
 ---
-title: 适用于 LUIS 应用的应用程序仪表板 | Microsoft Docs
+title: 语言理解应用的应用程序仪表板
+titleSuffix: Azure Cognitive Services
 description: 了解应用程序仪表板，它是一种可视化报表工具，可让你一目了然地监视应用。
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: diberry
-ms.openlocfilehash: cab07a994f2bdfb7ef8491adbb482c1902e4d4cb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031979"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212796"
 ---
 # <a name="application-dashboard"></a>应用程序仪表板
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 

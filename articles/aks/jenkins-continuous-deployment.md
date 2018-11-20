@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: iainfou
-ms.openlocfilehash: cdf8c64f20e15074a1f055d2ab7abf4304d62505
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017901"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087689"
 ---
 # <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>创建使用 Jenkins 和 Azure Kubernetes 服务 (AKS) 的持续部署管道
 
@@ -34,9 +34,11 @@ ms.locfileid: "48017901"
 - 已配置 [AKS 群集凭据][aks-credentials]的 [AKS 群集][aks-quickstart]和 `kubectl`。
 - [Azure 容器注册表 (ACR) 注册表][acr-quickstart]、ACR 登录服务器名称，以及已配置为[使用 ACR 注册表验证方法][acr-authentication]的 AKS 群集。
 
-- 已安装并配置 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+- 已安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 - 已在开发系统上[安装 Docker][docker-install]。
 - GitHub 帐户、[GitHub 个人访问令牌][git-access-token]，以及在开发系统上安装的 Git 客户端。
+
+- 如果你提供自己的 Jenkins 实例而不是以此示例脚本方式来部署 Jenkins，那么你的 Jenkins 实例需要安装和配置 [Docker][docker-install] 和 [kubectl][kubectl-install]。
 
 ## <a name="prepare-the-application"></a>准备应用程序
 
@@ -317,6 +319,7 @@ SHOWHOST = 'false'
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [docker-install]: https://docs.docker.com/install/
+[kubectl-install]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list

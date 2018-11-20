@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092687"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912112"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>发布 API 的多个版本 
 
@@ -37,8 +37,9 @@ ms.locfileid: "47092687"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-* 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 了解 [Azure API 管理术语](api-management-terminology.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>添加新版本
 
@@ -48,8 +49,8 @@ ms.locfileid: "47092687"
 2. 选择它旁边的上下文菜单 (**...**)。
 3. 选择“+ 添加版本”。
 
-    > [!TIP]
-    > 也可以在首次创建新 API 时启用版本 - 在“添加 API”屏幕上选择“对此 API 进行版本控制?”。
+> [!TIP]
+> 也可以在首次创建新 API 时启用版本 - 在“添加 API”屏幕上选择“对此 API 进行版本控制?”。
 
 ## <a name="choose-a-versioning-scheme"></a>选择版本控制方案
 
@@ -58,34 +59,38 @@ ms.locfileid: "47092687"
 ![“添加版本”屏幕](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. 保留选择“路径”作为**版本控制方案**。
-2. 添加 **v1** 作为**名称**和**版本标识符**。
+2. 在“名称”字段中键入 **demo-conference-api-v1**。
+
+    > [!NOTE]
+    > 版本实际上是基于 API 修订版的新 API。 **名称**是新 API 的名称，必须在 API 管理实例中是唯一的。
+
+3. 在“版本标识符”字段中键入 **v1**。
 
     > [!TIP]
     > 如果选择“标头”或“查询字符串”作为版本控制方案，需要提供附加的值 - 标头或查询字符串参数的名称。
 
-3. 选择“创建”设置新版本。
-4. 在“API 列表”中的“演示会议 API”下面，现在会出现两个不同的 API -“原始”和“v1”。
+4. 选择“创建”设置新版本。
+5. 在“API 列表”中的“演示会议 API”下面，现在会出现两个不同的 API -“原始”和“v1”。
 
     ![Azure 门户中 API 下面列出的版本](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > 如果为不受版本控制的 API 添加了版本，则会自动创建“原始”API - 这是对默认 URL 的响应。 这可以确保所有现有调用方不会被添加版本的过程中断。 如果在一开始就启用了版本的情况下创建新 API，则不会创建“原始”API。
 
-5. 现在，可以编辑和配置“v1”使其作为与“原始”API 不同的独立 API。 对一个版本进行更改不会影响另一个版本。
+6. 现在，可以编辑和配置“v1”使其作为与“原始”API 不同的独立 API。 对一个版本进行更改不会影响另一个版本。
 
 ## <a name="add-the-version-to-a-product"></a>将版本添加到产品
 
 要使调用方看到新版本，必须将该版本添加到**产品**。
 
+![API 管理产品](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+
 1. 从经典部署模型页选择“产品”。
-
-    ![API 管理产品](media/api-management-getstarted-publish-versions/Products.png)
-
 2. 选择“不受限制”。
 3. 选择“API”。
 4. 选择 **添加** 。
 5. 选择“演示会议 API，版本 v1”。
-6. 导航到服务管理页并选择“API”。
+6. 单击“选择”。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 

@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5d485911e9cd509292266d98debad6684d6cf219
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3b0cd73be1857d0849c4cb53dcc52c5c27206e80
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435293"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230907"
 ---
 # <a name="language-and-region-support-for-content-moderator-api"></a>内容审查器 API 的语言和区域支持
 

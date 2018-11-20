@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 90dc7b8bc69c86128b65c16920886b7c4af5c5cf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9038947ad20f63638af1830ca660de8cac802d9b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888299"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282078"
 ---
 # <a name="tutorial-5-extract-free-form-data"></a>教程 5：提取自由格式数据
 
@@ -56,10 +56,10 @@ ms.locfileid: "48888299"
 > * 将示例话语添加到现有实体
 > * 创建 Pattern.any 实体
 > * 创建模式
-> * 训练
+> * 定型
 > * 测试新模式
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 

@@ -1,22 +1,22 @@
 ---
-title: 将 Tez UI 与基于 Windows 的 HDInsight 配合使用 - Azure
-description: 了解如何使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业。
+title: 将 Apache Tez UI 与基于 Windows 的 HDInsight 配合使用 - Azure
+description: 了解如何使用 Apache Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff47d0a71e97ce4ec9fd04e1d0cb9e5592192d53
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112181"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036574"
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>使用 Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业
+# <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>使用 Apache Tez UI 调试基于 Windows 的 HDInsight 上的 Tez 作业
 Tez UI 可以用来调试使用 Tez 作为执行引擎的 Hive 作业。 Tez UI 可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
 > [!IMPORTANT]
@@ -26,13 +26,13 @@ Tez UI 可以用来调试使用 Tez 作为执行引擎的 Hive 作业。 Tez UI 
 * 基于 Windows 的 HDInsight 群集。 有关创建新群集的步骤，请参阅[开始使用基于 Windows 的 HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md)。
 
   > [!IMPORTANT]
-  > Tez UI 只在 2016 年 2 月 8 日以后创建的基于 Windows 的 HDInsight 群集上提供。
+  > Apache Tez UI 只在 2016 年 2 月 8 日以后创建的基于 Windows 的 HDInsight 群集上提供。
   >
   >
 * 基于 Windows 的远程桌面客户端。
 
-## <a name="understanding-tez"></a>了解 Tez
-Tez 是 Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 可以将以下文本作为 Hive 查询的一部分，以便启用 Tez：
+## <a name="understanding-apache-tez"></a>了解 Apache Tez
+Tez 是 Apache Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 可以将以下文本作为 Hive 查询的一部分，以便启用 Tez：
 
     set hive.execution.engine=tez;
 

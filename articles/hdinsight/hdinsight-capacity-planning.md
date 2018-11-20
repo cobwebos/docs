@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 4438cff0dcf5e896f39729d9871d4deb3207b4b8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107989"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230421"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -38,7 +38,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 ### <a name="location-of-default-storage"></a>默认存储的位置
 
-默认存储（Azure 存储帐户或 Azure Data Lake Store）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Store 已在某些区域提供 - 请参阅 [Azure 产品上市区域](https://azure.microsoft.com/regions/services/)中“存储”下面列出的 Data Lake Store 当前上市区域。
+默认存储（Azure 存储帐户或 Azure Data Lake Store）必须与群集位于同一位置。 所有位置都提供 Azure 存储。 Data Lake Store Gen1 已在某些区域中提供 - 请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/regions/services/) 中“存储”下面列出的当前 Data Lake Store 可用性。
 
 ### <a name="location-of-existing-data"></a>现有数据的位置
 
@@ -48,7 +48,7 @@ Azure 区域确定群集的物理预配位置。 为了将读写延迟最小化�
 
 部署 HDInsight 群集之后，可以附加更多 Azure 存储帐户，或访问其他 Data Lake Store。 所有存储帐户必须与群集位于同一位置。 Data Lake Store 可以位于不同的位置，不过，这可能会造成某种程度的数据读/写延迟。
 
-Azure 存储附带一定的[容量限制](../azure-subscription-service-limits.md#storage-limits)，而 Data Lake Store 几乎不受限制。
+Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#storage-limits)，而 Data Lake Store Gen1 几乎不受限制。
 
 群集可以访问不同存储帐户的组合。 典型示例包括：
 

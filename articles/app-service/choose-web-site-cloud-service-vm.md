@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022959"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238499"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 
@@ -47,7 +47,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 | WebMatrix 支持 |X | |X | | |
 | 访问 Service Bus、存储空间、SQL 数据库之类的服务 |X |X |X |X | |
 | 托管多层体系结构的 web 或 web 服务层 |X |X |X |X | |
-| 托管多层体系结构的中间层 |X |X |X |X |应用服务 Web 应用可轻松托管 REST API 中间层，而 [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) 功能可托管后台处理作业。 可在专用网站中运行 WebJobs，实现层的独立可扩展性。 |
+| 托管多层体系结构的中间层 |X |X |X |X |应用服务 Web 应用可轻松托管 REST API 中间层，而 [WebJobs](https://go.microsoft.com/fwlink/?linkid=390226) 功能可托管后台处理作业。 可在专用网站中运行 WebJobs，实现层的独立可扩展性。 |
 | 集成的 MySQL-as-a-service 支持 |X |X | | | |
 | 支持 ASP.NET、经典 ASP、Node.js、PHP、Python |X |X |X |X |Service Fabric 支持使用 [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) 创建 Web 前端，或者也可按[来宾可执行文件](../service-fabric/service-fabric-guest-executables-introduction.md)的形式部署任何类型的应用程序（Node.js、Java 等）。 |
 | 向外扩展到多个实例且无需重新部署 |X |X |X |X |虚拟机可以扩大到多个实例，但必须编写这些虚拟机上运行的服务，来处理向外扩展。必须配置负载均衡器以在计算机之间路由请求，并且请确保[可用性集](../virtual-machines/windows/manage-availability.md)中有多个 VM 实例。 |
@@ -67,8 +67,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 以下是一些常见的应用程序方案，其中每个方案都包含有关最适合的 Azure Web 托管选项的建议。
 
 * [我需要具有后台处理的 Web 前端和数据库后端，运行与本地资产集成的业务应用程序。](#onprem)
-* 
-  [我需要一种可靠的方式来托管公司网站，既可以进行良好地扩展也能实现全球覆盖。](#corp)
+* [我需要一种可靠的方式来托管公司网站，既可以进行良好地扩展也能实现全球覆盖。](#corp)
 * [我具有在 Windows Server 2003 上运行的 IIS6 应用程序。](#iis6)
 * [我是小型企业所有者，我需要使用一种成本较低的方式来托管站点，同时也要兼顾将来的业务增长。](#smallbusiness)
 * [我是 Web 或图形设计师，我想为客户设计和构建网站。](#designer)
@@ -87,9 +86,7 @@ Azure 应用服务是针对复杂业务应用程序的理想解决方案。 可�
 * 遵守 ISO、SOC2 和 PCI 的要求。
 * 与 Azure Active Directory 集成
 
-### 
-  <a id="corp">
-  </a> 我需要一种可靠的方式来托管公司网站，既可以进行良好地扩展也能实现全球覆盖。
+### <a id="corp"></a> 我需要一种可靠的方式来托管公司网站，既可以进行良好地扩展也能实现全球覆盖。
 Azure 应用服务是托管公司网站的理想解决方案。 通过 Web 应用，可以轻松快速地缩放站点，满足整个数据中心全球网络的需求。 它涵盖了本地范围，提供了容错和智能流量管理功能。 所有内容均位于提供世界级管理工具的平台上，让可以快速轻松地更深入了解站点运行状况和站点流量。 Azure 应用服务针对 Web 应用提供三个 9 的 SLA，且能够：
 
 * 在自愈性自动修补云平台上安全可靠地运行网站。

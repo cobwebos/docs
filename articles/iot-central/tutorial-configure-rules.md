@@ -3,22 +3,22 @@ title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
 description: 本教程演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 04/16/2018
+ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 20dcad571a32638488ce111b5af55623f2305c57
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: fbe9e1fbd0891f2f39b05fa7ba53653188ef8e03
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310430"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158068"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
-本文适用于操作员、构建者和管理员。
+*本文适用于操作员、构建者和管理员。*
 
 在本教程中，将创建一个规则，用于在连接的空调设备中的温度超过 90 &deg; F 时发送电子邮件。
 
@@ -88,7 +88,7 @@ ms.locfileid: "49310430"
 
     ![应用程序构建者规则](media/tutorial-configure-rules/builderrules1.png)
 
-4. 选择“完成”退出“编辑模板”模式。
+4. 选择“完成”，退出“编辑模板”模式。
  
 
 ## <a name="test-the-rule"></a>测试规则

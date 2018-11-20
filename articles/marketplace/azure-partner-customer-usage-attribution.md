@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854994"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685695"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -44,21 +44,41 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 若要添加全局唯一标识符 (GUID)，可对主模板文件进行一次性的修改：
 
-1. 创建 GUID（例如 eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 使用建议的方法[创建 GUID](#create-guids)，并[注册 GUID](#register-guids-and-offers)。
 
 1. 打开资源管理器模板。
 
 1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在 **pid-** 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在 pid- 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
 
 1. 检查模板是否存在任何错误。
 
 1. 在相应存储库中重新发布模板。
 
-### <a name="sample-template-code"></a>示例模板代码
+1. [在模板部署中验证 GUID 是否成功](#verify-the-guid-deployment)。
 
-![示例模板代码](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+### <a name="sample-resource-manager-template-code"></a>示例资源管理器模板代码
+
+若要为模板启用跟踪资源，需要在资源部分下添加以下附加资源。 将下面的示例代码添加到主模板文件时，请确保使用自己的输入修改该代码。
+资源只需添加到 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
+```
+// Make sure to modify this sample code with your own inputs where applicable
+
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>使用资源管理器 API
 
@@ -75,7 +95,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 > [!Note]
 > 字符串的格式很重要。 如果未包含 **pid-** 前缀，我们将无法查询数据。 以不同的方式跟踪不同的 SDK。 若要实现此方法，请查看适用于首选 Azure SDK 的支持和跟踪方法。 
 
-### <a name="example-the-python-sdk"></a>示例：Python SDK
+#### <a name="example-the-python-sdk"></a>示例：Python SDK
 
 对于 Python，请使用 **config** 属性。 只能将该属性添加到 UserAgent。 下面是一个示例：
 
@@ -100,6 +120,24 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
 
+## <a name="create-guids"></a>创建 GUID
+
+GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 Azure 存储团队已创建 [GUID 生成器窗体](https://aka.ms/StoragePartners)，它将通过电子邮件向你发送格式正确的 GUID，并可在不同的跟踪系统中重复使用。 
+
+> [!Note]
+> 强烈建议使用 [Azure 存储的 GUID 生成器窗体](https://aka.ms/StoragePartners)创建 GUID。 有关详细信息，请参阅[常见问题解答](#faq)。
+
+建议为每个产品/服务和每个产品的分销渠道创建唯一的 GUID。 如果不希望拆分报告，则可以选择对产品的多个分销渠道使用单个 GUID。 
+
+如果使用模板部署产品并且产品在 Azure 市场和 GitHub 中都提供，则可以创建并注册 2 个不同的 GUID：
+
+*   Azure 市场中的产品 A 
+*   GitHub 中的产品 A
+
+报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来完成。 
+
+也可以在更加精细的级别跟踪 GUID（例如 SKU，其中 SKU 是产品/服务的变体）。
+
 ## <a name="register-guids-and-offers"></a>注册 GUID 和产品/服务
 
 必须注册 GUID 才能将其纳入跟踪范围。  
@@ -108,7 +146,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 将 GUID 添加到模板或用户代理并在 CPP 中注册 GUID 后，系统将跟踪所有部署。 
 
-1. 向 [Azure 市场](http://aka.ms/listonazuremarketplace)提出申请，并获取 CPP 的访问权限。
+1. 向 [Azure 市场](https://aka.ms/listonazuremarketplace)提出申请，并获取 CPP 的访问权限。
 
    * 合作伙伴必须[在 CPP 中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
    * 合作伙伴可以注册多个 GUID。
@@ -182,21 +220,6 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
-## <a name="create-guids"></a>创建 GUID
-
-GUID 是由 32 位十六进制数字组成的唯一参考编号。 若要创建用于跟踪的 GUID，应使用 GUID 生成器。 可使用多个[在线 GUID 生成器](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E)。
-
-请为每个产品/服务和分销渠道创建唯一的 GUID。 如果使用模板部署两个解决方案，并且每个解决方案都在 Azure 市场和 GitHub 中提供，则需要创建四个 GUID：
-
-*   Azure 市场中的产品/服务 A 
-*   GitHub 中的产品/服务 A
-*   Azure 市场中的产品/服务 B 
-*   GitHub 中的产品/服务 B
-
-报告根据合作伙伴值（Microsoft 合作伙伴 ID）和 GUID 来执行。 
-
-也可以在更加精细的级别跟踪 GUID（例如 SKU，其中 SKU 是产品/服务的变体）。
 
 ## <a name="notify-your-customers"></a>通知客户
 
@@ -275,3 +298,7 @@ Microsoft 为合作伙伴提供其模板的客户部署情况以及有关受其�
 **此跟踪方法是否类似于数字记录合作伙伴 (DPOR)？**
 
 这种将部署和使用情况与合作伙伴解决方案关联的新方法提供将合作伙伴解决方案与 Azure 使用情况连接的机制。 DPOR 旨在将咨询（系统集成商）或管理（托管服务提供商）合作伙伴与客户的 Azure 订阅关联。   
+
+**使用 Azure 存储的 GUID 生成器窗体有何益处？**
+
+Azure 存储的 GUID 生成器窗体可确保生成所需格式的 GUID。 此外，如果使用任何 Azure 存储的数据平面跟踪方法，则可以利用相同 GUID 进行市场控制平面跟踪。 这样，你将可以利用 Partner 属性的单个统一 GUID，而无需维护单独的多个 GUID。

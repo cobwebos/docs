@@ -4,21 +4,21 @@ description: 使用 Azure 蓝图创建、定义和部署项目。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b873ee869b2044977ebefcfd65331567c24e7ec8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974198"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283540"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定义和分配 Azure 蓝图
 
-通过了解如何在 Azure 中创建和分配蓝图，组织可以定义一致性的常见模式，并根据资源管理器模板、策略、安全性等开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
+了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
 > [!div class="checklist"]
 > - 新建蓝图并添加各种受支持的项目
@@ -33,6 +33,8 @@ ms.locfileid: "46974198"
 ## <a name="getting-started-with-rest-api"></a>REST API 入门
 
 如果不熟悉 REST API，请首先查看 [Azure REST API 参考](/rest/api/azure/)，大致了解 REST API，尤其是请求 URI 和请求正文。 本文使用这些概念来提供有关如何使用 Azure 蓝图的说明，并假定具有相关的实践经验。 [ARMClient](https://github.com/projectkudu/ARMClient) 和其他工具可自动处理授权，建议初学者使用。
+
+有关蓝图规范，请参阅 [Azure 蓝图 REST API](/rest/api/blueprints/)。
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
@@ -59,7 +61,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>创建蓝图
 
-定义符合性的标准模式的第一步是根据可用资源构建蓝图。 在此示例中，创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配、添加资源组，并在资源组上创建资源管理器模板和角色分配。
+定义符合性的标准模式的第一步是根据可用资源构建蓝图。 我们将创建名为“MyBlueprint”的蓝图，以配置订阅的角色和策略分配。 然后，我们将添加资源组、资源管理器模板，然后在资源组上添加角色分配。
 
 > [!NOTE]
 > 使用 REST API 时，首先创建 blueprint 对象。 对于每个要添加的具有参数的项目，需要在初始蓝图上提前定义该参数。
@@ -69,7 +71,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 - `{YourMG}` - 替换为管理组的名称
 - `{subscriptionId}` - 替换为订阅 ID
 
-1. 创建初始 blueprint 对象。 请求正文包括有关蓝图的属性、要创建的任何资源组，以及分配过程中设置并在后续步骤中由项目使用的所有蓝图级别参数。
+1. 创建初始 blueprint 对象。 请求正文包括有关蓝图的属性、要创建的任何资源组，以及所有蓝图级别参数。 参数在分配过程中设置并由在后续步骤中添加的项目使用。
 
    - REST API URI
 
@@ -148,7 +150,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在订阅中添加策略分配。 请求正文可定义项目的种类、与策略或计划定义一致的属性，并配置策略分配，以使用要在蓝图分配过程中配置的定义蓝图参数。
+1. 在订阅中添加策略分配。 请求正文可定义项目的种类、与策略或计划定义一致的属性，并配置策略分配，以使用要在蓝图分配过程中配置的已定义蓝图参数。
 
    - REST API URI
 
@@ -176,7 +178,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在订阅中为存储标记（重复使用 storageAccountType 参数）添加其他策略分配。 此附加的策略分配项目演示了蓝图上定义的参数可由多个项目使用。 在示例中，storageAccountType 用于在资源组上设置一个标记，该资源组可提供有关下一步骤中创建的存储帐户的信息。
+1. 在订阅中为存储标记（重复使用 storageAccountType 参数）添加其他策略分配。 此附加的策略分配项目演示了蓝图上定义的参数可由多个项目使用。 在示例中，storageAccountType 用于在资源组上设置一个标记。 此值提供有关下一步骤中创建的存储帐户的信息。
 
    - REST API URI
 
@@ -204,7 +206,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在资源组下添加模板。 资源管理器模板的请求正文包括模板的常规 JSON 组件，该请求正文使用 properties.resourceGroup 定义目标资源组，并通过向模板一一提供 storageAccountType、tagName 和 tagValue 蓝图参数，重复使用这些参数。 通过定义 properties.parameters 并置于键/值用于插入值的模板 JSON 内，蓝图参数可供模板使用。 蓝图和模板参数名称可以相同，但对于分别如何从蓝图项目传入模板项目的说明有所区别。
+1. 在资源组下添加模板。 资源管理器模板的请求正文包括模板的常规 JSON 组件，并使用 properties.resourceGroup 定义目标资源组。 系统会向模板一一传递 **storageAccountType**、**tagName** 和 **tagValue** 蓝图参数，让模板重复使用这些参数。 通过定义 properties.parameters 并置于键/值对用于插入值的模板 JSON 内，蓝图参数可供模板使用。 蓝图和模板参数名称可以相同，但对于如何分别从蓝图项目传入模板项目的说明有所区别。
 
    - REST API URI
 
@@ -388,7 +390,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="unassign-a-blueprint"></a>取消分配蓝图
 
-如果不再需要蓝图或由更新的蓝图替换为具有更新后的模式、策略和设计的蓝图时，可从订阅中将其删除。 删除蓝图时，作为该蓝图的一部分分配的项目将保留。 若要删除蓝图分配，请使用以下 REST API 操作：
+可以从订阅中删除蓝图。 通常会在不再需要项目资源时将其删除。 删除蓝图时，作为该蓝图的一部分分配的项目将保留。 若要删除蓝图分配，请使用以下 REST API 操作：
 
 - REST API URI
 
@@ -413,4 +415,4 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 - 了解如何自定义[蓝图排序顺序](./concepts/sequencing-order.md)
 - 了解如何使用[蓝图资源锁定](./concepts/resource-locking.md)
 - 了解如何[更新现有分配](./how-to/update-existing-assignments.md)
-- 使用[常规故障排除](./troubleshoot/general.md)在蓝图分配期间解决问题
+- 使用[常规疑难解答](./troubleshoot/general.md)在蓝图分配期间解决问题

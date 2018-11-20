@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055347"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300942"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
-这个菜单链接至此操作手册的部分： 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 本文将深入探究解决方案体系结构中所描述的各个阶段。 其中包含说明和用于自定义的指针。 
+
+若要查看此解决方案的摘要说明，请参阅[车辆遥测分析解决方案操作手册](cortana-analytics-playbook-vehicle-telemetry.md)。
+
 
 ## <a name="data-sources"></a>数据源
 该解决方案使用两个不同的数据源：
@@ -42,7 +42,7 @@ ms.locfileid: "37055347"
 
 这是 JSON 格式的数据集，它包含以下架构。
 
-| 列 | 说明 | 值 |
+| 列 | Description | 值 |
 | --- | --- | --- |
 | VIN |随机生成的 VIN |从 10,000 个随机生成的 VIN 主列表中获取 |
 | 外部温度 |车辆行驶的外部温度 |随机生成的介于 0 - 100 的数字 |
@@ -123,7 +123,7 @@ Azure 事件中心、Azure 流分析和 Azure 数据工厂的组合可用于获�
 
 
 ### <a name="batch-analysis"></a>批处理分析
-此外，还将生成额外的模拟车辆信号卷和诊断数据集，以用于更全面的批处理分析。 此额外卷是确保用于批处理的良好代表数据卷所必需的。 为此，我们在数据工厂工作流中使用 PrepareSampleDataPipeline 来生成相当于一年的模拟车辆信号和诊断数据集。 若要下载“数据工厂自定义 .NET 活动 Visual Studio 解决方案”，以基于自身要求进行自定义，请转到[数据工厂自定义活动](http://go.microsoft.com/fwlink/?LinkId=717077)网页。 
+此外，还将生成额外的模拟车辆信号卷和诊断数据集，以用于更全面的批处理分析。 此额外卷是确保用于批处理的良好代表数据卷所必需的。 为此，我们在数据工厂工作流中使用 PrepareSampleDataPipeline 来生成相当于一年的模拟车辆信号和诊断数据集。 若要下载“数据工厂自定义 .NET 活动 Visual Studio 解决方案”，以基于自身要求进行自定义，请转到[数据工厂自定义活动](https://go.microsoft.com/fwlink/?LinkId=717077)网页。 
 
 此工作流显示准备进行批处理的示例数据。
 
@@ -674,4 +674,8 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 * [用于流引入的 Azure 事件中心 SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Azure 数据工厂数据移动功能](../../data-factory/copy-activity-overview.md)
 * [Azure 数据工厂 .NET 活动](../../data-factory/transform-data-using-dotnet-custom-activity.md)
-* [用于准备示例数据的 Azure 数据工厂 .NET 活动 Visual Studio 解决方案](http://go.microsoft.com/fwlink/?LinkId=717077) 
+* [用于准备示例数据的 Azure 数据工厂 .NET 活动 Visual Studio 解决方案](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解如何为此解决方案配置 Power BI 报告和仪表板，请参阅[车辆遥测分析解决方案模板 Power BI 仪表板设置说明](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123442"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961885"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ ms.locfileid: "43123442"
 
 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](monitoring-action-groups.md)。
 
-有关如何使用 Azure 资源管理器模板配置服务运行状况通知警报的信息，请参阅[资源管理器模板](monitoring-create-activity-log-alerts-with-resource-manager-template.md)。
+有关如何使用 Azure 资源管理器模板配置服务运行状况通知警报的信息，请参阅[资源管理器模板](alert-activity-log.md)。
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>使用 Azure 门户为新操作组创建有关服务运行状况通知的警报
 1. 在[门户](https://portal.azure.com)中，选择“服务运行状况”。
@@ -70,7 +70,7 @@ ms.locfileid: "43123442"
 
 1. 通过提供接收方来定义接收方的列表：
 
-    a. 名称：输入接收方的名称、别名或标识符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **名称**：输入接收方的名称、别名或标识符。
 
     b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用等。
 

@@ -4,17 +4,17 @@ description: 使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 Java �
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5e86b7c93344a6c61fecaa41b98bc1daa20f36f
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: d72ffd849f9e1e6e661b0e54b7182b02a16c8024
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423215"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568982"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 Java 模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "47423215"
 本文假设使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
 
 > [!NOTE]
-> 本调试文章演示了在 VS Code 中调试 Java 模块的两个典型方法。 一种方法是在模块容器中附加一个进程，而另一种方法是在调试模式下启动模块代码。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[调试](https://code.visualstudio.com/Docs/editor/debugging)的信息。
+> 本调试文章演示了在 VS Code 中调试 Java 模块的两个典型方法。 一种方法是在模块容器中附加一个进程，而另一种方法是在调试模式下启动模块代码。 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
 
 由于本文使用 Visual Studio Code 作为主要开发工具，因此，请安装 VS Code，然后添加必要的扩展：
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -33,7 +33,7 @@ ms.locfileid: "47423215"
 * [Docker 扩展](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 若要创建模块，需要使用 Java 和 Maven 来构建并运行模块代码，需要使用 Docker 来构建模块映像，并需要一个容器注册表来存放模块映像：
-* [Java SE 开发工具包 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
+* [Java SE 开发工具包 10](https://aka.ms/azure-jdks)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
 * [Maven](https://maven.apache.org/)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)或 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
@@ -62,9 +62,9 @@ ms.locfileid: "47423215"
 5. 浏览到要在其中创建新解决方案的文件夹，然后单击“选择文件夹”。 
 6. 为解决方案提供一个名称。 
 7. 选择“Java 模块”作为解决方案中第一个模块的模板。
-8. 为模块提供一个名称。 选择一个在容器注册表中唯一的名称。 
+8. 为模块提供一个名称。 选择容器注册表中唯一的名称。 
 8. 为 groupId 提供一个值，或者接受默认的 **com.edgemodule**。
-9. 为模块提供映像存储库。 VS Code 会自动填充模块名称，因此，只需将 **localhost:5000** 替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名称。
+9. 为模块提供映像存储库。 VS Code 会自动填充模块名称，因此，只需将 **localhost:5000** 替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，那么可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-node-module/repository.png)
 
@@ -73,7 +73,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 在解决方案中，你将具有以下三项： 
 * 一个 **.vscode** 文件夹，包含调试配置。
 * 一个 **modules** 文件夹，包含每个模块的子文件夹。 现在，你只有一个模块，但是可以使用命令“Azure IoT Edge: Add IoT Edge Module”在命令面板中添加更多模块。 
-* 一个 **.env** 文件，列出环境变量。 如果 Azure 容器注册表是你的注册表，则其中将包含 Azure 容器注册表用户名和密码。
+* 一个 **.env** 文件，列出环境变量。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。
 
    >[!NOTE]
    >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
@@ -82,7 +82,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 ## <a name="develop-your-module"></a>开发模块
 
-解决方案附带的默认 Java 代码位于**模块 > [你的模块名称] > src > main > java > com > edgemodulemodules > App.java** 中。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后将其部署到设备以开始测试而无需触及任何代码。 该模块构建为只需从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT Hub。 
+解决方案附带的默认 Java 代码位于**模块 > [你的模块名称] > src > main > java > com > edgemodulemodules > App.java** 中。 设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 生成该模块仅为简单从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT 中心。 
 
 准备好使用自己的代码自定义 Java 模板时，请使用 [Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
 
@@ -132,7 +132,7 @@ IoT Edge Java 模块依赖于 Azure IoT Java 设备 SDK。 在默认的模块代
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>生成用于调试的模块容器并在附加模式下进行调试
 
-默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 Java 管道模块。 模拟的温度传感器不断向 Java 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用任何以扩展名 **.debug** 结尾的文件来生成用于测试的模块。 目前，Java 模块仅支持在 linux-amd64 和 linux-arm32v7 容器中进行调试。
+默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 Java 管道模块。 模拟的温度传感器不断向 Java 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用以扩展名 .debug 结尾的任何文件来生成用于测试的模块。 目前，Java 模块仅支持在 linux-amd64 和 linux-arm32v7 容器中进行调试。
 
 ### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>为 IoT Edge 解决方案设置 IoT Edge 模拟器
 
@@ -151,9 +151,9 @@ IoT Edge Java 模块依赖于 Azure IoT Java 设备 SDK。 在默认的模块代
     "createOptions":"{\"HostConfig\":{\"PortBindings\":{\"5005/tcp\":[{\"HostPort\":\"5005\"}]}}}"
     ```
 
-5. 导航到 VS Code 调试视图。 选择你的模块的调试配置文件。 调试选项名称应类似于“ModuleName 远程调试(Java)”。
+5. 导航到 VS Code 调试视图。 选择模块的调试配置文件。 调试选项名称应类似于“ModuleName 远程调试(Java)”。
 
-6. 选择“开始调试”或选择 **F5**。 选择要附加到的进程。
+6. 选择“开始调试”或选择 F5。 选择要附加到的进程。
 
 7. 在 VS Code 调试视图中，将在左侧面板中看到变量。
 
@@ -166,4 +166,4 @@ IoT Edge Java 模块依赖于 Azure IoT Java 设备 SDK。 在默认的模块代
 
 生成模块后，了解如何[从 Visual Studio Code 部署 Azure IoT Edge 模块](how-to-deploy-modules-vscode.md)
 
-若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+若要开发用于 IoT Edge 设备的模块，请参阅[了解并使用 Azure IoT 中心 SDK](../iot-hub/iot-hub-devguide-sdks.md)。

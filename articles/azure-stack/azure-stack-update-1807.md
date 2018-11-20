@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1807 更新 |Microsoft Docs
+title: Azure Stack 1807 更新 | Microsoft Docs
 description: 了解 Azure Stack 集成系统 1807 更新的新增功能，包括已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345265"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260578"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -94,7 +94,7 @@ Azure Stack 1807 更新内部版本号为 **1.1807.0.76**。
 - **改进了创建 VM 时**适用于使用从 Azure marketplace 下载的映像创建的 Vm。
 
 <!-- TBD | IS, ASDK -->  
-- **Azure Stack 容量规划器的可用性改进**。 Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) 现在提供一种简化的体验，可以在定义解决方案 SKU 时输入 S2D 缓存和 S2D 容量。 1000 VM 限制已去除。
+- **Azure Stack 容量规划器的可用性改进**。 Azure Stack [Capacity Planner](https://aka.ms/azstackcapacityplanner) 现在提供一种简化的体验，可以在定义解决方案 SKU 时输入 S2D 缓存和 S2D 容量。 1000 VM 限制已去除。
 
 
 ### <a name="fixed-issues"></a>修复的问题
@@ -171,7 +171,7 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
   > - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
 
-- 在开始安装此更新之前，请运行[Test-azurestack](azure-stack-diagnostic-test.md)具有以下参数来验证 Azure Stack 的状态并解决发现的任何操作问题，包括所有警告和失败。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
+- 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
@@ -202,10 +202,10 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 
 - Azure Stack 技术文档重点介绍最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。 
 
-- 能够[从下拉列表中打开新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)内管理员门户不可用。 相反，对于 Azure Stack 集成的系统，使用以下链接： [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest)。
+- 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 对于 Azure Stack 集成系统，请改用以下链接：[https://aka.ms/newsupportrequest](https://aka.ms/newsupportrequest)。
 
 <!-- 2931230 – IS  ASDK --> 
-- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将保留，直到引用加载项计划的订阅也会被删除。 
+- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!--2760466 – IS  ASDK --> 
 - 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
@@ -312,7 +312,7 @@ Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基�
 <!-- 2724961- IS ASDK --> 
 - 注册时**Microsoft.Insight**订阅设置中的资源提供程序并创建 Windows VM 与来宾 OS 诊断已启用，VM 的概述页不显示度量值的数据。 
 
-   若要查找 VM 的 CPU 百分比图表类似的指标数据，请转到**指标**边栏选项卡，并显示所有受支持的 Windows VM 来宾指标。
+   若要查找指标数据（如 VM 的 CPU 百分比图表），请转到“指标”边栏选项卡并查看所有受支持的 Windows VM 来宾指标。
 
 ### <a name="networking"></a>网络  
 

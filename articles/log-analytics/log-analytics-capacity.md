@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182614"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961936"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
 
@@ -50,8 +50,8 @@ ms.locfileid: "47182614"
 
 | 连接的源 | 支持 | Description |
 |---|---|---|
-| [Windows 代理](log-analytics-windows-agent.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](log-analytics-linux-agents.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [Windows 代理](log-analytics-agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
+| [Linux 代理](log-analytics-quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
 | [SCOM 管理组](log-analytics-om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Azure 存储不包括容量和性能数据。|
 
@@ -64,7 +64,7 @@ ms.locfileid: "47182614"
 
 执行以下步骤，将容量和性能解决方案添加到工作区。
 
-- 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中描述的过程，将容量和性能解决方案添加到 Log Analytics 工作区。
+- 使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中描述的过程，将容量和性能解决方案添加到 Log Analytics 工作区。
 
 ## <a name="management-packs"></a>管理包
 
@@ -126,7 +126,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 下表提供的示例日志搜索针对该解决方案所收集和计算的容量和性能数据。
 
 
-| 查询 | Description |
+| Query | Description |
 |:--- |:--- |
 | 所有主机内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "Host Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
 | 所有 VM 内存配置 | Perf | 其中 ObjectName == "Capacity and Performance" 且 CounterName == "VM Assigned Memory MB" | summarize MB = avg(CounterValue) by InstanceName |
@@ -138,4 +138,4 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](log-analytics-log-search.md)查看详细的容量和性能数据。
+* 使用 [Log Analytics 中的日志搜索](log-analytics-queries.md)查看详细的容量和性能数据。

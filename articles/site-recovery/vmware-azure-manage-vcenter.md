@@ -1,20 +1,19 @@
 ---
-title: " 在 Azure Site Recovery 中管理 VMware vCenter 服务器 | Microsoft Docs"
-description: 本文介绍如何在 Azure Site Recovery 中添加和管理 VMware vCenter。
+title: 使用 Azure Site Recovery 管理 VMware vCenter 服务器，以便将 VMware VM 灾难恢复到 Azure | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 添加和管理 VMware vCenter，以便将 VMware VM 灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: ramamill
-ms.openlocfilehash: 6f3edf8e5d7a6fda1795991ac0a21cc316c29414
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 854d7724aebd882414287b19c015ef1425bfa6db
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950438"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210284"
 ---
-# <a name="manage-vmware-vcenter-servers"></a>管理 VMware vCenter 服务器 
+# <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 
 本文介绍可以在 VMware vCenter 上执行的各种 Site Recovery 操作。 请在开始之前验证是否满足[先决条件](vmware-physical-azure-support-matrix.md#replicated-machines)。
 

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318531"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260374"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
 
@@ -150,7 +150,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 ### <a name="database-level-policy-audit-logs"></a>数据库级策略审核日志
 数据库级审核日志会在设置期间选择的 Azure 存储帐户中前缀为 **SQLDBAuditLogs** 的一系列存储表内进行聚合。 可以使用工具（比如 [Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com)）查看日志文件。
 
-可以借助以[可下载 Excel 电子表格](http://go.microsoft.com/fwlink/?LinkId=403540)形式提供的预配置仪表板报告模板来快速分析日志数据。 若要对审核日志使用模板，需要安装 Excel 2013 或更高版本以及 Power Query（可[从此处下载](http://www.microsoft.com/download/details.aspx?id=39379)）。
+可以借助以[可下载 Excel 电子表格](https://go.microsoft.com/fwlink/?LinkId=403540)形式提供的预配置仪表板报告模板来快速分析日志数据。 若要对审核日志使用模板，需要安装 Excel 2013 或更高版本以及 Power Query（可[从此处下载](https://www.microsoft.com/download/details.aspx?id=39379)）。
 
 该模板包含虚构的示例数据，可以将 Power Query 设置为直接从 Azure 存储帐户导入审核日志。
 

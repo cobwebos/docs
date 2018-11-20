@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349137"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622000"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](user-provisioning.md)。
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)来管理支持它的应用程序的自动用户帐户预配和取消预配。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](user-provisioning.md)。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
-所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“所有服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
+可以在 [Azure 门户](https://portal.azure.com)中查看和管理为目录中的单一登录配置的所有应用程序。 这些应用程序可在门户的“所有服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
 
 ![“企业应用程序”窗格](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 
@@ -77,7 +77,5 @@ ms.locfileid: "44349137"
 
 提供了“预配活动报告”链接，该报告记录了在 Azure AD 和目标应用程序之间创建、更新和删除的所有用户和组；此外还提供了“预配错误报告”链接，该报告提供的错误消息更详细地描述了无法读取、创建、更新或删除的用户和组对象。 
 
-## <a name="feedback"></a>反馈
 
-敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  工程团队热衷于不断推出炫酷的新功能，遵从用户的指导来塑造和定义后续版本。
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2570e779f258e702f04166dffc3087195d01a983
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978176"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283627"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
 
 > [!NOTE]
-> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单缩小/扩大设置，请参阅 [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) 和 [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) 文档
+> 虽然本演练说明了 VM 规模集的步骤，但相同的信息适用于自动缩放[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。有关基于简单性能指标（如 CPU）的 VM 规模集上的简单缩小/扩大设置，请参阅 [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 和 [Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文档
 >
 >
 
@@ -29,7 +29,7 @@ ms.locfileid: "46978176"
 1. 使用基本自动缩放设置部署新的规模集。 本文会使用 Azure 快速入门库中的规模集，该库中具有含基本自动缩放模板的 Windows 规模集。 Linux 规模集的工作方式相同。
 2. 创建规模集后，从 Azure 资源管理器导航到规模集资源。 会在 Microsoft.Insights 节点下看到以下内容。
 
-    ![Azure 资源管理器](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure 资源管理器](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     模板执行已创建名为 **“autoscalewad”** 的默认自动缩放设置。 在右侧可以查看此自动缩放设置的完整定义。 在这种情况下，默认自动缩放设置带有基于 CPU% 的扩大和缩小规则。  
 
@@ -58,11 +58,11 @@ ms.locfileid: "46978176"
 
 5. 确保在资源浏览器中处于“读/写”模式
 
-    ![Autoscalewad，默认自动缩放设置](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad，默认自动缩放设置](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. 单击“编辑”。 将自动缩放设置中的“配置文件”元素**替换**为以下配置：
 
-    ![配置文件](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![配置文件](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

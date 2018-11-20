@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/09/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902818"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215202"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
-本文介绍如何使用 [Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)为 Azure Stack VM 设置到 Azure 的灾难恢复。
+本文介绍如何使用 [Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)设置将 Azure Stack VM 灾难恢复到 Azure。
 
 Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该服务可确保在出现预期内和意外中断时，VM 工作负载仍然可用。
 
@@ -30,12 +30,12 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * **步骤 1：做好复制 Azure Stack 的准备**。 检查 VM 是否符合 Site Recovery 要求，并准备安装 Site Recovery 移动服务。 此服务安装在要复制的每个 VM 上。
+> * **步骤 1：做好复制 Azure Stack VM 的准备**。 检查 VM 是否符合 Site Recovery 要求，并准备安装 Site Recovery 移动服务。 此服务安装在要复制的每个 VM 上。
 > * **步骤 2：设置恢复服务保管库**。 为 Site Recovery 设置保管库，并指定要复制的内容。 在保管库中配置和管理 Site Recovery 的组件和操作。
 > * **步骤 3：设置源复制环境**。 设置 Site Recovery 配置服务器。 配置服务器是单个 Azure Stack VM，可运行 Site Recovery 需要的所有组件。 设置配置服务器后，在保管库中进行注册。
-> * **步骤 4：设置目标复制环境**。 选择 Azure 帐户以及要使用的 Azure 存储帐户和网络。 复制期间，会将 VM 数据复制到 Azure 存储。 进行故障转移后，Azure VM 会加入指定的网络。
-> * **步骤 5：启用复制**。 配置复制设置，启用 VM 复制。 启用复制后，会在 VM 上安装移动服务。 Site Recovery 执行 VM 的初始复制，然后开始持续复制。
-> * **步骤 6：运行灾难恢复演练**：复制正常运行后，可运行演练来验证故障转移是否按预期工作。 要启动演练，请在 Site Recovery 中运行测试故障转移。 测试故障转移不会对生产环境造成任何影响。
+> * **步骤 4：设置目标复制环境**。 选择 Azure 帐户以及要使用的 Azure 存储帐户和网络。 复制期间，VM 数据会复制到 Azure 存储。 进行故障转移后，Azure VM 会加入指定的网络。
+> * **步骤 5：启用复制**。 配置复制设置，启用 VM 复制。 启用复制后，VM 上会安装移动服务。 Site Recovery 执行 VM 的初始复制，然后开始持续复制。
+> * **步骤 6：运行灾难恢复演练**：复制启用并运行后，可运行演练来验证故障转移是否按预期方式工作。 要启动演练，请在 Site Recovery 中运行测试故障转移。 测试故障转移不会对生产环境造成任何影响。
 
 完成这些步骤后，即可按需随时运行到 Azure 的完全故障转移。
 
@@ -45,8 +45,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 **位置** | 组件 |**详细信息**
 --- | --- | ---
-**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中都可以设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale)。
-**移动服务** | 会安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service)。
+**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale)。
+**移动服务** | 安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详细信息](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service)。
 **Azure** | 在 Azure 中，你需要一个恢复服务保管库、一个存储帐户和一个虚拟网络。 |  复制的数据存储在存储帐户中。 进行故障转移时，Azure VM 将添加到 Azure 网络。 
 
 
@@ -99,8 +99,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 - 需在要启用复制的 VM 与运行进程服务器（默认情况下，此为配置服务器 VM）的计算机之间建立网络连接。
 - 在启用复制的计算机上，需要有具有管理员权限的帐户（域或本地）。
-    - 可在设置 Site Recovery 时指定此帐户。 然后，在复制启用后，进程服务器使用此帐户安装移动服务。
-    - 此帐户仅供 Site Recovery 用于推送安装，并用于更新移动服务。
+    - 在设置 Site Recovery 时指定此帐户。 然后，在复制启用后，进程服务器使用此帐户安装移动服务。
+    - 此帐户仅供 Site Recovery 用于推送安装和移动服务更新。
     - 如果使用的不是域帐户，则需在 VM 上禁用远程用户访问控制：
         - 在注册表中的 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 下，创建 DWORD 值 LocalAccountTokenFilterPolicy。
         - 将值设置为 1。
@@ -113,9 +113,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 #### <a name="linux-machines"></a>Linux 计算机
 
 - 确保 Linux 计算机与进程服务器之间已建立网络连接。
-- 在启用了复制的计算机上，需要具有源 Linux 服务器的根用户帐户：
-    - 可在设置 Site Recovery 时指定此帐户。 然后，在复制启用后，进程服务器使用此帐户安装移动服务。
-    - 此帐户仅供 Site Recovery 用于推送安装，并用于更新移动服务。
+- 在启用了复制的计算机上，需要源 Linux 服务器根用户帐户：
+    - 在设置 Site Recovery 时指定此帐户。 然后，在复制启用后，进程服务器使用此帐户安装移动服务。
+    - 此帐户仅供 Site Recovery 用于推送安装和移动服务更新。
 - 确保源 Linux 服务器上的 /etc/hosts 文件包含用于将本地主机名映射到所有网络适配器关联的 IP 地址的条目。
 - 在要复制的计算机上安装最新的 openssh、openssh-server 和 openssl 包。
 - 确保安全外科 (SSH) 已启用且正在端口 22 上运行。
@@ -182,14 +182,14 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 若要安装并注册配置服务器，请与要用于配置服务器的 VM 建立 RDP 连接，然后运行统一安装程序。
 
-开始操作之前， [请务必将时钟与 VM 上的](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
+开始操作之前，[请务必将时钟与 VM 上的](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
 
 现在来安装配置服务器：
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 还可通过命令行安装配置服务器。 [了解详细信息](http://aka.ms/installconfigsrv)。
+> 还可通过命令行安装配置服务器。 [了解详细信息](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 > 帐户名出现在门户中可能需要 15 分钟或更长时间。 若要立即更新，请选择“配置服务器” > ***服务器名称*** > “刷新服务器”。
 
@@ -227,7 +227,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="enable-replication"></a>启用复制
 
-请确保已完成[步骤1：准备计算机](#step-1-prepare-azure-stack-vms)中的所有任务。 随后请按如下所述启用复制：
+请确保已完成[步骤1：准备计算机](#step-1-prepare-azure-stack-vms)中的所有任务。 随后请按如下步骤启用复制：
 
 1. 选择“复制应用程序” > “源”。
 2. 在“源”中选择配置服务器。

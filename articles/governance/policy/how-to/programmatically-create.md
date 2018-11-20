@@ -4,16 +4,16 @@ description: 本文逐步讲解如何以编程方式创建和管理适用于 Azu
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985310"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242616"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -74,7 +74,13 @@ ms.locfileid: "46985310"
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。 有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)。
+   该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。
+   有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)。
+
+   在没有位置参数的情况下调用时，`New-AzureRmPolicyDefinition` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
+
+   - **SubscriptionId** - 保存到其他订阅。 需要 _GUID_ 值。
+   - **ManagementGroupName** - 保存到管理组。 需要_字符串_值。
 
 1. 创建策略定义后，可运行以下命令创建策略分配：
 
@@ -85,6 +91,13 @@ ms.locfileid: "46985310"
    ```
 
    将 _ContosoRG_ 替换为所需资源组的名称。
+
+   `New-AzureRmPolicyAssignment` 上的 **Scope** 参数也可用于订阅和管理组。 该参数使用完整资源路径，它将返回 `Get-AzureRmResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。
+   将 `{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源组名称、订阅 ID 和管理组名称。
+
+   - 资源组 - `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - 订阅 - `/subscriptions/{subId}/`
+   - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [AzureRM.Resources](/powershell/module/azurerm.resources/#policies)。
 

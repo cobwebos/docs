@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 6de1f6dfac028255a1cb49931e959c79b5fc4f40
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e0fe2ade2e50ff549cb18f84a3c15830255ca0fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023406"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249585"
 ---
 # <a name="microsoft-authenticator-app"></a>Microsoft Authenticator 应用
 
@@ -27,6 +27,6 @@ ms.locfileid: "42023406"
 
 |文章 |Description |
 |------|------------|
-|[Microsoft Authenticator 应用入门](microsoft-authenticator-app-how-to.md)|介绍在何处采用何种方法获取和安装适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) 的 Microsoft Authenticator 应用。|
+|[Microsoft Authenticator 应用入门](microsoft-authenticator-app-how-to.md)|介绍在何处采用何种方法获取和安装适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) 的 Microsoft Authenticator 应用。|
 |[使用 Microsoft Authenticator 应用备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)| 提供有关如何使用 Microsoft Authenticator 应用备份和恢复帐户凭据的信息。|
 |[Microsoft Authenticator 应用常见问题解答](microsoft-authenticator-app-faq.md)|提供有关应用的常见问题的解答。|

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696442"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242284"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
 * 确保提供“始终可用”的可用性
     * 为所有单区域数据库帐户提供 99.99% 的可用性 SLA，为所有多区域数据库帐户提供 99.999% 的读取可用性。
     * 部署到任意数量的 [Azure 区域](https://azure.microsoft.com/regions)，在提高可用性的同时改进性能。
-    * 动态设置区域的优先级，并在保证不丢失数据的情况下，对一个或多个区域进行[故障模拟](regional-failover.md)，测试整个应用的端到端可用性（超出单纯数据库的范围）。 
+    * 动态设置区域的优先级，并在保证不丢失数据的情况下，对一个或多个区域进行[故障模拟](high-availability.md)，测试整个应用的端到端可用性（超出单纯数据库的范围）。 
 
 * 以正确方式编写全球发布式应用程序
     * 五个定义完善、实用且直观的[一致性模型](consistency-levels.md)提供了一系列的一致性：从类似于 SQL 的“强”一致性到类似于 NoSQL 的“宽松”终极一致性，以及介于二者之间的其他一致性。 

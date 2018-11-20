@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 机器学习的开发环境 | Microsoft 文档
-description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文档介绍如何使用 Conda 环境、创建配置文件和配置 Jupyter Notebook、Azure Notebooks、IDE、代码编辑器和数据科学虚拟机。
+description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文档将学习如何使用 Conda 环境、创建配置文件和配置 Jupyter Notebooks、Azure Notebooks、IDE、代码编辑器和数据科学虚拟机。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.openlocfilehash: 657a762874f7c2fb40553552ef6c17d9b5b6da0f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/6/2018
+ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958612"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238309"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -84,14 +84,40 @@ Azure 机器学习 SDK 使用工作区配置文件来与 Azure 机器学习服�
 
 Azure Notebooks 和 Azure Data Science Virtual Machine (DSVM) 配置为使用 Azure 机器学习服务。 这些环境包含所需的组件，例如 Azure 机器学习 SDK。
 
+### <a name="azure-notebooks"></a>Azure Notebook
+
 - Azure Notebooks 是 Azure 云中的 Jupyter Notebook 服务。
-- Data Science Virtual Machine 是用于开展数据科学工作的自定义虚拟机 (VM) 映像。 其中包括：
-  - 常用工具
-  - 集成开发环境 (IDE)
-  - Jupyter Notebook、PyCharm 和 Tensorflow 等包
 - 仍然需要工作区配置文件才能使用这些环境。
 
 有关将 Azure Notebooks 与 Azure 机器学习服务配合使用的示例，请参阅 [Azure 机器学习服务入门](quickstart-get-started.md)。
+
+### <a name="data-science-virtual-machines"></a>数据科学虚拟机
+
+- Data Science Virtual Machine 是用于开展数据科学工作的自定义虚拟机 (VM) 映像。 其中包括：
+  - 常用数据科学工具
+  - 集成开发环境 (IDE)，如 PyCharm 和 RStudio
+  - Jupyter Notebook 和 Tensorflow 等包
+
+DSVM 已安装了多个 Anaconda 环境。 若要在不安装任何包的情况下使用 Azure 机器学习 Python SDK，请打开命令提示符/shell 并使用以下命令之一激活环境：
+
+* 在 __Ubuntu__ DSVM 上，使用以下命令：
+
+    ```shell
+    conda activate py36
+    ```
+
+* 在 __Windows__ DSVM 上，使用以下命令：
+
+    ```shell
+    conda activate AzureML
+    ```
+
+进入此环境后，可以立即在所选的生成工具中导入 Azure 机器学习 SDK，而无需安装包。
+
+```python
+import azureml.core
+print(azureml.core.VERSION)
+```
 
 有关 Data Science Virtual Machine 的详细信息，请参阅 [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)。
 
@@ -120,12 +146,16 @@ Azure Notebooks 和 Azure Data Science Virtual Machine (DSVM) 配置为使用 Az
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-    > [!NOTE]
-    > 如果有消息指出无法卸载 `PyYAML`，请改用以下命令：
-    >
-    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   可以在以下 SDK 中查看类和方法的 Python 参考文档：
+   + [适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)
+   + [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)
 
-    安装 SDK 可能需要几分钟时间。
+   > [!NOTE]
+   > 如果有消息指出无法卸载 `PyYAML`，请改用以下命令：
+   >
+   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+
+   安装 SDK 可能需要几分钟时间。
 
 1. 安装机器学习试验的包。 使用以下命令（请将 `<new package>` 替换为要安装的包）：
 

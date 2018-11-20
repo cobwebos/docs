@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/22/2017
 ms.author: jingwang
-ms.openlocfilehash: e1be16ec6a7536cedf3a27ffacb9c4dffe42bbef
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3428fb5034435d9f3444347329171d803136177c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052409"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944662"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
@@ -32,7 +32,7 @@ ms.locfileid: "37052409"
 >[!TIP]
 >在 Azure Key Vault 中创建机密时，输入 ADF 链接服务要求的机密属性的整个值（例如，连接字符串/密码/服务主体密钥等）。 例如，对于 Azure 存储链接服务，将 `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` 作为 AKV 机密，然后引用 ADF 的“connectionString”字段；对于 Dynamics 链接服务，将 `myPassword` 作为 AKV 机密，然后引用 ADF 的“paassword”字段。 若要详细了解所支持的属性，请参阅各连接器/计算文章。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 若要引用 Azure Key Vault 中存储的凭据，需要：
 

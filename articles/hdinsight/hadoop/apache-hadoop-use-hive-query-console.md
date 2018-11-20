@@ -1,25 +1,25 @@
 ---
-title: 在 HDInsight 中的查询控制台上使用 Hadoop Hive - Azure
-description: 了解如何在浏览器中使用基于 Web 的查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
+title: 在 HDInsight 中的查询控制台上使用 Apache Hive - Azure
+description: 了解如何在 HDInsight Hadoop 群集上通过浏览器使用基于 Web 的查询控制台运行 Apache Hive 查询。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e080085faa45e0eb330e49edb4450c5a44eb755b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045603"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634578"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>使用查询控制台运行 Hive 查询
+# <a name="run-apache-hive-queries-using-the-query-console"></a>使用查询控制台运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-在本文中，将了解如何在浏览器中使用 HDInsight 查询控制台在 HDInsight Hadoop 群集上运行 Hive 查询。
+本文介绍如何在 HDInsight Hadoop 群集上通过浏览器使用 HDInsight 查询控制台运行 Apache Hive 查询。
 
 > [!IMPORTANT]
 > HDInsight 查询控制台只能在基于 Windows 的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -86,8 +86,6 @@ ms.locfileid: "43045603"
 * [在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

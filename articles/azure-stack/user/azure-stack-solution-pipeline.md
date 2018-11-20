@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951995"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280735"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -180,7 +180,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 
 3. 在 Visual Studio Enterprise 中选择“访问控制(IAM)”。
 
-    ![访问控制 (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
+    ![访问控制(IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
 
 4. 选择 **添加** 。
 
@@ -253,7 +253,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 ![VSTO 中的 NorthwindCloud 示例应用](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
 1. 登录到 VSTO，然后导航到应用设置页。
-2. 在“设置”中，选择“安全性”。
+2. 在“设置”中选择“安全性”。
 3. 在中**Azure DevOps 服务组**，选择**终结点创建者**。
 
     ![NorthwindCloud 终结点创建者](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
@@ -273,21 +273,57 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 10. 选择“保存更改”。
 
 现在，已存在的终结点信息，Azure Stack 连接到 Azure DevOps 服务是可供使用。 在 Azure Stack 中的生成代理从 Azure DevOps 服务获取的说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
+
 ## <a name="create-an-azure-stack-endpoint"></a>创建 Azure Stack 终结点
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>创建 Azure AD 部署的终结点
 
 可以按照中的说明[创建 Azure 资源管理器服务连接的现有服务主体](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)文章以使用现有服务主体创建的服务连接并使用以下映射：
 
-- 环境： AzureStack
-- 环境 URL： 类似于 `https://management.local.azurestack.external`
-- 从 Azure Stack 的订阅 ID： 用户订阅 ID
-- 订阅名称： 从 Azure Stack 用户订阅名称
-- 服务主体客户端 ID： 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。
-- 服务主体键： 来自同一篇文章 （或者如果使用脚本的密码） 的密钥。
-- 租户 ID： 租户 ID 检索以下处的指令[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。
+可以创建服务连接，使用以下映射：
 
-现在，创建端点时，Azure Stack 连接到 VSTS 是可供使用。 Azure Stack 中的生成代理会从 VSTS 获取指令，然后，此代理会传达与 Azure Stack 通信所需的终结点信息。
+| 名称 | 示例 | 说明 |
+| --- | --- | --- |
+| 连接名称 | Azure Stack Azure AD | 连接的名称。 |
+| 环境 | AzureStack | 你的环境的名称。 |
+| 环境 URL | `https://management.local.azurestack.external` | 你管理的终结点。 |
+| 作用域级别 | 订阅 | 连接的作用域。 |
+| 订阅 ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | 从 Azure Stack 用户的订阅 ID |
+| 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
+| 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。 |
+| 服务主体键 | THESCRETGOESHERE = | 从同一篇文章 （或如果使用脚本的密码） 键。 |
+| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。  |
+| 连接： | 未验证 | 验证到服务主体的连接设置。 |
 
-![生成代理](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+现在，创建端点时，Azure Stack 连接到 DevOps 是可供使用。 在 Azure Stack 中的生成代理从 DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
+
+![生成代理 Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>为 AD FS 创建一个终结点
+
+Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行身份验证的服务连接。 Azure Stack 部署使用 AD FS 作为标识提供者时，这是必需的。 
+
+![生成代理 AD FS](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+可以创建服务连接，使用以下映射：
+
+| 名称 | 示例 | 说明 |
+| --- | --- | --- |
+| 连接名称 | Azure Stack ADFS | 连接的名称。 |
+| 环境 | AzureStack | 你的环境的名称。 |
+| 环境 URL | `https://management.local.azurestack.external` | 你管理的终结点。 |
+| 作用域级别 | 订阅 | 连接的作用域。 |
+| 订阅 ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | 从 Azure Stack 用户的订阅 ID |
+| 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
+| 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 为 AD FS 创建从服务主体的客户端 ID。 |
+| 证书 | `<certificate>` |  将证书文件从 PFX 转换为 PEM。 将证书 PEM 文件内容粘贴到此字段。 <br> 将 PFX 转换为 PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。 |
+| 连接： | 未验证 | 验证到服务主体的连接设置。 |
+
+现在，创建端点时，Azure Stack 连接到 Azure DevOps 是可供使用。 在 Azure Stack 中的生成代理从 Azure DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
+
+> [!Note]
+> 如果不向 Internet 公开 Azure Stack 用户 ARM 终结点，在连接验证将失败。 这意料之中的也可以通过创建发布管道有一个简单的任务来验证你的连接。 
 
 ## <a name="develop-your-application-build"></a>开发应用程序生成
 

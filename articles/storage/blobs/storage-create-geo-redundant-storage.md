@@ -9,12 +9,12 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 162b30444a22ea193d93e8a6a2c7374dcd2f5fd3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180875"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415978"
 ---
 # <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>教程：使用 Azure 存储实现应用程序数据的高可用性
 
@@ -49,7 +49,7 @@ ms.locfileid: "47180875"
 # <a name="java-tabjava"></a>[Java] (#tab/java)
 
 * 从命令行安装和配置要使用的 [Maven](http://maven.apache.org/download.cgi)
-* 安装并配置 [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* 安装并配置 [JDK](https://aka.ms/azure-jdks)
 
 ---
 
@@ -72,12 +72,12 @@ ms.locfileid: "47180875"
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Name** | mystorageaccount | 存储帐户的唯一值 |
+   | **名称** | mystorageaccount | 存储帐户的唯一值 |
    | **部署模型** | 资源管理器  | “资源管理器”包含最新功能。|
    | **帐户种类** | StorageV2 | 若要详细了解帐户类型，请参阅[存储帐户类型](../common/storage-introduction.md#types-of-storage-accounts) |
    | **性能** | 标准 | “标准”足以满足示例方案需求。 |
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 此为示例正常运行所必需。 |
-   |**需要安全传输** | Disabled| 对于此方案，无需安全传输。 |
+   |**需要安全传输** | 已禁用| 对于此方案，无需安全传输。 |
    |**订阅** | 用户订阅 |有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
    |**ResourceGroup** | myResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
    |**位置** | 美国东部 | 选择一个位置。 |

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309336"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429382"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件
 
@@ -71,23 +71,26 @@ Azure 存储帐户中文件的到达或删除就是一个典型的事件。 你�
 | **JSON 元素** | **说明** | 类型 | **允许的值** | **必需** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **scope** | 存储帐户的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
-| **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是，任意组合。 |
-| **blobPathBeginsWith** | Blob 路径必须使用为要触发的触发器提供的模式开头。 例如，“/records/blobs/december/”将仅针对 records 容器下的 december 文件夹中的 blob 使触发器触发。 | String   | | 必须至少提供这些属性之一：blobPathBeginsWith、blobPathEndsWith。 |
-| **blobPathEndsWith** | Blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，“december/boxes.csv”将仅针对 december 文件夹中名为 boxes 的 blob 使触发器触发。 | String   | | 必须至少提供这些属性之一：blobPathBeginsWith、blobPathEndsWith。 |
+| **events** | 导致此触发器触发的事件的类型。 | Array    | Microsoft.Storage.BlobCreated、Microsoft.Storage.BlobDeleted | 是的，这些值的任意组合。 |
+| **blobPathBeginsWith** | blob 路径必须使用为要触发的触发器提供的模式开头。 例如，`/records/blobs/december/` 只会触发 `records` 容器下 `december` 文件夹中的 blob 触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
+| **blobPathEndsWith** | blob 路径必须使用为要触发的触发器提供的模式结尾。 例如，`december/boxes.csv` 只会触发 `december` 文件夹中名为 `boxes` 的 blob 的触发器。 | String   | | 必须为其中至少一个属性提供值：`blobPathBeginsWith` 或 `blobPathEndsWith`。 |
 
 ## <a name="examples-of-event-based-triggers"></a>基于事件的触发器的示例
 
 本部分提供了基于事件的触发器的设置示例。
 
--   **Blob 路径开头为**('/containername/') – 接收该容器中任何 blob 的事件。
--   **Blob 路径开头为**('/containername/blobs/foldername') - 接收 containername 容器和 foldername 文件夹中任何 blob 的事件。 还可以引用子文件夹；例如：“/containername/blobs/foldername/subfoldername/”。
--   **Blob 路径开头为**('/containername/blobs/foldername/file.txt') - 接收 containername 容器下 foldername 文件夹中名为 file.txt 的 blob 的事件。
--   **Blob 路径结尾为**('file.txt') – 接收任何路径中名为 file.txt 的 blob 的事件。
--   **Blob 路径结尾为**('/containername/blobs/file.txt') - 接收 containername 容器下名为 file.txt 的 blob 的事件。
--   **Blob 路径结尾为**('foldername/file.txt') – 接收任何容器下的 foldername 文件夹中名为 file.txt 的 blob 的事件。
+> [!IMPORTANT]
+> 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段，如以下示例所示。
 
-> [!NOTE]
-> 每当指定容器和文件夹、容器和文件或容器、文件夹和文件时，都必须包含路径的 `/blobs/` 段。
+| 属性 | 示例 | Description |
+|---|---|---|
+| **Blob 路径开头** | `/containername/` | 接收容器中任何 blob 事件。 |
+| **Blob 路径开头** | `/containername/blobs/foldername/` | 接收 `containername` 容器和 `foldername` 文件夹中的任何 blob 事件。 |
+| **Blob 路径开头** | `/containername/blobs/foldername/subfoldername/` | 此外可以引用一个子文件夹。 |
+| **Blob 路径开头** | `/containername/blobs/foldername/file.txt` | 接收 `containername` 容器下的 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
+| **Blob 路径结尾** | `file.txt` | 接收任何路径中名为 `file.txt` 的 blob 事件。 |
+| **Blob 路径结尾** | `/containername/blobs/file.txt` | 接收容器 `containername` 下名为 `file.txt` 的 blob 事件。 |
+| **Blob 路径结尾** | `foldername/file.txt` | 接收任何容器下 `foldername` 文件夹中名为 `file.txt` 的 blob 事件。 |
 
 ## <a name="next-steps"></a>后续步骤
 有关触发器的详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md#triggers)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 9e4302b780d0c08afbc791a0aec6bfd806aba161
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263698"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245760"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 
@@ -28,7 +28,7 @@ ms.locfileid: "35263698"
 Azure Monitor（以前称为 Azure Insights）提供了创建警报的功能，可触发管理事件并生成发送到 webhook URL 或电子邮件地址的通知。 你可能已通过下列任一方式创建了下列任一警报：
 * 在某些资源类型的 Azure 门户中，在“监视”->“警报”->“添加警报”下，其中“警报”被设置为“事件”
 * 通过运行 Add-AzureRmLogAlertRule PowerShell cmdlet
-* 通过直接使用 odata.type = “ManagementEventRuleCondition” 以及 dataSource.odata.type = “RuleManagementEventDataSource” 的[警报 REST API](http://docs.microsoft.com/rest/api/monitor/alertrules)
+* 通过直接使用 odata.type = “ManagementEventRuleCondition” 以及 dataSource.odata.type = “RuleManagementEventDataSource” 的[警报 REST API](https://docs.microsoft.com/rest/api/monitor/alertrules)
  
 以下 PowerShell 脚本将返回订阅中所具有的有关管理事件的所有警报列表，以及每个警报所设置的条件。
 
@@ -95,7 +95,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 此功能已转换为 [Azure Monitor 活动日志警报](monitoring-activity-log-alerts.md)。 使用这些新警报，可让你设置有关活动日志事件的条件，并在新事件与条件匹配时接收通知。 另外，它们还会基于管理事件的警报提供多项改进：
 * 你可以使用[操作组](monitoring-action-groups.md)，在多个警报中重复使用通知收件人（“操作”）组，从而在谁应接收警报方面减少更改的复杂性。
 * 你可以直接在手机上将短信与操作组结合使用来接收通知。
-* 可以[使用资源管理器模板创建活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)。
+* 可以[使用资源管理器模板创建活动日志警报](alert-activity-log.md)。
 * 你可以创建具有更大灵活性和复杂性的条件，以满足你的特定需求。
 * 可以更快地传递通知。
  
@@ -103,7 +103,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
  
 若要创建新的活动日志警报，你可以：
 * 按照我们的有关[如何在 Azure 门户中创建警报的指南](monitoring-activity-log-alerts.md)进行操作
-* 了解如何[使用资源管理器模板创建警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* 了解如何[使用资源管理器模板创建警报](alert-activity-log.md)
  
 有关你以前创建的管理事件的通知将不会自动迁移到活动日志警报。 你需要使用上述 PowerShell 脚本，列出当前已配置的管理事件警报，并手动将它们重新创建为活动日志警报。 此操作必须在 10 月 1 日之前完成，在此之后，有关管理事件的警报将不再显示在 Azure 订阅中。 其他类型的 Azure 警报，包括 Azure Monitor 指标警报、Application Insights 警报和 Log Analytics 警报都不会受此更改的影响。 如果你有任何问题，请在下面评论中提出。
 
@@ -112,7 +112,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 * 详细了解[活动日志](monitoring-overview-activity-logs.md)
 * [通过 Azure 门户配置活动日志警报](monitoring-activity-log-alerts.md)
-* [通过 Resource Manager 配置活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* [通过 Resource Manager 配置活动日志警报](alert-activity-log.md)
 * 查看[活动日志警报 webhook 架构](monitoring-activity-log-alerts-webhook.md)
 * 详细了解[服务通知](monitoring-service-notifications.md)
 * 详细了解[操作组](monitoring-action-groups.md)

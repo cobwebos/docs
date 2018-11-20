@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170627"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240862"
 ---
 # <a name="demo-password-reset"></a>演示：密码重置
 此演示展示了一个简单的技术支持机器人，它可以帮助进行密码重置。 
@@ -24,7 +24,7 @@ ms.locfileid: "39170627"
 
 ## <a name="video"></a>视频
 
-[![演示密码预览](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
+[![演示密码预览](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>要求
 本教程要求密码重置机器人正在运行

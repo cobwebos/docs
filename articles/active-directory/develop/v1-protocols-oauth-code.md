@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237887"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 
@@ -183,7 +183,7 @@ grant_type=authorization_code
 | refresh_token |OAuth 2.0 刷新令牌。 应用可以使用此令牌，在当前访问令牌过期之后获取其他访问令牌。 刷新令牌的生存期很长，而且可以用于延长保留资源访问权限的时间。 |
 | id_token |表示 [ID 令牌](id-tokens.md)的未签名 JSON Web令牌 (JWT)。 应用可以 base64Url 解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值来获取任何授权或安全边界。 |
 
-有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](http://go.microsoft.com/fwlink/?LinkId=392344)。   若要详细了解 `id_tokens`，请参阅 [v1.0 OpenID Connect 流](v1-protocols-openid-connect-code.md)。
+有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](https://go.microsoft.com/fwlink/?LinkId=392344)。   若要详细了解 `id_tokens`，请参阅 [v1.0 OpenID Connect 流](v1-protocols-openid-connect-code.md)。
 
 ### <a name="error-response"></a>错误响应
 令牌颁发终结点错误是一些 HTTP 错误代码，因为客户端直接调用令牌颁发终结点。 除了 HTTP 状态代码，Azure AD 令牌颁发终结点还返回 JSON 文档，其中的对象会对错误进行描述。

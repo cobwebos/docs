@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001433"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282197"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其[部署](#deploy)到 Azure。
@@ -27,6 +27,9 @@ ms.locfileid: "39001433"
 在 Azure 中使用的证书是 x.509 v3 证书，且可由另一个受信任的证书进行签名或可进行自签名。 自签名的证书由其自己的创建者进行签名，因此，默认情况下不受信任。 大多数浏览器可以忽略此问题。 仅当开发和测试云服务时，才应使用自签名的证书。 
 
 Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，它提供了一种可对证书进行明确识别的方法。 该指纹用于在 Azure [配置文件](cloud-services-configure-ssl-certificate-portal.md)中识别云服务应使用的证书。 
+
+>[!Note]
+>Azure 云服务不接受 AES256-SHA256 加密证书。
 
 ## <a name="what-are-service-certificates"></a>什么是服务证书？
 服务证书被附加到云服务，可实现与服务之间的安全通信。 例如，如果部署了 Web 角色，将需要提供可对公开的 HTTPS 终结点进行身份验证的证书。 在服务定义中定义的服务证书会自动部署到运行角色实例的虚拟机。 

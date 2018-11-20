@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235898"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -35,8 +35,38 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 从 Azure AD Connect 升级的步骤 | [从旧版升级到最新版](how-to-upgrade-previous-version.md) Azure AD Connect 的不同方法。
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
 
-下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+下载| [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>版本状态 
+
+10/25/2018：已发布供下载
+
+ 
+### <a name="new-features-and-improvements"></a>新增功能和改进 
+
+
+- 更改了属性写回的功能，以确保托管的语音邮件可按预期方式工作。  在某些情况下，Azure AD 在使用 null 值写回期间，会覆盖 msExchUcVoicemailSettings 属性。  如果未设置云值，Azure AD 现在不再会清除此属性的本地值。
+- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 Azure AD 连接问题。 也可以使用 Test- AdSyncAzureServiceConnectivity Cmdlet 通过 Powershell 直接运行这些诊断。 
+- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 AD 连接问题。 也可以在 ADConnectivityTools Powershell 模块中使用 Start-ConnectivityValidation 函数，通过 Powershell 直接运行这些诊断。  有关详细信息，请参阅[什么是 ADConnectivityTool PowerShell 模块？](how-to-connect-adconnectivitytools.md)
+- 为混合 Azure Active Directory Join 和设备写回添加了 AD 架构版本预先检查 
+- 已将目录扩展页面属性搜索更改为不区分大小写。
+-   添加了对 TLS 1.2 的完整支持。 此版本支持所要禁用的其他所有协议，安装 Azure AD Connect 的计算机上只会启用 TLS 1.2。  有关详细信息，请参阅[对 Azure AD Connect 强制实施 TLS 1.2](reference-connect-tls-enforcement.md)
+
+ 
+
+### <a name="fixed-issues"></a>修复的问题   
+
+- 修复了使用 SQL Always On 时 Azure AD Connect 升级失败的 bug。 
+- 修复了一个 bug，现在可以正常分析包含正斜杠的 OU 名称。 
+- 修复了在过渡模式下执行全新安装时禁用直通身份验证的问题。 
+- 修复了在运行故障排除工具时阻止加载 PowerShell 模块的 bug 
+- 修复了阻止客户在主机名第一个字符中使用数字值的 bug。 
+- 修复了 Azure AD Connect 允许选择无效分区和容器的 bug 
+- 修复了启用桌面 SSO 时出现“密码无效”错误消息的问题。 
+- AD FS 信任管理的各项 Bug 修复  
+- 配置设备写回时 - 修复了架构检查，现在可以查找 msDs-DeviceContainer 对象类（已在 WS2012 R2 中引入）
 
  
 ## <a name="118820"></a>1.1.882.0  
@@ -258,7 +288,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-Type     | 名称                          | Access               | 应用于
+类型     | 名称                          | Access               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 允许    | SYSTEM                        | 完全控制         | 此对象  |
 允许    | 企业管理员             | 完全控制         | 此对象  |

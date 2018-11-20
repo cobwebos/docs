@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445103"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014714"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C：配置密码复杂性要求
 
@@ -38,15 +38,14 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 
 ## <a name="how-to-configure-password-complexity"></a>如何配置密码复杂性
 
-1. 请按照以下步骤[导航到 Azure AD B2C 设置](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 1. 打开“注册或登录策略”。
-1. 选择一个策略，然后单击“编辑”。
-1. 打开“密码复杂性”。
-1. 将此策略的密码复杂性更改为“简单”、“强”或“自定义”。
+2. 选择一个策略，然后单击“编辑”。
+3. 打开“密码复杂性”。
+4. 将此策略的密码复杂性更改为“简单”、“强”或“自定义”。
 
 ### <a name="comparison-chart"></a>比较图表
 
-| 复杂性 | 说明 |
+| 复杂性 | Description |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
 | 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394982"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254564"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -412,9 +412,8 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 本指南的最后一部分提供可在 Azure 中实现的 PdM 解决方案模板、教程和试验的列表。 在某些情况下，只需片刻时间即可将这些 PdM 应用程序部署到 Azure 订阅。 可将它们用作概念证明演示、用于试验替代方案的沙盒，或者用于实际生产实施项目的加速器。 这些模板在 [Azure AI 库](http://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure) 中提供。 这些不同的示例会逐渐部署到此解决方案模板。
 
-| # | 标题 | 说明 |
+| # | 标题 | Description |
 |--:|:------|-------------|
-| 1 | [Azure 预防性维护机器学习示例](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |用于预测将来 N 个时间单位内的故障的 PdM 示例。 此示例编写为 Azure ML Workbench 项目，非常适合 PdM 的初学者学习。 与此示例相关的[其他文档](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)。|
 | 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 开放源代码解决方案模板，用于演示机器学习建模和完整的 Azure 基础结构，该结构可支持 IoT 远程监视环境中的预测性维护方案。 |
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|
 | 4 | [预测性维护的 R 建模指南](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | 有关使用 R 脚本进行 PdM 建模的指南|
@@ -432,13 +431,13 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 |:-------------------|--------------|
 | [使用树和随机林学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | 公共 | 
 | [使用深度学习学习 PdM 的路径](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | 公共 |
-| [Azure 上的 AI 开发人员](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
-| [Microsoft AI 学校](http://aischool.microsoft.com/learning-paths) | 公共 |
+| [Azure 上的 AI 开发人员](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | 公共 |
+| [Microsoft AI 学校](https://aischool.microsoft.com/learning-paths) | 公共 |
 | [GitHub 中的 Azure AI 学习资源](https://github.com/Azure/connectthedots/blob/master/readme.md) | 公共 |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | 公共 |
 | [Microsoft AI YouTube 网络研讨会](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | 公共 |
 | [Microsoft AI 展示](http://channel9.msdn.com/Shows/AI-Show) | 公共 |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | 合作伙伴 |
-| [Microsoft 合作伙伴网络](http://learningportal.microsoft.com) | 合作伙伴 |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | 合作伙伴 |
+| [Microsoft 合作伙伴网络](https://learningportal.microsoft.com) | 合作伙伴 |
 
 此外，Stanford 和 MIT 等学术机构以及其他培训公司也在线提供了有关 AI 的免费 MOOCS（大型开放式在线课程）。

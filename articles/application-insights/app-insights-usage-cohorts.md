@@ -3,7 +3,7 @@ title: 在 Azure Application Insights 中使用队列 | Microsoft Docs
 description: 分析具有某种共性的不同集、用户、会话、事件或操作
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162162"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564912"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -48,9 +49,9 @@ ms.locfileid: "47162162"
     此队列有三个参数：
     * **Activities**：选择要将哪些事件和页面视图计入“用法”。
     * **Period**：月份的定义。
-    * **UsedAtleastCustom**：用户需要在某个周期内使用某个对象多少次，才能将该用户算作参与用户。
+    * **UsedAtLeastCustom**：用户需要在某个周期内使用某个对象多少次，才能将该用户算作参与用户。
 
-4. 请将 **UsedAtleastCustom** 更改为 **5 天以上**，并将 **Period** 保留为默认 28 天。
+4. 请将 **UsedAtLeastCustom** 更改为 **5 天以上**，并将 **Period** 保留为默认 28 天。
 
     ![参与用户](.\media\app-insights-usage-cohorts\003.png)
 

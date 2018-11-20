@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a5d031622103183fa9aa7a3f3771a055fc16edb2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 632558760d0b4a00384763cc30de3b9241bb1ae6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049970"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300160"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -60,6 +60,13 @@ ms.locfileid: "39049970"
 | \*（通配符） | awverify.\* | &lt;appname>.azurewebsites.net |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
+
+> [!NOTE]
+> 对于某些提供程序（如 CloudFlare），`awverify.*` 不是有效记录。 只能改用 `*`。
+
+> [!NOTE]
+> 通配符 `*` 记录不会使用现有 CNAME 记录验证子域。 可能需要为每个子域显式创建一条 TXT 记录。
+
 
 ### <a name="enable-the-domain-for-your-app"></a>启用应用的域
 

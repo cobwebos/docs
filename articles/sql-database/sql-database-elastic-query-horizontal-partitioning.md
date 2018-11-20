@@ -3,7 +3,7 @@ title: 跨扩展云数据库进行报告 | Microsoft 文档
 description: 如何对横向分区设置弹性查询
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 906c6825dbfdf7d4873c765d0b3eba626ef52e1b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e1eec489bf33cbf03269f68413c39c9fb03bbb22
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159357"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240386"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 ![跨分片进行查询][1]
@@ -184,7 +184,7 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 ## <a name="connectivity-for-tools"></a>工具的连接
 可以使用常规 SQL Server 连接字符串将应用程序、BI 和数据集成工具连接到具有外部表定义的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库，就像引用连接到工具的其他任何 SQL Server 数据库一样，并从工具或应用程序使用外部表，就像使用本地表一样。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 * 确保已向弹性查询终结点数据库授予通过 SQL 数据库防火墙访问分片映射数据库和所有分片的权限。  
 * 验证或强制执行由外部表定义的数据分布。 如果实际的数据分布不同于表定义中指定的分布，查询可能会产生意外的结果。 
 * 当分片键上的谓词允许安全地从处理中排除某些分片时，弹性查询当前不执行分片消除。

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 71715640ecaac3f180d6c2fe9f3935ec8944ee5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165776"
+---
 <!--author=alkohli last changed: 07/07/17-->
 
 #### <a name="to-install-an-update-from-the-azure-portal"></a>从 Azure 门户安装更新
@@ -14,7 +27,7 @@
 
     ![单击“设备更新”](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。 选中指示已做好更新准备的复选框，然后单击“安装”。
+3. 建议先查看版本信息，然后在设备上应用更新。 若要应用更新，请单击“安装更新”。 在“确认常规更新”边栏选项卡中，在应用更新之前，复查要完成的先决条件。 选中指示已做好更新准备的复选框，并单击“安装”。
 
     ![单击“设备更新”](./media/storsimple-8000-install-update4-via-portal/update4.png)
 

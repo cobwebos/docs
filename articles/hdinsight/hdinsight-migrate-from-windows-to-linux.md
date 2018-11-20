@@ -2,19 +2,19 @@
 title: 从基于 Windows 的 HDInsight 迁移到基于 Linux 的 HDInsight - Azure
 description: 了解如何从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的 HDInsight 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: jasonh
-ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948411"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010059"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
@@ -33,11 +33,11 @@ ms.locfileid: "46948411"
 
 1. 请阅读本文档的每个部分，了解在迁移时可能需要进行的更改。
 
-2. 创建基于 Linux 的群集作为测试/质量保证环境。 要详细了解如何创建基于 Linux 的群集，请参阅 [在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-provision-linux-clusters.md)。
+2. 创建基于 Linux 的群集作为测试/质量保证环境。 有关创建基于 Linux 的群集的详细信息，请参阅 [在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 3. 将现有作业、数据源及接收器复制到新环境。
 
-4. 执行验证测试，确保作业在新群集上按预期工作。
+4. 执行验证测试，以确保作业在新群集上按预期工作。
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在停机期间，请执行以下操作：
 
@@ -53,11 +53,11 @@ ms.locfileid: "46948411"
 
 ### <a name="copy-data-to-the-test-environment"></a>将数据复制到测试环境
 
-可采用多种方式来复制数据和作业，但本部分所述的两种方法是将文件直接移到测试群集的最简便方式。
+复制数据和作业的方法有很多，不过，本部分所述的两种方法是将文件直接移到测试群集的最简单方法。
 
 #### <a name="hdfs-copy"></a>HDFS 副本
 
-按以下步骤将数据从生产群集复制到测试群集。 这些步骤使用 HDInsight 附带的 `hdfs dfs` 实用程序。
+使用以下步骤将数据从生产群集复制到测试群集。 这些步骤使用 HDInsight 附带的 `hdfs dfs` 实用程序。
 
 1. 查找现有群集的存储帐户和默认容器信息。 以下示例使用 PowerShell 来检索此信息：
 
@@ -76,14 +76,14 @@ ms.locfileid: "46948411"
 
 5. 创建群集后，使用 **SSH** 连接到该群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-6. 在 SSH 会话中，使用以下命令将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
+6. 从 SSH 会话中，使用以下命令来将文件从链接的存储帐户复制到新的默认存储帐户。 将 CONTAINER 替换为 PowerShell 返回的容器信息。 将 __ACCOUNT__ 替换为帐户名称。 将数据的路径替换为数据文件的路径。
 
     ```bash
     hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
     > [!NOTE]
-    > 如果测试环境中没有包含数据的目录结构，可使用以下命令创建该结构：
+    > 如果包含数据的目录结构不在测试环境中，可以使用以下命令创建它：
 
     ```bash
     hdfs dfs -mkdir -p /new/path/to/create

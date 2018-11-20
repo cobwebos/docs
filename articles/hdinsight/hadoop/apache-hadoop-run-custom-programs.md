@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 80f58157e69ff5a6e707408d795889b5bcd677b7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ccc30d336542622048cc28b991d5ecf616133c5a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045565"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633812"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 
-基于 Hadoop 的大数据系统（例如 HDInsight）支持使用各种工具和技术来处理数据。 下表描述了每种工具和技术的主要优势与注意事项。
+基于 Apache Hadoop 的大数据系统（例如 HDInsight）支持使用各种工具和技术来处理数据。 下表描述了每种工具和技术的主要优势与注意事项。
 
 | 查询机制 | 优点 | 注意事项 |
 | --- | --- | --- |
-| **使用 HiveQL 的 Hive** | <ul><li>这是用于批处理和分析大量不可变数据、数据汇总和按需查询的优异解决方案。 此工具使用流行的 SQL 式语法。</li><li>使用此工具能够生成可轻松分区和编制索引的持久性表。</li><li>可以基于相同的数据创建多个外部表和视图。</li><li>此工具支持简单的数据仓库实现，该实现提供大规模横向扩展和容错功能进行数据存储和处理。</li></ul> | <ul><li>此工具要求源数据至少采用某种可识别的结构。</li><li>此工具不适用于实时查询和行级更新。 此工具最适合用于基于大型数据集的批处理作业。</li><li>此工具可能无法执行某些类型的复杂处理任务。</li></ul> |
-| **使用 Pig Latin 的 Pig** | <ul><li>这是用于以集的方式处理数据、合并和筛选数据集、将函数应用到记录或记录组，以及通过定义列、将值分组或将列转换为行来重建数据结构的优异解决方案。</li><li>此工具可以使用基于工作流的方法作为数据操作序列。</li></ul> | <ul><li>SQL 用户可能对 Pig Latin 的语法感到陌生，因此觉得比 HiveQL 更难使用。</li><li>默认的输出通常是一个文本文件，因此，更难与可视化工具（例如 Excel）配合使用。 通常，我们会在输出上添加一个 Hive 表层。</li></ul> |
+| **使用 HiveQL 的 Apache Hive** | <ul><li>这是用于批处理和分析大量不可变数据、数据汇总和按需查询的优异解决方案。 此工具使用流行的 SQL 式语法。</li><li>使用此工具能够生成可轻松分区和编制索引的持久性表。</li><li>可以基于相同的数据创建多个外部表和视图。</li><li>此工具支持简单的数据仓库实现，该实现提供大规模横向扩展和容错功能进行数据存储和处理。</li></ul> | <ul><li>此工具要求源数据至少采用某种可识别的结构。</li><li>此工具不适用于实时查询和行级更新。 此工具最适合用于基于大型数据集的批处理作业。</li><li>此工具可能无法执行某些类型的复杂处理任务。</li></ul> |
+| **使用 Pig Latin 的 Apache Pig** | <ul><li>这是用于以集的方式处理数据、合并和筛选数据集、将函数应用到记录或记录组，以及通过定义列、将值分组或将列转换为行来重建数据结构的优异解决方案。</li><li>此工具可以使用基于工作流的方法作为数据操作序列。</li></ul> | <ul><li>SQL 用户可能对 Pig Latin 的语法感到陌生，因此觉得比 HiveQL 更难使用。</li><li>默认的输出通常是一个文本文件，因此，更难与可视化工具（例如 Excel）配合使用。 通常，我们会在输出上添加一个 Hive 表层。</li></ul> |
 | **自定义映射/化简** | <ul><li>此工具针对映射和化简阶段与执行提供完全控制。</li><li>此工具允许优化查询以实现群集的最大性能，或者将服务器和网络上的负载降到最低。</li><li>可以使用一系列流行语言来编写组件。</li></ul> | <ul><li>它的用法比 Pig 或 Hive 更难，因为我们必须创建自己的映射和化简组件。</li><li>需要联接数据集的进程较难以实现。</li><li>尽管有可用的测试框架，但调试代码比普通的应用程序更复杂，因为代码以批处理作业的形式在 Hadoop 作业计划程序的控制下运行。</li></ul> |
-| **HCatalog** | <ul><li>此工具将存储的路径详细信息抽象化，因而简化了管理，并且用户无需知道数据的存储位置。</li><li>此工具支持事件通知（例如数据可用性方面），允许其他工具（例如 Oozie）检测操作的发生时间。</li><li>此工具公开数据的关系视图（包括根据键分区），使数据变得易于访问。</li></ul> | <ul><li>此工具默认支持 RCFile、CSV 文本、JSON 文本、SequenceFile 和 ORC 文件格式，但可能需要编写自定义的 SerDe 才能支持其他格式。</li><li>HCatalog 不是线程安全的。</li><li>在 Pig 脚本中使用 HCatalog 加载器时，列的数据类型存在一些限制。 有关详细信息，请参阅 Apache HCatalog 文档中的 [HCatLoader 数据类型](http://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes)。</li></ul> |
+| **Apache HCatalog** | <ul><li>此工具将存储的路径详细信息抽象化，因而简化了管理，并且用户无需知道数据的存储位置。</li><li>此工具支持事件通知（例如数据可用性方面），允许其他工具（例如 Oozie）检测操作的发生时间。</li><li>此工具公开数据的关系视图（包括根据键分区），使数据变得易于访问。</li></ul> | <ul><li>此工具默认支持 RCFile、CSV 文本、JSON 文本、SequenceFile 和 ORC 文件格式，但可能需要编写自定义的 SerDe 才能支持其他格式。</li><li>HCatalog 不是线程安全的。</li><li>在 Pig 脚本中使用 HCatalog 加载器时，列的数据类型存在一些限制。 有关详细信息，请参阅 Apache HCatalog 文档中的 [HCatLoader 数据类型](http://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes)。</li></ul> |
 
 通常，我们可以使用上述最简单的方法来获取所需的。 例如，只需使用 Hive 也许就能获取此类结果，但对于较复杂的方案，可能需要使用 Pig，甚至编写自己的映射和化简组件。 在体验 Hive 或 Pig 之后，还可以确定是否能够通过自定义映射和化简组件来微调和优化处理，从而提高性能。
 

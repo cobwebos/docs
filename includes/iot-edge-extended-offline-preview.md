@@ -9,15 +9,15 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: kgremban
-ms.openlocfilehash: a8160e677fa99d8cb691db39d7f29ba6eddbd261
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: be4d82577584e83e29f2511d51256fda0970e917
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004673"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263982"
 ---
 ## <a name="enabling-extended-offline-operation-preview"></a>启用扩展的脱机操作（预览）
-从 Edge 运行时的 [v1.0.2 版本](https://aka.ms/edge102)起，可配置 Edge 设备和与之连接的下游设备，以处理扩展脱机操作。 
+使用 Edge 运行时的 [v1.0.4 版本](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4)，可配置 Edge 设备和与之连接的下游设备，以处理扩展脱机操作。 
 
 借助此功能，本地模块或下游设备可根据需要向 Edge 设备重新进行身份验证，即使从 IoT 中心断开连接也可使用消息和方法相互进行通信。 有关详细信息和此功能的范围，请参阅此[博客文章](https://aka.ms/iot-edge-offline)和[概念文章](../articles/iot-edge/offline-capabilities.md)。
 
@@ -30,9 +30,5 @@ ms.locfileid: "47004673"
 1. 从设备列表中，选择子设备并使用向右键选择要作为子级添加的设备。
 
 1. 单击“确定”以确认。
-
-1. 从“边缘设备详细信息”的“设置模块”屏幕，单击“配置高级边缘运行时设置”，在“边缘中心”环境变量下，添加条目 UpstreamProtocol 和值 MQTT。 同时为“边缘代理”也添加相同的环境变量和值。 
-
-1. 单击两次“下一步”之后，单击“保存”，确保提交所做更改。
 
 现在已启用边缘设备及其子设备处理扩展脱机操作。  

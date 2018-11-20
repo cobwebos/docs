@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394232"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621202"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户（预览版）
 
@@ -68,9 +68,8 @@ ms.locfileid: "49394232"
 
     ![诊断设置](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. 在大约 15 分钟后，验证日志是否已推送到存储帐户。 转到 [Azure 门户](https://portal.azure.com)，依次选择“存储帐户”、之前使用的存储帐户、“Blob”。 
+12. 在大约 15 分钟后，验证日志是否已推送到存储帐户。 转到 [Azure 门户](https://portal.azure.com)，依次选择“存储帐户”、之前使用的存储帐户、“Blob”。 对于“审核日志”，请选择“insights-log-audit”。 对于“登录日志”，请选择“insights-logs-signin”。
 
-13. 对于“审核日志”，请选择“insights-log-audit”。 对于“登录日志”，请选择“insights-logs-signin”。
     ![存储帐户](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
 ## <a name="next-steps"></a>后续步骤

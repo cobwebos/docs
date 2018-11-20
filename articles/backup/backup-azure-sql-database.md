@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 72d48bd1716e1b62ae92f8317f3f9611ac463453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434239"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211496"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -658,23 +658,23 @@ Azure 备份使用 SQL 本机 API 执行所有备份操作。 使用本机 API �
 以下示例是用于获取名为 **DB1** 的数据库的所有备份作业的查询。 自定义查询以进行高级监视。
 
 ```
-select CAST (
+select CAST (
 Case type
-                when 'D' 
-                                 then 'Full'
-                when  'I'
-                               then 'Differential' 
-                ELSE 'Log'
-                END         
-                AS varchar ) AS 'BackupType',
-database_name, 
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
 server_name,
 machine_name,
 backup_start_date,
 backup_finish_date,
-DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
-backup_size AS BackupSizeInBytes
-  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
  
 ```
 
@@ -703,7 +703,7 @@ backup_size AS BackupSizeInBytes
 * 停止所有将来的备份作业并删除所有恢复点。
 * 停止所有将来的备份作业，但保留恢复点。
 
-保留恢复点会产生成本。 SQL 的恢复点附带 SQL 保护实例的费用，加上存储使用费。 有关 SQL 的 Azure 备份定价信息，请参阅 [Azure 备份定价页](https://azure.microsoft.com/pricing/details/backup/)。 
+如果选择停止备份保留数据，将根据备份策略清除恢复点。 你将产生 SQL 保护实例的定价费用，加上存储使用费，直到清除所有恢复点。 有关 SQL 的 Azure 备份定价信息，请参阅 [Azure 备份定价页](https://azure.microsoft.com/pricing/details/backup/)。 
 
 停止数据库的保护：
 

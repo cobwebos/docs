@@ -1,6 +1,6 @@
 ---
-title: 适用于 Hyper-V 到 Azure 部署的 Azure Site Recovery 部署规划器 | Microsoft Docs
-description: 本文介绍如何分析适用于 Hyper-V 到 Azure 方案的 Azure Site Recovery 部署规划器的已生成报表。
+title: 分析 Azure Site Recovery 部署规划器报告，以便将 Hyper-V VM 灾难恢复到 Azure | Microsoft Docs
+description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便将 Hyper-V VM 灾难恢复到 Azure。
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: d5e8038aea547977ed11d0bd5d2675322921d8ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ad53b32b9809e8cce459d8317a916a9ddab0e336
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092909"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210920"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报表
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
 
 ## <a name="on-premises-summary"></a>本地摘要

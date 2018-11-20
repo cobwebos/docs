@@ -1,4 +1,16 @@
-
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 62bb01b39f33f801f1eb43d128083cff7e16830a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165432"
+---
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
 2. 单击“创建资源” > “监视 + 管理” > “备份和站点恢复”。
 3. 在“名称”中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择合适的一个。

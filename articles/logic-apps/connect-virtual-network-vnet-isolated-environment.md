@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: b4e4e801c3c54b635f2f13b319257018ea544c03
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d9a849fb5556332fab39467c270360c09c774cc9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404114"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231774"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>通过集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -94,8 +94,8 @@ ms.locfileid: "49404114"
 
 1. 现在，创建要与前面创建的网关子网关联的[路由表](../virtual-network/manage-route-table.md)。
 
-   1. 在 Azure 主菜单中，选择“创建资源”> 
-   “网络”>“路由表”。************
+   1. 在 Azure 主菜单中，选择 **“创建资源”** > 
+    **“网络”** > **“路由表”**。
 
       ![创建路由表](./media/connect-virtual-network-vnet-isolated-environment/create-route-table.png)
 
@@ -206,7 +206,7 @@ ms.locfileid: "49404114"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure 逻辑应用论坛</a>。
-* 若要提交功能建议或对功能建议进行投票，请访问<a href="http://aka.ms/logicapps-wish" target="_blank">逻辑应用用户反馈网站</a>。
+* 若要提交功能建议或对功能建议进行投票，请访问<a href="https://aka.ms/logicapps-wish" target="_blank">逻辑应用用户反馈网站</a>。
 
 ## <a name="next-steps"></a>后续步骤
 

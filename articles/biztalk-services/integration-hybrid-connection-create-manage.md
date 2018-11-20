@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26628838"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232974"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 
@@ -105,7 +105,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)也是一个很好的资源。
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>使用组策略以控制混合连接所使用的本地资源
-1. 下载[混合连接管理器管理模板](http://www.microsoft.com/download/details.aspx?id=42963)。
+1. 下载[混合连接管理器管理模板](https://www.microsoft.com/download/details.aspx?id=42963)。
 2. 解压缩文件。
 3. 在修改组策略的计算机上，执行以下操作：  
    
@@ -118,7 +118,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [混合连接概述](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>另请参阅
-[用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)  
 [创建 BizTalk 服务](biztalk-provision-services.md)  
 [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)

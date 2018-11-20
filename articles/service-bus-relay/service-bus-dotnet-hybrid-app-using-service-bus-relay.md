@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: fa8c4b07f79564a1e9aa4e78b2323789283d4e73
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 668ccc581e457e2ed3ad72c08bf5e65dd86c4b52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054615"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228600"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 
@@ -52,7 +52,7 @@ ms.locfileid: "44054615"
 在开始开发 Azure 应用程序之前，需要下载工具并设置开发环境：
 
 1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
-2. 在“.NET”列中，单击要使用的 [Visual Studio](http://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2017。
+2. 在“.NET”列中，单击要使用的 [Visual Studio](https://www.visualstudio.com) 版本。 本教程中的步骤使用 Visual Studio 2017。
 3. 当提示是要运行还是保存安装程序时，单击“运行”。
 4. 在“Web 平台安装程序”中，单击“安装”，并继续安装。
 5. 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
@@ -75,7 +75,7 @@ ms.locfileid: "44054615"
 
    ![][11]
 4. 单击“确定”以创建“ProductsServer”项目。
-5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，并重新启动 Visual Studio。
+5. 如果已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。 否则，请访问 [NuGet][NuGet]，然后单击 [安装 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。 按照提示操作以安装 NuGet 包管理器，并重新启动 Visual Studio。
 6. 在解决方案资源管理器中，右键单击“ProductsServer”项目，并单击“管理 NuGet 程序包”。
 7. 单击“浏览”选项卡，然后搜索“WindowsAzure.ServiceBus”。 选择“WindowsAzure.ServiceBus”包。
 8. 单击“安装” 并接受使用条款。

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043529"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016142"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
-![Key Vault 符号](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![Key Vault 符号](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。
 
@@ -38,7 +38,7 @@ ms.locfileid: "48043529"
 ## <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明来安装和配置 Azure 密钥保管库解决方案：
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案。
 2. 使用[门户](#enable-key-vault-diagnostics-in-the-portal)或 [PowerShell](#enable-key-vault-diagnostics-using-powershell) 为要监视的 Key Vault 资源启用诊断日志记录
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>在门户中启用 Key Vault 诊断
@@ -46,10 +46,10 @@ ms.locfileid: "48043529"
 1. 在 Azure 门户中，导航到要监视的 Key Vault 资源
 2. 选择“诊断日志”打开以下页面
 
-   ![Azure 密钥保管库磁贴的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Azure 密钥保管库磁贴的图像](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. 单击“打开诊断”打开以下页面
 
-   ![Azure 密钥保管库磁贴的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Azure 密钥保管库磁贴的图像](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. 若要打开诊断，请单击“状态”下面的“打开”
 5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
@@ -81,7 +81,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
 [安装解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)后，请在 Log Analytics 的“概述”页中单击“Azure Key Vault”磁贴，查看 Key Vault 数据。
 
-![Azure 密钥保管库磁贴的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![Azure 密钥保管库磁贴的图像](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 单击“概述”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
@@ -90,9 +90,9 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 * 按操作显示的平均操作延迟
 * 对于操作数目需要超过 1000 毫秒和操作列表需超过 1000 毫秒的此类操作的服务质量
 
-![Azure 密钥保管库仪表板的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![Azure 密钥保管库仪表板的图像](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![Azure 密钥保管库仪表板的图像](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![Azure 密钥保管库仪表板的图像](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>查看任何操作的详细信息
 1. 在“**概述**”页上，单击“**Azure 密钥保管库**”磁贴。
@@ -103,9 +103,9 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 ## <a name="log-analytics-records"></a>Log Analytics 记录
 Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日志](../key-vault/key-vault-logging.md)收集的类型为 **KeyVaults** 的记录。  这些记录的属性如下表中所列：  
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
-| Type |AzureDiagnostics |
+| 类型 |AzureDiagnostics |
 | SourceSystem |*Azure* |
 | CallerIpAddress |发出请求的客户端 IP 地址 |
 | 类别 | AuditEvent |
@@ -136,7 +136,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 若要使用更新的解决方案，请执行以下操作：
 
 1. [将诊断配置为直接从 Key Vault 发送到 Log Analytics](#enable-key-vault-diagnostics-in-the-portal)  
-2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
+2. 使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
   + 类型已从 KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
   - 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -153,4 +153,4 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看 Azure 密钥保管库的详细数据。
+* 使用 [Log Analytics 中的日志搜索](log-analytics-queries.md)查看 Azure 密钥保管库的详细数据。

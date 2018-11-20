@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987607"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228121"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -27,18 +27,27 @@ ms.locfileid: "49987607"
 > [!NOTE]
 > 使用视频或音频分析器预设时，使用 Azure 门户将帐户设置为具有 10 个 S3 媒体保留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>内置预设
 
-凭借 AudioAnalyzerPreset 能够从音频或视频文件中提取多个音频见解。 输出包括一个 JSON 文件（包含所有见解）和该音频脚本的 VTT 文件。 此预设接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性用于指定输入文件的语言。 音频见解包括：
+媒体服务当前支持以下内置分析器预设：  
+
+|**预设名称**|**方案**|**详细信息**|
+|---|---|---|
+|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，包括语音听录。 目前，该预设支持处理单个音轨的内容。<br/>可以使用 BCP-47 格式“language tag-region”（例如“en-US”）为输入中的音频有效负载指定语言。 受支持语言列表中包括“en-US”、“en-GB”、“es-ES”、“es-MX”、“fr-FR”、“it-IT”、“ja-JP”、“pt-BR”、“zh-CN”。|
+|**VideoAnalyzerPreset**|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+使用此预设，可以从音频或视频文件中提取多个音频见解。 输出包括一个 JSON 文件（包含所有见解）和该音频脚本的 VTT 文件。 此预设接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性用于指定输入文件的语言。 音频见解包括：
 
 * 音频听录 - 带有时间戳的口语脚本。 支持多种语言
 * 发言人索引 - 发言人及其口语的映射
 * 语音情绪分析 - 对音频听录进行情绪分析后的输出
 * 关键字 - 从音频听录提取的关键字。
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-凭借 VideoAnalyzerPreset，可以从视频文件提取多个音频和视频见解。 输出包括一个 JSON 文件（包含所有见解）、该视频脚本的 VTT 文件以及视频缩略图集合。 此预设还接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性表示视频的语言。 视频见解包括上述所有音频见解，此外还包含以下项：
+使用此预设，可以从视频中提取多个音频和视频见解。 输出包括一个 JSON 文件（包含所有见解）、该视频脚本的 VTT 文件以及视频缩略图集合。 此预设还接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性表示视频的语言。 视频见解包括上述所有音频见解，此外还包含以下项：
 
 * 面部跟踪 - 视频中出现人脸的时间段。 每张人脸都有一个面部 ID 和对应的视频缩略图集合
 * 视觉文本 - 通过光学字符识别检测出的文本。 该文本具有时间标记，还用于提取包括音频脚本在内的关键字

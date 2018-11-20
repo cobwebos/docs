@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394402"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346586"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -28,9 +28,10 @@ ms.locfileid: "49394402"
 不能更改该资源的位置。 移动资源仅能够将其移动到新的资源组。 新的资源组可能有不同的位置，但这不会更改该资源的位置。
 
 > [!NOTE]
-> 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。 如果确实想要更改 Azure 帐户产品/服务（如从即用即付升级到预付），同时继续使用现有资源，请参阅 [Switch your Azure subscription to another offer](../billing/billing-how-to-switch-azure-offer.md)（将 Azure 订阅切换到其他套餐）。
->
->
+> 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。 如果确实想要更改 Azure 帐户产品/服务（例如从免费升级到即用即付），则需要转换订阅。
+> * 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](..//billing/billing-upgrade-azure-subscription.md)。
+> * 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../billing/billing-how-to-switch-azure-offer.md)。
+> * 如果无法转换订阅，请[创建 Azure 支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”作为问题类型。
 
 ## <a name="checklist-before-moving-resources"></a>移动资源前需查看的清单
 
@@ -40,7 +41,7 @@ ms.locfileid: "49394402"
 
   对于 Azure PowerShell，请使用：
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -61,14 +62,14 @@ ms.locfileid: "49394402"
 
   对于 PowerShell，请使用以下命令来获取注册状态：
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   若要注册资源提供程序，请使用：
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -110,7 +111,7 @@ ms.locfileid: "49394402"
 
 ## <a name="validate-move"></a>验证移动
 
-[验证移动操作](/rest/api/resources/resources/resources_validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作来确定移动是否会成功。 若要运行此操作，需要：
+[验证移动操作](/rest/api/resources/resources/validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作来确定移动是否会成功。 若要运行此操作，需要：
 
 * 源资源组的名称
 * 目标资源组的资源 ID
@@ -269,7 +270,7 @@ Authorization: Bearer <access-token>
 
 从 2018 年 9 月 24 日起，支持移动托管磁盘。 
 
-1. 你必须注册才能启用此功能。
+1. 在源订阅中注册此功能。
 
   ```azurepowershell-interactive
   Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
@@ -323,7 +324,6 @@ Authorization: Bearer <access-token>
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集
 * 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
-
 ## <a name="virtual-networks-limitations"></a>虚拟网络限制
 
 移动虚拟网络时，还必须移动其从属资源。 对于 VPN 网关，必须移动 IP 地址、虚拟网络网关和所有关联的连接资源。 本地网络网关可以位于不同的资源组中。
@@ -344,9 +344,9 @@ _在同一订阅中_移动 Web 应用时，无法移动已上传的 SSL 证书�
 
 如果希望随 Web 应用移动 SSL 证书，请执行以下步骤：
 
-1.  从 Web 应用中删除已上传的证书
-2.  移动 Web 应用。
-3.  将证书上传到移动后的 Web 应用。
+1. 从 Web 应用中删除已上传的证书
+2. 移动 Web 应用。
+3. 将证书上传到移动后的 Web 应用。
 
 ### <a name="moving-across-subscriptions"></a>跨订阅移动
 
@@ -501,7 +501,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 要将现有资源移到另一个资源组或订阅，请使用 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) 命令。 下面的示例演示了如何将多个资源移动到新的资源组。
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

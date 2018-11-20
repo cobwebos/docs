@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据库迁移服务将 SQL Server 联机迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 教程：使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库托管实例的联机迁移 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务执行从本地 SQL Server 到 Azure SQL 数据库托管实例的联机迁移。
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946073"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962888"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)，且几乎不用停机。 有关需要一些手动工作量的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
 
 >[!IMPORTANT]
@@ -145,7 +145,7 @@ ms.locfileid: "49946073"
 
 3. 提供用于连接 Azure SQL 数据库托管实例目标实例的 **SQL 用户**和**密码**。
 
-       ![Select Target](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![选择目标](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
 
 2.  选择“保存”。
 

@@ -1,0 +1,30 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 3052d856d83a7bf7cbb41a90f92b598c8c24cd5e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50669143"
+documentType: LandingData
+title: Avere vFXT for Azure 文档
+metadata:
+  title: Avere vFXT for Azure 文档
+  description: 使用 Avere vFXT 作为缓存层来执行需要进行大量读取操作的高性能计算 (HPC) 任务
+  services: avere-vfxt
+  author: ekpgh
+  ms.service: avere-vfxt
+  ms.topic: landing-page
+  ms.date: 10/31/2018
+  ms.author: v-erkell
+abstract:
+  description: Avere vFXT for Azure 为数据密集型的高性能计算 (HPC) 任务提供了基于云的缓存层。 通过将文件缓存到接近计算节点的位置，Avere vFXT 提高了读取速度，即使在处于峰值负载的情况下也可让工作顺利进行。 Avere vFXT 最适合用于具有 1,000 到 40,000 个客户端核心的系统。 <p>Avere vFXT 可以与现有的本地数据存储配合使用，以便为基于 Azure 的计算资源提供对数据中心内长期存储的活动文件的本地访问。
+sections:
+- title: Avere vFXT for Azure 入门
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="avere-vfxt-deploy-plan">规划 Avere vFXT for Azure 系统</a>
+    - html: <a href="avere-vfxt-deploy-overview">了解 Avere vFXT 部署</a>
+    - html: <a href="avere-vfxt-prereqs">满足先决条件</a>
+    - html: <a href="avere-vfxt-deploy">部署 Avere vFXT 群集</a>

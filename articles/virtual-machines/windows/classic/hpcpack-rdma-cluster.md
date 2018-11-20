@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345231"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233773"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>使用 HPC Pack 设置一个运行 MPI 应用程序的 Windows RDMA 群集
 在 Azure 中使用 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 和[支持 RDMA 的 HPC VM 大小](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances)设置 Windows RDMA 群集，以运行并行消息传递接口 (MPI) 应用程序。 在 HPC Pack 群集中设置支持 RDMA 且基于 Windows Server 的节点时，MPI 应用程序会在 Azure 中利用基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络实现高效通信。
@@ -51,19 +51,19 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
     从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=49922)下载 HPC Pack 安装包。 有关 Azure 迸发部署准备工作的要求和说明，请参阅[使用 Microsoft HPC Pack 迸发到 Azure 辅助角色实例](https://technet.microsoft.com/library/gg481749.aspx)。
 2. **在 Azure 订阅中配置管理证书**
    
-    配置证书以保护头节点与 Azure 之间的连接。 有关选项和过程，请参阅[为 HPC Pack 配置 Azure 管理证书的方案](http://technet.microsoft.com/library/gg481759.aspx)。 对于测试部署，HPC Pack 安装默认 Microsoft HPC Azure 管理证书，用户可以将该证书快速上传到 Azure 订阅。
+    配置证书以保护头节点与 Azure 之间的连接。 有关选项和过程，请参阅[为 HPC Pack 配置 Azure 管理证书的方案](https://technet.microsoft.com/library/gg481759.aspx)。 对于测试部署，HPC Pack 安装默认 Microsoft HPC Azure 管理证书，用户可以将该证书快速上传到 Azure 订阅。
 3. **创建新的云服务和存储帐户**
    
     使用 Azure 门户为部署创建云服务（经典）和存储帐户（经典）。 请在可使用 H 系列、A8 或 A9 大小的区域内创建这些资源。 请参阅 [Azure 产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
 4. **创建 Azure 节点模板**
    
-    在 HPC 群集管理器中使用“创建节点模板”向导。 有关步骤，请参阅“使用 Microsoft HPC Pack 部署 Azure 节点的步骤”中的[创建 Azure 节点模板](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ)。
+    在 HPC 群集管理器中使用“创建节点模板”向导。 有关步骤，请参阅“使用 Microsoft HPC Pack 部署 Azure 节点的步骤”中的[创建 Azure 节点模板](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ)。
    
     对于初始测试，我们建议在模板中配置手动可用性策略。
 5. **向群集添加节点**
    
-    在 HPC 群集管理器中使用“添加节点”向导。 有关详细信息，请参阅[向 Windows HPC 群集中添加 Azure 节点](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add)。
+    在 HPC 群集管理器中使用“添加节点”向导。 有关详细信息，请参阅[向 Windows HPC 群集中添加 Azure 节点](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add)。
    
     指定节点大小时，请选择一个支持 RDMA 的实例大小。
    
@@ -76,7 +76,7 @@ Microsoft HPC Pack 是一款无需额外费用的工具，可用于创建本地 
     在 HPC 群集管理器中选择节点，并使用“启动”操作。 完成预配后，在 HPC 群集管理器中选择节点并使用“联机”操作。 节点将准备运行作业。
 7. **向群集提交作业**
    
-   使用 HPC Pack 作业提交工具来运行群集作业。 请参阅 [Microsoft HPC Pack：作业管理](http://technet.microsoft.com/library/jj899585.aspx)。
+   使用 HPC Pack 作业提交工具来运行群集作业。 请参阅 [Microsoft HPC Pack：作业管理](https://technet.microsoft.com/library/jj899585.aspx)。
 8. **停止（取消预配）节点**
    
    完成运行作业后，使节点脱机，并在 HPC 群集管理器中使用“停止”操作。

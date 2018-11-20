@@ -1,13 +1,13 @@
 ---
-title: "查看从特定位置到 Azure 区域的相对延迟 | Microsoft Docs"
-description: "了解如何查看从 Internet 提供商的特定位置到 Azure 区域的相对延迟。"
+title: 查看从特定位置到 Azure 区域的相对延迟 | Microsoft Docs
+description: 了解如何查看从 Internet 提供商的特定位置到 Azure 区域的相对延迟。
 services: network-watcher
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.custom: ''
+ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300602"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>查看从特定位置到 Azure 区域的相对延迟
 
@@ -59,7 +60,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 > 在上述命令中指定的区域，不需要与检索网络观察程序时指定的区域相同。 上述命令只要求指定现有的网络观察程序。 网络观察程序可以位于任何区域。 如果为 `-Country` 和 `-State` 指定了值，这些值必须有效。 这些值区分大小写。 数据适用于有限数量的国家/地区、州/省和城市。 运行[查看可用的国家/地区、州/省、城市和提供商](#view-available)中所述的命令，以查看要配合上述命令使用的可用国家/地区、城市和州/省。 
 
 > [!WARNING]
-> 对于 `-StartTime` 和 `-EndTime`，必须指定 2017 年 11 月 14 日之后的日期。 指定 2017 年 11 月 14 日之前的日期不会返回任何数据。 
+> 必须为 `-StartTime` 和 `-EndTime` 指定过去 30 天内的日期。 指定之前的日期将不会返回任何数据。
 
 上述命令的输出如下所示：
 

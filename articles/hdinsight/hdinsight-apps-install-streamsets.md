@@ -1,6 +1,6 @@
 ---
 title: 安装已发布应用程序 - StreamSets 数据收集器 - Azure HDInsight
-description: 安装并使用 StreamSets Data Collector 第三方 Hadoop 应用程序。
+description: 安装并使用 StreamSets Data Collector 第三方 Apache Hadoop 应用程序。
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 72ace99a8124b0a288e8facf630e947151169d0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106876"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034551"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>安装已发布应用程序 - StreamSets Data Collector
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [StreamSets Data Collector for HDInsight](https://streamsets.com/) 发布的 Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [StreamSets Data Collector for HDInsight](https://streamsets.com/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-streamsets-data-collector"></a>关于 StreamSets Data Collector
 

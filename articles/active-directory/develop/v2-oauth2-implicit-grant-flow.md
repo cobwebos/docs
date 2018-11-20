@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1722f81c55c490d6030dd04e5907e93012051492
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817087"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289013"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
 
@@ -73,7 +73,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 若要使用隐式流测试登录，请单击 <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize..。</a>在登录之后，浏览器应重定向到 `https://localhost/myapp/`，并且地址栏中有一个 `id_token`。
 > 
 
-| 参数 |  | 说明 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | `tenant` | 必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必填 |注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 分配给应用的应用程序 ID。 |
@@ -105,7 +105,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=12345
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。 访问令牌不得进行解码或检查，应当作为不透明字符串对待。 |
 | `token_type` |如果 `response_type` 包含 `token`，则包含该参数。 始终为 `Bearer`。 |
@@ -124,7 +124,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -145,7 +145,7 @@ error=access_denied
 
 ## <a name="get-access-tokens"></a>获取访问令牌
 
-将用户登录到单页应用后，便可获取访问令牌以调用受 Azure AD 保护的 Web API，例如 [Microsoft Graph](https://graph.microsoft.io)。 即使你已使用 `token` response_type 收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
+将用户登录到单页应用后，便可获取访问令牌以调用受 Azure AD 保护的 Web API，例如 [Microsoft Graph](https://developer.microsoft.com/graph)。 即使你已使用 `token` response_type 收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
 在正常的 OpenID Connect/OAuth 流中，可以通过对 v2.0 `/token` 终结点进行请求来实现此目的。 但是，v2.0 终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌是不可能的。 相反，可以在隐藏的 iframe 中使用隐式流，以获取其他 Web API 的新令牌： 
 
@@ -186,7 +186,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。 访问令牌不得进行解码或检查，应当作为不透明字符串对待。 |
 | `token_type` | 始终为 `Bearer`。 |
@@ -206,7 +206,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 参数 | 说明 |
+| 参数 | Description |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -235,7 +235,7 @@ OpenIdConnect `end_session_endpoint` 允许应用向 v2.0 终结点发送请求�
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| 参数 |  | 说明 |
+| 参数 |  | Description |
 | --- | --- | --- |
 | `tenant` |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `post_logout_redirect_uri` | 建议 | 注销完成后用户应返回到的 URL。 此值必须与为应用程序注册的重定向 URI 之一匹配。 如果未包含，v2.0 终结点会向用户显示一条常规消息。 |

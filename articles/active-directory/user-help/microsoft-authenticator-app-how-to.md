@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 590f9e2a9cf531a1124f9cb132791f2956227d9c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045619"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245437"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 
@@ -25,7 +25,7 @@ Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐�
 
 将该应用用于双重验证时，它采用以下两种工作方式之一：
 
-- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。
+- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。 单击“拒绝”后，还可以将请求标记为欺骗性请求。
 
 - **验证码。** 键入用户名和密码后，可以打开应用，并将“帐户”屏幕上提供的验证码复制到登录屏幕。 验证码充当第二种形式的身份验证。
 
@@ -39,7 +39,7 @@ Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐�
 
 ## <a name="install-the-app"></a>安装应用
 
-Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。 为了获得最佳体验，应确保应用能够根据请求收到通知。 
+Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)。 为了获得最佳体验，应确保应用能够根据请求收到通知。 
 
 ## <a name="add-accounts-to-the-app"></a>将帐户添加到应用
 
@@ -51,7 +51,7 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 
 ### <a name="add-a-work-or-school-account"></a>添加工作或学校帐户
 
-1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](http://aka.ms/mfasetup)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
+1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](https://aka.ms/mfasetup)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
 
     >[!Note]
     >如果管理员已启用安全信息预览版体验，则你可以遵照[设置安全信息以使用 Authenticator 应用](security-info-setup-auth-app.md)部分中的说明。

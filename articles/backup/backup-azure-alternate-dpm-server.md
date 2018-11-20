@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: adigan
-ms.openlocfilehash: 8559532f873e8073e736f881374fec1c080d08c3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aa2796ab8e4cd9b8ab5e7fc3b4804f5535ac3518
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604397"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254445"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 可使用 Azure 备份服务器恢复已备份到恢复服务保管库的数据。 用于执行此操作的过程已集成到 Azure 备份服务器管理控制台中，且与其他 Azure 备份组件的恢复工作流类似。
 
 > [!NOTE]
-> 本文适用于搭载了[最新 Azure 备份代理](http://aka.ms/azurebackup_agent)的 [包含 UR7 的 System Center Data Protection Manager 2012 R2 或更高版本] (https://support.microsoft.com/en-us/kb/3065246)。
+> 本文适用于搭载了[最新 Azure 备份代理](https://aka.ms/azurebackup_agent)的 [包含 UR7 的 System Center Data Protection Manager 2012 R2 或更高版本] (https://support.microsoft.com/en-us/kb/3065246)。
 >
 >
 
@@ -80,7 +80,7 @@ ms.locfileid: "34604397"
     ![清除外部 DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>错误消息疑难解答
-| 不会。 | 错误消息 | 疑难解答步骤 |
+| 不是。 | 错误消息 | 疑难解答步骤 |
 |:---:|:--- |:--- |
 | 1. |此服务器未注册到保管库凭据所指定的保管库。 |**原因：** 当所选保管库凭据文件不属于与 Azure 备份服务器（在其上进行恢复尝试）关联的恢复服务保管库时，会出现此错误。 <br> **解决方案：** 从 Azure 备份服务器所注册到的恢复服务保管库中下载保管库凭据文件。 |
 | 2. |可恢复的数据不可用，或所选服务器不是 DPM 服务器。 |**原因：** 没有其他 Azure 备份服务器注册到了恢复服务保管库、服务器尚未上传元数据，或者所选服务器不是 Azure 备份服务器（又称 Windows Server 或 Windows Client）。 <br> **解决方案：** 如果有其他 Azure 备份服务器注册到了恢复服务保管库，请确保安装了最新 Azure 备份代理。 <br>如果有其他 Azure 备份服务器注册到了恢复服务保管库，请等到安装之后的某一天来启动恢复过程。 每夜执行的作业会将所有受保护的备份的元数据上传到云。 数据将可用于恢复。 |

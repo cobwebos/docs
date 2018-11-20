@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c1c884e05d357db7e23574dbd31f206d6c3fe23c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41919361"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414453"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>使用修订安全做出非重大更改
 当 API 准备就绪并即将供开发人员使用时，你最终需要对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 可以在 Azure API 管理中使用**修订**实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)以及[使用 Azure API 管理进行 API 版本控制](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)。
@@ -36,10 +36,13 @@ ms.locfileid: "41919361"
 
 ## <a name="prerequisites"></a>先决条件
 
++ 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-revision"></a>添加新的修订版
+
+![添加 API 修订版本](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
 
 1. 选择“API”页。
 2. 从 API 列表中选择“演示会议 API”（或想要添加修订的其他 API）。
@@ -48,8 +51,6 @@ ms.locfileid: "41919361"
 
     > [!TIP]
     > 也可以在 API 上的上下文菜单 (**...**) 中选择“添加修订版”。
-    
-    ![靠近屏幕顶部的“修订”菜单](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
 5. 提供新修订版的说明，帮助记住其用途。
 6. 选择“创建”
@@ -59,6 +60,8 @@ ms.locfileid: "41919361"
     > 原始 API 保留在“修订版 1”中。 这是在将其他修订版设为当前版本之前，用户继续调用的修订版。
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>对修订版进行非重大更改
+
+![修改修订版本](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
 
 1. 从 API 列表中选择“演示会议 API”。
 2. 选择靠近屏幕顶部的“设计”选项卡。
@@ -78,6 +81,7 @@ ms.locfileid: "41919361"
 1. 在靠近页面顶部的菜单中选择“修订”选项卡。
 
     ![修订屏幕上的修订菜单。](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+
 2. 打开“修订版 2”对应的上下文菜单 (**...**)。
 3. 选择“设为当前版本”。
 4. 如果想要发布有关此更改的说明，请选中“发布有关此 API 的公共更改日志”。 提供可让开发人员看到的更改说明，例如，“测试修订。添加了新的“测试”操作。

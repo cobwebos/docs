@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989662"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621082"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -46,7 +46,7 @@ ms.locfileid: "46989662"
 4. 指定应用程序的名称，选择“本机”作为应用程序类型，并提供应用程序的重定向 URI。 
 
    ![创建新的应用注册](./media/application-proxy-configure-native-client-application/create.png)
-5. 选择**创建**。
+5. 选择“创建”。
 
 有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
 
@@ -98,4 +98,4 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/native-app.md)
 
-了解如何设置[应用程序代理的单一登录](application-proxy-single-sign-on.md)
+了解如何设置[应用程序代理的单一登录](what-is-single-sign-on.md#single- sign-on-methods)

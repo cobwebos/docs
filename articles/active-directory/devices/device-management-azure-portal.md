@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2018
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 0497cba4cae66e63f710c9678f6d87c2f9fb8fb1
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542474"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515074"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 
@@ -118,7 +118,14 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 ## <a name="device-management-tasks"></a>设备管理任务
 
-作为管理员，可以管理已注册或已加入设备。 本部分介绍有关常见设备管理任务的信息。
+作为全局管理员，可以管理已注册或已加入设备。 Intune 服务管理员可执行以下操作：
+ 
+- 更新设备 - 例如启用/禁用设备等日常操作
+
+- 删除设备 - 设备停用且应在 Azure AD 中将其删除时
+
+本部分介绍有关常见设备管理任务的信息。
+
 
 
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
@@ -144,7 +151,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 **备注：**
 
 - 需要具有 Azure AD 中的全局管理员身份才能启用/禁用设备。 
-- 禁用设备可阻止设备访问你的 Azure AD 资源。 
+- 禁用设备会阻止设备使用 Azure AD 成功进行身份验证，从而阻止设备访问由设备 CA 保护或使用 WH4B 凭据保护的 Azure AD 资源。 
 
 
 

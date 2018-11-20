@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470314"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616191"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -60,6 +60,9 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
 3. 如果使用的是 Mac 或 Linux，则还需要从 OS 的密钥存储中删除 Microsoft.Developer.IdentityService 条目。 在 Mac 上，密钥存储是“Gnome Keychain”应用程序。 对于 Linux，该应用程序通常称为“Keyring”，但名称可能会有所不同，具体取决于分发版。
 
+### <a name="conditional-access"></a>条件性访问
+在 Windows 10、Linux 或 macOS 上使用存储资源管理器时，不支持条件性访问。 这是由于存储资源管理器使用的 AAD 库中的某个限制导致的。
+
 ## <a name="mac-keychain-errors"></a>Mac 密钥链错误
 有时，macOS 密钥链可能会进入导致存储资源管理器的身份验证库出现问题的状态。 要将密钥链摆脱此状态，请尝试执行以下步骤：
 1. 关闭存储资源管理器。
@@ -78,7 +81,7 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * 重启存储资源管理器
 * 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
 * 确保为计算机和存储资源管理器正确配置了代理和证书设置。
-* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017。 成功登录 Visual Studio 2017 后，应该可以打开存储资源管理器并在帐户面板中查看帐户。 
+* 如果在 Windows 中操作，有权访问同一台计算机上的 Visual Studio 2017 并且可以登录，请尝试登录到 Visual Studio 2017。 成功登录 Visual Studio 2017 后，应该可以打开存储资源管理器并在帐户面板中查看帐户。
 
 如果这些方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
@@ -113,6 +116,8 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 * 代理 URL 和端口号
 * 用户名和密码（若代理需要）
 
+请注意，存储资源管理器不支持使用 .pac 文件来配置代理设置。
+
 ### <a name="common-solutions"></a>常见解决方法
 
 如果仍遇到问题，请尝试以下故障排除方法：
@@ -143,6 +148,12 @@ Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Window
 ## <a name="unable-to-retrieve-children-error-message"></a>“无法检索子级”错误消息
 
 如果通过代理连接到 Azure，请验证代理设置是否正确。 如果从订阅或帐户所有者处获得资源的访问权，请验证是否具有该资源的读取或列出权限。
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>连接字符串没有完整的配置设置
+
+如果收到此错误消息，则表示你可能没有所需的权限来获取你的存储帐户的密钥。 若要确认是否如此，请转到门户并找到你的存储帐户。 可以通过右键单击你的存储帐户的节点并单击“在门户中打开”来快速执行此操作。 执行此操作后，转到“访问密钥”边栏选项卡。 如果你无权查看密钥，则会看到其中显示了消息“你没有访问权限”的页面。 若要解决此问题，可以从其他人那里获取帐户密钥并通过名称和密钥进行附加，还可以向某人索要存储帐户的 SAS 并使用它来附加存储帐户。
+
+如果看到了帐户密钥，请在 GitHub 上记录问题，以便我们可以帮助你解决问题。
 
 ## <a name="issues-with-sas-url"></a>SAS URL 的问题
 如果使用 SAS URL 连接到服务并遇到以下错误：

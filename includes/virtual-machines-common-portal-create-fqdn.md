@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 4dd0182e5698c992e45afae183ef94c488b27e14
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227216"
+---
 1. 在门户中选择 VM。 在“DNS 名称”下单击“配置”。
    
    ![在“DNS 名称”下单击“配置”](./media/virtual-machines-common-portal-create-fqdn/configure.png)

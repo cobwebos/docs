@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 460ef8a3d4436f240793025cbec874c624a2a6f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039014"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262193"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -35,7 +35,7 @@ Microsoft 提供了加密企业数据的其他方法：
 
 Azure SQL 数据库审核使企业能够将事件记录到 Azure 存储中的审核日志。 SQL 数据库审核还与 Microsoft Power BI 集成，以帮助向下钻取报告和分析数据。
 
-严格保护 Azure SQL 数据库，以符合大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft Azure 信任中心站点](http://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。
+严格保护 Azure SQL 数据库，以符合大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft Azure 信任中心站点](https://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。
 
 本文逐步介绍保护 Microsoft Azure SQL 数据库的结构化、表格和关系数据的基础知识。 具体而言，本文介绍如何使用相应的资源来保护数据、控制访问和执行主动监视。
 
@@ -44,7 +44,7 @@ Azure SQL 数据库审核使企业能够将事件记录到 Azure 存储中的审
 SQL 数据库可提供加密功能来帮助保护数据：
 
 - 通过[传输层安全性 (TLS)](https://support.microsoft.com/kb/3135244) 来保护动态数据。
-- 通过[透明数据加密](http://go.microsoft.com/fwlink/?LinkId=526242)保护来静态数据。
+- 通过[透明数据加密](https://go.microsoft.com/fwlink/?LinkId=526242)保护来静态数据。
 - 通过 [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) 来保护使用中的数据。
 
 若要通过其他方法加密数据，请考虑：
@@ -65,6 +65,7 @@ SQL 数据库可提供加密功能来帮助保护数据：
 在应用程序的连接字符串中，必须指定参数来加密连接，而不是信任服务器证书。 （如果将连接字符串从 Azure 门户中复制出来，则我们会代你完成此操作。）否则，连接不会验证服务器的身份，且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 `Encrypt=True` 和 `TrustServerCertificate=False`。
 
 ### <a name="encryption-at-rest"></a>静态加密
+
 可采取一些预防措施来帮助保护数据库。 例如设计安全系统、加密机密资产、围绕数据库服务器构建防火墙。 但如果物理媒体（如驱动器或备份磁带）失窃，恶意方可能会还原或附加数据库并浏览数据。
 
 一种解决方法是加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 此解决方案可防止没有密钥的人使用数据，但这种保护必须经过精心规划。
@@ -92,6 +93,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 此外，Always Encrypted 使加密对应用程序透明。 在客户端计算机上安装启用了 Always Encrypted 的驱动程序，以便自动加密和解密客户端应用程序中的敏感数据。 将数据传输到数据库引擎前，驱动程序会对敏感列中的数据进行加密。 驱动程序会自动重写查询，以便保留应用程序的语义。 同样，该驱动程序透明地解密存储在查询结果中包含的加密数据库列中的数据。
 
 ## <a name="access-control"></a>访问控制
+
 为确保安全性，SQL 数据库通过以下方式来控制访问：
 
 - 采用通过 IP 地址限制连接的防火墙规则。
@@ -124,11 +126,13 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
   - 它可通过启用集成的 Windows 身份验证和 Azure AD 支持的其他形式的身份验证来消除存储密码。
 
 #### <a name="authorization"></a>授权
+
 [授权](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)是指用户可在 Azure SQL 数据库中执行的操作。 授权由用户帐户的数据库[角色成员资格](https://msdn.microsoft.com/library/ms189121)和[对象级权限](https://msdn.microsoft.com/library/ms191291.aspx)控制。 授权是确定主体可以访问哪些安全对象资源以及哪些操作允许用于这些资源的过程。
 
 ### <a name="application-access"></a>应用程序访问
 
 #### <a name="dynamic-data-masking"></a>动态数据掩码
+
 呼叫中心的服务代表可能会通过呼叫者社会安全号码或信用卡号中的几位数字来识别呼叫者。 但不应向服务代表完全公开这些数据项。
 
 可定义掩码规则，遮掩任何查询结果集中除身份证号或信用卡号后四位数以外的其他所有数字。
@@ -141,11 +145,11 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)允许用户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，会在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。
 
-
 > [!Note]
 > Azure 数据库管理员、服务器管理员或安全主管角色可以配置动态数据屏蔽。
 
 #### <a name="row-level-security"></a>行级安全性
+
 多租户数据库的另一个常见安全要求是[行级安全性](https://msdn.microsoft.com/library/dn765131.aspx)。 可使用此功能根据执行查询的用户的特征控制对数据库表中的行的访问。 （特征可以是组成员身份或执行上下文等。）
 
 ![行级安全允许用户通过客户端应用访问表中的行](./media/azure-databse-security-overview/azure-database-fig4.png)
@@ -155,18 +159,20 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 行级安全性引入了基于谓词的访问控制。 它可进行灵活的集中式评估，能考虑元数据或管理员根据需要确定的任何其他标准。 谓词用作判断用户是否对基于用户属性的数据具有适当访问权限的标准。 可通过使用基于谓词的访问控制来实现基于标签的访问控制。
 
 ## <a name="proactive-monitoring"></a>主动监视
+
 SQL 数据库可提供“审核”和“威胁检测”功能，有助于保护数据。
 
 ### <a name="auditing"></a>审核
+
 [Azure SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)可提高用户深入了解数据库中发生的事件和更改的能力。 示例包括针对数据的更新和查询。
 
 SQL 数据库审核可跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助你遵守法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。 审核有助于遵从法规标准，但不能保证遵从法规。
 
 可使用 SQL 数据库审核来：
 
--   **保留**选定事件的审核痕迹。 可以定义要审核的数据库操作的类别。
--   **报告**数据库活动。 可以使用预配置的报告和仪表板快速开始使用活动和事件报告。
--   **分析**报告。 可以查找可疑事件、异常活动和趋势。
+- **保留**选定事件的审核痕迹。 可以定义要审核的数据库操作的类别。
+- **报告**数据库活动。 可以使用预配置的报告和仪表板快速开始使用活动和事件报告。
+- **分析**报告。 可以查找可疑事件、异常活动和趋势。
 
 有两种审核方法：
 
@@ -174,13 +180,26 @@ SQL 数据库审核可跟踪数据库事件，并将事件写入 Azure 存储帐
 -   **表审核**：将日志写入 Azure 表存储。
 
 ### <a name="threat-detection"></a>威胁检测
-[Azure SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)可检测到指示潜在安全威胁的可疑活动。 可使用威胁检测响应数据库中发生的可疑事件，例如 SQL 注入。 它可提供警报，并允许使用 Azure SQL 数据库审核来探查可疑事件。
+
+[Azure SQL 数据库的高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-advanced-threat-protection)可检测到指示潜在安全威胁的可疑活动。 可使用威胁检测响应数据库中发生的可疑事件，例如 SQL 注入。 它可提供警报，并允许使用 Azure SQL 数据库审核来探查可疑事件。
 
 ![SQL 数据库和 Web 应用的威胁检测，包括外部攻击者和恶意内部人员](./media/azure-databse-security-overview/azure-database-fig5.jpg)
 
-例如，SQL 注入是一种常见的 Web 应用程序安全问题。 它被用来攻击由数据驱动的应用程序。 攻击者利用应用程序漏洞将恶意 SQL 语句注入应用程序入口字段，以破坏或修改数据库中的数据。
+SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据发现和分类、漏洞评估和威胁检测。 
 
-发生可疑数据库活动时，安全监管员或其他指定的管理员可以获取相关即时通知。 每个通知提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。        
+- [数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)
+- [漏洞评估](../sql-database/sql-vulnerability-assessment.md)  
+- [威胁检测](../sql-database/sql-database-threat-detection.md)
+
+[Azure Database for PostgreSQL 高级威胁防护](../postgresql/concepts-data-access-and-security-threat-protection.md)提供了一个新的安全层，可以通过提供异常活动的安全警报来检测和响应可能发生的威胁。 出现可疑数据库活动、潜在漏洞以及异常数据库访问和查询模式时，用户将收到警报。 Azure Database for PostgreSQL 的高级威胁防护将警报与 Azure 安全中心集成。 警报类型包括：
+
+- 来自异常位置的访问
+- 来自异常 Azure 数据中心的访问 
+- 来自陌生主体的访问 
+- 来自可能有害的应用程序的访问 
+- 暴力破解 Azure 数据库的 PostgreSQL 凭据 
+
+[Azure Database for MySQL 高级威胁防护](/mysql/concepts-data-access-and-security-threat-protection.md)提供类似于 PostgreSQL 高级防护的保护功能。  
 
 ## <a name="centralized-security-management"></a>集中的安全管理
 
@@ -188,12 +207,20 @@ SQL 数据库审核可跟踪数据库事件，并将事件写入 Azure 存储帐
 
 [安全中心](https://docs.microsoft.com/azure/security-center/security-center-sql-database)通过为所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
 
--   定义 SQL 数据库加密和审核的策略。
--   跨所有订阅监视 SQL 数据库资源的安全性。
--   快速识别和修复安全问题。
--   集成来自 [Azure SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)的警报。
+- 定义 SQL 数据库加密和审核的策略。
+- 跨所有订阅监视 SQL 数据库资源的安全性。
+- 快速识别和修复安全问题。
+- 集成来自 [Azure SQL 数据库威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)的警报。
 
 安全中心支持基于角色的访问。
+
+## <a name="sql-information-protection"></a>SQL 信息保护
+
+[SQL 信息保护](../sql-database/sql-database-data-discovery-and-classification.md)自动发现潜在的敏感数据并将其进行分类，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。  
+
+此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的更多详细信息，请参阅 Azure SQL 数据库数据发现和分类。
+
+可以在 Azure 安全中心配置 [SQL 信息保护策略](/security-center/security-center-info-protection-policy.md)。
 
 ## <a name="azure-marketplace"></a>Azure 市场
 

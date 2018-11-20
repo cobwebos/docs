@@ -8,28 +8,22 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 47dee26c84d96ebf5b0a421c2f10d18892d6d933
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227242"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613704"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
-Azure Monitor 现在支持[新型指标警报类型](monitoring-overview-unified-alerts.md)，它比旧式[经典指标警报](insights-alerts-portal.md)具有显著的优势。 指标可用于 [Azure 服务的大型列表](monitoring-supported-metrics.md)。 新型警报支持资源类型的一个（不断增长的）子集。 本文列出了该子集。
+Azure Monitor 现在支持[新型指标警报类型](monitoring-overview-alerts.md)，它比旧式[经典指标警报](monitoring-overview-alerts-classic.md)具有显著的优势。 指标可用于 [Azure 服务的大型列表](monitoring-supported-metrics.md)。 新型警报支持资源类型的一个（不断增长的）子集。 本文列出了该子集。
 
-还可以在常用 Log Analytics 日志中使用新型指标警报，这些警报作为日志中指标的一部分提取为指标 
-- 适用于 Windows 和 Linux 计算机的[性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)
-- [代理运行状况的检测信号记录](../operations-management-suite/oms-solution-agenthealth.md)
-- [更新管理](../operations-management-suite/oms-solution-update-management.md)记录
-- [事件数据](../log-analytics/log-analytics-data-sources-windows-events.md)日志
- 
-> [!NOTE]
-> 只有在选定期间内存在其数据时，特定的指标和/或维度才会显示。 在美国东部、美国中西部和西欧具有 Azure Log Analytics 工作区的客户可使用这些指标。 Log Analytics 中的指标目前处于公共预览状态，日后可能会作出更改。
+
+还可以在提取为指标的常用 Log Analytics 日志中使用新型指标警报。 有关详细信息，请查看[日志的指标警报](monitoring-metric-alerts-logs.md)。
 
 ## <a name="portal-powershell-cli-rest-support"></a>门户、PowerShell、CLI、REST 支持
-目前，仅可在 Azure 门户、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) 或[资源管理器模板](monitoring-create-metric-alerts-with-templates.md)中创建新型指标警报。 对于使用 PowerShell 和 Azure CLI 2.0 及更高版本配置新型警报的支持即将推出。
+目前，仅可在 Azure 门户、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/) 或[资源管理器模板](monitoring-create-metric-alerts-with-templates.md)中创建新型指标警报。 对于使用 PowerShell 和 Azure CLI 2.0 及更高版本配置新型警报的支持即将推出。
 
 ## <a name="metrics-and-dimensions-supported"></a>指标和维度支持
 新型指标警报支持针对使用维度的指标发出警报。 可以使用维度将指标筛选到适当级别。 所有受支持的指标以及适用的维度都可以从 [Azure Monitor - 指标资源管理器](monitoring-metric-charts.md)中进行浏览和可视化。
@@ -127,6 +121,6 @@ Azure Monitor 现在支持[新型指标警报类型](monitoring-overview-unified
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解新式[警报体验](monitoring-overview-unified-alerts.md)。
+* 详细了解新式[警报体验](monitoring-overview-alerts.md)。
 * 了解 [Azure 中的日志警报](monitor-alerts-unified-log.md)。
 * 了解 [Azure 中的警报](monitoring-overview-alerts.md)。

@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: acb02df7a1ca49e822062ec5658b4875388b85ab
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 043d19e3917bcdac7e963225af7e614315e414bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586013"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344699"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 这一系列主题显示了如何使用 HDInsight Spark 完成常见的数据科研任务，例如数据引入、特征工程、建模和模型评估。 所使用的数据是 2013 年 NYC 出租车行程和费用数据集样本。 生成的模型包括逻辑和线性回归、随机林和梯度提升树。 本主题还介绍了如何在 Azure Blob 存储 (WASB) 中存储这些模型，以及如何对其预测性能进行评分和评估。 更高级的主题介绍了如何使用交叉验证和超参数扫描训练模型。 本概述主题参与了有关如何设置 Spark 群集的主题，读者需要完成所提供的三个演练中的步骤。 
 

@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 1b0200413fe40acac997570fdccc970a78cf6ece
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253017"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
 
 **示例代码**：[Azure SQL 数据库的弹性数据库工具 - Dapper 集成](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
-将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用来自[客户端库](http://msdn.microsoft.com/library/azure/dn765902.aspx)的 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
+将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用来自[客户端库](https://msdn.microsoft.com/library/azure/dn765902.aspx)的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
 
 ## <a name="dapper-overview"></a>Dapper 概述
 **Dapper** 是对象关系映射器。 它将应用程序中的 .NET 对象映射到关系数据库（或者执行相反的映射）。 示例代码的第一个部分演示了如何将弹性数据库客户端库与基于 Dapper 的应用程序相集成。 示例代码的第二个部分演示了同时使用 Dapper 和 DapperExtensions 时如何集成。  
@@ -44,7 +44,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 
 分片映射管理器可防止用户不一致的视图到 shardlet 数据时并发 shardlet 管理操作发生在数据库上可能会出现。 为此，分片映射会代理使用库生成的应用程序的数据库连接。 当分片管理操作可能会影响 shardlet 时，这可以允许分片映射功能自动终止数据库连接。 
 
-需要使用 [OpenConnectionForKey 方法](http://msdn.microsoft.com/library/azure/dn824099.aspx)，而不是使用传统方法来创建 Dapper 的连接。 这可确保所有验证都会发生，并在分片之间移动任何数据时正确管理连接。
+需要使用 [OpenConnectionForKey 方法](https://msdn.microsoft.com/library/azure/dn824099.aspx)，而不是使用传统方法来创建 Dapper 的连接。 这可确保所有验证都会发生，并在分片之间移动任何数据时正确管理连接。
 
 ### <a name="requirements-for-dapper-integration"></a>Dapper 集成的要求
 在使用弹性数据库客户端库和 Dapper API 时，希望保留以下属性：
@@ -57,7 +57,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 
 ## <a name="technical-guidance"></a>技术指南
 ### <a name="data-dependent-routing-with-dapper"></a>数据依赖型路由与 Dapper
-使用 Dapper 时，应用程序通常负责创建和打开与基础数据库的连接。 如果应用程序指定了类型 T，则 Dapper 将查询结果返回为 T 类型的 .NET 集合。Dapper 执行从 T-SQL 结果行到 T 类型对象的映射。同样，Dapper 将 .NET 对象映射到数据操作语言 (DML) 语句的 SQL 值或参数。 Dapper 通过扩展方法的 ADO.NET SQL 客户端库中的常规 [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象提供此功能。 DDR 弹性缩放 API 返回的 SQL 连接也是常规 [SqlConnection 对象](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)。 这样，我们便可以针对客户端库的 DDR API 返回的类型直接使用 Dapper 扩展，因为它也是一个简单的 SQL 客户端连接。
+使用 Dapper 时，应用程序通常负责创建和打开与基础数据库的连接。 如果应用程序指定了类型 T，则 Dapper 将查询结果返回为 T 类型的 .NET 集合。Dapper 执行从 T-SQL 结果行到 T 类型对象的映射。同样，Dapper 将 .NET 对象映射到数据操作语言 (DML) 语句的 SQL 值或参数。 Dapper 通过扩展方法的 ADO.NET SQL 客户端库中的常规 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象提供此功能。 DDR 弹性缩放 API 返回的 SQL 连接也是常规 [SqlConnection 对象](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx)。 这样，我们便可以针对客户端库的 DDR API 返回的类型直接使用 Dapper 扩展，因为它也是一个简单的 SQL 客户端连接。
 
 根据这些规则，可以方便地使用 Dapper 的弹性数据库客户端库中转的连接。
 
@@ -76,15 +76,15 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
                         );
     }
 
-调用 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API 会替换 SQL 客户端连接的默认创建和打开方法。 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 调用采用数据依赖型路由所需的参数： 
+调用 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API 会替换 SQL 客户端连接的默认创建和打开方法。 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 调用采用数据依赖型路由所需的参数： 
 
 * 用于访问数据依赖型路由接口的分片映射
 * 用于标识 shardlet 的分片键
 * 用于连接分片的凭据（用户名和密码）
 
-分片映射对象将与保存给定分片键 shardlet 的分片建立连接。 弹性数据库客户端 API 还会标记连接以实现一致性保证。 由于调用 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 会返回一个常规 SQL 客户端连接对象，因此从 Dapper 后续调用 **Execute** 扩展方法遵循标准的 Dapper 做法。
+分片映射对象将与保存给定分片键 shardlet 的分片建立连接。 弹性数据库客户端 API 还会标记连接以实现一致性保证。 由于调用 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 会返回一个常规 SQL 客户端连接对象，因此从 Dapper 后续调用 **Execute** 扩展方法遵循标准的 Dapper 做法。
 
-查询的工作方式非常类似 - 首先从客户端 API 使用 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 打开连接。 然后，可以使用常规 Dapper 扩展方法将 SQL 查询的结果映射到 .NET 对象：
+查询的工作方式非常类似 - 首先从客户端 API 使用 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 打开连接。 然后，可以使用常规 Dapper 扩展方法将 SQL 查询的结果映射到 .NET 对象：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1, 
@@ -109,7 +109,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>数据依赖型路由与 Dapper 和 DapperExtensions
 Dapper 随附了可以在开发数据库应用程序时提供更大方便性和从数据库抽象其他扩展的生态系统。 DapperExtensions 就是一个示例。 
 
-在应用程序中使用 DapperExtensions 不会更改创建和管理数据库连接的方式。 应用程序仍要负责打开连接，并且扩展方法要求使用常规 SQL 客户端连接对象。 我们可以依赖于上述 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx)。 如以下代码示例所示，唯一的变化是不再需要编写 T-SQL 语句：
+在应用程序中使用 DapperExtensions 不会更改创建和管理数据库连接的方式。 应用程序仍要负责打开连接，并且扩展方法要求使用常规 SQL 客户端连接对象。 我们可以依赖于上述 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx)。 如以下代码示例所示，唯一的变化是不再需要编写 T-SQL 语句：
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -137,7 +137,7 @@ Dapper 随附了可以在开发数据库应用程序时提供更大方便性和�
     }
 
 ### <a name="handling-transient-faults"></a>处理暂时性故障
-Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](http://msdn.microsoft.com/library/hh680934.aspx)，以帮助应用程序开发人员消除在云中运行应用程序时遇到的常见暂时性故障状态。 有关详细信息，请参阅[锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](http://msdn.microsoft.com/library/dn440719.aspx)。
+Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](https://msdn.microsoft.com/library/hh680934.aspx)，以帮助应用程序开发人员消除在云中运行应用程序时遇到的常见暂时性故障状态。 有关详细信息，请参阅[锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](https://msdn.microsoft.com/library/dn440719.aspx)。
 
 该代码示例依赖于暂时性故障库来防止暂时性故障。 
 
@@ -157,10 +157,10 @@ Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](h
 本文档中概述的方法存在一些限制：
 
 * 本文档示例代码未演示如何管理不同分片的架构。
-* 对于给定的请求，我们假设它的所有数据库处理都包含在该请求提供的分片键标识的单个分片内。 但是，这种假设并不总是合理，例如，在无法使用某个分片键的情况下。 为了解决此问题，弹性数据库客户端库包含了 [MultiShardQuery 类](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)。 该类实现了一个连接抽象用于查询多个分片。 MultiShardQuery 与 Dapper 的结合使用超出了本文档的讨论范围。
+* 对于给定的请求，我们假设它的所有数据库处理都包含在该请求提供的分片键标识的单个分片内。 但是，这种假设并不总是合理，例如，在无法使用某个分片键的情况下。 为了解决此问题，弹性数据库客户端库包含了 [MultiShardQuery 类](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)。 该类实现了一个连接抽象用于查询多个分片。 MultiShardQuery 与 Dapper 的结合使用超出了本文档的讨论范围。
 
 ## <a name="conclusion"></a>结束语
-使用 Dapper 和 DapperExtensions 的应用程序很容易从 Azure SQL 数据库的弹性数据库工具受益。 通过本文档中所述的步骤，这些应用程序可以使用该工具的功能，通过将新 [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用弹性数据库客户端库的 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，来实现数据依赖型路由。 这会将应用程序更改限制为已创建和打开新连接的位置。 
+使用 Dapper 和 DapperExtensions 的应用程序很容易从 Azure SQL 数据库的弹性数据库工具受益。 通过本文档中所述的步骤，这些应用程序可以使用该工具的功能，通过将新 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) 对象的创建和打开方式更改为使用弹性数据库客户端库的 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) 调用，来实现数据依赖型路由。 这会将应用程序更改限制为已创建和打开新连接的位置。 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

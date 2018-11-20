@@ -2,19 +2,19 @@
 title: 在 Azure HDInsight 中配合使用 Data Lake Store 和 Hadoop
 description: 了解如何从 Azure Data Lake Store 查询数据并存储分析结果。
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/06/2018
+ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956725"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684561"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 
@@ -40,16 +40,17 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
 | HDInsight 群集类型 | 将 Data Lake Store 作为默认存储 | 将 Data Lake Store 作为附加存储| 说明 |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight 版本 3.6 | 是 | 是 | |
+| HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.4 | 否 | 是 | |
 | HDInsight 版本 3.3 | 否 | 否 | |
 | HDInsight 版本 3.2 | 否 | 是 | |
 | Storm | | |可使用 Data Lake Store 从 Storm 拓扑写入数据。 对于可由 Storm 拓扑读取的引用数据，也可以使用 Data Lake Store。|
 
+> [!WARNING]
+> Azure Data Lake Storage Gen 1 不支持 HDInsight HBase
+
 使用 Data Lake Store 作为附加存储帐户不会影响从群集读取或写入数据到 Azure 存储的性能或能力。
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>将 Data Lake Store 用作默认存储
 
 将 Data Lake Store 作为默认存储对 HDInsight 进行部署时，与群集相关的文件将存储在 Data Lake Store 的以下位置中：

@@ -3,7 +3,7 @@ title: 如何设置或编辑 Azure API 管理策略 | Microsoft Docs
 description: 本主题介绍如何设置或编辑 Azure API 管理策略。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cflower
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936691"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008260"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
 
@@ -33,15 +33,14 @@ ms.locfileid: "33936691"
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 浏览到自己的 APIM 实例。
 3. 单击“API”选项卡。
+
+    ![编辑策略](./media/set-edit-policies/code-editor.png)
+
 4. 选择以前导入的某个 API。
 5. 选择“设计”选项卡。
 6. 选择要将该策略应用到的操作。 如果想要将策略应用到所有操作，请选择“所有操作”。
-7. 单击“入站”或“出站”铅笔图标旁边的三角形。
-8. 选择“代码编辑器”项。
-
-    ![编辑策略](./media/set-edit-policies/set-edit-policies01.png)
-
-9. 将所需的策略代码粘贴到某个相应的块中。
+7. 在“入站处理”或“出站处理”部分中选择“</>(代码编辑器)”图标。
+8. 将所需的策略代码粘贴到某个相应的块中。
          
         <policies>
              <inbound>

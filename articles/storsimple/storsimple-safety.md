@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: a178e8880bcbcada9d66eaacf5ccbdb7c55957cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1be635826edbb60d50b06cc7c529e32b6280390b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109925"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249381"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
 ![阅读安全注意事项图标](./media/storsimple-safety/IC740885.png) **阅读安全和运行状况信息**
 
-阅读本文中适用于 Microsoft Azure StorSimple 设备的所有安全和运行状况信息。 保留 StorSimple 设备附带的所有打印的指南以供将来参考。 如果不按说明对此产品进行正确设置、使用和护理等操作，伤亡或设备损坏风险会增加。 [本指南提供可下载版本](http://www.microsoft.com/download/details.aspx?id=44233)。
+阅读本文中适用于 Microsoft Azure StorSimple 设备的所有安全和运行状况信息。 保留 StorSimple 设备附带的所有打印的指南以供将来参考。 如果不按说明对此产品进行正确设置、使用和护理等操作，伤亡或设备损坏风险会增加。 [本指南提供可下载版本](https://www.microsoft.com/download/details.aspx?id=44233)。
 
 ## <a name="safety-icon-conventions"></a>安全图标约定
 以下是在查看安全预防措施时出现的图标，安装和运行 Microsoft Azure StorSimple 设备时应遵循这些措施。
 
-| 图标 | 说明 |
+| 图标 | Description |
 |:--- |:--- |
 | ![危险图标](./media/storsimple-safety/IC740879.png) **DANGER!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |

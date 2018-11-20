@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 3903f247df0bc9dc4bc27d61b195492c585d7634
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831018"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282265"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>教程 5：提取与上下文相关的数据
 在本教程中，基于上下文查找相关的数据片段。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。 若要生成工作订单，可能同时需要这两个数据片段，并且它们彼此相关。  
@@ -37,7 +37,7 @@ ms.locfileid: "48831018"
 > * 使用现有的教程应用
 > * 添加意向 
 > * 添加包含出发地和目的地子级的位置分层实体
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 
@@ -57,7 +57,7 @@ ms.locfileid: "48831018"
 ## <a name="remove-prebuilt-number-entity-from-app"></a>从应用中删除预生成的数字实体
 若要查看整个陈述并标记分层子级，请暂时删除预生成的数字实体。
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在左侧菜单中选择“实体”。
 
@@ -83,7 +83,7 @@ ms.locfileid: "48831018"
 
     在[列表实体](luis-quickstart-intent-and-list-entity.md)教程中，通过姓名、电子邮件地址、电话分机、移动电话号码或美国联邦社会安全号码指定了某个员工。 这些员工编号用在陈述中。 前面的示例陈述包括了用于表示原始位置和目标位置（以粗体标记）的不同方式。 一些陈述特意只包含目标位置。 这有助于 LUIS 了解在不指定原始位置的情况下，如何在陈述中放置这些位置。     
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>创建位置实体
 LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是位置。 如需在令牌（原始）视图中查看陈述，请在标记为“实体视图”的陈述上方的栏中选择切换。 切换开关以后，此控件会被标记为“令牌视图”。
@@ -119,7 +119,7 @@ mv Jill Jones from a-2349 to b-1298
 
 1. 在左侧导航菜单中选择“实体”。
 
-2. 选择“管理预生成的实体”按钮。
+2. 选择“添加预生成的实体”按钮。
 
 3. 从预生成的实体的列表中选择“数字”，然后选择“完成”。
 
@@ -248,6 +248,10 @@ mv Jill Jones from a-2349 to b-1298
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="hierarchical-entities-versus-roles"></a>分层实体与角色
+
+有关详细信息，请参阅[角色与分层实体](luis-concept-roles.md#roles-versus-hierarchical-entities)。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，已创建了一个新的意向，并为源位置和目标位置的根据上下文学习的数据添加了示例陈述。 在训练并发布应用后，客户端应用程序可以使用该信息来创建包含相关信息的移动票证。

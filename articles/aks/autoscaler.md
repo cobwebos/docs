@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 3bac6534f43d62e6eb9381b8513025ba9117ed04
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857000"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49375845"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序 - 预览版
 
@@ -26,11 +26,22 @@ Azure Kubernetes 服务 (AKS) 提供一个灵活的解决方案用于在 Azure �
 > Azure Kubernetes 服务 (AKS) 群集自动缩放程序集成目前以**预览版**提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites-and-considerations"></a>先决条件和注意事项
 
 本文档假设有一个已启用 RBAC 的 AKS 群集。 如果你需要 AKS 群集，请参阅 [Azure Kubernetes 服务 (AKS) 快速入门][aks-quick-start]。
 
  若要使用群集自动缩放程序，群集必须使用 Kubernetes v1.10.X 或更高版本，并且必须启用 RBAC。 若要升级群集，请参阅有关[升级 AKS 群集][aks-upgrade]的文章。
+
+定义 Pod 的资源请求。 群集自动缩放程序会查看 Pod 发出的资源请求，而不会像水平Pod 自动缩放程序一样查看实际使用的资源。 在部署定义的 `spec: containers` 部分中，定义 CPU 和内存要求。 以下示例代码片段请求节点上的 0.5 vCPU 和 64Mb 内存：
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+使用群集自动缩放程序时，请避免手动缩放节点数。 群集自动缩放程序可能无法确定所需的正确计算资源量，并且会与手动定义的节点数冲突。
 
 ## <a name="gather-information"></a>收集信息
 
@@ -127,7 +138,7 @@ metadata:
   name: cluster-autoscaler
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-autoscaler
@@ -168,7 +179,7 @@ rules:
   verbs: ["get", "list", "watch"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: cluster-autoscaler
@@ -186,7 +197,7 @@ rules:
   verbs: ["delete","get","update"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cluster-autoscaler
@@ -203,7 +214,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cluster-autoscaler
@@ -221,7 +232,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Deployment
 metadata:
   labels:

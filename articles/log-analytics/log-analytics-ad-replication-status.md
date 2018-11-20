@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041894"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009736"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
 
@@ -34,7 +34,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 使用以下信息安装和配置解决方案。
 
 * 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Log Analytics。 要了解如何将 Windows 计算机连接到 Log Analytics，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agent.md)。 如果域控制器已经是你要连接到 Log Analytics 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
-* 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 Log Analytics 工作区。  无需进一步的配置。
+* 使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 Log Analytics 工作区。  无需进一步的配置。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
 下表显示了 AD 复制状态的数据收集方法和其他数据收集方式的详细信息。
@@ -110,7 +110,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ![搜索结果中的 AD 复制状态错误](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-从这里，可以进一步筛选，修改搜索查询，等等。 有关使用日志搜索的详细信息，请参阅[日志搜索](log-analytics-log-searches.md)。
+从这里，可以进一步筛选，修改搜索查询，等等。 有关使用日志搜索的详细信息，请参阅[日志搜索](log-analytics-queries.md)。
 
 “**HelpLink**”字段显示了包含该特定错误的其他详细信息的 TechNet 页的 URL。 可以将此链接复制并粘贴到浏览器窗口，以查看有关故障排除和修复该错误的信息。
 
@@ -154,4 +154,4 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 如果不希望将任何域控制器直接连接到 Log Analytics 或 System Center Service Manager，请参阅[允许非域控制器将 AD 数据发送到 Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)查看详细的 Active Directory 复制状态数据。
+* 使用 [Log Analytics 中的日志搜索](log-analytics-queries.md)查看详细的 Active Directory 复制状态数据。

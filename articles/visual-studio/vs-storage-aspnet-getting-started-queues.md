@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321846"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250809"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)
 
@@ -141,7 +141,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
   
     ![创建队列](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    如前所述，仅当队列不存在但已创建时，**CloudQueue.CreateIfNotExists** 方法才返回 **true**。 因此，如果在队列存在的情况下运行该应用，该方法会返回 **false**。 若要多次运行应用，必须在再次运行应用之前删除队列。 可通过 **CloudQueue.Delete** 方法删除队列。 也可以使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)删除队列。  
+    如前所述，仅当队列不存在但已创建时，**CloudQueue.CreateIfNotExists** 方法才返回 **true**。 因此，如果在队列存在的情况下运行该应用，该方法会返回 **false**。 若要多次运行应用，必须在再次运行应用之前删除队列。 可通过 **CloudQueue.Delete** 方法删除队列。 也可以使用 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)或 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)删除队列。  
 
 ## <a name="add-a-message-to-a-queue"></a>向队列添加消息
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025288"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242970"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -45,7 +45,7 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 4. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自客户端检索到 Blob 起已更新该 Blob。
 5. 如果 Blob 的当前 ETag 值与请求的 **If-Match** 条件标头中的 ETag 的版本相同，则该服务将执行请求的操作，并更新该 Blob 的当前 ETag 值，以说明它已创建新版本。  
 
-以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务将返回 HTTP 412 (不满足前提条件) 状态消息。 可以在这里下载完整的示例：[使用 Azure 存储管理并发](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
+以下 C# 代码段（使用客户端存储库 4.2.0）显示一个简单示例，说明如何根据从以前检索到或插入的 Blob 属性访问的 ETag 值构造 **If-Match AccessCondition**。 然后，在更新该 Blob 时使用 **AccessCondition** 对象：**AccessCondition** 对象将 **If-Match** 标头添加到请求中。 如果其他进程已更新该 Blob，则 Blob 服务将返回 HTTP 412 (不满足前提条件) 状态消息。 可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,7 +80,7 @@ catch (StorageException ex)
 }  
 ```
 
-存储服务还包括支持其他条件标头，例如 **If-Modified-Since**、**If-Unmodified-Since** 和 **If-None-Match**，以及这些标头的组合。 有关详细信息，请参阅 MSDN 上的 [Specifying Conditional Headers for Blob Service Operations](http://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）。  
+存储服务还包括支持其他条件标头，例如 **If-Modified-Since**、**If-Unmodified-Since** 和 **If-None-Match**，以及这些标头的组合。 有关详细信息，请参阅 MSDN 上的 [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）。  
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
@@ -122,11 +122,11 @@ catch (StorageException ex)
 (*) 租赁 Blob 不更改 Blob 中的 ETag。  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Blob 的悲观并发
-若要锁定 Blob 以供独占使用，可以对该 Blob 获得[租约](http://msdn.microsoft.com/library/azure/ee691972.aspx)。 在获取租约时，可以指定需要该租约的时长：该值可以介于 15 到 60 秒之间，也可以是无限期（相当于独占锁）。 可以续订有限期租约来延展该租约，也可以在租约完成后将其释放。 Blob 服务在有限期租约到期时会自动释放这些租约。  
+若要锁定 Blob 以供独占使用，可以对该 Blob 获得[租约](https://msdn.microsoft.com/library/azure/ee691972.aspx)。 在获取租约时，可以指定需要该租约的时长：该值可以介于 15 到 60 秒之间，也可以是无限期（相当于独占锁）。 可以续订有限期租约来延展该租约，也可以在租约完成后将其释放。 Blob 服务在有限期租约到期时会自动释放这些租约。  
 
 租约允许支持各种同步策略，包括独占写入/共享读取、独占写入/独占读取和共享写入/独占读取。 如果租约存在，则存储服务会强制执行独占写入（放置、设置和删除操作），但是，若要确保读取操作的独占性，开发人员需要确保所有客户端应用程序都使用一个租约 ID，并且一次只有一个客户端具有有效的租约 ID。 不包括租约 ID 的读取操作会导致共享读取。  
 
-以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示一个示例，说明如何在 30 秒内对 Blob 获取独占租约，更新 Blob 的内容，并释放该租约。 尝试获取新租约时，如果 Blob 中已经存在有效租约，则 Blob 服务将返回“HTTP (409) 冲突”状态结果。 在发出请求以在存储服务中更新 Blob 时，以下代码段使用 **AccessCondition** 对象封装租约信息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,7 +155,7 @@ catch (StorageException ex)
 }  
 ```
 
-如果尝试对租赁的 Blob 执行写入操作，而不传递租约 ID，则请求会失败，显示 412 错误。 请注意，如果该租约在调用 **UploadText** 方法前到期，但仍传递租约 ID，则请求也会失败，显示 **412** 错误。 有关如何管理租约到期时间和租约 ID 的详细信息，请参阅 [Lease Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）REST 文档。  
+如果尝试对租赁的 Blob 执行写入操作，而不传递租约 ID，则请求会失败，显示 412 错误。 请注意，如果该租约在调用 **UploadText** 方法前到期，但仍传递租约 ID，则请求也会失败，显示 **412** 错误。 有关如何管理租约到期时间和租约 ID 的详细信息，请参阅 [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）REST 文档。  
 
 以下 Blob 操作可以使用租约来管理悲观并发：  
 
@@ -191,9 +191,9 @@ catch (StorageException ex)
 
 有关详细信息，请参阅：  
 
-* [Specifying Conditional Headers for Blob Service Operations](http://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
-* [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
-* [Lease Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）
+* [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
+* [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
+* [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）
 
 ## <a name="managing-concurrency-in-the-table-service"></a>在表服务中管理并发
 在处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  
@@ -208,7 +208,7 @@ catch (StorageException ex)
 
 请注意，与 Blob 服务不同，表服务要求客户端将 **If-Match** 标头包括在更新请求中。 但是，如果客户端在请求中将 **If-Match** 标头设置为通配符 (*)，则可以强制执行非条件更新（“以最后写入者为准”策略）并绕过并发检查。  
 
-以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
+以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 
 ```csharp
 try
@@ -251,7 +251,7 @@ customer.ETag = "*";
 
 有关详细信息，请参阅：  
 
-* [Operations on Entities](http://msdn.microsoft.com/library/azure/dd179375.aspx)（对实体的操作）  
+* [Operations on Entities](https://msdn.microsoft.com/library/azure/dd179375.aspx)（对实体的操作）  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>在队列服务中管理并发
 在队列服务中考虑并发的一种情况是，多个客户端正从一个队列检索消息。 在从队列检索消息时，响应包括消息和 pop 接收方值，这是删除该消息所必需的。 该消息不会从队列中自动删除，但是在检索到后，该消息在 visibilitytimeout 参数指定的时间间隔内不显示给其他客户端。 检索消息的客户端应在消息处理后、响应的 TimeNextVisible 元素指定的时间前删除该消息，该时间是根据 visibilitytimeout 参数的值计算的。 要确定 TimeNextVisible 的值，可将 visibilitytimeout 的值添加到消息的检索时间。  
@@ -260,8 +260,8 @@ customer.ETag = "*";
 
 有关详细信息，请参阅：  
 
-* [Queue Service REST API](http://msdn.microsoft.com/library/azure/dd179363.aspx)（队列服务 REST API）
-* [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)（获取消息）  
+* [Queue Service REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)（队列服务 REST API）
+* [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)（获取消息）  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>在文件服务中管理并发
 文件服务可以使用下面两个不同的协议终结点访问：SMB 和 REST。 REST 服务不支持乐观锁定或悲观锁定，并且所有更新将遵循上次编写者赢策略。 SMB 客户端如果装载文件共享，则可以充分利用文件系统锁定机制来管理对共享文件的访问，包括可以执行悲观锁定。 在打开文件后，SMB 客户端会同时指定文件访问权限和共享模式。 如果将“文件访问权限”选项设置为“写入”或“读取/写入”，同时将“文件共享”模式设置为“无”，则将导致文件在关闭前被 SMB 客户端锁定。 如果尝试对 SMB 客户端已锁定的文件执行 REST 操作，则 REST 服务将返回状态代码 409 (冲突)，以及错误代码 SharingViolation。  
@@ -270,19 +270,19 @@ customer.ETag = "*";
 
 有关详细信息，请参阅：  
 
-* [Managing File Locks](http://msdn.microsoft.com/library/azure/dn194265.aspx)（管理文件锁）  
+* [Managing File Locks](https://msdn.microsoft.com/library/azure/dn194265.aspx)（管理文件锁）  
 
 ## <a name="summary-and-next-steps"></a>摘要和后续步骤
 经过精心设计，Microsoft Azure 存储服务可以满足最复杂的在线应用程序需要，而不会迫使开发人员对主要设计假设做出妥协或重新思考，例如他们视为理所当然的并发和数据一致性。  
 
 对于本博客中引用的完整示例应用程序：  
 
-* [Managing Concurrency using Azure Storage - Sample Application](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发 - 示例应用程序）  
+* [Managing Concurrency using Azure Storage - Sample Application](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)（使用 Azure 存储管理并发 - 示例应用程序）  
 
 有关 Azure 存储的详细信息，请参阅：  
 
 * [Microsoft Azure 存储主页](https://azure.microsoft.com/services/storage/)
 * [Azure 存储简介](storage-introduction.md)
 * [Blob](../blobs/storage-dotnet-how-to-use-blobs.md)、[表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[队列](../storage-dotnet-how-to-use-queues.md)和[文件](../storage-dotnet-how-to-use-files.md)的存储使用入门
-* 存储体系结构 - [Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* 存储体系结构 - [Azure 存储：具有高度一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

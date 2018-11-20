@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388188"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686358"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure 市场。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -44,7 +44,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 ### <a name="11-add-an-offer"></a>1.1 添加产品/服务
 1. 使用卖方帐户登录[发布门户][link-pubportal]。
 2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure 市场中销售的产品或服务的名称。
-3. 选择**创建**。
+3. 选择“创建”。
 
 ### <a name="12-define-a-sku"></a>1.2 定义 SKU
 添加了产品/服务后，需要定义并标识 SKU。 客户可拥有多个产品/服务，并且每个产品/服务下面均可有多个 SKU。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。
@@ -148,11 +148,11 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-有关 RDP 的详细信息，可在 MSDN 的[通过 RDP 或 SSH 连接 Azure VM](http://msdn.microsoft.com/library/azure/dn535788.aspx) 一文中找到。
+有关 RDP 的详细信息，可在 MSDN 的[通过 RDP 或 SSH 连接 Azure VM](https://msdn.microsoft.com/library/azure/dn535788.aspx) 一文中找到。
 
 **配置 VM 并创建 SKU**
 
-下载了操作系统 VHD 之后，可使用 Hyper-V 并配置 VM 以开始创建 SKU。 可以在以下 TechNet 链接处找到详细步骤：[安装 Hyper-V 和配置 VM](http://technet.microsoft.com/library/hh846766.aspx)。
+下载了操作系统 VHD 之后，可使用 Hyper-V 并配置 VM 以开始创建 SKU。 可以在以下 TechNet 链接处找到详细步骤：[安装 Hyper-V 和配置 VM](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 选择正确的 VHD 大小
 VM 映像中的 Windows 操作系统 VHD 应创建为 128 GB 的固定格式的 VHD。  
@@ -191,7 +191,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>设置所需工具、PowerShell 和 Azure 经典 CLI
 * [如何设置 PowerShell](/powershell/azure/overview)
-* [如何设置 Azure 经典 CLI](../cli-install-nodejs.md)
+* [如何设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 创建用户 VM 映像
 #### <a name="capture-vm"></a>捕获 VM
@@ -427,63 +427,45 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 11. 对 SKU 中的每个 VHD 重复这些步骤。
 
-**Azure 经典 CLI（推荐用于非 Windows 和持续集成）**
+**Azure CLI 2.0（推荐用于非 Windows 和持续集成）**
 
 下面是使用 Azure 经典 CLI 生成 SAS URL 的步骤
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  从[此处](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)下载 Azure 经典 CLI。 还可以找到用于 **[Windows](http://aka.ms/webpi-azure-cli)** 和 **[MAC OS](http://aka.ms/mac-azure-cli)** 的不同链接。
+1.  从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** 和 **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)** 的不同链接。
 
 2.  下载后，请安装
 
-3.  使用下面的代码创建 PowerShell（或其他脚本可执行文件）文件并将其保存到本地
+3.  使用以下代码创建 Bash 文件（或其他等效脚本可执行文件）并将其保存在本地
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
+        export AZURE_STORAGE_ACCOUNT=<Storage Account Name>
+        EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')
+        CONTAINER_SAS=$(az storage container generate-sas --account-name -n vhds --permissions rl --expiry $EXPIRY -otsv)
+        BLOB_URL=$(az storage blob url -c vhds -n <VHD Blob Name> -otsv)
+        echo $BLOB_URL\?$CONTAINER_SAS
 
     更新上述代码中的以下参数
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 `<StorageAccountName>`：指定存储帐户名称
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 `<Storage Account Name>`：指定存储帐户名称
 
-    b. `<Storage Account Key>`：指定存储帐户密钥
+    b. **`<VHD Blob Name>`**：指定 VHD blob 的名称。
 
-    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0 或更高版本，请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
+    选择开始日期后至少 3 周的日期（默认为生成 sas-token 的时间）。 示例值为：**2018-10-11T23:56Z**。
 
-    d. `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 值应为 11/02/2016。 如果使用 Azure CLI 2.0 或更高版本，请提供开始日期和结束日期的日期和时间，例如：11-02-2016T00:00:00Z。
+    下面是更新适当参数后的示例代码     export AZURE_STORAGE_ACCOUNT=vhdstorage1ba78dfb6bc2d8     EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')     CONTAINER_SAS=$(az storage container generate-sas -n vhds --permissions rl --expiry $EXPIRY -otsv)     BLOB_URL=$(az storage blob url -c vhds -n osdisk_1ba78dfb6b.vhd -otsv)     echo $BLOB_URL\?$CONTAINER_SAS
 
-    以下是更新适当参数后的代码示例
+4.  运行该脚本，它将提供用于容器级别访问的 SAS URL。
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
-
-4.  在“以管理员身份运行”模式下打开 Powershell 编辑器并打开步骤 #3 中的文件。 可以使用 OS 上可用的任何脚本编辑器。
-
-5.  运行脚本，脚本将提供容器级别访问权限所对应的 SAS URL
-
-    以下是 SAS 签名的输出，请将突出显示部分复制到记事本中
-
-    ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
-
-6.  现在，会获得容器级别 SAS URL，并需要在其中添加 VHD 名称。
-
-    容器级别 SAS URL #
-
-    `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-7.  在 SAS URL 中的容器名称后插入 VHD 名称，如下所示：`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-    示例：
-
-    TestRGVM201631920152.vhd 为 VHD 名称，则 VHD SAS URL 将为
-
-    `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+5.  检查 SAS URL。
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
     -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
     -   在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
+
+    示例：
+
+    `https://vhdstorage1ba78dfb6bc2d8.blob.core.windows.net/vhds/osdisk_1ba78dfb6b.vhd?se=2018-10-12T00%3A04Z&sp=rl&sv=2018-03-28&sr=c&sig=...`
 
 8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 

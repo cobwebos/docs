@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中进行持续集成和部署 | Microsoft Docs
-description: 了解如何使用持续集成和部署将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。
+title: 在 Azure 数据工厂中进行持续集成和交付 | Microsoft Docs
+description: 了解如何使用持续集成和交付将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142276"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623758"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和部署
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
-持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续部署可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
+持续集成是这样一种做法：自动地尽早测试对代码库所做的每项更改。 在测试之后进行的持续交付可将更改推送到过渡或生产系统，而测试发生在持续集成期间。
 
-对于 Azure 数据工厂，持续集成和部署意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和部署，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
+对于 Azure 数据工厂，持续集成和交付意味着将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。 若要进行持续集成和交付，可以将数据工厂 UI 集成与 Azure 资源管理器模板配合使用。 选择“ARM 模板”选项时，数据工厂 UI 可以生成资源管理器模板。 选择“导出 ARM 模板”时，门户会为数据工厂生成资源管理器模板，并生成一个包含所有连接字符串和其他参数的配置文件。 然后，需为每个环境（开发、测试、生产）创建一个配置文件。 所有环境的主资源管理器模板文件始终相同。
 
 有关此功能的 9 分钟介绍和演示，请观看以下视频：
 
@@ -53,9 +53,9 @@ ms.locfileid: "42142276"
 ![打开代码视图来查看连接字符串](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>持续集成生命周期
-下面是持续集成和部署的整个生命周期。使用此类集成和部署的前提是在数据工厂 UI 中启用 VSTS GIT 集成：
+下面是持续集成和交付的整个生命周期。使用此类集成和交付的前提是在数据工厂 UI 中启用 Azure Repos Git 集成：
 
-1.  使用 VSTS 设置开发数据工厂，以便所有开发人员都能创作数据工厂资源，例如管道、数据集，等等。
+1.  使用 Azure Repos 设置开发数据工厂，以便所有开发人员都能创作数据工厂资源，例如管道、数据集，等等。
 
 1.  然后，开发人员就可以修改管道之类的资源。 进行修改后，开发人员可以选择“调试”来查看在使用最新更改的情况下管道的运行情况。
 
@@ -67,25 +67,25 @@ ms.locfileid: "42142276"
 
 1.  可以使用不同的参数文件，将导出的资源管理器模板部署到测试工厂和生产工厂。
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>使用 VSTS 版本自动完成持续集成
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>使用 Azure Pipelines 发布自动完成持续集成
 
-可以使用下面的步骤来设置 VSTS 版本，以便将数据工厂自动部署到多个环境。
+可以使用下面的步骤来设置 Azure Pipelines 发布，以便将数据工厂自动部署到多个环境。
 
-![与 VSTS 的持续集成示意图](media/continuous-integration-deployment/continuous-integration-image12.png)
+![与 Azure Pipelines 的持续集成示意图](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>要求
 
--   一项使用 [Azure 资源管理器服务终结点](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 VSTS 的 Azure 订阅。
+-   一项使用  [*Azure 资源管理器服务终结点*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)链接到 Team Foundation Server 或 Azure Repos 的 Azure 订阅。
 
--   一个配置了 VSTS Git 的数据工厂。
+-   配置了 Azure Repos Git 集成的数据工厂。
 
--   一个包含机密的 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+-   一个包含机密的  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
 
-### <a name="set-up-a-vsts-release"></a>设置 VSTS 版本
+### <a name="set-up-an-azure-pipelines-release"></a>设置 Azure Pipelines 发布
 
-1.  转到使用数据工厂配置的项目中的 VSTS 页。
+1.  转到使用数据工厂配置的项目中的 Azure Repos 页。
 
-1.  单击顶部菜单“内部版本和版本”&gt;“版本”&gt;“创建版本定义”。
+1.  单击顶部菜单“Azure Pipelines”&gt;“发布”&gt;“创建发布定义”。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -113,15 +113,20 @@ ms.locfileid: "42142276"
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  保存发布定义。
+    g. 选择“增量”部署模式。
 
-1.  根据此版本定义创建新版本。
+    > [!WARNING]
+    > 如果选择“完成”部署模式，则可能会删除现有资源，包括资源管理器模板中未定义的目标资源组中的所有资源。
+
+1.  保存发布管道。
+
+1.  根据此发布管道创建新发布。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>可选 - 获取 Azure Key Vault 中的机密
 
-如果有要传入 Azure 资源管理器模板的机密，我们建议将 Azure Key Vault 用于 VSTS 发布。
+如果有要传入 Azure 资源管理器模板的机密，我们建议将 Azure Key Vault 用于 Azure Pipelines 发布。
 
 可以通过两种方式来处理机密：
 
@@ -148,7 +153,7 @@ ms.locfileid: "42142276"
 
     -   参数文件也需位于 publish 分支中。
 
-1.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)：
+1.  在上一部分中介绍的 Azure 资源管理器部署之前添加 [Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
     -   选择“任务”选项卡，创建新的任务，然后搜索并添加“Azure Key Vault”。
 
@@ -156,13 +161,13 @@ ms.locfileid: "42142276"
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>向 VSTS 代理授权
-第一次时，Azure Key Vault 任务可能会失败，出现“拒绝访问”错误。 请下载此版本的日志，使用此命令找到 `.ps1` 文件，以便向 VSTS 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
+第一次时，Azure Key Vault 任务可能会失败，出现“拒绝访问”错误。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：
 
-1.  在 VSTS 版本的“任务”选项卡中，搜索并添加“Azure Powershell”。
+1.  在此发布的“任务”选项卡中，搜索并添加“Azure Powershell”。
 
 1.  选择“Azure 资源管理器”作为连接类型，然后选择订阅。
 
@@ -178,9 +183,12 @@ ms.locfileid: "42142276"
 
 可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzureRmDataFactoryV2Trigger` 函数）来重启触发器。
 
+> [!IMPORTANT]
+> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将 IR 配置为“链接自承载”。
+
 ## <a name="sample-deployment-template"></a>示例部署模板
 
-下面是一个可以在 VSTS 中导入的示例部署模板。
+下面是一个可以在 Azure Pipelines 中导入的示例部署模板。
 
 ```json
 {
@@ -720,7 +728,7 @@ ms.locfileid: "42142276"
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>用来停止和重启触发器以及进行清理的示例脚本
 
-下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。
+下面是一个示例脚本，用于在部署之前停止触发器并随后重启触发器。 此脚本还包括用于删除已移除资源的代码。 若要安装最新版本的 Azure PowerShell，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0)。
 
 ```powershell
 param
@@ -732,7 +740,6 @@ param
     [parameter(Mandatory = $false)] [Bool] $predeployment=$true
 
 )
-
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
 $resources = $templateJson.resources
@@ -749,13 +756,12 @@ $triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).na
 if ($predeployment -eq $true) {
     #Stop all triggers
     Write-Host "Stopping deployed triggers"
-    $triggerstostop | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force }
+    $triggerstostop | ForEach-Object { 
+        Write-host "Disabling trigger " $_
+        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    }
 }
 else {
-
-    #start Active triggers
-    Write-Host "Starting active triggers"
-    $activeTriggerNames | ForEach-Object { Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force }
 
     #Deleted resources
     #pipelines
@@ -785,23 +791,91 @@ else {
 
     #delte resources
     Write-Host "Deleting triggers"
-    $deletedtriggers | ForEach-Object { Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedtriggers | ForEach-Object { 
+        Write-Host "Deleting trigger "  $_.Name
+        $trig = Get-AzureRmDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        if ($trig.RuntimeState -eq "Started") {
+            Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+        }
+        Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting pipelines"
-    $deletedpipelines | ForEach-Object { Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedpipelines | ForEach-Object { 
+        Write-Host "Deleting pipeline " $_.Name
+        Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting datasets"
-    $deleteddataset | ForEach-Object { Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deleteddataset | ForEach-Object { 
+        Write-Host "Deleting dataset " $_.Name
+        Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting linked services"
-    $deletedlinkedservices | ForEach-Object { Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedlinkedservices | ForEach-Object { 
+        Write-Host "Deleting Linked Service " $_.Name
+        Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
     Write-Host "Deleting integration runtimes"
-    $deletedintegrationruntimes | ForEach-Object { Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force }
+    $deletedintegrationruntimes | ForEach-Object { 
+        Write-Host "Deleting integration runtime " $_.Name
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    }
+
+    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    Write-Host "Starting active triggers"
+    $activeTriggerNames | ForEach-Object { 
+        Write-host "Enabling trigger " $_
+        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+    }
 }
 ```
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
 
-可为资源管理器模板定义自定义参数。 只需使用存储库根文件夹中一个名为 `arm-template-parameters-definition.json` 的文件。 （文件名必须与此处显示的名称完全匹配。）数据工厂会尝试从正在使用的任何分支读取文件，而不仅仅是从协作分支读取文件。 如果未找到任何文件，数据工厂则使用默认定义。
+可为资源管理器模板定义自定义参数。 只需使用存储库根文件夹中一个名为 `arm-template-parameters-definition.json` 的文件。 （文件名必须与此处显示的名称完全匹配。）数据工厂会尝试从正在使用的任何分支读取文件，而不仅仅是从协作分支读取文件。 如果未找到任何文件，数据工厂则使用默认参数和值。
 
-以下示例显示了示例参数文件。 使用此示例作为参考，创建自己的自定义参数文件。 如果提供的文件不是正确的 JSON 格式，则数据工厂会在浏览器控制台中输出错误消息，并重新使用数据工厂 UI 中显示的默认定义。
+### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
+
+下面是编写自定义参数文件时要使用一些准则。 若要查看此语法的示例，请参阅以下部分：[示例自定义参数文件](#sample)。
+
+1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的第一个对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. 将属性名称设置为 `*` 时，表示你希望模板在该级别使用所有属性，显式定义的属性除外。
+
+3. 将属性的值设置为字符串时，表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
+    1.  `<action>` 可以是下列字符之一： 
+        1.  `=` 表示将当前值保留为参数的默认值。
+        2.  `-` 表示不保留参数的默认值。
+        3.  `|` 是用于存储连接字符串的 Azure Key Vault 中的机密的特例。
+    2.  `<name>` 是参数的名称。 如果 `<name`> 为空，则它将采用参数的名称。 
+    3.  `<stype>` 是参数的类型。 如果 `<stype>` 为空，则默认类型为字符串。
+4.  如果在参数名称的开头输入 `-` 字符，则整个资源管理器参数名称将缩写为 `<objectName>_<propertyName>`。
+例如，`AzureStorage1_properties_typeProperties_connectionString` 缩写为 `AzureStorage1_connectionString`。
+
+
+### <a name="sample"></a> 示例自定义参数文件
+
+以下示例显示了示例参数文件。 使用此示例作为参考，创建自己的自定义参数文件。 如果提供的文件不是正确的 JSON 格式，则数据工厂会在浏览器控制台中输出错误消息，并重新使用数据工厂 UI 中显示的默认参数和值。
 
 ```json
 {

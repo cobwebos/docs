@@ -4,17 +4,17 @@ description: 获取有关在 Azure HDInsight 中使用 Apache Storm 时遇到的
 keywords: Azure HDInsight, Storm, 常见问题解答, 故障排除指南, 常见问题
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonwhowell
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: cad9e6ceb22ab66b5a3fe00358eb6b6170a3f29f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 99ceeea33d3e2d9af798d5eb4161b0c16afc952d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049581"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011368"
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Storm 进行故障排除
 

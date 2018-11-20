@@ -12,27 +12,29 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e9a1b7951d111606d84e235864e3649a742e874e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918721"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741498"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 5 部分：使用 Mongoose 连接到 Azure Cosmos DB
 
-本教程包含多个部分，演示了如何通过 Express、Angular 和 Azure Cosmos DB 数据库创建以 Node.js 编写的新 [MongoDB API](mongodb-introduction.md) 应用。
+本教程包含多个部分，演示了如何通过 Express、Angular 创建 Node.js 应用，然后将其连接到 [Azure Cosmos DB MongoDB API](mongodb-introduction.md) 帐户。
 
 本教程的第 5 部分基于[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)，涵盖以下任务：
 
 > [!div class="checklist"]
 > * 使用 Mongoose 连接到 Azure Cosmos DB
-> * 从 Azure Cosmos DB 获取连接字符串信息
+> * 获取你的 Cosmos DB 连接字符串信息
 > * 创建 hero 模型
 > * 创建 hero 服务，以获取 hero 数据
 > * 在本地运行应用
 
 ## <a name="video-walkthrough"></a>视频演练
+
+可以观看以下视频，快速了解本文档中介绍的步骤： 
 
 > [!VIDEO https://www.youtube.com/embed/sI5hw6KPPXI]
 
@@ -46,19 +48,24 @@ ms.locfileid: "41918721"
 
 ## <a name="use-mongoose-to-connect-to-azure-cosmos-db"></a>使用 Mongoose 连接到 Azure Cosmos DB
 
-1. 安装 mongoose npm 模块，此模块为 API，通常用于与 MongoDB 通信。
+1. 安装 mongoose npm 模块，此模块为 API，用于与 MongoDB 通信。
 
     ```bash
     npm i mongoose --save
     ```
 
-2. 现在，请在 server 文件夹中创建名为“mongo.js”的新文件。 在此文件中，请添加 Azure Cosmos DB 数据库的所有连接信息。
+2. 现在，请在 server 文件夹中创建名为“mongo.js”的新文件。 需将 Cosmos DB 帐户的连接详细信息添加到此文件。
 
 3. 将以下代码复制到 mongo.js 中。 此代码：
+
     * 需要 Mongoose。
+
     * 替代 Mongo 约定，使用内置到 ES6/ES2015 及更高版本中的基本约定。
-    * 针对 env 文件进行调用，以便根据自己是处在过渡期、生产期还是开发期来设置某些项目。 我们会很快创建该文件。
-    * 包括 MongoDB 连接字符串（将在 env 文件中设置）。
+
+    * 针对 env 文件进行调用，以便根据自己是处在过渡期、生产期还是开发期来设置某些项目。 将在下一部分创建该文件。
+
+    * 包括 MongoDB 连接字符串（在 env 文件中设置）。
+
     * 创建调用 Mongoose 的 connect 函数。
 
     ```javascript
@@ -123,9 +130,10 @@ ms.locfileid: "41918721"
 
 ## <a name="create-a-hero-model"></a>创建 Hero 模型
 
-1.  在“资源管理器”窗格的 server 文件夹下，创建 hero.model.js 文件。
+1. 在“资源管理器”窗格的 server 文件夹下，创建 hero.model.js 文件。
 
-2. 将以下代码复制到 hero.model.js 中。 此代码：
+2. 将以下代码复制到 hero.model.js 中。 此代码提供以下功能：
+
    * 需要 Mongoose。
    * 使用 ID、name 和 saying 创建新架构。
    * 使用该架构创建模型。
@@ -155,9 +163,10 @@ ms.locfileid: "41918721"
 
 ## <a name="create-a-hero-service"></a>创建 Hero 服务
 
-1.  在“资源管理器”窗格的 server 文件夹下，创建 hero.service.js 文件。
+1. 在“资源管理器”窗格的 server 文件夹下，创建 hero.service.js 文件。
 
 2. 将以下代码复制到 hero.service.js 中。 此代码：
+
    * 获取刚创建的模型
    * 连接到数据库
    * 创建 docquery 变量，以便使用 hero.find 方法定义一个返回所有 hero 的查询。
@@ -219,7 +228,7 @@ ms.locfileid: "41918721"
 
 1. 现在，请再次运行该应用。 在 Visual Studio Code 中，保存所有更改，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)。
 
-3. 现在请转到浏览器，打开开发人员工具和“网络”选项卡，然后导航到 http://localhost:3000，其中有我们的应用程序。
+3. 现在请切换到浏览器，打开开发人员工具和“网络”选项卡，然后导航到 http://localhost:3000，其中有我们的应用程序。
 
     ![Azure 门户中的新 Azure Cosmos DB 帐户](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
@@ -227,7 +236,7 @@ ms.locfileid: "41918721"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程的此部分，你已完成以下操作：
+在本教程的此部分，你已完成以下任务：
 
 > [!div class="checklist"]
 > * 使用 Mongoose API 将 heroes 应用连接到 Azure Cosmos DB 

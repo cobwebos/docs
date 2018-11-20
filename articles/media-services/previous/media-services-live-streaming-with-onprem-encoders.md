@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098811"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262227"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
 
@@ -54,7 +54,7 @@ ms.locfileid: "37098811"
 ## <a id="scenario"></a>常见实时传送视频流方案
 以下步骤介绍创建常见的实时传送视频流应用程序时涉及的任务。
 
-1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4（平滑流式处理）流的本地实时编码器。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4（平滑流式处理）流的本地实时编码器。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
     也可以在创建频道后执行此步骤。
 2. 创建并启动频道。
@@ -105,7 +105,7 @@ ms.locfileid: "37098811"
 
     在此方案中，这两个编码器将数据推送到主和辅助 URL。 这提供了最佳的可靠性、容错能力以及数据冗余。 此方案可以容忍两个编码器均失败，并且即使一个编码器停止工作时亦会断开连接。 它假定编码器已同步时间，并提供完全相同的数据。  
 
-有关 RTMP 实时编码器详细信息，请参阅 [Azure 媒体服务的 RTMP 支持和实时编码器](http://go.microsoft.com/fwlink/?LinkId=532824)。
+有关 RTMP 实时编码器详细信息，请参阅 [Azure 媒体服务的 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
 #### <a name="ingest-urls-endpoints"></a>摄取 URL（终结点）
 频道提供你在实时编码器中指定的输入终结点（引入 URL），因此编码器可以将流推送到你的频道。   

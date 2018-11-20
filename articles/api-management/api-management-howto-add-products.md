@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465944"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417287"
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
@@ -35,6 +35,7 @@ ms.locfileid: "49465944"
 
 ## <a name="prerequisites"></a>先决条件
 
++ 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
@@ -83,6 +84,9 @@ ms.locfileid: "49465944"
 2. 导航到“API”选项卡。
 3. 单击“+ 添加”。
 4. 选择 API 并单击“选择”。
+
+> [!TIP]
+> 可以[通过 REST API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建用户的订阅或将其更新为某个产品。
 
 ## <a name="next-steps"></a>后续步骤
 

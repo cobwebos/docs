@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a3329c7f08dfabdf1bb8a010ad5bc865fc509f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964695"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241644"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>基于 TB 量级的数据执行服务器工作负荷预测
 
@@ -58,7 +58,7 @@ ms.locfileid: "46964695"
 
 按照[说明](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
 
- 字段名称| 值 |  
+ 字段名| 值 |  
  |------------|------|
 DSVM IP 地址 | xxx|
  用户名  | xxx|
@@ -69,7 +69,7 @@ DSVM IP 地址 | xxx|
 
 * 具有 Hortonworks Data Platform 版本 3.6 和 Spark 版本 2.1.x 的 HDInsight Spark 群集，最好位于数据所在的美国东部地区。 请访问[在 Azure HDInsight 中创建 Apache Spark 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)，详细了解如何创建 HDInsight 群集。 建议使用一个三工作节点型群集，每个工作节点具有 16 个核心和 112 GB 的内存。 也可直接选择 VM 类型 `D12 V2` 作为头节点，`D14 V2` 作为工作节点。 群集的部署需要约 20 分钟。 尝试该示例需要群集名、SSH 用户名和密码。 将下表与 Azure HDInsight 群集信息一起保存，以供在后续步骤中使用：
 
- 字段名称| 值 |  
+ 字段名| 值 |  
  |------------|------|
  群集名称| xxx|
  用户名  | xxx（默认为 sshuser）|
@@ -78,7 +78,7 @@ DSVM IP 地址 | xxx|
 
 * 一个 Azure 存储帐户。 可以按[这些说明](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)创建一个。 另外，请在该存储帐户中创建两个名为 `fullmodel` 和 `onemonthmodel` 的专用 Blob 容器。 存储帐户用于保存中间计算结果和机器学习模型。 需要使用存储帐户名和访问密钥来尝试此示例。 请将下表与 Azure 存储帐户信息一起保存，以供在后续步骤中使用：
 
- 字段名称| 值 |  
+ 字段名| 值 |  
  |------------|------|
  存储帐户名称| xxx|
  访问密钥  | xxx|
@@ -93,18 +93,18 @@ DSVM IP 地址 | xxx|
 2.  在“项目”页上选择 + 号，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“TB 数据的工作负荷预测”，并选择模板。
-5.  选择**创建**。
+5.  选择“创建”。
 
 可以按照[此说明](./tutorial-classifying-iris-part-1.md)创建包含预先创建的 git 存储库的 Workbench 项目。  
 运行 `git status`，检查用于版本跟踪的文件的状态。
 
 ## <a name="data-description"></a>数据说明
 
-此示例中使用的数据是综合性的服务器工作负荷数据， 托管于可在美国东部地区公开访问的 Azure Blob 存储帐户中。 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) 的 `dataFile` 字段中提供了具体的存储帐户信息，格式为“wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>”。 可以直接使用 Blob 存储中的数据。 如果许多用户同时使用存储，你可以使用 [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 将数据下载到自己的存储中，以便获得更好的试验体验。 
+此示例中使用的数据是综合性的服务器工作负荷数据， 托管于可在美国东部区域公开访问的 Azure Blob 存储帐户中。 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) 的 `dataFile` 字段中提供了具体的存储帐户信息，格式为“wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>”。 可以直接使用 Blob 存储中的数据。 如果许多用户同时使用存储，你可以使用 [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 将数据下载到自己的存储中，以便获得更好的试验体验。 
 
 总数据大小约为 1 TB。 每个文件约为 1-3 GB，且是不含标头的 CSV 文件格式。 每行数据代表某个特定服务器上的事务负荷。 数据架构的详细信息如下所示：
 
-列号 | 字段名称| Type | Description |  
+列号 | 字段名| 类型 | Description |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | Datetime |    会话开始时间
 2  |`SessionEnd`    | Datetime | 会话结束时间
@@ -132,12 +132,12 @@ DSVM IP 地址 | xxx|
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | Type | Description |
+| 文件名 | 类型 | Description |
 |-----------|------|-------------|
-| `Code` | 文件夹 | 包含该示例中所有代码的文件夹。 |
-| `Config` | 文件夹 | 包含配置文件的文件夹。 |
-| `Image` | 文件夹 | 用于保存自述文件的图像的文件夹。 |
-| `Model` | 文件夹 | 用于保存从 Blob 存储下载的模型文件的文件夹。 |
+| `Code` | Folder | 包含该示例中所有代码的文件夹。 |
+| `Config` | Folder | 包含配置文件的文件夹。 |
+| `Image` | Folder | 用于保存自述文件的图像的文件夹。 |
+| `Model` | Folder | 用于保存从 Blob 存储下载的模型文件的文件夹。 |
 | `Code/etl.py` | Python 文件 | 用于数据准备和特征工程的 Python 文件。 |
 | `Code/train.py` | Python 文件 | 用于定型三类多分类模型的 Python 文件。  |
 | `Code/webservice.py` | Python 文件 | 用于实施的 Python 文件。  |
@@ -163,7 +163,7 @@ DSVM IP 地址 | xxx|
 
 应将一个容器用于一个月数据集的试验，将另一个容器用于完整数据集的试验。 因为数据和模型另存为 Parquet 文件，所以每个文件实际上是容器中的一个文件夹，包含多个 Blob。 生成的容器如下所示：
 
-| Blob 前缀名称 | Type | Description |
+| Blob 前缀名称 | 类型 | Description |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数字功能的标准扩展器模型。 |
 | stringIndexModel | Parquet | 非数字功能的字符串索引器模型。|
@@ -189,7 +189,7 @@ DSVM IP 地址 | xxx|
 
 第一个参数 `configFilename` 是本地配置文件，可以在该文件中存储 Blob 存储信息并指定加载数据的位置。 默认情况下，它是 [`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json)，并将在一个月数据运行中使用。 我们还加入了 [`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json)，完整数据集运行中将需要使用。 配置中的内容如下所示： 
 
-| 字段 | Type | Description |
+| 字段 | 类型 | Description |
 |-----------|------|-------------|
 | storageAccount | String | Azure 存储帐户名称 |
 | storageContainer | String | Azure 存储帐户中用于存储中间结果的容器 |

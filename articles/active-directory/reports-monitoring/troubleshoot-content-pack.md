@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 01/15/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf50dbf942dc7a82afbb60455be45b6c4b287ccd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782155"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623292"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -30,47 +30,45 @@ ms.locfileid: "43782155"
 |目前，Azure AD Power BI 内容包使用 Azure AD Graph API 检索 Azure AD 租户中的数据。 因此，你可能会发现内容包中可用数据与使用[用于报告的 Microsoft Graph API](concept-reporting-api.md) 检索的数据之间存在一些差异。 |
 |  |
 
-在使用 Azure Active Directory 预览版的 Power BI 内容包，可能会遇到以下错误： 
+在使用 Azure Active Directory (Azure AD) 的 Power BI 内容包时，可能会遇到以下错误： 
 
 - [刷新失败](troubleshoot-content-pack.md#refresh-failed) 
 - [无法更新数据源凭据](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [导入数据的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
- 
+- [导入数据花费的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
 本文提供了有关可能的原因以及如何修复这些错误的信息。
- 
+ 
 ## <a name="refresh-failed"></a>刷新失败 
- 
+ 
 此错误是如何发现的：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
 
 
 | 原因 | 如何解决 |
 | ---   | ---        |
-| 当连接到内容包的用户的凭据被重置，但在内容包的连接设置中未更新时，可能会导致刷新失败错误。 | 在 Power BI 中，找到与 Azure Active Directory 活动日志仪表板（Azure Active Directory 活动日志）相对应的数据集，选择计划刷新，然后输入你的 Azure AD 凭据。 |
-| 由于基础内容包中的数据问题可能会导致刷新失败。 | 请提交一个支持票证。 有关详细信息，请参阅[如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+| 当连接到内容包的用户的凭据被重置，但在内容包的连接设置中未更新时，可能会导致刷新失败错误。 | 在 Power BI 中，找到与 Azure AD 活动日志仪表板（**Azure Active Directory 活动日志**）相对应的数据集，选择计划刷新，然后输入你的 Azure AD 凭据。 |
+| 由于基础内容包中的数据问题可能会导致刷新失败。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
  
- 
+ 
 ## <a name="failed-to-update-data-source-credentials"></a>无法更新数据源凭据 
- 
-此错误是如何发现的：在 Power BI 中，当连接到 Azure Active Directory 活动日志（预览版）内容包时，会出现此错误。 
+ 
+**此错误是如何发现的**：在 Power BI 中，当连接到 Azure AD 活动日志内容包时，会出现此错误。 
 
 | 原因 | 如何解决 |
 | ---   | ---        |
-| 连接的用户既不是全局管理员，也不是安全读者或安全管理员。 | 请使用全局管理员、安全读者或安全管理员的帐户来访问内容包。 |
-| 你的租户不是高级租户，或者至少没有一个拥有高级许可文件的用户。 | 请提交一个支持票证。 有关详细信息，请参阅[如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+| 连接的用户既不是全局管理员，也不是安全读者或安全管理员。 | 使用全局管理员、安全读者或安全管理员的帐户来访问内容包。 |
+| 你的租户不是高级租户，或者至少没有一个拥有高级许可文件的用户。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
  
 
- 
 
-## <a name="importing-of-data-is-taking-too-long"></a>导入数据的时间过长 
- 
-此错误是如何发现的：在 Power BI 中，一旦连接内容包后，数据导入进程就会开始为 Azure Active Directory 活动日志准备仪表板。 你会看到消息：“正在导入数据...”  
+## <a name="data-import-is-too-slow"></a>数据导入速度太慢 
+ 
+**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 你会看到消息：**正在导入数据...** 且没有进一步的进展。  
 
 | 原因 | 如何解决 |
 | ---   | ---        |
-| 根据租户大小，此步骤可能会需要从几分钟到 30 分钟不等的时间。 | 请耐心等待。 如果该消息在一个小时内没有更改显示你的仪表板，请提交支持票证。 有关详细信息，请参阅[如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+| 根据租户大小，此步骤可能会需要从几分钟到 30 分钟不等的时间。 | 如果该消息在一个小时内没有更改显示你的仪表板，请[提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
 
 ## <a name="next-steps"></a>后续步骤
 
-若要为 Azure Active Directory 预览版安装 Power BI 内容包，请单击[此处](https://powerbi.microsoft.com/blog/azure-active-directory-meets-power-bi/)。
-
-
+* [为 Azure AD 报表安装 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
+* [将 Power BI 内容包用于 Azure AD 报表来可视化数据](howto-power-bi-content-pack.md)
+* [如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)

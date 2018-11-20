@@ -11,12 +11,12 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: cfcb53b6e95250a1ccbebfdfcfbff5ec8479504b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886947"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230363"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Project Online 项目、任务和资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "42886947"
 * 列出现有的项目或任务。
 * 签出、签入或发布项目
 
-Project Online 提供了强大的项目管理功能，可以帮助你规划、管理项目和项目组合投资以及设置其优先级，这几乎可以从任何位置在任何设备上进行。 可以使用 Project Online 触发器从 Project Online 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 Project Online 中执行各种任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+Project Online 提供了强大的项目管理功能，可以帮助你规划、管理项目和项目组合投资以及设置其优先级，这几乎可以从任何位置在任何设备上进行。 可以使用 Project Online 触发器从 Project Online 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 Project Online 中执行各种任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +58,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
 
    你的凭据授权逻辑应用创建与 Project Online 的连接并访问你的数据。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -67,7 +67,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

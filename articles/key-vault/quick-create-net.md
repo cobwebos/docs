@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604172"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230925"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
@@ -25,7 +25,7 @@ ms.locfileid: "45604172"
 > * 在密钥保管库中存储机密。
 > * 从密钥保管库检索机密。
 > * 创建 Azure Web 应用程序。
-> * 为 Web 应用启用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+> * 为 Web 应用启用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。
 > * 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
 
 在我们进一步讨论之前，请阅读[基本概念](key-vault-whatis.md#basic-concepts)。
@@ -135,7 +135,7 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 2. 选择“发布” > “开始”。
 3. 创建新的**应用服务**，然后选择“发布”。
 4. 将应用名称更改为“keyvaultdotnetcorequickstart”。
-5. 选择**创建**。
+5. 选择“创建”。
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 

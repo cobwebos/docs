@@ -45,6 +45,15 @@ items:
         href: Quickstarts/publish-kb-nodejs.md
       - name: Python
         href: Quickstarts/publish-kb-python.md
+- name: 教程
+  items:
+  - name: 创建 KB 并从 KB 回答
+    displayName: curl, publish, chit-chat, chit chat
+    href: Tutorials/create-publish-query-in-portal.md
+  - name: 使用 C# 创建 KB 并从 KB 回答
+    href: Tutorials/create-publish-answer.md
+  - name: 创建 QnA Maker 机器人
+    href: Tutorials/create-qna-bot.md
 - name: 概念
   items:
   - name: 知识库
@@ -54,49 +63,54 @@ items:
   - name: 最佳做法
     href: Concepts/best-practices.md
   - name: 置信度分数
+    displayName: DefaultAnswer, Default answer
     href: Concepts/confidence-score.md
   - name: 支持的数据源
     href: Concepts/data-sources-supported.md
 - name: 操作指南
   items:
-  - name: 设置 QnA Maker 服务
-    href: How-To/set-up-qnamaker-service-azure.md
-  - name: 创建并发布知识库
-    href: Quickstarts/create-publish-knowledge-base.md
-  - name: 创建知识库
-    href: How-To/create-knowledge-base.md
-  - name: 向知识库添加聊天内容
-    href: How-to/chit-chat-knowledge-base.md
-  - name: 将元数据与 GenerateAnswer API 配合使用
-    href: How-To/metadata-generateanswer-usage.md
-  - name: 从预览版迁移知识库
-    href: Tutorials/migrate-knowledge-base.md
-  - name: 编辑知识库
-    href: How-To/edit-knowledge-base.md
-  - name: 针对知识库进行协作
-    href: How-To/collaborate-knowledge-base.md
-  - name: 测试知识库
-    href: How-To/test-knowledge-base.md
-  - name: 发布知识库
-    href: How-To/publish-knowledge-base.md
-  - name: 获取有关知识库的分析
-    href: How-To/get-analytics-knowledge-base.md
-  - name: 管理密钥
-    href: How-To/key-management.md
-  - name: 以另一种语言创建知识库
-    href: How-To/language-knowledge-base.md
-  - name: 使用 Azure 机器人服务创建 QnA 机器人
-    href: Tutorials/create-qna-bot.md
-  - name: 集成 QnA Maker 和 LUIS
-    href: Tutorials/integrate-qnamaker-luis.md
-  - name: 为 QnA Maker 创建业务连续性计划
-    href: How-To/business-continuity-plan.md
-  - name: 为 QnA Maker 开发选择容量
-    href: Tutorials/choosing-capacity-qnamaker-deployment.md
-  - name: 升级 QnA Maker 服务
-    href: How-To/upgrade-qnamaker-service.md
-  - name: 排查 QnAMaker 运行时问题并对其更新
-    href: How-To/troubleshooting-runtime.md
+  - name: 管理知识库
+    items:
+    - name: 创建并发布知识库
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: 创建知识库
+      href: How-To/create-knowledge-base.md
+    - name: 向知识库添加聊天内容
+      href: How-to/chit-chat-knowledge-base.md
+    - name: 将元数据与 GenerateAnswer API 配合使用
+      href: How-To/metadata-generateanswer-usage.md
+    - name: 从预览版迁移知识库
+      href: Tutorials/migrate-knowledge-base.md
+    - name: 编辑知识库
+      href: How-To/edit-knowledge-base.md
+    - name: 针对知识库进行协作
+      href: How-To/collaborate-knowledge-base.md
+    - name: 以另一种语言创建知识库
+      href: How-To/language-knowledge-base.md
+    - name: 发布知识库
+      href: How-To/publish-knowledge-base.md
+    - name: 测试知识库
+      href: How-To/test-knowledge-base.md
+  - name: 与其他服务集成
+    items:
+    - name: 集成 QnA Maker 和 LUIS
+      href: Tutorials/integrate-qnamaker-luis.md
+  - name: 管理服务
+    items:
+    - name: 设置 QnA Maker 服务
+      href: How-To/set-up-qnamaker-service-azure.md
+    - name: 获取有关知识库的分析
+      href: How-To/get-analytics-knowledge-base.md
+    - name: 管理密钥
+      href: How-To/key-management.md
+    - name: 为 QnA Maker 开发选择容量
+      href: Tutorials/choosing-capacity-qnamaker-deployment.md
+    - name: 升级 QnA Maker 服务
+      href: How-To/upgrade-qnamaker-service.md
+    - name: 为 QnA Maker 创建业务连续性计划
+      href: How-To/business-continuity-plan.md
+    - name: 排查 QnAMaker 运行时问题并对其更新
+      href: How-To/troubleshooting-runtime.md
   - name: 使用 REST API
     items:
     - name: C#
@@ -139,9 +153,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: 博客
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: 3c072165fe8d46f0518c5e777580453214dc86f5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 7bec0228aa8900f004aa61c2ae5316655628e101
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456671"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623523"

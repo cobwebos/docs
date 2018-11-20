@@ -1,5 +1,5 @@
 ---
-title: 企业安全性套餐 Hadoop 安全性简介
+title: 使用企业安全性套餐实现 Apache Hadoop 安全性简介
 description: 了解企业安全性套餐如何支持企业安全的 4 个支柱。
 services: hdinsight
 ms.service: hdinsight
@@ -9,23 +9,23 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf94ba73d57763f5e05ed9b33d10bb335103400a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946385"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631993"
 ---
-# <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>企业安全性套餐 Hadoop 安全性简介
+# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>使用企业安全性套餐实现 Apache Hadoop 安全性简介
 
-以前，Azure HDInsight 仅支持一个用户：本地管理员。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Hadoop 的工作负荷在企业细分市场中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 
+以前，Azure HDInsight 仅支持一个用户：本地管理员。这种情况对于应用程序团队或部门而言比较有利。 随着基于 Apache Hadoop 的工作负荷在企业部门中越来越普及，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制等企业级功能需求也变得日益重要。 
 
 现可创建已加入 Active Directory 域的企业安全性套餐 (ESP) HDInsight 群集。 接下来可配置企业员工的列表，这些员工可通过 Azure Active Directory 进行身份验证并登录到 HDInsight 群集。 企业外部的任何人都无法登录或访问 HDInsight 群集。 
 
-企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制 (RBAC) 来实现 Hive 安全性。 配置 RBAC 可将数据访问权限限制为仅满足使用需求。 最后，管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。 这样，管理员即可实现对其企业资源的高度控制。
+企业管理员可以使用 [Apache Ranger](http://hortonworks.com/apache/ranger/) 配置基于角色的访问控制 (RBAC) 来实现 Apache Hive 安全性。 配置 RBAC 可将数据访问权限限制为仅满足使用需求。 最后，管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。 这样，管理员即可实现对其企业资源的高度控制。
 
 > [!NOTE]
-> 本文中所述的新功能仅在以下群集类型上以预览版提供：Hadoop、Spark 和交互式查询。 ESP 群集上现已启用 Oozie。 若要访问 Oozie Web UI，用户应启用[隧道](../hdinsight-linux-ambari-ssh-tunnel.md)。
+> ESP 群集上现已启用 Oozie。 若要访问 Oozie Web UI，用户应启用[隧道](../hdinsight-linux-ambari-ssh-tunnel.md)。
 
 企业安全性包含四大支柱 - 外围安全性、身份验证、授权和加密。
 

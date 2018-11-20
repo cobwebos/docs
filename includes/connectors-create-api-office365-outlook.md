@@ -1,3 +1,16 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: b216de0a5094066977467b2899567122d585fb7e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133393"
+---
 #### <a name="prerequisites"></a>先决条件
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 一个 [Office 365](https://office365.com) 帐户  
@@ -13,7 +26,7 @@
 3. 选择“登录”，并输入用户名和密码。 选择“登录”：  
     ![Office 365 连接创建步骤](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
    
-    这些凭据用于授权逻辑应用连接到 Office 365 帐户，然后访问该帐户。 
+    这些凭据将用于授权逻辑应用连接到 Office 365 帐户，并访问该帐户。 
 4. 请注意，连接已创建。 现在，继续在逻辑应用中执行其他步骤：   
     ![Office 365 连接创建步骤](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
 

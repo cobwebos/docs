@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322712"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281212"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
 可以通过 Azure 数字孪生服务重新创建物理环境的数字图像。 然后，你可以获得环境中事件的通知并自定义对其的响应。 
 
 本快速入门使用[一对 .NET 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)将一栋虚构的办公大楼数字化，并介绍如何查找该大楼中的可用房间。 可以通过数字孪生将多个传感器与环境相关联。 除了房间可用性，还可以借助二氧化碳模拟传感器来确定可用房间的空气质量是否理想。 其中一个示例应用程序会生成用于可视化此方案的随机传感器数据。
+
+以下视频汇总了快速入门设置：
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +40,7 @@ ms.locfileid: "49322712"
 
 使用此部分的步骤在[门户](https://portal.azure.com)中创建数字孪生的新实例。
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>设置应用的权限
 

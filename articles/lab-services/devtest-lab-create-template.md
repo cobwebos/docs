@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687802"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248055"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像
 
@@ -33,7 +33,7 @@ ms.locfileid: "38687802"
 
 以下步骤将引导使用 Azure 门户基于 VHD 文件创建自定义映像：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
@@ -60,12 +60,9 @@ ms.locfileid: "38687802"
 
 1. 如果用于创建自定义映像的映像不是已授权映像（由 Microsoft 发布），还可以输入计划名称、计划套餐和计划发布服务器。
 
-   - 
-  **计划名称：** 输入从中创建此自定义映像的市场映像 (SKU) 的名称 
-   - 
-  **计划产品/服务：** 输入从中创建此自定义映像的市场映像的产品（服务） 
-   - 
-  **计划发布服务器：** 输入从中创建此自定义映像的市场映像的发布服务器
+   - **计划名称：** 输入从中创建此自定义映像的市场映像 (SKU) 的名称 
+   - **计划产品/服务：** 输入从中创建此自定义映像的市场映像的产品（服务） 
+   - **计划发布服务器：** 输入从中创建此自定义映像的市场映像的发布服务器
 
    > [!NOTE]
    > 如果要用于创建自定义映像的映像**不**是已授权映像，则这些字段为空并且在你选择时可以填写。 如果该映像**是**已授权映像，则可以使用计划信息自动填充这些字段。 如果在这种情况下尝试更改这些字段，将显示一条警告消息。

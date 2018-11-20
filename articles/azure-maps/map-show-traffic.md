@@ -3,18 +3,18 @@ title: 使用 Azure Maps 显示交通信息 | Microsoft Docs
 description: 如何在 Javascript 地图上显示交通数据
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/14/2018
+ms.date: 11/10/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6d5c721ab84c28bae9415dceeaa09fd12cc05824
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 45f7913c5cc69f99b01ba1a911910273673856d3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733004"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51513751"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
@@ -27,7 +27,7 @@ ms.locfileid: "45733004"
 
 在上面的代码中，第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](map-create.md)。
 
-第二个代码块使用 map 类的 [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) 函数在地图上呈现交通流量和事件。
+第二个代码块使用地图的[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中的 [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) 函数在地图上呈现交通流量和事件。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -39,7 +39,7 @@ ms.locfileid: "45733004"
 有关完整代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [代码示例页](http://aka.ms/AzureMapsSamples)
+> [代码示例页](https://aka.ms/AzureMapsSamples)
 
 增强用户体验：
 

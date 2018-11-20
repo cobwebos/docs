@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146195"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233076"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本主题说明并指导完成 SQL Server Reporting Services 本机模式报表服务器在 Azure 虚拟机中的部署和配置。 本文档中的步骤使用一系列手动步骤来创建虚拟机以及用于在 VM 上配置 Reporting Services 的 Windows PowerShell 脚本。 配置脚本包括为 HTTP 或 HTTPs 打开防火墙端口。
 
@@ -90,7 +90,7 @@ ms.locfileid: "42146195"
 
 为了在 VM 上使用 HTTPS，需要受信任的 SSL 证书。 具体取决于方案，可以使用以下两种方法之一：
 
-* 由证书颁发机构 (CA) 颁发并受 Microsoft 信任的有效 SSL 证书。 CA 根证书都需要通过 Microsoft 根证书计划分发。 有关此计划的详细信息，请参阅 [Windows 和 Windows Phone 8 SSL 根证书计划（成员 CA）](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)和 [Microsoft 根证书计划简介](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)。
+* 由证书颁发机构 (CA) 颁发并受 Microsoft 信任的有效 SSL 证书。 CA 根证书都需要通过 Microsoft 根证书计划分发。 有关此计划的详细信息，请参阅 [Windows 和 Windows Phone 8 SSL 根证书计划（成员 CA）](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)和 [Microsoft 根证书计划简介](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)。
 * 自签名证书。 不建议将自签名证书用于生产环境。
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>使用由受信任证书颁发机构 (CA) 创建的证书

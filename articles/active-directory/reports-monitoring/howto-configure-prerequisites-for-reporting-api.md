@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8d610dc74b7e2ef10295bc0a3407cf7c3d781b51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f72d15707d9f56b9e9b5a5d527d1204007c40afa
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140802"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621966"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -31,12 +31,10 @@ ms.locfileid: "42140802"
 
 若要准备访问报告 API，需要执行以下操作：
 
-1. 分配角色
-2. 注册应用程序
-3. 授予权限
-4. 收集配置设置
-
-
+1. [分配角色](#assign-roles)
+2. [注册应用程序](#register-an-application)
+3. [授予权限](#grant-permissions)
+4. [收集配置设置](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>分配角色
 
@@ -46,37 +44,34 @@ ms.locfileid: "42140802"
 
 - 安全管理员
 
-- 全局管理员
-
-
+- 全局管理员角色
 
 
 ## <a name="register-an-application"></a>注册应用程序
 
-即使是在使用脚本来访问报告 API，也需要注册一个应用。 该操作会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
+即使是在使用脚本来访问报告 API，也需要注册一个应用程序。 该操作会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
-若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中“全局管理员”目录角色成员的 Azure 管理员帐户登录到 Azure 门户。
+若要配置目录以访问 Azure AD 报告 API，必须使用同为 Azure AD 租户中**全局管理员**目录角色成员的 Azure 管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 > [!IMPORTANT]
-> 在具有此类“管理”特权的凭据下运行的应用程序可以具有非常强大的功能，因此请务必保证应用程序 ID/机密凭据的安全。
+> 在具有管理员权限的凭据下运行的应用程序可能具有非常强大的功能，因此请务必将应用程序的 ID 和机密凭据放置在一个安全的位置。
 > 
 
+**若要注册 Azure AD 应用程序，请执行以下操作：**
 
-**若要注册 Azure Active Directory 应用程序，请执行以下操作：**
-
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)中，从左侧导航窗格中选择“Azure Active Directory”。
    
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. 在“Azure Active Directory”页中，单击“应用注册”。
+2. 在“Azure Active Directory”页面中，选择“应用注册”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. 在“应用注册”页顶部的工具栏中，单击“新建应用程序注册”。
+3. 在“应用注册”页面中，选择“新建应用程序注册”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. 在“创建”页中，执行以下步骤：
+4. 在“创建”页面中，执行以下步骤：
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
@@ -86,7 +81,7 @@ ms.locfileid: "42140802"
 
     c. 在“登录 URL”文本框中，键入 `https://localhost`。
 
-    d. 单击“创建”。 
+    d. 选择“创建”。 
 
 
 ## <a name="grant-permissions"></a>授予权限 
@@ -101,54 +96,49 @@ ms.locfileid: "42140802"
 
 ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
-
 以下部分列出适用于这两个 API 的步骤。 如果你不想访问其中一个 API，可以跳过相关步骤。
- 
 
 **若要授予应用程序使用 API 的权限，请执行以下操作：**
 
-1. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
-
-2. 在“报告 API 应用程序”页顶部的工具栏中，单击“设置”。 
+1. 从“应用注册”页面中选择你的应用程序，然后选择“设置”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-3. 在“设置”页中，单击“所需权限”。 
+2. 在“设置”页面中，选择“所需的权限”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-4. 在“所需的权限”页的“API”列表中，单击“Windows Azure Active Directory”。 
+3. 在“所需的权限”页的“API”列表中，单击“Windows Azure Active Directory”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-5. 在“启用访问”页上，选择“读取目录数据”并取消选择“登录并读取用户个人资料”。 
+4. 在“启用访问”页上，选择“读取目录数据”并取消选择“登录并读取用户个人资料”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-6. 在顶部工具栏中，单击“保存”。
+5. 在顶部工具栏中，单击“保存”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
-7. 在“所需权限”页顶部的工具栏中，单击“添加”。
+6. 在“所需权限”页顶部的工具栏中，单击“添加”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
-8. 在“添加 API 访问权限”页中，单击“选择 API”。
+7. 在“添加 API 访问权限”页中，单击“选择 API”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
-9. 在“选择 API”页上，单击“Microsoft Graph”，然后单击“选择”。
+8. 在“选择 API”页上，单击“Microsoft Graph”，然后单击“选择”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
-10. 在“启用访问”页上，选择“读取所有审核日志数据”，然后单击“选择”。  
+9. 在“启用访问”页上，选择“读取所有审核日志数据”，然后单击“选择”。  
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
+10. 在“添加 API 访问权限”页中，单击“完成”。  
 
-11. 在“添加 API 访问权限”页中，单击“完成”。  
-
-12. 在“所需权限”页顶部的工具栏中， 单击“授予权限”，然后单击“是”。
+11. 在“所需权限”页顶部的工具栏中， 单击“授予权限”，然后单击“是”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
@@ -167,11 +157,11 @@ ms.locfileid: "42140802"
 
 **若要获取域名，请执行以下操作：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，单击“Azure Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)中，在左侧导航窗格中，选择“Azure Active Directory”。
    
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. 在“Azure Active Directory”页上，单击“自定义域名”。
+2. 在“Azure Active Directory”页上，选择“自定义域名”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
@@ -186,12 +176,11 @@ ms.locfileid: "42140802"
    
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
+2. 从“应用注册”页面中选择你的应用程序。
 
-3. 在“报告 API 应用程序”页中，指向“应用程序 ID”，并单击“单击复制”。
+3. 从应用程序页面中，导航到“应用程序 ID”并选择“单击以复制”。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
-
 
 
 ### <a name="get-your-applications-client-secret"></a>获取应用程序的客户端机密
@@ -203,17 +192,15 @@ ms.locfileid: "42140802"
    
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. 在“应用注册”页的应用列表中，单击“报告 API 应用程序”。
+2.  从“应用注册”页面中选择你的应用程序。
 
-
-3. 在“报告 API 应用程序”页顶部的工具栏中，单击“设置”。 
+3. 在应用程序页面上，在顶部的工具栏中，选择“设置”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-4. 在“设置”页的“APIR 访问”部分，单击“密钥”。 
+4. 在“设置”页面上，在“API 访问”部分中，单击“密钥”。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/12.png)
-
 
 5. 在“密钥”页中执行以下步骤：
 
@@ -231,6 +218,5 @@ ms.locfileid: "42140802"
 ## <a name="next-steps"></a>后续步骤
 
 * [使用具有证书的 Azure Active Directory 报告 API 获取数据](tutorial-access-api-with-certificates.md)
-* [获取报告 API 的第一印象](concept-reporting-api.md)
 * [审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

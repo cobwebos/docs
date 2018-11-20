@@ -3,17 +3,17 @@ title: 了解 Azure 流分析作业的兼容性级别
 description: 了解如何设置 Azure 流分析作业的兼容性级别，并了解最新兼容性级别中的重大更改
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/03/2018
-ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 10/15/2018
+ms.openlocfilehash: 83bbb777f5af6d29736db3b53ca39c449402c78e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699104"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977707"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
  
@@ -68,5 +68,5 @@ ms.locfileid: "43699104"
   * **当前版本：** 不再将包含日期/时间/时区信息的字符串值自动向上转换为日期/时间类型。 因此会保留时区信息。 
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure 流分析故障排除指南](stream-analytics-troubleshooting-guide.md)
+* [Azure 流分析输入的故障排除](stream-analytics-troubleshoot-input.md)
 * [流分析“资源运行状况”边栏选项卡](stream-analytics-resource-health.md)

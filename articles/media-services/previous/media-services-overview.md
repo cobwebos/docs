@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cc6cb768e9403a09ea09309e0ffd85ce9012cb41
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352080"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211598"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [版本 2 - 公开发行版](media-services-overview.md)
-> * [版本 3 - 预览版](../latest/media-services-overview.md)
+> * [第 2 版](media-services-overview.md)
+> * [第 3 版](../latest/media-services-overview.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 

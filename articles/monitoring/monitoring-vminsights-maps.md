@@ -1,6 +1,6 @@
 ---
-title: 如何使用适用于 VM 的 Azure Monitor 查看应用依赖性 | Microsoft Docs
-description: 映射是适用于 VM 的 Azure Monitor 的功能，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文详细介绍如何在各种场景中使用映射。
+title: 如何使用用于 VM 的 Azure Monitor（预览版）查看应用依赖项 | Microsoft Docs
+description: 映射是适用于 VM 的 Azure Monitor 的功能，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文详细介绍如何在各种场景中使用该功能。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ac96de2669a75a5966650afc0b49cc2f926537fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402143"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614202"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>使用适用于 VM 的 Azure Monitor 映射了解应用程序组件
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor（预览版）映射了解应用程序组件
 查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中观察或通过 VM 组在 Azure Monitor 中观察。 
 
 可以通过本文了解这两个角度的不同体验，以及如何使用映射功能。 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](monitoring-vminsights-onboard.md)。
@@ -52,7 +52,7 @@ ms.locfileid: "49402143"
 - 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”）。
 - 根据指标度量值选择警报。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+有关 Azure 警报和创建警报规则的详细信息，请参阅 [Azure Monitor 中的统一警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
 
 右上角的“图例”选项描述地图上的符号和角色。  若要放大以进一步查看地图并四处移动，可使用页面右下角的“缩放”控件设置缩放级别并使页面适应当前页的大小。  
 

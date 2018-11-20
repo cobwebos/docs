@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159833"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228039"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级和业务关键层](sql-database-service-tiers-vcore.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。 
@@ -47,7 +47,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 * 在“对象资源管理器”中，右键单击数据库节点。
 * 单击“报表” > “标准报表” > “事务能分析概述”。
 
-有关详细信息，请参阅[确定表或存储过程是否应移植到内存中 OLTP](http://msdn.microsoft.com/library/dn205133.aspx)
+有关详细信息，请参阅[确定表或存储过程是否应移植到内存中 OLTP](https://msdn.microsoft.com/library/dn205133.aspx)
 
 ## <a name="step-3-create-a-comparable-test-database"></a>步骤 3：创建可比较的测试数据库
 假设报告指出数据库的某个表在转换成内存优化的表后会带来好处。 我们建议先进行测试，以确认这项指示。
@@ -80,9 +80,9 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
    * 此时会显示“表内存优化顾问”向导。
 3. 在向导中，单击“迁移验证”（或“下一步”按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
-   * [内存优化顾问中的](http://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。
-   * [内存中 OLTP 不支持的 Transact-SQL 构造](http://msdn.microsoft.com/library/dn246937.aspx)。
-   * [迁移到内存中 OLTP](http://msdn.microsoft.com/library/dn247639.aspx)。
+   * [内存优化顾问中的](https://msdn.microsoft.com/library/dn284308.aspx)*内存优化清单*。
+   * [内存中 OLTP 不支持的 Transact-SQL 构造](https://msdn.microsoft.com/library/dn246937.aspx)。
+   * [迁移到内存中 OLTP](https://msdn.microsoft.com/library/dn247639.aspx)。
 4. 如果该表没有不受支持的功能，顾问可执行实际的架构和数据迁移。
 
 #### <a name="manual-t-sql"></a>手动 T-SQL
@@ -114,7 +114,7 @@ In-Memory 功能还可以修改存储过程，以改善性能。
 * NATIVE_COMPILATION
 * SCHEMABINDING：表示除非丢弃存储过程，否则无法由存储过程以任何影响到存储过程的方式更改其列定义的表。
 
-本机模块必须使用一个大型 [ATOMIC 块](http://msdn.microsoft.com/library/dn452281.aspx)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果代码检测到违反业务规则，它可以使用 [THROW](http://msdn.microsoft.com/library/ee677615.aspx) 语句终止原子块。
+本机模块必须使用一个大型 [ATOMIC 块](https://msdn.microsoft.com/library/dn452281.aspx)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果代码检测到违反业务规则，它可以使用 [THROW](https://msdn.microsoft.com/library/ee677615.aspx) 语句终止原子块。
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>本机编译存储过程的典型 CREATE PROCEDURE
 创建本机编译存储过程的 T-SQL 通常类似于以下模板：
@@ -145,7 +145,7 @@ CREATE PROCEDURE schemaname.procedurename
 2. 重写其标头以符合前面的模板。
 3. 确认存储过程 T-SQL 代码是否使用了任何不支持本机编译存储过程的功能。 根据需要实施应对措施。
    
-   * 有关详细信息，请参阅[本机编译存储过程的迁移问题](http://msdn.microsoft.com/library/dn296678.aspx)。
+   * 有关详细信息，请参阅[本机编译存储过程的迁移问题](https://msdn.microsoft.com/library/dn296678.aspx)。
 4. 使用 SP_RENAME 重命名旧存储过程。 或直接将它删除。
 5. 运行已编辑的 CREATE PROCEDURE T-SQL 脚本。
 
@@ -168,7 +168,7 @@ CREATE PROCEDURE schemaname.procedurename
 * [使用动态管理视图监视 Azure SQL 数据库](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>相关链接
-* [内存中 OLTP（内存中优化）](http://msdn.microsoft.com/library/dn133186.aspx)
-* [本机编译的存储过程简介](http://msdn.microsoft.com/library/dn133184.aspx)
-* [内存优化顾问](http://msdn.microsoft.com/library/dn284308.aspx)
+* [内存中 OLTP（内存中优化）](https://msdn.microsoft.com/library/dn133186.aspx)
+* [本机编译的存储过程简介](https://msdn.microsoft.com/library/dn133184.aspx)
+* [内存优化顾问](https://msdn.microsoft.com/library/dn284308.aspx)
 

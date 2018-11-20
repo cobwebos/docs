@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409503"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282673"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../log-analytics/log-analytics-data-sources.md)以及[从 Azure 中收集的数据](../log-analytics/log-analytics-azure-storage.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../log-analytics/log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   
@@ -30,8 +30,8 @@ ms.locfileid: "49409503"
 ## <a name="prerequisites"></a>先决条件
 此方案要求在 Azure 订阅中配置以下资源。  两者皆可为免费帐户。
 
-- [Log Analytics 工作区](../log-analytics/log-analytics-get-started.md)。
-- [Azure 自动化帐户](../automation/automation-offering-get-started.md)。
+- [Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+- [Azure 自动化帐户](..//automation/automation-quickstart-create-account.md)。
 
 ## <a name="overview-of-scenario"></a>方案概述
 对于本教程，将编写用于收集自动化作业相关信息的 runbook。  Azure 自动化中的 Runbook 是通过 PowerShell 实现的，所以首先是在 Azure 自动化编辑器中编写和测试脚本。  确认正在收集所需信息后，将数据写入 Log Analytics 并验证自定义数据类型。  最后，创建用于定期启动 runbook 的计划。
@@ -145,7 +145,7 @@ Azure 自动化包含用于[测试 runbook](../automation/automation-testing-run
     ![发布输出](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5.验证 Log Analytics 中的记录
-完成 runbook 的测试，并确认成功接收到输出后，便可验证记录是否是使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)创建的。
+完成 runbook 的测试，并确认成功接收到输出后，便可验证记录是否是使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-queries.md)创建的。
 
 ![日志输出](media/monitoring-runbook-datacollect/log-output.png)
 
@@ -198,7 +198,7 @@ Azure 自动化包含用于[测试 runbook](../automation/automation-testing-run
 8. 单击“确定”。 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.验证 runbook 是否按计划启动
-每次启动 runbook，都会[创建一个作业](../automation/automation-runbook-execution.md)并记录任何输出。  实际上，这些正是 runbook 在收集的作业。  通过在计划启动时间已过去后，检查 runbook 作业，可以验证 runbook 是否按预期启动。
+每次启动 runbook 时，都会[创建一个作业](../automation/automation-runbook-execution.md)并记录任何输出。  实际上，这些正是 runbook 在收集的作业。  通过在计划启动时间已过去后，检查 runbook 作业，可以验证 runbook 是否按预期启动。
 
 ![作业](media/monitoring-runbook-datacollect/jobs.png)
 

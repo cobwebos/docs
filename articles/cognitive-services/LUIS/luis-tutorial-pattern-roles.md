@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886154"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277830"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
 
@@ -42,14 +42,14 @@ ms.locfileid: "48886154"
 > * 使用现有的教程应用
 > * 创建新实体
 > * 创建新意向
-> * 训练
+> * 定型
 > * 发布
 > * 从终结点获取意向和实体
 > * 使用角色创建模式
 > * 创建城市的短语列表
 > * 从终结点获取意向和实体
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
@@ -64,7 +64,7 @@ ms.locfileid: "48886154"
 
 ## <a name="create-new-entities"></a>创建新实体
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在左侧导航栏中选择“实体”。 
 
@@ -114,7 +114,7 @@ ms.locfileid: "48886154"
 
     如果删除了 keyPhrase 实体，请立即将其添加回应用。
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -254,7 +254,7 @@ ms.locfileid: "48886154"
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move wayne berry from miami to mount vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
@@ -380,6 +380,8 @@ ms.locfileid: "48886154"
 |--|--|--|
 |[分层（无角色）](luis-quickstart-intent-and-hier-entity.md)|将 Jill Jones 从“a-2349”调到“b-1298”|a-2349、b-1298|
 |本教程（含角色）|将 Billy Patterson 从“Yuma”调到“Denver”。|Yuma、Denver|
+
+有关详细信息，请参阅[角色与分层实体](luis-concept-roles.md#roles-versus-hierarchical-entities)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

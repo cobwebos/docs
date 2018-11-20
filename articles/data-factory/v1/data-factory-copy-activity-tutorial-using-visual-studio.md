@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1152074f6dd45d9169f507aedf01541332d6f8f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ae8374dc8b3424f953e24ef74796602d34413bc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096837"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240828"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建带有复制活动的管道
 > [!div class="op_single_selector"]
@@ -342,7 +342,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     Get-AzureRmResourceProvider
     ```
   * 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
-* 数据工厂名称可能在将来被注册为 DNS 名称，因此将变成公开可见。
+* 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
 
 > [!IMPORTANT]
 > 只有 Azure 订阅的管理员/共同管理员可以创建数据工厂实例

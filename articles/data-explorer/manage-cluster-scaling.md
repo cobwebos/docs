@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045658"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209201"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>根据不断变化的需求管理群集缩放
 
@@ -63,4 +63,4 @@ ms.locfileid: "47045658"
 
 现在已为 Azure 数据资源管理器群集配置了横向扩展操作。 添加另一条适用于横向缩减操作的规则。 这样群集就可以根据指定的使用率指标动态地进行缩放。
 
-如果在解决群集缩放问题时需要帮助，请在 [Azure 门户](https://portal.azure.com)中提交支持请求。
+如果在解决群集缩放问题时需要帮助，请在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中提交支持请求。

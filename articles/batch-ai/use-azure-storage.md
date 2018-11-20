@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731796"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615597"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>使用 Azure 存储来存储 Batch AI 作业输入和输出
 
@@ -98,7 +98,7 @@ Batch AI 还支持将 Azure 存储卷装载到 Batch AI 群集。 将卷装载�
 
 ### <a name="abbreviate-input-paths"></a>缩写输入路径
 
-若要将输入路径缩写为环境变量，请使用 `job.json` 文件的 `inputDirectories` 属性（如果使用 Batch AI SDK，则为 `models.JobCreateParamters.input_directories`）。 `inputDirectories` 的架构如下：
+若要将输入路径缩写为环境变量，请使用 `job.json` 文件的 `inputDirectories` 属性（如果使用 Batch AI SDK，则为 `models.JobCreateParameters.input_directories`）。 `inputDirectories` 的架构如下：
 
 ```json
 {
@@ -115,7 +115,7 @@ Batch AI 还支持将 Azure 存储卷装载到 Batch AI 群集。 将卷装载�
 
 ### <a name="abbreviate-output-paths"></a>缩写输出路径
 
-若要将输出路径缩写为环境变量，请使用 `job.json` 文件的 `outputDirectories` 属性（如果使用 Batch AI SDK，则为 `models.JobCreateParamters.output_directories`）。 使用此方法可以简化输出文件的路径。 `outputDirectories` 的架构如下：
+若要将输出路径缩写为环境变量，请使用 `job.json` 文件的 `outputDirectories` 属性（如果使用 Batch AI SDK，则为 `models.JobCreateParameters.output_directories`）。 使用此方法可以简化输出文件的路径。 `outputDirectories` 的架构如下：
 
 ```json
 {

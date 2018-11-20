@@ -1,21 +1,20 @@
 ---
-title: 在本地站点中重新保护 Azure 上的 VM | Microsoft Docs
-description: 将 VM 故障转移到 Azure 之后，可以启动故障回复将 VM 恢复到本地。 了解如何在故障回复之前进行重新保护。
-services: site-recovery
+title: 在 VMware VM 和物理服务器的灾难恢复期间，将 VM 从 Azure 重新保护到本地站点 | Microsoft Docs
+description: 在 VMware VM 和物理服务器的灾难恢复期间故障转移到 Azure 后，了解如何从 Azure 故障回复到本地站点。
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346673"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213281"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的计算机
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 
 将本地 VMware VM 或物理服务器[故障转移](site-recovery-failover.md)到 Azure 后，故障回复到本地站点的第一步是重新保护故障转移期间创建的 Azure VM。 本文介绍如何执行此操作。 
 

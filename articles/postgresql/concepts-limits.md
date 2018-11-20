@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983730"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299600"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的限制
 下列各部分介绍数据库服务中的容量和功能限制。
@@ -31,10 +31,10 @@ ms.locfileid: "45983730"
 |常规用途| 8| 480|
 |常规用途| 16| 950|
 |常规用途| 32| 1500|
-|内存优化| 2| 150|
-|内存优化| 4| 250|
-|内存优化| 8| 480|
-|内存优化| 16| 950|
+|内存优化| 2| 300|
+|内存优化| 4| 500|
+|内存优化| 8| 960|
+|内存优化| 16| 1900|
 
 当连接数超出限制时，可能会收到以下错误：
 > 严重：很抱歉，客户端数过多

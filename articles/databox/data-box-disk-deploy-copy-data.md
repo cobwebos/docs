@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7bc8b3ba415f8fe701098a9fa7e51d60ffb9df4e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092443"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913789"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
 
@@ -31,14 +31,15 @@ ms.locfileid: "49092443"
 在开始之前，请确保：
 - 已完成[教程：安装和配置 Azure Data Box 磁盘](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
-- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md)。
+- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
+- 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types)匹配。
 
 
 ## <a name="copy-data-to-disks"></a>将数据复制到磁盘
 
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
 
-1. 查看已解锁的驱动器的内容。 
+1. 查看已解锁的驱动器的内容。
 
     ![查看驱动器内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
@@ -194,7 +195,7 @@ ms.locfileid: "49092443"
  
 7. 打开命令提示符窗口。 
 
-8. 运行 DataBoxDiskSplitCopy.exe。 Type
+8. 运行 DataBoxDiskSplitCopy.exe。 类型
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -229,7 +230,7 @@ ms.locfileid: "49092443"
 
 若要验证数据，请执行以下步骤。
 
-1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *AzureImportExport* 文件夹中进行校验和验证。 
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。 
     
     ![Data Box Disk 验证工具输出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 038c273806188d04223f1e455c158249a3e17718
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165111"
+---
 | 资源 | 标准文件共享 | 高级文件共享（预览版） |
 |----------|---------------|------------------------------------------|
 | 文件共享的最小大小 | （没有最小值；即用即付） | 100 GiB |

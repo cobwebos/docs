@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 53020eeb96927143b2fb7394aee64f9b7ea55df9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752915"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248956"
 ---
 # <a name="management-solutions-in-azure"></a>Azure 中的管理解决方案
 管理解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述 Azure 中的管理解决方案，并详细介绍如何使用和安装这些解决方案。
@@ -104,5 +104,5 @@ ms.locfileid: "36752915"
 
 ## <a name="next-steps"></a>后续步骤
 * 获取 [Microsoft 提供的管理解决方案列表](monitoring-solutions-inventory.md)。
-* 了解如何[创建查询](../log-analytics/log-analytics-log-searches.md)来分析管理解决方案收集的数据。
+* 了解如何[创建查询](../log-analytics/log-analytics-queries.md)来分析管理解决方案收集的数据。
 

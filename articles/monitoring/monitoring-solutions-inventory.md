@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9adc285ecdc7a88d03aef9abf0132c51f60b445a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404097"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247426"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure 中的管理解决方案的数据收集详细信息
 本文包括了 Microsoft 提供的[管理解决方案](monitoring-solutions.md)的列表以及指向其详细文档的链接。  它还提供了这些解决方案将数据收集到 Log Analytics 中时采用的方法和频率的相关信息。  可以使用本文中的信息来了解可用的各种解决方案，并了解各种管理解决方案的数据流和连接要求。 
@@ -44,7 +44,7 @@ ms.locfileid: "49404097"
 | [活动 Log Analytics](../log-analytics/log-analytics-activity.md) | Azure | | | | | | 通知时 |
 | [AD 评估](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |
 | [AD 复制状态](../log-analytics/log-analytics-ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 天 |
-| [代理运行状况](../operations-management-suite/oms-solution-agenthealth.md) | Windows 和 Linux | &#8226; | &#8226; | | | &#8226; | 1 分钟 |
+| [代理运行状况](monitoring-solution-agenthealth.md) | Windows 和 Linux | &#8226; | &#8226; | | | &#8226; | 1 分钟 |
 | [警报管理](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |到达时 |
 | [警报管理](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 分钟 |
 | [警报管理](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 分钟 |
@@ -57,20 +57,20 @@ ms.locfileid: "49404097"
 | [Azure SQL Analytics（预览版）](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分钟 |
 | [备份](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知时 |
 | [容量和性能（预览版）](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |到达时 |
-| [更改跟踪](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |
-| [更改跟踪](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |每小时 |
+| [更改跟踪](../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |
+| [更改跟踪](../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |每小时 |
 | [容器](../log-analytics/log-analytics-containers.md) | Windows 和 Linux | &#8226; | &#8226; |  |  |  | 3 分钟 |
 | [密钥保管库分析](../log-analytics/log-analytics-azure-key-vault.md) |Windows | | | | | |通知时 |
-| [恶意软件评估](../log-analytics/log-analytics-malware.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |
+| [恶意软件评估](../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小时 |
 | [网络性能监视器](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | 每隔 5 秒钟进行 TCP 握手，每隔 3 分钟发送数据 |
-| [Office 365 分析（预览版）](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |通知时 |
+| [Office 365 分析（预览版）](monitoring-solution-office-365.md) |Windows | | | | | |通知时 |
 | **管理解决方案** | 平台 | **Microsoft Monitoring Agent** | **Operations Manager 代理** | **Azure 存储** | **是否需要 Operations Manager？** | **通过管理组发送 Operations Manager 代理数据** | **收集频率** |
 | [Service Fabric 分析](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 分钟 |
-| [服务地图](../operations-management-suite/operations-management-suite-service-map.md) | Windows 和 Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
+| [服务地图](monitoring-service-map.md) | Windows 和 Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
 | [SQL 评估](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |
 | [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |到达时 |
 | [System Center Operations Manager 评估（预览版）](../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 七天 |
-| [更新管理](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |每天和安装更新后的 15 分钟内至少 2 次 |
+| [更新管理](../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |每天和安装更新后的 15 分钟内至少 2 次 |
 | [升级准备情况](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 天 |
 | [VMware 监视（已弃用）](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 分钟 |
 | [Wire Data 2.0（预览版）](../log-analytics/log-analytics-wire-data.md) |Windows（2012 R2 / 8.1 或更高版本） |&#8226; |&#8226; | | | | 1 分钟 |
@@ -79,4 +79,4 @@ ms.locfileid: "49404097"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[创建查询](../log-analytics/log-analytics-log-searches.md)来分析管理解决方案收集的数据。
+* 了解如何[创建查询](../log-analytics/log-analytics-queries.md)来分析管理解决方案收集的数据。

@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8828ba3c91df7b0a2fde3c42ecd81bd4ee4d17a3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1edf0ed0c9efcb9f0c81718621706550bf3c4d7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295931"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011997"
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
+# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
 
 本文介绍了如何在 Azure 资源管理器模板中进行迭代操作，以创建多个资源实例。 如需指定究竟是否部署资源，请参阅 [condition 元素](resource-manager-templates-resources.md#condition)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "46295931"
 
 在部署期间必须决定创建一个还是多个资源实例时，请将 `copy` 元素添加到资源类型。 在 copy 元素中，为此循环指定迭代次数和名称。 计数值必须是不超过 800 的正整数。 
 
-要多次创建的资源会采用以下格式：
+要多次创建的资源采用以下格式：
 
 ```json
 {
@@ -111,7 +111,7 @@ ms.locfileid: "46295931"
 * storagefabrikam
 * storagecoho
 
-默认情况下，资源管理器将并行创建资源。 因此，不保证创建的顺序。 但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。
+默认情况下，资源管理器将并行创建资源。 不会保证它们的创建顺序。 但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。
 
 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
@@ -151,7 +151,7 @@ mode 属性也接受 **parallel**（它是默认值）。
 若要为资源上的属性创建多个值，请在属性元素中添加一个 `copy` 数组。 此数组包含对象，且每个对象具有以下属性：
 
 * 名称 - 要创建多个值的属性的名称
-* 计数 - 要创建的值的数目
+* 计数 - 要创建的值的数目。 计数值必须是不超过 800 的正整数。
 * 输入 - 包含要分配给属性的值的对象  
 
 以下示例演示了如何将 `copy` 应用于虚拟机上的 dataDisks 属性：
@@ -403,7 +403,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 }]
 ```
 
-要创建数据集的多个实例，请将其移出数据工厂。 数据集必须与数据工厂处于同一级别，但它仍是数据工厂的子资源。 通过 type 和 name 属性保留数据集和数据工厂之间的关系。 由于不能从模板中的位置推断 type，因此必须按以下格式提供完全限定的 type：`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`。
+若要创建多个数据集，请将其移出数据工厂。 数据集必须与数据工厂处于同一级别，但它仍是数据工厂的子资源。 通过 type 和 name 属性保留数据集和数据工厂之间的关系。 由于不能从模板中的位置推断 type，因此必须按以下格式提供完全限定的 type：`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`。
 
 若要与数据工厂的实例建立父/子关系，请为包含父资源名称的数据集提供名称。 使用以下格式：`{parent-resource-name}/{child-resource-name}`。  
 
@@ -432,9 +432,9 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 ## <a name="example-templates"></a>示例模板
 
-以下示例显示了创建多个资源或属性的常见方案。
+以下示例展示了创建资源或属性的多个实例的常见方案。
 
-|模板  |Description  |
+|模板  |说明  |
 |---------|---------|
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称中包含索引号。 |

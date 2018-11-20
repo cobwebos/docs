@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库资源限制 - 逻辑服务器 | Microsoft Docs
-description: 本文概述了使用弹性池的单一数据库和入池数据库的 Azure SQL 数据库资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
+description: 本文概述了使用弹性池的单一数据库和入池数据库的 Azure SQL 数据库逻辑服务器资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: b48c090cc67d4557140b5734f1a5e1f763b271ab
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 11/13/2018
+ms.openlocfilehash: a423f5c112faa615b7888dacfa20f9ff8f6a595a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829557"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620884"
 ---
-# <a name="sql-database-resource-limits-for-single-and-pooled-databases-on-a-logical-server"></a>逻辑服务器上单一数据库和入池数据库的 SQL 数据库资源限制 
+# <a name="sql-database-resource-limits-for-single-and-pooled-databases"></a>单一数据库和入池数据库的 SQL 数据库资源限制
 
 本文概述了逻辑服务器上单一数据库和入池数据库的 SQL 数据库资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 
@@ -35,12 +35,11 @@ ms.locfileid: "48829557"
 | 任意区域中每个订阅的服务器数上限 | 200 |  
 | 每个服务器的 DTU/eDTU 配额 | 54,000 |  
 | 每个服务器/实例的 vCore 配额 | 540 |
-| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数 |
+| 每个服务器的最大池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则单个服务器可以支持 54 个池。|
 ||||
 
 > [!NOTE]
-> 若要获得超过默认数量的 DTU/eDTU 配额、vCore 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。 
-
+> 若要获得超过默认数量的 DTU/eDTU 配额、vCore 配额或服务器，可以在 Azure 门户中为订阅提交问题类型为“配额”的新支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制约束了每个服务器的弹性池数。
 > [!IMPORTANT]
 > 当数据库的数量接近每个逻辑服务器的限制时，可能会出现以下情况：
 > - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
@@ -66,11 +65,12 @@ ms.locfileid: "48829557"
 - 如果数据库在弹性池内，那么可选择将数据库移出弹性池，从而避免与其他数据库共享存储空间。
 - 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)
 
-### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求） 
+### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
-会话和辅助角色的数目上限由服务层和计算大小（DTU 和 eDTU）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于较长时间运行查询而堆积时，这种情况尤其突出。 
+会话和辅助角色的数目上限由服务层和计算大小（DTU 和 eDTU）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于较长时间运行查询而堆积时，这种情况尤其突出。
 
 会话或辅助角色使用率变高时，风险缓解选项包括：
+
 - 提高数据库或弹性池的服务层或计算大小。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: ee8057be98d18db5963a3e5f1ba1f8bd8d76fe05
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240594"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231366"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric 单一成员网络
 
@@ -28,7 +28,7 @@ ms.locfileid: "48240594"
 
 ## <a name="about-blockchain"></a>关于区块链
 
-对于刚涉足区块链社区的用户而言，这是一个在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 区块链是比特币背后的基础技术，但是，该技术远不止是虚拟货币的促成因素。 它是现有数据库、分布式系统和加密技术的组合，可实现安全的多方计算，并具有不可变性、可验证性、可审计性和攻击复原性的保障。 不同的协议采用不同的机制来提供这些属性。 [Hyperledger Fabric](https://github.com/hyperledger/fabric) 是此类协议之一。
+对于刚涉足区块链社区的用户而言，此解决方案模板是一个在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 区块链是比特币背后的基础技术，但是，该技术远不止是虚拟货币的促成因素。 它是现有数据库、分布式系统和加密技术的组合，可实现安全的多方计算，并具有不可变性、可验证性、可审计性和攻击复原性的保障。 不同的协议采用不同的机制来提供这些属性。 [Hyperledger Fabric](https://github.com/hyperledger/fabric) 是此类协议之一。
 
 ## <a name="consortium-architecture-on-azure"></a>Azure 上的联盟体系结构
 
@@ -36,7 +36,7 @@ ms.locfileid: "48240594"
 
 网络包含三种类型的节点：
 
-1. 成员节点：运行 Fabric 成员身份服务，注册和管理网络成员的节点。 此节点最终可聚集以实现可伸缩性和高可用性，但是在本实验中，将使用单一成员节点。
+1. 成员节点：运行 Fabric 成员身份服务，注册和管理网络成员的节点。 可以将此节点群集化以实现可伸缩性和高可用性，但是在本实验中，将使用单一成员节点。
 2. 排序节点：运行通信服务来实现交付保证的节点，例如全序广播或原子事务。
 3. 对等节点：提交事务并保持状态和分布式账本副本的节点。
 
@@ -46,7 +46,7 @@ ms.locfileid: "48240594"
 
 默认情况下，大多数订阅类型都支持小型部署拓扑，而无需增加配额。 一位成员的最小可能部署需要：
 
-- 5 个虚拟机（5 个核数）
+- 5 个虚拟机（5 个核心）
 - 1 个 VNet
 - 1 个负载均衡器
 - 1 个公共 IP 地址
@@ -57,22 +57,22 @@ ms.locfileid: "48240594"
 
 ## <a name="deployment"></a>部署
 
-若要开始，请选择“Hyperledger Fabric 单一成员区块链”，然后单击“创建”。 这将在向导中打开“基础”边栏选项卡。
+若要开始，请选择“Hyperledger Fabric 单一成员区块链”，然后单击“创建”以在向导中打开“基本信息”边栏选项卡。
 
-模板部署将引导你配置多节点网络。 部署流分为三个步骤：基础、网络配置和 Fabric 配置。
+模板部署将引导你配置多节点网络。 部署流分为三个步骤：基本信息、网络配置和 Fabric 配置。
 
-### <a name="basics"></a>基础
+### <a name="basics"></a>基本信息
 
-在“基础”边栏选项卡中，为全部部署指定标准参数的值，例如订阅、资源组和基本虚拟机属性。
+在“基本信息”边栏选项卡中，指定适用于任何部署的标准参数的值。 例如，订阅、资源组和基本的虚拟机属性。
 
-![基础](./media/hyperledger-fabric-single-member-blockchain/basics.png)
+![基本信息](./media/hyperledger-fabric-single-member-blockchain/basics.png)
 
 参数名称| 说明| 允许的值|默认值
 ---|---|---|---
 **资源前缀**| 用作已部署资源的命名基础的字符串。|6 个字符或更少|NA
 **VM 用户名**| 为此成员部署的每个虚拟机的管理员用户名。|1 - 64 个字符|azureuser
 **身份验证类型**| 对虚拟机进行身份验证的方法。|密码或 SSH 公钥|密码
-**密码（身份验证类型 = 密码）**|部署的每个虚拟机的管理员帐户密码。 密码必须包含下列要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符|NA
+**密码（身份验证类型 = 密码）**|部署的每个虚拟机的管理员帐户密码。 密码必须包含下列字符类型中的三项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符|NA
 **SSH 密钥（身份验证类型 = 公钥）**|用于远程登录的安全 shell 密钥。||NA
 **按 IP 地址限制访问**|用于确定是否限制客户端终结点访问类型的设置。|Yes/No| No
 **允许的 IP 地址或子网（按 IP 地址限制访问 = 是）**|启用访问控制时，允许访问客户端终结点的 IP 地址或IP 地址集。||NA
@@ -82,7 +82,7 @@ ms.locfileid: "48240594"
 
 ### <a name="network-size-and-performance"></a>网络规模和性能
 
-接下来，在“网络规模和性能”下指定联盟网络规模的输入值，例如成员身份、排序和对等节点的数量。 选择基础结构选项和虚拟机大小。
+接下来，在“网络规模和性能”中指定联盟网络规模的输入。 例如，成员数、订货人和对等节点。 选择基础结构选项和虚拟机大小。
 
 ![网络规模和性能](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "48240594"
 **存储性能**|支持每个已部署的节点的存储类型。 若要了解有关存储的详细信息，请访问 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)和[高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)。|标准或高级|标准
 **虚拟机大小** |用于网络中所有节点的虚拟机大小|标准 A、<br />标准 D、<br />标准 D-v2、<br />标准 F 系列、<br />标准 DS <br />和标准 FS|标准 D1_v2
 
-### <a name="fabric-specific-settings"></a>Fabric 特定设置
+### <a name="fabric-specific-settings"></a>Fabric 特定的设置
 
 最后，在“Fabric 设置”下，指定与 Fabric 相关的配置设置。
 
@@ -135,7 +135,7 @@ ms.locfileid: "48240594"
 
 - 在网络上部署应用程序后，即可使用 _API-ENDPOINT_。
 - _PREFIX_，也称为_部署前缀_，唯一标识资源和部署。 使用基于命令行的工具时需使用它。
-- _SSH-TO-FIRST-VM_ 提供预构建的 ssh 命令，并附带连接到网络中第一个 VM 所需的所有正确参数；在 Hyperledger Fabric 中为 Fabric-CA 节点。
+- _SSH-TO-FIRST-VM_ 提供预构建的 ssh 命令，并附带连接到网络中第一个 VM 所需的所有正确参数；对于 Hyperledger Fabric，它将是 Fabric-CA 节点。
 
 可使用提供的管理员用户名和密码/SSH 密钥，通过 SSH 密钥远程连接到每个节点的虚拟机。 由于节点 VM 没有自己的公共 IP 地址，因此需要通过负载平衡器并指定端口号。 访问第一个事务节点的 SSH 命令为第三个模板输出 **SSH-TO-FIRST-VM（对于示例部署，则为：`sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`）。 要获取其他事务节点，请将端口号递增 1（例如，第一个事务节点位于端口 3000 上，第二个事务节点位于端口 3001 上，第三个事务节点位于端口 3002 上）。
 

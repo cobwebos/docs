@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: c58c2b255d269aef7e8b3fea62d003ad0c16ef0a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971242"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404896"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -56,14 +56,14 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.在 Azure 中创建 Log Analytics 工作区
 
-可以手动或使用模板创建 Log Analytics 工作区。 该模板将部署预配置的 OMS KPI 视图和 OMS 控制台警报设置。 
+可以手动或使用模板创建 Log Analytics 工作区。 该模板将部署 Log Analytics 控制台预配置的 KPI 视图和警报设置。 
 
 #### <a name="to-create-the-workspace-manually"></a>手动创建工作区：
 
 1. 在 Azure 门户中，在 Azure 市场中搜索服务列表，再选择“Log Analytics”。
 2. 选择“创建”，然后为以下各项选择选项：
 
-   * **OMS 工作区**：键入工作区的名称。
+   * Log Analytics 工作区：键入工作区的名称。
    * **订阅**：如果有多个订阅，请选择与 CF 部署相同的订阅。
    * **资源组**：可以新建资源组，也可以使用与 CF 部署相同的资源组。
    * **位置**：输入位置。
@@ -71,19 +71,19 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 有关详细信息，请参阅 [Log Analytics 入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
-#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的 OMS 监测模板创建 OMS 工作区：
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的监测模板创建 Log Analytics 工作区：
 
 1. 打开 Azure 门户。
 2. 单击“+”号，或单击左上角的“创建资源”。
-3. 在搜索窗口中键入“Cloud Foundry”，选择“OMS Cloud Foundry 监视解决方案”。
-4. 将加载 OMS Cloud Foundry 监视解决方案模板前页，单击“创建”以启动模板边栏选项卡。
+3. 在搜索窗口中键入“Cloud Foundry”，选择“Cloud Foundry 监视解决方案”。
+4. 将加载 Cloud Foundry 监视解决方案模板前页，单击“创建”以启动模板边栏选项卡。
 5. 输入所需的参数：
-    * 订阅：选择 OMS 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
-    * 资源组：选择现有资源组或为 OMS 工作区创建新资源组。
+    * 订阅：选择 Log Analytics 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
+    * 资源组：选择现有资源组或为 Log Analytics 工作区创建新资源组。
     * 资源组位置：选择资源组的位置。
     * OMS_Workspace_Name：输入工作区名称，如果工作区不存在，该模板将创建一个新的工作区。
     * OMS_Workspace_Region：选择工作区的位置。
-    * **OMS_Workspace_Pricing_Tier**：选择 OMS 工作区 SKU。 有关参考信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/log-analytics/)。
+    * OMS_Workspace_Pricing_Tier：选择 Log Analytics 工作区 SKU。 有关参考信息，请参阅[定价指南](https://azure.microsoft.com/pricing/details/log-analytics/)。
     * 法律条款：单击法律条款，然后单击“创建”以接受法律条款。
 - 指定所有参数后，单击“创建”来部署模板。 完成部署后，状态将显示在通知选项卡处。
 
@@ -137,8 +137,8 @@ cd oms-log-analytics-firehose-nozzle
 现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
 ```
-OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
+OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
 OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
 OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
@@ -177,11 +177,11 @@ cf apps
 ```
 确保 OMS Nozzle 应用程序正在运行。
 
-## <a name="view-the-data-in-the-oms-portal"></a>在 OMS 门户中查看数据
+## <a name="view-the-data-in-the-azure-portal"></a>在 Azure 门户中查看数据
 
-如果已通过市场模板部署了 OMS 监视解决方案，请转到 Azure 门户，并找到 OMS 解决方案。 可以在模板中指定的资源组中找到解决方案。 单击该解决方案，浏览到“OMS 控制台”，将列出预配置的视图，顶部为 Cloud Foundry 系统 KPI、应用程序数据、警报和 VM 运行状况指标。 
+如果已通过市场模板部署了监视解决方案，请转到 Azure 门户，并找到解决方案。 可以在模板中指定的资源组中找到解决方案。 单击该解决方案，浏览到“Log Analytics 控制台”，将列出预配置的视图，顶部为 Cloud Foundry 系统 KPI、应用程序数据、警报和 VM 运行状况指标。 
 
-如果已手动创建 OMS 工作区，请执行以下步骤来创建视图和警报：
+如果已手动创建 Log Analytics 工作区，请执行以下步骤来创建视图和警报：
 
 ### <a name="1-import-the-oms-view"></a>1.导入 OMS 视图
 
@@ -195,7 +195,7 @@ cf apps
 
 可以[创建警报](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，并视需要自定义查询和阈值。 下面是建议的警报：
 
-| 搜索查询                                                                  | 基于以下项生成警报 | 说明                                                                       |
+| 搜索查询                                                                  | 基于以下项生成警报 | Description                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 结果数 < 1   | **bbs.Domain.cf-apps** 指示 cf-apps 域是否为最新。 也就是说，来自 Cloud Controller 的 CF 应用程序请求会同步到 bbs.LRPsDesired（Diego 需要的 AI），以供执行。 没有收到数据则表示在指定时间范围内，cf-apps 域不是最新的。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 结果数 > 0   | 对于 Diego 单元，0 表示正常，1 表示不正常。 设置在指定时间范围内检测到多个不正常的 Diego 单元时发出的警报。 |
@@ -246,6 +246,6 @@ Azure Log Analytics Nozzle 是开放源代码。 若有问题和反馈，请发�
 
 ## <a name="next-step"></a>后续步骤
 
-自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 OMS 工作区。 不再需要 OMS 代理来获取 VM 性能指标。 但仍然可以使用 OMS 代理来收集 Syslog 信息。 OMS 代理可作为 Bosh 加载项安装到 CF VM 中。 
+自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 Log Analytics 工作区。 不再需要 Log Analytics 代理来获取 VM 性能指标。 但仍然可以使用 Log Analytics 代理来收集 Syslog 信息。 Log Analytics 代理可作为 Bosh 加载项安装到 CF VM 中。 
 
-有关详细信息，请参阅[将 OMS 代理部署到 Cloud Foundry 部署](https://github.com/Azure/oms-agent-for-linux-boshrelease)。
+有关详细信息，请参阅[将 Log Analytics 代理部署到 Cloud Foundry 部署](https://github.com/Azure/oms-agent-for-linux-boshrelease)。

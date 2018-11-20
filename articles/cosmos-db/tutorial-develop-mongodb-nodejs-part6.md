@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698581"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740564"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 6 部分：向应用添加 Post、Put 和 Delete 函数
 
@@ -88,13 +88,13 @@ ms.locfileid: "43698581"
     });
     ```
 
-5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，单击左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后单击“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮 ![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮 ![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
 6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 [http://localhost:3000](http://localhost:3000)，观察通过网络进行的调用。
 
     ![Chrome 中的“网络”选项卡，显示网络活动](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. 通过单击“添加新 Hero”按钮添加新的 hero。 输入“999”作为 ID，“Fred”作为 name，“Hello”作为 saying，然后单击“保存”。 此时会在“网络”选项卡中看到为新的 hero 发送了 POST 请求。 
+7. 通过选择“添加新 Hero”按钮添加新的 hero。 输入“999”作为 ID，“Fred”作为 name，“Hello”作为 saying，然后选择“保存”。 此时会在“网络”选项卡中看到为新的 hero 发送了 POST 请求。 
 
     ![Chrome 中的“网络”选项卡，显示 Get 和 Post 函数的网络活动](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ ms.locfileid: "43698581"
     };
     ```
 
-4. 更新了代码后，请单击 Visual Studio Code 中的“重启”按钮 ![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮 ![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
 
-5. 刷新 Internet 浏览器中的页面，单击“添加新 Hero”按钮。 添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 单击“保存”按钮保存新 hero。
+5. 刷新 Internet 浏览器中的页面，选择“添加新 Hero”按钮。 添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 选择“保存”按钮保存新 hero。
 
-6. 现在请选择 Starlord hero，将 saying 从“Hi”更改为“Bye”，然后单击“保存”按钮。 
+6. 现在请选择 Starlord hero，将 saying 从“Hi”更改为“Bye”，然后选择“保存”按钮。 
 
     现在可以在“网络”选项卡中选择 ID 来显示有效负载了。 可以在有效负载中看到，saying 现在已设置为“Bye”。
 
     ![Heroes 应用和“网络”选项卡，显示有效负载](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    还可以在 UI 中删除某个 hero，看完成删除操作需要多少时间。 尝试时，可针对名为“Fred”的 hero 单击“删除”按钮。
+    还可以在 UI 中删除某个 hero，看完成删除操作需要多少时间。 尝试时，可针对名为“Fred”的 hero 选择“删除”按钮。
 
     ![Heroes 应用和“网络”选项卡，显示完成函数操作的时间](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

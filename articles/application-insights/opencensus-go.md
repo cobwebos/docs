@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 853fd1e9939631b6c459caf89994299e7a8406b0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 64e49dee5bf560dec263e67daa3c130a0ba8b40c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165522"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420942"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -208,7 +208,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
     由于我们只跟踪一个方法调用，因此应用程序映射的信息不多。 但是，应用程序映射可以通过缩放将多得多的分布式应用程序可视化：
 
-   ![应用程序地图](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![应用程序地图](media/opencensus-go/application-map.png)
 
 4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。
 

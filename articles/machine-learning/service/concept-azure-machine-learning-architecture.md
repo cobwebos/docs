@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237970"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210680"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>体系结构和概念：Azure 机器学习服务如何工作？ 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作方式：体系结构和概念
 
 本文档介绍 Azure 机器学习服务的体系结构和概念。 下图显示该服务的主要组件，并说明使用该服务时的常规工作流： 
 
@@ -143,7 +143,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 * 有关运行的元数据（时间戳、持续时间等）
 * 脚本记录的指标
-* 试验自动收集或由你显式上传的输出文件。
+* 试验自动收集的或由你显式上传的输出文件。
 * 在运行之前包含脚本的目录的快照
 
 提交脚本以培训模型时，会生成运行。 运行可以有零次或多次子级运行。 因此，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
@@ -156,16 +156,28 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 有关使用试验的示例，请参阅[快速入门：开始使用 Azure 机器学习服务](quickstart-get-started.md)文档。
 
+## <a name="pipelines"></a>管道
+
+管道用来创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推断阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
+
+有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)一文。
+
 ## <a name="compute-target"></a>计算目标
 
-计算目标是用于运行培训脚本或托管 Web 服务部署的计算资源。 支持的计算目标为： 
+计算目标是用于运行培训脚本或托管服务部署的计算资源。 支持的计算目标为： 
 
-* 本地计算机
-* Azure 中的 Linux VM（例如 Data Science Virtual Machine）
-* Azure Batch AI 群集
-* Apache Spark for HDInsight
-* Azure 容器实例
-* Azure Kubernetes 服务
+| 计算目标 | 培训 | 部署 |
+| ---- |:----:|:----:|
+| 本地计算机 | ✓ | &nbsp; |
+| Azure 中的 Linux VM</br>（例如 Data Science Virtual Machine） | ✓ | &nbsp; |
+| Azure Batch AI 群集 | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark for HDInsight | ✓ | &nbsp; |
+| Azure 容器实例 | ✓ | ✓ |
+| Azure Kubernetes 服务 | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>（现场可编程门阵列） | &nbsp; | ✓ |
 
 计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
 
@@ -187,7 +199,7 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 若要定型模型，你可以指定包含培训脚本和关联文件的目录。 此外，还可指定一个试验名称，用于存储在培训期间收集的信息。 在培训期间，会将整个目录复制到培训环境（计算目标），并启动运行配置指定的脚本。 目录的快照同样存储在工作区中的试验下。
 
-有关使用脚本培训模型的示例，请参阅[使用 Python 创建工作区](quickstart-get-started.md)
+有关示例，请参阅[使用 Python 创建工作区](quickstart-get-started.md)
 
 ## <a name="logging"></a>日志记录
 

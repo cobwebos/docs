@@ -3,18 +3,18 @@ title: 部署并监控 Azure IoT Edge 的模块 | Microsoft Docs
 description: 管理在边缘设备上运行的模块
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393451"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566238"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
 
@@ -106,7 +106,7 @@ ms.locfileid: "49393451"
 因为多个部署可能将同一个设备定为目标，所以应为每个部署提供优先级编号。 若有冲突，优先级最高（值越大表示优先级越高）的部署胜出。 如果两个部署的优先级编号相同，则将最新创建的部署定为目标。 
 
 1. 为部署优先级输入一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-1. 输入“目标条件”确定将作为此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。 
+1. 输入“目标条件”确定将作为此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。 
 1. 选择“下一步”，进入到最后一步。
 
 ### <a name="step-5-review-template"></a>步骤 5：审阅模板
@@ -123,14 +123,14 @@ ms.locfileid: "49393451"
 
    ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. 检查部署列表。 对于每个部署，可以查看以下详细信息：
+1. 检查部署列表。 对于每个部署，可以查看以下详细信息：
    * ID - 部署的名称。
    * 目标条件 - 用于定义目标设备的标记。
    * 优先级 - 分配到部署的优先级编号。
    * **系统指标** - “已定目标”指定 IoT 中心内与目标条件匹配的设备孪生数量，“已应用”指定在 IoT 中心对模块孪生应用部署内容的设备数量。 
    * **设备指标** - 部署中报告 IoT Edge 客户端运行时成功或错误的 Edge 设备数量。
    * 创建时间 - 开始创建部署的时间戳。 两个部署具有相同优先级，此时间戳用于消除它们的关系。 
-2. 选择想要监视的部署。  
+2. 选择想要监视的部署。  
 3. 检查部署详细信息。 可以使用选项卡查看部署的详细信息。
 
 ## <a name="modify-a-deployment"></a>修改部署
@@ -151,10 +151,10 @@ ms.locfileid: "49393451"
    ![查看 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 选择想要修改的部署。 
-1. 更新以下字段： 
-   * 目标条件 
-   * 标签 
-   * 优先度 
+1. 更新以下字段： 
+   * 目标条件 
+   * 标签 
+   * 优先度 
 1. 选择“保存”。
 1. 执行[监视部署](#monitor-a-deployment)中的步骤，注意更改的推出。 
 
@@ -170,7 +170,7 @@ ms.locfileid: "49393451"
 
 1. 使用复选框选择想要删除的部署。 
 1. 选择“删除”。
-1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  这意味着将应用具有较低优先级的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 选择“是”继续。 
+1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  这意味着将应用具有较低优先级的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 选择“是”继续。 
 
 ## <a name="next-steps"></a>后续步骤
 

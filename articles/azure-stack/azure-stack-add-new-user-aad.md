@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038011"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240114"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure Stack 租户帐户
 
@@ -34,23 +34,23 @@ ms.locfileid: "47038011"
 2. 在左侧的导航栏中，选择**Active Directory**并切换到想要用于 Azure Stack 的目录或创建一个新。
 3. 选择**Azure Active Directory** > **用户** > **新用户**。
 
-    ![用户-突出显示的新用户的所有用户页](media/azure-stack-add-new-user-aad/new-user-all-users.png)
+    ![用户 - 突出显示新用户的所有用户页面](media/azure-stack-add-new-user-aad/new-user-all-users.png)
 
-4. 上**用户**页上，填写所需的信息。
+4. 在“用户”页中，填写必填信息。
 
-    ![添加新用户，使用用户信息的用户页](media/azure-stack-add-new-user-aad/new-user-user.png)
+    ![添加新用户，具有用户信息的用户页](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **Name （必需）。** 第一个和最后一个新用户的名称。 例如，Mary Parker。
-    - **用户名 （必需）。** 新用户的用户名。 例如，mary@contoso.com。
-        用户名称的域部分必须使用任一的初始默认域名，<_yourdomainname_>。 onmicrosoft.com 或自定义域名，例如 contoso.com。 有关如何创建自定义域名的详细信息，请参阅[如何将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)。
-    - **配置文件。** 或者，可以添加有关用户的详细信息。 此外可以在以后添加的用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
+    - **名称（必需）。** 新用户的姓氏和名字。 例如，Mary Parker。
+    - **用户名（必需）。** 新用户的用户名。 例如，mary@contoso.com。
+        用户名的域名部分必须是初始默认域名“<yourdomain name>.onmicrosoft.com”，或自定义域名（例如“contoso.com”）。 若要了解有关如何创建自定义域名的详细信息，请参阅[如何将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)。
+    - **配置文件。** （可选）可添加有关用户的详细信息。 也可稍后添加用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
     - **目录角色。**  选择**用户**。
 
 5. 检查**显示密码**和复制中提供的自动生成密码**密码**框。 有关初始登录过程，将需要此密码。
 
-6. 选择**创建**。
+6. 选择“创建”。
 
-    创建用户，并将其添加到你的 Azure AD 租户。
+    用户已创建并添加到 Azure AD 租户。
 
 7. 登录到 Microsoft Azure 门户中使用新的帐户。 出现提示时更改密码。
 8. 使用新帐户登录到 `https://portal.local.azurestack.external`，以查看租户门户。
@@ -65,7 +65,7 @@ ms.locfileid: "47038011"
 > 
 
 1. 安装[适用于 IT 专业人员 RTW 的 Microsoft Online Services 登录助手](https://www.microsoft.com/en-us/download/details.aspx?id=41950)。
-2. 安装[适用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](http://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
+2. 安装[适用于 Windows PowerShell 的 Azure Active Directory 模块（64 位版本）](https://go.microsoft.com/fwlink/p/?linkid=236297)并将其打开。
 3. 运行以下 cmdlet：
 
     ```powershell

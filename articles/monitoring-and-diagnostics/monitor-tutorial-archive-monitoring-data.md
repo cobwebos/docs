@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ac8be998a70b31af9829eeeab24902c62fd2fe37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409484"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961496"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
 
@@ -42,7 +42,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-首先，需要设置要存档监视数据的存储帐户。 为此，请[按照此处的步骤操作](../storage/common/storage-create-storage-account.md)。
+首先，需要设置要存档监视数据的存储帐户。 为此，请[按照此处的步骤操作](../storage/common/storage-quickstart-create-account.md)。
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>将订阅日志路由到存储帐户
 
@@ -198,4 +198,4 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 若要充分使用数据并得出额外见解，还要将数据发送到 Log Analytics。
 
 > [!div class="nextstepaction"]
-> [Log Analytics 入门](../log-analytics/log-analytics-get-started.md)
+> [Log Analytics 入门](../log-analytics/log-analytics-queries.md)

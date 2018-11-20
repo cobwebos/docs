@@ -9,19 +9,19 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309649"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260085"
 ---
 # <a name="manage-credentials"></a>管理凭据
 
 内容审查器凭据的创建位置如下：
 
 - [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)
-- [内容审查器“审阅”工具](http://contentmoderator.cognitive.microsoft.com/)
+- [内容审查器“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)
 
 本文介绍了凭据所在的位置，以及凭据之间的关系。
 

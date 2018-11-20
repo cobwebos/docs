@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448996"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>教程：Azure Active Directory 与 Kantega SSO for Bamboo 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -171,7 +171,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bamboo 域和 URL”部分中的“标识符”、“回复 URL”和“登录 URL”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bamboo 域和 URL”部分中的“标识符”、“回复 URL”和“登录 URL”。
 
     b. 单击“下一步”。
 
@@ -179,7 +179,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。
 
@@ -187,7 +187,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。
 
@@ -199,7 +199,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon10.png)
 
-    a. 选择“根据需要在 Bamboo 的内部目录中创建用户”，并为用户组输入合适名称（可以为多个 组，用逗号隔开）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“根据需要在 Bamboo 的内部目录中创建用户”，并为用户组输入合适名称（可以为多个 组，用逗号隔开）。
 
     b. 单击“下一步”。
 
@@ -211,7 +211,7 @@ ms.locfileid: "39448996"
 
     ![配置单一登录](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从页的左侧面板中选择“已知域”。
 
     b. 在“已知域”文本框中输入域名。
 
@@ -243,7 +243,7 @@ ms.locfileid: "39448996"
  
     ![创建 Azure AD 测试用户](./media/kantegassoforbamboo-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -263,11 +263,11 @@ ms.locfileid: "39448996"
 
     ![添加员工](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-1. 单击“用户”。 在“添加用户”部分中，执行以下步骤：
+1. 单击“用户”。 在“添加用户”部分下，执行以下步骤：
 
     ![添加员工](./media/kantegassoforbamboo-tutorial/user2.png) 
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
     
     b. 在“密码”文本框中，键入用户的密码。
 
@@ -314,12 +314,12 @@ ms.locfileid: "39448996"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Kantega SSO for Bamboo”磁贴就会自动登录到 Kantega SSO for Bamboo 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

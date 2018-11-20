@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369308"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623819"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -29,93 +29,26 @@ ms.locfileid: "46369308"
 
 > [!div class="checklist"]
 > * 授予 VM 对 Azure SQL 服务器的访问权限
-> * 在 Azure AD 中创建一个组，并使 VM 的系统分配托管标识成为该组的成员
 > * 为 SQL 服务器启用 Azure AD 身份验证
-> * 在数据库中创建一个代表 Azure AD 组的包含的用户
+> * 在数据库中创建一个代表 VM 的系统分配标识的包含用户
 > * 使用 VM 标识获取访问令牌，并使用它查询 Azure SQL 服务器
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [登录到 Azure 门户](https://portal.azure.com)
-
-- [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)
-
-- [在虚拟机上启用系统分配的托管标识](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>授予 VM 对 Azure SQL 服务器中的数据库的访问权限
 
-现在，可以授予 VM 对 Azure SQL 服务器中的数据库的访问权限。  对于此步骤，可以使用现有的或创建新的 SQL 服务器。  若要使用 Azure 门户创建新的服务器和数据库，请遵循此 [Azure SQL 快速入门](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)。 [Azure SQL 文档](https://docs.microsoft.com/azure/sql-database/)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
+若要授予 VM 对 Azure SQL Server 中数据库的访问权限，可以使用现有 SQL Server，或创建一个新的 SQL Server。  若要使用 Azure 门户创建新的服务器和数据库，请遵循此 [Azure SQL 快速入门](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)。 [Azure SQL 文档](https://docs.microsoft.com/azure/sql-database/)中还提供了有关使用 Azure CLI 和 Azure PowerShell 执行这些操作的快速入门。
 
-授予 VM 对数据库的访问权限需要执行三个步骤：
-1.  在 Azure AD 中创建一个组，并使 VM 的系统分配托管标识成为该组的成员。
-2.  为 SQL 服务器启用 Azure AD 身份验证。
-3.  在数据库中创建一个代表 Azure AD 组的**包含的用户**。
+授予 VM 对数据库的访问权限需要执行两个步骤：
 
-> [!NOTE]
-> 通常，会创建一个直接映射到 VM 的系统分配托管标识的包含的用户。  目前，Azure SQL 不允许将代表 VM 的系统分配托管标识的 Azure AD 服务主体映射到包含的用户。  支持的解决方法是，使 VM 的系统分配托管标识成为 Azure AD 组的成员，然后在数据库中创建一个代表该组的包含的用户。
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>在 Azure AD 中创建一个组，并使 VM 的系统分配托管标识成为该组的成员
-
-可以使用现有的 Azure AD 组，使用 Azure AD PowerShell 创建新组。  
-
-首先，安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 然后使用 `Connect-AzureAD` 登录，运行以下命令创建该组，并将其保存在变量中：
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-输出如下所示。另请检查变量的值：
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-接下来，将 VM 的系统分配托管标识添加到该组。  需要系统分配托管标识的 **ObjectId**，这可以使用 Azure PowerShell 来获取。  首先，下载 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 然后使用 `Connect-AzureRmAccount` 登录，并运行以下命令：
-- 如果有多个 Azure 订阅，请确保将会话上下文设置为所需的订阅。
-- 列出 Azure 订阅中的可用资源，并检查资源组和 VM 名称是否正确。
-- 使用 `<RESOURCE-GROUP>` 和 `<VM-NAME>` 的相应值获取 VM 的系统分配托管标识属性。
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-输出如下所示。另请检查 VM 的系统分配托管标识的服务主体对象 ID：
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-现在，请将 VM 的系统分配托管标识添加到该组。  只能使用 Azure AD PowerShell 将服务主体添加到组。  运行以下命令：
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-如果此后还检查了组成员身份，则输出如下所示：
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  为 SQL 服务器启用 Azure AD 身份验证。
+2.  在数据库中创建一个代表 VM 的系统分配标识的**包含用户**。
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>为 SQL 服务器启用 Azure AD 身份验证
 
-创建组并将 VM 的系统分配托管标识添加到成员身份后，可使用以下步骤[配置 SQL 服务器的 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
+使用以下步骤[为 SQL Server 配置 Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)：
 
 1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。
 2.  单击要启用 Azure AD 身份验证的 SQL 服务器。
@@ -124,7 +57,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 5.  选择要设为服务器管理员的 Azure AD 用户帐户，单击“选择”。
 6.  在命令栏中，单击“保存”。
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>在数据库中创建一个代表 Azure AD 组的包含的用户
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>在数据库中创建一个代表 VM 的系统分配标识的包含用户
 
 在下一步骤中，需要使用 [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 在开始之前，查看以下文章了解有关 Azure AD 集成的背景知识可能也有帮助：
 
@@ -140,17 +73,23 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 7.  单击“连接”。  完成登录过程。
 8.  在“对象资源管理器”中，展开“数据库”文件夹。
 9.  右键单击某个用户数据库，并单击“新建查询”。
-10.  在查询窗口中输入以下行，在工具栏中单击“执行”：
+10. 在查询窗口中输入以下行，在工具栏中单击“执行”：
+
+    > [!NOTE]
+    > 以下命令中的 `VMName` 是在“先决条件”部分中对其启用系统分配标识的 VM 的名称。
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     命令应会成功完成，并创建组的包含的用户。
+     该命令应该成功完成，为 VM 的系统分配标识创建包含的用户。
 11.  清除查询窗口中的内容，输入以下行，在工具栏中单击“执行”：
+
+    > [!NOTE]
+    > 以下命令中的 `VMName` 是在“先决条件”部分中对其启用系统分配标识的 VM 的名称。
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      命令应会成功完成，并授予包含的用户读取整个数据库的权限。

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9f88e71df7697156e0745aeaf6b989548bcc223f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a4a9fefa98d30d0f9815a935f000c8a663dffd21
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945102"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514190"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
@@ -29,7 +29,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
  - **标准证书请求**  
     根据[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)执行请求。
  - **平台即服务**  
-    （可选）根据 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中的规定，请求证书的平台即服务 (PaaS) 名称。
+    你可以请求平台即服务 (PaaS) 名称中指定的证书[Azure Stack 公钥基础结构证书要求-可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)。
 
 
 
@@ -102,7 +102,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 执行以下证书请
 
     若要包括 PaaS 服务，指定开关 ```-IncludePaaS```
 
-7. 或者，用于开发/测试环境。 若要生成具有多个使用者可选名称的单个证书请求，请添加 **-RequestType SingleCSR** 参数和值（**不**建议用于生产环境）：
+7. 或者，对于开发/测试环境，若要生成包含多个使用者可选名称的单个证书请求将添加 **-RequestType SingleCSR**参数和值 (**不**建议生产环境）：
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem

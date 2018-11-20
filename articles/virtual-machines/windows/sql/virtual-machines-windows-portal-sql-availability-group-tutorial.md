@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667441"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238069"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -35,7 +35,7 @@ ms.locfileid: "43667441"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假设读者对 SQL Server Always On 可用性组有一个基本的了解。 如需更多信息，请参阅 [Always On 可用性组概述 (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)。
+本教程假设读者对 SQL Server Always On 可用性组有一个基本的了解。 如需更多信息，请参阅 [Always On 可用性组概述 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
 下表列出了开始本教程之前需要完成的先决条件：
 
@@ -119,7 +119,7 @@ ms.locfileid: "43667441"
 
 ### <a name="add-a-cluster-quorum-file-share"></a>添加群集仲裁文件共享
 
-在本示例中，Windows 群集将使用文件共享来创建群集仲裁。 本教程使用“节点”和“文件共享多数”仲裁。 有关详细信息，请参阅[了解故障转移群集中的仲裁配置](http://technet.microsoft.com/library/cc731739.aspx)。
+在本示例中，Windows 群集将使用文件共享来创建群集仲裁。 本教程使用“节点”和“文件共享多数”仲裁。 有关详细信息，请参阅[了解故障转移群集中的仲裁配置](https://technet.microsoft.com/library/cc731739.aspx)。
 
 1. 使用远程桌面会话连接到文件共享见证成员服务器。
 
@@ -168,7 +168,7 @@ ms.locfileid: "43667441"
 1. 在“选择仲裁见证”上，选择“配置文件共享见证”。
 
    >[!TIP]
-   >Windows Server 2016 支持云见证。 如果选择此类见证，则无需文件共享见证。 有关详细信息，请参阅[部署故障转移群集的云见证](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 本教程使用早期操作系统也支持的文件共享见证。
+   >Windows Server 2016 支持云见证。 如果选择此类见证，则无需文件共享见证。 有关详细信息，请参阅[部署故障转移群集的云见证](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 本教程使用早期操作系统也支持的文件共享见证。
 
 1. 在“配置文件共享见证”上键入所创建的共享的路径。 单击“下一步”。
 
@@ -296,7 +296,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 * *\\\\\<第一个 SQL Server\>\Backup\**。 单击“下一步”。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\**。 单击“下一步”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。
@@ -515,7 +515,7 @@ WSFC IP 地址也必须在负载均衡器上。
 SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 > [!TIP]
-> 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅[添加或编辑防火墙规则](http://technet.microsoft.com/library/cc753558.aspx)。
+> 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅[添加或编辑防火墙规则](https://technet.microsoft.com/library/cc753558.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 

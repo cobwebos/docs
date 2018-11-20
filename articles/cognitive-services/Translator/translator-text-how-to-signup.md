@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: erhopf
-ms.openlocfilehash: a08a3a5f2c4e17406863ab203c5af1781b4223d3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e7ba72c95959a0c31ca724f91f519ac705d669fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245777"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>如何注册文本翻译 API
 
@@ -47,7 +47,7 @@ ms.locfileid: "49648321"
 ## <a name="learn-test-and-get-support"></a>了解、测试和获取支持
 
 - [GitHub 上的代码示例](https://github.com/MicrosoftTranslator)
-- [Microsoft Translator 支持论坛](http://www.aka.ms/TranslatorForum)
+- [Microsoft Translator 支持论坛](https://www.aka.ms/TranslatorForum)
 
 ## <a name="pricing-options"></a>定价选项
 

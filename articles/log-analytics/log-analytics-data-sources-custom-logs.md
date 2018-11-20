@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: c8ae6ab818fe88aa5fb79a8911c0242ea3a0ec3b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423504"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012014"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -140,7 +140,7 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 下表提供了日志搜索的不同示例，它们从自定义日志中检索记录。
 
-| 查询 | Description |
+| Query | Description |
 |:--- |:--- |
 | MyApp_CL |名为 MyApp_CL 的自定义日志的所有事件。 |
 | MyApp_CL &#124; where Severity_CF=="error" |来自名为 MyApp_CL 的自定义日志，且 *Severity_CF* 自定义字段值为 *error* 的所有事件。 |
@@ -182,4 +182,4 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 
 ## <a name="next-steps"></a>后续步骤
 * 使用[自定义字段](log-analytics-custom-fields.md)将自定义日志中的条目解析为单个字段。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。

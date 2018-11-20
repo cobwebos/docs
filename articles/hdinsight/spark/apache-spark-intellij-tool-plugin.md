@@ -2,19 +2,19 @@
 title: 'Azure Toolkit for IntelliJ：为 HDInsight 群集创建 Spark 应用程序 '
 description: 使用用于 IntelliJ 的 Azure 工具包开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/25/2017
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433352"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289064"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "47433352"
 ## <a name="prerequisites"></a>先决条件
 
 - HDInsight Linux 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-- Oracle Java 开发工具包。 可以从 [Oracle 网站](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装它。
+- Oracle Java 开发工具包。 可以从 [Oracle 网站](https://aka.ms/azure-jdks)安装它。
 - IntelliJ IDEA。 本文使用版本 2017.1。 可以从 [JetBrains 网站](https://www.jetbrains.com/idea/download/)安装它。
 
 ## <a name="install-azure-toolkit-for-intellij"></a>安装用于 IntelliJ 的 Azure 工具包
@@ -68,35 +68,35 @@ ms.locfileid: "47433352"
     ![展开的群集名称节点](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="link-a-cluster"></a>链接群集
-可以使用 Ambari 管理的用户名链接标准 HDInsight 群集。 同样，对于已加入域的 HDInsight 群集，也可使用这种域和用户名（例如 user1@contoso.com）进行链接。
+可以使用 Ambari 管理的用户名链接标准 HDInsight 群集。 同样，对于已加入域的 HDInsight 群集，也可使用这种域和用户名（例如 user1@contoso.com）进行链接。 也可链接 Livy 服务群集。
 
 1. 从“Azure 资源管理器”选择“链接群集”。
 
    ![链接群集上下文菜单](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
+2. 有两种链接群集的选项。 
 
-1. 输入**群集名称**、**用户名**和**密码**。 如果获得身份验证失败，需要检查用户名和密码。 或者，添加存储帐户、存储密钥，然后从存储容器中选择一个容器。 存储信息用于左侧树中的存储资源管理器
+   * 要链接 HDInsight 群集，请在“群集信息”字段中选择“HDInsight 群集”，输入“群集名/URL”、“用户名”和“密码”。
+
+      ![链接 hdinsight 群集对话框](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+
+   * 要链接 Livy 服务群集，请在“群集信息”字段中选择“Livy 服务”，输入“Livy 终结点”和“群集名”。 “Yarn 终结点”可选。 “身份验证”字段中提供了两个选项。 分别为“基本身份验证”和“无身份验证”。 选择“基本身份验证”时，应提供“用户名”和“密码”。 如果身份验证失败，需要检查用户名和密码。
+      
+      ![链接 livy 群集对话框](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
    
-   ![“链接群集”对话框](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
-
-   > [!NOTE]
-   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
-   > ![IntelliJ 中的存储资源管理器](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
-
-   
-1. 如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
+3. 如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
 
    ![链接的群集](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
-1. 还可以从 **Azure 资源管理器**取消链接群集。
+4. 还可以从 **Azure 资源管理器**取消链接群集。
    
    ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/unlink.png)
 
-## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中运行 Spark Scala 应用程序
+## <a name="create-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中创建 Spark Scala 应用程序
 
-1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作： 
+1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中，遵循以下步骤： 
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight” > “Spark on HDInsight (Scala)”
+   a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
    b. 在“生成工具”列表中，根据需要选择以下选项之一：
 
@@ -119,7 +119,7 @@ ms.locfileid: "47433352"
 
     ![选择 Spark SDK](./media/apache-spark-intellij-tool-plugin/hdi-new-project.png)
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入项目名称和位置。
+   a. 输入项目名称和位置。
 
    b. 在“项目 SDK”下拉列表中，选择适用于 Spark 2.x 群集的“Java 1.8”，或选择适用于 Spark 1.x 群集的“Java 1.7”。
 
@@ -129,7 +129,7 @@ ms.locfileid: "47433352"
 
 1. Spark 项目会自动创建一个项目。 若要查看项目，请执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“文件”菜单中，选择“项目结构”。
+   a. 在“文件”菜单中，选择“项目结构”。
 
    b. 在“项目结构”对话框中，选择“项目”查看创建的默认项目。 也可以选择加号 (**+**) 图标创建自己的项目。
 
@@ -137,7 +137,7 @@ ms.locfileid: "47433352"
       
 1. 执行以下操作来添加应用程序源代码：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“项目资源管理器”中，右键单击“src”，指向“新建”，并选择“Scala 类”。
+   a. 在“项目资源管理器”中，右键单击“src”，指向“新建”，并选择“Scala 类”。
       
       ![项目资源管理器中用于创建 Scala 类的命令](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
@@ -165,35 +165,46 @@ ms.locfileid: "47433352"
     
         }
 
-1. 执行以下操作，在 HDInsight Spark 群集中运行该应用程序：
+## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中运行 Spark Scala 应用程序
+创建 Scala 应用程序后，可将其提交到群集。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“项目资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
-      
+1. 在项目资源管理器中，找到 Java 或 Scala 文件，然后在右键单击菜单中选择“将 Spark 应用程序提交到 HDInsight”。
+    
       ![“将 Spark 应用程序提交到 HDInsight”命令](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-   b. 系统会提示输入 Azure 订阅凭据。 在“Spark 提交”对话框中提供以下值，并选择“提交”。
+2. 在配置对话框窗口中，提供以下值，然后单击“SparkJobRun”。
+
+      ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
       
-      * 对于“Spark 群集(仅限 Linux)”，选择要在其上运行应用程序的 HDInsight Spark 群集。
+    * 对于“Spark 群集(仅限 Linux)”，选择要在其上运行应用程序的 HDInsight Spark 群集。
 
-      * 从 IntelliJ 项目或硬盘中选择一个项目。
+    * 从 IntelliJ 项目或硬盘中选择一个项目。
 
-      * 在“Main 类名”文本框中选择省略号 (**...**)，选择应用程序源代码中的 main 类，并选择“确定”。
+    * **主类名**字段：默认值是所选文件中的主类。 可选择省略号 (...) 并选择其他类来更改类。   
 
-        ![“选择 Main 类”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
+    * **作业配置**字段：默认值设置如上图所示。 可更改值或为作业提交添加新的键/值。 有关详细信息：[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
 
-      * 你可以提供所需的信息。 有关**作业配置**，我们使用默认值。 可以参考 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) 以获取有关密钥的更多信息。 **命令行参数**、**引用的 JAR** 和**引用的文件**应如下图所示。 有关**引用的 JAR** 和**引用的文件**的更多信息，请参阅 [Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。 要使**引用的 JAR** 和**引用的文件**正常工作，应该将资源上传到你首先提交的群集。 请参阅[如何将资源上传到群集](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)。提交对话框应类似于下图。
-        
-        ![Spark 提交对话框作业配置含义](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+      ![Spark 提交对话框作业配置含义](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
 
-        ![Spark 提交对话框 jar 文件含义](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+    * **命令行参数**字段：如有需要，可为主类输入按空格分隔的参数值。
 
-        ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
+    * **引用的 Jars** 和**引用的文件**字段：可输入引用的 Jars 和文件的路径（如果有）。 有关详细信息，请参阅 [Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
-   c. 窗口底部的“Spark 提交”选项卡应开始显示进度。 也可以通过选择“Spark 提交”窗口中的红色按钮停止应用程序。
+      ![Spark 提交对话框 jar 文件含义](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
+       > [!NOTE]
+       > 若要上传引用的 JAR 和引用的文件，请参阅：[如何将资源上传到群集](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
+                         
+    * **上传路径**：可指示 Jar 或 Scala 项目资源提交的存储位置。 支持三种存储类型：**Azure Blob**、**使用 Spark 交互式会话上传项目**、**使用群集默认存储帐户**和 **ADLS Gen1**。 下面的屏幕截图是 Azure Blob 的示例。
+
+        ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
+
+        ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-blob.png)
+
+3. 单击“SparkJobRun”将项目提交到所选群集。 “群集中的远程 Spark 作业”选项卡在底部显示作业执行进度。 可通过单击红色按钮来停止应用程序。 若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。
       
      ![“Spark 提交”窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
-      
-      若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。
+
 
 ## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>本地或远程调试 HDInsight 群集上的 Spark 应用程序 
 我们还建议以另一种方式将 Spark 应用程序提交到群集。 为此，可在“运行/调试配置”IDE 中设置参数。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Spark 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)。
@@ -243,6 +254,47 @@ ms.locfileid: "47433352"
 
 1. 在对话框中，清除不想访问的订阅旁边的复选框，并选择“关闭”。 如果想要从 Azure 订阅注销，可以选择“注销”。
 
+## <a name="spark-console"></a>Spark Console
+可运行 Spark Local Console(Scala) 或运行 Spark Livy Interactive Session Console(Scala)。
+
+### <a name="spark-local-consolescala"></a>Spark Local Console(Scala)
+1. 如果之前未设置配置，请设置配置。 在“运行/调试配置”窗口中，单击 **+**->“Azure HDInsight Spark”，选择“在本地运行”选项卡”和“在群集中远程运行”，选择主类，然后单击“确定”。
+
+    ![Local Console 设置配置](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
+ 
+2. 打开对应的主类文件，右键单击“Spark Console”，然后单击“运行 Spark Local Console(Scala)”。 或转到“工具”菜单->“Spark Console”->“运行 Spark Local Console(Scala)”以启动控制台。 此时将显示两个对话框，询问你是否要自动修复依赖项。 单击“自动修复”。
+
+    ![Spark 自动修复1](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![Spark 自动修复2](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
+
+    ![Spark Local 入口点](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
+
+3. 成功启动 Local Console 后。 外观如下所示。 你可执行所需的操作。 例如，输入 sc.appName，按 Ctrl+Enter，系统将显示结果。 可以通过单击红色按钮来终止 Local Console。
+
+    ![Local Console 结果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+
+
+### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
+它仅在 IntelliJ 2018.2 和 2018.3 上受支持。
+
+1. 如果之前未设置配置，请设置配置。 在“运行/调试配置”窗口中，单击+->“Azure HDInsight Spark”，选择“在群集中远程运行”选项卡，选择群集名和主类，然后单击“确定”。
+
+    ![Interactive Console 添加配置输入](./media/apache-spark-intellij-tool-plugin/interactive-console-add-config-entry.png)
+
+    ![Interactive Console 设置配置](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
+
+2. 打开与主类对应的文件，右键单击“Spark 控制台”，然后单击“运行 Spark Livy Interactive Session Console(Scala)”。 或转到“工具”菜单，然后依次单击“Spark Console”和“运行 Spark Livy Interactive Session Console(Scala)”以启动控制台。
+
+3. 成功启动控制台后，可执行所需的操作。 例如，输入 sc.appName，按 Ctrl+Enter，系统将显示结果。
+
+    ![Interactive Console 结果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>将选定内容发送到 Spark Console
+可以通过将一些代码发送到 Local Console 或 Livy Interactive Session Console(Scala) 来方便地预测脚本结果。 可以突出显示 Scala 文件中的一些代码，然后右键单击“将选定内容发送到 Spark Console”。 选定代码将发送到控制台并执行。 结果将显示在控制台中的代码之后。 如果存在错误，则控制台将检查错误。 
+
+   ![将选定内容发送到 Spark Console](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>转换现有 IntelliJ IDEA 应用程序以使用用于 IntelliJ 的 Azure 工具包
 可以转换在 IntelliJ IDEA 中创建的现有 Spark Scala 应用程序，使其与用于 IntelliJ 的 Azure 工具包兼容。 然后，可以使用该插件将应用程序提交到 HDInsight Spark 群集。
 
@@ -285,11 +337,7 @@ ms.locfileid: "47433352"
 ![将选项添加到 IntelliJ 中的“VM 选项”对话框](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>常见问题解答
-链接群集时，建议提供存储的凭据。
-
-![链接群集, 提供存储凭据](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-可通过两种模式提交作业。 如果提供存储凭据，则将使用批处理模式提交作业。 否则，将使用交互模式。 如果群集正忙，可能会收到以下错误。
+如果群集正忙，可能会收到以下错误。
 
 ![Intellij 在群集忙时收到错误](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573394"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243703"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ ms.locfileid: "38573394"
 可以通过 Azure 门户在实验室级别添加所有者和用户。 用户可以是具有有效的 [Microsoft 帐户 (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) 的外部用户。
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。
 4. 在实验室的边栏选项卡中，选择“配置和策略”。 
@@ -116,11 +116,11 @@ ms.locfileid: "38573394"
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>在订阅级别添加所有者或用户
 Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验室的 Azure 订阅的所有者会自动成为这些实验室的所有者。 他们还拥有实验室用户创建的 VM 和其他资源以及 Azure 开发测试实验室服务。 
 
-可以通过 [Azure门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中的实验室边栏选项卡将其他所有者添加到实验室。 但是，添加的所有者的管理范围比订阅所有者的范围更窄。 例如，添加的所有者无法完全访问测试开发实验室服务在订阅中创建的某些资源。 
+可以通过 [Azure门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中的实验室边栏选项卡将其他所有者添加到实验室。 但是，添加的所有者的管理范围比订阅所有者的范围更窄。 例如，添加的所有者无法完全访问测试开发实验室服务在订阅中创建的某些资源。 
 
 要将所有者添加到 Azure 订阅，请按照下列步骤操作：
 
-1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 选择“所有服务”，并从列表中选择“订阅”。
 3. 选择所需的订阅。
 4. 选择“访问”图标。 

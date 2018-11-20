@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996547"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959267"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
 可将 **[Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)** 以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在诊断设置中启用事件中心授权规则 ID。
@@ -44,7 +44,7 @@ ms.locfileid: "46996547"
 可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式传输。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定事件中心命名空间，以及要发送到该命名空间的日志类别和指标。 在该命名空间中针对每个启用的日志类别创建一个事件中心。 诊断**日志类别**是一类可供资源收集的日志。
 
 > [!WARNING]
-> 从计算资源（例如，VM 或 Service Fabric）启用诊断日志并对其进行流式传输[需要另一组步骤](../event-hubs/event-hubs-streaming-azure-diags-data.md)。
+> 从计算资源（例如，VM 或 Service Fabric）启用诊断日志并对其进行流式传输[需要另一组步骤](azure-diagnostics-streaming-event-hubs.md)。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都是属于同一个 AAD 租户，事件中心命名空间就不必与资源发出日志位于同一订阅中。
 
@@ -191,10 +191,10 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="stream-data-from-compute-resources"></a>对来自计算资源的数据进行流式处理
 
-还可以使用 Windows Azure 诊断代理对来自计算资源的诊断日志进行流式处理。 [请参阅本文](../event-hubs/event-hubs-streaming-azure-diags-data.md)了解如何进行设置。
+还可以使用 Windows Azure 诊断代理对来自计算资源的诊断日志进行流式处理。 [请参阅本文](azure-diagnostics-streaming-event-hubs.md)了解如何进行设置。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure Monitor 流式传输 Azure Active Directory 日志](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [使用 Azure Monitor 流式传输 Azure Active Directory 日志](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [详细了解 Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)
-* [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* [事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

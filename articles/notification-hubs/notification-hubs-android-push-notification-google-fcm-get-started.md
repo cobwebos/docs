@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 2bc085989ff3bbbc50042c46b338f748a10aa87e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ec429407324210fca824ebd0734ddb39bce56ac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232779"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256555"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "38232779"
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/free/)。
 
-* 除了需要上面提到的可用 Azure 帐户外，本教程还要求具有最新版本的 [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
+* 除了需要上面提到的可用 Azure 帐户外，本教程还要求具有最新版本的 [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)。
 * 适用于 Firebase Cloud Messaging 的 Android 2.3 或更高版本。
 * Firebase Cloud Messaging 要求安装 Google Repository 修订版 27 或更高版本。
 * 适用于 Firebase Cloud Messaging 的 Google Play Services 9.0.2 或更高版本。

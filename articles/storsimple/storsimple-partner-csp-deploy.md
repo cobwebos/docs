@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109575"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238924"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array
 
@@ -34,13 +34,13 @@ ms.locfileid: "23109575"
 在开始之前，请确保：
 
 - 已在 CSP 计划中注册。
-- 已拥有有效的[合作伙伴中心](http://partnercenter.microsoft.com/)登录凭据。 通过凭据，可以登录合作伙伴门户，以添加新客户、搜索客户或从“合作伙伴”仪表板导航至客户帐户。 CSP 可以代表 Azure 门户中的客户充当 StorSimple 管理员。
+- 已拥有有效的[合作伙伴中心](https://partnercenter.microsoft.com/)登录凭据。 通过凭据，可以登录合作伙伴门户，以添加新客户、搜索客户或从“合作伙伴”仪表板导航至客户帐户。 CSP 可以代表 Azure 门户中的客户充当 StorSimple 管理员。
                              
 ## <a name="add-a-customer"></a>添加客户
 
 如果添加客户，会自动创建订阅。 若要添加客户（并自动创建订阅），请在合作伙伴门户中执行下列步骤。
 
-1. 转至[合作伙伴中心](http://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
+1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
 
      ![合作伙伴中心中的仪表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -77,7 +77,7 @@ ms.locfileid: "23109575"
 
 在某些情况下，可能存在现有客户，需要添加订阅。 要对现有客户添加订阅，请在合作伙伴门户中执行下列步骤。
 
-1. 转至[合作伙伴中心](http://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
+1. 转至[合作伙伴中心](https://partnercenter.microsoft.com/)，使用 CSP 凭据登录。 单击“仪表板”。
 
      ![合作伙伴中心中的仪表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -85,7 +85,7 @@ ms.locfileid: "23109575"
 
     ![客户](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. 在订阅的“热门产品/服务”中勾选“Microsoft Azure”，并单击“提交”。 这会创建一个新订阅。
+3. 在订阅的“热门套餐”中勾选“Microsoft Azure”，并单击“提交”。 这会创建一个新订阅。
 
     ![添加新订阅](./media/storsimple-partner-csp-deploy/image11.png)
 

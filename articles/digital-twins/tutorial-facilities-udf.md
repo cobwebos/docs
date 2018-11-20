@@ -5,14 +5,14 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 1e5cb18b4e526cd0a0607f5bc93788fcf07430e1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: cf45cb8de0e40dfe5f5772dcb1a0be2aa7585fd6
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364228"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156674"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>教程：使用 Azure 数字孪生预配大楼并监视工作条件
 
@@ -161,7 +161,7 @@ ms.locfileid: "49364228"
             }
         ```
         
-        修改后的 UDF 会查找这样一个条件：房间变得可用且其二氧化碳和温度处于可以容忍的范围内。 在此条件得到满足的情况下，它会使用语句 `parentSpace.Notify(JSON.stringigy(alert));` 生成一个通知。 不管此条件是否得到满足，它都会设置受监视空间的值，并提供相应的消息。
+        修改后的 UDF 会查找这样一个条件：房间变得可用且其二氧化碳和温度处于可以容忍的范围内。 在此条件得到满足的情况下，它会使用语句 `parentSpace.Notify(JSON.stringify(alert));` 生成一个通知。 不管此条件是否得到满足，它都会设置受监视空间的值，并提供相应的消息。
     
     1. 保存文件。 
     

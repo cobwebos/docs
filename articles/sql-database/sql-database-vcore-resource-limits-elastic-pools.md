@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161556"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354166"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
@@ -28,16 +28,15 @@ ms.locfileid: "47161556"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
-
-对于 SQL 数据库弹性池，下表显示了每个服务层可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层、计算大小和存储量。
+可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层、计算大小和存储量。
 
 > [!NOTE]
 > 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
 
-### <a name="general-purpose-service-tier"></a>常规用途服务层
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>常规用途服务层：存储大小和计算大小
 
-#### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+
 |计算大小|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
@@ -54,14 +53,15 @@ ms.locfileid: "47161556"
 |最大并发工作线程数（请求数）|210|420|840|1680|3360|5040|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|
 |每个池的最大数据库数|100|200|500|500|500|500|
-|每个数据库的最小/最大弹性池 vcore 选项|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
+|每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
 |副本数|1|1|1|1|1|1|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-#### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+
 |计算大小|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|
@@ -78,16 +78,17 @@ ms.locfileid: "47161556"
 |最大并发工作线程数（请求数）|210|420|840|1680|2520|3360|4200|8400
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|30000|
 |每个池的最大数据库数|100|200|500|500|500|500|500|500|
-|每个数据库的最小/最大弹性池 vcore 选项|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |副本数|1|1|1|1|1|1|1|1|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-### <a name="business-critical-service-tier"></a>“业务关键”服务层
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>业务关键服务层：存储大小和计算大小
 
-#### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+### <a name="generation-4-compute-platform"></a>第 4 代计算平台
+
 |计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |硬件代次|4|4|4|4|4|4|
@@ -104,7 +105,7 @@ ms.locfileid: "47161556"
 |最大并发工作线程数（请求数）|210|420|840|1680|3360|5040|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|
 |每个池的最大数据库数|此计算大小仅支持单个 DB|50|100|100|100|100|
-|每个数据库的最小/最大弹性池 vcore 选项|不适用|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
+|每个数据库的最小/最大弹性池 vCore 选项|不适用|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|
 |副本数|3|3|3|3|3|3|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|是|是|是|是|是|是|
@@ -112,6 +113,7 @@ ms.locfileid: "47161556"
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 代计算平台
+
 |计算大小|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |硬件代次|5|5|5|5|5|5|5|5|
@@ -128,7 +130,7 @@ ms.locfileid: "47161556"
 |最大并发工作线程数（请求数）|210|420|840|1680|2520|3360|5040|8400|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|30000|
 |每个池的最大数据库数|不适用|50|100|100|100|100|100|100|
-|每个数据库的最小/最大弹性池 vcore 选项|不适用|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|每个数据库的最小/最大弹性池 vCore 选项|不适用|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|0, 0.25, 0.5, 1, 2, 4, 8, 16, 24|0, 0.5, 1, 2, 4, 8, 16, 24, 32|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0.5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |副本数|3|3|3|3|3|3|3|3|
 |Multi-AZ|不适用|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |读取横向扩展|是|是|是|是|是|是|是|是|
@@ -137,7 +139,7 @@ ms.locfileid: "47161556"
 
 如果弹性池的所有 vCore 繁忙，则池中的每个数据库将接收相同数量的计算资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 vCore 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
-### <a name="database-properties-for-pooled-databases"></a>入池数据库的数据库属性
+## <a name="database-properties-for-pooled-databases"></a>入池数据库的数据库属性
 
 下表介绍了入池数据库的属性。
 
@@ -147,9 +149,9 @@ ms.locfileid: "47161556"
 | 每个数据库的最小 vCore 数 |池中任何数据库可以保证的 vCore 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 vCore 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 vCore 使用量之间的任意值。 池中数据库数目和每个数据库的 vCore 下限的积不能超过每个池的 vCore 数。|
 | 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 入池数据库共享分配的池存储，因此数据库可以访问的大小限制为剩余的池存储与数据库大小中的较小者。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
 |||
- 
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
-- 有关服务器和订阅级别限制的信息，请参阅 [Azure SQL 数据库资源限制概述](sql-database-resource-limits.md)。
+- 有关服务器和订阅级别限制的信息，请参阅[逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。

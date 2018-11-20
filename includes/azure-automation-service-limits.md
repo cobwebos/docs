@@ -5,20 +5,21 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 11/07/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45570447"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285720"
 ---
 | 资源 | 最大限制 |说明|
 | --- | --- |---|
 | 每个自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业） |200 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
+| 30 天滚动期内作业元数据的最大存储大小。 | 10GB（约 400 万个作业）|达到此限制时，后续作业创建请求会失败。 |
 | 每个自动化帐户每 30 秒可以导入的模块的最大数量 |5 ||
 | 一个模块的最大大小 |100 MB ||
 | 作业运行时间 - 免费层 |每个订阅每个日历月 500 分钟 ||
@@ -31,5 +32,6 @@ ms.locfileid: "45570447"
 | Runbook 作业参数大小上限   | 512 kb||
 | Runbook 参数数量上限   | 50|可以将 JSON 或 XML 字符串传递给参数，并在达到 50 个参数的限制时使用 Runbook 对其进行分析|
 | Webhook 有效负载大小上限 |  512 kb|
+| 保留作业数据的最大天数|30 天|
 
 <sup>1</sup> 沙盒是可由多个作业使用的共享环境，使用相同沙盒的作业受到该沙盒的资源限制的约束。

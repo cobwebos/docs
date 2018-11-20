@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6e3026ea3aca897ab63f4ad7d72eac438fdb7199
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389105"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612799"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -55,7 +55,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中访问权限管理的详细信息，请参阅[管理工作区](log-analytics-manage-access.md#manage-accounts-and-users)。
 
 > [!NOTE]
-> 本文的先前版本指出，权限会自动从 OMS 门户转换到 Azure 门户。 我们已不再规划这种自动转换，用户必须自行执行转换。
+> 本文的先前版本指出，权限会自动从 OMS 门户转换到 Azure 门户。 我们已不再规划这种自动转换，你必须自行执行转换。
 
 你可能已在 Azure 门户中拥有相应的访问权限，在这种情况下，无需做出任何更改。 在某些情况下，你可能没有相应的访问权限，对于这种情况，管理员必须向你分配权限。
 
@@ -84,7 +84,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 警报已[扩展到 Azure 门户中](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 完成此过渡后，只能在 Azure 门户中针对警报执行管理操作。 现有的警报将继续列在 OMS 门户中。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 
 ### <a name="alert-management-solution"></a>警报管理解决方案
-无需使用[警报管理解决方案](log-analytics-solution-alert-management.md)，可以使用 [Azure Monitor 的统一警报界面](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)来可视化和管理警报。 此新体验聚合来自 Azure 中多个源的警报，包括来自 Log Analytics 的日志警报。 可以查看警报的分布情况，通过智能组利用相关警报的自动分组，并在应用丰富的筛选器时查看多个订阅的警报。 在 2018 年 6 月 4 日开始发布的预览版中已提供所有这些功能。 警报管理解决方案不会在 Azure 门户中提供。 
+无需使用[警报管理解决方案](log-analytics-solution-alert-management.md)，可以使用 [Azure Monitor 的统一警报界面](../monitoring-and-diagnostics/monitoring-overview-alerts.md)来可视化和管理警报。 此新体验聚合来自 Azure 中多个源的警报，包括来自 Log Analytics 的日志警报。 可以查看警报的分布情况，通过智能组利用相关警报的自动分组，并在应用丰富的筛选器时查看多个订阅的警报。 在 2018 年 6 月 4 日开始发布的预览版中已提供所有这些功能。 警报管理解决方案不会在 Azure 门户中提供。 
 
 警报管理解决方案收集的数据（具有某种警报类型的记录）继续在 Log Analytics 中提供，前提是为工作区安装了该解决方案。 从 2018 年 8 月开始，会实现将警报从统一警报体验流式传输到工作区，到时会取代上述功能。 预期会发生一些架构更改，日后会发布相关通告。
 

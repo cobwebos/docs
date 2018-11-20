@@ -16,28 +16,28 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 在边缘查找见解
-    items:
-    - name: 使用 Azure Functions 筛选数据
-      href: tutorial-deploy-function.md
-    - name: 使用 ASA 查找平均值
-      href: tutorial-deploy-stream-analytics.md
-    - name: 使用 Azure ML 给数据评分
-      href: tutorial-deploy-machine-learning.md
-    - name: 使用自定义代码筛选数据
-      items:
-      - name: C#
-        href: tutorial-csharp-module.md
-      - name: Python
-        href: tutorial-python-module.md
-      - name: Node.js
-        href: tutorial-node-module.md
-      - name: Java
-        href: tutorial-java-module.md
-      - name: C
-        href: tutorial-c-module.md
+  - name: 使用 Azure Functions 筛选数据
+    href: tutorial-deploy-function.md
+  - name: 使用 ASA 查找平均值
+    href: tutorial-deploy-stream-analytics.md
+  - name: 使用 Azure ML 给数据评分
+    href: tutorial-deploy-machine-learning.md
+  - name: 使用自定义视觉对图像进行分类
+    href: tutorial-deploy-custom-vision.md
   - name: 使用 SQL 在本地存储数据
     href: tutorial-store-data-sql-server.md
+  - name: 开发自定义代码模块
+    items:
+    - name: C#
+      href: tutorial-csharp-module.md
+    - name: Python
+      href: tutorial-python-module.md
+    - name: Node.js
+      href: tutorial-node-module.md
+    - name: Java
+      href: tutorial-java-module.md
+    - name: C
+      href: tutorial-c-module.md
 - name: 概念
   items:
   - name: IoT Edge 运行时
@@ -136,10 +136,10 @@ items:
       href: how-to-deploy-monitor-cli.md
   - name: 使用 Edge 设备作为网关
     items:
-    - name: 透明网关 (Linux)
-      href: how-to-create-transparent-gateway-linux.md
-    - name: 透明网关 (Windows)
-      href: how-to-create-transparent-gateway-windows.md
+    - name: 配置透明网关
+      href: how-to-create-transparent-gateway.md
+    - name: 连接下游设备
+      href: how-to-connect-downstream-device.md
     - name: Modbus 协议网关
       href: deploy-modbus-gateway.md
   - name: 配置代理支持
@@ -204,8 +204,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics 工具
     href: https://github.com/Azure/iothub-diagnostics
-  - name: 学习路径
-    href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge
   - name: 定价
@@ -220,9 +218,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: fa5d551c95493361cac9d661938b50fb9ad2fed6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7ad5c5da9162c2b5d9b5908dbea5630cf277393c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816304"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613896"

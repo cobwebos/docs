@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4035e93b8eed0a7bc1dd0cddbc42f41e9c26f333
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831494"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218859"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -31,17 +31,29 @@ ms.locfileid: "48831494"
 ![本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>注册应用程序并下载快速入门应用
+> ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
+> 可以使用两个选项来启动快速入门应用程序：
+> * [快速] [选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手动] [选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>注册并配置应用程序和代码示例
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
+>
+> 1. 访问 [Azure 门户 - 应用程序注册（预览）](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
+> 1. 输入应用程序的名称，然后单击“注册”。
+> 1. 遵照说明下载内容，并一键式自动配置新应用程序。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
+>
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
-> 
-> 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/portal/register-app)。
-> 1. 输入应用程序的名称，确保未选中“引导式设置”选项，然后单击“创建”。
-> 1. 单击 `Add Platform`，然后选择 `Web`。
-> 1. 确保“允许隐式流”保持选中状态。
-> 1. 在“重定向 URL”中输入 `https://localhost:44368/`。
-> 1. 滚动到页面底部，单击“保存”。
+> 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
+>
+> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
+> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)” > “新建注册”。
+> 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
+>      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
+>      - 在“回复 URL”中添加 `https://localhost:44368/`，然后单击“注册”。
+选择“身份验证”菜单，在“隐式授权”下设置“ID 令牌”，然后选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -60,15 +72,23 @@ ms.locfileid: "48831494"
 
 1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 1. 在 Visual Studio 中打开解决方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. 编辑 **Web.config**，用刚刚注册的应用程序中的应用程序 ID 替换 `Enter_the_Application_Id_here`：
+1. 编辑 **Web.config**，将参数 `ClientId` 和 `Tenant` 替换为：
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
+    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
-    
-> [!div class="sxs-lookup" renderon="portal"]
-> [!IMPORTANT]
-> 如果应用程序为单租户应用程序（仅针对此目录中的帐户），则请在 Web.config 文件中查找 `Tenant` 的值，并将 `common` 替换为租户 ID 或租户名称（例如，contoso.microsoft.com）。 可在“概览”页中获取租户名称。
+
+> [!div renderon="docs"]
+> 其中：
+> - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
+> - `Enter_the_Tenant_Info_Here` - 是下述选项之一：
+>   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
+>   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为 `common`
+>
+> > [!TIP]
+> > 若要查找“应用程序 ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到“概览”页。
 
 ## <a name="more-information"></a>详细信息
 

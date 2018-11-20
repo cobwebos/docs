@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 41e627d895f0276d372ee42df3e0a43fdadc4051
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042855"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016057"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -29,7 +29,7 @@ ms.locfileid: "48042855"
 
 ## <a name="overview"></a>概述
 
-此方案中使用的策略是让 Azure 活动日志将事件发送到某个[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)，其中的某个[逻辑应用](../logic-apps/logic-apps-overview.md)会将这些事件发送到 Log Analytics 工作区。 
+此方案中使用的策略是让 Azure 活动日志将事件发送到某个[事件中心](../event-hubs/event-hubs-about.md)，其中的某个[逻辑应用](../logic-apps/logic-apps-overview.md)会将这些事件发送到 Log Analytics 工作区。 
 
 ![从活动日志到 Log Analytics 的数据流示意图](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "48042855"
    | Log Analytics  | 如果想要将逻辑应用的每次运行状态记录到 Log Analytics 中，请选择此项。  |
 
     
-3. 选择**创建**。 显示“部署成功”通知时，请单击“转到资源”打开逻辑应用。
+3. 选择“创建”。 显示“部署成功”通知时，请单击“转到资源”打开逻辑应用。
 
 4. 在“模板”下选择“空白逻辑应用”。 
 
@@ -151,7 +151,7 @@ ms.locfileid: "48042855"
 
    ![在逻辑应用中添加事件中心触发器的插图](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. 系统提示输入凭据时，请连接到事件中心命名空间。 依次输入连接名称和复制的连接字符串。  选择**创建**。
+2. 系统提示输入凭据时，请连接到事件中心命名空间。 依次输入连接名称和复制的连接字符串。  选择“创建”。
 
    ![在逻辑应用中添加事件中心连接的插图](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 

@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 84e26212b1102d693b84e5b66fbd606da2673934
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d1099b813e84cd4885b011dec205a1e631fc6599
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405922"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250707"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-gdpr"></a>Azure 安全性和符合性蓝图：符合 GDPR 的数据仓库
 
 ## <a name="overview"></a>概述
 一般数据保护条例 (GDPR) 包含许多有关收集、存储和使用个人信息的要求，包括组织如何识别和保护个人数据、满足透明度要求、检测和报告个人数据泄露以及培训隐私人员和其他员工。 GDPR 使个人可以更好地控制其个人数据，并对收集、处理或分析个人数据的组织赋予许多新义务。 GDPR 针对向欧盟 (EU) 居民提供产品及服务，或收集和分析欧盟居民相关信息的组织制定了新的规则。 无论组织位于何处，均需遵守 GDPR。
 
-Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保护云中的数据，包括由 GDPR 确定的个人数据类别。 Microsoft 的[合同条款](http://aka.ms/Online-Services-Terms)承诺 Microsoft 满足处理方的要求。
+Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保护云中的数据，包括由 GDPR 确定的个人数据类别。 Microsoft 的[合同条款](https://aka.ms/Online-Services-Terms)承诺 Microsoft 满足处理方的要求。
 
 此 Azure 安全性和符合性蓝图提供了在 Azure 中部署有助于满足 GDPR 要求的数据仓库体系结构的指导。 此解决方案演示了客户可以满足特定安全性和符合性要求的方式，并且可以作为客户在 Azure 中构建和配置自己的数据仓库解决方案的基础。 客户可以利用此参考体系结构，并按照 Microsoft 的[四步流程](https://aka.ms/gdprebook)实现 GDPR 符合性：
 1. 发现：确定哪些个人数据存在以及这些数据位于何处。

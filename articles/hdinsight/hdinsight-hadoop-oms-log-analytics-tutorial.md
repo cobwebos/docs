@@ -2,25 +2,25 @@
 title: 使用 Log Analytics 监视 Azure HDInsight 群集
 description: 了解如何使用 Azure Log Analytics 监视在 HDInsight 群集中运行的作业。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.author: jasonh
-ms.openlocfilehash: 87d1593327ab45f064c6f6b19dfbe3882baaa446
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 531cfb32b3433e0a376845a81a3ea5e13e6f1d11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109510"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278678"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
 了解如何启用 Azure Log Analytics 监视 HDInsight 中的 Hadoop 群集操作，以及如何添加 HDInisght 监视解决方案。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) 是一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+[Log Analytics](../log-analytics/log-analytics-overview.md) 是 Azure Monitor 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "43109510"
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
 > [!NOTE]
-> 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 请注意，Azure Log Analytics 并非在所有 Azure 区域中均可用。
+> 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 Azure Log Analytics 并非在所有 Azure 区域中均可用。
 
 ## <a name="enable-log-analytics-by-using-the-portal"></a>使用门户启用 Log Analytics
 
@@ -93,7 +93,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Log Analytic
 
 有关安装管理解决方案的说明，请参阅 [Azure 中的管理解决方案](../monitoring/monitoring-solutions.md#install-a-management-solution)。 若要进行试验，请安装 HDInsight Hadoop 监视解决方案。 完成后，将看到“摘要”下列出的“HDInsightHadoop”磁贴。 选择“HDInsightHadoop”磁贴。 HDInsightHadoop 解决方案如下所示：
 
-![HDInsight OMS Hadoop 监视解决方案视图](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+![HDInsight 监视解决方案视图](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
 由于群集是全新的群集，因此报告不会显示任何活动。
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: ccb3c6b1349576c0fa91066f4e98f0a53f5bef45
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b1711b86042c74eba47fe1cfa41bbbd36ceaf127
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319585"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248752"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 
@@ -51,7 +51,7 @@ ms.locfileid: "49319585"
 * Azure Active Directory Premium 许可证
 * Windows Server 2012 R2 联合身份验证服务，为 Azure AD 的 SSO 配置
 * Windows Server 2012 R2 Web 应用程序代理 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [（下载 Azure AD Connect）](http://www.microsoft.com/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [（下载 Azure AD Connect）](https://www.microsoft.com/download/details.aspx?id=47594)
 * 已验证的域
 
 ## <a name="known-issues-in-this-release"></a>本版本中的已知问题

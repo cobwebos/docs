@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 10/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 4094de1a1c17e844d96ac789bb4bc1655fdc1546
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b57fdb3f039a9395133854f8b4d4f2095e3a4f9b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669237"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>教程：Azure Active Directory 与 Figma集成
 
@@ -61,19 +61,19 @@ ms.locfileid: "43669237"
 
 **若要从库中添加 Figma，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![Active Directory][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡][2]
+    ![应用程序][2]
 
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![应用程序][3]
 
-4. 在搜索框中，键入“Figma”，在结果面板中选择“Figma”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Figma”。 从结果面板中选择“Figma”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Figma](./media/figma-tutorial/tutorial_figma_addfromgallery.png)
 
@@ -84,13 +84,13 @@ ms.locfileid: "43669237"
 为实现单一登录，Azure AD 需要链接到 Figma。  若要配置和测试 Figma 的 Azure AD 单一登录，请完成以下步骤：
 
 1. [**联系 Figma 支持团队**](mailto:support@figma.com?subject=SAML+Config)为组织启动 SAML 配置并获取 ORG_SAML_CONFIG_ID。
-2. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. [创建 Figma 测试用户](#create-a-figma-test-user) - 在 Figma 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+2. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+3. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. [创建 Figma 测试用户](#creating-a-figma-test-user) - 在 Figma 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+6. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Figma 应用程序中配置单一登录。
 
@@ -98,21 +98,29 @@ ms.locfileid: "43669237"
 
 1. 在 Azure 门户中的 Figma 应用程序集成页上，单击“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
-    ![“单一登录”对话框](./media/figma-tutorial/tutorial_figma_samlbase.png)
+    ![配置单一登录](./media/figma-tutorial/tutorial_general_301.png)
 
-3. 在“Figma 域和 URL”部分，如果要在 IDP 发起的模式下配置应用程序，请执行以下步骤：
+3. 如果你需要从任何其他模式更改为 SAML 模式，请单击屏幕顶部的“更改单一登录模式”。
+
+    ![配置单一登录](./media/figma-tutorial/tutorial_general_300.png)
+
+4. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+
+    ![配置单一登录](./media/figma-tutorial/tutorial_general_302.png)
+
+5. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Figma 域和 URL 单一登录信息](./media/figma-tutorial/tutorial_figma_url1.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
 
-4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+6. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Figma 域和 URL 单一登录信息](./media/figma-tutorial/tutorial_figma_url2.png)
 
@@ -121,93 +129,110 @@ ms.locfileid: "43669237"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系[支持团队](mailto:support@figma.com?subject=SAML+Config)。
 
-5. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+7. Figma 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+
+    ![“属性”部分](./media/figma-tutorial/edit_attribute.png)
+
+8. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+
+    | 名称 | 源属性|
+    | ---------------| --------- |
+    | `externalId` | `user.mailnickname` |
+    | `displayName` | `user.displayname` |
+    | `title` | `user.jobtitle` |
+    | `emailaddress` | `user.mail` |
+    | `familyName` | `user.surname` |
+    | `givenName` | `givenName` |
+    | `userName` | `user.userprincipalname` |
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+
+    ![新建属性](./media/figma-tutorial/new_save_attribute.png)
+
+    ![添加属性](./media/figma-tutorial/new_attribute_details.png)
+
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
+
+    c. 将“命名空间”留空。
+
+    d. 选择“源”作为“属性”。
+
+    e. 在“源属性”列表中，键入为该行显示的属性值。
+
+    f. 单击“确定”
+
+    g. 单击“ **保存**”。
+
+9. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](./media/figma-tutorial/tutorial_figma_certificate.png)
 
-6. 单击“保存”按钮。
+10. 若要在 Figma 端配置单一登录，请填写此表单：[https://goo.gl/forms/XkRB1z5ed4eVUzXn2](https://goo.gl/forms/XkRB1z5ed4eVUzXn2)。 它将接受步骤 #9 中的应用联合元数据 URL。
 
-    ![配置单一登录“保存”按钮](./media/figma-tutorial/tutorial_general_400.png)
-
-7. 若要在 Figma 端配置单一登录，请填写此表单：[https://goo.gl/forms/XkRB1z5ed4eVUzXn2](https://goo.gl/forms/XkRB1z5ed4eVUzXn2)。 它将接受步骤 #5 中的应用联合元数据 URL。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![创建 Azure AD 用户][100]
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/figma-tutorial/create_aaduser_01.png)
+    ![创建 Azure AD 测试用户](./media/figma-tutorial/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/figma-tutorial/create_aaduser_02.png)
+    ![创建 Azure AD 测试用户](./media/figma-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    ![“添加”按钮](./media/figma-tutorial/create_aaduser_03.png)
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
-4. 在“用户”对话框中，执行以下步骤：
+    d. 选择“创建”。
 
-    ![“用户”对话框](./media/figma-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
-
-### <a name="create-a-figma-test-user"></a>创建一个 Figma 测试用户
+### <a name="creating-a-figma-test-user"></a>创建一个 Figma 测试用户
 
 本部分的目的是在 Figma 中创建名为“Britta Simon”的用户。 Figma 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果新用户尚不存在，可在尝试访问 Figma 期间创建该用户。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过向 Britta Simon 授予 Figma 的访问权限支持其使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 访问 HubSpot SAML 的权限，允许她使用 Azure 单一登录。
 
-![分配用户角色][200]
+1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-**若要将 Britta Simon 分配到 Figma，请执行以下步骤：**
+    ![分配用户][201]
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+2. 在应用程序列表中，选择“HubSpot SAML”。
 
-    ![分配用户][201] 
-
-2. 在应用程序列表中，选择“Figma”。
-
-    ![应用程序列表中的 Figma 链接](./media/figma-tutorial/tutorial_figma_app.png)  
+    ![配置单一登录](./media/figma-tutorial/tutorial_figma_app.png) 
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![分配用户][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
-    ![“添加分配”窗格][203]
+    ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“添加分配”对话框中，选择“分配”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
-
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Figma 磁贴时，应该会自动登录 Figma 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 248fd094a8655af2a21035267a6b8f69f268683d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698154"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262159"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Chrome 应用推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -328,7 +328,7 @@ ms.locfileid: "38698154"
           client.onload = function () {
             if (client.readyState == 4) {
               if (client.status == 200) {
-                updateLog("Notification Hub Registration succesful!");
+                updateLog("Notification Hub Registration successful!");
                 updateLog(client.responseText);
               } else {
                 updateLog("Notification Hub Registration did not succeed!");
@@ -362,7 +362,7 @@ ms.locfileid: "38698154"
    * **registerWithGCM** 是第一个按钮单击处理程序，它对 GCM 进行 `chrome.gcm.register` 调用，以注册当前的 Chrome 应用实例。
    * **registerCallback** 是回调函数，会在 GCM 注册调用返回时被调用。
    * **registerWithNH** 是第二个按钮单击处理程序，会向通知中心进行注册。 它会获取用户已指定的 `hubName` 和 `connectionString`，并创建通知中心注册 REST API 调用。
-   * **splitConnectionString** 和 **generateSaSToken** 是帮助程序，代表 SaS 令牌创建进程的 JavaScript 实现，必须在所有 REST API 调用中使用。 有关详细信息，请参阅 [基本概念](http://msdn.microsoft.com/library/dn495627.aspx)。
+   * **splitConnectionString** 和 **generateSaSToken** 是帮助程序，代表 SaS 令牌创建进程的 JavaScript 实现，必须在所有 REST API 调用中使用。 有关详细信息，请参阅 [基本概念](https://msdn.microsoft.com/library/dn495627.aspx)。
    * **sendNHRegistrationRequest** 是向 Azure 通知中心发出 HTTP REST 调用的函数。
    * **registrationPayload** 定义注册 XML 负载。 有关详细信息，请参阅 [创建注册 NH REST API]。 请使用从 GCM 接收的值在其中更新注册 ID。
    * **client** 是应用程序用于发出 HTTP POST 请求的 **XMLHttpRequest** 的实例。 使用 `sasToken` 更新 `Authorization` 标头。 成功完成此次调用就会在 Azure 通知中心注册此 Chrome 应用实例。
@@ -390,7 +390,7 @@ ms.locfileid: "38698154"
 为了进行测试，请使用 .NET 控制台应用程序发送 Chrome 推送通知。 
 
 > [!NOTE]
-> 可以使用通知中心通过公共 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送推送通知。 有关其他跨平台示例，请查看[文档门户](https://azure.microsoft.com/documentation/services/notification-hubs/)。
+> 可以使用通知中心通过公共 <a href="https://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送推送通知。 有关其他跨平台示例，请查看[文档门户](https://azure.microsoft.com/documentation/services/notification-hubs/)。
 > 
 > 
 

@@ -4,20 +4,24 @@ description: 了解有关蓝图经历的生命周期以及每个阶段的详细�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c09fb26d8375e08281241aaed3f6f6e30acc755b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955446"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620589"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
-Azure 蓝图使用排序顺序来确定处理蓝图分配时资源创建的顺序。 本文介绍了使用的默认排序顺序、如何自定义顺序以及如何处理自定义的顺序。
+Azure 蓝图使用排序顺序来确定处理蓝图分配时资源创建的顺序。 本文解释了以下概念：
+
+- 使用的默认序列化顺序
+- 如何自定义顺序
+- 自定义顺序是如何处理的
 
 JSON 示例中的有些变量需要用自己的值替换：
 
@@ -32,7 +36,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 - 订阅级别“Azure 资源管理器模板”项目按项目名称排序
 - “资源组”项目（包括子项目）按占位符名称排序
 
-在处理的每个“资源组”项目中，以下顺序用于排列在该资源组中创建的项目：
+在每个**资源组**项目中，将按照以下顺序排列在该资源组中创建的项目：
 
 - 资源组子“角色分配”项目按项目名称排序
 - 资源组子“策略分配”项目按项目名称排序
@@ -40,14 +44,16 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-在编撰大型蓝图时，可能需要以一资源与另一资源的关系采用特定顺序来创建资源。 最常使用此模式是在蓝图包含多个 Azure 资源管理器模板时。 蓝图通过允许定义排序顺序来处理此问题。
+在编撰大型蓝图时，可能需要按特定顺序来创建资源。 此方案的最常见使用模式发生在蓝图包含多个 Azure 资源管理器模板时。 蓝图通过允许定义排序顺序来处理此模式。
 
-这通过在 JSON 中定义 `dependsOn` 属性来实现。 只有蓝图（用于资源组）和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 只有蓝图（用于资源组）和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+
+> [!NOTE]
+> **资源组**资源组支持 `dependsOn` 属性，但不能以任何项目类型作为 `dependsOn` 的目标。
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>示例 - 具有已排序资源组的蓝图
 
-此示例显示包含资源组的蓝图，该资源组通过声明 `dependsOn` 的值以及标准资源组来定义自定义排序顺序。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
-standard-rg 将按默认排序顺序进行处理。
+此示例蓝图具有一个通过声明 `dependsOn` 的值定义了自定义排序顺序的资源组，以及一个标准资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。 standard-rg 将按默认排序顺序进行处理。
 
 ```json
 {
@@ -78,7 +84,7 @@ standard-rg 将按默认排序顺序进行处理。
 
 ### <a name="example---artifact-with-custom-order"></a>示例 - 使用自定义顺序的项目
 
-这是依赖于 Azure 资源管理器模板的示例策略项目。 根据默认排序，策略项目将先于 Azure 资源管理器模板创建。 这允许策略项目等待 Azure 资源管理器模板得到创建。
+此示例是一个策略项目，它依赖于一个 Azure 资源管理器模板。 根据默认排序，策略项目将先于 Azure 资源管理器模板创建。 此排序允许策略项目等待 Azure 资源管理器模板完成创建。
 
 ```json
 {
@@ -99,9 +105,9 @@ standard-rg 将按默认排序顺序进行处理。
 
 ## <a name="processing-the-customized-sequence"></a>处理自定义排序
 
-创建过程中，拓扑排序用于创建蓝图及其项目的依赖项关系图。 这确保可以支持资源组和项目之间的多个依赖项级别。
+在创建过程中，将使用拓扑排序来创建蓝图项目的依赖项关系图。 此检查可确保资源组与项目之间每个级别的依赖项都得到支持。
 
-如果依赖项在不会更改默认顺序的蓝图或项目上进行声明，则不会对排序顺序进行任何更改。 此类示例包括依赖于订阅级别策略的资源组或依赖于资源组“standard-rg”子角色分配的资源组“standard-rg”子策略分配。 这两种情况下，`dependsOn` 都不会更改默认的排序顺序且不会进行任何更改。
+如果声明了不会更改默认顺序的依赖项，则不会进行任何更改。 一个示例是依赖于订阅级策略的资源组。 另一个示例是资源组“standard-rg”子策略分配，它依赖于资源组“standard-rg”子角色分配。 这两种情况下，`dependsOn` 都不会更改默认的排序顺序且不会进行任何更改。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -109,4 +115,4 @@ standard-rg 将按默认排序顺序进行处理。
 - 了解如何使用[静态和动态参数](parameters.md)
 - 了解如何使用[蓝图资源锁定](resource-locking.md)
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规故障排除](../troubleshoot/general.md)在蓝图分配期间解决问题
+- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dfcd248be48109203e91c93231d89d1d650a4b96
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 21f5aba3acfebdcd2e93825ea34226adee5455d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540042"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248072"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy 中的 Azure 安全性课程
 Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和数据专业人员以及学生了解最新技术、构建自己的技能并提升他们的职业生涯。
@@ -48,7 +48,7 @@ Microsoft Virtual Academy 提供免费在线培训，帮助开发人员、IT 和
 
 [启用云的环境中的安全](https://mva.microsoft.com/en-us/training-courses/security-in-a-cloudenabled-world-12725?l=CfLHobAcB_3904300474)
 
-专家将引导完成[企业架构师的 Microsoft 云安全](http://www.microsoft.com/download/48121)海报中的客户职责路线图。 专家还会提供有关现代化各部分安全状况的建议，包括监管、约束策略、安全操作、高价值的资产保护、信息保护和用户与设备的安全性，尤其着重保护管理控制。 了解 Microsoft 网络安全团队用来评估客户的云安全性并进行构建其安全性路线图的同一个框架。
+专家将引导完成[企业架构师的 Microsoft 云安全](https://www.microsoft.com/download/48121)海报中的客户职责路线图。 专家还会提供有关现代化各部分安全状况的建议，包括监管、约束策略、安全操作、高价值的资产保护、信息保护和用户与设备的安全性，尤其着重保护管理控制。 了解 Microsoft 网络安全团队用来评估客户的云安全性并进行构建其安全性路线图的同一个框架。
 
 [Microsoft Azure IaaS 深入探讨](https://mva.microsoft.com/en-us/training-courses/microsoft-azure-iaas-deep-dive-14339?l=PtppYVQgB_8300115888)
 

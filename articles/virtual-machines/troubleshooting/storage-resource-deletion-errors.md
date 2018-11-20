@@ -9,14 +9,14 @@ tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 05/01/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2ec5caab32e12411f5ccab4a9a6b98d3c4e57c0b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411302"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748028"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
 
@@ -69,10 +69,7 @@ Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>方案 3：删除存储帐户 - 发现存储帐户内附加到 VM 的所有 blob
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“所有资源”。 转到存储帐户，在“blob 服务”下，选择“容器”。
-
-    ![门户屏幕截图，其中突出显示了存储帐户容器和值为“已租用”的“租用状态”](./media/troubleshoot-vhds/utd-containers-sm.png)
-
+2. 在“中心”菜单上，选择“所有资源”。 转到存储帐户，在“blob 服务”下，选择“Blob”。
 3. 在“容器”窗格中，找到“租用状态”为“已租用”的所有容器，并按照[方案 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) 对每个状态为“已租用”的容器执行操作。
 4. 按照[第 2 步](#step-2-delete-vm-to-detach-os-disk)和[第 3 步](#step-3-detach-data-disk-from-the-vm)操作，删除附加有 OSDisk 的 VM，并拆离 DataDisk。 
 

@@ -3,44 +3,53 @@ title: 使用 Azure Maps 创建地图 | Microsoft Docs
 description: 如何创建 JavaScript 地图
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/14/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9759c4149c6b026837e550dcf3ab0a0156bbb736
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 659f6def7e6bb045606b7214a4b8b4cab693117b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730003"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248161"
 ---
 # <a name="create-a-map"></a>创建地图
 
-本文介绍如何创建地图。  
+本文展示了如何创建地图并将地图制成动画。  
 
 ## <a name="understand-the-code"></a>了解代码
 
-可以通过两种方法来构建地图。 可通过指定中心点和缩放级别来设置地图相机。 通过指定西南边界点和东北边界点来设置地图相机边界。
+可以通过两种方法来构建地图。 可以通过指定中心点和缩放级别来设置地图的照相机，也可以通过指定西南边界点和东部边界点来设置地图的照相机边界。
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>设置相机
 
-<iframe height='310' scrolling='no' title='通过 CameraOptions 创建地图' src='//codepen.io/azuremaps/embed/qxKBMN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>通过 `CameraOptions` 创建地图</a>。
+<iframe height='500' scrolling='no' title='通过 CameraOptions 创建地图' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>通过 `CameraOptions` 创建地图</a>。
 </iframe>
 
-在上述代码中，通过 `new atlas.Map()` 创建了[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 中心和缩放级别等地图属性是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) 的一部分。 可以在地图构造函数中定义 `CameraOptions`，也可以通过地图类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数实现。
+在上面的代码中，通过 `new atlas.Map()` 创建了一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并且设置了中心和缩放。 中心和缩放级别等地图属性是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) 的一部分。
 
 <a id="setCameraBoundsOptions"></a>
 
 ### <a name="set-the-camera-bounds"></a>设置相机边界
 
-<iframe height='310' scrolling='no' title='通过 CameraBoundsOptions 创建地图' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>通过 `CameraBoundsOptions` 创建地图</a>。
+<iframe height='500' scrolling='no' title='通过 CameraBoundsOptions 创建地图' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>通过 `CameraBoundsOptions` 创建地图</a>。
 </iframe>
 
-在上述代码中，通过 `new atlas.Map()` 构造了 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 边框等地图属性是 [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) 的一部分。 可以通过地图类的 [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) 函数定义 `CameraBoundsOptions`。
+在上述代码中，通过 `new atlas.Map()` 构造了 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 可以通过 Map 类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数定义地图属性，例如 `CameraBoundsOptions`。 边界和填充属性是使用 `setCamera` 设置的。
+
+### <a name="animate-map-view"></a>将地图视图制成动画
+
+<iframe height='500' scrolling='no' title='将地图视图制成动画' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>（将地图视图制成动画）。
+</iframe>
+
+在上面的代码中，第一个代码块通过 `new atlas.Map()` 创建一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 中心和缩放级别等地图属性是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) 的一部分。 可以在地图构造函数中定义 `CameraOptions`，也可以通过地图类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数实现。 [地图样式](https://review.docs.microsoft.com/azure/azure-maps/supported-map-styles?branch=pr-en-us-54960)设置为 `road`。
+
+第二个代码块创建一个制作地图动画函数，它通过使用 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数定义 [AnimateOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.animationoptions?view=azure-iot-typescript-latest) 来将地图视图中的变化制成动画。 该函数由“将地图制成动画”按钮触发，在每次单击时将生成一个随机缩放级别。
 
 ## <a name="try-out-the-code"></a>试用代码
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163590"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685814"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
@@ -112,143 +112,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 ## <a name="client-agent-issues"></a>客户端代理问题
 
-- [客户端代理安装、卸载或修复失败](#agent-install)
-
-- [取消卸载后，客户端代理无法正常运行](#agent-uninstall)
-
-- [代理列表中未列出我的数据库](#agent-list)
-
-- [客户端代理未启动（错误 1069）](#agent-start)
-
-- [无法提交代理密钥](#agent-key)
-
-- [如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理](#agent-delete)
-
-- [本地同步代理应用无法连接到本地同步服务](#agent-connect)
-
-### <a name="agent-install"></a>客户端代理安装、卸载或修复失败
-
-- **原因**。 许多情况会导致这种失败。 若要确定具体原因，请查看日志。
-
-- **解决方法**。 若要找到失败的具体原因，请生成并查看 Windows Installer 日志。 可以在命令提示符下启用日志记录。 例如，如果下载的 AgentServiceSetup.msi 文件是 LocalAgentHost.msi，可使用以下命令行生成并检查日志文件：
-
-    -   对于安装：`msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   对于卸载：`msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-
-    也可以对 Windows Installer 执行的所有安装启用日志记录。 Microsoft 知识库文章[如何启用 Windows Installer 日志记录](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供了启用 Windows Installer 的日志记录的一键式解决方案。 此外它还提供了日志的位置。
-
-### <a name="agent-uninstall"></a>取消卸载后，客户端代理无法正常运行
-
-即使取消卸载，客户端代理仍然无法正常运行。
-
-- **原因**。 出现此问题的原因是 SQL 数据同步客户端代理未存储凭据。
-
-- **解决方法**。 可尝试以下两种解决方法：
-
-    -   使用 services.msc 重新输入客户端代理的凭据。
-    -   卸载此客户端代理并安装新代理。 从[下载中心](http://go.microsoft.com/fwlink/?linkid=221479)下载和安装最新的客户端代理。
-
-### <a name="agent-list"></a>代理列表中未列出我的数据库
-
-尝试将现有 SQL Server 数据库添加到同步组时，代理列表中未显示该数据库。
-
-以下情况可能会导致此问题：
-
-- **原因**。 客户端代理和同步组位于不同的数据中心。
-
-- **解决方法**。 客户端代理和同步组必须位于同一个数据中心。 可使用以下两个选项实现这种设置：
-
-    -   在同步组所在的数据中心创建新代理。 然后，将数据库注册到该代理。
-    -   删除当前同步组。 然后，在代理所在的数据中心重新创建同步组。
-
-- **原因**。 客户端代理的数据库列表不是最新的。
-
-- **解决方法**。 停止客户端代理服务，然后重新启动该服务。
-
-    本地代理仅在首次提交代理密钥时下载关联的数据库列表。 以后提交代理密钥时，它不会下载关联的数据库列表。 在代理移动期间注册的数据库不会显示在原始代理实例中。
-
-### <a name="agent-start"></a>客户端代理未启动（错误 1069）
-
-发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069: 由于登录失败，服务未启动。”
-
-![数据同步错误 1069 对话框](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
-
-- **原因**。 出现此错误可能的原因是，自从创建代理和代理密码后，本地服务器上的密码已更改。
-
-- **解决方法**。 将代理的密码更新为当前服务器密码：
-
-  1. 找到 SQL 数据同步客户端代理服务。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“启动”。  
-    b. 在搜索框中输入 **services.msc**。  
-    c. 在搜索结果中，选择“服务”。  
-    d. 在“服务”窗口中，滚动到 **SQL 数据同步代理**所对应的条目。  
-  1. 右键单击“SQL 数据同步代理”并选择“停止”。
-  1. 右键单击“SQL 数据同步代理”并选择“属性”。
-  1. 在“SQL 数据同步代理属性”中，选择“登录”选项卡。
-  1. 在“密码”框中输入自己的密码。
-  1. 在“确认密码”框中再次输入自己的密码。
-  1. 依次选择“应用”、“确定”。
-  1. 在“服务”窗口中，右键单击“SQL 数据同步代理”服务并单击“启动”。
-  1. 关闭“服务”窗口。
-
-### <a name="agent-key"></a>无法提交代理密钥
-
-创建或重新创建代理密钥后，尝试通过 SqlAzureDataSyncAgent 应用程序提交该密钥时， 提交过程无法完成。
-
-![同步错误对话框 - 无法提交代理密钥](media/sql-database-troubleshoot-data-sync/sync-error-cant-submit-agent-key.png)
-
-- **先决条件**。 在继续之前，请先检查是否符合以下先决条件：
-
-  - SQL 数据同步 Windows 服务正在运行。
-
-  - SQL 数据同步 Windows 服务的服务帐户具有网络访问权限。
-
-  - 出站 1433 端口在本地防火墙规则中处于打开状态。
-
-  - 本地 IP 已添加到同步元数据库的服务器或数据库防火墙规则。
-
-- **原因**。 代理密钥唯一标识每个本地代理。 密钥必须满足以下两个条件：
-
-  -   SQL 数据同步服务器和本地计算机上的客户端代理密钥必须相同。
-  -   客户端代理密钥仅能使用一次。
-
-- **解决方法**。 如果代理无法正常运行，是因为不满足其中一个条件或这两个条件都不满足。 若要使代理再次运行：
-
-  1. 生成一个新密钥。
-  1. 向代理应用新密钥。
-
-  向代理应用新密钥：
-
-  1. 在文件资源管理器中，转到代理安装目录。 默认安装目录为 C:\\Program Files (x86)\\Microsoft SQL Data Sync。
-  1. 双击“bin”子目录。
-  1. 打开 SqlAzureDataSyncAgent 应用程序。
-  1. 选择“提交代理密钥”。
-  1. 在提供的空白处粘贴剪贴板中的密钥。
-  1. 选择“确定”。
-  1. 关闭程序。
-
-### <a name="agent-delete"></a>如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理
-
-如果注册到 SQL 数据同步客户端代理的本地终结点（即数据库）不可访问，则无法将该客户端代理删除。
-
-- **原因**。 无法删除本地代理，因为该代理中仍然注册了不可访问的数据库。 尝试删除代理时，删除过程尝试访问数据库，操作失败。
-
-- **解决方法**。 使用“强制删除”来删除不可访问的数据库。
-
-> [!NOTE]
-> 如果在执行“强制删除”后，同步元数据表仍然存在，请使用 `deprovisioningutil.exe` 将其清除。
-
-### <a name="agent-connect"></a>本地同步代理应用无法连接到本地同步服务
-
-- **解决方法**。 请尝试以下步骤：
-
-  1. 退出应用。  
-  1. 打开组件服务面板。  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在任务栏上的搜索框中输入 **services.msc**。  
-    b. 在搜索结果中，双击“服务”。  
-  1. 停止“SQL 数据同步”服务。
-  1. 重启“SQL 数据同步”服务。  
-  1. 重新打开应用。
+若要排查客户端代理问题，请参阅[排查数据同步代理问题](sql-database-data-sync-agent.md#agent-tshoot)。
 
 ## <a name="setup-and-maintenance-issues"></a>设置和维护问题
 
@@ -375,13 +239,18 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 ## <a name="next-steps"></a>后续步骤
 有关 SQL 数据同步的详细信息，请参阅：
 
--   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)  
--   [设置 Azure SQL 数据同步](sql-database-get-started-sql-data-sync.md)  
--   [Azure SQL 数据同步最佳实践](sql-database-best-practices-data-sync.md)  
--   [使用 Log Analytics 监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)  
--   演示如何配置 SQL 数据同步的完整 PowerShell 示例：  
-    -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)  
+-   概述 - [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)
+-   设置数据同步
+    - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据](sql-database-get-started-sql-data-sync.md)
+    - 使用 PowerShell
+        -  [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   数据同步代理 - [Azure SQL 数据同步的数据同步代理](sql-database-data-sync-agent.md)
+-   最佳做法 - [Azure SQL 数据同步最佳做法](sql-database-best-practices-data-sync.md)
+-   监视 - [使用 Log Analytics 监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
+-   更新同步架构
+    -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](sql-database-update-sync-schema.md)
+    -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](scripts/sql-database-sync-update-schema.md)
 
 有关 SQL 数据库的详细信息，请参阅：
 

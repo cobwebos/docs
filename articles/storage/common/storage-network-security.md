@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470058"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300551"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
@@ -201,7 +201,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。  IP 规则不允许�
 ### <a name="configuring-access-from-on-premises-networks"></a>配置从本地网络的访问
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。  若要获得帮助，请联系网络管理员。
 
-如果网络使用 [ExpressRoute](/azure/expressroute/expressroute-introduction) 连接到 Azure 网络，那么每条线路在 Microsoft Edge 均配置有两个公共 IP 地址，用于通过 [Azure 公共对等互连](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)连接到 Azure 存储等 Microsoft 服务。  若要允许从线路访问 Azure 存储，则必须为线路的公共 IP 地址创建 IP 网络规则。  若要查找 ExpressRoute 线路的公共 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+如果网络使用 [ExpressRoute](/azure/expressroute/expressroute-introduction) 连接到 Azure 网络，那么每条线路在 Microsoft Edge 均配置有两个公共 IP 地址，用于通过 [Azure 公共对等互连](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)连接到 Azure 存储等 Microsoft 服务。  若要允许从线路访问 Azure 存储，则必须为线路的公共 IP 地址创建 IP 网络规则。  若要查找 ExpressRoute 线路的公共 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
@@ -294,7 +294,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure 事件网格|Microsoft.EventGrid|启用 Blob 存储事件发布。  [了解详细信息](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure 事件中心|Microsoft.EventHub|使用事件中心捕获功能存档数据。  [了解详细信息](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)。|
 |Azure 网络|Microsoft.Networking|存储和分析网络流量日志。  [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Monitor|Microsoft.Insights| 允许将监视数据写入安全存储帐户[了解详细信息](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
+|Azure Monitor|Microsoft.Insights| 允许将监视数据写入受保护存储帐户[了解详细信息](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
 |
 
 

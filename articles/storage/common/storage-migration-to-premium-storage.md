@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521772"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232542"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -54,10 +54,10 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 #### <a name="disk-sizes"></a>磁盘大小
 有五种类型的磁盘可用于 VM，每种磁盘都具有特定的 IOPS 和吞吐量限制。 根据应用程序在容量、性能、可伸缩性和峰值负载方面的需要为 VM 选择磁盘类型时，需要考虑这些限制。
 
-| 高级磁盘类型  | P10   | P20   | P30            | P40            | P50            | 
+| 高级磁盘类型  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
-| 磁盘大小           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| 每个磁盘的 IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| 磁盘大小           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| 每个磁盘的 IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | 每个磁盘的吞吐量 | 每秒 100 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB |
 
 根据工作负荷，确定 VM 是否需要附加数据磁盘。 可以将多个持久性数据磁盘附加到 VM。 如有需要，可以跨磁盘条带化，以增加卷的容量与性能。 （请参阅[此处](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)，了解什么是磁盘条带化。）如果使用[存储空间][4]来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。 对于 Linux VM，可以使用 mdadm 实用工具来实现同一目的。 有关详细信息，请参阅[在 Linux 上配置软件 RAID](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 一文。
@@ -94,14 +94,14 @@ Azure VM 支持附加多个高级存储磁盘，这样应用程序的存储上�
 
 * Azure 订阅、存储帐户以及该存储帐户中的一个容器（将 VHD 复制到的目标容器）。 请注意，目标存储帐户可以是标准或高级存储帐户，具体取决于具体需求。
 * 用于通用化 VHD 的工具（如果计划从中创建多个 VM 实例）。 例如，sysprep for Windows 或 virt-sysprep for Ubuntu。
-* 用于将 VHD 文件上传到存储帐户的工具。 请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)或者使用 [Azure storage explorer](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)（Azure 存储资源管理器）。 本指南介绍使用 AzCopy 工具复制 VHD 的步骤。
+* 用于将 VHD 文件上传到存储帐户的工具。 请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)或者使用 [Azure storage explorer](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)（Azure 存储资源管理器）。 本指南介绍使用 AzCopy 工具复制 VHD 的步骤。
 
 > [!NOTE]
 > 如果选择 AzCopy 同步复制选项，为了获得最佳性能，请从与目标存储帐户位于同一区域的 Azure VM 运行上述工具之一。 如果从其他区域中的 Azure VM 复制 VHD，性能可能会下降。
 >
 > 要在带宽有限的情况下复制大量数据，可以考虑[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](../storage-import-export-service.md)；这样一来，可以通过将硬盘驱动器运送到 Azure 数据中心来传输数据。 使用 Azure 导入/导出服务可以仅将数据复制到标准存储帐户。 当数据传入标准存储帐户后，可以使用[复制 Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) 或 AzCopy 将数据传输到高级存储帐户。
 >
-> 请注意，Microsoft Azure 仅支持固定大小的 VHD 文件。 不支持 VHDX 文件或动态 VHD。 如果有动态 VHD，可以使用 [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) cmdlet 将其转换为固定大小。
+> 请注意，Microsoft Azure 仅支持固定大小的 VHD 文件。 不支持 VHDX 文件或动态 VHD。 如果有动态 VHD，可以使用 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) cmdlet 将其转换为固定大小。
 >
 >
 
@@ -123,7 +123,7 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存�
 如果要上传用于创建多个泛型 Azure 虚拟机实例的 VHD，必须先使用 sysprep 实用工具通用化 VHD。 这适用于本地或云中的 VHD。 Sysprep 将从 VHD 中删除任何计算机特定的信息。
 
 > [!IMPORTANT]
-> 通用化 VM 之前，请先创建其快照或进行备份。 运行 sysprep 会停止 VM 实例和解除分配 VM 实例。 按照以下步骤对 Windows OS VHD 运行 sysprep 命令。 请注意，运行 Sysprep 命令时会要求关闭虚拟机。 有关 Sysprep 的详细信息，请参阅 [Sysprep 概述](http://technet.microsoft.com/library/hh825209.aspx)或 [Sysprep 技术参考](http://technet.microsoft.com/library/cc766049.aspx)。
+> 通用化 VM 之前，请先创建其快照或进行备份。 运行 sysprep 会停止 VM 实例和解除分配 VM 实例。 按照以下步骤对 Windows OS VHD 运行 sysprep 命令。 请注意，运行 Sysprep 命令时会要求关闭虚拟机。 有关 Sysprep 的详细信息，请参阅 [Sysprep 概述](https://technet.microsoft.com/library/hh825209.aspx)或 [Sysprep 技术参考](https://technet.microsoft.com/library/cc766049.aspx)。
 >
 >
 
@@ -163,7 +163,7 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存�
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>选项 1：使用 AzCopy 复制 VHD（异步复制）
 使用 AzCopy 可通过 Internet 轻松上传 VHD。 根据 VHD 的大小，这可能需要时间。 请记住，在使用此选项时，检查存储帐户传入/传出限制。 有关详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
 
-1. 从此处下载并安装 AzCopy：[AzCopy 最新版本](http://aka.ms/downloadazcopy)
+1. 从此处下载并安装 AzCopy：[AzCopy 最新版本](https://aka.ms/downloadazcopy)
 2. 打开 Azure PowerShell，并转到安装 AzCopy 的文件夹。
 3. 使用以下命令从“Source”将 VHD 文件复制到“Destination”。
 
@@ -257,7 +257,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>选项 2：使用 AzCopy 上传 .vhd 文件
 使用 AzCopy 可通过 Internet 轻松上传 VHD。 根据 VHD 的大小，这可能需要时间。 请记住，在使用此选项时，检查存储帐户传入/传出限制。 有关详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
 
-1. 从此处下载并安装 AzCopy：[AzCopy 最新版本](http://aka.ms/downloadazcopy)
+1. 从此处下载并安装 AzCopy：[AzCopy 最新版本](https://aka.ms/downloadazcopy)
 2. 打开 Azure PowerShell，并转到安装 AzCopy 的文件夹。
 3. 使用以下命令从“Source”将 VHD 文件复制到“Destination”。
 

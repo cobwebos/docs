@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421128"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258810"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>将 HPC 作业从本地计算机提交到部署在 Azure 中的 HPC Pack 群集
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "39421128"
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>步骤 1：在头节点上安装并配置 Web 组件
 要启用通过 HTTPS 以 REST 接口将作业提交到群集的功能，请确保在 HPC Pack 头节点上配置 HPC Pack Web 组件。 如果尚未安装这些组件，请先运行 HpcWebComponents.msi 安装文件安装 Web 组件。 然后，通过运行 HPC PowerShell 脚本“Set-HPCWebComponents.ps1”配置组件。
 
-有关详细过程，请参阅[安装 Microsoft HPC Pack Web 组件](http://technet.microsoft.com/library/hh314627.aspx)。
+有关详细过程，请参阅[安装 Microsoft HPC Pack Web 组件](https://technet.microsoft.com/library/hh314627.aspx)。
 
 > [!TIP]
 > HPC Pack 群集的某些 Azure 快速入门模板会自动安装并配置 Web 组件。
@@ -137,7 +137,7 @@ ms.locfileid: "39421128"
 
 1. 如果以前在提交作业时未存储群集用户的域凭据，可以在凭据管理器中添加凭据。
    
-    a. 在客户端计算机上的控制面板中，启动凭据管理器。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在客户端计算机上的控制面板中，启动凭据管理器。
    
     b. 单击“Windows 凭据” > “添加普通凭据”。
    
@@ -169,7 +169,7 @@ ms.locfileid: "39421128"
 1. 要查看提交的作业的结果，请单击作业 ID，并单击“查看任务”查看命令输出（在“输出”下方）。
 
 ## <a name="next-steps"></a>后续步骤
-* 也可以使用 [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx) 将作业提交到 Azure 群集。
+* 也可以使用 [HPC Pack REST API](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx) 将作业提交到 Azure 群集。
 * 若要从 Linux 客户端提交群集作业，请参阅 [HPC Pack 2012 R2 SDK 和示例代码](https://www.microsoft.com/download/details.aspx?id=41633)中的 Python 示例。
 
 <!--Image references-->

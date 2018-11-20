@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 25a1913fba3e66e65b3c785eb6ce1738c5f00a26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954758"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247919"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ ms.locfileid: "49954758"
 本文中的演练使用 Visual Studio 2017。 也可以使用 Visual Studio 2013 或 2015。
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
-在计算机上下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
+在计算机上下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 按照[此文](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)各节中的说明执行以下任务： 

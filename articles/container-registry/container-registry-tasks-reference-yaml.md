@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: de543798702137905ee5243c6ca8e502152f9c44
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854943"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634373"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -112,7 +112,7 @@ steps:
       [property]: [value]
 ```
 
-`build` 步骤类型支持以下参数：
+`build` 步骤类型支持下表中的参数。 `build` 步骤类型还支持 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有生成选项，例如 `--build-arg` 以设置生成时变量。
 
 | 参数 | Description | 可选 |
 | --------- | ----------- | :-------: |
@@ -122,7 +122,7 @@ steps:
 
 ### <a name="properties-build"></a>属性：build
 
-`build` 步骤类型支持以下属性。可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
+`build` 步骤类型支持以下属性。 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
 | | | |
 | -------- | ---- | -------- |

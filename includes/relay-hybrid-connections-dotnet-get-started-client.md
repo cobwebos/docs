@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: d92f94836fd789f0d97d83abd9ac9683d378497a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571844"
+---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目。

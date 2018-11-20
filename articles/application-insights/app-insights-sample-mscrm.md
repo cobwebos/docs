@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: c9629611544efe248b1b343ac1ba26740b9ce7e0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 5d61c3a3232645fc5f1c18696cf3232bf9b37aa2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091683"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957699"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
 本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
@@ -39,11 +39,7 @@ ms.locfileid: "47091683"
     ![依次单击“+”、“开发人员服务”、“Application Insights”。](./media/app-insights-sample-mscrm/01.png)
 
     选择 ASP.NET 作为应用程序类型。
-3. 依次打开“入门”页和“监视和诊断客户端”。
-
-    ![网页中插入的代码片段](./media/app-insights-sample-mscrm/03.png)
-
-**使代码页保持打开状态**，同时在另一浏览器窗口上执行下一步。 将很快就会需要代码。 
+3. 按照说明[获取应用的 JavaScript SDK 脚本](app-insights-javascript.md#set-up-application-insights-for-your-web-page)，复制 JavaScript 代码片段并确保将检测密钥替换为 Application Insights 资源的正确值。
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>在 Microsoft Dynamics CRM 中创建 JavaScript Web 资源
 1. 打开 CRM Online 实例并使用管理员特权登录。
@@ -60,7 +56,7 @@ ms.locfileid: "47091683"
     为它指定名称、选择“脚本 (JScript)”，并打开文本编辑器。
 
     ![打开文本编辑器](./media/app-insights-sample-mscrm/00004.png)
-2. 从 Application Insights 复制代码。 复制时，请确保忽略脚本标记。 请参阅下面的屏幕快照：
+2. 从之前已配置检测密钥的 Application Insights JavaScript SDK 复制代码。 复制时，请确保忽略脚本标记。 请参阅以下屏幕截图：
 
     ![设置检测密钥](./media/app-insights-sample-mscrm/000005.png)
 
@@ -140,4 +136,4 @@ ms.locfileid: "47091683"
 ## <a name="learn-more"></a>了解详细信息
 * [什么是 Application Insights？](app-insights-overview.md)
 * [适用于网页的 Application Insights](app-insights-javascript.md)
-* [更多示例和演练](app-insights-code-samples.md)
+* [更多示例和演练](app-insights-overview.md)

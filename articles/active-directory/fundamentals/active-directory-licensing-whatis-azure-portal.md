@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3f23b28c1b20155e50fddf17db90cd2a53c04855
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735895"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209813"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
@@ -28,14 +28,12 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 为了解决这些难题，Azure AD 现在提供基于组的许可功能。 可将一个或多个产品许可证分配给某个组。 Azure AD 确保将许可证分配给该组的所有成员。 将向加入该组的任何新成员分配适当的许可证。 在这些成员离开组时，将删除相应的许可证。 这样就不再需要通过 PowerShell 自动执行许可证管理以反映每个用户的组织和部门结构变化。
 
->[!Note]
->基于组的许可是 Azure Active Directory (Azure AD) 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="features"></a>功能
 
 基于组的许可功能提供以下主要功能：
 
-- 可以将许可证分配到 Azure AD 中的任何安全组。 可以使用 Azure AD Connect 在本地同步安全组。 还可以在 Azure AD 中直接创建安全组（也称为仅限云的组），或通过 Azure AD 的动态组功能自动创建安全组。
+- 可以将许可证分配到 Azure AD 中的任何安全组。 可以使用 Azure AD Connect 从本地同步安全组。 还可以在 Azure AD 中直接创建安全组（也称为仅限云的组），或通过 Azure AD 的动态组功能自动创建安全组。
 
 - 将产品许可证分配到组时，管理员可以禁用产品中的一个或多个服务计划。 通常，在组织尚未准备好开始使用产品中包含的服务时会执行此操作。 例如，管理员可能要将 Office 365 分配给某个部门，但又要暂时禁用 Yammer 服务。
 
@@ -45,11 +43,11 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 - Azure AD 会自动管理由组成员身份更改导致的许可证修改。 通常，在组成员身份发生更改时，许可证修改在几分钟内就会生效。
 
-- 用户可以是指定了许可证策略的多个组的成员。 用户也可以拥有在任何组外部直接分配的许可证。 生成的用户状态是所有已分配产品和服务许可证的组合。
+- 用户可以是指定了许可证策略的多个组的成员。 用户也可以拥有在任何组外部直接分配的许可证。 生成的用户状态是所有已分配产品和服务许可证的组合。 如果为用户分配了来自多个源的同一许可证，则该许可证将仅使用一次。
 
 - 在某些情况下，无法向用户分配许可证。 例如，当租户中可用许可证不足时，或者同时分配了冲突服务时。 对于 Azure AD 无法为其完全处理组许可证的用户，管理员有权访问其信息。 然后，可以根据这些信息采取纠正措施。
 
-- 在公共预览期，租户需要 Azure AD 基本版或高级版的付费或试用订阅才能使用基于组的许可证管理。
+- 若要使用基于组的许可证管理，租户中需要具有 Azure AD 基本版的付费或试用订阅，或者需要具有 Office 365 Enterprise E3、Office 365 A3 和更高版本的付费或试用订阅。 对于分配有许可证的组，此功能要求作为其成员的每个唯一用户都具有证书。 无需将许可证分配给用户来使其成为分配有许可证的组的成员，但必须在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果在租户的分配有许可证的组中总共拥有 1,000 个唯一用户，则至少需要具有 1,000 个许可证，才能满足许可证要求。
 
 ## <a name="your-feedback-is-welcome"></a>我们欢迎反馈！
 
@@ -62,4 +60,6 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 * [将许可证分配到 Azure Active Directory 中的组](../users-groups-roles/licensing-groups-assign.md)
 * [识别和解决 Azure Active Directory 中组的许可问题](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](../users-groups-roles/licensing-groups-migrate-users.md)
+* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory 基于组的许可的其他方案](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)

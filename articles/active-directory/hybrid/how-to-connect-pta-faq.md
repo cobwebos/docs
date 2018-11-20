@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f2ceae349c921ce0d83fb7401e3b18404722763
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362902"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685644"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -80,9 +80,30 @@ ms.locfileid: "49362902"
 
 是的。 如果在本地环境中启用 Web 代理自动发现 (WPAD)，身份验证代理将自动尝试查找并使用网络中的 Web 代理服务器。
 
+如果环境中未设置 WPAD，则可以添加代理信息（如下所示）以允许直通身份验证代理与 Azure AD 通信：
+- 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”。
+- 在服务器上，导航到“C:\Program Files\Microsoft Azure AD Connect Authentication Agent”。
+- 编辑“AzureADConnectAuthenticationAgentService”配置文件并添加以下行（将“http://contosoproxy.com:8080”替换为实际代理地址）：
+
+```
+   <system.net>
+      <defaultProxy enabled="true" useDefaultCredentials="true">
+         <proxy
+            usesystemdefault="true"
+            proxyaddress="http://contosoproxy.com:8080"
+            bypassonlocal="true"
+         />
+     </defaultProxy>
+   </system.net>
+```
+
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>能否在同一台服务器上安装两个或更多传递身份验证代理？
 
 否。在一台服务器上只能安装一个传递身份验证代理。 若要配置传递身份验证实现高可用性，请[遵循此处的说明](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。
+
+## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>我是否必须手动续订由传递身份验证代理使用的证书？
+
+使用基于证书的身份验证保护各传递身份验证代理与 Azure AD 之间的通信。 这些[证书每隔几个月由 Azure AD 自动续订](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents)。 无需手动续订这些证书。 可以根据需要清除已过期的旧证书。
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>如何删除直通身份验证代理？
 

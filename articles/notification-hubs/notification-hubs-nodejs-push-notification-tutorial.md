@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091713"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228430"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "44091713"
 有关通知中心的详细信息，请参阅[后续步骤](#next)一节。
 
 ## <a name="what-are-notification-hubs"></a>什么是通知中心？
-Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。 有关服务基础结构的详细信息，请参阅 [Azure 通知中心](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页。
+Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。 有关服务基础结构的详细信息，请参阅 [Azure 通知中心](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页。
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell [创建 Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
@@ -141,11 +141,11 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 * **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 * **Payload** — 消息的 XML 有效负载。
 * **TargetName** - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
-* **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
+* **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [Push notifications from a server](https://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
 * **Options** — 可选的请求标头。
 * **Callback** — 回调函数。
 
-有关有效的 **TargetName**、**NotificationClass** 和标头选项的列表，请查看 [Push notifications from a server](http://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）页面。
+有关有效的 **TargetName**、**NotificationClass** 和标头选项的列表，请查看 [Push notifications from a server](https://msdn.microsoft.com/library/hh221551.aspx)（从服务器推送通知）页面。
 
 以下示例代码使用由 **NotificationHubService** 公开的 **MpnsService** 实例发送 toast 推送通知：
 
@@ -165,7 +165,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 * **Options** — 可选的请求标头。
 * **Callback** — 回调函数。
 
-有关有效的类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
+有关有效的类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
 以下代码使用由 **NotificationHubService** 公开的 **WnsService** 实例将 toast 推送通知发送到 UWP 应用：
 

@@ -11,15 +11,15 @@ author: DRediske
 ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: b81e76201f7f751ee01e903d83f316811abaf483
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/01/2018
+ms.openlocfilehash: 827b3b6776656619314af3053cb05f8cfc3754c0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955467"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914368"
 ---
-# <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
+# <a name="tutorial-secure-your-azure-sql-database"></a>教程：保护 Azure SQL 数据库
 
 SQL 数据库通过以下方式来确保数据的安全： 
 - 使用防火墙规则限制对数据库的访问 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d21b6235c91a7d2f14b8b39c07891efe967ef572
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341223"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278236"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
 Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
@@ -40,9 +40,9 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * Azure 诊断扩展 1.6（[Azure SDK for .NET 2.9 或更高版本](https://azure.microsoft.com/downloads/)默认以此为目标）
 * [Visual Studio 2013 或更高版本](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * 在应用程序中使用 *.wadcfgx* 文件和以下任一方法的 Azure 诊断的现有配置：
-  * Visual Studio：[为 Azure 云服务和虚拟机配置诊断](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
+  * Visual Studio：[为 Azure 云服务和虚拟机配置诊断](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
   * Windows PowerShell：[使用 PowerShell 在 Azure 云服务中启用诊断](../cloud-services/cloud-services-diagnostics-powershell.md)
-* 根据文章[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)预配的事件中心命名空间
+* 根据文章[事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)预配的事件中心命名空间
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>将 Azure 诊断连接到事件中心接收器
 默认情况下，Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 应用程序也可以将数据发送到事件中心，方法是在 *.wadcfgx* 文件的 **PublicConfig** / **WadCfg** 元素下添加一个新的 **Sinks** 节。 在 Visual Studio 中，*.wadcfgx* 文件存储在以下路径中：“云服务项目” > “角色” > “(RoleName)” > “diagnostics.wadcfgx”文件。
@@ -70,7 +70,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 在本示例中，事件中心 URL 设为事件中心的完全限定的命名空间：事件中心命名空间 +“/”+ 事件中心名称。  
 
-事件中心 URL 在 [Azure 门户](http://go.microsoft.com/fwlink/?LinkID=213885)中的“事件中心”仪表板上显示。  
+事件中心 URL 在 [Azure 门户](https://go.microsoft.com/fwlink/?LinkID=213885)中的“事件中心”仪表板上显示。  
 
 “接收器”名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
 
@@ -220,7 +220,7 @@ Visual Studio 提供最简单的路径供你部署应用程序和事件中心接
 ## <a name="view-hot-path-data"></a>查看热路径数据
 如前文所述，侦听和处理事件中心数据有许多用例。
 
-一种简单的方法是创建小型测试控制台应用程序，用于侦听事件中心并打印输出流。 可在控制台应用程序中插入以下代码（[事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)中已详细说明）。  
+一种简单的方法是创建小型测试控制台应用程序，用于侦听事件中心并打印输出流。 可在控制台应用程序中插入以下代码（[事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)中已详细说明）。  
 
 请注意，控制台应用程序必须包含[事件处理器主机 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)。  
 
@@ -508,9 +508,9 @@ namespace EventHubListener
 ## <a name="next-steps"></a>后续步骤
 访问以下链接可以了解有关事件中心的详细信息：
 
-* [事件中心概述](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [事件中心概述](../event-hubs/event-hubs-about.md)
 * [创建事件中心](../event-hubs/event-hubs-create.md)
-* [事件中心常见问题](../event-hubs/event-hubs-faq.md)
+* [事件中心常见问题解答](../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->
 [0]: ../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

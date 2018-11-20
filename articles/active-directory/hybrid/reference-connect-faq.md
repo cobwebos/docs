@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269439"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010598"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -75,6 +75,9 @@ Azure AD Connect 不支持 NetBIOS 名称包含点号 (.) 的本地林或域。
 
 **问：是否支持纯 IPv6 环境？**  
 Azure AD Connect 不支持纯 IPv6 环境。
+
+**问：我有一个多林环境，两个林之间的网络使用 NAT（网络地址转换）。是否支持在这两个林之间使用 Azure AD Connect？**</br>
+ 否，不支持通过 NAT 使用 Azure AD Connect。 
 
 ## <a name="federation"></a>联合
 **问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  

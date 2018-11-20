@@ -1,10 +1,10 @@
 ---
-title: "Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明"
-description: "Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明"
+title: Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明
+description: Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
 ms.service: app-service
 ms.devlang: multiple
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239060"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 和 .NET 2.7.1 发行说明
 ## <a name="overview"></a>概述
@@ -27,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 只有 Visual Studio 2015 和 Visual Studio 2013 才支持 Azure SDK 2.7。 [Azure SDK 2.6](https://azure.microsoft.com/downloads/) 是 Visual Studio 2012 支持的最后一个 SDK。
 
-有关此版本的详细信息，请参阅 [Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)和 [Azure SDK 2.7.1 通告文章](http://go.microsoft.com/fwlink/?LinkId=623850)。
+有关此版本的详细信息，请参阅 [Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)和 [Azure SDK 2.7.1 通告文章](https://go.microsoft.com/fwlink/?LinkId=623850)。
 
 ## <a name="azure-sdk-for-net-27"></a>Azure SDK for .NET 2.7
 ### <a name="sign-in-improvements-for-visual-studio-2015"></a>Visual Studio 2015 的登录改进
@@ -42,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 一般性的 Bug 修复与改进。 有关更新和功能的详细信息，请参阅最新[服务总线 NuGet](http://www.nuget.org/packages/WindowsAzure.ServiceBus/) 的发行说明。
 
 ### <a name="hdinsight-tools"></a>HDInsight 工具
-此版本做了以下更新。 这些更新目前以预览版提供。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
+此版本做了以下更新。 这些更新目前以预览版提供。 有关详细信息，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=619108)。
 
 * 为 Tez 上的 Hive 作业绘制 Hive 图形
 * 完全支持 Hive DML IntelliSense
@@ -50,8 +51,8 @@ ms.lasthandoff: 10/11/2017
 * Azure 服务的 Storm 模板
 
 #### <a name="breaking-changes"></a>重大变化
-* 使用此版本的工具时，必须先升级旧的 **Storm** 项目。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
-* 不再支持 Visual Studio Web Express。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=619108)。
+* 使用此版本的工具时，必须先升级旧的 **Storm** 项目。 有关详细信息，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=619108)。
+* 不再支持 Visual Studio Web Express。 有关详细信息，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=619108)。
 
 ### <a name="azure-app-service-tools"></a>Azure 应用服务工具
 此版本对 Web 工具扩展做了以下更新。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)。 
@@ -77,17 +78,17 @@ Azure SDK 2.7 包含用于 Visual Studio 2015 的 Cloud Explorer，通过 Cloud 
 * 筛选枚举资源时要使用的订阅（使用工具栏上的“设置”命令） 
 * 用于管理资源与资源组的 Azure 门户深层链接 
 
-### <a name="azure-resource-manager-tools"></a>Azure Resource Manager 工具
-Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC) 和新的订阅类型。  除了经典存储之外，这些更改还附带了使用新存储帐户在部署期间存储项目的功能。  
+### <a name="azure-resource-manager-tools"></a>Azure 资源管理器工具
+Azure 资源管理器工具已更新为使用基于角色的访问控制 (RBAC) 和新的订阅类型。  除了经典存储之外，这些更改还附带了使用新存储帐户在部署期间存储项目的功能。  
 
 如果在 SDK 2.7 中使用旧版 SDK 中的 Azure 资源组，则需要使用新的存储帐户而不是经典存储帐户来部署新的部署脚本。  在更改项目以添加新的脚本之前，系统会发出提示。  旧脚本将重命名，需要手动修改新的脚本。
 
 ### <a name="storage-explorer-tools"></a>存储资源管理器工具
-* 支持查看附加 Blob。 有关详细信息，请参阅[此博客文章](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)。 
+* 支持查看附加 Blob。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)。 
 * 支持通过服务器资源管理器查看高级存储帐户。 服务器资源管理器只显示高级存储帐户的页 Blob，因为它们是高级存储帐户唯一支持的类型。
 
 ### <a name="azure-data-factory-tools-for-visual-studio"></a>适用于 Visual Studio 的 Azure 数据工厂工具
-即将引入适用于 Visual Studio 的 **Azure 数据工厂工具**。 以下是启用的功能。 有关详细信息，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=617530)。
+即将引入适用于 Visual Studio 的 **Azure 数据工厂工具**。 以下是启用的功能。 有关详细信息，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=617530)。
 
 * **基于模板的创作**：选择基于用例的模板、数据移动模板或数据处理模板，部署端到端数据集成解决方案，以及快速开始使用数据工厂。 
 * **与解决方案资源管理器集成，方便创作和部署数据工厂实体**：创建和部署管道与相关实体作为 Visual Studio 项目。 
@@ -101,7 +102,7 @@ Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC
 以下部分包含的更新是 Azure SDK for .NET 2.7.1 发行版中引入的。
 
 ### <a name="hdinsight-tools"></a>HDInsight 工具
-有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=623831)。
+有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=623831)。
 
 * Hive 作业运算符视图（新功能）
   
@@ -119,7 +120,7 @@ Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC
   
     我们改进了 IntelliSense，添加了更多用户友好建议。 例如，现在还可以在 IntelliSense 中建议表别名，以便可以更轻松地编写查询。 此外，我们还改进了 Hive 元数据加载，只需数秒即可列出 Hive 源存储中的所有数据库、表和列。
 
-有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](http://go.microsoft.com/fwlink/?LinkId=623831)。
+有关 HDInsight 工具更新的更多详细说明，请参阅[此博客](https://go.microsoft.com/fwlink/?LinkId=623831)。
 
 ### <a name="improvements-in-visual-studio-2013"></a>Visual Studio 2013 中的改进
 * 有了 Azure SDK 2.7.1，Visual Studio 2013 就可以通过基于角色的访问控制、云解决方案提供程序和 Dreamspark 访问 Azure 帐户和订阅。
@@ -131,7 +132,7 @@ Azure Resource Manager 工具已更新为使用基于角色的访问控制 (RBAC
 LightSwitch 项目与此版本不兼容。 下一个 SDK 版本将解决此问题。
 
 ## <a name="also-see"></a>另请参阅
-[Azure SDK 2.7.1 通告文章](http://go.microsoft.com/fwlink/?LinkId=623850)
+[Azure SDK 2.7.1 通告文章](https://go.microsoft.com/fwlink/?LinkId=623850)
 
 [Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 

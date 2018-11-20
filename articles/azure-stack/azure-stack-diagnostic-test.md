@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: af601005c7c8bd8fa7fe335879991caa34187927
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087468"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236969"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>为 Azure Stack 运行验证测试
 
@@ -39,7 +39,7 @@ ms.locfileid: "50087468"
     3. 以管理员身份打开 PowerShell。
     4. 运行：`Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. 运行：`Test-AzureStack`
-4. 如果任何测试报告**失败**，请运行： `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` cmdlet 从 Test-azurestack 收集日志。 有关诊断日志的详细信息，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。 不应收集日志，或联系 Microsoft 客户服务支持 (CSS)，如果测试报告**给出警告**。
+4. 如果任何测试报告**失败**，请运行： `Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` cmdlet 从 Test-azurestack 收集日志。 有关诊断日志的详细信息，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。 不应收集日志，或联系 Microsoft 客户服务支持 (CSS)，如果测试报告**给出警告**。
 5. 将 **SeedRing** 日志发送给 Microsoft 客户服务支持。 Microsoft 客户服务支持将与你协作来解决问题。
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack 参考
@@ -73,7 +73,7 @@ ms.locfileid: "50087468"
 | BackupShareCredential   | PSCredential    | 否       | NA      |
 
 
-Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关通用参数](http://go.microsoft.com/fwlink/?LinkID=113216)。 
+Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关通用参数](https://go.microsoft.com/fwlink/?LinkID=113216)。 
 
 ### <a name="examples-of-test-azurestack"></a>Test-AzureStack 的示例
 
@@ -144,7 +144,7 @@ Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction�
 排除特定的测试：
 
 ````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
     Test-AzureStack -Ignore AzsInfraPerformance
 ````
 
@@ -161,7 +161,7 @@ Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction�
 配置备份后，可以运行 AzsBackupShareAccessibility 来验证是否可以从 ERCS 访问共享，从 PEP 会话运行以下命令：
 
 ````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
     Test-AzureStack -Include AzsBackupShareAccessibility
 ````
 

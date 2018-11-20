@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237871"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 04/16/2018
 | ------------- | ------------- |
 | 它是什么？   | Python 语言的客户端 IDE    |
 | 支持的 DSVM 版本      | Linux      |
-| 典型用途      |  R 开发     |
+| 典型用途      |  Python 开发     |
 | 如何使用/运行它？      | Linux 中桌面快捷方式 (`/usr/bin/pycharm`)      |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、RStudio      |
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ef0becd55df43d7ae648a4cbaa5e1a2358fc1910
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887202"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636928"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文展示了如何在 Azure AD B2c 中通过使用[自定义策略](active-directory-b2c-overview-custom.md)为使用 Azure Active Directory (Azure AD) 的多租户终结点的用户实现登录。 这将允许来自多个 Azure AD 租户的用户登录到 Azure AD B2C，而无需为每个租户配置技术提供商。 但是，任何这些租户中的来宾成员都将无法登录。 为此，你需要[单独配置每个租户](active-directory-b2c-setup-aad-custom.md)。
+本文展示了如何在 Azure AD B2C 中通过使用[自定义策略](active-directory-b2c-overview-custom.md)为使用 Azure Active Directory (Azure AD) 的多租户终结点的用户实现登录。 这将允许来自多个 Azure AD 租户的用户登录到 Azure AD B2C，而无需为每个租户配置技术提供商。 但是，任何这些租户中的来宾成员都将无法登录。 为此，你需要[单独配置每个租户](active-directory-b2c-setup-aad-custom.md)。
 
 >[!NOTE]
 >以下说明中将 `Contoso.com` 用于组织 Azure AD 租户，将 `fabrikamb2c.onmicrosoft.com` 用作 Azure AD B2C 租户。
@@ -200,7 +200,7 @@ ms.locfileid: "48887202"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignContoso.xml*。
-2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性值更新为唯一的值。 例如，`SignUpSignInContoso`。
+2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInContoso`。
 3. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_contoso`
 4. 更新 **DefaultUserJourney** 中的 **ReferenceId** 属性的值，以匹配所创建的新用户旅程的 ID (SignUpSignContoso)。
 5. 保存更改并上传文件，然后选择列表中的新策略。

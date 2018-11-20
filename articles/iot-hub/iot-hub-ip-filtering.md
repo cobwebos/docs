@@ -7,23 +7,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: 864af9cae35912d95f2c0bf0b574a5ca2404a608
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 903f8284327d3d5b9ef386305a436ce44a8a11b2
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190635"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378096"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
-安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 _IP 筛选器_功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
+安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 *IP 筛选器*功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
 
 ## <a name="when-to-use"></a>使用时机
 
 对于需要阻止特定 IP 地址的 IoT 中心终结点的情况，有两个具体用例：
 
-- IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route] 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
-- 需要拒绝来自 IoT 中心管理员已标识为可疑地址的 IP 地址的流量。
+* IoT 中心应仅从指定范围内的 IP 地址接收流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
+
+* 需要拒绝来自 IoT 中心管理员已标识为可疑地址的 IP 地址的流量。
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
@@ -33,23 +34,25 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 ## <a name="default-setting"></a>默认设置
 
-默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
+默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心会接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
 
-![IoT 中心默认 IP 筛选器设置][img-ip-filter-default]
+![IoT 中心默认 IP 筛选器设置](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>添加或编辑 IP 筛选器规则
 
 添加 IP 筛选器规则时，系统会提示输入以下值：
 
-- “IP 筛选器规则名称”，该名称必须是一个唯一的字母数字字符串，不区分大小写并且最大长度为 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
-- 选择“拒绝”或“接受”作为 IP 筛选器规则的“操作”。
-- 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
+* “IP 筛选器规则名称”，该名称必须是一个唯一的字母数字字符串，不区分大小写并且最大长度为 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
-![向 IoT 中心添加 IP 筛选规则][img-ip-filter-add-rule]
+* 选择“拒绝”或“接受”作为 IP 筛选器规则的“操作”。
+
+* 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
+
+![向 IoT 中心添加 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
 保存规则后，会看到一个警报，通知你更新正在进行。
 
-![关于保存 IP 筛选规则的通知][img-ip-filter-save-new-rule]
+![关于保存 IP 筛选规则的通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
 当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
 
@@ -65,7 +68,7 @@ IP 筛选器规则在 IoT 中心服务级别进行应用。 因此，IP 筛选�
 
 要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
 
-![删除 IoT 中心 IP 筛选规则][img-ip-filter-delete-rule]
+![删除 IoT 中心 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 
@@ -77,27 +80,11 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 
 若要保存新的 IP 筛选器规则顺序，请单击“保存”。
 
-![更改 IoT 中心 IP 筛选规则的顺序][img-ip-filter-rule-order]
+![更改 IoT 中心 IP 筛选规则的顺序](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-- [操作监视][lnk-monitor]
-- [IoT 中心度量值][lnk-metrics]
-
-<!-- Images -->
-[img-ip-filter-default]: ./media/iot-hub-ip-filtering/ip-filter-default.png
-[img-ip-filter-add-rule]: ./media/iot-hub-ip-filtering/ip-filter-add-rule.png
-[img-ip-filter-save-new-rule]: ./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png
-[img-ip-filter-delete-rule]: ./media/iot-hub-ip-filtering/ip-filter-delete-rule.png
-[img-ip-filter-rule-order]: ./media/iot-hub-ip-filtering/ip-filter-rule-order.png
-
-
-<!-- Links -->
-
-[IoT Hub developer guide]: iot-hub-devguide.md
-[Azure Express Route]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
-
-[lnk-monitor]: iot-hub-operations-monitoring.md
-[lnk-metrics]: iot-hub-metrics.md
+* [操作监视](iot-hub-operations-monitoring.md)
+* [IoT 中心指标](iot-hub-metrics.md)

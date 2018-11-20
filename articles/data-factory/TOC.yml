@@ -185,8 +185,6 @@ items:
       href: connector-file-system.md
     - name: FTP
       href: connector-ftp.md
-    - name: GE Historian
-      href: connector-odbc.md#ge-historian-source
     - name: Google AdWords
       href: connector-google-adwords.md
     - name: Google BigQuery
@@ -245,7 +243,7 @@ items:
       href: connector-postgresql.md
     - name: Presto
       href: connector-presto.md
-    - name: QuickBooks
+    - name: QuickBooks Online
       href: connector-quickbooks.md
     - name: Salesforce
       href: connector-salesforce.md
@@ -407,6 +405,8 @@ items:
       href: create-self-hosted-integration-runtime.md
     - name: Azure-SSIS 集成运行时
       href: create-azure-ssis-integration-runtime.md
+    - name: 共享的自承载集成运行时
+      href: create-shared-self-hosted-integration-runtime-powershell.md
   - name: 在 Azure 中运行 SSIS 包
     items:
     - name: 使用“执行 SSIS 包”活动运行 SSIS 包
@@ -467,9 +467,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: ec46869172e1a41fca7f452e5809d7b98f56d1ea
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e5f7b008acfaaa76eae154957adcbe0c7372382a
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457266"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976581"

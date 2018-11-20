@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c07e1282a755962b6fe6bc980207a510bd3287a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253765"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>创建和发布市场项目
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 ## <a name="create-a-marketplace-item"></a>创建市场项
-1. [下载](http://www.aka.ms/azurestackmarketplaceitem) Azure Gallery Packager 工具和示例 Azure Stack 市场项。
+1. [下载](https://www.aka.ms/azurestackmarketplaceitem) Azure Gallery Packager 工具和示例 Azure Stack 市场项。
 2. 打开示例市场项并重命名 **SimpleVMTemplate** 文件夹。 （使用与市场项相同的名称，例如 **Contoso.TodoList**。）此文件夹包含：
    
    ```shell
@@ -126,14 +126,14 @@ ms.locfileid: "48856439"
 
 ## <a name="reference-marketplace-item-manifestjson"></a>参考：市场项 manifest.json
 ### <a name="identity-information"></a>标识信息
-| 名称 | 需要 | Type | 约束 | 说明 |
+| 名称 | 需要 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | 名称 |X |String |[A-Za-z0-9]+ | |
 | 发布者 |X |String |[A-Za-z0-9]+ | |
 | 版本 |X |String |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>元数据
-| 名称 | 需要 | Type | 约束 | 说明 |
+| 名称 | 需要 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |建议不要超过 80 个字符 |如果长度超过 80 个字符，门户可能无法美观地显示项名称。 |
 | PublisherDisplayName |X |String |建议不要超过 30 个字符 |如果长度超过 30 个字符，门户可能无法美观地显示发布者名称。 |
@@ -159,7 +159,7 @@ ms.locfileid: "48856439"
 ### <a name="links"></a>链接
 每个市场项可以包括指向其他内容的各种链接。 链接是作为名称和 URI 的列表指定的。
 
-| 名称 | 需要 | Type | 约束 | 说明 |
+| 名称 | 需要 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 64 个字符 | |
 | Uri |X |URI | | |
@@ -167,7 +167,7 @@ ms.locfileid: "48856439"
 ### <a name="additional-properties"></a>其他属性
 除了前面的元数据之外，市场作者可以采用以下形式提供自定义键/值对数据：
 
-| 名称 | 需要 | Type | 约束 | 说明 |
+| 名称 | 需要 | 类型 | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 25 个字符 | |
 | 值 |X |String |最多 30 个字符 | |

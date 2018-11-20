@@ -1,25 +1,24 @@
 ---
 title: 在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据
-description: 了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的交互式查询 Hive 数据。
-keywords: hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,directquery
+description: 在 Azure HDInsight 中使用 Microsoft Power BI 直观显示交互式查询 Hive 数据
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/14/2018
-ms.openlocfilehash: 1779151f3768542c08ea62d2c9109d4cd66a1e3f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 46b5b3436a33c3f83d85cfb02028759d53d214af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041038"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245267"
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Hive 数据
 
-了解如何将 Microsoft Power BI 连接到 Azure HDInsight 交互式查询群集并使用直接查询直观显示 Hive 数据。 在本教程中，从 hivesampletable Hive 表将数据加载到 Power BI 中。 Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
+本文介绍如何将 Microsoft Power BI 连接到 Azure HDInsight 交互式查询群集并使用直接查询直观显示 Apache Hive 数据。 所提供的示例从 hivesampletable Hive 表将数据加载到 Power BI 中。 hivesampletable Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
 
 ![HDInsight Power BI 地图报表](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -36,37 +35,49 @@ ms.locfileid: "43041038"
 所有 HDInsight 群集都随附了 hivesampletable Hive 表。
 
 1. 登录 Power BI Desktop。
-2. 单击“主页”选项卡，从“外部数据”功能区中单击“获取数据”，然后选择“更多”。
+
+2. 单击“主页”选项卡，从“外部数据”功能区中单击“获取数据”，然后选择“更多...”。
 
     ![HDInsight Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    
 3. 从“获取数据”窗格，在搜索框中键入 hdinsight。 如果看不到“HDInsight 交互式查询(beta)”，需要将 Power BI Desktop 更新到最新版本。
-4. 单击“HDInsight 交互式查询(beta)”，然后单击“连接”。
-5. 单击“继续”关闭“预览连接器”警告对话框。
+
+4. 选择“HDInsight 交互式查询(Beta)”，然后选择“连接”。
+
+5. 选择“继续”以关闭“预览连接器”警告对话框。
+
 6. 在“HDInsight 交互式查询”中选择或输入以下信息：
 
     - **服务器**：输入交互式查询群集名称，例如，myiqcluster.azurehdinsight.net。
+
     - **数据库**：对于本教程，输入“默认”。
+    
     - **数据连接模式**：对于本教程，选择“DirectQuery”。
 
-    ![HDInsight 交互式查询 power bi directquery 连接](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    ![HDInsight 交互式查询 Power BI DirectQuery 连接](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+
 7. 单击“确定”。
-8. 输入 HTTP 用户凭据，然后单击“确定”。  默认用户名为“admin”
+
+8. 输入 HTTP 用户凭据，然后单击“确定”。 默认用户名为“admin”
+
 9. 在左侧窗格中，选择“hivesampletale”，然后单击“加载”。
 
-    ![HDInsight 交互式查询 power bi hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    ![HDInsight 交互式查询 Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
-## <a name="visualize-data"></a>可视化数据
+## <a name="visualize-data-on-a-map"></a>在地图上直观显示数据
 
 从上一过程继续进行。
 
 1. 在“可视化”窗格中，选择“地图”。  它是一个地球图标。
 
     ![HDInsight Power BI 自定义报表](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    
 2. 在“字段”窗格中，选择 **country** 和 **devicemake**。 可以在地图上看到绘制的数据。
+
 3. 展开地图。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  若要了解更多信息，请参阅下列文章：
+本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  有关数据可视化的详细信息，请参阅以下文章：
 
 * [在 Azure HDInsight 中使用 Microsoft Power BI 通过 ODBC 直观显示 Hive 数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。 
 * [在 Azure HDInsight 中使用 Zeppelin 运行 Hive 查询](./../hdinsight-connect-hive-zeppelin.md)。

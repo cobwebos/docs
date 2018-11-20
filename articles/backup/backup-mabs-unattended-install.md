@@ -1,29 +1,29 @@
 ---
-title: 无提示的 Azure 备份服务器 v2 安装
-description: 使用 PowerShell 脚本可以无提示方式安装 Azure 备份服务器 v2。 这种类型安装也称为无人参与安装。
+title: 无提示的 Azure 备份服务器 V2 安装
+description: 使用 PowerShell 脚本可以无提示方式安装 Azure 备份服务器 V2。 这种类型安装也称为无人参与安装。
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/13/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606403"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612689"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>运行 Azure 备份服务器 v2 的无人参与安装
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装
 
-了解如何运行 Azure 备份服务器 v2 的无人参与安装。 
+了解如何运行 Azure 备份服务器的无人参与安装。
 
-如果是安装 Azure 备份服务器 v1，则这些步骤不适用。
+如果是安装 Azure 备份服务器 V1，则这些步骤不适用。
 
-## <a name="install-backup-server-v2"></a>安装备份服务器 v2
+## <a name="install-backup-server"></a>安装备份服务器
 
-1. 在承载 Azure 备份服务器 v2 的服务器上，创建一个文本文件。 （可以在记事本或其他文本编辑器中创建该文件。）将该文件保存为 MABSSetup.ini。 
+1. 在承载 Azure 备份服务器 V2 或更高版本的服务器上，创建一个文本文件。 （可以在记事本或其他文本编辑器中创建该文件。）将该文件保存为 MABSSetup.ini。
 
 2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号 (\< \>) 内的文本替换为来自你环境的值。 以下文本是一个示例：
 

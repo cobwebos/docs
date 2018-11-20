@@ -4,17 +4,17 @@ description: Azure Policy 是 Azure 中的一项服务，用于创建、分配�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961274"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252813"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -35,12 +35,14 @@ Azure Policy 是 Azure 中的一项服务，可用于创建、分配和管理策
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy 中的 RBAC 权限
 
-Azure Policy 的权限在两个不同的资源提供程序中以操作形式体现：
+Azure Policy 在两个资源提供程序中具有多个权限（称为操作）：
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-多个内置角色拥有对 Azure Policy 资源的不同级别权限，例如，**安全管理员**可以管理策略分配和定义，但不能查看符合性信息，而**读者**可以阅读有关策略分配和定义的详细信息，但不能进行更改，也不能查看符合性信息。 **所有者**拥有完全权限，而**参与者**则没有任何 Azure Policy 权限。 若要授予用户查看策略符合性详细信息的权限，请创建一个[自定义角色](../../role-based-access-control/custom-roles.md)。
+许多内置角色可授予对 Azure Policy 资源的权限。 **资源策略参与者(预览版)** 角色包括大多数 Policy 操作，**所有者**具有完全权限。 **参与者**和**读者**都可以读取有关 Policy 的所有详细信息，但**参与者**还可以触发修正。
+
+如果没有任何内置角色具有所需的权限，可创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 ## <a name="policy-definition"></a>策略定义
 

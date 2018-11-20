@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543133"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568670"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -44,11 +44,11 @@ ms.locfileid: "45543133"
 
 ValidationTechnicalProfiles 元素包含下列元素：
 
-| 元素 | 匹配项 | Description |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 要用于验证引用技术配置文件的部分或所有输出声明的技术配置文件。 |
 
-ValidationTechnicalProfile 元素包含以下属性：
+**ValidationTechnicalProfile** 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |
@@ -58,7 +58,7 @@ ValidationTechnicalProfile 元素包含以下属性：
 
 ValidationTechnicalProfile 元素包含以下元素：
 
-| 元素 | 匹配项 | Description |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | Preconditions | 0:1 | 为执行验证技术配置文件而必须满足执行的前置条件的列表。 |
 
@@ -66,12 +66,12 @@ Precondition 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |
-| Type | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
+| 类型 | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
 | ExecuteActionsIf | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 | 
 
 Precondition 元素包含以下元素：
 
-| 元素 | 匹配项 | Description |
+| 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
 | 值 | 1:n | 检查使用的数据。 如果此检查的类型是 `ClaimsExist`，则此字段指定要进行查询的 ClaimTypeReferenceId。 如果检查的类型是 `ClaimEquals`，则此字段指定要进行查询的 ClaimTypeReferenceId。 而另一个值元素包含要检查的值。|
 | 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 Action 的值设置为 `SkipThisValidationTechnicalProfile`。 指定不应执行关联的验证技术配置文件。 | 

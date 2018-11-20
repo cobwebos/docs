@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: 79fb8517ec6880e8a3eae0e74275567a24644b87
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133547"
+---
 ## <a name="deployment-customization"></a>部署自定义
 
 部署过程假设推送的 .zip 文件包含随时可运行的应用。 默认情况下，不会运行自定义。 若要启用通过持续集成获取的同一生成进程，请将以下内容添加到应用程序设置：

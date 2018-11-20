@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638126"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300364"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -89,7 +89,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 在这些书名示例中，书名的上下文字词不会让 LUIS 混乱。 LUIS 知道哪一截是书名，因为书名位于模式中且用 Pattern.any 实体标记。
 
 ### <a name="explicit-lists"></a>显式列表
-如果模式包含 Pattern.any，且模式语法可能基于话语提取出错误的实体，需通过创作 API 创建一个[显式列表](https://aka.ms/ExplicitList)，允许出现此异常。 
+如果模式包含 Pattern.any，且模式语法可能基于话语提取出错误的实体，需通过创作 API 创建一个[显式列表](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)，允许出现此异常。 
 
 例如，假设你的模式中包含可选语法 `[]` 和实体语法 `{}`，两个语法的组合方式导致数据提取错误。
 
@@ -102,7 +102,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 
 在上表中，话语 `email about the man from La Mancha` 的主题应该是 `the man from La Mancha`（书名），但因为主题包含可选字词 `from`书名被预测错误。 
 
-要避免模式出现此异常，需使用[显式列表的创作 API](https://aka.ms/ExplicitList) 添加 `the man from la mancha` 作为 {subject} 实体的显式列表匹配。
+要避免模式出现此异常，需使用[显式列表的创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 添加 `the man from la mancha` 作为 {subject} 实体的显式列表匹配。
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
 使用正则表达式方括号语法 `[]` 标出话语中的可选文本。 最多能对两个括号使用方括号嵌套可选文本。

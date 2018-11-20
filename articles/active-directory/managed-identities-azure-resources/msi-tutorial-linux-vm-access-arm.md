@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abde91e04048d64a17f861825d1fb7779873155
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 638946f0ffa8b6540f55fb7a22ac17bd262269bf
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106067"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621677"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配托管标识访问 Azure 资源管理器
 
@@ -40,13 +40,11 @@ ms.locfileid: "47106067"
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- [登录到 Azure 门户](https://portal.azure.com)
 
-[登录到 Azure 门户](https://portal.azure.com)
+- [创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
 
-[创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-portal)
-
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+- 如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
@@ -128,20 +126,20 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
 1. 登录 Azure [门户](https://portal.azure.com)。
 2. 在门户中，导航到“虚拟机”并转到 Linux 虚拟机，然后在“概述”中，单击“连接”。 复制用于连接到 VM 的字符串。
 3. 使用所选的 SSH 客户端连接到 VM。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](~/articles/virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
-4. 在终端窗口中，使用 CURL 向 Azure 实例元数据服务 (IMDS) 标识终结点发出请求，以获取访问 Azure 资源管理器所需的访问令牌。  
+4. 在终端窗口中，使用 CURL 向 Azure 实例元数据服务 (IMDS) 标识终结点发出请求，以获取访问 Azure 资源管理器所需的访问令牌。  
 
-   以下示例展示了用于获取访问令牌的 CURL 请求。 请务必将 `<CLIENT ID>` 替换为在[创建用户分配托管标识](#create-a-user-assigned-managed-identity)中由 `az identity create` 命令返回的 `clientId` 属性： 
+   以下示例展示了用于获取访问令牌的 CURL 请求。 请务必将 `<CLIENT ID>` 替换为在[创建用户分配托管标识](#create-a-user-assigned-managed-identity)中由 `az identity create` 命令返回的 `clientId` 属性： 
     
    ```bash
-   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
+   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
    ```
     
     > [!NOTE]
-    > `resource` 参数值必须与 Azure AD 预期值完全一致。 如果使用资源管理器资源 ID，必须在 URI 的结尾添加斜线。 
+    > `resource` 参数值必须与 Azure AD 预期值完全一致。 如果使用资源管理器资源 ID，必须在 URI 的结尾添加斜线。 
     
-    响应包括访问 Azure 资源管理器所需的访问令牌。 
+    响应包括访问 Azure 资源管理器所需的访问令牌。 
     
-    响应示例：  
+    响应示例：  
 
     ```bash
     {
@@ -152,19 +150,19 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
     "not_before":"1504126627",
     "resource":"https://management.azure.com",
     "token_type":"Bearer"
-    } 
+    } 
     ```
 
 5. 使用访问令牌访问 Azure 资源管理器，并读取之前授予用户分配托管标识访问权限以使其有权访问的资源组的属性。 确保将 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 的值替换为先前指定的值，将 `<ACCESS TOKEN>` 替换为上一步返回的令牌。
 
     > [!NOTE]
-    > URL 区分大小写。因此，请确保使用的大小写与之前在命名资源组时使用的大小写完全相同，以及 `resourceGroups` 使用的是大写“G”。  
+    > URL 区分大小写。因此，请确保使用的大小写与之前在命名资源组时使用的大小写完全相同，以及 `resourceGroups` 使用的是大写“G”。  
 
     ```bash 
-    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
 
-    响应包含特定资源组信息，类似于下面的示例： 
+    响应包含特定资源组信息，类似于下面的示例： 
 
     ```bash
     {
@@ -172,9 +170,9 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
     "name":"DevTest",
     "location":"westus",
     "properties":{"provisioningState":"Succeeded"}
-    } 
+    } 
     ```
-    
+    
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何创建用户分配托管标识并将其附加到 Linux 虚拟机，以访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：

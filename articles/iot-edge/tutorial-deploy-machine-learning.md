@@ -2,19 +2,19 @@
 title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
 description: 在本教程中，请将 Azure 机器学习作为一个模块部署到边缘设备
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0af63c7beef0f5268ba078d517556fc64ac7bf87
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 692dce4c3fcb31bcfbffbba06e5a69722b5fb5fa
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116347"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566104"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
 
@@ -208,8 +208,5 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 在本教程中，可以部署由 Azure 机器学习提供支持的 IoT Edge 模块。 你可以继续查看任何其他教程，了解 Azure IoT Edge 可帮助你将数据转化为临界业务见解的其他方式。
 
 > [!div class="nextstepaction"]
-> [使用 C# 代码筛选传感器数据](tutorial-csharp-module.md)
+> [使用自定义视觉服务对图像进行分类](tutorial-deploy-custom-vision.md)
 
-<!--Links-->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md

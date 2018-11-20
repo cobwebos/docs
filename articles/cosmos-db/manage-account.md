@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 8b28143dc92fa526b631baf6d47e4a9f2367ee0e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: abcf51c6bd196c2ffb0bb35e2df161531a53972d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612150"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229384"
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>如何管理 Azure Cosmos DB 帐户
 了解如何在 Azure 门户中设置全局一致性、使用密钥，以及删除 Azure Cosmos DB 帐户。
@@ -96,7 +96,7 @@ ms.locfileid: "34612150"
 ![如何在 Azure 门户中删除 Azure Cosmos DB 帐户](./media/manage-account/delete-account-confirm.png)
 
 ## <a id="next"></a>后续步骤
-了解如何[开始使用 Azure Cosmos DB 帐户](http://go.microsoft.com/fwlink/p/?LinkId=402364)。
+了解如何[开始使用 Azure Cosmos DB 帐户](https://go.microsoft.com/fwlink/p/?LinkId=402364)。
 
 <!--Image references-->
 [5]: ./media/manage-account/documentdb_change_consistency-1.png

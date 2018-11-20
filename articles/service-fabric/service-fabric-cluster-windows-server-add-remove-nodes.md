@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: b1ffe3510cf4f5e73b05572a482f49d529fca60d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 69680331bdad0faa36cb3df6117baf8b358da132
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212538"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251013"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>向在 Windows Server 上运行的独立 Service Fabric 群集添加或删除节点
 [在 Windows Server 计算机上创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)之后，（业务）需求可能发生变化，因此需要向群集添加或删除节点。 本文提供了实现此目标的详细步骤。 请注意，在本地开发群集中不支持添加/删除节点的功能。
@@ -29,7 +29,7 @@ ms.locfileid: "34212538"
 1. 按照[计划和准备 Service Fabric 群集部署](service-fabric-cluster-creation-for-windows-server.md)中概述的步骤，使要向其添加群集的VM/计算机准备就绪。
 2. 确定要向哪些容错域和升级域添加此 VM/计算机。
 3. 通过远程桌面 (RDP) 方式进入需要向群集添加的 VM/计算机
-4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包
+4. 向此 VM/计算机复制或[下载适用于 Windows Server 的 Service Fabric 独立包](https://go.microsoft.com/fwlink/?LinkId=730690)，并解压该包
 5. 使用提升的权限运行 Powershell，并导航到解压缩包所在的位置。
 6. 使用描述要添加的新节点的参数运行 AddNode.ps1 脚本。 以下示例将名为 VM5、类型为 NodeType0 且 IP 地址为 182.17.34.52 的新节点添加到 UD1 和 fd:/dc1/r0 中。 *ExistingClusterConnectionEndPoint* 是现有群集中已有节点的连接终结点，可以是群集中*任意*节点的 IP 地址。
 

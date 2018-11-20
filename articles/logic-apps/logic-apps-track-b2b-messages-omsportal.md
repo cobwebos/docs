@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Log Analytics 跟踪 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
+title: 使用 Log Analytics 跟踪 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
 description: 使用 Azure Log Analytics 跟踪集成帐户和 Azure 逻辑应用的 B2B 通信
 services: logic-apps
 ms.service: logic-apps
@@ -8,18 +8,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 06/19/2018
-ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 10/19/2018
+ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405678"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233543"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 通信
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>使用 Azure Log Analytics 跟踪 B2B 消息
 
-通过集成帐户设置两个运行的业务流程或应用程序的 B2B 通信后，这些实体可以彼此交换消息。 若要检查这些消息是否得到正确处理，可以使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪 AS2、X12 和 EDIFACT 消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以使用 AS2、X12 和 EDIFACT 等协议交换消息。 若要检查是否正确处理了这些消息，可使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪这些消息。 例如，可以使用下面这些 Web 跟踪功能来跟踪消息：
 
 * 消息计数和状态
 * 确认状态
@@ -27,7 +26,10 @@ ms.locfileid: "49405678"
 * 有关故障的详细错误说明
 * 搜索功能
 
-## <a name="requirements"></a>要求
+> [!NOTE]
+> 此页面之前描述了如何使用 Microsoft Operations Management Suite (OMS) 执行这些任务的步骤，该解决方案将[在 2019 年 1 月停用](../log-analytics/log-analytics-oms-portal-transition.md)，取而代之的将是使用 Azure Log Analytics 执行这些步骤的内容。 
+
+## <a name="prerequisites"></a>先决条件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
@@ -35,51 +37,57 @@ ms.locfileid: "49405678"
 
 * [将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)（如果尚未发布）。
 
-> [!NOTE]
-> 满足上述要求后，Log Analytics 中应该已经有一个工作区。 应使用同一工作区来跟踪 Log Analytics 上的 B2B 通信。 
->  
-> 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+* 满足上述要求后，还需要 Log Analytics 工作区，用于通过 Log Analytics 来跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
 
-## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>将逻辑应用 B2B 解决方案添加到 Azure
+## <a name="install-logic-apps-b2b-solution"></a>安装逻辑应用 B2B 解决方案
 
-若要让 Log Analytics 跟踪逻辑应用的 B2B 消息，必须将**逻辑应用 B2B** 解决方案添加到 Log Analytics。 详细了解如何[将解决方案添加到 Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)。
+请先将逻辑应用 B2B 解决方案添加到 Log Analytics，方可让 Log Analytics 跟踪逻辑应用的 B2B 消息。 详细了解如何[将解决方案添加到 Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 在搜索框中，查找“log analytics”，并选择“Log Analytics”。
 
-   ![查找 Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![选择“Log Analytics”](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
+1. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择你的 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![选择“Log Analytics 工作区”](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. 在“管理”下，选择“工作区摘要”。
+1. 在“开始使用 Log Analytics” > “配置监视解决方案”下，选择“查看解决方案”。
 
-   ![选择“Log Analytics 门户”](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![选择“查看解决方案”](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. 在主页打开后，选择“添加”以安装逻辑应用 B2B 解决方案。    
-   ![选择“解决方案库”](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+1. 在“概述”页上，选择“添加”，这将打开“管理解决方案”列表。 在该列表中，选择“逻辑应用 B2B”。 
 
-5. 在“管理解决方案”下，查找和创建“逻辑应用 B2B”解决方案。     
-   ![选择“逻辑应用 B2B”](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+   ![选择“逻辑应用 B2B 解决方案”](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   在主页上，此时会显示“逻辑应用 B2B 消息”磁贴。 
-   此磁贴更新 B2B 消息经过处理后的消息计数。
+   如果未找到此解决方案，请在列表底部选择“加载更多”，直到此解决方案出现。
+
+1. 选择“创建”，确认要在其中安装解决方案的 Log Analytics 工作区，然后再次选择“创建”。   
+
+   ![为逻辑应用 B2B 选择“创建”](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+
+   如果不想使用现有工作区，还可以在这次创建新工作区。
+
+1. 完成后，返回工作区的“概述”页面。 
+
+   逻辑应用 B2B 解决方案现显示在“概述”页面上。 
+   处理 B2B 消息时，此页面上消息计数随之更新。
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>在 Log Analytics 中跟踪消息状态和详细信息
+## <a name="view-b2b-message-information"></a>查看 B2B 消息信息
 
-1. 在 B2B 消息经过处理后，可以查看这些消息的状态和详细信息。 在“概述”页上，选择“逻辑应用 B2B 消息”磁贴。
+在 B2B 消息经过处理后，可以在“逻辑应用 B2B”磁贴上查看这些消息的状态和详细信息。
+
+1. 转到 Log Analytics 工作区，然后打开“概述”页面。 选择“逻辑应用 B2B”。
 
    ![更新后的消息计数](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > 默认情况下，“逻辑应用 B2B 消息”磁贴显示的是一天数据。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
+   > 默认情况下，“逻辑应用 B2B”磁贴显示一天的数据。 若要将数据范围更改为其他时间间隔，请选择页面顶部的范围控件：
    > 
-   > ![更改数据范围](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
-   >
+   > ![更改时间间隔](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”、“X12”或“EDIFACT”磁贴。
+1. 当消息状态仪表板显示后，可以查看特定消息类型的更多详细信息（显示的也是一天数据）。 选择“AS2”、“X12”或“EDIFACT”磁贴。
 
    ![查看消息状态](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 

@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-manager: douge
-ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a1c68f7e1d0a24be173137d3a7c920876cc8ba66
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226885"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515737"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -65,9 +64,9 @@ azds remove -g <resource group name> -n <cluster name>
 
 使用 _azds.exe_ 时，请使用 --verbose 命令行选项，并使用 --output 命令行选项指定输出格式。
  
-    ```cmd
-    azds up --verbose --output json
-    ```
+```cmd
+azds up --verbose --output json
+```
 
 在 Visual Studio 中：
 
@@ -76,6 +75,23 @@ azds remove -g <resource group name> -n <cluster name>
 
     ![“工具选项”对话框的屏幕截图](media/common/VerbositySetting.PNG)
     
+尝试使用多阶段 Dockerfile 时，可能会看到此错误。 详细输出如下所示：
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+这是因为 AKS 节点运行的旧版 Docker 不支持多阶段生成。 需重写 Dockerfile 以避免多阶段生成。
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
 如果 DNS 名称解析失败，当尝试连接到与 Dev Spaces 服务关联的公用 URL 时，可能会在 Web 浏览器中看到“页面无法显示”或“无法访问此站点”错误。
@@ -206,6 +222,24 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>启动 Dev Spaces 时出现“Error: could not find a ready tiller pod”（错误: 找不到准备好的 Tiller Pod）
+
+### <a name="reason"></a>原因
+如果 Helm 客户端无法再与群集中运行的 Tiller Pod 通信，则会发生此错误。
+
+### <a name="try"></a>请尝试：
+重新启动群集中的代理节点通常可以解决此问题。
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Azure Dev Spaces 代理可能会干扰在开发空间中运行的其他 Pod
+
+### <a name="reason"></a>原因
+在 AKS 群集中的某个命名空间上启用 Dev Spaces 时，会在该命名空间内运行的每个 Pod 中安装一个名为 _mindaro-proxy_ 的附加容器。 此容器会拦截对 Pod 中服务的调用，这是 Dev Spaces 团队开发功能不可或缺的一部分。
+
+遗憾的是，它可能会干扰在这些 Pod 中运行的某些服务。 具体来说，它会干扰运行 Redis 缓存的 Pod，从而导致主/从通信中出现连接错误和故障。
+
+### <a name="try"></a>请尝试：
+可以将受影响的 Pod 移动到_未_启用 Dev Spaces 的群集内的命名空间，同时继续在启用 Dev Spaces 的命名空间内运行应用程序的其余部分。 Dev Spaces 不会在未启用 Dev Spaces 的命名空间内安装 _mindaro-proxy_ 容器。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces 似乎没有使用我的现有 Dockerfile 来生成容器 
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 77bccaeec1ad3f0d2df4ab567d294c77fc2358cb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2673a0ec1e9ed66c9a1bb6e369ad5300a570ba0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954719"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240437"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
 
@@ -110,4 +110,4 @@ ms.locfileid: "49954719"
 
 - 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 
-- 如果想要使用推荐策略的分步部署计划，请参阅[条件访问部署计划](http://aka.ms/conditionalaccessdeploymentplan)
+- 如果想要使用推荐策略的分步部署计划，请参阅[条件访问部署计划](https://aka.ms/conditionalaccessdeploymentplan)

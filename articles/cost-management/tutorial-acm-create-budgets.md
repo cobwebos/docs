@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/01/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017344"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686154"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建并管理 Azure 预算
 
-可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 可以看到支出在一段时间的变化情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
+可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
 
 在未来选择过期日期时，预算会在某个期间末（月末、季末或年末）自动重置为相同的预算金额。 由于预算是使用相同的预算金额重置的，因此如果未来时段的预算货币金额不同于现在，则需创建单独的预算。
 
@@ -33,9 +33,9 @@ ms.locfileid: "48017344"
 
 ## <a name="prerequisites"></a>先决条件
 
-预算适用于所有 Azure EA 客户。 必须有 Azure EA 订阅的读取访问权限才能创建并管理预算。 预算不支持 EA 计费帐户。
+预算适用于所有 Azure EA 客户。 必须有 Azure EA 订阅的读取访问权限才能创建并管理预算。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
 
-预算可以在订阅或资源组级别单独创建。 每个订阅支持以下 Azure 权限，以便按用户和组进行预算：
+每个订阅支持以下 Azure 权限，以便按用户和组进行预算：
 
 - 所有者 - 可以为订阅创建、修改或删除预算。
 - 参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。

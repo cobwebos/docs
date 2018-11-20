@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819357"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419225"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -38,7 +38,7 @@ ms.locfileid: "42819357"
 ## <a name="transaction-diagnostics-experience"></a>事务诊断体验
 此视图有四个关键部分：结果列表、跨组件事务图、与此操作相关的所有遥测的时序列表，以及左侧的详细信息窗格（显示任何选定遥测项的详细信息）。
 
-![关键部分](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![关键部分](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>跨组件事务图
 
@@ -57,19 +57,19 @@ ms.locfileid: "42819357"
 
 本部分以与此事务相关的所有遥测的时间序列显示平面列表视图。 它还显示自定义事件以及未在事务图中显示的跟踪。 可以将此列表筛选为特定组件/调用生成的遥测。 可以在此列表中选择任意遥测项，并[在右侧查看相应的详细信息](#details-of-the-selected-telemetry)。
 
-![所有遥测的时间序列](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![所有遥测的时间序列](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>所选遥测数据的详细信息
 
 此可折叠窗格显示事务图或列表中任何所选项的详细信息。 “显示全部”列出了收集的所有标准属性。 所有自定义属性都单独列在标准集之下。 单击堆栈跟踪窗口下方的“...”以获取复制跟踪的选项。 “打开探查器跟踪”或“打开调试快照”在相应的详细信息窗格中查看代码级诊断信息。
 
-![异常详细信息](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![异常详细信息](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>搜索结果
 
 此可折叠窗格会显示符合筛选条件的其他结果。 单击任何结果可更新上面列出的 3 个部分的相应详细信息。 我们试图找到最可能从所有组件中获得详细信息的样本，即使在任何一个组件中采样都是有效的。 这些显示为“建议的”样本。
 
-![搜索结果](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![搜索结果](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>探查器和快照调试器
 
@@ -79,7 +79,7 @@ ms.locfileid: "42819357"
 
 如果无法让快照调试器正常工作，请联系 **snapshothelp@microsoft.com**
 
-![探查器集成](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![探查器集成](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>常见问题解答
 

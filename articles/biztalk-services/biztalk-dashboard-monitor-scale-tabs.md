@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 3f4763b5e15d4b9b84e868262a9e8538b8a407a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103355"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228821"
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>查看“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡
 
@@ -39,20 +39,20 @@ ms.locfileid: "24103355"
         <td><strong>获取工具</strong></td>
         <td>下载 BizTalk 服务 SDK，以便在本地开发计算机上安装 Visual Studio 项目模板。 这些模板可创建 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk 服务项目</strong>（转换）Visual Studio 项目，而这些项目将部署到 BizTalk 服务中。
         <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">如何开始使用 Azure BizTalk 服务 SDK</a> 和<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了入门步骤。
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302335">如何开始使用 Azure BizTalk 服务 SDK</a> 和<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了入门步骤。
         </td>
     </tr>
     <tr>
         <td><strong>创建合作伙伴协议</strong></td>
         <td>打开在 Azure 上托管的 Azure BizTalk 服务门户，可在其中添加合作伙伴以及创建 X12、AS2 和 EDIFACT EDI 协议。
         <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传递的组件</a>列出了入门步骤。
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传递的组件</a>列出了入门步骤。
         </td>
     </tr>
 
 <tr>
         <td><strong>详细了解 BizTalk 服务</strong></td>
-        <td>转到<a HREF="http://azure.microsoft.com/documentation/services/biztalk-services/">学习中心</a>以了解有关 Azure BizTalk 服务的更多信息。</td>
+        <td>转到<a HREF="https://azure.microsoft.com/documentation/services/biztalk-services/">学习中心</a>以了解有关 Azure BizTalk 服务的更多信息。</td>
 </tr>
 </table>
 
@@ -65,28 +65,28 @@ ms.locfileid: "24103355"
 <td><strong>管理</strong>应用程序部署</td>
 <td>打开 Azure BizTalk 服务门户。 BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12、AS2 和 EDIFACT 协议。
 <br/><br/>
-这与“快速启动”<strong></strong>选项卡上的“创建合作伙伴协议”<strong></strong>相同。
+这与“快速启动”选项卡上的“创建合作伙伴协议”相同。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
 </tr>
 
 <tr>
 <td>访问控制命名空间的<strong>连接信息</strong></td>
 <td>选择“连接信息”时，会显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。 可以复制这些值。
 <br/><br/>
-还可打开访问控制门户。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">创建访问控制命名空间</a>提供与访问控制门户有关的详细信息。</td>
+还可打开访问控制门户。 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">创建访问控制命名空间</a>提供与访问控制门户有关的详细信息。</td>
 </tr>
 
 <tr>
 <td><strong>同步存储帐户中的密钥</strong></td>
-<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
+<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
 例如，希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
 <br/><br/>
 <ol>
-<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
 <li>选择存储帐户和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
-<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
 <li>选择存储帐户和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
@@ -122,7 +122,7 @@ ms.locfileid: "24103355"
 </tr>
 <tr>
 <td><strong>更新 SSL 证书</strong></td>
-<td>可以更新 BizTalk 服务以使用不同的 SSL 证书。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">创建 BizTalk 服务时</a>，系统会自动创建一个自签名 SSL 证书。</td>
+<td>可以更新 BizTalk 服务以使用不同的 SSL 证书。 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">创建 BizTalk 服务时</a>，系统会自动创建一个自签名 SSL 证书。</td>
 </tr>
 <tr>
 <td><strong>下载证书</strong></td>
@@ -130,11 +130,11 @@ ms.locfileid: "24103355"
 </tr>
 <tr>
 <td><strong>Status</strong></td>
-<td>显示 BizTalk 服务的当前状态。 请参阅 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk 服务：服务状态图表</a>。 </td>
+<td>显示 BizTalk 服务的当前状态。 请参阅 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk 服务：服务状态图表</a>。 </td>
 </tr>
 <tr>
 <td><strong>服务 URL</strong></td>
-<td>BizTalk 服务的 URL。 这与在创建 BizTalk 服务时输入的“域 URL”<strong></strong>相同。</td>
+<td>BizTalk 服务的 URL。 这与在创建 BizTalk 服务时输入的“域 URL”相同。</td>
 </tr>
 <tr>
 <td><strong>公共虚拟 IP (VIP) 地址</strong></td>
@@ -160,13 +160,13 @@ ms.locfileid: "24103355"
 <td><strong>跟踪数据库</strong></td>
 <td>存储 BizTalk 服务所使用的跟踪表的 Azure SQL 数据库名称。 
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">要求说明</a>提供有关跟踪数据库的详细信息。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">要求说明</a>提供有关跟踪数据库的详细信息。</td>
 </tr>
 <tr>
 <td><strong>监视/存档存储</strong></td>
 <td>存储 BizTalk 服务的监视输出的 Azure 存储帐户名称。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">要求说明</a>提供有关存储帐户的详细信息。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">要求说明</a>提供有关存储帐户的详细信息。</td>
 </tr>
 <tr>
 <td><strong>订阅名称</strong></td>
@@ -178,7 +178,7 @@ ms.locfileid: "24103355"
 </tr>
 </table>
 
-[BizTalk 服务：预配](http://go.microsoft.com/fwlink/p/?LinkID=302280)列出了用于创建 BizTalk 服务的步骤。
+[BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)列出了用于创建 BizTalk 服务的步骤。
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>任务栏中的“管理”、“连接信息”、“同步密钥”和“删除”：
 <table border="1">
@@ -187,9 +187,9 @@ ms.locfileid: "24103355"
 <td><strong>管理</strong>应用程序部署</td>
 <td>打开 Azure BizTalk 服务门户。 BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12、AS2 和 EDIFACT 协议。
 <br/><br/>
-这与“快速启动”<strong></strong>选项卡上的“创建合作伙伴协议”<strong></strong>相同。
+这与“快速启动”选项卡上的“创建合作伙伴协议”相同。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
 </tr>
 <tr>
 <td>访问控制命名空间的<strong>连接信息</strong></td>
@@ -197,18 +197,18 @@ ms.locfileid: "24103355"
 <br/><br/>
 还可打开访问控制门户。 此访问控制门户与左导航窗格中使用“Active Directory”选项相同。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制门户有关的详细信息。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制门户有关的详细信息。</td>
 </tr>
 <tr>
 <td><strong>同步存储帐户中的密钥</strong></td>
-<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”<strong></strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
+<td>创建存储帐户时，会自动创建主密钥和辅助密钥。 这些加密密钥可控制对存储帐户的访问。 BizTalk 服务自动使用主密钥。 “同步密钥”使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
 <br/><br/>
 例如，希望 BizTalk 服务为存储帐户使用新的主密钥。 为此，请按以下步骤操作：
 <br/><br/>
 <ol>
-<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”。 选择“辅助密钥”。 执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
 <li>选择存储帐户和“重新生成主密钥”。 请记住，BizTalk 服务正在使用辅助密钥。</li>
-<li>依次选择 BizTalk 服务和“同步密钥”<strong></strong>。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
+<li>依次选择 BizTalk 服务和“同步密钥”。 现在，选择“主密钥”。 这是重新生成的新主密钥。</li>
 <li>选择存储帐户和“重新生成辅助密钥”。</li>
 </ol>
 <br/>
@@ -346,7 +346,7 @@ ms.locfileid: "24103355"
 * [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](biztalk-editions-feature-chart.md)  
 * [BizTalk 服务：预配](biztalk-provision-services.md)  
 * [BizTalk 服务：BizTalk 服务状态图表](biztalk-service-state-chart.md)  
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [Quickstart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png

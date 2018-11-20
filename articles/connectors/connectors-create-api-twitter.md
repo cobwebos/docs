@@ -11,12 +11,12 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: eea70d979a69a4855b6eeb892d1705ecadaa8434
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918639"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230652"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
@@ -25,7 +25,7 @@ ms.locfileid: "42918639"
 * 监视、发布和搜索推文。
 * 获取诸如关注者、关注的用户、时间线之类的数据和其他数据。
 
-可以使用触发器从 Twitter 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Twitter 帐户执行任务的操作。 还可以让其他操作使用来自 Twitter 操作的输出。 例如，当出现具有特定井号标签的新推文时，你可以使用 Slack 连接器发送消息。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 Twitter 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Twitter 帐户执行任务的操作。 还可以让其他操作使用来自 Twitter 操作的输出。 例如，当出现具有特定井号标签的新推文时，你可以使用 Slack 连接器发送消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "42918639"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录到 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开你的逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 选择一个路径： 
 
@@ -66,7 +66,7 @@ ms.locfileid: "42918639"
 
 1. 如果提示你登录到 Twitter，请立即登录以便授权你的逻辑应用进行访问。
 
-1. 为所选触发器或操作提供必要的详细信息，并继续构建逻辑应用的工作流。
+1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
 ## <a name="examples"></a>示例
 
@@ -89,7 +89,7 @@ ms.locfileid: "42918639"
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

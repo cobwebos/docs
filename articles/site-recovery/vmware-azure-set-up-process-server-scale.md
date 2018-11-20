@@ -1,21 +1,20 @@
 ---
-title: 在 Azure 中设置进程服务器，以便使用 Azure Site Recovery 进行 VMware VM 和物理服务器故障回复 | Microsoft Docs
-description: 本文介绍如何在 Azure 中设置进程服务器，以便将 Azure VM 故障回复到 VMware。
-services: site-recovery
+title: 在 Azure 中设置进程服务器，以便在使用 Azure Site Recovery 进行 VMware VM 和物理服务器灾难恢复期间进行故障回复 | Microsoft Docs
+description: 本文介绍如何在 Azure 中设置进程服务器，以便在 VMware VM 和物理服务器灾难恢复期间从 Azure 故障回复到本地。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955367"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212227"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>设置额外的进程服务器以实现可伸缩性
+# <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
 
 默认情况下，当使用 [Site Recovery](site-recovery-overview.md) 将 VMware VM 或物理服务器复制到 Azure 时，进程服务器将安装在配置服务器计算机上，并且将用于协调 Site Recovery 和本地基础结构之间的数据传输。 若要增加容量并横向扩展复制部署，可以添加额外的独立进程服务器。 本文介绍如何执行此操作。
 

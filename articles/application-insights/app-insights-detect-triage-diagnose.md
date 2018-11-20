@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050232"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958893"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
@@ -231,6 +231,6 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 * [ASP.NET Web 应用程序](app-insights-asp-net.md)
 * [Java Web 应用程序](app-insights-java-get-started.md)
 * [Node.js Web 应用程序](app-insights-nodejs.md)
-* 在 [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) 或 [Azure](app-insights-azure.md) 上托管的已部署的应用。
+* 在 [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) 或 [Azure](app-insights-overview.md) 上托管的已部署的应用。
 * [网页](app-insights-javascript.md) - 单页应用或普通网页 - 单独使用此方法，或者将它与任何服务器选项结合使用。
 * [可用性测试](app-insights-monitor-web-app-availability.md)：通过公共 Internet 测试应用。

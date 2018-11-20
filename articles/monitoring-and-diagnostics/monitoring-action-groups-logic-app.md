@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74607f61482d4a96931e307e77b4a6d4c45e4c30
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576011"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420925"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -38,25 +38,25 @@ ms.locfileid: "45576011"
 
 1.  在 Azure 门户的左上角，选择“创建资源”。
 
-2.  搜索并选择“逻辑应用”，然后选择“创建”。
+2.  搜索并选择“逻辑应用”，然后选择“创建”。 **** ****
 
 3.  为逻辑应用指定**名称**，并选择一个**资源组**。
 
-    ![创建逻辑应用](media/monitoring-action-groups/create-logic-app-dialog.png "创建逻辑应用")
+    ![创建逻辑应用](media/monitoring-action-groups-logic-app/create-logic-app-dialog.png "创建逻辑应用")
 
 4.  选择“创建”以创建逻辑应用。 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。
 
 5.  选择触发器：“当收到 HTTP 请求时”。
 
-    ![逻辑应用触发器](media/monitoring-action-groups/logic-app-triggers.png "逻辑应用触发器")
+    ![逻辑应用触发器](media/monitoring-action-groups-logic-app/logic-app-triggers.png "逻辑应用触发器")
 
 6.  选择“编辑”更改 HTTP 请求触发器。
 
-    ![HTTP 请求触发器](media/monitoring-action-groups/http-request-trigger-shape.png "HTTP 请求触发器")
+    ![HTTP 请求触发器](media/monitoring-action-groups-logic-app/http-request-trigger-shape.png "HTTP 请求触发器")
 
 7.  选择“使用示例有效负载生成架构”。
 
-    ![使用示例有效负载](media/monitoring-action-groups/use-sample-payload-button.png "使用示例有效负载")
+    ![使用示例有效负载](media/monitoring-action-groups-logic-app/use-sample-payload-button.png "使用示例有效负载")
 
 8.  将以下示例架构复制并粘贴到对话框中。
 
@@ -99,15 +99,15 @@ ms.locfileid: "45576011"
 
 9. “逻辑应用设计器”将显示一个弹出窗口，提醒发送到逻辑应用的请求必须将 **Content-Type** 标头设置为 **application/json**。 关闭该弹出窗口。 Azure Monitor 警报将设置该标头。
 
-    ![设置 Content-Type 标头](media/monitoring-action-groups/content-type-header.png "设置 Content-Type 标头")
+    ![设置 Content-Type 标头](media/monitoring-action-groups-logic-app/content-type-header.png "设置 Content-Type 标头")
 
 10. 依次选择“+ 新建步骤”、“添加操作”。
 
-    ![添加操作](media/monitoring-action-groups/add-action.png "添加操作")
+    ![添加操作](media/monitoring-action-groups-logic-app/add-action.png "添加操作")
 
 11. 搜索并选择 Microsoft Teams 连接器。 选择“Microsoft Teams – 发布消息”操作。
 
-    ![Microsoft Teams 操作](media/monitoring-action-groups/microsoft-teams-actions.png "Microsoft Teams 操作")
+    ![Microsoft Teams 操作](media/monitoring-action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams 操作")
 
 12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对 Office 365 帐户进行身份验证。 选择要向其发送消息的“团队 ID”和“通道 ID”。
 
@@ -125,13 +125,13 @@ ms.locfileid: "45576011"
     > [!NOTE]
     > 有两个名为 **status** 的动态字段。 将这两个字段添加到消息。 使用 **activityLog** 属性包中的字段，并删除另一个字段。 将鼠标悬停在 **status** 字段上以查看完全限定的字段引用，如以下屏幕截图所示：
 
-    ![Microsoft Teams 操作：发布消息](media/monitoring-action-groups/teams-action-post-message.png "Microsoft Teams 操作：发布消息")
+    ![Microsoft Teams 操作：发布消息](media/monitoring-action-groups-logic-app/teams-action-post-message.png "Microsoft Teams 操作：发布消息")
 
 14. 在“逻辑应用设计器”的顶部，选择“保存”以保存逻辑应用。
 
 15. 打开现有的操作组并添加一个操作，以引用逻辑应用。 如果没有现有的操作组，请参阅[在 Azure 门户中创建和管理操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)以创建一个。 切勿忘记保存更改。
 
-    ![更新操作组](media/monitoring-action-groups/update-action-group.png "更新操作组")
+    ![更新操作组](media/monitoring-action-groups-logic-app/update-action-group.png "更新操作组")
 
 下次警报调用操作组时，将调用该逻辑应用。
 
@@ -192,7 +192,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      ![“服务运行状况有效负载条件”](media/monitoring-action-groups/service-health-payload-condition.png "服务运行状况有效负载条件")
+      ![“服务运行状况有效负载条件”](media/monitoring-action-groups-logic-app/service-health-payload-condition.png "服务运行状况有效负载条件")
 
    1. 在 **if true** 条件中，遵照[创建活动日志警报](#create-an-activity-log-alert-administrative)的步骤 11 到 13 中的说明添加 Microsoft Teams 操作。
 
@@ -209,7 +209,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        <p>[communication]</p>
        ```
 
-       ![“服务运行状况 true 条件下的发布操作”](media/monitoring-action-groups/service-health-true-condition-post-action.png "服务运行状况 true 条件下的发布操作")
+       ![“服务运行状况 true 条件下的发布操作”](media/monitoring-action-groups-logic-app/service-health-true-condition-post-action.png "服务运行状况 true 条件下的发布操作")
 
    1. 对于 **If false** 条件，请提供有用的消息：
 
@@ -219,7 +219,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       ![“服务运行状况 false 条件下的发布操作”](media/monitoring-action-groups/service-health-false-condition-post-action.png "服务运行状况 false 条件下的发布操作")
+       ![“服务运行状况 false 条件下的发布操作”](media/monitoring-action-groups-logic-app/service-health-false-condition-post-action.png "服务运行状况 false 条件下的发布操作")
 
 - 步骤 15 相同。 遵照说明保存逻辑应用并更新操作组。
 
@@ -279,15 +279,15 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
        - `schemaId == AzureMonitorMetricAlert`
        - `version == "2.0"`
        
-       ![“指标警报有效负载条件”](media/monitoring-action-groups/metric-alert-payload-condition.png "指标警报有效负载条件")
+       ![“指标警报有效负载条件”](media/monitoring-action-groups-logic-app/metric-alert-payload-condition.png "指标警报有效负载条件")
 
    1. 在 **if true** 条件中，添加 **For each** 循环和 Microsoft Teams 操作。 使用 HTML 和动态内容的组合定义消息。
 
-       ![“指标警报 true 件下的发布操作”](media/monitoring-action-groups/metric-alert-true-condition-post-action.png "指标警报 true 件下的发布操作")
+       ![“指标警报 true 件下的发布操作”](media/monitoring-action-groups-logic-app/metric-alert-true-condition-post-action.png "指标警报 true 件下的发布操作")
 
    1. 在 **If false** 条件中定义一个 Microsoft Teams 操作，以指出指标警报不符合逻辑应用的预期。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
 
-       ![“指标警报 false 条件下的发布操作”](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
+       ![“指标警报 false 条件下的发布操作”](media/monitoring-action-groups-logic-app/metric-alert-false-condition-post-action.png "指标警报 false 条件下的发布操作")
 
 - 步骤 15 相同。 遵照说明保存逻辑应用并更新操作组。
 

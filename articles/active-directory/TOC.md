@@ -302,8 +302,6 @@
 ##### [登录自定义开发的应用时出现的问题](manage-apps/application-sign-in-problem-custom-dev.md)
 ##### [登录本地应用时出现的问题 - 应用程序代理](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
-### [开发应用](active-directory-applications-guiding-developers-for-lob-applications.md)
-
 
 ## 管理目录
 ### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)

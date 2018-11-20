@@ -4,12 +4,16 @@ items:
 - name: 概述
   items:
   - name: 机器学习工作室
+    displayName: overview
     href: what-is-ml-studio.md
   - name: 机器学习工作室的功能
+    displayName: overview
     href: studio-overview-diagram.md
   - name: 机器学习工作室基础知识（信息图）
+    displayName: algorithm, algorithms
     href: basics-infographic-with-algorithm-examples.md
   - name: 常见问题
+    displayName: FAQ
     href: faq.md
   - name: 新增功能
     href: whats-new.md
@@ -17,6 +21,7 @@ items:
 - name: 入门
   items:
   - name: 创建第一个试验
+    displayName: quickstart
     href: create-experiment.md
   - name: 示例演练
     items:
@@ -31,8 +36,10 @@ items:
     - name: 4 - 训练和评估
       href: walkthrough-4-train-and-evaluate-models.md
     - name: 5 - 部署 Web 服务
+      displayName: publish
       href: walkthrough-5-publish-web-service.md
     - name: 6 - 访问 Web 服务
+      displayName: consume
       href: walkthrough-6-access-web-service.md
   - name: 适合初学者的数据科学
     items:
@@ -63,6 +70,7 @@ items:
       - name: 使用 ARM 进行部署
         href: deploy-with-resource-manager-template.md
       - name: 查看和删除 Studio 帐户数据
+        displayName: export
         href: export-delete-personal-data-dsr.md
   - name: 获取和了解数据
     items:
@@ -77,6 +85,7 @@ items:
       - name: 从试验
         href: import-data-from-an-experiment.md
       - name: 使用本地 SQL
+        displayName: on-premises
         href: use-data-from-an-on-premises-sql-server.md
   - name: 开发模型
     items:
@@ -87,6 +96,7 @@ items:
       - name: 管理试验迭代
         href: manage-experiment-iterations.md
       - name: 使用 PowerShell 创建模型
+        displayName: endpoint, endpoints
         href: create-models-and-endpoints-with-powershell.md
       - name: 选择算法
         items:
@@ -103,6 +113,7 @@ items:
         - name: 评估性能
           href: evaluate-model-performance.md
         - name: 优化参数
+          displayName: optimization
           href: algorithm-parameters-optimize.md
         - name: 解释结果
           href: interpret-model-results.md
@@ -117,20 +128,25 @@ items:
         - name: 执行 Python 脚本
           href: execute-python-scripts.md
   - name: 使模型可操作
+    displayName: deploy
     items:
     - name: 概述
+      displayName: deploy, consume, web service
       href: deploy-consume-web-service-guide.md
     - name: 部署模型
       items:
       - name: 部署 Web 服务
+        displayName: publish
         href: publish-a-machine-learning-web-service.md
       - name: 工作原理
         href: model-progression-experiment-to-web-service.md
       - name: 准备部署
         href: convert-training-experiment-to-scoring-experiment.md
       - name: 使用外部数据
+        displayName: import, export
         href: web-services-that-use-import-export-modules.md
       - name: 在多个区域中部署
+        displayName: multiple regions
         href: how-to-deploy-to-multiple-regions.md
       - name: 使用 Web 服务参数
         href: web-service-parameters.md
@@ -141,6 +157,7 @@ items:
       - name: 使用 Web 服务门户
         href: manage-new-webservice.md
       - name: 使用 API 进行管理
+        displayName: endpoint, endpoints
         href: manage-web-service-endpoints-using-api-management.md
       - name: 创建终结点
         href: create-endpoint.md
@@ -238,9 +255,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: b7c5cea35e8b1441bc8a08e8d8582141cd430868
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431519"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287585"

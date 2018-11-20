@@ -2,19 +2,19 @@
 title: 快速入门 Azure IoT Edge + Linux | Microsoft Docs
 description: 本快速入门介绍如何将预生成的代码远程部署到 IoT Edge 设备。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a774873872d4b41c4ef5c005946db6b2a1b4e39e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a392c4c20e54081ae5e4876b7c718759b8200ce5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955252"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566425"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 

@@ -1,22 +1,19 @@
 ---
-title: 将 Azure 虚拟机故障转移到另一个 Azure 区域时保留 IP 地址 | Microsoft Docs
-description: 介绍在使用 Azure Site Recovery 进行 Azure 到 Azure 的故障转移方案时如何保留 IP 地址
+title: 为 Azure VM 故障转移保留 IP 地址 | Microsoft Docs
+description: 介绍如何在使用 Azure Site Recovery 将用于灾难恢复的 Azure VM 故障转移到次要区域时保留 IP 地址
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353316"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213026"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>为 Azure 虚拟机故障转移保留 IP 地址
+# <a name="ip-address-retention-for-azure-vm-failover"></a>为 Azure VM 故障转移保留 IP 地址
 
 Azure Site Recovery 支持对 Azure VM 进行灾难恢复。 在从一个 Azure 区域故障转移到另一个区域时，客户通常需要保留其 IP 配置。 默认情况下，在目标区域中创建源虚拟网络和子网的结构时，Site Recovery 可模拟这些资源。 对于配置了静态专用 IP 地址的 Azure VM，Site Recovery 还会尽量尝试在目标 VM 上预配相同的专用 IP（如果该 IP 尚未由 Azure 资源或复制的 VM 阻止）。
 

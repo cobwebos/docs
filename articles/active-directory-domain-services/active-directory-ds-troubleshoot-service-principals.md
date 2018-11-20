@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579538"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035029"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
 
@@ -45,7 +45,7 @@ ms.locfileid: "39579538"
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [使用 PowerShell 重新创建缺少的服务主体](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [可自行更正的服务主体](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [重新注册到 Microsoft.AAD 命名空间](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>使用 PowerShell 重新创建缺失的服务主体
 如果 Azure AD 目录中缺少 ID 为 ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` 的服务主体，请按照以下步骤操作。
@@ -76,7 +76,7 @@ ms.locfileid: "39579538"
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>使用 Azure 门户重新注册到 Microsoft.AAD 命名空间
-如果 Azure AD 目录中缺少 ID 为 ```443155a6-77f3-45e3-882b-22b3a8d431fb``` 或 ```abba844e-bc0e-44b0-947a-dc74e5d09022``` 的服务主体，请按照以下步骤操作。
+如果 Azure AD 目录中缺少 ID 为 ```443155a6-77f3-45e3-882b-22b3a8d431fb```、```abba844e-bc0e-44b0-947a-dc74e5d09022``` 或 ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` 的服务主体，请按照以下步骤操作。
 
 **解决方法：** 请使用以下步骤还原目录上的域服务：
 
@@ -85,12 +85,6 @@ ms.locfileid: "39579538"
 3. 使用左侧的导航，选择“资源提供程序”
 4. 在表中搜索“Microsoft.AAD”并单击“重新注册”
 5. 请在两小时后查看托管域的运行状况页面，确保已解除警报。
-
-
-## <a name="service-principals-that-self-correct"></a>自动更正的服务主体
-如果 Azure AD 目录中缺少 ID 为 ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` 的服务主体，请按照以下步骤操作。
-
-**解决方法：** 如果此特定服务主体缺失、配置错误或已被删除，Azure AD 域服务可检测出来。 该服务会自动重新创建此服务主体。 但是，将需要删除应用程序和使用已删除应用程序的对象，因为当证书滚动更新时，新的服务主体将不再能够修改该应用程序和对象。 这将导致在域上出现新错误。 请按照 [AADDS105 部分](#alert-aadds105-password-synchronization-application-is-out-of-date)中所述的步骤来防止出现此问题。 然后，请在两小时后检查托管域的运行状况，确保已重新创建新服务主体。
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>警报 AADDS105：密码同步应用程序已过期
@@ -110,8 +104,8 @@ ms.locfileid: "39579538"
 2. 使用以下 PowerShell 命令删除旧的应用程序和对象
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```

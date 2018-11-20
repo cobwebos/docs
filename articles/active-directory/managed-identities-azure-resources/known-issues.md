@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295575"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913982"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -60,7 +60,7 @@ Azure 资源托管标识 VM 扩展目前仍可使用；但在以后，我们会�
 
 Azure IaaS 支持的所有 Linux 发行版都可以通过 IMDS 终结点与 Azure 资源托管标识配合使用。 
 
-注意：Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）仅支持以下 Linux 发行版：
+Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）仅支持以下 Linux 发行版：
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -124,16 +124,23 @@ Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不�
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>用户分配标识的已知问题
+### <a name="vm-extension-provisioning-fails"></a>VM 扩展预配失败
 
-- 用户分配标识分配仅可用于 VM 和 VMSS。 重要提示：用户分配的标识分配将在未来几个月内发生更改。
-- 在同一 VM/VMSS 上复制用户分配标识将导致 VM/VMSS 失败。 这包括使用不同大小写添加的标识。 例如 MyUserAssignedIdentity 和 myuserassignedidentity。 
-- 由于 DNS 查找失败，将 VM 扩展（计划在 2019 年 1 月弃用）预配到 VM 可能失败。 重新启动 VM，然后重试。 
-- 添加“不存在”的用户分配标识将会导致 VM 失败。 
-- 不支持在名称中使用特殊字符（即下划线）创建用户分配的标识。
-- 用于端到端方案中的用户分配标识名称限制为 24 个字符。 名称长度超过 24 个字符的用户分配标识将无法进行分配。
+由于 DNS 查找失败，VM 扩展的预配可能会失败。 重新启动 VM，然后重试。
+ 
+> [!NOTE]
+> VM 扩展计划在 2019 年 1 月前弃用。 我们建议你改为使用 IMDS 终结点。
+
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>在 Azure AD 目录之间转移订阅
+
+将订阅移动/转移到另一个目录时，托管标识不会更新。 因此，任何现存的系统分配的或用户分配的托管标识将被破坏。 
+
+作为一种解决方法，在订阅移动后，你可以禁用系统分配的托管标识并重新启用它们。 类似地，你可以删除并重新创建用户分配的任何托管标识。 
+
+## <a name="known-issues-with-user-assigned-managed-identities"></a>用户分配的托管标识的已知问题
+
+- 不支持创建名称中有特殊字符（即下划线）的用户分配托管标识。
+- 用户分配的标识名称限制为 24 个字符。 如果名称超过 24 个字符，则无法将该标识分配给资源（即虚拟机）。
 - 如果使用的是托管标识虚拟机扩展（计划在 2019 年 1 月弃用），则支持的限制为 32 个用户分配托管标识。 如果不使用托管标识虚拟机扩展，支持的限制为 512 个。  
-- 当添加第二个用户分配的标识时，clientID 可能无法用于 VM 扩展的请求令牌。 使用以下两个 bash 命令重新启动 Azure 资源托管标识 VM 扩展可缓解此问题：
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- 如果 VM 具有用户分配标识，但没有系统分配标识，则门户 UI 会显示已禁用 Azure 资源托管标识。 要启用系统分配的标识，请使用 Azure 资源管理器模板、Azure CLI 或 SDK。
+- 将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，你将无法请求该标识的令牌。 
+- 将订阅转移到另一个目录将破坏任何现存的用户分配的托管标识。 

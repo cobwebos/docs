@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: f68dadab96e27cc7b90f44681d87ffa7cce8126b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253493"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
@@ -71,7 +71,7 @@ ms.locfileid: "49390051"
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
 ### <a name="download-a-vhd-by-using-powershell"></a>使用 PowerShell 下载 VHD
-除了使用 Azure 门户，还可以使用 [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) cmdlet 来下载操作系统 VHD。
+除了使用 Azure 门户，还可以使用 [Save-AzureVhd](https://msdn.microsoft.com/library/dn495297.aspx) cmdlet 来下载操作系统 VHD。
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
@@ -139,7 +139,7 @@ ms.locfileid: "49390051"
 创建存储帐户和容器后，可以上传已准备好的 VHD。 可以使用 PowerShell、Linux 命令行工具或其他 Azure 存储管理工具。
 
 ### <a name="upload-a-vhd-via-powershell"></a>通过 PowerShell上传 VHD
-使用 [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) cmdlet。
+使用 [Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) cmdlet。
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 

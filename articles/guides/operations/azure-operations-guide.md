@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250775"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -227,7 +227,7 @@ RBAC 有多个可用于分配权限的内置角色。 要使用户成为 Azure �
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>使用价格计算器预测成本
 
-每项 Azure 服务的定价各不相同。 许多 Azure 服务提供基本、标准和高级层。 通常，每一层都有多个价格和性能级别。 可通过使用[联机价格计算器](http://azure.microsoft.com/pricing/calculator)来创建价格估计值。 使用该计算器，可灵活地估计单个资源或一组资源的成本。
+每项 Azure 服务的定价各不相同。 许多 Azure 服务提供基本、标准和高级层。 通常，每一层都有多个价格和性能级别。 可通过使用[联机价格计算器](https://azure.microsoft.com/pricing/calculator)来创建价格估计值。 使用该计算器，可灵活地估计单个资源或一组资源的成本。
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 

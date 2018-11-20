@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 39e11f35870fa3a3573e5f1af467cfbd898a1563
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182138"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006509"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -212,7 +212,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用运行状况检查重点区域建议
 
-在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要详细了解如何安装解决方案，请参阅[安装管理解决方案](log-analytics-add-solutions.md)。 安装完成后，可以通过使用 Azure 门户中工作区的“概述”页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
+在 Log Analytics 中使用运行状况检查解决方案之前，必须先安装该解决方案。 若要详细了解如何安装解决方案，请参阅[安装管理解决方案](../monitoring/monitoring-solutions.md)。 安装完成后，可以通过使用 Azure 门户中工作区的“概述”页上的“System Center Operations Manager 运行状况检查”磁贴来查看建议摘要。
 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
@@ -238,7 +238,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-queries.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
     ```
 
     >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
+    > 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-queries.md)，则上述查询会更改为如下所示。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [搜索日志](log-analytics-log-searches.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。
+- [搜索日志](log-analytics-queries.md)以了解如何分析详细的 System Center Operations Manager 运行状况检查数据和建议。

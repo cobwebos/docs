@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637791"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282812"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../azure-monitor/overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
 
 Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标](#metrics)和[日志](#logs)。 指标是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 日志包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
 
-![Azure Monitor 概述](../azure-monitor/media/overview/overview.png)
+![Azure Monitor 概述](media/monitoring-data-collection/overview.png)
 
 ## <a name="metrics"></a>度量值
 指标是数字值，用于描述系统某些方面在特定时间的情况。 指标是轻型数据，可以支持近实时方案。 不管值是否变化，指标都按固定的时间间隔进行收集。 指标可用于警报，因为它们可以频繁采样，而警报则可以使用相对简单的逻辑快速触发。 
@@ -98,7 +98,7 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 可以使用指标执行的任务包括：
 
 - 使用[指标资源管理器](../monitoring-and-diagnostics/monitoring-metric-charts.md)分析收集的指标，并在图表上绘制这些指标。 通过将图表固定到 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)来跟踪资源（例如 VM、网站或逻辑应用）的性能。
-- 配置指标[警报规则](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)，以便在指标超过阈值时发送通知或执行[自动化操作](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+- 配置指标[警报规则](../monitoring-and-diagnostics/alert-metric.md)，以便在指标超过阈值时发送通知或执行[自动化操作](../monitoring-and-diagnostics/monitoring-action-groups.md)。
 - 根据超过阈值的指标，使用[自动缩放](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)来增加或减少资源。
 - 将指标连同日志数据一起路由到 Log Analytics 以分析指标数据，并可将指标值存储 93 天以上。 
 - 将指标流式传输到[事件中心](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)或外部系统。
@@ -138,7 +138,7 @@ Azure Monitor 收集的日志存储在 Log Analytics 中。Log Analytics 从各�
 Log Analytics 可从 Azure 和本地资源中的各种源收集数据。 写入 Log Analytics 的数据源包括：
 
 - 来自 Azure 资源的[活动日志](../log-analytics/log-analytics-activity.md)（包括有关资源配置和运行状况的信息）和[诊断日志](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md)（提供资源操作的见解）。
-- [Windows](../log-analytics/log-analytics-windows-agent.md) 和 [Linux](../log-analytics/log-analytics-linux-agents.md) 虚拟机上的代理会根据所配置的[数据源](../log-analytics/log-analytics-data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Log Analytics。
+- [Windows](../log-analytics/log-analytics-windows-agent.md) 和 [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) 虚拟机上的代理会根据所配置的[数据源](../log-analytics/log-analytics-data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Log Analytics。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) 收集的应用程序数据。
 - 针对[监视解决方案](../monitoring/monitoring-solutions.md)中特定的应用程序或服务，或者 Container Insights、VM Insights 或 Resource Group Insights 等功能提供见解的数据。
 - [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)收集的安全数据。

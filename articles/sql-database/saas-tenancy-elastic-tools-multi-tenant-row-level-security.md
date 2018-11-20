@@ -7,17 +7,17 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056278"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242902"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
@@ -39,9 +39,9 @@ ms.locfileid: "47056278"
 
 ### <a name="prerequisites"></a>先决条件
 
-- 使用 Visual Studio（2012 或更高版本） 
-- 创建三个 Azure SQL 数据库 
-- 下载示例项目：[Azure SQL 的弹性数据库工具 - 多租户分片](http://go.microsoft.com/?linkid=9888163)
+- 使用 Visual Studio（2012 或更高版本）
+- 创建三个 Azure SQL 数据库
+- 下载示例项目：[Azure SQL 的弹性数据库工具 - 多租户分片](https://go.microsoft.com/?linkid=9888163)
   - 在 **Program.cs** 的开头填入数据库的信息 
 
 此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> 在复杂的项目中，可能需要在数百个表中添加谓词，这可能很单调乏味。 可以通过一个帮助程序存储过程来自动生成安全策略，并在架构的所有表中添加谓词。 有关详细信息，请参阅 [Apply Row-Level Security to all tables - helper script](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 - 帮助器脚本）博客中的文章。
+> 在复杂的项目中，可能需要在数百个表中添加谓词，这可能很单调乏味。 可以通过一个帮助程序存储过程来自动生成安全策略，并在架构的所有表中添加谓词。 有关详细信息，请参阅 [Apply Row-Level Security to all tables - helper script](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 - 帮助器脚本）博客中的文章。
 
 现在，如果再次运行示例应用程序，租户只能看到属于他们的行。 此外，应用程序只能插入当前已连接到分片数据库的租户的行，而不能插入属于其他租户的行。 而且，应用不能更新任何可见行中的 TenantId。 如果应用尝试执行上述任一操作，则会引发 DbUpdateException。
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>维护
 
 - **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则，不会筛选针对这些分片的查询。
-- **添加新表**：每当创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略， 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
+- **添加新表**：每当创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略， 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
 ## <a name="summary"></a>摘要
 
@@ -358,7 +358,7 @@ GO
 
 ## <a name="questions-and-feature-requests"></a>问题和功能请求
 
-如有问题，请在 [SQL 数据库论坛](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们。 可以向 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)提交功能请求。
+如有问题，请在 [SQL 数据库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)上联系我们。 可以向 [SQL 数据库反馈论坛](https://feedback.azure.com/forums/217321-sql-database/)提交功能请求。
 
 
 <!--Image references-->

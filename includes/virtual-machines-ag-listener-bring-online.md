@@ -1,10 +1,23 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226887"
+---
 1. 在故障转移群集管理器中，展开“角色”，并突出显示可用性组。  
 
 2. 在“资源”选项卡上，右键单击侦听器名称，并单击“属性”。
 
 3. 选择“依赖项”选项卡。如果列出了多个资源，请验证 IP 地址具有 OR 而不是 AND 依赖项。  
 
-4. 单击 **“确定”**。
+4. 单击“确定”。
 
 5. 右键单击侦听器名称，并单击“联机”。
 

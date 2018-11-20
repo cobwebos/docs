@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 833bb6838733395d83468be3d2960c7c237aa3fc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041368"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957669"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -178,7 +178,7 @@ ms.locfileid: "48041368"
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
       }
     },
     "location": {
@@ -518,9 +518,9 @@ Azure 快速入门模板库包含 Log Analytics 的多个模板，其中包括�
 * [使用 Log Analytics VM 扩展部署运行 Linux 的虚拟机](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [使用现有的 Log Analytics 工作区监视 Azure Site Recovery](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [使用现有的 Log Analytics 工作区监视 Azure Web 应用](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [将现有存储帐户添加到 OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [将现有存储帐户添加到 Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>后续步骤
-* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../virtual-machines/windows/extensions-oms.md)。
-* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../virtual-machines/linux/extensions-oms.md)。
+* [使用资源管理器模板将 Windows 代理部署到 Azure VM](../virtual-machines/extensions/oms-windows.md)。
+* [使用资源管理器模板将 Linux 代理部署到 Azure VM](../virtual-machines/extensions/oms-linux.md)。
 

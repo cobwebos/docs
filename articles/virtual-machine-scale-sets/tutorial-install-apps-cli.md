@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: bfeee293dfb86db2be8e799f60b5e025477293d5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 913d1b9125bcfa57334e70dcca44965fdb3d5ba6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465553"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242052"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：使用 Azure CLI 在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -49,7 +49,7 @@ ms.locfileid: "49465553"
 ## <a name="create-custom-script-extension-definition"></a>创建自定义脚本扩展定义
 若要查看自定义脚本扩展的运行方式，请创建一个可以安装 NGINX Web 服务器并输出规模集 VM 实例主机名的规模集。 以下自定义脚本扩展定义从 GitHub 下载示例脚本，安装所需的包，然后将 VM 实例主机名写入一个基本的 HTML 页面。
 
-在当前 shell 中，创建名为“customConfig.json”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 在 Cloud Shell 中输入 `sensible-editor cloudConfig.json`，以创建文件并查看可用编辑器的列表。
+在当前 shell 中，创建名为“customConfig.json”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 在 Cloud Shell 中输入 `sensible-editor customConfig.json`，以创建文件并查看可用编辑器的列表。
 
 ```json
 {

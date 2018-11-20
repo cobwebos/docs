@@ -3,7 +3,7 @@ title: 使用 Azure 安全中心管理 Endpoint Protection 问题 | Microsoft Do
 description: 了解如何在 Azure 安全中心内管理 Endpoint Protection 问题。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2017
-ms.author: terrylan
-ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 834e6f2519fe745004894f3791591a3d0aa5757c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229435"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
@@ -76,7 +76,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
 
 4. “未在 Azure VM 上安装 Endpoint Protection”下列出了没有安装反恶意软件的 Azure VM。  可以选择在列出的所有 VM 上安装反恶意软件，也可以逐个选择要安装反恶意软件的 VM，具体方法为单击特定的 VM。
 5. 在“选择 Endpoint Protection”下，选择要使用的 Endpoint Protection 解决方案。 在此示例中，选择“Microsoft 反恶意软件”。
-6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择**创建**。
+6. 将显示有关 Endpoint Protection 解决方案的其他信息。 选择“创建”。
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>在非 Azure 计算机上安装反恶意软件
 
@@ -110,7 +110,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

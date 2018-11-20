@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c9ed3f3511def085f5e0658bbcbd7978e3a7ce20
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079294"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212958"
 ---
 <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 ==============================
 
-本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择“通过 Azure 销售”，则必须通过 API 来订阅你的 SaaS 套餐。 若要生成不支持商务的普通 SaaS 列表，请参阅 [SaaS Application Technical Publishing Guide]./cloud-partner-portal-saas-offers-tech-publishing-guide.md)。
+本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择“通过 Azure 销售”，则必须通过 API 来订阅你的 SaaS 套餐。 若要生成不支持商务的普通 SaaS 列表，请参阅 [SaaS 应用程序技术发布指南](./cloud-partner-portal-saas-offers-tech-publishing-guide.md)。
 
 本文划分为两个部分：
 
@@ -214,7 +214,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
-| x-ms-activityid    | 是          | 唯一的字符串值，用于跟踪来自客户端的请求。 此值用于任何核对操作。 |
+| x-ms-activityid    | 是          | 唯一的字符串值，用于跟踪来自服务的请求。 此值用于任何核对操作。 |
 | Retry-After        | 否           | 仅为 429 响应设置此值。                                                                   |
 |  |  |  |
 

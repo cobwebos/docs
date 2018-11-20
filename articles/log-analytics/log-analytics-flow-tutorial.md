@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f09e523b70e541c724ea53d0bd47215ad44d623
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77d47b1f4946a8539b58b9335b967321b6bbf2e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041980"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259864"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Log Analytics 过程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  通过用于 Microsoft Flow 的 Azure Log Analytics 连接器，可构建包含 Log Analytics 中日志搜索检索到的数据的工作流。
@@ -29,7 +29,7 @@ ms.locfileid: "48041980"
 
 
 ## <a name="step-1-create-a-flow"></a>步骤 1：创建流
-1. 登录 [Microsoft Flow](http://flow.microsoft.com)，选择“我的流”。
+1. 登录 [Microsoft Flow](https://flow.microsoft.com)，选择“我的流”。
 2. 单击“从头开始创建”。
 
 ## <a name="step-2-create-a-trigger-for-your-flow"></a>步骤 2：为流创建触发器
@@ -79,7 +79,7 @@ ms.locfileid: "48041980"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Log Analytics 中的日志搜索](log-analytics-log-search-new.md)。
+- 详细了解 [Log Analytics 中的日志搜索](log-analytics-queries.md)。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
 
 

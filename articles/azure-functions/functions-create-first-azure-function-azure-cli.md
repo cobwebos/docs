@@ -6,18 +6,18 @@ keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
-ms.date: 09/10/2018
+ms.date: 11/13/2018
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 05b35ac182d70d6d7a7630a14c8a8aa3b7a6a9fd
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985992"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634305"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>通过命令行创建第一个函数
 
@@ -108,17 +108,18 @@ az functionapp create --resource-group myResourceGroup --consumption-plan-locati
 }
 ```
 
-## <a name="configure-the-function-app"></a>配置函数应用
+### <a name="configure-the-function-app-nodejs"></a>配置函数应用 (Node.js)
 
-Core Tools 2.x 版创建项目时使用的模板适用于 Azure Functions 2.x 运行时。 因此，需确保 2.x 版运行时在 Azure 中使用。 将 `FUNCTIONS_WORKER_RUNTIME` 应用程序设置为 `~2` 会将函数应用固定到最新的 2.x 版本。 使用 [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) 命令设置应用程序设置。
+创建 JavaScript 函数应用时，请务必以相应的 Node.js 版本为目标。 2.x 版的 Functions 运行时需要 Node.js 版本 8.x。 应用程序设置 `WEBSITE_NODE_DEFAULT_VERSION` 控制 Azure 中函数应用使用的 Node.js 版本。 使用 [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) 命令将 Node.js 版本设置为 `8.11.1`。
 
 在以下 Azure CLI 命令中，<app_name> 是函数应用的名称。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <app_name> \
---resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+az functionapp config appsettings set --resource-group myResourceGroup \
+ --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+验证输出中的新设置。
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +128,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

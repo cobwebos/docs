@@ -3,19 +3,19 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
-ms.openlocfilehash: e1f01a63de4d9b2eaf45fa2b83875db6b1770418
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a2c778f38c4a211f9a2ba1b73317478202adfcd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232675"
 ---
 <div id="main" class="v2">
     <div class="container">
         <h1 class="screenReader">Microsoft Azure 文档</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
-                <a href="http://aka.ms/azuredevgetstarted/">
+                <a href="https://aka.ms/azuredevgetstarted/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
@@ -3343,13 +3343,13 @@ ms.locfileid: "49388256"
                                                     <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">下载用于 Linux 的 Azure CLI</a>
+                                                    <a href="https://aka.ms/linux-azure-cli">下载用于 Linux 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">下载用于 Mac 的 Azure CLI</a>
+                                                    <a href="https://aka.ms/mac-azure-cli">下载用于 Mac 的 Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">下载用于 Windows 的 Azure CLI</a>
+                                                    <a href="https://aka.ms/webpi-azure-cli">下载用于 Windows 的 Azure CLI</a>
                                                 </p>
                                                 <p>
                                                     <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">参考</a>
@@ -3453,13 +3453,13 @@ ms.locfileid: "49388256"
                                                     <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">入门</a>
                                                 </p>
                                                 <p>
-                                                     <a  href="http://go.microsoft.com/fwlink/?LinkId=722418">适用于 Linux 的下载项</a>
+                                                     <a  href="https://go.microsoft.com/fwlink/?LinkId=722418">适用于 Linux 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708342">适用于 Mac 的下载项</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=708342">适用于 Mac 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://go.microsoft.com/fwlink/?LinkId=708343">适用于 Windows 的下载项</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=708343">适用于 Windows 的下载项</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3477,10 +3477,10 @@ ms.locfileid: "49388256"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://aka.ms/ptvs">Python 工具</a>
+                                                    <a href="https://aka.ms/ptvs">Python 工具</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://aka.ms/ptvsdocs">Visual Studio 入门</a>
+                                                    <a href="https://aka.ms/ptvsdocs">Visual Studio 入门</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://code.visualstudio.com/docs/python/python-tutorial">Visual Studio Code 入门</a>

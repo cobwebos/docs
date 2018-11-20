@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969438"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632554"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -34,6 +34,10 @@ Azure Database for MySQL 服务中创建的副本是新服务器，可以像常�
 ### <a name="pricing-tiers"></a>定价层
 
 只读副本当前仅适用于“常规用途”和“内存优化”的定价层。
+
+### <a name="master-server-restart"></a>主服务器重启
+
+在此预览期间，如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 ### <a name="stopping-replication"></a>停止复制
 
@@ -56,12 +60,15 @@ Azure Database for MySQL 服务中创建的副本是新服务器，可以像常�
 - 备份保留期
 - 备份冗余选项
 - MySQL 引擎版本
+- 防火墙规则
 
 创建副本服务器后，你可以更改定价层（基本除外）、计算代系、vCore 数、存储和独立于主服务器的备份保留。
 
 ### <a name="master-server-configuration"></a>主服务器配置
 
-如果已更新主服务器配置（例如 vCore 数或存储），则还应将副本服务器的配置更新为等值或更大的值。 如果没有更新，副本服务器可能无法与对主服务器所做的更改保持同步，并且可能会崩溃。 
+如果已更新主服务器配置（例如 vCore 数或存储），则还应将副本服务器的配置更新为等值或更大的值。 如果没有更新，副本服务器可能无法与对主服务器所做的更改保持同步，并且可能会崩溃。
+
+创建副本服务器后添加到主服务器的新防火墙规则不会复制到副本。 还应使用此新防火墙规则更新副本。
 
 ### <a name="deleting-the-master-server"></a>删除主服务器
 
@@ -83,7 +90,4 @@ Azure Database for MySQL 服务中创建的副本是新服务器，可以像常�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[使用 Azure 门户创建和管理只读副本](howto-read-replicas-portal.md)
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- 了解如何[使用 Azure CLI 创建和管理只读副本](howto-read-replicas-cli.md)

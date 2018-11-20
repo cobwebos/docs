@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318191"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346314"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>如何将模型从 Azure 机器学习服务部署到 Azure Kubernetes 服务
 
@@ -63,6 +63,9 @@ Azure Kubernetes 服务使用 Docker 映像。 若要创建映像，请使用以
 1. 若要配置映像，必须创建评分脚本和环境文件。 有关创建脚本和环境文件的示例，请参阅以下部分的图像分类示例：
 
     * [创建评分脚本 (score.py)](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > 评分脚本接收从客户端提交的数据并将其传递给模型进行评分。 记录脚本和模型所需的数据结构。 使用此文档可以在构建使用 Web 服务的客户端时更轻松。
 
     * [创建环境文件 (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+了解如何[使用部署为 Web 服务的 ML 模型](how-to-consume-web-service.md)。

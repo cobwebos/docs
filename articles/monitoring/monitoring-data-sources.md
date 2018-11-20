@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2018
+ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: b10236a1e0307c9464d58e50eb0c7b4e6a60b5e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a61ab73763dfedc2c0d10caf9fbc25f77ed0d21c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987746"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625041"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor 中的数据的来源
 本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](monitoring-data-collection.md)。
@@ -63,25 +63,26 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
 活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)。
 
-不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)以便重定向到其他服务，或者导出[到 Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
+不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../event-hubs/event-hubs-about.md)以便重定向到其他服务，或者导出[到 Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
 
 ### <a name="monitoring-solutions"></a>监视解决方案
- [监视解决方案](../monitoring/monitoring-solutions.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 这些解决方案将数据收集到 Log Analytics，以便在其中使用[查询语言](../log-analytics/log-analytics-log-search.md)或通常包括在解决方案中的[视图](../log-analytics/log-analytics-view-designer.md)对这些数据进行分析。
+ [监视解决方案](monitoring-solutions.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 这些解决方案将数据收集到 Log Analytics，以便在其中使用[查询语言](../log-analytics/log-analytics-queries.md)或通常包括在解决方案中的[视图](../log-analytics/log-analytics-view-designer.md)对这些数据进行分析。
 
 ## <a name="guest-operating-system"></a>来宾操作系统
 Azure 中的、其他云中的以及本地的计算资源都有要监视的来宾操作系统。 安装一个或多个代理以后，即可将来宾的遥测数据收集到与 Azure 服务本身相同的监视工具中。
 
 ![Azure 计算资源收集](media/monitoring-data-sources/compute-resource-collection.png)
 
-### <a name="diagnostic-extension"></a>诊断扩展
-使用 [Azure 诊断扩展](../monitoring-and-diagnostics/azure-diagnostics.md)，可以从 Azure 计算资源的客户端操作系统收集日志和性能数据。 从客户端收集的指标和日志存储在一个 Azure 存储帐户中，可以[将 Log Analytics 配置为从该帐户导入数据](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。  指标资源管理器了解如何从存储帐户读取数据，并会将客户端指标与其他收集的指标包括在一起。
-
+### <a name="azure-diagnostic-extension"></a>Azure 诊断扩展
+使用 Azure 诊断扩展，可以从 Azure 计算资源的客户端操作系统收集日志和性能数据，从而提供基本级别的监视。   
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
-可以将 Log Analytics 代理安装在任何 [Windows](../log-analytics/log-analytics-agent-windows.md) 或 [Linux]() 虚拟机或物理计算机上。 虚拟机可以在 Azure 中运行，也可以在其他云中或本地运行。  代理可以直接连接到 Log Analytics，也可以通过[连接的 System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)进行连接，适用于从配置的[数据源](../log-analytics/log-analytics-data-sources.md)收集数据，或者从[管理解决方案](../monitoring/monitoring-solutions.md)收集数据，以便提供在虚拟机上运行的应用程序的更多见解。
+Windows 或 Linux 虚拟机或物理计算机的全面监视和管理是通过 Log Analytics 代理提供的。 虚拟机可以在 Azure 中、其他云中或在本地运行，代理直接或通过 System Center Operations Manager 连接到 Log Analytics，并允许从你配置的[数据源](../log-analytics/log-analytics-data-sources.md)收集数据，或者从[监视解决方案](monitoring-solutions.md)收集数据，监视解决方案提供有关在虚拟机上运行的应用程序的更多见解。
 
-### <a name="service-map"></a>服务映射
-[服务映射](../operations-management-suite/operations-management-suite-service-map.md)要求在 Windows 和 Linux 虚拟机上有一个依赖项代理。 它可以与 Log Analytics 代理配合使用，用于收集在虚拟机上运行的进程的数据，以及收集外部进程上的依赖项的数据。 它将此数据存储在 Log Analytics 中，并且还包括一个控制台，可以直观地显示所收集的数据以及其他存储在 Log Analytics 中的数据。
+### <a name="dependency-agent"></a>依赖项代理
+[服务映射](../monitoring/monitoring-service-map.md)和[用于 VM 的 Azure Monitor](monitoring-vminsights-overview.md) 要求在 Windows 和 Linux 虚拟机上有一个依赖项代理。 它集成了 Log Analytics 代理，用于收集在虚拟机上运行的进程的已发现数据，以及外部进程依赖项的已发现数据。 它将此数据存储在 Log Analytics 中，并将发现的互连组件可视化。  
+
+若要进一步了解各个代理之间的差异以及根据你的监视要求应使用哪些代理，请参阅[监视代理概述](monitoring-overview-azure-agents.md)。
 
 ## <a name="applications"></a>应用程序
 除了可以通过应用程序将遥测数据写入到来宾操作系统中，还可以通过 [Application Insights](https://docs.microsoft.com/azure/application-insights/) 进行详细的应用程序监视。 Application Insights 可以从各种平台上运行的应用程序处收集数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。

@@ -1,24 +1,24 @@
 ---
-title: 将 Ambari Tez 视图与 HDInsight 配合使用 - Azure
-description: 了解如何使用 Ambari Tez 视图来调试 HDInsight 上的 Tez 作业。
+title: 将 Apache Ambari Tez 视图与 HDInsight 配合使用 - Azure
+description: 了解如何使用 Apache Ambari Tez 视图来调试 HDInsight 上的 Tez 作业。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108880"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034670"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>使用 Ambari 视图来调试 HDInsight 上的 Tez 作业
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>使用 Apache Ambari 视图来调试 HDInsight 上的 Apache Tez 作业
 
-适用于 HDInsight 的 Ambari Web UI 所含的 Tez 视图可用于了解和调试使用 Tez 的作业。 利用 Tez 视图，可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
+适用于 HDInsight 的 Apache Ambari Web UI 所含的 Apache Tez 视图可用于了解和调试使用 Tez 的作业。 利用 Tez 视图，可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -28,9 +28,9 @@ ms.locfileid: "43108880"
 * 基于 Linux 的 HDInsight 群集。 有关创建群集的步骤，请参阅[开始使用基于 Linux 的 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 支持 HTML5 的现代 Web 浏览器。
 
-## <a name="understanding-tez"></a>了解 Tez
+## <a name="understanding-apache-tez"></a>了解 Apache Tez
 
-Tez 是 Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 对于基于 Linux 的 HDInsight 群集来说，它是 Hive 的默认引擎。
+Tez 是 Apache Hadoop 中的一种可扩展数据处理框架，其处理速度比传统的 MapReduce 处理要快。 对于基于 Linux 的 HDInsight 群集来说，它是 Hive 的默认引擎。
 
 Tez 会创建一个有向无环图 (DAG)，用于描述作业所需的操作顺序。 单独的操作称为顶点，每个顶点执行完整作业的一部分。 实际执行顶点所描述的工作称为完成任务，任务可以分布在群集的多个节点中。
 

@@ -4,20 +4,30 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/31/2018
 ms.author: raynew
-ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945512"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413327"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
 ## <a name="troubleshoot-common-errors"></a>排查常见错误
 
 [Azure Migrate](migrate-overview.md) 会评估要迁移到 Azure 的本地工作负载。 使用本文内容来排查在部署和使用 Azure Migrate 期间出现的问题。
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>我使用了持续发现 OVA，但在本地环境中删除的 VM 仍然显示在门户中。
+
+持续发现设备仅持续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
+
+- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+
+   ![停止发现](./media/troubleshooting-general/stop-discovery.png)
+
+- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头”
 
@@ -41,19 +51,18 @@ ms.locfileid: "49945512"
 
    ![项目位置](./media/troubleshooting-general/geography-location.png)
 
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>我使用了持续发现 OVA，但在本地环境中删除的 VM 仍然显示在门户中。
-
-持续发现设备仅持续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
-
-1. 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
-
-2. 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
-
 ## <a name="collector-errors"></a>收集器错误
 
-### <a name="deployment-of-collector-ova-failed"></a>无法部署收集器 OVA
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate 收集器部署失败并出现错误：提供的清单文件无效：OVF 清单条目无效。
 
-如果未全部下载 OVA，或因浏览器原因（使用 vSphere Web 客户端部署 OVA 的话），可能会发生这种情况。 请确保完整下载 OVA，并尝试使用其他浏览器部署 OVA。
+1. 通过检查其哈希值，验证是否已正确下载 Azure Migrate 收集器 OVA 文件。 请参阅[本文](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)来验证哈希值。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
+2. 如果仍然失败，并且使用的是 VMware vSphere 客户端来部署 OVF，请尝试通过 vSphere Web 客户端对其进行部署。 如果仍然失败，请尝试使用其他 Web 浏览器。
+3. 如果使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 上部署，请按照以下步骤尝试直接在 ESXi 主机上部署 OVA：
+  - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server）
+  - 转到“主页”>“库存”
+  - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
+4. 如果部署仍然失败，请联系 Azure Migrate 支持部门。
+
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>收集器无法连接到 Internet
 
@@ -212,9 +221,8 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>收集器错误代码和建议的操作
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| 错误代码 | 错误名称                      | 消息                                                                       | 可能的原因                                                                                        | 建议的操作                                                                                                                          |
+| 错误代码 | 错误名称   | 消息   | 可能的原因 | 建议的操作  |
+| --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | 收集器已过期。                                                        | 收集器已过期。                                                                                    | 请下载新版本的收集器，然后重试。                                                                                      |
 | 751       | UnableToConnectToServer        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage;     | 检查错误消息以了解更多详细信息。                                                             | 解决问题，然后重试。                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | 服务器“%Name;”不是 vCenter Server。                                  | 请提供 vCenter Server 详细信息。                                                                       | 利用正确的 vCenter Server 详细信息，重试操作。                                                                                   |

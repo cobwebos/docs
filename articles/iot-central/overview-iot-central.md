@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628770"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158136"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,7 +25,7 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
-Microsoft Azure IoT Central 是一个完全托管的 IoT 软件即服务解决方案，可用来轻松创建对物理和电子世界进行连接的产品。 可以通过以下方式实现有关已连接产品的远景：
+Azure IoT Central 是一个完全托管的 IoT 软件即服务解决方案，可用来轻松创建对物理和电子世界进行连接的产品。 可以通过以下方式实现有关已连接产品的远景：
 
 - 通过已连接的设备提供新见解，来为客户提供更好的产品和体验。
 - 为组织创造新的业务机会。
@@ -42,7 +42,7 @@ Microsoft Azure IoT Central 是一个完全托管的 IoT 软件即服务解决�
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Microsoft-IoT-Central-intro-walkthrough/Player]
 
-本文的剩余部分概述了与 Azure IoT Central 相关的以下内容：
+本文的剩余部分概述了 Azure IoT Central：
 
 - 与项目关联的典型角色。
 - 如何创建应用程序。
@@ -65,7 +65,7 @@ Microsoft Azure IoT Central 是一个完全托管的 IoT 软件即服务解决�
 - 一个基于云的应用程序，它从设备接收遥测数据并使得你可以管理这些设备。
 - 运行自定义代码且连接到基于云的应用程序的多个设备。
 
-可以快速部署新的 Azure IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 Azure IoT Central 构建者可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”。 设备模板是基于该设备模板创建的所有设备共享的设备模型的蓝图。 设备模板定义一种设备的特征和行为，例如：
+可以快速部署新的 Azure IoT Central 应用程序，然后在浏览器中对其进行自定义以满足特定要求。 Azure IoT Central 构建者可以使用基于 Web 的工具为连接到应用程序的设备创建“设备模板”。 设备模板是设备模型的蓝图。 从同一设备模板创建的所有设备共享该模板。 设备模板定义一种设备的特征和行为，例如：
 
 - 它发送的遥测数据。
 - 操作员可以修改的业务属性。

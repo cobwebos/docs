@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406305"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238482"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure 数据目录入门
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md)（什么是 Azure 数据目录）。
@@ -96,7 +96,7 @@ Adventure Works 数据库支持一家虚构自行车制造商 (Adventure Works C
 安装 Adventure Works 示例数据库：
 
 1. 下载 CodePlex 上的 [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) 。
-2. 若要在计算机上还原数据库，请遵循 [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx)（使用 SQL Server Management Studio 还原数据库备份）中的说明，或遵循以下步骤：
+2. 若要在计算机上还原数据库，请遵循 [Restore a Database Backup by using SQL Server Management Studio](https://msdn.microsoft.com/library/ms177429.aspx)（使用 SQL Server Management Studio 还原数据库备份）中的说明，或遵循以下步骤：
    1. 打开 SQL Server Management Studio，并连接到 SQL Server 数据库引擎。
    2. 右键单击“数据库”，并单击“还原数据库”。
    3. 在“还原数据库”下面，单击“源”对应的“设备”选项，并单击“浏览”。

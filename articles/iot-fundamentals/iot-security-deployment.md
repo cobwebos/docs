@@ -1,6 +1,6 @@
 ---
-title: 保护物联网部署 | Microsoft Docs
-description: 本文详细说明如何保护 IoT 部署
+title: 保护 Azure 物联网 (IoT) 部署 | Microsoft Docs
+description: 本文详细说明如何保护 Azure IoT 部署
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 00acb08f567dbd50522d0e8a0b7b9a18a6658000
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b2d69f6ee24ced392da09585c9e934f647efbf14
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038056"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286871"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 88c152872ef8b571b8bc3e3f06ce486943e724b1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443522"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228872"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务零碎的 MP4 实时引入规范
 本规范适用于 Azure 媒体服务，描述基于分片 MP4 的实时传送视频流引入的协议和格式。 媒体服务提供实时传送视频流服务，让客户使用 Azure 作为云平台来实时流式传输实时事件和广播内容。 此外，本文档还介绍了有关构建高度冗余和稳健的实时引入机制的最佳实践。
@@ -38,7 +38,7 @@ ms.locfileid: "39443522"
 ![引入流][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3.位流格式 – ISO 14496-12 分片 MP4
-本文档所述的实时传送视频流引入的有线格式基于 [ISO-14496-12]。 若要深入了解分片 MP4 格式以及点播视频文件和实时传送视频流引入的扩展，请参阅 [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx)。
+本文档所述的实时传送视频流引入的有线格式基于 [ISO-14496-12]。 若要深入了解分片 MP4 格式以及点播视频文件和实时传送视频流引入的扩展，请参阅 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。
 
 ### <a name="live-ingest-format-definitions"></a>实时引入格式定义
 下表列出了适用于 Azure 媒体服务的实时引入的特殊格式定义：
@@ -111,7 +111,7 @@ ms.locfileid: "39443522"
 1. 建议编码器不要限制在发生 TCP 错误后，重新尝试创建连接或恢复流式传输的次数。
 1. 发生 TCP 错误后：
   
-    a. 必须关闭当前连接，并且必须为新的 HTTP POST 请求创建新的连接。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 必须关闭当前连接，并且必须为新的 HTTP POST 请求创建新的连接。
 
     b. 新的 HTTP POST URL 必须与初始 POST URL 相同。
   
@@ -161,7 +161,7 @@ ms.locfileid: "39443522"
 1. 在“实时服务器清单框”中，“manifestOutput”必须设置为“true”。
 1. 根据信号事件的稀疏性质，建议如下：
    
-    a. 实时事件开始时，编码器会将初始标头框发送给服务，使服务可以在客户端清单中注册稀疏轨迹。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 实时事件开始时，编码器会将初始标头框发送给服务，使服务可以在客户端清单中注册稀疏轨迹。
    
     b. 未发送数据时，编码器应该终止 HTTP POST 请求。 不发送数据的长时间运行 HTTP POST 可以防止媒体服务在服务更新或服务器重新启动事件中很快与编码器断开连接。 在这些情况下，在套接字上的接收操作中，会暂时阻止媒体服务器。
    

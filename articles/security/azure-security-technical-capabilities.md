@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405559"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249024"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -238,7 +238,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 大多数服务应尝试利用存储资源提供程序的加密功能。 某些服务必须进行显式加密，例如，所有持久化密钥材料（证书、根密钥/主密钥）都必须存储在 Key Vault 中。
 
-如果你支持使用客户托管密钥进行服务端加密，则需要让客户能够通过某种方式向我们提供密钥。 支持的推荐方式是与 Azure Key Vault (AKV) 集成。 在此情况下，客户可以在 Azure Key Vault 中添加和管理其密钥。 客户可以通过 [Key Vault 入门](http://go.microsoft.com/fwlink/?linkid=521402)了解如何使用 AKV。
+如果你支持使用客户托管密钥进行服务端加密，则需要让客户能够通过某种方式向我们提供密钥。 支持的推荐方式是与 Azure Key Vault (AKV) 集成。 在此情况下，客户可以在 Azure Key Vault 中添加和管理其密钥。 客户可以通过 [Key Vault 入门](https://go.microsoft.com/fwlink/?linkid=521402)了解如何使用 AKV。
 
 若要与 Azure Key Vault 集成，可以添加代码，以便从 AKV 请求需要用于解密的密钥。
 
@@ -283,7 +283,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 - 创建可反映业务要求的[自定义模板](https://technet.microsoft.com/library/dn642472.aspx)。 例如：最高机密数据的模板应在所有最高机密相关的电子邮件中应用。
 
-[数据分类](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织将无法获取业务见解、监控滥用，以及防止文件被恶意访问。
+[数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏。 没有适当的文件保护，组织将无法获取业务见解、监控滥用，以及防止文件被恶意访问。
 
 > [!Note]
 > 有关 Azure RMS 的详细信息，请阅读 [Getting Started with Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx)（Azure Rights Management 入门）一文。
@@ -408,7 +408,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) 通过将托管资源的数据收集到中心存储库来提供监视服务。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

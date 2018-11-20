@@ -1,239 +1,112 @@
 ---
-title: 教程：使用适用于 C# 的自定义视觉 SDK 创建对象检测项目 - 自定义视觉服务
+title: 快速入门：使用适用于 C# 的自定义视觉 SDK 创建对象检测项目
 titlesuffix: Azure Cognitive Services
-description: 创建项目、添加标记、上传图像、训练项目并使用默认终结点进行预测。
+description: 使用 .NET SDK 和 C# 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/07/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 926e9feaa5061c84ce8de6d828da820e133700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958493"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278854"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>教程：使用适用于 C# 的自定义视觉 SDK 创建对象检测项目
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建对象检测项目
 
-了解如何使用采用了计算机视觉 API 的基本 Windows 应用程序来创建对象检测项目。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此开放源代码示例作为模板，使用自定义视觉 API 构建自己的 Windows 应用。
+本文提供信息和示例代码，以帮助你开始通过 C# 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 .NET 应用程序的模板。 
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="get-the-custom-vision-sdk-and-samples"></a>获取自定义视觉 SDK 和示例
-若要构建此示例，需要具有以下自定义视觉 SDK NuGet 包：
+- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)
+
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
+若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些都包括在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-你可以下载图像以及 [C# 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision)。
+克隆或下载[认知服务 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)项目。 导航到 **CustomVision/ObjectDetection** 文件夹，在 Visual Studio 中打开 ObjectDetection.csproj_。
 
-## <a name="get-the-training-and-prediction-keys"></a>获取定型和预测密钥
+此 Visual Studio 项目创建新的名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它将上传图像以训练和测试对象检测模型。 在此项目中，将训练模型来检测图像中的叉子和剪刀。
 
-若要获取此示例中使用的密钥，请访问[自定义影像网页](https://customvision.ai)并选择右上角齿轮图标。 在“帐户”部分中，复制“定型密钥”和“预测密钥”字段中的值。
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-![密钥 UI 的图像](./media/csharp-tutorial/training-prediction-keys.png)
+## <a name="understand-the-code"></a>了解代码
 
-## <a name="step-1-create-a-console-application"></a>步骤 1：创建控制台应用程序
+打开 _Program.cs_ 文件并检查代码。 在 **Main** 方法的相应定义中插入订阅密钥。
 
-在此步骤中，创建一个控制台应用程序，并准备此示例所需的定型密钥和图像：
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=18-27)]
 
-1. 启动 Visual Studio 2015 Community Edition。 
-2. 创建一个新的控制台应用程序。
-3. 添加对以下两个 nuget 包的引用：
-    * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training
-    * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction
+### <a name="create-a-new-custom-vision-service-project"></a>创建新的自定义视觉服务项目
 
-4. 将 **Program.cs** 的内容替换为下面的代码。
+随后的代码创建对象检测项目。 创建的项目将显示在以前访问过的[自定义视觉网站](https://customvision.ai/)上。 
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training;
-using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=29-35)]
 
-namespace SampleObjectDetection
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Add your training key from the settings page of the portal
-            string trainingKey = "<your key here>";
+### <a name="add-tags-to-the-project"></a>将标记添加到项目中
 
-            // Create the Api, passing in the training key
-            TrainingApi trainingApi = new TrainingApi() { ApiKey = trainingKey };
-        }        
-    }
-}
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=37-39)]
+
+### <a name="upload-and-tag-images"></a>上传和标记图像
+
+在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。 以下代码将每个示例图像与其标记的区域相关联。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=41-84)]
+
+然后，使用此关联映射上传每个示例图像及其区域坐标。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=86-104)]
+
+现在，所有示例图像都已上传，每个图像都有一个标记（**叉子**或**剪刀**），并且有一个与该标记对应的关联的像素矩形。
+
+### <a name="train-the-project"></a>定型项目
+
+此代码将在项目中创建第一个训练迭代。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=106-117)]
+
+### <a name="set-the-current-iteration-as-default"></a>将当前迭代设置为默认迭代
+
+此代码将当前迭代标记为默认迭代。 默认迭代反映了将响应预测请求的模型版本。 每次重新训练模型时都应更新此版本。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=119-124)]
+
+### <a name="create-a-prediction-endpoint"></a>创建预测终结点
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=126-131)]
+
+### <a name="use-the-prediction-endpoint"></a>使用预测终结点
+
+此部分的脚本用于加载测试图像、查询模型终结点，以及将预测数据输出到控制台。
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=133-145)]
+
+## <a name="run-the-application"></a>运行应用程序
+
+应用程序运行时，会打开一个控制台窗口并写入以下输出：
+
 ```
+Creating new project:
+        Training
+Done!
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>步骤 2：创建自定义影像服务项目
-
-若要创建新的自定义影像服务项目，请将以下代码添加到 **Main()** 方法的末尾。
-
-```csharp
-    // Find the object detection domain
-    var domains = trainingApi.GetDomains();
-    var objDetectionDomain = domains.FirstOrDefault(d => d.Type == "ObjectDetection");
-
-    // Create a new project
-    Console.WriteLine("Creating new project:");
-    var project = trainingApi.CreateProject("My New Project", null, objDetectionDomain.Id);
+Making a prediction:
+        fork: 98.2% [ 0.111609578, 0.184719115, 0.6607002, 0.6637112 ]
+        scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
+然后，可以验证测试图像（在 **Images/Test/** 中找到）是否已正确标记，并验证检测区域是否正确。 此时，可以按任意键退出应用程序。
 
-## <a name="step-3-add-tags-to-your-project"></a>步骤 3：向项目中添加标记
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-若要向项目中添加标记，请在对 **CreateProject()** 的调用后插入以下代码：
+## <a name="next-steps"></a>后续步骤
 
-```csharp
-    // Make two tags in the new project
-    var forkTag = trainingApi.CreateTag(project.Id, "fork");
-    var scissorsTag = trainingApi.CreateTag(project.Id, "scissors");
-```
+现在你已了解如何在代码中完成对象检测过程的每一步。 此示例执行单次训练迭代，但通常需要多次训练和测试模型，以使其更准确。 以下指南涉及图像分类，但其原理与对象检测类似。
 
-## <a name="step-4-upload-images-to-the-project"></a>步骤 4：将图像上传到项目
-
-对于对象检测项目，我们需要使用规范化坐标和标记来标识对象的区域。 若要添加图像和标记的区域，请在 **Main()** 方法的末尾插入以下代码：
-
-```csharp
-    Dictionary<string, double[]> fileToRegionMap = new Dictionary<string, double[]>()
-    {
-        // The bounding box is specified in normalized coordinates.
-        //  Normalized Left = Left / Width (in Pixels)
-        //  Normalized Top = Top / Height (in Pixels)
-        //  Normalized Bounding Box Width = (Right - Left) / Width (in Pixels)
-        //  Normalized Bounding Box Height = (Bottom - Top) / Height (in Pixels)
-        // FileName, Left, Top, Width, Height of the bounding box.
-        {"scissors_1", new double[] { 0.4007353, 0.194068655, 0.259803921, 0.6617647 } },
-        {"scissors_2", new double[] { 0.426470578, 0.185898721, 0.172794119, 0.5539216 } },
-        {"scissors_3", new double[] { 0.289215684, 0.259428144, 0.403186262, 0.421568632 } },
-        {"scissors_4", new double[] { 0.343137264, 0.105833367, 0.332107842, 0.8055556 } },
-        {"scissors_5", new double[] { 0.3125, 0.09766343, 0.435049027, 0.71405226 } },
-        {"scissors_6", new double[] { 0.379901975, 0.24308826, 0.32107842, 0.5718954 } },
-        {"scissors_7", new double[] { 0.341911763, 0.20714055, 0.3137255, 0.6356209 } },
-        {"scissors_8", new double[] { 0.231617644, 0.08459154, 0.504901946, 0.8480392 } },
-        {"scissors_9", new double[] { 0.170343131, 0.332957536, 0.767156839, 0.403594762 } },
-        {"scissors_10", new double[] { 0.204656869, 0.120539248, 0.5245098, 0.743464053 } },
-        {"scissors_11", new double[] { 0.05514706, 0.159754932, 0.799019635, 0.730392158 } },
-        {"scissors_12", new double[] { 0.265931368, 0.169558853, 0.5061275, 0.606209159 } },
-        {"scissors_13", new double[] { 0.241421565, 0.184264734, 0.448529422, 0.6830065 } },
-        {"scissors_14", new double[] { 0.05759804, 0.05027781, 0.75, 0.882352948 } },
-        {"scissors_15", new double[] { 0.191176474, 0.169558853, 0.6936275, 0.6748366 } },
-        {"scissors_16", new double[] { 0.1004902, 0.279036, 0.6911765, 0.477124184 } },
-        {"scissors_17", new double[] { 0.2720588, 0.131977156, 0.4987745, 0.6911765 } },
-        {"scissors_18", new double[] { 0.180147052, 0.112369314, 0.6262255, 0.6666667 } },
-        {"scissors_19", new double[] { 0.333333343, 0.0274019931, 0.443627447, 0.852941155 } },
-        {"scissors_20", new double[] { 0.158088237, 0.04047389, 0.6691176, 0.843137264 } },
-        {"fork_1", new double[] { 0.145833328, 0.3509314, 0.5894608, 0.238562092 } },
-        {"fork_2", new double[] { 0.294117659, 0.216944471, 0.534313738, 0.5980392 } },
-        {"fork_3", new double[] { 0.09191177, 0.0682516545, 0.757352948, 0.6143791 } },
-        {"fork_4", new double[] { 0.254901975, 0.185898721, 0.5232843, 0.594771266 } },
-        {"fork_5", new double[] { 0.2365196, 0.128709182, 0.5845588, 0.71405226 } },
-        {"fork_6", new double[] { 0.115196079, 0.133611143, 0.676470637, 0.6993464 } },
-        {"fork_7", new double[] { 0.164215669, 0.31008172, 0.767156839, 0.410130739 } },
-        {"fork_8", new double[] { 0.118872553, 0.318251669, 0.817401946, 0.225490168 } },
-        {"fork_9", new double[] { 0.18259804, 0.2136765, 0.6335784, 0.643790841 } },
-        {"fork_10", new double[] { 0.05269608, 0.282303959, 0.8088235, 0.452614367 } },
-        {"fork_11", new double[] { 0.05759804, 0.0894935, 0.9007353, 0.3251634 } },
-        {"fork_12", new double[] { 0.3345588, 0.07315363, 0.375, 0.9150327 } },
-        {"fork_13", new double[] { 0.269607842, 0.194068655, 0.4093137, 0.6732026 } },
-        {"fork_14", new double[] { 0.143382356, 0.218578458, 0.7977941, 0.295751631 } },
-        {"fork_15", new double[] { 0.19240196, 0.0633497, 0.5710784, 0.8398692 } },
-        {"fork_16", new double[] { 0.140931368, 0.480016381, 0.6838235, 0.240196079 } },
-        {"fork_17", new double[] { 0.305147052, 0.2512582, 0.4791667, 0.5408496 } },
-        {"fork_18", new double[] { 0.234068632, 0.445702642, 0.6127451, 0.344771236 } },
-        {"fork_19", new double[] { 0.219362751, 0.141781077, 0.5919118, 0.6683006 } },
-        {"fork_20", new double[] { 0.180147052, 0.239820287, 0.6887255, 0.235294119 } }
-    };
-
-    // Add all images for fork
-    var imagePath = Path.Combine("Images", "fork");
-    var imageFileEntries = new List<ImageFileCreateEntry>();
-    foreach (var fileName in Directory.EnumerateFiles(imagePath))
-    {
-        var region = fileToRegionMap[Path.GetFileNameWithoutExtension(fileName)];
-        imageFileEntries.Add(new ImageFileCreateEntry(fileName, File.ReadAllBytes(fileName), null, new List<Region>(new Region[] { new Region(forkTag.Id, region[0], region[1], region[2], region[3]) })));
-    }
-    trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
-
-    // Add all images for scissors
-    imagePath = Path.Combine("Images", "scissors");
-    imageFileEntries = new List<ImageFileCreateEntry>();
-    foreach (var fileName in Directory.EnumerateFiles(imagePath))
-    {
-        var region = fileToRegionMap[Path.GetFileNameWithoutExtension(fileName)];
-        imageFileEntries.Add(new ImageFileCreateEntry(fileName, File.ReadAllBytes(fileName), null, new List<Region>(new Region[] { new Region(scissorsTag.Id, region[0], region[1], region[2], region[3]) })));
-    }
-    trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
-```
-
-## <a name="step-5-train-the-project"></a>步骤 5：训练项目
-
-现在，你已向项目中添加了标记和图像，可以对其进行定型了： 
-
-1. 在 **Main()** 的末尾插入以下代码。 这将在项目中创建第一个迭代。
-2. 将此迭代标记为默认迭代。
-
-```csharp
-    // Now there are images with tags start training the project
-    Console.WriteLine("\tTraining");
-    var iteration = trainingApi.TrainProject(project.Id);
-
-    // The returned iteration will be in progress, and can be queried periodically to see when it has completed
-    while (iteration.Status != "Completed")
-    {
-        Thread.Sleep(1000);
-
-        // Re-query the iteration to get its updated status
-        iteration = trainingApi.GetIteration(project.Id, iteration.Id);
-    }
-
-    // The iteration is now trained. Make it the default project endpoint
-    iteration.IsDefault = true;
-    trainingApi.UpdateIteration(project.Id, iteration.Id, iteration);
-    Console.WriteLine("Done!\n");
-```
-
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>步骤 6：获取并使用默认预测终结点
-
-现在，你已准备就绪，可以使用模型进行预测了： 
-
-1. 通过在 **Main()** 的末尾插入以下代码，获取与默认迭代关联的终结点。 
-2. 使用该终结点向项目发送一个测试图像。
-
-```csharp
-    // Now there is a trained endpoint, it can be used to make a prediction
-
-    // Add your prediction key from the settings page of the portal
-    // The prediction key is used in place of the training key when making predictions
-    string predictionKey = "<your key here>";
-
-    // Create a prediction endpoint, passing in the obtained prediction key
-    PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
-
-    // Make a prediction against the new project
-    Console.WriteLine("Making a prediction:");
-    var imageFile = Path.Combine("Images", "test", "test_image.jpg");
-    using (var stream = File.OpenRead(imageFile))
-    {
-        var result = endpoint.PredictImage(project.Id, File.OpenRead(imageFile));
-
-        // Loop over each prediction and write out the results
-        foreach (var c in result.Predictions)
-        {
-            Console.WriteLine($"\t{c.TagName}: {c.Probability:P1} [ {c.BoundingBox.Left}, {c.BoundingBox.Top}, {c.BoundingBox.Width}, {c.BoundingBox.Height} ]");
-        }
-    }
-```
-
-## <a name="step-7-run-the-example"></a>步骤 7：运行示例
-
-生成并运行解决方案。 预测结果将显示在控制台上。
+> [!div class="nextstepaction"]
+> [测试和重新训练模型](test-your-model.md)

@@ -4,16 +4,16 @@ description: 介绍 Azure Policy 如何使用资源策略定义，通过描述�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067528"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283284"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -23,10 +23,10 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- mode
-- parameters
+- 模式
+- 参数
 - 显示名称
-- description
+- 说明
 - 策略规则
   - 逻辑评估
   - 效果
@@ -123,12 +123,12 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="definition-location"></a>定义位置
 
-创建计划或策略定义时，指定定义位置非常重要。
+创建计划或策略时，需要指定定义位置。 定义位置必须是一个管理组或订阅，并且决定了可以将计划或策略分配到的范围。 资源必须是用于分配的目标定义位置的层次结构中的直系成员或子代。
 
-定义位置确定计划或策略定义可分配到的范围。 位置可以指定为管理组或订阅。
+如果定义位置是：
 
-> [!NOTE]
-> 若要将此策略定义应用到多个订阅，则位置必须是计划或策略要分配到的订阅所在的管理组。
+- **订阅** - 只能将该订阅中的资源分配给策略。
+- **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则位置必须是包含那些订阅的管理组。
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
@@ -146,7 +146,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -200,7 +200,7 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 使用 like 和 notLike 条件时，可以在值中指定通配符 `*`。
 值不得包含多个通配符 `*`。
 
-当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](../samples/allow-multiple-name-patterns.md)。
+当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供 `.` 来匹配所有字符，并提供任何其他字符来表示该实际字符。 例如，请参阅[允许多名称模式](../samples/allow-multiple-name-patterns.md)。
 
 ### <a name="fields"></a>字段
 
@@ -228,11 +228,12 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 
 策略支持以下类型的效果：
 
-- **Deny**：会在审核日志中生成一个事件，并使请求失败
-- **Audit**：会在审核日志中生成一个警告事件，但不会使请求失败
+- **Deny**：会在活动日志中生成一个事件，并使请求失败
+- **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
 - **Append**：会将定义的字段集添加到请求
 - **AuditIfNotExists**：如果资源不存在，则启用审核
-- **DeployIfNotExists**：如果资源不存在，则部署一个资源。
+- **DeployIfNotExists**：如果资源不存在，则部署一个资源
+- **Disabled**：不评估资源是否符合策略规则
 
 对于 **append**，必须提供以下详细信息：
 
@@ -247,6 +248,18 @@ Azure Policy 使用的资源策略定义，可使你通过描述何时强制实�
 值可以是字符串或 JSON 格式对象。
 
 借助 AuditIfNotExists 和 DeployIfNotExists，可以评估相关资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。 有关未部署虚拟机扩展时的审核示例，请参阅[如果扩展不存在，则进行审核](../samples/audit-ext-not-exist.md)。
+
+**DeployIfNotExists** 效果需要策略规则的 **details** 部分中的 **roleDefinitionId** 属性。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解策略效果](effects.md)。
 

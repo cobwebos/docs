@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6743d03b623084675f5043a7e158fa99e8aa39d2
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053999"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016312"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -35,10 +35,10 @@ ms.locfileid: "44053999"
 ## <a name="archive-the-activity-log-using-the-portal"></a>使用门户存档活动日志
 1. 在门户中，单击左侧导航中的“活动日志”链接。 如果看不到活动日志的链接，请先单击“所有服务”链接。
    
-    ![导航到“活动日志”边栏选项卡](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
-2. 在边栏选项卡顶部单击“导出”。
+    ![导航到“活动日志”边栏选项卡](media/monitoring-archive-activity-log/activity-logs-portal-navigate-v2.png)
+2. 在边栏选项卡顶部单击“导出到事件中心”。
    
-    ![单击“导出”按钮](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+    ![单击“导出”按钮](media/monitoring-archive-activity-log/activity-logs-portal-export-v2.png)
 3. 在显示的边栏选项卡中，选中与“导出到存储帐户”相对应的框，并选择存储帐户。
    
     ![设置存储帐户](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
@@ -172,7 +172,7 @@ insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0
 | identity |描述授权和声明的 JSON blob。 |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”、“Informational”和“Verbose” |
-| location |位置所在的区域（或全局）。 |
+| 位置 |位置所在的区域（或全局）。 |
 | 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 
 > [!NOTE]

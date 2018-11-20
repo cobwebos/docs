@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: feb9547b004141a3c1d02ef4b356b9d00b74fc95
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902349"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288860"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -56,7 +56,7 @@ ms.locfileid: "48902349"
 
 ## <a name="required-network-resources"></a>所需的网络资源
 
-将容器组部署到虚拟网络需要三个 Azure 虚拟网络资源：[虚拟网络](#virtual-network)本身、虚拟网络中[委托的子网](#subnet-delegated)，以及[网络配置文件](#network-profile)。
+将容器组部署到虚拟网络需要三个 Azure 虚拟网络资源：[虚拟网络](#virtual-network)本身、虚拟网络中[委托的子网](#subnet-delegated)，以及[网络配置文件](#network-profile)。 
 
 ### <a name="virtual-network"></a>虚拟网络
 
@@ -70,15 +70,17 @@ ms.locfileid: "48902349"
 
 ### <a name="network-profile"></a>网络配置文件
 
-网络配置文件是 Azure 资源的网络配置模板。 它指定资源的某些网络属性，例如，该资源应部署到哪个子网。 首次将容器组部署到某个子网（因此也会部署到相关的虚拟网络）时，Azure 会自动创建一个网络配置文件。 以后在部署到该子网时，可以使用该网络配置文件。
+网络配置文件是 Azure 资源的网络配置模板。 它指定资源的某些网络属性，例如，该资源应部署到哪个子网。 首次使用 [az container create][az-container-create] 命令将容器组部署到某个子网（并因此部署到虚拟网络）时，Azure 会自动创建一个网络配置文件。 以后在部署到该子网时，可以使用该网络配置文件。 
+
+若要使用资源管理器模板、YAML 文件或编程方法将容器组部署到子网，则需要提供网络配置文件的完整资源管理器资源 ID。 可以使用以前使用 [az container create][az-container-create] 创建的配置文件，也可以使用资源管理模板创建配置文件（请参阅[参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)）。 若要获取以前创建的配置文件的 ID，请使用 [az network profile list][az-network-profile-list] 命令。 
 
 在下图中，有多个容器组已部署到委派给 Azure 容器实例的子网。 将一个容器组部署到某个子网后，可以通过指定相同的网络配置文件，将其他容器组部署到该子网。
 
 ![虚拟网络中的容器组][aci-vnet-01]
 
-## <a name="deploy-to-virtual-network"></a>部署到虚拟网络
+## <a name="deployment-scenarios"></a>部署方案
 
-可将容器组部署到新虚拟网络并让 Azure 自动创建所需的网络资源，或者部署到现有的虚拟网络。
+可以使用 [az container create][az-container-create] 将容器组部署到新虚拟网络并让 Azure 自动创建所需的网络资源，也可以部署到现有的虚拟网络。 
 
 ### <a name="new-virtual-network"></a>新建虚拟网络
 
@@ -99,26 +101,28 @@ ms.locfileid: "48902349"
 
 1. 在现有虚拟网络中创建一个子网，或者在现有子网中清空其他所有资源
 1. 使用 [az container create][az-container-create] 并指定以下信息之一来部署容器组：
-   * 虚拟网络名称和子网名称</br>
-    或
-   * 网络配置文件名称或 ID
+   * 虚拟网络名称和子网名称
+   * 虚拟网络资源 ID 和子网资源 ID，它允许使用其他资源组中的虚拟网络
+   * 网络配置文件名称或 ID，可以使用 [az network profile list][az-network-profile-list] 获取
 
 将第一个容器组部署到现有子网后，Azure 会将该子网委托给 Azure 容器实例。 以后不再可以将除容器组以外的资源部署到该子网。
 
+## <a name="deployment-examples"></a>部署示例
+
 以下部分介绍如何使用 Azure CLI 将容器组部署到虚拟网络。 命令示例的格式适用于 **Bash** shell。 若要使用其他 shell（例如 PowerShell 或命令提示符），请相应地调整续行符。
 
-## <a name="deploy-to-new-virtual-network"></a>部署到新虚拟网络
+### <a name="deploy-to-a-new-virtual-network"></a>部署到新的虚拟网络
 
 首先，部署容器组并指定新虚拟网络和子网的参数。 指定这些参数时，Azure 会创建虚拟网络和子网、将子网委托给 Azure 容器实例，并创建网络配置文件。 创建这些资源后，容器组将部署到子网。
 
-运行以下 [az container create][az-container-create] 命令，以指定新虚拟网络和子网的设置。 此命令将部署 [microsoft/aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
+运行以下 [az container create][az-container-create] 命令，以指定新虚拟网络和子网的设置。 你需要提供在[支持](#preview-limitations)虚拟网络中的容器组的区域中创建的资源组的名称。 此命令将部署 [microsoft/aci-helloworld][aci-helloworld] 容器，该容器运行一个提供静态网页的小型 Node.js Web 服务器。 在下一部分，我们要将另一个容器组部署到同一子网，并测试这两个容器实例之间的通信。
 
 ```azurecli
 az container create \
     --name appcontainer \
     --resource-group myResourceGroup \
     --image microsoft/aci-helloworld \
-    --vnet-name aci-vnet \
+    --vnet aci-vnet \
     --vnet-address-prefix 10.0.0.0/16 \
     --subnet aci-subnet \
     --subnet-address-prefix 10.0.0.0/24
@@ -126,7 +130,7 @@ az container create \
 
 使用此方法部署到新虚拟网络时，部署可能需要花费几分钟时间，因为在此期间需要创建网络资源。 完成初始部署后，后续的容器组部署可以更快地完成。
 
-## <a name="deploy-to-existing-virtual-network"></a>部署到现有虚拟网络
+### <a name="deploy-to-existing-virtual-network"></a>部署到现有虚拟网络
 
 将容器组部署到新虚拟网络后，请将另一个容器组部署到同一子网，并验证这两个容器实例之间的通信。
 
@@ -154,7 +158,7 @@ az container create \
     --image alpine:3.5 \
     --command-line "wget $CONTAINER_GROUP_IP" \
     --restart-policy never \
-    --vnet-name aci-vnet \
+    --vnet aci-vnet \
     --subnet aci-subnet
 ```
 
@@ -174,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 日志输出应显示 `wget` 可以在本地子网中使用第一个容器的专用 IP 地址连接到该容器，并可从中下载索引文件。 两个容器组之间的网络流量保留在虚拟网络中。
 
-## <a name="deploy-to-existing-virtual-network---yaml"></a>部署到现有虚拟网络 - YAML
+### <a name="deploy-to-existing-virtual-network---yaml"></a>部署到现有虚拟网络 - YAML
 
 还可以使用 YAML 文件将容器组部署到现有虚拟网络。 若要部署到虚拟网络中的子网，请到 YAML 中指定几个附加的属性：
 

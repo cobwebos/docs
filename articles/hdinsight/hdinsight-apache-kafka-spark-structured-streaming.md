@@ -1,24 +1,24 @@
 ---
-title: '教程：Apache Spark 结构化流式处理与 Kafka - Azure HDInsight '
+title: '教程：Apache Spark 结构化流式处理与 Apache Kafka - Azure HDInsight '
 description: 了解如何使用 Apache Spark 流式处理将数据传入或传出 Apache Kafka。 本教程使用 Spark on HDInsight 中的 Jupyter Notebook 流式传输数据。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/08/2018
-ms.author: jasonh
-ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108283"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278355"
 ---
-# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>教程：将 Spark 结构化流与 Kafka on HDInsight 配合使用
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
-本教程说明如何使用 Spark 结构化流式处理和 Apache Kafka on Azure HDInsight 来读取和写入数据。
+本教程说明如何使用 Apache Spark 结构化流式处理和 Apache Kafka on Azure HDInsight 来读取和写入数据。
 
 Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。 
 

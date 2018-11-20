@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 83c1deb7c767c29046e6c1af4452270e90b391df
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 29cbb96cc6dec4bac601e8795599f77c955c418a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987726"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230823"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 设备代码流
 
@@ -68,7 +68,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>设备授权响应
 
-成功响应是一个 JSON 对象，其中包含让用户完成登录所需的信息。  
+成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
 
 | 参数 | 格式 | Description |
 | ---              | --- | --- |
@@ -113,7 +113,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 | `expired_token`|  至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询，并恢复到未经过身份验证状态。 |
 
 
-### <a name="succesful-authentication-response"></a>成功身份验证响应
+### <a name="successful-authentication-response"></a>成功的身份验证响应
 
 成功的令牌响应如下：
 

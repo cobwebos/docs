@@ -2,19 +2,19 @@
 title: 在 Linux ARM32 上安装 Azure IoT Edge | Microsoft Docs
 description: 在 ARM32 设备（例如 Raspberry PI）上的 Linux 中安装 Azure IoT Edge 的说明
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 9007ee95dc25854a55006284ce6fc574fd8e7968
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ccd38dd7570dc451a1a5b87163bfdd7aea51dad5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948513"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567428"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -29,7 +29,7 @@ ms.locfileid: "46948513"
 
 ## <a name="install-the-container-runtime"></a>安装容器运行时
 
-Azure IoT Edge 依赖于 [OCI 兼容的][lnk-oci]容器运行时。 对于生产方案，强烈建议使用下面提供的[基于 Moby][lnk-moby] 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与基于 Moby 的运行时兼容。
+Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时。 对于生产方案，强烈建议使用下面提供的[基于 Moby](https://mobyproject.org/) 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与基于 Moby 的运行时兼容。
 
 以下命令用于安装基于 Moby 的引擎和命令行接口 (CLI)。 CLI 对开发非常有用，但对生产部署来说是可选的。
 
@@ -78,7 +78,7 @@ sudo apt-get install -f
 
 ### <a name="option-1-manual-provisioning"></a>选项 1：手动预配
 
-若要手动预配设备，需要为其提供[设备连接字符串][lnk-dcs]，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
+若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device-portal.md)，可以通过在 IoT 中心注册新设备来创建该设备连接字符串。
 
 
 打开配置文件。 
@@ -113,7 +113,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>选项 2：自动预配
 
-若要自动预配设备，请[设置设备预配服务并检索设备注册 ID][lnk-dps]。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备未附带 TPM。 
+若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 自动预配仅适用于具有受信任的平台模块 (TPM) 芯片的设备。 例如，默认情况下，Raspberry Pi 设备未附带 TPM。 
 
 打开配置文件。 
 
@@ -171,17 +171,10 @@ sudo iotedge list
 
 需要提升的权限才能运行 `iotedge` 命令。 安装运行时后，请从计算机中注销并重新登录以自动更新权限。 在此之前，在任何 `iotedge` 命令前都要使用 **sudo**。
 
-在资源受限设备上，强烈建议按照[故障排除指南][lnk-trouble]中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
+在资源受限的设备上，强烈建议按照[故障排除指南](troubleshoot.md#stability-issues-on-resource-constrained-devices)中的说明将 *OptimizeForPerformance* 环境变量设置为 *false*。
 
 如果网络具有代理服务器，请按照[配置 IoT Edge 设备以通过代理服务器进行通信](how-to-configure-proxy-support.md)中的步骤进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在正确安装 Edge 运行时期间遇到问题，请参考[疑难解答][lnk-trouble]页面。
-
-<!-- Links -->
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-linux.md
-[lnk-trouble]: https://docs.microsoft.com/azure/iot-edge/troubleshoot#stability-issues-on-resource-constrained-devices
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
+如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md#stability-issues-on-resource-constrained-devices)页面。

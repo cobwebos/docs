@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 009206f1e0ba848538ed2c666032a63051d062e4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790740"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247171"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>在服务配置文件中指定 DNS 设置
 ## <a name="dns-elements"></a>DNS 元素
@@ -41,9 +41,9 @@ ms.locfileid: "31790740"
 ## <a name="see-also"></a>另请参阅
 [Azure 服务配置架构 (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Azure 虚拟网络配置架构](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure 虚拟网络配置架构](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[使用网络配置文件配置虚拟网络](http://go.microsoft.com/fwlink/?LinkId=248094)
+[使用网络配置文件配置虚拟网络](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[关于管理门户中的虚拟网络设置](http://go.microsoft.com/fwlink/?LinkId=248092)
+[关于管理门户中的虚拟网络设置](https://go.microsoft.com/fwlink/?LinkId=248092)
 

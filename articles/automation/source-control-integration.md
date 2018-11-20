@@ -9,26 +9,26 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785318"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023740"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
-通过源代码管理，你可以使用 GitHub 或 Azure Dev Ops 源代码管理存储库中的脚本使自动化帐户中的 runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
+通过源代码管理，可以使用 GitHub 或 Azure DevOps 源代码管理存储库中的脚本使自动化帐户中的 runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
 
 Azure 自动化支持 3 种类型的源代码管理：
 
 * GitHub
-* Visual Studio Team Services (Git)
-* Visual Studio Team Services (TFVC)
+* Azure DevOps (Git)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>先决条件
 
-* 源代码管理存储库（GitHub 或 Visual Studio Team Services）
+* 源代码管理存储库（GitHub 或 Azure DevOps）
 * 对源代码管理存储库的相应[权限](#personal-access-token-permissions)
 * 一个[运行方式帐户和连接](manage-runas-account.md)
 
@@ -50,7 +50,7 @@ Azure 自动化支持 3 种类型的源代码管理：
 |属性  |Description  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的友好名称        |
-|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> Github</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |存储库     | 存储库或项目的名称。 此值从源代码管理存储库中拉取。 示例：$/ContosoFinanceTFVCExample         |
 |分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks         |

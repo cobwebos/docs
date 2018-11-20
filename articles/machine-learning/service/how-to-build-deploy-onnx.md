@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434058"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345464"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作 AI 模型
 
@@ -28,7 +28,7 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 ## <a name="why-choose-onnx"></a>为什么选择 ONNX？
 通过 ONNX 获得的互操作性可以更快地将好的想法投入生产。 使用 ONNX，数据科学家可以选择其首选的作业框架。 同样，开发人员可以花费更少的时间让模型为生产做好准备，并跨云和边缘部署。  
 
-可以从许多框架（包括 PyTorch、Chainer、Microsoft Cognitive Toolkit (CNTK)、MXNet 和 ML.Net）导出 ONNX 模型。 存在其他框架的转换器，如 TensorFlow、Keras、SciKit-Learn 等。
+可以从许多框架创建 ONNX 模型，这些框架包括 PyTorch、Chainer、Microsoft Cognitive Toolkit (CNTK)、MXNet 和 ML.Net、TensorFlow、Keras、SciKit-Learn 等等。
 
 此外，还有用于可视化和加速 ONNX 模型的工具生态系统。 许多预先定型的 ONNX 模型也可用于常见方案。
 
@@ -36,18 +36,17 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 
 [ ![显示定型、转换器和部署的 ONNX 流程图](media/concept-onnx/onnx.png) ] (./media/concept-onnx/onnx.png#lightbox)
 
-## <a name="create-onnx-models-in-azure"></a>在 Azure 中创建 ONNX 模型
+## <a name="get-onnx-models"></a>获取 ONNX 模型
 
-可通过以下几种方式创建 ONNX 模型：
-+ 在 Azure 机器学习服务中定型模型并将其转换或导出为 ONNX（请参阅本文底部的示例）
+可通过以下几种方式获取 ONNX 模型：
++ 从 [ONNX 模型 Zoo](https://github.com/onnx/models) 获取预先定型的 ONNX 模型（请参阅本文底部的示例）
++ 从 [Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)生成自定义 ONNX 模型 
++ 将现有模型从另一种格式转换为 ONNX（请参阅本文底部的示例） 
++ 在 Azure 机器学习服务中将新的 ONNX 模型定型（请参阅本文底部的示例）
 
-+ 从 [ONNX 模型 Zoo](https://github.com/onnx/models) 获取预先定型的 ONNX 模型
+## <a name="saveconvert-your-models-to-onnx"></a>将模型保存/转换为 ONNX
 
-+ 从 [Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)生成自定义 ONNX 模型
-
-## <a name="exportconvert-your-models-to-onnx"></a>将模型导出/转换为 ONNX
-
-还可以将现有模型转换为 ONNX。
+可以将现有模型转换为 ONNX，也可以在定型结束时将其保存为 ONNX。
 
 |用于模型的框架|转换示例或工具|
 |-----|-------|
@@ -101,7 +100,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 下面是一个部署 ONNX 模型的示例：
 
-1. 初始化 Azure 机器学习工作区。 如果尚不具有，请了解如何在[本快速入门](quickstart-get-started.md)中创建工作区。
+1. 初始化 Azure 机器学习服务工作区。 如果尚不具有，请了解如何在[本快速入门](quickstart-get-started.md)中创建工作区。
 
    ```python
    from azureml.core import Workspace
@@ -172,10 +171,11 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
    文件 `myenv.yml` 描述映像所需的依赖项。 有关如何创建环境文件（例如以下示例文件）的说明，请参阅本[教程](tutorial-deploy-models-with-aml.md#create-environment-file)：
 
-   ```
+   ```python
    from azureml.core.conda_dependencies import CondaDependencies 
 
    myenv = CondaDependencies()
+   myenv.add_pip_package("numpy")
    myenv.add_pip_package("azureml-core")
    myenv.add_pip_package("onnxruntime")
 
@@ -191,12 +191,16 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 ## <a name="examples"></a>示例
  
-以下笔记本演示如何使用 Azure 机器学习部署 ONNX 模型： 
-+ `/onnx/onnx-inference-mnist.ipynb`
+以下笔记本演示如何使用 Azure 机器学习创建和部署 ONNX 模型： 
++ [onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
++ [onnx/onnx-convert-aml-deploy-tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
++ [onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
+
+以下笔记本演示如何使用 Azure 机器学习部署现有 ONNX 模型： 
++ [onnx/onnx-inference-mnist-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
++ [onnx/onnx-inference-facial-expression-recognition-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
  
-+ `/onnx/onnx-inference-emotion-recognition.ipynb`
- 
-获取此笔记本：
+获取以下笔记本：
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

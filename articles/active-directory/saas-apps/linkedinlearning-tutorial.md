@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 618437d0007668800e0a14e8233db1676be2a364
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440899"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39440899"
 
     ![配置单一登录](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-1. 单击“或单击此处从窗体加载和复制单个字段”，并复制“实体 ID”和“断言使用者访问(ACS) URL”。
+1. 单击“或单击此处从窗体加载和复制单个字段”，并复制“实体 ID”和“断言使用者服务(ACS) URL”
 
     ![配置单一登录](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -118,11 +118,11 @@ ms.locfileid: "39440899"
 
     ![配置单一登录](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
-    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
-    b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
+    b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者服务(ACS) URL”
 
-1. 如果想要以“已启动 SP”模式配置 SSO，请单击配置部分的“显示高级 URL”设置选项，并使用以下模式配置登录 URL：
+1. 如果想要以“已启动 SP”模式配置 SSO，请单击配置部分的“显示高级 URL”设置选项，可以在其中指定登录 URL。  若要创建登录 URL，请复制断言使用者服务 (ACS) URL 并将 /saml/ 替换为 /login/。   执行该操作后，单一登录 URL 应包含以下模式：
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
@@ -143,7 +143,7 @@ ms.locfileid: "39440899"
     
     ![创建 Azure AD 测试用户](./media/linkedinlearning-tutorial/userattribute.png)
     
-    a. 单击“添加属性”打开属性对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”打开属性对话框。
 
     ![创建 Azure AD 测试用户](./media/linkedinlearning-tutorial/tutorial_attribute_04.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "39440899"
 
 1. 对 name 属性执行以下步骤
 
-    a. 单击该属性打开“编辑属性”窗口。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击该属性打开“编辑属性”窗口。
 
     ![配置单一登录](./media/linkedinlearning-tutorial/url_update.png)
 
@@ -204,7 +204,7 @@ ms.locfileid: "39440899"
  
     ![创建 Azure AD 测试用户](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -257,7 +257,7 @@ LinkedIn Learning 应用程序支持实时用户设置，且进行身份验证�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

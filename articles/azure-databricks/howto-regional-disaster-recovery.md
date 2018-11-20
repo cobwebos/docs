@@ -2,18 +2,18 @@
 title: Azure Databricks 的区域性灾难恢复
 description: 本文介绍一种在 Azure Databricks 中执行灾难恢复的方法。
 services: azure-databricks
-author: jasonwhowell
-ms.author: jasonh
+author: mamccrea
+ms.author: mamccrea
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 671e18346651a40d7f286e984117ce0c9ae62364
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125963"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748317"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 

@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13d1353b0f8b3320972973d428f4aedb0fb68ac8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990671"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212754"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>如何配置 Azure Database for MariaDB 的数据传入复制
 
@@ -62,7 +62,7 @@ ms.locfileid: "46990671"
 
    在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MariaDB 文档，以了解如何在主服务器上[添加用户帐户](https://mariadb.com/kb/en/library/create-user/)。 
 
-   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MariaDB 文档，详细了解如何[指定帐户名称](https://mariadb.com/kb/en/library/create-user/#account-names)。
+   在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser\@'%'”来实现此目的。 请参阅 MariaDB 文档，详细了解如何[指定帐户名称](https://mariadb.com/kb/en/library/create-user/#account-names)。
 
    **SQL 命令**
 

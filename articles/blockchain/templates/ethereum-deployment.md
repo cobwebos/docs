@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240633"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231791"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum 工作量证明联盟解决方案模板
 
@@ -119,7 +119,7 @@ Operations Management Suite (OMS) 边栏选项卡允许你为网络配置 OMS �
 
 ### <a name="network-size-and-performance"></a>网络规模和性能
 
-接下来，在“网络规模和性能”下指定联盟网络规模的输入值，例如挖掘节点和事务节点的数量和大小。
+接下来，在“网络规模和性能”下指定联盟网络规模的输入值， 例如，挖掘节点和事务节点的数量和大小。
 
 ![网络规模和性能](./media/ethereum-deployment/network-size-performance.png)
 
@@ -316,7 +316,7 @@ gateway2 $OtherGatewayResourceId --enable-bgp
 
 ![MetaMask 扩展](./media/ethereum-deployment/metamask-extension.png)
 
-安装完成后，打开 MetaMask 并创建新的保管库。 默认情况下，保管库将连接到新式测试网络。 你需要将其更改为连接到已部署的专用联盟网络，特别是连接到事务节点前面的负载均衡器。 从模板输出中，检索端口 8545 处已公开的 Ethereum RPC 终结点（名为 `ETHEREUM-RPC-ENDPOINT`），并将其输入到自定义 RPC 中，如下所示。
+安装完成后，打开 MetaMask 并创建新的保管库。 默认情况下，保管库将连接到新式测试网络。 需要将其更改为连接到已部署的专用联盟网络，特别是连接到事务节点前面的负载均衡器。 从模板输出中，检索端口 8545 处已公开的 Ethereum RPC 终结点（名为 `ETHEREUM-RPC-ENDPOINT`），并将其输入到自定义 RPC 中，如下所示。
 
 ![MetaMask 设置](./media/ethereum-deployment/metamask-settings.png)
 

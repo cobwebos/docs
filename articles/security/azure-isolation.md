@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579832"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239043"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>介绍
@@ -111,7 +111,7 @@ Azure Active Directory 的其他部分功能包括:
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 提供高度可用的全局性标识管理服务，该服务适用于面向用户且可通过缩放来处理数以亿计的标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 使用者只需使用现有社交帐户或创建凭据，即可通过可自定义的体验登录到所有应用程序。
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>与 Microsoft 管理员和数据删除隔离
-Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权的用户使用。 这些操作过程和控制由[联机服务条款](http://aka.ms/Online-Services-Terms)提供支持，该条款提供有关管理数据访问权限的合同承诺。
+Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权的用户使用。 这些操作过程和控制由[联机服务条款](https://aka.ms/Online-Services-Terms)提供支持，该条款提供有关管理数据访问权限的合同承诺。
 
 -   Microsoft 工程师没有访问云端数据的默认权限。 而是在必要时在管理监督下获取访问权限。 将谨慎控制并记录该访问权限，并在不再需要时撤回。
 
@@ -119,7 +119,7 @@ Microsoft 采取强硬措施保护数据免受不适当的访问或未经授权�
 
 对于经过审核认证（如 ISO/IEC 27001）的企业服务，Microsoft 和认证审核公司会定期进行验证，仅出于合法的商业目的对这些服务访问的资产执行样本审计。 用户始终都可随时访问自己的客户数据，而不论出于什么原因。
 
-如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作会在保留期结束后 90 天内进行。 （[联机服务条款](http://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
+如果用户删除了任何数据，Microsoft Azure 也将删除该数据，包括所有缓存或备份副本。 对于范围内服务，该删除操作会在保留期结束后 90 天内进行。 （[联机服务条款](https://aka.ms/Online-Services-Terms)的数据处理条款部分对范围内服务进行了定义。）
 
 如果用于存储的磁盘驱动器发生硬件故障，在 Microsoft 将其送回给制造商进行更换或修复前，将安全[擦除或销毁](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)该磁盘驱动器上的数据。 驱动器上的数据会被覆盖，以确保无法通过任何方式恢复数据。
 

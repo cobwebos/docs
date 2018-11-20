@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870547"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277528"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -66,8 +66,8 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 > 
 > 
 
-## <a name="configure-delete-permissions-for-your-application"></a>为应用程序配置删除权限
-目前，“读取和写入目录数据”权限**不**包括任何删除权限，如删除用户。 如果想要使应用程序能够删除用户，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
+## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>为应用程序配置删除或更新密码权限
+目前，“读取和写入目录数据”权限**不**提供删除用户或更新用户密码的能力。 如果想要使应用程序能够删除用户或更新密码，就需要执行涉及 PowerShell 的这些额外步骤，否则，可以跳到下一部分。
 
 首先，请安装 [Azure AD PowerShell v1 模块 (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)（如果还没有安装）：
 
@@ -84,7 +84,7 @@ Install-Module MSOnline
 Connect-MsolService
 ```
 
-现在我们会在以下脚本中使用**应用程序 ID** 为应用程序分配用户帐户管理员角色，以允许应用程序删除用户。 这些角色具有已知的标识符，因此，只需在下面的脚本中输入**应用程序 ID**。
+现在我们会在以下脚本中使用**应用程序 ID** 为应用程序分配用户帐户管理员角色。 这些角色具有已知的标识符，因此，只需在下面的脚本中输入**应用程序 ID**。
 
 ```powershell
 $applicationId = "<YOUR_APPLICATION_ID>"
@@ -92,7 +92,7 @@ $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
 Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-现在，应用程序也具有从 B2C 租户中删除用户的权限。
+现在，应用程序也具有从 B2C 租户中删除用户或更新密码的权限。
 
 ## <a name="download-configure-and-build-the-sample-code"></a>下载、配置和构建示例代码
 首先，下载示例代码并运行。 下面将详细地查看该代码。  可以[将示例代码下载为 .zip 文件](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)。 也可以将其克隆到所选择的目录中：

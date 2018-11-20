@@ -13,60 +13,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
-ms.author: msangapu
-ms.openlocfilehash: 20ca63b7126a6800538129115ff339308c11d8c5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/08/2018
+ms.author: msangapu;yili
+ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867012"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298520"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
 在本教程中，通过托管 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)存储库或 [Docker 中心](https://hub.docker.com)为自定义容器映像配置持续部署。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="enable-continuous-deployment-with-acr"></a>使用 ACR 启用持续部署
 
-登录到 [Azure 门户](https://portal.azure.com)。
+![ACR Webhook 的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-## <a name="enable-the-continuous-deployment-feature"></a>启用持续部署功能
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择页面左侧的“应用服务”选项。
+3. 选择要为其配置持续部署的应用的名称。
+4. 在“容器设置”页上，选择“单个容器”
+5. 选择“Azure 容器注册表”
+6. 选择“持续部署”>“启用”
+7. 选择“保存”以启用持续部署。
 
-可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来启用连续部署功能：
+## <a name="use-the-acr-webhook"></a>使用 ACR Webhook
 
-```azurecli-interactive
-az webapp deployment container config --name name --resource-group myResourceGroup --enable-cd true
-```
+启用持续部署后，可以在 Azure 容器注册表 Webhook 页上查看新创建的 Webhook。
 
-在 [Azure 门户](https://portal.azure.com/)中，选择页面左侧的“应用服务”选项。
+![ACR Webhook 的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-03.png)
 
-选择要为其配置 Docker 中心持续部署的应用的名称。
+在容器注册表中，单击“Webhook”以查看当前的 Webhook。
 
-在“容器设置”页上，选择“启用”，然后选择“保存”以启用持续部署。
+## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>使用 Docker 中心启用持续部署（可选）
 
-![应用设置的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/step2.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择页面左侧的“应用服务”选项。
+3. 选择要为其配置持续部署的应用的名称。
+4. 在“容器设置”页上，选择“单个容器”
+5. 选择“Docker 中心”
+6. 选择“持续部署”>“启用”
+7. 选择“保存”以启用持续部署。
 
-## <a name="prepare-the-webhook-url"></a>准备 Webhook URL
+![应用设置的屏幕截图](./media/app-service-webapp-service-linux-ci-cd/ci-cd-docker-02.png)
 
-可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来获取 Webhook URL：
-
-```azurecli-interactive
-az webapp deployment container show-cd-url --name sname1 --resource-group rgname
-```
-
-记下 Webhook URI。 在下一个部分中将要用到它。
-`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`。
-
-可以通过使用 Azure 门户下载 Web 应用发布配置文件来获取 `publishingusername` 和 `publishingpwd`。
-
-![屏幕截图：添加 Webhook 2](./media/app-service-webapp-service-linux-ci-cd/step3-3.png)
-
-## <a name="add-a-webhook"></a>添加 Webhook
-
-若要添加 Webhook，请按照以下指南中的步骤操作：
-
-- 使用 Webhook URL 的 [Azure 容器注册表](../../container-registry/container-registry-webhook.md)
-- [用于 Docker 中心的 Webhook](https://docs.docker.com/docker-hub/webhooks/)
+复制 Webhook URL。 若要添加用于 Docker 中心的 Webhook，请按照<a href="https://docs.docker.com/docker-hub/webhooks/" target="_blank">用于 Docker 中心的 Webhook</a> 进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

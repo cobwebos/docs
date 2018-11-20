@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 10/19/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363943"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456892"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -194,7 +194,7 @@ Klist
 
 3. 在“备用访问映射集合”旁边的下拉列表中，选中“更改备用访问映射集合”。
 4. 选择站点，例如 **SharePoint - 80**。
-5. 可以选择将已发布的 URL 添加为内部 URL 或公共 URL。 本示例使用一个公共 URL 作为 Extranet。
+5. 可以选择将已发布的 URL 添加为内部 URL 或公共 URL。 本示例使用一个公共 URL 作为 Extranet。 如果使用自定义端口，请务必在 URL 中包含自定义端口。
 6. 在“Extranet”路径中单击“编辑公共 URL”，然后输入发布应用程序时创建的外部 URL。 例如，输入 https://sharepoint-iddemo.msappproxy.net。
 
   ![输入路径](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)

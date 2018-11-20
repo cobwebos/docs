@@ -3,16 +3,16 @@ title: Azure HDInsight 中的 YARN 故障排除
 description: 获取有关使用 Apache Hadoop YARN 和 Azure HDInsight 的常见问题的解答。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596458"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008039"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 YARN 进行故障排除
 
@@ -26,7 +26,7 @@ ms.locfileid: "39596458"
 在 Ambari 中使用以下步骤可以创建新的 YARN 队列，并在所有队列之间均衡容量分配。 
 
 在此示例中，两个现有队列（**default** 和 **thriftsvr**）的容量都从 50 % 更改为 25%，因此，新队列 (Spark) 具有 50% 的容量。
-| 队列 | Capacity | 最大容量 |
+| 队列 | 容量 | 最大容量 |
 | --- | --- | --- | --- |
 | default | 25% | 50% |
 | thrftsvr | 25% | 50% |

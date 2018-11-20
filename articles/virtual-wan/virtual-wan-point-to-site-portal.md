@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a4c0c1426200e6c2d5041131fd0dd9cde4761cf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e3d1a79dc7dd775cea71df2f36a5f34d85f3e240
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409280"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261802"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建点到站点连接
 
@@ -79,7 +79,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="openvwan"></a>2.创建虚拟 WAN
 
-从浏览器导航到 [Azure 门户（预览版）](http://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
+从浏览器导航到 [Azure 门户（预览版）](https://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
@@ -111,12 +111,13 @@ P2S 配置定义连接远程客户端的参数。
 
 ## <a name="hub"></a>5.编辑中心分配
 
-1. 在虚拟 WAN 的页面上，单击“点到站点配置”。
-2. 在“中心”下，可以看到尚未连接到中心的配置的列表。
-3. 选择要关联的配置，然后单击“编辑中心分配”。
-4. 从下拉列表中，选择要将配置与之关联的中心。
-5. 单击“分配”。 
-6. 完成此操作最多需要 30 分钟。
+1. 在虚拟 WAN 的页面上，单击“中心”。
+2. 选择要向其分配点到站点配置的中心。
+3. 单击“...”，选取“编辑虚拟中心”
+4. 勾选“包括点到站点网关”。
+5. 为客户端选择“网关缩放单元”、“点到站点配置”和“地址池”。
+6. 单击“确认”。 
+7. 此操作可能最多需要 30 分钟才能完成。
 
 ## <a name="vnet"></a>6.将 VNet 连接到中心
 
@@ -135,9 +136,10 @@ P2S 配置定义连接远程客户端的参数。
 
 使用 VPN 配置文件来配置客户端。
 
-1. 在虚拟 WAN 的页面上，单击“点到站点配置”。
-2. 在页面顶部，单击“下载点到站点配置文件”。 
-3. 完成创建文件后，可以单击相应的链接下载该文件。
+1. 在虚拟 WAN 的页面上，单击“中心”。
+2. 选择要下载其配置文件的中心。
+3. 单击“...”，选取“下载配置文件”。 
+4. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 使用此配置文件配置点到站点客户端。
 
 ## <a name="device"></a>8.配置点到站点客户端

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389626"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567037"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常检测
 
@@ -31,7 +31,7 @@ AnomalyDetection 运算符检测三种类型的异常：
 
 * **慢速负趋势**：一段时间内趋势的缓慢递减。  
 
-使用 AnomalyDetection 运算符时，必须指定 **Limit Duration** 子句。 此子句指定在检测异常时应考虑时间间隔（历史记录发生在当前事件之前的多长时间）。 可以选择使用  **When**  子句将此运算符限制为仅匹配某种属性或条件的事件。 此运算符还可根据  **Partition by**  子句中指定的关键字选择单独处理事件组。 可对每个分区独立进行训练和预测。 
+使用 AnomalyDetection 运算符时，必须指定 **Limit Duration** 子句。 此子句指定在检测异常时应考虑时间间隔（历史记录发生在当前事件之前的多长时间）。 可以选择使用 **When** 子句将此运算符限制为仅匹配某种属性或条件的事件。 此运算符还可以根据 **Partition by** 子句中指定的键，有选择地单独处理事件组。 可对每个分区独立进行训练和预测。 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>AnomalyDetection 运算符的语法
 
@@ -45,11 +45,11 @@ AnomalyDetection 运算符检测三种类型的异常：
 
 * **scalar_expression** - 执行异常检测所用的标量表达式。 此参数的允许值包括返回单个（标量）值的浮点数据类型或 Bigint 数据类型。 不可使用通配符表达式**\***。 scalar_expression 不能包含其他分析函数或外部函数。 
 
-* **partition_by_clause** - `PARTITION BY <partition key>` 子句将学习和训练划分为不同分区。 换言之，将根据 `<partition key>` 的值使用单独的模型，仅含有该值的事件才会用于该模型中的学习和培训。 例如，以下查询训练一个读数，并仅对照同一传感器的其他读数进行评分：
+* **partition_by_clause** - `PARTITION BY <partition key>` 子句将学习和训练划分为不同分区。 换言之，将根据 `<partition key>` 的值使用单独的模型，仅含有该值的事件才会用于该模型中的学习和培训。 例如，以下查询训练一个读数，并仅对照同一传感器的其他读数进行评分：
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **limit_duration 子句** `DURATION(<unit>, <length>)` - 指定在检测异常时应考虑时间间隔（历史记录发生在当前事件之前的多长时间）。 有关受支持的单位及其缩写的详细说明，请参阅 [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics)。 
+* **limit_duration 子句** `DURATION(<unit>, <length>)` - 指定在检测异常时应考虑时间间隔（历史记录发生在当前事件之前的多长时间）。 有关受支持的单位及其缩写的详细说明，请参阅 [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics)。 
 
 * **when_clause** - 为异常检测计算中考虑的事件指定布尔条件。
 

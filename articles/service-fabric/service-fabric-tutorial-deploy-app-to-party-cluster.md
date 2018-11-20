@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 443d37f5b45db9495c09d68300c9ea4978466eb9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388222"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249075"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 合作群集是 Azure 上托管的免费限时 Service Fabric 群集，由 Service Fabric 团队运行。 任何人都可以部署应用程序和了解此平台。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。
 
-登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 若要将 PFX 证书下载到计算机，请选择 **PFX** 链接。 选择“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
+登录并[加入 Windows 群集](https://aka.ms/tryservicefabric)。 若要将 PFX 证书下载到计算机，请选择 **PFX** 链接。 选择“如何连接到安全合作群集?”链接并复制证书密码。 后续步骤中需要使用证书、证书密码和“连接终结点”值。
 
 ![PFX 和连接终结点](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 

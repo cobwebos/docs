@@ -2,19 +2,19 @@
 title: 教程：使用 IntelliJ 在 Azure HDInsight 中创建适用于 Spark 的 Scala Maven 应用程序
 description: 使用 Apache Maven 作为生成系统，并使用 IntelliJ IDEA 提供的适用于 Scala 的现有 Maven 原型，创建使用 Scala 编写的 Spark 应用程序。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: fc1f952128b4cfbb082f4c539a102f40d3b85e8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 529dc37187f6709ecfa93bf3a6d71f053ba49103
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040292"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008957"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Spark 的 Scala Maven 应用程序
 
@@ -40,14 +40,14 @@ ms.locfileid: "43040292"
 ## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* Oracle Java 开发工具包。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装。
+* Oracle Java 开发工具包。 可以从[此处](https://aka.ms/azure-jdks)安装。
 * Java IDE。 本文使用 IntelliJ IDEA 18.1.1。 可从[此处](https://www.jetbrains.com/idea/download/)进行安装。
 
 ## <a name="use-intellij-to-create-application"></a>使用 IntelliJ 创建应用程序
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作： 
 
-   a. 选择“HDInsight” > “Spark on HDInsight (Scala)”
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“HDInsight” > “Spark on HDInsight (Scala)”
 
    b. 在“生成工具”列表中，根据需要选择以下选项之一：
 
@@ -70,7 +70,7 @@ ms.locfileid: "43040292"
 
     ![选择 Spark SDK](./media/apache-spark-create-standalone-application/hdi-new-project.png)
 
-   a. 输入项目名称和位置。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入项目名称和位置。
 
    b. 在“项目 SDK”下拉列表中，选择适用于 Spark 2.x 群集的“Java 1.8”，或选择适用于 Spark 1.x 群集的“Java 1.7”。
 

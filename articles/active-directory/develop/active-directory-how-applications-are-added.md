@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e806fc334faf85864ea9158d4f2ed6d107327ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577224"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241491"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -69,7 +69,7 @@ Azure AD 中的应用程序有两种表示形式：
 
 * 当用户登录到与 Azure AD 集成的第三方应用程序时
   * 在登录期间，系统要求用户向应用程序授予访问其配置文件的权限和其他权限。 第一个授权者导致生成一个服务主体，表示要添加到目录中的应用程序。
-* 当用户登录到 [Office 365](http://products.office.com/) 等 Microsoft 联机服务时
+* 当用户登录到 [Office 365](https://products.office.com/) 等 Microsoft 联机服务时
   * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）

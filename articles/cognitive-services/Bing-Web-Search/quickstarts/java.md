@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: e0c1a038a0d63bcae8620c89462bdecfd88d8227
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9fc9d35db50305b632f5d9c8bdfa13d28ab97980
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121968"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412969"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>快速入门：使用 Java 调用必应 Web 搜索 API  
 
@@ -27,7 +27,7 @@ ms.locfileid: "46121968"
 
 下面是在开始本快速入门之前需要准备好的项目：
 
-* [JDK 7 或 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [JDK 7 或 8](https://aka.ms/azure-jdks)
 * [Gson 库](https://github.com/google/gson)
 * 订阅密钥
 
@@ -60,7 +60,7 @@ import com.google.gson.JsonParser;
 
 ## <a name="declare-the-bingwebsearch-class"></a>声明 BingWebSearch 类
 
-声明 `BingWebSearch` 类。 它将包括我们在该快速入门中查看的大多数代码，包括 `main` 方法。  
+声明 `BingWebSearch` 类。 它将包括我们在本快速入门中查看的大多数代码，包括 `main` 方法。  
 
 ```java
 public class BingWebSearch {

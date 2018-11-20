@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 09/24/2018
-ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 11/07/2018
+ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116447"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684852"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>管道和 Azure 机器学习
 
@@ -22,11 +22,11 @@ ms.locfileid: "49116447"
 
 ## <a name="what-are-machine-learning-pipelines"></a>什么是机器学习管道？
 
-机器学习 (ML) 管道由数据科学家用来生成、优化和管理其机器学习工作流。 常规管道涉及一系列步骤，这些步骤涵盖以下方面：
-
+使用机器学习 (ML) 管道，数据科学家、数据工程师和 IT 专业人员可以按以下内容涉及的步骤进行协作：
 + 数据准备，例如规范化和转换
-+ 模型训练，例如超参数优化和验证
-+ 模型部署和评估  
++ 模型定型
++ 模型评估
++ 部署 
 
 下图显示了一个示例管道：
 
@@ -38,11 +38,13 @@ ms.locfileid: "49116447"
 
 使用管道，可以在简洁性、速度、可移植性和重用性方面优化工作流。 使用 Azure 机器学习来生成管道时，可以重点关注最了解的部分 &mdash; 机器学习 &mdash; 不需关注基础设施。
 
-使用不同的步骤可以在调整和测试工作流时只重新运行所需步骤。 在管道中，一个步骤是一个计算单元。 如上图所示，数据准备任务可能涉及许多步骤，包括但不限于：规范化、转换、验证和特征化。
+使用不同的步骤可以在调整和测试工作流时只重新运行所需步骤。 在管道中，一个步骤是一个计算单元。 如上图所示，数据准备任务可能涉及许多步骤，包括但不限于：规范化、转换、验证和特征化。 数据源和中间数据在整个管道中重复使用，从而节省了计算时间和资源。 
 
 管道设计好以后，通常会有更多围绕着管道的训练循环进行的优化。 重新运行某个管道时，运行会跳到需要重新运行的步骤（例如更新的训练脚本），跳过尚未更改的。 同一范例适用于未更改的用于执行此步骤的脚本。 
 
 使用 Azure 机器学习时，可以针对管道中的每个步骤使用各种工具包和框架，例如 Microsoft 认知工具包或 TensorFlow。 Azure 会在你使用的各种[计算目标](concept-azure-machine-learning-architecture.md)之间进行协调，使中间数据可以轻松地供下游计算目标共享。 
+
+可以直接在 Azure 门户中[跟踪管道试验的指标](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)。 
 
 ## <a name="key-advantages"></a>主要优点
 
@@ -59,11 +61,11 @@ ms.locfileid: "49116447"
 
 使用 Python 来创建 ML 管道。 没有数据依赖项存在时，Azure 机器学习 SDK 提供的命令性构造用于对管道中的步骤进行序列化和并行化操作。 可以在 Jupyter Notebook 或其他首选 IDE 中与之交互。 
 
-可以使用声明性数据依赖项来优化任务。 此 SDK 包含一个框架，其中的预构建模块适用于常规任务，例如数据传输、计算目标的创建和模型发布。 实施那些可以跨管道重用的自定义步骤即可扩展此框架，为你自己的约定建模。
+可以使用声明性数据依赖项来优化任务。 此 SDK 包含用于常见任务（如数据传输和模型发布）的预构建模块框架。 实施那些可以跨管道重用的自定义步骤即可扩展此框架，为你自己的约定建模。 计算目标和存储资源也可以直接通过此 SDK 进行管理。
 
 可以将管道另存为模板并部署到某个 REST 终结点，以便对批量评分或重新训练作业进行计划。
 
-请查看[适用于管道的 Python SDK 参考文档](http://aka.ms/aml-sdk)以及下一部分的 Notebook，了解如何生成你自己的。
+请查看[适用于管道的 Python SDK 参考文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)以及下一部分的 Notebook，了解如何生成你自己的。
 
 ## <a name="example-notebooks"></a>示例笔记本
  

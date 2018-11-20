@@ -2,46 +2,46 @@ items:
 - name: 自定义影像服务文档
 - name: 概述
   items:
-  - name: 什么是自定义影像服务？
+  - name: 什么是自定义视觉？
     href: home.md
-- name: 操作指南
+- name: 快速入门
   items:
-  - name: 开始使用自定义影像服务
-    items:
-    - name: 生成分类器
-      href: getting-started-build-a-classifier.md
-    - name: 测试模型
-      href: test-your-model.md
-    - name: 改进分类器
-      href: getting-started-improving-your-classifier.md
-    - name: 使用预测 API
-      href: use-prediction-api.md
-    - name: 将模型导出到移动设备
-      href: export-your-model.md
-    - name: 将 ONNX 模型与 Windows ML 配合使用
-      href: custom-vision-onnx-windows-ml.md
-    - name: 运行以 Python 编写的 TensorFlow 模型
-      href: export-model-python.md
-    - name: 使用 REST API 构建模型
-      href: rest-api-tutorial.md
-  - name: 生成应用
+  - name: 使用 .NET SDK
     items:
     - name: 图像分类
-      items:
-      - name: C# 教程
-        href: csharp-tutorial.md
-      - name: Python 教程
-        href: python-tutorial.md
-      - name: Java 教程
-        href: java-tutorial.md
+      href: csharp-tutorial.md
     - name: 对象检测
-      items:
-      - name: C# 教程
-        href: csharp-tutorial-od.md
-      - name: Python 教程
-        href: python-tutorial-od.md
-      - name: Java 教程
-        href: java-tutorial-od.md
+      href: csharp-tutorial-od.md
+  - name: 使用 Python SDK
+    items:
+    - name: 图像分类
+      href: python-tutorial.md
+    - name: 对象检测
+      href: python-tutorial-od.md
+  - name: 使用 Java SDK
+    items:
+    - name: 图像分类
+      href: java-tutorial.md
+    - name: 对象检测
+      href: java-tutorial-od.md
+- name: 操作指南
+  items:
+  - name: 生成分类器
+    href: getting-started-build-a-classifier.md
+  - name: 测试模型
+    href: test-your-model.md
+  - name: 改进分类器
+    href: getting-started-improving-your-classifier.md
+  - name: 使用预测 API
+    href: use-prediction-api.md
+  - name: 将模型导出到移动设备
+    href: export-your-model.md
+  - name: 将 ONNX 模型与 Windows ML 配合使用
+    href: custom-vision-onnx-windows-ml.md
+  - name: 运行以 Python 编写的 TensorFlow 模型
+    href: export-model-python.md
+  - name: 使用 REST API 构建模型
+    href: rest-api-tutorial.md
 - name: 引用
   items:
   - name: 自定义视觉训练 API
@@ -76,9 +76,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: 区域可用性
     href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: d7d919cd69e73ba2e4c4149bf38cceaae63ebcba
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1394f71bceef7a0646411a155b63825771e839d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955080"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281026"

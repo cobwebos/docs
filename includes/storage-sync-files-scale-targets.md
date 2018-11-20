@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 3f70a8cf2df25f487de7cd1a8c8cbdf9431839f0
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 03fe587ede297ac7dea90b7a5fb2d5323f60659e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283054"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628096"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
-| 每个订阅的存储同步服务数 | 15 个存储同步服务 | 否 |
+| 每个订阅的存储同步服务数 | 每个区域有 15 个存储同步服务 | 否 |
 | 每个存储同步服务的同步组数 | 100 个同步组 | 是 |
 | 每个存储同步服务的已注册服务器 | 99 台服务器 | 是 |
 | 每个同步组的云终结点数 | 1 个云终结点 | 是 |
@@ -30,3 +30,4 @@ ms.locfileid: "43283054"
 | 最大对象（目录和文件）安全描述符大小 | 4 KiB | 是 |
 | 文件大小 | 100 GiB | 否 |
 | 要进行分层的文件的最小文件大小 | 64 KiB | 是 |
+| 并发同步会话 | V4 代理：限制因可用系统资源而异。 <BR> V3 代理：每个处理器 2 个活动的同步会话，或每个服务器最多 8 个活动的同步会话 | 是

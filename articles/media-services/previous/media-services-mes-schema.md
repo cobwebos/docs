@@ -2,24 +2,23 @@
 title: Media Encoder Standard 架构 | Microsoft Docs
 description: 本文概述 Media Encoder Standard 架构。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: 4c060062-8ef2-41d9-834e-e81e8eafcf2e
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 346d7aecb6a4295f8ceb64bc1b5c6494b7b41bfd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f7d5cafa39daccccbd35c44510038d28601aed
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783886"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241746"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
 本文描述 [Media Encoder Standard 预设](media-services-mes-presets-overview.md)基于的 XML 架构的一些元素和类型。 本文说明元素及其有效值。  
@@ -28,13 +27,14 @@ ms.locfileid: "33783886"
 定义编码预设。  
 
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **编码** |[编码](media-services-mes-schema.md#Encoding) |根元素，指示要进行编码的输入源。 |
 | **输出** |[输出](media-services-mes-schema.md#Output) |所需输出文件的集合。 |
+| **StretchMode**<br/>minOccurs=“0”<br/>default="AutoSize|xs:string|控制输出视频帧大小、填充、像素或显示纵横比。 **StretchMode** 可以是以下值之一：**None**、**AutoSize**（默认值）或 **AutoFit**。<br/><br/>**None**：严格遵循输出分辨率（例如，预设中的**宽度**和**高度**），而不考虑输入视频的像素纵横比或显示纵横比。 建议在[裁剪](media-services-crop-video.md)等方案中使用，其中输出视频的纵横比与输入不同。 <br/><br/>**AutoSize**：输出分辨率将适应预设指定的窗口（宽度 * 高度）。 但是，编码器会生成具有正方形 (1:1) 像素纵横比的输出视频。 因此，可以覆盖输出宽度或输出高度，以便与不包含填充的输入的显示纵横比相匹配。 例如，如果输入为 1920x1080，而编码预设要求提供 1280x1280，则会覆盖预设中的高度值，并且输出将是 1280x720，这样可以保持 16:9 的输入纵横比。 <br/><br/>**AutoFit**：必要时，请填充输出视频（使用上下黑边或左右黑边）以遵循所需的输出分辨率，同时确保输出中活动视频区域的纵横比与输入相同。 例如，假设输入为 1920x1080，并且编码预设要求提供 1280x1280。 那么，输出视频将是 1280x1280，但它包含纵横比为 16:9 的“活动视频”的内部 1280x720 矩形，并在顶部和底部包含高度为 280 像素的上下黑边区域。 另举一例，如果输入为 1440x1080，并且编码预设要求提供 1280x720，则输出将是 1280x720，其中包含纵横比为 4:3 的 960x720 内部矩形，并在左侧和右侧包含宽度为 160 像素的左右黑边区域。 
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **版本**<br/><br/> 必选 |**xs: decimal** |预设版本。 以下限制适用：xs:fractionDigits 值 =“1”和 xs:minInclusive 值 =“1”，例如，**版本 =“1.0”**。 |
 
@@ -42,7 +42,7 @@ ms.locfileid: "33783886"
 包含以下元素序列：  
 
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |视频的 H.264 编码设置。 |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |音频的 AAC 编码设置。 |
@@ -52,7 +52,7 @@ ms.locfileid: "33783886"
 
 ## <a name="H264Video"></a>H264Video
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs=“0” |**xs: boolean** |目前，仅支持单步编码。 |
 | **KeyFrameInterval**<br/><br/> minOccurs=“0”<br/><br/> **默认值 =“00:00:02”** |**xs: time** |确定 IDR 帧的固定间距（以秒为单位）。 亦称为“GOP 持续时间”。 请参阅 **SceneChangeDetection**，此元素用于控制编码器能否偏离此值。 |
@@ -62,7 +62,7 @@ ms.locfileid: "33783886"
 | **H264Layers**<br/><br/> minOccurs=“0” |[H264Layers](media-services-mes-schema.md#H264Layers) |输出视频层的集合。 |
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)文章。|
 
@@ -71,7 +71,7 @@ ms.locfileid: "33783886"
 默认情况下，如果向编码器发送仅包含音频而不包含视频的输入，那么输出资产文件仅包含音频数据。 某些播放器可能无法处理此类输出流。 在这种情况下，可使用 H264Video 的 InsertBlackIfNoVideo 属性设置，强制编码器将视频轨添加到输出中。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)文章。
               
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 层的集合。 |
 
@@ -82,7 +82,7 @@ ms.locfileid: "33783886"
 > 
 
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **配置文件**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“自动” |**xs: string** |可能是以下 **xs: string** 值之一：**Auto**、**Baseline**、**Main**、**High**。 |
 | **级别**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“自动” |**xs: string** | |
@@ -104,17 +104,17 @@ ms.locfileid: "33783886"
  有关 AAC 的详细信息，请参阅 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)。  
 
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **配置文件**<br/><br/> minOccurs="0"<br/><br/> 默认值 =“AACLC” |**xs: string** |可能是以下值之一：**AACLC**、**HEAACV1** 或 **HEAACV2**。 |
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **条件** |**xs: string** |若要强制编码器在输入不包含音频时生成包含静音曲目的资产，请指定“InsertSilenceIfNoAudio”值。<br/><br/> 默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，可以使用此设置来强制编码器将静音曲目添加到输出。 |
 
 ### <a name="groups"></a>组
-| 引用 | 说明 |
+| 引用 | Description |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs=“0” |请参阅 [ AudioGroup](media-services-mes-schema.md#AudioGroup) 的说明，了解可为每个配置文件设置的适当通道数、采样率和比特率。 |
 
@@ -122,7 +122,7 @@ ms.locfileid: "33783886"
 有关每个配置文件的有效值的详细信息，请参阅后面的“音频编解码器详细信息”表。  
 
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **通道**<br/><br/> minOccurs=“0” |**xs: int** |音频通道数。 以下是有效选项：1、2、5、6、8。<br/><br/> 默认值：2。 |
 | **SamplingRate**<br/><br/> minOccurs=“0” |**xs: int** |音频采样率，以 Hz 为单位。 |
@@ -131,26 +131,25 @@ ms.locfileid: "33783886"
 ### <a name="audio-codec-details"></a>音频编解码器详细信息
 音频编解码器|详细信息  
 -----------------|---  
-**AACLC**|1:<br/><br/> - 11025 : 8 &lt;= 比特率 &lt; 16<br/><br/> - 12000 : 8 &lt;= 比特率 &lt; 16<br/><br/> - 16000 : 8 &lt;= 比特率 &lt;32<br/><br/>- 22050 : 24 &lt;= 比特率 &lt; 32<br/><br/> - 24000 : 24 &lt;= 比特率 &lt; 32<br/><br/> - 32000 : 32 &lt;= 比特率 &lt;= 192<br/><br/> - 44100 : 56 &lt;= 比特率 &lt;= 288<br/><br/> - 48000 : 56 &lt;= 比特率 &lt;= 288<br/><br/> - 88200 : 128 &lt;= 比特率 &lt;= 288<br/><br/> - 96000 : 128 &lt;= 比特率 &lt;= 288<br/><br/> 2:<br/><br/> - 11025 : 16 &lt;= 比特率 &lt; 24<br/><br/> - 12000 : 16 &lt;= 比特率 &lt; 24<br/><br/> - 16000 : 16 &lt;= 比特率 &lt; 40<br/><br/> - 22050 : 32 &lt;= 比特率 &lt; 40<br/><br/> - 24000 : 32 &lt;= 比特率 &lt; 40<br/><br/> - 32000 :  40 &lt;= 比特率 &lt;= 384<br/><br/> - 44100 : 96 &lt;= 比特率 &lt;= 576<br/><br/> - 48000 : 96 &lt;= 比特率 &lt;= 576<br/><br/> - 88200 : 256 &lt;= 比特率 &lt;= 576<br/><br/> - 96000 : 256 &lt;= 比特率 &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000 : 160 &lt;= 比特率 &lt;= 896<br/><br/> - 44100 : 240 &lt;= 比特率 &lt;= 1024<br/><br/> - 48000 : 240 &lt;= 比特率 &lt;= 1024<br/><br/> - 88200 : 640 &lt;= 比特率 &lt;= 1024<br/><br/> - 96000 : 640 &lt;= 比特率 &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= 比特率 &lt;= 1024<br/><br/> - 44100 : 384 &lt;= 比特率 &lt;= 1024<br/><br/> - 48000 : 384 &lt;= 比特率 &lt;= 1024<br/><br/> - 88200 : 896 &lt;= 比特率 &lt;= 1024<br/><br/> - 96000 : 896 &lt;= 比特率 &lt;= 1024  
-**HEAACV1**|1:<br/><br/> - 22050 : 比特率 = 8<br/><br/> - 24000 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000 : 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200 : 比特率 = 64<br/><br/> 2:<br/><br/> - 32000 : 16 &lt;= 比特率 &lt;= 128<br/><br/> - 44100 : 16 &lt;= 比特率 &lt;= 128<br/><br/> - 48000 : 16 &lt;= 比特率 &lt;= 128<br/><br/> - 88200 : 96 &lt;= 比特率 &lt;= 128<br/><br/> - 96000 : 96 &lt;= 比特率 &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= 比特率 &lt;= 320<br/><br/> - 44100 : 64 &lt;= 比特率 &lt;= 320<br/><br/> - 48000 : 64 &lt;= 比特率 &lt;= 320<br/><br/> - 88200 : 256 &lt;= 比特率 &lt;= 320<br/><br/> - 96000 : 256 &lt;= 比特率 &lt;= 320<br/><br/> 8:<br/><br/> - 32000 : 96 &lt;= 比特率 &lt;= 448<br/><br/> - 44100 : 96 &lt;= 比特率 &lt;= 448<br/><br/> - 48000 : 96 &lt;= 比特率 &lt;= 448<br/><br/> - 88200 : 384 &lt;= 比特率 &lt;= 448<br/><br/> - 96000 : 384 &lt;= 比特率 &lt;= 448  
-**HEAACV2**|2:<br/><br/> - 22050 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 24000 : 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000 : 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000 : 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200 : 64 &lt;= 比特率 &lt;= 64  
+**AACLC**|1:<br/><br/> - 11025: 8 &lt;= 比特率 &lt; 16<br/><br/> - 12000: 8 &lt;= 比特率 &lt; 16<br/><br/> - 16000: 8 &lt;= 比特率 &lt;32<br/><br/>- 22050: 24 &lt;= 比特率 &lt; 32<br/><br/> - 24000: 24 &lt;= 比特率 &lt; 32<br/><br/> - 32000: 32 &lt;= 比特率 &lt;= 192<br/><br/> - 44100: 56 &lt;= 比特率 &lt;= 288<br/><br/> - 48000: 56 &lt;= 比特率 &lt;= 288<br/><br/> - 88200 : 128 &lt;= 比特率 &lt;= 288<br/><br/> - 96000 : 128 &lt;= 比特率 &lt;= 288<br/><br/> 2:<br/><br/> - 11025: 16 &lt;= 比特率 &lt; 24<br/><br/> - 12000: 16 &lt;= 比特率 &lt; 24<br/><br/> - 16000: 16 &lt;= 比特率 &lt; 40<br/><br/> - 22050: 32 &lt;= 比特率 &lt; 40<br/><br/> - 24000 : 32 &lt;= 比特率 &lt; 40<br/><br/> - 32000:  40 &lt;= 比特率 &lt;= 384<br/><br/> - 44100: 96 &lt;= 比特率 &lt;= 576<br/><br/> - 48000 : 96 &lt;= 比特率 &lt;= 576<br/><br/> - 88200: 256 &lt;= 比特率 &lt;= 576<br/><br/> - 96000: 256 &lt;= 比特率 &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000: 160 &lt;= 比特率 &lt;= 896<br/><br/> - 44100: 240 &lt;= 比特率 &lt;= 1024<br/><br/> - 48000: 240 &lt;= 比特率 &lt;= 1024<br/><br/> - 88200: 640 &lt;= 比特率 &lt;= 1024<br/><br/> - 96000: 640 &lt;= 比特率 &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= 比特率 &lt;= 1024<br/><br/> - 44100 : 384 &lt;= 比特率 &lt;= 1024<br/><br/> - 48000: 384 &lt;= 比特率 &lt;= 1024<br/><br/> - 88200: 896 &lt;= 比特率 &lt;= 1024<br/><br/> - 96000: 896 &lt;= 比特率 &lt;= 1024  
+**HEAACV1**|1:<br/><br/> - 22050: 比特率 = 8<br/><br/> - 24000: 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000: 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100: 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000: 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200: 比特率 = 64<br/><br/> 2:<br/><br/> - 32000: 16 &lt;= 比特率 &lt;= 128<br/><br/> - 44100: 16 &lt;= 比特率 &lt;= 128<br/><br/> - 48000: 16 &lt;= 比特率 &lt;= 128<br/><br/> - 88200 : 96 &lt;= 比特率 &lt;= 128<br/><br/> - 96000: 96 &lt;= 比特率 &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= 比特率 &lt;= 320<br/><br/> - 44100: 64 &lt;= 比特率 &lt;= 320<br/><br/> - 48000: 64 &lt;= 比特率 &lt;= 320<br/><br/> - 88200 : 256 &lt;= 比特率 &lt;= 320<br/><br/> - 96000: 256 &lt;= 比特率 &lt;= 320<br/><br/> 8:<br/><br/> - 32000: 96 &lt;= 比特率 &lt;= 448<br/><br/> - 44100: 96 &lt;= 比特率 &lt;= 448<br/><br/> - 48000: 96 &lt;= 比特率 &lt;= 448<br/><br/> - 88200: 384 &lt;= 比特率 &lt;= 448<br/><br/> - 96000: 384 &lt;= 比特率 &lt;= 448  
+**HEAACV2**|2:<br/><br/> - 22050: 8 &lt;= 比特率 &lt;= 10<br/><br/> - 24000: 8 &lt;= 比特率 &lt;= 10<br/><br/> - 32000: 12 &lt;= 比特率 &lt;= 64<br/><br/> - 44100: 20 &lt;= 比特率 &lt;= 64<br/><br/> - 48000: 20 &lt;= 比特率 &lt;= 64<br/><br/> - 88200: 64 &lt;= 比特率 &lt;= 64  
   
-
 ## <a name="Clip"></a>剪裁
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |指定演示文稿的开始时间。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 |
 | **持续时间** |**xs:duration** |指定演示文稿的持续时间（例如，视频中覆盖的外观）。 |
 
 ## <a name="Output"></a>输出
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **FileName** |**xs:string** |输出文件的名称。<br/><br/> 可以使用下表中描述的宏来生成输出文件名。 例如：<br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
 ### <a name="macros"></a>宏
-| 宏 | 说明 |
+| 宏 | Description |
 | --- | --- |
 | **{Basename}** |如果正在进行 VoD 编码，则 {Basename} 是输入资产中主文件的 AssetFile.Name 属性的前 32 个字符。<br/><br/> 如果输入资产是实时存档，则 {Basename} 从服务器清单中的 trackName 属性派生。 如果使用 TopBitrate 提交子剪辑作业，如：“<VideoStream\>TopBitrate</VideoStream\>”，并且输出文件包含视频，则 {Basename} 是具有最高比特率视频层的 trackName 的前32个字符。<br/><br/> 如果改为使用所有输入比特率提交子剪辑作业，例如“<VideoStream\>*</VideoStream\>”，并且输出文件包含视频，则 {Basename} 是对应视频层的 trackName 的前32个字符。 |
 | **{Codec}** |到视频的“H264”以及音频的“AAC”的映射。 |
@@ -163,7 +162,7 @@ ms.locfileid: "33783886"
 
 ## <a name="Video"></a>视频（继承自编解码器的复杂类型）
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **启动** |**xs:string** | |
 | **步骤** |**xs:string** | |
@@ -177,17 +176,17 @@ ms.locfileid: "33783886"
 
 ![MESRoation1](./media/media-services-shemas/media-services-mes-roation1.png) 
 
-如果输入视频是以非零旋转捕获（例如，垂直持握的智能手机或平板电脑），则默认情况下，MES 将对输入视频应用编码分辨率设置（宽度、高度），然后补偿旋转。 有关示例，请参阅下图。 预设使用宽度 =“100％”，高度 =“100％”，MES 将此理解为所需输出为 1280 像素宽和 720 像素高。 旋转视频后，它会缩小图片适应窗口，左右两侧会出现黑边区域。  
+如果输入视频是以非零旋转捕获（例如，垂直持握的智能手机或平板电脑），则默认情况下，MES 将对输入视频应用编码分辨率设置（宽度、高度），然后补偿旋转。 有关示例，请参阅下图。 预设使用宽度 = "100%"，高度 = "100%"，MES 将此理解为所需输出为 1280 像素宽和 720 像素高。 旋转视频后，它会缩小图片适应窗口，左右两侧会出现黑边区域。  
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-或者，可以使用 **PreserveResolutionAfterRotation** 标志并将其设置为“true”（默认值为“false”）。 因此，如果预设为宽度 =“100%”，高度 =“100%”，并将 PreserveResolutionAfterRotation 设置为“true”，则宽为 1280 像素、高为 720 像素，且 90 度旋转的输入视频将生成 0 度旋转、但宽为 720 像素、高为 1280 像素的输出视频。 参阅下图：  
+或者，可以使用 **PreserveResolutionAfterRotation** 标志并将其设置为“true”（默认值为“false”）。 因此，如果预设为宽度 = "100%"，高度 = "100%"，并将 PreserveResolutionAfterRotation 设置为“true”，则宽为 1280 像素、高为 720 像素，且 90 度旋转的输入视频将生成 0 度旋转、但宽为 720 像素、高为 1280 像素的输出视频。 参阅下图：  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
 ## <a name="FormatGroup"></a>FormatGroup（组）
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -195,74 +194,74 @@ ms.locfileid: "33783886"
 
 ## <a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **质量**<br/><br/> minOccurs=“0” |**xs:int** |有效值：1（最差）- 100（最好） |
 
 ### <a name="attributes"></a>属性
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="PngLayers"></a>PngLayers
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a>BmpLayers
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a>JpgLayers
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a>BmpImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
 ## <a name="JpgImage"></a>JpgImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
 ## <a name="PngImage"></a>PngImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称 | Type | 说明 |
+| 名称 | 类型 | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 

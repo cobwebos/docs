@@ -1,5 +1,5 @@
 ---
-title: Azure 开发测试实验室基础结构的监管
+title: Azure 开发测试实验室基础设施治理
 description: 本文主要介绍如何监管 Azure 开发测试实验室基础结构。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8653056c5c4b0e5b6831d3cc2b0006e89ac01bdd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250740"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978609"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
-建立开发/测试实验室环境之后，你需要考虑以下问题： 
+建立开发/测试实验室环境之后，你需要考虑以下问题：
 
-- 如何在项目团队中利用此环境？ 
+- 如何在项目团队中利用此环境？
 - 如何在确保遵循任何必需组织策略的同时又能够保持灵活性，为应用程序增加价值？
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Azure 市场映像与自定义映像
@@ -60,10 +60,10 @@ ms.locfileid: "48250740"
 ### <a name="answer"></a>Answer
 请观看[这一有关映像工厂模式的视频](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
 
-使用开发测试实验室在 Visual Studio Team Services (VSTS) 中创建自定义映像管道：
+使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
 - [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
-- [Image Factory – Part 2!Setup VSTS and Factory Lab to Create VMs](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)（映像工厂 – 第 2 部分！设置 VSTS 和工厂实验室以创建 VM）
+- [Image Factory – Part 2!Setup Azure Pipelines and Factory Lab to Create VMs](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)（映像工厂 - 第 2 部分！设置 Azure Pipelines 和工厂实验室以创建 VM）
 - [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
 - [Video: Custom Image Factory with Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)（视频：Azure 开发测试实验室的自定义映像工厂）
 
@@ -79,7 +79,7 @@ ms.locfileid: "48250740"
 
 出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
 
-> [!NOTE] 
+> [!NOTE]
 > 如果你的代理服务器在没有代理设置的情况下阻止流量，则不要忘记向实验室的项目存储帐户添加例外。
 
 此外，还可以将网络安全组用于虚拟机或子网。 此步骤增添了一层额外的保护以允许/阻止流量。
@@ -100,9 +100,9 @@ ms.locfileid: "48250740"
 何时应使用共享 IP 与公用 IP 与专用 IP？
 
 ### <a name="answer"></a>Answer
-如果使用站点到站点 VPN 或快速路由，则考虑使用专用 IP，以便你的计算机可通过内部网络访问，并且无法通过公共 Internet 访问。 
+如果使用站点到站点 VPN 或快速路由，则考虑使用专用 IP，以便你的计算机可通过内部网络访问，并且无法通过公共 Internet 访问。
 
-> [!NOTE] 
+> [!NOTE]
 > 实验室所有者可以更改此子网策略，以确保没有人意外地为其 VM 创建公用 IP 地址。 订阅所有者应创建一个阻止创建公用 IP 的订阅策略。
 
 当使用共享的公用 IP 时，实验室中的虚拟机会共享公用 IP 地址。 当需要避免违反给定订阅的公用 IP 地址限制时，此方法很有用。
@@ -125,7 +125,7 @@ ms.locfileid: "48250740"
 如何在开发测试实验室环境中使用资源管理器模板？
 
 ### <a name="answer"></a>Answer
-可以使用[开发测试实验室中的环境功能](devtest-lab-test-env.md)一文中所述的步骤，将资源管理器模板部署到开发测试实验室环境中。 从根本上说，将资源管理器模板签入 Git 存储库（Visual Studio Team Services 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。
+可以使用[开发测试实验室中的环境功能](devtest-lab-test-env.md)一文中所述的步骤，将资源管理器模板部署到开发测试实验室环境中。 从根本上说，将资源管理器模板签入 Git 存储库（Azure Repos 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。
 
 如果使用开发测试实验室托管开发计算机，则此方案可能没有用；但如果要构建具有生产代表性的过渡环境，则此方案可能很有用。
 

@@ -1,12 +1,11 @@
 ---
-title: Azure Active Directory v2 Android 入门 | Microsoft Docs
-description: Android 应用如何从 Azure Active Directory v2 终结点获取访问令牌并调用 Microsoft Graph API 或需要访问令牌的 API。
+title: Azure Active Directory v2.0 Android 入门 | Microsoft Docs
+description: Android 应用如何从 Azure Active Directory v2.0 终结点获取访问令牌并调用 Microsoft Graph API 或需要访问令牌的 API。
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.workload: identity
 ms.date: 04/05/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 28468fd29e7d1e131130be56af42cc9cb6af7a2a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 613e1f733e8b4115149b3109b059d66b4f2ebbae
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495631"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984372"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-android-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-android-setup.md)]

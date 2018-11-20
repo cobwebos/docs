@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: ad5c13723eef352148a40e3e7f4f2ff616867296
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55dfd7e5ea93ae941d73612cc70ed82d48db725a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23985300"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236732"
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>使用 Microsoft HPC Pack 和按需 Azure 计算节点设置混合高性能计算 (HPC) 群集
 使用 Microsoft HPC Pack 2012 R2 和 Azure 可以设置小型混合高性能计算 (HPC) 群集 本文中所示的群集包含一个本地 HPC Pack 头节点和一些在 Azure 云服务中按需部署的计算节点。 可以在混合群集上运行计算作业。
@@ -29,7 +29,7 @@ ms.locfileid: "23985300"
 
 本教程展示了一种方法（有时称作群集“迸发至云”）来使用可伸缩的按需 Azure 资源运行计算密集型应用程序。
 
-本教程假定你之前未使用过计算群集或 HPC Pack。 它只是为了出于演示目的帮助你快速部署混合群集。 有关在生产环境中以更大规模部署混合 HPC Pack 群集或使用 HPC Pack 2016 的注意事项和步骤，请参阅[详细指南](http://go.microsoft.com/fwlink/p/?LinkID=200493)。 有关使用 HPC Pack 的其他方案，包括在 Azure 虚拟机中自动执行群集部署，请参阅 [Azure 中 Microsoft HPC Pack 的 HPC 群集选项](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+本教程假定你之前未使用过计算群集或 HPC Pack。 它只是为了出于演示目的帮助你快速部署混合群集。 有关在生产环境中以更大规模部署混合 HPC Pack 群集或使用 HPC Pack 2016 的注意事项和步骤，请参阅[详细指南](https://go.microsoft.com/fwlink/p/?LinkID=200493)。 有关使用 HPC Pack 的其他方案，包括在 Azure 虚拟机中自动执行群集部署，请参阅 [Azure 中 Microsoft HPC Pack 的 HPC 群集选项](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -38,10 +38,10 @@ ms.locfileid: "23985300"
   * 该计算机必须加入 Active Directory 域中。 出于测试目的，可将头节点计算机配置为域控制器。 若要添加 Active Directory 域服务服务器角色并将头节点计算机提升为域控制器，请参阅 Windows Server 文档。
   * 为了支持 HPC Pack，必须采用以下语言之一安装操作系统：英语、日语或简体中文。
   * 确认安装了重要更新和关键更新。
-* **HPC Pack 2012 R2** - 免费[下载](http://go.microsoft.com/fwlink/p/?linkid=328024)最新版本的安装包并将文件复制到头节点计算机。 选择语言与你所安装的 Windows Server 的语言相同的安装文件。
+* **HPC Pack 2012 R2** - 免费[下载](https://go.microsoft.com/fwlink/p/?linkid=328024)最新版本的安装包并将文件复制到头节点计算机。 选择语言与你所安装的 Windows Server 的语言相同的安装文件。
 
     >[!NOTE]
-    > 如果要使用 HPC Pack 2016（而不是 HPC Pack 2012 R2），需进行其他配置。 请参阅[详细指南](http://go.microsoft.com/fwlink/p/?LinkID=200493)。
+    > 如果要使用 HPC Pack 2016（而不是 HPC Pack 2012 R2），需进行其他配置。 请参阅[详细指南](https://go.microsoft.com/fwlink/p/?LinkID=200493)。
     > 
 * **域帐户** - 必须为此帐户配置头节点上的本地管理员权限，才能安装 HPC Pack。
 * **端口 443 上的 TCP 连接**：从头节点到 Azure。
@@ -144,7 +144,7 @@ HPC Pack 会在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 10. 在创建节点模板向导中，执行以下操作：
     
-    a. 在“选择节点模板类型”页上，单击“Microsoft Azure 节点模板”，并单击“下一步”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择节点模板类型”页上，单击“Microsoft Azure 节点模板”，并单击“下一步”。
     
     ![节点模板][config_hpc10]
     
@@ -154,11 +154,11 @@ HPC Pack 会在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
     
     ![节点模板][config_hpc12]
     
-    d.单击“下一步”。 在“提供服务信息”页上，选择你在前一步中创建的云服务和存储帐户。 然后单击“下一步”。
+    d. 在“提供服务信息”页上，选择你在前一步中创建的云服务和存储帐户。 然后单击“下一步”。
     
     ![节点模板][config_hpc13]
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“**下一步**”，接受向导其余页上的默认值。 然后，在“审查”选项卡上，单击“创建”，以创建节点模板。
+    e. 单击“**下一步**”，接受向导其余页上的默认值。 然后，在“审查”选项卡上，单击“创建”，以创建节点模板。
     
     > [!NOTE]
     > 默认情况下，Azure 节点模板包括用于通过 HPC 群集管理器手动启动（设置）和停止节点的设置。 可以选择配置计划以便自动启动和停止 Azure 节点。
@@ -268,7 +268,7 @@ HPC Pack 会在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 ## <a name="next-steps"></a>后续步骤
 * 浏览 [HPC Pack](https://technet.microsoft.com/library/cc514029) 的文档。
-* 若要以更大的规模设置混合 HPC Pack 群集部署，请参阅[使用 Microsoft HPC Pack 迸发到 Azure 辅助角色实例](http://go.microsoft.com/fwlink/p/?LinkID=200493)。
+* 若要以更大的规模设置混合 HPC Pack 群集部署，请参阅[使用 Microsoft HPC Pack 迸发到 Azure 辅助角色实例](https://go.microsoft.com/fwlink/p/?LinkID=200493)。
 * 有关在 Azure 中创建 HPC Pack 群集的其他方法，包括使用 Azure 资源管理器模板，请参阅[在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

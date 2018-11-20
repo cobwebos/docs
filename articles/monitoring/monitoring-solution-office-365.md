@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 22e22a2eb6eefb84c6745de9b19e7710913b4ee7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406315"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616276"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "49406315"
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用[日志搜索](../log-analytics/log-analytics-log-search.md)，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志搜索](../log-analytics/log-analytics-queries.md)，执行操作故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 需要以下各项才能安装和配置此解决方案。
@@ -709,6 +709,6 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics](../log-analytics/log-analytics-log-searches.md) 中的日志搜索可查看详细的更新数据。
+* 使用 [Log Analytics](../log-analytics/log-analytics-queries.md) 中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../log-analytics/log-analytics-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
-* [创建警报](../log-analytics/log-analytics-alerts.md)，主动接收重要的 Office 365 活动通知。  
+* [创建警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)，主动接收重要的 Office 365 活动通知。  

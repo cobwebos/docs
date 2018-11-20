@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158897"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243141"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>什么是 Azure 机器学习 CLI？
 
@@ -25,7 +25,7 @@ Azure 机器学习命令行界面 (CLI) 扩展适用于使用 Azure 机器学习
 
 + 打包、部署和跟踪机器学习模型的生命周期
 
-此机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 的扩展，在基于 Python 的适用于 Azure 机器学习服务的 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> 的基础上生成。
+此机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 的扩展，在基于 Python 的适用于 Azure 机器学习服务的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 的基础上生成。
 
 > [!NOTE]
 > CLI 目前处于早期预览阶段，并将进行更新。
@@ -34,7 +34,7 @@ Azure 机器学习命令行界面 (CLI) 扩展适用于使用 Azure 机器学习
 
 可以从预览 PyPi 索引使用此命令安装 CLI：
 ```AzureCLI
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.50-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 可以使用此命令来删除 CLI：
@@ -65,7 +65,7 @@ CLI 更适合由 dev-ops 角色进行自动化，或作为持续集成和交付�
 
 ### <a name="workspace-creation--compute-setup"></a>工作区创建和计算设置
 
-+ 创建 Azure 机器学习工作区，这是机器学习的顶级资源。
++ 创建 Azure 机器学习服务工作区，这是机器学习的顶级资源。
    ```AzureCLI
    az ml workspace create -n myworkspace -g myresourcegroup
    ```

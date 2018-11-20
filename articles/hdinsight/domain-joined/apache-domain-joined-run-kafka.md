@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 1a8f04f39568816252175fc9e0893f1ab3e2cdc6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224811"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037135"
 ---
 # <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览）在 HDInsight 中配置 Kafka 策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "47224811"
 
 * 登录到 [Azure 门户](https://portal.azure.com/)。
 
-* [使用企业安全性套餐创建 HDInsight Kafka 群集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-run-hive)。
+* [使用企业安全性套餐创建 HDInsight Kafka 群集](apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>连接到 Apache Ranger 管理 UI
 
@@ -60,7 +60,7 @@ ms.locfileid: "47224811"
 
 3. 单击“添加新策略”，并输入以下值：
 
-   |**设置**  |建议的值  |
+   |**设置**  |**建议的值**  |
    |---------|---------|
    |策略名称  |  hdi sales* 策略   |
    |主题   |  sales* |
@@ -81,7 +81,7 @@ ms.locfileid: "47224811"
 
 5. 单击“添加新策略”，然后输入以下值：
 
-   |**设置**  |建议的值  |
+   |**设置**  |**建议的值**  |
    |---------|---------|
    |策略名称  |  hdi marketing 策略   |
    |主题   |  marketingspend |
@@ -117,15 +117,18 @@ ms.locfileid: "47224811"
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
-   
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
+> [!Note]
+> 在继续操作之前，可能需要设置开发环境（如果尚未这样做）。 需要 Java JDK、Apache Maven 以及包含 scp 的 SSH 客户端等组件。 请参阅这些[设置说明](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)，了解更多详细信息。
+1. 下载 [Apache Kafka 域加入生成者使用者示例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)。
 
-4. 运行以下命令： 
+1. 按[教程：使用 Apache Kafka 生成者和使用者 API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) 中“生成和部署示例”下的步骤 2 和 3 操作
+
+1. 运行以下命令：
 
    ```bash
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 

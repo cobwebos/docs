@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 06/04/2018
+ms.date: 10/24/2018
 ms.author: danlep
-ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090956"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155590"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -225,11 +225,15 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ## <a name="container-settings-for-the-task"></a>任务容器设置
 
-若要在计算节点上运行容器任务，必须指定特定于容器的设置，如任务运行选项、要使用的映像和注册表。
+若要在计算节点上运行容器任务，必须指定特定于容器的设置，例如容器运行选项、要使用的映像，以及注册表。
 
 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。
 
 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
+
+可选的 [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) 是任务运行的用来创建容器的 `docker create` 命令的附加参数。
+
+### <a name="container-task-working-directory"></a>容器任务工作目录
 
 Azure Batch 容器任务的命令行在容器中的工作目录中执行，该容器与为常规（非容器）任务的环境 Batch 设置非常相似：
 
@@ -237,9 +241,13 @@ Azure Batch 容器任务的命令行在容器中的工作目录中执行，该�
 * 所有任务环境变量都映射到该容器
 * 应用程序工作目录的设置与常规任务的设置相同，因此可使用应用程序包和资源文件等功能
 
-由于 Batch 更改了容器中的默认工作目录，因此任务在不同于典型容器入口点的位置中运行（例如，默认情况下，在 Windows 容器上的 `c:\` 或 Linux 上的 `/`）。 确保由任务命令行或容器入口点指定绝对路径（如果尚未以此方式配置）。
+因为 Batch 更改了容器中的默认工作目录，所以任务的运行位置不同于典型的容器工作目录（例如，默认情况下，Windows 容器上的 `c:\`、Linux 上的 `/` 或者在容器映像中配置的其他目录）。 若要确保容器应用程序在 Batch 上下文中正常运行，请执行以下操作之一： 
 
-以下 Python 代码片段演示从 Docker 中心拉取的 Ubuntu 容器中运行的基本命令行。 容器运行选项是任务运行的 `docker create` 命令的附加参数。 此处，`--rm` 选项会在任务完成后删除容器。
+* 确保你的任务命令行（或容器工作目录）指定一个绝对路径（如果尚未如此配置）。
+
+* 在任务的 ContainerSettings 中，在容器运行选项中设置一个工作目录。 例如，`--workdir /app`。
+
+以下 Python 代码片段演示从 Docker 中心拉取的 Ubuntu 容器中运行的基本命令行。 此处，`--rm` 容器运行选项会在任务完成后删除容器。
 
 ```python
 task_id = 'sampletask'

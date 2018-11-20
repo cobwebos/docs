@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 12f7e466bdfd6d9b6cf1c36df4daf1e76cc417f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d166d490c00a9805ec9cecae6509acc531d8d711
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729818"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959862"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "45729818"
 
 若要完成本文中的步骤，需要以下各项：
 
-1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 2. 运行 Windows 10 IoT Core 操作系统的设备。 就本演练来说，我们将使用 Raspberry Pi。
 
 
@@ -44,7 +44,7 @@ ms.locfileid: "45729818"
 
 ### <a name="prepare-the-windows-iot-core-device"></a>准备 Windows IoT Core 设备
 
-若要设置 Windows IoT Core 设备，请按 [Set up a Windows IoT Core device] (https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)（设置 Windows IoT Core 设备）中的分步指南操作。
+若要设置 Windows IoT Core 设备，请按[设置 Windows IoT Core 设备](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)中的分步指南操作。
 
 ### <a name="add-a-real-device"></a>添加真实设备
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728957"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239587"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -23,9 +23,9 @@ ms.locfileid: "45728957"
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要完成本文中的步骤，需要以下各项：
+若要完成本文中的步骤，需要以下组件：
 
-* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建 Azure IoT Central 应用程序](howto-create-application.md)。
+* 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 运行 Raspbian 操作系统的 Raspberry Pi 设备。 需要将监视器、键盘和鼠标连接到 Raspberry Pi 才能访问 GUI 环境。 Raspberry Pi 必须能够[连接到 Internet](https://www.raspberrypi.org/learning/software-guide/wifi/)。
 * 适用于 Raspberry Pi 的 [Sense Hat](https://www.raspberrypi.org/products/sense-hat/) 加载板（可选）。 此板从各种传感器收集遥测数据，然后将其发送到 Azure IoT Central 应用程序。 如果没有 Sense Hat 板，可以改用仿真器（作为 Raspberry Pi 映像的一部分提供）。
 
@@ -33,17 +33,28 @@ ms.locfileid: "45728957"
 
 从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Raspberry Pi 设备模板： 
 
-- 包含设备湿度、温度、压力、磁力计（沿 X、Y、Z 轴度量）、加速计（沿 X、Y、Z 轴度量）和陀螺仪（沿 X、Y、Z 轴度量）度量的遥测数据。
-- 显示电压、电流、风扇速度和 IR 切换的设置。
-- 包含设备属性模具号和位置云属性的属性。
-
+- 遥测数据，包括设备将收集的以下度量值：
+    - 湿度
+    - 温度
+    - 压力
+    - 磁力计 (X, Y, Z)
+    - 加速计 (X, Y, Z)
+    - 陀螺仪 (X, Y, Z)
+- 设置
+    - 电压
+    - 当前
+    - 风扇速度
+    - 红外开关。
+- 属性
+    - “模具编号”设备属性
+    - “位置”云属性
 
 有关设备模板配置的完整详细信息，请参阅 [Raspberry PI 设备模板详细信息](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
     
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从 Raspberry Pi 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
+在 Azure IoT Central 应用程序中，从 Raspberry Pi 设备模板添加真实设备，并记录设备连接详细信息（作用域 ID、设备 ID 和主密钥）。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
 
 
 ### <a name="configure-the-raspberry-pi"></a>配置 Raspberry Pi
@@ -53,11 +64,11 @@ ms.locfileid: "45728957"
 * 将遥测数据和属性值发送到 Azure IoT Central。
 * 响应在 Azure IoT Central 中做的设置更改。
 
-若要配置设备，请[按照 GitHub 上的分布说明进行操作](http://aka.ms/iotcentral-docs-Raspi-releases)。
+若要配置设备，请[按照 GitHub 上的分布说明进行操作](https://aka.ms/iotcentral-docs-Raspi-releases)。
 
 
 > [!NOTE]
-> 有关 Raspberry Pi Python 示例的详细信息，请参阅 GitHub 上的[自述](http://aka.ms/iotcentral-docs-Raspi-releases)文件。
+> 有关 Raspberry Pi Python 示例的详细信息，请参阅 GitHub 上的[自述](https://aka.ms/iotcentral-docs-Raspi-releases)文件。
 
 
 1. 设备配置后，你的设备应该很快就会开始将数据发送到 Azure IoT Central。

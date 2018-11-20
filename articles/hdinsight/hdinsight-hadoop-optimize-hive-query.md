@@ -1,115 +1,130 @@
 ---
 title: 优化 Azure HDInsight 中的 Hive 查询
-description: 了解如何为 HDInsight 中的 Hadoop 优化 Hive 查询。
+description: 本文介绍如何优化 HDInsight 中的 Hadoop 的 Apache Hive 查询。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1fd3ff89fc8428f03d22f4aa195dabf0e988ef57
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106481"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687208"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
 
-默认情况下，不会为了性能而优化 Hadoop 群集。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
+在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。 
+
+例如，选择**交互式查询**群集类型可以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+
+默认情况下，Hadoop 群集类型的 HDInsight 群集不会进行性能优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
 ## <a name="scale-out-worker-nodes"></a>向外缩放辅助节点
 
-增加群集中的辅助节点数目，即可利用更多并行运行的映射器和化简器。 在 HDInsight 中，可通过两种方式增加扩大的数目：
+增加 HDInsight 群集中的工作节点数目可以利用更多的映射器和化简器来并行运行工作。 在 HDInsight 中，可通过两种方式增加扩大的数目：
 
-* 在预配时，可以使用 Azure 门户、Azure PowerShell 或跨平台命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
+* 创建群集时，可以使用 Azure 门户、Azure PowerShell 或命令行接口指定工作节点的数目。  有关详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 以下屏幕截图显示了 Azure 门户上的工作节点配置：
   
     ![scaleout_1][image-hdi-optimize-hive-scaleout_1]
-* 在运行时，也可以扩大群集，而无需重新创建群集：
+    
+* 创建后，还可以通过编辑工作节点的数目来进一步横向扩展群集，而无需重新创建：
 
     ![scaleout_1][image-hdi-optimize-hive-scaleout_2]
 
-有关 HDInsight 支持的不同虚拟机的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
+有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
-## <a name="enable-tez"></a>启用 Tez
+## <a name="use-tez-instead-of-map-reduce"></a>使用 Tez 而不是映射化简
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代执行引擎：
+[Apache Tez](http://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
 Tez 速度更快，因为：
 
 * **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)**。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez 没有这种局限性，它可以将复杂的 DAG 作为一个作业进行处理，因此将作业启动开销降到最低。
-* **避免不必要的写入**。 由于要为 MapReduce 引擎中的同一 Hive 查询运行多个作业，每个作业的输出将写入 HDFS 以用作中间数据。 而 Tez 最大程度地减少了对每个 Hive 查询运行的作业数，因此能够避免不必要的写入。
+* **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 Tez 最大程度地减少了对每个 Hive 查询运行的作业数，因此能够避免不必要的写入。
 * **最大限度地降低启动延迟**。 Tez 可以减少需要启动的映射器数目，同时还能提高优化吞吐量，因此，更有利于最大限度地降低启动延迟。
 * **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
 * **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
 
 有关这些概念的详细信息，请参阅 [Apache TEZ](http://hortonworks.com/hadoop/tez/)。
 
-可以通过在查询的前面加上以下设置作为前缀，来执行 Tez 支持的任何 Hive 查询：
+可以使用以下 set 命令设置查询的前缀，来执行 Tez 支持的任何 Hive 查询：
 
-    set hive.execution.engine=tez;
-
-基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
-
+   ```hive
+   set hive.execution.engine=tez;
+   ```
 
 ## <a name="hive-partitioning"></a>Hive 分区
 
-I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询扫描整个 Hive 表。 这非常适合表扫描之类的查询。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
+I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询扫描整个 Hive 表。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
 
-Hive 分区的实现方法是将未经处理的数据刷新成新的目录，而每个分区区都有自己的目录 - 其中的分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
+Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
 
-![partitioning][image-hdi-optimize-hive-partitioning_1]
+![Hive 分区][image-hdi-optimize-hive-partitioning_1]
 
 一些分区注意事项：
 
 * **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
 * **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
-* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，根据“州”分区可能会导致“加利福尼亚州”的记录数几乎是“佛蒙特州”的 30 倍，因为两个州的人口有差异。
+* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
 若要创建分区表，请使用 *Partitioned By* 子句：
 
-    CREATE TABLE lineitem_part
-        (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
-         L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-         L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-         L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE            STRING, L_SHIPINSTRUCT STRING, L_SHIPMODE STRING,
-         L_COMMENT STRING)
-    PARTITIONED BY(L_SHIPDATE STRING)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    STORED AS TEXTFILE;
-
+   ```hive
+   CREATE TABLE lineitem_part
+       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
+        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
+   PARTITIONED BY(L_SHIPDATE STRING)
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+   STORED AS TEXTFILE;
+   ```
+   
 创建分区表后，可以创建静态分区或动态分区。
 
-* **静态分区**表示已在相应目录中创建了分片数据，可以请求根据目录位置在 Hive 中手动分区。 以下代码片段是一个示例。
+* **静态分区**表示已在相应目录中创建了分片数据。 使用静态分区可以根据目录位置手动添加 Hive 分区。 以下代码片段是一个示例。
   
-        INSERT OVERWRITE TABLE lineitem_part
-        PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
-        SELECT * FROM lineitem 
-        WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   ```hive
+   INSERT OVERWRITE TABLE lineitem_part
+   PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
+   SELECT * FROM lineitem 
+   WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   
+   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
+   LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+   ```
+   
+* **动态分区**表示希望 Hive 自动创建分区。 由于已基于暂存表创建了分区表，因此需要做的就是将数据插入分区表：
   
-        ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-        LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
-* **动态分区**表示希望 Hive 自动创建分区。 由于我们已基于暂存表创建了分区表，因此我们需要做的就是将数据插入分区表：
-  
-        SET hive.exec.dynamic.partition = true;
-        SET hive.exec.dynamic.partition.mode = nonstrict;
-        INSERT INTO TABLE lineitem_part
-        PARTITION (L_SHIPDATE)
-        SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
-             L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
-              L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-             L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as           L_RETURNFLAG, L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as           L_SHIPDATE_PS, L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as      L_RECEIPTDATE, L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as      L_SHIPMODE, L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
-
+   ```hive
+   SET hive.exec.dynamic.partition = true;
+   SET hive.exec.dynamic.partition.mode = nonstrict;
+   INSERT INTO TABLE lineitem_part
+   PARTITION (L_SHIPDATE)
+   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
+       L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
+       L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+       L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as L_RETURNFLAG,
+       L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as L_SHIPDATE_PS,
+       L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as L_RECEIPTDATE,
+       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
+       L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
+   ```
+   
 有关详细信息，请参阅[分区表](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)。
 
 ## <a name="use-the-orcfile-format"></a>使用 ORCFile 格式
 Hive 支持不同的文件格式。 例如：
 
-* **文本**：这是默认的文件格式，适用于大多数情况
+* **文本**：默认的文件格式，适用于大多数情况
 * **Avro**：非常适合互操作方案
 * **ORC/Parquet**：最适合用于提高性能
 
@@ -122,37 +137,41 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 
 若要启用 ORC 格式，请先使用 *Stored as ORC* 子句创建一个表：
 
-    CREATE TABLE lineitem_orc_part
-        (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
-         L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-         L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-         L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
-         L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
-    PARTITIONED BY(L_SHIPDATE STRING)
-    STORED AS ORC;
-
+   ```hive
+   CREATE TABLE lineitem_orc_part
+       (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
+        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
+        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
+   PARTITIONED BY(L_SHIPDATE STRING)
+   STORED AS ORC;
+   ```
+   
 接下来，从暂存表向 ORC 表插入数据。 例如：
 
-    INSERT INTO TABLE lineitem_orc
-    SELECT L_ORDERKEY as L_ORDERKEY, 
-           L_PARTKEY as L_PARTKEY , 
-           L_SUPPKEY as L_SUPPKEY,
-           L_LINENUMBER as L_LINENUMBER,
-            L_QUANTITY as L_QUANTITY, 
-           L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-           L_DISCOUNT as L_DISCOUNT,
-           L_TAX as L_TAX,
-           L_RETURNFLAG as L_RETURNFLAG,
-           L_LINESTATUS as L_LINESTATUS,
-           L_SHIPDATE as L_SHIPDATE,
+   ```hive
+   INSERT INTO TABLE lineitem_orc
+   SELECT L_ORDERKEY as L_ORDERKEY, 
+          L_PARTKEY as L_PARTKEY , 
+          L_SUPPKEY as L_SUPPKEY,
+          L_LINENUMBER as L_LINENUMBER,
+          L_QUANTITY as L_QUANTITY, 
+          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+          L_DISCOUNT as L_DISCOUNT,
+          L_TAX as L_TAX,
+          L_RETURNFLAG as L_RETURNFLAG,
+          L_LINESTATUS as L_LINESTATUS,
+          L_SHIPDATE as L_SHIPDATE,
            L_COMMITDATE as L_COMMITDATE,
            L_RECEIPTDATE as L_RECEIPTDATE, 
            L_SHIPINSTRUCT as L_SHIPINSTRUCT,
            L_SHIPMODE as L_SHIPMODE,
            L_COMMENT as L_COMMENT
     FROM lineitem;
-
-可在[此处](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)阅读有关 ORC 格式的详细信息。
+   ```
+   
+可在 [Hive 语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)中阅读有关 ORC 格式的详细信息。
 
 ## <a name="vectorization"></a>向量化
 
@@ -160,7 +179,9 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 
 若要启用向量化，请在 Hive 查询的前面加上以下设置作为前缀：
 
+   ```hive
     set hive.vectorized.execution.enabled = true;
+   ```
 
 有关详细信息，请参阅[向量化查询执行](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)。
 

@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955404"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288197"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 终结点与 v1.0 终结点的比较
 
@@ -41,7 +41,7 @@ ms.locfileid: "49955404"
 
 * 对于配置为[单租户](single-and-multi-tenant-apps.md)的应用程序，或者配置为指向租户特定的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 的多租户应用程序，v1.0 和 v2.0 终结点还接受 Azure AD 目录的[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)登录。
 
-v2.0 终结点允许编写接受个人帐户以及工作和学校帐户登录的应用，使你能够编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
+v2.0 终结点允许编写接受个人帐户以及工作和学校帐户登录的应用，使你能够编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://developer.microsoft.com/graph)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
 对于 v2.0 终结点，可以使用单个库 (MSAL) 来获取消费者、教育和企业领域的访问权限。
 

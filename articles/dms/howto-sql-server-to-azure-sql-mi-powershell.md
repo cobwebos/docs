@@ -1,6 +1,6 @@
 ---
-title: 在 Microsoft Azure PowerShell 中使用 Azure 数据库迁移服务模块从本地 SQL Server 迁移到 Azure SQL DB MI | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB MI。
+title: 使用数据库迁移服务和 PowerShell 将 SQL Server 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 6760d2832b6c39759f9287797363fcd5a116ccfb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 64d77a17241c44c9d450b9e7602222cdb89482b7
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883648"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247150"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB
-在本文中，我们将使用 Microsoft Azure PowerShell 将还原为 SQL Server 2005 或更高版本的本地实例的 **Adventureworks2012** 数据库迁移到 Azure SQL 数据库。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。
+# <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库托管实例
+在本文中，我们将使用 Microsoft Azure PowerShell 将还原为 SQL Server 2005 或更高版本的本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库托管实例。 可以使用 Microsoft Azure PowerShell 中的 `AzureRM.DataMigration` 模块，将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
 
 在本文中，学习如何：
 > [!div class="checklist"]
@@ -195,7 +195,7 @@ $selectedAgentJobs = @("agentJob1", "agentJob2")
 ### <a name="create-and-start-a-migration-task"></a>创建并启动迁移任务
 
 使用 `New-AzureRmDataMigrationTask` cmdlet 创建并启动迁移任务。 此 cmdlet 需要以下参数：
-- TaskType。 要为 SQL Server 创建的迁移任务类型，预期需要 Azure SQL 数据库托管实例迁移类型 *MigrateSqlServerSqlDbMi*。 
+- TaskType。 要创建的迁移任务的类型。对于从 SQL Server 到 Azure SQL 数据库托管实例的迁移类型，此项应为 *MigrateSqlServerSqlDbMi*。 
 - ResourceGroupName。 要在其中创建任务的 Azure 资源组的名称。
 - ServiceName。 要在其中创建任务的 Azure 数据库迁移服务实例。
 - ProjectName。 要在其中创建任务的 Azure 数据库迁移服务项目的名称。 

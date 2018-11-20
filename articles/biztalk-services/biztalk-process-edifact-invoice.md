@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633861"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244485"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>指南：使用 Azure BizTalk 服务处理 EDIFACT 发票
 
@@ -28,10 +28,10 @@ ms.locfileid: "26633861"
 可使用 BizTalk 服务门户配置和部署 X12 和 EDIFACT 协议。 在本教程中，我们着重介绍如何创建用于贸易合作伙伴之间交换发票的 EDIFACT 协议。 本教程是围绕一个端到端业务解决方案编写的，该解决方案涉及两个互换 EDIFACT 消息的贸易合作伙伴（Northwind 和 Contoso）。  
 
 ## <a name="sample-based-on-this-tutorial"></a>基于本教程的示例
-本教程围绕一个示例编写，即**使用 BizTalk 服务发送 EDIFACT 发票**，可从 [MSDN 代码库](http://go.microsoft.com/fwlink/?LinkId=401005)下载该示例。 可使用该示例，并浏览本教程以了解其生成方法。 也可使用本教程从头创建自己的解决方案。 本教程主要针对第二种方法，介绍如何生成此解决方案。 此外，本教程尽量与示例保持一致，并对各项目（例如架构、转换）使用与示例中相同的名称。  
+本教程围绕一个示例编写，即**使用 BizTalk 服务发送 EDIFACT 发票**，可从 [MSDN 代码库](https://go.microsoft.com/fwlink/?LinkId=401005)下载该示例。 可使用该示例，并浏览本教程以了解其生成方法。 也可使用本教程从头创建自己的解决方案。 本教程主要针对第二种方法，介绍如何生成此解决方案。 此外，本教程尽量与示例保持一致，并对各项目（例如架构、转换）使用与示例中相同的名称。  
 
 > [!NOTE]
-> 由于此解决方案涉及从 EAI 桥向 EDI 桥发送消息，因此会重复使用 [BizTalk Services Bridge chaining sample](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104)（BizTalk 服务桥链接示例）示例。  
+> 由于此解决方案涉及从 EAI 桥向 EDI 桥发送消息，因此会重复使用 [BizTalk Services Bridge chaining sample](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104)（BizTalk 服务桥链接示例）示例。  
 > 
 > 
 
@@ -59,7 +59,7 @@ ms.locfileid: "26633861"
 * 必须具有 BizTalk 服务订阅。 本教程假定用户已拥有 BizTalk 服务订阅，名为 **contosowabs**。
 * 在 BizTalk 服务门户中注册 BizTalk 服务订阅。 有关说明，请参阅[在 BizTalk 服务门户中注册 BizTalk 服务部署](https://msdn.microsoft.com/library/hh689837.aspx)
 * 必须安装 Visual Studio。
-* 必须安装 BizTalk 服务 SDK。 可从 [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057) 下载该 SDK  
+* 必须安装 BizTalk 服务 SDK。 可以从 [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) 下载 SDK  
 
 ## <a name="step-1-create-the-service-bus-queues"></a>步骤 1：创建服务总线队列
 此解决方案使用服务总线队列在贸易合作伙伴之间交换消息。 Contoso 和 Northwind 从 EAI 和/或 EDI 桥使用消息的位置将消息发送到队列。 此解决方案需要三个服务总线队列：
@@ -121,7 +121,7 @@ ms.locfileid: "26633861"
       ![][6]  
       
       1. 为“规则名称”、“路由规则”和“路由目标”提供值，如图所示。
-      2. 单击“保存” 。
+      2. 单击“ **保存**”。
    5. 还是在“路由”选项卡上，指定将挂起的回单（处理期间失败的回单）路由到的位置。 将传输类型设置为 Azure 服务总线、路由目标类型设置为“队列”、向“共享访问签名”(SAS) 对类型进行身份验证、为服务总线命名空间提供 SAS 连接字符串，然后输入队列名称“suspended”。
 5. 最后，单击“部署”对协议进行部署。 记录在其中部署发送和接收协议的终结点。
    
@@ -154,7 +154,7 @@ ms.locfileid: "26633861"
 7. 在解决方案资源管理器中，展开“MessageFlowItinerary.bcs”并双击“EDIBridge.config”文件。 用以下内容替换“EDIBridge.config”的内容。
    
    > [!NOTE]
-   > 为何需要编辑 .config 文件？ 添加到桥设计器画布的外部服务终结点代表之前部署的 EDI 桥。 EDI 桥是双向桥，具有发送和接收端。 但添加到桥设计器的 EAI 桥是单向桥。 因此，要处理两个桥的不同消息交换模式，需通过将其设置包含在 .config 文件中来使用自定义桥行为。 此外，自定义行为还处理对 EDI 发送桥终结点的身份验证。此自定义行为可在 [BizTalk 服务桥链接示例 - EAI 到 EDI](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) 中用作单独示例。 此解决方案重复使用该示例。  
+   > 为何需要编辑 .config 文件？ 添加到桥设计器画布的外部服务终结点代表之前部署的 EDI 桥。 EDI 桥是双向桥，具有发送和接收端。 但添加到桥设计器的 EAI 桥是单向桥。 因此，要处理两个桥的不同消息交换模式，需通过将其设置包含在 .config 文件中来使用自定义桥行为。 此外，自定义行为还处理对 EDI 发送桥终结点的身份验证。此自定义行为可在 [BizTalk 服务桥链接示例 - EAI 到 EDI](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) 中用作单独示例。 此解决方案重复使用该示例。  
    > 
    > 
    

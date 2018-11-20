@@ -1,6 +1,6 @@
 ---
-title: 将 AD FS 本地应用迁移到 Azure。 | Microsoft Docs
-description: 本文旨在帮助组织了解如何将本地应用程序迁移到 Azure AD，并着重介绍联合 SaaS 应用程序。
+title: 将应用从 AD FS 移到 Azure AD。 | Microsoft Docs
+description: 本文旨在帮助组织了解如何将应用程序移到 Azure AD，并着重介绍联合 SaaS 应用程序。
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903022"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959054"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>将应用程序从 AD FS 移到 Azure AD 
 
-本文介绍如何将本地应用程序迁移到 Azure Active Directory (Azure AD)， 并着重介绍联合 SaaS 应用程序。 
+本文介绍如何将应用程序从 AD FS 移到 Azure Active Directory (Azure AD)， 并着重介绍联合 SaaS 应用程序。 
 
 本文不提供分步指南， 而是提供帮助你实现迁移的概念性指南，让你了解如何将本地配置转换为 Azure AD。 本文还介绍常用方案。
 
@@ -31,7 +31,7 @@ ms.locfileid: "48903022"
 
 如果像大多数组织一样，你可能正准备采用云应用程序和标识。 也许你正在使用 Office 365 和 Azure AD Connect 启动并运行某个应用程序。 也许你已经为某些但并非所有关键工作负荷设置了基于云的 SaaS 应用程序。  
 
-许多组织的 SaaS 或自定义业务线 (LOB) 应用都与本地登录服务（例如 Active Directory 联合身份验证服务 (AD FS)、Office 365 以及基于 Azure AD 的应用）直接联合。 本迁移指南介绍将本地应用程序迁移到 Azure AD 的原因和方法。
+许多组织的 SaaS 或自定义业务线 (LOB) 应用都与本地登录服务（例如 Active Directory 联合身份验证服务 (AD FS)、Office 365 以及基于 Azure AD 的应用）直接联合。 本指南介绍为何以及如何将应用程序移到 Azure AD。
 
 >[!NOTE]
 >本指南详细介绍了 SaaS 应用配置和迁移，并大致介绍了自定义 LOB 应用。 将来计划推出自定义 LOB 应用的更详细指南。
@@ -40,9 +40,9 @@ ms.locfileid: "48903022"
 
 ![通过 Azure AD 进行联合的应用](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>将应用迁移到 Azure AD 的原因
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>将应用移到 Azure AD 的原因
 
-对于已使用 AD FS、Ping 或其他本地身份验证提供程序的组织，将应用迁移到 Azure AD 有以下好处：
+对于已使用 AD FS、Ping 或其他本地身份验证提供程序的组织，将应用移到 Azure AD 具有以下优点：
 
 **访问更安全**
 - 使用 [Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)配置细致的按应用程序访问控制，包括 Azure 多重身份验证。 将这些策略应用到 SaaS 和自定义应用的方式可以与现在对 Office 365 应用策略的方式相同。
@@ -61,7 +61,7 @@ ms.locfileid: "48903022"
 - 在获得 Azure AD 优势的同时，可以继续使用本地解决方案进行身份验证， 因此仍可继续利用本地多重身份验证解决方案、日志记录、审核等方面的优势。 
 
 **有助于停用本地标识提供者**
-- 若要停用本地身份验证产品，组织可以将应用迁移到 Azure AD，这样即可节省部分工作，从而轻松地进行转换。 
+- 若要停用本地身份验证产品，组织可以将应用移到 Azure AD，这样即可节省部分工作，从而轻松地进行转换。 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>将本地应用类型映射到 Azure AD 中的应用类型
 可以根据所用登录类型将大多数应用划分到多个类别中的一个。 这些类别决定了应用在 Azure AD 中的呈现方式。
@@ -126,8 +126,8 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 |标识符/</br>“颁发者”|从应用的角度来看，IdP 的标识符（有时称为“颁发者 ID”）。</br></br>在 SAML 令牌中，此值显示为 **Issuer** 元素。|AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符，位于“服务” > “编辑联合身份验证服务属性”下。 例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//sts.windows.net/{tenant-id}/|
 |IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” > “终结点” > “元数据” > “类型: 联合元数据”下。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
 
-## <a name="migrating-saas-apps"></a>迁移 SaaS 应用
-目前，将 SaaS 应用从 AD FS 或其他标识提供者迁移到 Azure AD 需要手动进行。 如需特定于应用的指南，请查看[介绍如何集成市场中的 SaaS 应用的教程的列表](../saas-apps/tutorial-list.md)。
+## <a name="moving-saas-apps"></a>移动 SaaS 应用
+目前，将 SaaS 应用从 AD FS 或其他标识提供者移到 Azure AD 需要手动进行。 如需特定于应用的指南，请查看[介绍如何集成市场中的 SaaS 应用的教程的列表](../saas-apps/tutorial-list.md)。
 
 这些集成教程假定你在进行绿色字段集成。 在计划、评估、配置和直接转换应用时，应该了解一些特定于迁移的重要概念：  
 - 某些应用可以轻松地进行迁移。 具有较复杂要求（例如自定义声明）的应用可能需要在 Azure AD 和/或 Azure AD Connect 中进行其他配置。
@@ -135,7 +135,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - 确定需要其他声明以后，请确保这些声明在 Azure AD 中可用。 请检查 Azure AD Connect 同步配置，确保将所需属性（例如 **samAccountName**）同步到 Azure AD。
 - 属性在 Azure AD 中可用以后，即可在 Azure AD 中添加声明颁发规则，以便将这些属性作为声明包括在颁发的令牌中。 请在 Azure AD 的应用的“单一登录”属性中添加这些规则。
 
-### <a name="assess-what-can-be-migrated"></a>评估可迁移的内容
+### <a name="assess-what-can-be-moved"></a>评估可移动的内容
 SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非市场应用程序进行集成。  
 
 某些配置需要额外的步骤才能在 Azure AD 中进行配置，某些配置目前不受支持。 若要确定哪些内容可以移动，请查看每个应用的当前配置， 尤其请注意以下配置：
@@ -144,8 +144,8 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 - 颁发的 SAML 令牌版本。
 - 其他配置，例如，颁发授权规则或访问控制策略和多重身份验证（其他身份验证）规则。
 
-#### <a name="what-can-be-migrated-today"></a>目前可迁移的内容
-目前可以轻松迁移的应用包括 SAML 2.0 应用，这些应用使用包含配置元素和声明的标准集。 这些应用可以包含：
+#### <a name="what-can-be-moved-today"></a>目前可以移动的内容
+目前可以轻松移动的应用包括 SAML 2.0 应用，这些应用使用包含配置元素和声明的标准集。 这些应用可以包含：
 - 用户主体名称。
 - 电子邮件地址。
 - 名。

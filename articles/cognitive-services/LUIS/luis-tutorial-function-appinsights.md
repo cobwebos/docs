@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 从 LUIS 获取 Application Insights 数据
+title: 使用 Node.js 从 LUIS 获取 Application Insights 数据
 titleSuffix: Azure Cognitive Services
 description: 使用 Node.js 生成与 LUIS 应用程序和 Application Insights 集成的机器人。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037994"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321948"
 ---
 # <a name="add-luis-results-to-application-insights"></a>将 LUIS 结果添加到 Application Insights
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。

@@ -4,7 +4,7 @@ description: 本文档包含的演练说明如何使用媒体编码器高级工�
 services: media-services
 documentationcenter: ''
 author: xstof
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3cba7a6a8bf6fbe199664b738b68ceca3a7746f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257356"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -84,13 +84,13 @@ ms.locfileid: "33783946"
 新编码工作流
 
 ### <a id="MXF_to_MP4_with_file_input"></a>使用媒体文件输入
-为了接受输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。 对“媒体文件输入”重复此操作，并将“主源文件”组件从“媒体文件输入”连接到“文件名”输入插针。
+为了接受输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。 对“媒体文件输入”重复此操作，并将“主源文件”组件连接到“媒体文件输入”中的“文件名”输入插针。
 
 ![连接的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
 
 连接的媒体文件输入
 
-首先，确定在设计自定义工作流时要使用的合适示例文件。 为此，请单击设计器窗格背景，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择用于测试工作流的所需文件。 媒体文件输入组件会检查文件，并填充其输出插针，以反映它检查的示例文件的详细信息。
+首先，确定在设计自定义工作流时要使用的合适示例文件。 为此，请单击设计器窗格背景，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择测试工作流所需的文件。 媒体文件输入组件会检查文件，并填充其输出插针，以反映它检查的示例文件的详细信息。
 
 ![填充的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-populated-media-file-input.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "33783946"
 配置的输入和输出属性
 
 ### <a id="MXF_to_MP4_streams"></a>检查媒体流
-通常，我们想要知道流在经过工作流之后的外观。 若要在工作流中的任一时间点检查流，只需单击任何组件上的输出或输入插针。 在此情况下，请尝试从“媒体文件输入”单击“未压缩的视频”输出插针。 将打开一个对话框，让你检查输出视频。
+通常，我们想要知道流在经过工作流之后的外观。 若要在工作流中的任一时间点检查流，只需单击任何组件上的输出或输入插针。 在此情况下，请尝试单击“媒体文件输入”中的“未压缩的视频”输出插针。 此时将打开一个用于检查输出视频的对话框。
 
 ![检查未压缩的视频输出插针](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "33783946"
 在本例中，它表明视频包含针对一段接近 2 分钟的视频以 4:2:2 采样率、每秒 24 帧的速率处理的 1920x1080 输入。
 
 ### <a id="MXF_to_MP4_file_generation"></a>添加视频编码器用于生成 .MP4 文件
-现在，“未压缩的视频”和多个“未压缩的音频”输出插针可供用于媒体文件输入。 若要为输入视频编码，需要向工作流添加一个编码组件 - 在本例中用于生成 .MP4 文件。
+现在，“媒体文件输入”上有一个“未压缩的视频”和多个“未压缩的音频”输出插针可以使用。 若要为输入视频编码，需要向工作流添加一个编码组件 - 在本例中用于生成 .MP4 文件。
 
 要将视频流编码成 H.264，请将 AVC 视频编码器组件添加到设计器图面。 此组件将未压缩的视频流作为输入，并在其输出插针上提供 AVC 压缩视频流。
 
@@ -124,14 +124,14 @@ ms.locfileid: "33783946"
 
 * 输出宽度和输出高度：决定了编码视频的分辨率。 在本例中，640x360 是合适的设置。
 * 帧速率：设置为通过时，它只采用源帧速率，不过可以覆盖。 这种帧速率转换并未经过运动补偿。
-* 配置文件和级别：决定了 AVC 配置文件和级别。 要方利地获取不同级别和配置文件的详细信息，请单击“AVC 视频编码器”组件中的问号图标，帮助页面会显示有关每个级别的详细信息。 对于此示例，请使用级别为 3.2 的主配置文件（默认设置）。
+* 档次和级别：决定了 AVC 档次和级别。 要方利地获取不同级别和档次的详细信息，请单击“AVC 视频编码器”组件中的问号图标，帮助页面会显示有关每个级别的详细信息。 对于此示例，请使用级别为 3.2 的主档次（默认设置）。
 * 速率控制模式和比特率 (kbps)：在本例中，选择使用 1200 kbps 恒定比特率 (CBR) 输出
 * 视频格式：提供关于写入到 H.264 流的 VUI（视频可用性信息）的信息（编解码器可能用于增强显示、但对正确编解码并非必需的辅助信息）：
 * NTSC（一般用于美国或日本，使用 30 fps）
 * PAL（一般用于欧洲地区，使用 25 fps）
-* GOP 大小模式：根据我们的目的，设置固定的 GOP 大小，主要间隔为 2 秒，并关闭 GOP。 设置为 2 秒可确保与 Azure 媒体服务提供的动态打包兼容。
+* GOP 大小模式：根据我们的目的，设置固定的 GOP 大小，主要间隔为 2 秒，使用封闭式 GOP。 设置为 2 秒可确保与 Azure 媒体服务提供的动态打包兼容。
 
-要馈送 AVC 编码器，请将“未压缩的视频”输出插针从“媒体文件输入”组件连接到“AVC 编码器”的“未压缩的视频”输入插针。
+要馈送 AVC 编码器，请将“媒体文件输入”组件中的“未压缩的视频”输出插针连接到“AVC 编码器”中的“未压缩的视频”输入插针。
 
 ![连接的 AVC 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-avc-encoder.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "33783946"
 
 使用的文件名是由“文件”属性确定的。 尽管可以将该属性硬编码为给定值，但用户很可能希望改用表达式来设置它。
 
-若要让工作流通过表达式自动判断输出“文件名”属性，请单击“文件名”旁边的按钮（文件夹图标旁）。 从下拉菜单中选择“表达式”。 这会显示表达式编辑器。 先清除编辑器的内容。
+若要让工作流通过表达式自动判断输出“文件名”属性，请单击“文件名”旁边的按钮（文件夹图标旁）。 从下拉菜单中选择“表达式”。 此时会显示表达式编辑器。 先清除编辑器的内容。
 
 ![空白的表达式编辑器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-empty-expression-editor.png)
 
@@ -641,7 +641,7 @@ Hello world 日志输出
 
 已将媒体文件输入替换为剪辑列表源
 
-剪辑列表源组件将它视为输入“剪辑列表 XML”。 选择要在本地测试的源文件，自动填充此剪辑列表 XML。
+剪辑列表源组件接收“剪辑列表 XML”作为输入。 选择要在本地测试的源文件，自动填充此剪辑列表 XML。
 
 ![自动填充的剪辑列表 XML 属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-auto-populated-clip-list-xml-property.png)
 
@@ -939,9 +939,9 @@ Hello world 日志输出
 ```
 
 ## <a name="also-see"></a>另请参阅
-[在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
-[如何在 Azure 媒体服务中使用高级编码](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 [使用 Azure 媒体服务对请求内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)
 
@@ -949,7 +949,7 @@ Hello world 日志输出
 
 [示例工作流文件](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Azure 媒体服务资源管理器工具](http://aka.ms/amse)
+[Azure 媒体服务资源管理器工具](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

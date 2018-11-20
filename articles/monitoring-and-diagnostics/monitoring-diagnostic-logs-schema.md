@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 035b12c85720817501da9f4ad580aa8e7da8fdc4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116187"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280501"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -47,7 +47,7 @@ ms.locfileid: "49116187"
 
 | 服务 | 架构和文档 |
 | --- | --- |
-| Azure Active Directory | [概述](../active-directory/reports-monitoring/overview-activity-logs-in-azure-monitor.md)、[审核日志架构](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)和[登录架构](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [概述](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[审核日志架构](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)和[登录架构](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API 管理 | [API 管理诊断日志](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../application-gateway/application-gateway-diagnostics.md) |
@@ -92,9 +92,11 @@ ms.locfileid: "49116187"
 |Microsoft.Batch/batchAccounts|ServiceLog|服务日志|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 |Microsoft.ClassicNetwork/networksecuritygroups|网络安全组规则流事件|网络安全组规则流事件|
-|Microsoft.CognitiveServices/accounts|审核|审核|
+|Microsoft.CognitiveServices/accounts|审核|审核日志|
+|Microsoft.CognitiveServices/accounts|RequestResponse|请求和响应日志|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API 服务器|
 |Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes 控制器管理器|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Kubernetes 群集自动缩放程序|
 |Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes 计划程序|
 |Microsoft.ContainerService/managedClusters|防护|身份验证 Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
@@ -105,7 +107,7 @@ ms.locfileid: "49116187"
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|Requests|请求日志|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 慢查询日志|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 服务器日志|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.Devices/IotHubs|连接|连接|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|设备遥测|
@@ -128,6 +130,14 @@ ms.locfileid: "49116187"
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自动缩放评估|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自动缩放缩放操作|
+|Microsoft.IoTSpaces/Graph|跟踪|跟踪|
+|Microsoft.IoTSpaces/Graph|可运行|可运行|
+|Microsoft.IoTSpaces/Graph|审核|审核|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|流入量|流入量|
+|Microsoft.IoTSpaces/Graph|流出量|流出量|
 |Microsoft.KeyVault/vaults|AuditEvent|审核日志|
 |Microsoft.Logic/workflows|WorkflowRuntime|工作流运行时诊断事件|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
@@ -136,6 +146,8 @@ ms.locfileid: "49116187"
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保护通知|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|DDoS 缓解决策的流日志|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|DDoS 缓解措施报告|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM 保护警报|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|应用程序网关访问日志|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|应用程序网关性能日志|
@@ -151,6 +163,8 @@ ms.locfileid: "49116187"
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 诊断日志|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|流量管理器探测运行状况结果事件|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|对等互连路由表日志|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Frontdoor 访问日志|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor Web 应用程序防火墙日志|
 |Microsoft.PowerBIDedicated/capacities|引擎|引擎|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery 作业|
@@ -173,10 +187,21 @@ ms.locfileid: "49116187"
 |Microsoft.Sql/servers/databases|死锁数|死锁数|
 |Microsoft.Sql/servers/databases|审核|审核日志|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL 安全审核事件|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL DW 请求|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL DW 请求步骤|
+|Microsoft.Sql/servers/databases|DmsWorkers|Dms 辅助角色|
+|Microsoft.Sql/servers/databases|ExecRequests|Exec 请求|
+|Microsoft.Sql/servers/databases|RequestSteps|请求步骤|
+|Microsoft.Sql/servers/databases|SqlRequests|Sql 请求|
+|Microsoft.Sql/servers/databases|Waits|等待|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|资源使用情况统计信息|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL 安全审核事件|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
+|Microsoft.Sql/managedInstances/databases|错误|错误|
 |Microsoft.StreamAnalytics/streamingjobs|执行|执行|
 |Microsoft.StreamAnalytics/streamingjobs|创作|创作|
+|microsoft.web/sites|FunctionExecutionLogs|函数执行日志|
+|microsoft.web/sites/slots|FunctionExecutionLogs|函数执行日志|
 
 ## <a name="next-steps"></a>后续步骤
 

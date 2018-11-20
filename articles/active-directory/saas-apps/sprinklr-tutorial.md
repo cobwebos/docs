@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430175"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39430175"
 
     ![配置单一登录](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.sprinklr.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.sprinklr.com`
 
@@ -147,7 +147,7 @@ ms.locfileid: "39430175"
    
     ![单一登录](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
 
-    a. 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：*WAADSSOTest*）。
 
     b. 选择“启用”。
 
@@ -195,7 +195,7 @@ ms.locfileid: "39430175"
  
     ![创建 Azure AD 测试用户](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -223,7 +223,7 @@ ms.locfileid: "39430175"
    
     ![编辑用户](./media/sprinklr-tutorial/ic782916.png "Edit user") 
 
-    a. 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”、“名字”和“姓氏”文本框中，键入要预配的 Azure AD 用户帐户的信息。
 
     b. 选择“禁用密码”。
 
@@ -240,7 +240,7 @@ ms.locfileid: "39430175"
    
     ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
 
-    a. 从“全局”列表中，选择“ALL\_Permissions”。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“全局”列表中，选择“ALL\_Permissions”。  
 
     b. 单击“更新”。
 
@@ -286,7 +286,7 @@ ms.locfileid: "39430175"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

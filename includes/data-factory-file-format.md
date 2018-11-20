@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 9722ca0d83901ec1c73468fb5c192dd2f54c38c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571853"
+---
 ## <a name="specifying-formats"></a>指定格式
 Azure 数据工厂支持以下格式类型：
 
@@ -400,7 +413,7 @@ Azure 数据工厂支持以下格式类型：
 ```
 
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 ORC 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 如果不是在本地与云数据存储之间**按原样**复制 ORC 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
 >
 >
 
@@ -419,7 +432,7 @@ Azure 数据工厂支持以下格式类型：
 }
 ```
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 Parquet 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 如果不是在本地与云数据存储之间**按原样**复制 Parquet 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
 >
 >
 

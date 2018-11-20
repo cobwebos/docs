@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5822d32906419e8b0615dd8686ec47de28deb38f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 15991faa61dc5f543b1b9db491bc1669daf219cc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182193"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014204"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -208,7 +208,7 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="log-searches-with-performance-records"></a>含有性能记录的日志搜索
 下表提供了检索性能记录的不同日志搜索的示例。
 
-| 查询 | Description |
+| Query | Description |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |
@@ -227,5 +227,5 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 
 ## <a name="next-steps"></a>后续步骤
 * [从 Linux 应用程序收集性能计数器](log-analytics-data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。  
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
 * 将收集的数据导出到 [Power BI](log-analytics-powerbi.md) 以进行其他可视化操作和分析。

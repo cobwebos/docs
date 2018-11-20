@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141413"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283608"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 预览版简介
 
-Azure Data Lake Storage Gen2 预览版是一组致力于进行大数据分析的功能，基于[Azure Blob 存储](../blobs/storage-blobs-introduction.md)而构建。 它允许你使用文件系统和对象存储范例与数据进行交互。 这使得 Data Lake Storage Gen2 成为唯一基于云的多模式存储服务，允许你从你所有数据中提取分析值。
+Azure Data Lake Storage Gen2 预览版是一组致力于进行大数据分析的功能，基于 [Azure Blob 存储](../blobs/storage-blobs-introduction.md)而构建。 它可使用文件系统和对象存储范例与数据进行交互。 Data Lake Storage Gen2 的增加使 Azure 存储成为了唯一的基于云的多模式平台，让用户能够从所有数据中提取分析值。
 
-Data Lake Storage Gen2 具有完整的分析数据生命周期所需的所有功能。 这是通过融合我们两个现有存储服务的功能而产生的。 [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) 的功能（如文件系统语义、文件级安全性和规模）可与低成本的分层存储、高可用性/灾难恢复功能以及 [Azure Blob 存储](../blobs/storage-blobs-introduction.md)中的大量 SDK/工具生态系统结合使用。 在 Data Lake Storage Gen2 中，在添加针对分析工作负载优化的文件系统接口的优点的同时，还保留了对象存储的所有功能。
+Data Lake Storage Gen2 为 Azure 存储提供了分析数据的整个生命周期所需的所有特性。 它是将我们的两个现有存储服务（Azure Blob 存储和 Azure Data Lake Storage Gen1）的功能进行聚合得到的结果。 [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) 的功能（例如文件系统语义、文件级安全性和规模）与 [Azure Blob 存储](../blobs/storage-blobs-introduction.md)中的低成本分层存储、高可用性/灾难恢复功能进行了组合。
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>专为企业大数据分析而设计
 
-Data Lake Storage Gen2 是用于在 Azure 上生成企业 data lake (EDL) 的基础存储服务。 Data Lake Storage Gen2 从一开始就设计为存储数千万亿字节的信息，同时保持数百千兆位的吞吐量，为你提供一种管理大量数据的简单办法。
+Data Lake Storage Gen2 使 Azure 存储成为用于在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为存储数千万亿字节的信息，同时保持数百千兆位的吞吐量，允许你轻松管理大量数据。
 
-Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一个[分层命名空间](./namespace.md)，该存储服务将对象/文件组织成用于执行数据访问的目录层次结构。 分层命名空间还使 Data Lake Storage Gen2 能够同时支持对象存储和文件系统范例。 例如，常见的对象存储命名约定在名称中使用斜杠来模拟分层文件夹结构。 这种结构在 Data Lake Storage Gen2 中得以真正实现。 诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
+Data Lake Storage Gen2 的一个基础部件是在 Blob 存储服务中添加一个[分层命名空间](./namespace.md)，该存储服务将对象/文件组织成用于高效数据访问的目录层次结构。 分层命名空间还使 Data Lake Storage Gen2 能够同时支持对象存储和文件系统范例。 例如，常见的对象存储命名约定在名称中使用斜杠来模拟分层文件夹结构。 这种结构在 Data Lake Storage Gen2 中得以真正实现。 诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
 
 过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Data Lake Storage Gen2 通过以下方式解决这些方面中的每个问题：
 
@@ -45,9 +45,9 @@ Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一
 
 - Hadoop 兼容访问：Data Lake Storage Gen2 允许你管理和访问数据，就像在 [Hadoop 分布式文件系统 (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。 新的 [ABFS 驱动程序](./abfs-driver.md)可在所有 Apache Hadoop 环境中使用，包括 [Azure HDInsight](../../hdinsight/index.yml) 和 [Azure Databricks](../../azure-databricks/index.yml)，以访问 Data Lake Storage Gen2 中存储的数据。
 
-- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
+- **POSIX 权限的超集**：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
 
-- 成本效益：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](../common/storage-lifecycle-managment-concepts.md)的内置功能使成本保持在最低水平。
+- **成本效益**：Data Lake Storage Gen2 提供了低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](../common/storage-lifecycle-managment-concepts.md)的内置功能使成本保持在最低水平。
 
 - 使用 Blob 存储工具、框架和应用：Data Lake Storage Gen2 可以继续使用目前适用于 Blob 存储的各种工具、框架和应用程序。
 
@@ -70,4 +70,4 @@ Data Lake Storage Gen2 的一个基本功能是在 Blob 存储服务中添加一
 * [分层命名空间](./namespace.md)
 * [创建存储帐户](./quickstart-create-account.md)
 * [创建采用 Azure Data Lake Storage Gen2 的 HDInsight 群集](./quickstart-create-connect-hdi-cluster.md)
-* [在 Azure Databricks 中使用 Azure Data Lake Storage Gen2 帐户](./quickstart-create-databricks-account.md) 
+* [在 Azure Databricks 中使用 Azure Data Lake Storage Gen2 帐户](./quickstart-create-databricks-account.md)

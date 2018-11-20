@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 62dc796de430e7c5926f3231db29ef554f210142
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298262"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016771"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -74,7 +74,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 拥有全局管理员访问权限的有效 Azure AD Premium P1 订阅
 * 用于测试和集成目的的 Workday 实现租户
 * 在 Workday 中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据
-* 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Service 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
+* 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Server 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
 * 已安装 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)，用于在 Active Directory 与 Azure AD 之间同步
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -200,9 +200,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | ---------- | ---------- | 
 | “获取”和“放置” | 工作人员数据：公职人员报告 |
 | “获取”和“放置” | 工作人员数据：工作联系信息 |
-| Get | 工作人员数据：所有职位 |
-| Get | 工作人员数据：当前人员配备信息 |
-| Get | 工作人员数据：工作人员个人资料中的职称 |
+| 获取 | 工作人员数据：所有职位 |
+| 获取 | 工作人员数据：当前人员配备信息 |
+| 获取 | 工作人员数据：工作人员个人资料中的职称 |
 
 
 ### <a name="activate-security-policy-changes"></a>激活安全策略更改
@@ -365,7 +365,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **UserID**    |  cn    |   |   仅在创建时写入 |
 | **Join("@", [UserID], "contoso.com")**   | userPrincipalName     |     | 仅在创建时写入 
 | **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
-| **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 创建 + 更新 |
+| **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 创建 + 更新 |
 | **名字**   | givenName       |     |    创建 + 更新 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **PreferredNameData**  |  displayName |     |   创建 + 更新 |

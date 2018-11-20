@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4e8e6a6bbe5ece856c1524ca4c2fc46f0cb9137e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305956"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231033"
 ---
 # <a name="connector-version-release-history"></a>连接器版本发行历史记录
 Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接器会经常更新。
@@ -33,7 +33,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 
 相关链接：
 
-* [下载最新连接器](http://go.microsoft.com/fwlink/?LinkId=717495)
+* [下载最新连接器](https://go.microsoft.com/fwlink/?LinkId=717495)
 * [泛型 LDAP 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)参考文档
 * [泛型 SQL 连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)参考文档
 * [Web 服务连接器](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws)参考文档
@@ -98,7 +98,7 @@ Forefront Identity Manager (FIM) 和 Microsoft Identity Manager (MIM) 的连接�
 * 泛型 Web 服务：
   * Wsconfig 工具未从 REST 服务方法的“示例请求”中正确转换 Json 数组。 这导致序列化 REST 请求的此 Json 数组时出现问题。
   * Web 服务连接器配置工具不支持在 JSON 属性名称中使用空间符号 
-    * 可以将替换模式手动添加到 WSConfigTool.exe.config 文件，例如 ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * 可以将替换模式手动添加到 WSConfigTool.exe.config 文件，例如 ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```
 > [!NOTE]
 > 导出时需要 JSONSpaceNamePattern 密钥，会收到以下错误：消息: 空名称无效。 
 
@@ -143,7 +143,7 @@ Lotus：
 ### <a name="enhancements"></a>增强功能
 
 * 泛型 SQL：</br>
-  **情景症状：** 我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
+  **情景症状：** 我们仅允许引用一个对象类型，并要求对成员使用交叉引用，这是一个已知的 SQL 连接器限制。 </br>
   **解决方案说明：** 如果选择了“*”选项，在处理引用时，对象类型的所有组合将返回给同步引擎。
 
 >[!Important]

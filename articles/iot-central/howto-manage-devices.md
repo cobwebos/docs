@@ -3,23 +3,23 @@ title: 在 Azure IoT Central 应用程序中管理设备 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737305"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004877"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
-本文介绍如何以操作员的身份在 Microsoft Azure IoT Central 应用程序中管理设备。 操作员可以：
+本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
 
-- 使用“Explorer”页查看、添加和删除与 Azure IoT Central 应用程序相连接的设备。
+- 使用“Device Explorer”页查看、添加和删除与 Azure IoT Central 应用程序相连接的设备。
 - 维护最新的设备清单。
 - 通过更改设备属性中存储的值，使设备元数据保持最新状态。
 - 通过在“设置”页中更新特定设备的设置，来控制设备的行为。
@@ -28,11 +28,11 @@ ms.locfileid: "45737305"
 
 若要查看单个设备：
 
-1. 在左侧导航菜单中选择“Explorer”。 此处会显示[设备模板](howto-set-up-template.md)的列表。
+1. 在左侧导航菜单中选择“Device Explorer”。 此处会显示[设备模板](howto-set-up-template.md)的列表。
 
-1. 在左窗格中选择“设备模板”。
+1. 在左侧窗格的“模板”下选择设备模板。
 
-1. 右窗格中会显示基于该设备模板创建的设备的列表。 选择单个设备以查看该设备的“设备详细信息”页：
+1. 在“Device Explorer”页的右侧窗格中，可以看到从该设备模板创建的设备列表，如下所示。 选择单个设备以查看该设备的“设备详细信息”页：
 
     [![设备详细信息页](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
 
@@ -40,7 +40,7 @@ ms.locfileid: "45737305"
 
 若要将设备添加到 Azure IoT Central 应用程序：
 
-1. 在左侧导航菜单中选择“Explorer”。
+1. 在左侧导航菜单中选择“Device Explorer”。
 
 1. 选择要从中创建设备的设备模板。
 
@@ -58,7 +58,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 若要在应用程序中批量注册设备：
 
-1. 在左侧导航菜单中选择“Explorer”。
+1. 在左侧导航菜单中选择“Device Explorer”。
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
@@ -83,7 +83,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 **将设备与模板关联**
 
 如果通过在“未关联设备”下启动导入来注册设备，则无需任何设备模板关联即可创建设备。 设备必须与模板关联起来，才能浏览有关设备的数据和其他详细信息。 请按照以下步骤将设备与模板进行关联：
-1. 在左侧导航菜单中选择“Explorer”。
+1. 在左侧导航菜单中选择“Device Explorer”。
 1. 在左面板中，选择“未关联设备”。
     [![未关联设备](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. 选择想要与模板关联的设备。
@@ -100,7 +100,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 若要预配设备以连接到 IoT Central，将需要由 IoT Central 生成的设备连接字符串。 可以使用“导出”功能从应用程序中批量获取设备的连接字符串和其他属性。 “导出”为所有选定的设备创建一个 CSV 文件，其中包含设备标识、设备名称和主要连接字符串。
 
 从应用程序中批量导出设备：
-1. 在左侧导航菜单中选择“Explorer”。
+1. 在左侧导航菜单中选择“Device Explorer”。
 
 1. 在左面板中，选择要为其导出设备的设备模板。
 
@@ -128,7 +128,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 若要从 Azure IoT Central 应用程序中删除真实设备或模拟设备：
 
-1. 在导航菜单中选择“Explorer”。
+1. 在导航菜单中选择“Device Explorer”。
 
 1. 选择要删除的设备的设备模板。
 
@@ -140,7 +140,7 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 设置控制设备的行为。 换而言之，设置可用于提供设备的输入。 可以在“设备详细信息”页上查看和更新设备设置。
 
-1. 在导航菜单中选择“Explorer”。
+1. 在导航菜单中选择“Device Explorer”。
 
 1. 选择要更改其设置的设备的设备模板。
 
@@ -154,15 +154,13 @@ Azure IoT Central 通过 CSV 文件提供批量导入设备功能，以便将大
 
 属性是与设备关联的设备元数据，例如城市和序列号。 可以在“设备详细信息”页上查看和更新属性。
 
-1. 在导航菜单中选择“Explorer”。
+1. 在导航菜单中选择“Device Explorer”。
 
 1. 选择要更改其属性的设备的设备模板。
 
 1. 选择“属性”选项卡，在其中可以查看所有属性。
 
-1. 将属性修改为所需的值。 可以一次性修改多个属性，也可以同时更新所有属性。
-
-1. 选择“更新”。
+1. 将应用程序属性修改为所需的值。 可以一次性修改多个属性，也可以同时更新所有属性。 选择“更新”。
 
 > [!NOTE]
 > 无法更改设备属性的值。 设备属性由设备设置，在 Azure IoT Central 应用程序中是只读的。

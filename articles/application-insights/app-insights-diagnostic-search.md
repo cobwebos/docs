@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038759"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958400"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 搜索是 [Application Insights](app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
-（若要对数据进行更复杂的查询，请使用 [Analytics](app-insights-analytics-tour.md)。）
+（若要对数据进行更复杂的查询，请使用 [Analytics](../log-analytics/query-language/get-started-analytics-portal.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
 
@@ -102,7 +102,7 @@ ms.locfileid: "47038759"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**Analytics**](app-insights-analytics-tour.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**Analytics**](../log-analytics/query-language/get-started-analytics-portal.md)。
 > 
 
 可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](app-insights-api-custom-events-metrics.md)，此功能特别有用。 
@@ -164,7 +164,7 @@ ms.locfileid: "47038759"
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>后续步骤
-* [在 Analytics 中编写复杂查询](app-insights-analytics-tour.md)
+* [在 Analytics 中编写复杂查询](../log-analytics/query-language/get-started-analytics-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](app-insights-asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](app-insights-monitor-web-app-availability.md)
 * [故障排除](app-insights-troubleshoot-faq.md)

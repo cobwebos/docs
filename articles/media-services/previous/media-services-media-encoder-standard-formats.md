@@ -4,7 +4,7 @@ description: 本主题概述 Media Encoder Standard 格式和编解码器。
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f334b1ce-2f56-4968-a019-f0a2b0016d9f
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 181a1b8ad6403045264ddc0bd502273f36df3eff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c6e26b082fb52f7d23bb1a827af30483f7fbd4f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638324"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255704"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 本文档包含最常见的导入和导出文件格式的列表，可以将这些格式与 Media Encoder Standard 配合使用。
@@ -87,7 +87,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 | Windows Media 音频 |是 |
 | WAV/PCM |是 |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
-| [Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |是 |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR（自适应多速率） |是 |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |

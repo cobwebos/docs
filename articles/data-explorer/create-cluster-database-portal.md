@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394215"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214811"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 
@@ -31,11 +31,11 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
 1. 选择门户左上角的“创建资源”按钮 (+)。
 
-1. 搜索“Azure 数据资源管理器”，然后选中它。
+1. 搜索“Azure 数据资源管理器”。
 
    ![搜索资源](media/create-cluster-database-portal/search-resources.png)
 
-1. 选择右下角的“创建”。
+1. 在屏幕底部“Azure 数据资源管理器”下，选择“创建”。
 
 1. 输入群集的唯一名称，选择订阅，然后创建名为 *test-resource-group* 的资源组。
 
@@ -51,10 +51,12 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
     | 订阅 | 订阅 | 选择要用于群集的 Azure 订阅。|
     | 资源组 | *test-resource-group* | 创建新的资源组。 |
     | 位置 | *美国西部* | 为此快速入门选择美国西部。 对于生产系统，请选择最能满足你需求的区域。
-    | 计算规范 | *D13_v2* | 对于本快速入门，请选择价格最低的规范。 对于生产系统，请选择最能满足你需求的规范。
+    | 计算规格 | *D13_v2* | 对于本快速入门，请选择价格最低的规范。 对于生产系统，请选择最能满足你需求的规范。
     | | |
 
-1. 选择“创建”以预配群集。 预配过程通常需要约十分钟。 在工具栏上选择“通知”（钟形图标）以监视预配过程。
+1. 选择“创建”以预配群集。 预配过程通常需要约十分钟。 在工具栏上选择“通知”以监视预配过程。
+
+    ![通知](media/create-cluster-database-portal/notifications.png)
 
 1. 该过程完成后，选择“通知”，然后选择“转到资源”。
 

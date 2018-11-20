@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042115"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979244"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -68,7 +68,9 @@ ms.locfileid: "48042115"
 
   ![设置应用程序 Graph 权限](media/aad-integration/delegated-permissions.png)
 
-7. 选择“完成”，选择 API 列表中的“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
+  选择“完成”。
+
+7. 从 API 列表中选择“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
 
   ![设置应用程序 Graph 权限](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ ms.locfileid: "48042115"
 
   ![选择 AKS AAD 服务器应用程序终结点](media/aad-integration/select-server-app.png)
 
-4. 选择“完成”和“授予权限”完成此步骤。
+  选择“完成”
+
+4. 从列表中选择服务器 API，然后选择“授予权限”：
 
   ![授予权限](media/aad-integration/grant-permissions-client.png)
 

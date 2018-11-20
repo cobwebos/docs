@@ -4,16 +4,16 @@ description: 了解如何使用 Resource Graph 查询语言浏览资源并发现
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645926"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086890"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -216,7 +216,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' an
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>连接到高级托管磁盘的虚拟机
 
-如果要获取附加到这些 Standard_B2s 虚拟机的高级托管磁盘的详细信息，可以扩展查询以提供这些托管磁盘的资源 ID。
+如果要获取附加到这些 **Standard_B2s** 虚拟机的高级托管磁盘的详细信息，可以扩展查询以提供这些托管磁盘的资源 ID。
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -236,11 +236,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-结果是一列磁盘 ID。
+结果是磁盘 ID 列表。
 
 ### <a name="managed-disk-discovery"></a>托管磁盘发现
 
-从上一个查询中获取第一条记录，我们将浏览已附加到第一个虚拟机的托管磁盘上存在的属性。 更新的查询使用磁盘 ID 并更改类型。
+使用从上一个查询获取的第一条记录，我们将浏览已附加到第一个虚拟机的托管磁盘上存在的属性。 更新的查询使用磁盘 ID 并更改类型。
 
 上一个查询的示例输出如下：
 
@@ -314,7 +314,7 @@ JSON 结果的结构类似于下面的示例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>浏览虚拟机以查找公共 IP 地址
 
-此 Azure CLI 多步查询集首先查找并存储连接到虚拟机的所有网络接口 (NIC) 资源，使用 NIC 列表查找作为公共 IP 地址的每个 IP 地址资源，并存储这些值，最后提供实际公共 IP 地址的列表。
+这一组 Azure CLI 查询首先查找并存储已连接到虚拟机的所有网络接口 (NIC) 资源。 然后，它使用 NIC 列表查找是公共 IP 地址的每个 IP 地址资源并存储这些值。 最后，它提供公共 IP 地址的列表。
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-获得 `nics.txt` 文件后，我们将在下一个查询中使用它来获取相关的网络接口资源详细信息，其中有一个公共 IP 地址附加到 NIC。
+在下一个查询中使用 `nics.txt` 文件来获取相关的网络接口资源详细信息，其中有一个公共 IP 地址附加到 NIC。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269337"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159088"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -188,7 +188,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 0xcc: 无内容 – 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -308,7 +308,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 0xcc: 无内容 – 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -344,7 +344,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 0xcc: 无内容 – 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -449,7 +449,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 0xcc: 无内容 – 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  

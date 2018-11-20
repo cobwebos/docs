@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299094"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256419"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
@@ -34,7 +34,7 @@ ms.locfileid: "44299094"
 在本教程中，你将了解如何创建流以使用 Analytics 自动群集算法，针对 Web 应用程序对数据属性进行分组。 此流通过电子邮件自动发送结果，这只是如何结合使用 Microsoft Flow 和 Application Insights Analytics 的一个示例。 
 
 ### <a name="step-1-create-a-flow"></a>步骤 1：创建流
-1. 登录到 [Microsoft Flow](http://flow.microsoft.com)，然后选择“我的流”。
+1. 登录到 [Microsoft Flow](https://flow.microsoft.com)，然后选择“我的流”。
 1. 单击“从头开始创建流”。
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>步骤 2：为流创建触发器
@@ -91,7 +91,7 @@ ms.locfileid: "44299094"
 
 1. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a. 键入收件人的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
@@ -103,7 +103,7 @@ ms.locfileid: "44299094"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a. 选择“附件名称”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“附件名称”。
 
     b. 选择“附件内容”。
     
@@ -125,7 +125,7 @@ ms.locfileid: "44299094"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何创建 [Analytics 查询](app-insights-analytics-using.md)。
+- 详细了解如何创建 [Analytics 查询](../log-analytics/query-language/get-started-queries.md)。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
 
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d445a4673245b4c6d1986d099113beba79d136bb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310586"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687446"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -46,7 +46,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 | -- | -- |
 | 访问面板 | https://myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | https://outlook.office365.com/contoso.com |
-| Office 365 门户 | https://portal.office.com?domain_hint=contoso.com |
+| Office 365 门户 | https://portal.office.com?domain_hint=contoso.com、 https://www.office.com?domain_hint=contoso.com |
 
 此外，如果应用程序向 Azure AD 的租用终结点（即 https://login.microsoftonline.com/contoso.com/<..> 或 https://login.microsoftonline.com/<tenant_ID>/<..>）而不是 Azure AD 的普通终结点（即 https://login.microsoftonline.com/common/<...>）发送登录请求，用户可获得无提示登录体验。 以下为提出此类登录请求的应用程序的非详尽列表。
 

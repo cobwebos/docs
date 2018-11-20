@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053704"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091043"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>如何在 Azure 数据工厂中读取或写入分区的数据
-在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在数据工厂的当前版本中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 
+
+在 Azure 数据工厂版本 1 中，可以使用 **SliceStart**、**SliceEnd**、**WindowStart** 和 **WindowEnd** 系统变量读取或写入分区的数据。 在当前版本的数据工厂中，可使用管道参数和触发器的开始时间或计划时间作为参数值来实现此行为。 
 
 ## <a name="use-a-pipeline-parameter"></a>使用管道参数 
-在版本 1 中，可以使用 partitionedBy 属性和 SliceStart 系统变量，如以下示例所示： 
+
+在数据工厂版本 1 中，可以使用 **partitionedBy** 属性和 **SliceStart** 系统变量，如以下示例所示： 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ ms.locfileid: "37053704"
 ],
 ```
 
-有关 partitonedBy 属性的详细信息，请参阅[版本 1 Azure Blob 连接器](v1/data-factory-azure-blob-connector.md#dataset-properties)一文。 
+有关 **partitonedBy** 属性的详细信息，请参阅[使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据](v1/data-factory-azure-blob-connector.md#dataset-properties)。 
 
-在数据工厂的当前版本中，实现此行为的一个方法是执行以下操作： 
+若要在当前版本的数据工厂中实现此行为，请执行以下操作： 
 
-1. 定义类型字符串的“管道参数”。 在以下示例中，管道参数的名称为“windowStartTime”。 
-2. 将数据集定义中的“folderPath”设置为引用管道参数的值。 
-3. 按需调用管道时传递参数实际值，或者在运行时动态传递触发器的开始时间/计划时间。 
+1. 定义 **string** 类型的*管道参数*。 在以下示例中，管道参数的名称为 **windowStartTime**。 
+2. 将数据集定义中的 **folderPath** 设置为引用管道参数的值。 
+3. 在按需调用管道时传递参数的实际值。 也可以在运行时动态传递触发器的开始时间或计划时间。 
 
 ```json
 "folderPath": {
@@ -50,8 +52,9 @@ ms.locfileid: "37053704"
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>传入来自触发器的值
-在以下翻转窗口触发器定义中，触发器窗口开始时间传递为管道参数“windowStartTime”的值： 
+## <a name="pass-in-a-value-from-a-trigger"></a>传入来自触发器的值
+
+在以下翻转窗口触发器定义中，触发器的窗口开始时间作为管道参数 **windowStartTime** 的值传递： 
 
 ```json
 {
@@ -176,4 +179,6 @@ ms.locfileid: "37053704"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关使用管道创建数据工厂的完整演练，请参阅[快速入门：创建数据工厂](quickstart-create-data-factory-powershell.md)。 
+
+有关如何创建包含管道的数据工厂的完整演练，请参阅[快速入门：创建数据工厂](quickstart-create-data-factory-powershell.md)。 
+

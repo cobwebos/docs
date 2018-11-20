@@ -34,8 +34,6 @@ items:
     href: azure-stack-tutorial-mysql.md
   - name: 提供 Web 应用
     href: azure-stack-tutorial-app-service.md
-  - name: 部署 Ethereum
-    href: azure-stack-ethereum.md
 - name: 概念
   items:
   - name: 容量规划
@@ -45,7 +43,7 @@ items:
       href: capacity-planning-compute.md
     - name: 存储容量规划
       href: capacity-planning-storage.md
-    - name: Azure Stack 容量计划程序
+    - name: Azure Stack Capacity Planner
       href: capacity-planning-spreadsheet.md
   - name: 数据中心集成
     items:
@@ -232,6 +230,8 @@ items:
       href: azure-stack-add-vm-image.md
     - name: 提供虚拟机规模集
       href: azure-stack-compute-add-scalesets.md
+    - name: Marketplace 常见问题解答中的 Windows Server
+      href: azure-stack-windows-server-faq.md
     - name: 提供 Linux 虚拟机
       href: azure-stack-linux.md
     - name: 添加 Red Hat 虚拟机
@@ -255,6 +255,10 @@ items:
       href: azure-stack-sql-resource-provider-maintain.md
     - name: 删除 SQL Server 资源提供程序
       href: azure-stack-sql-resource-provider-remove.md
+    - name: SQL 资源提供程序发行说明
+      items:
+      - name: SQL 资源提供程序 1.1.30.0 发行说明
+        href: azure-stack-sql-resource-provider-11300.md
   - name: 提供 MySQL 作为 PaaS
     href: azure-stack-mysql-resource-provider.md
     items:
@@ -270,6 +274,10 @@ items:
       href: azure-stack-mysql-resource-provider-maintain.md
     - name: 删除 MySQL Server 资源提供程序
       href: azure-stack-mysql-resource-provider-remove.md
+    - name: MySQL 资源提供程序发行说明
+      items:
+      - name: MySQL 资源提供程序 1.1.30.0 发行说明
+        href: azure-stack-mysql-resource-provider-11300.md
   - name: 提供应用服务作为 PaaS
     href: azure-stack-app-service-overview.md
     items:
@@ -299,6 +307,8 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: 基于 Azure Stack 的应用服务 Update 3 发行说明
         href: azure-stack-app-service-release-notes-update-three.md
+      - name: 应用服务在 Azure Stack update 4 发行说明
+        href: azure-stack-app-service-release-notes-update-four.md
   - name: 创建计划、套餐和配额
     items:
     - name: 计划、套餐、配额和订阅概述
@@ -388,9 +398,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c05498ab53b581f4280220d246c4cf2db624bb85
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b339c19e4736ddf55794ae07f2f14b3d993f7762
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086601"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686647"

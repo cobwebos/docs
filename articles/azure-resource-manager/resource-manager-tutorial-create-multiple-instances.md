@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1cfccdf644b1748a96f7638e574c66eace8d113a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456654"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616141"
 ---
-# <a name="tutorial-create-multiple-resource-instances-using-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
 
-了解如何在 Azure 资源管理器模板中进行迭代操作，以创建 Azure 资源的多个实例。 在上一个教程中，你修改了某个现有模板来创建加密的 Azure Storage 帐户。 在本教程中，你将修改同一模板来创建三个存储帐户实例。
+了解如何在 Azure 资源管理器模板中进行迭代操作，以创建 Azure 资源的多个实例。 在本教程中，你将修改一个模板，以便创建三个存储帐户实例。
 
 > [!div class="checklist"]
 > * 打开快速入门模板
@@ -39,7 +39,7 @@ ms.locfileid: "49456654"
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
+[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。
 2. 在“文件名”中粘贴以下 URL：
@@ -48,20 +48,21 @@ ms.locfileid: "49456654"
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. 选择“打开”以打开该文件。
-4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。
+4. 在模板中定义了一个“Microsoft.Storage/storageAccounts”资源。 将模板和[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)进行比较。 在自定义模板之前，不妨对其进行一些基本的了解。
+5. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。
 
 ## <a name="edit-the-template"></a>编辑模板
 
-本教程的目标是使用资源迭代来创建三个存储帐户。  示例模板仅创建一个存储帐户。 
+现有模板创建一个存储帐户。 请通过自定义模板来创建三个存储帐户。  
 
 从 Visual Studio Code 中，进行以下四个更改：
 
 ![Azure 资源管理器创建多个实例](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. 向存储帐户资源定义中添加一个 `copy` 元素。 在 copy 元素中，为此循环指定迭代次数和名称。 计数值必须是不超过 800 的正整数。
-2. `copyIndex()` 函数返回循环中的当前迭代。 `copyIndex()` 从零开始。 若要偏移索引值，可以在 copyIndex() 函数中传递一个值。 例如 *copyIndex(1)*。
+1. 向存储帐户资源定义中添加一个 `copy` 元素。 在 copy 元素中，为此循环指定迭代次数和变量。 计数值必须是不超过 800 的正整数。
+2. `copyIndex()` 函数返回循环中的当前迭代。 使用索引作为名称前缀。 `copyIndex()` 从零开始。 若要偏移索引值，可以在 copyIndex() 函数中传递一个值。 例如 *copyIndex(1)*。
 3. 删除 **variables** 元素，因为它不再使用。
-4. 删除 **outputs** 元素。
+4. 删除 **outputs** 元素。 不再需要它。
 
 已完成的模板如下所示：
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233739"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 可以在 [Application Insights](app-insights-overview.md) 中自动配置[警报](app-insights-alerts.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "47091366"
 
 在要运行脚本的计算机上安装 Azure Powershell 模块。
 
-* 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](http://www.microsoft.com/web/downloads/platform.aspx)。
+* 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
 * 使用它来安装 Microsoft Azure Powershell
 
 ## <a name="connect-to-azure"></a>连接到 Azure

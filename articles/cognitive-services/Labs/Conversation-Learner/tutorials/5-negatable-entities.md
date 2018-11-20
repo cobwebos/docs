@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: df6499410da3ae67715ade29dbc3cc4146fc2265
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171395"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231985"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用可否定实体
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171395"
 
 ## <a name="video"></a>视频
 
-[![教程 5 预览](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
+[![教程 5 预览](https://aka.ms/cl-tutorial-05-preview)](https://aka.ms/blis-tutorial-05)
 
 ## <a name="requirements"></a>要求
 本教程要求运行常规教程机器人
@@ -61,13 +61,13 @@ ms.locfileid: "39171395"
 1. 依次单击“操作”和“新建操作”
 2. 在“响应”中，键入“I don't know your name”。
 3. 在“取消资格实体”中，输入名称。
-3. 单击创建
+3. 单击“法律条款” 
 
 然后，创建第二个操作。
 
 1. 依次单击“操作”和“新建操作”以创建第二个操作。
 3. 在“响应”中，键入“I know your name. It is $name”。
-4. 单击创建
+4. 单击“法律条款” 
 
 现在已有两个操作。
 
@@ -115,7 +115,7 @@ ms.locfileid: "39171395"
     - 请注意，系统已将此句标记为否定实例。
 2. 单击“对操作打分”。
 3. 选择“I don't know your name”（这是唯一的操作）。
-7. 单击“完成教学”。
+7. 单击“Done Teaching”。
 
 ![](../media/tutorial5_dialogs.PNG)
 

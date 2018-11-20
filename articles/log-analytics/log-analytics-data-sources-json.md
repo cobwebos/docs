@@ -1,6 +1,6 @@
 ---
-title: 在 OMS Log Analytics 中收集自定义 JSON 数据 | Microsoft Docs
-description: 使用 OMS Agent for Linux 将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
+title: 在 Log Analytics 中收集自定义 JSON 数据 | Microsoft Docs
+description: 使用 Log Analytics Linux 代理将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9e54a586ac20835078ae3a3734122b0db34ea69e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040262"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006747"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>在 Log Analytics 中使用 OMS Agent for Linux 收集自定义 JSON 数据源
-使用 OMS Agent for Linux 将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 [curl](https://curl.haxx.se/) 或 [FluentD 的 300 多个插件](http://www.fluentd.org/plugins/all)之一。 本文介绍此数据收集所需的配置。
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>在 Log Analytics 中使用 Log Analytics Linux 代理收集自定义 JSON 数据源
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+使用 Log Analytics Linux 代理将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 [curl](https://curl.haxx.se/) 或 [FluentD 的 300 多个插件](http://www.fluentd.org/plugins/all)之一。 本文介绍此数据收集所需的配置。
 
 > [!NOTE]
-> OMS Agent for Linux v1.1.0-217+ 是自定义 JSON 数据所必需的
+> Log Analytics Linux v1.1.0-217+ 代理是自定义 JSON 数据所必需的
 
 ## <a name="configuration"></a>配置
 
@@ -80,8 +81,8 @@ ms.locfileid: "48040262"
 </match>
 ```
 
-### <a name="restart-oms-agent-for-linux"></a>重新启动 OMS Agent for Linux
-使用以下命令重启 OMS Agent for Linux 服务。
+### <a name="restart-log-analytics-agent-for-linux"></a>重新启动 Log Analytics Linux 代理
+使用以下命令重启 Log Analytics Linux 代理服务。
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
@@ -105,5 +106,5 @@ ms.locfileid: "48040262"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志搜索](log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
  

@@ -9,18 +9,36 @@ items:
     href: allocation-failure-classic.md
 - name: RDP
   items:
-  - name: 连接频繁断开
-    href: troubleshoot-rdp-intermittent-connectivity.md
   - name: 重置 RDP
     href: reset-rdp.md
   - name: RDP 故障排除
     href: troubleshoot-rdp-connection.md
   - name: 详细的 RDP 故障排除
     href: detailed-troubleshoot-rdp.md
+  - name: 排查由于 DHCP 已禁用而导致的 RDP 错误
+    href: troubleshoot-rdp-dhcp-disabled.md
   - name: 排查特定错误
     href: troubleshoot-specific-rdp-errors.md
-  - name: 排查 RDP 连接频繁断开的问题
+  - name: 排查“无许可证服务器”错误
+    href: troubleshoot-rdp-no-license-server.md
+  - name: 排查远程桌面服务问题
+    href: troubleshoot-remote-desktop-services-issues.md
+  - name: 排查内部错误
+    href: Troubleshoot-rdp-internal-error.md
+  - name: 排查连接频繁断开的问题
     href: troubleshoot-rdp-intermittent-connectivity.md
+  - name: 排查常见错误
+    href: troubleshoot-rdp-general-error.md
+  - name: 排查身份验证错误
+    href: troubleshoot-authentication-error-rdp-vm.md
+  - name: 按事件 ID 排查 Azure VM RDP 连接问题
+    href: event-id-troubleshoot-vm-rdp-connecton.md
+  - name: 排查由于静态 IP 而导致的 VM 中的 RDP 错误
+    href: troubleshoot-rdp-static-ip.md
+  - name: 排查由于 NIC 已禁用而导致的 VM 中的 RDP 错误
+    href: troubleshoot-rdp-nic-disabled.md
+  - name: 排查由于安全模式而导致的 RDP 错误
+    href: troubleshoot-rdp-safe-mode.md
 - name: SSH
   items:
   - name: SSH 故障排除
@@ -129,9 +147,11 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: 了解系统重启
   href: understand-vm-reboot.md
-ms.openlocfilehash: 49e216bfd9f1b7ad9c8e9f74ae67d38359f7f474
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+- name: 远程故障排除工具
+  href: remote-tools-troubleshoot-azure-vm-issues.md
+ms.openlocfilehash: 4b4202e0eb155e80b86332287ba4ed3a37a24741
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138255"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705610"

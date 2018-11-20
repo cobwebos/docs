@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874058"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035356"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>什么是 ExpressRoute Global Reach？
 
@@ -21,7 +21,7 @@ ExpressRoute Global Reach 是可以通过 ExpressRoute 服务和 Microsoft 全�
 
 ### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>如何启用或禁用 ExpressRoute Global Reach？
 
-可以通过将 ExpressRoute 线路连接到一起来启用 ExpressRoute Global Reach。 断开连接线路可以禁用该功能。 请参阅配置。
+可以通过将 ExpressRoute 线路连接到一起来启用 ExpressRoute Global Reach。 断开连接线路可以禁用该功能。 请参阅[配置](../articles/expressroute/expressroute-howto-set-global-reach.md)。
 
 ### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>是否需要有 ExpressRoute 高级版才能使用 ExpressRoute Global Reach？
 
@@ -36,6 +36,7 @@ ExpressRoute 可在本地网络与 Microsoft 云服务之间建立连接。 Expr
 目前，以下国家/地区支持 ExpressRoute Global Reach。 必须在上述国家/地区的对等位置创建 ExpressRoute 线路。
 
 * 澳大利亚
+* 法国
 * 香港特别行政区
 * 爱尔兰
 * 日本
@@ -58,3 +59,11 @@ ExpressRoute 可在本地网络与 Microsoft 云服务之间建立连接。 Expr
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>启用 ExpressRoute Global Reach 后，本地网络之间的网络吞吐量预期有多少？
 
 ExpressRoute Global Reach 启用的本地网络之间的网络吞吐量以两条 ExpressRoute 线路中吞吐量较小者为准。
+
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>使用 ExpressRoute Global Reach 时，对于我可以播发的路由数和我将收到的路由数的限制是多少？
+
+你可以在 Azure 专用对等互连上播发到 Microsoft 的路由数在标准线路上保持为 4000，在高级线路上为 10000。 你在 Azure 专用对等互连上将从 Microsoft 收到的路由数将是以下两者之和：你的 Azure 虚拟网络的路由数、来自通过 ExpressRoute Global Reach 连接的其他本地网络的路由数。 请确保在你的本地路由器上设置合适的最大前缀限制。 
+
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>ExpressRoute Global Reach 的 SLA 是什么？
+
+ExpressRoute Global Reach 将提供与常规 ExpressRoute 服务相同的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)。

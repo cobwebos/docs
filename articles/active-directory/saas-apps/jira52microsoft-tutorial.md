@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: d7f53efd4b473f36aa03628da4992d1c4c2fb04b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 43ad99d4814923204b3b1993969bd6a0730530c5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146132"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft (V5.2) 集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "42146132"
 - 可以让用户通过其 Azure AD 帐户自动登录到 JIRA SAML SSO by Microsoft (V5.2)（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="description"></a>Description
 
@@ -61,10 +61,11 @@ ms.locfileid: "42146132"
 
 **支持的版本：**
 
-*   JIRA Core and Software：5.2
-*   JIRA 也支持 6.0 和 7.8。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)
+* JIRA Core and Software：5.2
+* JIRA 还支持 6.0 到 7.12。 有关更多详细信息，请单击 [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>方案描述
+
 在本教程中，将在测试环境中测试 Azure AD 单一登录。
 本教程中概述的方案包括两个主要构建基块：
 
@@ -72,6 +73,7 @@ ms.locfileid: "42146132"
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-jira-saml-sso-by-microsoft-v52-from-the-gallery"></a>从库中添加 JIRA SAML SSO by Microsoft (V5.2)
+
 若要配置 JIRA SAML SSO by Microsoft (V5.2) 与 Azure AD 的集成，需要从库中将 JIRA SAML SSO by Microsoft (V5.2) 添加到托管 SaaS 应用列表。
 
 若要从库中添加 JIRA SAML SSO by Microsoft (V5.2)，请执行以下步骤：
@@ -100,13 +102,13 @@ ms.locfileid: "42146132"
 
 若要配置和测试 JIRA SAML SSO by Microsoft (V5.2) 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 JIRA SAML SSO by Microsoft (V5.2) 测试用户](#create-a-jira-saml-sso-by-microsoft-v52-test-user)** - 在 JIRA SAML SSO by Microsoft (V5.2) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 JIRA SAML SSO by Microsoft (V5.2) 测试用户](#creating-jira-saml-sso-by-microsoft-v52-test-user)** - 在 JIRA SAML SSO by Microsoft (V5.2) 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 JIRA SAML SSO by Microsoft (V5.2) 应用程序中配置单一登录。
 
@@ -116,15 +118,19 @@ ms.locfileid: "42146132"
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
-    ![“单一登录”对话框](./media/jira52microsoft-tutorial/tutorial_singlesign-onforjira5.2_samlbase.png)
+    ![配置单一登录](common/tutorial_general_301.png)
 
-3. 在“JIRA SAML SSO by Microsoft 域和 URL”部分中，执行以下步骤：
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![JIRA SAML SSO by Microsoft 域和 URL 单一登录信息](./media/jira52microsoft-tutorial/tutorial_singlesign-onforjira5.2_url.png)
+    ![配置单一登录](common/editconfigure.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+
+    ![JIRA SAML SSO by Microsoft (V5.2) 域和 URL 单一登录信息](./media/jira52microsoft-tutorial/tutorial_singlesign-onforjira5.2_url.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<domain:port>/`
 
@@ -133,13 +139,9 @@ ms.locfileid: "42146132"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 JIRA 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-4. 在“SAML 签名证书”部分上，单击”复制”按钮来复制**应用联合元数据 URL**，并将其粘贴到记事本。
+5. 在“SAML 签名证书”页的“SAML 签名证书”部分中，单击”复制”按钮来复制“应用联合元数据 URL”，并将其粘贴到记事本。
 
-    ![配置单一登录](./media/jira52microsoft-tutorial/tutorial_metadataurl.png)
-
-5. 单击“保存”按钮。
-
-    ![配置单一登录](./media/jira52microsoft-tutorial/tutorial_general_400.png)
+    ![证书下载链接](./media/jira52microsoft-tutorial/tutorial_metadataurl.png) 
 
 6. 在另一个 Web 浏览器窗口中，以管理员身份登录到 JIRA 实例。
 
@@ -166,7 +168,7 @@ ms.locfileid: "42146132"
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“JIRA SAML SSO by Microsoft (V5.2) 域和 URL”部分的“标识符”、“回复 URL”和“登录 URL”文本框中。
 
@@ -190,39 +192,32 @@ ms.locfileid: "42146132"
     > [!NOTE]
     > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](../ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](../ms-confluence-jira-plugin-faq.md)以获得帮助
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![创建 Azure AD 用户][100]
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/jira52microsoft-tutorial/create_aaduser_01.png)
+    ![创建 Azure AD 测试用户](common/create_aaduser_01.png) 
 
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/jira52microsoft-tutorial/create_aaduser_02.png)
+    ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-    ![“添加”按钮](./media/jira52microsoft-tutorial/create_aaduser_03.png)
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
-4. 在“用户”对话框中，执行以下步骤：
+    d. 选择“创建”。
 
-    ![“用户”对话框](./media/jira52microsoft-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-
-    d. 单击“创建”。
-
-### <a name="create-a-jira-saml-sso-by-microsoft-v52-test-user"></a>创建 JIRA SAML SSO by Microsoft (V5.2) 测试用户
+### <a name="creating-jira-saml-sso-by-microsoft-v52-test-user"></a>创建 JIRA SAML SSO by Microsoft (V5.2) 测试用户
 
 要使 Azure AD 用户能够登录 JIRA 本地服务器，必须将其预配到 JIRA 本地服务器中。
 
@@ -246,7 +241,7 @@ ms.locfileid: "42146132"
 
     ![添加员工](./media/jira52microsoft-tutorial/user4.png)
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
 
@@ -256,58 +251,51 @@ ms.locfileid: "42146132"
 
     e. 单击“创建用户”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 JIRA SAML SSO by Microsoft (V5.2) 的权限，允许其使用 Azure 单一登录。
 
-![分配用户角色][200]
-
-要将 Britta Simon 分配到 JIRA SAML SSO by Microsoft (V5.2)，请执行以下步骤：
-
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
     ![分配用户][201]
 
 2. 在应用程序列表中，选择“JIRA SAML SSO by Microsoft (V5.2)”。
 
-    ![应用程序列表中的 JIRA SAML SSO by Microsoft (V5.2) 链接](./media/jira52microsoft-tutorial/tutorial_singlesign-onforjira5.2_app.png)
+    ![配置单一登录](./media/jira52microsoft-tutorial/tutorial_singlesign-onforjira5.2_app.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![分配用户][202]
 
 4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
-    ![“添加分配”窗格][203]
+    ![分配用户][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 在“添加分配”对话框中，选择“分配”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
-
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“JIRA SAML SSO by Microsoft (V5.2)”磁贴时，应自动登录到 JIRA SAML SSO by Microsoft (V5.2) 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
-[1]: ./media/msaadssojira5.2-tutorial/tutorial_general_01.png
-[2]: ./media/msaadssojira5.2-tutorial/tutorial_general_02.png
-[3]: ./media/msaadssojira5.2-tutorial/tutorial_general_03.png
-[4]: ./media/msaadssojira5.2-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/msaadssojira5.2-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/msaadssojira5.2-tutorial/tutorial_general_200.png
-[201]: ./media/msaadssojira5.2-tutorial/tutorial_general_201.png
-[202]: ./media/msaadssojira5.2-tutorial/tutorial_general_202.png
-[203]: ./media/msaadssojira5.2-tutorial/tutorial_general_203.png
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

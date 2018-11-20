@@ -1,8 +1,8 @@
 ---
 title: 264 多比特率 4K Audio 5.1 | Microsoft 文档
-description: 本主题概述了 264 多比特率 4K Audio 5.1 任务预设。
+description: 本主题概述了“264 多比特率 4K Audio 5.1”任务预设。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: fafaa24bece577952ec6c70c3f6bbd4d8ee5d7dd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6fb7e3001ec1d1e4d530f289a2a445c76aa36dea
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783256"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247021"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 多比特率 4K Audio 5.1
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
@@ -29,7 +29,7 @@ ms.locfileid: "33783256"
  此预设产生一组 12 GOP 对齐的 MP4 文件，范围从 20000 kbps 到 1000 kbps，以及 AAC 5.1 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)。  
   
 > [!NOTE]
->  应当会获得采用 4K 编码的“高级”保留单位类型。 有关详细信息，请参阅[如何缩放编码](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
+>  应当会获得采用 4K 编码的“高级”预留单位类型。 有关详细信息，请参阅[如何缩放编码](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
   
 > [!NOTE]
 >  跨层修改 `Width` 和 `Height` 值时，请确保纵横比保持一致。 例如：1920x1080、1280x720、1080x576、640x360。 不应使用混合的纵横比，例如：1280x720、720x480、640x360。  

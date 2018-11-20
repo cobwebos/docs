@@ -4,7 +4,7 @@ description: 本主题简要介绍并比较了 Azure 点播媒体编码器。
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: f44f5cffd105d958c7d6552a170150623a0701ea
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c02d3483a98c358e53964d3932944b5d2dad9c53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34638444"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240267"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>概述并比较 Azure 点播媒体编码器
 ## <a name="encoding-overview"></a>编码概述
@@ -51,7 +51,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 [格式和编解码器](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>预设
-Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
 
 ### <a name="input-and-output-metadata"></a>输入和输出元数据
 [此处](media-services-input-metadata-schema.md)说明了编码器输入元数据。

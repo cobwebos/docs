@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442349"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139503"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -41,7 +41,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 可通过创建 HTML5/CSS 文件，适当地提供任意数目的内容页面。
 
 > [!NOTE]
-> 出于安全原因，目前会阻止使用 JavaScript 进行自定义。 若要解除阻止 JavaScript，需要对 Azure AD B2C 租户使用自定义域名。
+> 出于安全原因，目前会阻止使用 JavaScript 进行自定义。 
 
 在每个 HTML5/CSS 模板中，需要提供一个 *anchor* 元素，该元素对应于稍后所示的 HTML 或内容页面中的所需 `<div id=”api”>` 元素。 Azure AD B2C 要求所有内容页面包含此特定 div 元素
 
@@ -119,7 +119,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
-1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如，https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
+1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如， https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
 2. 导航到 http://test-cors.org。在此站点中，可以验证所用的页面是否已启用 CORS。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
@@ -138,7 +138,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 下表描述了上述 HTML5 页面的用途。
 
-| HTML5 模板 | 说明 |
+| HTML5 模板 | Description |
 |----------------|-------------|
 | *phonefactor.html* | 此页面可用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 此页面可用作“忘记密码”页面的模板。 |
@@ -154,7 +154,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 下表描述了 Azure AD B2C 标识体验引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 说明 |
+| 内容定义 ID | Description |
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |

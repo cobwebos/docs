@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: bbe1288a42db307001ac778394ac410206f1df21
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102736"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228192"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>使用 BizTalk 服务状态可以和不可以执行的操作
 
@@ -53,10 +53,10 @@ ms.locfileid: "24102736"
 
 
 ## <a name="see-also"></a>另请参阅
-* [可在 BizTalk 服务中的“仪表板”、“监视”和“缩放”选项卡中执行的操作](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [使用 BizTalk 服务中的开发人员版、基本版、标准版和高级版可获取的内容](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [如何备份和还原 BizTalk 服务](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk 服务中所述的限制](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [为 BizTalk 服务检索服务总线和访问控制颁发者名称以及颁发者密钥值](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [如何开始使用 Azure BizTalk 服务 SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [可在 BizTalk 服务中的“仪表板”、“监视”和“缩放”选项卡中执行的操作](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [使用 BizTalk 服务中的开发人员版、基本版、标准版和高级版可获取的内容](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [如何备份和还原 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk 服务中所述的限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [为 BizTalk 服务检索服务总线和访问控制颁发者名称以及颁发者密钥值](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

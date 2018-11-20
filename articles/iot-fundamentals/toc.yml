@@ -7,32 +7,24 @@ items:
     href: iot-introduction.md
   - name: Azure IoT 服务与技术
     href: iot-services-and-technologies.md
-- name: 解决方案
-  items:
-  - name: IoT 解决方案加速器
-    href: /azure/iot-suite
-  - name: IoT Central
-    href: https://docs.microsoft.com/microsoft-iot-central/
-- name: 平台服务
+- name: 服务
   items:
   - name: IoT 中心
     href: /azure/iot-hub
   - name: IoT 中心设备预配服务
     href: /azure/iot-dps
+  - name: IoT 解决方案加速器
+    href: /azure/iot-suite
+  - name: IoT Central
+    href: /azure/iot-central
+  - name: IoT Edge
+    href: /azure/iot-edge
   - name: Azure 数字孪生
     href: /azure/digital-twins
   - name: Azure Maps
     href: /azure/azure-maps
   - name: 时序见解
     href: /azure/time-series-insights
-  - name: 服务 SDK
-    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-- name: Microsoft Edge
-  items:
-  - name: IoT Edge
-    href: /azure/iot-edge
-  - name: IoT 设备 SDK
-    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: 安全
   items:
   - name: 安全体系结构
@@ -43,9 +35,15 @@ items:
     href: iot-security-deployment.md
   - name: 安全基础知识
     href: iot-security-ground-up.md
-ms.openlocfilehash: df43416b0d1e72e152a2917846ba0407c861421b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+- name: SDK
+  items:
+  - name: 服务 SDK
+    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+  - name: IoT 设备 SDK
+    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+ms.openlocfilehash: 82b04e5f6db3142180b1a10264342862793740eb
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321345"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287160"

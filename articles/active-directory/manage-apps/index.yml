@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 534548185da45b750ac48c74a9ecf9e122a7042d
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4f26421d8d935593f55444902f331cf260b32335
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084795"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956581"
 documentType: LandingData
 title: 应用程序管理文档
 metadata:
@@ -53,5 +53,5 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://docs.microsoft.com/azure/active-directory/manage-apps/saas-apps/">SaaS 应用程序教程</a>
+    - html: <a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">SaaS 应用程序教程</a>
     - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">配置单一登录</a>

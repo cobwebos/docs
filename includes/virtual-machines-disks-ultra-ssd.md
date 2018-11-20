@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401635"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285704"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 虚拟机工作负荷的超级 SSD（预览版）托管磁盘
 
@@ -23,7 +23,7 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 
 **托管磁盘**：超级 SSD 只可用作托管磁盘。 超级 SSD 无法部署为非托管磁盘或页 Blob。 创建托管磁盘时，请指定 UltraSSD_LRS 作为磁盘 SKU，并指明所需的磁盘大小、IOPS 和吞吐量，然后，Azure 将自动创建并管理该磁盘。  
 
-**虚拟机**：超级 SSD 旨在与支持高级 SSD 的所有 Azure 虚拟机 SKU 配合使用，但是，在预览期，VM 大小限制为 ES/DS v3 VM 实例。
+**虚拟机**：超级 SSD 设计用于与启用了高级 SSD 的所有 Azure 虚拟机 SKU 配合使用，但是，因为它当前为预览版，所以 VM 大小设定为 ES/DS v3。
 
 **动态性能配置**：超级 SSD 允许动态改变磁盘的性能（IOPS 和吞吐量）以及工作负荷的需求，而无需重启虚拟机。
 
@@ -55,7 +55,7 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-使用超级 SSD 时，请注意以下计费方式：
+使用超级 SSD 时，请注意以下计费注意事项：
 
 - 托管磁盘大小
 - 托管磁盘的预配 IOPS
@@ -64,11 +64,11 @@ Azure 超级 SSD（预览版）为 Azure IaaS VM 提供高吞吐量、高 IOPS �
 
 ### <a name="managed-disk-size"></a>托管磁盘大小
 
-托管磁盘按预配大小计费。 Azure 将预配大小映射（向上舍入）到最接近的磁盘大小。 有关提供的磁盘大小的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。 每个磁盘将映射到一种受支持的预配大小并相应地按小时计费。 例如，如果预配了 200 GiB 的超级 SSD 磁盘，并在 20 小时后将其删除，则它会映射到 256 GiB 的磁盘大小，并且将按 256 GiB 大小收取 20 个小时的费用。 这与写入磁盘的实际数据量无关。
+当预配新的 Azure VM 时，托管磁盘根据你选择的 VM 大小进行计费。 Azure 将预配大小映射（向上舍入）到最接近的磁盘大小。 有关提供的磁盘大小的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。 每个磁盘映射到一种受支持的预配大小并相应地按小时计费。 例如，如果预配了 200 GiB 的超级 SSD 磁盘，并在 20 小时后将其删除，则它会映射到 256 GiB 的磁盘大小，并且将按 256 GiB 大小收取 20 个小时的费用。 此计费基于计算时数消耗，与实际写入到磁盘的数据量无关。
 
 ### <a name="managed-disk-provisioned-iops"></a>托管磁盘的预配 IOPS
 
-IOPS 是指应用程序在一秒内发送到磁盘的请求数。 输入/输出操作可以是有序或随机的读取或写入。 与磁盘大小一样，预配 IOPS 按小时计费。 有关提供的磁盘 IOPS 的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。
+IOPS 是指应用程序每秒发送到磁盘的请求数。 输入/输出操作可以是有序或随机的读取或写入。 根据附加到 VM 的磁盘大小或磁盘数，每小时根据平均 IOPS 数进行计费。 有关提供的磁盘 IOPS 的详细信息，请参阅前面的“可伸缩性和性能目标”部分的表格。
 
 ### <a name="managed-disk-provisioned-throughput"></a>托管磁盘的预配吞吐量
 

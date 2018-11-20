@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bdcd1d0cc9f9979d898410180d364716b344d641
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805700"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254462"
 ---
 <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 ====================================
@@ -133,7 +133,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
    ![付款注册](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. 检查帐户信息，确认所有内容都正确无误。 阅读并接受 [Microsoft Azure 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
+10. 检查帐户信息，确认所有内容都正确无误。 阅读并接受 [Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
 
 11. 选择“完成”以确认注册。 一封确认邮件将发送到你的电子邮件地址。
 

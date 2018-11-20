@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579609"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236681"
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
 本文介绍成为 Azure 市场的批准 Microsoft 开发人员的必要帐户创建和注册过程。
@@ -98,7 +98,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **“销售自”国家/地区：** 若要在 Azure 市场上销售服务，注册实体必须来自已批准的上述“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[市场参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
+   > **“销售自”国家/地区：** 若要在 Azure 市场上销售服务，注册实体必须来自已批准的上述“销售自”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[市场参与政策](https://go.microsoft.com/fwlink/?LinkID=526833)。
    >
    >
 5. 将“帐户类型”选择为“公司”，并单击“下一步”按钮。
@@ -127,7 +127,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 9. 输入付款信息，以为帐户付款。 如果有抵扣注册费用的促销代码，可以在此处输入该代码。 否则，请提供信用卡信息（或所在市场支持的 PayPal）。 完成后，单击“下一步”以转到“查看屏幕”。
 
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. 查看帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
+10. 查看帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
 11. 单击“完成”，确认注册。 我们会向电子邮件地址发送一封确认邮件。
 12. 如果打算仅发布免费的套餐，请单击“转到 Azure 市场发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册帐户](#3-register-your-account-in-the-publishing-portal)）。
 

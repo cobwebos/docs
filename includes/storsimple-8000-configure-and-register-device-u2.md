@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: afb702a883606557c3ceaaaf2c2bd27073bab835
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164434"
+---
 <!--author=alkohli last changed: 01/18/2017-->
 
 
@@ -9,7 +22,7 @@
 
 3. 系统会提示选择要为设备设置的语言。 指定语言，并按 **Enter**。
 
-4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限进行登录”。
+4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
      完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。** 串行控制台菜单指示标题消息中的控制器状态。 如果未连接到主动控制器，请断开连接，并连接到主动控制器。
 
 5. 在命令提示符处，键入密码。 默认设备密码为 **Password1**。

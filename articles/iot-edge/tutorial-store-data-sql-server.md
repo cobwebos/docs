@@ -3,18 +3,18 @@ title: 使用 Azure IoT Edge SQL 模块存储数据 | Microsoft Docs
 description: 了解如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 88537c8579a3acb2fd89a43bfcfa50be89cac5cc
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5c3b8d350b69996e2bbff4958dd0a3600c1b7518
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114084"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566075"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
 
@@ -356,4 +356,4 @@ Azure IoT Edge 设备：
 继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 
 > [!div class="nextstepaction"]
-> [在 Azure 流分析中使用浮点窗口查找平均值](tutorial-deploy-stream-analytics.md)
+> [使用 C# 代码筛选传感器数据](tutorial-csharp-module.md)

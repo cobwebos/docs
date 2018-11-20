@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227189"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>将 Microsoft Azure 应用程序网关连接到 Azure 安全中心
 本文档可帮助你配置与应用程序网关 Web 应用程序防火墙 (WAF) 和安全中心的集成。
@@ -61,4 +61,4 @@ ms.locfileid: "44299060"
 * [在安全中心进行安全运行状况监视](security-center-monitoring.md)。
 * [通过安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)。
 * [Azure 安全中心常见问题解答](security-center-faq.md)。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)。
+* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。

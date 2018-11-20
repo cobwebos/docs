@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818814"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913013"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
@@ -37,21 +37,23 @@ ms.locfileid: "42818814"
 
 ## <a name="register-your-app-for-push-notifications"></a>为推送通知注册应用程序
 
-需要将应用提交到 Microsoft Store，然后配置服务器项目与 Windows 通知服务 (WNS) 集成，从而发送推送。
+需要将应用提交到 Microsoft Store，然后配置服务器项目与 [Windows 通知服务 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 集成，以发送推送。
 
 1. 在 Visual Studio 解决方案资源管理器中，右键单击 UWP 应用项目，单击“应用商店” > “将应用与应用商店关联...”。
 
     ![将应用与 Microsoft Store 相关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. 在向导中，单击“下一步”，使用 Microsoft 帐户登录，在“保留新应用名称”中键入应用的名称，并单击“保留”。
 3. 成功创建应用注册后，选择新应用名称，再依次单击“下一步”和“关联”。 这会将所需的 Microsoft Store 注册信息添加到应用程序清单中。
-4. 导航到 [Windows 开发人员中心](https://dev.windows.com/en-us/overview)，使用 Microsoft 帐户登录，单击“我的应用”中的新应用注册，然后展开“服务” > “推送通知”。
-5. 在“推送通知”页中，单击“Microsoft Azure 移动服务”下的“Live 服务站点”。
-6. 在注册页中，记下“应用程序机密”和“包 SID”下的值，后面将使用这些值配置移动应用后端。
+4. 导航到[应用程序注册门户](https://apps.dev.microsoft.com/)，并使用 Microsoft 帐户登录。 单击上一步中关联的 Windows 应用商店应用。
+5. 在注册页中，记下“应用程序机密”和“包 SID”下的值，后面将使用这些值配置移动应用后端。
 
     ![将应用与 Microsoft Store 相关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > 客户端密钥和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。 将“应用程序 ID”与机密配合使用来配置 Microsoft 帐户身份验证。
+
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) 还提供了有关为推送通知配置 UWP 应用的说明。
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>配置后端以发送推送通知
 

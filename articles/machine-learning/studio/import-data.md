@@ -16,31 +16,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: a5750555802489b41b007831164767beb953ebc4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 575e17f214561bde06b70bf87c4895ae379659f2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837457"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344716"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室
-若要在机器学习工作室中，使用自己的数据来开发和训练预测分析，可执行以下操作： 
 
-* 在从硬盘上传数据之前，先从**本地文件**上传数据，以便在工作区中创建数据集模块
-* 使用[导入数据][import-data]模块运行试验时，从多个**联机数据源**之一访问数据 
-* 使用保存为数据集的另一个 Azure 机器学习**试验**中的数据
-* 使用本地 **SQL Server 数据库**中的数据
+若要在机器学习工作室中使用自己的数据来开发和训练预测分析解决方案，可以使用来自以下源的数据： 
 
-每个选项都在下面菜单中的某一个主题进行了描述。 这些主题介绍了如何从各种数据源导入数据，以便在机器学习工作室中使用。 
-
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
+* [**本地文件**](import-data-from-local-file.md) - 提前从硬盘驱动器加载本地数据，以便在工作区中创建数据集模块
+* [**联机数据源**](import-data-from-online-sources.md) - 运行试验时使用[导入数据][import-data]模块，访问来自多个联机源之一的数据
+* [**机器学习工作室试验**](import-data-from-an-experiment.md) - 使用在机器学习工作室中保存为数据集的数据
+* [**本地 SQL Server 数据库**](use-data-from-an-on-premises-sql-server.md) - 使用来自本地 SQL Server 数据库的数据，而无需手动复制数据
 
 > [!NOTE]
 > 机器学习工作室中提供有许多可用于训练数据的示例数据集。 若要了解这些示例数据集，请参阅[在 Azure 机器学习工作室中使用示例数据集](use-sample-datasets.md)。
 > 
 > 
 
-此介绍性主题还讨论了如何准备数据以在机器学习工作室中使用，并描述了受支持的数据格式和数据类型。 
+此介绍性文章还讨论了如何准备数据以在机器学习工作室中使用，并介绍了受支持的数据格式和数据类型。
 
 > [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 > 
@@ -82,7 +79,7 @@ ms.locfileid: "34837457"
 * String
 * Integer
 * Double
-* 布尔
+* Boolean
 * DateTime
 * TimeSpan
 

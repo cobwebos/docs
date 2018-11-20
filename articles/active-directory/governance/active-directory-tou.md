@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393977"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015192"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
-组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何开始使用 Azure AD 使用条款。
+组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>概述视频
+
+下面的视频提供了使用条款的快速概述。
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+有关其他视频，请参阅：
+- [如何部署 Azure Active Directory 使用条款](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [如何实行 Azure Active Directory 使用条款](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>使用条款可以用来做什么？
 可以通过 Azure AD 使用条款来完成以下事项：
@@ -33,8 +43,10 @@ ms.locfileid: "49393977"
 - 显示基于用户属性（例如， [动态组](../users-groups-roles/groups-dynamic-membership.md)中的医生与护士或国内员工和国际员工）的具体使用条款。
 - 在用户访问业务影响大的应用程序（例如 Salesforce）时显示特定使用条款。
 - 以不同的语言显示使用条款。
+- 有助于符合隐私法规。
 - 列出已同意或尚未同意使用条款的人员。
-- 显示使用条款活动的审核日志。
+- 显示使用条款活动的日志，以了解合规性和进行审核。
+- 使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement)（目前提供预览版）创建和管理使用条款。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用和配置 Azure AD 使用条款，必须具备以下先决条件：
@@ -206,7 +218,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 **问：如何查看用户何时/是否接受了使用条款？**</br>
 答：在“使用条款”边栏选项卡中单击“已接受”下的数字。 也可在 Azure AD 审核日志中查看或搜索接受活动。 有关详细信息，请参阅[查看接受用户和拒绝用户的报告](#view-who-has-accepted-and-declined)以及[查看 Azure AD 审核日志](#view-azure-ad-audit-logs)。
- 
+
 **问：信息的存储时间为多长？**</br>
 答：使用条款报告中的用户计数以及接受用户/拒绝用户的存储时间为使用条款有效期。 Azure AD 审核日志的存储时间为 30 天。
 
@@ -233,12 +245,15 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
 **问：是否可以向给定用户或应用添加多个使用条款？**</br>
 答：可以，方法是创建多个以这些组或应用程序为目标的条件访问策略。 如果用户处于多个使用条款的范围内，他们可一次同意一个使用条款。
- 
+
 **问：用户拒绝使用条款后会发生什么？**</br>
 答：将阻止此用户访问该应用程序。 用户需要重新登录并同意条款才能获得访问权限。
- 
+
 **问：是否可以取消接受以前接受的使用条款？**</br>
 答：可以[查看以前接受的使用条款](#how-users-can-review-their-terms-of-use)，但目前没有办法取消接受。
+
+**问：如果我还使用 Intune 条款和条件，会发生什么情况？**</br>
+答：如果你已配置了 Azure AD 使用条款和 [Intune 条款和条件](/intune/terms-and-conditions-create)，则用户将被要求同时接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 ## <a name="next-steps"></a>后续步骤
 
