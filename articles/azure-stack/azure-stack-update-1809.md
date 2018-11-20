@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567904"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976479"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -41,9 +41,9 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 - 此版本中，Azure Stack 集成系统的 4-16 节点的支持配置。 可以使用[Azure Stack 容量规划器](https://aka.ms/azstackcapacityplanner)以帮助在规划过程中以 Azure Stack 功能和配置。
 
-- <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端 （公开上市）** 此客户端允许转发的审核、 警报和到 syslog 服务器或安全信息和事件管理 (SIEM) 软件的 Azure Stack 基础结构相关的安全日志Azure Stack 的外部。 Syslog 客户端现在支持指定的 syslog 服务器正在侦听的端口。
+- <!--  2712869   | IS  ASDK -->  **Azure Stack syslog 客户端 （公开上市）** 此客户端允许转发的审核、 警报和到 syslog 服务器或安全信息和事件管理 (SIEM) 软件的 Azure Stack 基础结构相关的安全日志Azure Stack 的外部。 syslog 客户端现在支持指定 syslog 服务器侦听的端口。
 
-   此版本中，系统日志客户端正式发布，并且可在生产环境中。
+   此版本意味着 syslog 客户端已正式发布，可以用于生产环境。
 
    有关详细信息，请参阅 [Azure Stack Syslog 转发](azure-stack-integrate-security.md)。
 
@@ -67,24 +67,28 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    
    现已修复此问题。
 
-- <!-- 2702741 -  IS, ASDK --> 方法未在部署的使用动态分配的公共 Ip 的已修复的问题后发出停止-解除分配保留保证。 他们现在将保留。
+- <!-- 2702741 -  IS, ASDK --> 修复了在发出“停止-解除分配”命令后，无法保证系统会保留使用动态分配方法部署的公共 IP 的问题。 它们现在已保留。
 
-- <!-- 3078022 - IS, ASDK --> 如果 VM 已停止解除分配，1808年之前它不能重新分配 1808年更新后。  在 1809年中修复此问题。 可以在通过这项修复 1809年开始，已在此状态下无法启动的实例。 解决方法还可防止此问题再次发生。
+- <!-- 3078022 - IS, ASDK --> 如果 VM 已停止解除分配，1808年之前它不能重新分配 1808年更新后。  此问题已在 1809 中解决。 处于这种状态且无法启动的实例可以在已应用此修复的 1809 中启动。 此修复还可以防止该问题反复发生。
 
 <!-- 3090289 – IS, ASDK --> 
 - 已修复问题，其中应用 1808年更新后，你可能会遇到以下问题部署包含托管磁盘的 Vm 时：
 
-   1. 如果部署包含托管磁盘 VM 在 1808年更新之前创建的订阅可能会因内部错误消息。 若要解决此错误，按照每个订阅的以下步骤：
-      1. 在租户门户中，转到**订阅**和找到的订阅。 单击**资源提供程序**，然后单击**Microsoft.Compute**，然后单击**重新注册**。
-      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**Azure Stack-托管磁盘**列出。
-   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署 Vm 可能会因内部错误消息。 若要解决此错误，请按照下列步骤：
-      1. 将应用[1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992)。
-      2. 按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+   1. 如果订阅是在 1808 更新之前创建的，通过托管磁盘部署 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+      1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
+   2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决该错误，请执行以下步骤：
+      1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992)。
+      2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。
 
 
 ### <a name="changes"></a>更改
 
-无。
+<!-- 2635202 - IS, ASDK -->
+- 基础结构备份服务将从移[公钥基础结构网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network)到[公共 VIP 网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network)。 客户将需要确保该服务具有公共 VIP 网络中访问备份存储位置。  
+
+> [!IMPORTANT]  
+> 如果您不允许公共 VIP 网络中的连接到文件服务器的防火墙，此更改将导致基础结构备份失败，"错误 53 找不到的网络路径。" 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps)有关 1809年上可用的修补程序详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811，此更改将应用于所有系统。 如果在 1809年应用修补程序，则无需任何进一步操作。  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
@@ -155,7 +159,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
-- 在运行时[Test-azurestack](azure-stack-diagnostic-test.md) 1809年更新后，将显示警告消息从基板管理控制器 (BMC)。 您可以放心地忽略此警告。
+- 在运行时[Test-azurestack](azure-stack-diagnostic-test.md) 1809年更新后，将显示警告消息从基板管理控制器 (BMC)。 可以放心地忽略此警告。
 
 - <!-- 2468613 - IS --> 在安装此更新期间，可能会出现标题如下的警报：“错误 - 缺少 FaultType UserAccounts.New 的模板”。  可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
@@ -168,7 +172,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 > [!Important]  
 > 获取 Azure Stack 部署准备好进行扩展主机启用的下一个更新包。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
 
-此更新的安装之后, 安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
+安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
 - [KB 4471993 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -177,34 +181,34 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 ### <a name="portal"></a>门户
 
-- Azure Stack 技术文档重点介绍最新版本。 由于各版本之间的门户更改，使用 Azure Stack 门户时看到的内容可能不同于文档中看到的内容。
+- Azure Stack 技术文档重点介绍了最新版本。 由于版本之间的门户更改，在使用 Azure Stack 门户时看到的内容可能与在文档中看到的内容不同。
 
 <!-- 2930718 - IS ASDK --> 
-- 在管理员门户中，访问任何用户订阅的详细信息后关闭该边栏选项卡，并单击时**最近**，未显示用户订阅名称。
+- 在管理员门户中访问用户订阅详细信息时，在关闭边栏选项卡并单击“最新”以后，用户订阅名称不显示。
 
 <!-- 3060156 - IS ASDK --> 
-- 在管理员和用户门户，单击门户设置并选择**删除所有设置和专用仪表板**未按预期运行。 此时会显示错误通知。 
+- 在管理员门户和用户门户中，单击门户设置并选择“删除所有设置和专用仪表板”的操作不正常。 此时会显示错误通知。 
 
 <!-- 2930799 - IS ASDK --> 
-- 管理员和用户门户网站中下**所有服务**，该资产**DDoS 防护计划**错误地列出。 不是 Azure Stack 中提供。 如果尝试创建它，则会显示错误，指出门户无法创建此市场项。 
+- 在管理员门户和用户门户中的“所有服务”下，资产“DDoS 防护计划”未正确列出。 不是 Azure Stack 中提供。 如果尝试创建它，则会显示错误，指出门户无法创建此市场项。 
 
 <!-- 2930820 - IS ASDK --> 
-- 门户管理员和用户门户，如果搜索"Docker"，返回此项不正确。 不是 Azure Stack 中提供。 如果尝试创建它，则会显示一个边栏选项卡，其中包含表明存在错误的内容。 
+- 在管理员门户和用户门户中，如果搜索“Docker”，则此项无法正确返回。 不是 Azure Stack 中提供。 如果尝试创建它，则会显示一个边栏选项卡，其中包含表明存在错误的内容。 
 
 <!-- 2967387 – IS, ASDK --> 
-- 用于登录到 Azure Stack 管理员或用户门户的帐户将显示为**无法识别的用户**。 显示此消息，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户，提供名或姓。 然后必须注销，再重新登录门户。  
+- 登录 Azure Stack 管理员门户或用户门户时使用的帐户显示为“未标识的用户”。 显示此消息，如果帐户不具有任一*第一个*或*最后一个*指定名称。 若要解决此问题，请编辑用户帐户，提供名或姓。 然后必须注销，再重新登录门户。  
 
 <!--  2873083 - IS ASDK --> 
--  当你使用门户创建虚拟机规模集 (VMSS)、*实例大小*下拉列表中不使用 Internet Explorer 时正确加载。 若要解决此问题，请在通过门户创建 VMSS 时使用其他浏览器。  
+-  通过门户创建虚拟机规模集 (VMSS) 时，如果使用 Internet Explorer，则“实例大小”下拉列表无法正确加载。 若要解决此问题，请在通过门户创建 VMSS 时使用其他浏览器。  
 
 <!-- 2931230 – IS  ASDK --> 
-- 无法删除加载项计划，即使在用户订阅中删除该计划时都会添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
+- 即使从用户订阅中删除计划，也无法删除作为附加计划添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!--2760466 – IS  ASDK --> 
-- 在安装新的 Azure Stack 环境运行此版本时，警报，指示*需要激活*可能不会显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
+- 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](azure-stack-registration.md)，然后才能使用市场联合。  
 
 <!-- TBD - IS ASDK --> 
-- 不应使用与版本 1804年引入了两种管理订阅类型。 这两种订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。
+- 不应使用版本 1804 中引入的两种管理订阅类型。 这两种订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。
 
 <!-- TBD - IS ASDK --> 
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
@@ -216,16 +220,16 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 ### <a name="health-and-monitoring"></a>运行状况和监视
 
 <!-- TBD - IS -->
-- 可能会看到重复出现，然后就消失在 Azure Stack 系统上的以下警报：
+- 可能会看到以下警报在 Azure Stack 系统上重复出现，然后消失：
    - *基础结构角色实例不可用*
-   - *缩放单位节点处于脱机状态*
+   - *缩放单元节点已脱机*
    
-  运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果没有问题检测到由[Test-azurestack](azure-stack-diagnostic-test.md)，可以忽略这些警报。 如果检测到问题，您可以尝试启动的基础结构角色实例或使用管理门户或 PowerShell 的节点。
+  运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果 [Test-AzureStack](azure-stack-diagnostic-test.md) 未检测到问题，则可以忽略这些警报。 如果检测到问题，则可以尝试使用管理门户或 PowerShell 启动基础结构角色实例或节点。
 
   最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4471993/)，因此请确保安装此修补程序，如果遇到此问题。 
 
 <!-- 1264761 - IS ASDK -->  
-- 你可能会看到的警报**运行状况控制器**组件具有下列详细信息：  
+- 可能会看到包含以下详细信息的“运行状况控制器”组件的警报：  
 
    警报 #1：
    - 名称：基础结构角色不正常
@@ -253,7 +257,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
     可以放心地忽略此警报，但需手动关闭它。
 
 <!-- 2368581 - IS, ASDK --> 
-- Azure Stack 操作员，如果你收到内存不足警报并与部署租户虚拟机失败**Fabric VM 创建错误**，可以在 Azure Stack 模具的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。
+- 如果 Azure Stack 操作员收到内存不足的警报，并且租户虚拟机无法部署并出现“Fabric VM 创建错误”，则可能表示 Azure Stack 模组的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。
 
 ### <a name="compute"></a>计算
 
@@ -261,13 +265,13 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，请指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
 
 <!-- 3099544 – IS, ASDK --> 
-- 美元/月列时创建新虚拟机 (VM) 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应出现;显示 VM 定价的列不支持在 Azure Stack 中。
+- 使用 Azure Stack 门户创建新的虚拟机 (VM) 并选择 VM 大小时，“美元/月”列在显示时会出现“不可用”消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
 
 <!-- 2869209 – IS, ASDK --> 
-- 使用时[**添加 AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0)，则必须使用 **-OsUri**参数作为存储帐户上传到磁盘的 URI。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 
+- 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 
 
 <!--  2795678 – IS, ASDK --> 
-- 当你使用门户创建虚拟机 (VM) 高级 VM 大小 （DS、 Ds_v2、 FS、 FSv2） 中时，在标准存储帐户中创建 VM。 在标准存储帐户中创建不影响功能、IOPS 或计费。 
+- 通过门户创建“高级”VM 大小（DS、Ds_v2、FS、FSv2）的虚拟机 (VM) 时，该 VM 在标准存储帐户中创建。 在标准存储帐户中创建不影响功能、IOPS 或计费。 
 
    可以放心地忽略以下内容的警告：*在 VM 大小需要高级磁盘的情况下，你选择了使用标准磁盘。这可能影响操作系统性能，建议不要这样做。考虑改用高级存储(SSD)。*
 
@@ -275,7 +279,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - 虚拟机规模集 (VMSS) 创建体验提供了基于 CentOS 7.2，作为一个选项来部署。 由于该映像不是可在 Azure Stack 上，选择为你的部署的另一个操作系统，或使用 Azure 资源管理器模板指定另一个已从 marketplace 部署前运算符所下载的 CentOS 映像。  
 
 <!-- 2724873 - IS --> 
-- 使用 PowerShell cmdlet 时**开始 AzsScaleUnitNode**或**停止 AzsScaleunitNode**若要管理的缩放单位，首次尝试启动或停止的缩放单位可能会失败。 如果 cmdlet 在第一次运行时失败，请再次运行 cmdlet。 第二次运行应该能够成功地完成操作。 
+- 使用 PowerShell cmdlet **Start-AzsScaleUnitNode** 或 **Stop-AzsScaleunitNode** 管理缩放单元时，首次尝试启动或停止缩放单元可能会失败。 如果 cmdlet 在第一次运行时失败，请再次运行 cmdlet。 第二次运行应该能够成功地完成操作。 
 
 <!-- TBD - IS ASDK --> 
 - 如果在 VM 部署上预配某个扩展时耗时过长，用户应让预配超时，而不应尝试通过停止该进程来解除 VM 的分配或将 VM 删除。  
@@ -293,7 +297,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 ### <a name="networking"></a>网络  
 
 <!-- 1766332 - IS ASDK --> 
-- 下**联网**，如果您单击**创建 VPN 网关**若要设置 VPN 连接，**基于策略的**作为 VPN 类型列出。 请不要选择此选项。 Azure Stack 仅支持“基于路由”选项。
+- 如果在“网络”下单击“创建 VPN 网关”来设置 VPN 连接，则会将“基于策略”列为 VPN 类型。 请不要选择此选项。 Azure Stack 仅支持“基于路由”选项。
 
 <!-- 1902460 - IS ASDK --> 
 - Azure Stack 支持对一个 IP 地址使用一个本地网关。 这适用于所有租户订阅。 在创建第一个本地网关连接以后，系统会阻止使用同一 IP 地址创建本地网关资源的后续尝试。
@@ -302,7 +306,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - 在使用 DNS 服务器设置“自动”创建的虚拟网络上，无法更改为自定义 DNS 服务器。 更新的设置不推送到该 Vnet 中的 VM。
 
 <!-- 2529607 - IS ASDK --> 
-- 在 Azure Stack 期间*机密轮换*，一段中的公共 IP 地址是无法访问为 2 到 5 分钟内。
+- 在 Azure Stack 机密轮换期间，有一个时段（两到五分钟）会无法访问公共 IP 地址。
 
 <!-- 2664148 - IS ASDK --> 
 -   在租户位置使用 S2S VPN 隧道访问其虚拟机的情况下，它们可能会遇到其中连接尝试失败，如果已创建网关后，在本地子网已添加到本地网络网关的方案。 

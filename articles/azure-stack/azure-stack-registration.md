@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/19/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: be88e84c48ba31ce564c31eca1f54f164aeb9f93
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8d737c9fbf149051a8142f5ff546ea88e648541b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288231"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976360"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -45,12 +45,12 @@ ms.locfileid: "51288231"
 
 将 Azure Stack 注册到 Azure 之前，必须准备好：
 
-- Azure 订阅的订阅 ID。 EA、 CSP 或 CSP 共享的服务注册为支持订阅。 Csp 需要决定是否[使用的 CSP 或 APSS 订阅](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)。<br><br>若要获取该 ID，请登录到 Azure，单击“所有服务”。 然后，在“常规”类别下，选择“订阅”，单击要使用的订阅，然后可以在“概要”下找到订阅 ID。
+- Azure 订阅的订阅 ID。 注册仅支持 EA、CSP 或 CSP 共享服务订阅。 CSP 需要确定是[使用 CSP 订阅还是使用 APSS 订阅](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)。<br><br>若要获取该 ID，请登录到 Azure，单击“所有服务”。 然后，在“常规”类别下，选择“订阅”，单击要使用的订阅，然后可以在“概要”下找到订阅 ID。
 
   > [!Note]  
   > 当前不支持德国云订阅。
 
-- 用户名和密码的帐户的所有者的订阅。
+- 订阅所有者的帐户用户名和密码。
 
 - 用户帐户必须有权访问 Azure 订阅并且有权在与该订阅关联的目录中创建标识应用程序和服务主体。
 
@@ -93,15 +93,15 @@ Azure Stack 部署可能处于“已连接”或“已断开连接”状态。
 
  - **已断开连接**  
  使用从 Azure 部署断开连接选项，可以在没有 Internet 连接的情况下部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。
-    - [断开连接的 Azure Stack 使用注册**容量**计费模型 ](#register-disconnected-with-capacity-billing)
+    - [使用**容量**计费模型注册已断开连接的 Azure Stack](#register-disconnected-with-capacity-billing)
 
 ### <a name="determine-a-unique-registration-name-to-use"></a>确定要使用的唯一注册名称 
-时将 Azure Stack 注册到 Azure 时，必须提供唯一的注册名称。 若要将 Azure Stack 订阅与 Azure 注册相关联的简单方法是使用 Azure Stack**的云 ID**。 
+将 Azure Stack 注册到 Azure 时，必须提供唯一的注册名称。 将 Azure Stack 订阅与 Azure 注册关联的简便方法是使用 Azure Stack **云 ID**。 
 
 > [!NOTE]
-> 使用基于容量的计费模型的 azure Stack 注册将需要更改的唯一名称时重新注册后这些每年的订阅过期，除非你[删除过期的注册](azure-stack-registration.md#change-the-subscription-you-use)，然后重新注册Azure 中。
+> 使用基于容量的计费模型的 Azure Stack 注册将需要在这些年度订阅到期后重新注册时更改唯一名称，除非你[删除过期的注册](azure-stack-registration.md#change-the-subscription-you-use)并重新注册到 Azure。
 
-若要确定 Azure Stack 部署的云 ID，先打开 PowerShell，在计算机上的管理员不是可以访问特权终结点，运行以下命令，并记录**CloudID**值： 
+若要确定 Azure Stack 部署的云 ID，请在可以访问特权终结点的计算机上以管理员身份打开 PowerShell，运行以下命令，并记录 **CloudID** 值： 
 
 ```powershell
 Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
@@ -214,7 +214,7 @@ Run: get-azurestackstampinformation
       -RegistrationName $RegistrationName
   ```
    > [!Note]  
-   > 您可以禁用使用情况报告 UsageReportingEnabled 参数对于**Set-azsregistration** cmdlet 通过将参数设置为 false。 
+   > 可以通过将参数设置为 false 来使用 **Set-AzsRegistration** cmdlet 的 UsageReportingEnabled 参数禁用使用情况报告。 
    
   有关 Set-AzsRegistration cmdlet 的详细信息，请参阅[注册参考](#registration-reference)。
 
@@ -318,7 +318,7 @@ Run: get-azurestackstampinformation
 
 #### <a name="change-the-subscription-you-use"></a>更改使用的订阅
 
-如果你想要更改的订阅使用，必须先运行**Remove-azsregistration** cmdlet，然后，确保已登录到正确的 Azure PowerShell 上下文，并最终运行**Set-azsregistration**包括任何已更改的参数与\<计费模型\>:
+若要更改使用的订阅，必须先运行 **Remove-AzsRegistration** cmdlet，然后确保已登录到正确的 Azure PowerShell 上下文，最后使用任何已更改的参数（包括\<计费模型\>）来运行 **Set-AzsRegistration**：
 
   ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
@@ -431,7 +431,7 @@ Run: get-azurestackstampinformation
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
 | BillingModel | String | 订阅使用的计费模型。 此参数允许的值：Capacity、PayAsYouUse 和 Development。 |
-| MarketplaceSyndicationEnabled |  |  |
+| MarketplaceSyndicationEnabled | True/False | 确定 marketplace 管理功能是在门户中可用。 如果，设置为 true 注册连接到 internet。 如果注册在连接断开的环境，设置为 false。 断开连接注册[脱机联合工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)可用于下载 marketplace 项。 |
 | UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数的允许值：True、False。 |
 | AgreementNumber | String |  |
 | RegistrationName | String | 如果在多个使用同一 Azure 订阅 ID 的 Azure Stack 实例上运行注册脚本，请为注册设置唯一名称。 参数的默认值为 **AzureStackRegistration**。 但是，如果在多个 Azure Stack 实例上使用同一名称，脚本会失败。 |

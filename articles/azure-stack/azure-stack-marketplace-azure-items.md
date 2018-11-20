@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: c3c5e904d8e933c09754e13ccb22d6c16d0a37eb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 229c0a6afee893a4a8eb5cd62a1d25266ee8fc3e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713463"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977176"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -32,10 +32,10 @@ ms.locfileid: "51713463"
 
 |  | 项名称 | 说明 | 发布者 | OS 类型 |
 | --- | --- | --- | --- | --- |
-|![SQL IaaS 扩展](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| **下载此扩展以部署任何“Windows 上的 SQL Server”市场项 - 此扩展是必需的。** | Microsoft | Windows |
+|![ SQL IaaS 扩展](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| **下载此扩展以部署任何“Windows 上的 SQL Server”市场项 - 此扩展是必需的。** | Microsoft | Windows |
 |![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| **请下载此更新，此更新针对用于 Windows 的自定义脚本扩展的内置版本。** | Microsoft | Windows |
 |![PowerShell DSC 扩展](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| **请将此更新下载到 PowerShell DSC 扩展的内置版本。更新为支持 TLS v1.2。** | Microsoft | Windows |
-| ![Microsoft 反恶意软件扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft 反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 **请将此更新下载到 Antimalware 扩展的内置版本。** | Microsoft | Windows |
+| ![ Microsoft 反恶意软件扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft 反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 **请将此更新下载到 Antimalware 扩展的内置版本。** | Microsoft | Windows |
 | ![Microsoft Azure 诊断扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-windows)| Microsoft Azure 诊断是 Azure 中可启用对已部署的应用程序的诊断数据收集功能。 **请下载此更新，此更新针对用于 Windows 的诊断扩展的内置版本。** | Microsoft | Windows || ![Microsoft Monitoring 扩展](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Monitoring Agent 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)| Microsoft Monitoring Agent 扩展可以与 OMS 配合使用，提供虚拟机监视功能。 **请下载此更新，此更新针对用于 Windows 的 Monitoring Agent 扩展的内置版本。** | Microsoft | Windows |
 |![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)|**请将此更新下载到 Linux 的自定义脚本扩展的内置版本。此扩展有多个版本，应下载 1.5.2.1 和 2.0.x。** | Microsoft | Linux |
 | ![适用于 Linux 的 VM 访问权限](media/azure-stack-marketplace-azure-items/cse.png) | [适用于 Linux 的 VM 访问权限](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| **请下载此更新，此更新针对适用于 Linux 的 VM 访问权限扩展的内置版本。如果计划使用 Debian Linux VM，此更新很重要。** | Microsoft | Linux |
@@ -203,7 +203,7 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![RabbitMQ 群集](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [RabbitMQ 群集](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ 是一种消息传送中转站，为应用程序提供通用的消息收发平台，允许消息安全地存放在其中，直至被接收。 此解决方案使用多个 VM 在 RabbitMQ 群集中预配多个节点，形成单一的逻辑中转站。 **此解决方案模板还需要 Debian 8 以及适用于 Linux 2.0 扩展的自定义脚本。** | Bitnami |
 | ![Re:dash](media/azure-stack-marketplace-azure-items/redash.png) | [Re:dash](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | 开源数据可视化和协作平台。 | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | 功能强大的开源键-值存储。 | Bitnami |
-| ![Redis 高可用性](media/azure-stack-marketplace-azure-items/redis.png) | [Redis 高可用性](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | 功能强大的开源键-值存储。 **此解决方案模板要求 Azure Stack 版本为 1807 或更高版本，并且还需要 Debian 8 和用于 Linux 2.0 扩展的自定义脚本。** | Bitnami |
+| ![Redis 高可用性](media/azure-stack-marketplace-azure-items/redis.png) | [Redis 高可用性](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | 功能强大的开源键-值存储。 **此解决方案模板要求 Azure Stack 版本为 1807 或更高版本，并且还需要 Debian 8 和用于 Linux 2.0 扩展的自定义脚本。** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | 强大的项目管理 Web 应用 | Bitnami |
 | ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | 使用 Agile 插件预先配置的项目管理应用程序。 | Bitnami |
 | ![ReportServer 社区](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer 社区](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | 开源商业智能平台。 | Bitnami |
@@ -250,5 +250,5 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![PT 应用程序防火墙](media/azure-stack-marketplace-azure-items/pt.png) | [PT 应用程序防火墙](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT 应用程序防火墙检测已知的和未知的漏洞，防范对 Web 应用的攻击。 **下载两种 PT 市场项。** | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | 使用 Puppet Enterprise 可以实现 Azure Stack 基础结构整个生命周期的自动化。 **下载两种 Puppet 市场项。** | Puppet |
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | 备份、 复制和恢复一个易于使用的软件解决方案中，统一了高级数据保护的快速恢复。 | Quest Software |
-| ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | 同类最佳开源基础结构管理。 | SUSE |
+| ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | 同类最佳开源基础结构管理。 | SUSE |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® 软件技术提供了企业对其业务连续性通过其公司数据的持续访问权限，即服务 (BCaaS)™ 体系结构、 保护应用程序和事务，如果网络中断会发生，通常会会削弱企业。 | ZeroDown Software |

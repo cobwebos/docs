@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8a2a9728a9fcc0c409cd2020c4aa831433538157
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623972"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976122"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack 诊断工具
 
@@ -70,13 +70,17 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- 参数**OutputSharePath**并**OutputShareCredential**用于将日志存储在用户指定位置。
-- **FromDate**并**ToDate**参数可用于在特定时间段内收集日志。 如果未指定这些参数，日志收集过去四个小时内默认情况下。
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
-1. 在主机上以 **AzureStack\CloudAdmin** 身份登录。
-2. 以管理员身份打开 PowerShell 窗口。
+使用以下步骤在 asdk 主机上运行 Get-azurestacklog。
+
+- 参数**OutputSharePath**并**OutputShareCredential**用于将日志存储在用户指定位置。
+- **FromDate**并**ToDate**参数可用于在特定时间段内收集日志。 如果未指定这些参数，日志收集过去四个小时内默认情况下。
+
+1. 以身份登录**AzureStack\CloudAdmin** ASDK 主机计算机上。
+2. 以管理员身份打开新的 PowerShell 窗口。
 3. 运行 **Get-AzureStackLog** PowerShell cmdlet。
 
 **示例：**
