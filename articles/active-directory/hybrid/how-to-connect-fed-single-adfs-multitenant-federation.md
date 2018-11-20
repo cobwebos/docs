@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5239788f06ed3e738d1f0b62ddcde77c2a13b5f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241729"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621253"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
 
@@ -47,7 +47,7 @@ ms.locfileid: "50241729"
  
 为联合到 AD FS 的单个域设置的默认颁发者为“http://ADFSServiceFQDN/adfs/services/trust”，例如“http://fs.contoso.com/adfs/services/trust”。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
  
-在 AD FS 服务器上，打开 Azure AD PowerShell 并执行以下步骤：
+在 AD FS 服务器上，打开 Azure AD PowerShell（确保 MSOnline 模块已安装）并执行以下步骤：
  
 连接到 Azure Active Directory，其中包含域 contoso.com Connect-MsolService 更新 contoso.com 的联合身份验证设置 Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  

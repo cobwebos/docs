@@ -109,7 +109,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
     * 副本计算机可使用在**启动脱机备份**工作流中提供的相同网络路径，访问脱机种子设定工作流的暂存位置。
     * 已在副本计算机上启用 BitLocker。
     * Azure PowerShell 3.7.0 已安装。
-    * 已安装最新的兼容浏览器（Edge 或 Internet Explorer 11），并已启用 JavaScript。 
+    * 已安装最新的兼容浏览器（Microsoft Edge 或 Internet Explorer 11），并已启用 JavaScript。 
     * 副本计算机可以访问 Azure 门户。 必要时，副本计算机可与源计算机相同。
     
     > [!IMPORTANT] 

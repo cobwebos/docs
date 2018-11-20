@@ -165,12 +165,236 @@ items:
       href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
   - name: 使用作业关系图进行调试
     href: stream-analytics-job-diagram-with-metrics.md
+- name: 流分析查询语言
+  href: /stream-analytics-query/stream-analytics-query-language-reference
+  items:
+  - name: 内置函数
+    items:
+    - name: 内置函数概述
+      href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+    - name: 聚合函数
+      items:
+      - name: 聚合函数概述
+        href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+      - name: 平均值
+        href: /stream-analytics-query/avg-azure-stream-analytics
+      - name: COUNT
+        href: /stream-analytics-query/count-azure-stream-analytics
+      - name: Collect
+        href: /stream-analytics-query/collect-azure-stream-analytics
+      - name: CollectTOP
+        href: /stream-analytics-query/collecttop-azure-stream-analytics
+      - name: MAX
+        href: /stream-analytics-query/max-azure-stream-analytics
+      - name: 最小值
+        href: /stream-analytics-query/min-azure-stream-analytics
+      - name: Percentile_Cont
+        href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+      - name: Percentile_Disc
+        href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+      - name: STDEV
+        href: /stream-analytics-query/stdev-azure-stream-analytics
+      - name: STDEVP
+        href: /stream-analytics-query/stdevp-azure-stream-analytics
+      - name: SUM
+        href: /stream-analytics-query/sum-azure-stream-analytics
+      - name: TopOne
+        href: /stream-analytics-query/topone-azure-stream-analytics
+      - name: VAR
+        href: /stream-analytics-query/var-azure-stream-analytics
+      - name: VARP
+        href: /stream-analytics-query/varp-azure-stream-analytics
+    - name: 分析函数
+      items:
+      - name: 分析函数概述
+        href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: ISFIRST
+        href: /stream-analytics-query/isfirst-azure-stream-analytics
+      - name: LAG
+        href: /stream-analytics-query/lag-azure-stream-analytics
+      - name: LAST
+        href: /stream-analytics-query/last-azure-stream-analytics
+      - name: AnomalyDetection
+        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
+    - name: 数组函数
+      items:
+      - name: 数组函数概述
+        href: /stream-analytics-query/array-functions-stream-analytics
+      - name: GetArrayLength
+        href: /stream-analytics-query/getarraylength-azure-stream-analytics
+      - name: GetArrayElement
+        href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+      - name: GetArrayElements
+        href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+    - name: 转换函数
+      items:
+      - name: 转换函数概述
+        href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+      - name: CAST
+        href: /stream-analytics-query/cast-azure-stream-analytics
+      - name: GetType
+        href: /stream-analytics-query/gettype-azure-stream-analytics
+      - name: TRY_CAST
+        href: /stream-analytics-query/try-cast-azure-stream-analytics
+    - name: 日期和时间函数
+      items:
+      - name: 日期和时间函数概述
+        href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+      - name: DATEADD
+        href: /stream-analytics-query/dateadd-azure-stream-analytics
+      - name: DATEDIFF
+        href: /stream-analytics-query/datediff-azure-stream-analytics
+      - name: DATENAME
+        href: /stream-analytics-query/datename-azure-stream-analytics
+      - name: DATEPART
+        href: /stream-analytics-query/datepart-azure-stream-analytics
+      - name: DATETIMEFROMPARTS
+        href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+      - name: DAY
+        href: /stream-analytics-query/day-azure-stream-analytics
+      - name: 月
+        href: /stream-analytics-query/month-azure-stream-analytics
+      - name: 年
+        href: /stream-analytics-query/year-azure-stream-analytics
+    - name: 地理空间函数
+      items:
+      - name: 地理空间函数概述
+        href: /stream-analytics-query/geospatial-functions
+      - name: CreateLineString
+        href: /stream-analytics-query/createlinestring
+      - name: CreatePoint
+        href: /stream-analytics-query/createpoint
+      - name: CreatePolygon
+        href: /stream-analytics-query/createpolygon
+      - name: ST_DISTANCE
+        href: /stream-analytics-query/st-distance
+      - name: ST_OVERLAPS
+        href: /stream-analytics-query/st-overlaps
+      - name: ST_INTERSECTS
+        href: /stream-analytics-query/st-intersects
+      - name: ST_WITHIN
+        href: /stream-analytics-query/st-within
+    - name: 输入元数据函数
+      items:
+      - name: 输入元数据函数概述
+        href: /stream-analytics-query/input-metadata-functions
+      - name: GetMetadataPropertyValue
+        href: /stream-analytics-query/getmetadatapropertyvalue
+    - name: 数学函数
+      items:
+      - name: 数学函数概述
+        href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+      - name: ABS
+        href: /stream-analytics-query/abs-azure-stream-analytics
+      - name: CEILING
+        href: /stream-analytics-query/ceiling-azure-stream-analytics
+      - name: EXP
+        href: /stream-analytics-query/exp-azure-stream-analytics
+      - name: FLOOR
+        href: /stream-analytics-query/floor-azure-stream-analytics
+      - name: POWER
+        href: /stream-analytics-query/power-azure-stream-analytics
+      - name: SIGN
+        href: /stream-analytics-query/sign-azure-stream-analytics
+      - name: SQUARE
+        href: /stream-analytics-query/square-azure-stream-analytics
+      - name: SQRT
+        href: /stream-analytics-query/sqrt-azure-stream-analytics
+    - name: 记录函数
+      items:
+      - name: 记录函数概述
+        href: /stream-analytics-query/record-functions-azure-stream-analytics
+      - name: GetRecordProperties
+        href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+      - name: GetRecordPropertyValue
+        href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+    - name: 字符串函数
+      items:
+      - name: 字符串函数概述
+        href: /stream-analytics-query/string-functions-azure-stream-analytics
+      - name: CHARINDEX
+        href: /stream-analytics-query/charindex-azure-stream-analytics
+      - name: CONCAT
+        href: /stream-analytics-query/concat-azure-stream-analytics
+      - name: LEN
+        href: /stream-analytics-query/len-azure-stream-analytics
+      - name: LOWER
+        href: /stream-analytics-query/lower-azure-stream-analytics
+      - name: PATINDEX
+        href: /stream-analytics-query/patindex-azure-stream-analytics
+      - name: REGEXMATCH
+        href: /stream-analytics-query/regexmatch-azure-stream-analytics
+      - name: SUBSTRING
+        href: /stream-analytics-query/substring-azure-stream-analytics
+      - name: UPPER
+        href: /stream-analytics-query/upper-azure-stream-analytics
+    - name: 开窗函数
+      items:
+      - name: 开窗函数概述
+        href: /stream-analytics-query/windowing-azure-stream-analytics
+      - name: 跳跃窗口
+        href: /stream-analytics-query/hopping-window-azure-stream-analytics
+      - name: 会话窗口
+        href: /stream-analytics-query/session-window-azure-stream-analytics
+      - name: 滑动窗口
+        href: /stream-analytics-query/sliding-window-azure-stream-analytics
+      - name: 翻转窗口
+        href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+  - name: 数据类型
+    items:
+    - name: 数据类型概述
+      href: /stream-analytics-query/data-types-azure-stream-analytics
+    - name: 分析 JSON 和 AVRO 数据
+      href: stream-analytics-parsing-json.md
+      maintainContext: true
+  - name: 查询语言元素
+    items:
+    - name: 查询语言元素概述
+      href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+    - name: APPLY
+      href: /stream-analytics-query/apply-azure-stream-analytics
+    - name: CASE
+      href: /stream-analytics-query/case-azure-stream-analytics
+    - name: CREATE TABLE
+      href: /stream-analytics-query/create-table-stream-analytics
+    - name: FROM
+      href: /stream-analytics-query/from-azure-stream-analytics
+    - name: GROUP BY
+      href: /stream-analytics-query/group-by-azure-stream-analytics
+    - name: HAVING
+      href: /stream-analytics-query/having-azure-stream-analytics
+    - name: INTO
+      href: /stream-analytics-query/into-azure-stream-analytics
+    - name: JOIN
+      href: /stream-analytics-query/join-azure-stream-analytics
+    - name: 参考数据 JOIN
+      href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+    - name: SELECT
+      href: /stream-analytics-query/select-azure-stream-analytics
+    - name: UNION
+      href: /stream-analytics-query/union-azure-stream-analytics
+    - name: WHERE
+      href: /stream-analytics-query/where-azure-stream-analytics
+    - name: WITH
+      href: /stream-analytics-query/with-azure-stream-analytics
+    expanded: true
+  - name: 时间管理
+    items:
+    - name: 时间管理概述
+      href: /stream-analytics-query/time-management-azure-stream-analytics
+    - name: System.Timestamp
+      href: /stream-analytics-query/system-timestamp-stream-analytics
+    - name: TIMESTAMP BY
+      href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+    - name: 时间偏差策略
+      href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+  - name: 事件传递保证
+    href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
+  maintainContext: true
 - name: 引用
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.streamanalytics
-  - name: 查询语言
-    href: https://msdn.microsoft.com/library/azure/dn834998
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
@@ -201,9 +425,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: e2d29ddfaf035eb937270364bb4f95f866f01807
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bfd489ba8002d8bdfd69b9890b96f41bd4f68b1c
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49983901"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976211"

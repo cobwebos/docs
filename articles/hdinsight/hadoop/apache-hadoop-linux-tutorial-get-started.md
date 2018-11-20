@@ -1,5 +1,5 @@
 ---
-title: '快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Hadoop 和 Hive '
+title: '快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive '
 description: 了解如何创建 HDInsight 群集，以及如何使用 Hive 查询数据。
 keywords: hadoop 入门,hadoop linux,hadoop 快速入门,hive 入门,hive 快速入门
 services: hdinsight
@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: cf5992615f021a986aeb3145f01b27a3b565a17b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cc726156273591215e5a311065ae2fe6dd87402c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014374"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634427"
 ---
-# <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Hadoop 和 Hive
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive
 
-本文介绍如何使用资源管理器模板在 HDInsight 中创建 [Hadoop](http://hadoop.apache.org/) 群集，以及之后如何在 HDInsight 中运行 Hive 作业。 大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 在本文中，将会执行所有这三项任务。
+本文介绍如何使用资源管理器模板在 HDInsight 中创建 [Apache Hadoop](http://hadoop.apache.org/) 群集，以及之后如何在 HDInsight 中运行 Hive 作业。 大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 在本文中，将会执行所有这三项任务。
 
 在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Hadoop 群集。 也可以使用 [Azure 门户](apache-hadoop-linux-create-cluster-get-started-portal.md)创建群集。
 

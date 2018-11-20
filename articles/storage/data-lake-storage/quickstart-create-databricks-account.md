@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: 338acd3e26f9b36e5f9afaf90f95f61e7623cebc
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8c53e86ff18aa0f010bf4bb57b2ac4ccde3f430c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281721"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565796"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -103,10 +103,10 @@ ms.locfileid: "51281721"
 4. 在以下代码中，请将 **ACCOUNT_NAME** 和 **ACCOUNT_KEY** 文本替换为在本教程开头保存的值。 另请将 **FILE_SYSTEM_NAME** 文本替换为需要提供给文件系统的名称。 然后将代码输入到第一个单元格中。
 
     ```scala
-    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
+    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>")
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false") 
+    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
     ```
 
     按 **SHIFT + ENTER** 运行代码单元。
@@ -152,7 +152,7 @@ ms.locfileid: "51281721"
 2. 让我们看看示例 JSON 数据的快照，以便更好地了解运行的查询。 将以下代码片段粘贴到代码单元中，并按 **SHIFT + ENTER**。
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -187,7 +187,7 @@ ms.locfileid: "51281721"
 
 ![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 __ 分钟后终止”复选框，则该群集会自动停止。 如果设置了此选项，则群集在处于不活动状态达到指定时间量后将停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 如果设置了此选项，则群集在处于不活动状态达到指定时间量后将停止。
 
 ## <a name="next-steps"></a>后续步骤
 

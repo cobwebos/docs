@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 80011c46b707dba09a66364e0f8a316b118f1daf
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11347203b4d21bc046b97c1fb1ddc8348f5046af
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055350"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684909"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>使用 PowerShell 在多个 SQL 数据库之间进行同步
  
@@ -363,14 +363,18 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 有关 SQL 数据同步的详细信息，请参阅：
 
--   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)
--   [设置 Azure SQL 数据同步](../sql-database-get-started-sql-data-sync.md)
--   [Azure SQL 数据同步最佳实践](../sql-database-best-practices-data-sync.md)
--   [使用 Log Analytics 监视 Azure SQL 数据同步](../sql-database-sync-monitor-oms.md)
--   [Azure SQL 数据同步问题疑难解答](../sql-database-troubleshoot-data-sync.md)
-
--   演示如何配置 SQL 数据同步的完整 PowerShell 示例：
-    -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](sql-database-sync-data-between-azure-onprem.md)
+-   概述 - [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)
+-   设置数据同步
+    - 在门户中 - [教程：设置 SQL 数据同步，以在 Azure SQL 数据库和本地 SQL Server 之间同步数据](../sql-database-get-started-sql-data-sync.md)
+    - 使用 PowerShell
+        -  [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](sql-database-sync-data-between-azure-onprem.md)
+-   数据同步代理 - [Azure SQL 数据同步的数据同步代理](../sql-database-data-sync-agent.md)
+-   最佳做法 - [Azure SQL 数据同步最佳做法](../sql-database-best-practices-data-sync.md)
+-   监视 - [使用 Log Analytics 监视 SQL 数据同步](../sql-database-sync-monitor-oms.md)
+-   故障排除 - [排查 Azure SQL 数据同步问题](../sql-database-troubleshoot-data-sync.md)
+-   更新同步架构
+    -   使用 Transact-SQL - [在 Azure SQL 数据同步中自动复制架构更改](../sql-database-update-sync-schema.md)
+    -   使用 PowerShell - [使用 PowerShell 更新现有同步组中的同步架构](sql-database-sync-update-schema.md)
 
 有关 SQL 数据库的详细信息，请参阅：
 

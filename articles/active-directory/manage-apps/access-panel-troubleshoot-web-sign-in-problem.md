@@ -64,7 +64,7 @@ ms.locfileid: "44354655"
 
 -   Internet Explorer 8、9、10、11 - 在 Windows 7 或更高版本上
 
--   Windows 10 周年纪念版或更高版本上的 Edge 
+-   Windows 10 周年纪念版或更高版本上的 Microsoft Edge 
 
 -   Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 

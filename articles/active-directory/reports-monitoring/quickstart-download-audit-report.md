@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d6ecf62b46c25ec7cf4ab80219d1bc220e4eb4cc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367400"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620728"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载审核报表
 
@@ -32,7 +32,7 @@ ms.locfileid: "46367400"
 需要：
 
 * 一个 Azure Active Directory 租户。 
-* 一位属于该租户的安全管理员、安全读者、或全局管理员角色的用户。 此外，该租户中的任何用户均可访问其自己的审核日志。
+* 一位属于该租户的安全管理员、安全读者或全局管理员角色的用户。 此外，该租户中的任何用户均可访问其自己的审核日志。
 
 ## <a name="quickstart-download-an-audit-report"></a>快速入门：下载审核报表
 

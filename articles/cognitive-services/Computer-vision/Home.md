@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 39b3f51693229e75f58c4244089f21c7d3f8677d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250600"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634322"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -53,6 +53,10 @@ ms.locfileid: "50250600"
 ## <a name="moderating-content-in-images"></a>管理图像中的内容
 
 可以使用计算机视觉在图像中[检测成人内容和不雅内容](concept-detecting-adult-content.md)，对图像包含成人内容或不雅内容的可能性进行评分，并为二者生成一个置信度分数。 可以根据自己的偏好在滑尺上设置成人和不雅内容检测的筛选器。
+
+## <a name="using-containers"></a>使用容器
+
+将标准化的 Docker 容器安装到靠近数据的位置以后，即可在本地[使用计算机视觉容器](computer-vision-how-to-install-containers.md)识别打印的和手写的文本。
 
 ## <a name="image-requirements"></a>映像要求
 

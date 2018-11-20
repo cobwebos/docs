@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417508"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636843"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL 教程：构建 SQL API Java 控制台应用程序
 
@@ -91,7 +91,7 @@ ms.locfileid: "50417508"
 ![在 NoSQL 教程中用于创建 Java 控制台应用程序的 Azure 门户屏幕截图。 显示了一个 Azure Cosmos DB 帐户，在“Azure Cosmos DB 帐户”边栏选项卡上突出显示了“ACTIVE”中心、“密钥”按钮，在“密钥”边栏选项卡上突出显示了 URI、主密钥、辅助密钥的值][keys]
 
 ## <a name="step-4-create-a-database"></a>第 4 步：创建数据库
-可以使用 **DocumentClient** 类的 [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) 方法创建 Azure Cosmos DB [数据库](sql-api-resources.md#databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
+可以使用 **DocumentClient** 类的 [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) 方法创建 Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +103,7 @@ ms.locfileid: "50417508"
 > 
 > 
 
-可以使用 **DocumentClient** 类的 [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) 方法创建[集合](sql-api-resources.md#collections)。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
+可以使用 **DocumentClient** 类的 [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) 方法创建集合。 集合是 JSON 文档和相关联的 JavaScript 应用程序逻辑的容器。
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -117,7 +117,7 @@ ms.locfileid: "50417508"
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>第 6 步：创建 JSON 文档
-可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建[文档](sql-api-resources.md#documents)。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
+可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建文档。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

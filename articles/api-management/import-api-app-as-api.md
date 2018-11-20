@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306674"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636437"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 
@@ -34,7 +34,7 @@ ms.locfileid: "38306674"
 ## <a name="prerequisites"></a>先决条件
 
 + 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
-+ 确保订阅中已有 API 应用。 有关详细信息，请参阅 [应用服务文档][https://docs.microsoft.com/azure/app-service/]
++ 确保订阅中已有 API 应用。 有关详细信息，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "38306674"
 1. 从“API 管理”下选择“API”。
 2. 从“添加新的 API”列表中选择“API 应用”。
 
-    !(API 应用)[./media/import-api-app-as-api/api-app.png]
+    ![API 应用](./media/import-api-app-as-api/api-app.png)
 3. 按“浏览”查看订阅中的 API 应用列表。
 4. 选择应用。 APIM 找到与所选应用关联的 swagger 后，将其提取并导入。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "38306674"
 
     * **入门**
     * **不受限制**   
-7. 选择**创建**。
+7. 选择“创建”。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 

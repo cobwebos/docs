@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
-description: 快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密
+description: 快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230925"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686664"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
@@ -175,7 +175,6 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Key Vault 主页](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault 文档](https://docs.microsoft.com/azure/key-vault/)
+* [深入了解 Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 * [用于 .NET 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net)
 * [Azure REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)

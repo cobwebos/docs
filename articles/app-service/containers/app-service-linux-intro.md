@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 75eb260b107df3877219266794e45eb11d5deb35
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902087"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633234"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -33,13 +33,12 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 | 语言 | 支持的版本 |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1 |
-| Java * | 8.0 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10 |
+| Java * | Tomcat 8.5、9.0，Java SE，WildFly 14（全都运行 JRE 8） |
 | PHP | 5.6, 7.0, 7.2 |
-| Python（预览版） | 3.7 |
-| .NET Core | 1.0, 1.1, 2.0 |
+| Python（预览版） | 3.6、3.7 |
+| .NET Core | 1.0、1.1、2.0、2.1 |
 | Ruby | 2.3 |
-| Apache Tomcat | 8.5, 9.0 |
 
 如需更多详细信息，请参阅[在基于 Linux 的应用服务中创建 Java Web 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)。
 

@@ -143,7 +143,7 @@ items:
     items:
     - name: 托管实例
       href: sql-database-managed-instance-index.yml
-    - name: 托管实例是什么
+    - name: 概述
       href: sql-database-managed-instance.md
     - name: 资源限制
       href: sql-database-managed-instance-resource-limits.md
@@ -163,15 +163,15 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
     - name: 事务复制
       href: replication-with-sql-database-managed-instance.md
-  - name: 业务连续性
+  - name: 平台即服务
     items:
+    - name: 平台即服务
+      href: sql-database-paas.yml
     - name: 业务连续性
       href: sql-database-business-continuity.md
     - name: 高可用性
       href: sql-database-high-availability.md
-    - name: 加速的数据库恢复
-      href: sql-database-accelerated-database-recovery.md
-    - name: 数据库备份
+    - name: 自动备份
       href: sql-database-automated-backups.md
     - name: 长期备份保留
       items:
@@ -193,6 +193,8 @@ items:
       items:
       - name: 使用备份进行恢复
         href: sql-database-recovery-using-backups.md
+      - name: 加速的数据库恢复
+        href: sql-database-accelerated-database-recovery.md
       - name: 中断恢复指南
         href: sql-database-disaster-recovery.md
       - name: 恢复练习
@@ -208,6 +210,8 @@ items:
   - name: 安全
     items:
     - name: 安全
+      href: sql-database-security-index.yml
+    - name: 概述
       href: sql-database-security-overview.md
     - name: 高级威胁防护
       items:
@@ -648,9 +652,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854282"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165247"

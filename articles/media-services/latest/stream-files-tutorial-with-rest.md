@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务上传、编码和流式传输 | Microsoft Docs
+title: 使用 Azure 媒体服务上传、编码和流式传输 - REST | Microsoft Docs
 description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务上传文件、编码视频和流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377412"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615766"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>教程：使用 REST 上传、编码和流式传输视频
 
-本教程介绍如何使用 Azure 媒体服务上传、编码和流式传输视频文件。
+使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。
 
-使用媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。
+本教程介绍如何通过 REST 使用 Azure 媒体服务上传、编码和流式传输视频文件。 
 
 ![播放视频](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,6 +42,14 @@ ms.locfileid: "49377412"
 
 ## <a name="prerequisites"></a>先决条件
 
+- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+
+    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
+
+- [创建媒体服务帐户](create-account-cli-how-to.md)。
+
+    请务必记住用于资源组名称和媒体服务帐户名称的值
+
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
     我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
@@ -53,10 +61,6 @@ ms.locfileid: "49377412"
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -352,11 +356,11 @@ Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。 可以使用 CloudShell 工具。
+如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。  
 
-在 CloudShell 中，执行以下命令：
+执行以下 CLI 命令：
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

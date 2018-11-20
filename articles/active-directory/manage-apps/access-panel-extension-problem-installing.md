@@ -36,7 +36,7 @@ ms.locfileid: "44354534"
 
 对于基于密码的 SSO，可以使用以下任一浏览器：
 
-- **Edge**：在 Windows 10 周年纪念版或更高版本上。 
+- **Microsoft Edge**：在 Windows 10 周年纪念版或更高版本上。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 

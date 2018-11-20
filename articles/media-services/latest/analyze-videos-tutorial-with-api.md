@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985703"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612748"
 ---
-# <a name="tutorial-analyze-videos-with-azure-media-services"></a>教程：使用 Azure 媒体服务分析视频 
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>教程：通过 API 使用媒体服务 v3 分析视频
 
-本教程介绍如何使用 Azure 媒体服务分析视频。 在很多情况下，用户可能会希望深入了解录制的视频或音频内容。 例如，若要提高客户满意度，组织可运行语音转文本处理，将客户支持录音转换为具有索引和仪表板的可搜索目录。 然后，即可获得有关其业务的见解，如常见投诉列表、此类投诉的来源等等。
+本教程介绍如何使用 Azure 媒体服务分析视频。 在很多情况下，用户可能会希望深入了解录制的视频或音频内容。 例如，若要提高客户满意度，组织可运行语音转文本处理，将客户支持录音转换为具有索引和仪表板的可搜索目录。 然后即可获得有关其业务的见解，如常见投诉列表、此类投诉的来源，以及其他有用信息。
 
 本教程演示如何：    
 
@@ -38,7 +38,14 @@ ms.locfileid: "49985703"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
+- 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
+- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+
+    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
+
+- [创建媒体服务帐户](create-account-cli-how-to.md)。
+
+    请务必记住用于资源组名称和媒体服务帐户名称的值。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -49,10 +56,6 @@ ms.locfileid: "49985703"
  ```
 
 该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) 文件夹。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -154,11 +157,11 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。 可以使用 CloudShell 工具。
+如果不再需要资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除之前创建的资源组。 
 
-在 CloudShell 中，执行以下命令：
+执行以下 CLI 命令：
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

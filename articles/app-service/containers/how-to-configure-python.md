@@ -15,24 +15,38 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406460"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633642"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>为 Linux 上的 Azure 应用服务配置 Python 应用
 
 本文介绍 [Linux 上的 Azure 应用服务](app-service-linux-intro.md)如何运行 Python 应用，以及如何按需自定义应用服务的行为。
 
+## <a name="set-python-version"></a>设置 Python 版本
+
+提供两个基础映像：Python 3.6 和 Python 3.7。 可以使用所需的基于 Python 的映像创建一个应用。 例如，若要使用 Python 3.7 创建一个应用，请在 Cloud Shell 中运行以下命令：
+
+```azurecli-interactive
+az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
+```
+
+例如，若要将 Python 版本（基于它的映像）更改为 Python 3.6，请在 Cloud Shell 中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-version "PYTHON|3.6"
+```
+
+如果需要其他版本的 Python，必须改为生成并部署自己的容器映像。 有关详细信息，请参阅[如何对用于容器的 Web 应用使用自定义 Docker 映像](tutorial-custom-docker-image.md)。
+
 ## <a name="container-characteristics"></a>容器特征
 
-部署到 Linux 上的应用服务的 Python 应用在 GitHub 存储库 [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0) 中定义的 Docker 容器内运行。
+部署到 Linux 上的应用服务的 Python 应用在 GitHub 存储库 [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) 或 [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) 中定义的 Docker 容器内运行。
 
 此容器具有以下特征：
-
-- 基础容器映像为 `python-3.7.0-slim-stretch`，这意味着，应用是配合 Python 3.7 运行的。 如果需要其他版本的 Python，必须改为生成并部署自己的容器映像。 有关详细信息，请参阅[如何对用于容器的 Web 应用使用自定义 Docker 映像](tutorial-custom-docker-image.md)。
 
 - 应用是结合附加参数 `--bind=0.0.0.0 --timeout 600`，使用 [Gunicorn WSGI HTTP Server](http://gunicorn.org/) 运行的。
 

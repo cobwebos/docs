@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394584"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578343"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -24,7 +24,7 @@ AKS 群集需要 [Azure Active Directory (AD) 服务主体][aad-service-principa
 
 若要创建 Azure AD 服务主体，必须具有相应的权限，能够向 Azure AD 租户注册应用程序，并将应用程序分配到订阅中的角色。 如果没有必需的权限，可能需要请求 Azure AD 或订阅管理员来分配必需的权限，或者预先创建一个可以与 AKS 群集配合使用的服务主体。
 
-还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>自动创建和使用服务主体
 
@@ -75,6 +75,45 @@ az aks create \
 
 ![浏览到 Azure Vote 的图像](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>委托对其他 Azure 资源的访问权限
+
+AKS 群集的服务主体可以用来访问其他资源。 例如，如果需要使用高级网络来连接到现有的虚拟网络或连接到 Azure 容器注册表 (ACR)，则需将访问权限委托给服务主体。
+
+若要委托权限，请使用 [az role assignment create][az-role-assignment-create] 命令创建一个角色分配。 将 `appId` 分配到特定的范围，例如一个资源组或虚拟网络资源。 然后，通过角色定义服务主体对资源的具体权限，如以下示例所示：
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+资源的 `--scope` 需要是完整的资源 ID，例如 */subscriptions/\<guid\>/resourceGroups/myResourceGroup* 或 */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+以下各部分详述了可能需要使用的常见委托。
+
+### <a name="azure-container-registry"></a>Azure 容器注册表
+
+如果使用 Azure 容器注册表 (ACR) 作为容器映像存储，则需授予 AKS 群集读取和拉取映像的权限。 必须向 AKS 群集的服务主体委托注册表的“读者”角色。 有关详细步骤，请参阅[向 AKS 授予对 ACR 的访问权限][aks-to-acr]。
+
+### <a name="networking"></a>网络
+
+可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 分配下列角色权限集之一：
+
+- 创建一个[自定义角色][rbac-custom-role]，并定义以下角色权限：
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- 或者，在虚拟网络的子网上分配[网络参与者][rbac-network-contributor]内置角色
+
+### <a name="storage"></a>存储
+
+可能需要访问另一资源组中的现有磁盘资源。 分配下列角色权限集之一：
+
+- 创建一个[自定义角色][rbac-custom-role]，并定义以下角色权限：
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- 或者，在资源组中分配[存储帐户参与者][rbac-storage-contributor]内置角色
+
 ## <a name="additional-considerations"></a>其他注意事项
 
 使用 AKS 和 Azure AD 服务主体时，请牢记以下注意事项。
@@ -107,3 +146,8 @@ az aks create \
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

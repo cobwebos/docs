@@ -1,6 +1,6 @@
 ---
-title: 创建支持基于 URL 路径的重定向的应用程序网关 - Azure CLI
-description: 了解如何通过 Azure CLI 使用基于 URL 路径的重定向流量创建应用程序网关。
+title: 教程 - 创建支持基于 URL 路径的重定向的应用程序网关 - Azure CLI
+description: 本教程介绍如何通过 Azure CLI 使用基于 URL 路径的重定向流量创建应用程序网关。
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3515d603c16bffe911df1b927d02644fcffa0788
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8489cf79848eb41e3c6334242ca607e925ae0b31
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947540"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568142"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：使用 Azure CLI 创建支持基于 URL 路径的重定向的应用程序网关
 
@@ -39,7 +39,7 @@ ms.locfileid: "46947540"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -313,14 +313,6 @@ az network public-ip show \
 az group delete --name myResourceGroupAG --location eastus
 ```
 ## <a name="next-steps"></a>后续步骤
-
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 设置网络
-> * 创建应用程序网关
-> * 添加侦听器和路由规则
-> * 为后端池创建虚拟机规模集
 
 > [!div class="nextstepaction"]
 > [详细了解应用程序网关的作用](application-gateway-introduction.md)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 3e936b3e08884c1728809aea9054278ffdb99045
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 172c3011221e04bfdb4a4f3ae1515fe0eb10065b
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416981"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515244"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>快速入门：控制连接到 IoT 中心的设备 (Java)
 
@@ -26,6 +26,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 本快速入门使用两个预先编写的 Java 应用程序：
 
 * 从后端应用程序调用的可响应直接方法的模拟设备应用程序。 为了接收直接方法调用，此应用程序会连接到 IoT 中心上特定于设备的终结点。
+
 * 后端应用程序，可在模拟设备上调用直接方法。 为了在设备上调用直接方法，此应用程序会连接到 IoT 中心上的服务端终结点。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -58,7 +59,7 @@ mvn --version
 
 如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)，则可跳过此步骤。
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -74,7 +75,8 @@ mvn --version
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
 2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
@@ -82,7 +84,10 @@ mvn --version
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
+    az iot hub device-identity show-connection-string \
+      -hub-name YourIoTHubName \
+      --device-id MyJavaDevice \
+      --output table
     ```
 
     记下如下所示的设备连接字符串：
@@ -131,7 +136,7 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![运行模拟设备](./media/quickstart-control-device-java/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
@@ -157,11 +162,11 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
     以下屏幕截图显示了应用程序对设备进行直接方法调用并接收确认后的输出：
 
-    ![运行后端应用程序](media/quickstart-control-device-java/BackEndApplication.png)
+    ![运行后端应用程序](./media/quickstart-control-device-java/BackEndApplication.png)
 
     运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
-    ![模拟客户端的变化](media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![模拟客户端的变化](./media/quickstart-control-device-java/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

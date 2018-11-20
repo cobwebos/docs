@@ -124,7 +124,7 @@ ms.locfileid: "39053992"
 
     ![“Adobe Sign 配置”部分的屏幕截图，其中已突出显示“配置 Adobe Sign”](./media/adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 的白名单中。 下面介绍如何添加域：
+7. 在配置之前，请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)，以便将域添加到 Adobe Sign 的允许列表中。 下面介绍如何添加域：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)会向你发送随机生成的令牌。 对于域，令牌将如下所示：**adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 

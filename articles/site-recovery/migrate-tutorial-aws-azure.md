@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d10464dac8d9e47d80f11b8bfaf70740e3ad250
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252133"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567088"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -241,7 +241,10 @@ ms.locfileid: "51252133"
 1. 在“受保护的项” > “复制的项”中选择 AWS 实例，然后选择“故障转移”。
 2. 在“故障转移”中，选择要故障转移到其中的“恢复点”。 选择最新的恢复点，然后启动故障转移。 可以在“作业”页上跟踪故障转移进度。
 1. 确保 VM 出现在“复制的项”中。
-2. 右键单击每个 VM，然后选择“完成迁移”。 此操作将完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+2. 右键单击每个 VM，然后选择“完成迁移”。 这样会执行以下操作：
+
+    - 此操作将完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+    - 此步骤清除复制数据。 它不删除迁移的 VM。 
 
     ![完成迁移](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

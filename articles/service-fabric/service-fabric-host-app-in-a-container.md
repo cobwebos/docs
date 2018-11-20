@@ -3,7 +3,7 @@ title: 将容器中的 .NET 应用部署到 Azure Service Fabric | Microsoft Doc
 description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器化并在 Service Fabric 中本地调试容器。 容器化后的应用程序会被推送给 Azure 容器注册表，并部署到 Service Fabric 群集。 部署到 Azure 时，应用程序使用 Azure SQL DB 保存数据。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
-ms.author: ryanwi
-ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.author: twhitney
+ms.openlocfilehash: 2b53b8a97f4e794110dc482db09a0d376247a678
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429586"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299633"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -61,9 +61,7 @@ ms.locfileid: "49429586"
 ## <a name="create-an-azure-sql-db"></a>创建 Azure SQL DB
 在生产中运行 Fabrikam Fiber CallCenter 应用程序时，需要将数据保存在数据库中。 目前无法保证将数据保留在容器中，因此无法将生产数据存储在容器中的 SQL Server 中。
 
-建议使用 [Azure SQL 数据库](/azure/sql-database/sql-database-get-started-powershell)。 若要在 Azure 中设置和运行托管的 SQL Server DB，请运行以下脚本。  根据需要修改脚本变量。 clientIP 是开发计算机的 IP 地址。
-
-如果你处于企业防火墙之后，则开发计算机的 IP 地址可能不是暴露于 Internet 的 IP 地址。 若要验证数据库是否有防火墙规则的正确 IP 地址，请转到 [Azure 门户](https://portal.azure.com)，在“SQL 数据库”部分找到数据库。 单击其名称，然后在“概览”部分单击“设置服务器防火墙”。 “客户端 IP 地址”是开发计算机的 IP 地址。 请确保它与“AllowClient”规则中的 IP 地址匹配。
+建议使用 [Azure SQL 数据库](/azure/sql-database/sql-database-get-started-powershell)。 若要在 Azure 中设置和运行托管的 SQL Server DB，请运行以下脚本。  根据需要修改脚本变量。 clientIP 是开发计算机的 IP 地址。 记下脚本输出的服务器的名称。 
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -84,7 +82,7 @@ $adminlogin = "ServerAdmin"
 $password = "Password@123"
 
 # The IP address of your development computer that accesses the SQL DB.
-$clientIP = "24.18.117.76"
+$clientIP = "<client IP>"
 
 # The database name.
 $databasename = "call-center-db"
@@ -111,13 +109,15 @@ New-AzureRmSqlDatabase  -ResourceGroupName $dbresourcegroupname `
 
 Write-Host "Server name is $servername"
 ```
+> [!TIP]
+> 如果你处于企业防火墙之后，则开发计算机的 IP 地址可能不是暴露于 Internet 的 IP 地址。 若要验证数据库是否有防火墙规则的正确 IP 地址，请转到 [Azure 门户](https://portal.azure.com)，在“SQL 数据库”部分找到数据库。 单击其名称，然后在“概览”部分单击“设置服务器防火墙”。 “客户端 IP 地址”是开发计算机的 IP 地址。 请确保它与“AllowClient”规则中的 IP 地址匹配。
 
 ## <a name="update-the-web-config"></a>更新 Web 配置
-返回到 FabrikamFiber.Web 项目，更新 web.config 文件中的连接字符串，以指向容器中的 SQL Server。  更新上述脚本为服务器创建的连接字符串的 Server 部分。 
+返回到 FabrikamFiber.Web 项目，更新 web.config 文件中的连接字符串，以指向容器中的 SQL Server。  将连接字符串的 *Server* 部分更新为上一脚本创建的服务器名称。 它应该类似于“fab-fiber-751718376.database.windows.net”。
 
 ```xml
-<add name="FabrikamFiber-Express" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
-<add name="FabrikamFiber-DataWarehouse" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+<add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+<add name="FabrikamFiber-DataWarehouse" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
   
 ```
 >[!NOTE]
@@ -142,7 +142,7 @@ $registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupnam
 ```
 
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>在 Azure 上创建 Service Fabric 群集
-在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。  首先需在 Azure 中创建一个 Service Fabric 群集，才能将应用程序部署到 Azure。
+在群集（一组已连接网络的虚拟机或物理计算机）上运行 Service Fabric 应用程序。  需在 Azure 中创建一个 Service Fabric 群集，然后才能将应用程序部署到 Azure。
 
 可以：
 - 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。 
@@ -150,7 +150,9 @@ $registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupnam
 
 本教程通过 Visual Studio 创建群集，这非常适合测试方案。 如果通过其他方式创建群集或使用现有的群集，可复制粘贴连接终结点或从订阅中选择连接终结点。 
 
-创建群集时，请选择一个支持运行容器的 SKU。 群集节点上的 Windows Server OS 必须与容器的 Windows Server OS 兼容。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 默认情况下，本教程将创建基于 Windows Server 2016 LTSC 的 Docker 映像。 基于此映像的容器将运行在使用带容器的 Windows Server 2016 Datacenter 创建的群集上。 但是，如果基于带容器的 Windows Server Datacenter Core 1709 创建群集或使用现有群集，则必须更改容器所基于的 Windows Server OS 映像。 打开 **FabrikamFiber.Web** 项目中的 **Dockerfile**，注释掉现有 `FROM` 语句（基于 `windowsservercore-ltsc`），并取消注释基于 `windowsservercore-1709` 的 `FROM` 语句。 
+在开始之前，请在解决方案资源管理器中打开 FabrikamFiber.Web->PackageRoot->ServiceManifest.xml。 记下在“终结点”中列出的 Web 前端的端口。 
+
+创建群集时，请执行以下操作： 
 
 1. 在解决方案资源管理器中右键单击“FabrikamFiber.CallCenterApplication”应用程序项目，然后选择“发布”。
 
@@ -160,21 +162,29 @@ $registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupnam
         
 4. 在“创建群集”对话框中，修改以下设置：
 
-    1. 在“群集名称”字段中指定群集的名称，并指定要使用的订阅和位置。
-    2. 可选：可以修改节点数。 默认有三个节点，这是测试 Service Fabric 方案的最低要求。
-    3. 选择“证书”选项卡。在此选项卡中键入一个密码，用于确保群集证书的安全。 此证书有助于确保群集的安全。 也可修改用于保存证书的路径。 Visual Studio 还可以为你导入证书，因为这是将应用程序发布到群集的必需步骤。
-    4. 选择“VM 详细信息”选项卡。指定一个密码，以便将其用于构成群集的虚拟机 (VM)。 可以使用用户名和密码远程连接到 VM。 此外还必须选择 VM 大小，并可根据需要更改 VM 映像。
-    5. 在“高级”选项卡中，列出群集部署时要在负载均衡器中打开的应用程序端口。 在解决方案资源管理器中，打开 FabrikamFiber.Web->PackageRoot->ServiceManifest.xml。  “终结点”中会列出 Web 前端的端口。  还可以添加现有的 Application Insights 密钥，用于路由应用程序日志文件。
-    6. 修改完设置以后，选择“创建”按钮。 
-5. 需要数分钟才能创建完毕；输出窗口会指示群集何时完全创建好。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“群集名称”字段中指定群集的名称，并指定要使用的订阅和位置。 记下群集资源组的名称。
+
+    b. 可选：可以修改节点数。 默认有三个节点，这是测试 Service Fabric 方案的最低要求。
+
+    c. 选择“证书”选项卡。在此选项卡中键入一个密码，用于确保群集证书的安全。 此证书有助于确保群集的安全。 也可修改用于保存证书的路径。 Visual Studio 还可以为你导入证书，因为这是将应用程序发布到群集的必需步骤。
+
+    d. 选择“VM 详细信息”选项卡。指定一个密码，以便将其用于构成群集的虚拟机 (VM)。 可以使用用户名和密码远程连接到 VM。 此外还必须选择 VM 大小，并可根据需要更改 VM 映像。 
+
+    > [!IMPORTANT]
+    >选择一个支持运行容器的 SKU。 群集节点上的 Windows Server OS 必须与容器的 Windows Server OS 兼容。 若要了解更多信息，请参阅 [Windows Server 容器 OS 与主机 OS 的兼容性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)。 默认情况下，本教程将创建基于 Windows Server 2016 LTSC 的 Docker 映像。 基于此映像的容器将运行在使用带容器的 Windows Server 2016 Datacenter 创建的群集上。 但是，如果基于带容器的 Windows Server Datacenter Core 1709 创建群集或使用现有群集，则必须更改容器所基于的 Windows Server OS 映像。 打开 **FabrikamFiber.Web** 项目中的 **Dockerfile**，注释掉现有 `FROM` 语句（基于 `windowsservercore-ltsc`），并取消注释基于 `windowsservercore-1709` 的 `FROM` 语句。 
+
+    e. 在“高级”选项卡中，列出群集部署时要在负载均衡器中打开的应用程序端口。 这是在开始创建群集之前记下的端口。 还可以添加现有的 Application Insights 密钥，用于路由应用程序日志文件。
+
+    f. 修改完设置以后，选择“创建”按钮。 
+1. 需要数分钟才能创建完毕；输出窗口会指示群集何时完全创建好。
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>允许在 Azure 中运行的应用程序访问 SQL DB
-之前已创建一个 SQL 防火墙规则，允许对本地运行的应用程序进行访问。  接下来，需要使 Azure 中运行的应用程序能够访问 SQL DB。  为 Service Fabric 群集创建[虚拟网络服务终结点](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)，然后创建一个规则，允许该终结点访问 SQL DB。
+之前已创建一个 SQL 防火墙规则，允许对本地运行的应用程序进行访问。  接下来，需要使 Azure 中运行的应用程序能够访问 SQL DB。  为 Service Fabric 群集创建[虚拟网络服务终结点](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)，然后创建一个规则，允许该终结点访问 SQL DB。 请务必指定群集资源组变量，该变量是在创建群集时记下的。 
 
 ```powershell
 # Create a virtual network service endpoint
-$clusterresourcegroup = "fabrikamfiber.callcenterapplication_RG"
+$clusterresourcegroup = "<cluster resource group>"
 $resource = Get-AzureRmResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
 $vnetName = $resource.Name
 

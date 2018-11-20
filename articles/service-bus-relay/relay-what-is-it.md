@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319330"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621015"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
-使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙连接或者对企业网络基础设施进行彻底的改造就能实现此目的。 
+使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
 
 中继服务支持在本地服务与云中或其他本地环境中运行的应用程序之间使用以下方案。 
 
@@ -56,7 +56,7 @@ Azure 中继的混合连接功能是以往的中继功能的安全开放协议�
 > Azure 中继的混合连接取代了 BizTalk 服务的旧式混合连接功能。 BizTalk 服务的混合连接功能构建在 Azure 服务总线 WCF 中继的基础之上。 Azure 中继的混合连接功能对现存的 WCF 中继功能做了补充。 这两项服务功能（WCF 中继和混合连接）在 Azure 中继服务中并存。 它们共享一个公用网关，但实现方式有所不同。
 
 ## <a name="wcf-relay"></a>WCF 中继
-WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间建立连接。 在幕后，中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。 有关详细信息，请参阅 [WCF 中继入门](relay-wcf-dotnet-get-started.md)。
+WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间建立连接。 中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。 有关详细信息，请参阅 [WCF 中继入门](relay-wcf-dotnet-get-started.md)。
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>混合连接与WCF 中继
 使用混合连接和 WCF 中继都能与企业网络中的资产建立安全连接。 哪一种功能更好将取决于具体的需求，如下表中所述：
@@ -68,7 +68,7 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 | **.NET Framework** |x |x |
 | **Java script/Node.JS** | |x |
 | **基于标准的开放协议** | |x |
-| **多个 RPC 编程模型** | |x |
+| **RPC 编程模型** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>体系结构：处理传入中继请求
 下图演示了 Azure 中继服务如何处理传入的中继请求：
@@ -86,9 +86,9 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 9. 网关将来自发送客户端的任何消息转发到侦听客户端。  
 
 ## <a name="next-steps"></a>后续步骤
-* [.NET Websocket 入门](relay-hybrid-connections-dotnet-get-started.md)
+* [.NET WebSocket 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [.NET HTTP 请求入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [Node Websocket 入门](relay-hybrid-connections-node-get-started.md)
+* [Node WebSocket 入门](relay-hybrid-connections-node-get-started.md)
 * [Node HTTP 请求入门](relay-hybrid-connections-http-requests-node-get-started.md)
 * [中继常见问题](relay-faq.md)
 

@@ -2,21 +2,21 @@
 title: 使用 Azure IoT Edge 部署 Azure 函数 | Microsoft Docs
 description: 在本教程中，请将 Azure 函数作为一个模块部署到边缘设备。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 67540a02aab0880ea1a5c52e42036029b95c4f43
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 27aac9431c3f4cd801d090ddf11114c98edab405
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006254"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567309"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>教程：将 Azure 函数作为 IoT Edge 模块进行部署（预览版）
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure 函数作为 IoT Edge 模块进行部署
 
 可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 使用的模拟 IoT Edge 设备是在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：     
 

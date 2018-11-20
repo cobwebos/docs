@@ -336,7 +336,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
 
-如果防火墙或代理阻止访问 Azure，请将防火墙/代理配置文件中的以下域地址加入白名单：
+如果防火墙或代理阻止访问 Azure，请将防火墙/代理配置文件中的以下域地址加入允许列表：
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com

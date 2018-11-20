@@ -118,7 +118,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 对于所有操作，SQL 虚拟机需要与 Azure 公共 IP 地址建立连接。 在未连接到公共 IP 地址的情况下，SQL 虚拟机操作（例如数据库发现、配置备份、计划的备份、还原恢复点等）将会失败。 使用以下选项之一提供备份流量的明确路径：
 
-- 将 Azure 数据中心 IP 范围加入白名单 - 若要将 Azure 数据中心 IP 范围加入白名单，请使用[下载中心页了解有关 IP 范围的详细信息和说明](https://www.microsoft.com/download/details.aspx?id=41653)。 
+- 将 Azure 数据中心 IP 范围加入允许列表 - 若要将 Azure 数据中心 IP 范围加入允许列表，请使用[下载中心页了解有关 IP 范围的详细信息和说明](https://www.microsoft.com/download/details.aspx?id=41653)。 
 - 部署 HTTP 代理服务器用于路由流量 - 在 VM 中备份 SQL 数据库时，VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure Active Directory (Azure AD) 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 这些选项之间的利弊体现在易管理性、精细控制和成本方面。

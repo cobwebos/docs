@@ -1,6 +1,6 @@
 ---
-title: 什么是 HDInsight 以及 Hadoop 和 Spark 技术堆栈？ - Azure
-description: 介绍 HDInsight 以及 Hadoop 和 Spark 技术堆栈和组件，其中包括适用于大数据分析的 Kafka、Hive、Storm 和 HBase。
+title: 什么是 HDInsight、Apache Hadoop 和 Apache Spark 技术堆栈？ - Azure
+description: 介绍 HDInsight 以及 Apache Hadoop 和 Apache Spark 技术堆栈和组件，其中包括适用于大数据分析的 Kafka、Hive、Storm 和 HBase。
 keywords: azure hadoop, hadoop azure, hadoop 简介, hadoop 技术堆栈, 什么是 hadoop 群集, hadoop 的用途
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 0c617f09c846811f876206e6045b640e63ad90b1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007037"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634509"
 ---
-# <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>什么是 Azure HDInsight 和 Hadoop 技术堆栈
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>什么是 Azure HDInsight 和 Apache Hadoop 技术堆栈
 
 本文介绍 Azure HDInsight 上的 Apache Hadoop。 Azure HDInsight 是适用于企业的分析服务，具有完全托管、全面且开源的特点。 可以使用 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R 等开源框架。 
 

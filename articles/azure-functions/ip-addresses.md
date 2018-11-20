@@ -60,7 +60,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
-如果需要将函数应用使用的出站 IP 地址加入白名单，另一种做法是将函数应用的数据中心（Azure 区域）加入白名单。 可以[下载列出所有 Azure 数据中心的 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，查找应用于函数应用所在运行区域的 JSON 片段。
+如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心的 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，查找应用于函数应用所在运行区域的 JSON 片段。
 
 例如，应用于西欧区域的 JSON 片段可能如下所示：
 

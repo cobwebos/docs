@@ -16,18 +16,18 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912979"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298715"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>快速入门：将应用程序注册到 Microsoft 标识平台（预览版）
 
 企业开发人员和软件即服务 (SaaS) 提供商可以开发能够与 Microsoft 标识平台集成的商业云服务或业务线应用程序，以针对其服务提供安全的登录和授权。
 
-本快速入门介绍如何在 Azure 门户中使用**应用注册（预览版）** 体验添加和注册应用程序，使应用能够与 Microsoft 标识平台集成。
+本快速入门介绍如何在 Azure 门户中使用**应用注册（预览版）** 体验添加和注册应用程序，使应用能够与 Microsoft 标识平台集成。 若要详细了解新应用注册体验中的新功能和改进，请参阅[此博客文章](https://developer.microsoft.com/graph/blogs/new-app-registration/)。 
 
 ## <a name="prerequisite"></a>先决条件
 

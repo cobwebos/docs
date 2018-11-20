@@ -32,7 +32,7 @@ ms.locfileid: "51260085"
 ![Azure 门户中的内容审查器密钥](images/credentials-azure-portal-keys.PNG)
 
 ### <a name="use-the-azure-account-with-the-review-tool-and-review-api"></a>将 Azure 帐户与审阅工具和审阅 API 配合使用
-若要结合使用 Azure 密钥和审阅 API，请复制下面屏幕截图中“属性”屏幕上列出的“资源 ID”，并在“审阅”工具的“凭据”屏幕上的“列入白名单的一个或多个资源 ID”字段中输入此资源 ID，如下面的“资源 ID”部分所述。 
+若要结合使用 Azure 密钥和审阅 API，请复制下面屏幕截图中“属性”屏幕上列出的“资源 ID”，并在“审阅”工具的“凭据”屏幕上的“列入允许列表的一个或多个资源 ID”字段中输入此资源 ID，如下面的“资源 ID”部分所述。 
 
 > [!NOTE]
 > 内容审查器订阅区域应与审阅团队的区域一致，才能识别团队并访问团队数据。 例如，在本页面上的图中，“美国西部”区域 (4) 包含内容审查器 Azure 订阅和审阅团队。

@@ -68,7 +68,7 @@ ms.locfileid: "44354692"
 
 -   Internet Explorer 8、9、10、11 - 在 Windows 7 或更高版本上
 
--   Windows 10 周年纪念版或更高版本上的 Edge
+-   Windows 10 周年纪念版或更高版本上的 Microsoft Edge
 
 -   Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 
@@ -92,7 +92,7 @@ ms.locfileid: "44354692"
 
 7.  登录到访问面板，并查看是否可以**启动**密码 - SSO 应用程序
 
-也可通过下面的直接链接下载适用于 Chrome 和 Edge 的扩展：
+也可通过下面的直接链接下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 -   [Chrome 访问面板扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
