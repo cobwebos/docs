@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute、站点到站点 VPN 和 VNet 对等互连的互操作性 - 数据平面分析：Azure 后端连接功能的互操作性 | Microsoft Docs
-description: 本页提供创建用来分析 ExpressRoute、站点到站点 VPN 和 VNet 对等互连功能互操作性的测试设置的数据平面分析。
+title: Azure 后端连接性功能的互操作性：数据平面分析 | Microsoft Docs
+description: 本文提供测试设置的数据平面分析，可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性。
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: c9f3824b1e0f44338696ba3c2e434d60eee3af8b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946947"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614407"
 ---
-# <a name="interoperability-of-expressroute-site-to-site-vpn-and-vnet-peering---data-plane-analysis"></a>ExpressRoute、站点到站点 VPN 和 VNet 对等互连的互操作性 - 数据平面分析
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接性功能的互操作性：数据平面分析
 
-本文介绍测试设置的数据平面分析。 若要了解测试设置，请参阅[测试设置][Setup]。 若要了解测试设置的配置详细信息，请参阅[测试设置配置][Configuration]。 若要了解测试设置的控制平面分析，请参阅[控制平面分析][Control-Analysis]。
+本文介绍了[测试设置][Setup]的数据平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
 
-数据平面分析检查数据包从一个本地网络 (LAN/VNet) 遍历到拓扑中的另一个本地网络所采用的路径。 两个本地网络之间的数据路径不一定是对称的。 因此，本文将单独从反向路径的角度来分析从一个本地网络到另一个本地网络的正向路径。
+数据平面分析检查数据包从一个本地网络（LAN 或虚拟网络）遍历到拓扑中的另一个本地网络所采用的路径。 两个本地网络之间的数据路径不一定是对称的。 因此，本文将单独从反向路径的角度来分析从一个本地网络到另一个网络的正向路径。
 
-##<a name="data-path-from-hub-vnet"></a>中心 VNet 中的数据路径
+## <a name="data-path-from-the-hub-vnet"></a>中心 VNet 中的数据路径
 
-###<a name="path-to-spoke-vnet"></a>辐射 VNet 的路径
+### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
 
-VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面列出了从中心 VNet 到辐射 VNet 中某个 VM 的跟踪路由输出：
+虚拟网络 (VNet) 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面列出了从中心 VNet 到辐射 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,12 +37,14 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-以下屏幕剪辑是 Azure 网络观察程序显示的中心 VNet 和辐射 VNet 的图形连接视图：
+下图显示了 Azure 网络观察程序中的 VNet 和辐射 VNet 的图形连接视图：
 
 
 [![1]][1]
 
-###<a name="path-to-branch-vnet"></a>分支 VNet 的路径
+### <a name="path-to-the-branch-vnet"></a>分支 VNet 的路径
+
+下面列出了从中心 VNet 到分支 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -54,17 +56,19 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是中心 VNet 的 VPN 网关。 第二个跃点是分支 VNet 的 VPN 网关，其 IP 地址不会在中心 VNet 中播发。 第三个跃点是分支 VNet 中的 VM。
+在此跟踪路由中，第一个跃点是中心 VNet 的 Azure VPN 网关中的 VPN 网关。 第二个跃点是分支 VNet 的 VPN 网关。 对于分支 VNet 的 VPN 网关，其 IP 地址不会在中心 VNet 中播发。 第三个跃点是分支 VNet 中的 VM。
 
-以下屏幕剪辑是 Azure 网络观察程序显示的中心 VNet 和分支 VNet 的图形连接视图：
+下图显示了网络观察程序中的中心 VNet 和分支 VNet 的图形连接视图：
 
 [![2]][2]
 
-以下屏幕剪辑是 Azure 网络观察程序显示的同一连接的网格视图：
+对于相同的连接，下图显示了网络观察程序中的网格视图：
 
 [![3]][3]
 
-###<a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+
+下面列出了从中心 VNet 到本地位置 1 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -77,10 +81,12 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是 MSEE 的 ExpressRoute 网关隧道终结点。 第二个和第三个跃点分别是 CE 路由器和本地位置 1 LAN IP，这些 IP 地址不会在中心 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
+在此跟踪路由中，第一个跃点是 Azure ExpressRoute 网关隧道终结点到 Microsoft Enterprise Edge 路由器 (MSEE)。 第二个和第三个跃点为客户边缘 (CE) 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
 
 
-###<a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
+### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
+
+下面列出了从中心 VNet 到本地位置 2 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -93,9 +99,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是 MSEE 的 ExpressRoute 网关隧道终结点。 第二个和第三个跃点分别是 CE 路由器和本地位置 2 LAN IP，这些 IP 地址不会在中心 VNet 中播发。 第四个跃点是本地位置 2 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的 ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心 VNet 中播发。 第四个跃点是本地位置 2 中的 VM。
 
-###<a name="path-to-remote-vnet"></a>远程 VNet 的路径
+### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
+
+下面列出了从中心 VNet 到远程 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -107,13 +115,15 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是 MSEE 的 ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的 ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
 
-##<a name="data-path-from-spoke-vnet"></a>辐射 VNet 中的数据路径
+## <a name="data-path-from-the-spoke-vnet"></a>辐射 VNet 中的数据路径
 
-回顾前文，辐射 VNet 共享中心 VNet 的网络视图。 辐射 VNet 通过 VNet 对等互连使用中心 VNet 的远程网关连接，如同两者是直接连接的一样。
+辐射 VNet 共享中心 VNet 的网络视图。 辐射 VNet 通过 VNet 对等互连使用中心 VNet 的远程网关连接，如同两者是直接连接的一样。
 
-###<a name="path-to-hub-vnet"></a>中心 VNet 的路径
+### <a name="path-to-the-hub-vnet"></a>中心 VNet 的路径
+
+下面列出了从辐射 VNet 到中心 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -123,7 +133,9 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-###<a name="path-to-branch-vnet"></a>分支 VNet 的路径
+### <a name="path-to-the-branch-vnet"></a>分支 VNet 的路径
+
+下面列出了从辐射 VNet 到分支 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -135,24 +147,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是中心 VNet 的 VPN 网关。 第二个跃点是分支 VNet 的 VPN 网关，其 IP 地址不会在中心/辐射 VNet 中播发。 第三个跃点是分支 VNet 中的 VM。
+在此跟踪路由中，第一个跃点是中心 VNet 的 VPN 网关。 第二个跃点是分支 VNet 的 VPN 网关。 分支 VNet 的 VPN 网关的 IP 地址不会在中心/辐射 VNet 中播发。 第三个跃点是分支 VNet 中的 VM。
 
-###<a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
 
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-在上述跟踪路由中，第一个跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点分别是 CE 路由器和本地位置 1 LAN IP，这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
-
-###<a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
+下面列出了从辐射 VNet 到本地位置 1 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -165,9 +164,29 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点分别是 CE 路由器和本地位置 2 LAN IP，这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 2 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
 
-###<a name="path-to-remote-vnet"></a>远程 VNet 的路径
+### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
+
+下面列出了从辐射 VNet 到本地位置 2 中某个 VM 的跟踪路由输出：
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
+
+### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
+
+下面列出了从辐射 VNet 到远程 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -179,11 +198,13 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的 中心 VNet ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
 
-##<a name="data-path-from-branch-vnet"></a>分支 VNet 中的数据路径
+## <a name="data-path-from-the-branch-vnet"></a>分支 VNet 中的数据路径
 
-###<a name="path-to-hub-vnet"></a>中心 VNet 的路径
+### <a name="path-to-the-hub-vnet"></a>中心 VNet 的路径
+
+下面列出了从分支 VNet 到中心 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -195,9 +216,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关，其 IP 地址不会在远程 VNet 中播发。 第三个跃点是中心 VNet 中的 VM。
+在此跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关。 中心 VNet 的 VPN 网关的 IP 地址不会在远程 VNet 中播发。 第三个跃点是中心 VNet 中的 VM。
 
-###<a name="path-to-spoke-vnet"></a>辐射 VNet 的路径
+### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
+
+下面列出了从分支 VNet 到辐射 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -209,9 +232,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关，其 IP 地址不会在远程 VNet 中播发；第三个跃点是辐射 VNet 中的 VM。
+在此跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关。 中心 VNet 的 VPN 网关的 IP 地址不会在远程 VNet 中播发。 第三个跃点是辐射 VNet 中的 VM。
 
-###<a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+
+下面列出了从分支 VNet 到本地位置 1 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -225,11 +250,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关，其 IP 地址不会在远程 VNet 中播发。 第三个跃点是主要 CE 路由器上的 VPN 隧道终结点。 第四个跃点是本地位置 1 LAN IP 地址的内部 IP 地址，不会在 CE 路由器外部播发。 第五个跃点是本地位置 1 中的目标 VM。
+在此跟踪路由中，第一个跃点是分支 VNet 的 VPN 网关。 第二个跃点是中心 VNet 的 VPN 网关。 中心 VNet 的 VPN 网关的 IP 地址不会在远程 VNet 中播发。 第三个跃点是主要 CE 路由器上的 VPN 隧道终结点。 第四个跃点是在本地位置 1 的内部 IP 地址。 此 LAN IP 地址不会在 CE 路由器外部播发。 第五个跃点是本地位置 1 中的目标 VM。
 
-###<a name="path-to-on-premises-location-2-and-remote-vnet"></a>本地位置 2 和远程 VNet 的路径
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>本地位置 2 和远程 VNet 的路径
 
-如前面在控制平面分析中所述，根据网络配置，本地位置 2 和远程 VNet 都看不到分支 VNet。 以下 ping 结果确认了这一事实。 
+如在控制平面分析中所述，根据网络配置，本地位置 2 和远程 VNet 都看不到分支 VNet。 以下 ping 结果确认了这一事实： 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -253,9 +278,11 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-##<a name="data-path-from-on-premises-location-1"></a>本地位置 1 中的数据路径
+## <a name="data-path-from-on-premises-location-1"></a>本地位置 1 中的数据路径
 
-###<a name="path-to-hub-vnet"></a>中心 VNet 的路径
+### <a name="path-to-the-hub-vnet"></a>中心 VNet 的路径
+
+下面列出了从本地位置 1 到中心 VNet 中的 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -269,15 +296,15 @@ VNet 对等互连模拟两个对等互连 VNet 之间的网桥功能。 下面�
 
     Trace complete.
 
-在上述跟踪路由中，前两个跃点属于本地网络。 第三个跃点是面向 CE 路由器的主要 MSEE 接口。 第四个跃点是中心 VNet 的 ExpressRoute 网关，其 IP 范围不会播发到本地网络。 第五个跃点是目标 VM。
+在跟踪路由中，前两个跃点属于本地网络。 第三个跃点是面向 CE 路由器的主要 MSEE 接口。 第四个跃点是中心 VNet 的 ExpressRoute 网关。 中心 VNet 的 ExpressRoute 网关的 IP 范围不会播发到本地网络。 第五个跃点是目标 VM。
 
-Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于以本地为中心的视图，我们使用了 Azure 网络性能监视器 (NPM)。 NPM 提供代理，这些代理可以是 Azure 外部的网络中安装的服务器，并可执行数据路径分析。
+网络观察程序仅提供以 Azure 为中心的视图。 在本地透视图中，我们将使用 Azure 网络性能监视器。 网络性能监视器提供可以安装在 Azure 外部网络中的服务器上以进行数据路径分析的代理。
 
-以下屏幕剪辑是本地位置 1 VM 通过 ExpressRoute 与中心 VNet 中的 VM 建立连接的拓扑视图。
+下图显示本地位置 1 VM 通过 ExpressRoute 与中心 VNet 中的 VM 建立连接的拓扑视图：
 
 [![4]][4]
 
-回顾前文，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 为了测试反向数据路径，让我们通过关闭面向 MSEE 的 CE 接口，在本地位置 1 主要 CE 路由器与相应 MSEE 之间造成一个 ExpressRoute 链接故障。
+如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 为了测试备份数据路径，让我们在本地位置 1 主要 CE 路由器和相应的 MSEE 之间引发一个 ExpressRoute 链接故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -289,13 +316,15 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-以下屏幕剪辑是 ExpressRoute 连接断开时，本地位置 1 VM 通过站点到站点 VPN 连接与中心 VNet 中的 VM 建立连接的拓扑视图。
+下图显示当 ExpressRoute 连接断开时，本地位置 1 VM 通过站点到站点 VPN 连接与中心 VNet 中的 VM 建立连接的拓扑视图：
 
 [![5]][5]
 
-###<a name="path-to-spoke-vnet"></a>辐射 VNet 的路径
+### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
 
-让我们恢复 ExpressRoute 主要连接，以针对辐射 VNet 执行数据路径分析。
+下面列出了从本地位置 1 到辐射 VNet 中的 VM 的跟踪路由输出：
+
+让我们恢复 ExpressRoute 主要连接，以对辐射 VNet 执行数据路径分析：
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -309,9 +338,11 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-让我们打开主要 ExpressRoute-1 连接，以执行剩余的数据路径分析。
+调出主要 ExpressRoute 1 连接，以执行剩余的数据路径分析。
 
-###<a name="path-to-branch-vnet"></a>分支 VNet 的路径
+### <a name="path-to-the-branch-vnet"></a>分支 VNet 的路径
+
+下面列出了从本地位置 1 到分支 VNet 中的 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -323,9 +354,9 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-###<a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
+### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
-如前面在控制平面分析中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实。 
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实： 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -338,7 +369,9 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-###<a name="path-to-remote-vnet"></a>远程 VNet 的路径
+### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
+
+下面列出了从本地位置 1 到远程 VNet 中的 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -352,9 +385,11 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-##<a name="data-path-from-on-premises-location-2"></a>本地位置 2 中的数据路径
+## <a name="data-path-from-on-premises-location-2"></a>本地位置 2 中的数据路径
 
-###<a name="path-to-hub-vnet"></a>中心 VNet 的路径
+### <a name="path-to-the-hub-vnet"></a>中心 VNet 的路径
+
+下面列出了从本地位置 2 到远程 VNet 中的 VM 的跟踪路由输出：
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -368,7 +403,9 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>辐射 VNet 的路径
+### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
+
+下面列出了从本地位置 2 到辐射 VNet 中的 VM 的跟踪路由输出：
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -381,13 +418,15 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-###<a name="path-to-branch-vnet-on-premises-location-1-and-remote-vnet"></a>分支 VNet、本地位置 1 和远程 VNet 的路径
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>分支 VNet、本地位置 1 和远程 VNet 的路径
 
-如前面在控制平面分析中所述，根据网络配置，分支 VNet、本地位置 1 和远程 VNet 看不到本地位置 1。 
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet、本地位置 1 或远程 VNet 看不到本地位置 1。 
 
-##<a name="data-path-from-remote-vnet"></a>远程 VNet 中的数据路径
+## <a name="data-path-from-the-remote-vnet"></a>远程 VNet 中的数据路径
 
-###<a name="path-to-hub-vnet"></a>中心 VNet 的路径
+### <a name="path-to-the-hub-vnet"></a>中心 VNet 的路径
+
+下面列出了从远程 VNet 到中心 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -399,7 +438,9 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>辐射 VNet 的路径
+### <a name="path-to-the-spoke-vnet"></a>辐射 VNet 的路径
+
+下面列出了从远程 VNet 到辐射 VNet 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -411,12 +452,13 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
 
     Trace complete.
 
-### <a name="path-to-branch-vnet-and-on-premises-location-2"></a>分支 VNet 和本地位置 2 的路径
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>分支 VNet 和本地位置 2 的路径
 
-如前面在控制平面分析中所述，根据网络配置，分支 VNet 和本地位置 2 看不到远程 VNet。 
-
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet 或本地位置 2 看不到远程 VNet。 
 
 ### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
+
+下面列出了从远程 VNet 到本地位置 1 中某个 VM 的跟踪路由输出：
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -430,46 +472,49 @@ Azure 网络观察程序仅提供以 Azure 为中心的视图。 因此，对于
     Trace complete.
 
 
-## <a name="further-reading"></a>延伸阅读
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>串联 ExpressRoute 和站点到站点 VPN 连接
 
-### <a name="using-expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>串联使用 ExpressRoute 和站点到站点 VPN 连接
+###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-####<a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
 
-可以基于 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，专门用于在本地网络与 Azure VNet 之间交换数据，同时确保保密性、防重播能力、真实性和完整性。 有关如何基于 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPSec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
+配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
-基于 Microsoft 对等互连配置 S2S VPN 的主要限制是吞吐量。 基于 IPSec 隧道的吞吐量受限于 VPN 网关容量。 与 ExpressRoute 吞吐量相比，VPN 网关吞吐量更低。 在这种情况下，对高安全性流量使用 IPSec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>将站点到站点 VPN 用作 ExpressRoute 的安全故障转移路径
 
-#### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>将站点到站点 VPN 用作 ExpressRoute 的安全故障转移路径
-ExpressRoute 以冗余线路对的形式提供，以确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 如同在测试设置中所做的那样，在给定的 Azure 区域中，若要对 ExpressRoute 连接使用故障转移路径，可以使用站点到站点 VPN 实现此目的。 通过 ExpressRoute 和 S2S VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute 而不是 S2S VPN。 为了避免 ExpressRoute 与 S2S VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 而不是 S2S VPN 连接。
+ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
 有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
 
-### <a name="extending-backend-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
-#### <a name="spoke-vnet-connectivity-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
 
-中心辐射型 VNet 体系结构的使用非常广泛。 中心是 Azure 中的一个虚拟网络 (VNet)，充当辐射 VNet 与本地网络之间的连接中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。 流量通过 ExpressRoute 或 VPN 连接在本地数据中心与中心之间流动。 有关体系结构的更多详细信息，请参阅[中心辐射型体系结构][Hub-n-Spoke]
+中心辐射型 VNet 体系结构的使用非常广泛。 中心是 Azure 中的一个 VNet，充当辐射 VNet 与本地网络之间的连接中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。 流量通过 ExpressRoute 或 VPN 连接在本地数据中心与中心之间流动。 有关体系结构的详细信息，请参阅[在 Azure 中实现中心辐射型网络拓扑][Hub-n-Spoke]。
 
-区域中的 VNet 对等互连可让辐射 VNet 使用中心 VNet 网关（VPN 和 ExpressRoute 网关）来与远程网络通信。
+在区域内的 VNet 对等互连中，辐射 VNet 可以使用中心 VNet 网关（VPN 和 ExpressRoute 网关）来与远程网络通信。
 
-#### <a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>使用站点到站点 VPN 建立分支 VNet 连接
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>使用站点到站点 VPN 建立分支 VNet 连接
 
-如果希望分支 VNet（在不同区域中）和本地网络通过中心 VNet 相互通信，原生的 Azure 解决方案是使用 VPN 建立站点到站点 VPN 连接。 替代做法是对中心内部的路由使用 NVA。
+你可能想让位于不同区域中的分支 VNet 和本地网络通过中心 VNet 相互通信。 此配置的原生 Azure 解决方案是使用 VPN 建立站点到站点 VPN 连接。 替代方案是对中心内部的路由使用网络虚拟设备 (NVA)。
 
-有关如何配置 VPN 网关，请参阅[配置 VPN 网关][VPN]。 有关如何部署可用性 NVA，请参阅[部署高可用性 NVA][Deploy-NVA]。
+有关详细信息，请参阅[什么是 VPN 网关？][VPN]和[部署高度可用的 NVA][Deploy-NVA]。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解可将多少个 ExpressRoute 线路连接到一个 ExpressRoute 网关，或者可将多少个 ExpressRoute 网关连接到一个 ExpressRoute 线路，或者要了解 ExpressRoute 的其他缩放限制，请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]
+请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
+-   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
+-   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
+-   了解 ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->
 [1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "网络观察程序中从中心 VNet 到辐射 VNet 的连接视图"
 [2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "网络观察程序中从中心 VNet 到分支 VNet 的连接视图"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "网络观察程序中从中心 VNet 到分支 VNet 的连接网格视图"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "网络观察程序中从中心 VNet 到分支 VNet 的网格视图"
 [4]: ./media/backend-interoperability/Loc1-HubVM.jpg "网络性能监视器中通过 ExpressRoute 1 从位置 1 VM 连接到中心 VNet 的视图"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "网络性能监视器中通过 S2S VPN 从位置 1 VM 连接到中心 VNet 的视图"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "网络性能监视器中通过站点都站点 VPN 从位置 1 VM 连接到中心 VNet 的视图"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
@@ -486,7 +531,5 @@ ExpressRoute 以冗余线路对的形式提供，以确保高可用性。 可在
 [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
 [VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
 
 
