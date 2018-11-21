@@ -42,6 +42,8 @@ items:
     href: export-model-python.md
   - name: 使用 REST API 构建模型
     href: rest-api-tutorial.md
+  - name: 导出或删除帐户数据
+    href: ./export-delete-data.md
 - name: 引用
   items:
   - name: 自定义视觉训练 API
@@ -60,25 +62,23 @@ items:
       href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: 资源
   items:
-  - name: 发行说明
-    href: release-notes.md
   - name: 示例
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: 定价和限制
     href: limits-and-quotas.md
-  - name: 导出或删除帐户数据
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+    href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: 区域可用性
-    href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: 1394f71bceef7a0646411a155b63825771e839d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+  - name: 发行说明
+    href: release-notes.md
+ms.openlocfilehash: 9a084dbfbbc6d90a56e5986d967375da8a8fbb03
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281026"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276068"

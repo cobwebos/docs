@@ -52,7 +52,7 @@ ms.locfileid: "51253442"
 
 试验帐户、模型管理帐户以及机器学习计算环境等资源无法迁移到最新版本的 Azure 机器学习服务。 请参阅[时间线](overview-what-happened-to-workbench.md#timeline)，了解资产可以继续工作多长时间。
 
-通过在 [Azure 门户](quickstart-get-started.md)中创建 Azure 机器学习服务工作区，开始使用最新版本。 门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
+通过在 [Azure 门户](quickstart-get-started.md)中创建 Azure 机器学习服务工作区，开始使用最新版本。 门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持。
 
 此新工作区是顶级服务资源，使你可以使用 Azure 机器学习服务的所有最新功能。 详细了解此[工作区和体系结构](concept-azure-machine-learning-architecture.md)。
 

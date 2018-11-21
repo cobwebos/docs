@@ -70,7 +70,7 @@ ms.locfileid: "49380551"
 
 1.  无法生成包含单行图像的子画面图像（SpriteColumn = 1 时生成的图像包含一列）。
 2.  尚不支持将子画面图像分块为中等大小的 JPEG 图像。 因此，必须审慎限制缩略图的数量和大小，使拼结成的缩略图子画面像素约为 8M。
-3.  Azure Media Player 在 Edge、Chrome 和 Firefox 浏览器上支持子画面。 IE11 不支持 VTT 分析服务。
+3.  Azure Media Player 在 Microsoft Edge、Chrome 和 Firefox 浏览器上支持子画面。 IE11 不支持 VTT 分析服务。
 
 ## <a name="next-steps"></a>后续步骤
 

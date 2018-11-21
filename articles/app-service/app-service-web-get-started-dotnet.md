@@ -159,7 +159,7 @@ ms.locfileid: "51301027"
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

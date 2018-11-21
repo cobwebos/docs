@@ -100,12 +100,10 @@ items:
       href: ecommerce-retail-catalog-moderation.md
     - name: 视频和脚本审核
       href: video-transcript-moderation-review-tutorial-dotnet.md
-- name: 示例
-  items:
-  - name: .NET SDK 示例
-    href: samples-dotnet.md
-  - name: 以 C# 编写的 REST API 示例
-    href: samples-rest.md
+  - name: 导出或删除帐户数据
+    href: ./export-delete-data.md
+  - name: Azure 网络研讨会系列
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: 引用
   items:
   - name: 内容审查器 API
@@ -122,29 +120,33 @@ items:
       href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator
 - name: 资源
   items:
+  - name: 示例
+    items:
+    - name: .NET SDK 示例
+      href: samples-dotnet.md
+    - name: 以 C# 编写的 REST API 示例
+      href: samples-rest.md
+    - name: 其他 Azure 示例
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
   - name: 常见问题解答
     href: FAQs.md
-  - name: 语言和区域支持
-    href: language-support.md
-  - name: 区域可用性
-    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 定价和限制
     href: https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator
-  - name: 导出或删除帐户数据
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/559960-content-moderator
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+  - name: 语言支持
+    href: language-support.md
+  - name: 堆栈溢出
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: 区域可用性
+    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-  - name: 按需网络研讨会
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 69f3e50614340b610438cdae1cac20e263d0f618
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+ms.openlocfilehash: f7072fef1d0dea42d20f5cdd5a98dd5c7c20713f
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852208"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276408"

@@ -5,7 +5,6 @@
 ### [成为市场上的发布者](./become-publisher.md)  
 #### [创建 Microsoft 帐户](./guidelines.md)
 #### [在开发人员中心注册](./register-dev-center.md) 
-#### [Azure 市场的计费选项](./billing-options-azure-marketplace.md)  
 #### [Azure 合作伙伴客户使用情况归因](./azure-partner-customer-usage-attribution.md)
 #### [云市场的的销售线索管理](./lead-management-for-cloud-marketplace.md)
 
@@ -13,7 +12,7 @@
 
 ### [确定解决方案的发布选项](./determine-your-listing-type.md)  
 
-### 发布指南（按产品/服务类型） 
+### [按产品/服务类型提供的发布指南](./publisher-guide-by-offer-type.md)
 #### [虚拟机](./marketplace-virtual-machines.md)
 #### [Azure 应用程序：解决方案模板](./marketplace-solution-templates.md)
 #### [Azure 应用程序：托管应用程序](./marketplace-managed-apps.md)
@@ -27,6 +26,8 @@
 ### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 #### [首选解决方案](./preferred-solutions.md) 
 #### [市场内容验证](./marketplace-criteria-content-validation.md)
+#### [专用产品/服务](./private-offers.md)
+#### [市场商业交易功能和注意事项](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 
 ### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
 
@@ -34,6 +35,16 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [云合作伙伴门户](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## [门户教程](./cloud-partner-portal/portal-tour/cpp-portal-tour.md)
+### [门户导航](./cloud-partner-portal/portal-tour/cpp-portal-navigation.md)
+### [“新建产品/服务”菜单](./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md)
+### [“所有产品/服务”页](./cloud-partner-portal/portal-tour/cpp-all-offers-page.md)
+### [“审批”页](./cloud-partner-portal/portal-tour/cpp-approvals-page.md)
+### [“所有发布者”页](./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md)
+### [“用户”页](./cloud-partner-portal/portal-tour/cpp-users-page.md)
+### [“审核历史记录”页](./cloud-partner-portal/portal-tour/cpp-history-page.md)
+### [“见解”页](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
 ## 门户管理
 ### [开发人员中心帐户注册](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
