@@ -36,7 +36,7 @@ ms.locfileid: "46366040"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程使用最新型 Web 浏览器（包括 [Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）中的“开发人员工具”功能（也称为 DevTools 或 F12）。 如果你不熟悉此功能，请先在浏览器中探索此功能，然后再继续。
+本教程使用最新型 Web 浏览器（包括 [Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/) 等）中的“开发人员工具”功能（也称为 DevTools 或 F12）。 如果你不熟悉此功能，请先在浏览器中探索此功能，然后再继续。
 
 ## <a name="time-series-insights-sample-application"></a>时序见解示例应用程序
 
