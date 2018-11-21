@@ -28,7 +28,7 @@ ms.locfileid: "51301027"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的应用服务中创建 .NET Core Web 应用](./containers/quickstart-dotnetcore.md)。 
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Core Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个部署了 Web 应用程序的 Azure Web 应用。
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "51301027"
 
 在“托管计划”旁边，选择“新建”。 
 
-在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "51301027"
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet/access-portal.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
