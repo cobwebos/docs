@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: e84d2a446de537924f55f1b784731e54c94c768d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851564"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275021"
 ---
 # <a name="remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
 
@@ -28,20 +28,16 @@ ms.locfileid: "51851564"
 > [!NOTE]
 > 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)。
 
+删除 SQL 资源提供程序不会从托管服务器中删除租户数据库。
+
 ## <a name="dependency-cleanup"></a>依赖项清理
 
 有几个清除任务运行 DeploySqlProvider.ps1 脚本以删除资源提供程序之前的准备工作。
 
-Azure Stack 租户用户负责以下清理任务：
-
-* 从资源提供程序中删除其所有数据库。 （删除租户数据库不会删除数据。）
-* 从提供程序命名空间中取消注册。
-
 Azure Stack 操作员负责以下清理任务：
 
-* 从 MySQL 适配器中删除宿主服务器。
-* 删除引用 MySQL 适配器的所有计划。
-* 删除与 MySQL 适配器关联的所有配额。
+* 删除引用 SQL 适配器的所有计划。
+* 删除与 SQL 适配器相关联的任何配额。
 
 ## <a name="to-remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
 
@@ -50,9 +46,9 @@ Azure Stack 操作员负责以下清理任务：
    > [!NOTE]
    > 即使依赖资源当前正在使用 SQL 资源提供程序，也将继续卸载该资源提供程序。
   
-2. 获取 SQL 资源提供程序二进制文件的副本，然后运行自解压程序，将内容解压缩到一个临时目录。
+2. 获取 SQL 资源提供程序安装包的副本，然后运行自解压程序，将内容提取到临时目录。
 
-3. 打开一个权限提升的 PowerShell 控制台新窗口，并切换到解压缩后的 SQL 资源提供程序二进制文件所在的目录。
+3. 打开新的提升权限的 PowerShell 控制台窗口并将更改为提取 SQL 资源提供程序安装文件的目录。
 
 4. 使用以下参数运行 DeploySqlProvider.ps1 脚本：
 

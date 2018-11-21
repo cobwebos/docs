@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ca5322c3c874c434f16a42900227a47245851b02
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c3dbecfcaf40a85c57b9f795d7f2d9b76d27c195
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854027"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274060"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>删除 MySQL 资源提供程序
 
@@ -28,32 +28,27 @@ ms.locfileid: "51854027"
 > [!NOTE]
 > 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
 
+正在删除 MySQL 资源提供程序不会从托管服务器中删除租户数据库。
+
 ## <a name="dependency-cleanup"></a>依赖项清理
 
 在运行 DeployMySqlProvider.ps1 脚本来删除资源提供程序之前，需要执行几个清理任务：
 
-Azure Stack 租户用户负责以下清理任务：
-
-* 从资源提供程序中删除其所有数据库。 （删除租户数据库不会删除数据。）
-* 从提供程序命名空间中取消注册。
-
 Azure Stack 操作员负责以下清理任务：
 
-* 从 MySQL 适配器中删除宿主服务器。
 * 删除引用 MySQL 适配器的所有计划。
-* 删除与 MySQL 适配器关联的所有配额。
+* 删除与 MySQL 适配器关联的任何配额。
 
 ## <a name="to-remove-the-mysql-resource-provider"></a>删除 MySQL 资源提供程序
 
 1. 确认已删除所有现有的 MySQL 资源提供程序依赖项。
 
-   >[!NOTE]
-   >即使依赖资源当前正在使用 MySQL 资源提供程序，也将继续卸载该资源提供程序。
+   > [!NOTE]
+   > 即使依赖资源当前正在使用 MySQL 资源提供程序，也将继续卸载该资源提供程序。
   
-2. 获取 MySQL 资源提供程序二进制文件的副本，然后运行自解压程序，将内容解压缩到一个临时目录。
-3. 获取 SQL 资源提供程序二进制文件的副本，然后运行自解压程序，将内容解压缩到一个临时目录。
-4. 打开一个权限提升的 PowerShell 控制台新窗口，并切换到解压缩后的 MySQL 资源提供程序二进制文件所在的目录。
-5. 使用以下参数运行 DeployMySqlProvider.ps1 脚本：
+2. 获取 MySQL 资源提供程序安装包的副本，然后运行自解压程序，将内容提取到临时目录。
+3. 打开新的提升权限的 PowerShell 控制台窗口并将更改为提取 MySQL 资源提供程序安装文件的目录。
+4. 使用以下参数运行 DeployMySqlProvider.ps1 脚本：
     - **Uninstall**。 删除资源提供程序和所有关联的资源。
     - **PrivilegedEndpoint**。 特权终结点的 IP 地址或 DNS 名称。
     - **AzureEnvironment**。 用于部署 Azure Stack 的 Azure 环境。 仅对于 Azure AD 部署是必需的。

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646645"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261796"
 ---
 # <a name="validate-oem-packages"></a>验证 OEM 程序包
 
@@ -58,22 +58,17 @@ ms.locfileid: "49646645"
 
 #### <a name="option-1-generating-an-account-sas-url"></a>选项 1： 生成帐户 SAS URL
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. 在中[Azure 门户](https://portal.azure.com/)，请转到你的存储帐户，然后导航到包含您的包.zip
 
-1. 选择**Blob**从**允许的服务选项**。 取消选择任何剩余的选项。
+2. 选择**生成 SAS**从上下文菜单
 
-1. 选择**容器**并**对象**从**允许的资源类型**。 取消选择任何剩余的选项。
+3. 选择**读**从**权限**
 
-1. 选择**读**并**列表**从**允许权限**。 取消选择任何剩余的选项。
+4. 设置**开始时间**为当前时间，并**结束时间**到 48 小时至少从**开始时间**。 如果你将在其他测试运行使用同一个包，请考虑增大**结束时间**测试的长度。 通过 VaaS 后计划的任何测试**结束时间**将失败，而且新的 SAS 将需要生成。
 
-1. 设置**开始时间**为当前时间，并**结束时间**为从当前时间的 1 小时。
+5. 选择**生成 blob SAS 令牌和 URL**
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    下面是应如何显示格式： `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. 修改生成的 SAS URL，包括包容器`{containername}`，和包 blob 的名称`{mypackage.zip}`，按如下所示：  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    使用此值时开始一个新**包验证**VaaS 门户中的工作流。
+使用**Blob SAS URL**启动时的新**包验证**VaaS 门户中的工作流。
 
 #### <a name="option-2-using-public-read-container"></a>选项 2： 使用公共只读的容器
 
