@@ -53,13 +53,13 @@ ms.locfileid: "51301027"
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet/new-project.png)
 
-可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“不进行身份验证”且任何其他选项均未选中。
+可将任何类型的 ASP.NET Core Web 应用部署到 Azure。 在本快速入门教程中，请选择“Web 应用程序”模板，并确保身份验证已设置为“无身份验证”且任何其他选项均未选中。
       
 选择“确定”。
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
 
-在菜单中，选择“调试>非调试启动”来在本地运行 Web 应用。
+在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "51301027"
 
 在[创建和发布步骤](#create-and-publish-the-web-app)中指定的应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
 
-恭喜，ASP.NET Core Web 应用已在 Azure 应用服务中正式运行！
+恭喜，ASP.NET Core Web 应用已在 Azure 应用服务中实时运行！
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
