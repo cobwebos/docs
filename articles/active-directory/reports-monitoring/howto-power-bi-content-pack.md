@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/06/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c0326a6b611d5f3d5633db2d2b64b8cdc15e10a7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d810b8be496bbfd1c5bd88d8221e77dd5b76c889
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816678"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622954"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
@@ -28,7 +28,7 @@ ms.locfileid: "48816678"
 |目前，Azure AD Power BI 内容包使用 Azure AD Graph API 检索 Azure AD 租户中的数据。 因此，你可能会发现内容包中可用数据与使用[用于报告的 Microsoft Graph API](concept-reporting-api.md) 检索的数据之间存在一些差异。 |
 |  |
 
-作为 IT 管理员，你需要了解用户如何采用和使用 Azure Active Directory 功能。 这样才能规划 IT 基础结构和通信，以提高使用率并充分利用 Azure AD 功能。 使用 Azure Active Directory 的 Power BI 内容包，可以进一步分析数据，以便更深入地了解目录中正在发生的事情。 将 Azure Active Directory API 集成到 Power BI 中以后，即可轻松下载预建的内容包，并通过 Power BI 提供的丰富的可视化体验深入了解 Azure Active Directory 中的所有活动。 可以轻松地创建自己的仪表板并将其与组织中的任何其他人共享。 
+Azure Active directory (Azure AD) 的 Power BI 内容包包含预生成的报表，可帮助你了解用户如何采用和使用 Azure AD 功能。 这样，你便可以使用 Power BI 中的丰富可视化体验来洞察目录中的所有活动。 还可以创建自己的仪表板并将其与组织中的任何其他人共享。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,36 +38,32 @@ ms.locfileid: "48816678"
 
 查看[快速入门](quickstart-install-power-bi-content-pack.md)以安装 Azure AD Power BI 内容包。
 
-## <a name="what-can-i-do-with-this-content-pack"></a>此内容包有哪些功能？
+### <a name="reports-included-in-this-version-of-azure-ad-logs-content-pack"></a>包括在此版 Azure AD 日志内容包中的报表
 
-在介绍此内容包的功能之前，让我们快速预览一下内容包中的各种报表。 报表数据可回溯到“过去 30 天”。
+Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 30 天**的数据。
 
-### <a name="reports-included-in-this-version-of-azure-active-directory-logs-content-pack"></a>包括在此版 Azure Active Directory 日志内容包中的报表
+**应用用法和趋势报表**：此报表可让你洞察组织中使用的应用程序。 可以获取最常用应用程序的列表，或了解最近在组织中推出的应用程序的用法。 这样，便可以跟踪用法并不断改进。
 
-应用使用情况和趋势报表：了解在组织中使用的应用、哪些应用使用最频繁以及相应的使用时间。 可以通过此报表了解最近在组织中推出的应用的使用情况，或者了解哪些应用常用。 这样可以发现用户不使用的应用，从而改进使用情况。
+**按位置和用户列出的登录活动**：此报表提供有关使用 Azure 标识执行的所有登录的数据。 借助此报表可以深入到单个登录，并回答如下所述的问题：
 
-按位置和用户划分的登录：了解使用 Azure Identity 执行的所有登录以及相应的用户身份。 可以通过此功能更深入地了解单个登录，并获取下面这样的问题的答案：
-
-- 该用户从何处登录？
+- 此用户从何处登录？
 - 哪个用户的登录次数最多？从何处登录？ 
 - 登录是否成功？  
  
-单击具体日期或位置即可获取详细信息。
+还可以通过选择特定的日期或位置来筛选结果。
 
-每个应用的唯一用户：了解使用给定应用的所有唯一用户。 这只包括“成功”登录应用程序的用户。
+**每个应用的唯一用户**：此报表提供使用给定应用的所有唯一用户的视图。 其中只包含“成功”登录到应用程序的用户。
 
-设备登录：了解组织中用户所使用的 OS 和浏览器的类型，以及用户的详细信息，其中包括：
+**设备登录**：此报表可帮助你了解组织中使用的各种设备配置文件，并基于用法确定设备策略。 其中提供了有关 OS 类型和用于登录应用程序的浏览器的数据，以及有关用户的详细信息，包括：
 
 - 用户名
 - IP 地址
 - 位置 
 - 登录状态 
 
-可以通过此报表了解在组织中使用的各种设备配置文件，从而确定设备策略
+**SSPR 漏斗图**：此报表可帮助你了解组织中如何使用 SSPR 工具。 可以查看通过 SSPR 工具尝试了多少次密码重置，以及多少次尝试成功。 还可以深入了解密码重置失败情况，并了解某些失败的发生原因。 
 
-SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工具了解用户进行密码重置尝试的次数，以及其中有多少次获得成功。 通过 SSPR 漏斗图深入了解密码重置失败情况，并了解某些失败的发生原因。 可以通过此报表更深入地了解组织中 SSPR 工具的使用情况，以便进行正确的决策。
-
-## <a name="customizing-azure-ad-activity-content-pack"></a>自定义 Azure AD 活动内容包
+## <a name="customize-azure-ad-activity-content-pack"></a>自定义 Azure AD 活动内容包
 
 更改可视化效果：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果。
  
@@ -75,49 +71,41 @@ SSPR 漏斗图：了解如何在组织中进行密码重置。 通过 SSPR 工�
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/10.png) 
 
-包括其他字段：若要添加或删除报表的字段，选择要添加/删除字段的视觉对象即可。 在下面的示例中，我将向表视图添加“登录状态”字段。 
+包括其他字段：若要添加或删除报表的字段，选择要添加/删除字段的视觉对象即可。 例如，可将“登录状态”字段添加到下面所示的表视图。 
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/11.png) 
 
-将可视化效果固定到仪表板：可以自定义仪表板，使报表包含自己的可视化效果，然后将该效果固定到仪表板。 在下面的示例中，我添加了名为“登录状态”的新筛选器并将其包括到了报表中。 我还将可视化效果从条形图改成了折线图，因此可以将这个新的视觉对象固定到仪表板。
-
-![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/12.png) 
+**将可视化效果固定到仪表板**：可以自定义仪表板，使报表包含自己的可视化效果，然后将该效果固定到仪表板。 
 
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/13.png) 
  
-
- 
-
-
-共享仪表板：创建所要的内容以后，即可将仪表板与组织中的用户共享。 请记住，在你共享报表以后，用户可以看到你在报表中选择的字段。
+**共享仪表板**：还可以与组织中的用户共享仪表板。 在你共享报表以后，用户可以看到你在报表中选择的字段。
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/14.png) 
 
+## <a name="schedule-a-daily-refresh-of-your-power-bi-report"></a>计划每日刷新 Power BI 报表
 
-
-## <a name="scheduling-a-daily-refresh-of-your-power-bi-report"></a>计划每日刷新 Power BI 报表
-
-若要计划每日刷新 Power BI 报表，请转到“数据集”>“设置”>“计划刷新”，然后对其进行设置，如下所示。
+若要计划每日刷新 Power BI 报表，请转到“数据集” > “设置” > “计划刷新”，然后对其进行设置，如下所示。
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/15.png) 
 
-## <a name="updating-to-newer-version-of-content-pack"></a>更新到较新版本的内容包
+## <a name="update-to-newer-version-of-content-pack"></a>更新到较新版本的内容包
 
 若要更新内容包以获取较新的版本，请执行以下操作：
 
-- 下载新的内容包，按本文所列说明对其进行设置：
+- 下载新的内容包，并使用本文中的说明安装该包：
 
-- 设置完以后，请转到“数据源”>“设置”>“数据源凭据”，然后重新输入凭据，如下所示
+- 安装后，转到“数据源” > “设置” > “数据源凭据”，然后重新输入凭据。
 
     ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/16.png) 
 
-新版内容包能够正常使用以后，即可根据需要删除旧的版本，方法是：删除与该内容包关联的基础报表和数据集。
+确认新版内容包可按预期方式工作后，可根据需要删除旧的版本，方法是删除与该内容包关联的基础报表和数据集。
 
 ## <a name="still-having-issues"></a>仍然存在问题？ 
 
 请查看[故障排除指南](troubleshoot-content-pack.md)。 有关 Power BI 的常规帮助，请查看这些[帮助文章](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
  
-
+ 
 ## <a name="next-steps"></a>后续步骤
 
 * [安装 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。

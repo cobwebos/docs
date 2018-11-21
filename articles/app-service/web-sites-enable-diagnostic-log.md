@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231612"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636952"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
 Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](https://go.microsoft.com/fwlink/?LinkId=529714)。 在本文中，将了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。
 
-本文通过 [Azure 门户](https://portal.azure.com)、Azure PowerShell 和 Azure 命令行接口 (Azure CLI) 使用诊断日志。 有关通过 Visual Studio 使用诊断日志的信息，请参阅[在 Visual Studio 中对 Azure 进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)。
+本文使用 [Azure 门户](https://portal.azure.com)和 Azure CLI 来处理诊断日志。 有关通过 Visual Studio 使用诊断日志的信息，请参阅[在 Visual Studio 中对 Azure 进行故障排除](web-sites-dotnet-troubleshoot-visual-studio.md)。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -65,7 +65,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](https:
 
 对于“Web 服务器日志记录”，可选择“存储”或“文件系统”。 选择“存储”可选择存储帐户，然后将日志写入 Blob 容器。 
 
-如果将日志存储在文件系统，可通过 FTP 访问这些文件，或使用 Azure PowerShell 或 Azure 命令行接口 (Azure CLI) 将这些文件作为 Zip 存档下载。
+如果将日志存储在文件系统中，可通过 FTP 访问这些文件，或使用 Azure CLI 将这些文件作为 Zip 存档下载。
 
 默认情况下，日志不会自动删除（除非是“应用程序日志记录(文件系统)”）。 要自动删除日志，请设置“保留期(天)”字段。
 
@@ -73,24 +73,20 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](https:
 > 如果[重新生成存储帐户的访问密钥](../storage/common/storage-create-storage-account.md)，则必须重置相应的日志记录配置才能使用更新的密钥。 为此，请按以下步骤操作：
 >
 > 1. 在“配置”选项卡上，将相应的日志记录功能设置为“关闭”。 保存设置。
-> 2. 再次将日志记录到存储帐户 blob 或表。 保存设置。
+> 2. 再次启用将日志记录到存储帐户 Blob。 保存设置。
 >
 >
 
-可同时启用文件系统、表存储或 Blob 存储的任意组合，并拥有单独的日志级别配置。 例如，你可能希望将错误和警告记录到 Blob 存储中作为长期的日志记录解决方案，同时将文件系统日志记录级别设置为“详细”。
+可同时启用文件系统或 Blob 存储的任意组合，并采用单独的日志级别配置。 例如，你可能希望将错误和警告记录到 Blob 存储中作为长期的日志记录解决方案，同时将文件系统日志记录级别设置为“详细”。
 
-尽管所有三个存储位置都可为记录事件提供相同的基本信息，但与记录到“文件系统”相比，“表存储”和“Blob 存储”记录包含额外信息，如实例 ID、线程 ID 以及更详细的时间戳（刻度格式）。
+尽管这两个存储位置都可为记录事件提供相同的基本信息，但与记录到**文件系统**相比，**Blob 存储**还会记录其他信息，例如实例 ID、线程 ID 以及更详细的时间戳（刻度格式）。
 
 > [!NOTE]
-> 只能使用存储客户端访问或由直接使用这些存储系统的应用程序访问存储在“表存储”或“Blob 存储”中的信息。 例如，Visual Studio 2013 包含的存储资源管理器可用于浏览表或 Blob 存储，而 HDInsight 可以访问存储在 Blob 存储中的数据。 还可编写通过使用 [Azure SDK](https://azure.microsoft.com/downloads/) 之一访问 Azure 存储的应用程序。
->
-> [!NOTE]
-> 也可从 Azure PowerShell 使用 **Set-AzureWebsite** cmdlet 启用诊断。 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
->
+> 只能使用存储客户端访问或由直接使用这些存储系统的应用程序访问存储在 **Blob 存储**中的信息。 例如，Visual Studio 2013 包含的存储资源管理器可用于浏览 Blob 存储，而 HDInsight 可以访问存储在 Blob 存储中的数据。 还可编写通过使用 [Azure SDK](https://azure.microsoft.com/downloads/) 之一访问 Azure 存储的应用程序。
 >
 
 ## <a name="download"></a>如何：下载日志
-可使用 FTP 直接访问存储到 Web 应用文件系统的诊断信息。 还可使用 Azure PowerShell 或 Azure 命令行接口将这些信息作为 Zip 存档下载。
+可使用 FTP 直接访问存储到 Web 应用文件系统的诊断信息。 还可以使用 Azure CLI 将其作为 Zip 存档下载。
 
 存储日志采用的目录结构如下：
 
@@ -106,19 +102,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](https:
 
 一旦连接到 Web 应用的 FTP/S 服务器，请打开“LogFiles”文件夹，所有日志文件都存储于此。
 
-### <a name="download-with-azure-powershell"></a>使用 Azure PowerShell 下载
-若要下载日志文件，请启动 Azure PowerShell 的新实例并使用以下命令：
-
-    Save-AzureWebSiteLog -Name webappname
-
-此命令会将 **-Name** 参数指定的 Web 应用的日志保存到当前目录中名为 **logs.zip** 的文件。
-
-> [!NOTE]
-> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)。
->
->
-
-### <a name="download-with-azure-command-line-interface"></a>使用 Azure 命令行接口下载
+### <a name="download-with-azure-cli"></a>使用 Azure CLI 下载
 若要使用 Azure 命令行接口下载日志文件，请打开新的命令提示符、PowerShell、Bash 或终端会话，并输入以下命令：
 
     az webapp log download --resource-group resourcegroupname --name webappname
@@ -126,7 +110,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](https:
 此命令将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
 
 > [!NOTE]
-> 如果尚未安装 Azure 命令行接口 (Azure CLI)，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+> 如果尚未安装 Azure CLI，或尚未将其配置为使用你的 Azure 订阅，请参阅[如何使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 >
 >
 
@@ -143,7 +127,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 [了解有关使用 Application Insights 跟踪性能的详细信息](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a>如何：流式传输日志
-开发应用程序时，以近乎实时的方式查看日志记录信息通常很有用。 通过使用 Azure PowerShell 或 Azure 命令行接口将日志记录信息流式传输到开发环境。
+开发应用程序时，以近乎实时的方式查看日志记录信息通常很有用。 可以使用 Azure CLI 将日志记录信息流式传输到开发环境。
 
 > [!NOTE]
 > 某些类型的日志记录缓冲区会对日志文件执行写入操作，这可能会导致流中的事件变成混乱。 例如，用户访问页面时出现的应用程序日志项可能显示在该页面请求所对应的 HTTP 日志项的前面。
@@ -153,29 +137,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 >
 >
 
-### <a name="streaming-with-azure-powershell"></a>使用 Azure PowerShell 进行流式传输
-若要流式传输日志记录信息，请启动新的 Azure PowerShell 实例并使用以下命令：
-
-    Get-AzureWebSiteLog -Name webappname -Tail
-
-此命令连接到 **-Name** 参数指定的 Web 应用，并在该 Web 应用上出现日志事件时开始将信息流式传输到 PowerShell 窗口。 写入以 .txt、.log 或 .htm 结尾并存储在 /LogFiles 目录 (d:/home/logfiles) 中文件的所有信息将流式传输至本地控制台。
-
-若要筛选特定事件（如错误），请使用 **-Message** 参数。 例如：
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Message Error
-
-若要筛选特定日志类型（如 HTTP），请使用 **-Path** 参数。 例如：
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Path http
-
-若要查看可用的路径列表，请使用 -ListPath 参数。
-
-> [!NOTE]
-> 如果尚未安装 Azure PowerShell，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)。
->
->
-
-### <a name="streaming-with-azure-command-line-interface"></a>使用 Azure 命令行接口进行流式传输
+### <a name="streaming-with-azure-cli"></a>使用 Azure CLI 流式传输
 若要流式传输日志记录信息，请打开新的命令行提示、PowerShell、Bash 或终端会话并输入以下命令：
 
     az webapp log tail --name webappname --resource-group myResourceGroup
@@ -191,13 +153,15 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> 如果尚未安装 Azure 命令行接口，或尚未将其配置为使用 Azure 订阅，请参阅[如何使用 Azure 命令行接口](../cli-install-nodejs.md)。
+> 如果尚未安装 Azure CLI，或尚未将其配置为使用你的 Azure 订阅，请参阅[如何使用 Azure CLI](../cli-install-nodejs.md)。
 >
 >
 
 ## <a name="understandlogs"></a>如何：了解诊断日志
 ### <a name="application-diagnostics-logs"></a>应用程序诊断日志
-应用程序诊断将信息以特定格式存储在 .NET 应用程序中，具体取决于是将日志存储到文件系统、表存储还是 Blob 存储。 三种存储类型存储的基本数据信息相同 — 事件发生的日期和时间，生成事件的进程 ID，事件类型（信息、警告、错误）以及事件消息。
+应用程序诊断将信息以特定格式存储在 .NET 应用程序中，具体取决于是将日志存储到文件系统还是 Blob 存储。 
+
+这两种存储类型存储的基本数据信息相同 — 事件发生的日期和时间，生成事件的进程 ID，事件类型（信息、警告、错误）以及事件消息。 如果需要立即访问日志以排查某个问题，则使用文件系统作为日志存储会很有帮助，因为日志文件几乎是即时更新的。 Blob 存储用于存档目的，因为这些文件将会缓存，并按计划刷新到存储容器。
 
 **文件系统**
 
@@ -211,27 +175,9 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 记录到文件系统可提供三种可用方法的最基本信息，仅提供时间、进程 ID、事件级别以及消息。
 
-**表存储**
-
-如果记录到表存储，可通过额外属性简化表中存储数据的搜索，并获取更详尽的事件信息。 以下属性（列）可用于存储在表中的所有实体（行）。
-
-| 属性名称 | 值/格式 |
-| --- | --- |
-| PartitionKey |事件的日期/时间，格式为 yyyyMMddHH |
-| RowKey |唯一标识该实体的 GUID 值 |
-| Timestamp |事件发生的日期和时间 |
-| EventTickCount |事件发生的日期和时间，刻度格式（精度更高） |
-| ApplicationName |Web 应用名称 |
-| 级别 |事件级别（例如“错误”、“警告”或“信息”） |
-| EventId |此事件的事件 ID<p><p>如果未指定，则默认为 0 |
-| InstanceId |发生事件的 Web 应用实例 |
-| Pid |进程 ID |
-| Tid |生成事件的线程的线程 ID |
-| 消息 |事件详细消息 |
-
 **Blob 存储**
 
-如果记录到 Blob 存储，数据以逗号分隔值 (CSV) 格式存储。 与表存储类似，记录额外字段可提供更详尽的事件相关信息。 以下属性适用于每一行（CSV 格式）：
+如果记录到 Blob 存储，数据以逗号分隔值 (CSV) 格式存储。 将记录其他字段以提供有关事件的更详尽信息。 以下属性适用于每一行（CSV 格式）：
 
 | 属性名称 | 值/格式 |
 | --- | --- |
@@ -251,7 +197,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> 日志的第一行将包含列标题，如示例中所示。
+> 对于 ASP.NET Core，可以使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 提供程序实现日志记录。此提供程序会将其他日志文件保存到 Blob 容器。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure)。
 >
 >
 

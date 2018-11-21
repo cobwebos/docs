@@ -8,44 +8,47 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283591"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616480"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
-
 ## <a name="overview"></a>概述
-本文介绍如何处理在 Azure Monitor 中设置日志警报时出现的常见问题， 并提供有关日志警报功能或配置的常见问题的解决方法。 术语**日志警报**用来描述警报，其中的信号是基于 [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-analytics.md) 的自定义查询。 从[日志警报 - 概述](monitor-alerts-unified-log.md)中详细了解功能、术语和类型。
+本文介绍如何解决在 Azure Monitor 中设置日志警报时出现的常见问题， 并提供有关日志警报功能或配置的常见问题的解决方法。 
+
+术语“日志警报”描述基于 [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-analytics.md) 中的自定义查询激发的警报。 在[日志警报 - 概述](monitor-alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
-> 本文不考虑警报规则在 Azure 门户中显示为已触发以及通过关联的操作组发出通知的情况。 对于这种情况，请参阅有关[操作组](monitoring-action-groups.md)的文章中的详细信息。
+> 本文不考虑 Azure 门户中显示警报规则已触发以及通过关联的操作组执行通知的情况。 对于这种情况，请参阅有关[操作组](monitoring-action-groups.md)的文章中的详细信息。
 
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
-下面详细描述了在 [Azure 警报](monitoring-alerts-managing-alert-states.md)中查看 [Azure Monitor 中配置的日志警报规则](alert-log.md)时，该规则未按预期激发的一些常见原因。 
+下面 [Azure Monitor 中配置的日志警报规则](alert-log.md)状态不按预期[显示为已激发](monitoring-alerts-managing-alert-states.md)的部分常见原因。 
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
-日志警报的工作原理是基于 [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-analytics.md) 定期运行客户提供的查询。 这两个服务都拥有 Analytics 的强大功能，可处理巨量的日志数据，并提供基本相同的功能。 由于 Log Analytics 服务需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生时间延迟。 有关详细信息，请参阅 [Log Analytics 中的数据引入时间](../log-analytics/log-analytics-data-ingestion-time.md)。
+日志警报基于 [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Application Insights](../application-insights/app-insights-analytics.md) 定期运行查询。 由于 Log Analytics 需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生不同的时间延迟。 有关详细信息，请参阅 [Log Analytics 中的数据引入时间](../log-analytics/log-analytics-data-ingestion-time.md)。
 
-为了克服 Log Analytics 或 Application Insights 日志中可能发生的数据引入延迟，当发现数据在警报时间段内尚未引入时，日志警报会等待一段时间后，然后重试。 为日志警报设置的等待时间呈指数级增大，目的是确保我们等待必要的时间，让 Log analytics 引入数据。 因此，如果日志警报规则查询的日志受引入延迟的影响，则只有在 Log Analytics 后期引入中提供了数据，并且由于日志警报服务在此期间多次重试而产生了指数时隙之后，才会触发日志警报。
+如果系统发现所需的数据尚未引入，为了缓解数据引入延迟，它会等待一段时间，并重试警报查询多次。 为系统设置的等待时间呈指数级递增。 日志警报只会在数据可用后才会触发，因此，延迟可能是日志数据引入速度缓慢造成的。 
 
 ### <a name="incorrect-time-period-configured"></a>配置了错误的时间段
-如[日志警报术语](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types)文章中所述，配置中规定的时间段指定查询的时间范围。 查询仅返回在此时间范围内创建的记录。 时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（如 ago）。 
-*例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则执行日志查询时仅返回中午 12:15 和下午 1:15 之间创建的记录。现在，如果日志查询使用时间命令（如 ago (1d)），则日志查询将仅针对中午 12:15 和下午 1:15 之间的数据运行 - 就像仅存在过去 60 分钟的数据一样。而不是按在日志查询中所指定针对七天的数据。*
+根据[日志警报的术语](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文中所述，配置中规定的时间段指定查询的时间范围。 查询仅返回在此时间范围内创建的记录。 时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（如 ago）。 
+例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。如果日志查询使用类似于 *ago (1d)* 的时间命令，则查询仍只使用在中午 12:15 和下午 1:15 之间的创建数据，因为时间段设置为该间隔。
 
-根据查询逻辑，检查是否在配置中提供了适当的时间段。 对于前面所述的示例，如果日志查询使用 ago (1d)（如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示），以确保提供的查询根据设想正确执行。
-    ![时间段](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
+因此，应该检查配置中的时间段是否与查询匹配。 对于前面所述的示例，如果日志查询使用 *ago (1d)*（如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示），以确保查询按预期执行。
+
+![时间段](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>设置“抑制警报”选项
-根据[在 Azure 门户中创建日志警报规则](alert-log.md#managing-log-alerts-from-the-azure-portal)文章的步骤 8 中所述，日志警报提供一个选项用于配置警报规则的自动抑制，并防止在规定的时间发出通知/触发该规则。 “抑制警报”选项可让日志警报执行，同时可防止在“抑制警报”选项中指定的时间触发操作组，因此，用户可能觉得该警报未激发，但实际上它只是按配置抑制了。
-    ![抑制警报](./media/monitor-alerts-unified/LogAlertSuppress.png)
+根据[在 Azure 门户中创建日志警报规则](alert-log.md#managing-log-alerts-from-the-azure-portal)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。 因此，你可能认为某个警报未激发，但实际上它已激发，只不过是抑制了而已。  
+
+![抑制警报](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>指标度量警报规则不正确
-日志警报规则的指标度量类型是日志警报的子类型，它具有特殊的功能，但又对警报查询语法采用限制。 指标度量日志警报规则需要使用警报查询的输出来提供指标时序 - 指标时序是包含等量大小的不同时间段以及相应 AggregatedValue 计算值的表。 此外，用户可以选择在该表中包含其他变量，以及 Computer、Node 等 AggregatedValue。 在表中使用的数据可排序。
+**指标度量日志警报**是日志警报的子类型，具有特殊的功能和受限的警报查询语法。 指标度量日志警报规则要求查询输出是指标时序；指标时序是包含等量大小的不同时间段以及相应聚合值的表。 此外，用户可以选择在该表中包含其他变量以及 AggregatedValue。 可以使用这些变量来为表排序。 
 
 例如，假设指标度量日志警报规则已配置为：
 - 查询为：`search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
@@ -54,9 +57,9 @@ ms.locfileid: "51283591"
 - 警报逻辑为三次连续违规
 - 选择 $table 作为聚合依据
 
-由于在命令中，我们使用了“summarize … by”， 并提供了两个变量 timestamp 和 $table；警报服务将选择“$table”作为“聚合依据”，- 基本上可按 $table 字段将结果表排序，如下所示。然后查看每个表类型（例如 availabilityResults）的多个 AggregatedValue，以确定是否发生了 3 次或更多的连续违规。
+由于命令中包含 *summarize … by*，并提供了两个变量（timestamp 和 $table），系统将选择 $table 作为“聚合依据”。 它会按 *$table* 字段将结果表排序（如下所示），然后查看每个表类型（例如 availabilityResults）的多个 AggregatedValue，以确定是否发生了 3 次或更多次的连续违规。
 
-   ![包含多个值的指标度量查询执行](./media/monitor-alerts-unified/LogMMQuery.png)
+![包含多个值的指标度量查询执行](./media/monitor-alerts-unified/LogMMQuery.png)
 
 由于“聚合依据”为 $table – 数据已按 $table 列排序（如红框所示），我们进行分组并查看“聚合依据”字段（即 $table）的类型 - 例如：availabilityResults 的值将视为一个绘图/实体（在橙色框中突出显示）。 在此绘图/实体值中 – 警报服务将检查对表值“availabilityResults”触发的警报的三次连续违规（如绿框中所示）。 同样，如果其他任何 $table 值发生三次连续违规 - 同时会触发另一条警报通知；警报服务将自动按时间排序一个绘图/实体中的值（如橙色框中所示）。
 
@@ -85,4 +88,5 @@ ms.locfileid: "51283591"
 
 * 了解 [Azure 警报中的日志警报](monitor-alerts-unified-log.md)
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)
-* 详细了解 [Log Analytics](../log-analytics/log-analytics-queries.md)。 
+* 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。 
+

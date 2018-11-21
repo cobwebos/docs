@@ -9,16 +9,33 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 804076fdc653622336ac3b99c15df0bc027510d9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730137"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683894"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
 本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 
+
+## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>什么是 Microsoft 基因组学服务 GATK 4 促销版？
+在 2018 日历年底之前，Microsoft 基因组学服务会一直免费提供 GATK4 的 20 个 WGS 运行。 若要参与此产品/服务，请在[此处](https://aka.ms/msgatk4)注册。 
+
+### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>运行 Microsoft 基因组学服务 GATK4 促销版时可能会遇到的常见问题
+下面是可能会遇到的常见错误及其建议的解决方法列表：
+
+| **消息**                                                                                                                                                                                    | **原因**                                                                                                    | **解决方法**                                                                                                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 未为帐户启用 `gatk4-promo`。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | 你正在尝试使用未激活的 Microsoft 基因组学服务运行 GATK4 工作流。       | 请访问[此网页](https://aka.ms/msgatk4)激活帐户。 请注意，试用版将在 2018 日历年底过期。 在此日期之后，无法激活促销版运行的帐户。 |
+| 感谢你试用 `gatk4-promo`。试用期已结束。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | GATK4 试用版已在日历年底过期，而你正在尝试调用 `gatk4-promo` process_name。  | 请将 process_name 参数切换为 `gatk4` 而不是 `gatk4-promo`。 这是官方的 gatk4 版本，如果使用此参数，则需要为工作流付费。                                         |
+| 感谢你试用 `gatk4-promo`。你已用完所有分配的运行。 有关详细信息，请参阅 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | 已成功提交 GATK4 的所有 20 个促销版运行。                               | 请在将 process_name 参数设置为 `gatk4`（而不是 `gatk4-promo`）后提交任何新的 gatk4 运行。 使用此参数时，需要为工作流付费。                                                          |        
+
+
+## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>是否可以在不注册 GATK4 促销版的情况下针对 Microsoft 基因组学运行 GATK4 工作流？
+可以。在 Microsoft 基因组学服务的 config.txt 文件中将 process_name 指定为 `gatk4` 即可。 请注意，你需要按一般费率付费，20 个免费运行不适用于你的 Microsoft 基因组学帐户。
+
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
@@ -48,7 +65,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="why-do-i-need-two-access-keys"></a>为什么需要两个访问密钥？
-如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，想更新第一个密钥。 在这种情况下，可将所有新工作流切换至使用第二个密钥。 然后，等到使用第一个密钥的工作流运行完毕。 直到此时才能更新密钥。
+如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
 
 ## <a name="do-you-save-my-storage-account-keys"></a>是否保存了我的存储帐户密钥？
 存储帐户密钥用于创建 Microsoft 基因组学服务的短期访问令牌，读取输入文件并写入输出文件。 默认令牌持续时间为 48 小时。 可以通过提交命令的 `-sas/--sas-duration` 选项更改令牌持续时间；该值以小时为单位。

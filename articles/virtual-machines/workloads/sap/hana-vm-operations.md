@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/27/2018
+ms.date: 11/06/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db2d7fbe395a6d7e332d79183a331b45f7767f51
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 45b6de7693325b5ccfcb01ad9babc61dd2f6e003
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434052"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289132"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -79,7 +79,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 ### <a name="configuring-the-storage-for-azure-virtual-machines"></a>配置 Azure 虚拟机的存储
 
-自从购买本地用的 SAP HANA 设备以来，我们从未考虑过 I/O 子系统及其功能， 因为设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，我们也应该注意其中的一些要求。 此外，应了解后续部分中建议的配置要求。 配置用于运行 SAP HANA 的虚拟机时，也应该这样做。 为了满足某些要求，需要做到以下几点：
+到目前为止，我们从未考虑过 I/O 子系统及其功能。 原因在于，设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，我们也应该注意其中的一些要求。 此外，应了解后续部分中建议的配置要求。 配置用于运行 SAP HANA 的虚拟机时，也应该这样做。 为了满足某些要求，需要做到以下几点：
 
 - 在最小大小为 1 MB I/O、速率为 250 MB/秒的 /hana/log 上启用读/写卷
 - 为 16 MB 和 64 MB I/O 大小的 /hana/data 启用至少 400 MB/秒的读取活动
@@ -112,66 +112,12 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 
 在确定 VM 大小或决定 VM 时，还要考虑总体 VM I/O 吞吐量。 [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)一文中记录了总体 VM 存储吞吐量。
 
-#### <a name="cost-conscious-azure-storage-configuration"></a>高性价比的 Azure 存储配置
-下表显示了客户通常用于在 Azure VM 上托管 SAP HANA 的 VM 类型的配置。 其中可能有些 VM 类型无法满足 SAP HANA 的所有最低标准。 但到目前为止，这些 VM 在非生产场景中的表现似乎不错。 
-
-> [!NOTE]
-> 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
-
-
-| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
-| --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
-| E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
-| E32v3 | 256 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| E64v3 | 443 GiB | 1200 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| GS5 | 448 GiB | 2000 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
-| M64ls | 512 GiB | 1000 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
-| M64s | 1000 GiB | 1000 MB/秒 | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
-| M64ms | 1750 GiB | 1000 MB/秒 | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
-| M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
-
-
-根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
-检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
-
-> [!NOTE]
-> 上述配置并不会受益于 [Azure 虚拟机单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/)，因为此配置混合使用了 Azure 高级存储和 Azure 标准存储。 但是，这种选择可以优化成本。
-
-
-#### <a name="azure-storage-configuration-to-benefit-for-meeting-single-vm-sla"></a>有利于满足单一 VM SLA 的 Azure 存储配置
-如果想要受益于 [Azure 虚拟机单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/)，需要专门使用 Azure 高级存储 VHD。
-
-> [!NOTE]
-> 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
-
-| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
-| --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
-| E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
-| E32v3 | 256 GiB | 768 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| E64v3 | 443 GiB | 1200 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| GS5 | 448 GiB | 2000 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
-| M64ls | 512 GiB | 1000 MB/秒 | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| M64s | 1000 GiB | 1000 MB/秒 | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
-| M64ms | 1750 GiB | 1000 MB/秒 | 3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
-| M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
-
-
-根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。  
-检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
-
-
+#### <a name="linux-io-scheduler-mode"></a>Linux I/O 计划程序模式
+Linux 提供多种不同的 I/O 计划模式。 Linux 供应商和 SAP 的一般建议是为磁盘卷设置 I/O 计划程序模式，且将 **cfq** 模式改为 **noop** 模式。 请参考 [SAP 说明 #1984798](https://launchpad.support.sap.com/#/notes/1984787) 中的详细信息。 
 
 
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>对 Azure M 系列虚拟机使用包含 Azure 写入加速器的存储解决方案
-Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 顾名思义，该功能的目的是改善针对 Azure 高级存储执行的写入操作的 I/O 延迟。 在 SAP HANA 中，预期只能对 **/hana/log** 卷使用写入加速器。 因此，到目前为止所述的配置都需要更改。 主要更改是在 **/hana/data** 与 **/hana/log** 之间做出划分，以便仅针对 **/hana/log** 卷使用 Azure 写入加速器。 
+Azure 写入加速器是专门针对 Azure M 系列 VM 推出的一项功能。 顾名思义，该功能的目的是改善针对 Azure 高级存储执行的写入操作的 I/O 延迟。 在 SAP HANA 中，预期只能对 **/hana/log** 卷使用写入加速器。 因此，到目前为止所述的配置都需要更改。 主要更改是在 **/hana/data** 与 **/hana/log** 之间做出划分，以便仅针对 **/hana/log** 卷使用 Azure 写入加速器。 
 
 > [!IMPORTANT]
 > Azure M 系列虚拟机的 SAP HANA 认证要求中规定，Azure 写入加速器只能用于 **/hana/log** 卷。 因此，在 Azure M 系列虚拟机上的生产场景 SAP HANA 部署中，应该配置 **/hana/log** 卷使用的 Azure 写入加速器。  
@@ -205,12 +151,46 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 
 此文中还介绍了 Azure 写入加速器的详细信息和限制。
 
+
+#### <a name="cost-conscious-azure-storage-configuration"></a>高性价比的 Azure 存储配置
+下表显示了客户通常用于在 Azure VM 上托管 SAP HANA 的 VM 类型的配置。 其中可能有些 VM 类型无法满足 SAP HANA 的所有最低准则，或者不受 SAP HANA 的正式支持。 但到目前为止，这些 VM 在非生产场景中的表现似乎不错。 
+
 > [!NOTE]
-> 所述磁盘配置建议针对 SAP 向其基础设施提供商表达的最低要求。 在实际的客户部署和工作负载场景中，遇到了这些建议仍未提供足够功能的情况。 这些情况可能是客户在 HANA 重启后需要更快地重新加载数据，或者备份配置需要更高的存储带宽。 其他情况包括 **/hana/log**，其中 5000 IOPS 不足以满足特定工作负载。 因此，请将这些建议作为起点，并根据工作负载的要求进行调整。
+> 对于生产场景，请在 [IAAS 的 SAP 文档](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中查看特定的 VM 类型是否受 SAP HANA 的支持。
+
+
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | hana/backup |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 128 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E16v3 | 128 GiB | 384 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
+| E32v3 | 256 GiB | 768 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| E64v3 | 443 GiB | 1200 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| GS5 | 448 GiB | 2000 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
+| M32ts | 192 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M32ls | 256 GiB | 500 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
+| M64ls | 512 GiB | 1000 MB/秒 | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 |1 x S30 |
+| M64s | 1000 GiB | 1000 MB/秒 | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64ms | 1750 GiB | 1000 MB/秒 | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
+| M128s | 2000 GiB | 2000 MB/秒 |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
+| M128ms | 3800 GiB | 2000 MB/秒 | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
+
+
+根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)，对于采用 3 x P20 配置的较小 VM 类型，建议的磁盘空间大于建议的卷空间。 但是，表中显示的选项旨在为 SAP HANA 提供足够的磁盘吞吐量。 如果需要改用 **/hana/backup** 卷（该卷的大小适合保留相当于两倍内存卷的备份），请任意调整配置。   
+检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 
+
+> [!NOTE]
+> 上述配置并不会受益于 [Azure 虚拟机单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/)，因为此配置混合使用了 Azure 高级存储和 Azure 标准存储。 但是，这种选择可以优化成本。 需要为上面列作 Azure 标准存储 (Sxx) 的所有磁盘选择高级存储，才能使 VM 配置符合 Azure 的单一 VM SLA。
+
+
+> [!NOTE]
+> 所述磁盘配置建议针对 SAP 向其基础设施提供商表达的最低要求。 在实际的客户部署和工作负载场景中，遇到了这些建议仍未提供足够功能的情况。 这些情况可能是客户在 HANA 重启后需要更快地重新加载数据，或者备份配置需要更高的存储带宽。 其他情况包括 **/hana/log**，其中 5000 IOPS 不足以满足特定工作负荷。 因此，请将这些建议作为起点，并根据工作负载的要求进行调整。
 >  
 
 ### <a name="set-up-azure-virtual-networks"></a>设置 Azure 虚拟网络
 当通过 VPN 或 ExpressRoute 与 Azure 建立站点到站点连接时，必须至少有一个 Azure 虚拟网络已通过虚拟网关连接到 VPN 或 ExpressRoute 线路。 在简单部署中，也可以将虚拟网关部署在托管 SAP HANA 实例的 Azure 虚拟网络 (VNet) 的子网中。 若要安装 SAP HANA，需要在 Azure 虚拟网络中另外创建两个子网。 一个子网托管 VM 以运行 SAP HANA 实例。 另一子网运行 Jumpbox 或管理 VM，以托管 SAP HANA Studio、其他管理软件或应用程序软件。
+
+> [!IMPORTANT]
+> 出于功能原因，但更重要的是出于性能原因，不支持在 SAP 应用程序与 SAP NetWeaver、Hybris 或基于 S/4HANA 的 SAP 系统的 HANA 数据库实例之间的通信路径中配置 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)。 更多不支持 NVA 的场景出现在代表 Linux Pacemaker 群集节点的 Azure VM 与 SBD 设备之间的通信路径中（如 [SUSE Linux Enterprise Server for SAP Applications 上的 Azure VM 上 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)所述）。 或者是在按[使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)所述设置的 Azure VM 与 Windows Server SOFS 之间的通信路径中。 通信路径中的 NVA 可能容易导致两个通信合作伙伴之间的网络延迟加倍，可能会限制 SAP 应用程序层与 HANA 数据库实例之间的重要路径中的吞吐量。 在客户遇到的某些场景中，当 Linux Pacemaker 群集节点之间的通信需要通过 NVA 与 SBD 设备进行通信时，NVA 可能会导致 Pacemaker Linux 群集失败。   
 
 安装 VM 以运行 SAP HANA 时，VM 需要：
 
@@ -294,7 +274,7 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 
 检查建议的不同卷的存储吞吐量是否满足所要运行的工作负荷。 如果工作负荷要求对 **/hana/data** 和 **/hana/log** 使用更高规格的卷，则需要增加 Azure 高级存储 VHD。 对于包含的 VHD 数目比所列数目更多的卷，调整其大小会在 Azure 虚拟机类型的限制范围内增大 IOPS 和 I/O 吞吐量。 另外，将 Azure 写入加速器应用到构成 **/hana/log** 卷的磁盘。
  
-文档 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中指定了一个公式，该公式将横向扩展的 **/hana/shared** 卷的大小定义为每 4 个工作节点中单个工作节点的内存大小。
+文档 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中指定了一个公式，该公式将横向扩展的 **/hana/shared** 卷的大小定义为每四个工作节点中单个工作节点的内存大小。
 
 假设我们使用内存大约为 2 TB 且通过 SAP HANA 横向扩展认证的 M128s Azure VM，SAP 建议概括如下：
 
@@ -377,7 +357,7 @@ SAP BW 或 S4HANA 不支持 SAP HANA Dynamic Tiering 2.0。 现在的主要用�
 - 在启用 Azure 加速网络的情况下，才能部署 SAP HANA 和 DT 2.0 VM
 - DT 2.0 虚拟机的存储类型必须是 Azure 高级存储
 - 多个 Azure 磁盘必须附加到 DT 2.0 VM
-- 必须通过跨 Azure 磁盘的带区来创建软件 RAID /带区卷（通过 lvm 或 mdadm）
+- 必须通过跨 Azure 磁盘的条带化来创建软件 RAID /条带化卷（通过 lvm 或 mdadm）
 
 后续部分会对此进行详细说明。
 
@@ -389,13 +369,14 @@ SAP BW 或 S4HANA 不支持 SAP HANA Dynamic Tiering 2.0。 现在的主要用�
 
 在 Azure IaaS 上，DT 2.0 仅在专用 VM 上受支持。 不允许在运行 HANA 实例的同一 Azure VM 上运行 DT 2.0。 最初可以使用两种 VM 类型来运行 SAP HANA DT 2.0：
 
-M64-32ms 和 E32sv3 
+- M64-32ms 
+- E32sv3 
 
 请在[此处](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)查看 VM 类型说明
 
 鉴于 DT 2.0 的基本理念，卸载“warm”数据以节省成本，最好使用相应的 VM 大小。 但对于可能的组合，并没有严格的规定。 这取决于特定的客户工作负载。
 
-推荐的配置是：
+建议的配置是：
 
 | SAP HANA VM 类型 | DT 2.0 VM 类型 |
 | --- | --- | 
@@ -405,7 +386,7 @@ M64-32ms 和 E32sv3
 | M64s | E32sv3 |
 
 
-SAP HANA 认证 M 系列 VM 与受支持的 DT 2.0 Vm (M64-32ms, E32sv3) 的所有组合都是可能的。
+SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3）的所有组合形式都是可行的。
 
 
 ### <a name="azure-networking-and-sap-hana-dt-20"></a>Azure 网络和 SAP HANA DT 2.0
@@ -418,8 +399,8 @@ SAP HANA 认证 M 系列 VM 与受支持的 DT 2.0 Vm (M64-32ms, E32sv3) 的所�
 
 根据 DT 2.0 最佳做法指南，每个物理核心的磁盘 IO 吞吐量最低应为 50 MB/秒。 查看 DT 2.0 支持的两种 Azure VM 类型的规范，其中之一将看到 VM 的最大磁盘 IO 吞吐量限制：
 
-- E32sv3：768 MB/秒（未缓存）表示每个物理核心的比率为 48 MB /秒
-- M64-32ms：1000 MB/秒（未缓存）表示每个物理核心的比率为 62.5 MB /秒
+- E32sv3：768 MB/秒（非缓存）表示每个物理核心的比率为 48 MB /秒
+- M64-32ms：1000 MB/秒（非缓存）表示每个物理核心的比率为 62.5 MB /秒
 
 必须将多个 Azure 磁盘连接到 DT 2.0 VM 并在 OS 级别创建软件 RAID（带区），以实现每个 VM 的磁盘吞吐量的最大限制。 在这方面，单个 Azure 磁盘无法提供该吞吐量以达到最大 VM 限制。 Azure 高级存储是运行 DT 2.0 的必需条件。 
 
@@ -428,7 +409,7 @@ SAP HANA 认证 M 系列 VM 与受支持的 DT 2.0 Vm (M64-32ms, E32sv3) 的所�
 - 有关配置 LVM 以创建最大吞吐量的带区卷的详细信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
 
 根据大小要求，可使用不同的选项来达到 VM 的最大吞吐量。 以下是针对每个 DT 2.0 VM 类型以实现 VM 的吞吐量上限可能的数据卷磁盘配置。 E32sv3 VM 应视为较小工作负载的入门级别。 如果它的速度不够快，可能需要将 VM 的大小调整为 M64-32ms。
-由于 M64-32ms VM 具有大量内存，因此 IO 负载可能无法达到限制，尤其是对于读取密集型工作负载而言。 因此，根据客户特定的工作负载，带区集中的磁盘可能很少就足够了。 但为了安全起见，请选择下面的磁盘配置以保证最大吞吐量：
+由于 M64-32ms VM 具有大量内存，因此 IO 负载可能无法达到限制，尤其是对于读取密集型工作负载而言。 因此，根据客户特定的工作负荷，在条带集中使用更少的磁盘可能就足够了。 但为了安全起见，请选择下面的磁盘配置以保证最大吞吐量：
 
 
 | VM SKU | 磁盘配置 1 | 磁盘配置 2 | 磁盘配置 3 | 磁盘配置 4 | 磁盘配置 5 | 
@@ -439,7 +420,7 @@ SAP HANA 认证 M 系列 VM 与受支持的 DT 2.0 Vm (M64-32ms, E32sv3) 的所�
 
 特别是在工作负载读取密集的情况下，它可以提高 IO 性能，以打开 Azure 主机缓存“只读”，如数据库软件数据卷所建议的那样。 而对于事务日志，Azure 主机磁盘缓存必须是“无”。 
 
-关于日志卷的大小，推荐的起始点是数据大小的 15％。 可使用不同的 Azure 磁盘类型来完成日志卷的创建，具体取决于成本和吞吐量要求。 此外，对于日志卷，应首先高吞吐量，如果是 M64-32ms，强烈建议打开写入加速器（这是 SAP HANA 必需的）。 这为事务日志提供了最佳磁盘写入延迟（仅适用于 M 系列）。 有一些事项需要注意，比如每个 VM 类型的最大磁盘数。 关于 WA 的更多信息，请参阅[此处](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+关于日志卷的大小，推荐的起始点是数据大小的 15％。 可使用不同的 Azure 磁盘类型来完成日志卷的创建，具体取决于成本和吞吐量要求。 对于日志卷，必须提供较高的 I/O 吞吐量。  如果使用 VM 类型 M64-32ms，则我们强烈建议启用[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。 Azure 写入加速器为事务日志提供最佳磁盘写入延迟（仅适用于 M 系列）。 有一些事项需要注意，比如每个 VM 类型的最大磁盘数。 在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)可以找到有关写入加速器的详细信息
 
 
 下面是一些有关调整日志卷大小的示例：

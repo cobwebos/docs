@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 09/24/2018
-ms.openlocfilehash: 70c023fc8fe996060d3eff3d5a700b5f910097b4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 11/08/2018
+ms.openlocfilehash: bb3dca56583296bab42fe9804a32e0690ace5897
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113625"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578223"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
@@ -45,6 +45,8 @@ Blob 中输出数据的路径遵循以下语法：
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,17 +58,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 - [AKS 群集](how-to-deploy-to-aks.md)。
 
-- 在[环境](how-to-configure-environment.md)中安装了以下依赖项和模块：
-  + 在 Linux 上：
-    ```shell
-    sudo apt-get install libxml++2.6-2v5
-    pip install azureml-monitoring
-    ```
-
-  + 在 Windows 上：
-    ```shell
-    pip install azureml-monitoring
-    ```
+- [设置环境](how-to-configure-environment.md)并安装[监视 SDK](https://aka.ms/aml-monitoring-sdk)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
 无论通过 Azure 机器学习服务或其他工具部署的模型如何，都可以启用数据收集。 
@@ -75,7 +67,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 打开评分文件。 
 
-1. 在该文件顶部，添加以下代码：
+1. 在该文件的顶部添加[以下代码](https://aka.ms/aml-monitoring-sdk)：
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -123,11 +115,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 转到“部署” -> “选择服务” -> “编辑”。
 
-   ![编辑服务](media/how-to-enable-data-collection/EditService.png)
+   ![编辑服务](media/how-to-enable-data-collection/EditService.PNG)
 
 1. 在“高级设置”中，取消选中“启用模型数据收集”。 
 
-   ![取消选中“数据收集”](media/how-to-enable-data-collection/CheckDataCollection.png)
+    [![选中“数据收集”](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    在此窗口中，还可以选择“启用 Appinsights 诊断”以跟踪服务的运行状况。  
 
@@ -144,11 +136,11 @@ Blob 中输出数据的路径遵循以下语法：
 
   1. 转到“部署” -> “选择服务” -> “编辑”。
 
-     ![编辑服务](media/how-to-enable-data-collection/EditService.png)
+    [![编辑服务](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. 在“高级设置”中，取消选中“启用模型数据收集”。 
 
-     ![取消选中“数据收集”](media/how-to-enable-data-collection/UncheckDataCollection.png) 
+    [![取消选中“数据收集”](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. 选择“更新”以应用更改。
 
@@ -158,6 +150,84 @@ Blob 中输出数据的路径遵循以下语法：
   ## replace <service_name> with the name of the web service
   <service_name>.update(collect_model_data=False)
   ```
+
+## <a name="validate-your-data-and-analyze-it"></a>验证数据并对其进行分析
+可以选择任何偏好的工具来分析收集到 Azure Blob 中的数据。 
+
+快速访问 Blob 中的数据：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 打开你的工作区。
+1. 单击“存储”。
+
+    [![存储](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+
+1. Blob 中输出数据的路径遵循以下语法：
+
+```
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+# example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
+```
+
+
+### <a name="analyzing-model-data-through-power-bi"></a>通过 Power BI 分析模型数据
+
+1. 下载并打开 [PowerBi Desktop](http://www.powerbi.com)
+
+1. 选择“获取数据”，然后单击“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。
+
+    [![PBI Blob 设置](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+
+
+1. 添加存储帐户名称并输入存储密钥。 可在 Blob 的“设置”>“访问密钥”中找到此信息。 
+
+1. 选择容器“modeldata”，然后单击“编辑”。 
+
+    [![PBI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+
+1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户 1。 在筛选器中为路径建模。 注意：如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，只查看 3 月份的数据：/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3
+
+1. 基于“名称”筛选相关的数据。 如果存储了**预测**和**输入**，则需要针对每个文件创建一个查询。
+
+1. 单击“内容”列旁边的双箭头合并文件。 
+
+    [![PBI 内容](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+
+1. 单击“确定”，随即会预加载数据。
+
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+
+1. 现在，可以单击“关闭并应用”。
+
+1.  如果添加了输入和预测，则表会自动按 **RequestId** 进行关联。
+
+1. 开始基于模型数据生成自定义报表。
+
+
+### <a name="analyzing-model-data-using-databricks"></a>使用 Databricks 分析模型数据
+
+1. 创建 [Databricks 工作区](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 
+
+1. 转到该 Databricks 工作区。 
+
+1. 在 Databricks 工作区中，选择“上传数据”。
+
+    [![DB 上传](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+
+1. 创建新表，然后选择“其他数据源”->“Azure Blob 存储”->“在笔记本中创建表”。
+
+    [![DB 表](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+
+1. 更新数据的位置。 下面是一个示例：
+
+    ```
+    file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
+    file_type = "csv"
+    ```
+ 
+    [![DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+
+1. 遵循模板中的步骤查看和分析数据。 
 
 ## <a name="example-notebook"></a>示例笔记本
 

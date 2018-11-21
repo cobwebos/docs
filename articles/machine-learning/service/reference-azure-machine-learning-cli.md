@@ -1,118 +1,141 @@
 ---
-title: 关于 Azure 机器学习 CLI 扩展
-description: 了解 Azure 机器学习的机器学习 CLI 扩展。
+title: 如何使用 Azure 机器学习 CLI 扩展
+description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 借助该机器学习扩展可以使用 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: reference
+ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243141"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615630"
 ---
-# <a name="what-is-the-azure-machine-learning-cli"></a>什么是 Azure 机器学习 CLI？
+# <a name="use-the-azure-machine-learning-cli-extension"></a>使用 Azure 机器学习 CLI 扩展
 
-Azure 机器学习命令行界面 (CLI) 扩展适用于使用 Azure 机器学习服务的数据科学家和开发人员。 它允许你快速自动化机器学习工作流程并将其投入生产，例如：
+Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 借助此扩展提供的命令，可以从命令行使用 Azure 机器学习服务。 它允许创建用于自动化机器学习工作流的脚本。 例如，可以创建用于执行以下操作的脚本：
+
 + 运行试验以创建机器学习模型
 
 + 注册机器学习模型以供客户使用
 
 + 打包、部署和跟踪机器学习模型的生命周期
 
-此机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 的扩展，在基于 Python 的适用于 Azure 机器学习服务的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 的基础上生成。
+CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工具，可以处理高度参数化的任务，例如：
+
+* 创建计算资源
+
+* 参数化试验提交
+
+* 模型的注册
+
+* 映像创建
+
+* 服务部署
+
+## <a name="prerequisites"></a>先决条件
+
+* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
 > [!NOTE]
-> CLI 目前处于早期预览阶段，并将进行更新。
+> 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="installing-and-uninstalling"></a>安装和卸载
+## <a name="install-the-extension"></a>安装扩展
 
-可以从预览 PyPi 索引使用此命令安装 CLI：
-```AzureCLI
+若要安装机器学习 CLI 扩展，请使用以下命令：
+
+```azurecli-interactive
 az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
-可以使用此命令来删除 CLI：
-```AzureCLI
+出现提示时，选择 `y` 安装该扩展。
+
+若要验证是否已安装该扩展，请使用以下命令显示特定于机器学习的子命令列表：
+
+```azurecli-interactive
+az ml -h
+```
+
+> [!TIP]
+> 若要更新该扩展，必须先将其__删除__，然后再__安装__。 这会安装最新版本。
+
+## <a name="remove-the-extension"></a>删除扩展
+
+若要删除 CLI 扩展，请使用以下命令：
+
+```azurecli-interactive
 az extension remove -n azure-cli-ml
 ```
 
-可以使用上面的**删除**和**添加**步骤来更新 CLI。
+## <a name="resource-management"></a>资源管理
 
-## <a name="using-the-cli-vs-the-sdk"></a>使用 CLI 与使用 SDK
-CLI 更适合由 dev-ops 角色进行自动化，或作为持续集成和交付管道的一部分。 CLI 经过优化，可以处理不常见且高度参数化的任务。 
+以下命令演示如何使用 CLI 来管理 Azure 机器学习所用的资源。
 
-示例包括：
-- 计算预配
-- 参数化试验提交
-- 模型注册、映像创建
-- 服务部署
 
-建议数据科学家使用 Azure ML SDK。
++ 创建 Azure 机器学习服务工作区：
 
-## <a name="common-machine-learning-cli-commands"></a>常见的机器学习 CLI 命令
-> [!NOTE]
-> 可以在[此处](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)找到可用于成功执行以下命令的示例文件。
-
-使用丰富的 `az ml` 命令集在任何命令行环境中交互服务，包括 Azure 门户 cloud shell。
-
-下面是常用命令的示例：
-
-### <a name="workspace-creation--compute-setup"></a>工作区创建和计算设置
-
-+ 创建 Azure 机器学习服务工作区，这是机器学习的顶级资源。
-   ```AzureCLI
+   ```azurecli-interactive
    az ml workspace create -n myworkspace -g myresourcegroup
    ```
 
-+ 默认情况下，将 CLI 设置为使用此工作区。
-   ```AzureCLI
++ 设置默认工作区：
+
+   ```azurecli-interactive
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
 + 创建 DSVM（数据科学 VM）。 还可以创建用于分布式训练的 BatchAI 群集或用于部署的 AKS 群集。
-  ```AzureCLI
+
+
+  ```azurecli-interactive
   az ml computetarget setup dsvm -n mydsvm
   ```
 
-### <a name="experiment-submission"></a>试验提交
-+ 附加到项目（运行配置）以提交试验。 这用于跟踪试验运行。
-  ```AzureCLI
-  az ml project attach --experiment-name myhistory
-  ```
+## <a name="experiments"></a>试验
 
-+ 在选择的计算目标上针对 Azure 机器学习服务提交试验。 此示例将针对本地计算环境执行。 请确保 conda 环境文件捕获 python 依赖项。
+以下命令演示如何通过 CLI 使用试验：
 
-  ```AzureCLI
-  az ml run submit -c local train.py
-  ```
+* 提交试验之前附加项目（运行配置）：
 
-+ 查看提交的试验列表。
-```AzureCLI
-az ml history list
-```
+    ```azurecli-interactive
+    az ml project attach --experiment-name myhistory
+    ```
 
-### <a name="model-registration-image-ceation--deployment"></a>模型注册、映像创建和部署
+* 开始运行试验。 使用此命令时，请指定计算目标。 在此示例中，`local` 使用本地计算机通过 `train.py` 脚本训练模型：
 
-+ 使用 Azure 机器学习注册模型。
-  ```AzureCLI
+    ```azurecli-interactive
+    az ml run submit -c local train.py
+    ```
+
+* 查看提交的试验列表：
+
+    ```azurecli-interactive
+    az ml history list
+    ```
+
+## <a name="model-registration-image-creation--deployment"></a>模型注册、映像创建和部署
+
+以下命令演示如何注册已训练的模型，然后将其部署为生产服务：
+
++ 将模型注册到 Azure 机器学习：
+
+  ```azurecli-interactive
   az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
-+ 创建一个映像以包含你的机器学习模型和依赖项。 
-  ```AzureCLI
++ 创建包含机器学习模型和依赖项的映像： 
+
+  ```azurecli-interactive
   az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
-+ 将打包的模型部署到包括 ACI 和 AKS 在内的目标。
-  ```AzureCLI
++ 将映像部署到计算目标：
+
+  ```azurecli-interactive
   az ml service create aci -n myaciservice --image-id myimage:1
   ```
-    
-## <a name="full-command-list"></a>完整命令列表
-可以通过运行 ```az ml COMMANDNAME -h``` 找到 CLI 扩展（及其支持的参数）的完整命令列表。 
