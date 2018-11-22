@@ -1,6 +1,6 @@
 ---
-title: 差异和注意事项的 Azure Stack 中的托管磁盘 |Microsoft Docs
-description: 使用 Azure Stack 中的托管磁盘时，了解有关差异和注意事项。
+title: Azure Stack 中托管磁盘的差异和注意事项 | Microsoft Docs
+description: 了解使用 Azure Stack 中的托管磁盘时的差异和注意事项。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,40 +15,40 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 2870bf8911c48ac4cbb442278f172b37a474152b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 4bd36744cc417e85f49e58f9a08d2b9006da9fe4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078047"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284023"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
-本文汇总了 Azure Stack 托管磁盘和 azure 托管磁盘的已知的差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异和注意事项
+本文总结了 Azure Stack 托管磁盘和 Azure 托管磁盘之间的已知差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
-托管的磁盘通过管理简化了 IaaS Vm 的磁盘管理[存储帐户](/azure/azure-stack/azure-stack-manage-storage-accounts)与 VM 磁盘关联。
+托管磁盘通过管理与 VM 磁盘关联的[存储帐户](/azure/azure-stack/azure-stack-manage-storage-accounts)简化了 IaaS VM 的磁盘管理。
   
 
-## <a name="cheat-sheet-managed-disk-differences"></a>备忘单： 托管磁盘的差异
+## <a name="cheat-sheet-managed-disk-differences"></a>速查表：托管磁盘差异
 
-| 功能 | Azure（公有云） | Azure Stack |
+| Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
-|对于静态数据加密 |Azure 存储服务加密 (SSE)，Azure 磁盘加密 (ADE)     |BitLocker 128 位 AES 加密      |
+|静态数据加密 |Azure 存储服务加密 (SSE)、Azure 磁盘加密 (ADE)     |BitLocker 128 位 AES 加密      |
 |映像          | 支持托管自定义映像 |尚不支持|
 |备份选项 |支持 Azure 备份服务 |尚不支持 |
 |灾难恢复选项 |支持 Azure Site Recovery |尚不支持|
-|磁盘类型     |高级 SSD、 标准 SSD （预览版） 和标准 HDD |高级 SSD，标准 HDD |
+|磁盘类型     |高级 SSD、 标准 SSD （预览版） 和标准 HDD |高级 SSD、标准 HDD |
 |高级磁盘  |完全支持 |可部署，但无性能限制或保证  |
-|高级磁盘 IOPs  |取决于磁盘大小  |每个磁盘 2300 IOPs |
+|高级磁盘 IOPS  |取决于磁盘大小  |每个磁盘 2300 IOPS |
 |高级磁盘吞吐量 |取决于磁盘大小 |每个磁盘 145 MB/秒 |
-|磁盘最大大小  |4 TB       |1 TB       |
-|磁盘性能分析 |聚合的度量值和每个磁盘支持的指标 |尚不支持 |
-|迁移      |提供工具，用于从现有的非托管 Azure 资源管理器 Vm 而无需重新创建 VM 迁移  |尚不支持 |
+|磁盘大小  |Azure 高级磁盘： P4 (32 GiB) 到 P80 (32 TiB)<br>Azure 标准 SSD 盘： E10 (128 GiB) 到 E80 (32 TiB)<br>Azure 标准 HDD 磁盘： S4 (32 GiB) 到 S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GiB |
+|磁盘性能分析 |支持的聚合指标和每磁盘指标 |尚不支持 |
+|迁移      |提供从现有非托管 Azure 资源管理器 VM 迁移的工具，而无需重新创建 VM  |尚不支持 |
 
 
 ## <a name="metrics"></a>度量值
 存储指标也有一些差异：
-- 使用 Azure Stack，存储度量值中的事务数据不区分内部或外部网络带宽。
-- Azure Stack 事务数据在存储度量值不包括与装入的磁盘的虚拟机访问。
+- 使用 Azure Stack，存储指标中的事务数据不区分内部或外部网络带宽。
+- 存储指标中的 Azure Stack 事务数据不包含虚拟机对所装载磁盘的访问。
 
 
 ## <a name="api-versions"></a>API 版本
