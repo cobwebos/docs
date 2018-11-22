@@ -97,7 +97,7 @@ ms.locfileid: "51301027"
 
 在“托管计划”旁边，选择“新建”。 
 
-在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 

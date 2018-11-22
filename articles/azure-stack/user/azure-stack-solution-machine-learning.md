@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8c947e2effab84b17ea88623695e0a6b0d020d0f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616361"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285112"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -48,10 +48,10 @@ ms.locfileid: "51616361"
  -  你想要利用跨云和本地应用程序一致的开发人员技能。
 
 > [!Tip]  
-> ![混合 pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack 是 Azure 的扩展。 Azure Stack 提供的敏捷性和创新的云计算到您的本地环境并启用唯一的混合云，可用于生成和部署混合应用任意位置。  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack 是 Azure 的扩展。 Azure Stack 将云计算的灵活性和创新性带入你的本地环境，并支持唯一的混合云，以允许你在任何地方构建和部署混合应用。  
 > 
-> 本白皮书[混合应用程序的设计注意事项](https://aka.ms/hybrid-cloud-applications-pillars)评审 （放置、 可伸缩性、 可用性、 复原能力、 可管理性和安全性） 的软件质量的构成要素进行设计、 部署和操作混合应用程序。 设计注意事项，帮助您优化混合应用程序设计，最大程度减少在生产环境中的挑战。
+> 白皮书 [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars)（混合应用程序的设计注意事项）回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用程序设计，从而最大限度地减少生产环境中的难题。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -89,7 +89,7 @@ ms.locfileid: "51616361"
 
  -  Azure Stack 集成系统或 Azure Stack 开发工具包部署。
 
-    - 查找有关安装 Azure Stack 上的说明[安装 Azure Stack 开发工具包](/articles/azure-stack/asdk/asdk-install)。
+    - 查找有关安装 Azure Stack 上的说明[安装 Azure Stack 开发工具包](../asdk/asdk-install.md)。
      - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 此安装可能需要几个小时才能完成。
 
  -  部署[应用服务](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy)到 Azure Stack 的 PaaS 服务
@@ -142,7 +142,7 @@ ms.locfileid: "51616361"
 
 1.  登录到[ *Azure 门户*](https://portal.azure.com/)。
 
-2.  在 Azure 门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到**存储**，然后选择**存储帐户**。 在 * * 存储帐户 * * 窗口选择**添加**。
+2.  在 Azure 门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到“存储”，选择“存储帐户”。 在 * * 存储帐户 * * 窗口选择**添加**。
 
 3.  输入存储帐户的名称。
 
@@ -2094,7 +2094,7 @@ kubectl proxy
 
 1.  登录到 Azure Stack 用户门户。 (每个 Azure Stack 有唯一的门户 URL)
 
-2.  在 Azure Stack 用户门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到**存储**，然后选择**存储帐户**。 在中**存储帐户**窗口中选择**添加**。
+2.  在 Azure Stack 用户门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到“存储”，选择“存储帐户”。 在中**存储帐户**窗口中选择**添加**。
 
 3.  输入存储帐户的名称。
 
@@ -2168,7 +2168,7 @@ kubectl proxy
 
     ![Alt text](media\azure-stack-solution-machine-learning\image167.png)
 
-1.  选择**计时器触发器**。
+1.  选择“计时器触发器”。
 
     ![Alt text](media\azure-stack-solution-machine-learning\image168.png)
 
