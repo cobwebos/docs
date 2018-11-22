@@ -17,12 +17,12 @@ ms.locfileid: "50035118"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 以下示例在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。 若要查看**免费**层中应用服务支持的所有位置，请运行 [`az appservice list-locations --sku FREE`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 下面的示例命令在“美国中南部”位置创建名为 *myResourceGroup* 的资源组。 若要查看**免费**版本中应用服务支持的所有位置，请运行 [`az appservice list-locations --sku FREE`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
 ```
 
-通常在附近的区域中创建资源组和资源。 
+通常我们建议在您所处位置附近的区域创建资源组和资源。 
 
-此命令完成后，JSON 输出会显示资源组属性。
+此命令执行完成后，会输出显示资源组属性的 JSON。
