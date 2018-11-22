@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b2819f0b3f59b4ca7b08c7caed0ce059b28a62e6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 189e1745a0768f36dd776ba88230a2d47037f9c2
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252422"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285163"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -280,7 +280,7 @@ Terraform </a>
                                                     <li>
                                                         <a class="barLink" href="/azure/devops-project/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Azure DevOps Project </a>
+Azure DevOps Projects </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1272,7 +1272,7 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/devops-project">
                                                 <img src="media/index/logo_vs-team-services.svg" alt="" />
-                                                <p>Azure DevOps 项目</p>
+                                                <p>Azure DevOps Projects</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -4846,7 +4846,7 @@ Azure DevOps Project </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure DevOps 项目</h3>
+                                                    <h3>Azure DevOps Projects</h3>
                                                     <p>将任何平台上的任何语言快速部署到 Azure</p>
                                                 </div>
                                             </div>
