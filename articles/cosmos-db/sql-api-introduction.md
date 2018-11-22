@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d1e86630ff9143a75e5b0502a64c7661cc2822c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232375"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161060"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB：SQL API 简介
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232375"
 
 ![Azure SQL API](./media/sql-api-introduction/cosmosdb-sql-api.png) 
 
-使用 SQL API，Azure Cosmos DB 提供了丰富且熟悉的 [SQL 查询功能](sql-api-sql-query.md)，在传输无架构 JSON 数据过程中可持续保持较低的延迟。 本文概述了 Azure Cosmos DB 的 SQL API，以及如何使用它来存储大量的 JSON 数据，以毫秒级的延迟查询这些数据，以及轻松改进结构。 
+使用 SQL API，Azure Cosmos DB 提供了丰富且熟悉的 [SQL 查询功能](how-to-sql-query.md)，在传输无架构 JSON 数据过程中可持续保持较低的延迟。 本文概述了 Azure Cosmos DB 的 SQL API，以及如何使用它来存储大量的 JSON 数据，以毫秒级的延迟查询这些数据，以及轻松改进结构。 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Azure Cosmos DB 提供了哪些功能和主要特性？
 Azure Cosmos DB 通过 SQL API 提供了以下主要功能和优势：
@@ -34,7 +34,7 @@ Azure Cosmos DB 通过 SQL API 提供了以下主要功能和优势：
 
 * **多区域复制：** Azure Cosmos DB 以透明方式将数据复制到与 Azure Cosmos DB 帐户关联的所有区域，使你能够开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。 Azure Cosmos DB 提供具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储。 有关详细信息，请参阅 [使用 Azure Cosmos DB 全局分发数据](distribute-data-globally.md)。
 
-* **使用熟悉的 SQL 语法进行即席查询：** 存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。 Azure Cosmos DB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动编制索引。 这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。 有关详细信息，请参阅[查询 Azure Cosmos DB](sql-api-sql-query.md)。 
+* **使用熟悉的 SQL 语法进行即席查询：** 存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。 Azure Cosmos DB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动编制索引。 这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。 有关详细信息，请参阅[查询 Azure Cosmos DB](how-to-sql-query.md)。 
 * **在数据库中执行 JavaScript：** 使用标准 JavaScript 将应用程序逻辑表示为存储过程、触发器和用户定义函数 (UDF)。 这样，应用程序逻辑可基于数据进行运作，而无需担心应用程序和数据库架构之间的不匹配。 SQL API 支持在数据库引擎内部直接进行 JavaScript 应用程序逻辑的完全事务执行。 对 JavaScript 的深度集成支持在一个 JavaScript 程序中将 INSERT、REPLACE、DELETE 和 SELECT 操作作为独立的事务来执行。 有关详细信息，请参阅 [SQL 服务器端编程](programming.md)。
 
 * **可优化的一致性级别：** 从五个妥善定义的一致性级别中选择，实现一致性与性能之间的最佳平衡。 对于查询和读取操作，Azure Cosmos DB 提供五种不同的一致性级别：强、有限过时、会话、一致前缀和最终。 通过这些细化的定义完好的一致性级别，可以在一致性、可用性和延迟之间实现合理的平衡。 有关详细信息，请参阅[使用一致性级别最大化可用性和性能](consistency-levels.md)。

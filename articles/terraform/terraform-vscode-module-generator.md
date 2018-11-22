@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: v-mavick
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 9ef27166e84192dec81fd8f8da508785342ffefc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288010"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284329"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>使用 Yeoman 在 Azure 中创建 Terraform 基模板
 
@@ -227,7 +227,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 ### <a name="start-a-cloud-shell-session"></a>启动 Cloud Shell 会话
 
-1. 通过 [Azure 门户](https:/portal.azure.com/)、[shell.azure.com](https://shell.azure.com) 或 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)启动 Azure Cloud Shell 会话。
+1. 通过 [Azure 门户](https://portal.azure.com/)、[shell.azure.com](https://shell.azure.com) 或 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)启动 Azure Cloud Shell 会话。
 
 1. 此时会打开“欢迎使用 Azure Cloud Shell”页面。 选择“Bash (Linux)”。 （不支持 Power Shell。）
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412714"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262051"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -178,7 +178,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
      client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在指定半径内搜索邻近的加油站。 然后，响应会解析成 GeoJSON 格式并添加到数据源，后者自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) 属性通过结果的边框设置地图相机视图。 将会添加一个衬距来弥补符号图标的像素尺寸，因为边框是根据坐标计算的。 
+2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在指定半径内搜索邻近的加油站。 然后，响应会解析成 GeoJSON 格式并添加到数据源，后者自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性通过结果的边框设置地图相机视图。 将会添加一个衬距来弥补符号图标的像素尺寸，因为边框是根据坐标计算的。 
  
    ```JavaScript
    //Execute a POI search query then add the results to the map.

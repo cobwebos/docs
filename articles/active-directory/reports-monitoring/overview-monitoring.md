@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 92e200f358098d5516246d057d1cef406750e326
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623190"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264676"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>什么是 Azure Active Directory 监视？ （预览版）
 
@@ -32,6 +32,8 @@ ms.locfileid: "51623190"
 - 一个 Azure 存储帐户。
 - Azure 事件中心，以便与 Splunk 和 Sumologic 实例集成。
 - Azure Log Analytics 工作区，以便在其中分析数据、创建仪表板并针对特定事件发出警报
+
+> [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="diagnostic-settings-configuration"></a>诊断设置配置
 

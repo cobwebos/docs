@@ -3,19 +3,19 @@ title: 教程：创建单页 Web 应用 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
 description: 此单页应用展示了如何使用必应 Web 搜索 API 检索、分析和显示单页应用中的相关搜索结果。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
-ms.author: erhopf
-ms.openlocfilehash: 670f02cbd8e994664e7c4edd75940ff43f9616b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126473"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161916"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -82,7 +82,7 @@ npm install
 
 HTML 表单包含用于映射到[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) 中的查询参数的选项。 下表分类介绍了用户可如何使用示例应用筛选搜索结果：
 
-| 参数 | 说明 |
+| 参数 | Description |
 |-----------|-------------|
 | `query` | 用于输入查询字符串的文本字段。 |
 | `where` | 用于选择市场（位置和语言）的下拉菜单。 |

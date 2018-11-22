@@ -3,19 +3,19 @@ title: 教程：必应实体搜索单页 Web 应用
 titlesuffix: Azure Cognitive Services
 description: 介绍如何在单页 Web 应用程序中使用必应实体搜索 API。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: tutorial
 ms.date: 12/08/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815539"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162001"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 

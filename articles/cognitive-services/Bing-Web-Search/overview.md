@@ -3,19 +3,19 @@ title: 什么是必应 Web 搜索？
 titleSuffix: Azure Cognitive Services
 description: 必应 Web 搜索 API 是一项 RESTful 服务，可以针对用户查询提供即时应答。 搜索结果可以轻松地进行配置，可以包括网页、图像、视频、新闻、翻译等。 结果以 JSON 形式提供，并取决于搜索相关性和必应 Web 搜索订阅。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
-ms.author: erhopf
-ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 738941afadbad318d383a119967e3f98c098a9c1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125232"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160709"
 ---
 # <a name="what-is-bing-web-search"></a>什么是必应 Web 搜索？
 
@@ -29,7 +29,7 @@ ms.locfileid: "46125232"
 
 除了即时应答，必应 Web 搜索还提供其他特性和功能，用于为用户自定义搜索结果。
 
-| 功能 | Description |
+| Feature | Description |
 |---------|-------------|
 | [以实时方式建议搜索词](../bing-autosuggest/get-suggested-search-terms.md) | 改进应用程序体验，方法是在用户键入时通过必应自动建议 API 显示建议的搜索词。 |
 | [通过内容类型筛选和限制结果](filter-answers.md) | 针对网页、图像、视频、安全搜索等使用筛选器和查询参数自定义和优化搜索结果。 |

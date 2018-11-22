@@ -1,3 +1,16 @@
+---
+author: Juliako
+ms.service: media-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: juliako
+ms.openlocfilehash: 5c7686d8501baf17a63a5317f0d136adb6ac7812
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269000"
+---
 使用 [用户之声](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 还可以直接转到以下类别之一：
 
 * [Azure 媒体播放器](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)

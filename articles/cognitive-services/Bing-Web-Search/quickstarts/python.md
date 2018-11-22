@@ -3,19 +3,19 @@ title: 快速入门：使用 Python 执行搜索 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍了如何使用 Python 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 22dc88d2b924587818f7767105872f01f2e43faf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 2f034bd60747282ac9724250ab260e06122def6f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129142"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160988"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入门：使用 Python 调用必应 Web 搜索 API  
 

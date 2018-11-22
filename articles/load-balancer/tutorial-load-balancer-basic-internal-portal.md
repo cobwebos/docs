@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c1e56b7c94c51a00fabdac56dd2d8c3eb621ae0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a5b6ae833fcd340a639c068156940e6b9ad469ca
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42139588"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711984"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>教程：使用 Azure 门户通过基本负载均衡器将内部流量在各台 VM 之间进行负载均衡
 
@@ -102,7 +102,7 @@ ms.locfileid: "42139588"
 
 ## <a name="create-basic-load-balancer-resources"></a>创建基本负载均衡器资源
 
-在此部分，请为后端地址池和运行状况探测配置负载均衡器设置，并指定负载均衡器和 NAT 规则。
+在本部分中，将为后端地址池和运行状况探测配置负载均衡器设置，并指定负载均衡器规则。
 
 
 ### <a name="create-a-backend-address-pool"></a>创建后端地址池

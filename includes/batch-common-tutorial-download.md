@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: batch
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: a8ea55a40f1ee4681b6aec147e02b7bce6f1d7cf
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279447"
+---
 ### <a name="retrieve-output-files"></a>检索输出文件
 
 可以使用 Azure 门户下载 ffmpeg 任务生成的输出 MP3 文件。 

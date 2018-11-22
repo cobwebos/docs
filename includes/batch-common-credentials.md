@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: batch
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 7d90ccf55b10eff4299692b481a25ba4cdf41b8a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279457"
+---
 ## <a name="get-account-credentials"></a>获取帐户凭据
 
 就此示例来说，需为 Batch 帐户和存储帐户提供凭据。 若要获取所需凭据，一种直接的方法是使用 Azure 门户。 （也可使用 Azure API 或命令行工具来获取这些凭据。）
