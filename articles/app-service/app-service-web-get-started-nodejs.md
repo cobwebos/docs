@@ -119,7 +119,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
 
-访问新建的 Web 应用。 将 &lt;app name> 替换为唯一的应用名称。
+访问新建的 Web 应用。 将 `<app name>` 替换为唯一的应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -165,7 +165,7 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 将此新的 ZIP 文件部署到应用服务，使用的步骤与[部署 ZIP 文件](#deploy-zip-file)中的步骤相同。
 
-切换回在[访问应用](#browse-to-the-app)步骤中打开的浏览器窗口，然后刷新页面。
+切换回在"访问应用"步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
