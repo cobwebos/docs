@@ -71,6 +71,8 @@ items:
   items:
   - name: 访问审核日志
     href: active-directory-b2c-reference-audit-logs.md
+  - name: 年龄限制
+    href: basic-age-gating.md
   - name: 配置令牌
     href: active-directory-b2c-token-session-sso.md
   - name: 自定义语言
@@ -123,6 +125,8 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: 跟踪用户行为
+      href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: 用户流
       items:
       - name: 配置用户输入
@@ -157,7 +161,7 @@ items:
           - name: ClaimsTransformations
             href: claimstransformations.md
             items:
-            - name: 布尔
+            - name: Boolean
               href: boolean-transformations.md
             - name: 日期
               href: date-transformations.md
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: 资源所有者密码凭据
     href: configure-ropc.md
-  - name: 设置年龄限制
-    href: basic-age-gating.md
   - name: 设置直接登录
     href: direct-signin.md
   - name: 设置自助密码重置
@@ -274,8 +276,6 @@ items:
     href: b2clogin.md
   - name: 使用 Azure AD 图形 API
     href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: 跟踪用户行为
-    href: active-directory-b2c-custom-guide-eventlogger-appins.md
   - name: Web 应用
     items:
     - name: ASP.NET
@@ -300,6 +300,8 @@ items:
       href: active-directory-b2c-support-create-directory.md
     - name: 扩展应用
       href: active-directory-b2c-reference-extensions-app.md
+    - name: 用户流版本
+      href: user-flow-versions.md
 - name: 资源
   items:
   - name: Azure 路线图
@@ -322,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 276a67a6dc5708f5e4f25796d7d31523db7a7446
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 55fb2bda4013369cecd797cd90b152ad58d2bd6e
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415859"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291383"

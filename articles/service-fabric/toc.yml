@@ -285,22 +285,23 @@ items:
     items:
     - name: 监视概述
       href: service-fabric-diagnostics-overview.md
+    - name: 应用程序监视
+      href: service-fabric-diagnostics-event-generation-app.md
     - name: 群集监视
-      href: service-fabric-diagnostics-event-generation-infra.md
       items:
+      - name: 群集监视概述
+        href: service-fabric-diagnostics-event-generation-infra.md
       - name: Service Fabric 事件
         href: service-fabric-diagnostics-events.md
       - name: EventStore 概述
         href: service-fabric-diagnostics-eventstore.md
       - name: Reliable Services 事件
         href: service-fabric-reliable-services-diagnostics.md
-      - name: Reliable Actors 事件
-        href: service-fabric-reliable-actors-diagnostics.md
       - name: 监视服务远程处理
         href: service-fabric-reliable-serviceremoting-diagnostics.md
-    - name: 应用程序日志记录
-      href: service-fabric-diagnostics-event-generation-app.md
-    - name: 性能指标
+      - name: Reliable Actors 事件
+        href: service-fabric-reliable-actors-diagnostics.md
+    - name: 基础结构监视
       href: service-fabric-diagnostics-event-generation-perf.md
     - name: 运行状况模型概述
       href: service-fabric-health-introduction.md
@@ -642,33 +643,35 @@ items:
       href: service-fabric-connect-to-secure-cluster.md
   - name: 监视和诊断
     items:
+    - name: 诊断常见方案
+      href: service-fabric-diagnostics-common-scenarios.md
     - name: 监视应用程序
       items:
-      - name: 使用 Application Insights 进行分析
-        href: service-fabric-diagnostics-event-analysis-appinsights.md
       - name: 将日志记录添加到应用程序
         href: service-fabric-how-to-diagnostics-log.md
-      - name: 使用 EventFlow 聚合事件
+      - name: 使用 Application Insights 进行分析
+        href: service-fabric-diagnostics-event-analysis-appinsights.md
+      - name: 使用 EventFlow 聚合日志
         href: service-fabric-diagnostics-event-aggregation-eventflow.md
       - name: 监视容器
         href: service-fabric-diagnostics-oms-containers.md
     - name: 监视群集
       items:
+      - name: 配置 Log Analytics 以收集群集事件
+        href: service-fabric-diagnostics-oms-setup.md
+      - name: 使用 Log Analytics 监视群集
+        href: service-fabric-diagnostics-event-analysis-oms.md
       - name: 查询 EventStore API
         href: service-fabric-diagnostics-eventstore-query.md
-      - name: Windows Azure 诊断
+      - name: 自定义 WAD 代理
         href: service-fabric-diagnostics-event-aggregation-wad.md
-      - name: Linux Azure 诊断
+      - name: 自定义 LAD 代理
         href: service-fabric-diagnostics-event-aggregation-lad.md
-      - name: 设置 Log Analytics
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: 使用 Log Anaytics 进行监视
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: 监视基础架构
       items:
-      - name: 使用 Log Analytics 代理监视性能
+      - name: 使用 Log Analytics 代理收集性能计数器
         href: service-fabric-diagnostics-oms-agent.md
-      - name: 通过 WAD 监视性能
+      - name: 使用 WAD 收集性能计数器
         href: service-fabric-diagnostics-perf-wad.md
     - name: 监视运行状况
       items:
@@ -682,8 +685,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: 对本地群集进行故障排除
       href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: 诊断常见方案
-      href: service-fabric-diagnostics-common-scenarios.md
   - name: 最佳做法
     items:
     - name: 生产就绪情况核对清单
@@ -781,9 +782,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 320399b277b7b6aa05b128994f68058455353e7b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853619"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291498"
