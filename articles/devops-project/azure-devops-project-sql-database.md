@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure DevOps 项目部署 ASP.NET 应用和 Azure SQL 数据库 | Azure DevOps Services 教程
-description: 可以通过 DevOps 项目轻松地在 Azure 上开始操作。 可以通过 Azure DevOps 项目轻松地通过几个快速步骤部署 ASP.NET 和 Azure SQL 数据库。
+title: 教程：使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
+description: 通过 DevOps Projects 可以轻松开始使用 Azure。 借助 DevOps Projects，可以通过几个快速步骤部署 ASP.NET 应用和 Azure SQL 数据库代码。
 ms.author: mlearned
 ms.manager: douge
 ms.prod: devops
@@ -9,183 +9,212 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: d9c7c94e344daee5af87ce40ddf4dcb686696ded
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 32f33e4ac66ad456b5ff8807d6a1b5ea5f541fed
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297327"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161391"
 ---
-# <a name="tutorial--deploy-your-aspnet-app-and-azure-sql-database-with-the-azure-devops-project"></a>教程：使用 Azure DevOps 项目部署 ASP.NET 应用和 Azure SQL 数据库
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
 
-Azure DevOps 项目提供简化的体验，既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。  DevOps 项目会自动创建 Azure 资源（例如 Azure SQL 数据库），在 Azure DevOps 中创建和配置一种发布管道（其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建用于监视的 Azure Application Insights 资源。
+Azure DevOps Projects 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。 
 
-你将：
+DevOps Projects 还可以：
+* 自动创建 Azure 资源，例如 Azure SQL 数据库。
+* 在 Azure Pipelines 中创建并配置一个发布管道，其中包括用于 CI 的生成管道。
+* 为 CD 设置发布管道。 
+* 创建用于监视的 Azure Application Insights 资源。
+
+在本教程中，将：
 
 > [!div class="checklist"]
-> * 创建适用于 ASP.NET 应用和 Azure SQL 数据库的 Azure DevOps 项目
-> * 配置 Azure DevOps Services 和 Azure 订阅 
-> * 检查 Azure DevOps Services CI 管道
-> * 检查 Azure DevOps Services CD 管道
-> * 提交对 Azure DevOps Services 所做的更改并将其自动部署到 Azure
-> * 连接到 Azure SQL Server 数据库 
+> * 使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
+> * 配置 Azure DevOps 和 Azure 订阅 
+> * 检查 CI 管道
+> * 检查 CD 管道
+> * 提交对 Azure Repos 所做的更改并将其自动部署到 Azure
+> * 连接到 Azure SQL 数据库 
 > * 清理资源
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 
-## <a name="create-an-azure-devops-project-for-an-aspnet-app-and-azure-sql-database"></a>创建适用于 ASP.NET 应用和 Azure SQL 数据库的 Azure DevOps 项目
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>在 DevOps Projects 中为 ASP.NET 应用和 Azure SQL 数据库创建项目
 
-Azure DevOps 项目在 Azure 中创建 CI/CD 管道。  可以创建**新的 Azure DevOps Services** 组织，也可以使用**现有的组织**。  Azure DevOps 项目也在所选的 **Azure 订阅**中创建 **Azure 资源**，例如 Azure SQL 数据库。
+DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可在所选的 Azure 订阅中创建 Azure 资源，例如 Azure SQL 数据库。
 
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在左侧导航栏中选择“创建资源”图标，然后搜索“DevOps 项目”。  选择“创建”。
+1. 在左窗格中，选择“创建资源”。
 
-    ![启动持续交付](_img/azure-devops-project-github/fullbrowser.png)
+1. 在搜索框中键入 **DevOps Projects**，然后选择“创建”。
 
-1. 选择“.NET”，然后选择“下一步”。
+    ![DevOps Projects 仪表板](_img/azure-devops-project-github/fullbrowser.png)
 
-1. 出现“选择应用程序框架”时，请选择“ASP.NET”。
+1. 依次选择“.NET”、“下一步”。
 
-1. 选择“添加数据库”，然后选择“下一步”。  
+1. 在“选择应用程序框架”下，选择“ASP.NET”。
 
-1. 在前述步骤中选择的应用程序框架规定了此处提供的 Azure 服务部署目标的类型。  选择“**下一步**”。
-
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>配置 Azure DevOps Services 和 Azure 订阅
-
-1. 创建**新的** Azure DevOps Services 组织，或者选择**现有的**组织。  为 Azure DevOps 项目选择一个**名称**。  
-
-1. 选择 **Azure 订阅**。
-
-1. 可以选择“更改”链接，以便查看其他 Azure 配置设置，并确定“数据库服务器登录详细信息”部分的“用户名”。  **存储**此**用户名**，以便在本教程后面的步骤中使用。
- 
-1. 如果已执行上一步骤，请退出 Azure 配置区域，然后选择“完成”。  否则，请直接选择“完成”。
-
-1. 此过程将需要数分钟才能完成。  完成后，Azure DevOps **项目仪表板**会加载到 Azure 门户中。  也可直接从 **Azure 门户**中的“所有资源”直接导航到“Azure DevOps 项目仪表板”。  在仪表板的右侧，选择“浏览”即可查看正在运行的应用程序。
+1. 依次选择“添加数据库”、“下一步”。  
+    在前述步骤中选择的应用程序框架规定了此处可用的 Azure 服务部署目标的类型。 
     
-## <a name="examine-the-azure-devops-services-ci-pipeline"></a>检查 Azure DevOps Services CI 管道
+1. 选择“**下一步**”。
 
-Azure DevOps 项目自动在你的 Azure DevOps Services 组织中配置一个完整的 Azure CI/CD 管道。  可以浏览和自定义此管道。  请执行以下步骤，自行熟悉 Azure DevOps Services 生成管道。
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>配置 Azure DevOps 和 Azure 订阅
 
-1. 导航到“Azure DevOps 项目仪表板”。
+1. 创建新的 Azure DevOps 组织，或选择现有的组织。 
 
-1. 在 **Azure DevOps 项目仪表板** **顶部**选择“生成管道”。  此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps Services 生成管道。
+1. 输入 Azure DevOps 项目的名称。 
 
-1. 将鼠标光标移到“状态”字段旁边的生成管道的右侧。 选择显示的**省略号**。  此操作会打开一个菜单，可以在其中执行多项活动，例如**将新生成排队**、**暂停某个生成**、**编辑生成管道**。
+1. 选择你的 Azure 订阅服务。  
+    （可选）若要查看其他 Azure 配置设置并确定“数据库服务器登录详细信息”部分的用户名，可以选择“更改”。 存储该用户名，以便在本教程的后续步骤中使用。 如果执行此可选步骤，请退出 Azure 配置区域，然后选择“完成”。
+ 
+1. 选择“完成”。  
+    几分钟后，该过程将会完成，DevOps Projects 仪表板将在 Azure 门户中打开。 也可以从 Azure 门户中的“所有资源”直接导航到仪表板。 在右侧，选择“浏览”可查看正在运行的应用程序。
+    
+## <a name="examine-the-ci-pipeline"></a>检查 CI 管道
+
+DevOps Projects 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。 可以浏览和自定义此管道。 若要了解 Azure DevOps 生成管道，请执行以下操作：
+
+1. 在 DevOps Projects 仪表板顶部，选择“生成管道”。  
+    浏览器标签页会显示新项目的生成管道。
+
+1. 指向“状态”字段，然后选择省略号 (...)。  
+    菜单中会显示多个选项，例如，将新生成排队、暂停某个生成，以及编辑生成管道。
 
 1. 选择“编辑”。
 
-1. 在此视图中，请针对生成管道**检查各种任务**。  此生成会执行各种任务，例如从 Azure DevOps Services Git 存储库提取源、还原依赖项、发布用于部署的输出。
+1. 在此窗格中，可以检查生成管道的各种任务。  
+    该生成会执行各种任务，例如，从 Git 存储库提取源、还原依赖项、发布用于部署的输出。
 
-1. 在生成管道的顶部，选择“生成管道名称”。
+1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的**名称**更改为更具说明性的名称。  选择“保存和排队”，然后选择“保存”。
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。
 
-1. 在生成管道名称下，选择“历史记录”。  此时会看到最近针对生成所做的更改的审核线索。  Azure DevOps Services 会记录对生成管道所做的任何更改，并可用于版本比较。
+1. 在生成管道名称下，选择“历史记录”。  
+    此窗格显示最近针对生成所做的更改的审核线索。 Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择“触发器”。  Azure DevOps 项目已自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。  
+    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
 
-1. 选择“保留期”。  可以根据方案指定策略，以便保留或删除特定数目的生成。
+1. 选择“保留期”。  
+    可以根据方案指定策略，以保留或删除特定数目的生成。
 
-## <a name="examine-the-azure-devops-services-cd-pipeline"></a>检查 Azure DevOps Services CD 管道
+## <a name="examine-the-cd-pipeline"></a>检查 CD 管道
 
-Azure DevOps 项目自动创建和配置从 Azure DevOps Services 组织部署到 Azure 订阅所需的步骤。  这些步骤包括配置 Azure 服务连接，以便向 Azure 订阅进行 Azure DevOps Services 身份验证。  此自动化还创建 Azure DevOps Services 发布定义，该发布提供到 Azure 的 CD。  请执行以下步骤，以便详细了解 Azure DevOps Services 发布定义。
+DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure 订阅所要执行的步骤。 这些步骤包括配置 Azure 服务连接，以便在 Azure 订阅中进行 Azure DevOps 身份验证。 自动化还会创建一个 CD 管道，用于提供到 Azure 虚拟机的 CD。 若要详细了解 Azure DevOps CD 管道，请执行以下操作：
 
-1. 选择“生成和发布”，然后选择“发布”。  Azure DevOps 项目创建的 Azure DevOps Services 发布管道可以用于管理到 Azure 的部署。
+1. 依次选择“生成和发布”、“发布”。  
+    DevOps Projects 会创建一个发布管道用于管理到 Azure 的部署。
 
-1. 在浏览器左侧，选择发布管道旁边的**省略号**，然后选择“编辑”。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。  
+    发布管道包含一个*管道*，用于定义发布过程。
 
-1. 发布管道包含一个**管道**，用于定义发布过程。  在“项目”下选择“删除”。  在前述步骤中检查过的生成管道生成用于项目的输出。 
+1. 在“项目”下选择“删除”。  
+    在前述步骤中检查过的生成管道将生成用于项目的输出。 
 
-1. 在“删除”图标右侧，选择“持续部署触发器”**图标**（显示为闪电）。此发布管道有一个启用的 CD 触发器。  每次有新的生成项目可用时，此触发器就会启动一个部署。  也可选择禁用此触发器，这样一来，部署就需要手动执行。 
+1. 在“删除”图标的右侧，选择“持续部署触发器”。  
+    此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
 
-1. Azure DevOps 项目已设置一个随机的 SQL 密码并将该密码用于发布管道。  在浏览器左侧选择“变量”。 
+    DevOps Projects 会设置一个随机 SQL 密码并将它用于发布管道。
+    
+1. 在左侧选择“变量”。 
 
-1. **只有在已更改 SQL Server 密码的情况下，才执行此步骤。**  有一个“密码”变量。  在“值”文本框的右侧选择“挂锁”图标。  **输入**新密码，然后选择“保存”。
+  > [!NOTE]
+  > 仅当更改了 SQL Server 密码时，才执行以下步骤。 有一个 password 变量。
+  
+1. 在“值”框的旁边选择挂锁图标，输入新密码，然后选择“保存”。
 
-1. 在浏览器左侧选择“任务”，然后选择你的**环境**。  
+1. 在左侧选择“任务”，然后选择你的环境。  
+    任务是部署过程执行的活动，已按阶段分组。 此发布管道只有一个阶段，此阶段包含“Azure 应用服务部署”和“Azure SQL 数据库部署”任务。
 
-1. 这些任务是部署过程执行的活动，按**阶段**分组。  此发布定义只有一个阶段。  此阶段包含“Azure 应用服务部署”和“Azure SQL 数据库部署”任务。
+1. 选择“执行 Azure SQL”任务，并检查用于 SQL 部署的各个属性。  
+    在“部署包”下，该任务使用 *SQL DACPAC* 文件。
 
-1. 选择“执行 Azure SQL”任务，并检查用于 SQL 部署的各种属性。  请注意，在“部署包”下，该任务使用 **SQL DACPAC 文件**。
+1. 在右侧选择“查看发布”，以显示发布历史记录。
 
-1. 在浏览器右侧选择“查看发布”。  此视图显示发布历史记录。
+1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  
+    可以浏览多个菜单，例如发布摘要、关联的工作项和测试。
 
-1. 选择某个发布旁边的**省略号**，然后选择“打开”。  可以在此视图中浏览多个菜单，例如**发布摘要**、**关联的工作项**、**测试**。
+1. 选择“提交”。  
+    此视图显示与此部署关联的代码提交。 请对发布进行比较，查看不同部署之间的提交差异。
 
-1. 选择“提交”。  此视图显示与特定部署相关联的代码提交。 可以对发布进行比较，查看不同部署之间的提交差异。
+1. 选择“日志”。  
+    日志包含有关部署过程的有用信息。 可以在部署期间和之后查看日志。
 
-1. 选择“日志”。  日志包含有关部署过程的有用信息。  日志可以在部署过程中以及部署以后查看。
-
-## <a name="commit-changes-to-azure-devops-services-and-automatically-deploy-to-azure"></a>提交对 Azure DevOps Services 所做的更改并将其自动部署到 Azure 
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>提交对 Azure Repos 所做的更改并将其自动部署到 Azure 
 
  > [!NOTE]
- > 下面的步骤通过简单的文本更改来测试 CI/CD 管道。  可以选择对表进行 SQL Server 架构更改，以便测试 SQL 部署过程。
+ > 以下过程通过进行简单的文本更改来测试 CI/CD 管道。 若要测试 SQL 部署过程，可以选择性地对表进行 SQL Server 架构更改。
 
-现在可以与应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。  每次对 Azure DevOps Services Git 存储库进行更改都会在 Azure DevOps Services 中启动一个生成，并且 Azure DevOps Services CD 管道将执行到 Azure 的部署。  请执行以下步骤，或者使用其他方法提交对存储库所做的更改。  代码更改会启动 CI/CD 过程，并自动将新更改部署到 Azure。
+现在，可以使用可将最新工作部署到网站的 CI/CD 过程，与某个团队展开应用协作。 每次对 Git 存储库进行更改都会在 Azure DevOps 中启动一个生成，CD 管道可以执行到 Azure 的部署。 遵循本部分所述的过程，或使用其他方法提交对存储库所做的更改。 代码更改会启动 CI/CD 过程，并自动将更改部署到 Azure。
 
-1. 在 Azure DevOps Services 菜单中选择“代码”，并导航到你的存储库。
+1. 在左窗格中选择“代码”，然后转到你的存储库。
 
-1. 导航到 **SampleWebApplication\Views\Home** 目录，选择 **Index.cshtml** 文件旁边的**省略号**，然后选择“编辑”。
+1. 转到 *SampleWebApplication\Views\Home* 目录，选择 *Index.cshtml* 文件旁边的省略号 (...)，然后选择“编辑”。 
 
-1. 对文件进行更改，例如更改某个 **div 标记**中的某些文本。  在右上角选择“提交”。  再次选择“提交”，推送所做的更改。 
+1. 对该文件进行更改，例如，在某个 div 标记内部添加一些文本。 
 
-1. 片刻之后，系统会**在 Azure DevOps Services 中启动生成**，然后执行发布以部署所做的更改。  可以使用 DevOps Services 组织通过 Azure DevOps 项目仪表板或浏览器监视**生成状态**。
+1. 在右上角选择“提交”，然后再次选择“提交”以推送更改。  
+    片刻之后，某个生成会在 Azure DevOps 中启动，并且某个发布将会执行以部署更改。 使用 Azure DevOps 组织通过 DevOps Projects 仪表板或浏览器监视生成状态。
 
-1. 发布完成以后，请在浏览器中**刷新应用程序**，验证是否能够看到所做的更改。
+1. 发布完成后，刷新应用程序以验证更改。
 
-## <a name="connect-to-the-azure-sql-server-database"></a>连接到 Azure SQL Server 数据库
+## <a name="connect-to-the-azure-sql-database"></a>连接到 Azure SQL 数据库
 
-需要适当的权限才能连接到 Azure SQL 数据库。
+需要相应的权限才能连接到 Azure SQL 数据库。
 
-1. 在 Azure DevOps 项目仪表板中选择“SQL 数据库”，以便导航到 SQL DB 的管理页。
+1. 在 DevOps Projects 仪表板中选择“SQL 数据库”，转到 SQL 数据库的管理页。
    
-1. 选择“设置服务器防火墙”，然后选择“+ 添加客户端 IP”。  
+1. 依次选择“设置服务器防火墙”、“添加客户端 IP”。 
 
-1. 选择“保存”。  客户端 IP 现在可以访问 **SQL Server Azure 资源**。
+1. 选择“保存”。  
+    现在，该客户端 IP 可以访问 SQL Server Azure 资源。
 
-1. 导航回“SQL 数据库”边栏选项卡。 
+1. 返回到“SQL 数据库”窗格。 
 
-1. 在屏幕右侧选择“服务器名称”，导航到 **SQL Server** 的配置页。
+1. 在右侧选择服务器名称，导航到 **SQL Server** 的配置页。
 
-1. 选择“重置密码”，输入“SQL Server 管理员登录名”的密码，然后选择“保存”。  **保留**此密码，以便在本教程后面的步骤中使用。
+1. 选择“重置密码”，输入 SQL Server 管理员登录名的密码，然后选择“保存”。  
+    请务必保存此密码，因为本教程稍后需要用到。
 
-1. 现在可以选择使用客户端工具（例如 **SQL Server Management Studio** 或 **Visual Studio**）连接到 Azure SQL Server 和数据库。  使用“服务器名称”属性进行连接。
+    现在可以选择性地使用客户端工具（例如 SQL Server Management Studio 或 Visual Studio）连接到 SQL Server 和 Azure SQL 数据库。 使用“服务器名称”属性进行连接。
 
-   如果在一开始配置 DevOps 项目时没有更改 DB 用户名，则用户名为电子邮件地址的本地部分。  例如，如果电子邮件地址为 johndoe@microsoft.com，则用户名为 johndoe。
+    如果最初在 DevOps Projects 中配置项目时未更改数据库用户名，则用户名为电子邮件地址的本地部分。 例如，如果电子邮件地址为 *johndoe@microsoft.com*，则用户名为 *johndoe*。
 
  > [!NOTE]
- > 如果更改 SQL 登录名的密码，则需在 Azure DevOps Services 发布管道变量中更改该密码，如**检查 Azure DevOps Services CD 管道**部分中所述
+ > 如果更改了 SQL 登录名的密码，则必须根据“检查 CD 管道”部分中所述，在发布管道变量中更改密码。
 
 ## <a name="clean-up-resources"></a>清理资源
 
- > [!NOTE]
- > 以下步骤会永久删除资源。  在使用此功能之前，必须仔细阅读提示。
+测试后，可以清理资源，以避免产生费用。 不再需要本教程中创建的 Azure SQL 数据库和相关资源时，可将其删除。 为此，可以使用 DevOps Projects 仪表板上的“删除”功能。
 
-若在进行测试，可以清除资源，避免产生账单费用。  不再需要本教程中创建的 Azure SQL 数据库和相关的资源时，可以在 Azure DevOps 项目仪表板中使用“删除”功能将其删除。  **请小心操作**，因为删除功能会破坏 Azure DevOps 项目在 Azure 和 Azure DevOps Services 中创建的数据，而这些数据一旦删除就无法检索。
+> [!IMPORTANT]
+> 以下过程会永久删除资源。 “删除”功能会销毁 DevOps Projects 中的项目在 Azure 和 Azure DevOps 中创建的数据，删除后无法检索这些数据。 请只在仔细阅读提示后才使用此过程。
 
-1. 从 **Azure 门户**导航到 **Azure DevOps 项目**。
-2. 在仪表板的**右上角**，选择“删除”。  阅读提示以后，请选择“是”以**永久删除**这些资源。
+1. 在 Azure 门户中，转到 DevOps Projects 仪表板。
+2. 在右上角选择“删除”。 
+3. 出现提示时，请选择“是”以永久删除这些资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-可以选择根据所在团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他项目的模板。  你已了解如何：
+可以选择根据所在团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他管道的模板。 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 创建适用于 ASP.NET 应用和 Azure SQL 数据库的 Azure DevOps 项目
-> * 配置 Azure DevOps Services 和 Azure 订阅 
-> * 检查 Azure DevOps Services CI 管道
-> * 检查 Azure DevOps Services CD 管道
-> * 提交对 Azure DevOps Services 所做的更改并将其自动部署到 Azure
-> * 连接到 Azure SQL Server 数据库 
+> * 使用 Azure DevOps Projects 部署 ASP.NET 应用和 Azure SQL 数据库代码
+> * 配置 Azure DevOps 和 Azure 订阅 
+> * 检查 CI 管道
+> * 检查 CD 管道
+> * 提交对 Azure Repos 所做的更改并将其自动部署到 Azure
+> * 连接到 Azure SQL 数据库 
 > * 清理资源
 
-若要详细了解 Azure 管道，请参阅以下教程：
+若要详细了解 CI/CD 管道，请参阅：
 
 > [!div class="nextstepaction"]
-> [自定义 CD 过程](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [定义多阶段持续部署 (CD) 管道](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>视频
 
