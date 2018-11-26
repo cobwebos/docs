@@ -1,6 +1,6 @@
 ---
-title: Azure Blockchain Workbench 中的智能合同集成模式
-description: Azure Blockchain Workbench 中的智能合同集成模式概述。
+title: Azure Blockchain Workbench 中的智能合约集成模式
+description: Azure Blockchain Workbench 中的智能合约集成模式概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -17,15 +17,15 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 10/03/2018
 ms.locfileid: "48240566"
 ---
-# <a name="smart-contract-integration-patterns"></a>智能合同集成模式
+# <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 
-智能合同通常表示需要与外部系统和设备集成的业务工作流。
+智能合约通常表示需要与外部系统和设备集成的业务工作流。
 
-这些工作流的要求包括需要对分布式账本（包含来自外部系统、服务或设备的数据）发起事务。 它们还需要让外部系统对源自分布式账本中的智能合同的事件做出反应。
+这些工作流的要求包括需要对分布式账本（包含来自外部系统、服务或设备的数据）发起事务。 它们还需要让外部系统对源自分布式账本中的智能合约的事件做出反应。
 
-使用 REST API 和消息传递集成能够将外部系统中的事务发送到 Azure Blockchain Workbench 应用程序中包含的智能合同，以及根据应用程序中发生的更改将事件通知发送到外部系统。
+使用 REST API 和消息传递集成能够将外部系统中的事务发送到 Azure Blockchain Workbench 应用程序中包含的智能合约，以及根据应用程序中发生的更改将事件通知发送到外部系统。
 
-针对数据集成方案，Azure Blockchain Workbench 包含一组数据库视图，这些视图合并了区块链中的事务数据以及有关应用程序和智能合同的元数据的组合。
+针对数据集成方案，Azure Blockchain Workbench 包含一组数据库视图，这些视图合并了区块链中的事务数据以及有关应用程序和智能合约的元数据的组合。
 
 此外，在某些情况下（例如与供应链或媒体相关的情况），可能还需要集成文档。 尽管 Azure Blockchain Workbench 不提供 API 调用用于直接处理文档，但可将文档合并到 Azure Blockchain 应用程序中。 本部分也会介绍该模式。
 
