@@ -3,18 +3,18 @@ title: 使用 Azure Maps 查找多条路线 | Microsoft Docs
 description: 使用 Azure Maps 查找不同出行模式的路线
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/29/2018
+ms.date: 11/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 67b68489f2e06b9149f842f293a769fa7f688be0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412697"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705271"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>使用 Azure Maps 查找不同出行模式的路线
 
@@ -291,12 +291,7 @@ ms.locfileid: "50412697"
 
 [实时查看此处的示例](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
-若要了解有关 Azure Maps 的覆盖范围和功能的更多信息，请参阅：
+下一教程演示使用 Azure Maps 创建简单商店定位器的过程。
 
 > [!div class="nextstepaction"]
-> [缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)
-
-若要查看更多代码示例和交互式编码体验，请参阅：
-
-> [!div class="nextstepaction"]
-> [如何使用地图控件](how-to-use-map-control.md)
+> [使用 Azure Maps 创建商店定位器](./tutorial-create-store-locator.md)
