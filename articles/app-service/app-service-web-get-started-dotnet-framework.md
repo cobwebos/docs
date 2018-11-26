@@ -24,7 +24,7 @@ ms.locfileid: "44053772"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个部署了 Web 应用程序的 Azure Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "44053772"
 
 ![“新建 ASP.NET 项目”对话框](./media/app-service-web-get-started-dotnet-framework/select-mvc-template.png)
 
-在菜单中，选择“调试>非调试启动”来在本地运行 Web 应用。
+在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "44053772"
 
 在[创建和发布步骤](#create-and-publish-the-web-app)中指定的应用名称用作 `http://<app_name>.azurewebsites.net` 格式的 URL 前缀。
 
-恭喜，你的 ASP.NET Web 应用已在 Azure 应用服务中正式运行！
+恭喜，你的 ASP.NET Web 应用已在 Azure 应用服务中实时运行！
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
@@ -152,11 +152,11 @@ ms.locfileid: "44053772"
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
-这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+此时将看到 Web 应用的概述页。在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
-左侧菜单提供了用于配置应用的不同页面。
+左侧菜单提供用于配置应用的不同页面。
 
 ## <a name="video"></a>视频
 
