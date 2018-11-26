@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/31/2018
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 3550d9e63288ad0cfb45dc6267f20762d3068b6a
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: dd304bd4a53094605149483c0996cd5f12040a84
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219386"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713174"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
 
@@ -21,13 +21,12 @@ ms.locfileid: "51219386"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程： 
-* 安装 [Python](https://www.python.org/downloads/)。
-* 下载和安装[适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)。 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+请确保已安装下述额外的必备组件：
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+* [Python](https://www.python.org/downloads/)
+* [用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 本快速入门中的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git)是基本的 Python 应用程序。  

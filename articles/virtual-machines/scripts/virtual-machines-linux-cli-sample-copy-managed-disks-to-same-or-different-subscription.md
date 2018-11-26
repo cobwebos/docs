@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 65d0d6848534326bb3ef43f1bd8bc700971603e6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: a514359edcf21d5882b2361d10c06214d8e39502
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636792"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274860"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘复制（移动）到相同或不同订阅
 
-此脚本会将托管磁盘复制到相同订阅或相同区域中的不同订阅。 必须是两个订阅的全局 AAD 租户管理员才能运行此脚本。
+此脚本会将托管磁盘复制到相同订阅或相同区域中的不同订阅。 仅当订阅属于同一 AAD 租户时，复制才适用。
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

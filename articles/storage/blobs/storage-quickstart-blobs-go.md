@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/23/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038318"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711151"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
 
@@ -21,17 +21,20 @@ ms.locfileid: "51038318"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程： 
-* 安装 [Go 1.8 或更高版本](https://golang.org/dl/)
-* 使用 `go get -u github.com/Azure/azure-storage-blob-go/azblob` 下载和安装[用于 Go 的 Azure 存储 Blob SDK](https://github.com/azure/azure-storage-blob-go/)。 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE]
-> 请务必在 URL 中将 Azure 大写。 否则，在使用该 SDK 时，可能导致大小写相关的导入问题。 此外，还需要在导入语句中将 Azure 大写。
+请确保已安装下述额外的必备组件：
+ 
+* [Go 1.8 或更高版本](https://golang.org/dl/)
+* 使用以下命令安装[用于 Go 的 Azure 存储 Blob SDK](https://github.com/azure/azure-storage-blob-go/)：
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    ```
+    go get -u github.com/Azure/azure-storage-blob-go/azblob
+    ``` 
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
-
+    > [!NOTE]
+    > 确保将 URL 中的 `Azure` 大写，以免在使用该 SDK 时出现与大小写相关的导入问题。 另请在导入语句中将 `Azure` 大写。
+    
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git)是基本的 Go 应用程序。  
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 717a0234f0155229597c6fc4fe70a7868a536975
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242284"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160727"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 �
 
 * 构建快速响应的任务关键型应用程序
     * Azure Cosmos DB 向其客户保证了 99% 的情况下端到端的低延迟。 
-    * 对于典型的 1KB 项，Cosmos DB 保证，在 99% 的情况下，同一 Azure 区域内读取操作的端到端延迟和已索引写入操作的端到端延迟分别低于 10 毫秒和 15 毫秒。 中间延迟明显更低（低于 5 毫秒）。
+    * 对于典型的 1KB 项，Cosmos DB 保证，在 99% 的情况下，同一 Azure 区域内读取操作的端到端延迟和已索引写入操作的端到端延迟分别低于 10 毫秒和 10 毫秒。 中间延迟明显更低（低于 5 毫秒）。
 
 * 确保提供“始终可用”的可用性
     * 为所有单区域数据库帐户提供 99.99% 的可用性 SLA，为所有多区域数据库帐户提供 99.999% 的读取可用性。
@@ -79,9 +79,9 @@ Azure Cosmos DB 提供传统关系数据库和非关系数据库的最佳功能�
 | --- | --- | --- | --- |
 | 全球分布 | 否 | 否 | 是的，可以在 30 多个区域通过多宿主 API 实现统包式分发|
 | 横向缩放 | 否 | 是 | 是的，可以独立缩放存储和吞吐量 | 
-| 延迟保证 | 否 | 是 | 是的，99% 的情况下可以确保读取延迟低于 10 毫秒，写入延迟低于 15 毫秒 | 
+| 延迟保证 | 否 | 是 | 是的，99% 的情况下可以确保读取延迟低于 10 毫秒，写入延迟低于 10 毫秒 | 
 | 高可用性 | 否 | 是 | 是的，Azure Cosmos DB 始终可用，实施定义完善的 PACELC 权衡，并提供自动和手动故障转移选项|
-| 数据模型 + API | 关系 + SQL | 多模型 + OSS API | 多模型 + SQL + OSS API（即将推出更多） |
+| 数据模型 + API | 关系 + SQL | 多模型 + OSS API | 多模型 + SQL + OSS API |
 | SLA | 是 | 否 | 是的，综合性 SLA 的内容涵盖延迟、吞吐量、一致性和可用性 |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>受益于 Azure Cosmos DB 的解决方案

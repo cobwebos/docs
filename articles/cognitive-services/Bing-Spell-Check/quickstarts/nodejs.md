@@ -3,19 +3,19 @@ title: 快速入门：必应拼写检查 API、Node.js
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 2d9354d82b86cc3a33a57dc4745c63e688e7959d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: e58bd5540c4bb479992155e97653744c003fb33d
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800785"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164976"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-nodejs"></a>通过 Node.js 使用必应拼写检查 API 快速入门 
 

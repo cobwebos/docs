@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245063"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712256"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>快速入门：使用 Azure 门户部署 Azure Data Box 磁盘（预览版）
 
@@ -67,7 +67,7 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 
     1. 在 Azure 门户中，转到“常规”>“设备详细信息”并获取支持密钥。
     2. 在计算机上下载并提取用于将数据复制到磁盘的特定于操作系统的 Data Box Disk 解锁工具。 
-    3. 运行 Data Box Disk 解锁工具并提供密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 有关如何解锁磁盘的更多信息，请转至[在 Windows 客户端上解锁磁盘]()或[在 Linux 客户端上解锁磁盘]()。
+    3. 运行 Data Box Disk 解锁工具并提供密钥。 每次重新插入磁盘时，请再次运行解锁工具并提供密钥。 **请勿使用 BitLocker 对话框或 BitLocker 密钥来解锁磁盘。** 有关如何解锁磁盘的更多信息，请访问[在 Windows 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[在 Linux 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
     4. 工具会显示分配给磁盘的驱动器号。 请记下磁盘驱动器号， 后续步骤中需要用到。
 
 ## <a name="copy-data-and-validate"></a>复制数据并进行验证
@@ -85,7 +85,6 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 2. （可选）复制完成后，建议运行 *DataBoxDiskImport* 文件夹中提供的 `DataBoxDiskValidation.cmd` 来生成校验和，用于验证。 根据具体的数据大小，此步骤可能需要一段时间。 
 3. 拔下驱动器。 
 
-
 ## <a name="ship-to-azure"></a>寄送到 Azure
 
 此步骤大约需要 5-7 分钟才能完成。
@@ -94,7 +93,6 @@ Data Box 磁盘通过 UPS Express Box 寄送。 请打开包装，检查其中�
 2. 在寄件处投递密封的包裹。  
 
 Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上更新订单状态。
-
 
 ## <a name="verify-your-data"></a>验证数据
 
@@ -126,5 +124,3 @@ Data Box 磁盘服务将发送一封电子邮件通知，并在 Azure 门户上�
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户管理 Data Box 磁盘](data-box-portal-ui-admin.md)
-
-

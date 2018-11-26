@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626523"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975766"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "51626523"
 
 2. 通过 Azure 门户完成的对文本翻译 API 的订阅。 需要文本翻译 API 订阅密钥才能与自定义翻译中的工作区相关联。 请参阅[如何注册文本翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
 
-3. 上面两项都有了以后，请登录到[自定义翻译](https://portal.customtranslator.azure.ai)门户。 进入自定义翻译门户以后，请导航到“设置”页，可以在其中将 Microsoft 文本翻译 API 订阅密钥与工作区相关联。 
+3. 上面两项都有了以后，请登录到[自定义翻译](https://portal.customtranslator.azure.ai)门户。 进入自定义翻译门户以后，请导航到“设置”页，可以在其中将 Microsoft 文本翻译 API 订阅密钥与工作区相关联。
 
 ## <a name="create-a-project"></a>创建一个项目
 

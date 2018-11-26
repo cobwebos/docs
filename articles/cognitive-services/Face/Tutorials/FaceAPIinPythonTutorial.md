@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683995"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853143"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>快速入门：创建一个用于检测和定格图像中人脸的 Python 脚本
 
@@ -35,7 +35,7 @@ ms.locfileid: "51683995"
 
 ## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
 
-创建新 Python 脚本 _FaceQuickstart.py_。 添加以下代码。 这是人脸检测的核心功能。 需将 `<Subscription Key>` 替换为密钥的值。 可能还需更改 `BASE_URL` 的值，以便使用密钥的正确区域标识符。 免费试用订阅密钥在 **westus** 区域中生成。 （可选）将 `img_url` 设置为要使用的图像的 URL。
+创建新 Python 脚本 _FaceQuickstart.py_。 添加以下代码。 这是人脸检测的核心功能。 需将 `<Subscription Key>` 替换为密钥的值。 可能还需更改 `BASE_URL` 的值，以便使用密钥的正确区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 免费试用订阅密钥在 **westus** 区域中生成。 （可选）将 `img_url` 设置为要使用的图像的 URL。
 
 此脚本会通过调用 **cognitive_face.face.detect** 方法来检测人脸，该方法可包装[检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API 并返回人脸的列表。
 

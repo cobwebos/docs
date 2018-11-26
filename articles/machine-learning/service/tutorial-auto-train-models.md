@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.date: 11/21/2018
+ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426883"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284738"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务中的自动化机器学习训练分类模型
 
@@ -34,7 +34,10 @@ ms.locfileid: "49426883"
 > * 查看训练结果
 > * 注册最佳模型
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.79 进行测试
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
@@ -214,7 +217,7 @@ local_run = experiment.submit(Automl_config, show_output=True)
 使用 Jupyter Notebook 小组件可以看到一个包含所有结果的图形和表。
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 

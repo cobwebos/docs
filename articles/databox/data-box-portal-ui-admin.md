@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b98653ea0896e617a666147d243f24cb55483a28
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091670"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974983"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>使用 Azure 门户管理 Data Box 磁盘（预览版）
 
@@ -132,7 +132,7 @@ ms.locfileid: "49091670"
 |已提货     |已提取退件。 <br> 在 Azure 数据中心收到货物后，会自动将数据上传到 Azure。         |
 |Received     | Azure 数据中心已收到磁盘。 数据复制即将开始。        |
 |已复制数据     |正在复制数据。<br> 请等待数据复制完成。         |
-|已完成       |已成功完成订单。<br> 从服务器中删除本地数据之前，请验证数据是否在 Azure 中。         |
+|已完成       |已成功完成订单。<br> 从服务器中删除本地数据之前，请验证数据是否已在 Azure 中。         |
 |已完成但出错| 数据复制已完成，但出现错误。 <br> 请使用“概况”中提供的路径查看复制日志。 有关详细信息，请转到[下载诊断日志](data-box-disk-troubleshoot.md#download-diagnostic-logs)。   |
 |已取消            |订单已取消。 <br> 你取消了订单，或者由于遇到错误，服务取消了订单。     |
 

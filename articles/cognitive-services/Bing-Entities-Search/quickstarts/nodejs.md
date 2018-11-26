@@ -3,23 +3,23 @@ title: 快速入门：必应实体搜索 API、Node.js
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应实体搜索 API。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: b14bcece77b17e79ec9e39bbb6bb64ae34abd3a0
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 03ed9948935aab7348fe66cc43b059107ab96f79
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815132"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160896"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>通过 Node.js 使用必应实体搜索 API 快速入门
 
-本文展示了如何将[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 Node.JS 配合使用。
+本文展示了如何将[必应实体搜索](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API 与 Node.JS 配合使用。
 
 ## <a name="prerequisites"></a>先决条件
 

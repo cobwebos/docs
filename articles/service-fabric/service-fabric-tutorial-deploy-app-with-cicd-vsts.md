@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2017
+ms.date: 11/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380142"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853722"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -94,23 +94,23 @@ Azure DevOps 发布管道描述了将应用程序程序包部署到群集的工�
 
 打开 Web 浏览器并导航到你的新项目：[https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)。
 
-依次选择“生成和发布”选项卡、“生成”，然后单击“新建管道”。
+选择“管道”选项卡，接着选择“生成”，然后单击“新建管道”。
 
 ![新建管道][new-pipeline]
 
-选择 **Azure DevOps Git** 作为源，选择“Voting”项目、“Voting”存储库和**主**默认分支或手动和计划的生成。  然后单击“继续”。
+选择 **Azure Repos Git** 作为源，选择“Voting”团队项目、“Voting”存储库和 **master** 默认分库作为手动的和计划的生成。  然后单击“继续”。
+
+![选择存储库][select-repo]
 
 在“选择模板”中，选择“Azure Service Fabric 应用程序”模板，然后单击“应用”。
 
 ![选择“生成模板”][select-build-template]
 
-在“任务”中，输入“Hosted VS2017”作为代理队列。
+在“任务”中，输入“Hosted VS2017”作为代理池。
 
 ![选择“任务”][save-and-queue]
 
-在“触发器”下，选中“启用持续集成”来启用持续集成。 在**分支筛选器**中，单击“+ 添加”，**分支规范**将默认为“主”。 选择“保存并排队”以手动启动生成。
-
-在“保存生成管道和队列”对话框中，单击“保存并排队”。
+在“触发器”下，选中“启用持续集成”来启用持续集成。 在“分库筛选器”中，，“分库规格”默认为“master”。 选择“保存并排队”以手动启动生成。
 
 ![选择“触发器”][save-and-queue2]
 
@@ -118,7 +118,7 @@ Azure DevOps 发布管道描述了将应用程序程序包部署到群集的工�
 
 ### <a name="create-a-release-pipeline"></a>创建发布管道
 
-依次选择“生成和发布”选项卡、“发布”、“+ 新建管道”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
+依次选择“管道”选项卡、“发布”、“+ 新建管道”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
 
 ![选择发布模板][select-release-template]
 
@@ -198,6 +198,7 @@ Azure DevOps 发布管道描述了将应用程序程序包部署到群集的工�
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
 [new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
+[select-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectRepo.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

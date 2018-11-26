@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: ba42cc7ede2ab790e5f50f3db525e48ebd21f522
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577956"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852497"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入门：使用人脸 REST API 和 Node.js 检测图像中的人脸
 
@@ -81,7 +81,7 @@ request.post(options, (error, response, body) => {
 
 ### <a name="face-endpoint-url"></a>人脸终结点 URL
 
-URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` 指示要查询的 Azure 人脸终结点。 需更改此 URL 的第一部分，使之与订阅密钥的相应区域匹配（除非该部分本来就是正确的）。
+URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` 指示要查询的 Azure 人脸终结点。 可能需更改此 URL 的第一部分，使之与订阅密钥的相应区域匹配（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
 
 ### <a name="url-query-string"></a>URL 查询字符串
 

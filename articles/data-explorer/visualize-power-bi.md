@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393706"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854095"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 
@@ -36,9 +36,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
 * [测试群集和数据库](create-cluster-database-portal.md)
 
-* [StormEvents 示例数据](ingest-sample-data.md)
+* [StormEvents 示例数据](ingest-sample-data.md)。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（单击“免费下载”）
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)（选择“免费下载”）
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>在 Azure 数据资源管理器中呈现视觉对象
 
@@ -82,17 +82,17 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
 现在，连接到 Power BI Desktop 中的 Azure 数据资源管理器。
 
-1. 在 Power BI Desktop 中，选择“获取数据”，然后选择“更多”。
+1. 在 Power BI Desktop 的“主页”选项卡上选择“获取数据”，然后选择“更多”。
 
     ![获取数据](media/visualize-power-bi/get-data-more.png)
 
-1. 搜索“Kusto”，选择“Azure Kusto (beta 版本)”，然后选择“连接”。
+1. 搜索“Azure 数据资源管理器”，选择“Azure 数据资源管理器(Beta)”，然后选择“连接”。
 
     ![搜索和获取数据](media/visualize-power-bi/search-get-data.png)
 
 1. 在“预览连接器”屏幕中，选择“继续”。
 
-1. 在“Kusto”屏幕上，输入测试群集和数据库的名称。 群集应采用 `https://<ClusterName>.<Region>.kusto.windows.net` 格式。 输入“StormEvents”作为表的名称。 将保留所有其他选项的默认值，然后选择“确定”。
+1. 在下一屏幕上，输入测试群集和数据库的名称。 群集应采用 `https://<ClusterName>.<Region>.kusto.windows.net` 格式。 输入“StormEvents”作为表的名称。 将保留所有其他选项的默认值，然后选择“确定”。
 
     ![群集、数据库、表选项](media/visualize-power-bi/cluster-database-table.png)
 

@@ -16,17 +16,18 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e5377078010e899c41b27ef0ea5248ff4a09df8e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 545ec1d4f5cd817b1fa02a135d305b997c9945bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301779"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705389"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
 ## <a name="introduction"></a>介绍
 Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间的同步。
-当前， [德国 Microsoft 云](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) 中的许多方案必须由运营商完成。 使用“德国 Microsoft 云”时，必须注意以下几点：
+当前， [德国 Microsoft 云](https://azure.microsoft.com/global-infrastructure/germany/
+) 中的许多方案必须由运营商完成。 使用“德国 Microsoft 云”时，必须注意以下几点：
 
 * 必须在代理服务器上打开以下 URL，才可以成功执行同步：
   
@@ -40,13 +41,13 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 可从门户内的 Azure AD Connect 边栏选项卡下载 Azure AD Connect。  使用下面的说明找到 Azure AD Connect 边栏选项卡。
 
 ### <a name="the-azure-ad-connect-blade"></a>Azure AD Connect 边栏选项卡
-登录 Azure 门户后，执行以下操作：
+登录到 Azure 门户以后，请执行以下操作：
 
 1. 转到“浏览”
 2. 选择“Azure Active Directory”
 3. 然后选择“Azure AD Connect”
 
-应该看到以下内容：
+会看到以下详细信息：
 
 ![Azure AD Connect 边栏选项卡](./media/reference-connect-germany/germany1.png)
 
@@ -62,5 +63,5 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 若要安装 Azure AD Connect，可使用 [此处](how-to-connect-install-roadmap.md)的文档。
 
 ## <a name="advanced-features-and-additional-information"></a>高级功能和其他信息
-有关自定义设置或高级配置的其他信息和指南，请从 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)入手。  此页提供了有关其他指南的信息以及链接。
+有关自定义设置或高级配置的其他信息，请访问[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。 此页提供了有关其他指南的信息以及链接。
 

@@ -1,24 +1,19 @@
 ---
-title: 流式传输到用于 Apache Kafka 的 Azure 事件中心 | Microsoft Docs
+title: 流式传输到用于 Apache Kafka 的 Azure 事件中心
 description: 使用 Kafka 协议和 API 流式传输到事件中心。
 services: event-hubs
-documentationcenter: ''
 author: basilhariri
-manager: timlt
+ms.author: bahariri
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/01/2018
-ms.author: bahariri
-ms.openlocfilehash: 18224c3ebf3b5dd9920dcc4b4868ee8bb42e5f91
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 748ed7dde98d81de6e1d2661c6ce50d10357ba3d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418783"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975305"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>流式传输到用于 Apache Kafka 的事件中心
 本快速入门演示如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与已启用 Kafka 的事件中心通信。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
@@ -47,7 +42,7 @@ ms.locfileid: "50418783"
  
 3. 提供唯一名称并在命名空间上启用 Kafka。 单击“创建”。
     
-    ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+    ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
 4. 创建命名空间后，在“设置”选项卡上，单击“共享访问策略”来获取连接字符串。
 

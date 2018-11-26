@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913557"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822348"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
-如果你已阅读成本分析教程，则会熟悉如何手动下载成本管理数据。 但是，你也可以创建一个每日定期任务，每天自动将成本管理数据导出到 Azure 存储。 导出的数据采用 CSV 格式，它包含成本管理收集的所有信息。 然后，可以在外部系统使用从 Azure 存储导出的数据，并将其与自己的自定义数据相结合。 在类似仪表板或其他财务系统等的外部系统中，你都可以使用导出的数据。
+如果你已阅读成本分析教程，则会熟悉如何手动下载成本管理数据。 但是，可以创建一个定期任务，按日、按周或按月自动将成本管理数据导出到 Azure 存储。 导出的数据采用 CSV 格式，它包含成本管理收集的所有信息。 然后，可以在外部系统使用从 Azure 存储导出的数据，并将其与自己的自定义数据相结合。 在类似仪表板或其他财务系统等的外部系统中，你都可以使用导出的数据。
 
 本教程将通过示例，指导你导出成本管理数据，然后验证数据是否已成功导出。
 
@@ -48,11 +48,17 @@ ms.locfileid: "50913557"
 
 “成本管理 + 计费”&gt;“成本管理”&gt; 在订阅中选择订阅或资源组 &gt;“导出”&gt;“添加”。
 
-键入导出名称并指定订阅、Azure 存储帐户、容器和文件存储目录或 blob 容器，然后单击“创建”。
+为导出键入一个名称，然后选择“每日导出本月截止到现在的成本”选项。 单击“下一步”。
 
-![新导出](./media/tutorial-export-acm-data/new-export01.png)
+![新建导出：导出类型](./media/tutorial-export-acm-data/basics_exports.png)
 
-新导出将出现在导出列表中。 默认情况下，新导出为启用状态，并且每天运行一次。 如果要禁用或删除计划的导出，请单击列表中的任何项，然后再单击“禁用”或“删除”。
+指定 Azure 存储帐户的订阅，然后选择存储帐户。  指定要将导出文件放置到其中的存储容器和目录路径。  单击“下一步”。
+
+![新建导出：存储](./media/tutorial-export-acm-data/storage_exports.png)
+
+查看导出详细信息，然后单击“创建”。
+
+新导出将出现在导出列表中。 默认情况下，新导出为启用状态。 如果要禁用或删除计划的导出，请单击列表中的任何项，然后再单击“禁用”或“删除”。
 
 最初，在导出运行之前，可能需要一到两个小时。 但是，在导出文件中显示数据之前，它可能需要四个小时。
 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/05/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 6696d6e7e53e98dfab2a65c7c66825936020f33c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856626"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706001"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置课堂实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -58,7 +58,7 @@ ms.locfileid: "48856626"
 
         > [!IMPORTANT]
         > 记下用户名和密码。 这些信息不会再次显示。
-    3. 选择**创建**。 
+    3. 选择“创建”。 
 
         ![设置凭据](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. 在“配置模板”页上，查看实验室创建过程的状态。 在实验室中创建模板最长需要 20 分钟时间。 
@@ -81,7 +81,7 @@ ms.locfileid: "48856626"
 
         > [!WARNING]
         > 发布后无法取消发布。 
-    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的[发布模板](how-to-manage-classroom-labs.md#publish-the-template)部分。
+    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的[发布模板](how-to-create-manage-template.md#publish-the-template-vm)部分。
 
         ![发布模板](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. 可以查看**发布模板的进度**。 此过程最长可能需要花费一小时。 
@@ -97,17 +97,33 @@ ms.locfileid: "48856626"
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+## <a name="add-users-to-the-lab"></a>将用户添加到实验室
+
+1. 选择左侧菜单上的“用户”。 默认情况下，“限制访问”选项处于启用状态。 当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。 
+2. 在工具栏上选择“添加用户”。 
+3. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
+
+    ![添加用户电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
+
+    ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
+
+
 ## <a name="send-registration-link-to-students"></a>将注册链接发送给学生
 
-1. 在左侧菜单中选择“仪表板”切换到“仪表板”视图。 
-2. 选择“用户注册”磁贴。
+1. 切换到“用户”视图（如果尚未转到该页）。 
+2. 选择“获取注册链接”磁贴。
 
     ![学生注册链接](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. 在“用户注册”对话框中，选择“复制”按钮。 将链接复制到剪贴板。 将其粘贴到电子邮件编辑器，然后向学生发送电子邮件。 
+1. 在“用户注册”对话框中，选择“复制”按钮。 将链接复制到剪贴板。 
 
     ![学生注册链接](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. 在“用户注册”对话框中，选择“关闭”。 
-3. 与某个学生共享注册链接，使其能够注册课程。 
+4. 与某个学生共享注册链接，使其能够注册课程。 如果已启用“限制选项”设置且列表中有一系列用户，请执行以下操作：
+    1. 在列表中选择用户的**电子邮件地址**。 
+    2. 此时会在默认电子邮件程序中看到一个窗口，其中填充了“收件人”地址。 
+    3. 粘贴此前复制的**注册 URL**。 
+    4. 发送该**电子邮件**。
 
 
 ## <a name="next-steps"></a>后续步骤

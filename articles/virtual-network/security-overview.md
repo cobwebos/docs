@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 6501444aacd36c794c8a169a8d1b16898efad018
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159071"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977244"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -93,19 +93,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 |优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|全部|允许|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|All|允许|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|全部|允许|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|All|允许|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
 |优先度|源|源端口|目标|目标端口|协议|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|全部|拒绝|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|All|拒绝|
 
 ### <a name="outbound"></a>出站
 
@@ -113,19 +113,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 |优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | 全部 | 允许 |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | All | 允许 |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 全部 | 允许 |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | All | 允许 |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | 全部 | 拒绝 |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | All | 拒绝 |
 
 在“源”和“目标”列表中，“VirtualNetwork”、“AzureLoadBalancer”和“Internet”是[服务标记](#service-tags)，而不是 IP 地址。 在“协议”列中，“所有”包含 TCP、UDP 和 ICMP。 创建规则时，可以指定 TCP、UDP 或“所有”，但不能仅指定 ICMP。 因此，如果规则需要 ICMP，请为协议选择“所有”。 “源”和“目标”列中的“0.0.0.0/0”表示所有地址。
  
@@ -153,7 +153,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 |优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | 全部 | 拒绝 |
+| 120 | * | * | AsgDb | 1433 | All | 拒绝 |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
@@ -206,7 +206,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 IP 流验证会告知你系统是允许还是拒绝通信，以及哪条网络安全规则允许或拒绝该流量。
 
 > [!NOTE]
-> 网络安全组关联到子网或关联到部署经典部署模型的虚拟机和云服务，而不是关联到资源管理器部署模型中的网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+> 网络安全组关联到子网或关联到部署在经典部署模型中的虚拟机和云服务，而不是关联到资源管理器部署模型中的网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 > [!TIP]
 > 建议将网络安全组关联到子网或网络接口，但不要二者都关联，除非你有特定的理由来这样做。 由于关联到子网的网络安全组中的规则可能与关联到网络接口的网络安全组中的规则冲突，因此可能会出现意外的必须进行故障排除的通信问题。

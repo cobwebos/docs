@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2018
 ms.author: pareshmu
-ms.openlocfilehash: 14529ede47d69e30102a74a0f5ed84573ea108f9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025202"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276051"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -40,18 +40,19 @@ ms.locfileid: "50025202"
 ### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射。
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
 
-| **地缘政治区域** | **Azure 区域** | **ExpressRoute 位置** |
-| --- | --- | --- |
-| **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
-| **南美洲** |巴西南部 |圣保罗 |
-| **欧洲** |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、阿姆斯特丹 2、都柏林、伦敦、马赛、纽波特（威尔士）、巴黎 |
-| **亚洲** |东亚、东南亚 |香港特别行政区、吉隆坡、新加坡、新加坡 2 |
-| **日本** |日本西部、日本东部 |大坂、东京 |
-| **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
-| **澳大利亚政府** | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 | 
-| **印度** |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
-| **韩国** |韩国中部、韩国南部 |釜山、首尔 |
-| **南非** |[南非西部+、南非北部+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |开普敦、约翰内斯堡 |
+| **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
+| --- | --- | --- | --- |
+| **澳大利亚政府** |区域 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
+| **欧洲** |区域 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、阿姆斯特丹 2、都柏林、伦敦、马赛、纽波特（威尔士）、巴黎 |
+| **北美** |区域 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
+| **亚洲** |区域 2 |东亚、东南亚 |香港特别行政区、吉隆坡、新加坡、新加坡 2 |
+| **澳大利亚** |区域 2 |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 | 
+| **印度** |区域 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
+| **日本** |区域 2 |日本西部、日本东部 |大坂、东京 |
+| **韩国** |区域 2 |韩国中部、韩国南部 |釜山、首尔|
+| **南非** |区域 3 |[南非西部+、南非北部+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |开普敦、约翰内斯堡 |
+| **南美洲** |区域 3 |巴西南部 |圣保罗 |
+
 
  **+** 表示即将推出
 

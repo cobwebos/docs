@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741014"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706970"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>教程：将数据迁移到 Azure Cosmos DB MongoDB API 帐户
 
@@ -36,13 +36,13 @@ ms.locfileid: "50741014"
 
 1. 预创建和缩放集合：
         
-    * 默认情况下，Azure Cosmos DB 预配有一个吞吐量为每秒 1,000 个请求单位（RU/秒）的新 MongoDB 集合。 使用 mongoimport 或 mongorestore 开始迁移之前，请通过 [Azure 门户](https://portal.azure.com)或 MongoDB 驱动程序和工具预创建所有集合。 如果数据大小超过 10GB，请务必创建包含相应分片键的[分区集合](partition-data.md)。
+   * 默认情况下，Azure Cosmos DB 预配有一个吞吐量为每秒 1,000 个请求单位（RU/秒）的新 MongoDB 集合。 使用 mongoimport 或 mongorestore 开始迁移之前，请通过 [Azure 门户](https://portal.azure.com)或 MongoDB 驱动程序和工具预创建所有集合。 如果数据大小超过 10GB，请务必创建包含相应分片键的[分区集合](partition-data.md)。 MongoDB 建议将实体数据存储在集合中。 可以在 Azure Cosmos 数据库级别归置大小相当的实体并预配吞吐量。
 
-    * 在 [Azure 门户](https://portal.azure.com)中，仅出于迁移目的，提高集合吞吐量，单分区集合的起始吞吐量为 1000 个 RU/秒，分片集合的起始吞吐量为 2,500 个 RU/秒。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 可以在迁移后立即降低吞吐量，以节省成本。
+   * 在 [Azure 门户](https://portal.azure.com)中，仅在迁移期间提高集合吞吐量，单分区集合的起始吞吐量为 1000 个 RU/秒，分片集合的起始吞吐量为 2,500 个 RU/秒。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 可以在迁移后立即降低吞吐量，以节省成本。
 
-    * 除了在集合级别预配 RU/秒之外，还可以在父数据库级别为一组集合预配 RU/秒。 这需要预先创建数据库和集合，以及为每个集合定义分片键。
+   * 除了在集合级别预配 RU/秒之外，还可以在父数据库级别为一组集合预配 RU/秒。 这需要预先创建数据库和集合，以及为每个集合定义分片键。
 
-    * 可以通过常用的工具、驱动程序或 SDK 创建分片集合。 此示例使用 Mongo Shell 创建分片集合：
+   * 可以通过常用的工具、驱动程序或 SDK 创建分片集合。 此示例使用 Mongo Shell 创建分片集合：
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )

@@ -3,19 +3,19 @@ title: 快速入门：必应拼写检查 API、C#
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，以帮助你快速开始使用必应拼写检查 API。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: e723bc117cff208ea824dae216b8e8b57f7f26d7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 4e5bc56a74a8280954e278f00639b7a774d516ce
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801448"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165539"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-c"></a>通过 C# 使用必应拼写检查 API 快速入门
 
@@ -30,7 +30,7 @@ ms.locfileid: "48801448"
 ## <a name="get-spell-check-results"></a>获取拼写检查结果
 
 1. 在喜欢使用的 IDE 中新建一个 C# 项目。
-2. 添加下方提供的代码。
+2. 添加以下提供的代码。
 3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 4. 运行该程序。
 

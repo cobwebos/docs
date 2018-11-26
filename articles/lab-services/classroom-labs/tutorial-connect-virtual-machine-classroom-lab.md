@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/30/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: dadc90e6a39b9e9689bab0249e6496fdea6f6205
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b9d140eedf69ed730985412ba1dcdca2d626b191
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450209"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706698"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的教室实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -35,22 +35,22 @@ ms.locfileid: "39450209"
 1. 导航到从教授/教师处收到的注册 URL。 
 2. 使用学校帐户登录服务以完成注册。 
 3. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
-2. 等待虚拟机准备就绪，然后**启动** VM。
+2. 等待虚拟机准备就绪，然后**启动** VM。 此过程需要一些时间。  
 
     ![启动 VM](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
-1. 在表示想要访问的实验室虚拟机的磁贴上，选择“连接”。 
+1. 在要访问的实验室虚拟机的磁贴上，选择“连接”。 
 
     ![连接到 VM](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. 将 RDP 文件保存到硬盘，然后将其打开。 
+2. 将 RDP 文件保存到硬盘，然后将其打开（假定 VM 为 Windows VM）
 3. 使用从教师/教授处获取的用户名和密码登录到计算机。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程使用了从教师/教授处获取的注册链接来访问教室实验室。
 
-作为实验室所有者，你希望查看注册到实验室的用户并跟踪 VM 的使用情况。 若要了解具体操作方法，请转到下一教程：
+作为实验室所有者，你希望查看已注册到实验室的用户并跟踪 VM 的使用情况。 转到下一教程，了解如何跟踪实验室的使用情况：
 
 > [!div class="nextstepaction"]
 > [跟踪实验室的使用情况](tutorial-track-usage.md) 

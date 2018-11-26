@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: e6e49a03ee76c50cb2fff492bfd50b2820abafe4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 067a8deb935fb8a49d72c6ce441e8d9760c5390c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343752"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283649"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程 #1：使用 Azure 机器学习服务定型图像分类模型
 
@@ -33,7 +33,10 @@ ms.locfileid: "49343752"
 
 稍后，你将在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。 
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.79 进行测试
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
@@ -42,7 +45,7 @@ ms.locfileid: "49343752"
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> 本教程已使用 Azure 机器学习 SDK 版本 0.168 进行测试 
+> 本教程已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试 
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 
@@ -93,41 +96,43 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>创建远程计算目标
 
-Azure Batch AI 是一项托管的服务，可以让数据科学家在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上定型机器学习模型。  在本教程中，创建 Azure Batch AI 群集作为定型环境。 如果工作区中尚且没有群集，此代码将创建一个群集。 
+Azure ML 托管计算是一项托管的服务，可以让数据科学家在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练机器学习模型。  在本教程中，创建 Azure 托管计算群集作为训练环境。 如果工作区中尚且没有群集，此代码将创建一个群集。 
 
  创建群集需要大约 5 分钟。 如果群集已在工作区中，此代码将使用它，并跳过创建过程。
 
 
 ```python
-from azureml.core.compute import ComputeTarget, BatchAiCompute
-from azureml.core.compute_target import ComputeTargetException
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = "traincluster"
+compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
 
-try:
-    # look for the existing cluster by name
-    compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if type(compute_target) is BatchAiCompute:
-        print('found compute target {}, just use it.'.format(batchai_cluster_name))
-    else:
-        print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
-except ComputeTargetException:
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
     print('creating a new compute target...')
-    compute_config = BatchAiCompute.provisioning_configuration(vm_size="STANDARD_D2_V2", # small CPU-based VM
-                                                                #vm_priority='lowpriority', # optional
-                                                                autoscale_enabled=True,
-                                                                cluster_min_nodes=0, 
-                                                                cluster_max_nodes=4)
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, compute_config)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it uses the scale settings for the cluster
+    # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-    # Use the 'status' property to get a detailed status for the current cluster. 
+     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -143,7 +148,7 @@ except ComputeTargetException:
 
 ### <a name="download-the-mnist-dataset"></a>下载 MNIST 数据集
 
-下载 MNIST 数据集，并将文件保存到本地 `data` 目录。  下载用于定型和测试的图像和标签。  
+下载 MNIST 数据集，并将文件保存到本地 `data` 目录。  下载用于定型和测试的图像和标签。
 
 
 ```python
@@ -160,7 +165,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>显示一些示例图像
 
-将压缩文件加载到 `numpy` 数组。 然后，使用 `matplotlib` 从数据集随意绘制 30 张图像，并在上方附加标签。 请注意，此步骤需要 `util.py` 文件中包含的 `load_data` 函数。 此文件包含在示例文件夹中。 请确保它与此 Notebook 放在同一文件夹中。 `load_data` 函数将压缩文件解析为 numpy 数组。
+将压缩文件加载到 `numpy` 数组。 然后，使用 `matplotlib` 从数据集随意绘制 30 张图像，并在上方附加标签。 请注意，此步骤需要 `util.py` 文件中包含的 `load_data` 函数。 此文件包含在示例文件夹中。 请确保它与此 Notebook 放在同一文件夹中。 `load_data` 函数直接将压缩文件解析为 numpy 数组。
 
 
 
@@ -209,9 +214,9 @@ ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=T
 ```
 现在你已经拥有开始定型模型所需的一切条件。 
 
-## <a name="train-a-model-locally"></a>在本地定型模型
+## <a name="train-a-local-model"></a>训练本地模型
 
-从 scikit-learn 在本地定型简单的逻辑回归模型。
+在本地使用 scikit-learn 训练简单的逻辑回归模型。
 
 **本地定型可能需要一两分钟**，具体取决于计算机配置。
 
@@ -243,7 +248,7 @@ print(np.average(y_hat == y_test))
 对于此任务，将作业提交到之前设置的远程定型群集。  若要提交作业：
 * 创建目录
 * 创建定型脚本
-* 创建估算器
+* 创建估算器对象
 * 提交作业 
 
 ### <a name="create-a-directory"></a>创建目录
@@ -314,11 +319,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 请注意该脚本获取数据和保存模型的方式：
 
-+ 定型脚本读取参数以查找包含数据的目录。  稍后提交作业时，请参考数据存储获取此参数：`parser.add_argument('--data-folder', type = str, dest = 'data_folder', help = 'data directory mounting point')`
-
++ 定型脚本读取参数以查找包含数据的目录。  稍后提交作业时，请参考数据存储获取此参数：`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
     
 + 定型脚本将模型保存到一个名为“输出”的目录。 <br/>
-`joblib.dump(value = clf, filename = 'outputs/sklearn_mnist_model.pkl')`<br/>
+`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 此目录中编写的所有内容都会自动上传到你的工作区。 你将在本教程后面从此目录访问模型。
 
 从定型脚本中引用文件 `utils.py` 来正确加载数据集。  将此脚本复制到脚本文件夹，以便可以与远程资源上的定型脚本一起访问。
@@ -341,7 +345,7 @@ shutil.copy('utils.py', script_folder)
 * 定型脚本所需的参数 
 * 定型所需的 Python 包
 
-在本教程中，此目标是 Batch AI 群集。 此项目目录中的所有文件都上传到群集节点以便执行。 data_folder 设置为使用数据存储 (`ds.as_mount()`)。
+在本教程中，此目标是 Batch AI 群集。 此脚本文件夹中的所有文件都上传到群集节点来执行。 data_folder 设置为使用数据存储 (`ds.as_mount()`)。
 
 ```python
 from azureml.train.estimator import Estimator
@@ -395,7 +399,7 @@ run
 
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
@@ -423,7 +427,7 @@ print(run.get_metrics())
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-在部署教程中，将了解有关此模型的更多详细信息。
+下一教程将详细介绍此模型。
 
 ## <a name="register-model"></a>注册模型
 

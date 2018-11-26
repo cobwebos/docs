@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
+title: 教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
@@ -7,32 +7,44 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 3c225e6fbfb13c04d650b8e6b72ee18d23139a8e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158952"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854163"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
+
+将本地网络连接到 Azure 虚拟网络以创建混合网络时，必须能够控制对 Azure 网络资源的访问，这是整体安全计划的重要部分。
+
+可以使用 Azure 防火墙通过规则来定义允许的和拒绝的网络流量，以便控制混合网络中的网络访问。
+
+在本教程中，请创建三个虚拟网络：
+
+- **VNet-Hub** - 防火墙在此虚拟网络中。
+- **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 Express Route 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
+
+![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置网络环境
+> * 声明变量
+> * 创建防火墙中心虚拟网络
+> * 创建分支虚拟网络
+> * 创建本地虚拟网络
 > * 配置和部署防火墙
+> * 创建并连接 VPN 网关
+> * 将中心和分支虚拟网络对等互连
 > * 创建路由
 > * 创建虚拟机
 > * 测试防火墙
 
-在本教程中，我们将创建三个 VNet：
-- **VNet-Hub** - 防火墙在此 VNet 中。
-- **VNet-Spoke** - 分支 VNet 代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地 VNet 代表本地网络。 在实际部署中，可以使用 VPN 或 Express Route 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个 VNet 来代表本地网络。
+## <a name="prerequisites"></a>先决条件
 
-![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
-
-## <a name="key-requirements"></a>关键要求
+本教程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块 6.12.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzureRmAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 
@@ -45,11 +57,9 @@ ms.locfileid: "50158952"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
 ## <a name="declare-the-variables"></a>声明变量
 
-以下示例使用本教程中的值来声明变量。 在大多数情况下，应将这些值替换为自己的值。 但是，如果执行这些步骤的目的是熟悉这种类型的配置，可以直接使用这些变量。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
+以下示例使用本教程中的值来声明变量。 在某些情况下，可能需要根据订阅情况将某些值替换为你自己的值。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -67,7 +77,7 @@ $GWHubpipName = "VNet-hub-GW-pip"
 $GWIPconfNameHub = "GW-ipconf-hub"
 $ConnectionNameHub = "hub-to-Onprem"
 
-# Variables for the spoke VNet
+# Variables for the spoke virtual network
 
 $VnetNameSpoke = "VNet-Spoke"
 $SNnameSpoke = "SN-Workload"
@@ -75,7 +85,7 @@ $VNetSpokePrefix = "10.6.0.0/16"
 $SNSpokePrefix = "10.6.0.0/24"
 $SNSpokeGWPrefix = "10.6.1.0/24"
 
-# Variables for the OnPrem VNet
+# Variables for the on-premises virtual network
 
 $VNetnameOnprem = "Vnet-Onprem"
 $SNNameOnprem = "SN-Corp"
@@ -90,70 +100,69 @@ $GWOnprempipName = "VNet-Onprem-GW-pip"
 $SNnameGW = "GatewaySubnet"
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
 
-创建一个资源组用于包含本教程所需的所有资源：
+## <a name="create-the-firewall-hub-virtual-network"></a>创建防火墙中心虚拟网络
+
+首先，创建用于存储本教程资源的资源组：
 
 ```azurepowershell
   New-AzureRmResourceGroup -Name $RG1 -Location $Location1
   ```
 
-## <a name="create-and-configure-the-firewall-hub-vnet"></a>创建并配置防火墙中心 VNet
-
-定义要包含在 VNet 中的子网：
+定义要包含在虚拟网络中的子网：
 
 ```azurepowershell
 $FWsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameHub -AddressPrefix $SNHubPrefix
 $GWsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWHubPrefix
 ```
 
-现在创建防火墙中心 VNet：
+现在，创建防火墙中心虚拟网络：
 
 ```azurepowershell
 $VNetHub = New-AzureRmVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-请求一个要分配到为 VNet 创建的 VPN 网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 该 IP 地址会动态分配到 VPN 网关。 
+请求一个要分配到为虚拟网络创建的 VPN 网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 该 IP 地址会动态分配到 VPN 网关。 
 
   ```azurepowershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
 ```
 
-## <a name="create-and-configure-the-spoke-vnet"></a>创建并配置分支 VNet
+## <a name="create-the-spoke-virtual-network"></a>创建分支虚拟网络
 
-定义要包含在分支 VNet 中的子网：
+定义要包含在分支虚拟网络中的子网：
 
 ```azurepowershell
 $Spokesub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameSpoke -AddressPrefix $SNSpokePrefix
 $GWsubSpoke = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNSpokeGWPrefix
 ```
 
-创建分支 VNet：
+创建分支虚拟网络：
 
 ```azurepowershell
 $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>创建并配置本地 VNet
+## <a name="create-the-on-premises-virtual-network"></a>创建本地虚拟网络
 
-定义要包含在 VNet 中的子网：
+定义要包含在虚拟网络中的子网：
 
 ```azurepowershell
 $Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
 $GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
 ```
 
-现在创建本地 VNet：
+现在，创建本地虚拟网络：
 
 ```azurepowershell
 $VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-请求一个要分配到为 VNet 创建的网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 它动态分配到网关。 
+请求一个要分配到为虚拟网络创建的网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 它动态分配到网关。 
 
   ```azurepowershell
   $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -162,7 +171,7 @@ $VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName
 
 ## <a name="configure-and-deploy-the-firewall"></a>配置和部署防火墙
 
-现在，将防火墙部署到中心 VNet。
+现在，将防火墙部署到中心虚拟网络。
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -198,9 +207,9 @@ Set-AzureRmFirewall -AzureFirewall $Azfw
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>创建并连接 VPN 网关
 
-通过 VPN 网关连接中心和本地 VNet。
+通过 VPN 网关连接中心和本地虚拟网络。
 
-### <a name="create-a-vpn-gateway-for-the-hub-vnet"></a>为中心 VNet 创建 VPN 网关
+### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>为中心虚拟网络创建 VPN 网关
 
 创建 VPN 网关配置。 VPN 网关配置定义要使用的子网和公共 IP 地址。
 
@@ -211,7 +220,7 @@ Set-AzureRmFirewall -AzureFirewall $Azfw
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
 
-现在，为中心 VNet 创建 VPN 网关。 VNet 到 VNet 配置需要基于路由的 VPN 类型。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
+现在，为中心虚拟网络创建 VPN 网关。 网络到网络配置需要 RouteBased VpnType。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
@@ -219,7 +228,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
 -VpnType RouteBased -GatewaySku basic
 ```
 
-### <a name="create-a-vpn-gateway-for-the-onprem-vnet"></a>为本地 VNet 创建 VPN 网关
+### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>为本地虚拟网络创建 VPN 网关
 
 创建 VPN 网关配置。 VPN 网关配置定义要使用的子网和公共 IP 地址。
 
@@ -230,7 +239,7 @@ $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfNameOnprem 
   -Subnet $subnet2 -PublicIpAddress $gwOnprempip
   ```
 
-现在，为本地 VNet 创建 VPN 网关。 VNet 到 VNet 配置需要基于路由的 VPN 类型。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
+现在，为本地虚拟网络创建 VPN 网关。 网络到网络配置需要 RouteBased VpnType。 创建 VPN 网关通常需要 45 分钟或更长时间，具体取决于所选 VPN 网关的 SKU。
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
@@ -251,14 +260,14 @@ $vnetOnpremgw = Get-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGr
 
 #### <a name="create-the-connections"></a>创建连接
 
-此步骤创建从中心 VNet 到本地 VNet 的连接。 示例中引用了共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
+此步骤创建从中心虚拟网络到本地虚拟网络的连接。 示例中引用了共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接可能需要简短的一段时间才能完成。
 
 ```azurepowershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1 `
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-创建本地到中心 VNet 的连接。 此步骤类似于前一步骤，但这次是创建从 Vnet-Onprem 到 VNet-hub 的连接。 确保共享密钥匹配。 几分钟后会建立连接。
+创建本地到中心虚拟网络连接。 此步骤类似于前一步骤，但这次是创建从 VNet-Onprem 到 VNet-hub 的连接。 确保共享密钥匹配。 几分钟后会建立连接。
 
   ```azurepowershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `
@@ -282,9 +291,9 @@ cmdlet 运行完毕后，查看值。 在以下示例中，连接状态显示为
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="peer-the-hub-and-spoke-vnets"></a>将中心和分支 VNet 对等互连
+## <a name="peer-the-hub-and-spoke-virtual-networks"></a>将中心和分支虚拟网络对等互连
 
-现在，将分支和中心 VNet 对等互连。
+现在，将中心和分支虚拟网络对等互连。
 
 ```azurepowershell
 # Peer hub to spoke
@@ -294,7 +303,7 @@ Add-AzureRmVirtualNetworkPeering -Name HubtoSpoke -VirtualNetwork $VNetHub -Remo
 Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -RemoteVirtualNetworkId $VNetHub.Id -AllowForwardedTraffic -UseRemoteGateways
 ```
 
-## <a name="create-routes"></a>创建路由
+## <a name="create-the-routes"></a>创建路由
 
 接下来创建一对路由：
 
@@ -302,7 +311,7 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 - 通过防火墙 IP 地址从分支子网连接的默认路由
 
 > [!NOTE]
-> Azure 防火墙使用 BGP 学习本地网络。 这可能包括一个默认路由，它将通过本地网络路由回 Internet流量。 如果你希望将 Internet 流量直接从防火墙发送到 Internet，请在 AzureFirewallSubnet 上添加下一跃点类型为 **Internet** 的用户定义默认路由 (0.0.0.0/0)。 以本地为目标的流量仍然使用从 BGP 获取的更具体路由通过 VPN/ExpressRoute 网关强制进行隧道传输。
+> Azure 防火墙使用 BGP 来了解本地网络。 这可能包括一个默认路由，用于通过本地网络将 Internet 流量路由回来。 在生产部署中，可能需要将 Internet 流量直接从防火墙发送到 Internet。 可以在 AzureFirewallSubnet 上添加下一跃点类型为 **Internet** 的用户定义默认路由 (0.0.0.0/0)。 以本地为目标的流量仍然使用从 BGP 获取的更具体路由通过 VPN/ExpressRoute 网关强制进行隧道传输。
 
 ```azurepowershell
 #Create a route table
@@ -367,7 +376,7 @@ Set-AzureRmVirtualNetwork
 
 ### <a name="create-the-workload-virtual-machine"></a>创建工作负荷虚拟机
 
-在分支 VNet 中，创建运行 IIS 且不使用公共 IP 地址的虚拟机，并允许 ping 它。
+在分支虚拟网络中，创建运行 IIS 且不使用公共 IP 地址的虚拟机，并允许 ping 它。
 出现提示时，请键入该虚拟机的用户名和密码。
 
 ```azurepowershell
@@ -415,9 +424,9 @@ Set-AzureRmVMExtension `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
     -Location $Location1--->
 
-### <a name="create-the-onprem-virtual-machine"></a>创建本地虚拟机
+### <a name="create-the-on-premises-virtual-machine"></a>创建本地虚拟机
 
-这是一个简单的虚拟机，可以使用远程桌面将它连接到公共 IP 地址。 然后，可在该虚拟机中通过防火墙连接到本地服务器。 出现提示时，请键入该虚拟机的用户名和密码。
+这是一个简单的虚拟机，用于通过远程桌面连接到公共 IP 地址。 然后，请在该虚拟机中通过防火墙连接到本地服务器。 出现提示时，请键入该虚拟机的用户名和密码。
 
 ```azurepowershell
 New-AzureRmVm `
@@ -438,23 +447,23 @@ New-AzureRmVm `
 $NIC.IpConfigurations.privateipaddress
 ```
 
-1. 在 Azure 门户中，连接到 **VM-Onprem** 虚拟机。
+在 Azure 门户中，连接到 **VM-Onprem** 虚拟机。
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-2. 在 **VM-Onprem** 上打开 Web 浏览器并浏览到 http://\<VM-spoke-01 的专用 IP\>
+在 **VM-Onprem** 上打开 Web 浏览器并浏览到 http://\<VM-spoke-01 的专用 IP\>。
 
-   应会看到 Internet Information Services 的默认页。
+应会看到 Internet Information Services 的默认页。
 
-3. 在 **VM-Onprem** 中，打开远程桌面并连接到 **VM-spoke-01** 的专用 IP 地址。
+在 **VM-Onprem** 中，打开远程桌面并连接到 **VM-spoke-01** 的专用 IP 地址。
 
-   连接应会成功，并且应该可以使用所选的用户名和密码登录。
+连接应会成功，并且应该可以使用所选的用户名和密码登录。
 
 现已验证防火墙规则可正常工作：
 
 <!---- You can ping the server on the spoke VNet.--->
-- 可以浏览分支 VNet 中的 Web 服务器。
-- 可以使用 RDP 连接到分支 VNet 中的服务器。
+- 可以浏览分支虚拟网络中的 Web 服务器。
+- 可以使用 RDP 连接到分支虚拟网络中的服务器。
 
 接下来，将防火墙网络规则集合操作更改为“拒绝”，以验证防火墙规则是否按预期工作。 运行以下脚本，将规则集合操作更改为“拒绝”。
 
@@ -472,15 +481,6 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 可以保留防火墙资源以便在下一篇教程中使用。不再需要时，请删除 **FW-Hybrid-Test** 资源组，以删除与防火墙相关的所有资源。
 
 ## <a name="next-steps"></a>后续步骤
-
-本教程介绍了如何：
-
-> [!div class="checklist"]
-> * 设置网络环境
-> * 配置和部署防火墙
-> * 创建路由
-> * 创建虚拟机
-> * 测试防火墙
 
 接下来，可以监视 Azure 防火墙日志。
 

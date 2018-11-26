@@ -1,6 +1,6 @@
 ---
 title: '教程：使用 Power BI 在 Azure HDInsight 中分析 Apache Spark 数据 '
-description: 使用 Microsoft Power BI 来可视化存储在 HDInsight 群集中的 Spark 数据
+description: 使用 Microsoft Power BI 来可视化存储在 HDInsight 群集中的 Apache Spark 数据
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 341346b290fc3dab94773f75f2269cc147e71b82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252456"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712409"
 ---
-# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Spark 数据 
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教程：使用 Power BI 在 HDInsight 中分析 Apache Spark 数据 
 
 了解如何使用 Microsoft Power BI 在 Azure HDInsight 中可视化 Apache Spark 群集中的数据。
 
@@ -78,7 +78,7 @@ ms.locfileid: "51252456"
     ![从 HDInsight Apache Spark 中获取数据到 Power BI Desktop](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "从 Apache Spark BI 中获取数据到 Power BI")
 
 
-2. 在搜索框中输入 `Spark`，选择 Azure HDInsight Spark (Beta)，然后单击“连接”。
+2. 在搜索框中输入 `Spark`，选择 Azure HDInsight Spark，然后单击“连接”。
 
     ![从 Apache Spark BI 中获取数据到 Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "从 Apache Spark BI 中获取数据到 Power BI")
 

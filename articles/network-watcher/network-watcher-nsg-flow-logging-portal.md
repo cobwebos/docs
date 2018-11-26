@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918307"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822460"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -36,6 +36,9 @@ ms.locfileid: "41918307"
 > * 查看记录的数据
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+> [!NOTE] 
+> Flow Logs 版本 2 仅在美国中西部区域推出。 配置可通过 Azure 门户和REST API 获取。 在不支持的区域启用版本 2 日志时，版本 1 日志就会保存到存储帐户中。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -100,8 +103,9 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 6. 从 NSG 列表中选择名为 **myVm-nsg** 的 NSG。
 7. 在“流日志设置”下选择“启用”。
-8. 选择在步骤 3 中创建的存储帐户。
-9. 将“保留期(天)”设置为 5，然后选择“保存”。
+8. 选择流日志记录版本。 版本 2 包含流会话统计信息（字节和数据包）a. ![选择流日志版本](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+9. 选择在步骤 3 中创建的存储帐户。
+10. 将“保留期(天)”设置为 5，然后选择“保存”。
 
 ## <a name="download-flow-log"></a>下载流日志
 
@@ -118,7 +122,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
     ![日志文件](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
-    日志文件写入遵循以下命名约定的文件夹层次结构：https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+    日志文件写入遵循以下命名约定的文件夹层次结构： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
 6. 选择 PT1H.json 文件右侧的“...”，然后选择“下载”。
 
@@ -126,6 +130,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 下面的 json 是一个示例，说明了为每个流记录数据时在 PT1H.json 文件中会看到的内容：
 
+### <a name="version-1-flow-log-event"></a>版本 1 流日志事件
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -135,29 +140,83 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     "operationName": "NetworkSecurityGroupFlowEvents",
     "properties": {
         "Version": 1,
-        "flows": [{
-            "rule": "UserRule_default-allow-rdp",
-            "flows": [{
-                "mac": "000D3A170C69",
-                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
-            }]
-        }]
+        "flows": [
+            {
+                "rule": "UserRule_default-allow-rdp",
+                "flows": [
+                    {
+                        "mac": "000D3A170C69",
+                        "flowTuples": [
+                            "1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
+### <a name="version-2-flow-log-event"></a>版本 2 流日志事件
+```json
+{
+    "time": "2018-11-13T12:00:35.3899262Z",
+    "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 2,
+        "flows": [
+            {
+                "rule": "DefaultRule_DenyAllInBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                            "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                            "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                        ]
+                    }
+                ]
+            },
+            {
+                "rule": "DefaultRule_AllowInternetOutBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                            "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                            "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                            "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 
 在前面的输出中，**mac** 的值是在创建 VM 时创建的网络接口的 MAC 地址。 **flowTuples** 的逗号分隔信息如下所示：
 
 | 示例数据 | 数据代表的内容   | 说明                                                                              |
 | ---          | ---                    | ---                                                                                      |
-| 1525186745   | 时间戳             | 表示流发生时间的时间戳，采用 UNIX EPOCH 格式。 在前面的示例中，转换后的日期为 2018 年 5 月 1 日下午 2:59:05 (GMT)。                                                                                    |
-| 192.168.1.4  | 源 IP 地址      | 充当流源的源 IP 地址。
-| 10.0.0.4     | 目标 IP 地址 | 充当流目标的目标 IP 地址。 10.0.0.4 是在[创建 VM](#create-a-vm) 一文中创建的 VM 的专用 IP 地址。                                                                                 |
-| 55960        | Source Port            | 充当流源的源端口。                                           |
-| 3389         | Destination Port       | 充当流目标的目标端口。 由于流目标为端口 3389，因此由日志文件中名为 **UserRule_default-allow-rdp** 的规则处理流。                                                |
+| 1542110377   | 时间戳             | 表示流发生时间的时间戳，采用 UNIX EPOCH 格式。 在前面的示例中，转换后的日期为 2018 年 5 月 1 日下午 2:59:05 (GMT)。                                                                                    |
+| 10.0.0.4  | 源 IP 地址      | 充当流源的源 IP 地址。 10.0.0.4 是在[创建 VM](#create-a-vm) 一文中创建的 VM 的专用 IP 地址。
+| 13.67.143.118     | 目标 IP 地址 | 充当流目标的目标 IP 地址。                                                                                  |
+| 44931        | Source Port            | 充当流源的源端口。                                           |
+| 443         | Destination Port       | 充当流目标的目标端口。 由于流目标为端口 443，因此由日志文件中名为 **UserRule_default-allow-rdp** 的规则处理流。                                                |
 | T            | 协议               | 流的协议是 TCP (T) 还是 UDP (U)。                                  |
-| I            | 方向              | 流是入站 (I) 还是出站 (O)。                                     |
-| A            | 操作                 | 是允许 (A) 流还是拒绝 (D) 流。                                           |
+| O            | 方向              | 流是入站 (I) 还是出站 (O)。                                     |
+| A            | 操作                 | 是允许 (A) 流还是拒绝 (D) 流。  
+| C            | 流状态**仅限版本 2** | 捕获流的状态。 可能的状态为 **B**：开始（创建流时）。 未提供统计信息。 C：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 E：终止流时结束。 已提供统计信息。 |
+| 30 | 发送的数据包数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。 |
+| 16978 | 发送的字节数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。 | 
+| 24 | 发送的数据包数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。 |
+| 14008| 发送的字节数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。| |
 
 ## <a name="next-steps"></a>后续步骤
 

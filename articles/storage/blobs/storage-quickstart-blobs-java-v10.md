@@ -6,14 +6,14 @@ author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: ea94a4e537a46ac8287e4454a2cfd10c59db590b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 43db4ca12fbdf8ee637ca86e1a90cc3baf4ec572
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416862"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713276"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>快速入门：使用 Java 存储 SDK V10 上传、下载和列出 Blob
 
@@ -21,14 +21,12 @@ ms.locfileid: "50416862"
 
 ## <a name="prerequisites"></a>先决条件
 
-安装并配置以下应用程序：
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-* 可以通过命令行使用的 [Maven](http://maven.apache.org/download.cgi)，或者任何首选的 Java 集成开发环境
+请确保已安装下述额外的必备组件：
+
+* 可以通过命令行使用的 [Maven](http://maven.apache.org/download.cgi)，或者任何首选的 Java 集成开发环境。
 * [JDK](https://aka.ms/azure-jdks)
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003741"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852191"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>在传递消息的 Azure 服务之间进行选择
 
@@ -43,7 +43,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 ## <a name="comparison-of-services"></a>服务对比
 
-| 服务 | 目的 | Type | 使用时机 |
+| 服务 | 目的 | 类型 | 使用时机 |
 | ------- | ------- | ---- | ----------- |
 | 事件网格 | 反应编程 | 事件分发（离散） | 对状态更改做出响应 |
 | 事件中心 | 大数据管道 | 事件流式处理（系列） | 遥测数据和分布式数据流式处理 |
@@ -54,6 +54,8 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 事件网格是启用事件驱动、反应编程的事件底板。 它使用发布-订阅模式。 发布服务器发出事件，但不知道处理哪些事件。 订阅服务器决定需要处理的事件。
 
 事件网格与 Azure 服务深度集成，并可与第三方服务集成。 它简化事件消耗，并通过消除不断的轮询需求降低成本。 事件网格高效可靠地路由来自 Azure 和非 Azure 资源的事件。 它将事件分布到注册的订阅服务器终结点。 事件消息包含对服务和应用程序中的更改做出响应所需的信息。 事件网格不是数据管道，并且不提供已更新的实际对象。
+
+对于不提交到终结点的事件，事件网格支持死信功能。
 
 它具有以下特征：
 

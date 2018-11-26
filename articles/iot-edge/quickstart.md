@@ -4,17 +4,17 @@ description: 通过在模拟边缘设备上运行分析来试用 Azure IoT Edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/02/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 16c5b15612acebacfa034c6c55dd053a21eac0d2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 78cb00c568942e6b8c0f5da035381c82f5789a08
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566323"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977006"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -61,8 +61,8 @@ IoT Edge 设备：
 * 充当 IoT Edge 设备的 Windows 计算机或虚拟机。 使用支持的 Windows 版本：
   * Windows 10 或更高版本
   * Windows Server 2016 或更高版本
-* 如果是 Windows 计算机，请确保它符合 Hyper-V 的[系统要求](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)。
-* 如果是虚拟机，则启用[嵌套虚拟化](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)并分配至少 2GB 内存。
+* 如果是 Windows 计算机，请检查它是否符合 Hyper-V 的[系统要求](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)。
+* 如果是虚拟机，则启用[嵌套虚拟化](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)并分配至少 2 GB 内存。
 * 安装[用于 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/) 并确保其正在运行。
 
 > [!TIP]
@@ -82,7 +82,7 @@ IoT Edge 设备：
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1
    ```
 
-   如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。
+   如果由于订阅中已经有一个免费的中心而出现错误，请将 SKU 更改为 **S1**。 如果出现一条错误，指示 IoT 中心名称不可用，则表明他人已使用具有该名称的中心。 请尝试一个新名称。 
 
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
@@ -91,7 +91,7 @@ IoT Edge 设备：
 
 为模拟设备创建设备标识，以便它可以与 IoT 中心通信。 设备标识存在于云中，而将物理设备关联到设备标识时，则使用唯一的设备连接字符串。
 
-由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请从一开始就将此设备声明为 IoT Edge 设备。
+由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请使用 `--edge-enabled` 标志声明此标识，使之用于 IoT Edge 设备。 
 
 1. 在 Azure Cloud Shell 中输入以下命令，以便在中心创建名为 **myEdgeDevice** 的设备。
 
@@ -99,13 +99,15 @@ IoT Edge 设备：
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-1. 检索设备的连接字符串，该字符串将物理设备与其在 IoT 中心的标识链接在一起。
+   如果出现有关 iothubowner 策略密钥的错误，请确保 Cloud Shell 运行最新版的 azure-cli-iot-ext 扩展。 
+
+2. 检索设备的连接字符串，该字符串将物理设备与其在 IoT 中心的标识链接在一起。
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-1. 复制并保存连接字符串。 在下一部分中配置 IoT Edge 运行时时将用到此值。
+3. 复制并保存连接字符串。 在下一部分中配置 IoT Edge 运行时时将用到此值。
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>安装和启动 IoT Edge 运行时
 
@@ -118,7 +120,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 此部分的说明要求为 IoT Edge 运行时配置 Linux 容器。 若要使用 Windows 容器，请参阅[在 Windows 上安装与 Windows 容器配合使用的 Azure IoT Edge 运行时](how-to-install-iot-edge-windows-with-windows.md)。
 
-在准备用作 IoT Edge 设备的 Windows 计算机或 VM 中完成以下步骤。
+### <a name="connect-to-your-iot-edge-device"></a>连接到 IoT Edge 设备
+
+此部分的步骤全都在 IoT Edge 设备上执行。 如果使用自己的计算机作为 IoT Edge 设备，则可跳过此部分。 如果使用虚拟机或辅助硬件，则现在就可以连接到该虚拟机或辅助硬件。 
 
 ### <a name="download-and-install-the-iot-edge-service"></a>下载并安装 IoT Edge 服务
 
@@ -195,7 +199,7 @@ iotedge logs tempSensor -f
 
   ![查看模块中的数据](./media/quickstart/iotedge-logs.png)
 
-也可使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看 IoT 中心接收的消息。
+也可使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看到达 IoT 中心的消息。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -203,7 +207,7 @@ iotedge logs tempSensor -f
 
 ### <a name="delete-azure-resources"></a>删除 Azure 资源
 
-如果是在新资源组中创建的虚拟机和 IoT 中心，则可删除该组以及所有关联的资源。 如果该资源组中有需要保留的内容，则请将要清除的资源逐一删除。
+如果是在新资源组中创建的虚拟机和 IoT 中心，则可删除该组以及所有关联的资源。 仔细检查资源组的内容，确保没有要保留的内容。 如果不希望删除整个组，则可改为删除单个资源。
 
 删除 **IoTEdgeResources** 组。
 

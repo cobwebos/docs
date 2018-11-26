@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686222"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852888"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 Android 应用
 
@@ -92,11 +92,7 @@ ms.locfileid: "51686222"
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
 
-需将 `<Subscription Key>` 替换为订阅密钥。 另外，请使用适合密钥的区域标识符将 `<API endpoint>` 替换为人脸 API 终结点。 免费试用订阅密钥在 **westus** 区域中生成。 示例 API 终结点值将为：
-
-```java
-apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
-```
+需将 `<Subscription Key>` 替换为订阅密钥。 另外，请使用适合密钥的区域标识符将 `<API endpoint>` 替换为人脸 API 终结点（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 免费试用订阅密钥在 **westus** 区域中生成。
 
 在“项目”窗格中展开“应用”，接着展开“清单”，然后打开 *AndroidManifest.xml*。 插入以下元素作为 `manifest` 元素的直接子级：
 
