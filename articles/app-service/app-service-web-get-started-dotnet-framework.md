@@ -24,7 +24,7 @@ ms.locfileid: "44053772"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何将第一个 ASP.NET Web 应用部署到 Azure Web 应用中。 完成后，便拥有了一个资源组，该资源组包含一个应用服务计划和一个具有已部署的 Web 应用程序的 Azure Web 应用。
 
 ![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "44053772"
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet-framework/new-project.png)
 
-可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。
+可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“不进行身份验证”。
       
 选择“确定”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "44053772"
 
 在“托管计划”旁边，选择“新建”。 
 
-在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
@@ -152,11 +152,11 @@ ms.locfileid: "44053772"
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+此时将看到 Web 应用的概述页。在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供用于配置应用的不同页面。
 
 ## <a name="video"></a>视频
 
