@@ -20,7 +20,6 @@ ms.locfileid: "39480967"
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可以在适当的计算机、服务器或云中下载和部署这些组件。 依据要保护的内容选择部署的组件或代理。所有的Azure备份组件(无论您是保护本地数据还是云端数据)都可以用于将数据备份到Azure的Recovery Services vault中。有关使用哪个组件来保护特定数据、应用程序或工作负载的相关信息，请参阅[Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)。(本文稍后部分)
 
-
 [观看 Azure 备份概述视频](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
 
 ## <a name="why-use-azure-backup"></a>为何使用 Azure 备份？
