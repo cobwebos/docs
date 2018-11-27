@@ -49,7 +49,7 @@ ms.locfileid: "44053772"
    
 ![“新建项目”对话框](./media/app-service-web-get-started-dotnet-framework/new-project.png)
 
-可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“无身份验证”。
+可将任何类型的 ASP.NET Web 应用部署到 Azure。 在本快速入门教程中，请选择“MVC”模板，并确保将身份验证设置为“不进行身份验证”。
       
 选择“确定”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "44053772"
 
 在“托管计划”旁边，选择“新建”。 
 
-在“配置托管计划”对话框中，使用位于屏幕截图之后的表中的设置。
+在“配置托管计划”对话框中，使用该屏幕截图下面的表中的设置。
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
 
