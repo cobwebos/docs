@@ -28,11 +28,11 @@ ms.locfileid: "50248181"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中创建 Node.js Web 应用](./containers/quickstart-nodejs.md)。
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure Web 应用中。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 ZipDeploy 将示例的 Node.js 代码部署到 Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何将 Node.js 应用部署到 Azure Web 应用中。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 ZipDeploy 将 Node.js 代码示例部署到 Web 应用。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-您可以在 Mac、Windows 或 Linux 计算机上执行此处的步骤。 安装先决条件后，大约需要五分钟完成这些步骤。   
+可以在 Mac、Windows 或 Linux 计算机上执行此处的步骤。 安装先决条件后，大约需要五分钟完成这些步骤。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "50248181"
 
 ## <a name="download-the-sample"></a>下载示例
 
-从 [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) 下载示例 Node.js 项目的ZIP并提取文件。
+从 [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) 下载示例 Node.js 项目并提取 ZIP 存档。
 
 打开 _index.js_ 并找到以下行：
 
@@ -58,7 +58,7 @@ var port = process.env.PORT || 1337;
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-在本地运行应用程序，这样您就能了解将它部署到 Azure 时它的外观应该是什么样的。 打开一个终端窗口并使用 `npm start` 脚本启动内置的 Node.js HTTP 服务器。
+在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。打开一个终端窗口并使用 `npm start` 脚本启动内置的 Node.js HTTP 服务器。
 
 ```bash
 npm start
@@ -94,7 +94,7 @@ npm start
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name>
 ```
 
-创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出信息：
+创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
 ```json
 {
@@ -119,7 +119,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
 
-访问新建的 Web 应用。 将 `<app name>` 替换为唯一的应用名称。
+浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为唯一的应用名称。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -131,9 +131,9 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-## <a name="browse-to-the-app"></a>访问应用
+## <a name="browse-to-the-app"></a>浏览到应用
 
-使用 Web 浏览器访问已部署的应用程序。
+使用 Web 浏览器浏览到已部署的应用程序。
 
 ```
 http://<app_name>.azurewebsites.net
@@ -143,11 +143,11 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**恭喜！** 您已向应用服务部署了第一个 Node.js 应用。
+**祝贺你！** 现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
-使用文本编辑器打开 Node.js 应用中的 `index.js` 文件，然后对 `response.end` 调用中的文本做一个小更改：
+使用文本编辑器在 Node.js 应用中打开 `index.js` 文件，然后对 `response.end` 调用中的文本稍微进行更改：
 
 ```nodejs
 response.end("Hello Azure!");
@@ -165,23 +165,23 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 将此新的 ZIP 文件部署到应用服务，使用的步骤与[部署 ZIP 文件](#deploy-zip-file)中的步骤相同。
 
-切换回在[部署 ZIP 文件](#browse-to-the-app)步骤中打开的浏览器窗口，然后刷新页面。
+切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>管理新的 Azure Web 应用
+## <a name="manage-your-new-azure-web-app"></a>管理新 Azure Web 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理您创建的 Web 应用。
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
 在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
-这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+此时会出现 Web 应用的概述页。可在此处执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务页](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供了用于配置应用的不同页面。 
+左侧菜单提供用于配置应用的不同页面。 
 
 ## <a name="video"></a>视频
 
