@@ -1,4 +1,4 @@
-﻿---
+---
 title: 在 Azure Blockchain Workbench 中创建区块链应用程序
 description: 如何在 Azure Blockchain Workbench 中创建区块链应用程序。
 services: azure-blockchain
@@ -378,7 +378,7 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 2. 以 [Blockchain Workbench 管理员](manage-users.md#manage-blockchain-workbench-administrators)身份登录。
 3. 选择“应用程序” > “新建”。 此时会显示“新建应用程序”窗格。
 4. 选择“上传合约配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。 系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
-5. 选择“上传合约代码” > “浏览”，找到 **HelloBlockchain.sol** 智能合约代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
+5. 选择“上传合约代码”  >  “浏览”，找到 HelloBlockchain.sol 智能合约代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
 6. 选择“部署”，根据配置和智能合约文件创建区块链应用程序。
 
 部署区块链应用程序需要几分钟时间。 完成部署后，新应用程序会显示在“应用程序”中。 
