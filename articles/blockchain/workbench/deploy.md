@@ -107,7 +107,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     * 终结点必须是 Ethereum 权威证明 (PoA) 区块链网络。
     * 终结点必须可通过网络公开访问。
-    * PoA 区块链网络应配置为将天然气价格设置为零。
+    * PoA 区块链网络应配置为将燃料价格设置为零。
 
     > [!NOTE]
     > Blockchain Workbench 帐户不会获得资助。 如果需要资金，交易将会失败。
