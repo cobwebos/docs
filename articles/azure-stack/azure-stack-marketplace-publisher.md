@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 98a7ae31aeeae29b81a1053b38992d3bc4e0e03f
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085303"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238014"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>使用发布工具添加市场项
 
@@ -32,7 +32,7 @@ ms.locfileid: "50085303"
 
  - 下载 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)并解压缩。
 
- - 下载 [Azure 库包工具](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe)。 
+ - 下载 [Azure 库包工具](https://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe)。 
 
  - 要发布到市场需有图标和缩略图文件。 可以使用自己的文件，或者将本示例的[示例](azure-stack-marketplace-publisher.md#support-files)文件保存在本地。
 
