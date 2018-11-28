@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和�
 
 可以通过各种[面向企业架构师的 Microsoft 云系列](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity)海报更好地了解 Azure、Azure AD 和 Office 365 中的核心标识服务。
 
-## <a name="who-uses-azure-ad"></a>谁在使用 Azure AD？
+## <a name="who-uses-azure-ad"></a>谁会用到 Azure AD？
 Azure AD 适用于：
 
 - **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
