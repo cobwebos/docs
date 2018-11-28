@@ -86,7 +86,7 @@ ms.locfileid: "51625991"
 * 提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储有关。
 * 为提供用于解决与 Azure 存储相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized">本指南的组织方式</a>
+### <a name="how-this-guide-is-organized"></a>本指南的组织方式
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
@@ -650,7 +650,7 @@ client.SetServiceProperties(sp);
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>容量指标显示存储容量使用量意外增加
 如果发现存储帐户中的容量使用量意外突变，可调查其原因，具体方法是先查看可用性指标；例如，失败的删除请求数增加可能导致所用的 Blob 存储量增加，本来希望应用程序特定的清理操作可释放一些空间，但却未按预期工作（例如，因为用于释放空间的 SAS 令牌已过期）。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
+### <a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
