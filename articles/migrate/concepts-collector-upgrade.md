@@ -1,6 +1,6 @@
 ---
-title: 升级 Azure Migrate 中的收集器设备 | Microsoft Docs
-description: 介绍 Azure Migrate 收集器设备升级。
+title: 升级 Azure 迁移中的收集器设备 | Microsoft Docs
+description: 介绍 Azure 迁移收集器设备升级。
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
@@ -16,9 +16,9 @@ ms.locfileid: "50241457"
 ---
 # <a name="collector-update-release-history"></a>收集器更新版本历史记录
 
-本文总结了 [Azure Migrate](migrate-overview.md) 中的收集器设备的升级信息。
+本文总结了 [Azure 迁移](migrate-overview.md) 中的收集器设备的升级信息。
 
-Azure Migrate 收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
+Azure 迁移收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
 
 
 ## <a name="one-time-discovery-upgrade-versions"></a>一次性发现：升级版本
@@ -77,19 +77,19 @@ SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 ## <a name="continuous-discovery-upgrade-versions"></a>持续发现：升级版本
 
-尚未提供持续发现设备的升级。
+尚未对持续发现设备进行升级。
 
 ## <a name="run-an-upgrade"></a>运行升级
 
 无需再次下载 OVA，即可将收集器升级到最新版本。
 
 1. 可以在下面的列表中下载最新的升级包。
-2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
+2. 若要确保下载的修补程序是安全的，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希相匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
     示例：**C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
-3. 将 zip 文件复制到收集器设备 VM。
+3. 将 zip 文件复制到收集器设备虚拟机。
 4. 右键单击 zip 文件 >“全部提取”。
 5. 右键单击 Setup.ps1 > “使用 PowerShell 运行”，并按照安装说明进行操作。
 
@@ -97,4 +97,4 @@ SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解](concepts-collector.md)收集器设备。
-- 为 VMware VM [运行评估](tutorial-assessment-vmware.md)。
+- 为 VMware 虚拟机 [运行评估](tutorial-assessment-vmware.md)。
