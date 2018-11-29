@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: cc631f139e7f11d82f2caac83770754060353d07
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277709"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426853"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>教程 1：生成可确定用户意图的自定义应用
 
@@ -71,7 +71,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "为 MyStore 意向输入新陈述的屏幕截图")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
 
 ## <a name="none-intent"></a>None 意向 
@@ -156,11 +156,11 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 ## <a name="train-again"></a>再次训练
 
-[!INCLUDE[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-again"></a>再次发布
 
-[!INCLUDE[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="get-intent-again"></a>再次获取意向
 

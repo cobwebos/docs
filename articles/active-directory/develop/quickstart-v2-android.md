@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6eb06a2a4e83c9c293474f1692c2d33d4d0dfb36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e9c46e1315257d619f1624c06441adc08daddb2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995731"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427006"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用将用户登录并调用 Microsoft Graph API
 
@@ -123,7 +123,7 @@ ms.locfileid: "46995731"
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)) 库用于用户登录和请求用于访问由 Microsoft Azure Active Directory (Azure AD) 保护的 API 的令牌库。 可以如下所述使用 Gradle 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 库用于用户登录和请求用于访问由 Microsoft Azure Active Directory (Azure AD) 保护的 API 的令牌库。 可以如下所述使用 Gradle 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -159,9 +159,9 @@ MSAL 有两种用于获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 在某些情况下，需要强制用户与 Azure AD v2.0 终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
 
 * 用户首次登录应用程序
-* 由于密码已过期，用户可能需要重新输入凭据
-* 应用程序正在请求访问需要用户同意的资源
-* 需要双重身份验证
+* 由于密码已过期，用户可能需要重新输入凭据的情况
+* 应用程序正在请求访问用户需要同意的资源的情况
+* 需要双重身份验证的情况
 
 ```java
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());

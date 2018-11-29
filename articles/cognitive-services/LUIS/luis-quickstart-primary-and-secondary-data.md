@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4647e663f4a2734451835f90d2687bb6aaf91712
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277794"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425235"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
 
@@ -86,7 +86,7 @@ ms.locfileid: "51277794"
 
 在示例话语中标记实体以后，必须添加短语列表来加强简单实体的信号。 短语列表**不**用作完全匹配，不需要是预期的每个可能的值。 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在“意向”页上，选择“ApplyForJob”意向。 
 

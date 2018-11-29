@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282374"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423409"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>教程 3：提取格式良好的数据
 在本教程中，我们将修改人力资源应用，以使用“正则表达式”实体从话语中提取带有一致格式的数据。
@@ -48,7 +48,7 @@ HRF-456098 title?
 > * 发布
 > * 从终结点获取意向和实体
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
@@ -63,7 +63,7 @@ HRF-456098 title?
 
 ## <a name="findform-intent"></a>FindForm 意向
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“创建新意向”。 
 
@@ -90,7 +90,7 @@ HRF-456098 title?
 
     应用程序包含从前一教程添加的预生成数字实体，因此，已标记每个表单编号。 此信息可能对客户端应用程序而言已足够，但不会使用数字类型来标记编号。 使用适当的名称创建新实体可以在从 LUIS 返回实体后，让客户端应用程序适当地处理该实体。
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>正则表达式实体 
 要与表单编号匹配的正则表达式实体是 `hrf-[0-9]{6}`。 此正则表达式匹配文本字符 `hrf-`，但忽略大小写和区域性变体。 它完全匹配数字 0-9 中的 6 个数字。

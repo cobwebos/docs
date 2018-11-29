@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 84ced8a529c2e717dc3e5888466d9a2e1e7e928a
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 044cc30a418f3c54053a6f4878f97f5c9ea9f9e2
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180937"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335106"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>教程：模拟访问读取访问冗余存储时发生的故障
 
@@ -145,7 +145,7 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
  
 将 `<destination_ip>` 替换为存储帐户 IP 地址，将 `<gateway_ip>` 替换为本地主机 IP 地址。 若要恢复应用程序，请按任意键。
 
-当应用程序再次开始运行后，向主终结点发出的请求失败。 应用程序尝试重新连接到主终结点 5 次。 达到 5 次故障重试阈值后，便会从只读辅助终结点请求获取映像。 从辅助终结点成功检索映像 20 次后，应用程序便会尝试连接到主终结点。 如果仍无法访问主终结点，应用程序会继续从辅助终结点读取内容。 这种模式就是上一教程中介绍的[断路器](/azure/architecture/patterns/circuit-breaker.md)模式。
+当应用程序再次开始运行后，向主终结点发出的请求失败。 应用程序尝试重新连接到主终结点 5 次。 达到 5 次故障重试阈值后，便会从只读辅助终结点请求获取映像。 从辅助终结点成功检索映像 20 次后，应用程序便会尝试连接到主终结点。 如果仍无法访问主终结点，应用程序会继续从辅助终结点读取内容。 这种模式就是上一教程中介绍的[断路器](/azure/architecture/patterns/circuit-breaker)模式。
 
 ### <a name="simulate-primary-endpoint-restoration"></a>模拟主终结点还原
 

@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1345d4c4d349ed2fa5bb95ee35299c77fb391359
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884979"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316763"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
 
@@ -61,12 +61,11 @@ dotnet new web
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 
+在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 
 
 还原 NuGet 包并运行该应用。
 
 ```bash
-dotnet restore
 dotnet run
 ```
 
@@ -178,11 +177,11 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 
 
 ![Azure 门户中的应用服务页](media/quickstart-dotnetcore/portal-app-overview.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

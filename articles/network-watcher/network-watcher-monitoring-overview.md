@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614271"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427015"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
 
@@ -37,7 +37,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 连接监视器还提供在不同时间段观察到的最小、平均和最大延迟。 了解连接的延迟后，你可能会发现，将 Azure 资源移到不同的 Azure 区域能够降低延迟。 详细了解如何确定 [Azure 区域与 Internet 服务提供商之间的相对延迟](#determine-relative-latencies-between-azure-regions-and-internet-service-providers)，以及如何使用[连接监视器](connection-monitor.md)监视 VM 与终结点之间的通信。 若要测试某个时间点的连接，而不是监视各时间段的连接（像使用连接监视器所做的那样），请使用[连接故障排除](#connection-troubleshoot)功能。
 
-网络性能监视器是一项基于云的混合网络监视解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到服务和应用程序终结点的网络连接，以及 Azure ExpressRoute 的性能。 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 详细了解[网络性能监视器](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+网络性能监视器是一项基于云的混合网络监视解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到服务和应用程序终结点的网络连接，以及 Azure ExpressRoute 的性能。 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 详细了解[网络性能监视器](../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 ### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>查看虚拟网络中的资源及其关系
 
@@ -97,7 +97,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>查看网络资源的诊断日志
 
-可以针对网络安全组、公共 IP 地址、负载均衡器、虚拟网络网关和应用程序网关等 Azure 网络资源启用诊断日志记录。 诊断日志功能提供单个界面，用于针对生成诊断日志的任何现有网络资源启用和禁用网络资源诊断日志。 可以使用 Microsoft Power BI 和 Azure Log Analytics 等工具查看诊断日志。 若要详细了解如何分析 Azure 网络诊断日志，请参阅 [Log Analytics 中的 Azure 网络解决方案](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+可以针对网络安全组、公共 IP 地址、负载均衡器、虚拟网络网关和应用程序网关等 Azure 网络资源启用诊断日志记录。 诊断日志功能提供单个界面，用于针对生成诊断日志的任何现有网络资源启用和禁用网络资源诊断日志。 可以使用 Microsoft Power BI 和 Azure Log Analytics 等工具查看诊断日志。 若要详细了解如何分析 Azure 网络诊断日志，请参阅 [Log Analytics 中的 Azure 网络解决方案](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
 ## <a name="network-watcher-automatic-enablement"></a>网络观察程序自动启用
 在订阅中创建或更新虚拟网络时，将在虚拟网络的区域中自动启用网络观察程序。 自动启用网络观察程序对资源或相关费用没有任何影响。 有关详细信息，请参阅[网络观察程序 - 创建](network-watcher-create.md)。

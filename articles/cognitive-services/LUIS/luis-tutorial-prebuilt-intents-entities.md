@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281789"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422416"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>教程 2：确定常见意向和实体
 在本教程中，修改“人力资源”应用。 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语，因为会自动检测实体。
@@ -48,7 +48,7 @@ ms.locfileid: "51281789"
 ## <a name="add-prebuilt-intents"></a>添加预生成意向
 LUIS 提供几个预生成意向，以便提供常见用户意向。  
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“添加预生成的意向”。 
 

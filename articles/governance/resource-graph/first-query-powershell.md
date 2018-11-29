@@ -4,17 +4,17 @@ description: 本文将指导你完成为 Azure PowerShell 启用 Resource Graph 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6bd7ceaeaf0b064ebbd8f069a4741489349bb980
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646382"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427499"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -37,9 +37,6 @@ Azure Resource Graph 模块需要以下软件：
   - 对于 PowerShell Core，请使用 Azure PowerShell 模块的 **Az** 版本。
 
   - 对于 Windows PowerShell，请使用 Azure PowerShell 模块的 **AzureRm** 版本。
-
-  > [!NOTE]
-  > 当前不建议在 Cloud Shell 中安装该模块。
 
 - PowerShellGet 2.0.1 或更高版本。 若尚未安装或更新，请遵循[这些说明](/powershell/gallery/installing-psget)。
 

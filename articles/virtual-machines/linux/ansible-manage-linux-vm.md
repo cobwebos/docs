@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251315"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317256"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>使用 Ansible 在 Azure 中管理 Linux 虚拟机
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 管理 Azure 虚拟机，就像管理任何其他资源一样。 本文介绍如何使用 Ansible playbook 启动和停止 Linux 虚拟机。 
@@ -141,4 +141,4 @@ ms.locfileid: "51251315"
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"] 
-> [使用 Ansible 管理 Azure 动态库存](/articles/ansible/ansible-manage-azure-dynamic-inventories)
+> [使用 Ansible 管理 Azure 动态库存](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

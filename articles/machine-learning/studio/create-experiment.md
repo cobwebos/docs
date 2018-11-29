@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 8f4740a559e73620500c4ab04ea6e9e25405b8a3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263564"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425704"
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -43,9 +43,7 @@ ms.locfileid: "52263564"
 - [机器学习算法备忘](algorithm-cheat-sheet.md)和[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md) - 可供用户下载的海报及深度讨论工作室算法的相关文章。
 - [Machine Learning Studio: Algorithm and Module Help](https://msdn.microsoft.com/library/azure/dn905974.aspx)（机器学习工作室：算法和模块帮助）- 包括机器学习算法在内的所有工作室模块的完整参考。
 
-<!-- -->
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="how-does-machine-learning-studio-help"></a>机器学习工作室有什么作用？
 

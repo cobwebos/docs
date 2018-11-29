@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987420"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426161"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
 
 可以使用防火墙日志来监视 Azure 防火墙。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。 使用指标，可以在门户中查看性能计数器。 
 
-可通过门户访问其中部分日志。 可将日志发送到 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、存储和事件中心，并使用 Log Analytics 或其他工具（例如 Excel 和 Power BI）对其进行分析。
+可通过门户访问其中部分日志。 可将日志发送到 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)、存储和事件中心，并使用 Log Analytics 或其他工具（例如 Excel 和 Power BI）对其进行分析。
 
 本教程介绍如何执行下列操作：
 
@@ -94,7 +94,7 @@ ms.locfileid: "49987420"
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>查看和分析网络与应用程序规则日志
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) 收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
 如需 Azure 防火墙 Log Analytics 示例查询，请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)。
 
@@ -111,7 +111,7 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 将防火墙配置为收集日志后，可以浏览 Log Analytics 以查看数据。
 
 > [!div class="nextstepaction"]
-> [Log Analytics 中的网络监视解决方案](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Log Analytics 中的网络监视解决方案](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

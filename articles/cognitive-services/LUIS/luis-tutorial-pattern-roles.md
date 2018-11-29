@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277830"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427482"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
 
@@ -49,7 +49,7 @@ ms.locfileid: "51277830"
 > * 创建城市的短语列表
 > * 从终结点获取意向和实体
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
@@ -64,7 +64,7 @@ ms.locfileid: "51277830"
 
 ## <a name="create-new-entities"></a>创建新实体
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 在左侧导航栏中选择“实体”。 
 
@@ -254,7 +254,7 @@ ms.locfileid: "51277830"
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move wayne berry from miami to mount vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d039654fc1d652a3997515a12caa48acaac124fe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429781"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425286"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
 
@@ -29,7 +29,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 若要完成本文中的步骤，需要满足以下先决条件：
 
-- [下载并安装存储资源管理器](http://www.storageexplorer.com/)
+- [下载并安装存储资源管理器](https://www.storageexplorer.com/)
 
 - [连接到 Azure 存储帐户或服务](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -199,7 +199,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件上传到文件共享**
 
-        a.  在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。
 
         ![上传文件](media/vs-azure-tools-storage-explorer-files/image18.png)
         
@@ -211,7 +211,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件夹上传到文件共享**
         
-        a. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。
 
         ![“上传文件夹”菜单](media/vs-azure-tools-storage-explorer-files/image20.png)
 
@@ -223,7 +223,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件下载到本地计算机**
         
-        a. 选择要下载的文件。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择要下载的文件。
         
         b. 在主窗格的工具栏上，选择“下载”。
         
@@ -233,7 +233,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **在本地计算机上打开文件**
         
-        a.  选择要打开的文件。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  选择要打开的文件。
         
         b.  在主窗格的工具栏上，选择“打开”。
         
@@ -241,7 +241,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件复制到剪贴板**
 
-        a. 选择要复制的文件。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择要复制的文件。
 
         b. 在主窗格的工具栏上，选择“复制”。
 
@@ -251,7 +251,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **删除文件**
 
-        a. 选择要删除的文件。
+        a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择要删除的文件。
 
         b. 在主窗格的工具栏上，选择“删除”。
 
@@ -259,6 +259,6 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[最新的存储资源管理器发行说明和视频](http://www.storageexplorer.com/)。
+- 查看[最新的存储资源管理器发行说明和视频](https://www.storageexplorer.com/)。
 
 - 了解如何[使用 Azure Blob、表、队列和文件创建应用程序](https://azure.microsoft.com/documentation/services/storage/)。

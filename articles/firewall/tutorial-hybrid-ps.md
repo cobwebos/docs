@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854163"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316389"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -309,9 +309,6 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 
 - 通过防火墙 IP 地址从中心网关子网连接到分支子网的路由
 - 通过防火墙 IP 地址从分支子网连接的默认路由
-
-> [!NOTE]
-> Azure 防火墙使用 BGP 来了解本地网络。 这可能包括一个默认路由，用于通过本地网络将 Internet 流量路由回来。 在生产部署中，可能需要将 Internet 流量直接从防火墙发送到 Internet。 可以在 AzureFirewallSubnet 上添加下一跃点类型为 **Internet** 的用户定义默认路由 (0.0.0.0/0)。 以本地为目标的流量仍然使用从 BGP 获取的更具体路由通过 VPN/ExpressRoute 网关强制进行隧道传输。
 
 ```azurepowershell
 #Create a route table

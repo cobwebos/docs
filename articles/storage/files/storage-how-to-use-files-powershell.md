@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 48ac46a9087e8027d0282533afccc4d9b28481ba
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157371"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582445"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和管理 Azure 文件共享 
 本指南介绍通过 PowerShell 来使用 [Azure 文件共享](storage-files-introduction.md)的基本知识。 Azure 文件共享与其他文件共享一样，只不过是存储在云中并由 Azure 平台提供支持。 Azure 文件共享支持行业标准 SMB 协议，可以跨多个计算机、应用程序和实例进行文件共享。 
@@ -49,7 +49,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
-现在可以创建第一个 Azure 文件共享。 可以使用 [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare) cmdlet 创建文件共享。 此示例创建名为 `myshare` 的共享。
+现在可以创建第一个 Azure 文件共享。 可以使用 [New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare) cmdlet 创建文件共享。 此示例创建名为 `myshare` 的共享。
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -79,7 +79,7 @@ Azure 文件提供两种在 Azure 文件共享中使用文件和文件夹的方�
 以下示例介绍如何使用 AzureRM PowerShell 模块通过文件 REST 协议来操作 Azure 文件共享。 
 
 #### <a name="create-directory"></a>创建目录
-若要在 Azure 文件共享的根目录中创建名为 *myDirectory* 的新目录，请使用 [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory) cmdlet。
+若要在 Azure 文件共享的根目录中创建名为 *myDirectory* 的新目录，请使用 [New-AzureStorageDirectory](/powershell/module/azure.storage/new-azurestoragedirectory) cmdlet。
 
 ```azurepowershell-interactive
 New-AzureStorageDirectory `

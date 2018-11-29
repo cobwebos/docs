@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280687"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425065"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>教程 4：提取确切的文本匹配项
 本教程介绍如何获取与项的预定义列表匹配的数据。 列表中的每个项可以包含一个同义词列表。 就人力资源应用来说，可以通过多项信息（例如姓名、电子邮件、电话号码、美国联邦税务 ID）来确定员工身份。 
@@ -41,7 +41,7 @@ ms.locfileid: "51280687"
 > * 发布
 > * 从终结点获取意向和实体
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>使用现有应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
@@ -57,7 +57,7 @@ ms.locfileid: "51280687"
 
 ## <a name="moveemployee-intent"></a>MoveEmployee 意向
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 选择“创建新意向”。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "51280687"
 
     请记住，数字和 datetimeV2 是在前面的某个教程中添加的，因此在示例话语中发现它们时，系统会自动对其进行标记。
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>员工列表实体
 **MoveEmployee** 意向有示例话语以后，LUIS 需了解什么是员工。 
