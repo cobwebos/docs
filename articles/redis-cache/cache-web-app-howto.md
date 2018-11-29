@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: a92621d852ec60fb4773957d71dc6a55caaf991c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b719f45a2b76b41408593649e9e5cfe21dcf9179
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092192"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443780"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>快速入门：创建 ASP.NET Web 应用 
 
@@ -190,16 +190,16 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 4. 在**解决方案资源管理器**中，展开“视图” > “共享”文件夹。 然后打开 *_Layout.cshtml* 文件。
 
     将：
-
-        ```csharp
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    
+    ```csharp
+    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
     替换为：
 
-        ```csharp
-        @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    ```csharp
+    @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
 ### <a name="to-add-a-new-rediscache-view"></a>添加新 RedisCache 视图的步骤
 

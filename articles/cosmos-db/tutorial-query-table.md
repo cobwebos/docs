@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 8a629a7b1340547f43919a1e88abbda53e9e2ae0
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 9d47928984330f2366da066c221e2bb502aa7193
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763385"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442941"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数
 
 本文中的查询使用如下示例 `People` 表：
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -55,7 +55,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **结果**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -81,7 +81,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **结果**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 
@@ -95,9 +95,9 @@ CloudTable table = tableClient.GetTableReference("people");
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(
         TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition(PartitionKey, QueryComparisons.Equal, "Smith"),
+            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"),
             TableOperators.And,
-            TableQuery.GenerateFilterCondition(Email, QueryComparisons.Equal,"Ben@contoso.com")
+            TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal,"Ben@contoso.com")
     ));
 
 await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);

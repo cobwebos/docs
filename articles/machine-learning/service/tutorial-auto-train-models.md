@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 11/21/2018
-ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0c7431e5b66da721248b2a49c214584bf43e577f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284738"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498573"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务中的自动化机器学习训练分类模型
 
@@ -41,7 +41,7 @@ ms.locfileid: "52284738"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `03.auto-train-models.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://aka.ms/aml-notebook-tut-03) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `03.auto-train-models.ipynb` Notebook。
 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]

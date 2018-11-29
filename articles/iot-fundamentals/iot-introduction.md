@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288741"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582411"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -113,7 +113,7 @@ Azure 中有多项 IoT 相关服务，确定需要使用哪一项服务可能并
 
 5. [**IoT Edge**](/azure/iot-edge/)：此服务在 IoT 中心基础上构建。 它可以用于在 IoT 设备上分析数据，不需在云中进行分析。 通过将部分工作负荷移至边缘，可以减少需要发送到云的消息的数目。 
 
-6. [**Azure 数字孪生**](/azure/azure-digital-twins/)：此服务用于创建物理环境的综合性模型。 可以为人员、空间和设备之间的关系和交互建模。 例如，可以预测某个工厂的维护需求、分析某个输电网络的实时电力需求，或者优化某个办公室的可用空间的使用。
+6. [**Azure 数字孪生**](../digital-twins/index.yml)：此服务用于创建物理环境的综合性模型。 可以为人员、空间和设备之间的关系和交互建模。 例如，可以预测某个工厂的维护需求、分析某个输电网络的实时电力需求，或者优化某个办公室的可用空间的使用。
 
 7. [**时序见解**](/azure/time-series-insights)：此服务用于存储、可视化和查询 IoT 设备生成的大量时序数据。 可以将此服务与 IoT 中心配合使用。 
 

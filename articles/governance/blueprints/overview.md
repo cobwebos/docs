@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b2e767bf27962472a19e5d2e704b456cffe18423
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a48876adc853ca94f606f58f7eeb13c3d1a57ce8
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277522"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498600"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -57,7 +57,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 |资源  | 层次结构选项| Description  |
 |---------|---------|---------|
 |资源组     | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。         |
-|Azure 资源管理器模板      | 资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
+|Azure 资源管理器模板      | 订阅、资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
 |策略分配     | 订阅、资源组 | 将蓝图分配到订阅后，允许将策略或计划分配给该订阅。 该策略或计划必须在蓝图的范围内（在蓝图管理组或以下）。 若策略或计划具有参数，则在创建蓝图时或在蓝图分配期间分配这些参数。       |
 |角色分配   | 订阅、资源组 | 将现有用户或组添加到内置角色，以确保始终为正确的人员提供正确的资源访问权限。 可为整个订阅定义角色分配，也可将其嵌套到蓝图所包含的特定资源组。 |
 
