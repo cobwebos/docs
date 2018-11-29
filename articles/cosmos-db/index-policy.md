@@ -36,7 +36,7 @@ Azure Cosmos DB 支持两种索引模式，可以在 Azure Cosmos 容器上配�
   > [!NOTE]
   > 将索引模式配置为“无”时，删除任何现有索引会产生不良影响。 如果访问模式仅需要 ID 或自助链接，则应使用此选项。
 
-查询一致性级别的维护与常规读取操作的维护类似。 如果查询具有“无”索引模式的容器，Azure Cosmos 数据库将返回错误。 可使用 .NET SDK 通过 REST API 中的显式“x-ms-documentdb-enable-scan” 标头或“EnableScanInQuery”请求选项将查询作为扫描执行 **** ****。 “EnableScanInQuery”当前不支持某些查询功能（如 ORDER BY），因为这些功能授权相应索引。
+查询一致性级别的维护与常规读取操作的维护类似。 如果查询具有“无”索引模式的容器，Azure Cosmos 数据库将返回错误。 可使用 .NET SDK 通过 REST API 中的显式“x-ms-documentdb-enable-scan” 标头或“EnableScanInQuery”请求选项将查询作为扫描执行。  **** ****  “EnableScanInQuery”当前不支持某些查询功能（如 ORDER BY），因为这些功能授权相应索引。
 
 ## <a name="modifying-the-indexing-policy"></a>修改索引策略
 
