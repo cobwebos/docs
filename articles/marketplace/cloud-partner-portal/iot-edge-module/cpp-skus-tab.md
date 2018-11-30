@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684811"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276034"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模块“SKU”选项卡
 
@@ -125,7 +125,7 @@ ms.locfileid: "51684811"
 
 |  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
-| **默认路由**        | 每个默认路由名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个默认路由。 确保在路由值中使用正确的[路由语法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 若要引用模块，请使用其默认模块名称，即不包含空格和特殊字符的“SKU 标题”。 若要引用未知的其他模块，请使用 `<FROM_MODULE_NAME>` 约定来告知客户他们需要更新此信息。 详细了解 [IoT Edge 路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 <br/> 例如，如果模块 `ContosoModule` 在 `ContosoInput` 上侦听输入，并在 `ContosoOutput` 上侦听输出数据，则最好是定义以下 2 个默认路由：<br/>- 名称 #1：`ToContosoModule`<br/>- 值 #1：`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- 名称 #2：`FromContosoModuleToCloud`<br/>- 值 #2：`FROM /messages/modules/ContonsoModule/outputs/ContosoOuput INTO $upstream`<br/>  |
+| **默认路由**        | 每个默认路由名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个默认路由。 确保在路由值中使用正确的[路由语法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 若要引用模块，请使用其默认模块名称，即不包含空格和特殊字符的“SKU 标题”。 若要引用未知的其他模块，请使用 `<FROM_MODULE_NAME>` 约定来告知客户他们需要更新此信息。 详细了解 [IoT Edge 路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 <br/> 例如，如果模块 `ContosoModule` 在 `ContosoInput` 上侦听输入，并在 `ContosoOutput` 上侦听输出数据，则最好是定义以下 2 个默认路由：<br/>- 名称 #1：`ToContosoModule`<br/>- 值 #1：`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- 名称 #2：`FromContosoModuleToCloud`<br/>- 值 #2：`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
 | **默认孪生所需属性**      | 每个默认孪生所需属性名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含 4 个嵌套层次结构。 详细了解[孪生所需属性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。 <br/> 例如，如果某个模块通过孪生所需属性支持可动态配置的刷新率，则最好是定义以下默认孪生所需属性：<br/> - 名称 #1：`RefreshRate`<br/>- 值 #1：`60`|
 | **默认环境变量**  | 每个默认环境变量名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个名称/值环境变量。 <br/>例如，如果某个模块在启动之前需要接受使用条款，则你可以定义以下环境变量：<br/> - 名称 #1：`ACCEPT_EULA`<br/>- 值 #1：`Y`|
 | **默认 createOptions**  | createOptions 包含的字符必须少于 512 个。 必须是有效的 JSON 且未转义。 详细了解 [createOptions](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules)。 <br/> 例如，如果某个模块需要绑定某个端口，则你可以定义以下 createOptions：<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|

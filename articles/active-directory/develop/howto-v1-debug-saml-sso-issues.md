@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7f653eca0c768cc35df039cbd51153484710d80a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347777"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422247"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -32,7 +32,7 @@ ms.locfileid: "44347777"
 若要下载并安装“我的应用安全登录扩展”，请使用以下链接之一。
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 
@@ -75,7 +75,7 @@ ms.locfileid: "44347777"
     - 指明问题根本原因的陈述。
 2.  返回 Azure AD 并找到“测试单一登录”边栏选项卡。
 3.  在“获取解决方法指导”上面的文本框中，粘贴该错误消息。
-3.  单击“获取解决方法指导”显示解决问题的步骤。 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果未使用“我的应用安全登录扩展”，可能需要使用某种工具（例如 [Fiddler](http://www.telerik.com/fiddler)）来检索 SAML 请求和响应。
+3.  单击“获取解决方法指导”显示解决问题的步骤。 该指导可能需要 SAML 请求或 SAML 响应中的信息。 如果未使用“我的应用安全登录扩展”，可能需要使用某种工具（例如 [Fiddler](https://www.telerik.com/fiddler)）来检索 SAML 请求和响应。
 4.  验证 SAML 请求中的目标是否对应于从 Azure Active Directory 获取的 SAML 单一登录服务 URL。
 5.  验证 SAML 请求中的颁发者是否与在 Azure Active Directory 中为应用程序配置的标识符相同。 Azure AD 使用颁发者在目录中查找应用程序。
 6.  验证应用程序是否预期在 AssertionConsumerServiceURL 中从 Azure Active Directory 接收 SAML 令牌。 可以在 Azure Active Directory 中配置此值，但如果此值是 SAML 请求的一部分，则不一定要这样做。
@@ -90,7 +90,7 @@ ms.locfileid: "44347777"
 1. 如果应用程序在 Azure AD 库中，请验证是否已遵循将应用程序与 Azure AD 集成的所有步骤。 若要查找应用程序的集成说明，请参阅 [SaaS 应用程序集成教程列表](../saas-apps/tutorial-list.md)。
 2. 检索 SAML 响应。
     - 如果已安装“我的应用安全登录扩展”，请在“测试单一登录”边栏选项卡中单击“下载 SAML 响应”。
-    - 如果未安装该扩展，请使用某种工具（例如 [Fiddler](http://www.telerik.com/fiddler)）来检索 SAML 响应。 
+    - 如果未安装该扩展，请使用某种工具（例如 [Fiddler](https://www.telerik.com/fiddler)）来检索 SAML 响应。 
 3. 请注意 SAML 响应令牌中的以下元素：
     - NameID 用户唯一标识符值和格式
     - 在令牌中颁发的声明

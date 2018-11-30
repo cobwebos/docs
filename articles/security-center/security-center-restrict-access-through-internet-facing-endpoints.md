@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8e404651fa315f630ff190c9e70ccdd3eec7f117
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 487b9d8d02909913f251ae7547d75669fa90f8d9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229996"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313294"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>在 Azure 安全中心中通过面向 Internet 的终结点限制访问
 如果任何网络安全组 (NSG) 具有一个或多个允许从“任何”源 IP 地址进行访问的入站规则，Azure 安全中心将建议通过面向 Internet 的终结点限制访问。 将访问权限打开到“任何”，攻击者能够访问资源。 安全中心将建议编辑这些入站规则，以限制对实际需要访问的源 IP 地址的访问。
@@ -60,7 +60,7 @@ ms.locfileid: "51229996"
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-policies.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解安全建议如何有助于保护 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报。

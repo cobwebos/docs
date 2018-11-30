@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: spelluru
+ms.openlocfilehash: ef6d5d22f70d5fff38f90b457a7c945ab59fc67c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330750"
+---
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>什么是服务总线主题和订阅？
 服务总线主题和订阅支持 *发布/订阅* 消息通信模型。 在使用主题和订阅时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的主题交换消息。
 

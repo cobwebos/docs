@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222057"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262612"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -268,8 +268,8 @@ ms.locfileid: "47222057"
 可选。 指定媒体服务资源（包含清单图像）的资源 ID。 默认值为 null。 
 
 
->[!NOTE] 
->在创建频道之前，具有以下约束的盖板图像应当作为专用资产上传（该资产中不应有其他文件）。 只有在广告时间，或已明确收到信号要求插入盖板时，实时编码器才会插入盖板，此时才会使用此图像。 实时编码器在某些错误条件下也会转到盖板模式 - 例如输入信号丢失时。 实时编码器进入这种“输入信号丢失”状态时，目前无法使用自定义图像。 可在[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)建议提供此功能。
+> [!NOTE] 
+> 在创建频道之前，具有以下约束的盖板图像应当作为专用资产上传（该资产中不应有其他文件）。 只有在广告时间，或已明确收到信号要求插入盖板时，实时编码器才会插入盖板，此时才会使用此图像。 实时编码器进入这种“输入信号丢失”状态时，目前无法使用自定义图像。 可在[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)建议提供此功能。
 
 
 * 分辨率最大为 1920x1080。

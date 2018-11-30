@@ -3,7 +3,7 @@ title: 通过 Azure 安全中心响应安全事件 | Microsoft 文档
 description: 本文档介绍了如何利用 Azure 安全中心应对事件响应场景。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
-ms.author: yurid
-ms.openlocfilehash: d398edb8e7c009e38265525fb1924acd8fa68d9c
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 684098dd2780e827ccc74b7fbbb16a2be75fa3e1
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161248"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619871"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>利用 Azure 安全中心进行事件响应
 许多组织只有在遭受攻击后才会去学习如何响应安全事件。 为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。

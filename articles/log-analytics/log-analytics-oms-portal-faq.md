@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5f5143800c423bdbaac9994b55e500723018dce4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283438"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634347"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Log Analytics 用户从 OMS 门户转到 Azure 门户的常见问题
 Log Analytics 一开始使用其自己的门户（称为 OMS 门户）来管理其配置并分析收集的数据。  此门户的所有功能已移至 Azure 门户，在其中继续进行开发。
@@ -82,9 +82,9 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 | Linux 服务器   | 工作区的“高级设置”菜单。 |
 | Azure 存储     | 工作区的“高级设置”菜单。 |
 | System Center     | 工作区的“高级设置”菜单。 |
-| Office 365        | 请参阅 [Office 365 管理解决方案的文档](../monitoring/monitoring-solution-office-365.md)，了解配置详细信息。 |
+| Office 365        | 请参阅 [Office 365 管理解决方案的文档](../azure-monitor/insights/solution-office-365.md)，了解配置详细信息。 |
 | Windows 遥测 | 解决方案的“设置”菜单。 有关配置详细信息，请参阅 [Azure 门户中的 Windows 分析](/windows/deployment/update/windows-analytics-azure-portal)。 |
-| ITSM 连接器    | 请参阅[使用 IT 服务管理连接器连接 ITSM 产品/服务](../log-analytics/log-analytics-itsmc-connections.md)，了解如何将 ITSM 服务与 Log Analytics 连接。 |
+| ITSM 连接器    | 请参阅[使用 IT 服务管理连接器连接 ITSM 产品/服务](../log-analytics/../azure-monitor/platform/itsmc-connections.md)，了解如何将 ITSM 服务与 Log Analytics 连接。 |
 
 ### <a name="data"></a>数据
 在工作区的“高级设置”菜单中管理大多数“数据”设置。 下表详细说明了此菜单的每个部分。
@@ -107,13 +107,13 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 管理工作区的“解决方案”菜单中的解决方案。 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>如何安装和删除管理解决方案？
-在 OMS 门户中，请通过“解决方案”库安装管理解决方案，通过“设置”将其删除。 在 Azure 门户中，请从 Azure 市场[安装管理解决方案](../monitoring/monitoring-solutions.md#install-a-management-solution)。 请从已安装解决方案的列表中[删除解决方案](../monitoring/monitoring-solutions.md#remove-a-management-solution)。
+在 OMS 门户中，请通过“解决方案”库安装管理解决方案，通过“设置”将其删除。 在 Azure 门户中，请从 Azure 市场[安装管理解决方案](../azure-monitor/insights/solutions.md#install-a-management-solution)。 请从已安装解决方案的列表中[删除解决方案](../azure-monitor/insights/solutions.md#remove-a-management-solution)。
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>如何创建和管理警报？
 基于 Log Analytics 查询的警报规则现在在[统一警报体验](../monitoring-and-diagnostics/alert-metric.md)中管理。 请参阅[如何将警报从 Log Analytics 扩展到 Azure 警报中](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md)，详细了解如何在 Azure 门户中配置和使用警报。
 
 ## <a name="how-do-i-access-my-dashboards"></a>如何访问我的仪表板？
-Log Analytics 中的[我的仪表板](../log-analytics/log-analytics-dashboards.md)功能已被弃用。 此功能允许你有一个专用的视图设计器部件集合，已被内置的 Azure 仪表板功能所取代。 你可以使用共享视图的[视图设计器](../log-analytics/log-analytics-view-designer.md)继续可视化 Log Analytics 中的数据。 此外，还可以将这些视图或者[各个查询](../log-analytics/log-analytics-tutorial-dashboards.md)的可视化效果固定到 Azure 仪表板。
+Log Analytics 中的[我的仪表板](../log-analytics/../azure-monitor/platform/dashboards.md)功能已被弃用。 此功能允许你有一个专用的视图设计器部件集合，已被内置的 Azure 仪表板功能所取代。 你可以使用共享视图的[视图设计器](../log-analytics/../azure-monitor/platform/view-designer.md)继续可视化 Log Analytics 中的数据。 此外，还可以将这些视图或者[各个查询](../log-analytics/log-analytics-tutorial-dashboards.md)的可视化效果固定到 Azure 仪表板。
 
 ## <a name="how-do-i-check-my-usage"></a>如何查看我的使用情况？
 现在可以轻松地查看和管理 Log Analytics 的使用情况和成本，只需在工作区中选择“使用情况和预估成本”即可。
@@ -126,5 +126,5 @@ Log Analytics 中的[我的仪表板](../log-analytics/log-analytics-dashboards.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Azure 门户[查找和安装管理解决方案](../monitoring/monitoring-solutions.md)。
+- 使用 Azure 门户[查找和安装管理解决方案](../azure-monitor/insights/solutions.md)。
 - 了解 [Azure 门户中的“日志搜索”](log-analytics-log-search-portals.md)。

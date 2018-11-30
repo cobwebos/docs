@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tamram
+ms.openlocfilehash: aff0ac5f2b761047a3e365e8e6702909a673e464
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440009"
+---
 现在，已了解有关 Azure 表存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
 * 有关可用 API 的完整详细信息，请查看[用于 .NET 的 Azure 存储客户端库](https://go.microsoft.com/fwlink/?LinkID=390731)参考中的表服务参考文档。

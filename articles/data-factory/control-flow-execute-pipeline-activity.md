@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2aa25004fb9c2e914cd8c669095953e174686197
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aace01fedd0c2ab538d4e11b418907f962128d0e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051757"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163112"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
 Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
@@ -66,7 +66,7 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 type | 必须设置为：**ExecutePipeline**。 | String | 是
 管道 | 管道引用此管道调用的依赖管道。 管道引用对象具有两个属性：**referenceName** 和 **type**。 referenceName 属性指定引用管道的名称。 type 属性必须设置为 PipelineReference。 | PipelineReference | 是
 parameters | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
-waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 | 默认值为 false。 | 布尔 | 否
+waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 | 默认值为 false。 | Boolean | 否
 
 ## <a name="sample"></a>示例
 此方案具有两个管道：
@@ -93,7 +93,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 | �
               "value": "@pipeline().parameters.masterSourceBlobContainer",
               "type": "Expression"
             },
-            "sinkBlobCountainer": {
+            "sinkBlobContainer": {
               "value": "@pipeline().parameters.masterSinkBlobContainer",
               "type": "Expression"
             }
@@ -245,7 +245,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 | �
           "value": "@pipeline().parameters.masterSourceBlobContainer",
           "type": "Expression"
         },
-        "sinkBlobCountainer": {
+        "sinkBlobContainer": {
           "value": "@pipeline().parameters.masterSinkBlobContainer",
           "type": "Expression"
         }

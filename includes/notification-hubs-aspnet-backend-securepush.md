@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269013"
+---
 ## <a name="webapi-project"></a>WebAPI 项目
 1. 在 Visual Studio 中，打开在**通知用户**教程中创建的 **AppBackend** 项目。
 2. 在 Notifications.cs 中，将整个 **Notifications** 类替换为以下代码。 请确保将占位符替换为通知中心的连接字符串（具有完全访问权限）和中心名称。 可以从 [Azure 门户](http://portal.azure.com)获取这些值。 现在，该模块将表示要发送的其他安全通知。 在完整的实现中，通知将存储在数据库中；为简单起见，在此示例中我们将它们存储在内存中。

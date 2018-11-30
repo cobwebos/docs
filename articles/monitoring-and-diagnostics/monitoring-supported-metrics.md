@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964180"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824908"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -819,7 +819,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |IsEngineAnsweringQuery|保持活动状态|Count|平均值|完整性检查表示群集响应查询|无维度|
 |IngestCommandOriginalSizeInMb|引入量 (MB)|Count|总计|已引入群集的数据总量 (MB)|无维度|
 |EventAgeSeconds|引入延迟（秒）|秒|平均值|从源（例如消息位于事件中心）到群集的引入时间（秒）|无维度|
-|EventRecievedFromEventHub|处理的事件数（针对事件中心）|Count|总计|从事件中心引入时，由群集处理的事件数|无维度|
+|EventReceivedFromEventHub|处理的事件数（针对事件中心）|Count|总计|从事件中心引入时，由群集处理的事件数|无维度|
 |IngestionResult|引入结果|Count|Count|引入操作的数量|IngestionResultDetails|
 |EngineCPU|CPU|百分比|平均值|CPU 使用率级别|无维度|
 
@@ -1570,6 +1570,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|实例|
 
 ## <a name="next-steps"></a>后续步骤
-* [了解 Azure Monitor 中的指标](../monitoring/monitoring-data-collection.md)
+* [了解 Azure Monitor 中的指标](../azure-monitor/platform/data-collection.md)
 * [针对指标创建警报](monitoring-overview-alerts.md)
 * [将指标导出到存储、事件中心或 Log Analytics](monitoring-overview-of-diagnostic-logs.md)

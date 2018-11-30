@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e80033d696de1b83da43fc27e5be9eca3b3f8757
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44168772"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "52156737"
 ---
 ## <a name="create-a-device-identity"></a>创建设备标识
 
-在本部分中，你将使用 Azure CLI 创建一个设备标识以在本教程中使用。 Azure CLI 预安装在 [Azure Cloud Shell](https://docs.microsoft.com/zure/cloud-shell/overview) 中，你也可以[在本地安装它](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 设备 ID 区分大小写。
+在本部分中，你将使用 Azure CLI 创建一个设备标识以在本教程中使用。 Azure CLI 预安装在 [Azure Cloud Shell](~/articles/cloud-shell/overview.md) 中，你也可以[在本地安装它](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 设备 ID 区分大小写。
 
 1. 在命令行环境中运行以下命令，你将在其中使用 Azure CLI 来安装 IoT 扩展：
 

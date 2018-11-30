@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 16291e4f4915dd6328a2015407fa06dc8f62fba1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 10ff2118ade13980250608bf4bc238e8ff2f9c64
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011878"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312980"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -250,7 +250,7 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 ### <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
 若要修改安全策略，用户必须是安全管理员或是该订阅的所有者或参与者。
 
-若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](security-center-policies.md)。
+若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](security-center-azure-policy.md)。
 
 ### <a name="what-is-a-security-recommendation"></a>什么是安全建议？
 Azure 安全中心可分析 Azure 资源的安全状态。 发现潜在的安全漏洞后会生成建议。 建议会对所需控件的整个配置过程提供指导。 示例如下：

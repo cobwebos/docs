@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c7d1665eece966053f52e118bb0d6f7f5ec4cba6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c7ccd8d2022631e32c240007a782d2382aac518
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957857"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422841"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>如何：使用 ADAL 在 Android 上启用跨应用 SSO
 
@@ -130,7 +130,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 #### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>步骤 3：在应用程序中设置正确的权限
 
-Android 中的中转站应用程序使用 Android OS 的帐户管理器功能来管理跨应用程序的凭据。 若要在 Android 中使用该中转站应用程序清单中必须有权使用 AccountManager 帐户。 [Google 帐户管理器文档](http://developer.android.com/reference/android/accounts/AccountManager.html)中详细介绍了这些权限
+Android 中的中转站应用程序使用 Android OS 的帐户管理器功能来管理跨应用程序的凭据。 若要在 Android 中使用该中转站应用程序清单中必须有权使用 AccountManager 帐户。 [Google 帐户管理器文档](https://developer.android.com/reference/android/accounts/AccountManager.html)中详细介绍了这些权限
 
 具体而言，这些权限如下：
 

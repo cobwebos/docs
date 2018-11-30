@@ -10,18 +10,18 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 27a4bccfbac73c7c8c902a59fdd4cafe0c420c31
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634882"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634534"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
-容器化是一种软件分发方法，其中应用程序或服务被打包成容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与底层操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
+容器化是一种软件分发方法，其中应用程序或服务被打包成容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
 
-人脸识别服务提供适用于 Docker 的标准化 Linux 容器。该容器名为“人脸”，可检测图像中的人脸和识别属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 此外，还可以使用共享视觉特征将类似人脸组织成组。
+人脸识别服务提供适用于 Docker 的标准化 Linux 容器。该容器名为“人脸”，可检测图像中的人脸和识别属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -29,11 +29,11 @@ ms.locfileid: "51634882"
 
 使用“人脸”容器之前，必须满足以下先决条件：
 
-**Docker 引擎**：必须本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 中部署的 [Kubernetes](https://kubernetes.io/) 群集。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+**Docker 引擎**：必须本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
 
-必须配置 Docker 才能让容器连接到 Azure 并向其发送账单数据。
+必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。
 
-**熟悉 Microsoft 容器注册表和 Docker**：应该大致了解 Microsoft 容器注册表和 Docker 概念（例如注册表、存储库、容器和容器映像）以及基本的 `docker` 命令。  
+**熟悉 Microsoft 容器注册表和 Docker**：应对 Microsoft 容器注册表和 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。  
 
 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "51634882"
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-在请求访问“人脸”容器之前，必须先填写并提交[认知服务视觉容器请求表单](https://aka.ms/VisionContainersPreview)。 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交后，Azure 认知服务团队可以检查窗体，以确保满足访问专用容器注册表的条件。
+在请求访问“人脸”容器之前，必须先填写并提交[认知服务视觉容器请求表单](https://aka.ms/VisionContainersPreview)。 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交后，Azure 认知服务团队可以检查表单，以确保满足访问专用容器注册表的条件。
 
 > [!IMPORTANT]
 > 必须使用与表单中的 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 帐户关联的电子邮件地址。
@@ -59,9 +59,6 @@ ms.locfileid: "51634882"
 1. 在 Azure 门户中创建“人脸”资源。  
    若要使用“人脸”容器，必须先在 Azure 门户中创建相应的“人脸”资源。 有关详细信息，请参阅[快速入门：在 Azure 门户中创建认知服务帐户](../cognitive-services-apis-create-account.md)。
 
-   > [!IMPORTANT]
-   > “人脸”资源必须使用 F0 定价层。
-
 1. 获取 Azure 资源的终结点 URL 和订阅密钥。  
    创建 Azure 资源后，必须使用该资源中的终结点 URL 和订阅密钥来实例化相应的“人脸”容器。 可以分别从 Azure 门户中“人脸”资源的“快速启动”和“密钥”页复制终结点 URL 和订阅密钥。
 
@@ -69,13 +66,13 @@ ms.locfileid: "51634882"
 
 可通过多种方法使用认知服务容器的专用容器注册表进行身份验证，但建议的方法是在 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 中使用命令行。
 
-使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令（如以下示例所示）登录到 `containerpreview.azurecr.io`，即认知服务容器的专用容器注册表。 将 *\<username\>* 替换为用户名，将 *\<password\>* 替换为从 Azure 认知服务团队收到的凭据中提供的密码。
+使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令（如以下示例所示）登录到 `containerpreview.azurecr.io`，即认知服务容器的专用容器注册表。 将 \<username\> 替换为用户名，将 \<password\> 替换为从 Azure 认知服务团队收到的凭据中提供的密码。
 
 ```docker
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-如果已在文本文件中保护了凭据，则可以使用 `cat` 命令将该文本文件的内容连接到 `docker login` 命令，如以下示例所示。 将 *\<passwordFile\>* 替换为包含密码的文本文件的路径和名称，将 *\<username\>* 替换为凭据中提供的用户名。
+如果已在文本文件中保护了凭据，则可以使用 `cat` 命令将该文本文件的内容连接到 `docker login` 命令，如以下示例所示。 将 \<passwordFile\> 替换为包含密码的文本文件的路径和名称，将 \<username\> 替换为凭据中提供的用户名。
 
 ```docker
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
@@ -94,7 +91,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 有关“人脸”容器的可用标记的完整说明，请参阅 Docker 中心上的[识别文本](https://go.microsoft.com/fwlink/?linkid=2018655)。
 
 > [!TIP]
-> 可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格表格列出每个下载的容器映像的 ID、存储库和标记：
+> 可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格列出每个下载的容器映像的 ID、存储库和标记：
 >
 >  ```Docker
 >  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
@@ -170,7 +167,7 @@ POST http://localhost:5000/face/v1.0/detect
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用“人脸”容器中的操作。
 * 必须在实例化容器时指定账单信息。
-* **如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
+* **如果认知服务容器未连接到 Azure 进行计量，则不对其授权以运行。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
 
 ## <a name="next-steps"></a>后续步骤
 

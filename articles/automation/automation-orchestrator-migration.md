@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80b0523f8442e30e6af329263be454fa545933d6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237258"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275263"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
 [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) 中的 Runbook 基于专为 Orchestrator 编写的集成包中的活动，而 Azure 自动化中的 Runbook 则基于 Windows PowerShell。  Azure 自动化中的[图形 Runbook](automation-runbook-types.md#graphical-runbooks) 具有的外观类似于其活动用于表示 PowerShell cmdlet、子 Runbook 和资产的 Orchestrator Runbook。
@@ -79,7 +79,9 @@ Runbook 转换器将 Orchestrator Runbook 转换为可导入 Azure 自动化的[
 ### <a name="using-runbook-converter"></a>使用 Runbook 转换器
 **ConvertFrom-SCORunbook** 的语法如下：
 
-    ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```powershell
+ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```
 
 * RunbookPath - 包含要转换的 Runbook 的导出文件的路径。
 * Module - 包含 Runbook 中活动的集成模块的逗号分隔列表。
@@ -87,8 +89,9 @@ Runbook 转换器将 Orchestrator Runbook 转换为可导入 Azure 自动化的[
 
 以下示例命令在名为 **MyRunbooks.ois_export** 的导出文件中转换 Runbook。  这些 Runbook 使用 Active Directory 和 Data Protection Manager 集成包。
 
-    ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
-
+```powershell
+ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
+```
 
 ### <a name="log-files"></a>日志文件
 Runbook 转换器在与转换的 Runbook 所在的相同位置创建以下日志文件。  如果文件已存在，则以最后一个转换的信息进行覆盖。

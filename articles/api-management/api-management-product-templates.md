@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: dae757231d8f2ff7fcd8e032d941c0fa9f192796
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22983342"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443621"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
+
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
  本部分中的模板可用于自定义开发人员门户中的产品页面的内容。  
@@ -31,7 +32,9 @@ ms.locfileid: "22983342"
 -   [产品](#Product)  
   
 > [!NOTE]
->  示例默认模板包含在后面的文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a> 产品列表  
  **产品列表**模板可用于自定义开发人员门户中产品列表页的正文。  
@@ -75,7 +78,7 @@ ms.locfileid: "22983342"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|属性|类型|Description|  
 |--------------|----------|-----------------|  
 |分页|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
 |筛选|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
@@ -200,7 +203,7 @@ ms.locfileid: "22983342"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|属性|类型|Description|  
 |--------------|----------|-----------------|  
 |产品|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
 |IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  

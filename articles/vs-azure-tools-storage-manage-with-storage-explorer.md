@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 20aa1824656ee6eb861f3848d969d678b07e9378
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038419"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422722"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -41,7 +41,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 对于所有 Windows 版本，都需要 .NET Framework 4.6.2 或更高版本。
 
-[下载并安装存储资源管理器](http://www.storageexplorer.com)
+[下载并安装存储资源管理器](https://www.storageexplorer.com)
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
@@ -49,7 +49,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 * macOS 10.12“Sierra”及更高版本
 
-[下载并安装存储资源管理器](http://www.storageexplorer.com)
+[下载并安装存储资源管理器](https://www.storageexplorer.com)
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -70,7 +70,7 @@ Azure 存储资源管理器也许可以在其他发行版上使用，但只有�
 
 Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
 
-[下载并安装存储资源管理器](http://www.storageexplorer.com)
+[下载并安装存储资源管理器](https://www.storageexplorer.com)
 
 ---
 

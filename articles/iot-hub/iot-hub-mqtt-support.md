@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 53643b185825d4cc03073144e1b3547452629c08
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344942"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497610"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -66,11 +66,11 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 * **ClientId** 字段使用 **deviceId**。
 
-* “用户名”字段使用 `{iothubhostname}/{device_id}/api-version=2016-11-14`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
+* “用户名”字段使用 `{iothubhostname}/{device_id}/api-version=2018-06-30`，其中 `{iothubhostname}` 是 IoT 中心的完整 CName。
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“用户名”字段应包含：
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14`
+    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
 
 * “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 

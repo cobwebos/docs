@@ -1,18 +1,18 @@
 ---
 title: 删除服务器并禁用保护 | Microsoft 文档
 description: 本文介绍如何从 Site Recovery 保管库中注销服务器，以及如何禁用虚拟机和物理服务器的保护。
-author: rayne-wiselman
-manager: carmonm
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: d7dcf27e106f73c828c2c46d4d7180b1f906e4d8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: rajani-janaki-ram
+ms.openlocfilehash: e5a77117b21c889a72b9dd65b072ce3aa5c34314
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614848"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976264"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 

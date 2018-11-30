@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/1/2018
+ms.date: 11/14/2018
 ms.author: trinadhk
-ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011317"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704641"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
@@ -41,7 +41,7 @@ Azure 备份提供了 3 个用于控制备份管理操作的内置角色。 详�
 | | 虚拟机参与者 | VM 资源 |
 | 按需 VM 备份 | 备份操作员 | 恢复保管库资源 |
 | 还原 VM | 备份操作员 | 恢复服务保管库 |
-| | 虚拟机参与者 | 将在其中部署 VM 的资源组 |
+| | 参与者 | 将在其中部署 VM 的资源组 |
 | | 虚拟机参与者 | 得到备份的源 VM |
 | 还原非托管磁盘 VM 备份 | 备份操作员 | 恢复保管库资源 |
 | | 虚拟机参与者 | 得到备份的源 VM |

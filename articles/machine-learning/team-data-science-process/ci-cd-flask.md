@@ -1,26 +1,22 @@
 ---
 title: 人工智能 (AI) 应用程序的 DevOps：使用 Docker、Kubernetes 和 Python Flask 应用程序在 Azure 上创建连续集成管道
 description: 人工智能 (AI) 应用程序的 DevOps：使用 Docker 和 Kubernetes 在 Azure 上创建连续集成管道
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: jainr
-manager: deguhath
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
-ms.author: jainr
-ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=jainr, ms.author=jainr)
+ms.openlocfilehash: c232680d5d1bf0eb761ff974ebf6608b67922f33
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094376"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496747"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>人工智能 (AI) 应用程序的 DevOps：使用 Docker 和 Kubernetes 在 Azure 上创建持续集成管道
 对于 AI 应用程序，通常有两个工作流：数据科学家构建机器学习模型，应用开发人员构建应用程序并将其公开给最终用户供使用。 在本文中，我们演示了如何为 AI 应用程序实现持续集成 (CI)/持续交付 (CD) 管道。 AI 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 在本文中，我们将从一个专用 Azure blob 存储帐户中提取预先训练的模型，它也可以是 AWS S3 帐户。 对于本文，我们将使用一个简单的 python flask Web 应用程序。
@@ -55,7 +51,7 @@ ms.locfileid: "50094376"
 1. 开发人员使用自己选择的 IDE 编写应用程序代码。
 2. 他们将代码提交到他们选择的源代码管理工具（Azure DevOps 能够很好地支持各种源代码管理工具）
 3. 另一边，数据科学家在开发模型。
-4. 对模型感到满意后，他们将模型发布到一个模型存储库，在本例中我们使用的是 blob 存储帐户。 这可以通过 REST API 轻松替换为 Azure ML Workbench 的模型管理服务。
+4. 对模型感到满意后，他们将模型发布到一个模型存储库，在本例中我们使用的是 blob 存储帐户。 
 5. 生成过程根据 GitHub 中的提交在 Azure DevOps 中启动。
 6. Azure DevOps 生成管道从 Blob 容器中拉取最新的模型，并创建一个容器。
 7. Azure DevOps 将映像推送到 Azure 容器注册表中的一个专用映像存储库

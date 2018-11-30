@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b7b4efdb14872ee2d841e17d2e253b6c7c30c3
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f7f8af635eb7d5449a242f3a7708d865c13bb448
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389762"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162800"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -182,7 +182,7 @@ ms.locfileid: "49389762"
 * 修复了对字符串字段进行排序时跨分区按查询条件排序不正常工作的问题。
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](sql-api-sql-query.md#Aggregates)。
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](how-to-sql-query.md#Aggregates)。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4

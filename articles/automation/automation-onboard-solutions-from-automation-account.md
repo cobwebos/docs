@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6ee89f3d57ded382b4d4519e4054448c144b10c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625058"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632681"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -81,7 +81,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 需要手动添加 Azure 中没有的计算机。 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“添加非 Azure 计算机”。 此操作打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-overview.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
+单击“添加非 Azure 计算机”。 此操作打开新浏览器窗口，其中[介绍了如何在计算机上安装并配置 Microsoft Monitoring Agent](../azure-monitor/platform/log-analytics-agent.md)，让计算机能够开始向解决方案进行报告。 如果你载入当前由 System Center Operations Manager 管理的计算机，则不需要新代理，工作区信息将输入到现有代理中。
 
 ## <a name="onboard-machines-in-the-workspace"></a>在工作区中载入计算机
 

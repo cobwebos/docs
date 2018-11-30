@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 442aa7034c3fec57b3b9394e6b0f46d4dec47849
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954307"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633106"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -69,7 +69,7 @@ ms.locfileid: "46954307"
 4. 在子网的列表中，选择想要更改设置的子网。 可以更改以下设置：
 
     - **地址范围：** 如果没有资源部署在子网内，可以更改的地址范围。 如果子网中存在的任何资源，必须将资源移到另一个子网，或从子网中先删除它们。 删除资源所采取的步骤因资源而异。 若要了解如何删除子网中的资源，请阅读针对要删除的每种资源类型的相关文档。 请参阅[添加子网](#add-a-subnet)步骤 5 中的**地址范围**约束。
-    - 用户：可使用内置角色或自己的自定义角色控制对子网的访问。 若要了解有关分配访问子网的角色和用户的详细信息，请参阅[使用角色分配管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access)。
+    - 用户：可使用内置角色或自己的自定义角色控制对子网的访问。 若要了解有关分配访问子网的角色和用户的详细信息，请参阅[使用角色分配管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)。
     - **网络安全组**和**路由表**：请参阅[添加子网](#add-a-subnet)的第 5 步。
     - **服务终结点**：请参阅[添加子网](#add-a-subnet)的第 5 步中的服务终结点。 如果为某个现有子网启用服务终结点，请确保该子网的任何资源上未运行任何关键任务。 服务终结点可将子网每个网络接口上的路由，从使用地址前缀为 0.0.0.0/0 且下一跃点类型为 Internet 的默认路由，切换到使用服务地址前缀且下一跃点类型为 VirtualNetworkServiceEndpoint 的新路由。 切换过程中，可能会终止任何打开的 TCP 连接。 对于使用新路由更新的所有网络接口，除非流量流向服务，否则不会启用服务终结点。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
     - **子网委派**：请参阅[添加子网](#add-a-subnet)第 5 步中的服务终结点。 可以将子网委派修改为，为子网启用零到多个委派。 如果已在子网中部署服务的资源，只有在删除服务的所有资源后，才能删除子网委派。 若要向其他服务委派，请从“服务”列表中选择要委派给的服务。 

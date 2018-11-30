@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/24/2018
-ms.openlocfilehash: 7322b07740d5dec85b6217e122fb262647527c96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 792ac3f26bdea6c6ccb084d893925d60e6333edb
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258402"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852446"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>将 Azure 机器学习模型部署到 Azure IoT Edge 设备
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 
 Azure 机器学习模型可以容器化为基于 Docker 的 Web 服务。 Azure IoT Edge 允许你将容器远程部署到设备。 组合使用这些服务在边缘运行你的模型可以实现更快的响应时间和更少的数据传输。 
 

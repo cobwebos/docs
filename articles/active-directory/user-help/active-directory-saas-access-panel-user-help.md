@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4229ca7ff96a9806ac82cf9452de496d858f6b4
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306404"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705678"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>排查有关访问和使用 MyApps 门户的问题
 
@@ -49,7 +49,7 @@ MyApps 门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使�
 
 确保符合以下浏览器要求：
 
-- **Microsoft Edge**：Windows 10 周年纪念版或更高版本上。
+- **Edge**：Windows 10 周年纪念版或更高版本上。
 - **Chrome**：在 Windows 7 或更高版本上，以及在 Mac OS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。
@@ -57,7 +57,7 @@ MyApps 门户要求浏览器支持 JavaScript 并且已启用 CSS。 如果使�
 还可以直接从以下站点下载扩展：
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 如果已安装扩展但仍遇到问题，请尝试以下解决方法：

@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345464"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706052"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作 AI 模型
 
-[开放式神经网络交换](http://onnx.ai) (ONNX) 格式是用于表示机器学习模型的开放标准。 ONNX 由[合作伙伴社区](http://onnx.ai/supported-tools)提供支持，包括 Microsoft，他们创建兼容的框架和工具。 Microsoft 致力于开放式和可互操作 AI，以便数据科学家和开发人员能够：
+[开放式神经网络交换](https://onnx.ai) (ONNX) 格式是用于表示机器学习模型的开放标准。 ONNX 由[合作伙伴社区](https://onnx.ai/supported-tools)提供支持，包括 Microsoft，他们创建兼容的框架和工具。 Microsoft 致力于开放式和可互操作 AI，以便数据科学家和开发人员能够：
 
 + 使用自己选择的框架来创建模型并定型
 + 使用最低程度的集成工作跨平台部署模型
@@ -207,6 +207,6 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 ## <a name="more-info"></a>更多信息
 
 详细了解 ONNX 或为项目做出贡献：
-+ [ONNX 项目网站](http://onnx.ai)
++ [ONNX 项目网站](https://onnx.ai)
 
 + [GitHub 上的 ONNX 代码](https://github.com/onnx/onnx)

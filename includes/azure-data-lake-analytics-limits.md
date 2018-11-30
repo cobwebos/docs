@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: e3059b5a76a6a9188f79b683bb997bbcf8185ced
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279473"
+---
 数据湖分析让管理分布式基础结构和复杂代码等复杂任务变得容易。 它能动态地预配资源并让你以百亿亿字节为单位进行分析。 当作业完成时，它自动释放资源，仅需为所用的处理功能付费。 增加或减少存储数据的大小或使用的计算量时，不需要重写代码。 订阅的许多默认限制只需联系支持部门即可提高。 
 
 | **资源** | **默认限制** | **注释** |

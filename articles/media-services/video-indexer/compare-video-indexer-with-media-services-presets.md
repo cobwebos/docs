@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: juliako
-ms.openlocfilehash: e9b66721135456320134f41c614b194d1e22b10f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 758a3b30717e3bf516c1bceb5c255c397a6072cc
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380523"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291379"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>比较 Azure 媒体服务 v3 预设和视频索引器 
 
@@ -28,10 +28,10 @@ ms.locfileid: "49380523"
 
 ## <a name="compare"></a>比较
 
-|功能|视频索引器 API |媒体服务 v3 API 中的<br/>视频分析器和音频分析器预设|
+|Feature|视频索引器 API |媒体服务 v3 API 中的<br/>视频分析器和音频分析器预设|
 |---|---|---|
-|数据见解|[增强版](../../cognitive-services/video-indexer/video-indexer-output-json-v2.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json) |[基础知识](../latest/intelligence-concept.md)|
-|体验|查看支持的功能的完整列表： <br/> [概述](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)|仅返回视频见解|
+|数据见解|[增强版](video-indexer-output-json-v2.md) |[基础知识](../latest/intelligence-concept.md)|
+|体验|查看支持的功能的完整列表： <br/> [概述](video-indexer-overview.md)|仅返回视频见解|
 |计费|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |合规性|TBD|媒体服务符合许多认证。 请查看 [Azure 合规性产品.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)，并搜索“媒体服务”以查看是否符合相关证书的要求。|
 |免费试用版|美国东部|不可用|
@@ -39,6 +39,6 @@ ms.locfileid: "49380523"
 
 ## <a name="next-steps"></a>后续步骤
 
-[视频索引器概述](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)
+[视频索引器概述](video-indexer-overview.md)
 
-[媒体服务 v3 概述](../../media-services/latest/media-services-overview.md)
+[媒体服务 v3 概述](../latest/media-services-overview.md)

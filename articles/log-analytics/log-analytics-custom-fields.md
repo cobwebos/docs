@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010581"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335276"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics 中的自定义字段
 Log Analytics 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
@@ -81,7 +81,7 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 有两种方法可以删除自定义字段。  第一种方法是在查看上述完整列表时，对每个字段使用“删除”选项。  另一种方法是检索记录，并单击字段左侧的按钮。  菜单中将有一个选项可用于删除自定义字段。
 
 ## <a name="sample-walkthrough"></a>示例演练
-以下部分演示创建自定义字段的完整示例。  此示例会提取指示服务更改状态的 Windows 事件中的服务名称。  这依赖于服务控制管理器在 Windows 计算机的系统日志中创建的事件。  如果想要遵循此示例，必须[收集系统日志的信息事件](log-analytics-data-sources-windows-events.md)。
+以下部分演示创建自定义字段的完整示例。  此示例会提取指示服务更改状态的 Windows 事件中的服务名称。  这依赖于服务控制管理器在 Windows 计算机的系统日志中创建的事件。  如果想要遵循此示例，必须[收集系统日志的信息事件](../azure-monitor/platform/data-sources-windows-events.md)。
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 
@@ -141,5 +141,5 @@ Log Analytics 的**自定义字段**功能使你可以通过添加自己的可�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志搜索](log-analytics-queries.md)，使用自定义字段作为条件生成查询。
-* 监视使用自定义字段分析的[自定义日志文件](log-analytics-data-sources-custom-logs.md)。
+* 监视使用自定义字段分析的[自定义日志文件](../azure-monitor/platform/data-sources-custom-logs.md)。
 

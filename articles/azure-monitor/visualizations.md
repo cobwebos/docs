@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973569"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632970"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
-本文概述可视化 Azure Monitor 中所存储数据的可用方法。 具体数据包括 [Azure 指标存储中的指标](../monitoring/monitoring-data-collection.md#metrics)和 [Log Analytics 中的日志数据](../monitoring/monitoring-data-collection.md#logs)。 
+本文概述可视化 Azure Monitor 中所存储数据的可用方法。 具体数据包括 [Azure 指标存储中的指标](../azure-monitor/platform/data-collection.md#metrics)和 [Log Analytics 中的日志数据](../azure-monitor/platform/data-collection.md#logs)。 
 
 图表和图形等可视化效果有助于你分析监视数据，从而深入了解问题并识别模式。 根据使用的工具，你还可以选择与组织内外的其他用户共享可视化效果。
 
@@ -50,7 +50,7 @@ ms.locfileid: "46973569"
 - 上下文向下钻取受限。
 
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
-借助 [Azure Monitor 中的视图](../log-analytics/log-analytics-view-designer.md)，可以使用 Log Analytics 中存储的日志数据创建自定义可视化效果。 它们由[监视解决方案](../monitoring/monitoring-solutions.md)用于呈现所收集的数据。
+借助 [Azure Monitor 中的视图](../azure-monitor/platform/view-designer.md)，可以使用 Log Analytics 中存储的日志数据创建自定义可视化效果。 它们由[监视解决方案](../azure-monitor/insights/solutions.md)用于呈现所收集的数据。
 
 ![查看](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "46973569"
 - Log Analytics 数据丰富的可视化效果。
 - 导出和导入视图可以将其传输到其他资源组和订阅。
 - 通过工作区和监视解决方案集成到 Log Analytic 管理模型中。
-- 用于自定义参数的[筛选器](../log-analytics/log-analytics-view-designer-filters.md)。
+- 用于自定义参数的[筛选器](../azure-monitor/platform/view-designer-filters.md)。
 - 具有交互性，支持多级钻取（一个视图钻取到另一个视图）
 
 ### <a name="limitations"></a>限制
@@ -138,9 +138,9 @@ ms.locfileid: "46973569"
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[由 Azure Monitor 收集的数据](../monitoring/monitoring-data-collection.md)。
+- 了解[由 Azure Monitor 收集的数据](../azure-monitor/platform/data-collection.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [Azure Monitor 中的视图](../log-analytics/log-analytics-view-designer.md)。
+- 了解 [Azure Monitor 中的视图](../azure-monitor/platform/view-designer.md)。
 - 了解 [Application Insights 中的工作簿](../application-insights/app-insights-usage-workbooks.md)。
 - 了解如何[将日志数据导入 Power BI](../log-analytics/log-analytics-powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](../monitoring-and-diagnostics/monitor-send-to-grafana.md)。

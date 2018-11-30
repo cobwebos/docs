@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 0f6c0e9206d9e056ee0496b6cc515625b08b1e4a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 116f8ad1760f8e61c70b34d614a0265d11e3ae65
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959910"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975850"
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -133,7 +133,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 1. 转到“部署”。
 
-2. 单击 **“添加”**。
+2. 单击“添加”。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
@@ -291,7 +291,7 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 * 了解如何通过 [Vamp REST API](http://vamp.io/documentation/api/api-reference/) 管理 Vamp 操作。
 
-* 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](http://vamp.io/documentation/tutorials/create-a-workflow/)的形式运行这些脚本。
+* 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)的形式运行这些脚本。
 
 * 参阅其他 [VAMP 教程](http://vamp.io/documentation/tutorials/)。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a38defe41ea7c4e0da32cb73cf2bd73fd80950
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952794"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498211"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建完整的 Linux 环境
 在本文中，我们将构建一个简单网络，其中包含一个负载均衡器，以及一对可用于开发和简单计算的 VM。 将以逐条命令的方式完成整个过程，直到创建两个可以从 Internet 上的任何位置连接的有效且安全的 Linux VM。 然后，便可以继续构建更复杂的网络和环境。
@@ -1112,7 +1112,7 @@ azure availset create --resource-group myResourceGroup --location westeurope
 请阅读有关[管理 VM 可用性](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的详细信息。
 
 ## <a name="create-the-linux-vms"></a>创建 Linux VM
-已创建存储和网络资源以支持可访问 Internet 的 VM。 现在，让我们创建 VM，并使用不带密码的 SSH 密钥来保护其安全。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 我们会根据 [finding Azure VM images](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（查找 Azure VM 映像）中所述，使用 `azure vm image list` 来查找该映像信息。
+已创建存储和网络资源以支持可访问 Internet 的 VM。 现在，让我们创建 VM，并使用不带密码的 SSH 密钥来保护其安全。 在此情况下，我们需要基于最新的 LTS 创建 Ubuntu VM。 我们将根据 [finding Azure VM images](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（查找 Azure VM 映像）中所述，使用 `azure vm image list` 来查找该映像信息。
 
 我们使用命令 `azure vm image list westeurope canonical | grep LTS` 选择了映像。 在此示例中，使用 `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`。 对于最后一个字段，我们将传递 `latest`，以便将来可随时获取最新的内部版本。 （使用的字符串是 `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`）。
 

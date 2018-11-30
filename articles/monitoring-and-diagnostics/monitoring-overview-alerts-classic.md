@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2caf3d6373e764f5d5538a14a1750f1bfee2871d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614134"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822273"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
@@ -89,7 +89,7 @@ Webhook 可实现自动化和修复，例如使用：
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：
 
-* 详细了解[指标](../monitoring/monitoring-data-collection.md)
+* 详细了解[指标](../azure-monitor/platform/data-collection.md)
 * [通过 Azure 门户配置经典指标警报](alert-metric-classic.md)
 * 配置[经典指标警报 PowerShell](alert-metric-classic.md)
 * 配置[经典指标警报命令行接口 (CLI)](alert-metric-classic.md)

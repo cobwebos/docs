@@ -1,26 +1,22 @@
 ---
 title: Team Data Science Process 项目规划 - Azure | Microsoft 文档
 description: Microsoft Project 和 Excel 模板，可帮助规划和管理数据科学项目。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
 services: machine-learning
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
-ms.author: deguhath
-ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 702ea6152ce5bf90d1d1f61b566e91d1859e672b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308181"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443094"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
 
@@ -58,7 +54,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 ## <a name="repository-template"></a>存储库模板
 
-可以使用此[项目模板存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate)来支持高效的项目执行和协作。 此存储库提供了标准化的目录结构和文档模板，可以将它们用于你自己的 TDSP 项目。
+可以使用此[项目模板存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate)来支持高效的项目执行和协作。 此存储库提供标准化的目录结构和文档模板，可将其用于自己的 TDSP 项目。
 
 ## <a name="next-steps"></a>后续步骤
 

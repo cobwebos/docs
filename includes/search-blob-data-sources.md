@@ -1,3 +1,16 @@
+---
+author: mgottein
+ms.service: search
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: magottei
+ms.openlocfilehash: 0f11ea02afb1f59afda215c7d95a660df6155b62
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440006"
+---
 * PDF
 * Microsoft Office 格式：DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG（Outlook 电子邮件）  
 * HTML

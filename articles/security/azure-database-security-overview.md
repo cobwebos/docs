@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262193"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584768"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
 
@@ -199,7 +199,7 @@ SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据�
 - 来自可能有害的应用程序的访问 
 - 暴力破解 Azure 数据库的 PostgreSQL 凭据 
 
-[Azure Database for MySQL 高级威胁防护](/mysql/concepts-data-access-and-security-threat-protection.md)提供类似于 PostgreSQL 高级防护的保护功能。  
+[Azure Database for MySQL 高级威胁防护](../mysql/concepts-data-access-and-security-threat-protection.md)提供类似于 PostgreSQL 高级防护的保护功能。  
 
 ## <a name="centralized-security-management"></a>集中的安全管理
 
@@ -220,7 +220,7 @@ SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据�
 
 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的更多详细信息，请参阅 Azure SQL 数据库数据发现和分类。
 
-可以在 Azure 安全中心配置 [SQL 信息保护策略](/security-center/security-center-info-protection-policy.md)。
+可以在 Azure 安全中心配置 [SQL 信息保护策略](../security-center/security-center-info-protection-policy.md)。
 
 ## <a name="azure-marketplace"></a>Azure 市场
 

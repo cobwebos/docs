@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387271"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311447"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -255,7 +255,7 @@ Azure AD 审核日志中记录了用户预配服务执行的所有操作。 这�
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>SaaS 应用的自动用户预配是否适用于 Azure AD 中的动态组？
 
-是的。 配置为“仅同步已分配的用户和组”时，Azure AD 预配服务可以根据是否为[动态组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule])成员，在 SaaS 应用程序中预配或取消预配用户。 动态组也适用于“同步所有用户和组”选项。
+是的。 配置为“仅同步已分配的用户和组”时，Azure AD 预配服务可以根据是否为[动态组](../users-groups-roles/groups-create-rule.md)成员，在 SaaS 应用程序中预配或取消预配用户。 动态组也适用于“同步所有用户和组”选项。
 
 但是，动态组的使用可能会影响从 Azure AD 到 SaaS 应用程序的端到端用户预配的整体性能。 如果使用动态组，请记住以下注意事项和建议：
 

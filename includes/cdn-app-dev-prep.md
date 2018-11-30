@@ -1,3 +1,16 @@
+---
+author: zhangmanling
+ms.service: cdn
+ms.topic: include
+ms.date: 11/21/2018
+ms.author: mazha
+ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330739"
+---
 ## <a name="prerequisites"></a>先决条件
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：
 

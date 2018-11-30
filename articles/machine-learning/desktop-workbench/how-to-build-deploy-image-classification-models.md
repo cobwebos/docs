@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: f5917cd7a5e4fcc2733765f642ad0958092372c1
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ab9e04b8a9eb4290891b3c7d55f8262c4ba64d44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616208"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584040"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署图像分类模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "51616208"
 7. Web 服务部署
 8. Web 服务负载测试
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) 用作深度学习框架，训练在配备 GPU 的计算机（例如 [深度学习数据科学 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)）本地执行，部署使用 Azure 机器学习操作化 CLI。
+[CNTK](https://docs.microsoft.com/cognitive-toolkit/) 用作深度学习框架，训练在配备 GPU 的计算机（例如 [深度学习数据科学 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)）本地执行，部署使用 Azure 机器学习操作化 CLI。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -175,7 +175,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>增强图像
 
-[`augmentation` 模块](https://docs.microsoft.com/python/api/cvtk.augmentation)提供使用 [imgaug](https://github.com/aleju/imgaug) 库中所述的所有转换来增强数据集对象的功能。 可将图像转换分组到单个管道中，这样，就会对每张图像同时应用该管道中的所有转换。 
+[`augmentation` 模块](/python/api/cvtk/cvtk.augmentation.augmentation)提供使用 [imgaug](https://github.com/aleju/imgaug) 库中所述的所有转换来增强数据集对象的功能。 可将图像转换分组到单个管道中，这样，就会对每张图像同时应用该管道中的所有转换。 
 
 如果想要单独应用或者以任何不同的方式应用不同的增强步骤，可以定义多个管道并将其传递给 *augment_dataset* 函数。 有关图像增强的详细信息和示例，请参阅 [imgaug 文档](https://github.com/aleju/imgaug)。
 

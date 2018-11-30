@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632381"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822120"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用 Azure Active Directory Identity Protection 检测到会话风险后阻止访问  
 
@@ -122,6 +122,6 @@ ms.locfileid: "45632381"
 
 - 如果不知道如何删除 Azure AD 用户，请参阅[如何添加或删除用户](../fundamentals/add-users-azure-active-directory.md#delete-a-user)。
 
-- 有关删除 Tor 浏览器的说明，请参阅[卸载](https://tb-manual.torproject.org/en-US/uninstalling.html)。
+- 有关删除 Tor 浏览器的说明，请参阅[卸载](https://tb-manual.torproject.org/uninstalling/)。
 
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604359"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705916"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险后阻止访问  
 
@@ -123,9 +123,9 @@ ms.locfileid: "45604359"
 
     ![条件性访问](./media/app-sign-in-risk/109.png)
 
-    a. 单击“所有云应用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“所有云应用”。
 
-    b. 单击“Done”（完成） 。
+    b. 单击“完成”。
 
 10. 单击“条件”。 
 
@@ -135,7 +135,7 @@ ms.locfileid: "45604359"
 
     ![登录风险级别](./media/app-sign-in-risk/21.png)
 
-    a. 单击“登录风险”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“登录风险”。
  
     b. 对于“配置”，单击“是”。
 
@@ -177,7 +177,7 @@ ms.locfileid: "45604359"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的 What If。  
+1. 在[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页上，单击顶部菜单中的“What If”。  
  
     ![What If](./media/app-sign-in-risk/14.png)
 
@@ -212,7 +212,7 @@ ms.locfileid: "45604359"
 
     ![多重身份验证](./media/app-sign-in-risk/33.png)
 
-- 有关删除 Tor 浏览器的说明，请参阅[卸载](https://tb-manual.torproject.org/en-US/uninstalling.html)。
+- 有关删除 Tor 浏览器的说明，请参阅[卸载](https://tb-manual.torproject.org/uninstalling/)。
 
 ## <a name="next-steps"></a>后续步骤
 

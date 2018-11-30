@@ -2,25 +2,21 @@
 title: 深入了解如何预测车辆的运行状况和驾驶习惯 - Azure | Microsoft 文档
 description: 通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: deguhath
-ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: b1c01bcd15c5cfc63eae7c2b1983fc9075d4220c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300942"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444370"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>车辆遥测分析解决方案操作手册：深入探讨解决方案
 
@@ -670,7 +666,7 @@ Power BI 为此解决方案提供了丰富的仪表板，用于实时数据和�
 ### <a name="references"></a>参考
 
 * [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)
-* [Azure 数据工厂](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+* [Azure 数据工厂](https://docs.microsoft.com/rest/api/datafactory/)
 * [用于流引入的 Azure 事件中心 SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Azure 数据工厂数据移动功能](../../data-factory/copy-activity-overview.md)
 * [Azure 数据工厂 .NET 活动](../../data-factory/transform-data-using-dotnet-custom-activity.md)
