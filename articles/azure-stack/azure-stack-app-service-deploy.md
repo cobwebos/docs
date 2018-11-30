@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614049"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635367"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -97,7 +97,7 @@ ms.locfileid: "51614049"
 8. 输入文件共享的信息，然后选择“下一步”。 文件共享的地址必须使用文件服务器的完全限定域名 (FQDN) 或 IP 地址。 例如 \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或 \\\10.0.0.1\websites。
 
    >[!NOTE]
-   >安装程序会尝试测试与继续操作之前的文件共享的连接。 不过，如果是部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息正确无误，请继续部署。
+   >在继续下一步之前，安装程序会尝试测试与文件共享的连接。 不过，如果是部署到现有的虚拟网络，此连接测试可能会失败。 系统会发出警告，并提示你继续操作。 如果文件共享信息是正确的，请继续部署。
 
    ![应用服务安装程序][7]
 
@@ -202,17 +202,17 @@ ms.locfileid: "51614049"
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >如果部署到现有虚拟网络并使用内部 IP 地址连接到文件服务器，则必须添加出站安全规则。 此规则允许辅助角色子网和文件服务器之间的 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：<br>
-    >  - 源：任何
-    >  - 源端口范围：*
-    >  - 目标：IP 地址
-    >  - 目标 IP 地址范围：文件服务器的 IP 范围
-    >  - 目标端口范围：445
-    >  - 协议：TCP
-    >  - 操作：允许
-    >  - 优先级：700
-    >  - 名称：Outbound_Allow_SMB445
+    如果部署到现有虚拟网络并使用内部 IP 地址连接到文件服务器，则必须添加出站安全规则。 此规则允许辅助角色子网和文件服务器之间的 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
+
+    - 源：任何
+    - 源端口范围：*
+    - 目标：IP 地址
+    - 目标 IP 地址范围：文件服务器的 IP 范围
+    - 目标端口范围：445
+    - 协议：TCP
+    - 操作：允许
+    - 优先级：700
+    - 名称：Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
 
