@@ -66,7 +66,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 
 ## <a name="collector-prerequisites"></a>收集器先决条件
 
-收集器必须通过一些先决条件检查，目的是确保它能够通过互联网连接到 Azure Migrate 服务并上传发现的数据。
+收集器必须通过一些先决条件检查，目的是确保它能够通过 Internet 连接到 Azure Migrate 服务并上传发现的数据。
 
 - 检查 Internet 连接：收集器可直接或通过代理连接到 Internet。
     - 先决条件检查验证是否能连接到[必需和可选 URL](#connect-to-urls)。
