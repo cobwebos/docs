@@ -1,6 +1,6 @@
 ---
-title: 将 Kubernetes 添加到 Azure Stack Marketplace |Microsoft Docs
-description: 了解如何将 Kubernetes 添加到 Azure Stack Marketplace。
+title: 将 Kubernetes 添加到 Azure Stack 市场 | Microsoft Docs
+description: 了解如何将 Kubernetes 添加到 Azure Stack 市场。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5a3d63637d7b680a012057b92546ccde87ac73de
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 61af2c13a7cf395b5a96dc7b7ba63ad4d70dcf36
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233355"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52332997"
 ---
-# <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack Marketplace
+# <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!note]  
-> Azure Stack 上的 Kubernetes 处于预览状态。
+> Azure Stack 上的 Kubernetes 现为预览版。
 
-你可以向用户提供作为 Marketplace 项的 Kubernetes。 用户可以通过单个协调的操作部署 Kubernetes。
+可以将 Kubernetes 作为市场项提供给用户。 用户可以通过单个协调的操作部署 Kubernetes。
 
-下面的文章着眼于使用 Azure 资源管理器模板为独立的 Kubernetes 群集部署和预配资源。 Kubernetes 群集 Marketplace 项 0.3.0 需要 1808年的 Azure Stack 版本。 在开始之前，请检查 Azure Stack 和全球 Azure 租户设置。 收集关于 Azure Stack 的必需信息。 将所需资源添加到租户和 Azure Stack 市场。 群集取决于 Ubuntu 服务器、 自定义脚本，以及要在 marketplace 中的 Kubernetes 项。
+下面的文章着眼于使用 Azure 资源管理器模板为独立的 Kubernetes 群集部署和预配资源。 Kubernetes 群集市场项 0.3.0 需要 Azure Stack 版本 1808。 在开始之前，请检查 Azure Stack 和全球 Azure 租户设置。 收集关于 Azure Stack 的必需信息。 将所需资源添加到租户和 Azure Stack 市场。 群集依赖于 Ubuntu 服务器、自定义脚本以及要放置在市场中的 Kubernetes 项。
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>创建计划、套餐和订阅
 
-创建一个计划、 产品/服务，以及 Kubernetes Marketplace 项的订阅。 也可以使用现有计划和套餐。
+为 Kubernetes 市场项创建计划、套餐和订阅。 也可以使用现有计划和套餐。
 
 1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "50233355"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `UbuntuServer`。
+1. 输入 `UbuntuServer` 。
 
 1. 选择最新版本的服务器。 检查的完整版本，并确保有最新版本：
     - **发布者**：Canonical
@@ -82,7 +82,7 @@ ms.locfileid: "50233355"
 
 ## <a name="add-a-custom-script-for-linux"></a>添加适用于 Linux 的自定义脚本
 
-通过 Marketplace 添加 Kubernetes:
+从市场中添加 Kubernetes：
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
@@ -90,28 +90,28 @@ ms.locfileid: "50233355"
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Custom Script for Linux`。
+1. 输入 `Custom Script for Linux` 。
 
 1. 选择具有以下配置文件的服务器：
     - **套餐**：适用于 Linux 2.0 的自定义脚本
-    - **版本**: 2.0.6
+    - **版本**：2.0.6
     - **发布者**：Microsoft Corp
 
     > [!Note]  
-    > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你需要添加匹配的版本。 Kubernetes 需要的项的确切版本。
+    > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你需要添加匹配的版本。 Kubernetes 需要该项的确切版本。
 
 1. 选择“下载”。
 
 
-## <a name="add-kubernetes-to-the-marketplace"></a>将 Kubernetes 添加到 marketplace
+## <a name="add-kubernetes-to-the-marketplace"></a>将 Kubernetes 添加到市场
 
 1. 打开[管理门户](https://adminportal.local.azurestack.external)。
 
-1. 选择**所有服务**，然后在**管理**类别中，选择**Marketplace 管理**。
+1. 选择“所有服务”，然后在“管理”类别下，选择“市场管理”。
 
 1. 选择“+ 从 Azure 添加”。
 
-1. 输入 `Kubernetes`。
+1. 输入 `Kubernetes` 。
 
 1. 选择 `Kubernetes Cluster`。
 
@@ -124,11 +124,11 @@ ms.locfileid: "50233355"
 
 ## <a name="update-or-remove-the-kubernetes"></a>更新或删除 Kubernetes 
 
-当更新 Kubernetes 项时，您将需要删除在 Marketplace 中的项。 然后，可以按照这篇文章中的说明添加到 marketplace 的 Kubernetes。
+更新 Kubernetes 项时，需要删除市场中的项。 然后，可以按照本文中的说明将 Kubernetes 添加到市场。
 
-若要删除的 Kubernetes 项：
+若要删除 Kubernetes 项，请执行以下操作：
 
-1. 连接到使用 PowerShell 的 Azure Stack 操作员。 有关说明，请参阅[连接到 Azure Stack 操作员的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin)。
+1. 以操作员身份使用 PowerShell 连接到 Azure Stack。 有关说明，请参阅[以操作员身份使用 PowerShell 连接到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin)。
 
 2. 在库中查找当前的 Kubernetes 群集项。
 
@@ -136,7 +136,7 @@ ms.locfileid: "50233355"
     Get-AzsGalleryItem | Select Name
     ```
     
-3. 记下当前项的名称，例如 `Microsoft.AzureStackKubernetesCluster.0.2.0`
+3. 记下当前项的名称，例如 `Microsoft.AzureStackKubernetesCluster.0.3.0`
 
 4. 使用以下 PowerShell cmdlet 删除项：
 

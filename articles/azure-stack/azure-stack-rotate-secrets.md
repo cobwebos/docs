@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 8d84801aacfc60bb11aac4c9046a433378a59b79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244094"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314467"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -82,7 +82,7 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
    > [!IMPORTANT]  
    > 请确保未在环境中成功执行机密轮换。 如果已执行机密轮换，请在执行机密轮换之前将 Azure Stack 更新为版本 1807 或更高版本。 
 
-1.  运算符可能会注意到打开，并在 Azure Stack 机密轮换过程中自动关闭的警报。  此行为预期行为，可以忽略，将发出警报。  运算符可以通过运行 Test-azurestack 验证这些警报的有效性。  运算符使用 SCOM 监视的 Azure Stack 系统，一个系统置于维护模式将阻止这些警报到达其 ITSM 系统，但将继续时 Azure Stack 系统变得无法访问的警报。 
+1.  在 Azure Stack 机密轮换期间，操作员可能会注意到警报打开并自动关闭。  此行为是预期行为，可以忽略警报。  操作员可以通过运行 Test-AzureStack 来验证这些警报的有效性。  对于使用 SCOM 监视 Azure Stack 系统的操作人员来说，将系统置于维护模式将阻止这些警报到达其 ITSM 系统，但如果 Azure Stack 系统无法访问，则将继续发出警报。 
 2. 在执行任何维护操作之前通知用户。 将普通的维护时间段尽量安排在非营业时间。 维护操作可能会同时影响用户工作负荷和门户操作。
     > [!note]  
     > 后续步骤仅适用于轮换 Azure Stack 外部机密。
@@ -220,7 +220,7 @@ Remove-PSSession -Session $PEPSession
     ```powershell
     # Static Version
     $PEip = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
-    $PEUser = "<Privileged Endpoint user for exmaple Domain\CloudAdmin>"
+    $PEUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
     $PEpwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
     $PECred = New-Object System.Management.Automation.PSCredential ($PEUser, $PEpwd) 
     $NewBMCpwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force 

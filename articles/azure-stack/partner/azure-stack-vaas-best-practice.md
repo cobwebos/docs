@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: John.Haskin
-ms.openlocfilehash: 988b32d378b9affccb79f3351761f0eca5c91346
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d83eb501bbe685890decb3acbb8116164f4199db
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651720"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422654"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>作为一项服务验证的最佳做法
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 本文介绍如何管理即服务 (VaaS) 验证中的资源的最佳实践。 VaaS 资源的概述，请参阅[作为服务的关键概念验证](azure-stack-vaas-key-concepts.md)。
 

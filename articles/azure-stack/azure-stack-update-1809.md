@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 11/23/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976479"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314658"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -88,7 +88,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - 基础结构备份服务将从移[公钥基础结构网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network)到[公共 VIP 网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network)。 客户将需要确保该服务具有公共 VIP 网络中访问备份存储位置。  
 
 > [!IMPORTANT]  
-> 如果您不允许公共 VIP 网络中的连接到文件服务器的防火墙，此更改将导致基础结构备份失败，"错误 53 找不到的网络路径。" 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps)有关 1809年上可用的修补程序详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811，此更改将应用于所有系统。 如果在 1809年应用修补程序，则无需任何进一步操作。  
+> 如果您不允许公共 VIP 网络中的连接到文件服务器的防火墙，此更改将导致基础结构备份失败，"错误 53 找不到的网络路径。" 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](#post-update-steps)有关 1809年上可用的修补程序详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811，此更改将应用于所有系统。 如果在 1809年应用修补程序，则无需任何进一步操作。  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
 
@@ -173,7 +173,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 > 获取 Azure Stack 部署准备好进行扩展主机启用的下一个更新包。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
-- [KB 4471993 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4477849 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
@@ -226,7 +226,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    
   运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果 [Test-AzureStack](azure-stack-diagnostic-test.md) 未检测到问题，则可以忽略这些警报。 如果检测到问题，则可以尝试使用管理门户或 PowerShell 启动基础结构角色实例或节点。
 
-  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4471993/)，因此请确保安装此修补程序，如果遇到此问题。 
+  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4477849/)，因此请确保安装此修补程序，如果遇到此问题。 
 
 <!-- 1264761 - IS ASDK -->  
 - 可能会看到包含以下详细信息的“运行状况控制器”组件的警报：  

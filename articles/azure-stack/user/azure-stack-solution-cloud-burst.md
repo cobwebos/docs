@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095332"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334884"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>教程： 使用 Azure 创建跨云缩放解决方案
 
@@ -39,17 +39,17 @@ ms.locfileid: "50095332"
 > - 了解如何监视和跟踪你的部署。
 
 > [!Tip]  
-> ![混合 pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack 是 Azure 的扩展。 Azure Stack 提供的敏捷性和创新的云计算到您的本地环境并启用唯一的混合云，可用于生成和部署混合应用任意位置。  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack 是 Azure 的扩展。 Azure Stack 将云计算的灵活性和创新性带入你的本地环境，并支持唯一的混合云，以允许你在任何地方构建和部署混合应用。  
 > 
-> 本白皮书[混合应用程序的设计注意事项](https://aka.ms/hybrid-cloud-applications-pillars)评审 （放置、 可伸缩性、 可用性、 复原能力、 可管理性和安全性） 的软件质量的构成要素进行设计、 部署和操作混合应用程序。 设计注意事项，帮助您优化混合应用程序设计，最大程度减少在生产环境中的挑战。
+> 白皮书 [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars)（混合应用程序的设计注意事项）回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用程序设计，从而最大限度地减少生产环境中的难题。
 
 ## <a name="prerequisites"></a>必备组件
 
 -   Azure 订阅。 如果需要创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)然后再开始。
 
 - Azure Stack 集成系统或 Azure Stack 开发工具包部署。
-    - 查找有关安装 Azure Stack 上的说明[安装 Azure Stack 开发工具包](/articles/azure-stack/asdk/asdk-install)。
+    - 查找有关安装 Azure Stack 上的说明[安装 Azure Stack 开发工具包](../asdk/asdk-install.md)。
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 此安装可能需要几个小时才能完成。
 
 -   将[应用服务](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS 服务部署到 Azure Stack。
@@ -97,7 +97,7 @@ ms.locfileid: "50095332"
 设置混合持续集成和持续部署 (CI/CD) 将 Web 应用部署到 Azure 和 Azure Stack 中，并将更改自动推送到两个云。
 
 > [!Note]  
-> Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](/articles/azure-stack/azure-stack-app-service-before-you-get-started)"部分，了解 Azure Stack 操作员。
+> Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)"部分，了解 Azure Stack 操作员。
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>将代码添加到 Visual Studio Team Services 项目
 
@@ -259,7 +259,7 @@ Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配�
 ## <a name="develop-the-application-build"></a>开发应用程序生成
 
 > [!Note]  
-> Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](/articles/azure-stack/azure-stack-app-service-before-you-get-started)"部分，了解 Azure Stack 操作员。
+> Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)"部分，了解 Azure Stack 操作员。
 
 使用[Azure 资源管理器模板，如 web](https://azure.microsoft.com/resources/templates/)从 VSTS 部署到两个云应用程序代码。
 
