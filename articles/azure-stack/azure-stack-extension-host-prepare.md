@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/09/2018
+ms.date: 11/27/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8de810e689a00f081df82365eca00131453a6db5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514360"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447106"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>为 Azure Stack 准备扩展主机
 
@@ -121,8 +121,6 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
     }
     ```
 
-
-
 ### <a name="update-dns-configuration"></a>更新 DNS 配置
 
 > [!Note]  
@@ -131,8 +129,8 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 | IP | 主机名 | 类型 |
 |----|------------------------------|------|
-| \<IP> | Adminhosting.<Region>.<FQDN> | A |
-| \<IP> | Hosting.<Region>.<FQDN> | A |
+| \<IP> | *.Adminhosting。\<区域 >。\<FQDN > | A |
+| \<IP> | *.承载。\<区域 >。\<FQDN > | A |
 
 可以通过运行 cmdlet **Get-AzureStackStampInformation** 使用特权终结点检索已分配的 IP。
 

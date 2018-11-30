@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300143"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496196"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>关于 Azure Stack 的 VPN 网关
 
@@ -117,6 +117,10 @@ Azure Stack 不支持专门搭配 Express Route 使用的超性能网关 SKU。
 *注释 (1)* - VPN 吞吐量不是 Internet 上跨界连接的保证吞吐量。 这是可能的最大吞吐量度量。  
 *注释 (2)* - 最大隧道数是所有订阅的每个 Azure Stack 部署总数。  
 *注释 (3)* - 基本 SKU 不支持 BGP 路由。
+
+>[!NOTE]
+>两个 Azure Stack 部署之间，可以创建只有一个站点到站点 VPN 连接。  这是由于将只允许一个到相同的 IP 地址的 VPN 连接的平台中的限制。  因为 Azure Stack 利用单个公共 IP 用于所有 VPN 网关在 Azure Stack 系统的多租户网关，两个 Azure Stack 系统之间可以有一个 VPN 连接。  此限制也适用于多个站点到站点 VPN 连接连接到任何使用单个 IP 地址的 VPN 网关。  Azure Stack 将不允许多个要使用相同的 IP 地址创建的本地网络网关资源。
+
 
 ## <a name="next-steps"></a>后续步骤
 
