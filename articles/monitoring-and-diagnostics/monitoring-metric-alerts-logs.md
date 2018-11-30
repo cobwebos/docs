@@ -58,8 +58,8 @@ Azure Monitor 支持比[经典警报](alert-metric-classic.md)更具优势的[�
 - 为选定 Log Analytics 工作区的指标警报选择的信号类型为“指标”
 - 使用维度筛选器根据特定的条件或资源进行筛选；日志的指标是多维的
 - 配置信号逻辑时，可以创建单个警报来跨越多个维度值（例如“计算机”）
-- 如果**不**使用 Azure 门户为选定的 Log Analytics 工作区创建指标警报，则用户必须先手动创建一个显式规则，以便使用 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
-)将日志数据转换为指标。**
+- 如果**不**使用 Azure 门户为选定的 *Log Analytics 工作区*创建指标警报，则用户必须先手动创建一个显式规则，以便使用 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
+)将日志数据转换为指标。
 
 > [!NOTE]
 > 通过 Azure 门户为 Log Analytics 工作区创建指标警报时，会自动在后台创建相应的规则用于通过 [Azure Monitor - 计划的查询规则](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)将日志数据转换为指标，无需任何用户干预或操作。 如果不使用 Azure 门户创建日志的指标警报，请参阅[日志的指标警报的资源模板](#resource-template-for-metric-alerts-for-logs)部分，了解在创建指标警报之前，创建基于 ScheduledQueryRule 的“日志到指标”转换规则的示例方法 - 否则没有任何数据可用于创建日志的指标警报。
