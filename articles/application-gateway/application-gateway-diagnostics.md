@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2f3c2ba6849540f90117ef127e25030ff56b569
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237190"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427159"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -95,7 +95,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ## <a name="diagnostic-logging"></a>诊断日志
 
-可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
+可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
 * 活动日志：可使用 [Azure 活动日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（以前称为运行日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 * 访问日志：可使用此日志查看应用程序网关访问模式并分析重要信息，包括调用方 IP、请求的 URL、响应延迟、返回代码、输入和输出字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例可由 instanceId 属性标识。
@@ -303,7 +303,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) 可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 可从 Blob 存储帐户收集计数器和事件日志文件。 它含有可视化和强大的搜索功能，可用于分析日志。
 
 还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
@@ -379,7 +379,7 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) 可视化计数器和事件日志。
+* 使用 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 可视化计数器和事件日志。
 * [Visualize your Azure activity log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)（使用 Power BI 可视化 Azure 活动日志）博客文章。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 

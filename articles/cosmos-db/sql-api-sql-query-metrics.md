@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 4ed0008f4b574691387d6e0ee0300b5f05f1ec1b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c330171f0c85bce6451b8f342203e2eeeccb3c5a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798689"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425133"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
-Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](sql-api-sql-query.md)，不需要使用架构或辅助索引。 本文为开发者提供了以下信息：
+Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.md)，不需要使用架构或辅助索引。 本文为开发者提供了以下信息：
 
 * 有关 Azure Cosmos DB 的 SQL 查询执行如何工作的概要详细信息
 * 有关查询请求和响应标头以及客户端 SDK 选项的详细信息
@@ -42,7 +42,7 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](sql-api-sql-query
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
 
-| 选项 | 说明 |
+| 选项 | Description |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 对于需要跨多个分区执行的任何查询，都必须将其设置为 true。 这是一个显式标志，可用来在开发时有意识地进行性能权衡。 |
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
@@ -128,7 +128,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 从查询返回的主要响应标头包括以下内容：
 
-| 选项 | 说明 |
+| 选项 | Description |
 | ------ | ----------- |
 | `x-ms-item-count` | 响应中返回的项数。 这取决于所提供的 `x-ms-max-item-count`、在最大响应有效负载大小内可以容纳的项数、预配的吞吐量以及查询执行时间。 |  
 | `x-ms-continuation:` | 用于继续执行查询的继续标记（如果有更多结果）。 | 
@@ -218,7 +218,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 有关查询执行指标的部分介绍如何检索查询的服务器执行时间 ( `totalExecutionTimeInMs`)，以便可区分查询执行和网络传输所用的时间。
 
 ### <a name="indexing-policy"></a>索引编制策略
-若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](indexing-policies.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
+若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](index-policy.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
 
 ## <a name="query-execution-metrics"></a>查询执行指标
 可以通过传入可选的 `x-ms-documentdb-populatequerymetrics` 标头（在 .NET SDK 中为 `FeedOptions.PopulateQueryMetrics`）获取有关查询执行的详细指标。 `x-ms-documentdb-query-metrics` 中返回的值具有适用于对查询执行进行高级故障排除的以下键-值对。 
@@ -239,7 +239,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 指标 | 单位 | 说明 | 
+| 指标 | 单位 | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查询执行时间 | 
 | `queryCompileTimeInMs` | 毫秒 | 查询编译时间  | 
@@ -261,7 +261,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| 查询 | 示例指标 | 说明 | 
+| Query | 示例指标 | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 
@@ -274,8 +274,8 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](sql-api-sql-query.md)。 
+* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](how-to-sql-query.md)。 
 * 若要了解请求单位，请参阅[请求单位](request-units.md)。
-* 若要了解索引编制策略，请参阅[索引编制策略](indexing-policies.md) 
+* 若要了解索引编制策略，请参阅[索引编制策略](index-policy.md) 
 
 

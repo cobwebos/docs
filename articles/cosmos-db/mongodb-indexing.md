@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055305"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312691"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB: MongoDB API 中的索引编制
 
@@ -99,5 +99,5 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 目前，创建唯一索引的前提是集合不含文档。 常用 MongoDB 迁移工具会尝试在导入数据后创建唯一索引。 若要避免此问题，建议用户手动创建相应的集合和唯一索引，而不是让迁移工具来创建（对于 ```mongorestore```，可以通过在命令行中使用 --noIndexRestore 标志来实现此行为）。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Cosmos DB 如何编制数据索引？](../cosmos-db/indexing-policies.md)
+* [Azure Cosmos DB 如何编制数据索引？](../cosmos-db/index-policy.md)
 * [利用生存时间使 Azure Cosmos DB 集合中的数据自动过期](../cosmos-db/time-to-live.md)

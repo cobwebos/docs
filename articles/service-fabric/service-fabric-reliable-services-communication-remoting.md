@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023539"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620517"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -98,7 +98,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="service-proxy-factory-lifetime"></a>服务代理工厂生存期
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 API `ServiceProxy.Create` 创建代理，则框架将创建单一实例服务代理。
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是为不同远程接口创建代理实例的工厂。 如果使用 API `ServiceProxyFactory.CreateServiceProxy` 创建代理，则框架将创建单一实例服务代理。
 在需要替代 [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 属性时，手动创建一个 ServiceProxyFactory 是有用的。
 工厂创建是一项代价高昂的操作。 服务代理工厂维护通信客户端的内部缓存。
 最佳做法是尽可能久地缓存服务代理工厂。
@@ -202,7 +202,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 1. 使用以下属性将 V1 服务升级到 V2 服务。
 此项更改可确保服务在 V1 和 V2 侦听器上侦听。
 
-    a. 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>
@@ -324,7 +324,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 1. 使用以下属性将 V1 服务升级到 V2_1 服务。
 此项更改可确保服务在 V1 和 V2_1 侦听器上侦听。
 
-    a. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
       ```xml
       <Resources>
         <Endpoints>

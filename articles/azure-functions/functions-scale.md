@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f597425fc3813f243950b16f5debbd63ce3a805
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113931"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975884"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-Azure Functions 以两种不同的模式运行：消耗量计划和 Azure 应用服务计划。 消耗量计划在代码运行时自动分配计算能力。 应用在需要处理负载时会扩展，在代码未运行时会缩小。 无需为空闲的 VM 付费或提前保留容量。 本文重点介绍消耗计划（一种[无服务器](https://azure.microsoft.com/solutions/serverless/)应用模型）。 如需详细了解如何使用专用的应用服务计划，请参阅 [Azure 应用服务计划详解](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
+Azure Functions 以两种不同的模式运行：消耗量计划和 Azure 应用服务计划。 消耗量计划在代码运行时自动分配计算能力。 应用在需要处理负载时会扩展，在代码未运行时会缩小。 无需为空闲的 VM 付费或提前保留容量。
 
 > [!NOTE]  
 > [Linux 托管](functions-create-first-azure-function-azure-cli-linux.md)目前仅在应用服务计划中提供。

@@ -2,7 +2,7 @@
 title: 排查 Azure 企业成本视图问题 | Microsoft Docs
 description: 了解如何解决 Azure 门户中可能遇到的有关组织成本查看的任何问题。
 author: rthorn17
-manager: rithorn
+manager: adpick
 editor: ''
 ms.assetid: ''
 ms.service: billing
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 853307f24574e6cea5841bcace815fea2bbcf2c8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: be74714667c2fed57a797a972ddcd7949cae5933
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390658"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274664"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题 
 

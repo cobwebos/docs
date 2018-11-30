@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 9b83d6ac908be1e62e3c6c2025ae31aa374bdeea
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250731"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975067"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
 打算构建开发和测试环境时，成本和所有权是主要的考量。 本部分介绍如何在环境中进行成本优化并落实所有权。
@@ -57,7 +57,7 @@ ms.locfileid: "48250731"
 
 应该将项目/应用程序团队成员添加到开发测试实验室用户角色中。 这些用户可以创建虚拟机（前提是遵循实验室和订阅级别的策略）。 他们也可以管理自己的虚拟机。 他们不能管理属于其他用户的虚拟机。
 
-有关详细信息，请参阅 [Azure 企业基架 - 规范性订阅治理](/architecture/cloud-adoption/appendix/azure-scaffold)文档。
+有关详细信息，请参阅 [Azure 企业基架 - 规范性订阅治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)文档。
 
 
 ## <a name="next-steps"></a>后续步骤

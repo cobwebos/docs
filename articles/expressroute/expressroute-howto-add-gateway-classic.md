@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: d0425b68f1b241bde4b2100d13d60165e5a1f1fe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 366aed206e8b1fb72547a64a957d83eec78c1358
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255160"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161969"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关（经典）
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "51255160"
 
 **关于 Azure 部署模型**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>开始之前
 确认已安装此配置所需的 Azure PowerShell cmdlet（1.0.2 或更高版本）。 如果尚未安装 cmdlet，必须先安装，才能开始执行配置步骤。 有关安装 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。

@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7ce11b3e54a8770a2b3d53e335afc57f52d3d14e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288724"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425303"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 开发人员词汇表
 
@@ -173,7 +173,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="security-token"></a>安全令牌
 
-包含 OAuth2 令牌或 SAML 2.0 断言等声明的已签名文档。 对于 OAuth2 [授权](#authorization-grant)，[访问令牌](#access-token) (OAuth2) 和 [ID 令牌](http://openid.net/specs/openid-connect-core-1_0.html#IDToken)都是安全令牌类型，并且这两种类型都已作为 [JSON Web 令牌 (JWT)][JWT] 实现。
+包含 OAuth2 令牌或 SAML 2.0 断言等声明的已签名文档。 对于 OAuth2 [授权](#authorization-grant)，[访问令牌](#access-token) (OAuth2) 和 [ID 令牌](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)都是安全令牌类型，并且这两种类型都已作为 [JSON Web 令牌 (JWT)][JWT] 实现。
 
 ## <a name="service-principal-object"></a>服务主体对象
 
@@ -251,6 +251,6 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
-[OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
-[OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
-[OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
+[OpenIDConnect-AuthZ-Endpoint]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
+[OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

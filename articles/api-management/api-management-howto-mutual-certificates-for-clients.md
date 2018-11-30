@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: apimpm
-ms.openlocfilehash: 841825923819bdb257e5b5983071d999cca805e9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3307ea391734828cb83c927e8df8aca79685279a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26406737"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441530"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
 API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 目前，可以针对所需值检查客户端证书的指纹。 还可以针对已上传到 API 管理的现有证书检查指纹。  
 
 有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="checking-the-expiration-date"></a>检查到期日期
 
@@ -86,5 +88,5 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 ## <a name="next-step"></a>后续步骤
 
 *  [如何使用客户端证书身份验证确保后端服务安全](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-*  [如何上传证书](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates#a-namestep1-aupload-a-client-certificate)
+*  如何上传证书
 

@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109454"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445389"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="delegate-signin-up"> </a>委派开发人员登录和注册
 要将开发人员登录和注册委派给现有网站，需在站点上创建一个特殊的委派终结点，充当从 API 管理开发人员门户中发起的任何此类请求的入口点。
@@ -71,7 +73,7 @@ ms.locfileid: "37109454"
    * 通过 API 管理 REST API [请求单一登录 (SSO) 令牌]
    * 将 returnUrl 查询参数追加到从上述 API 调用接收的 SSO URL：
      
-     > 例如，https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > 例如， https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * 将用户重定向到上述生成的 URL

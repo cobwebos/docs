@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 16b7de909ce57a7f8d3cea54a59996dc6f0a6ba0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469905"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712001"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>使用语音服务中的“文本转语音”功能
 
@@ -92,7 +92,7 @@ Response audio payload
 429|请求过多|已经超过了订阅允许的配额或请求速率。
 |502|错误的网关    | 网络或服务器端问题。 也可能表示标头无效。
 
-有关文本转语音 REST API 的详细信息，请参阅 [REST API](rest-apis.md#text-to-speech)。
+有关文本转语音 REST API 的详细信息，请参阅 [REST API](rest-apis.md#text-to-speech-api)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 1079b83411fd76b4b9115ee80e385f1f2c63ba85
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2538bbf32b41e51796e333c11b7af6c091a71ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247086"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309083"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -76,7 +76,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 ```
 
 * *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
-* *需要更新到新 SDK？* 请刷新项目的依赖项。
+* *需要更新到新 SDK？*  请刷新项目的依赖项。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>如果使用 Gradle... <a name="gradle-setup" />
 如果项目已设置为使用 Gradle 进行生成，请将以下代码合并到 build.gradle 文件。
@@ -492,7 +492,7 @@ Application Insights 可以定期测试网站，检查网站是否正常运行�
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: /app-insights-java-quick-start.md
+[eclipse]: app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

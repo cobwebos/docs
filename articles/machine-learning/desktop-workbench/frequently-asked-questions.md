@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996564"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313926"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -125,7 +125,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **是否可以通过 Workbench 使用 Jupyter Notebook？**
 
-能！ 可以在 Workbench 中运行 Jupyter Notebook，Workbench 可作为承载应用程序的客户端，就像将浏览器用作客户端一样。 
+ 能！ 可以在 Workbench 中运行 Jupyter Notebook，Workbench 可作为承载应用程序的客户端，就像将浏览器用作客户端一样。 
 
 **支持哪些 Jupyter Notebook 内核？**
 
@@ -171,4 +171,4 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 
 **Azure 机器学习如何与 Microsoft 认知工具包相关联？**
 
-[Microsoft 认知工具包](https://www.microsoft.com/cognitive-toolkit/)是我们的新工具和服务支持的众多框架之一。 认知工具包是统一的深度学习工具包，可供使用和组合常用的机器学习模型，包括前馈深层神经网络、卷积网络、序列到序列和循环网络。 有关 Microsoft 认知工具包的详细信息，请访问我们的[产品文档](https://docs.microsoft.com/cognitive-toolkit/)。 
+[Microsoft 认知工具包](https://docs.microsoft.com/cognitive-toolkit/)是我们的新工具和服务支持的众多框架之一。 认知工具包是统一的深度学习工具包，可供使用和组合常用的机器学习模型，包括前馈深层神经网络、卷积网络、序列到序列和循环网络。 有关 Microsoft 认知工具包的详细信息，请访问我们的[产品文档](https://docs.microsoft.com/cognitive-toolkit/)。 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740680"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447174"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -69,7 +69,7 @@ ms.locfileid: "50740680"
 
 **问：** 规模集是否可以与 Azure 可用性区域配合使用？
 
-**答：** 能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+**答：**  能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -371,7 +371,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 在虚拟机规模集和 VM 中，必须在 JSON 对象中包装证书。 
 
-我们还支持 application/x-pkcs12 内容类型。 有关使用 application/x-pkcs12 的说明，请参阅 [Azure Key Vault 中的 PFX 证书](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/)。
+我们还支持 application/x-pkcs12 内容类型。 
  
 我们目前不支持 .cer 文件。 要使用.cer 文件，请将其导出到.pfx 容器中。
 

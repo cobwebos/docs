@@ -1,6 +1,6 @@
 <!-- This TOC just covers the migrated CPP files. Relative path to files might have to be adjusted. -->
 
-# <a name="cloud-partner-portalcloud-partner-portal-getting-started-with-the-cloud-partner-portalmd"></a>[云合作伙伴门户](./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+# <a name="cloud-partner-portalazuremarketplacecloud-partner-portal-origcloud-partner-portal-getting-started-with-the-cloud-partner-portal"></a>[云合作伙伴门户](/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal) 
 ## <a name="virtual-machines"></a>虚拟机
 ### <a name="dev-center-account-registrationcloud-partner-portal-dev-center-accounts-registrationmd"></a>[开发人员中心帐户注册](./cloud-partner-portal-dev-center-accounts-registration.md)
 ### <a name="author-virtual-machine-offercloud-partner-portal-publish-virtual-machinemd"></a>[创建虚拟机产品/服务](./cloud-partner-portal-publish-virtual-machine.md)

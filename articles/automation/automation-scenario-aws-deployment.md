@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f49adf006e8d55337220fad9ee84de65209880b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193475"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290886"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure 自动化方案 - 预配 AWS 虚拟机
 本文介绍如何利用 Azure 自动化在 Amazon Web Service (AWS) 订阅中预配虚拟机，并为该 VM 提供特定的名称（AWS 称为“标记”VM）。
@@ -25,7 +25,7 @@ ms.locfileid: "34193475"
 ## <a name="deploy-amazon-web-services-powershell-module"></a>部署 Amazon Web Services PowerShell 模块
 VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以下步骤将模块添加到配置有 AWS 订阅凭据的自动化帐户。  
 
-1. 打开 Web 浏览器并导航到 [PowerShell 库](http://www.powershellgallery.com/packages/AWSPowerShell/)，并单击“部署到 Azure 自动化”按钮。<br><br> ![AWS PS 模块导入](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. 打开 Web 浏览器并导航到 [PowerShell 库](https://www.powershellgallery.com/packages/AWSPowerShell/)，并单击“部署到 Azure 自动化”按钮。<br><br> ![AWS PS 模块导入](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. 此时将转到 Azure 登录页，进行身份验证后会被路由到 Azure 门户，其中显示了以下页：<br><br> ![“导入模块”页](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. 选择要使用的自动化帐户，并单击“确定”以开始部署。
 
@@ -41,11 +41,11 @@ VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以
 部署 AWS PowerShell 模块后，现在可以创作一个 Runbook，以使用 PowerShell 脚本在 AWS 中自动预配虚拟机。 以下步骤演示如何在 Azure 自动化中使用本机 PowerShell 脚本。  
 
 > [!NOTE]
-> 有关其他选项以及此脚本的信息，请访问 [PowerShell 库](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript)。
+> 有关其他选项以及此脚本的信息，请访问 [PowerShell 库](https://www.powershellgallery.com/packages/New-AwsVM/)。
 > 
 
 1. 打开 PowerShell 会话并键入以下命令，可从 PowerShell 库下载 PowerShell 脚本 New-AwsVM：<br>
-   ```
+   ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
@@ -60,11 +60,12 @@ VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以
     > 
     > * Runbook 包含一些默认参数值。 请评估所有默认值，并根据需要进行更新。
     > * 如果已将 AWS 凭据存储为名称与 **AWScred** 不同的凭据资产，需更新脚本的第 57 行，以使其匹配。  
-    > * 在 PowerShell 中使用 AWS CLI 命令（特别是使用此示例 Runbook）时，必须指定 AWS 区域。 否则，cmdlet 会失败。 有关更多详细信息，请查看“用于 PowerShell 的 AWS 工具”文档中的 AWS 主题[指定 AWS 区域](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html)。  
+    > * 在 PowerShell 中使用 AWS CLI 命令（特别是使用此示例 Runbook）时，必须指定 AWS 区域。 否则，cmdlet 会失败。 有关更多详细信息，请查看“用于 PowerShell 的 AWS 工具”文档中的 AWS 主题[指定 AWS 区域](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html)。  
     >
 
 7. 若要从 AWS 订阅检索映像名称的列表，请启动 PowerShell ISE 并导入 AWS PowerShell 模块。 通过将 ISE 环境中的 **Get-AutomationPSCredential** 替换为 **AWScred = Get-Credential**，向 AWS 进行身份验证。 此时系统会提示输入凭据，可以提供“访问密钥 ID”作为用户名，提供“机密访问密钥”作为密码。 请参阅以下示例：  
 
+        ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +79,8 @@ VM 预配 Runbook 将利用 AWS PowerShell 模块来执行其功能。 执行以
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-
+        ```
+        
     返回以下输出：<br><br>
    ![获取 AWS 映像](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
 8. 在自动化变量中复制并粘贴一个映像名称，如 Runbook 中作为 **$InstanceType** 所引用的那样。 由于此示例使用的是免费 AWS 分层订阅，将对 Runbook 示例使用 **t2.micro**。  
