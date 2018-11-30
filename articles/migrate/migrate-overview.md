@@ -36,7 +36,7 @@ Azure Migrate 有助于：
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 -  只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 但是，可以计划到任意目标 Azure 位置的迁移。
     - 只有在本地环境中发现的元数据才会存储在迁移项目区域中。
-    - 元数据存储在下述地理区域之一中：美国中西部/美国东部。
+    - 元数据存储在以下一个地理区域：美国中西部/美国东部。
     - 如果将依赖项可视化与 Log Analytics 工作区配合使用，则会在项目所在的区域中创建它。
 
 
@@ -52,29 +52,29 @@ Azure Migrate 有助于：
 **属性** | **详细信息**
 --- | ---
 **目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 目前支持 30 个区域。 [查看区域](https://azure.microsoft.com/global-infrastructure/services/)。 默认情况下，目标区域设置为“美国西部 2”。
-**存储类型** | 要在 Azure 中分配的磁盘的类型。 这适用于大小调整条件为“按本地”的情况。 请将目标磁盘类型指定为高级（默认）或标准托管磁盘。 对于基于性能的大小调整，将根据 VM 的性能数据自动提供磁盘大小调整建议。
+**存储类型** | 要在 Azure 中分配的磁盘类型。 这适用于大小调整条件为“按本地”的情况。 请将目标磁盘类型指定为高级（默认）或标准托管磁盘。 对于基于性能的大小调整，将根据虚拟机的性能数据自动提供磁盘大小调整建议。
 **“大小调整”条件** | 可以根据本地 VM 的**性能历史记录**进行大小调整，也可以**按本地**（默认设置）要求来进行，不考虑性能历史记录。
 **Azure 产品/服务** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
 **Azure 混合权益** | 是否有软件保证，以及是否有资格享受带成本折扣的 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
-**预留实例** |  是否在 Azure 中有[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 Azure Migrate 会进行相应的成本估算。
+**预留实例** | 是否在 Azure 中有[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 Azure Migrate 会进行相应的成本估算。
 **VM 运行时间** | VM 将在 Azure 中运行的持续时间。 会相应地进行成本估算。
 **定价层** | 目标 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 例如，如果打算迁移生产环境，则可考虑“标准”层，其提供的 VM 延迟较低但成本可能较高。 而在测试环境中，则可使用基本层，其延迟较高，但成本较低。 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
 **性能历史记录** | 默认情况下，Azure Migrate 使用过去一天的性能历史记录来评估本地计算机的性能，百分位数为 95%。
-**VM 系列** | 用于大小评估的 VM 系列。 例如，如果不打算将生产环境迁移到 Azure 中的 A 系列 VM，可以从列表或系列中排除 A 系列。 大小调整仅取决于所选系列。   
+**VM 系列** | 用于大小评估的 VM 系列。 例如，如果不打算将生产环境迁移到 Azure 中的 A 系列 VM，可以从列表或系列中排除 A 系列。 大小调整仅取决于所选系列。    
 **舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 默认的舒适设置为 1.3x。
 
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate 工作原理
 
-1.  创建 Azure Migrate 项目。
+1. 创建 Azure Migrate 项目。
 2.  Azure Migrate 使用名为“收集器设备”的本地 VM 来发现有关本地计算机的信息。 若要创建该设备，请以开放虚拟化设备 (.ova) 格式下载安装程序文件，然后将其作为 VM 导入到本地 vCenter Server。
 3. 请从 vCenter Server 连接到 VM，并在连接时为其指定新密码。
 4. 在要启动发现的 VM 上运行收集器。
 5. 收集器使用 VMware PowerCLI cmdlet 收集 VM 元数据。 发现是无代理发现，且不在 VMware 主机或 VM 上安装任何内容。 收集的元数据包括 VM 信息（核心、内存、磁盘、磁盘大小、网络适配器）。 此外还收集 VM 的性能数据，包括 CPU 和内存使用情况、磁盘 IOPS、磁盘吞吐量 (MBps)、网络输出 (MBps)。
-5.  元数据推送到 Azure Migrate 项目， 可以在 Azure 门户中查看。
-6.  将发现的 VM 按组收集，以便进行评估。 例如，可以将运行同一应用程序的 VM 作为一组。 若要进行更精确的分组，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一个组中所有计算机的依赖关系，然后对组进行优化。
-7.  定义某个组以后，请为其创建评估。
-8.  评估完成以后，可以在门户中查看，也可以通过 Excel 格式来下载。
+6.  元数据推送到 Azure Migrate 项目， 可以在 Azure 门户中查看。
+7.  将发现的 VM 按组收集，以便进行评估。例如，可以将运行同一应用程序的 VM 作为一组。若要进行更精确的分组，还可以使用依赖关系可视化来查看特定计算机的依赖关系，或者查看一个组中所有计算机的依赖关系，然后对组进行优化。
+8.  定义某个组以后，请为其创建评估。
+9.  评估完成以后，可以在门户中查看，也可以通过 Excel 格式来下载。
 
   ![Azure Migrate 体系结构](./media/migration-planner-overview/overview-1.png)
 
