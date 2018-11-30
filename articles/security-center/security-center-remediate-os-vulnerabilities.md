@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238771"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317481"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>在 Azure 安全中心中修正安全配置
 Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检查是否存在可能使 VM 和计算机更易受到攻击的配置。 当 OS 配置与建议的安全配置规则不匹配时，安全中心建议解决漏洞，并建议修复这些漏洞所需的配置更改。
@@ -101,7 +101,7 @@ Azure 安全中心每天分析虚拟机 (VM) 和计算机操作系统 (OS)，检
 若要了解有关安全中心的详细信息，请参阅以下资源：
 
 * 如需支持的 Windows 和 Linux VM 的列表，请参阅 [Azure 安全中心支持的平台](security-center-os-coverage.md)。
-* 若要了解如何配置 Azure 订阅和资源组的安全策略，请参阅 [在 Azure 安全中心设置安全策略](security-center-policies.md)。
+* 若要了解如何配置 Azure 订阅和资源组的安全策略，请参阅 [在 Azure 安全中心设置安全策略](security-center-azure-policy.md)。
 * 若要了解如何使用安全建议来保护 Azure 资源，请参阅[管理 Azure 安全中心安全建议](security-center-recommendations.md)。
 * 若要了解如何监视 Azure 资源的运行状况，请参阅 [Azure 安全中心的安全运行状况监视](security-center-monitoring.md)。
 * 若要了解如何管理和响应安全警报，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936130"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445356"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  
@@ -32,6 +32,8 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
  参数的值作为模板的数据模型的一部分传入。 大多数情况下，只需粘贴提供的每个控件的示例，即可正常使用该控件。 有关参数值的详细信息，可参阅每个模板的数据模型部分，其中可能使用了控件。  
   
  如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="developer-portal-template-page-controls"></a>开发人员门户模板页面控件  
   
@@ -57,7 +59,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 ### <a name="parameters"></a>parameters  
   
-|参数|说明|  
+|参数|Description|  
 |---------------|-----------------|  
 |appId|应用程序的 ID。|  
   
@@ -201,7 +203,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 ### <a name="parameters"></a>parameters  
   
-|参数|说明|  
+|参数|Description|  
 |---------------|-----------------|  
 |subscriptionId|要取消的订阅的 ID。|  
 |cancelUrl|订阅取消 URL。|  

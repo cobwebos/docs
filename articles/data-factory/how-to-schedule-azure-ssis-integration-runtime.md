@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f83715d2a382db271686210d9df285c255c09216
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7e93e83f7594d30d223d37454e09943beba6d3ce
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113971"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976718"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure SSIS 集成运行时
 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们通常希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。
@@ -60,7 +60,7 @@ ms.locfileid: "39113971"
     4. 选择自动化帐户的**位置**。 
     5. 确认“创建运行方式帐户”设置为“是”。 随后将在 Azure Active Directory 中创建一个服务主体。 该服务主体已添加到 Azure 订阅的“参与者”角色
     6. 选择“固定到仪表板”，以便在门户的仪表板上显示它。 
-    7. 选择**创建**。 
+    7. 选择“创建”。 
 
         ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
 3. 仪表板和通知中会显示**部署状态**。 
@@ -94,7 +94,7 @@ ms.locfileid: "39113971"
 
     1. 对于“名称”，请键入 **StartStopAzureSsisRuntime**。
     2. 对于“Runbook 类型”，请选择“PowerShell”。
-    3. 选择**创建**。
+    3. 选择“创建”。
     
         ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
 3. 将以下脚本复制/粘贴到 Runbook 脚本窗口。 使用工具栏上的“保存”和“发布”按钮保存并发布该 Runbook。 
@@ -186,7 +186,7 @@ ms.locfileid: "39113971"
     4. 在“启动”部分的时间输入框中，指定比当前时间稍晚几分钟的时间。 
     5. 对于“重复周期 ”，请选择“定期”。 
     6. 在“重复间隔”部分选择“天”。 
-    7. 选择**创建**。 
+    7. 选择“创建”。 
 
         ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
 3. 切换到“参数和运行设置”选项卡。指定资源组名称、数据工厂名称和 Azure SSIS IR 名称。 对于“操作”，请输入“启动”。 选择“确定”。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划。 
@@ -347,7 +347,7 @@ ms.locfileid: "39113971"
     6. 右键单击 SSIS 包，并选择“报告” -> “标准报告” -> “所有执行”。 
     7. 验证 SSIS 包是否已运行。 
 
-        ![验证 SSIS 包是否已运行](./media/how-to-schedule-azure-ssis-integration-runtime/verfiy-ssis-package-run.png)
+        ![验证 SSIS 包是否已运行](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
 ### <a name="schedule-the-pipeline"></a>计划管道 
 按预期方式运行管道后，可以创建一个触发器，用于按指定的频率运行此管道。 有关如何将计划触发器与管道相关联的详细信息，请参阅[按计划触发管道](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。

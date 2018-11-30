@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: e9f082b795325349001b5231304588e5297a1443
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe1557a6f9e5fd4e463af254fa1dd52726e73024
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960712"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713038"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>将 Azure 诊断日志流式传输到 Log Analytics
 
@@ -96,7 +96,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>如何在 Log Analytics 中查询数据？
 
-在门户的“日志搜索”边栏选项卡中或作为 Log Analytics 的一部分的高级分析体验中，可以查询诊断日志作为 AzureDiagnostics 表下日志管理解决方案的一部分。 此外，还可以安装 [Azure 资源的多个解决方案](../monitoring/monitoring-solutions.md)，以立即深入了解发送到 Log Analytics 的日志数据。
+在门户的“日志搜索”边栏选项卡中或作为 Log Analytics 的一部分的高级分析体验中，可以查询诊断日志作为 AzureDiagnostics 表下日志管理解决方案的一部分。 此外，还可以安装 [Azure 资源的多个解决方案](../azure-monitor/insights/solutions.md)，以立即深入了解发送到 Log Analytics 的日志数据。
 
 ## <a name="next-steps"></a>后续步骤
 

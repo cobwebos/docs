@@ -1,25 +1,21 @@
 ---
 title: 团队数据科学流程小组管理员任务 - Azure | Microsoft Docs
 description: 数据科学团队项目组管理员的任务概述。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: a89c0f916f67de1bae81a5e1b3dcfc2cae41d248
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: ee10f17f76f7c3745cb32223c58b0d2d12f7d6b6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304180"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446341"
 ---
 # <a name="group-manager-tasks"></a>组管理员任务
 

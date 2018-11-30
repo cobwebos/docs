@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 10/24/2018
 ms.topic: troubleshooting
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: fdb8c1c49e1791e3dafa006928bf244e05d00909
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8add92c5a65e4ddbd83dbe0836820fae1e88f557
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025967"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274681"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 

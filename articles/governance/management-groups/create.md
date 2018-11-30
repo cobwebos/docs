@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.topic: conceptual
+ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956402"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620108"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -29,7 +29,7 @@ ms.locfileid: "49956402"
 
 ### <a name="create-in-portal"></a>在门户中创建
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 选择“所有服务” > “管理组”。
 
@@ -76,8 +76,8 @@ az account management-group create --name 'Contoso'
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [使用 Azure 管理组来组织资源](overview.md)
+- [创建管理组来组织 Azure 资源](create.md)
 - [如何更改、删除或管理管理组](manage.md)
-- [安装 Azure Powershell 模块](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [查看 REST API 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [安装 Azure CLI 扩展](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [在 Azure PowerShell 资源模块中查看管理组](https://aka.ms/mgPSdocs)
+- [在 REST API 中查看管理组](https://aka.ms/mgAPIdocs)
+- [在 Azure CLI 中查看管理组](https://aka.ms/mgclidoc)

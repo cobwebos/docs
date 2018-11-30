@@ -1,25 +1,21 @@
 ---
 title: 数据科学项目的敏捷开发 - Azure 机器学习 | Microsoft Docs
 description: 介绍开发人员如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 9fd8714e4c9fdc89036a3b05ba835b140363c0e3
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301083"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443358"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
 

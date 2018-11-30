@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1039cde45824491bcc82f324c05e4819e66355e0
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628539"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975986"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-odbc-connector.md)
+> * [版本 1](data-factory-odbc-connector.md)
 > * [版本 2（当前版本）](../connector-odbc.md)
 
 > [!NOTE]
@@ -162,7 +162,7 @@ ms.locfileid: "39628539"
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
 3. [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
-5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
+5. [管道](data-factory-create-pipelines.md)，具有使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
 此示例每隔一小时将数据从 ODBC 数据存储中的查询结果复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -355,33 +355,6 @@ ms.locfileid: "39628539"
 
 ## <a name="repeatable-read-from-relational-sources"></a>从关系源进行可重复读取
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
-
-## <a name="ge-historian-store"></a>GE Historian 存储
-创建 ODBC 链接服务，将 [GE Proficy Historian（现在是 GE Historian）](http://www.geautomation.com/products/proficy-historian)数据存储链接到 Azure 数据工厂，如以下示例所示：
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties":
-    {
-        "type": "OnPremisesOdbc",
-        "typeProperties":
-        {
-            "connectionString": "DSN=<name of the GE Historian store>;",
-            "gatewayName": "<gateway name>",
-            "authenticationType": "Basic",
-            "userName": "<user name>",
-            "password": "<password>"
-        }
-    }
-}
-```
-
-在本地计算机上安装数据管理网关，并通过门户注册网关。 安装在本地计算机上的网关将 ODBC 驱动程序用于 GE Historian，以连接到 GE Historian 数据存储。 因此，如果尚未在网关计算机上安装驱动程序，请先安装。 有关详细信息，请参阅[支持连接](#enabling-connectivity)部分。
-
-在使用数据工厂解决方案中的 GE Historian 存储之前，请参照下一部分的说明验证网关能否连接到数据存储。
-
-从头开始阅读文章，了解在复制操作中将 ODBC 数据存储用作源数据存储的详细信息。  
 
 ## <a name="troubleshoot-connectivity-issues"></a>解决连接问题
 若要解决连接问题，请使用“数据管理网关配置管理器”的“诊断”选项卡。

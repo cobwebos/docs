@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: d8be831469659993da4f9f392e23b9408eb283e3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 2b16bc98c456c9c85d8e49e01171086933533707
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302205"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312623"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -60,7 +60,7 @@ ms.locfileid: "44302205"
 若要设置安全策略，请选择“安全中心”边栏选项卡上的“**策略**”磁贴。 在“**安全策略**”边栏选项卡上，选择想要启用安全策略的订阅。 选择“**保护策略**”，并**开启**需要用于此订阅的安全建议。
 ![安全策略][3]
 
-若要了解详细信息，请参阅[设置安全策略](security-center-policies.md)。
+若要了解详细信息，请参阅[设置安全策略](security-center-azure-policy.md)。
 
 ## <a name="manage-security-recommendation"></a>管理安全建议
 安全中心定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。
@@ -85,7 +85,7 @@ ms.locfileid: "44302205"
 若要详细了解各项建议，请参阅[管理安全建议](security-center-recommendations.md)。
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
-用户为订阅的资源启用[安全策略](security-center-policies.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“**资源安全运行状况**”磁贴中，可以查看资源的安全状态。 单击“**资源安全运行状况**”磁贴中的“**数据**”即可打开“**数据资源**”边栏选项卡，其中包含对各种问题（例如：审核以及透明数据加密未启用）的 SQL 建议。 此外还有针对数据库常规运行状况的建议。
+用户为订阅的资源启用[安全策略](security-center-azure-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“**资源安全运行状况**”磁贴中，可以查看资源的安全状态。 单击“**资源安全运行状况**”磁贴中的“**数据**”即可打开“**数据资源**”边栏选项卡，其中包含对各种问题（例如：审核以及透明数据加密未启用）的 SQL 建议。 此外还有针对数据库常规运行状况的建议。
 ![资源安全运行状况][6]
 
 若要了解详细信息，请参阅[安全运行状况监视](security-center-monitoring.md)。

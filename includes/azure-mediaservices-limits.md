@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279465"
+---
 >[!NOTE]
 >对于不固定的资源，可以通过开具支持票证请求提高配额。 请**不要**创建更多的 Azure 媒体服务帐户以求获取更高的限制。
 

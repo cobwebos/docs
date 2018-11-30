@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: sngun
-ms.openlocfilehash: d7188270ff5b1edd3b5e396be0cd5fd22e6123c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d85cada87a6934921bf2775f12c016a88d9fbe9e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855500"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164007"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 Azure Cosmos DB 通过本机 [JSON](http://www.json.org) 数据模型提供架构灵活性和丰富的索引。 所有 Azure Cosmos DB 资源（包括数据库、容器、文档和存储过程）均作为 JSON 文档进行建模和存储。 为使代码可移植，JSON（及 Azure Cosmos DB）仅支持一小组基本类型：字符串、数字、布尔值、数组、对象和 Null。 但是，JSON 具有相当的灵活性，允许开发人员和框架使用这些基元并将其编写为对象或数组，以便表示更复杂的类型。 
@@ -68,7 +68,7 @@ Azure Cosmos DB 通过本机 [JSON](http://www.json.org) 数据模型提供架�
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-如需详细了解如何配置索引策略，可参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
+如需详细了解如何配置索引策略，可参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
 
 ## <a name="querying-datetimes-in-linq"></a>在 LINQ 中查询 Datetime
 SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，下面的代码片段显示一个 LINQ 查询，该查询筛选在过去三天中发运的订单。
@@ -79,11 +79,11 @@ SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数�
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-可在[查询 Cosmos DB](sql-api-sql-query.md) 中详细了解 Azure Cosmos DB 的 SQL 查询语言和 LINQ 提供程序。
+可在[查询 Cosmos DB](how-to-sql-query.md) 中详细了解 Azure Cosmos DB 的 SQL 查询语言和 LINQ 提供程序。
 
 本文探讨了如何在 Azure Cosmos DB 中存储、索引和查询 DateTime。
 
 ## <a name="next-steps"></a>后续步骤
 * 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* 了解 [SQL 查询](sql-api-sql-query.md)的详细信息
-* 深入了解 [Azure Cosmos DB 索引策略](indexing-policies.md)
+* 了解 [SQL 查询](how-to-sql-query.md)的详细信息
+* 深入了解 [Azure Cosmos DB 索引策略](index-policy.md)

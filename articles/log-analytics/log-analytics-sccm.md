@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016693"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633140"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可将 System Center Configuration Manager 环境连接到 Azure Log Analytics 以同步设备集合数据，并在 Log Analytics 和 Azure 自动化中引用这些集合。  
@@ -57,7 +57,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
 6. 在“将访问权限分配到”下拉列表中，选择前面在 AD 中创建的 Configuration Manager 应用程序，然后单击“确定”。  
 
 ## <a name="download-and-install-the-agent"></a>下载并安装代理
-查看[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](log-analytics-agent-windows.md)一文，了解在托管 Configuration Manager 服务连接点站点系统角色的计算机上安装 Microsoft Monitoring Agent 的可用方法。  
+查看[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../azure-monitor/platform/agent-windows.md)一文，了解在托管 Configuration Manager 服务连接点站点系统角色的计算机上安装 Microsoft Monitoring Agent 的可用方法。  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>将 Log Analytics 连接添加到配置管理器
 若要添加 Log Analytics 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://technet.microsoft.com/library/mt627781.aspx)。

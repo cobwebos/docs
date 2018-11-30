@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5787f72f2bc93c5dff05c6764639a4c46efe1a4f
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623140"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582779"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -124,7 +124,7 @@ Azure Functions 提供创建可扩展工作单元的功能，或者提供按需�
 
 出于以下原因，建议对无服务器计算体系结构使用 Azure Cosmos DB 数据库：
 
-* **即时访问所有数据**：可以粒度访问每个存储的值，因为 Azure Cosmos DB 在默认情况下会[自动建立所有数据的索引](indexing-policies.md)，并使这些索引立即可用。 这意味着可以不断查询和更新新项目，并将它们添加到数据库，还可以通过 Azure Functions 即时访问这些项目。
+* **即时访问所有数据**：可以粒度访问每个存储的值，因为 Azure Cosmos DB 在默认情况下会[自动建立所有数据的索引](index-policy.md)，并使这些索引立即可用。 这意味着可以不断查询和更新新项目，并将它们添加到数据库，还可以通过 Azure Functions 即时访问这些项目。
 
 * **无架构**。 Azure Cosmos DB 没有架构，因此只有它可以处理来自 Azure Function 的任何数据输出。 这种“处理任何数据”的方法可以直接创建全部输出到 Azure Cosmos DB 的各种 Functions。
 

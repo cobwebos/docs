@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685168"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262887"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将映像部署到 Azure 容器实例、Azure Kubernetes 服务或 Project Brainwave（现场可编程门阵列）时，会创建一个 Web 服务。 映像是从已注册的模型和评分文件创建的。 可以使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 来检索用于访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥。
+将映像部署到 Azure 容器实例、Azure Kubernetes 服务或 Project Brainwave（现场可编程门阵列）时，会创建一个 Web 服务。 映像是从已注册的模型和评分文件创建的。 可以使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 来检索用于访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥。
 
 创建使用机器学习 Web 服务的客户端的常规工作流为：
 

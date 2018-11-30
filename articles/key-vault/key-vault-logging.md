@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159579"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426938"
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -136,7 +136,7 @@ ms.locfileid: "44159579"
 
 **容器 URI： https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
-**Name**
+**名称**
 
 - - -
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=05/h=01/m=00/PT1H.json**
@@ -265,7 +265,7 @@ ms.locfileid: "44159579"
 
 ## <a id="loganalytics"></a>使用 Log Analytics
 
-可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。 有关详细信息，包括如何进行设置，请参阅 [Log Analytics 中的Azure Key Vault 解决方案](../log-analytics/log-analytics-azure-key-vault.md)。 如果需要从 Log Analytics 预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Log Analytics 配置为了从此处读取，则本文也可提供指导。
+可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库 AuditEvent 日志。 有关详细信息，包括如何进行设置，请参阅 [Log Analytics 中的Azure Key Vault 解决方案](../azure-monitor/insights/azure-key-vault.md)。 如果需要从 Log Analytics 预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Log Analytics 配置为了从此处读取，则本文也可提供指导。
 
 ## <a id="next"></a>后续步骤
 有关在 Web 应用程序中使用 Azure 密钥保管库的教程，请参阅 [从 Web 应用程序使用 Azure 密钥保管库](key-vault-use-from-web-application.md)。

@@ -3,7 +3,7 @@ title: 安全中心规划和操作指南 | Microsoft Docs
 description: 本文档介绍了如何在采用 Azure 安全中心之前进行规划，并介绍了有关日常操作的注意事项。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2018
-ms.author: yurid
-ms.openlocfilehash: 76d472ff75f66973b3e680d8a30d7691c1cd36dc
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: f24baaf07f86722bc461cbb79e262f63b46c8a1f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622561"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619939"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于其组织正计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
 
-    
+
 ## <a name="planning-guide"></a>规划指南
 本指南介绍如何通过一系列步骤和任务，根据组织的安全要求和云管理模型优化安全中心的使用。 若要充分利用安全中心，必须了解在需要进行安全开发和操作、监视、管理和事件响应的情况下，组织中的不同个人或团队是如何使用服务的。 规划安全中心的使用时，需要考虑的重要方面包括：
 
@@ -40,7 +40,7 @@ ms.locfileid: "51622561"
 
 > [!NOTE]
 > 阅读 [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md) （Azure 安全中心常见问题 (FAQ)），了解一系列常见问题，这些问题在设计和规划阶段可能也会有用。
-> 
+>
 
 ## <a name="security-roles-and-access-controls"></a>安全角色和访问控制
 很多个人和团队可能会使用安全中心执行不同的安全相关任务，具体取决于组织的大小和结构。 下图示例性地说明了各种虚构性的人员及其相应的角色和安全责任：
@@ -74,7 +74,7 @@ Jeff（工作负荷所有者）
 **Sam（安全分析师）**
 
 * 调查各种攻击
-* 与云工作负荷所有者协作应用补救措施 
+* 与云工作负荷所有者协作应用补救措施
 
 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。 用户打开安全中心时，只能看到有权访问的资源的相关信息。 这意味着，可以将资源所属的订阅或资源组的“所有者”、“参与者”或“读者”角色分配给用户。 除这些角色外，还有两个特定的安全中心角色：
 
@@ -84,9 +84,9 @@ Jeff（工作负荷所有者）
 上述安全中心角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。  
 
 > [!NOTE]
-> 用户需要拥有至少一个订阅，并身为资源组所有者或参与者才能在 Azure 中看到安全中心。 
-> 
-> 
+> 用户需要拥有至少一个订阅，并身为资源组所有者或参与者才能在 Azure 中看到安全中心。
+>
+>
 
 根据上图介绍的人员，需要以下 RBAC：
 
@@ -118,8 +118,8 @@ Jeff（工作负荷所有者）
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，如果用户只需查看资源的安全状况信息而不需执行操作（例如应用建议或编辑策略），则应为其分配“读者”角色。
-> 
-> 
+>
+>
 
 ## <a name="security-policies-and-recommendations"></a>安全策略和建议
 安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 可以在安全中心定义 Azure 订阅的策略，按照工作负荷的类型或数据的敏感程度对其进行调整。
@@ -151,15 +151,15 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 
 > [!NOTE]
 > 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](security-center-faq.md)。
-> 
+>
 
 ### <a name="workspace"></a>工作区
 
 工作区是一种 Azure 资源，用作数据容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
-通过 Microsoft Monitoring Agent（代表 Azure 安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。 
+通过 Microsoft Monitoring Agent（代表 Azure 安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
 
-在 Azure 门户中，可浏览查看 Log Analytics 工作区的列表，其中包括 Azure 安全中心创建的任何工作区。 系统会为新工作区创建相关资源组。 二者均遵循此命名约定： 
+在 Azure 门户中，可浏览查看 Log Analytics 工作区的列表，其中包括 Azure 安全中心创建的任何工作区。 系统会为新工作区创建相关资源组。 二者均遵循此命名约定：
 
 * 工作区：DefaultWorkspace-[subscription-ID]-[geo]
 * 资源组：DefaultResourceGroup-[geo]
@@ -168,7 +168,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 
 > [!NOTE]
 > Microsoft 坚决承诺保护此类数据的隐私和安全性。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。 有关数据处理和隐私的详细信息，请参阅 [Azure 安全中心数据安全](security-center-data-security.md)。
-> 
+>
 
 ## <a name="onboarding-non-azure-resources"></a>载入非 Azure 资源
 
@@ -195,7 +195,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 ### <a name="monitoring-for-new-or-changed-resources"></a>监视新的或更改的资源
 大多数 Azure 环境是动态的，新资源会定期出现和消失，也会出现新配置或新变化等。安全中心可确保用户能够查看这些新资源的安全状态。
 
-将新资源（VM、SQL 数据库）添加到 Azure 环境时，安全中心会自动发现这些资源，并开始监视其安全性。 这还包括 PaaS Web 角色和辅助角色。 如果在 [安全策略](security-center-policies.md)中启用了数据收集功能，则会自动为虚拟机启用更多监视功能。
+将新资源（VM、SQL 数据库）添加到 Azure 环境时，安全中心会自动发现这些资源，并开始监视其安全性。 这还包括 PaaS Web 角色和辅助角色。 如果在 [安全策略](security-center-azure-policy.md)中启用了数据收集功能，则会自动为虚拟机启用更多监视功能。
 
 ![关键领域](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
@@ -214,7 +214,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 
 ### <a name="hardening-access-and-applications"></a>强化对访问权限和应用程序的控制
 
-在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用[实时 VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 访问功能，强化 VM 访问控制。 
+在进行安全操作时，还应采取预防性措施，限制对 VM 的访问，并控制在 VM 上运行的应用程序。 锁定到 Azure VM 的入站流量即可降低受攻击的风险，同时可以轻松进行访问，视需要连接到 VM。 使用[实时 VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 访问功能，强化 VM 访问控制。
 
 可以通过[自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)来控制哪些应用程序能够在位于 Azure 中的 VM 上运行，这样有很多好处，其中之一是能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
 
@@ -228,11 +228,11 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 
 > [!NOTE]
 > 若要构建自己的事件响应计划，用户可以使用国家标准和技术协会 (NIST) 提供的 [Computer Security Incident Handling Guide](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) （计算机安全事件处理指南）作为参考。
-> 
+>
 
 可以在以下阶段使用安全中心警报：
 
-* **检测**：确定一个或多个资源中的可疑活动。 
+* **检测**：确定一个或多个资源中的可疑活动。
 * **评估**：进行初始评估，了解可疑活动的详细信息。
 * **诊断**：通过补救步骤采用技术过程解决问题。
 
@@ -251,9 +251,9 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 在 [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)（如何利用 Azure 安全中心和 Microsoft Operations Management Suite 进行事件响应）视频中，用户可以看到一些演示，了解如何在每个这样的阶段发挥安全中心的作用。
 
 > [!NOTE]
-> 参阅[利用 Azure 安全中心进行事件响应](security-center-incident-response.md)，详细了解事件响应过程如何使用安全中心功能进行协助。 
-> 
-> 
+> 参阅[利用 Azure 安全中心进行事件响应](security-center-incident-response.md)，详细了解事件响应过程如何使用安全中心功能进行协助。
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍如何进行规划，为采用安全中心做准备。 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -263,4 +263,3 @@ Azure 安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样
 * [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) （通过 Azure 安全中心监视合作伙伴解决方案）- 了解如何监视合作伙伴解决方案的运行状况。
 * [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
-

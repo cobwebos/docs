@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: dd18f3c91311526a74ae16db8abff3604cb7d117
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: e1956b18066fe3eeb3c34e04083a3d93a03f2373
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23635181"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974537"
 ---
 # <a name="azure-china-21vianet-support"></a>Azure 中国世纪互联支持
 Azure 通过世纪互联提供许多自助服务支持选项和支持工作。
@@ -30,7 +30,7 @@ Azure 通过世纪互联提供许多自助服务支持选项和支持工作。
 - [Azure 学校](https://school.azure.cn/)提供自学资源以及与 Azure 专家接触的机会。
 
 ## <a name="assisted-support"></a>辅助支持
-- [在线提出请求](https://www.azure.cn/support/support-ticket-form/?l=zh-cn)（英文和中文版）。
+- [在线提出请求](https://www.azure.cn/en-us/support/contact/)（英文和中文版）。
 - [浏览 MSDN 论坛支持](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs)。
 - [使用 Azure 云助手应用提交请求](https://www.azure.cn/azure-cloud-assistant/)。
 

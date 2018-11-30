@@ -10,17 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032115"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333490"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
+
  批处理测试是对当前已训练的模型进行的全面测试，以衡量其 LUIS 性能。 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>导入数据集文件以进行批处理测试
 
 1. 在顶栏上选择“测试”，然后选择“批处理测试面板”。
@@ -36,6 +38,7 @@ ms.locfileid: "47032115"
 4. 选择“完成”。 数据集文件随即完成添加。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>运行、重命名、导出或删除数据集
+
 若要运行、重命名、导出或删除数据集，请点击数据集行末尾的省略号 (...) 按钮。
 
 ![数据集操作](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,7 +58,9 @@ ms.locfileid: "47032115"
 |![测试准备就绪图标](./media/luis-how-to-batch-test/batch-test-result-blue.png)|测试已可运行。|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>查看批处理测试结果 
+
 若要查看批处理测试结果，请选择“查看结果”。
 
 ![批处理测试结果](./media/luis-how-to-batch-test/run-test-results.png)
@@ -64,6 +69,7 @@ ms.locfileid: "47032115"
 
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>筛选图表结果
 
 若要按特定意向或实体筛选图表，请在右侧筛选面板中选择意向或实体。 图中的数据点及其分布会根据不同的选择而相应更新。 
@@ -71,6 +77,7 @@ ms.locfileid: "47032115"
 ![可视化的批处理测试结果](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>查看单点陈述数据
+
 在图表中，将鼠标悬停在某个数据点上可查看其预测结果的确定性分数。 选择数据点可在页面底部的陈述列表中检索出相应的陈述。 
 
 ![所选的陈述](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +85,9 @@ ms.locfileid: "47032115"
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>查看分区数据
+
 在此四分区图表中，选择分区名称，例如在图表右上角的“误报”。 该分区中的所有陈述都会显示在该图表下方的列表中。 
 
 ![按照分区所选的陈述](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

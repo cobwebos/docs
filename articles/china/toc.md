@@ -11,7 +11,7 @@
 # 入门
 ## [规划 Azure 部署](china-get-started-plan.md)
 ## [开发人员指南](china-get-started-developer-guide.md)
-## [可用的 Azure 服务](https://www.azure.cn/home/features/products-by-region)
+## [可用的 Azure 服务](https://azure.microsoft.com/en-us/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)
 ## [Azure 内容分发网络](china-get-started-service-cdn.md)
 ## [管理和连接到订阅](china-get-started-service-manage-and-connect.md)
 

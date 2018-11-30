@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 100d2a6163c6b2b7a7bf8a557e69e1082b48eaee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b985521fdcfc5ca67b6410719ad72c0962004df6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979210"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499600"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -167,10 +167,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |元素|Description|类型|  
 |-------------|-----------------|----------|  
-|adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|布尔|  
+|adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|Boolean|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
 |alteredQuery|必应用来执行查询的查询字符串。 如果原始查询字符串包含拼写错误，必应会使用更改的查询字符串。 例如，如果查询字符串为 `saling downwind`，则更改的查询字符串为 `sailing downwind`。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
-|askUserForLocation|一个布尔值，指示必应是否需要用户的位置才能提供准确结果。 如果已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 标头指定用户的位置，则可忽略此字段。<br /><br /> 对于需要用户的位置才能提供准确结果的位置感知型查询，例如“今天的天气”或“我附近的餐馆”，此字段设置为 **true**。<br /><br /> 对于包含位置的位置感知型查询（例如“西雅图的天气”），此字段设置为 **false**。 对于非位置感知型查询，例如“最佳销售者”，此字段也设置为 **false**。|布尔|  
+|askUserForLocation|一个布尔值，指示必应是否需要用户的位置才能提供准确结果。 如果已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 标头指定用户的位置，则可忽略此字段。<br /><br /> 对于需要用户的位置才能提供准确结果的位置感知型查询，例如“今天的天气”或“我附近的餐馆”，此字段设置为 **true**。<br /><br /> 对于包含位置的位置感知型查询（例如“西雅图的天气”），此字段设置为 **false**。 对于非位置感知型查询，例如“最佳销售者”，此字段也设置为 **false**。|Boolean|  
 |originalQuery|请求中指定的查询字符串。|String|  
 
 ### <a name="identifiable"></a>Identifiable

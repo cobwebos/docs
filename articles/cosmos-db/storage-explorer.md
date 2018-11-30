@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261143"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162369"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
 
@@ -152,7 +152,7 @@ ms.locfileid: "51261143"
 - 单击“删除”按钮以删除所选文档。
 
 #### <a name="query-for-documents"></a>查询文档
-- 通过输入 [SQL 查询](sql-api-sql-query.md)来编辑文档筛选器，然后单击“应用”。
+- 通过输入 [SQL 查询](how-to-sql-query.md)来编辑文档筛选器，然后单击“应用”。
 
     ![文档筛选器](./media/storage-explorer/document-filter.png)
 

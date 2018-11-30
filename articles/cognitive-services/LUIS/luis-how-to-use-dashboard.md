@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212796"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335004"
 ---
 # <a name="application-dashboard"></a>应用程序仪表板
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 
@@ -26,15 +26,7 @@ ms.locfileid: "50212796"
 > * 对所有终结点请求（包括 LUIS [API](https://aka.ms/luis-endpoint-apis) 和机器人）使用 LUIS 终结点密钥
 > * 对每个 LUIS 应用使用不同的终结点密钥。 不要对所有应用使用一个终结点密钥。 终结点密钥跟踪在密钥级别进行，而非在应用级别进行。  
 
-“仪表板”页提供 LUIS 应用的概述，包括当前的模型状态和随时间变化的[终结点](luis-glossary.md#endpoint)使用情况。 <!--The following image shows the **Dashboard** page.-->
-
-<!-- TBD: Get a working screen shot
-![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
--->
-
-<!-- TBD: IS THIS STILL TRUE?
-At the top of the **Dashboard** page, a contextual notification bar constantly displays notifications to update you on the required or recommended actions appropriate for the current state of your app. It also provides useful tips and alerts as needed. A detailed description of the data reported on the **Dashboard** page follows.
--->
+“仪表板”页提供 LUIS 应用的概述，包括当前的模型状态和随时间变化的[终结点](luis-glossary.md#endpoint)使用情况。 
   
 ## <a name="app-status"></a>应用状态
 仪表板显示应用程序的培训和发布状态，包括上次培训和发布应用的日期和时间。  
@@ -49,7 +41,6 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 ## <a name="endpoint-hits"></a>终结点命中数
 仪表板将显示 LUIS 应用接收到的终结点命中总数，还可显示指定时间段内的命中数。 显示的命中总数是使用[终结点密钥](./luis-concept-keys.md#endpoint-key)的终结点命中数和使用[创作密钥](./luis-concept-keys.md#authoring-key)的终结点命中数的总和。
 
-<!-- TBD: this image is old but I don't have a new one based on usage -->
 ![终结点命中数](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 

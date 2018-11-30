@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7835674536c43fcb694ad8eaeb18aebb89de5fad
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740363"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262068"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
 本文介绍组织中开发测试实验室的资源调配和管理。 
@@ -35,7 +35,7 @@ ms.locfileid: "50740363"
 - 是否需要通过分段来隔离开发环境和生产环境？ 
 - 针对长远的轻松管理、稳定性和发展引入了哪些控制措施？
 
-**第一项建议的做法**是评审组织中对生产订阅和开发订阅做了划分的 Azure 分类。 在下图中，建议的分类能够对开发/测试和生产环境进行逻辑分离。 使用此方法，组织可以引入计费代码来单独跟踪与每个环境关联的成本。 有关详细信息，请参阅[出于合规目的监管订阅](/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，可以使用 [Azure 标记](../azure-resource-manager/resource-group-using-tags.md)来组织资源，以便于跟踪和计费。
+**第一项建议的做法**是评审组织中对生产订阅和开发订阅做了划分的 Azure 分类。 在下图中，建议的分类能够对开发/测试和生产环境进行逻辑分离。 使用此方法，组织可以引入计费代码来单独跟踪与每个环境关联的成本。 有关详细信息，请参阅[出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，可以使用 [Azure 标记](../azure-resource-manager/resource-group-using-tags.md)来组织资源，以便于跟踪和计费。
 
 **第二项建议的做法**是在 Azure 企业门户中启用开发测试订阅。 这样，组织便可以运行 Azure 企业订阅中通常不会提供的客户端操作系统。 然后，使用仅支付计算费用的企业软件，而无需担心许可问题。 这可以确保只需根据消耗量支付指定服务的费用，包括 IaaS 中的库映像，例如 Microsoft SQL Server。 企业协议 (EA) 客户和即用即付客户可以分别在[此处](https://azure.microsoft.com/offers/ms-azr-0148p/)和[此处](https://azure.microsoft.com/offers/ms-azr-0023p/)找到有关 Azure 开发测试订阅的详细信息。
 

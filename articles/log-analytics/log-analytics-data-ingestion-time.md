@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955231"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334544"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics 中的数据引入时间
 Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -40,7 +40,7 @@ Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月
 代理和管理解决方案使用不同的策略从虚拟机收集数据，这可能会影响延迟。 一些具体示例包括：
 
 - 立即收集 Windows 事件、syslog 事件和性能指标。 Linux 性能计数器每隔 30 秒轮询一次。
-- IIS 日志和自定义日志在其时间戳更改后收集。 对于 IIS 日志，这会受 [IIS 上配置的滚动更新计划](log-analytics-data-sources-iis-logs.md)影响。 
+- IIS 日志和自定义日志在其时间戳更改后收集。 对于 IIS 日志，这会受 [IIS 上配置的滚动更新计划](../azure-monitor/platform/data-sources-iis-logs.md)影响。 
 - Active Directory 复制解决方案每五天执行一次评估，而 Active Directory 评估解决方案每周对 Active Directory 基础结构进行一次评估。 只有在评估完成后，代理才会收集这些日志。
 
 ### <a name="agent-upload-frequency"></a>代理上传频率
@@ -61,7 +61,7 @@ Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月
 将日志记录引入到 Log Analytics 管道后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
-从[自定义日志](../log-analytics/log-analytics-data-sources-custom-logs.md)或[数据收集器 API ](../log-analytics/log-analytics-data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
+从[自定义日志](../log-analytics/../azure-monitor/platform/data-sources-custom-logs.md)或[数据收集器 API ](../log-analytics/log-analytics-data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
 
 ### <a name="surge-protection"></a>激增保护
 Log Analytics 的首要任务是确保不会丢失任何客户数据，因此系统具有内置的数据激增保护。 这包括缓冲区，可用于确保即使在巨大的负载下，系统也能继续正常运行。 在正常负载下，这些控件增加的时间不到一分钟，但在极端条件和故障情况下，它们可以增加大量时间，同时确保数据安全。

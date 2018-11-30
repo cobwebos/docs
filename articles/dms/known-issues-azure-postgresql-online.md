@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: e30ffe2dd79d55e856ef297608745b60578cf7e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131027"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282870"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
 
 以下部分描述了在从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL 时存在的已知问题和限制。 
 
 ## <a name="online-migration-configuration"></a>联机迁移配置
-- 源 PostgreSQL 服务器必须运行版本 9.5.11、9.6.7、10.3 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](1.2.%09https:/docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
+- 源 PostgreSQL 服务器必须运行版本 9.5.11、9.6.7、10.3 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](../postgresql/concepts-supported-versions.md)一文。
 - 仅支持相同版本的迁移。 例如，不支持将 PostgreSQL 9.5.11 迁移到 Azure Database for PostgreSQL 9.6.7。
 - 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数：
     - wal_level = logical

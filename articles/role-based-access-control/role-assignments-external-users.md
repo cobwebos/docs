@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304435"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284517"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>使用 RBAC 管理外部用户的访问权限
 
@@ -45,7 +45,7 @@ RBAC 角色只能由订阅的“所有者”授予。 因此，管理员必须�
 ![Azure 门户中的订阅边栏选项卡](./media/role-assignments-external-users/0.png)默认情况下，如果管理员用户购买了 Azure 订阅，则该用户会显示为“帐户管理员”，即订阅角色。 有关 Azure 订阅角色的详细信息，请参阅[添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
 
 在此示例中，用户“alflanigan@outlook.com”是 AAD 租户“默认租户 Azure”中“免费试用”订阅的“所有者”。 由于此用户是使用最初的 Microsoft 帐户“Outlook”（Microsoft 帐户 = Outlook、Live 等等）创建 Azure 订阅的用户，因此，添加到此租户的其他所有用户的默认域名将是“\@alflaniganuoutlook.onmicrosoft.com”。 根据设计，新域的语法格式是将创建租户的用户的用户名和域名组合在一起，并加上扩展 **.onmicrosoft.com**。
-此外，在为新租户添加并验证自定义域名后，用户可以在租户中使用该域名登录。 有关如何在 Azure Active Directory 租户中验证自定义域名的详细信息，请参阅[将自定义域名添加到目录](/active-directory/active-directory-add-domain)。
+此外，在为新租户添加并验证自定义域名后，用户可以在租户中使用该域名登录。 有关如何在 Azure Active Directory 租户中验证自定义域名的详细信息，请参阅[将自定义域名添加到目录](../active-directory/fundamentals/add-custom-domain.md)。
 
 在此示例中，“默认租户 Azure”目录仅包含域名为“\@alflanigan.onmicrosoft.com”的用户。
 
@@ -85,7 +85,7 @@ RBAC 角色只能由订阅的“所有者”授予。 因此，管理员必须�
 
 ![Azure Active Directory Azure 门户中受限的访问权限](./media/role-assignments-external-users/9.png)
 
-Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如：虚拟机、虚拟网络、Web 应用、存储等）与 Azure 订阅之间一样存在子-父关系。 后者都是在 Azure 订阅下创建、管理和计费的，而 Azure 订阅用于管理对 Azure 目录的访问。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关系](/active-directory/active-directory-how-subscriptions-associated-directory)。
+Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如：虚拟机、虚拟网络、Web 应用、存储等）与 Azure 订阅之间一样存在子-父关系。 后者都是在 Azure 订阅下创建、管理和计费的，而 Azure 订阅用于管理对 Azure 目录的访问。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关系](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 在所有内置 RBAC 角色中，“所有者”和“参与者”提供对环境中所有资源的完全管理访问权限，两者的区别在于，“参与者”无法创建和删除新的 RBAC 角色。 其他内置角色（例如“虚拟机参与者”）只提供对按名称指定的资源的完全管理访问权限，不管这些角色是在哪个**资源组**中创建的。
 

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3c07f39a6c6c4ce244ba49a26617b3e645c57acb
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345029"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710366"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>将 Web 服务部署到 Azure 容器实例 
 
@@ -28,7 +28,7 @@ ACI 通常比 AKS 便宜，并且只需 4-6 行代码即可设置。 ACI 是测�
 * 使用 `Webservice.deploy_from_model()` 从已注册的模型进行部署
 * 使用 `Webservice.deploy_from_image()` 从映像部署已注册的模型
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
 
 ## <a name="prerequisites"></a>先决条件

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6cbcb42ee8c77ff0c8ded966b4f04af8815ca726
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614935"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632987"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>将警报从 Log Analytics 扩展为 Azure 警报
 Azure 警报正在取代 Azure Log Analytics 中的警报功能。 在此过渡过程中，最初在 Log Analytics 中配置的警报将扩展到 Azure 中。 如果不想等待它们自动移入 Azure，可以启动该过程：
@@ -150,7 +150,7 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 }
 ```
 
-此响应指示警报已成功扩展到 Azure 警报中。 版本属性仅用于检查警报是否已扩展到 Azure，并且与 [Log Analytics 搜索 API](../log-analytics/log-analytics-api-alerts.md) 无关。 警报成功扩展到 Azure 时，会向随 POST 请求提供的任何电子邮件地址发送报告。 如果指定工作区中的所有警报都已计划扩展，则对 POST 请求的响应是已禁止该尝试（403 状态码）。 若要查看任何错误消息或了解该过程是否中断，可以提交 GET 请求。 如果出现错误消息，则返回该消息以及摘要信息。
+此响应指示警报已成功扩展到 Azure 警报中。 版本属性仅用于检查警报是否已扩展到 Azure，并且与 [Log Analytics 搜索 API](../azure-monitor/platform/api-alerts.md) 无关。 警报成功扩展到 Azure 时，会向随 POST 请求提供的任何电子邮件地址发送报告。 如果指定工作区中的所有警报都已计划扩展，则对 POST 请求的响应是已禁止该尝试（403 状态码）。 若要查看任何错误消息或了解该过程是否中断，可以提交 GET 请求。 如果出现错误消息，则返回该消息以及摘要信息。
 
 ```json
 {

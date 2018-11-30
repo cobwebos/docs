@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: db1915f23c33b5cc0d504f8fcc21b9533228247f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: dd587e5fc2082d1e496fbc05d5b25cf6692413bc
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634390"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713055"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
-使用 Azure 媒体服务，可以通过管理媒体保留单位 (MRU) 来缩放媒体处理能力。 有关详细概述，请参阅[缩放媒体处理能力](../previous/media-services-scale-media-processing-overview.md)。 本文展示了如何使用[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 来缩放 MRU。
+使用 Azure 媒体服务，可以通过管理媒体保留单位 (MRU) 来缩放媒体处理能力。 有关详细概述，请参阅[缩放媒体处理能力](../previous/media-services-scale-media-processing-overview.md)。 
 
-> [!IMPORTANT]
-> 查看[此部分](#considerations)中所述的注意事项。  
-> 
->
+本文展示了如何使用[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 来缩放 MRU。
+
+> [!NOTE]
+> 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 <br/>如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -44,11 +44,6 @@ ms.locfileid: "51634390"
 ```azurecli
 az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
-
-## <a name="considerations"></a>注意事项
-
-- 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。
-- 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
 
 ## <a name="billing"></a>计费
 

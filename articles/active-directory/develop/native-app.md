@@ -16,16 +16,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8879cc331c5d0e8c6aab24e8c6178d96ab23bf9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8738205aec8e0b00115a185886ca293b2f96033c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955390"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422365"
 ---
 # <a name="native-apps"></a>本机应用
 
-本机应用是代表用户调用 Web API 的应用程序。 此方案是基于带有公共客户端的 OAuth 2.0 授权代码授予类型构建的，如 [OAuth 2.0 规范](http://tools.ietf.org/html/rfc6749)的第 4.1 部分所述。 本机应用程序使用 OAuth 2.0 协议为用户获取访问令牌。 然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
+本机应用是代表用户调用 Web API 的应用程序。 此方案是基于带有公共客户端的 OAuth 2.0 授权代码授予类型构建的，如 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749)的第 4.1 部分所述。 本机应用程序使用 OAuth 2.0 协议为用户获取访问令牌。 然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
 
 ## <a name="diagram"></a>图表
 

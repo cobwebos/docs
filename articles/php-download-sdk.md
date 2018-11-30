@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
-ms.openlocfilehash: cfcf908145e8a384782953e045f9e10fd3c0e8f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f2c242e27d8a0ed6687eb4a3510bbce6e07694f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639463"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421481"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
@@ -83,15 +83,15 @@ Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 A
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
-[composer-phar]: http://getcomposer.org/composer.phar
-[nodejs-org]: http://nodejs.org/
+[composer-phar]: https://getcomposer.org/composer.phar
+[nodejs-org]: https://nodejs.org/
 [install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-[download-wpi]: http://go.microsoft.com/fwlink/?LinkId=253447
-[mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
-[blob-service]: http://go.microsoft.com/fwlink/?LinkId=252714
-[table-service]: http://go.microsoft.com/fwlink/?LinkId=252715
-[queue-service]: http://go.microsoft.com/fwlink/?LinkId=252716
-[azure cli]: http://go.microsoft.com/fwlink/?LinkId=252717
-[powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
-[php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
-[install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[download-wpi]: https://go.microsoft.com/fwlink/?LinkId=253447
+[mac-installer]: https://go.microsoft.com/fwlink/?LinkId=252249
+[blob-service]: https://go.microsoft.com/fwlink/?LinkId=252714
+[table-service]: https://go.microsoft.com/fwlink/?LinkId=252715
+[queue-service]: https://go.microsoft.com/fwlink/?LinkId=252716
+[azure cli]: https://go.microsoft.com/fwlink/?LinkId=252717
+[powershell-tools]: https://go.microsoft.com/fwlink/?LinkId=252718
+[php-sdk-github]: https://go.microsoft.com/fwlink/?LinkId=252719
+[install-git]: https://git-scm.com/book/en/Getting-Started-Installing-Git

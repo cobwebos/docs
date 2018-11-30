@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: dc6119bdca850a71064795a80f3087c15189a2e5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091617"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51709995"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>准备好在 IoT Edge 上部署模型
 
@@ -27,7 +27,7 @@ Azure IoT Edge 设备是运行 Azure IoT Edge 运行时的基于 Linux 或 Windo
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
 * Azure 机器学习服务工作区。 要创建一个工作区，请使用[开始使用 Azure 机器学习服务](quickstart-get-started.md)文档中的步骤。
 

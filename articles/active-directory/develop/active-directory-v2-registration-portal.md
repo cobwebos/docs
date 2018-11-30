@@ -17,12 +17,12 @@ ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 0a9ec2e84197729f98fbf90bac53b505a8c99a19
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190109"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427317"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 本文档提供可在[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)中找到的各种功能的上下文和说明。
@@ -37,7 +37,7 @@ ms.locfileid: "43190109"
 此列表包含所有已注册且只能与 Microsoft 帐户搭配使用的应用程序。 它们不能与 Azure Active Directory 搭配使用。 可以在此处找到之前已向 MSA 开发人员门户 (`https://account.live.com/developers/applications`) 注册的所有应用程序。 之前曾在 `https://account.live.com/developers/applications` 执行的所有功能现在均可在此新门户 `https://apps.dev.microsoft.com` 中执行。
 
 ## <a name="application-secrets"></a>应用程序密码
-应用程序密码是允许应用程序利用 Azure AD 执行可靠的[客户端身份验证](http://tools.ietf.org/html/rfc6749#section-2.3)的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 Web 可寻址位置（使用 `https` 方案）接收安全令牌的应用程序都必须使用应用程序密码，通过兑换该安全令牌向 Azure AD 标识自己。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
+应用程序密码是允许应用程序利用 Azure AD 执行可靠的[客户端身份验证](https://tools.ietf.org/html/rfc6749#section-2.3)的凭据。 在 OAuth 和 OpenID Connect 中，应用程序密码通常称为 `client_secret`。 在 v2.0 协议中，任何在 Web 可寻址位置（使用 `https` 方案）接收安全令牌的应用程序都必须使用应用程序密码，通过兑换该安全令牌向 Azure AD 标识自己。 此外，设备上接收令牌的任何本机客户端都将禁止使用应用程序密码来执行客户端身份验证。 这样可防止在不安全的环境中存储密码。
 
 每个应用都能在任何指定时间包含两个有效的应用程序密码。 通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。 将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8aabcf342cde6de9fd4438014c9c400b28470e9b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612567"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632664"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>将 Log Analytics 警报扩展到 Azure 警报
 Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数据将相关情况主动通知给你，这种情况到最近才有所改变。 过去是在 Microsoft Operations Management Suite 门户中管理预警规则。 新的警报体验现在已在 Microsoft Azure 的各种服务中集成了警报。 该体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，支持的警报来自活动日志、指标以及 Log Analytics 和 Azure Application Insights 提供的日志。 
@@ -55,7 +55,7 @@ Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数
 > 确保在 Azure 中正确分配需要添加或编辑警报的个人用户的权限。 若要了解需授予的具体权限，请参阅[使用 Azure Monitor 和警报的权限](monitoring-roles-permissions-security.md)。  
 > 
 
-可以继续通过 [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) 和 [Log Analytics 资源模板](../monitoring/monitoring-solutions-resources-searches-alerts.md)创建警报。 执行此操作时，必须包括操作组。
+可以继续通过 [Log Analytics API](../azure-monitor/platform/api-alerts.md) 和 [Log Analytics 资源模板](../azure-monitor/insights/solutions-resources-searches-alerts.md)创建警报。 执行此操作时，必须包括操作组。
 
 ## <a name="next-steps"></a>后续步骤
 

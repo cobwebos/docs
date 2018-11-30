@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456892"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425201"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -119,7 +119,7 @@ HTTP/sharepoint.demo.o365identity.us demo
 1. 从另一台计算机使用 SPN 浏览到该站点。
  执行此操作时，相关的 Kerberos 票证集会在计算机上缓存。 这些票证包含浏览到的目标站点的 SPN。
 
-2. 可以使用一个名为 [Klist](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html) 的工具来拉取该站点的 SPN。 在特定的命令行窗口中运行以下命令，该窗口运行时所依据的上下文与用户通过浏览器访问站点时依据的上下文相同：
+2. 可以使用一个名为 [Klist](https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html) 的工具来拉取该站点的 SPN。 在特定的命令行窗口中运行以下命令，该窗口运行时所依据的上下文与用户通过浏览器访问站点时依据的上下文相同：
 ```
 Klist
 ```

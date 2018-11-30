@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306386"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497738"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -62,7 +62,7 @@ ms.locfileid: "46306386"
 
 **问：Azure AD Connect Health 是否支持 Azure 德国云？**
 
-Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview)除外。 
+Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。 
 
 | 角色 | 功能 | 德国云支持 |
 | ------ | --------------- | --- |

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231515"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426248"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板演练手册
 ## <a name="executive-summary"></a>执行摘要
@@ -122,7 +122,7 @@ SLTF 解决方案也可能引起大量的预测调用（服务请求），因为
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>示例用例 1：eSmart Systems – 过载优化
 [智能电网](https://en.wikipedia.org/wiki/Smart_grid)是一个重要角色是随着不断变化的用电模式，而动态和持续地优化并调整。 用电量可能受到短期变化所影响，主要是温度变动所造成（*例如*，空调或暖气的用电增加）。 同时，用电量也受到长期趋势所影响。 其中包括季节效应、法定节假日、长期用电量增长，甚至经济因素，例如消费指数、石油价格和 GDP。
 
-在本用例中，[eSmart](http://www.esmartsystems.com/) 想要部署基于云的解决方案，预测电网的任何给定变电站发生过载情况的倾向。 具体而言，eSmart 希望找到下一个小时可能过载的变电站，以便立即采取措施来避免或解决这种情况。
+在本用例中，[eSmart](https://www.esmartsystems.com/) 想要部署基于云的解决方案，预测电网的任何给定变电站发生过载情况的倾向。 具体而言，eSmart 希望找到下一个小时可能过载的变电站，以便立即采取措施来避免或解决这种情况。
 
 为了准确快速预测，必须实现三个预测模型：
 
@@ -365,7 +365,7 @@ MAPE (Mean Absolute Percentage Error) 是“平均绝对百分比误差”的缩
 在能源需求预测方面，我们的目标是调用连续和定期的预测，同时确保模型可获取最新的数据，并将预测的数据返回给使用方客户端。
 
 ### <a name="web-services-deployment"></a>Web 服务部署
-在 Azure ML 中，主要的可部署构建块是 Web 服务。 这是在云中使用预测模型的最有效方式。 Web 服务封装模型，并以 [RESTful](http://www.restapitutorial.com/) API（应用程序编程接口）来包装它。 API 可用作任何客户端代码的一部分，如下图所示。
+在 Azure ML 中，主要的可部署构建块是 Web 服务。 这是在云中使用预测模型的最有效方式。 Web 服务封装模型，并以 [RESTful](https://www.restapitutorial.com/) API（应用程序编程接口）来包装它。 API 可用作任何客户端代码的一部分，如下图所示。
 
 ![Web 服务部署和使用](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

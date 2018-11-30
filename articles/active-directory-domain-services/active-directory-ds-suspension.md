@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6448e592db8024d911831b0b3634dabb4ed3b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063108"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443392"
 ---
 # <a name="suspended-domains"></a>挂起的域
 当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 本文解释了托管域挂起的原因，以及如何修正挂起的域。
@@ -43,7 +43,7 @@ ms.locfileid: "47063108"
 
 
 ### <a name="needs-attention-state"></a>“需引起注意”状态
-如果有一个或多个问题需要管理员采取措施，则托管域处于“需引起注意”状态。 托管域的运行状况页面将列出此状态下的一个或多个警报。 
+如果有一个或多个问题需要管理员采取措施，则托管域处于“需引起注意”状态。 托管域的运行状况页面将列出此状态下的一个或多个警报。
 
 例如，如果你为虚拟网络配置了限制性 NSG，则 Microsoft 可能无法更新和监视托管域。 此无效配置会触发警报，将托管域置于“需引起注意”状态。
 

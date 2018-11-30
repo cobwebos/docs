@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746711"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285146"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Linux 操作系统
 
@@ -147,7 +147,7 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 1. 完成所有先决条件步骤来准备群集。
 2. 像部署任何其他 Service Fabric 应用那样部署修补业务流程应用。 可以使用 PowerShell 或 Azure Service Fabric CLI 部署应用。 遵循[使用 PowerShell 部署和删除应用程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)或[使用 Azure Service Fabric CLI 部署应用程序](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)中的步骤。
-3. 若要在部署时配置应用程序，请将 `ApplicationParamater` 传递给 `New-ServiceFabricApplication` cmdlet 或提供的脚本。 为方便起见，我们随应用程序一同提供了 powershell (Deploy.ps1) 和 bash (Deploy.sh) 脚本。 使用脚本：
+3. 若要在部署时配置应用程序，请将 `ApplicationParameter` 传递给 `New-ServiceFabricApplication` cmdlet 或提供的脚本。 为方便起见，我们随应用程序一同提供了 powershell (Deploy.ps1) 和 bash (Deploy.sh) 脚本。 使用脚本：
 
     - 连接到 Service Fabric 群集。
     - 执行部署脚本。 （可选）将应用程序参数传递给脚本。 例如：.\Deploy.ps1 -ApplicationParameter @{ UpdateFrequency = "Daily, 11:00:00"} OR ./Deploy.sh "{\"UpdateFrequency\":\"Daily, 11:00:00\"}" 

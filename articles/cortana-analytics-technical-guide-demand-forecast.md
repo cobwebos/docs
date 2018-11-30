@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238856"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427057"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**
@@ -159,14 +159,14 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 本部分介绍如何设置 Power BI 仪表板，可视化来自 Azure 流分析（热路径）的实时数据，以及来自 Azure 机器学习（冷路径）的预测结果。
 
 ### <a name="setup-hot-path-dashboard"></a>设置热路径仪表板
-以下步骤逐步说明如何可视化部署解决方案时生成的流分析作业的实时数据输出。 若要执行以下步骤，需要一个 [Power BI online](http://www.powerbi.com/) 帐户。 如果没有帐户，可以[创建一个](https://powerbi.microsoft.com/pricing)。
+以下步骤逐步说明如何可视化部署解决方案时生成的流分析作业的实时数据输出。 若要执行以下步骤，需要一个 [Power BI online](https://www.powerbi.com/) 帐户。 如果没有帐户，可以[创建一个](https://powerbi.microsoft.com/pricing)。
 
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
 
    * 需要根据 [Azure 流分析和 Power BI：用于实时查看流数据的实时分析仪表板](stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
    * 在 [Azure 门户](https://portal.azure.com)中找到流分析作业。 作业名称应该是：解决方案名称+“streamingjob”+随机数字+“asapbi”（例如 demostreamingjob123456asapbi）。
    * 添加 ASA 作业的 PowerBI 输出。 将“输出别名”设置为“PBIoutput”。 将“数据集名称”和“表名称”设置为“EnergyStreamData”。 添加输出后，单击页面底部的“启动”启动流分析作业。 此时应会出现确认消息（例如，“已成功启动流分析作业 myteststreamingjob12345asablob”）。
-2. 登录到 [Power BI online](http://www.powerbi.com)
+2. 登录到 [Power BI online](https://www.powerbi.com)
 
    * 在“我的工作区”的左侧面板“数据集”部分中，应会看到新数据集出现在 Power BI 的左侧面板上。 这是在上一步骤中从 Azure 流分析推送的流数据。
    * 确保“可视化效果”窗格已打开，并显示在屏幕的右侧。
@@ -207,7 +207,7 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
    * 在弹出窗口中，将“服务器”和“数据库”替换为自己的服务器和数据库名称，并单击“确定”。 对于服务器名称，请确保指定端口 1433 (**YourSolutionName.database.windows.net, 1433**)。 忽略屏幕上出现的警告消息。
    * 下一个弹出窗口的左侧窗格中出现了两个选项（“Windows”和“数据库”）。 单击“数据库”，填充“用户名”和“密码”（这是首次部署解决方案和创建 Azure SQL 数据库时输入的用户名与密码）。 在“选择要将这些设置应用到的级别”中，选中数据库级别选项。 然后单击“连接”。
    * 返回上一页后，请关闭窗口。 此时会弹出一条消息 - 请单击“应用”。 最后，单击“保存”保存更改。 Power BI 文件现在已与服务器建立连接。 如果可视化效果是空的，请务必单击图例右上角的橡皮擦图标清除可视化效果中的选择内容，这样即可查看所有数据。 使用刷新按钮显示可视化效果中的新数据。 最初，只会在可视化效果中看到种子数据，因为数据工厂计划为每隔 3 小时刷新一次。 3 小时后，刷新数据时，可以看到新预测数据反映在可视化效果中。
-3. （可选）将冷路径仪表板发布到 [Power BI online](http://www.powerbi.com/)。 请注意，此步骤需要 Power BI 帐户（或 Office 365 帐户）。
+3. （可选）将冷路径仪表板发布到 [Power BI online](https://www.powerbi.com/)。 请注意，此步骤需要 Power BI 帐户（或 Office 365 帐户）。
 
    * 单击“发布”，几秒钟后会出现一个窗口，显示“发布到 Power BI 成功!”和 和一个绿色的复选标记。 单击下面的“在 Power BI 中打开 demoprediction.pbix”链接。 若要查找详细说明，请参阅[从 Power BI Desktop 发布](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)。
    * 若要创建新仪表板，请在左侧窗格中单击“仪表板”部分旁边的 **+** 号。 为此新仪表板输入名称“需求预测演示”。

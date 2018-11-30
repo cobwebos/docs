@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2baae0a1932bdcb7fa5e29ac06dd8ae7a7020a30
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986109"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421838"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
 > [!IMPORTANT]
@@ -134,7 +134,7 @@ ms.locfileid: "46986109"
 
 ### <a name="azure-classic-cli"></a>Azure 经典 CLI
 
-1. [安装 Azure 经典 CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 通过经典 CLI 命令提示符完成剩余的步骤。
+1. [安装 Azure 经典 CLI](/cli/azure/install-classic-cli)。 通过经典 CLI 命令提示符完成剩余的步骤。
 2. 输入 `azure login` 命令登录到 Azure。
 3. 输入 `azure config mode asm` 命令确保处于 asm 模式。
 4. 在以下命令中根据需要更改目录和文件名，然后运行该命令导入网络配置文件：

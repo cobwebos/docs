@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: backup
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: raynew
+ms.openlocfilehash: e62771096bc59bc05879ce7b7e2da19f050b27b0
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279463"
+---
 ## <a name="defining-a-backup-policy"></a>定义备份策略
 备份策略定义由数据快照创建时间和这些快照的保留时间长度构成的矩阵。 定义 VM 的备份策略时，可以 *一天一次*地触发备份作业。 创建新策略时，该策略将应用到保管库。 备份策略界面如下所示：
 

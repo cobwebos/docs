@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 72acf0f06bbed0129ff322b10a7faf16fd94f712
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320333"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314739"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -262,7 +262,7 @@ ms.locfileid: "49320333"
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-- [设置安全策略](security-center-policies.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
+- [设置安全策略](security-center-azure-policy.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
 - [管理安全建议](security-center-recommendations.md) — 了解建议如何帮助你保护 Azure 资源。
 - [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。
 - [管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。

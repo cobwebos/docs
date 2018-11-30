@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 58bc0c0669992b8b3884e24c39862f47412b9110
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419327"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584649"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -201,7 +201,6 @@ UDP 是无连接的，并且系统不会跟踪 UDP 的流状态。 如果后端�
 ## <a name="limitations"></a>限制
 
 -  HTTPS 探测不支持使用客户端证书的相互身份验证。
--  SDK 和 PowerShell 目前不支持 HTTPS 探测。
 
 ## <a name="next-steps"></a>后续步骤
 

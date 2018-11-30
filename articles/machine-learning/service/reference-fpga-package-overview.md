@@ -10,12 +10,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 344423ea9943e04dc5f02ebee0903d179be90bbd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 83c5a788f85fcc47c221f5c8f9e6944c4448fbf9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887575"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712120"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure 机器学习硬件加速包
 
@@ -32,7 +32,7 @@ Azure 机器学习硬件加速包是适用于 Azure 机器学习的 Python pip �
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+1. 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
 1. Azure 机器学习模型管理帐户。 有关如何创建帐户的详细信息，请参阅 [Azure 机器学习快速入门和 Workbench 安装](../desktop-workbench/quickstart-installation.md)文档。 
 

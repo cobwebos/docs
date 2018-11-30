@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145051"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425670"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -217,10 +217,10 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 有关详细信息，请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
-[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[服务定义 (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服务配置 (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[iis.net]: http://www.iis.net/
+[install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
+[服务定义 (.csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[服务配置 (.cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
-[sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 安装程序]: http://go.microsoft.com/fwlink/?LinkID=239648
+[sqlsrv drivers]: https://php.net/sqlsrv
+[sqlncli.msi x64 安装程序]: https://go.microsoft.com/fwlink/?LinkID=239648

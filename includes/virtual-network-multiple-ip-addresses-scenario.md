@@ -1,4 +1,17 @@
-## <a name="scenario"></a>方案
+---
+author: genlin
+ms.service: virtual-network
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genli
+ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269016"
+---
+## <a name="scenario"></a>场景
 创建具有单个 NIC 的 VM 并将其连接到虚拟网络。 VM 需要三个不同的专用 IP 地址和两个公共 IP 地址。 IP 地址将分配到以下 IP 配置：
 
 * **IPConfig-1：** 分配一个静态专用 IP 地址和一个静态公共 IP 地址。

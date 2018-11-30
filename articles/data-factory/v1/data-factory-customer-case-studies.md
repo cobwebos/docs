@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d8264f896b7c6cac8fc46616ab3ee579c5acb8b7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d291d7ecd5ee9b8bf5645296ef345ac436f1d047
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621643"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495906"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。
@@ -34,7 +34,7 @@ ms.locfileid: "34621643"
 [面对这个汉堡你有什么点子？Ziosk 可能已经知道了。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>阿拉斯加航空公司
-[航空公司使用平板电脑、云服务提供更有趣的乘机娱乐](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+[使用平板电脑，云服务提供更有趣的机上娱乐](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
 ## <a name="tacoma-public-schools"></a>塔科马公立学校
 [使用云分析预测学生辍学风险，提高毕业率](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)

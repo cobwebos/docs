@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 1d996469c01640a70b68d70e8c24c617e0defd64
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250725"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444796"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
 
@@ -32,6 +32,8 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 + 有一个 Azure API 管理实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 了解 [Azure API 管理实例容量](api-management-capacity.md)的概念。
 + 了解 [Azure API 管理实例的手动缩放过程](upgrade-and-scale.md)，包括成本影响。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Azure API 管理自动缩放的限制
 
@@ -74,7 +76,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 指标源         | 当前资源  | 基于当前的 Azure API 管理资源指标定义规则。                                                                                                                                                                                                     |
     | *条件*            |                   |                                                                                                                                                                                                                                                                                 |
     | 时间聚合      | 平均值           |                                                                                                                                                                                                                                                                                 |
-    | 指标名称           | Capacity          | 容量指标是一个 Azure API 管理标准，用于反映 Azure API 管理实例的资源用量。                                                                                                                                                            |
+    | 指标名称           | 容量          | 容量指标是一个 Azure API 管理标准，用于反映 Azure API 管理实例的资源用量。                                                                                                                                                            |
     | 时间粒度统计信息  | 平均值           |                                                                                                                                                                                                                                                                                 |
     | 运算符              | 大于      |                                                                                                                                                                                                                                                                                 |
     | 阈值             | 80%               | 平均容量指标的阈值。                                                                                                                                                                                                                                 |
@@ -101,7 +103,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 指标源         | 当前资源  | 基于当前的 Azure API 管理资源指标定义规则。                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *条件*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | 时间聚合      | 平均值           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | 指标名称           | Capacity          | 横向扩展规则所用的相同指标。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | 指标名称           | 容量          | 横向扩展规则所用的相同指标。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | 时间粒度统计信息  | 平均值           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | 运算符              | 小于         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | 阈值             | 35%               | 与横向扩展规则类似，此值在很大程度取决于 Azure API 管理的使用模式。 |

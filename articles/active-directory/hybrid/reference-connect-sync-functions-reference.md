@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2302061d5a3eaf9ef51543b1304104e2dbe54bd9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307246"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425687"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -600,7 +600,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 * format：表示要转换为的格式的字符串。
 
 **备注：**  
-格式的可能值可以在此处找到：[用户定义的日期/时间格式（Format 函数）](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+格式的可能值可以在此处找到：[用户定义的日期/时间格式（Format 函数）](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **示例：**  
 

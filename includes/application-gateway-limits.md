@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
-ms.openlocfilehash: 44f9400a1ecebd3c204ec0b891c5d7fe01bdfd25
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3d66d825306c5183bdd8d8e611d98904eef2022a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51628095"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52439997"
 ---
 | 资源 | 默认限制 | 注意 |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "51628095"
 | 身份验证证书 |40 | |
 | 最短请求超时 |1 秒 | |
 | 最长请求超时 |24 小时 | |
-| 站点数 |20 |每个 HTTP 侦听器 1 个 |
+| 站点数 |40 |每个 HTTP 侦听器 1 个 |
 | 每个侦听器的 URL 映射数 |1 | |
 | 每个 URL 映射基于路径的最大规则数|100|
 | 重定向配置数 |40| |

@@ -1,3 +1,16 @@
+---
+author: vhorne
+ms.service: dns
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: victorh
+ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330753"
+---
 ### <a name="record-names"></a>记录名称
 
 在 Azure DNS 中，记录使用相对名称指定。 完全限定的域名 (FQDN) 包括区域名称，而相对域名则不包括。 例如，“contoso.com”区域中的相对记录名称“www”会提供完全限定的记录名称“www.contoso.com”。

@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 97d988332a2c5234cb260cef29f195f0fecfee45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73f95280cc02b6f891c4ef67cd11084768d7d282
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994932"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853007"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>使用 Azure 机器学习生成和部署文本分类模型
 
@@ -436,7 +436,7 @@ text_classifier.fit(df_train)
 
 以下代码示例演示如何使用默认管道和模型参数训练模型。 
 
-若要查看针对“text_word_ngrams”包含的参数，请使用 [get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel)。 此函数返回 lowercase、input_col、output_col 等参数。 
+若要查看针对“text_word_ngrams”包含的参数，请使用 [get_step_param_names_by_name](/python/api/msft-tatk/tatk.core.base_text_model.basetextmodel#get-step-param-names-by-name)。 此函数返回 lowercase、input_col、output_col 等参数。 
 
 ```python
 text_classifier.get_step_param_names_by_name("text_word_ngrams")
@@ -625,7 +625,7 @@ text_classifier.export_params(params_file_path)
 </div>
 
 ## <a name="evaluate-model-performance"></a>评估模型性能
-[评估模块](https://docs.microsoft.com/python/api/tatk.evaluation)评估针对测试数据集训练的文本分类器的准确性。 评估函数生成混淆矩阵，并提供 macro-F1 评分。
+[评估模块](/python/api/msft-tatk/tatk.evaluation)评估针对测试数据集训练的文本分类器的准确性。 评估函数生成混淆矩阵，并提供 macro-F1 评分。
 
 ```python
  text_classifier.evaluate(df_test)          

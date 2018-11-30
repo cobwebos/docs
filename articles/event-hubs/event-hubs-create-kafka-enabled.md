@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: bahariri
-ms.openlocfilehash: 7ce12f9dcaa15ade95274419f99c13d5915dbaaa
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b72f6b190aad436398629c67f271020ffd0a8da9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42145758"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822069"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>创建启用了 Apache Kafka 的事件中心
 
@@ -39,7 +39,7 @@ Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中
  
 3. 提供唯一名称并在命名空间上启用 Kafka。 单击“创建”。
     
-    ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+    ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
 4. 创建命名空间后，在“设置”选项卡上，单击“共享访问策略”来获取连接字符串。
 

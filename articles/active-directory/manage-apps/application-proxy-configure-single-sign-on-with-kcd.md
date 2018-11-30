@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347814"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422277"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -144,5 +144,5 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 * [解决使用应用程序代理时遇到的问题](application-proxy-troubleshoot.md)
 
 
-有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
+有关最新新闻和更新，请参阅 [应用程序代理博客](https://blogs.technet.com/b/applicationproxyblog/)
 

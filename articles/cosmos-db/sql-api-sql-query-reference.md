@@ -10,21 +10,21 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dbd3d4e34df3bf918c831a3d9c74de8a9015b50e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623938"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163594"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL 语法参考
 
-Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供与 SQL API 帐户兼容的 SQL 查询语言的文档。 有关示例 SQL 查询的演练，请参阅 [Cosmos DB 中的 SQL 查询](sql-api-sql-query.md)。  
+Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供与 SQL API 帐户兼容的 SQL 查询语言的文档。 有关示例 SQL 查询的演练，请参阅 [Cosmos DB 中的 SQL 查询](how-to-sql-query.md)。  
   
 请访问[查询操场](http://www.documentdb.com/sql/demo)，可在其中尝试 Cosmos DB，并针对数据集运行 SQL 查询。  
   
 ## <a name="select-query"></a>SELECT 查询  
-每个查询按 ANSI-SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常，对于每个查询，已枚举 FROM 子句中的源。 然后将 WHERE 子句中的筛选器应用到源以检索 JSON 文档的子集。 最后，使用 SELECT 子句以投影选择列表中请求的 JSON 值。 用于描述 SELECT 语句的约定在“语法约定”部分以表格形式列出。 有关示例，请参阅 [SELECT 查询示例](sql-api-sql-query.md#SelectClause)
+每个查询按 ANSI-SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常，对于每个查询，已枚举 FROM 子句中的源。 然后将 WHERE 子句中的筛选器应用到源以检索 JSON 文档的子集。 最后，使用 SELECT 子句以投影选择列表中请求的 JSON 值。 用于描述 SELECT 语句的约定在“语法约定”部分以表格形式列出。 有关示例，请参阅 [SELECT 查询示例](how-to-sql-query.md#SelectClause)
   
 **语法**  
   
@@ -69,7 +69,7 @@ SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任
 虽然空格字符和注释在语法中没有任何意义，但它们必须用于分隔令牌。 例如：`-1e5` 是单个数字令牌，而 `: – 1 e5` 是减号令牌，后跟数字 1 和标识符 e5。  
 
 ##  <a name="bk_select_query"></a> SELECT 子句  
-SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。 有关示例，请参阅 [SELECT 查询示例](sql-api-sql-query.md#SelectClause)。
+SELECT 语句中的子句必须按照以上所示进行排序。 可以省略任一可选子句。 但是当使用可选子句时，它们必须按正确的顺序显示。 有关示例，请参阅 [SELECT 查询示例](how-to-sql-query.md#SelectClause)。
 
 **语法**  
 
@@ -132,7 +132,7 @@ SELECT <select_specification>
 [SELECT 子句](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM 子句  
-指定源或联接源。 FROM 子句是可选的，除非稍后在查询中对源进行筛选或投影。 此子句的目的在于指定必须对其执行查询的数据源。 通常情况下，整个容器作为源，但可以改为指定容器的子集作为源。 如果未指定此子句，其他子句仍将继续执行，如同 FROM 子句提供了单个文档。 有关示例，请参阅 [FROM 子句示例](sql-api-sql-query.md#FromClause)
+指定源或联接源。 FROM 子句是可选的，除非稍后在查询中对源进行筛选或投影。 此子句的目的在于指定必须对其执行查询的数据源。 通常情况下，整个容器作为源，但可以改为指定容器的子集作为源。 如果未指定此子句，其他子句仍将继续执行，如同 FROM 子句提供了单个文档。 有关示例，请参阅 [FROM 子句示例](how-to-sql-query.md#FromClause)
   
 **语法**  
   
@@ -216,7 +216,7 @@ FROM <from_specification>
   
 在当前发布的版本中，Cosmos DB 支持内联。 其他联接功能即将发布。 
 
-内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。 有关示例，请参阅 [JOIN 关键字示例](sql-api-sql-query.md#Joins)
+内联会导致加入联接的集产生完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。 有关示例，请参阅 [JOIN 关键字示例](how-to-sql-query.md#Joins)
   
 联接的计算取决于参与集的上下文范围：  
   
@@ -311,7 +311,7 @@ FROM <from_specification>
  [SELECT 子句](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE 子句  
- 为查询返回的文档指定搜索条件。 有关示例，请参阅 [WHERE 子句示例](sql-api-sql-query.md#WhereClause)
+ 为查询返回的文档指定搜索条件。 有关示例，请参阅 [WHERE 子句示例](how-to-sql-query.md#WhereClause)
   
  **语法**  
   
@@ -336,7 +336,7 @@ WHERE <filter_condition>
  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY 子句  
- 为查询返回的结果指定排序顺序。 有关示例，请参阅 [ORDER BY 子句示例](sql-api-sql-query.md#OrderByClause)
+ 为查询返回的结果指定排序顺序。 有关示例，请参阅 [ORDER BY 子句示例](how-to-sql-query.md#OrderByClause)
   
  **语法**  
   
@@ -374,7 +374,7 @@ ORDER BY <sort_specification>
  虽然查询语法支持多个排序依据属性，但 Cosmos DB 查询运行时支持仅按单个属性排序，以及仅按属性名称排序（不支持按计算属性排序）。 排序也要求索引策略尽可能精确地加入属性和指定类型的范围索引。 有关详细信息，请参阅索引策略文档。  
   
 ##  <a name="bk_scalar_expressions"></a> 标量表达式  
- 标量表达式是符号和运算符的组合，经计算后可获得单个值。 简单表达式可以是常数、属性引用、数组元素引用、别名引用或函数调用。 简单表达式可以使用运算符组合成复杂的表达式。 有关示例，请参阅[标量表达式示例](sql-api-sql-query.md#scalar-expressions)
+ 标量表达式是符号和运算符的组合，经计算后可获得单个值。 简单表达式可以是常数、属性引用、数组元素引用、别名引用或函数调用。 简单表达式可以使用运算符组合成复杂的表达式。 有关示例，请参阅[标量表达式示例](how-to-sql-query.md#scalar-expressions)
   
  有关标量表达式可能包含的值的详细信息，请参阅[常数](#bk_constants)部分。  
   
@@ -2905,6 +2905,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>后续步骤  
 
-- [Cosmos DB 的 SQL 语法和 SQL 查询](sql-api-sql-query.md)
+- [Cosmos DB 的 SQL 语法和 SQL 查询](how-to-sql-query.md)
 
 - [Cosmos DB 文档](https://docs.microsoft.com/azure/cosmos-db/)  

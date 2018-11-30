@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: eb3bd1b2186d323c5b9d10d89bb68c03bd2b84a8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a36dc0cd8148b8cf58729d2e8d22011e61140b0f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305706"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426317"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory 混合标识设计注意事项 - 后续步骤
 既然已为移动设备管理解决方案完成要求定义和所有选项检查，就可以随时采取后续步骤，为你和组织部署合适的支持基础结构。
@@ -43,10 +43,10 @@ ms.locfileid: "46305706"
 经常监视以下资源可提供有关移动设备管理解决方案的最新消息和更新：
 
 * [Microsoft 企业移动性博客](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [云中的 Microsoft 博客](http://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune 博客](http://blogs.technet.com/b/microsoftintune/)
-* [Microsoft System Center Configuration Manager 博客](http://blogs.technet.com/b/configurationmgr/)
-* [Microsoft System Center Configuration Manager 团队博客](http://blogs.technet.com/b/configmgrteam/)
+* [云中的 Microsoft 博客](https://blogs.technet.com/b/in_the_cloud/)
+* [Microsoft Intune 博客](https://blogs.technet.com/b/microsoftintune/)
+* [Microsoft System Center Configuration Manager 博客](https://blogs.technet.com/b/configurationmgr/)
+* [Microsoft System Center Configuration Manager 团队博客](https://blogs.technet.com/b/configmgrteam/)
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)

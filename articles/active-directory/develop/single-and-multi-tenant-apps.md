@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a965cd70e3eba04f278cf432196b9386b537462d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988217"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424334"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory 中的租户
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称�
 
 ## <a name="who-can-sign-in-to-your-app"></a>谁可以登录到你的应用？
 
-在开发应用时，在 [Azure 门户](http://portal.azure.com)中注册应用期间，开发人员可以选择将其应用配置为单租户的还是多租户的。
+在开发应用时，在 [Azure 门户](https://portal.azure.com)中注册应用期间，开发人员可以选择将其应用配置为单租户的还是多租户的。
 * 单租户应用仅可在它们在其中注册的租户（也称为宿主租户）中使用。
 * 多租户应用可供其宿主租户以及其他租户中的用户使用。
 

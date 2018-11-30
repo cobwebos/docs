@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 11/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2f9868abd0eb8bf96928aeba6f96c10bcb91c4e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3bb7e9837f74fd04d38cc77a9504cc26c6dcf803
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958539"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854180"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>在 Log Analytics 中编写高级查询
 
@@ -76,28 +76,6 @@ Event
 | extend USTimeGenerated = utc_to_us_date_format(TimeGenerated)
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
-
-## <a name="functions"></a>函数
-可使用函数别名保存查询，以便它可被其他查询引用。 例如，以下标准查询返回昨天报告的所有缺失的安全更新：
-
-```Kusto
-Update
-| where TimeGenerated > ago(1d) 
-| where Classification == "Security Updates" 
-| where UpdateState == "Needed"
-```
-
-可将此查询另存为函数，并为其提供别名（如 security_updates_last_day）。 然后，即可在其他查询中使用它来搜索与 SQL 相关的必需安全更新：
-
-```Kusto
-security_updates_last_day | where Title contains "SQL"
-```
-
-要将查询保存为函数，请在门户中选择“保存”按钮，并将“另存为”更改为“函数”。 函数别名可以包含字母、数字或下划线，但必须以字母或下划线开头。
-
-> [!NOTE]
-> 可在 Log Analytics 查询中保存功能，但此功能目前不适用于 Application Insights 查询。
-
 
 ## <a name="print"></a>Print
 `print` 将返回一个单列单行的表，其中显示计算结果。 这通常用于需要简单计算的情况。 例如，要在 PST 中查找当前时间并添加具有 EST 的列：

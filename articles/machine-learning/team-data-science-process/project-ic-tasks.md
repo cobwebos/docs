@@ -1,25 +1,21 @@
 ---
 title: 单个参与者的 Team Data Science Process 任务 - Azure  | Microsoft Docs
 description: 数据科学团队项目的单个参与者的任务概述。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: f21098381d75a4843e9300beaae687adc6ec107d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: d8e51dcf8434508664801f53391592aab34d7e4a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303755"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447055"
 ---
 # <a name="individual-contributor-tasks"></a>单个参与者的任务
 

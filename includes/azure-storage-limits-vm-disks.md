@@ -1,3 +1,16 @@
+---
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: rogarana
+ms.openlocfilehash: aa701ada917811382351fee9469a5cfa9a7599b8
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279467"
+---
 Azure 虚拟机支持附加许多的数据磁盘。 本文介绍 VM 的数据磁盘的可伸缩性和性能目标。 使用这些目标可帮助确定满足性能和容量要求所需的磁盘数量和磁盘类型。 
 
 > [!IMPORTANT]
@@ -12,7 +25,6 @@ Azure 虚拟机支持附加许多的数据磁盘。 本文介绍 VM 的数据磁
 > | 高级托管磁盘 | 10,000 | 50,000 |
 > | 标准 LRS 快照 | 10,000 | 50,000 |
 > | 标准 ZRS 快照 | 10,000 | 50,000 |
-> | 高级 LRS 快照 | 10,000 | 50,000 |
 > | 托管映像 | 10,000 | 50,000 |
 
 * **标准存储帐户：** 标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。

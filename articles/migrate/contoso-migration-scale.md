@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 37f0ba800cca4b096691a8bb6b43eb33a636d833
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092739"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284857"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso - 到 Azure 的大规模迁移
 
@@ -289,9 +289,9 @@ Contoso 需要了解如何根据容量注意事项部署这些组件。
 --- | ---
 **最大每日更改率** | 单个进程服务器可以处理多达 2 TB 的每日更改率。 由于 VM 只能使用一个进程服务器，因此复制的 VM 支持的最大每日数据更改率为 2 TB。
 **最大吞吐量** | 标准 Azure 存储帐户每秒最多可以处理 20,000 个请求，因此要复制的 VM 中的每秒输入/输出操作数 (IOPS) 应保持在此限制内。 例如，如果 VM 有 5 个磁盘，每个磁盘在 VM 上生成 120 IOPS（8K 大小），则处于 Azure 的单磁盘 IOPS 限制 (500) 内。<br/><br/> 注意：所需的存储帐户数等于源计算机总 IOPS 除以 20,000。 在 Azure 中，一个复制的计算机只能属于一个存储帐户。
-**配置服务器** | 根据 Contoso 总共复制 100=200 VM 的估计和[配置服务器大小调整要求](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server)，Contoso 估计需要如下所示的配置服务器计算机：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存：32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1-2 TB。<br/><br/> 除大小调整要求外，Contoso 还需要确保配置服务器处于最佳位置，即应位于与将迁移的 VM 相同的网络和 LAN 区段中。
+**配置服务器** | 根据 Contoso 总共复制 100=200 VM 的估计和[配置服务器大小调整要求](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server)，Contoso 估计需要如下所示的配置服务器计算机：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存：32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1-2 TB。<br/><br/> 除大小调整要求外，Contoso 还需要确保配置服务器处于最佳位置，即应位于与将迁移的 VM 相同的网络和 LAN 区段中。
 **进程服务器** | Contoso 将部署独立的专用进程服务器，使其能够复制 100-200 个 VM：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存：32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1-2 TB。<br/><br/> 进程服务器将努力工作，并且在此情况下，它们应位于可以处理复制所需的磁盘 I/O、网络流量和 CPU 的 ESXi 主机。 为此，Contoso 将考虑使用专用主机。 
-**网络** | Contoso 检查了当前的站点到站点 VPN 基础结构，并决定实现 Azure ExpressRoute。 此实现至关重要，因为它可降低延迟，并将带宽提高到 Contoso 的美国东部 2 的主要 Azure 区域。<br/><br/> **监视**：Contoso 需要密切监视源自进程服务器的数据流。 如果数据使网络带宽过载，Contoso 将考虑[限制进程服务器带宽](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
+**网络** | Contoso 检查了当前的站点到站点 VPN 基础结构，并决定实现 Azure ExpressRoute。 此实现至关重要，因为它可降低延迟，并将带宽提高到 Contoso 的美国东部 2 的主要 Azure 区域。<br/><br/> **监视**：Contoso 需要密切监视源自进程服务器的数据流。 如果数据使网络带宽过载，Contoso 将考虑[限制进程服务器带宽](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
 **Azure 存储** | 对于迁移，Contoso 还需创建适当类型和数量的目标 Azure 存储帐户。  Site Recovery 将 VM 数据复制到 Azure 存储。<br/><br/> Site Recovery 可复制到标准或高级 (SSD) 存储帐户。<br/><br/> 若要确定存储，Contoso 必须检查[存储限制](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)，并随着时间的推移考虑预期的增长和使用量的增加。 鉴于速度和迁移优先级，Contoso 决定使用高级存储帐户。<br/><br/> 迁移过程期间，他们将创建并重复使用多个存储帐户。
 Contoso 已决定对要部署到 Azure 的所有 VM 使用托管磁盘。  所需的 IOPS 将确定磁盘为标准版 (HDD) 还是高级版 (SSD)。<br/>.<br/>
 

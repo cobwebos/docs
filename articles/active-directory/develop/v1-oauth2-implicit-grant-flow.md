@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 90c636d57189518cb95291510f3e83ef8e7a8a75
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985720"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422025"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
 
@@ -34,7 +34,7 @@ OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因�
 
 典型的 [OAuth2 授权代码授予](https://tools.ietf.org/html/rfc6749#section-1.3.1)是使用两个单独终结点的授权授予。 授权终结点用于用户交互阶段，此阶段会生成授权代码。 然后，客户端会通过令牌终结点用该代码交换访问令牌，通常还会交换刷新令牌。 Web 应用程序必须向令牌终结点提交自身的应用程序凭据，授权服务器才能对客户端进行身份验证。
 
-[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体专为在 Web 浏览器中运行的基于 JavaScript 的应用程序设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 通过浏览器返回令牌即可直接从授权终结点重定向。 另一优点是消除跨域调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
+[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体专为在 Web 浏览器中运行的基于 JavaScript 的应用程序设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 通过浏览器返回令牌即可直接从授权终结点重定向。 另一优点是消除跨域调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
 
 OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌返回到客户端。 下一部分将说明这如何是不必要的，实际上会造成安全问题。
 

@@ -347,5 +347,5 @@
 ## [定价](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=active-directory)
-## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

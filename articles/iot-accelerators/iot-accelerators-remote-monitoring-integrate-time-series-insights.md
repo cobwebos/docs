@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605923"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317478"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -292,6 +292,6 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在时序见解资源管理器浏览数据和诊断警报，请参阅[执行根本原因分析](/tutorials)教程。
+* 若要了解如何在时序见解资源管理器浏览数据和诊断警报，请参阅[执行根本原因分析](iot-accelerators-remote-monitoring-root-cause-analysis.md)教程。
 
 * 若要了解如何在时序见解资源管理器中浏览和查询数据，请参阅 [Azure 时序见解资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)文档。

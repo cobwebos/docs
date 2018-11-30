@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 11307e3c0dbf831a03b5f7685b8e44f03f8d242e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1df88e18a6065f9d3917f1f59e0743f71bee71e5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957210"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710743"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
 
@@ -131,4 +131,4 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 * 若要启用通过 Azure 诊断或 Azure 存储从 Azure 资源收集数据，请参阅[在 Log Analytics 中收集要使用的 Azure 服务日志和指标](log-analytics-azure-storage.md)。  
 * [将 System Center Operations Manager 添加为数据源](log-analytics-om-agents.md)以从报告 Operations Manager 管理组的代理收集数据并将其存储在 Log Analytics 工作区中。  
 * 连接 [Configuration Manager](log-analytics-sccm.md) 以导入作为层次结构中集合成员的计算机。  
-* 查看可用的[管理解决方案](../monitoring/monitoring-solutions.md)以及如何从工作区添加或删除解决方案。
+* 查看可用的[管理解决方案](../azure-monitor/insights/solutions.md)以及如何从工作区添加或删除解决方案。

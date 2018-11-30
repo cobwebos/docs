@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318599"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426061"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -185,7 +185,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
   ![键入名称或 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 单击 **“添加”**。
+1. 单击“添加”。
 1. 在“共享密钥”对话框中，输入一个共享密钥，然后单击“确定”。 确保记录此共享密钥并安全地存储该记录。
 
  >[!NOTE]
@@ -359,7 +359,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 有关这些日志文件的说明，请参阅[解释 NPS 数据库格式日志文件](https://technet.microsoft.com/library/cc771748.aspx)。 如果不将这些日志文件中的条目导入电子表格或数据库，可能难以解释这些条目。 你可以在线查找几个 IAS 分析程序，以帮助你解释日志文件。 
 
-下图显示了一个可下载的[共享性应用程序](http://www.deepsoftware.com/iasviewer)的输出。 
+下图显示了一个可下载的[共享性应用程序](https://www.deepsoftware.com/iasviewer)的输出。 
 
 ![共享性应用](./media/howto-mfa-nps-extension-rdg/image35.png)
 

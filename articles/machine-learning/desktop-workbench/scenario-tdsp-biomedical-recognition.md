@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ca8e1081b514d5569c84a6364d55e8f49bee533
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0d31fc0ecb06727aa44d31d832b0bfd5145b7c7d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238990"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262086"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>使用 Team Data Science Process (TDSP) 模板的生物医学实体识别
 
@@ -174,7 +174,7 @@ Word2Vec 是未标记的训练语料库中训练神经网络模型的词嵌入�
 
 ![Skip Gram 模型](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-该模型使用分层 Softmax 和负采样来优化性能。 分层 SoftMax (H-SoftMax) 是受二叉树启发的近似值。 H SoftMax 基本上是将平面的 SoftMax 图层替换为将词用作叶子的分层。 这使得我们能够将计算一个词的概率分解成一系列的概率计算，这样就无需为所有词计算费用高昂的规范化。 由于平衡二叉树具有 log2(|V|)（V 表示词汇表）的深度，我们至多仅需要评估 log2(|V|) 节点以获得词的最终概率。 给定其上下文 c 的词 w 的概率仅仅是分别导致其叶节点的右转和左转的概率乘积。 我们可以根据词在数据集的频率构建霍夫曼树，以确保更频繁出现的词呈现较短的表示形式。 有关详细信息，请参阅[此链接](http://sebastianruder.com/word-embeddings-softmax/)。
+该模型使用分层 Softmax 和负采样来优化性能。 分层 SoftMax (H-SoftMax) 是受二叉树启发的近似值。 H SoftMax 基本上是将平面的 SoftMax 图层替换为将词用作叶子的分层。 这使得我们能够将计算一个词的概率分解成一系列的概率计算，这样就无需为所有词计算费用高昂的规范化。 由于平衡二叉树具有 log2(|V|)（V 表示词汇表）的深度，我们至多仅需要评估 log2(|V|) 节点以获得词的最终概率。 给定其上下文 c 的词 w 的概率仅仅是分别导致其叶节点的右转和左转的概率乘积。 我们可以根据词在数据集的频率构建霍夫曼树，以确保更频繁出现的词呈现较短的表示形式。 有关详细信息，请参阅[此链接](http://ruder.io/word-embeddings-softmax/)。
 从[此处](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/)获得的图像。
 
 ##### <a name="visualization"></a>可视化

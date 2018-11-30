@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 81728e7963767cd90bf2486a35fbce55043a76f7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685933"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633463"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "51685933"
 - Service Fabric
 - Red Hat OpenShift
 
-若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 Azure Kubernetes 服务 (AKS) 上，请参阅[监视 Azure Kubernetes 服务](../monitoring/monitoring-container-insights-overview.md)。 容器监视解决方案所提供的支持不包括监视该平台。  
+若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 Azure Kubernetes 服务 (AKS) 上，请参阅[监视 Azure Kubernetes 服务](../azure-monitor/insights/container-insights-overview.md)。 容器监视解决方案所提供的支持不包括监视该平台。  
 
 下图显示了 Log Analytics 中各种容器主机和代理之间的关系。
 
@@ -97,7 +97,7 @@ ms.locfileid: "51685933"
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-1. 通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
+1. 通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview)或[从解决方案库中添加 Log Analytics 解决方案](../azure-monitor/insights/solutions.md)中所述的过程，将容器监视解决方案添加到 Log Analytics 工作区。
 
 2. 安装和使用包含 Log Analytics 代理的 Docker。 根据所用操作系统和 Docker Ochestrator，可使用下列方法来配置代理。
   - 对于独立主机：
@@ -126,7 +126,7 @@ ms.locfileid: "51685933"
 
 对于除了 CoreOS 之外的所有 Linux 容器主机：
 
-- 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅 [Log Analytics 代理概述](log-analytics-agent-overview.md)。
+- 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅 [Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
 
 对于包括 CoreOS 在内的所有 Linux 容器主机：
 
@@ -524,9 +524,9 @@ KEY:    88 bytes
 
 #### <a name="install-windows-agents"></a>安装 Windows 代理
 
-若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-agent-windows.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](log-analytics-quick-collect-azurevm.md)将其连接到 Log Analytics。
+若要启用 Windows 和 Hyper-V 容器监视，请在属于容器主机的 Windows 计算机上安装 Microsoft Monitoring Agent (MMA)。 要了解在本地环境中运行 Windows 的计算机，请参阅[将 Windows 计算机连接到 Log Analytics](../azure-monitor/platform/agent-windows.md)。 为使虚拟机在 Azure 中运行，请使用[虚拟机扩展](log-analytics-quick-collect-azurevm.md)将其连接到 Log Analytics。
 
-可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](log-analytics-quick-collect-azurevm.md)和[在本地环境中运行 Windows 的计算机](log-analytics-agent-windows.md)。
+可以监视在 Service Fabric 上运行的 Windows 容器。 但是，目前 Service Fabric 仅支持[在 Azure 中运行的虚拟机](log-analytics-quick-collect-azurevm.md)和[在本地环境中运行 Windows 的计算机](../azure-monitor/platform/agent-windows.md)。
 
 可以验证已为 Windows 正确设置容器监视解决方案。 要检查是否已正确下载管理包，请查找 ContainerManagement.xxx。 文件应位于 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 文件夹中。
 
@@ -543,7 +543,7 @@ KEY:    88 bytes
 以下代理类型每 3 分钟收集一次数据。
 
 - [适用于 Linux 的 Log Analytics 代理](log-analytics-quick-collect-linux-computer.md)
-- [Windows 代理](log-analytics-agent-windows.md)
+- [Windows 代理](../azure-monitor/platform/agent-windows.md)
 - [Log Analytics VM 扩展](log-analytics-quick-collect-azurevm.md)
 
 

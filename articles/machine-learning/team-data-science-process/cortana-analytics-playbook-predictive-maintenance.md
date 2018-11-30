@@ -2,24 +2,21 @@
 title: 针对预测性维护解决方案的 Azure AI 指南 | Microsoft Docs
 description: 有关增强多个垂直行业预测性维护解决方案的数据科学的全面说明。
 services: machine-learning
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: fboylu
-ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254564"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444913"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -230,7 +227,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 完成上面所述的数据准备工作后，接下来应该可以根据下面所述对数据进行组织。 训练、测试和验证数据应具有此逻辑架构（此示例中的时间单位为“天”）。
 
-| 资产 ID | 时间 | <Feature Columns> | 标签 |
+| 资产 ID | 时间 | <Feature Columns> | Label |
 | ---- | ---- | --- | --- |
 | A123 |第 1 天 | . . . | . |
 | A123 |第 2 天 | . . . | . |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521517"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584666"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
 
@@ -23,7 +23,6 @@ ms.locfileid: "39521517"
 可以从 Azure 门户跟踪导入或导出作业的状态。 单击“导入/导出”选项卡。随即页面上显示作业列表。
 
 ![查看作业状态](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>查看作业状态
 
@@ -74,7 +73,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 -  作业类型和待复制数据的大小
 -  作业中的磁盘数目。 
 
-导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了在 Azure 门户上发布的状态以外，REST API 还可用于跟踪作业进度。 [列出作业]()操作 API 调用中的完成百分比参数提供复制进度的百分比。
+导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了在 Azure 门户上发布的状态以外，REST API 还可用于跟踪作业进度。 [列出作业](/previous-versions/azure/dn529083(v=azure.100))操作 API 调用中的完成百分比参数提供复制进度的百分比。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -82,4 +81,3 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 * [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
 * [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
 * [Azure 导入/导出 REST API 示例](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-
