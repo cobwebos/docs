@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0a8a1ab41972aa2ae184b900c2dab94ec58f3e7c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4aeb14bd7962205b89e1207e082f551999f54558
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612741"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634517"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>在 Azure Monitor 中分析 Log Analytics 数据
 
@@ -42,8 +42,8 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工
 
 - **门户。** 可以在 [Azure 门户](log-analytics-log-search-portals.md)中对日志数据执行交互式分析。  这样便可采用各种格式和可视化效果编辑查询并分析结果。  
 - **警报规则。** [警报规则](../monitoring-and-diagnostics/monitoring-overview-alerts.md)主动识别工作区中数据的问题。  每个警报规则均基于定期自动运行的日志搜索。  对结果进行检查，确定是否应创建警报。
-- **仪表板。** 可以将任何查询的结果固定到 [Azure 仪表板]()，这使得你可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。 
-- **视图。**  可以使用[视图设计器](log-analytics-view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志查询提供每个视图中[磁贴](log-analytics-view-designer-tiles.md)和[可视化部件](log-analytics-view-designer-parts.md)使用的数据。  
+- **仪表板。** 可以将任何查询的结果固定到 [Azure 仪表板](../azure-monitor/platform/dashboards.md)，这使得你可以将日志和指标数据一起可视化，并且还可以将其与其他 Azure 用户共享。 
+- **视图。**  可以使用[视图设计器](../azure-monitor/platform/view-designer.md)创建要包含在用户仪表板中的数据的可视化效果。  日志查询提供每个视图中[磁贴](../azure-monitor/platform/view-designer-tiles.md)和[可视化部件](../azure-monitor/platform/view-designer-parts.md)使用的数据。  
 - **导出。**  将数据从 Log Analytics 工作区导入到 Excel 或 [Power BI](log-analytics-powerbi.md) 中时，你将创建日志查询来定义要导出的数据。
 - **PowerShell。** 可从命令行运行 PowerShell 脚本或运行使用 [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) 的 Azure 自动化 runbook，从 Log Analytics 中检索数据。  此 cmdlet 需要一个查询来确定要检索的数据。
 - **Log Analytics API。**  [Log Analytics 日志搜索 API](../monitoring-and-diagnostics/monitoring-overview-alerts.md) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Log Analytics 运行的查询，用于确定要检索的数据。
@@ -111,4 +111,4 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[用于创建并编辑日志搜索的门户](log-analytics-log-search-portals.md)。
-- 查看使用新查询语言的[查询编写教程](log-analytics-tutorial-viewdata.md)。
+- 查看使用新查询语言的[查询编写教程](query-language/get-started-queries.md)。

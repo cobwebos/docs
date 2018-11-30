@@ -3,7 +3,7 @@ title: 在 Azure 安全中心处理安全警报 | Microsoft 文档
 description: 本文档旨在帮助你使用 Azure 安全中心功能来处理安全事件。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2017
-ms.author: yurid
-ms.openlocfilehash: f1cda4eb48235f9b72697eee77aac6a4e576aaf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 40e46ed99684877e829068c209ab318913b79e2a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258488"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633922"
 ---
 # <a name="handling-security-incidents-in-azure-security-center"></a>处理 Azure 安全中心的安全事件
 会审和调查安全警报可能会非常耗时，即使对于技术高超的安全分析员也是如此，并且很多人不知道从何处开始。 通过使用[分析](security-center-detection-capabilities.md)来连接不同的[安全警报](security-center-managing-and-responding-alerts.md)之间的信息，安全中心可以提供攻击活动及其所有相关警报的单一视图，让你快速了解攻击者所采取的操作以及哪些资源受到了影响。

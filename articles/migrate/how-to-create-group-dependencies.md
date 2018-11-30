@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407430"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634296"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -39,7 +39,7 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 > 你无法更改与迁移项目关联的工作区。
 
 ### <a name="download-and-install-the-vm-agents"></a>下载并安装 VM 代理
-要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../log-analytics/log-analytics-oms-gateway.md)。
+要查看组的依赖项，需要在组中包含的每台本地计算机上下载并安装代理。 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 [Log Analytics 网关](../azure-monitor/platform/gateway.md)。
 
 1. 在“概述”中，单击“管理” > “组”，转到所需组。
 2. 在计算机列表中，单击“依赖项代理”列中的“需要安装”，查看有关如何下载并安装代理的说明。
@@ -71,7 +71,7 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-深入了解针对 [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) 和 [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) 操作系统的依赖项代理支持。
+深入了解针对 [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) 和 [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) 操作系统的依赖项代理支持。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>通过依赖项可视化优化组
 在组中的所有计算机上都安装代理后，可以可视化该组的依赖项，并通过执行以下步骤优化该组。

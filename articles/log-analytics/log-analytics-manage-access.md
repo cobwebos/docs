@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d291a46eaac0f5e4023d343f700448d029765098
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625617"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634874"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -52,7 +52,7 @@ ms.locfileid: "51625617"
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
 * 管理多个客户，并希望每个客户/部门/业务组能够看到自己的数据，但看不到他人的数据。
 
-使用 Windows 代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](log-analytics-agent-windows.md)。
+使用 Windows 代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](../azure-monitor/platform/agent-windows.md)。
 
 如果使用 System Center Operations Manager，每个 Operations Manager 管理组仅可以连接一个工作区。 可以在 Operations Manager 管理的计算机上安装 Microsoft Monitoring Agent，并使代理向 Operations Manager 和不同 Log Analytics 工作区报告。
 
@@ -239,7 +239,7 @@ OMS 订阅权利在 Azure 门户中不可见。 可在企业门户中看到权�
 ![OMS 功能区](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 请参阅 [Log Analytics 代理概述](log-analytics-agent-overview.md)，以从数据中心或其他云环境中的计算机收集数据。
+* 请参阅 [Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 * 请参阅[收集有关 Azure 虚拟机的数据](log-analytics-quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。  
-* [从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)，以添加功能和收集数据。
+* [从解决方案库中添加 Log Analytics 解决方案](../azure-monitor/insights/solutions.md)，以添加功能和收集数据。
 

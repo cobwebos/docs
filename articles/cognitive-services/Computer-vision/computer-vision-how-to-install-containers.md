@@ -10,16 +10,16 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 2ba7039fe42e3b5638b99161e12e9888bc852f87
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634884"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634636"
 ---
 # <a name="install-and-run-containers"></a>安装并运行容器
 
-容器化是一种软件分发方法，其中应用程序或服务被打包为容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
+容器化是一种软件分发方法，其中应用程序或服务被打包成容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
 
 计算机视觉的识别文本部分也可用作 Docker 容器。 使用它可以从具有不同表面和背景的各种对象的图像中检测和提取印刷文本，例如收据、海报和名片。  
 > [!IMPORTANT]
@@ -60,9 +60,6 @@ ms.locfileid: "51634884"
 
 1. 在 Azure 门户中创建 Azure 资源。  
    若要使用识别文本容器，必须先在 Azure 门户中创建相应的计算机视觉资源。 有关详细信息，请参阅[快速入门：在 Azure 门户中创建认知服务帐户](../cognitive-services-apis-create-account.md)。
-
-   > [!IMPORTANT]
-   > 计算机视觉资源必须使用 F0 定价层。
 
 1. 获取 Azure 资源的终结点 URL 和订阅密钥。  
    创建 Azure 资源后，必须使用该资源中的终结点 URL 和订阅密钥来实例化相应的识别文本容器。 可以分别从 Azure 门户中计算机视觉资源的“快速启动”和“密钥”页复制终结点 URL 和订阅密钥。
@@ -165,7 +162,7 @@ http://localhost:5000/
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用计算机视觉容器中的操作。
 * 必须在实例化容器时指定账单信息。
-* **如果认知服务容器未连接到 Azure 进行计量，则不对其授权以运行。 客户需要使容器始终与计量服务通信账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
+* **如果认知服务容器未连接到 Azure 进行计量，则不对其授权以运行。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
 
 ## <a name="next-steps"></a>后续步骤
 

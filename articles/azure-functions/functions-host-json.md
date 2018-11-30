@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013371"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635163"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
@@ -69,7 +69,7 @@ ms.locfileid: "51013371"
           "default": "None"
         },
         "applicationInsights": {
-            "sampling": {
+            "samplingSettings": {
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 5
             }
@@ -104,7 +104,7 @@ ms.locfileid: "51013371"
 
 ## <a name="durabletask"></a>durableTask
 
-可在 [Durable Functions 的绑定](durable-functions-bindings.md#host-json)中查找配置设置。
+可在 [Durable Functions 的绑定](durable/durable-functions-bindings.md#host-json)中查找配置设置。
 
 ## <a name="eventhub"></a>eventHub
 

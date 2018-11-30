@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2e59286822d49abeea522b5346ba531408559a7b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0e083668231d63a2bed669bc5d1a42a977d4b5e0
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014816"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635503"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -44,7 +44,7 @@ ms.locfileid: "51014816"
 
 | 连接的源 | 支持 | Description |
 | --- | --- | --- |
-| [Windows 代理](log-analytics-agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
+| [Windows 代理](../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](log-analytics-quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
@@ -57,7 +57,7 @@ ms.locfileid: "51014816"
 
 ## <a name="configuration"></a>配置
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”以打开 Application Insights。 然后，搜索 Application Insights。 
 3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。
 4. 单击“ **保存**”。

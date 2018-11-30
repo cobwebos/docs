@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6e711b99fa197a2092a673c87124e49fcf3c293e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014663"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635520"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
@@ -54,7 +54,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 | 连接的源 | 支持 | Description |
 | --- | --- | --- |
-| [Windows 代理](log-analytics-agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
+| [Windows 代理](../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](log-analytics-quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
 | [SCOM 管理组](log-analytics-om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | 解决方案不会从 Azure 存储收集信息。 |
@@ -67,7 +67,7 @@ Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如�
 
 执行以下步骤，为工作区配置 Activity Log Analytics 解决方案。
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../azure-monitor/insights/solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 配置活动日志，以转到 Log Analytics 工作区。
     1. 在 Azure 门户中，选择工作区，并单击“Azure 活动日志”。
     2. 对于每个订阅，单击订阅名称。  
