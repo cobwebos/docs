@@ -31,11 +31,11 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 
 可通过多种方式使用 Azure 虚拟机。 下面是一些示例：
 
-* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编程和应用程序测试的需要。
-* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。 使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
+* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编写代码和应用程序测试的需要。
+* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。 使用 VM 时，需要支付额外的费用；不需要 VM 时，则需要关闭它们。
 * **扩展的数据中心** – Azure 虚拟网络中的虚拟机可以轻松连接到组织的网络。
 
-可以根据需要，将应用程序使用的 VM 数纵向扩展和横向扩展为任意数目。
+应用程序使用的 VM 数可根据你的需要纵向扩展和横向扩展为任意数目。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>在创建 VM 之前需要考虑哪些因素？
 在 Azure 中构建应用程序基础结构时，始终要考虑多种[设计注意事项](/azure/architecture/reference-architectures/virtual-machines-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 在开始之前，必须考虑到 VM 的以下重要方面：
@@ -43,7 +43,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 * 应用程序资源的名称
 * 资源的存储位置
 * VM 的大小
-* 可以创建的 VM 数目上限
+* 可以创建的 VM 的数目上限
 * VM 运行的操作系统
 * VM 在启动后的配置
 * VM 所需的相关资源
@@ -54,7 +54,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 如果使用 Azure 创建操作系统磁盘，计算机名称与虚拟机名称相同。 如果[上传包含以前配置的操作系统的自有映像](upload-generalized-managed.md)并使用它来创建虚拟机，则名称可以不同。 建议在上传自己的映像文件时，使操作系统中的计算机名称与虚拟机名称保持相同。
 
 ### <a name="locations"></a>位置
-在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，区域通常称为**位置**。 位置指定 VM 虚拟硬盘的存储位置。
+在 Azure 中创建的所有资源分布在世界各地的多个[地理区域](https://azure.microsoft.com/regions/)。 创建 VM 时，区域通常称为“位置”。位置指定 VM 虚拟硬盘的存储位置。
 
 下表显示了获取可用位置列表的一些方法。
 
@@ -74,7 +74,7 @@ Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsof
 订阅附带默认的[配额限制](../../azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](../../azure-supportability/resource-manager-core-quotas-request.md)来请求提高限制
 
 ### <a name="operating-system-disks-and-images"></a>操作系统磁盘和映像
-虚拟机使用[虚拟硬盘 (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。 
+虚拟机使用[虚拟硬盘 (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。
 
 Azure 提供许多[市场映像](https://azure.microsoft.com/marketplace/virtual-machines/)来配合各种版本和类型的 Windows Server 操作系统使用。 市场映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。 仅支持 64 位操作系统。 有关受支持的来宾操作系统、角色和功能的详细信息，请参阅 [Microsoft 服务器软件对 Microsoft Azure 虚拟机的支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
@@ -124,7 +124,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | REST API |[创建或更新 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure CLI |[使用 Azure CLI 创建 VM](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-问题偶尔会不期而至。 如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的 Resource Manager 部署问题）。
+问题偶尔会不期而至。如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的资源管理器部署问题）。
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>如何管理创建的 VM？
 可以使用基于浏览器的门户、支持脚本的命令行工具或直接通过 API 管理 VM。 可能要执行的一些常见管理任务包括获取有关 VM 的信息、登录到 VM、管理可用性以及执行备份。
