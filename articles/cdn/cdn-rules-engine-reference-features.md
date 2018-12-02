@@ -518,7 +518,7 @@ application/javascript|Javascript
 ### <a name="debug-cache-response-headers"></a>调试缓存响应标头
 **用途：** 确定响应是否可以包括 [X-EC-Debug 响应标头](cdn-http-debug-headers.md)，该标头提供所请求资产的缓存策略的信息。
 
-当以下两个条件均为 ture 时，调试缓存响应标头将包括在响应中：
+当以下两个条件均为 true 时，调试缓存响应标头将包括在响应中：
 
 - 已针对指定请求启用了“调试缓存响应标头”功能。
 - 指定的请求定义了要在响应中包括的调试缓存响应标头集。
