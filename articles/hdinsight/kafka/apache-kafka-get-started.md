@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 9edb85fcaa2c3f9c58cc74c55d52e4dbbf751727
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5b1768978425d3153f775e20a1a4c44a39794779
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014510"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315948"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
@@ -161,11 +161,11 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ssuhuser@hn0-mykafk:~$
 ```
 
-## <a id="getkafkainfo"></a>获取 Zookeeper 主机和代理主机信息
+## <a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
 
-使用 Kafka 时，必须了解 Zookeeper 和代理主机。 这些主机配合 Apache Kafka API 和 Kafka 随附的许多实用程序一起使用。
+使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机。 这些主机配合 Apache Kafka API 和 Kafka 随附的许多实用程序一起使用。
 
-在本部分中，可以从群集上的 Ambari REST API 获取主机信息。
+在本部分中，可以从群集上的 Apache Ambari REST API 获取主机信息。
 
 1. 从 SSH 连接到群集，使用以下命令安装 `jq` 实用工具。 此实用工具用于分析 JSON 文档且有助于检索主机的信息：
    
@@ -249,7 +249,7 @@ Kafka 在主题中存储数据流。 可以使用 `kafka-topics.sh` 实用工具
         > [!IMPORTANT] 
         > Apache Kafka 不识别 Azure 容错域。 在创建主题的分区副本时，它可能未针对高可用性正确分发副本。
 
-        若要确保高可用性，请使用 [Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。 必须通过 SSH 连接运行此工具，以便连接到 Apache Kafka 群集的头节点。
+        若要确保高可用性，请使用 [Apache Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。 必须通过 SSH 连接运行此工具，以便连接到 Apache Kafka 群集的头节点。
 
         为确保 Apache Kafka 数据的最高可用性，应在出现以下情况时为主题重新均衡分区副本：
 
@@ -311,7 +311,7 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 
 4. 使用 __Ctrl + C__ 阻止使用者。
 
-还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
+还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Apache Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -331,5 +331,5 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将 Apache Spark 与 Kafka 结合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [将 Apache Spark 与 Apache Kafka 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
 

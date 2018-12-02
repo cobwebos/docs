@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 11/06/2018
-ms.openlocfilehash: 85afc16fe6bcae4e0a7218fa9f66bab3e947ec6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f279d7ca40eac1764ec5549aecec36b0f62034e8
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244061"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495779"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
-本教程介绍如何从 csv 文件创建数据帧，以及如何针对 Azure HDInsight 中的 Apache Spark 群集运行交互式 Spark SQL 查询。 在 Spark 中，数据帧是已组织成命名列的分布式数据集合。 数据帧在概念上相当于关系型数据库中的表，或 R/Python 中的数据帧。
+本教程介绍如何从 csv 文件创建数据帧，以及如何针对 Azure HDInsight 中的 [Apache Spark](https://spark.apache.org/) 群集运行交互式 Spark SQL 查询。 在 Spark 中，数据帧是已组织成命名列的分布式数据集合。 数据帧在概念上相当于关系型数据库中的表，或 R/Python 中的数据帧。
  
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -99,10 +99,10 @@ ms.locfileid: "51244061"
 
 本教程介绍了如何：
 
-* 创建 Spark 数据帧。
+* 创建 Apache Spark dataframe。
 * 针对数据帧运行 Spark SQL。
 
-请前进到下一篇文章，了解如何将在 Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。 
+请转到下一篇文章，了解如何将在 Apache Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。 
 > [!div class="nextstepaction"]
 > [使用 BI 工具分析数据](apache-spark-use-bi-tools.md)
 

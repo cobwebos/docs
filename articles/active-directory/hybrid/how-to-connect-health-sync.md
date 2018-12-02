@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277131"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499073"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -62,7 +62,7 @@ ms.locfileid: "51277131"
 
 ![同步延迟](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>对象级同步错误报告（预览版）
+## <a name="object-level-synchronization-error-report"></a>对象级同步错误报告
 此功能提供有关使用 Azure AD Connect 在 Windows Server AD 与 Azure AD 之间同步标识数据时可能发生的同步错误的报告。
 
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
@@ -74,7 +74,7 @@ ms.locfileid: "51277131"
   * 按类别列出出错的对象
   * 在一个位置显示有关错误的所有数据
   * 并列比较由于冲突而出错的对象
-  * 以 CSV 格式下载错误报告（即将推出）
+  * 以 CVS 格式下载错误报告
 
 ### <a name="categorization-of-errors"></a>错误分类
 该报告将现有同步错误划分为以下类别：

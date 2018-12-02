@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820257"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317902"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -81,7 +81,7 @@ ms.locfileid: "51820257"
 * 某些附加列包含咖啡厅相关的元数据：电话号码、有关是否提供 Wi-Fi 热点和轮椅通道的布尔值列，以及营业和停业时间（24 小时格式）。 可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!Note]
-> Azure Maps 使用球面墨卡托投影 (EPSG:3857)。
+> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。 
 
 可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务，然后将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会大大增加开发工作量，并且成本较高。 
 

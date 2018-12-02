@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 2696401b15ceca86c7e7b7d33e7e7f7887f4b7dc
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164323"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308811"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-python"></a>将必应新闻搜索 API 与 Python 配合使用快速入门
 本演练演示了一个简单的示例：调用必应新闻搜索 API 并后期处理生成的 JSON 对象。 有关详细信息，请参阅[必应新闻搜索文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。  
@@ -26,7 +26,7 @@ ms.locfileid: "52164323"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用在激活免费试用版时提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="running-the-walkthrough"></a>运行演练
 首先，将 `subscription_key` 设置为必应 API 服务的 API 密钥。

@@ -10,16 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36c287f64ddc15eb3cb0179ed2465e1279177595
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802519"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309049"
 ---
 # <a name="quickstart-your-first-news-search-query"></a>快速入门：第一个新闻搜索查询
 
-必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。
+必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 若要获取纯新闻搜索结果，请向以下终结点发送 GET 请求：
 

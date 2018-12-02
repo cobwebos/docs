@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 994c864f04980dc963f9e7c4eb99b33382ad17e4
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614899"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583255"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -194,6 +194,10 @@ ms.locfileid: "51614899"
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
+
+    > [!TIP]
+    > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
+
 2. 可以根据需要删除工作计算机上的示例应用程序。 
 
 

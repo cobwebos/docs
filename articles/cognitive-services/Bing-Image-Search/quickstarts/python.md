@@ -9,12 +9,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 44cc556e68234fb9957c01fa9f04861293e96e6a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a51935300238235338ec30ec7061101745b0e0e5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298160"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314382"
 ---
 # <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>快速入门：使用 REST API 和 Python 发送搜索查询
 
@@ -32,6 +32,8 @@ ms.locfileid: "46298160"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="running-the-quickstart"></a>运行快速入门
 

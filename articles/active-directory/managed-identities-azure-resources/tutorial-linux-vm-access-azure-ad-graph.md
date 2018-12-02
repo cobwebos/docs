@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 57e719c6ef75b08d8c188d2d2d344867bbf590b1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b58bfc5345e06f82b2550ea2a1a53443946f2096
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623088"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427448"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure AD 图形 API
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 本教程介绍如何使用 Linux 虚拟机 (VM) 系统分配的托管标识访问 Azure AD 图形 API，以检索其组成员身份。 Azure 资源的托管标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。  
 

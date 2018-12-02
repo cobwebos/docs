@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ac56475f39f820c2d2af961a1813859ec42b0a46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038445"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495512"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
 
-在此教程中，需将原始 CSV 数据文件导入 HDInsight 群集存储，然后在 Azure HDInsight 上使用 Apache Hive 转换数据。 数据转换完毕后，使用 Apache Sqoop 将数据加载到 Azure SQL 数据库。 本文使用公开提供的航班数据。
+在此教程中，需将原始 CSV 数据文件导入 HDInsight 群集存储，然后在 Azure HDInsight 上使用 [Apache Hive](https://hive.apache.org/) 转换数据。 数据转换完毕后，使用 [Apache Sqoop](http://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。 本文使用公开提供的航班数据。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -41,13 +41,13 @@ ms.locfileid: "51038445"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上基于 Linux 的 Hadoop 群集**。 有关创建新的基于 Linux 的 HDInsight 群集的步骤，请参阅[开始在 HDInsight 中使用 Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+* **HDInsight 上基于 Linux 的 Hadoop 群集**。 有关创建新的基于 Linux 的 HDInsight 群集的步骤，请参阅[开始在 HDInsight 中使用 Apache Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
 * **Azure SQL 数据库**。 使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)。
 
 * **Azure CLI**。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)了解详细步骤。
 
-* **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
@@ -102,7 +102,7 @@ ms.locfileid: "51038445"
 
 ## <a name="transform-data-using-a-hive-query"></a>使用 Hive 查询转换数据
 
-可通过多种方式在 HDInsight 群集上运行 Hive 作业。 本部分使用 Beeline 运行 Hive 作业。 有关以其他方式运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](./hadoop/hdinsight-use-hive.md)。
+可通过多种方式在 HDInsight 群集上运行 Hive 作业。 本部分使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) 运行 Hive 作业。 有关以其他方式运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Apache Hive](./hadoop/hdinsight-use-hive.md)。
 
 在 Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中。
 
@@ -269,7 +269,7 @@ ms.locfileid: "51038445"
 
 5. 在 `1>` 提示符下输入 `exit` 以退出 tsql 实用工具。
 
-## <a name="export-data-to-sql-database-using-sqoop"></a>使用 Sqoop 将数据导出到 SQL 数据库
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>使用 Apache Sqoop 将数据导出到 SQL 数据库
 
 在前面的部分中，已经在 `/tutorials/flightdelays/output` 复制了转换后的数据。 本部分使用 Sqoop 将数据从 '/tutorials/flightdelays/output` 导出到在 Azure SQL 数据库中创建的表。 
 
@@ -311,17 +311,17 @@ ms.locfileid: "51038445"
 本教程介绍了如何在 HDInsight 中使用 Apache Hadoop 群集执行提取、转换和加载数据操作。 前往下一教程，了解如何使用 Azure 数据工厂创建按需 HDInsight Hadoop 群集。
 
 > [!div class="nextstepaction"]
->[在 HDInsight 中使用 Azure 数据工厂创建按需 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)
+>[使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)
 
 若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 
 * [教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
-* [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
-* [为 HDInsight 上的 Hadoop 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
+* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
+* [为 Apache Hadoop on HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 * [为 HDInsight 开发 Python 流式处理 MapReduce 程序][hdinsight-develop-streaming]
-* [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
-* [将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
+* [将 Apache Oozie 和 HDInsight 配合使用][hdinsight-use-oozie]
+* [将 Apache Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
 
 
 

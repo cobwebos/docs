@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345566"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424997"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（专用预览版）
 
@@ -41,6 +41,8 @@ ms.locfileid: "51345566"
 > * 部署较新的版本
 > * 清理资源
 
+可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
+
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,12 +52,12 @@ ms.locfileid: "51345566"
 * 在开发 [Azure 资源管理器模板](./resource-group-overview.md)方面有一定的经验。
 * Azure 部署管理器为专用预览版。 若要使用 Azure 部署管理器注册，请填写[注册表单](https://aka.ms/admsignup)。 
 * Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
-* 部署管理器 cmdlet。 若要安装这些预发行版 cmdlet，需要最新版本的 PowerShellGet。 若要获取最新版本，请参阅[安装 PowerShellGet](/powershell/gallery/installing-psget)。 安装 PowerShellGet 后，关闭 PowerShell 窗口。 打开新的 PowerShell 窗口并使用以下命令：
+* 部署管理器 cmdlet。 若要安装这些预发行版 cmdlet，需要最新版本的 PowerShellGet。 若要获取最新版本，请参阅[安装 PowerShellGet](/powershell/gallery/installing-psget)。 安装 PowerShellGet 后，关闭 PowerShell 窗口。 打开新的提升的 PowerShell 窗口并使用以下命令：
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Microsoft Azure 存储资源管理器](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409)。 Azure 存储资源管理器不是必需的，但可以简化操作。
+* [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。 Azure 存储资源管理器不是必需的，但可以简化操作。
 
 ## <a name="understand-the-scenario"></a>了解方案
 
@@ -145,10 +147,10 @@ ms.locfileid: "51345566"
 需要创建用户分配的托管标识，并为订阅配置访问控制。
 
 > [!IMPORTANT]
-> 用户分配的托管标识必须与[实施](#create-the-rollout-template)项目位于同一位置。 目前，只能在美国中部或美国东部 2 区域中创建部署管理器资源，包括实施。
+> 用户分配的托管标识必须与[实施](#create-the-rollout-template)项目位于同一位置。 目前，只能在美国中部或美国东部 2 区域中创建部署管理器资源，包括实施。 但是，这仅适用于部署管理器资源（例如服务拓扑、服务、服务单元、推出和步骤）。 可以将目标资源部署到任何支持的 Azure 区域。 例如，在本教程中，部署管理器资源部署到美国中部，但服务部署到美国东部和美国西部。 此限制将来会取消。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 创建[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+2. 创建[用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 3. 在门户的左侧菜单中选择“订阅”，然后选择自己的订阅。
 4. 依次选择“访问控制(IAM)”、“添加”
 5. 输入或选择下列值：
@@ -200,6 +202,9 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
 - **dependsOn**：所有服务拓扑资源依赖于项目源资源。
 - **项目**指向模板项目。  此处使用了相对路径。 完整路径是通过连接 artifactSourceSASLocation（在项目源中定义）、artifactRoot（在项目源中定义）和 templateArtifactSourceRelativePath（或 parametersArtifactSourceRelativePath）来构造的。
 
+> [!NOTE]
+> 服务单元名称必须包含 31 个字符或更少。 
+
 ### <a name="topology-parameters-file"></a>拓扑参数文件
 
 创建与拓扑模板配合使用的参数文件。
@@ -211,7 +216,7 @@ variables 节定义资源的名称、“WUS 服务”和“EUS 服务”这两�
     - **azureResourceLocation**：如果你不熟悉 Azure 位置，请在本教程中使用 **centralus**。
     - **artifactSourceSASLocation**：输入用于存储要部署的服务单元模板和参数文件的根目录（Blob 容器）的 SAS URI。  请参阅[准备项目](#prepare-the-artifacts)。
     - **templateArtifactRoot**：除非你要更改项目的文件夹结构，否则请在本教程中使用 **templates/1.0.0.0**。
-    - **tragetScriptionID**：输入自己的 Azure 订阅 ID。
+    - **targetScriptionID**：输入自己的 Azure 订阅 ID。
 
 > [!IMPORTANT]
 > 拓扑模板和实施模板共享一些通用参数。 这些参数的值必须相同。 这些参数是：**namePrefix**、**azureResourceLocation** 和 **artifactSourceSASLocation**（在本教程中，这两个项目源共享同一个存储帐户）。
@@ -242,7 +247,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
 在根级别定义了三个资源：项目源、步骤和实施。
 
-项目源定义与拓扑模板中的定义相同。  有关详细信息，请参阅[创建服务拓扑模板](#create-the-service-topology-tempate)。
+项目源定义与拓扑模板中的定义相同。  有关详细信息，请参阅[创建服务拓扑模板](#create-the-service-topology-template)。
 
 以下屏幕截图显示了等待步骤定义：
 
@@ -310,7 +315,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
     必须选择“显示隐藏的类型”才能查看资源。
 
-3. 部署实施模板：
+3. <a id="deploy-the-rollout-template"></a>部署推出模板：
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +330,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +370,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
 
 1. 打开 CreateADMRollout.Parameters.json。
 2. 将 **binaryArtifactRoot** 更新为 **binaries/1.0.0.1**。
-3. 根据[部署模板](#deploy-the-templates)中所述重新部署实施资源。
+3. 根据[部署模板](#deploy-the-rollout-template)中所述重新部署实施资源。
 4. 根据[验证部署](#verify-the-deployment)中的说明验证部署。 网页应显示 1.0.0.1 版本。
 
 ## <a name="clean-up-resources"></a>清理资源

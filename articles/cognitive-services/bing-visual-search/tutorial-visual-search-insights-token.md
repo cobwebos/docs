@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 62780500d29c891182d3869bf0ba3ccdc5e2f715
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386428"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441055"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>教程：必应视觉搜索 SDK ImageInsightsToken 和结果
 视觉搜索 SDK 包括从以前返回 `ImageInsightsToken` 的搜索中查找联机图像的选项。  此示例获取 `ImageInsightsToken` 并在后续搜索中使用该令牌。  该代码将 `ImageInsightsToken` 发送到必应，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
@@ -24,6 +24,16 @@ ms.locfileid: "49386428"
 Visual Studio 2017。 如有必要，可从此处下载免费的社区版本： https://www.visualstudio.com/vs/community/。
 验证 SDK 调用需要认知服务 API 密钥。 注册免费试用密钥。 试用密钥有效期为七天且每秒调用一次。 对于生产方案，请购买访问密钥。 另请参阅定价信息。
 运行 .NET core SDK、.net core 1.1 应用的功能。 可从以下位置获取 CORE、Framework 和运行时： https://www.microsoft.com/net/download/。
+
+对于本教程，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
 若要使用必应 Web 搜索 SDK 设置控制台应用程序，请浏览到 Visual Studio 中的解决方案资源管理器中的“管理 NuGet 程序包”选项。 添加：

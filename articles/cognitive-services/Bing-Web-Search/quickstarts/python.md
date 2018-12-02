@@ -10,18 +10,21 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: 2f034bd60747282ac9724250ab260e06122def6f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0f6f3991e01e4eb6919d958002ef6230a2570dbe
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160988"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309447"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入门：使用 Python 调用必应 Web 搜索 API  
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 使用本快速入门在不到 10 分钟时间内进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 此示例作为 Jupyter 笔记本在 [MyBinder](https://mybinder.org) 上运行。 单击“启动活页夹”提示标记：
 

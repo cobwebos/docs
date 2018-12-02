@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: 590a7aa875f5f8c40576d69d7e73bdfc31fffbf8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636248"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582388"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -150,6 +150,10 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 1. 删除下载示例存储库时创建的文件夹。
 1. 在 [Azure 门户](http://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
+   
+    > [!TIP]
+    > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f9ec8ff1fbd5f6341d2d949d15d963f8abe15200
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9496f88a24c92387418d5d9ae23bb7f2eaff2088
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166592"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444423"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>使用 SQL 查询来查询 Azure Cosmos DB 数据
 
@@ -400,9 +400,18 @@ WHERE 子句（**`WHERE <filter_condition>`**）可选。 它指定由源提供�
 除了二进制和一元运算符以外，还允许使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含 `isRegistered` 属性的项，其中的属性值等于 JSON `true` 值。 任何其他值（false、null、Undefined、`<number>`、`<string>`、`<object>`、`<array>` 等等）都会导致源项被排除在结果之外。 
 
 ### <a name="equality-and-comparison-operators"></a>等式和比较运算符
+
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | **Undefined** | **Null** | **Boolean** | **Number** | **String** | **Object** | **Array** | | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | | **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined | | **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | | **Number** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | | **String** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | | **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
+| **Op** | 未定义 | Null | **布尔值** | **数字** | **字符串** | **Object** | 数组 |
+|---|---|---|---|---|---|---|---|
+| 未定义 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| Null | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **布尔值** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
+| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
+| **字符串** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
+| 数组 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
 对于其他比较运算符（如 >、>=、!=、< 和 <=），以下规则适用：
 
@@ -497,7 +506,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
 
 如同使用其他查询运算符一样，如果任何项中缺少条件表达式的引用属性，或者如果正在进行比较的类型不同，那么这些项会被排除在查询结果之外。
 
-联合 (??) 运算符可用于有效地检查项中是否存在某个属性（即 defined）。 此运算符在对半结构化数据或混合类型的数据执行查询时很有用。 例如，此查询返回“lastName”（如果存在）或“surname”（如果不存在）。
+联合 (??) 运算符可用于有效地检查文档中是否存在属性（也称为 defined）。 此运算符在对半结构化数据或混合类型的数据执行查询时很有用。 例如，此查询返回“lastName”（如果存在）或“surname”（如果不存在）。
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -1582,7 +1591,7 @@ Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 
 
 | 使用情况 | Description |
 | --- | --- |
-| ST_DISTANCE (point_expr, point_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。 |
+| ST_DISTANCE (point_expr、point_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。 |
 | T_WITHIN (point_expr, polygon_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。 |
 | ST_INTERSECTS (spatial_expr, spatial_expr) | 返回一个布尔表达式，指示两个指定的 GeoJSON 对象 （点、多边形或 LineString）是否相交。 |
 | ST_ISVALID | 返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。 |

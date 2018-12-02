@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: 1a942e39e680c9399145a629d03a1202b1f85ae7
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: bd6630f67e151dd2ee1e60654352f3070466899b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164228"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312657"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>快速入门：使用 Java 调用必应 Web 搜索 API  
 
@@ -23,8 +23,9 @@ ms.locfileid: "52164228"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>先决条件
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [JDK 7 或 8](https://aka.ms/azure-jdks)

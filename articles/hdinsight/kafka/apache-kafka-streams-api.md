@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8319376c597f16a5bfe1a357d74c59453b797e51
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278695"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495127"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>教程：Apache Kafka Streams API
 
-了解如何创建一个使用 Kafka Streams API 的应用程序并在 Kafka on HDInsight 上运行该应用程序。 
+了解如何创建一个使用 Apache Kafka Streams API 的应用程序并在 Kafka on HDInsight 上运行该应用程序。 
 
 本教程中使用的应用程序是流式处理字数统计。 它从 Kafka 主题读取文本数据、提取各个单词，然后将单词和计数存储到另一个 Kafka 主题。
 
 > [!NOTE]
-> Kafka 流处理通常使用 Apache Spark 或 Storm 完成。 Kafka 版本 0.10.0（在 HDInsight 3.5 和 3.6 中）引入了 Kafka Streams API。 通过此 API 可以在输入和输出主题间转换数据流。 在某些情况下，这可以作为创建 Spark 或 Storm 流式处理解决方案的替代方法。 
+> Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本 0.10.0（在 HDInsight 3.5 和 3.6 中）引入了 Kafka Streams API。 通过此 API 可以在输入和输出主题间转换数据流。 在某些情况下，这可以作为创建 Spark 或 Storm 流式处理解决方案的替代方法。 
 >
 > 有关 Kafka Streams 的详细信息，请参阅 Apache.org 上的 [Streams 简介](https://kafka.apache.org/10/documentation/streams/)文档。
 
@@ -38,9 +38,9 @@ ms.locfileid: "51278695"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Kafka on HDInsight 3.6 群集。 若要了解如何创建 Kafka on HDInsight 群集，请参阅 [Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
+* Kafka on HDInsight 3.6 群集。 若要了解如何创建 Kafka on HDInsight 群集，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
 
-* 完成 [Kafka 使用者和生成者 API](apache-kafka-producer-consumer-api.md)文档中的步骤。 本文档中的步骤使用本教程中创建的示例应用程序和主题。
+* 完成 [Apache Kafka 使用者和生成者 API](apache-kafka-producer-consumer-api.md) 文档中的步骤。 本文档中的步骤使用本教程中创建的示例应用程序和主题。
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 
@@ -158,7 +158,7 @@ public class Stream
    
     将 `sshuser` 替换为群集的 SSH 用户，并将 `clustername` 替换为群集的名称。 出现提示时，输入 SSH 用户帐户的密码。 有关在 HDInsight 中使用 `scp` 的详细信息，请参阅[在 HDInsight 中使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-## <a name="create-kafka-topics"></a>创建 Kafka 主题
+## <a name="create-apache-kafka-topics"></a>创建 Apache Kafka 主题
 
 1. 若要与群集建立 SSH 连接，请使用以下命令：
 
@@ -175,7 +175,7 @@ public class Stream
     read -p 'Enter your Kafka cluster name:' CLUSTERNAME
     ```
 
-3. 若要获取 Kafka 代理主机和 Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。 系统会提示输入密码两次。
+3. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。 系统会提示输入密码两次。
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
@@ -255,7 +255,7 @@ public class Stream
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，已了解如何将 Kafka Streams API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
+本文档介绍了如何将 Apache Kafka Streams API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
 
-* [分析 Kafka 日志](apache-kafka-log-analytics-operations-management.md)
-* [在 Kafka 群集之间复制数据](apache-kafka-mirroring.md)
+* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)
+* [在 Apache Kafka 群集之间复制数据](apache-kafka-mirroring.md)

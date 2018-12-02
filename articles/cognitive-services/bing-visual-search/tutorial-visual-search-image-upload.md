@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888333"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443451"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>教程：必应视觉搜索上传操作的细分步骤
 
@@ -23,6 +23,15 @@ ms.locfileid: "48888333"
 
 本教程面向希望了解必应视觉搜索响应内容的开发人员。 它并不适用于各种使用和显示要求（例如，它不提供 Microsoft 隐私政策的链接）。 要了解全部的使用要求，请参阅[必应使用和显示要求](./use-and-display-requirements.md)。
 
+对于本教程，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
 ## <a name="where-to-start"></a>在何处入门？
 

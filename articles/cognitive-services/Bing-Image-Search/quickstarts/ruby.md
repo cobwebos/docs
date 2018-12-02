@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 4c2c91b42af46ba42bdda84d7b8b77987c7ea818
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d5772b46c167b873ed4f5d60a110d31a5c8308a5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297326"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315930"
 ---
 # <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 发送搜索查询
 
@@ -29,6 +29,8 @@ ms.locfileid: "46297326"
 * [最新版的 Ruby](https://www.ruby-lang.org/en/downloads/)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 

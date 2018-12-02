@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/17/2018
+ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393824"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427516"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -30,7 +30,9 @@ ms.locfileid: "49393824"
 在开始之前，请确保：
 
 1. 已完成[教程：订购 Azure Data Box](data-box-deploy-ordered.md)。
-2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 透明袋中有一个发货标签贴在当前标签下的设备上。 请确保此标签安全，因为将使用它退回货物。
+2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 
+    - 透明袋中有一个发货标签贴在当前标签下的设备上。 请确保此标签安全，因为将使用它退回货物。
+    - 欧洲的某些区域收到的设备可能会带包装盒。 请确保拆除设备的包装，并保留包装盒供回寄使用。
 3. 已看完 [Data Box 安全准则](data-box-safety.md)。
 4. 你已收到一根接地电源线，可以将该线用于 100 TB 存储设备。
 5. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须

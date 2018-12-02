@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 8e98c778c89a74b6c3c1cfa7dc7feb311c62b076
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422960"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499526"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
 
@@ -42,7 +42,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-还需要安装 [Gremlin 控制台](http://tinkerpop.apache.org/)。 使用 3.2.5 或更高版本。
+还需要安装 [Gremlin 控制台](http://tinkerpop.apache.org/)。 使用 3.2.5 或更高版本。 （若要在 Windows 上使用 Gremlin 控制台，需安装 [Java 运行时](https://www.oracle.com/technetwork/java/javase/overview/index.html)。）
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

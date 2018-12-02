@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: b0e8c4dabea6aeae8d93d64d97b598ec97b2d18a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e734f11fb3f6a833b8c080deb57b9153c6c12dde
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277068"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290682"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>快速入门：使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
@@ -75,14 +75,14 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>设置源文件信息
 
-设置数据源文件的常数。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents 示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
+设置源文件的路径。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents 示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
-创建与 `StormEvents.csv` 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，并输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
+创建与 `StormEvents.csv` 文件中的数据架构匹配的名为 `StormEvents` 的表。
 
 ```csharp
 var table = "StormEvents";
@@ -122,7 +122,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>定义引入映射
 
-将传入的 CSV 数据映射到创建表时使用的列名称和数据类型。
+将传入的 CSV 数据映射到创建表时使用的列名称。
 在该表上预配 [CSV 列映射对象](/azure/kusto/management/tables#create-ingestion-mapping)
 
 ```csharp
@@ -193,12 +193,12 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 
 ## <a name="validate-data-was-ingested-into-the-table"></a>验证数据已引入表中
 
-等待五到十分钟，直到排入队列的引入已计划在 ADX 中引入和加载数据。 然后运行以下代码，以获取 StormEvents 表中记录的计数。
+等待五到十分钟，直到排入队列的引入已计划在 ADX 中引入和加载数据。 然后运行以下代码，以获取 `StormEvents` 表中记录的计数。
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
 {
-    var query = "StormEvents | count";
+    var query = $"{table} | count";
 
     var results = cslQueryProvider.ExecuteQuery<long>(query);
     Console.WriteLine(results.Single());
@@ -224,7 +224,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果计划学习其他快速入门和教程，请保留创建的资源。 否则，在数据库中运行以下命令以清除 StormEvents 表。
+如果计划学习其他快速入门和教程，请保留创建的资源。 否则，在数据库中运行以下命令以清除 `StormEvents` 表。
 
 ```Kusto
 .drop table StormEvents

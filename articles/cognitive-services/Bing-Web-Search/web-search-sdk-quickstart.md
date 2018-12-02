@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: 0c5ac37b5a3992c3f9e80fd8f155f368fa61615c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ae536166d75af48ea653b256924b5432cfd1f5ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163803"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309974"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>快速入门：使用用于 C# 的必应 Web 搜索 SDK
 
@@ -23,8 +23,9 @@ ms.locfileid: "52163803"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>先决条件
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) 或

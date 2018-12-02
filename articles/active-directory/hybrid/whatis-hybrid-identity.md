@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979465"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311528"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>混合标识和 Microsoft 标识解决方案
 [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 混合标识解决方案使你能够将本地目录与 Azure AD 同步，同时仍可在本地管理用户。 如果计划将本地 Windows Server Active Directory 与 Azure AD 进行同步，首先需要决定是使用托管标识还是使用联合标识。 
 
-- **托管标识** - 从本地 Active Directory 同步的用户帐户和组以及用户身份验证由 Azure 进行管理。   
+- **托管标识** - 用户帐户和组从本地 Active Directory 同步，用户身份验证由 Azure 管理。   
 - **联合标识**可以对用户进行更多的控制，其方法是将用户身份验证与 Azure 隔离开，将身份验证委托给受信任的本地标识提供者。 
 
 有多个选项可用于配置混合标识。 当考虑哪个标识模型最适合组织需求时，还需考虑时间、现有基础结构、复杂性和成本。 这些因素对每个组织都不同，并可能随时间变化。 但是，如果需求确实发生更改，你还可灵活切换到不同的标识模型。
@@ -42,7 +42,7 @@ ms.locfileid: "50979465"
 由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此建议使用默认的密码哈希同步选项。 如果这对你不适应，请在传递身份验证和 AD FS 之间进行选择。
 
 > [!TIP]
-> 用户密码以表示实际用户密码的哈希值形式存储在本地 Windows Server Active Directory 中。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。 如果选择同步密码，Azure AD Connect 将从本地 Active Directory 提取密码哈希，并在同步到 Azure AD 之前将额外安全处理应用于密码哈希。 还可将密码哈希同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。 此外，还可以对连接到公司网络中的已加入域的计算机上的用户启用单一登录 (SSO)。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。 
+> 用户密码以表示实际用户密码的哈希值形式存储在本地 Windows Server Active Directory 中。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。 如果选择同步密码哈希，Azure AD Connect 将从本地 Active Directory 提取密码哈希，并在同步到 Azure AD 之前将额外安全处理应用于密码哈希。 还可将密码哈希同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。 此外，还可以对连接到公司网络中的已加入域的计算机上的用户启用单一登录 (SSO)。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。 
 >
 
 ## <a name="pass-through-authentication"></a>直通身份验证

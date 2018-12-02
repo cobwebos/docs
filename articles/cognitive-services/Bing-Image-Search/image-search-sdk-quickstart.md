@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: edebd1361e39a338672b4249dd159e5c1d4078ce
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2df767ef92ca056535e2d70a53a1588c9e89c647
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294146"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316780"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>快速入门，使用必应图像搜索 SDK 和 C# 搜索图像
 
@@ -24,7 +24,6 @@ ms.locfileid: "46294146"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-
 * 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/)。
 * [认知图像搜索 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)。
 
@@ -32,6 +31,7 @@ ms.locfileid: "46294146"
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
@@ -69,7 +69,7 @@ imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search que
 ## <a name="parse-and-view-the-first-image-result"></a>分析并查看第一个图像结果
 
 分析响应中所返回的图像结果。
-如果响应中包含搜索结果，则存储第一个结果并输出其详细信息，例如缩略图 URL、原始 URL 以及返回图像的总数。  
+如果响应中包含搜索结果，则存储第一个结果并输出其详细信息，例如缩略图 URL、原始 URL 以及返回的图像的总数。  
 
 ```csharp
 if (imageResults != null)

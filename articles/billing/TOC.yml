@@ -5,6 +5,8 @@ items:
   items:
   - name: 了解帐单
     href: billing-understand-your-bill.md
+  - name: 了解帐单 - 仅限 EA
+    href: billing-understand-your-bill-ea.md
   - name: 获取发票和使用情况数据
     href: billing-download-azure-invoice-daily-usage-date.md
   - name: 第三方服务费用
@@ -18,6 +20,8 @@ items:
   items:
   - name: 防止意外成本
     href: billing-getting-started.md
+  - name: 查看 EA 定价
+    href: billing-ea-pricing.md
   - name: 使用资源标记
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
   - name: 开始分析成本 - 仅限 EA
@@ -60,7 +64,7 @@ items:
       href: billing-understand-reserved-instance-usage.md
     - name: Enterprise 使用情况
       href: billing-understand-reserved-instance-usage-ea.md
-    - name: 管理预留
+    - name: 管理预留项
       href: billing-manage-reserved-vm-instance.md
     - name: 查看预留
       href: billing-view-reservations.md
@@ -82,6 +86,8 @@ items:
     href: billing-how-to-change-azure-account-profile.md
   - name: 授予对计费信息的访问权限
     href: billing-manage-access.md
+  - name: Azure 中的 EA 角色
+    href: billing-understand-ea-roles.md
   - name: 链接合作伙伴 ID
     href: billing-partner-admin-link-started.md
   - name: 查看计费帐户
@@ -112,7 +118,9 @@ items:
     href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
   - name: 移动 Azure 资源
     href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-  - name: 创建 Enterprise 订阅
+  - name: 创建更多订阅
+    href: billing-create-subscription.md
+  - name: 以编程方式创建 Enterprise 订阅
     href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
   - name: 导出订阅信息
     href: billing-export-subscriptions.md
@@ -180,9 +188,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 88e6864df13312c1963e39ff2c23eb63fde50bc2
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5de05f7b1426a959c046b1e651f09c2f8e584b8a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268134"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497837"

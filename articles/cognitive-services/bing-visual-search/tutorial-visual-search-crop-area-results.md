@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 27141c014c9ccdf9d62c9bde5c96bd31abfc025e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226904"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447089"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>教程：必应视觉搜索 SDK 图像剪切区域和结果
 视觉搜索 SDK 提供一个选项用于选择图像的区域，以及在线查找类似于大型图像裁剪区域的图像。  本示例指定的裁剪区域显示包含多个人像的某张图像中的一个人像。  代码将发送大型图像的裁剪区域和 URL，并返回包含必应搜索 URL 以及以联机方式找到的类似图像的 URL 的结果。
@@ -23,7 +23,15 @@ ms.locfileid: "47226904"
 
 需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
 
-必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。
+对于本教程，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
 若要使用必应 Web 搜索 SDK 设置控制台应用程序，请浏览到 Visual Studio 中的解决方案资源管理器中的“管理 NuGet 程序包”选项。 添加 Microsoft.Azure.CognitiveServices.Search.VisualSearch 包。

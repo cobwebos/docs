@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 2a72afe708c157fb2a19ac0bfcea2bea34f7b56f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625635"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584190"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>教程：使用 Azure 数字孪生预配大楼并监视工作条件
 
@@ -253,6 +253,10 @@ ms.locfileid: "51625635"
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
+
+    > [!TIP]
+    > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
+
 2. 可以根据需要删除工作计算机上的示例应用程序。
 
 ## <a name="next-steps"></a>后续步骤

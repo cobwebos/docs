@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 4bb37032f2ecdfecf08adec3f32aa00d5ad12897
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 370503cc463fd3683f47fe0b573ad83daa0b9d14
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255517"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584547"
 ---
-# <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 HDInsight 中创建 Spark 群集
+# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 HDInsight 中创建 Apache Spark 群集
 了解如何在 Azure HDInsight 中创建 Apache Spark 群集，以及如何对 Hive 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。
 
 在此快速入门中，使用 Azure 门户创建 HDInsight Spark 群集。 群集将 Azure 存储 Blob 用作群集存储。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
@@ -133,4 +133,5 @@ HDInsight 将数据保存在 Azure 存储或 Azure Data Lake Storage 中，因�
 本快速入门介绍了如何创建 HDInsight Spark 群集并运行基本的 Spark SQL 查询。 转到下一教程，了解如何使用 HDInsight Spark 群集针对示例数据运行交互式查询。
 
 > [!div class="nextstepaction"]
->[在 Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)
+>[在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)
+

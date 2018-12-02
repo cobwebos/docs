@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: e970f7cc0d4c4620f2da69286be36d0c22e0d747
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77a2b8d2b5d3ac42dcbbe2db2b05d38657290073
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260357"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443774"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>教程：使用 Azure Data Box Edge（预览版）转换数据
 
@@ -163,7 +163,7 @@ ms.locfileid: "51260357"
  
 6.  在“指定路由”下，设置模块之间的路由。 在本例中，请提供要将数据推送到云共享的本地共享的名称。 单击“下一步”。
 
-    可以将路由替换为以下路由字符串："route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
+    可以将路由替换为以下路由字符串：`"route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"`
 
     ![添加自定义模块](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

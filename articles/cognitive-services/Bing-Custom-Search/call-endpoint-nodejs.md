@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: 64fc631e3d8473b53e4b360001dcc4e87dd27be6
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162613"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310229"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>快速入门：调用必应自定义搜索终结点 (Node.js)
 
@@ -27,7 +27,7 @@ ms.locfileid: "52162613"
 
 - 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。
 - 安装 [Node.js](https://www.nodejs.org/)。
-- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。    
+- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。   另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="run-the-code"></a>运行代码
 

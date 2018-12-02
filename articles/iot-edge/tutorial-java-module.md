@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d5201f3b2a0a3548b1f9eaf4a3f6c6b0fe160d18
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e64acff180d0faf3dfcfe02abb2d659db62ed788
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567700"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312310"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 Java IoT Edge 模块并将其部署到模拟设备
 
@@ -55,16 +55,31 @@ Azure IoT Edge 设备：
 
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
-本教程将使用适用于 VS Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
-在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
+本教程将使用适用于 Visual Studio Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “Azure 容器注册表”。
-2. 为注册表提供一个名称，选择一个订阅，选择一个资源组，然后将 SKU 设置为“基本”。 
-3. 选择“创建”。
-4. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
-5. 将“管理员用户”切换到“启用”。
-6. 复制“登录服务器”、“用户名”和“密码”的值。 在本教程稍后，我们会使用这些值将 Docker 映像发布到注册表，并将注册表凭据添加到 Azure IoT Edge 运行时。 
+可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
+
+如果还没有容器注册表，请执行以下步骤，以便在 Azure 中创建一个新的：
+
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
+
+2. 提供以下值，以便创建容器注册表：
+
+   | 字段 | 值 | 
+   | ----- | ----- |
+   | 注册表名称 | 提供唯一名称。 |
+   | 订阅 | 从下拉列表中选择“订阅”。 |
+   | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
+   | 位置 | 选择靠近你的位置。 |
+   | 管理员用户 | 设置为“启用”。 |
+   | SKU | 选择“基本”。 | 
+
+5. 选择“创建”。
+
+6. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
+
+7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
 以下步骤使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 Azure IoT Edge maven 模板包和 Azure IoT Java 设备 SDK 的 IoT Edge 模块项目。
@@ -75,17 +90,20 @@ Azure IoT Edge 设备：
 
 1. 在 Visual Studio Code 中，选择“查看” > “命令面板”，以打开 VS Code 命令面板。 
 
-2. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+2. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 按命令面板中的提示创建解决方案。
 
-   1. 选择要在其中创建解决方案的文件夹。 
-   2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
-   3. 选择“Java 模块”作为模块模板。 
-   4. 为 groupId 提供一个值，或者接受默认的 **com.edgemodule**。
-   5. 将默认模块名称替换为 **JavaModule**。 
-   6. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为复制的登录服务器值。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/javamodule。
-
-
-如果是第一次创建 Java 模块，则下载 maven 包可能需要数分钟。 然后，VS Code 窗口会加载 IoT Edge 解决方案工作区。 解决方案工作区包含五个顶级组件。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 **modules** 文件夹包含模块的 Java 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 
+   | 字段 | 值 |
+   | ----- | ----- |
+   | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
+   | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
+   | 选择模块模板 | 选择“Java 模块”。 |
+   | 为 groupId 提供值 | 输入组 ID 值或接受默认的 **com.edgemodule**。 |
+   | 提供模块名称 | 将模块命名为 **JavaModule**。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/javamodule。 |
+ 
+   ![提供 Docker 映像存储库](./media/tutorial-java-module/repository.png)
+   
+如果是第一次创建 Java 模块，则下载 maven 包可能需要数分钟。 然后，VS Code 窗口会加载 IoT Edge 解决方案工作区。 解决方案工作区包含五个顶级组件。 **modules** 文件夹包含模块的 Java 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 **deployment.debug.template.json** 文件包含模块的调试版本。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 
 
 如果在创建解决方案时未指定容器注册表，但接受了默认的 localhost:5000 值，则不会有 \.env 文件。 
 
@@ -200,6 +218,26 @@ Azure IoT Edge 设备：
 
 11. 保存此文件。
 
+12. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 deployment.template.json 文件。 此文件要求 **$edgeAgent** 部署两个模块：**tempSensor** 和 **JavaModule**。 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **JavaModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 
+
+   若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+
+   在 deployment.template.json 文件中，**registryCredentials** 节存储 Docker 注册表凭据。 实际的用户名和密码对存储在 git 忽略的 .env 文件中。  
+
+13. 将 **JavaModule** 模块孪生添加到部署清单。 在 **moduleContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容： 
+
+   ```json
+       "JavaModule": {
+           "properties.desired":{
+               "TemperatureThreshold":25
+           }
+       }
+   ```
+
+   ![将模块孪生添加到部署模板](./media/tutorial-java-module/module-twin.png)
+
+14. 保存此文件。
+
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
 在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 **JavaModule**，该函数会筛选出其中报告的计算机温度低于可接受阈值的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。 
@@ -211,26 +249,7 @@ Azure IoT Edge 设备：
    ```
    使用用户名、密码以及在第一部分从 Azure 容器注册表复制的登录服务器。 也可以在 Azure 门户中从注册表的“访问密钥”部分检索这些值。
 
-2. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 deployment.template.json 文件。 此文件要求 **$edgeAgent** 部署两个模块：**tempSensor** 和 **JavaModule**。 **JavaModule.image** 值设置为映像的 Linux amd64 版本。 将映像版本更改为 **arm32v7**（如果这就是 IoT Edge 设备的体系结构）。 
-
-   验证该模板具有正确的模块名称，而不是具有在创建 IoT Edge 解决方案时你更改的默认 **SampleModule** 名称。
-
-   若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
-
-3. 在 deployment.template.json 文件中，**registryCredentials** 节存储 Docker 注册表凭据。 实际的用户名和密码对存储在 git 忽略的 .env 文件中。  
-
-4. 将 **JavaModule** 模块孪生添加到部署清单。 在 **moduleContent** 节底部的 **$edgeHub** 模块孪生后面插入以下 JSON 内容： 
-    ```json
-        "JavaModule": {
-            "properties.desired":{
-                "TemperatureThreshold":25
-            }
-        }
-    ```
-
-4. 保存此文件。
-
-5. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
+2. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
 
 告知 Visual Studio Code 生成解决方案时，它首先获取部署模板中的信息，然后在名为 **config** 的新文件夹中生成 deployment.json 文件。然后，它在集成终端运行两个命令，即 `docker build` 和 `docker push`。 这两个命令会生成代码，将 Java 应用容器化，然后将代码推送到在初始化解决方案时指定的容器注册表。 
 

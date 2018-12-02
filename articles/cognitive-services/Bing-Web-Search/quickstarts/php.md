@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: bee9cf2a6ddc385ddf0cb04c58edacaa2da6ec5d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f4fb66997b6deb6d5e02da2e9976190f00958752
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163328"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314586"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入门：使用 PHP 调用必应 Web 搜索 API  
 
@@ -23,8 +23,9 @@ ms.locfileid: "52163328"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>先决条件
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [PHP 5.6.x](http://php.net/downloads.php) 或更高版本

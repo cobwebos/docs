@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6dc10bc2dedfe99573b5ad646461e66827c6df9e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7ac298ad5c5b93b5dce0ce2dd59ffe541888db88
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320163"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307757"
 ---
 # <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>快速入门：通过 C# 使用必应自定义搜索 SDK
 
@@ -27,7 +27,7 @@ ms.locfileid: "49320163"
 
 - 现成的自定义搜索实例。 请参阅[创建第一个必应自定义搜索实例](quick-start.md)。  
   
-- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。  
+- 订阅密钥。 可以在激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)时获取订阅密钥，也可以使用 Azure 仪表板中的付费订阅密钥（请参阅[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)）。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
   
 - 已安装 visual Studio 2017。 如果没有，可下载免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。  
   

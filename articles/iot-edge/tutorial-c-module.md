@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 09/21/2018
+ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e5c6b523a098bef4bb40ccd924750cc8aefd0e87
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: bc66e143dc8cb98f08080092af95661ba50be9a3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567360"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317698"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C IoT Edge 模块并将其部署到模拟设备
 
@@ -53,27 +53,32 @@ Azure IoT Edge 设备：
 >[!Note]
 >用于 Azure IoT edge 的 C 模块不支持 Windows 容器。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
 ## <a name="create-a-container-registry"></a>创建容器注册表
-本教程将使用适用于 VS Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
-在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
+本教程将使用适用于 Visual Studio Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
-以下 Azure CLI 命令在名为 **IoTEdgeResources** 的资源组中创建注册表。 将 **{acr_name}** 替换为注册表的唯一名称。 
+可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
 
-   ```azurecli-interactive
-   az acr create --resource-group IoTEdgeResources --name {acr_name} --sku Basic --admin-enabled true
-   ```
+如果还没有容器注册表，请执行以下步骤，以便在 Azure 中创建一个新的：
 
-检索注册表的凭据。 
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
 
-   ```azurecli-interactive
-   az acr credential show --name {acr_name}
-   ```
+2. 提供以下值，以便创建容器注册表：
 
-复制**用户名**和某个密码的值。 本教程中稍后将 Docker 映像发布到注册表，以及向 Edge 运行时添加注册表凭据时，将使用这些值。 
+   | 字段 | 值 | 
+   | ----- | ----- |
+   | 注册表名称 | 提供唯一名称。 |
+   | 订阅 | 从下拉列表中选择“订阅”。 |
+   | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
+   | 位置 | 选择靠近你的位置。 |
+   | 管理员用户 | 设置为“启用”。 |
+   | SKU | 选择“基本”。 | 
+
+5. 选择“创建”。
+
+6. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
+
+7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
 以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块项目。
@@ -86,21 +91,25 @@ Azure IoT Edge 设备：
 
 2. 在命令面板中，键入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-3. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+3. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 按命令面板中的提示创建解决方案。
 
-   1. 选择要在其中创建解决方案的文件夹。 
-   2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
-   3. 选择“C 模块”作为模块模板。 
-   4. 将模块命名为 **CModule**。 
-   5. 将在上一部分创建的 Azure 容器注册表指定为第一个模块的映像存储库。 将 **localhost:5000** 替换为 **\<注册表名称\>.azurecr.io**。 仅替换字符串的 localhost 部分，不要删除模块名称。 
-
+   | 字段 | 值 |
+   | ----- | ----- |
+   | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
+   | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
+   | 选择模块模板 | 选择“C 模块”。 |
+   | 提供模块名称 | 将模块命名为 **CModule**。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/cmodule。 |
+ 
    ![提供 Docker 映像存储库](./media/tutorial-c-module/repository.png)
 
-VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。 **modules** 文件夹包含模块的 C 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 
+VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作区包含五个顶级组件。 **modules** 文件夹包含模块的 C 代码以及用于将模块构建为容器映像的 Dockerfile。 **\.env** 文件存储容器注册表凭据。 **deployment.template.json** 文件包含 IoT Edge 运行时用于在设备上部署模块的信息。 **deployment.debug.template.json** 文件包含模块的调试版本。 你不会在本教程中编辑 **\.vscode** 文件夹或 **\.gitignore** 文件。
 
 如果在创建解决方案时未指定容器注册表，但接受了默认的 localhost:5000 值，则不会有 \.env 文件。 
 
-   ![C 解决方案工作区](./media/tutorial-c-module/workspace.png)
+<!--
+   ![C solution workspace](./media/tutorial-c-module/workspace.png)
+-->
 
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
@@ -285,7 +294,23 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 11. 保存 **main.c** 文件。
 
-## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
+12. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 `$edgeAgent` 部署两个模块：**tempSensor** 和 **CModule**。 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7**（如果这就是 IoT Edge 设备的体系结构）。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+
+13. 将 CModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
+
+    ```json
+        "CModule": {
+            "properties.desired":{
+                "TemperatureThreshold":25
+            }
+        }
+    ```
+
+   ![将 CModule 孪生添加到部署模板](./media/tutorial-c-module/module-twin.png)
+
+14. 保存 **deployment.template.json** 文件。
+
+## <a name="build-and-push-your-solution"></a>生成并推送解决方案
 
 在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 CModule，该函数会筛选出其中报告的计算机温度处于可接受限制范围内的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。 
 
@@ -298,22 +323,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
    ```
    使用用户名、密码以及在第一部分从 Azure 容器注册表复制的登录服务器。 或者再次在 Azure 门户中从注册表的“访问密钥”部分检索它们。
 
-2. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 `$edgeAgent` 部署两个模块：**tempSensor** 和 **CModule**。 `CModule.image` 值设置为映像的 Linux amd64 版本。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
-
-4. 将 CModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
-
-    ```json
-        "CModule": {
-            "properties.desired":{
-                "TemperatureThreshold":25
-            }
-        }
-    ```
-
-   ![将 CModule 孪生添加到部署模板](./media/tutorial-c-module/module-twin.png)
-
-4. 保存 **deployment.template.json** 文件。
-5. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
+2. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。 
 
 要求 Visual Studio Code 生成解决方案时，它首先在新的 **config** 文件夹中生成 `deployment.json` 文件。 deployment.json 文件的信息收集自已更新的模板文件、用于存储容器注册表凭据的 .env 文件，以及 CModule 文件夹中的 module.json 文件。 
 

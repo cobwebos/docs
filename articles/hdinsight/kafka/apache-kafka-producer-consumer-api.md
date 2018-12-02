@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 2a441e3cd90eba8fc2b1201671047cfcd9d277a6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277726"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313805"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
-了解如何将 Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。
+了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。
 
 Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafka 使用者 API 允许应用程序从群集读取数据流。
 
@@ -56,7 +56,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 ## <a name="set-up-your-deployment-environment"></a>设置部署环境
 
-本教程需要 Apache Kafka on HDInsight 3.6。 若要了解如何创建 Kafka on HDInsight 群集，请参阅 [Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
+本教程需要 Apache Kafka on HDInsight 3.6。 若要了解如何创建 Kafka on HDInsight 群集，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
 
 ## <a name="understand-the-code"></a>了解代码
 
@@ -171,7 +171,7 @@ consumer = new KafkaConsumer<>(properties);
         read -p 'Enter your Kafka cluster name:' CLUSTERNAME
         ```
     
-    2. 若要获取 Kafka 代理主机和 Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。
+    2. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。
     
         ```bash
         export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
@@ -227,8 +227,8 @@ indow -h 'java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygr
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，你已了解如何将 Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
+本文档介绍了如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
 
-* [分析 Kafka 日志](apache-kafka-log-analytics-operations-management.md)
-* [在 Kafka 群集之间复制数据](apache-kafka-mirroring.md)
-* [将 Kafka 流 API 与 HDInsight 配合使用](apache-kafka-streams-api.md)
+* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)
+* [在 Apache Kafka 群集之间复制数据](apache-kafka-mirroring.md)
+* [将 Apache Kafka 流 API 与 HDInsight 配合使用](apache-kafka-streams-api.md)

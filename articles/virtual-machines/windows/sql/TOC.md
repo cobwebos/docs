@@ -1,12 +1,13 @@
 # 概述
 ## [关于 Windows SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [发行说明](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # 快速入门
 ## [创建 SQL VM - 门户](quickstart-sql-vm-create-portal.md)
 ## [创建 SQL VM - PowerShell](quickstart-sql-vm-create-powershell.md)
 
 # 概念
-## 最佳实践
+## 最佳做法
 ### [性能最佳实践](virtual-machines-windows-sql-performance.md)
 ### [安全注意事项](virtual-machines-windows-sql-security.md)
 ### [应用程序模式](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
@@ -40,6 +41,7 @@
 #### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### 故障转移群集实例
 #### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/azure/overview)

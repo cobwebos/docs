@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 19285bf7a1323e9698fe408566304d0596d1c983
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210408"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311256"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>什么是基于角色的访问控制 (RBAC)？
 
@@ -101,7 +101,7 @@ Azure 引入了数据操作（目前以预览版提供），用于授予对对�
 
 ## <a name="deny-assignments"></a>拒绝分配
 
-以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作绑定到特定范围内的用户、组或服务主体，以便拒绝访问。 角色分配定义了一组*允许*的操作，而拒绝分配定义了一组*不允许*的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。
+以前，RBAC 是一种仅允许模型，没有拒绝功能，但 RBAC 现在以有限方式支持拒绝分配。 *拒绝分配*类似于角色分配，可将一组拒绝操作绑定到特定范围内的用户、组或服务主体，以便拒绝访问。 角色分配定义了一组允许的操作，而拒绝分配定义了一组不允许的操作。 换而言之，即使角色分配授予用户访问权限，拒绝分配也会阻止用户执行指定的操作。 拒绝分配优先于角色分配。
 
 当前，拒绝分配为“只读”，且只能由 Azure 设置。 即使无法自行创建拒绝分配，也可列出拒绝分配，因为它们可能会影响你的有效权限。 若要获取有关拒绝分配的信息，必须具有 `Microsoft.Authorization/denyAssignments/read` 权限，大部分[内置角色](built-in-roles.md#owner)都包含该权限。 有关详细信息，请参阅[了解拒绝分配](deny-assignments.md)。
 

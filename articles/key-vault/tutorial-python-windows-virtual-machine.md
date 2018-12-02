@@ -1,5 +1,5 @@
 ---
-title: 教程 - 如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用 | Microsoft Docs
+title: 教程 - 如何将 Azure Key Vault 与通过 Python 编写的 Azure Windows 虚拟机配合使用 | Microsoft Docs
 description: 教程：将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 863f3a8c18eab5b42b5f1377ca0f91f9740c06e7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 26b5b16e3eb016edbe53c3526e51c3aa44f307b5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265963"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583578"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>教程：如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>教程：如何将 Azure Key Vault 与通过 Python 编写的 Azure Windows 虚拟机配合使用
 
 Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资源所需的 API 密钥、数据库连接字符串。
 

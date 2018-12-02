@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 172c3011221e04bfdb4a4f3ae1515fe0eb10065b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 454c3961cb31e147f647095c0a3a71a6c65630f1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515244"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422111"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>快速入门：控制连接到 IoT 中心的设备 (Java)
 
@@ -71,7 +71,7 @@ mvn --version
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyJavaDevice**：这是为注册的设备提供的名称。 请按显示的方法使用 MyJavaDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyJavaDevice**：此值是为注册的设备提供的名称。 请按显示的方法使用 MyJavaDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
@@ -85,7 +85,7 @@ mvn --version
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      -hub-name YourIoTHubName \
+      --hub-name YourIoTHubName \
       --device-id MyJavaDevice \
       --output table
     ```

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/21/2018
-ms.openlocfilehash: 1f8537408325aff0ba3ec198ed0e2bb697134845
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036336"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496626"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 结合使用
 
-本教程说明如何使用 Apache Storm 拓扑并通过 Apache Kafka on Azure HDInsight 来读取和写入数据。 本教程还说明如何将数据保存到 Storm 群集上的 HDFS 兼容存储。
+本教程说明如何使用 [Apache Storm](https://storm.apache.org/) 拓扑并通过 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。 本教程还说明如何将数据保存到 Storm 群集上的 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 兼容存储。
 
 本教程介绍如何执行下列操作：
 
@@ -37,7 +37,7 @@ ms.locfileid: "51036336"
 
 * 熟悉 Kafka 主题的创建。 有关详细信息，请参阅 [Kafka on HDInsight 快速入门](./kafka/apache-kafka-get-started.md)文档。
 
-* 熟悉 Storm 解决方案（拓扑）的生成和部署。 具体而言，熟悉使用 Flux 框架的拓扑。 有关详细信息，请参阅[使用 Java 创建 Storm 拓扑](./storm/apache-storm-develop-java-topology.md)文档。
+* 熟悉 Storm 解决方案（拓扑）的生成和部署。 具体而言，熟悉使用 [Flux](https://storm.apache.org/releases/current/flux.html) 框架的拓扑。 有关详细信息，请参阅[使用 Java 创建 Storm 拓扑](./storm/apache-storm-develop-java-topology.md)文档。
 
 * [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 或更高版本。 HDInsight 3.5 或更高版本需要 Java 8。
 
@@ -63,7 +63,7 @@ ms.locfileid: "51036336"
 
 ## <a name="storm-and-kafka"></a>Storm 和 Kafka
 
-Apache Storm 提供了多个组件以便与 Kafka 配合使用。 此教程中使用了以下组件：
+Apache Storm 提供了多个组件以便与 Apache Kafka 配合使用。 此教程中使用了以下组件：
 
 * `org.apache.storm.kafka.KafkaSpout`：此组件用于读取 Kafka 中的数据。 此组件依赖于下列组件：
 
@@ -82,7 +82,7 @@ Apache Storm 提供了多个组件以便与 Kafka 配合使用。 此教程中�
 `org.apache.storm : storm-kafka` 包提供了这些组件。 使用与 Storm 版本相匹配的包版本。 对于 HDInsight 3.6，Storm 版本为 1.1.0。
 还需要 `org.apache.kafka : kafka_2.10` 包，其中包含其他 Kafka 组件。 使用与 Storm 版本相匹配的 Kafka 版本。 对于 HDInsight 3.6，Kafka 版本为 0.10.0.0。
 
-以下 XML 是 `pom.xml` 中 Maven 项目的依赖项声明：
+以下 XML 是 `pom.xml` 中 [Apache Maven](https://maven.apache.org/) 项目的依赖项声明：
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -369,7 +369,7 @@ streams:
 
 | dev.properties 文件 | Description |
 | --- | --- |
-| `kafka.zookeeper.hosts` | Kafka 群集的 Zookeeper 主机。 |
+| `kafka.zookeeper.hosts` | Kafka 群集的 [Apache ZooKeeper](https://zookeeper.apache.org/) 主机。 |
 | `kafka.broker.hosts` | Kafka 代理主机（辅助角色节点）。 |
 | `kafka.topic` | 拓扑使用的 Kafka 主题。 |
 | `hdfs.write.dir` | Kafka 读取器拓扑写入的目录。 |
@@ -384,7 +384,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 ![Azure 虚拟网络中的 Storm 和 Kafka 群集图示](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
+> 通过 Internet 可访问群集上的其他服务，例如 SSH 和 [Apache Ambari](https://ambari.apache.org/)。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
 
 若要创建 Azure 虚拟网络，然后在其中创建 Kafka 和 Storm 群集，请使用以下步骤：
 
@@ -637,8 +637,8 @@ Kafka 将数据存储在主题中。 启动 Storm 拓扑之前，必须创建主
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Storm 拓扑来向 Kafka on HDInsight 写入数据以及从中读取数据。 同时还介绍了如何将数据存储到 HDInsight 使用的 HDFS 兼容存储。
+本教程介绍了如何使用 [Apache Storm](https://storm.apache.org/) 拓扑向 [Apache Kafka](https://kafka.apache.org/) on HDInsight 写入数据以及从中读取数据。 同时还介绍了如何将数据存储到 HDInsight 使用的 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 兼容存储。
 
-若要了解有关使用 Kafka on HDInsight 的详细信息，请参阅 [Kafka 生成者和使用者 API](kafka/apache-kafka-producer-consumer-api.md) 文档。
+若要了解有关使用 Kafka on HDInsight 的详细信息，请参阅[使用 Apache Kafka 生成者和使用者 API](kafka/apache-kafka-producer-consumer-api.md) 文档。
 
 有关在基于 Linux 的 HDInsight 上部署和监视拓扑的详细信息，请参阅[在基于 Linux 的 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md)

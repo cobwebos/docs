@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 141a65032d3d97a7977bb3e725edb47b6f25d55c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003665"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496666"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -67,8 +67,13 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 
 若要查看可用的 Linux SQL Server 虚拟机映像，请参阅 [Azure 虚拟机上的 SQL Server 概述 (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md)。
 
+> [!NOTE]
+> 现在可以更改按用量付费的 SQL Server VM 的许可模式来使用自己的许可证。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 
+
 ### <a id="BYOL"></a> 自带许可
 也可以自带许可 (BYOL)。 在此方案中，只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。  自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关使用此选项的要求，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md#byol)。
+
+若要自带许可证，可以转换现有的按用量付费的 SQL VM，也可以部署前缀为 **{BYOL}** 的映像。 若要详细了解如何在按用量付费和 BYOL 之间切换许可模型，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |
@@ -77,7 +82,6 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard  BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-在门户中，这些映像名称带有 **{BYOL}** 前缀。
 
 ### <a name="connect-to-the-vm"></a>连接到 VM
 创建 SQL Server VM 以后，即可从 SQL Server Management Studio (SSMS) 之类的应用程序或工具连接到该 VM。 有关说明，请参阅[连接到 Azure 上的 SQL Server 虚拟机](virtual-machines-windows-sql-connect.md)。
@@ -96,7 +100,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 * [虚拟机概述](../overview.md)
 
 ### <a name="storage"></a>存储
-* [Microsoft Azure 存储空间简介](../../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储简介](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>网络
 * [虚拟网络概述](../../../virtual-network/virtual-networks-overview.md)

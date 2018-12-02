@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 21c2ed0e58bddb58633968b426e06bc95c44ee99
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ed5d75700742c73e44fbf44c17a1fafbd0246b1
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948207"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580972"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>使用 Azure CLI 启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器慢查询日志
 此示例 CLI 脚本可启用和下载单个适用于 PostgreSQL 服务器的 Azure 数据库的慢查询日志。
@@ -26,8 +26,8 @@ ms.locfileid: "46948207"
 如果选择在本地运行 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。
 
 ## <a name="sample-script"></a>示例脚本
-在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中的 <log_file_name> 替换自己的服务器日志文件名。
-[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/server-logs/server-logs.sh?highlight=18-19 "Manipulate with server logs.")]
+在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中的 &lt;log_file_name&gt; 替换自己的服务器日志文件名。
+[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/server-logs/server-logs.sh?highlight=15-16 "Manipulate with server logs.")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 运行脚本示例后，请使用以下命令删除资源组以及与其关联的所有资源。 

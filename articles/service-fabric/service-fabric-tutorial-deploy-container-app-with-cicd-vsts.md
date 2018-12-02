@@ -1,6 +1,6 @@
 ---
 title: 通过 CI/CD 将容器应用程序部署到 Azure Service Fabric 群集
-description: 本教程介绍了如何使用 Visual Studio Team Services (VSTS) 为 Azure Service Fabric 容器应用程序设置持续集成和部署。
+description: 本教程介绍了如何使用 Visual Studio Azure DevOps 为 Azure Service Fabric 容器应用程序设置持续集成和部署。
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300178"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443485"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
-本教程是一个系列的第二部分，介绍了如何使用 Visual Studio Team Services 为 Azure Service Fabric 容器应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用[将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric](service-fabric-host-app-in-a-container.md) 中创建的应用程序作为示例。
+本教程是一个系列的第二部分，介绍了如何使用 Visual Studio 和 Azure DevOps 为 Azure Service Fabric 容器应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用[将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric](service-fabric-host-app-in-a-container.md) 中创建的应用程序作为示例。
 
 本系列教程的第二部分将介绍如何：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
-> * 在 Team Services 中创建生成定义
-> * 在 Team Services 中创建发布定义
+> * 在 Visual Studio 团队资源管理器中创建生成定义
+> * 在 Visual Studio 团队资源管理器中创建发布定义
 > * 自动部署和升级应用程序
 
 ## <a name="prerequisites"></a>先决条件
@@ -43,23 +43,23 @@ ms.locfileid: "51300178"
 
 ## <a name="prepare-a-publish-profile"></a>准备一个发布配置文件
 
-现在，你已[部署了一个容器应用程序](service-fabric-host-app-in-a-container.md)，可以设置持续集成了。  首先，在应用程序中准备一个发布配置文件，供要在 Team Services 中执行的部署进程使用。  应当将发布配置文件配置为以你之前创建的群集为目标。  启动 Visual Studio 并打开一个现有的 Service Fabric 应用程序项目。  在“解决方案资源管理器”中，右键单击该应用程序并选择“发布...”。
+现在，你已[部署了一个容器应用程序](service-fabric-host-app-in-a-container.md)，可以设置持续集成了。  首先，在应用程序中准备一个发布配置文件，供要在 Azure DevOps 中执行的部署进程使用。  应当将发布配置文件配置为以你之前创建的群集为目标。  启动 Visual Studio 并打开一个现有的 Service Fabric 应用程序项目。  在“解决方案资源管理器”中，右键单击该应用程序并选择“发布...”。
 
-在应用程序项目中选择一个要用于持续集成工作流的目标配置文件，例如 Cloud。  指定群集连接终结点。  选中“升级应用程序”复选框，以便应用程序针对 Team Services 中的每个部署进行升级。  单击“保存”超链接将设置保存到发布配置文件，然后单击“取消”关闭对话框。
+在应用程序项目中选择一个要用于持续集成工作流的目标配置文件，例如 Cloud。  指定群集连接终结点。  选中“升级应用程序”复选框，以便应用程序针对 Azure DevOps 中的每个部署进行升级。  单击“保存”超链接将设置保存到发布配置文件，然后单击“取消”关闭对话框。
 
 ![推送配置文件][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>将 Visual Studio 解决方案共享到一个新的 Team Services Git 存储库
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>将你的 Visual Studio 解决方案共享到一个新的 Azure DevOps Git 存储库
 
-将应用程序源文件共享到 Team Services 中的一个团队项目，以便可以生成内部版本。
+将你的应用程序源文件共享到 Azure DevOps 中的一个团队项目，以便可以生成内部版本。
 
 通过在 Visual Studio 的右下角的状态栏中选择“添加到源代码管理” -> “Git”为项目创建一个新的本地 Git 存储库。
 
-在“团队资源管理器”中的“推送”视图中，在“推送到 Visual Studio Team Services”下选择“发布 Git 存储库”按钮。
+在“团队资源管理器”中的“推送”视图中，在“推送到 Azure DevOps”下选择“发布 Git 存储库”按钮。
 
 ![推送 Git 存储库][push-git-repo]
 
-验证你的电子邮件地址并在“Team Services 域”下拉列表中选择你的帐户。 输入你的存储库名称并选择“发布存储库”。
+验证你的电子邮件地址并在“帐户”下拉列表中选择你的组织。 如果还没有组织，可能必须设置一个组织。 输入你的存储库名称并选择“发布存储库”。
 
 ![推送 Git 存储库][publish-code]
 
@@ -67,22 +67,22 @@ ms.locfileid: "51300178"
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>配置“使用 VSTS 实现持续交付”
 
-Team Services 生成定义所描述的工作流由一系列按顺序执行的生成步骤组成。 创建一个生成定义，以生成要部署到 Service Fabric 群集的 Service Fabric 应用程序包和其他项目。 详细了解 [Team Services 生成定义](https://www.visualstudio.com/docs/build/define/create)。 
+Azure DevOps 生成定义所描述的工作流由一系列按顺序执行的生成步骤组成。 创建一个生成定义，以生成要部署到 Service Fabric 群集的 Service Fabric 应用程序包和其他项目。 详细了解 Azure DevOps [生成定义](https://www.visualstudio.com/docs/build/define/create)。 
 
-Team Services 发布定义描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成定义和发布定义将执行从开始到结束的整个工作流，即一开始只有源文件，而结束时群集中会有一个运行的应用程序。 详细了解 Team Services [发布定义](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)。
+Azure DevOps 发布定义描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成定义和发布定义将执行从开始到结束的整个工作流，即一开始只有源文件，而结束时群集中会有一个运行的应用程序。 详细了解 Azure DevOps [发布定义](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)。
 
 ### <a name="create-a-build-definition"></a>创建生成定义
 
-打开 Web 浏览器并导航到新的团队项目：[https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)。
+打开新的团队项目，方法是：在 Web 浏览器中导航到 https://dev.azure.com，选择你的组织，后跟新项目。 
 
-依次选择“生成和发布”选项卡、“生成”，然后单击“新建管道”。
+选择左面板上的“管道”选项，然后单击“新建管道”。
 
 >[!NOTE]
 >如果没有看到生成定义模板，请确保已关闭“新 YAML 管道创建体验”功能。 此功能在 DevOps 帐户的“预览功能”部分中配置。
 
 ![新建管道][new-pipeline]
 
-选择 **VSTS Git** 作为源，选择“Voting”团队项目、“Voting”存储库和**主**默认分支或手动和计划的生成。  然后单击“继续”。
+选择 **Azure Repos Git** 作为源，然后选择团队项目名称、项目存储库，以及 **master** 默认分库或者手动的和计划的生成。  然后单击“继续”。
 
 在“选择模板”中，选择“支持 Docker 的 Azure Service Fabric 应用程序”模板，然后单击“应用”。
 
@@ -104,7 +104,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ![选择 Docker 推送映像][select-push-images]
 
-在“触发器”下，选中“启用持续集成”来启用持续集成。 在**分支筛选器**中，单击“+ 添加”，**分支规范**将默认为“主”。
+在“触发器”选项卡下，选中“启用持续集成”来启用持续集成。 在**分支筛选器**中，单击“+ 添加”，**分支规范**将默认为“主”。
 
 在“保存生成管道和队列”对话框中，单击“保存并排队”以手动启动生成。
 
@@ -114,7 +114,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ### <a name="create-a-release-definition"></a>创建发布定义
 
-依次选择“生成和发布”选项卡、“发布”、“+ 新建管道”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
+选择左面板上的“管道”选项，然后选择“发布”和“+ 新建管道”。  在“选择模板”中，从列表中选择“Azure Service Fabric 部署”模板，然后单击“应用”。
 
 ![选择发布模板][select-release-template]
 
@@ -151,7 +151,7 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>提交并推送更改，触发发布
 
-通过将一些代码更改签入到 Team Services 中来验证持续集成管道是否正常工作。
+通过将一些代码更改签入到 Azure DevOps 来验证持续集成管道是否正常工作。
 
 在编写代码时，Visual Studio 会自动跟踪代码更改。 通过从右下角的状态栏中选择“挂起的更改”图标（![挂起的][pending]）来将更改提交到本地 Git 存储库。
 
@@ -159,11 +159,11 @@ Team Services 发布定义描述了将应用程序程序包部署到群集的工
 
 ![全部提交][changes]
 
-在“团队资源管理器”中选择“未发布的更改”状态栏图标（![未发布的更改][unpublished-changes]）或“同步”视图。 选择“推送”以更新 Team Services/TFS 中的代码。
+在“团队资源管理器”中选择“未发布的更改”状态栏图标（![未发布的更改][unpublished-changes]）或“同步”视图。 选择“推送”以更新 Azure DevOps 中的代码。
 
 ![推送更改][push]
 
-将更改推送到 Team Services 会自动触发生成。  当生成定义成功完成时，会自动创建一个发布，并将开始升级群集上的应用程序。
+将更改推送到 Azure DevOps 会自动触发生成。  当生成定义成功完成时，会自动创建一个发布，并将开始升级群集上的应用程序。
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。  在验证生成成功执行后，定义用于将应用程序部署到群集的发布定义。
 

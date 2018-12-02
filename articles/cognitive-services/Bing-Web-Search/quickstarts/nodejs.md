@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
 ms.author: aahi
-ms.openlocfilehash: 80d527baa5d919290bc80c65745bcaaf6ef5639d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4c6e74d4ce9e3c1f9d81e640f7fa8071f73ec776
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164348"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309288"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>快速入门：使用 Node.js 调用必应 Web 搜索 API  
 
@@ -23,8 +23,9 @@ ms.locfileid: "52164348"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>先决条件
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Node.js 6](https://nodejs.org/en/download/) 或更高版本

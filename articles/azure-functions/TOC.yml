@@ -3,8 +3,10 @@ items:
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Functions
+  - name: 关于 Azure Functions
     href: functions-overview.md
+  - name: Durable Functions
+    href: durable/durable-functions-overview.md
   - name: 无服务器计算
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: 快速入门
@@ -94,44 +96,6 @@ items:
     href: ip-addresses.md
   - name: 本地函数
     href: functions-runtime-overview.md
-  - name: Durable Functions
-    items:
-    - name: 概述
-      href: durable-functions-overview.md
-    - name: 函数类型和功能
-      href: durable-functions-types-features-overview.md
-    - name: 绑定
-      href: durable-functions-bindings.md
-    - name: 检查点和重播
-      href: durable-functions-checkpointing-and-replay.md
-    - name: 自定义业务流程状态
-      href: durable-functions-custom-orchestration-status.md
-    - name: 实例管理
-      href: durable-functions-instance-management.md
-    - name: HTTP API
-      href: durable-functions-http-api.md
-    - name: 错误处理。
-      href: durable-functions-error-handling.md
-    - name: 诊断
-      href: durable-functions-diagnostics.md
-    - name: 计时器
-      href: durable-functions-timers.md
-    - name: 外部事件
-      href: durable-functions-external-events.md
-    - name: 永久业务流程
-      href: durable-functions-eternal-orchestrations.md
-    - name: 单独业务流程
-      href: durable-functions-singletons.md
-    - name: 子业务流程
-      href: durable-functions-sub-orchestrations.md
-    - name: 任务中心
-      href: durable-functions-task-hubs.md
-    - name: 版本控制
-      href: durable-functions-versioning.md
-    - name: 性能和缩放性
-      href: durable-functions-perf-and-scale.md
-    - name: 灾难恢复和异地分发
-      href: durable-functions-disaster-recovery-geo-distribution.md
 - name: 操作指南
   items:
   - name: 开发
@@ -180,6 +144,30 @@ items:
       href: disable-function.md
   - name: 监视
     href: functions-monitoring.md
+  - name: 安全
+    items:
+    - name: 购买 SSL 证书
+      href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 对用户进行身份验证
+      items:
+      - name: 使用 Azure AD 进行身份验证
+        href: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: 使用 Facebook 进行身份验证
+        href: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: 使用 Google 进行身份验证
+        href: ../app-service/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: 使用 Microsoft 帐户进行身份验证
+        href: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      - name: 使用 Twitter 进行身份验证
+        href: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 高级身份验证
+      href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 限制 IP
+      href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 使用托管标识
+      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 从 Key Vault 引用机密
+      href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: 集成
     items:
     - name: 连接到 SQL 数据库
@@ -194,24 +182,6 @@ items:
       href: functions-flow-scenario.md
     - name: 使用托管标识
       href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-  - name: Durable Functions
-    items:
-    - name: 安装
-      href: durable-functions-install.md
-    - name: 链接
-      href: durable-functions-sequence.md
-    - name: 扇出/扇入
-      href: durable-functions-cloud-backup.md
-    - name: 监视器
-      href: durable-functions-monitor.md
-    - name: 人机交互
-      href: durable-functions-phone-verification.md
-    - name: 单元测试
-      href: durable-functions-unit-testing.md
-    - name: 事件发布
-      href: durable-functions-event-publishing.md
-    - name: 使用 WebJobs SDK
-      href: durable-functions-webjobs-sdk.md
   - name: 故障排除
     items:
     - name: 排查存储问题
@@ -288,13 +258,15 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/azurefunctions
+  - name: 提供产品反馈
+    href: https://feedback.azure.com/forums/355860-azure-functions
   - name: Azure Functions GitHub 存储库
     href: https://github.com/Azure/Azure-Functions/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: eb408491ee9ed4994324a5fd425e87da6e4c59a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: facc469c576bf1de905441bb5b56a00bd745e924
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633778"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632290"

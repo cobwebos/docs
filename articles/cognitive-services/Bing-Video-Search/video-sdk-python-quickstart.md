@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: rosh
-ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2c099f3520b697e8ec2f7ef39c4525298182a697
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225644"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307910"
 ---
 # <a name="quickstart-bing-video-search-sdk-with-python"></a>快速入门：必应视频搜索 SDK 与 Python
 
@@ -25,6 +25,8 @@ GitHub 上提供了 [Python 必应视频搜索 SDK 示例的源代码](https://g
 
 
 ## <a name="application-dependencies"></a>应用程序依赖项
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+
 安装 Python（若尚未安装）。 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。
 
 常规 Python 开发建议是使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 安装适用于 Python 2.7 的 virtualenv。

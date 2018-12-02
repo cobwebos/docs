@@ -5,6 +5,8 @@ items:
   items:
   - name: 关于 API 管理
     href: api-management-key-concepts.md
+  - name: API 管理功能可用性
+    href: api-management-features.md
 - name: 快速入门
   items:
   - name: 创建实例 - 门户
@@ -48,6 +50,8 @@ items:
       href: api-management-howto-policies.md
     - name: 策略参考索引
       href: api-management-policies.md
+  - name: 订阅
+    href: api-management-subscriptions.md
   - name: 使用自动化进行管理
     href: automation-manage-api-management.md
   - name: 错误处理。
@@ -56,7 +60,7 @@ items:
     href: api-management-api-import-restrictions.md
 - name: 操作指南
   items:
-  - name: '定义 API '
+  - name: 定义 API
     items:
     - name: 手动添加 API
       href: add-api-manually.md
@@ -90,6 +94,14 @@ items:
     items:
     - name: 添加缓存以提升性能
       href: api-management-howto-cache.md
+    - name: 使用外部缓存
+      href: api-management-howto-cache-external.md
+  - name: 保护 API
+    items:
+    - name: 创建订阅
+      href: api-management-howto-create-subscriptions.md
+    - name: 使用客户端证书身份验证保护 API
+      href: api-management-howto-mutual-certificates-for-clients.md
   - name: 保护后端
     items:
     - name: 使用 Azure AD 保护 API
@@ -138,8 +150,6 @@ items:
       href: api-management-sample-send-request.md
     - name: 使用属性管理密码
       href: api-management-howto-properties.md
-    - name: 使用客户端证书身份验证保护 API
-      href: api-management-howto-mutual-certificates-for-clients.md
     - name: 访问限制策略
       href: api-management-access-restriction-policies.md
     - name: 高级策略
@@ -232,9 +242,9 @@ items:
     href: http://aka.ms/apimblog
   - name: 功能请求
     href: http://aka.ms/apimwish
-ms.openlocfilehash: bbd98974e763ae98d7f754e9d8e690d0a8c62870
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 93a5457286e5e69e504e6858d6b9f0e8491b3c30
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339383"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620041"

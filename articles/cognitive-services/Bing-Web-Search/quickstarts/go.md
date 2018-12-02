@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 9ba0501f9d4b408e4972f36806ab21cba6519b59
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163769"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310423"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>快速入门：使用 Go 调用必应 Web 搜索 API  
 
@@ -24,8 +24,9 @@ ms.locfileid: "52163769"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
-## <a name="prerequisites"></a>先决条件
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Go 二进制文件](https://golang.org/dl/)

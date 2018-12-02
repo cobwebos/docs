@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d3a3b30539ed33bf3e8d21a8cc5e5f2692308f98
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: cb6153d2859968a02345cfbcfa66bd9a4177d864
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283186"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427400"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>快速入门：使用 PowerShell 在 Azure SQL 数据仓库中缩放计算资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "43283186"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps.md)。
+本教程需要 Azure PowerShell 模块版本 5.1.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -43,10 +43,10 @@ Connect-AzureRmAccount
 Get-AzureRmSubscription
 ```
 
-如果需要使用与默认订阅不同的订阅，请运行 [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription)。
+如果需要使用与默认订阅不同的订阅，请运行 [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext)。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
+Set-AzureRmContext -SubscriptionName "MySubscription"
 ```
 
 ## <a name="look-up-data-warehouse-information"></a>查找数据仓库信息

@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 25e515d5a62f9f5d396b7d4a9ef8d7b24d9fce42
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7433ef82fbc7b7d0041195d329ec92260c50f1e2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164560"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314825"
 ---
 # <a name="quickstart-bing-video-search-api-with-nodejs"></a>快速入门：必应视频搜索 API 与 Node.js
 
@@ -27,7 +27,7 @@ ms.locfileid: "52164560"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你将需要使用在激活免费试用版时提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="bing-video-search"></a>必应视频搜索
 

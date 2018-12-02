@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b468240d1a9aaf0511358433a8beee7e6442e145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445015"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445423"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -175,6 +175,9 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 ```
 
 可以在 `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) 中设置多个客户端 URL。 也可使用 `"['*']"` 启用所有客户端 URL。
+
+> [!NOTE]
+> 如果应用要求发送凭据（例如 Cookie 或身份验证令牌），则浏览器会要求在响应中包含 `ACCESS-CONTROL-ALLOW-CREDENTIALS` 标头。 若要在应用服务中启用此功能，请在 CORS 配置中将 `properties.cors.supportCredentials` 设置为 `true`。当 `allowedOrigins` 包含 `'*'` 时，不能启用此功能。
 
 ### <a name="test-cors-again"></a>再次测试 CORS
 

@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: b493f65e47f5e4c932ed1229e4c00ee1af3cd5ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161848"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443879"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>教程：视觉搜索单页 Web 应用
 
 必应视觉搜索 API 提供的体验类似于 Bing.com/images 上所示的图像详细信息。 借助视觉搜索，可以指定图像并取回有关图像的见解，如视觉上相似的图像、购物源、包含图像的网页等。 
+
+对于本教程，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
 本教程从必应图像搜索教程扩展单页 Web 应用（请参阅[单页 Web 应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)）。 有关开始本教程的完整源代码，请参阅[单页 Web 应用（源代码）](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md)。 有关本教程的最终源代码，请参阅 [视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app-source.md)。
 

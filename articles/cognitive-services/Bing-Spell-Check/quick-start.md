@@ -10,16 +10,16 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 29ee7cb4ee648d20b425939553ba31cd9ac150f0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4af90c0e1ffd6dbadcb31eb6141bc24f746d01f9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804185"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316401"
 ---
 # <a name="quickstart-your-first-spell-check-request"></a>快速入门：第一个拼写检查请求
 
-必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[尝试认知服务](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 要检查文本字符串是否存在拼写和语法错误，你需要向以下终结点发送 GET 请求：  
   

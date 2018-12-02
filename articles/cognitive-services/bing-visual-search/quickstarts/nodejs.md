@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 3490f7722ca0c1331ccea26cd18398cff1317aee
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 553d068d70f7e722f3c8e4de3978f3583b941963
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887406"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442517"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-javascript"></a>快速入门：使用 JavaScript 编写的第一个必应视觉搜索查询
 
@@ -27,7 +27,7 @@ ms.locfileid: "48887406"
 --boundary_1234-abcd
 Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```
@@ -35,10 +35,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 本文包括一个简单的控制台应用程序，它发送必应视觉搜索 API 请求并显示 JSON 搜索结果。 虽然此应用程序是用 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并解析 JSON 的编程语言兼容。 
 
 ## <a name="prerequisites"></a>先决条件
+对于本快速入门，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
 需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
-
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
 ## <a name="running-the-application"></a>运行应用程序
 

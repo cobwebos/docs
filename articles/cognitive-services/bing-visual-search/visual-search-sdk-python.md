@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 935241d5574a59edfa256b74db3a0aeab2f7bf91
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9f2a6d9b75ccf704862d169b96ea1a1f2edb9815
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458099"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445678"
 ---
 # <a name="quickstart-bing-visual-search-sdk-python"></a>快速入门：必应视觉搜索 SDK Python
 
@@ -30,8 +30,17 @@ ms.locfileid: "49458099"
 * [标记、操作和 actionType](#tags-actions)
 
 ## <a name="application-dependencies"></a>应用程序依赖项
-* 必须有认知服务 API 密钥，才能验证 SDK 调用。 注册申请[免费试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)。 试用密钥的有效期为 7 天，且每秒调用 1 次。 对于生产方案，请[购买访问密钥](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 另请参阅[定价信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)。
-* 安装 Python（若无）。 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。
+* 对于本快速入门，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
+ 
+* 安装 Python（若尚未安装）。 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。
 * 常规 Python 开发建议是使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 安装适用于 Python 2.7 的 virtualenv。
 ```
 python -m venv mytestenv

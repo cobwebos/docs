@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: f54914b846c6a001a9fb10d938a038e390abf6bf
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1b63b12a48f5ccfb1a396ffa9282249b03893fe
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416437"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445168"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>快速入门：使用 Java 编写的第一个必应视觉搜索查询
 
@@ -36,10 +36,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 
 ## <a name="prerequisites"></a>先决条件
+对于本快速入门，你需要以 S9 价格层开始订阅，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/) 中所示。 
 
-需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢使用的 Java IDE，可以使用它，但文本编辑器足以满足要求。
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。
 
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
+需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 可使用喜欢的 Java IDE（如果有）操作，但文本编辑器足以满足要求。
 
 ## <a name="running-the-application"></a>运行应用程序
 

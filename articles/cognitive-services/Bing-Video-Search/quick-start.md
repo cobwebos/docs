@@ -10,16 +10,16 @@ ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: abeeec95755a566216ac65b2edf5c831a8ab93b6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5b1ac98ee9ad5625d8db9790a3be10d42236874b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225508"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307451"
 ---
 # <a name="quickstart-your-first-video-search-query"></a>快速入门：第一个视频搜索查询
 
-在第一次执行调用之前，需要获得必应搜索认知服务订阅密钥。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api)。
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 若要获取视频搜索结果，请向以下终结点发送 GET 请求：  
   

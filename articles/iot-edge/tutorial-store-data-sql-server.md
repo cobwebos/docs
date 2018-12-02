@@ -9,12 +9,12 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fc83546080111554446cb8f7b7ca97026f99e02e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 95041ca77930d87bff6ea31e2eab89a6634cfcf5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283414"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442958"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
 
@@ -56,9 +56,9 @@ Azure IoT Edge 设备：
 
 可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
+如果还没有容器注册表，请执行以下步骤，以便在 Azure 中创建一个新的：
 
-    ![创建容器注册表](./media/tutorial-deploy-function/create-container-registry.png)
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
 
 2. 提供以下值，以便创建容器注册表：
 
@@ -75,7 +75,7 @@ Azure IoT Edge 设备：
 
 6. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。 
 
-7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。 
+7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。  
 
 ## <a name="create-a-function-project"></a>创建函数项目
 
@@ -229,9 +229,9 @@ Azure IoT Edge 设备：
        "type": "docker",
        "status": "running",
        "restartPolicy": "always",
+       "env":{},
        "settings": {
            "image": "",
-           "environment": "",
            "createOptions": ""
        }
    }
@@ -239,50 +239,47 @@ Azure IoT Edge 设备：
 
    ![添加 SQL Server 容器](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. 根据 IoT Edge 设备的 Docker 容器的类型，使用以下代码更新 **sql.settings** 参数：
-
+5. 根据 IoT Edge 设备的 Docker 容器的类型，使用以下代码更新 **sql** 模块参数：
    * Windows 容器：
 
-        ```json
-        {
-            "image": "microsoft/mssql-server-windows-developer",
-            "environment": {
-                "ACCEPT_EULA": "Y",
-                "SA_PASSWORD": "Strong!Passw0rd"
-            },
-            "createOptions": {
-                "HostConfig": {
-                    "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
-                    "PortBindings": {
-                        "1433/tcp": [{"HostPort": "1401"}]
-                    }
-                }
-            }
-        }
-        ```
- 
+      ```json
+      "env": {
+         "ACCEPT_EULA": {"value": "Y"},
+         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+       },
+       "settings": {
+          "image": "microsoft/mssql-server-windows-developer",
+          "createOptions": {
+              "HostConfig": {
+                  "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
+                  "PortBindings": {
+                      "1433/tcp": [{"HostPort": "1401"}]
+                  }
+              }
+          }
+      }
+      ```
 
    * Linux 容器：
 
-        ```json
-        {
-            "image": "mcr.microsoft.com/mssql/server:latest",
-            "environment": {
-                "ACCEPT_EULA": "Y",
-                "SA_PASSWORD": "Strong!Passw0rd"
-            },
-            "createOptions": {
-                "HostConfig": {
-                    "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
-                    "PortBindings": {
-                        "1433/tcp": [{"HostPort": "1401"}]
-                    }
-                }
-            }
-        }
-        ```
-    
-    
+      ```json
+      "env": {
+         "ACCEPT_EULA": {"value": "Y"},
+         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+       },
+       "settings": {
+          "image": "mcr.microsoft.com/mssql/server:latest",
+          "createOptions": {
+              "HostConfig": {
+                  "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
+                  "PortBindings": {
+                      "1433/tcp": [{"HostPort": "1401"}]
+                  }
+              }
+          }
+      }
+      ```
+
    >[!Tip]
    >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)。
 

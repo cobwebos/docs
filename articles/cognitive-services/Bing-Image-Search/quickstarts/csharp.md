@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 897e380092b029855ac6c986c1126ca4b2d657a9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3819b476c5d3638f409b4195d6340920032d7b99
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296630"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307485"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>快速入门：使用必应图像搜索 API 和 C# 发送搜索查询
 
@@ -26,12 +26,13 @@ ms.locfileid: "46296630"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) 上提供了此示例的源代码以及附加的错误处理和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
-
 * 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](http://www.mono-project.com/) 运行此应用程序。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 10a63768550182309f3193b39c2d00992398d190
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b3b15db171dc00519c532a229205df96ef29e31
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244553"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316882"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -108,9 +108,9 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | 是（仅适用于 Ubuntu） |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | N | 是（仅适用于 Ubuntu） |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/)、[Sparkling Water](https://www.h2o.ai/sparkling-water/)、[Deep Water](https://www.h2o.ai/deep-water/) | N | 是（仅适用于 Ubuntu） |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/)、[Sparkling Water](https://www.h2o.ai/sparkling-water/) | N | 是（仅适用于 Ubuntu） |
 | **深度学习工具** <br>所有工具均可在 GPU 或 CPU 上正常工作 |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) (Windows 2016) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y (Windows 2016) | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y (Windows 2016) | Y|

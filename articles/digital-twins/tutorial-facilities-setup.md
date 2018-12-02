@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bd1b53acb619130a84400c49aba0cb2b710ad7e3
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616106"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582299"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生并配置空间图
 
@@ -170,7 +170,11 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 如果不希望继续探索 Azure 数字孪生，可以删除本教程中创建的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)的左菜单中依次选择“所有资源”、数字孪生资源组、“删除”。
-2. 可以根据需要删除工作计算机上的示例应用程序。 
+   
+    > [!TIP]
+    > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
+
+1. 可以根据需要删除工作计算机上的示例应用程序。 
 
 
 ## <a name="next-steps"></a>后续步骤

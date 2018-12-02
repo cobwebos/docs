@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8ad8f04b3afa7ed020eaba64d639fb4dbfbeee37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50a746510d758d12354ee81e7ceaf3993729262a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257514"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497405"
 ---
-# <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-template"></a>快速入门：使用模板在 HDInsight 中创建 Spark 群集
+# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>快速入门：使用模板在 HDInsight 中创建 Apache Spark 群集
 
-了解如何在 Azure HDInsight 中创建 Apache Spark 群集，以及如何对 Hive 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。
+了解如何在 Azure HDInsight 中创建 [Apache Spark](https://spark.apache.org/) 群集，以及如何对 [Apache Hive](https://hive.apache.org/) 表运行 Spark SQL 查询。 通过 Apache Spark 可以使用内存处理进行快速数据分析和群集计算。 有关 Spark on HDInsight 的信息，请参阅[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)。
 
 在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Spark 群集。 群集将 Azure 存储 Blob 用作群集存储。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
@@ -53,14 +53,14 @@ ms.locfileid: "51257514"
 如果在创建 HDInsight 群集时遇到问题，可能是因为没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="install-intellijeclipse-for-spark-application"></a>为 Spark 应用程序安装 IntelliJ/Eclipse
-使用用于 IntelliJ/Eclipse 的 Azure 工具包插件开发以 Scala 编写的 Spark 应用程序，并直接从 IntelliJ/Eclipse 集成开发环境 (IDE) 将其提交到 Azure HDInsight Spark 群集。 有关详细信息，请参阅[使用 IntelliJ 创作/提交 Spark 应用程序](./apache-spark-intellij-tool-plugin.md)和[使用 Eclipse 创作/提交 Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)。
+使用用于 IntelliJ/Eclipse 的 Azure 工具包插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Spark 应用程序，并直接从 IntelliJ/Eclipse 集成开发环境 (IDE) 将其提交到 Azure HDInsight Spark 群集。 有关详细信息，请参阅[使用 IntelliJ 创作/提交 Spark 应用程序](./apache-spark-intellij-tool-plugin.md)和[使用 Eclipse 创作/提交 Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)。
 
 ## <a name="install-vscode-for-pysparkhive-applications"></a>为 PySpark/hive 应用程序安装 VSCode
 了解如何使用用于 Visual Studio Code (VSCode) 的 Azure HDInsight 工具来创建和提交 Hive 批处理作业、交互式 Hive 查询、PySpark 批处理和 PySpark 交互式脚本。 可以在 VSCode 支持的平台上安装 Azure HDInsight 工具。 这些平台包括 Windows、Linux 和 macOS。 有关详细信息，请参阅[使用 VSCode 创作/提交 PySpark 应用程序](../hdinsight-for-vscode.md)。
 
 ## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
 
-Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通过此笔记本可以与数据进行交互、结合代码和 markdown 文本以及执行简单的可视化效果。 
+[Jupyter Notebook](https://jupyter.org/) 是支持各种编程语言的交互式笔记本环境。 通过此笔记本可以与数据进行交互、结合代码和 markdown 文本以及执行简单的可视化效果。 
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
 2. 选择“HDInsight 群集”，然后选择所创建的群集。
@@ -126,6 +126,6 @@ HDInsight 会将数据和 Jupyter Notebook 保存在 Azure 存储或 Azure Data 
 本快速入门介绍了如何创建 HDInsight Spark 群集并运行基本的 Spark SQL 查询。 转到下一教程，了解如何使用 HDInsight Spark 群集针对示例数据运行交互式查询。
 
 > [!div class="nextstepaction"]
->[在 Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)
+>[在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)
 
 

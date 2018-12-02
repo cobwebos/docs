@@ -42,17 +42,17 @@ items:
     href: security-center-wdatp.md
   - name: 保护应用服务
     href: security-center-app-services.md
-  - name: 设置安全策略
+  - name: 查看安全策略
     href: security-center-azure-policy.md
   - name: 自定义信息保护策略
     href: security-center-info-protection-policy.md
-  - name: 安全策略设置
+  - name: 安全中心设置
     href: security-center-policies-overview.md
     items:
     - name: 数据收集
       href: security-center-enable-data-collection.md
-    - name: 策略定义
-      href: security-center-policies.md
+    - name: 内置安全策略
+      href: security-center-policy-definitions.md
     - name: 电子邮件通知
       href: security-center-provide-security-contact-details.md
     - name: 定价层
@@ -219,9 +219,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 09d1086de03ddab3cf2aca54f201c86632ab4c83
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 4b6187ca5b56ea634524df0294725e23f188d492
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219437"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310440"

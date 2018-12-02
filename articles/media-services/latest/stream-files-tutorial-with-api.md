@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: d2d648dd02426596e1c070ffd494458c68060085
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: a8d2cf577a6b637e910c283ba8c70d9ea4eedfbb
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613437"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334119"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>教程：使用 API 上传、编码和流式传输视频
 
@@ -74,7 +74,7 @@ ms.locfileid: "51613437"
 6. 创建 StreamingLocator。
 7. 生成流式处理 URL。
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
+### <a name="a-idstartusingdotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />开始结合使用媒体服务 API 与 .NET SDK
 
 若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
 

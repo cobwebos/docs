@@ -2,21 +2,21 @@
 title: 运行并行工作负荷 - Azure Batch .NET
 description: 教程 - 在 Azure Batch 中使用 Batch .NET 客户端库通过 ffmpeg 并行转码媒体文件
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/07/2018
-ms.author: danlep
+ms.date: 11/20/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815505"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423603"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -41,7 +41,7 @@ ms.locfileid: "48815505"
 
 * Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
-* [Windows 64 位版 ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 将 zip 文件下载到本地计算机。 本教程只需 zip 文件。 不需将文件解压缩或安装在本地。 
+* [Windows 64 位版 ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 将 zip 文件下载到本地计算机。 本教程只需 zip 文件。 不需将文件解压缩或安装在本地。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 导航到包含 Visual Studio 解决方案文件 `BatchDotNetFfmpegTutorial.sln` 的目录。
 
-在 Visual Studio 中打开解决方案文件，使用为帐户获取的值更新 `program.cs` 中的凭据字符串。 例如：
+在 Visual Studio 中打开解决方案文件，使用为帐户获取的值更新 `Program.cs` 中的凭据字符串。 例如：
 
 ```csharp
 // Batch account credentials
@@ -104,7 +104,7 @@ const string appPackageVersion = "3.4";
 然后运行它。 运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 
 
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/19/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -120,17 +120,15 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]...
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
-
 
 转到 Azure 门户中的 Batch 帐户，监视池、计算节点、作业和任务。 例如，若要查看池中计算节点的热度地图，请单击“池” > “WinFFmpegPool”。
 
 任务正在运行时，热度地图如下所示：
 
 ![池热度地图](./media/tutorial-parallel-dotnet/pool.png)
-
 
 以默认配置运行应用程序时，典型的执行时间大约为 **10 分钟**。 池创建过程需要最多时间。
 
@@ -178,7 +176,7 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 上传文件时，涉及到 `Program.cs` 中的两个方法：
 
 * `UploadResourceFilesToContainerAsync`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
-* `UploadResourceFileToContainerAsync`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。 
+* `UploadResourceFileToContainerAsync`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -198,9 +196,9 @@ List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
 
 然后，该示例会调用 `CreatePoolIfNotExistAsync` 以在 Batch 帐户中创建计算节点池。 这个定义的方法使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Windows Server 映像的 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)。 Batch 支持 Azure 市场中的各种 VM 映像以及自定义 VM 映像。
 
-节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。 
+节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。
 
-ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。 
+ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 方法将池提交到 Batch 服务。
 
@@ -208,7 +206,7 @@ ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [Appli
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =
@@ -220,7 +218,7 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: DedicatedNodeCount,
     targetLowPriorityComputeNodes: LowPriorityNodeCount,
-    virtualMachineSize: PoolVMSize,                                                
+    virtualMachineSize: PoolVMSize,
     virtualMachineConfiguration: virtualMachineConfiguration);
 
 pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -234,7 +232,7 @@ await pool.CommitAsync();
 
 ### <a name="create-a-job"></a>创建作业
 
-Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `CreateJobAsync` 创建一个作业。 这个定义的方法使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。 
+Batch 作业可指定在其中运行任务的池以及可选设置，例如工作的优先级和计划。 此示例通过调用 `CreateJobAsync` 创建一个作业。 这个定义的方法使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在池中创建作业。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) 方法将作业提交到 Batch 服务。 作业一开始没有任务。
 
@@ -252,7 +250,7 @@ await job.CommitAsync();
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) 属性上传到关联的存储帐户中的一个容器。
 
-然后，示例使用 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，示例使用 [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -289,7 +287,7 @@ return tasks
 
 ### <a name="monitor-tasks"></a>监视任务
 
-Batch 将任务添加到作业时，该服务自动对任务排队并进行计划，方便其在关联的池中的计算节点上执行。 Batch 根据指定的设置处理所有任务排队、计划、重试和其他任务管理工作。 
+Batch 将任务添加到作业时，该服务自动对任务排队并进行计划，方便其在关联的池中的计算节点上执行。 Batch 根据指定的设置处理所有任务排队、计划、重试和其他任务管理工作。
 
 监视任务的执行有许多方法。 此示例定义的 `MonitorTasks` 方法仅在已完成的情况下状态为“任务失败”或“任务成功”时进行报告。 `MonitorTasks` 代码指定 [ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel)，只选择有关任务的最少信息，十分高效。 然后，它会创建 [TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor)，以便提供用于监视任务状态的帮助器实用程序。 在 `MonitorTasks` 中，示例会在某个时限内等待所有任务达到 `TaskState.Completed` 状态。 然后，它会终止作业，并对虽已完成但仍遇到故障（例如退出代码非零）的任务进行报告。
 

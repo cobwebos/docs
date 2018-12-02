@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: aahi
-ms.openlocfilehash: 03ed9948935aab7348fe66cc43b059107ab96f79
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 80af035d3d3f4c530e417669c2fa9acad39eb355
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160896"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315981"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>通过 Node.js 使用必应实体搜索 API 快速入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "52160896"
 
 需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
 
-必须创建一个具有**必应实体搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。
+必须创建一个具有**必应实体搜索 API** 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)足以满足本快速入门的要求。 需要激活免费试用版时提供的访问密钥，或使用 Azure 仪表板中的付费订阅密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="search-entities"></a>搜索实体
 

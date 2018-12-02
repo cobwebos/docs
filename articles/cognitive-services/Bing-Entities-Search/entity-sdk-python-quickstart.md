@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4e79fdbf465c04075320b71b5471b196e603d046
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814230"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315998"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-python"></a>快速入门：通过 Python 使用必应实体搜索 SDK
 
@@ -24,6 +24,8 @@ ms.locfileid: "48814230"
 Git Hub 上提供了 [Python 必应实体搜索 SDK 示例的源代码](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+
 安装 Python（若尚未安装）。 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。
 
 常规 Python 开发建议是使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 必须安装适用于 Python 2.7 的 virtualenv。

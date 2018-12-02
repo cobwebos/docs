@@ -10,18 +10,19 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: ad09c1d6f9e7cea1150ce1638c723c5c35d66a32
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3050bc06c30c29efe7ba5294cbbee2aea1a6055b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284432"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311596"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>快速入门：通过 C# 使用必应拼写检查 SDK
 
 必应拼写检查 SDK 包含用于拼写检查的 REST API 的功能。
 
 ## <a name="application-dependencies"></a>应用程序依赖项
+在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 若要使用必应拼写检查 SDK 设置控制台应用程序，请浏览到 Visual Studio 中的解决方案资源管理器中的“`Manage NuGet Packages`”选项。 添加 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` 程序包。
 
