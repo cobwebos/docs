@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244519"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284806"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -42,7 +42,7 @@ Azure Automation State Configuration 可用于管理各种不同的计算机：
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 [Azure 门户](http://portal.azure.com/)中，单击“浏览” -> “虚拟机(经典)”。 选择要登记的 Windows VM。 在虚拟机的仪表板边栏选项卡上，单击“所有设置” -> “扩展” -> “添加” -> “Azure 自动化 DSC” -> “创建”。
+在 [Azure 门户](https://portal.azure.com/)中，单击“浏览” -> “虚拟机(经典)”。 选择要登记的 Windows VM。 在虚拟机的仪表板边栏选项卡上，单击“所有设置” -> “扩展” -> “添加” -> “Azure 自动化 DSC” -> “创建”。
 输入用例所需的“[PowerShell DSC 本地配置管理器值](/powershell/dsc/metaconfig4)”、自动化帐户的注册密钥和注册 URL，并选择性地输入要分配给 VM 的节点配置。
 
 ![DSC 的 Azure VM 扩展](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/metaconfig4)，并选择性地输入要分配给 VM 的节点配置。
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
