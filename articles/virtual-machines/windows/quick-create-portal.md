@@ -39,7 +39,7 @@ ms.locfileid: "48816474"
 
 1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter”，然后选择“创建”。
 
-1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称，请键入 *myResourceGroup*。 
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称，请键入 *myResourceGroup*。
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
@@ -89,13 +89,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-在门户中选择 VM，在 VM 的概述中，使用 IP 地址右侧的“单击以复制”按钮复制该地址，并将其粘贴到浏览器标签页中。此时会打开默认的 IIS 欢迎页，如下所示：
+在门户中选择 VM，在 VM 的概述中，使用 IP 地址右侧的“单击以复制”按钮复制该地址，并将其粘贴到浏览器选项卡中。此时会打开默认的 IIS 欢迎页，如下所示：
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、虚拟机和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 
