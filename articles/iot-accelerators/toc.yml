@@ -25,12 +25,14 @@ items:
       href: iot-accelerators-remote-monitoring-monitor.md
     - name: 检测设备问题
       href: iot-accelerators-remote-monitoring-automate.md
-    - name: 配置和管理设备
+    - name: 配置设备
       href: iot-accelerators-remote-monitoring-manage.md
     - name: 对警报执行根本原因分析
       href: iot-accelerators-remote-monitoring-root-cause-analysis.md
     - name: 使用警报并修复设备问题
       href: iot-accelerators-remote-monitoring-maintain.md
+    - name: 批量更新设备配置
+      href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
     - name: 检测边缘异常
       href: iot-accelerators-remote-monitoring-edge.md
   - name: 设备模拟
@@ -81,6 +83,8 @@ items:
       href: iot-accelerators-remote-monitoring-add-edge-device.md
     - name: 导入 IoT Edge 包
       href: iot-accelerators-remote-monitoring-import-edge-package.md
+    - name: 导入自动设备管理包
+      href: iot-accelerators-remote-monitoring-import-adm-package.md
     - name: 集成 SIM 数据
       href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: 创建模拟设备
@@ -225,9 +229,9 @@ items:
     href: iot-accelerators-faq-cf.md
   - name: 堆栈溢出
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-ms.openlocfilehash: bdd52d0023fbf43343cc5108216c6f11e35b89aa
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b36278d1e2a85cd7759d81b022fb1883b7ca2aa6
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824840"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680933"

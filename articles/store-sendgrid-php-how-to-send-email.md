@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: c3627cdbabb38c2236a8a433e9d82d78fe502e4c
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: ee338e2011a7b86a069bd42a028d65b23a123037
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311079"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427091"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 
@@ -52,7 +52,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 ### <a name="smtp-api"></a>SMTP API
 
-若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [Composer] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
+若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
 
 ```php
 <?php
@@ -174,7 +174,7 @@ SendGrid 的 Web API 与 REST API 非常相似，尽管它不是真正的 RESTfu
   * Create the body of the message (a plain-text and an HTML version).
   * $text is your plain-text email
   * $html is your html version of the email
-  * If the reciever is able to view html emails then only the html
+  * If the receiver is able to view html emails then only the html
   * email will be displayed
   */
  $text = "Hi!\nHow are you?\n";
@@ -302,7 +302,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
 
 可使用 filters 属性将筛选器应用于邮件。 每个筛选器均由一个包含特定于筛选器的设置的哈希指定。 下面的示例将启用页脚筛选器并指定将追加到电子邮件底部的短信。 在此示例中，我们将使用 [sendgrid-php 库]。
 
-使用[Composer]安装库：
+使用[编辑器]安装库：
 
 ```bash
 php composer.phar require sendgrid/sendgrid 2.1.1
@@ -418,10 +418,10 @@ php composer.phar require sendgrid/sendgrid 2.1.1
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
 [special offer]: https://www.sendgrid.com/windowsazure.html
-[Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
+[Packaging and Deploying PHP Applications for Azure]: https://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
-[curl function]: http://php.net/curl
+[curl function]: https://php.net/curl
 [基于云的电子邮件服务]: https://sendgrid.com/email-solutions
 [事务电子邮件传递]: https://sendgrid.com/transactional-email
 [sendgrid-php 库]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[Composer]: https://getcomposer.org/download/
+[编辑器]: https://getcomposer.org/download/

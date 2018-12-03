@@ -8,15 +8,15 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: ec952aa26d7bc6b185b425700080a4f474564b76
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 83829264f16fb295a1f5fa4f2efc74d8b35ec6eb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955803"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309185"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
-可以使用 [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
+可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
 * [如何使用 Azure 门户创建 Azure 文件共享](#create-file-share-through-the-azure-portal)
 * [如何使用 Powershell 创建 Azure 文件共享](#create-file-share-through-powershell)
 * [如何使用 CLI 创建 Azure 文件共享](#create-file-share-through-command-line-interface-cli)
@@ -24,14 +24,14 @@ ms.locfileid: "46955803"
 ## <a name="prerequisites"></a>先决条件
 若要创建 Azure 文件共享，可以使用已存在的存储帐户，也可以[创建新的 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 若要使用 PowerShell 创建 Azure 文件共享，需提供存储帐户的帐户密钥和名称。 如果计划使用 Powershell 或 CLI，则需存储帐户密钥。
 
-## <a name="create-file-share-through-the-azure-portal"></a>通过 Azure 门户创建文件共享
+## <a name="create-a-file-share-through-the-azure-portal"></a>通过 Azure 门户创建文件共享
 1. **转到 Azure 门户中的“存储帐户”边栏选项卡**：    
     ![“存储帐户”边栏选项卡](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
 
 2. 单击”添加文件共享”按钮：    
     ![单击”添加文件共享”按钮](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **提供名称和配额。当前最大配额为 5 TiB**：    
+3. **提供名称和配额。配额目前的最大值为 5 TiB**：    
     ![为新的文件共享提供名称和所需配额](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
 4. 查看新的文件共享：![查看新的文件共享](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
@@ -42,12 +42,12 @@ ms.locfileid: "46955803"
 
 
 ## <a name="create-file-share-through-powershell"></a>通过 PowerShell 创建文件共享
-若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) 。
+若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 
 > [!Note]  
 > 建议下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
 
-1. 为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从 [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅[存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
+1. 为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从  [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅 [存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
 
     ```powershell
     $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
@@ -60,14 +60,14 @@ ms.locfileid: "46955803"
     ```
 
 > [!Note]  
-> 文件共享的名称必须是全部小写。 有关命名文件共享和文件的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
+> 文件共享的名称必须是全部小写。 若要全面且详细地了解如何为文件共享和文件命名，请参阅 [命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>通过命令行界面 (CLI) 创建文件共享
-1. 若要准备使用命令行界面 (CLI)，请下载并安装 Azure CLI。  
-    请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 和 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+1. **若要准备使用命令行界面 (CLI)，请下载并安装 Azure CLI。**  
+    请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 和 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
 
 2. 创建可连接到存储帐户的连接字符串，你需要在该帐户中创建共享。  
-    请将以下示例中的 ```<storage-account>``` 和 ```<resource_group>``` 替换为自己的存储帐户名称和资源组：
+    请将以下示例中的  ```<storage-account>``` 和 ```<resource_group>```  替换为自己的存储帐户名称和资源组：
 
    ```azurecli
     current_env_conn_string = $(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)
@@ -77,7 +77,7 @@ ms.locfileid: "46955803"
     fi
     ```
 
-3. 创建文件共享
+3. **创建文件共享**
     ```azurecli
     az storage share create --name files --quota 2048 --connection-string $current_env_conn_string 1 > /dev/null
     ```
