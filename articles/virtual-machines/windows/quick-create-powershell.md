@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建 Windows虚拟机| Microsoft Docs
+title: 快速入门 - 使用 Azure PowerShell 创建 Windows VM | Microsoft Docs
 description: 本快速入门介绍了如何使用 Azure PowerShell 创建 Windows 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -25,15 +25,15 @@ ms.locfileid: "48816186"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机
 
-Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 这个快速入门演示如何使用 Azure PowerShell 模块在 Azure 中部署运行 Windows Server 2016 的虚拟机 (VM)。 若要查看虚拟机的运行情况，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
+Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 本快速入门演示如何使用 Azure PowerShell 模块在 Azure 中部署运行 Windows Server 2016 的虚拟机 (VM)。 若要查看运行中的 VM，可以通过 RDP 登录到该 VM 并安装 IIS Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
-Azure Cloud Shell 是一个免费的交互式 shell，可以使用它运行本文中的步骤。 它预先安装并配置了与您的帐户一起使用的常见Azure工具。 
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器选项卡中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按“回车键”来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 
@@ -47,9 +47,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建虚拟机。 请为每个资源提供名称，如果这些资源不存在，[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 会创建它们。
+使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。 请提供每个资源的名称，如果这些资源不存在，[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 会创建它们。
 
-出现提示时，请提供一个用户名和密码作为虚拟机的登录凭证：
+出现提示时，请提供一个用户名和密码作为 VM 的登录凭证：
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -65,9 +65,9 @@ New-AzureRmVm `
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
-在部署完成后，通过 RDP 登录到虚拟机。 若要查看虚拟机的运行情况，请安装 IIS Web 服务器。
+在部署完成后，通过 RDP 登录到 VM。 若要查看运行中的 VM，请安装 IIS Web 服务器。
 
-若要查看虚拟机的公共 IP 地址，请使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) cmdlet：
+若要查看 VM 的公共 IP 地址，请使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) cmdlet：
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -85,17 +85,17 @@ mstsc /v:publicIpAddress
 
 ## <a name="install-web-server"></a>安装 Web 服务器
 
-若要查看虚拟机的运行情况，请安装 IIS Web 服务器。 在虚拟机中打开 PowerShell 提示符并运行以下命令：
+若要查看运行中的 VM，请安装 IIS Web 服务器。 在 VM 中打开 PowerShell 提示符并运行以下命令：
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-完成后，关闭到虚拟机的 RDP 连接。
+完成后，关闭到 VM 的 RDP 连接。
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-IIS 已安装，并且现在已从 Internet 打开虚拟机上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页面。 使用上一步中获取的虚拟机的公用 IP 地址。 以下示例展示了默认 IIS 网站：
+IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例展示了默认 IIS 网站：
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png)
 
@@ -107,9 +107,9 @@ IIS 已安装，并且现在已从 Internet 打开虚拟机上的端口 80 - 可
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>下一步步骤
+## <a name="next-steps"></a>后续步骤
 
-在这个快速入门中，您部署了简单的虚拟机，为web流量打开了一个网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
+在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Windows VM 的教程。
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)
